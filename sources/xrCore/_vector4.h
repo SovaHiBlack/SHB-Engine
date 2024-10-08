@@ -133,11 +133,11 @@ public:
 	}
 };
 
-typedef							_vector4<F32>		Fvector4;
+typedef							_vector4<f32>		Fvector4;
 typedef							_vector4<double>	Dvector4;
 typedef							_vector4<s32>		Ivector4;
 
-typedef __declspec(align(16))	_vector4<F32>		Fvector4a;
+typedef __declspec(align(16))	_vector4<f32>		Fvector4a;
 typedef __declspec(align(16))	_vector4<double>	Dvector4a;
 typedef __declspec(align(16))	_vector4<s32>		Ivector4a;
 

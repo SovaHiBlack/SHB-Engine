@@ -590,7 +590,7 @@ void _InitializeFont(CGameFont*& F, pcstr section, u32 flags)
 		F->Initialize("font",font_tex_name);
 
 	if (pSettings->line_exist(section,"size")){
-		F32 sz = pSettings->r_float(section,"size");
+		f32 sz = pSettings->r_float(section,"size");
 		if (flags&CGameFont::fsDeviceIndependent)	F->SetHeightI(sz);
 		else										F->SetHeight(sz);
 	}
@@ -907,21 +907,21 @@ void CApplication::load_draw_internal()
 		u32	_h						= Device.dwHeight;
 		FVF::TL* pv					= NULL;
 
-//progress
-		F32 bw					= 1024.0f;
-		F32 bh					= 768.0f;
-		Fvector2					k; k.set(F32(_w)/bw, F32(_h)/bh);
+		// progress
+		f32 bw					= 1024.0f;
+		f32 bh					= 768.0f;
+		Fvector2					k; k.set(f32(_w)/bw, f32(_h)/bh);
 
 		RCache.set_Shader			(sh_progress);
 		CTexture*	T				= RCache.get_ActiveTexture(0);
 		Fvector2					tsz;
-		tsz.set						((F32)T->get_Width(),(F32)T->get_Height());
+		tsz.set						((f32)T->get_Width(),(f32)T->get_Height());
 		Frect						back_text_coords;
 		Frect						back_coords;
 		Fvector2					back_size;
 
-//progress background
-		static F32 offs			= -0.5f;
+		// progress background
+		static f32 offs			= -0.5f;
 
 		back_size.set				(1024,768);
 		back_text_coords.lt.set		(0,0);back_text_coords.rb.add(back_text_coords.lt,back_size);
@@ -940,7 +940,7 @@ void CApplication::load_draw_internal()
 		RCache.set_Geometry			(ll_hGeom);
 		RCache.Render				(D3DPT_TRIANGLELIST,Offset,0,4,0,2);
 
-//progress bar
+		// progress bar
 		back_size.set				(268,37);
 		back_text_coords.lt.set		(0,768);back_text_coords.rb.add(back_text_coords.lt,back_size);
 		back_coords.lt.set			(379 ,726);back_coords.rb.add(back_coords.lt,back_size);
@@ -952,8 +952,8 @@ void CApplication::load_draw_internal()
 		u32 v_cnt					= 40;
 		pv							= (FVF::TL*)RCache.Vertex.Lock	(2*(v_cnt+1),ll_hGeom2.stride(),Offset);
 		FVF::TL* _pv				= pv;
-		F32 pos_delta				= back_coords.width()/v_cnt;
-		F32 tc_delta				= back_text_coords.width()/v_cnt;
+		f32 pos_delta				= back_coords.width()/v_cnt;
+		f32 tc_delta				= back_text_coords.width()/v_cnt;
 		u32 clr = C;
 
 		for(u32 idx=0; idx<v_cnt+1; ++idx){
@@ -975,7 +975,7 @@ void CApplication::load_draw_internal()
 		pFontSystem->OutI			(0.f,0.815f,app_title);
 		pFontSystem->OnRender		();
 
-//draw level-specific screenshot
+		// draw level-specific screenshot
 		if(hLevelLogo){
 			Frect						r;
 			r.lt.set					(257,369);
@@ -1002,8 +1002,8 @@ u32 calc_progress_color(u32 idx, u32 total, int stage, int max_stage)
 	if(idx>(total/2)) 
 		idx	= total-idx;
 
-	F32 kk			= (F32(stage+1)/ F32(max_stage))*(total/2.0f);
-	F32 f				= 1/(exp((F32(idx)-kk)*0.5f)+1.0f);
+	f32 kk			= (f32(stage+1)/ f32(max_stage))*(total/2.0f);
+	f32 f				= 1/(exp((f32(idx)-kk)*0.5f)+1.0f);
 
 	return color_argb_f		(f,1.0f,1.0f,1.0f);
 }

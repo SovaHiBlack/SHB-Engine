@@ -468,10 +468,10 @@ s32 CInifile::r_s32(pcstr S, pcstr L)
 	pcstr		C = r_string(S, L);
 	return		s32(atoi(C));
 }
-F32 CInifile::r_float(pcstr S, pcstr L)
+f32 CInifile::r_float(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	return		F32(atof(C));
+	return		f32(atof(C));
 }
 Fcolor CInifile::r_fcolor(pcstr S, pcstr L)
 {
@@ -657,7 +657,7 @@ void	CInifile::w_s32(pcstr S, pcstr L, s32				V, pcstr comment)
 	string128 temp; sprintf_s(temp, sizeof(temp), "%d", V);
 	w_string(S, L, temp, comment);
 }
-void	CInifile::w_float(pcstr S, pcstr L, F32				V, pcstr comment)
+void	CInifile::w_float(pcstr S, pcstr L, f32				V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%f", V);
 	w_string(S, L, temp, comment);

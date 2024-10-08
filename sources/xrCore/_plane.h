@@ -86,7 +86,7 @@ public:
 		if (_abs(denom) < EPSILON_7) return FALSE; // normal is orthogonal to vector3, cant intersect
 		else
 		{
-			F32 dist = -(numer / denom);
+			f32 dist = -(numer / denom);
 			dest.mad(P, D, dist);
 			return 		((dist > 0.f) || fis_zero(dist));
 		}
@@ -136,7 +136,7 @@ public:
 	}
 };
 
-typedef _plane<F32>	Fplane;
+typedef _plane<f32>	Fplane;
 typedef _plane<double>	Dplane;
 
 template <class T>

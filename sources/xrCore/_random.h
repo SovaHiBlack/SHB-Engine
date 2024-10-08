@@ -40,27 +40,27 @@ public:
 		return offs + randIs(range);
 	}
 
-	IC 	F32	maxF()
+	IC 	f32	maxF()
 	{
 		return 32767.0f;
 	}
-	IC 	F32	randF()
+	IC 	f32	randF()
 	{
-		return F32(randI()) / maxF();
+		return f32(randI()) / maxF();
 	}
-	IC 	F32	randF(F32 max)
+	IC 	f32	randF(f32 max)
 	{
 		return randF() * max;
 	}
-	IC 	F32	randF(F32 min, F32 max)
+	IC 	f32	randF(f32 min, f32 max)
 	{
 		return min + randF(max - min);
 	}
-	IC 	F32	randFs(F32 range)
+	IC 	f32	randFs(f32 range)
 	{
 		return randF(-range, range);
 	}
-	IC 	F32	randFs(F32 range, F32 offs)
+	IC 	f32	randFs(f32 range, f32 offs)
 	{
 		return offs + randFs(range);
 	}

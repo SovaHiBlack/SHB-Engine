@@ -30,7 +30,7 @@
     <ClInclude Include="particle_effect.h">
       <Filter>PAPI</Filter>
     </ClInclude>
-    <ClInclude Include="particle_manager.h">
+    <ClInclude Include="ParticleManager.h">
       <Filter>PAPI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,7 +56,7 @@
     <ClCompile Include="particle_effect.cpp">
       <Filter>PAPI</Filter>
     </ClCompile>
-    <ClCompile Include="particle_manager.cpp">
+    <ClCompile Include="ParticleManager.cpp">
       <Filter>PAPI</Filter>
     </ClCompile>
   </ItemGroup>

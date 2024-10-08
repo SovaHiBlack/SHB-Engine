@@ -14,19 +14,19 @@
 #define fdRLE10	0x03ede5bdb     // 1/ln10
 
 // integer math on floats
-IC BOOL negative(const F32& f)
+IC BOOL negative(const f32& f)
 {
 	return (*((unsigned*)(&f)) & fdSGN);
 }
-IC BOOL positive(const F32& f)
+IC BOOL positive(const f32& f)
 {
 	return (*((unsigned*)(&f)) & fdSGN) == 0;
 }
-IC void set_negative(F32& f)
+IC void set_negative(f32& f)
 {
 	(*(unsigned*)(&f)) |= fdSGN;
 }
-IC void set_positive(F32& f)
+IC void set_positive(f32& f)
 {
 	(*(unsigned*)(&f)) &= ~fdSGN;
 }
@@ -93,7 +93,7 @@ IC	u64	btwCount1(u64 v)
 }
 
 
-ICF int iFloor(F32 x)
+ICF int iFloor(f32 x)
 {
 	int a = *(const int*)(&x);
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
@@ -114,7 +114,7 @@ ICF int iFloor(F32 x)
 /* intCeil() is a non-interesting variant, since effectively
    ceil(x) == -floor(-x)
 */
-ICF int iCeil(F32 x)
+ICF int iCeil(f32 x)
 {
 	int a = (*(const int*)(&x));
 	int exponent = (127 + 31) - ((a >> 23) & 0xFF);
@@ -134,38 +134,38 @@ ICF int iCeil(F32 x)
 }
 
 // Validity checks
-IC bool fis_gremlin(const F32& f)
+IC bool fis_gremlin(const f32& f)
 {
 	u8		value = u8(((*(int*)&f & 0x7f800000) >> 23) - 0x20);
 	return	value > 0xc0;
 }
-IC bool fis_denormal(const F32& f)
+IC bool fis_denormal(const f32& f)
 {
 	return !(*(int*)&f & 0x7f800000);
 }
 
 // Approximated calculations
-IC F32 apx_InvSqrt(const F32& n)
+IC f32 apx_InvSqrt(const f32& n)
 {
 	long tmp = (long(0xBE800000) - *(long*)&n) >> 1;
-	F32 y = *(F32*)&tmp;
+	f32 y = *(f32*)&tmp;
 	return y * (1.47f - 0.47f * n * y * y);
 }
 // Only for [0..1] (positive) range 
-IC F32 apx_asin(const F32 x)
+IC f32 apx_asin(const f32 x)
 {
-	const F32 c1 = 0.892399f;
-	const F32 c3 = 1.693204f;
-	const F32 c5 = -3.853735f;
-	const F32 c7 = 2.838933f;
+	const f32 c1 = 0.892399f;
+	const f32 c3 = 1.693204f;
+	const f32 c5 = -3.853735f;
+	const f32 c7 = 2.838933f;
 
-	const F32 x2 = x * x;
-	const F32 d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
+	const f32 x2 = x * x;
+	const f32 d = x * (c1 + x2 * (c3 + x2 * (c5 + x2 * c7)));
 
 	return d;
 }
 // Only for [0..1] (positive) range 
-IC F32 apx_acos(const F32 x)
+IC f32 apx_acos(const f32 x)
 {
 	return PI_DIV_2 - apx_asin(x);
 }

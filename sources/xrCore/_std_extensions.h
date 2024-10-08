@@ -76,23 +76,23 @@ template <class T>	IC T		_sqr(T a)
 }
 
 // float
-IC F32	_abs(F32 x)
+IC f32	_abs(f32 x)
 {
 	return fabsf(x);
 }
-IC F32	_sqrt(F32 x)
+IC f32	_sqrt(f32 x)
 {
 	return sqrtf(x);
 }
-IC F32	_sin(F32 x)
+IC f32	_sin(f32 x)
 {
 	return sinf(x);
 }
-IC F32	_cos(F32 x)
+IC f32	_cos(f32 x)
 {
 	return cosf(x);
 }
-IC BOOL		_valid(const F32 x)
+IC BOOL		_valid(const f32 x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
 	int			cls = _fpclass(double(x));

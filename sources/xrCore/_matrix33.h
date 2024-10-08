@@ -23,7 +23,7 @@ public:
 			Tvector j;
 			Tvector k;
 		};
-		F32 m[3][3];					// Array
+		f32 m[3][3];					// Array
 	};
 	// Class members
 	IC SelfRef set_rapid(const _matrix<T>& a)
@@ -35,7 +35,7 @@ public:
 	}
 	IC SelfRef set(SelfCRef a)
 	{
-		CopyMemory(this, &a, 9 * sizeof(F32));
+		CopyMemory(this, &a, 9 * sizeof(f32));
 		return *this;
 	}
 	IC SelfRef set(const _matrix<T>& a)
@@ -70,7 +70,7 @@ public:
 	IC SelfRef transpose(void)						// self transpose - slower
 	{
 		_matrix33 a;
-		CopyMemory(&a, this, 9 * sizeof(F32));					// save matrix
+		CopyMemory(&a, this, 9 * sizeof(f32));					// save matrix
 		transpose(a);
 		return *this;
 	}
@@ -145,15 +145,15 @@ public:
 //	int IC Meigen(Tvector& dout, SelfRef a)
 //	{
 //		int i;
-//		F32 tresh;
-//		F32 theta;
-//		F32 tau;
-//		F32 t;
-//		F32 sm;
-//		F32 s;
-//		F32 h;
-//		F32 g;
-//		F32 c;
+//		f32 tresh;
+//		f32 theta;
+//		f32 tau;
+//		f32 t;
+//		f32 sm;
+//		f32 s;
+//		f32 h;
+//		f32 g;
+//		f32 c;
 //		int nrot;
 //		Tvector b;
 //		Tvector z;
@@ -364,7 +364,7 @@ public:
 		m[2][1] = v.x;
 		return *this;
 	}
-	IC SelfRef sMxVpV(Tvector& R, F32 s1, const Tvector& V1, const Tvector& V2) const
+	IC SelfRef sMxVpV(Tvector& R, f32 s1, const Tvector& V1, const Tvector& V2) const
 	{
 		R.x = s1 * (m[0][0] * V1.x + m[0][1] * V1.y + m[0][2] * V1.z) + V2.x;
 		R.y = s1 * (m[1][0] * V1.x + m[1][1] * V1.y + m[1][2] * V1.z) + V2.y;
@@ -390,7 +390,7 @@ public:
 		R.z = (m[0][2] * V1.x + m[1][2] * V1.y + m[2][2] * V1.z - V2.z);
 		return *this;
 	}
-	IC SelfRef sMTxV(Tvector& R, F32 s1, const Tvector& V1) const
+	IC SelfRef sMTxV(Tvector& R, f32 s1, const Tvector& V1) const
 	{
 		R.x = s1 * (m[0][0] * V1.x + m[1][0] * V1.y + m[2][0] * V1.z);
 		R.y = s1 * (m[0][1] * V1.x + m[1][1] * V1.y + m[2][1] * V1.z);
@@ -426,7 +426,7 @@ public:
 	}
 };
 
-typedef		_matrix33<F32>	Fmatrix33;
+typedef		_matrix33<f32>	Fmatrix33;
 typedef		_matrix33<double>	Dmatrix33;
 
 template <class T>

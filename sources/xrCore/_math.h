@@ -17,9 +17,9 @@ namespace CPU
 	XRCORE_API extern u64				clk_per_milisec;
 	XRCORE_API extern u64				clk_per_microsec;
 	XRCORE_API extern u64				clk_overhead;
-	XRCORE_API extern F32				clk_to_seconds;
-	XRCORE_API extern F32				clk_to_milisec;
-	XRCORE_API extern F32				clk_to_microsec;
+	XRCORE_API extern f32				clk_to_seconds;
+	XRCORE_API extern f32				clk_to_milisec;
+	XRCORE_API extern f32				clk_to_microsec;
 
 	XRCORE_API extern u64				qpc_freq;
 	XRCORE_API extern u64				qpc_overhead;

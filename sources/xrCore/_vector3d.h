@@ -30,7 +30,7 @@ public:
 	{
 		x = _x;		y = _y;		z = _z;		return *this;
 	};
-	ICF SelfRef	set(const _vector3<F32>& v)
+	ICF SelfRef	set(const _vector3<f32>& v)
 	{
 		x = T(v.x);	y = T(v.y);	z = T(v.z);	return *this;
 	};
@@ -38,7 +38,7 @@ public:
 	{
 		x = T(v.x);	y = T(v.y);	z = T(v.z);	return *this;
 	};
-	ICF	SelfRef	set(F32* p)
+	ICF	SelfRef	set(f32* p)
 	{
 		x = p[0];	y = p[1];	z = p[2];		return *this;
 	};
@@ -345,7 +345,7 @@ public:
 		y = r * sa;
 		return *this;
 	};
-	IC SelfRef	random_dir(const Self& ConeAxis, F32 ConeAngle, CRandom& R = ::Random)
+	IC SelfRef	random_dir(const Self& ConeAxis, f32 ConeAngle, CRandom& R = ::Random)
 	{
 		Self				rnd;
 		rnd.random_dir(R);
@@ -450,12 +450,12 @@ public:
 	}
 	ICF	void	getHP(T& h, T& p) const
 	{
-		F32 hyp;
+		f32 hyp;
 
 		if (fis_zero(x) && fis_zero(z))
 		{
 			h = 0.0f;
-			if (!fis_zero(F32(y)))	p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
+			if (!fis_zero(f32(y)))	p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			else            			p = 0.0f;
 		}
 		else
@@ -464,11 +464,11 @@ public:
 			else if (z < 0.0f)			h = -(atanf(x / z) - PI);
 			else            			h = -atanf(x / z);
 			hyp = _sqrt(x * x + z * z);
-			if (fis_zero(F32(hyp)))	p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
+			if (fis_zero(f32(hyp)))	p = (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			else						p = atanf(y / hyp);
 		}
 	}
-	ICF F32 	getH() const
+	ICF f32 	getH() const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
@@ -481,17 +481,17 @@ public:
 			else            			return -atanf(x / z);
 		}
 	}
-	ICF F32 	getP() const
+	ICF f32 	getP() const
 	{
 		if (fis_zero(x) && fis_zero(z))
 		{
-			if (!fis_zero(F32(y)))	return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
+			if (!fis_zero(f32(y)))	return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			else            			return 0.0f;
 		}
 		else
 		{
-			F32 hyp = _sqrt(x * x + z * z);
-			if (fis_zero(F32(hyp)))	return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
+			f32 hyp = _sqrt(x * x + z * z);
+			if (fis_zero(f32(hyp)))	return (y > 0.0f) ? PI_DIV_2 : -PI_DIV_2;
 			else						return atanf(y / hyp);
 		}
 	}
@@ -558,12 +558,15 @@ public:
 		}
 	}
 };
-typedef _vector3<F32>		Fvector;
-typedef _vector3<F32>		Fvector3;
+typedef _vector3<f32>		Fvector;
+typedef _vector3<f32>		Fvector3;
 typedef _vector3<double>	Dvector;
 typedef _vector3<double>	Dvector3;
 typedef _vector3<s32>		Ivector;
 typedef _vector3<s32>		Ivector3;
+
+typedef _vector3<f32>		fVector3;
+
 
 template <class T>
 BOOL	_valid(const _vector3<T>& v)
@@ -578,7 +581,7 @@ ICF		double	rsqrt(double v)
 {
 	return 1.0 / _sqrt(v);
 }
-IC		BOOL	exact_normalize(F32* a)
+IC		BOOL	exact_normalize(f32* a)
 {
 	double	sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
 	double	epsilon = 1.192092896e-05F;

@@ -661,8 +661,10 @@ public:
 	}
 };
 
-typedef		_matrix<F32>	Fmatrix;
+typedef		_matrix<f32>	Fmatrix;
 typedef		_matrix<double>	Dmatrix;
+
+typedef _matrix<f32> fMatrix4x4;
 
 template <class T>
 BOOL	_valid(const _matrix<T>& m)

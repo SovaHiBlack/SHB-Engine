@@ -46,7 +46,7 @@ public:
 	u32				time_resurrect;
 
 	u8				fake_death_count;
-	F32			health_death_threshold;
+	f32			health_death_threshold;
 	u8				fake_death_left;
 
 	bool			fake_death_fall_down	(); //return true if everything is ok

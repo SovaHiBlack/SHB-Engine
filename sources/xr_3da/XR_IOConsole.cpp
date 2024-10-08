@@ -66,7 +66,7 @@ void CConsole::Destroy	()
 void CConsole::OnFrame	()
 {
 	u32 mm_timer = Device.dwTimeContinual;
-	F32 fDelta = (mm_timer - last_mm_timer)/1000.0f;
+	f32 fDelta = (mm_timer - last_mm_timer)/1000.0f;
 	if (fDelta>.06666f) fDelta=.06666f;
 	last_mm_timer = mm_timer;
 
@@ -76,12 +76,12 @@ void CConsole::OnFrame	()
 	if (rep_time>0.2f) { rep_time-=0.2f; bRepeat=true;	fAccel+=0.2f;	}
 }
 
-void out_font(CGameFont* pFont, pcstr text, F32& pos_y)
+void out_font(CGameFont* pFont, pcstr text, f32& pos_y)
 {
-	F32 str_length = pFont->SizeOf_(text);
+	f32 str_length = pFont->SizeOf_(text);
 	if(str_length>1024.0f)
 	{
-		F32 _l			= 0.0f;
+		f32 _l			= 0.0f;
 		int _sz				= 0;
 		int _ln				= 0;
 		string1024			_one_line;
@@ -90,7 +90,7 @@ void out_font(CGameFont* pFont, pcstr text, F32& pos_y)
 		{
 			_one_line[_ln+_sz]			= text[_sz];
 			_one_line[_ln+_sz+1]		= 0;
-			F32 _t					= pFont->SizeOf_(_one_line+_ln);
+			f32 _t					= pFont->SizeOf_(_one_line+_ln);
 			if(_t > 1024.0f)
 			{
 				out_font				(pFont, text+_sz, pos_y);
@@ -109,7 +109,7 @@ void out_font(CGameFont* pFont, pcstr text, F32& pos_y)
 
 void CConsole::OnRender	()
 {
-	F32			fMaxY;
+	f32			fMaxY;
 	BOOL			bGame;
 
 	if (!bVisible) return;
@@ -129,8 +129,8 @@ void CConsole::OnRender	()
 
 	CHK_DX	(HW.pDevice->Clear(1,&R,D3DCLEAR_TARGET,D3DCOLOR_XRGB(32,32,32),1,0));
 
-	F32 dwMaxY= F32(Device.dwHeight);
-	// F32 dwMaxX=F32(Device.dwWidth/2);
+	f32 dwMaxY= f32(Device.dwHeight);
+	// f32 dwMaxX=f32(Device.dwWidth/2);
 	if (bGame) { fMaxY=0.f; dwMaxY/=2; } else fMaxY=1.f;
 
 	char		buf	[MAX_LEN+5];
@@ -142,7 +142,7 @@ void CConsole::OnRender	()
 	pFont->SetHeightI(0.025f);
 	pFont->OutI	( -1.f, fMaxY-LDIST, "%s", buf );
 
-	F32 ypos=fMaxY-LDIST-LDIST;
+	f32 ypos=fMaxY-LDIST-LDIST;
 	for (int i=LogFile->size()-1-scroll_delta; i>=0; i--) 
 	{
 		ypos-=LDIST;
@@ -395,7 +395,7 @@ void CConsole::IR_OnKeyboardRelease(int dik)
 
 void CConsole::IR_OnKeyboardHold(int dik)
 {
-	F32 fRep	= rep_time;
+	f32 fRep	= rep_time;
 	if (bRepeat) { OnPressKey(dik, true); bRepeat=false; }
 	rep_time	= fRep;
 }
@@ -548,7 +548,7 @@ BOOL CConsole::GetBool(pcstr cmd, BOOL& val)
 	return val;
 }
 
-F32 CConsole::GetFloat(pcstr cmd, F32& val, F32& min, F32& max)
+f32 CConsole::GetFloat(pcstr cmd, f32& val, f32& min, f32& max)
 {
 	vecCMD_IT I = Commands.find(cmd);
 	if (I!=Commands.end()) {

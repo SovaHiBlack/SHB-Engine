@@ -13,7 +13,7 @@
 #define pvBOTTOM_MASK	0x007f
 
 // static lookup table for unit vector3 decompression
-F32 pvUVAdjustment[0x2000];
+f32 pvUVAdjustment[0x2000];
 
 void pvInitializeStatics(void)
 {
@@ -30,9 +30,9 @@ void pvInitializeStatics(void)
 		}
 
 		// convert to 3D vectors
-		F32 x = F32(xbits);
-		F32 y = F32(ybits);
-		F32 z = F32(126 - xbits - ybits);
+		f32 x = f32(xbits);
+		f32 y = f32(ybits);
+		f32 z = f32(126 - xbits - ybits);
 
 		// calculate the amount of normalization required
 		pvUVAdjustment[idx] = 1.0f / _sqrt(y * y + z * z + x * x);
@@ -68,7 +68,7 @@ u16 pvCompress(const Fvector& vec)
 
 	// a little slower... old pack was 4 multiplies and 2 adds. 
 	// This is 2 multiplies, 2 adds, and a divide....
-	F32 w = 126.0f / (tmp.x + tmp.y + tmp.z);
+	f32 w = 126.0f / (tmp.x + tmp.y + tmp.z);
 	int		xbits = iFloor(tmp.x * w);
 	int		ybits = iFloor(tmp.y * w);
 
@@ -121,10 +121,10 @@ void pvDecompress(Fvector& vec, u16 mVec)
 
 	// do the inverse transform and normalization
 	// costs 3 extra multiplies and 2 subtracts. No big deal.         
-	F32 uvadj = pvUVAdjustment[mVec & ~pvSIGN_MASK];
-	vec.x = uvadj * F32(xbits);
-	vec.y = uvadj * F32(ybits);
-	vec.z = uvadj * F32(126 - xbits - ybits);
+	f32 uvadj = pvUVAdjustment[mVec & ~pvSIGN_MASK];
+	vec.x = uvadj * f32(xbits);
+	vec.y = uvadj * f32(ybits);
+	vec.z = uvadj * f32(126 - xbits - ybits);
 
 	// set all the sign bits
 	if (mVec & pvXSIGN_MASK) set_negative(vec.x);

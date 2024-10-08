@@ -92,7 +92,7 @@ public:
 	{
 		return x1 == r.x1 && y1 == r.y1 && x2 == r.x2 && y2 == r.y2;
 	};
-	IC	BOOL	cmp(_rect<F32>& r)
+	IC	BOOL	cmp(_rect<f32>& r)
 	{
 		return fsimilar(x1, r.x1) && fsimilar(y1, r.y1) && fsimilar(x2, r.x2) && fsimilar(y2, r.y2);
 	};
@@ -149,7 +149,7 @@ public:
 
 };
 
-typedef _rect<F32>	Frect;
+typedef _rect<f32>	Frect;
 typedef _rect<double>	Drect;
 typedef _rect<int>		Irect;
 

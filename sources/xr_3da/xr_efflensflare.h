@@ -9,9 +9,9 @@ class ENGINE_API CLensFlareDescriptor
 public:
 	struct SFlare
 	{
-		F32			fOpacity;
-		F32			fRadius;
-		F32			fPosition;
+		f32			fOpacity;
+		f32			fRadius;
+		f32			fPosition;
         shared_str			texture;
         shared_str			shader;
         ref_shader		hShader;
@@ -37,12 +37,12 @@ public:
 	// gradient
     SFlare				m_Gradient;
 
-	F32				m_StateBlendUpSpeed;
-	F32				m_StateBlendDnSpeed;
+	f32				m_StateBlendUpSpeed;
+	f32				m_StateBlendDnSpeed;
     
-	void				SetGradient		(F32 fMaxRadius, F32 fOpacity, pcstr tex_name, pcstr sh_name);
-    void				SetSource		(F32 fRadius, BOOL ign_color, pcstr tex_name, pcstr sh_name);
-    void				AddFlare		(F32 fRadius, F32 fOpacity, F32 fPosition, pcstr tex_name, pcstr sh_name);
+	void				SetGradient		(f32 fMaxRadius, f32 fOpacity, pcstr tex_name, pcstr sh_name);
+    void				SetSource		(f32 fRadius, BOOL ign_color, pcstr tex_name, pcstr sh_name);
+    void				AddFlare		(f32 fRadius, f32 fOpacity, f32 fPosition, pcstr tex_name, pcstr sh_name);
     ref_shader			CreateShader	(pcstr tex_name, pcstr sh_name);
 
 	shared_str			section;

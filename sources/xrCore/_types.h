@@ -29,6 +29,7 @@ using pstr = char*;
 using pcstr = const char*;
 
 using pvoid = void*;
+using pVoid = void*;
 using pcvoid = const void*;
 
 typedef	char	string16[16];

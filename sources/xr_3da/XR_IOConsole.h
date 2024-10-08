@@ -25,9 +25,9 @@ public:
 	enum			{ MAX_LEN = 1024 };
 private:
 	u32				last_mm_timer;
-	F32			cur_time;
-	F32			rep_time;
-	F32			fAccel;
+	f32			cur_time;
+	f32			rep_time;
+	f32			fAccel;
 	
 	int				cmd_delta;
 	int				old_cmd_delta;
@@ -63,7 +63,7 @@ public:
 
 	// get
 	BOOL			GetBool				(pcstr cmd, BOOL &val);
-	F32			GetFloat			(pcstr cmd, F32& val, F32& min, F32& max);
+	f32			GetFloat			(pcstr cmd, f32& val, f32& min, f32& max);
 	char *			GetString			(pcstr cmd);
 	int				GetInteger			(pcstr cmd, int& val, int& min, int& max);
 	char *			GetToken			(pcstr cmd);

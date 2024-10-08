@@ -313,7 +313,7 @@ public:
 	};
 };
 
-typedef _box2<F32>	Fbox2;
+typedef _box2<f32>	Fbox2;
 typedef _box2<double>	Dbox2;
 
 template <class T>

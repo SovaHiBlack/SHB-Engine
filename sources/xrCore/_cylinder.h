@@ -220,7 +220,7 @@ public:
 	//----------------------------------------------------------------------------
 };
 
-typedef _cylinder<F32>	Fcylinder;
+typedef _cylinder<f32>	Fcylinder;
 typedef _cylinder<double>	Dcylinder;
 
 template <class T>

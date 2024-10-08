@@ -24,15 +24,15 @@
 #define int_min			type_min(int)
 #define int_zero		type_zero(int)
 
-#define flt_max			type_max(F32)
-#define flt_min			type_min(F32)
+#define flt_max			type_max(f32)
+#define flt_min			type_min(f32)
 //#define FLT_MAX         3.402823466e+38F        /* max value */
 //#define FLT_MIN         1.175494351e-38F        /* min positive value */
 #define FLT_MAX			flt_max
 #define FLT_MIN			flt_min
 
-#define flt_zero		type_zero(F32)
-#define flt_eps			type_epsilon(F32)
+#define flt_zero		type_zero(f32)
+#define flt_eps			type_epsilon(f32)
 
 #define dbl_max			type_max(double)
 #define dbl_min			type_min(double)

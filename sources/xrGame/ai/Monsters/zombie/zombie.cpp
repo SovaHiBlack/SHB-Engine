@@ -143,7 +143,7 @@ void	CZombie::Hit								(SHit* pHDS)
 	
 	if ((pHDS->hit_type == ALife::eHitTypeFireWound) && (Device.dwFrame != last_hit_frame)) {
 		if (!com_man().ta_is_active() && (time_resurrect + TIME_RESURRECT_RESTORE < Device.dwTimeGlobal) && (conditions().GetHealth() < health_death_threshold)) {
-			if (conditions().GetHealth() < (health_death_threshold - F32(fake_death_count - fake_death_left) * health_death_threshold / fake_death_count)) {
+			if (conditions().GetHealth() < (health_death_threshold - f32(fake_death_count - fake_death_left) * health_death_threshold / fake_death_count)) {
 				active_triple_idx			= u8(Random.randI(FAKE_DEATH_TYPES_COUNT));
 				com_man().ta_activate		(anim_triple_death[active_triple_idx]);
 				move().stop					();

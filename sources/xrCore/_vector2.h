@@ -11,7 +11,7 @@ public:
 public:
 	T x, y;
 
-	IC SelfRef set(F32 _u, F32 _v)
+	IC SelfRef set(f32 _u, f32 _v)
 	{
 		x = T(_u);
 		y = T(_v);
@@ -83,7 +83,7 @@ public:
 		y = p1.y - p2.y;
 		return *this;
 	}
-	IC SelfRef sub(const Self& p, F32 d)
+	IC SelfRef sub(const Self& p, f32 d)
 	{
 		x = p.x - d;
 		y = p.y - d;
@@ -107,7 +107,7 @@ public:
 		y = p1.y + p2.y;
 		return *this;
 	}
-	IC SelfRef add(const Self& p, F32 d)
+	IC SelfRef add(const Self& p, f32 d)
 	{
 		x = p.x + d;
 		y = p.y + d;
@@ -133,7 +133,7 @@ public:
 	}
 	IC SelfRef rot90(void)
 	{
-		F32 t = -x;
+		f32 t = -x;
 		x = y;
 		y = t;
 		return *this;
@@ -154,14 +154,14 @@ public:
 	}
 	IC SelfRef norm(void)
 	{
-		F32 m = _sqrt(x * x + y * y);
+		f32 m = _sqrt(x * x + y * y);
 		x /= m;
 		y /= m;
 		return *this;
 	}
 	IC SelfRef norm_safe(void)
 	{
-		F32 m = _sqrt(x * x + y * y);
+		f32 m = _sqrt(x * x + y * y);
 		if (m)
 		{
 			x /= m;
@@ -203,7 +203,7 @@ public:
 		return _abs(x - p.x) < eu && _abs(y - p.y) < ev;
 	}
 
-	IC bool similar(const Self& p, F32 E = EPS_L) const
+	IC bool similar(const Self& p, f32 E = EPS_L) const
 	{
 		return _abs(x - p.x) < E && _abs(y - p.y) < E;
 	};
@@ -225,7 +225,7 @@ public:
 
 	T& operator[] (int i) const
 	{
-		// assert:  0 <= i < 2; x and y are packed into 2*sizeof(F32) bytes
+		// assert:  0 <= i < 2; x and y are packed into 2*sizeof(f32) bytes
 		return (T&)*(&x + i);
 	}
 
@@ -239,14 +239,14 @@ public:
 	}
 	IC SelfRef 	normalize(const Self& v)
 	{
-		F32 m = _sqrt(v.x * v.x + v.y * v.y);
+		f32 m = _sqrt(v.x * v.x + v.y * v.y);
 		x = v.x / m;
 		y = v.y / m;
 		return *this;
 	}
 	IC SelfRef 	normalize_safe(const Self& v)
 	{
-		F32 m = _sqrt(v.x * v.x + v.y * v.y);
+		f32 m = _sqrt(v.x * v.x + v.y * v.y);
 		if (m)
 		{
 			x = v.x / m;
@@ -255,15 +255,15 @@ public:
 
 		return *this;
 	}
-	IC F32		dotproduct(const Self& p) const
+	IC f32		dotproduct(const Self& p) const
 	{
 		return dot(p);
 	}
-	IC F32		crossproduct(const Self& p) const
+	IC f32		crossproduct(const Self& p) const
 	{
 		return y * p.x - x * p.y;
 	}
-	IC F32		getH(void) const
+	IC f32		getH(void) const
 	{
 		if (fis_zero(y))
 			if (fis_zero(x))
@@ -278,7 +278,7 @@ public:
 	}
 };
 
-typedef _vector2<F32>		Fvector2;
+typedef _vector2<f32>		Fvector2;
 typedef _vector2<double>	Dvector2;
 typedef _vector2<int>		Ivector2;
 

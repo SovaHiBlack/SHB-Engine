@@ -4,21 +4,21 @@
 struct Flight 
 {
 public:
-    u32           type;             /* Type of light source */
-    Fcolor          diffuse;          /* Diffuse color of light */
-    Fcolor          specular;         /* Specular color of light */
-    Fcolor          ambient;          /* Ambient color of light */
-    Fvector         position;         /* Position in world space */
-    Fvector         direction;        /* Direction in world space */
-	F32		    range;            /* Cutoff range */
-	F32	        falloff;          /* Falloff */
-	F32	        attenuation0;     /* Constant attenuation */
-	F32	        attenuation1;     /* Linear attenuation */
-	F32	        attenuation2;     /* Quadratic attenuation */
-	F32	        theta;            /* Inner angle of spotlight cone */
-	F32	        phi;              /* Outer angle of spotlight cone */
+	u32           type;             /* Type of light source */
+	Fcolor          diffuse;          /* Diffuse color of light */
+	Fcolor          specular;         /* Specular color of light */
+	Fcolor          ambient;          /* Ambient color of light */
+	Fvector         position;         /* Position in world space */
+	Fvector         direction;        /* Direction in world space */
+	f32		    range;            /* Cutoff range */
+	f32	        falloff;          /* Falloff */
+	f32	        attenuation0;     /* Constant attenuation */
+	f32	        attenuation1;     /* Linear attenuation */
+	f32	        attenuation2;     /* Quadratic attenuation */
+	f32	        theta;            /* Inner angle of spotlight cone */
+	f32	        phi;              /* Outer angle of spotlight cone */
 
-	IC	void		set	(u32 ltType, F32 x, F32 y, F32 z)
+	IC	void		set	(u32 ltType, f32 x, f32 y, f32 z)
 	{
 		ZeroMemory( this, sizeof(Flight) );
 		type=ltType;
@@ -29,11 +29,11 @@ public:
 		direction.normalize_safe();
 		range= _sqrt(flt_max);
 	}
-    IC	void		mul		(F32 brightness){
-	    diffuse.mul_rgb		(brightness);
-    	ambient.mul_rgb		(brightness);
-	    specular.mul_rgb	(brightness);
-    }
+	IC	void		mul		(f32 brightness){
+		diffuse.mul_rgb		(brightness);
+		ambient.mul_rgb		(brightness);
+		specular.mul_rgb	(brightness);
+	}
 };
 
 /*
@@ -48,13 +48,13 @@ public:
 struct Fmaterial
 {
 public:
-    Fcolor			diffuse;        /* Diffuse color RGBA */
-    Fcolor			ambient;        /* Ambient color RGB */
-    Fcolor		    specular;       /* Specular 'shininess' */
-    Fcolor			emissive;       /* Emissive color RGB */
-	F32			power;          /* Sharpness if specular highlight */
+	Fcolor			diffuse;        /* Diffuse color RGBA */
+	Fcolor			ambient;        /* Ambient color RGB */
+	Fcolor		    specular;       /* Specular 'shininess' */
+	Fcolor			emissive;       /* Emissive color RGB */
+	f32			power;          /* Sharpness if specular highlight */
 
-	IC	void		set	(F32 r, F32 g, F32 b)
+	IC	void		set	(f32 r, f32 g, f32 b)
 	{
 		ZeroMemory	(this, sizeof(Fmaterial));
 		diffuse.r = ambient.r = r;
@@ -63,7 +63,7 @@ public:
 		diffuse.a = ambient.a = 1.0f;
 		power	  = 0;
 	}
-	IC	void	set(F32 r, F32 g, F32 b, F32 a)
+	IC	void	set(f32 r, f32 g, f32 b, f32 a)
 	{
 		ZeroMemory	(this, sizeof(Fmaterial));
 		diffuse.r = ambient.r = r;

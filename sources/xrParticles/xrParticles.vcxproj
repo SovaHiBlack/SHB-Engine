@@ -171,7 +171,7 @@
     <ClInclude Include="particle_actions_collection.h" />
     <ClInclude Include="particle_core.h" />
     <ClInclude Include="particle_effect.h" />
-    <ClInclude Include="particle_manager.h" />
+    <ClInclude Include="ParticleManager.h" />
     <ClInclude Include="psystem.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -182,7 +182,7 @@
     <ClCompile Include="particle_actions_collection_io.cpp" />
     <ClCompile Include="particle_core.cpp" />
     <ClCompile Include="particle_effect.cpp" />
-    <ClCompile Include="particle_manager.cpp" />
+    <ClCompile Include="ParticleManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

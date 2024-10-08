@@ -129,8 +129,8 @@ public:
 	{
 		return r_s32(*S, L);
 	}
-	F32			r_float(pcstr S, pcstr L);
-	F32			r_float(const shared_str& S, pcstr L)
+	f32			r_float(pcstr S, pcstr L);
+	f32			r_float(const shared_str& S, pcstr L)
 	{
 		return r_float(*S, L);
 	}
@@ -190,7 +190,7 @@ public:
 	void		w_s8(pcstr S, pcstr L, s8				V, pcstr comment = 0);
 	void		w_s16(pcstr S, pcstr L, s16				V, pcstr comment = 0);
 	void		w_s32(pcstr S, pcstr L, s32				V, pcstr comment = 0);
-	void		w_float(pcstr S, pcstr L, F32				V, pcstr comment = 0);
+	void		w_float(pcstr S, pcstr L, f32				V, pcstr comment = 0);
 	void		w_fcolor(pcstr S, pcstr L, const Fcolor& V, pcstr comment = 0);
 	void		w_color(pcstr S, pcstr L, u32				V, pcstr comment = 0);
 	void		w_ivector2(pcstr S, pcstr L, const Ivector2& V, pcstr comment = 0);

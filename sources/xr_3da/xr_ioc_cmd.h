@@ -151,23 +151,23 @@ public		:
 class ENGINE_API	CCC_Float : public IConsole_Command
 {
 protected	:
-	F32*			value;
-	F32			min;
-	F32 max;
+	f32*			value;
+	f32			min;
+	f32 max;
 public		:
-	CCC_Float(pcstr N, F32* V, F32 _min=0, F32 _max=1) :
+	CCC_Float(pcstr N, f32* V, f32 _min=0, f32 _max=1) :
 	  IConsole_Command(N),
 	  value(V),
 	  min(_min),
 	  max(_max)
 	{};
-	  const F32	GetValue	() const {return *value;};
-	  const F32	GetMin		() const {return min;};
-	  const F32	GetMax		() const {return max;};
+	  const f32	GetValue	() const {return *value;};
+	  const f32	GetMin		() const {return min;};
+	  const f32	GetMax		() const {return max;};
 
 	virtual void	Execute	(pcstr args)
 	{
-		F32 v = F32(atof(args));
+		f32 v = f32(atof(args));
 		if (v<(min- EPSILON_5) || v>(max+ EPSILON_5) ) InvalidSyntax();
 		else	*value = v;
 	}
