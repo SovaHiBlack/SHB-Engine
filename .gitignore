@@ -7,3 +7,9 @@
 /gamedata/sounds
 /gamedata/textures
 /sources/.vs/SHB-Engine
+/Debug-Win32/binary
+/Debug-Win32/intermediate
+/Debug-Win32/libraries
+/Release-Win32/binary
+/Release-Win32/intermediate
+/Release-Win32/libraries
