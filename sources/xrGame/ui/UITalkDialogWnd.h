@@ -22,9 +22,8 @@ private:
 public:
 	CUITalkDialogWnd();
 	virtual ~CUITalkDialogWnd();
-	
 
-	virtual void Init(float x, float y, float width, float height);
+	virtual void Init(f32 x, f32 y, f32 width, f32 height);
 	
 	virtual void SendMessage(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 
@@ -76,11 +75,11 @@ private:
 	
 };
 
-
 class CUIQuestionItem :public CUIWindow, public CUIWndCallback
 {
 	typedef CUIWindow inherited;
-	float			m_min_height;
+	f32			m_min_height;
+
 public:
 	CUI3tButton*	m_text;
 	shared_str		m_s_value;
@@ -95,8 +94,8 @@ class CUIAnswerItem :public CUIWindow
 {
 	typedef CUIWindow inherited;
 
-	float			m_min_height;
-	float			m_bottom_footer;
+	f32			m_min_height;
+	f32			m_bottom_footer;
 	CUIStatic*		m_text;
 	CUIStatic*		m_name;
 public:

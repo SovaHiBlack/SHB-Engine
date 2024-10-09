@@ -30,12 +30,12 @@ IC	void CVisualMemoryManager::set_squad_objects(VISIBLES *squad_objects)
 		m_not_yet_visible_objects.clear	();
 }
 
-IC	float CVisualMemoryManager::visibility_threshold	() const
+IC	f32 CVisualMemoryManager::visibility_threshold	() const
 {
 	return							(current_state().m_visibility_threshold);
 }
 
-IC	float CVisualMemoryManager::transparency_threshold	() const
+IC	f32 CVisualMemoryManager::transparency_threshold	() const
 {
 	return							(current_state().m_transparency_threshold);
 }

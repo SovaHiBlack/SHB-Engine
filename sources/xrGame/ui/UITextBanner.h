@@ -12,11 +12,11 @@
 struct EffectParams
 {
 	friend class	CUITextBanner;
-	float			fPeriod;
+	f32			fPeriod;
 	bool			bCyclic;
 	bool			bOn;
 	int				iAdditionalParam;
-	float			fAdditionalParam;
+	f32			fAdditionalParam;
 	int				iEffectStage;
 
 	// Constructor
@@ -30,7 +30,7 @@ struct EffectParams
 			bOn					(true)
 	{}
 private:
-	float			fTimePassed;
+	f32			fTimePassed;
 };
 
 //-----------------------------------------------------------------------------/
@@ -51,7 +51,7 @@ public:
 	~CUITextBanner				();
 
 	virtual void	Update		();
-	void			Out			(float x, float y, pcstr fmt, ...);
+	void			Out			(f32 x, f32 y, pcstr fmt, ...);
 
 	// Установить параметры визуализации баннера. Флаги см. перечисление TextBannerStyles
 	EffectParams * SetStyleParams(const TextBannerStyles styleName);
@@ -60,7 +60,7 @@ public:
 	// Font
 	void		SetFont				(CGameFont *pFont)	{ m_pFont = pFont; }
 	CGameFont	*GetFont			() const { return m_pFont; }
-	void		SetFontSize			(float sz)	{ fontSize = sz; }
+	void		SetFontSize			(f32 sz)	{ fontSize = sz; }
 	void		SetFontAlignment	(CGameFont::EAligment al) {aligment = al;}
 
 	// Color
@@ -88,10 +88,9 @@ protected:
 
 	// Font
 	CGameFont				*m_pFont;
-	float					fontSize;
+	f32					fontSize;
 	CGameFont::EAligment	aligment;
 
 	// Letters color
 	u32			m_Cl;
-
 };

@@ -48,9 +48,9 @@ void  CWound::load	(IReader &input_packet)
 }
 
 
-float CWound::TotalSize()
+f32 CWound::TotalSize()
 {
-	float total_size = 0.f;
+	f32 total_size = 0.f;
 	for(int i=0; i<ALife::eHitTypeMax; i++)
 	{
 		VERIFY(_valid(m_Wounds[i]));
@@ -60,27 +60,27 @@ float CWound::TotalSize()
 	return total_size;
 }
 
-float CWound::TypeSize(ALife::EHitType hit_type)
+f32 CWound::TypeSize(ALife::EHitType hit_type)
 {
 	return m_Wounds[hit_type];
 }
 
 //кол-во кровавых ран
-float CWound::BloodSize	()
+f32 CWound::BloodSize	()
 {
 	return m_Wounds[ALife::eHitTypeWound]+ m_Wounds[ALife::eHitTypeFireWound];
 }
 
-void CWound::AddHit(float hit_power, ALife::EHitType hit_type)
+void CWound::AddHit(f32 hit_power, ALife::EHitType hit_type)
 {
 	m_Wounds[hit_type] += hit_power;
 	clamp(m_Wounds[hit_type],0.0f,WOUND_MAX);
 }
 
 
-void CWound::Incarnation	(float percent, float min_wound_size)
+void CWound::Incarnation	(f32 percent, f32 min_wound_size)
 {
-	float total_size = TotalSize();
+	f32 total_size = TotalSize();
 
 	if(fis_zero(total_size))
 	{

@@ -11,7 +11,7 @@ class CUISpinNum : public CUICustomSpin
 public:
 					CUISpinNum			();
 
-	virtual void	Init				(float x, float y, float width, float height);
+	virtual void	Init				(f32 x, f32 y, f32 width, f32 height);
 
 	// CUIOptionsItem
 	virtual void	SetCurrentValue		();
@@ -31,8 +31,6 @@ protected:
 	virtual void		IncVal			();
 	virtual void		DecVal			();
 
-
-
 	int		m_iMax;
 	int		m_iMin;
 	int		m_iStep;
@@ -44,7 +42,7 @@ class CUISpinFlt : public CUICustomSpin
 public:
 	CUISpinFlt();
 
-	virtual void	Init				(float x, float y, float width, float height);
+	virtual void	Init				(f32 x, f32 y, f32 width, f32 height);
 
 	// CUIOptionsItem
 	virtual void	SetCurrentValue		();
@@ -54,8 +52,9 @@ public:
     virtual void	OnBtnUpClick		();
 	virtual void	OnBtnDownClick		();
 
-			void	SetMax				(float max);
-			void	SetMin				(float min);
+			void	SetMax				(f32 max);
+			void	SetMin				(f32 min);
+
 protected:
 			void	SetValue			();
 	virtual bool	CanPressUp			();
@@ -63,11 +62,8 @@ protected:
 	virtual void	IncVal				();
 	virtual void	DecVal				();
 
-
-
-	float		m_fMax;
-	float		m_fMin;
-	float		m_fStep;
-	float		m_fVal;
+	f32		m_fMax;
+	f32		m_fMin;
+	f32		m_fStep;
+	f32		m_fVal;
 };
-

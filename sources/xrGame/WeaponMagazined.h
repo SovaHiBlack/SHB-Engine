@@ -79,9 +79,9 @@ protected:
 	virtual void	ReloadMagazine	();
 			void	ApplySilencerKoeffs	();
 
-	virtual void	state_Fire		(float dt);
-	virtual void	state_MagEmpty	(float dt);
-	virtual void	state_Misfire	(float dt);
+	virtual void	state_Fire		(f32 dt);
+	virtual void	state_MagEmpty	(f32 dt);
+	virtual void	state_Misfire	(f32 dt);
 public:
 					CWeaponMagazined	(pcstr name="AK74",ESoundTypes eSoundType=SOUND_TYPE_WEAPON_SUBMACHINEGUN);
 	virtual			~CWeaponMagazined	();
@@ -183,5 +183,5 @@ protected:
 
 	virtual void	StartIdleAnim		();
 	virtual	int		ShotsFired			() { return m_iShotNum; }
-	virtual float	GetWeaponDeterioration	();
+	virtual f32	GetWeaponDeterioration	();
 };

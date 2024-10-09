@@ -935,11 +935,11 @@ int CWeapon::GetAmmoCurrent(bool use_item_to_spawn) const
 	return l_count + iAmmoCurrent;
 }
 
-float CWeapon::GetConditionMisfireProbability() const
+f32 CWeapon::GetConditionMisfireProbability() const
 {
 	if( GetCondition()>0.95f ) return 0.0f;
 
-	float mis = misfireProbability+powf(1.f-GetCondition(), 3.f)*misfireConditionK;
+	f32 mis = misfireProbability+powf(1.f-GetCondition(), 3.f)*misfireConditionK;
 	clamp(mis,0.0f,0.99f);
 	return mis;
 }
@@ -948,8 +948,8 @@ BOOL CWeapon::CheckForMisfire	()
 {
 	if (OnClient()) return FALSE;
 
-	float rnd = ::Random.randF(0.f,1.f);
-	float mp = GetConditionMisfireProbability();
+	f32 rnd = ::Random.randF(0.f,1.f);
+	f32 mp = GetConditionMisfireProbability();
 	if(rnd < mp)
 	{
 		FireEnd();
@@ -969,11 +969,11 @@ BOOL CWeapon::IsMisfire() const
 {	
 	return bMisfire;
 }
+
 void CWeapon::Reload()
 {
 	OnZoomOut();
 }
-
 
 bool CWeapon::IsGrenadeLauncherAttached() const
 {
@@ -987,7 +987,6 @@ bool CWeapon::IsScopeAttached() const
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eScopeStatus &&
 			0 != (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonScope)) || 
 			CSE_ALifeItemWeapon::eAddonPermanent == m_eScopeStatus;
-
 }
 
 bool CWeapon::IsSilencerAttached() const
@@ -1001,22 +1000,21 @@ bool CWeapon::GrenadeLauncherAttachable()
 {
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eGrenadeLauncherStatus);
 }
+
 bool CWeapon::ScopeAttachable()
 {
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eScopeStatus);
 }
+
 bool CWeapon::SilencerAttachable()
 {
 	return (CSE_ALifeItemWeapon::eAddonAttachable == m_eSilencerStatus);
 }
 
-pcstr wpn_scope				= "wpn_scope";
+pcstr wpn_scope					= "wpn_scope";
 pcstr wpn_silencer				= "wpn_silencer";
 pcstr wpn_grenade_launcher		= "wpn_grenade_launcher";
 pcstr wpn_launcher				= "wpn_launcher";
-
-
-
 
 void CWeapon::UpdateHUDAddonsVisibility()
 {//actor only
@@ -1024,11 +1022,9 @@ void CWeapon::UpdateHUDAddonsVisibility()
 	if(m_pHUD->IsHidden())									return;
 //	if(IsZoomed() && )
 
-
 	CKinematics* pHudVisual									= smart_cast<CKinematics*>(m_pHUD->Visual());
 	VERIFY(pHudVisual);
 	if (H_Parent() != Level().CurrentEntity()) pHudVisual	= NULL;
-
 
 	if (!pHudVisual)return;
 	u16  bone_id;
@@ -1046,36 +1042,34 @@ void CWeapon::UpdateHUDAddonsVisibility()
 				pHudVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
 		}
 	}
+
 	if(m_eScopeStatus==CSE_ALifeItemWeapon::eAddonDisabled && bone_id!=BI_NONE && 
 		pHudVisual->LL_GetBoneVisible(bone_id) )
 		pHudVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
-	else
-	if(m_eScopeStatus==CSE_ALifeItemWeapon::eAddonPermanent && bone_id!=BI_NONE && 
+	else if(m_eScopeStatus==CSE_ALifeItemWeapon::eAddonPermanent && bone_id!=BI_NONE && 
 		!pHudVisual->LL_GetBoneVisible(bone_id) )
 		pHudVisual->LL_SetBoneVisible			(bone_id,TRUE,TRUE);
-
 
 	bone_id = pHudVisual->LL_BoneID(wpn_silencer);
-	if(SilencerAttachable())
+	if (SilencerAttachable( ))
 	{
-		VERIFY2(bone_id!=BI_NONE,"there are no silencer bone.");
-		if(IsSilencerAttached())
+		VERIFY2(bone_id != BI_NONE, "there are no silencer bone.");
+		if (IsSilencerAttached( ))
 		{
-			if(FALSE==pHudVisual->LL_GetBoneVisible		(bone_id))
-				pHudVisual->LL_SetBoneVisible			(bone_id,TRUE,TRUE);
-		}else{
-			if(pHudVisual->LL_GetBoneVisible			(bone_id))
-				pHudVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
+			if (FALSE == pHudVisual->LL_GetBoneVisible(bone_id))
+				pHudVisual->LL_SetBoneVisible(bone_id, TRUE, TRUE);
+		}
+		else
+		{
+			if (pHudVisual->LL_GetBoneVisible(bone_id))
+				pHudVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
 		}
 	}
-	if(m_eSilencerStatus==CSE_ALifeItemWeapon::eAddonDisabled && bone_id!=BI_NONE && 
-		pHudVisual->LL_GetBoneVisible(bone_id) )
-		pHudVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
-	else
-	if(m_eSilencerStatus==CSE_ALifeItemWeapon::eAddonPermanent && bone_id!=BI_NONE && 
-		!pHudVisual->LL_GetBoneVisible(bone_id) )
-		pHudVisual->LL_SetBoneVisible			(bone_id,TRUE,TRUE);
 
+	if (m_eSilencerStatus == CSE_ALifeItemWeapon::eAddonDisabled && bone_id != BI_NONE && pHudVisual->LL_GetBoneVisible(bone_id))
+		pHudVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
+	else if (m_eSilencerStatus == CSE_ALifeItemWeapon::eAddonPermanent && bone_id != BI_NONE && !pHudVisual->LL_GetBoneVisible(bone_id))
+		pHudVisual->LL_SetBoneVisible(bone_id, TRUE, TRUE);
 
 	bone_id = pHudVisual->LL_BoneID(wpn_grenade_launcher);
 	if(GrenadeLauncherAttachable())
@@ -1093,6 +1087,7 @@ void CWeapon::UpdateHUDAddonsVisibility()
 				pHudVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
 		}
 	}
+
 	if(m_eGrenadeLauncherStatus==CSE_ALifeItemWeapon::eAddonDisabled && bone_id!=BI_NONE && 
 		pHudVisual->LL_GetBoneVisible(bone_id) )
 		pHudVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
@@ -1100,8 +1095,6 @@ void CWeapon::UpdateHUDAddonsVisibility()
 	if(m_eGrenadeLauncherStatus==CSE_ALifeItemWeapon::eAddonPermanent && bone_id!=BI_NONE && 
 		!pHudVisual->LL_GetBoneVisible(bone_id) )
 		pHudVisual->LL_SetBoneVisible			(bone_id,TRUE,TRUE);
-
-
 }
 
 void CWeapon::UpdateAddonsVisibility()
@@ -1123,6 +1116,7 @@ void CWeapon::UpdateAddonsVisibility()
 				pWeaponVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
 		}
 	}
+
 	if(m_eScopeStatus==CSE_ALifeItemWeapon::eAddonDisabled && bone_id!=BI_NONE && 
 		pWeaponVisual->LL_GetBoneVisible(bone_id) )
 
@@ -1139,6 +1133,7 @@ void CWeapon::UpdateAddonsVisibility()
 				pWeaponVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
 		}
 	}
+
 	if(m_eSilencerStatus==CSE_ALifeItemWeapon::eAddonDisabled && bone_id!=BI_NONE && 
 		pWeaponVisual->LL_GetBoneVisible(bone_id) )
 
@@ -1156,11 +1151,11 @@ void CWeapon::UpdateAddonsVisibility()
 				pWeaponVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
 		}
 	}
+
 	if(m_eGrenadeLauncherStatus==CSE_ALifeItemWeapon::eAddonDisabled && bone_id!=BI_NONE && 
 		pWeaponVisual->LL_GetBoneVisible(bone_id) )
 
 		pWeaponVisual->LL_SetBoneVisible			(bone_id,FALSE,TRUE);
-	
 
 	pWeaponVisual->CalculateBones_Invalidate				();
 	pWeaponVisual->CalculateBones							();
@@ -1176,10 +1171,10 @@ void CWeapon::InitAddons()
 {
 }
 
-float CWeapon::CurrentZoomFactor	()
+f32 CWeapon::CurrentZoomFactor	()
 {
 	return IsScopeAttached() ? m_fScopeZoomFactor : m_fIronSightZoomFactor;
-};
+}
 
 void CWeapon::OnZoomIn()
 {
@@ -1262,7 +1257,6 @@ void CWeapon::reload			(pcstr section)
 		m_addon_holder_range_modifier	= m_holder_range_modifier;
 		m_addon_holder_fov_modifier		= m_holder_fov_modifier;
 	}
-
 
 	{
 		Fvector				pos,ypr;
@@ -1381,7 +1375,6 @@ bool CWeapon::ready_to_kill	() const
 	);
 }
 
-
 void CWeapon::UpdateHudAdditonal		(Fmatrix& trans)
 {
 	CActor* pActor = smart_cast<CActor*>(H_Parent());
@@ -1431,8 +1424,8 @@ void	CWeapon::SetAmmoElapsed	(int ammo_count)
 		{
 			while (uAmmo < m_magazine.size())
 				m_magazine.pop_back();
-		};
-	};
+		}
+	}
 }
 
 u32	CWeapon::ef_main_weapon_type	() const
@@ -1452,12 +1445,13 @@ bool CWeapon::IsNecessaryItem	    (const shared_str& item_sect)
 	return (std::find(m_ammoTypes.begin(), m_ammoTypes.end(), item_sect) != m_ammoTypes.end() );
 }
 
-void CWeapon::modify_holder_params		(float &range, float &fov) const
+void CWeapon::modify_holder_params		(f32& range, f32& fov) const
 {
 	if (!IsScopeAttached()) {
 		inherited::modify_holder_params	(range,fov);
 		return;
 	}
+
 	range	*= m_addon_holder_range_modifier;
 	fov		*= m_addon_holder_fov_modifier;
 }
@@ -1478,7 +1472,7 @@ void CWeapon::OnDrawUI()
 bool CWeapon::unlimited_ammo() 
 { 
 	return psActorFlags.test(AF_UNLIMITEDAMMO) && m_DefaultCartridge.m_flags.test(CCartridge::cfCanBeUnlimited); 
-};
+}
 
 pcstr	CWeapon::GetCurrentAmmo_ShortName	()
 {
@@ -1487,28 +1481,32 @@ pcstr	CWeapon::GetCurrentAmmo_ShortName	()
 	return *(l_cartridge.m_InvShortName);
 }
 
-float CWeapon::Weight()
+f32 CWeapon::Weight()
 {
-	float res = CInventoryItemObject::Weight();
+	f32 res = CInventoryItemObject::Weight();
 	if(IsGrenadeLauncherAttached()&&GetGrenadeLauncherName().size()){
 		res += pSettings->r_float(GetGrenadeLauncherName(),"inv_weight");
 	}
+
 	if(IsScopeAttached()&&GetScopeName().size()){
 		res += pSettings->r_float(GetScopeName(),"inv_weight");
 	}
+
 	if(IsSilencerAttached()&&GetSilencerName().size()){
 		res += pSettings->r_float(GetSilencerName(),"inv_weight");
 	}
 	
 	if(iAmmoElapsed)
 	{
-		float w		= pSettings->r_float(*m_ammoTypes[m_ammoType],"inv_weight");
-		float bs	= pSettings->r_float(*m_ammoTypes[m_ammoType],"box_size");
+		f32 w		= pSettings->r_float(*m_ammoTypes[m_ammoType],"inv_weight");
+		f32 bs	= pSettings->r_float(*m_ammoTypes[m_ammoType],"box_size");
 
 		res			+= w*(iAmmoElapsed/bs);
 	}
+
 	return res;
 }
+
 void CWeapon::Hide		()
 {
 	SwitchState(eHiding);
@@ -1531,7 +1529,7 @@ bool CWeapon::show_indicators()
 	return ! ( IsZoomed() && ZoomTexture() );
 }
 
-float CWeapon::GetConditionToShow	() const
+f32 CWeapon::GetConditionToShow	() const
 {
 	return	(GetCondition());//powf(GetCondition(),4.0f));
 }
@@ -1550,7 +1548,7 @@ BOOL CWeapon::ParentIsActor	()
 	return EA->cast_actor()!=0;
 }
 
-const float &CWeapon::hit_probability	() const
+const f32& CWeapon::hit_probability	() const
 {
 	VERIFY					((g_SingleGameDifficulty >= egdNovice) && (g_SingleGameDifficulty <= egdMaster)); 
 	return					(m_hit_probability[egdNovice]);

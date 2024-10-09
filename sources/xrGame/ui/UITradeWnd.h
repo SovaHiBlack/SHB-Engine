@@ -47,7 +47,7 @@ protected:
 	void 				SendEvent_ItemDrop			(PIItem pItem);
 	
 	u32					CalcItemsPrice				(CUIDragDropListEx* pList, CTrade* pTrade, bool bBuying);
-	float				CalcItemsWeight				(CUIDragDropListEx* pList);
+	f32				CalcItemsWeight				(CUIDragDropListEx* pList);
 
 	void				TransferItems				(CUIDragDropListEx* pSellList, CUIDragDropListEx* pBuyList, CTrade* pTrade, bool bBuying);
 

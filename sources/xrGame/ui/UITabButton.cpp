@@ -32,7 +32,7 @@ void CUITabButton::ShowAssociatedWindow(bool bShow){
         this->m_pAssociatedWindow->Show(bShow);
 }
 */
-bool CUITabButton::OnMouse(float x, float y, EUIMessages mouse_action){
+bool CUITabButton::OnMouse(f32 x, f32 y, EUIMessages mouse_action){
 	return CUIWindow::OnMouse(x, y, mouse_action);
 }
 

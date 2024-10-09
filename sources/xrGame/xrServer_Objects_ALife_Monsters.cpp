@@ -1092,8 +1092,8 @@ CSE_ALifeMonsterAbstract::CSE_ALifeMonsterAbstract(pcstr caSection)	: CSE_ALifeC
 	{
 		string64					S;
 		m_fpImmunityFactors.resize	(ALife::eHitTypeMax);
-		svector<float,ALife::eHitTypeMax>::iterator	B = m_fpImmunityFactors.begin(), I = B;
-		svector<float,ALife::eHitTypeMax>::iterator	E = m_fpImmunityFactors.end();
+		svector<f32,ALife::eHitTypeMax>::iterator	B = m_fpImmunityFactors.begin(), I = B;
+		svector<f32,ALife::eHitTypeMax>::iterator	E = m_fpImmunityFactors.end();
 
 		pcstr imm_section = caSection;
 		if(pSettings->line_exist(caSection, "immunities_sect"))

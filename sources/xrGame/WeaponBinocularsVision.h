@@ -17,7 +17,7 @@ struct SBinocVisibleObj{
 	CUIStatic				m_rb;
 	Frect					cur_rect;
 
-	float					m_upd_speed;
+	f32					m_upd_speed;
 	Flags8					m_flags;
 	void					create_default			(u32 color);
 	void					Draw					();
@@ -40,7 +40,7 @@ public:
 protected :
 	CWeaponBinoculars*			m_parent;
 	Fcolor						m_frame_color;
-	float						m_rotating_speed;
+	f32						m_rotating_speed;
 	void	Load				(const shared_str& section);
 	ref_sound					m_snd_found;
 };

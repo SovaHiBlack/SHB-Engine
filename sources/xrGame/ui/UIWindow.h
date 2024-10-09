@@ -95,18 +95,15 @@ public:
 	CUIWindow*				GetCurrentMouseHandler();
 	CUIWindow*				GetChildMouseHandler();
 
-
 	//поднять на вершину списка выбранное дочернее окно
 	bool					BringToTop			(CUIWindow* pChild);
 
 	//поднять на вершину списка всех родителей окна и его самого
 	void					BringAllToTop		();
-	
 
-
-	virtual bool 			OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual bool 			OnMouse				(f32 x, f32 y, EUIMessages mouse_action);
 	virtual void 			OnMouseMove			();
-	virtual void 			OnMouseScroll		(float iDirection);
+	virtual void 			OnMouseScroll		(f32 iDirection);
 	virtual bool 			OnDbClick			();
 	virtual bool 			OnMouseDown			(int mouse_btn);
 	virtual void 			OnMouseUp			(int mouse_btn);
@@ -153,12 +150,12 @@ public:
 	IC void					GetAbsolutePos		(Fvector2& p) 	{Frect abs; GetAbsoluteRect(abs); p.set(abs.x1,abs.y1);}
 
 
-			void			SetWndRect_script(float x, float y, float width, float height)		{CUISimpleWindow::SetWndRect(x,y,width,height);}
+			void			SetWndRect_script(f32 x, f32 y, f32 width, f32 height)		{CUISimpleWindow::SetWndRect(x,y,width,height);}
 			void			SetWndRect_script(Frect rect)										{CUISimpleWindow::SetWndRect(rect);}
 
 	//прорисовка окна
 	virtual void			Draw				();
-	virtual void			Draw				(float x, float y);
+	virtual void			Draw				(f32 x, f32 y);
 	//обновление окна передпрорисовкой
 	virtual void			Update				();
 
@@ -217,7 +214,6 @@ protected:
 
 	//кому шлем сообщения
 	CUIWindow*				m_pMessageTarget;
-
 
 	CGameFont*				m_pFont;
 

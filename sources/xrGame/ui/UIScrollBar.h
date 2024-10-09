@@ -37,7 +37,7 @@ protected:
 
 	u32				ScrollSize			(){return _max(1,m_iMaxPos-m_iMinPos-m_iPageSize+1);}
 	void			ClampByViewRect		();
-	void			SetPosScrollFromView(float view_pos, float view_width, float view_offs);
+	void			SetPosScrollFromView(f32 view_pos, f32 view_width, f32 view_offs);
 	int				PosViewFromScroll	(int view_size, int view_offs);
 	void			SetScrollPosClamped	(int iPos) { 
 														m_iScrollPos = iPos; 
@@ -50,16 +50,16 @@ public:
 			bool	GetEnabled			()					{return m_b_enabled;}
 	virtual void	Show				(bool b);
 	virtual void	Enable				(bool b);
-	virtual void	Init				(float x, float y, float length, bool bIsHorizontal, pcstr profile = "default");
+	virtual void	Init				(f32 x, f32 y, f32 length, bool bIsHorizontal, pcstr profile = "default");
 
 	virtual void	SendMessage			(CUIWindow *pWnd, s16 msg, void *pData);
-	virtual bool	OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual bool	OnMouse				(f32 x, f32 y, EUIMessages mouse_action);
 	virtual bool	OnKeyboardHold		(int dik);
 
 	virtual void	Draw				();
 
-	virtual void	SetWidth			(float width);
-	virtual void	SetHeight			(float height);
+	virtual void	SetWidth			(f32 width);
+	virtual void	SetHeight			(f32 height);
 
 	virtual void	Reset				();
 	void			Refresh				();

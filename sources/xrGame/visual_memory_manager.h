@@ -58,15 +58,15 @@ private:
 	u32					m_last_update_time;
 
 public:
-			void	add_visible_object		(const CObject *object, float time_delta, bool fictitious = false);
+			void	add_visible_object		(const CObject *object, f32 time_delta, bool fictitious = false);
 
 protected:
 	IC		void	fill_object				(CVisibleObject &visible_object, const CGameObject *game_object);
 			void	add_visible_object		(const CVisibleObject visible_object);
-			float	object_visible_distance	(const CGameObject *game_object, float &object_distance) const;
-			float	object_luminocity		(const CGameObject *game_object) const;
-			float	get_visible_value		(float distance, float object_distance, float time_delta, float object_velocity, float luminocity) const;
-			float	get_object_velocity		(const CGameObject *game_object, const CNotYetVisibleObject &not_yet_visible_object) const;
+			f32	object_visible_distance	(const CGameObject *game_object, f32& object_distance) const;
+			f32	object_luminocity		(const CGameObject *game_object) const;
+			f32	get_visible_value		(f32 distance, f32 object_distance, f32 time_delta, f32 object_velocity, f32 luminocity) const;
+			f32	get_object_velocity		(const CGameObject *game_object, const CNotYetVisibleObject &not_yet_visible_object) const;
 			u32		get_prev_time			(const CGameObject *game_object) const;
 
 public:
@@ -86,13 +86,13 @@ public:
 	virtual			~CVisualMemoryManager	();
 	virtual	void	reinit					();
 	virtual	void	reload					(pcstr section);
-	virtual	void	update					(float time_delta);
-	virtual	float	feel_vision_mtl_transp	(CObject* O, u32 element);	
+	virtual	void	update					(f32 time_delta);
+	virtual	f32	feel_vision_mtl_transp	(CObject* O, u32 element);
 			void	remove_links			(CObject *object);
 
 public:
-			bool	visible					(const CGameObject *game_object, float time_delta);
-			bool	visible					(u32 level_vertex_id, float yaw, float eye_fov) const;
+			bool	visible					(const CGameObject *game_object, f32 time_delta);
+			bool	visible					(u32 level_vertex_id, f32 yaw, f32 eye_fov) const;
 
 public:
 	IC		void	set_squad_objects		(xr_vector<CVisibleObject> *squad_objects);
@@ -115,8 +115,8 @@ public:
 			void	enable					(const CObject *object, bool enable);
 
 public:
-	IC		float	visibility_threshold	() const;
-	IC		float	transparency_threshold	() const;
+	IC		f32	visibility_threshold	() const;
+	IC		f32	transparency_threshold	() const;
 
 public:
 	IC		bool	enabled					() const;

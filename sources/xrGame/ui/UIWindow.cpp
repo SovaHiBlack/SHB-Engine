@@ -180,7 +180,7 @@ void CUIWindow::Draw()
 #endif
 }
 
-void CUIWindow::Draw(float x, float y){
+void CUIWindow::Draw(f32 x, f32 y){
 	SetWndPos		(x,y);
 	Draw			();
 }
@@ -275,7 +275,7 @@ void CUIWindow::GetAbsoluteRect(Frect& r)
 
 #define DOUBLE_CLICK_TIME 250
 
-bool CUIWindow::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIWindow::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {	
 	Frect	wndRect = GetWndRect();
 
@@ -384,7 +384,7 @@ bool CUIWindow::HasChildMouseHandler(){
 void CUIWindow::OnMouseMove(){
 }
 
-void CUIWindow::OnMouseScroll(float iDirection){
+void CUIWindow::OnMouseScroll(f32 iDirection){
 }
 
 bool CUIWindow::OnDbClick(){

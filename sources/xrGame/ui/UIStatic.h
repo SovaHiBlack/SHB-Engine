@@ -12,8 +12,8 @@ class CUILines;
 
 struct lanim_cont{
 	CLAItem*				m_lanim;
-	float					m_lanim_start_time;
-	float					m_lanim_delay_time;
+	f32					m_lanim_start_time;
+	f32					m_lanim_delay_time;
 	Flags8					m_lanimFlags;
 
 	void					set_defaults		();
@@ -35,7 +35,7 @@ public:
 	virtual			~CUIStatic				();
 
 	// IUISimpleWindow--------------------------------------------------------------------------------------
-	virtual void	Init					(float x, float y, float width, float height);
+	virtual void	Init					(f32 x, f32 y, f32 width, f32 height);
 	virtual void	Draw					();
 	virtual void	Update					();
 	//
@@ -56,10 +56,10 @@ public:
 	virtual void		InitTexture					(pcstr tex_name);
 	virtual void		InitTextureEx				(pcstr tex_name, pcstr sh_name="hud\\default");
 	CUIStaticItem*		GetStaticItem				()							{return &m_UIStaticItem;}
-			void		SetOriginalRect				(float x, float y, float width, float height)	{m_UIStaticItem.SetOriginalRect(x,y,width,height);}
+			void		SetOriginalRect				(f32 x, f32 y, f32 width, f32 height)	{m_UIStaticItem.SetOriginalRect(x,y,width,height);}
 			void		SetHeadingPivot				(const Fvector2& p)			{m_UIStaticItem.SetHeadingPivot(p);}
 			void		SetMask						(CUIFrameWindow *pMask);
-	virtual void		SetTextureOffset			(float x, float y)			{ m_TextureOffset.set(x, y); }
+	virtual void		SetTextureOffset			(f32 x, f32 y)			{ m_TextureOffset.set(x, y); }
 			Fvector2	GetTextureOffeset			() const					{ return m_TextureOffset; }
 			void		TextureOn					()							{ m_bTextureEnable = true; }
 			void		TextureOff					()							{ m_bTextureEnable = false; }
@@ -75,9 +75,9 @@ public:
 			void		ResetClrAnimation			();
 			void		ResetXformAnimation			();
 			bool		IsClrAnimStoped				();
-			void		SetClrAnimDelay				(float delay);
-	virtual void		Init						(pcstr tex_name, float x, float y, float width, float height);
-			void		InitEx						(pcstr tex_name, pcstr sh_name, float x, float y, float width, float height);
+			void		SetClrAnimDelay				(f32 delay);
+	virtual void		Init						(pcstr tex_name, f32 x, f32 y, f32 width, f32 height);
+			void		InitEx						(pcstr tex_name, pcstr sh_name, f32 x, f32 y, f32 width, f32 height);
 
 	virtual void		DrawTexture					();
 	virtual void		DrawText					();
@@ -115,18 +115,18 @@ public:
 	virtual void ClipperOff					();
 	virtual void ClipperOff					(CUIStaticItem& UIStaticItem);
 	virtual bool GetClipperState			()								{return m_bClipper;}
-	void TextureClipper						(float offset_x = 0, float offset_y = 0,Frect* pClipRect = NULL);
-	void TextureClipper						(float offset_x, float offset_y, Frect* pClipRect, CUIStaticItem& UIStaticItem);
+	void TextureClipper						(f32 offset_x = 0, f32 offset_y = 0,Frect* pClipRect = NULL);
+	void TextureClipper						(f32 offset_x, f32 offset_y, Frect* pClipRect, CUIStaticItem& UIStaticItem);
 
 	
 	void			SetShader				(const ref_shader& sh);
 	CUIStaticItem&	GetUIStaticItem			()						{return m_UIStaticItem;}
 
-	virtual	void SetTextX					(float text_x)			{m_TextOffset.x = text_x;}
-	virtual	void SetTextY					(float text_y)			{m_TextOffset.y = text_y;}
-	virtual	void SetTextPos					(float x, float y)		{SetTextX(x); SetTextY(y);}
-			float GetTextX					()						{return m_TextOffset.x;}
-			float GetTextY					()						{return m_TextOffset.y;}
+	virtual	void SetTextX					(f32 text_x)			{m_TextOffset.x = text_x;}
+	virtual	void SetTextY					(f32 text_y)			{m_TextOffset.y = text_y;}
+	virtual	void SetTextPos					(f32 x, f32 y)		{SetTextX(x); SetTextY(y);}
+	f32 GetTextX					()						{return m_TextOffset.x;}
+	f32 GetTextY					()						{return m_TextOffset.y;}
 
 	void		SetStretchTexture			(bool stretch_texture)	{m_bStretchTexture = stretch_texture;}
 	bool		GetStretchTexture			()						{return m_bStretchTexture;}
@@ -137,7 +137,7 @@ public:
 
 	// Анализируем текст на помещаемость его по длинне в заданную ширину, и если нет, то всталяем 
 	// "\n" реализуем таким образом wordwrap
-//	static void PreprocessText				(STRING &str, float width, CGameFont *pFont);
+//	static void PreprocessText				(STRING &str, f32 width, CGameFont *pFont);
 	enum EElipsisPosition
 	{
 		eepNone,
@@ -148,8 +148,8 @@ public:
 
 	void SetElipsis							(EElipsisPosition pos, int indent);
 	
-	void	SetHeading						(float f)				{m_fHeading = f;};
-	float	GetHeading						()						{return m_fHeading;}
+	void	SetHeading						(f32 f)				{m_fHeading = f;};
+	f32	GetHeading						()						{return m_fHeading;}
 	bool	Heading							()						{return m_bHeading;}
 	void	EnableHeading					(bool b)				{m_bHeading = b;m_lanim_xform.m_lanimFlags.set((1<<4),b);}
 
@@ -165,6 +165,7 @@ public:
 	void SetTextColor(u32 color, E4States state);
 
 	CUILines*				m_pLines;
+
 protected:
 	bool			m_bEnableTextHighlighting;
 		// Цвет подсветки
@@ -181,11 +182,10 @@ protected:
 	bool m_bTextureEnable;
 	CUIStaticItem m_UIStaticItem;
 
-	
 	Fvector2		m_TextOffset;
 
 	bool			m_bHeading;
-	float			m_fHeading;
+	f32			m_fHeading;
 
     // Для вывода текстуры с обрезанием по маске используем CUIFrameWindow
 	CUIFrameWindow	*m_pMask;

@@ -65,7 +65,6 @@ void CUIOutfitInfo::InitFromXml(CUIXml& xml_doc)
 		strconcat				(sizeof(_buff),_buff, _base, ":static_", _imm_names[i]);
 		CUIXmlInit::InitStatic	(xml_doc, _buff,	0, _s);
 	}
-
 }
 
 void CUIOutfitInfo::Update(CCustomOutfit* outfit)
@@ -93,7 +92,6 @@ void CUIOutfitInfo::SetItem(u32 hitType, bool force_add)
 
 	_val_outfit			= m_outfit ? m_outfit->GetDefHitTypeProtection(ALife::EHitType(hitType)) : 1.0f;
 	_val_outfit			= 1.0f - _val_outfit;
-
 
 	_val_af				= Actor()->HitArtefactsOnBelt(1.0f,ALife::EHitType(hitType));
 	_val_af				= 1.0f - _val_af;

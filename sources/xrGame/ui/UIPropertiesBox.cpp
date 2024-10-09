@@ -23,7 +23,7 @@ CUIPropertiesBox::~CUIPropertiesBox()
 }
 
 
-void CUIPropertiesBox::Init(float x, float y, float width, float height)
+void CUIPropertiesBox::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	inherited::Init			(x,y, width, height);
 
@@ -114,7 +114,7 @@ void CUIPropertiesBox::Hide()
 		GetParent()->SetCapture(this, false);
 }
 
-bool CUIPropertiesBox::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIPropertiesBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	bool cursor_on_box;
 
@@ -138,9 +138,9 @@ void CUIPropertiesBox::AutoUpdateSize()
 {
 	SetHeight(m_UIListWnd.GetItemHeight()*m_UIListWnd.GetSize()+ m_UIListWnd.GetVertIndent());
 	m_UIListWnd.SetHeight(GetHeight());
-	float f = float(m_UIListWnd.GetLongestLength()+m_UIListWnd.GetHorizIndent()) + 2; 
+	f32 f = f32(m_UIListWnd.GetLongestLength()+m_UIListWnd.GetHorizIndent()) + 2;
 	SetWidth(_max(20.0f,f));
-//		f = float(m_UIListWnd.GetLongestLength());
+//		f = f32(m_UIListWnd.GetLongestLength());
 	m_UIListWnd.SetWidth(_max(20.0f,f));
 	m_UIListWnd.UpdateChildrenLenght();
 }

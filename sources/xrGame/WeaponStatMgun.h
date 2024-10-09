@@ -48,20 +48,20 @@ public:
 //shooting
 private:
 	u16						m_rotate_x_bone, m_rotate_y_bone, m_fire_bone, m_camera_bone;
-	float					m_tgt_x_rot, m_tgt_y_rot, m_cur_x_rot, m_cur_y_rot, m_bind_x_rot, m_bind_y_rot;
+	f32					m_tgt_x_rot, m_tgt_y_rot, m_cur_x_rot, m_cur_y_rot, m_bind_x_rot, m_bind_y_rot;
 	Fvector					m_bind_x, m_bind_y;
 	Fvector					m_fire_dir,m_fire_pos;
 
 	Fmatrix					m_i_bind_x_xform, m_i_bind_y_xform, m_fire_bone_xform;
 	Fvector2				m_lim_x_rot, m_lim_y_rot; //in bone space
 	CCartridge*				m_Ammo;
-	float					m_barrel_speed;
+	f32					m_barrel_speed;
 	Fvector2				m_dAngle;
 	Fvector					m_destEnemyDir;
 	bool					m_allow_fire;
 	HUD_SOUND				sndShot;
-	float					camRelaxSpeed;
-	float					camMaxAngle;
+	f32					camRelaxSpeed;
+	f32					camMaxAngle;
 
 protected:
 	void					UpdateBarrelDir		();
@@ -74,7 +74,7 @@ protected:
 	virtual	void			OnShot				();
 			void			AddShotEffector		();
 			void			RemoveShotEffector	();
-			void			SetDesiredDir		(float h, float p);
+			void			SetDesiredDir		(f32 h, f32 p);
 //HolderCustom
 public:
 	virtual bool			Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos) {return !Owner();};
@@ -83,7 +83,7 @@ public:
 	virtual void			OnKeyboardRelease	(int dik);
 	virtual void			OnKeyboardHold		(int dik);
 	virtual CInventory*		GetInventory		()						{return NULL;};
-	virtual void			cam_Update			(float dt, float fov=90.0f);
+	virtual void			cam_Update			(f32 dt, f32 fov=90.0f);
 
 	virtual void			renderable_Render	();
 

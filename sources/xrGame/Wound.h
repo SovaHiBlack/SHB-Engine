@@ -19,14 +19,14 @@ public:
 	virtual void save	(NET_Packet &output_packet);
 	virtual void load	(IReader &input_packet);
 
-	float	TotalSize	();
-	float	TypeSize	(ALife::EHitType hit_type);
-	float	BloodSize	();
+	f32	TotalSize	();
+	f32	TypeSize	(ALife::EHitType hit_type);
+	f32	BloodSize	();
 
-	void	AddHit		(float hit_power, ALife::EHitType hit_type);
+	void	AddHit		(f32 hit_power, ALife::EHitType hit_type);
 	
 	//заживление раны
-	void	Incarnation	(float percent, float min_wound_size);
+	void	Incarnation	(f32 percent, f32 min_wound_size);
 	u16		GetBoneNum	() {return m_iBoneNum;}
 	void 	SetBoneNum	(u16 bone_num) {m_iBoneNum = bone_num;}
 
@@ -40,7 +40,7 @@ public:
 	bool  GetDestroy()			   {return m_bToBeDestroy;}
 
 	//время обновления (для капель крови)
-	float m_fDropTime;
+	f32 m_fDropTime;
 
 protected:
 	//косточка на которой появилась рана

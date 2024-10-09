@@ -33,14 +33,14 @@ public:
 	virtual bool	CanDetach(pcstr item_section_name);
 	virtual void	InitAddons();
 	virtual bool	UseScopeTexture();
-	virtual	float	CurrentZoomFactor	();
+	virtual	f32	CurrentZoomFactor	();
 
 	
 	virtual void	OnStateSwitch	(u32 S);
 	
 	virtual void	switch2_Idle	();
 	virtual void	switch2_Reload	();
-	virtual void	state_Fire		(float dt);
+	virtual void	state_Fire		(f32 dt);
 	virtual void	OnShot			();
 	virtual void	SwitchState		(u32 S);
 	virtual void	OnEvent			(NET_Packet& P, u16 type);

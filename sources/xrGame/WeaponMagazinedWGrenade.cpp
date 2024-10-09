@@ -252,7 +252,7 @@ bool CWeaponMagazinedWGrenade::Action(s32 cmd, u32 flags)
 
 #include "inventory.h"
 #include "inventoryOwner.h"
-void CWeaponMagazinedWGrenade::state_Fire(float dt) 
+void CWeaponMagazinedWGrenade::state_Fire(f32 dt)
 {
 	VERIFY(fTimeToFire>0.f);
 
@@ -586,7 +586,7 @@ bool	CWeaponMagazinedWGrenade::UseScopeTexture()
 	return true;
 };
 
-float	CWeaponMagazinedWGrenade::CurrentZoomFactor	()
+f32	CWeaponMagazinedWGrenade::CurrentZoomFactor	()
 {
 	if (IsGrenadeLauncherAttached() && m_bGrenadeMode) return m_fIronSightZoomFactor;
 	return inherited::CurrentZoomFactor();

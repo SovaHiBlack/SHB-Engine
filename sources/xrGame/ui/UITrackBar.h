@@ -5,11 +5,10 @@
 
 class CUI3tButton;
 class CUIFrameLineWnd;
-class CUITrackButton;
 
 class CUITrackBar : public CUIWindow, public CUIOptionsItem 
 {
-	friend class CUITrackButton;
+
 public:
 					CUITrackBar				();
 	// CUIOptionsItem
@@ -19,14 +18,14 @@ public:
 	virtual void 	SeveBackUpValue			();
 	virtual void 	Undo					();
 	virtual void	Draw					();
-	virtual bool	OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual bool	OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual	void 	OnMessage				(pcstr message);
 	// CUIWindow
-	virtual void	Init					(float x, float y, float width, float height);
+	virtual void	Init					(f32 x, f32 y, f32 width, f32 height);
 	virtual void	Enable					(bool status);
 			void	SetInvert				(bool v){m_b_invert=v;}
 			bool	GetInvert				() const	{return m_b_invert;};
-			void	SetStep					(float step);
+			void	SetStep					(f32 step);
 			void	SetType					(bool b_float){m_b_is_float=b_float;};
 			bool	GetCheck				();
 			void	SetCheck				(bool b);
@@ -42,11 +41,11 @@ protected:
 
 	union{
 		struct{
-			float				m_f_val;
-			float				m_f_max;
-			float				m_f_min;
-			float				m_f_step;
-			float				m_f_back_up;
+			f32				m_f_val;
+			f32				m_f_max;
+			f32				m_f_min;
+			f32				m_f_step;
+			f32				m_f_back_up;
 		};
 		struct{
 			int					m_i_val;

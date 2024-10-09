@@ -10,7 +10,7 @@ public:
 						CUIProgressShape		();
 	virtual				~CUIProgressShape		();
 	void				SetPos					(int pos, int max);
-	void				SetPos					(float pos);
+	void				SetPos					(f32 pos);
 	void				SetTextVisible			(bool b);
 
 	virtual void		Draw					();
@@ -18,7 +18,7 @@ public:
 protected:
 	bool				m_bClockwise;
 	u32					m_sectorCount;
-	float				m_stage;
+	f32				m_stage;
 	CUIStatic*			m_pTexture;
 	CUIStatic*			m_pBackground;
 	bool				m_bText;

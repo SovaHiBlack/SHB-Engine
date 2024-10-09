@@ -179,7 +179,7 @@ void CSE_ALifeObject::STATE_Read			(NET_Packet &tNetPacket, u16 size)
 			/**
 			u8					l_ucTemp;
 			tNetPacket.r_u8		(l_ucTemp);
-			m_spawn_probability	= (float)l_ucTemp;
+			m_spawn_probability	= (f32)l_ucTemp;
 			/**/
 		}
 		if (m_wVersion < 83) {
@@ -830,7 +830,7 @@ void CSE_ALifeObjectHangingLamp::STATE_Read	(NET_Packet	&tNetPacket, u16 size)
 
 	if (m_wVersion < 49){
 		shared_str s_tmp;
-		float	f_tmp;
+		f32	f_tmp;
 		// model
 		tNetPacket.r_u32			(color);
 		tNetPacket.r_stringZ		(color_animator);
@@ -1644,7 +1644,7 @@ void CSE_ALifeSmartZone::update			()
 {
 }
 
-float CSE_ALifeSmartZone::detect_probability()
+f32 CSE_ALifeSmartZone::detect_probability()
 {
 	return						(0.f);
 }

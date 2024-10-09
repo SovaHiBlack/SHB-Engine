@@ -149,8 +149,8 @@ void CUIScrollView::UpdateScroll		()
 	m_VScrollBar->SetScrollPos	(iFloor(-w_pos.y));
 }
 
-float CUIScrollView::Scroll2ViewV	(){
-	float h = m_VScrollBar->GetHeight();
+f32 CUIScrollView::Scroll2ViewV	(){
+	f32 h = m_VScrollBar->GetHeight();
 	return (h + GetVertIndent())/h;
 }
 
@@ -198,10 +198,10 @@ void CUIScrollView::OnScrollV			(CUIWindow*, void*)
 {
 	int s_pos					= m_VScrollBar->GetScrollPos();
 	Fvector2 w_pos				= m_pad->GetWndPos();
-	m_pad->SetWndPos			(w_pos.x,float(-s_pos));
+	m_pad->SetWndPos			(w_pos.x, f32(-s_pos));
 }
 
-bool CUIScrollView::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIScrollView::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if(inherited::OnMouse(x,y,mouse_action)) return true;
 
@@ -219,7 +219,7 @@ bool CUIScrollView::OnMouse(float x, float y, EUIMessages mouse_action)
 				Fvector2	curr_pad_pos = m_pad->GetWndPos	();
 				curr_pad_pos.y				+= GetUICursor()->GetCursorPositionDelta().y;
 				
-				float max_pos = m_pad->GetHeight() - GetHeight();
+				f32 max_pos = m_pad->GetHeight() - GetHeight();
 				max_pos							= _max(0.0f,max_pos);
 				clamp							(curr_pad_pos.y,-max_pos,0.0f);
 				m_pad->SetWndPos				(curr_pad_pos);
@@ -270,24 +270,24 @@ void CUIScrollView::ScrollToEnd			()
 	OnScrollV(NULL,NULL);
 }
 
-void CUIScrollView::SetRightIndention	(float val)
+void CUIScrollView::SetRightIndention	(f32 val)
 {
 	m_rightIndent		= val;
 	m_flags.set			(eNeedRecalc,TRUE);
 }
 
-void CUIScrollView::SetLeftIndention	(float val)
+void CUIScrollView::SetLeftIndention	(f32 val)
 {
 	m_leftIndent			= val;
 	m_flags.set			(eNeedRecalc,TRUE);
 }
 
-void CUIScrollView::SetUpIndention(float val){
+void CUIScrollView::SetUpIndention(f32 val){
 	m_upIndent			= val;
 	m_flags.set			(eNeedRecalc,TRUE);
 }
 
-void CUIScrollView::SetDownIndention(float val){
+void CUIScrollView::SetDownIndention(f32 val){
 	m_downIndent			= val;
 	m_flags.set			(eNeedRecalc,TRUE);
 }
@@ -304,18 +304,18 @@ CUIWindow* CUIScrollView::GetItem		(u32 idx)
 	return (*it);
 }
 
-float CUIScrollView::GetDesiredChildWidth(){
+f32 CUIScrollView::GetDesiredChildWidth(){
 	if (NeedShowScrollBar())
         return GetWidth() - m_VScrollBar->GetWidth() - m_rightIndent - m_leftIndent;
 	else
 		return GetWidth() - m_rightIndent - m_leftIndent;
 }
 
-float CUIScrollView::GetHorizIndent(){
+f32 CUIScrollView::GetHorizIndent(){
 	return m_rightIndent + m_leftIndent;
 }
 
-float CUIScrollView::GetVertIndent(){
+f32 CUIScrollView::GetVertIndent(){
 	return m_upIndent + m_downIndent;
 }
 
@@ -343,7 +343,7 @@ CUIWindow* CUIScrollView::GetSelected(){
 }
 
 void CUIScrollView::UpdateChildrenLenght(){
-	float len = GetDesiredChildWidth();
+	f32 len = GetDesiredChildWidth();
 	for(WINDOW_LIST_it it = m_pad->GetChildWndList().begin(); m_pad->GetChildWndList().end()!=it; ++it)
 	{
 		(*it)->SetWidth(len);

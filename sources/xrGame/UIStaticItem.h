@@ -15,8 +15,8 @@ class CUIStaticItem: public IUISimpleTextureControl, public CUICustomItem
 	u32				dwColor;
 	int				iTileX;
 	int				iTileY;
-	float			iRemX;
-	float			iRemY;
+	f32			iRemX;
+	f32			iRemY;
 	int				alpha_ref;
 protected:
 	typedef CUICustomItem inherited;
@@ -38,20 +38,20 @@ public:
 	virtual void	SetOriginalRectEx(const Frect& r)									{iOriginalRect = r; uFlags|=flValidOriginalRect; SetRect(0,0,r.width(),r.height());}
 
 
-	void			Init			(pcstr tex, pcstr sh, float left, float top, u32 align);
+	void			Init			(pcstr tex, pcstr sh, f32 left, f32 top, u32 align);
 	
 	
 	
 	void			Render			();
-	void			Render			(float angle);
+	void			Render			(f32 angle);
 
-	IC void			SetTile			(int tile_x, int tile_y, float rem_x, float rem_y){iTileX=tile_x;iTileY=tile_y;iRemX=rem_x;iRemY=rem_y;}
-	IC void			SetPos			(float left, float top)			{iPos.set(left,top);}
-	IC void			SetPosX			(float left)					{iPos.x = left;}
-	IC void			SetPosY			(float top)						{iPos.y = top;}
+	IC void			SetTile			(int tile_x, int tile_y, f32 rem_x, f32 rem_y){iTileX=tile_x;iTileY=tile_y;iRemX=rem_x;iRemY=rem_y;}
+	IC void			SetPos			(f32 left, f32 top)			{iPos.set(left,top);}
+	IC void			SetPosX			(f32 left)					{iPos.x = left;}
+	IC void			SetPosY			(f32 top)						{iPos.y = top;}
 
-	IC float		GetPosX			()							{return iPos.x;}
-	IC float		GetPosY			()							{return iPos.y;}
+	IC f32		GetPosX			()							{return iPos.x;}
+	IC f32		GetPosY			()							{return iPos.y;}
 
 	IC void			SetColor		(u32 clr)					{dwColor= clr;}
 	IC void			SetColor		(Fcolor clr)				{dwColor= clr.get();}

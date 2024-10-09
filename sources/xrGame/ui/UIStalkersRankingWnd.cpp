@@ -158,7 +158,6 @@ void CUIStalkersRankingWnd::AddStalkerItem(CUIXml* xml, int num, CSE_ALifeTrader
 	itm->m_text3->SetText				(buff);		
 	itm->m_humanID						= t->object_id();
 	UIList->AddWindow					(itm, true);
-
 }
 
 void CUIStalkersRankingWnd::AddActorItem(CUIXml* xml, int num, CSE_ALifeTraderAbstract* t)
@@ -207,7 +206,6 @@ void add_human_to_top_list(u16 id)
 
 	g_all_statistic_humans.push_back	(d);
 
-
 //	t->m_rank	=	::Random.randI(20000);
 }
 
@@ -221,7 +219,6 @@ void remove_human_from_top_list(u16 id)
 	if(it!=g_all_statistic_humans.end())
 		g_all_statistic_humans.erase		(it);
 }
-
 
 CUIStalkerRankingInfoItem::CUIStalkerRankingInfoItem(CUIStalkersRankingWnd* w)
 :m_StalkersRankingWnd(w),m_humanID(u16(-1))

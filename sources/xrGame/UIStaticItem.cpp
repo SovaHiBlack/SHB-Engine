@@ -52,7 +52,7 @@ void CUIStaticItem::SetShader(const ref_shader& sh)
 	hShader = sh;
 }
 
-void CUIStaticItem::Init(pcstr tex, pcstr sh, float left, float top, u32 align)
+void CUIStaticItem::Init(pcstr tex, pcstr sh, f32 left, f32 top, u32 align)
 {
 	uFlags &= !flValidRect;
 
@@ -71,9 +71,9 @@ void CUIStaticItem::Render()
 		CHK_DX(HW.pDevice->SetRenderState(D3DRS_ALPHAREF,alpha_ref));
 	// convert&set pos
 	Fvector2		bp;
-	UI()->ClientToScreenScaled	(bp,float(iPos.x),float(iPos.y));
-	bp.x						= (float)iFloor(bp.x);
-	bp.y						= (float)iFloor(bp.y);
+	UI()->ClientToScreenScaled	(bp, f32(iPos.x), f32(iPos.y));
+	bp.x						= (f32)iFloor(bp.x);
+	bp.y						= (f32)iFloor(bp.y);
 
 	// actual rendering
 	u32							vOffset;
@@ -107,7 +107,7 @@ void CUIStaticItem::Render()
 	UI()->PopScissor			();
 }
 
-void CUIStaticItem::Render(float angle)
+void CUIStaticItem::Render(f32 angle)
 {
 	VERIFY						(g_bRendering);
 	// установить обязательно перед вызовом CustomItem::Render() !!!

@@ -82,19 +82,19 @@ void CUIStatic::SetClrLightAnim(pcstr lanim, bool bCyclic, bool bOnlyAlpha, bool
 	m_lanim_clr.m_lanimFlags.set		(LA_TEXTURECOLOR,	bTextureColor);
 }
 
-void CUIStatic::Init(pcstr tex_name, float x, float y, float width, float height)
+void CUIStatic::Init(pcstr tex_name, f32 x, f32 y, f32 width, f32 height)
 {
 	Init(x, y, width, height);
 	InitTexture(tex_name);
 }
 
-void CUIStatic::InitEx(pcstr tex_name, pcstr sh_name, float x, float y, float width, float height)
+void CUIStatic::InitEx(pcstr tex_name, pcstr sh_name, f32 x, f32 y, f32 width, f32 height)
 {
 	Init(x, y, width, height);
 	InitTextureEx(tex_name, sh_name);	
 }
 
-void CUIStatic::Init(float x, float y, float width, float height){
+void CUIStatic::Init(f32 x, f32 y, f32 width, f32 height){
 	CUIWindow::Init(x,y,width,height);
 	m_xxxRect.set(x,y,x+width,y+height);
 }
@@ -160,7 +160,6 @@ void  CUIStatic::Draw()
 	if(m_bClipper)	UI()->PopScissor();
 }
 
-
 void CUIStatic::DrawText(){
 	if (m_pLines)
 	{
@@ -173,7 +172,6 @@ void CUIStatic::DrawText(){
 			GetAbsolutePos		(p);
 			m_pLines->Draw		(p.x + m_TextOffset.x, p.y + m_TextOffset.y);
 		}
-
 	}
 }
 
@@ -207,7 +205,7 @@ void CUIStatic::Update()
 	if (m_lanim_clr.m_lanim)
 	{
 		if(m_lanim_clr.m_lanim_start_time<0.0f)		ResetClrAnimation	();
-		float t = Device.dwTimeContinual/1000.0f;
+		f32 t = Device.dwTimeContinual/1000.0f;
 
 		if (t < m_lanim_clr.m_lanim_start_time)	// consider animation delay
 			return;
@@ -237,7 +235,7 @@ void CUIStatic::Update()
 		if(m_lanim_xform.m_lanim_start_time<0.0f){
 			ResetXformAnimation();
 		}
-		float t = Device.dwTimeContinual/1000.0f;
+		f32 t = Device.dwTimeContinual/1000.0f;
 
 		if(	m_lanim_xform.m_lanimFlags.test(LA_CYCLIC) || 
 			t - m_lanim_xform.m_lanim_start_time < m_lanim_xform.m_lanim->Length_sec() )
@@ -246,12 +244,12 @@ void CUIStatic::Update()
 			u32 clr				= m_lanim_xform.m_lanim->CalculateRGB(t-m_lanim_xform.m_lanim_start_time,frame);
 			
 			EnableHeading_int	(true);
-			float heading		= (PI_MUL_2/255.0f) * color_get_A(clr);
+			f32 heading		= (PI_MUL_2/255.0f) * color_get_A(clr);
 			SetHeading			(heading);
 
-			float _value		= (float)color_get_R(clr);
+			f32 _value		= (f32)color_get_R(clr);
 			
-			float f_scale		= _value / 64.0f;
+			f32 f_scale		= _value / 64.0f;
 			Fvector2 _sz;
 			_sz.set				(m_xxxRect.width()*f_scale, m_xxxRect.height()*f_scale );
 			SetWndSize			(_sz);
@@ -272,7 +270,7 @@ void CUIStatic::ResetClrAnimation()
 	m_lanim_clr.m_lanim_start_time = Device.dwTimeContinual/1000.0f + m_lanim_clr.m_lanim_delay_time/1000.0f;
 }
 
-void CUIStatic::SetClrAnimDelay(float delay){
+void CUIStatic::SetClrAnimDelay(f32 delay){
 	m_lanim_clr.m_lanim_delay_time = delay;
 }
 
@@ -280,7 +278,7 @@ bool CUIStatic::IsClrAnimStoped(){
 	if (m_lanim_clr.m_lanimFlags.test(LA_CYCLIC) || m_lanim_clr.m_lanim_start_time<0.0f)
 		return false;
 	
-	float t = Device.dwTimeContinual/1000.0f;
+	f32 t = Device.dwTimeContinual/1000.0f;
 	if(t-m_lanim_clr.m_lanim_start_time < m_lanim_clr.m_lanim->Length_sec())
 		return false;
 	else 
@@ -303,12 +301,12 @@ CGameFont* CUIStatic::GetFont(){
 	return m_pLines->GetFont();
 }
 
-void CUIStatic::TextureClipper(float offset_x, float offset_y, Frect* pClipRect)
+void CUIStatic::TextureClipper(f32 offset_x, f32 offset_y, Frect* pClipRect)
 {
 	TextureClipper(offset_x, offset_y, pClipRect, m_UIStaticItem);
 }
 
-void CUIStatic::TextureClipper(float offset_x, float offset_y, Frect* pClipRect,
+void CUIStatic::TextureClipper(f32 offset_x, f32 offset_y, Frect* pClipRect,
 							   CUIStaticItem& UIStaticItem)
 {
 	Frect parent_rect;
@@ -337,7 +335,7 @@ void CUIStatic::TextureClipper(float offset_x, float offset_y, Frect* pClipRect,
 	}
 
 	
-	float out_x, out_y;
+	f32 out_x, out_y;
 	out_x = rect.left;
 	out_y = rect.top;
 
@@ -559,7 +557,7 @@ void CUIStatic::AdjustHeightToText(){
 
 void CUIStatic::AdjustWidthToText()
 {
-	float _len		= m_pLines->GetFont()->SizeOf_(m_pLines->GetText());
+	f32 _len		= m_pLines->GetFont()->SizeOf_(m_pLines->GetText());
 	UI()->ClientToScreenScaledWidth(_len);
 	SetWidth		(_len);
 }
@@ -567,16 +565,16 @@ void CUIStatic::AdjustWidthToText()
 void CUIStatic::RescaleRelative2Rect(const Frect& r){
 	SetStretchTexture(true);
 	Frect my_r = m_xxxRect;
-	float h_rel = my_r.width()/r.width();
-	float v_rel = my_r.height()/r.height();
+	f32 h_rel = my_r.width()/r.width();
+	f32 v_rel = my_r.height()/r.height();
 
 	if (ui_core::is_16_9_mode())
 	{
 		h_rel	*= (3.0f/4.0f);
 	}
 	
-	float w;
-	float h;
+	f32 w;
+	f32 h;
 	if (h_rel < v_rel){
 		w = r.width()*h_rel;
 		h = r.height()*h_rel;

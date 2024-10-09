@@ -18,7 +18,7 @@ void CUIScrollBox::SetVertical()
 	m_bIsHorizontal = false;
 }
 
-bool CUIScrollBox::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIScrollBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	bool cursor_over;
 
@@ -60,14 +60,14 @@ void CUIScrollBox::Draw()
 		if (m_UIStaticItem.GetOriginalRect().width())
 		{
 			int tile		= iFloor(GetWidth()/m_UIStaticItem.GetOriginalRect().width());
-			float rem		= GetWidth()-tile*m_UIStaticItem.GetOriginalRect().width();
+			f32 rem		= GetWidth()-tile*m_UIStaticItem.GetOriginalRect().width();
 			m_UIStaticItem.SetTile(tile,1,rem,0);
 		}
 	}else{
 		if (m_UIStaticItem.GetOriginalRect().height())
 		{
 			int tile		= iFloor(GetHeight()/m_UIStaticItem.GetOriginalRect().height());
-			float rem		= GetHeight()-tile*m_UIStaticItem.GetOriginalRect().height();
+			f32 rem		= GetHeight()-tile*m_UIStaticItem.GetOriginalRect().height();
 			m_UIStaticItem.SetTile(1,tile,0,rem);
 		}
 	}

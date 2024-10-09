@@ -13,12 +13,10 @@ public:
 						CUIPropertiesBox					();
 	virtual				~CUIPropertiesBox					();
 
-	virtual void		Init								(float x, float y, float width, float height);
-
-
+	virtual void		Init								(f32 x, f32 y, f32 width, f32 height);
 
 	virtual void		SendMessage							(CUIWindow *pWnd, s16 msg, void *pData);
-	virtual bool		OnMouse								(float x, float y, EUIMessages mouse_action);
+	virtual bool		OnMouse								(f32 x, f32 y, EUIMessages mouse_action);
 	virtual bool		OnKeyboard							(int dik, EUIMessages keyboard_action);
 
 	bool				AddItem								(pcstr str, void* pData = NULL, u32 tag_value = 0);

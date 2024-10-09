@@ -42,7 +42,7 @@ void vision_client::eye_pp_s01					()
 	Device.Statistic->AI_Vis_Query.Begin		();
 	
 	Fvector						c, k, j;
-	float						field_of_view, aspect_ratio, near_plane, far_plane;
+	f32						field_of_view, aspect_ratio, near_plane, far_plane;
 	camera						(c, k, j, field_of_view, aspect_ratio, near_plane, far_plane);
 
 	Fmatrix						mProject,mFull,mView;
@@ -63,12 +63,12 @@ void vision_client::eye_pp_s2					()
 	u32							dwTime = Device.dwTimeGlobal;
 	u32							dwDT = dwTime - m_time_stamp;
 	m_time_stamp				= dwTime;
-	feel_vision_update			(m_object,m_position,float(dwDT)/1000.f,visual().transparency_threshold());
+	feel_vision_update			(m_object,m_position, f32(dwDT)/1000.f,visual().transparency_threshold());
 
 	Device.Statistic->AI_Vis_RayTests.End	();
 }
 
-float vision_client::shedule_Scale				()
+f32 vision_client::shedule_Scale				()
 {
 	return						(0.f);
 }
@@ -94,7 +94,7 @@ void vision_client::shedule_Update				(u32 dt)
 		default					: NODEFAULT;
 	}
 
-	visual().update				(float(dt)/1000.f);
+	visual().update				(f32(dt)/1000.f);
 }
 
 shared_str vision_client::shedule_Name			() const
@@ -109,7 +109,7 @@ bool vision_client::shedule_Needed				()
 	return						(true);
 }
 
-float vision_client::feel_vision_mtl_transp		(CObject* O, u32 element)
+f32 vision_client::feel_vision_mtl_transp		(CObject* O, u32 element)
 {
 	return						(visual().feel_vision_mtl_transp(O,element));
 }

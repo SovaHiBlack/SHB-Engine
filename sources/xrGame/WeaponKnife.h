@@ -30,28 +30,30 @@ protected:
 	virtual void		OnAnimationEnd				(u32 state);
 	virtual void		OnStateSwitch				(u32 S);
 
-	void				state_Attacking				(float dt);
+	void				state_Attacking				(f32 dt);
 
 	virtual void		KnifeStrike					(const Fvector& pos, const Fvector& dir);
 
-	float				fWallmarkSize;
+	f32				fWallmarkSize;
 	u16					knife_material_idx;
 
 protected:	
 	ALife::EHitType		m_eHitType;
 
 	ALife::EHitType		m_eHitType_1;
-	//float				fHitPower_1;
+	//f32				fHitPower_1;
 	Fvector4			fvHitPower_1;
-	float				fHitImpulse_1;
+	f32				fHitImpulse_1;
 
 	ALife::EHitType		m_eHitType_2;
-	//float				fHitPower_2;
+	//f32				fHitPower_2;
 	Fvector4			fvHitPower_2;
-	float				fCurrentHit;
-	float				fHitImpulse_2;
+	f32				fCurrentHit;
+	f32				fHitImpulse_2;
+
 protected:
 	virtual void		LoadFireParams					(pcstr section, pcstr prefix);
+
 public:
 						CWeaponKnife(); 
 	virtual				~CWeaponKnife(); 
@@ -60,7 +62,6 @@ public:
 
 	virtual void		Fire2Start						();
 	virtual void		FireStart						();
-
 
 	virtual bool		Action							(s32 cmd, u32 flags);
 

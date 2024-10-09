@@ -25,7 +25,7 @@ CUITalkDialogWnd::~CUITalkDialogWnd()
 	xr_delete(m_uiXml);
 }
 
-void CUITalkDialogWnd::Init(float x, float y, float width, float height)
+void CUITalkDialogWnd::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	m_uiXml						= xr_new<CUIXml>();
 	bool xml_result				= m_uiXml->Init(CONFIG_PATH, UI_PATH, TALK_XML);
@@ -230,7 +230,7 @@ void CUIQuestionItem::Init			(pcstr val, pcstr text)
 	m_s_value						= val;
 	m_text->SetText					(text);
 	m_text->AdjustHeightToText		();
-	float new_h						= _max(m_min_height, m_text->GetWndPos().y+m_text->GetHeight());
+	f32 new_h						= _max(m_min_height, m_text->GetWndPos().y+m_text->GetHeight());
 	SetHeight						(new_h);
 }
 
@@ -238,7 +238,6 @@ void	CUIQuestionItem::OnTextClicked(CUIWindow* w, void*)
 {
 	GetMessageTarget()->SendMessage(this, LIST_ITEM_CLICKED, (void*)this);
 }
-
 
 CUIAnswerItem::CUIAnswerItem			(CUIXml* xml_doc, pcstr path)
 {
@@ -268,7 +267,7 @@ void CUIAnswerItem::Init			(pcstr text, pcstr name)
 	m_name->SetText					(name);
 	m_text->SetText					(text);
 	m_text->AdjustHeightToText		();
-	float new_h						= _max(m_min_height, m_text->GetWndPos().y+m_text->GetHeight());
+	f32 new_h						= _max(m_min_height, m_text->GetWndPos().y+m_text->GetHeight());
 	new_h							+= m_bottom_footer;
 	SetHeight						(new_h);
 }

@@ -48,7 +48,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeSchedulable,IPureSchedulableObject)
 	virtual bool					natural_weapon			() const {return true;}
 	virtual bool					natural_detector		() const {return true;}
 #ifdef XRGAME_EXPORTS
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,			float		&fHitPower) = 0;
+	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType, f32& fHitPower) = 0;
 	virtual bool					bfPerformAttack			()											{return(true);};
 	virtual	void					vfUpdateWeaponAmmo		()											{};
 	virtual	void					vfProcessItems			()											{};
@@ -93,7 +93,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObject,CSE_Abstract,CRandom)
 public:
 	typedef CSE_Abstract inherited;
 	GameGraph::_GRAPH_ID			m_tGraphID;
-	float							m_fDistance;
+	f32							m_fDistance;
 	bool							m_bOnline;
 	bool							m_bDirectControl;
 	u32								m_tNodeID;
@@ -215,8 +215,8 @@ public:
 
 	virtual void		FillProps	(pcstr pref, PropItemVec& items)
 	{
-   		inherited1::FillProps		(pref, items);
-   		inherited2::FillProps		(pref, items);
+		inherited1::FillProps		(pref, items);
+		inherited2::FillProps		(pref, items);
 	};	
 
 	virtual CSE_Abstract			*cast_abstract			()
@@ -345,18 +345,18 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeSmartZone,CSE_ALifeSpaceRestrictor,CSE_ALi
 	virtual CSE_Abstract			*cast_abstract				() {return this;};
 	virtual CSE_ALifeSchedulable	*cast_schedulable			() {return this;};
 	virtual void					update						();
-	virtual float					detect_probability			();
+	virtual f32					detect_probability			();
 	virtual void					smart_touch					(CSE_ALifeMonsterAbstract *monster);
 	virtual bool					used_ai_locations			() const {return true;};
 	virtual CSE_ALifeSmartZone		*cast_smart_zone			() {return this;};
 #ifdef XRGAME_EXPORTS
 	virtual bool					bfActive					();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon			(ALife::EHitType		&tHitType,			float		&fHitPower);
+	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon			(ALife::EHitType		&tHitType, f32& fHitPower);
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector			();
 	virtual	ALife::EMeetActionType	tfGetActionType				(CSE_ALifeSchedulable	*tpALifeSchedulable,int			iGroupIndex, bool bMutualDetection);
 	// additional functionality
 	virtual bool					enabled						(CSE_ALifeMonsterAbstract *object) const {return false;};
-	virtual float					suitable					(CSE_ALifeMonsterAbstract *object) const {return 0.f;};
+	virtual f32					suitable					(CSE_ALifeMonsterAbstract *object) const {return 0.f;};
 	virtual void					register_npc				(CSE_ALifeMonsterAbstract *object) {};
 	virtual void					unregister_npc				(CSE_ALifeMonsterAbstract *object) {};
 	virtual	CALifeSmartTerrainTask	*task						(CSE_ALifeMonsterAbstract *object) {return 0;};
@@ -368,9 +368,9 @@ add_to_type_list(CSE_ALifeSmartZone)
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectPhysic,CSE_ALifeDynamicObjectVisual,CSE_PHSkeleton)
 	u32 							type;
 	F32 							mass;
-    shared_str 						fixed_bones;
+	shared_str 						fixed_bones;
 									CSE_ALifeObjectPhysic	(pcstr caSection);
-    virtual 						~CSE_ALifeObjectPhysic	();
+	virtual 						~CSE_ALifeObjectPhysic	();
 	virtual bool					used_ai_locations		() const;
 	virtual bool					can_save				() const;
 	virtual	void					load					(NET_Packet &tNetPacket);
@@ -384,44 +384,44 @@ add_to_type_list(CSE_ALifeObjectPhysic)
 
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectHangingLamp,CSE_ALifeDynamicObjectVisual,CSE_PHSkeleton)
 
-    void __stdcall 					OnChangeFlag	(PropValue* sender);
-    enum{
-        flPhysic					= (1<<0),
+	void __stdcall 					OnChangeFlag	(PropValue* sender);
+	enum{
+		flPhysic					= (1<<0),
 		flCastShadow				= (1<<1),
 		flR1						= (1<<2),
 		flR2						= (1<<3),
 		flTypeSpot					= (1<<4),
-        flPointAmbient				= (1<<5),
-    };
+		flPointAmbient				= (1<<5),
+	};
 
-    Flags16							flags;
+	Flags16							flags;
 // light color    
-    u32								color;
-    float							brightness;
-    shared_str						color_animator;
+	u32								color;
+	f32							brightness;
+	shared_str						color_animator;
 // light texture    
 	shared_str						light_texture;
 // range
-    float							range;
-	float							m_virtual_size;
+	f32							range;
+	f32							m_virtual_size;
 // bones&motions
 	shared_str						light_ambient_bone;
 	shared_str						light_main_bone;
-    shared_str						fixed_bones;
+	shared_str						fixed_bones;
 // spot
-	float							spot_cone_angle;
+	f32							spot_cone_angle;
 // ambient    
-    float							m_ambient_radius;
-    float							m_ambient_power;
+	f32							m_ambient_radius;
+	f32							m_ambient_power;
 	shared_str						m_ambient_texture;
 // glow    
 	shared_str						glow_texture;
-	float							glow_radius;
+	f32							glow_radius;
 // game
-    float							m_health;
+	f32							m_health;
 	
-                                    CSE_ALifeObjectHangingLamp	(pcstr caSection);
-    virtual							~CSE_ALifeObjectHangingLamp	();
+									CSE_ALifeObjectHangingLamp	(pcstr caSection);
+	virtual							~CSE_ALifeObjectHangingLamp	();
 	virtual	void					load						(NET_Packet &tNetPacket);
 	virtual bool					used_ai_locations			() const;
 	virtual bool					match_configuration			() const;
@@ -460,17 +460,17 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeCar,CSE_ALifeDynamicObjectVisual,CSE_PHSke
 		void read	(NET_Packet& P);
 		void write   (NET_Packet& P);
 		u8 open_state;
-		float health;
+		f32 health;
 	};
 	struct SWheelState				
 	{
 		void read	(NET_Packet& P);
 		void write   (NET_Packet& P);
-		float health;
+		f32 health;
 	};
 	xr_vector<SDoorState>			door_states;
 	xr_vector<SWheelState>			wheel_states;
-	float							health;
+	f32							health;
 									CSE_ALifeCar		(pcstr caSection);
 	virtual							~CSE_ALifeCar		();
 	virtual bool					used_ai_locations	() const;
@@ -485,7 +485,7 @@ add_to_type_list(CSE_ALifeCar)
 #define script_type_list save_type_list(CSE_ALifeCar)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeObjectBreakable,CSE_ALifeDynamicObjectVisual)
-    float							m_health;
+f32							m_health;
 									CSE_ALifeObjectBreakable	(pcstr caSection);
 	virtual							~CSE_ALifeObjectBreakable	();
 	virtual bool					used_ai_locations	() const;

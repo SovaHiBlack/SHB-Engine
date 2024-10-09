@@ -107,21 +107,20 @@ void CWeaponBinoculars::OnDrawUI()
 	inherited::OnDrawUI	();
 }
 
-void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
+void GetZoomData(const f32 scope_factor, f32& delta, f32& min_zoom_factor)
 {
-	float def_fov = float(g_fov);
-	float min_zoom_k = 0.3f;
-	float zoom_step_count = 3.0f;
-	float delta_factor_total = def_fov-scope_factor;
+	f32 def_fov = f32(g_fov);
+	f32 min_zoom_k = 0.3f;
+	f32 zoom_step_count = 3.0f;
+	f32 delta_factor_total = def_fov-scope_factor;
 	VERIFY(delta_factor_total>0);
 	min_zoom_factor = def_fov-delta_factor_total*min_zoom_k;
 	delta = (delta_factor_total*(1-min_zoom_k) )/zoom_step_count;
-
 }
 
 void CWeaponBinoculars::ZoomInc()
 {
-	float delta,min_zoom_factor;
+	f32 delta,min_zoom_factor;
 	GetZoomData(m_fScopeZoomFactor,delta,min_zoom_factor);
 
 	m_fZoomFactor	-=delta;
@@ -130,12 +129,13 @@ void CWeaponBinoculars::ZoomInc()
 
 void CWeaponBinoculars::ZoomDec()
 {
-	float delta,min_zoom_factor;
+	f32 delta,min_zoom_factor;
 	GetZoomData(m_fScopeZoomFactor,delta,min_zoom_factor);
 
 	m_fZoomFactor	+=delta;
 	clamp(m_fZoomFactor,m_fScopeZoomFactor, min_zoom_factor);
 }
+
 void CWeaponBinoculars::save(NET_Packet &output_packet)
 {
 	inherited::save(output_packet);

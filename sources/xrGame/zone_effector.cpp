@@ -52,10 +52,10 @@ void CZoneEffector::Stop()
 	m_pActor				= NULL;
 };
 
-void CZoneEffector::Update(float dist)
+void CZoneEffector::Update(f32 dist)
 {
-	float min_r = radius * r_min_perc;
-	float max_r = radius * r_max_perc;
+	f32 min_r = radius * r_min_perc;
+	f32 max_r = radius * r_max_perc;
 
 	bool camera_on_actor = (Level().CurrentEntity() && (Level().CurrentEntity()->CLS_ID == CLSID_OBJECT_ACTOR));
 	
@@ -71,12 +71,12 @@ void CZoneEffector::Update(float dist)
 	}
 }
 
-float CZoneEffector::GetFactor	()
+f32 CZoneEffector::GetFactor	()
 {
 	return m_factor;
 }
 
-void CZoneEffector::SetRadius(float r)
+void CZoneEffector::SetRadius(f32 r)
 {
 	radius	= r;
 }

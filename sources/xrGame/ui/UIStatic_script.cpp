@@ -24,13 +24,13 @@ void CUIStatic::script_register(lua_State *L)
 		.def("SetColor",			&CUIStatic::SetColor)
 		.def("GetColor",			&CUIStatic::GetColor)
 		.def("SetTextColor",		&CUIStatic::SetTextColor_script)
-		.def("Init",				(void(CUIStatic::*)(float,float,float,float))&CUIStatic::Init )
-		.def("Init",				(void(CUIStatic::*)(pcstr,float,float,float,float))&CUIStatic::Init )
+		.def("Init",				(void(CUIStatic::*)(f32, f32, f32, f32))&CUIStatic::Init )
+		.def("Init",				(void(CUIStatic::*)(pcstr, f32, f32, f32, f32))&CUIStatic::Init )
 		.def("InitTexture",			&CUIStatic::InitTexture )
 		.def("SetTextureOffset",	&CUIStatic::SetTextureOffset )
 
 
-		.def("SetOriginalRect",		(void(CUIStatic::*)(float,float,float,float))&CUIStatic::SetOriginalRect)
+		.def("SetOriginalRect",		(void(CUIStatic::*)(f32, f32, f32, f32))&CUIStatic::SetOriginalRect)
 		.def("SetStretchTexture",	&CUIStatic::SetStretchTexture)
 		.def("GetStretchTexture",	&CUIStatic::GetStretchTexture)
 

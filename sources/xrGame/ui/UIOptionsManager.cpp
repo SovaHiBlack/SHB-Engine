@@ -126,7 +126,3 @@ void CUIOptionsManager::DoVidRestart(){
 void CUIOptionsManager::DoSndRestart(){
     m_b_snd_restart = true;
 }
-
-
-
-

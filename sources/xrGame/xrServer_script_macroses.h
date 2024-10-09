@@ -68,17 +68,17 @@ class CALifeSmartTerrainTask;
 	DEFINE_LUA_WRAPPER_METHOD_V0		(update)\
 	DEFINE_LUA_WRAPPER_METHOD_V1		(smart_touch,CSE_ALifeMonsterAbstract*)\
 	DEFINE_LUA_WRAPPER_CONST_METHOD_1	(enabled,bool,CSE_ALifeMonsterAbstract*)\
-	DEFINE_LUA_WRAPPER_CONST_METHOD_1	(suitable,float,CSE_ALifeMonsterAbstract*)\
+	DEFINE_LUA_WRAPPER_CONST_METHOD_1	(suitable,f32,CSE_ALifeMonsterAbstract*)\
 	DEFINE_LUA_WRAPPER_METHOD_V1		(register_npc,CSE_ALifeMonsterAbstract*)\
 	DEFINE_LUA_WRAPPER_METHOD_V1		(unregister_npc,CSE_ALifeMonsterAbstract*)\
 	DEFINE_LUA_WRAPPER_METHOD_1			(task,CALifeSmartTerrainTask*,CSE_ALifeMonsterAbstract*)\
-	DEFINE_LUA_WRAPPER_METHOD_0			(detect_probability,float)
+	DEFINE_LUA_WRAPPER_METHOD_0			(detect_probability,f32)
 #else
 #	define INHERIT_ZONE \
 	INHERIT_DYNAMIC_ALIFE\
 	DEFINE_LUA_WRAPPER_METHOD_V0		(update)\
 	DEFINE_LUA_WRAPPER_METHOD_V1		(smart_touch,CSE_ALifeMonsterAbstract*)\
-	DEFINE_LUA_WRAPPER_METHOD_0			(detect_probability,float)
+	DEFINE_LUA_WRAPPER_METHOD_0			(detect_probability,f32)
 #endif
 
 #ifdef XRGAME_EXPORTS

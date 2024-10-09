@@ -12,10 +12,10 @@ protected:
 	bool				m_bIsHorizontal;
 
 	Fvector2			m_ProgressPos; //x-current y-dest
-	float				m_MinPos;
-	float				m_MaxPos;
+	f32				m_MinPos;
+	f32				m_MaxPos;
 
-	float				m_CurrentLength;
+	f32				m_CurrentLength;
 	
 	bool				m_bBackgroundPresent;
 	Fvector2			m_BackgroundOffset;
@@ -26,25 +26,22 @@ public:
 	bool				m_bUseColor;
 	Fcolor				m_minColor;
 	Fcolor				m_maxColor;
-	float				m_inertion;	//
+	f32				m_inertion;	//
 public:
 	CUIStatic			m_UIProgressItem;
 	CUIStatic			m_UIBackgroundItem;
 
-
 						CUIProgressBar				();
 	virtual				~CUIProgressBar				();
 
+	virtual void		Init						(f32 x, f32 y, f32 width, f32 height, bool bIsHorizontal);
 
-	virtual void		Init						(float x, float y, float width, float height, bool bIsHorizontal);
+	void				SetRange					(f32 _Min, f32 _Max)	{ m_MinPos = _Min;  m_MaxPos = _Max; UpdateProgressBar();}
+	f32				GetRange_min				() 							{ return  m_MinPos;}
+	f32				GetRange_max				() 							{ return  m_MaxPos;}
 
-	void				SetRange					(float _Min, float _Max)	{ m_MinPos = _Min;  m_MaxPos = _Max; UpdateProgressBar();}
-	float				GetRange_min				() 							{ return  m_MinPos;}
-	float				GetRange_max				() 							{ return  m_MaxPos;}
-
-	void				SetProgressPos				(float _Pos);
-	float				GetProgressPos				()							{ return m_ProgressPos.y; }
-
+	void				SetProgressPos				(f32 _Pos);
+	f32				GetProgressPos				()							{ return m_ProgressPos.y; }
 
 	virtual void		Draw						();
 	virtual void		Update						();

@@ -15,14 +15,16 @@
 void 	CWeaponStatMgun::BoneCallbackX		(CBoneInstance *B)
 {
 	CWeaponStatMgun	*P = static_cast<CWeaponStatMgun*>(B->Callback_Param);
-	Fmatrix rX;		rX.rotateX		(P->m_cur_x_rot);
+	Fmatrix rX;
+	rX.rotateX		(P->m_cur_x_rot);
 	B->mTransform.mulB_43(rX);
 }
 
 void 	CWeaponStatMgun::BoneCallbackY		(CBoneInstance *B)
 {
 	CWeaponStatMgun	*P = static_cast<CWeaponStatMgun*>(B->Callback_Param);
-	Fmatrix rY;		rY.rotateY		(P->m_cur_y_rot);
+	Fmatrix rY;
+	rY.rotateY		(P->m_cur_y_rot);
 	B->mTransform.mulB_43(rY);
 }
 
@@ -70,14 +72,11 @@ void CWeaponStatMgun::Load(pcstr section)
 	camMaxAngle			= deg2rad					(camMaxAngle);
 	camRelaxSpeed		= pSettings->r_float		(section,"cam_relax_speed"	); 
 	camRelaxSpeed		= deg2rad					(camRelaxSpeed);
-
 }
 
 BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)
 {
 	if(!inheritedPH::net_Spawn	(DC)) return FALSE;
-
-
 
 	CKinematics* K			= smart_cast<CKinematics*>(Visual());
 	CInifile* pUserData		= K->LL_UserData(); 
@@ -97,7 +96,6 @@ BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)
 	m_lim_x_rot.set			(bdX.IK_data.limits[0].limit.x,bdX.IK_data.limits[0].limit.y);
 	CBoneData& bdY			= K->LL_GetData(m_rotate_y_bone); VERIFY(bdY.IK_data.type==jtJoint);
 	m_lim_y_rot.set			(bdY.IK_data.limits[1].limit.x,bdY.IK_data.limits[1].limit.y);
-	
 
 	xr_vector<Fmatrix> matrices;
 	K->LL_GetBindTransform	(matrices);
@@ -142,7 +140,6 @@ void CWeaponStatMgun::net_Import(NET_Packet& P)	// import from server
 
 	if(TRUE==IsWorking()&&!state)			FireEnd		();
 	if(FALSE==IsWorking()&&state)			FireStart	();
-
 }
 
 void CWeaponStatMgun::UpdateCL()
@@ -157,7 +154,6 @@ void CWeaponStatMgun::UpdateCL()
 		OwnerActor()->Cameras().Update(Camera());
 		OwnerActor()->Cameras().ApplyDevice(VIEWPORT_NEAR);
 	}
-
 }
 
 void	CWeaponStatMgun::Hit(SHit* pHDS)
@@ -185,7 +181,7 @@ void CWeaponStatMgun::UpdateBarrelDir()
 	{// x angle
 		m_i_bind_x_xform.transform_dir(dep); dep.normalize();
 		m_tgt_x_rot		= angle_normalize_signed(m_bind_x_rot-dep.getP());
-		float sv_x		= m_tgt_x_rot;
+		f32 sv_x		= m_tgt_x_rot;
 		
 		clamp			(m_tgt_x_rot,-m_lim_x_rot.y,-m_lim_x_rot.x);
 		if (!fsimilar(sv_x,m_tgt_x_rot,EPS_L)) m_allow_fire=FALSE;
@@ -193,7 +189,7 @@ void CWeaponStatMgun::UpdateBarrelDir()
 	{// y angle
 		m_i_bind_y_xform.transform_dir(dep); dep.normalize();
 		m_tgt_y_rot		= angle_normalize_signed(m_bind_y_rot-dep.getH());
-		float sv_y		= m_tgt_y_rot;
+		f32 sv_y		= m_tgt_y_rot;
 		clamp			(m_tgt_y_rot,-m_lim_y_rot.y,-m_lim_y_rot.x);
 		if (!fsimilar(sv_y,m_tgt_y_rot,EPS_L)) m_allow_fire=FALSE;
 	}
@@ -202,7 +198,7 @@ void CWeaponStatMgun::UpdateBarrelDir()
 	m_cur_y_rot		= angle_inertion_var(m_cur_y_rot,m_tgt_y_rot,0.5f,3.5f,PI_DIV_6,Device.fTimeDelta);
 }
 
-void CWeaponStatMgun::cam_Update			(float dt, float fov)
+void CWeaponStatMgun::cam_Update			(f32 dt, f32 fov)
 {
 	Fvector							P,Da;
 	Da.set							(0,0,0);
@@ -220,23 +216,17 @@ void CWeaponStatMgun::cam_Update			(float dt, float fov)
 	d.getHP(des_cam_dir.x, des_cam_dir.y);
 	des_cam_dir.mul(-1.0f);
 
-
 	Camera()->yaw		= angle_inertion_var(Camera()->yaw,		des_cam_dir.x,	0.5f,	7.5f,	PI_DIV_6,	Device.fTimeDelta);
 	Camera()->pitch		= angle_inertion_var(Camera()->pitch,	des_cam_dir.y,	0.5f,	7.5f,	PI_DIV_6,	Device.fTimeDelta);
-
-
-
 
 	if(OwnerActor()){
 		// rotate head
 		OwnerActor()->Orientation().yaw			= -Camera()->yaw;
 		OwnerActor()->Orientation().pitch		= -Camera()->pitch;
 	}
-	
 
 	Camera()->Update						(P,Da);
 	Level().Cameras().Update				(Camera());
-
 }
 
 void CWeaponStatMgun::renderable_Render	()
@@ -246,7 +236,7 @@ void CWeaponStatMgun::renderable_Render	()
 	RenderLight();
 }
 
-void CWeaponStatMgun::SetDesiredDir		(float h, float p)
+void CWeaponStatMgun::SetDesiredDir		(f32 h, f32 p)
 {
 	m_destEnemyDir.setHP				(h,p);
 }

@@ -99,7 +99,7 @@ void CUISubLine::FreeBuffer()
 //	xr_delete(m_pTempLine);
 }
 
-void CUISubLine::Draw(CGameFont* pFont, float x, float y) const{
+void CUISubLine::Draw(CGameFont* pFont, f32 x, f32 y) const{
 	pFont->SetColor(m_color);
 	Fvector2			pos;
 	pos.set				(x, y);

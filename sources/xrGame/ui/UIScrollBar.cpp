@@ -24,13 +24,13 @@ CUIScrollBar::~CUIScrollBar(void)
 	xr_delete(m_StaticBackground);
 }
 
-void CUIScrollBar::Init(float x, float y, float length, bool bIsHorizontal, pcstr profile)
+void CUIScrollBar::Init(f32 x, f32 y, f32 length, bool bIsHorizontal, pcstr profile)
 {
 	string256 _path;
 	CUIXml xml_doc;
 	R_ASSERT(xml_doc.Init	(CONFIG_PATH, UI_PATH, "scroll_bar.xml"));
 
-	float height = xml_doc.ReadAttribFlt(profile, 0, "height", 16);
+	f32 height = xml_doc.ReadAttribFlt(profile, 0, "height", 16);
     	
 	m_bIsHorizontal = bIsHorizontal;
 	if(m_bIsHorizontal)
@@ -84,13 +84,13 @@ void CUIScrollBar::Init(float x, float y, float length, bool bIsHorizontal, pcst
 
 
 //корректировка размеров скроллера
-void CUIScrollBar::SetWidth(float width)
+void CUIScrollBar::SetWidth(f32 width)
 {
 	if(width<=0.0f) width = 1.0f;
 	inherited::SetWidth(width);
 }
 
-void CUIScrollBar::SetHeight(float height)
+void CUIScrollBar::SetHeight(f32 height)
 {
 	if(height<=0.0f) height = 1.0f;
 	inherited::SetHeight(height);
@@ -129,7 +129,7 @@ void CUIScrollBar::UpdateScrollBar()
 	if (IsShown()){
 		//уcтановить размер и положение каретки
 		if(m_iMaxPos==m_iMinPos)	m_iMaxPos++;
-		float box_sz				= float(m_ScrollWorkArea)*float(m_iPageSize ? m_iPageSize : 1)/float(m_iMaxPos-m_iMinPos);
+		f32 box_sz				= f32(m_ScrollWorkArea)* f32(m_iPageSize ? m_iPageSize : 1)/ f32(m_iMaxPos-m_iMinPos);
 		if(m_bIsHorizontal){	
 			// set width
 			clamp					(box_sz,_min(GetHeight(),GetWidth() - m_IncButton->GetWidth() - m_DecButton->GetWidth()),GetWidth() - m_IncButton->GetWidth() - m_DecButton->GetWidth());
@@ -137,7 +137,7 @@ void CUIScrollBar::UpdateScrollBar()
 			m_ScrollBox->SetHeight	(GetHeight());
 			// set pos
 			int pos					= PosViewFromScroll(iFloor(m_ScrollBox->GetWidth()),iFloor(GetHeight()));
-			m_ScrollBox->SetWndPos	(float(pos), m_ScrollBox->GetWndRect().top);
+			m_ScrollBox->SetWndPos	(f32(pos), m_ScrollBox->GetWndRect().top);
 			m_IncButton->SetWndPos	(GetWidth() - m_IncButton->GetWidth(), 0.0f);
 		}else{
 			// set height
@@ -146,7 +146,7 @@ void CUIScrollBar::UpdateScrollBar()
 			m_ScrollBox->SetWidth	(GetWidth());
 			// set pos
 			int pos				= PosViewFromScroll(iFloor(m_ScrollBox->GetHeight()),iFloor(GetWidth()));
-			m_ScrollBox->SetWndPos	(m_ScrollBox->GetWndRect().left, float(pos));
+			m_ScrollBox->SetWndPos	(m_ScrollBox->GetWndRect().left, f32(pos));
 			m_IncButton->SetWndPos	(0.0f, GetHeight() - m_IncButton->GetHeight());
 		}
 	}
@@ -183,7 +183,7 @@ bool CUIScrollBar::OnKeyboardHold(int dik)
 	return false;
 }
 
-bool CUIScrollBar::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIScrollBar::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	switch(mouse_action){
 		case WINDOW_MOUSE_WHEEL_DOWN:
@@ -219,11 +219,11 @@ void CUIScrollBar::ClampByViewRect()
 	}
 }
 
-void CUIScrollBar::SetPosScrollFromView(float view_pos, float view_size, float view_offs)
+void CUIScrollBar::SetPosScrollFromView(f32 view_pos, f32 view_size, f32 view_offs)
 {
 	int scroll_size	= ScrollSize();
-	float pos			= view_pos-view_offs;
-	float work_size	= m_ScrollWorkArea-view_size;
+	f32 pos			= view_pos-view_offs;
+	f32 work_size	= m_ScrollWorkArea-view_size;
 	SetScrollPosClamped	(work_size?iFloor(((pos/work_size)*(scroll_size) + m_iMinPos)):0);
 }
 
@@ -325,22 +325,22 @@ void CUIScrollBar::Draw()
 	GetAbsoluteRect(rect);
 	if(m_bIsHorizontal){
 		if (m_StaticBackground->GetOriginalRect().width()){
-			float size	= GetWidth() - m_DecButton->GetWidth() - m_IncButton->GetWidth();
-			float w		= m_StaticBackground->GetOriginalRect().width();
+			f32 size	= GetWidth() - m_DecButton->GetWidth() - m_IncButton->GetWidth();
+			f32 w		= m_StaticBackground->GetOriginalRect().width();
 
 			int tile	= iFloor(size/w);
-			float rem	= size - tile*w;
+			f32 rem	= size - tile*w;
 
 			m_StaticBackground->SetTile(tile,1,rem,0.0f);
 			m_StaticBackground->SetPos(rect.left + m_DecButton->GetWidth(),rect.top);
 		}
 	}else{
 		if (m_StaticBackground->GetOriginalRect().height()){
-			float size	= GetHeight()- m_IncButton->GetHeight() - m_DecButton->GetHeight();
-			float h		= m_StaticBackground->GetOriginalRect().height();
+			f32 size	= GetHeight()- m_IncButton->GetHeight() - m_DecButton->GetHeight();
+			f32 h		= m_StaticBackground->GetOriginalRect().height();
 
 			int tile	= iFloor(size/h);
-			float rem	= size - tile*h;
+			f32 rem	= size - tile*h;
 
 			m_StaticBackground->SetTile(1,tile,0.0f,rem);
 			m_StaticBackground->SetPos(rect.left,rect.top + m_DecButton->GetHeight());

@@ -67,11 +67,11 @@ void CUIZoneMap::Render			()
 	m_compass.Draw		();
 }
 
-void CUIZoneMap::SetHeading		(float angle)
+void CUIZoneMap::SetHeading		(f32 angle)
 {
 	m_activeMap->SetHeading(angle);
 	m_compass.SetHeading(angle);
-};
+}
 
 void CUIZoneMap::UpdateRadar		(Fvector pos)
 {
@@ -112,7 +112,7 @@ void CUIZoneMap::SetupCurrentMap()
 	m_activeMap->SetClipRect		(r);
 	
 	Fvector2						wnd_size;
-	float zoom_factor				= float(m_clipFrame.GetWndRect().width())/100.0f;
+	f32 zoom_factor				= f32(m_clipFrame.GetWndRect().width())/100.0f;
 	wnd_size.x						= m_activeMap->BoundRect().width()*zoom_factor;
 	wnd_size.y						= m_activeMap->BoundRect().height()*zoom_factor;
 	m_activeMap->SetWndSize			(wnd_size);

@@ -8,7 +8,7 @@
 #include "UILines.h"
 
 
-void CUIRadioButton::Init(float x, float y, float width, float height){
+void CUIRadioButton::Init(f32 x, f32 y, f32 width, f32 height){
 	if (!m_pLines)
 		m_pLines = xr_new<CUILines>();
 	m_pLines->SetTextAlignment(CGameFont::alLeft);

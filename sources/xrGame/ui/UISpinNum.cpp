@@ -36,7 +36,7 @@ bool CUISpinNum::IsChanged()
     return m_iVal != val;
 }
 
-void CUISpinNum::Init(float x, float y, float width, float height)
+void CUISpinNum::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	CUICustomSpin::Init(x,y,width,height);
 	SetValue();
@@ -109,12 +109,12 @@ void CUISpinFlt::SaveValue()
 
 bool CUISpinFlt::IsChanged()
 {
-	float val, min, max;
+	f32 val, min, max;
 	GetOptFloatValue(val, min, max);
     return !fsimilar		(m_fVal,val);
 }
 
-void CUISpinFlt::Init(float x, float y, float width, float height)
+void CUISpinFlt::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	CUICustomSpin::Init(x,y,width,height);
 	SetValue();

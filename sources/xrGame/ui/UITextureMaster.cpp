@@ -105,7 +105,7 @@ void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISim
 #endif
 }
 
-float CUITextureMaster::GetTextureHeight(pcstr texture_name){
+f32 CUITextureMaster::GetTextureHeight(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 
@@ -125,7 +125,7 @@ Frect CUITextureMaster::GetTextureRect(pcstr texture_name){
 	return Frect();
 }
 
-float CUITextureMaster::GetTextureWidth(pcstr texture_name){
+f32 CUITextureMaster::GetTextureWidth(pcstr texture_name){
 	xr_map<shared_str, TEX_INFO>::iterator	it;
 	it = m_textures.find(texture_name);
 

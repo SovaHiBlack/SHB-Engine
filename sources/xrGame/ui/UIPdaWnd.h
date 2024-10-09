@@ -32,6 +32,7 @@ protected:
 	// Установить игровое время
 	void					UpdateDateTime					();
 	void					DrawUpdatedSections				();
+
 protected:
 	// Бэкграунд
 	CUIStatic*				UIMainPdaFrame;
@@ -53,6 +54,7 @@ public:
 	CUIStalkersRankingWnd*	UIStalkersRanking;
 	CUIEventsWnd*			UIEventsWnd;
 	virtual void			Reset				();
+
 public:
 							CUIPdaWnd			();
 	virtual					~CUIPdaWnd			();

@@ -2005,12 +2005,6 @@
     <Filter Include="UI\Common\OutfitInfo">
       <UniqueIdentifier>{a20bdfea-9a33-4797-80c2-f006c1f1be31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\Common\TimeWnd">
-      <UniqueIdentifier>{a70b77da-aab5-4ad2-a63f-b70c5d543ea4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UI\Common\SleepWnd">
-      <UniqueIdentifier>{1b913cc3-c5b2-4801-b8f5-3cd138f50ec2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\Common\InventoryUtilities">
       <UniqueIdentifier>{5feabc61-6cea-4a42-afb7-434fbc439ad0}</UniqueIdentifier>
     </Filter>
@@ -5703,16 +5697,10 @@
     <ClInclude Include="ui\UIMessagesWindow.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UIMoneyIndicator.h">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClInclude>
     <ClInclude Include="ui\UIMotionIcon.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIPdaMsgListItem.h">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UIPointerGage.h">
       <Filter>UI\Common\MainIngame</Filter>
     </ClInclude>
     <ClInclude Include="UIZoneMap.h">
@@ -5771,12 +5759,6 @@
     </ClInclude>
     <ClInclude Include="ui\UIOutfitInfo.h">
       <Filter>UI\Common\OutfitInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UITimeWnd.h">
-      <Filter>UI\Common\TimeWnd</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UISleepWnd.h">
-      <Filter>UI\Common\SleepWnd</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIInventoryUtilities.h">
       <Filter>UI\Common\InventoryUtilities</Filter>
@@ -5896,9 +5878,6 @@
       <Filter>UI\UIWindows\InteractiveBackground</Filter>
     </ClInclude>
     <ClInclude Include="ui\UITrackBar.h">
-      <Filter>UI\UIWindows\TrackBar</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UITrackButton.h">
       <Filter>UI\UIWindows\TrackBar</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIFrameLine.h">
@@ -8489,16 +8468,10 @@
     <ClCompile Include="ui\UIMessagesWindow.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIMoneyIndicator.cpp">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIMotionIcon.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIPdaMsgListItem.cpp">
-      <Filter>UI\Common\MainIngame</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UIPointerGage.cpp">
       <Filter>UI\Common\MainIngame</Filter>
     </ClCompile>
     <ClCompile Include="UIZoneMap.cpp">
@@ -8554,12 +8527,6 @@
     </ClCompile>
     <ClCompile Include="ui\UIOutfitInfo.cpp">
       <Filter>UI\Common\OutfitInfo</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UITimeWnd.cpp">
-      <Filter>UI\Common\TimeWnd</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UISleepWnd.cpp">
-      <Filter>UI\Common\SleepWnd</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIInventoryUtilities.cpp">
       <Filter>UI\Common\InventoryUtilities</Filter>
@@ -8697,9 +8664,6 @@
       <Filter>UI\UIWindows\InteractiveBackground</Filter>
     </ClCompile>
     <ClCompile Include="ui\UITrackBar.cpp">
-      <Filter>UI\UIWindows\TrackBar</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UITrackButton.cpp">
       <Filter>UI\UIWindows\TrackBar</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIFrameLine.cpp">

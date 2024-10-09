@@ -3,13 +3,15 @@
 class CActor;
 class CPostprocessAnimatorLerp;
 
-class CZoneEffector {
-	float						r_min_perc;
-	float						r_max_perc;
-	float						radius;
-	float						m_factor;
+class CZoneEffector
+{
+	f32						r_min_perc;
+	f32						r_max_perc;
+	f32						radius;
+	f32						m_factor;
 	CPostprocessAnimatorLerp*	m_pp_effector;
 	shared_str					m_pp_fname;
+
 public:
 			CZoneEffector		();
 			~CZoneEffector		();
@@ -17,16 +19,11 @@ public:
 	CActor*						m_pActor;
 
 	void	Load				(pcstr section);
-	void	SetRadius			(float r);
-	void	Update				(float dist);
+	void	SetRadius			(f32 r);
+	void	Update				(f32 dist);
 	void	Stop				();
-	float xr_stdcall GetFactor	();
+	f32 xr_stdcall GetFactor	();
 
 private:
 	void	Activate			();
-
-
 };
-
-
-

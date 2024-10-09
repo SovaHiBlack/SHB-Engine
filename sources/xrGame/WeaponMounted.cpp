@@ -171,13 +171,13 @@ void	CWeaponMounted::OnMouseMove			(int dx, int dy)
 	if (Remote())	return;
 
 	CCameraBase* C	= camera;
-	float scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f;
+	f32 scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f;
 	if (dx){
-		float d		= float(dx)*scale;
+		f32 d		= f32(dx)*scale;
 		C->Move		((d<0)?kLEFT:kRIGHT, _abs(d));
 	}
 	if (dy){
-		float d		= ((psMouseInvert.test(1))?-1:1)*float(dy)*scale*3.f/4.f;
+		f32 d		= ((psMouseInvert.test(1))?-1:1)* f32(dy)*scale*3.f/4.f;
 		C->Move		((d>0)?kUP:kDOWN, _abs(d));
 	}
 }
@@ -212,7 +212,7 @@ void	CWeaponMounted::OnKeyboardHold		(int dik)
 //	}
 }
 
-void	CWeaponMounted::cam_Update			(float dt, float fov)
+void	CWeaponMounted::cam_Update			(f32 dt, f32 fov)
 {
 	Fvector							P,Da;
 	Da.set							(0,0,0);

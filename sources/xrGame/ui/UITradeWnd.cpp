@@ -297,12 +297,12 @@ void CUITradeWnd::StopTrade()
 bool CUITradeWnd::CanMoveToOther(PIItem pItem)
 {
 
-	float r1				= CalcItemsWeight(&m_uidata->UIOurTradeList);	// our
-	float r2				= CalcItemsWeight(&m_uidata->UIOthersTradeList);	// other
+	f32 r1				= CalcItemsWeight(&m_uidata->UIOurTradeList);	// our
+	f32 r2				= CalcItemsWeight(&m_uidata->UIOthersTradeList);	// other
 
-	float itmWeight			= pItem->Weight();
-	float otherInvWeight	= m_pOthersInv->CalcTotalWeight();
-	float otherMaxWeight	= m_pOthersInv->GetMaxWeight();
+	f32 itmWeight			= pItem->Weight();
+	f32 otherInvWeight	= m_pOthersInv->CalcTotalWeight();
+	f32 otherMaxWeight	= m_pOthersInv->GetMaxWeight();
 
 	if (!m_pOthersInvOwner->trade_parameters().enabled(
 			CTradeParameters::action_buy(0),
@@ -355,9 +355,9 @@ bool CUITradeWnd::ToOthersBag()
 	return					true;
 }
 
-float CUITradeWnd::CalcItemsWeight(CUIDragDropListEx* pList)
+f32 CUITradeWnd::CalcItemsWeight(CUIDragDropListEx* pList)
 {
-	float res = 0.0f;
+	f32 res = 0.0f;
 
 	for(u32 i=0; i<pList->ItemsCount(); ++i)
 	{

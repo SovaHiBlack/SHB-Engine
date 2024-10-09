@@ -10,7 +10,7 @@ public:
 			void 				SetHorizontal			();
 			void 				SetVertical				();
 
-	virtual bool				OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual bool				OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual void				Draw					();
 						
 protected:

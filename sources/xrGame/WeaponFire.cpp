@@ -18,13 +18,13 @@
 #define FLAME_TIME 0.05f
 
 
-float _nrand(float sigma)
+f32 _nrand(f32 sigma)
 {
 #define ONE_OVER_SIGMA_EXP (1.0f / 0.7975f)
 
 	if(sigma == 0) return 0;
 
-	float y;
+	f32 y;
 	do{
 		y = -logf(Random.randF());
 	}while(Random.randF() > expf(-_sqr(y - 1.0f)*0.5f));
@@ -32,12 +32,12 @@ float _nrand(float sigma)
 	else				return -y * sigma * ONE_OVER_SIGMA_EXP;
 }
 
-void random_dir(Fvector& tgt_dir, const Fvector& src_dir, float dispersion)
+void random_dir(Fvector& tgt_dir, const Fvector& src_dir, f32 dispersion)
 {
-	float sigma			= dispersion/3.f;
-	float alpha			= clampr		(_nrand(sigma),-dispersion,dispersion);
-	float theta			= Random.randF	(0,PI);
-	float r 			= tan			(alpha);
+	f32 sigma			= dispersion/3.f;
+	f32 alpha			= clampr		(_nrand(sigma),-dispersion,dispersion);
+	f32 theta			= Random.randF	(0,PI);
+	f32 r 			= tan			(alpha);
 	Fvector 			U,V,T;
 	Fvector::generate_orthonormal_basis	(src_dir,U,V);
 	U.mul				(r*_sin(theta));
@@ -46,10 +46,10 @@ void random_dir(Fvector& tgt_dir, const Fvector& src_dir, float dispersion)
 	tgt_dir.add			(src_dir,T).normalize();
 }
 
-float CWeapon::GetWeaponDeterioration	()
+f32 CWeapon::GetWeaponDeterioration	()
 {
 	return conditionDecreasePerShot;
-};
+}
 
 void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 {
@@ -64,12 +64,11 @@ void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 		l_cartridge.m_u8ColorID	= m_u8TracerColorID;
 	//-------------------------------------------------------------
 	//повысить изношенность оружия с учетом влияния конкретного патрона
-//	float Deterioration = GetWeaponDeterioration();
+//	f32 Deterioration = GetWeaponDeterioration();
 //	Msg("Deterioration = %f", Deterioration);
 	ChangeCondition(-GetWeaponDeterioration()*l_cartridge.m_impair);
 
-	
-	float fire_disp				= GetFireDispersion(true);
+	f32 fire_disp				= GetFireDispersion(true);
 
 	bool SendHit = SendHitAllowed(H_Parent());
 	//выстерлить пулю (с учетом возможной стрельбы дробью)
@@ -83,7 +82,6 @@ void CWeapon::FireTrace		(const Fvector& P, const Fvector& D)
 	if(m_bLightShotEnabled) 
 		Light_Start			();
 
-	
 	// Ammo
 	m_magazine.pop_back	();
 	--iAmmoElapsed;
@@ -98,6 +96,7 @@ void CWeapon::Fire2Start()
 { 
 	bWorking2=true;	
 }
+
 void CWeapon::Fire2End	()
 { 
 	//принудительно останавливать зацикленные партиклы
@@ -132,10 +131,12 @@ void CWeapon::StartFlameParticles2	()
 {
 	CShootingObject::StartParticles (m_pFlameParticles2, *m_sFlameParticles2, get_LastFP2());
 }
+
 void CWeapon::StopFlameParticles2	()
 {
 	CShootingObject::StopParticles (m_pFlameParticles2);
 }
+
 void CWeapon::UpdateFlameParticles2	()
 {
 	if (m_pFlameParticles2)			CShootingObject::UpdateParticles (m_pFlameParticles2, get_LastFP2());

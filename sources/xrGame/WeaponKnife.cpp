@@ -174,9 +174,8 @@ void CWeaponKnife::OnAnimationEnd(u32 state)
 	}
 }
 
-void CWeaponKnife::state_Attacking	(float)
-{
-}
+void CWeaponKnife::state_Attacking	(f32)
+{}
 
 void CWeaponKnife::switch2_Attacking	(u32 state)
 {
@@ -262,7 +261,7 @@ void CWeaponKnife::LoadFireParams(pcstr section, pcstr prefix)
 
 	//fHitPower_2			= pSettings->r_float	(section,strconcat(full_name, prefix, "hit_power_2"));
 	s_sHitPower_2		= pSettings->r_string_wb	(section,strconcat(sizeof(full_name),full_name, prefix, "hit_power_2"));
-	fvHitPower_2[egdMaster]	= (float)atof(_GetItem(*s_sHitPower_2,0,buffer));//первый параметр - это хит для уровня игры мастер
+	fvHitPower_2[egdMaster]	= (f32)atof(_GetItem(*s_sHitPower_2,0,buffer));//первый параметр - это хит для уровня игры мастер
 
 	fvHitPower_2[egdVeteran]	= fvHitPower_2[egdMaster];//изначально параметры для других уровней
 	fvHitPower_2[egdStalker]	= fvHitPower_2[egdMaster];//сложности
@@ -271,15 +270,15 @@ void CWeaponKnife::LoadFireParams(pcstr section, pcstr prefix)
 	int num_game_diff_param=_GetItemCount(*s_sHitPower_2);//узнаём колличество параметров для хитов
 	if (num_game_diff_param>1)//если задан второй параметр хита
 	{
-		fvHitPower_2[egdVeteran]	= (float)atof(_GetItem(*s_sHitPower_2,1,buffer));//то вычитываем его для уровня ветерана
+		fvHitPower_2[egdVeteran]	= (f32)atof(_GetItem(*s_sHitPower_2,1,buffer));//то вычитываем его для уровня ветерана
 	}
 	if (num_game_diff_param>2)//если задан третий параметр хита
 	{
-		fvHitPower_2[egdStalker]	= (float)atof(_GetItem(*s_sHitPower_2,2,buffer));//то вычитываем его для уровня сталкера
+		fvHitPower_2[egdStalker]	= (f32)atof(_GetItem(*s_sHitPower_2,2,buffer));//то вычитываем его для уровня сталкера
 	}
 	if (num_game_diff_param>3)//если задан четвёртый параметр хита
 	{
-		fvHitPower_2[egdNovice]	= (float)atof(_GetItem(*s_sHitPower_2,3,buffer));//то вычитываем его для уровня новичка
+		fvHitPower_2[egdNovice]	= (f32)atof(_GetItem(*s_sHitPower_2,3,buffer));//то вычитываем его для уровня новичка
 	}
 
 	fHitImpulse_2		= pSettings->r_float	(section,strconcat(sizeof(full_name),full_name, prefix, "hit_impulse_2"));
@@ -290,6 +289,7 @@ void CWeaponKnife::StartIdleAnim()
 {
 	m_pHUD->animDisplay(mhud_idle[Random.randI(mhud_idle.size())], TRUE);
 }
+
 void CWeaponKnife::GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count)
 {
 	str_name		= NameShort();

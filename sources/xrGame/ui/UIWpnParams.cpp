@@ -8,10 +8,10 @@
 #include "../script_engine.h"
 
 struct SLuaWpnParams{
-	luabind::functor<float>		m_functorRPM;
-	luabind::functor<float>		m_functorAccuracy;
-	luabind::functor<float>		m_functorDamage;
-	luabind::functor<float>		m_functorHandling;
+	luabind::functor<f32>		m_functorRPM;
+	luabind::functor<f32>		m_functorAccuracy;
+	luabind::functor<f32>		m_functorDamage;
+	luabind::functor<f32>		m_functorHandling;
 	SLuaWpnParams();
 	~SLuaWpnParams();
 };

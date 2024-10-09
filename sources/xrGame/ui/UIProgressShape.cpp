@@ -17,12 +17,12 @@ CUIProgressShape::~CUIProgressShape(){
 	xr_delete		(m_pBackground);
 }	
 
-void CUIProgressShape::SetPos(float pos){
+void CUIProgressShape::SetPos(f32 pos){
 	m_stage					= pos;
 }
 
 void CUIProgressShape::SetPos(int pos, int max){
-	m_stage					= float(pos)/float(max);
+	m_stage					= f32(pos)/ f32(max);
 	if (m_bText)
 	{
 		string256 _buff;
@@ -35,15 +35,15 @@ void CUIProgressShape::SetTextVisible(bool b){
 }
 
 
-void _make_rot(Fvector2& pt, const Fvector2& src, float sin_a, float cos_a, float angle){ 
+void _make_rot(Fvector2& pt, const Fvector2& src, f32 sin_a, f32 cos_a, f32 angle){
 	pt.x				= src.x*cos_a + src.y*sin_a;
 	pt.y				= src.y*cos_a - src.x*sin_a;
 }
 
-float calc_color(u32 idx, u32 total, float stage, float max_stage)
+f32 calc_color(u32 idx, u32 total, f32 stage, f32 max_stage)
 {
-	float kk			= ( stage/max_stage ) *  (float(total+1));
-	float f				= 1/(exp((float(idx)-kk)*0.9f)+1.0f);
+	f32 kk			= ( stage/max_stage ) *  (f32(total+1));
+	f32 f				= 1/(exp((f32(idx)-kk)*0.9f)+1.0f);
 
 	return f;
 }
@@ -62,7 +62,7 @@ void CUIProgressShape::Draw()
 	RCache.set_Shader				(sh);
 	CTexture* T						= RCache.get_ActiveTexture(0);
 	Fvector2						tsize;
-	tsize.set						(float(T->get_Width()),float(T->get_Height()));
+	tsize.set						(f32(T->get_Width()), f32(T->get_Height()));
 
 	
 	u32	offset;
@@ -86,12 +86,12 @@ void CUIProgressShape::Draw()
 	Fvector2						center_tex;
 	tex_rect.getcenter				(center_tex);
 
-	float		radius_pos			= pos_rect.width()/2.0f;
-	float		radius_tex			= tex_rect.width()/2.0f;
+	f32		radius_pos			= pos_rect.width()/2.0f;
+	f32		radius_tex			= tex_rect.width()/2.0f;
 
-	float		curr_angle			= 0.0f;
-	float		sin_a				= _sin(curr_angle);
-	float		cos_a				= _cos(curr_angle);
+	f32		curr_angle			= 0.0f;
+	f32		sin_a				= _sin(curr_angle);
+	f32		cos_a				= _cos(curr_angle);
 	Fvector2	start_pos_pt,	prev_pos_pt;
 	Fvector2	start_tex_pt,	prev_tex_pt;
 	
@@ -104,7 +104,7 @@ void CUIProgressShape::Draw()
 
 	for(u32 i=0; i<m_sectorCount; ++i)
 	{
-		float ffff					= calc_color		(i+1, m_sectorCount, m_stage, 1.0f);
+		f32 ffff					= calc_color		(i+1, m_sectorCount, m_stage, 1.0f);
 		u32 color					= color_argb_f		(ffff,1.0f,1.0f,1.0f); 
 
 		pv->set						(center_pos.x, center_pos.y, color, center_tex.x, center_tex.y);++pv;
@@ -120,9 +120,9 @@ void CUIProgressShape::Draw()
 		pv->set						(tp.x, tp.y, color, tx.x, tx.y);++pv;
 
 		if(m_bClockwise)
-			curr_angle				-= PI_MUL_2/float(m_sectorCount);
+			curr_angle				-= PI_MUL_2/ f32(m_sectorCount);
 		else
-			curr_angle				+= PI_MUL_2/float(m_sectorCount);
+			curr_angle				+= PI_MUL_2/ f32(m_sectorCount);
 
 		sin_a						= _sin(curr_angle);
 		cos_a						= _cos(curr_angle);

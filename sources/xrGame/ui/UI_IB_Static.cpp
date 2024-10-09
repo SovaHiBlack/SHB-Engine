@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "UI_IB_Static.h"
 
-void CUI_IB_Static::SetTextureOffset(float x, float y){
+void CUI_IB_Static::SetTextureOffset(f32 x, f32 y){
 	if (m_stateCurrent)
 		m_stateCurrent->SetTextureOffset(x,y);
 

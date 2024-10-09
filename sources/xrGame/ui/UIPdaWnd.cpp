@@ -70,7 +70,6 @@ void CUIPdaWnd::Init()
 	
 	m_pActiveDialog			= NULL;
 
-
 	xml_init.InitWindow		(uiXml, "main", 0, this);
 
 	UIMainPdaFrame			= xr_new<CUIStatic>(); UIMainPdaFrame->SetAutoDelete(true);
@@ -161,7 +160,6 @@ void CUIPdaWnd::Hide()
 
 	InventoryUtilities::SendInfoToActor("ui_pda_hide");
 	HUD().GetUI()->UIMainIngameWnd->SetFlashIconState_(CUIMainIngameWnd::efiPdaTask, false);
-
 }
 
 void CUIPdaWnd::UpdateDateTime()
@@ -240,7 +238,6 @@ void CUIPdaWnd::SetActiveSubdialog(EPdaTabs section)
 	m_pActiveSection = section;
 }
 
-
 void CUIPdaWnd::Draw()
 {
 	inherited::Draw									();
@@ -272,6 +269,7 @@ void CUIPdaWnd::PdaContentsChanged	(pda_section::part type)
 	}
 
 }
+
 void draw_sign		(CUIStatic* s, Fvector2& pos)
 {
 	s->SetWndPos		(pos);
@@ -336,7 +334,6 @@ void CUIPdaWnd::DrawUpdatedSections				()
 		draw_sign								(m_updatedSectionImage, pos);
 	else
 		draw_sign								(m_oldSectionImage, pos);
-	
 }
 
 void CUIPdaWnd::Reset()
@@ -391,5 +388,4 @@ void RearrangeTabButtons(CUITabControl* pTab, xr_vector<Fvector2>& vec_sign_plac
 		btn_text_len			= (*it)->GetWndSize().x;
 		pos.x					+= btn_text_len+3.0f;
 	}
-
 }

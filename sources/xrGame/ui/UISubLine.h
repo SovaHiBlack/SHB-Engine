@@ -19,7 +19,7 @@ public:
 CUISubLine& operator=(const CUISubLine& other);
 	
 const CUISubLine*	Cut2Pos(int i);
-	void			Draw(CGameFont* pFont, float x, float y)	const;
+	void			Draw(CGameFont* pFont, f32 x, f32 y)	const;
 	void			FreeBuffer();
 
 	xr_string	m_text;

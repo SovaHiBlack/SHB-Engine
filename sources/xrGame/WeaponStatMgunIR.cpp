@@ -7,16 +7,16 @@ void CWeaponStatMgun::OnMouseMove			(int dx, int dy)
 {
 	if (Remote())	return;
 
-	float scale		= psMouseSens * psMouseSensScale/50.f;
-	float h,p;
+	f32 scale		= psMouseSens * psMouseSensScale/50.f;
+	f32 h,p;
 	m_destEnemyDir.getHP(h,p);
 	if (dx){
-		float d		= float(dx)*scale;
+		f32 d		= f32(dx)*scale;
 		h			-= d;
 		SetDesiredDir						(h,p);
 	}
 	if (dy){
-		float d		= ((psMouseInvert.test(1))?-1:1)*float(dy)*scale*3.f/4.f;
+		f32 d		= ((psMouseInvert.test(1))?-1:1)* f32(dy)*scale*3.f/4.f;
 		p			-= d;
 		SetDesiredDir						(h,p);
 	}

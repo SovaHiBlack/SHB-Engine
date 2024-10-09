@@ -19,7 +19,6 @@ protected:
 			void			SendMessage2Group	(pcstr group, pcstr message);
 	virtual	void			OnMessage			(pcstr message);
 
-
 			// string
 	pcstr			GetOptStringValue	();
 			void			SaveOptStringValue	(pcstr val);

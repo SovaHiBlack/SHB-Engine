@@ -20,11 +20,11 @@ enum EPdaTabs
 	eptNoActiveTab		= u16(-1)
 };
 
-
 extern pcstr ALL_PDA_HEADER_PREFIX;
 
 namespace pda_section{
-	enum part{
+	enum part
+	{
 		quests			=(1<<8),
 		map				=(1<<9),
 		diary			=(1<<10),
@@ -35,7 +35,6 @@ namespace pda_section{
 
 		news			=diary|(1<<1),
 		info			=diary|(1<<2),
-		journal			=diary|(1<<3),
-
+		journal			=diary|(1<<3)
 	};
 };

@@ -194,11 +194,11 @@ void CVisualMemoryManager::enable		(const CObject *object, bool enable)
 	(*J).m_enabled					= enable;
 }
 
-float CVisualMemoryManager::object_visible_distance(const CGameObject *game_object, float &object_distance) const
+f32 CVisualMemoryManager::object_visible_distance(const CGameObject *game_object, f32& object_distance) const
 {
 	Fvector								eye_position = Fvector().set(0.f,0.f,0.f), eye_direction;
 	Fmatrix								eye_matrix;
-	float								object_range = flt_max, object_fov = flt_max;
+	f32								object_range = flt_max, object_fov = flt_max;
 
 	if (m_object) {
 		eye_matrix						= 
@@ -222,7 +222,7 @@ float CVisualMemoryManager::object_visible_distance(const CGameObject *game_obje
 	} 
 	else {
 		Fvector							dummy;
-		float							_0,_1;
+		f32							_0,_1;
 		m_client->camera				(eye_position,eye_direction,dummy,object_fov,_0,_1,object_range);
 	}
 
@@ -235,31 +235,31 @@ float CVisualMemoryManager::object_visible_distance(const CGameObject *game_obje
 	if (m_object)
 		m_object->update_range_fov		(object_range,object_fov,m_object->eye_range,deg2rad(m_object->eye_fov));
 
-	float								fov = object_fov*.5f;
-	float								cos_alpha = eye_direction.dotproduct(object_direction);
+	f32								fov = object_fov*.5f;
+	f32								cos_alpha = eye_direction.dotproduct(object_direction);
 	clamp								(cos_alpha,-.99999f,.99999f);
-	float								alpha = acosf(cos_alpha);
+	f32								alpha = acosf(cos_alpha);
 	clamp								(alpha,0.f,fov);
 
-	float								max_view_distance = object_range, min_view_distance = object_range;
+	f32								max_view_distance = object_range, min_view_distance = object_range;
 	max_view_distance					*= current_state().m_max_view_distance;
 	min_view_distance					*= current_state().m_min_view_distance;
 
-	float								distance = (1.f - alpha/fov)*(max_view_distance - min_view_distance) + min_view_distance;
+	f32								distance = (1.f - alpha/fov)*(max_view_distance - min_view_distance) + min_view_distance;
 
 	return								(distance);
 }
 
-float CVisualMemoryManager::object_luminocity	(const CGameObject *game_object) const
+f32 CVisualMemoryManager::object_luminocity	(const CGameObject *game_object) const
 {
 	if (game_object->CLS_ID != CLSID_OBJECT_ACTOR)
 		return	(1.f);
-	float		luminocity = const_cast<CGameObject*>(game_object)->ROS()->get_luminocity();
-	float		power = log(luminocity > .001f ? luminocity : .001f)*current_state().m_luminocity_factor;
+	f32		luminocity = const_cast<CGameObject*>(game_object)->ROS()->get_luminocity();
+	f32		power = log(luminocity > .001f ? luminocity : .001f)*current_state().m_luminocity_factor;
 	return		(exp(power));
 }
 
-float CVisualMemoryManager::get_object_velocity	(const CGameObject *game_object, const CNotYetVisibleObject &not_yet_visible_object) const
+f32 CVisualMemoryManager::get_object_velocity	(const CGameObject *game_object, const CNotYetVisibleObject &not_yet_visible_object) const
 {
 	if ((game_object->ps_Size() < 2) || (not_yet_visible_object.m_prev_time == game_object->ps_Element(game_object->ps_Size() - 2).dwTime))
 		return							(0.f);
@@ -270,15 +270,15 @@ float CVisualMemoryManager::get_object_velocity	(const CGameObject *game_object,
 	return					(
 		pos1.vPosition.distance_to(pos0.vPosition)/
 		(
-			float(pos1.dwTime)/1000.f - 
-			float(pos0.dwTime)/1000.f
+			f32(pos1.dwTime)/1000.f -
+			f32(pos0.dwTime)/1000.f
 		)
 	);
 }
 
-float CVisualMemoryManager::get_visible_value	(float distance, float object_distance, float time_delta, float object_velocity, float luminocity) const
+f32 CVisualMemoryManager::get_visible_value	(f32 distance, f32 object_distance, f32 time_delta, f32 object_velocity, f32 luminocity) const
 {
-	float								always_visible_distance = current_state().m_always_visible_distance;
+	f32								always_visible_distance = current_state().m_always_visible_distance;
 
 	if (distance <= always_visible_distance + EPS_L)
 		return							(current_state().m_visibility_threshold);
@@ -321,7 +321,7 @@ u32	 CVisualMemoryManager::get_prev_time				(const CGameObject *game_object) con
 	return				(game_object->ps_Element(game_object->ps_Size() - 2).dwTime);
 }
 
-bool CVisualMemoryManager::visible				(const CGameObject *game_object, float time_delta)
+bool CVisualMemoryManager::visible				(const CGameObject *game_object, f32 time_delta)
 {
 	VERIFY						(game_object);
 
@@ -333,7 +333,7 @@ bool CVisualMemoryManager::visible				(const CGameObject *game_object, float tim
 		return					(true);
 #endif
 
-	float						object_distance, distance = object_visible_distance(game_object,object_distance);
+	f32						object_distance, distance = object_visible_distance(game_object,object_distance);
 
 	CNotYetVisibleObject		*object = not_yet_visible_object(game_object);
 
@@ -369,7 +369,7 @@ bool CVisualMemoryManager::visible				(const CGameObject *game_object, float tim
 	return						(object->m_value >= current_state().m_visibility_threshold);
 }
 
-void CVisualMemoryManager::add_visible_object	(const CObject *object, float time_delta, bool fictitious)
+void CVisualMemoryManager::add_visible_object	(const CObject *object, f32 time_delta, bool fictitious)
 {
 #ifndef MASTER_GOLD
 	if (object && (object->CLS_ID == CLSID_OBJECT_ACTOR) && psAI_Flags.test(aiIgnoreActor))
@@ -465,12 +465,12 @@ void CVisualMemoryManager::check_visibles	() const
 }
 #endif
 
-bool CVisualMemoryManager::visible(u32 _level_vertex_id, float yaw, float eye_fov) const
+bool CVisualMemoryManager::visible(u32 _level_vertex_id, f32 yaw, f32 eye_fov) const
 {
 	Fvector					direction;
 	direction.sub			(ai().level_graph().vertex_position(_level_vertex_id),m_object->Position());
 	direction.normalize_safe();
-	float					y, p;
+	f32					y, p;
 	direction.getHP			(y,p);
 	if (angle_difference(yaw,y) <= eye_fov*PI/180.f/2.f)
 		return(ai().level_graph().check_vertex_in_direction(m_object->ai_location().level_vertex_id(),m_object->Position(),_level_vertex_id));
@@ -478,9 +478,9 @@ bool CVisualMemoryManager::visible(u32 _level_vertex_id, float yaw, float eye_fo
 		return(false);
 }
 
-float CVisualMemoryManager::feel_vision_mtl_transp(CObject* O, u32 element)
+f32 CVisualMemoryManager::feel_vision_mtl_transp(CObject* O, u32 element)
 {
-	float vis				= 1.f;
+	f32 vis				= 1.f;
 	if (O){
 		CKinematics* V		= smart_cast<CKinematics*>(O->Visual());
 		if (0!=V){
@@ -552,7 +552,7 @@ IC	squad_mask_type CVisualMemoryManager::mask			() const
 	return						(m_stalker->agent_manager().member().mask(m_stalker));
 }
 
-void CVisualMemoryManager::update				(float time_delta)
+void CVisualMemoryManager::update				(f32 time_delta)
 {
 	START_PROFILE("Memory Manager/visuals/update")
 

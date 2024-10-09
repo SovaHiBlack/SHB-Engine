@@ -11,7 +11,7 @@ class CUICustomMap;
 class CUIZoneMap
 {
 	CUICustomMap*				m_activeMap;
-	float						m_fScale;
+	f32						m_fScale;
 
 	CUIStatic					m_background;
 	CUIStatic					m_center;
@@ -23,14 +23,14 @@ public:
 								CUIZoneMap		();
 	virtual						~CUIZoneMap		();
 
-	void						SetHeading		(float angle);
+	void						SetHeading		(f32 angle);
 	void						Init			();
 
 	void						Render			();
 	void						UpdateRadar		(Fvector pos);
 
-	void						SetScale		(float s)							{m_fScale = s;}
-	float						GetScale		()									{return m_fScale;}
+	void						SetScale		(f32 s)							{m_fScale = s;}
+	f32						GetScale		()									{return m_fScale;}
 
 	bool						ZoomIn			();
 	bool						ZoomOut			();

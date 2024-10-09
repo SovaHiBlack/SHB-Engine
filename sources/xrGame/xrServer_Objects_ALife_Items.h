@@ -38,12 +38,12 @@ public:
 	};
 
 public:
-	float							m_fCondition;
-	float							m_fMass;
+	f32							m_fCondition;
+	f32							m_fMass;
 	u32								m_dwCost;
 	s32								m_iHealthValue;
 	s32								m_iFoodValue;
-	float							m_fDeteriorationValue;
+	f32							m_fDeteriorationValue;
 	CSE_ALifeObject					*m_self;
 	u32								m_last_update_time;
 
@@ -146,7 +146,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	u8								ammo_type;
 	u16								a_current;
 	u16								a_elapsed;
-	float							m_fHitPower;
+	f32							m_fHitPower;
 	ALife::EHitType					m_tHitType;
 	pcstr							m_caAmmoSections;
 	u32								m_dwAmmoAvailable;
@@ -215,7 +215,7 @@ add_to_type_list(CSE_ALifeItemDetector)
 #define script_type_list save_type_list(CSE_ALifeItemDetector)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemArtefact,CSE_ALifeItem)
-	float							m_fAnomalyValue;
+f32							m_fAnomalyValue;
 									CSE_ALifeItemArtefact	(pcstr caSection);
 	virtual							~CSE_ALifeItemArtefact	();
 	virtual BOOL					Net_Relevant			();

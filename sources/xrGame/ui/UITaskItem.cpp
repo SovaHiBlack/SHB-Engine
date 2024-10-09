@@ -108,7 +108,7 @@ void CUITaskRootItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 
 	m_captionStatic->SetText		(*stbl.translate(m_GameTask->m_Title));
 	m_captionStatic->AdjustHeightToText	();
-	
+
 	xr_string	txt ="";
 	txt			+= *(InventoryUtilities::GetDateAsString(gt->m_ReceiveTime, InventoryUtilities::edpDateToDay));
 	txt			+= " ";
@@ -117,11 +117,11 @@ void CUITaskRootItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 	m_captionTime->SetText		(txt.c_str());
 	m_captionTime->SetWndPos(m_captionTime->GetWndPos().x,m_captionStatic->GetWndPos().y+m_captionStatic->GetHeight()+3.0f);
 
-	float h = _max	(m_taskImage->GetWndPos().y+m_taskImage->GetHeight(),m_captionTime->GetWndPos().y+m_captionTime->GetHeight());
+	f32 h = _max	(m_taskImage->GetWndPos().y+m_taskImage->GetHeight(),m_captionTime->GetWndPos().y+m_captionTime->GetHeight());
 	h	= _max(h,m_switchDescriptionBtn->GetWndPos().y+m_switchDescriptionBtn->GetHeight());
 	SetHeight						(h);
-	
-	
+
+
 	m_curr_descr_mode				= m_EventsWnd->GetDescriptionMode();
 	if(m_curr_descr_mode)
 		m_switchDescriptionBtn->InitTexture	("ui_icons_newPDA_showtext");
@@ -133,7 +133,7 @@ void CUITaskRootItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 	
 	if( m_remTimeStatic->IsShown() )
 	{
-		float _height	= GetWndSize().y;
+		f32 _height	= GetWndSize().y;
 		Fvector2 _pos	= m_captionTime->GetWndPos();
 		_pos.y			+= m_captionTime->GetWndSize().y;
 		_pos.x			= m_remTimeStatic->GetWndPos().x;
@@ -234,7 +234,7 @@ void CUITaskSubItem::SetGameTask	(CGameTask* gt, u16 obj_idx)
 
 	m_descriptionStatic->SetText				(*stbl.translate(obj->description));
 	m_descriptionStatic->AdjustHeightToText		();
-	float h = _max(	m_ActiveObjectiveStatic->GetWndPos().y+m_ActiveObjectiveStatic->GetHeight(),
+	f32 h = _max(	m_ActiveObjectiveStatic->GetWndPos().y+m_ActiveObjectiveStatic->GetHeight(),
 					m_descriptionStatic->GetWndPos().y+ m_descriptionStatic->GetHeight());
 	SetHeight									(h);
 	switch (obj->TaskState())
@@ -384,14 +384,14 @@ void CUIUserTaskItem::SetGameTask				(CGameTask* gt, u16 obj_idx)
 	m_captionStatic->SetText					(*stbl.translate(gt->m_Title));
 	m_captionStatic->AdjustHeightToText			();
 
-	float h1 = _max( m_image->GetWndPos().y+m_image->GetHeight(),
+	f32 h1 = _max( m_image->GetWndPos().y+m_image->GetHeight(),
 					m_captionStatic->GetWndPos().y + m_captionStatic->GetHeight() );
 	m_descriptionStatic->SetWndPos				(m_descriptionStatic->GetWndPos().x, h1+4.0f);
 
 	m_descriptionStatic->SetText				(*stbl.translate(obj->description));
 	m_descriptionStatic->AdjustHeightToText		();
 
-	float h = _max(	m_image->GetWndPos().y+m_image->GetHeight(),
+	f32 h = _max(	m_image->GetWndPos().y+m_image->GetHeight(),
 					m_descriptionStatic->GetWndPos().y+ m_descriptionStatic->GetHeight());
 
 	SetHeight									(h+10.0f);

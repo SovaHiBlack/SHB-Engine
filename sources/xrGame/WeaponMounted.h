@@ -56,9 +56,8 @@ protected:
 	HUD_SOUND				sndShot;
 
 	//הכÿ מעהאקט
-	float					camRelaxSpeed;
-	float					camMaxAngle;
-
+	f32					camRelaxSpeed;
+	f32					camMaxAngle;
 
 	/////////////////////////////////////////////////
 	// Generic
@@ -87,7 +86,7 @@ public:
 
 	virtual CInventory*		GetInventory		(){return 0;}
 
-	virtual void			cam_Update			(float dt, float fov=90.0f);
+	virtual void			cam_Update			(f32 dt, f32 fov=90.0f);
 
 	virtual bool			Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos);
 	virtual bool			attach_Actor		(CGameObject* actor);

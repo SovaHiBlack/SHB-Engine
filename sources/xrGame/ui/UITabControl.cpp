@@ -41,7 +41,7 @@ bool CUITabControl::IsChanged(){
 }
 
 // добавление кнопки-закладки в список закладок контрола
-bool CUITabControl::AddItem(pcstr pItemName, pcstr pTexName, float x, float y, float width, float height)
+bool CUITabControl::AddItem(pcstr pItemName, pcstr pTexName, f32 x, f32 y, f32 width, f32 height)
 {
 	CUITabButton *pNewButton = xr_new<CUITabButton>();
 	pNewButton->SetAutoDelete	(true);

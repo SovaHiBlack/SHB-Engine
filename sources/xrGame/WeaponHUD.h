@@ -65,9 +65,10 @@ class CWeaponHUD
 	void				StopCurrentAnim	();
 
 	//поворот и смещение для режима приближения
-	float				m_fZoomRotateX;
-	float				m_fZoomRotateY;
+	f32				m_fZoomRotateX;
+	f32				m_fZoomRotateY;
 	Fvector				m_fZoomOffset;
+
 public: 
 						CWeaponHUD		(CHudItem* pHudItem);
 						~CWeaponHUD		();
@@ -86,12 +87,11 @@ public:
 	const Fvector&		ShellPoint		()	{return m_shared_data.get_value()->m_sp_offset;	}
 
 	const Fvector&		ZoomOffset		()	const {return m_fZoomOffset;}
-	float				ZoomRotateX		()	const {return m_fZoomRotateX;}
-	float				ZoomRotateY		()	const {return m_fZoomRotateY;}
+	f32				ZoomRotateX		()	const {return m_fZoomRotateX;}
+	f32				ZoomRotateY		()	const {return m_fZoomRotateY;}
 	void				SetZoomOffset	(const Fvector& zoom_offset)  { m_fZoomOffset = zoom_offset;}
-	void				SetZoomRotateX	(float zoom_rotate_x)		  { m_fZoomRotateX = zoom_rotate_x;}
-	void				SetZoomRotateY	(float zoom_rotate_y)		  { m_fZoomRotateY = zoom_rotate_y;}
-	
+	void				SetZoomRotateX	(f32 zoom_rotate_x)		  { m_fZoomRotateX = zoom_rotate_x;}
+	void				SetZoomRotateY	(f32 zoom_rotate_y)		  { m_fZoomRotateY = zoom_rotate_y;}
 
 	// Animations
 	void				animPlay		(MotionID M, BOOL bMixIn/*=TRUE*/, CHudItem*  W /*=0*/, u32 state);
@@ -115,12 +115,14 @@ public:
 	static void			CreateSharedContainer	();
 	static void			DestroySharedContainer	();
 	static void			CleanSharedContainer	();
+
 #ifdef DEBUG
 public:
 	void				dbg_SetFirePoint	(const Fvector &fp)			{((weapon_hud_value*)m_shared_data.get_value())->m_fp_offset.set(fp);}
 	void				dbg_SetFirePoint2	(const Fvector &fp)			{((weapon_hud_value*)m_shared_data.get_value())->m_fp2_offset.set(fp);}
 	void				dbg_SetShellPoint	(const Fvector &sp)			{((weapon_hud_value*)m_shared_data.get_value())->m_sp_offset.set(sp);}
 #endif
+
 };
 
 #define		MAX_ANIM_COUNT							8

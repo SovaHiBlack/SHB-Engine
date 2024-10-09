@@ -23,7 +23,7 @@ CUIProgressBar::~CUIProgressBar(void)
 {
 }
 
-void CUIProgressBar::Init(float x, float y, float width, float height, bool bIsHorizontal)
+void CUIProgressBar::Init(f32 x, f32 y, f32 width, f32 height, bool bIsHorizontal)
 {
 	m_bIsHorizontal			= bIsHorizontal;
 	CUIWindow::Init			(x,y, width, height);
@@ -34,9 +34,9 @@ void CUIProgressBar::UpdateProgressBar()
 {
 	if( fsimilar(m_MaxPos,m_MinPos) ) m_MaxPos	+= EPSILON_5;
 
-	float progressbar_unit = 1/(m_MaxPos-m_MinPos);
+	f32 progressbar_unit = 1/(m_MaxPos-m_MinPos);
 
-	float fCurrentLength = m_ProgressPos.x*progressbar_unit;
+	f32 fCurrentLength = m_ProgressPos.x*progressbar_unit;
 
 	if(m_bIsHorizontal)	m_CurrentLength			= GetWidth()*fCurrentLength; 	
 	else				m_CurrentLength			= GetHeight()*fCurrentLength; 	
@@ -48,7 +48,7 @@ void CUIProgressBar::UpdateProgressBar()
 	}
 }
 
-void CUIProgressBar::SetProgressPos(float _Pos)				
+void CUIProgressBar::SetProgressPos(f32 _Pos)
 { 
 	m_ProgressPos.y		= _Pos; 
 	clamp(m_ProgressPos.y,m_MinPos,m_MaxPos);
@@ -59,7 +59,7 @@ void CUIProgressBar::SetProgressPos(float _Pos)
 	UpdateProgressBar	();
 }
 
-float _sign(const float& v)
+f32 _sign(const f32& v)
 {
 	return (v>0.0f)?+1.0f:-1.0f;
 }
@@ -69,10 +69,10 @@ void CUIProgressBar::Update()
 	if(!fsimilar(m_ProgressPos.x, m_ProgressPos.y))
 	{
 		if( fsimilar(m_MaxPos,m_MinPos) ) m_MaxPos	+= EPSILON_5;	//hack ^(
-		float _diff				= m_ProgressPos.y - m_ProgressPos.x;
+		f32 _diff				= m_ProgressPos.y - m_ProgressPos.x;
 		
-		float _length			= (m_MaxPos-m_MinPos);
-		float _val				= _length*(1.0f-m_inertion)*Device.fTimeDelta;
+		f32 _length			= (m_MaxPos-m_MinPos);
+		f32 _val				= _length*(1.0f-m_inertion)*Device.fTimeDelta;
 
 		_val					= _min(_abs(_val), _abs(_diff) );
 		_val					*= _sign(_diff);

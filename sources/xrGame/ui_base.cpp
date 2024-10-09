@@ -8,7 +8,7 @@ CUICursor*	GetUICursor		()	{return UI()->GetUICursor();};
 ui_core*	UI				()	{return GamePersistent().m_pUI_core;};
 extern ENGINE_API Fvector2		g_current_font_scale;
 
-void S2DVert::rotate_pt(const Fvector2& pivot, float cosA, float sinA, float kx)
+void S2DVert::rotate_pt(const Fvector2& pivot, f32 cosA, f32 sinA, f32 kx)
 {
 	Fvector2 t		= pt;
 	t.sub			(pivot);
@@ -19,7 +19,7 @@ void S2DVert::rotate_pt(const Fvector2& pivot, float cosA, float sinA, float kx)
 }
 void C2DFrustum::CreateFromRect	(const Frect& rect)
 {
-	m_rect.set(float(rect.x1), float(rect.y1), float(rect.x2), float(rect.y2) );
+	m_rect.set(f32(rect.x1), f32(rect.y1), f32(rect.x2), f32(rect.y2) );
 	planes.resize	(4);
 	planes[0].build	(rect.lt, Fvector2().set(-1, 0));
 	planes[1].build	(rect.lt, Fvector2().set( 0,-1));
@@ -50,13 +50,14 @@ sPoly2D* C2DFrustum::ClipPoly	(sPoly2D& S, sPoly2D& D) const
 		dest->clear			()			;
 
 		// classify all points relative to plane #i
-		float cls[UI_FRUSTUM_SAFE]	;
+		f32 cls[UI_FRUSTUM_SAFE]	;
 		for (u32 j=0; j<src->size(); j++) cls[j]=P.classify((*src)[j].pt);
 
 		// clip everything to this plane
 		cls[src->size()] = cls[0]	;
 		src->push_back((*src)[0])	;
-		Fvector2 dir_pt,dir_uv;		float denum,t;
+		Fvector2 dir_pt,dir_uv;
+		f32 denum,t;
 		for (j=0; j<src->size()-1; j++)	{
 			if ((*src)[j].pt.similar((*src)[j+1].pt, EPSILON_7)) continue;
 			if (negative(cls[j]))	{
@@ -99,16 +100,16 @@ sPoly2D* C2DFrustum::ClipPoly	(sPoly2D& S, sPoly2D& D) const
 
 void ui_core::OnDeviceReset()
 {
-	m_scale_.set		( float(Device.dwWidth)/UI_BASE_WIDTH, float(Device.dwHeight)/UI_BASE_HEIGHT );
+	m_scale_.set		(f32(Device.dwWidth)/UI_BASE_WIDTH, f32(Device.dwHeight)/UI_BASE_HEIGHT );
 
 	m_2DFrustum.CreateFromRect	(Frect().set(	0.0f,
 												0.0f,
-												float(Device.dwWidth),
-												float(Device.dwHeight)
+											 f32(Device.dwWidth),
+											 f32(Device.dwHeight)
 												));
 }
 
-void ui_core::ClientToScreenScaled(Fvector2& dest, float left, float top)
+void ui_core::ClientToScreenScaled(Fvector2& dest, f32 left, f32 top)
 {
 	dest.set(ClientToScreenScaledX(left),	ClientToScreenScaledY(top));
 }
@@ -118,13 +119,13 @@ void ui_core::ClientToScreenScaled(Fvector2& src_and_dest)
 	src_and_dest.set(ClientToScreenScaledX(src_and_dest.x),	ClientToScreenScaledY(src_and_dest.y));
 }
 
-void ui_core::ClientToScreenScaledWidth(float& src_and_dest)
+void ui_core::ClientToScreenScaledWidth(f32& src_and_dest)
 {
 //.	src_and_dest		= ClientToScreenScaledX(src_and_dest);
 	src_and_dest		/= m_current_scale->x;
 }
 
-void ui_core::ClientToScreenScaledHeight(float& src_and_dest)
+void ui_core::ClientToScreenScaledHeight(f32& src_and_dest)
 {
 //.	src_and_dest		= ClientToScreenScaledY(src_and_dest);
 	src_and_dest		/= m_current_scale->y;
@@ -212,18 +213,18 @@ void ui_core::pp_start()
 {
 	m_bPostprocess		= true;
 
-	m_pp_scale_.set	( float(::Render->getTarget()->get_width())/float(UI_BASE_WIDTH),	float(::Render->getTarget()->get_height())/float(UI_BASE_HEIGHT) );
+	m_pp_scale_.set	(f32(::Render->getTarget()->get_width())/ f32(UI_BASE_WIDTH), f32(::Render->getTarget()->get_height())/ f32(UI_BASE_HEIGHT) );
 	m_2DFrustumPP.CreateFromRect(Frect().set(	0.0f,
 												0.0f,
-												float(::Render->getTarget()->get_width()),
-												float(::Render->getTarget()->get_height())
+											 f32(::Render->getTarget()->get_width()),
+											 f32(::Render->getTarget()->get_height())
 												));
 
 	m_current_scale			= &m_pp_scale_;
 //.	g_current_font_scale	= m_pp_scale_;
 	
-	g_current_font_scale.set(	float(::Render->getTarget()->get_width())/float(Device.dwWidth),	
-								float(::Render->getTarget()->get_height())/float(Device.dwHeight) );
+	g_current_font_scale.set(f32(::Render->getTarget()->get_width())/ f32(Device.dwWidth),
+							 f32(::Render->getTarget()->get_height())/ f32(Device.dwHeight) );
 
 }
 
@@ -242,7 +243,7 @@ void ui_core::RenderFont()
 
 bool ui_core::is_16_9_mode()
 {
-	return (Device.dwWidth)/float(Device.dwHeight) > (UI_BASE_WIDTH/UI_BASE_HEIGHT +0.01f);
+	return (Device.dwWidth)/ f32(Device.dwHeight) > (UI_BASE_WIDTH/UI_BASE_HEIGHT +0.01f);
 }
 
 shared_str	ui_core::get_xml_name(pcstr fn)

@@ -104,11 +104,11 @@ void CUIWindow::script_register(lua_State *L)
 		.def("IsAutoDelete",			&CUIWindow::IsAutoDelete)
 
 		.def("SetWndRect",				(void (CUIWindow::*)(Frect))					&CUIWindow::SetWndRect_script)
-		.def("SetWndRect",				(void (CUIWindow::*)(float,float,float,float))   &CUIWindow::SetWndRect_script)
-		.def("Init",					(void (CUIWindow::*)(float,float,float,float))   &CUIWindow::Init)
+		.def("SetWndRect",				(void (CUIWindow::*)(f32, f32, f32, f32))   &CUIWindow::SetWndRect_script)
+		.def("Init",					(void (CUIWindow::*)(f32, f32, f32, f32))   &CUIWindow::Init)
 		.def("Init",					(void (CUIWindow::*)(Frect*))			 &CUIWindow::Init)
-		.def("SetWndPos",				(void (CUIWindow::*)(float,float)) &CUIWindow::SetWndPos)
-		.def("SetWndSize",				(void (CUIWindow::*)(float,float)) &CUIWindow::SetWndSize)
+		.def("SetWndPos",				(void (CUIWindow::*)(f32, f32)) &CUIWindow::SetWndPos)
+		.def("SetWndSize",				(void (CUIWindow::*)(f32, f32)) &CUIWindow::SetWndSize)
 		.def("GetWidth",				&CUIWindow::GetWidth)
 		.def("SetWidth",				&CUIWindow::SetWidth)
 		.def("GetHeight",				&CUIWindow::GetHeight)
@@ -144,7 +144,7 @@ void CUIWindow::script_register(lua_State *L)
 		.def("SetHeight",				&CUIFrameWindow::SetHeight)
 		.def("SetColor",				&CUIFrameWindow::SetColor)
 		.def("GetTitleStatic",			&CUIFrameWindow::GetTitleStatic)
-		.def("Init",					(void(CUIFrameWindow::*)(pcstr,float,float,float,float))&CUIFrameWindow::Init),
+		.def("Init",					(void(CUIFrameWindow::*)(pcstr, f32, f32, f32, f32))&CUIFrameWindow::Init),
 
 		class_<CUIFrameLineWnd, CUIWindow>("CUIFrameLineWnd")
 		.def(					constructor<>())
@@ -153,7 +153,7 @@ void CUIWindow::script_register(lua_State *L)
 		.def("SetOrientation",					&CUIFrameLineWnd::SetOrientation)
 		.def("SetColor",						&CUIFrameLineWnd::SetColor)
 		.def("GetTitleStatic",					&CUIFrameLineWnd::GetTitleStatic)
-		.def("Init",							(void(CUIFrameLineWnd::*)(pcstr,float,float,float,float,bool))&CUIFrameLineWnd::Init),
+		.def("Init",							(void(CUIFrameLineWnd::*)(pcstr, f32, f32, f32, f32,bool))&CUIFrameLineWnd::Init),
 
 		class_<CUILabel, CUIFrameLineWnd>("CUILabel")
 		.def(					constructor<>())
@@ -175,11 +175,6 @@ void CUIWindow::script_register(lua_State *L)
 		.def("GetCurrentScrollPos",		&CUIScrollView::GetCurrentScrollPos)
 		.def("SetScrollPos",			&CUIScrollView::SetScrollPos),
 
-
-//		.def("",						&CUIFrameLineWnd::)
-//		.def("",						&CUIFrameLineWnd::)
-//		.def("",						&CUIFrameLineWnd::)
-
 		class_<enum_exporter<EUIMessages> >("ui_events")
 			.enum_("events")
 			[
@@ -195,7 +190,6 @@ void CUIWindow::script_register(lua_State *L)
 				value("WINDOW_MOUSE_CAPTURE_LOST ",		int(WINDOW_MOUSE_CAPTURE_LOST )),
 				value("WINDOW_KEYBOARD_CAPTURE_LOST",	int(WINDOW_KEYBOARD_CAPTURE_LOST)),
 
-
 	// CUIStatic
 				value("STATIC_FOCUS_RECEIVED",			int(STATIC_FOCUS_RECEIVED)),
 				value("STATIC_FOCUS_LOST",				int(STATIC_FOCUS_LOST)),
@@ -207,7 +201,6 @@ void CUIWindow::script_register(lua_State *L)
 	// CUITabControl
 				value("TAB_CHANGED",					int(TAB_CHANGED)),
 				value("EDIT_TEXT_COMMIT",				int(EDIT_TEXT_COMMIT)),
-				
 
 	// CUICheckButton
 				value("CHECK_BUTTON_SET",				int(CHECK_BUTTON_SET)),
@@ -224,7 +217,7 @@ void CUIWindow::script_register(lua_State *L)
 
 	// CUIScrollBox
 				value("SCROLLBOX_MOVE",					int(SCROLLBOX_MOVE)),
-				
+
 	// CUIScrollBar
 				value("SCROLLBAR_VSCROLL",				int(SCROLLBAR_VSCROLL)),
 				value("SCROLLBAR_HSCROLL",				int(SCROLLBAR_HSCROLL)),
@@ -232,7 +225,7 @@ void CUIWindow::script_register(lua_State *L)
 	// CUIListWnd
 				value("LIST_ITEM_CLICKED",				int(LIST_ITEM_CLICKED)),
 				value("LIST_ITEM_SELECT",				int(LIST_ITEM_SELECT)),
-	
+
 	// CUIInteractiveItem
 				value("INTERACTIVE_ITEM_CLICK",			int(INTERACTIVE_ITEM_CLICK)),
 
@@ -249,11 +242,10 @@ void CUIWindow::script_register(lua_State *L)
 
 				value("EDIT_TEXT_CHANGED",				int(EDIT_TEXT_CHANGED)),
 				value("EDIT_TEXT_COMMIT",				int(EDIT_TEXT_COMMIT)),
+
 	// CUITalkDialogWnd
 				value("TALK_DIALOG_TRADE_BUTTON_CLICKED",	int(TALK_DIALOG_TRADE_BUTTON_CLICKED)),
 				value("TALK_DIALOG_QUESTION_CLICKED",		int(TALK_DIALOG_QUESTION_CLICKED)),
-
-
 
 	// CUIPdaDialogWnd
 				value("PDA_DIALOG_WND_BACK_BUTTON_CLICKED",			int(PDA_DIALOG_WND_BACK_BUTTON_CLICKED)),
@@ -264,9 +256,6 @@ void CUIWindow::script_register(lua_State *L)
 
 	// CUITradeWnd
 				value("TRADE_WND_CLOSED",							int(TRADE_WND_CLOSED)),
-
-	// CUISleepWnd
-//				value("SLEEP_WND_PERFORM_BUTTON_CLICKED",			int(SLEEP_WND_PERFORM_BUTTON_CLICKED)),
 
 	// CUIOutfitSlot
 				value("UNDRESS_OUTFIT",								int(UNDRESS_OUTFIT)),

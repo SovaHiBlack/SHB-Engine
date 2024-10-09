@@ -14,5 +14,5 @@
 
 class CUI_IB_Static : public CUIInteractiveBackground<CUIStatic> {
 public:
-	virtual void SetTextureOffset(float x, float y);
+	virtual void SetTextureOffset(f32 x, f32 y);
 };

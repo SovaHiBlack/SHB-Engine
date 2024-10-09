@@ -218,23 +218,23 @@ protected:
 	//разрешение режима приближения
 	bool			m_bZoomEnabled;
 	//текущий фактор приближения
-	float			m_fZoomFactor;
+	f32			m_fZoomFactor;
 	//время приближения
-	float			m_fZoomRotateTime;
+	f32			m_fZoomRotateTime;
 	//текстура для снайперского прицела, в режиме приближения
 	CUIStaticItem*	m_UIScope;
 	//коэффициент увеличения прицеливания
-	float			m_fIronSightZoomFactor;
+	f32			m_fIronSightZoomFactor;
 	//коэффициент увеличения прицела
-	float			m_fScopeZoomFactor;
+	f32			m_fScopeZoomFactor;
 	//когда режим приближения включен
 	bool			m_bZoomMode;
 	//от 0 до 1, показывает насколько процентов
 	//мы перемещаем HUD  
-	float			m_fZoomRotationFactor;
+	f32			m_fZoomRotationFactor;
 	bool			m_bHideCrosshairInZoom;
-public:
 
+public:
 	IC bool					IsZoomEnabled		()	const	{return m_bZoomEnabled;}
 	virtual	void			ZoomInc				(){};
 	virtual	void			ZoomDec				(){};
@@ -244,14 +244,14 @@ public:
 	CUIStaticItem*			ZoomTexture			();	
 			bool			ZoomHideCrosshair	()			{return m_bHideCrosshairInZoom || ZoomTexture();}
 
-	IC float				GetZoomFactor		() const		{	return m_fZoomFactor;	}
-	virtual	float			CurrentZoomFactor	();
+	IC f32				GetZoomFactor		() const		{	return m_fZoomFactor;	}
+	virtual	f32			CurrentZoomFactor	();
 	//показывает, что оружие находится в соостоянии поворота для приближенного прицеливания
 			bool			IsRotatingToZoom	() const		{	return (m_fZoomRotationFactor<1.f);}
 
 			void			LoadZoomOffset		(pcstr section, pcstr prefix);
 
-	virtual float				Weight			();		
+	virtual f32				Weight			();
 
 public:
     virtual EHandDependence		HandDependence		()	const		{	return eHandDependence;}
@@ -297,6 +297,7 @@ private:
 			vLastSP.set			(0,0,0);
 		}
 	}						m_firedeps			;
+
 protected:
 	virtual void			UpdateFireDependencies_internal	();
 	virtual void			UpdatePosition			(const Fmatrix& transform);	//.
@@ -305,6 +306,7 @@ protected:
 	IC		void			UpdateFireDependencies	()			{ if (dwFP_Frame==Device.dwFrame) return; UpdateFireDependencies_internal(); };
 
 	virtual void			LoadFireParams		(pcstr section, pcstr prefix);
+
 public:	
 	IC		const Fvector&	get_LastFP				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP;	}
 	IC		const Fvector&	get_LastFP2				()			{ UpdateFireDependencies(); return m_firedeps.vLastFP2;	}
@@ -324,7 +326,7 @@ protected:
 
 	//трассирование полета пули
 			void			FireTrace			(const Fvector& P, const Fvector& D);
-	virtual float			GetWeaponDeterioration	();
+	virtual f32			GetWeaponDeterioration	();
 
 	virtual void			FireStart			() {CShootingObject::FireStart();}
 	virtual void			FireEnd				();// {CShootingObject::FireEnd();}
@@ -343,43 +345,43 @@ protected:
 
 public:
 	//текущая дисперсия (в радианах) оружия с учетом используемого патрона
-	float					GetFireDispersion	(bool with_cartridge)			;
-	float					GetFireDispersion	(float cartridge_k)				;
+	f32					GetFireDispersion	(bool with_cartridge)			;
+	f32					GetFireDispersion	(f32 cartridge_k)				;
 //	const Fvector&			GetRecoilDeltaAngle	();
 	virtual	int				ShotsFired			() { return 0; }
 
 	//параметы оружия в зависимоти от его состояния исправности
-	float					GetConditionDispersionFactor	() const;
-	float					GetConditionMisfireProbability	() const;
-	virtual	float			GetConditionToShow				() const;
+	f32					GetConditionDispersionFactor	() const;
+	f32					GetConditionMisfireProbability	() const;
+	virtual	f32			GetConditionToShow				() const;
 
 public:
 	//отдача при стрельбе 
-	float					camMaxAngle;
-	float					camRelaxSpeed;
-	float					camRelaxSpeed_AI;
-	float					camDispersion;
-	float					camDispersionInc;
-	float					camDispertionFrac;
-	float					camMaxAngleHorz;
-	float					camStepAngleHorz;
+	f32					camMaxAngle;
+	f32					camRelaxSpeed;
+	f32					camRelaxSpeed_AI;
+	f32					camDispersion;
+	f32					camDispersionInc;
+	f32					camDispertionFrac;
+	f32					camMaxAngleHorz;
+	f32					camStepAngleHorz;
 
 protected:
 	//фактор увеличения дисперсии при максимальной изношености 
 	//(на сколько процентов увеличится дисперсия)
-	float					fireDispersionConditionFactor;
+	f32					fireDispersionConditionFactor;
 	//вероятность осечки при максимальной изношености
-	float					misfireProbability;
-	float					misfireConditionK;
+	f32					misfireProbability;
+	f32					misfireConditionK;
 	//увеличение изношености при выстреле
-	float					conditionDecreasePerShot;
+	f32					conditionDecreasePerShot;
 
 	//  [8/2/2005]
-	float					m_fPDM_disp_base			;
-	float					m_fPDM_disp_vel_factor		;
-	float					m_fPDM_disp_accel_factor	;
-	float					m_fPDM_disp_crouch			;
-	float					m_fPDM_disp_crouch_no_acc	;
+	f32					m_fPDM_disp_base			;
+	f32					m_fPDM_disp_vel_factor		;
+	f32					m_fPDM_disp_accel_factor	;
+	f32					m_fPDM_disp_crouch			;
+	f32					m_fPDM_disp_crouch_no_acc	;
 	//  [8/2/2005]
 
 protected:
@@ -388,8 +390,8 @@ protected:
 
 	//для сталкеров, чтоб они знали эффективные границы использования 
 	//оружия
-	float					m_fMinRadius;
-	float					m_fMaxRadius;
+	f32					m_fMinRadius;
+	f32					m_fMaxRadius;
 
 //////////////////////////////////////////////////////////////////////////
 // партиклы
@@ -420,13 +422,12 @@ public:
 												 pcstr ammoSect = NULL,
 													u32 ParentID = 0xffffffff);
 
-	//  [8/3/2005]
-	virtual	float			Get_PDM_Base		()	const	{ return m_fPDM_disp_base			; };
-	virtual	float			Get_PDM_Vel_F		()	const	{ return m_fPDM_disp_vel_factor		; };
-	virtual	float			Get_PDM_Accel_F		()	const	{ return m_fPDM_disp_accel_factor	; };
-	virtual	float			Get_PDM_Crouch		()	const	{ return m_fPDM_disp_crouch			; };
-	virtual	float			Get_PDM_Crouch_NA	()	const	{ return m_fPDM_disp_crouch_no_acc	; };
-	//  [8/3/2005]
+	virtual	f32			Get_PDM_Base		()	const	{ return m_fPDM_disp_base			; };
+	virtual	f32			Get_PDM_Vel_F		()	const	{ return m_fPDM_disp_vel_factor		; };
+	virtual	f32			Get_PDM_Accel_F		()	const	{ return m_fPDM_disp_accel_factor	; };
+	virtual	f32			Get_PDM_Crouch		()	const	{ return m_fPDM_disp_crouch			; };
+	virtual	f32			Get_PDM_Crouch_NA	()	const	{ return m_fPDM_disp_crouch_no_acc	; };
+
 protected:
 	int						iAmmoElapsed;		// ammo in magazine, currently
 	int						iMagazineSize;		// size (in bullets) of magazine
@@ -452,7 +453,7 @@ public:
 	// Multitype ammo support
 	xr_vector<CCartridge>	m_magazine;
 	CCartridge				m_DefaultCartridge;
-	float					m_fCurrentCartirdgeDisp;
+	f32					m_fCurrentCartirdgeDisp;
 
 		bool				unlimited_ammo				();
 	IC	bool				can_be_strapped				() const {return m_can_be_strapped;};
@@ -470,10 +471,11 @@ public:
 protected:
 	// This is because when scope is attached we can't ask scope for these params
 	// therefore we should hold them by ourself :-((
-	float					m_addon_holder_range_modifier;
-	float					m_addon_holder_fov_modifier;
+	f32					m_addon_holder_range_modifier;
+	f32					m_addon_holder_fov_modifier;
+
 public:
-	virtual	void			modify_holder_params		(float &range, float &fov) const;
+	virtual	void			modify_holder_params		(f32& range, f32& fov) const;
 	virtual bool			use_crosshair				()	const {return true;}
 			bool			show_crosshair				();
 			bool			show_indicators				();
@@ -481,8 +483,8 @@ public:
 	virtual BOOL			ParentIsActor				();
 
 private:
-	float					m_hit_probability[egdCount];
+	f32					m_hit_probability[egdCount];
 
 public:
-	const float				&hit_probability			() const;
+	const f32&				hit_probability			() const;
 };

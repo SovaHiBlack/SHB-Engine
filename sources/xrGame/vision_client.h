@@ -43,13 +43,13 @@ public:
 	virtual							~vision_client			();
 
 public:
-	virtual float					shedule_Scale			();
+	virtual f32					shedule_Scale			();
 	virtual void					shedule_Update			(u32 dt);
 	virtual	shared_str				shedule_Name			() const;
 	virtual bool					shedule_Needed			();
 
 public:
-	virtual	float					feel_vision_mtl_transp	(CObject *object, u32 element);
+	virtual	f32					feel_vision_mtl_transp	(CObject *object, u32 element);
 
 public:
 	virtual	BOOL					feel_vision_isRelevant	(CObject *object) = 0;
@@ -57,10 +57,10 @@ public:
 										Fvector &position,
 										Fvector &direction,
 										Fvector &normal,
-										float &field_of_view,
-										float &aspect_ratio,
-										float &near_plane,
-										float &far_plane
+		f32& field_of_view,
+		f32& aspect_ratio,
+		f32& near_plane,
+		f32& far_plane
 									) = 0;
 
 

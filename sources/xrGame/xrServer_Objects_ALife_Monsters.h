@@ -26,10 +26,10 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 		eTraderFlagInfiniteAmmo		= u32(1) << 0,
 		eTraderFlagDummy			= u32(-1),
 	};
-//	float							m_fCumulativeItemMass;
+//	f32							m_fCumulativeItemMass;
 //	int								m_iCumulativeItemVolume;
 	u32								m_dwMoney;
-	float							m_fMaxItemMass;
+	f32							m_fMaxItemMass;
 	Flags32							m_trader_flags;
 
 	////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ add_to_type_list(CSE_ALifeCustomZone)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeAnomalousZone,CSE_ALifeCustomZone)
 	CSE_ALifeItemWeapon				*m_tpCurrentBestWeapon;
-	float							m_offline_interactive_radius;
+f32							m_offline_interactive_radius;
 	u32								m_artefact_position_offset;
 	u16								m_artefact_spawn_count;
 
@@ -147,7 +147,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeAnomalousZone,CSE_ALifeCustomZone)
 #ifdef XRGAME_EXPORTS
 			void					spawn_artefacts			();
 	virtual void					on_spawn				();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float &fHitPower);
+	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType, f32& fHitPower);
 	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int iGroupIndex, bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
@@ -181,14 +181,14 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract,CSE_ALifeDynamicObjectVisu
 	u8								s_team;
 	u8								s_squad;
 	u8								s_group;
-	float							fHealth;
-	float							m_fMorale;
-	float							m_fAccuracy;
-	float							m_fIntelligence;
+	f32							fHealth;
+	f32							m_fMorale;
+	f32							m_fAccuracy;
+	f32							m_fIntelligence;
 
 	u32								timestamp;				// server(game) timestamp
 	u8								flags;
-	float							o_model;				// model yaw
+	f32							o_model;				// model yaw
 	SRotation						o_torso;				// torso in world coords
 	bool							m_bDeathIsProcessed;
 
@@ -207,7 +207,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeCreatureAbstract,CSE_ALifeDynamicObjectVisu
 	virtual u8						g_team					();
 	virtual u8						g_squad					();
 	virtual u8						g_group					();
-	IC		float					g_Health				() const								{ return fHealth;}
+	IC		f32					g_Health				() const								{ return fHealth;}
 	IC		bool					g_Alive					() const								{ return (g_Health() > 0.f);}
 	virtual bool					used_ai_locations		() const;
 	virtual bool					can_switch_online		() const;
@@ -230,20 +230,20 @@ add_to_type_list(CSE_ALifeCreatureAbstract)
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,CSE_ALifeSchedulable)
 	GameGraph::_GRAPH_ID				m_tNextGraphID;
 	GameGraph::_GRAPH_ID				m_tPrevGraphID;
-	float								m_fGoingSpeed;
-	float								m_fCurrentLevelGoingSpeed;
-	float								m_fCurSpeed;
-	float								m_fDistanceFromPoint;
-	float								m_fDistanceToPoint;
+	f32								m_fGoingSpeed;
+	f32								m_fCurrentLevelGoingSpeed;
+	f32								m_fCurSpeed;
+	f32								m_fDistanceFromPoint;
+	f32								m_fDistanceToPoint;
 	GameGraph::TERRAIN_VECTOR			m_tpaTerrain;
-	float								m_fMaxHealthValue;
-	float								m_fRetreatThreshold;
-	float								m_fEyeRange;
-	float								m_fHitPower;
+	f32								m_fMaxHealthValue;
+	f32								m_fRetreatThreshold;
+	f32								m_fEyeRange;
+	f32								m_fHitPower;
 	ALife::EHitType						m_tHitType;
 	shared_str							m_out_space_restrictors;
 	shared_str							m_in_space_restrictors;
-	svector<float,ALife::eHitTypeMax>	m_fpImmunityFactors;
+	svector<f32,ALife::eHitTypeMax>	m_fpImmunityFactors;
 
 	ALife::_OBJECT_ID					m_smart_terrain_id;
 	
@@ -260,7 +260,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,
 public:
 									CSE_ALifeMonsterAbstract(pcstr					caSection);
 	virtual							~CSE_ALifeMonsterAbstract();
-	IC		float					g_MaxHealth				()	const									{ return m_fMaxHealthValue;	}
+	IC		f32					g_MaxHealth				()	const									{ return m_fMaxHealthValue;	}
 	virtual CSE_Abstract			*init					();
 	virtual CSE_Abstract			*base					();
 	virtual const CSE_Abstract		*base					() const;
@@ -280,7 +280,7 @@ public:
 	virtual	void					update					()	{};
 #else
 	virtual	void					update					();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType,				float	&fHitPower);
+	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType, f32& fHitPower);
 	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int		iGroupIndex,	bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
@@ -306,8 +306,8 @@ SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor,CSE_ALifeCreatureAbstract,CS
 	u16								mstate;
 	Fvector							accel;
 	Fvector							velocity;
-//	float							fArmor;
-	float							fRadiation;
+//	f32							fArmor;
+	f32							fRadiation;
 	u8								weapon;
 	///////////////////////////////////////////
 	u16								m_u16NumItems;
@@ -361,18 +361,18 @@ add_to_type_list(CSE_ALifeCreaturePhantom)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeMonsterZombie,CSE_ALifeMonsterAbstract)
 	// Personal characteristics:
-	float							fEyeFov;
-	float							fEyeRange;
-	float							fMinSpeed;
-	float							fMaxSpeed;
-	float							fAttackSpeed;
-	float							fMaxPursuitRadius;
-	float							fMaxHomeRadius;
+	f32							fEyeFov;
+f32							fEyeRange;
+f32							fMinSpeed;
+f32							fMaxSpeed;
+f32							fAttackSpeed;
+f32							fMaxPursuitRadius;
+f32							fMaxHomeRadius;
 	// attack
-	float							fHitPower;
+f32							fHitPower;
 	u16								u16HitInterval;
-	float							fAttackDistance;
-	float							fAttackAngle;
+	f32							fAttackDistance;
+	f32							fAttackAngle;
 
 									CSE_ALifeMonsterZombie	(pcstr caSection);				// constructor for variable initialization
 	virtual							~CSE_ALifeMonsterZombie	();
@@ -430,7 +430,7 @@ public:
 
 #ifdef XRGAME_EXPORTS
 	virtual	void					update					();
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, float &fHitPower);
+	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, f32& fHitPower);
 	virtual bool					bfPerformAttack			();
 	virtual	void					vfUpdateWeaponAmmo		();
 	virtual	void					vfProcessItems			();
@@ -490,7 +490,7 @@ public:
 	IC		CALifeOnlineOfflineGroupBrain	&brain	() const;
 
 public:
-	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, float &fHitPower);
+	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, f32& fHitPower);
 	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();

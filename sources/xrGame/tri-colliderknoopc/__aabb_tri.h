@@ -7,34 +7,34 @@
 		//! Empty constructor
 		IC				Point()														{}
 		//! Constructor from floats
-		IC				Point(float _x, float _y, float _z) : x(_x), y(_y), z(_z)	{}
+		IC				Point(f32 _x, f32 _y, f32 _z) : x(_x), y(_y), z(_z)	{}
 		//! Constructor from array
-		IC				Point(float f[3]) : x(f[0]), y(f[1]), z(f[2])				{}
+		IC				Point(f32 f[3]) : x(f[0]), y(f[1]), z(f[2])				{}
 		//! Constructor from array
-		IC				Point(const float f[3]) : x(f[0]), y(f[1]), z(f[2])			{}
+		IC				Point(const f32 f[3]) : x(f[0]), y(f[1]), z(f[2])			{}
 		//! Copy constructor
 		IC				Point(const Point& p) : x(p.x), y(p.y), z(p.z)				{}
 		//! Destructor
 		IC				~Point()													{}
 
 		//! Returns MIN(x, y, z);
-		//IC	float		Min()								const		{ return MIN(x, MIN(y, z));												}
+		//IC	f32		Min()								const		{ return MIN(x, MIN(y, z));												}
 		//! Returns MAX(x, y, z);
-		//IC	float		Max()								const		{ return MAX(x, MAX(y, z));												}
+		//IC	f32		Max()								const		{ return MAX(x, MAX(y, z));												}
 		//! TO BE DOCUMENTED
 		//IC	Point&		Min(const Point& p)								{ x = MIN(x, p.x); y = MIN(y, p.y); z = MIN(z, p.z);	return *this;	}
 		//! TO BE DOCUMENTED
 		//IC	Point&		Max(const Point& p)								{ x = MAX(x, p.x); y = MAX(y, p.y); z = MAX(z, p.z);	return *this;	}
 
 		//! Computes square magnitude
-		IC	float		SquareMagnitude()					const		{ return x*x + y*y + z*z;												}
+		IC	f32		SquareMagnitude()					const		{ return x*x + y*y + z*z;												}
 		//! Computes magnitude
-		IC	float		Magnitude()							const		{ return _sqrt(x*x + y*y + z*z);										}
+		IC	f32		Magnitude()							const		{ return _sqrt(x*x + y*y + z*z);										}
 
 		//! Return largest axis
 		IC	u32			LargestAxis()						const
 						{
-							const float* Vals = &x;
+							const f32* Vals = &x;
 							u32 m = 0;
 							if(Vals[1] > Vals[m]) m = 1;
 							if(Vals[2] > Vals[m]) m = 2;
@@ -50,14 +50,14 @@
 		//! Operator for Point Minus = Point - Point.
 		ICF	Point		operator-(const Point& p)			const		{ return Point(x - p.x, y - p.y, z - p.z);			}
 		//! Operator for Point Scale = Point * float.
-		ICF	Point		operator*(float s)					const		{ return Point(x * s,   y * s,   z * s );			}
+		ICF	Point		operator*(f32 s)					const		{ return Point(x * s,   y * s,   z * s );			}
 		//! Operator for Point Scale = float * Point.
-		friend			Point		operator*(float s, const Point& p)				{ return Point(s * p.x, s * p.y, s * p.z);			}
+		friend			Point		operator*(f32 s, const Point& p)				{ return Point(s * p.x, s * p.y, s * p.z);			}
 		//! Operator for Point Scale = Point / float.
-		ICF	Point		operator/(float s)					const		{ s = 1.0f / s; return Point(x * s, y * s, z * s);	}
+		ICF	Point		operator/(f32 s)					const		{ s = 1.0f / s; return Point(x * s, y * s, z * s);	}
 
 		//! Operator for float DotProd = Point | Point.
-		ICF	float		operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
+		ICF	f32		operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
 		//! Operator for Point VecProd = Point ^ Point.
 		ICF	Point		operator^(const Point& p)			const
 						{
@@ -70,16 +70,16 @@
 		//! Operator for Point += Point.
 		ICF	Point&		operator+=(const Point& p)						{ x += p.x; y += p.y; z += p.z;	return *this;		}
 		//! Operator for Point += float.
-		ICF	Point&		operator+=(float s)								{ x += s;   y += s;   z += s;	return *this;		}
+		ICF	Point&		operator+=(f32 s)								{ x += s;   y += s;   z += s;	return *this;		}
 
 		//! Operator for Point -= Point.
 		ICF	Point&		operator-=(const Point& p)						{ x -= p.x; y -= p.y; z -= p.z;	return *this;		}
 		//! Operator for Point -= float.
-		ICF	Point&		operator-=(float s)								{ x -= s;   y -= s;   z -= s;	return *this;		}
+		ICF	Point&		operator-=(f32 s)								{ x -= s;   y -= s;   z -= s;	return *this;		}
 		//! Operator for Point *= float.
-		ICF	Point&		operator*=(float s)								{ x *= s; y *= s; z *= s;		return *this;		}
+		ICF	Point&		operator*=(f32 s)								{ x *= s; y *= s; z *= s;		return *this;		}
 		//! Operator for Point /= float.
-		ICF	Point&		operator/=(float s)								{ s = 1.0f/s; x *= s; y *= s; z *= s; return *this; }
+		ICF	Point&		operator/=(f32 s)								{ s = 1.0f/s; x *= s; y *= s; z *= s; return *this; }
 
 		// Arithmetic operators
 		//! Operator for Point Mul = Point * Matrix3x3.
@@ -92,18 +92,18 @@
 	//					Point&		operator*=(const Matrix4x4& mat);
 
 		//! Access as array
-		ICF				operator	const	float*() const	{ return &x; }
+		ICF				operator	const	f32*() const	{ return &x; }
 		//! Access as array
-		ICF				operator			float*()		{ return &x; }
+		ICF				operator f32*()		{ return &x; }
 
 		public:
-						float		x;		//!< x coordinate
-						float		y;		//!< y coordinate
-						float		z;		//!< z coordinate
+			f32		x;		//!< x coordinate
+			f32		y;		//!< y coordinate
+			f32		z;		//!< z coordinate
 	};
 //using namespace CDB;
 using namespace Opcode;
-//typedef float*	Point;	
+//typedef f32*	Point;	
 //typedef	dVector3 Point
 //! This macro quickly finds the min & max values among 3 variables
 #define FINDMINMAX(x0, x1, x2, min, max)	\
@@ -118,7 +118,7 @@ using namespace Opcode;
 	if(x0>max&&x1>max&&x2>max)return false;
 
 //! TO BE DOCUMENTED
-ICF bool planeBoxOverlap_slow(const Point& normal, const float d, const Point& maxbox)
+ICF bool planeBoxOverlap_slow(const Point& normal, const f32 d, const Point& maxbox)
 {
 	Point vmin, vmax;
 	if(normal[0]>0.0f)	{ vmin[0] =-maxbox[0]; vmax[0]= maxbox[0]; }
@@ -132,9 +132,9 @@ ICF bool planeBoxOverlap_slow(const Point& normal, const float d, const Point& m
 	return	false		;
 }
 
-ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox)
+ICF bool planeBoxOverlap(const Point& normal, const f32 d, const Point& maxbox)
 {
-	float norm_box_proj=_abs(maxbox.x*normal.x)+_abs(maxbox.y*normal.y)+_abs(maxbox.z*normal.z);
+	f32 norm_box_proj=_abs(maxbox.x*normal.x)+_abs(maxbox.y*normal.y)+_abs(maxbox.z*normal.z);
 	if(d>-norm_box_proj&&d<norm_box_proj)return true;
 	else return false;
 }
@@ -143,7 +143,7 @@ ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox
 #define AXISTEST_X01(a, b, fa, fb)							\
 	min = a*v0.y - b*v0.z;									\
 	max = a*v2.y - b*v2.z;									\
-	if(min>max) {const float tmp=max; max=min; min=tmp;	}	\
+	if(min>max) {const f32 tmp=max; max=min; min=tmp;	}	\
 	rad = fa * extents.y + fb * extents.z;					\
 	if(min>rad || max<-rad) return false;
 
@@ -151,7 +151,7 @@ ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox
 #define AXISTEST_X2(a, b, fa, fb)							\
 	min = a*v0.y - b*v0.z;									\
 	max = a*v1.y - b*v1.z;									\
-	if(min>max) {const float tmp=max; max=min; min=tmp;	}	\
+	if(min>max) {const f32 tmp=max; max=min; min=tmp;	}	\
 	rad = fa * extents.y + fb * extents.z;					\
 	if(min>rad || max<-rad) return false;
 
@@ -159,7 +159,7 @@ ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox
 #define AXISTEST_Y02(a, b, fa, fb)							\
 	min = b*v0.z - a*v0.x;									\
 	max = b*v2.z - a*v2.x;									\
-	if(min>max) {const float tmp=max; max=min; min=tmp;	}	\
+	if(min>max) {const f32 tmp=max; max=min; min=tmp;	}	\
 	rad = fa * extents.x + fb * extents.z;					\
 	if(min>rad || max<-rad) return false;
 
@@ -167,7 +167,7 @@ ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox
 #define AXISTEST_Y1(a, b, fa, fb)							\
 	min = b*v0.z - a*v0.x;									\
 	max = b*v1.z - a*v1.x;									\
-	if(min>max) {const float tmp=max; max=min; min=tmp;	}	\
+	if(min>max) {const f32 tmp=max; max=min; min=tmp;	}	\
 	rad = fa * extents.x + fb * extents.z;					\
 	if(min>rad || max<-rad) return false;
 
@@ -175,7 +175,7 @@ ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox
 #define AXISTEST_Z12(a, b, fa, fb)							\
 	min = a*v1.x - b*v1.y;									\
 	max = a*v2.x - b*v2.y;									\
-	if(min>max) {const float tmp=max; max=min; min=tmp;	}	\
+	if(min>max) {const f32 tmp=max; max=min; min=tmp;	}	\
 	rad = fa * extents.x + fb * extents.y;					\
 	if(min>rad || max<-rad) return false;
 
@@ -183,7 +183,7 @@ ICF bool planeBoxOverlap(const Point& normal, const float d, const Point& maxbox
 #define AXISTEST_Z0(a, b, fa, fb)							\
 	min = a*v0.x - b*v0.y;									\
 	max = a*v1.x - b*v1.y;									\
-	if(min>max) {const float tmp=max; max=min; min=tmp;	}	\
+	if(min>max) {const f32 tmp=max; max=min; min=tmp;	}	\
 	rad = fa * extents.x + fb * extents.y;					\
 	if(min>rad || max<-rad) return false;
 	
@@ -225,7 +225,7 @@ IC	bool		aabb_tri_aabb(Point center,Point extents,const Point* mLeafVerts)
 	const Point e0 = v1 - v0;
 	const Point e1 = v2 - v1;
 	const Point normal = e0 ^ e1;
-	const float d = -normal|v0;
+	const f32 d = -normal|v0;
 	bool	r0 = planeBoxOverlap(normal, d, extents);
 	
 #ifdef DEBUG
@@ -250,7 +250,7 @@ IC	bool		__aabb_tri		(Point center,Point extents,const Point* mLeafVerts)
 		v2.x = mLeafVerts[2].x - center.x;
 		
 		// First, test overlap in the {x,y,z}-directions
-		float min,max;
+		f32 min,max;
 		// Find min, max of the triangle in x-direction, and test for overlap in X
 		FINDMINMAX(v0.x, v1.x, v2.x, min, max);
 		if(min>extents.x || max<-extents.x) return false;
@@ -277,7 +277,7 @@ IC	bool		__aabb_tri		(Point center,Point extents,const Point* mLeafVerts)
 		const Point e0 = v1 - v0;
 		const Point e1 = v2 - v1;
 		const Point normal = e0 ^ e1;
-		const float d = -normal|v0;
+		const f32 d = -normal|v0;
 		bool	r0 = planeBoxOverlap(normal, d, extents);
 #ifdef DEBUG
 		if	(r0 != planeBoxOverlap_slow(normal, d, extents))
@@ -293,33 +293,33 @@ IC	bool		__aabb_tri		(Point center,Point extents,const Point* mLeafVerts)
 		// 3) "Class III" tests
 		//if(bClass3)
 		{
-			float rad;
-			float min, max;
+			f32 rad;
+			f32 min, max;
 			// compute triangle edges
 			// - edges lazy evaluated to take advantage of early exits
 			// - fabs precomputed (half less work, possible since extents are always >0)
 			// - customized macros to take advantage of the null component
 			// - axis vector3 discarded, possibly saves useless movs
 			
-			const float fey0 = _abs(e0.y);
-			const float fez0 = _abs(e0.z);
+			const f32 fey0 = _abs(e0.y);
+			const f32 fez0 = _abs(e0.z);
 			AXISTEST_X01(e0.z, e0.y, fez0, fey0);
-			const float fex0 = _abs(e0.x);
+			const f32 fex0 = _abs(e0.x);
 			AXISTEST_Y02(e0.z, e0.x, fez0, fex0);
 			AXISTEST_Z12(e0.y, e0.x, fey0, fex0);
 			
-			const float fey1 = _abs(e1.y);
-			const float fez1 = _abs(e1.z);
+			const f32 fey1 = _abs(e1.y);
+			const f32 fez1 = _abs(e1.z);
 			AXISTEST_X01(e1.z, e1.y, fez1, fey1);
-			const float fex1 = _abs(e1.x);
+			const f32 fex1 = _abs(e1.x);
 			AXISTEST_Y02(e1.z, e1.x, fez1, fex1);
 			AXISTEST_Z0(e1.y, e1.x, fey1, fex1);
 			
 			const Point e2 = mLeafVerts[0] - mLeafVerts[2];
-			const float fey2 = _abs(e2.y);
-			const float fez2 = _abs(e2.z);
+			const f32 fey2 = _abs(e2.y);
+			const f32 fez2 = _abs(e2.z);
 			AXISTEST_X2(e2.z, e2.y, fez2, fey2);
-			const float fex2 = _abs(e2.x);
+			const f32 fex2 = _abs(e2.x);
 			AXISTEST_Y1(e2.z, e2.x, fez2, fex2);
 			AXISTEST_Z12(e2.y, e2.x, fey2, fex2);
 		}

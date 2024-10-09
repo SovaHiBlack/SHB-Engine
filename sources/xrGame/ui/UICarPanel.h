@@ -1,8 +1,6 @@
 #pragma once
 
 #include "uiwindow.h"
-//#include "UIPointerGage.h"
-
 
 class CUICarPanel : public CUIWindow
 {
@@ -11,10 +9,8 @@ private:
 
 	CUIStatic			UIStaticCarHealth;
 	CUIProgressBar		UICarHealthBar;
-//	CUIPointerGage		UISpeedometer;
-//	CUIPointerGage		UITachometer;
-public: 
 
+public:
 	// Установить 
 	void				SetCarHealth	(float value);
 	void				SetSpeed		(float speed);

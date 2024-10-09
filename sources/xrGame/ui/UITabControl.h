@@ -26,7 +26,7 @@ public:
 	virtual void		OnStaticFocusLost			(CUIWindow* pWnd);
 
 	// Добавление кнопки-закладки в список закладок контрола
-	bool				AddItem						(pcstr pItemName, pcstr pTexName, float x, float y, float width, float height);
+	bool				AddItem						(pcstr pItemName, pcstr pTexName, f32 x, f32 y, f32 width, f32 height);
 	bool				AddItem						(CUITabButton *pButton);
 
 	void				RemoveItem					(const u32 Index);

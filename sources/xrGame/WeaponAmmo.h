@@ -14,15 +14,14 @@ public:
 		cfCanBeUnlimited		= (1<<2),
 		cfExplosive				= (1<<3),
 	};
-	float	m_kDist, m_kDisp, m_kHit, m_kImpulse, m_kPierce, m_kAP, m_kAirRes;
+	f32	m_kDist, m_kDisp, m_kHit, m_kImpulse, m_kPierce, m_kAP, m_kAirRes;
 	int		m_buckShot;
-	float	m_impair;
-	float	fWallmarkSize;
+	f32	m_impair;
+	f32	fWallmarkSize;
 	
 	u8		m_u8ColorID;
 	u8		m_LocalAmmoType;
 
-	
 	u16		bullet_material_idx;
 	Flags8	m_flags;
 
@@ -47,14 +46,14 @@ public:
 	virtual void					renderable_Render	();
 
 	virtual bool					Useful				() const;
-	virtual float					Weight				();
+	virtual f32					Weight				();
 
 	bool							Get					(CCartridge &cartridge);
 
-	float		m_kDist, m_kDisp, m_kHit, m_kImpulse, m_kPierce, m_kAP, m_kAirRes;
+	f32		m_kDist, m_kDisp, m_kHit, m_kImpulse, m_kPierce, m_kAP, m_kAirRes;
 	int			m_buckShot;
-	float		m_impair;
-	float		fWallmarkSize;
+	f32		m_impair;
+	f32		fWallmarkSize;
 	u8			m_u8ColorID;
 
 	u16			m_boxSize;

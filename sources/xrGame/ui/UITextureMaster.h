@@ -25,8 +25,8 @@ public:
 
 	static void		InitTexture			(pcstr texture_name,		IUISimpleTextureControl* tc);
 	static void		InitTexture			(pcstr texture_name, pcstr shader_name, IUISimpleTextureControl* tc);
-	static float	GetTextureHeight	(pcstr texture_name);
-	static float	GetTextureWidth		(pcstr texture_name);
+	static f32	GetTextureHeight	(pcstr texture_name);
+	static f32	GetTextureWidth		(pcstr texture_name);
 	static Frect	GetTextureRect		(pcstr texture_name);
 	static pcstr	GetTextureFileName	(pcstr texture_name);
 	static void		GetTextureShader	(pcstr texture_name, ref_shader& sh);
