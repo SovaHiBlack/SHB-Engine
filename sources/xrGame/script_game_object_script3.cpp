@@ -221,7 +221,7 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 
 		// Script Zone
 		.def("active_zone_contact",			&CScriptGameObject::active_zone_contact)
-		.def("inside",						(bool (CScriptGameObject::*)(const Fvector &, float) const)(&CScriptGameObject::inside))
+		.def("inside",						(bool (CScriptGameObject::*)(const Fvector &, f32) const)(&CScriptGameObject::inside))
 		.def("inside",						(bool (CScriptGameObject::*)(const Fvector &) const)(&CScriptGameObject::inside))
 		.def("set_fastcall",				&CScriptGameObject::set_fastcall)
 		.def("set_const_force",				&CScriptGameObject::set_const_force)
@@ -234,10 +234,10 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 		.def("make_object_visible_somewhen",&CScriptGameObject::make_object_visible_somewhen)
 
 		.def("buy_condition",				(void (CScriptGameObject::*)(CScriptIniFile*, pcstr))(&CScriptGameObject::buy_condition))
-		.def("buy_condition",				(void (CScriptGameObject::*)(float,float))(&CScriptGameObject::buy_condition))
+		.def("buy_condition",				(void (CScriptGameObject::*)(f32, f32))(&CScriptGameObject::buy_condition))
 		.def("show_condition",				&CScriptGameObject::show_condition)
 		.def("sell_condition",				(void (CScriptGameObject::*)(CScriptIniFile*, pcstr))(&CScriptGameObject::sell_condition))
-		.def("sell_condition",				(void (CScriptGameObject::*)(float,float))(&CScriptGameObject::sell_condition))
+		.def("sell_condition",				(void (CScriptGameObject::*)(f32, f32))(&CScriptGameObject::sell_condition))
 		.def("buy_supplies",				&CScriptGameObject::buy_supplies)
 
 		.def("sound_prefix",				(pcstr(CScriptGameObject::*)() const)(&CScriptGameObject::sound_prefix))

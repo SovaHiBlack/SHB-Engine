@@ -23,7 +23,7 @@
 
 using namespace StalkerSpace;
 
-const float start_fire_angle_difference	= PI_DIV_8;
+const f32 start_fire_angle_difference	= PI_DIV_8;
 
 CStalkerActionCombatBase::CStalkerActionCombatBase	(CAI_Stalker *object, pcstr action_name) :
 	inherited	(object,action_name)
@@ -55,7 +55,7 @@ void CStalkerActionCombatBase::fire					()
 	Fvector								enemy_position = object().memory().enemy().selected()->Position();
 	Fvector								object_position = object().Position();
 	Fvector								direction = Fvector().sub(enemy_position,object_position);
-	float								yaw,pitch;
+	f32								yaw,pitch;
 	direction.getHP						(yaw,pitch);
 	const MonsterSpace::SBoneRotation	&current_angles = object().movement().head_orientation();
 	if (angle_difference(-yaw,current_angles.current.yaw) > start_fire_angle_difference) {
@@ -64,7 +64,7 @@ void CStalkerActionCombatBase::fire					()
 	}
 
 	u32									min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float								distance = enemy_position.distance_to(object_position);
+	f32								distance = enemy_position.distance_to(object_position);
 	select_queue_params					(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal	(eObjectActionFire1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 }
@@ -72,7 +72,7 @@ void CStalkerActionCombatBase::fire					()
 void CStalkerActionCombatBase::aim_ready			()
 {
 	u32									min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
+	f32								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
 	select_queue_params					(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal	(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 }
@@ -80,12 +80,12 @@ void CStalkerActionCombatBase::aim_ready			()
 void CStalkerActionCombatBase::aim_ready_force_full	()
 {
 	u32									min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
+	f32								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
 	select_queue_params					(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal	(eObjectActionAimForceFull1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 }
 
-void CStalkerActionCombatBase::select_queue_params	(const float &distance, u32 &min_queue_size, u32 &max_queue_size, u32 &min_queue_interval, u32 &max_queue_interval) const
+void CStalkerActionCombatBase::select_queue_params	(const f32& distance, u32 &min_queue_size, u32 &max_queue_size, u32 &min_queue_interval, u32 &max_queue_interval) const
 {
 	/**/
 	int									weapon_type = 6;

@@ -217,7 +217,7 @@ bool CSightAction::change_body_speed			() const
 	return	(false);
 }
 
-float CSightAction::body_speed					() const
+f32 CSightAction::body_speed					() const
 {
 	return	(object().movement().m_body.speed);
 }
@@ -227,7 +227,7 @@ bool CSightAction::change_head_speed			() const
 	return	((SightManager::eSightTypeCoverLookOver == m_sight_type) && (m_internal_state != 2));
 }
 
-float CSightAction::head_speed					() const
+f32 CSightAction::head_speed					() const
 {
 	VERIFY	(SightManager::eSightTypeCoverLookOver == m_sight_type);
 	return	(PI_DIV_8*.5f);

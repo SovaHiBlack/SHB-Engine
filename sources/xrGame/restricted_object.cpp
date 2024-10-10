@@ -123,7 +123,7 @@ bool CRestrictedObject::accessible			(const Fvector &position) const
 	STOP_PROFILE;
 }
 
-bool CRestrictedObject::accessible			(const Fvector &position, float radius) const
+bool CRestrictedObject::accessible			(const Fvector &position, f32 radius) const
 {
 	START_PROFILE("Restricted Object/Accessible");
 	Fsphere						sphere;
@@ -141,7 +141,7 @@ bool CRestrictedObject::accessible			(u32 level_vertex_id) const
 	STOP_PROFILE;
 }
 
-bool CRestrictedObject::accessible			(u32 level_vertex_id, float radius) const
+bool CRestrictedObject::accessible			(u32 level_vertex_id, f32 radius) const
 {
 	START_PROFILE("Restricted Object/Accessible");
 	VERIFY						(ai().level_graph().valid_vertex_id(level_vertex_id));
@@ -149,7 +149,7 @@ bool CRestrictedObject::accessible			(u32 level_vertex_id, float radius) const
 	STOP_PROFILE;
 }
 
-void CRestrictedObject::add_border			(u32 start_vertex_id, float radius) const
+void CRestrictedObject::add_border			(u32 start_vertex_id, f32 radius) const
 {
 	START_PROFILE("Restricted Object/Add Border");	
 	

@@ -17,7 +17,7 @@ public:
 	typedef CEffectorPP inherited;
 	EEffectorPPType		m_tEffectorType;
 
-	IC					CScriptEffector		(int iType, float time);
+	IC					CScriptEffector		(int iType, f32 time);
 	virtual				~CScriptEffector	();
 	virtual	BOOL		Process				(SPPInfo &pp);
 	virtual	bool		process				(SPPInfo *pp);

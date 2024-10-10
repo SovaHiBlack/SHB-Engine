@@ -30,8 +30,8 @@ public:
 	CUIInteractiveBackground();
 	virtual ~CUIInteractiveBackground();
 
-	virtual void Init(float x, float y, float width, float height);
-	virtual void Init(pcstr texture_e, float x, float y, float width, float height);
+	virtual void Init(f32 x, f32 y, f32 width, f32 height);
+	virtual void Init(pcstr texture_e, f32 x, f32 y, f32 width, f32 height);
 			T*	 CreateE();
 			T*	 CreateD();
 			T*	 CreateT();
@@ -47,8 +47,8 @@ public:
 	virtual void SetState(UIState state);
 	virtual void Draw();
 
-	virtual void SetWidth(float width);
-	virtual void SetHeight(float heigth);
+	virtual void SetWidth(f32 width);
+	virtual void SetHeight(f32 heigth);
 
 protected:
 	T* m_stateCurrent;
@@ -73,12 +73,12 @@ CUIInteractiveBackground<T>::~CUIInteractiveBackground(){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::Init(float x, float y, float width, float height){
+void CUIInteractiveBackground<T>::Init(f32 x, f32 y, f32 width, f32 height){
 	CUIWindow::Init(x, y, width, height);
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::Init(pcstr texture_e, float x, float y, float width, float height){
+void CUIInteractiveBackground<T>::Init(pcstr texture_e, f32 x, f32 y, f32 width, f32 height){
 	CUIWindow::Init(x, y, width, height);
 
 	InitEnabledState(texture_e);
@@ -243,7 +243,7 @@ void CUIInteractiveBackground<T>::Draw(){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::SetWidth(float width){
+void CUIInteractiveBackground<T>::SetWidth(f32 width){
 	if (m_stateEnabled)
 		m_stateEnabled->SetWidth(width);
 	if (m_stateDisabled)
@@ -255,7 +255,7 @@ void CUIInteractiveBackground<T>::SetWidth(float width){
 }
 
 template <class T>
-void CUIInteractiveBackground<T>::SetHeight(float heigth){
+void CUIInteractiveBackground<T>::SetHeight(f32 heigth){
 	if (m_stateEnabled)
 		m_stateEnabled->SetHeight(heigth);
 	if (m_stateDisabled)

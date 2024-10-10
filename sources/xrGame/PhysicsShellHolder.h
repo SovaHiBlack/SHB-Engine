@@ -14,7 +14,7 @@ class CIKLimbsController;
 
 struct SCollisionHitCallback
 {
-	typedef								void					CollisionHitCallbackFun		(CGameObject* obj,float min_cs,float max_cs,float &cs,float &hl,const ICollisionDamageInfo* di,SCollisionHitCallback* slf)		;
+	typedef								void					CollisionHitCallbackFun		(CGameObject* obj, f32 min_cs, f32 max_cs, f32& cs, f32& hl,const ICollisionDamageInfo* di,SCollisionHitCallback* slf)		;
 	CollisionHitCallbackFun				*m_collision_hit_callback																																						;
 	void								*m_data																																											;
 	SCollisionHitCallback()
@@ -28,7 +28,7 @@ struct SCollisionHitCallback
 		m_collision_hit_callback=cc;
 		m_data=data;
 	}
-	void call(CGameObject* obj,float min_cs,float max_cs,float &cs,float &hl,const ICollisionDamageInfo* di)
+	void call(CGameObject* obj, f32 min_cs, f32 max_cs, f32& cs, f32& hl,const ICollisionDamageInfo* di)
 	{
 		VERIFY(m_collision_hit_callback);
 		m_collision_hit_callback(obj,min_cs,max_cs,cs,hl,di,this);
@@ -39,21 +39,18 @@ class CPhysicsShellHolder:  public CGameObject,
 	
 {
 	bool				b_sheduled;
+
 public:
 	void	SheduleRegister		(){if(!IsSheduled())shedule_register();b_sheduled=true;}
 	void	SheduleUnregister	(){if(IsSheduled())shedule_unregister();b_sheduled=false;}
 IC	bool	IsSheduled			(){return b_sheduled;}	
-public:
 
+public:
 	typedef CGameObject inherited;
-	
 
 	CPhysicsShell			*m_pPhysicsShell;
 
-
 	CPhysicsShellHolder							();
-
-
 
 	IC CPhysicsShell	*&PPhysicsShell				()		
 	{
@@ -77,23 +74,23 @@ public:
 	virtual SCollisionHitCallback		*get_collision_hit_callback ()							{return NULL;}
 	virtual bool						set_collision_hit_callback	(SCollisionHitCallback *cc)	{return false;}
 	virtual void						enable_notificate			()							{;}
-public:
 
+public:
 	virtual void			PHGetLinearVell		(Fvector& velocity);
 	virtual void			PHSetLinearVell		(Fvector& velocity);
 	virtual void			PHSetMaterial		(pcstr m);
 	virtual void			PHSetMaterial		(u16 m);
 			void			PHSaveState			(NET_Packet &P);
 			void			PHLoadState			(IReader &P);
-	virtual F32				GetMass				();
-	virtual	void			PHHit				(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type=ALife::eHitTypeWound);
+	virtual f32				GetMass				();
+	virtual	void			PHHit				(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type=ALife::eHitTypeWound);
 	virtual	void			Hit					(SHit* pHDS);
 ///////////////////////////////////////////////////////////////////////
 	virtual u16				PHGetSyncItemsNumber();
 	virtual CPHSynchronize*	PHGetSyncItem		(u16 item);
 	virtual void			PHUnFreeze			();
 	virtual void			PHFreeze			();
-	virtual float			EffectiveGravity	();
+	virtual f32			EffectiveGravity	();
 ///////////////////////////////////////////////////////////////
 	virtual void			create_physic_shell		();
 	virtual void			activate_physic_shell	();

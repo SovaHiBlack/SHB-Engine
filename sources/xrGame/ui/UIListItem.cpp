@@ -27,25 +27,24 @@ CUIListItem::~CUIListItem(void)
 {
 }
 
-void CUIListItem::Init(float x, float y, float width, float height)
+void CUIListItem::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	inherited::Init(x, y, width, height);
 	SetPressMode(CUIButton::DOWN_PRESS);
 	SetPushOffset( Fvector2().set(0.0f,0.0f));
 }
 
-void CUIListItem::InitTexture(pcstr tex_name){
+void CUIListItem::InitTexture(pcstr tex_name)
+{
 	CUIButton::InitTexture(tex_name);
 	SetTextX(m_UIStaticItem.GetRect().width());
 }
 
-
-void CUIListItem::Init(pcstr str, float x, float y, float width, float height)
+void CUIListItem::Init(pcstr str, f32 x, f32 y, f32 width, f32 height)
 {
 	Init(x,y,width, height);
 	SetTextST(str);	
 }
-
 
 bool CUIListItem::IsHighlightText()
 {

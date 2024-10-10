@@ -43,7 +43,7 @@ void CUIMessageBox::Clear(){
 	xr_delete(m_UIStaticHost);
 }
 
-bool CUIMessageBox::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIMessageBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	return inherited::OnMouse(x, y, mouse_action);
 }

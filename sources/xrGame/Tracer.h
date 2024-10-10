@@ -16,5 +16,5 @@ public:
 						CTracer		();
 						~CTracer	();
 
-	void				Render		(FVF::LIT*&verts, const Fvector& pos, const Fvector& center, const Fvector& dir, float length, float width, u8 colorID);
+	void				Render		(FVF::LIT*&verts, const Fvector& pos, const Fvector& center, const Fvector& dir, f32 length, f32 width, u8 colorID);
 };

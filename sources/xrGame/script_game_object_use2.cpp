@@ -87,7 +87,7 @@ void CScriptGameObject::skip_transfer_enemy(bool val)
 	if (monster) monster->skip_transfer_enemy(val);
 }
 
-void CScriptGameObject::set_home(pcstr name, float r_min, float r_max, bool aggressive)
+void CScriptGameObject::set_home(pcstr name, f32 r_min, f32 r_max, bool aggressive)
 {
 	CBaseMonster *monster = smart_cast<CBaseMonster *>(&object());
 	if (monster) monster->Home->setup(name,r_min,r_max,aggressive);
@@ -127,7 +127,7 @@ void CScriptGameObject::berserk()
 	if (monster) monster->set_berserk();
 }
 
-void CScriptGameObject::set_custom_panic_threshold(float value)
+void CScriptGameObject::set_custom_panic_threshold(f32 value)
 {
 	CBaseMonster *monster = smart_cast<CBaseMonster *>(&object());
 	if (monster) monster->set_custom_panic_threshold(value);

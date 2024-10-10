@@ -19,7 +19,7 @@ IC	void CScriptSound::Play					(CScriptGameObject *object)
 	Play					(object,0.f,0);
 }
 
-IC	void CScriptSound::Play					(CScriptGameObject *object, float delay)
+IC	void CScriptSound::Play					(CScriptGameObject *object, f32 delay)
 {
 	Play					(object,delay,0);
 }
@@ -29,42 +29,42 @@ IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const Fvector &pos
 	PlayAtPos				(object,position,0.f,0);
 }
 
-IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const Fvector &position, float delay)
+IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const Fvector &position, f32 delay)
 {
 	PlayAtPos				(object,position,delay,0);
 }
 
-IC	void CScriptSound::SetMinDistance		(const float fMinDistance)
+IC	void CScriptSound::SetMinDistance		(const f32 fMinDistance)
 {
 	VERIFY				(m_sound._handle());
 	m_sound.set_range(fMinDistance,GetMaxDistance());
 }
 
-IC	void CScriptSound::SetMaxDistance		(const float fMaxDistance)
+IC	void CScriptSound::SetMaxDistance		(const f32 fMaxDistance)
 {
 	VERIFY				(m_sound._handle());
 	m_sound.set_range(GetMinDistance(),fMaxDistance);
 }
 
-IC	const float	CScriptSound::GetFrequency	() const
+IC	const f32	CScriptSound::GetFrequency	() const
 {
 	VERIFY				(m_sound._handle());
 	return				(m_sound.get_params()->freq);
 }
 
-IC	const float CScriptSound::GetMinDistance() const
+IC	const f32 CScriptSound::GetMinDistance() const
 {
 	VERIFY				(m_sound._handle());
 	return				(m_sound.get_params()->min_distance);
 }
 
-IC	const float CScriptSound::GetMaxDistance() const
+IC	const f32 CScriptSound::GetMaxDistance() const
 {
 	VERIFY				(m_sound._handle());
 	return				(m_sound.get_params()->max_distance);
 }
 
-IC	const float	CScriptSound::GetVolume		() const
+IC	const f32	CScriptSound::GetVolume		() const
 {
 	VERIFY				(m_sound._handle());
 	return				(m_sound.get_params()->volume);
@@ -94,13 +94,13 @@ IC	void CScriptSound::SetPosition			(const Fvector &position)
 	m_sound.set_position(position);
 }
 
-IC	void CScriptSound::SetFrequency			(float frequency)
+IC	void CScriptSound::SetFrequency			(f32 frequency)
 {
 	VERIFY				(m_sound._handle());
 	m_sound.set_frequency(frequency);
 }
 
-IC	void CScriptSound::SetVolume			(float volume)
+IC	void CScriptSound::SetVolume			(f32 volume)
 {
 	VERIFY				(m_sound._handle());
 	m_sound.set_volume	(volume);

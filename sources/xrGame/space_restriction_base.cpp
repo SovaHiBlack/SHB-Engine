@@ -18,12 +18,12 @@ bool CSpaceRestrictionBase::inside	(u32 level_vertex_id, bool partially_inside)
 	return							(inside(level_vertex_id,partially_inside,DEFAULT_RADIUS));
 }
 
-IC	Fvector construct_position		(u32 level_vertex_id, float x, float z)
+IC	Fvector construct_position		(u32 level_vertex_id, f32 x, f32 z)
 {
 	return							(Fvector().set(x,ai().level_graph().vertex_plane_y(level_vertex_id,x,z),z));
 }
 
-IC	bool CSpaceRestrictionBase_inside	(CSpaceRestrictionBase *self, const Fvector &position, const float &radius)
+IC	bool CSpaceRestrictionBase_inside	(CSpaceRestrictionBase *self, const Fvector &position, const f32& radius)
 {
 	Fsphere							sphere;
 	sphere.P						= position;
@@ -31,10 +31,10 @@ IC	bool CSpaceRestrictionBase_inside	(CSpaceRestrictionBase *self, const Fvector
 	return							(self->inside(sphere));
 }
 
-bool CSpaceRestrictionBase::inside	(u32 level_vertex_id, bool partially_inside, float radius)
+bool CSpaceRestrictionBase::inside	(u32 level_vertex_id, bool partially_inside, f32 radius)
 {
 	const Fvector					&position = ai().level_graph().vertex_position(level_vertex_id);
-	float							offset = ai().level_graph().header().cell_size()*.5f - EPS_L;
+	f32							offset = ai().level_graph().header().cell_size()*.5f - EPS_L;
 	if (partially_inside)
 		return						(
 			CSpaceRestrictionBase_inside(this,construct_position(level_vertex_id,position.x + offset,position.z + offset),radius) || 

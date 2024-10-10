@@ -17,7 +17,7 @@ struct SDrawStaticStruct :public IPureDestroyableObject{
 	SDrawStaticStruct	();
 	virtual	void	destroy			();
 	CUIStatic*		m_static;
-	float			m_endTime;
+	f32			m_endTime;
 	shared_str		m_name;
 	void			Draw();
 	void			Update();
@@ -62,7 +62,7 @@ protected:
 public:
 	virtual void		SetClGame				(game_cl_GameState* g){};
 
-	virtual				float					shedule_Scale		();
+	virtual				f32					shedule_Scale		();
 	virtual				void					shedule_Update		(u32 dt);
 	
 						CUIGameCustom			();
@@ -86,8 +86,8 @@ public:
 	virtual void		ReInitShownUI			() = 0;
 	virtual void		HideShownDialogs		(){};
 
-			void		AddCustomMessage		(pcstr id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color);
-			void		AddCustomMessage		(pcstr id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color/*, pcstr def_text*/, float flicker );
+			void		AddCustomMessage		(pcstr id, f32 x, f32 y, f32 font_size, CGameFont *pFont, u16 alignment, u32 color);
+			void		AddCustomMessage		(pcstr id, f32 x, f32 y, f32 font_size, CGameFont *pFont, u16 alignment, u32 color/*, pcstr def_text*/, f32 flicker );
 			void		CustomMessageOut		(pcstr id, pcstr msg, u32 color);
 			void		RemoveCustomMessage		(pcstr id);
 

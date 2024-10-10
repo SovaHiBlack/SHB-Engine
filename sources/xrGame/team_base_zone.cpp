@@ -42,7 +42,7 @@ void CTeamBaseZone::Center			(Fvector &C) const
 	XFORM().transform_tiny	(C,CFORM()->getSphere().P);
 }
 
-float CTeamBaseZone::Radius			() const
+f32 CTeamBaseZone::Radius			() const
 {
 	return						(CFORM()->getRadius());
 }

@@ -14,7 +14,7 @@
 #include "../hudsound.h"
 //для режима настройки HUD
 extern int				g_bHudAdjustMode;
-extern float			g_fHudAdjustValue;
+extern f32			g_fHudAdjustValue;
 
 class					CUIPdaMsgListItem;
 class					CLAItem;
@@ -108,7 +108,7 @@ public:
 	void				TurnOffWarningIcon				(EWarningIcons icon);
 
 	// Пороги изменения цвета индикаторов, загружаемые из system.ltx
-	typedef				xr_map<EWarningIcons, xr_vector<float> >	Thresholds;
+	typedef				xr_map<EWarningIcons, xr_vector<f32> >	Thresholds;
 	typedef				Thresholds::iterator						Thresholds_it;
 	Thresholds			m_Thresholds;
 
@@ -153,19 +153,23 @@ public:
 	CUIMotionIcon&		MotionIcon							(){return UIMotionIcon;}
 	void				OnConnected							();
 	void				reset_ui							();
+
 protected:
 	CInventoryItem*		m_pPickUpItem;
 	CUIStatic			UIPickUpItemIcon;
 
-	float				m_iPickUpItemIconX;
-	float				m_iPickUpItemIconY;
-	float				m_iPickUpItemIconWidth;
-	float				m_iPickUpItemIconHeight;
+	f32				m_iPickUpItemIconX;
+	f32				m_iPickUpItemIconY;
+	f32				m_iPickUpItemIconWidth;
+	f32				m_iPickUpItemIconHeight;
 
 	void				UpdatePickUpItem();
+
 public:
 	void				SetPickUpItem	(CInventoryItem* PickUpItem);
+
 #ifdef DEBUG
 	void				draw_adjust_mode					();
 #endif
+
 };

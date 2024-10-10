@@ -8,7 +8,7 @@
 #pragma once
 
 template <class Element>
-bool CUIListWnd::AddItem(pcstr  str, const float shift, void* pData,
+bool CUIListWnd::AddItem(pcstr  str, const f32 shift, void* pData,
 						 int value, int insertBeforeIdx)
 {
 	//создать новый элемент и добавить его в список

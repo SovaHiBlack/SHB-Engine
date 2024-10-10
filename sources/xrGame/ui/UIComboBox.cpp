@@ -40,7 +40,7 @@ void CUIComboBox::SetListLength(int length){
 	m_iListHeight = length;
 }
 
-void CUIComboBox::Init(float x, float y, float width){
+void CUIComboBox::Init(f32 x, f32 y, f32 width){
 	m_bInited = true;
 	if (0 == m_iListHeight)
 		m_iListHeight = 4;
@@ -61,9 +61,8 @@ void CUIComboBox::Init(float x, float y, float width){
 	// Button on right side of frame line
 //.	m_btn.Init							("ui_cb_button", width, 0, BTN_SIZE, BTN_SIZE);
 
-
 	// height of list equal to height of ONE element
-	float item_height					= CUITextureMaster::GetTextureHeight("ui_cb_listline_b");
+	f32 item_height					= CUITextureMaster::GetTextureHeight("ui_cb_listline_b");
 	m_list.Init							(0, CB_HEIGHT, width, item_height*m_iListHeight);
 	m_list.Init							();
 	m_list.SetTextColor					(m_textColor[0]);
@@ -77,7 +76,7 @@ void CUIComboBox::Init(float x, float y, float width){
 	m_frameWnd.Show						(false);
 }
 
-void CUIComboBox::Init(float x, float y, float width, float height)
+void CUIComboBox::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	this->Init		(x, y, width);
 }
@@ -228,7 +227,7 @@ void CUIComboBox::OnFocusReceive()
         SetState(S_Highlighted);
 }
 
-bool CUIComboBox::OnMouse(float x, float y, EUIMessages mouse_action){
+bool CUIComboBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action){
 	if(CUIWindow::OnMouse(x, y, mouse_action)) 
 		return true;
 

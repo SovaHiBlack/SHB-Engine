@@ -17,8 +17,8 @@ public:
 	virtual void 	SeveBackUpValue			();
 	virtual void 	Undo					();
 
-	virtual void Init(float x, float y, float width, float height);
-	virtual void SetTextX(float x) {/*do nothing*/}
+	virtual void Init(f32 x, f32 y, f32 width, f32 height);
+	virtual void SetTextX(f32 x) {/*do nothing*/}
 
 	//состояние кнопки
 	bool GetCheck()					{return m_eButtonState == BUTTON_PUSHED;}

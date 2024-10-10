@@ -26,13 +26,13 @@ public:
 		CScriptGameObject	*m_lua_game_object;
 		int					m_sound_type;
 		Fvector				m_position;
-		float				m_sound_power;
+		f32				m_sound_power;
 
 		IC				CSavedSound(
 							CScriptGameObject	*lua_game_object,
 							int				sound_type,
 							const Fvector	&position,
-							float			sound_power
+			f32			sound_power
 						) :
 						m_lua_game_object(lua_game_object),
 						m_sound_type(sound_type),
@@ -103,7 +103,7 @@ public:
 	virtual	bool				bfAssignObject			(CScriptEntityAction		*tpEntityAction);
 	virtual bool				bfAssignMonsterAction	(CScriptEntityAction		*tpEntityAction);
 
-	virtual void				sound_callback			(const CObject *object, int sound_type, const Fvector &position, float sound_power);
+	virtual void				sound_callback			(const CObject *object, int sound_type, const Fvector &position, f32 sound_power);
 
 	virtual pcstr				GetPatrolPathName		();
 			bool				bfScriptAnimation		();

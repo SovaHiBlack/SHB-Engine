@@ -55,17 +55,17 @@ public:
 	dReal						m_previous_frame_time										;
 	bool						b_frame_mark												;
 	dReal						m_frame_time												;
-	float						m_update_time												;
+	f32						m_update_time												;
 	u16							disable_count												;
-	float						m_gravity													;
+	f32						m_gravity													;
 								CPHWorld						()							;
 	virtual						~CPHWorld						(){}						;
 
 //IC	dSpaceID					GetSpace						()			{return Space;}	;
 IC	bool						Exist							()			{return b_exist ;}
 	void						Create							()							;
-	void						SetGravity						(float	g)					;
-IC	float						Gravity							()							{return m_gravity;}
+	void						SetGravity						(f32	g)					;
+IC	f32						Gravity							()							{return m_gravity;}
 	void						AddObject						(CPHObject* object)			;
 	void						AddUpdateObject					(CPHUpdateObject* object)	;
 	void						AddRecentlyDisabled				(CPHObject* object)			;
@@ -76,12 +76,12 @@ IC	float						Gravity							()							{return m_gravity;}
 IC	dGeomID						GetMotionRayGeom				()							{return m_motion_ray;}
 	void			static		SetStep							(dReal s)					;
 	void						Destroy							()							;
-IC	float						FrameTime						(bool frame_mark){return b_frame_mark==frame_mark ? m_frame_time :m_previous_frame_time;}
+IC	f32						FrameTime						(bool frame_mark){return b_frame_mark==frame_mark ? m_frame_time :m_previous_frame_time;}
 	
 	void						FrameStep						(dReal step=0.025f)			;
 	void						Step							()							;
 	void						StepTouch						()							;
-	void						CutVelocity						(float l_limit, float a_limit);
+	void						CutVelocity						(f32 l_limit, f32 a_limit);
 	void						GetState						(V_PH_WORLD_STATE& state)		;
 	void 						Freeze							()							;
 	void 						UnFreeze						()							;

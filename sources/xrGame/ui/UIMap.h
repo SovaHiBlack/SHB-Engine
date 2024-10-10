@@ -12,7 +12,8 @@ protected:
 	Frect			m_BoundRect;// real map size (meters)
 	Flags16			m_flags;
 	enum EFlags{	eLocked	=(1<<0),};
-	float			m_pointer_dist;
+	f32			m_pointer_dist;
+
 public:
 	Frect			m_prevRect;
 					CUICustomMap					();
@@ -24,11 +25,11 @@ public:
 	Fvector2		ConvertLocalToReal				(const Fvector2& src);
 	Fvector2		ConvertRealToLocalNoTransform	(const Fvector2& src);// meters->pixels (relatively own left-top pos)
 
-	bool			GetPointerTo					(const Fvector2& src, float item_radius, Fvector2& pos, float& heading);//position and heading for drawing pointer to src pos
+	bool			GetPointerTo					(const Fvector2& src, f32 item_radius, Fvector2& pos, f32& heading);//position and heading for drawing pointer to src pos
 
-	void			FitToWidth						(float width);
-	void			FitToHeight						(float height);
-	float			GetCurrentZoom					(){return GetWndRect().width()/m_BoundRect.width();}
+	void			FitToWidth						(f32 width);
+	void			FitToHeight						(f32 height);
+	f32			GetCurrentZoom					(){return GetWndRect().width()/m_BoundRect.width();}
 	const Frect&    BoundRect						()const					{return m_BoundRect;};
 	virtual void	OptimalFit						(const Frect& r);
 
@@ -41,8 +42,9 @@ public:
 			bool	NeedShowPointer					(Frect r);
 			bool	Locked							()				{return !!m_flags.test(eLocked);}
 			void	SetLocked						(bool b)		{m_flags.set(eLocked,b);}
-			void	SetPointerDistance				(float d)		{m_pointer_dist=d;};
-			float	GetPointerDistance				()				{return m_pointer_dist;};
+			void	SetPointerDistance				(f32 d)		{m_pointer_dist=d;};
+			f32	GetPointerDistance				()				{return m_pointer_dist;};
+
 protected:
 	virtual void	UpdateSpots						() {};
 };
@@ -50,31 +52,31 @@ protected:
 
 class CUIGlobalMap: public CUICustomMap{
 	typedef  CUICustomMap inherited;
-public:
+
 private:
 	shared_str		m_prev_active_map;
 	CUIMapWnd*		m_mapWnd;
-	float			m_minZoom;
-	float			m_max_zoom;
-public:
+	f32			m_minZoom;
+	f32			m_max_zoom;
 
+public:
 	virtual Fvector2 ConvertRealToLocal		(const Fvector2& src);// pixels->pixels (relatively own left-top pos)
 
 					CUIGlobalMap			(CUIMapWnd*	pMapWnd);
 	virtual			~CUIGlobalMap			();
 	
-	IC void			SetMinZoom				(float zoom){m_minZoom=zoom;}
-	IC float		GetMinZoom				(){return m_minZoom;}
-	IC float		GetMaxZoom				(){return m_max_zoom;}
-	IC void			SetMaxZoom				(float zoom){m_max_zoom = zoom;}
+	IC void			SetMinZoom				(f32 zoom){m_minZoom=zoom;}
+	IC f32		GetMinZoom				(){return m_minZoom;}
+	IC f32		GetMaxZoom				(){return m_max_zoom;}
+	IC void			SetMaxZoom				(f32 zoom){m_max_zoom = zoom;}
 
 	virtual void	Init					(shared_str name, CInifile& gameLtx, pcstr sh_name);
-	virtual bool	OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual bool	OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 
 	CUIMapWnd*		MapWnd					() {return m_mapWnd;}
 	void			MoveWndDelta			(const Fvector2& d);
 
-	float			CalcOpenRect			(const Fvector2& center_point, Frect& map_desired_rect, float tgt_zoom);
+	f32			CalcOpenRect			(const Fvector2& center_point, Frect& map_desired_rect, f32 tgt_zoom);
 
 	void			ClipByVisRect			();
 	virtual void	Update					();
@@ -96,7 +98,7 @@ public:
 	const Frect&				GlobalRect			() const								{return m_GlobalRect;}
 	virtual void				Draw				();
 	virtual void				Update				();
-	virtual bool				OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual bool				OnMouse				(f32 x, f32 y, EUIMessages mouse_action);
 	virtual void				SendMessage			(CUIWindow* pWnd, s16 msg, void* pData);
 	
 	Frect						CalcWndRectOnGlobal	();
@@ -106,8 +108,6 @@ public:
 
 protected:
 	virtual void				UpdateSpots			();
-
-
 };
 
 class CUIMiniMap: public CUICustomMap{
@@ -117,7 +117,7 @@ public:
 								CUIMiniMap			();
 	virtual						~CUIMiniMap			();
 	virtual void				Init				(shared_str name, CInifile& gameLtx, pcstr sh_name);
+
 protected:
 	virtual void				UpdateSpots			();
-
 };

@@ -3,10 +3,10 @@
 
 class CSafeValue
 {
-	float					m_safe_value;
+	f32					m_safe_value;
 
 public:
-							CSafeValue	(float val)
+							CSafeValue	(f32 val)
 	{
 		R_ASSERT(_valid(val));
 		m_safe_value = val;
@@ -15,7 +15,7 @@ public:
 	{
 		m_safe_value = 0.0f;
 	}
-	IC void					new_val		(float& val)
+	IC void					new_val		(f32& val)
 	{
 		if (_valid(val))
 		{
@@ -33,7 +33,7 @@ class CSafeVector3
 	CSafeValue				m_safe_values[3];
 
 public:
-	IC void					new_val		(float* val)
+	IC void					new_val		(f32* val)
 	{
 		m_safe_values[0].new_val(val[0]);
 		m_safe_values[1].new_val(val[1]);
@@ -46,7 +46,7 @@ class CSafeVector4
 	CSafeValue				m_safe_values[4];
 
 public:
-	IC void					new_val		(float* val)
+	IC void					new_val		(f32* val)
 	{
 		m_safe_values[0].new_val(val[0]);
 		m_safe_values[1].new_val(val[1]);

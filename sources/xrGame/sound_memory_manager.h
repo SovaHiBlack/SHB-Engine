@@ -52,17 +52,17 @@ private:
 private:
 	u32							m_last_sound_time;
 	u32							m_sound_decrease_quant;
-	float						m_decrease_factor;
-	float						m_min_sound_threshold;
-	float						m_sound_threshold;
-	float						m_self_sound_factor;
+	f32						m_decrease_factor;
+	f32						m_min_sound_threshold;
+	f32						m_sound_threshold;
+	f32						m_self_sound_factor;
 
 private:
-	float						m_weapon_factor;
-	float						m_item_factor;
-	float						m_npc_factor;
-	float						m_anomaly_factor;
-	float						m_world_factor;
+	f32						m_weapon_factor;
+	f32						m_item_factor;
+	f32						m_npc_factor;
+	f32						m_anomaly_factor;
+	f32						m_world_factor;
 
 private:
 #ifdef USE_SELECTED_SOUND
@@ -73,7 +73,7 @@ private:
 	IC		void				update_sound_threshold	();
 	IC		u32					priority				(const CSoundObject &sound) const;
 			void				add						(const CSoundObject &sound_object, bool check_for_existance = false);
-			void				add						(const CObject *object, int sound_type, const Fvector &position, float sound_power);
+			void				add						(const CObject *object, int sound_type, const Fvector &position, f32 sound_power);
 
 protected:
 	IC		void				priority				(const ESoundTypes &sound_type, u32 priority);
@@ -84,7 +84,7 @@ public:
 	virtual	void				Load					(pcstr section);
 	virtual	void				reinit					();
 	virtual	void				reload					(pcstr section);
-	virtual void				feel_sound_new			(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, float power);
+	virtual void				feel_sound_new			(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, f32 power);
 	virtual	void				update					();
 			void				remove_links			(CObject *object);
 
@@ -99,7 +99,7 @@ public:
 	IC		void				set_squad_objects		(SOUNDS *squad_objects);
 
 public:
-	IC		void				set_threshold			(float threshold);
+	IC		void				set_threshold			(f32 threshold);
 	IC		void				restore_threshold		();
 
 public:

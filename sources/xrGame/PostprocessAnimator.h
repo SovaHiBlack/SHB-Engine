@@ -13,137 +13,137 @@ class CEffectorController;
 
 typedef enum _pp_params
 {
-    pp_unknown              =  -1,
-    pp_base_color           =   0,
-    pp_add_color            =   1,
-    pp_gray_color           =   2,
-    pp_gray_value           =   3,
-    pp_blur                 =   4,
-    pp_dual_h               =   5,
-    pp_dual_v               =   6,
-    pp_noise_i              =   7,
-    pp_noise_g              =   8,
-    pp_noise_f              =   9,
-    pp_force_dword          =   0x7fffffff
+	pp_unknown              =  -1,
+	pp_base_color           =   0,
+	pp_add_color            =   1,
+	pp_gray_color           =   2,
+	pp_gray_value           =   3,
+	pp_blur                 =   4,
+	pp_dual_h               =   5,
+	pp_dual_v               =   6,
+	pp_noise_i              =   7,
+	pp_noise_g              =   8,
+	pp_noise_f              =   9,
+	pp_force_dword          =   0x7fffffff
 } pp_params;
 
 
 class CPostProcessParam
 {
 public:
-    virtual void    update                          (float dt) = 0;
-    virtual void    load                            (IReader &pReader) = 0;
-    virtual void    save                            (IWriter &pWriter) = 0;
-    virtual float   get_length                      () = 0;
-    virtual size_t  get_keys_count                  () = 0;
+	virtual void    update                          (f32 dt) = 0;
+	virtual void    load                            (IReader &pReader) = 0;
+	virtual void    save                            (IWriter &pWriter) = 0;
+	virtual f32   get_length                      () = 0;
+	virtual size_t  get_keys_count                  () = 0;
 };
 
 class CPostProcessValue : public CPostProcessParam
 {
 protected:
-    CEnvelope       m_Value;
-    float          *m_pfParam;
+	CEnvelope       m_Value;
+	f32*m_pfParam;
 public:
-                    CPostProcessValue               (float *pfparam) { m_pfParam = pfparam; }
-    virtual void    update                          (float dt)
-                    {
-                    *m_pfParam = m_Value.Evaluate (dt);
-                    }
-    virtual void    load                            (IReader &pReader);
-    virtual void    save                            (IWriter &pWriter);
-    virtual float   get_length                      ()
-                    {
-                    float mn, mx;
-                    return m_Value.GetLength (&mn, &mx);
-                    }
-    virtual size_t  get_keys_count                  ()
-                    {
-                    return m_Value.keys.size ();
-                    }
+					CPostProcessValue               (f32*pfparam) { m_pfParam = pfparam; }
+	virtual void    update                          (f32 dt)
+					{
+					*m_pfParam = m_Value.Evaluate (dt);
+					}
+	virtual void    load                            (IReader &pReader);
+	virtual void    save                            (IWriter &pWriter);
+	virtual f32   get_length                      ()
+					{
+		f32 mn, mx;
+					return m_Value.GetLength (&mn, &mx);
+					}
+	virtual size_t  get_keys_count                  ()
+					{
+					return m_Value.keys.size ();
+					}
 };
 
 class CPostProcessColor : public CPostProcessParam
 {
 protected:
-    float           m_fBase;
-    CEnvelope       m_Red;
-    CEnvelope       m_Green;
-    CEnvelope       m_Blue;
+	f32           m_fBase;
+	CEnvelope       m_Red;
+	CEnvelope       m_Green;
+	CEnvelope       m_Blue;
 	SPPInfo::SColor *m_pColor;
 public:
-                    CPostProcessColor               (SPPInfo::SColor *pcolor) { m_pColor = pcolor; }
-    virtual void    update                          (float dt)
-                    {
-                    m_pColor->r = m_Red.Evaluate (dt);
-                    m_pColor->g = m_Green.Evaluate (dt);
-                    m_pColor->b = m_Blue.Evaluate (dt);
-                    }
-    virtual void    load                            (IReader &pReader);
-    virtual void    save                            (IWriter &pWriter);
-    virtual float   get_length                      ()
-                    {
-                    float mn, mx,
-                    r = m_Red.GetLength (&mn, &mx),
-                    g = m_Green.GetLength (&mn, &mx),
-                    b = m_Blue.GetLength (&mn, &mx);
-                    mn = (r > g ? r : g);
-                    return mn > b ? mn : b;
-                    }
-    virtual size_t  get_keys_count                  ()
-                    {
-                    return m_Red.keys.size ();
-                    }
+					CPostProcessColor               (SPPInfo::SColor *pcolor) { m_pColor = pcolor; }
+	virtual void    update                          (f32 dt)
+					{
+					m_pColor->r = m_Red.Evaluate (dt);
+					m_pColor->g = m_Green.Evaluate (dt);
+					m_pColor->b = m_Blue.Evaluate (dt);
+					}
+	virtual void    load                            (IReader &pReader);
+	virtual void    save                            (IWriter &pWriter);
+	virtual f32   get_length                      ()
+					{
+		f32 mn, mx,
+					r = m_Red.GetLength (&mn, &mx),
+					g = m_Green.GetLength (&mn, &mx),
+					b = m_Blue.GetLength (&mn, &mx);
+					mn = (r > g ? r : g);
+					return mn > b ? mn : b;
+					}
+	virtual size_t  get_keys_count                  ()
+					{
+					return m_Red.keys.size ();
+					}
 };
 
 class CPostprocessAnimator :public CEffectorPP
 {
 protected:
-    CPostProcessParam                               *m_Params[POSTPROCESS_PARAMS_COUNT];
-    shared_str										m_Name;
-    SPPInfo											m_EffectorParams;
-	float											m_factor;
-	float											m_dest_factor;
+	CPostProcessParam                               *m_Params[POSTPROCESS_PARAMS_COUNT];
+	shared_str										m_Name;
+	SPPInfo											m_EffectorParams;
+	f32											m_factor;
+	f32											m_dest_factor;
 	bool											m_bStop;
-	float											m_factor_speed;
+	f32											m_factor_speed;
 	bool											m_bCyclic;
-	float											m_start_time;
-	float                                           f_length;
+	f32											m_start_time;
+	f32                                           f_length;
 
-	void		Update								(float tm);
+	void		Update								(f32 tm);
 public:
-                    CPostprocessAnimator            (int id, bool cyclic);
-                    CPostprocessAnimator            ();
-        virtual    ~CPostprocessAnimator            ();
-        void        Clear                           ();
-        void        Load                            (pcstr name);
-    IC  pcstr      Name                            (){return *m_Name;}
-  virtual void      Stop                            (float speed);
-		void		SetDesiredFactor				(float f, float sp);
-		void		SetCurrentFactor				(float f);
+					CPostprocessAnimator            (int id, bool cyclic);
+					CPostprocessAnimator            ();
+		virtual    ~CPostprocessAnimator            ();
+		void        Clear                           ();
+		void        Load                            (pcstr name);
+	IC  pcstr      Name                            (){return *m_Name;}
+  virtual void      Stop                            (f32 speed);
+		void		SetDesiredFactor				(f32 f, f32 sp);
+		void		SetCurrentFactor				(f32 f);
 		void		SetCyclic						(bool b)					{m_bCyclic=b;}
-        float       GetLength                       ();
+		f32       GetLength                       ();
 virtual	BOOL		Valid							();
 virtual	BOOL		Process							(SPPInfo &PPInfo);
 
-        void        Create                          ();
+		void        Create                          ();
 };
 
 class CPostprocessAnimatorLerp :public CPostprocessAnimator
 {
 protected:
-		fastdelegate::FastDelegate0<float>	m_get_factor_func;
+		fastdelegate::FastDelegate0<f32>	m_get_factor_func;
 public:
-	void			SetFactorFunc				(fastdelegate::FastDelegate0<float> f)	{m_get_factor_func=f;}
+	void			SetFactorFunc				(fastdelegate::FastDelegate0<f32> f)	{m_get_factor_func=f;}
 virtual	BOOL		Process						(SPPInfo &PPInfo);
 };
 
 class CPostprocessAnimatorLerpConst :public CPostprocessAnimator
 {
 protected:
-		float		m_power;
+	f32		m_power;
 public:
 					CPostprocessAnimatorLerpConst	()					{m_power = 1.0f;}
-		void		SetPower						(float val)			{m_power=val;}
+		void		SetPower						(f32 val)			{m_power=val;}
 virtual	BOOL		Process							(SPPInfo &PPInfo);
 };
 

@@ -98,7 +98,7 @@ void CStalkerAnimationPair::play			(CKinematicsAnimated *skeleton_animated, Play
 
 	if (!global_animation()) {
 
-		float				pos = 0.f;
+		f32				pos = 0.f;
 		if (m_step_dependence && continue_interrupted_animation) {
 			VERIFY			(!m_blend || !fis_zero(m_blend->timeTotal));
 			if (m_step_dependence && m_blend)
@@ -171,7 +171,7 @@ void CStalkerAnimationPair::select_animation(const ANIM_VECTOR &array, const ANI
 		return;
 	}
 
-	float					accumulator = 0.f;
+	f32					accumulator = 0.f;
 	ANIMATION_WEIGHTS::const_iterator	I = weights->begin(), B = I;
 	ANIMATION_WEIGHTS::const_iterator	E = weights->end();
 	
@@ -182,7 +182,7 @@ void CStalkerAnimationPair::select_animation(const ANIM_VECTOR &array, const ANI
 	for ( ; I != E; ++I)
 		accumulator			+= *I;
 
-	float					chosen = ::Random.randF()*accumulator;
+	f32					chosen = ::Random.randF()*accumulator;
 	accumulator				= 0.f;
 	for (I = B; I != E; ++I) {
 		if ((accumulator + *I) >= chosen)

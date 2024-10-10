@@ -57,7 +57,7 @@ void CUICustomEdit::SetTextColorD(u32 color){
 	m_textColor[1] = color;
 }
 
-void CUICustomEdit::Init(float x, float y, float width, float height){
+void CUICustomEdit::Init(f32 x, f32 y, f32 width, f32 height){
 	CUIWindow::Init(x,y,width,height);
 	m_lines.SetWndSize(m_wndSize);
 }
@@ -99,7 +99,7 @@ void CUICustomEdit::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 //	}
 }
 
-bool CUICustomEdit::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUICustomEdit::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if (m_bFocusByDbClick)
 	{
@@ -264,13 +264,11 @@ bool CUICustomEdit::KeyReleased(int dik)
 	return true;
 }
 
-
-
 void CUICustomEdit::AddChar(char c)
 {
 	if(xr_strlen(m_lines.GetText()) >= m_max_symb_count)					return;
 
-	float text_length	= m_lines.GetFont()->SizeOf_(m_lines.GetText());
+	f32 text_length	= m_lines.GetFont()->SizeOf_(m_lines.GetText());
 	UI()->ClientToScreenScaledWidth		(text_length);
 
 	if (!m_lines.GetTextComplexMode() && (text_length > GetWidth() - 1))	return;
@@ -356,7 +354,7 @@ void CUICustomEdit::Update()
 	CUIWindow::Update();
 }
 
-void  CUICustomEdit::Draw()
+void CUICustomEdit::Draw()
 {
 	CUIWindow::Draw			();
 	Fvector2				pos;
@@ -368,11 +366,11 @@ void  CUICustomEdit::Draw()
 		Fvector2							outXY;
 		
 		outXY.x								= 0.0f;
-		float _h				= m_lines.m_pFont->CurrentHeight_();
+		f32 _h				= m_lines.m_pFont->CurrentHeight_();
 		UI()->ClientToScreenScaledHeight(_h);
 		outXY.y								= pos.y + (GetWndSize().y - _h)/2.0f;
 
-		float								_w_tmp;
+		f32								_w_tmp;
 		int i								= m_lines.m_iCursorPos;
 		string256							buff;
 		strncpy								(buff,m_lines.m_text.c_str(),i);

@@ -24,8 +24,8 @@ public:
 private:
 	bool			m_enabled;
 	bool			m_turning_in_place;
-	float			m_max_left_angle;
-	float			m_max_right_angle;
+	f32			m_max_left_angle;
+	f32			m_max_right_angle;
 
 public:
 					CSightManager						(CAI_Stalker *object);
@@ -34,17 +34,17 @@ public:
 	virtual	void	reinit								();
 	virtual	void	reload								(pcstr section);
 			void	remove_links						(CObject *object);
-			void	Exec_Look							(float dt);
+			void	Exec_Look							(f32 dt);
 			bool	bfIf_I_SeePosition					(Fvector tPosition) const;
-			void	SetPointLookAngles					(const Fvector &tPosition, float &yaw, float &pitch, const CGameObject *object = 0);
-			void	SetFirePointLookAngles				(const Fvector &tPosition, float &yaw, float &pitch, const CGameObject *object = 0);
+			void	SetPointLookAngles					(const Fvector &tPosition, f32& yaw, f32& pitch, const CGameObject *object = 0);
+			void	SetFirePointLookAngles				(const Fvector &tPosition, f32& yaw, f32& pitch, const CGameObject *object = 0);
 			void	SetDirectionLook					();
 			void	SetLessCoverLook					(const LevelGraph::CVertex *tpNode, bool bDifferenceLook);
-			void	SetLessCoverLook					(const LevelGraph::CVertex *tpNode, float fMaxHeadTurnAngle, bool bDifferenceLook);
-			void	vfValidateAngleDependency			(float x1, float &x2, float x3);
-			bool	need_correction						(float x1, float x2, float x3);
-	IC		bool	GetDirectionAnglesByPrevPositions	(float &yaw, float &pitch);
-			bool	GetDirectionAngles					(float &yaw, float &pitch);
+			void	SetLessCoverLook					(const LevelGraph::CVertex *tpNode, f32 fMaxHeadTurnAngle, bool bDifferenceLook);
+			void	vfValidateAngleDependency			(f32 x1, f32& x2, f32 x3);
+			bool	need_correction						(f32 x1, f32 x2, f32 x3);
+	IC		bool	GetDirectionAnglesByPrevPositions	(f32& yaw, f32& pitch);
+			bool	GetDirectionAngles					(f32& yaw, f32& pitch);
 	IC		bool	use_torso_look						() const;
 	template <typename T1, typename T2, typename T3>
 	IC		void	setup								(T1 _1, T2 _2, T3 _3);

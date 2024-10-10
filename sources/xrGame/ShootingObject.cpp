@@ -99,7 +99,7 @@ void CShootingObject::LoadFireParams	(pcstr section, pcstr prefix)
 	fireDispersionBase	= deg2rad				(fireDispersionBase);
 	//сила выстрела и его мощьность
 	s_sHitPower			= pSettings->r_string_wb(section,strconcat(sizeof(full_name),full_name, prefix, "hit_power"));//читаем строку силы хита пули оружия
-	fvHitPower[egdMaster]	= (float)atof(_GetItem(*s_sHitPower,0,buffer));//первый параметр - это хит для уровня игры мастер
+	fvHitPower[egdMaster]	= (f32)atof(_GetItem(*s_sHitPower,0,buffer));//первый параметр - это хит для уровня игры мастер
 
 	fvHitPower[egdVeteran]	= fvHitPower[egdMaster];//изначально параметры для других уровней
 	fvHitPower[egdStalker]	= fvHitPower[egdMaster];//сложности
@@ -108,15 +108,15 @@ void CShootingObject::LoadFireParams	(pcstr section, pcstr prefix)
 	int num_game_diff_param=_GetItemCount(*s_sHitPower);//узнаём колличество параметров для хитов
 	if (num_game_diff_param>1)//если задан второй параметр хита
 	{
-		fvHitPower[egdVeteran]	= (float)atof(_GetItem(*s_sHitPower,1,buffer));//то вычитываем его для уровня ветерана
+		fvHitPower[egdVeteran]	= (f32)atof(_GetItem(*s_sHitPower,1,buffer));//то вычитываем его для уровня ветерана
 	}
 	if (num_game_diff_param>2)//если задан третий параметр хита
 	{
-		fvHitPower[egdStalker]	= (float)atof(_GetItem(*s_sHitPower,2,buffer));//то вычитываем его для уровня сталкера
+		fvHitPower[egdStalker]	= (f32)atof(_GetItem(*s_sHitPower,2,buffer));//то вычитываем его для уровня сталкера
 	}
 	if (num_game_diff_param>3)//если задан четвёртый параметр хита
 	{
-		fvHitPower[egdNovice]	= (float)atof(_GetItem(*s_sHitPower,3,buffer));//то вычитываем его для уровня новичка
+		fvHitPower[egdNovice]	= (f32)atof(_GetItem(*s_sHitPower,3,buffer));//то вычитываем его для уровня новичка
 	}
 	
 	//fHitPower			= pSettings->r_float	(section,strconcat(full_name, prefix, "hit_power"));
@@ -164,7 +164,7 @@ void CShootingObject::Light_Start	()
 
 void CShootingObject::Light_Render	(const Fvector& P)
 {
-	float light_scale			= light_time/light_lifetime;
+	f32 light_scale			= light_time/light_lifetime;
 	R_ASSERT(light_render);
 
 	light_render->set_position	(P);
@@ -390,11 +390,11 @@ bool CShootingObject::SendHitAllowed		(CObject* pUser)
 	}
 };
 
-extern void random_dir(Fvector& tgt_dir, const Fvector& src_dir, float dispersion);
+extern void random_dir(Fvector& tgt_dir, const Fvector& src_dir, f32 dispersion);
 
 void CShootingObject::FireBullet(const Fvector& pos, 
 								 const Fvector& shot_dir, 
-								 float fire_disp,
+								 f32 fire_disp,
 								 const CCartridge& cartridge,
 								 u16 parent_id,
 								 u16 weapon_id,
@@ -439,7 +439,7 @@ void CShootingObject::FireBullet(const Fvector& pos,
 	}
 	m_fPredBulletTime = Device.fTimeGlobal;
 
-	float l_fHitPower;
+	f32 l_fHitPower;
 	if (ParentIsActor())//если из оружия стреляет актёр(игрок)
 	{
 		l_fHitPower=fvHitPower[g_SingleGameDifficulty];

@@ -27,7 +27,7 @@ public:
 		VERIFY				(item);
 		return item->Length_ms();
 	}
-	Fcolor	calculate		(float T)
+	Fcolor	calculate		(f32 T)
 	{
 		int frame;
 		VERIFY				(item);

@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	float CPurchaseList::deficit							(const shared_str &section) const
+IC	f32 CPurchaseList::deficit							(const shared_str &section) const
 {
 	DEFICITS::const_iterator	I = m_deficits.find(section);
     if (I != m_deficits.end())
@@ -22,7 +22,7 @@ IC	const CPurchaseList::DEFICITS &CPurchaseList::deficits	() const
 	return						(m_deficits);
 }
 
-IC	void CPurchaseList::deficit								(const shared_str &section, const float &deficit)
+IC	void CPurchaseList::deficit								(const shared_str &section, const f32& deficit)
 {
 	DEFICITS::iterator			I = m_deficits.find(section);
 	if (I != m_deficits.end()) {

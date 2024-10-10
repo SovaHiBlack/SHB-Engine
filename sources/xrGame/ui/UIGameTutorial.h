@@ -85,23 +85,26 @@ class CUISequenceSimpleItem: public CUISequenceItem
 	typedef CUISequenceItem	inherited;
 	struct SSubItem{
 		CUIStatic*			m_wnd;
-		float				m_start;
-		float				m_length;
+		f32				m_start;
+		f32				m_length;
 		bool				m_visible;
+
 	public:
 		virtual void		Start				();
 		virtual void		Stop				();
 	};
 	DEFINE_VECTOR			(SSubItem,SubItemVec,SubItemVecIt);
 	SubItemVec				m_subitems;
+
 public:
 	CUIWindow*				m_UIWindow;
 	ref_sound				m_sound;
-	float					m_time_start;
-	float					m_time_length;
+	f32					m_time_start;
+	f32					m_time_length;
 	string64				m_pda_section;
 	Fvector2				m_desired_cursor_pos;
 	int						m_continue_dik_guard;
+
 public:
 							CUISequenceSimpleItem(CUISequencer* owner):CUISequenceItem(owner){}
 	virtual					~CUISequenceSimpleItem();
@@ -128,10 +131,11 @@ class CUISequenceVideoItem: public CUISequenceItem
 		etiDelayed			= (1<<(eti_last+2)),
 		etiBackVisible		= (1<<(eti_last+3)),
 	};
-	float					m_delay;
+	f32					m_delay;
 	CUIStatic*				m_wnd;
 	u32						m_time_start;
 	u32						m_sync_time;
+
 public:
 							CUISequenceVideoItem(CUISequencer* owner);
 	virtual					~CUISequenceVideoItem();

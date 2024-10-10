@@ -22,7 +22,7 @@ CUIEditKeyBind::~CUIEditKeyBind()
 	delete_data(m_pAnimation);
 }
 
-u32 cut_string_by_length(CGameFont* pFont, pcstr src, pstr dst, u32 dst_size, float length)
+u32 cut_string_by_length(CGameFont* pFont, pcstr src, pstr dst, u32 dst_size, f32 length)
 {
 	if ( pFont->IsMultibyte() ) {
 		u16 nPos = pFont->GetCutLengthPos( length, src );
@@ -30,9 +30,10 @@ u32 cut_string_by_length(CGameFont* pFont, pcstr src, pstr dst, u32 dst_size, fl
 		strncpy( dst, src , nPos );
 		dst[ nPos ] = '\0';
 		return nPos;
-	} else {
-
-		float	text_len					= pFont->SizeOf_(src);
+	}
+	else
+	{
+		f32	text_len					= pFont->SizeOf_(src);
 		UI()->ClientToScreenScaledWidth		(text_len);
 		VERIFY								(xr_strlen(src)<=dst_size);
 		strcpy								(dst,src);
@@ -62,7 +63,7 @@ void CUIEditKeyBind::SetText(pcstr text)
 	}
 }
 
-void CUIEditKeyBind::Init(float x, float y, float width, float height)
+void CUIEditKeyBind::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	CUILabel::Init			(x,y,width,height);
 	InitTexture				("ui_options_string");

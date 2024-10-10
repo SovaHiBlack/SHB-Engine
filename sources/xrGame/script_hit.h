@@ -15,11 +15,11 @@ class CScriptGameObject;
 
 class CScriptHit {
 public:
-	float				m_fPower; 
+	f32				m_fPower;
 	Fvector				m_tDirection;
 	shared_str				m_caBoneName;
 	CScriptGameObject		*m_tpDraftsman;
-	float				m_fImpulse;
+	f32				m_fImpulse;
 	int					m_tHitType;
 
 public:

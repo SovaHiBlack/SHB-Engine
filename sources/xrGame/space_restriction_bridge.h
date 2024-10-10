@@ -28,7 +28,7 @@ public:
 			void					initialize					();
 			bool					inside						(const Fsphere &sphere);
 			bool					inside						(u32 level_vertex_id, bool partially_inside);
-			bool					inside						(u32 level_vertex_id, bool partially_inside, float radius);
+			bool					inside						(u32 level_vertex_id, bool partially_inside, f32 radius);
 			shared_str				name						() const;
 			u32						accessible_nearest			(const Fvector &position, Fvector &result, bool out_restriction);
 			bool					shape						() const;

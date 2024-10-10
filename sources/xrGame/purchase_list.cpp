@@ -13,7 +13,7 @@
 #include "ai_object_location.h"
 #include "level.h"
 
-static float min_deficit_factor = .3f;
+static f32 min_deficit_factor = .3f;
 
 void CPurchaseList::process	(CInifile &ini_file, pcstr section, CInventoryOwner &owner)
 {
@@ -34,12 +34,12 @@ void CPurchaseList::process	(CInifile &ini_file, pcstr section, CInventoryOwner 
 			game_object,
 			(*I).first,
 			atoi(_GetItem(*(*I).second,0,temp0)),
-			(float)atof(_GetItem(*(*I).second,1,temp1))
+			(f32)atof(_GetItem(*(*I).second,1,temp1))
 		);
 	}
 }
 
-void CPurchaseList::process	(const CGameObject &owner, const shared_str &name, const u32 &count, const float &probability)
+void CPurchaseList::process	(const CGameObject &owner, const shared_str &name, const u32 &count, const f32& probability)
 {
 	VERIFY3					(count,"Invalid count for section in the purchase list",*name);
 	VERIFY3					(!fis_zero(probability, EPSILON_7),"Invalid probability for section in the purchase list",*name);
@@ -61,9 +61,9 @@ void CPurchaseList::process	(const CGameObject &owner, const shared_str &name, c
 	m_deficits.insert			(
 		std::make_pair(
 			name,
-			(float)count*probability
+			(f32)count*probability
 			/
-			_max((float)j,min_deficit_factor)
+			_max((f32)j,min_deficit_factor)
 		)
 	);
 }

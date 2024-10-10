@@ -595,9 +595,9 @@ bool CUICarBodyWnd::TransferItem(PIItem itm, CInventoryOwner* owner_from, CInven
 	if(smart_cast<CBaseMonster*>(go_to))	return false;
 	if(b_check)
 	{
-		float invWeight						= owner_to->inventory().CalcTotalWeight();
-		float maxWeight						= owner_to->inventory().GetMaxWeight();
-		float itmWeight						= itm->Weight();
+		f32 invWeight						= owner_to->inventory().CalcTotalWeight();
+		f32 maxWeight						= owner_to->inventory().GetMaxWeight();
+		f32 itmWeight						= itm->Weight();
 		if(invWeight+itmWeight >=maxWeight)	return false;
 	}
 

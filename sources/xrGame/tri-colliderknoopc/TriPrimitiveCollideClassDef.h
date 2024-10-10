@@ -7,7 +7,7 @@ class primitive##Tri\
 		primitive##Tri&	operator	=	(primitive##Tri&	nx_nado)	{;}											\
 public:\
 		explicit	 primitive##Tri	(dcTriListCollider &tri_list):m_tri_list(tri_list)										{};\
-	IC	float	Proj  (dxGeom* o,const dReal* normal);\
+	IC	f32	Proj  (dxGeom* o,const dReal* normal);\
 	IC	int		Collide(\
 					const dReal* v0,const dReal* v1,const dReal* v2,\
 					Triangle* T,\
@@ -27,7 +27,7 @@ public:\
 
 
 #define TRI_PRIMITIVE_COLIDE_CLASS_IMPLEMENT(primitive)			\
-	IC	float	dcTriListCollider::primitive##Tri:: Proj  (dxGeom* o,const dReal* normal){return m_tri_list.d##primitive##Proj(o,normal);}\
+	IC	f32	dcTriListCollider::primitive##Tri:: Proj  (dxGeom* o,const dReal* normal){return m_tri_list.d##primitive##Proj(o,normal);}\
 	IC	int		dcTriListCollider::primitive##Tri:: Collide(\
 	const dReal* v0,const dReal* v1,const dReal* v2,\
 	Triangle* T,\

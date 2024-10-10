@@ -130,7 +130,7 @@ void CUISequenceSimpleItem::SSubItem::Stop	()
 
 void CUISequenceSimpleItem::Update			()
 {
-	float gt						= float(Device.dwTimeContinual)/1000.0f;
+	f32 gt						= f32(Device.dwTimeContinual)/1000.0f;
 	SubItemVecIt _I					= m_subitems.begin();
 	SubItemVecIt _E					= m_subitems.end();
 	for(;_I!=_E;++_I){
@@ -175,7 +175,7 @@ void CUISequenceSimpleItem::Start()
 		Device.Pause			(TRUE, FALSE, TRUE, "simpleitem_start");
 
 	GetUICursor()->SetUICursorPosition		(m_desired_cursor_pos);
-	m_time_start							= float(Device.dwTimeContinual)/1000.0f;
+	m_time_start							= f32(Device.dwTimeContinual)/1000.0f;
 	m_owner->MainWnd()->AttachChild	(m_UIWindow);
 
 	if (m_sound._handle())		m_sound.play(NULL, sm_2D);

@@ -12,8 +12,8 @@ private:
 
 public:
 	// Установить 
-	void				SetCarHealth	(float value);
-	void				SetSpeed		(float speed);
-	void				SetRPM			(float rmp);
-	void				Init			(float x, float y, float width, float height);
+	void				SetCarHealth	(f32 value);
+	void				SetSpeed		(f32 speed);
+	void				SetRPM			(f32 rmp);
+	void				Init			(f32 x, f32 y, f32 width, f32 height);
 };

@@ -20,7 +20,7 @@ IC	Fvector	CSpaceRestrictionShape::position		(const CCF_Shape::shape_def &data) 
 #endif
 }
 
-IC	float CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data) const
+IC	f32 CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data) const
 {
 	switch (data.type) {
 		case 0	: return(data.data.sphere.R);

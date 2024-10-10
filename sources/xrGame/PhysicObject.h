@@ -15,7 +15,7 @@ class CPhysicObject :
 {
 	typedef CPhysicsShellHolder inherited;
 	EPOType					m_type					;
-	float					m_mass					;
+	f32					m_mass					;
 	SCollisionHitCallback	*m_collision_hit_callback;
 private:
 	//Creating

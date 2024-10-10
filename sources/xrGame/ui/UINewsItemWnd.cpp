@@ -48,7 +48,7 @@ void CUINewsItemWnd::Setup			(GAME_NEWS_DATA& news_data)
 {
 	m_UIText->SetTextST				(news_data.news_text.c_str());
 	m_UIText->AdjustHeightToText	();
-	float h1						= m_UIText->GetWndPos().y + m_UIText->GetHeight();
+	f32 h1						= m_UIText->GetWndPos().y + m_UIText->GetHeight();
 
 	string128						_time;
 	u32 years, months, days, hours, minutes, seconds, milliseconds;
@@ -57,11 +57,11 @@ void CUINewsItemWnd::Setup			(GAME_NEWS_DATA& news_data)
 
 	m_UITextDate->SetText			(_time);
 	m_UITextDate->AdjustHeightToText();
-	float h2						= m_UITextDate->GetWndPos().y + m_UITextDate->GetHeight();
+	f32 h2						= m_UITextDate->GetWndPos().y + m_UITextDate->GetHeight();
 
 	m_UIImage->InitTexture			(*news_data.texture_name);
 	m_UIImage->SetOriginalRect		(news_data.tex_rect.x1,news_data.tex_rect.y1,news_data.tex_rect.x2,news_data.tex_rect.y2);
-	float h3						= m_UIImage->GetWndPos().y + m_UIImage->GetHeight();
+	f32 h3						= m_UIImage->GetWndPos().y + m_UIImage->GetHeight();
 	h1								= _max(h1,h2);
 	h1								= _max(h1,h3);
 	SetHeight						(h1);

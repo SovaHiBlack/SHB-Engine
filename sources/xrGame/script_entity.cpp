@@ -628,7 +628,7 @@ const CScriptEntityAction *CScriptEntity::GetActionByIndex	(u32 action_index) co
 	return							(m_tpActionQueue[action_index]);
 }
 
-void CScriptEntity::sound_callback	(const CObject *object, int sound_type, const Fvector &position, float sound_power)
+void CScriptEntity::sound_callback	(const CObject *object, int sound_type, const Fvector &position, f32 sound_power)
 {
 	if (!smart_cast<const CGameObject*>(object))
 		return;

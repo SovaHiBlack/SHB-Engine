@@ -8,17 +8,17 @@
 
 #pragma once
 
-inline const CSavedGameWrapper::_TIME_ID &CSavedGameWrapper::game_time	() const
+IC const CSavedGameWrapper::_TIME_ID &CSavedGameWrapper::game_time	() const
 {
 	return	(m_game_time);
 }
 
-inline const CSavedGameWrapper::_LEVEL_ID &CSavedGameWrapper::level_id	() const
+IC const CSavedGameWrapper::_LEVEL_ID &CSavedGameWrapper::level_id	() const
 {
 	return	(m_level_id);
 }
 
-inline const float &CSavedGameWrapper::actor_health						() const
+IC const f32& CSavedGameWrapper::actor_health						() const
 {
 	return	(m_actor_health);
 }

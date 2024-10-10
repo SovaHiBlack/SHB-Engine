@@ -13,7 +13,7 @@ CUIFrameRect::CUIFrameRect()
 }
 //--------------------------------------------------------------------
 
-void CUIFrameRect::Init(pcstr texture, float x, float y, float w, float h)//, DWORD align)
+void CUIFrameRect::Init(pcstr texture, f32 x, f32 y, f32 w, f32 h)//, DWORD align)
 {
 	//SetPos			(x,y);
 	//SetSize			(w,h);
@@ -70,7 +70,7 @@ void CUIFrameRect::UpdateSize()
 	VERIFY(g_bRendering);
 	// texture size
 	Fvector2  ts;
-	float rem_x, rem_y;
+	f32 rem_x, rem_y;
 	int tile_x, tile_y;
 
 	Fvector2 _bk, _lt,_lb,_rb,_rt, _l,_r,_t,_b;
@@ -91,10 +91,10 @@ void CUIFrameRect::UpdateSize()
 	frame[fmLB].SetPos	(wnd_pos.x,						wnd_pos.y+m_wndSize.y-_lb.y);
 	frame[fmRB].SetPos	(wnd_pos.x+m_wndSize.x-_rb.x,	wnd_pos.y+m_wndSize.y-_rb.y);	
 
-	float size_top		= m_wndSize.x - _lt.x - _rt.x;
-	float size_bottom	= m_wndSize.x - _lb.x - _rb.x;
-	float size_left		= m_wndSize.y - _lt.y - _lb.y;
-	float size_right	= m_wndSize.y - _rt.y - _rb.y;
+	f32 size_top		= m_wndSize.x - _lt.x - _rt.x;
+	f32 size_bottom		= m_wndSize.x - _lb.x - _rb.x;
+	f32 size_left		= m_wndSize.y - _lt.y - _lb.y;
+	f32 size_right		= m_wndSize.y - _rt.y - _rb.y;
 
 	//‘ÓÌ
 	ts.set			(_bk.x,_bk.y);
@@ -118,7 +118,6 @@ void CUIFrameRect::UpdateSize()
 	tile_x				= iFloor(size_bottom/ts.x); tile_x=_max(tile_x, 0);
 	frame[fmB].SetPos	(wnd_pos.x+_lb.x,wnd_pos.y+m_wndSize.y-ts.y);	
 	frame[fmB].SetTile	(tile_x,1,rem_x,0);
-
 
 	ts.set				(_l.x,_l.y);
 	rem_y				= fmod(size_left,ts.y);
@@ -149,7 +148,7 @@ void CUIFrameRect::Update(){
 
 }
 
-void CUIFrameRect::SetWndPos(float x, float y)
+void CUIFrameRect::SetWndPos(f32 x, f32 y)
 {
 	Fvector2 _old_pos = GetWndPos();
 	Fvector2 _new_pos = Fvector2().set(x,y);
@@ -178,20 +177,20 @@ void CUIFrameRect::SetWndPos(const Fvector2& pos){
 	uFlags.set(flValidSize, false);
 }
 
-void CUIFrameRect::SetHeight(float height){
+void CUIFrameRect::SetHeight(f32 height){
 	CUISimpleWindow::SetHeight(height);
 	uFlags.set(flValidSize, false);
 }
 
-void CUIFrameRect::SetWidth(float width){
+void CUIFrameRect::SetWidth(f32 width){
 	CUISimpleWindow::SetWidth(width);
 	uFlags.set(flValidSize, false);
 }
 
-void CUIFrameRect::Draw(float x, float y){
+void CUIFrameRect::Draw(f32 x, f32 y){
 	Fvector2 p = GetWndPos	();
-	float dx = p.x - x;
-	float dy = p.y - y;
+	f32 dx = p.x - x;
+	f32 dy = p.y - y;
 	if ( !fis_zero(dx) || !fis_zero(dy))
 		SetWndPos(x, y);
 	

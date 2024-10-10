@@ -8,7 +8,7 @@
 
 #pragma once
 
-inline float CStalkerVelocityCollection::velocity	(
+IC f32 CStalkerVelocityCollection::velocity	(
 		const MonsterSpace::EMentalState		&mental_state,
 		const MonsterSpace::EBodyState			&body_state,
 		const MonsterSpace::EMovementType		&movement_type,
@@ -61,8 +61,8 @@ inline float CStalkerVelocityCollection::velocity	(
 		default			: NODEFAULT;
 	};
 #ifdef DEBUG
-	volatile float		a = 0.f;
-	volatile float		b = 0.f;
+	volatile f32		a = 0.0f;
+	volatile f32		b = 0.0f;
 	return				(a/b);
 #endif
 }

@@ -388,7 +388,7 @@ bool CUIMapWnd::OnKeyboard				(int dik, EUIMessages keyboard_action)
 	return inherited::OnKeyboard	(dik, keyboard_action);
 }
 
-bool CUIMapWnd::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIMapWnd::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if(inherited::OnMouse(x,y,mouse_action)) return true;
 	Fvector2 cursor_pos = GetUICursor()->GetCursorPosition();
@@ -456,7 +456,7 @@ bool CUIMapWnd::OnMouse(float x, float y, EUIMessages mouse_action)
 //.				Msg("down");
 			}
 			CUIGlobalMap* gm				= GlobalMap();
-			float _prev_zoom				= GetZoom();
+			f32 _prev_zoom				= GetZoom();
 			if(b_zoom_in)					SetZoom(GetZoom()*1.5f);
 			else							SetZoom(GetZoom()/1.5f);
 
@@ -509,13 +509,12 @@ void CUIMapWnd::UpdateScroll()
 	m_UIMainScrollH->SetScrollPos	(iFloor(-w_pos.x));
 }
 
-
 void CUIMapWnd::OnScrollV(CUIWindow*, void*)
 {
 	if (GlobalMap()){
 		int s_pos					= m_UIMainScrollV->GetScrollPos();
 		Fvector2 w_pos				= GlobalMap()->GetWndPos();
-		GlobalMap()->SetWndPos	(w_pos.x,float(-s_pos));
+		GlobalMap()->SetWndPos	(w_pos.x, f32(-s_pos));
 	}
 }
 
@@ -524,10 +523,9 @@ void CUIMapWnd::OnScrollH(CUIWindow*, void*)
 	if (GlobalMap()){
 		int s_pos					= m_UIMainScrollH->GetScrollPos();
 		Fvector2 w_pos				= GlobalMap()->GetWndPos();
-		GlobalMap()->SetWndPos	(float(-s_pos),w_pos.y);
+		GlobalMap()->SetWndPos	(f32(-s_pos),w_pos.y);
 	}
 }
-
 
 void CUIMapWnd::Update()
 {
@@ -536,14 +534,12 @@ void CUIMapWnd::Update()
 	m_ActionPlanner->update		();
 }
 
-void CUIMapWnd::SetZoom	( float value)
+void CUIMapWnd::SetZoom	(f32 value)
 {
-//	float _prev_zoom = m_currentZoom;
+//	f32 _prev_zoom = m_currentZoom;
 	m_currentZoom	= value;
 	clamp		(m_currentZoom, GlobalMap()->GetMinZoom(), GlobalMap()->GetMaxZoom());
 }
-
-
 
 void CUIMapWnd::OnToolGlobalMapClicked	(CUIWindow* w, void*)
 {

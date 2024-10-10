@@ -115,7 +115,7 @@ bool CSoundPlayer::check_sound_legacy(u32 internal_type) const
 	return							(true);
 }
 
-void CSoundPlayer::update			(float time_delta)
+void CSoundPlayer::update			(f32 time_delta)
 {
 	START_PROFILE("Sound Player")
 	remove_inappropriate_sounds		(m_sound_mask);

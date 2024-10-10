@@ -26,7 +26,7 @@
 
 using namespace StalkerDecisionSpace;
 
-const float DANGER_DISTANCE = 5.f;
+const f32 DANGER_DISTANCE = 5.f;
 const u32	DANGER_INTERVAL = 120000;
 
 //////////////////////////////////////////////////////////////////////////

@@ -13,11 +13,11 @@
 //#define ODE_SLOW_SOLVER
 ///////////////////////////////////////////////////////////////////////////////
 
-		void	BodyCutForce				(dBodyID body,float l_limit,float w_limit)					;
+		void	BodyCutForce				(dBodyID body, f32 l_limit, f32 w_limit)					;
 		void	dBodyAngAccelFromTorqu		(const dBodyID body, dReal* ang_accel, const dReal* torque)	;
-		float	E_NlS						(dBodyID body,const dReal* norm,float norm_sign)					;
-		float	E_NLD						(dBodyID b1,dBodyID b2,const dReal* norm);
-		float	E_NL						(dBodyID b1,dBodyID b2,const dReal* norm);
+		f32	E_NlS						(dBodyID body,const dReal* norm, f32 norm_sign)					;
+		f32	E_NLD						(dBodyID b1,dBodyID b2,const dReal* norm);
+		f32	E_NL						(dBodyID b1,dBodyID b2,const dReal* norm);
 		void	ApplyGravityAccel			(dBodyID body,const dReal* accel);
 const	dReal	fix_ext_param				=10000.f;
 const	dReal	fix_mass_param				=100000000.f;

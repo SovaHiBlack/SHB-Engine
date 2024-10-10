@@ -53,7 +53,7 @@ public:
 	virtual	void				net_Destroy			();
 			bool				inside				(const Fsphere &sphere) const;
 	virtual void				Center				(Fvector &C) const;
-	virtual float				Radius				() const;
+	virtual f32				Radius				() const;
 	virtual BOOL				UsedAI_Locations	();
 	virtual void				spatial_move		();
 	IC		bool				actual				() const;

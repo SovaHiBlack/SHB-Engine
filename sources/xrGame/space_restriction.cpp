@@ -14,7 +14,7 @@
 #include "space_restriction_base.h"
 #include "profiler.h"
 
-const float dependent_distance = 100.f;
+const f32 dependent_distance = 100.0f;
 
 template <bool a>
 struct CMergeInOutPredicate {
@@ -81,7 +81,7 @@ bool CSpaceRestriction::accessible				(const Fsphere &sphere)
 	);
 }
 
-bool CSpaceRestriction::accessible				(u32 level_vertex_id, float radius)
+bool CSpaceRestriction::accessible				(u32 level_vertex_id, f32 radius)
 {
 	if (!initialized()) {
 		initialize					();
@@ -333,7 +333,7 @@ bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr 
 	//return							(start_position.distance_to(position) <= radius + dependent_distance);
 }
 
-bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, u32 start_vertex_id, float radius) const
+bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, u32 start_vertex_id, f32 radius) const
 {
 	Fsphere							sphere;
 	sphere.P						= ai().level_graph().vertex_position(start_vertex_id);

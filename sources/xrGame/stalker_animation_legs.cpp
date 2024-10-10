@@ -18,16 +18,16 @@
 #include "inventory.h"
 #include "stalker_animation_manager_impl.h"
 
-const float right_forward_angle			= PI_DIV_4;
-const float left_forward_angle			= PI_DIV_4;
-const float standing_turn_angle			= PI_DIV_6;
-const float epsilon						= EPS_L;
+const f32 right_forward_angle			= PI_DIV_4;
+const f32 left_forward_angle			= PI_DIV_4;
+const f32 standing_turn_angle			= PI_DIV_6;
+const f32 epsilon						= EPS_L;
 
 const u32	direction_switch_interval 	= 500;
 
 const u32	need_look_back_time_delay	= 0;
 
-const float direction_angles[]			= {
+const f32 direction_angles[]			= {
 	0.f,		//	eMovementDirectionForward
 	PI,			//	eMovementDirectionBackward
 	PI_DIV_2,	//	eMovementDirectionLeft
@@ -43,7 +43,7 @@ void CStalkerAnimationManager::legs_play_callback			(CBlend *blend)
 	pair.on_animation_end		();
 }
 
-IC	float CStalkerAnimationManager::legs_switch_factor		() const
+IC	f32 CStalkerAnimationManager::legs_switch_factor		() const
 {
 	if	(
 			(m_target_direction == eMovementDirectionForward) &&
@@ -87,7 +87,7 @@ bool CStalkerAnimationManager::need_look_back				() const
 	return						(true);
 }
 
-void CStalkerAnimationManager::legs_assign_direction		(float switch_factor, const EMovementDirection &direction)
+void CStalkerAnimationManager::legs_assign_direction		(f32 switch_factor, const EMovementDirection &direction)
 {
 	if (m_current_direction == direction) {
 		m_direction_start		= Device.dwTimeGlobal;
@@ -108,21 +108,21 @@ void CStalkerAnimationManager::legs_assign_direction		(float switch_factor, cons
 	m_current_direction			= direction;
 }
 
-void CStalkerAnimationManager::legs_process_direction		(float yaw)
+void CStalkerAnimationManager::legs_process_direction		(f32 yaw)
 {
-	float						switch_factor = legs_switch_factor();
+	f32						switch_factor = legs_switch_factor();
 	CStalkerMovementManager		&movement = object().movement();
-	float						head_current = movement.head_orientation().current.yaw;
-	float						left = left_angle(yaw,head_current);
-	float						test_angle_forward = right_forward_angle;
-	float						test_angle_backward = left_forward_angle;
+	f32						head_current = movement.head_orientation().current.yaw;
+	f32						left = left_angle(yaw,head_current);
+	f32						test_angle_forward = right_forward_angle;
+	f32						test_angle_backward = left_forward_angle;
 	if (left) {
 		test_angle_forward		= left_forward_angle;
 		test_angle_backward		= right_forward_angle;
 	}
 	test_angle_backward			= PI - test_angle_backward;
 
-	float						difference = angle_difference(yaw,head_current);
+	f32						difference = angle_difference(yaw,head_current);
 
 	if (difference <= test_angle_forward)
 		legs_assign_direction			(switch_factor,eMovementDirectionForward);
@@ -166,16 +166,16 @@ MotionID CStalkerAnimationManager::legs_move_animation		()
 		);
 	}
 
-	float						yaw,pitch;
+	f32						yaw,pitch;
 	object().sight().GetDirectionAngles(yaw,pitch);
 
 	yaw							= angle_normalize_signed(-yaw);;
 	legs_process_direction		(yaw);
 
-	float						body_current = movement.body_orientation().current.yaw;
+	f32						body_current = movement.body_orientation().current.yaw;
 	bool						left = left_angle(yaw,body_current);
-	float						test_angle_forward = right_forward_angle;
-	float						test_angle_backward = left_forward_angle;
+	f32						test_angle_forward = right_forward_angle;
+	f32						test_angle_backward = left_forward_angle;
 	if (left) {
 		test_angle_forward		= left_forward_angle;
 		test_angle_backward		= right_forward_angle;
@@ -183,7 +183,7 @@ MotionID CStalkerAnimationManager::legs_move_animation		()
 	test_angle_backward			= PI - test_angle_backward;
 
 	EMovementDirection			speed_direction;
-	float						difference = angle_difference(yaw,body_current);
+	f32						difference = angle_difference(yaw,body_current);
 
 	if (difference <= test_angle_forward)
 		speed_direction			= eMovementDirectionForward;
@@ -246,11 +246,11 @@ MotionID CStalkerAnimationManager::legs_no_move_animation	()
 
 	CStalkerMovementManager		&movement = object().movement();
 	const SBoneRotation			&body_orientation = movement.body_orientation();
-	float						current = body_orientation.current.yaw;
-	float						target = body_orientation.target.yaw;
+	f32						current = body_orientation.current.yaw;
+	f32						target = body_orientation.target.yaw;
 	if (angle_difference(target,current) < EPS_L) {
 
-		float					head_current = movement.head_orientation().current.yaw;
+		f32					head_current = movement.head_orientation().current.yaw;
 		if ((movement.mental_state() != eMentalStateFree) || (!object().sight().turning_in_place() && (angle_difference(current,head_current) <= standing_turn_angle))) {
 			if (movement.mental_state() == eMentalStateFree)
 				return			(animation[1]);

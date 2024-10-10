@@ -49,12 +49,11 @@ public:
 			void			SetUseNewLineMode							(bool mode);
 
     // IUISimpleWindow methods
-	virtual void			Init										(float x, float y, float width, float height);
+	virtual void			Init										(f32 x, f32 y, f32 width, f32 height);
 	virtual void			Draw										();
-	virtual void			Draw										(float x, float y);
+	virtual void			Draw										(f32 x, f32 y);
 	virtual void			Update										();
 IC			void			SetWndSize_inline							(const Fvector2& wnd_size);
-
 
     // CDeviceResetNotifier methods
 	virtual void			OnDeviceReset								();
@@ -62,7 +61,7 @@ IC			void			SetWndSize_inline							(const Fvector2& wnd_size);
 	// own methods
 			void			Reset										();
 			void			ParseText									();
-			float			GetVisibleHeight							();
+			f32				GetVisibleHeight							();
 
 	// cursor control
 			int				m_iCursorPos;
@@ -73,8 +72,8 @@ protected:
 			void			UpdateCursor								();
 				// %c[255,255,255,255]
 		u32					GetColorFromText							(const xr_string& str)							const;
-		float				GetIndentByAlign							()												const;
-		float				GetVIndentByAlign							();
+		f32				GetIndentByAlign							()												const;
+		f32				GetVIndentByAlign							();
 		void				CutFirstColoredTextEntry					(xr_string& entry, u32& color,xr_string& text)	const;
 	CUILine*				ParseTextToColoredLine						(const xr_string& str);
 
@@ -83,7 +82,7 @@ protected:
 	typedef xr_vector<CUILine>				LinesVector;
 	typedef LinesVector::iterator			LinesVector_it;
 	LinesVector				m_lines;	// parsed text
-	float					m_interval; // interval
+	f32					m_interval; // interval
 
 	Text					m_text;
 
@@ -102,9 +101,10 @@ protected:
 		flCutWordsMode		= (1<<4),
 		flRecognizeNewLine	= (1<<5)
 	};	
+
 private:
 	Flags8					uFlags;
-	float					m_oldWidth;
+	f32					m_oldWidth;
 };
 
 class CUILinesOwner : public IUITextControl {
@@ -124,8 +124,8 @@ public:
 	virtual pcstr		GetText							()								{return m_lines.GetText();}
 
 	// own
-	virtual void			SetTextPosX						(float x)						{m_textPos.x = x;}
-	virtual void			SetTextPosY						(float y)						{m_textPos.y = y;}
+	virtual void			SetTextPosX						(f32 x)						{m_textPos.x = x;}
+	virtual void			SetTextPosY						(f32 y)						{m_textPos.y = y;}
 
 protected:
 	Fvector2				m_textPos;

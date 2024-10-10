@@ -33,8 +33,8 @@ using namespace StalkerMovement;
 
 extern bool show_restrictions(CRestrictedObject *object);
 
-const float BAD_PATH_ANGLE			= PI_DIV_2 - PI_DIV_8;
-const float BAD_PATH_DISTANCE_CHECK	= 2.f;
+const f32 BAD_PATH_ANGLE			= PI_DIV_2 - PI_DIV_8;
+const f32 BAD_PATH_DISTANCE_CHECK	= 2.f;
 
 IC	void CStalkerMovementManager::setup_head_speed		()
 {
@@ -46,7 +46,7 @@ IC	void CStalkerMovementManager::setup_head_speed		()
 		m_head.speed			= m_danger_head_speed;
 }
 
-IC	void CStalkerMovementManager::add_velocity			(int mask, float linear, float compute_angular, float angular)
+IC	void CStalkerMovementManager::add_velocity			(int mask, f32 linear, f32 compute_angular, f32 angular)
 {
 	detail().add_velocity		(
 		mask,
@@ -58,7 +58,7 @@ IC	void CStalkerMovementManager::add_velocity			(int mask, float linear, float c
 	);
 }
 
-IC	float CStalkerMovementManager::path_direction_angle	()
+IC	f32 CStalkerMovementManager::path_direction_angle	()
 {
 	if (!path().empty() && (path().size() > detail().curr_travel_point_index() + 1)) {
 		Fvector					t;
@@ -66,7 +66,7 @@ IC	float CStalkerMovementManager::path_direction_angle	()
 			path()[detail().curr_travel_point_index() + 1].position,
 			path()[detail().curr_travel_point_index()].position
 		);
-		float					y,p;
+		f32					y,p;
 		t.getHP					(y,p);
 		return					(angle_difference(-y,m_body.current.yaw));
 	}
@@ -118,7 +118,7 @@ IC	void CStalkerMovementManager::setup_body_orientation	()
 		path()[detail().curr_travel_point_index() + 1].position,
 		path()[detail().curr_travel_point_index()].position
 	);
-	float					y,p;
+	f32					y,p;
 	temp.getHP				(y,p);
 	m_body.target.yaw		= -y;
 	m_head.target.yaw		= -y;
@@ -158,7 +158,7 @@ void CStalkerMovementManager::reload				(pcstr section)
 
 void CStalkerMovementManager::init_velocity_masks	()
 {
-	float			cf = 2.f;
+	f32			cf = 2.f;
 
 	add_velocity	(eVelocityStandingFreeStand			,0.f,	PI_DIV_4	,PI_MUL_2	);
 	add_velocity	(eVelocityStandingPanicStand		,0.f,	PI_MUL_2);
@@ -550,7 +550,7 @@ void CStalkerMovementManager::on_restrictions_change	()
 		set_nearest_accessible_position	();
 }
 
-float CStalkerMovementManager::speed					(const EMovementDirection &movement_direction)
+f32 CStalkerMovementManager::speed					(const EMovementDirection &movement_direction)
 {
 	VERIFY								(movement_type() != eMovementTypeStand);
 
@@ -564,7 +564,7 @@ float CStalkerMovementManager::speed					(const EMovementDirection &movement_dir
 	);
 }
 
-void CStalkerMovementManager::setup_speed_from_animation(const float &speed)
+void CStalkerMovementManager::setup_speed_from_animation(const f32& speed)
 {
 	set_desirable_speed					(object().m_fCurSpeed = speed);
 }
@@ -578,7 +578,7 @@ void CStalkerMovementManager::on_build_path				()
 	m_last_query_distance				= flt_max;
 }
 
-bool CStalkerMovementManager::is_object_on_the_way		(const CGameObject *object, const float &distance)
+bool CStalkerMovementManager::is_object_on_the_way		(const CGameObject *object, const f32& distance)
 {
 	update_object_on_the_way			(object,distance);
 
@@ -605,7 +605,7 @@ bool CStalkerMovementManager::is_object_on_the_way		(const CGameObject *object, 
 	return								(m_last_query_result);
 }
 
-IC float distance_to_line								(const Fvector &p0, const Fvector &p1, const Fvector &p2)
+IC f32 distance_to_line								(const Fvector &p0, const Fvector &p1, const Fvector &p2)
 {
 	if (p0.similar(p2))
 		return							(0.f);
@@ -614,7 +614,7 @@ IC float distance_to_line								(const Fvector &p0, const Fvector &p1, const Fv
 		return							(0.f);
 
 	Fvector								p0p2 = Fvector().sub(p2,p0);
-	float								p0p2_magnitude = p0p2.magnitude();
+	f32								p0p2_magnitude = p0p2.magnitude();
 	if (p0.similar(p1))
 		return							(p0p2_magnitude);
 
@@ -623,7 +623,7 @@ IC float distance_to_line								(const Fvector &p0, const Fvector &p1, const Fv
 	Fvector								p0p1 = Fvector().sub(p1,p0);
 	p0p1.normalize						();
 
-	float								cos_alpha = p0p2.dotproduct(p0p1);
+	f32								cos_alpha = p0p2.dotproduct(p0p1);
 	if (cos_alpha < 0.f)
 		return							(p0p2_magnitude);
 
@@ -632,11 +632,11 @@ IC float distance_to_line								(const Fvector &p0, const Fvector &p1, const Fv
 	if (p1p2.dotproduct(p1p0) < 0.f)
 		return							(p1p2.magnitude());
 
-	float								sin_alpha = _sqrt(1.f - _sqr(cos_alpha));
+	f32								sin_alpha = _sqrt(1.f - _sqr(cos_alpha));
 	return								(p0p2_magnitude*sin_alpha);
 }
 
-void CStalkerMovementManager::update_object_on_the_way	(const CGameObject *object, const float &distance)
+void CStalkerMovementManager::update_object_on_the_way	(const CGameObject *object, const f32& distance)
 {
 	if (!actual())
 		return;
@@ -654,7 +654,7 @@ void CStalkerMovementManager::update_object_on_the_way	(const CGameObject *objec
 	m_last_query_distance				= distance;
 
 	Fvector								position = object->Position();
-	float								current_distance = 0.f;
+	f32								current_distance = 0.f;
 	xr_vector<STravelPathPoint>::const_iterator	I = detail().path().begin() + detail().curr_travel_point_index() + 1;
 	xr_vector<STravelPathPoint>::const_iterator	E = detail().path().end();
 	for ( ; I != E; ++I) {
@@ -693,7 +693,7 @@ void CStalkerMovementManager::check_for_bad_path	()
 	if (point_index + 2 >= point_count)
 		return;
 
-	float								distance = path[point_index + 1].position.distance_to(object().Position());
+	f32								distance = path[point_index + 1].position.distance_to(object().Position());
 	Fvector								current_direction = Fvector().sub(path[point_index + 1].position,path[point_index].position);
 	Fvector								next_direction;
 	if (current_direction.magnitude() >= EPS_L)
@@ -708,15 +708,15 @@ void CStalkerMovementManager::check_for_bad_path	()
 	VERIFY								(J != E);
 	for ( ; J != E; ++I, ++J) {
 		next_direction					= Fvector().sub((*J).position,(*I).position);
-		float							magnitude = next_direction.magnitude();
+		f32							magnitude = next_direction.magnitude();
 		distance						+= magnitude;
 		//. how can it be?
 		if (magnitude < EPS_L)
 			continue;
 
 		next_direction.normalize		();
-		float							cos_angle = current_direction.dotproduct(next_direction);
-		float							angle = acosf(cos_angle);
+		f32							cos_angle = current_direction.dotproduct(next_direction);
+		f32							angle = acosf(cos_angle);
 		if (angle > BAD_PATH_ANGLE) {
 #ifdef DEBUG
 			Msg							("bad path check changed movement type from RUN to WALK");

@@ -50,8 +50,8 @@ void CRadioactiveZone::Affect(SZoneObjectInfo* O)
 		dir.set(0,0,0);
 	
 		Fvector position_in_bone_space;
-		float power = Power(GO->Position().distance_to(pos));
-		float impulse = 0.f;
+		f32 power = Power(GO->Position().distance_to(pos));
+		f32 impulse = 0.f;
 		if(power > EPS) 
 		{
 //.			m_dwDeltaTime = 0;

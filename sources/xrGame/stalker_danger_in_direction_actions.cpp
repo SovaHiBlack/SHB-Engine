@@ -30,7 +30,7 @@
 
 using namespace StalkerDecisionSpace;
 
-extern float current_cover	(CAI_Stalker *object);
+extern f32 current_cover	(CAI_Stalker *object);
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerInDirectionTakeCover
@@ -50,7 +50,7 @@ void CStalkerActionDangerInDirectionTakeCover::initialize						()
 	object().movement().set_detail_path_type	(DetailPathManager::eDetailPathTypeSmooth);
 	object().movement().set_movement_type		(::Random.randI(2) ? eMovementTypeRun : eMovementTypeWalk);
 	u32											min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float										distance = object().memory().danger().selected()->position().distance_to(object().Position());
+	f32										distance = object().memory().danger().selected()->position().distance_to(object().Position());
 	select_queue_params							(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal			(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 }
@@ -121,7 +121,7 @@ void CStalkerActionDangerInDirectionLookOut::initialize							()
 	object().movement().set_nearest_accessible_position	();
 
 	u32											min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float										distance = object().memory().danger().selected()->position().distance_to(object().Position());
+	f32										distance = object().memory().danger().selected()->position().distance_to(object().Position());
 	select_queue_params							(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal			(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 
@@ -194,7 +194,7 @@ void CStalkerActionDangerInDirectionHoldPosition::initialize					()
 	object().movement().set_movement_type		(eMovementTypeStand);
 
 	u32											min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float										distance = object().memory().danger().selected()->position().distance_to(object().Position());
+	f32										distance = object().memory().danger().selected()->position().distance_to(object().Position());
 	select_queue_params							(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal			(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 
@@ -224,7 +224,7 @@ void CStalkerActionDangerInDirectionHoldPosition::execute						()
 	}
 
 	u32									min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float								distance = position.distance_to(object().Position());
+	f32								distance = position.distance_to(object().Position());
 	select_queue_params					(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal	(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 }
@@ -254,7 +254,7 @@ void CStalkerActionDangerInDirectionDetour::initialize							()
 	object().movement().set_movement_type		(eMovementTypeWalk);
 	object().movement().set_mental_state		(eMentalStateDanger);
 	u32											min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float										distance = object().memory().danger().selected()->position().distance_to(object().Position());
+	f32										distance = object().memory().danger().selected()->position().distance_to(object().Position());
 	select_queue_params							(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal			(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().agent_manager().member().member(m_object).cover(0);
@@ -321,7 +321,7 @@ void CStalkerActionDangerInDirectionSearch::initialize						()
 	object().movement().set_mental_state			(eMentalStateDanger);
 
 	u32												min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-	float											distance = object().memory().danger().selected()->position().distance_to(object().Position());
+	f32											distance = object().memory().danger().selected()->position().distance_to(object().Position());
 	select_queue_params								(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	object().CObjectHandler::set_goal				(eObjectActionAimReady1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 

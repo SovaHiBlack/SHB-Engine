@@ -75,8 +75,8 @@ private:
 #endif // USE_HEAD_BONE_PART_FAKE
 
 private:
-	float							m_previous_speed;
-	float							m_current_speed;
+	f32							m_previous_speed;
+	f32							m_current_speed;
 
 private:
 	IC		bool					strapped				() const;
@@ -95,9 +95,9 @@ private:
 			MotionID				missile_animation		(u32 slot, const EBodyState &body_state);
 
 private:
-	IC		float					legs_switch_factor		() const;
-			void					legs_assign_direction	(float switch_factor, const EMovementDirection &direction);
-			void					legs_process_direction	(float yaw);
+	IC		f32					legs_switch_factor		() const;
+			void					legs_assign_direction	(f32 switch_factor, const EMovementDirection &direction);
+			void					legs_process_direction	(f32 yaw);
 			MotionID				legs_move_animation		();
 			MotionID				legs_no_move_animation	();
 
@@ -145,7 +145,7 @@ public:
 	virtual	void					reinit					();
 	virtual	void					reload					(CAI_Stalker *object);
 	virtual void					update					();
-			void					play_fx					(float power_factor, int fx_index);
+			void					play_fx					(f32 power_factor, int fx_index);
 			void 					play_delayed_callbacks	();
 
 public:

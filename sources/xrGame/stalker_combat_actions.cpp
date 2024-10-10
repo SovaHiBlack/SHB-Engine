@@ -43,10 +43,10 @@
 #	define TEST_MENTAL_STATE
 #endif // DEBUG
 
-const float TEMP_DANGER_DISTANCE	= 5.f;
+const f32 TEMP_DANGER_DISTANCE	= 5.f;
 const u32	TEMP_DANGER_INTERVAL	= 120000;
 
-const float	CLOSE_MOVE_DISTANCE		= -10.f;
+const f32	CLOSE_MOVE_DISTANCE		= -10.f;
 
 const u32	CROUCH_LOOK_OUT_DELTA	= 5000;
 
@@ -226,7 +226,7 @@ void CStalkerActionRetreatFromEnemy::execute		()
 		if (object().memory().visual().visible_now(object().memory().enemy().selected())) {
 			object().movement().set_mental_state			(eMentalStateDanger);
 //			u32												min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-//			float											distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
+//			f32											distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
 //			select_queue_params								(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 //			object().CObjectHandler::set_goal				(eObjectActionFire1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 			fire								();
@@ -406,7 +406,7 @@ void CStalkerActionKillEnemy::execute			()
 	object().sight().setup		(CSightAction(object().memory().enemy().selected(),true,true));
 
 //	u32									min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-//	float								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
+//	f32								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
 //	select_queue_params					(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 //	object().CObjectHandler::set_goal	(eObjectActionFire1,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	fire								();
@@ -555,7 +555,7 @@ void CStalkerActionLookOut::initialize		()
 	object().brain().affect_cover				(true);
 }
 
-float current_cover						(CAI_Stalker *object)
+f32 current_cover						(CAI_Stalker *object)
 {
 	Fvector								position, direction;
 	position							= object->eye_matrix.c;
@@ -1144,7 +1144,7 @@ void CStalkerActionSuddenAttack::execute					()
 	else
 		object().movement().set_nearest_accessible_position	(ai().level_graph().vertex_position(mem_object.m_object_params.m_level_vertex_id),mem_object.m_object_params.m_level_vertex_id);
 
-	float								distance = object().Position().distance_to(mem_object.m_object_params.m_position);
+	f32								distance = object().Position().distance_to(mem_object.m_object_params.m_position);
 	if (distance >= 15.f) {
 		object().movement().set_body_state				(eBodyStateStand);
 		object().movement().set_movement_type			(eMovementTypeRun);
@@ -1253,7 +1253,7 @@ void CStalkerActionCriticalHit::initialize					()
 
 	if (object().memory().enemy().selected()) {
 		u32									min_queue_size, max_queue_size, min_queue_interval, max_queue_interval;
-		float								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
+		f32								distance = object().memory().enemy().selected()->Position().distance_to(object().Position());
 		select_queue_params					(distance,min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 		object().CObjectHandler::set_goal	(eObjectActionIdle,object().best_weapon(),min_queue_size, max_queue_size, min_queue_interval, max_queue_interval);
 	}

@@ -105,7 +105,7 @@ IC	void CSSetupManager::select_action				()
 			return;
 		}
 
-		float				m_total_weight = 0.f;
+		f32				m_total_weight = 0.f;
 		setup_actions::const_iterator	I = actions().begin();
 		setup_actions::const_iterator	E = actions().end();
 		for ( ; I != E; ++I)
@@ -113,7 +113,7 @@ IC	void CSSetupManager::select_action				()
 				m_total_weight += (*I).second->weight();
 		VERIFY				(!fis_zero(m_total_weight));
 
-		float				m_random = ::Random.randF(m_total_weight);
+		f32				m_random = ::Random.randF(m_total_weight);
 		m_total_weight		= 0.f;
 		I					= actions().begin();
 		for ( ; I != E; ++I) {

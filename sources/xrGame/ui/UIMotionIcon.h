@@ -22,7 +22,7 @@ private:
 
 		struct _npc_visibility{
 			u16				id;
-			float				value;
+			f32				value;
 			bool operator == (const u16& _id){
 				return id == _id;
 			}
@@ -33,16 +33,16 @@ private:
 		};
 		xr_vector<_npc_visibility>				m_npc_visibility;
 		bool									m_bchanged;
-		float				m_luminosity;
+		f32				m_luminosity;
 public:
 	virtual					~CUIMotionIcon		();
 							CUIMotionIcon		();
 	virtual	void			Update				();
 			void			Init				();
 			void			ShowState			(EState state);
-			void			SetPower			(float Pos);
-			void			SetNoise			(float Pos);
-			void			SetLuminosity		(float Pos);
-			void			SetActorVisibility	(u16 who_id, float value);
+			void			SetPower			(f32 Pos);
+			void			SetNoise			(f32 Pos);
+			void			SetLuminosity		(f32 Pos);
+			void			SetActorVisibility	(u16 who_id, f32 value);
 			void			ResetVisibility		();
 };

@@ -14,10 +14,10 @@ public:
 	virtual void			SetTextColor(u32 color);
 	virtual void			SetTextColorD(u32 color);
 
-	virtual void	Init			(float x, float y, float width, float height);
+	virtual void	Init			(f32 x, f32 y, f32 width, f32 height);
 	virtual void	SendMessage		(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 
-	virtual bool	OnMouse			(float x, float y, EUIMessages mouse_action);
+	virtual bool	OnMouse			(f32 x, f32 y, EUIMessages mouse_action);
 	virtual bool	OnKeyboard		(int dik, EUIMessages keyboard_action);
 	virtual void	OnFocusLost		();
 

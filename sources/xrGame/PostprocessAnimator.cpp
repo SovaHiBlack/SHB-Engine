@@ -5,46 +5,46 @@
 // postprocess value LOAD method implementation
 void CPostProcessValue::load (IReader &pReader)
 {
-    m_Value.Load_2 (pReader);
+	m_Value.Load_2 (pReader);
 }
 
 void CPostProcessValue::save (IWriter &pWriter)
 {
-    m_Value.Save (pWriter);
+	m_Value.Save (pWriter);
 }
  
 // postprocess color LOAD method implementation
 void CPostProcessColor::load (IReader &pReader)
 {
-    m_fBase = pReader.r_float	();
-    m_Red.Load_2				(pReader);
-    m_Green.Load_2				(pReader);
-    m_Blue.Load_2				(pReader);
+	m_fBase = pReader.r_float	();
+	m_Red.Load_2				(pReader);
+	m_Green.Load_2				(pReader);
+	m_Blue.Load_2				(pReader);
 }
 
 void CPostProcessColor::save (IWriter &pWriter)
 {
-    pWriter.w_float				(m_fBase);
-    m_Red.Save					(pWriter);
-    m_Green.Save				(pWriter);
-    m_Blue.Save					(pWriter);
+	pWriter.w_float				(m_fBase);
+	m_Red.Save					(pWriter);
+	m_Green.Save				(pWriter);
+	m_Blue.Save					(pWriter);
 }
 
 //main PostProcessAnimator class
 
 CPostprocessAnimator::CPostprocessAnimator()
 {
-    Create				();
+	Create				();
 }
 
 CPostprocessAnimator::CPostprocessAnimator(int id, bool cyclic):CEffectorPP((EEffectorPPType)id, 100000, true),m_bCyclic(cyclic)
 {
-    Create				();
+	Create				();
 }
 
 CPostprocessAnimator::~CPostprocessAnimator           ()
 {
-    Clear ();
+	Clear ();
 }
 
 BOOL CPostprocessAnimator::Valid()
@@ -56,69 +56,69 @@ BOOL CPostprocessAnimator::Valid()
 
 void        CPostprocessAnimator::Clear                           ()
 {
-    for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
-        xr_delete (m_Params[a]);
+	for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
+		xr_delete (m_Params[a]);
 }
 
 void        CPostprocessAnimator::Load                            (pcstr name)
 {
-    m_Name = name;
-    string_path full_path;
-    if (!FS.exist (full_path, "$level$", name))
-       if (!FS.exist (full_path, "$game_anims$", name))
-          Debug.fatal (DEBUG_INFO,"Can't find motion file '%s'.", name);
+	m_Name = name;
+	string_path full_path;
+	if (!FS.exist (full_path, "$level$", name))
+	   if (!FS.exist (full_path, "$game_anims$", name))
+		  Debug.fatal (DEBUG_INFO,"Can't find motion file '%s'.", name);
 
 	pcstr  ext = strext(full_path);
-    if (ext)
-       {
-       if (!xr_strcmp (ext,POSTPROCESS_FILE_EXTENSION))
-          {
-          IReader* F = FS.r_open (full_path);
-          u32 dwVersion = F->r_u32();
-          VERIFY (dwVersion == POSTPROCESS_FILE_VERSION);
-          //load base color
-          VERIFY (m_Params[0]);
-          m_Params[0]->load (*F);
-          //load add color
-          VERIFY (m_Params[1]);
-          m_Params[1]->load (*F);
-          //load gray color
-          VERIFY (m_Params[2]);
-          m_Params[2]->load (*F);
-          //load gray value
-          VERIFY (m_Params[3]);
-          m_Params[3]->load (*F);
-          //load blur value
-          VERIFY (m_Params[4]);
-          m_Params[4]->load (*F);
-          //load duality horizontal
-          VERIFY (m_Params[5]);
-          m_Params[5]->load (*F);
-          //load duality vertical
-          VERIFY (m_Params[6]);
-          m_Params[6]->load (*F);
-          //load noise intensity
-          VERIFY (m_Params[7]);
-          m_Params[7]->load (*F);
-          //load noise granularity
-          VERIFY (m_Params[8]);
-          m_Params[8]->load (*F);
-          //load noise fps
-          VERIFY (m_Params[9]);
-          m_Params[9]->load (*F);
-          //close reader
-          FS.r_close (F);
-          }
-        else
-           FATAL	("ERROR: Can't support files with many animations set. Incorrect file.");
-        }
+	if (ext)
+	   {
+	   if (!xr_strcmp (ext,POSTPROCESS_FILE_EXTENSION))
+		  {
+		  IReader* F = FS.r_open (full_path);
+		  u32 dwVersion = F->r_u32();
+		  VERIFY (dwVersion == POSTPROCESS_FILE_VERSION);
+		  //load base color
+		  VERIFY (m_Params[0]);
+		  m_Params[0]->load (*F);
+		  //load add color
+		  VERIFY (m_Params[1]);
+		  m_Params[1]->load (*F);
+		  //load gray color
+		  VERIFY (m_Params[2]);
+		  m_Params[2]->load (*F);
+		  //load gray value
+		  VERIFY (m_Params[3]);
+		  m_Params[3]->load (*F);
+		  //load blur value
+		  VERIFY (m_Params[4]);
+		  m_Params[4]->load (*F);
+		  //load duality horizontal
+		  VERIFY (m_Params[5]);
+		  m_Params[5]->load (*F);
+		  //load duality vertical
+		  VERIFY (m_Params[6]);
+		  m_Params[6]->load (*F);
+		  //load noise intensity
+		  VERIFY (m_Params[7]);
+		  m_Params[7]->load (*F);
+		  //load noise granularity
+		  VERIFY (m_Params[8]);
+		  m_Params[8]->load (*F);
+		  //load noise fps
+		  VERIFY (m_Params[9]);
+		  m_Params[9]->load (*F);
+		  //close reader
+		  FS.r_close (F);
+		  }
+		else
+		   FATAL	("ERROR: Can't support files with many animations set. Incorrect file.");
+		}
 
 	f_length					= GetLength	();
 
 	if(!m_bCyclic)	fLifeTime	= f_length;
 }
 
-void        CPostprocessAnimator::Stop       (float sp)
+void        CPostprocessAnimator::Stop       (f32 sp)
 {
 	if(m_bStop)			return;
 	m_bStop				= true;
@@ -126,23 +126,23 @@ void        CPostprocessAnimator::Stop       (float sp)
 	m_factor_speed		= sp;
 }
 
-float       CPostprocessAnimator::GetLength                       ()
+f32       CPostprocessAnimator::GetLength                       ()
 {
-    float v = 0.0f;
-    for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
-        {
-        float t = m_Params[a]->get_length();
-        v		= _max(t,v);
-        }
-    return v;
+	f32 v = 0.0f;
+	for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
+		{
+		f32 t = m_Params[a]->get_length();
+		v		= _max(t,v);
+		}
+	return v;
 }
 
-void        CPostprocessAnimator::Update                          (float tm)
+void        CPostprocessAnimator::Update                          (f32 tm)
 {
-    for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
-        m_Params[a]->update (tm);
+	for (int a = 0; a < POSTPROCESS_PARAMS_COUNT; a++)
+		m_Params[a]->update (tm);
 }
-void CPostprocessAnimator::SetDesiredFactor	(float f, float sp)			
+void CPostprocessAnimator::SetDesiredFactor	(f32 f, f32 sp)
 {
 	m_dest_factor=f;
 	m_factor_speed=sp;
@@ -150,7 +150,7 @@ void CPostprocessAnimator::SetDesiredFactor	(float f, float sp)
 	VERIFY				(_valid(m_dest_factor));
 };
 
-void CPostprocessAnimator::SetCurrentFactor	(float f)					
+void CPostprocessAnimator::SetCurrentFactor	(f32 f)
 {
 	m_factor=f;
 	m_dest_factor=f;
@@ -222,26 +222,26 @@ void        CPostprocessAnimator::Create                          ()
 	m_factor_speed		= 1.0f;
 	f_length			= 0.0f;
 
-    m_Params[0] = xr_new<CPostProcessColor> (&m_EffectorParams.color_base);			//base color
-    VERIFY (m_Params[0]);
-    m_Params[1] = xr_new<CPostProcessColor> (&m_EffectorParams.color_add);          //add color
-    VERIFY (m_Params[1]);
-    m_Params[2] = xr_new<CPostProcessColor> (&m_EffectorParams.color_gray);         //gray color
-    VERIFY (m_Params[2]);
-    m_Params[3] = xr_new<CPostProcessValue> (&m_EffectorParams.gray);              //gray value
-    VERIFY (m_Params[3]);
-    m_Params[4] = xr_new<CPostProcessValue> (&m_EffectorParams.blur);              //blur value
-    VERIFY (m_Params[4]);
-    m_Params[5] = xr_new<CPostProcessValue> (&m_EffectorParams.duality.h);          //duality horizontal
-    VERIFY (m_Params[5]);
-    m_Params[6] = xr_new<CPostProcessValue> (&m_EffectorParams.duality.v);          //duality vertical
-    VERIFY (m_Params[6]);
-    m_Params[7] = xr_new<CPostProcessValue> (&m_EffectorParams.noise.intensity);    //noise intensity
-    VERIFY (m_Params[7]);
-    m_Params[8] = xr_new<CPostProcessValue> (&m_EffectorParams.noise.grain);        //noise granularity
-    VERIFY (m_Params[8]);
-    m_Params[9] = xr_new<CPostProcessValue> (&m_EffectorParams.noise.fps);          //noise fps
-    VERIFY (m_Params[9]);
+	m_Params[0] = xr_new<CPostProcessColor> (&m_EffectorParams.color_base);			//base color
+	VERIFY (m_Params[0]);
+	m_Params[1] = xr_new<CPostProcessColor> (&m_EffectorParams.color_add);          //add color
+	VERIFY (m_Params[1]);
+	m_Params[2] = xr_new<CPostProcessColor> (&m_EffectorParams.color_gray);         //gray color
+	VERIFY (m_Params[2]);
+	m_Params[3] = xr_new<CPostProcessValue> (&m_EffectorParams.gray);              //gray value
+	VERIFY (m_Params[3]);
+	m_Params[4] = xr_new<CPostProcessValue> (&m_EffectorParams.blur);              //blur value
+	VERIFY (m_Params[4]);
+	m_Params[5] = xr_new<CPostProcessValue> (&m_EffectorParams.duality.h);          //duality horizontal
+	VERIFY (m_Params[5]);
+	m_Params[6] = xr_new<CPostProcessValue> (&m_EffectorParams.duality.v);          //duality vertical
+	VERIFY (m_Params[6]);
+	m_Params[7] = xr_new<CPostProcessValue> (&m_EffectorParams.noise.intensity);    //noise intensity
+	VERIFY (m_Params[7]);
+	m_Params[8] = xr_new<CPostProcessValue> (&m_EffectorParams.noise.grain);        //noise granularity
+	VERIFY (m_Params[8]);
+	m_Params[9] = xr_new<CPostProcessValue> (&m_EffectorParams.noise.fps);          //noise fps
+	VERIFY (m_Params[9]);
 }
 
 BOOL CPostprocessAnimatorLerp::Process(SPPInfo &PPInfo)
@@ -262,7 +262,7 @@ CPostprocessAnimatorControlled::CPostprocessAnimatorControlled(CEffectorControll
 :m_controller(c)
 {
 	m_controller->SetPP(this);
-	SetFactorFunc(fastdelegate::FastDelegate0<float>(m_controller, &CEffectorController::GetFactor));
+	SetFactorFunc(fastdelegate::FastDelegate0<f32>(m_controller, &CEffectorController::GetFactor));
 }
 
 CPostprocessAnimatorControlled::~CPostprocessAnimatorControlled()

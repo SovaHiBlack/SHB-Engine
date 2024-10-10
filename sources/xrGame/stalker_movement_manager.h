@@ -39,12 +39,12 @@ protected:
 public:
 	MonsterSpace::SBoneRotation			m_head;
 	u32									m_last_turn_index;
-	float								m_danger_head_speed;
+	f32								m_danger_head_speed;
 
 private:
 	IC		void	setup_head_speed				();
-	IC		void	add_velocity					(int mask, float linear, float compute_angular, float angular);
-	IC		void	add_velocity					(int mask, float linear, float compute_angular);
+	IC		void	add_velocity					(int mask, f32 linear, f32 compute_angular, f32 angular);
+	IC		void	add_velocity					(int mask, f32 linear, f32 compute_angular);
 	IC		void	setup_body_orientation			();
 			void	init_velocity_masks				();
 			void	setup_movement_params			();
@@ -63,7 +63,7 @@ public:
 	virtual void	on_travel_point_change			(const u32 &previous_travel_point_index);
 	virtual	void	on_restrictions_change			();
 			void	initialize						();
-	IC		float	path_direction_angle			();
+	IC		f32	path_direction_angle			();
 	IC		bool	turn_in_place					() const;
 
 	IC		void	set_head_orientation			(const MonsterSpace::SBoneRotation &orientation);
@@ -76,8 +76,8 @@ public:
 	IC		void	set_detail_path_type			(EDetailPathType detail_path_type);
 			void	set_nearest_accessible_position	();
 			void	set_nearest_accessible_position	(Fvector desired_position, u32 level_vertex_id);
-			float	speed							(const EMovementDirection &movement_direction);
-			void	setup_speed_from_animation		(const float &speed);
+			f32	speed							(const EMovementDirection &movement_direction);
+			void	setup_speed_from_animation		(const f32& speed);
 
 public:
 	IC		const MonsterSpace::SBoneRotation		&head_orientation		() const;
@@ -103,16 +103,16 @@ private:
 	const CGameObject	*m_last_query_object;
 	Fvector				m_last_query_position;
 	Fvector				m_last_query_object_position;
-	float				m_last_query_distance;
+	f32				m_last_query_distance;
 	bool				m_last_query_result;
 	bool				m_force_update;
 
 public:
 	virtual void									on_build_path			();
-			void									update_object_on_the_way(const CGameObject *object, const float &distance);
-			bool									is_object_on_the_way	(const CGameObject *object, const float &distance);
+			void									update_object_on_the_way(const CGameObject *object, const f32& distance);
+			bool									is_object_on_the_way	(const CGameObject *object, const f32& distance);
 			void									force_update			(const bool &force_update);
-	IC		void									danger_head_speed		(const float &speed);
+	IC		void									danger_head_speed		(const f32& speed);
 };
 
 #include "stalker_movement_manager_inline.h"

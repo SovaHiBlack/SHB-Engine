@@ -22,7 +22,7 @@ void CUIPdaMsgListItem::SetFont(CGameFont* pFont){
 	UIMsgText.SetFont(pFont);
 }
 
-void CUIPdaMsgListItem::Init(float x, float y, float width, float height)
+void CUIPdaMsgListItem::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	CUIStatic::Init			(x, y, width, height);
 
@@ -66,9 +66,9 @@ void CUIPdaMsgListItem::InitCharacter(CInventoryOwner* pInvOwner)
 /*
 	UIIcon.SetShader(GetCharIconsShader());
 	UIIcon.GetUIStaticItem().SetOriginalRect(
-					float(pInvOwner->CharacterInfo().TradeIconX()*ICON_GRID_WIDTH),
-					float(pInvOwner->CharacterInfo().TradeIconY()*ICON_GRID_HEIGHT),
-					float(pInvOwner->CharacterInfo().TradeIconX()+CHAR_ICON_WIDTH*ICON_GRID_WIDTH),
-					float(pInvOwner->CharacterInfo().TradeIconY()+CHAR_ICON_HEIGHT*ICON_GRID_HEIGHT));
+					f32(pInvOwner->CharacterInfo().TradeIconX()*ICON_GRID_WIDTH),
+					f32(pInvOwner->CharacterInfo().TradeIconY()*ICON_GRID_HEIGHT),
+					f32(pInvOwner->CharacterInfo().TradeIconX()+CHAR_ICON_WIDTH*ICON_GRID_WIDTH),
+					f32(pInvOwner->CharacterInfo().TradeIconY()+CHAR_ICON_HEIGHT*ICON_GRID_HEIGHT));
 */
 }

@@ -54,11 +54,11 @@ const dReal			default_world_gravity							=	2*9.81f;
 /////////////////////////////////////////////////////
 
 int			phIterations											= 18;
-float		phTimefactor											= 1.f;
-float		phBreakCommonFactor										= 0.01f;
-float		phRigidBreakWeaponFactor								= 1.f;
+f32		phTimefactor											= 1.f;
+f32		phBreakCommonFactor										= 0.01f;
+f32		phRigidBreakWeaponFactor								= 1.f;
 Fbox		phBoundaries											= {1000.f,1000.f,-1000.f,-1000.f};
-float		ph_tri_query_ex_aabb_rate								= 1.3f;
+f32		ph_tri_query_ex_aabb_rate								= 1.3f;
 int			ph_tri_clear_disable_count								= 10;
 dWorldID	phWorld;
 
@@ -95,13 +95,6 @@ IC void add_contact_body_effector(dBodyID body,const dContact& c,SGameMtl* mater
 	}
 }
 
-
-
-
-
-
-
-
 IC static int CollideIntoGroup(dGeomID o1, dGeomID o2,dJointGroupID jointGroup,CPHIsland* world,const int &MAX_CONTACTS)
 {
 	const int RS= 800+10;
@@ -120,7 +113,6 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2,dJointGroupID jointGroup,C
 	if(n>N-1)
 		n=N-1;
 	int i;
-	
 
 	for(i = 0; i < n; ++i)
 	{
@@ -155,13 +147,12 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2,dJointGroupID jointGroup,C
 		SGameMtl* material_2=GMLib.GetMaterialByIdx(material_idx_2);
 		////////////////params can be changed in callbacks//////////////////////////////////////////////////////////////////////////
 		surface.mode =dContactApprox1|dContactSoftERP|dContactSoftCFM;
-		float spring	=material_2->fPHSpring*material_1->fPHSpring*world_spring;
-		float damping	=material_2->fPHDamping*material_1->fPHDamping*world_damping;
+		f32 spring	=material_2->fPHSpring*material_1->fPHSpring*world_spring;
+		f32 damping	=material_2->fPHDamping*material_1->fPHDamping*world_damping;
 		surface.soft_erp=ERP(spring,damping);
 		surface.soft_cfm=CFM(spring,damping);
 		surface.mu=material_2->fPHFriction*material_1->fPHFriction;
 		/////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 		Flags32	&flags_1=material_1->Flags;
 		Flags32	&flags_2=material_2->Flags;
@@ -214,11 +205,9 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2,dJointGroupID jointGroup,C
 						add_contact_body_effector(body,c,material_2);
 					}
 				}
-
 			}
 			if(material_2->Flags.test(SGameMtl::flPassable)) 
 				do_collide=false;
-
 		}
 	
 		if(flags_1.test(SGameMtl::flBounceable)&&flags_2.test(SGameMtl::flBounceable))
@@ -252,10 +241,8 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2,dJointGroupID jointGroup,C
 			pushing_neg=usr_data_1->pushing_b_neg||usr_data_1->pushing_neg;
 			if(usr_data_1->ph_object){
 				usr_data_1->ph_object->InitContact(&c,do_collide,material_idx_1,material_idx_2);
-
 			}
 		}
-
 
 		if	(pushing_neg)
 			surface.mu=dInfinity;
@@ -288,13 +275,9 @@ void NearCallback(CPHObject* obj1,CPHObject* obj2, dGeomID o1, dGeomID o2)
 }
 void CollideStatic(dGeomID o2,CPHObject* obj2)
 {
-	
 	CPHIsland* island2=obj2->DActiveIsland();
 	CollideIntoGroup(ph_world->GetMeshGeom(),o2,ContactGroup,island2,island2->MaxJoints());
 }
-
-
-
 
 //half square time
 
@@ -387,7 +370,7 @@ void dBodyAngAccelFromTorqu(const dBodyID body, dReal* ang_accel, const dReal* t
 	dInvertPDMatrix (m.I, invI, 3);
 	dMULTIPLY1_333(ang_accel,invI, torque);
 }
-void FixBody(dBodyID body,float ext_param,float mass_param)
+void FixBody(dBodyID body, f32 ext_param, f32 mass_param)
 {
 	dMass m;
 	dMassSetSphere(&m,1.f,ext_param);
@@ -399,13 +382,13 @@ void FixBody(dBodyID body,float ext_param,float mass_param)
 	dBodySetForce(body,0,0,0);
 	dBodySetTorque(body,0,0,0);
 }
+
 void FixBody(dBodyID body)
 {
 	FixBody(body,fix_ext_param,fix_mass_param);
 }
 
-
-void BodyCutForce(dBodyID body,float l_limit,float w_limit)
+void BodyCutForce(dBodyID body, f32 l_limit, f32 w_limit)
 {
 	const dReal wa_limit=w_limit/fixed_step;
 	const dReal* force=	dBodyGetForce(body);
@@ -425,7 +408,6 @@ void BodyCutForce(dBodyID body,float l_limit,float w_limit)
 			force[2]/force_mag*force_limit
 			);
 	}
-
 
 	const dReal* torque=dBodyGetTorque(body);
 	dReal torque_mag=dSqrt(dDOT(torque,torque));
@@ -475,10 +457,9 @@ void dMassSub(dMass *a,const dMass *b)
 	for (i=0; i<12; ++i) a->I[i] -= b->I[i];
 }
 
-
 ////Energy of non Elastic collision;
 //body - static case
-float E_NlS(dBodyID body,const dReal* norm,float norm_sign)//if body c.geom.g1 norm_sign + else -
+f32 E_NlS(dBodyID body,const dReal* norm, f32 norm_sign)//if body c.geom.g1 norm_sign + else -
 {													 //norm*norm_sign - to body
 	const dReal* vel=dBodyGetLinearVel(body);
 	dReal prg=-dDOT(vel,norm)*norm_sign;
@@ -489,7 +470,7 @@ float E_NlS(dBodyID body,const dReal* norm,float norm_sign)//if body c.geom.g1 n
 }
 
 //body - body case
-float E_NLD(dBodyID b1,dBodyID b2,const dReal* norm)// norm - from 2 to 1
+f32 E_NLD(dBodyID b1,dBodyID b2,const dReal* norm)// norm - from 2 to 1
 {
 	dMass m1,m2;
 	dBodyGetMass(b1,&m1);dBodyGetMass(b2,&m2);
@@ -515,7 +496,8 @@ float E_NLD(dBodyID b1,dBodyID b2,const dReal* norm)// norm - from 2 to 1
 
 	return (kin_energy_start-kin_energy_end);
 }
-float E_NL(dBodyID b1,dBodyID b2,const dReal* norm)
+
+f32 E_NL(dBodyID b1,dBodyID b2,const dReal* norm)
 {
 	VERIFY(b1||b2);
 	if(b1)
@@ -523,6 +505,7 @@ float E_NL(dBodyID b1,dBodyID b2,const dReal* norm)
 		if(b2)return E_NLD(b1,b2,norm);else return  E_NlS(b1,norm,1);
 	}else return E_NlS(b2,norm,-1);
 }
+
 void ApplyGravityAccel(dBodyID body,const dReal* accel)
 {
 	dMass m;
@@ -535,5 +518,4 @@ const dReal* dJointGetPositionContact(dJointID joint)
 	VERIFY2(dJointGetType(joint)==dJointTypeContact,"not a contact!");
 	dxJointContact* c_joint=(dxJointContact*)joint;
 	return c_joint->contact.geom.pos;
-
 }

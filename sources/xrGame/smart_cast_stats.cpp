@@ -124,7 +124,7 @@ IC	void CSmartCastStats::show					()
 
 	I									= m_temp.begin();
 	for ( ; I != E; ++I)
-		Msg								("%8d %6.2f% : smart_cast<%s>(%s)",(*I).m_count,float((*I).m_count)*100.f/float(total),(*I).m_to,(*I).m_from);
+		Msg								("%8d %6.2f% : smart_cast<%s>(%s)",(*I).m_count, f32((*I).m_count)*100.f/ f32(total),(*I).m_to,(*I).m_from);
 }
 
 void add_smart_cast_stats		(pcstr from, pcstr to)

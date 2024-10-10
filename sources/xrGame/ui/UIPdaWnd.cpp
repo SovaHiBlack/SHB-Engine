@@ -361,7 +361,7 @@ void RearrangeTabButtons(CUITabControl* pTab, xr_vector<Fvector2>& vec_sign_plac
 	Fvector2					sign_sz;
 	sign_sz.set					(9.0f+3.0f, 11.0f);
 	u32 idx						= 0;
-	float	btn_text_len		= 0.0f;
+	f32	btn_text_len		= 0.0f;
 	CUIStatic* st				= NULL;
 
 	for(;it!=it_e;++it,++idx)
@@ -380,7 +380,7 @@ void RearrangeTabButtons(CUITabControl* pTab, xr_vector<Fvector2>& vec_sign_plac
 
 		vec_sign_places[idx].set(pos);
 		vec_sign_places[idx].y	+= iFloor(((*it)->GetWndSize().y - sign_sz.y)/2.0f);
-		vec_sign_places[idx].y	= (float)iFloor(vec_sign_places[idx].y);
+		vec_sign_places[idx].y	= (f32)iFloor(vec_sign_places[idx].y);
 		pos.x					+= sign_sz.x;
 
 		(*it)->SetWndPos		(pos);

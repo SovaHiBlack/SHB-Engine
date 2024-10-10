@@ -18,13 +18,13 @@
 #include "actorEffector.h"
 #include "CustomOutfit.h"
 
-static const float		TIME_2_HIDE					= 5.f;
-static const float		TORCH_INERTION_CLAMP		= PI_DIV_6;
-static const float		TORCH_INERTION_SPEED_MAX	= 7.5f;
-static const float		TORCH_INERTION_SPEED_MIN	= 0.5f;
+static const f32		TIME_2_HIDE					= 5.f;
+static const f32		TORCH_INERTION_CLAMP		= PI_DIV_6;
+static const f32		TORCH_INERTION_SPEED_MAX	= 7.5f;
+static const f32		TORCH_INERTION_SPEED_MIN	= 0.5f;
 static const Fvector	TORCH_OFFSET				= {-0.2f,+0.1f,-0.3f};
 static const Fvector	OMNI_OFFSET					= {-0.2f,+0.1f,-0.1f};
-static const float		OPTIMIZATION_DISTANCE		= 100.f;
+static const f32		OPTIMIZATION_DISTANCE		= 100.f;
 
 static bool stalker_use_dynamic_lights	= false;
 
@@ -63,7 +63,7 @@ CTorch::~CTorch(void)
 	HUD_SOUND::DestroySound	(m_NightVisionBrokenSnd);
 }
 
-inline bool CTorch::can_use_dynamic_lights	()
+IC bool CTorch::can_use_dynamic_lights	()
 {
 	if (!H_Parent())
 		return				(true);
@@ -238,12 +238,12 @@ BOOL CTorch::net_Spawn(CSE_Abstract* DC)
 
 	Fcolor clr				= pUserData->r_fcolor				("torch_definition",(b_r2)?"color_r2":"color");
 	fBrightness				= clr.intensity();
-	float range				= pUserData->r_float				("torch_definition",(b_r2)?"range_r2":"range");
+	f32 range				= pUserData->r_float				("torch_definition",(b_r2)?"range_r2":"range");
 	light_render->set_color	(clr);
 	light_render->set_range	(range);
 
 	Fcolor clr_o			= pUserData->r_fcolor				("torch_definition",(b_r2)?"omni_color_r2":"omni_color");
-	float range_o			= pUserData->r_float				("torch_definition",(b_r2)?"omni_range_r2":"omni_range");
+	f32 range_o			= pUserData->r_float				("torch_definition",(b_r2)?"omni_range_r2":"omni_range");
 	light_omni->set_color	(clr_o);
 	light_omni->set_range	(range_o);
 
@@ -416,16 +416,16 @@ void CTorch::UpdateCL()
 	u32 clr					= lanim->CalculateBGR(Device.fTimeGlobal,frame); 
 
 	Fcolor					fclr;
-	fclr.set				((float)color_get_B(clr),(float)color_get_G(clr),(float)color_get_R(clr),1.f);
+	fclr.set				((f32)color_get_B(clr),(f32)color_get_G(clr),(f32)color_get_R(clr),1.f);
 	fclr.mul_rgb			(fBrightness/255.f);
 	if (can_use_dynamic_lights())
 	{
 		light_render->set_color	(fclr);
 		light_omni->set_color	(fclr);
 	}
+
 	glow_render->set_color		(fclr);
 }
-
 
 void CTorch::create_physic_shell()
 {

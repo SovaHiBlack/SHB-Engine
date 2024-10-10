@@ -27,16 +27,16 @@ protected:
 	{
 										SCollisionDamageInfo		()										;
 				void					Construct					()										;
-				float					ContactVelocity				()				const					;
+				f32					ContactVelocity				()				const					;
 				void					HitDir						(Fvector &dir)	const					;
 			IC	const Fvector&			HitPos						()				const					{return cast_fv(m_damege_contact.geom.pos);}
 				void					Reinit						()										;
 				dContact				m_damege_contact;
 				SCollisionHitCallback	*m_hit_callback;
 				u16						m_obj_id;
-				float					m_dmc_signum;
+				f32					m_dmc_signum;
 				enum{ctStatic,ctObject}	m_dmc_type;
-		mutable	float					m_contact_velocity;
+		mutable	f32					m_contact_velocity;
 	};							
 	SCollisionDamageInfo		m_collision_damage_info;
 	/////////////////////////// callback
@@ -74,7 +74,7 @@ protected:
 	dReal	 m_collision_damage_factor;
 	dReal	 m_max_velocity;
 
-	float   m_air_control_factor;
+	f32   m_air_control_factor;
 
 	dVector3 m_jump_depart_position;
 	dVector3 m_death_position;
@@ -137,7 +137,7 @@ public:
 	virtual		void			 		GroundNormal					(Fvector &norm)		;
 	virtual		const ICollisionDamageInfo	*CollisionDamageInfo ()const {return this;}
 private:
-	virtual		float			 	ContactVelocity				()const				{return m_collision_damage_info.ContactVelocity();}
+	virtual		f32			 	ContactVelocity				()const				{return m_collision_damage_info.ContactVelocity();}
 	virtual		void			 	HitDir							(Fvector& dir)const	{return m_collision_damage_info.HitDir(dir);}
 	virtual		const Fvector&	 	HitPos							()const				{return m_collision_damage_info.HitPos();}
 	virtual		u16				 	DamageInitiatorID				()const				;
@@ -175,20 +175,20 @@ public:
 	virtual		void		GetVelocity							(Fvector& vvel)		;
 	virtual		void		GetSmothedVelocity					(Fvector& vvel)		;
 	virtual		void		SetVelocity							(Fvector vel)		;
-	virtual		void		SetAirControlFactor					(float factor)		{m_air_control_factor=factor;}
+	virtual		void		SetAirControlFactor					(f32 factor)		{m_air_control_factor=factor;}
 	virtual		void		SetElevator							(CClimableObject* climable){m_elevator_state.SetElevator(climable);};
 	virtual	CElevatorState	*ElevatorState						()					;
-	virtual		void		SetCollisionDamageFactor			(float f)			{m_collision_damage_factor=f;}
+	virtual		void		SetCollisionDamageFactor			(f32 f)			{m_collision_damage_factor=f;}
 	virtual		void		GetPosition							(Fvector& vpos)		;
 	virtual		void		GetPreviousPosition					(Fvector& pos)		;
-	virtual		float		FootRadius							()					;
+	virtual		f32		FootRadius							()					;
 	virtual		void		DeathPosition						(Fvector& deathPos)	;
 	virtual		void		IPosition							(Fvector& pos)		;
 	virtual		u16			ContactBone							();
 	virtual		void		ApplyImpulse						(const Fvector& dir, const dReal P);
 	virtual		void		ApplyForce							(const Fvector& force);
-	virtual		void		ApplyForce							(const Fvector& dir,float force);
-	virtual		void		ApplyForce							(float x,float y, float z);
+	virtual		void		ApplyForce							(const Fvector& dir, f32 force);
+	virtual		void		ApplyForce							(f32 x, f32 y, f32 z);
 	virtual		void		AddControlVel						(const Fvector& vel);
 	virtual		void		SetMaximumVelocity					(dReal vel)			{m_max_velocity=vel;}
 	virtual		dReal		GetMaximumVelocity					()					{ return m_max_velocity;}
@@ -198,9 +198,9 @@ public:
 																					};
 	virtual	const Fvector&  ControlAccel						()const				{return m_acceleration;}
 	virtual		bool		TouchRestrictor						(ERestrictionType rttype);
-	virtual		float		&FrictionFactor						()					{return m_friction_factor;}
+	virtual		f32&		FrictionFactor						()					{return m_friction_factor;}
 	virtual		void		SetMas								(dReal mass)		;
-	virtual		float		Mass								()					{return m_mass;};
+	virtual		f32			Mass								()					{return m_mass;};
 	virtual		void		SetPhysicsRefObject					(CPhysicsShellHolder* ref_object);
 
 	virtual		void		CaptureObject						(dBodyID body,const dReal* anchor);

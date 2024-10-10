@@ -28,12 +28,12 @@ IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvecto
 	VERIFY							(!restriction->border().empty());
 	VERIFY							(!restriction->accessible_neighbour_border(restriction,out_restriction).empty());
 
-	float							min_dist_sqr = flt_max;
+	f32							min_dist_sqr = flt_max;
 	u32								selected = u32(-1);
 	xr_vector<u32>::const_iterator	I = restriction->accessible_neighbour_border(restriction,out_restriction).begin();
 	xr_vector<u32>::const_iterator	E = restriction->accessible_neighbour_border(restriction,out_restriction).end();
 	for ( ; I != E; ++I) {
-		float	distance_sqr = ai().level_graph().vertex_position(*I).distance_to_sqr(position);
+		f32	distance_sqr = ai().level_graph().vertex_position(*I).distance_to_sqr(position);
 		if (distance_sqr < min_dist_sqr) {
 			min_dist_sqr			= distance_sqr;
 			selected				= *I;
@@ -57,7 +57,7 @@ IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvecto
 			if (restriction->inside(current,!out_restriction) != out_restriction)
 				continue;
 			
-			float	distance_sqr = ai().level_graph().vertex_position(current).distance_to_sqr(position);
+			f32	distance_sqr = ai().level_graph().vertex_position(current).distance_to_sqr(position);
 			if (distance_sqr < min_dist_sqr) {
 				min_dist_sqr = distance_sqr;
 				new_selected = current;
@@ -69,7 +69,7 @@ IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvecto
 
 	{
 		Fvector		center = ai().level_graph().vertex_position(selected);
-		float		offset = ai().level_graph().header().cell_size()*.5f - EPS_L;
+		f32		offset = ai().level_graph().header().cell_size()*.5f - EPS_L;
 		bool		found = false;
 		min_dist_sqr = flt_max;
 		for (u32 i=0; i<5; ++i) {
@@ -92,7 +92,7 @@ IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvecto
 			VERIFY	(ai().level_graph().inside(selected,current.P));
 			VERIFY	(restriction->inside(selected,!out_restriction) == out_restriction);
 			VERIFY	(restriction->inside(current) == out_restriction);
-			float	distance_sqr = current.P.distance_to(position);
+			f32	distance_sqr = current.P.distance_to(position);
 			if (distance_sqr < min_dist_sqr) {
 				min_dist_sqr = distance_sqr;
 				result = current.P;

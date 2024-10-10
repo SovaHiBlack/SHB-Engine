@@ -172,7 +172,7 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 						ChangeGoodwill(group.members()[i]->ID(), from->ID(), delta_goodwill);
 						
 					ChangeCommunityGoodwill(stalker->Community(), from->ID(), 
-						(CHARACTER_GOODWILL)(CHARACTER_COMMUNITY::sympathy(stalker->Community())*(float)delta_goodwill));
+						(CHARACTER_GOODWILL)(CHARACTER_COMMUNITY::sympathy(stalker->Community())*(f32)delta_goodwill));
 				}
 				if(delta_reputation)
 					inv_owner_from->ChangeReputation(delta_reputation);
@@ -217,7 +217,7 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 
 				CHARACTER_GOODWILL community_goodwill = 
 					(CHARACTER_GOODWILL)(CHARACTER_COMMUNITY::sympathy(stalker->Community())*
-					(float)(delta_goodwill+community_member_kill_goodwill));
+					(f32)(delta_goodwill+community_member_kill_goodwill));
 				//сталкер при нападении на членов своей же группировки отношения не меняют
 				//(считается, что такое нападение всегда случайно)
 				bool stalker_kills_team_mate = stalker_from && (stalker_from->Community() == stalker->Community());
@@ -281,7 +281,7 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 						ChangeGoodwill(group.members()[i]->ID(), from->ID(), delta_goodwill);
 
 					ChangeCommunityGoodwill(stalker->Community(), from->ID(), 
-						(CHARACTER_GOODWILL)(CHARACTER_COMMUNITY::sympathy(stalker->Community())*(float)delta_goodwill));
+						(CHARACTER_GOODWILL)(CHARACTER_COMMUNITY::sympathy(stalker->Community())*(f32)delta_goodwill));
 				}
 
 				if(delta_reputation)

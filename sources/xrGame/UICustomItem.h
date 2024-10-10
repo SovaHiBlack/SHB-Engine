@@ -42,9 +42,9 @@ protected:
 public:
 					CUICustomItem			();
 	virtual			~CUICustomItem			();
-	IC void			SetRect					(float x1, float y1, float x2, float y2){iVisRect.set(x1,y1,x2,y2); uFlags|=flValidRect; }
+	IC void			SetRect					(f32 x1, f32 y1, f32 x2, f32 y2){iVisRect.set(x1,y1,x2,y2); uFlags|=flValidRect; }
 	IC void			SetRect					(const Frect& r){iVisRect.set(r); uFlags|=flValidRect; }
-	  void			SetOriginalRect			(float x, float y, float width, float height);
+	  void			SetOriginalRect			(f32 x, f32 y, f32 width, f32 height);
 
 	IC Frect		GetRect					() {return iVisRect;}
 	   Frect		GetOriginalRect			() const;
@@ -55,11 +55,11 @@ public:
 	   
 
 	void			Render					(FVF::TL*& Pointer, const Fvector2& pos, u32 color, 
-														float x1, float y1, 
-														float x2, float y2);
+											 f32 x1, f32 y1,
+											 f32 x2, f32 y2);
 	
 	void			Render					(FVF::TL*& Pointer, const Fvector2& pos, u32 color);
-	void			Render					(FVF::TL*& Pointer, const Fvector2& pos, u32 color, float angle);
+	void			Render					(FVF::TL*& Pointer, const Fvector2& pos, u32 color, f32 angle);
 
 	IC void			SetAlign				(u32 align)					{uAlign=align;};
 	IC u32			GetAlign				()							{return uAlign;}

@@ -65,7 +65,7 @@ IC	void CProfiler::convert_string	(pcstr str, shared_str &out, u32 max_string_si
 void CProfiler::setup_timer			(pcstr timer_id, const u64 &timer_time, const u32 &call_count)
 {
 	string256					m_temp;
-	float						_time = float(timer_time)*1000.f/CPU::qpc_freq;
+	f32						_time = f32(timer_time)*1000.f/CPU::qpc_freq;
 	TIMERS::iterator			i = m_timers.find(timer_id);
 	if (i == m_timers.end()) {
 		strcpy					(m_temp,timer_id);
@@ -174,7 +174,7 @@ void CProfiler::show_stats			(CGameFont *game_font, bool show)
 		if ((*I).second.m_update_time != Device.dwTimeGlobal)
 			(*I).second.m_time	*= .99f;
 
-		float					average = (*I).second.m_count ? (*I).second.m_total_time/float((*I).second.m_count) : 0.f;
+		f32					average = (*I).second.m_count ? (*I).second.m_total_time/ f32((*I).second.m_count) : 0.f;
 		if (average >= (*I).second.m_time)
 			game_font->SetColor	(color_xrgb(127,127,127));
 		else
@@ -189,7 +189,7 @@ void CProfiler::show_stats			(CGameFont *game_font, bool show)
 			(*I).second.m_time,
 			average,
 			(*I).second.m_max_time,
-			float((*I).second.m_call_count)/m_call_count,//float((*I).second.m_count),
+			f32((*I).second.m_call_count)/m_call_count,//f32((*I).second.m_count),
 //			(*I).second.m_min_time,
 			(*I).second.m_call_count,
 			(*I).second.m_total_time

@@ -85,8 +85,8 @@ void CUIOutfitInfo::Update(CCustomOutfit* outfit)
 void CUIOutfitInfo::SetItem(u32 hitType, bool force_add)
 {
 	string128 _buff;
-	float _val_outfit	= 0.0f;
-	float _val_af		= 0.0f;
+	f32 _val_outfit	= 0.0f;
+	f32 _val_af		= 0.0f;
 
 	CUIStatic* _s		= m_items[hitType];
 

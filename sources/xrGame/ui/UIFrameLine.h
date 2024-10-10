@@ -32,19 +32,20 @@ class CUIFrameLine: public CUICustomItem
 	};
 
 protected:
-	float		iSize;
+	f32		iSize;
 	Fvector2	iPos;
 	u8			uFlags;
 	bool		bHorizontalOrientation;
 
 	void		UpdateSize		();
+
 public:
 				CUIFrameLine	();
-	void		Init			(pcstr base_name, float x, float y, float size, bool horizontal, DWORD align);
+	void		Init			(pcstr base_name, f32 x, f32 y, f32 size, bool horizontal, DWORD align);
 	void		InitTexture		(pcstr texture);
 	void		SetColor		(u32 cl);
-	IC void		SetPos			(float left, float top)		{ iPos.set(left,top);	uFlags &=~ flValidSize; }
-	IC void		SetSize			(float size)				{ iSize = size;			uFlags &=~ flValidSize; }
+	IC void		SetPos			(f32 left, f32 top)		{ iPos.set(left,top);	uFlags &=~ flValidSize; }
+	IC void		SetSize			(f32 size)				{ iSize = size;			uFlags &=~ flValidSize; }
 	IC void		SetOrientation	(bool bIsHorizontal)	{ bHorizontalOrientation = bIsHorizontal; uFlags &=~ flValidSize; }
 	void		Render			();
 };

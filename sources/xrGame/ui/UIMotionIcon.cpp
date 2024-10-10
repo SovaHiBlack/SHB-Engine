@@ -84,18 +84,18 @@ void CUIMotionIcon::ShowState(EState state)
 	m_curren_state=state;
 }
 
-void CUIMotionIcon::SetPower(float Pos)
+void CUIMotionIcon::SetPower(f32 Pos)
 {
 	m_power_progress.SetProgressPos(Pos);
 }
 
-void CUIMotionIcon::SetNoise(float Pos)
+void CUIMotionIcon::SetNoise(f32 Pos)
 {
 	Pos	= clampr(Pos, m_noise_progress.GetRange_min(), m_noise_progress.GetRange_max());
 	m_noise_progress.SetProgressPos(Pos);
 }
 
-void CUIMotionIcon::SetLuminosity(float Pos)
+void CUIMotionIcon::SetLuminosity(f32 Pos)
 {
 	Pos						= clampr(Pos, m_luminosity_progress.GetRange_min(), m_luminosity_progress.GetRange_max());
 	m_luminosity			= Pos;
@@ -116,10 +116,10 @@ void CUIMotionIcon::Update()
 	
 	//m_luminosity_progress 
 	{
-		float len					= m_noise_progress.GetRange_max()-m_noise_progress.GetRange_min();
-		float cur_pos				= m_luminosity_progress.GetProgressPos();
+		f32 len					= m_noise_progress.GetRange_max()-m_noise_progress.GetRange_min();
+		f32 cur_pos				= m_luminosity_progress.GetProgressPos();
 		if(cur_pos!=m_luminosity){
-			float _diff = _abs(m_luminosity-cur_pos);
+			f32 _diff = _abs(m_luminosity-cur_pos);
 			if(m_luminosity>cur_pos){
 				cur_pos				+= _min(len*Device.fTimeDelta, _diff);
 			}else{
@@ -131,9 +131,9 @@ void CUIMotionIcon::Update()
 	}
 }
 
-void CUIMotionIcon::SetActorVisibility		(u16 who_id, float value)
+void CUIMotionIcon::SetActorVisibility		(u16 who_id, f32 value)
 {
-	float v		= float(m_luminosity_progress.GetRange_max() - m_luminosity_progress.GetRange_min());
+	f32 v		= f32(m_luminosity_progress.GetRange_max() - m_luminosity_progress.GetRange_min());
 	value		*= v;
 	value		+= m_luminosity_progress.GetRange_min();
 

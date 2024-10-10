@@ -21,7 +21,7 @@ RELATION_REGISTRY::FIGHT_DATA::FIGHT_DATA			()
 }
 
 //////////////////////////////////////////////////////////////////////////
-void RELATION_REGISTRY::FightRegister (u16 attacker, u16 defender, ALife::ERelationType defender_to_attacker, float hit_amount)
+void RELATION_REGISTRY::FightRegister (u16 attacker, u16 defender, ALife::ERelationType defender_to_attacker, f32 hit_amount)
 {
 	UpdateFightRegister();
 

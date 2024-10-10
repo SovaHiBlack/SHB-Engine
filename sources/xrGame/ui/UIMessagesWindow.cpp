@@ -31,7 +31,7 @@ void CUIMessagesWindow::AddLogMessage(const shared_str& msg){
 	m_pGameLog->AddLogMessage(*msg);
 }
 
-void CUIMessagesWindow::Init(float x, float y, float width, float height){
+void CUIMessagesWindow::Init(f32 x, f32 y, f32 width, f32 height){
 
 	CUIXml		 xml;
 
@@ -45,7 +45,7 @@ void CUIMessagesWindow::Init(float x, float y, float width, float height){
 
 void CUIMessagesWindow::AddIconedPdaMessage(pcstr textureName, Frect originalRect, pcstr message, int iDelay){
 	
-	CUIPdaMsgListItem *pItem			= m_pGameLog->AddPdaMessage(message, float(iDelay));
+	CUIPdaMsgListItem *pItem			= m_pGameLog->AddPdaMessage(message, f32(iDelay));
 	pItem->SetTextComplexMode			(true);
 	pItem->UIIcon.InitTexture			(textureName);
 	pItem->UIIcon.SetOriginalRect		(originalRect.left, originalRect.top, originalRect.right, originalRect.bottom);

@@ -40,5 +40,5 @@ private:
 			void		reload_foot_bones		();
 			void		load_foot_bones			(CInifile::Sect &data);
 			
-			float		get_blend_time			();
+			f32		get_blend_time			();
 };

@@ -34,7 +34,7 @@ protected:
 	typedef CStalkerActionCombatBase inherited;
 
 private:
-//	float				m_speed;
+//	f32				m_speed;
 
 public:
 						CStalkerActionAimWounded	(CAI_Stalker *object, pcstr action_name = "");

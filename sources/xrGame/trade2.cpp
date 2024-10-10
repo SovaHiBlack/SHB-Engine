@@ -35,7 +35,7 @@ bool CTrade::CanTrade()
 	if (!pPartner.base) return false;
 
 	// Объект рядом
-	float dist = pPartner.base->Position().distance_to(pThis.base->Position());
+	f32 dist = pPartner.base->Position().distance_to(pThis.base->Position());
 	if (dist < 0.5f || dist > 4.5f)  
 	{
 		RemovePartner();
@@ -43,15 +43,15 @@ bool CTrade::CanTrade()
 	}
 
 	// Объект смотрит на меня
-	float yaw, pitch;
-	float yaw2, pitch2;
+	f32 yaw, pitch;
+	f32 yaw2, pitch2;
 
 	pThis.base->Direction().getHP(yaw,pitch);
 	pPartner.base->Direction().getHP(yaw2,pitch2);
 	yaw = angle_normalize(yaw);
 	yaw2 = angle_normalize(yaw2);
 
-	float Res = rad2deg(_abs(yaw - yaw2) < PI ? _abs(yaw - yaw2) : 
+	f32 Res = rad2deg(_abs(yaw - yaw2) < PI ? _abs(yaw - yaw2) :
 								 PI_MUL_2 - _abs(yaw - yaw2));
 	if (Res < 165.f || Res > 195.f) 
 	{
@@ -137,6 +137,7 @@ CTrade*	CTrade::GetPartnerTrade()
 {
 	return pPartner.inv_owner->GetTrade();
 }
+
 CInventory*	CTrade::GetPartnerInventory()
 {
 	return &GetTradeInv(pPartner);
@@ -152,28 +153,28 @@ u32	CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	CArtefact				*pArtefact = smart_cast<CArtefact*>(pItem);
 
 	// computing base_cost
-	float					base_cost;
+	f32					base_cost;
 	if (pArtefact && (pThis.type == TT_ACTOR) && (pPartner.type == TT_TRADER)) {
 		CAI_Trader			*pTrader = smart_cast<CAI_Trader*>(pPartner.inv_owner);
 		VERIFY				(pTrader);
-		base_cost			= (float)pTrader->ArtefactPrice(pArtefact);
+		base_cost			= (f32)pTrader->ArtefactPrice(pArtefact);
 	}
 	else
-		base_cost			= (float)pItem->Cost();
+		base_cost			= (f32)pItem->Cost();
 	
 	// computing condition factor
 	// for "dead" weapon we use 10% from base cost, for "good" weapon we use full base cost
-	float					condition_factor = powf(pItem->GetCondition()*0.9f + .1f, 0.75f); 
+	f32					condition_factor = powf(pItem->GetCondition()*0.9f + .1f, 0.75f);
 	
 	// computing relation factor
-	float					relation_factor;
+	f32					relation_factor;
 
 	CHARACTER_GOODWILL		attitude = RELATION_REGISTRY().GetAttitude(pPartner.inv_owner, pThis.inv_owner);
 
 	if (NO_GOODWILL == attitude)
 		relation_factor		= 0.f;
 	else
-		relation_factor		= float(attitude + 1000.f)/2000.f;
+		relation_factor		= f32(attitude + 1000.f)/2000.f;
 
 	clamp					(relation_factor,0.f,1.f);
 
@@ -194,7 +195,6 @@ u32	CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	// computing action factor
 	const CTradeFactors		*p_trade_factors;
 
-
 	if (buying){
 		if( ! pThis.inv_owner->trade_parameters().enabled(CTradeParameters::action_buy(0),pItem->object().cNameSect()) ) return 0;
 		p_trade_factors		= &pThis.inv_owner->trade_parameters().factors(CTradeParameters::action_buy(0),pItem->object().cNameSect());
@@ -204,7 +204,7 @@ u32	CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	}
 	const CTradeFactors		&trade_factors = *p_trade_factors;
 
-	float					action_factor;
+	f32					action_factor;
 	if (trade_factors.friend_factor() <= trade_factors.enemy_factor())
 		action_factor		= 
 			trade_factors.friend_factor() +
@@ -230,9 +230,9 @@ u32	CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	
 	// computing deficit_factor
 #if 0
-	float					deficit_factor = partner.inv_owner->deficit_factor(pItem->object().cNameSect());
+	f32					deficit_factor = partner.inv_owner->deficit_factor(pItem->object().cNameSect());
 #else
-	float					deficit_factor = 1.f;
+	f32					deficit_factor = 1.0f;
 #endif
 
 	// total price calculation

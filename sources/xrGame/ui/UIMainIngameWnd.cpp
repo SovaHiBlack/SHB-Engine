@@ -58,12 +58,11 @@ void test_key	(int dik);
 void test_update();
 #endif
 
-
 using namespace InventoryUtilities;
 
 //	hud adjust mode
 int			g_bHudAdjustMode			= 0;
-float		g_fHudAdjustValue			= 0.0f;
+f32			g_fHudAdjustValue			= 0.0f;
 
 const u32	g_clWhite					= 0xffffffff;
 
@@ -214,7 +213,7 @@ void CUIMainIngameWnd::Init()
 		u32 count = _GetItemCount(*cfgRecord);
 
 		char	singleThreshold[8];
-		float	f = 0;
+		f32	f = 0.0f;
 		for (u32 k = 0; k < count; ++k)
 		{
 			_GetItem(*cfgRecord, k, singleThreshold);
@@ -225,7 +224,6 @@ void CUIMainIngameWnd::Init()
 
 		j = static_cast<EWarningIcons>(j + 1);
 	}
-
 
 	// Flashing icons initialize
 	uiXml.SetLocalRoot						(uiXml.NavigateToNode("flashing_icons"));
@@ -252,7 +250,7 @@ void CUIMainIngameWnd::Init()
 	HUD_SOUND::LoadSound					("maingame_ui", "snd_new_contact"		, m_contactSnd		, SOUND_TYPE_IDLE);
 }
 
-float UIStaticDiskIO_start_time = 0.0f;
+f32 UIStaticDiskIO_start_time = 0.0f;
 void CUIMainIngameWnd::Draw()
 {
 #ifdef DEBUG
@@ -299,11 +297,11 @@ void CUIMainIngameWnd::SetAmmoIcon (const shared_str& sect_name)
 
 	UIWeaponIcon.Show			(true);
 	//properties used by inventory menu
-	float iGridWidth			= pSettings->r_float(sect_name, "inv_grid_width");
-	float iGridHeight			= pSettings->r_float(sect_name, "inv_grid_height");
+	f32 iGridWidth			= pSettings->r_float(sect_name, "inv_grid_width");
+	f32 iGridHeight			= pSettings->r_float(sect_name, "inv_grid_height");
 
-	float iXPos				= pSettings->r_float(sect_name, "inv_grid_x");
-	float iYPos				= pSettings->r_float(sect_name, "inv_grid_y");
+	f32 iXPos				= pSettings->r_float(sect_name, "inv_grid_x");
+	f32 iYPos				= pSettings->r_float(sect_name, "inv_grid_y");
 
 	UIWeaponIcon.GetUIStaticItem().SetOriginalRect(	(iXPos		 * INV_GRID_WIDTH),
 													(iYPos		 * INV_GRID_HEIGHT),
@@ -313,10 +311,10 @@ void CUIMainIngameWnd::SetAmmoIcon (const shared_str& sect_name)
 
 	// now perform only width scale for ammo, which (W)size >2
 	// all others ammo (1x1, 1x2) will be not scaled (original picture)
-	float w = ((iGridWidth>2)?1.6f:iGridWidth)*INV_GRID_WIDTH*0.9f;
-	float h = INV_GRID_HEIGHT*0.9f;//1 cell
+	f32 w = ((iGridWidth>2)?1.6f:iGridWidth)*INV_GRID_WIDTH*0.9f;
+	f32 h = INV_GRID_HEIGHT*0.9f;//1 cell
 
-	float x = UIWeaponIcon_rect.x1;
+	f32 x = UIWeaponIcon_rect.x1;
 	if	(iGridWidth<2)
 		x	+= ( UIWeaponIcon_rect.width() - w) / 2.0f;
 
@@ -324,7 +322,7 @@ void CUIMainIngameWnd::SetAmmoIcon (const shared_str& sect_name)
 	
 	UIWeaponIcon.SetWidth	(w);
 	UIWeaponIcon.SetHeight	(h);
-};
+}
 
 void CUIMainIngameWnd::Update()
 {
@@ -392,12 +390,11 @@ void CUIMainIngameWnd::Update()
 
 		UpdateActiveItemInfo				();
 
-
 		EWarningIcons i					= ewiWeaponJammed;
 
 		while (i < ewiInvincible)
 		{
-			float value = 0;
+			f32 value = 0.0f;
 			switch (i)
 			{
 				//radiation
@@ -421,21 +418,21 @@ void CUIMainIngameWnd::Update()
 				R_ASSERT(!"Unknown type of warning icon");
 			}
 
-			xr_vector<float>::reverse_iterator	rit;
+			xr_vector<f32>::reverse_iterator	rit;
 
 			// —начала провер€ем на точное соответсвие
 			rit  = std::find(m_Thresholds[i].rbegin(), m_Thresholds[i].rend(), value);
 
 			// ≈сли его нет, то берем последнее меньшее значение ()
 			if (rit == m_Thresholds[i].rend())
-				rit = std::find_if(m_Thresholds[i].rbegin(), m_Thresholds[i].rend(), std::bind2nd(std::less<float>(), value));
+				rit = std::find_if(m_Thresholds[i].rbegin(), m_Thresholds[i].rend(), std::bind2nd(std::less<f32>(), value));
 
 			// ћинимальное и максимальное значени€ границы
-			float min = m_Thresholds[i].front();
-			float max = m_Thresholds[i].back();
+			f32 min = m_Thresholds[i].front();
+			f32 max = m_Thresholds[i].back();
 
 			if (rit != m_Thresholds[i].rend()){
-				float v = *rit;
+				f32 v = *rit;
 				SetWarningIconColor(i, color_argb(0xFF, clampr<u32>(static_cast<u32>(255 * ((v - min) / (max - min) * 2)), 0, 255), 
 					clampr<u32>(static_cast<u32>(255 * (2.0f - (v - min) / (max - min) * 2)), 0, 255),
 					0));
@@ -451,7 +448,7 @@ void CUIMainIngameWnd::Update()
 	UIMotionIcon.SetPower			(m_pActor->conditions().GetPower()*100.0f);
 
 	UIZoneMap->UpdateRadar			(Device.vCameraPosition);
-	float h,p;
+	f32 h,p;
 	Device.vCameraDirection.getHP	(h,p);
 	UIZoneMap->SetHeading			(-h);
 
@@ -775,8 +772,8 @@ bool CUIMainIngameWnd::OnKeyboardPress(int dik)
 
 #ifdef DEBUG
 		if(CAttachableItem::m_dbgItem){
-			static float rot_d = deg2rad(0.5f);
-			static float mov_d = 0.01f;
+			static f32 rot_d = deg2rad(0.5f);
+			static f32 mov_d = 0.01f;
 			bool shift = !!pInput->iGetAsyncKeyState(DIK_LSHIFT);
 			flag = true;
 			switch (dik)
@@ -1053,22 +1050,22 @@ void CUIMainIngameWnd::UpdatePickUpItem	()
 	int m_iXPos			= pSettings->r_u32(sect_name, "inv_grid_x");
 	int m_iYPos			= pSettings->r_u32(sect_name, "inv_grid_y");
 
-	float scale_x = m_iPickUpItemIconWidth/
-		float(m_iGridWidth*INV_GRID_WIDTH);
+	f32 scale_x = m_iPickUpItemIconWidth/
+		f32(m_iGridWidth*INV_GRID_WIDTH);
 
-	float scale_y = m_iPickUpItemIconHeight/
-		float(m_iGridHeight*INV_GRID_HEIGHT);
+	f32 scale_y = m_iPickUpItemIconHeight/
+		f32(m_iGridHeight*INV_GRID_HEIGHT);
 
 	scale_x = (scale_x>1) ? 1.0f : scale_x;
 	scale_y = (scale_y>1) ? 1.0f : scale_y;
 
-	float scale = scale_x<scale_y?scale_x:scale_y;
+	f32 scale = scale_x<scale_y?scale_x:scale_y;
 
 	UIPickUpItemIcon.GetUIStaticItem().SetOriginalRect(
-		float(m_iXPos * INV_GRID_WIDTH),
-		float(m_iYPos * INV_GRID_HEIGHT),
-		float(m_iGridWidth * INV_GRID_WIDTH),
-		float(m_iGridHeight * INV_GRID_HEIGHT));
+		f32(m_iXPos * INV_GRID_WIDTH),
+		f32(m_iYPos * INV_GRID_HEIGHT),
+		f32(m_iGridWidth * INV_GRID_WIDTH),
+		f32(m_iGridHeight * INV_GRID_HEIGHT));
 
 	UIPickUpItemIcon.SetStretchTexture(true);
 

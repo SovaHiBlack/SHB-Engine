@@ -51,9 +51,9 @@ private:
 	// Собственно анимация
 	CLAItem				*colorAnimation;
 	// Предыдущее запоменное значение глобального времени игры
-	float				prevGlobalTime;
+	f32				prevGlobalTime;
 	// Время прошедшее с начала анимации
-	float				animationTime;
+	f32				animationTime;
 	// Циклическое бесконечное проигрывание
 	bool				isCyclic;
 	// Цвет который мы можем изменять переданный нам извне
@@ -67,7 +67,7 @@ private:
 	// Анимация прокручивается в реверсивном порядке? Не применимо для бесконечной анимации
 	bool				reverse;
 	// Коеффициент для пересчета времени при реверснутом проигрывании
-	float				kRev;
+	f32				kRev;
 
 public:
 	CLAItem				*GetAnimation			() const		{ return colorAnimation; } 

@@ -93,7 +93,7 @@ void CStalkerAnimationManager::reload				(CAI_Stalker *_object)
 #endif
 };
 
-void CStalkerAnimationManager::play_fx(float power_factor, int fx_index)
+void CStalkerAnimationManager::play_fx(f32 power_factor, int fx_index)
 {
 	VERIFY						(fx_index >= 0);
 	VERIFY						(fx_index < (int)m_data_storage->m_part_animations.A[object().movement().body_state()].m_global.A[0].A.size());

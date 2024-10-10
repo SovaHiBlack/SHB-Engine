@@ -30,7 +30,7 @@ xr_string to_string					(luabind::object const& o)
 
 	if (o.type() == LUA_TNUMBER)
 	{
-		s << object_cast<float>(o);
+		s << object_cast<f32>(o);
 		return xr_string(s.str().c_str());
 	}
 

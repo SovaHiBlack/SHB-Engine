@@ -16,12 +16,12 @@ class CSleepEffectorPP : public CEffectorPP {
 	typedef CEffectorPP inherited;	
 
 	SPPInfo state;			// current state
-	float	m_total;		// total PP time
-	float	m_attack;		// attack time in percents	[0..1]
-	float	m_release;		// release time in percents	[0..1]
+	f32	m_total;		// total PP time
+	f32	m_attack;		// attack time in percents	[0..1]
+	f32	m_release;		// release time in percents	[0..1]
 
 public:
-	CSleepEffectorPP			(const SPPInfo &ppi, float life_time, float attack_time = 0.0f, float release_time = 0.0f);
+	CSleepEffectorPP			(const SPPInfo &ppi, f32 life_time, f32 attack_time = 0.0f, f32 release_time = 0.0f);
 	virtual	BOOL	Process		(SPPInfo& pp);
 
 	
@@ -36,7 +36,7 @@ public:
 
 struct SSleepEffector {
 	SPPInfo	ppi;
-	float	time;
-	float	time_attack;
-	float	time_release;
+	f32	time;
+	f32	time_attack;
+	f32	time_release;
 };

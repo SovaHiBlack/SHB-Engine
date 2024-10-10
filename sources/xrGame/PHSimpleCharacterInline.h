@@ -13,7 +13,7 @@ void CPHSimpleCharacter::UpdateStaticDamage(dContact* c,SGameMtl* tri_material,b
 				}
 				else
 				{
-					float				vel_prg;vel_prg=_max(plane_pgr*tri_material->fPHFriction,norm_prg);
+					f32				vel_prg;vel_prg=_max(plane_pgr*tri_material->fPHFriction,norm_prg);
 					mag					=	(vel_prg)*tri_material->fBounceDamageFactor;
 				}
 				if(mag>m_collision_damage_info.m_contact_velocity)
@@ -70,13 +70,13 @@ void CPHSimpleCharacter::UpdateDynamicDamage(dContact* c,u16 obj_material_idx,dB
 #ifdef DEBUG
 	if(ph_dbg_draw_mask.test(phDbgDispObjCollisionDammage)&&c_vel>dbg_vel_collid_damage_to_display)
 	{
-		float dbg_my_norm_vell=norm_vel;
-		float dbg_obj_norm_vell=norm_obj_vel;
-		float dbg_my_kinetic_e=Kself;
-		float dbg_obj_kinetic_e=Kobj;
-		float dbg_my_effective_e=Kself*m_collision_damage_factor;
-		float dbg_obj_effective_e=Kobj*object_damage_factor;
-		float dbg_free_energy=KK;
+		f32 dbg_my_norm_vell=norm_vel;
+		f32 dbg_obj_norm_vell=norm_obj_vel;
+		f32 dbg_my_kinetic_e=Kself;
+		f32 dbg_obj_kinetic_e=Kobj;
+		f32 dbg_my_effective_e=Kself*m_collision_damage_factor;
+		f32 dbg_obj_effective_e=Kobj*object_damage_factor;
+		f32 dbg_free_energy=KK;
 		Msg("-----------------------------------------------------------------------------------------");
 		Msg("cd %s -effective vell %f",		*PhysicsRefObject()->cName(),				c_vel);
 		Msg("cd %s -my_norm_vell %f",		*PhysicsRefObject()->cName(),				dbg_my_norm_vell);
@@ -90,13 +90,13 @@ void CPHSimpleCharacter::UpdateDynamicDamage(dContact* c,u16 obj_material_idx,dB
 		Msg("cd %s -free_energy %f",		*PhysicsRefObject()->cName(),				dbg_free_energy);
 		Msg("-----------------------------------------------------------------------------------------");
 		/*
-		static float dbg_my_norm_vell=0.f;
-		static float dbg_obj_norm_vell=0.f;
-		static float dbg_my_kinetic_e=0.f;
-		static float dbg_obj_kinetic_e=0.f;
-		static float dbg_my_effective_e=0.f;
-		static float dbg_obj_effective_e=0.f;
-		static float dbg_free_energy=0.f;
+		static f32 dbg_my_norm_vell=0.f;
+		static f32 dbg_obj_norm_vell=0.f;
+		static f32 dbg_my_kinetic_e=0.f;
+		static f32 dbg_obj_kinetic_e=0.f;
+		static f32 dbg_my_effective_e=0.f;
+		static f32 dbg_obj_effective_e=0.f;
+		static f32 dbg_free_energy=0.f;
 		if()
 			dbg_my_norm_vell=norm_vel;
 			dbg_obj_norm_vell=norm_obj_vel;
@@ -133,7 +133,6 @@ void CPHSimpleCharacter::UpdateDynamicDamage(dContact* c,u16 obj_material_idx,dB
 	}
 }
 
-
 IC		void	CPHSimpleCharacter::foot_material_update(u16	contact_material_idx,u16	foot_material_idx)
 {
 	if(*p_lastMaterialIDX!=u16(-1)&&GMLib.GetMaterialByIdx( *p_lastMaterialIDX)->Flags.test(SGameMtl:: flPassable)&&!b_foot_mtl_check)	return			;
@@ -142,5 +141,4 @@ IC		void	CPHSimpleCharacter::foot_material_update(u16	contact_material_idx,u16	f
 								*p_lastMaterialIDX=contact_material_idx					;
 	else	
 								*p_lastMaterialIDX=foot_material_idx					;
-
 }

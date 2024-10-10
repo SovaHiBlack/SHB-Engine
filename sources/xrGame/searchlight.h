@@ -10,7 +10,7 @@ class CProjector: public CScriptObject {
 	friend void		BoneCallbackX(CBoneInstance *B);
 	friend void		BoneCallbackY(CBoneInstance *B);
 
-	float			fBrightness;
+	f32			fBrightness;
 	CLAItem*		lanim;
 	Fvector			m_pos;
 	ref_light		light_render;
@@ -19,13 +19,13 @@ class CProjector: public CScriptObject {
 	u16				guid_bone;
 
 	struct SBoneRot {
-		float	velocity;
+		f32	velocity;
 		u16		id;
 	} bone_x, bone_y;
 	
 	struct {
-		float	yaw;
-		float	pitch;
+		f32	yaw;
+		f32	pitch;
 	} _start, _current, _target;
 
 public:

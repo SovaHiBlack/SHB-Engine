@@ -26,8 +26,8 @@ protected:
 			void			GetOptIntegerValue	(int& val, int& min, int& max);
 			void			SaveOptIntegerValue	(int val);
 			// float
-			void			GetOptFloatValue	(float& val, float& min, float& max);
-			void			SaveOptFloatValue	(float val);
+			void			GetOptFloatValue	(f32& val, f32& min, f32& max);
+			void			SaveOptFloatValue	(f32 val);
 			// bool
 			bool			GetOptBoolValue		();
 			void			SaveOptBoolValue	(bool val);

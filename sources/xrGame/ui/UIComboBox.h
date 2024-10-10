@@ -32,17 +32,18 @@ public:
 			void		SetVertScroll			(bool bVScroll = true){m_list.SetFixedScrollBar(bVScroll);};
 //.	virtual void		AddItem					(pcstr str, bool bSelected);
 	CUIListBoxItem*		AddItem_				(pcstr str, int _data);
-	virtual void		Init					(float x, float y, float width);
+	virtual void		Init					(f32 x, f32 y, f32 width);
 			void		SetItem					(int i);
 
-	virtual void		Init					(float x, float y, float width, float height);	
+	virtual void		Init					(f32 x, f32 y, f32 width, f32 height);
 	virtual void		SendMessage				(CUIWindow *pWnd, s16 msg, void* pData = 0);
 	virtual void		OnFocusLost				();
 	virtual void		OnFocusReceive			();
 			int			CurrentID				()	{return m_itoken_id;}
+
 protected:
 	virtual void		SetState				(UIState state);	
-	virtual bool		OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual bool		OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual void		OnBtnClicked			();
 			void		ShowList				(bool bShow);
 			void		OnListItemSelect		();
@@ -60,6 +61,7 @@ protected:
 	CUIFrameWindow		m_frameWnd;
 
 	u32					m_textColor[2];
+
 public:
 	CUIListBox			m_list;
 	void				SetTextColor			(u32 color)			{m_textColor[0] = color;};

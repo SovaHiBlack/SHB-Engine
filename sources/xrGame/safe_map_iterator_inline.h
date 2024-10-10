@@ -100,7 +100,7 @@ IC	bool CSSafeMapIterator::time_over			()
 }
 
 TEMPLATE_SPEZIALIZATION
-IC	void CSSafeMapIterator::set_process_time	(const float &process_time)
+IC	void CSSafeMapIterator::set_process_time	(const f32& process_time)
 {
 	m_max_process_time	= process_time;
 }

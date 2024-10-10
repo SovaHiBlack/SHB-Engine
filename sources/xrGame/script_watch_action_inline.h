@@ -28,7 +28,7 @@ IC	CScriptWatchAction::CScriptWatchAction		(SightManager::ESightType tWatchType,
 }
 
 // Searchlight look ///////////////////////////////////////////////
-IC	CScriptWatchAction::CScriptWatchAction		(const Fvector &tTarget, float vel1, float vel2)
+IC	CScriptWatchAction::CScriptWatchAction		(const Fvector &tTarget, f32 vel1, f32 vel2)
 {
 	m_tpObjectToWatch	= 0;
 	m_tTargetPoint		= tTarget;
@@ -37,7 +37,7 @@ IC	CScriptWatchAction::CScriptWatchAction		(const Fvector &tTarget, float vel1, 
 	m_bCompleted		= false;
 }
 
-IC	CScriptWatchAction::CScriptWatchAction		(CScriptGameObject *tpObjectToWatch, float vel1, float vel2)
+IC	CScriptWatchAction::CScriptWatchAction		(CScriptGameObject *tpObjectToWatch, f32 vel1, f32 vel2)
 {
 	SetWatchObject		(tpObjectToWatch);
 	vel_bone_x			= vel1;

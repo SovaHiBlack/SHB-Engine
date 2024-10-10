@@ -26,7 +26,7 @@ bool CPPEffectorDistance::check_start_conditions()
 
 void CPPEffectorDistance::update_factor()
 {
-	float factor;
+	f32 factor;
 	factor = (m_radius * m_r_max_perc - m_dist) / (m_radius * m_r_max_perc - m_radius * m_r_min_perc);
 	clamp(factor,0.01f,1.0f);
 

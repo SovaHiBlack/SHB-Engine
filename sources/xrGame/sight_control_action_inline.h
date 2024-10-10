@@ -8,14 +8,14 @@
 
 #pragma once
 
-IC	CSightControlAction::CSightControlAction	(float weight, u32 inertia_time, const CSightAction &sight_action) :
+IC	CSightControlAction::CSightControlAction	(f32 weight, u32 inertia_time, const CSightAction &sight_action) :
 	m_weight			(weight),
 	m_inertia_time		(inertia_time)
 {
 	(CSightAction&)*this	= sight_action;
 }
 
-IC	float CSightControlAction::weight			() const
+IC	f32 CSightControlAction::weight			() const
 {
 	return				(m_weight);
 }

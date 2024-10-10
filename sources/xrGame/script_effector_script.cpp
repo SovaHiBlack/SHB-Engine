@@ -36,7 +36,7 @@ void CScriptEffector::script_register(lua_State *L)
 			.def_readwrite("h",					&SPPInfo::SDuality::h)
 			.def_readwrite("v",					&SPPInfo::SDuality::v)
 			.def(								constructor<>())
-			.def(								constructor<float,float>())
+			.def(								constructor<f32, f32>())
 			.def("set",							&SPPInfo::SDuality::set),
 
 		class_<SPPInfo::SColor>	("color")
@@ -44,7 +44,7 @@ void CScriptEffector::script_register(lua_State *L)
 			.def_readwrite("g",					&SPPInfo::SColor::g)
 			.def_readwrite("b",					&SPPInfo::SColor::b)
 			.def(								constructor<>())
-			.def(								constructor<float,float,float>())
+			.def(								constructor<f32, f32, f32>())
 			.def("set",							&SPPInfo::SColor::set),
 
 		class_<SPPInfo::SNoise>("noise")
@@ -52,7 +52,7 @@ void CScriptEffector::script_register(lua_State *L)
 			.def_readwrite("grain",				&SPPInfo::SNoise::grain)
 			.def_readwrite("fps",				&SPPInfo::SNoise::fps)
 			.def(								constructor<>())
-			.def(								constructor<float,float,float>())
+			.def(								constructor<f32, f32, f32>())
 			.def("set",							&SPPInfo::SNoise::set),
 
 		class_<SPPInfo>("effector_params")
@@ -67,7 +67,7 @@ void CScriptEffector::script_register(lua_State *L)
 			.def("assign",						&SPPInfo_assign),
 
 		class_<CScriptEffector, CScriptEffectorWrapper>("effector")
-			.def(								constructor<int,float>())
+			.def(								constructor<int, f32>())
 			.def("start",						&add_effector,		adopt(_1))
 			.def("finish",						&remove_effector,	adopt(_1))
 			.def("process",	 					&CScriptEffector::process,	&CScriptEffectorWrapper::process_static)

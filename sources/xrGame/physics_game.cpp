@@ -13,11 +13,11 @@
 #include "PHWorld.h"
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-static const float PARTICLE_EFFECT_DIST=70.f;
-static const float SOUND_EFFECT_DIST=70.f;
+static const f32 PARTICLE_EFFECT_DIST=70.f;
+static const f32 SOUND_EFFECT_DIST=70.f;
 //////////////////////////////////////////////////////////////////////////////////
-static const float SQUARE_PARTICLE_EFFECT_DIST=PARTICLE_EFFECT_DIST*PARTICLE_EFFECT_DIST;
-static const float SQUARE_SOUND_EFFECT_DIST=SOUND_EFFECT_DIST*SOUND_EFFECT_DIST;
+static const f32 SQUARE_PARTICLE_EFFECT_DIST=PARTICLE_EFFECT_DIST*PARTICLE_EFFECT_DIST;
+static const f32 SQUARE_SOUND_EFFECT_DIST=SOUND_EFFECT_DIST*SOUND_EFFECT_DIST;
 class CPHParticlesPlayCall :
 		public CPHAction
 {
@@ -99,7 +99,7 @@ void  TContactShotMark(CDB::TRI* T,dContactGeom* c)
 	dBodyGetPointVel(b,c->pos[0],c->pos[1],c->pos[2],vel);
 	dReal vel_cret=dFabs(dDOT(vel,c->normal))* _sqrt(m.mass);
 	Fvector to_camera;to_camera.sub(cast_fv(c->pos),Device.vCameraPosition);
-	float square_cam_dist=to_camera.square_magnitude();
+	f32 square_cam_dist=to_camera.square_magnitude();
 	if(data)
 	{
 		SGameMtlPair* mtl_pair		= GMLib.GetMaterialPair(T->material,data->material);

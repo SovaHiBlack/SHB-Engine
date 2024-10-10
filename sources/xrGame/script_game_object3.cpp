@@ -44,7 +44,7 @@ namespace MemorySpace {
 	struct CHitObject;
 };
 
-const CCoverPoint *CScriptGameObject::best_cover	(const Fvector &position, const Fvector &enemy_position, float radius, float min_enemy_distance, float max_enemy_distance)
+const CCoverPoint *CScriptGameObject::best_cover	(const Fvector &position, const Fvector &enemy_position, f32 radius, f32 min_enemy_distance, f32 max_enemy_distance)
 {
 	CAI_Stalker		*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -56,7 +56,7 @@ const CCoverPoint *CScriptGameObject::best_cover	(const Fvector &position, const
 	return			(point);
 }
 
-const CCoverPoint *CScriptGameObject::safe_cover	(const Fvector &position, float radius, float min_distance)
+const CCoverPoint *CScriptGameObject::safe_cover	(const Fvector &position, f32 radius, f32 min_distance)
 {
 	CAI_Stalker		*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -166,7 +166,7 @@ CScriptGameObject *CScriptGameObject::GetCurrentOutfit() const
 
 #include "CustomOutfit.h"
 
-float CScriptGameObject::GetCurrentOutfitProtection(int hit_type)
+f32 CScriptGameObject::GetCurrentOutfitProtection(int hit_type)
 {
 	CInventoryOwner		*inventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	if (!inventoryOwner) {
@@ -632,13 +632,13 @@ void CScriptGameObject::DisableAnomaly()
 	zone->ZoneDisable();
 }
 
-float CScriptGameObject::GetAnomalyPower()
+f32 CScriptGameObject::GetAnomalyPower()
 {
 	CCustomZone		*zone = smart_cast<CCustomZone*>(&object()); THROW(zone);
 	return zone->GetMaxPower();
 }
 
-void CScriptGameObject::SetAnomalyPower(float p)
+void CScriptGameObject::SetAnomalyPower(f32 p)
 {
 	CCustomZone		*zone = smart_cast<CCustomZone*>(&object()); THROW(zone);
 	zone->SetMaxPower(p);
@@ -709,7 +709,7 @@ void CScriptGameObject::info_clear()
 #endif
 }
 
-void CScriptGameObject::jump(const Fvector &position, float factor)
+void CScriptGameObject::jump(const Fvector &position, f32 factor)
 {
 	CBaseMonster	*monster = smart_cast<CBaseMonster*>(&object());
 	if (!monster) {
@@ -748,7 +748,7 @@ void CScriptGameObject::sell_condition			(CScriptIniFile *ini_file, pcstr sectio
 	inventory_owner->trade_parameters().process	(CTradeParameters::action_sell(0),*ini_file,section);
 }
 
-void CScriptGameObject::sell_condition			(float friend_factor, float enemy_factor)
+void CScriptGameObject::sell_condition			(f32 friend_factor, f32 enemy_factor)
 {
 	CInventoryOwner								*inventory_owner = smart_cast<CInventoryOwner*>(&object());
 	if (!inventory_owner) {
@@ -776,7 +776,7 @@ void CScriptGameObject::buy_condition			(CScriptIniFile *ini_file, pcstr section
 	inventory_owner->trade_parameters().process	(CTradeParameters::action_buy(0),*ini_file,section);
 }
 
-void CScriptGameObject::buy_condition			(float friend_factor, float enemy_factor)
+void CScriptGameObject::buy_condition			(f32 friend_factor, f32 enemy_factor)
 {
 	CInventoryOwner								*inventory_owner = smart_cast<CInventoryOwner*>(&object());
 	if (!inventory_owner) {
@@ -827,7 +827,7 @@ void sell_condition								(CScriptIniFile *ini_file, pcstr section)
 	default_trade_parameters().process	(CTradeParameters::action_sell(0),*ini_file,section);
 }
 
-void sell_condition								(float friend_factor, float enemy_factor)
+void sell_condition								(f32 friend_factor, f32 enemy_factor)
 {
 	default_trade_parameters().default_factors	(
 		CTradeParameters::action_sell(0),
@@ -843,7 +843,7 @@ void buy_condition								(CScriptIniFile *ini_file, pcstr section)
 	default_trade_parameters().process	(CTradeParameters::action_buy(0),*ini_file,section);
 }
 
-void buy_condition								(float friend_factor, float enemy_factor)
+void buy_condition								(f32 friend_factor, f32 enemy_factor)
 {
 	default_trade_parameters().default_factors	(
 		CTradeParameters::action_buy(0),

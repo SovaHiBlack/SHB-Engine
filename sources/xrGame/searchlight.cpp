@@ -46,7 +46,7 @@ void  CProjector::BoneCallbackY(CBoneInstance *B)
 {
 	CProjector	*P = static_cast<CProjector*>(B->Callback_Param);
 
-	float delta_yaw = angle_difference(P->_start.yaw,P->_current.yaw);
+	f32 delta_yaw = angle_difference(P->_start.yaw,P->_current.yaw);
 	if (angle_normalize_signed(P->_start.yaw - P->_current.yaw) > 0) delta_yaw = -delta_yaw;
 
 	Fmatrix M;
@@ -146,7 +146,7 @@ void CProjector::UpdateCL	()
 			u32 clr			= lanim->CalculateBGR(Device.fTimeGlobal,frame); 
 
 			Fcolor			fclr;
-			fclr.set		((float)color_get_B(clr),(float)color_get_G(clr),(float)color_get_R(clr),1.f);
+			fclr.set		((f32)color_get_B(clr),(f32)color_get_G(clr),(f32)color_get_R(clr),1.f);
 			fclr.mul_rgb	(fBrightness/255.f);
 			light_render->set_color(fclr);
 			glow_render->set_color(fclr);
@@ -190,11 +190,11 @@ bool CProjector::bfAssignWatch(CScriptEntityAction *tpEntityAction)
 	(!l_tWatchAction.m_tpObjectToWatch) ?	SetTarget(l_tWatchAction.m_tTargetPoint) : 
 											SetTarget(l_tWatchAction.m_tpObjectToWatch->Position());
 
-	float delta_yaw		= angle_difference(_current.yaw,_target.yaw);
-	float delta_pitch	= angle_difference(_current.pitch,_target.pitch);
+	f32 delta_yaw		= angle_difference(_current.yaw,_target.yaw);
+	f32 delta_pitch	= angle_difference(_current.pitch,_target.pitch);
 
 	bone_x.velocity	= l_tWatchAction.vel_bone_x;
-	float time		= delta_yaw / bone_x.velocity;
+	f32 time		= delta_yaw / bone_x.velocity;
 	bone_y.velocity	= (fis_zero(time,EPS_L)? l_tWatchAction.vel_bone_y : delta_pitch / time);
 	
 	return false == (l_tWatchAction.m_bCompleted = ((delta_yaw < EPS_L) && (delta_pitch < EPS_L)));
@@ -215,10 +215,10 @@ bool CProjector::bfAssignObject(CScriptEntityAction *tpEntityAction)
 
 void CProjector::SetTarget(const Fvector &target_pos)
 {
-	float  th,tp;
+	f32  th,tp;
 	Fvector().sub(target_pos, Position()).getHP(th,tp);
 
-	float delta_h;
+	f32 delta_h;
 	delta_h = angle_difference(th,_start.yaw);
 
 	if (angle_normalize_signed(th - _start.yaw) > 0) delta_h = -delta_h;

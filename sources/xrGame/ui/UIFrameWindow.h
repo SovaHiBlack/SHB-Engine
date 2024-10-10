@@ -16,15 +16,15 @@ public:
 	using CUIWindow::Draw;
 					CUIFrameWindow				();
 
-	virtual void	Init						(pcstr base_name, float x, float y, float width, float height);
-	virtual void	Init						(float x, float y, float width, float height);
+	virtual void	Init						(pcstr base_name, f32 x, f32 y, f32 width, f32 height);
+	virtual void	Init						(f32 x, f32 y, f32 width, f32 height);
 	virtual void	Init						(pcstr base_name, Frect* pRect);
 
 	virtual void	InitTexture					(pcstr texture);
 			void	SetTextureColor				(u32 color)										{m_UIWndFrame.SetTextureColor(color);}
 
-	virtual void	SetWidth					(float width);
-	virtual void	SetHeight					(float height);
+	virtual void	SetWidth					(f32 width);
+	virtual void	SetHeight					(f32 height);
 	
 			void	SetColor					(u32 cl);
 
@@ -37,7 +37,6 @@ public:
 	void			SetVisiblePart				(CUIFrameRect::EFramePart p, BOOL b)	{m_UIWndFrame.SetVisiblePart(p,b);};
 
 protected:
-
 	CUIFrameRect	m_UIWndFrame;
 
 	void			FrameClip					(const Frect parentAbsR);

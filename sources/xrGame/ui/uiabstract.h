@@ -95,16 +95,16 @@ public:
 						IUISimpleWindow						()			{};		
 	virtual				~IUISimpleWindow					()			{};
     
-	virtual void		Init(float x, float y, float width, float height)= 0;
+	virtual void		Init(f32 x, f32 y, f32 width, f32 height)= 0;
 	virtual void		Draw()											= 0;
-	virtual void		Draw(float x, float y)							= 0;
+	virtual void		Draw(f32 x, f32 y)							= 0;
 	virtual void		Update()										= 0;
 	virtual void		SetWndPos(const Fvector2& pos)					= 0;
-	virtual void		SetWndPos(float x, float y)						= 0;
+	virtual void		SetWndPos(f32 x, f32 y)						= 0;
 	virtual void		SetWndSize(const Fvector2& size)				= 0;
 	virtual void		SetWndRect(const Frect& rect)					= 0;
-	virtual void		SetHeight(float height)							= 0;
-	virtual void		SetWidth(float width)							= 0;
+	virtual void		SetHeight(f32 height)							= 0;
+	virtual void		SetWidth(f32 width)							= 0;
 /*
 private:
 						IUISimpleWindow									(const IUISimpleWindow& other);
@@ -115,20 +115,20 @@ private:
 class CUISimpleWindow : public IUISimpleWindow {
 public:
 							CUISimpleWindow()							{m_alignment=waNone; m_wndPos.set(0,0); m_wndSize.set(0,0);}
-	virtual void			Init(float x, float y, float width, float height)	{m_wndPos.set(x,y);m_wndSize.set(width, height);}
+	virtual void			Init(f32 x, f32 y, f32 width, f32 height)	{m_wndPos.set(x,y);m_wndSize.set(width, height);}
 	virtual void			SetWndPos(const Fvector2& pos)				{m_wndPos.set(pos.x,pos.y);}
-	virtual void			SetWndPos(float x, float y)					{m_wndPos.set(x,y);}
+	virtual void			SetWndPos(f32 x, f32 y)					{m_wndPos.set(x,y);}
 	IC		Fvector2		GetWndPos()							const	{return m_wndPos;}
 	virtual void			SetWndSize(const Fvector2& size)			{m_wndSize = size;}
 	IC		Fvector2		GetWndSize()						const	{return m_wndSize;}
-	virtual void			SetHeight(float height)						{m_wndSize.y = height;}
-	IC		float			GetHeight()							const	{return m_wndSize.y;}
-	virtual void			SetWidth(float width)						{m_wndSize.x = width;}
-	IC		float			GetWidth()							const	{return m_wndSize.x;}
+	virtual void			SetHeight(f32 height)						{m_wndSize.y = height;}
+	IC		f32			GetHeight()							const	{return m_wndSize.y;}
+	virtual void			SetWidth(f32 width)						{m_wndSize.x = width;}
+	IC		f32			GetWidth()							const	{return m_wndSize.x;}
 	IC		void			SetVisible(bool vis)						{m_bShowMe = vis;}
 	IC		bool			GetVisible()						const	{return m_bShowMe;}
 	IC		void			SetAlignment(EWindowAlignment al)			{m_alignment = al;};
-	virtual void			SetWndRect(float x, float y, float width, float height) {
+	virtual void			SetWndRect(f32 x, f32 y, f32 width, f32 height) {
 																						m_wndPos.set(x,y); 
 																						m_wndSize.set(width,height); }
 	virtual void			SetWndRect(const Frect& rect)				{SetWndRect(rect.lt.x, rect.lt.y, rect.width(), rect.height());}
@@ -140,8 +140,8 @@ public:
 				res.set(m_wndPos.x,m_wndPos.y,m_wndPos.x+m_wndSize.x,m_wndPos.y+m_wndSize.y);
 				break;
 			case waCenter:{
-					float half_w = m_wndSize.x/2.0f;
-					float half_h = m_wndSize.y/2.0f;
+				f32 half_w = m_wndSize.x/2.0f;
+				f32 half_h = m_wndSize.y/2.0f;
 					res.set(m_wndPos.x - half_w,
 							m_wndPos.y - half_h,
 							m_wndPos.x + half_w,
@@ -151,7 +151,7 @@ public:
 				NODEFAULT;
 		};
 	}
-				void			MoveWndDelta		(float dx, float dy)				{m_wndPos.x+=dx;m_wndPos.y+=dy;}
+				void			MoveWndDelta		(f32 dx, f32 dy)				{m_wndPos.x+=dx;m_wndPos.y+=dy;}
 				void			MoveWndDelta		(const Fvector2& d)					{ MoveWndDelta(d.x, d.y);	};
 
 protected:
@@ -160,9 +160,11 @@ protected:
 	Fvector2				m_wndSize;
 	EWindowAlignment		m_alignment;
 };
+
 class CUISelectable{
 protected:
 	bool m_bSelected;
+
 public:
 	CUISelectable():m_bSelected(false)		{}
 	bool			GetSelected	() const	{return m_bSelected;}

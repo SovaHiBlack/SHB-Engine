@@ -44,14 +44,14 @@ CUIListWnd::~CUIListWnd()
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIListWnd::Init(float x, float y, float width, float height)
+void CUIListWnd::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	Init(x, y, width, height, m_iItemHeight);
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIListWnd::Init(float x, float y, float width, float height, float item_height)
+void CUIListWnd::Init(f32 x, f32 y, f32 width, f32 height, f32 item_height)
 {
 	CUIWindow::Init(x, y, width, height);
 
@@ -90,15 +90,15 @@ void CUIListWnd::Init(float x, float y, float width, float height, float item_he
 	m_StaticActiveBackground.Init(ACTIVE_BACKGROUND,"hud\\default", 0,0,alNone);
 	m_StaticActiveBackground.SetTile(iFloor(m_iItemWidth/ACTIVE_BACKGROUND_WIDTH), 
 									 iFloor(m_iItemHeight/ACTIVE_BACKGROUND_HEIGHT),
-									 fmod(m_iItemWidth,float(ACTIVE_BACKGROUND_WIDTH)), 
-									 fmod(m_iItemHeight,float(ACTIVE_BACKGROUND_HEIGHT)));
+									 fmod(m_iItemWidth,f32(ACTIVE_BACKGROUND_WIDTH)), 
+									 fmod(m_iItemHeight,f32(ACTIVE_BACKGROUND_HEIGHT)));
 */
 	UpdateList();
 }
 //////////////////////////////////////////////////////////////////////////
 
 /*was made within plan of dinamic changing of appea*/
-void CUIListWnd::SetHeight(float height){
+void CUIListWnd::SetHeight(f32 height){
 	CUIWindow::SetHeight(height);
 	m_iRowNum = iFloor(height/m_iItemHeight);
 	m_ScrollBar->SetHeight(height);
@@ -108,14 +108,14 @@ void CUIListWnd::SetHeight(float height){
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIListWnd::SetWidth(float width)
+void CUIListWnd::SetWidth(f32 width)
 {
 	inherited::SetWidth(width);
 /*
 	m_StaticActiveBackground.SetTile(iFloor(GetWidth()/ACTIVE_BACKGROUND_WIDTH), 
 									 iFloor(m_iItemHeight/ACTIVE_BACKGROUND_HEIGHT),
-									 fmod(GetWidth(),float(ACTIVE_BACKGROUND_WIDTH)), 
-									 fmod(float(m_iItemHeight),float(ACTIVE_BACKGROUND_HEIGHT))
+									 fmod(GetWidth(),f32(ACTIVE_BACKGROUND_WIDTH)), 
+									 fmod(f32(m_iItemHeight),f32(ACTIVE_BACKGROUND_HEIGHT))
 									 );
 */
 }
@@ -364,12 +364,12 @@ void CUIListWnd::DrawActiveBackFrame(const Frect& rect, CUIListItem * itm)
 {
 	Fvector2		_pos;
 	_pos.set		(rect.left, rect.top+(itm->GetIndex()-m_iFirstShownIndex)*GetItemHeight());
-	float _d		= GetItemHeight() - m_ActiveBackgroundFrame->GetHeight();
+	f32 _d		= GetItemHeight() - m_ActiveBackgroundFrame->GetHeight();
 	if(_d>0)
-		_pos.y		+= (float)iFloor(_d/2.0f);
+		_pos.y		+= (f32)iFloor(_d/2.0f);
 
 	m_ActiveBackgroundFrame->SetWndPos		(_pos);
-	float _w = GetWidth();
+	f32 _w = GetWidth();
 	if( m_ScrollBar->IsShown() )
 		_w		-= m_ScrollBar->GetWidth();
 	m_ActiveBackgroundFrame->SetWidth		(_w);
@@ -421,15 +421,14 @@ void CUIListWnd::Draw()
 	CUIWindow::Draw();
 }
 
-
-void CUIListWnd::SetItemWidth(float iItemWidth)
+void CUIListWnd::SetItemWidth(f32 iItemWidth)
 {
 	m_iItemWidth = iItemWidth;
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIListWnd::SetItemHeight(float iItemHeight)
+void CUIListWnd::SetItemHeight(f32 iItemHeight)
 {
 	m_iItemHeight = iItemHeight;
 	m_iRowNum = iFloor(GetHeight()/iItemHeight);
@@ -473,8 +472,7 @@ int CUIListWnd::FindItemWithValue(int iValue)
 	return -1;
 }
 
-
-bool CUIListWnd::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIListWnd::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	switch(mouse_action){
 	case WINDOW_LBUTTON_DB_CLICK:

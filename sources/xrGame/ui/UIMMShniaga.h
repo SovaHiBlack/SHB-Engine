@@ -21,7 +21,7 @@ public:
 	virtual void 		Update					();
 	virtual void 		Draw					();
 
-	virtual bool 		OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual bool 		OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual bool 		OnKeyboard				(int dik, EUIMessages keyboard_action);
 	virtual void 		SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = 0);
 			void 		SetVisibleMagnifier		(bool f);
@@ -45,26 +45,26 @@ protected:
 	void 				CreateList				(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, pcstr path);
 	void 				ShowMain				();
 	void 				ShowNewGame				();
-	float				pos						(float x1, float x2, u32 t);
+	f32				pos						(f32 x1, f32 x2, u32 t);
 
-    CUIStatic*			m_shniaga;
+	CUIStatic*			m_shniaga;
 	CUIStatic*			m_magnifier;
 	CUIStatic*			m_anims[2];
 	CUIStatic*			m_gratings[2];
 	CUIScrollView*		m_view;
 
-    u32					m_start_time;
+	u32					m_start_time;
 	u32					m_run_time;
-    float				m_origin;
-	float				m_destination;
-	float				m_mag_pos;
-	float				m_offset;
+	f32				m_origin;
+	f32				m_destination;
+	f32				m_mag_pos;
+	f32				m_offset;
 
 	xr_vector<CUIStatic*>	m_buttons;
 	xr_vector<CUIStatic*>	m_buttons_new;
 	int						m_selected_btn;
 	int						m_page;
-    CUIWindow*				m_selected;
+	CUIWindow*				m_selected;
 	CMMSound*				m_sound;
 	Fvector2				m_wheel_size[2];
 	enum {fl_SoundFinalized	= 1, fl_MovingStoped = 2	};

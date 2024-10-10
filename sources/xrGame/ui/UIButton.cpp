@@ -49,8 +49,6 @@ void CUIButton::Reset()
 	inherited::Reset			();
 }
 
-
-
 void CUIButton::Enable(bool status){
 	CUIStatic::Enable			(status);
 
@@ -58,7 +56,7 @@ void CUIButton::Enable(bool status){
 		m_bCursorOverWindow		= false;
 }
 
-bool  CUIButton::OnMouse(float x, float y, EUIMessages mouse_action)
+bool  CUIButton::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	m_bButtonClicked			= false;
 
@@ -170,8 +168,8 @@ void CUIButton::DrawTexture()
 }
 
 void CUIButton::DrawHighlightedText(){
-	float right_offset;
-	float down_offset;
+	f32 right_offset;
+	f32 down_offset;
 
 	if(m_eButtonState == BUTTON_UP || m_eButtonState == BUTTON_NORMAL)
 	{
@@ -193,13 +191,12 @@ void CUIButton::DrawHighlightedText(){
 					rect.top + down_offset   - 0 +m_TextOffset.y + m_ShadowOffset.y);
 
 	m_pLines->SetTextColor(def_col);
-
 }
 
 void CUIButton::DrawText()
 {
-	float right_offset;
-	float down_offset;
+	f32 right_offset;
+	f32 down_offset;
 
 	if(m_eButtonState == BUTTON_UP || m_eButtonState == BUTTON_NORMAL)
 	{

@@ -13,20 +13,21 @@ private:
     typedef	CInventoryItemObject	inherited;
 
 protected:
-	float			fBrightness;
+	f32			fBrightness;
 	CLAItem*		lanim;
-	float			time2hide;
+	f32			time2hide;
 
 	u16				guid_bone;
 	shared_str		light_trace_bone;
 
-	float			m_delta_h;
+	f32			m_delta_h;
 	Fvector2		m_prev_hp;
 	bool			m_switched_on;
 	ref_light		light_render;
 	ref_light		light_omni;
 	ref_glow		glow_render;
 	Fvector			m_focus;
+
 private:
 	inline	bool	can_use_dynamic_lights	();
 
@@ -54,7 +55,8 @@ public:
 			void	SwitchNightVision		  ();
 			void	SwitchNightVision		  (bool light_on);
 			void	UpdateSwitchNightVision   ();
-			float	NightVisionBattery		  ();
+			f32		NightVisionBattery		  ();
+
 protected:
 	bool					m_bNightVisionEnabled;
 	bool					m_bNightVisionOn;
@@ -64,10 +66,10 @@ protected:
 	HUD_SOUND				m_NightVisionIdleSnd;
 	HUD_SOUND				m_NightVisionBrokenSnd;
 
-	/*float					m_NightVisionRechargeTime;
-	float					m_NightVisionRechargeTimeMin;
-	float					m_NightVisionDischargeTime;
-	float					m_NightVisionChargeTime;*/
+	/*f32					m_NightVisionRechargeTime;
+	f32					m_NightVisionRechargeTimeMin;
+	f32					m_NightVisionDischargeTime;
+	f32					m_NightVisionChargeTime;*/
 
 	enum EStats{
 		eTorchActive				= (1<<0),
@@ -76,7 +78,6 @@ protected:
 	};
 
 public:
-
 	virtual bool			use_parent_ai_locations	() const
 	{
 		return				(!H_Parent());
@@ -90,6 +91,7 @@ public:
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 add_to_type_list(CTorch)
 #undef script_type_list
 #define script_type_list save_type_list(CTorch)

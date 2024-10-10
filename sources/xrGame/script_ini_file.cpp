@@ -90,7 +90,7 @@ int	 CScriptIniFile::r_s32				(pcstr S, pcstr L)
 	return		(inherited::r_s32(S,L));
 }
 
-float CScriptIniFile::r_float			(pcstr S, pcstr L)
+f32 CScriptIniFile::r_float			(pcstr S, pcstr L)
 {
 	THROW3		(inherited::section_exist(S),"Cannot find section",S);
 	THROW3		(inherited::line_exist(S,L),"Cannot find line",L);

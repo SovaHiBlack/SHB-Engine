@@ -18,7 +18,7 @@ public:
 			void InitFromXML	(CUIXml& xml, pcstr path, int index);
 
 protected:
-	float						m_fScale;
+	f32						m_fScale;
 	Fvector2					m_cell_size;
 	xr_vector<Frect>            m_vRects;
 	CUIStaticItem               m_si;

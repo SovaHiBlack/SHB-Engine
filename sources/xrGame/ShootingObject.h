@@ -41,7 +41,7 @@ protected:
 	virtual bool			SendHitAllowed		(CObject* pUser);
 	virtual void			FireBullet			(const Fvector& pos, 
         										const Fvector& dir, 
-												float fire_disp,
+												 f32 fire_disp,
 												const CCartridge& cartridge,
 												u16 parent_id,
 												u16 weapon_id,
@@ -58,45 +58,45 @@ protected:
 	// Weapon fires now
 	bool					bWorking;
 
-	float					fTimeToFire;
+	f32					fTimeToFire;
 	Fvector4				fvHitPower;
-	//float					fHitPower;
-	float					fHitImpulse;
+	//f32					fHitPower;
+	f32					fHitImpulse;
 
 	//скорость вылета пули из ствола
-	float					m_fStartBulletSpeed;
+	f32					m_fStartBulletSpeed;
 	//максимальное расстояние стрельбы
-	float					fireDistance;
+	f32					fireDistance;
 
 	//рассеивание во время стрельбы
-	float					fireDispersionBase;
+	f32					fireDispersionBase;
 
 	//счетчик времени, затрачиваемого на выстрел
-	float					fTime;
+	f32					fTime;
 
 protected:
 	//для сталкеров, чтоб они знали эффективные границы использования 
 	//оружия
-	float					m_fMinRadius;
-	float					m_fMaxRadius;
-
+	f32					m_fMinRadius;
+	f32					m_fMaxRadius;
 
 //////////////////////////////////////////////////////////////////////////
 // Lights
 //////////////////////////////////////////////////////////////////////////
 protected:
 	Fcolor					light_base_color;
-	float					light_base_range;
+	f32					light_base_range;
 	Fcolor					light_build_color;
-	float					light_build_range;
+	f32					light_build_range;
 	ref_light				light_render;
-	float					light_var_color;
-	float					light_var_range;
-	float					light_lifetime;
+	f32					light_var_color;
+	f32					light_var_range;
+	f32					light_lifetime;
 	u32						light_frame;
-	float					light_time;
+	f32					light_time;
 	//включение подсветки во время выстрела
 	bool					m_bLightShotEnabled;
+
 protected:
 	void					Light_Create		();
 	void					Light_Destroy		();
@@ -144,14 +144,17 @@ protected:
 	//партиклы гильз
 	virtual void			OnShellDrop			(const Fvector& play_pos,
 												 const Fvector& parent_vel);
+
 protected:
 	//имя пратиклов для гильз
 	shared_str				m_sShellParticles;
+
 public:
 	Fvector					vLoadedShellPoint;
-	float					m_fPredBulletTime;
-	float					m_fTimeToAim;
+	f32					m_fPredBulletTime;
+	f32					m_fTimeToAim;
 	BOOL					m_bUseAimBullet;
+
 protected:
 	//имя пратиклов для огня
 	shared_str				m_sFlameParticlesCurrent;

@@ -39,7 +39,7 @@ void CUI3tButton::OnClick()
     PlaySoundT			();
 }
 
-bool CUI3tButton::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUI3tButton::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if (m_bCheckMode)
 		return CUIWindow::OnMouse(x,y,mouse_action);
@@ -100,19 +100,19 @@ void CUI3tButton::PlaySoundH()
 		m_sound_h.play(NULL, sm_2D);
 }
 
-void CUI3tButton::Init(float x, float y, float width, float height)
+void CUI3tButton::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	m_background.Init			(0, 0, width, height);
     CUIButton::Init				(x, y, width, height);
 }
 
-void CUI3tButton::SetWidth(float width)
+void CUI3tButton::SetWidth(f32 width)
 {
 	CUIButton::SetWidth			(width);
 	m_background.SetWidth		(width);
 }
 
-void CUI3tButton::SetHeight(float height)
+void CUI3tButton::SetHeight(f32 height)
 {
 	CUIButton::SetHeight		(height);
 	m_background.SetHeight		(height);
@@ -176,7 +176,7 @@ void CUI3tButton::SetTextColorT(u32 color)
 	SetTextColor(color, CUIStatic::T);
 }
 
-void CUI3tButton::SetTextureOffset(float x, float y)
+void CUI3tButton::SetTextureOffset(f32 x, f32 y)
 {
 	this->m_background.SetTextureOffset(x, y);
 }

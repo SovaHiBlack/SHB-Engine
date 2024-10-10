@@ -19,7 +19,7 @@ CUIEditBox::~CUIEditBox(void)
 {
 }	
 
-void CUIEditBox::Init(float x, float y, float width, float height){
+void CUIEditBox::Init(f32 x, f32 y, f32 width, f32 height){
 	m_frameLine.Init(0,0,width,height);
 	CUICustomEdit::Init(x,y,width,height);
 }
@@ -40,6 +40,3 @@ void CUIEditBox::SaveValue(){
 bool CUIEditBox::IsChanged(){
 	return 0 != xr_strcmp(GetOptStringValue(),GetText());
 }
-
-
-

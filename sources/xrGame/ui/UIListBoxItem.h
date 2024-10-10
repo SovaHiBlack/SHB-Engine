@@ -23,11 +23,11 @@ public:
 			void		SetData(void* data);
 			void*		GetData();
 
-		CUIStatic*		AddField(pcstr txt, float len, pcstr key = "");
+		CUIStatic*		AddField(pcstr txt, f32 len, pcstr key = "");
 		pcstr			GetField(pcstr key);
 
 protected:
-			float		FieldsLength();
+	f32		FieldsLength();
 		xr_vector<CUIStatic*>	fields;
 		u32				txt_color;
 		u32				txt_color_s;

@@ -31,7 +31,7 @@ public:
 	virtual					~CUICellItem			();
 
 	virtual		bool		OnKeyboard				(int dik, EUIMessages keyboard_action);
-	virtual		bool		OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual		bool		OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual		void		Draw					();
 	virtual		void		Update					()						{inherited::Update(); m_b_already_drawn=false;};
 				
@@ -71,7 +71,7 @@ public:
 	virtual		void		Init(const ref_shader& sh, const Frect& rect, const Frect& text_rect);
 	virtual					~CUIDragItem();
 			CUIStatic*		wnd						() {return &m_static;}
-	virtual		bool		OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual		bool		OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual		void		Draw					();
 	virtual		void		OnRender				();
 	virtual		void		OnFrame					();

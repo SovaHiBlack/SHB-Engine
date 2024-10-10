@@ -44,7 +44,7 @@ CUICharacterInfo::CUICharacterInfo()
 CUICharacterInfo::~CUICharacterInfo()
 {}
 
-void CUICharacterInfo::Init(float x, float y, float width, float height, CUIXml* xml_doc)
+void CUICharacterInfo::Init(f32 x, f32 y, f32 width, f32 height, CUIXml* xml_doc)
 {
 	inherited::Init(x, y, width, height);
 
@@ -150,7 +150,7 @@ void CUICharacterInfo::Init(float x, float y, float width, float height, CUIXml*
 	}
 }
 
-void CUICharacterInfo::Init(float x, float y, float width, float height, pcstr xml_name)
+void CUICharacterInfo::Init(f32 x, f32 y, f32 width, f32 height, pcstr xml_name)
 {
 	CUIXml							uiXml;
 	bool xml_result					= uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);
@@ -286,8 +286,8 @@ void CUICharacterInfo::ClearInfo()
 	
 	if (m_icons[eUIIcon]) {
 		m_icons[eUIIcon]->GetUIStaticItem().SetOriginalRect(	8*ICON_GRID_WIDTH,0,
-			float(CHAR_ICON_WIDTH*ICON_GRID_WIDTH),
-			float(CHAR_ICON_HEIGHT*ICON_GRID_HEIGHT));
+															f32(CHAR_ICON_WIDTH*ICON_GRID_WIDTH),
+															f32(CHAR_ICON_HEIGHT*ICON_GRID_HEIGHT));
 	}
 
 	for(int i = eUIName; i<eMaxCaption; ++i)

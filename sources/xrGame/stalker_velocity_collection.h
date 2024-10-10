@@ -12,13 +12,13 @@
 
 class CStalkerVelocityCollection {
 private:
-	float				m_danger[2][2][4];
-	float				m_free[2];
-	float				m_panic;
+	f32				m_danger[2][2][4];
+	f32				m_free[2];
+	f32				m_panic;
 
 public:
 						CStalkerVelocityCollection	(const shared_str &section);
-	inline	float		velocity					(
+	IC	f32		velocity					(
 		const MonsterSpace::EMentalState		&mental_state,
 		const MonsterSpace::EBodyState			&body_state,
 		const MonsterSpace::EMovementType		&movement_type,

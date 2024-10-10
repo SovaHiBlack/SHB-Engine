@@ -71,7 +71,7 @@ bool CSpaceRestrictionBridge::inside					(u32 level_vertex_id, bool partially_in
 	STOP_PROFILE;
 }
 
-bool CSpaceRestrictionBridge::inside					(u32 level_vertex_id, bool partially_inside, float radius)
+bool CSpaceRestrictionBridge::inside					(u32 level_vertex_id, bool partially_inside, f32 radius)
 {
 	START_PROFILE("Restricted Object/Bridge/Inside Vertex");
 	return		(object().inside(level_vertex_id,partially_inside,radius));

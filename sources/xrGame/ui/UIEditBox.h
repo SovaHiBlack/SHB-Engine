@@ -20,7 +20,7 @@ public:
 					CUIEditBox		();
 	virtual			~CUIEditBox		();
 
-	virtual void	Init(float x, float y, float width, float heigt);
+	virtual void	Init(f32 x, f32 y, f32 width, f32 heigt);
 
 	// CUIOptionsItem
 	virtual void	SetCurrentValue();
@@ -29,6 +29,7 @@ public:
 
 	// CUIMultiTextureOwner
 	virtual void	InitTexture(pcstr texture);
+
 protected:
 	CUIFrameLineWnd	m_frameLine;
 	DECLARE_SCRIPT_REGISTER_FUNCTION

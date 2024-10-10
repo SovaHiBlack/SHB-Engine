@@ -25,7 +25,7 @@ protected:
 
 public:
 			bool		inside				(u32 level_vertex_id, bool partially_inside);
-			bool		inside				(u32 level_vertex_id, bool partially_inside, float radius);
+			bool		inside				(u32 level_vertex_id, bool partially_inside, f32 radius);
 	virtual	bool		inside				(const Fsphere &sphere) = 0;
 	virtual bool		shape				() const = 0;
 	virtual bool		default_restrictor	() const = 0;

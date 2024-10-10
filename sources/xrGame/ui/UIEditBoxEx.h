@@ -10,10 +10,11 @@ public:
 	virtual ~CUIEditBoxEx();
 
 	// CUIWindow
-	virtual void	Init(float x, float y, float width, float heigt);
+	virtual void	Init(f32 x, f32 y, f32 width, f32 heigt);
 
 	// CUIMultiTextureOwner
 	virtual void	InitTexture(pcstr texture);
+
 protected:
 	CUIFrameWindow*	m_pFrameWindow;
 };

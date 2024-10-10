@@ -68,7 +68,7 @@ void CUILines::SetUseNewLineMode(bool mode){
 	uFlags.set(flRecognizeNewLine, mode);	
 }
 
-void CUILines::Init(float x, float y, float width, float heigt){	
+void CUILines::Init(f32 x, f32 y, f32 width, f32 heigt){
 	CUISimpleWindow::Init(x, y, width, heigt);
 }
 
@@ -129,9 +129,9 @@ void CUILines::Reset(){
 	m_lines.clear();
 }
 
-float get_str_width(CGameFont*pFont, char ch)
+f32 get_str_width(CGameFont*pFont, char ch)
 {
-	float ll = pFont->SizeOf_(ch);
+	f32 ll = pFont->SizeOf_(ch);
 	UI()->ClientToScreenScaledWidth(ll);
 	return ll;
 }
@@ -200,7 +200,7 @@ void CUILines::ParseText(){
         u16	aMarkers[ UBUFFER_SIZE ];
 		CUILine tmp_line;
 		char szTempLine[ MAX_MB_CHARS ];
-		float fTargetWidth = 1.0f;
+		f32 fTargetWidth = 1.0f;
 		UI()->ClientToScreenScaledWidth( fTargetWidth );
 		VERIFY( ( m_wndSize.x > 0 ) && ( fTargetWidth > 0 ) );
 		fTargetWidth = m_wndSize.x / fTargetWidth;
@@ -243,13 +243,13 @@ void CUILines::ParseText(){
 		}
 	} else
 	{
-		float max_width							= m_wndSize.x;
+		f32 max_width							= m_wndSize.x;
 		u32 sbl_cnt								= line->m_subLines.size();
 		CUILine									tmp_line;
 		string4096								buff;
-		float curr_width						= 0.0f;
+		f32 curr_width						= 0.0f;
 		bool bnew_line							= false;
-		float __eps								= get_str_width(m_pFont,'o');//hack -(
+		f32 __eps								= get_str_width(m_pFont,'o');//hack -(
 		for(u32 sbl_idx=0; sbl_idx<sbl_cnt; ++sbl_idx)
 		{
 			bool b_last_subl					= (sbl_idx==sbl_cnt-1);
@@ -266,7 +266,7 @@ void CUILines::ParseText(){
 				if(isspace(sbl.m_text[idx]))
 					last_space_idx = idx;
 
-				float w1		= get_str_width(m_pFont, sbl.m_text[idx]);
+				f32 w1		= get_str_width(m_pFont, sbl.m_text[idx]);
 				bool bOver		= (curr_width+w1+__eps > max_width);
 
 				if(bOver || b_last_ch)
@@ -306,12 +306,11 @@ void CUILines::ParseText(){
 
 	xr_delete(line);
 	uFlags.set(flNeedReparse, FALSE);
-
 }
 
-float CUILines::GetVisibleHeight()
+f32 CUILines::GetVisibleHeight()
 {
-	float _curr_h = m_pFont->CurrentHeight_();
+	f32 _curr_h = m_pFont->CurrentHeight_();
 	UI()->ClientToScreenScaledHeight(_curr_h);
 
 	if (uFlags.test(flComplexMode))
@@ -338,7 +337,7 @@ void CUILines::SetFont(CGameFont* pFont){
 	m_pFont = pFont;
 }
 
-void CUILines::Draw(float x, float y){
+void CUILines::Draw(f32 x, f32 y){
 	static string256 passText;
 
 	if (m_text.empty())
@@ -378,7 +377,7 @@ void CUILines::Draw(float x, float y){
 		Fvector2 pos;
 		// get vertical indent
 		pos.y			= y + GetVIndentByAlign();
-		float height	= m_pFont->CurrentHeight_();
+		f32 height	= m_pFont->CurrentHeight_();
 		UI()->ClientToScreenScaledHeight(height);
 
 		u32 size		= m_lines.size();
@@ -390,7 +389,6 @@ void CUILines::Draw(float x, float y){
 			m_lines[i].Draw(m_pFont, pos.x, pos.y);
 			pos.y+= height + m_interval;
 		}
-
 	}
 
 	m_pFont->OnRender();
@@ -409,7 +407,7 @@ void CUILines::OnDeviceReset(){
 	uFlags.set(flNeedReparse, TRUE);
 }
 
-float CUILines::GetIndentByAlign()const
+f32 CUILines::GetIndentByAlign()const
 {
 	switch (m_eTextAlign)
 	{
@@ -436,7 +434,7 @@ float CUILines::GetIndentByAlign()const
 #endif
 }
 
-float CUILines::GetVIndentByAlign()
+f32 CUILines::GetVIndentByAlign()
 {
 	switch(m_eVTextAlign) {
 	case valTop: 

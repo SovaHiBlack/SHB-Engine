@@ -246,7 +246,7 @@ const xr_vector<CNotYetVisibleObject> &CScriptGameObject::not_yet_visible_object
 	return					(monster->memory().visual().not_yet_visible_objects());
 }
 
-float CScriptGameObject::visibility_threshold	() const
+f32 CScriptGameObject::visibility_threshold	() const
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -276,7 +276,7 @@ bool CScriptGameObject::vision_enabled			() const
 	return									(monster->memory().visual().enabled());
 }
 
-void CScriptGameObject::set_sound_threshold		(float value)
+void CScriptGameObject::set_sound_threshold		(f32 value)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
@@ -330,7 +330,7 @@ void CScriptGameObject::SetActorPosition			(Fvector pos)
 
 }
 
-void CScriptGameObject::SetActorDirection		(float dir)
+void CScriptGameObject::SetActorDirection		(f32 dir)
 {
 	CActor* actor = smart_cast<CActor*>(&object());
 	if(actor){
@@ -350,7 +350,7 @@ CHolderCustom* CScriptGameObject::get_current_holder()
 		return NULL;
 }
 
-void CScriptGameObject::set_ignore_monster_threshold	(float ignore_monster_threshold)
+void CScriptGameObject::set_ignore_monster_threshold	(f32 ignore_monster_threshold)
 {
 	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -371,7 +371,7 @@ void CScriptGameObject::restore_ignore_monster_threshold	()
 	stalker->memory().enemy().restore_ignore_monster_threshold	();
 }
 
-float CScriptGameObject::ignore_monster_threshold		() const
+f32 CScriptGameObject::ignore_monster_threshold		() const
 {
 	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -381,7 +381,7 @@ float CScriptGameObject::ignore_monster_threshold		() const
 	return				(stalker->memory().enemy().ignore_monster_threshold());
 }
 
-void CScriptGameObject::set_max_ignore_monster_distance	(const float &max_ignore_monster_distance)
+void CScriptGameObject::set_max_ignore_monster_distance	(const f32& max_ignore_monster_distance)
 {
 	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -401,7 +401,7 @@ void CScriptGameObject::restore_max_ignore_monster_distance	()
 	stalker->memory().enemy().restore_max_ignore_monster_distance	();
 }
 
-float CScriptGameObject::max_ignore_monster_distance	() const
+f32 CScriptGameObject::max_ignore_monster_distance	() const
 {
 	CAI_Stalker			*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -434,7 +434,7 @@ void CScriptGameObject::debug_planner				(const script_planner *planner)
 }
 #endif
 
-u32 CScriptGameObject::location_on_path				(float distance, Fvector *location)
+u32 CScriptGameObject::location_on_path				(f32 distance, Fvector *location)
 {
 	if (!location) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : location_on_path -> specify destination location!");

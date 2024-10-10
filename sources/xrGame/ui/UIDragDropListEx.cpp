@@ -76,7 +76,7 @@ void CUIDragDropListEx::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
 
-void CUIDragDropListEx::Init(float x, float y, float w, float h)
+void CUIDragDropListEx::Init(f32 x, f32 y, f32 w, f32 h)
 {
 	inherited::SetWndRect				(x,y,w,h);
 	m_vScrollBar->Init					(w, 0, h, false);
@@ -92,7 +92,7 @@ void CUIDragDropListEx::Init(float x, float y, float w, float h)
 
 void CUIDragDropListEx::OnScrollV(CUIWindow* w, void* pData)
 {
-	m_container->SetWndPos		(m_container->GetWndPos().x, float(-m_vScrollBar->GetScrollPos()));
+	m_container->SetWndPos		(m_container->GetWndPos().x, f32(-m_vScrollBar->GetScrollPos()));
 }
 
 void CUIDragDropListEx::CreateDragItem(CUICellItem* itm)
@@ -265,8 +265,8 @@ void CUIDragDropListEx::Update()
 
 void CUIDragDropListEx::ReinitScroll()
 {
-		float h1 = m_container->GetWndSize().y;
-		float h2 = GetWndSize().y;
+	f32 h1 = m_container->GetWndSize().y;
+	f32 h2 = GetWndSize().y;
 		VERIFY						(_valid(h1));
 		VERIFY						(_valid(h2));
 		m_vScrollBar->Show			( h1 > h2 );
@@ -275,11 +275,11 @@ void CUIDragDropListEx::ReinitScroll()
 		m_vScrollBar->SetRange		(0, _max(0,iFloor(h1-h2)) );
 		m_vScrollBar->SetScrollPos	(0);
 		m_vScrollBar->SetStepSize	(CellSize().y/3);
-		m_vScrollBar->SetPageSize	(iFloor(GetWndSize().y/float(CellSize().y)));
+		m_vScrollBar->SetPageSize	(iFloor(GetWndSize().y/ f32(CellSize().y)));
 		m_container->SetWndPos		(0,0);
 }
 
-bool CUIDragDropListEx::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIDragDropListEx::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	bool b = inherited::OnMouse		(x,y,mouse_action);
 
@@ -560,7 +560,7 @@ void CUICellContainer::SetCellSize(const Ivector2& new_sz)
 
 Ivector2 CUICellContainer::TopVisibleCell()
 {
-	return Ivector2().set	(0, iFloor(m_pParentDragDropList->ScrollPos()/float(CellSize().y)));
+	return Ivector2().set	(0, iFloor(m_pParentDragDropList->ScrollPos()/ f32(CellSize().y)));
 }
 
 CUICell& CUICellContainer::GetCellAt(const Ivector2& pos)
@@ -674,8 +674,8 @@ void CUICellContainer::Draw()
 
 	Irect				tgt_cells;
 	tgt_cells.lt		= TopVisibleCell();
-	tgt_cells.x2		= iFloor( (float(clientArea.width())+float(cell_sz.x)- EPSILON_5)/float(cell_sz.x)) + tgt_cells.lt.x;
-	tgt_cells.y2		= iFloor( (float(clientArea.height())+float(cell_sz.y)- EPSILON_5)/float(cell_sz.y)) + tgt_cells.lt.y;
+	tgt_cells.x2		= iFloor( (f32(clientArea.width())+ f32(cell_sz.x)- EPSILON_5)/ f32(cell_sz.x)) + tgt_cells.lt.x;
+	tgt_cells.y2		= iFloor( (f32(clientArea.height())+ f32(cell_sz.y)- EPSILON_5)/ f32(cell_sz.y)) + tgt_cells.lt.y;
 
 	clamp				(tgt_cells.x2, 0, cell_cnt.x-1);
 	clamp				(tgt_cells.y2, 0, cell_cnt.y-1);
@@ -696,7 +696,7 @@ void CUICellContainer::Draw()
 
 	// calculate cell size in screen pixels
 	Fvector2 f_len;
-	UI()->ClientToScreenScaled(f_len, float(cell_sz.x), float(cell_sz.y) );
+	UI()->ClientToScreenScaled(f_len, f32(cell_sz.x), f32(cell_sz.y) );
 
 	// fill cell buffer
 	u32 vOffset					= 0;

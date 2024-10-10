@@ -54,10 +54,10 @@ void CUICustomMap::Init	(shared_str name, CInifile& gameLtx, pcstr sh_name)
 	ClipperOn			();
 }
 
-void rotation_(float x, float y, const float angle, float& x_, float& y_)
+void rotation_(f32 x, f32 y, const f32 angle, f32& x_, f32& y_)
 {
-	float _sc = _cos(angle);
-	float _sn = _sin(angle);
+	f32 _sc = _cos(angle);
+	f32 _sn = _sin(angle);
 	x_= x*_sc+y*_sn;
 	y_= y*_sc-x*_sn;
 }
@@ -97,7 +97,7 @@ Fvector2 CUICustomMap::ConvertRealToLocalNoTransform  (const Fvector2& src)// me
 }
 
 //position and heading for drawing pointer to src pos
-bool CUICustomMap::GetPointerTo(const Fvector2& src, float item_radius, Fvector2& pos, float& heading)
+bool CUICustomMap::GetPointerTo(const Fvector2& src, f32 item_radius, Fvector2& pos, f32& heading)
 {
 	Frect		clip_rect_abs			= GetClipperRect(); //absolute rect coords
 	Frect		map_rect_abs;
@@ -125,7 +125,6 @@ bool CUICustomMap::GetPointerTo(const Fvector2& src, float item_radius, Fvector2
 	res = f_clip_rect_local.Pick2(f_src,f_dir,f_intersect_point);
 	VERIFY(res);
 
-
 	heading = -f_dir.getH();
 
 	f_intersect_point.mad(f_intersect_point,f_dir,item_radius );
@@ -134,25 +133,21 @@ bool CUICustomMap::GetPointerTo(const Fvector2& src, float item_radius, Fvector2
 	return true;
 }
 
-
-void CUICustomMap::FitToWidth	(float width)
+void CUICustomMap::FitToWidth	(f32 width)
 {
-	float k			= m_BoundRect.width()/m_BoundRect.height();
-	float w			= width;
-	float h			= width/k;
+	f32 k			= m_BoundRect.width()/m_BoundRect.height();
+	f32 w			= width;
+	f32 h			= width/k;
 	SetWndRect		(0.0f,0.0f,w,h);
-	
 }
 
-void CUICustomMap::FitToHeight	(float height)
+void CUICustomMap::FitToHeight	(f32 height)
 {
-	float k			= m_BoundRect.width()/m_BoundRect.height();
-	float h			= height;
-	float w			= k*height;
+	f32 k			= m_BoundRect.width()/m_BoundRect.height();
+	f32 h			= height;
+	f32 w			= k*height;
 	SetWndRect		(0.0f,0.0f,w,h);
-	
 }
-
 
 void CUICustomMap::OptimalFit(const Frect& r)
 {
@@ -213,7 +208,7 @@ void	CUICustomMap::SendMessage			(CUIWindow* pWnd, s16 msg, void* pData)
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
 
-bool CUIGlobalMap::OnMouse	(float x, float y, EUIMessages mouse_action)
+bool CUIGlobalMap::OnMouse	(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if(inherited::OnMouse(x,y,mouse_action)) return true;
 	if(mouse_action==WINDOW_MOUSE_MOVE && (FALSE==pInput->iGetAsyncBtnState(0)))
@@ -288,17 +283,17 @@ void CUIGlobalMap::MoveWndDelta(const Fvector2& d)
 	m_mapWnd->UpdateScroll	();
 }
 
-float CUIGlobalMap::CalcOpenRect(const Fvector2& center_point, Frect& map_desired_rect, float tgt_zoom)
+f32 CUIGlobalMap::CalcOpenRect(const Fvector2& center_point, Frect& map_desired_rect, f32 tgt_zoom)
 {
-    Fvector2                    new_center_pt;
+	Fvector2                    new_center_pt;
 	// calculate desired rect in new zoom
-    map_desired_rect.set		(0.0f,0.0f, BoundRect().width()*tgt_zoom,BoundRect().height()*tgt_zoom);
+	map_desired_rect.set		(0.0f,0.0f, BoundRect().width()*tgt_zoom,BoundRect().height()*tgt_zoom);
 	// calculate center point in new zoom (center_point is in identity global map space)
-    new_center_pt.set           (center_point.x*tgt_zoom,center_point.y*tgt_zoom);
+	new_center_pt.set           (center_point.x*tgt_zoom,center_point.y*tgt_zoom);
 	// get vis width & height
 	Frect vis_abs_rect			= m_mapWnd->ActiveMapRect();
-	float vis_w					= vis_abs_rect.width();
-	float vis_h					= vis_abs_rect.height();
+	f32 vis_w					= vis_abs_rect.width();
+	f32 vis_h					= vis_abs_rect.height();
 	// calculate center delta from vis rect
 	Fvector2 delta_pos;
 	delta_pos.set				(new_center_pt.x-vis_w*0.5f,new_center_pt.y-vis_h*0.5f);
@@ -314,7 +309,7 @@ float CUIGlobalMap::CalcOpenRect(const Fvector2& center_point, Frect& map_desire
 	np.sub						(r.lt);
 	map_desired_rect.add		(np.x,np.y);
 	// calculate max way dist
-	float dist					= 0.f;
+	f32 dist					= 0.f;
 
 	Frect s_rect,t_rect;
 	s_rect.div					(GetWndRect(),GetCurrentZoom(),GetCurrentZoom());
@@ -366,8 +361,8 @@ void CUILevelMap::Init	(shared_str name, CInifile& gameLtx, pcstr sh_name)
 	m_GlobalRect.set(tmp.x, tmp.y, tmp.z, tmp.w);
 
 #ifdef DEBUG
-	float kw = m_GlobalRect.width	()	/	BoundRect().width		();
-	float kh = m_GlobalRect.height	()	/	BoundRect().height	();
+	f32 kw = m_GlobalRect.width	()	/	BoundRect().width		();
+	f32 kh = m_GlobalRect.height	()	/	BoundRect().height	();
 
 	if(FALSE==fsimilar(kw,kh,EPS_L)){
 		Msg(" --incorrect global rect definition for map [%s]  kw=%f kh=%f",*MapName(),kw,kh);
@@ -450,13 +445,11 @@ void CUILevelMap::Update()
 				MapWnd()->ShowHint(this, *MapName());
 			else
 				MapWnd()->HideHint(this);
-
 		}
 	}
-
 }
 
-bool CUILevelMap::OnMouse	(float x, float y, EUIMessages mouse_action)
+bool CUILevelMap::OnMouse	(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if (inherited::OnMouse(x,y,mouse_action))	return true;
 	if (MapWnd()->GlobalMap()->Locked())		return true;

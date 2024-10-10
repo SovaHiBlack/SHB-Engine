@@ -24,10 +24,10 @@ public:
 					CUIListWnd				();
 	virtual			~CUIListWnd				();
 
-	virtual void	 Init					(float x, float y, float width, float height);
-	virtual void	 Init					(float x, float y, float width, float height, float item_height);
+	virtual void	 Init					(f32 x, f32 y, f32 width, f32 height);
+	virtual void	 Init					(f32 x, f32 y, f32 width, f32 height, f32 item_height);
 
-	virtual bool	 OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual bool	 OnMouse				(f32 x, f32 y, EUIMessages mouse_action);
 	virtual bool	 OnKeyboard				(int dik, EUIMessages keyboard_action);
 
 	virtual void	 SendMessage			(CUIWindow *pWnd, s16 msg, void* pData);
@@ -38,7 +38,7 @@ public:
 
 	// Добавление элементов в листбокс
 	template <class Element>
-	bool			 AddItem				(pcstr  str, const float shift = 0.0f, void* pData = NULL,
+	bool			 AddItem				(pcstr  str, const f32 shift = 0.0f, void* pData = NULL,
 											int value = 0, int insertBeforeIdx = -1);
 
 	virtual bool	AddItem_script			(CUIListItem* item);
@@ -55,12 +55,12 @@ public:
 	// Получить индекс элемента по адресу. Либо -1 если нет такого
 	int				GetItemPos				(CUIListItem *pItem);
 
-	void			SetItemWidth			(float iItemWidth);
-	float			GetItemWidth			()							{return m_iItemWidth;}
+	void			SetItemWidth			(f32 iItemWidth);
+	f32			GetItemWidth			()							{return m_iItemWidth;}
 
-	void			SetItemHeight			(float iItemHeight); 
-	float			GetItemHeight			()							{return m_iItemHeight;}
-    virtual void	SetHeight				(float height);
+	void			SetItemHeight			(f32 iItemHeight);
+	f32			GetItemHeight			()							{return m_iItemHeight;}
+    virtual void	SetHeight				(f32 height);
 
 	void			SetAlwaysShowScroll		(bool flag = true)			{m_bAlwaysShowScroll = flag;}
 	void			EnableAlwaysShowScroll	(bool flag)					{m_bAlwaysShowScroll_enable = flag;}
@@ -82,7 +82,7 @@ public:
 	IC bool			IsActiveBackgroundEnabled()								{return m_bActiveBackground;}
 	void			EnableActiveBackground	(bool enable);
 
-	virtual void	SetWidth				(float width);
+	virtual void	SetWidth				(f32 width);
 
 	void			SetTextColor			(u32 color)						{m_dwFontColor = color;} 
 	u32				GetTextColor			()								{return m_dwFontColor;}
@@ -120,8 +120,8 @@ protected:
 	LIST_ITEM_LIST	m_ItemList; 
 
 	//размеры элемента списка
-	float		m_iItemHeight;
-	float		m_iItemWidth;
+	f32		m_iItemHeight;
+	f32		m_iItemWidth;
 
 	//количество рядов для элементов
 	int		m_iRowNum;

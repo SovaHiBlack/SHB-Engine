@@ -40,7 +40,7 @@ void CUIAnimatedStatic::Update()
 	if (m_bParamsChanged && 0 != m_uFrameCount)
 	{
 		// Пересчитаем время одного кадра
-		oneFrameDuration = iCeil(m_uAnimationDuration / static_cast<float>(m_uFrameCount));
+		oneFrameDuration = iCeil(m_uAnimationDuration / static_cast<f32>(m_uFrameCount));
 
 		SetFrame(0);
 
@@ -76,10 +76,10 @@ void CUIAnimatedStatic::SetFrame(const u32 frameNum)
 	//static u32 currRow = 0xffffffff, currCol = 0xffffffff;
 	int currRow = frameNum / m_uAnimCols;
 	int currCol = frameNum % m_uAnimCols;
-	GetUIStaticItem().SetOriginalRect(m_pos.x + float(currCol*m_uFrameWidth), m_pos.y + float(currRow*m_uFrameHeight), float(m_uFrameWidth), float(m_uFrameHeight));
+	GetUIStaticItem().SetOriginalRect(m_pos.x + f32(currCol*m_uFrameWidth), m_pos.y + f32(currRow*m_uFrameHeight), f32(m_uFrameWidth), f32(m_uFrameHeight));
 }
 
-void CUIAnimatedStatic::SetAnimPos(float pos){
+void CUIAnimatedStatic::SetAnimPos(f32 pos){
 	R_ASSERT(pos >= 0 && pos <= 1);
 
 	u32 curFrame = u32(m_uFrameCount*pos);

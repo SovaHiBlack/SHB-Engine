@@ -25,7 +25,7 @@ public:
 #endif // USE_HEAD_BONE_PART_FAKE
 
 public:
-	typedef xr_vector<float>						ANIMATION_WEIGHTS;
+	typedef xr_vector<f32>						ANIMATION_WEIGHTS;
 	typedef std::pair<pcstr, pcstr>				BLEND_ID;
 
 public:

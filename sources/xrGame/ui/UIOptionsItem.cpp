@@ -51,12 +51,12 @@ void CUIOptionsItem::SaveOptIntegerValue(int val)
 	Console->Execute	(command);
 }
 
-void CUIOptionsItem::GetOptFloatValue(float& val, float& min, float& max)
+void CUIOptionsItem::GetOptFloatValue(f32& val, f32& min, f32& max)
 {
 	Console->GetFloat(m_entry.c_str(), val, min, max);
 }
 
-void CUIOptionsItem::SaveOptFloatValue(float val)
+void CUIOptionsItem::SaveOptFloatValue(f32 val)
 {
 	string512			command;
 	sprintf_s				(command, "%s %f", m_entry.c_str(), val);

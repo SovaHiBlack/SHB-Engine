@@ -45,7 +45,7 @@ void CUIEncyclopediaArticleWnd::SetArticle(CEncyclopediaArticle* article)
 		m_UIImage->SetOriginalRect		(article->data()->image.GetStaticItem()->GetOriginalRect());
 		m_UIImage->SetWndSize			(article->data()->image.GetWndSize());
 
-		float img_x						= (GetWidth()-m_UIImage->GetWidth())/2.0f;
+		f32 img_x						= (GetWidth()-m_UIImage->GetWidth())/2.0f;
 		img_x							= _max(0.0f, img_x);
 		m_UIImage->SetWndPos			(img_x ,m_UIImage->GetWndPos().y);
 	};

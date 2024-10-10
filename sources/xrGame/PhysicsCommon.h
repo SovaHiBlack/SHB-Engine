@@ -23,11 +23,11 @@ extern dReal	world_damping									;
 extern const dReal	mass_limit										;
 extern const u16	max_joint_allowed_for_exeact_integration		;
 extern const dReal	default_world_gravity							;
-extern		 float	phTimefactor									;
+extern		 f32	phTimefactor									;
 extern	int			phIterations									;
-extern	float		phBreakCommonFactor								;
-extern	float		phRigidBreakWeaponFactor						;
-extern	float		ph_tri_query_ex_aabb_rate						;
+extern	f32		phBreakCommonFactor								;
+extern	f32		phRigidBreakWeaponFactor						;
+extern	f32		ph_tri_query_ex_aabb_rate						;
 extern	int			ph_tri_clear_disable_count						;
 
 struct SGameMtl;
@@ -44,13 +44,13 @@ struct SGameMtl;
 
 
 
-IC float Erp(float k_p,float k_d,float	s=fixed_step)		{return ((s*(k_p)) / (((s)*(k_p)) + (k_d)));}
-IC float Cfm(float k_p,float k_d,float	s=fixed_step)		{return (1.f / (((s)*(k_p)) + (k_d)));}
-IC float Spring(float cfm,float erp,float	s=fixed_step)	{return ((erp)/(cfm)/s);}
-IC float Damping(float cfm,float erp)						{return ((1.f-(erp))/(cfm));}
-IC void	 MulSprDmp(float &cfm,float	&erp,float mul_spring,float mul_damping)
+IC f32 Erp(f32 k_p, f32 k_d, f32	s=fixed_step)		{return ((s*(k_p)) / (((s)*(k_p)) + (k_d)));}
+IC f32 Cfm(f32 k_p, f32 k_d, f32	s=fixed_step)		{return (1.f / (((s)*(k_p)) + (k_d)));}
+IC f32 Spring(f32 cfm, f32 erp, f32	s=fixed_step)	{return ((erp)/(cfm)/s);}
+IC f32 Damping(f32 cfm, f32 erp)						{return ((1.f-(erp))/(cfm));}
+IC void	 MulSprDmp(f32&cfm, f32&erp, f32 mul_spring, f32 mul_damping)
 {
-	float factor=1.f/(mul_spring*erp+mul_damping*(1-erp));
+	f32 factor=1.f/(mul_spring*erp+mul_damping*(1-erp));
 	cfm*=factor;
 	erp*=(factor*mul_spring);
 }

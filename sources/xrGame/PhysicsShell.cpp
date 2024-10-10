@@ -156,7 +156,7 @@ CPhysicsShell*				P_build_Shell			(CGameObject* obj,bool not_active_state,U16Vec
 	return pPhysicsShell;
 }
 
-CPhysicsShell*	P_build_SimpleShell(CGameObject* obj,float mass,bool not_active_state)
+CPhysicsShell*	P_build_SimpleShell(CGameObject* obj, f32 mass,bool not_active_state)
 {
 	CPhysicsShell* pPhysicsShell		= P_create_Shell();
 #ifdef DEBUG
@@ -208,8 +208,8 @@ void	get_box(CPhysicsShell*	shell,const	Fmatrix& form,	Fvector&	sz,Fvector&	c)
 	c.set(0,0,0);
 	for(int i=0;3>i;++i)
 	{	
-		float lo,hi;
-		const	Fvector &ax=cast_fv(((const	float*)&form+i*4));
+		f32 lo,hi;
+		const	Fvector &ax=cast_fv(((const	f32*)&form+i*4));
 		shell->get_Extensions(ax,0,lo,hi);
 		sz[i]=hi-lo;c.add(Fvector().mul(ax,(lo+hi)/2));
 	}

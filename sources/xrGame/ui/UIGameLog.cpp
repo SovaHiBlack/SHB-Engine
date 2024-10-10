@@ -40,7 +40,7 @@ CUIStatic* CUIGameLog::AddLogMessage(pcstr msg)
 
 // warning: initialization of item is incomplete!
 // initialization of item's height, text static and icon still necessary
-CUIPdaMsgListItem* CUIGameLog::AddPdaMessage(pcstr msg, float delay){
+CUIPdaMsgListItem* CUIGameLog::AddPdaMessage(pcstr msg, f32 delay){
 	CUIPdaMsgListItem* pItem				= xr_new<CUIPdaMsgListItem>();
 	pItem->Init								(0,0, GetDesiredChildWidth(), 10);	//fake height
 	pItem->UIMsgText.SetTextST				(msg);

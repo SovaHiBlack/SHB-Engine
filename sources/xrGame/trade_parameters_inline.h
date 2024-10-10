@@ -127,8 +127,8 @@ IC	void CTradeParameters::process							(_action_type type, CInifile &ini_file, 
 		_action.enable		(
 			(*I).first,
 			CTradeFactors	(
-				(float)atof(_GetItem(*(*I).second,0,temp0)),
-				(float)atof(_GetItem(*(*I).second,1,temp1))
+				(f32)atof(_GetItem(*(*I).second,0,temp0)),
+				(f32)atof(_GetItem(*(*I).second,1,temp1))
 			)
 		);
 	}

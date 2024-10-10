@@ -52,8 +52,8 @@ public:
 						CUICharacterInfo	( );
 	virtual				~CUICharacterInfo	( );
 
-	void				Init				(float x, float y, float width, float height, CUIXml* xml_doc);
-	void				Init				(float x, float y, float width, float height, pcstr xml_name);
+	void				Init				(f32 x, f32 y, f32 width, f32 height, CUIXml* xml_doc);
+	void				Init				(f32 x, f32 y, f32 width, f32 height, pcstr xml_name);
 	void				InitCharacter		(u16 id);
 	void				ClearInfo			( );
 

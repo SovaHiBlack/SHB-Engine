@@ -50,7 +50,7 @@ Fvector	CScriptGameObject::Center()
 
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Position,			CGameObject,	Position,			Fvector,						Fvector());
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Direction,			CGameObject,	Direction,			Fvector,						Fvector());
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Mass,		CPhysicsShellHolder,	GetMass,			float,							float(-1));
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Mass,		CPhysicsShellHolder,	GetMass, f32, f32(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::ID,					CGameObject,	ID,					u32,							u32(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::getVisible,			CGameObject,	getVisible,			BOOL,							FALSE);
 //BIND_FUNCTION01	(&object(),	CScriptGameObject::setVisible,			CGameObject,	setVisible,			BOOL,							BOOL);
@@ -58,27 +58,27 @@ BIND_FUNCTION10	(&object(),	CScriptGameObject::getEnabled,			CGameObject,	getEna
 //BIND_FUNCTION01	(&object(),	CScriptGameObject::setEnabled,			CGameObject,	setEnabled,			BOOL,							BOOL);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::story_id,			CGameObject,	story_id,			ALife::_STORY_ID,				ALife::_STORY_ID(-1));
 BIND_FUNCTION10	(&object(),	CScriptGameObject::DeathTime,			CEntity,		GetLevelDeathTime,	u32,							0);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::MaxHealth,			CEntity,		GetMaxHealth,		float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Accuracy,			CInventoryOwner,GetWeaponAccuracy,	float,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::MaxHealth,			CEntity,		GetMaxHealth, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Accuracy,			CInventoryOwner,GetWeaponAccuracy, f32,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Team,				CEntity,		g_Team,				int,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Squad,				CEntity,		g_Squad,			int,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Group,				CEntity,		g_Group,			int,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetFOV,				CEntityAlive,	ffGetFov,			float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetRange,			CEntityAlive,	ffGetRange,			float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetHealth,			CEntityAlive,	conditions().GetHealth,			float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetPsyHealth,		CEntityAlive,	conditions().GetPsyHealth,		float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetPower,			CEntityAlive,	conditions().GetPower,			float,							-1);
-//BIND_FUNCTION10	(&object(),	CScriptGameObject::GetSatiety,			CEntityAlive,	conditions().GetSatiety,			float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetRadiation,		CEntityAlive,	conditions().GetRadiation,		float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetBleeding,			CEntityAlive,	conditions().BleedingSpeed,		float,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetMorale,			CEntityAlive,	conditions().GetEntityMorale,	float,							-1);
-BIND_FUNCTION01	(&object(),	CScriptGameObject::SetHealth,			CEntityAlive,	conditions().ChangeHealth,		float,							float);
-BIND_FUNCTION01	(&object(),	CScriptGameObject::SetPsyHealth,		CEntityAlive,	conditions().ChangePsyHealth,	float,							float);
-BIND_FUNCTION01	(&object(),	CScriptGameObject::SetPower,			CEntityAlive,	conditions().ChangePower,		float,							float);
-//BIND_FUNCTION01	(&object(),	CScriptGameObject::SetSatiety,			CEntityAlive,	conditions().ChangeSatiety,		float,							float);
-BIND_FUNCTION01	(&object(),	CScriptGameObject::SetRadiation,		CEntityAlive,	conditions().ChangeRadiation,	float,							float);
-BIND_FUNCTION01	(&object(),	CScriptGameObject::SetCircumspection,	CEntityAlive,	conditions().ChangeCircumspection,float,							float);
-BIND_FUNCTION01	(&object(),	CScriptGameObject::SetMorale,			CEntityAlive,	conditions().ChangeEntityMorale,	float,							float);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetFOV,				CEntityAlive,	ffGetFov, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetRange,			CEntityAlive,	ffGetRange, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetHealth,			CEntityAlive,	conditions().GetHealth, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetPsyHealth,		CEntityAlive,	conditions().GetPsyHealth, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetPower,			CEntityAlive,	conditions().GetPower, f32,							-1);
+//BIND_FUNCTION10	(&object(),	CScriptGameObject::GetSatiety,			CEntityAlive,	conditions().GetSatiety,			f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetRadiation,		CEntityAlive,	conditions().GetRadiation, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetBleeding,			CEntityAlive,	conditions().BleedingSpeed, f32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetMorale,			CEntityAlive,	conditions().GetEntityMorale, f32,							-1);
+BIND_FUNCTION01	(&object(),	CScriptGameObject::SetHealth,			CEntityAlive,	conditions().ChangeHealth, f32, f32);
+BIND_FUNCTION01	(&object(),	CScriptGameObject::SetPsyHealth,		CEntityAlive,	conditions().ChangePsyHealth, f32, f32);
+BIND_FUNCTION01	(&object(),	CScriptGameObject::SetPower,			CEntityAlive,	conditions().ChangePower, f32, f32);
+//BIND_FUNCTION01	(&object(),	CScriptGameObject::SetSatiety,			CEntityAlive,	conditions().ChangeSatiety,		f32,							f32);
+BIND_FUNCTION01	(&object(),	CScriptGameObject::SetRadiation,		CEntityAlive,	conditions().ChangeRadiation, f32, f32);
+BIND_FUNCTION01	(&object(),	CScriptGameObject::SetCircumspection,	CEntityAlive,	conditions().ChangeCircumspection, f32, f32);
+BIND_FUNCTION01	(&object(),	CScriptGameObject::SetMorale,			CEntityAlive,	conditions().ChangeEntityMorale, f32, f32);
 BIND_FUNCTION02	(&object(),	CScriptGameObject::SetScriptControl,	CScriptEntity,	SetScriptControl,	bool, pcstr,					bool,					shared_str);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControl,	CScriptEntity,	GetScriptControl,	bool,								false);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControlName,CScriptEntity,GetScriptControlName, pcstr,					"");
@@ -96,9 +96,9 @@ u32 CScriptGameObject::game_vertex_id		() const
 	return						(object().ai_location().game_vertex_id());
 }
 
-float CScriptGameObject::level_vertex_light	(const u32 &level_vertex_id) const
+f32 CScriptGameObject::level_vertex_light	(const u32 &level_vertex_id) const
 {
-	return						((float)ai().level_graph().vertex(level_vertex_id)->light()/15.f);
+	return						((f32)ai().level_graph().vertex(level_vertex_id)->light()/15.f);
 }
 
 CScriptIniFile *CScriptGameObject::spawn_ini			() const
@@ -357,7 +357,7 @@ u32	CScriptGameObject::Cost			() const
 	return				(inventory_item->Cost());
 }
 
-float CScriptGameObject::GetCondition	() const
+f32 CScriptGameObject::GetCondition	() const
 {
 	CInventoryItem		*inventory_item = smart_cast<CInventoryItem*>(&object());
 	if (!inventory_item) {
@@ -367,7 +367,7 @@ float CScriptGameObject::GetCondition	() const
 	return				(inventory_item->GetCondition());
 }
 
-void CScriptGameObject::SetCondition	(float val)
+void CScriptGameObject::SetCondition	(f32 val)
 {
 	CInventoryItem		*inventory_item = smart_cast<CInventoryItem*>(&object());
 	if (!inventory_item) {
@@ -448,7 +448,7 @@ void CScriptGameObject::set_patrol_extrapolate_callback()
 	monster->movement().patrol().extrapolate_callback().clear();
 }
 
-void CScriptGameObject::extrapolate_length		(float extrapolate_length)
+void CScriptGameObject::extrapolate_length		(f32 extrapolate_length)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&this->object());
 	if (!monster) {
@@ -458,7 +458,7 @@ void CScriptGameObject::extrapolate_length		(float extrapolate_length)
 	monster->movement().detail().extrapolate_length(extrapolate_length);
 }
 
-float CScriptGameObject::extrapolate_length		() const
+f32 CScriptGameObject::extrapolate_length		() const
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&this->object());
 	if (!monster) {
@@ -468,7 +468,7 @@ float CScriptGameObject::extrapolate_length		() const
 	return					(monster->movement().detail().extrapolate_length());
 }
 
-void CScriptGameObject::set_fov					(float new_fov)
+void CScriptGameObject::set_fov					(f32 new_fov)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&this->object());
 	if (!monster) {
@@ -478,7 +478,7 @@ void CScriptGameObject::set_fov					(float new_fov)
 	monster->set_fov		(new_fov);
 }
 
-void CScriptGameObject::set_range				(float new_range)
+void CScriptGameObject::set_range				(f32 new_range)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&this->object());
 	if (!monster) {
@@ -488,7 +488,7 @@ void CScriptGameObject::set_range				(float new_range)
 	monster->set_range		(new_range);
 }
 
-u32	CScriptGameObject::vertex_in_direction(u32 level_vertex_id, Fvector direction, float max_distance) const
+u32	CScriptGameObject::vertex_in_direction(u32 level_vertex_id, Fvector direction, f32 max_distance) const
 {
 	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {

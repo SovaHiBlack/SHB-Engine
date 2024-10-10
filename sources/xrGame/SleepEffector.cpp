@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffector
 //////////////////////////////////////////////////////////////////////////
-CSleepEffectorPP::CSleepEffectorPP(const SPPInfo &ppi, float life_time, float attack_time, float release_time) 
+CSleepEffectorPP::CSleepEffectorPP(const SPPInfo &ppi, f32 life_time, f32 attack_time, f32 release_time)
 : CEffectorPP(EEffectorPPType(SLEEP_EFFECTOR_TYPE_ID), life_time)
 {
 	state		= ppi;
@@ -31,8 +31,8 @@ BOOL CSleepEffectorPP::Process(SPPInfo& pp)
 	inherited::Process(pp);
 
 	// amount of time passed in percents
-	float time_past_perc = (m_total - fLifeTime) / m_total;
-    float factor;
+	f32 time_past_perc = (m_total - fLifeTime) / m_total;
+	f32 factor;
 
 
 	if (time_past_perc < m_attack) 

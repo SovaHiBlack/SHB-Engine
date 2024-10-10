@@ -6,7 +6,7 @@
 const pcstr CAR_PANEL_XML = "car_panel.xml";
 const pcstr POINTER_ARROW_TEX = "ui\\hud_map_arrow";
 
-void CUICarPanel::Init			(float x, float y, float width, float height)
+void CUICarPanel::Init			(f32 x, f32 y, f32 width, f32 height)
 {
 	CUIXml uiXml;
 	bool result = uiXml.Init(CONFIG_PATH, UI_PATH, CAR_PANEL_XML);
@@ -35,23 +35,21 @@ void CUICarPanel::Init			(float x, float y, float width, float height)
 	Show(false);
 	Enable(false);
 
-
-
 	inherited::Init(x,y, width, height);
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUICarPanel::SetCarHealth(float value)
+void CUICarPanel::SetCarHealth(f32 value)
 {
-	float pos = value*100;
+	f32 pos = value*100;
 	clamp(pos, 0.0f, 100.0f);
 	UICarHealthBar.SetProgressPos(pos);
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUICarPanel::SetSpeed(float speed)
+void CUICarPanel::SetSpeed(f32 speed)
 {
 //	clamp(speed,0.f,1.f);
 //	UISpeedometer.SetValue(speed);
@@ -59,7 +57,7 @@ void CUICarPanel::SetSpeed(float speed)
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUICarPanel::SetRPM(float rpm)
+void CUICarPanel::SetRPM(f32 rpm)
 {
 //	clamp(rpm,0.f,1.f);
 //	UITachometer.SetValue(rpm);

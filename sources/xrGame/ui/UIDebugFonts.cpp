@@ -22,7 +22,7 @@ CUIDebugFonts::CUIDebugFonts( )
 CUIDebugFonts::~CUIDebugFonts( )
 { }
 
-void CUIDebugFonts::Init(float x, float y, float width, float height)
+void CUIDebugFonts::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	CUIDialogWnd::Init						(x, y, width, height);
 

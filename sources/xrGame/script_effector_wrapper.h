@@ -12,7 +12,7 @@
 
 class CScriptEffectorWrapper : public CScriptEffector, public luabind::wrap_base {
 public:
-	IC				CScriptEffectorWrapper	(int iType, float fTime);
+	IC				CScriptEffectorWrapper	(int iType, f32 fTime);
 	virtual			~CScriptEffectorWrapper	();
 	virtual bool	process					(SPPInfo *pp);
 	static	bool	process_static			(CScriptEffector *tpLuaEffector, SPPInfo *pp);

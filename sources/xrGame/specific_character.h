@@ -34,8 +34,8 @@ struct SSpecificCharacterData : CSharedResource
 	// имя секции конфигурации звука для NPC персонажа
 	xr_string								m_sound_voice_prefix;
 
-	float									m_fPanic_threshold;
-	float									m_fHitProbabilityFactor;
+	f32									m_fPanic_threshold;
+	f32									m_fHitProbabilityFactor;
 	int										m_crouch_type;
 
 	xr_string								m_critical_wound_weights;
@@ -131,8 +131,8 @@ public:
 	pcstr									SupplySpawn				( ) const;
 	pcstr									NpcConfigSect			( ) const;
 	pcstr									sound_voice_prefix		( ) const;
-	float									panic_threshold			( ) const;
-	float									hit_probability_factor	( ) const;
+	f32									panic_threshold			( ) const;
+	f32									hit_probability_factor	( ) const;
 	int										crouch_type				( ) const;
 	pcstr									critical_wound_weights	( ) const;
 

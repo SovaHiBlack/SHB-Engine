@@ -39,7 +39,7 @@ void CScriptParticlesCustom::shedule_Update(u32 _dt)
 {
 	CParticlesObject::shedule_Update(_dt);
 	if (m_animator){
-		float dt				= float(_dt)/1000.f; 
+		f32 dt				= f32(_dt)/1000.f;
 		Fvector prev_pos		= m_animator->XFORM().c;
 		m_animator->Update		(dt);
 		Fvector vel;

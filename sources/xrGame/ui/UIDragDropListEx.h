@@ -60,7 +60,7 @@ public:
 	static CUIDragItem*		m_drag_item;
 							CUIDragDropListEx	();
 	virtual					~CUIDragDropListEx	();
-				void		Init				(float x, float y, float w, float h);
+				void		Init				(f32 x, f32 y, f32 w, f32 h);
 
 	typedef					fastdelegate::FastDelegate1<CUICellItem*, bool>		DRAG_DROP_EVENT;
 
@@ -87,6 +87,7 @@ public:
 			bool			IsGrouping			();
 			void			SetCustomPlacement	(bool b);
 			bool			GetCustomPlacement	();
+
 public:
 			// items management
 			virtual void	SetItem				(CUICellItem* itm); //auto
@@ -103,13 +104,13 @@ public:
 			void			ClearAll			(bool bDestroy);	
 			void			Compact				();
 			bool			IsOwner				(CUICellItem* itm);
+
 public:
 	//UIWindow overriding
 	virtual		void		Draw				();
 	virtual		void		Update				();
-	virtual		bool		OnMouse				(float x, float y, EUIMessages mouse_action);
+	virtual		bool		OnMouse				(f32 x, f32 y, EUIMessages mouse_action);
 	virtual		void		SendMessage			(CUIWindow* pWnd, s16 msg, void* pData = NULL);
-
 };
 
 class CUICellContainer :public CUIWindow
@@ -121,6 +122,7 @@ private:
 	ref_shader					hShader;  //ownerDraw
 	ref_geom					hGeom;	
 	UI_CELLS_VEC				m_cells_to_draw;
+
 protected:
 	CUIDragDropListEx*			m_pParentDragDropList;
 
@@ -135,6 +137,7 @@ protected:
 public:							
 								CUICellContainer	(CUIDragDropListEx* parent);
 	virtual						~CUICellContainer	();
+
 protected:
 	virtual		void			Draw				();
 

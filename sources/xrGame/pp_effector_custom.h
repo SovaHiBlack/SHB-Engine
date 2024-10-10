@@ -20,7 +20,7 @@ private:
 	SPPInfo			m_state;
 	EEffectorPPType	m_type;
 protected:
-	float			m_factor;
+	f32			m_factor;
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -73,7 +73,7 @@ class CPPEffectorControlled : public CPPEffectorCustom {
 public:
 					CPPEffectorControlled	(CPPEffectorController *controller, const SPPInfo &ppi, bool one_instance = false, bool destroy_from_engine = true);
 	virtual BOOL	update					();
-	IC		void	set_factor				(float value){m_factor = value;}
+	IC		void	set_factor				(f32 value){m_factor = value;}
 };
 
 //////////////////////////////////////////////////////////////////////////

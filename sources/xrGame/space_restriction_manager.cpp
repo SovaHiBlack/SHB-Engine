@@ -154,7 +154,7 @@ bool CSpaceRestrictionManager::accessible						(ALife::_OBJECT_ID id, const Fsph
 	return						(true);
 }
 
-bool CSpaceRestrictionManager::accessible					(ALife::_OBJECT_ID id, u32 level_vertex_id, float radius)
+bool CSpaceRestrictionManager::accessible					(ALife::_OBJECT_ID id, u32 level_vertex_id, f32 radius)
 {
 	CRestrictionPtr				client_restriction = restriction(id);
 	if (client_restriction)

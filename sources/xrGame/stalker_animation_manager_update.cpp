@@ -138,19 +138,19 @@ IC	void CStalkerAnimationManager::play_torso				()
 
 void CStalkerAnimationManager::play_legs					()
 {
-	float					speed = 0.f;
+	f32					speed = 0.f;
 	bool					first_time = !legs().animation();
 	bool					result = legs().animation(assign_legs_animation());
 	
 	if (!first_time && !result && legs().blend()) {
-		float				amount = legs().blend()->blendAmount;
+		f32				amount = legs().blend()->blendAmount;
 		m_previous_speed	= (m_current_speed - m_previous_speed)*amount + m_previous_speed;
 	}
 
 	legs().play				(m_skeleton_animated,legs_play_callback,&object(),!fis_zero(m_current_speed),false);
 	
 	if (result && legs().blend()) {
-		float				amount = legs().blend()->blendAmount;
+		f32				amount = legs().blend()->blendAmount;
 		speed				= (m_current_speed - m_previous_speed)*amount + m_previous_speed;
 	}
 

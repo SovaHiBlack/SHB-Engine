@@ -8,6 +8,6 @@
 
 #pragma once
 
-IC	CScriptEffectorWrapper::CScriptEffectorWrapper	(int iType, float fTime) :
+IC	CScriptEffectorWrapper::CScriptEffectorWrapper	(int iType, f32 fTime) :
 	CScriptEffector	(iType, fTime)
 { }

@@ -38,7 +38,7 @@
 #define SAVE_FRIEND_SOUNDS
 //#define SAVE_VISIBLE_OBJECT_SOUNDS
 
-const float COMBAT_SOUND_PERCEIVE_RADIUS_SQR	= _sqr(5.f);
+const f32 COMBAT_SOUND_PERCEIVE_RADIUS_SQR	= _sqr(5.f);
 
 CSoundMemoryManager::~CSoundMemoryManager		()
 {
@@ -92,8 +92,8 @@ IC	void CSoundMemoryManager::update_sound_threshold			()
 		m_self_sound_factor*
 		m_sound_threshold*
 		exp(
-			float(Device.dwTimeGlobal - m_last_sound_time)/
-			float(m_sound_decrease_quant)*
+			f32(Device.dwTimeGlobal - m_last_sound_time)/
+			f32(m_sound_decrease_quant)*
 			log(m_decrease_factor)
 		),
 		m_min_sound_threshold
@@ -125,7 +125,7 @@ IC	bool is_sound_type(int s, const ESoundTypes &t)
 	return	((s & t) == t);
 }
 
-void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound_UserDataPtr user_data, const Fvector &position, float sound_power)
+void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound_UserDataPtr user_data, const Fvector &position, f32 sound_power)
 {
 #ifndef MASTER_GOLD
 	if (object && (object->CLS_ID == CLSID_OBJECT_ACTOR) && psAI_Flags.test(aiIgnoreActor))
@@ -219,7 +219,7 @@ void CSoundMemoryManager::add			(const CSoundObject &sound_object, bool check_fo
 		m_sounds->push_back	(sound_object);
 }
 
-void CSoundMemoryManager::add			(const CObject *object, int sound_type, const Fvector &position, float sound_power)
+void CSoundMemoryManager::add			(const CObject *object, int sound_type, const Fvector &position, f32 sound_power)
 {
 #ifndef SAVE_OWN_SOUNDS
 	// we do not want to save our own sounds

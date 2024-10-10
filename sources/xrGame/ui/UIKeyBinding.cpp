@@ -75,8 +75,8 @@ void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, pcstr path_ui)
 			}
 #endif
 			
-			float item_width				= m_header[1].GetWidth()-3.0f;
-			float item_pos					= m_header[1].GetWndPos().x;
+			f32 item_width				= m_header[1].GetWidth()-3.0f;
+			f32 item_pos					= m_header[1].GetWndPos().x;
 			CUIEditKeyBind* pEditKB			= xr_new<CUIEditKeyBind>(true);pEditKB->SetAutoDelete(true);
 			pEditKB->Init					(item_pos, 0, item_width, pItem->GetWndSize().y);
 			pEditKB->Register				(*exe,"key_binding");

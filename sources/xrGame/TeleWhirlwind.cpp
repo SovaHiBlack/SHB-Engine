@@ -17,7 +17,7 @@ CTeleWhirlwind ::CTeleWhirlwind ()
 
 }
 
-CTelekineticObject* CTeleWhirlwind::activate(CPhysicsShellHolder *obj, float strength, float height, u32 max_time_keep, bool rot)
+CTelekineticObject* CTeleWhirlwind::activate(CPhysicsShellHolder *obj, f32 strength, f32 height, u32 max_time_keep, bool rot)
 {
 	if(inherited::activate(obj,strength,height,max_time_keep,rot))
 	{
@@ -39,7 +39,7 @@ void CTeleWhirlwind::clear()
 	
 }
 
-void CTeleWhirlwind::add_impact(const Fvector& dir,float val)
+void CTeleWhirlwind::add_impact(const Fvector& dir, f32 val)
 {
 	Fvector force,point;
 	force.set(dir);
@@ -47,12 +47,12 @@ void CTeleWhirlwind::add_impact(const Fvector& dir,float val)
 	point.set(0.f,0.f,0.f);
 	m_saved_impacts.push_back(SPHImpact(force,point,0));
 }
-void CTeleWhirlwind::set_throw_power(float throw_pow)
+void CTeleWhirlwind::set_throw_power(f32 throw_pow)
 {
 	m_throw_power=throw_pow;
 }
 
-void CTeleWhirlwind::draw_out_impact(Fvector& dir,float& val)
+void CTeleWhirlwind::draw_out_impact(Fvector& dir, f32& val)
 {
 	VERIFY2(m_saved_impacts.size(),"NO IMPACTS ADDED!");
 	dir.set(m_saved_impacts[0].force);
@@ -93,7 +93,7 @@ void CTeleWhirlwind::play_destroy(CTeleWhirlwindObject *obj)
 }
 	
 
-bool		CTeleWhirlwindObject::		init(CTelekinesis* tele,CPhysicsShellHolder *obj, float s, float h, u32 ttk,bool rot)
+bool		CTeleWhirlwindObject::		init(CTelekinesis* tele,CPhysicsShellHolder *obj, f32 s, f32 h, u32 ttk,bool rot)
 {
 			bool result			=inherited::init(tele,obj,s,h,ttk,rot);
 			m_telekinesis		=static_cast<CTeleWhirlwind*>(tele);
@@ -131,15 +131,14 @@ void		CTeleWhirlwindObject::		release					()
 		
 	Fvector dir_inv;
 	dir_inv.sub(object->Position(),m_telekinesis->Center());
-	float magnitude	= dir_inv.magnitude();
-	
+	f32 magnitude	= dir_inv.magnitude();
 
 	// включить гравитацию 
 	//Fvector zer;zer.set(0,0,0);
 	//object->m_pPhysicsShell->set_LinearVel(zer);
 	object->m_pPhysicsShell->set_ApplyByGravity(TRUE);
 /////////////////////////////////////
-	float impulse=0.f;
+	f32 impulse=0.0f;
 	if(magnitude>0.2f)
 	{
 		dir_inv.mul(1.f/magnitude);
@@ -157,13 +156,11 @@ void		CTeleWhirlwindObject::		release					()
 		b_destroyed=destroy_object(dir_inv,throw_power*100.f);
 	}
 
-
-
 	if(!b_destroyed)object->m_pPhysicsShell->applyImpulse(dir_inv,impulse);
 	switch_state(TS_None);
 }
 
-bool	CTeleWhirlwindObject::destroy_object		(const Fvector dir,float val) 
+bool	CTeleWhirlwindObject::destroy_object		(const Fvector dir, f32 val)
 {
 	CPHDestroyable* D=object->ph_destroyable();
 	if(D)
@@ -184,9 +181,8 @@ bool	CTeleWhirlwindObject::destroy_object		(const Fvector dir,float val)
 	return false;
 }
 
-void		CTeleWhirlwindObject::		raise					(float step)
+void		CTeleWhirlwindObject::		raise					(f32 step)
 {
-
 		CPhysicsShell*	p					=	get_object()	->PPhysicsShell();
 	
 		if(!p||!p->isActive())	
@@ -201,9 +197,9 @@ void		CTeleWhirlwindObject::		raise					(float step)
 		CPhysicsElement* maxE=p->get_ElementByStoreOrder(0);
 		for(u16 element=0;element<element_number;++element)
 		{
-			float k=strength;//600.f;
-			float predict_v_eps=0.1f;
-			float mag_eps	   =.01f;
+			f32 k=strength;//600.f;
+			f32 predict_v_eps=0.1f;
+			f32 mag_eps	   =0.01f;
 
 			CPhysicsElement* E=	p->get_ElementByStoreOrder(element);
 			if(maxE->getMass()<E->getMass())	maxE=E;
@@ -212,7 +208,7 @@ void		CTeleWhirlwindObject::		raise					(float step)
 
 			Fvector diff;
 			diff.sub(center,pos);
-			float mag=_sqrt(diff.x*diff.x+diff.z*diff.z);
+			f32 mag=_sqrt(diff.x*diff.x+diff.z*diff.z);
 			Fvector lc;lc.set(center);
 			if(mag>1.f)
 			{
@@ -220,7 +216,7 @@ void		CTeleWhirlwindObject::		raise					(float step)
 			}
 			diff.sub(lc,pos);
 			mag=diff.magnitude();
-			float accel=k/mag/mag/mag;//*E->getMass()
+			f32 accel=k/mag/mag/mag;//*E->getMass()
 			Fvector dir;
 			if(mag<mag_eps)
 			{
@@ -235,22 +231,22 @@ void		CTeleWhirlwindObject::		raise					(float step)
 			}
 			Fvector vel;
 			E->get_LinearVel(vel);
-			float delta_v=accel*fixed_step;
+			f32 delta_v=accel*fixed_step;
 			Fvector delta_vel; delta_vel.set(dir);delta_vel.mul(delta_v);
 			Fvector predict_vel;predict_vel.add(vel,delta_vel);
 			Fvector delta_pos;delta_pos.set(predict_vel);delta_pos.mul(fixed_step);
 			Fvector predict_pos;predict_pos.add(pos,delta_pos);
 			
 			Fvector predict_diff;predict_diff.sub(lc,predict_pos);
-			float predict_mag=predict_diff.magnitude();
-			float predict_v=predict_vel.magnitude();
+			f32 predict_mag=predict_diff.magnitude();
+			f32 predict_v=predict_vel.magnitude();
 
 			Fvector force;force.set(dir);
 			if(predict_mag>mag && predict_vel.dotproduct(dir)>0.f && predict_v>predict_v_eps)
 			{
 	
 				Fvector motion_dir;motion_dir.set(predict_vel);motion_dir.mul(1.f/predict_v);
-				float needed_d=diff.dotproduct(motion_dir);
+				f32 needed_d=diff.dotproduct(motion_dir);
 				Fvector needed_diff;needed_diff.set(motion_dir);needed_diff.mul(needed_d);
 				Fvector nearest_p;nearest_p.add(pos,needed_diff);//
 				Fvector needed_vel;needed_vel.set(needed_diff);needed_vel.mul(1.f/fixed_step);
@@ -261,7 +257,6 @@ void		CTeleWhirlwindObject::		raise					(float step)
 			{
 				force.mul(accel*E->getMass());
 			}
-			
 			
 			E->applyForce(force.x,force.y+get_object()->EffectiveGravity()*E->getMass(),force.z);
 		}
@@ -275,7 +270,6 @@ void		CTeleWhirlwindObject::		raise					(float step)
 			switch_state(TS_Keep);
 		}
 }
-
 
 void		CTeleWhirlwindObject::		keep					()
 {
@@ -294,14 +288,13 @@ void		CTeleWhirlwindObject::		keep					()
 	CPhysicsElement* maxE=p->get_ElementByStoreOrder(0);
 	for(u16 element=0;element<element_number;++element)
 	{
-		
 		CPhysicsElement* E=	p->get_ElementByStoreOrder(element);
 		if(maxE->getMass()<E->getMass())maxE=E;
 		Fvector			dir;dir.sub(center,E->mass_Center());
 		dir.normalize_safe();
 		Fvector vel;
 		E->get_LinearVel(vel);
-		float force=dir.dotproduct(vel)*E->getMass()/2.f;
+		f32 force=dir.dotproduct(vel)*E->getMass()/2.f;
 		if(force<0.f)
 		{
 			dir.mul(force);
@@ -320,21 +313,23 @@ void		CTeleWhirlwindObject::		keep					()
 		p->set_ApplyByGravity(TRUE);
 		switch_state(TS_Raise);
 	}
-
 }
+
 void		CTeleWhirlwindObject::		fire					(const Fvector &target)
 {
 	//inherited::fire(target);
 }
-void		CTeleWhirlwindObject::		fire					(const Fvector &target, float power)
+
+void		CTeleWhirlwindObject::		fire					(const Fvector &target, f32 power)
 {
 	//inherited:: fire(target,power);
 }
 
-void		CTeleWhirlwindObject::set_throw_power(float throw_pow)
+void		CTeleWhirlwindObject::set_throw_power(f32 throw_pow)
 {
 	throw_power=throw_pow;
 }
+
 void		CTeleWhirlwindObject::switch_state(ETelekineticState new_state)
 {
 	inherited::switch_state(new_state);
@@ -344,4 +339,3 @@ bool CTeleWhirlwindObject::can_activate(CPhysicsShellHolder *obj)
 {
 	return (obj!=NULL);
 }
-

@@ -6,13 +6,14 @@
 #include "UIMapWnd.h"//
 
 typedef CActionBase<CUIMapWnd>				WORLD_OPERATOR;
-static const float	map_resize_speed		= 350.f;	// y.e./sec
-static const float	map_zoom_time			= 0.5f;		// sec
-static const float	min_move_time			= 0.25f;	// sec
+static const f32	map_resize_speed		= 350.f;	// y.e./sec
+static const f32	map_zoom_time			= 0.5f;		// sec
+static const f32	min_move_time			= 0.25f;	// sec
 //actions
 class CSomeMapAction : public WORLD_OPERATOR {
 private:
 	typedef WORLD_OPERATOR	inherited;
+
 public:
 					CSomeMapAction		(pcstr action_name):inherited((CUIMapWnd*)NULL,action_name){}
 	virtual	void	initialize			()		{inherited::initialize	();};
@@ -23,12 +24,14 @@ public:
 class CMapActionZoomControl: public CSomeMapAction{
 private:
 	typedef CSomeMapAction	inherited;
+
 protected:
-	float			m_endMovingTime;
-	float			m_targetZoom;
+	f32			m_endMovingTime;
+	f32			m_targetZoom;
 	Frect			m_desiredMapRect;
 	void			init_internal		();
 	void			update_target_state	();
+
 public:
 					CMapActionZoomControl	(pcstr action_name) : inherited(action_name) {}
 	virtual	void	execute				();
@@ -167,7 +170,7 @@ void CMapActionZoomControl::initialize	()
 
 void CMapActionZoomControl::init_internal()
 {
-	float dist					= m_object->GlobalMap()->CalcOpenRect(m_object->m_tgtCenter,m_desiredMapRect,m_targetZoom);
+	f32 dist					= m_object->GlobalMap()->CalcOpenRect(m_object->m_tgtCenter,m_desiredMapRect,m_targetZoom);
 	bool bMove					= !fis_zero(dist,EPS_L);
 	bool bZoom					= !fsimilar(m_targetZoom,m_object->GlobalMap()->GetCurrentZoom(),EPS_L);
 	m_endMovingTime				= Device.fTimeGlobal;
@@ -178,7 +181,7 @@ void CMapActionZoomControl::init_internal()
 
 void CMapActionZoomControl::update_target_state()
 {
-	float cur_map_zoom			= m_object->GetZoom();
+	f32 cur_map_zoom			= m_object->GetZoom();
 	if(!fsimilar(cur_map_zoom,m_targetZoom))
 	{//re-init
 		m_targetZoom			= cur_map_zoom;
@@ -197,9 +200,9 @@ void CMapActionZoomControl::execute		()
 	update_target_state		();
 	inherited::execute		();
 	CUIGlobalMap* gm		= m_object->GlobalMap();
-	float gt				= Device.fTimeGlobal;
-	float time_to			= m_endMovingTime-gt;
-	float dt				= _min(Device.fTimeDelta,time_to);
+	f32 gt				= Device.fTimeGlobal;
+	f32 time_to			= m_endMovingTime-gt;
+	f32 dt				= _min(Device.fTimeDelta,time_to);
 
 	if(m_endMovingTime > Device.fTimeGlobal)
 	{

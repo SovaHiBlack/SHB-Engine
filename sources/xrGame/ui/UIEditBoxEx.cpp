@@ -20,7 +20,7 @@ CUIEditBoxEx::~CUIEditBoxEx()
 	xr_delete(m_pFrameWindow);
 }	
 
-void CUIEditBoxEx::Init(float x, float y, float width, float height){
+void CUIEditBoxEx::Init(f32 x, f32 y, f32 width, f32 height){
 	m_pFrameWindow->Init(0,0,width,height);
 	CUICustomEdit::Init(x,y,width,height);
 }

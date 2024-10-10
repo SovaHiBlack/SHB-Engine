@@ -32,7 +32,7 @@ IC	void CStalkerMovementManager::set_desired_direction(const Fvector *desired_di
 	}
 }
 
-IC	void CStalkerMovementManager::add_velocity		(int mask, float linear, float compute_angular)
+IC	void CStalkerMovementManager::add_velocity		(int mask, f32 linear, f32 compute_angular)
 {
 	add_velocity				(mask,linear,compute_angular,compute_angular);
 }
@@ -139,7 +139,7 @@ IC	const MonsterSpace::EMovementType CStalkerMovementManager::target_movement_ty
 	return						(m_target.m_movement_type);
 }
 
-IC	void CStalkerMovementManager::danger_head_speed						(const float &speed)
+IC	void CStalkerMovementManager::danger_head_speed						(const f32& speed)
 {
 	m_danger_head_speed			= speed;
 }

@@ -124,7 +124,7 @@ extern CActor*		g_actor;
 void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, pcstr path){
 	CGameFont* pF;
 	u32	color;
-	float height;
+	f32 height;
 
 	height = xml_doc.ReadAttribFlt(path, 0, "btn_height");
 	R_ASSERT(height);
@@ -246,9 +246,9 @@ void CUIMMShniaga::Update(){
 	{
 //		playing = true;
 		Fvector2 pos = m_shniaga->GetWndPos();
-		float l = 2*PI*m_anims[0]->GetHeight()/2;
+		f32 l = 2*PI*m_anims[0]->GetHeight()/2;
 		int n = iFloor(pos.y/l);
-		float a = 2*PI*(pos.y - l*n)/l;
+		f32 a = 2*PI*(pos.y - l*n)/l;
 		m_anims[0]->SetHeading(-a);
 		m_anims[1]->SetHeading(a);
 
@@ -266,7 +266,7 @@ void CUIMMShniaga::Update(){
 	CUIWindow::Update();
 }
 
-bool CUIMMShniaga::OnMouse(float x, float y, EUIMessages mouse_action){
+bool CUIMMShniaga::OnMouse(f32 x, f32 y, EUIMessages mouse_action){
 	
 	Fvector2 pos = UI()->GetUICursor()->GetCursorPosition();
 	Frect r;
@@ -325,15 +325,15 @@ int CUIMMShniaga::BtnCount(){
 		return -1;
 }
 
-float CUIMMShniaga::pos(float x1, float x2, u32 t){
-	float x = 0;
+f32 CUIMMShniaga::pos(f32 x1, f32 x2, u32 t){
+	f32 x = 0.0f;
 
 	if (t>=0 && t<=m_run_time)
 		x = log(1 + (t*10.0f)/m_run_time)/log(11.0f);
 	else if (t<=0)
-		x = 0;
+		x = 0.0f;
 	else if (t>m_run_time)
-		x = 1;
+		x = 1.0f;
 
 	x*=abs(x2 - x1);
 
@@ -365,8 +365,8 @@ void CUIMMShniaga::ProcessEvent(EVENT ev){
 				// calculate moving params
 				m_start_time = Device.dwTimeContinual;
 				m_origin = m_shniaga->GetWndPos().y;
-//				float border = GetHeight() - m_shniaga->GetHeight();
-//				float y = m_selected->GetWndPos().y;
+//				f32 border = GetHeight() - m_shniaga->GetHeight();
+//				f32 y = m_selected->GetWndPos().y;
 //				m_destination = (y < border) ? y : border;
 				m_destination = m_selected->GetWndPos().y - m_magnifier->GetWndPos().y;
 				m_destination += m_offset;

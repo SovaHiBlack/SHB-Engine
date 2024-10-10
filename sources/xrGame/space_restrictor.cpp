@@ -28,7 +28,7 @@ void CSpaceRestrictor::Center		(Fvector& C) const
 	XFORM().transform_tiny			(C,CFORM()->getSphere().P);
 }
 
-float CSpaceRestrictor::Radius		() const
+f32 CSpaceRestrictor::Radius		() const
 {
 	return							(CFORM()->getRadius());
 }
@@ -257,23 +257,23 @@ void CSpaceRestrictor::OnRender	()
 
 		Fvector4	v_res;
 
-		float		delta_height = 0.f;
+		f32		delta_height = 0.f;
 
 		// get up on 2 meters
 		Fvector shift;
-		static float gx = 0.0f;
-		static float gy = 2.0f;
-		static float gz = 0.0f;
+		static f32 gx = 0.0f;
+		static f32 gy = 2.0f;
+		static f32 gz = 0.0f;
 		shift.set(gx,gy,gz);
 		res.transform(v_res, shift);
 
-// check if the object in sight
+		// check if the object in sight
 		if (v_res.z < 0 || v_res.w < 0)										return;
 		if (v_res.x < -1.f || v_res.x > 1.f || v_res.y<-1.f || v_res.y>1.f) return;
 
 		// get real (x,y)
-		float x = (1.f + v_res.x)/2.f * (Device.dwWidth);
-		float y = (1.f - v_res.y)/2.f * (Device.dwHeight) - delta_height;
+		f32 x = (1.f + v_res.x)/2.f * (Device.dwWidth);
+		f32 y = (1.f - v_res.y)/2.f * (Device.dwHeight) - delta_height;
 
 		HUD().Font().pFontMedium->SetColor	(0xffff0000);
 		HUD().Font().pFontMedium->OutSet	(x, y-=delta_height);
@@ -291,7 +291,5 @@ void CSpaceRestrictor::OnRender	()
 			HUD().Font().pFontMedium->OutNext	( str );
 		}
 	}
-
-
 }
 #endif

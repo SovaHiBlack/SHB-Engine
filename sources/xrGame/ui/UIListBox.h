@@ -20,9 +20,9 @@ public:
 	void			MoveSelectedUp					();
 	void			MoveSelectedDown				();
 	void			SetSelectionTexture				(pcstr texture);
-	void			SetItemHeight					(float h);
-	float			GetItemHeight					();
-	float			GetLongestLength				();
+	void			SetItemHeight					(f32 h);
+	f32			GetItemHeight					();
+	f32			GetLongestLength				();
 
 	virtual	void	SetSelected						(CUIWindow* w)	{CUIScrollView::SetSelected(w);};
 		u32			GetSelectedIDX					();
@@ -31,7 +31,7 @@ public:
 		void		SetSelectedText					(pcstr txt);
 		void		SetImmediateSelection			(bool f);
 
-virtual bool		OnMouse							(float x, float y, EUIMessages mouse_action);
+virtual bool		OnMouse							(f32 x, f32 y, EUIMessages mouse_action);
 virtual void		SendMessage						(CUIWindow* pWnd, s16 msg, void* pData = 0);
 
 	// IUIFontControl
@@ -44,7 +44,7 @@ virtual void		SendMessage						(CUIWindow* pWnd, s16 msg, void* pData = 0);
 	virtual ETextAlignment	GetTextAlignment		();
 
 protected:
-	float			m_def_item_height;
+	f32			m_def_item_height;
 	int				m_last_selection;
 	u32				m_text_color;
 	u32				m_text_color_s;

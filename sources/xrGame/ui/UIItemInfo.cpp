@@ -124,10 +124,10 @@ void CUIItemInfo::Init(pcstr xml_name){
 	xml_init.InitAutoStaticGroup	(uiXml, "auto", 0, this);
 }
 
-void CUIItemInfo::Init(float x, float y, float width, float height, pcstr xml_name)
+void CUIItemInfo::Init(f32 x, f32 y, f32 width, f32 height, pcstr xml_name)
 {
 	inherited::Init	(x, y, width, height);
-    Init			(xml_name);
+	Init			(xml_name);
 }
 
 void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
@@ -153,7 +153,7 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 
 	if(UICondProgresBar)
 	{
-		float cond							= pInvItem->GetConditionToShow();
+		f32 cond							= pInvItem->GetConditionToShow();
 		UICondProgresBar->Show				(true);
 		UICondProgresBar->SetProgressPos	( cond*100.0f+1.0f- EPSILON_5);
 	}
@@ -187,15 +187,15 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 		int iXPos							= pInvItem->GetXPos();
 		int iYPos							= pInvItem->GetYPos();
 
-		UIItemImage->GetUIStaticItem().SetOriginalRect(	float(iXPos*INV_GRID_WIDTH), float(iYPos*INV_GRID_HEIGHT),
-														float(iGridWidth*INV_GRID_WIDTH),	float(iGridHeight*INV_GRID_HEIGHT));
+		UIItemImage->GetUIStaticItem().SetOriginalRect(f32(iXPos*INV_GRID_WIDTH), f32(iYPos*INV_GRID_HEIGHT),
+													   f32(iGridWidth*INV_GRID_WIDTH), f32(iGridHeight*INV_GRID_HEIGHT));
 		UIItemImage->TextureOn				();
 		UIItemImage->ClipperOn				();
 		UIItemImage->SetStretchTexture		(true);
 		Frect v_r							= {	0.0f, 
 												0.0f, 
-												float(iGridWidth*INV_GRID_WIDTH),	
-												float(iGridHeight*INV_GRID_HEIGHT)};
+												f32(iGridWidth*INV_GRID_WIDTH),
+												f32(iGridHeight*INV_GRID_HEIGHT)};
 		if(UI()->is_16_9_mode())
 			v_r.x2 /= 1.328f;
 

@@ -29,6 +29,7 @@ class CUIMapWnd: public CUIWindow, public CUIWndCallback
 						eActor,
 //.						eHighlightSpot,
 						eMaxBtn};
+
 public:
 	enum lmFlags{	//. lmUserSpotAdd	= (1<<1),
 					//. lmUserSpotRemove= (1<<2),
@@ -38,8 +39,9 @@ public:
 //.					lmHighlightSpot = (1<<6),
 				};
 	Flags32						m_flags;
+
 private:
-	float						m_currentZoom;
+	f32						m_currentZoom;
 	CUIGlobalMap*				m_GlobalMap;
 	GameMaps					m_GameMaps;
 	
@@ -84,13 +86,13 @@ public:
 	virtual void				Draw					();
 	virtual void				Reset					();
 	virtual void				Update					();
-			float				GetZoom					()	{return m_currentZoom;}
-			void				SetZoom					(float value);
+	f32				GetZoom					()	{return m_currentZoom;}
+			void				SetZoom					(f32 value);
 
 			void				ShowHint				(CUIWindow* parent, pcstr text);
 			void				HideHint				(CUIWindow* parent);
 			void				Hint					(const shared_str& text);
-	virtual bool				OnMouse					(float x, float y, EUIMessages mouse_action);
+	virtual bool				OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 	virtual bool				OnKeyboard				(int dik, EUIMessages keyboard_action);
 	virtual bool				OnKeyboardHold			(int dik);
 

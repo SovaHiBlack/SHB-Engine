@@ -11,7 +11,7 @@ CUILabel::CUILabel()
 	m_lanim						= NULL;	
 }
 
-void CUILabel::Init(float x, float y, float width, float height){
+void CUILabel::Init(f32 x, f32 y, f32 width, f32 height){
 	CUIFrameLineWnd::Init(x,y,width,height);
 	m_lines.Init(0,0,width, height);
 }
@@ -27,12 +27,12 @@ void CUILabel::Draw(){
 	m_lines.Draw(p.x + m_textPos.x, p.y + m_textPos.y);
 }
 
-void CUILabel::SetWidth(float width){
+void CUILabel::SetWidth(f32 width){
 	m_lines.SetWidth(width);
 	CUIFrameLineWnd::SetWidth(width);
 }
 
-void CUILabel::SetHeight(float height){
+void CUILabel::SetHeight(f32 height){
 	m_lines.SetHeight(height);
 	CUIFrameLineWnd::SetHeight(height);
 }

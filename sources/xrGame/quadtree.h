@@ -87,7 +87,7 @@ public:
 
 protected:
 	Fvector						m_center;
-	float						m_radius;
+	f32						m_radius;
 	int							m_max_depth;
 	CQuadNode					*m_root;
 	CQuadNodeStorage			*m_nodes;
@@ -95,19 +95,19 @@ protected:
 	size_t						m_leaf_count;
 
 protected:
-	IC		u32					neighbour_index	(const Fvector	&position,	Fvector &center, float distance) const;
-	IC		void				nearest			(const Fvector	&position,	float radius, xr_vector<_object_type*> &objects, CQuadNode *node, Fvector center, float distance, int depth) const;
-	IC		_object_type		*remove			(const _object_type *object,CQuadNode *&node, Fvector center, float distance, int depth);
+	IC		u32					neighbour_index	(const Fvector	&position,	Fvector &center, f32 distance) const;
+	IC		void				nearest			(const Fvector	&position, f32 radius, xr_vector<_object_type*> &objects, CQuadNode *node, Fvector center, f32 distance, int depth) const;
+	IC		_object_type		*remove			(const _object_type *object,CQuadNode *&node, Fvector center, f32 distance, int depth);
 	IC		void				all				(xr_vector<_object_type*> &objects, CQuadNode *node, int depth) const;
 
 public:
-	IC							CQuadTree		(const Fbox		&box,		float min_cell_size, u32 max_node_count, u32 max_list_item_count);
+	IC							CQuadTree		(const Fbox		&box, f32 min_cell_size, u32 max_node_count, u32 max_list_item_count);
 	virtual						~CQuadTree		();
 	IC		void				clear			();
 	IC		void				insert			(_object_type	*object);
 	IC		_object_type		*remove			(const _object_type *object);
 	IC		_object_type		*find			(const Fvector	&position);
-	IC		void				nearest			(const Fvector	&position,	float radius, xr_vector<_object_type*> &objects, bool clear = true) const;
+	IC		void				nearest			(const Fvector	&position, f32 radius, xr_vector<_object_type*> &objects, bool clear = true) const;
 	IC		void				all				(xr_vector<_object_type*> &objects, bool clear = true) const;
 	IC		size_t				size			() const;
 };

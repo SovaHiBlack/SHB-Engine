@@ -23,14 +23,11 @@ public:
 	virtual				~CUIMessagesWindow				();
 
 	void				AddIconedPdaMessage				(pcstr textureName, Frect originalRect, pcstr message, int iDelay);
-
 	void				AddLogMessage					(const shared_str& msg);
-
 	virtual void		Update();
 
-
 protected:
-	virtual void Init(float x, float y, float width, float height);
+	virtual void		Init							(f32 x, f32 y, f32 width, f32 height);
 
 	CUIGameLog*			m_pGameLog;
 };

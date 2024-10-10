@@ -23,7 +23,7 @@ void CUIListBox::SetSelectionTexture(pcstr texture){
 	m_selection_texture = texture;
 }
 
-bool CUIListBox::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIListBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if(CUIWindow::OnMouse(x,y,mouse_action)) return true;
 
@@ -235,16 +235,16 @@ CUIListBoxItem* CUIListBox::GetItemByText(pcstr txt)
 		}
 		
 	}
+
 	return NULL;
 }
 
-
-void CUIListBox::SetItemHeight(float h)
+void CUIListBox::SetItemHeight(f32 h)
 {
 	m_def_item_height = h;
 }
 
-float CUIListBox::GetItemHeight()
+f32 CUIListBox::GetItemHeight()
 {
 	return m_def_item_height;
 }
@@ -284,21 +284,22 @@ ETextAlignment CUIListBox::GetTextAlignment()
 	return m_text_al;
 }
 
-float CUIListBox::GetLongestLength()
+f32 CUIListBox::GetLongestLength()
 {
-	float len = 0;
+	f32 len = 0.0f;
 	for(WINDOW_LIST_it it = m_pad->GetChildWndList().begin(); m_pad->GetChildWndList().end()!=it; ++it)
 	{
 		CUIListBoxItem* item = smart_cast<CUIListBoxItem*>(*it);
 		if (item)
 		{
-			float tmp_len = item->GetFont()->SizeOf_(item->GetText()); //all ok
+			f32 tmp_len = item->GetFont()->SizeOf_(item->GetText()); //all ok
 			UI()->ClientToScreenScaledWidth(tmp_len);
 
 			if (tmp_len > len)
 				len = tmp_len;
 		}
 	}
+
 	return len;
 }
 

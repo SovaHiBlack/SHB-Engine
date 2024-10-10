@@ -172,7 +172,7 @@ void CPhysicItem::create_box2sphere_physic_shell()
 	R_ASSERT							(E);
 
 	Fvector								ax;
-	float								radius;
+	f32								radius;
 	CHOOSE_MAX(
 		obb.m_halfsize.x,ax.set(obb.m_rotate.i) ; ax.mul(obb.m_halfsize.x); radius=_min(obb.m_halfsize.y,obb.m_halfsize.z) ;obb.m_halfsize.y/=2.f;obb.m_halfsize.z/=2.f,
 		obb.m_halfsize.y,ax.set(obb.m_rotate.j) ; ax.mul(obb.m_halfsize.y); radius=_min(obb.m_halfsize.x,obb.m_halfsize.z) ;obb.m_halfsize.x/=2.f;obb.m_halfsize.z/=2.f,

@@ -47,7 +47,7 @@ CUICustomSpin::~CUICustomSpin()
 	xr_delete					(m_pLines);
 }
 
-void CUICustomSpin::Init(float x, float y, float width, float height){
+void CUICustomSpin::Init(f32 x, f32 y, f32 width, f32 height){
 	CUIWindow::Init				(x,y,width,SPIN_HEIGHT);
 	m_pFrameLine->Init			(0,0,width, SPIN_HEIGHT);
 	m_pFrameLine->InitTexture	("ui_spiner");
@@ -117,8 +117,8 @@ void CUICustomSpin::Update()
 		if (m_time_begin < Device.dwTimeContinual - m_p_delay)
 		{
 			m_time_begin		= Device.dwTimeContinual;
-			float tmp			= float(m_u_delay);
-			float step			= powf(tmp,0.7f);
+			f32 tmp			= f32(m_u_delay);
+			f32 step			= powf(tmp,0.7f);
 			while(tmp>0)
 			{
 				IncVal			();
@@ -136,8 +136,8 @@ void CUICustomSpin::Update()
 		if (m_time_begin < Device.dwTimeContinual - m_p_delay)
 		{
 			m_time_begin		= Device.dwTimeContinual;
-			float tmp			= float(m_u_delay);
-			float step			= powf(tmp,0.7f);
+			f32 tmp			= f32(m_u_delay);
+			f32 step			= powf(tmp,0.7f);
 			while(tmp>0)
 			{
 				DecVal			();

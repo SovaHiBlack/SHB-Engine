@@ -137,7 +137,7 @@ public:
 			Fvector				Center				();
 	_DECLARE_FUNCTION10	(Position	,	Fvector		);
 	_DECLARE_FUNCTION10	(Direction	,	Fvector		);
-	_DECLARE_FUNCTION10	(Mass		,	float		);
+	_DECLARE_FUNCTION10	(Mass		, f32);
 	_DECLARE_FUNCTION10	(ID			,	u32			);
 	_DECLARE_FUNCTION10	(getVisible	,	BOOL		);
 	_DECLARE_FUNCTION10	(getEnabled	,	BOOL		);
@@ -148,13 +148,13 @@ public:
 			pcstr				Section				() const;
 	// CInventoryItem
 			u32					Cost				() const;
-			float				GetCondition		() const;
-			void				SetCondition		(float val);
+			f32				GetCondition		() const;
+			void				SetCondition		(f32 val);
 
 	// CEntity
 	_DECLARE_FUNCTION10	(DeathTime	,	u32		);
-	_DECLARE_FUNCTION10	(MaxHealth	,	float	);
-	_DECLARE_FUNCTION10	(Accuracy	,	float	);
+	_DECLARE_FUNCTION10	(MaxHealth	, f32);
+	_DECLARE_FUNCTION10	(Accuracy	, f32);
 	_DECLARE_FUNCTION10	(Team		,	int		);
 	_DECLARE_FUNCTION10	(Squad		,	int		);
 	_DECLARE_FUNCTION10	(Group		,	int		);
@@ -162,25 +162,25 @@ public:
 			void				Kill				(CScriptGameObject* who);
 
 	// CEntityAlive
-	_DECLARE_FUNCTION10	(GetFOV				,			float);
-	_DECLARE_FUNCTION10	(GetRange			,			float);
-	_DECLARE_FUNCTION10	(GetHealth			,			float);
-	_DECLARE_FUNCTION10	(GetPsyHealth		,			float);
-	_DECLARE_FUNCTION10	(GetPower			,			float);
-	_DECLARE_FUNCTION10	(GetRadiation		,			float);
-	_DECLARE_FUNCTION10	(GetBleeding		,			float);
-	_DECLARE_FUNCTION10	(GetMorale			,			float);
+	_DECLARE_FUNCTION10	(GetFOV				, f32);
+	_DECLARE_FUNCTION10	(GetRange			, f32);
+	_DECLARE_FUNCTION10	(GetHealth			, f32);
+	_DECLARE_FUNCTION10	(GetPsyHealth		, f32);
+	_DECLARE_FUNCTION10	(GetPower			, f32);
+	_DECLARE_FUNCTION10	(GetRadiation		, f32);
+	_DECLARE_FUNCTION10	(GetBleeding		, f32);
+	_DECLARE_FUNCTION10	(GetMorale			, f32);
 
-	_DECLARE_FUNCTION11	(SetHealth,			void, float);
-	_DECLARE_FUNCTION11	(SetPsyHealth,		void, float);
-	_DECLARE_FUNCTION11	(SetPower,			void, float);
-//	_DECLARE_FUNCTION11	(SetSatiety,		void, float);
-	_DECLARE_FUNCTION11	(SetRadiation,		void, float);
-	_DECLARE_FUNCTION11	(SetCircumspection,	void, float);
-	_DECLARE_FUNCTION11	(SetMorale,			void, float);
+	_DECLARE_FUNCTION11	(SetHealth,			void, f32);
+	_DECLARE_FUNCTION11	(SetPsyHealth,		void, f32);
+	_DECLARE_FUNCTION11	(SetPower,			void, f32);
+//	_DECLARE_FUNCTION11	(SetSatiety,		void, f32);
+	_DECLARE_FUNCTION11	(SetRadiation,		void, f32);
+	_DECLARE_FUNCTION11	(SetCircumspection,	void, f32);
+	_DECLARE_FUNCTION11	(SetMorale,			void, f32);
 
-			void				set_fov				(float new_fov);
-			void				set_range			(float new_range);
+			void				set_fov				(f32 new_fov);
+			void				set_range			(f32 new_range);
 			bool				Alive				() const;
 			ALife::ERelationType	GetRelationType	(CScriptGameObject* who);
 
@@ -198,7 +198,7 @@ public:
 			void				ResetActionQueue	();
 	// Actor only
 			void				SetActorPosition	(Fvector pos);
-			void				SetActorDirection	(float dir);
+			void				SetActorDirection	(f32 dir);
 	// CCustomMonster
 			bool				CheckObjectVisibility(const CScriptGameObject *tpLuaGameObject);
 			bool				CheckTypeVisibility	(pcstr section_name);
@@ -213,7 +213,6 @@ public:
 			CScriptGameObject	*GetMedikit			() const;
 
 	// CAI_Bloodsucker
-	
 			void				set_invisible			(bool val);
 			bool				get_invisible			();
 			void				set_manual_invisibility (bool val);
@@ -225,10 +224,10 @@ public:
 
 	// CBaseMonster
 			void				skip_transfer_enemy		(bool val);
-			void				set_home				(pcstr name, float r_min, float r_max, bool aggressive);
+			void				set_home				(pcstr name, f32 r_min, f32 r_max, bool aggressive);
 			void				remove_home				();
 			void				berserk					();
-			void				set_custom_panic_threshold	(float value);
+			void				set_custom_panic_threshold	(f32 value);
 			void				set_default_panic_threshold	();
 
 	// CAI_Trader
@@ -376,7 +375,7 @@ public:
 			CScriptMonsterHitInfo	GetMonsterHitInfo();
 			void					bind_object		(CScriptBinderObject *object);
 			CScriptGameObject		*GetCurrentOutfit() const;
-			float					GetCurrentOutfitProtection(int hit_type);
+			f32					GetCurrentOutfitProtection(int hit_type);
 
 	//////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////
@@ -428,7 +427,7 @@ public:
 			void				set_patrol_path			(pcstr path_name, const PatrolPathManager::EPatrolStartType patrol_start_type, const PatrolPathManager::EPatrolRouteType patrol_route_type, bool random);
 			void				set_dest_level_vertex_id(u32 level_vertex_id);
 			u32					level_vertex_id			() const;
-			float				level_vertex_light		(const u32 &level_vertex_id) const;
+			f32				level_vertex_light		(const u32 &level_vertex_id) const;
 			u32					game_vertex_id			() const;
 			void				add_animation			(pcstr animation, bool hand_usage, bool use_movement_controller);
 			void				clear_animations		();
@@ -440,13 +439,13 @@ public:
 			u32					get_current_patrol_point_index();
 			bool				path_completed			() const;
 			void				patrol_path_make_inactual();
-			void				extrapolate_length		(float extrapolate_length);
-			float				extrapolate_length		() const;
+			void				extrapolate_length		(f32 extrapolate_length);
+			f32				extrapolate_length		() const;
 			void				enable_memory_object	(CScriptGameObject *object, bool enable);
 			int					active_sound_count		();
 			int					active_sound_count		(bool only_playing);
-			const CCoverPoint	*best_cover				(const Fvector &position, const Fvector &enemy_position, float radius, float min_enemy_distance, float max_enemy_distance);
-			const CCoverPoint	*safe_cover				(const Fvector &position, float radius, float min_distance);
+			const CCoverPoint	*best_cover				(const Fvector &position, const Fvector &enemy_position, f32 radius, f32 min_enemy_distance, f32 max_enemy_distance);
+			const CCoverPoint	*safe_cover				(const Fvector &position, f32 radius, f32 min_distance);
 			CScriptIniFile		*spawn_ini				() const;
 			bool				active_zone_contact		(u16 id);
 
@@ -466,10 +465,10 @@ public:
 			const xr_vector<MemorySpace::CSoundObject>			&memory_sound_objects	() const;
 			const xr_vector<MemorySpace::CHitObject>			&memory_hit_objects		() const;
 			const xr_vector<MemorySpace::CNotYetVisibleObject>	&not_yet_visible_objects() const;
-			float				visibility_threshold	() const;
+			f32				visibility_threshold	() const;
 			void				enable_vision			(bool value);
 			bool				vision_enabled			() const;
-			void				set_sound_threshold		(float value);
+			void				set_sound_threshold		(f32 value);
 			void				restore_sound_threshold	();
 			//////////////////////////////////////////////////////////////////////////
 			void				enable_attachable_item	(bool value);
@@ -477,8 +476,8 @@ public:
 			// CustomZone
 			void				EnableAnomaly			();
 			void				DisableAnomaly			();
-			float				GetAnomalyPower			();
-			void				SetAnomalyPower			(float p);
+			f32				GetAnomalyPower			();
+			void				SetAnomalyPower			(f32 p);
 
 			// HELICOPTER
 			CHelicopter*		get_helicopter			();
@@ -495,24 +494,24 @@ public:
 			bool				weapon_strapped			() const;
 			bool				weapon_unstrapped		() const;
 			void				eat						(CScriptGameObject *item);
-			bool				inside					(const Fvector &position, float epsilon) const;
+			bool				inside					(const Fvector &position, f32 epsilon) const;
 			bool				inside					(const Fvector &position) const;
 
 			Fvector				head_orientation		() const;
-			u32					vertex_in_direction		(u32 level_vertex_id, Fvector direction, float max_distance) const;
+			u32					vertex_in_direction		(u32 level_vertex_id, Fvector direction, f32 max_distance) const;
 			
 			void				info_add				(pcstr text);
 			void				info_clear				();
 			
 			// Monster Jumper
-			void				jump					(const Fvector &position, float factor);
+			void				jump					(const Fvector &position, f32 factor);
 
-			void				set_ignore_monster_threshold		(float ignore_monster_threshold);
+			void				set_ignore_monster_threshold		(f32 ignore_monster_threshold);
 			void				restore_ignore_monster_threshold	();
-			float				ignore_monster_threshold			() const;
-			void				set_max_ignore_monster_distance		(const float &max_ignore_monster_distance);
+			f32				ignore_monster_threshold			() const;
+			void				set_max_ignore_monster_distance		(const f32& max_ignore_monster_distance);
 			void				restore_max_ignore_monster_distance	();
-			float				max_ignore_monster_distance			() const;
+			f32				max_ignore_monster_distance			() const;
 
 			void				make_object_visible_somewhen		(CScriptGameObject *object);
 
@@ -525,16 +524,16 @@ public:
 #endif
 
 			void				sell_condition						(CScriptIniFile *ini_file, pcstr section);
-			void				sell_condition						(float friend_factor, float enemy_factor);
+			void				sell_condition						(f32 friend_factor, f32 enemy_factor);
 			void				buy_condition						(CScriptIniFile *ini_file, pcstr section);
-			void				buy_condition						(float friend_factor, float enemy_factor);
+			void				buy_condition						(f32 friend_factor, f32 enemy_factor);
 			void				show_condition						(CScriptIniFile *ini_file, pcstr section);
 			void				buy_supplies						(CScriptIniFile *ini_file, pcstr section);
 
 			pcstr				sound_prefix						() const;
 			void				sound_prefix						(pcstr sound_prefix);
 
-			u32					location_on_path					(float distance, Fvector *location);
+			u32					location_on_path					(f32 distance, Fvector *location);
 
 			bool				wounded								() const;
 			void				wounded								(bool value);
@@ -557,7 +556,7 @@ add_to_type_list(CScriptGameObject)
 #define script_type_list save_type_list(CScriptGameObject)
 
 extern void sell_condition	(CScriptIniFile *ini_file, pcstr section);
-extern void sell_condition	(float friend_factor, float enemy_factor);
+extern void sell_condition	(f32 friend_factor, f32 enemy_factor);
 extern void buy_condition	(CScriptIniFile *ini_file, pcstr section);
-extern void buy_condition	(float friend_factor, float enemy_factor);
+extern void buy_condition	(f32 friend_factor, f32 enemy_factor);
 extern void show_condition	(CScriptIniFile *ini_file, pcstr section);

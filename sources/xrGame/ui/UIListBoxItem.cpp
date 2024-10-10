@@ -90,9 +90,9 @@ void CUIListBoxItem::SetTextColor(u32 color, u32 color_s)
 	SetTextColor(color);
 }
 
-float CUIListBoxItem::FieldsLength()
+f32 CUIListBoxItem::FieldsLength()
 {
-	float c = 0;
+	f32 c = 0.0f;
 	for (u32 i = 0; i<fields.size(); i++)
 		c += fields[i]->GetWidth();
 	return c;
@@ -103,7 +103,7 @@ CGameFont* CUIListBoxItem::GetFont()
 	return CUILinesOwner::GetFont();
 }
 
-CUIStatic* CUIListBoxItem::AddField(pcstr txt, float len, pcstr key)
+CUIStatic* CUIListBoxItem::AddField(pcstr txt, f32 len, pcstr key)
 {
 	fields.push_back		(xr_new<CUIStatic>());
 	CUIStatic* st			= fields.back();

@@ -30,7 +30,7 @@ public:
 			pcstr		r_string			(pcstr S, pcstr L);
 			u32			r_u32				(pcstr S, pcstr L);
 			int			r_s32				(pcstr S, pcstr L);
-			float		r_float				(pcstr S, pcstr L);
+			f32		r_float				(pcstr S, pcstr L);
 			Fvector		r_fvector3			(pcstr S, pcstr L);
 			DECLARE_SCRIPT_REGISTER_FUNCTION
 };

@@ -23,7 +23,7 @@ public:
 	virtual bool	IsChanged				();
 
 	// CUIWindow methods
-	virtual void	Init					(float x, float y, float width, float height);
+	virtual void	Init					(f32 x, f32 y, f32 width, f32 height);
 	virtual void	Update					();
 	virtual bool	OnMouseDown				(int mouse_btn);
 	virtual void	OnFocusLost				();

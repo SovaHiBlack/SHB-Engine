@@ -9,8 +9,8 @@ struct MotionID;
 
 struct SStepParam {
 	struct{
-		float	time;
-		float	power;
+		f32	time;
+		f32	power;
 	} step[MAX_LEGS_COUNT];
 
 	u8			cycles;

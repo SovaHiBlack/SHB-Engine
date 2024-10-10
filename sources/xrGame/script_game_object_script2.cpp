@@ -225,8 +225,8 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 
 		.def("eat",							&CScriptGameObject::eat)
 
-		.def("extrapolate_length",			(float (CScriptGameObject::*)() const)(&CScriptGameObject::extrapolate_length))
-		.def("extrapolate_length",			(void (CScriptGameObject::*)(float))(&CScriptGameObject::extrapolate_length))
+		.def("extrapolate_length",			(f32(CScriptGameObject::*)() const)(&CScriptGameObject::extrapolate_length))
+		.def("extrapolate_length",			(void (CScriptGameObject::*)(f32))(&CScriptGameObject::extrapolate_length))
 
 		.def("set_fov",						&CScriptGameObject::set_fov)
 		.def("set_range",					&CScriptGameObject::set_range)

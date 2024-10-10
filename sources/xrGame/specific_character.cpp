@@ -243,12 +243,12 @@ pcstr CSpecificCharacter::sound_voice_prefix () const
 	return data()->m_sound_voice_prefix.c_str();
 }
 
-float CSpecificCharacter::panic_threshold () const 
+f32 CSpecificCharacter::panic_threshold () const
 {
 	return data()->m_fPanic_threshold;
 }
 
-float CSpecificCharacter::hit_probability_factor () const 
+f32 CSpecificCharacter::hit_probability_factor () const
 {
 	return data()->m_fHitProbabilityFactor;
 }

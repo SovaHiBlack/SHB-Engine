@@ -464,7 +464,7 @@ template <class T>
 IC xr_string draw_sprintf(xr_string& s, const T& V, int tag)
 {  string256 tmp; sprintf_s(tmp,"%d",V); s=tmp; return s;}
 //------------------------------------------------------------------------------
-IC xr_string draw_sprintf(xr_string& s, const float& V, int dec)
+IC xr_string draw_sprintf(xr_string& s, const f32& V, int dec)
 {
     string32 	fmt; sprintf_s(fmt,"%%.%df",dec);
 	string256 	tmp; sprintf_s(tmp,fmt,V); 
@@ -494,10 +494,10 @@ typedef NumericValue<u32>	U32Value;
 typedef NumericValue<s8>	S8Value;
 typedef NumericValue<s16>	S16Value;
 typedef NumericValue<s32>	S32Value;
-typedef NumericValue<float>	FloatValue;
+typedef NumericValue<f32>	FloatValue;
 class VectorValue: public NumericValue<Fvector>{
 public:
-						VectorValue		(Fvector* val, float mn, float mx, float increment, int decimal):NumericValue<Fvector>(val)
+						VectorValue		(Fvector* val, f32 mn, f32 mx, f32 increment, int decimal):NumericValue<Fvector>(val)
     {
     	lim_mn.set		(mn,mn,mn);
     	lim_mx.set		(mx,mx,mx);

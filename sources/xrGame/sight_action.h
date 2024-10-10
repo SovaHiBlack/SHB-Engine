@@ -38,7 +38,7 @@ protected:
 	u32					m_internal_state;
 	u32					m_start_state_time;
 	u32					m_stop_state_time;
-	float				m_cover_yaw;
+	f32				m_cover_yaw;
 
 protected:
 	Fvector				m_holder_start_position;
@@ -76,9 +76,9 @@ public:
 	IC		bool		operator==					(const CSightAction &sight_action) const;
 			void		remove_links				(CObject *object);
 			bool		change_body_speed			() const;
-			float		body_speed					() const;
+			f32		body_speed					() const;
 			bool		change_head_speed			() const;
-			float		head_speed					() const;
+			f32		head_speed					() const;
 	IC		ESightType	sight_type					() const;
 	IC		const CGameObject	*object_to_look		() const;
 	IC		const Fvector		&vector3d			() const;

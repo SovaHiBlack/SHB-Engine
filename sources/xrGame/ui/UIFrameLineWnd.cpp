@@ -10,7 +10,7 @@ CUIFrameLineWnd::CUIFrameLineWnd()
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLineWnd::Init(float x, float y, float width, float height){
+void CUIFrameLineWnd::Init(f32 x, f32 y, f32 width, f32 height){
 	inherited::Init(x,y, width, height);
 	UITitleText.Init(0,0, width, 50);
 	inherited::Init(x,y, width, height);
@@ -18,7 +18,7 @@ void CUIFrameLineWnd::Init(float x, float y, float width, float height){
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLineWnd::Init(pcstr base_name, float x, float y, float width, float height, bool horizontal)
+void CUIFrameLineWnd::Init(pcstr base_name, f32 x, f32 y, f32 width, f32 height, bool horizontal)
 {
 	Init(x,y,width,height);
 	InitTexture(base_name, horizontal);
@@ -68,7 +68,7 @@ void CUIFrameLineWnd::Draw()
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLineWnd::SetWidth(float width)
+void CUIFrameLineWnd::SetWidth(f32 width)
 {
 	inherited::SetWidth(width);
 	if (bHorizontal)
@@ -77,14 +77,14 @@ void CUIFrameLineWnd::SetWidth(float width)
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLineWnd::SetHeight(float height)
+void CUIFrameLineWnd::SetHeight(f32 height)
 {
 	inherited::SetHeight(height);
 	if (!bHorizontal)
 		UIFrameLine.SetSize(height);
 }
 
-float CUIFrameLineWnd::GetTextureHeight(){
+f32 CUIFrameLineWnd::GetTextureHeight(){
 	return UIFrameLine.elements[0].GetRect().height();
 }
 

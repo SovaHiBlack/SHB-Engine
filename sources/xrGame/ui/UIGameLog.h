@@ -20,7 +20,7 @@ public:
 	CUIGameLog();
 	virtual ~CUIGameLog();
 	CUIStatic*				AddLogMessage	(pcstr msg);
-	CUIPdaMsgListItem*		AddPdaMessage	(pcstr msg, float delay);
+	CUIPdaMsgListItem*		AddPdaMessage	(pcstr msg, f32 delay);
 	virtual void			Update			();
 
 	void					SetTextAtrib	(CGameFont* pFont, u32 color);
@@ -28,6 +28,6 @@ public:
 
 private:
 	xr_vector<CUIWindow*>		toDelList;
-	float						kill_msg_height;
+	f32						kill_msg_height;
 	u32							txt_color;
 };

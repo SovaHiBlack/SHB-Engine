@@ -43,7 +43,7 @@ bool CUICheckButton::IsChanged(){
 	return b_backup_val != GetCheck();
 }
 
-void CUICheckButton::Init(float x, float y, float width, float height){
+void CUICheckButton::Init(f32 x, f32 y, f32 width, f32 height){
 	CUIWindow::Init(x,y,width,height);
 	InitTexture();
 	m_pLines->Init(x,y,width,m_background.GetE()->GetStaticItem()->GetRect().height());

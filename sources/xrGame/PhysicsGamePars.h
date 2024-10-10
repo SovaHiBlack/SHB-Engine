@@ -1,21 +1,21 @@
 #pragma once
 
-extern float object_damage_factor;
-extern float collide_volume_max;
-extern float collide_volume_min;
+extern f32 object_damage_factor;
+extern f32 collide_volume_max;
+extern f32 collide_volume_min;
 
 struct EffectPars
 {
-	const static float vel_cret_sound;
-	const static float vel_cret_particles;
-	const static float vel_cret_wallmark;
+	const static f32 vel_cret_sound;
+	const static f32 vel_cret_particles;
+	const static f32 vel_cret_wallmark;
 };
 
 struct CharacterEffectPars
 {
-	const static float vel_cret_sound;
-	const static float vel_cret_particles;
-	const static float vel_cret_wallmark;
+	const static f32 vel_cret_sound;
+	const static f32 vel_cret_particles;
+	const static f32 vel_cret_wallmark;
 };
 
 void	LoadPhysicsGameParams	();

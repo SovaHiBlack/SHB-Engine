@@ -48,8 +48,8 @@ void CStepManager::reload(pcstr section)
 		R_ASSERT(param.cycles >= 1);
 
 		for (u32 j=0;j<m_legs_count;j++) {
-			_GetItem	(val,1+j*2,		cur_elem);		param.step[j].time	= float(atof(cur_elem));
-			_GetItem	(val,1+j*2+1,	cur_elem);		param.step[j].power	= float(atof(cur_elem));
+			_GetItem	(val,1+j*2,		cur_elem);		param.step[j].time	= f32(atof(cur_elem));
+			_GetItem	(val,1+j*2+1,	cur_elem);		param.step[j].power	= f32(atof(cur_elem));
 			VERIFY		(_valid(param.step[j].power));			
 		}
 		
@@ -114,7 +114,7 @@ void CStepManager::update()
 	u32		cur_time		= Device.dwTimeGlobal;
 
 	// время одного цикла анимации
-	float cycle_anim_time	= get_blend_time() / step.cycles;
+	f32 cycle_anim_time	= get_blend_time() / step.cycles;
 
 	// пройти по всем ногам и проверить время
 	for (u32 i=0; i<m_legs_count; i++) {
@@ -165,7 +165,7 @@ void CStepManager::update()
 	}
 
 	// определить текущий цикл
-	if (m_step_info.cur_cycle < step.cycles) m_step_info.cur_cycle = 1 + u8(float(cur_time - m_time_anim_started) / (1000.f * cycle_anim_time));
+	if (m_step_info.cur_cycle < step.cycles) m_step_info.cur_cycle = 1 + u8(f32(cur_time - m_time_anim_started) / (1000.f * cycle_anim_time));
 
 	// если анимация циклическая...
 	u32 time_anim_end = m_time_anim_started + u32(get_blend_time() * 1000);		// время завершения работы анимации
@@ -233,7 +233,7 @@ void CStepManager::reload_foot_bones()
 	VERIFY(count == m_legs_count);
 }
 
-float CStepManager::get_blend_time()
+f32 CStepManager::get_blend_time()
 {
 	return 	(m_blend->timeTotal / m_blend->speed);
 }

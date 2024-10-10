@@ -121,14 +121,14 @@ void CUILine::ProcessNewLines(){
 	}
 }
 
-void CUILine::Draw(CGameFont* pFont, float x, float y) const{
-	float length = 0;
+void CUILine::Draw(CGameFont* pFont, f32 x, f32 y) const{
+	f32 length = 0.0f;
 	int size = m_subLines.size();
 
 	for (int i=0; i<size; i++)
 	{
 		m_subLines[i].Draw(pFont, x+length, y);
-		float ll = pFont->SizeOf_(m_subLines[i].m_text.c_str()); //. all ok
+		f32 ll = pFont->SizeOf_(m_subLines[i].m_text.c_str()); //. all ok
 		UI()->ClientToScreenScaledWidth(ll);
 		length	+= ll;
 	}
@@ -150,7 +150,7 @@ const CUILine* CUILine::GetEmptyLine(){
     return m_tmpLine;
 }
 
-const CUILine* CUILine::CutByLength(CGameFont* pFont, float length, BOOL cut_word)
+const CUILine* CUILine::CutByLength(CGameFont* pFont, f32 length, BOOL cut_word)
 {
 	R_ASSERT(GetSize() > 0);
 	// if first sub line is void then delete it
@@ -172,8 +172,7 @@ const CUILine* CUILine::CutByLength(CGameFont* pFont, float length, BOOL cut_wor
 		}
 	}
 
-
-	float len2w1 = GetLength_inclusiveWord_1(pos, pFont);
+	f32 len2w1 = GetLength_inclusiveWord_1(pos, pFont);
 //.	* scale; bacause of our fonts not scaled
 
     if (!pos.word_2.exist())
@@ -183,9 +182,8 @@ const CUILine* CUILine::CutByLength(CGameFont* pFont, float length, BOOL cut_wor
 		else
 			return Cut2Pos(pos);
 	}
-
 	
-	float len2w2 = GetLength_inclusiveWord_2(pos, pFont);
+	f32 len2w2 = GetLength_inclusiveWord_2(pos, pFont);
 
 	if (len2w1 > length)
 	{
@@ -383,15 +381,15 @@ const CUILine* CUILine::Cut2Pos(Position& pos, bool to_first){
     return m_tmpLine;
 }
 
-const CUILine* CUILine::CutWord(CGameFont* pFont, float length){
+const CUILine* CUILine::CutWord(CGameFont* pFont, f32 length){
 	xr_delete(m_tmpLine);
 	m_tmpLine = xr_new<CUILine>();
 
-	float len = 0;
+	f32 len = 0.0f;
 
 	for (u32 i= 0; i<m_subLines[0].m_text.length(); i++)
 	{
-		float ll = pFont->SizeOf_(m_subLines[0].m_text[i]);
+		f32 ll = pFont->SizeOf_(m_subLines[0].m_text[i]);
 		UI()->ClientToScreenScaledWidth(ll);
 		len += ll;
 
@@ -406,13 +404,13 @@ const CUILine* CUILine::CutWord(CGameFont* pFont, float length){
 	return m_tmpLine;
 }
 
-float  CUILine::GetLength_inclusiveWord_1(Position& pos, CGameFont* pFont) const{
+f32 CUILine::GetLength_inclusiveWord_1(Position& pos, CGameFont* pFont) const{
 	R_ASSERT(pos.word_1.exist());
-	float len = 0;
+	f32 len = 0.0f;
 
 	for (u32 i = 0; i < pos.curr_subline; ++i)
 	{
-		float ll = pFont->SizeOf_(m_subLines[i].m_text.c_str());
+		f32 ll = pFont->SizeOf_(m_subLines[i].m_text.c_str());
 		UI()->ClientToScreenScaledWidth(ll);
 		len	+= ll;
 	}
@@ -420,17 +418,16 @@ float  CUILine::GetLength_inclusiveWord_1(Position& pos, CGameFont* pFont) const
 	xr_string str;
 	str.assign(m_subLines[pos.curr_subline].m_text, 0, pos.word_1.pos + pos.word_1.len);
 
-	
-	float ll2 = pFont->SizeOf_(str.c_str());
+	f32 ll2 = pFont->SizeOf_(str.c_str());
 	UI()->ClientToScreenScaledWidth(ll2);
 	len += ll2;
 
 	return len;
 }
 
-float  CUILine::GetLength_inclusiveWord_2(Position& pos, CGameFont* pFont) const{
+f32 CUILine::GetLength_inclusiveWord_2(Position& pos, CGameFont* pFont) const{
 	R_ASSERT(pos.word_2.exist());
-	float len = 0;
+	f32 len = 0.0f;
 	int last;
 
 	if (!pos.is_separated())
@@ -440,7 +437,7 @@ float  CUILine::GetLength_inclusiveWord_2(Position& pos, CGameFont* pFont) const
 
 	for (int i = 0; i <= last; i++)
 	{
-		float ll = pFont->SizeOf_(m_subLines[i].m_text.c_str());
+		f32 ll = pFont->SizeOf_(m_subLines[i].m_text.c_str());
 		UI()->ClientToScreenScaledWidth(ll);
 		len += ll;
 	}
@@ -448,7 +445,7 @@ float  CUILine::GetLength_inclusiveWord_2(Position& pos, CGameFont* pFont) const
 	xr_string str;
 	str.assign(m_subLines[last + 1].m_text, 0, pos.word_2.pos + pos.word_2.len);
 
-	float ll2	= pFont->SizeOf_(str.c_str());
+	f32 ll2	= pFont->SizeOf_(str.c_str());
 	UI()->ClientToScreenScaledWidth(ll2);
 	len			+= ll2;
 

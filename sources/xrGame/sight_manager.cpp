@@ -49,7 +49,7 @@ void CSightManager::reload			(pcstr section)
 	m_max_right_angle			= deg2rad(READ_IF_EXISTS(pSettings,r_float,section,"max_right_torso_angle",60.f));
 }
 
-void CSightManager::SetPointLookAngles(const Fvector &tPosition, float &yaw, float &pitch, const CGameObject *object)
+void CSightManager::SetPointLookAngles(const Fvector &tPosition, f32& yaw, f32& pitch, const CGameObject *object)
 {
 	Fvector			tTemp;
 	tTemp.sub		(tPosition,m_object->eye_matrix.c);
@@ -60,7 +60,7 @@ void CSightManager::SetPointLookAngles(const Fvector &tPosition, float &yaw, flo
 	pitch			*= -1;
 }
 
-void CSightManager::SetFirePointLookAngles(const Fvector &tPosition, float &yaw, float &pitch, const CGameObject *object)
+void CSightManager::SetFirePointLookAngles(const Fvector &tPosition, f32& yaw, f32& pitch, const CGameObject *object)
 {
 	Fvector			tTemp;
 
@@ -121,9 +121,9 @@ void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, bool bD
 	SetLessCoverLook	(tpNode,MAX_HEAD_TURN_ANGLE,bDifferenceLook);
 }
 
-void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, float fMaxHeadTurnAngle, bool bDifferenceLook)
+void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, f32 fMaxHeadTurnAngle, bool bDifferenceLook)
 {
-	float					fAngleOfView, range, fMaxSquare = -1.f, fBestAngle = object().movement().m_head.target.yaw;
+	f32					fAngleOfView, range, fMaxSquare = -1.f, fBestAngle = object().movement().m_head.target.yaw;
 	m_object->update_range_fov(range,fAngleOfView,m_object->eye_range,m_object->eye_fov);
 	fAngleOfView			= (fAngleOfView/180.f*PI)/2.f;
 
@@ -146,18 +146,18 @@ void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, float f
 	}
 
 	if (!bDifferenceLook || !bOk) 
-		for (float fIncrement = object().movement().m_body.target.yaw - fMaxHeadTurnAngle; fIncrement <= object().movement().m_body.target.yaw + fMaxHeadTurnAngle; fIncrement += fMaxHeadTurnAngle/18.f) {
-			float fSquare = ai().level_graph().compute_square(-fIncrement,fAngleOfView,tpNode);
+		for (f32 fIncrement = object().movement().m_body.target.yaw - fMaxHeadTurnAngle; fIncrement <= object().movement().m_body.target.yaw + fMaxHeadTurnAngle; fIncrement += fMaxHeadTurnAngle/18.f) {
+			f32 fSquare = ai().level_graph().compute_square(-fIncrement,fAngleOfView,tpNode);
 			if (fSquare > fMaxSquare) {
 				fMaxSquare = fSquare;
 				fBestAngle = fIncrement;
 			}
 		}
 	else {
-		float fMaxSquareSingle = -1.f, fSingleIncrement = object().movement().m_head.target.yaw;
-		for (float fIncrement = object().movement().m_body.target.yaw - fMaxHeadTurnAngle; fIncrement <= object().movement().m_body.target.yaw + fMaxHeadTurnAngle; fIncrement += 2*fMaxHeadTurnAngle/60.f) {
-			float fSquare0 = ai().level_graph().compute_square(-fIncrement,fAngleOfView,tpNode);
-			float fSquare1 = ai().level_graph().compute_square(-fIncrement,fAngleOfView,tpNextNode);
+		f32 fMaxSquareSingle = -1.f, fSingleIncrement = object().movement().m_head.target.yaw;
+		for (f32 fIncrement = object().movement().m_body.target.yaw - fMaxHeadTurnAngle; fIncrement <= object().movement().m_body.target.yaw + fMaxHeadTurnAngle; fIncrement += 2*fMaxHeadTurnAngle/60.f) {
+			f32 fSquare0 = ai().level_graph().compute_square(-fIncrement,fAngleOfView,tpNode);
+			f32 fSquare1 = ai().level_graph().compute_square(-fIncrement,fAngleOfView,tpNextNode);
 			if	(
 					(fSquare1 - fSquare0 > fMaxSquare) || 
 					(
@@ -186,7 +186,7 @@ void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, float f
 
 bool CSightManager::bfIf_I_SeePosition(Fvector tPosition) const
 {
-	float				yaw, pitch;
+	f32				yaw, pitch;
 	Fvector				tVector;
 	tVector.sub			(tPosition,m_object->Position());
 	tVector.getHP		(yaw,pitch);
@@ -195,24 +195,24 @@ bool CSightManager::bfIf_I_SeePosition(Fvector tPosition) const
 	return				(angle_difference(yaw,object().movement().m_head.current.yaw) <= PI_DIV_6);// && angle_difference(pitch,object().movement().m_head.current.pitch,PI_DIV_6));
 }
 
-void CSightManager::vfValidateAngleDependency(float x1, float &x2, float x3)
+void CSightManager::vfValidateAngleDependency(f32 x1, f32& x2, f32 x3)
 {
-	float	_x2	= angle_normalize_signed(x2 - x1);
-	float	_x3	= angle_normalize_signed(x3 - x1);
+	f32	_x2	= angle_normalize_signed(x2 - x1);
+	f32	_x3	= angle_normalize_signed(x3 - x1);
 	if ((_x2*_x3 <= 0.f) && (_abs(_x2) + _abs(_x3) > PI - EPS_L))
 		x2  = x3;
 }
 
-bool CSightManager::need_correction	(float x1, float x2, float x3)
+bool CSightManager::need_correction	(f32 x1, f32 x2, f32 x3)
 {
-	float	_x2	= angle_normalize_signed(x2 - x1);
-	float	_x3	= angle_normalize_signed(x3 - x1);
+	f32	_x2	= angle_normalize_signed(x2 - x1);
+	f32	_x3	= angle_normalize_signed(x3 - x1);
 	if ((_x2*_x3 <= 0) && (_abs(_x2) + _abs(_x3) > PI - EPS_L))
 		return			(true);
 	return				(false);
 }
 
-void CSightManager::Exec_Look		(float dt)
+void CSightManager::Exec_Look		(f32 dt)
 {
 	START_PROFILE("Sight Manager")
 	
@@ -233,11 +233,11 @@ void CSightManager::Exec_Look		(float dt)
 	head.target.yaw		= angle_normalize_signed	(head.target.yaw);
 	head.target.pitch	= angle_normalize_signed	(head.target.pitch);
 
-	float				body_speed = body.speed;
+	f32				body_speed = body.speed;
 	if (current_action().change_body_speed())
 		body_speed		= current_action().body_speed();
 
-	float				head_speed = head.speed;
+	f32				head_speed = head.speed;
 	if (current_action().change_head_speed())
 		head_speed		= current_action().head_speed();
 
@@ -283,8 +283,8 @@ void CSightManager::Exec_Look		(float dt)
 		body.target.yaw = body.current.yaw;
 	} else {
 */
-		float				h = -body.current.yaw;
-		float				_sh = _sin(h), _ch = _cos(h);
+	f32				h = -body.current.yaw;
+	f32				_sh = _sin(h), _ch = _cos(h);
 		m.i.set				( _ch,	0.f,	_sh); m._14_	= 0.f;
 		m.j.set				( 0.f,	1.f,	0.f); m._24_	= 0.f;
 		m.k.set				(-_sh,	0.f,	_ch); m._34_	= 0.f;
@@ -342,7 +342,7 @@ void CSightManager::update			()
 	STOP_PROFILE
 }
 
-bool CSightManager::GetDirectionAngles				(float &yaw, float &pitch)
+bool CSightManager::GetDirectionAngles				(f32& yaw, f32& pitch)
 {
 	if (!object().movement().path().empty() && (m_object->movement().detail().curr_travel_point_index() + 1 < m_object->movement().detail().path().size())) {
 		Fvector				t;
@@ -356,7 +356,7 @@ bool CSightManager::GetDirectionAngles				(float &yaw, float &pitch)
 	return					(GetDirectionAnglesByPrevPositions(yaw,pitch));
 };
 
-bool CSightManager::GetDirectionAnglesByPrevPositions(float &yaw, float &pitch)
+bool CSightManager::GetDirectionAnglesByPrevPositions(f32& yaw, f32& pitch)
 {
 	Fvector					tDirection;
 	int						i = m_object->ps_Size	();

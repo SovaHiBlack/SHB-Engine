@@ -32,10 +32,10 @@ struct CProfilePortion : public CProfileResultPortion {
 struct CProfileStats {
 	u32				m_update_time;
 	shared_str		m_name;
-	float			m_time;
-	float			m_min_time;
-	float			m_max_time;
-	float			m_total_time;
+	f32			m_time;
+	f32			m_min_time;
+	f32			m_max_time;
+	f32			m_total_time;
 	u32				m_count;
 	u32				m_call_count;
 

@@ -43,7 +43,7 @@ class	CPhysicsBase
 public:
 	Fmatrix						mXFORM																																							;					// In parent space
 public:
-	virtual		void			Activate								(const Fmatrix& m0, float dt01, const Fmatrix& m2,bool disable=false)													= 0;
+	virtual		void			Activate								(const Fmatrix& m0, f32 dt01, const Fmatrix& m2,bool disable=false)													= 0;
 	virtual		void			Activate								(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false)								= 0;
 	virtual		void			Activate								(bool disable=false)																									= 0;
 	virtual		void			Activate								(const Fmatrix& form,bool disable=false)																				= 0;
@@ -60,23 +60,23 @@ public:
 	virtual		void			Deactivate								()																														= 0;
 	virtual		void			Enable									()																														= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void			setMass									(float M)																												= 0;
-	virtual		void			setDensity								(float M)																												= 0;
-	virtual		float			getMass									()																														= 0;
-	virtual		float			getDensity								()																														= 0;
-	virtual		float			getVolume								()																														= 0;
-	virtual		void			get_Extensions							(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext)														= 0;
+	virtual		void			setMass									(f32 M)																												= 0;
+	virtual		void			setDensity								(f32 M)																												= 0;
+	virtual		f32			getMass									()																														= 0;
+	virtual		f32			getDensity								()																														= 0;
+	virtual		f32			getVolume								()																														= 0;
+	virtual		void			get_Extensions							(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext)														= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void			applyForce								(const Fvector& dir, float val)																							= 0;
-	virtual		void			applyForce								(float x,float y,float z)																								= 0;
-	virtual		void			applyImpulse							(const Fvector& dir, float val)																							= 0;
+	virtual		void			applyForce								(const Fvector& dir, f32 val)																							= 0;
+	virtual		void			applyForce								(f32 x, f32 y, f32 z)																								= 0;
+	virtual		void			applyImpulse							(const Fvector& dir, f32 val)																							= 0;
 	virtual		void			setTorque								(const Fvector& torque)																									= 0;
 	virtual		void			setForce								(const Fvector& force)																									= 0;
 	virtual		void			applyGravityAccel						(const Fvector& accel)																									= 0;
-	virtual		void			SetAirResistance						(float linear=default_k_l, float angular=default_k_w)																	= 0;
-	virtual		void			GetAirResistance						(float	&linear, float &angular)																						= 0;
-	virtual		void			set_DynamicLimits						(float l_limit=default_l_limit,float w_limit=default_w_limit)															= 0;
-	virtual		void			set_DynamicScales						(float l_scale=default_l_scale,float w_scale=default_w_scale)															= 0;
+	virtual		void			SetAirResistance						(f32 linear=default_k_l, f32 angular=default_k_w)																	= 0;
+	virtual		void			GetAirResistance						(f32& linear, f32& angular)																						= 0;
+	virtual		void			set_DynamicLimits						(f32 l_limit=default_l_limit, f32 w_limit=default_w_limit)															= 0;
+	virtual		void			set_DynamicScales						(f32 l_scale=default_l_scale, f32 w_scale=default_w_scale)															= 0;
 	virtual		void			set_ContactCallback						(ContactCallbackFun* callback)																							= 0;
 	virtual		void			set_ObjectContactCallback				(ObjectContactCallbackFun* callback)																					= 0;
 	virtual		void			add_ObjectContactCallback				(ObjectContactCallbackFun* callback)																					= 0;
@@ -116,18 +116,18 @@ public:
 	virtual		void							add_Shape								(const SBoneShape& shape,const Fmatrix& offset)																		= 0;
 	virtual		CODEGeom						*last_geom								()																													= 0;
 	virtual		bool							has_geoms								()																													= 0;
-	virtual		void							add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center,float mass,CPHFracture* fracture=NULL)	= 0;
+	virtual		void							add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture=NULL)	= 0;
 	virtual		void							set_ParentElement						(CPhysicsElement* p)																								= 0;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void							set_BoxMass								(const Fobb& box, float mass)																						= 0;	
+	virtual		void							set_BoxMass								(const Fobb& box, f32 mass)																						= 0;
 	virtual		void							setInertia								(const dMass& M)																									= 0;																
 	virtual		void							addInertia								(const dMass& M)																									= 0;
-	virtual		void							setMassMC								(float M,const Fvector& mass_center)																				= 0;
-	virtual		void							applyImpulseVsMC						(const Fvector& pos,const Fvector& dir, float val)																	= 0;
-	virtual		void							applyImpulseVsGF						(const Fvector& pos,const Fvector& dir, float val)																	= 0;
-	virtual		void							applyImpulseTrace						(const Fvector& pos, const Fvector& dir, float val,const u16 id)													= 0;
+	virtual		void							setMassMC								(f32 M,const Fvector& mass_center)																				= 0;
+	virtual		void							applyImpulseVsMC						(const Fvector& pos,const Fvector& dir, f32 val)																	= 0;
+	virtual		void							applyImpulseVsGF						(const Fvector& pos,const Fvector& dir, f32 val)																	= 0;
+	virtual		void							applyImpulseTrace						(const Fvector& pos, const Fvector& dir, f32 val,const u16 id)													= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void							setDensityMC							(float M,const Fvector& mass_center)																				= 0;
+	virtual		void							setDensityMC							(f32 M,const Fvector& mass_center)																				= 0;
 	virtual		u16								setGeomFracturable						(CPHFracture &fracture)																								= 0;
 	virtual		CPHFracture						&Fracture								(u16 num)																											= 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -186,8 +186,8 @@ public:
 	virtual		void 					Deactivate					()																				=0;
 	virtual		void 					SetBackRef					(CPhysicsJoint** j)																=0;
 	virtual		void 					SetAnchor					(const Fvector& position)														=0;
-	virtual		void 					SetAxisSDfactors			(float spring_factor,float damping_factor,int axis_num)							=0;
-	virtual		void 					SetJointSDfactors			(float spring_factor,float damping_factor)										=0;
+	virtual		void 					SetAxisSDfactors			(f32 spring_factor, f32 damping_factor,int axis_num)							=0;
+	virtual		void 					SetJointSDfactors			(f32 spring_factor, f32 damping_factor)										=0;
 	virtual		void 					SetAnchorVsFirstElement		(const Fvector& position)														=0;
 	virtual		void 					SetAnchorVsSecondElement	(const Fvector& position)														=0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,28 +195,28 @@ public:
 	virtual		void 					SetAxisDirVsFirstElement	(const Fvector& orientation,const int axis_num)									=0;
 	virtual		void 					SetAxisDirVsSecondElement	(const Fvector& orientation,const int axis_num)									=0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void 					SetAnchor					(const float x,const float y,const float z)										=0;
-	virtual		void 					SetAnchorVsFirstElement		(const float x,const float y,const float z)										=0;
-	virtual		void 					SetAnchorVsSecondElement	(const float x,const float y,const float z)										=0;
+	virtual		void 					SetAnchor					(const f32 x,const f32 y,const f32 z)										=0;
+	virtual		void 					SetAnchorVsFirstElement		(const f32 x,const f32 y,const f32 z)										=0;
+	virtual		void 					SetAnchorVsSecondElement	(const f32 x,const f32 y,const f32 z)										=0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void 					SetAxisDir					(const float x,const float y,const float z,const int axis_num)					=0;
-	virtual		void 					SetAxisDirVsFirstElement	(const float x,const float y,const float z,const int axis_num)					=0;
-	virtual		void 					SetAxisDirVsSecondElement	(const float x,const float y,const float z,const int axis_num)					=0;
+	virtual		void 					SetAxisDir					(const f32 x,const f32 y,const f32 z,const int axis_num)					=0;
+	virtual		void 					SetAxisDirVsFirstElement	(const f32 x,const f32 y,const f32 z,const int axis_num)					=0;
+	virtual		void 					SetAxisDirVsSecondElement	(const f32 x,const f32 y,const f32 z,const int axis_num)					=0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void 					SetLimits					(const float low,const float high,const int axis_num)							=0;
-	virtual		void 					SetLimitsVsFirstElement		(const float low,const float high,const int axis_num)							=0;
-	virtual		void 					SetLimitsVsSecondElement	(const float low,const float high,const int axis_num)							=0;
+	virtual		void 					SetLimits					(const f32 low,const f32 high,const int axis_num)							=0;
+	virtual		void 					SetLimitsVsFirstElement		(const f32 low,const f32 high,const int axis_num)							=0;
+	virtual		void 					SetLimitsVsSecondElement	(const f32 low,const f32 high,const int axis_num)							=0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void 					SetBreakable				(float force, float torque)										  				=0;
+	virtual		void 					SetBreakable				(f32 force, f32 torque)										  				=0;
 	virtual		CPHJointDestroyInfo		*JointDestroyInfo			()																  				=0;
 	virtual		bool					isBreakable					()																  				=0;
-	virtual		void					SetForceAndVelocity			(const float force,const float velocity=0.f,const int axis_num=-1)				=0;
-	virtual		void					GetMaxForceAndVelocity		(float &force,float &velocity,int axis_num)						  				=0;
-	virtual		float					GetAxisAngle				(int axis_num)													  				=0;
+	virtual		void					SetForceAndVelocity			(const f32 force,const f32 velocity=0.f,const int axis_num=-1)				=0;
+	virtual		void					GetMaxForceAndVelocity		(f32& force, f32& velocity,int axis_num)						  				=0;
+	virtual		f32					GetAxisAngle				(int axis_num)													  				=0;
 	virtual		dJointID				GetDJoint					()																  				=0;
-	virtual		void 					GetAxisSDfactors			(float& spring_factor,float& damping_factor,int axis_num)		  				=0;
-	virtual		void 					GetJointSDfactors			(float& spring_factor,float& damping_factor)					  				=0;
-	virtual		void 					GetLimits					(float& lo_limit,float& hi_limit,int axis_num)					  				=0;
+	virtual		void 					GetAxisSDfactors			(f32& spring_factor, f32& damping_factor,int axis_num)		  				=0;
+	virtual		void 					GetJointSDfactors			(f32& spring_factor, f32& damping_factor)					  				=0;
+	virtual		void 					GetLimits					(f32& lo_limit, f32& hi_limit,int axis_num)					  				=0;
 	virtual		void 					GetAxisDir					(int num,Fvector& axis,eVs& vs)									  				=0;
 	virtual		void 					GetAxisDirDynamic			(int num,Fvector& axis)											  				=0;
 	virtual		void 					GetAnchorDynamic			(Fvector& anchor)												  				=0;
@@ -241,7 +241,7 @@ public:
 public:
 IC					CKinematics					*PKinematics								()																{return m_pKinematics		;}
 					void						set_Kinematics								(CKinematics* p)														{m_pKinematics=p	;}
-	virtual			void						set_JointResistance							(float force)																				= 0;
+	virtual			void						set_JointResistance							(f32 force)																				= 0;
 	virtual			void						add_Element									(CPhysicsElement* E)																		= 0;
 	virtual			void						add_Joint									(CPhysicsJoint* E)																			= 0;
 	virtual			CPHIsland					*PIsland									()																							= 0;
@@ -261,15 +261,15 @@ IC					CKinematics					*PKinematics								()																{return m_pKinemati
 	virtual			void						BlockBreaking								()																							= 0;
 	virtual			void						UnblockBreaking								()																							= 0;
 	virtual			bool						IsBreakingBlocked							()																							= 0;
-	virtual			void						applyImpulseTrace							(const Fvector& pos, const Fvector& dir, float val)											= 0;
-	virtual			void						applyImpulseTrace							(const Fvector& pos, const Fvector& dir, float val,const u16 id)							= 0;
-	virtual			void						applyHit									(const Fvector& pos, const Fvector& dir, float val,const u16 id,ALife::EHitType hit_type)	= 0;
+	virtual			void						applyImpulseTrace							(const Fvector& pos, const Fvector& dir, f32 val)											= 0;
+	virtual			void						applyImpulseTrace							(const Fvector& pos, const Fvector& dir, f32 val,const u16 id)							= 0;
+	virtual			void						applyHit									(const Fvector& pos, const Fvector& dir, f32 val,const u16 id,ALife::EHitType hit_type)	= 0;
 	virtual			BoneCallbackFun*			GetBonesCallback							()																							= 0;
 	virtual			BoneCallbackFun*			GetStaticObjectBonesCallback				()																							= 0;
 	virtual			void						Update										()																							= 0;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual			void						setMass1									(float M)																					= 0;
-	virtual			void						SmoothElementsInertia						(float k)																					= 0;
+	virtual			void						setMass1									(f32 M)																					= 0;
+	virtual			void						SmoothElementsInertia						(f32 k)																					= 0;
 	virtual			void						setEquelInertiaForEls						(const dMass& M)																			= 0;
 	virtual			void						addEquelInertiaToEls						(const dMass& M)																			= 0;
 	virtual			ELEMENT_STORAGE				&Elements									()																							= 0;
@@ -294,14 +294,14 @@ IC					CKinematics					*PKinematics								()																{return m_pKinemati
 	virtual			void						EnableCollision								()																							= 0;
 	virtual			void						SetRemoveCharacterCollLADisable				()																							= 0;
 	virtual			void						DisableCharacterCollision					()																							= 0;
-	virtual			void						PureStep									(float step = fixed_step)																	= 0;
+	virtual			void						PureStep									(f32 step = fixed_step)																	= 0;
 	virtual			void						SetGlTransformDynamic						(const Fmatrix &form)																		= 0;
 	virtual			void						CollideAll									()																							= 0;
 	virtual			CPhysicsElement				*NearestToPoint								(const Fvector& point)																		= 0;
 	virtual			void						build_FromKinematics						(CKinematics* K,BONE_P_MAP* p_geting_map=NULL)												= 0;
 	virtual			void						preBuild_FromKinematics						(CKinematics* K,BONE_P_MAP* p_geting_map=NULL)												= 0;
 	virtual			void						Build										(bool disable=false)																		= 0;
-	virtual			void						SetMaxAABBRadius							(float size)																				 {};
+	virtual			void						SetMaxAABBRadius							(f32 size)																				 {};
 	virtual			void						AddTracedGeom								(u16 element=0,u16 geom=0)																	= 0;
 	virtual			void						SetAllGeomTraced							()																							= 0;
 	virtual			void						RunSimulation								(bool place_current_forms=true)																= 0;
@@ -311,7 +311,7 @@ IC					CKinematics					*PKinematics								()																{return m_pKinemati
 	virtual			void						SetCallbacks								(BoneCallbackFun* callback)																	= 0;
 	virtual			void						EnabledCallbacks							(BOOL val)																					= 0;
 	virtual			void						ToAnimBonesPositions						()																							= 0;
-	virtual			bool						AnimToVelocityState							(float dt, float l_limit, float a_limit )													= 0;
+	virtual			bool						AnimToVelocityState							(f32 dt, f32 l_limit, f32 a_limit )													= 0;
 	virtual 		void						SetBonesCallbacksOverwrite					(bool v)																					= 0;
 	virtual			Fmatrix						&ObjectInRoot								()																							= 0;
 	virtual			void						ObjectToRootForm							(const Fmatrix& form)							    										= 0;
@@ -336,6 +336,6 @@ CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state, pcst
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,U16Vec& fixed_bones)						;
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map, pcstr	fixed_bones)	;
 CPhysicsShell*				P_build_Shell				(CGameObject* obj,bool not_active_state,BONE_P_MAP* bone_map=NULL)					;
-CPhysicsShell*				P_build_SimpleShell			(CGameObject* obj,float mass,bool not_active_state)									;
+CPhysicsShell*				P_build_SimpleShell			(CGameObject* obj, f32 mass,bool not_active_state)									;
 		void				ApplySpawnIniToPhysicShell	(CInifile* ini,CPhysicsShell* physics_shell,bool fixed)								;
 		void				fix_bones					(pcstr	fixed_bones,CPhysicsShell* shell )											;

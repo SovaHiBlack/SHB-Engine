@@ -85,7 +85,7 @@ public:
 		FIGHT_DATA			();
 		u16					attacker;
 		u16					defender;
-		float				total_hit;
+		f32				total_hit;
 		u32					time;
 		u32					time_old;
 		
@@ -102,7 +102,7 @@ public:
 									else return spot_names[ALife::eRelationTypeLast];};
 	};
 	//зарегистрировать драку (реакция на Hit в EntityAlive)
-	void FightRegister (u16 attacker, u16 defender, ALife::ERelationType defender_to_attacker, float hit_amount);
+	void FightRegister (u16 attacker, u16 defender, ALife::ERelationType defender_to_attacker, f32 hit_amount);
 	void UpdateFightRegister ();
 
 private:

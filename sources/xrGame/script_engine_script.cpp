@@ -150,10 +150,10 @@ struct profile_timer_script {
 			m_accumulator		+= finish - m_start_cpu_tick_count;
 	}
 
-	IC		float					time					() const
+	IC		f32					time					() const
 	{
 		FPU::m64r				();
-		float					result = (float(double(m_accumulator)/double(CPU::clk_per_second))*1000000.f);
+		f32					result = (f32(double(m_accumulator)/double(CPU::clk_per_second))*1000000.f);
 		FPU::m24r				();
 		return					(result);
 	}

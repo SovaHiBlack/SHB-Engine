@@ -24,7 +24,7 @@ private:
 public:
 	IC					CStalkerMovementRestrictor	(CAI_Stalker *object, bool use_enemy_info, bool notify_agent_manager = true);
 	IC		bool		operator()					(const CCoverPoint *cover) const;
-	IC		float		weight						(const CCoverPoint *cover) const;
+	IC		f32		weight						(const CCoverPoint *cover) const;
 	IC		void		finalize					(const CCoverPoint *cover) const;
 };
 

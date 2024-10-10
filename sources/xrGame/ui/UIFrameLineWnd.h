@@ -9,14 +9,14 @@ class CUIFrameLineWnd: public CUIWindow
 	typedef CUIWindow inherited;
 public:
 	CUIFrameLineWnd();
-	virtual void Init(float x, float y, float width, float height);
-	virtual void Init(pcstr base_name, float x, float y, float width, float height, bool horizontal = true);
+	virtual void Init(f32 x, f32 y, f32 width, f32 height);
+	virtual void Init(pcstr base_name, f32 x, f32 y, f32 width, f32 height, bool horizontal = true);
 	virtual void InitTexture(pcstr tex_name, bool horizontal = true);
 	virtual void Draw();
-	virtual void SetWidth(float width);
-	virtual void SetHeight(float height);
+	virtual void SetWidth(f32 width);
+	virtual void SetHeight(f32 height);
 	virtual void SetOrientation(bool horizontal);
-			float GetTextureHeight();
+	f32 GetTextureHeight();
 	void SetColor(u32 cl);
 
 	// Also we can display textual caption on the frame

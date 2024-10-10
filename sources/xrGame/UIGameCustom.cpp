@@ -34,10 +34,10 @@ CUIGameCustom::~CUIGameCustom()
 	delete_data				(m_msgs_xml);
 }
 
-float CUIGameCustom::shedule_Scale		() 
+f32 CUIGameCustom::shedule_Scale		()
 {
 	return 0.5f;
-};
+}
 
 void CUIGameCustom::shedule_Update		(u32 dt)
 {
@@ -112,12 +112,12 @@ CUIDialogWnd* CUIGameCustom::MainInputReceiver	()
 	return HUD().GetUI()->MainInputReceiver();
 };
 
-void CUIGameCustom::AddCustomMessage		(pcstr id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color/* pcstr def_text*/ )
+void CUIGameCustom::AddCustomMessage		(pcstr id, f32 x, f32 y, f32 font_size, CGameFont *pFont, u16 alignment, u32 color/* pcstr def_text*/ )
 {
 	GameCaptions()->addCustomMessage(id,x,y,font_size,pFont,(CGameFont::EAligment)alignment,color,"");
 }
 
-void CUIGameCustom::AddCustomMessage		(pcstr id, float x, float y, float font_size, CGameFont *pFont, u16 alignment, u32 color, /*pcstr def_text,*/ float flicker )
+void CUIGameCustom::AddCustomMessage		(pcstr id, f32 x, f32 y, f32 font_size, CGameFont *pFont, u16 alignment, u32 color, /*pcstr def_text,*/ f32 flicker )
 {
 	AddCustomMessage(id,x,y,font_size, pFont, alignment, color);
 	GameCaptions()->customizeMessage(id, CUITextBanner::tbsFlicker)->fPeriod = flicker;
@@ -148,7 +148,7 @@ SDrawStaticStruct* CUIGameCustom::AddCustomStatic			(pcstr id, bool bSingleInsta
 	sss.m_static					= xr_new<CUIStatic>();
 	sss.m_name						= id;
 	xml_init.InitStatic				(*m_msgs_xml, id, 0, sss.m_static);
-	float ttl						= m_msgs_xml->ReadAttribFlt(id, 0, "ttl", -1);
+	f32 ttl						= m_msgs_xml->ReadAttribFlt(id, 0, "ttl", -1);
 	if(ttl>0.0f)
 		sss.m_endTime				= Device.fTimeGlobal + ttl;
 

@@ -9,8 +9,8 @@ public:
 	CUIListItem(void);
 	virtual ~CUIListItem(void);
 
-	virtual void Init(float x, float y, float width, float height);
-	virtual void Init(pcstr str, float x, float y, float width, float height);
+	virtual void Init(f32 x, f32 y, f32 width, f32 height);
+	virtual void Init(pcstr str, f32 x, f32 y, f32 width, f32 height);
 	virtual void InitTexture(pcstr tex_name);
 	
 			void* GetData() {return m_pData;}

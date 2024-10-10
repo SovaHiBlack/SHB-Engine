@@ -200,7 +200,7 @@ void CScriptGameObject::set_fastcall(const luabind::functor<bool> &functor, cons
 	Level().ph_commander_scripts().add_call(c,a);
 }
 
-void CScriptGameObject::set_const_force(const Fvector &dir,float value,u32 time_interval)
+void CScriptGameObject::set_const_force(const Fvector &dir, f32 value,u32 time_interval)
 {
 	CPhysicsShell	*shell=object().cast_physics_shell_holder()->PPhysicsShell();
 	if(!ph_world)	{

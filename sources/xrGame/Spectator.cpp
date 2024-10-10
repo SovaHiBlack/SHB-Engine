@@ -102,7 +102,7 @@ void CSpectator::shedule_Update		(u32 DT)
 }
 
 #define START_ACCEL		16.0f
-static float Accel_mul = START_ACCEL;
+static f32 Accel_mul = START_ACCEL;
 
 void CSpectator::IR_OnKeyboardPress(int cmd)
 {
@@ -197,13 +197,13 @@ void CSpectator::IR_OnMouseMove(int dx, int dy)
 	if (Remote())	return;
 
 	CCameraBase* C	= cameras	[cam_active];
-	float scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f;
+	f32 scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f;
 	if (dx){
-		float d = float(dx)*scale;
+		f32 d = f32(dx)*scale;
 		cameras[cam_active]->Move((d<0)?kLEFT:kRIGHT, _abs(d));
 	}
 	if (dy){
-		float d = ((psMouseInvert.test(1))?-1:1)*float(dy)*scale*3.f/4.f;
+		f32 d = ((psMouseInvert.test(1))?-1:1)* f32(dy)*scale*3.f/4.f;
 		cameras[cam_active]->Move((d>0)?kUP:kDOWN, _abs(d));
 	}
 }
@@ -277,7 +277,7 @@ void CSpectator::cam_Update	(CActor* A)
 			cam->Set				(P, D, N);
 			}break;
 		case eacLookAt:{
-			float y,p,r;
+			f32 y,p,r;
 			M.getHPB				(y,p,r);
 			cam->Set				(pACam->yaw,pACam->pitch,-r);
 			}

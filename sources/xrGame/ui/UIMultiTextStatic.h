@@ -16,9 +16,9 @@ class CUIMultiTextStatic: public CUIStatic
 public:
 	typedef struct SPh
 	{
-		float						outX;
-		float						outY;
-		float						maxWidth;
+		f32						outX;
+		f32						outY;
+		f32						maxWidth;
 		CUIStatic::EElipsisPosition elipsisPos;
 		CUITextBanner				effect;
 		shared_str						str;
@@ -32,10 +32,11 @@ public:
 
 	typedef xr_vector<SinglePhrase>	Phrases;
 	typedef Phrases::iterator		Phrases_it;
+
 protected:
 	Phrases							m_vPhrases;
-public:
 
+public:
 					CUIMultiTextStatic				();
 	virtual			~CUIMultiTextStatic				();
 
@@ -55,9 +56,10 @@ class CUICaption :protected CUIMultiTextStatic
 
 	u32					findIndexOf(const shared_str& key);
 	u32					findIndexOf_(const shared_str& key);
+
 public:
 	virtual void		Draw();
-	void				addCustomMessage(const shared_str& msg_name, float x, float y, float font_size, CGameFont *pFont, CGameFont::EAligment al, u32 color, pcstr def_str="");
+	void				addCustomMessage(const shared_str& msg_name, f32 x, f32 y, f32 font_size, CGameFont *pFont, CGameFont::EAligment al, u32 color, pcstr def_str="");
 	EffectParams*		customizeMessage(const shared_str& msg_name, const CUITextBanner::TextBannerStyles styleName);
 	void				setCaption(const shared_str& msg_name, pcstr message_to_out, u32 color=0, bool replaceColor=false);
 	void				removeCustomMessage(const shared_str& msg_name);

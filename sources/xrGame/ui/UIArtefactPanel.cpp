@@ -33,8 +33,8 @@ void CUIArtefactPanel::InitIcons(const xr_vector<const CArtefact*>& artefacts)
 	{
 		const CArtefact* artefact = *it;
 		Frect rect;
-		rect.left = float(artefact->GetXPos()*INV_GRID_WIDTH);
-		rect.top = float(artefact->GetYPos()*INV_GRID_HEIGHT);
+		rect.left = f32(artefact->GetXPos()*INV_GRID_WIDTH);
+		rect.top = f32(artefact->GetYPos()*INV_GRID_HEIGHT);
 		rect.right = rect.left + artefact->GetGridWidth()*INV_GRID_WIDTH;
 		rect.bottom = rect.top + artefact->GetGridHeight()*INV_GRID_HEIGHT;
 		m_vRects.push_back(rect);
@@ -42,18 +42,18 @@ void CUIArtefactPanel::InitIcons(const xr_vector<const CArtefact*>& artefacts)
 }
 
 void CUIArtefactPanel::Draw(){
-	const float iIndent = 1.0f;
-	      float x = 0.0f;
-		  float y = 0.0f;
-		  float iHeight;
-		  float iWidth;
+	const f32 iIndent = 1.0f;
+	f32 x = 0.0f;
+	f32 y = 0.0f;
+	f32 iHeight;
+	f32 iWidth;
 
 	Frect				rect;
 	GetAbsoluteRect		(rect);
 	x					= rect.left;
 	y					= rect.top;	
 	
-	float _s			= m_cell_size.x/m_cell_size.y;
+	f32 _s			= m_cell_size.x/m_cell_size.y;
 
 	for (ITr it = m_vRects.begin(); it != m_vRects.end(); ++it)
 	{

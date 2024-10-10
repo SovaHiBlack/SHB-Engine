@@ -21,7 +21,7 @@ IC	bool CStalkerMovementRestrictor::operator()				(const CCoverPoint *cover) con
 	return					(m_agent_manager->location().suitable(m_object,cover,m_use_enemy_info));
 }
 
-IC	float CStalkerMovementRestrictor::weight				(const CCoverPoint *cover) const
+IC	f32 CStalkerMovementRestrictor::weight				(const CCoverPoint *cover) const
 {
 	return					(m_agent_manager->location().danger(cover,m_object));
 }

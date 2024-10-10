@@ -223,7 +223,7 @@ void CDialogHolder::shedule_Update(u32 dt)
 		m_dialogsToRender.pop_back();
 }
 
-float CDialogHolder::shedule_Scale()
+f32 CDialogHolder::shedule_Scale()
 {
 	return 0.5f;
 }

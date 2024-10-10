@@ -24,7 +24,7 @@ public:
 	virtual void	net_Destroy			();
 
 	virtual void	Center				(Fvector &C)	const;
-	virtual float	Radius				() const;
+	virtual f32		Radius				() const;
 
 	virtual void	shedule_Update		(u32 dt);
 	virtual void	feel_touch_new		(CObject* O);

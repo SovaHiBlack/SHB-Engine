@@ -69,7 +69,7 @@ private:
 protected:
 	IC		bool					initialized					() const;
 			bool					affect						(CBaseRestrictionPtr bridge, const Fsphere &sphere) const;
-			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, float radius) const;
+			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, f32 radius) const;
 			bool					affect						(CBaseRestrictionPtr bridge, const Fvector &start_position, const Fvector &dest_position) const;
 			bool					affect						(CBaseRestrictionPtr bridge, u32 start_vertex_id, u32 dest_vertex_id) const;
 
@@ -81,7 +81,7 @@ public:
 	IC		void					add_border					(T1 p1, T2 p2);
 			u32						accessible_nearest			(const Fvector &position, Fvector &result);
 			bool					accessible					(const Fsphere &sphere);
-			bool					accessible					(u32 level_vertex_id, float radius);
+			bool					accessible					(u32 level_vertex_id, f32 radius);
 	IC		shared_str				out_restrictions			() const;
 	IC		shared_str				in_restrictions				() const;
 	IC		bool					applied						() const;

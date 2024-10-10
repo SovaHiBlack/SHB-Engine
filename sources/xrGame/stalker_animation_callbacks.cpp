@@ -46,18 +46,23 @@ void _detail::callback		(CBoneInstance *B)
 	VERIFY					(_valid(B->mTransform));
 	Fvector c				= B->mTransform.c;
 	Fmatrix					spin;
-	float					yaw_factor = 0, pitch_factor = 0;
-	if (A->sight().use_torso_look()) {
+	f32						yaw_factor = 0.0f;
+	f32						pitch_factor = 0.0f;
+	if (A->sight().use_torso_look())
+	{
 		yaw_factor			= yaw_factor_fire/100.f;
 		pitch_factor		= pitch_factor_fire/100.f;
 	}
-	else {
+	else
+	{
 		yaw_factor			= yaw_factor_non_fire/100.f;
 		pitch_factor		= pitch_factor_non_fire/100.f;
 	}
 
-	float					effector_yaw = 0.f, effector_pitch = 0.f;
-	if (A->weapon_shot_effector().IsActive()) {
+	f32						effector_yaw = 0.0f;
+	f32						effector_pitch = 0.0f;
+	if (A->weapon_shot_effector().IsActive())
+	{
 		Fvector				temp;
 		A->weapon_shot_effector().GetDeltaAngle(temp);
 		effector_yaw		= temp.y;
@@ -70,8 +75,8 @@ void _detail::callback		(CBoneInstance *B)
 	VERIFY					(_valid(A->movement().body_orientation().current.yaw));
 	VERIFY					(_valid(A->NET_Last.o_torso.pitch));
 
-	float					yaw		= angle_normalize_signed(-yaw_factor * angle_normalize_signed(A->movement().head_orientation().current.yaw + effector_yaw - (A->movement().body_orientation().current.yaw)));
-	float					pitch	= angle_normalize_signed(-pitch_factor * angle_normalize_signed(A->NET_Last.o_torso.pitch + effector_pitch));
+	f32					yaw		= angle_normalize_signed(-yaw_factor * angle_normalize_signed(A->movement().head_orientation().current.yaw + effector_yaw - (A->movement().body_orientation().current.yaw)));
+	f32					pitch	= angle_normalize_signed(-pitch_factor * angle_normalize_signed(A->NET_Last.o_torso.pitch + effector_pitch));
 	VERIFY					(_valid(yaw));
 	VERIFY					(_valid(pitch));
 

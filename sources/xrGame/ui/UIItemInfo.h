@@ -27,7 +27,7 @@ public:
 						CUIItemInfo			();
 	virtual				~CUIItemInfo		();
 
-	void				Init				(float x, float y, float width, float height, pcstr xml_name);
+	void				Init				(f32 x, f32 y, f32 width, f32 height, pcstr xml_name);
 	void				Init				(pcstr xml_name);
 	void				InitItem			(CInventoryItem* pInvItem);
 	void				TryAddWpnInfo		(const shared_str& wpn_section);

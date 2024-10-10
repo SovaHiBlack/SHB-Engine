@@ -123,7 +123,7 @@ void CUIMultiTextStatic::SPh::SetText(pcstr fmt, ...)
 
 #include "../string_table.h"
 
-void CUICaption::addCustomMessage(const shared_str& msg_name, float x, float y, float font_size, 
+void CUICaption::addCustomMessage(const shared_str& msg_name, f32 x, f32 y, f32 font_size,
 								  CGameFont *pFont, CGameFont::EAligment al, u32 color, pcstr def_str)
 {
 //	R_ASSERT2( (m_indices.find(msg_name) == m_indices.end()),"message already defined !!!" );

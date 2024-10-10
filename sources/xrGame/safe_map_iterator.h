@@ -27,7 +27,7 @@ protected:
 	_cycle_type				m_cycle_count;
 	_iterator				m_next_iterator;
 	CTimer					m_timer;
-	float					m_max_process_time;
+	f32					m_max_process_time;
 	bool					m_first_update;
 
 protected:
@@ -43,7 +43,7 @@ public:
 	IC		void			remove				(const _key_type &id, bool no_assert = false);
 	template <typename _update_predicate>
 	IC		u32				update				(const _update_predicate &predicate);
-	IC		void			set_process_time	(const float &process_time);
+	IC		void			set_process_time	(const f32& process_time);
 	IC		const _REGISTRY	&objects			() const;
 	IC		void			clear				();
 	IC		bool			empty				() const;

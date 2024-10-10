@@ -188,7 +188,7 @@ CUIInventoryWnd::~CUIInventoryWnd()
 	ClearAllLists						();
 }
 
-bool CUIInventoryWnd::OnMouse(float x, float y, EUIMessages mouse_action)
+bool CUIInventoryWnd::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	if(m_b_need_reinit)
 		return true;
@@ -222,7 +222,7 @@ void CUIInventoryWnd::Update()
 
 	if(pEntityAlive) 
 	{
-		float v = pEntityAlive->conditions().GetHealth()*100.0f;
+		f32 v = pEntityAlive->conditions().GetHealth()*100.0f;
 		UIProgressBarHealth.SetProgressPos		(v);
 
 		v = pEntityAlive->conditions().GetPsyHealth()*100.0f;

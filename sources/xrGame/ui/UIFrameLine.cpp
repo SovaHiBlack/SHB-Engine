@@ -26,7 +26,7 @@ CUIFrameLine::CUIFrameLine()
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIFrameLine::Init(pcstr base_name, float x, float y, float size, bool horizontal, DWORD align)
+void CUIFrameLine::Init(pcstr base_name, f32 x, f32 y, f32 size, bool horizontal, DWORD align)
 {
 	SetPos			(x, y);
 	SetSize			(size);
@@ -58,13 +58,13 @@ void CUIFrameLine::UpdateSize()
 {
 	VERIFY(g_bRendering);
 
-	float f_width		= elements[flFirst].GetOriginalRect().width();
-	float f_height		= elements[flFirst].GetOriginalRect().height();
+	f32 f_width		= elements[flFirst].GetOriginalRect().width();
+	f32 f_height		= elements[flFirst].GetOriginalRect().height();
 	elements[flFirst].SetPos(iPos.x, iPos.y);
 
 	// Right or bottom texture
-	float s_width		= elements[flSecond].GetOriginalRect().width();
-	float s_height		= elements[flSecond].GetOriginalRect().height();
+	f32 s_width		= elements[flSecond].GetOriginalRect().width();
+	f32 s_height		= elements[flSecond].GetOriginalRect().height();
 	
 	(bHorizontalOrientation) ?
 		elements[flSecond].SetPos(iPos.x + iSize - s_width, iPos.y) :
@@ -76,9 +76,8 @@ void CUIFrameLine::UpdateSize()
 	else
 		R_ASSERT(f_width == s_width);
 
-
 	// Now stretch back texture to remaining space
-	float back_width, back_height;
+	f32 back_width, back_height;
 
 	if (bHorizontalOrientation)
 	{
@@ -98,11 +97,11 @@ void CUIFrameLine::UpdateSize()
 	}
 
 	// Now resize back texture
-	float rem;
+	f32 rem;
 	int tile;
 
-	float b_width		= elements[flBack].GetOriginalRect().width();
-	float b_height		= elements[flBack].GetOriginalRect().height();
+	f32 b_width		= elements[flBack].GetOriginalRect().width();
+	f32 b_height		= elements[flBack].GetOriginalRect().height();
 
 	if (bHorizontalOrientation)
 	{

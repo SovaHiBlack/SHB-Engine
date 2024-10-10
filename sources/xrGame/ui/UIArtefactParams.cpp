@@ -88,16 +88,16 @@ void CUIArtefactParams::SetInfo(const shared_str& af_section)
 {
 
 	string128					_buff;
-	float						_h = 0.0f;
+	f32						_h = 0.0f;
 	DetachAll					();
 	for(u32 i=_item_start; i<_max_item_index; ++i)
 	{
 		CUIStatic* _s			= m_info_items[i];
 
-		float					_val;
+		f32					_val;
 		if(i<_max_item_index1)
 		{
-			float _actor_val	= pSettings->r_float	("actor_condition", af_actor_param_names[i]);
+			f32 _actor_val	= pSettings->r_float	("actor_condition", af_actor_param_names[i]);
 			_val				= pSettings->r_float	(af_section, af_item_sect_names[i]);
 
 			if					(fis_zero(_val))				continue;
