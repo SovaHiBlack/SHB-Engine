@@ -175,7 +175,7 @@ public:
 //CPHObject	 
 	virtual		void				vis_update_activate				();
 	virtual		void				vis_update_deactivate	  		();
-	virtual		void				PureStep						(float step);
+	virtual		void				PureStep						(f32 step);
 	virtual		void				CollideAll						();
 	virtual		void				PhDataUpdate					(dReal step);
 	virtual		void				PhTune							(dReal step);
@@ -197,7 +197,7 @@ public:
 	virtual		void				EnabledCallbacks				(BOOL val);
 	virtual		void				set_DisableParams				(const SAllDDOParams& params);
 	virtual		void				UpdateRoot						();
-	virtual		void				SmoothElementsInertia			(float k);
+	virtual		void				SmoothElementsInertia			(f32 k);
 	virtual		void				InterpolateGlobalTransform		(Fmatrix* m);
 	virtual		void				InterpolateGlobalPosition		(Fvector* v);
 	virtual		void				GetGlobalTransformDynamic		(Fmatrix* m);
@@ -209,7 +209,7 @@ public:
 	virtual		void				AddTracedGeom					(u16 element=0,u16 geom=0);
 	virtual		void				SetAllGeomTraced				();
 	virtual		void				SetPrefereExactIntegration		();
-	virtual		void				CutVelocity						(float l_limit,float a_limit);
+	virtual		void				CutVelocity						(f32 l_limit, f32 a_limit);
 ///////////	//////////////////////////////////////////////////////////////////////////////////////////
 				void				CreateSpace						()																				;
 				void				PassEndElements					(u16 from,u16 to,CPHShell *dest)												;
@@ -241,6 +241,6 @@ private:
 				void				ResetCallbacksRecursive			(u16 id,u16 element,Flags64 &mask)												;
 				void				SetJointRootGeom				(CPhysicsElement* root_e,CPhysicsJoint* J)										;
 				void				ReanableObject					()																				;
-				void				ExplosionHit					(const Fvector& pos, const Fvector& dir, float val,const u16 id)				;
+				void				ExplosionHit					(const Fvector& pos, const Fvector& dir, f32 val,const u16 id)				;
 				void				ClearBreakInfo					();
 };

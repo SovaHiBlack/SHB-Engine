@@ -14,7 +14,7 @@ struct SPHNetState
 		Fquaternion quaternion;
 		struct{
 			Fvector	accel;
-			float	max_velocity;
+			f32	max_velocity;
 		};
 	};
 	Fquaternion	previous_quaternion;

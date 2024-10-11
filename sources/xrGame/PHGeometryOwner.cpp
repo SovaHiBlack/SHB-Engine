@@ -71,7 +71,7 @@ void CPHGeometryOwner::set_body(dBodyID body)
 
 Fvector CPHGeometryOwner::			get_mc_data	(){
 	Fvector s;
-	float pv;
+	f32 pv;
 	m_mass_center.set(0,0,0);
 	m_volume=0.f;
 	GEOM_I i_geom=m_geoms.begin(),e=m_geoms.end();
@@ -92,7 +92,7 @@ Fvector CPHGeometryOwner::			get_mc_geoms	(){
 	mc.set(0.f,0.f,0.f);
 	return mc;
 }
-void CPHGeometryOwner::get_mc_kinematics(CKinematics* K,Fvector& mc,float& mass)
+void CPHGeometryOwner::get_mc_kinematics(CKinematics* K,Fvector& mc, f32& mass)
 {
 
 	mc.set(0.f,0.f,0.f);
@@ -309,14 +309,14 @@ u16	CPHGeometryOwner::numberOfGeoms()
 	return (u16)m_geoms.size();
 }
 
-void CPHGeometryOwner::get_Extensions(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext)
+void CPHGeometryOwner::get_Extensions(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext)
 {
 	lo_ext=dInfinity;hi_ext=-dInfinity;
 	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
 	for(;i!=e;++i)
 	{
-		float temp_lo_ext,temp_hi_ext;
-		//GetTransformedGeometryExtensions((*i)->geometry_transform(),(float*)&axis,center_prg,&temp_lo_ext,&temp_hi_ext);
+		f32 temp_lo_ext,temp_hi_ext;
+		//GetTransformedGeometryExtensions((*i)->geometry_transform(),(f32*)&axis,center_prg,&temp_lo_ext,&temp_hi_ext);
 		(*i)->get_extensions_bt(axis,center_prg,temp_lo_ext,temp_hi_ext);
 		if(lo_ext>temp_lo_ext)lo_ext=temp_lo_ext;
 		if(hi_ext<temp_hi_ext)hi_ext=temp_hi_ext;
@@ -329,7 +329,7 @@ void CPHGeometryOwner::get_MaxAreaDir(Fvector& dir)
 	if(m_geoms.empty())return;
 	(*m_geoms.begin())->get_max_area_dir_bt(dir);
 }
-float CPHGeometryOwner::getRadius()
+f32 CPHGeometryOwner::getRadius()
 {
 	if(!m_geoms.empty()) return m_geoms.back()->radius();
 	else				  return 0.f;

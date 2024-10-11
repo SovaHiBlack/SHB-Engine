@@ -2,7 +2,7 @@
 #include "PHJointDestroyInfo.h"
 #include "PhysicsCommon.h"
 #include "MathUtils.h"
-CPHJointDestroyInfo::CPHJointDestroyInfo(float break_force,float break_torque)
+CPHJointDestroyInfo::CPHJointDestroyInfo(f32 break_force, f32 break_torque)
 {
 	//m_bone_id=bone_id;
 	m_sq_break_force=break_force*break_force;

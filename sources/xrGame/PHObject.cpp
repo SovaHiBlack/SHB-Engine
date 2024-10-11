@@ -87,7 +87,7 @@ void CPHObject::Collide()
 				I.Positions(from,to);
 				if(from->x==-dInfinity) continue;
 				dir.sub(*to,*from);
-				float	magnitude=dir.magnitude();
+				f32	magnitude=dir.magnitude();
 				if(magnitude<EPS) continue;
 				dir.mul(1.f/magnitude);
 				g_SpatialSpacePhysic->q_ray(ph_world->r_spatial,0,STYPE_PHYSIC,*from,dir,magnitude);//|ISpatial_DB::O_ONLYFIRST
@@ -143,7 +143,7 @@ void	CPHObject::reinit_single()
 	ContactEffectors.empty();
 }
 
-void	CPHObject::		step_prediction	(float time)
+void	CPHObject::		step_prediction	(f32 time)
 {
 	//general idea:
 	//perform normal step by time as local as possible for this object then return world to 

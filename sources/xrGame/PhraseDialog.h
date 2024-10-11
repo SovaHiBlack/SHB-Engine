@@ -6,7 +6,7 @@
 #include "PhraseDialogDefs.h"
 #include "xml_str_id_loader.h"
 
-typedef CGraphAbstract<CPhrase*, float, shared_str> CPhraseGraph;
+typedef CGraphAbstract<CPhrase*, f32, shared_str> CPhraseGraph;
 
 
 struct SPhraseDialogData : CSharedResource

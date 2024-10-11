@@ -18,16 +18,16 @@
 #include "PHJoint.h"
 #include "PHShell.h"
 
-const float hinge2_spring=20000.f;
-const float hinge2_damping=1000.f;
+const f32 hinge2_spring=20000.f;
+const f32 hinge2_damping=1000.f;
 
 IC dBodyID body_for_joint(CPhysicsElement* e)
 {
 	 return e->isFixed() ? 0 : e->get_body();//return e->get_body();//
 }
-IC void SwapLimits(float &lo,float &hi)
+IC void SwapLimits(f32& lo, f32& hi)
 {
-	float t=-lo;
+	f32 t=-lo;
 	lo=-hi;
 	hi=t;
 }
@@ -45,7 +45,6 @@ void CPHJoint::SetBackRef(CPhysicsJoint** j)
 }
 void CPHJoint::CreateBall()
 {
-
 	m_joint=dJointCreateBall(0,0);
 	Fvector pos;
 	Fmatrix first_matrix,second_matrix;
@@ -62,26 +61,19 @@ case vs_second:second_matrix.transform_tiny(pos,anchor); break;
 case vs_global:pShell->mXFORM.transform_tiny(pos,anchor);break;				
 default:NODEFAULT;	
 	}
-
-
 	
 	dJointAttach(m_joint,body_for_joint(first),body_for_joint(second));
 	dJointSetBallAnchor(m_joint,pos.x,pos.y,pos.z);
-
 }
-
-
 
 void CPHJoint::CreateHinge()
 {
-
 	m_joint=dJointCreateHinge(0,0);
 
 	Fvector pos;
 	Fmatrix first_matrix,second_matrix;
 	Fvector axis;
-	
-	
+
 	CPHElement* first=(pFirst_element);
 	CPHElement* second=(pSecond_element);
 	VERIFY(first&&second);
@@ -105,7 +97,7 @@ default:NODEFAULT;
 	Fmatrix rotate;
 	rotate.mul(first_matrix,second_matrix);
 
-	float hi,lo;
+	f32 hi,lo;
 	CalcAxis(0,axis,lo,hi,first_matrix,second_matrix,rotate);
 	dBodyID b1=body_for_joint(first);if(!b1)axis.invert();//SwapLimits(lo,hi);
 	dJointAttach(m_joint,b1,body_for_joint(second));
@@ -163,8 +155,8 @@ void CPHJoint::CreateHinge2()
 	rotate.mul(first_matrix_inv,second_matrix);
 	/////////////////////////////////////////////
 
-	float lo;
-	float hi;
+	f32 lo;
+	f32 hi;
 	//////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////
 	axis.set(0,0,0);
@@ -257,8 +249,8 @@ void CPHJoint::CreateSlider()
 	rotate.mul(first_matrix_inv,second_matrix);
 	/////////////////////////////////////////////
 
-	float lo;
-	float hi;
+	f32 lo;
+	f32 hi;
 	//////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////
 	axis.set(0,0,0);
@@ -360,8 +352,8 @@ default:NODEFAULT;
 	rotate.mul(first_matrix_inv,second_matrix);
 	/////////////////////////////////////////////
 
-	float lo;
-	float hi;
+	f32 lo;
+	f32 hi;
 	//////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////
 	axis.set(0,0,0);
@@ -417,25 +409,25 @@ default:NODEFAULT;
 }
 
 
-void CPHJoint::SetAnchor(const float x,const float y,const float z)
+void CPHJoint::SetAnchor(const f32 x,const f32 y,const f32 z)
 {
 	vs_anchor=vs_global;
 	anchor.set(x,y,z);
 }
 
-void CPHJoint::SetAnchorVsFirstElement(const float x,const float y,const float z)
+void CPHJoint::SetAnchorVsFirstElement(const f32 x,const f32 y,const f32 z)
 {
 	vs_anchor=vs_first;
 	anchor.set(x,y,z);
 }
 
-void CPHJoint::SetAnchorVsSecondElement(const float x,const float y,const float z)
+void CPHJoint::SetAnchorVsSecondElement(const f32 x,const f32 y,const f32 z)
 {
 	vs_anchor=vs_second;
 	anchor.set(x,y,z);	
 }
 
-void CPHJoint::SetAxisDir(const float x,const float y,const float z,const int axis_num)
+void CPHJoint::SetAxisDir(const f32 x,const f32 y,const f32 z,const int axis_num)
 {
 	int ax=axis_num;
 	 LimitAxisNum(ax);
@@ -444,7 +436,7 @@ void CPHJoint::SetAxisDir(const float x,const float y,const float z,const int ax
 	axes[ax].direction.set(x,y,z);
 }
 
-void CPHJoint::SetAxisDirVsFirstElement(const float x,const float y,const float z,const int axis_num)
+void CPHJoint::SetAxisDirVsFirstElement(const f32 x,const f32 y,const f32 z,const int axis_num)
 {
 	int ax=axis_num;
     LimitAxisNum(ax);
@@ -453,7 +445,7 @@ void CPHJoint::SetAxisDirVsFirstElement(const float x,const float y,const float 
 	axes[ax].direction.set(x,y,z);
 }
 
-void CPHJoint::SetAxisDirVsSecondElement(const float x,const float y,const float z,const int axis_num)
+void CPHJoint::SetAxisDirVsSecondElement(const f32 x,const f32 y,const f32 z,const int axis_num)
 {
 	int ax=axis_num;
 	LimitAxisNum(ax);
@@ -463,7 +455,7 @@ void CPHJoint::SetAxisDirVsSecondElement(const float x,const float y,const float
 
 }
 
-void CPHJoint::SetLimits(const float low, const float high, const int axis_num)
+void CPHJoint::SetLimits(const f32 low, const f32 high, const int axis_num)
 {
 	if(!(pFirst_element&&pSecond_element))return;
 
@@ -489,7 +481,7 @@ void CPHJoint::SetLimits(const float low, const float high, const int axis_num)
 
 
 
-	float zer;
+	f32 zer;
 	//axis_angleB(m2,axis,zer);
 	axis_angleA(m2,axes[ax].direction,zer);
 
@@ -547,11 +539,11 @@ CPHJoint::CPHJoint(CPhysicsJoint::enumType type ,CPhysicsElement* first,CPhysics
 
 }
 
-void CPHJoint::SetLimitsVsFirstElement(const float low, const float high,const  int axis_num)
+void CPHJoint::SetLimitsVsFirstElement(const f32 low, const f32 high,const  int axis_num)
 {
 }
 
-void CPHJoint::SetLimitsVsSecondElement(const float low, const float high,const  int axis_num)
+void CPHJoint::SetLimitsVsSecondElement(const f32 low, const f32 high,const  int axis_num)
 {
 }
 
@@ -619,21 +611,21 @@ void CPHJoint::ReattachFirstElement(CPHElement* new_element)
 	//dJointAttach(m_joint,pFirst_element->get_body(),pSecond_element->get_body());
 	//if(m_joint1)dJointAttach(m_joint1,pFirst_element->get_body(),pSecond_element->get_body());
 }
-void CPHJoint::SetForceAndVelocity		(const float force,const float velocity,const int axis_num)
+void CPHJoint::SetForceAndVelocity		(const f32 force,const f32 velocity,const int axis_num)
 {
 	if(pShell&&pShell->isActive())pShell->Enable();
 	SetForce(force,axis_num);
 	SetVelocity(velocity,axis_num);
 }
 
-void CPHJoint::GetMaxForceAndVelocity(float &force,float &velocity,int axis_num)
+void CPHJoint::GetMaxForceAndVelocity(f32& force, f32& velocity,int axis_num)
 {
 	force=axes[axis_num].force;
 	velocity=axes[axis_num].velocity;
 }
 
 
-void CPHJoint::SetForce		(const float force,const int axis_num){
+void CPHJoint::SetForce		(const f32 force,const int axis_num){
 	int ax;
 	ax=axis_num;
 	LimitAxisNum(ax);
@@ -709,7 +701,7 @@ void CPHJoint::SetForceActive		(const int axis_num)
 	}
 }
 
-void CPHJoint::SetVelocity		(const float velocity,const int axis_num){
+void CPHJoint::SetVelocity		(const f32 velocity,const int axis_num){
 	int ax;
 	ax=axis_num;
 	LimitAxisNum(ax);
@@ -842,9 +834,9 @@ void CPHJoint::SetLimitsActive(int axis_num)
 	}
 }
 
-float CPHJoint::GetAxisAngle(int axis_num)
+f32 CPHJoint::GetAxisAngle(int axis_num)
 {
-	float ret=dInfinity;
+	f32 ret=dInfinity;
 	switch(eType){
 						case hinge2:				ret= dJointGetHinge2Angle1(m_joint);break;
 						case ball:					ret= dInfinity;break;
@@ -908,7 +900,7 @@ else
 	axes[ax]=axis;
 }
 
-void CPHJoint::SetAxisSDfactors(float spring_factor,float damping_factor,int axis_num)
+void CPHJoint::SetAxisSDfactors(f32 spring_factor, f32 damping_factor,int axis_num)
 
 {
 	int ax=axis_num;
@@ -944,7 +936,7 @@ void CPHJoint::SetAxisSDfactors(float spring_factor,float damping_factor,int axi
 }
 
 
-void CPHJoint::SetJointSDfactors(float spring_factor,float damping_factor)
+void CPHJoint::SetJointSDfactors(f32 spring_factor, f32 damping_factor)
 {
 	switch(eType){
 		case hinge2:		
@@ -1038,7 +1030,7 @@ void CPHJoint::SetAxisSDfactorsActive(int axis_num)
 
 	}
 }
-void CPHJoint::GetJointSDfactors(float& spring_factor,float& damping_factor)
+void CPHJoint::GetJointSDfactors(f32& spring_factor, f32& damping_factor)
 {
 spring_factor =SPRING(m_cfm,m_erp);
 damping_factor=DAMPING(m_cfm,m_erp);
@@ -1053,7 +1045,7 @@ else
 		damping_factor/=world_damping;
 	}
 }
-void CPHJoint::GetAxisSDfactors(float& spring_factor,float& damping_factor,int axis_num)
+void CPHJoint::GetAxisSDfactors(f32& spring_factor, f32& damping_factor,int axis_num)
 {
 	LimitAxisNum(axis_num);
 	spring_factor=SPRING(axes[axis_num].cfm,axes[axis_num].erp)/world_spring;
@@ -1063,7 +1055,7 @@ u16 CPHJoint::GetAxesNumber()
 {
 	return u16(axes.size());
 }
-void CPHJoint::CalcAxis(int ax_num,Fvector& axis, float& lo,float& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix,const Fmatrix& rotate)
+void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix,const Fmatrix& rotate)
 {
 	switch(axes[ax_num].vs)
 	{
@@ -1092,7 +1084,7 @@ void CPHJoint::CalcAxis(int ax_num,Fvector& axis, float& lo,float& hi,const Fmat
 	}
 }
 
-void CPHJoint::CalcAxis(int ax_num,Fvector& axis,float& lo,float& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix)
+void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix)
 {
 	switch(axes[ax_num].vs)
 	{
@@ -1111,7 +1103,7 @@ void CPHJoint::CalcAxis(int ax_num,Fvector& axis,float& lo,float& hi,const Fmatr
 	Fmatrix rotate;
 	rotate.mul(inv_first_matrix,second_matrix);
 
-	float shift_angle;
+	f32 shift_angle;
 	axis_angleA(rotate,axes[ax_num].direction,shift_angle);
 
 	shift_angle-=axes[ax_num].zero;
@@ -1138,11 +1130,9 @@ void CPHJoint::CalcAxis(int ax_num,Fvector& axis,float& lo,float& hi,const Fmatr
 		lo-=hi;
 		hi=0.f;
 	}
-
-
 }
 
-void CPHJoint::GetLimits					(float& lo_limit,float& hi_limit,int axis_num)
+void CPHJoint::GetLimits					(f32& lo_limit, f32& hi_limit,int axis_num)
 {
 	LimitAxisNum(axis_num);
 	if( body_for_joint(pFirst_element))
@@ -1224,7 +1214,7 @@ CPHJoint::SPHAxis::SPHAxis(){
 	velocity=0.f;
 }
 
-void CPHJoint::SPHAxis::set_sd_factors(float sf,float df,enumType jt)
+void CPHJoint::SPHAxis::set_sd_factors(f32 sf, f32 df,enumType jt)
 {
 	switch(jt)
 	{
@@ -1251,7 +1241,7 @@ CPhysicsElement* CPHJoint::PSecond_element()
 {
 	return cast_PhysicsElement(pSecond_element);
 }
-void CPHJoint::SetBreakable(float force,float torque)
+void CPHJoint::SetBreakable(f32 force, f32 torque)
 {
 	if(!m_destroy_info)	m_destroy_info=xr_new<CPHJointDestroyInfo>(force,torque);
 }

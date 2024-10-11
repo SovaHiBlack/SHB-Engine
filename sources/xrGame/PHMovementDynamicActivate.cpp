@@ -12,50 +12,49 @@
 
 extern	class CPHWorld	*ph_world;
 ObjectContactCallbackFun* saved_callback		=	0	;
-static float max_depth							=	0.f	;
+static f32 max_depth							=	0.f	;
 
 struct STestCallbackPars
 {
-	static float calback_friction_factor			;
-	static float depth_to_use_force					;
-	static float callback_force_factor				;
-	static float depth_to_change_softness_pars		;
-	static float callback_cfm_factor				;
-	static float callback_erp_factor				;
-	static float decrement_depth					;
-	static float max_real_depth						;
+	static f32 calback_friction_factor			;
+	static f32 depth_to_use_force					;
+	static f32 callback_force_factor				;
+	static f32 depth_to_change_softness_pars		;
+	static f32 callback_cfm_factor				;
+	static f32 callback_erp_factor				;
+	static f32 decrement_depth					;
+	static f32 max_real_depth						;
 };
 
-
-float 	STestCallbackPars::calback_friction_factor					=	0.0f	;
-float 	STestCallbackPars::depth_to_use_force						=	0.3f	;
-float 	STestCallbackPars::callback_force_factor					=	10.f	;
-float 	STestCallbackPars::depth_to_change_softness_pars			=	0.00f	;
-float 	STestCallbackPars::callback_cfm_factor						=	world_cfm*0.00001f;
-float 	STestCallbackPars::callback_erp_factor						=	1.f		;
-float	STestCallbackPars::decrement_depth							=	0.f		;
-float	STestCallbackPars::max_real_depth							=	0.2f	;
+f32 	STestCallbackPars::calback_friction_factor					=	0.0f	;
+f32 	STestCallbackPars::depth_to_use_force						=	0.3f	;
+f32 	STestCallbackPars::callback_force_factor					=	10.f	;
+f32 	STestCallbackPars::depth_to_change_softness_pars			=	0.00f	;
+f32 	STestCallbackPars::callback_cfm_factor						=	world_cfm*0.00001f;
+f32 	STestCallbackPars::callback_erp_factor						=	1.f		;
+f32	STestCallbackPars::decrement_depth							=	0.f		;
+f32	STestCallbackPars::max_real_depth							=	0.2f	;
 struct STestFootCallbackPars
 {
-	static float calback_friction_factor			;
-	static float depth_to_use_force					;
-	static float callback_force_factor				;
-	static float depth_to_change_softness_pars		;
-	static float callback_cfm_factor				;
-	static float callback_erp_factor				;
-	static float decrement_depth					;
-	static float max_real_depth						;
+	static f32 calback_friction_factor			;
+	static f32 depth_to_use_force					;
+	static f32 callback_force_factor				;
+	static f32 depth_to_change_softness_pars		;
+	static f32 callback_cfm_factor				;
+	static f32 callback_erp_factor				;
+	static f32 decrement_depth					;
+	static f32 max_real_depth						;
 };
 
 
-float 	STestFootCallbackPars::calback_friction_factor					=	0.3f	;
-float 	STestFootCallbackPars::depth_to_use_force						=	0.3f	;
-float 	STestFootCallbackPars::callback_force_factor					=	10.f	;
-float 	STestFootCallbackPars::depth_to_change_softness_pars			=	0.00f	;
-float 	STestFootCallbackPars::callback_cfm_factor						=	world_cfm*0.00001f;
-float 	STestFootCallbackPars::callback_erp_factor						=	1.f		;
-float	STestFootCallbackPars::decrement_depth							=	0.05f	;
-float	STestFootCallbackPars::max_real_depth							=	0.2f	;
+f32 	STestFootCallbackPars::calback_friction_factor					=	0.3f	;
+f32 	STestFootCallbackPars::depth_to_use_force						=	0.3f	;
+f32 	STestFootCallbackPars::callback_force_factor					=	10.f	;
+f32 	STestFootCallbackPars::depth_to_change_softness_pars			=	0.00f	;
+f32 	STestFootCallbackPars::callback_cfm_factor						=	world_cfm*0.00001f;
+f32 	STestFootCallbackPars::callback_erp_factor						=	1.f		;
+f32	STestFootCallbackPars::decrement_depth							=	0.05f	;
+f32	STestFootCallbackPars::max_real_depth							=	0.2f	;
 
 template<class Pars>
 void TTestDepthCallback (bool& do_colide,bool bo1,dContact& c,SGameMtl* material_1,SGameMtl* material_2)
@@ -64,13 +63,13 @@ void TTestDepthCallback (bool& do_colide,bool bo1,dContact& c,SGameMtl* material
 
 	if(do_colide&&!material_1->Flags.test(SGameMtl::flPassable) &&!material_2->Flags.test(SGameMtl::flPassable))
 	{
-		float& depth=c.geom.depth;
-		float test_depth=depth-Pars::decrement_depth;
+		f32& depth=c.geom.depth;
+		f32 test_depth=depth-Pars::decrement_depth;
 		save_max(max_depth,test_depth);
 		c.surface.mu*=Pars::calback_friction_factor;
 		if(test_depth>Pars::depth_to_use_force)
 		{
-			float force = Pars::callback_force_factor*ph_world->Gravity();
+			f32 force = Pars::callback_force_factor*ph_world->Gravity();
 			dBodyID b1=dGeomGetBody(c.geom.g1);
 			dBodyID b2=dGeomGetBody(c.geom.g2);
 			if(b1)dBodyAddForce(b1,c.geom.normal[0]*force,c.geom.normal[1]*force,c.geom.normal[2]*force);
@@ -90,7 +89,6 @@ void TTestDepthCallback (bool& do_colide,bool bo1,dContact& c,SGameMtl* material
 				if(phsl) phsl->Enable();
 			}
 
-
 			do_colide=false;
 		}
 		else if(test_depth>Pars::depth_to_change_softness_pars)
@@ -100,7 +98,6 @@ void TTestDepthCallback (bool& do_colide,bool bo1,dContact& c,SGameMtl* material
 		}
 		limit_above(depth,Pars::max_real_depth);
 	}
-
 }
 
 ObjectContactCallbackFun* TestDepthCallback		= &TTestDepthCallback<STestCallbackPars>;
@@ -111,13 +108,13 @@ class CVelocityLimiter :
 {
 	dBodyID m_body;
 public:
-	float l_limit;
-	float y_limit;
+	f32 l_limit;
+	f32 y_limit;
 private:
 	dVector3 m_safe_velocity;
 	dVector3 m_safe_position;
 public:
-	CVelocityLimiter(dBodyID b,float l,float yl)
+	CVelocityLimiter(dBodyID b, f32 l, f32 yl)
 	{
 		R_ASSERT(b);
 		m_body=b;
@@ -132,10 +129,9 @@ public:
 		m_body =0;
 	}
 
-
 	bool VelocityLimit()
 	{
-		const float		*linear_velocity		=dBodyGetLinearVel(m_body);
+		const f32* linear_velocity		=dBodyGetLinearVel(m_body);
 		//limit velocity
 		bool ret=false;
 		if(dV_valid(linear_velocity))
@@ -167,7 +163,7 @@ public:
 	}
 	virtual void PhDataUpdate(dReal step)
 	{
-		const float		*linear_velocity		=dBodyGetLinearVel(m_body);
+		const f32* linear_velocity		=dBodyGetLinearVel(m_body);
 
 		if(VelocityLimit())
 		{
@@ -199,14 +195,15 @@ class CGetContactForces:
 	public CPHUpdateObject
 {
 	dBodyID m_body;
-	float	m_max_force_self;
-	float	m_max_torque_self;
+	f32	m_max_force_self;
+	f32	m_max_torque_self;
 
-	float	m_max_force_self_y;
-	float	m_max_force_self_sd;
+	f32	m_max_force_self_y;
+	f32	m_max_force_self_sd;
 
-	float	m_max_force_others;
-	float	m_max_torque_others;
+	f32	m_max_force_others;
+	f32	m_max_torque_others;
+
 public:
 	CGetContactForces(dBodyID b)
 	{
@@ -214,13 +211,14 @@ public:
 		m_body=b;
 		InitValues();
 	}
-	float mf_slf(){return m_max_force_self;}
-	float mf_othrs(){return m_max_force_others;}
-	float mt_slf(){return m_max_torque_self;}
-	float mt_othrs(){return m_max_torque_others;}
+	f32 mf_slf(){return m_max_force_self;}
+	f32 mf_othrs(){return m_max_force_others;}
+	f32 mt_slf(){return m_max_torque_self;}
+	f32 mt_othrs(){return m_max_torque_others;}
 
-	float mf_slf_y(){return m_max_force_self_y;}
-	float mf_slf_sd(){return m_max_force_self_sd;}
+	f32 mf_slf_y(){return m_max_force_self_y;}
+	f32 mf_slf_sd(){return m_max_force_self_sd;}
+
 protected:
 	virtual void PhTune(dReal step)
 	{
@@ -293,7 +291,7 @@ private:
 };
 /////////////////////////////////////////////////////////////////////////////////////
 
-bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_steps/*5*/,float resolve_depth/*=0.01f*/)
+bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_steps/*5*/, f32 resolve_depth/*=0.01f*/)
 {
 	bool  character_exist=CharacterExist();
 	if(character_exist&&trying_times[id]!=u32(-1))
@@ -323,13 +321,10 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	SetFootCallBack(TestFootDepthCallback);
 	max_depth=0.f;
 
-
-
 	//////////////////////////////////pars///////////////////////////////////////////
 //	int		num_it=8;
 //	int		num_steps=5;
-//	float	resolve_depth=0.01f;
-
+//	f32	resolve_depth=0.01f;
 	
 	if(!character_exist)
 	{
@@ -338,18 +333,18 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 		resolve_depth=0.1f;
 	}
 	///////////////////////////////////////////////////////////////////////
-	float	fnum_it=float(num_it);
-	float	fnum_steps=float(num_steps);
-	float	fnum_steps_r=1.f/fnum_steps;
+	f32	fnum_it= f32(num_it);
+	f32	fnum_steps= f32(num_steps);
+	f32	fnum_steps_r=1.f/fnum_steps;
 
 	Fvector vel;
 	Fvector pos;
 	GetCharacterVelocity(vel);
 	GetCharacterPosition(pos);
 	//const Fbox& box =Box();
-	float pass=	character_exist ? _abs(Box().getradius()-boxes[id].getradius()) : boxes[id].getradius();
-	float max_vel=pass/2.f/fnum_it/fnum_steps/fixed_step;
-	float max_a_vel=M_PI/8.f/fnum_it/fnum_steps/fixed_step;
+	f32 pass=	character_exist ? _abs(Box().getradius()-boxes[id].getradius()) : boxes[id].getradius();
+	f32 max_vel=pass/2.f/fnum_it/fnum_steps/fixed_step;
+	f32 max_a_vel=M_PI/8.f/fnum_it/fnum_steps/fixed_step;
 	dBodySetForce(GetBody(),0.f,0.f,0.f);
 	dBodySetLinearVel(GetBody(),0.f,0.f,0.f);
 	Calculate(Fvector().set(0,0,0),Fvector().set(1,0,0),0,0,0,0);
@@ -381,7 +376,7 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 
 	for(int m=0;num_steps>m;++m)
 	{
-		float param =fnum_steps_r*(1+m);
+		f32 param =fnum_steps_r*(1+m);
 		InterpolateBox(id,param);
 		ret=false;
 		for(int i=0;num_it>i;++i){

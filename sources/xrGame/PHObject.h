@@ -79,12 +79,12 @@ public:
 	virtual		bool			DoCollideObj					()								;
 	virtual		bool			step_single						(dReal	step)					;
 				void			reinit_single					()								;
-				void			step_prediction					(float time)					;
+				void			step_prediction					(f32 time)					;
 	virtual 	void 			PhDataUpdate					(dReal	step)					=0;
 	virtual 	void 			PhTune							(dReal	step)					=0;
 	virtual		void 			spatial_move					()								;
 	virtual 	void 			InitContact						(dContact* c,bool& do_collide,u16 /*material_idx_1*/,u16 /*material_idx_2*/)	=0;
-	virtual		void			CutVelocity						(float l_limit,float a_limit)	{};						
+	virtual		void			CutVelocity						(f32 l_limit, f32 a_limit)	{};
 
 				void 			Freeze							()								;
 				void 			UnFreeze						()								;

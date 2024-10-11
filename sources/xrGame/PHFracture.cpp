@@ -11,7 +11,7 @@
 #pragma warning(default:4995)
 #pragma warning(default:4267)
 extern	class CPHWorld	*ph_world;
-static const float torque_factor=10000000.f;
+static const f32 torque_factor=10000000.f;
 CPHFracturesHolder::CPHFracturesHolder()
 {
 	m_has_breaks=false;
@@ -59,7 +59,7 @@ element_fracture CPHFracturesHolder::SplitFromEnd(CPHElement* element,u16 fractu
 	shift_pivot.invert	();
 	shift_pivot.mulB_43	(old_bi.mTransform);
 	/////////////////////////////////////////////
-	float density=element->getDensity();
+	f32 density=element->getDensity();
 	new_element->SetShell(element->PHShell());
 	Fmatrix current_transtform;
 	element->GetGlobalTransformDynamic(&current_transtform);
@@ -157,7 +157,7 @@ void CPHFracturesHolder::SplitProcess(CPHElement* element,ELEMENT_PAIR_VECTOR &n
 	}
 }
 
-void CPHFracturesHolder::InitNewElement(CPHElement* element,const Fmatrix &shift_pivot,float density)
+void CPHFracturesHolder::InitNewElement(CPHElement* element,const Fmatrix &shift_pivot, f32 density)
 {
 element->CreateSimulBase();
 element->ReInitDynamics(shift_pivot,density);
@@ -486,11 +486,11 @@ bool CPHFracture::Update(CPHElement* element)
 	///break_torque=glI2*glInvI*first_part_torque-glI1*glInvI*second_part_torque+crossproduct(second_in_bone,second_part_force)-crossproduct(first_in_bone,first_part_force)
 	Fvector break_torque,vtemp;
 
-	dMULTIPLY0_331 ((float*)&break_torque,glInvI,(float*)&first_part_torque);
-	dMULTIPLY0_331 ((float*)&break_torque,glI2,(float*)&break_torque);
+	dMULTIPLY0_331 ((f32*)&break_torque,glInvI,(f32*)&first_part_torque);
+	dMULTIPLY0_331 ((f32*)&break_torque,glI2,(f32*)&break_torque);
 
-	dMULTIPLY0_331 ((float*)&vtemp,glInvI,(float*)&second_part_torque);
-	dMULTIPLY0_331 ((float*)&vtemp,glI1,(float*)&vtemp);
+	dMULTIPLY0_331 ((f32*)&vtemp,glInvI,(f32*)&second_part_torque);
+	dMULTIPLY0_331 ((f32*)&vtemp,glI1,(f32*)&vtemp);
 	break_torque.sub(vtemp);
 
 	//Fvector first_in_bone,second_in_bone;
@@ -502,7 +502,7 @@ bool CPHFracture::Update(CPHElement* element)
 	//vtemp.crossproduct(first_in_bone,first_part_force);
 	//break_torque.sub(vtemp);
 #ifdef DBG_BREAK		
-	float btm_dbg=break_torque.magnitude()*phBreakCommonFactor/torque_factor;
+	f32 btm_dbg=break_torque.magnitude()*phBreakCommonFactor/torque_factor;
 #endif
 	if(break_torque.magnitude()*phBreakCommonFactor>m_break_torque*torque_factor)
 	{
@@ -530,7 +530,7 @@ bool CPHFracture::Update(CPHElement* element)
 	//vtemp.crossproduct(first_in_bone,first_part_torque);
 	//break_force.sub(vtemp);
 		
-	float bfm=break_force.magnitude()*phBreakCommonFactor;
+	f32 bfm=break_force.magnitude()*phBreakCommonFactor;
 
 	if(m_break_force<bfm)
 	{

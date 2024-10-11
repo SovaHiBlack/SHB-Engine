@@ -26,7 +26,7 @@ class CPHElement	:
 {
 	friend class CPHFracturesHolder;
 
-	//float						m_start_time;				//uu ->to shell ??	//aux
+	//f32						m_start_time;				//uu ->to shell ??	//aux
 	dMass						m_mass;						//e ??				//bl
 	dBodyID						m_body;						//e					//st
 	dReal						m_l_scale;					// ->to shell ??	//bl
@@ -100,33 +100,33 @@ public:
 	virtual void						SetMaterial								(pcstr m){CPHGeometryOwner::SetMaterial(m);}									//aux
 	virtual u16							numberOfGeoms							();																				//aux
 	virtual const Fvector&				local_mass_Center						()		{return CPHGeometryOwner::local_mass_Center();}							//aux
-	virtual float						getVolume								()		{return CPHGeometryOwner::get_volume();}								//aux
-	virtual void						get_Extensions							(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext);			//aux
+	virtual f32						getVolume								()		{return CPHGeometryOwner::get_volume();}								//aux
+	virtual void						get_Extensions							(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext);			//aux
 	virtual	void						get_MaxAreaDir							(Fvector& dir){CPHGeometryOwner::get_MaxAreaDir(dir);}
-	virtual float						getRadius								();
+	virtual f32						getRadius								();
 ////////////////////////////////////////////////////Mass/////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 private:
-	void								calculate_it_data						(const Fvector& mc,float mass);													//aux
-	void								calculate_it_data_use_density			(const Fvector& mc,float density);												//aux
-	void								calc_it_fract_data_use_density  		(const Fvector& mc,float density);//sets element mass and fractures parts mass	//aux
+	void								calculate_it_data						(const Fvector& mc, f32 mass);													//aux
+	void								calculate_it_data_use_density			(const Fvector& mc, f32 density);												//aux
+	void								calc_it_fract_data_use_density  		(const Fvector& mc, f32 density);//sets element mass and fractures parts mass	//aux
 	dMass								recursive_mass_summ						(u16 start_geom,FRACTURE_I cur_fracture);										//aux
 public:																																				//
 	virtual const Fvector&				mass_Center								()						;														//aux
-	virtual void						setDensity								(float M);																		//aux
-	virtual float						getDensity								(){return m_mass.mass/m_volume;}												//aux
-	virtual void						setMassMC								(float M,const Fvector& mass_center);											//aux
-	virtual void						setDensityMC							(float M,const Fvector& mass_center);											//aux
+	virtual void						setDensity								(f32 M);																		//aux
+	virtual f32						getDensity								(){return m_mass.mass/m_volume;}												//aux
+	virtual void						setMassMC								(f32 M,const Fvector& mass_center);											//aux
+	virtual void						setDensityMC							(f32 M,const Fvector& mass_center);											//aux
 	virtual void						setInertia								(const dMass& M);																//aux
 	virtual void						addInertia								(const dMass& M);
 	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center,float mass,CPHFracture* fracture=NULL);//aux
-	virtual	void						set_BoxMass								(const Fobb& box, float mass);													//aux
-	virtual void						setMass									(float M);																		//aux
+	virtual	void						set_BoxMass								(const Fobb& box, f32 mass);													//aux
+	virtual void						setMass									(f32 M);																		//aux
 	virtual float						getMass									(){return m_mass.mass;}															//aux
 	virtual	dMass*						getMassTensor							();	//aux
-			void						ReAdjustMassPositions					(const Fmatrix &shift_pivot,float density);										//aux
-			void						ResetMass								(float density);																//aux
-			void						CutVelocity								(float l_limit,float a_limit);
+			void						ReAdjustMassPositions					(const Fmatrix &shift_pivot, f32 density);										//aux
+			void						ResetMass								(f32 density);																//aux
+			void						CutVelocity								(f32 l_limit, f32 a_limit);
 ///////////////////////////////////////////////////PushOut///////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -146,7 +146,7 @@ public:																																				//
 	virtual bool						EnabledStateOnStep						()  {return dBodyIsEnabled(m_body)||m_flags.test(flEnabledOnStep);}							//
 ////////////////////////////////////////////////Updates///////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			bool						AnimToVel								( float dt, float l_limit,float a_limit );
+			bool						AnimToVel								(f32 dt, f32 l_limit, f32 a_limit );
 			void						BoneGlPos								(Fmatrix &m,CBoneInstance* B);
 			void						ToBonePos								(CBoneInstance* B);
 
@@ -163,24 +163,24 @@ public:																																				//
 		k_w= angular;																																//
 		k_l=linear;																																	//
 	}																																				//
-	virtual	void						GetAirResistance				(float &linear, float &angular)															//
+	virtual	void						GetAirResistance				(f32& linear, f32& angular)															//
 	{																																				//
 		linear= k_l;																																//
 		angular=k_w;																																//
 	}	
 	virtual void						applyImpact						(const SPHImpact& impact);																																	//
-	virtual void						applyImpulseTrace				(const Fvector& pos, const Fvector& dir, float val,const u16 id)	;					//called anywhere ph state influent
+	virtual void						applyImpulseTrace				(const Fvector& pos, const Fvector& dir, f32 val,const u16 id)	;					//called anywhere ph state influent
 	virtual	void						set_DisableParams				(const SAllDDOParams& params)										;					//
-	virtual void						set_DynamicLimits				(float l_limit=default_l_limit,float w_limit=default_w_limit);							//aux (may not be)
-	virtual void						set_DynamicScales				(float l_scale=default_l_scale,float w_scale=default_w_scale);							//aux (may not be)
+	virtual void						set_DynamicLimits				(f32 l_limit=default_l_limit, f32 w_limit=default_w_limit);							//aux (may not be)
+	virtual void						set_DynamicScales				(f32 l_scale=default_l_scale, f32 w_scale=default_w_scale);							//aux (may not be)
 	virtual	void						Fix								();
 	virtual	void						ReleaseFixed					();
 	virtual bool						isFixed							(){return !!(m_flags.test(flFixed));}
-	virtual void						applyForce						(const Fvector& dir, float val);															//aux
-	virtual void						applyForce						(float x,float y,float z);																//called anywhere ph state influent
-	virtual void						applyImpulse					(const Fvector& dir, float val);//aux
-	virtual void						applyImpulseVsMC				(const Fvector& pos,const Fvector& dir, float val);										//
-	virtual void						applyImpulseVsGF				(const Fvector& pos,const Fvector& dir, float val);										//
+	virtual void						applyForce						(const Fvector& dir, f32 val);															//aux
+	virtual void						applyForce						(f32 x, f32 y, f32 z);																//called anywhere ph state influent
+	virtual void						applyImpulse					(const Fvector& dir, f32 val);//aux
+	virtual void						applyImpulseVsMC				(const Fvector& pos,const Fvector& dir, f32 val);										//
+	virtual void						applyImpulseVsGF				(const Fvector& pos,const Fvector& dir, f32 val);										//
 	virtual void						applyGravityAccel				(const Fvector& accel);
 	virtual void						getForce						(Fvector& force);
 	virtual void						getTorque						(Fvector& torque);
@@ -234,13 +234,13 @@ IC			void						MulB43InverceLocalForm			(Fmatrix&)	;
 			void						PassEndGeoms							(u16 from,u16 to,CPHElement* dest);										//aux
 ////////////////////////////////////////////////////Build/Activate////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual void						Activate				(const Fmatrix& m0, float dt01, const Fmatrix& m2,bool disable=false);					//some isues not to be aux
+	virtual void						Activate				(const Fmatrix& m0, f32 dt01, const Fmatrix& m2,bool disable=false);					//some isues not to be aux
 	virtual void						Activate				(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);//some isues not to be aux
 	virtual void						Activate				(bool disable=false);									//some isues not to be aux
 	virtual void						Activate				(const Fmatrix& start_from, bool disable=false);										//some isues not to be aux
 	virtual void						Deactivate				();																						//aux																																			//aux
 			void						CreateSimulBase			();//create body & cpace																//aux
-			void						ReInitDynamics			(const Fmatrix &shift_pivot,float density);												//set body & geom positions					
+			void						ReInitDynamics			(const Fmatrix &shift_pivot, f32 density);												//set body & geom positions					
 			void						PresetActive			();																						//
 			void						build									();																		//aux
 			void						build									(bool disable);															//aux
