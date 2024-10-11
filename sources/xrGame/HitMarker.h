@@ -5,22 +5,22 @@ class CLAItem;
 
 struct SHitMark{
 	CUIStaticItem*	m_UIStaticItem;
-	float			m_StartTime;
-	float			m_HitDirection;
+	f32			m_StartTime;
+	f32			m_HitDirection;
 	CLAItem*		m_lanim;
 
 					SHitMark		(const ref_shader& sh, const Fvector& dir);
 					~SHitMark		();
 	bool			IsActive		();
 	void			UpdateAnim		();
-	void			Draw			(float dir);
+	void			Draw			(f32 dir);
 };
 
 class CHitMarker
 {
 public:
 /*
-	float					fHitMarks[4];
+	f32					fHitMarks[4];
 	ref_shader				hShader;
 	ref_geom				hGeom;
 */	

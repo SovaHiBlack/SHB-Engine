@@ -20,7 +20,6 @@ IC CGameGraph::CGameGraph											()
 	m_nodes							= (CVertex*)m_reader->pointer();
 	m_current_level_some_vertex_id	= _GRAPH_ID(-1);
 	m_enabled.assign				(header().vertex_count(),true);
-
 }
 
 IC CGameGraph::~CGameGraph											()
@@ -49,7 +48,7 @@ IC	bool CGameGraph::mask											(const _LOCATION_ID M[GameGraph::LOCATION_TYP
 	return(true);
 }
 
-IC	float CGameGraph::distance										(const _GRAPH_ID tGraphID0, const _GRAPH_ID tGraphID1) const
+IC	f32 CGameGraph::distance										(const _GRAPH_ID tGraphID0, const _GRAPH_ID tGraphID1) const
 {
 	const_iterator				i, e;
 	begin						(tGraphID0,i,e);
@@ -87,7 +86,7 @@ IC	const CGameGraph::_GRAPH_ID &CGameGraph::value					(const u32 &vertex_id, con
 	return						(i->vertex_id());
 }
 
-IC	const float &CGameGraph::edge_weight							(const_iterator i) const
+IC	const f32& CGameGraph::edge_weight							(const_iterator i) const
 {
 	return						(i->distance());
 }
@@ -218,7 +217,7 @@ IC	const GameGraph::_GRAPH_ID &GameGraph::CEdge::vertex_id			() const
 	return						(m_vertex_id);
 }
 
-IC	const float &GameGraph::CEdge::distance							() const
+IC	const f32& GameGraph::CEdge::distance							() const
 {
 	return						(m_path_distance);
 }

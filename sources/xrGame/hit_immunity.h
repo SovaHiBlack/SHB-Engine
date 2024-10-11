@@ -15,7 +15,7 @@ public:
 
 	virtual void LoadImmunities (pcstr section,CInifile* ini);
 
-	virtual float AffectHit		(float power, ALife::EHitType hit_type);
+	virtual f32 AffectHit		(f32 power, ALife::EHitType hit_type);
 
 protected:
 	//коэффициенты на которые домножается хит

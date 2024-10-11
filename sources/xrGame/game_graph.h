@@ -57,7 +57,7 @@ public:
 	IC		void					begin(const u32& vertex_id, const_iterator& start, const_iterator& end) const;
 	IC		void					begin_spawn(const u32& vertex_id, const_spawn_iterator& start, const_spawn_iterator& end) const;
 	IC		const _GRAPH_ID& value(const u32& vertex_id, const_iterator& i) const;
-	IC		const float& edge_weight(const_iterator i) const;
+	IC		const f32& edge_weight(const_iterator i) const;
 	IC		const CVertex* vertex(const u32& vertex_id) const;
 	IC		void					set_invalid_vertex(_GRAPH_ID& vertex_id) const;
 	IC		_GRAPH_ID				vertex_id(const CVertex* vertex) const;

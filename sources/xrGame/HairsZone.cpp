@@ -26,7 +26,7 @@ void CHairsZone::CheckForAwaking()
 
 		CEntityAlive* pEnt = smart_cast<CEntityAlive*>(pObject);
 		if(pEnt){
-			float sp = pEnt->character_physics_support()->movement()->GetVelocityActual();
+			f32 sp = pEnt->character_physics_support()->movement()->GetVelocityActual();
 			if(sp>m_min_speed_to_react){
 				SwitchZoneState				(eZoneStateAwaking);
 				return;
@@ -38,9 +38,9 @@ void CHairsZone::CheckForAwaking()
 			CObject::SavedPosition p0 = pObject->ps_Element(cnt-1);
 			CObject::SavedPosition p1 = pObject->ps_Element(cnt-2);
 
-			float dist	= p0.vPosition.distance_to(p1.vPosition);
-			float tm	= (p0.dwTime-p1.dwTime)/1000.0f;
-			float sp	= dist/tm;
+			f32 dist	= p0.vPosition.distance_to(p1.vPosition);
+			f32 tm	= (p0.dwTime-p1.dwTime)/1000.0f;
+			f32 sp	= dist/tm;
 			if(sp>m_min_speed_to_react){
 				SwitchZoneState				(eZoneStateAwaking);
 				return;
@@ -80,12 +80,11 @@ void CHairsZone::Affect(SZoneObjectInfo* O)
 		::Random.randF(-.5f,.5f)); 
 	hit_dir.normalize();
 
-
 	Fvector position_in_bone_space;
 
 	P.y=0.f;
-	float power = Power(pGameObject->Position().distance_to(P));
-	float impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
+	f32 power = Power(pGameObject->Position().distance_to(P));
+	f32 impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
 
 	//статистика по объекту
 	O->total_damage += power;

@@ -39,10 +39,10 @@ public:
 	
 	class  CCell {
 		GameGraph::_GRAPH_ID	tGraphIndex;
-		float				fDistance;
+		f32				fDistance;
 	public:
 		IC	GameGraph::_GRAPH_ID game_vertex_id			() const;
-		IC	float			distance				() const;
+		IC	f32			distance				() const;
 	};
 	#pragma pack(pop)
 

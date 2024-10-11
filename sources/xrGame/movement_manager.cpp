@@ -286,7 +286,7 @@ void CMovementManager::clear_path				()
 	detail_path_builder().remove		();
 }
 
-bool CMovementManager::distance_to_destination_greater	(const float &distance_to_check) const
+bool CMovementManager::distance_to_destination_greater	(const f32& distance_to_check) const
 {
 	if (path().size() < 2)
 		return				(true);
@@ -294,7 +294,7 @@ bool CMovementManager::distance_to_destination_greater	(const float &distance_to
 	if (path_completed())
 		return				(true);
 
-	float					accumulator = 0.f;
+	f32					accumulator = 0.f;
 	for (u32 i = detail().curr_travel_point_index(), n=detail().path().size()-1; i<n; ++i) {
 		accumulator			+= detail().path()[i].position.distance_to(detail().path()[i+1].position);
 		if (accumulator >= distance_to_check)
@@ -313,7 +313,7 @@ void CMovementManager::verify_detail_path		()
 	if (restrictions().out_restrictions().size())
 		return;
 
-	float distance = 0.f;
+	f32 distance = 0.f;
 	for (u32 i=detail().curr_travel_point_index() + 1, n=detail().path().size(); i<n; ++i) {
 		if (!restrictions().accessible(detail().path()[i].position,EPS_L)) {
 			m_path_actuality	= false;

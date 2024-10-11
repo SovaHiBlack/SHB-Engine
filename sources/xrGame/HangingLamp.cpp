@@ -56,7 +56,7 @@ void CHangingLamp::Center	(Fvector& C) const
 	}
 }
 
-float CHangingLamp::Radius	() const 
+f32 CHangingLamp::Radius	() const
 { 
 	return (renderable.visual)?renderable.visual->vis.sphere.R:EPS;
 }
@@ -231,7 +231,7 @@ void CHangingLamp::UpdateCL	()
 			int frame;
 			u32 clr					= lanim->CalculateBGR(Device.fTimeGlobal,frame); // возвращает в формате BGR
 			Fcolor					fclr;
-			fclr.set				((float)color_get_B(clr),(float)color_get_G(clr),(float)color_get_R(clr),1.f);
+			fclr.set				((f32)color_get_B(clr),(f32)color_get_G(clr),(f32)color_get_R(clr),1.f);
 			fclr.mul_rgb			(fBrightness/255.f);
 			light_render->set_color	(fclr);
 			if (glow_render)		glow_render->set_color	(fclr);

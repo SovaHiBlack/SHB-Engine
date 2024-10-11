@@ -75,10 +75,11 @@ namespace GameGraph {
 
 		CEdge {
 		_GRAPH_ID					m_vertex_id;
-		float						m_path_distance;
+		f32						m_path_distance;
+
 	public:
 		IC	const _GRAPH_ID			&vertex_id			() const;
-		IC	const float				&distance			() const;
+		IC	const f32& distance			() const;
 	};
 
 	class
@@ -138,7 +139,8 @@ namespace GameGraph {
 		CLevelPoint  {
 		Fvector		tPoint;
 		u32			tNodeID;
-		float		fDistance;	
+		f32		fDistance;
+
 	public:
 		IC const Fvector			&level_point		() const
 		{
@@ -150,7 +152,7 @@ namespace GameGraph {
 			return				(tNodeID);
 		}
 
-		IC float					distance			() const
+		IC f32					distance			() const
 		{
 			return				(fDistance);
 		}

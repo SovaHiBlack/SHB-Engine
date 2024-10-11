@@ -151,7 +151,7 @@ void CPHActivationShape::Destroy			( )
 	m_body = NULL;
 }
 
-bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float max_displacement, float max_rotation, bool un_freeze_later)
+bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, f32 max_displacement, f32 max_rotation, bool un_freeze_later)
 {
 
 #ifdef DEBUG
@@ -177,12 +177,12 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float m
 	//ph_world->Step();
 	ph_world->StepTouch( );
 	u16 num_it = 15;
-	float fnum_it = float(num_it);
-	float fnum_steps = float(steps);
-	float fnum_steps_r = 1.0f / fnum_steps;
-	float resolve_depth = 0.01f;
-	float max_vel = max_depth / fnum_it * fnum_steps_r / fixed_step;
-	float limit_l_vel = _max(_max(need_size.x, need_size.y), need_size.z) / fnum_it * fnum_steps_r / fixed_step;
+	f32 fnum_it = f32(num_it);
+	f32 fnum_steps = f32(steps);
+	f32 fnum_steps_r = 1.0f / fnum_steps;
+	f32 resolve_depth = 0.01f;
+	f32 max_vel = max_depth / fnum_it * fnum_steps_r / fixed_step;
+	f32 limit_l_vel = _max(_max(need_size.x, need_size.y), need_size.z) / fnum_it * fnum_steps_r / fixed_step;
 	if (limit_l_vel > default_l_limit)
 	{
 		limit_l_vel = default_l_limit;
@@ -193,7 +193,7 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, float m
 		max_vel = limit_l_vel;
 	}
 
-	float max_a_vel = max_rotation / fnum_it * fnum_steps_r / fixed_step;
+	f32 max_a_vel = max_rotation / fnum_it * fnum_steps_r / fixed_step;
 	if (max_a_vel > default_w_limit)
 	{
 		max_a_vel = default_w_limit;
@@ -308,7 +308,7 @@ void CPHActivationShape::get_spatial_params	( )
 void CPHActivationShape::InitContact		(dContact* c, bool& do_collide, u16, u16)
 { }
 
-void CPHActivationShape::CutVelocity		(float l_limit, float a_limit)
+void CPHActivationShape::CutVelocity		(f32 l_limit, f32 a_limit)
 {
 	dVector3 limitedl;
 	dVector3 diffl;

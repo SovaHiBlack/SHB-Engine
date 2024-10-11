@@ -23,9 +23,9 @@ public:
 	virtual void UpdateCL			();
 	virtual void renderable_Render	();
 
-	float	GetGrenadeVel() {return m_fGrenadeVel;}
+	f32	GetGrenadeVel() {return m_fGrenadeVel;}
 
 protected:
 	//стартовая скорость вылета подствольной гранаты
-	float m_fGrenadeVel;
+	f32 m_fGrenadeVel;
 };

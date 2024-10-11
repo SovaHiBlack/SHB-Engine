@@ -182,7 +182,7 @@ s32					game_sv_GameState::get_option_i				(pcstr lst, pcstr name, s32 def)
 	else				return def;
 }
 
-float					game_sv_GameState::get_option_f				(pcstr lst, pcstr name, float def)
+f32					game_sv_GameState::get_option_f				(pcstr lst, pcstr name, f32 def)
 {
 	string64		op;
 	strconcat		(sizeof(op),op,"/",name,"=");
@@ -190,7 +190,7 @@ float					game_sv_GameState::get_option_f				(pcstr lst, pcstr name, float def)
 
 	if (found)
 	{	
-		float		val;
+		f32		val;
 		int cnt		= sscanf(found+xr_strlen(op),"%f",&val);
 		VERIFY		(cnt==1);
 		return		val;
@@ -318,7 +318,7 @@ void game_sv_GameState::OnPlayerDisconnect		(ClientID /**id_who/**/, pstr, u16 )
 	signal_Syncronize	();
 }
 
-static float							rpoints_Dist [TEAM_COUNT] = {1000.f, 1000.f, 1000.f, 1000.f};
+static f32							rpoints_Dist [TEAM_COUNT] = {1000.f, 1000.f, 1000.f, 1000.f};
 void game_sv_GameState::Create					(shared_str &options)
 {
 	string_path	fn_game;	
@@ -353,7 +353,7 @@ void game_sv_GameState::Create					(shared_str &options)
 						for (int i=0; i<int(rpoints[team].size())-1; i++)
 						{
 							RPoint rp = rpoints[team][i];
-							float dist = R.P.distance_to_xz(rp.P)/2;
+							f32 dist = R.P.distance_to_xz(rp.P)/2;
 							if (dist<rpoints_MinDist[team])
 								rpoints_MinDist[team] = dist;
 							dist = R.P.distance_to(rp.P)/2;
@@ -913,7 +913,7 @@ void		game_sv_GameState::OnRender				()
 				};
 				if (rp.Blocked) continue;
 
-				float r = .3f;
+				f32 r = 0.3f;
 				T.identity();
 				T.scale(r, r, r);
 				T.translate_add(rp.P);
@@ -945,13 +945,12 @@ void		game_sv_GameState::OnRender				()
 			CObject* pPlayer = Level().Objects.net_Find(PS->GameID);
 			if (!pPlayer) continue;
 
-			float r = .4f;
+			f32 r = 0.4f;
 			T.identity();
 			T.scale(r, r, r);
 			T.translate_add(pPlayer->Position());
 			Level().debug_renderer().draw_ellipse(T, TeamColors[PS->team]);
-		};
-
+		}
 	}
 };
 #endif

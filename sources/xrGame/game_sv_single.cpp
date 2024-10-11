@@ -172,7 +172,7 @@ ALife::_TIME_ID game_sv_Single::GetGameTime		()
 		return(inherited::GetGameTime());
 }
 
-float game_sv_Single::GetGameTimeFactor		()
+f32 game_sv_Single::GetGameTimeFactor		()
 {
 	if (ai().get_alife() && ai().alife().initialized())
 		return(ai().alife().time_manager().time_factor());
@@ -180,7 +180,7 @@ float game_sv_Single::GetGameTimeFactor		()
 		return(inherited::GetGameTimeFactor());
 }
 
-void game_sv_Single::SetGameTimeFactor		(const float fTimeFactor)
+void game_sv_Single::SetGameTimeFactor		(const f32 fTimeFactor)
 {
 	if (ai().get_alife() && ai().alife().initialized())
 		return(alife().time_manager().set_time_factor(fTimeFactor));
@@ -193,12 +193,12 @@ ALife::_TIME_ID game_sv_Single::GetEnvironmentGameTime		()
 	return(inherited::GetGameTime());
 }
 
-float game_sv_Single::GetEnvironmentGameTimeFactor		()
+f32 game_sv_Single::GetEnvironmentGameTimeFactor		()
 {
 	return(inherited::GetGameTimeFactor());
 }
 
-void game_sv_Single::SetEnvironmentGameTimeFactor		(const float fTimeFactor)
+void game_sv_Single::SetEnvironmentGameTimeFactor		(const f32 fTimeFactor)
 {
 //	return(inherited::SetGameTimeFactor(fTimeFactor));
 }

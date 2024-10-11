@@ -59,7 +59,7 @@ public:
 	void							NewPlayerName_Replace	(void* pClient, pcstr NewPlayerName);
 
 	BOOL							sv_force_sync;
-	float							rpoints_MinDist [TEAM_COUNT];
+	f32							rpoints_MinDist [TEAM_COUNT];
 	xr_vector<RPoint>				rpoints	[TEAM_COUNT];
 	DEF_VECTOR(RPRef, RPoint*);
 	RPRef							rpointsBlocked;
@@ -129,7 +129,7 @@ public:
 				CSE_Abstract*		spawn_end				(CSE_Abstract* E, ClientID id);
 
 	// Utilities
-	float							get_option_f			(pcstr lst, pcstr name, float def = 0.0f);
+				f32							get_option_f			(pcstr lst, pcstr name, f32 def = 0.0f);
 	s32								get_option_i			(pcstr lst, pcstr name, s32 def = 0);
 	string64&						get_option_s			(pcstr lst, pcstr name, pcstr def = 0);
 	virtual		u32					get_alive_count			(u32 team);

@@ -29,12 +29,12 @@ public:
 	// Main
 	virtual		void				Update					();
 	virtual		ALife::_TIME_ID		GetGameTime				();
-	virtual		float				GetGameTimeFactor		();
-	virtual		void				SetGameTimeFactor		(const float fTimeFactor);
+	virtual		f32				GetGameTimeFactor		();
+	virtual		void				SetGameTimeFactor		(const f32 fTimeFactor);
 
 	virtual		ALife::_TIME_ID		GetEnvironmentGameTime	();
-	virtual		float				GetEnvironmentGameTimeFactor		();
-	virtual		void				SetEnvironmentGameTimeFactor		(const float fTimeFactor);
+	virtual		f32				GetEnvironmentGameTimeFactor		();
+	virtual		void				SetEnvironmentGameTimeFactor		(const f32 fTimeFactor);
 
 	virtual		bool				change_level			(NET_Packet &net_packet, ClientID sender);
 	virtual		void				save_game				(NET_Packet &net_packet, ClientID sender);

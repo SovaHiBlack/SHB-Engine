@@ -159,7 +159,7 @@ void CPHWorld::Destroy()
 	b_exist=false;
 }
 
-void CPHWorld::SetGravity(float g)
+void CPHWorld::SetGravity(f32 g)
 {
 	m_gravity				=g;
 	dWorldID phWorld		=0;

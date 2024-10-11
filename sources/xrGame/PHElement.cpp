@@ -831,7 +831,7 @@ IC bool put_in_range( Fvector &v, float range )
 	return false;
 }
 
-bool CPHElement::AnimToVel(float dt, float l_limit,float a_limit )
+bool CPHElement::AnimToVel(f32 dt, f32 l_limit, f32 a_limit )
 {
 	VERIFY(m_shell);
 	VERIFY(m_shell->PKinematics());

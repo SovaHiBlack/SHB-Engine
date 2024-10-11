@@ -30,13 +30,13 @@ void CHUDCrosshair::Load		()
 	//все размеры в процентах от длины экрана
 	//длина крестика 
 	cross_length_perc = pSettings->r_float (HUD_CURSOR_SECTION, "cross_length");
-//	cross_length = iFloor(0.5f + cross_length_perc*float(Device.dwWidth));
+//	cross_length = iFloor(0.5f + cross_length_perc*f32(Device.dwWidth));
 
 	min_radius_perc = pSettings->r_float (HUD_CURSOR_SECTION, "min_radius");
-	//min_radius = iFloor(0.5f + min_radius_perc*float(Device.dwWidth));
+	//min_radius = iFloor(0.5f + min_radius_perc*f32(Device.dwWidth));
 
 	max_radius_perc = pSettings->r_float (HUD_CURSOR_SECTION, "max_radius");
-	//max_radius = iFloor(0.5f + max_radius_perc*float(Device.dwWidth));
+	//max_radius = iFloor(0.5f + max_radius_perc*f32(Device.dwWidth));
 
 	cross_color = pSettings->r_fcolor (HUD_CURSOR_SECTION, "cross_color").get();
 
@@ -44,14 +44,14 @@ void CHUDCrosshair::Load		()
 }
 
 //выставляет radius от min_radius до max_radius
-void CHUDCrosshair::SetDispersion	(float disp)
+void CHUDCrosshair::SetDispersion	(f32 disp)
 { 
 	Fvector4 r;
 	Fvector R			= { VIEWPORT_NEAR*_sin(disp), 0.f, VIEWPORT_NEAR };
 	Device.mProject.transform	(r,R);
 
 	Fvector2		scr_size;
-	scr_size.set	(float(::Render->getTarget()->get_width()), float(::Render->getTarget()->get_height()));
+	scr_size.set	(f32(::Render->getTarget()->get_width()), f32(::Render->getTarget()->get_height()));
 	float radius_pixels		= _abs(r.x)*scr_size.x/2.0f;
 	//	clamp(radius_pixels, min_radius, max_radius);
 	target_radius		= radius_pixels; 
@@ -63,7 +63,7 @@ void CHUDCrosshair::OnRender ()
 	VERIFY			(g_bRendering);
 	Fvector2		center;
 	Fvector2		scr_size;
-	scr_size.set	(float(::Render->getTarget()->get_width()), float(::Render->getTarget()->get_height()));
+	scr_size.set	(f32(::Render->getTarget()->get_width()), f32(::Render->getTarget()->get_height()));
 	center.set		(scr_size.x/2.0f, scr_size.y/2.0f);
 
 	// draw back
@@ -72,17 +72,17 @@ void CHUDCrosshair::OnRender ()
 	FVF::TL0uv* pv_start				= (FVF::TL0uv*)RCache.Vertex.Lock(dwCount,hGeomLine->vb_stride,dwOffset);
 	FVF::TL0uv* pv						= pv_start;
 
-	float cross_length					= cross_length_perc*scr_size.x;
-	float min_radius					= min_radius_perc*scr_size.x;
-	float max_radius					= max_radius_perc*scr_size.x;
+	f32 cross_length					= cross_length_perc*scr_size.x;
+	f32 min_radius					= min_radius_perc*scr_size.x;
+	f32 max_radius					= max_radius_perc*scr_size.x;
 
 	clamp								(target_radius , min_radius, max_radius);
 
-	float x_min							= min_radius + radius;
-	float x_max							= x_min + cross_length;
+	f32 x_min							= min_radius + radius;
+	f32 x_max							= x_min + cross_length;
 
-	float y_min							= x_min;
-	float y_max							= x_max;
+	f32 y_min							= x_min;
+	f32 y_max							= x_max;
 
 	// 0
 	pv->set					(center.x+1,		center.y + y_min,	cross_color); pv++;
@@ -109,7 +109,7 @@ void CHUDCrosshair::OnRender ()
 
 	if(!fsimilar(target_radius,radius))
 	{
-		float sp				= radius_speed_perc * scr_size.x ;
+		f32 sp				= radius_speed_perc * scr_size.x ;
 		float radius_change		= sp*Device.fTimeDelta;
 		clamp					(radius_change, 0.0f, sp*0.033f); // clamp to 30 fps
 		clamp					(radius_change, 0.0f, _abs(target_radius-radius));

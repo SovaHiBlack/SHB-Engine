@@ -204,19 +204,19 @@ void CHUDTarget::Render()
 		FVF::TL*	pv		= (FVF::TL*)RCache.Vertex.Lock(4,hGeom.stride(),vOffset);
 		
 		Fvector2		scr_size;
-//.		scr_size.set	(float(::Render->getTarget()->get_width()), float(::Render->getTarget()->get_height()));
-		scr_size.set	(float(Device.dwWidth) ,float(Device.dwHeight));
-		float			size_x = scr_size.x	* di_size;
-		float			size_y = scr_size.y * di_size;
+//.		scr_size.set	(f32(::Render->getTarget()->get_width()), f32(::Render->getTarget()->get_height()));
+		scr_size.set	(f32(Device.dwWidth) , f32(Device.dwHeight));
+		f32			size_x = scr_size.x	* di_size;
+		f32			size_y = scr_size.y * di_size;
 
 		size_y			= size_x;
 
-		float			w_2		= scr_size.x/2.0f;
-		float			h_2		= scr_size.y/2.0f;
+		f32			w_2		= scr_size.x/2.0f;
+		f32			h_2		= scr_size.y/2.0f;
 
 		// Convert to screen coords
-		float cx		    = (PT.p.x+1)*w_2;
-		float cy		    = (PT.p.y+1)*h_2;
+		f32 cx		    = (PT.p.x+1)*w_2;
+		f32 cy		    = (PT.p.y+1)*h_2;
 
 		pv->set				(cx - size_x, cy + size_y, C, 0, 1); ++pv;
 		pv->set				(cx - size_x, cy - size_y, C, 0, 0); ++pv;
@@ -234,4 +234,3 @@ void CHUDTarget::Render()
 		HUDCrosshair.OnRender		();
 	}
 }
-

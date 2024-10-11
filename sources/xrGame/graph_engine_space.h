@@ -68,7 +68,7 @@ template <
 struct SGameVertex;
 
 namespace GraphEngineSpace {
-	typedef float		_dist_type;
+	typedef f32		_dist_type;
 	typedef u32			_index_type;
 	typedef u32			_iteration_type;
 	typedef u16			_solver_dist_type;

@@ -180,9 +180,9 @@ public:
 	void 					Load				();
 	void 					Clear				();
 	void 					AddBullet			(const Fvector& position, const Fvector& direction, 
-												float starting_speed, float power, float impulse, 
+												 f32 starting_speed, f32 power, f32 impulse,
 												u16	sender_id, u16 sendersweapon_id,
-												ALife::EHitType e_hit_type, float maximum_distance, 
+												ALife::EHitType e_hit_type, f32 maximum_distance,
 												const CCartridge& cartridge, bool SendHit,bool AimBullet=false);
 
 	void					CommitEvents		();	// @ the start of frame

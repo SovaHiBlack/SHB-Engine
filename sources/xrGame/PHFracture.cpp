@@ -150,13 +150,11 @@ void CPHFracturesHolder::SplitProcess(CPHElement* element,ELEMENT_PAIR_VECTOR &n
 	{
 		if(m_fractures[i].Breaked())
 		{
-			//float density = element->getDensity();
+			//f32 density = element->getDensity();
 			new_elements.push_back(SplitFromEnd(element,i));
 			//element->ResetMass(density);
 		}
 	}
-
-
 }
 
 void CPHFracturesHolder::InitNewElement(CPHElement* element,const Fmatrix &shift_pivot,float density)
@@ -312,8 +310,8 @@ bool CPHFracture::Update(CPHElement* element)
 	Fvector body_to_first, body_to_second;
 	body_to_first.set(*((const Fvector*)m_firstM.c));//,body_local_pos
 	body_to_second.set(*((const Fvector*)m_secondM.c));//,body_local_pos
-	//float body_to_first_smag=body_to_first.square_magnitude();
-	//float body_to_second_smag=body_to_second.square_magnitude();
+	//f32 body_to_first_smag=body_to_first.square_magnitude();
+	//f32 body_to_second_smag=body_to_second.square_magnitude();
 	int num=dBodyGetNumJoints(body);
 	for(int i=0;i<num;i++)
 	{

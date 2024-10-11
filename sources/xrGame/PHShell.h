@@ -33,8 +33,8 @@ public:
 	Fmatrix					m_object_in_root;
 	CPHShell								();							
 	virtual ~CPHShell						();
-	virtual void			applyImpulseTrace		(const Fvector& pos, const Fvector& dir, float val,const u16 id);
-	virtual void			applyHit				(const Fvector& pos, const Fvector& dir, float val,const u16 id,ALife::EHitType hit_type);
+	virtual void			applyImpulseTrace		(const Fvector& pos, const Fvector& dir, f32 val,const u16 id);
+	virtual void			applyHit				(const Fvector& pos, const Fvector& dir, f32 val,const u16 id,ALife::EHitType hit_type);
 
 	static void 			BonesCallback				(CBoneInstance* B);
 	static void 			StataticRootBonesCallBack	(CBoneInstance* B);
@@ -42,7 +42,7 @@ public:
 	virtual BoneCallbackFun* GetStaticObjectBonesCallback()	{return StataticRootBonesCallBack;}
 	virtual	void			add_Element				(CPhysicsElement* E);
 	virtual	void			ToAnimBonesPositions	();
-	virtual bool			AnimToVelocityState		(float dt, float l_limit, float a_limit );
+	virtual bool			AnimToVelocityState		(f32 dt, f32 l_limit, f32 a_limit );
 	virtual void			SetBonesCallbacksOverwrite(bool v);
 	void					SetPhObjectInElements	();
 	virtual	void			EnableObject			(CPHObject* obj);
@@ -53,24 +53,25 @@ public:
 		for(i=elements.begin();elements.end()!=i;++i)
 			(*i)->SetAirResistance(linear,angular);
 	}
-	virtual void			GetAirResistance		(float& linear, float& angular)
+	virtual void			GetAirResistance		(f32& linear, f32& angular)
 	{
 		(*elements.begin())->GetAirResistance(linear,angular);
 	}
 	virtual	void			add_Joint				(CPhysicsJoint* J);
 
 	virtual CPHIsland*		PIsland					(){return &Island();};
-	virtual void			applyImpulseTrace		(const Fvector& pos, const Fvector& dir, float val)	;
+	virtual void			applyImpulseTrace		(const Fvector& pos, const Fvector& dir, f32 val)	;
 
 	virtual void			Update					()	;											
 
-	virtual void			Activate				(const Fmatrix& m0, float dt01, const Fmatrix& m2,bool disable=false);
+	virtual void			Activate				(const Fmatrix& m0, f32 dt01, const Fmatrix& m2,bool disable=false);
 	virtual void			Activate				(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);
 	virtual void			Activate				(bool disable=false);
 	virtual void			Activate				(const Fmatrix& start_from, bool disable=false){};
 
 private:
 			void			activate				(bool disable);	
+
 public:
 	virtual	void			Build					(bool disable=false);
 	virtual	void			RunSimulation			(bool place_current_forms=true);
@@ -89,23 +90,23 @@ public:
 	virtual			void	SetIgnoreRagDoll		()											;
 	virtual			void	SetSmall				()											;
 	virtual			void	SetIgnoreSmall			()											;
-	virtual void			setMass					(float M)									;
+	virtual void			setMass					(f32 M)									;
 
-	virtual void			setMass1				(float M)									;
+	virtual void			setMass1				(f32 M)									;
 	virtual	void			setEquelInertiaForEls	(const dMass& M)							;
 	virtual	void			addEquelInertiaToEls	(const dMass& M)							;
-	virtual float			getMass					()											;
-	virtual void			setDensity				(float M)									;
-	virtual float			getDensity				()											;
-	virtual float			getVolume				()											;
-	virtual	void			get_Extensions			(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext);
-	virtual void			applyForce				(const Fvector& dir, float val)				;
-	virtual void			applyForce				(float x,float y,float z)					;
-	virtual void			applyImpulse			(const Fvector& dir, float val)				;
+	virtual f32			getMass					()											;
+	virtual void			setDensity				(f32 M)									;
+	virtual f32			getDensity				()											;
+	virtual f32			getVolume				()											;
+	virtual	void			get_Extensions			(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext);
+	virtual void			applyForce				(const Fvector& dir, f32 val)				;
+	virtual void			applyForce				(f32 x, f32 y, f32 z)					;
+	virtual void			applyImpulse			(const Fvector& dir, f32 val)				;
 	virtual void			applyGravityAccel		(const Fvector& accel);
 	virtual void			setTorque				(const Fvector& torque);
 	virtual void			setForce				(const Fvector& force);
-	virtual void			set_JointResistance		(float force)
+	virtual void			set_JointResistance		(f32 force)
 	{
 		JOINT_I i;
 		for(i=joints.begin();joints.end() != i;++i)
@@ -115,8 +116,8 @@ public:
 		}
 		//(*i)->SetForceAndVelocity(force);
 	}
-	virtual		void				set_DynamicLimits				(float l_limit=default_l_limit,float w_limit=default_w_limit);
-	virtual		void				set_DynamicScales				(float l_scale=default_l_scale,float w_scale=default_w_scale);
+	virtual		void				set_DynamicLimits				(f32 l_limit=default_l_limit, f32 w_limit=default_w_limit);
+	virtual		void				set_DynamicScales				(f32 l_scale=default_l_scale, f32 w_scale=default_w_scale);
 	virtual		void				set_ContactCallback				(ContactCallbackFun* callback);
 	virtual		void				set_ObjectContactCallback		(ObjectContactCallbackFun* callback);
 	virtual		void				add_ObjectContactCallback		(ObjectContactCallbackFun* callback);

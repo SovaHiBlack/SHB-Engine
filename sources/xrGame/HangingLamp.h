@@ -24,17 +24,16 @@ private:
 	ref_light		light_render;
 	ref_light		light_ambient;
 	CLAItem*		lanim;
-	float			ambient_power;
+	f32			ambient_power;
 	
 	ref_glow		glow_render;
 	
-	float			fHealth;
-	float			fBrightness;
+	f32			fHealth;
+	f32			fBrightness;
 	void			CreateBody		(CSE_ALifeObjectHangingLamp	*lamp);
 	void			Init();
 	void			RespawnInit		();
 	bool			Alive			(){return fHealth>0.f;}
-
 
 public:
 					CHangingLamp	();
@@ -63,7 +62,7 @@ public:
 	virtual BOOL	UsedAI_Locations();
 
 	virtual void	Center			(Fvector& C)	const;
-	virtual float	Radius			()				const;
+	virtual f32	Radius			()				const;
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 

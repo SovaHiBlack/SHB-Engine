@@ -13,7 +13,7 @@ public:
 	virtual			void		Load				(pcstr section);
 
 protected:
-					float		m_min_speed_to_react;
+	f32		m_min_speed_to_react;
 	virtual			bool		BlowoutState		();
 	virtual			void		CheckForAwaking		();
 

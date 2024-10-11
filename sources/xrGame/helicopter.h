@@ -24,10 +24,10 @@ struct SHeliEnemy{
 	EHeliHuntState					type;
 	Fvector							destEnemyPos;
 	u32								destEnemyID;
-	float							fire_trail_length_curr;
-	float							fire_trail_length_des;
+	f32							fire_trail_length_curr;
+	f32							fire_trail_length_des;
 	bool							bUseFireTrail;
-	float							fStartFireTime;
+	f32							fStartFireTime;
 	void reinit						();
 	void Update						();
 	void save						(NET_Packet &output_packet);
@@ -40,10 +40,10 @@ struct SHeliBodyState{
 	CHelicopter*					parent;
 	EHeliBodyState					type;
 	//settings, constants
-	float							model_pitch_k;
-	float							model_bank_k;
-	float							model_angSpeedBank;
-	float							model_angSpeedPitch;
+	f32							model_pitch_k;
+	f32							model_bank_k;
+	f32							model_angSpeedBank;
+	f32							model_angSpeedPitch;
 
 	//runtime params
 	Fvector							currBodyHPB;
@@ -62,8 +62,8 @@ enum EHeilMovementState{eMovNone,eMovToPoint,eMovPatrolPath,eMovRoundPath,eMovLa
 struct SHeliMovementState{
 	struct STmpPt{
 		Fvector		point;
-		float		dir_h;
-		STmpPt		(const Fvector& p, const float h):point(p),dir_h(h){};
+		f32		dir_h;
+		STmpPt		(const Fvector& p, const f32 h):point(p),dir_h(h){};
 	};
 	~SHeliMovementState				();
 	CHelicopter*					parent;
@@ -75,52 +75,52 @@ struct SHeliMovementState{
 	int								patrol_begin_idx;
 	shared_str						patrol_path_name;
 	bool							need_to_del_path;
-	float							safe_altitude_add;
-	float							maxLinearSpeed;
-	float							LinearAcc_fw;
-	float							LinearAcc_bk;
-	float							isAdnAcc;
+	f32							safe_altitude_add;
+	f32							maxLinearSpeed;
+	f32							LinearAcc_fw;
+	f32							LinearAcc_bk;
+	f32							isAdnAcc;
+
 protected:
-	float							HeadingSpK,	HeadingSpB;
-	float							PitchSpK,	PitchSpB, AngSP, AngSH;
-	float							speedInDestPoint;
+	f32							HeadingSpK,	HeadingSpB;
+	f32							PitchSpK,	PitchSpB, AngSP, AngSH;
+	f32							speedInDestPoint;
 	void							SetPointFlags(u32 idx, u32 new_flags);
+
 public:
-	float							min_altitude;
+	f32							min_altitude;
 //runtime values
 	Fvector							desiredPoint;
 
-	float							curLinearSpeed;
-	float							curLinearAcc;
+	f32							curLinearSpeed;
+	f32							curLinearAcc;
 
 	Fvector							currP;
-	float							currPathH;
-	float							currPathP;
-
+	f32							currPathH;
+	f32							currPathP;
 
 	Fvector							round_center;
-	float							round_radius;
+	f32							round_radius;
 	bool							round_reverse;
 
-	float							onPointRangeDist;
-	float	GetSpeedInDestPoint			();
-	void	SetSpeedInDestPoint			(float);
-	float	GetAngSpeedPitch			(float speed);
-	float	GetAngSpeedHeading			(float speed);
+	f32							onPointRangeDist;
+	f32	GetSpeedInDestPoint			();
+	void	SetSpeedInDestPoint			(f32);
+	f32	GetAngSpeedPitch			(f32 speed);
+	f32	GetAngSpeedHeading			(f32 speed);
 
-
-	float	GetSafeAltitude				();
+	f32	GetSafeAltitude				();
 	void	reinit						();
 	void	Update						();
 	void	UpdateMovToPoint			();
 	void	UpdatePatrolPath			();
 	bool	AlreadyOnPoint				();
-	void	goByRoundPath				(Fvector center, float radius, bool clockwise);
-	float	GetDistanceToDestPosition	();
-	void	getPathAltitude				(Fvector& point, float base_altitude);
+	void	goByRoundPath				(Fvector center, f32 radius, bool clockwise);
+	f32	GetDistanceToDestPosition	();
+	void	getPathAltitude				(Fvector& point, f32 base_altitude);
 	void	SetDestPosition				(Fvector* pos);
 	void	goPatrolByPatrolPath		(pcstr path_name,int start_idx);
-	void	CreateRoundPoints			(Fvector center, float radius, float start_h, float end_h, xr_vector<STmpPt>& round_points);
+	void	CreateRoundPoints			(Fvector center, f32 radius, f32 start_h, f32 end_h, xr_vector<STmpPt>& round_points);
 	void	save						(NET_Packet &output_packet);
 	void	load						(IReader &input_packet);
 	void	Load						(pcstr section);
@@ -151,11 +151,11 @@ public:
 // heli weapons
 	bool							m_use_rocket_on_attack;
 	bool							m_use_mgun_on_attack;
-	float							m_min_rocket_dist,m_max_rocket_dist;
-	float							m_min_mgun_dist, m_max_mgun_dist;
+	f32							m_min_rocket_dist,m_max_rocket_dist;
+	f32							m_min_mgun_dist, m_max_mgun_dist;
 	u32								m_time_between_rocket_attack;
 	bool							m_syncronize_rocket;
-	float							m_barrel_dir_tolerance;
+	f32							m_barrel_dir_tolerance;
 	HUD_SOUND						m_sndShot;
 	HUD_SOUND						m_sndShotRocket;
 
@@ -176,8 +176,8 @@ public:
 
 	shared_str						m_sAmmoType, m_sRocketSection;
 	CCartridge						m_CurrentAmmo;
-	float							delta_t;
-	float							flag_by_fire;
+	f32							delta_t;
+	f32							flag_by_fire;
 	Fmatrix							m_left_rocket_bone_xform, m_right_rocket_bone_xform;
 
 	static void 					BoneMGunCallbackX		(CBoneInstance *B);
@@ -210,7 +210,7 @@ protected:
 
 // on death...
 	Fvector							m_death_ang_vel;
-	float							m_death_lin_vel_k;
+	f32							m_death_lin_vel_k;
 	shared_str						m_death_bones_to_hide;
 
 //////////////////////////////////////////////////
@@ -222,7 +222,7 @@ protected:
 	ref_light						m_light_render;
 	CLAItem*						m_lanim;
 	u16								m_light_bone, m_smoke_bone;
-	float							m_light_range, m_light_brightness;
+	f32							m_light_range, m_light_brightness;
 	Fcolor							m_light_color;
 	shared_str						m_smoke_particle;
 	CParticlesObject*				m_pParticle;
@@ -240,15 +240,13 @@ protected:
 //general
 	EHeliState						m_curState;
 
-	xr_map<s16,float>				m_hitBones;
-	typedef xr_map<s16,float>::iterator bonesIt;
-	float							m_stepRemains;
+	xr_map<s16, f32>				m_hitBones;
+	typedef xr_map<s16, f32>::iterator bonesIt;
+	f32							m_stepRemains;
 
 	void	UpdateState					();
 public:
 	void							ExplodeHelicopter			();
-
-
 
 	CHelicopter();
 	virtual							~CHelicopter();
@@ -288,10 +286,10 @@ public:
 			void					MoveStep			();
 
 	virtual	void					Hit					(SHit* pHDS);
-	virtual void					PHHit				(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type);
+	virtual void					PHHit				(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type);
 	//CEntity
-	virtual void					HitSignal			(float P, Fvector &local_dir,	CObject* who, s16 element){;}
-	virtual void					HitImpulse			(float P, Fvector &vWorldDir, 	Fvector& vLocalDir){;}
+	virtual void					HitSignal			(f32 P, Fvector &local_dir,	CObject* who, s16 element){;}
+	virtual void					HitImpulse			(f32 P, Fvector &vWorldDir, 	Fvector& vLocalDir){;}
 	
 	virtual const Fmatrix&			get_ParticlesXFORM			();
 	virtual const Fvector&			get_CurrentFirePoint		();
@@ -307,42 +305,42 @@ public:
 	bool			 		isOnAttack						()				{return m_enemy.type!=eEnemyNone;}
 
 	void					goPatrolByPatrolPath			(pcstr path_name,int start_idx);
-	void					goByRoundPath					(Fvector center, float radius, bool clockwise);
+	void					goByRoundPath					(Fvector center, f32 radius, bool clockwise);
 	void					LookAtPoint						(Fvector point, bool do_it);
 	void					SetDestPosition					(Fvector* pos);
-	float					GetDistanceToDestPosition		();
+	f32					GetDistanceToDestPosition		();
 	
-	void					SetSpeedInDestPoint				(float sp);
-	float					GetSpeedInDestPoint				(float sp);
+	void					SetSpeedInDestPoint				(f32 sp);
+	f32					GetSpeedInDestPoint				(f32 sp);
 	
-	void					SetOnPointRangeDist				(float d);
-	float					GetOnPointRangeDist				();
+	void					SetOnPointRangeDist				(f32 d);
+	f32					GetOnPointRangeDist				();
 
-	float					GetCurrVelocity					();
-	float					GetMaxVelocity					();
-	void					SetMaxVelocity					(float v);
+	f32					GetCurrVelocity					();
+	f32					GetMaxVelocity					();
+	void					SetMaxVelocity					(f32 v);
 	//////////////////////Start By JoHnY///////////////////////
-	void					SetLinearAcc					(float LAcc_fw, float LAcc_bw);
+	void					SetLinearAcc					(f32 LAcc_fw, f32 LAcc_bw);
 	//////////////////////End By JoHnY/////////////////////////
 	Fvector					GetCurrVelocityVec				();
-	void					SetBarrelDirTolerance			(float val){m_barrel_dir_tolerance = val;};
+	void					SetBarrelDirTolerance			(f32 val){m_barrel_dir_tolerance = val;};
 	void					SetEnemy						(CScriptGameObject* e);
 	void					SetEnemy						(Fvector* pos);
 	void					UnSetEnemy						();
-	void					SetFireTrailLength				(float val);
+	void					SetFireTrailLength				(f32 val);
 	bool					UseFireTrail					();
 	void					UseFireTrail					(bool val);
 
-	float					GetRealAltitude					();
+	f32					GetRealAltitude					();
 
 	int						GetMovementState				();
 	int						GetHuntState					();
 	int						GetBodyState					();
 
 	virtual DLL_Pure		*_construct						();
-	float					GetSafeAltitude					()				{return m_movement.GetSafeAltitude();};
-	float					GetHeliHealth					() const		{return inherited::GetfHealth();}
-	float					SetHeliHealth					(float value)	{return inherited::SetfHealth(value);}
+	f32					GetSafeAltitude					()				{return m_movement.GetSafeAltitude();};
+	f32					GetHeliHealth					() const		{return inherited::GetfHealth();}
+	f32					SetHeliHealth					(f32 value)	{return inherited::SetfHealth(value);}
 
 #ifdef DEBUG
 public:

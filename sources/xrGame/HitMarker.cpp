@@ -29,10 +29,10 @@ CHitMarker::~CHitMarker()
 	}
 } 
 //--------------------------------------------------------------------
-const static float fShowTime = 0.5f;
+const static f32 fShowTime = 0.5f;
 void CHitMarker::Render()
 {
-	float h1,p1;
+	f32 h1,p1;
 	Device.vCameraDirection.getHP	(h1,p1);
 
 	while( m_HitMarks.size() && !m_HitMarks.front()->IsActive() ){
@@ -83,10 +83,10 @@ bool	SHitMark::IsActive()
 	return ((Device.fTimeGlobal-m_StartTime) < m_lanim->Length_sec());
 }
 
-void	SHitMark::Draw(float cam_dir)
+void	SHitMark::Draw(f32 cam_dir)
 {
 	UpdateAnim						();
 
-	float res_h						= cam_dir + m_HitDirection;
+	f32 res_h						= cam_dir + m_HitDirection;
 	m_UIStaticItem->Render			(res_h);
 }

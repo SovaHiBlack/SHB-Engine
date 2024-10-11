@@ -13,10 +13,9 @@
 #include "xrserver_objects_alife.h"
 
 #define GRENADE_REMOVE_TIME		30000
-const float default_grenade_detonation_threshold_hit=100;
+const f32 default_grenade_detonation_threshold_hit=100;
 CGrenade::CGrenade(void) 
 {
-
 	m_eSoundCheckout = ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING);
 }
 
@@ -56,7 +55,7 @@ BOOL CGrenade::net_Spawn(CSE_Abstract* DC)
 	m_dwGrenadeIndependencyTime			= 0;
 	BOOL ret= inherited::net_Spawn		(DC);
 	Fvector box;BoundingBox().getsize	(box);
-	float max_size						= _max(_max(box.x,box.y),box.z);
+	f32 max_size						= _max(_max(box.x,box.y),box.z);
 	box.set								(max_size,max_size,max_size);
 	box.mul								(3.f);
 	CExplosive::SetExplosionSize		(box);

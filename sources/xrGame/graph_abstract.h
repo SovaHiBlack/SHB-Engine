@@ -14,7 +14,7 @@
 
 template <
 	typename _data_type = Loki::EmptyType,
-	typename _edge_weight_type = float,
+	typename _edge_weight_type = f32,
 	typename _vertex_id_type = u32
 >
 class CGraphAbstract {
@@ -72,7 +72,7 @@ public:
 
 template <
 	typename _data_type = Loki::EmptyType,
-	typename _edge_weight_type = float,
+	typename _edge_weight_type = f32,
 	typename _vertex_id_type = u32
 >
 class CGraphAbstractSerialize : public CGraphAbstract<_data_type,_edge_weight_type,_vertex_id_type>, public IPureSerializeObject<IReader,IWriter> {

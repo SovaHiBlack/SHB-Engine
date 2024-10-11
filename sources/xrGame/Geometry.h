@@ -31,12 +31,12 @@ protected:
 
 public:
 	//get
-	virtual		float		volume				()																	=0;
+	virtual		f32		volume				()																	=0;
 	virtual		void		get_mass			(dMass& m)															=0;		//unit dencity mass;
-				void		get_mass			(dMass& m,const Fvector& ref_point, float density)					 ;
+				void		get_mass			(dMass& m,const Fvector& ref_point, f32 density)					 ;
 				void		get_mass			(dMass& m,const Fvector& ref_point)									 ;
 				void		add_self_mass		(dMass& m,const Fvector& ref_point)									 ;
-				void		add_self_mass		(dMass& m,const Fvector& ref_point, float density)					 ;
+				void		add_self_mass		(dMass& m,const Fvector& ref_point, f32 density)					 ;
 				void		get_local_center_bt	(Fvector& center)													 ;		//for built
 				void		get_global_center_bt(Fvector& center)													 ;		//for built
 				void		get_local_form_bt	(Fmatrix& form)														 ;	    //for built
@@ -44,8 +44,8 @@ public:
 				
 				void		set_static_ref_form	(const Fmatrix& form)												 ;		//for built
 	virtual		void		get_max_area_dir_bt	(Fvector& dir)														=0;
-	virtual		float		radius				()																	=0;
-	virtual		void		get_extensions_bt	(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext) =0;
+	virtual		f32		radius				()																	=0;
+	virtual		void		get_extensions_bt	(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext) =0;
 				void		clear_cashed_tries	()																	  ;
 	IC			dGeomID		geom()
 	{
@@ -119,9 +119,9 @@ class CBoxGeom : public CODEGeom
 public:
 							CBoxGeom			(const Fobb& box)													;
 //	virtual					~CBoxGeom			(const Fobb& box)													;
-	virtual		float		volume				()																	;
-	virtual		float		radius				()																	;
-	virtual		void		get_extensions_bt	(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext) ;
+	virtual		f32		volume				()																	;
+	virtual		f32		radius				()																	;
+	virtual		void		get_extensions_bt	(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext) ;
 	virtual		void		get_max_area_dir_bt	(Fvector& dir)														;
 	virtual		void		get_mass			(dMass& m)															;//unit dencity mass;
 virtual const	Fvector&	local_center		()																	;
@@ -137,9 +137,9 @@ class CSphereGeom : public CODEGeom
 	Fsphere	m_sphere;
 public:
 							CSphereGeom			(const Fsphere& sphere)												;
-	virtual		float		volume				()																	;
-	virtual		float		radius				()																	;
-	virtual		void		get_extensions_bt	(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext) ;
+	virtual		f32		volume				()																	;
+	virtual		f32		radius				()																	;
+	virtual		void		get_extensions_bt	(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext) ;
 	virtual		void		get_max_area_dir_bt	(Fvector& dir)													  {};
 	virtual		void		get_mass			(dMass& m)															;//unit dencity mass;
 virtual const	Fvector&	local_center		()																	;
@@ -154,9 +154,9 @@ class CCylinderGeom : public CODEGeom
 	Fcylinder m_cylinder;
 public:
 							CCylinderGeom		(const Fcylinder& cyl)												;
-	virtual		float		volume				()																	;
-	virtual		float		radius				()																	;
-	virtual		void		get_extensions_bt	(const Fvector& axis,float center_prg,float& lo_ext, float& hi_ext) ;
+	virtual		f32		volume				()																	;
+	virtual		f32		radius				()																	;
+	virtual		void		get_extensions_bt	(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext) ;
 	virtual		void		get_max_area_dir_bt	(Fvector& dir)													  {};
 virtual const	Fvector&	local_center		()																	;
 	virtual		void		get_mass			(dMass& m)															;//unit dencity mass;

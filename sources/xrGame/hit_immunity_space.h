@@ -2,6 +2,6 @@
 
 namespace HitImmunity {
 	//раны полученные различными типами хитов
-	typedef	svector<float,ALife::eHitTypeMax> HitTypeSVec;
+	typedef	svector<f32,ALife::eHitTypeMax> HitTypeSVec;
 };
 

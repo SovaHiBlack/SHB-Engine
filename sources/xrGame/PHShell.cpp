@@ -1377,7 +1377,7 @@ void CPHShell::applyGravityAccel(const Fvector& accel)
 	ELEMENT_I i,e;
 	Fvector a;
 	a.set(accel);
-	a.mul((float)elements.size());
+	a.mul((f32)elements.size());
 	i=elements.begin(); e=elements.end();
 	for( ;i!=e;++i)
 		(*i)->applyGravityAccel(a);

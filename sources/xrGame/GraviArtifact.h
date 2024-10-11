@@ -20,6 +20,6 @@ public:
 protected:
 	virtual void	UpdateCLChild	();
 	//параметры артефакта
-	float m_fJumpHeight;
-	float m_fEnergy;
+	f32 m_fJumpHeight;
+	f32 m_fEnergy;
 };

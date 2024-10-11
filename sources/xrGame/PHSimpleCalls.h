@@ -16,8 +16,8 @@ public:
 IC						void				set_step					(u64 step)									{m_step=step;}
 						void				set_steps_interval			(u64 steps)									;
 						void				set_time_interval			(u32 time)									;
-						void				set_time_interval			(float time)								;
-						void				set_global_time				(float time)								;
+						void				set_time_interval			(f32 time)								;
+						void				set_global_time				(f32 time)								;
 						void				set_global_time				(u32 time)									;
 private:				
 IC						bool				time_out					()				const						;

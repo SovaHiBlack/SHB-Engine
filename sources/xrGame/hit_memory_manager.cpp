@@ -90,7 +90,7 @@ void CHitMemoryManager::reload				(pcstr section)
 	m_max_hit_count			= READ_IF_EXISTS(pSettings,r_s32,section,"DynamicHitCount",1);
 }
 
-void CHitMemoryManager::add					(float amount, const Fvector &vLocalDir, const CObject *who, s16 element)
+void CHitMemoryManager::add					(f32 amount, const Fvector &vLocalDir, const CObject *who, s16 element)
 {
 #ifndef MASTER_GOLD
 	if (who && (who->CLS_ID == CLSID_OBJECT_ACTOR) && psAI_Flags.test(aiIgnoreActor))

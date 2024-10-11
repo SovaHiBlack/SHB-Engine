@@ -400,7 +400,7 @@ void CScriptGameObject::eat				(CScriptGameObject *item)
 	inventory_owner->inventory().Eat(inventory_item);
 }
 
-bool CScriptGameObject::inside					(const Fvector &position, float epsilon) const
+bool CScriptGameObject::inside					(const Fvector &position, f32 epsilon) const
 {
 	CSpaceRestrictor		*space_restrictor = smart_cast<CSpaceRestrictor*>(&object());
 	if (!space_restrictor) {

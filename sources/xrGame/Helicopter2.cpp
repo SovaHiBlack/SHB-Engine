@@ -20,7 +20,7 @@ bool CHelicopter::isObjectVisible			(CObject* O)
 	O->Center				(to_point);
 	Fvector from_point		= XFORM().c;
 	dir_to_object.sub		(to_point,from_point).normalize_safe();
-	float ray_length		= from_point.distance_to(to_point);
+	f32 ray_length		= from_point.distance_to(to_point);
 
 	BOOL res = Level().ObjectSpace.RayTest(from_point, dir_to_object, ray_length, collide::rqtStatic, NULL, NULL);
 		
@@ -90,13 +90,13 @@ void CHelicopter::UpdateHeliParticles	()
 			int frame;
 			u32 clr					= m_lanim->CalculateBGR(Device.fTimeGlobal,frame); // тючтЁр•рхЄ т ЇюЁьрЄх BGR
 			Fcolor					fclr;
-			fclr.set				((float)color_get_B(clr),(float)color_get_G(clr),(float)color_get_R(clr),1.f);
+			fclr.set				((f32)color_get_B(clr),(f32)color_get_G(clr),(f32)color_get_R(clr),1.f);
 			fclr.mul_rgb			(m_light_brightness/255.f);
 			m_light_render->set_color	(fclr);
 		}
-
 	}
 }
+
 void CHelicopter::ExplodeHelicopter ()
 {
 	m_ready_explode=false;
@@ -111,7 +111,6 @@ void CHelicopter::ExplodeHelicopter ()
 	CExplosive::SetInitiator(ID());
 	CExplosive::GenExplodeEvent(Position(),Fvector().set(0.f,1.f,0.f));
 	m_brokenSound.stop					();
-
 }
 
 void CHelicopter::SetDestPosition (Fvector* pos)
@@ -121,7 +120,7 @@ void CHelicopter::SetDestPosition (Fvector* pos)
 		Msg("---SetDestPosition %f %f %f", pos->x, pos->y, pos->z);
 }
 
-float CHelicopter::GetDistanceToDestPosition()
+f32 CHelicopter::GetDistanceToDestPosition()
 {
 	return m_movement.GetDistanceToDestPosition();
 }
@@ -143,59 +142,57 @@ void CHelicopter::SetEnemy(Fvector* pos)
 	m_enemy.destEnemyPos	= *pos;
 }
 
-
-
-float CHelicopter::GetCurrVelocity()
+f32 CHelicopter::GetCurrVelocity()
 {
 	return m_movement.curLinearSpeed;
 }
 
-void CHelicopter::SetMaxVelocity(float v)
+void CHelicopter::SetMaxVelocity(f32 v)
 {
 	m_movement.maxLinearSpeed = v;
 }
-float CHelicopter::GetMaxVelocity()
+
+f32 CHelicopter::GetMaxVelocity()
 {
 	return m_movement.maxLinearSpeed;
 }
-//////////////////////Start By JoHnY///////////////////////
-void CHelicopter::SetLinearAcc(float LAcc_fw, float LAcc_bw)
+
+void CHelicopter::SetLinearAcc(f32 LAcc_fw, f32 LAcc_bw)
 {
 	m_movement.LinearAcc_fw = LAcc_fw;	//ускорение разгона
 	m_movement.LinearAcc_bk = LAcc_bw;	//ускорение торможения
-
 }
-//////////////////////End By JoHnY/////////////////////////
-void CHelicopter::SetSpeedInDestPoint(float sp)
+
+void CHelicopter::SetSpeedInDestPoint(f32 sp)
 {
 	m_movement.SetSpeedInDestPoint(sp);
 	if(bDebug)
 		Msg("---SetSpeedInDestPoint %f", sp);
 }
 
-float CHelicopter::GetSpeedInDestPoint(float sp)
+f32 CHelicopter::GetSpeedInDestPoint(f32 sp)
 {
 	return m_movement.GetSpeedInDestPoint();
 }
-void CHelicopter::SetOnPointRangeDist(float d)
+
+void CHelicopter::SetOnPointRangeDist(f32 d)
 {
 	m_movement.onPointRangeDist = d;
 	if(bDebug)
 		Msg("---SetOnPointRangeDist %f", d);
 }
 
-float CHelicopter::GetOnPointRangeDist()
+f32 CHelicopter::GetOnPointRangeDist()
 {
 	return m_movement.onPointRangeDist;
 }
 
-float CHelicopter::GetRealAltitude()
+f32 CHelicopter::GetRealAltitude()
 {
 	collide::rq_result		cR;
 	Fvector down_dir;
 
 	down_dir.set(0.0f, -1.0f, 0.0f);
-
 
 	Level().ObjectSpace.RayPick(XFORM().c, down_dir, 1000.0f, collide::rqtStatic, cR, NULL);
 	
@@ -204,9 +201,6 @@ float CHelicopter::GetRealAltitude()
 
 void	CHelicopter::Hit							(SHit* pHDS)
 {
-//	inherited::Hit(pHDS);
-
-
 	if(GetfHealth()<0.005f)
 		return;
 
@@ -217,14 +211,14 @@ void	CHelicopter::Hit							(SHit* pHDS)
 
 	bonesIt It = m_hitBones.find(pHDS->bone());
 	if(It != m_hitBones.end() && pHDS->hit_type==ALife::eHitTypeFireWound) {
-		float curHealth = GetfHealth();
+		f32 curHealth = GetfHealth();
 		curHealth -= pHDS->damage()*It->second*1000.0f;
 		SetfHealth(curHealth);
 #ifdef DEBUG
 		if (bDebug)	Log("----Helicopter::PilotHit(). health=",curHealth);
 #endif
 	}else {
-		float hit_power		= pHDS->damage();
+		f32 hit_power		= pHDS->damage();
 		hit_power			*= m_HitTypeK[pHDS->hit_type];
 
 		SetfHealth(GetfHealth()-hit_power);
@@ -242,14 +236,12 @@ void	CHelicopter::Hit							(SHit* pHDS)
 		}
 
 	CPHDestroyable::SetFatalHit(*pHDS);
-
 }
 
-void CHelicopter::PHHit(float P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, float impulse, ALife::EHitType hit_type)
+void CHelicopter::PHHit(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type)
 {
 	if(!g_Alive())inherited::PHHit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 }
-
 
 #include "group_hierarchy_holder.h"
 #include "seniority_hierarchy_holder.h"
@@ -265,7 +257,6 @@ void CollisionCallbackDead(bool& do_colide,bool bo1,dContact& c,SGameMtl* materi
 
 	if(l_this&& !l_this->m_exploded)
 		l_this->m_ready_explode=true;
-
 }
 
 void CHelicopter::DieHelicopter()
@@ -278,7 +269,6 @@ void CHelicopter::DieHelicopter()
 
 	m_brokenSound.create			(pSettings->r_string(*cNameSect(), "broken_snd"),st_Effect,sg_SourceType);
 	m_brokenSound.play_at_pos		(0,XFORM().c,sm_Looped);
-
 
 	CKinematics* K		= smart_cast<CKinematics*>(Visual());
 	if(true /*!PPhysicsShell()*/){
@@ -367,10 +357,11 @@ void SHeliEnemy::load(IReader &input_packet)
 	bUseFireTrail		= !!input_packet.r_u8();
 }
 
-void CHelicopter::SetFireTrailLength(float val)
+void CHelicopter::SetFireTrailLength(f32 val)
 {
 	m_enemy.fire_trail_length_des	=	val;
 }
+
 bool CHelicopter::UseFireTrail()
 {
 	return m_enemy.bUseFireTrail;
@@ -388,7 +379,6 @@ void CHelicopter::UseFireTrail(bool val)
 	}
 }
 
-
 void SHeliBodyState::Load(pcstr section)
 {
 	model_angSpeedBank			= pSettings->r_float(section,"model_angular_sp_bank");
@@ -403,7 +393,6 @@ void SHeliBodyState::reinit()
 	b_looking_at_point = false;
 	looking_point.set(0.0f,0.0f,0.0f);
 	parent->XFORM().getHPB(currBodyHPB.x, currBodyHPB.y, currBodyHPB.z);
-
 }
 
 void SHeliBodyState::LookAtPoint			(Fvector point, bool do_it)
@@ -433,12 +422,12 @@ void SHeliBodyState::load(IReader &input_packet)
 
 
 
-float t_xx (float V0, float V1, float a0, float a1, float d, float fSign)
+f32 t_xx (f32 V0, f32 V1, f32 a0, f32 a1, f32 d, f32 fSign)
 {
 	return (V1+_sqrt(V1*V1 - (a1/(a1-a0))*(V1*V1-V0*V0-2*a0*d) )*fSign )/a1;
 }
 
-float t_1(float t10, float t11)
+f32 t_1(f32 t10, f32 t11)
 {
 	if(t10<0)
 		return t11;
@@ -450,20 +439,20 @@ float t_1(float t10, float t11)
 
 }
 
-float t_0(float V0, float V1, float a0, float a1, float t1)
+f32 t_0(f32 V0, f32 V1, f32 a0, f32 a1, f32 t1)
 {
 	return (V1-V0-a1*t1)/a0;
 }
 
-float getA(float t0, float a1, float a0)
+f32 getA(f32 t0, f32 a1, f32 a0)
 {
-	float eps = 0.001f;
+	f32 eps = 0.001f;
 	return (t0<eps)?a1:a0;
 }
 
-float GetCurrAcc(float V0, float V1, float dist, float a0, float a1)
+f32 GetCurrAcc(f32 V0, f32 V1, f32 dist, f32 a0, f32 a1)
 {
-	float t10,t11,t0,t1;
+	f32 t10,t11,t0,t1;
 	
 	t10 = t_xx	(V0, V1, a0, a1, dist, 1.0f);
 	t11 = t_xx	(V0, V1, a0, a1, dist, -1.0f);

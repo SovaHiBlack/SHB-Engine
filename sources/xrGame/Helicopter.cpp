@@ -14,7 +14,7 @@
 #include "HudManager.h"
 #include "physicscommon.h"
 //50fps fixed
-float STEP=0.02f;
+f32 STEP=0.02f;
 
 CHelicopter::CHelicopter()
 {
@@ -186,7 +186,7 @@ BOOL CHelicopter::net_Spawn(CSE_Abstract*	DC)
 		for (int i=0 ;i<lc; ++i){
 			pUserData->r_line( s, i, &name, &value);
 			boneID	=K->LL_BoneID(name);
-			m_hitBones.insert( std::make_pair(boneID, (float)atof(value)) );
+			m_hitBones.insert( std::make_pair(boneID, (f32)atof(value)) );
 		}
 	}
 	
@@ -283,24 +283,24 @@ void	CHelicopter::net_Save			(NET_Packet& P)
 	CPHSkeleton::SaveNetState			(P);
 }
 
-float GetCurrAcc(float V0, float V1, float dist, float a0, float a1);
+f32 GetCurrAcc(f32 V0, f32 V1, f32 dist, f32 a0, f32 a1);
 
 void CHelicopter::MoveStep()
 {
 	Fvector dir, pathDir;
-	float desired_H = m_movement.currPathH;
-	float desired_P;
+	f32 desired_H = m_movement.currPathH;
+	f32 desired_P;
 	if(m_movement.type != eMovNone){
 
-		float dist = m_movement.currP.distance_to(m_movement.desiredPoint);
+		f32 dist = m_movement.currP.distance_to(m_movement.desiredPoint);
 
 		dir.sub(m_movement.desiredPoint,m_movement.currP);
 		dir.normalize_safe();
 		pathDir = dir;
 		dir.getHP(desired_H, desired_P);
-		float speed_ = _min(m_movement.GetSpeedInDestPoint(), GetMaxVelocity() );
+		f32 speed_ = _min(m_movement.GetSpeedInDestPoint(), GetMaxVelocity() );
 
-		static float ang = pSettings->r_float	(cNameSect(),"magic_angle");
+		static f32 ang = pSettings->r_float	(cNameSect(),"magic_angle");
 		if(m_movement.curLinearSpeed>GetMaxVelocity() || angle_difference(m_movement.currPathH,desired_H)>ang)
 			m_movement.curLinearAcc = -m_movement.LinearAcc_bk;
 		else
@@ -316,7 +316,7 @@ void CHelicopter::MoveStep()
 		
 		dir.setHP(m_movement.currPathH, m_movement.currPathP);
 
-		float vp = m_movement.curLinearSpeed*STEP+(m_movement.curLinearAcc*STEP*STEP)/2.0f;
+		f32 vp = m_movement.curLinearSpeed*STEP+(m_movement.curLinearAcc*STEP*STEP)/2.0f;
 		m_movement.currP.mad	(dir, vp);
 		m_movement.curLinearSpeed += m_movement.curLinearAcc*STEP;
 		static bool aaa = false;
@@ -329,47 +329,42 @@ void CHelicopter::MoveStep()
 		if( !fis_zero(m_movement.curLinearSpeed) ){
 			m_movement.curLinearAcc = -m_movement.LinearAcc_bk;
 
-			float vp = m_movement.curLinearSpeed*STEP+(m_movement.curLinearAcc*STEP*STEP)/2.0f;
+			f32 vp = m_movement.curLinearSpeed*STEP+(m_movement.curLinearAcc*STEP*STEP)/2.0f;
 			dir.setHP(m_movement.currPathH, m_movement.currPathP);
 			dir.normalize_safe();
 			m_movement.currP.mad	(dir, vp);
 			m_movement.curLinearSpeed += m_movement.curLinearAcc*STEP;
 			clamp(m_movement.curLinearSpeed,0.0f,1000.0f);
 //			clamp(m_movement.curLinearSpeed,0.0f,m_movement.maxLinearSpeed);
-
 		}else{
 			m_movement.curLinearAcc		= 0.0f;
 			m_movement.curLinearSpeed	= 0.0f;
 		}
-		
-	};
+	}
 
 	if(	m_body.b_looking_at_point){
 		Fvector desired_dir;
 		desired_dir.sub(m_body.looking_point, m_movement.currP ).normalize_safe();
 
-		float center_desired_H,tmp_P;
+		f32 center_desired_H,tmp_P;
 		desired_dir.getHP(center_desired_H, tmp_P);
 		angle_lerp			(m_body.currBodyHPB.x, center_desired_H, m_movement.GetAngSpeedHeading(m_movement.curLinearSpeed), STEP);
 	}else{
 		angle_lerp			(m_body.currBodyHPB.x, m_movement.currPathH, m_movement.GetAngSpeedHeading(m_movement.curLinearSpeed), STEP);
 	}
 
-
-	float needBodyP = -m_body.model_pitch_k*m_movement.curLinearSpeed;
+	f32 needBodyP = -m_body.model_pitch_k*m_movement.curLinearSpeed;
 	if(m_movement.curLinearAcc < 0) needBodyP*=-1;
 	angle_lerp	(m_body.currBodyHPB.y, needBodyP, m_body.model_angSpeedPitch, STEP);
 
-
-	float sign;
+	f32 sign;
 	Fvector cp;
 	cp.crossproduct (pathDir,dir);
 	(cp.y>0.0)?sign=1.0f:sign=-1.0f;
-	float ang_diff = angle_difference (m_movement.currPathH, desired_H);
+	f32 ang_diff = angle_difference (m_movement.currPathH, desired_H);
 	
-	float needBodyB = -ang_diff*sign*m_body.model_bank_k*m_movement.curLinearSpeed;
+	f32 needBodyB = -ang_diff*sign*m_body.model_bank_k*m_movement.curLinearSpeed;
 	angle_lerp	(m_body.currBodyHPB.z, needBodyB, m_body.model_angSpeedBank, STEP);
-	
 
 	XFORM().setHPB(m_body.currBodyHPB.x,m_body.currBodyHPB.y,m_body.currBodyHPB.z);
 
@@ -419,8 +414,6 @@ void CHelicopter::UpdateCL()
 
 	if(m_engineSound._feedback())
 		m_engineSound.set_position(XFORM().c);
-	
-
 
 	m_enemy.Update();
 	//weapon
@@ -451,7 +444,7 @@ void CHelicopter::goPatrolByPatrolPath (pcstr path_name, int start_idx)
 	m_movement.goPatrolByPatrolPath (path_name, start_idx);
 }
 
-void CHelicopter::goByRoundPath(Fvector center, float radius, bool clockwise)
+void CHelicopter::goByRoundPath(Fvector center, f32 radius, bool clockwise)
 {
 	m_movement.goByRoundPath(center, radius, clockwise);
 }
@@ -487,7 +480,6 @@ void CHelicopter::load(IReader &input_packet)
 	m_barrel_dir_tolerance		= input_packet.r_float();
 	UseFireTrail				(m_enemy.bUseFireTrail);//force reloar disp params
 
-
 	load_data		(m_use_rocket_on_attack, input_packet);
 	load_data		(m_use_mgun_on_attack, input_packet);
 	load_data		(m_min_rocket_dist, input_packet);
@@ -497,6 +489,7 @@ void CHelicopter::load(IReader &input_packet)
 	load_data		(m_time_between_rocket_attack, input_packet);
 	load_data		(m_syncronize_rocket, input_packet);
 }
+
 void CHelicopter::net_Relcase(CObject* O )
 {
 	CExplosive::net_Relcase(O);

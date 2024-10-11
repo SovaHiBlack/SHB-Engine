@@ -21,7 +21,7 @@ void CPHShell::activate(bool disable)
 	if(!disable)EnableObject(0);
 
 }
-void CPHShell::Activate(const Fmatrix &m0,float dt01,const Fmatrix &m2,bool disable){
+void CPHShell::Activate(const Fmatrix &m0, f32 dt01,const Fmatrix &m2,bool disable){
 
 	if(isActive())return;
 	activate(disable);

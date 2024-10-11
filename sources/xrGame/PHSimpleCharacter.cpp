@@ -851,7 +851,7 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh()
 		if(m->Flags.test(SGameMtl::flPassable))continue;
 		//CDB::TRI* T = T_array + Res->id;
 		Point vertices[3]={Point((dReal*)&Res->verts[0]),Point((dReal*)&Res->verts[1]),Point((dReal*)&Res->verts[2])};
-		if(__aabb_tri(Point((float*)&center_forbid),Point((float*)&AABB_forbid),vertices))
+		if(__aabb_tri(Point((f32*)&center_forbid),Point((f32*)&AABB_forbid),vertices))
 			{
 	
 				
@@ -872,7 +872,7 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh()
 			//dCROSS(norm,=,side0,side1);//optimize it !!!
 			//cast_fv(norm).normalize();
 
-			//if(dDOT(norm,(float*)&accel)<-CHWON_ANG_COS) 
+			//if(dDOT(norm,(f32*)&accel)<-CHWON_ANG_COS) 
 		
 		}
 	}
@@ -883,7 +883,7 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh()
 		SGameMtl* m =  GMLib.GetMaterialByIdx(Res->material);
 		if(m->Flags.test(SGameMtl::flPassable))continue;
 		Point vertices[3]={Point((dReal*)&Res->verts[0]),Point((dReal*)&Res->verts[1]),Point((dReal*)&Res->verts[2])};
-		if(__aabb_tri(Point((float*)&center),Point((float*)&AABB),vertices)){
+		if(__aabb_tri(Point((f32*)&center),Point((f32*)&AABB),vertices)){
 			if(test_sides(center,sd_dir,accel,obb,Res->id))
 			{
 #ifdef DEBUG
@@ -1688,7 +1688,7 @@ void CPHSimpleCharacter::SCollisionDamageInfo::Reinit()
 	m_obj_id =u16(-1);
 	m_hit_callback=NULL;
 	m_contact_velocity=0;
-	//float					m_dmc_signum;
+	//f32					m_dmc_signum;
 	//enum{ctStatic,ctObject}	m_dmc_type;
 }
 void CPHSimpleCharacter::GetSmothedVelocity(Fvector& vvel)

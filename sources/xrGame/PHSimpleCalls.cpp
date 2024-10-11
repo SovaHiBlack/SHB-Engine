@@ -31,23 +31,23 @@ void CPHCallOnStepCondition::set_steps_interval(u64 steps)
 {
 	set_step(ph_world->m_steps_num+steps);
 }
-void CPHCallOnStepCondition::set_time_interval(float time)
+void CPHCallOnStepCondition::set_time_interval(f32 time)
 {
 		set_steps_interval(iCeil(time/fixed_step));
 }
 void CPHCallOnStepCondition::set_time_interval(u32 time)
 {
-	set_time_interval(float(time)/1000.f);
+	set_time_interval(f32(time)/1000.f);
 }
-void CPHCallOnStepCondition::set_global_time(float time)
+void CPHCallOnStepCondition::set_global_time(f32 time)
 {
-	float time_interval=Device.fTimeGlobal-time;
+	f32 time_interval=Device.fTimeGlobal-time;
 	if(time_interval<0.f)set_step(ph_world->m_steps_num);
 	set_time_interval(time_interval);
 }
 void CPHCallOnStepCondition::set_global_time(u32 time)
 {
-	set_global_time(float(time)/1000.f);
+	set_global_time(f32(time)/1000.f);
 }
 
 CPHShellBasedAction::CPHShellBasedAction(CPhysicsShell	*shell)
@@ -82,10 +82,10 @@ CPHReqComparerHasShell::CPHReqComparerHasShell(CPhysicsShell	*shell)
 //	//m_step=u64(ph_world->CalcNumSteps(time))+ph_world->m_steps_num;
 //}
 //
-//CPHTimeCondition::CPHTimeCondition(float time)
+//CPHTimeCondition::CPHTimeCondition(f32 time)
 //{
 //	///if (dTime < m_frame_time*1000) return 0;
-//	u32 res = iCeil((float(dTime) - m_frame_time*1000) / (fixed_step*1000));
+//	u32 res = iCeil((f32(dTime) - m_frame_time*1000) / (fixed_step*1000));
 //	m_step=
 //}
 

@@ -46,21 +46,20 @@ void CHelicopter::OnEvent(	NET_Packet& P, u16 type)
 
 void CHelicopter::MGunUpdateFire()
 {
-
 	fTime -= Device.fTimeDelta;
 	if (delta_t < 0){
 		delta_t = Device.fTimeGlobal;
 		flag_by_fire = 0;
 	}
-	float time_f = Device.fTimeGlobal - delta_t;
+	f32 time_f = Device.fTimeGlobal - delta_t;
 
-	float fire_time;
+	f32 fire_time;
 	if(pSettings->line_exist(*cNameSect(),"fire_time"))
 		fire_time = pSettings->r_float(*cNameSect(),"fire_time");
 	else
 		fire_time = -1;
 
-	float no_fire_time;
+	f32 no_fire_time;
 	if(pSettings->line_exist(*cNameSect(),"no_fire_time"))
 		no_fire_time = pSettings->r_float(*cNameSect(),"no_fire_time");
 	else
@@ -91,21 +90,21 @@ void CHelicopter::MGunUpdateFire()
 		OnShot();
 		fTime += fTimeToFire;
 	}
-
 }
+
 void CHelicopter::OnShot		()
 {
 	Fvector fire_pos,fire_dir;
 	fire_pos = get_CurrentFirePoint();
 	fire_dir = m_fire_dir;
 
-	float fire_trail_speed		= 15.0f;
+	f32 fire_trail_speed		= 15.0f;
 	clamp						(fire_trail_speed,GetCurrVelocity(),300.0f);
 	if(m_enemy.bUseFireTrail){
 		Fvector enemy_pos = m_enemy.destEnemyPos;
 
-		float	dt		= Device.fTimeGlobal - m_enemy.fStartFireTime; VERIFY(dt>=0);
-		float	dist	= m_enemy.fire_trail_length_curr - dt*fire_trail_speed;
+		f32	dt		= Device.fTimeGlobal - m_enemy.fStartFireTime; VERIFY(dt>=0);
+		f32	dist	= m_enemy.fire_trail_length_curr - dt*fire_trail_speed;
 		if(dist<0)
 		{
 			MGunFireEnd	();
@@ -122,16 +121,15 @@ void CHelicopter::OnShot		()
 		}else{
 			dist = (m_enemy.fire_trail_length_curr/2.0f) - dist;
 		}
-		
 
-		static float fire_trace_width = pSettings->r_float(*cNameSect(),"fire_trace_width");
+		static f32 fire_trace_width = pSettings->r_float(*cNameSect(),"fire_trace_width");
 		enemy_pos.mad(fd,dist);
 		Fvector disp_dir;
 		disp_dir.random_point(fire_trace_width);
 
 		enemy_pos.add(disp_dir);
 		fire_dir.sub(enemy_pos,fire_pos).normalize_safe();
-	};
+	}
 
 	FireBullet(fire_pos, fire_dir, fireDispersionBase, m_CurrentAmmo, ID(), ID(), OnServer());
 
@@ -139,13 +137,11 @@ void CHelicopter::OnShot		()
 	if(m_bLightShotEnabled) 
 		Light_Start			();
 
-
 	StartFlameParticles		();
 	StartSmokeParticles		(fire_pos, zero_vel);
 	OnShellDrop				(fire_pos, zero_vel);
 
 	HUD_SOUND::PlaySound	(m_sndShot, fire_pos, this, false);
-
 }
 
 void CHelicopter::MGunFireStart()
@@ -160,12 +156,12 @@ void CHelicopter::MGunFireStart()
 		Fvector ep = m_enemy.destEnemyPos;
 
 		//calc min firetrail length
-		float h = fp.y-ep.y;
+		f32 h = fp.y-ep.y;
 		if(h>0.0f){
-			float dl =h*tan(m_lim_x_rot.y);
-			float ds = fp.distance_to_xz(ep);
+			f32 dl =h*tan(m_lim_x_rot.y);
+			f32 ds = fp.distance_to_xz(ep);
 			if(ds>dl){
-				float half_trail = ds-dl;
+				f32 half_trail = ds-dl;
 				m_enemy.fire_trail_length_curr = half_trail*2.0f;
 				clamp(m_enemy.fire_trail_length_curr,0.0f,m_enemy.fire_trail_length_des);
 //				Msg("Start fire. Desired length=%f, cur_length=%f",m_enemy.fire_trail_length_des,m_enemy.fire_trail_length_curr);
@@ -185,7 +181,7 @@ void CHelicopter::MGunFireEnd()
 	m_enemy.fStartFireTime		= -1.0f;
 }
 
-bool between(const float& src, const float& min, const float& max){return( (src>min)&&(src<max));}
+bool between(const f32& src, const f32& min, const f32& max){return( (src>min)&&(src<max));}
 
 void CHelicopter::UpdateWeapons		()
 {
@@ -204,7 +200,7 @@ void CHelicopter::UpdateWeapons		()
 
 		if(m_allow_fire){
 			
-			float d = XFORM().c.distance_to_xz(m_enemy.destEnemyPos);
+			f32 d = XFORM().c.distance_to_xz(m_enemy.destEnemyPos);
 			
 			if( between(d,m_min_mgun_dist,m_max_mgun_dist) )
 					MGunFireStart();
@@ -264,14 +260,14 @@ void CHelicopter::UpdateMGunDir()
 	{// x angle
 		Fvector A_;		A_.sub(dep,m_bind_x);	m_i_bind_x_xform.transform_dir(A_); A_.normalize();
 		m_tgt_rot.x		= angle_normalize_signed(m_bind_rot.x-A_.getP());
-		float sv_x		= m_tgt_rot.x;
+		f32 sv_x		= m_tgt_rot.x;
 		clamp			(m_tgt_rot.x,-m_lim_x_rot.y,-m_lim_x_rot.x);
 		if (!fsimilar(sv_x,m_tgt_rot.x,EPS_L)) m_allow_fire=FALSE;
 	}
 	{// y angle
 		Fvector A_;		A_.sub(dep,m_bind_y);	m_i_bind_y_xform.transform_dir(A_); A_.normalize();
 		m_tgt_rot.y		= angle_normalize_signed(m_bind_rot.y-A_.getH());
-		float sv_y		= m_tgt_rot.y;
+		f32 sv_y		= m_tgt_rot.y;
 		clamp			(m_tgt_rot.y,-m_lim_y_rot.y,-m_lim_y_rot.x);
 		if (!fsimilar(sv_y,m_tgt_rot.y,EPS_L)) m_allow_fire=FALSE;
 	}
@@ -279,7 +275,6 @@ void CHelicopter::UpdateMGunDir()
 	if ((angle_difference(m_cur_rot.x,m_tgt_rot.x)>deg2rad(m_barrel_dir_tolerance))||
 		(angle_difference(m_cur_rot.y,m_tgt_rot.y)>deg2rad(m_barrel_dir_tolerance)))
 		m_allow_fire=FALSE;
-
 }
 
 void CHelicopter::startRocket(u16 idx)
@@ -314,12 +309,10 @@ void CHelicopter::startRocket(u16 idx)
 
 		m_last_launched_rocket = idx;
 		HUD_SOUND::PlaySound(m_sndShotRocket, xform.c, this, false);
-
 	}
 }
 
 const Fmatrix& CHelicopter::get_ParticlesXFORM()
-
 {
 	return m_fire_bone_xform;
 }

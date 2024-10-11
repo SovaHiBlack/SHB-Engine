@@ -73,7 +73,7 @@ IC	GameGraph::_GRAPH_ID CGameLevelCrossTable::CCell::game_vertex_id() const
 	return				(tGraphIndex);
 }
 
-IC	float CGameLevelCrossTable::CCell::distance() const
+IC	f32 CGameLevelCrossTable::CCell::distance() const
 {
 	return				(fDistance);
 }

@@ -191,7 +191,6 @@ void CPHMovementControl::Calculate(const xr_vector<DetailPathManager::STravelPat
 	m_character->IPosition(new_position);
 
 	int index=0;//nearest point
-	//float distance;//distance
 
 	bool  near_line;
 	m_path_size=path.size();
@@ -748,7 +747,7 @@ void CPHMovementControl::Load					(pcstr section){
 
 
 	// m_PhysicMovementControl: Frictions
-	//float af, gf, wf;
+	//f32 af, gf, wf;
 	//af					= pSettings->r_float	(section,"ph_friction_air"	);
 	//gf					= pSettings->r_float	(section,"ph_friction_ground");
 	//wf					= pSettings->r_float	(section,"ph_friction_wall"	);

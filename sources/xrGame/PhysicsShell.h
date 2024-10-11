@@ -135,7 +135,7 @@ public:
 	virtual				dBodyID					get_body								()																													= 0;
 	virtual		const	Fvector					&mass_Center							()																													= 0;
 	virtual		const	Fvector					&local_mass_Center						()																													= 0;
-	virtual		float							getRadius								()																													= 0;
+	virtual		f32							getRadius								()																													= 0;
 	virtual		dMass							*getMassTensor							()																													= 0;
 	virtual		void							get_MaxAreaDir							(Fvector& dir)																										= 0;
 	virtual		ObjectContactCallbackFun		*get_ObjectContactCallback				()																													= 0;

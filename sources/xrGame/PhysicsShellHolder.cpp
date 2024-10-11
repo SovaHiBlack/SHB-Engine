@@ -253,7 +253,7 @@ void CPhysicsShellHolder::UpdateCL	()
 	//обновить присоединенные партиклы
 	UpdateParticles		();
 }
-float CPhysicsShellHolder::EffectiveGravity()
+f32 CPhysicsShellHolder::EffectiveGravity()
 {
 	return ph_world->Gravity();
 }

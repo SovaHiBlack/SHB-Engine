@@ -446,15 +446,15 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 	Fvector			tgt_dir;
 	random_dir		(tgt_dir, new_dir, deg2rad(10.f));
 
-	float ricoshet_factor	= bullet->dir.dotproduct(tgt_dir);
+	f32 ricoshet_factor	= bullet->dir.dotproduct(tgt_dir);
 
-	float f			= Random.randF	(0.5f,1.f);
-	//float f				= Random.randF	(0.0f,0.3);
+	f32 f			= Random.randF	(0.5f,1.f);
+	//f32 f				= Random.randF	(0.0f,0.3);
 //	if(shoot_factor<RICOCHET_THRESHOLD &&  )
 	if (((f+shoot_factor)<ricoshet_factor) && bullet->flags.allow_ricochet)	{
 		//уменьшение скорости полета в зависимости 
 		//от угла падения пули (чем прямее угол, тем больше потеря)
-		float scale = 1.f -_abs(bullet->dir.dotproduct(hit_normal))*m_fCollisionEnergyMin;
+		f32 scale = 1.f -_abs(bullet->dir.dotproduct(hit_normal))*m_fCollisionEnergyMin;
 		clamp(scale, 0.f, m_fCollisionEnergyMax);
 
 		//вычисление рикошета, делается немного фейком,
@@ -467,7 +467,7 @@ std::pair<float, float>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvect
 		//уменьшить скорость в зависимости от простреливаемости
 		bullet->speed *= (1-mtl->fShootFactor)*scale;
 		//сколько энергии в процентах потеряла пуля при столкновении
-		float energy_lost = 1.f - bullet->speed/old_speed;
+		f32 energy_lost = 1.f - bullet->speed/old_speed;
 		//импульс переданный объекту равен прямопропорционален потерянной энергии
 		impulse = bullet->hit_impulse*speed_factor*energy_lost;
 

@@ -20,7 +20,7 @@ protected:
 public:
 							CHolderCustom		()				{m_owner=NULL;m_ownerActor=NULL;}
 	virtual					~CHolderCustom		()				{;}
-	virtual	void			UpdateEx			(float fov){}; //called by owner
+	virtual	void			UpdateEx			(f32 fov){}; //called by owner
 	virtual CHolderCustom	*cast_holder_custom	()				{return this;}
 			bool			Engaged				()				{return m_owner!=NULL;}
 	virtual void			OnMouseMove			(int x, int y)	= 0;
@@ -30,7 +30,7 @@ public:
 	// Inventory for the car
 	virtual CInventory*		GetInventory		()				= 0;
 
-	virtual void			cam_Update			(float dt, float fov=90.0f)		= 0;
+	virtual void			cam_Update			(f32 dt, f32 fov=90.0f)		= 0;
 
 	virtual bool			Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos)=0;
 	virtual bool			attach_Actor		(CGameObject* actor);

@@ -339,7 +339,7 @@ public:
 			void				SetNonscriptUsable	(bool nonscript_usable);
 ///////////////////////////////////////////////////////////////////////////////////////////
 			void				set_fastcall		(const luabind::functor<bool> &functor, const luabind::object &object);
-			void				set_const_force		(const Fvector &dir,float value,u32  time_interval)							;
+			void				set_const_force		(const Fvector &dir, f32 value,u32  time_interval)							;
 //////////////////////////////////////////////////////////////////////////
 
 			pcstr				GetPatrolPathName	();
