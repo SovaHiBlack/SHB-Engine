@@ -35,7 +35,7 @@ CStats::~CStats()
 
 void _draw_cam_pos(CGameFont* pFont)
 {
-	F32 sz		= pFont->GetHeight();
+	f32 sz		= pFont->GetHeight();
 	pFont->SetHeightI(0.02f);
 	pFont->SetColor	(0xffffffff);
 	pFont->Out		(10, 600, "CAMERA POSITION:  [%3.2f,%3.2f,%3.2f]",VPUSH(Device.vCameraPosition));
@@ -104,18 +104,18 @@ void CStats::Show()
 
 	// calc FPS & TPS
 	if (Device.fTimeDelta> EPSILON_7) {
-		F32 fps  = 1.f/Device.fTimeDelta;
-		F32 fOne = 0.3f;
-		F32 fInv = 1.f-fOne;
+		f32 fps  = 1.f/Device.fTimeDelta;
+		f32 fOne = 0.3f;
+		f32 fInv = 1.f-fOne;
 		fFPS = fInv*fFPS + fOne*fps;
 
 		if (RenderTOTAL.result> EPSILON_7) {
-			fTPS = fInv*fTPS + fOne* F32(RCache.stat.polys)/(RenderTOTAL.result*1000.f);
+			fTPS = fInv*fTPS + fOne* f32(RCache.stat.polys)/(RenderTOTAL.result*1000.f);
 			fRFPS= fInv*fRFPS+ fOne*1000.f/RenderTOTAL.result;
 		}
 	}
 	{
-		F32 mem_count		= F32(Memory.stat_calls);
+		f32 mem_count		= f32(Memory.stat_calls);
 		if (mem_count>fMem_calls)	fMem_calls	=	mem_count;
 		else						fMem_calls	=	.9f*fMem_calls + .1f*mem_count;
 		Memory.stat_calls	= 0		;
@@ -133,14 +133,14 @@ void CStats::Show()
 	}
 
 	CGameFont& F = *pFont;
-	F32		f_base_size	= 0.01f;
+	f32		f_base_size	= 0.01f;
 				F.SetHeightI	(f_base_size);
 
 	// Show them
 	if (psDeviceFlags.test(rsStatistic))
 	{
-		static F32	r_ps		= 0;
-		static F32	b_ps		= 0;
+		static f32	r_ps		= 0;
+		static f32	b_ps		= 0;
 		r_ps						= .99f*r_ps + .01f*(clRAY.count/clRAY.result);
 		b_ps						= .99f*b_ps + .01f*(clBOX.count/clBOX.result);
 
@@ -165,7 +165,7 @@ void CStats::Show()
 		F.OutNext	("xforms:      %d",			RCache.stat.xforms);
 		F.OutSkip	();
 
-#define PPP(a) (100.f*F32(a)/F32(EngineTOTAL.result))
+#define PPP(a) (100.f*f32(a)/f32(EngineTOTAL.result))
 		F.OutNext	("*** ENGINE:  %2.2fms",EngineTOTAL.result);	
 		F.OutNext	("Memory:      %2.2fa",fMem_calls);
 		F.OutNext	("uClients:    %2.2fms, %2.1f%%, crow(%d)/active(%d)/total(%d)",UpdateClient.result,PPP(UpdateClient.result),UpdateClient_crows,UpdateClient_active,UpdateClient_total);
@@ -187,7 +187,7 @@ void CStats::Show()
 		F.OutSkip	();
 
 #undef  PPP
-#define PPP(a) (100.f*F32(a)/F32(RenderTOTAL.result))
+#define PPP(a) (100.f*f32(a)/f32(RenderTOTAL.result))
 		F.OutNext	("*** RENDER:  %2.2fms",RenderTOTAL.result);
 		F.OutNext	("R_CALC:      %2.2fms, %2.1f%%",RenderCALC.result,	PPP(RenderCALC.result));	
 		F.OutNext	("  HOM:       %2.2fms, %d",RenderCALC_HOM.result,	RenderCALC_HOM.count);

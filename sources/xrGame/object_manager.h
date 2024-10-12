@@ -25,7 +25,7 @@ public:
 	virtual void			update			();
 			bool			add				(T *object);
 	virtual bool			is_useful		(T *object) const;
-	virtual	float			do_evaluate		(T *object) const;
+	virtual	f32			do_evaluate		(T *object) const;
 	virtual	void			reset			();
 
 public:

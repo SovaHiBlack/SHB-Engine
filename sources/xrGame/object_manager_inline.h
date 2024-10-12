@@ -45,12 +45,12 @@ void CAbstractObjectManager::reload					(pcstr section)
 TEMPLATE_SPECIALIZATION
 void CAbstractObjectManager::update					()
 {
-	float					result = flt_max;
+	f32					result = flt_max;
 	m_selected				= 0;
 	OBJECTS::const_iterator	I = m_objects.begin();
 	OBJECTS::const_iterator	E = m_objects.end();
 	for ( ; I != E; ++I) {
-		float				value = do_evaluate(*I);
+		f32				value = do_evaluate(*I);
 		if (result > value) {
 			result			= value;
 			m_selected		= *I;
@@ -59,7 +59,7 @@ void CAbstractObjectManager::update					()
 }
 
 TEMPLATE_SPECIALIZATION
-float CAbstractObjectManager::do_evaluate			(T *object) const
+f32 CAbstractObjectManager::do_evaluate			(T *object) const
 {
 	return					(0.f);
 }

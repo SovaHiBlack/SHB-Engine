@@ -62,7 +62,7 @@ protected:
 protected:
 	int			x0,y0;
 	u32			max_range_sqr;
-	float		m_cell_dist;
+	f32		m_cell_dist;
 
 public:
 	virtual				~CPathManager	();

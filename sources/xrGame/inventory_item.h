@@ -114,7 +114,7 @@ public:
 
 			BOOL				IsQuestItem			()	const	{return m_flags.test(FIsQuestItem);}			
 			u32					Cost				() const	{ return m_cost; }
-	virtual float				Weight				() 			{ return m_weight;}		
+	virtual f32				Weight				() 			{ return m_weight;}
 
 public:
 	CInventory*					m_pCurrentInventory;
@@ -136,14 +136,14 @@ public:
 			int					GetXPos				() const ;
 			int					GetYPos				() const ;
 	//---------------------------------------------------------------------
-			float				GetKillMsgXPos		() const ;
-			float				GetKillMsgYPos		() const ;
-			float				GetKillMsgWidth		() const ;
-			float				GetKillMsgHeight	() const ;
+			f32				GetKillMsgXPos		() const ;
+			f32				GetKillMsgYPos		() const ;
+			f32				GetKillMsgWidth		() const ;
+			f32				GetKillMsgHeight	() const ;
 	//---------------------------------------------------------------------
-			float				GetCondition		() const					{return m_fCondition;}
-	virtual	float				GetConditionToShow	() const					{return GetCondition();}
-			void				ChangeCondition		(float fDeltaCondition);
+			f32				GetCondition		() const					{return m_fCondition;}
+	virtual	f32				GetConditionToShow	() const					{return GetCondition();}
+			void				ChangeCondition		(f32 fDeltaCondition);
 
 	virtual u32					GetSlot				()  const					{return m_slot;}
 
@@ -157,18 +157,18 @@ public:
 			bool				CanTrade			() const;
 	virtual bool 				IsNecessaryItem	    (CInventoryItem* item);
 	virtual bool				IsNecessaryItem	    (const shared_str& item_sect){return false;};
-protected:
-	
+
+protected:	
 	u32							m_slot;
 	u32							m_cost;
-	float						m_weight;
-	float						m_fCondition;
+	f32						m_weight;
+	f32						m_fCondition;
 	shared_str					m_Description;
 
 	ALife::_TIME_ID				m_dwItemRemoveTime;
 	ALife::_TIME_ID				m_dwItemIndependencyTime;
 
-	float						m_fControlInertionFactor;
+	f32						m_fControlInertionFactor;
 	shared_str					m_icon_name;
 
 	////////// network //////////////////////////////////////////////////
@@ -193,7 +193,7 @@ public:
 
 	virtual	bool				IsSprintAllowed				() const		{return !!m_flags.test(FAllowSprint);} ;
 
-	virtual	float				GetControlInertionFactor(	) const			{return m_fControlInertionFactor;};
+	virtual	f32				GetControlInertionFactor(	) const			{return m_fControlInertionFactor;};
 
 protected:
 	virtual void				UpdateXForm	();
@@ -224,11 +224,11 @@ public:
 	virtual void				on_activate_physic_shell	() { R_ASSERT(0); } //sea
 
 protected:
-	float						m_holder_range_modifier;
-	float						m_holder_fov_modifier;
+	f32						m_holder_range_modifier;
+	f32						m_holder_fov_modifier;
 
 public:
-	virtual	void				modify_holder_params		(float &range, float &fov) const;
+	virtual	void				modify_holder_params		(f32& range, f32& fov) const;
 
 protected:
 	IC	CInventoryOwner&		inventory_owner				() const;

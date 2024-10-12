@@ -26,7 +26,7 @@ public:
 						CParticlesObject	(pcstr p_name, BOOL bAutoRemove, bool destroy_on_game_load);
 
 	virtual bool		shedule_Needed		()	{return true;};
-	virtual float		shedule_Scale		()	;
+	virtual f32		shedule_Scale		()	;
 	virtual void		shedule_Update		(u32 dt);
 	virtual void		renderable_Render	();
 	void				PerformAllTheWork	(u32 dt);

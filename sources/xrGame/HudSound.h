@@ -17,8 +17,8 @@ struct HUD_SOUND
 	static void		LoadSound		(pcstr section, pcstr line,
 		ref_sound& hud_snd,
 		int type = sg_SourceType,
-		float* volume = NULL,
-		float* delay = NULL);
+									 f32* volume = NULL,
+									 f32* delay = NULL);
 
 	static void		LoadSound		(pcstr section, pcstr line,
 		HUD_SOUND& hud_snd,  int type = sg_SourceType);
@@ -50,10 +50,9 @@ struct HUD_SOUND
 
 	struct SSnd		{
 		ref_sound	snd;
-		float		delay;		//задержка перед проигрыванием
-		float		volume;		//громкость
+		f32		delay;		//задержка перед проигрыванием
+		f32		volume;		//громкость
 	};
 	SSnd*			m_activeSnd;
 	xr_vector<SSnd> sounds;
 };
-

@@ -38,12 +38,12 @@ class cl_fog_plane	: public R_constant_setup {
 			plane.y			= -(M._24 + M._23);
 			plane.z			= -(M._34 + M._33);
 			plane.w			= -(M._44 + M._43);
-			F32 denom		= -1.0f / _sqrt(_sqr(plane.x)+_sqr(plane.y)+_sqr(plane.z));
+			f32 denom		= -1.0f / _sqrt(_sqr(plane.x)+_sqr(plane.y)+_sqr(plane.z));
 			plane.mul		(denom);
 
 			// Near/Far
-			F32 A			= g_pGamePersistent->Environment().CurrentEnv.fog_near;
-			F32 B			= 1/(g_pGamePersistent->Environment().CurrentEnv.fog_far - A);
+			f32 A			= g_pGamePersistent->Environment().CurrentEnv.fog_near;
+			f32 B			= 1/(g_pGamePersistent->Environment().CurrentEnv.fog_far - A);
 
 			result.set		(-plane.x*B, -plane.y*B, -plane.z*B, 1 - (plane.w-A)*B	);								// view-plane
 		}
@@ -61,9 +61,9 @@ class cl_fog_params	: public R_constant_setup {
 		if (marker!=Device.dwFrame)
 		{
 			// Near/Far
-			F32	n		= g_pGamePersistent->Environment().CurrentEnv.fog_near	;
-			F32	f		= g_pGamePersistent->Environment().CurrentEnv.fog_far		;
-			F32	r		= 1/(f-n);
+			f32	n		= g_pGamePersistent->Environment().CurrentEnv.fog_near	;
+			f32	f		= g_pGamePersistent->Environment().CurrentEnv.fog_far		;
+			f32	r		= 1/(f-n);
 			result.set		(-n*r, r, r, r);
 		}
 		RCache.set_c	(C,result);
@@ -87,7 +87,7 @@ class cl_fog_color	: public R_constant_setup {
 class cl_times		: public R_constant_setup {
 	virtual void setup(R_constant* C)
 	{
-		F32 		t	= Device.fTimeGlobal;
+		f32 		t	= Device.fTimeGlobal;
 		RCache.set_c	(C,t,t*10,t/10,_sin(t))	;
 	}
 };

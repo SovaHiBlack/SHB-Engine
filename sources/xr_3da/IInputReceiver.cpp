@@ -68,8 +68,8 @@ void	IInputReceiver::IR_GetMousePosIndependent		(Fvector2 &f)
 	Ivector2 p;
 	IR_GetMousePosReal(p);
 	f.set(
-		2.f* F32(p.x)/ F32(Device.dwWidth)-1.f,
-		2.f* F32(p.y)/ F32(Device.dwHeight)-1.f
+		2.f* f32(p.x)/ f32(Device.dwWidth)-1.f,
+		2.f* f32(p.y)/ f32(Device.dwHeight)-1.f
 		);
 }
 

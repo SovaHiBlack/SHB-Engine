@@ -12,7 +12,7 @@ public:
 	{
 		CL.ray_options(f);
 	}
-	IC void			ray_query			(const CDB::MODEL* m_def, const Fvector& r_start, const Fvector& r_dir, F32 r_range = 10000.0f)
+	IC void			ray_query			(const CDB::MODEL* m_def, const Fvector& r_start, const Fvector& r_dir, f32 r_range = 10000.0f)
 	{
 
 #ifdef DEBUG

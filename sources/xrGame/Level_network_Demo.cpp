@@ -300,7 +300,7 @@ static DWORD dFrame = 1;
 void						CLevel::Demo_Update				()
 {
 	if (!IsDemoPlay() || m_aDemoData.empty() || !m_bDemoStarted) return;
-	if (float(m_lDemoOfs)/lFileSize>0.95f)
+	if (f32(m_lDemoOfs)/lFileSize>0.95f)
 	{
 		g_dwDemoDeltaFrame = 1;
 		dFrame = 1;

@@ -13,7 +13,7 @@ using namespace	collide;
 //--------------------------------------------------------------------------------
 // RayTest - Occluded/No
 //--------------------------------------------------------------------------------
-BOOL CObjectSpace::RayTest	( const Fvector &start, const Fvector &dir, F32 range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
+BOOL CObjectSpace::RayTest	( const Fvector &start, const Fvector &dir, f32 range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
 {
 	Lock.Enter		();
 	BOOL	_ret	= _RayTest(start,dir,range,tgt,cache,ignore_object);
@@ -21,7 +21,7 @@ BOOL CObjectSpace::RayTest	( const Fvector &start, const Fvector &dir, F32 range
 	Lock.Leave		();
 	return			_ret;
 }
-BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, F32 range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
+BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, f32 range, collide::rq_target tgt, collide::ray_cache* cache, CObject* ignore_object)
 {
 	VERIFY					(_abs(dir.magnitude()-1)< EPSILON_5);
 	r_temp.r_clear			();
@@ -57,9 +57,9 @@ BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, F32 rang
 			}
 
 			// 1. Check cached polygon
-			F32 _u;
-			F32 _v;
-			F32 _range;
+			f32 _u;
+			f32 _v;
+			f32 _range;
 			if (CDB::TestRayTri(start,dir,cache->verts,_u,_v,_range,false)) 
 			{
 				if (_range>0 && _range<range) return TRUE;
@@ -92,7 +92,7 @@ BOOL CObjectSpace::_RayTest	( const Fvector &start, const Fvector &dir, F32 rang
 //--------------------------------------------------------------------------------
 // RayPick
 //--------------------------------------------------------------------------------
-BOOL CObjectSpace::RayPick	( const Fvector &start, const Fvector &dir, F32 range, rq_target tgt, rq_result& R, CObject* ignore_object)
+BOOL CObjectSpace::RayPick	( const Fvector &start, const Fvector &dir, f32 range, rq_target tgt, rq_result& R, CObject* ignore_object)
 {
 	Lock.Enter		();
 	BOOL	_res	= _RayPick(start,dir,range,tgt,R,ignore_object);
@@ -100,7 +100,7 @@ BOOL CObjectSpace::RayPick	( const Fvector &start, const Fvector &dir, F32 range
 	Lock.Leave		();
 	return	_res;
 }
-BOOL CObjectSpace::_RayPick	( const Fvector &start, const Fvector &dir, F32 range, rq_target tgt, rq_result& R, CObject* ignore_object)
+BOOL CObjectSpace::_RayPick	( const Fvector &start, const Fvector &dir, f32 range, rq_target tgt, rq_result& R, CObject* ignore_object)
 {
 	r_temp.r_clear			();
 	R.O		= 0; R.range = range; R.element = -1;
@@ -217,7 +217,7 @@ BOOL CObjectSpace::_RayQuery3	(collide::rq_results& r_dest, const collide::ray_d
 											((R.tgt&rqtObstacle)?rqtObstacle:rqtNone	)|
 											((R.tgt&rqtShape)	?rqtShape:rqtNone)		);
 	u32			d_flags		=	STYPE_COLLIDEABLE|((R.tgt&rqtObstacle)?STYPE_OBSTACLE:0)|((R.tgt&rqtShape)?STYPE_SHAPE:0);
-	F32		d_range		= 0.f;
+	f32		d_range		= 0.f;
 
 	do{
 		r_temp.r_clear		();

@@ -464,7 +464,7 @@ pcstr CInventoryOwner::trade_section			() const
 	return						(READ_IF_EXISTS(pSettings,r_string,game_object->cNameSect(),"trade_section","trade"));
 }
 
-float CInventoryOwner::deficit_factor			(const shared_str &section) const
+f32 CInventoryOwner::deficit_factor			(const shared_str &section) const
 {
 	if (!m_purchase_list)
 		return					(1.f);
@@ -534,7 +534,7 @@ bool CInventoryOwner::use_default_throw_force	()
 	return						(true);
 }
 
-float CInventoryOwner::missile_throw_force		() 
+f32 CInventoryOwner::missile_throw_force		()
 {
 	NODEFAULT;
 #ifdef DEBUG

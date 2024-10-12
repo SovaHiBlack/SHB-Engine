@@ -56,13 +56,13 @@ u32				frustum_aabb_remap [8][6]	=
 };
 
 //////////////////////////////////////////////////////////////////////
-EFC_Visible	CFrustum::testSphere			(Fvector& c, F32 r, u32& test_mask) const
+EFC_Visible	CFrustum::testSphere			(Fvector& c, f32 r, u32& test_mask) const
 {
 	u32	bit = 1;
 	for (int i=0; i<p_count; i++, bit<<=1)
 	{
 		if (test_mask&bit) {
-			F32 cls = planes[i].classify	(c);
+			f32 cls = planes[i].classify	(c);
 			if (cls>r) { test_mask=0; return fcvNone;}	// none  - return
 			if (_abs(cls)>=r) test_mask&=~bit;			// fully - no need to test this plane
 		}
@@ -70,7 +70,7 @@ EFC_Visible	CFrustum::testSphere			(Fvector& c, F32 r, u32& test_mask) const
 	return test_mask ? fcvPartial:fcvFully;
 }
 
-BOOL	CFrustum::testSphere_dirty		(Fvector& c, F32 r) const
+BOOL	CFrustum::testSphere_dirty		(Fvector& c, f32 r) const
 {
 	switch (p_count) {
 		case 12:if (planes[11].classify(c)>r)	return FALSE;
@@ -91,7 +91,7 @@ BOOL	CFrustum::testSphere_dirty		(Fvector& c, F32 r) const
 	return TRUE;
 }
 
-EFC_Visible	CFrustum::testAABB			(const F32* mM, u32& test_mask) const
+EFC_Visible	CFrustum::testAABB			(const f32* mM, u32& test_mask) const
 {
 	// go for trivial rejection or acceptance using "faster overlap test"
 	u32		bit = 1;
@@ -107,13 +107,13 @@ EFC_Visible	CFrustum::testAABB			(const F32* mM, u32& test_mask) const
 	return test_mask ? fcvPartial:fcvFully;
 }
 
-EFC_Visible	CFrustum::testSAABB			(Fvector& c, F32 r, const F32* mM, u32& test_mask) const
+EFC_Visible	CFrustum::testSAABB			(Fvector& c, f32 r, const f32* mM, u32& test_mask) const
 {
 	u32	bit = 1;
 	for (int i=0; i<p_count; i++, bit<<=1)
 	{
 		if (test_mask&bit) {
-			F32 cls = planes[i].classify(c);
+			f32 cls = planes[i].classify(c);
 			if (cls>r) { test_mask=0; return fcvNone;}	// none  - return
 			if (_abs(cls)>=r) test_mask&=~bit;			// fully - no need to test this plane
 			else {
@@ -155,7 +155,7 @@ void CFrustum::CreateFromPlanes(Fplane* p, int count){
 		planes[k].set(p[k]);
 
 	for (int i=0;i<count;i++)	{
-		F32 denom		=	1.0f / planes[i].n.magnitude();// Get magnitude of Vector
+		f32 denom		=	1.0f / planes[i].n.magnitude();// Get magnitude of Vector
 		planes[i].n.x	*=	denom;
 		planes[i].n.y	*=	denom;
 		planes[i].n.z	*=	denom;
@@ -196,7 +196,7 @@ void CFrustum::CreateFromPortal(sPoly* poly, Fvector& vPN, Fvector& vBase, Fmatr
 	P.n.y		= -(M._24 - M._23);
 	P.n.z		= -(M._34 - M._33);
 	P.d			= -(M._44 - M._43);
-	F32 denom = 1.0f / P.n.magnitude();
+	f32 denom = 1.0f / P.n.magnitude();
 	P.n.x		*= denom;
 	P.n.y		*= denom;
 	P.n.z		*= denom;
@@ -246,7 +246,7 @@ void CFrustum::CreateOccluder(Fvector* p, int count, Fvector& vBase, CFrustum& c
 	VERIFY(count>=3);
 
 	BOOL	edge[FRUSTUM_SAFE];
-	F32		cls	[FRUSTUM_SAFE];
+	f32		cls	[FRUSTUM_SAFE];
 	ZeroMemory	(edge,sizeof(edge));
 	for (int i=0; i<clip.p_count; i++)
 	{
@@ -291,15 +291,15 @@ sPoly*	CFrustum::ClipPoly(sPoly& S, sPoly& D) const
 		dest->clear		();
 
 		// classify all points relative to plane #i
-		F32	cls	[FRUSTUM_SAFE];
+		f32	cls	[FRUSTUM_SAFE];
 		for (u32 j=0; j<src->size(); j++) cls[j]=P.classify((*src)[j]);
 
 		// clip everything to this plane
 		cls[src->size()] = cls[0];
 		src->push_back((*src)[0]);
 		Fvector D;
-		F32 denum;
-		F32 t;
+		f32 denum;
+		f32 t;
 		for (j=0; j<src->size()-1; j++)
 		{
 			if ((*src)[j].similar((*src)[j+1], EPSILON_7)) continue;
@@ -424,7 +424,7 @@ void CFrustum::CreateFromMatrix(Fmatrix &M, u32 mask)
 
 	for (int i=0;i<p_count;i++)
 	{
-		F32 denom		= 1.0f / planes[i].n.magnitude();// Get magnitude of Vector
+		f32 denom		= 1.0f / planes[i].n.magnitude();// Get magnitude of Vector
 		planes[i].n.x	*= denom;
 		planes[i].n.y	*= denom;
 		planes[i].n.z	*= denom;

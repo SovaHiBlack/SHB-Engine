@@ -20,7 +20,8 @@ class ENGINE_API CTheoraStream{
 	ogg_int64_t			d_frame;
 	u32					tm_total;
 	u32					key_rate;			// theora have const key rate
-	F32				fpms;
+	f32				fpms;
+
 protected:
 	int					ReadData			();
 	BOOL				ParseHeaders		();

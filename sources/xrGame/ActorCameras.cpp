@@ -28,40 +28,41 @@ void CActor::cam_Set	(EActorCameras style)
 	old_cam->OnDeactivate();
 	cam_Active()->OnActivate(old_cam);
 }
-F32 CActor::f_Ladder_cam_limit=1.f;
+f32 CActor::f_Ladder_cam_limit=1.f;
 void CActor::cam_SetLadder()
 {
 	CCameraBase* C			= cameras[eacFirstEye];
 	g_LadderOrient			();
-	F32 yaw				= (-XFORM().k.getH());
-	F32& cam_yaw			= C->yaw;
-	F32 delta_yaw			= angle_difference_signed(yaw,cam_yaw);
+	f32 yaw				= (-XFORM().k.getH());
+	f32& cam_yaw			= C->yaw;
+	f32 delta_yaw			= angle_difference_signed(yaw,cam_yaw);
 
 	if(-f_Ladder_cam_limit<delta_yaw&&f_Ladder_cam_limit>delta_yaw)
 	{
 		yaw					= cam_yaw+delta_yaw;
-		F32 lo			= (yaw-f_Ladder_cam_limit);
-		F32 hi			= (yaw+f_Ladder_cam_limit);
+		f32 lo			= (yaw-f_Ladder_cam_limit);
+		f32 hi			= (yaw+f_Ladder_cam_limit);
 		C->lim_yaw[0]		= lo;
 		C->lim_yaw[1]		= hi;
 		C->bClampYaw		= true;
 	}
 }
-void CActor::camUpdateLadder(F32 dt)
+
+void CActor::camUpdateLadder(f32 dt)
 {
 	if(!character_physics_support()->movement()->ElevatorState())
 															return;
 	if(cameras[eacFirstEye]->bClampYaw) return;
-	F32 yaw				= (-XFORM().k.getH());
+	f32 yaw				= (-XFORM().k.getH());
 
-	F32& cam_yaw			= cameras[eacFirstEye]->yaw;
-	F32 delta				= angle_difference_signed(yaw,cam_yaw);
+	f32& cam_yaw			= cameras[eacFirstEye]->yaw;
+	f32 delta				= angle_difference_signed(yaw,cam_yaw);
 
 	if(-0.05f<delta&&0.05f>delta)
 	{
 		yaw									= cam_yaw+delta;
-		F32 lo							= (yaw-f_Ladder_cam_limit);
-		F32 hi							= (yaw+f_Ladder_cam_limit);
+		f32 lo							= (yaw-f_Ladder_cam_limit);
+		f32 hi							= (yaw+f_Ladder_cam_limit);
 		cameras[eacFirstEye]->lim_yaw[0]	= lo;
 		cameras[eacFirstEye]->lim_yaw[1]	= hi;
 		cameras[eacFirstEye]->bClampYaw		= true;
@@ -72,9 +73,9 @@ void CActor::camUpdateLadder(F32 dt)
 	CElevatorState* es = character_physics_support()->movement()->ElevatorState();
 	if(es && es->State()==CElevatorState::clbClimbingDown)
 	{
-		F32& cam_pitch					= cameras[eacFirstEye]->pitch;
-		const F32 ldown_pitch				= cameras[eacFirstEye]->lim_pitch.y;
-		F32 delta							= angle_difference_signed(ldown_pitch,cam_pitch);
+		f32& cam_pitch					= cameras[eacFirstEye]->pitch;
+		const f32 ldown_pitch				= cameras[eacFirstEye]->lim_pitch.y;
+		f32 delta							= angle_difference_signed(ldown_pitch,cam_pitch);
 		if(delta>0.f)
 			cam_pitch						+= delta* _min(dt*10.f,1.f) ;
 	}
@@ -87,29 +88,30 @@ void CActor::cam_UnsetLadder()
 	C->lim_yaw[1]			= 0;
 	C->bClampYaw			= false;
 }
-F32 CActor::CameraHeight()
+
+f32 CActor::CameraHeight()
 {
 	Fvector						R;
 	character_physics_support()->movement()->Box().getsize		(R);
 	return						m_fCamHeightFactor*R.y;
 }
 
-IC F32 viewport_near(F32& w, F32& h)
+IC f32 viewport_near(f32& w, f32& h)
 {
 	w = 2.f*VIEWPORT_NEAR*tan(deg2rad(Device.fFOV)/2.f);
 	h = w*Device.fASPECT;
-	F32	c	= _sqrt					(w*w + h*h);
+	f32	c	= _sqrt					(w*w + h*h);
 	return	_max(_max(VIEWPORT_NEAR,_max(w,h)),c);
 }
 
-ICF void calc_point(Fvector& pt, F32 radius, F32 depth, F32 alpha)
+ICF void calc_point(Fvector& pt, f32 radius, f32 depth, f32 alpha)
 {
 	pt.x	= radius*_sin(alpha);
 	pt.y	= radius+radius*_cos(alpha);
 	pt.z	= depth;
 }
 
-ICF BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector& ext, F32 radius, F32 angle)
+ICF BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector& ext, f32 radius, f32 angle)
 {
 	Fvector				pt;
 	calc_point			(pt,radius,VIEWPORT_NEAR/2,angle);
@@ -129,7 +131,7 @@ ICF BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, cons
 #include "physics.h"
 #include "PHActivationShape.h"
 #include "DebugRenderer.h"
-void CActor::cam_Update(F32 dt, F32 fFOV)
+void CActor::cam_Update(f32 dt, f32 fFOV)
 {
 	if(m_holder)		return;
 
@@ -148,13 +150,13 @@ void CActor::cam_Update(F32 dt, F32 fFOV)
 	{
 		if (!fis_zero(r_torso_tgt_roll)){
 			Fvector src_pt,tgt_pt;
-			F32 radius		= point.y*0.5f;
-			F32 alpha			= r_torso_tgt_roll/2.f;
-			F32 dZ			= ((PI_DIV_2-((PI+alpha)/2)));
+			f32 radius		= point.y*0.5f;
+			f32 alpha			= r_torso_tgt_roll/2.f;
+			f32 dZ			= ((PI_DIV_2-((PI+alpha)/2)));
 			calc_point			(tgt_pt,radius,0,alpha);
 			src_pt.set			(0,tgt_pt.y,0);
 			// init valid angle
-			F32 valid_angle	= alpha;
+			f32 valid_angle	= alpha;
 			// xform with roll
 			xformR.setXYZ		(-r_torso.pitch,r_torso.yaw,-dZ);
 			Fmatrix33			mat; 
@@ -162,9 +164,9 @@ void CActor::cam_Update(F32 dt, F32 fFOV)
 			mat.j				= xformR.j;
 			mat.k				= xformR.k;
 			// get viewport params
-			F32 w;
-			F32 h;
-			F32 c				= viewport_near(w,h);
+			f32 w;
+			f32 h;
+			f32 c				= viewport_near(w,h);
 			w/=2.f;
 			h/=2.f;
 			// find tris
@@ -185,14 +187,14 @@ void CActor::cam_Update(F32 dt, F32 fFOV)
 			xrc.box_query		(Level().ObjectSpace.GetStaticModel(), bc, bd)		;
 			u32 tri_count		= xrc.r_count();
 			if (tri_count)		{
-				F32 da		= 0.f;
+				f32 da		= 0.f;
 				BOOL bIntersect	= FALSE;
 				Fvector	ext		= {w,h,VIEWPORT_NEAR/2};
 				if (test_point(xrc,xform,mat,ext,radius,alpha)){
 					da			= PI/1000.f;
 					if (!fis_zero(r_torso.roll))
 						da		*= r_torso.roll/_abs(r_torso.roll);
-					for (F32 angle=0.f; _abs(angle)<_abs(alpha); angle+=da)
+					for (f32 angle=0.f; _abs(angle)<_abs(alpha); angle+=da)
 						if (test_point(xrc,xform,mat,ext,radius,angle)) { bIntersect=TRUE; break; } 
 						valid_angle	= bIntersect?angle:alpha;
 				} 
@@ -208,13 +210,13 @@ void CActor::cam_Update(F32 dt, F32 fFOV)
 	}
 	if (!fis_zero(r_torso.roll))
 	{
-		F32 radius		= point.y*0.5f;
-		F32 valid_angle	= r_torso.roll/2.f;
+		f32 radius		= point.y*0.5f;
+		f32 valid_angle	= r_torso.roll/2.f;
 		calc_point			(point,radius,0,valid_angle);
 		dangle.z			= (PI_DIV_2-((PI+valid_angle)/2));
 	}
 
-	F32 flCurrentPlayerY	= xform.c.y;
+	f32 flCurrentPlayerY	= xform.c.y;
 
 	// Smooth out stair step ups
 	if ((character_physics_support()->movement()->Environment()==peOnGround) && (flCurrentPlayerY-fPrevCamPos>0)){
@@ -227,7 +229,7 @@ void CActor::cam_Update(F32 dt, F32 fFOV)
 	}else{
 		fPrevCamPos			= flCurrentPlayerY;
 	}
-	F32 _viewport_near			= VIEWPORT_NEAR;
+	f32 _viewport_near			= VIEWPORT_NEAR;
 	// calc point
 	xform.transform_tiny			(point);
 
@@ -263,7 +265,7 @@ void CActor::cam_Update(F32 dt, F32 fFOV)
 /*
 	{
 		CCameraBase* C				= cameras[eacFirstEye];
-		F32 oobox_size			= 2*VIEWPORT_NEAR;
+		f32 oobox_size			= 2*VIEWPORT_NEAR;
 
 
 		Fmatrix						_rot;
@@ -339,7 +341,7 @@ void CActor::update_camera (CCameraShotEffector* effector)
 			pACam->pitch += PI_MUL_2;
 		while (pACam->pitch > pACam->lim_pitch[1])
 			pACam->pitch -= PI_MUL_2;
-	};
+	}
 
 	effector->ApplyLastAngles(&(pACam->pitch), &(pACam->yaw));
 
@@ -347,9 +349,8 @@ void CActor::update_camera (CCameraShotEffector* effector)
 	if (pACam->bClampPitch)	clamp(pACam->pitch,pACam->lim_pitch[0],pACam->lim_pitch[1]);
 }
 
-
 #ifdef DEBUG
-void dbg_draw_frustum (F32 FOV, F32 _FAR, F32 A, Fvector &P, Fvector &D, Fvector &U);
+void dbg_draw_frustum (f32 FOV, f32 _FAR, f32 A, Fvector &P, Fvector &D, Fvector &U);
 extern	Flags32	dbg_net_Draw_Flags;
 
 void CActor::OnRender	()
@@ -413,5 +414,3 @@ void CActor::LoadSleepEffector	(pcstr section)
 	m_pSleepEffector->time_attack		= pSettings->r_float(section,"time_attack");
 	m_pSleepEffector->time_release		= pSettings->r_float(section,"time_release");
 }
-
-

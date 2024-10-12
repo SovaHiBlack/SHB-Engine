@@ -33,7 +33,7 @@ public:
 		Memory.mem_fill	(this,0,sizeof(CMatrix));
 	}
 
-	IC void			tc_trans	(Fmatrix& T, F32 u, F32 v)
+	IC void			tc_trans	(Fmatrix& T, f32 u, f32 v)
 	{
 		T.identity	();
 		T.m[2][0] = u;

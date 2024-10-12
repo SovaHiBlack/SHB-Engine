@@ -119,7 +119,7 @@ void CMemoryManager::update_enemies	(const bool &registered_in_combat)
 	}
 }
 
-void CMemoryManager::update			(float time_delta)
+void CMemoryManager::update			(f32 time_delta)
 {
 	START_PROFILE("Memory Manager")
 

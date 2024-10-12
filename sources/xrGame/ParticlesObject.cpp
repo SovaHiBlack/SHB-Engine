@@ -23,7 +23,7 @@ void CParticlesObject::Init	(pcstr p_name, IRender_Sector* S, BOOL bAutoRemove)
 	m_bLooped				= false;
 	m_bStopping				= false;
 	m_bAutoRemove			= bAutoRemove;
-	float time_limit		= 0.0f;
+	f32 time_limit		= 0.0f;
 
 	// create visual
 	renderable.visual		= Render->model_CreateParticles(p_name);
@@ -76,7 +76,7 @@ void CParticlesObject::UpdateSpatial()
 	// spatial	(+ workaround occasional bug inside particle-system)
 	if (_valid(renderable.visual->vis.sphere))
 	{
-		Fvector	P;	float	R;
+		Fvector	P;	f32	R;
 		renderable.xform.transform_tiny	(P,renderable.visual->vis.sphere.P);
 		R								= renderable.visual->vis.sphere.R;
 		if (0==spatial.type)	{
@@ -195,7 +195,7 @@ Fvector& CParticlesObject::Position		()
 	return renderable.visual->vis.sphere.P;
 }
 
-float CParticlesObject::shedule_Scale		()	
+f32 CParticlesObject::shedule_Scale		()
 { 
 	return Device.vCameraPosition.distance_to(Position())/200.f; 
 }

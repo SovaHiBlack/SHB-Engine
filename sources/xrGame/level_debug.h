@@ -79,7 +79,7 @@ public:
 		#define	SHIFT_POS_DEFAULT		Fvector().set(0.f,2.f,0.f)
 
 		Fvector			m_shift_pos;
-		float			m_delta_height;
+		f32			m_delta_height;
 
 	public: 
 
@@ -87,8 +87,8 @@ public:
 
 			void	add_item		(pcstr text, u32 color, u32 id = u32(-1));
 			
-			void	draw_info		(float x, float &y);
-		IC	void	setup			(const Fvector &shift = SHIFT_POS_DEFAULT, float delta = DELTA_HEIGHT_DEFAULT) {m_shift_pos.set(shift); m_delta_height = delta;}
+			void	draw_info		(f32 x, f32&y);
+		IC	void	setup			(const Fvector &shift = SHIFT_POS_DEFAULT, f32 delta = DELTA_HEIGHT_DEFAULT) {m_shift_pos.set(shift); m_delta_height = delta;}
 
 		IC	Fvector &get_shift_pos	() {return m_shift_pos;}
 	};
@@ -98,20 +98,20 @@ public:
 	struct STextItem {
 		shared_str	text;
 		
-		float		x;
-		float		y;
+		f32		x;
+		f32		y;
 
 		u32			color;
 		u32			id;
 
-		STextItem	(pcstr str, float coord_x, float coord_y, u32 col, u32 i) : text(str), x(coord_x), y(coord_y), color(col), id(i) {}
+		STextItem	(pcstr str, f32 coord_x, f32 coord_y, u32 col, u32 i) : text(str), x(coord_x), y(coord_y), color(col), id(i) {}
 	};
 
 	class CTextInfo : public CItemBase<STextItem> {
 		typedef CItemBase<STextItem> inherited;
 
 	public: 
-			void	add_item		(pcstr text, float x, float y, u32 color, u32 id = u32(-1));
+			void	add_item		(pcstr text, f32 x, f32 y, u32 color, u32 id = u32(-1));
 			void	draw_text		();
 	};
 
@@ -120,7 +120,7 @@ public:
 	struct SLevelItem {
 		Fvector		position1;
 		Fvector		position2;
-		float		radius;
+		f32		radius;
 
 		enum {
 			ePoint	= u32(0),
@@ -142,7 +142,7 @@ public:
 			position2	= p2;
 		}
 
-		SLevelItem		(const Fvector &p, float r, u32 col, u32 i) {
+		SLevelItem		(const Fvector &p, f32 r, u32 col, u32 i) {
 			set			(p, col, i);
 			ptype		= eBox;
 			radius		= r;
@@ -160,10 +160,9 @@ public:
 	public:
 		void	add_item		(const Fvector &pos, u32 color, u32 id = u32(-1));
 		void	add_item		(const Fvector &pos1, const Fvector &pos2, u32 color, u32 id = u32(-1));
-		void	add_item		(const Fvector &pos, float radius, u32 color, u32 id = u32(-1));
+		void	add_item		(const Fvector &pos, f32 radius, u32 color, u32 id = u32(-1));
 		void	draw_info		();
 	};
-
 
 public:
 				CLevelDebug			();
@@ -188,7 +187,6 @@ public:
 	CLevelInfo &level_info(T typed_class) {
 		return level_info(typed_class, typeid((*typed_class)).name());	
 	}
-
 
 	void		draw_object_info	();
 	void		draw_text			();

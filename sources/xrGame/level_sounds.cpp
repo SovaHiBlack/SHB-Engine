@@ -90,7 +90,7 @@ void	SMusicTrack::Play()
 	SetVolume					(1.0f);
 }
 
-void SMusicTrack::SetVolume(float volume)
+void SMusicTrack::SetVolume(f32 volume)
 {
 	m_SourceLeft.set_volume		(volume*m_Volume);
 	m_SourceRight.set_volume	(volume*m_Volume);

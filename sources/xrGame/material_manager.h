@@ -15,7 +15,7 @@ class CPHMovementControl;
 class CMaterialManager {
 private:
 	bool						m_run_mode;
-	float						m_time_to_step;
+	f32						m_time_to_step;
 	u32							m_step_id;
 	u16							m_my_material_idx;
 	ref_sound					m_step_sound[4];
@@ -32,7 +32,7 @@ public:
 	virtual void				reinit					();
 	virtual void				reload					(pcstr section);
 	virtual void				set_run_mode			(bool run_mode);
-	virtual void				update					(float time_delta, float volume, float step_time, bool standing);
+	virtual void				update					(f32 time_delta, f32 volume, f32 step_time, bool standing);
 	IC		u16					last_material_idx		() const;
 	IC		u16					self_material_idx		() const;
 	IC		SGameMtlPair		*get_current_pair		();

@@ -34,18 +34,18 @@ bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
 	Fvector	cur_vel;GetVelocity(cur_vel);
 
 	Fvector	displace;displace.sub(pos,current_pos);
-	float	disp_mag=displace.magnitude();
+	f32	disp_mag=displace.magnitude();
 	
 	if( fis_zero( disp_mag ) || fis_zero( Device.fTimeDelta ) ) 
 														return true ;
 	const	u32		max_steps = 15 ;
-	const	float	fmax_steps = float ( max_steps ) ;
-	float	fsteps_num = 1.f ;
+	const	f32	fmax_steps = f32( max_steps ) ;
+	f32	fsteps_num = 1.f ;
 	u32		steps_num = 1 ;
-	float	disp_pstep = FootRadius ( );
-	float	rest = 0.f;
+	f32	disp_pstep = FootRadius ( );
+	f32	rest = 0.f;
 
-	float	parts = disp_mag / disp_pstep ;
+	f32	parts = disp_mag / disp_pstep ;
 	fsteps_num = floor ( parts );
 	steps_num = iFloor ( parts );
 	if( steps_num > max_steps )
@@ -84,7 +84,7 @@ bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
 
 #if 0
 	Fvector	dif;dif .sub( pos, pos_new );
-	float	dif_m = dif.magnitude();
+	f32	dif_m = dif.magnitude();
 	if(ret&&dif_m>EPS_L)
 	{
 		Msg("dif vec %f,%f,%f \n",dif.x,dif.y,dif.z);
@@ -106,19 +106,18 @@ void CPHAICharacter::		SetPosition							(Fvector pos)
 {
 	m_vDesiredPosition.set(pos);
 	inherited::SetPosition(pos);
-
 }
 
-void CPHAICharacter::BringToDesired(float time,float velocity,float /**force/**/)
+void CPHAICharacter::BringToDesired(f32 time, f32 velocity, f32 /**force/**/)
 {
 	Fvector pos,move;
 	GetPosition(pos);
 
 	move.sub(m_vDesiredPosition,pos);
 	move.y=0.f;
-	float dist=move.magnitude();
+	f32 dist=move.magnitude();
 
-	float vel;
+	f32 vel;
 	if(dist>EPS_L*100.f)
 	{
 		vel=dist/time;
@@ -149,13 +148,12 @@ void CPHAICharacter::BringToDesired(float time,float velocity,float /**force/**/
 	SetAcceleration(move);
 }
 
-
-
 void	CPHAICharacter::Jump(const Fvector& jump_velocity)
 {
 	b_jump=true;
 	m_jump_accel.set(jump_velocity);
 }
+
 void	CPHAICharacter::	ValidateWalkOn						()
 {
 //if(b_on_object)
@@ -164,6 +162,7 @@ void	CPHAICharacter::	ValidateWalkOn						()
 //	 b_clamb_jump=true;
 	inherited::ValidateWalkOn();
 }
+
 void CPHAICharacter::InitContact(dContact* c,bool	&do_collide,u16 material_idx_1,u16 material_idx_2 )
 {
 	inherited::InitContact(c,do_collide,material_idx_1,material_idx_2);
@@ -180,6 +179,7 @@ void CPHAICharacter::InitContact(dContact* c,bool	&do_collide,u16 material_idx_1
 	if(ph_dbg_draw_mask.test(phDbgNeverUseAiPhMove))do_collide=false;
 #endif
 }
+
 #ifdef DEBUG
 void	CPHAICharacter::OnRender()	
 {
@@ -191,14 +191,12 @@ void	CPHAICharacter::OnRender()
 	GetDesiredPosition(pos);
 	pos.y+=m_radius;
 
-
 	Fvector scale;
 	scale.set(0.35f,0.35f,0.35f);
 	Fmatrix M;
 	M.identity();
 	M.scale(scale);
 	M.c.set(pos);
-
 
 	Level().debug_renderer().draw_ellipse(M, 0xffffffff);
 }

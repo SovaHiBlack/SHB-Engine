@@ -11,25 +11,25 @@ namespace CDB
 	//         sR - radius of sphere
 	// Notes : Normalized directional vectors expected
 	// -----------------------------------------------------------------------
-	IC bool IntersectRaySphere(const Fvector& rO, const Fvector& rV, const Fvector& sO, F32 sR)
+	IC bool IntersectRaySphere(const Fvector& rO, const Fvector& rV, const Fvector& sO, f32 sR)
 	{
 		Fvector Q;
 		Q.sub(sO,rO);
 
-		F32 c = Q.magnitude();
-		F32 v = Q.dotproduct(rV);
-		F32 d = sR*sR - (c*c - v*v);
+		f32 c = Q.magnitude();
+		f32 v = Q.dotproduct(rV);
+		f32 d = sR*sR - (c*c - v*v);
 
 		// If there was no intersection, return -1
 		return (d > 0.0);
 	}
 
 	//-- Ray-Triangle : 2nd level of indirection --------------------------------
-	IC bool TestRayTri(const Fvector& C, const Fvector& D, Fvector** p, F32& u, F32& v, F32& range, bool bCull)
+	IC bool TestRayTri(const Fvector& C, const Fvector& D, Fvector** p, f32& u, f32& v, f32& range, bool bCull)
 	{
 		Fvector edge1, edge2, tvec, pvec, qvec;
-		F32 det;
-		F32 inv_det;
+		f32 det;
+		f32 inv_det;
 		// find vectors for two edges sharing vert0
 		edge1.sub(*p[1], *p[0]);
 		edge2.sub(*p[2], *p[0]);
@@ -64,11 +64,11 @@ namespace CDB
 		return true;
 	}
 	//-- Ray-Triangle : 1st level of indirection --------------------------------
-	IC bool TestRayTri(const Fvector& C, const Fvector& D, Fvector* p, F32& u, F32& v, F32& range, bool bCull)
+	IC bool TestRayTri(const Fvector& C, const Fvector& D, Fvector* p, f32& u, f32& v, f32& range, bool bCull)
 	{
 		Fvector edge1, edge2, tvec, pvec, qvec;
-		F32 det;
-		F32 inv_det;
+		f32 det;
+		f32 inv_det;
 		// find vectors for two edges sharing vert0
 		edge1.sub(p[1], p[0]);
 		edge2.sub(p[2], p[0]);
@@ -104,13 +104,13 @@ namespace CDB
 	}
 
 	//-- Ray-Triangle(always return range) : 1st level of indirection --------------------------------
-	IC bool TestRayTri2(const Fvector& C, const Fvector& D, Fvector* p, F32& range)
+	IC bool TestRayTri2(const Fvector& C, const Fvector& D, Fvector* p, f32& range)
 	{
 		Fvector edge1, edge2, tvec, pvec, qvec;
-		F32 det;
-		F32 inv_det;
-		F32 u;
-		F32 v;
+		f32 det;
+		f32 inv_det;
+		f32 u;
+		f32 v;
 
 		// find vectors for two edges sharing vert0
 		edge1.sub(p[1], p[0]);
@@ -131,13 +131,13 @@ namespace CDB
 		if (v < 0.0f || u + v > 1.0f) return false;
 		return true;
 	}
-	IC bool TestRayTri2(const Fvector& C, const Fvector& D, Fvector** p, F32& range)
+	IC bool TestRayTri2(const Fvector& C, const Fvector& D, Fvector** p, f32& range)
 	{
 		Fvector edge1, edge2, tvec, pvec, qvec;
-		F32 det;
-		F32 inv_det;
-		F32 u;
-		F32 v;
+		f32 det;
+		f32 inv_det;
+		f32 u;
+		f32 v;
 
 		// find vectors for two edges sharing vert0
 		edge1.sub(*p[1], *p[0]);
@@ -226,94 +226,95 @@ namespace CDB
 		D.sub(*p[0],T);
 
 		// axis C+t*N
-		F32 A0dN = A.i.dotproduct(N);
-		F32 A1dN = A.j.dotproduct(N);
-		F32 A2dN = A.k.dotproduct(N);
-		F32 R = _abs(extA.x*A0dN)+_abs(extA.y*A1dN)+_abs(extA.z*A2dN);
-		F32 NdD = N.dotproduct(D);
+		f32 A0dN = A.i.dotproduct(N);
+		f32 A1dN = A.j.dotproduct(N);
+		f32 A2dN = A.k.dotproduct(N);
+		f32 R = _abs(extA.x*A0dN)+_abs(extA.y*A1dN)+_abs(extA.z*A2dN);
+		f32 NdD = N.dotproduct(D);
 		TESTV0(NdD,R); //AXIS_N
 
 		// axis C+t*A0
-		F32 A0dD = A.i.dotproduct(D);
-		F32 A0dE0 = A.i.dotproduct(E[0]);
-		F32 A0dE1 = A.i.dotproduct(E[1]);
+		f32 A0dD = A.i.dotproduct(D);
+		f32 A0dE0 = A.i.dotproduct(E[0]);
+		f32 A0dE1 = A.i.dotproduct(E[1]);
 		TESTV1(A0dD,A0dE0,A0dE1,extA.x); //AXIS_A0
 
 		// axis C+t*A1
-		F32 A1dD	= A.j.dotproduct(D);
-		F32 A1dE0 = A.j.dotproduct(E[0]);
-		F32 A1dE1 = A.j.dotproduct(E[1]);
+		f32 A1dD	= A.j.dotproduct(D);
+		f32 A1dE0 = A.j.dotproduct(E[0]);
+		f32 A1dE1 = A.j.dotproduct(E[1]);
 		TESTV1(A1dD,A1dE0,A1dE1,extA.y); //AXIS_A1
 
 		// axis C+t*A2
-		F32 A2dD	= A.k.dotproduct(D);
-		F32 A2dE0 = A.k.dotproduct(E[0]);
-		F32 A2dE1 = A.k.dotproduct(E[1]);
+		f32 A2dD	= A.k.dotproduct(D);
+		f32 A2dE0 = A.k.dotproduct(E[0]);
+		f32 A2dE1 = A.k.dotproduct(E[1]);
 		TESTV1(A2dD,A2dE0,A2dE1,extA.z); //AXIS_A2
 
 		// axis C+t*A0xE0
 		Fvector A0xE0;
 		A0xE0.crossproduct(A.i,E[0]);
-		F32 A0xE0dD = A0xE0.dotproduct(D);
+		f32 A0xE0dD = A0xE0.dotproduct(D);
 		R = _abs(extA.y*A2dE0)+_abs(extA.z*A1dE0);
 		TESTV2(A0xE0dD,A0dN,R); //AXIS_A0xE0
 
 		// axis C+t*A0xE1
 		Fvector A0xE1;
 		A0xE1.crossproduct(A.i,E[1]);
-		F32 A0xE1dD = A0xE1.dotproduct(D);
+		f32 A0xE1dD = A0xE1.dotproduct(D);
 		R = _abs(extA.y*A2dE1)+_abs(extA.z*A1dE1);
 		TESTV2(A0xE1dD,-A0dN,R); //AXIS_A0xE1
 
 		// axis C+t*A0xE2
-		F32 A1dE2 = A1dE1-A1dE0;
-		F32 A2dE2 = A2dE1-A2dE0;
-		F32 A0xE2dD = A0xE1dD-A0xE0dD;
+		f32 A1dE2 = A1dE1-A1dE0;
+		f32 A2dE2 = A2dE1-A2dE0;
+		f32 A0xE2dD = A0xE1dD-A0xE0dD;
 		R = _abs(extA.y*A2dE2)+_abs(extA.z*A1dE2);
 		TESTV2(A0xE2dD,-A0dN,R); //AXIS_A0xE2
 
 		// axis C+t*A1xE0
 		Fvector A1xE0;
 		A1xE0.crossproduct(A.j,E[0]);
-		F32 A1xE0dD = A1xE0.dotproduct(D);
+		f32 A1xE0dD = A1xE0.dotproduct(D);
 		R = _abs(extA.x*A2dE0)+_abs(extA.z*A0dE0);
 		TESTV2(A1xE0dD,A1dN,R); //AXIS_A1xE0
 
 		// axis C+t*A1xE1
 		Fvector A1xE1;
 		A1xE1.crossproduct(A.j,E[1]);
-		F32 A1xE1dD = A1xE1.dotproduct(D);
+		f32 A1xE1dD = A1xE1.dotproduct(D);
 		R = _abs(extA.x*A2dE1)+_abs(extA.z*A0dE1);
 		TESTV2(A1xE1dD,-A1dN,R); //AXIS_A1xE1
 
 		// axis C+t*A1xE2
-		F32 A0dE2 = A0dE1-A0dE0;
-		F32 A1xE2dD = A1xE1dD-A1xE0dD;
+		f32 A0dE2 = A0dE1-A0dE0;
+		f32 A1xE2dD = A1xE1dD-A1xE0dD;
 		R = _abs(extA.x*A2dE2)+_abs(extA.z*A0dE2);
 		TESTV2(A1xE2dD,-A1dN,R); //AXIS_A1xE2
 
 		// axis C+t*A2xE0
 		Fvector A2xE0;
 		A2xE0.crossproduct(A.k,E[0]);
-		F32 A2xE0dD = A2xE0.dotproduct(D);
+		f32 A2xE0dD = A2xE0.dotproduct(D);
 		R = _abs(extA.x*A1dE0)+_abs(extA.y*A0dE0);
 		TESTV2(A2xE0dD,A2dN,R); //AXIS_A2xE0
 
 		// axis C+t*A2xE1
 		Fvector A2xE1;
 		A2xE1.crossproduct(A.k,E[1]);
-		F32 A2xE1dD = A2xE1.dotproduct(D);
+		f32 A2xE1dD = A2xE1.dotproduct(D);
 		R = _abs(extA.x*A1dE1)+_abs(extA.y*A0dE1);
 		TESTV2(A2xE1dD,-A2dN,R); //AXIS_A2xE1
 
 		// axis C+t*A2xE2
-		F32 A2xE2dD = A2xE1dD-A2xE0dD;
+		f32 A2xE2dD = A2xE1dD-A2xE0dD;
 		R = _abs(extA.x*A1dE2)+_abs(extA.y*A0dE2);
 		TESTV2(A2xE2dD,-A2dN,R); //AXIS_A2xE2
 
 		// intersection occurs
 		return true;
 	}
+
 	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector& T, const Fvector& extA, Fvector* p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
 		Fvector D, E[2], N;
@@ -326,88 +327,88 @@ namespace CDB
 		D.sub(p[0],T);
 
 		// axis C+t*N
-		F32 A0dN = A.i.dotproduct(N);
-		F32 A1dN = A.j.dotproduct(N);
-		F32 A2dN = A.k.dotproduct(N);
-		F32 R = _abs(extA.x*A0dN)+_abs(extA.y*A1dN)+_abs(extA.z*A2dN);
-		F32 NdD = N.dotproduct(D);
+		f32 A0dN = A.i.dotproduct(N);
+		f32 A1dN = A.j.dotproduct(N);
+		f32 A2dN = A.k.dotproduct(N);
+		f32 R = _abs(extA.x*A0dN)+_abs(extA.y*A1dN)+_abs(extA.z*A2dN);
+		f32 NdD = N.dotproduct(D);
 		TESTV0(NdD,R); //AXIS_N
 
 		// axis C+t*A0
-		F32 A0dD = A.i.dotproduct(D);
-		F32 A0dE0 = A.i.dotproduct(E[0]);
-		F32 A0dE1 = A.i.dotproduct(E[1]);
+		f32 A0dD = A.i.dotproduct(D);
+		f32 A0dE0 = A.i.dotproduct(E[0]);
+		f32 A0dE1 = A.i.dotproduct(E[1]);
 		TESTV1(A0dD,A0dE0,A0dE1,extA.x); //AXIS_A0
 
 		// axis C+t*A1
-		F32 A1dD	= A.j.dotproduct(D);
-		F32 A1dE0 = A.j.dotproduct(E[0]);
-		F32 A1dE1 = A.j.dotproduct(E[1]);
+		f32 A1dD	= A.j.dotproduct(D);
+		f32 A1dE0 = A.j.dotproduct(E[0]);
+		f32 A1dE1 = A.j.dotproduct(E[1]);
 		TESTV1(A1dD,A1dE0,A1dE1,extA.y); //AXIS_A1
 
 		// axis C+t*A2
-		F32 A2dD	= A.k.dotproduct(D);
-		F32 A2dE0 = A.k.dotproduct(E[0]);
-		F32 A2dE1 = A.k.dotproduct(E[1]);
+		f32 A2dD	= A.k.dotproduct(D);
+		f32 A2dE0 = A.k.dotproduct(E[0]);
+		f32 A2dE1 = A.k.dotproduct(E[1]);
 		TESTV1(A2dD,A2dE0,A2dE1,extA.z); //AXIS_A2
 
 		// axis C+t*A0xE0
 		Fvector A0xE0;
 		A0xE0.crossproduct(A.i,E[0]);
-		F32 A0xE0dD = A0xE0.dotproduct(D);
+		f32 A0xE0dD = A0xE0.dotproduct(D);
 		R = _abs(extA.y*A2dE0)+_abs(extA.z*A1dE0);
 		TESTV2(A0xE0dD,A0dN,R); //AXIS_A0xE0
 
 		// axis C+t*A0xE1
 		Fvector A0xE1;
 		A0xE1.crossproduct(A.i,E[1]);
-		F32 A0xE1dD = A0xE1.dotproduct(D);
+		f32 A0xE1dD = A0xE1.dotproduct(D);
 		R = _abs(extA.y*A2dE1)+_abs(extA.z*A1dE1);
 		TESTV2(A0xE1dD,-A0dN,R); //AXIS_A0xE1
 
 		// axis C+t*A0xE2
-		F32 A1dE2 = A1dE1-A1dE0;
-		F32 A2dE2 = A2dE1-A2dE0;
-		F32 A0xE2dD = A0xE1dD-A0xE0dD;
+		f32 A1dE2 = A1dE1-A1dE0;
+		f32 A2dE2 = A2dE1-A2dE0;
+		f32 A0xE2dD = A0xE1dD-A0xE0dD;
 		R = _abs(extA.y*A2dE2)+_abs(extA.z*A1dE2);
 		TESTV2(A0xE2dD,-A0dN,R); //AXIS_A0xE2
 
 		// axis C+t*A1xE0
 		Fvector A1xE0;
 		A1xE0.crossproduct(A.j,E[0]);
-		F32 A1xE0dD = A1xE0.dotproduct(D);
+		f32 A1xE0dD = A1xE0.dotproduct(D);
 		R = _abs(extA.x*A2dE0)+_abs(extA.z*A0dE0);
 		TESTV2(A1xE0dD,A1dN,R); //AXIS_A1xE0
 
 		// axis C+t*A1xE1
 		Fvector A1xE1;
 		A1xE1.crossproduct(A.j,E[1]);
-		F32 A1xE1dD = A1xE1.dotproduct(D);
+		f32 A1xE1dD = A1xE1.dotproduct(D);
 		R = _abs(extA.x*A2dE1)+_abs(extA.z*A0dE1);
 		TESTV2(A1xE1dD,-A1dN,R); //AXIS_A1xE1
 
 		// axis C+t*A1xE2
-		F32 A0dE2 = A0dE1-A0dE0;
-		F32 A1xE2dD = A1xE1dD-A1xE0dD;
+		f32 A0dE2 = A0dE1-A0dE0;
+		f32 A1xE2dD = A1xE1dD-A1xE0dD;
 		R = _abs(extA.x*A2dE2)+_abs(extA.z*A0dE2);
 		TESTV2(A1xE2dD,-A1dN,R); //AXIS_A1xE2
 
 		// axis C+t*A2xE0
 		Fvector A2xE0;
 		A2xE0.crossproduct(A.k,E[0]);
-		F32 A2xE0dD = A2xE0.dotproduct(D);
+		f32 A2xE0dD = A2xE0.dotproduct(D);
 		R = _abs(extA.x*A1dE0)+_abs(extA.y*A0dE0);
 		TESTV2(A2xE0dD,A2dN,R); //AXIS_A2xE0
 
 		// axis C+t*A2xE1
 		Fvector A2xE1;
 		A2xE1.crossproduct(A.k,E[1]);
-		F32 A2xE1dD = A2xE1.dotproduct(D);
+		f32 A2xE1dD = A2xE1.dotproduct(D);
 		R = _abs(extA.x*A1dE1)+_abs(extA.y*A0dE1);
 		TESTV2(A2xE1dD,-A2dN,R); //AXIS_A2xE1
 
 		// axis C+t*A2xE2
-		F32 A2xE2dD = A2xE1dD-A2xE0dD;
+		f32 A2xE2dD = A2xE1dD-A2xE0dD;
 		R = _abs(extA.x*A1dE2)+_abs(extA.y*A0dE2);
 		TESTV2(A2xE2dD,-A2dN,R); //AXIS_A2xE2
 
@@ -417,21 +418,21 @@ namespace CDB
 	//---------------------------------------------------------------------------}
 
 	//----------------------------------------------------------------------------
-	IC F32 MgcSqrDistance (const Fvector& rkPoint, const Fvector& orig, const Fvector& e0,const Fvector& e1){
+	IC f32 MgcSqrDistance (const Fvector& rkPoint, const Fvector& orig, const Fvector& e0,const Fvector& e1){
 
 		Fvector kDiff;
 		kDiff.sub(orig,rkPoint);
 
-		F32 fA00 = e0.square_magnitude();
-		F32 fA01 = e0.dotproduct(e1);
-		F32 fA11 = e1.square_magnitude();
-		F32 fB0 = kDiff.dotproduct(e0);
-		F32 fB1 = kDiff.dotproduct(e1);
-		F32 fC = kDiff.square_magnitude();
-		F32 fDet = _abs(fA00*fA11-fA01*fA01);
-		F32 fS = fA01*fB1-fA11*fB0;
-		F32 fT = fA01*fB0-fA00*fB1;
-		F32 fSqrDist;
+		f32 fA00 = e0.square_magnitude();
+		f32 fA01 = e0.dotproduct(e1);
+		f32 fA11 = e1.square_magnitude();
+		f32 fB0 = kDiff.dotproduct(e0);
+		f32 fB1 = kDiff.dotproduct(e1);
+		f32 fC = kDiff.square_magnitude();
+		f32 fDet = _abs(fA00*fA11-fA01*fA01);
+		f32 fS = fA01*fB1-fA11*fB0;
+		f32 fT = fA01*fB0-fA00*fB1;
+		f32 fSqrDist;
 
 		if ( fS + fT <= fDet ){
 			if ( fS < 0.0f ){
@@ -485,17 +486,17 @@ namespace CDB
 				}
 			}else{  // region 0
 				// minimum at interior point
-				F32 fInvDet = 1.0f/fDet;
+				f32 fInvDet = 1.0f/fDet;
 				fS *= fInvDet;
 				fT *= fInvDet;
 				fSqrDist = fS*(fA00*fS+fA01*fT+2.0f*fB0) +
 					fT*(fA01*fS+fA11*fT+2.0f*fB1)+fC;
 			}
 		}else{
-			F32 fTmp0;
-			F32 fTmp1;
-			F32 fNumer;
-			F32 fDenom;
+			f32 fTmp0;
+			f32 fTmp1;
+			f32 fNumer;
+			f32 fDenom;
 
 			if ( fS < 0.0f ){  // region 2
 				fTmp0 = fA01 + fB0;
@@ -586,11 +587,10 @@ namespace CDB
 		stInside	= 2,
 	};
 
-	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, F32 sphereRadius,
+	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, f32 sphereRadius,
 						const Fvector& orig, const Fvector& e0,const Fvector& e1)
 	{
-
-		F32 fRSqr = sphereRadius*sphereRadius;
+		f32 fRSqr = sphereRadius*sphereRadius;
 		Fvector kV0mC;
 		kV0mC.sub(orig, sphereOrigin);
 
@@ -621,11 +621,11 @@ namespace CDB
 		// All vertices are outside the sphere, but the triangle might still
 		// intersect the sphere.  This is the case when the distance from the
 		// sphere center to the triangle is smaller than the radius.
-		F32 fSqrDist = MgcSqrDistance(sphereOrigin,orig,e0,e1);
+		f32 fSqrDist = MgcSqrDistance(sphereOrigin,orig,e0,e1);
 		return (fSqrDist < fRSqr)?stIntersect:stNone;
 	}
 	//---------------------------------------------------------------------------
-	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, F32 sphereRadius, Fvector* p)
+	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, f32 sphereRadius, Fvector* p)
 	{
 		Fvector e0, e1;
 		// find vectors for two edges sharing vert0
@@ -633,7 +633,7 @@ namespace CDB
 		e1.sub(p[2], p[0]);
 		return TestSphereTri(sphereOrigin,sphereRadius,p[0],e0,e1);
 	}
-	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, F32 sphereRadius, Fvector** p)
+	IC EST_Result TestSphereTri(const Fvector& sphereOrigin, f32 sphereRadius, Fvector** p)
 	{
 		Fvector e0, e1;
 		// find vectors for two edges sharing vert0
@@ -648,12 +648,12 @@ namespace CDB
 		Fvector3 kCDiff;
 		kCDiff.sub(rkSphere.P,rkBox.m_translate);
 
-		F32 fAx = _abs(kCDiff.dotproduct(rkBox.m_rotate.i));
-		F32 fAy = _abs(kCDiff.dotproduct(rkBox.m_rotate.j));
-		F32 fAz = _abs(kCDiff.dotproduct(rkBox.m_rotate.k));
-		F32 fDx = fAx - rkBox.m_halfsize[0];
-		F32 fDy = fAy - rkBox.m_halfsize[1];
-		F32 fDz = fAz - rkBox.m_halfsize[2];
+		f32 fAx = _abs(kCDiff.dotproduct(rkBox.m_rotate.i));
+		f32 fAy = _abs(kCDiff.dotproduct(rkBox.m_rotate.j));
+		f32 fAz = _abs(kCDiff.dotproduct(rkBox.m_rotate.k));
+		f32 fDx = fAx - rkBox.m_halfsize[0];
+		f32 fDy = fAy - rkBox.m_halfsize[1];
+		f32 fDz = fAz - rkBox.m_halfsize[2];
 
 		if ( fAx <= rkBox.m_halfsize[0] ){
 			if ( fAy <= rkBox.m_halfsize[1] ){
@@ -671,7 +671,7 @@ namespace CDB
 				}else{
 					// potential sphere-edge intersection with edge formed
 					// by faces y and z
-					F32 fRSqr = rkSphere.R*rkSphere.R;
+					f32 fRSqr = rkSphere.R*rkSphere.R;
 					return fDy*fDy + fDz*fDz <= fRSqr;
 				}
 			}
@@ -683,19 +683,19 @@ namespace CDB
 				}else{
 					// potential sphere-edge intersection with edge formed
 					// by faces x and z
-					F32 fRSqr = rkSphere.R*rkSphere.R;
+					f32 fRSqr = rkSphere.R*rkSphere.R;
 					return fDx*fDx + fDz*fDz <= fRSqr;
 				}
 			}else{
 				if ( fAz <= rkBox.m_halfsize[2] ){
 					// potential sphere-edge intersection with edge formed
 					// by faces x and y
-					F32 fRSqr = rkSphere.R*rkSphere.R;
+					f32 fRSqr = rkSphere.R*rkSphere.R;
 					return fDx*fDx + fDy*fDy <= fRSqr;
 				}else{
 					// potential sphere-vertex intersection at corner formed
 					// by faces x,y,z
-					F32 fRSqr = rkSphere.R*rkSphere.R;
+					f32 fRSqr = rkSphere.R*rkSphere.R;
 					return fDx*fDx + fDy*fDy + fDz*fDz <= fRSqr;
 				}
 			}
@@ -704,12 +704,12 @@ namespace CDB
 	//----------------------------------------------------------------------------
 	IC bool TestRayOBB (const Fvector3& origin, const Fvector3& direction, const Fobb& rkBox)
 	{
-		F32			fWdU[3];
-		F32			fAWdU[3];
-		F32			fDdU[3];
-		F32			fADdU[3];
-		F32			fAWxDdU[3];
-		F32			fRhs;
+		f32			fWdU[3];
+		f32			fAWdU[3];
+		f32			fDdU[3];
+		f32			fADdU[3];
+		f32			fAWxDdU[3];
+		f32			fRhs;
 
 		Fvector3		kDiff;
 		kDiff.sub		(origin,rkBox.m_translate);
@@ -718,21 +718,21 @@ namespace CDB
 		fAWdU[0]		= _abs(fWdU[0]);
 		fDdU[0]			= kDiff.dotproduct(rkBox.m_rotate.i);
 		fADdU[0]		= _abs(fDdU[0]);
-		if ( fADdU[0] > rkBox.m_halfsize[0] && fDdU[0]*fWdU[0] >= (F32)0.0 )
+		if ( fADdU[0] > rkBox.m_halfsize[0] && fDdU[0]*fWdU[0] >= (f32)0.0 )
 			return false;
 
 		fWdU[1]			= direction.dotproduct(rkBox.m_rotate.j);
 		fAWdU[1]		= _abs(fWdU[1]);
 		fDdU[1]			= kDiff.dotproduct(rkBox.m_rotate.j);
 		fADdU[1]		= _abs(fDdU[1]);
-		if ( fADdU[1] > rkBox.m_halfsize[1] && fDdU[1]*fWdU[1] >= (F32)0.0 )
+		if ( fADdU[1] > rkBox.m_halfsize[1] && fDdU[1]*fWdU[1] >= (f32)0.0 )
 			return false;
 
 		fWdU[2]			= direction.dotproduct(rkBox.m_rotate.k);
 		fAWdU[2]		= _abs(fWdU[2]);
 		fDdU[2]			= kDiff.dotproduct(rkBox.m_rotate.k);
 		fADdU[2]		= _abs(fDdU[2]);
-		if ( fADdU[2] > rkBox.m_halfsize[2] && fDdU[2]*fWdU[2] >= (F32)0.0 )
+		if ( fADdU[2] > rkBox.m_halfsize[2] && fDdU[2]*fWdU[2] >= (f32)0.0 )
 			return false;
 
 		Fvector3		kWxD;

@@ -104,7 +104,7 @@ void IGame_Persistent::OnGameStart()
 	if (strstr(Core.Params,"-noprefetch"))	return;
 
 	// prefetch game objects & models
-	F32	p_time		=			1000.f*Device.GetTimerGlobal()->GetElapsed_sec();
+	f32	p_time		=			1000.f*Device.GetTimerGlobal()->GetElapsed_sec();
 	u32	mem_0			=			Memory.mem_usage()	;
 
 	Log				("Loading objects...");

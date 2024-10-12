@@ -20,7 +20,7 @@ public:
 	IDirect3DBaseTexture9*				pSurface;
 	CAviPlayerCustom*					pAVI;
 	CTheoraSurface*						pTheora;
-	F32								m_material;
+	f32								m_material;
 	shared_str							m_bumpmap;
 
 	union{

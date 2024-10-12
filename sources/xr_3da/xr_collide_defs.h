@@ -5,14 +5,14 @@ namespace collide
 {
 	struct			tri {
 		Fvector	e10;
-		F32 e10s;
+		f32 e10s;
 		Fvector	e21;
-		F32 e21s;
+		f32 e21s;
 		Fvector	e02;
-		F32 e02s;
+		f32 e02s;
 		Fvector p[3];
 		Fvector N;
-		F32	d;
+		f32	d;
 	};
 	struct			elipsoid {
 		Fmatrix	mL2W;		// convertion from sphere(000,1) to real space
@@ -23,7 +23,7 @@ namespace collide
 		// previous state
 		Fvector				start;
 		Fvector				dir;
-		F32				range;
+		f32				range;
 		BOOL				result;
 
 		// cached vertices
@@ -38,14 +38,14 @@ namespace collide
 			verts[1].set(0,0,0);
 			verts[2].set(0,0,0);
 		}
-		void				set		(const Fvector& _start, const Fvector& _dir, const F32 _range,const BOOL _result)
+		void				set		(const Fvector& _start, const Fvector& _dir, const f32 _range,const BOOL _result)
 		{
 			start	= _start;
 			dir		= _dir;
 			range	= _range;
 			result	= _result;
 		}
-		BOOL				similar	(const Fvector& _start, const Fvector& _dir, const F32 _range)
+		BOOL				similar	(const Fvector& _start, const Fvector& _dir, const f32 _range)
 		{
 			if (!_start.similar(start))					return FALSE;
 			if (!fsimilar(1.f,dir.dotproduct(_dir)))	return FALSE;
@@ -66,10 +66,10 @@ namespace collide
 	{
 		Fvector		start;
 		Fvector		dir;
-		F32		range;
+		f32		range;
 		u32			flags;
 		rq_target	tgt;
-		ray_defs	(const Fvector& _start, const Fvector& _dir, F32 _range, u32 _flags, rq_target _tgt)
+		ray_defs	(const Fvector& _start, const Fvector& _dir, f32 _range, u32 _flags, rq_target _tgt)
 		{
 			start	= _start;
 			dir		= _dir;
@@ -81,9 +81,9 @@ namespace collide
 	struct			rq_result 
 	{
 		CObject*	O;				// if NULL - static
-		F32		range;			// range to intersection
+		f32		range;			// range to intersection
 		int			element;		// номер кости/номер треугольника
-		IC rq_result& set		(CObject* _O, F32 _range, int _element)
+		IC rq_result& set		(CObject* _O, f32 _range, int _element)
 		{
 			O		= _O;
 			range	= _range;
@@ -92,7 +92,7 @@ namespace collide
 		}
 		IC BOOL		set_if_less	(CDB::RESULT*	I){if (I->range<range){ set(0,I->range,I->id);			return TRUE;}else return FALSE;}
 		IC BOOL		set_if_less	(rq_result*		R){if (R->range<range){ set(R->O,R->range,R->element);	return TRUE;}else return FALSE;}
-		IC BOOL		set_if_less	(CObject* _who, F32 _range, int _element)	{ if (_range<range) { set(_who,_range,_element); return TRUE;}else return FALSE;}
+		IC BOOL		set_if_less	(CObject* _who, f32 _range, int _element)	{ if (_range<range) { set(_who,_range,_element); return TRUE;}else return FALSE;}
 		IC BOOL		valid		() {return (element>=0);}
 	};
 	DEFINE_VECTOR	(rq_result,rqVec,rqIt);
@@ -103,7 +103,7 @@ namespace collide
 		rqVec		results;
 		static bool	r_sort_pred		(const rq_result& a, const rq_result& b)	{	return a.range<b.range;}
 	public:
-		IC BOOL		append_result	(CObject* _who, F32 _range, int _element, BOOL bNearest)
+		IC BOOL		append_result	(CObject* _who, f32 _range, int _element, BOOL bNearest)
 		{
 			if (bNearest&&!results.empty()){
 				rq_result& R		= results.back();

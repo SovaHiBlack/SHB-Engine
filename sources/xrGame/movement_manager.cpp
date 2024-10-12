@@ -27,7 +27,7 @@
 
 using namespace MovementManager;
 
-const float verify_distance = 15.f;
+const f32 verify_distance = 15.0f;
 
 CMovementManager::CMovementManager	(CCustomMonster *object)
 {

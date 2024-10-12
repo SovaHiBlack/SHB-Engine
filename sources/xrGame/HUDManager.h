@@ -61,14 +61,14 @@ public:
 
 	virtual		IC CUI*		GetUI				(){return pUI;}
 
-				void		Hit					(int idx, float power, const Fvector& dir);
+				void		Hit					(int idx, f32 power, const Fvector& dir);
 	CFontManager&			Font				()							{return *(UI()->Font());}
 	//текущий предмет на который смотрит HUD
 	collide::rq_result&		GetCurrentRayQuery	();
 
 
 	//устанвка внешнего вида прицела в зависимости от текущей дисперсии
-	void					SetCrosshairDisp	(float dispf, float disps = 0.f);
+	void					SetCrosshairDisp	(f32 dispf, f32 disps = 0.0f);
 	void					ShowCrosshair		(bool show);
 
 	void					SetHitmarkType		(pcstr tex_name);

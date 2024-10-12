@@ -123,7 +123,7 @@ BOOL CTheoraStream::ParseHeaders		()
 	// init decode
 	theora_decode_init		(&t_state,&t_info);
 	// calculate frame per ms
-	fpms					= ((F32)t_info.fps_numerator/(F32)t_info.fps_denominator)/1000.f;
+	fpms					= ((f32)t_info.fps_numerator/(f32)t_info.fps_denominator)/1000.f;
 
 	//. XXX hack (maybe slow)
 	// calculate frame count & total length in ms & key rate

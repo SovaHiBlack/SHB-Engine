@@ -22,13 +22,13 @@ template <typename T>
 IC	const CPatrolPath::CVertex *CPatrolPath::point	(const Fvector &position, const T &evaluator) const
 {
 	const CPatrolPath::CVertex	*nearest = 0;
-	float						best_distance = flt_max;
+	f32						best_distance = flt_max;
 	const_vertex_iterator		I = vertices().begin();
 	const_vertex_iterator		E = vertices().end();
 	for ( ; I != E; ++I) {
 		if (!evaluator((*I).second->data().position()))
 			continue;
-		float					distance = (*I).second->data().position().distance_to_sqr(position);
+		f32					distance = (*I).second->data().position().distance_to_sqr(position);
 		if (distance < best_distance) {
 			best_distance		= distance;
 			nearest				= (*I).second;

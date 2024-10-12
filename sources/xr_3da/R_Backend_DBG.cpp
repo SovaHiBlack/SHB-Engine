@@ -74,7 +74,7 @@ void CBackend::dbg_DrawLINE(Fmatrix& T, Fvector& p1, Fvector& p2, u32 C)
 }
 void CBackend::dbg_DrawEllipse(Fmatrix& T, u32 C)
 {
-	F32 gVertices[] =
+	f32 gVertices[] =
 	{
 		0.0000f,0.0000f,1.0000f,  0.0000f,0.3827f,0.9239f,  -0.1464f,0.3536f,0.9239f,
 			-0.2706f,0.2706f,0.9239f,  -0.3536f,0.1464f,0.9239f,  -0.3827f,0.0000f,0.9239f,
@@ -144,7 +144,7 @@ void CBackend::dbg_DrawEllipse(Fmatrix& T, u32 C)
 			113,106,105, 113,107,106, 113,108,107, 113,109,108, 113,110,109, 113,111,110, 113,112,111, 113,97,112
 	};
 
-	const int vcnt = sizeof(gVertices)/(sizeof(F32)*3);
+	const int vcnt = sizeof(gVertices)/(sizeof(f32)*3);
 	FVF::L  verts[vcnt];
 	for (int i=0; i<vcnt; i++) {
 		int k=i*3;

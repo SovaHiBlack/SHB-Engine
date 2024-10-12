@@ -27,24 +27,24 @@ struct SBullet
 
 	Fvector			pos					;			//текущая позиция
 	Fvector			dir					;			
-	float			speed				;			//текущая скорость
+	f32			speed				;			//текущая скорость
 	
 	u16				parent_id			;			//ID персонажа который иницировал действие
 	u16				weapon_id			;			//ID оружия из которого была выпущены пуля
 	
-	float			fly_dist			;			//дистанция которую пуля пролетела
+	f32			fly_dist			;			//дистанция которую пуля пролетела
 
 	//коэфициенты и параметры патрона
-	float			hit_power			;			// power*cartridge
-	float			hit_impulse			;			// impulse*cartridge
+	f32			hit_power			;			// power*cartridge
+	f32			hit_impulse			;			// impulse*cartridge
 	//-------------------------------------------------------------------
-	float			ap					;
-	float			air_resistance		;
+	f32			ap					;
+	f32			air_resistance		;
 	//-------------------------------------------------------------------
-	float			max_speed			;			// maxspeed*cartridge
-	float			max_dist			;			// maxdist*cartridge
-	float			pierce				;
-	float			wallmark_size		;
+	f32			max_speed			;			// maxspeed*cartridge
+	f32			max_dist			;			// maxdist*cartridge
+	f32			pierce				;
+	f32			wallmark_size		;
 	//-------------------------------------------------------------------
 	u8				m_u8ColorID			;
 	
@@ -57,19 +57,20 @@ struct SBullet
 	//---------------------------------
 	u16				targetID			;
 	bool			operator	==		(u32 ID){return	ID == m_dwID;}
+
 public:
 					SBullet				();
 					~SBullet			();
 
 	void			Init				(const	Fvector& position,
 										const	Fvector& direction,
-										float	start_speed,
-										float	power,
-										float	impulse,
+										 f32	start_speed,
+										 f32	power,
+										 f32	impulse,
 										u16		sender_id,
 										u16		sendersweapon_id,
 										ALife::EHitType e_hit_type,
-										float	maximum_distance,
+										 f32	maximum_distance,
 										const	CCartridge& cartridge,
 										bool	SendHit);
 };
@@ -86,7 +87,7 @@ private:
 private:
 	DEFINE_VECTOR						(ref_sound,SoundVec,SoundVecIt);
 	DEFINE_VECTOR						(SBullet,BulletVec,BulletVecIt);
-	typedef std::pair<float,float>		_hit		;
+	typedef std::pair<f32, f32>		_hit		;
 	friend	CLevel;
 
 	enum EventType {
@@ -125,24 +126,25 @@ protected:
 	//фиксированное время шага просчета пули
 	u32						m_dwStepTime;	
 	//минимальная скорость, на которой пуля еще считается
-	static float			m_fMinBulletSpeed;
+	static f32			m_fMinBulletSpeed;
 
-	float					m_fHPMaxDist;
+	f32					m_fHPMaxDist;
 
 	//константа G
-	float					m_fGravityConst;
+	f32					m_fGravityConst;
 	//сопротивление воздуха, процент, который отнимается от скорости
 	//полета пули
-	float					m_fAirResistanceK;
+	f32					m_fAirResistanceK;
 	//cколько процентов энергии потеряет пуля при столкновении с материалом (при падении под прямым углом)
-	float					m_fCollisionEnergyMin;
+	f32					m_fCollisionEnergyMin;
 	//сколькол процентов энергии устанется у пули при любом столкновении
-	float					m_fCollisionEnergyMax;
+	f32					m_fCollisionEnergyMax;
 
 	//параметры отрисовки трассеров
-	float					m_fTracerWidth;
-	float 					m_fTracerLengthMax;
-	float 					m_fTracerLengthMin;
+	f32					m_fTracerWidth;
+	f32 					m_fTracerLengthMax;
+	f32 					m_fTracerLengthMin;
+
 protected:
 	void					PlayWhineSound		(SBullet* bullet, CObject* object, const Fvector& pos);
 	void					PlayExplodePS		(const Fmatrix& xf);
@@ -173,6 +175,7 @@ protected:
 	//возвращаем true если пуля продолжает полет
 	bool					CalcBullet			(collide::rq_results & rq_storage, xr_vector<ISpatial*>& rq_spatial, SBullet* bullet, u32 delta_time);
 	void 		__stdcall	UpdateWorkload		();
+
 public:
 							CBulletManager		();
 	virtual					~CBulletManager		();

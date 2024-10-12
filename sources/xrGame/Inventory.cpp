@@ -604,10 +604,10 @@ bool CInventory::Action(s32 cmd, u32 flags)
 	case kWPN_4:
 	case kWPN_5:
 	case kWPN_6:
-       {
+	   {
 			if(flags&CMD_START)
 			{
-                if((int)m_iActiveSlot == cmd - kWPN_1 &&
+				if((int)m_iActiveSlot == cmd - kWPN_1 &&
 					m_slots[m_iActiveSlot].m_pIItem )
 				{
 					b_send_event = Activate(NO_ACTIVE_SLOT);
@@ -620,7 +620,7 @@ bool CInventory::Action(s32 cmd, u32 flags)
 		{
 			if(flags&CMD_START)
 			{
-                if((int)m_iActiveSlot == ARTEFACT_SLOT &&
+				if((int)m_iActiveSlot == ARTEFACT_SLOT &&
 					m_slots[m_iActiveSlot].m_pIItem)
 				{
 					b_send_event = Activate(NO_ACTIVE_SLOT);
@@ -644,7 +644,7 @@ void CInventory::Update()
 	
 	if(m_iActiveSlot == NO_ACTIVE_SLOT || 
 		!m_slots[m_iActiveSlot].m_pIItem ||
-        m_slots[m_iActiveSlot].m_pIItem->IsHidden())
+		m_slots[m_iActiveSlot].m_pIItem->IsHidden())
 	{ 
 		bActiveSlotVisible = false;
 	}
@@ -805,16 +805,16 @@ PIItem CInventory::item(CLASS_ID cls_id) const
 	return NULL;
 }
 
-float CInventory::TotalWeight() const
+f32 CInventory::TotalWeight() const
 {
 	VERIFY(m_fTotalWeight>=0.f);
 	return m_fTotalWeight;
 }
 
 
-float CInventory::CalcTotalWeight()
+f32 CInventory::CalcTotalWeight()
 {
-	float weight = 0;
+	f32 weight = 0;
 	for(TIItemContainer::const_iterator it = m_all.begin(); m_all.end() != it; ++it) 
 		weight += (*it)->Weight();
 
@@ -831,7 +831,7 @@ u32 CInventory::dwfGetSameItemCount(pcstr caSection, bool SearchAll)
 	{
 		PIItem	l_pIItem = *l_it;
 		if (l_pIItem && !xr_strcmp(l_pIItem->object().cNameSect(), caSection))
-            ++l_dwCount;
+			++l_dwCount;
 	}
 	
 	return		(l_dwCount);
@@ -970,7 +970,7 @@ CInventoryItem	*CInventory::tpfGetObjectByIndex(int iIndex)
 		int			i = 0;
 		for(TIItemContainer::iterator l_it = l_list.begin(); l_list.end() != l_it; ++l_it, ++i) 
 			if (i == iIndex)
-                return	(*l_it);
+				return	(*l_it);
 	}
 	else {
 		ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"invalid inventory index!");
@@ -1083,7 +1083,7 @@ void CInventory::Items_SetCurrentEntityHud(bool current_entity)
 			pWeapon->UpdateAddonsVisibility();
 		}
 	}
-};
+}
 
 //call this only via Actor()->SetWeaponHideState()
 void CInventory::SetSlotsBlocked(u16 mask, bool bBlock)

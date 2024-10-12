@@ -24,7 +24,7 @@
 
 #define DISTANCE_PHISICS_ENABLE_CHARACTERS 2.f
 
-float CMovementManager::speed			(CPHMovementControl *movement_control) const
+f32 CMovementManager::speed			(CPHMovementControl *movement_control) const
 {
 	VERIFY					(movement_control);
 	if (fis_zero(m_speed))
@@ -51,16 +51,15 @@ void CMovementManager::apply_collision_hit(CPHMovementControl *movement_control)
 	}
 }
 
-void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fvector &dest_position, float time_delta)
+void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fvector &dest_position, f32 time_delta)
 {
 	START_PROFILE("Build Path/Move Along Path")
 	VERIFY(movement_control);
 	Fvector				motion;
 	dest_position		= object().Position();
 
-	float				precision = 0.5f;
-	
-	
+	f32				precision = 0.5f;
+
 	// Если нет движения по пути
 	if (	!enabled() || 
 			!actual()  ||
@@ -72,7 +71,6 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 		)
 	{
 		m_speed			= 0.f;
-		
 
 		DBG_PH_MOVE_CONDITIONS( if(ph_dbg_draw_mask.test(phDbgNeverUseAiPhMove)){movement_control->SetPosition(dest_position);movement_control->DisableCharacter();})
 		if(movement_control->IsCharacterEnabled()) {
@@ -95,18 +93,16 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 
 //	VERIFY(movement_control->CharacterExist());
 
-
 	if (time_delta < EPS) return;
 
-	//#pragma todo("Dima to Kostia : Please change this piece of code to support paths with multiple desired velocities")
-	
+	//#pragma todo("Dima to Kostia : Please change this piece of code to support paths with multiple desired velocities")	
 	
 	// Вычислить пройденную дистанцию, определить целевую позицию на маршруте, 
 	//			 изменить detail().m_current_travel_point
 	
-	float				desirable_speed		=	old_desirable_speed();				// желаемая скорость объекта
-	float				dist				=	desirable_speed * time_delta;		// пройденное расстояние в соостветствие с желаемой скоростью 
-	float				desirable_dist		=	dist;
+	f32				desirable_speed		=	old_desirable_speed();				// желаемая скорость объекта
+	f32				dist				=	desirable_speed * time_delta;		// пройденное расстояние в соостветствие с желаемой скоростью 
+	f32				desirable_dist		=	dist;
 
 	// определить целевую точку
 	Fvector				target;
@@ -116,9 +112,9 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 	// обновить detail().m_current_travel_point в соответствие с текущей позицией
 	while (detail().m_current_travel_point < detail().path().size() - 2) {
 
-		float pos_dist_to_cur_point			= dest_position.distance_to(detail().path()[detail().m_current_travel_point].position);
-		float pos_dist_to_next_point		= dest_position.distance_to(detail().path()[detail().m_current_travel_point+1].position);
-		float cur_point_dist_to_next_point	= detail().path()[detail().m_current_travel_point].position.distance_to(detail().path()[detail().m_current_travel_point+1].position);
+		f32 pos_dist_to_cur_point			= dest_position.distance_to(detail().path()[detail().m_current_travel_point].position);
+		f32 pos_dist_to_next_point		= dest_position.distance_to(detail().path()[detail().m_current_travel_point+1].position);
+		f32 cur_point_dist_to_next_point	= detail().path()[detail().m_current_travel_point].position.distance_to(detail().path()[detail().m_current_travel_point+1].position);
 		
 		if ((pos_dist_to_cur_point > cur_point_dist_to_next_point) && (pos_dist_to_cur_point > pos_dist_to_next_point)) {
 			++detail().m_current_travel_point;			
@@ -131,7 +127,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 	dir_to_target.sub	(target, dest_position);
 
 	// дистанция до целевой точки
-	float				dist_to_target = dir_to_target.magnitude();
+	f32				dist_to_target = dir_to_target.magnitude();
 	
 	while (dist > dist_to_target) {
 		dest_position.set	(target);
@@ -213,11 +209,10 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 		*/
 
 	// установить скорость
-	float	real_motion	= motion.magnitude() + desirable_dist - dist;
-	float	real_speed	= real_motion / time_delta;
-	
+	f32	real_motion	= motion.magnitude() + desirable_dist - dist;
+	f32	real_speed	= real_motion / time_delta;
+
 	m_speed				= 0.5f * desirable_speed + 0.5f * real_speed;
-	
 
 	// Физика устанавливает позицию в соответствии с нулевой скоростью 
 	if (detail().completed(dest_position,true)) {
@@ -232,4 +227,3 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 
 	STOP_PROFILE
 }
-

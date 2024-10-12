@@ -99,7 +99,7 @@ public:
 
 	IC CObject*		Owner			( )	const				{ return owner;			}
 	const Fbox&		getBBox			( )	const				{ return bv_box;		}
-	F32			getRadius		( )	const				{ return bv_sphere.R;	}
+	f32			getRadius		( )	const				{ return bv_sphere.R;	}
 	const Fsphere&	getSphere		( )	const				{ return bv_sphere;		}
 	const ECollisionFormType Type	( ) const				{ return m_type;		}
 };

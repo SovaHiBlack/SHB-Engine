@@ -77,7 +77,7 @@ struct ogf_bbox		{
 // OGF_BSPHERE
 struct ogf_bsphere	{
 	Fvector c;
-	F32	r;
+	f32	r;
 };
 
 // OGF_HEADER

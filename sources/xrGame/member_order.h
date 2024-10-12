@@ -62,7 +62,7 @@ protected:
 	CAI_Stalker					*m_object;
 	mutable const CCoverPoint	*m_cover;
 	bool						m_initialized;
-	float						m_probability;
+	f32						m_probability;
 	xr_vector<u32>				m_enemies;
 	bool						m_processed;
 	u32							m_selected_enemy;
@@ -74,7 +74,7 @@ public:
 	IC							CMemberOrder			(CAI_Stalker *object);
 	IC		bool				initialized				() const;
 	IC		CAI_Stalker			&object					() const;
-	IC		float				probability				() const;
+	IC		f32				probability				() const;
 	IC		bool				processed				() const;
 	IC		u32					selected_enemy			() const;
 	IC		const CCoverPoint	*cover					() const;
@@ -82,7 +82,7 @@ public:
 	IC		CGrenadeReaction	&grenade_reaction		();
 	IC		xr_vector<u32>		&enemies				();
 	IC		void				cover					(const CCoverPoint *object_cover) const;
-	IC		void				probability				(float probability);
+	IC		void				probability				(f32 probability);
 	IC		void				processed				(bool processed);
 	IC		void				selected_enemy			(u32 selected_enemy);
 	IC		bool				detour					() const;

@@ -4,8 +4,8 @@ class ENGINE_API CStatGraph	: public pureRender
 {
 public:
 	enum EStyle{
-    	stBar,
-        stCurve,
+		stBar,
+		stCurve,
 		stBarLine,
 		stPoint,
 		stVert,
@@ -13,14 +13,14 @@ public:
    };
 protected:
 	struct SElement{
-    	u32 		color;
-		F32		data;
-			        SElement(F32 d, u32 clr)
-        {
-        	color	= clr;
-            data	= d;
-        }
-    };
+		u32 		color;
+		f32		data;
+					SElement(f32 d, u32 clr)
+		{
+			color	= clr;
+			data	= d;
+		}
+	};
 	DEFINE_DEQUE	(SElement,ElementsDeq,ElementsDeqIt);
 	struct SSubGraph
 	{
@@ -38,8 +38,8 @@ protected:
 	DEFINE_VECTOR	(SSubGraph,SubGraphVec,SubGraphVecIt);
 	SubGraphVec		subgraphs;
 	
-	F32			mn;
-	F32 mx;
+	f32			mn;
+	f32 mx;
 	u32				max_item_count;
 	Ivector2 		lt,rb;
 	Ivector2 		grid;
@@ -54,7 +54,7 @@ protected:
 	
 	struct SMarker {
 		EStyle			m_eStyle;
-		F32			m_fPos;
+		f32			m_fPos;
 		u32				m_dwColor;
 	};
 
@@ -69,60 +69,60 @@ protected:
 	virtual void	RenderBarLines	( FVF::TL0uv** ppv, ElementsDeq* pelements );
 	virtual	void	RenderMarkers	( FVF::TL0uv** ppv, MarkersDeq* pmarkers );
 public:
-  					CStatGraph	();
+					CStatGraph	();
 					~CStatGraph	();
-    virtual void 	OnRender	();
+	virtual void 	OnRender	();
 			void 	OnDeviceCreate	();
 			void 	OnDeviceDestroy	();	
 
-    IC 	void		SetStyle	(EStyle s, u32 SubGraphID = 0)
-    {
+	IC 	void		SetStyle	(EStyle s, u32 SubGraphID = 0)
+	{
 		if (SubGraphID >= subgraphs.size()) return;
 		SubGraphVecIt it = subgraphs.begin() + SubGraphID;
 		it->SetStyle(s);
-    }
+	}
 	
-    IC	void		SetRect		(int l, int t, int w, int h, u32 rect_clr, u32 back_clr)
-    {
-        lt.set		(l,t);
-        rb.set		(l+w,t+h);
-        rect_color	= rect_clr;
+	IC	void		SetRect		(int l, int t, int w, int h, u32 rect_clr, u32 back_clr)
+	{
+		lt.set		(l,t);
+		rb.set		(l+w,t+h);
+		rect_color	= rect_clr;
 		back_color	= back_clr;
-    }
-    IC	void		SetGrid		(int w_div, F32 w_step, int h_div, F32 h_step, u32 grid_clr, u32 base_clr)
-    {
-        grid.set	(w_div,h_div);
+	}
+	IC	void		SetGrid		(int w_div, f32 w_step, int h_div, f32 h_step, u32 grid_clr, u32 base_clr)
+	{
+		grid.set	(w_div,h_div);
 		grid_step.set (w_step, h_step);
-        grid_color 	= grid_clr;
+		grid_color 	= grid_clr;
 		base_color	= base_clr;
-    }
-    IC	void		SetMinMax	(F32 _mn, F32 _mx, u32 item_count)
-    {
-        mn			= _mn;
-        mx			= _mx;
-        max_item_count = item_count;
+	}
+	IC	void		SetMinMax	(f32 _mn, f32 _mx, u32 item_count)
+	{
+		mn			= _mn;
+		mx			= _mx;
+		max_item_count = item_count;
 		for (SubGraphVecIt it=subgraphs.begin(); it!=subgraphs.end(); it++)
 		{
 			while(it->elements.size()>max_item_count) it->elements.pop_front();
 		};
-    }
-    IC	void		AppendItem	(F32 d, u32 clr, u32 SubGraphID = 0)
-    {
+	}
+	IC	void		AppendItem	(f32 d, u32 clr, u32 SubGraphID = 0)
+	{
 		if (SubGraphID>=subgraphs.size()) return;
 
-    	clamp		(d,mn,mx);
+		clamp		(d,mn,mx);
 		
 		SubGraphVecIt it = subgraphs.begin() + SubGraphID;
-        it->elements.push_back(SElement(d,clr));
-        while(it->elements.size()>max_item_count) it->elements.pop_front();
-    };
+		it->elements.push_back(SElement(d,clr));
+		while(it->elements.size()>max_item_count) it->elements.pop_front();
+	};
 	IC	u32			AppendSubGraph	(EStyle S)
 	{
 		subgraphs.push_back(SSubGraph(S));
 		return subgraphs.size()-1;
 	};
 
-	IC	void		AddMarker (EStyle Style, F32 pos, u32 Color)
+	IC	void		AddMarker (EStyle Style, f32 pos, u32 Color)
 	{
 		SMarker NewMarker;
 		NewMarker.m_dwColor = Color;
@@ -138,7 +138,7 @@ public:
 		return m_Markers[ID];
 	};
 
-	IC	void		UpdateMarkerPos	(u32 ID, F32 NewPos)
+	IC	void		UpdateMarkerPos	(u32 ID, f32 NewPos)
 	{
 		if (ID >= m_Markers.size()) return;
 		SMarker &pMarker = m_Markers[ID];

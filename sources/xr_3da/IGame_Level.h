@@ -71,7 +71,7 @@ public:	// deferred sound events
 	struct	_esound_delegate	{
 		Feel::Sound*			dest	;
 		ref_sound_data_ptr		source	;
-		F32					power	;
+		f32					power	;
 	};
 	xr_vector<_esound_delegate>	snd_Events;
 public:
@@ -102,7 +102,7 @@ public:
 	void						SetEntity				( CObject* O  )							{ pCurrentEntity=pCurrentViewEntity=O;	}
 	void						SetViewEntity			( CObject* O  )							{ pCurrentViewEntity=O;					}
 	
-	void						SoundEvent_Register		( ref_sound_data_ptr S, F32 range );
+	void						SoundEvent_Register		( ref_sound_data_ptr S, f32 range );
 	void						SoundEvent_Dispatch		( );
 
 	// Loader interface

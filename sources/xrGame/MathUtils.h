@@ -1,27 +1,27 @@
 // step 1
 #pragma once
 
-IC float*			cast_fp								(Fvector& fv)
+IC f32*			cast_fp								(Fvector& fv)
 {
-	return (float*) (&fv);
+	return (f32*) (&fv);
 }
 
-IC const float*		cast_fp								(const Fvector& fv)
+IC const f32*		cast_fp								(const Fvector& fv)
 {
-	return (const float*) (&fv);
+	return (const f32*) (&fv);
 }
 
-IC Fvector&			cast_fv								(float* fp)
+IC Fvector&			cast_fv								(f32* fp)
 {
 	return *((Fvector*) fp);
 }
 
-IC const Fvector&	cast_fv								(const float* fp)
+IC const Fvector&	cast_fv								(const f32* fp)
 {
 	return *((const Fvector*) fp);
 }
 
-ICF void			accurate_normalize					(float* a)
+ICF void			accurate_normalize					(f32* a)
 {
 	dReal sqr_magnitude = a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
 	dReal epsilon = 1.192092896e-05F;
@@ -95,27 +95,27 @@ IC f32			dXZMag								(const f32* v)
 	return _sqrt(v[0] * v[0] + v[2] * v[2]);
 }
 
-IC float			dXZMag								(const Fvector& v)
+IC f32			dXZMag								(const Fvector& v)
 {
 	return dXZMag(cast_fp(v));
 }
 
-IC float			dXZDot								(const float* v0, const float* v1)
+IC f32			dXZDot								(const f32* v0, const f32* v1)
 {
 	return v0[0] * v1[0] + v0[2] * v1[2];
 }
 
-IC float			dXZDotNormalized					(const Fvector& v0, const Fvector& v1)
+IC f32			dXZDotNormalized					(const Fvector& v0, const Fvector& v1)
 {
 	return (v0.x * v1.x + v0.z * v1.z) / _sqrt((v0.x * v0.x + v0.z * v0.z) * (v1.x * v1.x + v1.z * v1.z));
 }
 
-IC float			dXZDotNormalized					(const float* v0, const float* v1)
+IC f32			dXZDotNormalized					(const f32* v0, const f32* v1)
 {
 	return dXZDotNormalized(cast_fv(v0), cast_fv(v1));
 }
 
-IC float			dXZDot								(const Fvector& v0, const Fvector& v1)
+IC f32			dXZDot								(const Fvector& v0, const Fvector& v1)
 {
 	return v0.x * v1.x + v0.z * v1.z;
 }
@@ -169,7 +169,7 @@ IC void				dVectorAdd							(dReal* v, const dReal* av)
 	v[2] += av[2];
 }
 
-IC void				dVectorAddMul						(dReal* v, const dReal* ad, float mul)
+IC void				dVectorAddMul						(dReal* v, const dReal* ad, f32 mul)
 {
 	v[0] += ad[0] * mul;
 	v[1] += ad[1] * mul;
@@ -204,28 +204,28 @@ IC void				dVectorInvert						(dReal* v)
 	v[2] = -v[2];
 }
 
-IC void				dVectorMul							(dReal* v, float mt)
+IC void				dVectorMul							(dReal* v, f32 mt)
 {
 	v[0] *= mt;
 	v[1] *= mt;
 	v[2] *= mt;
 }
 
-IC void				dVectorMul							(dReal* res, const dReal* av, float mt)
+IC void				dVectorMul							(dReal* res, const dReal* av, f32 mt)
 {
 	res[0] = av[0] * mt;
 	res[1] = av[1] * mt;
 	res[2] = av[2] * mt;
 }
 
-IC void				dVectorInterpolate					(dReal* v, dReal* to, float k) //changes to
+IC void				dVectorInterpolate					(dReal* v, dReal* to, f32 k) //changes to
 {
 	dVectorMul(v, 1.0f - k);
 	dVectorMul(to, k);
 	dVectorAdd(v, to);
 }
 
-IC void				dVectorInterpolate					(dReal* res, const dReal* from, const dReal* to, float k) //changes to
+IC void				dVectorInterpolate					(dReal* res, const dReal* from, const dReal* to, f32 k) //changes to
 {
 	dVector3 tov;
 	dVectorSet(res, from);
@@ -252,7 +252,7 @@ IC void				dMatrixSmallDeviation				(const dReal* matrix33_from, const dReal* ma
 	vector_dev[2] = matrix33_from[4] - matrix33_to[4];
 }
 
-IC bool				dVectorLimit						(const dReal* v, float l, dReal* lv)
+IC bool				dVectorLimit						(const dReal* v, f32 l, dReal* lv)
 {
 	dReal mag = _sqrt(dDOT(v, v));
 	if (mag > l)
@@ -277,19 +277,19 @@ IC void				dMatrixSmallDeviationAdd			(const dReal* matrix33_from, const dReal* 
 	vector_dev[2] += matrix33_from[4] - matrix33_to[4];
 }
 
-IC void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, float dt, Fvector& w)
+IC void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, f32 dt, Fvector& w)
 {
 	Fvector v1, v2;
 	v1.set(q1.x, q1.y, q1.z);
 	v2.set(q2.x, q2.y, q2.z);
-	float cosinus = q1.w * q2.w + v1.dotproduct(v2);
+	f32 cosinus = q1.w * q2.w + v1.dotproduct(v2);
 	w.crossproduct(v1, v2);
 	// the signum must be inverted ?
 	v1.mul(q2.w);
 	v2.mul(q1.w);
 	w.sub(v2);
 	w.add(v1);
-	float sinus_2 = 1.0f - cosinus * cosinus, k = 2.0f / dt;
+	f32 sinus_2 = 1.0f - cosinus * cosinus, k = 2.0f / dt;
 	if (sinus_2 > EPS)
 	{
 		k *= acos(cosinus) / _sqrt(sinus_2);
@@ -298,9 +298,9 @@ IC void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, float d
 	w.mul(k);
 }
 
-IC float			to_mag_and_dir						(const Fvector& in_v, Fvector& out_v)
+IC f32			to_mag_and_dir						(const Fvector& in_v, Fvector& out_v)
 {
-	float mag = in_v.magnitude( );
+	f32 mag = in_v.magnitude( );
 	if (!fis_zero(mag))
 	{
 		out_v.mul(in_v, 1.0f / mag);
@@ -313,12 +313,12 @@ IC float			to_mag_and_dir						(const Fvector& in_v, Fvector& out_v)
 	return mag;
 }
 
-IC float			to_mag_and_dir						(Fvector& in_out_v)
+IC f32			to_mag_and_dir						(Fvector& in_out_v)
 {
 	return to_mag_and_dir(in_out_v, in_out_v);
 }
 
-IC void				to_vector							(Fvector& v, float mag, const Fvector dir)
+IC void				to_vector							(Fvector& v, f32 mag, const Fvector dir)
 {
 	v.mul(dir, mag);
 }
@@ -326,16 +326,16 @@ IC void				to_vector							(Fvector& v, float mag, const Fvector dir)
 IC void				prg_pos_on_axis						(const Fvector& in_ax_p, const Fvector& in_ax_d, Fvector& in_out_pos)
 {
 	in_out_pos.sub(in_ax_p);
-	float ax_mag = in_ax_d.magnitude( );
-	float prg = in_out_pos.dotproduct(in_ax_d) / ax_mag;
+	f32 ax_mag = in_ax_d.magnitude( );
+	f32 prg = in_out_pos.dotproduct(in_ax_d) / ax_mag;
 	in_out_pos.set(in_ax_d);
 	in_out_pos.mul(prg / ax_mag);
 	in_out_pos.add(in_ax_p);
 }
 
-IC float			prg_pos_on_plane					(const Fvector& in_norm, float d, const Fvector& in_pos, Fvector& out_pos)
+IC f32			prg_pos_on_plane					(const Fvector& in_norm, f32 d, const Fvector& in_pos, Fvector& out_pos)
 {
-	float prg = d - in_pos.dotproduct(in_norm);
+	f32 prg = d - in_pos.dotproduct(in_norm);
 	Fvector diff;
 	diff.set(in_norm);
 	diff.mul(prg);
@@ -345,7 +345,7 @@ IC float			prg_pos_on_plane					(const Fvector& in_norm, float d, const Fvector&
 
 IC void				prg_dir_on_plane					(const Fvector& in_norm, const Fvector& in_dir, Fvector& out_dir)
 {
-	float prg = -in_dir.dotproduct(in_norm);
+	f32 prg = -in_dir.dotproduct(in_norm);
 	Fvector diff;
 	diff.set(in_norm);
 	diff.mul(prg);
@@ -357,7 +357,7 @@ IC void				restrict_vector_in_dir				(Fvector& V, const Fvector& dir)
 {
 	Fvector sub;
 	sub.set(dir);
-	float dotpr = dir.dotproduct(V);
+	f32 dotpr = dir.dotproduct(V);
 	if (dotpr > 0.0f)
 	{
 		sub.mul(dotpr);
@@ -370,12 +370,12 @@ IC bool				check_obb_sise						(Fobb& obb)
 	return (!fis_zero(obb.m_halfsize.x, EPS_L) || !fis_zero(obb.m_halfsize.y, EPS_L) || !fis_zero(obb.m_halfsize.z, EPS_L));
 }
 
-IC float			fsignum								(float val)
+IC f32			fsignum								(f32 val)
 {
 	return val < 0.0f ? -1.0f : 1.0f;
 }
 
-IC void				save_max							(float& max, float val)
+IC void				save_max							(f32& max, f32 val)
 {
 	if (val > max)
 	{
@@ -383,7 +383,7 @@ IC void				save_max							(float& max, float val)
 	}
 }
 
-IC void				save_min							(float& min, float val)
+IC void				save_min							(f32& min, f32 val)
 {
 	if (val < min)
 	{
@@ -391,7 +391,7 @@ IC void				save_min							(float& min, float val)
 	}
 }
 
-IC void				limit_above							(float& val, float limit)
+IC void				limit_above							(f32& val, f32 limit)
 {
 	if (val > limit)
 	{
@@ -399,7 +399,7 @@ IC void				limit_above							(float& val, float limit)
 	}
 }
 
-IC void				limit_below							(float& val, float limit)
+IC void				limit_below							(f32& val, f32 limit)
 {
 	if (val < limit)
 	{
@@ -407,53 +407,53 @@ IC void				limit_below							(float& val, float limit)
 	}
 }
 
-IC void				TransferenceToThrowVel				(Fvector& in_transference_out_vel, float time, float gravity_accel)
+IC void				TransferenceToThrowVel				(Fvector& in_transference_out_vel, f32 time, f32 gravity_accel)
 {
 	in_transference_out_vel.mul(1.0f / time);
 	in_transference_out_vel.y += time * gravity_accel / 2.0f;
 }
 
-IC float			ThrowMinVelTime						(const Fvector& transference, float gravity_accel)
+IC f32			ThrowMinVelTime						(const Fvector& transference, f32 gravity_accel)
 {
 	return _sqrt(2.0f * transference.magnitude( ) / gravity_accel);
 }
 
 // returns num result, tgA result tangents of throw angle 
-IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, float throw_vel, float gravity_accel, Fvector2& tgA, float& s)
+IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_vel, f32 gravity_accel, Fvector2& tgA, f32& s)
 {
-	float sqx = transference.x * transference.x + transference.z * transference.z;
-	float sqv = throw_vel * throw_vel;
-	float sqD4 = 1.0f - gravity_accel / (sqv * sqv) * (2.0f * transference.y * sqv + gravity_accel * sqx);
+	f32 sqx = transference.x * transference.x + transference.z * transference.z;
+	f32 sqv = throw_vel * throw_vel;
+	f32 sqD4 = 1.0f - gravity_accel / (sqv * sqv) * (2.0f * transference.y * sqv + gravity_accel * sqx);
 	if (sqD4 < 0.0f)
 	{
 		return 0;
 	}
 
 	s = _sqrt(sqx);
-	float mlt = sqv / (gravity_accel * s);
+	f32 mlt = sqv / (gravity_accel * s);
 	if (sqD4 == 0.0f)
 	{
 		tgA.x = tgA.y = mlt;
 		return 1;
 	}
 
-	float D4 = _sqrt(sqD4);
+	f32 D4 = _sqrt(sqD4);
 	tgA.x = mlt * (1.0f - D4);
 	tgA.y = mlt * (1.0f + D4);
 	return 2;
 }
 
-IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, float throw_vel, float gravity_accel, Fvector2& tgA)
+IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_vel, f32 gravity_accel, Fvector2& tgA)
 {
-	float s;
+	f32 s;
 	return TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
 }
 
-IC u8				TransferenceAndThrowVelToThrowDir	(const Fvector& transference, float throw_vel, float gravity_accel, Fvector	throw_dir[2])
+IC u8				TransferenceAndThrowVelToThrowDir	(const Fvector& transference, f32 throw_vel, f32 gravity_accel, Fvector	throw_dir[2])
 {
 	throw_dir[0] = throw_dir[1] = transference;
 	Fvector2 tgA;
-	float s;
+	f32 s;
 	u8 ret = TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
 	switch (ret)
 	{
@@ -626,13 +626,13 @@ else\
 
 struct SInertVal
 {
-	float val;
-	const float inertion;
-	SInertVal(float inert) : inertion(inert)
+	f32 val;
+	const f32 inertion;
+	SInertVal(f32 inert) : inertion(inert)
 	{
 		R_ASSERT(inert > 0.0f && inert < 1.0f);
 	}
-	IC void new_val(float new_val)
+	IC void new_val(f32 new_val)
 	{
 		val = inertion * val + (1 - inertion) * new_val;
 	}
@@ -644,7 +644,7 @@ private:
 	}
 };
 
-IC float			DET									(const Fmatrix& a)
+IC f32			DET									(const Fmatrix& a)
 {
 	return ((a._11 * (a._22 * a._33 - a._23 * a._32) - a._12 * (a._21 * a._33 - a._23 * a._31) + a._13 * (a._21 * a._32 - a._22 * a._31)));
 }
@@ -657,10 +657,10 @@ IC bool				valid_pos							(const Fvector& P, const Fbox& B)
 }
 
 #ifdef DEBUG
-	const float DET_CHECK_EPS = 0.15f;		// scale -35%
+	const f32 DET_CHECK_EPS = 0.15f;		// scale -35%
 #	define VERIFY_RMATRIX(M)\
 	{\
-		float d = DET(M);\
+		f32 d = DET(M);\
 		if (!fsimilar(d, 1.0f, DET_CHECK_EPS))\
 		{\
 			Log("matrix--- ", M);\

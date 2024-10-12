@@ -10,10 +10,10 @@ class ISpatial;
 
 namespace Feel
 {
-	const F32 fuzzy_update_vis		= 1000.0f;		// speed of fuzzy-logic desisions
-	const F32 fuzzy_update_novis	= 1000.0f;		// speed of fuzzy-logic desisions
-	const F32 fuzzy_guaranteed		= 0.001f;		// distance which is supposed 100% visible
-	const F32 lr_granularity		= 0.1f;			// assume similar positions
+	const f32 fuzzy_update_vis		= 1000.0f;		// speed of fuzzy-logic desisions
+	const f32 fuzzy_update_novis	= 1000.0f;		// speed of fuzzy-logic desisions
+	const f32 fuzzy_guaranteed		= 0.001f;		// distance which is supposed 100% visible
+	const f32 lr_granularity		= 0.1f;			// assume similar positions
 
 	class ENGINE_API Vision: private pure_relcase
 	{
@@ -26,26 +26,28 @@ namespace Feel
 
 		void						o_new		(CObject* E);
 		void						o_delete	(CObject* E);
-		void						o_trace		(Fvector& P, F32 dt, F32 vis_threshold);
+		void						o_trace		(Fvector& P, f32 dt, f32 vis_threshold);
+
 	public:
 									Vision		();
 		virtual					~	Vision		();
 		struct	 feel_visible_Item 
 		{
-			F32					fuzzy;		// note range: (-1[no]..1[yes])
+			f32					fuzzy;		// note range: (-1[no]..1[yes])
 			CObject*			O;
 			collide::ray_cache	Cache;
-			F32					Cache_vis;
+			f32					Cache_vis;
 			Fvector				cp_LP;
 			Fvector				cp_LR_src;
 			Fvector				cp_LR_dst;
 			Fvector				cp_LAST;	// last point found to be visible
 		};
 		xr_vector<feel_visible_Item>	feel_visible;
+
 	public:
 		void						feel_vision_clear		();
 		void						feel_vision_query		(Fmatrix& mFull,	Fvector& P);
-		void						feel_vision_update		(CObject* parent,	Fvector& P, F32 dt, F32 vis_threshold);
+		void						feel_vision_update		(CObject* parent,	Fvector& P, f32 dt, f32 vis_threshold);
 		void	__stdcall			feel_vision_relcase		(CObject* object);
 		void						feel_vision_get			(xr_vector<CObject*>& R)		{
 			R.clear					();
@@ -62,6 +64,6 @@ namespace Feel
 			return		Fvector().set(flt_max,flt_max,flt_max);
 		}
 		virtual		BOOL			feel_vision_isRelevant	(CObject* O)					= 0;
-		virtual		F32				feel_vision_mtl_transp	(CObject* O, u32 element)		= 0;
+		virtual		f32				feel_vision_mtl_transp	(CObject* O, u32 element)		= 0;
 	};
 };

@@ -21,10 +21,10 @@
 #include "PHSynchronize.h"
 #include "phnetstate.h"
 
-static float max_depth = 0.0f;
-static float friction_factor = 0.0f;
-static float cfm = 1.e-10f;
-static float erp = 1.0f;
+static f32 max_depth = 0.0f;
+static f32 friction_factor = 0.0f;
+static f32 cfm = 1.e-10f;
+static f32 erp = 1.0f;
 
 #ifdef DEBUG
 #	define	CHECK_POS(pos, msg, br)			if (!valid_pos(pos, phBoundaries)) { Msg("pos:%f,%f,%f", pos.x, pos.y, pos.z); Msg(msg); VERIFY(!br); }
@@ -36,8 +36,8 @@ void ActivateTestDepthCallback				(bool& do_colide, bool bo1, dContact& c, SGame
 {
 	if (do_colide && !material_1->Flags.test(SGameMtl::flPassable) && !material_2->Flags.test(SGameMtl::flPassable))
 	{
-		float& depth = c.geom.depth;
-		float test_depth = depth;
+		f32& depth = c.geom.depth;
+		f32 test_depth = depth;
 		save_max(max_depth, test_depth);
 		c.surface.mu *= friction_factor;
 
@@ -68,8 +68,8 @@ void GetMaxDepthCallback					(bool& do_colide, bool bo1, dContact& c, SGameMtl* 
 {
 	if (do_colide && !material_1->Flags.test(SGameMtl::flPassable) && !material_2->Flags.test(SGameMtl::flPassable))
 	{
-		float& depth = c.geom.depth;
-		float test_depth = depth;
+		f32& depth = c.geom.depth;
+		f32 test_depth = depth;
 		//save_max(max_depth,test_depth);
 		max_depth += test_depth;
 	}
@@ -221,7 +221,7 @@ bool CPHActivationShape::Activate			(const Fvector need_size, u16 steps, f32 max
 	ph_world->GetState(temp_state);
 	for (int m = 0; steps > m; ++m)
 	{
-		//float param =fnum_steps_r*(1+m);
+		//f32 param =fnum_steps_r*(1+m);
 		//InterpolateBox(id,param);
 		size.add(step_size);
 		dGeomBoxSetLengths(m_geom, size.x, size.y, size.z);

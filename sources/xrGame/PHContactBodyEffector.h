@@ -7,7 +7,7 @@ struct SGameMtl;
 class CPHContactBodyEffector : public CPHBaseBodyEffector
 {
 dContact m_contact;
-float	 m_recip_flotation;
+f32	 m_recip_flotation;
 SGameMtl* m_material;
 public:
 void	Init(dBodyID body,const dContact& contact,SGameMtl* material);

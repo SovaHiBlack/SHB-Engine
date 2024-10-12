@@ -12,7 +12,7 @@ class ENGINE_API	CSkeletonWallmark;
 class ENGINE_API	CKinematics;
 struct ENGINE_API	FSlideWindowItem;
 
-const	F32		fLightSmoothFactor = 4.f;
+const	f32		fLightSmoothFactor = 4.f;
 
 //////////////////////////////////////////////////////////////////////////
 // definition (Dynamic Light)
@@ -34,12 +34,12 @@ public:
 	virtual void					set_indirect		(bool)								{};
 	virtual void					set_position		(const Fvector& P)					= 0;
 	virtual void					set_rotation		(const Fvector& D, const Fvector& R)= 0;
-	virtual void					set_cone			(F32 angle)						= 0;
-	virtual void					set_range			(F32 R)							= 0;
-	virtual void					set_virtual_size	(F32 R)							= 0;
+	virtual void					set_cone			(f32 angle)						= 0;
+	virtual void					set_range			(f32 R)							= 0;
+	virtual void					set_virtual_size	(f32 R)							= 0;
 	virtual void					set_texture			(pcstr name)						= 0;
 	virtual void					set_color			(const Fcolor& C)					= 0;
-	virtual void					set_color			(F32 r, F32 g, F32 b)			= 0;
+	virtual void					set_color			(f32 r, f32 g, f32 b)			= 0;
 	virtual ~IRender_Light()		;
 };
 struct ENGINE_API		resptrcode_light	: public resptr_base<IRender_Light>
@@ -56,10 +56,10 @@ public:
 	virtual bool					get_active			()									= 0;
 	virtual void					set_position		(const Fvector& P)					= 0;
 	virtual void					set_direction		(const Fvector& P)					= 0;
-	virtual void					set_radius			(F32 R)							= 0;
+	virtual void					set_radius			(f32 R)							= 0;
 	virtual void					set_texture			(pcstr name)						= 0;
 	virtual void					set_color			(const Fcolor& C)					= 0;
-	virtual void					set_color			(F32 r, F32 g, F32 b)			= 0;
+	virtual void					set_color			(f32 r, f32 g, f32 b)			= 0;
 	virtual ~IRender_Glow()			;
 };
 struct ENGINE_API		resptrcode_glow	: public resptr_base<IRender_Glow>
@@ -81,8 +81,8 @@ public:
 	};
 public:
 	virtual	void						force_mode			(u32 mode)							= 0;
-	virtual F32						get_luminocity		()									= 0;
-	virtual F32						get_luminocity_hemi	()									= 0;
+	virtual f32						get_luminocity		()									= 0;
+	virtual f32						get_luminocity_hemi	()									= 0;
 
 	virtual ~IRender_ObjectSpecific()	{};
 };
@@ -105,13 +105,13 @@ public:
 // definition (Target)
 class	ENGINE_API	IRender_Target				{
 public:
-	virtual	void					set_blur			(F32	f)							= 0;
-	virtual	void					set_gray			(F32	f)							= 0;
-	virtual void					set_duality_h		(F32	f)							= 0;
-	virtual void					set_duality_v		(F32	f)							= 0;
-	virtual void					set_noise			(F32	f)							= 0;
-	virtual void					set_noise_scale		(F32	f)							= 0;
-	virtual void					set_noise_fps		(F32	f)							= 0;
+	virtual	void					set_blur			(f32	f)							= 0;
+	virtual	void					set_gray			(f32	f)							= 0;
+	virtual void					set_duality_h		(f32	f)							= 0;
+	virtual void					set_duality_v		(f32	f)							= 0;
+	virtual void					set_noise			(f32	f)							= 0;
+	virtual void					set_noise_scale		(f32	f)							= 0;
+	virtual void					set_noise_fps		(f32	f)							= 0;
 	virtual void					set_color_base		(u32	f)							= 0;
 	virtual void					set_color_gray		(u32	f)							= 0;
 	virtual void					set_color_add		(u32	f)							= 0;
@@ -197,10 +197,10 @@ public:
 	virtual	void					add_Occluder			(Fbox2&	bb_screenspace	)					= 0;	// mask screen region as oclluded (-1..1, -1..1)
 	virtual void					add_Visual				(IRender_Visual*	V	)					= 0;	// add visual leaf	(no culling performed at all)
 	virtual void					add_Geometry			(IRender_Visual*	V	)					= 0;	// add visual(s)	(all culling performed)
-	virtual void					add_StaticWallmark		(ref_shader& S, const Fvector& P, F32 s, CDB::TRI* T, Fvector* V)=0;
+	virtual void					add_StaticWallmark		(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* V)=0;
 	virtual void					clear_static_wallmarks	()=0;
 	virtual void					add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm)						= 0;
-	virtual void					add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, F32 size)=0;
+	virtual void					add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size)=0;
 
 	virtual IBlender*				blender_create			(CLASS_ID cls)								= 0;
 	virtual void					blender_destroy			(IBlender* &)								= 0;

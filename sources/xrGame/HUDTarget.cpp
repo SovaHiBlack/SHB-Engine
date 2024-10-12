@@ -36,16 +36,16 @@ u32 C_ON_FRIEND		D3DCOLOR_XRGB(0,0xff,0);
 #define SHOW_INFO_SPEED		0.5f
 #define HIDE_INFO_SPEED		10.f
 
-IC	float	recon_mindist	()		{
+IC	f32	recon_mindist	()		{
 	return 2.f;
 }
-IC	float	recon_maxdist	()		{
+IC	f32	recon_maxdist	()		{
 	return 50.f;
 }
-IC	float	recon_minspeed	()		{
+IC	f32	recon_minspeed	()		{
 	return 0.5f;
 }
-IC	float	recon_maxspeed	()		{
+IC	f32	recon_maxspeed	()		{
 	return 10.f;
 }
 
@@ -137,7 +137,7 @@ void CHUDTarget::Render()
 	Fvector				p2;
 	p2.mad				(p1,dir,RQ.range);
 	PT.transform		(p2,Device.mFullTransform);
-	float				di_size = C_SIZE/powf(PT.p.w,.2f);
+	f32				di_size = C_SIZE/powf(PT.p.w,.2f);
 
 	CGameFont* F		= HUD().Font().pFontGraffiti19Russian;
 	F->SetAligment		(CGameFont::alCenter);

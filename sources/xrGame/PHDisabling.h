@@ -7,11 +7,11 @@ struct SDisableVector
 {
 	Fvector						sum																			;
 	Fvector						previous																	;
-	float						UpdatePrevious				(const Fvector& new_vector)						;
-	float						Update						(const Fvector& new_vector)						;
+	f32						UpdatePrevious				(const Fvector& new_vector)						;
+	f32						Update						(const Fvector& new_vector)						;
 	void						Reset						()												;
 	void						Init						()												;
-	float						SumMagnitude				()												;
+	f32						SumMagnitude				()												;
 
 	SDisableVector											()												;
 };
@@ -61,7 +61,7 @@ public:
 
 protected:
 				void			Reinit						()												;
-	IC			void			CheckState					(SDisableUpdateState& state,	float vel	,float	accel)
+	IC			void			CheckState					(SDisableUpdateState& state, f32 vel	, f32	accel)
 	{
 		if	(vel	<	m_params.velocity	&&	accel	<	m_params.acceleration) 
 																					state.disable=true	;

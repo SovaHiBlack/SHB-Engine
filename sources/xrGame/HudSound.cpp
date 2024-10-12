@@ -30,8 +30,8 @@ void HUD_SOUND::LoadSound(pcstr section, pcstr line,
 void  HUD_SOUND::LoadSound(pcstr section, pcstr line,
 						   ref_sound& snd, 
 						   int type,
-						   float* volume, 
-						   float* delay)
+						   f32* volume,
+						   f32* delay)
 {
 
 	pcstr str = pSettings->r_string(section, line);
@@ -51,7 +51,7 @@ void  HUD_SOUND::LoadSound(pcstr section, pcstr line,
 		{
 			_GetItem (str, 1, buf_str);
 			if(xr_strlen(buf_str)>0)
-				*volume = (float)atof(buf_str);
+				*volume = (f32)atof(buf_str);
 		}
 	}
 
@@ -62,7 +62,7 @@ void  HUD_SOUND::LoadSound(pcstr section, pcstr line,
 		{
 			_GetItem (str, 2, buf_str);
 			if(xr_strlen(buf_str)>0)
-				*delay = (float)atof(buf_str);
+				*delay = (f32)atof(buf_str);
 		}
 	}
 }

@@ -31,7 +31,7 @@ CPatrolPath	&CPatrolPath::load_raw	(const CLevelGraph *level_graph, const CGameL
 	for (u32 i=0; i < edge_count; ++i) {
 		u16			vertex0 = stream.r_u16();
 		u16			vertex1 = stream.r_u16();
-		float		probability = stream.r_float();
+		f32		probability = stream.r_float();
 		add_edge	(vertex0,vertex1,probability);
 	}
 

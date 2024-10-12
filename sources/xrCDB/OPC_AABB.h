@@ -17,7 +17,7 @@
 //! Declarations of type-independent methods (implemented in the .cpp)
 #define AABB_COMMON_METHODS																							\
 	AABB&	Add(const AABB& aabb);																					\
-	F32	CalculateBoxArea(const icePoint& eye, const Matrix4x4& mat, F32 width, F32 height, int& num)	const;	\
+	f32	CalculateBoxArea(const icePoint& eye, const Matrix4x4& mat, f32 width, F32 height, int& num)	const;	\
 	bool	IsInside(const AABB& box)																		const;
 
 	enum AABBType
@@ -78,7 +78,7 @@
 		 *	\return		the size of the AABB
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						F32		GetSize()								const		{ Point e; GetExtents(e);	return e.Max();	}
+						f32		GetSize()								const		{ Point e; GetExtents(e);	return e.Max();	}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -106,9 +106,9 @@
 		inline_			void		GetMax(Point& max)						const		{ max = mMax;								}
 
 		//! Get component of the box's min point along a given axis
-		inline_			F32		GetMin(udword axis)						const		{ return ((const F32*)mMin)[axis];						}
+		inline_			f32		GetMin(udword axis)						const		{ return ((const f32*)mMin)[axis];						}
 		//! Get component of the box's max point along a given axis
-		inline_			F32		GetMax(udword axis)						const		{ return ((const F32*)mMax)[axis];						}
+		inline_			f32		GetMax(udword axis)						const		{ return ((const f32*)mMax)[axis];						}
 
 		//! Get box center
 		inline_			void		GetCenter(Point& center)				const		{ center = (mMax + mMin)*0.5f;				}
@@ -116,18 +116,18 @@
 		inline_			void		GetExtents(Point& extents)				const		{ extents = (mMax - mMin)*0.5f;				}
 
 		//! Get component of the box's center along a given axis
-		inline_			F32		GetCenter(udword axis)					const		{ return (((const F32*)mMax)[axis] + ((const F32*)mMin)[axis])*0.5f;	}
+		inline_			f32		GetCenter(udword axis)					const		{ return (((const f32*)mMax)[axis] + ((const f32*)mMin)[axis])*0.5f;	}
 		//! Get component of the box's extents along a given axis
-		inline_			F32		GetExtents(udword axis)					const		{ return (((const F32*)mMax)[axis] - ((const F32*)mMin)[axis])*0.5f;	}
+		inline_			f32		GetExtents(udword axis)					const		{ return (((const f32*)mMax)[axis] - ((const f32*)mMin)[axis])*0.5f;	}
 
 		//! Get box diagonal
 		inline_			void		GetDiagonal(Point& diagonal)			const		{ diagonal = mMax - mMin;					}
-		inline_			F32		GetWidth()								const		{ return mMax.x - mMin.x;					}
-		inline_			F32		GetHeight()								const		{ return mMax.y - mMin.y;					}
-		inline_			F32		GetDepth()								const		{ return mMax.z - mMin.z;					}
+		inline_			f32		GetWidth()								const		{ return mMax.x - mMin.x;					}
+		inline_			f32		GetHeight()								const		{ return mMax.y - mMin.y;					}
+		inline_			f32		GetDepth()								const		{ return mMax.z - mMin.z;					}
 
 		//! Volume
-		inline_			F32		GetVolume()								const		{ return GetWidth() * GetHeight() * GetDepth();		}
+		inline_			f32		GetVolume()								const		{ return GetWidth() * GetHeight() * GetDepth();		}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -158,7 +158,7 @@
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		inline_			bool		Intersect(const AABB& a, udword axis)	const
 						{
-							if(((const F32*)mMax)[axis] < ((const F32*)a.mMin)[axis] || ((const F32*)a.mMax)[axis] < ((const F32*)mMin)[axis])	return false;
+							if(((const f32*)mMax)[axis] < ((const f32*)a.mMin)[axis] || ((const f32*)a.mMax)[axis] < ((const f32*)mMin)[axis])	return false;
 							return true;
 						}
 
@@ -211,7 +211,7 @@
 						}
 
 		//! Operator for AABB *= float. Scales the extents, keeps same center.
-		inline_			AABB&		operator*=(F32 s)
+		inline_			AABB&		operator*=(f32 s)
 						{
 							Point Center;	GetCenter(Center);
 							Point Extents;	GetExtents(Extents);
@@ -220,7 +220,7 @@
 						}
 
 		//! Operator for AABB /= float. Scales the extents, keeps same center.
-		inline_			AABB&		operator/=(F32 s)
+		inline_			AABB&		operator/=(f32 s)
 						{
 							Point Center;	GetCenter(Center);
 							Point Extents;	GetExtents(Extents);
@@ -325,9 +325,9 @@
 		inline_			void		GetMax(Point& max)						const		{ max = mCenter + mExtents;					}
 
 		//! Get component of the box's min point along a given axis
-		inline_			F32		GetMin(udword axis)						const		{ return mCenter[axis] - mExtents[axis];	}
+		inline_			f32		GetMin(udword axis)						const		{ return mCenter[axis] - mExtents[axis];	}
 		//! Get component of the box's max point along a given axis
-		inline_			F32		GetMax(udword axis)						const		{ return mCenter[axis] + mExtents[axis];	}
+		inline_			f32		GetMax(udword axis)						const		{ return mCenter[axis] + mExtents[axis];	}
 
 		//! Get box center
 		inline_			void		GetCenter(Point& center)				const		{ center = mCenter;							}
@@ -335,18 +335,18 @@
 		inline_			void		GetExtents(Point& extents)				const		{ extents = mExtents;						}
 
 		//! Get component of the box's center along a given axis
-		inline_			F32		GetCenter(udword axis)					const		{ return mCenter[axis];						}
+		inline_			f32		GetCenter(udword axis)					const		{ return mCenter[axis];						}
 		//! Get component of the box's extents along a given axis
-		inline_			F32		GetExtents(udword axis)					const		{ return mExtents[axis];					}
+		inline_			f32		GetExtents(udword axis)					const		{ return mExtents[axis];					}
 
 		//! Get box diagonal
 		inline_			void		GetDiagonal(Point& diagonal)			const		{ diagonal = mExtents * 2.0f;				}
-		inline_			F32			GetWidth()								const		{ return mExtents.x * 2.0f;					}
-		inline_			F32			GetHeight()								const		{ return mExtents.y * 2.0f;					}
-		inline_			F32			GetDepth()								const		{ return mExtents.z * 2.0f;					}
+		inline_			f32			GetWidth()								const		{ return mExtents.x * 2.0f;					}
+		inline_			f32			GetHeight()								const		{ return mExtents.y * 2.0f;					}
+		inline_			f32			GetDepth()								const		{ return mExtents.z * 2.0f;					}
 
 		//! Volume
-		inline_			F32			GetVolume()								const		{ return mExtents.x * mExtents.y * mExtents.z * 8.0f;	}
+		inline_			f32			GetVolume()								const		{ return mExtents.x * mExtents.y * mExtents.z * 8.0f;	}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -388,8 +388,8 @@
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		inline_			bool		Intersect(const AABB& a, udword axis)	const
 						{
-			F32 t = mCenter[axis] - a.mCenter[axis];
-			F32 e = a.mExtents[axis] + mExtents[axis];
+			f32 t = mCenter[axis] - a.mCenter[axis];
+			f32 e = a.mExtents[axis] + mExtents[axis];
 							if(AIR(t) > IR(e))	return false;
 							return true;
 						}
@@ -437,10 +437,10 @@
 						}
 
 		//! Operator for AABB *= float. Scales the extents, keeps same center.
-		inline_			AABB&		operator*= (F32 s)		{ mExtents*=s;	return *this;	}
+		inline_			AABB&		operator*= (f32 s)		{ mExtents*=s;	return *this;	}
 
 		//! Operator for AABB /= float. Scales the extents, keeps same center.
-		inline_			AABB&		operator/= (F32 s)		{ mExtents/=s;	return *this;	}
+		inline_			AABB&		operator/= (f32 s)		{ mExtents/=s;	return *this;	}
 
 		//! Operator for AABB += Point. Translates the box.
 		inline_			AABB&		operator+=(const Point& trans)

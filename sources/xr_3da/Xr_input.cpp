@@ -6,8 +6,8 @@
 CInput *	pInput	= NULL;
 IInputReceiver		dummyController;
 
-ENGINE_API F32	psMouseSens			= 1.f;
-ENGINE_API F32	psMouseSensScale	= 1.f;
+ENGINE_API f32	psMouseSens			= 1.f;
+ENGINE_API f32	psMouseSensScale	= 1.f;
 ENGINE_API Flags32	psMouseInvert		= {FALSE};
 
 #define MOUSEBUFFERSIZE			64

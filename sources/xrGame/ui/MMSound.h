@@ -11,7 +11,7 @@ public:
 	void 			whell_Play	();
 	void 			whell_Stop	();
 	void 			whell_Click	();
-	void 			whell_UpdateMoving(float frequency);
+	void 			whell_UpdateMoving(f32 frequency);
 
 	void 			music_Play	();
 	void 			music_Stop	();

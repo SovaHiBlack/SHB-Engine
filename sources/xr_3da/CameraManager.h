@@ -4,11 +4,11 @@
 
 struct ENGINE_API SPPInfo {
 	struct SColor{
-		F32 r;
-		F32 g;
-		F32 b;
+		f32 r;
+		f32 g;
+		f32 b;
 		SColor					(){}
-		SColor					(F32 _r, F32 _g, F32 _b):r(_r),g(_g),b(_b){}
+		SColor					(f32 _r, f32 _g, f32 _b):r(_r),g(_g),b(_b){}
 		IC operator u32()										{
 			int		_r	= clampr	(iFloor(r*255.f+.5f),0,255);
 			int		_g	= clampr	(iFloor(g*255.f+.5f),0,255);
@@ -23,30 +23,30 @@ struct ENGINE_API SPPInfo {
 			r -= ppi.r; g -= ppi.g; b -= ppi.b; 
 			return *this;
 		}
-		IC SColor& set			(F32 _r, F32 _g, F32 _b)	{
+		IC SColor& set			(f32 _r, f32 _g, f32 _b)	{
 			r=_r;g=_g;b=_b;
 			return *this;
 		}
 	};
-	F32		blur;
-	F32		gray;
+	f32		blur;
+	f32		gray;
 	struct SDuality { 
-		F32 h;
-		F32 v;
+		f32 h;
+		f32 v;
 		SDuality				(){}
-		SDuality				(F32 _h, F32 _v):h(_h),v(_v){}
-		IC SDuality& set		(F32 _h, F32 _v)			{
+		SDuality				(f32 _h, f32 _v):h(_h),v(_v){}
+		IC SDuality& set		(f32 _h, f32 _v)			{
 			h=_h;v=_v;
 			return *this;
 		}
 	} duality;
 	struct SNoise	{
-		F32		intensity;
-		F32		grain;
-		F32		fps;
+		f32		intensity;
+		f32		grain;
+		f32		fps;
 		SNoise					(){}
-		SNoise					(F32 _i, F32 _g, F32 _f):intensity(_i),grain(_g),fps(_f){}
-		IC SNoise& set			(F32 _i, F32 _g, F32 _f){
+		SNoise					(f32 _i, f32 _g, f32 _f):intensity(_i),grain(_g),fps(_f){}
+		IC SNoise& set			(f32 _i, f32 _g, f32 _f){
 			intensity=_i;grain=_g;fps=_f;
 			return *this;
 		}
@@ -87,7 +87,7 @@ struct ENGINE_API SPPInfo {
 		color_gray.set	(.333f, .333f,	.333f);
 		color_add.set	(0.f,	0.f,	0.f);
 	}
-	SPPInfo&	lerp(const SPPInfo& def, const SPPInfo& to, F32 factor);
+	SPPInfo&	lerp(const SPPInfo& def, const SPPInfo& to, f32 factor);
 	void		validate(pcstr str);
 };
 
@@ -106,12 +106,13 @@ class ENGINE_API CCameraManager
 	EffectorCamVec			m_EffectorsCam_removed_deffered;
 	EffectorPPVec			m_EffectorsPP;
 
-	F32						fFov;
-	F32						fFar;
-	F32						fAspect;
+	f32						fFov;
+	f32						fFar;
+	f32						fAspect;
 	bool					m_bAutoApply;
 	SPPInfo					pp_affected;
 	void					UpdateDeffered();
+
 public:
 
 #ifdef DEBUG	
@@ -133,9 +134,9 @@ public:
 	IC Fvector				Right				()	const { return vRight;	}
 	
 	IC void					camera_Matrix		(Fmatrix& M){M.set(vRight,vNormal,vDirection,vPosition);}
-	void					Update				(const Fvector& P, const Fvector& D, const Fvector& N, F32 fFOV_Dest, F32 fASPECT_Dest, F32 fFAR_Dest, u32 flags=0);
+	void					Update				(const Fvector& P, const Fvector& D, const Fvector& N, f32 fFOV_Dest, f32 fASPECT_Dest, f32 fFAR_Dest, u32 flags=0);
 	void					Update				(const CCameraBase* C);
-	void					ApplyDevice			(F32 _viewport_near);
+	void					ApplyDevice			(f32 _viewport_near);
 	static void				ResetPP				();
 
 							CCameraManager		(bool bApplyOnUpdate);
@@ -144,5 +145,5 @@ public:
 ENGINE_API extern SPPInfo					pp_identity;
 ENGINE_API extern SPPInfo					pp_zero;
 
-ENGINE_API extern F32 psCamInert;
-ENGINE_API extern F32 psCamSlideInert;
+ENGINE_API extern f32 psCamInert;
+ENGINE_API extern f32 psCamSlideInert;

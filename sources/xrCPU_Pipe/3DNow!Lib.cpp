@@ -18,7 +18,7 @@ union __m64t
 // An instantiation for initializing with a pair of integers
 typedef __m64t<int[2]> __m64i;
 // An instantiation for initializing with a pair of floats
-typedef __m64t<F32[2]> __m64f;
+typedef __m64t<f32[2]> __m64f;
 //;******************************************************************************
 //; Vector (3DNow!) data 
 //;******************************************************************************

@@ -229,9 +229,9 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 			/*
 			Fvector dir;
 			P.r_dir(dir);
-			F32 jump = P.r_float();
+			f32 jump = P.r_float();
 			NET_SavedAccel = dir;
-			extern F32 NET_Jump;
+			extern f32 NET_Jump;
 			NET_Jump = jump;
 			m_bInInterpolation = false;
 			mstate_real |= mcJump;

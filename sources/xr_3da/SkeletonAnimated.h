@@ -21,22 +21,22 @@ private:
 	typedef const MotionID *(MotionID::*unspecified_bool_type) () const;
 public:
 	union{
-    	struct{
-    	    u16		idx:14;
-	        u16		slot:2;
-        };
-        u16			val;
-    };
+		struct{
+			u16		idx:14;
+			u16		slot:2;
+		};
+		u16			val;
+	};
 public:
-    				MotionID	(){invalidate();}
-    				MotionID	(u16 motion_slot, u16 motion_idx){set(motion_slot,motion_idx);}
+					MotionID	(){invalidate();}
+					MotionID	(u16 motion_slot, u16 motion_idx){set(motion_slot,motion_idx);}
 	ICF bool		operator==	(const MotionID& tgt) const {return tgt.val==val;}
 	ICF bool		operator!=	(const MotionID& tgt) const {return tgt.val!=val;}
 	ICF bool		operator<	(const MotionID& tgt) const {return val<tgt.val;}
 	ICF	bool		operator!	() const					{return !valid();}
-    ICF void		set			(u16 motion_slot, u16 motion_idx){slot=motion_slot; idx=motion_idx;}
+	ICF void		set			(u16 motion_slot, u16 motion_idx){slot=motion_slot; idx=motion_idx;}
 	ICF void		invalidate	() {val=u16(-1);}
-    ICF bool		valid		() const {return val!=u16(-1);}
+	ICF bool		valid		() const {return val!=u16(-1);}
 	const MotionID*	get			() const {return this;};
 	ICF	operator	unspecified_bool_type () const 
 	{
@@ -61,17 +61,17 @@ public:
 		eFORCEDWORD = u32(-1)
 	};
 public:
-	F32			blendAmount;
-	F32			timeCurrent;
-	F32			timeTotal;
-    MotionID		motionID;
+	f32			blendAmount;
+	f32			timeCurrent;
+	f32			timeTotal;
+	MotionID		motionID;
 	u16				bone_or_part;	// startup parameters
 	u8				channel;
 	ECurvature		blend;
-	F32			blendAccrue;	// increasing
-	F32			blendFalloff;	// decreasing
-	F32			blendPower;
-	F32			speed;
+	f32			blendAccrue;	// increasing
+	f32			blendFalloff;	// decreasing
+	f32			blendPower;
+	f32			speed;
 
 	BOOL			playing;
 	BOOL			stop_at_end;
@@ -150,13 +150,14 @@ private:
 	DEFINE_VECTOR(SMotionsSlot,MotionsSlotVec,MotionsSlotVecIt);
 	MotionsSlotVec								m_Motions;
 
-    CPartition*									m_Partition;
+	CPartition*									m_Partition;
 
 	// Blending
 	svector<CBlend, MAX_BLENDED_POOL>			blend_pool;
 	BlendSVec									blend_cycles[MAX_PARTS];
 	BlendSVec									blend_fx;
-	F32										channel_factors[MAX_CHANNELS];
+	f32										channel_factors[MAX_CHANNELS];
+
 protected:
 	// internal functions
 	virtual void				IBoneInstances_Create	();
@@ -166,8 +167,8 @@ protected:
 	void						ChannelFactorsStartup	();
 	CBlend*						IBlend_Create			();
 private:
-	void						IBlendSetup				(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
-	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, F32 blendAccrue, F32 blendFalloff, F32 Power , F32 Speed,u16 bone);
+	void						IBlendSetup				(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, f32 blendAccrue, f32 blendFalloff, f32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam);
+	void						IFXBlendSetup			(CBlend &B, MotionID motion_ID, f32 blendAccrue, f32 blendFalloff, f32 Power , f32 Speed,u16 bone);
 //.	bool						LoadMotions				(pcstr N, IReader *data);
 public:
 
@@ -186,14 +187,14 @@ public:
 	MotionID					LL_MotionID		(pcstr B);
 	u16							LL_PartID		(pcstr B);
 
-	CBlend*						LL_PlayFX		(u16 bone,		MotionID motion, F32 blendAccrue, F32 blendFalloff, F32 Speed, F32 Power);
-	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, u8 channel = 0);
+	CBlend*						LL_PlayFX		(u16 bone,		MotionID motion, f32 blendAccrue, f32 blendFalloff, f32 Speed, f32 Power);
+	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL  bMixing, f32 blendAccrue, f32 blendFalloff, f32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam, u8 channel = 0);
 	CBlend*						LL_PlayCycle	(u16 partition, MotionID motion, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, u8 channel = 0);
-	void						LL_FadeCycle	(u16 partition, F32	falloff, u8 mask_channel = (1<<0));
+	void						LL_FadeCycle	(u16 partition, f32	falloff, u8 mask_channel = (1<<0));
 	void						LL_CloseCycle	(u16 partition, u8 mask_channel = (1<<0));
-	void						LL_SetChannelFactor (u16 channel, F32 factor);
+	void						LL_SetChannelFactor (u16 channel, f32 factor);
 	CBlendInstance&				LL_GetBlendInstance	(u16 bone_id)	{	VERIFY(bone_id<LL_BoneCount()); return blend_instances[bone_id];	}
-	                                                                
+																	
 	// Main functionality
 	void						UpdateTracks	();								// Update motions
 	void						DestroyCycle	(CBlend &B);
@@ -208,8 +209,8 @@ public:
 	// fx'es
 	MotionID					ID_FX			(pcstr  N);
 	MotionID					ID_FX_Safe		(pcstr  N);
-	CBlend*						PlayFX			(pcstr  N, F32 power_scale);
-	CBlend*						PlayFX			(MotionID M, F32 power_scale);
+	CBlend*						PlayFX			(pcstr  N, f32 power_scale);
+	CBlend*						PlayFX			(MotionID M, f32 power_scale);
 
 	// General "Visual" stuff
 	virtual void				Copy			(IRender_Visual *pFrom);

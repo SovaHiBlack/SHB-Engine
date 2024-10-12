@@ -56,7 +56,7 @@ void CLevelGraph::draw_nodes	()
 	CGameFont* F		= HUD().Font().pFontDI;
 	F->SetHeightI		(.02f);
 	F->OutI				(0.f,0.5f,"%f,%f,%f",VPUSH(P));
-//	float				x,z;
+//	f32				x,z;
 //	unpack_xz			(Local,x,z);
 //	F->Out				(0.f,0.55f,"%3d,%4d,%3d -> %d",	iFloor(x),iFloor(Local.y()),iFloor(z),u32(ID));
 
@@ -69,9 +69,9 @@ void CLevelGraph::draw_nodes	()
 	}
 
 	// render
-	float	sc		= header().cell_size()/16;
-	float	st		= 0.98f*header().cell_size()/2;
-	float	tt		= 0.01f;
+	f32	sc		= header().cell_size()/16;
+	f32	st		= 0.98f*header().cell_size()/2;
+	f32	tt		= 0.01f;
 
 	Fvector	DUP;		DUP.set(0,1,0);
 
@@ -113,10 +113,10 @@ void CLevelGraph::draw_nodes	()
 
 		if (Device.vCameraPosition.distance_to(PC)>30) continue;
 
-		float			sr	= header().cell_size();
+		f32			sr	= header().cell_size();
 		if (::Render->ViewBase.testSphere_dirty(PC,sr)) {
 			
-			u32	LL = ((b_light) ?	iFloor(float(N.light())/15.f*255.f) : 
+			u32	LL = ((b_light) ?	iFloor(f32(N.light())/15.f*255.f) :
 									iFloor(vertex_cover(I)/4*255.f));
 			
 			u32	CC		= D3DCOLOR_XRGB(0,0,255);
@@ -217,7 +217,7 @@ void CLevelGraph::draw_restrictions	()
 
 void CLevelGraph::draw_covers	()
 {
-	float					half_size = ai().level_graph().header().cell_size()*.5f;
+	f32					half_size = ai().level_graph().header().cell_size()*.5f;
 	xr_vector<CCoverPoint*>	nearest;
 	nearest.reserve			(1000);
 	ai().cover_manager().covers().nearest(Device.vCameraPosition,5.f,nearest);
@@ -230,37 +230,37 @@ void CLevelGraph::draw_covers	()
 
 		CVertex				*v = vertex((*I)->level_vertex_id());
 		Fvector				direction;
-		float				best_value = -1.f;
+		f32				best_value = -1.f;
 
 		for (u32 i=0, j = 0; i<36; ++i) {
-			float				value = cover_in_direction(float(10*i)/180.f*PI,v);
-			direction.setHP		(float(10*i)/180.f*PI,0);
+			f32				value = cover_in_direction(f32(10*i)/180.f*PI,v);
+			direction.setHP		(f32(10*i)/180.f*PI,0);
 			direction.normalize	();
 			direction.mul		(value*half_size);
 			direction.add		(position);
 			direction.y			= position.y;
 			Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(0,0,255));
-			value				= compute_square(float(10*i)/180.f*PI,PI/2.f,v);
+			value				= compute_square(f32(10*i)/180.f*PI,PI/2.f,v);
 			if (value > best_value) {
 				best_value		= value;
 				j				= i;
 			}
 		}
 
-		direction.set		(position.x - half_size*float(v->cover(0))/15.f,position.y,position.z);
+		direction.set		(position.x - half_size* f32(v->cover(0))/15.f,position.y,position.z);
 		Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-		direction.set		(position.x,position.y,position.z + half_size*float(v->cover(1))/15.f);
+		direction.set		(position.x,position.y,position.z + half_size* f32(v->cover(1))/15.f);
 		Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-		direction.set		(position.x + half_size*float(v->cover(2))/15.f,position.y,position.z);
+		direction.set		(position.x + half_size* f32(v->cover(2))/15.f,position.y,position.z);
 		Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-		direction.set		(position.x,position.y,position.z - half_size*float(v->cover(3))/15.f);
+		direction.set		(position.x,position.y,position.z - half_size* f32(v->cover(3))/15.f);
 		Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-		float				value = cover_in_direction(float(10*j)/180.f*PI,v);
-		direction.setHP		(float(10*j)/180.f*PI,0);
+		f32				value = cover_in_direction(f32(10*j)/180.f*PI,v);
+		direction.setHP		(f32(10*j)/180.f*PI,0);
 		direction.normalize	();
 		direction.mul		(value*half_size);
 		direction.add		(position);

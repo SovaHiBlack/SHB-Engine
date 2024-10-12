@@ -4,9 +4,9 @@
 //-----------------------------------------------------------------------------------------------------------
 class	ENGINE_API				CGammaControl
 {
-	F32						fGamma;
-	F32						fBrightness;
-	F32						fContrast;
+	f32						fGamma;
+	f32						fBrightness;
+	f32						fContrast;
 	Fcolor						cBalance;
 
 public:
@@ -14,16 +14,16 @@ public:
 	  fGamma(1.f)
 	{ Brightness(1.f); Contrast(1.f); Balance(1.f,1.f,1.f); };
 
-	IC void	Balance		(F32 _r, F32 _g, F32 _b)
+	IC void	Balance		(f32 _r, f32 _g, f32 _b)
 	{	cBalance.set	(_r,_g,_b,1);	}
 	IC void	Balance		(Fcolor &C)
 	{	Balance(C.r,C.g,C.b); }
 
-	IC void Gamma		(F32 G) { fGamma		= G;	}
-	IC void Brightness	(F32 B) { fBrightness = B;	}
-	IC void Contrast	(F32 C) { fContrast	= C;	}
+	IC void Gamma		(f32 G) { fGamma		= G;	}
+	IC void Brightness	(f32 B) { fBrightness = B;	}
+	IC void Contrast	(f32 C) { fContrast	= C;	}
 
-	void	GetIP		(F32& G, F32& B, F32& C, Fcolor& Balance)
+	void	GetIP		(f32& G, f32& B, f32& C, Fcolor& Balance)
 	{
 		G			= fGamma;
 		B			= fBrightness;

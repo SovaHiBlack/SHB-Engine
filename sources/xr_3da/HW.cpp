@@ -327,7 +327,7 @@ void		CHW::CreateDevice		(HWND m_hWnd)
 	R_CHK	(pDevice->GetDepthStencilSurface	(&pBaseZB));
 	u32	memory									= pDevice->GetAvailableTextureMem	();
 	Msg		("*     Texture memory: %d M",		memory/(1024*1024));
-	Msg		("*          DDI-level: %2.1f",		F32(D3DXGetDriverLevel(pDevice))/100.f);
+	Msg		("*          DDI-level: %2.1f", f32(D3DXGetDriverLevel(pDevice))/100.f);
 
 	updateWindowProps							(m_hWnd);
 	fill_vid_mode_list							(this);

@@ -114,7 +114,7 @@ void CLevelDebug::draw_object_info()
 
 		Fvector4	v_res;
 
-		float		delta_height = 0.f;
+		f32		delta_height = 0.f;
 
 		// handle all of the classes
 		for (CLASS_INFO_MAP_IT class_it = it->second.begin(); class_it != it->second.end(); ++class_it) {
@@ -127,17 +127,15 @@ void CLevelDebug::draw_object_info()
 			if (v_res.x < -1.f || v_res.x > 1.f || v_res.y<-1.f || v_res.y>1.f) continue;
 
 			// get real (x,y)
-			float x = (1.f + v_res.x)/2.f * (Device.dwWidth);
-			float y = (1.f - v_res.y)/2.f * (Device.dwHeight) - delta_height;
-			float start_y = y;
+			f32 x = (1.f + v_res.x)/2.f * (Device.dwWidth);
+			f32 y = (1.f - v_res.y)/2.f * (Device.dwHeight) - delta_height;
+			f32 start_y = y;
 
 			// handle all of the text inside class
 			class_it->second->draw_info(x,y);
 
 			delta_height = start_y - y;
 		}
-
-
 	}
 }
 
@@ -168,11 +166,11 @@ void CLevelDebug::CObjectInfo::add_item	(pcstr text, u32 color, u32 id)
 }
 
 struct DrawInfoPredicate {
-	float			x;
-	float			y;
-	float			delta_height;
+	f32			x;
+	f32			y;
+	f32			delta_height;
 
-	DrawInfoPredicate(float coord_x, float coord_y, float delta_h) {
+	DrawInfoPredicate(f32 coord_x, f32 coord_y, f32 delta_h) {
 		x				= coord_x;
 		y				= coord_y;
 		delta_height	= delta_h;
@@ -186,7 +184,7 @@ struct DrawInfoPredicate {
 	}
 };
 
-void CLevelDebug::CObjectInfo::draw_info	(float x, float &y)
+void CLevelDebug::CObjectInfo::draw_info	(f32 x, f32& y)
 {
 	DrawInfoPredicate	pred(x,y,m_delta_height);
 	process				(pred);	
@@ -198,7 +196,7 @@ void CLevelDebug::CObjectInfo::draw_info	(float x, float &y)
 // CTextInfo
 //////////////////////////////////////////////////////////////////////////
 
-void CLevelDebug::CTextInfo::add_item	(pcstr text, float x, float y, u32 color, u32 id)
+void CLevelDebug::CTextInfo::add_item	(pcstr text, f32 x, f32 y, u32 color, u32 id)
 {
 	inherited::add_item(STextItem(text, x, y, color, id));
 }
@@ -232,7 +230,7 @@ void CLevelDebug::CLevelInfo::add_item(const Fvector &pos1, const Fvector &pos2,
 	inherited::add_item(SLevelItem(pos1, pos2, color, id));
 }
 
-void CLevelDebug::CLevelInfo::add_item(const Fvector &pos, float radius, u32 color, u32 id)
+void CLevelDebug::CLevelInfo::add_item(const Fvector &pos, f32 radius, u32 color, u32 id)
 {
 	inherited::add_item(SLevelItem(pos, radius, color, id));
 }

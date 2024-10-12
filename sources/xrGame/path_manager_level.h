@@ -57,18 +57,18 @@ protected:
 
 protected:
 	int					x1;
-//	float				y1;
+//	f32				y1;
 	int					z1;
 	int					x2;
-//	float				y2;
+//	f32				y2;
 	int					z2;
 	int					x3;
-//	float				y3;
+//	f32				y3;
 	int					z3;
-//	float				square_size_y;
-//	float				size_y;
-	float				m_sqr_distance_xz;
-	float				m_distance_xz;
+//	f32				square_size_y;
+//	f32				size_y;
+	f32				m_sqr_distance_xz;
+	f32				m_distance_xz;
 	_Graph::CVertex		*best_node;
 
 public:

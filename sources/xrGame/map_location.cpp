@@ -326,8 +326,8 @@ void CMapLocation::UpdateSpot(CUICustomMap* map, CMapSpot* sp )
 			//update heading if needed
 			if( sp->Heading() ){
 				Fvector2 dir_global = Direction();
-				float h = dir_global.getH();
-				float h_ = map->GetHeading()+h;
+				f32 h = dir_global.getH();
+				f32 h_ = map->GetHeading()+h;
 				sp->SetHeading( h_ );
 			}
 
@@ -419,14 +419,12 @@ void CMapLocation::UpdateSpot(CUICustomMap* map, CMapSpot* sp )
 			}
 		}
 	}
-
-
 }
 
 void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp )
 {
 	if(sp->GetParent()) return ;// already is child
-	float		heading;
+	f32		heading;
 	Fvector2	pointer_pos;
 	if( map->GetPointerTo(m_position_on_map, sp->GetWidth()/2, pointer_pos, heading) )
 	{
@@ -440,7 +438,7 @@ void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp )
 		Fvector2 tt = map->ConvertLocalToReal(m_position_on_map);
 		Fvector ttt;
 		ttt.set		(tt.x, 0.0f, tt.y);
-		float dist_to_target = Level().CurrentEntity()->Position().distance_to(ttt);
+		f32 dist_to_target = Level().CurrentEntity()->Position().distance_to(ttt);
 		map->SetPointerDistance	(dist_to_target);
 	}
 }
@@ -451,7 +449,6 @@ void CMapLocation::UpdateMiniMap(CUICustomMap* map)
 	if(!sp) return;
 	if(SpotEnabled())
 		UpdateSpot(map, sp);
-
 }
 
 void CMapLocation::UpdateLevelMap(CUICustomMap* map)
@@ -470,7 +467,7 @@ u16	CMapLocation::AddRef()
 	}
 
 	return m_refCount;
-};
+}
 
 void CMapLocation::save(IWriter &stream)
 {
@@ -492,13 +489,13 @@ void CMapLocation::load(IReader &stream)
 void CMapLocation::SetHint	(const shared_str& hint)		
 {
 	m_hint = hint;
-};
+}
 
 pcstr CMapLocation::GetHint	()
 {
 	CStringTable	stbl;
 	return *stbl.translate(m_hint);
-};
+}
 
 CMapSpotPointer* CMapLocation::GetSpotPointer(CMapSpot* sp)
 {
@@ -655,13 +652,13 @@ void CUserDefinedMapLocation::InitExternal(const shared_str& level_name, const F
 
 	if(ai().get_alife()){
 	const CGameGraph::SLevel& level		= ai().game_graph().header().level(*level_name);
-		float min_dist					= flt_max;
+	f32 min_dist					= flt_max;
 
 		GameGraph::_GRAPH_ID n			= ai().game_graph().header().vertex_count();
 
 		for (GameGraph::_GRAPH_ID i=0; i<n; ++i)
 			if (ai().game_graph().vertex(i)->level_id() == level.id()) {
-				float				distance = ai().game_graph().vertex(i)->game_point().distance_to_sqr(m_position);
+				f32				distance = ai().game_graph().vertex(i)->game_point().distance_to_sqr(m_position);
 				if (distance < min_dist) {
 					min_dist		= distance;
 					m_graph_id		= i;

@@ -195,7 +195,7 @@ void CPatrolPathManager::select_point(const Fvector &position, u32 &dest_vertex_
 	m_game_object->callback	(GameObject::ePatrolPathInPoint)(m_game_object->lua_game_object(),u32(ScriptEntity::eActionTypeMovement),m_curr_point_index);
 
 	u32							count = 0;		// количество разветвлений
-	float						sum = 0.f;		// сумма весов разветвления
+	f32						sum = 0.f;		// сумма весов разветвления
 	vertex						= m_path->vertex(m_curr_point_index);
 	CPatrolPath::const_iterator	I = vertex->edges().begin(), E = vertex->edges().end();
 	u32							target = u32(-1);
@@ -237,8 +237,9 @@ void CPatrolPathManager::select_point(const Fvector &position, u32 &dest_vertex_
 			default : NODEFAULT;
 		}
 	}
-	else {
-		float			fChoosed = 0.f;
+	else
+	{
+		f32			fChoosed = 0.f;
 		
 		if (random() && (count > 1))
 			fChoosed	= ::Random.randF(sum);
@@ -276,7 +277,7 @@ void CPatrolPathManager::select_point(const Fvector &position, u32 &dest_vertex_
 u32 CPatrolPathManager::get_next_point(u32 prev_point_index)
 {
 	u32							count	= 0;		// количество разветвлений
-	float						sum		= 0.f;		// сумма весов разветвления
+	f32						sum		= 0.f;		// сумма весов разветвления
 	const CPatrolPath::CVertex *vertex	= m_path->vertex(prev_point_index);
 	
 	CPatrolPath::const_iterator	I		= vertex->edges().begin(), E = vertex->edges().end();
@@ -292,9 +293,9 @@ u32 CPatrolPathManager::get_next_point(u32 prev_point_index)
 	}
 
 	// проверить количество
-	if (count != 0) {
-
-		float fChoosed = 0.f;
+	if (count != 0)
+	{
+		f32 fChoosed = 0.f;
 
 		if (random() && (count > 1))	fChoosed = ::Random.randF(sum);
 
@@ -317,7 +318,6 @@ u32 CPatrolPathManager::get_next_point(u32 prev_point_index)
 	
 	return target;
 }
-
 
 shared_str	CPatrolPathManager::path_name	() const
 {

@@ -586,11 +586,11 @@ void CMissile::activate_physic_shell()
 	Fvector				a_vel;
 	CInventoryOwner		*inventory_owner = smart_cast<CInventoryOwner*>(H_Root());
 	if (inventory_owner && inventory_owner->use_throw_randomness()) {
-		float			fi,teta,r;
+		f32			fi,teta,r;
 		fi				= ::Random.randF(0.f,2.f*M_PI);
 		teta			= ::Random.randF(0.f,M_PI);
 		r				= ::Random.randF(2.f*M_PI,3.f*M_PI);
-		float			rxy = r*_sin(teta);
+		f32			rxy = r*_sin(teta);
 		a_vel.set		(rxy*_cos(fi),rxy*_sin(fi),r*_cos(teta));
 	}
 	else
@@ -632,8 +632,8 @@ void	CMissile::net_Relcase(CObject* O)
 			PPhysicsShell()->set_CallbackData(NULL);
 		}
 	}
-
 }
+
 void CMissile::create_physic_shell	()
 {
 	//create_box2sphere_physic_shell();
@@ -657,7 +657,6 @@ u32	CMissile::ef_weapon_type		() const
 	return	(m_ef_weapon_type);
 }
 
-
 void CMissile::OnDrawUI()
 {
 	if(GetState()==MS_READY && !m_throw) 
@@ -665,7 +664,7 @@ void CMissile::OnDrawUI()
 		CActor	*actor = smart_cast<CActor*>(H_Parent());
 		if (actor) {
 			if(!g_MissileForceShape) create_force_progress();
-			float k = (m_fThrowForce-m_fMinForce)/(m_fMaxForce-m_fMinForce);
+			f32 k = (m_fThrowForce-m_fMinForce)/(m_fMaxForce-m_fMinForce);
 			g_MissileForceShape->SetPos	(k);
 			g_MissileForceShape->Draw	();
 		}

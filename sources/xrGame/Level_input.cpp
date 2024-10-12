@@ -34,7 +34,7 @@
 #endif
 
 bool g_bDisableAllInput = false;
-extern	float	g_fTimeFactor;
+extern	f32	g_fTimeFactor;
 
 #define CURRENT_ENTITY() ( game ? CurrentEntity() : nullptr )
 
@@ -245,13 +245,13 @@ void CLevel::IR_OnKeyboardPress	(int key)
 
 	case DIK_DIVIDE:
 		if( OnServer() ){
-//			float NewTimeFactor				= pSettings->r_float("alife","time_factor");
+//			f32 NewTimeFactor				= pSettings->r_float("alife","time_factor");
 			Server->game->SetGameTimeFactor(g_fTimeFactor);
 		}
 		break;	
 	case DIK_MULTIPLY:
 		if( OnServer() ){
-			float NewTimeFactor				= 1000.f;
+			f32 NewTimeFactor				= 1000.f;
 			Server->game->SetGameTimeFactor(NewTimeFactor);
 		}
 		break;

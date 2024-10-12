@@ -156,7 +156,7 @@ void CTheoraSurface::DecompressFrame(u32* data, u32 _width, int& _pos)
 		case OC_PF_420:	uv_w=2; uv_h=2; break;
 		default:		NODEFAULT;
 	}
-	static const F32 K = 0.256788f + 0.504129f + 0.097906f;
+	static const f32 K = 0.256788f + 0.504129f + 0.097906f;
 
 	// rgb
 	if (yuv_rgb){
@@ -238,7 +238,7 @@ if(!bShaderYUV2RGB)
 			{
 				u8 y			= Y[w];
 				u32& clr		= data[++pos];
-				clr				= subst_alpha(clr,iFloor(F32((y-16))/K));
+				clr				= subst_alpha(clr,iFloor(f32((y-16))/K));
 			}
 		}
 	}

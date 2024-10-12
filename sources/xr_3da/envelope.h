@@ -36,69 +36,69 @@ envelope.h
 #pragma pack( push,1 )
 struct st_Key{
 	enum{
-    	ktStepped = 1<<0,
-    };
-	F32			value;
-	F32			time;
+		ktStepped = 1<<0,
+	};
+	f32			value;
+	f32			time;
 	u8			shape;
-	F32			tension;
-	F32			continuity;
-	F32			bias;
-	F32			param[ 4 ];
+	f32			tension;
+	f32			continuity;
+	f32			bias;
+	f32			param[ 4 ];
 				st_Key		(){ZeroMemory(this,sizeof(st_Key));}
-    IC bool		equal		(const st_Key& tgt)
-    {
-    	if (!fsimilar(value,tgt.value)) 			return false;
-    	if (!fsimilar(shape,tgt.shape)) 			return false;
-    	if (!fsimilar(tension,tgt.tension)) 		return false;
-    	if (!fsimilar(continuity,tgt.continuity)) 	return false;
-    	if (!fsimilar(bias,tgt.bias)) 				return false;
-    	if (!fsimilar(param[0],tgt.param[0])) 		return false;
-    	if (!fsimilar(param[1],tgt.param[1]))	 	return false;
-    	if (!fsimilar(param[2],tgt.param[2])) 		return false;
-    	if (!fsimilar(param[3],tgt.param[3])) 		return false;
-        return true;
-    }
-    IC void		Save		(IWriter& F)
-    {
-        F.w_float	(value);
-        F.w_float	(time);
-        F.w_u8		(shape);
-        if (shape!=4){ // ! Stepped
-            F.w_float_q16(tension,-32.f,32.f);
-            F.w_float_q16(continuity,-32.f,32.f);
-            F.w_float_q16(bias,-32.f,32.f);
-            F.w_float_q16(param[0],-32.f,32.f);
-            F.w_float_q16(param[1],-32.f,32.f);
-            F.w_float_q16(param[2],-32.f,32.f);
-            F.w_float_q16(param[3],-32.f,32.f);
-        }
-    }
+	IC bool		equal		(const st_Key& tgt)
+	{
+		if (!fsimilar(value,tgt.value)) 			return false;
+		if (!fsimilar(shape,tgt.shape)) 			return false;
+		if (!fsimilar(tension,tgt.tension)) 		return false;
+		if (!fsimilar(continuity,tgt.continuity)) 	return false;
+		if (!fsimilar(bias,tgt.bias)) 				return false;
+		if (!fsimilar(param[0],tgt.param[0])) 		return false;
+		if (!fsimilar(param[1],tgt.param[1]))	 	return false;
+		if (!fsimilar(param[2],tgt.param[2])) 		return false;
+		if (!fsimilar(param[3],tgt.param[3])) 		return false;
+		return true;
+	}
+	IC void		Save		(IWriter& F)
+	{
+		F.w_float	(value);
+		F.w_float	(time);
+		F.w_u8		(shape);
+		if (shape!=4){ // ! Stepped
+			F.w_float_q16(tension,-32.f,32.f);
+			F.w_float_q16(continuity,-32.f,32.f);
+			F.w_float_q16(bias,-32.f,32.f);
+			F.w_float_q16(param[0],-32.f,32.f);
+			F.w_float_q16(param[1],-32.f,32.f);
+			F.w_float_q16(param[2],-32.f,32.f);
+			F.w_float_q16(param[3],-32.f,32.f);
+		}
+	}
 	IC void		Load_1		(IReader& F)
-    {
-        value		= F.r_float();
-        time		= F.r_float();
-        shape		= u8((u8)F.r_u32()&0xff);
-        tension		= F.r_float();
-        continuity	= F.r_float();
-        bias		= F.r_float();
-        F.r			(&param,sizeof(F32)*4);
-    }
+	{
+		value		= F.r_float();
+		time		= F.r_float();
+		shape		= u8((u8)F.r_u32()&0xff);
+		tension		= F.r_float();
+		continuity	= F.r_float();
+		bias		= F.r_float();
+		F.r			(&param,sizeof(f32)*4);
+	}
 	IC void		Load_2		(IReader& F)
-    {
-        value		= F.r_float();
-        time		= F.r_float();
-        shape		= F.r_u8();
-        if (shape!=4){ // ! Stepped
-            tension		= F.r_float_q16(-32.f,32.f);
-            continuity	= F.r_float_q16(-32.f,32.f);
-            bias		= F.r_float_q16(-32.f,32.f);
-            param[0]	= F.r_float_q16(-32.f,32.f);
-            param[1]	= F.r_float_q16(-32.f,32.f);
-            param[2]	= F.r_float_q16(-32.f,32.f);
-            param[3]	= F.r_float_q16(-32.f,32.f);
-        }
-    }
+	{
+		value		= F.r_float();
+		time		= F.r_float();
+		shape		= F.r_u8();
+		if (shape!=4){ // ! Stepped
+			tension		= F.r_float_q16(-32.f,32.f);
+			continuity	= F.r_float_q16(-32.f,32.f);
+			bias		= F.r_float_q16(-32.f,32.f);
+			param[0]	= F.r_float_q16(-32.f,32.f);
+			param[1]	= F.r_float_q16(-32.f,32.f);
+			param[2]	= F.r_float_q16(-32.f,32.f);
+			param[3]	= F.r_float_q16(-32.f,32.f);
+		}
+	}
 };
 #pragma pack( pop )
 
@@ -116,7 +116,7 @@ public:
 				CEnvelope	(CEnvelope* source);
 	virtual		~CEnvelope	();
 
-	F32			Evaluate	(F32 t);
+	f32			Evaluate	(f32 t);
 
 	void		Clear		();
 	void		Save		(IWriter& F);
@@ -125,14 +125,14 @@ public:
 	void		SaveA		(IWriter& F);
 	void		LoadA		(IReader& F);
 
-    void		RotateKeys	(F32 angle);
+	void		RotateKeys	(f32 angle);
 
-    KeyIt		FindKey		(F32 t, F32 eps);
-    void		FindNearestKey(F32 t, KeyIt& min, KeyIt& max, F32 eps);
-    void		InsertKey	(F32 t, F32 val);
-    void		DeleteKey	(F32 t);
-    BOOL		ScaleKeys	(F32 from_time, F32 to_time, F32 scale_factor, F32 eps);
-	F32			GetLength	(F32* mn, F32* mx);
+	KeyIt		FindKey		(f32 t, f32 eps);
+	void		FindNearestKey(f32 t, KeyIt& min, KeyIt& max, f32 eps);
+	void		InsertKey	(f32 t, f32 val);
+	void		DeleteKey	(f32 t);
+	BOOL		ScaleKeys	(f32 from_time, f32 to_time, f32 scale_factor, f32 eps);
+	f32			GetLength	(f32* mn, f32* mx);
 
-    void		Optimize	();
+	void		Optimize	();
 };

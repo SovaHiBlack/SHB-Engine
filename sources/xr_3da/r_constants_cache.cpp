@@ -15,7 +15,7 @@ void R_constants::flush_cache()
 				if (count)			{
 					count = (count>31)?31:count;
 					PGO		(Msg("PGO:P_CONST:%d",count));
-					CHK_DX	(HW.pDevice->SetPixelShaderConstantF	(F.r_lo(), (F32*)F.access(F.r_lo()),count));
+					CHK_DX	(HW.pDevice->SetPixelShaderConstantF	(F.r_lo(), (f32*)F.access(F.r_lo()),count));
 					F.flush	();
 				}
 			}
@@ -40,7 +40,7 @@ void R_constants::flush_cache()
 				PGO		(Msg("PGO:V_CONST:%d",count));
 #endif // DEBUG
 
-				CHK_DX	(HW.pDevice->SetVertexShaderConstantF	(F.r_lo(), (F32*)F.access(F.r_lo()),count));
+				CHK_DX	(HW.pDevice->SetVertexShaderConstantF	(F.r_lo(), (f32*)F.access(F.r_lo()),count));
 				F.flush	();
 			}
 		}

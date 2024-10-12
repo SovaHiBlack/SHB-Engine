@@ -60,7 +60,7 @@ void CMaterialManager::reload		(pcstr section)
 {
 }
 
-void CMaterialManager::update		(float time_delta, float volume, float step_time, bool standing)
+void CMaterialManager::update		(f32 time_delta, f32 volume, f32 step_time, bool standing)
 {
 	VERIFY					(GAMEMTL_NONE_IDX != m_my_material_idx);
 	VERIFY					(GAMEMTL_NONE_IDX != m_last_material_idx);

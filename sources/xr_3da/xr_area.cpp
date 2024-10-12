@@ -12,7 +12,7 @@ using namespace	collide;
 
 extern	BOOL g_bLoaded;
 
-void	IGame_Level::SoundEvent_Register	( ref_sound_data_ptr S, F32 range )
+void	IGame_Level::SoundEvent_Register	( ref_sound_data_ptr S, f32 range )
 {
 	if (!g_bLoaded)									return;
 	if (!S)											return;
@@ -48,14 +48,14 @@ void	IGame_Level::SoundEvent_Register	( ref_sound_data_ptr S, F32 range )
 
 		// Energy and signal
 		VERIFY				(_valid((*it)->spatial.sphere.P));
-		F32 dist			= snd_position.distance_to((*it)->spatial.sphere.P);
+		f32 dist			= snd_position.distance_to((*it)->spatial.sphere.P);
 		if (dist>p->max_ai_distance) continue;
 		VERIFY				(_valid(dist));
 		VERIFY2				(!fis_zero(p->max_ai_distance), S->handle->file_name());
-		F32 Power			= (1.f-dist/p->max_ai_distance)*p->volume;
+		f32 Power			= (1.f-dist/p->max_ai_distance)*p->volume;
 		VERIFY				(_valid(Power));
 		if (Power> EPSILON_7)	{
-			F32 occ		= Sound->get_occlusion_to((*it)->spatial.sphere.P,snd_position);
+			f32 occ		= Sound->get_occlusion_to((*it)->spatial.sphere.P,snd_position);
 			VERIFY			(_valid(occ))	;
 			Power			*= occ;
 			if (Power> EPSILON_7)	{
@@ -85,7 +85,7 @@ void	IGame_Level::SoundEvent_Dispatch	( )
 	}
 }
 
-void __stdcall _sound_event		(ref_sound_data_ptr S, F32 range)
+void __stdcall _sound_event		(ref_sound_data_ptr S, f32 range)
 {
 	if ( g_pGameLevel && S && S->feedback )	g_pGameLevel->SoundEvent_Register	(S,range);
 }
@@ -111,7 +111,7 @@ CObjectSpace::~CObjectSpace	( )
 #endif
 }
 //----------------------------------------------------------------------
-IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector &point, F32 range, CObject* ignore_object )
+IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector &point, f32 range, CObject* ignore_object )
 {
 	// Query objects
 	q_nearest.clear_not_free		( );
@@ -133,7 +133,7 @@ IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector 
 	return q_nearest.size();
 }
 //----------------------------------------------------------------------
-IC int   CObjectSpace::GetNearest( xr_vector<CObject*>&	q_nearest, ICollisionForm* obj, F32 range)
+IC int   CObjectSpace::GetNearest( xr_vector<CObject*>&	q_nearest, ICollisionForm* obj, f32 range)
 {
 	CObject*	O		= obj->Owner	();
 	return				GetNearest( q_nearest, O->spatial.sphere.P, range + O->spatial.sphere.R, O );

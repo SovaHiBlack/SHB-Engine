@@ -20,7 +20,7 @@ extern	u32 			dbg_bodies_num							;
 extern	u32 			dbg_joints_num							;
 extern	u32 			dbg_islands_num							;
 extern	u32 			dbg_contacts_num						;
-extern	float			dbg_vel_collid_damage_to_display		;
+extern	f32			dbg_vel_collid_damage_to_display		;
 extern	pcstr			dbg_trace_object						;
 #ifdef DRAW_CONTACTS
 
@@ -29,7 +29,7 @@ struct SPHContactDBGDraw
 	int geomClass;
 	Fvector norm;
 	Fvector pos;
-	float depth;
+	f32 depth;
 };
 DEFINE_VECTOR(SPHContactDBGDraw,CONTACT_VECTOR,CONTACT_I);
 extern CONTACT_VECTOR Contacts0;
@@ -91,7 +91,6 @@ extern PHOBJ_DBG_V	dbg_draw_objects0;
 extern PHOBJ_DBG_V	dbg_draw_objects1;
 class CPHObject;
 
-
 struct SPHDBGDrawAbsract
 {
 	virtual void				render				( )						=0;
@@ -112,11 +111,11 @@ void DBG_DrawTri(CDB::TRI *T, const Fvector *V_verts, u32 c );
 void DBG_DrawLine( const Fvector &p0, const Fvector &p1, u32 c );
 void DBG_DrawAABB( const Fvector &center, const Fvector& AABB, u32 c );
 void DBG_DrawOBB( const Fmatrix &m, const Fvector h, u32 c );
-void DBG_DrawPoint( const Fvector& p, float size, u32 c );
-void DBG_DrawMatrix( const Fmatrix &m, float size, u8 a=255 );
-void DBG_DrawRotationX( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7 );
-void DBG_DrawRotationY( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7 );
-void DBG_DrawRotationZ( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid = false, u32 tessel = 7 );
+void DBG_DrawPoint( const Fvector& p, f32 size, u32 c );
+void DBG_DrawMatrix( const Fmatrix &m, f32 size, u8 a=255 );
+void DBG_DrawRotationX( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid = false, u32 tessel = 7 );
+void DBG_DrawRotationY( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid = false, u32 tessel = 7 );
+void DBG_DrawRotationZ( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid = false, u32 tessel = 7 );
 void _cdecl DBG_OutText(pcstr s,... );
 void DBG_DrawFrameStart( );
 void PH_DBG_Render( );
@@ -124,31 +123,29 @@ void PH_DBG_Clear( );
 pcstr PH_DBG_ObjectTrack( );
 void PH_DBG_SetTrackObject(pcstr obj );
 
-
-
 struct CFunctionGraph
 {
 public:
-	typedef fastdelegate::FastDelegate1<float,float> type_function;
+	typedef fastdelegate::FastDelegate1<f32, f32> type_function;
 private:
 	CStatGraph						*m_stat_graph																																					;
 	type_function					m_function																																						;
-	float x_min,x_max,s;
-	//float y_min,y_max;
+	f32 x_min,x_max,s;
+	//f32 y_min,y_max;
 	//Fvector2 left_bottom;
 	//Fvector2 range;
 public:
 
 	CFunctionGraph						( )																																								;
 	~CFunctionGraph						( )																																								;
-	void	Init						( type_function fun, float x0, float x1, int l, int t, int w, int h, int points_num=500, u32 color=D3DCOLOR_XRGB( 0, 255, 0 ), u32 bk_color=D3DCOLOR_XRGB( 255, 255, 255 ) )	;
+	void	Init						( type_function fun, f32 x0, f32 x1, int l, int t, int w, int h, int points_num=500, u32 color=D3DCOLOR_XRGB( 0, 255, 0 ), u32 bk_color=D3DCOLOR_XRGB( 255, 255, 255 ) )	;
 	void	Clear						( )																																								;
 	bool	IsActive					( )																																								;
-	void	AddMarker					( CStatGraph::EStyle Style, float pos, u32 Color )																												;
-	void	UpdateMarker				( u32 ID, float M1 )																																				;
-IC	float	ScaleX						( float x )																												{ VERIFY( IsActive( ) ); return( x-x_min )/s; }	
-	void	ScaleMarkerPos				( u32 ID, float &p )																																				;
-	void	ScaleMarkerPos				( CStatGraph::EStyle Style, float &p )																															;
-IC	float	ResolutionX					( ){ VERIFY( IsActive( ) ); return s; } 
+	void	AddMarker					( CStatGraph::EStyle Style, f32 pos, u32 Color )																												;
+	void	UpdateMarker				( u32 ID, f32 M1 )																																				;
+IC	f32	ScaleX						(f32 x )																												{ VERIFY( IsActive( ) ); return( x-x_min )/s; }
+	void	ScaleMarkerPos				( u32 ID, f32& p )																																				;
+	void	ScaleMarkerPos				( CStatGraph::EStyle Style, f32& p )																															;
+IC	f32	ResolutionX					( ){ VERIFY( IsActive( ) ); return s; }
 };
 #endif

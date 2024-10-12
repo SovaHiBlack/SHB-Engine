@@ -21,7 +21,7 @@ public:
 	const CEntityAlive	*m_object;
 	mask_type			m_mask;
 	mask_type			m_distribute_mask;
-	float				m_probability;
+	f32				m_probability;
 	Fvector				m_enemy_position;
 	u32					m_level_time;
 

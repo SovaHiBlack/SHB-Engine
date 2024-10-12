@@ -13,11 +13,8 @@ public:
 };
 
 
-class	CPHDestroyable :
-public  CPHDestroyableNotificator
-
+class CPHDestroyable : public  CPHDestroyableNotificator
 {
-			
 			xr_vector<shared_str>						m_destroyed_obj_visual_names																											;
 			xr_vector<CPHDestroyableNotificate *>		m_notificate_objects																													;
 			u16											m_depended_objects																														;
@@ -25,13 +22,13 @@ public  CPHDestroyableNotificator
 			SHit										m_fatal_hit																																;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-			float						m_random_min																															;     
-			float						m_random_hit_imp																														;
+			f32						m_random_min																															;     
+			f32						m_random_hit_imp																														;
 			u16							ref_bone																																;
 
-			float						m_imp_transition_factor																													;
-			float						m_lv_transition_factor																													;
-			float						m_av_transition_factor																													;
+			f32						m_imp_transition_factor																													;
+			f32						m_lv_transition_factor																													;
+			f32						m_av_transition_factor																													;
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -49,6 +46,7 @@ public  CPHDestroyableNotificator
 				fl_released			= 1<<2,
 			};
 	virtual CPhysicsShellHolder*		PPhysicsShellHolder			()																											=0;
+
 public:
 										CPHDestroyable				()																											;
 			void						Init						()																											;
@@ -67,7 +65,8 @@ virtual		bool						CanRemoveObject				()																								{return true;}
 virtual		void						SheduleUpdate				(u32 dt)																									;
 virtual		void						GenSpawnReplace				(u16 source_id, pcstr section,shared_str visual_name)														;
 virtual		void						InitServerObject			(CSE_Abstract*				D)																				;
+
 private:
 			void						NotificatePart				(CPHDestroyableNotificate *dn)																				;
-			void						PhysicallyRemovePart		(CPHDestroyableNotificate *dn)																				;																											;
+			void						PhysicallyRemovePart		(CPHDestroyableNotificate *dn)																				;
 };

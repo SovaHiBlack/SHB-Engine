@@ -21,8 +21,8 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-ENGINE_API	F32				psVisDistance	= 1.0f;
-static const F32			MAX_NOISE_FREQ	= 0.03f;
+ENGINE_API	f32				psVisDistance	= 1.0f;
+static const f32			MAX_NOISE_FREQ	= 0.03f;
 
 //#define WEATHER_LOGGING
 
@@ -36,14 +36,14 @@ CEnvironment::CEnvironment	()
 	bWFX					= false;
 	Current[0]				= 0;
 	Current[1]				= 0;
-    CurrentWeather			= 0;
-    CurrentWeatherName		= 0;
+	CurrentWeather			= 0;
+	CurrentWeatherName		= 0;
 	eff_Rain				= 0;
-    eff_LensFlare 			= 0;
-    eff_Thunderbolt			= 0;
+	eff_LensFlare 			= 0;
+	eff_Thunderbolt			= 0;
 	OnDeviceCreate			();
 	fGameTime				= 0.f;
-    fTimeFactor				= 12.f;
+	fTimeFactor				= 12.f;
 
 	wind_strength_factor	= 0.f;
 	wind_gust_factor		= 0.f;
@@ -64,6 +64,7 @@ CEnvironment::CEnvironment	()
 	tsky0					= Device.Resources->_CreateTexture("$user$sky0");
 	tsky1					= Device.Resources->_CreateTexture("$user$sky1");
 }
+
 CEnvironment::~CEnvironment	()
 {
 	xr_delete				(PerlinNoise1D);
@@ -78,16 +79,16 @@ void CEnvironment::Invalidate()
 	if (eff_LensFlare)		eff_LensFlare->Invalidate();
 }
 
-F32 CEnvironment::TimeDiff(F32 prev, F32 cur)
+f32 CEnvironment::TimeDiff(f32 prev, f32 cur)
 {
 	if (prev>cur)	return	(DAY_LENGTH-prev)+cur;
 	else			return	cur-prev;
 }
 
-F32 CEnvironment::TimeWeight(F32 val, F32 min_t, F32 max_t)
+f32 CEnvironment::TimeWeight(f32 val, f32 min_t, f32 max_t)
 {
-	F32 weight	= 0.0f;
-	F32 length	= TimeDiff(min_t,max_t);
+	f32 weight	= 0.0f;
+	f32 length	= TimeDiff(min_t,max_t);
 	if (!fis_zero(length,EPS)){
 		if (min_t>max_t){
 			if ((val>=min_t)||(val<=max_t))	weight = TimeDiff(min_t,val)/length;
@@ -99,7 +100,7 @@ F32 CEnvironment::TimeWeight(F32 val, F32 min_t, F32 max_t)
 	return			weight;
 }
 
-void CEnvironment::SetGameTime(F32 game_time, F32 time_factor)
+void CEnvironment::SetGameTime(f32 game_time, f32 time_factor)
 { 
 	if (bWFX)
 		wfx_time			-= TimeDiff(fGameTime,game_time);
@@ -107,7 +108,7 @@ void CEnvironment::SetGameTime(F32 game_time, F32 time_factor)
 	fTimeFactor				= time_factor;	
 }
 
-F32 CEnvironment::NormalizeTime(F32 tm)
+f32 CEnvironment::NormalizeTime(f32 tm)
 {
 	if (tm<0.f)				return tm+DAY_LENGTH;
 	else if (tm>DAY_LENGTH)	return tm-DAY_LENGTH;
@@ -120,13 +121,13 @@ void CEnvironment::SetWeather(shared_str name, bool forced)
 //.	if(bAlready)	return;
 	if (name.size())	{
 //.		bAlready = TRUE;
-        EnvsMapIt it		= WeatherCycles.find(name);
+		EnvsMapIt it		= WeatherCycles.find(name);
 		if (it == WeatherCycles.end())
 		{
 			Msg("! Invalid weather name: %s", name.c_str());
 			return;
 		}
-        R_ASSERT3			(it!=WeatherCycles.end(),"Invalid weather name.",*name);
+		R_ASSERT3			(it!=WeatherCycles.end(),"Invalid weather name.",*name);
 		CurrentCycleName	= it->first;
 		if (forced)			{Invalidate();			}
 		if (!bWFX){
@@ -137,9 +138,9 @@ void CEnvironment::SetWeather(shared_str name, bool forced)
 #ifdef WEATHER_LOGGING
 		Msg					("Starting Cycle: %s [%s]",*name,forced?"forced":"deferred");
 #endif
-    }else{
+	}else{
 		FATAL				("! Empty weather name");
-    }
+	}
 }
 
 bool CEnvironment::SetWeatherFX(shared_str name)
@@ -152,12 +153,12 @@ bool CEnvironment::SetWeatherFX(shared_str name)
 		CurrentWeather		= &it->second;
 		CurrentWeatherName	= it->first;
 
-		F32 rewind_tm		= WFX_TRANS_TIME*fTimeFactor;
-		F32 start_tm		= fGameTime+rewind_tm;
-		F32 current_length;
-		F32 current_weight;
+		f32 rewind_tm		= WFX_TRANS_TIME*fTimeFactor;
+		f32 start_tm		= fGameTime+rewind_tm;
+		f32 current_length;
+		f32 current_weight;
 		if (Current[0]->exec_time>Current[1]->exec_time){
-			F32 x			= fGameTime>Current[0]->exec_time?fGameTime-Current[0]->exec_time:(DAY_LENGTH-Current[0]->exec_time)+fGameTime;
+			f32 x			= fGameTime>Current[0]->exec_time?fGameTime-Current[0]->exec_time:(DAY_LENGTH-Current[0]->exec_time)+fGameTime;
 			current_length	= (DAY_LENGTH-Current[0]->exec_time)+Current[1]->exec_time;
 			current_weight	= x/current_length; 
 		}else{
@@ -209,10 +210,10 @@ void CEnvironment::StopWFX	()
 #endif
 }
 
-IC bool lb_env_pred(const CEnvDescriptor* x, F32 val)
+IC bool lb_env_pred(const CEnvDescriptor* x, f32 val)
 {	return x->exec_time < val;	}
 
-void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, F32 gt)
+void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, f32 gt)
 {
 	EnvIt env		= std::lower_bound(envs->begin(),envs->end(),gt,lb_env_pred);
 	if (env==envs->end()){
@@ -222,7 +223,7 @@ void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, F32 gt)
 	}
 }
 
-void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, F32 gt)
+void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, f32 gt)
 {
 	EnvIt env		= std::lower_bound(envs->begin(),envs->end(),gt,lb_env_pred);
 	if (env==envs->end()){
@@ -235,14 +236,14 @@ void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*
 	}
 }
 
-void CEnvironment::SelectEnvs(F32 gt)
+void CEnvironment::SelectEnvs(f32 gt)
 {
 	VERIFY				(CurrentWeather);
-    if ((Current[0]==Current[1])&&(Current[0]==0)){
+	if ((Current[0]==Current[1])&&(Current[0]==0)){
 		VERIFY			(!bWFX);
 		// first or forced start
 		SelectEnvs		(CurrentWeather,Current[0],Current[1],gt);
-    }else{
+	}else{
 		bool bSelect	= false;
 		if (Current[0]->exec_time>Current[1]->exec_time){
 			// terminator
@@ -257,7 +258,7 @@ void CEnvironment::SelectEnvs(F32 gt)
 			Msg			("Weather: '%s' Desc: '%s' Time: %3.2f/%3.2f",CurrentWeatherName.c_str(),Current[1]->sect_name.c_str(),Current[1]->exec_time,fGameTime);
 #endif
 		}
-    }
+	}
 }
 
 int get_ref_count(IUnknown* ii)
@@ -278,9 +279,9 @@ void CEnvironment::OnFrame()
 	if (bWFX&&(wfx_time<=0.f)) StopWFX();
 
 	SelectEnvs				(fGameTime);
-    VERIFY					(Current[0]&&Current[1]);
+	VERIFY					(Current[0]&&Current[1]);
 
-	F32 current_weight	= TimeWeight(fGameTime,Current[0]->exec_time,Current[1]->exec_time);
+	f32 current_weight	= TimeWeight(fGameTime,Current[0]->exec_time,Current[1]->exec_time);
 
 	// modifiers
 	CEnvModifier			EM;
@@ -291,7 +292,7 @@ void CEnvironment::OnFrame()
 	EM.sky_color.set		( 0,0,0 );
 	EM.hemi_color.set		( 0,0,0 );
 	Fvector	view			= Device.vCameraPosition;
-	F32	mpower			= 0;
+	f32	mpower			= 0;
 	for (xr_vector<CEnvModifier>::iterator mit=Modifiers.begin(); mit!=Modifiers.end(); mit++)
 		mpower				+= EM.sum(*mit,view);
 
@@ -334,10 +335,10 @@ void CEnvironment::OnFrame()
 	PerlinNoise1D->SetFrequency		(wind_gust_factor*MAX_NOISE_FREQ);
 	wind_strength_factor			= clampr(PerlinNoise1D->GetContinious(Device.fTimeGlobal)+0.5f,0.f,1.f); 
 
-    int l_id							=	(current_weight<0.5f)?Current[0]->lens_flare_id:Current[1]->lens_flare_id;
+	int l_id							=	(current_weight<0.5f)?Current[0]->lens_flare_id:Current[1]->lens_flare_id;
 	eff_LensFlare->OnFrame				(l_id);
 	int t_id							=	(current_weight<0.5f)?Current[0]->tb_id:Current[1]->tb_id;
-    eff_Thunderbolt->OnFrame			(t_id,CurrentEnv.bolt_period,CurrentEnv.bolt_duration);
+	eff_Thunderbolt->OnFrame			(t_id,CurrentEnv.bolt_period,CurrentEnv.bolt_duration);
 	eff_Rain->OnFrame					();
 
 	// ******************** Environment params (setting)
@@ -345,4 +346,3 @@ void CEnvironment::OnFrame()
 	CHK_DX(HW.pDevice->SetRenderState( D3DRS_FOGSTART,	*(u32 *)(&CurrentEnv.fog_near)	));
 	CHK_DX(HW.pDevice->SetRenderState( D3DRS_FOGEND,	*(u32 *)(&CurrentEnv.fog_far)	));
 }
-

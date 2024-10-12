@@ -63,9 +63,8 @@ public:
 protected:
 	void									UpdateActiveContacts	();
 
-
 	xr_vector<CObject*>						m_active_contacts;
-	float									m_fRadius;
+	f32									m_fRadius;
 
 	u16										m_idOriginalOwner;
 	shared_str					m_SpecificChracterOwner;

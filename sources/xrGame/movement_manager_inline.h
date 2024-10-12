@@ -24,7 +24,7 @@ IC	bool CMovementManager::enabled() const
 	return					(m_enabled);
 }
 
-IC	float CMovementManager::speed() const
+IC	f32 CMovementManager::speed() const
 {
 	return					(m_speed);
 }
@@ -34,12 +34,12 @@ IC	bool CMovementManager::path_completed() const
 	return					((m_path_state == ePathStatePathCompleted) && actual());
 }
 
-IC	float CMovementManager::old_desirable_speed		() const
+IC	f32 CMovementManager::old_desirable_speed		() const
 {
 	return					(m_old_desirable_speed);
 }
 
-IC	void CMovementManager::set_desirable_speed		(float speed)
+IC	void CMovementManager::set_desirable_speed		(f32 speed)
 {
 	m_old_desirable_speed	= speed;
 }
@@ -55,7 +55,7 @@ IC	const CMovementManager::CBoneRotation &CMovementManager::body_orientation() c
 }
 
 template <typename T>
-IC	bool CMovementManager::accessible			(T position_or_vertex_id, float radius) const
+IC	bool CMovementManager::accessible			(T position_or_vertex_id, f32 radius) const
 {
 	return					(restrictions().accessible(position_or_vertex_id,radius));
 }

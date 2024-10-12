@@ -49,7 +49,7 @@ public:
 	vis_data					vis			;				// visibility-data
 	ref_shader					shader		;				// pipe state, shared
 
-	virtual void				Render						(F32 LOD)		{};		// LOD - Level Of Detail  [0..1], Ignored
+	virtual void				Render						(f32 LOD)		{};		// LOD - Level Of Detail  [0..1], Ignored
 	virtual void				Load						(pcstr N, IReader *data, u32 dwFlags);
 	virtual void				Release						();						// Shared memory release
 	virtual void				Copy						(IRender_Visual* from);

@@ -18,8 +18,8 @@ private:
 	};
 
 	struct DemoFrameTime {
-		float									fTimeDelta;
-		float									fTimeGlobal;
+		f32									fTimeDelta;
+		f32									fTimeGlobal;
 		u32										dwTimeDelta;
 		u32										dwTimeGlobal;
 		u32										dwTimeServer;

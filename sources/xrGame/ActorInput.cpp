@@ -213,7 +213,7 @@ void CActor::IR_OnKeyboardHold(int cmd)
 		return;
 	}
 
-	F32 LookFactor = GetLookFactor();
+	f32 LookFactor = GetLookFactor();
 	switch(cmd)
 	{
 	case kUP:
@@ -234,8 +234,6 @@ void CActor::IR_OnKeyboardHold(int cmd)
 	case kFWD:		mstate_wishful |= mcFwd;									break;
 	case kBACK:		mstate_wishful |= mcBack;									break;
 	case kCROUCH:	mstate_wishful |= mcCrouch;									break;
-
-
 	}
 }
 
@@ -250,23 +248,23 @@ void CActor::IR_OnMouseMove(int dx, int dy)
 		return;
 	}
 
-	F32 LookFactor = GetLookFactor();
+	f32 LookFactor = GetLookFactor();
 
 	CCameraBase* C	= cameras	[cam_active];
-	F32 scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f  / LookFactor;
+	f32 scale		= (C->f_fov/g_fov)*psMouseSens * psMouseSensScale/50.f  / LookFactor;
 	if (dx){
-		F32 d = F32(dx)*scale;
+		f32 d = f32(dx)*scale;
 		cam_Active()->Move((d<0)?kLEFT:kRIGHT, _abs(d));
 	}
 	if (dy){
-		F32 d = ((psMouseInvert.test(1))?-1:1)* F32(dy)*scale*3.f/4.f;
+		f32 d = ((psMouseInvert.test(1))?-1:1)* f32(dy)*scale*3.f/4.f;
 		cam_Active()->Move((d>0)?kUP:kDOWN, _abs(d));
 	}
 }
+
 #include "HudItem.h"
 bool CActor::use_Holder				(CHolderCustom* holder)
 {
-
 	if(m_holder){
 		bool b = false;
 		CGameObject* holderGO			= smart_cast<CGameObject*>(m_holder);
@@ -331,8 +329,6 @@ void CActor::ActorUse()
 	if(character_physics_support()->movement()->PHCapture())
 		character_physics_support()->movement()->PHReleaseObject();
 
-	
-
 	if(m_pUsableObject)m_pUsableObject->use(this);
 	
 	if(m_pInvBoxWeLookingAt && m_pInvBoxWeLookingAt->nonscript_usable())
@@ -376,9 +372,7 @@ void CActor::ActorUse()
 			if(b_allow && !character_physics_support()->movement()->PHCapture())
 			{
 				character_physics_support()->movement()->PHCaptureObject(object,element);
-
 			}
-
 		}
 		else
 		{
@@ -390,12 +384,10 @@ void CActor::ActorUse()
 					CGameObject::u_EventSend	(P);
 					return;
 			}
-
 		}
 	}
-
-
 }
+
 BOOL CActor::HUDview				( )const 
 { 
 	return IsFocused()&&(cam_active==eacFirstEye)&&
@@ -425,8 +417,10 @@ void	CActor::OnNextWeaponSlot()
 	for (u32 CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
 	{
 		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
-	};
+	}
+
 	if (CurSlot >= NumSlotsToCheck) return;
+
 	for (u32 i=CurSlot+1; i<NumSlotsToCheck; i++)
 	{
 		if (inventory().ItemFromSlot(SlotsToCheck[i]))
@@ -440,7 +434,7 @@ void	CActor::OnNextWeaponSlot()
 			return;
 		}
 	}
-};
+}
 
 void	CActor::OnPrevWeaponSlot()
 {
@@ -455,8 +449,10 @@ void	CActor::OnPrevWeaponSlot()
 	for (u32 CurSlot=0; CurSlot<NumSlotsToCheck; CurSlot++)
 	{
 		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
-	};
+	}
+
 	if (CurSlot >= NumSlotsToCheck) return;
+
 	for (s32 i=s32(CurSlot-1); i>=0; i--)
 	{
 		if (inventory().ItemFromSlot(SlotsToCheck[i]))
@@ -470,15 +466,14 @@ void	CActor::OnPrevWeaponSlot()
 			return;
 		}
 	}
-};
+}
 
-F32	CActor::GetLookFactor()
+f32	CActor::GetLookFactor()
 {
 	if (m_input_external_handler) 
 		return m_input_external_handler->mouse_scale_factor();
 
-	
-	F32 factor	= 1.f;
+	f32 factor	= 1.f;
 
 	PIItem pItem	= inventory().ActiveItem();
 
@@ -503,6 +498,3 @@ void CActor::set_input_external_handler(CActorInputHandler *handler)
 	// set handler
 	m_input_external_handler	= handler;
 }
-
-
-

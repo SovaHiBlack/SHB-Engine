@@ -21,7 +21,7 @@ public:
 	void								shedule_register	();
 	void								shedule_unregister	();
 
-	virtual F32							shedule_Scale		()			= 0;
+	virtual f32							shedule_Scale		()			= 0;
 	virtual void						shedule_Update		(u32 dt);
 	virtual	shared_str					shedule_Name		() const	{ return shared_str("unknown"); };
 	virtual bool						shedule_Needed		()			= 0;

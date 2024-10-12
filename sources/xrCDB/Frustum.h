@@ -45,7 +45,7 @@ public:
 	int				p_count;
 
 public:
-	ICF EFC_Visible		AABB_OverlapPlane	(const fplane& P, const F32* mM) const
+	ICF EFC_Visible		AABB_OverlapPlane	(const fplane& P, const f32* mM) const
 	{
 		// calc extreme pts (neg,pos) along normal axis (pos in dir of norm, etc.)
 		u32*	id		= frustum_aabb_remap[P.aabb_overlap_id];
@@ -78,10 +78,10 @@ public:
 
 	u32				getMask				() const { return (1<<p_count)-1; }
 
-	EFC_Visible		testSphere			(Fvector& c, F32 r, u32& test_mask)					const;
-	BOOL			testSphere_dirty	(Fvector& c, F32 r)									const;
-	EFC_Visible		testAABB			(const F32* mM, u32& test_mask)						const;
-	EFC_Visible		testSAABB			(Fvector& c, F32 r, const F32* mM, u32& test_mask)	const;
+	EFC_Visible		testSphere			(Fvector& c, f32 r, u32& test_mask)					const;
+	BOOL			testSphere_dirty	(Fvector& c, f32 r)									const;
+	EFC_Visible		testAABB			(const f32* mM, u32& test_mask)						const;
+	EFC_Visible		testSAABB			(Fvector& c, f32 r, const f32* mM, u32& test_mask)	const;
 	BOOL			testPolyInside_dirty(Fvector* p, int count)									const;
 
 	IC BOOL			testPolyInside		(sPoly& src)											const

@@ -16,7 +16,7 @@ private:
 		Fvector			P;
 		Fvector			Phit;
 		Fvector			D;
-		F32			fSpeed;
+		f32			fSpeed;
 		u32				dwTime_Life;
 		u32				dwTime_Hit;
 		u32				uv_set;
@@ -30,7 +30,7 @@ private:
 		Particle		*next,*prev;
 		Fmatrix			mXForm;
 		Fsphere			bounds;
-		F32			time;
+		f32			time;
 	};
 	enum	States
 	{
@@ -69,10 +69,10 @@ private:
 	void							p_free			(Particle* P);
 
 	// Some methods
-	void							Born			(Item& dest, F32 radius);
+	void							Born			(Item& dest, f32 radius);
 	void							Hit				(Fvector& pos);
-	BOOL							RayPick			(const Fvector& s, const Fvector& d, F32& range, collide::rq_target tgt);
-	void							RenewItem		(Item& dest, F32 height, BOOL bHit);
+	BOOL							RayPick			(const Fvector& s, const Fvector& d, f32& range, collide::rq_target tgt);
+	void							RenewItem		(Item& dest, f32 height, BOOL bHit);
 public:
 									CEffect_Rain	();
 									~CEffect_Rain	();

@@ -52,7 +52,7 @@ public:
 	virtual	void				Load						(pcstr section);
 	virtual	void				reinit						();
 	virtual	void				reload						(pcstr section);
-	virtual	void				update						(float time_delta);
+	virtual	void				update						(f32 time_delta);
 			void				remove_links				(CObject *object);
 	virtual void				on_restrictions_change		();
 

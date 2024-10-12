@@ -129,9 +129,9 @@ public:
 	CInventory		 &inventory()		{VERIFY (m_inventory); return(*m_inventory);}
 
 	//возвращает текуший разброс стрельбы (в радианах) с учетом движения
-	virtual float GetWeaponAccuracy			() const;
+	virtual f32 GetWeaponAccuracy			() const;
 	//максимальный переносимы вес
-	virtual float MaxCarryWeight			() const;
+	virtual f32 MaxCarryWeight			() const;
 
 	virtual CCustomOutfit*			GetOutfit()	const {return NULL;};
 
@@ -202,14 +202,14 @@ private:
 public:
 	IC		CTradeParameters	&trade_parameters		() const;
 	virtual	pcstr				trade_section			() const;
-			float				deficit_factor			(const shared_str &section) const;
+	f32				deficit_factor			(const shared_str &section) const;
 			void				buy_supplies			(CInifile &ini_file, pcstr section);
 			void				sell_useless_items		();
 	virtual	void				on_before_sell			(CInventoryItem *item) {}
 	virtual	void				on_before_buy			(CInventoryItem *item) {}
 	virtual bool				can_use_dynamic_lights	() {return true;}
 	virtual	bool				use_default_throw_force	();
-	virtual	float				missile_throw_force		(); 
+	virtual	f32				missile_throw_force		();
 	virtual	bool				use_throw_randomness	();
 	virtual bool				NeedOsoznanieMode		() {return m_need_osoznanie_mode!=FALSE;}
 };

@@ -62,7 +62,7 @@ BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 		{
 			// motion defs (cycle&fx)
 			u16 mot_count			= MP->r_u16();
-            m_mdefs.resize			(mot_count);
+			m_mdefs.resize			(mot_count);
 
 			for (u16 mot_i=0; mot_i<mot_count; mot_i++)
 			{
@@ -70,7 +70,7 @@ BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 				shared_str nm		= _strlwr		(buf);
 				u32 dwFlags			= MP->r_u32		();
 				CMotionDef&	D		= m_mdefs[mot_i];
-                D.Load				(MP,dwFlags,vers);
+				D.Load				(MP,dwFlags,vers);
 //.             m_mdefs.push_back	(D);
 				
 				if (dwFlags&esmFX)	
@@ -78,7 +78,7 @@ BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 				else				
 					m_cycle.insert	(mk_pair(nm,mot_i));
 
-                m_motion_map.insert	(mk_pair(nm,mot_i));
+				m_motion_map.insert	(mk_pair(nm,mot_i));
 			}
 		}
 		MP->close();
@@ -94,7 +94,7 @@ BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 
 	u32			dwCNT	= 0;
 	MS->r_chunk_safe	(0,&dwCNT,sizeof(dwCNT));
-    VERIFY		(dwCNT<0x3FFF); // MotionID 2 bit - slot, 14 bit - motion index
+	VERIFY		(dwCNT<0x3FFF); // MotionID 2 bit - slot, 14 bit - motion index
 
 	// set per bone motion size
 	for (u32 i=0; i<bones->size(); i++)
@@ -108,9 +108,9 @@ BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 #ifdef _DEBUG        
 		// sanity check
 		xr_strlwr			(mname);
-        accel_map::iterator I= m_motion_map.find(mname); 
-        VERIFY3				(I!=m_motion_map.end(),"Can't find motion:",mname);
-        VERIFY3				(I->second==m_idx,"Invalid motion index:",mname);
+		accel_map::iterator I= m_motion_map.find(mname); 
+		VERIFY3				(I!=m_motion_map.end(),"Can't find motion:",mname);
+		VERIFY3				(I->second==m_idx,"Invalid motion index:",mname);
 #endif
 		u32 dwLen			= MS->r_u32();
 		for (u32 i=0; i<bones->size(); i++){
@@ -119,26 +119,26 @@ BOOL motions_value::load		(pcstr N, IReader *data, vecBones* bones)
 			CMotion&		M	= m_motions[bones->at(bone_id)->name][m_idx];
 			M.set_count			(dwLen);
 			M.set_flags			(MS->r_u8());
-            
-            if (M.test_flag(flRKeyAbsent))	{
-                CKeyQR* r 		= (CKeyQR*)MS->pointer();
+			
+			if (M.test_flag(flRKeyAbsent))	{
+				CKeyQR* r 		= (CKeyQR*)MS->pointer();
 				u32 crc_q		= crc32(r,sizeof(CKeyQR));
 				M._keysR.create	(crc_q,1,r);
-                MS->advance		(1 * sizeof(CKeyQR));
-            }else{
-                u32 crc_q		= MS->r_u32	();
-                M._keysR.create	(crc_q,dwLen,(CKeyQR*)MS->pointer());
-                MS->advance		(dwLen * sizeof(CKeyQR));
-            }
-            if (M.test_flag(flTKeyPresent))	{
-                u32 crc_t		= MS->r_u32	();
-                M._keysT.create	(crc_t,dwLen,(CKeyQT*)MS->pointer());
-                MS->advance		(dwLen * sizeof(CKeyQT));
-                MS->r_fvector3	(M._sizeT);
-                MS->r_fvector3	(M._initT);
-            }else{
-                MS->r_fvector3	(M._initT);
-            }
+				MS->advance		(1 * sizeof(CKeyQR));
+			}else{
+				u32 crc_q		= MS->r_u32	();
+				M._keysR.create	(crc_q,dwLen,(CKeyQR*)MS->pointer());
+				MS->advance		(dwLen * sizeof(CKeyQR));
+			}
+			if (M.test_flag(flTKeyPresent))	{
+				u32 crc_t		= MS->r_u32	();
+				M._keysT.create	(crc_t,dwLen,(CKeyQT*)MS->pointer());
+				MS->advance		(dwLen * sizeof(CKeyQT));
+				MS->r_fvector3	(M._sizeT);
+				MS->r_fvector3	(M._initT);
+			}else{
+				MS->r_fvector3	(M._initT);
+			}
 		}
 	}
 //	Msg("Motions %d/%d %4d/%4d/%d, %s",p_cnt,m_cnt, m_load,m_total,m_r,N);
@@ -244,13 +244,13 @@ void CMotionDef::Load(IReader* MP, u32 fl, u16 version)
 	if(version>=4)
 	{
 		u32	cnt				= MP->r_u32();
-        if(cnt>0)
-        {
-            marks.resize		(cnt);
+		if(cnt>0)
+		{
+			marks.resize		(cnt);
 
-            for(u32 i=0; i<cnt; ++i)
-                marks[i].Load	(MP);
-        }
+			for(u32 i=0; i<cnt; ++i)
+				marks[i].Load	(MP);
+		}
 	}
 }
 
@@ -259,7 +259,7 @@ bool CMotionDef::StopAtEnd()
 	return !!(flags&esmStopAtEnd);
 }
 
-bool motion_marks::pick_mark(const F32& t) const
+bool motion_marks::pick_mark(const f32& t) const
 {
 	C_ITERATOR	it		= intervals.begin();
 	C_ITERATOR	it_e	= intervals.end();
@@ -279,7 +279,7 @@ void motion_marks::Load(IReader* R)
 {
 	xr_string 			tmp;
 	R->r_string			(tmp);
-    name				= tmp.c_str();
+	name				= tmp.c_str();
 	u32 cnt				= R->r_u32();
 	intervals.resize	(cnt);
 	for(u32 i=0; i<cnt; ++i)

@@ -22,65 +22,68 @@
 #include "..\XR_3DA\motion.h"
 #include "artifact.h"
 #include "IKLimbsController.h"
-static const F32 y_spin0_factor		= 0.0f;
-static const F32 y_spin1_factor		= 0.4f;
-static const F32 y_shoulder_factor	= 0.4f;
-static const F32 y_head_factor		= 0.2f;
-static const F32 p_spin0_factor		= 0.0f;
-static const F32 p_spin1_factor		= 0.2f;
-static const F32 p_shoulder_factor	= 0.7f;
-static const F32 p_head_factor		= 0.1f;
-static const F32 r_spin0_factor		= 0.3f;
-static const F32 r_spin1_factor		= 0.3f;
-static const F32 r_shoulder_factor	= 0.2f;
-static const F32 r_head_factor		= 0.2f;
 
+static const f32 y_spin0_factor		= 0.0f;
+static const f32 y_spin1_factor		= 0.4f;
+static const f32 y_shoulder_factor	= 0.4f;
+static const f32 y_head_factor		= 0.2f;
+static const f32 p_spin0_factor		= 0.0f;
+static const f32 p_spin1_factor		= 0.2f;
+static const f32 p_shoulder_factor	= 0.7f;
+static const f32 p_head_factor		= 0.1f;
+static const f32 r_spin0_factor		= 0.3f;
+static const f32 r_spin1_factor		= 0.3f;
+static const f32 r_shoulder_factor	= 0.2f;
+static const f32 r_head_factor		= 0.2f;
 
 void  CActor::Spin0Callback(CBoneInstance* B)
 {
 	CActor*	A			= static_cast<CActor*>(B->Callback_Param);	VERIFY	(A);
 
 	Fmatrix				spin;
-	F32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_spin0_factor;
-	F32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_spin0_factor;
-	F32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_spin0_factor;
+	f32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_spin0_factor;
+	f32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_spin0_factor;
+	f32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_spin0_factor;
 	Fvector c			= B->mTransform.c;
 	spin.setXYZ			(-bone_pitch,bone_yaw,bone_roll);
 	B->mTransform.mulA_43(spin);
 	B->mTransform.c		= c;
 }
+
 void  CActor::Spin1Callback(CBoneInstance* B)
 {
 	CActor*	A			= static_cast<CActor*>(B->Callback_Param);	VERIFY	(A);
 
 	Fmatrix				spin;
-	F32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_spin1_factor;
-	F32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_spin1_factor;
-	F32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_spin1_factor;
+	f32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_spin1_factor;
+	f32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_spin1_factor;
+	f32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_spin1_factor;
 	Fvector c			= B->mTransform.c;
 	spin.setXYZ			(-bone_pitch,bone_yaw,bone_roll);
 	B->mTransform.mulA_43(spin);
 	B->mTransform.c		= c;
 }
+
 void  CActor::ShoulderCallback(CBoneInstance* B)
 {
 	CActor*	A			= static_cast<CActor*>(B->Callback_Param);	VERIFY	(A);
 	Fmatrix				spin;
-	F32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_shoulder_factor;
-	F32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_shoulder_factor;
-	F32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_shoulder_factor;
+	f32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_shoulder_factor;
+	f32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_shoulder_factor;
+	f32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_shoulder_factor;
 	Fvector c			= B->mTransform.c;
 	spin.setXYZ			(-bone_pitch,bone_yaw,bone_roll);
 	B->mTransform.mulA_43(spin);
 	B->mTransform.c		= c;
 }
+
 void  CActor::HeadCallback(CBoneInstance* B)
 {
 	CActor*	A			= static_cast<CActor*>(B->Callback_Param);	VERIFY	(A);
 	Fmatrix				spin;
-	F32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_head_factor;
-	F32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_head_factor;
-	F32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_head_factor;
+	f32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw - A->r_model_yaw - A->r_model_yaw_delta)*y_head_factor;
+	f32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*p_head_factor;
+	f32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_head_factor;
 	Fvector c			= B->mTransform.c;
 	spin.setXYZ			(-bone_pitch,bone_yaw,bone_roll);
 	B->mTransform.mulA_43(spin);
@@ -91,9 +94,9 @@ void  CActor::VehicleHeadCallback(CBoneInstance* B)
 {
 	CActor*	A			= static_cast<CActor*>(B->Callback_Param);	VERIFY	(A);
 	Fmatrix				spin;
-	F32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw)*0.75f;
-	F32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*0.75f;
-	F32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_head_factor;
+	f32				bone_yaw	= angle_normalize_signed(A->r_torso.yaw)*0.75f;
+	f32				bone_pitch	= angle_normalize_signed(A->r_torso.pitch)*0.75f;
+	f32				bone_roll	= angle_normalize_signed(A->r_torso.roll)*r_head_factor;
 	Fvector c			= B->mTransform.c;
 	spin.setHPB			(bone_yaw,bone_pitch,-bone_roll);
 	B->mTransform.mulA_43(spin);
@@ -122,6 +125,7 @@ void STorsoWpn::Create(CKinematicsAnimated* K, pcstr base0, pcstr base1)
 	all_attack_1	= K->ID_Cycle_Safe(strconcat(sizeof(buf),buf,base0,"_all",base1,"_attack_1"));
 	all_attack_2	= K->ID_Cycle_Safe(strconcat(sizeof(buf),buf,base0,"_all",base1,"_attack_2"));
 }
+
 void SAnimState::Create(CKinematicsAnimated* K, pcstr base0, pcstr base1)
 {
 	char			buf[128];
@@ -130,7 +134,6 @@ void SAnimState::Create(CKinematicsAnimated* K, pcstr base0, pcstr base1)
 	legs_ls			= K->ID_Cycle(strconcat(sizeof(buf),buf,base0,base1,"_ls_0"));
 	legs_rs			= K->ID_Cycle(strconcat(sizeof(buf),buf,base0,base1,"_rs_0"));
 }
-
 
 void SActorState::CreateClimb(CKinematicsAnimated* K)
 {
@@ -162,7 +165,6 @@ void SActorState::CreateClimb(CKinematicsAnimated* K)
 	m_torso[11].Create(K,base,"_12");
 	m_torso[12].Create(K,base,"_13");
 
-
 	m_head_idle.invalidate();///K->ID_Cycle("head_idle_0");
 	jump_begin		= K->ID_Cycle(strconcat(sizeof(buf),buf,base,"_jump_begin"));
 	jump_idle		= K->ID_Cycle(strconcat(sizeof(buf),buf,base,"_jump_idle"));
@@ -172,7 +174,6 @@ void SActorState::CreateClimb(CKinematicsAnimated* K)
 	for (int k=0; k<12; ++k)
 		m_damage[k]	= K->ID_FX(strconcat(sizeof(buf),buf,base,"_damage_",itoa(k,buf1,10)));
 }
-
 
 void SActorState::Create(CKinematicsAnimated* K, pcstr base)
 {
@@ -232,6 +233,7 @@ SActorVehicleAnims::SActorVehicleAnims()
 {
 	
 }
+
 void SActorVehicleAnims::Create(CKinematicsAnimated* V)
 {
 	for(u16 i=0;TYPES_NUMBER>i;++i) m_vehicles_type_collections[i].Create(V,i);
@@ -259,7 +261,7 @@ void SVehicleAnimCollection::Create(CKinematicsAnimated* V,u16 num)
 	}
 }
 
-void CActor::steer_Vehicle(F32 angle)
+void CActor::steer_Vehicle(f32 angle)
 {
 	if(!m_holder)		return;
 	CCar*	car			= smart_cast<CCar*>(m_holder);
@@ -301,10 +303,9 @@ pstr mov_state[] ={
 	"run",
 	"sprint",
 };
+
 void CActor::g_SetAnimation( u32 mstate_rl )
 {
-
-
 	if (!g_Alive()) {
 		if (m_current_legs||m_current_torso){
 			SActorState*				ST = 0;
@@ -319,6 +320,7 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 
 		return;
 	}
+
 	STorsoWpn::eMovingState	moving_idx 		= STorsoWpn::eIdle;
 	SActorState*					ST 		= 0;
 	SAnimState*						AS 		= 0;
@@ -371,8 +373,8 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 		{
 			CHudItem* pHudItem = smart_cast<CHudItem*>(inventory().ActiveItem());	
 			if (pHudItem) pHudItem->onMovementChanged(mcSprint);
-		};
-	};
+		}
+	}
 	//-----------------------------------------------------------------------
 	// Torso
 	if(mstate_rl&mcClimb)
@@ -531,7 +533,7 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 		m_current_head=M_head;
 	}
 	if (m_current_legs!=M_legs){
-		F32 pos					= 0.f;
+		f32 pos					= 0.f;
 		VERIFY						(!m_current_legs_blend || !fis_zero(m_current_legs_blend->timeTotal));
 		if ((mstate_real&mcAnyMove)&&(mstate_old&mcAnyMove)&&m_current_legs_blend)
 			pos						= fmod(m_current_legs_blend->timeCurrent,m_current_legs_blend->timeTotal)/m_current_legs_blend->timeTotal;
@@ -544,8 +546,6 @@ void CActor::g_SetAnimation( u32 mstate_rl )
 
 		CStepManager::on_animation_start(M_legs, m_current_legs_blend);
 	}
-
-
 
 #ifdef _DEBUG
 	if(bDebug){

@@ -31,8 +31,8 @@ struct calculate_state
 	Fmatrix	obj_pos;
 	Fmatrix	collide_pos;
 	Fvector pick;
-	float	speed_blend_l;
-	float	speed_blend_a;
+	f32	speed_blend_l;
+	f32	speed_blend_a;
 	bool	foot_step;
 	bool	blending;
 #ifdef DEBUG
@@ -58,7 +58,7 @@ IC				u16			get_id				()	{ return m_id; }
 private:
 				void		Invalidate			();
 				void		GetFootStepMatrix	( Fmatrix	&m, const Fmatrix &gl_anim, const  SIKCollideData &cld, bool collide );
-IC				float		CollideFoot			( float angle, const Fmatrix &gl_anim, Fplane &p, Fvector &ax );
+IC				f32		CollideFoot			(f32 angle, const Fmatrix &gl_anim, Fplane &p, Fvector &ax );
 IC				void		make_shift			(Fmatrix &xm, const Fplane &p,const Fvector &pick_dir );
 				void		ApplyContext		( SCalculateData& cd );
 				void		Solve				( SCalculateData& cd );
@@ -69,10 +69,11 @@ IC				void		AnimGoal			( Fmatrix &gl, CKinematicsAnimated	&K );
 				void		CalculateBones		(SCalculateData& cd);
 				Matrix&		Goal				( Matrix &gl, const Fmatrix &xm, SCalculateData& cd );
 				Fmatrix&	GetHipInvert		( Fmatrix &ihip, const SCalculateData& cd );
-				float		SwivelAngle			( const Fmatrix &ihip, const SCalculateData& cd );
+				f32		SwivelAngle			( const Fmatrix &ihip, const SCalculateData& cd );
 				void		GetKnee				( Fvector &knee, const SCalculateData& cd ) const;
 				void		GetPickDir			(Fvector &v, const Fmatrix &gl_bone ) ;
 IC		static	void		get_start			( Fmatrix &start, SCalculateData &D, u16 bone );
+
 private:
 		static	void 		BonesCallback0		( CBoneInstance* B );
 		static	void 		BonesCallback1		( CBoneInstance* B );
@@ -96,7 +97,7 @@ private:
 class	ik_anim_state;
 struct SCalculateData : private boost::noncopyable {
 
-	float	const		*m_angles			;
+	f32	const		*m_angles			;
 	CKinematicsAnimated	*m_K				;
 	CIKLimb				&m_limb				;
 	Fmatrix	const		&m_obj				;

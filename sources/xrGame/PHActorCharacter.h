@@ -23,13 +23,13 @@ struct SPHCharacterRestrictor
 
 				dGeomID					m_restrictor;
 				dGeomID					m_restrictor_transform;
-				float					m_restrictor_radius;
+				f32					m_restrictor_radius;
 				void					SetObjectContactCallback			(ObjectContactCallbackFun* callback);
 				void					SetMaterial							(u16 material);
 				void					Create								(CPHCharacter* ch,dVector3 sizes);
 				void					Destroy								(void);
 				void					SetPhysicsRefObject					(CPhysicsShellHolder* ref_object);
-				void					SetRadius							(float r);
+				void					SetRadius							(f32 r);
 };
 
 template <CPHCharacter::ERestrictionType Ttype>
@@ -91,7 +91,7 @@ class CPHActorCharacter :
 	typedef CPHSimpleCharacter	inherited;
 
 	RESRICTORS_V		m_restrictors;
-	float				m_speed_goal;
+	f32				m_speed_goal;
 public:
 	typedef TPHCharacterRestrictor<CPHCharacter::rtStalker>			stalker_restrictor;
 	typedef TPHCharacterRestrictor<CPHCharacter::rtStalkerSmall>	stalker_small_restrictor;
@@ -107,8 +107,8 @@ public:
 	virtual	void		Disable								();
 	virtual	void		Jump								(const Fvector& jump_velocity);
 	virtual void		InitContact							(dContact* c,bool &do_collide,u16	material_idx_1 ,u16 material_idx_2);
-			void		SetRestrictorRadius					(CPHCharacter::ERestrictionType rtype,float r);
-virtual		void		ChooseRestrictionType				(ERestrictionType my_type,float my_depth,CPHCharacter *ch);
+			void		SetRestrictorRadius					(CPHCharacter::ERestrictionType rtype, f32 r);
+virtual		void		ChooseRestrictionType				(ERestrictionType my_type, f32 my_depth,CPHCharacter *ch);
 						CPHActorCharacter					();
 	virtual				~CPHActorCharacter					(void);
 private:

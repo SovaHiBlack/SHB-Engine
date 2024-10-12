@@ -31,12 +31,12 @@ IC	CAI_Stalker &CMemberOrder::object			() const
 	return			(*m_object);
 }
 
-IC	float CMemberOrder::probability				() const
+IC	f32 CMemberOrder::probability				() const
 {
 	return			(m_probability);
 }
 
-IC	void CMemberOrder::probability				(float probability)
+IC	void CMemberOrder::probability				(f32 probability)
 {
 	m_probability	= probability;
 }

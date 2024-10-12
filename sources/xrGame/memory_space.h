@@ -44,7 +44,7 @@ namespace MemorySpace {
 
 	struct CNotYetVisibleObject {
 		const CGameObject			*m_object;
-		float						m_value;
+		f32						m_value;
 		u32							m_update_time;
 		u32							m_prev_time;
 	};
@@ -161,14 +161,14 @@ namespace MemorySpace {
 	struct CHitObject : public CMemoryObject<CEntityAlive> {
 		Fvector						m_direction;
 		u16							m_bone_index;
-		float						m_amount;
+		f32						m_amount;
 	};
 	
 	struct CSoundObject : public CMemoryObject<CGameObject> {
 		ESoundTypes					m_sound_type;
-		float						m_power;
+		f32						m_power;
 
-		IC	void	fill							(const CGameObject *game_object, const CGameObject *self, const ESoundTypes sound_type, const float sound_power, const squad_mask_type &mask)
+		IC	void	fill							(const CGameObject *game_object, const CGameObject *self, const ESoundTypes sound_type, const f32 sound_power, const squad_mask_type &mask)
 		{
 			CMemoryObject<CGameObject>::fill	(game_object,self,mask);
 			m_sound_type			= sound_type;

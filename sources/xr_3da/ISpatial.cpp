@@ -36,7 +36,7 @@ ISpatial::~ISpatial			(void)
 }
 BOOL	ISpatial::spatial_inside()
 {
-	F32	dr	= -(- spatial.node_radius + spatial.sphere.R);
+	f32	dr	= -(- spatial.node_radius + spatial.sphere.R);
 	if (spatial.sphere.P.x < spatial.node_center.x - dr)	return FALSE;
 	if (spatial.sphere.P.x > spatial.node_center.x + dr)	return FALSE;
 	if (spatial.sphere.P.y < spatial.node_center.y - dr)	return FALSE;
@@ -46,9 +46,9 @@ BOOL	ISpatial::spatial_inside()
 	return TRUE;
 }
 
-BOOL	verify_sp	(ISpatial* sp, Fvector& node_center, F32 node_radius)
+BOOL	verify_sp	(ISpatial* sp, Fvector& node_center, f32 node_radius)
 {
-	F32	dr	= -(- node_radius + sp->spatial.sphere.R);
+	f32	dr	= -(- node_radius + sp->spatial.sphere.R);
 	if (sp->spatial.sphere.P.x < node_center.x - dr)	return FALSE;
 	if (sp->spatial.sphere.P.x > node_center.x + dr)	return FALSE;
 	if (sp->spatial.sphere.P.y < node_center.y - dr)	return FALSE;
@@ -190,10 +190,10 @@ void			ISpatial_DB::_node_destroy(ISpatial_NODE* &P)
 	P							= NULL;
 }
 
-void			ISpatial_DB::_insert	(ISpatial_NODE* N, Fvector& n_C, F32 n_R)
+void			ISpatial_DB::_insert	(ISpatial_NODE* N, Fvector& n_C, f32 n_R)
 {
 	//*** we are assured that object lives inside our node
-	F32	n_vR	= 2*n_R;
+	f32	n_vR	= 2*n_R;
 	VERIFY	(N);
 	VERIFY	(verify_sp(rt_insert_object,n_C,n_vR));
 
@@ -208,8 +208,8 @@ void			ISpatial_DB::_insert	(ISpatial_NODE* N, Fvector& n_C, F32 n_R)
 	}
 
 	// we have to check if it can be putted further down
-	F32	s_R			= rt_insert_object->spatial.sphere.R;	// spatial bounds
-	F32	c_R			= n_R/2;								// children bounds
+	f32	s_R			= rt_insert_object->spatial.sphere.R;	// spatial bounds
+	f32	c_R			= n_R/2;								// children bounds
 	if (s_R<c_R)
 	{
 		// object can be pushed further down - select "octant", calc node position

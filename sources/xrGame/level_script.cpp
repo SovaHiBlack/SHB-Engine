@@ -105,7 +105,7 @@ bool is_wfx_playing	()
 	return			(g_pGamePersistent->Environment().IsWFXPlaying());
 }
 
-void set_time_factor(float time_factor)
+void set_time_factor(f32 time_factor)
 {
 	if (!OnServer())
 		return;
@@ -113,7 +113,7 @@ void set_time_factor(float time_factor)
 	Level().Server->game->SetGameTimeFactor(time_factor);
 }
 
-float get_time_factor()
+f32 get_time_factor()
 {
 	return			(Level().GetGameTimeFactor());
 }
@@ -150,19 +150,19 @@ u32 get_time_minutes()
 	return			mins;
 }
 
-float cover_in_direction(u32 level_vertex_id, const Fvector &direction)
+f32 cover_in_direction(u32 level_vertex_id, const Fvector &direction)
 {
-	float			y,p;
+	f32			y,p;
 	direction.getHP	(y,p);
 	return			(ai().level_graph().cover_in_direction(y,level_vertex_id));
 }
 
-float rain_factor()
+f32 rain_factor()
 {
 	return			(g_pGamePersistent->Environment().CurrentEnv.rain_density);
 }
 
-u32	vertex_in_direction(u32 level_vertex_id, Fvector direction, float max_distance)
+u32	vertex_in_direction(u32 level_vertex_id, Fvector direction, f32 max_distance)
 {
 	direction.normalize_safe();
 	direction.mul	(max_distance);
@@ -401,7 +401,7 @@ void iterate_sounds2				(pcstr prefix, u32 max_count, luabind::object object, lu
 }
 
 #include "actoreffector.h"
-float add_cam_effector(pcstr fn, int id, bool cyclic, pcstr cb_func)
+f32 add_cam_effector(pcstr fn, int id, bool cyclic, pcstr cb_func)
 {
 	CAnimatorCamEffectorScriptCB* e		= xr_new<CAnimatorCamEffectorScriptCB>(cb_func);
 	e->SetType					((ECamEffectorType)id);
@@ -411,7 +411,7 @@ float add_cam_effector(pcstr fn, int id, bool cyclic, pcstr cb_func)
 	return						e->GetAnimatorLength();
 }
 
-float add_cam_effector2(pcstr fn, int id, bool cyclic, pcstr cb_func)
+f32 add_cam_effector2(pcstr fn, int id, bool cyclic, pcstr cb_func)
 {
 	CAnimatorCamEffectorScriptCB* e		= xr_new<CAnimatorCamEffectorScriptCB>(cb_func);
 	e->m_bAbsolutePositioning	= true;
@@ -427,12 +427,12 @@ void remove_cam_effector(int id)
 	Actor()->Cameras().RemoveCamEffector((ECamEffectorType)id );
 }
 		
-float get_snd_volume()
+f32 get_snd_volume()
 {
 	return psSoundVFactor;
 }
 
-void set_snd_volume(float v)
+void set_snd_volume(f32 v)
 {
 	psSoundVFactor = v;
 	clamp(psSoundVFactor,0.0f,1.0f);
@@ -482,17 +482,16 @@ void remove_pp_effector(int id)
 	CPostprocessAnimator*	pp	= smart_cast<CPostprocessAnimator*>(Actor()->Cameras().GetPPEffector((EEffectorPPType)id));
 
 	if(pp) pp->Stop(1.0f);
-
 }
 
-void set_pp_effector_factor(int id, float f, float f_sp)
+void set_pp_effector_factor(int id, f32 f, f32 f_sp)
 {
 	CPostprocessAnimator*	pp	= smart_cast<CPostprocessAnimator*>(Actor()->Cameras().GetPPEffector((EEffectorPPType)id));
 
 	if(pp) pp->SetDesiredFactor(f,f_sp);
 }
 
-void set_pp_effector_factor2(int id, float f)
+void set_pp_effector_factor2(int id, f32 f)
 {
 	CPostprocessAnimator*	pp	= smart_cast<CPostprocessAnimator*>(Actor()->Cameras().GetPPEffector((EEffectorPPType)id));
 

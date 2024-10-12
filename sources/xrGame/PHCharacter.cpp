@@ -135,7 +135,7 @@ void CPHCharacter::GetSavedVelocity(Fvector& vvel)
 	else GetVelocity(vvel);
 }
 
-void CPHCharacter::CutVelocity(float l_limit,float /*a_limit*/)
+void CPHCharacter::CutVelocity(f32 l_limit, f32 /*a_limit*/)
 {
 	dVector3 limitedl,diffl;
 	if(dVectorLimit(dBodyGetLinearVel(m_body),l_limit,limitedl))
@@ -147,4 +147,3 @@ void CPHCharacter::CutVelocity(float l_limit,float /*a_limit*/)
 		dBodySetLinearVel(m_body,limitedl[0],limitedl[1],limitedl[2]);
 	}
 }
-

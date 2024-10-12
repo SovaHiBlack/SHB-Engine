@@ -282,7 +282,7 @@ void	CResourceManager::_DumpMemoryUsage		()
 		xr_multimap<u32,std::pair<u32,shared_str> >::iterator I = mtex.begin	();
 		xr_multimap<u32,std::pair<u32,shared_str> >::iterator E = mtex.end		();
 		for (; I!=E; I++)
-			Msg			("* %4.1f : [%4d] %s", F32(I->first)/1024.f, I->second.first, I->second.second.c_str());
+			Msg			("* %4.1f : [%4d] %s", f32(I->first)/1024.f, I->second.first, I->second.second.c_str());
 	}
 }
 

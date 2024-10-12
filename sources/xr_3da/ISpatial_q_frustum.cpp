@@ -17,10 +17,10 @@ public:
 		F		= (CFrustum*)_F;
 		space	= _space;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, F32 n_R, u32 fmask)
+	void		walk		(ISpatial_NODE* N, Fvector& n_C, f32 n_R, u32 fmask)
 	{
 		// box
-		F32	n_vR	=		2*n_R;
+		f32	n_vR	=		2*n_R;
 		Fbox	BB;		BB.set	(n_C.x-n_vR, n_C.y-n_vR, n_C.z-n_vR, n_C.x+n_vR, n_C.y+n_vR, n_C.z+n_vR);
 		if		(fcvNone==F->testAABB(BB.data(),fmask))	return;
 
@@ -33,7 +33,7 @@ public:
 			if (0==(S->spatial.type&mask))	continue;
 
 			Fvector&		sC		= S->spatial.sphere.P;
-			F32			sR		= S->spatial.sphere.R;
+			f32			sR		= S->spatial.sphere.R;
 			u32				tmask	= fmask;
 			if (fcvNone==F->testSphere(sC,sR,tmask))	continue;
 
@@ -41,7 +41,7 @@ public:
 		}
 
 		// recurse
-		F32	c_R		= n_R/2;
+		f32	c_R		= n_R/2;
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;

@@ -135,14 +135,14 @@ struct PsiEquation
     // For eg, if the routine returns 1 then all angles between psi[0] and psi[1]
     // satisfy the constraints above.
     //
-    //    int clip(float low, float high, AngleIntList &a) const;
+    //    int clip(f32 low, f32 high, AngleIntList &a) const;
 		
     //
     // Calculates the range of psi above and below the specified value y
     //
     // returns the number of times the curve intersects y from 0 to 2  
     //
-    // int partition(float y, AngleIntList &above,  AngleIntList &below) const;
+    // int partition(f32 y, AngleIntList &above,  AngleIntList &below) const;
 
     
 };

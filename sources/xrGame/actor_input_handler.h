@@ -2,7 +2,8 @@
 
 class CActor;
 
-class CActorInputHandler {
+class CActorInputHandler
+{
 public:
 	virtual void	reinit				();
 	
@@ -11,7 +12,7 @@ public:
 	virtual void	release				();
 
 	virtual bool	authorized			(int cmd){return true;}
-	virtual	F32	mouse_scale_factor	(){return 1.f;}
+	virtual	f32		mouse_scale_factor	(){return 1.0f;}
 
 protected:
 	CActor			*m_actor;

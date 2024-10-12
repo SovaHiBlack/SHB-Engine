@@ -1132,7 +1132,9 @@ void	CPHMovementControl::				UpdateObjectBox(CPHCharacter *ach)
 	pObject->BoundingBox().getradius(cbox);
 	const Fvector &pa	=cast_fv(dBodyGetPosition(ach->get_body()));
 	const Fvector &p	=cast_fv(dBodyGetPosition(m_character->get_body()));
-	Fvector2 poses_dir;poses_dir.set(p.x-pa.x,p.z-pa.z);float plane_dist=poses_dir.magnitude(); 
+	Fvector2 poses_dir;
+	poses_dir.set(p.x-pa.x,p.z-pa.z);
+	f32 plane_dist=poses_dir.magnitude();
 	if(plane_dist>2.f) return;
 	if(plane_dist> EPSILON_7)poses_dir.mul(1.f/plane_dist);
 	Fvector2 plane_cam;plane_cam.set(Device.vCameraDirection.x,Device.vCameraDirection.z);plane_cam.normalize_safe();

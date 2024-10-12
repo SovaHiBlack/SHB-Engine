@@ -65,14 +65,13 @@ void CMosquitoBald::Affect(SZoneObjectInfo* O)
 		::Random.randF(-.5f,.5f)); 
 	hit_dir.normalize();
 
-
 	Fvector position_in_bone_space;
 
 	VERIFY(!pGameObject->getDestroy());
 
-	float dist = pGameObject->Position().distance_to(P) - pGameObject->Radius();
-	float power = Power(dist>0.f?dist:0.f);
-	float impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
+	f32 dist = pGameObject->Position().distance_to(P) - pGameObject->Radius();
+	f32 power = Power(dist>0.f?dist:0.f);
+	f32 impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
 
 	//статистика по объекту
 	O->total_damage += power;

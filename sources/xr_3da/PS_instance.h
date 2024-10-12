@@ -30,7 +30,7 @@ public:
 	virtual void			PSI_destroy			();
 	IC BOOL					PSI_alive			()						{	return m_iLifeTime>0;				}
 	IC BOOL					PSI_IsAutomatic		()						{	return m_bAutoRemove;				}
-	IC void					PSI_SetLifeTime		(F32 life_time)		{	m_iLifeTime=iFloor(life_time*1000);	}
+	IC void					PSI_SetLifeTime		(f32 life_time)		{	m_iLifeTime=iFloor(life_time*1000);	}
 
 	virtual void			Play				()				= 0;
 	virtual BOOL			Locked				()				{ return FALSE; }

@@ -15,9 +15,9 @@ protected:
 
 public:
 	BOOL			bClampYaw, bClampPitch, bClampRoll;
-	F32				yaw;
-	F32				pitch;
-	F32				roll;
+	f32				yaw;
+	f32				pitch;
+	f32				roll;
 
 	enum{
 		flRelativeLink		= (1<<0),
@@ -33,10 +33,11 @@ public:
 	Fvector			vPosition;
 	Fvector			vDirection;
 	Fvector			vNormal;
-	F32				f_fov;
-	F32				f_aspect;
+	f32				f_fov;
+	f32				f_aspect;
 
 	int				tag;
+
 public:
 					CCameraBase		( CObject* p, u32 flags );
 	virtual			~CCameraBase	( );
@@ -44,16 +45,16 @@ public:
 	void			SetParent		( CObject* p )								{parent=p; VERIFY(p);}
 	virtual	void	OnActivate		( CCameraBase* old_cam )					{;}
 	virtual	void	OnDeactivate	( )											{;}
-	virtual void	Move			( int cmd, F32 val=0.0f, F32 factor=1.0f)	{;}
+	virtual void	Move			( int cmd, f32 val=0.0f, f32 factor=1.0f)	{;}
 	virtual void	Update			( Fvector& point, Fvector& noise_angle )	{;}
 	virtual void	Get				( Fvector& P, Fvector& D, Fvector& N )		{P.set(vPosition);D.set(vDirection);N.set(vNormal);}
 	virtual void	Set				( const Fvector& P, const Fvector& D, const Fvector& N ){vPosition.set(P);vDirection.set(D);vNormal.set(N);}
-	virtual void	Set				(F32 Y, F32 P, F32 R )				{yaw=Y;pitch=P;roll=R;}
+	virtual void	Set				(f32 Y, f32 P, f32 R )				{yaw=Y;pitch=P;roll=R;}
 	
-	virtual F32	GetWorldYaw		( )	{ return 0.0f; };
-	virtual F32	GetWorldPitch	( )	{ return 0.0f; };
+	virtual f32	GetWorldYaw		( )	{ return 0.0f; };
+	virtual f32	GetWorldPitch	( )	{ return 0.0f; };
 
-	virtual F32	CheckLimYaw		( );
-	virtual F32	CheckLimPitch	( );
-	virtual F32	CheckLimRoll	( );
+	virtual f32	CheckLimYaw		( );
+	virtual f32	CheckLimPitch	( );
+	virtual f32	CheckLimRoll	( );
 };

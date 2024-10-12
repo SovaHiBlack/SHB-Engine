@@ -39,7 +39,7 @@ void interactive_motion::play(CPhysicsShell *s)
 	state_start( s );
 }
 
-float depth = 0;
+f32 depth = 0;
 void  get_depth(bool& do_colide,bool bo1,dContact& c,SGameMtl * /*material_1*/,SGameMtl * /*material_2*/)
 {
 	save_max(depth, c.geom.depth);

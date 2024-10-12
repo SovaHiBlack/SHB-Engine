@@ -211,8 +211,8 @@ void CRenderDevice::Run			()
 				// Precache
 				if (dwPrecacheFrame)
 				{
-					F32 factor					= F32(dwPrecacheFrame)/ F32(dwPrecacheTotal);
-					F32 angle						= PI_MUL_2 * factor;
+					f32 factor					= f32(dwPrecacheFrame)/ f32(dwPrecacheTotal);
+					f32 angle						= PI_MUL_2 * factor;
 					vCameraDirection.set			(_sin(angle),0,_cos(angle));	vCameraDirection.normalize	();
 					vCameraTop.set					(0,1,0);
 					vCameraRight.crossproduct		(vCameraTop,vCameraDirection);
@@ -290,14 +290,14 @@ void CRenderDevice::FrameMove()
 		dwTimeGlobal	+=	20;
 	} else {
 		// Timer
-		F32 fPreviousFrameTime = Timer.GetElapsed_sec(); Timer.Start();	// previous frame
+		f32 fPreviousFrameTime = Timer.GetElapsed_sec(); Timer.Start();	// previous frame
 		fTimeDelta = 0.1f * fTimeDelta + 0.9f*fPreviousFrameTime;			// smooth random system activity - worst case ~7% error
 		if (fTimeDelta>.1f) fTimeDelta=.1f;									// limit to 15fps minimum
 
 		if(Paused())		fTimeDelta = 0.0f;
 
 //		u64	qTime		= TimerGlobal.GetElapsed_clk();
-		fTimeGlobal		= TimerGlobal.GetElapsed_sec(); //F32(qTime)*CPU::cycles2seconds;
+		fTimeGlobal		= TimerGlobal.GetElapsed_sec(); //f32(qTime)*CPU::cycles2seconds;
 		u32	_old_global	= dwTimeGlobal;
 		dwTimeGlobal	= TimerGlobal.GetElapsed_ms	();	//u32((qTime*u64(1000))/CPU::cycles_per_second);
 		dwTimeDelta		= dwTimeGlobal-_old_global;

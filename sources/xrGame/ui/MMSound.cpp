@@ -52,7 +52,7 @@ void CMMSound::whell_Click(){
 		m_whell_click.play(NULL, sm_2D);
 }
 
-void CMMSound::whell_UpdateMoving(float frequency){
+void CMMSound::whell_UpdateMoving(f32 frequency){
 	m_whell.set_frequency(frequency);
 }
 

@@ -119,10 +119,10 @@ public:																																				//
 	virtual void						setDensityMC							(f32 M,const Fvector& mass_center);											//aux
 	virtual void						setInertia								(const dMass& M);																//aux
 	virtual void						addInertia								(const dMass& M);
-	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center,float mass,CPHFracture* fracture=NULL);//aux
+	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture=NULL);//aux
 	virtual	void						set_BoxMass								(const Fobb& box, f32 mass);													//aux
 	virtual void						setMass									(f32 M);																		//aux
-	virtual float						getMass									(){return m_mass.mass;}															//aux
+	virtual f32						getMass									(){return m_mass.mass;}															//aux
 	virtual	dMass*						getMassTensor							();	//aux
 			void						ReAdjustMassPositions					(const Fmatrix &shift_pivot, f32 density);										//aux
 			void						ResetMass								(f32 density);																//aux
@@ -130,8 +130,7 @@ public:																																				//
 ///////////////////////////////////////////////////PushOut///////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-private:																																			//
-		
+
 public:																																				//
 //////////////////////////////////////////////Disable/////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

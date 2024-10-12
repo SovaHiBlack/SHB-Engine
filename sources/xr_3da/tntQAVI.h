@@ -71,8 +71,8 @@ protected:
 	BITMAPINFOHEADER	m_biOutFormat;
 	BITMAPINFOHEADER	m_biInFormat;
 
-	F32				m_fRate;		// стандартная скорость, fps
-	F32				m_fCurrentRate;	// текущая скорость, fps
+	f32				m_fRate;		// стандартная скорость, fps
+	f32				m_fCurrentRate;	// текущая скорость, fps
 
 	DWORD				m_dwFrameTotal;
 	DWORD				m_dwFrameCurrent;

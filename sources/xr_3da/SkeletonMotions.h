@@ -11,15 +11,15 @@ typedef void	( * PlayCallback)		(CBlend*		P);
 
 const	u32		MAX_PARTS			=	4;
 const	u32		MAX_CHANNELS		=	4;
-const	F32		SAMPLE_FPS			=	30.f;
-const	F32		SAMPLE_SPF			=	(1.f/SAMPLE_FPS);
-const	F32		KEY_Quant			=	32767.f;
-const	F32		KEY_QuantI			=	1.f/KEY_Quant;
+const	f32		SAMPLE_FPS			=	30.f;
+const	f32		SAMPLE_SPF			=	(1.f/SAMPLE_FPS);
+const	f32		KEY_Quant			=	32767.f;
+const	f32		KEY_QuantI			=	1.f/KEY_Quant;
 
 //*** Key frame definition ************************************************************************
 enum{
-    flTKeyPresent 	= (1<<0),
-    flRKeyAbsent 	= (1<<1),
+	flTKeyPresent 	= (1<<0),
+	flRKeyAbsent 	= (1<<1),
 };
 #pragma pack(push,2)
 struct ENGINE_API CKey
@@ -41,23 +41,23 @@ struct ENGINE_API CKeyQT
 class ENGINE_API		CMotion
 {
 	struct{
-    	u32				_flags	: 8;
+		u32				_flags	: 8;
 		u32				_count 	: 24;
-    };
+	};
 public:
-    ref_smem<CKeyQR>	_keysR;
-    ref_smem<CKeyQT>	_keysT;
+	ref_smem<CKeyQR>	_keysR;
+	ref_smem<CKeyQT>	_keysT;
 	Fvector				_initT;
-    Fvector				_sizeT;
+	Fvector				_sizeT;
 public:    
-    void				set_flags			(u8 val)			{_flags=val;}
-    void				set_flag			(u8 mask, u8 val)	{if (val)_flags|=mask; else _flags&=~mask;}
-    BOOL				test_flag			(u8 mask) const		{return BOOL(_flags&mask);}
+	void				set_flags			(u8 val)			{_flags=val;}
+	void				set_flag			(u8 mask, u8 val)	{if (val)_flags|=mask; else _flags&=~mask;}
+	BOOL				test_flag			(u8 mask) const		{return BOOL(_flags&mask);}
 
-    void				set_count			(u32 cnt){VERIFY(cnt); _count=cnt;}
-    u32					get_count			() const {return (u32(_count)&0x00FFFFFF);}
+	void				set_count			(u32 cnt){VERIFY(cnt); _count=cnt;}
+	u32					get_count			() const {return (u32(_count)&0x00FFFFFF);}
 
-	F32				GetLength			(){ return F32(_count)*SAMPLE_SPF; }
+	f32				GetLength			(){ return f32(_count)*SAMPLE_SPF; }
 
 	u32					mem_usage			(){ 
 		u32 sz			= sizeof(*this);
@@ -70,7 +70,7 @@ public:
 class ENGINE_API motion_marks
 {
 public:
-	typedef					std::pair<  F32, F32 > 				interval;
+	typedef					std::pair<  f32, f32 > 				interval;
 
 private:
 	typedef xr_vector< interval >									STORAGE;
@@ -82,33 +82,33 @@ public:
 	shared_str		name;
 	void			Load			(IReader*);
 
-	bool			pick_mark		(const F32& t) const;
+	bool			pick_mark		(const f32& t) const;
 };
 
-const F32	fQuantizerRangeExt	= 1.5f;
+const f32	fQuantizerRangeExt	= 1.5f;
 class ENGINE_API		CMotionDef
 {
 public:
-    u16						bone_or_part;
+	u16						bone_or_part;
 	u16						motion;
 	u16						speed;				// quantized: 0..10
 	u16						power;				// quantized: 0..10
 	u16						accrue;				// quantized: 0..10
 	u16						falloff;			// quantized: 0..10
-    u16						flags;
+	u16						flags;
 	xr_vector<motion_marks>	marks;
 
-	IC F32				Dequantize			(u16 V)		{	return  F32(V)/655.35f; }
-	IC u16					Quantize			(F32 V)	{	s32		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
+	IC f32				Dequantize			(u16 V)		{	return  f32(V)/655.35f; }
+	IC u16					Quantize			(f32 V)	{	s32		t = iFloor(V*655.35f); clamp(t,0,65535); return u16(t); }
 
 	void					Load				(IReader* MP, u32 fl, u16 vers);
 	u32						mem_usage			(){ return sizeof(*this);}
 
-    ICF F32				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
-    ICF F32				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
-    ICF F32				Speed				(){return Dequantize(speed);}
-    ICF F32				Power				(){return Dequantize(power);}
-    bool					StopAtEnd			();
+	ICF f32				Accrue				(){return fQuantizerRangeExt*Dequantize(accrue);}
+	ICF f32				Falloff				(){return fQuantizerRangeExt*Dequantize(falloff);}
+	ICF f32				Speed				(){return Dequantize(speed);}
+	ICF f32				Power				(){return Dequantize(power);}
+	bool					StopAtEnd			();
 };
 struct accel_str_pred : public std::binary_function<shared_str, shared_str, bool>	{	
 	IC bool operator()(const shared_str& x, const shared_str& y) const	{	return xr_strcmp(x,y)<0;	}
@@ -148,17 +148,16 @@ struct ENGINE_API		motions_value
 	CPartition			m_partition;		// partition
 	u32					m_dwReference;
 	BoneMotionMap		m_motions;
-    MotionDefVec		m_mdefs;
+	MotionDefVec		m_mdefs;
 
 	shared_str			m_id;
-
 
 	BOOL				load				(pcstr N, IReader *data, vecBones* bones);
 	MotionVec*			bone_motions		(shared_str bone_name);
 
 	u32					mem_usage			(){ 
 		u32 sz			=	sizeof(*this)+m_motion_map.size()*6+m_partition.mem_usage();
-        for (MotionDefVecIt it=m_mdefs.begin(); it!=m_mdefs.end(); it++)
+		for (MotionDefVecIt it=m_mdefs.begin(); it!=m_mdefs.end(); it++)
 			sz			+=	it->mem_usage();
 		for (BoneMotionMapIt bm_it=m_motions.begin(); bm_it!=m_motions.end(); bm_it++)
 			for (MotionVecIt m_it=bm_it->second.begin(); m_it!=bm_it->second.end(); m_it++)
@@ -208,9 +207,8 @@ public:
 	accel_map*			cycle			()							{	VERIFY(p_); return &p_->m_cycle;				}
 	accel_map*			fx				()							{	VERIFY(p_); return &p_->m_fx;					}
 	CPartition*			partition		()							{	VERIFY(p_); return &p_->m_partition;			}
-    MotionDefVec*		motion_defs		()							{	VERIFY(p_); return &p_->m_mdefs;				}
-    CMotionDef*			motion_def		(u16 idx)					{	VERIFY(p_); return &p_->m_mdefs[idx];			}
+	MotionDefVec*		motion_defs		()							{	VERIFY(p_); return &p_->m_mdefs;				}
+	CMotionDef*			motion_def		(u16 idx)					{	VERIFY(p_); return &p_->m_mdefs[idx];			}
 
 	const shared_str	&id				() const					{	VERIFY(p_); return p_->m_id;					}
-
 };

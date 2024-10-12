@@ -54,8 +54,8 @@ IC	void CLevelPathManager::setup			(
 	);
 	m_distance_xz			= graph->header().cell_size();
 	m_sqr_distance_xz		= _sqr(graph->header().cell_size());
-//		square_size_y			= _sqr((float)(graph->header().factor_y()/32767.0));
-//		size_y					= (float)(graph->header().factor_y()/32767.0);
+//		square_size_y			= _sqr((f32)(graph->header().factor_y()/32767.0));
+//		size_y					= (f32)(graph->header().factor_y()/32767.0);
 }
 
 TEMPLATE_SPECIALIZATION
@@ -63,11 +63,11 @@ IC	void CLevelPathManager::init			()
 {
 	const _Graph::CVertex	&tNode1	= *graph->vertex(start_node_index);
 	graph->unpack_xz		(tNode1,x2,z2);
-//		y2						= (float)(tNode1.position().y());
+//		y2						= (f32)(tNode1.position().y());
 	
 	const _Graph::CVertex	&tNode2	= *graph->vertex(goal_node_index);
 	graph->unpack_xz		(tNode2,x3,z3);
-//		y3						= (float)(tNode2.position().y());
+//		y3						= (f32)(tNode2.position().y());
 	x1						= x2;
 //		y1						= y2;
 	z1						= z2;
@@ -80,9 +80,9 @@ IC	_dist_type CLevelPathManager::evaluate	(const _index_type &node_index1, const
 	
 //		const _Graph::CVertex	&tNode1 = *graph->vertex(node_index2);
 
-//		y2						= (float)(tNode1.position().y());
+//		y2						= (f32)(tNode1.position().y());
 
-//		return					(_sqrt(square_size_y*(float)_sqr(y2 - y1) + m_sqr_distance_xz));
+//		return					(_sqrt(square_size_y*(f32)_sqr(y2 - y1) + m_sqr_distance_xz));
 	return					(m_distance_xz);// + (y2 - y1)*size_y);
 }
 
@@ -90,7 +90,7 @@ TEMPLATE_SPECIALIZATION
 IC	_dist_type CLevelPathManager::estimate	(const _index_type &node_index) const
 {
 	VERIFY					(graph);
-//		return					(_sqrt((float)(m_sqr_distance_xz*float(_sqr(x3 - x1) + _sqr(z3 - z1)) + square_size_y*(float)_sqr(y3 - y1))));
+//		return					(_sqrt((f32)(m_sqr_distance_xz*f32(_sqr(x3 - x1) + _sqr(z3 - z1)) + square_size_y*(f32)_sqr(y3 - y1))));
 	return					(2*m_distance_xz*_dist_type(_abs(x3 - x1) + _abs(z3 - z1)));// + _abs(y3 - y1)*size_y);
 //		int						x = _abs(x3 - x1);
 //		int						z = _abs(z3 - z1);
@@ -105,7 +105,7 @@ IC	bool CLevelPathManager::is_goal_reached	(const _index_type &node_index)
 	
 	best_node				= graph->vertex(node_index);
 	graph->unpack_xz		(best_node,x1,z1);
-//		y1						= (float)(best_node->position().y());
+//		y1						= (f32)(best_node->position().y());
 
 	return					(false);
 }

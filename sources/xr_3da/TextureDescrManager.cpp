@@ -4,12 +4,12 @@
 #include "ETextureParams.h"
 
 // eye-params
-F32					r__dtex_range	= 50;
+f32					r__dtex_range	= 50;
 class cl_dt_scaler		: public R_constant_setup {
 public:
-	F32				scale;
+	f32				scale;
 
-	cl_dt_scaler		(F32 s) : scale(s)	{};
+	cl_dt_scaler		(f32 s) : scale(s)	{};
 	virtual void setup	(R_constant* C)
 	{
 		RCache.set_c	(C,scale,scale,scale,1/r__dtex_range);
@@ -48,7 +48,7 @@ void CTextureDescrMngr::LoadLTX()
 				desc.m_assoc			= xr_new<texture_assoc>();
 
 				string_path				T;
-				F32					s;
+				f32					s;
 
 				int res = sscanf					(*item.second,"%[^,],%f",T,&s);
 				R_ASSERT(res==2);
@@ -100,7 +100,6 @@ void CTextureDescrMngr::LoadTHM()
 	string_path				fn;
 	for(;It!=It_e;++It)
 	{
-		
 		FS.update_path		(fn,"$game_textures$", (*It).name.c_str());
 		IReader* F			= FS.r_open(fn);
 		strcpy_s				(fn,(*It).name.c_str());
@@ -191,10 +190,11 @@ shared_str CTextureDescrMngr::GetBumpName(const shared_str& tex_name) const
 			return I->second.m_spec->m_bump_name;
 		}
 	}
+
 	return "";
 }
 
-F32 CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
+f32 CTextureDescrMngr::GetMaterial(const shared_str& tex_name) const
 {
 	map_TD::const_iterator I = m_texture_details.find	(tex_name);
 	if (I!=m_texture_details.end())
@@ -234,5 +234,6 @@ BOOL CTextureDescrMngr::GetDetailTexture(const shared_str& tex_name, pcstr& res,
 			return TRUE;
 		}
 	}
+
 	return FALSE;
 }

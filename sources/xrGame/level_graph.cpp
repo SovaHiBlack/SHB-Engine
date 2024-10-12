@@ -48,11 +48,11 @@ u32	CLevelGraph::vertex		(const Fvector &position) const
 {
 	CLevelGraph::CPosition	_node_position;
 	vertex_position			(_node_position,position);
-	float					min_dist = flt_max;
+	f32					min_dist = flt_max;
 	u32						selected;
 	set_invalid_vertex		(selected);
 	for (u32 i=0; i<header().vertex_count(); ++i) {
-		float				dist = distance(i,position);
+		f32				dist = distance(i,position);
 		if (dist < min_dist) {
 			min_dist		= dist;
 			selected		= i;
@@ -87,12 +87,12 @@ u32 CLevelGraph::vertex		(u32 current_node_id, const Fvector& position) const
 			// so, there is a node which corresponds with x and z to the position
 			bool				ok = true;
 			if (valid_vertex_id(current_node_id)) {
-				float				y0 = vertex_plane_y(current_node_id,position.x,position.z);
-				float				y1 = vertex_plane_y(_vertex_id,position.x,position.z);
+				f32				y0 = vertex_plane_y(current_node_id,position.x,position.z);
+				f32				y1 = vertex_plane_y(_vertex_id,position.x,position.z);
 				bool				over0 = position.y > y0;
 				bool				over1 = position.y > y1;
-				float				y_dist0 = position.y - y0;
-				float				y_dist1 = position.y - y1;
+				f32				y_dist0 = position.y - y0;
+				f32				y_dist1 = position.y - y1;
 				if (over0) {
 					if (over1) {
 						if (y_dist1 - y_dist0 > 1.f)
@@ -141,7 +141,7 @@ u32 CLevelGraph::vertex		(u32 current_node_id, const Fvector& position) const
 	u32					best_vertex_id = current_node_id;
 	contour				(_contour,current_node_id);
 	nearest				(point,position,_contour);
-	float				best_distance_sqr = position.distance_to_sqr(point);
+	f32				best_distance_sqr = position.distance_to_sqr(point);
 	const_iterator		i,e;
 	begin				(current_node_id,i,e);
 	for ( ; i != e; ++i) {
@@ -151,7 +151,7 @@ u32 CLevelGraph::vertex		(u32 current_node_id, const Fvector& position) const
 
 		contour			(_contour,level_vertex_id);
 		nearest			(point,position,_contour);
-		float			distance_sqr = position.distance_to_sqr(point);
+		f32			distance_sqr = position.distance_to_sqr(point);
 		if (best_distance_sqr > distance_sqr) {
 			best_distance_sqr	= distance_sqr;
 			best_vertex_id		= level_vertex_id;
@@ -175,13 +175,13 @@ u32	CLevelGraph::vertex_id				(const Fvector &position) const
 		return			(u32(-1));
 
 	u32					best_vertex_id = u32(I - B);
-	float				y = vertex_plane_y(best_vertex_id,position.x,position.z);
+	f32				y = vertex_plane_y(best_vertex_id,position.x,position.z);
 	for (++I; I != E; ++I) {
 		if ((*I).position().xz() != _vertex_position.xz())
 			break;
 
 		u32				new_vertex_id = u32(I - B);
-		float			_y = vertex_plane_y(new_vertex_id,position.x,position.z);
+		f32			_y = vertex_plane_y(new_vertex_id,position.x,position.z);
 		if (y <= position.y) {
 			// so, current node is under the specified position
 			if (_y <= position.y) {

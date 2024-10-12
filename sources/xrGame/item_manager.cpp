@@ -53,7 +53,7 @@ bool CItemManager::useful			(const CGameObject *object) const
 	return					(true);
 }
 
-float CItemManager::do_evaluate		(const CGameObject *object) const
+f32 CItemManager::do_evaluate		(const CGameObject *object) const
 {
 	VERIFY3					(
 		m_object->movement().restrictions().accessible(
@@ -65,12 +65,12 @@ float CItemManager::do_evaluate		(const CGameObject *object) const
 	return					(m_object->evaluate(this,object));
 }
 
-float CItemManager::evaluate		(const CGameObject *object) const
+f32 CItemManager::evaluate		(const CGameObject *object) const
 {
 	const CInventoryItem	*inventory_item = smart_cast<const CInventoryItem*>(object);
 	VERIFY					(inventory_item);
 	VERIFY					(inventory_item->useful_for_NPC());
-	return					(1000000.f - (float)inventory_item->Cost());
+	return					(1000000.f - (f32)inventory_item->Cost());
 }
 
 void CItemManager::update			()

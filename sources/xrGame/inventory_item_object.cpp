@@ -207,7 +207,7 @@ void CInventoryItemObject::OnRender			()
 }
 #endif
 
-void CInventoryItemObject::modify_holder_params	(float &range, float &fov) const
+void CInventoryItemObject::modify_holder_params	(f32& range, f32& fov) const
 {
 	CInventoryItem::modify_holder_params		(range,fov);
 }

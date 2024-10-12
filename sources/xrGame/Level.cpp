@@ -56,7 +56,7 @@
 extern BOOL	g_bDebugDumpPhysicsStep;
 
 CPHWorld	*ph_world			= 0;
-float		g_cl_lvInterp		= 0;
+f32		g_cl_lvInterp		= 0;
 u32			lvInterpSteps		= 0;
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -451,12 +451,12 @@ void CLevel::OnFrame	()
 	//-----------------------------------------------------
 	if (pStatGraphR)
 	{	
-		static	float fRPC_Mult = 10.0f;
-		static	float fRPS_Mult = 1.0f;
+		static	f32 fRPC_Mult = 10.0f;
+		static	f32 fRPS_Mult = 1.0f;
 
-		pStatGraphR->AppendItem(float(m_dwRPC)*fRPC_Mult, 0xffff0000, 1);
-		pStatGraphR->AppendItem(float(m_dwRPS)*fRPS_Mult, 0xff00ff00, 0);
-	};
+		pStatGraphR->AppendItem(f32(m_dwRPC)*fRPC_Mult, 0xffff0000, 1);
+		pStatGraphR->AppendItem(f32(m_dwRPS)*fRPS_Mult, 0xff00ff00, 0);
+	}
 }
 
 int		psLUA_GCSTEP					= 10			;
@@ -597,7 +597,7 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 		// int id = atoi((pstr)P1);
 		// Environment->Music_Play(id);
 	} else if (E==eEnvironment) {
-		// int id=0; float s=1;
+		// int id=0; f32 s=1;
 		// sscanf((pstr)P1,"%d,%f",&id,&s);
 		// Environment->set_EnvMode(id,s);
 	} else return;
@@ -722,13 +722,13 @@ void CLevel::make_NetCorrectionPrediction	()
 u32			CLevel::GetInterpolationSteps	()
 {
 	return lvInterpSteps;
-};
+}
 
 void		CLevel::UpdateDeltaUpd	( u32 LastTime )
 {
 	u32 CurrentDelta = LastTime - m_dwLastNetUpdateTime;
 	if (CurrentDelta < m_dwDeltaUpdate) 
-		CurrentDelta = iFloor(float(m_dwDeltaUpdate * 10 + CurrentDelta) / 11);
+		CurrentDelta = iFloor(f32(m_dwDeltaUpdate * 10 + CurrentDelta) / 11);
 
 	m_dwLastNetUpdateTime = LastTime;
 	m_dwDeltaUpdate = CurrentDelta;
@@ -739,24 +739,24 @@ void		CLevel::UpdateDeltaUpd	( u32 LastTime )
 		{
 			lvInterpSteps = iCeil(g_cl_lvInterp / fixed_step);
 		}
-};
+}
 
 void		CLevel::ReculcInterpolationSteps ()
 {
-	lvInterpSteps			= iFloor(float(m_dwDeltaUpdate) / (fixed_step*1000));
+	lvInterpSteps			= iFloor(f32(m_dwDeltaUpdate) / (fixed_step*1000));
 	if (lvInterpSteps > 60) lvInterpSteps = 60;
 	if (lvInterpSteps < 3)	lvInterpSteps = 3;
-};
+}
 
 bool		CLevel::InterpolationDisabled	()
 {
 	return g_cl_lvInterp < 0; 
-};
+}
 
 void 		CLevel::PhisStepsCallback		( u32 Time0, u32 Time1 )
 {
 	return;
-};
+}
 
 void				CLevel::SetNumCrSteps		( u32 NumSteps )
 {
@@ -767,7 +767,7 @@ void				CLevel::SetNumCrSteps		( u32 NumSteps )
 	{
 		VERIFY(0);
 	}
-};
+}
 
 
 ALife::_TIME_ID CLevel::GetGameTime()
@@ -791,9 +791,9 @@ u8 CLevel::GetDayTime()
 	return	u8(hours); 
 }
 
-float CLevel::GetGameDayTimeSec()
+f32 CLevel::GetGameDayTimeSec()
 {
-	return	(float(s64(GetGameTime() % (24*60*60*1000)))/1000.f);
+	return	(f32(s64(GetGameTime() % (24*60*60*1000)))/1000.f);
 }
 
 u32 CLevel::GetGameDayTimeMS()
@@ -801,9 +801,9 @@ u32 CLevel::GetGameDayTimeMS()
 	return	(u32(s64(GetGameTime() % (24*60*60*1000))));
 }
 
-float CLevel::GetEnvironmentGameDayTimeSec()
+f32 CLevel::GetEnvironmentGameDayTimeSec()
 {
-	return	(float(s64(GetEnvironmentGameTime() % (24*60*60*1000)))/1000.f);
+	return	(f32(s64(GetEnvironmentGameTime() % (24*60*60*1000)))/1000.f);
 }
 
 void CLevel::GetGameDateTime	(u32& year, u32& month, u32& day, u32& hours, u32& mins, u32& secs, u32& milisecs)
@@ -812,24 +812,24 @@ void CLevel::GetGameDateTime	(u32& year, u32& month, u32& day, u32& hours, u32& 
 }
 
 
-float CLevel::GetGameTimeFactor()
+f32 CLevel::GetGameTimeFactor()
 {
 	return			(game->GetGameTimeFactor());
 //	return			(Server->game->GetGameTimeFactor());
 }
 
-void CLevel::SetGameTimeFactor(const float fTimeFactor)
+void CLevel::SetGameTimeFactor(const f32 fTimeFactor)
 {
 	game->SetGameTimeFactor(fTimeFactor);
 //	Server->game->SetGameTimeFactor(fTimeFactor);
 }
 
-void CLevel::SetGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor)
+void CLevel::SetGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTimeFactor)
 {
 	game->SetGameTimeFactor(GameTime, fTimeFactor);
 //	Server->game->SetGameTimeFactor(fTimeFactor);
 }
-void CLevel::SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const float fTimeFactor)
+void CLevel::SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTimeFactor)
 {
 	game->SetEnvironmentGameTimeFactor(GameTime, fTimeFactor);
 //	Server->game->SetGameTimeFactor(fTimeFactor);
@@ -846,10 +846,9 @@ bool CLevel::IsServer ()
 	if (IsDemoPlay())
 	{
 		return IsServerDemo();
-	};	
+	}	
 	if (!Server) return false;
 	return (Server->client_Count() != 0);
-
 }
 
 bool CLevel::IsClient ()

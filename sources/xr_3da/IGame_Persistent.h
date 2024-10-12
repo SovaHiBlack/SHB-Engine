@@ -79,7 +79,7 @@ public:
 
 	virtual void					RegisterModel		(IRender_Visual* V) = 0;
 
-	virtual	F32					MtlTransparent		(u32 mtl_idx) = 0;
+	virtual	f32					MtlTransparent		(u32 mtl_idx) = 0;
 
 	IGame_Persistent				();
 	virtual ~IGame_Persistent		();

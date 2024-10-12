@@ -26,7 +26,7 @@ u32	 	dbg_saved_tries_for_active_objects		=0;
 u32	 	dbg_total_saved_tries					=0;
 u32	 	dbg_reused_queries_per_step				=0;
 u32	 	dbg_new_queries_per_step				=0;
-float	dbg_vel_collid_damage_to_display		=7.f;
+f32	dbg_vel_collid_damage_to_display		=7.f;
 #ifdef DRAW_CONTACTS
 CONTACT_VECTOR Contacts0;
 CONTACT_VECTOR Contacts1;
@@ -106,11 +106,11 @@ void DBG_DrawTri(CDB::RESULT* T,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawTri>(T,c));
 }
+
 void DBG_DrawTri(CDB::TRI* T,const Fvector* V_verts,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawTri>(T,V_verts,c));
 }
-
 
 struct SPHDBGDrawLine : public SPHDBGDrawAbsract
 {
@@ -129,7 +129,8 @@ void DBG_DrawLine ( const Fvector& p0, const Fvector& p1, u32 c )
 {
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( p0, p1, c ) );
 }
-void DBG_DrawMatrix( const Fmatrix &m, float size, u8 a/* = 255*/ )
+
+void DBG_DrawMatrix( const Fmatrix &m, f32 size, u8 a/* = 255*/ )
 {
 	Fvector to;to.add( m.c,Fvector( ).mul( m.i, size ) );
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( m.c, to, D3DCOLOR_XRGB(a, 0, 0 ) ) );
@@ -140,33 +141,32 @@ void DBG_DrawMatrix( const Fmatrix &m, float size, u8 a/* = 255*/ )
 }
 
 template<int>
-IC	void rotate(Fmatrix &m, float ang);
+IC	void rotate(Fmatrix &m, f32 ang);
 
 template<>
-IC	void rotate<0>(Fmatrix &m, float ang)
+IC	void rotate<0>(Fmatrix &m, f32 ang)
 {
 	m.rotateX( ang );
 }
 template<>
-IC	void rotate<1>(Fmatrix &m, float ang)
+IC	void rotate<1>(Fmatrix &m, f32 ang)
 {
 	m.rotateY( ang );
 }
 
 template<>
-IC	void rotate<2>(Fmatrix &m, float ang)
+IC	void rotate<2>(Fmatrix &m, f32 ang)
 {
 	m.rotateZ( ang );
 }
 
 template<int ax>
-void DBG_DrawRotation( float ang0, float ang1, const Fmatrix& m, const Fvector &l, float size, u32 ac, bool solid, u32 tessel)
+void DBG_DrawRotation(f32 ang0, f32 ang1, const Fmatrix& m, const Fvector &l, f32 size, u32 ac, bool solid, u32 tessel)
 {
 	Fvector from; from.set( m.c );
 	Fvector ln; ln.set( l ); ln.mul( size );
 
-	
-	const float ftess = (float)tessel;
+	const f32 ftess = (f32)tessel;
 	Fmatrix mm; rotate<ax>( mm, ang0 );
 	mm.mulA_43( m );
 	Fmatrix r;
@@ -183,17 +183,17 @@ void DBG_DrawRotation( float ang0, float ang1, const Fmatrix& m, const Fvector &
 	}
 }
 
-void	DBG_DrawRotationX( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid, u32 tessel )
+void	DBG_DrawRotationX( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel )
 {
 	DBG_DrawRotation<0>( ang0 , ang1, m, Fvector().set(0,0,1) ,size, ac, solid, tessel );
 }
 
-void	DBG_DrawRotationY( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid, u32 tessel  )
+void	DBG_DrawRotationY( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel  )
 {
 	DBG_DrawRotation<1>( ang0 , ang1, m, Fvector().set(1,0,0),size, ac, solid, tessel );
 }
 
-void	DBG_DrawRotationZ( const Fmatrix &m, float ang0, float ang1, float size, u32 ac, bool solid, u32 tessel  )
+void	DBG_DrawRotationZ( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel  )
 {
 	DBG_DrawRotation<2>( ang0 , ang1, m, Fvector().set(0,1,0), size, ac, solid, tessel );
 }
@@ -229,14 +229,16 @@ struct SPHDBGDrawOBB: public SPHDBGDrawAbsract
 		Level().debug_renderer().draw_obb(m,h,c);
 	}
 };
+
 void DBG_DrawOBB(const Fmatrix& m,const Fvector h,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawOBB>(m,h,c));
-};
+}
+
 struct SPHDBGDrawPoint :public SPHDBGDrawAbsract
 {
-	Fvector p;float size;u32 c;
-	SPHDBGDrawPoint(const Fvector ap,float s,u32 ac)
+	Fvector p; f32 size;u32 c;
+	SPHDBGDrawPoint(const Fvector ap, f32 s,u32 ac)
 	{
 		p.set(ap),size=s;c=ac;
 	}
@@ -247,7 +249,8 @@ struct SPHDBGDrawPoint :public SPHDBGDrawAbsract
 		Level().debug_renderer().draw_ellipse(m,c);
 	}
 };
-void DBG_DrawPoint(const Fvector& p,float size,u32 c)
+
+void DBG_DrawPoint(const Fvector& p, f32 size,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawPoint>(p,size,c));
 }
@@ -268,6 +271,7 @@ bool	 rendered;
 		rendered=true;
 	}
 };
+
 void _cdecl DBG_OutText(pcstr s,...)
 {
 	string64 t;
@@ -282,6 +286,7 @@ void DBG_OpenCashedDraw()
 {
 	dbg_ph_draw_mode=dmCashed;
 }
+
 void DBG_ClosedCashedDraw(u32 remove_time)
 {
 	dbg_ph_draw_mode			=dmSecondaryThread			;
@@ -293,6 +298,7 @@ IC void push( PHABS_DBG_V &v, SPHDBGDrawAbsract* a )
 	if( v.size() < 500 )
 				v.push_back(a);
 }
+
 void DBG_DrawPHAbstruct(SPHDBGDrawAbsract* a)
 {
 	if(dbg_ph_draw_mode!=dmCashed)
@@ -341,6 +347,7 @@ void DBG_PHAbstruactStartFrame(bool dr_frame)
 		dbg_draw_abstruct1.clear();
 	}
 }
+
 void capped_cylinder_ray_collision_test();
 void DBG_PHAbstructRender()
 {
@@ -408,6 +415,7 @@ void DBG_DrawPHObject(CPHObject* obj)
 		}
 	}
 }
+
 void DBG_DrawContact(dContact& c)
 {
 #ifdef DRAW_CONTACTS
@@ -431,6 +439,7 @@ void DBG_DrawContact(dContact& c)
 	}
 #endif
 }
+
 void DBG_DrawFrameStart()
 {
 	
@@ -455,7 +464,6 @@ void DBG_DrawFrameStart()
 	dbg_tries_num								=0;
 	dbg_saved_tries_for_active_objects			=0;
 }
-
 
 void PH_DBG_Clear()
 {
@@ -533,10 +541,10 @@ void DBG_DrawStatBeforeFrameStep()
 {
 	if(ph_dbg_draw_mask.test(phDbgDrawObjectStatistics))
 	{
-		static float obj_count=0.f;
-		static float update_obj_count=0.f;
-		obj_count=obj_count*0.9f + float(ph_world->ObjectsNumber())*0.1f;
-		update_obj_count=update_obj_count*0.9f + float(ph_world->UpdateObjectsNumber())*0.1f;
+		static f32 obj_count=0.f;
+		static f32 update_obj_count=0.f;
+		obj_count=obj_count*0.9f + f32(ph_world->ObjectsNumber())*0.1f;
+		update_obj_count=update_obj_count*0.9f + f32(ph_world->UpdateObjectsNumber())*0.1f;
 		DBG_OutText("Active Phys Objects %3.0f",obj_count);
 		DBG_OutText("Active Phys Update Objects %3.0f",update_obj_count);
 	}
@@ -547,16 +555,16 @@ void DBG_DrawStatAfterFrameStep()
 	if(ph_dbg_draw_mask.test(phDbgDrawObjectStatistics))
 	{
 		DBG_OutText("------------------------------");
-		static float  fdbg_bodies_num=0.f;
-		static float  fdbg_joints_num=0.f;
-		static float  fdbg_islands_num=0.f;
-		static float  fdbg_contacts_num=0.f;
-		static float  fdbg_tries_num=0.f;
-		fdbg_islands_num=0.9f*fdbg_islands_num+0.1f*float(dbg_islands_num);
-		fdbg_bodies_num=0.9f*fdbg_bodies_num+0.1f*float(dbg_bodies_num);
-		fdbg_joints_num=0.9f*fdbg_joints_num+0.1f*float(dbg_joints_num);
-		fdbg_contacts_num=0.9f*fdbg_contacts_num+0.1f*float(dbg_contacts_num);
-		fdbg_tries_num=0.9f*fdbg_tries_num+0.1f*float(dbg_tries_num);
+		static f32  fdbg_bodies_num=0.f;
+		static f32  fdbg_joints_num=0.f;
+		static f32  fdbg_islands_num=0.f;
+		static f32  fdbg_contacts_num=0.f;
+		static f32  fdbg_tries_num=0.f;
+		fdbg_islands_num=0.9f*fdbg_islands_num+0.1f* f32(dbg_islands_num);
+		fdbg_bodies_num=0.9f*fdbg_bodies_num+0.1f* f32(dbg_bodies_num);
+		fdbg_joints_num=0.9f*fdbg_joints_num+0.1f* f32(dbg_joints_num);
+		fdbg_contacts_num=0.9f*fdbg_contacts_num+0.1f* f32(dbg_contacts_num);
+		fdbg_tries_num=0.9f*fdbg_tries_num+0.1f* f32(dbg_tries_num);
 		DBG_OutText("Ph Number of active islands %3.0f",fdbg_islands_num);
 		DBG_OutText("Ph Number of active bodies %3.0f",fdbg_bodies_num);
 		DBG_OutText("Ph Number of active joints %4.0f",fdbg_joints_num);
@@ -567,26 +575,24 @@ void DBG_DrawStatAfterFrameStep()
 	if(ph_dbg_draw_mask.test(phDbgDrawCashedTriesStat))
 	{
 		DBG_OutText("------------------------------");
-		static float fdbg_saved_tries_for_active_objects		=0;
-		static float fdbg_total_saved_tries						=0;
+		static f32 fdbg_saved_tries_for_active_objects		=0;
+		static f32 fdbg_total_saved_tries						=0;
 
-		fdbg_saved_tries_for_active_objects=0.9f*fdbg_saved_tries_for_active_objects+0.1f*float(dbg_saved_tries_for_active_objects);
-		fdbg_total_saved_tries				=0.9f*fdbg_total_saved_tries+0.1f*float(dbg_total_saved_tries);
+		fdbg_saved_tries_for_active_objects=0.9f*fdbg_saved_tries_for_active_objects+0.1f* f32(dbg_saved_tries_for_active_objects);
+		fdbg_total_saved_tries				=0.9f*fdbg_total_saved_tries+0.1f* f32(dbg_total_saved_tries);
 		DBG_OutText("Ph Number of cashed tries in active objects %5.0f",fdbg_saved_tries_for_active_objects);
 		DBG_OutText("Ph Total number cashed %5.0f",fdbg_total_saved_tries);
 
 		static SInertVal fdbg_reused_queries_per_step(0.9f);
 		static SInertVal fdbg_new_queries_per_step(0.9f);
-		fdbg_reused_queries_per_step.new_val(float(dbg_reused_queries_per_step));
-		fdbg_new_queries_per_step.new_val(float(dbg_new_queries_per_step));
+		fdbg_reused_queries_per_step.new_val(f32(dbg_reused_queries_per_step));
+		fdbg_new_queries_per_step.new_val(f32(dbg_new_queries_per_step));
 		DBG_OutText("Ph tri_queries_per_step %5.2f",fdbg_new_queries_per_step.val);
 		DBG_OutText("Ph reused_tri_queries_per_step %5.2f",fdbg_reused_queries_per_step.val);
 		DBG_OutText("------------------------------");
-
 	}
-	draw_frame=!draw_frame;
 
-	
+	draw_frame=!draw_frame;
 }
 
 CFunctionGraph::CFunctionGraph()
@@ -599,7 +605,7 @@ CFunctionGraph::~CFunctionGraph()
 	xr_delete(m_stat_graph);
 	m_function.clear();
 }
-void CFunctionGraph::Init(type_function fun,float x0,float x1,int l, int t, int w, int h,int points_num/*=500*/,u32 color/*=*/,u32 bk_color)
+void CFunctionGraph::Init(type_function fun, f32 x0, f32 x1,int l, int t, int w, int h,int points_num/*=500*/,u32 color/*=*/,u32 bk_color)
 {
 	x_min=x0;x_max=x1;
 	m_stat_graph=xr_new<CStatGraph>();
@@ -609,10 +615,11 @@ void CFunctionGraph::Init(type_function fun,float x0,float x1,int l, int t, int 
 	s=(x_max-x_min)/points_num;
 	R_ASSERT(s>0.f);
 	m_stat_graph->SetRect(l,t,w,h,bk_color,bk_color);
-	float min=dInfinity;float max=-dInfinity;
-	for(float x=x_min;x<x_max;x+=s)
+	f32 min=dInfinity;
+	f32 max=-dInfinity;
+	for(f32 x=x_min;x<x_max;x+=s)
 	{
-		float val=m_function(x);
+		f32 val=m_function(x);
 	
 		save_min(min,val);save_max(max,val);
 	}
@@ -620,34 +627,33 @@ void CFunctionGraph::Init(type_function fun,float x0,float x1,int l, int t, int 
 	R_ASSERT(min<dInfinity&&max>-dInfinity && min<=max);
 	m_stat_graph->SetMinMax(min,max,points_num);
 
-	for(float x=x_min;x<x_max;x+=s)
+	for(f32 x=x_min;x<x_max;x+=s)
 	{
-		float val=m_function(x);
+		f32 val=m_function(x);
 		m_stat_graph->AppendItem(val,color);
-
 	}
 	//m_stat_graph->AddMarker(CStatGraph::stVert, 0, D3DCOLOR_XRGB(255, 0, 0));
 	//m_stat_graph->AddMarker(CStatGraph::stHor, 0, D3DCOLOR_XRGB(255, 0, 0));
 }
 
-void CFunctionGraph::AddMarker(CStatGraph::EStyle Style, float pos, u32 Color)
+void CFunctionGraph::AddMarker(CStatGraph::EStyle Style, f32 pos, u32 Color)
 {
 	VERIFY(IsActive());
 	ScaleMarkerPos(Style,pos);
 	m_stat_graph->AddMarker(Style,pos,Color);
 }
-void CFunctionGraph::UpdateMarker				(u32 ID, float M)
+void CFunctionGraph::UpdateMarker				(u32 ID, f32 M)
 {
 	VERIFY(IsActive());
 	ScaleMarkerPos(ID,M);
 	m_stat_graph->UpdateMarkerPos(ID, M);
 }
-void CFunctionGraph::ScaleMarkerPos(u32 ID,float &p)
+void CFunctionGraph::ScaleMarkerPos(u32 ID, f32& p)
 {
 	VERIFY(IsActive());
 	ScaleMarkerPos(m_stat_graph->Marker(ID).m_eStyle,p);
 }
-void CFunctionGraph::ScaleMarkerPos(CStatGraph::EStyle Style, float &p)
+void CFunctionGraph::ScaleMarkerPos(CStatGraph::EStyle Style, f32& p)
 {
 	VERIFY(IsActive());
 	if(Style==CStatGraph::stVert)	p=ScaleX(p);

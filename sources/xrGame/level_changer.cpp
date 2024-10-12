@@ -31,7 +31,7 @@ void CLevelChanger::Center		(Fvector& C) const
 	XFORM().transform_tiny		(C,CFORM()->getSphere().P);
 }
 
-float CLevelChanger::Radius		() const
+f32 CLevelChanger::Radius		() const
 {
 	return CFORM()->getRadius	();
 }

@@ -10,21 +10,21 @@
 #include "xr_object.h"
 
 static const int	max_desired_items	= 2500;
-static const F32	source_radius		= 12.5f;
-static const F32	source_offset		= 40.f;
-static const F32	max_distance		= source_offset*1.25f;
-static const F32	sink_offset			= -(max_distance-source_offset);
-static const F32	drop_length			= 5.f;
-static const F32	drop_width			= 0.30f;
-static const F32	drop_angle			= 3.0f;
-static const F32	drop_max_angle		= deg2rad(10.f);
-static const F32	drop_max_wind_vel	= 20.0f;
-static const F32	drop_speed_min		= 40.f;
-static const F32	drop_speed_max		= 80.f;
+static const f32	source_radius		= 12.5f;
+static const f32	source_offset		= 40.f;
+static const f32	max_distance		= source_offset*1.25f;
+static const f32	sink_offset			= -(max_distance-source_offset);
+static const f32	drop_length			= 5.f;
+static const f32	drop_width			= 0.30f;
+static const f32	drop_angle			= 3.0f;
+static const f32	drop_max_angle		= deg2rad(10.f);
+static const f32	drop_max_wind_vel	= 20.0f;
+static const f32	drop_speed_min		= 40.f;
+static const f32	drop_speed_max		= 80.f;
 
 const int	max_particles		= 1000;
 const int	particles_cache		= 400;
-const F32 particles_time		= .3f;
+const f32 particles_time		= .3f;
  
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -58,46 +58,46 @@ CEffect_Rain::~CEffect_Rain()
 }
 
 // Born
-void	CEffect_Rain::Born		(Item& dest, F32 radius)
+void	CEffect_Rain::Born		(Item& dest, f32 radius)
 {
 	Fvector		axis;	
-    axis.set			(0,-1,0);
-	F32 gust			= g_pGamePersistent->Environment().wind_strength_factor/10.f;
-	F32 k				= g_pGamePersistent->Environment().CurrentEnv.wind_velocity*gust/drop_max_wind_vel;
+	axis.set			(0,-1,0);
+	f32 gust			= g_pGamePersistent->Environment().wind_strength_factor/10.f;
+	f32 k				= g_pGamePersistent->Environment().CurrentEnv.wind_velocity*gust/drop_max_wind_vel;
 	clamp				(k,0.f,1.f);
-	F32	pitch		= drop_max_angle*k-PI_DIV_2;
-    axis.setHP			(g_pGamePersistent->Environment().CurrentEnv.wind_direction,pitch);
-    
+	f32	pitch		= drop_max_angle*k-PI_DIV_2;
+	axis.setHP			(g_pGamePersistent->Environment().CurrentEnv.wind_direction,pitch);
+	
 	Fvector&	view	= Device.vCameraPosition;
-	F32		angle	= ::Random.randF	(0,PI_MUL_2);
-	F32		dist	= ::Random.randF	(); dist = _sqrt(dist)*radius;
-	F32		x		= dist*_cos		(angle);
-	F32		z		= dist*_sin		(angle);
+	f32		angle	= ::Random.randF	(0,PI_MUL_2);
+	f32		dist	= ::Random.randF	(); dist = _sqrt(dist)*radius;
+	f32		x		= dist*_cos		(angle);
+	f32		z		= dist*_sin		(angle);
 	dest.D.random_dir	(axis,deg2rad(drop_angle));
 	dest.P.set			(x+view.x-dest.D.x*source_offset,source_offset+view.y,z+view.z-dest.D.z*source_offset);
 //	dest.P.set			(x+view.x,height+view.y,z+view.z);
 	dest.fSpeed			= ::Random.randF	(drop_speed_min,drop_speed_max);
 
-	F32 height		= max_distance;
+	f32 height		= max_distance;
 	RenewItem			(dest,height,RayPick(dest.P,dest.D,height,collide::rqtBoth));
 }
 
-BOOL CEffect_Rain::RayPick(const Fvector& s, const Fvector& d, F32& range, collide::rq_target tgt)
+BOOL CEffect_Rain::RayPick(const Fvector& s, const Fvector& d, f32& range, collide::rq_target tgt)
 {
 	BOOL bRes 			= TRUE;
 
 	collide::rq_result	RQ;
 	CObject* E 			= g_pGameLevel->CurrentViewEntity();
 	bRes 				= g_pGameLevel->ObjectSpace.RayPick( s,d,range,tgt,RQ,E);	
-    if (bRes) range 	= RQ.range;
+	if (bRes) range 	= RQ.range;
 
-    return bRes;
+	return bRes;
 }
 
-void CEffect_Rain::RenewItem(Item& dest, F32 height, BOOL bHit)
+void CEffect_Rain::RenewItem(Item& dest, f32 height, BOOL bHit)
 {
 	dest.uv_set			= Random.randI(2);
-    if (bHit){
+	if (bHit){
 		dest.dwTime_Life= Device.dwTimeGlobal + iFloor(1000.f*height/dest.fSpeed) - Device.dwTimeDelta;
 		dest.dwTime_Hit	= Device.dwTimeGlobal + iFloor(1000.f*height/dest.fSpeed) - Device.dwTimeDelta;
 		dest.Phit.mad	(dest.P,dest.D,height);
@@ -113,8 +113,8 @@ void	CEffect_Rain::OnFrame	()
 	if (!g_pGameLevel)			return;
 
 	// Parse states
-	F32	factor				= g_pGamePersistent->Environment().CurrentEnv.rain_density;
-	F32	hemi_factor			= 1.f;
+	f32	factor				= g_pGamePersistent->Environment().CurrentEnv.rain_density;
+	f32	hemi_factor			= 1.f;
 
 	CObject* E 					= g_pGameLevel->CurrentViewEntity();
 	if (E&&E->renderable_ROS())
@@ -151,17 +151,17 @@ void	CEffect_Rain::Render	()
 {
 	if (!g_pGameLevel)			return;
 
-	F32	factor				= g_pGamePersistent->Environment().CurrentEnv.rain_density;
+	f32	factor				= g_pGamePersistent->Environment().CurrentEnv.rain_density;
 	if (factor<EPS_L)			return;
 
-	u32 desired_items			= iFloor	(0.5f*(1.f+factor)* F32(max_desired_items));
+	u32 desired_items			= iFloor	(0.5f*(1.f+factor)* f32(max_desired_items));
 	// visual
-	F32		factor_visual	= factor/2.f+.5f;
+	f32		factor_visual	= factor/2.f+.5f;
 	Fvector3	f_rain_color	= g_pGamePersistent->Environment().CurrentEnv.rain_color;
 	u32			u_rain_color	= color_rgba_f(f_rain_color.x,f_rain_color.y,f_rain_color.z,factor_visual);
 
 	// born _new_ if needed
-	F32	b_radius_wrap_sqr	= _sqr((source_radius+.5f));
+	f32	b_radius_wrap_sqr	= _sqr((source_radius+.5f));
 	if (items.size()<desired_items)	{
 		// items.reserve		(desired_items);
 		while (items.size()<desired_items)	{
@@ -172,10 +172,10 @@ void	CEffect_Rain::Render	()
 	}
 
 	// build source plane
-    Fplane src_plane;
-    Fvector norm	={0.f,-1.f,0.f};
-    Fvector upper; 	upper.set(Device.vCameraPosition.x,Device.vCameraPosition.y+source_offset,Device.vCameraPosition.z);
-    src_plane.build(upper,norm);
+	Fplane src_plane;
+	Fvector norm	={0.f,-1.f,0.f};
+	Fvector upper; 	upper.set(Device.vCameraPosition.x,Device.vCameraPosition.y+source_offset,Device.vCameraPosition.z);
+	src_plane.build(upper,norm);
 	
 	// perform update
 	u32			vOffset;
@@ -190,14 +190,14 @@ void	CEffect_Rain::Render	()
 		if (one.dwTime_Life<Device.dwTimeGlobal)	Born(one,source_radius);
 
 // последн€€ дельта ??
-//.		F32 xdt		= F32(one.dwTime_Hit-Device.dwTimeGlobal)/1000.f;
-//.		F32 dt		= Device.fTimeDelta;//xdt<Device.fTimeDelta?xdt:Device.fTimeDelta;
-		F32 dt		= Device.fTimeDelta;
+//.		f32 xdt		= f32(one.dwTime_Hit-Device.dwTimeGlobal)/1000.f;
+//.		f32 dt		= Device.fTimeDelta;//xdt<Device.fTimeDelta?xdt:Device.fTimeDelta;
+		f32 dt		= Device.fTimeDelta;
 		one.P.mad		(one.D,one.fSpeed*dt);
 
 		Device.Statistic->TEST1.Begin();
 		Fvector	wdir;	wdir.set(one.P.x-vEye.x,0,one.P.z-vEye.z);
-		F32	wlen	= wdir.square_magnitude();
+		f32	wlen	= wdir.square_magnitude();
 		if (wlen>b_radius_wrap_sqr)	{
 			wlen		= _sqrt(wlen);
 //.			Device.Statistic->TEST3.Begin();
@@ -210,8 +210,8 @@ void	CEffect_Rain::Render	()
 				wdir.div	(wlen);
 				one.P.mad	(one.P, wdir, -(wlen+source_radius));
 				if (src_plane.intersectRayPoint(one.P,inv_dir,src_p)){
-					F32 dist_sqr	= one.P.distance_to_sqr(src_p);
-					F32 height	= max_distance;
+					f32 dist_sqr	= one.P.distance_to_sqr(src_p);
+					f32 height	= max_distance;
 					if (RayPick(src_p,one.D,height,collide::rqtBoth)){	
 						if (_sqr(height)<=dist_sqr){ 
 							one.invalidate	();								// need born
@@ -240,7 +240,7 @@ void	CEffect_Rain::Render	()
 		
 		// Culling
 		Fvector sC,lineD;
-		F32 sR;
+		f32 sR;
 		sC.sub			(pos_head,pos_trail);
 		lineD.normalize	(sC);
 		sC.mul			(.5f);
@@ -258,7 +258,7 @@ void	CEffect_Rain::Render	()
 		camDir.sub			(sC,vEye);
 		camDir.normalize	();
 		lineTop.crossproduct(camDir,lineD);
-		F32 w = drop_width;
+		f32 w = drop_width;
 		u32 s	= one.uv_set;
 		P.mad(pos_trail,lineTop,-w);	verts->set(P,u_rain_color,UV[s][0].x,UV[s][0].y);	verts++;
 		P.mad(pos_trail,lineTop,w);		verts->set(P,u_rain_color,UV[s][1].x,UV[s][1].y);	verts++;
@@ -283,7 +283,7 @@ void	CEffect_Rain::Render	()
 	if (0==P)			return;
 	
 	{
-		F32	dt				= Device.fTimeDelta;
+		f32	dt				= Device.fTimeDelta;
 		_IndexStream& _IS		= RCache.Index;
 		RCache.set_Shader		(DM_Drop->shader);
 		
@@ -310,7 +310,7 @@ void	CEffect_Rain::Render	()
 			if (::Render->ViewBase.testSphere_dirty(P->bounds.P, P->bounds.R))
 			{
 				// Build matrix
-				F32 scale			=	P->time / particles_time;
+				f32 scale			=	P->time / particles_time;
 				mScale.scale		(scale,scale,scale);
 				mXform.mul_43		(P->mXForm,mScale);
 				

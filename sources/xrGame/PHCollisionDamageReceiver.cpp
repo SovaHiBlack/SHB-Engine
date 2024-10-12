@@ -10,7 +10,7 @@
 #include "xrMessages.h"
 #include "CharacterPhysicsSupport.h"
 
-void CPHCollisionDamageReceiver::BoneInsert(u16 id,float k)
+void CPHCollisionDamageReceiver::BoneInsert(u16 id, f32 k)
 {
 	R_ASSERT2(FindBone(id)==m_controled_bones.end(),"duplicate bone!");
 	m_controled_bones.push_back(SControledBone(id,k));
@@ -53,7 +53,7 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide,bool bo1,dCon
 	CPHCollisionDamageReceiver	*dr	=o_self->PHCollisionDamageReceiver();
 	VERIFY2(dr,"wrong callback");
 	
-	float damager_material_factor=material_damager->fBounceDamageFactor;
+	f32 damager_material_factor=material_damager->fBounceDamageFactor;
 
 	if(ud_damager&&ud_damager->ph_object&&ud_damager->ph_object->CastType()==CPHObject::tpCharacter)
 	{
@@ -61,7 +61,7 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide,bool bo1,dCon
 		if(phs->IsSpecificDamager())damager_material_factor=phs->BonceDamageFactor();
 	}
 
-	float dfs=(material_self->fBounceDamageFactor+damager_material_factor);
+	f32 dfs=(material_self->fBounceDamageFactor+damager_material_factor);
 	if(fis_zero(dfs)) return;
 	Fvector dir;dir.set(*(Fvector*)c.geom.normal);
 	Fvector pos;
@@ -69,8 +69,8 @@ void CPHCollisionDamageReceiver::CollisionCallback(bool& do_colide,bool bo1,dCon
 	dr->Hit(source_id,ud_self->bone_id,E_NL(b1,b2,c.geom.normal)*damager_material_factor/dfs,dir,pos);
 }
 
-const static float hit_threthhold=5.f;
-void CPHCollisionDamageReceiver::Hit(u16 source_id,u16 bone_id,float power,const Fvector& dir,Fvector &pos )
+const static f32 hit_threthhold=5.f;
+void CPHCollisionDamageReceiver::Hit(u16 source_id,u16 bone_id, f32 power,const Fvector& dir,Fvector &pos )
 {
 	DAMAGE_BONES_I i=FindBone(bone_id);
 	if(i==m_controled_bones.end())return;
@@ -98,7 +98,7 @@ void CPHCollisionDamageReceiver::Hit(u16 source_id,u16 bone_id,float power,const
 void CPHCollisionDamageReceiver::Clear()
 {
 	//CPhysicsShellHolder *sh	=PPhysicsShellHolder	();
-	//xr_map<u16,float>::iterator i=m_controled_bones.begin(),e=m_controled_bones.end();
+	//xr_map<u16,f32>::iterator i=m_controled_bones.begin(),e=m_controled_bones.end();
 	//for(;e!=i;++i)
 	//{
 	//	CODEGeom* og= sh->PPhysicsShell()->get_GeomByID(i->first);

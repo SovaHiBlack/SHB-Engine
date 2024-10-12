@@ -8,16 +8,16 @@
 
 #pragma once
 
-IC float CLevelGraph::distance(const Fvector &position, const Fvector &point0, const Fvector &point1) const
+IC f32 CLevelGraph::distance(const Fvector &position, const Fvector &point0, const Fvector &point1) const
 {
 	Fvector				c, V;
 	c.sub				(position,	point0);
 	V.sub				(point1,	point0); 
 
-	float				d = V.magnitude();
+	f32				d = V.magnitude();
 
 	V.div				(d); 
-	float				t = V.dotproduct(c);
+	f32				t = V.dotproduct(c);
 
 	if (t <= 0.0f)
 		return			position.distance_to_sqr(point0);
@@ -34,57 +34,57 @@ IC void CLevelGraph::project_point(const Fplane &plane, Fvector &point) const
 	point.y				-= plane.classify(point)/plane.n.y;
 }
 
-IC float CLevelGraph::distance(u32 vertex_id0, u32 vertex_id1) const
+IC f32 CLevelGraph::distance(u32 vertex_id0, u32 vertex_id1) const
 {
 	return				(distance(vertex(vertex_id0),vertex(vertex_id1)));
 }
 
-IC float CLevelGraph::distance(const CLevelGraph::CVertex *_node, u32 vertex_id1) const
+IC f32 CLevelGraph::distance(const CLevelGraph::CVertex *_node, u32 vertex_id1) const
 {
 	return				(distance(_node,vertex(vertex_id1)));
 }
 
-IC float CLevelGraph::distance(u32 vertex_id0, const CLevelGraph::CVertex *_node) const
+IC f32 CLevelGraph::distance(u32 vertex_id0, const CLevelGraph::CVertex *_node) const
 {
 	return				(distance(vertex(vertex_id0),_node));
 }
 
-IC float CLevelGraph::distance(const CLevelGraph::CVertex *node0, const CLevelGraph::CVertex *node1) const
+IC f32 CLevelGraph::distance(const CLevelGraph::CVertex *node0, const CLevelGraph::CVertex *node1) const
 {
 	return				(vertex_position(node0).distance_to(vertex_position(node1)));
 }
 
-IC float CLevelGraph::distance(const Fvector &position, const u32 vertex_id) const
+IC f32 CLevelGraph::distance(const Fvector &position, const u32 vertex_id) const
 {
 	return				(distance(position,vertex(vertex_id)));
 }
 
-IC float CLevelGraph::distance(const u32 vertex_id, const Fvector &position) const
+IC f32 CLevelGraph::distance(const u32 vertex_id, const Fvector &position) const
 {
 	return				(distance(position,vertex_id));
 }
 
-IC float CLevelGraph::distance(const u32 vertex_id, const CPosition &position) const
+IC f32 CLevelGraph::distance(const u32 vertex_id, const CPosition &position) const
 {
 	return				(distance(vertex_position(position),vertex_id));
 }
 
-IC float CLevelGraph::distance(const CPosition &position, const u32 vertex_id) const
+IC f32 CLevelGraph::distance(const CPosition &position, const u32 vertex_id) const
 {
 	return				(distance(vertex_position(position),vertex_id));
 }
 
 IC CLevelGraph::ELineIntersections  CLevelGraph::intersect( 
-					   float x1, float y1,		/* First line segment */
-					   float x2, float y2,
-					   float x3, float y3,		/* Second line segment */
-					   float x4, float y4,
-					   float *x, float *y      /* Output value: point of intersection */
+	f32 x1, f32 y1,		/* First line segment */
+	f32 x2, f32 y2,
+	f32 x3, f32 y3,		/* Second line segment */
+	f32 x4, f32 y4,
+	f32* x, f32* y      /* Output value: point of intersection */
 		) const
 {
-	float a1, a2, b1, b2, c1, c2;	/* Coefficients of line eqns. */
-	float r1, r2, r3, r4;			/* 'Sign' values */
-	float denom, num;				/* Intermediate values */
+	f32 a1, a2, b1, b2, c1, c2;	/* Coefficients of line eqns. */
+	f32 r1, r2, r3, r4;			/* 'Sign' values */
+	f32 denom, num;				/* Intermediate values */
 
 	/* Compute a1, b1, c1, where line joining points 1 and 2
 	* is "a1 x  +  b1 y  +  c1  =  0".
@@ -143,16 +143,16 @@ IC CLevelGraph::ELineIntersections  CLevelGraph::intersect(
 } /* lines_intersect */
 
 IC CLevelGraph::ELineIntersections  CLevelGraph::intersect_no_check( 
-					   float x1, float y1,		/* First line segment */
-					   float x2, float y2,
-					   float x3, float y3,		/* Second line segment */
-					   float x4, float y4,
-					   float *x, float *y      /* Output value: point of intersection */
+	f32 x1, f32 y1,		/* First line segment */
+	f32 x2, f32 y2,
+	f32 x3, f32 y3,		/* Second line segment */
+	f32 x4, f32 y4,
+	f32* x, f32* y      /* Output value: point of intersection */
 		) const
 {
-	float		a1, a2, b1, b2, c1, c2;	/* Coefficients of line eqns. */
-	float		r1, r2, r3, r4;			/* 'Sign' values */
-	float		denom, num;				/* Intermediate values */
+	f32		a1, a2, b1, b2, c1, c2;	/* Coefficients of line eqns. */
+	f32		r1, r2, r3, r4;			/* 'Sign' values */
+	f32		denom, num;				/* Intermediate values */
 
 	/* Compute a1, b1, c1, where line joining points 1 and 2
 	* is "a1 x  +  b1 y  +  c1  =  0".
@@ -326,16 +326,16 @@ IC void CLevelGraph::intersect(SSegment &tSegment, const SContour &tContour0, co
 		Log("! AI_PathNodes: Can't find intersection segment");
 }
 
-IC float CLevelGraph::nearest(Fvector& Dest, const Fvector& P, const Fvector& A, const Fvector& B) const
+IC f32 CLevelGraph::nearest(Fvector& Dest, const Fvector& P, const Fvector& A, const Fvector& B) const
 {
 	// Determine t (the length of the xr_vector from ‘a’ to ‘p’)
 	Fvector c; c.sub(P,A);
 	Fvector V; V.sub(B,A); 
 	
-	float d = V.magnitude();
+	f32 d = V.magnitude();
 	
 	V.div	(d); 
-	float t = V.dotproduct(c);
+	f32 t = V.dotproduct(c);
 	
 	// Check to see if ‘t’ is beyond the extents of the line segment
 	if (t <= 0.0f)	{ Dest.set(A); return P.distance_to_sqr(Dest); }
@@ -362,7 +362,7 @@ IC void CLevelGraph::contour(CLevelGraph::SContour &_contour, const CLevelGraph:
 	plane.d					= - plane.n.dotproduct(vertex_position);
 
 	// create vertices
-	float					st = header().cell_size()/2;
+	f32					st = header().cell_size()/2;
 
 	_contour.v1.set			(vertex_position.x - st, vertex_position.y, vertex_position.z-st);	
 	_contour.v2.set			(vertex_position.x + st, vertex_position.y, vertex_position.z-st);	
@@ -379,7 +379,7 @@ IC void CLevelGraph::nearest(Fvector &destination, const Fvector &position, cons
 {
 	// calculate minimal distance
 	Fvector		T;
-	float		best,dist;
+	f32		best,dist;
 	
 	best		= nearest(destination,position,contour.v1,contour.v2);
 	
@@ -402,7 +402,7 @@ IC void CLevelGraph::nearest(Fvector &destination, const Fvector &position, cons
 	}
 }
 
-const float corner_r = 0.05f;
+const f32 corner_r = 0.05f;
 
 IC bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvector& v2, const Fvector& v3, const Fvector& v4) const
 {
@@ -434,10 +434,10 @@ IC bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvector& v
 		return (false);
 	
 	// unproject into 3D
-	float		lx	= (v2.x-v1.x);
-	float		lz	= (v2.z-v1.z);
-	float		bary1 = (T.x-v1.x)/lx;
-	float		bary2 = (T.z-v1.z)/lz;
+	f32		lx	= (v2.x-v1.x);
+	f32		lz	= (v2.z-v1.z);
+	f32		bary1 = (T.x-v1.x)/lx;
+	f32		bary2 = (T.z-v1.z)/lz;
 
 	if (fis_zero(lx,EPS_L))
 		bary1	= bary2;
@@ -445,7 +445,7 @@ IC bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvector& v
 	if (fis_zero(lz,EPS_L))
 		bary2	= bary1;
 
-	float		bary = (bary1+bary2)/2;
+	f32		bary = (bary1+bary2)/2;
 	dst.x		= T.x;
 	dst.y		= v1.y + bary*(v2.y-v1.y);
 	dst.z		= T.z;
@@ -453,15 +453,15 @@ IC bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvector& v
 	return		(true);
 }
 
-IC	float CLevelGraph::square(float a1, float b1, float fAlpha) const
+IC	f32 CLevelGraph::square(f32 a1, f32 b1, f32 fAlpha) const
 {
-	float a = 2*(b1 - a1)/PI, b = a1;	
+	f32 a = 2*(b1 - a1)/PI, b = a1;
 	return(fAlpha*fAlpha*fAlpha*a*a/6 + fAlpha*fAlpha*a*b/2 + fAlpha*b*b/2);
 }
 
-#define NORMALIZE_NODE_COVER(a,b) (float(a->cover(b))/15.f)
+#define NORMALIZE_NODE_COVER(a,b) (f32(a->cover(b))/15.f)
 
-IC	float CLevelGraph::compute_square(float fAngle, float fAngleOfView, float b1, float b0, float b3, float b2) const
+IC	f32 CLevelGraph::compute_square(f32 fAngle, f32 fAngleOfView, f32 b1, f32 b0, f32 b3, f32 b2) const
 {
 	fAngle				= angle_normalize(fAngle - 0*PI_DIV_2);
 
@@ -478,7 +478,7 @@ IC	float CLevelGraph::compute_square(float fAngle, float fAngleOfView, float b1,
 			if (fAngle < 3*PI_DIV_2) {
 				fAngle -= PI;
 				b0		= b2;
-				float	bx = b1;
+				f32	bx = b1;
 				b1		= b3;
 				b3		= bx;
 			}
@@ -489,7 +489,7 @@ IC	float CLevelGraph::compute_square(float fAngle, float fAngleOfView, float b1,
 				b3		= b2;
 			}
 
-	float				fSquare;
+	f32				fSquare;
 	
 	if (fAngle + fAngleOfView >= PI_DIV_2) {
 		fSquare			= square(b1,b2,fAngleOfView + fAngle - PI_DIV_2);
@@ -511,19 +511,19 @@ IC	float CLevelGraph::compute_square(float fAngle, float fAngleOfView, float b1,
 	return				(fSquare);
 }
 
-IC	float CLevelGraph::compute_square(float fAngle, float fAngleOfView, const CLevelGraph::CVertex *vertex) const
+IC	f32 CLevelGraph::compute_square(f32 fAngle, f32 fAngleOfView, const CLevelGraph::CVertex *vertex) const
 {
 	return(compute_square(fAngle, fAngleOfView,NORMALIZE_NODE_COVER(vertex,0),NORMALIZE_NODE_COVER(vertex,1),NORMALIZE_NODE_COVER(vertex,2),NORMALIZE_NODE_COVER(vertex,3)));
 }
 
-IC	float CLevelGraph::compute_square(float fAngle, float fAngleOfView, u32 dwNodeID) const
+IC	f32 CLevelGraph::compute_square(f32 fAngle, f32 fAngleOfView, u32 dwNodeID) const
 {
 	return(compute_square(fAngle, fAngleOfView,vertex(dwNodeID)));
 }
 
-IC	float CLevelGraph::vertex_cover(const CLevelGraph::CVertex *vertex) const
+IC	f32 CLevelGraph::vertex_cover(const CLevelGraph::CVertex *vertex) const
 {
-	float			_cover = 0.f;
+	f32			_cover = 0.f;
 	_cover			+= square(NORMALIZE_NODE_COVER(vertex,0),NORMALIZE_NODE_COVER(vertex,1));
 	_cover			+= square(NORMALIZE_NODE_COVER(vertex,1),NORMALIZE_NODE_COVER(vertex,2));
 	_cover			+= square(NORMALIZE_NODE_COVER(vertex,2),NORMALIZE_NODE_COVER(vertex,3));
@@ -531,19 +531,19 @@ IC	float CLevelGraph::vertex_cover(const CLevelGraph::CVertex *vertex) const
 	return			(_cover);
 }
 
-IC	float CLevelGraph::vertex_cover(const u32 vertex_id) const
+IC	f32 CLevelGraph::vertex_cover(const u32 vertex_id) const
 {
 	return			(vertex_cover(vertex(vertex_id)));
 }
 
-IC	float CLevelGraph::cover_in_direction(float angle, const CLevelGraph::CVertex *vertex) const
+IC	f32 CLevelGraph::cover_in_direction(f32 angle, const CLevelGraph::CVertex *vertex) const
 {
 	return				(cover_in_direction(angle, NORMALIZE_NODE_COVER(vertex,0),NORMALIZE_NODE_COVER(vertex,1),NORMALIZE_NODE_COVER(vertex,2),NORMALIZE_NODE_COVER(vertex,3)));
 }
 
 #undef NORMALIZE_NODE_COVER
 
-IC	float CLevelGraph::cover_in_direction(float angle, u32 vertex_id) const
+IC	f32 CLevelGraph::cover_in_direction(f32 angle, u32 vertex_id) const
 {
 	return				(cover_in_direction(angle, vertex(vertex_id)));
 }
@@ -573,13 +573,13 @@ IC	bool CLevelGraph::check_vertex_in_direction(u32 start_vertex_id, const Fvecto
 }
 
 template <class _predicate>
-float CLevelGraph::vertex_cover_angle(u32 vertex_id, float inc_angle, _predicate compare_predicate) const
+f32 CLevelGraph::vertex_cover_angle(u32 vertex_id, f32 inc_angle, _predicate compare_predicate) const
 {
-	float best_angle	= 0.f;
-	float best_value	= compute_square(best_angle, PI_DIV_2, vertex_id);
+	f32 best_angle	= 0.f;
+	f32 best_value	= compute_square(best_angle, PI_DIV_2, vertex_id);
 
-	for (float angle = inc_angle; angle <= PI_MUL_2; angle += inc_angle) {
-		float cover = compute_square(angle, PI_DIV_2, vertex_id);
+	for (f32 angle = inc_angle; angle <= PI_MUL_2; angle += inc_angle) {
+		f32 cover = compute_square(angle, PI_DIV_2, vertex_id);
 		if (compare_predicate(cover,best_value)) {
 			best_value = cover;
 			best_angle = angle;

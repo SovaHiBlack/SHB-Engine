@@ -20,22 +20,20 @@
 #ifdef DEBUG
 #include "phdebug.h"
 #endif
-static const F32	s_fLandingTime1		= 0.1f;// через сколько снять флаг Landing1 (т.е. включить следующую анимацию)
-static const F32	s_fLandingTime2		= 0.3f;// через сколько снять флаг Landing2 (т.е. включить следующую анимацию)
-static const F32	s_fJumpTime			= 0.3f;
-static const F32	s_fJumpGroundTime	= 0.1f;	// для снятия флажка Jump если на земле
-	   const F32	s_fFallTime			= 0.2f;
+static const f32	s_fLandingTime1		= 0.1f;// через сколько снять флаг Landing1 (т.е. включить следующую анимацию)
+static const f32	s_fLandingTime2		= 0.3f;// через сколько снять флаг Landing2 (т.е. включить следующую анимацию)
+static const f32	s_fJumpTime			= 0.3f;
+static const f32	s_fJumpGroundTime	= 0.1f;	// для снятия флажка Jump если на земле
+	   const f32	s_fFallTime			= 0.2f;
 
 IC static void generate_orthonormal_basis1(const Fvector& dir,Fvector& updir, Fvector& right)
 {
-
 	right.crossproduct(dir,updir); //. <->
 	right.normalize();
 	updir.crossproduct(right,dir);
 }
 
-
-void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
+void CActor::g_cl_ValidateMState(f32 dt, u32 mstate_wf)
 {
 	// Lookout
 	if (mstate_wf&mcLookout)	mstate_real		|= mstate_wf&mcLookout;
@@ -52,6 +50,7 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 			mstate_real		&=~	(mcFall|mcJump);
 		}
 	}
+
 	// закончить падение
 	if (character_physics_support()->movement()->gcontact_Was){
 		if (mstate_real&mcFall){
@@ -65,10 +64,12 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 				}
 			}
 		}
+
 		m_bJumpKeyPressed	=	TRUE;
 		m_fJumpTime			=	s_fJumpTime;
 		mstate_real			&=~	(mcFall|mcJump);
 	}
+
 	if ((mstate_wf&mcJump)==0)	
 		m_bJumpKeyPressed	=	FALSE;
 
@@ -77,6 +78,7 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 	{
 		mstate_real				&=~ mcAnyMove;
 	}
+
 	if (character_physics_support()->movement()->Environment()==CPHMovementControl::peOnGround || character_physics_support()->movement()->Environment()==CPHMovementControl::peAtWall)
 	{
 		// если на земле гарантированно снимать флажок Jump
@@ -86,6 +88,7 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 			m_fJumpTime			= s_fJumpTime;
 		}
 	}
+
 	if(character_physics_support()->movement()->Environment()==CPHMovementControl::peAtWall)
 	{
 		if(!(mstate_real & mcClimb))
@@ -102,7 +105,7 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 			cam_UnsetLadder();
 		}
 		mstate_real				&=~mcClimb;		
-	};
+	}
 
 	if (mstate_wf != mstate_real){
 		if ((mstate_real&mcCrouch)&&((0==(mstate_wf&mcCrouch)) || mstate_real&mcClimb)){
@@ -115,7 +118,7 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 	if(!CanAccelerate()&&isActorAccelerated(mstate_real, IsZoomAimingMode()))
 	{
 		mstate_real				^=mcAccel;
-	};	
+	}
 
 	if (this == Level().CurrentControlEntity())
 	{
@@ -125,7 +128,7 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 		if (bOnClimbNow != bOnClimbOld )
 		{
 			SetWeaponHideState		(INV_STATE_LADDER, bOnClimbNow );
-		};
+		}
 	/*
 	if ((mstate_real&mcSprint) != (mstate_old&mcSprint))
 	{
@@ -133,10 +136,10 @@ void CActor::g_cl_ValidateMState(F32 dt, u32 mstate_wf)
 		if (pHudItem) pHudItem->onMovementChanged(mcSprint);
 	};
 	*/
-	};
-};
+	}
+}
 
-void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, F32& Jump, F32 dt)
+void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, f32& Jump, f32 dt)
 {
 	mstate_old = mstate_real;
 	vControlAccel.set	(0,0,0);
@@ -252,8 +255,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, F32& Jump
 		{
 			BOOL	bAccelerated		= isActorAccelerated(mstate_real, IsZoomAimingMode())&&CanAccelerate();
 
-
-
 			// correct "mstate_real" if opposite keys pressed
 			if (_abs(vControlAccel.z)< EPSILON_5)	mstate_real &= ~(mcFwd+mcBack		);
 			if (_abs(vControlAccel.x)< EPSILON_5)	mstate_real &= ~(mcLStrafe+mcRStrafe);
@@ -270,8 +271,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, F32& Jump
 				else
 					if (mstate_real&mcBack)
 						scale *= m_fWalkBackFactor;
-
-
 
 				if (mstate_real&mcCrouch)	scale *= m_fCrouchFactor;
 				if (mstate_real&mcClimb)	scale *= m_fClimbFactor;
@@ -295,7 +294,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, F32& Jump
 	}
 
 	//-------------------------------------------------------------------------------	
-	
 
 	//transform local dir to world dir
 	Fmatrix				mOrient;
@@ -315,18 +313,18 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, F32& Jump
 
 #define ACTOR_ANIM_SECT "actor_animation"
 
-void CActor::g_Orientate	(u32 mstate_rl, F32 dt)
+void CActor::g_Orientate	(u32 mstate_rl, f32 dt)
 {
-	static F32 fwd_l_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"fwd_l_strafe_yaw"));
-	static F32 back_l_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"back_l_strafe_yaw"));
-	static F32 fwd_r_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"fwd_r_strafe_yaw"));
-	static F32 back_r_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"back_r_strafe_yaw"));
-	static F32 l_strafe_yaw		= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"l_strafe_yaw"));
-	static F32 r_strafe_yaw		= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"r_strafe_yaw"));
+	static f32 fwd_l_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"fwd_l_strafe_yaw"));
+	static f32 back_l_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"back_l_strafe_yaw"));
+	static f32 fwd_r_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"fwd_r_strafe_yaw"));
+	static f32 back_r_strafe_yaw	= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"back_r_strafe_yaw"));
+	static f32 l_strafe_yaw		= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"l_strafe_yaw"));
+	static f32 r_strafe_yaw		= deg2rad(pSettings->r_float(ACTOR_ANIM_SECT,	"r_strafe_yaw"));
 
 	if(!g_Alive())return;
 	// visual effect of "fwd+strafe" like motion
-	F32 calc_yaw = 0;
+	f32 calc_yaw = 0.0f;
 	if(mstate_real&mcClimb)
 	{
 		if(g_LadderOrient()) return;
@@ -364,7 +362,7 @@ void CActor::g_Orientate	(u32 mstate_rl, F32 dt)
 
 	//-------------------------------------------------
 
-	F32 tgt_roll		=	0.f;
+	f32 tgt_roll		=	0.f;
 	if (mstate_rl&mcLookout)
 	{
 		tgt_roll		=	(mstate_rl&mcLLookout)?-ACTOR_LOOKOUT_ANGLE:ACTOR_LOOKOUT_ANGLE;
@@ -372,18 +370,20 @@ void CActor::g_Orientate	(u32 mstate_rl, F32 dt)
 		if( (mstate_rl&mcLLookout) && (mstate_rl&mcRLookout) )
 			tgt_roll	= 0.0f;
 	}
+
 	if (!fsimilar(tgt_roll,r_torso_tgt_roll,EPS)){
 		angle_lerp		(r_torso_tgt_roll,tgt_roll,PI_MUL_2,dt);
 		r_torso_tgt_roll= angle_normalize_signed(r_torso_tgt_roll);
 	}
 }
+
 bool CActor::g_LadderOrient()
 {
 	Fvector leader_norm;
 	character_physics_support()->movement()->GroundNormal(leader_norm);
 	if(_abs(leader_norm.y)>M_SQRT1_2) return false;
 	//leader_norm.y=0.f;
-	F32 mag=leader_norm.magnitude();
+	f32 mag=leader_norm.magnitude();
 	if(mag<EPS_L) return false;
 	leader_norm.div(mag);
 	leader_norm.invert();
@@ -421,7 +421,7 @@ bool CActor::g_LadderOrient()
 	return true;
 }
 // ****************************** Update actor orientation according to camera orientation
-void CActor::g_cl_Orientate	(u32 mstate_rl, F32 dt)
+void CActor::g_cl_Orientate	(u32 mstate_rl, f32 dt)
 {
 	// capture camera into torso (only for FirstEye & LookAt cameras)
 	if (eacFreeLook!=cam_active)
@@ -454,22 +454,26 @@ void CActor::g_cl_Orientate	(u32 mstate_rl, F32 dt)
 		mstate_real		&=~mcTurn;
 	} else {
 		// if camera rotated more than 45 degrees - align model with it
-		F32 ty = angle_normalize(r_torso.yaw);
+		f32 ty = angle_normalize(r_torso.yaw);
 		if (_abs(r_model_yaw-ty)>PI_DIV_4)	{
 			r_model_yaw_dest = ty;
 			// 
 			mstate_real	|= mcTurn;
 		}
-		if (_abs(r_model_yaw-r_model_yaw_dest)<EPS_L){
+
+		if (_abs(r_model_yaw-r_model_yaw_dest)<EPS_L)
+		{
 			mstate_real	&=~mcTurn;
 		}
-		if (mstate_rl&mcTurn){
+
+		if (mstate_rl&mcTurn)
+		{
 			angle_lerp	(r_model_yaw,r_model_yaw_dest,PI_MUL_2,dt);
 		}
 	}
 }
 
-void CActor::g_sv_Orientate(u32 /**mstate_rl/**/, F32 /**dt/**/)
+void CActor::g_sv_Orientate(u32 /**mstate_rl/**/, f32 /**dt/**/)
 {
 	// rotation
 	r_model_yaw		= NET_Last.o_model;
@@ -540,36 +544,41 @@ bool CActor::CanSprint			()
 bool	CActor::CanJump				()
 {
 	bool can_Jump = /*!IsLimping() &&*/
-		!character_physics_support()->movement()->PHCapture() &&((mstate_real&mcJump)==0) && (m_fJumpTime<=0.f) 
+		!character_physics_support()->movement()->PHCapture() &&((mstate_real&mcJump)==0) && (m_fJumpTime<=0.0f) 
 		&& !m_bJumpKeyPressed &&!m_bZoomAimingMode;// && ((mstate_real&mcCrouch)==0);
 
 	return can_Jump;
 }
 
-bool	CActor::CanMove				()
+bool CActor::CanMove( )
 {
-	if( conditions().IsCantWalk() )
+	if (conditions( ).IsCantWalk( ))
 	{
-		if(mstate_wishful&mcAnyMove)
+		if (mstate_wishful & mcAnyMove)
 		{
-			HUD().GetUI()->AddInfoMessage("cant_walk");
+			HUD( ).GetUI( )->AddInfoMessage("cant_walk");
 		}
+
 		return false;
-	}else
-	if( conditions().IsCantWalkWeight() )
+	}
+	else if (conditions( ).IsCantWalkWeight( ))
 	{
-		if(mstate_wishful&mcAnyMove)
+		if (mstate_wishful & mcAnyMove)
 		{
-			HUD().GetUI()->AddInfoMessage("cant_walk_weight");
+			HUD( ).GetUI( )->AddInfoMessage("cant_walk_weight");
 		}
+
 		return false;
-	
 	}
 
-	if(IsTalking())
+	if (IsTalking( ))
+	{
 		return false;
+	}
 	else
+	{
 		return true;
+	}
 }
 
 void CActor::StopAnyMove()
@@ -577,7 +586,6 @@ void CActor::StopAnyMove()
 	mstate_wishful	&=		~mcAnyMove;
 	mstate_real		&=		~mcAnyMove;
 }
-
 
 bool CActor::is_jump()
 {

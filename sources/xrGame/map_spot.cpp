@@ -83,7 +83,7 @@ pcstr CMapSpotPointer::GetHint()
 	m_pointer_hint += inherited::GetHint();
 	Fvector2 cam_pos;
 	cam_pos.set(Device.vCameraPosition.x,Device.vCameraPosition.z);
-	float dist = MapLocation()->Position().distance_to(cam_pos);
+	f32 dist = MapLocation()->Position().distance_to(cam_pos);
 	string32 s;
 	sprintf_s(s," [%.2f]m.", dist);
 	m_pointer_hint += s;
@@ -123,10 +123,10 @@ void CMiniMapSpot::Load(CUIXml* xml, pcstr path)
 		CUITextureMaster::InitTexture	(texture, "hud\\default", &m_UIStaticItem);
 		if(strchr(texture,'\\'))
 		{
-			float x					= xml->ReadAttribFlt(buf, 0, "x", base_rect.x1);
-			float y					= xml->ReadAttribFlt(buf, 0, "y", base_rect.y1);
-			float width				= xml->ReadAttribFlt(buf, 0, "width", base_rect.width());
-			float height			= xml->ReadAttribFlt(buf, 0, "height", base_rect.height());
+			f32 x					= xml->ReadAttribFlt(buf, 0, "x", base_rect.x1);
+			f32 y					= xml->ReadAttribFlt(buf, 0, "y", base_rect.y1);
+			f32 width				= xml->ReadAttribFlt(buf, 0, "width", base_rect.width());
+			f32 height			= xml->ReadAttribFlt(buf, 0, "height", base_rect.height());
 			m_tex_rect_above.set	(x,y,x+width,y+height);
 		}else
 			m_tex_rect_above		= m_UIStaticItem.GetOriginalRect();
@@ -141,10 +141,10 @@ void CMiniMapSpot::Load(CUIXml* xml, pcstr path)
 		CUITextureMaster::InitTexture	(texture, "hud\\default", &m_UIStaticItem);
 		if(strchr(texture,'\\'))
 		{
-			float x					= xml->ReadAttribFlt(buf, 0, "x", base_rect.x1);
-			float y					= xml->ReadAttribFlt(buf, 0, "y", base_rect.y1);
-			float width				= xml->ReadAttribFlt(buf, 0, "width", base_rect.width());
-			float height			= xml->ReadAttribFlt(buf, 0, "height", base_rect.height());
+			f32 x					= xml->ReadAttribFlt(buf, 0, "x", base_rect.x1);
+			f32 y					= xml->ReadAttribFlt(buf, 0, "y", base_rect.y1);
+			f32 width				= xml->ReadAttribFlt(buf, 0, "width", base_rect.width());
+			f32 height			= xml->ReadAttribFlt(buf, 0, "height", base_rect.height());
 			m_tex_rect_below.set	(x,y,x+width,y+height);
 		}else
 			m_tex_rect_below		= m_UIStaticItem.GetOriginalRect();
@@ -158,10 +158,10 @@ void CMiniMapSpot::Load(CUIXml* xml, pcstr path)
 		CUITextureMaster::InitTexture	(texture, "hud\\default", &m_UIStaticItem);
 		if(strchr(texture,'\\'))
 		{
-			float x					= xml->ReadAttribFlt(buf, 0, "x", base_rect.x1);
-			float y					= xml->ReadAttribFlt(buf, 0, "y", base_rect.y1);
-			float width				= xml->ReadAttribFlt(buf, 0, "width", base_rect.width());
-			float height			= xml->ReadAttribFlt(buf, 0, "height", base_rect.height());
+			f32 x					= xml->ReadAttribFlt(buf, 0, "x", base_rect.x1);
+			f32 y					= xml->ReadAttribFlt(buf, 0, "y", base_rect.y1);
+			f32 width				= xml->ReadAttribFlt(buf, 0, "width", base_rect.width());
+			f32 height			= xml->ReadAttribFlt(buf, 0, "height", base_rect.height());
 			m_tex_rect_normal.set	(x,y,x+width,y+height);
 		}else
 			m_tex_rect_normal		= m_UIStaticItem.GetOriginalRect();
@@ -176,8 +176,8 @@ void CMiniMapSpot::Draw()
 {
 	CObject* O = Level().CurrentViewEntity();
 	if(O&&m_icon_above&&m_icon_below){
-		float ml_y = MapLocation()->GetLastPosition().y;
-		float d = O->Position().y-ml_y;
+		f32 ml_y = MapLocation()->GetLastPosition().y;
+		f32 d = O->Position().y-ml_y;
 
 		if(d>1.8f){
 			GetUIStaticItem().SetShader(m_icon_below);
@@ -190,7 +190,7 @@ void CMiniMapSpot::Draw()
 			GetUIStaticItem().SetShader(m_icon_normal);
 			GetUIStaticItem().SetOriginalRect(m_tex_rect_normal.x1,m_tex_rect_normal.y1,m_tex_rect_normal.width(),m_tex_rect_normal.height());
 		}
-	};
+	}
 
 	inherited::Draw();
 }

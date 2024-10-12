@@ -90,7 +90,7 @@ void CFontManager::InitializeFont(CGameFont*& F, pcstr section, u32 flags)
 #endif
 
 	if (pSettings->line_exist(section,"size")){
-		float sz = pSettings->r_float(section,"size");
+		f32 sz = pSettings->r_float(section,"size");
 		if (flags&CGameFont::fsDeviceIndependent)	F->SetHeightI(sz);
 		else										F->SetHeight(sz);
 	}
@@ -156,7 +156,7 @@ void CHUDManager::OnFrame()
 }
 //--------------------------------------------------------------------
 
-ENGINE_API extern float psHUD_FOV;
+ENGINE_API extern f32 psHUD_FOV;
 
 void CHUDManager::Render_First()
 {
@@ -239,7 +239,7 @@ collide::rq_result&	CHUDManager::GetCurrentRayQuery	()
 	return m_pHUDTarget->RQ;
 }
 
-void CHUDManager::SetCrosshairDisp	(float dispf, float disps)
+void CHUDManager::SetCrosshairDisp	(f32 dispf, f32 disps)
 {	
 	m_pHUDTarget->HUDCrosshair.SetDispersion(psHUD_Flags.test(HUD_CROSSHAIR_DYNAMIC) ? dispf : disps);
 }
@@ -249,7 +249,7 @@ void  CHUDManager::ShowCrosshair	(bool show)
 	m_pHUDTarget->m_bShowCrosshair = show;
 }
 
-void CHUDManager::Hit(int idx, float power, const Fvector& dir)	
+void CHUDManager::Hit(int idx, f32 power, const Fvector& dir)
 {
 	HitMarker.Hit(idx, dir);
 }

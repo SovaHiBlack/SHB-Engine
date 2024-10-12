@@ -81,7 +81,7 @@ BOOL	CMincer::feel_touch_contact				(CObject* O)
 {
 	return inherited::feel_touch_contact(O)&&smart_cast<CPhysicsShellHolder *>(O);
 }
-void CMincer:: AffectThrow	(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir,float dist)
+void CMincer:: AffectThrow	(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir, f32 dist)
 {
 	inherited::AffectThrow(O,GO,throw_in_dir,dist);
 }
@@ -111,7 +111,6 @@ void CMincer ::ThrowInCenter(Fvector& C)
 	C.y=Position().y;
 }
 
-
 void CMincer ::Center	(Fvector& C) const
 {
 	C.set(Position());
@@ -120,7 +119,7 @@ void CMincer ::Center	(Fvector& C) const
 void CMincer::NotificateDestroy			(CPHDestroyableNotificate *dn)
 {
 	Fvector dir;
-	float impulse;
+	f32 impulse;
 	//if(!m_telekinetics.has_impacts()) return;
 
 	//CObject* obj=Level().Objects.net_Find(id);
@@ -139,9 +138,9 @@ void CMincer::NotificateDestroy			(CPHDestroyableNotificate *dn)
 	CreateHit(obj->ID(),ID(),throw_in_dir,0.0f,0,position_in_bone_space,impulse,ALife::eHitTypeExplosion);
 }
 
-void CMincer::AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_dir,float dist)
+void CMincer::AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_dir, f32 dist)
 {
-	float power=Power(dist);
+	f32 power=Power(dist);
 	//Fvector dir;
 	//dir.random_dir(throw_in_dir,2.f*M_PI);
 	if(EA->CLS_ID!=CLSID_OBJECT_ACTOR)
@@ -151,10 +150,9 @@ void CMincer::AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_dir,float
 		CreateHit(EA->ID(),ID(),throw_in_dir,power,0,pos_in_bone_space,0.0f,m_eHitTypeBlowout);
 	}
 	inherited::AffectPullAlife(EA,throw_in_dir,dist);
-
 }
 
-float CMincer::BlowoutRadiusPercent	(CPhysicsShellHolder* GO)
+f32 CMincer::BlowoutRadiusPercent	(CPhysicsShellHolder* GO)
 {
 	return	(GO->CLS_ID!=CLSID_OBJECT_ACTOR? m_fBlowoutRadiusPercent:m_fActorBlowoutRadiusPercent);
 }

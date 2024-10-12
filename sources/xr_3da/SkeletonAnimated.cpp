@@ -119,7 +119,7 @@ MotionID CKinematicsAnimated::ID_Cycle	(pcstr  N)
 	MotionID motion_ID		= ID_Cycle_Safe	(N);	R_ASSERT3(motion_ID.valid(),"! MODEL: can't find cycle: ", N);
 	return motion_ID;
 }
-void	CKinematicsAnimated::LL_FadeCycle(u16 part, F32 falloff, u8 mask_channel /*= (1<<0)*/)
+void	CKinematicsAnimated::LL_FadeCycle(u16 part, f32 falloff, u8 mask_channel /*= (1<<0)*/)
 {
 	BlendSVec&	Blend		= blend_cycles[part];
 	
@@ -156,7 +156,7 @@ void	CKinematicsAnimated::LL_CloseCycle(u16 part, u8 mask_channel /*= (1<<0)*/)
 	//blend_cycles[part].clear	(); // ?
 }
 
-void CKinematicsAnimated::IBlendSetup(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
+void CKinematicsAnimated::IBlendSetup(CBlend& B,u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, f32 blendAccrue, f32 blendFalloff, f32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
 {
 	VERIFY(B.channel<MAX_CHANNELS);
 	// Setup blend params
@@ -184,7 +184,7 @@ void CKinematicsAnimated::IBlendSetup(CBlend& B,u16 part,u8 channel, MotionID mo
 	B.channel		= channel;
 	B.fall_at_end	= B.stop_at_end && (channel != 0);
 }
-void CKinematicsAnimated::IFXBlendSetup(CBlend &B, MotionID motion_ID, F32 blendAccrue, F32 blendFalloff, F32 Power , F32 Speed,u16 bone)
+void CKinematicsAnimated::IFXBlendSetup(CBlend &B, MotionID motion_ID, f32 blendAccrue, f32 blendFalloff, f32 Power , f32 Speed,u16 bone)
 {
 	B.blend		= CBlend::eAccrue;
 	B.blendAmount	= EPSILON_7;
@@ -206,7 +206,7 @@ void CKinematicsAnimated::IFXBlendSetup(CBlend &B, MotionID motion_ID, F32 blend
 	B.channel		= 0;
 	B.fall_at_end	= FALSE;	
 }
-CBlend*	CKinematicsAnimated::LL_PlayCycle(u16 part, MotionID motion_ID, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam,u8 channel/*=0*/ )
+CBlend*	CKinematicsAnimated::LL_PlayCycle(u16 part, MotionID motion_ID, BOOL  bMixing, f32 blendAccrue, f32 blendFalloff, f32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam,u8 channel/*=0*/ )
 {
 	// validate and unroll
 	if (!motion_ID.valid())	return 0;
@@ -279,7 +279,7 @@ MotionID CKinematicsAnimated::ID_FX			(pcstr  N)
 	MotionID motion_ID		= ID_FX_Safe(N);R_ASSERT3(motion_ID.valid(),"! MODEL: can't find FX: ", N);
     return motion_ID;
 }
-CBlend*	CKinematicsAnimated::PlayFX			(MotionID motion_ID, F32 power_scale)
+CBlend*	CKinematicsAnimated::PlayFX			(MotionID motion_ID, f32 power_scale)
 {
 	VERIFY					(motion_ID.valid()); 
     CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
@@ -288,14 +288,14 @@ CBlend*	CKinematicsAnimated::PlayFX			(MotionID motion_ID, F32 power_scale)
     						 m_def->Accrue(),m_def->Falloff(),
                              m_def->Speed(),m_def->Power()*power_scale);
 }
-CBlend*	CKinematicsAnimated::PlayFX			(pcstr  N, F32 power_scale)
+CBlend*	CKinematicsAnimated::PlayFX			(pcstr  N, f32 power_scale)
 {
 	MotionID motion_ID		= ID_FX(N);
     return PlayFX 			(motion_ID,power_scale);
 }
-//u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, F32 blendAccrue, F32 blendFalloff, F32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
+//u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, f32 blendAccrue, f32 blendFalloff, f32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
 
-CBlend*	CKinematicsAnimated::LL_PlayFX		(u16 bone, MotionID motion_ID, F32 blendAccrue, F32 blendFalloff, F32 Speed, F32 Power)
+CBlend*	CKinematicsAnimated::LL_PlayFX		(u16 bone, MotionID motion_ID, f32 blendAccrue, f32 blendFalloff, f32 Speed, f32 Power)
 {
 	if (!motion_ID.valid())	return 0;
 	if (blend_fx.size()>=MAX_BLENDED) return 0;
@@ -318,14 +318,14 @@ void	CKinematicsAnimated::DestroyCycle	(CBlend &B)
 		Bone_Motion_Stop_IM((*bones)[P.bones[i]],&B);
 }
 
-IC void UpdateBlendTime(CBlend &B, F32 dt)
+IC void UpdateBlendTime(CBlend &B, f32 dt)
 {
 	if (B.playing) {
 		B.timeCurrent += dt*B.speed; // stop@end - time is not going 
 	}
 }
 //returns true if play time out
-IC bool UpdatePlayBlend(CBlend &B, F32 dt)
+IC bool UpdatePlayBlend(CBlend &B, f32 dt)
 {
 
 	B.blendAmount 		+= dt*B.blendAccrue*B.blendPower;
@@ -342,7 +342,7 @@ IC bool UpdatePlayBlend(CBlend &B, F32 dt)
 
 	return false;
 }
-IC bool UpdateFalloffBlend(CBlend &B, F32 dt)
+IC bool UpdateFalloffBlend(CBlend &B, f32 dt)
 {
 	B.blendAmount 		-= dt*B.blendFalloff*B.blendPower;
 	return B.blendAmount<=0;
@@ -353,7 +353,7 @@ void CKinematicsAnimated::UpdateTracks	()
 	if (Update_LastTime==Device.dwTimeGlobal) return;
 	u32 DT	= Device.dwTimeGlobal-Update_LastTime;
 	if (DT>66) DT=66;
-	F32 dt = F32(DT)/1000.f;
+	f32 dt = f32(DT)/1000.f;
 	Update_LastTime 	= Device.dwTimeGlobal;
 
 	BlendSVecIt I,E;
@@ -425,7 +425,7 @@ void CKinematicsAnimated::UpdateTracks	()
 			{
 //				B.blendAmount = B.blendPower; 
 //				// calc time to falloff
-//				F32 time2falloff = B.timeTotal - 1/(B.blendFalloff*B.speed);
+//				f32 time2falloff = B.timeTotal - 1/(B.blendFalloff*B.speed);
 //				if (B.timeCurrent >= time2falloff) {
 //					// switch to falloff
 //					B.blend		= CBlend::eFalloff;
@@ -525,7 +525,7 @@ void CKinematicsAnimated::ChannelFactorsStartup()
 	for (u8 i=0;MAX_CHANNELS>i;++i)
 		channel_factors[i] = 1.f;
 }
-void	CKinematicsAnimated::LL_SetChannelFactor (u16	channel, F32 factor)
+void	CKinematicsAnimated::LL_SetChannelFactor (u16	channel, f32 factor)
 {
 	channel_factors[channel] = factor;
 }
@@ -622,7 +622,7 @@ void CKinematicsAnimated::Load(pcstr N, IReader *data, u32 dwFlags)
 //------------------------------------------------------------------------------
 // calculate
 //------------------------------------------------------------------------------
-IC void	KEY_Interp	(CKey& D,const CKey& K1,const CKey& K2, F32 delta)
+IC void	KEY_Interp	(CKey& D,const CKey& K1,const CKey& K2, f32 delta)
 {
 	VERIFY			(_valid(delta));
 	VERIFY			(delta>=0.f && delta<=1.f);
@@ -632,9 +632,9 @@ IC void	KEY_Interp	(CKey& D,const CKey& K1,const CKey& K2, F32 delta)
 struct ConsistantKey
 {
 	const CKey*	K;
-	F32	w;
+	f32	w;
 
-	IC void	set(const CKey* _K, F32 _w)
+	IC void	set(const CKey* _K, f32 _w)
 	{	K = _K; w = _w; }
 };
 
@@ -662,37 +662,37 @@ IC void MakeKeysSelected(ConsistantKey *keys, int count)
 }
 
 /*
-ICF F32 smooth(F32 x)
+ICF f32 smooth(f32 x)
 {
-    F32 x0	= x*2.f-1.f;
-    F32 s 	= (x0<0.f)?-1.f:1.f;
+    f32 x0	= x*2.f-1.f;
+    f32 s 	= (x0<0.f)?-1.f:1.f;
 
     return ((s*pow(_abs(x0),1.f/1.5f))+1.f)/2.f;
 }
 */
 IC	void QR2Quat(const CKeyQR &K,Fquaternion &Q)
 {
-	Q.x		= F32(K.x)*KEY_QuantI;
-	Q.y		= F32(K.y)*KEY_QuantI;
-	Q.z		= F32(K.z)*KEY_QuantI;
-	Q.w		= F32(K.w)*KEY_QuantI;
+	Q.x		= f32(K.x)*KEY_QuantI;
+	Q.y		= f32(K.y)*KEY_QuantI;
+	Q.z		= f32(K.z)*KEY_QuantI;
+	Q.w		= f32(K.w)*KEY_QuantI;
 }
 
 IC void QT2T(const CKeyQT& K,const CMotion& M,Fvector &T)
 {
-	T.x		= F32(K.x)*M._sizeT.x+M._initT.x;
-	T.y		= F32(K.y)*M._sizeT.y+M._initT.y;
-	T.z		= F32(K.z)*M._sizeT.z+M._initT.z;
+	T.x		= f32(K.x)*M._sizeT.x+M._initT.x;
+	T.y		= f32(K.y)*M._sizeT.y+M._initT.y;
+	T.z		= f32(K.z)*M._sizeT.z+M._initT.z;
 }
 
 IC void Dequantize(CKey& K,const CBlend& BD,const CMotion& M)
 {
 	CKey*			D		=	&K;
 	const CBlend*	B		=	&BD;
-	F32			time	=	B->timeCurrent* F32(SAMPLE_FPS);
+	f32			time	=	B->timeCurrent* f32(SAMPLE_FPS);
 
 	u32				frame	=	iFloor(time);
-	F32			delta	=	time- F32(frame);
+	f32			delta	=	time- f32(frame);
 	u32				count	=	M.get_count();
 	// rotation
 	if (M.test_flag(flRKeyAbsent)){
@@ -717,13 +717,13 @@ IC void Dequantize(CKey& K,const CBlend& BD,const CMotion& M)
 		QT2T(*K1t,M,T1);
 		QT2T(*K2t,M,T2);
 		/*
-		T1.x		= F32(K1t->x)*M._sizeT.x+M._initT.x;
-		T1.y		= F32(K1t->y)*M._sizeT.y+M._initT.y;
-		T1.z		= F32(K1t->z)*M._sizeT.z+M._initT.z;
+		T1.x		= f32(K1t->x)*M._sizeT.x+M._initT.x;
+		T1.y		= f32(K1t->y)*M._sizeT.y+M._initT.y;
+		T1.z		= f32(K1t->z)*M._sizeT.z+M._initT.z;
 
-		T2.x		= F32(K2t->x)*M._sizeT.x+M._initT.x;
-		T2.y		= F32(K2t->y)*M._sizeT.y+M._initT.y;
-		T2.z		= F32(K2t->z)*M._sizeT.z+M._initT.z;
+		T2.x		= f32(K2t->x)*M._sizeT.x+M._initT.x;
+		T2.y		= f32(K2t->y)*M._sizeT.y+M._initT.y;
+		T2.z		= f32(K2t->z)*M._sizeT.z+M._initT.z;
 		*/
 		D->T.lerp	(T1,T2,delta);
 		/*					
@@ -772,12 +772,8 @@ IC void Dequantize(CKey& K,const CBlend& BD,const CMotion& M)
 	}
 }
 
-
-
-
-IC void MixInterlerp( CKey &Result, const CKey	*R, const F32* BA, int b_count )
+IC void MixInterlerp( CKey &Result, const CKey	*R, const f32* BA, int b_count )
 {
-
 	VERIFY(MAX_BLENDED>=b_count);
 	switch (b_count)
 	{
@@ -800,10 +796,10 @@ IC void MixInterlerp( CKey &Result, const CKey	*R, const F32* BA, int b_count )
 		break;
 	case 2:
 		{
-		F32 w0 = BA[0];
-		F32 w1 = BA[1];
-		F32 ws = w0+w1;
-		F32 w;
+		f32 w0 = BA[0];
+		f32 w1 = BA[1];
+		f32 ws = w0+w1;
+		f32 w;
 			if (fis_zero(ws))	w = 0;
 			else				w = w1/ws;
 #ifdef DEBUG
@@ -828,7 +824,7 @@ IC void MixInterlerp( CKey &Result, const CKey	*R, const F32* BA, int b_count )
 	default:
 		{
 			//int 	count 	= Blend.size();
-		F32   total 	= 0;
+		f32   total 	= 0.0f;
 			ConsistantKey		S[MAX_BLENDED];
 			for (int i=0; i<b_count; i++)					
 				S[i].set	(R+i,BA[i]);
@@ -839,7 +835,7 @@ IC void MixInterlerp( CKey &Result, const CKey	*R, const F32* BA, int b_count )
 			tmp			= *S[0].K;
 			for 		(int cnt=1; cnt<b_count; cnt++){
 				total	+= S[cnt].w;
-				F32	d;
+				f32	d;
 				if (fis_zero(total))	d = 0.0f;
 				else d	= S[cnt].w/total;
 
@@ -873,6 +869,7 @@ IC void key_identity(CKey &k)
 	k.Q.identity();
 	k.T.set(0,0,0);
 }
+
 IC void key_add(CKey &res, const CKey &k0, const CKey &k1)//add right
 {
 	
@@ -880,28 +877,29 @@ IC void key_add(CKey &res, const CKey &k0, const CKey &k1)//add right
 	//res.Q.normalize();
 	res.T.add(k0.T,k1.T);
 }
-IC void q_scale(Fquaternion &q, F32 v)
+
+IC void q_scale(Fquaternion &q, f32 v)
 {
-	F32 angl;
+	f32 angl;
 	Fvector ax;
 	q.get_axis_angle(ax,angl);
 	q.rotation(ax,angl*v);
 	q.normalize();
 }
-IC void key_scale(CKey &res, const CKey &k, F32 v)
+IC void key_scale(CKey &res, const CKey &k, f32 v)
 {
 	res = k;
 	q_scale(res.Q,v);
 	res.T.mul(v);
 }
-IC void key_mad(CKey &res, const CKey &k0, const CKey& k1, F32 v)
+IC void key_mad(CKey &res, const CKey &k0, const CKey& k1, f32 v)
 {
 	CKey k ;
 	key_scale(k,k1,v);
 	key_add(res,k,k0);
 }
 
-//IC void MixInterlerp( CKey &Result, const CKey	*R, const CKey	*BR, const F32* BA, int b_count )
+//IC void MixInterlerp( CKey &Result, const CKey	*R, const CKey	*BR, const f32* BA, int b_count )
 //{
 //	CKey keys	[MAX_BLENDED];
 //
@@ -918,9 +916,7 @@ IC void keys_substruct(CKey	*R, const CKey	*BR, int b_count )
 	}
 }
 
-
-
-IC void q_scalem(Fmatrix &m, F32 v)
+IC void q_scalem(Fmatrix &m, f32 v)
 {
 	Fquaternion q;
 	q.set(m);
@@ -928,10 +924,8 @@ IC void q_scalem(Fmatrix &m, F32 v)
 	m.rotation(q);
 }
 
-
-
 //sclale base' * q by scale_factor returns result in matrix  m_res
-IC void q_scale_vs_basem(Fmatrix &m_res,const Fquaternion &q, const Fquaternion &base, F32 scale_factor)
+IC void q_scale_vs_basem(Fmatrix &m_res,const Fquaternion &q, const Fquaternion &base, f32 scale_factor)
 {
 	Fmatrix mb,imb;
 	mb.rotation(base);
@@ -943,7 +937,7 @@ IC void q_scale_vs_basem(Fmatrix &m_res,const Fquaternion &q, const Fquaternion 
 }
 
 
-IC void q_add_scaled_basem( Fquaternion &q, const Fquaternion &base, const Fquaternion &q0, const Fquaternion &q1, F32 v1 )
+IC void q_add_scaled_basem( Fquaternion &q, const Fquaternion &base, const Fquaternion &q0, const Fquaternion &q1, f32 v1 )
 {
 	//VERIFY(0.f =< v && 1.f >= v );
 	Fmatrix m0;m0.rotation(q0);
@@ -954,7 +948,7 @@ IC void q_add_scaled_basem( Fquaternion &q, const Fquaternion &base, const Fquat
 	q.normalize();
 }
 
-IC F32 DET(const Fmatrix &a){
+IC f32 DET(const Fmatrix &a){
 	return
 		(( a._11 * ( a._22 * a._33 - a._23 * a._32 ) -
 		a._12 * ( a._21 * a._33 - a._23 * a._31 ) +
@@ -963,7 +957,7 @@ IC F32 DET(const Fmatrix &a){
 
 IC bool check_scale(const Fmatrix &m)
 {
-	F32 det = DET(m);
+	f32 det = DET(m);
 	return (0.8f<det&&det<1.3f);
 }
 
@@ -974,26 +968,26 @@ IC bool check_scale(const Fquaternion &q)
 	return check_scale(m);
 }
 
-IC void MixFactors(F32* F,int b_count)
+IC void MixFactors(f32* F,int b_count)
 {
-	F32 sum = 0;
+	f32 sum = 0;
 	for (int i=0; i<b_count; i++)
 		sum+=F[i];
 	for (int i2=0; i2<b_count; i2++)
 		F[i2]/=sum;
 }
-IC void MixinAdd(CKey &Result,const CKey	*R,const F32* BA,int b_count)
+IC void MixinAdd(CKey &Result,const CKey	*R,const f32* BA,int b_count)
 {
 	for (int i=0; i<b_count; i++)
 		key_mad(Result,Result,R[i],BA[i]);
 }
-IC void MixAdd(CKey &Result,const CKey	*R,const F32* BA,int b_count)
+IC void MixAdd(CKey &Result,const CKey	*R,const f32* BA,int b_count)
 {
 	key_identity(Result);
 	MixinAdd(Result,R,BA,b_count);
 }
 
-IC void MixChannels(CKey &Result,const CKey	*R,const F32* BA,int b_count)
+IC void MixChannels(CKey &Result,const CKey	*R,const f32* BA,int b_count)
 {
 	VERIFY(b_count>0);
 	//Result.Q.set(R[0].Q);
@@ -1003,7 +997,6 @@ IC void MixChannels(CKey &Result,const CKey	*R,const F32* BA,int b_count)
 	//BA[0] = 1;
 	MixinAdd(Result,R,BA,b_count);
 }
-
 
 // calculate single bone with key blending and callbck calling
 void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, u8 channel_mask /*= (1<<0)*/)
@@ -1016,10 +1009,10 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 
 			CKey				R[MAX_CHANNELS][MAX_BLENDED];	//all keys 
 			CKey				BK[MAX_CHANNELS][MAX_BLENDED];	//base keys
-			F32				BA[MAX_CHANNELS][MAX_BLENDED];	//all factors
+			f32				BA[MAX_CHANNELS][MAX_BLENDED];	//all factors
 
 			int					b_counts[MAX_CHANNELS]	= {0,0,0,0}; //channel counts
-			//F32				BCA[MAX_CHANNELS]		= {0,0,0,0}; //channel factors
+			//f32				BCA[MAX_CHANNELS]		= {0,0,0,0}; //channel factors
 	
 			BlendSVecCIt		BI;
 			for (BI=Blend.begin(); BI!=Blend.end(); BI++)
@@ -1048,7 +1041,7 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 
 			// Blend them together
 			CKey	channels[MAX_CHANNELS];
-			F32	BC		[MAX_CHANNELS];
+			f32	BC		[MAX_CHANNELS];
 			u16			ch_count = 0;
 
 			for(u16 j= 0;MAX_CHANNELS>j;++j)
@@ -1101,10 +1094,10 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 
 			CBlend*			B		=	*BI;
 			CMotion&		M		=	*LL_GetMotion(B->motionID,SelfID);
-			F32			time	=	B->timeCurrent*F32(SAMPLE_FPS);
+			f32			time	=	B->timeCurrent*f32(SAMPLE_FPS);
 			u32				frame	=	iFloor(time);
 			u32				count	=	M.get_count();
-			F32			delta	=	time-F32(frame);
+			f32			delta	=	time-f32(frame);
 
 			Log("flTKeyPresent",M.test_flag(flTKeyPresent));
 			Log("M._initT",M._initT);
@@ -1117,12 +1110,12 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 			CKeyQT*	K2t	= &M._keysT[(frame+1)%count];
 
 			Fvector T1,T2,Dt;
-			T1.x		= F32(K1t->x)*M._sizeT.x+M._initT.x;
-			T1.y		= F32(K1t->y)*M._sizeT.y+M._initT.y;
-			T1.z		= F32(K1t->z)*M._sizeT.z+M._initT.z;
-			T2.x		= F32(K2t->x)*M._sizeT.x+M._initT.x;
-			T2.y		= F32(K2t->y)*M._sizeT.y+M._initT.y;
-			T2.z		= F32(K2t->z)*M._sizeT.z+M._initT.z;
+			T1.x		= f32(K1t->x)*M._sizeT.x+M._initT.x;
+			T1.y		= f32(K1t->y)*M._sizeT.y+M._initT.y;
+			T1.z		= f32(K1t->z)*M._sizeT.z+M._initT.z;
+			T2.x		= f32(K2t->x)*M._sizeT.x+M._initT.x;
+			T2.y		= f32(K2t->y)*M._sizeT.y+M._initT.y;
+			T2.z		= f32(K2t->z)*M._sizeT.z+M._initT.z;
 
 			Dt.lerp	(T1,T2,delta);
 
@@ -1199,6 +1192,7 @@ void	CKinematicsAnimated::BoneChain_Calculate		(const CBoneData* bd, CBoneInstan
 	bi.Callback_overwrite =ow;
 //
 }
+
 void CKinematicsAnimated::OnCalculateBones		()
 {
 	UpdateTracks	()	;

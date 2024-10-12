@@ -104,7 +104,7 @@ BOOL CAviPlayerCustom::Load (char* fname)
 	}
 
 	m_dwFrameTotal	= aviInfo.dwLength;
-	m_fCurrentRate	= (F32) aviInfo.dwRate / (F32)aviInfo.dwScale;
+	m_fCurrentRate	= (f32) aviInfo.dwRate / (f32)aviInfo.dwScale;
 
 	m_dwWidth			= aviInfo.dwWidth;
 	m_dwHeight		= aviInfo.dwHeight;

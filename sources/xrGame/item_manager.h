@@ -25,8 +25,8 @@ public:
 	IC					CItemManager	(CCustomMonster *object);
 	virtual bool		useful			(const CGameObject *object) const;
 	virtual bool		is_useful		(const CGameObject *object) const;
-	virtual	float		evaluate		(const CGameObject *object) const;
-	virtual	float		do_evaluate		(const CGameObject *object) const;
+	virtual	f32		evaluate		(const CGameObject *object) const;
+	virtual	f32		do_evaluate		(const CGameObject *object) const;
 	virtual void		update			();
 			void		remove_links	(CObject *object);
 	virtual	void		on_restrictions_change	();

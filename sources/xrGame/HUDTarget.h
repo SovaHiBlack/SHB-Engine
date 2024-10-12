@@ -16,7 +16,7 @@ private:
 private:
 	ref_shader		hShader;
 	ref_geom		hGeom;
-	float			fuzzyShowInfo;
+	f32			fuzzyShowInfo;
 	rq_result		RQ;
 	rq_results		RQR;
 

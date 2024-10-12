@@ -35,8 +35,8 @@ public:
 							CInventory			();
 	virtual					~CInventory			();
 
-	float 					TotalWeight			() const;
-	float 					CalcTotalWeight		();
+	f32 					TotalWeight			() const;
+	f32 					CalcTotalWeight		();
 
 	void					Take				(CGameObject *pObj, bool bNotActivate, bool strict_placement);
 	bool					DropItem			(CGameObject *pObj);
@@ -56,7 +56,6 @@ public:
 	bool 					CanPutInRuck		(PIItem pIItem) const;
 
 	bool					CanTakeItem			(CInventoryItem *inventory_item) const;
-
 
 	bool					Activate			(u32 slot, EActivationReason reason=eGeneral, bool bForce=false);
 	void					Activate_deffered	(u32 slot, u32 _frame);
@@ -112,10 +111,10 @@ public:
 	//возвращает все кроме PDA в слоте и болта
 	void				AddAvailableItems			(TIItemContainer& items_container, bool for_trade) const;
 
-	float				GetTakeDist					() const				{return m_fTakeDist;}
+	f32				GetTakeDist					() const				{return m_fTakeDist;}
 	
-	float				GetMaxWeight				() const				{return m_fMaxWeight;}
-	void				SetMaxWeight				(float weight)			{m_fMaxWeight = weight;}
+	f32				GetMaxWeight				() const				{return m_fMaxWeight;}
+	void				SetMaxWeight				(f32 weight)			{m_fMaxWeight = weight;}
 
 	u32					BeltWidth					() const;
 
@@ -153,15 +152,15 @@ protected:
 	bool				m_bSlotsUseful;
 
 	// максимальный вес инвентаря
-	float				m_fMaxWeight;
+	f32				m_fMaxWeight;
 	// текущий вес в инвентаре
-	float				m_fTotalWeight;
+	f32				m_fTotalWeight;
 
 	// Максимальное кол-во объектов
 	//на поясе
 	u32					m_iMaxBelt;	
 	// Максимальное расстояние на котором можно подобрать объект
-	float				 m_fTakeDist;
+	f32				 m_fTakeDist;
 
 	//кадр на котором произошло последнее изменение в инвенторе
 	u32					m_dwModifyFrame;

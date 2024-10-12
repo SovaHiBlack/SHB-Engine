@@ -11,7 +11,7 @@
 #include "graph_abstract.h"
 #include "patrol_point.h"
 
-class CPatrolPath : public CGraphAbstractSerialize<CPatrolPoint,float,u32> {
+class CPatrolPath : public CGraphAbstractSerialize<CPatrolPoint, f32,u32> {
 private:
 	struct CAlwaysTrueEvaluator {
 		IC	bool	operator()	(const Fvector &position) const
@@ -21,7 +21,7 @@ private:
 	};
 
 protected:
-	typedef CGraphAbstractSerialize<CPatrolPoint,float,u32> inherited;
+	typedef CGraphAbstractSerialize<CPatrolPoint, f32,u32> inherited;
 
 public:
 #ifdef DEBUG

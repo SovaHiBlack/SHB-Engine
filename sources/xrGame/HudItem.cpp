@@ -198,11 +198,11 @@ void CHudItem::StopHudInertion()
 	m_bInertionEnable = false;
 }
 
-static const float PITCH_OFFSET_R	= 0.017f;
-static const float PITCH_OFFSET_N	= 0.012f;
-static const float PITCH_OFFSET_D	= 0.02f;
-static const float ORIGIN_OFFSET	= -0.05f;
-static const float TENDTO_SPEED		= 5.f;
+static const f32 PITCH_OFFSET_R	= 0.017f;
+static const f32 PITCH_OFFSET_N	= 0.012f;
+static const f32 PITCH_OFFSET_D	= 0.02f;
+static const f32 ORIGIN_OFFSET	= -0.05f;
+static const f32 TENDTO_SPEED		= 5.f;
 
 void CHudItem::UpdateHudInertion		(Fmatrix& hud_trans)
 {
@@ -219,7 +219,7 @@ void CHudItem::UpdateHudInertion		(Fmatrix& hud_trans)
 
 		// clamp by PI_DIV_2
 		Fvector last;						last.normalize_safe(m_last_dir);
-		float dot							= last.dotproduct(xform.k);
+		f32 dot							= last.dotproduct(xform.k);
 		if (dot<EPS){
 			Fvector v0;
 			v0.crossproduct			(m_last_dir,xform.k);
@@ -232,7 +232,7 @@ void CHudItem::UpdateHudInertion		(Fmatrix& hud_trans)
 		origin.mad		(diff_dir,ORIGIN_OFFSET);
 
 		// pitch compensation
-		float pitch		= angle_normalize_signed(xform.k.getP());
+		f32 pitch		= angle_normalize_signed(xform.k.getP());
 		origin.mad		(xform.k,	-pitch * PITCH_OFFSET_D);
 		origin.mad		(xform.i,	-pitch * PITCH_OFFSET_R);
 		origin.mad		(xform.j,	-pitch * PITCH_OFFSET_N);

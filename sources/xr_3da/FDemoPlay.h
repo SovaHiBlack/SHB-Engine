@@ -17,8 +17,8 @@ class ENGINE_API CDemoPlay :	public CEffectorCam
 
 	xr_vector<Fmatrix>	seq					;
 	int					m_count				;
-	F32				fStartTime			;
-	F32				fSpeed				;
+	f32				fStartTime			;
+	f32				fSpeed				;
 	u32					dwCyclesLeft		;
 
 	// statistics
@@ -26,13 +26,14 @@ class ENGINE_API CDemoPlay :	public CEffectorCam
 	CTimer				stat_Timer_frame	;
 	CTimer				stat_Timer_total	;
 	u32					stat_StartFrame		;
-	xr_vector<F32>	stat_table			;
+	xr_vector<f32>	stat_table			;
 	
 	void				stat_Start	()		;
 	void				stat_Stop	()		;
-public:
-	virtual	BOOL		Process		(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);
 
-						CDemoPlay	(const char *name, F32 ms, u32 cycles, F32 life_time=60*60*1000);
+public:
+	virtual	BOOL		Process		(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
+
+						CDemoPlay	(const char *name, f32 ms, u32 cycles, f32 life_time=60*60*1000);
 	virtual				~CDemoPlay	();
 };

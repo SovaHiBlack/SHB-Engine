@@ -22,35 +22,35 @@ shared_str	s_bones_array_const;
 
 #pragma pack(push,1)
 /*
-F32 u_P	(s16 v)
+f32 u_P	(s16 v)
 {
-	return	F32(v)/(32767.f/12.f);
+	return	f32(v)/(32767.f/12.f);
 }
-s16	q_P		(F32 v)
+s16	q_P		(f32 v)
 {
 	int		_v	= clampr(iFloor(v*(32767.f/12.f)), -32768, 32767);
 	return	s16	(_v);
 }
-u8	q_N		(F32 v)
+u8	q_N		(f32 v)
 {
 	int		_v	= clampr(iFloor((v+1.f)*127.5f), 0, 255);
 	return	u8	(_v);
 }
-s16	q_tc	(F32 v)
+s16	q_tc	(f32 v)
 {
 	int		_v	= clampr(iFloor(v*(32767.f/16.f)), -32768, 32767);
 	return	s16	(_v);
 }
 #ifdef _DEBUG
-F32 errN	(Fvector3 v, u8* qv)
+f32 errN	(Fvector3 v, u8* qv)
 {
 	Fvector3	uv;	
-	uv.set		(F32(qv[0]),F32(qv[1]),F32(qv[2])).div(255.f).mul(2.f).sub(1.f);
+	uv.set		(f32(qv[0]),f32(qv[1]),f32(qv[2])).div(255.f).mul(2.f).sub(1.f);
 	uv.normalize();
 	return		v.dotproduct(uv);
 }
 #else
-F32 errN	(Fvector3 v, u8* qv)	{ return 0; }
+f32 errN	(Fvector3 v, u8* qv)	{ return 0; }
 #endif
 
 static	D3DVERTEXELEMENT9 dwDecl_01W	[] =	// 24bytes
@@ -112,7 +112,7 @@ struct	vertHW_2W
 	u32			_T		;
 	u32			_B		;
 	s16			_tc_i	[4];
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index0, int index1, F32 w)
+	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index0, int index1, f32 w)
 	{
 		N.normalize_safe	();
 		T.normalize_safe	();
@@ -129,9 +129,9 @@ struct	vertHW_2W
 		_tc_i[2]	= s16	(index0);
 		_tc_i[3]	= s16	(index1);
 	}
-	F32 get_weight()
+	f32 get_weight()
 	{
-		return	F32(color_get_A(_N_w))/255.f;
+		return	f32(color_get_A(_N_w))/255.f;
 	}
 	u16 get_bone(u16 w)
 	{
@@ -157,7 +157,7 @@ struct	vertHW_NW
 	u32			_weights;		// weights,				4*1		=	4b, 28b
 	s16			_tc		[2];	// qtc,					2*2		=	4b,	32b
 	//								*total*						=	32b
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index0, int index1, F32 w)
+	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, Fvector2& tc, int index0, int index1, f32 w)
 	{
 		N.normalize_safe	();
 		T.normalize_safe	();
@@ -174,9 +174,9 @@ struct	vertHW_NW
 		_tc_i[2]	= s16	(index0);
 		_tc_i[3]	= s16	(index1);
 	}
-	F32 get_weight()
+	f32 get_weight()
 	{
-		return	F32(color_get_A(_N_w))/255.f;
+		return	f32(color_get_A(_N_w))/255.f;
 	}
 	u16 get_bone(u16 w)
 	{
@@ -412,7 +412,7 @@ BOOL	CSkeletonX::has_visible_bones		()
 // Wallmarks
 //-----------------------------------------------------------------------------------------------------
 #include "cl_intersect.h"
-BOOL	CSkeletonX::_PickBoneSoft1W	(Fvector& normal, F32& dist, const Fvector& S, const Fvector& D, u16* indices, CBoneData::FacesVec& faces)
+BOOL	CSkeletonX::_PickBoneSoft1W	(Fvector& normal, f32& dist, const Fvector& S, const Fvector& D, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY				(*Vertices1W);
 	bool intersect		= FALSE;
@@ -424,9 +424,9 @@ BOOL	CSkeletonX::_PickBoneSoft1W	(Fvector& normal, F32& dist, const Fvector& S, 
 			const Fmatrix& xform	= Parent->LL_GetBoneInstance((u16)vert.matrix).mRenderTransform; 
 			xform.transform_tiny	(p[k],vert.P);
 		}
-		F32 u;
-		F32 v;
-		F32 range = flt_max;
+		f32 u;
+		f32 v;
+		f32 range = flt_max;
 		if (CDB::TestRayTri(S,D,p,u,v,range,true)&&(range<dist)){
 			normal.mknormal(p[0],p[1],p[2]);
 			dist		= range;
@@ -436,7 +436,7 @@ BOOL	CSkeletonX::_PickBoneSoft1W	(Fvector& normal, F32& dist, const Fvector& S, 
 	return intersect;
 }
 
-BOOL CSkeletonX::_PickBoneSoft2W	(Fvector& normal, F32& dist, const Fvector& S, const Fvector& D, u16* indices, CBoneData::FacesVec& faces)
+BOOL CSkeletonX::_PickBoneSoft2W	(Fvector& normal, f32& dist, const Fvector& S, const Fvector& D, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY				(*Vertices2W);
 	bool intersect		= FALSE;
@@ -452,9 +452,9 @@ BOOL CSkeletonX::_PickBoneSoft2W	(Fvector& normal, F32& dist, const Fvector& S, 
 			xform1.transform_tiny	(P1,vert.P);
 			p[k].lerp				(P0,P1,vert.w);
 		}
-		F32 u;
-		F32 v;
-		F32 range = flt_max;
+		f32 u;
+		f32 v;
+		f32 range = flt_max;
 		if (CDB::TestRayTri(S,D,p,u,v,range,true)&&(range<dist)){
 			normal.mknormal(p[0],p[1],p[2]);
 			dist		= range;
@@ -465,7 +465,7 @@ BOOL CSkeletonX::_PickBoneSoft2W	(Fvector& normal, F32& dist, const Fvector& S, 
 }
 
 // Fill Vertices
-void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, u16* indices, CBoneData::FacesVec& faces)
+void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY				(*Vertices1W);
 	for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
@@ -483,7 +483,7 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 		}
 		Fvector test_normal;
 		test_normal.mknormal	(p[0],p[1],p[2]);
-		F32 cosa				= test_normal.dotproduct(normal);
+		f32 cosa				= test_normal.dotproduct(normal);
 		if (cosa< EPSILON_5)			continue;
 		if (CDB::TestSphereTri(wm.ContactPoint(),size,p))
 		{
@@ -498,7 +498,7 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 		}
 	}
 }
-void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, F32 size, u16* indices, CBoneData::FacesVec& faces)
+void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY				(*Vertices2W);
 	for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
@@ -520,7 +520,7 @@ void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm,
 		}
 		Fvector test_normal;
 		test_normal.mknormal	(p[0],p[1],p[2]);
-		F32 cosa				= test_normal.dotproduct(normal);
+		f32 cosa				= test_normal.dotproduct(normal);
 		if (cosa< EPSILON_5)			continue;
 		if (CDB::TestSphereTri(wm.ContactPoint(),size,p)){
 			Fvector				UV;

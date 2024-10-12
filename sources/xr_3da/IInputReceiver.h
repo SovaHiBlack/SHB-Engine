@@ -32,6 +32,6 @@ public:
 	virtual void	IR_OnKeyboardHold				(int dik)		{};
 };
 
-ENGINE_API extern F32			psMouseSens;
-ENGINE_API extern F32			psMouseSensScale;
+ENGINE_API extern f32			psMouseSens;
+ENGINE_API extern f32			psMouseSensScale;
 ENGINE_API extern Flags32		psMouseInvert;

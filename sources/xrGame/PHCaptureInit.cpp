@@ -235,19 +235,17 @@ void CPHCapture::Init(CInifile* ini)
 		return;
 	}
 
-	float 					pool_force_factor=4.f;
+	f32 					pool_force_factor=4.f;
 
 	m_capture_distance		=ini->r_float("capture","distance");					//distance
 	m_capture_force			=ini->r_float("capture","capture_force");				//capture force
 	m_capture_time			=ini->r_u32("capture","time_limit")*1000;				//time;		
 	m_time_start			=Device.dwTimeGlobal;
-	float max_pull_force    =ini->r_float("capture","pull_force");					//pull force
+	f32 max_pull_force    =ini->r_float("capture","pull_force");					//pull force
 	m_pull_force			=pool_force_factor*ph_world->Gravity()*m_taget_element->PhysicsShell()->getMass();
 	if(m_pull_force>max_pull_force) m_pull_force=max_pull_force;
 
-
-
-	float pulling_vel_scale =ini->r_float("capture","velocity_scale");				//
+	f32 pulling_vel_scale =ini->r_float("capture","velocity_scale");				//
 	m_taget_element->set_DynamicLimits(default_l_limit*pulling_vel_scale,default_w_limit*pulling_vel_scale);
 	//m_taget_element->PhysicsShell()->set_ObjectContactCallback(object_contactCallbackFun);
 	m_character->SetObjectContactCallback(object_contactCallbackFun);
@@ -268,7 +266,6 @@ void CPHCapture::Release()
 		m_island.RemoveJoint(m_joint);
 
 		dJointDestroy(m_joint);
-
 	}
 	m_joint=NULL;
 	if(m_ajoint)

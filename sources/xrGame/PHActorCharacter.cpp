@@ -84,21 +84,23 @@ RESTRICTOR_I CPHActorCharacter::Restrictor(CPHCharacter::ERestrictionType rtype)
 	R_ASSERT2(rtype<rtActor,"not valide restrictor");
 	return begin(m_restrictors)+rtype;
 }
-void CPHActorCharacter::SetRestrictorRadius(CPHCharacter::ERestrictionType rtype,float r)
+
+void CPHActorCharacter::SetRestrictorRadius(CPHCharacter::ERestrictionType rtype, f32 r)
 {
 	if(m_restrictors.size()>0)(*Restrictor(rtype))->SetRadius(r);
 }
 
-void SPHCharacterRestrictor::SetRadius(float r)
+void SPHCharacterRestrictor::SetRadius(f32 r)
 {
 	m_restrictor_radius=r;
 	if(m_character)
 	{
-		float h;
+		f32 h;
 		dGeomCylinderGetParams(m_restrictor,&r,&h);
 		dGeomCylinderSetParams(m_restrictor,m_restrictor_radius,h);
 	}
 }
+
 void CPHActorCharacter::Destroy()
 {
 	if(!b_exist) return;
@@ -109,6 +111,7 @@ void CPHActorCharacter::Destroy()
 	}
 	inherited::Destroy();
 }
+
 void CPHActorCharacter::ClearRestrictors()
 {
 	RESTRICTOR_I i=begin(m_restrictors),e=end(m_restrictors);
@@ -119,6 +122,7 @@ void CPHActorCharacter::ClearRestrictors()
 	}
 	m_restrictors.clear();
 }
+
 void SPHCharacterRestrictor::Destroy()
 {
 	if(m_restrictor) {
@@ -133,6 +137,7 @@ void SPHCharacterRestrictor::Destroy()
 	}
 	m_character=NULL;
 }
+
 void CPHActorCharacter::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
 {
 	inherited::SetPhysicsRefObject(ref_object);
@@ -142,11 +147,13 @@ void CPHActorCharacter::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
 		(*i)->SetPhysicsRefObject(ref_object);
 	}
 }
+
 void SPHCharacterRestrictor::SetPhysicsRefObject(CPhysicsShellHolder* ref_object)
 {
 	if(m_character)
 		dGeomUserDataSetPhysicsRefObject(m_restrictor,ref_object);
 }
+
 void CPHActorCharacter::SetMaterial							(u16 material)
 {
 	inherited::SetMaterial(material);
@@ -157,13 +164,15 @@ void CPHActorCharacter::SetMaterial							(u16 material)
 		(*i)->SetMaterial(material);
 	}
 }
+
 void SPHCharacterRestrictor::SetMaterial(u16 material)
 {
 	dGeomGetUserData(m_restrictor)->material=material;
 }
+
 void CPHActorCharacter::SetAcceleration(Fvector accel)
 {
-	Fvector cur_a,input_a;float cur_mug,input_mug;
+	Fvector cur_a,input_a; f32 cur_mug,input_mug;
 	cur_a.set(m_acceleration);cur_mug=m_acceleration.magnitude();
 	if(!fis_zero(cur_mug))cur_a.mul(1.f/cur_mug);
 	input_a.set(accel);input_mug=accel.magnitude();
@@ -193,17 +202,16 @@ void CPHActorCharacter::Jump(const Fvector& accel)
 		Enable();
 	}
 }
+
 void CPHActorCharacter::SetObjectContactCallback(ObjectContactCallbackFun* callback)
 {
 	inherited::SetObjectContactCallback(callback);
-
 }
 
 void CPHActorCharacter::Disable()
 {
 	inherited::Disable();
 }
-
 
 struct SFindPredicate
 {
@@ -220,9 +228,9 @@ struct SFindPredicate
 		return *b1||c->geom.g2==o->m_restrictor_transform;
 	}
 };
+
 void CPHActorCharacter::InitContact(dContact* c,bool &do_collide,u16 material_idx_1,u16	material_idx_2 )
 {
-
 	bool b1;
 	SFindPredicate fp(c,&b1);
 	RESTRICTOR_I r=std::find_if(begin(m_restrictors),end(m_restrictors),fp);
@@ -258,10 +266,10 @@ void CPHActorCharacter::InitContact(dContact* c,bool &do_collide,u16 material_id
 		}
 }
 
-void CPHActorCharacter::ChooseRestrictionType	(CPHCharacter::ERestrictionType my_type,float my_depth,CPHCharacter *ch)
+void CPHActorCharacter::ChooseRestrictionType	(CPHCharacter::ERestrictionType my_type, f32 my_depth,CPHCharacter *ch)
 {
 if (my_type!=rtStalker||(ch->RestrictionType()!=rtStalker&&ch->RestrictionType()!=rtStalkerSmall))return;
-float checkR=m_restrictors[rtStalkerSmall]->m_restrictor_radius*1.5f;//+m_restrictors[rtStalker]->m_restrictor_radius)/2.f;
+f32 checkR=m_restrictors[rtStalkerSmall]->m_restrictor_radius*1.5f;//+m_restrictors[rtStalker]->m_restrictor_radius)/2.f;
 
 switch(ch->RestrictionType())
 {

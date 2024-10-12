@@ -52,7 +52,7 @@ void CHUDCrosshair::SetDispersion	(f32 disp)
 
 	Fvector2		scr_size;
 	scr_size.set	(f32(::Render->getTarget()->get_width()), f32(::Render->getTarget()->get_height()));
-	float radius_pixels		= _abs(r.x)*scr_size.x/2.0f;
+	f32 radius_pixels		= _abs(r.x)*scr_size.x/2.0f;
 	//	clamp(radius_pixels, min_radius, max_radius);
 	target_radius		= radius_pixels; 
 }
@@ -110,7 +110,7 @@ void CHUDCrosshair::OnRender ()
 	if(!fsimilar(target_radius,radius))
 	{
 		f32 sp				= radius_speed_perc * scr_size.x ;
-		float radius_change		= sp*Device.fTimeDelta;
+		f32 radius_change		= sp*Device.fTimeDelta;
 		clamp					(radius_change, 0.0f, sp*0.033f); // clamp to 30 fps
 		clamp					(radius_change, 0.0f, _abs(target_radius-radius));
 

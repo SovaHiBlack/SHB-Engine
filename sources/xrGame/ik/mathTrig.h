@@ -41,9 +41,9 @@
 #define _TRIGH
 
 
-inline float iszero(float x) 
+IC f32 iszero(f32 x)
 {
-    return x*x < 1e-6;
+	return x*x < 1e-6;
 }
 
 #if 0
@@ -56,40 +56,38 @@ inline float iszero(float x)
 //
 // Returns angle between angles x and y
 //
-double angle_distance(float x, float y);
+double angle_distance(f32 x, f32 y);
 
 #endif
 
 // Solve a*cos(theta) + b*sin(theta) = c
-int   solve_trig1(float a, float b, float c, float theta[2]);
+int   solve_trig1(f32 a, f32 b, f32 c, f32 theta[2]);
 
 // Solves
 //      a*cos(theta) - b*sin(theta) = c
 //      a*sin(theta) + b*cos(theta) = d
-float solve_trig2(float a, float b, float c, float d);
+f32 solve_trig2(f32 a, f32 b, f32 c, f32 d);
 
 //
 // Returns both solutions for arcos and arcsin
 //
-int myacos(float x, float solns[2]);
-int myasin(float x, float solns[2]);
+int myacos(f32 x, f32 solns[2]);
+int myasin(f32 x, f32 solns[2]);
 
 
 //
 // Use formula a^2 + b^2 - 2abcos(theta) = c^2 to get theta
 //
-inline int law_of_cosines(float a, float b, float c, float &angle)
+IC int law_of_cosines(f32 a, f32 b, f32 c, f32& angle)
 {
-    float temp = (a*a+b*b-c*c)/(2*a*b);
+	f32 temp = (a*a+b*b-c*c)/(2*a*b);
 
-    if (_abs(temp) > 1.0)
+	if (_abs(temp) > 1.0)
 	return 0;
-    else
-	angle = (float) acos(temp);
+	else
+	angle = (f32) acos(temp);
 
-    return 1;
+	return 1;
 }
-
-
 
 #endif

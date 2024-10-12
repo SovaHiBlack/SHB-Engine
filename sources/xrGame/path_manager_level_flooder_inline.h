@@ -63,7 +63,7 @@ IC	bool CLevelFlooderPathManager::is_goal_reached	(const _index_type &node_index
 	VERIFY					(path);
 	path->push_back			(node_index);
 	best_node				= graph->vertex(node_index);
-//		y1						= (float)(best_node->position().y());
+//		y1						= (f32)(best_node->position().y());
 	return					(false);
 }
 

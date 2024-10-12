@@ -30,7 +30,7 @@ public:
 							~CPHActivationShape		( );
 	void					Create					(const Fvector start_pos, const Fvector start_size, CPhysicsShellHolder* ref_obj, EType type = etBox, u16 flags = 0);
 	void					Destroy					( );
-	bool					Activate				(const Fvector need_size, u16 steps, float max_displacement, float max_rotation, bool un_freeze_later = false);
+	bool					Activate				(const Fvector need_size, u16 steps, f32 max_displacement, f32 max_rotation, bool un_freeze_later = false);
 	const Fvector&			Position				( );
 	void					Size					(Fvector& size);
 	dBodyID					ODEBody					( )
@@ -42,7 +42,7 @@ public:
 private:
 	virtual void			PhDataUpdate			(dReal step);
 	virtual void			PhTune					(dReal step);
-	virtual void			CutVelocity				(float l_limit, float a_limit);
+	virtual void			CutVelocity				(f32 l_limit, f32 a_limit);
 	virtual void			InitContact				(dContact* c, bool& do_collide, u16, u16);
 	virtual dGeomID			dSpacedGeom				( );
 	virtual void			get_spatial_params		( );

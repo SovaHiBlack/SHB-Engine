@@ -23,10 +23,10 @@ class	ENGINE_API	CGammaControl;
 class ENGINE_API CRenderDevice 
 {
 private:
-    // Main objects used for creating and rendering the 3D scene
-    u32										m_dwWindowStyle;
-    RECT									m_rcWindowBounds;
-    RECT									m_rcWindowClient;
+	// Main objects used for creating and rendering the 3D scene
+	u32										m_dwWindowStyle;
+	RECT									m_rcWindowBounds;
+	RECT									m_rcWindowClient;
 
 	u32										Timer_MM_Delta;
 	CTimer_paused							Timer;
@@ -37,7 +37,7 @@ private:
 	void									_Destroy	(BOOL	bKeepTextures);
 	void									_SetupStates();
 public:
-    HWND									m_hWnd;
+	HWND									m_hWnd;
 	LRESULT									MsgProc		(HWND,UINT,WPARAM,LPARAM);
 
 	u32										dwFrame;
@@ -45,8 +45,8 @@ public:
 	u32										dwPrecacheTotal;
 
 	u32										dwWidth, dwHeight;
-	F32										fWidth_2;
-	F32										fHeight_2;
+	f32										fWidth_2;
+	f32										fHeight_2;
 	BOOL									b_is_Ready;
 	BOOL									b_is_Active;
 	void									OnWM_Activate(WPARAM wParam, LPARAM lParam);
@@ -84,8 +84,8 @@ public:
 	CGammaControl							Gamma;
 
 	// Engine flow-control
-	F32										fTimeDelta;
-	F32										fTimeGlobal;
+	f32										fTimeDelta;
+	f32										fTimeGlobal;
 	u32										dwTimeDelta;
 	u32										dwTimeGlobal;
 	u32										dwTimeContinual;
@@ -99,12 +99,12 @@ public:
 	Fmatrix									mProject;
 	Fmatrix									mFullTransform;
 	Fmatrix									mInvFullTransform;
-	F32										fFOV;
-	F32										fASPECT;
+	f32										fFOV;
+	f32										fASPECT;
 	
 	CRenderDevice			()
 	{
-	    m_hWnd              = NULL;
+		m_hWnd              = NULL;
 		b_is_Active			= FALSE;
 		b_is_Ready			= FALSE;
 		Timer.Start			();
@@ -140,13 +140,13 @@ public:
 	void ShutDown							(void);
 
 public:
-	void time_factor						(const F32& time_factor)
+	void time_factor						(const f32& time_factor)
 	{
 		Timer.time_factor		(time_factor);
 		TimerGlobal.time_factor	(time_factor);
 	}
 	
-	IC	const F32& time_factor			() const
+	IC	const f32& time_factor			() const
 	{
 		VERIFY					(Timer.time_factor() == TimerGlobal.time_factor());
 		return					(Timer.time_factor());

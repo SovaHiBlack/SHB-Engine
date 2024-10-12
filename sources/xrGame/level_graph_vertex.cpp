@@ -12,13 +12,13 @@
 
 #include "ai_space.h"
 
-float CLevelGraph::distance(const Fvector &position, const CLevelGraph::CVertex *vertex) const
+f32 CLevelGraph::distance(const Fvector &position, const CLevelGraph::CVertex *vertex) const
 {
 	SContour				_contour;
 	contour					(_contour,vertex);
 
 	// calculate minimal distance
-	float					best,dist;
+	f32					best,dist;
 	best					= distance(position,_contour.v1,_contour.v2);
 	dist					= distance(position,_contour.v2,_contour.v3);
 	if (dist < best)
@@ -97,13 +97,13 @@ void CLevelGraph::choose_point(const Fvector &start_point, const Fvector &finish
 	}
 }
 
-float CLevelGraph::check_position_in_direction(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_position, const float max_distance) const
+f32 CLevelGraph::check_position_in_direction(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_position, const f32 max_distance) const
 {
 	SContour				_contour;
 	const_iterator			I,E;
 	int						saved_index, iPrevIndex = -1, iNextNode;
 	Fvector					start_point = start_position, temp_point = start_position, finish_point = finish_position;
-	float					fCurDistance = 0.f, fDistance = start_position.distance_to_xz(finish_position);
+	f32					fCurDistance = 0.f, fDistance = start_position.distance_to_xz(finish_position);
 	u32						dwCurNode = start_vertex_id;
 
 	while (!inside(vertex(dwCurNode),finish_position) && (fCurDistance < (fDistance + EPS_L))) {
@@ -131,7 +131,7 @@ float CLevelGraph::check_position_in_direction(u32 start_vertex_id, const Fvecto
 		return				(max_distance);
 }
 
-float CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &start_position, const Fvector &tDirection, float fDistance, xr_vector<u32> &tpaStack, xr_vector<bool> *tpaMarks) const
+f32 CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &start_position, const Fvector &tDirection, f32 fDistance, xr_vector<u32> &tpaStack, xr_vector<bool> *tpaMarks) const
 {
 	Fvector					finish_point, direction = tDirection;
 	direction.normalize		();
@@ -140,18 +140,18 @@ float CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &s
 	return					(mark_nodes_in_direction(start_vertex_id,start_position,finish_point,tpaStack,tpaMarks));
 }
 
-float CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &start_position, u32 finish_vertex_id, xr_vector<u32> &tpaStack, xr_vector<bool> *tpaMarks) const
+f32 CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &start_position, u32 finish_vertex_id, xr_vector<u32> &tpaStack, xr_vector<bool> *tpaMarks) const
 {
 	return					(mark_nodes_in_direction(start_vertex_id,start_position,vertex_position(finish_vertex_id),tpaStack,tpaMarks));
 }
 
-float CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, xr_vector<u32> &tpaStack, xr_vector<bool> *tpaMarks) const
+f32 CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, xr_vector<u32> &tpaStack, xr_vector<bool> *tpaMarks) const
 {
 	SContour				_contour;
 	const_iterator			I,E;
 	int						saved_index, iPrevIndex = -1, iNextNode;
 	Fvector					temp_point = start_point;
-	float					fDistance = start_point.distance_to(finish_point), fCurDistance = 0.f;
+	f32					fDistance = start_point.distance_to(finish_point), fCurDistance = 0.f;
 	u32						dwCurNode = start_vertex_id;
 
 	while (!inside(vertex(dwCurNode),finish_point) && (fCurDistance < (fDistance + EPS_L))) {
@@ -180,13 +180,13 @@ float CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const Fvector &s
 	return					(fCurDistance);
 }
 
-float CLevelGraph::farthest_vertex_in_direction(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, u32 &finish_vertex_id, xr_vector<bool> *tpaMarks, bool check_accessability) const
+f32 CLevelGraph::farthest_vertex_in_direction(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, u32 &finish_vertex_id, xr_vector<bool> *tpaMarks, bool check_accessability) const
 {
 	SContour				_contour;
 	const_iterator			I,E;
 	int						saved_index, iPrevIndex = -1, iNextNode;
 	Fvector					temp_point = start_point;
-	float					fDistance = start_point.distance_to(finish_point), fCurDistance = 0.f;
+	f32					fDistance = start_point.distance_to(finish_point), fCurDistance = 0.f;
 	u32						dwCurNode = start_vertex_id;
 
 	while (!inside(vertex(dwCurNode),finish_point) && (fCurDistance < (fDistance + EPS_L))) {
@@ -239,7 +239,7 @@ u32	 CLevelGraph::check_position_in_direction_slow	(u32 start_vertex_id, const F
 	Fvector2				temp;
 	unpack_xz				(vertex(start_vertex_id),temp.x,temp.y);
 
-	float					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+	f32					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 	for (;;) {
 		const_iterator		I,E;
 		begin				(cur_vertex_id,I,E);
@@ -260,7 +260,7 @@ u32	 CLevelGraph::check_position_in_direction_slow	(u32 start_vertex_id, const F
 				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
-				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+				f32			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 				if (dist > cur_sqr)
 					continue;
 				
@@ -294,7 +294,7 @@ bool CLevelGraph::check_vertex_in_direction_slow	(u32 start_vertex_id, const Fve
 	Fvector2				temp;
 	unpack_xz				(vertex(start_vertex_id),temp.x,temp.y);
 
-	float					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+	f32					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 	for (;;) {
 		const_iterator		I,E;
 		begin				(cur_vertex_id,I,E);
@@ -313,7 +313,7 @@ bool CLevelGraph::check_vertex_in_direction_slow	(u32 start_vertex_id, const Fve
 				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
-				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+				f32			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 				if (dist > cur_sqr)
 					continue;
 
@@ -372,7 +372,7 @@ bool CLevelGraph::create_straight_path(u32 start_vertex_id, const Fvector2 &star
 		tpaOutputNodes.push_back(start_vertex_id);
 	}
 
-	float					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+	f32					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 	for (;;) {
 		const_iterator		I,E;
 		begin				(cur_vertex_id,I,E);
@@ -389,7 +389,7 @@ bool CLevelGraph::create_straight_path(u32 start_vertex_id, const Fvector2 &star
 				Fvector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
-				float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+				f32			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 				if (dist > cur_sqr)
 					continue;
 
@@ -447,9 +447,9 @@ bool CLevelGraph::create_straight_path(u32 start_vertex_id, const Fvector2 &star
 	}
 }
 
-float CLevelGraph::cover_in_direction(float fAngle, float b1, float b0, float b3, float b2) const
+f32 CLevelGraph::cover_in_direction(f32 fAngle, f32 b1, f32 b0, f32 b3, f32 b2) const
 {
-	float fResult;
+	f32 fResult;
 	
 	if (fAngle < PI_DIV_2)
 		;
@@ -490,7 +490,7 @@ bool CLevelGraph::neighbour_in_direction	(const Fvector &direction, u32 start_ve
 	Fvector2				temp;
 	unpack_xz				(vertex(start_vertex_id),temp.x,temp.y);
 
-	float					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+	f32					cur_sqr = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 	const_iterator			I,E;
 	begin					(cur_vertex_id,I,E);
 	for ( ; I != E; ++I) {
@@ -504,7 +504,7 @@ bool CLevelGraph::neighbour_in_direction	(const Fvector &direction, u32 start_ve
 			Fvector2		temp;
 			temp.add		(box.min,box.max);
 			temp.mul		(.5f);
-			float			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
+			f32			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
 			if (dist > cur_sqr)
 				continue;
 			return			(true);

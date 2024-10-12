@@ -32,7 +32,7 @@ void CPerlinNoise1D::init()
 	for (i = 0 ; i < B ; i++)
 	{
 		p[i] = i;
-		g1[i] = (F32)((rand() % (B + B)) - B) / B;
+		g1[i] = (f32)((rand() % (B + B)) - B) / B;
 	}
 
 	while (--i)
@@ -49,16 +49,16 @@ void CPerlinNoise1D::init()
 	}
 }
 
-F32 CPerlinNoise1D::noise(F32 arg)
+f32 CPerlinNoise1D::noise(f32 arg)
 {
 	int bx0, bx1;
-	F32 rx0;
-	F32 rx1;
-	F32 sx;
-	F32 t;
-	F32 u;
-	F32 v;
-	F32 vec[1];
+	f32 rx0;
+	f32 rx1;
+	f32 sx;
+	f32 t;
+	f32 u;
+	f32 v;
+	f32 vec[1];
 
 	vec[0] = arg;
 
@@ -78,10 +78,10 @@ F32 CPerlinNoise1D::noise(F32 arg)
 	return lerp(sx, u, v);
 }
 
-F32 CPerlinNoise1D::Get(F32 v)
+f32 CPerlinNoise1D::Get(f32 v)
 {
-	F32 result	= 0.0f;
-	F32 amp		= mAmplitude;
+	f32 result	= 0.0f;
+	f32 amp		= mAmplitude;
 	v				*=mFrequency;
 	for(int i=0; i<mOctaves; i++){
 		result		+= noise(v)*amp;
@@ -91,19 +91,19 @@ F32 CPerlinNoise1D::Get(F32 v)
 	return result;
 }
 
-F32 CPerlinNoise1D::GetContinious(F32 v)
+f32 CPerlinNoise1D::GetContinious(f32 v)
 {
-	F32 t_v=v;
+	f32 t_v=v;
 	if (mPrevContiniousTime!=0.0f)
 	{
 		v-=mPrevContiniousTime;
 	}
 	mPrevContiniousTime=t_v;
-	F32 result	= 0.0f;
-	F32 amp		= mAmplitude;
+	f32 result	= 0.0f;
+	f32 amp		= mAmplitude;
 	v				*=mFrequency;
 	for(int i=0; i<mOctaves; i++){
-		F32		octave_time=mTimes[i];
+		f32		octave_time=mTimes[i];
 		mTimes[i]	=octave_time+v;
 		result		+= noise(octave_time+v)*amp;
 		v			*= 2.0f;
@@ -123,7 +123,7 @@ void CPerlinNoise2D::init()
 	{
 		p[i] = i;
 		for (j = 0 ; j < 2 ; j++)
-			g2[i][j] = (F32)((rand() % (B + B)) - B) / B;
+			g2[i][j] = (f32)((rand() % (B + B)) - B) / B;
 		normalize(g2[i]);
 	}
 
@@ -142,21 +142,21 @@ void CPerlinNoise2D::init()
 	}
 }
 
-F32 CPerlinNoise2D::noise(const Fvector2& vec)
+f32 CPerlinNoise2D::noise(const Fvector2& vec)
 {
 	int bx0, bx1, by0, by1, b00, b10, b01, b11;
-	F32 rx0;
-	F32 rx1;
-	F32 ry0;
-	F32 ry1;
-	F32* q;
-	F32 sx;
-	F32 sy;
-	F32 a;
-	F32 b;
-	F32 t;
-	F32 u;
-	F32 v;
+	f32 rx0;
+	f32 rx1;
+	f32 ry0;
+	f32 ry1;
+	f32* q;
+	f32 sx;
+	f32 sy;
+	f32 a;
+	f32 b;
+	f32 t;
+	f32 u;
+	f32 v;
 	int i, j;
 
 	if (!mReady){ 
@@ -196,9 +196,9 @@ F32 CPerlinNoise2D::noise(const Fvector2& vec)
 	return lerp(sy, a, b);
 }
 
-void CPerlinNoise2D::normalize(F32 v[2])
+void CPerlinNoise2D::normalize(f32 v[2])
 {
-	F32 s;
+	f32 s;
 
 	s = _sqrt(v[0] * v[0] + v[1] * v[1]);
 	s = 1.0f/s;
@@ -206,11 +206,11 @@ void CPerlinNoise2D::normalize(F32 v[2])
 	v[1] = v[1] * s;
 }
 
-F32 CPerlinNoise2D::Get(F32 x, F32 y)
+f32 CPerlinNoise2D::Get(f32 x, f32 y)
 {
 	Fvector2 vec	= {x,y};
-	F32 result	= 0.0f;
-	F32 amp		= mAmplitude;
+	f32 result	= 0.0f;
+	f32 amp		= mAmplitude;
 	vec[0]			*=mFrequency;
 	vec[1]			*=mFrequency;
 	for(int i=0; i<mOctaves; i++){
@@ -233,7 +233,7 @@ void CPerlinNoise3D::init()
 	{
 		p[i] = i;
 		for (j = 0 ; j < 3 ; j++)
-			g3[i][j] = (F32)((rand() % (B + B)) - B) / B;
+			g3[i][j] = (f32)((rand() % (B + B)) - B) / B;
 		normalize(g3[i]);
 	}
 
@@ -252,25 +252,25 @@ void CPerlinNoise3D::init()
 	}
 }
 
-F32 CPerlinNoise3D::noise(const Fvector3& vec)
+f32 CPerlinNoise3D::noise(const Fvector3& vec)
 {
 	int bx0, bx1, by0, by1, bz0, bz1, b00, b10, b01, b11;
-	F32 rx0;
-	F32 rx1;
-	F32 ry0;
-	F32 ry1;
-	F32 rz0;
-	F32 rz1;
-	F32* q;
-	F32 sy;
-	F32 sz;
-	F32 a;
-	F32 b;
-	F32 c;
-	F32 d;
-	F32 t;
-	F32 u;
-	F32 v;
+	f32 rx0;
+	f32 rx1;
+	f32 ry0;
+	f32 ry1;
+	f32 rz0;
+	f32 rz1;
+	f32* q;
+	f32 sy;
+	f32 sz;
+	f32 a;
+	f32 b;
+	f32 c;
+	f32 d;
+	f32 t;
+	f32 u;
+	f32 v;
 	int i, j;
 
 	if (!mReady){ 
@@ -320,9 +320,9 @@ F32 CPerlinNoise3D::noise(const Fvector3& vec)
 	return lerp(sz, c, d);
 }
 
-void CPerlinNoise3D::normalize(F32 v[3])
+void CPerlinNoise3D::normalize(f32 v[3])
 {
-	F32 s;
+	f32 s;
 
 	s = _sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
 	s = 1.0f/s;
@@ -332,11 +332,11 @@ void CPerlinNoise3D::normalize(F32 v[3])
 	v[2] = v[2] * s;
 }
 
-F32 CPerlinNoise3D::Get(F32 x, F32 y, F32 z)
+f32 CPerlinNoise3D::Get(f32 x, f32 y, f32 z)
 {
 	Fvector3 vec	= {x,y,z};
-	F32 result	= 0.0f;
-	F32 amp		= mAmplitude;
+	f32 result	= 0.0f;
+	f32 amp		= mAmplitude;
 	vec[0]			*=mFrequency;
 	vec[1]			*=mFrequency;
 	vec[2]			*=mFrequency;
@@ -349,4 +349,3 @@ F32 CPerlinNoise3D::Get(F32 x, F32 y, F32 z)
 	}
 	return result;
 }
-

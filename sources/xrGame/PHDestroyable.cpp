@@ -221,14 +221,14 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 	////////////////////////////////////////////////////////////
 
 	////////////////////////////////////////////////////////////////////////////////////
-	float						random_min										=1.f	;  
-	float						random_hit_imp									=1.f	;
+	f32						random_min										=1.f	;
+	f32						random_hit_imp									=1.f	;
 	////////////////////////////////////////////////////////////////////////////////////
 	u16							ref_bone										=own_K->LL_GetBoneRoot();
 
-	float						imp_transition_factor							=1.f	;
-	float						lv_transition_factor							=1.f	;
-	float						av_transition_factor							=1.f	;
+	f32						imp_transition_factor							=1.f	;
+	f32						lv_transition_factor							=1.f	;
+	f32						av_transition_factor							=1.f	;
 	////////////////////////////////////////////////////////////////////////////////////
 	if(own_ini&&own_ini->section_exist("impulse_transition_to_parts"))
 	{
@@ -275,7 +275,7 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 		for(u16 i=0;i<new_el_number;++i)
 		{
 			CPhysicsElement* e=new_shell->get_ElementByStoreOrder(i);
-			float random_hit=random_min*e->getMass();
+			f32 random_hit=random_min*e->getMass();
 			if(m_fatal_hit.is_valide() && m_fatal_hit.bone()!=BI_NONE )
 			{
 				Fvector pos;
@@ -297,10 +297,6 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 			res_avell.mul(av_transition_factor);
 			e->set_AngularVel(res_avell);
 		}
-	
-
-
-
 
 	new_shell->Enable();
 	new_shell->EnableCollision();
@@ -312,7 +308,6 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 	CPHSkeleton* ps=dn->PPhysicsShellHolder()->PHSkeleton();
 	if(ps)
 	{
-	
 		if(own_ini&&own_ini->section_exist("autoremove_parts"))
 		{
 			ps->SetAutoRemove(1000*(READ_IF_EXISTS(own_ini,r_u32,"autoremove_parts","time",ps->DefaultExitenceTime())));
@@ -323,7 +318,6 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 			ps->SetAutoRemove(1000*(READ_IF_EXISTS(new_ini,r_u32,"autoremove","time",ps->DefaultExitenceTime())));
 		}
 	}
-
 }
 
 void CPHDestroyable::NotificateDestroy(CPHDestroyableNotificate *dn)

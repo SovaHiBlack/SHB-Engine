@@ -5,7 +5,7 @@
 #include	"..\XR_3DA\skeletonanimated.h"
 
 
-IC bool is_in( const motion_marks::interval &i, float v )
+IC bool is_in( const motion_marks::interval &i, f32 v )
 {
 	if( i.first < i.second )
 		return i.first < v && i.second > v;
@@ -17,7 +17,7 @@ bool blend_in( const CBlend &b, const motion_marks& marks )
 {
 	VERIFY					(!fis_zero(b.timeTotal));
 
-	float blend_time		= ( b.timeCurrent/b.timeTotal ) ;
+	f32 blend_time		= ( b.timeCurrent/b.timeTotal ) ;
 	blend_time				-= floor( blend_time );
 	return marks.pick_mark	( blend_time * b.timeTotal );
 
@@ -36,5 +36,4 @@ void	ik_anim_state::update		( CKinematicsAnimated *K, const	CBlend *b, u16 i )
 	if( MD.marks.size() <= i )
 		return;
 	is_step =  blend_in( *b, MD.marks[i] );//MD.marks[i].pick_mark( b->timeCurrent );
-	
 }

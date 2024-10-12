@@ -58,9 +58,9 @@ private:
 	}
 
 	template <>
-		T_ITEM				convert<float>		(pcstr str)
+		T_ITEM				convert<f32>		(pcstr str)
 	{
-		return (float)atof(str);
+		return (f32)atof(str);
 	}
 
 };

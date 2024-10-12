@@ -25,8 +25,8 @@ protected:
 	ALife::_TIME_ID m_timeToUpdate;
 
 	//диапазон импульсов катания шара
-	float m_fImpulseMin;
-	float m_fImpulseMax;
+	f32 m_fImpulseMin;
+	f32 m_fImpulseMax;
 };
 
 /*

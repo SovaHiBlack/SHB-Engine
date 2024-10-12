@@ -18,7 +18,7 @@
 #define HIT_POWER_EPSILON 0.05f
 #define WALLMARK_SIZE 0.04f
 
-float CBulletManager::m_fMinBulletSpeed = 2.f;
+f32 CBulletManager::m_fMinBulletSpeed = 2.f;
 
 
 SBullet::SBullet()
@@ -32,13 +32,13 @@ SBullet::~SBullet()
 
 void SBullet::Init(const Fvector& position,
 				   const Fvector& direction,
-				   float starting_speed,
-				   float power,
-				   float impulse,
+				   f32 starting_speed,
+				   f32 power,
+				   f32 impulse,
 				   u16	sender_id,
 				   u16 sendersweapon_id,
 				   ALife::EHitType e_hit_type,
-				   float maximum_distance,
+				   f32 maximum_distance,
 				   const CCartridge& cartridge,
 				   bool SendHit)
 {
@@ -155,13 +155,13 @@ void CBulletManager::Clear		()
 
 void CBulletManager::AddBullet(const Fvector& position,
 							   const Fvector& direction,
-							   float starting_speed,
-							   float power,
-							   float impulse,
+							   f32 starting_speed,
+							   f32 power,
+							   f32 impulse,
 							   u16	sender_id,
 							   u16 sendersweapon_id,
 							   ALife::EHitType e_hit_type,
-							   float maximum_distance,
+							   f32 maximum_distance,
 							   const CCartridge& cartridge,
 							   bool SendHit,
 							   bool AimBullet)
@@ -220,10 +220,10 @@ bool CBulletManager::CalcBullet (collide::rq_results & rq_storage, xr_vector<ISp
 {
 	VERIFY					(bullet);
 
-	float delta_time_sec	= float(delta_time)/1000.f;
-	float range				= bullet->speed*delta_time_sec;
+	f32 delta_time_sec	= f32(delta_time)/1000.f;
+	f32 range				= bullet->speed*delta_time_sec;
 	
-	float max_range					= bullet->max_dist - bullet->fly_dist;
+	f32 max_range					= bullet->max_dist - bullet->fly_dist;
 	if(range>max_range) 
 		range = max_range;
 
@@ -303,15 +303,15 @@ bool CBulletManager::CalcBullet (collide::rq_results & rq_storage, xr_vector<ISp
 	BOOL g_bDrawBulletHit = FALSE;
 #endif
 
-float SqrDistancePointToSegment(const Fvector& pt, const Fvector& orig, const Fvector& dir)
+	f32 SqrDistancePointToSegment(const Fvector& pt, const Fvector& orig, const Fvector& dir)
 {
 	Fvector diff;	diff.sub(pt,orig);
-	float fT		= diff.dotproduct(dir);
+	f32 fT		= diff.dotproduct(dir);
 
 	if ( fT <= 0.0f ){
 		fT = 0.0f;
 	}else{
-		float fSqrLen= dir.square_magnitude();
+		f32 fSqrLen= dir.square_magnitude();
 		if ( fT >= fSqrLen ){
 			fT = 1.0f;
 			diff.sub(dir);
@@ -357,18 +357,18 @@ void CBulletManager::Render	()
 		if(!bullet->flags.allow_tracer)	continue;
 		if (!bullet->flags.skipped_frame)  continue;
 
-		float length	= bullet->speed*float(m_dwStepTime)/1000.f;//dist.magnitude();
+		f32 length	= bullet->speed* f32(m_dwStepTime)/1000.f;//dist.magnitude();
 
 		if(length<m_fTracerLengthMin) continue;
 
 		if(length>m_fTracerLengthMax)
 			length			= m_fTracerLengthMax;
 
-		float width			= m_fTracerWidth;
-		float dist2segSqr = SqrDistancePointToSegment(Device.vCameraPosition, bullet->pos, Fvector().mul(bullet->dir, length));
+		f32 width			= m_fTracerWidth;
+		f32 dist2segSqr = SqrDistancePointToSegment(Device.vCameraPosition, bullet->pos, Fvector().mul(bullet->dir, length));
 		//---------------------------------------------
-		float MaxDistSqr = 1.0f;
-		float MinDistSqr = 0.09f;
+		f32 MaxDistSqr = 1.0f;
+		f32 MinDistSqr = 0.09f;
 		if (dist2segSqr < MaxDistSqr)
 		{
 			if (dist2segSqr < MinDistSqr) dist2segSqr = MinDistSqr;
@@ -388,13 +388,12 @@ void CBulletManager::Render	()
 		Fvector v0r, v1r;
 		Device.mFullTransform.transform(v0r, v0);
 		Device.mFullTransform.transform(v1r, v1);
-		float ViewWidth = v1r.distance_to(v0r);
+		f32 ViewWidth = v1r.distance_to(v0r);
 */
-//		float dist = _sqrt(dist2segSqr);
-//		Msg("dist - [%f]; ViewWidth - %f, [%f]", dist, ViewWidth, ViewWidth*float(Device.dwHeight));
+//		f32 dist = _sqrt(dist2segSqr);
+//		Msg("dist - [%f]; ViewWidth - %f, [%f]", dist, ViewWidth, ViewWidth*f32(Device.dwHeight));
 //		Msg("dist - [%f]", dist);
 		//---------------------------------------------
-
 
 		Fvector center;
 		center.mad				(bullet->pos, bullet->dir,  -length*.5f);

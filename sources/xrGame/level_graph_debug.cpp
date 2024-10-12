@@ -116,7 +116,7 @@ Fvector CLevelGraph::convert_position	(const Fvector &position)
 
 void CLevelGraph::draw_edge			(const int &vertex_id0, const int &vertex_id1)
 {
-	const float				radius = .005f;
+	const f32				radius = .005f;
 	const u32				vertex_color = D3DCOLOR_XRGB(0,255,255);
 	const u32				edge_color = D3DCOLOR_XRGB(0,255,0);
 	
@@ -150,7 +150,7 @@ void CLevelGraph::draw_stalkers		(const int &vertex_id)
 	if (!ai().get_alife())
 		return;
 
-	const float					radius = .0105f;
+	const f32					radius = .0105f;
 	const u32					color = D3DCOLOR_XRGB(255,0,0);
 	const CGameGraph			&graph = ai().game_graph();
 	CGameFont					&font = *HUD().Font().pFontDI;
@@ -215,7 +215,7 @@ void CLevelGraph::draw_stalkers		(const int &vertex_id)
 				continue;
 
 			const PATH			&path = stalker->brain().movement().detail().path();
-			const float			&walked_distance = (path.size() < 2) ? 0.f : stalker->brain().movement().detail().walked_distance();
+			const f32& walked_distance = (path.size() < 2) ? 0.f : stalker->brain().movement().detail().walked_distance();
 //			font.OutNext		("%s",stalker->name_replace());
 
 			if ((path.size() >= 2) && !fis_zero(walked_distance))
@@ -245,20 +245,20 @@ void CLevelGraph::draw_stalkers		(const int &vertex_id)
 
 		u32						game_vertex_id0 = stalker->m_tGraphID;
 		u32						game_vertex_id1 = path[path.size() - 2];
-		const float				&walked_distance = stalker->brain().movement().detail().walked_distance();
+		const f32& walked_distance = stalker->brain().movement().detail().walked_distance();
 
 		if (fis_zero(walked_distance))
 			continue;
 
 		Fvector					position0 = graph.vertex(game_vertex_id0)->game_point();
 		Fvector					position1 = graph.vertex(game_vertex_id1)->game_point();
-		const float				distance = position0.distance_to(position1);
+		const f32				distance = position0.distance_to(position1);
 
 		position0				= convert_position(position0);
 		position1				= convert_position(position1);
 
 		Fvector					direction = Fvector().sub(position1,position0);
-		float					magnitude = direction.magnitude();
+		f32					magnitude = direction.magnitude();
 		direction.normalize		();
 		direction.mul			(magnitude*walked_distance/distance);
 		direction.add			(position0);
@@ -294,7 +294,7 @@ void CLevelGraph::draw_objects		(const int &vertex_id)
 	if (!ai().get_alife())
 		return;
 
-	const float					radius = .0105f;
+	const f32					radius = .0105f;
 	const u32					color = D3DCOLOR_XRGB(255,0,0);
 	const CGameGraph			&graph = ai().game_graph();
 	CGameFont					&font = *HUD().Font().pFontDI;
@@ -359,7 +359,7 @@ void CLevelGraph::draw_objects		(const int &vertex_id)
 				continue;
 
 			const PATH			&path = monster->brain().movement().detail().path();
-			const float			&walked_distance = (path.size() < 2) ? 0.f : monster->brain().movement().detail().walked_distance();
+			const f32& walked_distance = (path.size() < 2) ? 0.f : monster->brain().movement().detail().walked_distance();
 //			font.OutNext		("%s",monster->name_replace());
 
 			if ((path.size() >= 2) && !fis_zero(walked_distance))
@@ -389,20 +389,20 @@ void CLevelGraph::draw_objects		(const int &vertex_id)
 
 		u32						game_vertex_id0 = monster->m_tGraphID;
 		u32						game_vertex_id1 = path[path.size() - 2];
-		const float				&walked_distance = monster->brain().movement().detail().walked_distance();
+		const f32& walked_distance = monster->brain().movement().detail().walked_distance();
 
 		if (fis_zero(walked_distance))
 			continue;
 
 		Fvector					position0 = graph.vertex(game_vertex_id0)->game_point();
 		Fvector					position1 = graph.vertex(game_vertex_id1)->game_point();
-		const float				distance = position0.distance_to(position1);
+		const f32				distance = position0.distance_to(position1);
 
 		position0				= convert_position(position0);
 		position1				= convert_position(position1);
 
 		Fvector					direction = Fvector().sub(position1,position0);
-		float					magnitude = direction.magnitude();
+		f32					magnitude = direction.magnitude();
 		direction.normalize		();
 		direction.mul			(magnitude*walked_distance/distance);
 		direction.add			(position0);

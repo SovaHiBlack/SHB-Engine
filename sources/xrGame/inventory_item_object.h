@@ -56,7 +56,7 @@ public:
 	virtual void	reinit					();
 	virtual void	activate_physic_shell	();
 	virtual void	on_activate_physic_shell();
-	virtual	void	modify_holder_params			(float &range, float &fov) const;
+	virtual	void	modify_holder_params			(f32& range, f32& fov) const;
 public:
 	////////// network //////////////////////////////////////////////////
 	virtual void	make_Interpolation		();

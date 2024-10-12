@@ -31,7 +31,7 @@ class	CLevelSoundManager;
 	class	CDebugRenderer;
 #endif
 
-extern float g_fov;
+extern f32 g_fov;
 
 const int maxRP					= 64;
 const int maxTeams				= 32;
@@ -222,7 +222,6 @@ public:
 	virtual BOOL				net_Start_client		(pcstr name );
 	virtual void				net_Update				( );
 
-
 	virtual BOOL				Load_GameSpecific_Before( );
 	virtual BOOL				Load_GameSpecific_After ( );
 	virtual void				Load_GameSpecific_CFORM	( CDB::TRI* T, u32 count );
@@ -295,17 +294,17 @@ public:
 	//игровое время в отформатированном виде
 	void				GetGameDateTime			(u32& year, u32& month, u32& day, u32& hours, u32& mins, u32& secs, u32& milisecs);
 
-	float				GetGameTimeFactor		();
-	void				SetGameTimeFactor		(const float fTimeFactor);
-	void				SetGameTimeFactor		(ALife::_TIME_ID GameTime, const float fTimeFactor);
-	void				SetEnvironmentGameTimeFactor		(ALife::_TIME_ID GameTime, const float fTimeFactor);
+	f32				GetGameTimeFactor		();
+	void				SetGameTimeFactor		(const f32 fTimeFactor);
+	void				SetGameTimeFactor		(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
+	void				SetEnvironmentGameTimeFactor		(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
 //	void				SetGameTime				(ALife::_TIME_ID GameTime);
 
 	// gets current daytime [0..23]
 	u8					GetDayTime				();
 	u32					GetGameDayTimeMS		();
-	float				GetGameDayTimeSec		();
-	float				GetEnvironmentGameDayTimeSec();
+	f32				GetGameDayTimeSec		();
+	f32				GetEnvironmentGameDayTimeSec();
 
 protected:
 //	CFogOfWarMngr*		m_pFogOfWarMngr;

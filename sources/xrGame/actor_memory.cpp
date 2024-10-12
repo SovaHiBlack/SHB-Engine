@@ -35,10 +35,10 @@ void CActorMemory::camera					(
 		Fvector &position,
 		Fvector &direction,
 		Fvector &normal,
-	F32& field_of_view,
-	F32& aspect_ratio,
-	F32& near_plane,
-	F32& far_plane
+	f32& field_of_view,
+	f32& aspect_ratio,
+	f32& near_plane,
+	f32& far_plane
 	)
 {
 	CCameraBase		&camera = *m_actor->cam_Active();

@@ -47,10 +47,10 @@ void Limb::init(const Matrix  T,
 		const Matrix  S,
 		int s1,
 		int s2,
-		const float *proj_axis,
-		const float *pos_axis,
-		const float *mmin,
-		const float *mmax) 
+		const f32* proj_axis,
+		const f32* pos_axis,
+		const f32* mmin,
+		const f32* mmax)
 {
     euler1 = short(s1);
     euler2 = short(s2);
@@ -75,7 +75,7 @@ void Limb::init(const Matrix  T,
 // the joint limits
 //
 
-int Limb::check_r_joint(float &v)
+int Limb::check_r_joint(f32& v)
 {
      if (jt_limits[3].InRange(v))
     {
@@ -90,9 +90,9 @@ int Limb::check_r_joint(float &v)
     return 0;
 }
 
-inline void swap(float &x, float &y)
+IC void swap(f32& x, f32& y)
 {
-    float t = x;
+	f32 t = x;
     x = y;
     y = t;
 }
@@ -104,11 +104,11 @@ inline void swap(float &x, float &y)
 // and copy the result into soln[0]...[2]
 //
 void select_best_family(const AngleInt jt_limits[], 
-			const float f1[], 
-			const float f2[],
-			float soln[])
+			const f32 f1[],
+			const f32 f2[],
+						f32 soln[])
 {
-    float d1, d2, u;
+	f32 d1, d2, u;
 
     d1 = d2 = 0.0;
     for (int i = 0; i < 3; i++)
@@ -135,7 +135,7 @@ void select_best_family(const AngleInt jt_limits[],
     }
 }
 
-inline float min(float x, float y)
+IC f32 min(f32 x, f32 y)
 {
     return x < y ? x : y;
 }
@@ -144,9 +144,9 @@ inline float min(float x, float y)
 // If possible put v (0 < v < 2*M_PI) in the range low < v < high
 //
 
-inline float put_angle_in_range(float low, float high, float v)
+IC f32 put_angle_in_range(f32 low, f32 high, f32 v)
 {
-    float d1, d2, v2;
+	f32 d1, d2, v2;
 
     if (low <= v && v <= high)
 		return v;
@@ -167,9 +167,9 @@ inline float put_angle_in_range(float low, float high, float v)
 // Extract the euler angles for the first spherical joint 
 // without checking if the joint limits are satisfied.
 //
-void Limb::extract_s1(const Matrix  R1, float s[3])
+void Limb::extract_s1(const Matrix  R1, f32 s[3])
 {
-    float f1[3], f2[3]; 
+	f32 f1[3], f2[3];
 
     EulerSolve2(euler1, R1, f1, f2);
 
@@ -189,7 +189,7 @@ void Limb::extract_s1(const Matrix  R1, float s[3])
 // Same as above but for a particular family
 // 
 //
-void Limb::extract_s1_family(const Matrix  R1, int family, float s[3])
+void Limb::extract_s1_family(const Matrix  R1, int family, f32 s[3])
 {
     EulerSolve(euler1, R1, s, family);
 
@@ -207,10 +207,10 @@ void Limb::extract_s1_family(const Matrix  R1, int family, float s[3])
 //		  
 void Limb::extract_s1s2(const Matrix  R1,
 		       const Matrix  R2,
-		       float s1[3],
-		       float s2[3])
+						f32 s1[3],
+						f32 s2[3])
 {
-    float f1[3], f2[3]; 
+	f32 f1[3], f2[3];
 
     extract_s1(R1, s1);
 
@@ -234,7 +234,7 @@ void Limb::extract_s1s2(const Matrix  R1,
 void Limb::extract_s1s2_family(const Matrix  R1,
 			const Matrix  R2,
 			int f1, int f2,
-			float s1[3], float s2[3])
+							   f32 s1[3], f32 s2[3])
 {
 
     extract_s1_family(R1, f1, s1);
@@ -266,7 +266,7 @@ int Limb::set_goal(const Matrix  G)
 //
 // Sets the goal position and calculates the R angle
 //
-int Limb::set_goal_pos(const float g[3], const Matrix  E)
+int Limb::set_goal_pos(const f32 g[3], const Matrix  E)
 {
     if (!solver.SetGoalPos(g, E, x3))
 	return 0; 
@@ -281,7 +281,7 @@ int Limb::set_goal_pos(const float g[3], const Matrix  E)
 //
 void Limb::get_R1psi(AngleIntList psi[])
 {
-    float low[3], high[3];
+	f32 low[3], high[3];
     Matrix c, s, o;
     AngleIntList f1[3], f2[3], temp;
 
@@ -325,7 +325,7 @@ void Limb::get_R1psi(AngleIntList psi[])
 void Limb::get_R1R2psi(AngleIntList psi[])
 {
     Matrix c, s, o, c2, s2, o2;
-    float low[3], high[3];
+	f32 low[3], high[3];
     AngleIntList f1[3], f2[3], g1[3], g2[3];
 
     solver.R1R2Psi(c, s, o, c2, s2, o2);
@@ -389,7 +389,7 @@ int Limb::GetJointIntervals(Matrix  G,
 			 AngleIntList f1[6],
 			 AngleIntList f2[6])
 {
-    float low[3], high[3];
+	f32 low[3], high[3];
     Matrix c, s, o, c2, s2, o2;
 
     if (!set_goal(G))
@@ -422,7 +422,7 @@ int Limb::GetJointIntervals(Matrix  G,
     return 1;
 }
 
-int Limb::SetGoalPos(const float g[3], const Matrix  E, int limits)
+int Limb::SetGoalPos(const f32 g[3], const Matrix  E, int limits)
 {
     solve = SolvePosOnly;
     check_limits = (short)limits;
@@ -461,7 +461,7 @@ static void init_error(char *msg)
 //
 // Calculates the swivel angle based on the elbow position.
 //
-float Limb::PosToAngle(const float elbow[3])
+f32 Limb::PosToAngle(const f32 elbow[3])
 {
     if (!solve)
 		init_error("Limb::PosToAngle");
@@ -472,12 +472,12 @@ float Limb::PosToAngle(const float elbow[3])
 //
 // Calculates the swivel angle based on the elbow position and goal position
 //
-float Limb::KneeAngle( const float goal_pos[3], const float knee_pos[3] )
+f32 Limb::KneeAngle( const f32 goal_pos[3], const f32 knee_pos[3] )
 {
 	 solver.EvaluateCircle( goal_pos );
 	 short sv_solve = solve;
 	 solve = SolvePosOnly;//any !=0
-	 float swivel = PosToAngle( knee_pos );
+	 f32 swivel = PosToAngle( knee_pos );
 	 solve = sv_solve;
 	 return swivel;
 }
@@ -485,9 +485,9 @@ float Limb::KneeAngle( const float goal_pos[3], const float knee_pos[3] )
 //
 // Returns the index of the smallest element in a float array
 //
-inline int find_min(int n, float d[])
+IC int find_min(int n, f32 d[])
 {
-    float min = d[0]; 
+	f32 min = d[0];
     int min_i = 0;
 
     for (int i = 1; i < n; i++)
@@ -508,13 +508,13 @@ inline int find_min(int n, float d[])
 //
 // 0 means that all intervals are empty.
 // 
-int choose_largest_range(float &swivel_angle,
+int choose_largest_range(f32& swivel_angle,
 			 const AngleIntList *f11,
 			 const AngleIntList *f12,
 			 const AngleIntList *f21 = 0,
 			 const AngleIntList *f22 = 0)
 {
-    const float unioneps = .05f;
+    const f32 unioneps = .05f;
     AngleIntList temp, all; 
     
     // Take the union of all the intervals
@@ -563,7 +563,7 @@ int choose_largest_range(float &swivel_angle,
     // the interval that is closest to the swivel angle
     // 
 
-    float d[4];
+	f32 d[4];
 
     d[0] = f11->Distance(swivel_angle);
     d[1] = f12->Distance(swivel_angle);
@@ -579,11 +579,11 @@ int choose_largest_range(float &swivel_angle,
     return find_min(2,d) + 1;
 }
 
-int update_closest_boundary(AngleInt &a, float v, float &dist, float &boundary)
+int update_closest_boundary(AngleInt &a, f32 v, f32& dist, f32& boundary)
 {
-    float d1 = angle_distance(a.Low(), v);
-    float d2 = angle_distance(a.High(), v);
-    float angle;
+	f32 d1 = angle_distance(a.Low(), v);
+	f32 d2 = angle_distance(a.High(), v);
+	f32 angle;
     if (d1 < d2)
 	angle = a.Low();
     else
@@ -604,11 +604,11 @@ int update_closest_boundary(AngleInt &a, float v, float &dist, float &boundary)
 
 
 int inspect_range(const AngleIntList &f, 
-		  float swivel_angle, 
+				  f32 swivel_angle,
 		  int   index,
-		  float &new_angle,
+				  f32& new_angle,
 		  int   &new_index,
-		  float &distance)
+				  f32& distance)
 {
     AngleIntListIterator	a;
     AngleInt				*ap;
@@ -643,15 +643,15 @@ int inspect_range(const AngleIntList &f,
 // 0 means that all intervals are empty.
 // 
 
-int choose_closest_range(float &swivel_angle,
+int choose_closest_range(f32& swivel_angle,
 			 const AngleIntList *f11,
 			 const AngleIntList *f12,
 			 const AngleIntList *f21 = 0,
 			 const AngleIntList *f22 = 0)
 {
     int i = 0;
-    float d = 2*M_PI; 
-    float angle; 
+	f32 d = 2*M_PI;
+	f32 angle;
 
     if (inspect_range(*f11, swivel_angle, 1, angle, i, d))
 	return 1;
@@ -678,7 +678,7 @@ int choose_closest_range(float &swivel_angle,
 // Solve for G and select the joint angles that are closest to satisfying
 // the joint limits
 //
-void Limb::solve_aux(float swivel_angle, float x[])
+void Limb::solve_aux(f32 swivel_angle, f32 x[])
 {
     Matrix R1, R2; 
 
@@ -696,7 +696,7 @@ void Limb::solve_aux(float swivel_angle, float x[])
 // assumes that set_goal has already been called
 //
 
-void Limb::solve_aux_family(int family_set, float swivel_angle, float x[])
+void Limb::solve_aux_family(int family_set, f32 swivel_angle, f32 x[])
 {
     Matrix R1, R2; 
 
@@ -724,7 +724,7 @@ void Limb::solve_aux_family(int family_set, float swivel_angle, float x[])
 // position, family, and swivel angle
 //  
 
-void Limb::solve_pos_aux_family(int family, float swivel_angle, float x[])
+void Limb::solve_pos_aux_family(int family, f32 swivel_angle, f32 x[])
 {
     Matrix R1;
 
@@ -738,7 +738,7 @@ void Limb::solve_pos_aux_family(int family, float swivel_angle, float x[])
 // position, and swivel angle. Choose the solution that
 // is closest to satisfying the joint limits
 
-void Limb::solve_pos_aux(float swivel_angle, float x[])
+void Limb::solve_pos_aux(f32 swivel_angle, f32 x[])
 {
     Matrix R1;
 
@@ -750,7 +750,7 @@ void Limb::solve_pos_aux(float swivel_angle, float x[])
 // Try a swivel angle to see if it produces a solution within the
 // joint limits
 //
-int Limb::try_swivel_angle(int solvea, float swivel_angle, float x[])
+int Limb::try_swivel_angle(int solvea, f32 swivel_angle, f32 x[])
 {
     if (solvea == SolvePosOnly)
     {
@@ -780,7 +780,7 @@ int Limb::try_swivel_angle(int solvea, float swivel_angle, float x[])
 // to solve a problem with joint limits
 //
 
-int Limb::try_singularities(int solves, float &swivel_angle, float x[])
+int Limb::try_singularities(int solves, f32& swivel_angle, f32 x[])
 {
     for (int i = 0; i < num_singular; i++)
 	if (try_swivel_angle(solves, singular_pts[i], x))
@@ -798,10 +798,10 @@ int Limb::try_singularities(int solves, float &swivel_angle, float x[])
 //
 // Assumes that either SetGoal or SetGoalPos has been called first
 //
-int Limb::Solve(float x[], float *new_swivel, float *new_pos)
+int Limb::Solve(f32 x[], f32* new_swivel, f32* new_pos)
 {
     int success; 
-    float swivel_angle=-dInfinity; 
+	f32 swivel_angle=-dInfinity;
 
     x[3] = x3;
 
@@ -860,8 +860,8 @@ int Limb::Solve(float x[], float *new_swivel, float *new_pos)
 // intervals are not computed reliably near a singularity.
 //
 int Limb::try_closeby_singularity(int solves, 
-				  float &swivel_angle, 
-				  float x[])
+								  f32& swivel_angle,
+								  f32 x[])
 {
     // First try the swivel angle
 
@@ -886,8 +886,8 @@ int Limb::try_closeby_singularity(int solves,
 //
 // Solves an IK problem for a swivel angle
 // 
-int Limb::SolveByAngle(float swivel_angle, float x[7], 
-		       float *new_swivel, float *new_pos)
+int Limb::SolveByAngle(f32 swivel_angle, f32 x[7],
+					   f32* new_swivel, f32* new_pos)
 {
     int success; 
 
@@ -960,14 +960,13 @@ int Limb::SolveByAngle(float swivel_angle, float x[7],
     return success;
 } 
 
-int Limb::SolveByPos(const float pos[3], float x[], float *new_swivel, float *new_pos)
+int Limb::SolveByPos(const f32 pos[3], f32 x[], f32* new_swivel, f32* new_pos)
 {
-    float swivel_angle = solver.PosToAngle(pos);
+	f32 swivel_angle = solver.PosToAngle(pos);
     return SolveByAngle(swivel_angle, x, new_swivel, new_pos);
 }
 
-
-int Limb::InLimits(const float x[7]) const
+int Limb::InLimits(const f32 x[7]) const
 {
     for (int i = 0; i < 7; i++)
 	if (!jt_limits[i].InRange(x[i]))
@@ -976,13 +975,14 @@ int Limb::InLimits(const float x[7]) const
     return 1;
 }
 
-float roundup(float x)
+f32 roundup(f32 x)
 {
     if (x < 0)
 	x += 2*M_PI;
     return x;
 }
-void dump_file(char *file, int euler_type, float min[], float max[], 
+
+void dump_file(char *file, int euler_type, f32 min[], f32 max[],
 	       Matrix c, Matrix s, Matrix o)
 {
     FILE *fp = fopen(file, "w");
@@ -1011,12 +1011,12 @@ void Limb::Debug(char *file1, char *file2)
 }
 
 
-void Limb::ForwardKinematics(float x[7], Matrix  R)
+void Limb::ForwardKinematics(f32 x[7], Matrix  R)
 {
     Matrix temp;
-    static float yaxis[] = {0,1,0};
+    static f32 yaxis[] = {0,1,0};
 
-    float t[3];
+	f32 t[3];
 
     t[0] = x[2]; t[1] = x[1]; t[2] = x[0];
     EulerEval(euler1, t, R);
@@ -1037,7 +1037,7 @@ void Limb::ForwardKinematics(float x[7], Matrix  R)
 
 
 
-int Limb::SolveAim(float x[3], float psi_angle)
+int Limb::SolveAim(f32 x[3], f32 psi_angle)
 {
  //   if (check_limits)
 	//printf("warning limits for solveaim not yet implemented\n");

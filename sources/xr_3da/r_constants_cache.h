@@ -149,7 +149,7 @@ public:
 		if (C->destination&1)		{ a_pixel.set	(C,C->ps,A); a_pixel.b_dirty=TRUE;		}
 		if (C->destination&2)		{ a_vertex.set	(C,C->vs,A); a_vertex.b_dirty=TRUE;		}
 	}
-	ICF void				set		(R_constant* C, F32 x, F32 y, F32 z, F32 w)	{
+	ICF void				set		(R_constant* C, f32 x, f32 y, f32 z, f32 w)	{
 		Fvector4 data;		data.set(x,y,z,w);
 		set					(C,data);
 	}
@@ -163,7 +163,7 @@ public:
 		if (C->destination&1)		{ a_pixel.seta	(C,C->ps,e,A); a_pixel.b_dirty=TRUE;	}
 		if (C->destination&2)		{ a_vertex.seta	(C,C->vs,e,A); a_vertex.b_dirty=TRUE;	}
 	}
-	ICF void				seta	(R_constant* C, u32 e, F32 x, F32 y, F32 z, F32 w)	{
+	ICF void				seta	(R_constant* C, u32 e, f32 x, f32 y, f32 z, f32 w)	{
 		Fvector4 data;		data.set(x,y,z,w);
 		seta				(C,e,data);
 	}

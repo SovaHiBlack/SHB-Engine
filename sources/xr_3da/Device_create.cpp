@@ -17,7 +17,7 @@ void CRenderDevice::_SetupStates	()
 
 	HW.Caps.Update			();
 	for (u32 i=0; i<HW.Caps.raster.dwStages; i++)				{
-		F32 fBias = -0.5f	;
+		f32 fBias = -0.5f	;
 		CHK_DX(HW.pDevice->SetSamplerState	( i, D3DSAMP_MAXANISOTROPY, 4				));
 		CHK_DX(HW.pDevice->SetSamplerState	( i, D3DSAMP_MIPMAPLODBIAS, *((LPDWORD) (&fBias))));
 		CHK_DX(HW.pDevice->SetSamplerState	( i, D3DSAMP_MINFILTER,	D3DTEXF_LINEAR 		));
@@ -87,8 +87,8 @@ void CRenderDevice::Create	()
 	HW.CreateDevice		(m_hWnd);
 	dwWidth				= HW.DevPP.BackBufferWidth	;
 	dwHeight			= HW.DevPP.BackBufferHeight	;
-	fWidth_2			= F32(dwWidth/2)			;
-	fHeight_2			= F32(dwHeight/2)			;
+	fWidth_2			= f32(dwWidth/2)			;
+	fHeight_2			= f32(dwHeight/2)			;
 	fFOV				= 90.0f;
 	fASPECT				= 1.0f;
 

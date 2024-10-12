@@ -15,9 +15,9 @@ private:
 	struct String
 	{
 		string512	string;
-		F32			x;
-		F32			y;
-		F32			height;
+		f32			x;
+		f32			y;
+		f32			height;
 		u32			c;
 		EAligment	align;
 	};
@@ -27,16 +27,16 @@ protected:
 
 	EAligment				eCurrentAlignment;
 	u32						dwCurrentColor;
-	F32						fCurrentHeight;
-	F32						fCurrentX;
-	F32						fCurrentY;
+	f32						fCurrentHeight;
+	f32						fCurrentX;
+	f32						fCurrentY;
 	Fvector2				vInterval;
 
 	Fvector 				*TCMap;
-	F32						fHeight;
-	F32						fXStep;
-	F32						fYStep;
-	F32						fTCHeight;
+	f32						fHeight;
+	f32						fXStep;
+	f32						fYStep;
+	f32						fTCHeight;
 	xr_vector<String>		strings;
 
 	ref_shader				pShader;
@@ -70,38 +70,38 @@ public:
 
 	IC void					SetColor		(u32 C)		{dwCurrentColor=C;};
 
-	IC void					SetHeightI		(F32 S);
-	IC void					SetHeight		(F32 S);
+	IC void					SetHeightI		(f32 S);
+	IC void					SetHeight		(f32 S);
 
-	IC F32				GetHeight		(){return fCurrentHeight;};
-	IC void					SetInterval		(F32 x, F32 y) {vInterval.set(x,y);};
+	IC f32					GetHeight		(){return fCurrentHeight;};
+	IC void					SetInterval		(f32 x, f32 y) {vInterval.set(x,y);};
 	IC void					SetInterval		(const Fvector2& v) {vInterval.set(v);};
 	IC void					SetAligment		(EAligment aligment){ eCurrentAlignment=aligment; }
 
-	F32					SizeOf_			(pcstr s );
-	F32					SizeOf_			( const wide_char *wsStr );
+	f32					SizeOf_			(pcstr s );
+	f32					SizeOf_			( const wide_char *wsStr );
 
-	F32					SizeOf_			( const char cChar );
+	f32					SizeOf_			( const char cChar );
 
-	F32					CurrentHeight_	();
+	f32					CurrentHeight_	();
 
-	void					OutSetI			(F32 x, F32 y);
-	void					OutSet			(F32 x, F32 y);
+	void					OutSetI			(f32 x, f32 y);
+	void					OutSet			(f32 x, f32 y);
 
 	void 					MasterOut( 	BOOL bCheckDevice , BOOL bUseCoords , BOOL bScaleCoords , BOOL bUseSkip ,
-									  F32 _x , F32 _y , F32 _skip , pcstr fmt , va_list p );
+									  f32 _x , f32 _y , f32 _skip , pcstr fmt , va_list p );
 
 	u32						smart_strlen(pcstr S );
 	BOOL					IsMultibyte() { return ( uFlags & fsMultibyte ); };
-	u16						SplitByWidth( u16 * puBuffer , u16 uBufferSize , F32 fTargetWidth , const char * pszText );
-	u16						GetCutLengthPos(F32 fTargetWidth , const char * pszText );
+	u16						SplitByWidth( u16 * puBuffer , u16 uBufferSize , f32 fTargetWidth , const char * pszText );
+	u16						GetCutLengthPos(f32 fTargetWidth , const char * pszText );
 
-	void  					OutI			(F32 _x , F32 _y , pcstr fmt , ... );
-	void  					Out				(F32 _x , F32 _y , pcstr fmt , ... );
+	void  					OutI			(f32 _x , f32 _y , pcstr fmt , ... );
+	void  					Out				(f32 _x , f32 _y , pcstr fmt , ... );
 	void             		OutNext			(pcstr fmt , ... );
 	void             		OutPrev			(pcstr fmt , ... );
 
-	void					OutSkip			(F32 val=1.0f);
+	void					OutSkip			(f32 val=1.0f);
 
 	virtual void			OnRender		();
 

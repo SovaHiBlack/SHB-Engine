@@ -30,13 +30,11 @@
 #define ITEM_REMOVE_TIME		30000
 struct net_update_IItem {	u32					dwTimeStamp;
 SPHNetState			State;};
-struct net_updateData{
-
-
-
+struct net_updateData
+{
 	xr_deque<net_update_IItem>	NET_IItem;
 	/// spline coeff /////////////////////
-	float			SCoeff[3][4];
+	f32			SCoeff[3][4];
 
 #ifdef DEBUG
 	DEF_VECTOR		(VIS_POSITION, Fvector);
@@ -145,30 +143,25 @@ void CInventoryItem::Load(pcstr section)
 	m_flags.set(FCanTrade,		READ_IF_EXISTS(pSettings, r_bool, section, "can_trade",			TRUE));
 	m_flags.set(FIsQuestItem,	READ_IF_EXISTS(pSettings, r_bool, section, "quest_item",		FALSE));
 
-
-
 	//время убирания объекта с уровня
 	m_dwItemRemoveTime			= READ_IF_EXISTS(pSettings, r_u32, section,"item_remove_time",			ITEM_REMOVE_TIME);
 
 	m_flags.set					(FAllowSprint,READ_IF_EXISTS	(pSettings, r_bool, section,"sprint_allowed",			TRUE));
 	m_fControlInertionFactor	= READ_IF_EXISTS(pSettings, r_float,section,"control_inertion_factor",	1.0f);
 	m_icon_name					= READ_IF_EXISTS(pSettings, r_string,section,"icon_name",				NULL);
-
 }
 
-
-void  CInventoryItem::ChangeCondition(float fDeltaCondition)
+void  CInventoryItem::ChangeCondition(f32 fDeltaCondition)
 {
 	m_fCondition += fDeltaCondition;
 	clamp(m_fCondition, 0.f, 1.f);
 }
 
-
 void	CInventoryItem::Hit					(SHit* pHDS)
 {
 	if( !m_flags.test(FUsingCondition) ) return;
 
-	float hit_power = pHDS->damage();
+	f32 hit_power = pHDS->damage();
 	hit_power *= m_HitTypeK[pHDS->hit_type];
 
 	ChangeCondition(-hit_power);
@@ -577,7 +570,7 @@ void CInventoryItem::PH_A_CrPr		()
 	///////////////////////////////////////////////////
 };
 
-extern	float		g_cl_lvInterp;
+extern	f32		g_cl_lvInterp;
 
 void CInventoryItem::CalculateInterpolationParams()
 {
@@ -595,15 +588,16 @@ void CInventoryItem::CalculateInterpolationParams()
 	if (m_flags.test(FInInterpolation))
 	{
 		u32 CurTime = Level().timeServer();
-		float factor	= float(CurTime - p->m_dwIStartTime)/(p->m_dwIEndTime - p->m_dwIStartTime);
+		f32 factor	= f32(CurTime - p->m_dwIStartTime)/(p->m_dwIEndTime - p->m_dwIStartTime);
 		if (factor > 1.0f) factor = 1.0f;
 
-		float c = factor;
+		f32 c = factor;
 		for (u32 k=0; k<3; k++)
 		{
 			P0[k] = c*(c*(c*p->SCoeff[k][0]+p->SCoeff[k][1])+p->SCoeff[k][2])+p->SCoeff[k][3];
 			P1[k] = (c*c*p->SCoeff[k][0]*3+c*p->SCoeff[k][1]*2+p->SCoeff[k][2])/3; // сокрость из формулы в 3 раза превышает скорость при расчете коэффициентов !!!!
-		};
+		}
+
 		P0.set(p->IStartPos);
 		P1.add(p->IStartPos);
 	}	
@@ -622,7 +616,7 @@ void CInventoryItem::CalculateInterpolationParams()
 		{
 			pSyncObj->cv2obj_Xfrom(p->LastState.previous_quaternion, p->LastState.previous_position, xformX0);
 			pSyncObj->cv2obj_Xfrom(p->LastState.quaternion, p->LastState.position, xformX1);
-		};
+		}
 
 		P1.sub(xformX1.c, xformX0.c);
 		P1.add(p->IStartPos);
@@ -637,13 +631,13 @@ void CInventoryItem::CalculateInterpolationParams()
 	/////////////////////////////////////////////////////////////////////////////
 	Fvector TotalPath;
 	TotalPath.sub(P3, P0);
-	float TotalLen = TotalPath.magnitude();
+	f32 TotalLen = TotalPath.magnitude();
 	
 	SPHNetState	State0 = (p->NET_IItem.back()).State;
 	SPHNetState	State1 = p->PredictedState;
 
-	float lV0 = State0.linear_vel.magnitude();
-	float lV1 = State1.linear_vel.magnitude();
+	f32 lV0 = State0.linear_vel.magnitude();
+	f32 lV1 = State1.linear_vel.magnitude();
 
 	u32		ConstTime = u32((fixed_step - ph_world->m_frame_time)*1000)+ Level().GetInterpolationSteps()*u32(fixed_step*1000);
 	
@@ -682,9 +676,9 @@ void CInventoryItem::CalculateInterpolationParams()
 				V1.normalize();
 				V1.mul(TotalLen/3);
 				P2.sub(P3, V1);
-			};
+			}
 		}
-	};
+	}
 	/////////////////////////////////////////////////////////////////////////////
 	for( u32 i =0; i<3; i++)
 	{
@@ -692,13 +686,12 @@ void CInventoryItem::CalculateInterpolationParams()
 		p->SCoeff[i][1] = 3*P2[i]	- 6*P1[i] + 3*P0[i];
 		p->SCoeff[i][2] = 3*P1[i]	- 3*P0[i];
 		p->SCoeff[i][3] = P0[i];
-	};
+	}
 	/////////////////////////////////////////////////////////////////////////////
 	m_flags.set	(FInInterpolation, TRUE);
 
 	if (object().m_pPhysicsShell) object().m_pPhysicsShell->NetInterpolationModeON();
-
-};
+}
 
 void CInventoryItem::make_Interpolation	()
 {
@@ -727,18 +720,18 @@ void CInventoryItem::make_Interpolation	()
 		else 
 		{
 			VERIFY			(CurTime <= p->m_dwIEndTime);
-			float factor	= float(CurTime - p->m_dwIStartTime)/(p->m_dwIEndTime - p->m_dwIStartTime);
+			f32 factor	= f32(CurTime - p->m_dwIStartTime)/(p->m_dwIEndTime - p->m_dwIStartTime);
 			if (factor > 1) factor = 1.0f;
 			else if (factor < 0) factor = 0;
 
 			Fvector IPos;
 			Fquaternion IRot;
 
-			float c = factor;
+			f32 c = factor;
 			for (u32 k=0; k<3; k++)
 			{
 				IPos[k] = c*(c*(c*p->SCoeff[k][0]+p->SCoeff[k][1])+p->SCoeff[k][2])+p->SCoeff[k][3];
-			};
+			}
 
 			VERIFY2								(_valid(IPos),*object().cName());
 			VERIFY			(factor>=0.f && factor<=1.f);
@@ -748,12 +741,12 @@ void CInventoryItem::make_Interpolation	()
 			VERIFY2								(_valid(object().renderable.xform),*object().cName());
 			object().Position().set(IPos);
 			VERIFY2								(_valid(object().renderable.xform),*object().cName());
-		};
+		}
 	}
 	else
 	{
 		m_flags.set(FInInterpolation,FALSE);
-	};
+	}
 
 #ifdef DEBUG
 	Fvector iPos = object().Position();
@@ -762,10 +755,10 @@ void CInventoryItem::make_Interpolation	()
 	{
 		if(m_net_updateData)
 			m_net_updateData->LastVisPos.push_back(iPos);
-	};
+	}
 #endif
-}
 
+}
 
 void CInventoryItem::reload		(pcstr section)
 {
@@ -811,7 +804,7 @@ void CInventoryItem::activate_physic_shell()
 	if (!E) {
 		on_activate_physic_shell();
 		return;
-	};
+	}
 
 	UpdateXForm();
 
@@ -874,10 +867,7 @@ void CInventoryItem::UpdateXForm	()
 	object().Position().set(mRes.c);
 }
 
-
-
 #ifdef DEBUG
-
 void CInventoryItem::OnRender()
 {
 	if (bDebug && object().Visual())
@@ -904,10 +894,10 @@ void CInventoryItem::OnRender()
 				Color = color_rgba(255,0,255, 255);
 			else
 				Color = color_rgba(255, 0, 0, 255);
-		};
+		}
 
 //		Level().debug_renderer().draw_obb			(M,bd,Color);
-		float size = 0.01f;
+		f32 size = 0.01f;
 		if (!H_Parent())
 		{
 			Level().debug_renderer().draw_aabb			(Position(), size, size, size, color_rgba(0, 255, 0, 255));
@@ -920,13 +910,12 @@ void CInventoryItem::OnRender()
 				Pos2 = *It;
 				Level().debug_renderer().draw_line(Fidentity, Pos1, Pos2, color_rgba(255, 255, 0, 255));
 				Pos1 = Pos2;
-			};
+			}
 
 		}
 		//---------------------------------------------------------
 		if (OnClient() && !H_Parent() && m_bInInterpolation)
 		{
-
 			Fmatrix xformI;
 
 			xformI.rotation(IRecRot);
@@ -940,8 +929,8 @@ void CInventoryItem::OnRender()
 			///////////////////////////////////////////////////////////////////////////
 			Fvector point0 = IStartPos, point1;			
 			
-			float c = 0;
-			for (float i=0.1f; i<1.1f; i+= 0.1f)
+			f32 c = 0;
+			for (f32 i=0.1f; i<1.1f; i+= 0.1f)
 			{
 				c = i;// * 0.1f;
 				for (u32 k=0; k<3; k++)
@@ -950,10 +939,10 @@ void CInventoryItem::OnRender()
 				};
 				Level().debug_renderer().draw_line(Fidentity, point0, point1, color_rgba(0, 0, 255, 255));
 				point0.set(point1);
-			};
-		};
+			}
+		}
 		*/
-	};
+	}
 }
 #endif
 
@@ -964,7 +953,7 @@ DLL_Pure *CInventoryItem::_construct	()
 	return		(inherited::_construct());
 }
 
-void CInventoryItem::modify_holder_params	(float &range, float &fov) const
+void CInventoryItem::modify_holder_params	(f32& range, f32& fov) const
 {
 	range		*= m_holder_range_modifier;
 	fov			*= m_holder_fov_modifier;
@@ -993,22 +982,22 @@ bool	CInventoryItem::CanTrade() const
 	return (res && m_flags.test(FCanTrade) && !IsQuestItem());
 }
 
-float CInventoryItem::GetKillMsgXPos		() const 
+f32 CInventoryItem::GetKillMsgXPos		() const
 {
 	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_x", 0.0f);
 }
 
-float CInventoryItem::GetKillMsgYPos		() const 
+f32 CInventoryItem::GetKillMsgYPos		() const
 {
 	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_y", 0.0f);
 }
 
-float CInventoryItem::GetKillMsgWidth		() const 
+f32 CInventoryItem::GetKillMsgWidth		() const
 {
 	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_width", 0.0f);
 }
 
-float CInventoryItem::GetKillMsgHeight	() const 
+f32 CInventoryItem::GetKillMsgHeight	() const
 {
 	return READ_IF_EXISTS(pSettings,r_float,m_object->cNameSect(),"kill_msg_height", 0.0f);
 }
@@ -1034,7 +1023,7 @@ int  CInventoryItem::GetYPos				() const
 bool CInventoryItem::IsNecessaryItem(CInventoryItem* item)		
 {
 	return IsNecessaryItem(item->object().cNameSect());
-};
+}
 
 BOOL CInventoryItem::IsInvalid() const
 {

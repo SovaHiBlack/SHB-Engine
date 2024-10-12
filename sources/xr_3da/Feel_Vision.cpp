@@ -18,14 +18,14 @@ namespace Feel {
 	struct SFeelParam	{
 		Vision*						parent;
 		Vision::feel_visible_Item*	item;
-		F32						vis;
-		F32						vis_threshold;
-		SFeelParam(Vision* _parent, Vision::feel_visible_Item* _item, F32 _vis_threshold):parent(_parent),item(_item),vis(1.f),vis_threshold(_vis_threshold){}
+		f32						vis;
+		f32						vis_threshold;
+		SFeelParam(Vision* _parent, Vision::feel_visible_Item* _item, f32 _vis_threshold):parent(_parent),item(_item),vis(1.f),vis_threshold(_vis_threshold){}
 	};
 	IC BOOL feel_vision_callback(collide::rq_result& result, LPVOID params)
 	{
 		SFeelParam* fp	= (SFeelParam*)params;
-		F32 vis		= fp->parent->feel_vision_mtl_transp(result.O, result.element);
+		f32 vis		= fp->parent->feel_vision_mtl_transp(result.O, result.element);
 		fp->vis			*= vis;
 		if (NULL==result.O && fis_zero(vis)){
 			CDB::TRI* T	= g_pGameLevel->ObjectSpace.GetStaticTris()+result.element;
@@ -110,7 +110,7 @@ namespace Feel {
 		}
 	}
 
-	void	Vision::feel_vision_update	(CObject* parent, Fvector& P, F32 dt, F32 vis_threshold)
+	void	Vision::feel_vision_update	(CObject* parent, Fvector& P, f32 dt, f32 vis_threshold)
 	{
 		// B-A = objects, that become visible
 		if (!seen.empty()) 
@@ -147,7 +147,8 @@ namespace Feel {
 		query				= seen;
 		o_trace				(P,dt,vis_threshold);
 	}
-	void Vision::o_trace	(Fvector& P, F32 dt, F32 vis_threshold)	{
+
+	void Vision::o_trace	(Fvector& P, f32 dt, f32 vis_threshold)	{
 		RQR.r_clear			();
 		xr_vector<feel_visible_Item>::iterator I=feel_visible.begin(),E=feel_visible.end();
 		for (; I!=E; I++){
@@ -181,7 +182,7 @@ namespace Feel {
 			// 
 			Fvector				D;	
 			D.sub				(OP,P);
-			F32				f = D.magnitude();
+			f32				f = D.magnitude();
 			if (f>fuzzy_guaranteed){
 				D.div						(f);
 				// setup ray defs & feel params
@@ -193,9 +194,9 @@ namespace Feel {
 					feel_params.vis			= I->Cache_vis;
 //					Log("cache 0");
 				}else{
-					F32 _u;
-					F32 _v;
-					F32 _range;
+					f32 _u;
+					f32 _v;
+					f32 _range;
 					if (CDB::TestRayTri(P,D,I->Cache.verts,_u,_v,_range,false)&&(_range>0 && _range<f))	{
 						feel_params.vis		= 0.f;
 //						Log("cache 1");

@@ -9,105 +9,115 @@
 
 void AddEffector		(CActor* A, int type, const shared_str& sect_name)
 {
-	if(pSettings->line_exist(sect_name,"pp_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
-		CPostprocessAnimator* pp_anm		= xr_new<CPostprocessAnimator>();
-		pp_anm->SetType						((EEffectorPPType)type);
-		pp_anm->SetCyclic					(bCyclic);
+	if(pSettings->line_exist(sect_name,"pp_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
+		CPostprocessAnimator* pp_anm			= xr_new<CPostprocessAnimator>();
+		pp_anm->SetType							((EEffectorPPType)type);
+		pp_anm->SetCyclic						(bCyclic);
 
-		pcstr fn = pSettings->r_string		(sect_name,"pp_eff_name");
-		pp_anm->Load						(fn);
-		A->Cameras().AddPPEffector	(pp_anm);
+		pcstr fn = pSettings->r_string			(sect_name,"pp_eff_name");
+		pp_anm->Load							(fn);
+		A->Cameras().AddPPEffector				(pp_anm);
 	}
-	if(pSettings->line_exist(sect_name,"cam_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
-		CAnimatorCamEffector* cam_anm		= xr_new<CAnimatorCamEffector>();
-		cam_anm->SetType					((ECamEffectorType)type);
-		cam_anm->SetCyclic					(bCyclic);
-		pcstr fn = pSettings->r_string		(sect_name,"cam_eff_name");
-		cam_anm->Start						(fn);
-		A->Cameras().AddCamEffector	(cam_anm);
+
+	if(pSettings->line_exist(sect_name,"cam_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
+		CAnimatorCamEffector* cam_anm			= xr_new<CAnimatorCamEffector>();
+		cam_anm->SetType						((ECamEffectorType)type);
+		cam_anm->SetCyclic						(bCyclic);
+		pcstr fn = pSettings->r_string			(sect_name,"cam_eff_name");
+		cam_anm->Start							(fn);
+		A->Cameras().AddCamEffector				(cam_anm);
 	}
 }
 
 void AddEffector		(CActor* A, int type, const shared_str& sect_name, CEffectorController* ec)
 {
-	if(pSettings->line_exist(sect_name,"pp_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
+	if(pSettings->line_exist(sect_name,"pp_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
 		CPostprocessAnimatorControlled* pp_anm	= xr_new<CPostprocessAnimatorControlled>(ec);
-		pp_anm->SetType						((EEffectorPPType)type);
-		pp_anm->SetCyclic					(bCyclic);
-		pcstr fn = pSettings->r_string		(sect_name,"pp_eff_name");
-		pp_anm->Load						(fn);
-		A->Cameras().AddPPEffector			(pp_anm);
+		pp_anm->SetType							((EEffectorPPType)type);
+		pp_anm->SetCyclic						(bCyclic);
+		pcstr fn = pSettings->r_string			(sect_name,"pp_eff_name");
+		pp_anm->Load							(fn);
+		A->Cameras().AddPPEffector				(pp_anm);
 	}
-	if(pSettings->line_exist(sect_name,"cam_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
-		CCameraEffectorControlled* cam_anm	= xr_new<CCameraEffectorControlled>(ec);
-		cam_anm->SetType					((ECamEffectorType)type);
-		cam_anm->SetCyclic					(bCyclic);
-		pcstr fn = pSettings->r_string		(sect_name,"cam_eff_name");
-		cam_anm->Start						(fn);
-		A->Cameras().AddCamEffector			(cam_anm);
+
+	if(pSettings->line_exist(sect_name,"cam_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
+		CCameraEffectorControlled* cam_anm		= xr_new<CCameraEffectorControlled>(ec);
+		cam_anm->SetType						((ECamEffectorType)type);
+		cam_anm->SetCyclic						(bCyclic);
+		pcstr fn = pSettings->r_string			(sect_name,"cam_eff_name");
+		cam_anm->Start							(fn);
+		A->Cameras().AddCamEffector				(cam_anm);
 	}
 }
 
 void AddEffector		(CActor* A, int type, const shared_str& sect_name, GET_KOEFF_FUNC k_func)
 {
-	if(pSettings->line_exist(sect_name,"pp_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
-		CPostprocessAnimatorLerp* pp_anm	= xr_new<CPostprocessAnimatorLerp>();
-		pp_anm->SetType						((EEffectorPPType)type);
-		pp_anm->SetCyclic					(bCyclic);
-		pcstr fn = pSettings->r_string		(sect_name,"pp_eff_name");
-		pp_anm->SetFactorFunc				(k_func);
-		pp_anm->Load						(fn);
-		A->Cameras().AddPPEffector			(pp_anm);
+	if(pSettings->line_exist(sect_name,"pp_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
+		CPostprocessAnimatorLerp* pp_anm		= xr_new<CPostprocessAnimatorLerp>();
+		pp_anm->SetType							((EEffectorPPType)type);
+		pp_anm->SetCyclic						(bCyclic);
+		pcstr fn = pSettings->r_string			(sect_name,"pp_eff_name");
+		pp_anm->SetFactorFunc					(k_func);
+		pp_anm->Load							(fn);
+		A->Cameras().AddPPEffector				(pp_anm);
 	}
-	if(pSettings->line_exist(sect_name,"cam_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
-		CAnimatorCamLerpEffector* cam_anm	= xr_new<CAnimatorCamLerpEffector>();
-		cam_anm->SetFactorFunc				(k_func);
-		cam_anm->SetType					((ECamEffectorType)type);
-		cam_anm->SetCyclic					(bCyclic);
-		pcstr fn = pSettings->r_string		(sect_name,"cam_eff_name");
-		cam_anm->Start						(fn);
-		A->Cameras().AddCamEffector			(cam_anm);
-	}
-};
 
-void AddEffector(CActor* A, int type, const shared_str& sect_name, F32 factor)
+	if(pSettings->line_exist(sect_name,"cam_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
+		CAnimatorCamLerpEffector* cam_anm		= xr_new<CAnimatorCamLerpEffector>();
+		cam_anm->SetFactorFunc					(k_func);
+		cam_anm->SetType						((ECamEffectorType)type);
+		cam_anm->SetCyclic						(bCyclic);
+		pcstr fn = pSettings->r_string			(sect_name,"cam_eff_name");
+		cam_anm->Start							(fn);
+		A->Cameras().AddCamEffector				(cam_anm);
+	}
+}
+
+void AddEffector(CActor* A, int type, const shared_str& sect_name, f32 factor)
 {
 	clamp(factor, 0.001f, 1.5f);
-	if(pSettings->line_exist(sect_name,"pp_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
-		CPostprocessAnimatorLerpConst* pp_anm= xr_new<CPostprocessAnimatorLerpConst>();
-		pp_anm->SetType						((EEffectorPPType)type);
-		pp_anm->SetCyclic					(bCyclic);
-		pp_anm->SetPower					(factor);
-		pcstr fn = pSettings->r_string		(sect_name,"pp_eff_name");
-		pp_anm->Load						(fn);
-		A->Cameras().AddPPEffector			(pp_anm);
+	if(pSettings->line_exist(sect_name,"pp_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"pp_eff_cyclic");
+		CPostprocessAnimatorLerpConst* pp_anm	= xr_new<CPostprocessAnimatorLerpConst>();
+		pp_anm->SetType							((EEffectorPPType)type);
+		pp_anm->SetCyclic						(bCyclic);
+		pp_anm->SetPower						(factor);
+		pcstr fn = pSettings->r_string			(sect_name,"pp_eff_name");
+		pp_anm->Load							(fn);
+		A->Cameras().AddPPEffector				(pp_anm);
 	}
-	if(pSettings->line_exist(sect_name,"cam_eff_name")){
-		bool bCyclic						= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
-		CAnimatorCamLerpEffectorConst* cam_anm	= xr_new<CAnimatorCamLerpEffectorConst>();
-		cam_anm->SetFactor					(factor);
-		cam_anm->SetType					((ECamEffectorType)type);
-		cam_anm->SetCyclic					(bCyclic);
-		pcstr fn = pSettings->r_string		(sect_name,"cam_eff_name");
-		cam_anm->Start						(fn);
-		A->Cameras().AddCamEffector			(cam_anm);
-	}
-};
 
+	if(pSettings->line_exist(sect_name,"cam_eff_name"))
+	{
+		bool bCyclic							= !!pSettings->r_bool(sect_name,"cam_eff_cyclic");
+		CAnimatorCamLerpEffectorConst* cam_anm	= xr_new<CAnimatorCamLerpEffectorConst>();
+		cam_anm->SetFactor						(factor);
+		cam_anm->SetType						((ECamEffectorType)type);
+		cam_anm->SetCyclic						(bCyclic);
+		pcstr fn = pSettings->r_string			(sect_name,"cam_eff_name");
+		cam_anm->Start							(fn);
+		A->Cameras().AddCamEffector				(cam_anm);
+	}
+}
 
 void RemoveEffector		(CActor* A, int type)
 {
-	A->Cameras().RemoveCamEffector	((ECamEffectorType)type);
-	A->Cameras().RemovePPEffector		((EEffectorPPType)type);
+	A->Cameras().RemoveCamEffector				((ECamEffectorType)type);
+	A->Cameras().RemovePPEffector				((EEffectorPPType)type);
 }
-
 
 CEffectorController::~CEffectorController()
 {
@@ -139,14 +149,18 @@ BOOL CAnimatorCamEffector::Valid()
 	return			inherited::Valid();
 }
 
-BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
-	if(!inherited::Process(p,d,n,fFov,fFar,fAspect))	return FALSE;
+	if (!inherited::Process(p, d, n, fFov, fFar, fAspect))
+	{
+		return FALSE;
+	}
 
 	const Fmatrix& m			= m_objectAnimator->XFORM();
 	m_objectAnimator->Update	(Device.fTimeDelta);
 
-	if(!m_bAbsolutePositioning){
+	if(!m_bAbsolutePositioning)
+	{
 		Fmatrix Mdef;
 		Mdef.identity				();
 		Mdef.j						= n;
@@ -159,17 +173,23 @@ BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, F32& fFo
 		d							= mr.k;
 		n							= mr.j;
 		p							= mr.c;
-	}else{
+	}
+	else
+	{
 		d							= m.k;
 		n							= m.j;
 		p							= m.c;
-	};
+	}
+
 	return						TRUE;
 }
 
-BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
-	if(!inherited::inherited::Process(p,d,n,fFov,fFar,fAspect))	return FALSE;
+	if (!inherited::inherited::Process(p, d, n, fFov, fFar, fAspect))
+	{
+		return FALSE;
+	}
 
 	const Fmatrix& m			= m_objectAnimator->XFORM();
 	m_objectAnimator->Update	(Device.fTimeDelta);
@@ -184,12 +204,11 @@ BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& 
 	Fmatrix mr;
 	mr.mul						(Mdef,m);
 
-
 	Fquaternion					q_src, q_dst, q_res;
 	q_src.set					(Mdef);
 	q_dst.set					(mr);
 
-	F32	t					= m_func();
+	f32	t					= m_func();
 	clamp						(t,0.0f,1.0f);
 
 	VERIFY						(t>=0.f && t<=1.f);
@@ -206,16 +225,12 @@ BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& 
 	return TRUE;
 }
 
-
-CAnimatorCamLerpEffectorConst::CAnimatorCamLerpEffectorConst()
-:m_factor(0.0f)
+CAnimatorCamLerpEffectorConst::CAnimatorCamLerpEffectorConst() : m_factor(0.0f)
 {
 	SetFactorFunc		(GET_KOEFF_FUNC(this, &CAnimatorCamLerpEffectorConst::GetFactor));
 }
 
-
-CCameraEffectorControlled::CCameraEffectorControlled(CEffectorController* c)
-:m_controller(c)
+CCameraEffectorControlled::CCameraEffectorControlled(CEffectorController* c) : m_controller(c)
 {
 	m_controller->SetCam(this);
 	SetFactorFunc		(GET_KOEFF_FUNC(m_controller, &CEffectorController::GetFactor));
@@ -244,8 +259,10 @@ SndShockEffector::SndShockEffector	()
 SndShockEffector::~SndShockEffector	()
 {
 	psSoundVFactor		= m_stored_volume;
-	if(m_actor&&(m_ce||m_pe))
-		RemoveEffector	(m_actor, effHit);
+	if (m_actor && (m_ce || m_pe))
+	{
+		RemoveEffector(m_actor, effHit);
+	}
 
 	R_ASSERT	(!m_ce&&!m_pe);
 }
@@ -260,15 +277,15 @@ BOOL SndShockEffector::InWork()
 	return inherited::Valid();
 }
 
-F32 SndShockEffector::GetFactor()
+f32 SndShockEffector::GetFactor()
 {
-	F32 f				= (m_end_time-Device.fTimeGlobal)/m_life_time;
+	f32 f				= (m_end_time-Device.fTimeGlobal)/m_life_time;
 	
-	F32 ff =	f*m_life_time/8.0f;
+	f32 ff =	f*m_life_time/8.0f;
 	return clampr(ff, 0.0f, 1.0f);
 }
 
-void SndShockEffector::Start(CActor* A, F32 snd_length, F32 power)
+void SndShockEffector::Start(CActor* A, f32 snd_length, f32 power)
 {
 	clamp			(power, 0.1f, 1.5f);
 	m_actor			= A;
@@ -276,12 +293,11 @@ void SndShockEffector::Start(CActor* A, F32 snd_length, F32 power)
 
 	if( m_stored_volume<0.0f )
 		m_stored_volume = psSoundVFactor;
-	
 
 	m_cur_length		= 0;
 	psSoundVFactor		= m_stored_volume*SND_MIN_VOLUME_FACTOR;
 	
-	static F32		xxx = 6.0f/1.50f; //6sec on max power(1.5)
+	static f32		xxx = 6.0f/1.50f; //6sec on max power(1.5)
 
 	m_life_time			= power*xxx;
 	m_end_time			= Device.fTimeGlobal + m_life_time;
@@ -292,13 +308,12 @@ void SndShockEffector::Start(CActor* A, F32 snd_length, F32 power)
 void SndShockEffector::Update()
 {
 	m_cur_length		+= Device.dwTimeDelta;
-	F32 x				= F32(m_cur_length)/m_snd_length;
-	F32 y				= 2.f*x-1;
+	f32 x				= f32(m_cur_length)/m_snd_length;
+	f32 y				= 2.f*x-1;
 	if (y>0.f){
 		psSoundVFactor	= y*(m_stored_volume-m_stored_volume*SND_MIN_VOLUME_FACTOR)+m_stored_volume*SND_MIN_VOLUME_FACTOR;
 	}
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -307,7 +322,7 @@ void SndShockEffector::Update()
 #define DELTA_ANGLE_Z	0.5f * PI / 180
 #define ANGLE_SPEED		1.5f	
 
-CControllerPsyHitCamEffector::CControllerPsyHitCamEffector(ECamEffectorType type, const Fvector &src_pos, const Fvector &target_pos, F32 time)
+CControllerPsyHitCamEffector::CControllerPsyHitCamEffector(ECamEffectorType type, const Fvector &src_pos, const Fvector &target_pos, f32 time)
 	:inherited(eCEControllerPsyHit, flt_max)
 {
 	m_time_total			= time;
@@ -320,11 +335,10 @@ CControllerPsyHitCamEffector::CControllerPsyHitCamEffector(ECamEffectorType type
 	m_direction.normalize	();
 }
 
-const F32	_base_fov		= 170.f;
-const F32	_max_fov_add	= 160.f;
+const f32	_base_fov		= 170.f;
+const f32	_max_fov_add	= 160.f;
 
-
-BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	Fmatrix	Mdef;
 	Mdef.identity		();
@@ -351,8 +365,8 @@ BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, F
 
 	if (m_time_current > m_time_total) m_time_current = m_time_total;
 
-	F32 perc_past	= m_time_current / m_time_total;
-	F32 cur_dist	= m_distance * perc_past;
+	f32 perc_past	= m_time_current / m_time_total;
+	f32 cur_dist	= m_distance * perc_past;
 
 	Mdef.c.mad	(m_position_source, m_direction, cur_dist);
 	fFov = _base_fov - _max_fov_add*perc_past;
@@ -377,5 +391,3 @@ BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, F
 
 	return TRUE;
 }
-
-

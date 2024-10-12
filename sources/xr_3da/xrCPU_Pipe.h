@@ -10,7 +10,7 @@ struct	ENGINE_API	CKeyQR;
 struct	ENGINE_API	CKeyQT;
 
 template<class T>	struct _matrix;
-#define MATRIX		_matrix<F32>
+#define MATRIX		_matrix<f32>
 
 // Skinning processor specific functions
 // NOTE: Destination memory is uncacheble write-combining (AGP), so avoid non-linear writes
@@ -22,7 +22,7 @@ typedef void	__stdcall	xrSkin2W		(vertRender* D, vertBoned2W* S, u32 vCount, CBo
 
 // Spherical-linear interpolation of quaternion
 // NOTE: Quaternions may be non-aligned in memory
-// typedef void	__stdcall	xrBoneLerp		(CKey* D, CKeyQR* K1r, CKeyQT* K1t, CKeyQR* K2r, CKeyQT* K2t, F32 delta);
+// typedef void	__stdcall	xrBoneLerp		(CKey* D, CKeyQR* K1r, CKeyQT* K1t, CKeyQR* K2r, CKeyQT* K2t, f32 delta);
 
 // Matrix multiplication
 typedef void	__stdcall	xrM44_Mul		(MATRIX* D, MATRIX* M1, MATRIX* M2);

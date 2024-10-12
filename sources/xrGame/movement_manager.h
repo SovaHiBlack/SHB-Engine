@@ -88,7 +88,7 @@ protected:
 	typedef CBaseLocationSelector<
 				CGameGraph,
 				SGameVertex<
-					float,
+		f32,
 					u32,
 					u32
 				>,
@@ -98,7 +98,7 @@ protected:
 	typedef CBasePathManager<
 				CGameGraph,
 				SGameVertex<
-					float,
+		f32,
 					u32,
 					u32
 				>,
@@ -108,7 +108,7 @@ protected:
 	typedef CBasePathManager<
 				CLevelGraph,
 				SBaseParameters<
-					float,
+		f32,
 					u32,
 					u32
 				>,
@@ -145,7 +145,7 @@ protected:
 	NEAREST_OBJECTS			m_nearest_objects;
 
 protected:
-	float					m_speed;
+	f32					m_speed;
 
 public:
 	CBoneRotation			m_body;
@@ -158,7 +158,7 @@ private:
 	EPathType				m_path_type;
 	bool					m_enabled;
 	Fvector					m_on_disable_object_position;
-	float					m_old_desirable_speed;
+	f32					m_old_desirable_speed;
 	bool					m_extrapolate_path;
 	bool					m_build_at_once;
 	bool					m_wait_for_distributed_computation;
@@ -211,27 +211,27 @@ public:
 			u32		level_dest_vertex_id	() const;
 	IC		bool	enabled					() const;
 	IC		bool	path_completed			() const;
-	IC		float	old_desirable_speed		() const;
-	IC		void	set_desirable_speed		(float speed);
+	IC		f32	old_desirable_speed		() const;
+	IC		void	set_desirable_speed		(f32 speed);
 			const xr_vector<CTravelPathPoint>	&path	() const;
 	IC		void	set_body_orientation	(const MonsterSpace::SBoneRotation &orientation);
 	IC		const CBoneRotation &body_orientation() const;
 			void	update_path				();
-	virtual	void	move_along_path			(CPHMovementControl *movement_control, Fvector &dest_position, float time_delta);
+	virtual	void	move_along_path			(CPHMovementControl *movement_control, Fvector &dest_position, f32 time_delta);
 
-	IC		float	speed					() const;
-			float	speed					(CPHMovementControl *movement_control) const;
+	IC		f32	speed					() const;
+	f32	speed					(CPHMovementControl *movement_control) const;
 
 	virtual void	on_travel_point_change	(const u32 &previous_travel_point_index);
 	virtual void	on_build_path			() {}
 
 	template <typename T>
-	IC		bool	accessible				(T position_or_vertex_id, float radius = EPS_L) const;
+	IC		bool	accessible				(T position_or_vertex_id, f32 radius = EPS_L) const;
 
 	IC		void	extrapolate_path		(bool value);
 	IC		bool	extrapolate_path		() const;
 
-			bool	distance_to_destination_greater	(const float &distance_to_check) const;
+			bool	distance_to_destination_greater	(const f32& distance_to_check) const;
 
 	IC		bool	wait_for_distributed_computation			() const;
 	virtual	bool	can_use_distributed_compuations				(u32 option) const;

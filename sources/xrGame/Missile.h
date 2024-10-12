@@ -86,10 +86,11 @@ protected:
 
 	//параметры броска
 	
-	float m_fMinForce, m_fConstForce, m_fMaxForce, m_fForceGrowSpeed;
+	f32 m_fMinForce, m_fConstForce, m_fMaxForce, m_fForceGrowSpeed;
 //private:
 	bool					m_constpower;
-	float					m_fThrowForce;
+	f32					m_fThrowForce;
+
 protected:
 	//относительная точка и направление вылета гранаты
 	Fvector					m_vThrowPoint;

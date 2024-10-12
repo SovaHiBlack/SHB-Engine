@@ -12,11 +12,11 @@ class ENGINE_API CStats: public pureRender
 public:
 	CGameFont*	pFont;
 
-	F32		fFPS,fRFPS,fTPS		;			// FPS, RenderFPS, TPS
-	F32		fMem_calls			;
+	f32		fFPS,fRFPS,fTPS		;			// FPS, RenderFPS, TPS
+	f32		fMem_calls			;
 	u32			dwMem_calls			;
 	u32			dwSND_Played,dwSND_Allocated;	// Play/Alloc
-	F32		fShedulerLoad		;
+	f32		fShedulerLoad		;
 
 	CStatTimer	EngineTOTAL;			// 
 	CStatTimer	Sheduler;				// 
@@ -87,9 +87,11 @@ public:
 	virtual void 	OnRender		();
 	void			OnDeviceCreate	(void);
 	void			OnDeviceDestroy	(void);
+
 public:
 	xr_vector		<shared_str>	errors;
 	CRegistrator	<pureStats>		seqStats;
+
 public:
 					CStats			();
 					~CStats			();
@@ -97,13 +99,14 @@ public:
 	IC CGameFont*	Font			(){return pFont;}
 };
 
-enum{
+enum
+{
 	st_sound			= (1<<0),
 	st_sound_min_dist	= (1<<1),
 	st_sound_max_dist	= (1<<2),
 	st_sound_ai_dist	= (1<<3),
 	st_sound_info_name	= (1<<4),
-	st_sound_info_object= (1<<5),
+	st_sound_info_object= (1<<5)
 };
 
 extern Flags32 g_stats_flags;

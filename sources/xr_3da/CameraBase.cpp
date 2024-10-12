@@ -46,25 +46,26 @@ void CCameraBase::Load(pcstr section)
 	if (bClampYaw)		yaw	  = (lim_yaw[0]+lim_yaw[1])*0.5f;
 }
 
-IC F32 AClamp(Fvector2& l, F32 v){
+IC f32 AClamp(Fvector2& l, f32 v)
+{
 	return (2*v-l[0]-l[1])/(l[1]-l[0]);
 }
 
-F32 CCameraBase::CheckLimYaw( ){
+f32 CCameraBase::CheckLimYaw( ){
 	if (bClampYaw){
 		return AClamp(lim_yaw,yaw);
 	}else 
 		return 0;
 }
 
-F32 CCameraBase::CheckLimPitch( ){
+f32 CCameraBase::CheckLimPitch( ){
 	if (bClampYaw){
 		return AClamp(lim_pitch,pitch);
 	}else 
 		return 0;
 }
 
-F32 CCameraBase::CheckLimRoll( ){
+f32 CCameraBase::CheckLimRoll( ){
 	if (bClampYaw){
 		return AClamp(lim_roll,roll);
 	}else 
