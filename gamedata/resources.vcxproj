@@ -1790,15 +1790,12 @@
     <Xml Include="config\ui\carbody_new_16.xml" />
     <Xml Include="config\ui\car_panel.xml" />
     <Xml Include="config\ui\car_panel_16.xml" />
-    <Xml Include="config\ui\chat_mp.xml" />
     <Xml Include="config\ui\color_defs.xml" />
     <Xml Include="config\ui\contracts.xml" />
     <Xml Include="config\ui\contracts_character.xml" />
     <Xml Include="config\ui\encyclopedia.xml" />
     <Xml Include="config\ui\encyclopedia_item.xml" />
     <Xml Include="config\ui\events_new.xml" />
-    <Xml Include="config\ui\follower_character.xml" />
-    <Xml Include="config\ui\follower_panel.xml" />
     <Xml Include="config\ui\game_tutorials.xml" />
     <Xml Include="config\ui\global_map.xml" />
     <Xml Include="config\ui\grenade.xml" />
@@ -1837,7 +1834,6 @@
     <Xml Include="config\ui\map_spots_mp.xml" />
     <Xml Include="config\ui\map_spots_radar.xml" />
     <Xml Include="config\ui\map_spots_relations.xml" />
-    <Xml Include="config\ui\map_spots_rostok.xml" />
     <Xml Include="config\ui\messages_window.xml" />
     <Xml Include="config\ui\message_box.xml" />
     <Xml Include="config\ui\motion_icon.xml" />

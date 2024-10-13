@@ -10,7 +10,6 @@ class	ENGINE_API C3DSound;
 class	ENGINE_API CMotionDef;
 class	ENGINE_API CKinematics;
 class	ENGINE_API CBoneInstance;
-class	CWeaponList;
 class   CPHMovementControl;
 class	CHudItem;
 
@@ -71,11 +70,10 @@ public:
 	bool					IsFocused			()const;
 	bool					IsMyCamera			()const;
 
-//	virtual f32			g_Health			()const	{ return GetfHealth();}
-/*	virtual*/ IC f32			GetMaxHealth		()const	{ return m_entity_condition->max_health();	}
-/*	virtual*/ IC void			SetMaxHealth		(f32 v)	{ m_entity_condition->max_health()=v;}
+	IC f32			GetMaxHealth		()const	{ return m_entity_condition->max_health();	}
+	IC void			SetMaxHealth		(f32 v)	{ m_entity_condition->max_health()=v;}
 
-	/*virtual*/ IC BOOL		g_Alive				()const	{ return GetfHealth()>0; }
+	IC BOOL		g_Alive				()const	{ return GetfHealth()>0; }
 	virtual BOOL			g_State				(SEntityState&) const	{return FALSE;}
 	
 			bool			AlreadyDie			()			{return  0!=GetLevelDeathTime()?true:false;}

@@ -26,7 +26,7 @@ public:
 						CParticlesObject	(pcstr p_name, BOOL bAutoRemove, bool destroy_on_game_load);
 
 	virtual bool		shedule_Needed		()	{return true;};
-	virtual f32		shedule_Scale		()	;
+	virtual f32			shedule_Scale		()	;
 	virtual void		shedule_Update		(u32 dt);
 	virtual void		renderable_Render	();
 	void				PerformAllTheWork	(u32 dt);
@@ -48,6 +48,7 @@ public:
 	void				SetAutoRemove		(bool auto_remove);
 
 	const shared_str			Name		();
+
 public:
 	static CParticlesObject*	Create		(pcstr p_name, BOOL bAutoRemove=TRUE, bool remove_on_game_load = true)
 	{
@@ -55,7 +56,8 @@ public:
 	}
 	static void					Destroy		(CParticlesObject*& p)
 	{
-		if (p){ 
+		if (p)
+		{ 
 			p->PSI_destroy		();
 			p					= 0;
 		}

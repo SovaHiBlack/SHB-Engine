@@ -30,7 +30,6 @@ typedef struct tagSPdaMessage
 		
 } SPdaMessage;
 
-
 //информация о контактах персонажей по PDA и во время диалога
 struct TALK_CONTACT_DATA
 {

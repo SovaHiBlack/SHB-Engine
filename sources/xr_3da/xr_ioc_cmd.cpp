@@ -1,19 +1,19 @@
 #include "stdafx.h"
-#include "igame_level.h"
+//#include "igame_level.h"
 
 #include "xr_effgamma.h"
-#include "x_ray.h"
+//#include "x_ray.h"
 #include "xr_ioconsole.h"
 #include "xr_ioc_cmd.h"
-#include "fbasicvisual.h"
+//#include "fbasicvisual.h"
 #include "cameramanager.h"
 #include "environment.h"
-#include "xr_input.h"
-#include "CustomHUD.h"
+//#include "xr_input.h"
+//#include "CustomHUD.h"
 #include "SkeletonAnimated.h"
 #include "ResourceManager.h"
 
-#include "xr_object.h"
+//#include "xr_object.h"
 
 xr_token							snd_freq_token							[ ]={
 	{ "22khz",						sf_22K										},

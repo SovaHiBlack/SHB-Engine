@@ -95,7 +95,7 @@ public:
 	virtual BOOL		Valid							();
 };
 
-class SndShockEffector:public CEffectorController
+class CSndShockEffector :public CEffectorController
 {
 	typedef CEffectorController inherited;
 
@@ -108,8 +108,8 @@ public:
 	CActor*						m_actor;
 
 public:
-								SndShockEffector	();
-	virtual						~SndShockEffector	();
+	CSndShockEffector();
+	virtual						~CSndShockEffector();
 	void						Start				(CActor* A, f32 snd_length, f32 power);
 	void						Update				();
 

@@ -101,5 +101,5 @@ namespace GroupHierarchyHolder {
 		GO_TO_NEW_STATE_THIS_UPDATE(b);
 
 
-extern bool			bfGetActionSuccessProbability	(GroupHierarchyHolder::MEMBER_REGISTRY &Members, const xr_set<const CEntityAlive *> &VisibleEnemies, F32 fMinProbability, CBaseFunction &fSuccessProbabilityFunction);
-extern u32			dwfChooseAction					(u32 dwActionRefreshRate, F32 fMinProbability0, F32 fMinProbability1, F32 fMinProbability2, F32 fMinProbability3, u32 dwTeam, u32 dwSquad, u32 dwGroup, u32 a0, u32 a1, u32 a2, u32 a3, u32 a4, CEntity *tpEntity=0, F32 fGroupDistance = 100.f);
+extern bool			bfGetActionSuccessProbability	(GroupHierarchyHolder::MEMBER_REGISTRY &Members, const xr_set<const CEntityAlive *> &VisibleEnemies, f32 fMinProbability, CBaseFunction &fSuccessProbabilityFunction);
+extern u32			dwfChooseAction					(u32 dwActionRefreshRate, f32 fMinProbability0, f32 fMinProbability1, f32 fMinProbability2, f32 fMinProbability3, u32 dwTeam, u32 dwSquad, u32 dwGroup, u32 a0, u32 a1, u32 a2, u32 a3, u32 a4, CEntity *tpEntity=0, f32 fGroupDistance = 100.0f);

@@ -7,9 +7,9 @@
 #pragma warning(default:4995)
 
 #include "ResourceManager.h"
-#include "tss.h"
-#include "blenders\blender.h"
-#include "blenders\blender_recorder.h"
+//#include "tss.h"
+//#include "blenders\blender.h"
+//#include "blenders\blender_recorder.h"
 
 void fix_texture_name(LPSTR fn);
 

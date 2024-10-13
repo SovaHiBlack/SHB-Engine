@@ -593,38 +593,16 @@ CEntityConditionSimple* CEntityAlive::create_entity_condition	(CEntityConditionS
 	return		(inherited::create_entity_condition(m_entity_condition));
 }
 
-/*
-f32 CEntityAlive::GetfHealth	() const
-{
-	return conditions().health()*100.f;
-}
-
-f32 CEntityAlive::SetfHealth	(f32 value)
-{
-	conditions().health() = value/100.f;
-	return value;
-}
-*/
 f32 CEntityAlive::SetfRadiation		(f32 value)
 {
 	conditions().radiation() = value/100.0f;
 	return value;
 }
-/*
-f32 CEntityAlive::g_Health	() const
-{
-	return conditions().GetHealth()*100.0f;
-}
-f32 CEntityAlive::g_MaxHealth	() const
-{
-	return conditions().GetMaxHealth()*100.0f;
-}
-*/
+
 f32 CEntityAlive::g_Radiation	()	const
 {
 	return conditions().GetRadiation()*100.0f;
 }
-
 
 DLL_Pure *CEntityAlive::_construct	()
 {

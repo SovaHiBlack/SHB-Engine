@@ -20,8 +20,8 @@ void CSE_ALifeMonsterBase::on_spawn				()
 		return;
 
 	pcstr						item_section = pSettings->r_string(s_name,"Spawn_Inventory_Item_Section");
-	F32						spawn_probability = pSettings->r_float(s_name,"Spawn_Inventory_Item_Probability");
-	F32						probability = randF();
+	f32						spawn_probability = pSettings->r_float(s_name,"Spawn_Inventory_Item_Probability");
+	f32						probability = randF();
 	if ((probability >= spawn_probability) && !fsimilar(spawn_probability,1.f))
 		return;
 

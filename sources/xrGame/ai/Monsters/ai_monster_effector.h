@@ -11,31 +11,30 @@ class CMonsterEffector : public CEffectorPP {
 	typedef CEffectorPP inherited;	
 	
 	SPPInfo state;			// current state
-	F32	m_total;		// total PP time
-	F32	m_attack;		// attack time in percents	[0..1]
-	F32	m_release;		// release time in percents	[0..1]
+	f32	m_total;		// total PP time
+	f32	m_attack;		// attack time in percents	[0..1]
+	f32	m_release;		// release time in percents	[0..1]
 	
-	F32	m_spec_factor;
+	f32	m_spec_factor;
 
 public:
-					CMonsterEffector		(const SPPInfo &ppi, F32 life_time, F32 attack_time = 0.0f, F32 release_time = 0.0f, F32 spec_factor = 1.f);
+					CMonsterEffector		(const SPPInfo &ppi, f32 life_time, f32 attack_time = 0.0f, f32 release_time = 0.0f, f32 spec_factor = 1.0f);
 	virtual	BOOL	Process					(SPPInfo& pp);
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffectorHit
 //////////////////////////////////////////////////////////////////////////
-class CMonsterEffectorHit : public CEffectorCam {
-
-	F32 total;
-	F32 max_amp;
-	F32 period_number;
-	F32 power;
+class CMonsterEffectorHit : public CEffectorCam
+{
+	f32 total;
+	f32 max_amp;
+	f32 period_number;
+	f32 power;
 
 	Fvector offset;
+
 public:
-					CMonsterEffectorHit		(F32 time, F32 amp, F32 periods, F32 power);
-	virtual	BOOL	Process					(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);
+					CMonsterEffectorHit		(f32 time, f32 amp, f32 periods, f32 power);
+	virtual	BOOL	Process					(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
 };
-
-

@@ -38,7 +38,7 @@ class CCustomZone :
 	public Feel::Touch
 {
 private:
-    typedef	CSpaceRestrictor inherited;
+	typedef	CSpaceRestrictor inherited;
 
 public:
 	CZoneEffector*		m_effector;
@@ -86,7 +86,7 @@ public:
 		eZoneStateIdle = 0,		//состояние зоны, когда внутри нее нет активных объектов
 		eZoneStateAwaking,		//пробуждение зоны (объект попал в зону)
 		eZoneStateBlowout,		//выброс
-        eZoneStateAccumulate,	//накапливание энергии, после выброса
+		eZoneStateAccumulate,	//накапливание энергии, после выброса
 		eZoneStateDisabled,
 		eZoneStateMax
 	} EZoneState;

@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "igame_level.h"
+//#include "igame_level.h"
 #include "igame_persistent.h"
 
 #include "Environment.h"
@@ -12,8 +12,8 @@
 #include "Effector.h"
 #include "EffectorPP.h"
 
-#include "x_ray.h"
-#include "gamefont.h"
+//#include "x_ray.h"
+//#include "gamefont.h"
 #include "render.h"
 
 f32	psCamInert		= 0.7f;

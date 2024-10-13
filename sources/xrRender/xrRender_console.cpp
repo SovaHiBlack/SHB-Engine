@@ -2,6 +2,9 @@
 
 #include "xrRender_console.h"
 
+#include	"..\XR_3DA\xr_ioconsole.h"
+#include	"..\XR_3DA\xr_ioc_cmd.h"
+
 u32			ps_Preset				=	2	;
 xr_token							qpreset_token							[ ]={
 	{ "Minimum",					0											},
@@ -13,8 +16,7 @@ xr_token							qpreset_token							[ ]={
 };
 
 // Common
-//int		ps_r__Supersample			= 1		;
-int			ps_r__LightSleepFrames		= 10	;
+s32			ps_r__LightSleepFrames		= 10	;
 
 f32		ps_r__Detail_l_ambient		= 0.9f	;
 f32		ps_r__Detail_l_aniso		= 0.25f	;
@@ -24,71 +26,70 @@ f32		ps_r__Detail_rainbow_hemi	= 0.75f	;
 f32		ps_r__Tree_w_rot			= 10.0f	;
 f32		ps_r__Tree_w_speed			= 1.00f	;
 f32		ps_r__Tree_w_amp			= 0.005f;
-Fvector		ps_r__Tree_Wave				= {.1f, .01f, .11f};
+fVector3		ps_r__Tree_Wave				= {.1f, .01f, .11f};
 f32		ps_r__Tree_SBC				= 1.5f	;	// scale bias correct
 
-f32		ps_r__WallmarkTTL			= 300.f	;
+f32		ps_r__WallmarkTTL			= 300.0f	;
 f32		ps_r__WallmarkSHIFT			= 0.0001f;
 f32		ps_r__WallmarkSHIFT_V		= 0.0001f;
 
 f32		ps_r__GLOD_ssa_start		= 256.f	;
 f32		ps_r__GLOD_ssa_end			=  64.f	;
-f32		ps_r__LOD					=  1.f	;
-//. f32		ps_r__LOD_Power				=  1.5f	;
+f32		ps_r__LOD					=  1.0f	;
 f32		ps_r__ssaDISCARD			=  3.5f	;					//RO
-f32		ps_r__ssaDONTSORT			=  32.f	;					//RO
-f32		ps_r__ssaHZBvsTEX			=  96.f	;					//RO
+f32		ps_r__ssaDONTSORT			=  32.0f	;					//RO
+f32		ps_r__ssaHZBvsTEX			=  96.0f	;					//RO
 
-int			ps_r__tf_Anisotropic		= 4		;
+s32			ps_r__tf_Anisotropic		= 4		;
 
 // R1
-f32		ps_r1_ssaLOD_A				= 64.f	;
-f32		ps_r1_ssaLOD_B				= 48.f	;
+f32		ps_r1_ssaLOD_A				= 64.0f	;
+f32		ps_r1_ssaLOD_B				= 48.0f	;
 f32		ps_r1_tf_Mipbias			= 0.0f	;
 Flags32		ps_r1_flags					= { R1FLAG_DLIGHTS };		// r1-only
 f32		ps_r1_lmodel_lerp			= 0.1f	;
-f32		ps_r1_dlights_clip			= 30.f	;
-f32		ps_r1_pps_u					= 0.f	;
-f32		ps_r1_pps_v					= 0.f	;
+f32		ps_r1_dlights_clip			= 30.0f	;
+f32		ps_r1_pps_u					= 0.0f	;
+f32		ps_r1_pps_v					= 0.0f	;
 
 // R1-specific
-int			ps_r1_GlowsPerFrame			= 16	;					// r1-only
+s32			ps_r1_GlowsPerFrame			= 16	;					// r1-only
 
 // R2
-f32		ps_r2_ssaLOD_A				= 48.f	;
-f32		ps_r2_ssaLOD_B				= 32.f	;
+f32		ps_r2_ssaLOD_A				= 48.0f	;
+f32		ps_r2_ssaLOD_B				= 32.0f	;
 f32		ps_r2_tf_Mipbias			= 0.0f	;
 
 // R2-specific
 Flags32		ps_r2_ls_flags				= { R2FLAG_SUN | R2FLAG_SUN_IGNORE_PORTALS | R2FLAG_EXP_DONT_TEST_UNSHADOWED | R2FLAG_USE_NVSTENCIL | R2FLAG_EXP_SPLIT_SCENE | R2FLAG_EXP_MT_CALC};	// r2-only
 f32		ps_r2_df_parallax_h			= 0.02f;
-f32		ps_r2_df_parallax_range		= 75.f;
+f32		ps_r2_df_parallax_range		= 75.0f;
 f32		ps_r2_tonemap_middlegray	= 0.25f;			// r2-only
-f32		ps_r2_tonemap_adaptation	= 5.f;				// r2-only
+f32		ps_r2_tonemap_adaptation	= 5.0f;				// r2-only
 f32		ps_r2_tonemap_low_lum		= 0.001f;			// r2-only
 f32		ps_r2_tonemap_amount		= 0.5f;				// r2-only
 f32		ps_r2_ls_bloom_kernel_g		= 3.3f;				// r2-only
-f32		ps_r2_ls_bloom_kernel_b		= .7f;				// r2-only
-f32		ps_r2_ls_bloom_speed		= 10.f;				// r2-only
+f32		ps_r2_ls_bloom_kernel_b		= 0.7f;				// r2-only
+f32		ps_r2_ls_bloom_speed		= 10.0f;				// r2-only
 f32		ps_r2_ls_bloom_kernel_scale	= 1.0f;				// r2-only	// gauss
-f32		ps_r2_ls_dsm_kernel			= .7f;				// r2-only
-f32		ps_r2_ls_psm_kernel			= .7f;				// r2-only
-f32		ps_r2_ls_ssm_kernel			= .7f;				// r2-only
-f32		ps_r2_ls_bloom_threshold	= .3f;				// r2-only
-Fvector		ps_r2_aa_barier				= { .8f, .1f, 0};	// r2-only
-Fvector		ps_r2_aa_weight				= { .25f,.25f,0};	// r2-only
-f32		ps_r2_aa_kernel				= .5f;				// r2-only
-f32		ps_r2_mblur					= .5f;				// .5f
-int			ps_r2_GI_depth				= 1;				// 1..5
-int			ps_r2_GI_photons			= 16;				// 8..64
+f32		ps_r2_ls_dsm_kernel			= 0.7f;				// r2-only
+f32		ps_r2_ls_psm_kernel			= 0.7f;				// r2-only
+f32		ps_r2_ls_ssm_kernel			= 0.7f;				// r2-only
+f32		ps_r2_ls_bloom_threshold	= 0.3f;				// r2-only
+fVector3		ps_r2_aa_barier				= { 0.8f, 0.1f, 0.0f};	// r2-only
+fVector3		ps_r2_aa_weight				= { 0.25f,0.25f,0.0f};	// r2-only
+f32		ps_r2_aa_kernel				= 0.5f;				// r2-only
+f32		ps_r2_mblur					= 0.5f;				// .5f
+s32			ps_r2_GI_depth				= 1;				// 1..5
+s32			ps_r2_GI_photons			= 16;				// 8..64
 f32		ps_r2_GI_clip				= EPS_L;			// EPS
-f32		ps_r2_GI_refl				= .9f;				// .9f
+f32		ps_r2_GI_refl				= 0.9f;				// .9f
 f32		ps_r2_ls_depth_scale		= 1.00001f;			// 1.00001f
 f32		ps_r2_ls_depth_bias			= -0.0001f;			// -0.0001f
 f32		ps_r2_ls_squality			= 1.0f;				// 1.00f
 f32		ps_r2_sun_tsm_projection	= 0.18f;			// 0.18f
 f32		ps_r2_sun_tsm_bias			= -0.05f;			// 
-f32		ps_r2_sun_near				= 12.f;				// 12.0f
+f32		ps_r2_sun_near				= 12.0f;				// 12.0f
 f32		ps_r2_sun_near_border		= 0.66f;			// 1.0f
 f32		ps_r2_sun_depth_far_scale	= 1.00000f;			// 1.00001f
 f32		ps_r2_sun_depth_far_bias	= 0.00000f;			// -0.0000f
@@ -97,23 +98,21 @@ f32		ps_r2_sun_depth_near_bias	= -0.00004f;		// -0.00005f
 f32		ps_r2_sun_lumscale			= 1.0f;				// 1.0f
 f32		ps_r2_sun_lumscale_hemi		= 1.0f;				// 1.0f
 f32		ps_r2_sun_lumscale_amb		= 1.0f;
-f32		ps_r2_gmaterial				= 0.f;				// 
+f32		ps_r2_gmaterial				= 0.0f;				// 
 f32		ps_r2_zfill					= 0.1f;				// .1f
 
-f32		ps_r2_dhemi_scale			= 1.f;				// 1.5f
-int			ps_r2_dhemi_count			= 5;				// 5
-int			ps_r2_wait_sleep			= 0;
+f32		ps_r2_dhemi_scale			= 1.0f;				// 1.5f
+s32			ps_r2_dhemi_count			= 5;				// 5
+s32			ps_r2_wait_sleep			= 0;
 
-f32		ps_r2_lt_smooth				= 1.f;				// 1.f
-f32		ps_r2_slight_fade			= 1.f;				// 1.f
+f32		ps_r2_lt_smooth				= 1.0f;				// 1.f
+f32		ps_r2_slight_fade			= 1.0f;				// 1.f
 
 
 //- Mad Max
 f32		ps_r2_gloss_factor			= 1.0f;
 //- Mad Max
 
-#include	"..\XR_3DA\xr_ioconsole.h"
-#include	"..\XR_3DA\xr_ioc_cmd.h"
 
 //-----------------------------------------------------------------------
 class CCC_tf_Aniso		: public CCC_Integer
@@ -256,14 +255,10 @@ void		xrRender_initconsole	()
 	CMD1(CCC_ModelPoolStat,"stat_models"		);
 #endif // DEBUG
 
-//	CMD4(CCC_Integer,	"r__supersample",		&ps_r__Supersample,			1,		4		);
-
 	Fvector	tw_min,tw_max;
 	
 	CMD4(CCC_Float,		"r__geometry_lod",		&ps_r__LOD,					0.1f,	1.2f		);
-//.	CMD4(CCC_Float,		"r__geometry_lod_pow",	&ps_r__LOD_Power,			0,		2		);
 
-//.	CMD4(CCC_Float,		"r__detail_density",	&ps_r__Detail_density,		.05f,	0.99f	);
 	CMD4(CCC_Float,		"r__detail_density",	&ps_r__Detail_density,		.2f,	0.6f	);
 
 #ifdef DEBUG
@@ -334,10 +329,6 @@ void		xrRender_initconsole	()
 	CMD3(CCC_Mask,		"r2_sun",				&ps_r2_ls_flags,			R2FLAG_SUN		);
 	CMD3(CCC_Mask,		"r2_sun_details",		&ps_r2_ls_flags,			R2FLAG_SUN_DETAILS);
 	CMD3(CCC_Mask,		"r2_sun_focus",			&ps_r2_ls_flags,			R2FLAG_SUN_FOCUS);
-//	CMD3(CCC_Mask,		"r2_sun_static",		&ps_r2_ls_flags,			R2FLAG_SUN_STATIC);
-//	CMD3(CCC_Mask,		"r2_exp_splitscene",	&ps_r2_ls_flags,			R2FLAG_EXP_SPLIT_SCENE);
-//	CMD3(CCC_Mask,		"r2_exp_donttest_uns",	&ps_r2_ls_flags,			R2FLAG_EXP_DONT_TEST_UNSHADOWED);
-	
 	CMD3(CCC_Mask,		"r2_sun_tsm",			&ps_r2_ls_flags,			R2FLAG_SUN_TSM	);
 	CMD4(CCC_Float,		"r2_sun_tsm_proj",		&ps_r2_sun_tsm_projection,	.001f,	0.8f	);
 	CMD4(CCC_Float,		"r2_sun_tsm_bias",		&ps_r2_sun_tsm_bias,		-0.5,	+0.5	);
@@ -373,7 +364,6 @@ void		xrRender_initconsole	()
 	CMD4(CCC_Float,		"r2_ls_depth_bias",		&ps_r2_ls_depth_bias,		-0.5,	+0.5	);
 
 	CMD4(CCC_Float,		"r2_parallax_h",		&ps_r2_df_parallax_h,		.0f,	.5f		);
-//	CMD4(CCC_Float,		"r2_parallax_range",	&ps_r2_df_parallax_range,	5.0f,	175.0f	);
 
 	CMD4(CCC_Float,		"r2_slight_fade",		&ps_r2_slight_fade,			.02f,	2.f		);
 

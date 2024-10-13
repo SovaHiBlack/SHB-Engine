@@ -128,14 +128,14 @@ void CALifeMonsterBrain::select_task			()
 
 	m_last_search_time				= current_time;
 
-	F32							best_value = flt_min;
+	f32							best_value = flt_min;
 	CALifeSmartTerrainRegistry::OBJECTS::const_iterator	I = ai().alife().smart_terrains().objects().begin();
 	CALifeSmartTerrainRegistry::OBJECTS::const_iterator	E = ai().alife().smart_terrains().objects().end();
 	for ( ; I != E; ++I) {
 		if (!(*I).second->enabled(&object()))
 			continue;
 
-		F32						value = (*I).second->suitable(&object());
+		f32						value = (*I).second->suitable(&object());
 		if (value > best_value) {
 			best_value				= value;
 			object().m_smart_terrain_id	= (*I).second->ID;

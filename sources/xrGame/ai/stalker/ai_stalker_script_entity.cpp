@@ -85,7 +85,7 @@ bool CAI_Stalker::bfAssignWatch(CScriptEntityAction *tpEntityAction)
 	
 	CScriptWatchAction	&l_tWatchAction = tpEntityAction->m_tWatchAction;
 
-//	F32			&yaw = movement().m_head.target.yaw, &pitch = movement().m_head.target.pitch;
+//	f32			&yaw = movement().m_head.target.yaw, &pitch = movement().m_head.target.pitch;
 
 	switch (l_tWatchAction.m_tGoalType) {
 		case CScriptWatchAction::eGoalTypeObject : {

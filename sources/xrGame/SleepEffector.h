@@ -10,8 +10,6 @@
 
 #define SLEEP_EFFECTOR_TYPE_ID 8
 
-#define FATIGUE_EFFECTOR_TYPE_ID 33
-
 class CSleepEffectorPP : public CEffectorPP {
 	typedef CEffectorPP inherited;	
 
@@ -23,7 +21,6 @@ class CSleepEffectorPP : public CEffectorPP {
 public:
 	CSleepEffectorPP			(const SPPInfo &ppi, f32 life_time, f32 attack_time = 0.0f, f32 release_time = 0.0f);
 	virtual	BOOL	Process		(SPPInfo& pp);
-
 	
 	//текущий статус сна
 	enum SLEEP_STATE { BEGIN_SLEEP,
@@ -33,8 +30,8 @@ public:
 	SLEEP_STATE m_eSleepState;
 };
 
-
-struct SSleepEffector {
+struct SSleepEffector
+{
 	SPPInfo	ppi;
 	f32	time;
 	f32	time_attack;

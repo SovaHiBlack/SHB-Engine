@@ -6,9 +6,10 @@
 #include "std_classes.h"
 #include "customHUD.h"
 #include "render.h"
-#include "gamefont.h"
+//#include "gamefont.h"
 #include "xrLevel.h"
 #include "CameraManager.h"
+#include "resourcemanager.h"
 
 ENGINE_API	IGame_Level*	g_pGameLevel	= NULL;
 
@@ -22,8 +23,6 @@ IGame_Level::IGame_Level	()
 	pCurrentViewEntity			= NULL;
 	pHUD						= NULL;
 }
-
-#include "resourcemanager.h"
 
 IGame_Level::~IGame_Level	()
 {

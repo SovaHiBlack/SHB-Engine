@@ -40,7 +40,7 @@ protected:
 			void			permutate_enemies	();
 			void			assign_wounded		();
 			void			assign_enemy_masks	();
-			F32			evaluate			(const CEntityAlive *object0, const CEntityAlive *object1) const;
+			f32			evaluate			(const CEntityAlive *object0, const CEntityAlive *object1) const;
 			void			exchange_enemies	(CMemberOrder &member0, CMemberOrder &member1);
 	IC		CAgentManager	&object				() const;
 

@@ -9,13 +9,13 @@
 #include "xrHemisphere.h"
 #include "perlin.h"
 
-#include "xr_input.h"
+//#include "xr_input.h"
 
 #include "resourcemanager.h"
 
 #include "IGame_Level.h"
 
-#include "D3DUtils.h"
+//#include "D3DUtils.h"
 
 
 //////////////////////////////////////////////////////////////////////

@@ -34,14 +34,14 @@
 #include "aint.h"
 
 
-inline F32 min(F32 x, F32 y)
+inline f32 min(f32 x, f32 y)
 {
-    return x < y ? x : y;
+	return x < y ? x : y;
 }
 
-inline F32 max(F32 x, F32 y)
+inline f32 max(f32 x, f32 y)
 {
-    return x > y ? x : y;
+	return x > y ? x : y;
 }
 
 
@@ -49,35 +49,35 @@ inline F32 max(F32 x, F32 y)
 //
 // Sets the low bound for the interval
 // 
-void AngleInt::SetLow(F32 l)
+void AngleInt::SetLow(f32 l)
 {
-    low = angle_normalize(l);
+	low = angle_normalize(l);
 }
 
 //
 // Sets the high bound for the interval
 // 
-void AngleInt::SetHigh(F32 h)
+void AngleInt::SetHigh(f32 h)
 {
-    high = angle_normalize(h);
+	high = angle_normalize(h);
 }
 
 
-AngleInt::AngleInt(F32 l, F32 h)
+AngleInt::AngleInt(f32 l, f32 h)
 {
-    SetLow(l);
-    SetHigh(h);
+	SetLow(l);
+	SetHigh(h);
 }
 
-F32 AngleInt::Mid() const
+f32 AngleInt::Mid() const
 {
-	F32 mid;
-    if (High() > Low())
+	f32 mid;
+	if (High() > Low())
 	mid = ((High() + Low()) / 2.0f);
-    else
+	else
 	mid = angle_normalize(M_PI + (High() + Low())/2.0f);
 
-    return mid;
+	return mid;
 }
 
 //
@@ -86,112 +86,110 @@ F32 AngleInt::Mid() const
 // If a is inside the interval then return a negative value indicating
 // the minimum angular displamcent to move a outside the interval
 //
-F32 AngleInt::Distance(F32 v) const
+f32 AngleInt::Distance(f32 v) const
 {
-    const F32 eps   = AINT_EPSILON;
-    const F32 TwoPi = 2*M_PI;
+	const f32 eps   = AINT_EPSILON;
+	const f32 TwoPi = 2*M_PI;
 
-	F32 t1;
-	F32	t2;
-    v = angle_normalize(v);
+	f32 t1;
+	f32	t2;
+	v = angle_normalize(v);
 
-    if (IsEmpty(eps))
+	if (IsEmpty(eps))
 	return TwoPi;
 
-    if (IsFullRange(eps))
+	if (IsFullRange(eps))
 	return -M_PI;
 
-    if (iszero(v) || istwopi(v))
-    {
-	if (High() > Low())
+	if (iszero(v) || istwopi(v))
 	{
-	    t1 = Low();
-	    t2 = TwoPi - High();
+		if (High( ) > Low( ))
+		{
+			t1 = Low( );
+			t2 = TwoPi - High( );
+		}
+		else
+		{
+			t1 = Low( ) - TwoPi;
+			t2 = -High( );
+		}
 	}
-	else
+	else if (High( ) > Low( ))
 	{
-	    t1 = Low() - TwoPi;
-	    t2 = -High();
+		// 0 <= v < Low
+		if (v < Low( ))
+		{
+			t1 = Low( ) - v;
+			t2 = TwoPi - High( ) + v;
+		}
+
+		// Low <= v < High
+		else if (v < High( ))
+		{
+			t1 = v - High( );
+			t2 = Low( ) - v;
+		}
+
+		// High <= v < 2*M_PI
+		else
+		{
+			t1 = v - High( );
+			t2 = TwoPi - v + Low( );
+		}
 	}
-    }
-    else if (High() > Low())
-    {
-	// 0 <= v < Low
-	if (v < Low())
+	else // (Low() > High())
 	{
-	    t1 = Low() - v;
-	    t2 = TwoPi - High() + v;
+		// 0 < v < High
+		if (v < High( ))
+		{
+			t1 = v - High( );
+			t2 = Low( ) - v - TwoPi;
+		}
+
+		// High <= v < Low
+		else if (v < Low( ))
+		{
+			t1 = v - High( );
+			t2 = Low( ) - v;
+		}
+
+		// Low <= v < 2*M_PI
+		else
+		{
+			t1 = Low( ) - v;
+			t2 = v - TwoPi - High( );
+		}
 	}
 
-	// Low <= v < High
-	else if (v < High())
-	{
-	    t1 = v - High();
-	    t2 = Low() - v;
-	}
-
-	// High <= v < 2*M_PI
-	else 
-	{
-	    t1 = v - High();
-	    t2 = TwoPi - v + Low();
-	}
-    }
-    else // (Low() > High())
-    {
-	// 0 < v < High
-	if (v < High())
-	{
-	    t1 = v - High(); 
-	    t2 = Low() - v - TwoPi;
-	}
-
-	// High <= v < Low
-	else if (v < Low())
-	{
-	    t1 = v - High();
-	    t2 = Low() - v;
-	}
-	
-	// Low <= v < 2*M_PI
-	else
-	{
-	    t1 = Low() - v;
-	    t2 = v - TwoPi - High();
-	}
-    }
-
-    return (_abs(t1) < _abs(t2)) ? t1 : t2;
+	return (_abs(t1) < _abs(t2)) ? t1 : t2;
 }
 
-
-int AngleInt::OldIsSupersetOf(const AngleInt& a, F32 eps) const
+int AngleInt::OldIsSupersetOf(const AngleInt& a, f32 eps) const
 {
-    return InRange(a.Low(),eps) && InRange(a.High(),eps) && InRange(a.Mid(),eps);
+	return InRange(a.Low(),eps) && InRange(a.High(),eps) && InRange(a.Mid(),eps);
 }
 
-int AngleInt::IsSupersetOf(const AngleInt& a, F32 eps) const
+int AngleInt::IsSupersetOf(const AngleInt& a, f32 eps) const
 {
-    if (low < high)
-    {
+	if (low < high)
+	{
 	if (a.low < a.high)
-	    return InRange(a.low, eps) && InRange(a.Mid(), eps) && InRange(a.high, eps);
+		return InRange(a.low, eps) && InRange(a.Mid(), eps) && InRange(a.high, eps);
 	else
-	    return InRange(a.low, eps) && istwopi(high,eps) && a.high < eps;
-    }
-    else
-    {
+		return InRange(a.low, eps) && istwopi(high,eps) && a.high < eps;
+	}
+	else
+	{
 	if (a.low < a.high)
-	    return le(a.high,high,eps) || ge(a.low,low,eps);
+		return le(a.high,high,eps) || ge(a.low,low,eps);
 	else
-	    return InRange(a.low, eps) && InRange(a.high, eps);
-    }
+		return InRange(a.low, eps) && InRange(a.high, eps);
+	}
 }
 
-
-int AngleInt::IsSubsetOf(const AngleInt &a, F32 eps) const
+int AngleInt::IsSubsetOf(const AngleInt &a, f32 eps) const
 {
-    return a.IsSupersetOf(*this, eps);
+	return a.IsSupersetOf(*this, eps);
 }
 
 //
@@ -200,38 +198,38 @@ int AngleInt::IsSubsetOf(const AngleInt &a, F32 eps) const
 // a is not full range or fully empty
 // 
  
-int AngleInt::merge_aux(const AngleInt &a, AngleInt &b, F32 eps)  const
+int AngleInt::merge_aux(const AngleInt &a, AngleInt &b, f32 eps)  const
 {
-    int in1 = InRange(a.Low(), eps);
-    int in2 = InRange(a.High(), eps);
+	int in1 = InRange(a.Low(), eps);
+	int in2 = InRange(a.High(), eps);
 
-    if (!in1 && !in2)
+	if (!in1 && !in2)
 	return 0;
 
-    if (in1 && in2)
-    {
-		F32 mid = (Low() + High()) / 2.0f;
+	if (in1 && in2)
+	{
+		f32 mid = (Low() + High()) / 2.0f;
 	if (Low() < High())
-	    mid += M_PI;
+		mid += M_PI;
 
 	if (a.InRange(mid, eps))
-	    b.Set(0,2*M_PI);
+		b.Set(0,2*M_PI);
 	else
-	    b.Set(Low(), High());
-    }
-    else if (in1)
+		b.Set(Low(), High());
+	}
+	else if (in1)
 	b.Set(Low(), a.High());
-    else 
+	else 
 	b.Set(a.Low(), High());
 
-    return 1;
+	return 1;
 }
 
-int AngleInt::merge(const AngleInt &a, AngleInt &b, F32 eps)  const
+int AngleInt::merge(const AngleInt &a, AngleInt &b, f32 eps)  const
 {
-    if (merge_aux(a,b, eps))
+	if (merge_aux(a,b, eps))
 	return 1;
-    else
+	else
 	return a.merge_aux(*this,b,eps);
 }
 
@@ -243,22 +241,22 @@ int AngleInt::merge(const AngleInt &a, AngleInt &b, F32 eps)  const
 //
 // Returns the size of the range 
 // 
-F32 AngleInt::Range() const
+f32 AngleInt::Range() const
 {
-    return (low < high) ? (high - low) : high + (2*M_PI - low);
+	return (low < high) ? (high - low) : high + (2*M_PI - low);
 }
 
-void AngleIntList::add(F32 l, F32 h)
+void AngleIntList::add(f32 l, f32 h)
 {
-    AngleIntListNode *t = xr_new<AngleIntListNode>(l, h, (AngleIntListNode*)0);
+	AngleIntListNode *t = xr_new<AngleIntListNode>(l, h, (AngleIntListNode*)0);
 
-    if (!head)
+	if (!head)
 	head = tail = t;
-    else
-    {
+	else
+	{
 	tail->next = t;
 	tail =  t;
-    }
+	}
 }
 
 
@@ -266,27 +264,27 @@ void AngleIntList::add(F32 l, F32 h)
 
 void AngleIntList::remove(AngleIntListNode *t)
 {
-    AngleIntListNode *prev;
+	AngleIntListNode *prev;
 
-    if (head == t)
-    {
+	if (head == t)
+	{
 	prev = 0;
 	head = t->next;
-    }
-    else
-    {
+	}
+	else
+	{
 	prev = head;
 
 	while (prev->next != t)
-	    prev = prev->next;
+		prev = prev->next;
 
 	prev->next = t->next;
-    }
+	}
 
-    if (tail == t)
+	if (tail == t)
 	tail = prev;
 
-    delete t;
+	delete t;
 }
 
 
@@ -299,81 +297,81 @@ void swell(const AngleInt &a,
 	   const AngleInt &b,
 	   AngleInt &c)
 {
-    if (a.IsFullRange())
+	if (a.IsFullRange())
 	c.Set(0,2*M_PI);
-    else
-    {
-		F32 l = a.Low();
-		F32 h = a.High();
-		F32 l2 = b.Low();
-		F32 h2 = b.High();
+	else
+	{
+		f32 l = a.Low();
+		f32 h = a.High();
+		f32 l2 = b.Low();
+		f32 h2 = b.High();
 
 	if (l < h)
 	{
-	    if (l2 < h2)
+		if (l2 < h2)
 		l = min(l,l2);
-	    else
+		else
 		l = l2;
-	    h = max(h,h2);
+		h = max(h,h2);
 	}
 	else 
 	{
-	    if (l2 < h2)
-	    {
+		if (l2 < h2)
+		{
 		/*
 		if (istwopi(h2))
-		    h = h;
+			h = h;
 		else
-		    h = max(h,h2);
-	    */
-	    }
-	    else
-	    {
+			h = max(h,h2);
+		*/
+		}
+		else
+		{
 		l = min(l,l2);
 		h = max(h,h2);
-	    }
+		}
 	}
 	c.Set(l, h);
-    }
+	}
 }
 
 //
 // Adds the interval (l,h) to the list. If possible merge it with
 // other intervals 
 //
-void AngleIntList::Add(F32 l, F32 h, F32 eps)
+void AngleIntList::Add(f32 l, f32 h, f32 eps)
 {
-    AngleInt a(l,h);
-    AngleInt b;
+	AngleInt a(l,h);
+	AngleInt b;
 
-    // interval to add is either emtpy or close to full range 0..2*M_PI
-    if (a.IsEmpty())
+	// interval to add is either emtpy or close to full range 0..2*M_PI
+	if (a.IsEmpty())
 	return;
 
-    else if (a.IsFullRange())
-    {
+	else if (a.IsFullRange())
+	{
 	Clear();
 	add(0.0f, 2*M_PI - AINT_EPSILON);
-    }
-    
-    // Put a into the list taking into account it may merge with another entry
-    else
-    {
+	}
+	
+	// Put a into the list taking into account it may merge with another entry
+	else
+	{
 	// check if any merges are required
 	for (AngleIntListNode *temp = head; temp; temp = temp->next)
 	{
 
-	    // a is already completely contained
-	    if (temp->D.IsSupersetOf(a, eps))
-	    {
+		// a is already completely contained
+		if (temp->D.IsSupersetOf(a, eps))
+		{
 		swell(temp->D, a, temp->D);
 		return; 
-	    }
+		}
 
 
-	    // a already completely contains a node 
-	    else if (temp->D.IsSubsetOf(a, eps))
-	    {
+		// a already completely contains a node 
+		else if (temp->D.IsSubsetOf(a, eps))
+		{
 		swell(a, temp->D, a);
 		// remove the smaller node
 		remove(temp);
@@ -381,78 +379,77 @@ void AngleIntList::Add(F32 l, F32 h, F32 eps)
 		// Add a recursively since it may merge with other nodes
 		Add(a.Low(), a.High(), eps);
 		return;
-	    }
+		}
 
-	    else if (temp->D.merge(a,b,eps))
-	    {
+		else if (temp->D.merge(a,b,eps))
+		{
 		// Remove the original node
 		remove(temp);
 		
 		// Add the merged node recursively since it may merge with other nodes
 		Add(b.Low(), b.High(), eps);
 		return;
-	    }
+		}
 	}
 
 	// a is completely disjoint from the other nodes
 	add(l, h);
-    }
+	}
 }
 
-void AngleIntList::AddList(AngleIntList &dest, F32 eps) const
+void AngleIntList::AddList(AngleIntList &dest, f32 eps) const
 {
-    for (AngleIntListNode *temp = head; temp; temp = temp->next)
+	for (AngleIntListNode *temp = head; temp; temp = temp->next)
 	dest.Add(temp->D.Low(), temp->D.High(), eps);
-    dest.wrap(eps);
+	dest.wrap(eps);
 }
 
-
-F32 AngleIntList::Distance(F32 a) const
+f32 AngleIntList::Distance(f32 a) const
 {
-	F32 dist = 2*M_PI;
+	f32 dist = 2*M_PI;
 
-    for (AngleIntListNode *t = head; t; t = t->next)
-    {
-		F32 temp = t->D.Distance(a);
+	for (AngleIntListNode *t = head; t; t = t->next)
+	{
+		f32 temp = t->D.Distance(a);
 	if (temp < dist)
-	    dist = temp;
-    }
+		dist = temp;
+	}
 
-    return dist;
+	return dist;
 }
 
 int AngleIntList::NumIntervals() const
 {
-    int count  = 0;
-    for (AngleIntListNode *t = head; t; t = t->next, count++);
-    return count;
+	int count  = 0;
+	for (AngleIntListNode *t = head; t; t = t->next, count++);
+	return count;
 }
 
 AngleInt *AngleIntList::Largest() const
 {
-    if (!head)
+	if (!head)
 	return 0;
 
-    AngleInt *l = &head->D;
-	F32 d = head->D.Range();
+	AngleInt *l = &head->D;
+	f32 d = head->D.Range();
 
-    for (AngleIntListNode *t = head->next; t; t = t->next)
-    {
-		F32 d2 = t->D.Range();
+	for (AngleIntListNode *t = head->next; t; t = t->next)
+	{
+		f32 d2 = t->D.Range();
 	if (d2 > d)
 	{
-	    d = d2;
-	    l = &t->D;
+		d = d2;
+		l = &t->D;
 	}
-    }
+	}
 
-    return l;
+	return l;
 }
 
 void AngleIntList::Copy(AngleIntList &dest) const
 {
-    dest.Clear(); 
-    for (AngleIntListNode *temp = head; temp; temp = temp->next)
+	dest.Clear(); 
+	for (AngleIntListNode *temp = head; temp; temp = temp->next)
 	dest.Add(temp->D.Low(), temp->D.High());
 }
 
@@ -462,53 +459,52 @@ void AngleIntList::Copy(AngleIntList &dest) const
 // reverse specifies whether you want to iterate *outside* the interval
 // instead of inside of it
 //
-AngleIntIterator::AngleIntIterator(const AngleInt &a, int num, F32 eps, int reverse)
+AngleIntIterator::AngleIntIterator(const AngleInt &a, int num, f32 eps, int reverse)
 {
-    count = 0;
+	count = 0;
 
-    // Handle null cases first
+	// Handle null cases first
 
-    if ((a.IsEmpty() && !reverse) || (a.IsFullRange() && reverse))
+	if ((a.IsEmpty() && !reverse) || (a.IsFullRange() && reverse))
 	n = 0;
 
-    else if (reverse)
-    {
+	else if (reverse)
+	{
 	AngleIntIterator A(AngleInt(a.High(), a.Low()), num, eps, 0);
 	*this = A;
-    }
+	}
 
-    else
-    {
+	else
+	{
 	dx = a.Range() - 2*eps;
 
 	// 2*eps is larger than the range
 	if (dx < 0.0)
-	    n = 0;
+		n = 0;
 	else if (num == 1)
 	{
-	    x = a.Mid();
-	    n = 1;
+		x = a.Mid();
+		n = 1;
 	}
 	else 
 	{
-	    x = a.Low() + eps;
-	    dx /= (num - 1);
-	    n = num;
+		x = a.Low() + eps;
+		dx /= (num - 1);
+		n = num;
 	}
-    }
+	}
 }
 
-
-int AngleIntIterator::Next(F32& a)
+int AngleIntIterator::Next(f32& a)
 {
-    if (count == n)
+	if (count == n)
 	return 0;
 
-    a = angle_normalize(x);
-    x += dx;
-    count++;
+	a = angle_normalize(x);
+	x += dx;
+	count++;
 
-    return 1;
+	return 1;
 }
 
 
@@ -521,43 +517,43 @@ int AngleIntIterator::Next(F32& a)
 static void aint_intersect_aux(const AngleInt &a, const AngleInt &b, AngleIntList &c)
 {
 #if 0
-    // Degenerate cases of null intersection at 0/2pi boundary
-    if (iszero(a.Low()) && istwopi(b.High()) && a.High() < b.Low())
+	// Degenerate cases of null intersection at 0/2pi boundary
+	if (iszero(a.Low()) && istwopi(b.High()) && a.High() < b.Low())
 	return;
-    if (iszero(b.Low()) && istwopi(a.High()) && b.High() < a.Low())
+	if (iszero(b.Low()) && istwopi(a.High()) && b.High() < a.Low())
 	return;
 #endif
-    
-    const F32 eps = AINT_EPSILON;
+	
+	const f32 eps = AINT_EPSILON;
 
-    int in1 = a.InRange(b.Low() + 2*eps, eps);
-    int in2 = b.InRange(a.Low() + 2*eps, eps);
+	int in1 = a.InRange(b.Low() + 2*eps, eps);
+	int in2 = b.InRange(a.Low() + 2*eps, eps);
 
-	    // no overlap
-    if (!in1 && !in2)
+		// no overlap
+	if (!in1 && !in2)
 	return; 
 
-    if (in1)
+	if (in1)
 	c.Add(b.Low(), min(b.High(), a.High()));
 
-    else if (in2)
+	else if (in2)
 	c.Add(a.Low(), min(b.High(), a.High()));		    
 }
 
 static void aint_intersect(const AngleInt &a, const AngleInt &b, AngleIntList &c)
 {
-    if (a.IsFullRange())
+	if (a.IsFullRange())
 	c.Add(b.Low(), b.High());
 
-    else if (b.IsFullRange())
+	else if (b.IsFullRange())
 	c.Add(a.Low(), a.High());
 
-    else if ((!a.IsEmpty()) && (!b.IsEmpty()))
-    {
+	else if ((!a.IsEmpty()) && (!b.IsEmpty()))
+	{
 	if (a.Low() > a.High())
 	{
-	    if (b.Low() > b.High())
-	    {
+		if (b.Low() > b.High())
+		{
 		AngleInt x1, x2, y1, y2;
 		
 		a.split(x1, y1);
@@ -567,30 +563,30 @@ static void aint_intersect(const AngleInt &a, const AngleInt &b, AngleIntList &c
 		aint_intersect_aux(x1, y2, c);
 		aint_intersect_aux(y1, x2, c);
 		aint_intersect_aux(y1, y2, c);
-	    }
-	    else
-	    {
+		}
+		else
+		{
 		AngleInt x, y;
 
 		a.split(x,y);
 
 		aint_intersect_aux(x,b,c);
 		aint_intersect_aux(y,b,c);
-	    }
+		}
 
 	}
 	else if (b.Low() > b.High())
 	{
-	    AngleInt x, y;
+		AngleInt x, y;
 
-	    b.split(x,y);
+		b.split(x,y);
 
-	    aint_intersect_aux(a,x,c);
-	    aint_intersect_aux(a,y,c);
+		aint_intersect_aux(a,x,c);
+		aint_intersect_aux(a,y,c);
 	}
 	else
-	    aint_intersect_aux(a,b,c);
-    }
+		aint_intersect_aux(a,b,c);
+	}
 }
 
 //
@@ -600,21 +596,20 @@ static void aint_intersect(const AngleInt &a, const AngleInt &b, AngleIntList &c
 
 static void aint_union_aux(const AngleInt &a, const AngleInt &b, AngleIntList &c)
 {
-    const F32 eps = AINT_EPSILON;
-    int in1 = a.InRange(b.Low() + 2*eps, eps);
-    int in2 = b.InRange(a.Low() + 2*eps, eps);
+	const f32 eps = AINT_EPSILON;
+	int in1 = a.InRange(b.Low() + 2*eps, eps);
+	int in2 = b.InRange(a.Low() + 2*eps, eps);
 
-
-    // no overlap add both into c
-    if (!in1 && !in2)
-    {
+	// no overlap add both into c
+	if (!in1 && !in2)
+	{
 	c.Add(a.Low(),a.High());
 	c.Add(b.Low(),b.High());	
-    }
-    else if (in1)
+	}
+	else if (in1)
 	c.Add(a.Low(), max(b.High(), a.High()));
 
-    else 
+	else 
 	c.Add(b.Low(), max(b.High(), a.High()));
 
 }
@@ -623,89 +618,88 @@ static void aint_union(const AngleInt &a,
 		   const AngleInt &b,
 		   AngleIntList &c)
 {
-    if (a.IsFullRange())
+	if (a.IsFullRange())
 	c.Add(a.Low(), a.High());
-    else if (b.IsFullRange())
+	else if (b.IsFullRange())
 	c.Add(b.Low(), b.High());
-    else if (a.IsEmpty())
-    {
+	else if (a.IsEmpty())
+	{
 	if (!b.IsEmpty())
-	    c.Add(b.Low(), b.High());
-    }
-    else if (b.IsEmpty())
+		c.Add(b.Low(), b.High());
+	}
+	else if (b.IsEmpty())
 	c.Add(a.Low(), a.High());
 
-    else if (a.Low() > a.High())
-    {
+	else if (a.Low() > a.High())
+	{
 	if (b.Low() > b.High())
 	{
-	    AngleInt x1, x2, y1, y2;
-	    a.split(x1, y1);
-	    b.split(x2, y2);
+		AngleInt x1, x2, y1, y2;
+		a.split(x1, y1);
+		b.split(x2, y2);
 
-	    aint_union_aux(x1, x2, c);
-	    aint_union_aux(x1, y2, c);
-	    aint_union_aux(y1, x2, c);
-	    aint_union_aux(y1, y2, c);
+		aint_union_aux(x1, x2, c);
+		aint_union_aux(x1, y2, c);
+		aint_union_aux(y1, x2, c);
+		aint_union_aux(y1, y2, c);
 	}
 	else
 	{
-	    AngleInt x, y;
+		AngleInt x, y;
 
-	    a.split(x,y);
-	    
-	    aint_union_aux(x,b,c);
-	    aint_union_aux(y,b,c);
+		a.split(x,y);
+		
+		aint_union_aux(x,b,c);
+		aint_union_aux(y,b,c);
 	}
-    }
+	}
 
-    else if (b.Low() > b.High())
-    {
-	    AngleInt x, y;
-	    b.split(x,y);
-	    aint_union_aux(a, x, c);
-	    aint_union_aux(a, y, c);
-    }
-    else
+	else if (b.Low() > b.High())
+	{
+		AngleInt x, y;
+		b.split(x,y);
+		aint_union_aux(a, x, c);
+		aint_union_aux(a, y, c);
+	}
+	else
 	aint_union_aux(a, b, c);
 }
 
-
-void AngleIntList::wrap(F32 eps)
+void AngleIntList::wrap(f32 eps)
 {
-    AngleIntListNode *s, *t;
+	AngleIntListNode *s, *t;
 
-    s = 0;
-    t = 0;
+	s = 0;
+	t = 0;
 
-    for (AngleIntListNode *temp = head; temp; temp = temp->next)
-    {
+	for (AngleIntListNode *temp = head; temp; temp = temp->next)
+	{
 	if (_abs(temp->D.Low()) < eps)
 	{
-	    s = temp;
-	    if (t) 
+		s = temp;
+		if (t) 
 		break;
 	}
 
 	if (_abs(temp->D.High()-2*M_PI) < eps)
 	{
-	    t = temp;
-	    if (s)
+		t = temp;
+		if (s)
 		break;
 	}
-    }
+	}
 
-    if ((s && t) && (s != t))
-    {
-		F32 low = t->D.Low();
-		F32 high = s->D.High();
+	if ((s && t) && (s != t))
+	{
+		f32 low = t->D.Low();
+		f32 high = s->D.High();
 
 	remove(s);
 	remove(t);
 
 	Add(low, high);
-    }
-    
+	}
+	
 }
 
 
@@ -716,15 +710,15 @@ void Union(const AngleIntList &a,
 	   const AngleIntList &b,
 	   AngleIntList &c)
 {
-    AngleInt *ap, *bp; 
+	AngleInt *ap, *bp; 
 
-    c.Clear();
-    if (a.IsEmpty())
+	c.Clear();
+	if (a.IsEmpty())
 	b.Copy(c);
-    else if (b.IsEmpty())
+	else if (b.IsEmpty())
 	a.Copy(c);
-    else
-    {
+	else
+	{
 		for (AngleIntListIterator aa(a); ; )
 		{
 			ap = aa.Next();
@@ -741,17 +735,17 @@ void Union(const AngleIntList &a,
 // Take the intersection of two sets of psi intervals
 //
 void Intersect(const AngleIntList &a,
-	       const AngleIntList &b,
-	       AngleIntList &c)
+		   const AngleIntList &b,
+		   AngleIntList &c)
 {
-    AngleInt *ap, *bp; 
+	AngleInt *ap, *bp; 
 
-    c.Clear();
-    if (a.IsEmpty() || b.IsEmpty())
+	c.Clear();
+	if (a.IsEmpty() || b.IsEmpty())
 	return; 
 
 	AngleIntListIterator aa(a);
-    for (ap = aa.Next(); ap; ap = aa.Next())
+	for (ap = aa.Next(); ap; ap = aa.Next())
 	{
 		AngleIntListIterator bb(b);
 		for (bp = bb.Next(); bp; bp = bb.Next())
@@ -759,5 +753,5 @@ void Intersect(const AngleIntList &a,
 			aint_intersect(*ap, *bp, c);
 		}
 	}
-    c.wrap();
+	c.wrap();
 }

@@ -38,11 +38,11 @@ void CSE_ALifeObject::spawn_supplies		(pcstr ini_string)
 	if (ini.section_exist("spawn")) {
 		pcstr					N;
 		pcstr					V;
-		F32					p;
+		f32					p;
 		for (u32 k = 0, j; ini.r_line("spawn",k,&N,&V); k++) {
 			VERIFY				(xr_strlen(N));
 	
-			F32 f_cond						= 1.0f;
+			f32 f_cond						= 1.0f;
 			bool bScope							= false;
 			bool bSilencer						= false;
 			bool bLauncher						= false;
@@ -61,10 +61,10 @@ void CSE_ALifeObject::spawn_supplies		(pcstr ini_string)
 				bLauncher			= (NULL!=strstr(V,"launcher"));
 				//probability
 				if(NULL!=strstr(V,"prob="))
-					p				= (F32)atof(strstr(V,"prob=")+5);
+					p				= (f32)atof(strstr(V,"prob=")+5);
 				if (fis_zero(p)) p	= 1.0f;
 				if(NULL!=strstr(V,"cond="))
-					f_cond			= (F32)atof(strstr(V,"cond=")+5);
+					f_cond			= (f32)atof(strstr(V,"cond=")+5);
 			}
 			for (u32 i=0; i<j; ++i) {
 				if (randF(1.f) < p) {

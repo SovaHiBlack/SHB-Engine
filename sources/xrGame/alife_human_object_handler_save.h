@@ -12,7 +12,7 @@ struct CSortItemPredicate {
 struct CSortItemVolumePredicate {
 	IC bool							operator()							(const CSE_ALifeInventoryItem *tpALifeInventoryItem1, const CSE_ALifeInventoryItem *tpALifeInventoryItem2)  const
 	{
-		return						(F32(tpALifeInventoryItem1->m_iGridWidth*tpALifeInventoryItem1->m_iGridHeight) > F32(tpALifeInventoryItem2->m_iGridWidth*tpALifeInventoryItem2->m_iGridHeight));
+		return						(f32(tpALifeInventoryItem1->m_iGridWidth*tpALifeInventoryItem1->m_iGridHeight) > f32(tpALifeInventoryItem2->m_iGridWidth*tpALifeInventoryItem2->m_iGridHeight));
 	};
 };
 
@@ -40,7 +40,7 @@ struct CRemoveSlotAndCellItemsPredicate {
 	}
 };
 
-CSE_ALifeItemWeapon	*CSE_ALifeHumanAbstract::tpfGetBestWeapon(EHitType &tHitType, F32& fHitPower)
+CSE_ALifeItemWeapon	*CSE_ALifeHumanAbstract::tpfGetBestWeapon(EHitType &tHitType, f32& fHitPower)
 {
 	fHitPower					= 0.f;
 	m_tpCurrentBestWeapon		= 0;
@@ -310,7 +310,7 @@ bool CSE_ALifeHumanAbstract::bfChooseFast()
 {
 	// fast check if I can pick up all the items
 	u32								l_dwCurrentItemCount = children.size();
-	F32							l_fCumulativeItemMass = m_fCumulativeItemMass;
+	f32							l_fCumulativeItemMass = m_fCumulativeItemMass;
 	int								l_iCumulativeItemVolume = m_iCumulativeItemVolume;
 	bool							l_bOk = true;
 	ITEM_P_IT						I = alife().m_temp_item_vector.begin();
@@ -346,7 +346,7 @@ int CSE_ALifeHumanAbstract::ifChooseEquipment(OBJECT_VECTOR *tpObjectVector)
 	return						(0);
 //	// choosing equipment
 //	CSE_ALifeInventoryItem			*l_tpALifeItemBest	= 0;
-//	F32							l_fItemBestValue	= -1.f;
+//	f32							l_fItemBestValue	= -1.f;
 //	ai().ef_storage().alife_evaluation(true);
 //	ai().ef_storage().alife().member()	= this;
 //
@@ -360,7 +360,7 @@ int CSE_ALifeHumanAbstract::ifChooseEquipment(OBJECT_VECTOR *tpObjectVector)
 //		if (m_dwTotalMoney < (*I)->m_dwCost)
 //			continue;
 //		// evaluating item
-//		F32					l_fCurrentValue = ai().ef_storage().m_pfEquipmentType->ffGetValue();
+//		f32					l_fCurrentValue = ai().ef_storage().m_pfEquipmentType->ffGetValue();
 //		// choosing the best item
 //		if ((l_fCurrentValue > l_fItemBestValue) && bfCanGetItem(*I) && (!tpObjectVector || (std::find(tpObjectVector->begin(),tpObjectVector->end(),(*I)->base()->ID) == tpObjectVector->end()))) {
 //			l_fItemBestValue	= l_fCurrentValue;
@@ -383,7 +383,7 @@ int CSE_ALifeHumanAbstract::ifChooseEquipment(OBJECT_VECTOR *tpObjectVector)
 int  CSE_ALifeHumanAbstract::ifChooseWeapon(EWeaponPriorityType tWeaponPriorityType, OBJECT_VECTOR *tpObjectVector)
 {
 	CSE_ALifeInventoryItem	*l_tpALifeItemBest	= 0;
-	F32					l_fItemBestValue	= -1.f;
+	f32					l_fItemBestValue	= -1.f;
 	ai().ef_storage().alife_evaluation	(true);
 	ai().ef_storage().alife().member()	= this;
 
@@ -396,7 +396,7 @@ int  CSE_ALifeHumanAbstract::ifChooseWeapon(EWeaponPriorityType tWeaponPriorityT
 		if (m_dwTotalMoney < (*I)->m_dwCost)
 			continue;
 		int						j = ai().ef_storage().m_pfPersonalWeaponType->dwfGetWeaponType();
-		F32					l_fCurrentValue = -1.f;
+		f32					l_fCurrentValue = -1.f;
 		switch (tWeaponPriorityType) {
 			case eWeaponPriorityTypeKnife : {
 				if (1 != j)
@@ -523,7 +523,7 @@ int  CSE_ALifeHumanAbstract::ifChooseDetector(OBJECT_VECTOR *tpObjectVector)
 {
 	// choosing detector
 	CSE_ALifeInventoryItem		*l_tpALifeItemBest	= 0;
-	F32						l_fItemBestValue	= -1.f;
+	f32						l_fItemBestValue	= -1.f;
 	ai().ef_storage().alife_evaluation(true);
 	ai().ef_storage().alife().member()	= this;
 	ITEM_P_IT					I = alife().m_temp_item_vector.begin(), X;
@@ -537,7 +537,7 @@ int  CSE_ALifeHumanAbstract::ifChooseDetector(OBJECT_VECTOR *tpObjectVector)
 			continue;
 		// evaluating item
 		ai().ef_storage().alife().member_item() = l_tpALifeItem;
-		F32					l_fCurrentValue = ai().ef_storage().m_pfEquipmentType->ffGetValue();
+		f32					l_fCurrentValue = ai().ef_storage().m_pfEquipmentType->ffGetValue();
 		// choosing the best item
 		if ((l_fCurrentValue > l_fItemBestValue) && bfCanGetItem(l_tpALifeItem) && (!tpObjectVector || (std::find(tpObjectVector->begin(),tpObjectVector->end(),l_tpALifeItem->ID) == tpObjectVector->end()))) {
 			l_fItemBestValue = l_fCurrentValue;

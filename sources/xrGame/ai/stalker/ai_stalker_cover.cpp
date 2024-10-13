@@ -15,7 +15,7 @@
 #include "../../stalker_movement_restriction.h"
 #include "../../level_graph.h"
 
-extern const F32 MIN_SUITABLE_ENEMY_DISTANCE = 3.f;
+extern const f32 MIN_SUITABLE_ENEMY_DISTANCE = 3.0f;
 
 #ifdef _DEBUG
 static int g_advance_search_count		= 0;
@@ -65,7 +65,7 @@ const CCoverPoint *CAI_Stalker::find_best_cover		(const Fvector &position_to_cov
 	return								(point);
 }
 
-F32 CAI_Stalker::best_cover_value					(const Fvector &position_to_cover_from)
+f32 CAI_Stalker::best_cover_value					(const Fvector &position_to_cover_from)
 {
 	m_ce_best->setup					(position_to_cover_from,MIN_SUITABLE_ENEMY_DISTANCE,170.f,MIN_SUITABLE_ENEMY_DISTANCE);
 	m_ce_best->initialize				(Position(),true);
@@ -100,7 +100,7 @@ void CAI_Stalker::update_best_cover_actuality		(const Fvector &position_to_cover
 		return;
 	}
 
-	F32								cover_value = best_cover_value(position_to_cover_from);
+	f32								cover_value = best_cover_value(position_to_cover_from);
 	if (cover_value >= m_best_cover_value + 1.f) {
 		m_best_cover_actual				= false;
 #if 0//def _DEBUG

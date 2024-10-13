@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffector
 //////////////////////////////////////////////////////////////////////////
-CMonsterEffector::CMonsterEffector(const SPPInfo &ppi, F32 life_time, F32 attack_time, F32 release_time, F32 spec_factor) :
+CMonsterEffector::CMonsterEffector(const SPPInfo &ppi, f32 life_time, f32 attack_time, f32 release_time, f32 spec_factor) :
 		CEffectorPP(EEffectorPPType(eCEHit), life_time)
 {
 	state		= ppi;
@@ -26,9 +26,9 @@ BOOL CMonsterEffector::Process(SPPInfo& pp)
 	inherited::Process(pp);
 
 	// amount of time passed in percents
-	F32 time_past_perc = (m_total - fLifeTime) / m_total;
+	f32 time_past_perc = (m_total - fLifeTime) / m_total;
 
-	F32 factor;
+	f32 factor;
 	if (time_past_perc < m_attack) 
 		factor = time_past_perc / m_attack;
 	else if ((time_past_perc >= m_attack) && (time_past_perc <= m_release)) 
@@ -42,12 +42,11 @@ BOOL CMonsterEffector::Process(SPPInfo& pp)
 	return TRUE;
 }
 
-
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffectorHit
 //////////////////////////////////////////////////////////////////////////
 
-CMonsterEffectorHit::CMonsterEffectorHit(F32 time, F32 amp, F32 periods, F32 power)
+CMonsterEffectorHit::CMonsterEffectorHit(f32 time, f32 amp, f32 periods, f32 power)
 	: CEffectorCam(eCEMonsterHit, time)
 {
 	total			= time;
@@ -59,12 +58,12 @@ CMonsterEffectorHit::CMonsterEffectorHit(F32 time, F32 amp, F32 periods, F32 pow
 	offset.set		(Random.randF(1,2),Random.randF(1,6),Random.randF(1,6));
 }
 
-BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	fLifeTime -= Device.fTimeDelta; if(fLifeTime<0) return FALSE;
 
 	// процент оставшегося времени
-	F32 time_left_perc = fLifeTime / total;
+	f32 time_left_perc = fLifeTime / total;
 
 	// Инициализация
 	Fmatrix	Mdef;
@@ -74,10 +73,9 @@ BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov,
 	Mdef.i.crossproduct	(n,d);
 	Mdef.c.set			(p);
 
-	F32 period_all	= period_number * PI_MUL_2;		// макс. значение цикла
-	F32 cur_amp		= max_amp * (PI / 180) * time_left_perc;
+	f32 period_all	= period_number * PI_MUL_2;		// макс. значение цикла
+	f32 cur_amp		= max_amp * (PI / 180) * time_left_perc;
 
-	
 	Fvector dangle;
 	dangle.x = cur_amp/offset.x	* _sin(period_all/offset.x	* (1.0f - time_left_perc));
 	dangle.y = cur_amp/offset.y	* _cos(period_all/offset.y	* (1.0f - time_left_perc));
@@ -95,4 +93,3 @@ BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov,
 
 	return TRUE;
 }
-

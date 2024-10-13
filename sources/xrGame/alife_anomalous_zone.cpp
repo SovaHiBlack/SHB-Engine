@@ -51,11 +51,11 @@ void CSE_ALifeAnomalousZone::spawn_artefacts				()
 {
 	VERIFY2					(!m_bOnline,"Cannot spawn artefacts in online!");
 
-	F32					m_min_start_power	= pSettings->r_float(name(),"min_start_power");
-	F32					m_max_start_power	= pSettings->r_float(name(),"max_start_power");
+	f32					m_min_start_power	= pSettings->r_float(name(),"min_start_power");
+	f32					m_max_start_power	= pSettings->r_float(name(),"max_start_power");
 	u32						m_min_artefact_count= pSettings->r_u32	(name(),"min_artefact_count");;
 	u32						m_max_artefact_count= pSettings->r_u32	(name(),"max_artefact_count");;
-    u32						m_artefact_count;
+	u32						m_artefact_count;
 
 	if (m_min_artefact_count == m_max_artefact_count)
 		m_artefact_count	= m_min_artefact_count;
@@ -72,7 +72,7 @@ void CSE_ALifeAnomalousZone::spawn_artefacts				()
 	VERIFY2					(!(n % 2),"Invalid parameters count in line artefacts for anomalous zone");
 	n						>>= 1;
 	
-	typedef std::pair<shared_str, F32>	ARTEFACT_PAIR;
+	typedef std::pair<shared_str, f32>	ARTEFACT_PAIR;
 
 	string256				temp0, temp1;
 	ARTEFACT_PAIR			*m_weights = (ARTEFACT_PAIR*)_alloca(n*sizeof(ARTEFACT_PAIR));
@@ -81,12 +81,12 @@ void CSE_ALifeAnomalousZone::spawn_artefacts				()
 	for (u32 i = 0; I != E; ++I, ++i) {
 		_GetItem			(artefacts,2*i,temp0);
 		_GetItem			(artefacts,2*i + 1,temp1);
-		new					(I) ARTEFACT_PAIR(temp0,(F32)atof(temp1));
+		new					(I) ARTEFACT_PAIR(temp0,(f32)atof(temp1));
 	}
 
 	for (u32 ii=0; ii<m_artefact_count; ++ii) {
-		F32 fProbability		= randF(1.f);
-		F32 fSum				= 0.f;
+		f32 fProbability		= randF(1.f);
+		f32 fSum				= 0.f;
 		for (u16 p=0; p<n; ++p) {
 			fSum			+= m_weights[p].second;
 			if (fSum > fProbability)
@@ -104,7 +104,7 @@ void CSE_ALifeAnomalousZone::spawn_artefacts				()
 
 			Fvector				t = i->o_Position	;
 			u32					p = i->m_tNodeID	;
-			F32				q = i->m_fDistance	;
+			f32				q = i->m_fDistance	;
 			alife().graph().change(i,m_tGraphID,i->m_tGraphID);
 			i->o_Position		= t;
 			i->m_tNodeID		= p;

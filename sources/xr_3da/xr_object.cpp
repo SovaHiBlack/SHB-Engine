@@ -2,13 +2,15 @@
 #include "igame_level.h"
 
 #include "xr_object.h"
-#include "xr_area.h"
+//#include "xr_area.h"
 #include "render.h"
-#include "xrLevel.h"
+//#include "xrLevel.h"
 #include "fbasicvisual.h"
 
-#include "x_ray.h"
-#include "GameFont.h"
+//#include "x_ray.h"
+//#include "GameFont.h"
+
+#include "SkeletonCustom.h"
 
 void CObject::MakeMeCrow_internal	()
 {
@@ -23,7 +25,7 @@ void CObject::cNameSect_set		(shared_str N)
 { 
 	NameSection	=	N; 
 }
-#include "SkeletonCustom.h"
+
 void CObject::cNameVisual_set	(shared_str N)
 { 
 	// check if equal

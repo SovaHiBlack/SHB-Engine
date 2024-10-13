@@ -5,8 +5,8 @@
 #include "xr_object.h"
 #include "xrLevel.h"
 #include "feel_sound.h"
-#include "x_ray.h"
-#include "GameFont.h"
+//#include "x_ray.h"
+//#include "GameFont.h"
 
 using namespace	collide;
 

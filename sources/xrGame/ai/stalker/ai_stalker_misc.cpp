@@ -32,9 +32,9 @@
 
 const u32 TOLLS_INTERVAL					= 2000;
 const u32 GRENADE_INTERVAL					= 0*1000;
-const F32 FRIENDLY_GRENADE_ALARM_DIST		= 5.f;
+const f32 FRIENDLY_GRENADE_ALARM_DIST		= 5.0f;
 const u32 DANGER_INFINITE_INTERVAL			= 60000000;
-const F32 DANGER_EXPLOSIVE_DISTANCE		= 10.f;
+const f32 DANGER_EXPLOSIVE_DISTANCE			= 10.0f;
 
 bool CAI_Stalker::useful		(const CItemManager *manager, const CGameObject *object) const
 {
@@ -72,9 +72,9 @@ bool CAI_Stalker::useful		(const CItemManager *manager, const CGameObject *objec
 	return				(true);
 }
 
-F32 CAI_Stalker::evaluate		(const CItemManager *manager, const CGameObject *object) const
+f32 CAI_Stalker::evaluate		(const CItemManager *manager, const CGameObject *object) const
 {
-	F32				distance = Position().distance_to_sqr(object->Position());
+	f32				distance = Position().distance_to_sqr(object->Position());
 	distance			= !fis_zero(distance) ? distance : EPS_L;
 	return				(distance);
 }

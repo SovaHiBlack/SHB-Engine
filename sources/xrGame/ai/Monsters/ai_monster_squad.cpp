@@ -174,7 +174,7 @@ void CMonsterSquad::unlock_cover(u32 node)
 		m_locked_covers.erase(it);
 }
 
-u8 CMonsterSquad::get_count(const CEntity *object, F32 radius)
+u8 CMonsterSquad::get_count(const CEntity *object, f32 radius)
 {
 	u8 count = 0;
 

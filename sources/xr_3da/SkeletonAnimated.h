@@ -46,9 +46,6 @@ public:
 	}
 };
 
-//. typedef u16 	BoneID;
-//. typedef u16 	PartitionID;
-
 //*** Run-time Blend definition *******************************************************************
 class ENGINE_API CBlend {
 public:

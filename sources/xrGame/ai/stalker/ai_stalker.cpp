@@ -166,7 +166,7 @@ void CAI_Stalker::reinit			()
 		pcstr							weights = SpecificCharacter().critical_wound_weights();
 		string16						temp;
 		for (int i=0, n=_GetItemCount(weights); i<n; ++i)
-			m_critical_wound_weights.push_back((F32)atof(_GetItem(weights,i,temp)));
+			m_critical_wound_weights.push_back((f32)atof(_GetItem(weights,i,temp)));
 	}
 
 	m_sight_enabled_before_animation_controller		= true;
@@ -362,18 +362,18 @@ BOOL CAI_Stalker::net_Spawn			(CSE_Abstract* DC)
 	}
 
 	//вычислить иммунета в зависимости от ранга
-	static F32 novice_rank_immunity			= pSettings->r_float("ranks_properties", "immunities_novice_k");
-	static F32 expirienced_rank_immunity		= pSettings->r_float("ranks_properties", "immunities_experienced_k");
+	static f32 novice_rank_immunity			= pSettings->r_float("ranks_properties", "immunities_novice_k");
+	static f32 expirienced_rank_immunity		= pSettings->r_float("ranks_properties", "immunities_experienced_k");
 
-	static F32 novice_rank_visibility			= pSettings->r_float("ranks_properties", "visibility_novice_k");
-	static F32 expirienced_rank_visibility	= pSettings->r_float("ranks_properties", "visibility_experienced_k");
+	static f32 novice_rank_visibility			= pSettings->r_float("ranks_properties", "visibility_novice_k");
+	static f32 expirienced_rank_visibility	= pSettings->r_float("ranks_properties", "visibility_experienced_k");
 
-	static F32 novice_rank_dispersion			= pSettings->r_float("ranks_properties", "dispersion_novice_k");
-	static F32 expirienced_rank_dispersion	= pSettings->r_float("ranks_properties", "dispersion_experienced_k");
+	static f32 novice_rank_dispersion			= pSettings->r_float("ranks_properties", "dispersion_novice_k");
+	static f32 expirienced_rank_dispersion	= pSettings->r_float("ranks_properties", "dispersion_experienced_k");
 
 	CHARACTER_RANK_VALUE rank = Rank();
 	clamp(rank, 0, 100);
-	F32 rank_k = F32(rank)/100.f;
+	f32 rank_k = f32(rank)/100.0f;
 	m_fRankImmunity = novice_rank_immunity + (expirienced_rank_immunity - novice_rank_immunity) * rank_k;
 	m_fRankVisibility = novice_rank_visibility + (expirienced_rank_visibility - novice_rank_visibility) * rank_k;
 	m_fRankDisperison = expirienced_rank_dispersion + (expirienced_rank_dispersion - novice_rank_dispersion) * (1-rank_k);
@@ -470,7 +470,7 @@ void CAI_Stalker::net_Export		(NET_Packet& P)
 	P.w_u8							(u8(g_Squad()));
 	P.w_u8							(u8(g_Group()));
 
-	F32					f1 = 0;
+	f32					f1 = 0.0f;
 	GameGraph::_GRAPH_ID		l_game_vertex_id = ai_location().game_vertex_id();
 	P.w						(&l_game_vertex_id,			sizeof(l_game_vertex_id));
 	P.w						(&l_game_vertex_id,			sizeof(l_game_vertex_id));
@@ -500,7 +500,7 @@ void CAI_Stalker::net_Import		(NET_Packet& P)
 	P.r_float						();
 	set_money						( P.r_u32(), false );
 
-	F32 health;
+	f32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 //	fEntityHealth = health;
@@ -661,7 +661,7 @@ void CAI_Stalker::UpdateCL()
 	STOP_PROFILE
 }
 
-void CAI_Stalker ::PHHit				(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
+void CAI_Stalker ::PHHit				(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }
@@ -695,7 +695,7 @@ void CAI_Stalker::shedule_Update		( u32 DT )
 	Fvector				vNewPosition = Position();
 	VERIFY				(_valid(Position()));
 	// *** general stuff
-	F32 dt			= F32(DT)/1000.f;
+	f32 dt			= f32(DT)/1000.0f;
 
 	if (g_Alive()) {
 		animation().play_delayed_callbacks	();
@@ -751,11 +751,11 @@ void CAI_Stalker::shedule_Update		( u32 DT )
 		VERIFY							(_valid(Position()));
 
 		// Look and action streams
-		F32							temp = conditions().health();
+		f32							temp = conditions().health();
 		if (temp > 0) {
 			START_PROFILE("stalker/schedule_update/feel_touch")
 			Fvector C;
-			F32 R;
+			f32 R;
 			Center(C);
 			R = Radius();
 			feel_touch_update		(C,R);
@@ -805,9 +805,9 @@ void CAI_Stalker::shedule_Update		( u32 DT )
 	STOP_PROFILE
 }
 
-F32 CAI_Stalker::Radius() const
+f32 CAI_Stalker::Radius() const
 { 
-	F32 R		= inherited::Radius();
+	f32 R		= inherited::Radius();
 	CWeapon* W	= smart_cast<CWeapon*>(inventory().ActiveItem());
 	if (W) R	+= W->Radius();
 	return R;
@@ -885,7 +885,7 @@ void CAI_Stalker::Think			()
 	STOP_PROFILE
 }
 
-void CAI_Stalker::SelectAnimation(const Fvector &view, const Fvector &move, F32 speed)
+void CAI_Stalker::SelectAnimation(const Fvector &view, const Fvector &move, f32 speed)
 {
 	if (!Device.Paused())
 		animation().update();
@@ -952,8 +952,8 @@ bool CAI_Stalker::use_center_to_aim		() const
 
 void CAI_Stalker::UpdateCamera			()
 {
-	F32								new_range = eye_range;
-	F32								new_fov = eye_fov;
+	f32								new_range = eye_range;
+	f32								new_fov = eye_fov;
 	Fvector								temp = eye_matrix.k;
 	if (g_Alive()) {
 		update_range_fov				(new_range, new_fov, memory().visual().current_state().m_max_view_distance*eye_range, eye_fov);

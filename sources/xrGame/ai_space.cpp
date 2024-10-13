@@ -115,7 +115,7 @@ void CAI_Space::load(pcstr level_name)
 	m_cover_manager->compute_static_cover		();
 
 #ifdef DEBUG
-	Msg("* Loading ai space is successfully completed (%.3fs, %7.3f Mb)", timer.GetElapsed_sec(), F32(Memory.mem_usage() - mem_usage) / 1048576.0);
+	Msg("* Loading ai space is successfully completed (%.3fs, %7.3f Mb)", timer.GetElapsed_sec(), f32(Memory.mem_usage() - mem_usage) / 1048576.0);
 #endif // def DEBUG
 
 }

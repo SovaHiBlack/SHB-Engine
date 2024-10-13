@@ -21,7 +21,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-CSE_ALifeItemWeapon *CSE_ALifeOnlineOfflineGroup::tpfGetBestWeapon		(ALife::EHitType &tHitType, F32& fHitPower)
+CSE_ALifeItemWeapon *CSE_ALifeOnlineOfflineGroup::tpfGetBestWeapon		(ALife::EHitType &tHitType, f32& fHitPower)
 {
 	return						(0);
 }

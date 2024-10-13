@@ -37,7 +37,7 @@ public:
 	IC		void				clear					();
 			void				update					();
 			void				add						(CDangerLocationPtr location);
-			F32				danger					(const CCoverPoint *cover, CAI_Stalker *member) const;
+			f32				danger					(const CCoverPoint *cover, CAI_Stalker *member) const;
 			bool				suitable				(CAI_Stalker *object, const CCoverPoint *location, bool use_enemy_info) const;
 			void				make_suitable			(CAI_Stalker *object, const CCoverPoint *location) const;
 			void				remove_links			(CObject *object);

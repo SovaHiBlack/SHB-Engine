@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 #include "SkeletonAnimated.h"
-#include "SkeletonX.h"
+//#include "SkeletonX.h"
 #include "fmesh.h"
 
 extern int	psSkeletonUpdate;

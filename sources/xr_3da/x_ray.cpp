@@ -287,7 +287,6 @@ struct damn_keys_filter {
 	BOOL bScreenSaverState;
 
 	// Sticky & Filter & Toggle keys
-
 	STICKYKEYS StickyKeysStruct;
 	FILTERKEYS FilterKeysStruct;
 	TOGGLEKEYS ToggleKeysStruct;
@@ -299,7 +298,6 @@ struct damn_keys_filter {
 	damn_keys_filter	()
 	{
 		// Screen saver stuff
-
 		bScreenSaverState = FALSE;
 
 		// Saveing current state

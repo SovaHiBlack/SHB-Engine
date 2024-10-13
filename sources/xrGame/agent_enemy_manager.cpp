@@ -29,7 +29,7 @@
 #include <malloc.h>
 #pragma warning(pop)
 
-const F32 wounded_enemy_reached_distance = 3.f;
+const f32 wounded_enemy_reached_distance = 3.f;
 
 const unsigned __int32 __c0					= 0x55555555;
 const unsigned __int32 __c1					= 0x33333333;
@@ -155,7 +155,7 @@ void CAgentEnemyManager::fill_enemies			()
 	VERIFY								(!m_enemies.empty());
 }
 
-F32 CAgentEnemyManager::evaluate				(const CEntityAlive *object0, const CEntityAlive *object1) const
+f32 CAgentEnemyManager::evaluate				(const CEntityAlive *object0, const CEntityAlive *object1) const
 {
 	ai().ef_storage().non_alife().member_item() = 0;
 	ai().ef_storage().non_alife().enemy_item() = 0;
@@ -183,11 +183,11 @@ void CAgentEnemyManager::compute_enemy_danger	()
 	ENEMIES::iterator				I = m_enemies.begin();
 	ENEMIES::iterator				E = m_enemies.end();
 	for ( ; I != E; ++I) {
-		F32						best = -1.f;
+		f32						best = -1.f;
 		CAgentMemberManager::const_iterator	i = object().member().combat_members().begin();
 		CAgentMemberManager::const_iterator	e = object().member().combat_members().end();
 		for ( ; i != e; ++i) {
-			F32					value = evaluate((*I).m_object,&(*i)->object());
+			f32					value = evaluate((*I).m_object,&(*i)->object());
 			if (value > best)
 				best				= value;
 		}
@@ -201,7 +201,7 @@ void CAgentEnemyManager::assign_enemies			()
 {
 	for (;;) {
 		squad_mask_type					J, K, N = 0;
-		F32							best = flt_max;
+		f32							best = flt_max;
 		
 		ENEMIES::iterator				I = m_enemies.begin();
 		ENEMIES::iterator				E = m_enemies.end();
@@ -215,7 +215,7 @@ void CAgentEnemyManager::assign_enemies			()
 				if (!fsimilar((*i)->probability(),1.f))
 					continue;
 
-				F32					value = evaluate(&(*i)->object(),(*I).m_object);
+				f32					value = evaluate(&(*i)->object(),(*I).m_object);
 				if (value > best) {
 					best				= value;
 					N					= K;
@@ -286,14 +286,14 @@ void CAgentEnemyManager::permutate_enemies		()
 			if ((*I)->processed())
 				continue;
 
-			F32				best = (*I)->object().Position().distance_to(m_enemies[(*I)->selected_enemy()].m_object->Position());
+			f32				best = (*I)->object().Position().distance_to(m_enemies[(*I)->selected_enemy()].m_object->Position());
 			bool				found = false;
 			xr_vector<u32>::const_iterator	i = (*I)->enemies().begin();
 			xr_vector<u32>::const_iterator	e = (*I)->enemies().end();
 			for ( ; i != e; ++i) {
 				if ((*I)->selected_enemy() == *i)
 					continue;
-				F32			my_distance = (*I)->object().Position().distance_to(m_enemies[*i].m_object->Position());
+				f32			my_distance = (*I)->object().Position().distance_to(m_enemies[*i].m_object->Position());
 				if (my_distance < best) {
 					// check if we can exchange enemies
 					squad_mask_type	J = m_enemies[*i].m_distribute_mask.get(), K;
@@ -307,13 +307,13 @@ void CAgentEnemyManager::permutate_enemies		()
 							continue;
 
 						// check if I'm closer to the enemy
-						F32		member_distance = (*j)->object().Position().distance_to(m_enemies[*i].m_object->Position());
+						f32		member_distance = (*j)->object().Position().distance_to(m_enemies[*i].m_object->Position());
 						if (member_distance <= my_distance)
 							continue;
 
 						// check if our effectiveness is near the same
-						F32		my_to_his = evaluate(&(*I)->object(),m_enemies[(*j)->selected_enemy()].m_object);
-						F32		his_to_my = evaluate(&(*j)->object(),m_enemies[(*I)->selected_enemy()].m_object);
+						f32		my_to_his = evaluate(&(*I)->object(),m_enemies[(*j)->selected_enemy()].m_object);
+						f32		his_to_my = evaluate(&(*j)->object(),m_enemies[(*I)->selected_enemy()].m_object);
 						if (!fsimilar(my_to_his,(*j)->probability()) || !fsimilar(his_to_my,(*I)->probability()))
 							continue;
 
@@ -462,7 +462,7 @@ void CAgentEnemyManager::assign_wounded			()
 	while (population(assigned) < combat_member_count) {
 		CMemberEnemy		*enemy = 0;
 		const CAI_Stalker	*processor = 0;
-		F32				best_distance_sqr = flt_max;
+		f32				best_distance_sqr = flt_max;
 
 		for (int i=0; i<2; ++i) {
 			ENEMIES::iterator	I = m_enemies.begin();
@@ -476,7 +476,7 @@ void CAgentEnemyManager::assign_wounded			()
 				for ( ; J; J &= J - 1) {
 					squad_mask_type					K = (J & (J - 1)) ^ J;
 					CAgentMemberManager::iterator	i = object().member().member(K);
-					F32							distance_sqr = (*i)->object().Position().distance_to_sqr((*I).m_object->Position());
+					f32							distance_sqr = (*i)->object().Position().distance_to_sqr((*I).m_object->Position());
 					if (distance_sqr < best_distance_sqr) {
 						best_distance_sqr			= distance_sqr;
 						enemy						= &*I;

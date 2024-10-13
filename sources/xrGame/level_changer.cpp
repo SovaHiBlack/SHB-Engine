@@ -127,7 +127,7 @@ void CLevelChanger::feel_touch_new	(CObject *tpObject)
 	bool			b = get_reject_pos(p,r);
 	CUIGame		*pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
 	if (pGame)
-        pGame->ChangeLevel	(m_game_vertex_id,m_level_vertex_id,m_position,m_angles,p,r,b);
+		pGame->ChangeLevel	(m_game_vertex_id,m_level_vertex_id,m_position,m_angles,p,r,b);
 
 	m_entrance_time	= Device.fTimeGlobal;
 }

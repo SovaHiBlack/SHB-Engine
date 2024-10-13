@@ -8,6 +8,7 @@ class CTorridZone :public CMosquitoBald
 private:
 	typedef	CCustomZone	inherited;
 	CObjectAnimator		*m_animator;
+
 public:
 						CTorridZone			();
 	virtual				~CTorridZone		();

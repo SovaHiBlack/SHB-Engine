@@ -46,7 +46,7 @@ void CSE_ALifeMonsterAbstract::update								()
 		bContinue		= false;
 		if (move_offline() && (m_tNextGraphID != m_tGraphID)) {
 			ALife::_TIME_ID				tCurTime = ai().alife().time_manager().game_time();
-			m_fDistanceFromPoint		+= F32(tCurTime - m_tTimeID)/1000.f/ai().alife().time_manager().normal_time_factor()*m_fCurSpeed;
+			m_fDistanceFromPoint		+= f32(tCurTime - m_tTimeID)/1000.f/ai().alife().time_manager().normal_time_factor()*m_fCurSpeed;
 			if (m_fDistanceToPoint - m_fDistanceFromPoint < EPS_L) {
 				bContinue = true;
 				if ((m_fDistanceFromPoint - m_fDistanceToPoint > EPS_L) && (m_fCurSpeed > EPS_L))
@@ -123,7 +123,7 @@ void CSE_ALifeMonsterAbstract::update								()
 /**/
 }
 
-CSE_ALifeItemWeapon	*CSE_ALifeMonsterAbstract::tpfGetBestWeapon(ALife::EHitType &tHitType, F32& fHitPower)
+CSE_ALifeItemWeapon	*CSE_ALifeMonsterAbstract::tpfGetBestWeapon(ALife::EHitType &tHitType, f32& fHitPower)
 {
 	m_tpCurrentBestWeapon		= 0;
 	fHitPower					= m_fHitPower;
@@ -182,7 +182,7 @@ void CSE_ALifeMonsterAbstract::vfCheckForPopulationChanges	()
 		ai().ef_storage().alife().member() = this;
 		l_tpALifeGroupAbstract->m_tNextBirthTime = l_tTimeID + ALife::_TIME_ID(ai().ef_storage().m_pfBirthSpeed->ffGetValue()*24*60*60*1000);
 		if (randF(100) < ai().ef_storage().m_pfBirthProbability->ffGetValue()) {
-			u32					l_dwBornCount = iFloor(F32(l_tpALifeGroupAbstract->m_wCount)*randF(.5f,1.5f)*ai().ef_storage().m_pfBirthPercentage->ffGetValue()/100.f + .5f);
+			u32					l_dwBornCount = iFloor(f32(l_tpALifeGroupAbstract->m_wCount)*randF(.5f,1.5f)*ai().ef_storage().m_pfBirthPercentage->ffGetValue()/100.f + .5f);
 			if (l_dwBornCount) {
 				l_tpALifeGroupAbstract->m_tpMembers.resize(l_tpALifeGroupAbstract->m_wCount + l_dwBornCount);
 				ALife::OBJECT_IT	I = l_tpALifeGroupAbstract->m_tpMembers.begin() + l_tpALifeGroupAbstract->m_wCount;

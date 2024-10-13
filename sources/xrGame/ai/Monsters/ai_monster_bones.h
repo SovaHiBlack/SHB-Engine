@@ -6,11 +6,12 @@
 #define AXIS_Z	(1 << 2)
 
 // параметры движения характерные для конкретной оси в боне
-struct bonesAxis {
-	F32			cur_yaw;
-	F32			target_yaw;
-	F32			r_speed;
-	F32			dist_yaw;		// необходимо лишь для определения текущей скорости по оси
+struct bonesAxis
+{
+	f32			cur_yaw;
+	f32			target_yaw;
+	f32			r_speed;
+	f32			dist_yaw;					// необходимо лишь для определения текущей скорости по оси
 };
 
 // бона с параметрами движения по осям
@@ -20,13 +21,11 @@ struct bonesBone {
 	u8				axis;
 
 	bonesBone	() {bone = 0;}
-	void	Set			(CBoneInstance *b, u8 a, F32 ty, F32 cy, F32 r_s);
+	void	Set			(CBoneInstance *b, u8 a, f32 ty, f32 cy, f32 r_s);
 	bool	NeedTurn	();					// необходим поворот по оси p_axis?
 	void	Turn		(u32 dt);			// выполнить поворот по оси p_axis
-	void	Apply		();								// установить углы у боны
-
+	void	Apply		();					// установить углы у боны
 };
-
 
 // управление движениями костей
 class bonesManipulation {
@@ -39,11 +38,12 @@ class bonesManipulation {
 	u32		time_last_delta;
 
 	bool	bActive;
+
 public:
 	void 		Reset				();
 
 	void 		AddBone				(CBoneInstance *bone, u8 axis_used);
-	void 		SetMotion			(CBoneInstance *bone, u8 axis_used, F32 target_yaw, F32 r_speed, u32 t);
+	void 		SetMotion			(CBoneInstance *bone, u8 axis_used, f32 target_yaw, f32 r_speed, u32 t);
 
 	void 		Update				(CBoneInstance *bone, u32 cur_time);
 	bool 		IsActive			() {return bActive;}
@@ -51,5 +51,3 @@ public:
 
 	bonesAxis	&GetBoneParams		(CBoneInstance *bone, u8 axis_used);
 };
-
-

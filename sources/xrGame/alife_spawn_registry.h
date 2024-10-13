@@ -21,7 +21,7 @@ class CGameGraph;
 class CALifeSpawnRegistry : CRandom {
 public:
 	typedef CGameGraph::LEVEL_POINT_VECTOR											ARTEFACT_SPAWNS;
-	typedef CGraphAbstractSerialize<CServerEntityWrapper*, F32,ALife::_SPAWN_ID>	SPAWN_GRAPH;
+	typedef CGraphAbstractSerialize<CServerEntityWrapper*, f32,ALife::_SPAWN_ID>	SPAWN_GRAPH;
 
 public:
 	typedef xr_vector<ALife::_SPAWN_ID>												SPAWN_IDS;

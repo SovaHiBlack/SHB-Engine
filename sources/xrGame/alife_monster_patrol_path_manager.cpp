@@ -71,7 +71,7 @@ void CALifeMonsterPatrolPathManager::select_nearest			()
 {
 	m_current_vertex_index				= u32(-1);
 	Fvector								global_position = ai().game_graph().vertex(object().m_tGraphID)->game_point();
-	F32								best_distance = flt_max;
+	f32								best_distance = flt_max;
 	CPatrolPath::const_vertex_iterator	I = path().vertices().begin();
 	CPatrolPath::const_vertex_iterator	E = path().vertices().end();
 	for ( ; I != E; ++I) {
@@ -80,7 +80,7 @@ void CALifeMonsterPatrolPathManager::select_nearest			()
 			break;
 		}
 
-		F32							distance =
+		f32							distance =
 			global_position.distance_to(
 				ai().game_graph().vertex((*I).second->data().game_vertex_id())->game_point()
 			);

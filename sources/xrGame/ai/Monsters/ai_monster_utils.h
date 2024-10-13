@@ -8,7 +8,7 @@ extern Fvector get_valid_position(const CEntity *entity, const Fvector &actual_p
 // возвращает true, если объект entity находится на ноде
 extern bool object_position_valid(const CEntity *entity);
 
-IC Fvector random_position(const Fvector &center, F32 R)
+IC Fvector random_position(const Fvector &center, f32 R)
 {
 	Fvector v;
 	v = center;
@@ -18,21 +18,21 @@ IC Fvector random_position(const Fvector &center, F32 R)
 	return v;
 }
 
-IC bool	from_right(F32 ty, F32 cy)
+IC bool	from_right(f32 ty, f32 cy)
 {
 	return ((angle_normalize_signed(ty - cy) > 0));
 }
 
-IC bool	is_angle_between(F32 yaw, F32 yaw_from, F32 yaw_to)
+IC bool	is_angle_between(f32 yaw, f32 yaw_from, f32 yaw_to)
 {
-	F32 diff = angle_difference(yaw_from,yaw_to);
+	f32 diff = angle_difference(yaw_from,yaw_to);
 	R_ASSERT(diff < PI);
 
 	if ((angle_difference(yaw,yaw_from) < diff) && (angle_difference(yaw,yaw_to)<diff)) return true;
 	else return false;
 }
 
-IC void velocity_lerp(F32& _cur, F32 _target, F32 _accel, F32 _dt)
+IC void velocity_lerp(f32& _cur, f32 _target, f32 _accel, f32 _dt)
 {
 	if (fsimilar(_cur, _target)) return;
 
@@ -45,7 +45,7 @@ IC void velocity_lerp(F32& _cur, F32 _target, F32 _accel, F32 _dt)
 	}
 }
 
-IC void def_lerp(F32& _cur, F32 _target, F32 _vel, F32 _dt)
+IC void def_lerp(f32& _cur, f32 _target, f32 _vel, f32 _dt)
 {
 	if (fsimilar(_cur, _target)) return;
 
@@ -90,14 +90,13 @@ IC void read_delay(pcstr section, pcstr name, u32 &delay_min, u32 &delay_max)
 	}
 }
 
-IC void read_distance(pcstr section, pcstr name, F32& dist_min, F32& dist_max)
+IC void read_distance(pcstr section, pcstr name, f32& dist_min, f32& dist_max)
 {
 	pcstr	dist	= pSettings->r_string(section,name);
 	string128 tempst;
 
 	VERIFY			(_GetItemCount(dist) == 2);
 	
-	dist_min		= F32(atof(_GetItem(dist,0,tempst)));
-	dist_max		= F32(atof(_GetItem(dist,1,tempst)));
+	dist_min		= f32(atof(_GetItem(dist,0,tempst)));
+	dist_max		= f32(atof(_GetItem(dist,1,tempst)));
 }
-

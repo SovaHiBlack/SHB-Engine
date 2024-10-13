@@ -4,11 +4,11 @@
 #include "stdafx.h"
 #include "..\xrRender\xrRender_console.h"
 
-#pragma comment(lib,"xr_3DA")
+#pragma comment(lib,"xr_3DA.lib")
 
 BOOL APIENTRY DllMain( HANDLE hModule, 
-                       DWORD  ul_reason_for_call, 
-                       LPVOID lpReserved
+					   DWORD  ul_reason_for_call, 
+					   LPVOID lpReserved
 					 )
 {
 	switch (ul_reason_for_call)
@@ -22,5 +22,5 @@ BOOL APIENTRY DllMain( HANDLE hModule,
 	case DLL_PROCESS_DETACH:
 		break;
 	}
-    return TRUE;
+	return TRUE;
 }

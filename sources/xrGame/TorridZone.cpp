@@ -57,4 +57,3 @@ void CTorridZone::GoDisabledState()
 {
 	inherited::GoDisabledState();
 }
-

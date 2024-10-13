@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "xrtheora_surface.h"
 #include "xrtheora_stream.h"
-#include "xrTheora_Surface_mmx.h"
+//#include "xrTheora_Surface_mmx.h"
 
 CTheoraSurface::CTheoraSurface()
 {

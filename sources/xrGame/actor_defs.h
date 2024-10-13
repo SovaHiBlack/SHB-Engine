@@ -58,25 +58,13 @@ enum EActorAction
 	eaaSearchCorpse,
 };
 
-typedef pcstr		EActorSleep;
-extern EActorSleep		easCanSleepResult;
-/*
-//результат функции GoSleep у актера
-enum EActorSleep
-{
-	easCanSleep			= 0,
-	easNotSolidGround,
-	easEnemies		
-};
-*/
-
 //---------------------------------------------
 // ввод с клавиатуры и мыши
 struct					net_input
 {
 	u32					m_dwTimeStamp;
 
-	u32					mstate_wishful;	
+	u32					mstate_wishful;
 
 	u8					cam_mode;
 	f32				cam_yaw;

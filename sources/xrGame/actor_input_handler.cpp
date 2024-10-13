@@ -8,7 +8,6 @@ void CActorInputHandler::reinit()
 	m_actor = 0;
 }
 
-
 void CActorInputHandler::install()
 {
 	m_actor = smart_cast<CActor*>	(Level().CurrentEntity());
@@ -31,6 +30,3 @@ void CActorInputHandler::release()
 	m_actor->set_input_external_handler(0);
 	m_actor = 0;
 }
-
-
-

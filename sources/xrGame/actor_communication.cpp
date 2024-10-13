@@ -95,7 +95,7 @@ void CActor::AddGameTask			 (const CInfoPortion* info_portion) const
 	}
 }
 
-void  CActor::AddGameNews			 (GAME_NEWS_DATA& news_data)
+void CActor::AddGameNews			 (GAME_NEWS_DATA& news_data)
 {
 	GAME_NEWS_VECTOR& news_vector	= game_news_registry->registry().objects();
 	news_data.receive_time			= Level().GetGameTime();
@@ -151,7 +151,7 @@ void CActor::OnDisableInfo(shared_str info_id) const
 		pGame->TalkMenu->NeedUpdateQuestions();
 }
 
-void  CActor::ReceivePhrase		(DIALOG_SHARED_PTR& phrase_dialog)
+void CActor::ReceivePhrase		(DIALOG_SHARED_PTR& phrase_dialog)
 {
 	//только если находимся в режиме single
 	CUIGame* pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
@@ -163,7 +163,7 @@ void  CActor::ReceivePhrase		(DIALOG_SHARED_PTR& phrase_dialog)
 	CPhraseDialogManager::ReceivePhrase(phrase_dialog);
 }
 
-void   CActor::UpdateAvailableDialogs	(CPhraseDialogManager* partner)
+void CActor::UpdateAvailableDialogs	(CPhraseDialogManager* partner)
 {
 	m_AvailableDialogs.clear();
 	m_CheckedDialogs.clear();
@@ -221,31 +221,9 @@ void CActor::RunTalkDialog(CInventoryOwner* talk_partner)
 void CActor::StartTalk (CInventoryOwner* talk_partner)
 {
 	CGameObject* GO = smart_cast<CGameObject*>(talk_partner); VERIFY(GO);
-	//обновить информацию о контакте
-//.	UpdateContact(GO->ID());
-
 	CInventoryOwner::StartTalk(talk_partner);
 }
-/*
-void CActor::UpdateContact		(u16 contact_id)
-{
-	if(ID() == contact_id) return;
 
-	TALK_CONTACT_VECTOR& contacts = contacts_registry->registry().objects();
-	for(TALK_CONTACT_VECTOR_IT it = contacts.begin(); contacts.end() != it; ++it)
-		if((*it).id == contact_id) break;
-
-	if(contacts.end() == it)
-	{
-		TALK_CONTACT_DATA contact_data(contact_id, Level().GetGameTime());
-		contacts.push_back(contact_data);
-	}
-	else
-	{
-		(*it).time = Level().GetGameTime();
-	}
-}
-*/
 void CActor::NewPdaContact		(CInventoryOwner* pInvOwner)
 {	
 	bool b_alive = !!(smart_cast<CEntityAlive*>(pInvOwner))->g_Alive();

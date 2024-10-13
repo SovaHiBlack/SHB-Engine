@@ -64,7 +64,7 @@ void try_change_current_entity()
 	OBJECTS								ISpatialResult;
 	g_SpatialSpace->q_frustum			(ISpatialResult, 0, STYPE_COLLIDEABLE, frustum);
 
-	F32								maxlen = 1000.0f;
+	f32								maxlen = 1000.0f;
 	CAI_Stalker*						nearest_agent = 0;
 
 	OBJECTS::const_iterator				I = ISpatialResult.begin();
@@ -85,14 +85,14 @@ void try_change_current_entity()
 				actor->cam_Active()->vDirection
 			)
 		);
-		F32 len = B.distance_to_sqr(A);
+		f32 len = B.distance_to_sqr(A);
 		if (len > 1) continue;
 
 		if (maxlen>len && !current->getDestroy())
 		{
 			maxlen = len;
 			nearest_agent = current;
-		};
+		}
 	}
 
 	if (!nearest_agent)
@@ -243,7 +243,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 		actor							= g_debug_actor;
 	}
 
-	F32								up_indent = 40.f;
+	f32								up_indent = 40.0f;
 	pcstr								indent = "  ";
 
 	HUD().Font().pFontStat->SetColor	(D3DCOLOR_XRGB(0,255,0));
@@ -257,8 +257,8 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	// visual
 	HUD().Font().pFontStat->OutNext	("%svisual",indent);
 	
-	F32								object_range;
-	F32								object_fov;
+	f32								object_range;
+	f32								object_fov;
 	update_range_fov					(object_range,object_fov,eye_range,deg2rad(eye_fov));
 	HUD().Font().pFontStat->OutNext	("%s%seye range   : %f",indent,indent,object_range);
 	HUD().Font().pFontStat->OutNext	("%s%sFOV         : %f",indent,indent,rad2deg(object_fov));
@@ -327,7 +327,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	if (memory().enemy().selected()) {
 		HUD().Font().pFontStat->OutNext	("%s%sselected",indent,indent);
 		
-		F32								fuzzy = 0.f;
+		f32								fuzzy = 0.0f;
 		xr_vector<feel_visible_Item>::iterator I=feel_visible.begin(),E=feel_visible.end();
 		for (; I!=E; I++)
 			if (I->O->ID() == memory().enemy().selected()->ID()) {
@@ -342,7 +342,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 		}
 		HUD().Font().pFontStat->OutNext	("%s%s%sobject    : %s",indent,indent,indent,*memory().enemy().selected()->cName());
 		if (g_Alive()) {
-			F32								interval = (1.f - panic_threshold())*.25f, left = -1.f, right = -1.f;
+			f32								interval = (1.f - panic_threshold())*.25f, left = -1.f, right = -1.f;
 			pcstr								description = "invalid";
 			u32									result = dwfChooseAction(
 				2000,
@@ -403,7 +403,7 @@ void CAI_Stalker::OnHUDDraw				(CCustomHUD *hud)
 	if (memory().danger().selected() && memory().danger().selected()->object()) {
 		HUD().Font().pFontStat->OutNext	("%s%sselected",indent,indent);
 		HUD().Font().pFontStat->OutNext	("%s%s%stype      : %s",indent,indent,indent,danger_type(memory().danger().selected()->type()));
-		HUD().Font().pFontStat->OutNext	("%s%s%stime      : %.3f (%.3f)",indent,indent,indent, F32(memory().danger().selected()->time())/1000.f, F32(Device.dwTimeGlobal - memory().danger().selected()->time())/1000.f);
+		HUD().Font().pFontStat->OutNext	("%s%s%stime      : %.3f (%.3f)",indent,indent,indent, f32(memory().danger().selected()->time())/1000.f, f32(Device.dwTimeGlobal - memory().danger().selected()->time())/1000.f);
 		HUD().Font().pFontStat->OutNext	("%s%s%sinitiator : %s",indent,indent,indent,*memory().danger().selected()->object()->cName());
 		if (g_Alive() && memory().danger().selected()->object())
 			HUD().Font().pFontStat->OutNext("%s%s%svisible   : %s",indent,indent,indent,memory().visual().visible_now(memory().danger().selected()->object()) ? "+" : "-");
@@ -848,44 +848,44 @@ void CAI_Stalker::OnRender			()
 	if (memory().danger().selected() && ai().level_graph().valid_vertex_position(memory().danger().selected()->position())) {
 		Fvector						position = memory().danger().selected()->position();
 		u32							level_vertex_id = ai().level_graph().vertex_id(position);
-		F32						half_size = ai().level_graph().header().cell_size()*.5f;
+		f32						half_size = ai().level_graph().header().cell_size()*.5f;
 		position.y					+= 1.f;
 		Level().debug_renderer().draw_aabb	(position,half_size - .01f,1.f,ai().level_graph().header().cell_size()*.5f-.01f,D3DCOLOR_XRGB(0*255,255,0*255));
 
 		if (ai().level_graph().valid_vertex_id(level_vertex_id)) {
 			LevelGraph::CVertex			*v = ai().level_graph().vertex(level_vertex_id);
 			Fvector						direction;
-			F32						best_value = -1.f;
+			f32						best_value = -1.f;
 
 			for (u32 i=0, j = 0; i<36; ++i) {
-				F32				value = ai().level_graph().cover_in_direction(F32(10*i)/180.f*PI,v);
-				direction.setHP		(F32(10*i)/180.f*PI,0);
+				f32				value = ai().level_graph().cover_in_direction(f32(10*i)/180.f*PI,v);
+				direction.setHP		(f32(10*i)/180.f*PI,0);
 				direction.normalize	();
 				direction.mul		(value*half_size);
 				direction.add		(position);
 				direction.y			= position.y;
 				Level().debug_renderer().draw_line	(Fidentity,position,direction,D3DCOLOR_XRGB(0,0,255));
-				value				= ai().level_graph().compute_square(F32(10*i)/180.f*PI,PI/2.f,v);
+				value				= ai().level_graph().compute_square(f32(10*i)/180.f*PI,PI/2.f,v);
 				if (value > best_value) {
 					best_value		= value;
 					j				= i;
 				}
 			}
 
-			direction.set		(position.x - half_size* F32(v->cover(0))/15.f,position.y,position.z);
+			direction.set		(position.x - half_size* f32(v->cover(0))/15.f,position.y,position.z);
 			Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-			direction.set		(position.x,position.y,position.z + half_size* F32(v->cover(1))/15.f);
+			direction.set		(position.x,position.y,position.z + half_size* f32(v->cover(1))/15.f);
 			Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-			direction.set		(position.x + half_size* F32(v->cover(2))/15.f,position.y,position.z);
+			direction.set		(position.x + half_size* f32(v->cover(2))/15.f,position.y,position.z);
 			Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-			direction.set		(position.x,position.y,position.z - half_size* F32(v->cover(3))/15.f);
+			direction.set		(position.x,position.y,position.z - half_size* f32(v->cover(3))/15.f);
 			Level().debug_renderer().draw_line(Fidentity,position,direction,D3DCOLOR_XRGB(255,0,0));
 
-			F32				value = ai().level_graph().cover_in_direction(F32(10*j)/180.f*PI,v);
-			direction.setHP		(F32(10*j)/180.f*PI,0);
+			f32				value = ai().level_graph().cover_in_direction(f32(10*j)/180.f*PI,v);
+			direction.setHP		(f32(10*j)/180.f*PI,0);
 			direction.normalize	();
 			direction.mul		(value*half_size);
 			direction.add		(position);
@@ -918,8 +918,8 @@ void CAI_Stalker::dbg_draw_vision	()
 	if (v_res.x < -1.f || v_res.x > 1.f || v_res.y<-1.f || v_res.y>1.f)
 		return;
 
-	F32						x = (1.f + v_res.x)/2.f * (Device.dwWidth);
-	F32						y = (1.f - v_res.y)/2.f * (Device.dwHeight);
+	f32						x = (1.f + v_res.x)/2.f * (Device.dwWidth);
+	f32						y = (1.f - v_res.y)/2.f * (Device.dwHeight);
 
 	CNotYetVisibleObject		*object = memory().visual().not_yet_visible_object(smart_cast<CGameObject*>(Level().CurrentEntity()));
 	string64					out_text;
@@ -935,15 +935,15 @@ typedef xr_vector<Fvector>	COLLIDE_POINTS;
 class ray_query_param	{
 public:
 	CCustomMonster			*m_holder;
-	F32					m_power;
-	F32					m_power_threshold;
-	F32					m_pick_distance;
+	f32					m_power;
+	f32					m_power_threshold;
+	f32					m_pick_distance;
 	Fvector					m_start_position;
 	Fvector					m_direction;
 	COLLIDE_POINTS			*m_points;
 
 public:
-	IC				ray_query_param		(CCustomMonster *holder, F32 power_threshold, F32 distance, const Fvector &start_position, const Fvector &direction, COLLIDE_POINTS &points)
+	IC				ray_query_param		(CCustomMonster *holder, f32 power_threshold, f32 distance, const Fvector &start_position, const Fvector &direction, COLLIDE_POINTS &points)
 	{
 		m_holder			= holder;
 		m_power				= 1.f;
@@ -966,7 +966,7 @@ BOOL _ray_query_callback	(collide::rq_result& result, LPVOID params)
 		)
 	);
 	
-	F32								power = param->m_holder->feel_vision_mtl_transp(result.O,result.element);
+	f32								power = param->m_holder->feel_vision_mtl_transp(result.O,result.element);
 	param->m_power						*= power;
 	if (param->m_power > param->m_power_threshold)
 		return							(true);
@@ -975,7 +975,7 @@ BOOL _ray_query_callback	(collide::rq_result& result, LPVOID params)
 	return								(false);
 }
 
-void fill_points			(CCustomMonster *self, const Fvector &position, const Fvector &direction, F32 distance, collide::rq_results& rq_storage, COLLIDE_POINTS &points, F32& pick_distance)
+void fill_points			(CCustomMonster *self, const Fvector &position, const Fvector &direction, f32 distance, collide::rq_results& rq_storage, COLLIDE_POINTS &points, f32& pick_distance)
 {
 	VERIFY							(!fis_zero(direction.square_magnitude()));
 
@@ -1012,9 +1012,9 @@ void draw_visiblity_rays	(CCustomMonster *self, const CObject *object, collide::
 	Fvector					start_position = self->eye_matrix.c;
 	Fvector					dest_position = item->cp_LAST;
 	Fvector					direction = Fvector().sub(dest_position,start_position);
-	F32					distance = direction.magnitude();
+	f32					distance = direction.magnitude();
 	direction.normalize		();
-	F32					pick_distance = flt_max;
+	f32					pick_distance = flt_max;
 	rq_storage.r_clear		();
 	COLLIDE_POINTS			points;
 	points.push_back		(start_position);

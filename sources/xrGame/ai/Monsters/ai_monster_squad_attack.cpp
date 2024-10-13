@@ -56,7 +56,7 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 	std::sort(members.begin(), members.end(), sort_predicate(enemy));
 	if (members.empty()) return;
 
-	F32 delta_yaw = PI_MUL_2 / members.size();
+	f32 delta_yaw = PI_MUL_2 / members.size();
 
 	// обработать ближний элемент
 	first.pE		= members.back();
@@ -77,8 +77,8 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 	}
 
 	Fvector target_pos = enemy->Position();
-	F32	next_right_yaw	= delta_yaw;
-	F32	next_left_yaw	= delta_yaw;
+	f32	next_right_yaw	= delta_yaw;
+	f32	next_left_yaw	= delta_yaw;
 
 	// проходим с конца members в начало (начиная с наименьшего расстояния)
 	while (!members.empty()) {
@@ -93,10 +93,10 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 
 		// определить cur_line.yaw
 
-		F32 h1;
-		F32 p1;
-		F32 h2;
-		F32 p2;
+		f32 h1;
+		f32 p1;
+		f32 h2;
+		f32 p2;
 		Fvector dir;
 		dir.sub(target_pos, first.p_from);
 		dir.getHP(h1,p1);	
@@ -125,8 +125,8 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 	}
 
 	// Пройти по всем линиям и заполнить таргеты у npc
-	F32 first_h;
-	F32 first_p;
+	f32 first_h;
+	f32 first_p;
 	Fvector d; d.sub(target_pos,first.p_from);
 	d.getHP(first_h, first_p);
 

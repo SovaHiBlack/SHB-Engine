@@ -180,10 +180,10 @@ void CAI_Crow::switch2_DeathFall()
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death.GetRandom(),TRUE,cb_OnHitEndPlaying,this);
 }
 
-void CAI_Crow::state_Flying		(F32 fdt)
+void CAI_Crow::state_Flying		(f32 fdt)
 {
 	// Update position and orientation of the planes
-	F32 fAT = fASpeed * fdt		;
+	f32 fAT = fASpeed * fdt		;
 	Fvector& vDirection = XFORM().k	;
 
 	// Tweak orientation based on last position and goal
@@ -207,7 +207,7 @@ void CAI_Crow::state_Flying		(F32 fdt)
 	vDirection.normalize();
 	vOffset.normalize	();
 
-	F32 fDot = vDirection.dotproduct(vOffset);
+	f32 fDot = vDirection.dotproduct(vOffset);
 	fDot = (1.0f-fDot)/2.0f * fAT * 10.0f;
 
 	vOffset.crossproduct(vOffset,vDirection);
@@ -247,10 +247,9 @@ void CAI_Crow::Die				(CObject* who)
 	processing_activate	()	;	// enable UpdateCL for dead crows - especially for physics support
 								// and do it especially before Creating physics shell or it definitely throws processing enable/disable calls: underflow  
 	CreateSkeleton	()		;
-	
-};
+}
 
-void CAI_Crow::UpdateWorkload	(F32 fdt)
+void CAI_Crow::UpdateWorkload	(f32 fdt)
 {
 	if (o_workload_frame	==	Device.dwFrame)	return;
 	o_workload_frame		=	Device.dwFrame	;
@@ -283,7 +282,7 @@ void CAI_Crow::renderable_Render	()
 
 void CAI_Crow::shedule_Update		(u32 DT)
 {
-	F32 fDT				= F32(DT)/1000.F;
+	f32 fDT				= f32(DT)/1000.0f;
 	spatial.type			&=~STYPE_VISIBLEFORAI;
 
 	inherited::shedule_Update(DT);
@@ -345,9 +344,9 @@ void CAI_Crow::net_Export	(NET_Packet& P)					// export to server
 	P.w_u32				(Level().timeServer());
 	P.w_u8				(flags);
 	
-	F32				yaw;
-	F32 pitch;
-	F32 bank;
+	f32				yaw;
+	f32 pitch;
+	f32 bank;
 	XFORM().getHPB		(yaw,pitch,bank);
 	P.w_float /*w_angle8*/			(yaw);
 	P.w_float /*w_angle8*/			(yaw);
@@ -365,11 +364,11 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 
 	u8					flags;
 	
-	F32 health;
+	f32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 
-	F32 fDummy;
+	f32 fDummy;
 	u32 dwDummy;
 	P.r_float			(fDummy);
 	P.r_u32				(dwDummy);
@@ -378,9 +377,10 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 	P.r_u32				(dwDummy);
 	P.r_u8				(flags);
 	
-	F32				yaw;
-	F32				pitch, bank = 0;
-	F32				roll = 0;
+	f32				yaw;
+	f32				pitch;
+	f32				bank = 0;
+	f32				roll = 0;
 	
 	P.r_float /*r_angle8*/			(yaw);
 	P.r_float /*r_angle8*/			(yaw);
@@ -394,7 +394,7 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 	XFORM().setHPB		(yaw,pitch,bank);
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitSignal	(F32 /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
+void CAI_Crow::HitSignal	(f32 /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
 {
 	//bool				first_time = !!g_Alive(); 
 //	bool				first_time = !PPhysicsShell(); 
@@ -408,7 +408,7 @@ void CAI_Crow::HitSignal	(F32 /**HitAmount/**/, Fvector& /**local_dir/**/, CObje
 	else smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle(m_Anims.m_death_dead.GetRandom());
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitImpulse	(F32	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CAI_Crow::HitImpulse	(f32	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
 {
 }
 //---------------------------------------------------------------------

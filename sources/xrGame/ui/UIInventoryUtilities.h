@@ -8,14 +8,12 @@ class CUIStatic;
 //размеры сетки в текстуре инвентаря
 #define INV_GRID_WIDTH			50
 #define INV_GRID_HEIGHT			50
-
 //размеры сетки в текстуре иконок персонажей
 #define ICON_GRID_WIDTH			64
 #define ICON_GRID_HEIGHT		64
 //размер иконки персонажа для инвенторя и торговли
 #define CHAR_ICON_WIDTH			2
-#define CHAR_ICON_HEIGHT		2	
-
+#define CHAR_ICON_HEIGHT		2
 //размер иконки персонажа в полный рост
 #define CHAR_ICON_FULL_WIDTH	2
 #define CHAR_ICON_FULL_HEIGHT	5
@@ -30,14 +28,8 @@ namespace InventoryUtilities
 bool GreaterRoomInRuck	(PIItem item1, PIItem item2);
 //для проверки свободного места
 bool FreeRoom_inBelt	(TIItemContainer& item_list, PIItem item, int width, int height);
-
-
-// get shader for BuyWeaponWnd
-ref_shader&	GetBuyMenuShader();
 //получить shader на иконки инвенторя
 ref_shader& GetEquipmentIconsShader();
-// shader на иконки персонажей в мультиплеере
-ref_shader&	GetMPCharIconsShader();
 //удаляем все шейдеры
 void DestroyShaders();
 void CreateShaders();

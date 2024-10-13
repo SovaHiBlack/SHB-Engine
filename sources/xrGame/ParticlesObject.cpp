@@ -48,7 +48,6 @@ void CParticlesObject::Init	(pcstr p_name, IRender_Sector* S, BOOL bAutoRemove)
 		}
 	}
 
-
 	// spatial
 	spatial.type			= 0;
 	spatial.sector			= S;
@@ -98,7 +97,6 @@ void CParticlesObject::UpdateSpatial()
 
 const shared_str CParticlesObject::Name()
 {
-
 	IParticleCustom* V	= smart_cast<IParticleCustom*>(renderable.visual); VERIFY(V);
 	return (V) ? V->Name() : "";
 }
@@ -212,11 +210,13 @@ void CParticlesObject::renderable_Render	()
 	::Render->set_Transform	(&renderable.xform);
 	::Render->add_Visual	(renderable.visual);
 }
+
 bool CParticlesObject::IsAutoRemove			()
 {
 	if(m_bAutoRemove) return true;
 	else return false;
 }
+
 void CParticlesObject::SetAutoRemove		(bool auto_remove)
 {
 	VERIFY(m_bStopping || !IsLooped());

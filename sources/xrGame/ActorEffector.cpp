@@ -248,7 +248,7 @@ BOOL CCameraEffectorControlled::Valid()
 
 #define SND_MIN_VOLUME_FACTOR (0.1f)
 
-SndShockEffector::SndShockEffector	()
+CSndShockEffector::CSndShockEffector()
 {
 	m_snd_length			= 0.0f;
 	m_cur_length			= 0.0f;
@@ -256,7 +256,7 @@ SndShockEffector::SndShockEffector	()
 	m_actor					= NULL;
 }
 
-SndShockEffector::~SndShockEffector	()
+CSndShockEffector::~CSndShockEffector()
 {
 	psSoundVFactor		= m_stored_volume;
 	if (m_actor && (m_ce || m_pe))
@@ -267,17 +267,17 @@ SndShockEffector::~SndShockEffector	()
 	R_ASSERT	(!m_ce&&!m_pe);
 }
 
-BOOL SndShockEffector::Valid()
+BOOL CSndShockEffector::Valid()
 {
 	return (m_cur_length<=m_snd_length);
 }
 
-BOOL SndShockEffector::InWork()
+BOOL CSndShockEffector::InWork()
 {
 	return inherited::Valid();
 }
 
-f32 SndShockEffector::GetFactor()
+f32 CSndShockEffector::GetFactor()
 {
 	f32 f				= (m_end_time-Device.fTimeGlobal)/m_life_time;
 	
@@ -285,7 +285,7 @@ f32 SndShockEffector::GetFactor()
 	return clampr(ff, 0.0f, 1.0f);
 }
 
-void SndShockEffector::Start(CActor* A, f32 snd_length, f32 power)
+void CSndShockEffector::Start(CActor* A, f32 snd_length, f32 power)
 {
 	clamp			(power, 0.1f, 1.5f);
 	m_actor			= A;
@@ -305,7 +305,7 @@ void SndShockEffector::Start(CActor* A, f32 snd_length, f32 power)
 	AddEffector			(A, effHit,"snd_shock_effector", this);
 }
 
-void SndShockEffector::Update()
+void CSndShockEffector::Update()
 {
 	m_cur_length		+= Device.dwTimeDelta;
 	f32 x				= f32(m_cur_length)/m_snd_length;

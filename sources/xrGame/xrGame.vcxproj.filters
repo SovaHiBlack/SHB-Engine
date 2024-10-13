@@ -1651,9 +1651,6 @@
     <Filter Include="Core\Client\Objects\zones\CustomZone">
       <UniqueIdentifier>{5aba780a-fe4d-486f-a7a4-e24b51385882}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\zones\FryUpZone">
-      <UniqueIdentifier>{6a36d3d5-73a6-4447-a324-238186dde94b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\zones\GraviZone">
       <UniqueIdentifier>{21ddf0ff-ca33-46ab-89f9-4c2a5e47c0ad}</UniqueIdentifier>
     </Filter>
@@ -1677,9 +1674,6 @@
     </Filter>
     <Filter Include="Core\Client\Objects\zones\TorridZone">
       <UniqueIdentifier>{5404643b-57e1-4a98-80f6-7b23a255ea0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\zones\TorridZone\ZoneVisual">
-      <UniqueIdentifier>{36c5cae5-67b9-4a7f-a7d6-fa2e1129eab8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Objects\zones\SpaceRestrictor">
       <UniqueIdentifier>{47681418-f9d0-4105-b333-7b9505357680}</UniqueIdentifier>
@@ -2115,6 +2109,9 @@
     </Filter>
     <Filter Include="UI\Common\DiaryWnd">
       <UniqueIdentifier>{9405ff7b-7cc6-4814-92c1-49c04bf991b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\zones\ZoneVisual">
+      <UniqueIdentifier>{36c5cae5-67b9-4a7f-a7d6-fa2e1129eab8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -5064,9 +5061,6 @@
     <ClInclude Include="CustomZone.h">
       <Filter>Core\Client\Objects\zones\CustomZone</Filter>
     </ClInclude>
-    <ClInclude Include="FryupZone.h">
-      <Filter>Core\Client\Objects\zones\FryUpZone</Filter>
-    </ClInclude>
     <ClInclude Include="GraviZone.h">
       <Filter>Core\Client\Objects\zones\GraviZone</Filter>
     </ClInclude>
@@ -5092,7 +5086,7 @@
       <Filter>Core\Client\Objects\zones\TorridZone</Filter>
     </ClInclude>
     <ClInclude Include="ZoneVisual.h">
-      <Filter>Core\Client\Objects\zones\TorridZone\ZoneVisual</Filter>
+      <Filter>Core\Client\Objects\zones\ZoneVisual</Filter>
     </ClInclude>
     <ClInclude Include="space_restrictor.h">
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
@@ -7361,9 +7355,6 @@
     <ClCompile Include="Actor_Network.cpp">
       <Filter>Core\Client\Objects\actor\base</Filter>
     </ClCompile>
-    <ClCompile Include="Actor_Sleep.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
     <ClCompile Include="Actor_Weapon.cpp">
       <Filter>Core\Client\Objects\actor\base</Filter>
     </ClCompile>
@@ -7841,9 +7832,6 @@
     <ClCompile Include="CustomZone.cpp">
       <Filter>Core\Client\Objects\zones\CustomZone</Filter>
     </ClCompile>
-    <ClCompile Include="FryupZone.cpp">
-      <Filter>Core\Client\Objects\zones\FryUpZone</Filter>
-    </ClCompile>
     <ClCompile Include="GraviZone.cpp">
       <Filter>Core\Client\Objects\zones\GraviZone</Filter>
     </ClCompile>
@@ -7878,7 +7866,7 @@
       <Filter>Core\Client\Objects\zones\TorridZone</Filter>
     </ClCompile>
     <ClCompile Include="ZoneVisual.cpp">
-      <Filter>Core\Client\Objects\zones\TorridZone\ZoneVisual</Filter>
+      <Filter>Core\Client\Objects\zones\ZoneVisual</Filter>
     </ClCompile>
     <ClCompile Include="space_restrictor.cpp">
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>

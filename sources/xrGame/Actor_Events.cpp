@@ -68,7 +68,7 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 					pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
 					if (Level().CurrentViewEntity() == this)
 							HUD().GetUI()->UIGame()->ReInitShownUI();
-				};
+				}
 				
 				//добавить отсоединенный аддон в инвентарь
 				if(pGame)

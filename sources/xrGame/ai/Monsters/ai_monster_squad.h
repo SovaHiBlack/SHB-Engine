@@ -108,7 +108,7 @@ public:
 	void		remove_links			(CObject *O);
 	
 	// return count of monsters in radius for object
-	u8			get_count				(const CEntity *object, F32 radius);
+	u8			get_count				(const CEntity *object, f32 radius);
 
 
 	///////////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ public:
 	struct _elem {
 		CEntity		*pE;
 		Fvector		p_from;
-		F32		yaw;
+		f32		yaw;
 	};
 	xr_vector<_elem>	lines;
 	// ------------

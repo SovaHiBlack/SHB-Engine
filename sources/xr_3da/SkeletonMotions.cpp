@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 #include "SkeletonMotions.h"
-#include "SkeletonAnimated.h"
+//#include "SkeletonAnimated.h"
 #include "fmesh.h"
 #include "motion.h"
 

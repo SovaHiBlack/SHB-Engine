@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "igame_level.h"
+//#include "igame_level.h"
 
 #include "CameraBase.h"
 

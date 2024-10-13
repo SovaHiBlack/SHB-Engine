@@ -80,7 +80,7 @@ void CMonsterSquad::Idle_AssignAction(ENTITY_VEC &members)
 		
 		u8 cur_type = 0;
 		while (!front.empty()) {
-			F32	random_r;
+			f32	random_r;
 			Fvector random_dir;
 
 			random_dir.random_dir	();

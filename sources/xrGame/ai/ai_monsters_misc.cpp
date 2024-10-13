@@ -25,7 +25,7 @@
 #include "../agent_member_manager.h"
 #include "stalker/ai_stalker.h"
 
-bool bfGetActionSuccessProbability(GroupHierarchyHolder::MEMBER_REGISTRY &Members, const xr_vector<const CEntityAlive *> &VisibleEnemies, F32 fMinProbability, CBaseFunction &fSuccessProbabilityFunction)
+bool bfGetActionSuccessProbability(GroupHierarchyHolder::MEMBER_REGISTRY &Members, const xr_vector<const CEntityAlive *> &VisibleEnemies, f32 fMinProbability, CBaseFunction &fSuccessProbabilityFunction)
 {
 	int i = 0, j = 0, I = (int)Members.size(), J = (int)VisibleEnemies.size();
 	xr_vector<const CEntityAlive*>::const_iterator	II = VisibleEnemies.begin();
@@ -41,7 +41,7 @@ bool bfGetActionSuccessProbability(GroupHierarchyHolder::MEMBER_REGISTRY &Member
 			++II;
 			continue;
 		}
-		F32 fProbability = fSuccessProbabilityFunction.ffGetValue()/100.f, fCurrentProbability;
+		f32 fProbability = fSuccessProbabilityFunction.ffGetValue()/100.f, fCurrentProbability;
 		if (fProbability > fMinProbability) {
 			fCurrentProbability = fProbability;
 			for (++j; (i < I) && (j < J); ++j) {
@@ -82,7 +82,7 @@ bool bfGetActionSuccessProbability(GroupHierarchyHolder::MEMBER_REGISTRY &Member
 	return(j >= J);
 }
 
-u32 dwfChooseAction(u32 dwActionRefreshRate, F32 fMinProbability0, F32 fMinProbability1, F32 fMinProbability2, F32 fMinProbability3, u32 dwTeam, u32 dwSquad, u32 dwGroup, u32 a0, u32 a1, u32 a2, u32 a3, u32 a4, CEntity *tpEntity, F32 fGroupDistance)
+u32 dwfChooseAction(u32 dwActionRefreshRate, f32 fMinProbability0, f32 fMinProbability1, f32 fMinProbability2, f32 fMinProbability3, u32 dwTeam, u32 dwSquad, u32 dwGroup, u32 a0, u32 a1, u32 a2, u32 a3, u32 a4, CEntity *tpEntity, f32 fGroupDistance)
 {
 //	return(a0);
 	CGroupHierarchyHolder					&Group = Level().seniority_holder().team(dwTeam).squad(dwSquad).group(dwGroup);

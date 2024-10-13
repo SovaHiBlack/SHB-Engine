@@ -345,17 +345,6 @@ void CCustomMonster::shedule_Update	( u32 DT )
 			VERIFY					(_valid(Position()));
 			//Exec_Visibility		();
 			VERIFY					(_valid(Position()));
-			//////////////////////////////////////
-			//Fvector C; f32 R;
-			//////////////////////////////////////
-			// Ñ Îëåñÿ - ÏÈÂÎ!!!! (Äèìå :-))))
-			// m_PhysicMovementControl->GetBoundingSphere	(C,R);
-			//////////////////////////////////////
-			//Center(C);
-			//R = Radius();
-			//////////////////////////////////////
-			/// #pragma todo("Oles to all AI guys: perf/logical problem: Only few objects needs 'feel_touch' why to call update for everybody?")
-			///			feel_touch_update		(C,R);
 
 			net_update				uNext;
 			uNext.dwTimeStamp		= Level().timeServer();

@@ -83,15 +83,15 @@ void CALifeSpawnRegistry::fill_new_spawns_single		(SPAWN_GRAPH::CVertex *vertex,
 	if (!!vertex->data()->object().m_spawn_flags.is(CSE_Abstract::flSpawnIfDestroyedOnly) && spawned_item(vertex,objects))
 		return;
 
-	F32						accumulator = 0.f;
+	f32						accumulator = 0.0f;
 	SPAWN_GRAPH::const_iterator	I = vertex->edges().begin(), B = I;
 	SPAWN_GRAPH::const_iterator	E = vertex->edges().end();
 	for ( ; I != E; ++I)
 		accumulator				+= (*I).weight();
 
-	F32						probability = randF(accumulator);
-//	F32						group_probability = vertex->data()->object().m_spawn_probability;
-	F32						group_probability = 1.f;
+	f32						probability = randF(accumulator);
+//	f32						group_probability = vertex->data()->object().m_spawn_probability;
+	f32						group_probability = 1.f;
 
 	if (probability >= accumulator*group_probability)
 		return;

@@ -21,6 +21,7 @@
 #include "EffectorShot.h"
 #include "phcollidevalidator.h"
 #include "PHShell.h"
+
 void CActor::cam_Set	(EActorCameras style)
 {
 	CCameraBase* old_cam = cam_Active();
@@ -28,7 +29,8 @@ void CActor::cam_Set	(EActorCameras style)
 	old_cam->OnDeactivate();
 	cam_Active()->OnActivate(old_cam);
 }
-f32 CActor::f_Ladder_cam_limit=1.f;
+
+f32 CActor::f_Ladder_cam_limit=1.0f;
 void CActor::cam_SetLadder()
 {
 	CCameraBase* C			= cameras[eacFirstEye];
@@ -208,6 +210,7 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 			r_torso.roll = 0.f;
 		}
 	}
+
 	if (!fis_zero(r_torso.roll))
 	{
 		f32 radius		= point.y*0.5f;
@@ -309,7 +312,8 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 	if( psActorFlags.test(AF_PSP) )
 	{
 		Cameras().Update			(C);
-	}else
+	}
+	else
 	{
 		Cameras().Update			(cameras[eacFirstEye]);
 	}
@@ -345,8 +349,15 @@ void CActor::update_camera (CCameraShotEffector* effector)
 
 	effector->ApplyLastAngles(&(pACam->pitch), &(pACam->yaw));
 
-	if (pACam->bClampYaw)	clamp(pACam->yaw,pACam->lim_yaw[0],pACam->lim_yaw[1]);
-	if (pACam->bClampPitch)	clamp(pACam->pitch,pACam->lim_pitch[0],pACam->lim_pitch[1]);
+	if (pACam->bClampYaw)
+	{
+		clamp(pACam->yaw, pACam->lim_yaw[0], pACam->lim_yaw[1]);
+	}
+
+	if (pACam->bClampPitch)
+	{
+		clamp(pACam->pitch, pACam->lim_pitch[0], pACam->lim_pitch[1]);
+	}
 }
 
 #ifdef DEBUG
@@ -365,32 +376,6 @@ void CActor::OnRender	()
 	inherited::OnRender();
 }
 #endif
-/*
-void CActor::LoadShootingEffector (pcstr section)
-{
-
-	if(!m_pShootingEffector) 
-		m_pShootingEffector = xr_new<SShootingEffector>();
-
-
-	m_pShootingEffector->ppi.duality.h		= pSettings->r_float(section,"duality_h");
-	m_pShootingEffector->ppi.duality.v		= pSettings->r_float(section,"duality_v");
-	m_pShootingEffector->ppi.gray				= pSettings->r_float(section,"gray");
-	m_pShootingEffector->ppi.blur				= pSettings->r_float(section,"blur");
-	m_pShootingEffector->ppi.noise.intensity	= pSettings->r_float(section,"noise_intensity");
-	m_pShootingEffector->ppi.noise.grain		= pSettings->r_float(section,"noise_grain");
-	m_pShootingEffector->ppi.noise.fps		= pSettings->r_float(section,"noise_fps");
-	VERIFY(!fis_zero(m_pShootingEffector->ppi.noise.fps));
-
-	sscanf(pSettings->r_string(section,"color_base"),	"%f,%f,%f", &m_pShootingEffector->ppi.color_base.r, &m_pShootingEffector->ppi.color_base.g, &m_pShootingEffector->ppi.color_base.b);
-	sscanf(pSettings->r_string(section,"color_gray"),	"%f,%f,%f", &m_pShootingEffector->ppi.color_gray.r, &m_pShootingEffector->ppi.color_gray.g, &m_pShootingEffector->ppi.color_gray.b);
-	sscanf(pSettings->r_string(section,"color_add"),	"%f,%f,%f", &m_pShootingEffector->ppi.color_add.r,  &m_pShootingEffector->ppi.color_add.g,	&m_pShootingEffector->ppi.color_add.b);
-
-	m_pShootingEffector->time				= pSettings->r_float(section,"time");
-	m_pShootingEffector->time_attack		= pSettings->r_float(section,"time_attack");
-	m_pShootingEffector->time_release		= pSettings->r_float(section,"time_release");
-
-}*/
 
 void CActor::LoadSleepEffector	(pcstr section)
 {

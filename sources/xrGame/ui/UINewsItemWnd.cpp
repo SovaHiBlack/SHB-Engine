@@ -41,7 +41,6 @@ void CUINewsItemWnd::Init				(pcstr xml_name, pcstr start_from)
 
 	strconcat(sizeof(str),str,start_from,":auto");
 	xml_init.InitAutoStaticGroup(uiXml, str, 0, this);
-
 }
 
 void CUINewsItemWnd::Setup			(GAME_NEWS_DATA& news_data)

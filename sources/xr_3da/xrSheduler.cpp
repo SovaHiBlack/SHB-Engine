@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "xrSheduler.h"
-#include "xr_object.h"
+//#include "xr_object.h"
 
 //#define DEBUG_SCHEDULER
 

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "xrServer_Objects_ALife.h"
 
-CSE_ALifeItemWeapon	*CSE_ALifeSmartZone::tpfGetBestWeapon	(ALife::EHitType		&tHitType, F32& fHitPower)
+CSE_ALifeItemWeapon	*CSE_ALifeSmartZone::tpfGetBestWeapon	(ALife::EHitType		&tHitType, f32& fHitPower)
 {
 	m_tpCurrentBestWeapon		= 0;
 	return						(m_tpCurrentBestWeapon);

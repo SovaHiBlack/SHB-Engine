@@ -260,7 +260,7 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, f32& Jump
 			if (_abs(vControlAccel.x)< EPSILON_5)	mstate_real &= ~(mcLStrafe+mcRStrafe);
 
 			// normalize and analyze crouch and run
-			F32	scale				= vControlAccel.magnitude();
+			f32	scale				= vControlAccel.magnitude();
 			if (scale> EPSILON_5)	{
 				scale	=	m_fWalkAccel/scale;
 				if (bAccelerated)
@@ -497,7 +497,7 @@ void CActor::g_sv_Orientate(u32 /**mstate_rl/**/, f32 /**dt/**/)
 	}
 }
 
-bool	isActorAccelerated			(u32 mstate, bool ZoomMode) 
+bool isActorAccelerated			(u32 mstate, bool ZoomMode) 
 {
 	bool res = false;
 	if (mstate&mcAccel)
@@ -541,7 +541,7 @@ bool CActor::CanSprint			()
 	return can_Sprint;
 }
 
-bool	CActor::CanJump				()
+bool CActor::CanJump				()
 {
 	bool can_Jump = /*!IsLimping() &&*/
 		!character_physics_support()->movement()->PHCapture() &&((mstate_real&mcJump)==0) && (m_fJumpTime<=0.0f) 

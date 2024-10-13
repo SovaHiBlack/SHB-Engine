@@ -19,7 +19,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "interactive_motion.h"
 #include "animation_movement_controller.h"
-//const f32 default_hinge_friction = 5.0f;//gray_wolf comment
+
 #ifdef DEBUG
 #	include "PHDebug.h"
 #endif // DEBUG

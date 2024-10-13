@@ -14,7 +14,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "cover_point.h"
 
-const F32 MIN_SUITABLE_ENEMY_DISTANCE = 3.f;//10.f;
+const f32 MIN_SUITABLE_ENEMY_DISTANCE = 3.f;//10.f;
 
 struct CRemoveOldDangerCover {
 	typedef CAgentMemberManager::MEMBER_STORAGE MEMBER_STORAGE;
@@ -166,9 +166,9 @@ void CAgentLocationManager::remove_old_danger_covers	()
 	);
 }
 
-F32 CAgentLocationManager::danger		(const CCoverPoint *cover, CAI_Stalker *member) const
+f32 CAgentLocationManager::danger		(const CCoverPoint *cover, CAI_Stalker *member) const
 {
-	F32						result = 1;
+	f32						result = 1.0f;
 	squad_mask_type				mask = object().member().mask(member);
 	LOCATIONS::const_iterator	I = m_danger_locations.begin();
 	LOCATIONS::const_iterator	E = m_danger_locations.end();
@@ -179,12 +179,11 @@ F32 CAgentLocationManager::danger		(const CCoverPoint *cover, CAI_Stalker *membe
 		if (!(*I)->mask().test(mask))
 			continue;
 
-		F32					distance = 1.f + (*I)->position().distance_to(cover->position());
+		f32					distance = 1.0f + (*I)->position().distance_to(cover->position());
 		if (distance > (*I)->m_radius)
 			continue;
 
-		result					*= 
-			F32(Device.dwTimeGlobal - (*I)->m_level_time)/ F32((*I)->m_interval);
+		result					*= f32(Device.dwTimeGlobal - (*I)->m_level_time)/ f32((*I)->m_interval);
 	}
 
 	return						(result);

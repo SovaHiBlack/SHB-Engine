@@ -5582,9 +5582,6 @@
     <Xml Include="config\ui\carbody_new_16.xml">
       <Filter>config\ui</Filter>
     </Xml>
-    <Xml Include="config\ui\chat_mp.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
     <Xml Include="config\ui\color_defs.xml">
       <Filter>config\ui</Filter>
     </Xml>
@@ -5601,12 +5598,6 @@
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\events_new.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\follower_character.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\follower_panel.xml">
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\game_tutorials.xml">
@@ -5688,42 +5679,6 @@
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\map_desc_16.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_agroprom.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_bar.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_darkvalley.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_escape.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_garbage.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_lchangers.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_military.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_mp.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_radar.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_relations.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\map_spots_rostok.xml">
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\message_box.xml">
@@ -5837,15 +5792,6 @@
     <Xml Include="config\ui\trade_new.xml">
       <Filter>config\ui</Filter>
     </Xml>
-    <Xml Include="config\ui\ui_asus_intro.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_buy_menu.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_common.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
     <Xml Include="config\ui\ui_credits.xml">
       <Filter>config\ui</Filter>
     </Xml>
@@ -5855,34 +5801,7 @@
     <Xml Include="config\ui\ui_game_over.xml">
       <Filter>config\ui</Filter>
     </Xml>
-    <Xml Include="config\ui\ui_hud.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_icons_map.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_icons_npc.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_iconstotal.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_ingame.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_inventory.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_inventory2.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
     <Xml Include="config\ui\ui_keybinding.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_mainmenu.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_map_description.xml">
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\ui_mapinfo.xml">
@@ -5903,25 +5822,7 @@
     <Xml Include="config\ui\ui_movies.xml">
       <Filter>config\ui</Filter>
     </Xml>
-    <Xml Include="config\ui\ui_npc_monster.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_npc_unique.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_numpad.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
     <Xml Include="config\ui\ui_numpad_wnd.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_old_textures.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_pda.xml">
-      <Filter>config\ui</Filter>
-    </Xml>
-    <Xml Include="config\ui\ui_statistics.xml">
       <Filter>config\ui</Filter>
     </Xml>
     <Xml Include="config\ui\ui_videoplayer.xml">
@@ -5935,6 +5836,93 @@
     </Xml>
     <Xml Include="config\ui\zone_map_16.xml">
       <Filter>config\ui</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_statistics.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_pda.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_old_textures.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_numpad.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_npc_monster.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_npc_unique.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_mainmenu.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_map_description.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_hud.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_icons_map.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_icons_npc.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_iconstotal.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_ingame.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_inventory.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_inventory2.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_asus_intro.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_buy_menu.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\ui_common.xml">
+      <Filter>config\ui\textures_desc</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_escape.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_garbage.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_agroprom.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_darkvalley.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_bar.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_military.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_radar.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_mp.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_relations.xml">
+      <Filter>config\ui\mapspots</Filter>
+    </Xml>
+    <Xml Include="config\ui\map_spots_lchangers.xml">
+      <Filter>config\ui\mapspots</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

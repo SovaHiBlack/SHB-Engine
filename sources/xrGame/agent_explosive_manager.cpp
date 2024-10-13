@@ -19,7 +19,7 @@
 #include "visual_memory_manager.h"
 #include "danger_object_location.h"
 
-const F32 GRENADE_RADIUS	= 10.f;
+const f32 GRENADE_RADIUS	= 10.f;
 const u32 AFTER_GRENADE_DESTROYED_INTERVAL = 1000;
 
 struct CRemoveExplosivesPredicate {
@@ -66,7 +66,7 @@ void CAgentExplosiveManager::register_explosive	(const CExplosive *explosive, co
 
 bool CAgentExplosiveManager::process_explosive			(CMemberOrder &member)
 {
-	F32			min_dist_sqr = flt_max;
+	f32			min_dist_sqr = flt_max;
 	CDangerExplosive	*best_grenade = 0;
 	xr_vector<CDangerExplosive>::iterator	I = m_explosives.begin();
 	xr_vector<CDangerExplosive>::iterator	E = m_explosives.end();
@@ -74,7 +74,7 @@ bool CAgentExplosiveManager::process_explosive			(CMemberOrder &member)
 		if (!member.object().memory().visual().visible_now((*I).m_game_object))
 			continue;
 
-		F32		dist_sqr = (*I).m_game_object->Position().distance_to_sqr(member.object().Position());
+		f32		dist_sqr = (*I).m_game_object->Position().distance_to_sqr(member.object().Position());
 		if (dist_sqr < min_dist_sqr) {
 			if	(
 				(*I).m_reactor && 

@@ -14,13 +14,13 @@ IC	CALifeMonsterDetailPathManager::object_type &CALifeMonsterDetailPathManager::
 	return		(*m_object);
 }
 
-IC	void CALifeMonsterDetailPathManager::speed										(const F32& speed)
+IC	void CALifeMonsterDetailPathManager::speed										(const f32& speed)
 {
 	VERIFY		(_valid(speed));
 	m_speed		= speed;
 }
 
-IC	const F32& CALifeMonsterDetailPathManager::speed								() const
+IC	const f32& CALifeMonsterDetailPathManager::speed								() const
 {
 	VERIFY		(_valid(m_speed));
 	return		(m_speed);
@@ -31,7 +31,7 @@ IC	const CALifeMonsterDetailPathManager::PATH &CALifeMonsterDetailPathManager::p
 	return		(m_path);
 }
 
-IC	const F32& CALifeMonsterDetailPathManager::walked_distance					() const
+IC	const f32& CALifeMonsterDetailPathManager::walked_distance					() const
 {
 	VERIFY		(path().size() > 1);
 	return		(m_walked_distance);

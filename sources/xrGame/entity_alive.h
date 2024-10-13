@@ -2,10 +2,8 @@
 
 #include "entity.h"
 
-
 DEFINE_VECTOR(ref_shader, SHADER_VECTOR, SHADER_VECTOR_IT);
 DEFINE_VECTOR(shared_str, STR_VECTOR, STR_VECTOR_IT);
-
 
 class MONSTER_COMMUNITY;
 class CEntityCondition;
@@ -14,13 +12,16 @@ class CCharacterPhysicsSupport;
 class CMaterialManager;
 class CVisualMemoryManager;
 class CBlend;
-class CEntityAlive : public CEntity {
+
+class CEntityAlive : public CEntity
+{
 private:
 	typedef	CEntity			inherited;			
+
 public:
 	virtual CEntityAlive*				cast_entity_alive		()						{return this;}
-public:
 
+public:
 	bool					m_bMobility;
 	f32					m_fAccuracy;
 	f32					m_fIntelligence;
@@ -42,7 +43,6 @@ public:
 	virtual void			save					(NET_Packet &output_packet);
 	virtual void			load					(IReader &input_packet);
 
-
 	virtual BOOL			net_Spawn				(CSE_Abstract* DC);
 	virtual void			net_Destroy				();
 	virtual	BOOL			net_SaveRelevant		();
@@ -56,12 +56,6 @@ public:
 	virtual void			Die						(CObject* who);
 	virtual void			g_WeaponBones			(int &L, int &R1, int &R2)										= 0;
 	
-//	virtual f32			GetfHealth				() const;
-//	virtual f32			SetfHealth				(f32 value);
-
-//	virtual f32			g_Health				()	const;
-//	virtual f32			g_MaxHealth				()	const;
-
 	virtual f32			g_Radiation				()	const;
 	virtual	f32			SetfRadiation			(f32 value);
 

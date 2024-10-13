@@ -59,7 +59,7 @@ CALifeCombatManager::~CALifeCombatManager	()
 void CALifeCombatManager::vfFillCombatGroup(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex)
 {
 	EHitType				l_tHitType;
-	F32					l_fHitPower;
+	f32					l_fHitPower;
 	SCHEDULE_P_VECTOR		&tpGroupVector = m_tpaCombatGroups[iGroupIndex];
 	CSE_ALifeGroupAbstract	*l_tpALifeGroupAbstract = smart_cast<CSE_ALifeGroupAbstract*>(tpALifeSchedulable);
 	tpGroupVector.clear		();
@@ -92,7 +92,7 @@ ECombatAction CALifeCombatManager::choose_combat_action(int iCombatGroupIndex)
 	SCHEDULE_P_VECTOR	&Members = m_tpaCombatGroups[iCombatGroupIndex];
 	SCHEDULE_P_VECTOR	&Enemies = m_tpaCombatGroups[iCombatGroupIndex ^ 1];
 	int i = 0, j = 0, I = (int)Members.size(), J = (int)Enemies.size();
-	F32	fMinProbability;
+	f32	fMinProbability;
 	if (!I)
 		fMinProbability = 0;
 	else {
@@ -103,7 +103,7 @@ ECombatAction CALifeCombatManager::choose_combat_action(int iCombatGroupIndex)
 	while ((i < I) && (j < J)) {
 		ai().ef_storage().alife().member()	= smart_cast<CSE_ALifeMonsterAbstract*>(Members[i]);
 		ai().ef_storage().alife().enemy()	= smart_cast<CSE_ALifeMonsterAbstract*>(Enemies[j]);
-		F32 fProbability = ai().ef_storage().m_pfVictoryProbability->ffGetValue()/100.f, fCurrentProbability;
+		f32 fProbability = ai().ef_storage().m_pfVictoryProbability->ffGetValue()/100.f, fCurrentProbability;
 		if (fProbability > fMinProbability) {
 			fCurrentProbability = fProbability;
 			for (++j; (i < I) && (j < J); ++j) {
@@ -308,7 +308,7 @@ void CALifeCombatManager::vfPerformAttackAction(int iCombatGroupIndex)
 	SCHEDULE_P_IT			E = l_tCombatGroup.end();
 	for ( ; I != E; ++I) {
 		EHitType			l_tHitType = eHitTypeMax;
-		F32				l_fHitPower = 0.f;
+		f32				l_fHitPower = 0.f;
 		if (!(*I)->m_tpCurrentBestWeapon) {
 			CSE_ALifeItemWeapon	*l_tpALifeItemWeapon = (*I)->tpfGetBestWeapon(l_tHitType,l_fHitPower);
 			if (!l_tpALifeItemWeapon && (l_fHitPower <= EPS_L))
@@ -333,7 +333,7 @@ void CALifeCombatManager::vfPerformAttackAction(int iCombatGroupIndex)
 				int							l_iIndex = randI(m_tpaCombatGroups[iCombatGroupIndex ^ 1].size());
 				CSE_ALifeMonsterAbstract	*l_tpALifeMonsterAbstract = smart_cast<CSE_ALifeMonsterAbstract*>(m_tpaCombatGroups[iCombatGroupIndex ^ 1][l_iIndex]);
 				R_ASSERT2					(l_tpALifeMonsterAbstract,"Invalid combat object");
-				F32						l_fHit = randF(l_fHitPower*0.5f,l_fHitPower*1.5f);
+				f32						l_fHit = randF(l_fHitPower*0.5f,l_fHitPower*1.5f);
 				l_tpALifeMonsterAbstract->fHealth -= l_tpALifeMonsterAbstract->m_fpImmunityFactors[l_tHitType]*l_fHit;
 #ifdef DEBUG
 				if (psAI_Flags.test(aiALife)) {

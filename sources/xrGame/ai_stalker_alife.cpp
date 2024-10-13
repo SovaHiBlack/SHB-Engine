@@ -139,7 +139,7 @@ void CAI_Stalker::attach_available_ammo			(CWeapon *weapon)
 void CAI_Stalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_type)
 {
 	CTradeItem						*best_weapon	= 0;
-	F32							best_value		= -1.f;
+	f32							best_value		= -1.0f;
 	ai().ef_storage().non_alife().member()	= this;
 
 	xr_vector<CTradeItem>::iterator	I = m_temp_items.begin();
@@ -150,7 +150,7 @@ void CAI_Stalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_
 
 		ai().ef_storage().non_alife().member_item() = &(*I).m_item->object();
 		int						j = ai().ef_storage().m_pfPersonalWeaponType->dwfGetWeaponType();
-		F32					current_value = -1.f;
+		f32					current_value = -1.0f;
 		switch (weapon_priority_type) {
 			case ALife::eWeaponPriorityTypeKnife : {
 				if (1 != j)
@@ -199,7 +199,7 @@ void CAI_Stalker::choose_medikit				()
 void CAI_Stalker::choose_detector				()
 {
 	CTradeItem					*best_detector	= 0;
-	F32						best_value		= -1.f;
+	f32						best_value		= -1.0f;
 	ai().ef_storage().non_alife().member()	= this;
 	xr_vector<CTradeItem>::iterator	I = m_temp_items.begin();
 	xr_vector<CTradeItem>::iterator	E = m_temp_items.end();
@@ -213,7 +213,7 @@ void CAI_Stalker::choose_detector				()
 
 		// evaluating item
 		ai().ef_storage().non_alife().member_item() = detector;
-		F32					current_value = ai().ef_storage().m_pfDetectorType->ffGetValue();
+		f32					current_value = ai().ef_storage().m_pfDetectorType->ffGetValue();
 		// choosing the best item
 		if ((current_value > best_value)) {
 			best_detector		= &*I;

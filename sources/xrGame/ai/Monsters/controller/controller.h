@@ -5,7 +5,7 @@
 
 class CControllerAnimation;
 class CControllerDirection;
-class SndShockEffector;
+class CSndShockEffector;
 class CControllerPsyHit;
 class CControllerAura;
 
@@ -17,7 +17,7 @@ class CController : public CBaseMonster {
 	ref_sound			control_hit_sound;			// звук, который играется в голове у актера
 
 	ref_sound			m_sound_hit_fx;
-	SndShockEffector*	m_sndShockEffector;
+	CSndShockEffector*	m_sndShockEffector;
 
 	SAttackEffector		m_control_effector;
 

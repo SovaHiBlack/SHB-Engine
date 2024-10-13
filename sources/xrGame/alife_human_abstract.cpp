@@ -57,7 +57,7 @@ CSE_ALifeDynamicObject *CSE_ALifeHumanAbstract::tpfGetBestDetector	()
 	return									(brain().objects().best_detector());
 }
 
-CSE_ALifeItemWeapon *CSE_ALifeHumanAbstract::tpfGetBestWeapon		(ALife::EHitType &tHitType, F32& fHitPower)
+CSE_ALifeItemWeapon *CSE_ALifeHumanAbstract::tpfGetBestWeapon		(ALife::EHitType &tHitType, f32& fHitPower)
 {
 	return									(brain().objects().best_weapon());
 }

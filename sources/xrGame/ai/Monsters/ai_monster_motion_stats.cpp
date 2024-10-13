@@ -30,16 +30,16 @@ bool CMotionStats::is_good_motion(u32 elems_checked)
 	else to_index = index - elems_checked;
 	
 	bool bGood = true;
-	F32 test_speed = _data[from_index].speed;
+	f32 test_speed = _data[from_index].speed;
 	
 	for (u32 i=from_index; i>to_index;i--) {
 		
 		// считать только, если все элементы содержат одинаковые скорости	
 		if (!fsimilar(test_speed,_data[i].speed)) break;
 
-		F32	cur_dist	= _data[i].position.distance_to(_data[i-1].position);
+		f32	cur_dist	= _data[i].position.distance_to(_data[i-1].position);
 		TTime	delta_t		= _data[i].time - _data[i-1].time;
-		F32	speed		= cur_dist * 1000.f / F32(delta_t);
+		f32	speed		= cur_dist * 1000.0f / f32(delta_t);
 		
 		if (fsimilar(_data[i-1].speed,0.0f)) continue; 
 		
@@ -50,4 +50,3 @@ bool CMotionStats::is_good_motion(u32 elems_checked)
 	}
 	return bGood;
 }
-

@@ -209,12 +209,12 @@ void CALifeMonsterDetailPathManager::follow_path				(const ALife::_TIME_ID &time
 		return;
 	}
 
-	F32							last_time_delta = F32(time_delta)/1000.f;
+	f32							last_time_delta = f32(time_delta)/1000.0f;
 	for ( ; m_path.size() > 1;) {
 		setup_current_speed			();
-		F32						update_distance = (last_time_delta/ai().alife().time_manager().normal_time_factor())*speed();
+		f32						update_distance = (last_time_delta/ai().alife().time_manager().normal_time_factor())*speed();
 
-		F32						distance_between = ai().game_graph().distance(object().m_tGraphID,(GameGraph::_GRAPH_ID)m_path[m_path.size() - 2]);
+		f32						distance_between = ai().game_graph().distance(object().m_tGraphID,(GameGraph::_GRAPH_ID)m_path[m_path.size() - 2]);
 		if (distance_between > (update_distance + m_walked_distance)) {
 			m_walked_distance		+= update_distance;
 #ifdef DEBUG

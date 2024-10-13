@@ -17,21 +17,20 @@
 #include "game_base_space.h"
 #include "Artifact.h"
 
-static const F32 VEL_MAX		= 10.f;
-static const F32 VEL_A_MAX	= 10.f;
+static const f32 VEL_MAX		= 10.f;
+static const f32 VEL_A_MAX	= 10.f;
 
 #define GetWeaponParam(pWeapon, func_name, def_value)	((pWeapon) ? (pWeapon->func_name) : def_value)
 
 //возвращает текуший разброс стрельбы (в радианах)с учетом движения
-F32 CActor::GetWeaponAccuracy() const
+f32 CActor::GetWeaponAccuracy() const
 {
 	CWeapon* W	= smart_cast<CWeapon*>(inventory().ActiveItem());
-	
 
 	if(m_bZoomAimingMode&&W&&!GetWeaponParam(W, IsRotatingToZoom(), false))
 		return m_fDispAim;
 
-	F32 dispersion = m_fDispBase*GetWeaponParam(W, Get_PDM_Base(), 1.0f);
+	f32 dispersion = m_fDispBase*GetWeaponParam(W, Get_PDM_Base(), 1.0f);
 
 	CEntity::SEntityState state;
 	if (g_State(state))
@@ -56,7 +55,6 @@ F32 CActor::GetWeaponAccuracy() const
 
 	return dispersion;
 }
-
 
 void CActor::g_fireParams	(const CHudItem* pHudItem, Fvector &fire_pos, Fvector &fire_dir)
 {
@@ -103,6 +101,7 @@ void CActor::SetWeaponHideState (u32 State, bool bSet)
 		u_EventSend	(P);
 	};
 }
+
 static	u16 BestWeaponSlots [] = {
 	RIFLE_SLOT		,		// 2
 	PISTOL_SLOT		,		// 1
@@ -172,11 +171,11 @@ void CActor::on_weapon_shot_start		(CWeapon *weapon)
 		{
 			effector->SetSingleShoot(FALSE);
 		}
-	};
+	}
 
 	effector->SetRndSeed			(GetShotRndSeed());
 	effector->SetActor				(this);
-	effector->Shot					(weapon->camDispersion + weapon->camDispersionInc* F32(weapon->ShotsFired()));
+	effector->Shot					(weapon->camDispersion + weapon->camDispersionInc* f32(weapon->ShotsFired()));
 
 	if (pWM)
 	{
@@ -240,7 +239,7 @@ void	CActor::SpawnAmmoForWeapon	(CInventoryItem *pIItem)
 	if (!pWM || !pWM->AutoSpawnAmmo()) return;
 
 	pWM->SpawnAmmo(0xffffffff, NULL, ID());
-};
+}
 
 void	CActor::RemoveAmmoForWeapon	(CInventoryItem *pIItem)
 {
@@ -253,4 +252,4 @@ void	CActor::RemoveAmmoForWeapon	(CInventoryItem *pIItem)
 	CWeaponAmmo* pAmmo = smart_cast<CWeaponAmmo*>(inventory().GetAny(*(pWM->m_ammoTypes[0]) ));
 	if (!pAmmo) return;
 	pAmmo->DestroyObject();
-};
+}

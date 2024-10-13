@@ -110,7 +110,7 @@ void CAgentManager::shedule_Update		(u32 time_delta)
 	STOP_PROFILE
 }
 
-F32 CAgentManager::shedule_Scale		()
+f32 CAgentManager::shedule_Scale		()
 {
 	return						(.5f);
 }

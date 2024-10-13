@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "xr_effgamma.h"
-#include "device.h"
+//#include "device.h"
 
 IC u16 clr2gamma(f32 c)
 {

@@ -4,17 +4,16 @@
 class ENGINE_API CGameFont;
 
 // definition
-class ENGINE_API CApplication	:
-	public pureFrame,
-	public IEventReceiver
+class ENGINE_API CApplication : public pureFrame, public IEventReceiver
 {
 	// levels
 	struct					sLevelInfo
 	{
-		char*				folder;
-		char*				name;
+		pstr				folder;
+		pstr				name;
 	};
 	string256				app_title;
+
 private:
 	ref_shader				hLevelLogo;
 	ref_geom				ll_hGeom;
@@ -24,38 +23,40 @@ private:
 	int						load_stage;
 
 	u32						ll_dwReference;
+
 private:
 	EVENT					eQuit;
 	EVENT					eStart;
 	EVENT					eStartLoad;
 	EVENT					eDisconnect;
 
-	void					Level_Append		(pcstr lname);
+	void					Level_Append(pcstr lname);
+
 public:
-	CGameFont*				pFontSystem;
+	CGameFont* pFontSystem;
 
 	// Levels
 	xr_vector<sLevelInfo>	Levels;
 	u32						Level_Current;
-	void					Level_Scan			();
-	int						Level_ID			(pcstr name);
-	void					Level_Set			(u32 ID);
+	void					Level_Scan( );
+	int						Level_ID(pcstr name);
+	void					Level_Set(u32 ID);
 
 	// Loading
-	void					LoadBegin			();
-	void					LoadEnd				();
-	void					LoadTitleInt		(pcstr str);
-	void					LoadDraw			();
+	void					LoadBegin( );
+	void					LoadEnd( );
+	void					LoadTitleInt(pcstr str);
+	void					LoadDraw( );
 
-	virtual	void			OnEvent				(EVENT E, u64 P1, u64 P2);
+	virtual void			OnEvent(EVENT E, u64 P1, u64 P2);
 
 	// Other
-							CApplication		();
-							~CApplication		();
+	CApplication( );
+	~CApplication( );
 
-	virtual void			OnFrame				();
-			void			load_draw_internal	();
-			void			destroy_loading_shaders();
+	virtual void			OnFrame( );
+	void			load_draw_internal( );
+	void			destroy_loading_shaders( );
 };
 
-extern ENGINE_API	CApplication*	pApp;
+extern ENGINE_API	CApplication* pApp;

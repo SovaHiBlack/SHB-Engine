@@ -39,36 +39,9 @@ pcstr CInventoryItemObject::NameShort		()
 {
 	return						(CInventoryItem::NameShort());
 }
-/*
-pcstr CInventoryItemObject::NameComplex	()
-{
-	return						(CInventoryItem::NameComplex());
-}
-*/
 
 void				CInventoryItemObject::Hit					(SHit* pHDS)
 {
-	/*
-	CPhysicItem::Hit			(
-		P,
-		dir,
-		who,
-		element,
-		position_in_object_space,
-		impulse,
-		hit_type
-	);
-	
-	CInventoryItem::Hit			(
-		P,
-		dir,
-		who,
-		element,
-		position_in_object_space,
-		impulse,
-		hit_type
-	);
-	*/
 	CPhysicItem::Hit(pHDS);
 	CInventoryItem::Hit(pHDS);
 }

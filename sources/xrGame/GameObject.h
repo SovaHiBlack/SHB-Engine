@@ -38,6 +38,7 @@ class CSpaceRestrictor;
 class CAttachableItem;
 class animation_movement_controller;
 class CBlend;
+
 namespace GameObject {
 	enum ECallbackType;
 };
@@ -56,12 +57,15 @@ class CGameObject :
 	CAI_ObjectLocation				*m_ai_location;
 	ALife::_STORY_ID				m_story_id;
 	animation_movement_controller	*m_anim_mov_ctrl;
+
 protected:
 	//время удаления объекта
 	bool					m_bObjectRemoved;
+
 public:
 	CGameObject();
 	virtual ~CGameObject();
+
 public:
 	//functions used for avoiding most of the smart_cast
 	virtual CAttachmentOwner*			cast_attachment_owner		()						{return NULL;}
@@ -190,7 +194,7 @@ public:
 		rotation.yaw		= h;
 		rotation.pitch		= p;
 		return				(rotation);
-	};
+	}
 
 	virtual bool			use_parent_ai_locations	() const
 	{
@@ -214,10 +218,10 @@ public:
 		return				(m_visual_callback);
 	}
 
-
 private:
 	mutable CScriptGameObject	*m_lua_game_object;
 	int						m_script_clsid;
+
 public:
 			CScriptGameObject	*lua_game_object() const;
 			int				clsid			() const
@@ -225,11 +229,13 @@ public:
 		THROW				(m_script_clsid >= 0);
 		return				(m_script_clsid);
 	}
+
 public:
 	IC		CInifile		*spawn_ini			()
 	{
 		return				(m_ini_file);
 	}
+
 protected:
 	virtual	void			spawn_supplies		();
 
@@ -267,7 +273,6 @@ public:
 	virtual bool			use_center_to_aim	() const {return false;}
 
 public:
-	
 	typedef CScriptCallbackEx<void> CScriptCallbackExVoid;
 
 private:
