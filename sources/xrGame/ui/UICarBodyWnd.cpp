@@ -26,185 +26,197 @@
 #include "../script_callback_ex.h"
 #include "../script_game_object.h"
 #include "../BottleItem.h"
+#include "../xr_level_controller.h"
+#include "../Medkit.h"
+#include "../Antirad.h"
 
-#define				CAR_BODY_XML		"carbody_new.xml"
-#define				CARBODY_ITEM_XML	"carbody_item.xml"
+#define CAR_BODY_XML						"carbody_new.xml"
+#define CARBODY_ITEM_XML					"carbody_item.xml"
 
-void move_item (u16 from_id, u16 to_id, u16 what_id);
+void move_item								(u16 from_id, u16 to_id, u16 what_id);
 
-CUICarBodyWnd::CUICarBodyWnd()
+CUICarBodyWnd::CUICarBodyWnd( )
 {
-	m_pInventoryBox		= NULL;
-	Init				();
-	Hide				();
-	m_b_need_update		= false;
+	m_pInventoryBox							= NULL;
+	Init									();
+	Hide									();
+	m_b_need_update							= false;
 }
 
-CUICarBodyWnd::~CUICarBodyWnd()
+CUICarBodyWnd::~CUICarBodyWnd( )
 {
-	m_pUIOurBagList->ClearAll					(true);
-	m_pUIOthersBagList->ClearAll				(true);
+	m_pUIOurBagList->ClearAll				(true);
+	m_pUIOthersBagList->ClearAll			(true);
 }
 
-void CUICarBodyWnd::Init()
+void CUICarBodyWnd::Init( )
 {
-	CUIXml						uiXml;
-	uiXml.Init					(CONFIG_PATH, UI_PATH, CAR_BODY_XML);
-	
-	CUIXmlInit					xml_init;
+	CUIXml									uiXml;
+	uiXml.Init								(CONFIG_PATH, UI_PATH, CAR_BODY_XML);
 
-	xml_init.InitWindow			(uiXml, "main", 0, this);
+	CUIXmlInit								xml_init;
 
-	m_pUIStaticTop				= xr_new<CUIStatic>(); m_pUIStaticTop->SetAutoDelete(true);
-	AttachChild					(m_pUIStaticTop);
-	xml_init.InitStatic			(uiXml, "top_background", 0, m_pUIStaticTop);
+	xml_init.InitWindow						(uiXml, "main", 0, this);
 
+	m_pUIStaticTop							= xr_new<CUIStatic>( );
+	m_pUIStaticTop->SetAutoDelete			(true);
+	AttachChild								(m_pUIStaticTop);
+	xml_init.InitStatic						(uiXml, "top_background", 0, m_pUIStaticTop);
 
-	m_pUIStaticBottom			= xr_new<CUIStatic>(); m_pUIStaticBottom->SetAutoDelete(true);
-	AttachChild					(m_pUIStaticBottom);
-	xml_init.InitStatic			(uiXml, "bottom_background", 0, m_pUIStaticBottom);
+	m_pUIStaticBottom						= xr_new<CUIStatic>( );
+	m_pUIStaticBottom->SetAutoDelete		(true);
+	AttachChild								(m_pUIStaticBottom);
+	xml_init.InitStatic						(uiXml, "bottom_background", 0, m_pUIStaticBottom);
 
-	m_pUIOurIcon				= xr_new<CUIStatic>(); m_pUIOurIcon->SetAutoDelete(true);
-	AttachChild					(m_pUIOurIcon);
-	xml_init.InitStatic			(uiXml, "static_icon", 0, m_pUIOurIcon);
+	m_pUIOurIcon							= xr_new<CUIStatic>( );
+	m_pUIOurIcon->SetAutoDelete				(true);
+	AttachChild								(m_pUIOurIcon);
+	xml_init.InitStatic						(uiXml, "static_icon", 0, m_pUIOurIcon);
 
-	m_pUIOthersIcon				= xr_new<CUIStatic>(); m_pUIOthersIcon->SetAutoDelete(true);
-	AttachChild					(m_pUIOthersIcon);
-	xml_init.InitStatic			(uiXml, "static_icon", 1, m_pUIOthersIcon);
+	m_pUIOthersIcon							= xr_new<CUIStatic>( );
+	m_pUIOthersIcon->SetAutoDelete			(true);
+	AttachChild								(m_pUIOthersIcon);
+	xml_init.InitStatic						(uiXml, "static_icon", 1, m_pUIOthersIcon);
 
+	m_pUICharacterInfoLeft					= xr_new<CUICharacterInfo>( );
+	m_pUICharacterInfoLeft->SetAutoDelete	(true);
+	m_pUIOurIcon->AttachChild				(m_pUICharacterInfoLeft);
+	m_pUICharacterInfoLeft->Init			(0.0f, 0.0f, m_pUIOurIcon->GetWidth( ), m_pUIOurIcon->GetHeight( ), "trade_character.xml");
 
-	m_pUICharacterInfoLeft		= xr_new<CUICharacterInfo>(); m_pUICharacterInfoLeft->SetAutoDelete(true);
-	m_pUIOurIcon->AttachChild	(m_pUICharacterInfoLeft);
-	m_pUICharacterInfoLeft->Init(0,0, m_pUIOurIcon->GetWidth(), m_pUIOurIcon->GetHeight(), "trade_character.xml");
+	m_pUICharacterInfoRight					= xr_new<CUICharacterInfo>( );
+	m_pUICharacterInfoRight->SetAutoDelete	(true);
+	m_pUIOthersIcon->AttachChild			(m_pUICharacterInfoRight);
+	m_pUICharacterInfoRight->Init			(0.0f, 0.0f, m_pUIOthersIcon->GetWidth( ), m_pUIOthersIcon->GetHeight( ), "trade_character.xml");
 
+	m_pUIOurBagWnd							= xr_new<CUIStatic>( );
+	m_pUIOurBagWnd->SetAutoDelete			(true);
+	AttachChild								(m_pUIOurBagWnd);
+	xml_init.InitStatic						(uiXml, "our_bag_static", 0, m_pUIOurBagWnd);
 
-	m_pUICharacterInfoRight			= xr_new<CUICharacterInfo>(); m_pUICharacterInfoRight->SetAutoDelete(true);
-	m_pUIOthersIcon->AttachChild	(m_pUICharacterInfoRight);
-	m_pUICharacterInfoRight->Init	(0,0, m_pUIOthersIcon->GetWidth(), m_pUIOthersIcon->GetHeight(), "trade_character.xml");
+	m_pUIOthersBagWnd						= xr_new<CUIStatic>( );
+	m_pUIOthersBagWnd->SetAutoDelete		(true);
+	AttachChild								(m_pUIOthersBagWnd);
+	xml_init.InitStatic						(uiXml, "others_bag_static", 0, m_pUIOthersBagWnd);
 
-	m_pUIOurBagWnd					= xr_new<CUIStatic>(); m_pUIOurBagWnd->SetAutoDelete(true);
-	AttachChild						(m_pUIOurBagWnd);
-	xml_init.InitStatic				(uiXml, "our_bag_static", 0, m_pUIOurBagWnd);
+	m_pUIOurBagList							= xr_new<CUIDragDropListEx>( );
+	m_pUIOurBagList->SetAutoDelete			(true);
+	m_pUIOurBagWnd->AttachChild				(m_pUIOurBagList);
+	xml_init.InitDragDropListEx				(uiXml, "dragdrop_list_our", 0, m_pUIOurBagList);
 
+	m_pUIOthersBagList						= xr_new<CUIDragDropListEx>( );
+	m_pUIOthersBagList->SetAutoDelete		(true);
+	m_pUIOthersBagWnd->AttachChild			(m_pUIOthersBagList);
+	xml_init.InitDragDropListEx				(uiXml, "dragdrop_list_other", 0, m_pUIOthersBagList);
 
-	m_pUIOthersBagWnd				= xr_new<CUIStatic>(); m_pUIOthersBagWnd->SetAutoDelete(true);
-	AttachChild						(m_pUIOthersBagWnd);
-	xml_init.InitStatic				(uiXml, "others_bag_static", 0, m_pUIOthersBagWnd);
+	// информация о предмете
+	m_pUIDescWnd							= xr_new<CUIFrameWindow>( );
+	m_pUIDescWnd->SetAutoDelete				(true);
+	AttachChild								(m_pUIDescWnd);
+	xml_init.InitFrameWindow				(uiXml, "frame_window", 0, m_pUIDescWnd);
 
-	m_pUIOurBagList					= xr_new<CUIDragDropListEx>(); m_pUIOurBagList->SetAutoDelete(true);
-	m_pUIOurBagWnd->AttachChild		(m_pUIOurBagList);	
-	xml_init.InitDragDropListEx		(uiXml, "dragdrop_list_our", 0, m_pUIOurBagList);
+	m_pUIStaticDesc							= xr_new<CUIStatic>( );
+	m_pUIStaticDesc->SetAutoDelete			(true);
+	m_pUIDescWnd->AttachChild				(m_pUIStaticDesc);
+	xml_init.InitStatic						(uiXml, "descr_static", 0, m_pUIStaticDesc);
 
-	m_pUIOthersBagList				= xr_new<CUIDragDropListEx>(); m_pUIOthersBagList->SetAutoDelete(true);
-	m_pUIOthersBagWnd->AttachChild	(m_pUIOthersBagList);	
-	xml_init.InitDragDropListEx		(uiXml, "dragdrop_list_other", 0, m_pUIOthersBagList);
+	m_pUIItemInfo							= xr_new<CUIItemInfo>( );
+	m_pUIItemInfo->SetAutoDelete			(true);
+	m_pUIDescWnd->AttachChild				(m_pUIItemInfo);
+	m_pUIItemInfo->Init						(0.0f, 0.0f, m_pUIDescWnd->GetWidth( ), m_pUIDescWnd->GetHeight( ), CARBODY_ITEM_XML);
 
+	xml_init.InitAutoStatic					(uiXml, "auto_static", this);
 
-	//информация о предмете
-	m_pUIDescWnd					= xr_new<CUIFrameWindow>(); m_pUIDescWnd->SetAutoDelete(true);
-	AttachChild						(m_pUIDescWnd);
-	xml_init.InitFrameWindow		(uiXml, "frame_window", 0, m_pUIDescWnd);
+	m_pUIPropertiesBox						= xr_new<CUIPropertiesBox>( );
+	m_pUIPropertiesBox->SetAutoDelete		(true);
+	AttachChild								(m_pUIPropertiesBox);
+	m_pUIPropertiesBox->Init				(0.0f, 0.0f, 300.0f, 300.0f);
+	m_pUIPropertiesBox->Hide				( );
 
-	m_pUIStaticDesc					= xr_new<CUIStatic>(); m_pUIStaticDesc->SetAutoDelete(true);
-	m_pUIDescWnd->AttachChild		(m_pUIStaticDesc);
-	xml_init.InitStatic				(uiXml, "descr_static", 0, m_pUIStaticDesc);
+	SetCurrentItem							(NULL);
+	m_pUIStaticDesc->SetText				(NULL);
 
-	m_pUIItemInfo					= xr_new<CUIItemInfo>(); m_pUIItemInfo->SetAutoDelete(true);
-	m_pUIDescWnd->AttachChild		(m_pUIItemInfo);
-	m_pUIItemInfo->Init				(0,0, m_pUIDescWnd->GetWidth(), m_pUIDescWnd->GetHeight(), CARBODY_ITEM_XML);
+	m_pUITakeAll							= xr_new<CUI3tButton>( );
+	m_pUITakeAll->SetAutoDelete				(true);
+	AttachChild								(m_pUITakeAll);
+	xml_init.Init3tButton					(uiXml, "take_all_btn", 0, m_pUITakeAll);
 
-
-	xml_init.InitAutoStatic			(uiXml, "auto_static", this);
-
-	m_pUIPropertiesBox				= xr_new<CUIPropertiesBox>(); m_pUIPropertiesBox->SetAutoDelete(true);
-	AttachChild						(m_pUIPropertiesBox);
-	m_pUIPropertiesBox->Init		(0,0,300,300);
-	m_pUIPropertiesBox->Hide		();
-
-	SetCurrentItem					(NULL);
-	m_pUIStaticDesc->SetText		(NULL);
-
-	m_pUITakeAll					= xr_new<CUI3tButton>(); m_pUITakeAll->SetAutoDelete(true);
-	AttachChild						(m_pUITakeAll);
-	xml_init.Init3tButton				(uiXml, "take_all_btn", 0, m_pUITakeAll);
-
-	BindDragDropListEnents			(m_pUIOurBagList);
-	BindDragDropListEnents			(m_pUIOthersBagList);
-
-
+	BindDragDropListEnents					(m_pUIOurBagList);
+	BindDragDropListEnents					(m_pUIOthersBagList);
 }
 
 void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryBox* pInvBox)
 {
-    m_pOurObject									= pOur;
-	m_pOthersObject									= NULL;
-	m_pInventoryBox									= pInvBox;
-	m_pInventoryBox->m_in_use						= true;
+	m_pOurObject							= pOur;
+	m_pOthersObject							= NULL;
+	m_pInventoryBox							= pInvBox;
+	m_pInventoryBox->m_in_use				= true;
 
-	u16 our_id										= smart_cast<CGameObject*>(m_pOurObject)->ID();
-	m_pUICharacterInfoLeft->InitCharacter			(our_id);
-	m_pUIOthersIcon->Show							(false);
-	m_pUICharacterInfoRight->ClearInfo				();
-	m_pUIPropertiesBox->Hide						();
-	EnableAll										();
-	UpdateLists										();
-
+	u16 our_id								= smart_cast<CGameObject*>(m_pOurObject)->ID( );
+	m_pUICharacterInfoLeft->InitCharacter	(our_id);
+	m_pUIOthersIcon->Show					(false);
+	m_pUICharacterInfoRight->ClearInfo		( );
+	m_pUIPropertiesBox->Hide				( );
+	EnableAll								( );
+	UpdateLists								( );
 }
 
 void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 {
+	m_pOurObject							= pOur;
+	m_pOthersObject							= pOthers;
+	m_pInventoryBox							= NULL;
 
-    m_pOurObject									= pOur;
-	m_pOthersObject									= pOthers;
-	m_pInventoryBox									= NULL;
-	
-	u16 our_id										= smart_cast<CGameObject*>(m_pOurObject)->ID();
-	u16 other_id									= smart_cast<CGameObject*>(m_pOthersObject)->ID();
+	u16 our_id								= smart_cast<CGameObject*>(m_pOurObject)->ID( );
+	u16 other_id							= smart_cast<CGameObject*>(m_pOthersObject)->ID( );
 
-	m_pUICharacterInfoLeft->InitCharacter			(our_id);
-	m_pUIOthersIcon->Show							(true);
-	
-	CBaseMonster *monster = NULL;
-	if(m_pOthersObject) {
-		monster										= smart_cast<CBaseMonster *>(m_pOthersObject);
-		if (monster || m_pOthersObject->use_simplified_visual() ) 
+	m_pUICharacterInfoLeft->InitCharacter	(our_id);
+	m_pUIOthersIcon->Show					(true);
+
+	CBaseMonster* monster					= NULL;
+	if (m_pOthersObject)
+	{
+		monster								= smart_cast<CBaseMonster*>(m_pOthersObject);
+		if (monster || m_pOthersObject->use_simplified_visual( ))
 		{
-			m_pUICharacterInfoRight->ClearInfo		();
-			if(monster)
+			m_pUICharacterInfoRight->ClearInfo	( );
+			if (monster)
 			{
-				shared_str monster_tex_name = pSettings->r_string(monster->cNameSect(),"icon");
-				m_pUICharacterInfoRight->UIIcon().InitTexture(monster_tex_name.c_str());
-				m_pUICharacterInfoRight->UIIcon().SetStretchTexture(true);
+				shared_str monster_tex_name		= pSettings->r_string(monster->cNameSect( ), "icon");
+				m_pUICharacterInfoRight->UIIcon( ).InitTexture			(monster_tex_name.c_str( ));
+				m_pUICharacterInfoRight->UIIcon( ).SetStretchTexture	(true);
 			}
-		}else 
+		}
+		else
 		{
-			m_pUICharacterInfoRight->InitCharacter	(other_id);
+			m_pUICharacterInfoRight->InitCharacter(other_id);
 		}
 	}
 
-	m_pUIPropertiesBox->Hide						();
-	EnableAll										();
-	UpdateLists										();
+	m_pUIPropertiesBox->Hide				( );
+	EnableAll								( );
+	UpdateLists								( );
 
-	if(!monster){
-		CInfoPortionWrapper	*known_info_registry	= xr_new<CInfoPortionWrapper>();
-		known_info_registry->registry().init		(other_id);
-		KNOWN_INFO_VECTOR& known_info				= known_info_registry->registry().objects();
-
-		KNOWN_INFO_VECTOR_IT it = known_info.begin();
-		for(int i=0;it!=known_info.end();++it,++i){
-			(*it).info_id;	
+	if (!monster)
+	{
+		CInfoPortionWrapper* known_info_registry	= xr_new<CInfoPortionWrapper>( );
+		known_info_registry->registry( ).init		(other_id);
+		KNOWN_INFO_VECTOR& known_info				= known_info_registry->registry( ).objects( );
+		KNOWN_INFO_VECTOR_IT it						= known_info.begin( );
+		for (int i = 0; it != known_info.end( ); ++it, ++i)
+		{
+			(*it).info_id;
 			NET_Packet		P;
-			CGameObject::u_EventGen		(P,GE_INFO_TRANSFER, our_id);
-			P.w_u16						(0);//not used
-			P.w_stringZ					((*it).info_id);			//сообщение
-			P.w_u8						(1);						//добавление сообщения
-			CGameObject::u_EventSend	(P);
+			CGameObject::u_EventGen(P, GE_INFO_TRANSFER, our_id);
+			P.w_u16(0);							//not used
+			P.w_stringZ((*it).info_id);			//сообщение
+			P.w_u8(1);							//добавление сообщения
+			CGameObject::u_EventSend(P);
 		}
-		known_info.clear	();
-		xr_delete			(known_info_registry);
+
+		known_info.clear( );
+		xr_delete(known_info_registry);
 	}
-}  
+}
 
 void CUICarBodyWnd::UpdateLists_delayed()
 {
@@ -231,7 +243,7 @@ void CUICarBodyWnd::UpdateLists()
 	m_pOurObject->inventory().AddAvailableItems	(ruck_list, true);
 	std::sort									(ruck_list.begin(),ruck_list.end(),InventoryUtilities::GreaterRoomInRuck);
 
-	//Наш рюкзак
+	// Наш рюкзак
 	TIItemContainer::iterator it;
 	for(it =  ruck_list.begin(); ruck_list.end() != it; ++it) 
 	{
@@ -239,16 +251,19 @@ void CUICarBodyWnd::UpdateLists()
 		m_pUIOurBagList->SetItem		(itm);
 	}
 
-
 	ruck_list.clear									();
-	if(m_pOthersObject)
-		m_pOthersObject->inventory().AddAvailableItems	(ruck_list, false);
+	if (m_pOthersObject)
+	{
+		m_pOthersObject->inventory( ).AddAvailableItems(ruck_list, false);
+	}
 	else
-		m_pInventoryBox->AddAvailableItems			(ruck_list);
+	{
+		m_pInventoryBox->AddAvailableItems(ruck_list);
+	}
 
 	std::sort										(ruck_list.begin(),ruck_list.end(),InventoryUtilities::GreaterRoomInRuck);
 
-	//Чужой рюкзак
+	// Чужой рюкзак
 	for(it =  ruck_list.begin(); ruck_list.end() != it; ++it) 
 	{
 		CUICellItem* itm							= create_cell_item(*it);
@@ -296,23 +311,20 @@ void CUICarBodyWnd::Draw()
 	inherited::Draw	();
 }
 
-
 void CUICarBodyWnd::Update()
 {
-	if(	m_b_need_update||
-		m_pOurObject->inventory().ModifyFrame()==Device.dwFrame || 
-		(m_pOthersObject&&m_pOthersObject->inventory().ModifyFrame()==Device.dwFrame))
-
-		UpdateLists		();
-
+	if (m_b_need_update || m_pOurObject->inventory( ).ModifyFrame( ) == Device.dwFrame || (m_pOthersObject && m_pOthersObject->inventory( ).ModifyFrame( ) == Device.dwFrame))
+	{
+		UpdateLists( );
+	}
 	
 	if(m_pOthersObject && (smart_cast<CGameObject*>(m_pOurObject))->Position().distance_to((smart_cast<CGameObject*>(m_pOthersObject))->Position()) > 3.0f)
 	{
 		GetHolder()->StartStopMenu(this,true);
 	}
+
 	inherited::Update();
 }
-
 
 void CUICarBodyWnd::Show() 
 { 
@@ -380,12 +392,8 @@ void CUICarBodyWnd::TakeAll()
 			move_item		(m_pInventoryBox->ID(), tmp_id, itm->object().ID());
 //.			Actor()->callback(GameObject::eInvBoxItemTake)(m_pInventoryBox->lua_game_object(), itm->object().lua_game_object() );
 		}
-
 	}
 }
-
-
-#include "../xr_level_controller.h"
 
 bool CUICarBodyWnd::OnKeyboard(int dik, EUIMessages keyboard_action)
 {
@@ -399,9 +407,6 @@ bool CUICarBodyWnd::OnKeyboard(int dik, EUIMessages keyboard_action)
 	return false;
 }
 
-#include "../Medkit.h"
-#include "../Antirad.h"
-
 void CUICarBodyWnd::ActivatePropertiesBox()
 {
 	if(m_pInventoryBox)	return;
@@ -413,7 +418,7 @@ void CUICarBodyWnd::ActivatePropertiesBox()
 	CMedkit*				pMedkit			= smart_cast<CMedkit*>			(CurrentIItem());
 	CAntirad*				pAntirad		= smart_cast<CAntirad*>			(CurrentIItem());
 	CBottleItem*			pBottleItem		= smart_cast<CBottleItem*>		(CurrentIItem());
-    bool					b_show			= false;
+	bool					b_show			= false;
 	
 	pcstr _action				= NULL;
 	if(pMedkit || pAntirad)
@@ -423,17 +428,25 @@ void CUICarBodyWnd::ActivatePropertiesBox()
 	}
 	else if(pEatableItem)
 	{
-		if(pBottleItem)
-			_action					= "st_drink";
+		if (pBottleItem)
+		{
+			_action = "st_drink";
+		}
 		else
-			_action					= "st_eat";
+		{
+			_action = "st_eat";
+		}
+
 		b_show						= true;
 	}
-	if(_action)
-		m_pUIPropertiesBox->AddItem(_action,  NULL, INVENTORY_EAT_ACTION);
 
+	if (_action)
+	{
+		m_pUIPropertiesBox->AddItem(_action, NULL, INVENTORY_EAT_ACTION);
+	}
 
-	if(b_show){
+	if(b_show)
+	{
 		m_pUIPropertiesBox->AutoUpdateSize	();
 		m_pUIPropertiesBox->BringAllToTop	();
 
@@ -450,7 +463,10 @@ void CUICarBodyWnd::ActivatePropertiesBox()
 void CUICarBodyWnd::EatItem()
 {
 	CActor *pActor				= smart_cast<CActor*>(Level().CurrentEntity());
-	if(!pActor)					return;
+	if (!pActor)
+	{
+		return;
+	}
 
 	CUIDragDropListEx* owner_list		= CurrentItem()->OwnerList();
 	if(owner_list==m_pUIOthersBagList)
@@ -466,17 +482,17 @@ void CUICarBodyWnd::EatItem()
 	CGameObject::u_EventGen		(P, GEG_PLAYER_ITEM_EAT, Actor()->ID());
 	P.w_u16						(CurrentIItem()->object().ID());
 	CGameObject::u_EventSend	(P);
-
 }
-
 
 bool CUICarBodyWnd::OnItemDrop(CUICellItem* itm)
 {
 	CUIDragDropListEx*	old_owner		= itm->OwnerList();
 	CUIDragDropListEx*	new_owner		= CUIDragDropListEx::m_drag_item->BackList();
 	
-	if(old_owner==new_owner || !old_owner || !new_owner || (false&&new_owner==m_pUIOthersBagList&&m_pInventoryBox))
-					return true;
+	if (old_owner == new_owner || !old_owner || !new_owner || (false && new_owner == m_pUIOthersBagList && m_pInventoryBox))
+	{
+		return true;
+	}
 
 	if(m_pOthersObject)
 	{
@@ -507,6 +523,7 @@ bool CUICarBodyWnd::OnItemDrop(CUICellItem* itm)
 		CUICellItem* ci			= old_owner->RemoveItem(CurrentItem(), false);
 		new_owner->SetItem		(ci);
 	}
+
 	SetCurrentItem					(NULL);
 
 	return				true;
@@ -547,6 +564,7 @@ bool CUICarBodyWnd::OnItemDbClick(CUICellItem* itm)
 //.		Actor()->callback		(GameObject::eInvBoxItemTake)(m_pInventoryBox->lua_game_object(), CurrentIItem()->object().lua_game_object() );
 
 	}
+
 	SetCurrentItem				(NULL);
 
 	return						true;

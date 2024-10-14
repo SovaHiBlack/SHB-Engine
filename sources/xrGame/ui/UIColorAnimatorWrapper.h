@@ -11,64 +11,77 @@
 //=============================================================================
 #pragma once
 
-//////////////////////////////////////////////////////////////////////////
-
 class CLAItem;
-
-//////////////////////////////////////////////////////////////////////////
 
 class CUIColorAnimatorWrapper
 {
 public:
+				CUIColorAnimatorWrapper		( );
+				~CUIColorAnimatorWrapper	( )
+	{ };
+	// animationName - имя цветовой анимации
+	// colorToModify - указатель на цвет который меняем
+	explicit	CUIColorAnimatorWrapper		(const shared_str& animationName);
+				CUIColorAnimatorWrapper		(u32* colorToModify);
+	// Установить новую цветовую анимацию
+	void		SetColorAnimation			(const shared_str& animationName);
+	void		SetColorToModify			(u32* colorToModify);
+	// Функция которую необходимо обязательно поместить в Update диалога, для обновления анимации
+	void		Update						( );
 	// Анимация сразу играется после создания объекта.
 	// Чтобы начать ее заново используйте Reset()
 	// Для проигрывания только 1 цикла вызовите Cyclic(false);
+	void		Cyclic						(bool cyclic)
+	{
+		isCyclic = cyclic;
+	}
+	void		Reset						( );
 
-						CUIColorAnimatorWrapper	();
-						~CUIColorAnimatorWrapper(){};
-	// colorToModify - указатель на цвет который меняем
-	// animationName - имя цветовой анимации
-	explicit			CUIColorAnimatorWrapper	(const shared_str &animationName);
-//						CUIColorAnimatorWrapper	(const shared_str &animationName, u32 *colorToModify);
-						CUIColorAnimatorWrapper	(u32 *colorToModify);
-
-	// Установить новую цветовую анимацию
-	void				SetColorAnimation		(const shared_str &animationName);
-	void				SetColorToModify		(u32 *colorToModify);
-	// Функция которую необходимо обязательно поместить в Update диалога, для обновления анимации
-	void				Update					();
-	void				Cyclic					(bool cyclic)	{ isCyclic = cyclic; }
-	void				Reset					();
-	u32					GetColor				() const		{ return currColor; }
-	int					LastFrame				() const		{ return currFrame; }
-	int					TotalFrames				() const;
-	bool				Done					() const		{ return isDone; }
-	void				SetDone					(bool value)	{ isDone = value; }
-	void				Reverese				(bool value);
-	void				GoToEnd					();
+	u32			GetColor					( ) const
+	{
+		return currColor;
+	}
+	s32			LastFrame					( ) const
+	{
+		return currFrame;
+	}
+	s32			TotalFrames					( ) const;
+	bool		Done						( ) const
+	{
+		return isDone;
+	}
+	void		SetDone						(bool value)
+	{
+		isDone = value;
+	}
+	void		Reverese					(bool value);
+	void		GoToEnd						( );
 
 private:
 	// Собственно анимация
-	CLAItem				*colorAnimation;
+	CLAItem*								colorAnimation;
 	// Предыдущее запоменное значение глобального времени игры
-	f32				prevGlobalTime;
+	f32										prevGlobalTime;
 	// Время прошедшее с начала анимации
-	f32				animationTime;
+	f32										animationTime;
 	// Циклическое бесконечное проигрывание
-	bool				isCyclic;
+	bool									isCyclic;
 	// Цвет который мы можем изменять переданный нам извне
-	u32					*color;
+	u32*									color;
 	// Текущий цвет анимации
-	u32					currColor;
+	u32										currColor;
 	// Текущий кадр анимации
-	int					currFrame;
+	s32										currFrame;
 	// Анимация закончилась?
-	bool				isDone;
+	bool									isDone;
 	// Анимация прокручивается в реверсивном порядке? Не применимо для бесконечной анимации
-	bool				reverse;
+	bool									reverse;
 	// Коеффициент для пересчета времени при реверснутом проигрывании
-	f32				kRev;
+	f32										kRev;
 
 public:
-	CLAItem				*GetAnimation			() const		{ return colorAnimation; } 
+	CLAItem*	GetAnimation				( ) const
+	{
+		return colorAnimation;
+	}
 };

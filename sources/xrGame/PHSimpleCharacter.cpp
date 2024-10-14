@@ -452,7 +452,6 @@ void		CPHSimpleCharacter::ApplyForce(f32 x, f32 y, f32 z)
 	if(!b_exist) return;
 	Enable();
 	dBodyAddForce(m_body,x,y,z);
-	//BodyCutForce(m_body,5.f,0.f);
 }
 
 void		CPHSimpleCharacter::ApplyForce(const Fvector& dir, f32 force)
