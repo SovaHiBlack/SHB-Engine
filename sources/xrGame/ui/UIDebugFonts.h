@@ -18,7 +18,7 @@ public:
 	virtual			~CUIDebugFonts	( );
 
 	virtual void	Init			(f32 x, f32 y, f32 width, f32 height);
-	virtual bool	OnKeyboard		(int dik, EUIMessages keyboard_action);
+	virtual bool	OnKeyboard		(s32 dik, EUIMessages keyboard_action);
 	void			FillUpList		( );
 
 protected:

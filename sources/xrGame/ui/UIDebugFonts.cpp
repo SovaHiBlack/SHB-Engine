@@ -16,7 +16,7 @@
 CUIDebugFonts::CUIDebugFonts( )
 {
 	AttachChild								(&m_background);
-	Init									(0, 0, UI_BASE_WIDTH, UI_BASE_HEIGHT);
+	Init									(0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT);
 }
 
 CUIDebugFonts::~CUIDebugFonts( )
@@ -32,7 +32,7 @@ void CUIDebugFonts::Init(f32 x, f32 y, f32 width, f32 height)
 	m_background.InitTexture				("ui\\ui_debug_font");
 }
 
-bool CUIDebugFonts::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CUIDebugFonts::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	if (DIK_ESCAPE == dik)
 	{
@@ -54,7 +54,7 @@ void CUIDebugFonts::FillUpList( )
 	CFontManager::FONTS_VEC_IT it_e			= v.end( );
 	Fvector2								pos;
 	Fvector2								sz;
-	pos.set									(0, 0);
+	pos.set									(0.0f, 0.0f);
 	sz.set									(UI_BASE_WIDTH, UI_BASE_HEIGHT);
 	string256								str;
 	for (; it != it_e; ++it)

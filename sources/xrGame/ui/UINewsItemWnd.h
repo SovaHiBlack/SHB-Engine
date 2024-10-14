@@ -4,7 +4,7 @@
 class CUIStatic;
 struct GAME_NEWS_DATA;
 
-class CUINewsItemWnd :public CUIWindow
+class CUINewsItemWnd : public CUIWindow
 {
 typedef	CUIWindow		inherited;
 CUIStatic*				m_UIText;

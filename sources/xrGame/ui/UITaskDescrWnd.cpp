@@ -22,25 +22,24 @@ void CUITaskDescrWnd::Init	(CUIXml* doc, pcstr start_from)
 	
 	string512				str;
 
-	m_UIMainFrame			= xr_new<CUIFrameWindow>(); m_UIMainFrame->SetAutoDelete(true);
+	m_UIMainFrame			= xr_new<CUIFrameWindow>();
+	m_UIMainFrame->SetAutoDelete(true);
 	AttachChild				(m_UIMainFrame);
 
 	strconcat				(sizeof(str),str,start_from,":main_frame");
 	xml_init.InitFrameWindow(*doc,str,0,m_UIMainFrame);
 
-//.	strconcat				(str,start_from,":main_frame");
-//.	xml_init.InitAutoStaticGroup(*doc, str, m_UIMainFrame);
-
-	m_UIMainHeader			= xr_new<CUIFrameLineWnd>();m_UIMainHeader->SetAutoDelete(true);
+	m_UIMainHeader			= xr_new<CUIFrameLineWnd>();
+	m_UIMainHeader->SetAutoDelete(true);
 	m_UIMainFrame->AttachChild(m_UIMainHeader);
 	strconcat				(sizeof(str),str,start_from,":main_frame:header_frame_line");
 	xml_init.InitFrameLine	(*doc,str,0,m_UIMainHeader);
 
-	m_UITaskInfoWnd			= xr_new<CUIScrollView>(); m_UITaskInfoWnd->SetAutoDelete(true);
+	m_UITaskInfoWnd			= xr_new<CUIScrollView>();
+	m_UITaskInfoWnd->SetAutoDelete(true);
 	m_UIMainFrame->AttachChild(m_UITaskInfoWnd);
 	strconcat				(sizeof(str),str,start_from,":main_frame:scroll_view");
 	xml_init.InitScrollView	(*doc,str,0,m_UITaskInfoWnd);
-
 }
 
 void CUITaskDescrWnd::Draw						()

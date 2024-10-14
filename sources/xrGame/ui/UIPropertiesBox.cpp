@@ -29,14 +29,14 @@ void CUIPropertiesBox::Init(f32 x, f32 y, f32 width, f32 height)
 
 	AttachChild				(&m_UIListWnd);
 
-	CUIXml					xml_doc;
-	xml_doc.Init			(CONFIG_PATH, UI_PATH, "inventory_new.xml");
+	CUIXml					uiXml;
+	uiXml.Init			(CONFIG_PATH, UI_PATH, "inventory_new.xml");
 
-	pcstr t = xml_doc.Read	("properties_box:texture", 0, "");
+	pcstr t = uiXml.Read	("properties_box:texture", 0, "");
 	R_ASSERT				(t);
 	InitTexture				(t);
 
-	CUIXmlInit::InitListBox	(xml_doc, "properties_box:list", 0, &m_UIListWnd);
+	CUIXmlInit::InitListBox	(uiXml, "properties_box:list", 0, &m_UIListWnd);
 
 	m_UIListWnd.Init		(OFFSET_X, OFFSET_Y, width - OFFSET_X*2, height - OFFSET_Y*2);
 }

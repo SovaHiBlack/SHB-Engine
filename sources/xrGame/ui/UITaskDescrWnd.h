@@ -10,6 +10,7 @@ class CEncyclopediaArticle;
 class CUITaskDescrWnd:public CUIWindow
 {
 	typedef CUIWindow			inherited;
+
 protected:
 	CUIScrollView*				m_UITaskInfoWnd;
 	CUIFrameWindow*				m_UIMainFrame;

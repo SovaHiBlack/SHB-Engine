@@ -25,7 +25,7 @@ class CUIEncyclopediaWnd: public CUIWindow
 {
 private:
 	typedef CUIWindow inherited;
-	enum {eNeedReload=(1<<0),};
+	enum {eNeedReload=(1<<0)};
 	Flags16				m_flags;
 public:
 						CUIEncyclopediaWnd			();
@@ -33,7 +33,7 @@ public:
 
 	virtual void		Init						();
 	virtual void		Show						(bool status);
-	virtual void		SendMessage					(CUIWindow *pWnd, s16 msg, void* pData = NULL);
+	virtual void		SendMessage					(CUIWindow *pWnd, s16 msg, pvoid pData = NULL);
 	virtual void		Draw						();
 
 	void				AddArticle					(shared_str, bool bReaded);

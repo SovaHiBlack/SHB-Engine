@@ -2278,7 +2278,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ui\UIDialogWnd.cpp" />
-    <ClCompile Include="ui\UIDiaryWnd2.cpp" />
+    <ClCompile Include="ui\UIDiaryWnd.cpp" />
     <ClCompile Include="ui\UIDragDropListEx.cpp" />
     <ClCompile Include="ui\UIEditBox.cpp" />
     <ClCompile Include="ui\UIEditBoxEx.cpp" />

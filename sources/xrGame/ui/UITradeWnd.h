@@ -14,6 +14,7 @@ class CUITradeWnd: public CUIWindow
 {
 private:
 	typedef CUIWindow inherited;
+
 public:
 						CUITradeWnd					();
 	virtual				~CUITradeWnd				();
@@ -35,8 +36,8 @@ public:
 	void 				SwitchToTalk				();
 	void 				StartTrade					();
 	void 				StopTrade					();
-protected:
 
+protected:
 	CUITradeInternal*	m_uidata;
 
 	bool				bStarted;
@@ -44,10 +45,9 @@ protected:
 	bool 				ToOthersTrade				();
 	bool 				ToOurBag					();
 	bool 				ToOthersBag					();
-	void 				SendEvent_ItemDrop			(PIItem pItem);
 	
 	u32					CalcItemsPrice				(CUIDragDropListEx* pList, CTrade* pTrade, bool bBuying);
-	f32				CalcItemsWeight				(CUIDragDropListEx* pList);
+	f32					CalcItemsWeight				(CUIDragDropListEx* pList);
 
 	void				TransferItems				(CUIDragDropListEx* pSellList, CUIDragDropListEx* pBuyList, CTrade* pTrade, bool bBuying);
 
@@ -75,10 +75,8 @@ protected:
 	u32					m_iOurTradePrice;
 	u32					m_iOthersTradePrice;
 
-
 	CUICellItem*		m_pCurrentCellItem;
 	TIItemContainer		ruck_list;
-
 
 	void				SetCurrentItem				(CUICellItem* itm);
 	CUICellItem*		CurrentItem					();
@@ -91,5 +89,4 @@ protected:
 	bool		xr_stdcall		OnItemRButtonClick	(CUICellItem* itm);
 
 	void				BindDragDropListEnents		(CUIDragDropListEx* lst);
-
 };

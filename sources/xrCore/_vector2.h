@@ -6,12 +6,21 @@ struct _vector2
 public:
 	typedef T			TYPE;
 	typedef _vector2<T>	Self;
-	typedef Self& SelfRef;
-	typedef const Self& SelfCRef;
-public:
-	T x, y;
+	typedef Self&		SelfRef;
+	typedef const Self&	SelfCRef;
 
-	IC SelfRef set(f32 _u, f32 _v)
+	TYPE x;
+	TYPE y;
+
+	IC SelfRef set(TYPE _u, TYPE _v)
+	{
+		x = TYPE(_u);
+		y = TYPE(_v);
+		return *this;
+	}
+
+
+	/*IC SelfRef set(f32 _u, f32 _v)
 	{
 		x = T(_u);
 		y = T(_v);
@@ -28,92 +37,94 @@ public:
 		x = T(_u);
 		y = T(_v);
 		return *this;
-	}
-	IC SelfRef set(const Self& p)
+	}*/
+
+
+	IC SelfRef set(SelfCRef p)
 	{
 		x = p.x;
 		y = p.y;
 		return *this;
 	}
-	IC SelfRef abs(const Self& p)
+	IC SelfRef abs(SelfCRef p)
 	{
 		x = _abs(p.x);
 		y = _abs(p.y);
 		return *this;
 	}
-	IC SelfRef min(const Self& p)
+	IC SelfRef min(SelfCRef p)
 	{
 		x = _min(x, p.x);
 		y = _min(y, p.y);
 		return *this;
 	}
-	IC SelfRef min(T _x, T _y)
+	IC SelfRef min(TYPE _x, TYPE _y)
 	{
 		x = _min(x, _x);
 		y = _min(y, _y);
 		return *this;
 	}
-	IC SelfRef max(const Self& p)
+	IC SelfRef max(SelfCRef p)
 	{
 		x = _max(x, p.x);
 		y = _max(y, p.y);
 		return *this;
 	}
-	IC SelfRef max(T _x, T _y)
+	IC SelfRef max(TYPE _x, TYPE _y)
 	{
 		x = _max(x, _x);
 		y = _max(y, _y);
 		return *this;
 	}
-	IC SelfRef sub(T p)
+	IC SelfRef sub(TYPE p)
 	{
 		x -= p;
 		y -= p;
 		return *this;
 	}
-	IC SelfRef sub(const Self& p)
+	IC SelfRef sub(SelfCRef p)
 	{
 		x -= p.x;
 		y -= p.y;
 		return *this;
 	}
-	IC SelfRef sub(const Self& p1, const Self& p2)
+	IC SelfRef sub(SelfCRef p1, SelfCRef p2)
 	{
 		x = p1.x - p2.x;
 		y = p1.y - p2.y;
 		return *this;
 	}
-	IC SelfRef sub(const Self& p, f32 d)
+	IC SelfRef sub(SelfCRef p, f32 d)
 	{
 		x = p.x - d;
 		y = p.y - d;
 		return *this;
 	}
-	IC SelfRef add(T p)
+	IC SelfRef add(TYPE p)
 	{
 		x += p;
 		y += p;
 		return *this;
 	}
-	IC SelfRef add(const Self& p)
+	IC SelfRef add(SelfCRef p)
 	{
 		x += p.x;
 		y += p.y;
 		return *this;
 	}
-	IC SelfRef add(const Self& p1, const Self& p2)
+	IC SelfRef add(SelfCRef p1, SelfCRef p2)
 	{
 		x = p1.x + p2.x;
 		y = p1.y + p2.y;
 		return *this;
 	}
-	IC SelfRef add(const Self& p, f32 d)
+	IC SelfRef add(SelfCRef p, f32 d)
 	{
 		x = p.x + d;
 		y = p.y + d;
 		return *this;
 	}
-	IC SelfRef mul(const T s)
+	IC SelfRef mul(const TYPE s)
 	{
 		x *= s;
 		y *= s;
@@ -125,13 +136,13 @@ public:
 		y *= p.y;
 		return *this;
 	}
-	IC SelfRef div(const T s)
+	IC SelfRef div(const TYPE s)
 	{
 		x /= s;
 		y /= s;
 		return *this;
 	}
-	IC SelfRef rot90(void)
+	IC SelfRef rot90( )
 	{
 		f32 t = -x;
 		x = y;
@@ -148,18 +159,18 @@ public:
 	{
 		return x * p.x + y * p.y;
 	}
-	IC T dot(const Self& p) const
+	IC T dot(SelfCRef p) const
 	{
-		return x * p.x + y * p.y;
+		return (x * p.x + y * p.y);
 	}
-	IC SelfRef norm(void)
+	IC SelfRef norm( )
 	{
 		f32 m = _sqrt(x * x + y * y);
 		x /= m;
 		y /= m;
 		return *this;
 	}
-	IC SelfRef norm_safe(void)
+	IC SelfRef norm_safe( )
 	{
 		f32 m = _sqrt(x * x + y * y);
 		if (m)
@@ -170,20 +181,20 @@ public:
 
 		return *this;
 	}
-	IC T distance_to(const Self& p) const
+	IC TYPE distance_to(SelfCRef p) const
 	{
 		return _sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
 	}
-	IC T square_magnitude(void) const
+	IC TYPE square_magnitude( ) const
 	{
-		return x * x + y * y;
+		return (x * x + y * y);
 	}
-	IC T magnitude(void) const
+	IC TYPE magnitude( ) const
 	{
 		return _sqrt(square_magnitude( ));
 	}
 
-	IC SelfRef mad(const Self& p, const Self& d, T r)
+	IC SelfRef mad(SelfCRef p, SelfCRef d, TYPE r)
 	{
 		x = p.x + d.x * r;
 		y = p.y + d.y * r;
@@ -198,21 +209,21 @@ public:
 		return kCross;
 	}
 
-	IC bool similar(Self& p, T eu, T ev) const
+	IC bool similar(Self& p, TYPE eu, TYPE ev) const
 	{
-		return _abs(x - p.x) < eu && _abs(y - p.y) < ev;
+		return (_abs(x - p.x) < eu && _abs(y - p.y) < ev);
 	}
 
-	IC bool similar(const Self& p, f32 E = EPS_L) const
+	IC bool similar(SelfCRef p, f32 E = EPS_L) const
 	{
-		return _abs(x - p.x) < E && _abs(y - p.y) < E;
-	};
+		return (_abs(x - p.x) < E && _abs(y - p.y) < E);
+	}
 
 	// average arithmetic
 	IC SelfRef averageA(Self& p1, Self& p2)
 	{
-		x = (p1.x + p2.x) * .5f;
-		y = (p1.y + p2.y) * .5f;
+		x = (p1.x + p2.x) * 0.5f;
+		y = (p1.y + p2.y) * 0.5f;
 		return *this;
 	}
 	// average geometric
@@ -223,28 +234,28 @@ public:
 		return *this;
 	}
 
-	T& operator[] (int i) const
+	TYPE& operator[] (s32 i) const
 	{
 		// assert:  0 <= i < 2; x and y are packed into 2*sizeof(f32) bytes
-		return (T&)*(&x + i);
+		return (TYPE&)*(&x + i);
 	}
 
-	IC SelfRef 	normalize(void)
+	IC SelfRef normalize( )
 	{
 		return norm( );
 	}
-	IC SelfRef 	normalize_safe(void)
+	IC SelfRef normalize_safe( )
 	{
 		return norm_safe( );
 	}
-	IC SelfRef 	normalize(const Self& v)
+	IC SelfRef normalize(SelfCRef v)
 	{
 		f32 m = _sqrt(v.x * v.x + v.y * v.y);
 		x = v.x / m;
 		y = v.y / m;
 		return *this;
 	}
-	IC SelfRef 	normalize_safe(const Self& v)
+	IC SelfRef normalize_safe(SelfCRef v)
 	{
 		f32 m = _sqrt(v.x * v.x + v.y * v.y);
 		if (m)
@@ -255,26 +266,38 @@ public:
 
 		return *this;
 	}
-	IC f32		dotproduct(const Self& p) const
+	IC f32		dotproduct(SelfCRef p) const
 	{
 		return dot(p);
 	}
-	IC f32		crossproduct(const Self& p) const
+	IC f32		crossproduct(SelfCRef p) const
 	{
-		return y * p.x - x * p.y;
+		return (y * p.x - x * p.y);
 	}
-	IC f32		getH(void) const
+	IC f32		getH( ) const
 	{
 		if (fis_zero(y))
+		{
 			if (fis_zero(x))
-				return		(0.f);
+			{
+				return		0.0f;
+			}
 			else
+			{
 				return		((x > 0.0f) ? -PI_DIV_2 : PI_DIV_2);
+			}
+		}
 		else
-			if (y < 0.f)
+		{
+			if (y < 0.0f)
+			{
 				return		(-(atanf(x / y) - PI));
+			}
 			else
+			{
 				return		(-atanf(x / y));
+			}
+		}
 	}
 };
 

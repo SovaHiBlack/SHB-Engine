@@ -33,14 +33,15 @@ void CUIMessagesWindow::AddLogMessage(const shared_str& msg){
 
 void CUIMessagesWindow::Init(f32 x, f32 y, f32 width, f32 height){
 
-	CUIXml		 xml;
+	CUIXml		 uiXml;
 
-	xml.Init(CONFIG_PATH, UI_PATH, "messages_window.xml");
+	uiXml.Init(CONFIG_PATH, UI_PATH, "messages_window.xml");
 
-	m_pGameLog = xr_new<CUIGameLog>();m_pGameLog->SetAutoDelete(true);
+	m_pGameLog = xr_new<CUIGameLog>();
+	m_pGameLog->SetAutoDelete(true);
 	m_pGameLog->Show(true);
 	AttachChild(m_pGameLog);
-	CUIXmlInit::InitScrollView(xml, "sp_log_list", 0, m_pGameLog);
+	CUIXmlInit::InitScrollView(uiXml, "sp_log_list", 0, m_pGameLog);
 }
 
 void CUIMessagesWindow::AddIconedPdaMessage(pcstr textureName, Frect originalRect, pcstr message, int iDelay){

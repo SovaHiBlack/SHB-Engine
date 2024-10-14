@@ -18,6 +18,7 @@ class CUICarBodyWnd: public CUIDialogWnd
 private:
 	typedef CUIDialogWnd	inherited;
 	bool					m_b_need_update;
+
 public:
 							CUICarBodyWnd				();
 	virtual					~CUICarBodyWnd				();
@@ -25,7 +26,7 @@ public:
 	virtual void			Init						();
 	virtual bool			StopAnyMove					(){return true;}
 
-	virtual void			SendMessage					(CUIWindow *pWnd, s16 msg, void *pData);
+	virtual void			SendMessage					(CUIWindow *pWnd, s16 msg, pvoid pData);
 
 	void					InitCarBody					(CInventoryOwner* pOurInv, CInventoryOwner* pOthersInv);
 	void					InitCarBody					(CInventoryOwner* pOur, CInventoryBox* pInvBox);
@@ -60,7 +61,7 @@ protected:
 	CUIStatic*				m_pUIOurBagWnd;
 	CUIStatic*				m_pUIOthersBagWnd;
 
-	//информация о персонажах 
+	// Информация о персонажах
 	CUIStatic*				m_pUIOurIcon;
 	CUIStatic*				m_pUIOthersIcon;
 	CUICharacterInfo*		m_pUICharacterInfoLeft;
@@ -75,9 +76,6 @@ protected:
 	void					ActivatePropertiesBox		();
 	void					EatItem						();
 
-	bool					ToOurBag					();
-	bool					ToOthersBag					();
-	
 	void					SetCurrentItem				(CUICellItem* itm);
 	CUICellItem*			CurrentItem					();
 	PIItem					CurrentIItem				();
@@ -94,5 +92,4 @@ protected:
 
 	bool					TransferItem				(PIItem itm, CInventoryOwner* owner_from, CInventoryOwner* owner_to, bool b_check);
 	void					BindDragDropListEnents		(CUIDragDropListEx* lst);
-
 };

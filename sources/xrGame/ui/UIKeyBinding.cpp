@@ -33,16 +33,16 @@ void CUIKeyBinding::InitFromXml(CUIXml& xml_doc, pcstr path)
 void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, pcstr path_ui)
 {
 	string256		buf;
-	CUIXml			xml_doc;
+	CUIXml			uiXml;
 	CStringTable	st;
-	xml_doc.Init							(CONFIG_PATH, UI_PATH, "ui_keybinding.xml");
+	uiXml.Init							(CONFIG_PATH, UI_PATH, "ui_keybinding.xml");
 
-	int groupsCount = xml_doc.GetNodesNum	("",0,"group");
+	int groupsCount = uiXml.GetNodesNum	("",0,"group");
 
 	for (int i = 0; i<groupsCount; i++)
 	{
 		// add group
-		shared_str grp_name					= xml_doc.ReadAttrib("group",i,"name");
+		shared_str grp_name					= uiXml.ReadAttrib("group",i,"name");
 		R_ASSERT							(xr_strlen(grp_name));
 
 		CUIStatic* pItem					= xr_new<CUIStatic>();
@@ -51,21 +51,21 @@ void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, pcstr path_ui)
 		m_scroll_wnd->AddWindow				(pItem, true);
 
 		// add group items
-		int commandsCount					= xml_doc.GetNodesNum("group",i,"command");
-		XML_NODE* tab_node					= xml_doc.NavigateToNode("group",i);
-		xml_doc.SetLocalRoot				(tab_node);
+		int commandsCount					= uiXml.GetNodesNum("group",i,"command");
+		XML_NODE* tab_node					= uiXml.NavigateToNode("group",i);
+		uiXml.SetLocalRoot				(tab_node);
 
 		for (int j = 0; j<commandsCount; j++)
 		{
 			// first field of list item
-			shared_str command_id			= xml_doc.ReadAttrib("command",j,"id");
+			shared_str command_id			= uiXml.ReadAttrib("command",j,"id");
 
 			pItem							= xr_new<CUIStatic>();
 			CUIXmlInit::InitStatic			(xml_doc_ui, strconcat(sizeof(buf),buf,path_ui,":scroll_view:item_key"),	0, pItem);
 			pItem->SetTextST				(command_id.c_str());
 			m_scroll_wnd->AddWindow			(pItem, true);
 
-			shared_str exe					= xml_doc.ReadAttrib("command",j,"exe");
+			shared_str exe					= uiXml.ReadAttrib("command",j,"exe");
 
 #ifdef DEBUG
 			if ( kNOTBINDED == action_name_to_id(*exe) )
@@ -89,10 +89,10 @@ void CUIKeyBinding::FillUpList(CUIXml& xml_doc_ui, pcstr path_ui)
 			pEditKB->Register				(*exe,"key_binding");
 			pItem->AttachChild				(pEditKB);
 		}
-		xml_doc.SetLocalRoot				(xml_doc.GetRoot());
+		uiXml.SetLocalRoot				(uiXml.GetRoot());
 	}
 #ifdef DEBUG
-    CheckStructure							(xml_doc);
+	CheckStructure							(uiXml);
 #endif
 }
 

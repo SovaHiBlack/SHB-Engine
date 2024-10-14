@@ -8429,7 +8429,7 @@
     <ClCompile Include="ui\UICarBodyWnd.cpp">
       <Filter>UI\Common\CarBodyWnd</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIDiaryWnd2.cpp">
+    <ClCompile Include="ui\UIDiaryWnd.cpp">
       <Filter>UI\Common\DiaryWnd</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIEncyclopediaArticleWnd.cpp">
