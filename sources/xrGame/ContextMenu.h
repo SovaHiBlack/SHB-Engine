@@ -15,9 +15,10 @@ public:
 	};
 	pstr						Name;
 	xr_vector<MenuItem>			Items;
+
 public:
-				~CContextMenu	();
-	void		Load			(CInifile* INI, pcstr S);
-	void		Render			(CGameFont* F, u32 cT, u32 cI, f32 s);
-	void		Select			(int num);
+	~CContextMenu( );
+	void		Load(CInifile* INI, pcstr S);
+	void		Render(CGameFont* F, u32 cT, u32 cI, f32 s);
+	void		Select(s32 num);
 };

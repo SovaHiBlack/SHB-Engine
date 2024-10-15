@@ -13,7 +13,7 @@ private:
 	f32			min_radius_perc;
 	f32			max_radius_perc;
 
-	//текущий радиус прицела
+	// текущий радиус прицела
 	f32			radius;
 	f32			target_radius;
 	f32			radius_speed_perc;
@@ -24,11 +24,11 @@ private:
 public:
 	u32				cross_color;
 
-					CHUDCrosshair	();
-					~CHUDCrosshair	();
+	CHUDCrosshair( );
+	~CHUDCrosshair( );
 
-			void	OnRender		();
-			void	SetDispersion	(f32 disp);
+	void	OnRender( );
+	void	SetDispersion(f32 disp);
 
-			void	Load			();
+	void	Load( );
 };

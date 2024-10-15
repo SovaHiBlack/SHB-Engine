@@ -14,17 +14,17 @@ class CUIXml;
 class CUIPdaMsgListItem;
 class CUIStatic;
 
-class CUIGameLog: public CUIScrollView
+class CUIGameLog : public CUIScrollView
 {
 public:
-	CUIGameLog();
-	virtual ~CUIGameLog();
-	CUIStatic*				AddLogMessage	(pcstr msg);
-	CUIPdaMsgListItem*		AddPdaMessage	(pcstr msg, f32 delay);
-	virtual void			Update			();
+	CUIGameLog( );
+	virtual ~CUIGameLog( );
+	CUIStatic* AddLogMessage(pcstr msg);
+	CUIPdaMsgListItem* AddPdaMessage(pcstr msg, f32 delay);
+	virtual void			Update( );
 
-	void					SetTextAtrib	(CGameFont* pFont, u32 color);
-	u32						GetTextColor	();
+	void					SetTextAtrib(CGameFont* pFont, u32 color);
+	u32						GetTextColor( );
 
 private:
 	xr_vector<CUIWindow*>		toDelList;

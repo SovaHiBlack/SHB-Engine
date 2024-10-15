@@ -21,39 +21,41 @@ class CInventoryOwner;
 class CUIGame : public CUIGameCustom
 {
 private:
-	game_cl_Single*		m_game;
+	game_cl_Single* m_game;
 	typedef CUIGameCustom inherited;
+
 public:
-	CUIGame									();
-	virtual				~CUIGame				();
+	CUIGame( );
+	virtual				~CUIGame( );
 
-	virtual	void		reset_ui				();
-	virtual	void		shedule_Update			(u32 dt);
-	virtual void		SetClGame				(game_cl_GameState* g);
-	virtual bool		IR_OnKeyboardPress		(int dik);
-	virtual bool		IR_OnKeyboardRelease	(int dik);
+	virtual	void		reset_ui( );
+	virtual	void		shedule_Update(u32 dt);
+	virtual void		SetClGame(game_cl_GameState* g);
+	virtual bool		IR_OnKeyboardPress(s32 dik);
+	virtual bool		IR_OnKeyboardRelease(s32 dik);
 
-	void				StartTalk				();
-	void				StartCarBody			(CInventoryOwner* pOurInv, CInventoryOwner* pOthers);
-	void				StartCarBody			(CInventoryOwner* pOurInv, CInventoryBox* pBox);
-	virtual void		ReInitShownUI			();
-	void				ChangeLevel				(GameGraph::_GRAPH_ID game_vert_id, u32 level_vert_id, Fvector pos, Fvector ang, Fvector pos2, Fvector ang2, bool b);
+	void				StartTalk( );
+	void				StartCarBody(CInventoryOwner* pOurInv, CInventoryOwner* pOthers);
+	void				StartCarBody(CInventoryOwner* pOurInv, CInventoryBox* pBox);
+	virtual void		ReInitShownUI( );
+	void				ChangeLevel(GameGraph::_GRAPH_ID game_vert_id, u32 level_vert_id, Fvector pos, Fvector ang, Fvector pos2, Fvector ang2, bool b);
 
-	virtual void		HideShownDialogs		();
+	virtual void		HideShownDialogs( );
 
-	CUIInventoryWnd*	InventoryMenu;
-	CUIPdaWnd*			PdaMenu;
-	CUITalkWnd*			TalkMenu;
-	CUICarBodyWnd*		UICarBodyMenu;
-	CChangeLevelWnd*	UIChangeLevelWnd;
+	CUIInventoryWnd* InventoryMenu;
+	CUIPdaWnd* PdaMenu;
+	CUITalkWnd* TalkMenu;
+	CUICarBodyWnd* UICarBodyMenu;
+	CChangeLevelWnd* UIChangeLevelWnd;
 };
 
 class CChangeLevelWnd :public CUIDialogWnd
 {
-	CUIMessageBox*			m_messageBox;
+	CUIMessageBox* m_messageBox;
 	typedef CUIDialogWnd	inherited;
-	void					OnCancel			();
-	void					OnOk				();
+	void					OnCancel( );
+	void					OnOk( );
+
 public:
 	GameGraph::_GRAPH_ID	m_game_vertex_id;
 	u32						m_level_vertex_id;
@@ -63,11 +65,15 @@ public:
 	Fvector					m_angles_cancel;
 	bool					m_b_position_cancel;
 
-						CChangeLevelWnd				();
-	virtual				~CChangeLevelWnd			()									{};
-	virtual void		SendMessage					(CUIWindow *pWnd, s16 msg, void *pData);
-	virtual bool		WorkInPause					()const {return true;}
-	virtual void		Show						();
-	virtual void		Hide						();
-	virtual bool		OnKeyboard					(int dik, EUIMessages keyboard_action);
+	CChangeLevelWnd( );
+	virtual				~CChangeLevelWnd( )
+	{ }
+	virtual void		SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData);
+	virtual bool		WorkInPause( )const
+	{
+		return true;
+	}
+	virtual void		Show( );
+	virtual void		Hide( );
+	virtual bool		OnKeyboard(s32 dik, EUIMessages keyboard_action);
 };
