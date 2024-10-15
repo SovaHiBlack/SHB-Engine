@@ -82,7 +82,7 @@ void CUIOptionsManager::SaveValues(pcstr group){
 
 	for (u32 i = 0; i < (*it).second.size(); i++){
 		if ((*it).second[i]->IsChanged())
-            (*it).second[i]->SaveValue();
+			(*it).second[i]->SaveValue();
 	}
 }
 
@@ -105,7 +105,7 @@ void CUIOptionsManager::UndoGroup(pcstr group){
 
 	for (u32 i = 0; i < (*it).second.size(); i++){
 		if ((*it).second[i]->IsChanged())
-            (*it).second[i]->Undo();
+			(*it).second[i]->Undo();
 	}
 }
 
@@ -124,5 +124,5 @@ void CUIOptionsManager::DoVidRestart(){
 }
 
 void CUIOptionsManager::DoSndRestart(){
-    m_b_snd_restart = true;
+	m_b_snd_restart = true;
 }

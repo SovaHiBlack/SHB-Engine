@@ -10,6 +10,7 @@ class CUIMapHint :public CUIWindow
 	CUIStatic*			m_text;
 	CUIFrameWindow*		m_border;
 	CUIWindow*			m_owner;
+
 public:
 					CUIMapHint	():m_owner(NULL){};
 	virtual 		~CUIMapHint	();

@@ -17,6 +17,7 @@ private:
 	enum				{flNeedUpdate  =(1<<0),};
 	Flags8				m_flags;
 	xr_vector<CPda*>	m_pda_list;
+
 public:
 								CUIPdaContactsWnd		();
 	virtual						~CUIPdaContactsWnd		();
@@ -47,6 +48,7 @@ protected:
 class CUIPdaContactItem :public CUIPdaListItem, public CUISelectable
 {
 	CUIPdaContactsWnd*			m_cw;
+
 public:
 								CUIPdaContactItem		(CUIPdaContactsWnd* cw)		{m_cw = cw;}
 	virtual						~CUIPdaContactItem		();

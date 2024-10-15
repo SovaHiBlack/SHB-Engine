@@ -86,7 +86,7 @@ class CUILevelMap: public CUICustomMap{
 	typedef  CUICustomMap inherited;
 	CUIMapWnd*					m_mapWnd;
 	Frect						m_GlobalRect;			// virtual map size (meters)
-//	CUIStatic*					m_anomalies_map;
+
 private:
 								CUILevelMap			(const CUILevelMap &obj) {}
 			CUILevelMap			&operator=			(const CUILevelMap &obj) {}

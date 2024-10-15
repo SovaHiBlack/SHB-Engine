@@ -22,7 +22,7 @@ class CUIPdaWnd: public CUIDialogWnd
 private:
 	typedef CUIDialogWnd	inherited;
 protected:
-	//элементы декоративного интерфейса
+	// элементы декоративного интерфейса
 	CUIFrameLineWnd*		UIMainButtonsBackground;
 	CUIFrameLineWnd*		UITimerBackground;
 

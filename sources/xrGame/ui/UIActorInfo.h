@@ -59,12 +59,12 @@ public:
 
 class CUIActorStaticticDetail :public CUIWindow
 {
-protected:
 public:
 	CUIStatic*		m_text0;
 	CUIStatic*		m_text1;
 	CUIStatic*		m_text2;
 	CUIStatic*		m_text3;
+
 public:
 	void			Init					(CUIXml* xml, pcstr path, int xml_idx);
 };

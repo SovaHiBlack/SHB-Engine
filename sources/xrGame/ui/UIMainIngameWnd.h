@@ -12,8 +12,9 @@
 #include "UICarPanel.h"//
 #include "UIMotionIcon.h"//
 #include "../hudsound.h"
-//для режима настройки HUD
-extern int				g_bHudAdjustMode;
+
+// для режима настройки HUD
+extern s32				g_bHudAdjustMode;
 extern f32			g_fHudAdjustValue;
 
 class					CUIPdaMsgListItem;
@@ -27,20 +28,19 @@ class					CWeapon;
 class					CMissile;
 class					CInventoryItem;
 
-class CUIMainIngameWnd: public CUIWindow  
+class CUIMainIngameWnd : public CUIWindow
 {
 public:
-	CUIMainIngameWnd();
-	virtual ~CUIMainIngameWnd();
+	CUIMainIngameWnd( );
+	virtual ~CUIMainIngameWnd( );
 
-	virtual void Init();
-	virtual void Draw();
-	virtual void Update();
+	virtual void Init( );
+	virtual void Draw( );
+	virtual void Update( );
 
 	bool OnKeyboardPress(int dik);
 
 protected:
-	
 	CUIStatic			UIStaticDiskIO;
 	CUIStatic			UIStaticHealth;
 	CUIStatic			UIStaticArmor;
@@ -48,22 +48,25 @@ protected:
 	CUIProgressBar		UIHealthBar;
 	CUIProgressBar		UIArmorBar;
 	CUICarPanel			UICarPanel;
-	CUIMotionIcon		UIMotionIcon;	
-	CUIZoneMap*			UIZoneMap;
+	CUIMotionIcon		UIMotionIcon;
+	CUIZoneMap* UIZoneMap;
 
-	//иконка, показывающая количество активных PDA
+	// иконка, показывающая количество активных PDA
 	CUIStatic			UIPdaOnline;
-	
-	//изображение оружия
+
+	// изображение оружия
 	CUIStatic			UIWeaponBack;
 	CUIStatic			UIWeaponSignAmmo;
 	CUIStatic			UIWeaponIcon;
 	Frect				UIWeaponIcon_rect;
+
 public:
-	CUIStatic*			GetPDAOnline					() { return &UIPdaOnline; };
+	CUIStatic* GetPDAOnline( )
+	{
+		return &UIPdaOnline;
+	}
+
 protected:
-
-
 	// 5 статиков для отображения иконок:
 	// - сломанного оружия
 	// - радиации
@@ -76,36 +79,34 @@ protected:
 	CUIStatic			UIStarvationIcon;
 	CUIStatic			UIPsyHealthIcon;
 	CUIStatic			UIInvincibleIcon;
-//	CUIStatic			UISleepIcon;
 	CUIStatic			UIArtefactIcon;
 
-	CUIScrollView*		m_UIIcons;
-	CUIWindow*			m_pMPChatWnd;
-	CUIWindow*			m_pMPLogWnd;
-public:	
-	CUIArtefactPanel*    m_artefactPanel;
-	
+	CUIScrollView* m_UIIcons;
+	CUIWindow* m_pMPChatWnd;
+	CUIWindow* m_pMPLogWnd;
+
 public:
-	
-	// Енумы соответсвующие предупреждающим иконкам 
+	CUIArtefactPanel* m_artefactPanel;
+
+public:
+	// Енумы соответсвующие предупреждающим иконкам
 	enum EWarningIcons
 	{
-		ewiAll				= 0,
+		ewiAll = 0,
 		ewiWeaponJammed,
 		ewiRadiation,
 		ewiWound,
 		ewiStarvation,
 		ewiPsyHealth,
 		ewiInvincible,
-//		ewiSleep,
-		ewiArtefact,
+		ewiArtefact
 	};
 
-	void				SetMPChatLog					(CUIWindow* pChat, CUIWindow* pLog);
+	void				SetMPChatLog(CUIWindow* pChat, CUIWindow* pLog);
 
 	// Задаем цвет соответствующей иконке
-	void				SetWarningIconColor				(EWarningIcons icon, const u32 cl);
-	void				TurnOffWarningIcon				(EWarningIcons icon);
+	void				SetWarningIconColor(EWarningIcons icon, const u32 cl);
+	void				TurnOffWarningIcon(EWarningIcons icon);
 
 	// Пороги изменения цвета индикаторов, загружаемые из system.ltx
 	typedef				xr_map<EWarningIcons, xr_vector<f32> >	Thresholds;
@@ -115,47 +116,53 @@ public:
 	// Енум перечисления возможных мигающих иконок
 	enum EFlashingIcons
 	{
-		efiPdaTask	= 0,
+		efiPdaTask = 0,
 		efiMail
 	};
-	
-	void				SetFlashIconState_				(EFlashingIcons type, bool enable);
 
-	void				AnimateContacts					(bool b_snd);
+	void				SetFlashIconState_(EFlashingIcons type, bool enable);
+
+	void				AnimateContacts(bool b_snd);
 	HUD_SOUND			m_contactSnd;
 
-	void				ReceiveNews						(GAME_NEWS_DATA* news);
-	
-protected:
-	void				SetWarningIconColor				(CUIStatic* s, const u32 cl);
-	void				InitFlashingIcons				(CUIXml* node);
-	void				DestroyFlashingIcons			();
-	void				UpdateFlashingIcons				();
-	void				UpdateActiveItemInfo			();
+	void				ReceiveNews(GAME_NEWS_DATA* news);
 
-	void				SetAmmoIcon						(const shared_str& seсt_name);
+protected:
+	void				SetWarningIconColor(CUIStatic* s, const u32 cl);
+	void				InitFlashingIcons(CUIXml* node);
+	void				DestroyFlashingIcons( );
+	void				UpdateFlashingIcons( );
+	void				UpdateActiveItemInfo( );
+
+	void				SetAmmoIcon(const shared_str& seсt_name);
 
 	// first - иконка, second - анимация
-	DEF_MAP				(FlashingIcons, EFlashingIcons, CUIStatic*);
+	DEF_MAP(FlashingIcons, EFlashingIcons, CUIStatic*);
 	FlashingIcons		m_FlashingIcons;
 
-	//для текущего активного актера и оружия
-	CActor*				m_pActor;	
-	CWeapon*			m_pWeapon;
-	CMissile*			m_pGrenade;
-	CInventoryItem*		m_pItem;
+	// для текущего активного актера и оружия
+	CActor* m_pActor;
+	CWeapon* m_pWeapon;
+	CMissile* m_pGrenade;
+	CInventoryItem* m_pItem;
 
 	// Отображение подсказок при наведении прицела на объект
-	void				RenderQuickInfos();
+	void				RenderQuickInfos( );
 
 public:
-	CUICarPanel&		CarPanel							(){return UICarPanel;};
-	CUIMotionIcon&		MotionIcon							(){return UIMotionIcon;}
-	void				OnConnected							();
-	void				reset_ui							();
+	CUICarPanel& CarPanel( )
+	{
+		return UICarPanel;
+	}
+	CUIMotionIcon& MotionIcon( )
+	{
+		return UIMotionIcon;
+	}
+	void				OnConnected( );
+	void				reset_ui( );
 
 protected:
-	CInventoryItem*		m_pPickUpItem;
+	CInventoryItem* m_pPickUpItem;
 	CUIStatic			UIPickUpItemIcon;
 
 	f32				m_iPickUpItemIconX;
@@ -163,13 +170,13 @@ protected:
 	f32				m_iPickUpItemIconWidth;
 	f32				m_iPickUpItemIconHeight;
 
-	void				UpdatePickUpItem();
+	void				UpdatePickUpItem( );
 
 public:
-	void				SetPickUpItem	(CInventoryItem* PickUpItem);
+	void				SetPickUpItem(CInventoryItem* PickUpItem);
 
 #ifdef DEBUG
-	void				draw_adjust_mode					();
-#endif
+	void				draw_adjust_mode( );
+#endif // def DEBUG
 
 };

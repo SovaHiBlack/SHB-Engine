@@ -17,17 +17,18 @@ class game_cl_GameState;
 class CUIPdaMsgListItem;
 class CUIProgressShape;
 
-class CUIMessagesWindow : public CUIWindow {
+class CUIMessagesWindow : public CUIWindow
+{
 public:
-						CUIMessagesWindow				();
-	virtual				~CUIMessagesWindow				();
+	CUIMessagesWindow( );
+	virtual				~CUIMessagesWindow( );
 
-	void				AddIconedPdaMessage				(pcstr textureName, Frect originalRect, pcstr message, int iDelay);
-	void				AddLogMessage					(const shared_str& msg);
-	virtual void		Update();
+	void				AddIconedPdaMessage(pcstr textureName, Frect originalRect, pcstr message, s32 iDelay);
+	void				AddLogMessage(const shared_str& msg);
+	virtual void		Update( );
 
 protected:
-	virtual void		Init							(f32 x, f32 y, f32 width, f32 height);
+	virtual void		Init(f32 x, f32 y, f32 width, f32 height);
 
-	CUIGameLog*			m_pGameLog;
+	CUIGameLog* m_pGameLog;
 };

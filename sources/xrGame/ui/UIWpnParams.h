@@ -9,15 +9,15 @@ class CUIXml;
 
 struct SLuaWpnParams;
 
-class CUIWpnParams : public CUIWindow 
+class CUIWpnParams : public CUIWindow
 {
 public:
-								CUIWpnParams			();
-	virtual						~CUIWpnParams			();
+	CUIWpnParams( );
+	virtual						~CUIWpnParams( );
 
-	void 						InitFromXml				(CUIXml& xml_doc);
-	void 						SetInfo					(const shared_str& wnp_section);
-	bool 						Check					(const shared_str& wpn_section);
+	void 						InitFromXml(CUIXml& xml_doc);
+	void 						SetInfo(const shared_str& wnp_section);
+	bool 						Check(const shared_str& wpn_section);
 
 protected:
 	CUIProgressBar				m_progressAccuracy;

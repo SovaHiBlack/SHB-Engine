@@ -39,7 +39,6 @@ CUIItemInfo::~CUIItemInfo( )
 
 void CUIItemInfo::Init(pcstr xml_name)
 {
-
 	CUIXml						uiXml;
 	bool xml_result = uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);
 	R_ASSERT2(xml_result, "xml file not found");
@@ -92,7 +91,9 @@ void CUIItemInfo::Init(pcstr xml_name)
 
 	if (uiXml.NavigateToNode("condition_progress", 0))
 	{
-		UICondProgresBar = xr_new<CUIProgressBar>( ); AttachChild(UICondProgresBar); UICondProgresBar->SetAutoDelete(true);
+		UICondProgresBar = xr_new<CUIProgressBar>( );
+		AttachChild(UICondProgresBar);
+		UICondProgresBar->SetAutoDelete(true);
 		xml_init.InitProgressBar(uiXml, "condition_progress", 0, UICondProgresBar);
 	}
 
@@ -135,7 +136,10 @@ void CUIItemInfo::Init(f32 x, f32 y, f32 width, f32 height, pcstr xml_name)
 void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 {
 	m_pInvItem = pInvItem;
-	if (!m_pInvItem)			return;
+	if (!m_pInvItem)
+	{
+		return;
+	}
 
 	string256				str;
 	if (UIName)
@@ -188,10 +192,10 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 		// Загружаем картинку
 		UIItemImage->SetShader(InventoryUtilities::GetEquipmentIconsShader( ));
 
-		int iGridWidth = pInvItem->GetGridWidth( );
-		int iGridHeight = pInvItem->GetGridHeight( );
-		int iXPos = pInvItem->GetXPos( );
-		int iYPos = pInvItem->GetYPos( );
+		s32 iGridWidth = pInvItem->GetGridWidth( );
+		s32 iGridHeight = pInvItem->GetGridHeight( );
+		s32 iXPos = pInvItem->GetXPos( );
+		s32 iYPos = pInvItem->GetYPos( );
 
 		UIItemImage->GetUIStaticItem( ).SetOriginalRect(f32(iXPos * INV_GRID_WIDTH), f32(iYPos * INV_GRID_HEIGHT), f32(iGridWidth * INV_GRID_WIDTH), f32(iGridHeight * INV_GRID_HEIGHT));
 		UIItemImage->TextureOn( );

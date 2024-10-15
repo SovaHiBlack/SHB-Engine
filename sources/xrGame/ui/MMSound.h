@@ -5,22 +5,22 @@ class CUIXml;
 class CMMSound
 {
 public:
-					CMMSound	();
-					~CMMSound	();
-	void 			Init		(CUIXml& xml_doc, pcstr path);
-	void 			whell_Play	();
-	void 			whell_Stop	();
-	void 			whell_Click	();
+	CMMSound( );
+	~CMMSound( );
+	void 			Init(CUIXml& xml_doc, pcstr path);
+	void 			whell_Play( );
+	void 			whell_Stop( );
+	void 			whell_Click( );
 	void 			whell_UpdateMoving(f32 frequency);
 
-	void 			music_Play	();
-	void 			music_Stop	();
-	void 			music_Update();
+	void 			music_Play( );
+	void 			music_Stop( );
+	void 			music_Update( );
 
-	void 			all_Stop	();
+	void 			all_Stop( );
 protected:
 
-	IC	bool		check_file			(pcstr fname);
+	IC	bool		check_file(pcstr fname);
 	ref_sound		m_music_l;
 	ref_sound		m_music_r;
 	ref_sound		m_whell;

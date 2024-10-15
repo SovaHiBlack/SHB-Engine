@@ -1,16 +1,13 @@
 #pragma once
 
-
 #include "ui/UIStatic.h"
 
 class CActor;
 class CUICustomMap;
-//////////////////////////////////////////////////////////////////////////
-
 
 class CUIZoneMap
 {
-	CUICustomMap*				m_activeMap;
+	CUICustomMap* m_activeMap;
 	f32						m_fScale;
 
 	CUIStatic					m_background;
@@ -20,22 +17,30 @@ class CUIZoneMap
 	CUIStatic					m_pointerDistanceText;
 
 public:
-								CUIZoneMap		();
-	virtual						~CUIZoneMap		();
+	CUIZoneMap( );
+	virtual						~CUIZoneMap( );
 
-	void						SetHeading		(f32 angle);
-	void						Init			();
+	void						SetHeading(f32 angle);
+	void						Init( );
 
-	void						Render			();
-	void						UpdateRadar		(Fvector pos);
+	void						Render( );
+	void						UpdateRadar(Fvector pos);
 
-	void						SetScale		(f32 s)							{m_fScale = s;}
-	f32						GetScale		()									{return m_fScale;}
+	void						SetScale(f32 s)
+	{
+		m_fScale = s;
+	}
+	f32						GetScale( )
+	{
+		return m_fScale;
+	}
 
-	bool						ZoomIn			();
-	bool						ZoomOut			();
+	bool						ZoomIn( );
+	bool						ZoomOut( );
 
-	CUIStatic&					Background		()									{return m_background;};
-	void						SetupCurrentMap	();
+	CUIStatic& Background( )
+	{
+		return m_background;
+	}
+	void						SetupCurrentMap( );
 };
-

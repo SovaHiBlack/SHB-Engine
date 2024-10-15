@@ -104,14 +104,14 @@ void CUIEventsWnd::Draw( )
 	inherited::Draw( );
 }
 
-void CUIEventsWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIEventsWnd::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
 
-void CUIEventsWnd::OnFilterChanged(CUIWindow* w, void*)
+void CUIEventsWnd::OnFilterChanged(CUIWindow* w, pvoid)
 {
-	m_currFilter = (ETaskFilters)m_TaskFilter->GetActiveIndex( );
+	m_currFilter = (ETaskFilters) m_TaskFilter->GetActiveIndex( );
 	ReloadList(false);
 	if (!GetDescriptionMode( ))
 	{
@@ -147,17 +147,12 @@ void CUIEventsWnd::ReloadList(bool bClearOnly)
 		R_ASSERT(task);
 		R_ASSERT(task->m_Objectives.size( ) > 0);
 
-		if (!Filter(task))		continue;
+		if (!Filter(task))
+		{
+			continue;
+		}
+
 		CUITaskItem* pTaskItem = NULL;
-		/*
-				if(task->m_Objectives[0].TaskState()==eTaskUserDefined)
-				{
-					VERIFY				(task->m_Objectives.size()==1);
-					pTaskItem			= xr_new<CUIUserTaskItem>(this);
-					pTaskItem->SetGameTask			(task, 0);
-					m_ListWnd->AddWindow			(pTaskItem,true);
-				}else
-		*/
 		for (u16 i = 0; i < task->m_Objectives.size( ); ++i)
 		{
 			if (i == 0)
@@ -168,6 +163,7 @@ void CUIEventsWnd::ReloadList(bool bClearOnly)
 			{
 				pTaskItem = xr_new<CUITaskSubItem>(this);
 			}
+
 			pTaskItem->SetGameTask(task, i);
 			m_ListWnd->AddWindow(pTaskItem, true);
 		}
@@ -186,11 +182,10 @@ void CUIEventsWnd::Show(bool status)
 bool CUIEventsWnd::Filter(CGameTask* t)
 {
 	ETaskState task_state = t->m_Objectives[0].TaskState( );
-	//	bool bprimary_only			= m_primary_or_all_filter_btn->GetCheck();
 
-	return (false/*m_currFilter==eOwnTask && task_state==eTaskUserDefined*/) ||
+	return (false) ||
 		(
-			(true/*!bprimary_only || (bprimary_only && t->m_is_task_general)*/) &&
+			(true) &&
 			(
 				(m_currFilter == eAccomplishedTask && task_state == eTaskStateCompleted) ||
 				(m_currFilter == eFailedTask && task_state == eTaskStateFail) ||
@@ -198,7 +193,6 @@ bool CUIEventsWnd::Filter(CGameTask* t)
 				)
 			);
 }
-
 
 void CUIEventsWnd::SetDescriptionMode(bool bMap)
 {
@@ -221,18 +215,20 @@ bool CUIEventsWnd::GetDescriptionMode( )
 	return !!m_flags.test(flMapMode);
 }
 
-void CUIEventsWnd::ShowDescription(CGameTask* t, int idx)
+void CUIEventsWnd::ShowDescription(CGameTask* t, s32 idx)
 {
 	if (GetDescriptionMode( ))
-	{//map
+	{	// map
 		SGameTaskObjective& o = t->Objective(idx);
 		CMapLocation* ml = o.LinkedMapLocation( );
 
 		if (ml && ml->SpotEnabled( ))
+		{
 			m_UIMapWnd->SetTargetMap(ml->LevelName( ), ml->Position( ), true);
+		}
 	}
 	else
-	{//articles
+	{	// articles
 		SGameTaskObjective& o = t->Objective(0);
 		idx = 0;
 
@@ -245,18 +241,16 @@ void CUIEventsWnd::ShowDescription(CGameTask* t, int idx)
 			{
 				strcpy(need_group, *t->m_ID);
 			}
+			else if (o.article_key.size( ))
+			{
+				sprintf_s(need_group, "%s/%s", *t->m_ID, *o.article_key);
+			}
 			else
-				if (o.article_key.size( ))
-				{
-					sprintf_s(need_group, "%s/%s", *t->m_ID, *o.article_key);
-				}
-				else
-				{
-					sprintf_s(need_group, "%s/%d", *t->m_ID, idx);
-				}
+			{
+				sprintf_s(need_group, "%s/%d", *t->m_ID, idx);
+			}
 
 			ARTICLE_VECTOR::const_iterator it = Actor( )->encyclopedia_registry->registry( ).objects_ptr( )->begin( );
-
 			for (; it != Actor( )->encyclopedia_registry->registry( ).objects_ptr( )->end( ); ++it)
 			{
 				if (ARTICLE_DATA::eTaskArticle == it->article_type)
@@ -265,35 +259,37 @@ void CUIEventsWnd::ShowDescription(CGameTask* t, int idx)
 					A.Load(it->article_id);
 
 					const shared_str& group = A.data( )->group;
-
 					if (strstr(group.c_str( ), need_group) == group.c_str( ))
 					{
 						u32 sz = xr_strlen(need_group);
 						if (group.size( ) == sz || group.c_str( )[sz] == '/')
-							m_UITaskInfoWnd->AddArticle(&A);
-					}
-					else
-						if (o.article_id.size( ) && it->article_id == o.article_id)
 						{
-							CEncyclopediaArticle			A;
-							A.Load(it->article_id);
 							m_UITaskInfoWnd->AddArticle(&A);
 						}
+					}
+					else if (o.article_id.size( ) && it->article_id == o.article_id)
+					{
+						CEncyclopediaArticle			A;
+						A.Load(it->article_id);
+						m_UITaskInfoWnd->AddArticle(&A);
+					}
 				}
 			}
 		}
 	}
 
-	int sz = m_ListWnd->GetSize( );
-
-	for (int i = 0; i < sz; ++i)
+	s32 sz = m_ListWnd->GetSize( );
+	for (s32 i = 0; i < sz; ++i)
 	{
-		CUITaskItem* itm = (CUITaskItem*)m_ListWnd->GetItem(i);
-
+		CUITaskItem* itm = (CUITaskItem*) m_ListWnd->GetItem(i);
 		if ((itm->GameTask( ) == t) && (itm->ObjectiveIdx( ) == idx))
+		{
 			itm->MarkSelected(true);
+		}
 		else
+		{
 			itm->MarkSelected(false);
+		}
 	}
 }
 
@@ -314,6 +310,7 @@ bool CUIEventsWnd::ItemHasDescription(CUITaskItem* itm)
 		return b;
 	}
 }
+
 void CUIEventsWnd::Reset( )
 {
 	inherited::Reset( );

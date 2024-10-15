@@ -33,41 +33,50 @@ void CUIActorInfoWnd::Init()
 	xml_init.InitWindow						(uiXml, "main_wnd", 0, this);
 
 	// Декоративное оформление
-	UICharIconFrame							= xr_new<CUIFrameWindow>();	UICharIconFrame->SetAutoDelete	(true);
+	UICharIconFrame							= xr_new<CUIFrameWindow>();
+	UICharIconFrame->SetAutoDelete	(true);
 	xml_init.InitFrameWindow				(uiXml, "chicon_frame_window", 0, UICharIconFrame);
 	AttachChild								(UICharIconFrame);
 
-	UICharIconHeader						= xr_new<CUIFrameLineWnd>();	UICharIconHeader->SetAutoDelete	(true);
+	UICharIconHeader						= xr_new<CUIFrameLineWnd>();
+	UICharIconHeader->SetAutoDelete	(true);
 	xml_init.InitFrameLine					(uiXml, "chicon_frame_line", 0, UICharIconHeader);
 	UICharIconFrame->AttachChild			(UICharIconHeader);
 
-	UIAnimatedIcon							= xr_new<CUIAnimatedStatic>();	UIAnimatedIcon->SetAutoDelete	(true);
+	UIAnimatedIcon							= xr_new<CUIAnimatedStatic>();
+	UIAnimatedIcon->SetAutoDelete	(true);
 	xml_init.InitAnimatedStatic				(uiXml, "a_static", 0, UIAnimatedIcon);
 	UICharIconHeader->AttachChild			(UIAnimatedIcon);
 
-	UIInfoFrame								= xr_new<CUIFrameWindow>(); UIInfoFrame->SetAutoDelete	(true);
+	UIInfoFrame								= xr_new<CUIFrameWindow>();
+	UIInfoFrame->SetAutoDelete	(true);
 	xml_init.InitFrameWindow				(uiXml, "info_frame_window", 0, UIInfoFrame);
 	AttachChild								(UIInfoFrame);
 	
-	UIInfoHeader							= xr_new<CUIFrameLineWnd>();UIInfoHeader ->SetAutoDelete(true);
+	UIInfoHeader							= xr_new<CUIFrameLineWnd>();
+	UIInfoHeader ->SetAutoDelete(true);
 	xml_init.InitFrameLine					(uiXml, "info_frame_line", 0, UIInfoHeader);
 	UIInfoFrame->AttachChild				(UIInfoHeader);
 
-	UIDetailList							= xr_new<CUIScrollView>();UIDetailList->SetAutoDelete(true);
+	UIDetailList							= xr_new<CUIScrollView>();
+	UIDetailList->SetAutoDelete(true);
 	UIInfoFrame->AttachChild				(UIDetailList);
 	xml_init.InitScrollView					(uiXml, "detail_list", 0, UIDetailList);
 
-	UIMasterList							= xr_new<CUIScrollView>();UIMasterList->SetAutoDelete(true);
+	UIMasterList							= xr_new<CUIScrollView>();
+	UIMasterList->SetAutoDelete(true);
 	UICharIconFrame->AttachChild			(UIMasterList);
 	xml_init.InitScrollView					(uiXml, "master_list", 0, UIMasterList);
 
-	UICharacterWindow						= xr_new<CUIWindow>();UICharacterWindow->SetAutoDelete(true);
+	UICharacterWindow						= xr_new<CUIWindow>();
+	UICharacterWindow->SetAutoDelete(true);
 	UICharIconFrame->AttachChild			(UICharacterWindow);
 	xml_init.InitWindow						(uiXml, "character_info", 0, UICharacterWindow);
 
-	UICharacterInfo							= xr_new<CUICharacterInfo>(); UICharacterInfo->SetAutoDelete(true);
+	UICharacterInfo							= xr_new<CUICharacterInfo>();
+	UICharacterInfo->SetAutoDelete(true);
 	UICharacterWindow->AttachChild			(UICharacterInfo);
-	UICharacterInfo->Init					(0,0,UICharacterWindow->GetWidth(), UICharacterWindow->GetHeight(), ACTOR_CHARACTER_XML);
+	UICharacterInfo->Init					(0.0f, 0.0f,UICharacterWindow->GetWidth(), UICharacterWindow->GetHeight(), ACTOR_CHARACTER_XML);
 
 	//Элементы автоматического добавления
 	xml_init.InitAutoStatic					(uiXml, "right_auto_static", UICharIconFrame);
@@ -102,25 +111,26 @@ void CUIActorInfoWnd::FillPointsInfo			()
 		
 		if(itm->m_id!="foo")
 		{
-
 			if(itm->m_id=="reputation")
 			{
 				itm->m_text2->SetTextST				(InventoryUtilities::GetReputationAsText(Actor()->Reputation()));
 				itm->m_text2->SetTextColor			(InventoryUtilities::GetReputationColor(Actor()->Reputation()));
-			}else
+			}
+			else
 			{
-				s32 _totl = Actor()->StatisticMgr().GetSectionPoints(itm->m_id);
-				
+				s32 _totl = Actor()->StatisticMgr().GetSectionPoints(itm->m_id);				
 				if(_totl==-1)
 				{
 					itm->m_text2->SetTextST				("");
-				}else
+				}
+				else
 				{
 					sprintf_s							(buff,"%d", _totl);
 					itm->m_text2->SetTextST				(buff);
 				}
 			}
 		}
+
 		UIMasterList->AddWindow				(itm, true);
 	}
 
@@ -136,31 +146,32 @@ void CUIActorInfoWnd::FillMasterPart(CUIXml* xml, const shared_str& key_name)
 
 	if(key_name!="foo")
 	{
-
 		if(key_name=="reputation")
 		{
 			itm->m_text2->SetTextST				(InventoryUtilities::GetReputationAsText(Actor()->Reputation()));
 			itm->m_text2->SetTextColor			(InventoryUtilities::GetReputationColor(Actor()->Reputation()));
-		}else
+		}
+		else
 		{
 			s32 _totl = Actor()->StatisticMgr().GetSectionPoints(key_name);
 			
 			if(_totl==-1)
 			{
 				itm->m_text2->SetTextST				("");
-			}else
+			}
+			else
 			{
 				sprintf_s							(buff,"%d", _totl);
 				itm->m_text2->SetTextST				(buff);
 			}
 		}
 	}
+
 	UIMasterList->AddWindow							(itm, true);
 }
 
 void CUIActorInfoWnd::FillPointsDetail(const shared_str& id)
 {
-
 	UIDetailList->Clear						();
 	CUIXml									uiXml;
 	uiXml.Init								(CONFIG_PATH, UI_PATH,ACTOR_STATISTIC_XML);
@@ -179,6 +190,7 @@ void CUIActorInfoWnd::FillPointsDetail(const shared_str& id)
 		FillReputationDetails						(&uiXml, path);
 		return;
 	}
+
 	string256									str;
 	sprintf_s									(str,"st_detail_list_for_%s", id.c_str());
 	UIInfoHeader->GetTitleStatic()->SetTextST	(str);
@@ -207,7 +219,8 @@ void CUIActorInfoWnd::FillPointsDetail(const shared_str& id)
 
 			sprintf_s							(buff,"%d", (*it).int_points);
 			itm->m_text3->SetTextST				(buff);
-		}else
+		}
+		else
 		{
 			itm->m_text2->SetTextST				((*it).str_value.c_str());
 			itm->m_text3->SetTextST				("");
@@ -262,8 +275,7 @@ void	CUIActorInfoWnd::FillReputationDetails(CUIXml* xml, pcstr path)
 	}
 }
 
-CUIActorStaticticHeader::CUIActorStaticticHeader(CUIActorInfoWnd* w)
-:m_actorInfoWnd(w)
+CUIActorStaticticHeader::CUIActorStaticticHeader(CUIActorInfoWnd* w):m_actorInfoWnd(w)
 {}
 
 void CUIActorStaticticHeader::Init	(CUIXml* xml, pcstr path, int idx_in_xml)
@@ -297,15 +309,19 @@ bool CUIActorStaticticHeader::OnMouseDown	(int mouse_btn)
 	{
 		m_actorInfoWnd->MasterList().SetSelected	(this);
 		return true;
-	}else
+	}
+	else
+	{
 		return true;
+	}
 }
 
 void CUIActorStaticticHeader::SetSelected(bool b)
 {
 	CUISelectable::SetSelected(b);
 	m_text1->SetTextColor( subst_alpha(m_text1->GetTextColor(), b?255:m_stored_alpha ));
-	if(b){ 
+	if(b)
+	{ 
 		m_actorInfoWnd->FillPointsDetail			(m_id);
 	}
 }

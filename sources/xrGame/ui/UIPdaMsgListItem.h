@@ -10,13 +10,13 @@
 class CUIPdaMsgListItem : public CUIStatic
 {
 public:
-	virtual void		Init							(f32 x, f32 y, f32 width, f32 height);
-	virtual void		InitCharacter					(CInventoryOwner* pInvOwner);
-	virtual void		SetTextColor					(u32 color);
-	virtual void		SetFont							(CGameFont* pFont);
-	virtual void		SetColor						(u32 color);
-	
-	//информация о персонаже
+	virtual void		Init(f32 x, f32 y, f32 width, f32 height);
+	virtual void		InitCharacter(CInventoryOwner* pInvOwner);
+	virtual void		SetTextColor(u32 color);
+	virtual void		SetFont(CGameFont* pFont);
+	virtual void		SetColor(u32 color);
+
+	// информация о персонаже
 	CUIStatic			UIIcon;
 	CUIStatic			UIName;
 	CUIStatic			UIMsgText;
