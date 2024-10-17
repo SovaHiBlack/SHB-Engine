@@ -27,7 +27,7 @@ void CStateMonsterLookToUnprotectedAreaAbstract::initialize()
 	position = object->Position();
 	position.y += 0.3f;
 
-	F32 angle = ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),PI_DIV_6,std::less<F32>());
+	f32 angle = ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),PI_DIV_6,std::less<f32>());
 
 	Fvector dir;
 	dir.set(1.f,0.f,0.f);
@@ -50,7 +50,6 @@ void CStateMonsterLookToUnprotectedAreaAbstract::execute()
 		else 
 			object->sound().play(data.sound_type);
 	}
-
 }
 
 TEMPLATE_SPECIALIZATION

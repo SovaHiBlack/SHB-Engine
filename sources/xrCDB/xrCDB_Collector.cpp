@@ -4,7 +4,7 @@
 
 namespace CDB
 {
-	u32		Collector::VPack	(const Fvector& V, F32 eps)
+	u32		Collector::VPack	(const Fvector& V, f32 eps)
 	{
 		xr_vector<Fvector>::iterator I,E;
 		I=verts.begin();	E=verts.end();
@@ -48,7 +48,7 @@ namespace CDB
 	void	Collector::add_face_packed	(
 		const Fvector& v0, const Fvector& v1, const Fvector& v2,	// vertices
 		u16		material, u16 sector,								// misc
-		F32	eps
+		f32	eps
 		)
 	{
 		TRI T;
@@ -62,7 +62,7 @@ namespace CDB
 
 	void	Collector::add_face_packed_D	(
 		const Fvector& v0, const Fvector& v1, const Fvector& v2,	// vertices
-		u32		dummy, F32 eps
+		u32		dummy, f32 eps
 		)
 	{
 		TRI T;
@@ -327,9 +327,9 @@ namespace CDB
 		u32 P = 0xffffffff;
 
 		u32 ix,iy,iz;
-		ix = iFloor(F32(V.x-VMmin.x)/VMscale.x*clpMX);
-		iy = iFloor(F32(V.y-VMmin.y)/VMscale.y*clpMY);
-		iz = iFloor(F32(V.z-VMmin.z)/VMscale.z*clpMZ);
+		ix = iFloor(f32(V.x-VMmin.x)/VMscale.x*clpMX);
+		iy = iFloor(f32(V.y-VMmin.y)/VMscale.y*clpMY);
+		iz = iFloor(f32(V.z-VMmin.z)/VMscale.z*clpMZ);
 
 		//		R_ASSERT(ix<=clpMX && iy<=clpMY && iz<=clpMZ);
 		clamp(ix,(u32)0,clpMX);	clamp(iy,(u32)0,clpMY);	clamp(iz,(u32)0,clpMZ);
@@ -351,9 +351,9 @@ namespace CDB
 			VM[ix][iy][iz].push_back(P);
 
 			u32 ixE,iyE,izE;
-			ixE = iFloor(F32(V.x+VMeps.x-VMmin.x)/VMscale.x*clpMX);
-			iyE = iFloor(F32(V.y+VMeps.y-VMmin.y)/VMscale.y*clpMY);
-			izE = iFloor(F32(V.z+VMeps.z-VMmin.z)/VMscale.z*clpMZ);
+			ixE = iFloor(f32(V.x+VMeps.x-VMmin.x)/VMscale.x*clpMX);
+			iyE = iFloor(f32(V.y+VMeps.y-VMmin.y)/VMscale.y*clpMY);
+			izE = iFloor(f32(V.z+VMeps.z-VMmin.z)/VMscale.z*clpMZ);
 
 			//			R_ASSERT(ixE<=clpMX && iyE<=clpMY && izE<=clpMZ);
 			clamp(ixE,(u32)0,clpMX);	clamp(iyE,(u32)0,clpMY);	clamp(izE,(u32)0,clpMZ);

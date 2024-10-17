@@ -29,7 +29,7 @@
 //	//if (!m_jumper->active()) return;
 //
 //	//if (m_specific_jump) {
-//	//	F32 dist = trace_current(10.f);
+//	//	f32 dist = trace_current(10.f);
 //	//	if (dist > 10.f) {
 //	//		m_jumper->stop();
 //	//		return;
@@ -38,8 +38,8 @@
 //	//		init_jump_specific();
 //	//		
 //	//		Fvector dir;
-//	//		F32 h,p;
-//	//		F32 h2,p2;
+//	//		f32 h,p;
+//	//		f32 h2,p2;
 //	//		Fvector().sub(m_target_object->Position(), m_object->Position()).getHP(h,p);
 //	//		m_target_object->Direction().getHP(h2,p2);
 //	//		dir.set		(1,0,0);
@@ -76,13 +76,13 @@
 //
 //	// получить вектор направления и его мир угол
 //	Fvector		dir;
-//	F32		dir_yaw, dir_pitch;
+//	f32		dir_yaw, dir_pitch;
 //
 //	dir.sub		(target_position, source_position);
 //	dir.getHP	(dir_yaw, dir_pitch);
 //
 //	// проверка на angle и на dist
-//	F32 yaw_current, yaw_target;
+//	f32 yaw_current, yaw_target;
 //	m_object->control().direction().get_heading(yaw_current, yaw_target);
 //	if (angle_difference(yaw_current, -dir_yaw) < PI_DIV_6) {
 //		try_jump_normal();
@@ -104,7 +104,7 @@
 //
 //void CSnorkJump::try_jump_specific()
 //{
-//	F32			yaw, pitch;
+//	f32			yaw, pitch;
 //	Fvector().sub	(m_target_object->Position(), m_object->Position()).getHP(yaw, pitch);
 //
 //	// получить вектор направления и его мир угол
@@ -155,9 +155,9 @@
 //	m_jumper->reinit	(def1, def2, def3);
 //}
 //
-//F32 CSnorkJump::trace_current(F32 dist)
+//f32 CSnorkJump::trace_current(f32 dist)
 //{
-//	F32 ret_val = flt_max;
+//	f32 ret_val = flt_max;
 //	
 //	BOOL				enabled = m_object->getEnabled();
 //	m_object->setEnabled(FALSE);
@@ -166,7 +166,7 @@
 //	Fvector			trace_from;
 //	m_object->Center(trace_from);
 //
-//	F32			trace_dist = m_object->Radius() + dist;
+//	f32			trace_dist = m_object->Radius() + dist;
 //
 //	if (Level().ObjectSpace.RayPick(trace_from, m_object->Direction(), trace_dist, collide::rqtStatic, l_rq)) {
 //		if ((l_rq.range < trace_dist)) ret_val = l_rq.range;

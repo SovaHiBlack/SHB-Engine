@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-void	__stdcall	xrM44_Mul_x86	(_matrix<F32>* pfD, _matrix<F32>* pfM1, _matrix<F32>* pfM2)
+void	__stdcall	xrM44_Mul_x86	(_matrix<f32>* pfD, _matrix<f32>* pfM1, _matrix<f32>* pfM2)
 {
     __asm
     {

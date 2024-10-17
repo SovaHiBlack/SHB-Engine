@@ -19,7 +19,7 @@ class CTelekineticObject {
 public:
 	CPhysicsShellHolder *object;
 	CTelekinesis		*telekinesis;
-	F32				target_height;
+	f32				target_height;
 
 	u32					time_keep_started;
 	u32					time_keep_updated;
@@ -29,7 +29,7 @@ public:
 	
 	u32					time_fire_started;
 
-	F32				strength;
+	f32				strength;
 
 	bool				m_rotate;
 	
@@ -40,18 +40,18 @@ public:
 								CTelekineticObject		();
 								~CTelekineticObject		();
 	
-virtual		bool				init					(CTelekinesis* tele,CPhysicsShellHolder *obj, F32 s, F32 h, u32 ttk, bool rot = true);
+virtual		bool				init					(CTelekinesis* tele,CPhysicsShellHolder *obj, f32 s, f32 h, u32 ttk, bool rot = true);
 			void				set_sound				(const ref_sound &snd_hold, const ref_sound &snd_throw);
 
-virtual		void				raise					(F32 step);
+virtual		void				raise					(f32 step);
 virtual		void				raise_update			();
 
 			void				prepare_keep			();
 virtual		void				keep					();
 virtual		void				keep_update				();
 virtual		void				release					();
-virtual		void				fire					(const Fvector &target, F32 power);
-			void				fire_t					(const Fvector &target, F32 time);
+virtual		void				fire					(const Fvector &target, f32 power);
+			void				fire_t					(const Fvector &target, f32 time);
 virtual		void				fire_update				();
 virtual		void				update_state			();
 virtual		bool				can_activate			(CPhysicsShellHolder *obj);

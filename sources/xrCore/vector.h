@@ -6,7 +6,7 @@
 #include	"_std_extensions.h"
 
 // comparisions
-IC BOOL  fsimilar(F32		a, F32	b, F32	cmp = EPSILON_5)
+IC BOOL  fsimilar(f32		a, f32	b, f32	cmp = EPSILON_5)
 {
 	return _abs(a - b) < cmp;
 }
@@ -15,7 +15,7 @@ IC BOOL  dsimilar(double	a, double	b, double	cmp = EPSILON_5)
 	return _abs(a - b) < cmp;
 }
 
-IC BOOL  fis_zero(F32		val, F32	cmp = EPSILON_7)
+IC BOOL  fis_zero(f32		val, f32	cmp = EPSILON_7)
 {
 	return _abs(val) < cmp;
 }
@@ -36,7 +36,7 @@ namespace implement
 		return (val * T(180) / T(M_PI));
 	};
 };
-ICF F32	deg2rad(F32 val)
+ICF f32	deg2rad(f32 val)
 {
 	return implement::deg2rad(val);
 }
@@ -44,7 +44,7 @@ ICF double	deg2rad(double val)
 {
 	return implement::deg2rad(val);
 }
-ICF F32	rad2deg(F32 val)
+ICF f32	rad2deg(f32 val)
 {
 	return implement::rad2deg(val);
 }
@@ -66,11 +66,11 @@ IC T	clampr(const T& val, const T& _low, const T& _high)
 	else if (val > _high)	return _high;
 	else					return val;
 };
-IC F32 snapto(F32 value, F32 snap)
+IC f32 snapto(f32 value, f32 snap)
 {
 	if (snap <= 0.f) return value;
-	return F32(iFloor((value + (snap * 0.5f)) / snap)) * snap;
-};
+	return f32(iFloor((value + (snap * 0.5f)) / snap)) * snap;
+}
 
 // pre-definitions
 template <class T> struct _quaternion;
@@ -100,37 +100,36 @@ template <class T> struct _quaternion;
 
 #pragma pack(pop)
 
-
 // normalize angle (0..2PI)
-ICF F32		angle_normalize_always(F32 a)
+ICF f32		angle_normalize_always(f32 a)
 {
-	F32		div = a / PI_MUL_2;
+	f32		div = a / PI_MUL_2;
 	int			rnd = (div > 0) ? iFloor(div) : iCeil(div);
-	F32		frac = div - rnd;
+	f32		frac = div - rnd;
 	if (frac < 0)	frac += 1.f;
 	return		frac * PI_MUL_2;
 }
 
 // normalize angle (0..2PI)
-ICF F32		angle_normalize(F32 a)
+ICF f32		angle_normalize(f32 a)
 {
 	if (a >= 0 && a <= PI_MUL_2)	return	a;
 	else						return	angle_normalize_always(a);
 }
 
 // -PI .. +PI
-ICF F32		angle_normalize_signed(F32 a)
+ICF f32		angle_normalize_signed(f32 a)
 {
 	if (a >= (-PI) && a <= PI)		return		a;
-	F32 angle = angle_normalize_always(a);
+	f32 angle = angle_normalize_always(a);
 	if (angle > PI) angle -= PI_MUL_2;
 	return angle;
 }
 
 // -PI..PI
-ICF F32		angle_difference_signed(F32 a, F32 b)
+ICF f32		angle_difference_signed(f32 a, f32 b)
 {
-	F32 diff = angle_normalize_signed(a) - angle_normalize_signed(b);
+	f32 diff = angle_normalize_signed(a) - angle_normalize_signed(b);
 	if (diff > 0)
 	{
 		if (diff > PI)
@@ -145,15 +144,15 @@ ICF F32		angle_difference_signed(F32 a, F32 b)
 }
 
 // 0..PI
-ICF F32		angle_difference(F32 a, F32 b)
+ICF f32		angle_difference(f32 a, f32 b)
 {
 	return _abs(angle_difference_signed(a, b));
 }
 
 // c=current, t=target, s=speed, dt=dt
-IC bool			angle_lerp(F32& c, F32 t, F32 s, F32 dt)
+IC bool			angle_lerp(f32& c, f32 t, f32 s, f32 dt)
 {
-	F32 diff = t - c;
+	f32 diff = t - c;
 	if (diff > 0)
 	{
 		if (diff > PI)
@@ -164,12 +163,12 @@ IC bool			angle_lerp(F32& c, F32 t, F32 s, F32 dt)
 		if (diff < -PI)
 			diff += PI_MUL_2;
 	}
-	F32 diff_a = _abs(diff);
+	f32 diff_a = _abs(diff);
 
 	if (diff_a < EPSILON_7)
 		return true;
 
-	F32 mot = s * dt;
+	f32 mot = s * dt;
 	if (mot > diff_a) mot = diff_a;
 	c += (diff / diff_a) * mot;
 
@@ -182,35 +181,35 @@ IC bool			angle_lerp(F32& c, F32 t, F32 s, F32 dt)
 }
 
 // Just lerp :)	expects normalized angles in range [0..2PI)
-ICF F32		angle_lerp(F32 A, F32 B, F32 f)
+ICF f32		angle_lerp(f32 A, f32 B, f32 f)
 {
-	F32 diff = B - A;
+	f32 diff = B - A;
 	if (diff > PI)		diff -= PI_MUL_2;
 	else if (diff < -PI)	diff += PI_MUL_2;
 
 	return			A + diff * f;
 }
 
-IC F32		angle_inertion(F32 src, F32 tgt, F32 speed, F32 clmp, F32 dt)
+IC f32		angle_inertion(f32 src, f32 tgt, f32 speed, f32 clmp, f32 dt)
 {
-	F32 a = angle_normalize_signed(tgt);
+	f32 a = angle_normalize_signed(tgt);
 	angle_lerp(src, a, speed, dt);
 	src = angle_normalize_signed(src);
-	F32 dH = angle_difference_signed(src, a);
-	F32 dCH = clampr(dH, -clmp, clmp);
+	f32 dH = angle_difference_signed(src, a);
+	f32 dCH = clampr(dH, -clmp, clmp);
 	src -= dH - dCH;
 	return			src;
 }
 
-IC F32		angle_inertion_var(F32 src, F32 tgt, F32 min_speed, F32 max_speed, F32 clmp, F32 dt)
+IC f32		angle_inertion_var(f32 src, f32 tgt, f32 min_speed, f32 max_speed, f32 clmp, f32 dt)
 {
 	tgt = angle_normalize_signed(tgt);
 	src = angle_normalize_signed(src);
-	F32 speed = _abs((max_speed - min_speed) * angle_difference(tgt, src) / clmp) + min_speed;
+	f32 speed = _abs((max_speed - min_speed) * angle_difference(tgt, src) / clmp) + min_speed;
 	angle_lerp(src, tgt, speed, dt);
 	src = angle_normalize_signed(src);
-	F32 dH = angle_difference_signed(src, tgt);
-	F32 dCH = clampr(dH, -clmp, clmp);
+	f32 dH = angle_difference_signed(src, tgt);
+	f32 dCH = clampr(dH, -clmp, clmp);
 	src -= dH - dCH;
 	return			src;
 }
@@ -222,9 +221,9 @@ IC _matrix<T>& _matrix<T>::rotation(const _quaternion<T>& Q)
 	T xy = Q.x * Q.y; T xz = Q.x * Q.z; T yz = Q.y * Q.z;
 	T wx = Q.w * Q.x; T wy = Q.w * Q.y; T wz = Q.w * Q.z;
 
-	_11 = 1 - 2 * (yy + zz);	_12 = 2 * (xy - wz);	_13 = 2 * (xz + wy);	_14 = 0;
-	_21 = 2 * (xy + wz);	_22 = 1 - 2 * (xx + zz);	_23 = 2 * (yz - wx);	_24 = 0;
-	_31 = 2 * (xz - wy);	_32 = 2 * (yz + wx);	_33 = 1 - 2 * (xx + yy);	_34 = 0;
+	_11 = 1 - 2 * (yy + zz);	_12 = 2 * (xy - wz);		_13 = 2 * (xz + wy);		_14 = 0;
+	_21 = 2 * (xy + wz);		_22 = 1 - 2 * (xx + zz);	_23 = 2 * (yz - wx);		_24 = 0;
+	_31 = 2 * (xz - wy);		_32 = 2 * (yz + wx);		_33 = 1 - 2 * (xx + yy);	_34 = 0;
 	_41 = 0;					_42 = 0;					_43 = 0;					_44 = 1;
 	return *this;
 }
@@ -236,9 +235,9 @@ IC _matrix<T>& _matrix<T>::mk_xform(const _quaternion<T>& Q, const Tvector& V)
 	T xy = Q.x * Q.y; T xz = Q.x * Q.z; T yz = Q.y * Q.z;
 	T wx = Q.w * Q.x; T wy = Q.w * Q.y; T wz = Q.w * Q.z;
 
-	_11 = 1 - 2 * (yy + zz);	_12 = 2 * (xy - wz);	_13 = 2 * (xz + wy);	_14 = 0;
-	_21 = 2 * (xy + wz);	_22 = 1 - 2 * (xx + zz);	_23 = 2 * (yz - wx);	_24 = 0;
-	_31 = 2 * (xz - wy);	_32 = 2 * (yz + wx);	_33 = 1 - 2 * (xx + yy);	_34 = 0;
+	_11 = 1 - 2 * (yy + zz);	_12 = 2 * (xy - wz);		_13 = 2 * (xz + wy);		_14 = 0;
+	_21 = 2 * (xy + wz);		_22 = 1 - 2 * (xx + zz);	_23 = 2 * (yz - wx);		_24 = 0;
+	_31 = 2 * (xz - wy);		_32 = 2 * (yz + wx);		_33 = 1 - 2 * (xx + yy);	_34 = 0;
 	_41 = V.x;					_42 = V.y;					_43 = V.z;					_44 = 1;
 	return *this;
 }
@@ -247,8 +246,8 @@ IC _matrix<T>& _matrix<T>::mk_xform(const _quaternion<T>& Q, const Tvector& V)
 template <class T>
 IC _quaternion<T>& _quaternion<T>::set(const _matrix<T>& M)
 {
-	F32 trace;
-	F32 s;
+	f32 trace;
+	f32 s;
 
 	trace = M._11 + M._22 + M._33;
 	if (trace > 0.0f)

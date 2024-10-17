@@ -16,9 +16,9 @@ using namespace		Opcode;
 #endif // _MM_ALIGN16
 
 struct	_MM_ALIGN16		vec_t	: public Fvector3	{ 
-	F32		pad;
+	f32		pad;
 };
-vec_t	vec_c	(F32 _x, F32 _y, F32 _z)	{ vec_t v; v.x=_x;v.y=_y;v.z=_z;v.pad=0; return v; }
+vec_t	vec_c	(f32 _x, f32 _y, f32 _z)	{ vec_t v; v.x=_x;v.y=_y;v.z=_z;v.pad=0; return v; }
 struct _MM_ALIGN16		aabb_t	{ 
 	vec_t		min;
 	vec_t		max;
@@ -29,10 +29,10 @@ struct _MM_ALIGN16		ray_t	{
 	vec_t		fwd_dir;
 };
 struct ray_segment_t {
-	F32		t_near,t_far;
+	f32		t_near,t_far;
 };
 
-ICF u32&	uf			(F32& x)	{ return (u32&)x; }
+ICF u32&	uf			(f32& x)	{ return (u32&)x; }
 ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fvector& coord)
 {
 	Fvector				MaxT;
@@ -107,8 +107,8 @@ ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fv
 }
 
 // turn those verbose intrinsics into something readable.
-#define loadps(mem)			_mm_load_ps((const F32 * const)(mem))
-#define storess(ss,mem)		_mm_store_ss((F32 * const)(mem),(ss))
+#define loadps(mem)			_mm_load_ps((const f32 * const)(mem))
+#define storess(ss,mem)		_mm_store_ss((f32 * const)(mem),(ss))
 #define minss				_mm_min_ss
 #define maxss				_mm_max_ss
 #define minps				_mm_min_ps
@@ -119,12 +119,12 @@ ICF BOOL	isect_fpu	(const Fvector& min, const Fvector& max, const ray_t &ray, Fv
 #define muxhps(low,high)	_mm_movehl_ps((low),(high))		// low{a,b,c,d}|high{e,f,g,h} = {c,d,g,h}
 
 
-static const F32 flt_plus_inf = -logf(0);	// let's keep C and C++ compilers happy.
-static const F32 _MM_ALIGN16
+static const f32 flt_plus_inf = -logf(0);	// let's keep C and C++ compilers happy.
+static const f32 _MM_ALIGN16
 	ps_cst_plus_inf	[4]	=	{  flt_plus_inf,  flt_plus_inf,  flt_plus_inf,  flt_plus_inf },
 	ps_cst_minus_inf[4]	=	{ -flt_plus_inf, -flt_plus_inf, -flt_plus_inf, -flt_plus_inf };
 
-ICF BOOL isect_sse			(const aabb_t &box, const ray_t &ray, F32& dist)	{
+ICF BOOL isect_sse			(const aabb_t &box, const ray_t &ray, f32& dist)	{
 	// you may already have those values hanging around somewhere
 	const __m128
 		plus_inf	= loadps(ps_cst_plus_inf),
@@ -182,10 +182,10 @@ public:
 	Fvector*		verts;
 	
 	ray_t			ray;
-	F32				rRange;
-	F32				rRange2;
+	f32				rRange;
+	f32				rRange2;
 
-	IC void			_init		(COLLIDER* CL, Fvector* V, TRI* T, const Fvector& C, const Fvector& D, F32 R)
+	IC void			_init		(COLLIDER* CL, Fvector* V, TRI* T, const Fvector& C, const Fvector& D, f32 R)
 	{
 		dest			= CL;
 		tris			= T;
@@ -212,7 +212,7 @@ public:
         return 		isect_fpu	(BB.min,BB.max,ray,coord);
 	}
 	// sse
-	ICF BOOL		_box_sse	(const Fvector& bCenter, const Fvector& bExtents, F32&  dist )
+	ICF BOOL		_box_sse	(const Fvector& bCenter, const Fvector& bExtents, f32&  dist )
 	{
 		aabb_t		box;
 		box.min.sub (bCenter,bExtents);	box.min.pad = 0;
@@ -220,10 +220,11 @@ public:
         return 		isect_sse	(box,ray,dist);
 	}
 	
-	IC bool			_tri		(u32* p, F32& u, F32& v, F32& range)
+	IC bool			_tri		(u32* p, f32& u, f32& v, f32& range)
 	{
 		Fvector edge1, edge2, tvec, pvec, qvec;
-		F32	det,inv_det;
+		f32	det;
+		f32 inv_det;
 		
 		// find vectors for two edges sharing vert0
 		Fvector&			p0	= verts[ p[0] ];
@@ -267,7 +268,9 @@ public:
 	
 	void			_prim		(DWORD prim)
 	{
-		F32	u,v,r;
+		f32 u;
+		f32 v;
+		f32 r;
 		if (!_tri(tris[prim].verts, u, v, r))	return;
 		if (r<=0 || r>rRange)					return;
 		
@@ -318,7 +321,7 @@ public:
 		// Actual ray/aabb test
 		if (bUseSSE)			{
 			// use SSE
-			F32		d;
+			f32		d;
 			if (!_box_sse((Fvector&)node->mAABB.mCenter,(Fvector&)node->mAABB.mExtents,d))	return;
 			if (d>rRange)																	return;
 		} else {
@@ -341,7 +344,7 @@ public:
 	}
 };
 
-void	COLLIDER::ray_query	(const MODEL *m_def, const Fvector& r_start,  const Fvector& r_dir, F32 r_range)
+void	COLLIDER::ray_query	(const MODEL *m_def, const Fvector& r_start,  const Fvector& r_dir, f32 r_range)
 {
 	m_def->syncronize		();
 

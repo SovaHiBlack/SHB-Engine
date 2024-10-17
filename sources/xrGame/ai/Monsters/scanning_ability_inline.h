@@ -82,7 +82,7 @@ void CScanningAbilityAbstract::schedule_update()
 
 	if (state == eStateScanning) {
 		// обновить scan_value
-		F32 vel = get_velocity(scan_obj);
+		f32 vel = get_velocity(scan_obj);
 		if ( vel > velocity_threshold) {
 			
 			// трейсить не чаще, чем scan_trace_time_freq
@@ -123,13 +123,12 @@ void CScanningAbilityAbstract::frame_update(u32 dt)
 
 	if (scan_value < 0) scan_value = 0.f;
 	else if (scan_value > 0) {
-		scan_value -= decrease_value * F32(dt) / 1000;
+		scan_value -= decrease_value * f32(dt) / 1000;
 	}
 }
 
-
 TEMPLATE_SPECIALIZATION
-F32 CScanningAbilityAbstract::get_velocity(CObject *obj)
+f32 CScanningAbilityAbstract::get_velocity(CObject *obj)
 {
 	CActor *actor = smart_cast<CActor *>(obj);
 	return (actor->character_physics_support()->movement()->GetVelocityActual()); 

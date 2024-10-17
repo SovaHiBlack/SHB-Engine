@@ -21,12 +21,9 @@ CTelekineticObject::CTelekineticObject()
 
 CTelekineticObject::~CTelekineticObject()
 {
-
 }
 
-
-
-bool CTelekineticObject::init(CTelekinesis* tele,CPhysicsShellHolder *obj, F32 s, F32 h, u32 ttk, bool rot)
+bool CTelekineticObject::init(CTelekinesis* tele,CPhysicsShellHolder *obj, f32 s, f32 h, u32 ttk, bool rot)
 {
 	if(!can_activate(obj)) return false;
 
@@ -99,7 +96,7 @@ void CTelekineticObject::switch_state(ETelekineticState new_state)
 	}
 	state=new_state;
 }
-void CTelekineticObject::raise(F32 step)
+void CTelekineticObject::raise(f32 step)
 {
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
 	
@@ -108,11 +105,10 @@ void CTelekineticObject::raise(F32 step)
 	Fvector dir;
 	dir.set(0.f,1.0f,0.f);
 
-	F32 elem_size = F32(object->m_pPhysicsShell->Elements().size());
+	f32 elem_size = f32(object->m_pPhysicsShell->Elements().size());
 	dir.mul(elem_size*elem_size*strength);
 
 	if (OnServer()) (object->m_pPhysicsShell->Elements()[0])->applyGravityAccel(dir);
-
 
 	update_hold_sound	();
 }
@@ -137,7 +133,6 @@ bool CTelekineticObject::time_fire_elapsed()
 	return false;
 }
 
-
 void CTelekineticObject::keep()
 {
 	// проверить время последнего обновления
@@ -146,7 +141,7 @@ void CTelekineticObject::keep()
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
 
 	// проверить высоту
-	F32 cur_h		= object->Position().y;
+	f32 cur_h		= object->Position().y;
 
 	// установить dir в соответствие с текущей высотой
 	Fvector dir;
@@ -157,7 +152,7 @@ void CTelekineticObject::keep()
 		dir.normalize_safe();
 	}
 
-	//F32 elem_size = f32(object->m_pPhysicsShell->Elements().size());
+	//f32 elem_size = f32(object->m_pPhysicsShell->Elements().size());
 	dir.mul(5.0f);
 
 	if (OnServer()) (object->m_pPhysicsShell->Elements()[0])->applyGravityAccel(dir);
@@ -187,7 +182,7 @@ void CTelekineticObject::release()
 	switch_state(TS_None);
 }
 
-void CTelekineticObject::fire_t(const Fvector &target, F32 time)
+void CTelekineticObject::fire_t(const Fvector &target, f32 time)
 {
 	switch_state(TS_Fire);
 	//time_fire_started	= Device.dwTimeGlobal;
@@ -207,9 +202,9 @@ void CTelekineticObject::fire_t(const Fvector &target, F32 time)
 
 	if (sound_hold._handle() && sound_hold._feedback()) 
 		sound_hold.stop();
-
 }
-void CTelekineticObject::fire(const Fvector &target, F32 power)
+
+void CTelekineticObject::fire(const Fvector &target, f32 power)
 {
 	//state				= TS_Fire;
 	switch_state(TS_Fire);
@@ -231,8 +226,8 @@ void CTelekineticObject::fire(const Fvector &target, F32 power)
 			for (u32 i=0;i<object->m_pPhysicsShell->Elements().size();i++) 
 				object->m_pPhysicsShell->Elements()[i]->applyImpulse(dir, power * 20.f * object->m_pPhysicsShell->getMass() / object->m_pPhysicsShell->Elements().size());
 			
-		};
-};
+		}
+}
 
 bool CTelekineticObject::check_height()
 {
@@ -240,6 +235,7 @@ bool CTelekineticObject::check_height()
 	
 	return (object->Position().y > target_height);
 }
+
 bool CTelekineticObject::check_raise_time_out()
 {
 	if (time_raise_started + RAISE_MAX_TIME < Device.dwTimeGlobal)
@@ -247,8 +243,6 @@ bool CTelekineticObject::check_raise_time_out()
 
 	return false;
 }
-
-
 
 void CTelekineticObject::enable()
 {

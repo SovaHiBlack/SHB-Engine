@@ -31,15 +31,15 @@ struct v_filter {
 void	CalcGauss_k7(
 					 Fvector4&	w0,					// weight
 					 Fvector4&	w1,					// weight
-					F32		r		=3.3f,		// gaussian radius
-					F32		s_out	=1.f		// resulting magnitude
+	f32		r		=3.3f,		// gaussian radius
+	f32		s_out	=1.f		// resulting magnitude
 					 )
 {
-	F32				W[8];
+	f32				W[8];
 
 	// calculate
-	F32 mag					=	0;
-	for (int i=-7; i<=0; i++)	W[-i]	=	expf	(-F32(i*i)/(2*r*r));	// weight
+	f32 mag					=	0;
+	for (int i=-7; i<=0; i++)	W[-i]	=	expf	(-f32(i*i)/(2*r*r));	// weight
 	for (i=0; i<8; i++)	mag		+= i?2*W[i]:W[i];							// symmetrical weight
 	for (i=0; i<8; i++)	W[i]	= s_out*W[i]/mag;
 
@@ -50,9 +50,9 @@ void	CalcGauss_k7(
 void	CalcGauss_wave(
 					   Fvector4&	w0,						// weight
 					   Fvector4&	w1,						// weight
-						F32		r_base		=3.3f,		// gaussian radius
-						F32		r_detail	=1.0f,		// gaussian radius
-						F32		s_out		=1.f		// resulting magnitude
+	f32		r_base		=3.3f,		// gaussian radius
+	f32		r_detail	=1.0f,		// gaussian radius
+	f32		s_out		=1.f		// resulting magnitude
 					   )
 {
 	Fvector4	t0,t1;
@@ -76,14 +76,14 @@ void CRenderTarget::phase_bloom	()
 
 	// Transfer into Bloom1
 	{
-		F32		_w				= F32(Device.dwWidth);
-		F32		_h				= F32(Device.dwHeight);
-		F32		_2w				= _w/2;
-		F32 tw = BLOOM_size_X;
-		F32		_2h				= _h/2;
-		F32 th = BLOOM_size_Y;
-		F32		_aspect_w		= _2w/tw;
-		F32		_aspect_h		= _2h/th;
+		f32		_w				= f32(Device.dwWidth);
+		f32		_h				= f32(Device.dwHeight);
+		f32		_2w				= _w/2;
+		f32 tw = BLOOM_size_X;
+		f32		_2h				= _h/2;
+		f32 th = BLOOM_size_Y;
+		f32		_aspect_w		= _2w/tw;
+		f32		_aspect_h		= _2h/th;
 		Fvector2	one				= { 1.f/_w, 1.f/_h };	one.x*=_aspect_w; one.y*=_aspect_h;
 		Fvector2	half			= { .5f/_w, .5f/_h };
 		Fvector2	a_0				= { half.x + 0,		half.y + 0		};
@@ -97,22 +97,22 @@ void CRenderTarget::phase_bloom	()
 
 		// Fill vertex buffer
 		v_build* pv					= (v_build*) RCache.Vertex.Lock	(4,g_bloom_build->vb_stride,Offset);
-		pv->p.set	(EPS, F32(th+EPS),	EPS,1.f);
+		pv->p.set	(EPS, f32(th+EPS),	EPS,1.f);
 		pv->uv0.set	(a_0.x,b_0.y);	pv->uv1.set	(a_1.x,b_1.y);	pv->uv2.set	(a_2.x,b_2.y);	pv->uv3.set	(a_3.x,b_3.y);
 		pv++;
 		pv->p.set	(EPS,			EPS,			EPS,1.f);	
 		pv->uv0.set	(a_0.x,a_0.y);	pv->uv1.set	(a_1.x,a_1.y);	pv->uv2.set	(a_2.x,a_2.y);	pv->uv3.set	(a_3.x,a_3.y);
 		pv++;
-		pv->p.set	(F32(tw+EPS), F32(th+EPS),	EPS,1.f);
+		pv->p.set	(f32(tw+EPS), f32(th+EPS),	EPS,1.f);
 		pv->uv0.set	(b_0.x,b_0.y);	pv->uv1.set	(b_1.x,b_1.y);	pv->uv2.set	(b_2.x,b_2.y);	pv->uv3.set	(b_3.x,b_3.y);
 		pv++;
-		pv->p.set	(F32(tw+EPS),EPS,			EPS,1.f);
+		pv->p.set	(f32(tw+EPS),EPS,			EPS,1.f);
 		pv->uv0.set	(b_0.x,a_0.y);	pv->uv1.set	(b_1.x,a_1.y);	pv->uv2.set	(b_2.x,a_2.y);	pv->uv3.set	(b_3.x,a_3.y);
 		pv++;
 		RCache.Vertex.Unlock		(4,g_bloom_build->vb_stride);
 
 		// Perform combine (all scalers must account for 4 samples + final diffuse multiply);
-		F32 s						= ps_r2_ls_bloom_threshold;											// scale
+		f32 s						= ps_r2_ls_bloom_threshold;											// scale
 		f_bloom_factor				= .9f*f_bloom_factor + .1f*ps_r2_ls_bloom_speed*Device.fTimeDelta;	// speed
 		RCache.set_Element			(s_bloom->E[0]);
 		RCache.set_c				("b_params", s,s,s,	f_bloom_factor);

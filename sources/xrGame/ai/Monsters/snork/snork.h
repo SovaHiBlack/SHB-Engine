@@ -16,15 +16,15 @@ public:
 	virtual void	reinit				();				
 	virtual void	UpdateCL			();
 	virtual void	CheckSpecParams		(u32 spec_params);
-	virtual void	jump				(const Fvector &position, F32 factor);
+	virtual void	jump				(const Fvector &position, f32 factor);
 	virtual bool	ability_jump_over_physics	() {return true;}
 	virtual bool	ability_distant_feel		() {return true;}
 	virtual void	HitEntityInJump		(const CEntity *pEntity);
 			
 			bool	find_geometry		(Fvector &dir);
-			F32	trace				(const Fvector &dir);
+			f32	trace				(const Fvector &dir);
 
-			bool	trace_geometry		(const Fvector &d, F32& range);
+			bool	trace_geometry		(const Fvector &d, f32& range);
 
 	virtual bool	check_start_conditions	(ControlCom::EControlType type);
 	virtual void	on_activate_control		(ControlCom::EControlType);

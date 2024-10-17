@@ -22,12 +22,12 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	Fvector2					p0,p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
-	F32	d_Z = EPSILON_7;
-	F32 d_W = 1.f;
+	f32	d_Z = EPSILON_7;
+	f32 d_W = 1.f;
 
 	// Common constants (light-related)
 	Fvector		L_dir,L_clr;
-	F32 L_spec;
+	f32 L_spec;
 	L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
 	Device.mView.transform_dir	(L_dir,fuckingsun->direction);
@@ -39,15 +39,15 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	{
 		// Fill vertex buffer
 		FVF::TL* pv					= (FVF::TL*)	RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-		pv->set						(EPS, F32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
 		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-		pv->set						(F32(_w+EPS), F32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-		pv->set						(F32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 		RCache.set_Geometry			(g_combine);
 
 		// setup
-		F32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
+		f32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
 		Fvector	dir					= L_dir;
 				dir.normalize().mul	(- _sqrt(intensity+EPS));
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_DIRECT]);		// masker
@@ -74,9 +74,9 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 		RCache.set_ColorWriteEnable			()	;
 
 		// texture adjustment matrix
-		F32			fTexelOffs			= (.5f / F32(RImplementation.o.smapsize));
-		F32			fRange				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_scale:ps_r2_sun_depth_far_scale;
-		F32			fBias				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_bias:ps_r2_sun_depth_far_bias;
+		f32			fTexelOffs			= (.5f / f32(RImplementation.o.smapsize));
+		f32			fRange				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_scale:ps_r2_sun_depth_far_scale;
+		f32			fBias				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_bias:ps_r2_sun_depth_far_bias;
 		Fmatrix			m_TexelAdjust		= 
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
@@ -108,11 +108,11 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 		// clouds xform
 		Fmatrix				m_clouds_shadow;
 		{
-			static	F32	w_shift		= 0;
+			static	f32	w_shift		= 0;
 			Fmatrix			m_xform;
 			Fvector			direction	= fuckingsun->direction	;
-			F32	w_dir				= g_pGamePersistent->Environment().CurrentEnv.wind_direction	;
-			//F32	w_speed				= g_pGamePersistent->Environment().CurrentEnv.wind_velocity	;
+			f32	w_dir				= g_pGamePersistent->Environment().CurrentEnv.wind_direction	;
+			//f32	w_speed				= g_pGamePersistent->Environment().CurrentEnv.wind_velocity	;
 			Fvector			normal	;	normal.setHP(w_dir,0);
 							w_shift		+=	0.003f*Device.fTimeDelta;
 			Fvector			position;	position.set(0,0,0);
@@ -127,18 +127,18 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 
 		// Make jitter texture
 		Fvector2					j0,j1;
-		F32	scale_X				= F32(Device.dwWidth)	/ F32(TEX_jitter);
-		//F32	scale_Y				= F32(Device.dwHeight)/ F32(TEX_jitter);
-		F32	offset				= (.5f / F32(TEX_jitter));
+		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
+		//F32	scale_Y				= f32(Device.dwHeight)/ f32TEX_jitter);
+		f32	offset				= (.5f / f32(TEX_jitter));
 		j0.set						(offset,offset);
 		j1.set						(scale_X,scale_X).add(offset);
 
 		// Fill vertex buffer
 		FVF::TL2uv* pv				= (FVF::TL2uv*) RCache.Vertex.Lock	(4,g_combine_2UV->vb_stride,Offset);
-		pv->set						(EPS, F32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
+		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
 		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y, j0.x, j0.y);	pv++;
-		pv->set						(F32(_w+EPS), F32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
-		pv->set						(F32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
+		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
+		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_2UV->vb_stride);
 		RCache.set_Geometry			(g_combine_2UV);
 
@@ -150,13 +150,13 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 		RCache.set_c				("m_sunmask",			m_clouds_shadow					);
 		
 		// nv-DBT
-		F32 zMin;
-		F32 zMax;
+		f32 zMin;
+		f32 zMax;
 		if (SE_SUN_NEAR==sub_phase)	{
 			zMin = 0;
 			zMax = ps_r2_sun_near;
 		} else {
-			extern F32	OLES_SUN_LIMIT_27_01_07;
+			extern f32	OLES_SUN_LIMIT_27_01_07;
 			zMin = ps_r2_sun_near;
 			zMax = OLES_SUN_LIMIT_27_01_07;
 		}
@@ -204,20 +204,20 @@ void CRenderTarget::accum_direct_blend	()
 		// Common calc for quad-rendering
 		u32		Offset;
 		u32		C					= color_rgba	(255,255,255,255);
-		F32	_w					= F32(Device.dwWidth);
-		F32	_h					= F32(Device.dwHeight);
+		f32	_w					= f32(Device.dwWidth);
+		f32	_h					= f32(Device.dwHeight);
 		Fvector2					p0,p1;
 		p0.set						(.5f/_w, .5f/_h);
 		p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
-		F32	d_Z = EPSILON_7;
-		F32 d_W = 1.f;
+		f32	d_Z = EPSILON_7;
+		f32 d_W = 1.f;
 
 		// Fill vertex buffer
 		FVF::TL2uv* pv				= (FVF::TL2uv*) RCache.Vertex.Lock	(4,g_combine_2UV->vb_stride,Offset);
-		pv->set						(EPS, F32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, p0.x, p1.y);	pv++;
+		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, p0.x, p1.y);	pv++;
 		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y, p0.x, p0.y);	pv++;
-		pv->set						(F32(_w+EPS), F32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, p1.x, p1.y);	pv++;
-		pv->set						(F32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, p1.x, p0.y);	pv++;
+		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, p1.x, p1.y);	pv++;
+		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_2UV->vb_stride);
 		RCache.set_Geometry			(g_combine_2UV);
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_ACCUM_2D]	);
@@ -234,6 +234,7 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 		accum_direct_lum	();
 		return				;
 	}
+
 	phase_accumulator					();
 	u_setrt								(rt_Generic_0,NULL,NULL,HW.pBaseZB);
 
@@ -243,17 +244,17 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 	// Common calc for quad-rendering
 	u32		Offset;
 	u32		C					= color_rgba	(255,255,255,255);
-	F32	_w					= F32(Device.dwWidth);
-	F32	_h					= F32(Device.dwHeight);
+	f32	_w					= f32(Device.dwWidth);
+	f32	_h					= f32(Device.dwHeight);
 	Fvector2					p0,p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
-	F32	d_Z = EPSILON_7;
-	F32 d_W = 1.f;
+	f32	d_Z = EPSILON_7;
+	f32 d_W = 1.f;
 
 	// Common constants (light-related)
 	Fvector		L_dir,L_clr;
-	F32 L_spec;
+	f32 L_spec;
 	L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
 	Device.mView.transform_dir	(L_dir,fuckingsun->direction);
@@ -268,15 +269,15 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 
 		// Fill vertex buffer
 		FVF::TL* pv					= (FVF::TL*)	RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-		pv->set						(EPS, F32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
 		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-		pv->set						(F32(_w+EPS), F32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-		pv->set						(F32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 		RCache.set_Geometry			(g_combine);
 
 		// setup
-		F32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
+		f32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
 		Fvector	dir					= L_dir;
 		dir.normalize().mul	(- _sqrt(intensity+EPS));
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_DIRECT]);		// masker
@@ -303,9 +304,9 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 		RCache.set_ColorWriteEnable			();
 
 		// texture adjustment matrix
-		F32			fTexelOffs			= (.5f / F32(RImplementation.o.smapsize));
-		F32			fRange				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_scale:ps_r2_sun_depth_far_scale;
-		F32			fBias				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_bias:ps_r2_sun_depth_far_bias;
+		f32			fTexelOffs			= (.5f / f32(RImplementation.o.smapsize));
+		f32			fRange				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_scale:ps_r2_sun_depth_far_scale;
+		f32			fBias				= (SE_SUN_NEAR==sub_phase)?ps_r2_sun_depth_near_bias:ps_r2_sun_depth_far_bias;
 		Fmatrix			m_TexelAdjust		= 
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
@@ -334,18 +335,18 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 
 		// Make jitter texture
 		Fvector2					j0,j1;
-		F32	scale_X				= F32(Device.dwWidth)	/ F32(TEX_jitter);
-		//F32	scale_Y				= F32(Device.dwHeight)/ F32(TEX_jitter);
-		F32	offset				= (.5f / F32(TEX_jitter));
+		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
+		//f32	scale_Y				= f32(Device.dwHeight)/ f32(TEX_jitter);
+		f32	offset				= (.5f / f32(TEX_jitter));
 		j0.set						(offset,offset);
 		j1.set						(scale_X,scale_X).add(offset);
 
 		// Fill vertex buffer
 		FVF::TL2uv* pv				= (FVF::TL2uv*) RCache.Vertex.Lock	(4,g_combine_2UV->vb_stride,Offset);
-		pv->set						(EPS, F32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
+		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
 		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y, j0.x, j0.y);	pv++;
-		pv->set						(F32(_w+EPS), F32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
-		pv->set						(F32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
+		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
+		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_2UV->vb_stride);
 		RCache.set_Geometry			(g_combine_2UV);
 
@@ -372,17 +373,17 @@ void CRenderTarget::accum_direct_lum	()
 	// Common calc for quad-rendering
 	u32		Offset;
 	// u32		C					= color_rgba	(255,255,255,255);
-	F32	_w					= F32(Device.dwWidth);
-	F32	_h					= F32(Device.dwHeight);
+	f32	_w					= f32(Device.dwWidth);
+	f32	_h					= f32(Device.dwHeight);
 	Fvector2					p0,p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
-	F32	d_Z	= EPSILON_7;
-	//F32 d_W = 1.f;
+	f32	d_Z	= EPSILON_7;
+	//f32 d_W = 1.f;
 
 	// Common constants (light-related)
 	Fvector		L_dir,L_clr;
-	F32 L_spec;
+	f32 L_spec;
 	L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
 	Device.mView.transform_dir	(L_dir,fuckingsun->direction);
@@ -404,9 +405,9 @@ void CRenderTarget::accum_direct_lum	()
 
 		// Make jitter texture
 		Fvector2					j0,j1;
-		F32	scale_X				= F32(Device.dwWidth)	/ F32(TEX_jitter);
-//		F32	scale_Y				= F32(Device.dwHeight)/ F32(TEX_jitter);
-		F32	offset				= (.5f / F32(TEX_jitter));
+		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
+//		f32	scale_Y				= f32(Device.dwHeight)/ f32(TEX_jitter);
+		f32	offset				= (.5f / f32(TEX_jitter));
 		j0.set						(offset,offset);
 		j1.set						(scale_X,scale_X).add(offset);
 
@@ -420,17 +421,17 @@ void CRenderTarget::accum_direct_lum	()
 			Fvector4	uv4;
 			Fvector4	uv5;
 		};
-		F32	smooth				= 0.6f;
-		F32	ddw					= smooth/_w;
-		F32	ddh					= smooth/_h;
+		f32	smooth				= 0.6f;
+		f32	ddw					= smooth/_w;
+		f32	ddh					= smooth/_h;
 
 		// Fill vertex buffer
 		VERIFY	(sizeof(v_aa)==g_aa_AA->vb_stride);
 		v_aa* pv					= (v_aa*) RCache.Vertex.Lock	(4,g_aa_AA->vb_stride,Offset);
-		pv->p.set(EPS, F32(_h+EPS),	EPS,1.f); pv->uv0.set(p0.x, p1.y);pv->uvJ.set(j0.x, j1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(EPS, f32(_h+EPS),	EPS,1.f); pv->uv0.set(p0.x, p1.y);pv->uvJ.set(j0.x, j1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
 		pv->p.set(EPS,			EPS,			EPS,1.f); pv->uv0.set(p0.x, p0.y);pv->uvJ.set(j0.x, j0.y);pv->uv1.set(p0.x-ddw,p0.y-ddh);pv->uv2.set(p0.x+ddw,p0.y+ddh);pv->uv3.set(p0.x+ddw,p0.y-ddh);pv->uv4.set(p0.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
-		pv->p.set(F32(_w+EPS), F32(_h+EPS),	EPS,1.f); pv->uv0.set(p1.x, p1.y);pv->uvJ.set(j1.x, j1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
-		pv->p.set(F32(_w+EPS),EPS,			EPS,1.f); pv->uv0.set(p1.x, p0.y);pv->uvJ.set(j1.x, j0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(f32(_w+EPS), f32(_h+EPS),	EPS,1.f); pv->uv0.set(p1.x, p1.y);pv->uvJ.set(j1.x, j1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(f32(_w+EPS),EPS,			EPS,1.f); pv->uv0.set(p1.x, p0.y);pv->uvJ.set(j1.x, j0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
 		RCache.Vertex.Unlock		(4,g_aa_AA->vb_stride);
 		RCache.set_Geometry			(g_aa_AA);
 

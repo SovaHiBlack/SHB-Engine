@@ -57,16 +57,16 @@ bool CStateMonsterHitObjectAbstract::check_start_conditions()
 		d.sub(obj->Position(),object->Position());
 
 		// проверка на  Field-Of-Hit
-		F32 my_h;
-		F32 my_p;
-		F32 h;
-		F32 p;
+		f32 my_h;
+		f32 my_p;
+		f32 h;
+		f32 p;
 
 		object->Direction().getHP(my_h,my_p);
 		d.getHP(h,p);
 
-		F32 from	= angle_normalize(my_h - TEST_ANGLE);
-		F32 to	= angle_normalize(my_h + TEST_ANGLE);
+		f32 from	= angle_normalize(my_h - TEST_ANGLE);
+		f32 to	= angle_normalize(my_h + TEST_ANGLE);
 
 		if (!is_angle_between(h, from, to)) continue;
 

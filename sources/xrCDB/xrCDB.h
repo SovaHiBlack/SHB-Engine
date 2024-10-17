@@ -107,8 +107,8 @@ namespace CDB
 			};
 		};
 		int				id;
-		F32				range;
-		F32				u,v;
+		f32				range;
+		f32				u,v;
 	};
 
 	// Collider Options
@@ -134,7 +134,7 @@ namespace CDB
 		~COLLIDER		();
 
 		ICF void		ray_options		(u32 f)	{	ray_mode = f;		}
-		void			ray_query		(const MODEL *m_def, const Fvector& r_start,  const Fvector& r_dir, F32 r_range = 10000.f);
+		void			ray_query		(const MODEL *m_def, const Fvector& r_start,  const Fvector& r_dir, f32 r_range = 10000.0f);
 
 		ICF void		box_options		(u32 f)	{	box_mode = f;		}
 		void			box_query		(const MODEL *m_def, const Fvector& b_center, const Fvector& b_dim);
@@ -157,12 +157,12 @@ namespace CDB
 		xr_vector<Fvector>	verts;
 		xr_vector<TRI>		faces;
 
-		u32				VPack				( const Fvector& V, F32 eps);
+		u32				VPack				( const Fvector& V, f32 eps);
 	public:
 		void			add_face			( const Fvector& v0, const Fvector& v1, const Fvector& v2, u16 material, u16 sector	);
 		void			add_face_D			( const Fvector& v0, const Fvector& v1, const Fvector& v2, u32 dummy );
-		void			add_face_packed		( const Fvector& v0, const Fvector& v1, const Fvector& v2, u16 material, u16 sector, F32 eps = EPSILON_5);
-		void			add_face_packed_D	( const Fvector& v0, const Fvector& v1, const Fvector& v2, u32 dummy, F32 eps = EPSILON_5);
+		void			add_face_packed		( const Fvector& v0, const Fvector& v1, const Fvector& v2, u16 material, u16 sector, f32 eps = EPSILON_5);
+		void			add_face_packed_D	( const Fvector& v0, const Fvector& v1, const Fvector& v2, u32 dummy, f32 eps = EPSILON_5);
         void			remove_duplicate_T	( );
 		void			calc_adjacency		( xr_vector<u32>& dest		);
 

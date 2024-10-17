@@ -367,7 +367,7 @@ add_to_type_list(CSE_ALifeSmartZone)
 
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectPhysic,CSE_ALifeDynamicObjectVisual,CSE_PHSkeleton)
 	u32 							type;
-	F32 							mass;
+f32 							mass;
 	shared_str 						fixed_bones;
 									CSE_ALifeObjectPhysic	(pcstr caSection);
 	virtual 						~CSE_ALifeObjectPhysic	();

@@ -29,11 +29,11 @@ public:\
 
 struct	SRotation
 {
-	F32  yaw;
-	F32 pitch;
-	F32 roll;
+	f32  yaw;
+	f32 pitch;
+	f32 roll;
 	SRotation() { yaw=pitch=roll=0; }
-	SRotation(F32 y, F32 p, F32 r) { yaw=y;pitch=p;roll=r; }
+	SRotation(f32 y, f32 p, f32 r) { yaw=y;pitch=p;roll=r; }
 };
 
 enum EPOType {
@@ -45,7 +45,7 @@ enum EPOType {
 
 DEFINE_VECTOR	(u32,						DWORD_VECTOR,					DWORD_IT);
 DEFINE_VECTOR	(bool,						BOOL_VECTOR,					BOOL_IT);
-DEFINE_VECTOR	(F32,						FLOAT_VECTOR,					FLOAT_IT);
+DEFINE_VECTOR	(f32,						FLOAT_VECTOR,					FLOAT_IT);
 DEFINE_VECTOR	(pstr,						LPSTR_VECTOR,					LPSTR_IT);
 DEFINE_VECTOR	(Fvector,					FVECTOR_VECTOR,					FVECTOR_IT);
 

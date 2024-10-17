@@ -3,7 +3,7 @@
 
 extern Fvector du_cone_vertices			[DU_CONE_NUMVERTEX];
 
-BOOL	tri_vs_sphere_intersect			(Fvector& SC, F32 R, Fvector& v0, Fvector& v1, Fvector& v2)
+BOOL	tri_vs_sphere_intersect			(Fvector& SC, f32 R, Fvector& v0, Fvector& v1, Fvector& v2)
 {
 	Fvector	e0,e1;
 	return	CDB::TestSphereTri	(SC,R,v0,e0.sub(v1,v0),e1.sub(v2,v0));
@@ -34,7 +34,7 @@ void CRenderTarget::enable_dbt_bounds		(light* L)
 }
 
 // nv-DBT
-BOOL	CRenderTarget::u_DBT_enable	(F32 zMin, F32 zMax)
+BOOL	CRenderTarget::u_DBT_enable	(f32 zMin, f32 zMax)
 {
 	if (!RImplementation.o.nvdbt)					return	FALSE;
 	if (!ps_r2_ls_flags.test(R2FLAG_USE_NVDBT))		return	FALSE;
@@ -66,10 +66,10 @@ BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 		plane.y							= -(M._24 + M._23);
 		plane.z							= -(M._34 + M._33);
 		plane.w							= -(M._44 + M._43);
-		F32 denom						= -1.0f / _sqrt(_sqr(plane.x)+_sqr(plane.y)+_sqr(plane.z));
+		f32 denom						= -1.0f / _sqrt(_sqr(plane.x)+_sqr(plane.y)+_sqr(plane.z));
 		plane.mul						(denom);
 		Fplane	P;	P.n.set(plane.x,plane.y,plane.z); P.d = plane.w;
-		F32	p_dist					= P.classify	(L->spatial.sphere.P) - L->spatial.sphere.R;
+		f32	p_dist					= P.classify	(L->spatial.sphere.P) - L->spatial.sphere.R;
 		near_intersect					= (p_dist<=0);
 	}
 #ifdef DEBUG
@@ -151,8 +151,8 @@ BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 	BOOL	bIntersect				= FALSE;
 	for (u32 vit=0; vit<DU_CONE_NUMVERTEX; vit++)	{
 		Fvector&	v	= du_cone_vertices[vit];
-		F32 _z = v.x*M._13 + v.y*M._23 + v.z*M._33 + M._43;
-		F32 _w = v.x*M._14 + v.y*M._24 + v.z*M._34 + M._44;
+		f32 _z = v.x*M._13 + v.y*M._23 + v.z*M._33 + M._43;
+		f32 _w = v.x*M._14 + v.y*M._24 + v.z*M._34 + M._44;
 		if (_z<=0 || _w<=0)	{
 			bIntersect	= TRUE;
 			break;

@@ -22,7 +22,7 @@ public:
 
 
 			// активировать объект
-virtual		CTelekineticObject*	activate(CPhysicsShellHolder *obj, F32 strength, F32 height, u32 max_time_keep, bool rot = true);
+virtual		CTelekineticObject*	activate(CPhysicsShellHolder *obj, f32 strength, f32 height, u32 max_time_keep, bool rot = true);
 
 			// деактивировать все объекты
 			void	deactivate			();
@@ -40,10 +40,10 @@ virtual		void	clear_notrelevant   ();
 			void	fire_all			(const Fvector &target);
 			
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-			void	fire				(CPhysicsShellHolder *obj, const Fvector &target, F32 power);
+			void	fire				(CPhysicsShellHolder *obj, const Fvector &target, f32 power);
 
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
-			void	fire_t				(CPhysicsShellHolder *obj, const Fvector &target, F32 time);
+			void	fire_t				(CPhysicsShellHolder *obj, const Fvector &target, f32 time);
 
 
 			// вернуть активность телекинеза
