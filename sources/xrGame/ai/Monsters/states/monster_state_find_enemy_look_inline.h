@@ -41,8 +41,8 @@ TEMPLATE_SPECIALIZATION
 void CStateMonsterFindEnemyLookAbstract::reselect_state()
 {
 	if ((current_stage == 1) || (current_stage == 3)) {
-		F32 h;
-		F32 p;
+		f32 h;
+		f32 p;
 		current_dir.getHP(h,p);
 
 		h += ((look_right_side) ? (-deg(120)) : deg(120));

@@ -239,17 +239,17 @@ void CAI_Bloodsucker::vfAssignBones()
 
 //#define MAX_BONE_ANGLE PI_DIV_4
 
-void CAI_Bloodsucker::LookDirection(Fvector to_dir, F32 bone_turn_speed)
+void CAI_Bloodsucker::LookDirection(Fvector to_dir, f32 bone_turn_speed)
 {
 	//// получаем вектор направления к источнику звука и его мировые углы
-	//F32		yaw,pitch;
+	//f32		yaw,pitch;
 	//to_dir.getHP(yaw,pitch);
 
 	//// установить параметры вращения по yaw
-	//F32 cur_yaw = -movement().m_body.current.yaw;						// текущий мировой угол монстра
-	//F32 bone_angle;											// угол для боны	
+	//f32 cur_yaw = -movement().m_body.current.yaw;						// текущий мировой угол монстра
+	//f32 bone_angle;											// угол для боны	
 
-	//F32 dy = _abs(angle_normalize_signed(yaw - cur_yaw));		// дельта, на которую нужно поворачиваться
+	//f32 dy = _abs(angle_normalize_signed(yaw - cur_yaw));		// дельта, на которую нужно поворачиваться
 
 	//if (angle_difference(cur_yaw,yaw) <= MAX_BONE_ANGLE) {		// bone turn only
 	//	bone_angle = dy;
@@ -405,14 +405,14 @@ void CAI_Bloodsucker::predator_unfreeze()
 
 void CAI_Bloodsucker::move_actor_cam()
 {
-	F32 turn_angle = PI_DIV_3;
+	f32 turn_angle = PI_DIV_3;
 	if (Actor()->cam_Active()) {
 		Actor()->cam_Active()->Move(Random.randI(2) ? kRIGHT : kLEFT, turn_angle);	//Random.randF(turn_angle)); 
 		Actor()->cam_Active()->Move(Random.randI(2) ? kUP	 : kDOWN, turn_angle);	//Random.randF(turn_angle)); 
 	}
 }
 
-void CAI_Bloodsucker::HitEntity(const CEntity *pEntity, F32 fDamage, F32 impulse, Fvector &dir)
+void CAI_Bloodsucker::HitEntity(const CEntity *pEntity, f32 fDamage, f32 impulse, Fvector &dir)
 {
 	inherited::HitEntity(pEntity,fDamage,impulse,dir);
 

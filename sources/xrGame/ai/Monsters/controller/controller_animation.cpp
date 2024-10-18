@@ -8,7 +8,7 @@
 #include "controller_direction.h"
 #include "../monster_velocity_space.h"
 
-const F32	_pmt_psy_attack_time  = 0.5f;
+const f32	_pmt_psy_attack_time  = 0.5f;
 
 void CControllerAnimation::reinit()
 {
@@ -139,7 +139,7 @@ void CControllerAnimation::load()
 	// 3. 
 }
 
-void CControllerAnimation::add_path_rotation(ELegsActionType action, F32 angle, ELegsActionType type)
+void CControllerAnimation::add_path_rotation(ELegsActionType action, f32 angle, ELegsActionType type)
 {
 	SPathRotations	rot;
 	rot.angle		= angle;
@@ -160,8 +160,8 @@ void CControllerAnimation::select_velocity()
 	if (m_current_legs_action == eLegsTypeRun) {
 		
 		// if we are moving, get yaw from path
-		F32 cur_yaw;
-		F32 target_yaw;
+		f32 cur_yaw;
+		f32 target_yaw;
 		m_man->direction().get_heading(cur_yaw, target_yaw);
 		SPathRotations	path_rot = get_path_rotation(cur_yaw);
 		if ((path_rot.legs_motion == eLegsBackRun) ||
@@ -182,10 +182,10 @@ void CControllerAnimation::select_velocity()
 // and according to point it has to look at
 void CControllerAnimation::set_path_direction()
 {
-	F32 cur_yaw = Fvector().sub(m_controller->custom_dir().get_head_look_point(), m_object->Position()).getH();
+	f32 cur_yaw = Fvector().sub(m_controller->custom_dir().get_head_look_point(), m_object->Position()).getH();
 	cur_yaw = angle_normalize(-cur_yaw);
 
-	F32 target_yaw = m_man->path_builder().detail().direction().getH();
+	f32 target_yaw = m_man->path_builder().detail().direction().getH();
 	target_yaw = angle_normalize(-target_yaw);
 
 	SPathRotations path_rot = get_path_rotation(cur_yaw);	
@@ -224,8 +224,8 @@ void CControllerAnimation::select_legs_animation()
 
 	if (is_moving()) {
 		// if we are moving, get yaw from path
-		F32 cur_yaw;
-		F32 target_yaw;
+		f32 cur_yaw;
+		f32 target_yaw;
 		m_man->direction().get_heading(cur_yaw, target_yaw);
 
 		SPathRotations	path_rot = get_path_rotation(cur_yaw);
@@ -252,22 +252,22 @@ void CControllerAnimation::select_legs_animation()
 	ctrl_data->legs.motion	= m_legs[legs_action];
 }
 
-CControllerAnimation::SPathRotations CControllerAnimation::get_path_rotation(F32 cur_yaw)
+CControllerAnimation::SPathRotations CControllerAnimation::get_path_rotation(f32 cur_yaw)
 {
-	F32 target_yaw = m_man->path_builder().detail().direction().getH();
+	f32 target_yaw = m_man->path_builder().detail().direction().getH();
 	target_yaw = angle_normalize(-target_yaw);
 
-	F32	diff	= angle_difference(cur_yaw,target_yaw);
+	f32	diff	= angle_difference(cur_yaw,target_yaw);
 	if (from_right(target_yaw, cur_yaw)) diff = -diff;
 
 	diff = angle_normalize(diff);
 
 	PATH_ROTATIONS_VEC_IT it_best = m_path_rotations[m_current_legs_action].begin();
-	F32 best_diff = flt_max;
+	f32 best_diff = flt_max;
 	for (PATH_ROTATIONS_VEC_IT it = m_path_rotations[m_current_legs_action].begin(); it != m_path_rotations[m_current_legs_action].end(); it++) {
-		F32 angle_diff = angle_normalize(it->angle);
+		f32 angle_diff = angle_normalize(it->angle);
 
-		F32 cur_diff = angle_difference(angle_diff, diff);
+		f32 cur_diff = angle_difference(angle_diff, diff);
 		if (cur_diff < best_diff) {
 			best_diff	= cur_diff;
 			it_best		= it;
@@ -316,9 +316,9 @@ void CControllerAnimation::set_path_params()
 		Fvector dir			= Fvector().sub(target_pos, m_object->Position());
 		if (!fis_zero(dir.square_magnitude())) {
 			
-			F32 target_yaw	= dir.getH();
+			f32 target_yaw	= dir.getH();
 			target_yaw			= angle_normalize(-target_yaw);
-			F32 cur_yaw		= m_man->direction().get_heading_current();
+			f32 cur_yaw		= m_man->direction().get_heading_current();
 			
 			if (angle_difference(target_yaw,cur_yaw) > PI_DIV_2)
 				looking_fwd = false;

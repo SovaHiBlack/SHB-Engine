@@ -76,13 +76,13 @@
 
 	//! Union of a float and a sdword
 	typedef union {
-		F32		f;							//!<	The float
+		f32		f;							//!<	The float
 		sdword	d;							//!<	The integer
 	}scell;
 
 	//! Union of a float and a udword
 	typedef union {
-		F32		f;							//!<	The float
+		f32		f;							//!<	The float
 		udword	d;							//!<	The integer
 	}ucell;
 
@@ -113,7 +113,7 @@
 	#define IEEE_MAX_FLOAT		0x7f7fffff						//!<	integer representation of MAX_FLOAT
 	#define IEEE_MIN_FLOAT		0xff7fffff						//!<	integer representation of MIN_FLOAT
 
-	#define ONE_OVER_RAND_MAX	(1.0f / F32(RAND_MAX))		//!<	Inverse of the max possible value returned by rand()
+	#define ONE_OVER_RAND_MAX	(1.0f / f32(RAND_MAX))		//!<	Inverse of the max possible value returned by rand()
 
 	template<class T>	inline_ const T&	TMin	(const T& a, const T& b)	{ return b < a ? b : a;	}
 	template<class T>	inline_ const T&	TMax	(const T& a, const T& b)	{ return a < b ? b : a;	}

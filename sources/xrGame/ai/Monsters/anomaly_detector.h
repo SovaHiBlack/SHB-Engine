@@ -5,7 +5,7 @@ class CBaseMonster;
 class CAnomalyDetector {
 	CBaseMonster			*m_object;
 
-	F32					m_radius;
+	f32					m_radius;
 	u32						m_time_to_rememeber;
 
 	bool					m_active;

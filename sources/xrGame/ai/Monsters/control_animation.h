@@ -18,9 +18,9 @@ struct SAnimationPart {
 };
 
 struct SControlAnimationData : public ControlCom::IComData {
-	F32				_speed;
-	IC void				set_speed	(F32 v)		{_speed=v; VERIFY2(_abs(_speed)<1000,"SControlAnimationData::set_speed too big");};
-	IC F32			get_speed	()				{return _speed;};
+	f32				_speed;
+	IC void				set_speed	(f32 v)		{_speed=v; VERIFY2(_abs(_speed)<1000,"SControlAnimationData::set_speed too big");};
+	IC f32			get_speed	()				{return _speed;};
 	SAnimationPart		global;
 	SAnimationPart		legs;
 	SAnimationPart		torso;
@@ -28,9 +28,9 @@ struct SControlAnimationData : public ControlCom::IComData {
 
 struct SAnimationSignalEventData : public ControlCom::IEventData {
 	MotionID	motion;
-	F32		time_perc;
+	f32		time_perc;
 	u32			event_id;
-	IC			SAnimationSignalEventData(MotionID m, F32 perc, u32 id) : time_perc(perc), event_id(id), motion(m) {}
+	IC			SAnimationSignalEventData(MotionID m, f32 perc, u32 id) : time_perc(perc), event_id(id), motion(m) {}
 };
 
 
@@ -41,7 +41,7 @@ class CControlAnimation : public CControl_ComPure<SControlAnimationData> {
 	
 	// animation events
 	struct SAnimationEvent{
-		F32	time_perc;
+		f32	time_perc;
 		u32		event_id;
 		bool	handled;
 	};
@@ -51,12 +51,11 @@ class CControlAnimation : public CControl_ComPure<SControlAnimationData> {
 	ANIMATION_EVENT_MAP		m_anim_events;
 
 	bool					m_freeze;
-	F32					m_saved_global_speed;
-	F32					m_saved_legs_speed;
-	F32					m_saved_torso_speed;
+	f32					m_saved_global_speed;
+	f32					m_saved_legs_speed;
+	f32					m_saved_torso_speed;
 
 public:
-	
 	bool					m_global_animation_end;
 	bool					m_legs_animation_end;
 	bool					m_torso_animation_end;
@@ -66,7 +65,7 @@ public:
 	virtual void	update_frame			();
 	virtual	void	reset_data				();
 				
-			void	add_anim_event			(MotionID, F32, u32);
+			void	add_anim_event			(MotionID, f32, u32);
 
 			CBlend	*current_blend			() {return m_data.global.blend;}
 
@@ -76,8 +75,7 @@ public:
 			void	unfreeze				();
 
 		// Services
-		IC	F32	motion_time				(MotionID motion_id, IRender_Visual *visual);
-
+		IC	f32	motion_time				(MotionID motion_id, IRender_Visual *visual);
 
 private:
 	void	play				();
@@ -95,7 +93,7 @@ public:
 };
 
 // get motion time, when just MotionID available
-IC F32 CControlAnimation::motion_time(MotionID motion_id, IRender_Visual *visual)
+IC f32 CControlAnimation::motion_time(MotionID motion_id, IRender_Visual *visual)
 {
 	CKinematicsAnimated	*skeleton_animated	= smart_cast<CKinematicsAnimated*>(visual);
 	VERIFY				(skeleton_animated);
@@ -105,4 +103,3 @@ IC F32 CControlAnimation::motion_time(MotionID motion_id, IRender_Visual *visual
 	VERIFY				(motion);
 	return				(motion->GetLength() / motion_def->Speed());
 }
-

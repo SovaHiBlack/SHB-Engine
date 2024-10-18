@@ -181,7 +181,7 @@ void CStateBurerAttackTeleAbstract::FindObjects	()
 	FindFreeObjects					(m_nearest, object->Position());
 
 	// получить список объектов между монстром и врагом
-	F32 dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
+	f32 dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
 	Fvector dir;
 	dir.sub(object->EnemyMan.get_enemy()->Position(), object->Position());
 	dir.normalize();
@@ -189,7 +189,6 @@ void CStateBurerAttackTeleAbstract::FindObjects	()
 	Fvector pos;
 	pos.mad							(object->Position(), dir, dist / 2.f);
 	FindFreeObjects					(m_nearest, pos);	
-	
 
 	// оставить уникальные объекты
 	tele_objects.erase				(
@@ -275,7 +274,7 @@ bool CStateBurerAttackTeleAbstract::CheckTeleStart()
 	if (IsActiveObjects()) return false;
 
 	// проверить дистанцию до врага
-	F32 dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
+	f32 dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
 	if (dist < GOOD_DISTANCE_FOR_TELE) return false;
 
 	// найти телекинетические объекты
@@ -286,7 +285,6 @@ bool CStateBurerAttackTeleAbstract::CheckTeleStart()
 
 	// всё ок можно начинать телекинез
 	return true;
-
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -303,10 +301,9 @@ public:
 
 	bool operator()	 (const CGameObject *tpObject1, const CGameObject *tpObject2) const
 	{
-
-		F32 dist1 = monster_pos.distance_to(tpObject1->Position());
-		F32 dist2 = enemy_pos.distance_to(tpObject2->Position());
-		F32 dist3 = enemy_pos.distance_to(monster_pos);
+		f32 dist1 = monster_pos.distance_to(tpObject1->Position());
+		f32 dist2 = enemy_pos.distance_to(tpObject2->Position());
+		f32 dist3 = enemy_pos.distance_to(monster_pos);
 
 		return ((dist1 < dist3) && (dist2 > dist3));
 	};
@@ -323,13 +320,12 @@ public:
 
 	bool operator()	 (const CGameObject *tpObject1, const CGameObject *tpObject2) const
 	{
-		F32 dist1 = enemy_pos.distance_to(tpObject1->Position());
-		F32 dist2 = enemy_pos.distance_to(tpObject2->Position());
+		f32 dist1 = enemy_pos.distance_to(tpObject1->Position());
+		f32 dist2 = enemy_pos.distance_to(tpObject2->Position());
 
 		return (dist1 < dist2);		
 	};
 };
-
 
 TEMPLATE_SPECIALIZATION
 void CStateBurerAttackTeleAbstract::SelectObjects()
@@ -342,7 +338,7 @@ void CStateBurerAttackTeleAbstract::SelectObjects()
 
 		// применить телекинез на объект
 		
-		F32	height = (object->m_monster_type == CBaseMonster::eMonsterTypeIndoor) ? 1.3f : 2.f;
+		f32	height = (object->m_monster_type == CBaseMonster::eMonsterTypeIndoor) ? 1.3f : 2.f;
 		bool	rotate = (object->m_monster_type == CBaseMonster::eMonsterTypeIndoor) ? false : true;
 		
 		CTelekineticObject *tele_obj = object->CTelekinesis::activate		(obj, 3.f, height, 10000, rotate);
@@ -357,7 +353,6 @@ void CStateBurerAttackTeleAbstract::SelectObjects()
 		if (object->CTelekinesis::get_objects_count() >= object->m_tele_max_handled_objects) break;
 	}
 }
-
 
 #undef TEMPLATE_SPECIALIZATION
 #undef CStateBurerAttackTeleAbstract

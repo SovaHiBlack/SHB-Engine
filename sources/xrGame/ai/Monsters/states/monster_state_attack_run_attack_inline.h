@@ -38,7 +38,7 @@ void CStateMonsterAttackRunAttackAbstract::critical_finalize()
 TEMPLATE_SPECIALIZATION
 bool CStateMonsterAttackRunAttackAbstract::check_start_conditions()
 {
-	F32 dist			= object->MeleeChecker.distance_to_enemy	(object->EnemyMan.get_enemy());
+	f32 dist			= object->MeleeChecker.distance_to_enemy	(object->EnemyMan.get_enemy());
 	
 	if (dist > object->db().m_run_attack_start_dist)	return false;
 	if (dist < object->MeleeChecker.get_min_distance())		return false;

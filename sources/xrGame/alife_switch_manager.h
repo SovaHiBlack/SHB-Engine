@@ -16,10 +16,10 @@ protected:
 	typedef ALife::OBJECT_VECTOR			OBJECT_VECTOR;
 
 protected:
-	F32			m_switch_distance;
-	F32			m_switch_factor;
-	F32			m_online_distance;
-	F32			m_offline_distance;
+	f32			m_switch_distance;
+	f32			m_switch_factor;
+	f32			m_online_distance;
+	f32			m_offline_distance;
 
 private:
 	OBJECT_VECTOR	m_saved_chidren;
@@ -39,11 +39,11 @@ public:
 	IC				CALifeSwitchManager		(xrServer *server, pcstr section);
 	virtual			~CALifeSwitchManager	();
 			void	switch_object			(CSE_ALifeDynamicObject	*object);
-	IC		F32	online_distance			() const;
-	IC		F32	offline_distance		() const;
-	IC		F32	switch_distance			() const;
-	IC		void	set_switch_distance		(F32 switch_distance);
-	IC		void	set_switch_factor		(F32 switch_factor);
+	IC		f32	online_distance			() const;
+	IC		f32	offline_distance		() const;
+	IC		f32	switch_distance			() const;
+	IC		void	set_switch_distance		(f32 switch_distance);
+	IC		void	set_switch_factor		(f32 switch_factor);
 };
 
 #include "alife_switch_manager_inline.h"

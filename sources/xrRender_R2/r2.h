@@ -66,7 +66,7 @@ public:
 
 		u32		forcegloss			: 1;
 		u32		forceskinw			: 1;
-		F32		forcegloss_v		;
+		f32		forcegloss_v		;
 	}			o;
 	struct		_stats		{
 		u32		l_total,	l_visible;
@@ -114,8 +114,8 @@ public:
 
 	shared_str													c_sbase			;
 	shared_str													c_lmaterial		;
-	F32														o_hemi			;
-	F32														o_sun			;
+	f32														o_hemi			;
+	f32														o_sun			;
 	IDirect3DQuery9*											q_sync_point[2]	;
 	u32															q_sync_count	;
 private:
@@ -144,8 +144,8 @@ public:
 	void							render_sun_filtered			();
 	void							render_menu					();
 public:
-	ShaderElement*					rimp_select_sh_static		(IRender_Visual	*pVisual, F32 cdist_sq);
-	ShaderElement*					rimp_select_sh_dynamic		(IRender_Visual	*pVisual, F32 cdist_sq);
+	ShaderElement*					rimp_select_sh_static		(IRender_Visual	*pVisual, f32 cdist_sq);
+	ShaderElement*					rimp_select_sh_dynamic		(IRender_Visual	*pVisual, f32 cdist_sq);
 	D3DVERTEXELEMENT9*				getVB_Format				(int id, BOOL	_alt=FALSE);
 	IDirect3DVertexBuffer9*			getVB						(int id, BOOL	_alt=FALSE);
 	IDirect3DIndexBuffer9*			getIB						(int id, BOOL	_alt=FALSE);
@@ -177,7 +177,7 @@ public:
 		VERIFY				(RC_sampler			== C->type);
 		CTexture*		T	= RCache.get_ActiveTexture	(u32(C->samp.index));
 		VERIFY				(T);
-		F32	mtl			= T->m_material;
+		f32	mtl			= T->m_material;
 #ifdef	DEBUG
 		if (ps_r2_ls_flags.test(R2FLAG_GLOBALMATERIAL))	mtl=ps_r2_gmaterial;
 #endif
@@ -228,10 +228,10 @@ public:
 	virtual void					add_Geometry				(IRender_Visual*	V	);			// add visual(s)	(all culling performed)
 
 	// wallmarks
-	virtual void					add_StaticWallmark			(ref_shader& S, const Fvector& P, F32 s, CDB::TRI* T, Fvector* V);
+	virtual void					add_StaticWallmark			(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* V);
 	virtual void					clear_static_wallmarks		();
 	virtual void					add_SkeletonWallmark		(intrusive_ptr<CSkeletonWallmark> wm);
-	virtual void					add_SkeletonWallmark		(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, F32 size);
+	virtual void					add_SkeletonWallmark		(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size);
 
 	//
 	virtual IBlender*				blender_create				(CLASS_ID cls);

@@ -6,22 +6,22 @@
 #define SORT(a,b)			\
 	if(a>b)					\
 	{						\
-		const F32 c=a;		\
+		const f32 c=a;		\
 		a=b;				\
 		b=c;				\
 	}
 
 //! Edge to edge test based on Franlin Antonio's gem: "Faster Line Segment Intersection", in Graphics Gems III, pp. 199-202
 #define EDGE_EDGE_TEST(V0, U0, U1)						\
-	Bx = ((const F32*)U0)[i0] - ((const F32*)U1)[i0];								\
-	By = ((const F32*)U0)[i1] - ((const F32*)U1)[i1];								\
-	Cx = ((const F32*)V0)[i0] - ((const F32*)U0)[i0];								\
-	Cy = ((const F32*)V0)[i1] - ((const F32*)U0)[i1];								\
+	Bx = ((const f32*)U0)[i0] - ((const f32*)U1)[i0];								\
+	By = ((const f32*)U0)[i1] - ((const f32*)U1)[i1];								\
+	Cx = ((const f32*)V0)[i0] - ((const f32*)U0)[i0];								\
+	Cy = ((const f32*)V0)[i1] - ((const f32*)U0)[i1];								\
 	f  = Ay*Bx - Ax*By;									\
 	d  = By*Cx - Bx*Cy;									\
 	if((f>0.0f && d>=0.0f && d<=f) || (f<0.0f && d<=0.0f && d>=f))	\
 	{													\
-		const F32 e=Ax*Cy - Ay*Cx;					\
+		const f32 e=Ax*Cy - Ay*Cx;					\
 		if(f>0.0f)										\
 		{												\
 			if(e>=0.0f && e<=f) return TRUE;			\
@@ -35,9 +35,9 @@
 //! TO BE DOCUMENTED
 #define EDGE_AGAINST_TRI_EDGES(V0, V1, U0, U1, U2)		\
 {														\
-	F32 Bx,By,Cx,Cy,d,f;								\
-	const F32 Ax = ((const F32*)V1)[i0] - ((const F32*)V0)[i0];					\
-	const F32 Ay = ((const F32*)V1)[i1] - ((const F32*)V0)[i1];					\
+	f32 Bx,By,Cx,Cy,d,f;								\
+	const f32 Ax = ((const f32*)V1)[i0] - ((const f32*)V0)[i0];					\
+	const f32 Ay = ((const f32*)V1)[i1] - ((const f32*)V0)[i1];					\
 	/* test edge U0,U1 against V0,V1 */					\
 	EDGE_EDGE_TEST(V0, U0, U1);							\
 	/* test edge U1,U2 against V0,V1 */					\
@@ -51,20 +51,20 @@
 {														\
 	/* is T1 completly inside T2? */					\
 	/* check if V0 is inside tri(U0,U1,U2) */			\
-	F32 a  = ((const F32*)U1)[i1] - ((const F32*)U0)[i1];							\
-	F32 b  = -(((const F32*)U1)[i0] - ((const F32*)U0)[i0]);						\
-	F32 c  = -a*((const F32*)U0)[i0] - b*((const F32*)U0)[i1];					\
-	F32 d0 = a*((const F32*)V0)[i0] + b*((const F32*)V0)[i1] + c;					\
+	f32 a  = ((const f32*)U1)[i1] - ((const f32*)U0)[i1];							\
+	f32 b  = -(((const f32*)U1)[i0] - ((const f32*)U0)[i0]);						\
+	f32 c  = -a*((const f32*)U0)[i0] - b*((const f32*)U0)[i1];					\
+	f32 d0 = a*((const f32*)V0)[i0] + b*((const f32*)V0)[i1] + c;					\
 														\
-	a  = ((const F32*)U2)[i1] - ((const F32*)U1)[i1];								\
-	b  = -(((const F32*)U2)[i0] - ((const F32*)U1)[i0]);							\
-	c  = -a*((const F32*)U1)[i0] - b*((const F32*)U1)[i1];							\
-	const F32 d1 = a*((const F32*)V0)[i0] + b*((const F32*)V0)[i1] + c;			\
+	a  = ((const f32*)U2)[i1] - ((const f32*)U1)[i1];								\
+	b  = -(((const f32*)U2)[i0] - ((const f32*)U1)[i0]);							\
+	c  = -a*((const f32*)U1)[i0] - b*((const f32*)U1)[i1];							\
+	const f32 d1 = a*((const f32*)V0)[i0] + b*((const f32*)V0)[i1] + c;			\
 														\
-	a  = ((const F32*)U0)[i1] - ((const F32*)U2)[i1];								\
-	b  = -(((const F32*)U0)[i0] - ((const F32*)U2)[i0]);							\
-	c  = -a*((const F32*)U2)[i0] - b*((const F32*)U2)[i1];							\
-	const F32 d2 = a*((const F32*)V0)[i0] + b*((const F32*)V0)[i1] + c;			\
+	a  = ((const f32*)U0)[i1] - ((const f32*)U2)[i1];								\
+	b  = -(((const f32*)U0)[i0] - ((const f32*)U2)[i0]);							\
+	c  = -a*((const f32*)U2)[i0] - b*((const f32*)U2)[i1];							\
+	const f32 d2 = a*((const f32*)V0)[i0] + b*((const f32*)V0)[i1] + c;			\
 	if(d0*d1>0.0f)										\
 	{													\
 		if(d0*d2>0.0f) return TRUE;						\
@@ -74,13 +74,13 @@
 //! TO BE DOCUMENTED
 BOOL CoplanarTriTri(const Point& n, const Point& v0, const Point& v1, const Point& v2, const Point& u0, const Point& u1, const Point& u2)
 {
-	F32 A[3];
+	f32 A[3];
 	short i0,i1;
 	/* first project onto an axis-aligned plane, that maximizes the area */
 	/* of the triangles, compute indices: i0,i1. */
-	A[0] = _abs(((const F32*)n)[0]);
-	A[1] = _abs(((const F32*)n)[1]);
-	A[2] = _abs(((const F32*)n)[2]);
+	A[0] = _abs(((const f32*)n)[0]);
+	A[1] = _abs(((const f32*)n)[1]);
+	A[2] = _abs(((const f32*)n)[2]);
 	if(A[0]>A[1])
 	{
 		if(A[0]>A[2])
@@ -185,13 +185,13 @@ inline_ BOOL AABBTreeCollider::TriTriOverlap(const Point& V0, const Point& V1, c
 	Point E1 = V1 - V0;
 	Point E2 = V2 - V0;
 	const Point N1 = E1 ^ E2;
-	const F32 d1 =-N1 | V0;
+	const f32 d1 =-N1 | V0;
 	// Plane equation 1: N1.X+d1=0
 
 	// Put U0,U1,U2 into plane equation 1 to compute signed distances to the plane
-	F32 du0 = (N1|U0) + d1;
-	F32 du1 = (N1|U1) + d1;
-	F32 du2 = (N1|U2) + d1;
+	f32 du0 = (N1|U0) + d1;
+	f32 du1 = (N1|U1) + d1;
+	f32 du2 = (N1|U2) + d1;
 
 	// Coplanarity robustness check
 #ifdef OPC_TRITRI_EPSILON_TEST
@@ -199,8 +199,8 @@ inline_ BOOL AABBTreeCollider::TriTriOverlap(const Point& V0, const Point& V1, c
 	if(_abs(du1)<LOCAL_EPSILON) du1 = 0.0f;
 	if(_abs(du2)<LOCAL_EPSILON) du2 = 0.0f;
 #endif
-	const F32 du0du1 = du0 * du1;
-	const F32 du0du2 = du0 * du2;
+	const f32 du0du1 = du0 * du1;
+	const f32 du0du2 = du0 * du2;
 
 	if(du0du1>0.0f && du0du2>0.0f)	// same sign on all of them + not equal 0 ?
 		return FALSE;				// no intersection occurs
@@ -209,13 +209,13 @@ inline_ BOOL AABBTreeCollider::TriTriOverlap(const Point& V0, const Point& V1, c
 	E1 = U1 - U0;
 	E2 = U2 - U0;
 	const Point N2 = E1 ^ E2;
-	const F32 d2=-N2 | U0;
+	const f32 d2=-N2 | U0;
 	// plane equation 2: N2.X+d2=0
 
 	// put V0,V1,V2 into plane equation 2
-	F32 dv0 = (N2|V0) + d2;
-	F32 dv1 = (N2|V1) + d2;
-	F32 dv2 = (N2|V2) + d2;
+	f32 dv0 = (N2|V0) + d2;
+	f32 dv1 = (N2|V1) + d2;
+	f32 dv2 = (N2|V2) + d2;
 
 #ifdef OPC_TRITRI_EPSILON_TEST
 	if(_abs(dv0)<LOCAL_EPSILON) dv0 = 0.0f;
@@ -223,8 +223,8 @@ inline_ BOOL AABBTreeCollider::TriTriOverlap(const Point& V0, const Point& V1, c
 	if(_abs(dv2)<LOCAL_EPSILON) dv2 = 0.0f;
 #endif
 
-	const F32 dv0dv1 = dv0 * dv1;
-	const F32 dv0dv2 = dv0 * dv2;
+	const f32 dv0dv1 = dv0 * dv1;
+	const f32 dv0dv2 = dv0 * dv2;
 
 	if(dv0dv1>0.0f && dv0dv2>0.0f)	// same sign on all of them + not equal 0 ?
 		return FALSE;				// no intersection occurs
@@ -233,37 +233,37 @@ inline_ BOOL AABBTreeCollider::TriTriOverlap(const Point& V0, const Point& V1, c
 	const Point D = N1^N2;
 
 	// Compute and index to the largest component of D
-	F32 max=_abs(((const F32*)D)[0]);
+	f32 max=_abs(((const f32*)D)[0]);
 	short index=0;
-	F32 bb=_abs(((const F32*)D)[1]);
-	F32 cc=_abs(((const F32*)D)[2]);
+	f32 bb=_abs(((const f32*)D)[1]);
+	f32 cc=_abs(((const f32*)D)[2]);
 	if(bb>max) max=bb,index=1;
 	if(cc>max) max=cc,index=2;
 
 	// This is the simplified projection onto L
-	const F32 vp0 = ((const F32*)V0)[index];
-	const F32 vp1 = ((const F32*)V1)[index];
-	const F32 vp2 = ((const F32*)V2)[index];
+	const f32 vp0 = ((const f32*)V0)[index];
+	const f32 vp1 = ((const f32*)V1)[index];
+	const f32 vp2 = ((const f32*)V2)[index];
 
-	const F32 up0 = ((const F32*)U0)[index];
-	const F32 up1 = ((const F32*)U1)[index];
-	const F32 up2 = ((const F32*)U2)[index];
+	const f32 up0 = ((const f32*)U0)[index];
+	const f32 up1 = ((const f32*)U1)[index];
+	const f32 up2 = ((const f32*)U2)[index];
 
 	// Compute interval for triangle 1
-	F32 a,b,c,x0,x1;
+	f32 a,b,c,x0,x1;
 	NEWCOMPUTE_INTERVALS(vp0,vp1,vp2,dv0,dv1,dv2,dv0dv1,dv0dv2,a,b,c,x0,x1);
 
 	// Compute interval for triangle 2
-	F32 d,e,f,y0,y1;
+	f32 d,e,f,y0,y1;
 	NEWCOMPUTE_INTERVALS(up0,up1,up2,du0,du1,du2,du0du1,du0du2,d,e,f,y0,y1);
 
-	const F32 xx=x0*x1;
-	const F32 yy=y0*y1;
-	const F32 xxyy=xx*yy;
+	const f32 xx=x0*x1;
+	const f32 yy=y0*y1;
+	const f32 xxyy=xx*yy;
 
-	F32 isect1[2], isect2[2];
+	f32 isect1[2], isect2[2];
 
-	F32 tmp=a*xxyy;
+	f32 tmp=a*xxyy;
 	isect1[0]=tmp+b*x1*yy;
 	isect1[1]=tmp+c*x0*yy;
 

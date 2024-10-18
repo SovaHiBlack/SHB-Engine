@@ -47,7 +47,7 @@
 #endif
 
 const u32	_pmt_psy_attack_delay		= 2000;
-const F32	_pmt_psy_attack_min_angle	= deg(5);
+const f32	_pmt_psy_attack_min_angle	= deg(5);
 
 CController::CController()
 {
@@ -402,28 +402,28 @@ void CController::UpdateCL()
 
 	if (active_control_fx) {
 		u32 time_to_show	= 150;
-		F32 percent		= F32((Device.dwTimeGlobal - time_control_hit_started)) / F32(time_to_show);
-		F32 percent2		= 1 - (percent - TEXTURE_SIZE_PERCENT) / 2 ;
+		f32 percent		= f32((Device.dwTimeGlobal - time_control_hit_started)) / f32(time_to_show);
+		f32 percent2		= 1 - (percent - TEXTURE_SIZE_PERCENT) / 2 ;
 
 		
 		if (percent < TEXTURE_SIZE_PERCENT ) {
 			HUD().GetUI()->UIGame()->RemoveCustomStatic("controller_fx2");
 			SDrawStaticStruct* s = HUD().GetUI()->UIGame()->AddCustomStatic("controller_fx", true);
 			
-			F32 x1 = Device.dwWidth  / 2 - ((Device.dwWidth	/ 2) * percent);
-			F32 y1 = Device.dwHeight / 2 - ((Device.dwHeight	/ 2) * percent);
-			F32 x2 = Device.dwWidth  / 2 + ((Device.dwWidth	/ 2) * percent);
-			F32 y2 = Device.dwHeight / 2 + ((Device.dwHeight	/ 2) * percent);
+			f32 x1 = Device.dwWidth  / 2 - ((Device.dwWidth	/ 2) * percent);
+			f32 y1 = Device.dwHeight / 2 - ((Device.dwHeight	/ 2) * percent);
+			f32 x2 = Device.dwWidth  / 2 + ((Device.dwWidth	/ 2) * percent);
+			f32 y2 = Device.dwHeight / 2 + ((Device.dwHeight	/ 2) * percent);
 
 			s->wnd()->SetWndRect				(x1,y1,x2-x1,y2-y1);
 		} else if (percent2 > 0){
 			HUD().GetUI()->UIGame()->RemoveCustomStatic("controller_fx");
 			SDrawStaticStruct* s = HUD().GetUI()->UIGame()->AddCustomStatic("controller_fx2", true);
 			
-			F32 x1 = Device.dwWidth  / 2 - ((Device.dwWidth	/ 2) * percent2);
-			F32 y1 = Device.dwHeight / 2 - ((Device.dwHeight	/ 2) * percent2);
-			F32 x2 = Device.dwWidth  / 2 + ((Device.dwWidth	/ 2) * percent2);
-			F32 y2 = Device.dwHeight / 2 + ((Device.dwHeight	/ 2) * percent2);
+			f32 x1 = Device.dwWidth  / 2 - ((Device.dwWidth	/ 2) * percent2);
+			f32 y1 = Device.dwHeight / 2 - ((Device.dwHeight	/ 2) * percent2);
+			f32 x2 = Device.dwWidth  / 2 + ((Device.dwWidth	/ 2) * percent2);
+			f32 y2 = Device.dwHeight / 2 + ((Device.dwHeight	/ 2) * percent2);
 
 			s->wnd()->SetWndRect				(x1,y1,x2-x1,y2-y1);
 		} else {
@@ -543,8 +543,8 @@ bool CController::can_psy_fire()
 	if (!EnemyMan.get_enemy())										return false;
 	if (!EnemyMan.see_enemy_now())									return false;
 
-	F32 cur_yaw	= custom_dir().get_head_orientation().current.yaw;
-	F32 dir_yaw	= Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getH();
+	f32 cur_yaw	= custom_dir().get_head_orientation().current.yaw;
+	f32 dir_yaw	= Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getH();
 	dir_yaw			= angle_normalize(-dir_yaw);
 	if (angle_difference(cur_yaw,dir_yaw) > _pmt_psy_attack_min_angle) return false;
 

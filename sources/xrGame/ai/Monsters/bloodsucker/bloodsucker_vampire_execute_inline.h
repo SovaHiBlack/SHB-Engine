@@ -98,7 +98,7 @@ bool CStateBloodsuckerVampireExecuteAbstract::check_start_conditions()
 	const CEntityAlive	*enemy = object->EnemyMan.get_enemy();
 	
 	// проверить дистанцию
-	F32 dist		= object->MeleeChecker.distance_to_enemy	(enemy);
+	f32 dist		= object->MeleeChecker.distance_to_enemy	(enemy);
 	if ((dist > VAMPIRE_MAX_DIST) || (dist < VAMPIRE_MIN_DIST))	return false;
 
 	// проверить направление на врага

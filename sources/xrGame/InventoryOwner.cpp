@@ -296,15 +296,15 @@ void CInventoryOwner::OnItemTake			(CInventoryItem *inventory_item)
 }
 
 //возвращает текуший разброс стрельбы с учетом движения (в радианах)
-F32 CInventoryOwner::GetWeaponAccuracy	() const
+f32 CInventoryOwner::GetWeaponAccuracy	() const
 {
 	return 0.f;
 }
 
 //максимальный переносимы вес
-F32  CInventoryOwner::MaxCarryWeight () const
+f32  CInventoryOwner::MaxCarryWeight () const
 {
-	F32 ret =  inventory().GetMaxWeight();
+	f32 ret =  inventory().GetMaxWeight();
 
 	const CCustomOutfit* outfit	= GetOutfit();
 	if(outfit)

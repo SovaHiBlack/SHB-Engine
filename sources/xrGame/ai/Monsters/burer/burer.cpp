@@ -182,8 +182,8 @@ void CBurer::UpdateGraviObject()
 		return;
 	}
 
-	F32 dt = F32(Device.dwTimeGlobal - m_gravi_object.time_last_update);
-	F32 dist = dt * F32(m_gravi_speed)/1000.f;
+	f32 dt = f32(Device.dwTimeGlobal - m_gravi_object.time_last_update);
+	f32 dist = dt * f32(m_gravi_speed)/1000.0f;
 		
 	if (dist < m_gravi_step) return;
 	
@@ -200,7 +200,7 @@ void CBurer::UpdateGraviObject()
 	dir.sub(enemy_center, new_pos);
 	dir.normalize();
 
-	F32 trace_dist = F32(m_gravi_step);
+	f32 trace_dist = f32(m_gravi_step);
 
 	collide::rq_result	l_rq;
 	if (Level().ObjectSpace.RayPick(new_pos, dir, trace_dist, collide::rqtBoth, l_rq, NULL)) {

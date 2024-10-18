@@ -4,9 +4,9 @@
 #include "ai_monster_defs.h"
 
 struct SEventVelocityBounce : public ControlCom::IEventData {
-	F32	m_ratio;
+	f32	m_ratio;
 
-	IC		SEventVelocityBounce(F32 ratio) : m_ratio(ratio) {}
+	IC		SEventVelocityBounce(f32 ratio) : m_ratio(ratio) {}
 };
 
 
@@ -40,8 +40,8 @@ protected:
 
 			EAccelType				type;	
 
-			F32					calm;
-			F32					aggressive;
+			f32					calm;
+			f32					aggressive;
 
 			VELOCITY_CHAIN_VEC		chain;
 		} m_accel;
@@ -64,7 +64,6 @@ protected:
 		bool					m_state_attack;
 
 protected:
-
 	ANIM_TO_MOTION_MAP			m_anim_motion_map;
 	
 	ANIM_ITEM_VECTOR			m_anim_storage;			
@@ -72,10 +71,9 @@ protected:
 	void						free_anim_storage	();
 
 public:
-
 	EAction					m_tAction;
 
-	F32					m_prev_character_velocity;
+	f32					m_prev_character_velocity;
 
 public:
 				CControlAnimationBase	();
@@ -104,7 +102,7 @@ public:
 
 	// -------------------------------------
 
-	void		LinkAction				(EAction act, EMotionAnim pmt_motion, EMotionAnim pmt_left, EMotionAnim pmt_right, F32 pmt_angle);
+	void		LinkAction				(EAction act, EMotionAnim pmt_motion, EMotionAnim pmt_left, EMotionAnim pmt_right, f32 pmt_angle);
 	void		LinkAction				(EAction act, EMotionAnim pmt_motion);
 
 	// -------------------------------------
@@ -121,10 +119,10 @@ public:
 	// работа с анимациями атак
 	void		AA_reload				(pcstr section);
 	SAAParam	&AA_GetParams			(pcstr anim_name);
-	SAAParam	&AA_GetParams			(MotionID motion, F32 time_perc);
+	SAAParam	&AA_GetParams			(MotionID motion, f32 time_perc);
 
 	// FX's
-	void		FX_Play					(EHitSide side, F32 amount);
+	void		FX_Play					(EHitSide side, f32 amount);
 
 	MotionID	get_motion_id			(EMotionAnim a, u32 index = u32(-1));
 
@@ -143,7 +141,7 @@ protected:
 	CMotionDef	*get_motion_def			(SAnimItem *it, u32 index);
 
 public:
-	F32		GetAnimSpeed			(EMotionAnim anim);
+	f32		GetAnimSpeed			(EMotionAnim anim);
 	bool		IsStandCurAnim			();
 	bool		IsTurningCurAnim		();
 	void		ValidateAnimation		();
@@ -183,15 +181,15 @@ public:
 	IC	void	accel_deactivate		() {m_accel.active = false;	m_accel.enable_braking = false;}
 	IC	void	accel_set_braking		(bool val = true) {m_accel.enable_braking = val;}
 
-	F32	accel_get				(EAccelValue val = eAV_Accel);
+	f32	accel_get				(EAccelValue val = eAV_Accel);
 
 	IC	bool	accel_active			(EAccelValue val = eAV_Accel) {return (val == eAV_Accel) ? m_accel.active : m_accel.enable_braking;}
 
 	void	accel_chain_add			(EMotionAnim anim1, EMotionAnim anim2);
-	bool	accel_chain_get			(F32 cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, F32& a_speed);
+	bool	accel_chain_get			(f32 cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, f32& a_speed);
 	bool	accel_chain_test		();
 
-	bool	accel_check_braking		(F32 before_interval, F32 nominal_speed);
+	bool	accel_check_braking		(f32 before_interval, f32 nominal_speed);
 	bool	braking_mode;
 
 	// --------------------------------------------------------------------------------	
@@ -213,6 +211,6 @@ public:
 	void					select_animation	(bool anim_end = false);
 	void					set_animation_speed	();
 
-	void					check_hit			(MotionID motion, F32 time_perc);
+	void					check_hit			(MotionID motion, f32 time_perc);
 };
 

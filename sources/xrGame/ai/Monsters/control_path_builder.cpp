@@ -168,7 +168,7 @@ bool CControlPathBuilder::build_special(const Fvector &target, u32 node, u32 vel
 // Services
 //////////////////////////////////////////////////////////////////////////
 
-bool CControlPathBuilder::is_path_end(F32 dist_to_end)
+bool CControlPathBuilder::is_path_end(f32 dist_to_end)
 {
 	if (!is_path_built())			return false;
 	if (path_completed())			return true;
@@ -180,7 +180,7 @@ bool CControlPathBuilder::is_path_end(F32 dist_to_end)
 	if (cur_point_idx + 1 >= path_size)	return true;
 
 	// count distance from current object position to the path end
-	F32 cur_dist_to_end = object().Position().distance_to(detail().path()[detail().curr_travel_point_index()+1].position);
+	f32 cur_dist_to_end = object().Position().distance_to(detail().path()[detail().curr_travel_point_index()+1].position);
 	for (u32 i=detail().curr_travel_point_index()+1; i<detail().path().size()-1; i++) {		
 		cur_dist_to_end += detail().path()[i].position.distance_to(detail().path()[i+1].position);
 		if (cur_dist_to_end > dist_to_end) break;
@@ -234,7 +234,7 @@ bool CControlPathBuilder::is_moving_on_path()
 	return (!detail().completed(inherited_com::m_object->Position()) && enabled());
 }
 
-bool CControlPathBuilder::get_node_in_radius(u32 src_node, F32 min_radius, F32 max_radius, u32 attempts, u32 &dest_node)
+bool CControlPathBuilder::get_node_in_radius(u32 src_node, f32 min_radius, f32 max_radius, u32 attempts, u32 &dest_node)
 {
 	Fvector vertex_position = ai().level_graph().vertex_position(src_node);
 
@@ -268,7 +268,7 @@ bool CControlPathBuilder::can_use_distributed_compuations (u32 option) const
 	return inherited::can_use_distributed_compuations(option);
 }
 
-u32	 CControlPathBuilder::find_nearest_vertex				(const u32 &level_vertex_id, const Fvector &target_position, const F32& range)
+u32	 CControlPathBuilder::find_nearest_vertex				(const u32 &level_vertex_id, const Fvector &target_position, const f32& range)
 {
 	xr_vector<u32>	temp;
 

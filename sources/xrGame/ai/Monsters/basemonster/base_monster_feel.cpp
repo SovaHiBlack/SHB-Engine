@@ -28,7 +28,7 @@
 #include "../../../ActorEffector.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 
-void CBaseMonster::feel_sound_new(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, F32 power)
+void CBaseMonster::feel_sound_new(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, f32 power)
 {
 	if (!g_Alive())		return;
 
@@ -44,7 +44,7 @@ void CBaseMonster::feel_sound_new(CObject* who, int eType, CSound_UserDataPtr us
 	// ignore distant sounds
 	Fvector center;
 	Center	(center);
-	F32 dist	= center.distance_to(Position);
+	f32 dist	= center.distance_to(Position);
 	if (dist > db().m_max_hear_dist)	return;
 
 	// ignore sounds if not from enemies and not help sounds
@@ -73,7 +73,7 @@ void CBaseMonster::feel_sound_new(CObject* who, int eType, CSound_UserDataPtr us
 }
 #define MAX_LOCK_TIME 2.f
 
-void CBaseMonster::HitEntity(const CEntity *pEntity, F32 fDamage, F32 impulse, Fvector &dir)
+void CBaseMonster::HitEntity(const CEntity *pEntity, f32 fDamage, f32 impulse, Fvector &dir)
 {
 	if (!g_Alive()) return;
 	if (!pEntity || pEntity->getDestroy()) return;
@@ -111,20 +111,20 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, F32 fDamage, F32 impulse, F
 			SDrawStaticStruct* s = HUD().GetUI()->UIGame()->AddCustomStatic("monster_claws", false);
 			s->m_endTime = Device.fTimeGlobal+3.0f;// 3sec
 			
-			F32 h1;
-			F32 p1;
+			f32 h1;
+			f32 p1;
 			Device.vCameraDirection.getHP	(h1,p1);
 
 			Fvector hd = hit_dir;
 			hd.mul(-1);
-			F32 d = -h1 + hd.getH();
+			f32 d = -h1 + hd.getH();
 			s->wnd()->SetHeading	(d);
 			s->wnd()->SetHeadingPivot(Fvector2().set(256,512));
 			STOP_PROFILE;
 
 			//SetAttackEffector			();
 			
-			F32 time_to_lock		= fDamage * MAX_LOCK_TIME;
+			f32 time_to_lock		= fDamage * MAX_LOCK_TIME;
 			clamp					(time_to_lock, 0.f, MAX_LOCK_TIME);
 			Actor()->lock_accel_for	(int(time_to_lock * 1000));
 
@@ -144,7 +144,7 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, F32 fDamage, F32 impulse, F
 					cam_dir.normalize_safe		();
 					dir.normalize_safe			();
 
-					F32 ang_diff				= angle_difference	(cam_dir.getH(), dir.getH());
+					f32 ang_diff				= angle_difference	(cam_dir.getH(), dir.getH());
 					Fvector						cp;
 					cp.crossproduct				(cam_dir,dir);
 					bool bUp					=(cp.y>0.0f);
@@ -153,10 +153,10 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, F32 fDamage, F32 impulse, F
 					cross.crossproduct			(cam_dir, dir);
 					VERIFY						(ang_diff>=0.0f && ang_diff<=PI);
 
-					F32 _s1 = PI_DIV_8;
-					F32 _s2 = _s1+PI_DIV_4;
-					F32 _s3 = _s2+PI_DIV_4;
-					F32 _s4 = _s3+PI_DIV_4;
+					f32 _s1 = PI_DIV_8;
+					f32 _s2 = _s1+PI_DIV_4;
+					f32 _s3 = _s2+PI_DIV_4;
+					f32 _s4 = _s3+PI_DIV_4;
 
 					if(ang_diff<=_s1){
 						id = 2;
@@ -219,7 +219,7 @@ BOOL  CBaseMonster::feel_vision_isRelevant(CObject* O)
 	return TRUE;
 }
 
-void CBaseMonster::HitSignal(F32 amount, Fvector& vLocalDir, CObject* who, s16 element)
+void CBaseMonster::HitSignal(f32 amount, Fvector& vLocalDir, CObject* who, s16 element)
 {
 	if (!g_Alive()) return;
 	
@@ -229,8 +229,8 @@ void CBaseMonster::HitSignal(F32 amount, Fvector& vLocalDir, CObject* who, s16 e
 	if (element < 0) return;
 
 	// ќпределить направление хита (перед || зад || лево || право)
-	F32 yaw;
-	F32 pitch;
+	f32 yaw;
+	f32 pitch;
 	vLocalDir.getHP(yaw,pitch);
 	
 	yaw = angle_normalize(yaw);
@@ -268,7 +268,7 @@ void CBaseMonster::SetAttackEffector()
 	}
 }
 
-void CBaseMonster::Hit_Psy(CObject *object, F32 value)
+void CBaseMonster::Hit_Psy(CObject *object, f32 value)
 {
 	NET_Packet		P;
 	SHit			HS;
@@ -285,7 +285,7 @@ void CBaseMonster::Hit_Psy(CObject *object, F32 value)
 	u_EventSend		(P);
 }
 
-void CBaseMonster::Hit_Wound(CObject *object, F32 value, const Fvector &dir, F32 impulse)
+void CBaseMonster::Hit_Wound(CObject *object, f32 value, const Fvector &dir, f32 impulse)
 {
 	NET_Packet	P;
 	SHit		HS;

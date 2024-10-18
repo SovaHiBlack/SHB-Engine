@@ -40,15 +40,15 @@ void	CRenderTarget::u_stencil_optimize	(BOOL		common_stencil)
 	VERIFY	(RImplementation.o.nvstencil);
 	RCache.set_ColorWriteEnable	(FALSE);
 	u32		Offset;
-	F32	_w					= F32(Device.dwWidth);
-	F32	_h					= F32(Device.dwHeight);
+	f32	_w					= f32(Device.dwWidth);
+	f32	_h					= f32(Device.dwHeight);
 	u32		C					= color_rgba	(255,255,255,255);
-	F32	eps					= EPSILON_7;
+	f32	eps					= EPSILON_7;
 	FVF::TL* pv					= (FVF::TL*) RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-	pv->set						(eps, F32(_h+eps),	eps,	1.f, C, 0, 0);	pv++;
+	pv->set						(eps, f32(_h+eps),	eps,	1.f, C, 0, 0);	pv++;
 	pv->set						(eps,			eps,			eps,	1.f, C, 0, 0);	pv++;
-	pv->set						(F32(_w+eps), F32(_h+eps),	eps,	1.f, C, 0, 0);	pv++;
-	pv->set						(F32(_w+eps),	eps,			eps,	1.f, C, 0, 0);	pv++;
+	pv->set						(f32(_w+eps), f32(_h+eps),	eps,	1.f, C, 0, 0);	pv++;
+	pv->set						(f32(_w+eps),	eps,			eps,	1.f, C, 0, 0);	pv++;
 	RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 	RCache.set_CullMode			(CULL_NONE	);
 	if (common_stencil)			RCache.set_Stencil	(TRUE,D3DCMP_LESSEQUAL,dwLightMarkerID,0xff,0x00);	// keep/keep/keep
@@ -60,10 +60,10 @@ void	CRenderTarget::u_stencil_optimize	(BOOL		common_stencil)
 // 2D texgen (texture adjustment matrix)
 void	CRenderTarget::u_compute_texgen_screen	(Fmatrix& m_Texgen)
 {
-	F32	_w						= F32(Device.dwWidth);
-	F32	_h						= F32(Device.dwHeight);
-	F32	o_w						= (.5f / _w);
-	F32	o_h						= (.5f / _h);
+	f32	_w						= f32(Device.dwWidth);
+	f32	_h						= f32(Device.dwHeight);
+	f32	o_w						= (.5f / _w);
+	f32	o_h						= (.5f / _h);
 	Fmatrix			m_TexelAdjust		= 
 	{
 		0.5f,				0.0f,				0.0f,			0.0f,
@@ -88,29 +88,29 @@ void	CRenderTarget::u_compute_texgen_jitter	(Fmatrix&		m_Texgen_J)
 	m_Texgen_J.mul	(m_TexelAdjust,RCache.xforms.m_wvp);
 
 	// rescale - tile it
-	F32	scale_X			= F32(Device.dwWidth)	/ F32(TEX_jitter);
-	F32	scale_Y			= F32(Device.dwHeight)/ F32(TEX_jitter);
-	F32	offset			= (.5f / F32(TEX_jitter));
+	f32	scale_X			= f32(Device.dwWidth)	/ f32(TEX_jitter);
+	f32	scale_Y			= f32(Device.dwHeight)/ f32(TEX_jitter);
+	f32	offset			= (.5f / f32(TEX_jitter));
 	m_TexelAdjust.scale			(scale_X,	scale_Y,1.f	);
 	m_TexelAdjust.translate_over(offset,	offset,	0	);
 	m_Texgen_J.mulA_44			(m_TexelAdjust);
 }
 
-u8		fpack			(F32 v)				{
+u8		fpack			(f32 v)				{
 	s32	_v	= iFloor	(((v+1)*.5f)*255.f + .5f);
 	clamp	(_v,0,255);
 	return	u8(_v);
 }
-u8		fpackZ			(F32 v)				{
+u8		fpackZ			(f32 v)				{
 	s32	_v	= iFloor	(_abs(v)*255.f + .5f);
 	clamp	(_v,0,255);
 	return	u8(_v);
 }
 Fvector	vunpack			(s32 x, s32 y, s32 z)	{
 	Fvector	pck;
-	pck.x	= (F32(x)/255.f - .5f)*2.f;
-	pck.y	= (F32(y)/255.f - .5f)*2.f;
-	pck.z	= -F32(z)/255.f;
+	pck.x	= (f32(x)/255.f - .5f)*2.f;
+	pck.y	= (f32(y)/255.f - .5f)*2.f;
+	pck.z	= -f32(z)/255.f;
 	return	pck;
 }
 Fvector	vunpack			(Ivector src)			{
@@ -123,7 +123,7 @@ Ivector	vpack			(Fvector src)
 	int by			= fpack	(src.y);
 	int bz			= fpackZ(src.z);
 	// dumb test
-	F32	e_best	= flt_max;
+	f32	e_best	= flt_max;
 	int		r=bx,g=by,b=bz;
 #ifdef DEBUG
 	int		d=0;
@@ -135,11 +135,11 @@ Ivector	vpack			(Fvector src)
 	for (int z=_max(bz-d,0); z<=_min(bz+d,255); z++)
 	{
 		_v				= vunpack(x,y,z);
-		F32	m		= _v.magnitude();
-		F32	me		= _abs(m-1.f);
+		f32	m		= _v.magnitude();
+		f32	me		= _abs(m-1.f);
 		if	(me>0.03f)	continue;
 		_v.div	(m);
-		F32	e		= _abs(src.dotproduct(_v)-1.f);
+		f32	e		= _abs(src.dotproduct(_v)-1.f);
 		if (e<e_best)	{
 			e_best		= e;
 			r=x,g=y,b=z;
@@ -369,11 +369,11 @@ CRenderTarget::CRenderTarget		()
 					for (u32 x=0; x<TEX_material_LdotN; x++)
 					{
 						u16*	p	=	(u16*)		(LPBYTE (R.pBits) + slice*R.SlicePitch + y*R.RowPitch + x*2);
-						F32	ld	= F32(x)	/ F32(TEX_material_LdotN-1);
-						F32	ls	= F32(y)	/ F32(TEX_material_LdotH-1) + EPSILON_7;
+						f32	ld	= f32(x)	/ f32(TEX_material_LdotN-1);
+						f32	ls	= f32(y)	/ f32(TEX_material_LdotH-1) + EPSILON_7;
 						ls			*=	powf(ld,1/32.f);
-						F32	fd;
-						F32 fs;
+						f32	fd;
+						f32 fs;
 
 						switch	(slice)
 						{
@@ -390,9 +390,9 @@ CRenderTarget::CRenderTarget		()
 							fs	= powf(ls*1.01f,128.f	);
 								}	break;
 						case 3:	{ // looks like Metal
-							F32	s0	=	_abs	(1-_abs	(0.05f*_sin(33.f*ld)+ld-ls));
-							F32	s1	=	_abs	(1-_abs	(0.05f*_cos(33.f*ld*ls)+ld-ls));
-							F32	s2	=	_abs	(1-_abs	(ld-ls));
+							f32	s0	=	_abs	(1-_abs	(0.05f*_sin(33.f*ld)+ld-ls));
+							f32	s1	=	_abs	(1-_abs	(0.05f*_cos(33.f*ld*ls)+ld-ls));
+							f32	s2	=	_abs	(1-_abs	(ld-ls));
 							fd		=	ld;				// 1.0
 							fs		=	powf	(_max(_max(s0,s1),s2), 24.f);
 							fs		*=	powf	(ld,1/7.f);

@@ -16,7 +16,7 @@ void	CStatTimer::FrameStart()
 }
 void	CStatTimer::FrameEnd()
 {
-	F32 _time = 1000.f * F32(double(accum) / double(CPU::qpc_freq));
+	f32 _time = 1000.f * f32(double(accum) / double(CPU::qpc_freq));
 	if (_time > result)	result = _time;
 	else				result = 0.99f * result + 0.01f * _time;
 }

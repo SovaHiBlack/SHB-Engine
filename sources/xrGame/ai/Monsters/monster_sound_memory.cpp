@@ -73,7 +73,7 @@ void CMonsterSoundMemory::HearSound(const SoundElem &s)
 
 }
 
-void CMonsterSoundMemory::HearSound(const CObject* who, int eType, const Fvector &Position, F32 power, TTime time)
+void CMonsterSoundMemory::HearSound(const CObject* who, int eType, const Fvector &Position, f32 power, TTime time)
 {
 	SoundElem s;
 	s.SetConvert(who,eType,Position,power,time);
@@ -147,7 +147,7 @@ void CMonsterSoundMemory::UpdateHearing()
 	if (m_time_help_sound + time_help_sound_remember < time()) m_time_help_sound = 0;
 }
 
-bool CMonsterSoundMemory::is_loud_sound(F32 val)
+bool CMonsterSoundMemory::is_loud_sound(f32 val)
 {
 	for (u32 i=0; i<Sounds.size(); i++) 
 		if (Sounds[i].power > val) return true;

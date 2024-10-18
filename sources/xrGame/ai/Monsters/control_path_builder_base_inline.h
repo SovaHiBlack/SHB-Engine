@@ -1,6 +1,6 @@
 #pragma once
 
-IC	void CControlPathBuilderBase::set_cover_params(F32 min, F32 max, F32 dev, F32 radius)
+IC	void CControlPathBuilderBase::set_cover_params(f32 min, f32 max, f32 dev, f32 radius)
 {
 	m_cover_info.min_dist		= min;
 	m_cover_info.max_dist		= max;
@@ -18,7 +18,7 @@ IC void CControlPathBuilderBase::set_rebuild_time(u32 time)
 	m_time	= time;
 }
 
-IC void	CControlPathBuilderBase::set_distance_to_end(F32 dist)
+IC void	CControlPathBuilderBase::set_distance_to_end(f32 dist)
 {
 	m_distance_to_path_end = dist;
 }

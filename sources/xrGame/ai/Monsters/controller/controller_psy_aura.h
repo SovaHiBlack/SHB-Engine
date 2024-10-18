@@ -36,15 +36,15 @@ class CControllerAura : public CPPEffectorCustomController<CPPEffectorController
 
 	SAuraSound			aura_sound;
 
-	F32				aura_radius;
-	F32				aura_damage;
+	f32				aura_radius;
+	f32				aura_damage;
 
 	u32					m_time_fake_aura;
 
 	u32					m_time_fake_aura_duration;
 	u32					m_time_fake_aura_delay;
-	F32				m_fake_max_add_dist;
-	F32				m_fake_min_add_dist;
+	f32				m_fake_max_add_dist;
+	f32				m_fake_min_add_dist;
 
 	// hits
 	enum {

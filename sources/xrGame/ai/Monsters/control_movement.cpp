@@ -22,19 +22,21 @@ void CControlMovement::update_frame()
 	m_man->path_builder().set_desirable_speed	(m_velocity_current);
 }
 
-F32 CControlMovement::real_velocity()
+f32 CControlMovement::real_velocity()
 {
 	CPHMovementControl		*movement_control = m_object->character_physics_support()->movement();
 	VERIFY					(movement_control);
 
 	if (movement_control->IsCharacterEnabled()){ 
-		F32 tmp			= 	movement_control->GetXZActVelInGoingDir();
+		f32 tmp			= 	movement_control->GetXZActVelInGoingDir();
+
 #ifdef DEBUG
 		if (_abs(tmp) > 1000) {
 			Log				("! GetVelocity",movement_control->GetVelocity());
 			Log				("! GetPathDir",movement_control->GetPathDir());
 		}
 #endif // DEBUG
+
 		clamp				(tmp, 0.0f, 15.0f);
 		VERIFY2				(_abs(tmp)<1000,"movement_control->GetXZActVelInGoingDir() returns too big speed");
 		return				tmp;

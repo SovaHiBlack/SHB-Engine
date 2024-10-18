@@ -10,8 +10,8 @@ void CRenderTarget::accum_point		(light* L)
 
 	// Common
 	Fvector		L_pos;
-	F32		L_spec;
-	F32		L_R					= L->range;
+	f32		L_spec;
+	f32		L_R					= L->range;
 	Fvector		L_clr;				L_clr.set		(L->color.r,L->color.g,L->color.b);
 	L_spec							= u_diffuse2s	(L_clr);
 	Device.mView.transform_tiny		(L_pos,L->position);

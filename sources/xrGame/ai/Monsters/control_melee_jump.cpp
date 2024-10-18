@@ -47,9 +47,9 @@ void CControlMeleeJump::activate()
 	dir_to_enemy.sub		(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());
 	dir_to_enemy.normalize	();
 	
-	F32		target_yaw		= angle_normalize(-dir_to_enemy.getH());
+	f32		target_yaw		= angle_normalize(-dir_to_enemy.getH());
 	MotionID	motion			= ((m_man->direction().is_from_right(target_yaw)) ? m_data.anim_rs : m_data.anim_ls );
-	F32		anim_time		= m_man->animation().motion_time(motion, m_object->Visual());
+	f32		anim_time		= m_man->animation().motion_time(motion, m_object->Visual());
 
 	// set yaw
 	SControlDirectionData		*ctrl_data_dir = (SControlDirectionData*)m_man->data(this, ControlCom::eControlDir); 
@@ -57,7 +57,7 @@ void CControlMeleeJump::activate()
 	ctrl_data_dir->heading.target_angle		= target_yaw;
 
 	// set angular speed
-	F32 cur_yaw;
+	f32 cur_yaw;
 	m_man->direction().get_heading			(cur_yaw, target_yaw);
 	ctrl_data_dir->heading.target_speed		= angle_difference(cur_yaw,target_yaw)/ anim_time;
 	ctrl_data_dir->linear_dependency		= false;

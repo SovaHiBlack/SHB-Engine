@@ -15,7 +15,7 @@
 #include "../control_direction_base.h"
 
 // каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
-void CBaseMonster::LookPosition(Fvector to_point, F32 angular_speed)
+void CBaseMonster::LookPosition(Fvector to_point, f32 angular_speed)
 {
 	// по-умолчанию просто изменить movement().m_body.target.yaw
 	Fvector	d;
@@ -52,7 +52,7 @@ bool CBaseMonster::GetCoverFromEnemy(const Fvector &enemy_pos, Fvector &position
 	return true;
 }
 
-bool CBaseMonster::GetCoverFromPoint(const Fvector &pos, Fvector &position, u32 &vertex_id, F32 min_dist, F32 max_dist, F32 radius)
+bool CBaseMonster::GetCoverFromPoint(const Fvector &pos, Fvector &position, u32 &vertex_id, f32 min_dist, f32 max_dist, f32 radius)
 {
 	m_enemy_cover_evaluator->setup(pos, min_dist,max_dist);
 	const CCoverPoint	 *point = ai().cover_manager().best_cover(Position(),radius,*m_enemy_cover_evaluator);
@@ -63,7 +63,7 @@ bool CBaseMonster::GetCoverFromPoint(const Fvector &pos, Fvector &position, u32 
 	return true;
 }
 
-bool CBaseMonster::GetCoverCloseToPoint(const Fvector &dest_pos, F32 min_dist, F32 max_dist, F32 deviation, F32 radius ,Fvector &position, u32 &vertex_id)
+bool CBaseMonster::GetCoverCloseToPoint(const Fvector &dest_pos, f32 min_dist, f32 max_dist, f32 deviation, f32 radius ,Fvector &position, u32 &vertex_id)
 {
 	m_cover_evaluator_close_point->setup(dest_pos,min_dist, max_dist,deviation);
 	const CCoverPoint	 *point = ai().cover_manager().best_cover(Position(),radius,*m_cover_evaluator_close_point);

@@ -32,7 +32,7 @@ BOOL CPPEffectorControllerAura::update()
 	if (m_effector_state == eStatePermanent) {
 		m_factor = 1.f;
 	} else {
-		m_factor = F32(Device.dwTimeGlobal - m_time_state_started) / F32(m_time_to_fade);
+		m_factor = f32(Device.dwTimeGlobal - m_time_state_started) / f32(m_time_to_fade);
 		if (m_effector_state == eStateFadeOut) m_factor = 1 - m_factor;
 
 		if (m_factor > 1) {
@@ -71,7 +71,7 @@ void CControllerAura::update_schedule()
 {
 	if (!m_object->g_Alive()) return;
 
-	F32 dist_to_actor		= Actor()->Position().distance_to(m_object->Position());
+	f32 dist_to_actor		= Actor()->Position().distance_to(m_object->Position());
 
 	if ((dist_to_actor > aura_radius + FAKE_MIN_ADD_DIST) && (dist_to_actor < aura_radius + FAKE_MAX_ADD_DIST)) 
 	{

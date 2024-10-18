@@ -41,12 +41,12 @@ public:
 	{
 		return u32(GetElapsed_ticks() * u64(1000) / CPU::qpc_freq);
 	}
-	IC	F32		GetElapsed_sec()const
+	IC	f32		GetElapsed_sec()const
 	{
 
 		FPU::m64r();
 
-		F32		_result = F32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
+		f32		_result = f32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
 
 		FPU::m24r();
 
@@ -64,7 +64,7 @@ private:
 	typedef CTimerBase					inherited;
 
 private:
-	F32					m_time_factor;
+	f32					m_time_factor;
 	u64					m_real_ticks;
 	u64					m_ticks;
 
@@ -94,12 +94,12 @@ public:
 		m_ticks = 0;
 	}
 
-	IC	const F32& time_factor() const
+	IC	const f32& time_factor() const
 	{
 		return			(m_time_factor);
 	}
 
-	IC	void			time_factor(const F32& time_factor)
+	IC	void			time_factor(const f32& time_factor)
 	{
 		u64				current = inherited::GetElapsed_ticks();
 		m_ticks = GetElapsed_ticks(current);
@@ -123,11 +123,11 @@ public:
 		return			(u32(GetElapsed_ticks() * u64(1000) / CPU::qpc_freq));
 	}
 
-	F32			GetElapsed_sec() const
+	f32			GetElapsed_sec() const
 	{
 		FPU::m64r();
 
-		F32			result = F32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
+		f32			result = f32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
 
 		FPU::m24r();
 
@@ -189,8 +189,9 @@ class XRCORE_API CStatTimer
 public:
 	CTimer		T;
 	u64			accum;
-	F32			result;
+	f32			result;
 	u32			count;
+
 public:
 	CStatTimer();
 	void		FrameStart();
@@ -214,12 +215,11 @@ public:
 	{
 		return u32(GetElapsed_ticks() * u64(1000) / CPU::qpc_freq);
 	}
-	IC	F32	GetElapsed_sec()const
+	IC	f32	GetElapsed_sec()const
 	{
-
 		FPU::m64r();
 
-		F32		_result = F32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
+		f32		_result = f32(double(GetElapsed_ticks()) / double(CPU::qpc_freq));
 
 		FPU::m24r();
 

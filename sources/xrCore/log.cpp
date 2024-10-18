@@ -121,7 +121,7 @@ void Log(pcstr msg, int dop)
 	Log(buf);
 }
 
-void Log(pcstr msg, F32 dop)
+void Log(pcstr msg, f32 dop)
 {
 	char buf[1024];
 

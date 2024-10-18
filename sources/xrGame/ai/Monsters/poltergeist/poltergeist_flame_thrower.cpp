@@ -193,7 +193,7 @@ void CPolterFlame::update_schedule()
 					collide::rq_result rq;
 					if (Level().ObjectSpace.RayPick(elem->position, elem->target_dir, m_length, collide::rqtBoth, rq, NULL)) {
 						if ((rq.O == elem->target_object) && (rq.range < m_length)) {
-							F32		hit_value;
+							f32		hit_value;
 							hit_value	= m_hit_value - m_hit_value * rq.range / m_length;
 
 							NET_Packet			P;
@@ -238,7 +238,7 @@ void CPolterFlame::update_schedule()
 	// check if we can create another flame
 	if (m_object->g_Alive() && m_object->EnemyMan.get_enemy() && (m_flames.size() < m_count)) {
 		// check aura radius and accessibility
-		F32 dist = m_object->EnemyMan.get_enemy()->Position().distance_to(m_object->Position());
+		f32 dist = m_object->EnemyMan.get_enemy()->Position().distance_to(m_object->Position());
 		if ((dist < m_pmt_aura_radius) && m_object->control().path_builder().accessible(m_object->EnemyMan.get_enemy()->Position())) {
 			// check timing
 			if (m_time_flame_started + m_delay < time()) {
@@ -282,8 +282,8 @@ bool CPolterFlame::get_valid_flame_position(const CObject *target_object, Fvecto
 	if (!Obj) return (false);
 
 	Fvector dir;
-	F32 h;
-	F32 p;
+	f32 h;
+	f32 p;
 
 	Fvector vertex_position;
 	Fvector new_pos;
@@ -306,7 +306,7 @@ bool CPolterFlame::get_valid_flame_position(const CObject *target_object, Fvecto
 		}
 	}
 
-	F32 angle = ai().level_graph().vertex_cover_angle(Obj->ai_location().level_vertex_id(),PI_DIV_6,std::less<F32>());
+	f32 angle = ai().level_graph().vertex_cover_angle(Obj->ai_location().level_vertex_id(),PI_DIV_6,std::less<f32>());
 
 	dir.set(1.f,0.f,0.f);
 	dir.setHP(angle + PI, 0.f);

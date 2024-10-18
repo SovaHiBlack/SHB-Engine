@@ -50,15 +50,15 @@ public:
 	virtual	bool	can_use_distributed_compuations (u32 option) const;
 
 			// services
-			bool	is_path_end				(F32 dist_to_end);
+			bool	is_path_end				(f32 dist_to_end);
 			bool	valid_destination		(const Fvector &pos, u32 node);
 			bool	valid_and_accessible	(Fvector &pos, u32 node);			// validate with a small correction
 			bool	is_moving_on_path		();
 
-			bool	get_node_in_radius		(u32 src_node, F32 min_radius, F32 max_radius, u32 attempts, u32 &dest_node);
+			bool	get_node_in_radius		(u32 src_node, f32 min_radius, f32 max_radius, u32 attempts, u32 &dest_node);
 			void	fix_position			(const Fvector &pos, u32 node, Fvector &res_pos);
 			
-	static	u32		find_nearest_vertex		(const u32 &level_vertex_id, const Fvector &target_position, const F32& range);
+	static	u32		find_nearest_vertex		(const u32 &level_vertex_id, const Fvector &target_position, const f32& range);
 
 			bool	is_path_built			();
 

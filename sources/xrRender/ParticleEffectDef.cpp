@@ -43,19 +43,19 @@ void CPEDef::SetName(pcstr name)
     m_Name				= name;
 }
 
-void CPEDef::ExecuteAnimate(Particle *particles, u32 p_cnt, F32 dt)
+void CPEDef::ExecuteAnimate(Particle *particles, u32 p_cnt, f32 dt)
 {
-	F32 speedFac = m_Frame.m_fSpeed * dt;
+	f32 speedFac = m_Frame.m_fSpeed * dt;
 	for(u32 i = 0; i < p_cnt; i++){
 		Particle &m = particles[i];
-		F32 f						= (F32(m.frame)/255.f+((m.flags.is(Particle::ANIMATE_CCW))?-1.f:1.f)*speedFac);
+		f32 f						= (f32(m.frame)/255.f+((m.flags.is(Particle::ANIMATE_CCW))?-1.f:1.f)*speedFac);
 		if (f>m_Frame.m_iFrameCount)f-=m_Frame.m_iFrameCount;
 		if (f<0.f)					f+=m_Frame.m_iFrameCount;
 		m.frame						= (u16)iFloor(f*255.f);
 	}
 }
 
-void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, F32 dt, CParticleEffect* owner, CollisionCallback cb)
+void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, f32 dt, CParticleEffect* owner, CollisionCallback cb)
 {
 	pVector pt,n;
 	// Must traverse list in reverse order so Remove will work
@@ -68,7 +68,7 @@ void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, F32 dt, CPar
 			pick_needed = false;
 			Fvector 	dir;
 			dir.sub		(m.pos,m.posB);
-			F32 dist 	= dir.magnitude();
+			f32 dist 	= dir.magnitude();
 			if (dist>=EPS){
 				dir.div	(dist);
 				collide::rq_result	RQ;
@@ -88,7 +88,7 @@ void CPEDef::ExecuteCollision(PAPI::Particle* particles, u32 p_cnt, F32 dt, CPar
 	                   	ParticleManager()->RemoveParticle(owner->m_HandleEffect,i);
 					}else{
 						// Compute tangential and normal components of velocity
-						F32 nmag = m.vel * n;
+						f32 nmag = m.vel * n;
 						pVector vn(n * nmag); 	// Normal Vn = (V.N)N
 						pVector vt(m.vel - vn);	// Tangent Vt = V - Vn
 

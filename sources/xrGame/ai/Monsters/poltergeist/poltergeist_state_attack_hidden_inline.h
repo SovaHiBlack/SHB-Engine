@@ -41,7 +41,7 @@ void CStatePoltergeistAttackHiddenAbstract::execute()
 TEMPLATE_SPECIALIZATION
 void CStatePoltergeistAttackHiddenAbstract::select_target_point()
 {
-	F32 dist = object->Position().distance_to(object->EnemyMan.get_enemy_position());
+	f32 dist = object->Position().distance_to(object->EnemyMan.get_enemy_position());
 	if (dist > FLY_AROUND_DIST) {
 		m_target.point	= object->EnemyMan.get_enemy_position();
 		m_target.node	= object->EnemyMan.get_enemy_vertex();

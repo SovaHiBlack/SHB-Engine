@@ -20,7 +20,6 @@ void CControlRotationJump::reinit()
 	m_skeleton_animated			= smart_cast<CKinematicsAnimated*>(m_object->Visual());
 }
 
-
 void CControlRotationJump::activate()
 {
 	m_man->capture_pure	(this);
@@ -30,7 +29,7 @@ void CControlRotationJump::activate()
 	m_man->path_stop	(this);
 	m_man->move_stop	(this);
 
-	F32 yaw			= Fvector().sub(m_object->EnemyMan.get_enemy()->Position(), m_object->Position()).getH();
+	f32 yaw			= Fvector().sub(m_object->EnemyMan.get_enemy()->Position(), m_object->Position()).getH();
 	m_right_side		=  m_man->direction().is_from_right(angle_normalize(-yaw));
 	
 	//////////////////////////////////////////////////////////////////////////
@@ -93,7 +92,7 @@ void CControlRotationJump::stop_at_once()
 	SControlDirectionData					*ctrl_data_dir = (SControlDirectionData*)m_man->data(this, ControlCom::eControlDir); 
 	VERIFY									(ctrl_data_dir);	
 
-	F32 target_yaw;
+	f32 target_yaw;
 	if (m_data.flags.is(SControlRotationJumpData::eRotateOnce) && m_object->EnemyMan.get_enemy()) {
 		// if rotate once so rotate to enemy
 		Fvector					dir_to_enemy;
@@ -106,7 +105,7 @@ void CControlRotationJump::stop_at_once()
 
 	ctrl_data_dir->heading.target_angle		= target_yaw;
 
-	F32 cur_yaw;
+	f32 cur_yaw;
 	m_man->direction().get_heading			(cur_yaw, target_yaw);
 	ctrl_data_dir->heading.target_speed		= angle_difference(cur_yaw,target_yaw)/ m_time;
 	ctrl_data_dir->linear_dependency		= false;
@@ -129,22 +128,21 @@ void CControlRotationJump::build_line_first()
 	// set acceleration and velocity
 	m_start_velocity			= m_man->movement().velocity_current();
 	m_target_velocity			= 0.f;
-	
+
 	// acceleration
 	m_accel = (m_target_velocity - m_start_velocity) / m_time;
 
 	// path distance
 	m_dist = (m_target_velocity*m_target_velocity - m_start_velocity*m_start_velocity) / (2*m_accel);
-	
-	
+
 	// set angular speed in exclusive force mode
 	SControlDirectionData					*ctrl_data_dir = (SControlDirectionData*)m_man->data(this, ControlCom::eControlDir); 
 	VERIFY									(ctrl_data_dir);	
 
-	F32 target_yaw						= angle_normalize(-m_object->Direction().getH() + (m_right_side ? m_data.turn_angle : -m_data.turn_angle));
+	f32 target_yaw						= angle_normalize(-m_object->Direction().getH() + (m_right_side ? m_data.turn_angle : -m_data.turn_angle));
 	ctrl_data_dir->heading.target_angle		= target_yaw;
 	
-	F32 cur_yaw;
+	f32 cur_yaw;
 	m_man->direction().get_heading			(cur_yaw, target_yaw);
 	ctrl_data_dir->heading.target_speed		= angle_difference(cur_yaw,target_yaw)/ m_time;
 	ctrl_data_dir->linear_dependency		= false;
@@ -209,18 +207,17 @@ void CControlRotationJump::build_line_second()
 	dir_to_enemy.sub		(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());
 	dir_to_enemy.normalize	();
 	
-	F32 target_yaw						= dir_to_enemy.getH();
+	f32 target_yaw						= dir_to_enemy.getH();
 	target_yaw								= angle_normalize(-target_yaw);
 	ctrl_data_dir->heading.target_angle		= target_yaw;
 
-	F32 cur_yaw;
+	f32 cur_yaw;
 	m_man->direction().get_heading			(cur_yaw, target_yaw);
 	ctrl_data_dir->heading.target_speed		= angle_difference(cur_yaw,target_yaw)/ m_time;
 	ctrl_data_dir->linear_dependency		= false;
 
 	VERIFY									(!fis_zero(ctrl_data_dir->heading.target_speed));
-	
-	
+
 	// Velocity mask
 	u32 velocity_mask = MonsterMovement::eVelocityParameterStand | MonsterMovement::eVelocityParameterRunNormal;
 
@@ -252,4 +249,3 @@ void CControlRotationJump::build_line_second()
 		ctrl_data->global.actual	= false;
 	}
 }
-

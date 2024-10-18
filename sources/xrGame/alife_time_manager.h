@@ -14,8 +14,8 @@
 class CALifeTimeManager {
 private:
 	ALife::_TIME_ID					m_game_time;
-	F32							m_time_factor;
-	F32							m_normal_time_factor;
+	f32							m_time_factor;
+	f32							m_normal_time_factor;
 	u32								m_start_time;
 
 private:
@@ -27,10 +27,10 @@ public:
 	virtual void					save					(IWriter	&memory_stream);
 	virtual void					load					(IReader	&file_stream);
 			void					init					(pcstr		section);
-	IC		void					set_time_factor			(F32		time_factor);
+	IC		void					set_time_factor			(f32		time_factor);
 	IC		ALife::_TIME_ID			game_time				() const;
-	IC		F32					time_factor				() const;
-	IC		F32					normal_time_factor		() const;
+	IC		f32					time_factor				() const;
+	IC		f32					normal_time_factor		() const;
 };
 
 #include "alife_time_manager_inline.h"

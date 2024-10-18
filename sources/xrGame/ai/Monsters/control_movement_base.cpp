@@ -60,7 +60,7 @@ void CControlMovementBase::update_frame()
 	ctrl_data->acc				= m_accel;
 }
 
-void CControlMovementBase::set_velocity(F32 val, bool max_acc)
+void CControlMovementBase::set_velocity(f32 val, bool max_acc)
 {
 	m_velocity				= val;
 	if (max_acc) m_accel	= flt_max;
@@ -85,13 +85,13 @@ void CControlMovementBase::stop_accel()
 						flt_max);
 }
 
-F32 CControlMovementBase::get_velocity_from_path()
+f32 CControlMovementBase::get_velocity_from_path()
 {
 	if (m_man->path_builder().path().empty())	return 0.f;
 	if (!m_man->path_builder().enabled())		return 0.f;	
 
 	// get target velocity from path
-	F32 velocity = 0.f;
+	f32 velocity = 0.0f;
 
 	CDetailPathManager &detail = m_man->path_builder().detail();
 

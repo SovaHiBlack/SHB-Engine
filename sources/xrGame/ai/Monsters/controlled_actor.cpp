@@ -51,23 +51,24 @@ void CControlledActor::look_point(const Fvector &point)
 void CControlledActor::update_turn()
 {
 	// get yaw and pitch to target
-	F32 cam_target_yaw, cam_target_pitch;
+	f32 cam_target_yaw;
+	f32 cam_target_pitch;
 	
 	Fvector	P,D,N;
 	m_actor->cam_Active()->Get				(P,D,N);
 	Fvector().sub(m_target_point, P).getHP	(cam_target_yaw, cam_target_pitch);
 
 	// get yaw and pitch of current cam direction
-	F32								cam_current_yaw;
-	F32								cam_current_pitch;
+	f32								cam_current_yaw;
+	f32								cam_current_pitch;
 	D.getHP								(cam_current_yaw, cam_current_pitch);	
 
 	// YAW
-	F32								speed_factor = angle_difference(cam_current_yaw, cam_target_yaw) / MAX_DIST;
+	f32								speed_factor = angle_difference(cam_current_yaw, cam_target_yaw) / MAX_DIST;
 	clamp								(speed_factor, 0.f, 1.f);
 	if (speed_factor > 0.5f)			speed_factor = 1.f - speed_factor;
 	
-	F32								speed;
+	f32								speed;
 	if (fsimilar(cam_current_yaw, cam_target_yaw, EPS_ANGLE)) {
 		m_turned_yaw	= true;
 	} else {
@@ -77,7 +78,6 @@ void CControlledActor::update_turn()
 			m_actor->cam_Active()->Move	(kLEFT,		speed * Device.fTimeDelta);
 		else 
 			m_actor->cam_Active()->Move	(kRIGHT,	speed * Device.fTimeDelta);
-	
 	}
 
 	// PITCH

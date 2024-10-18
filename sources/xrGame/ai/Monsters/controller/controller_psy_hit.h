@@ -16,7 +16,7 @@ class CControllerPsyHit : public CControl_ComCustom<> {
 		eNone
 	} m_sound_state;
 
-	F32				m_min_tube_dist;
+	f32				m_min_tube_dist;
 
 	// internal flag if weapon was hidden
 	bool				m_blocked;

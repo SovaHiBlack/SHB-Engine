@@ -145,7 +145,7 @@ BOOL CAI_Boar::net_Spawn (CSE_Abstract* DC)
 void CAI_Boar::CheckSpecParams(u32 spec_params)
 {
 	//if ((spec_params & ASP_ROTATION_JUMP) == ASP_ROTATION_JUMP) {
-	//	F32 yaw, pitch;
+	//	f32 yaw, pitch;
 	//	Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getHP(yaw,pitch);
 	//	yaw *= -1;
 	//	yaw = angle_normalize(yaw);
@@ -162,9 +162,9 @@ void CAI_Boar::CheckSpecParams(u32 spec_params)
 	//	movement().m_body.target.yaw = yaw;
 
 	//	// calculate angular speed
-	//	F32 new_angular_velocity; 
-	//	F32 delta_yaw = angle_difference(yaw,movement().m_body.current.yaw);
-	//	F32 time = anim().GetCurAnimTime();
+	//	f32 new_angular_velocity; 
+	//	f32 delta_yaw = angle_difference(yaw,movement().m_body.current.yaw);
+	//	f32 time = anim().GetCurAnimTime();
 	//	new_angular_velocity = 2.5f * delta_yaw / time; 
 
 	//	anim().ForceAngularSpeed(new_angular_velocity);

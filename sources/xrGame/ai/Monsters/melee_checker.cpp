@@ -6,9 +6,9 @@
 
 #define MAX_TRACE_ENEMY_RANGE	6.f
 
-F32 CMeleeChecker::distance_to_enemy(const CEntity *enemy)
+f32 CMeleeChecker::distance_to_enemy(const CEntity *enemy)
 {
-	F32 dist = enemy->Position().distance_to	(m_object->Position());
+	f32 dist = enemy->Position().distance_to	(m_object->Position());
 	if (dist > MAX_TRACE_ENEMY_RANGE)			return dist;
 
 	Fvector					enemy_center;

@@ -95,8 +95,8 @@ Fvector CMonsterHitMemory::get_last_hit_dir()
 	// если есть хит, вычислить направление
 	if (last_hit.time != 0) {
 
-		F32 h;
-		F32 p;
+		f32 h;
+		f32 p;
 		dir.getHP(h,p);
 		
 		switch (last_hit.side) {

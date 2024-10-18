@@ -22,7 +22,7 @@ void CMosquitoBald::Load(pcstr section)
 }
 
 
-void CMosquitoBald::Postprocess(F32 /** val **/)
+void CMosquitoBald::Postprocess(f32 /** val **/)
 {
 }
 

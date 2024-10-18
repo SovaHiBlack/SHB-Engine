@@ -48,7 +48,7 @@ bool CStateChimeraThreatenStealAbstract::check_completion()
 {	
 	if (inherited::check_completion()) return true;
 	
-	F32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
+	f32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
 	if (dist_to_enemy < MIN_DISTANCE_TO_ENEMY) return true;
 
 	return false;
@@ -57,7 +57,7 @@ bool CStateChimeraThreatenStealAbstract::check_completion()
 TEMPLATE_SPECIALIZATION
 bool CStateChimeraThreatenStealAbstract::check_start_conditions()
 {
-	F32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
+	f32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
 	if (dist_to_enemy > MIN_DISTANCE_TO_ENEMY) return true;
 	return false;
 }

@@ -5,7 +5,7 @@
 struct SControlRotationJumpData : public ControlCom::IComData {
 	MotionID		anim_stop_ls,anim_run_ls;
 	MotionID		anim_stop_rs,anim_run_rs;
-	F32			turn_angle;
+	f32			turn_angle;
 
 	enum EFlags {	
 		eStopAtOnce	= u32(1) << 0,  // stop at once
@@ -19,11 +19,11 @@ class CControlRotationJump : public CControl_ComCustom<SControlRotationJumpData>
 	typedef CControl_ComCustom<SControlRotationJumpData> inherited;
 	u32				m_time_next_rotation_jump;
 	
-	F32			m_target_velocity;
-	F32			m_start_velocity;
-	F32			m_accel;
-	F32			m_dist;
-	F32			m_time;
+	f32			m_target_velocity;
+	f32			m_start_velocity;
+	f32			m_accel;
+	f32			m_dist;
+	f32			m_time;
 
 	bool			m_right_side;
 
@@ -48,4 +48,3 @@ private:
 			void	build_line_second		();
 			void	stop_at_once			();
 };
-

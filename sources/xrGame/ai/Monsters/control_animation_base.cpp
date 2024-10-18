@@ -235,7 +235,7 @@ SAAParam &CControlAnimationBase::AA_GetParams(pcstr anim_name)
 	return (*(m_attack_anims.begin()));
 }
 
-SAAParam &CControlAnimationBase::AA_GetParams(MotionID motion, F32 time_perc)
+SAAParam &CControlAnimationBase::AA_GetParams(MotionID motion, f32 time_perc)
 {
 	// искать текущую анимацию в AA_VECTOR
 	for (AA_VECTOR_IT it = m_attack_anims.begin(); it != m_attack_anims.end(); it++) {
@@ -258,7 +258,7 @@ EPState	CControlAnimationBase::GetState (EMotionAnim a)
 
 #define FX_CAN_PLAY_MIN_INTERVAL	50
 
-void CControlAnimationBase::FX_Play(EHitSide side, F32 amount)
+void CControlAnimationBase::FX_Play(EHitSide side, f32 amount)
 {
 	if (fx_time_last_play + FX_CAN_PLAY_MIN_INTERVAL > m_object->m_dwCurrentTime) return;
 
@@ -280,7 +280,7 @@ void CControlAnimationBase::FX_Play(EHitSide side, F32 amount)
 	fx_time_last_play = m_object->m_dwCurrentTime;
 }
 
-F32 CControlAnimationBase::GetAnimSpeed(EMotionAnim anim)
+f32 CControlAnimationBase::GetAnimSpeed(EMotionAnim anim)
 {
 	SAnimItem *anim_it = m_anim_storage[anim];
 	VERIFY(anim_it);
@@ -289,7 +289,6 @@ F32 CControlAnimationBase::GetAnimSpeed(EMotionAnim anim)
 
 	return				(def->Dequantize(def->speed));
 }
-
 
 bool CControlAnimationBase::IsTurningCurAnim()
 {
@@ -483,7 +482,7 @@ void CControlAnimationBase::set_animation_speed()
 	ctrl_data->set_speed		(m_cur_anim.speed._get_target() );
 }
 
-void CControlAnimationBase::check_hit(MotionID motion, F32 time_perc)
+void CControlAnimationBase::check_hit(MotionID motion, f32 time_perc)
 {
 	if (!m_object->EnemyMan.get_enemy()) return;
 	const CEntityAlive *enemy = m_object->EnemyMan.get_enemy();
@@ -499,16 +498,16 @@ void CControlAnimationBase::check_hit(MotionID motion, F32 time_perc)
 	if (d.magnitude() > params.dist) should_hit = false;
 	
 	// проверка на  Field-Of-Hit
-	F32 my_h;
-	F32 my_p;
-	F32 h;
-	F32 p;
+	f32 my_h;
+	f32 my_p;
+	f32 h;
+	f32 p;
 
 	m_object->Direction().getHP(my_h,my_p);
 	d.getHP(h,p);
 	
-	F32 from	= angle_normalize(my_h + params.foh.from_yaw);
-	F32 to	= angle_normalize(my_h + params.foh.to_yaw);
+	f32 from	= angle_normalize(my_h + params.foh.from_yaw);
+	f32 to	= angle_normalize(my_h + params.foh.to_yaw);
 	
 	if (!is_angle_between(h, from, to)) should_hit = false;
 
@@ -528,26 +527,25 @@ void parse_anim_params(pcstr val, SAAParam &anim)
 {
 	string16			cur_elem;
 
-	_GetItem	(val,0,cur_elem);		anim.time			= F32(atof(cur_elem));
-	_GetItem	(val,1,cur_elem);		anim.hit_power		= F32(atof(cur_elem));
-	_GetItem	(val,2,cur_elem);		anim.impulse		= F32(atof(cur_elem));
-	_GetItem	(val,3,cur_elem);		anim.impulse_dir.x	= F32(atof(cur_elem));
-	_GetItem	(val,4,cur_elem);		anim.impulse_dir.y	= F32(atof(cur_elem));
-	_GetItem	(val,5,cur_elem);		anim.impulse_dir.z	= F32(atof(cur_elem));
-	_GetItem	(val,6,cur_elem);		anim.foh.from_yaw	= F32(atof(cur_elem));
-	_GetItem	(val,7,cur_elem);		anim.foh.to_yaw		= F32(atof(cur_elem));
-	_GetItem	(val,8,cur_elem);		anim.foh.from_pitch	= F32(atof(cur_elem));
-	_GetItem	(val,9,cur_elem);		anim.foh.to_pitch	= F32(atof(cur_elem));
-	_GetItem	(val,10,cur_elem);		anim.dist			= F32(atof(cur_elem));
+	_GetItem	(val,0,cur_elem);		anim.time			= f32(atof(cur_elem));
+	_GetItem	(val,1,cur_elem);		anim.hit_power		= f32(atof(cur_elem));
+	_GetItem	(val,2,cur_elem);		anim.impulse		= f32(atof(cur_elem));
+	_GetItem	(val,3,cur_elem);		anim.impulse_dir.x	= f32(atof(cur_elem));
+	_GetItem	(val,4,cur_elem);		anim.impulse_dir.y	= f32(atof(cur_elem));
+	_GetItem	(val,5,cur_elem);		anim.impulse_dir.z	= f32(atof(cur_elem));
+	_GetItem	(val,6,cur_elem);		anim.foh.from_yaw	= f32(atof(cur_elem));
+	_GetItem	(val,7,cur_elem);		anim.foh.to_yaw		= f32(atof(cur_elem));
+	_GetItem	(val,8,cur_elem);		anim.foh.from_pitch	= f32(atof(cur_elem));
+	_GetItem	(val,9,cur_elem);		anim.foh.to_pitch	= f32(atof(cur_elem));
+	_GetItem	(val,10,cur_elem);		anim.dist			= f32(atof(cur_elem));
 
 	anim.impulse_dir.normalize();
 
-	F32 clamp_val = PI_DIV_2 - EPS_L;
+	f32 clamp_val = PI_DIV_2 - EPS_L;
 	clamp(anim.foh.from_yaw,	-clamp_val, clamp_val);
 	clamp(anim.foh.to_yaw,		-clamp_val, clamp_val);
 	clamp(anim.foh.from_pitch,	-clamp_val, clamp_val);
 	clamp(anim.foh.to_pitch,	-clamp_val, clamp_val);
-
 }
 
 void CControlAnimationBase::AA_reload(pcstr section)
@@ -605,4 +603,3 @@ void CControlAnimationBase::free_anim_storage()
 		}
 	}
 }
-

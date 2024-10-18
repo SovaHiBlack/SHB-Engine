@@ -32,7 +32,7 @@ TEMPLATE_SPECIALIZATION
 void CStateMonsterRestFunAbstract::execute()
 {
 	Fvector point;
-	F32	dist;
+	f32	dist;
 	
 	Fvector dir;
 	dir.sub			(object->CorpseMan.get_corpse_position(), object->Position());
@@ -58,8 +58,8 @@ void CStateMonsterRestFunAbstract::execute()
 			Fvector			dir;
 			dir.add			(Fvector().sub(target->Position(), object->Position()), object->Direction());
 			
-			F32			h;
-			F32 p;
+			f32			h;
+			f32 p;
 			dir.getHP		(h,p);
 			dir.setHP		(h, p + 5 * PI / 180);
 			dir.normalize	();

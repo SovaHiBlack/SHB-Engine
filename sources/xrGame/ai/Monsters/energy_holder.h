@@ -3,13 +3,13 @@
 class CEnergyHolder {
 
 	// энергия
-	F32		m_value;			// текущее значение энергии
-	F32		m_restore_vel;		// скорость восстановления (ltx-param)
-	F32		m_decline_vel;		// скорость уменьшения энергии в активном состоянии (ltx-param)	
-	F32		m_critical_value;	// критическое значение энергии, меньше которого активность будет отключена (ltx-param)
-	F32		m_activate_value;	// значение энергии, больше которого активность может быть восстановлена (ltx-param)
+	f32		m_value;			// текущее значение энергии
+	f32		m_restore_vel;		// скорость восстановления (ltx-param)
+	f32		m_decline_vel;		// скорость уменьшения энергии в активном состоянии (ltx-param)	
+	f32		m_critical_value;	// критическое значение энергии, меньше которого активность будет отключена (ltx-param)
+	f32		m_activate_value;	// значение энергии, больше которого активность может быть восстановлена (ltx-param)
 	u32			m_time_last_update;	// время последнего обновления энергии
-	F32		m_aggressive_restore_vel; // скорость агрессивного восстановления (ltx-param)
+	f32		m_aggressive_restore_vel; // скорость агрессивного восстановления (ltx-param)
 	
 	// активность
 	bool		m_active;
@@ -52,8 +52,5 @@ public:
 
 
 	// DEBUG
-	IC		F32	get_value				() {return m_value;}
+	IC		f32	get_value				() {return m_value;}
 };
-
-
-

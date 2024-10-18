@@ -5,15 +5,14 @@ class CBaseMonster;
 class CMonsterMorale {
 
 	// external parameters
-	F32			m_hit_quant;
-	F32			m_attack_success_quant;
-	F32			m_team_mate_die;
-	F32			m_v_taking_heart;
-	F32			m_v_despondent;
-	F32			m_v_stable;
-	F32			m_despondent_threshold;
+	f32			m_hit_quant;
+	f32			m_attack_success_quant;
+	f32			m_team_mate_die;
+	f32			m_v_taking_heart;
+	f32			m_v_despondent;
+	f32			m_v_stable;
+	f32			m_despondent_threshold;
 
-	
 	CBaseMonster	*m_object;
 
 	enum EState {
@@ -24,7 +23,7 @@ class CMonsterMorale {
 
 	EState			m_state;
 	
-	F32			m_morale;
+	f32			m_morale;
 
 public:
 				CMonsterMorale		(){}
@@ -45,10 +44,10 @@ public:
 
 	IC	bool	is_despondent		();
 
-	IC	F32	get_morale			();
+	IC	f32	get_morale			();
 
 private:
-	IC	void	change				(F32 value);
+	IC	void	change				(f32 value);
 };
 
 #include "monster_morale_inline.h"

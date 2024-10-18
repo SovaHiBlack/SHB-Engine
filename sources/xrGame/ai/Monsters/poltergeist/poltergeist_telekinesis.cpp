@@ -103,10 +103,9 @@ public:
 
 	bool operator()	 (const CGameObject *tpObject1, const CGameObject *tpObject2) const
 	{
-
-		F32 dist1 = monster_pos.distance_to(tpObject1->Position());
-		F32 dist2 = enemy_pos.distance_to(tpObject2->Position());
-		F32 dist3 = enemy_pos.distance_to(monster_pos);
+		f32 dist1 = monster_pos.distance_to(tpObject1->Position());
+		f32 dist2 = enemy_pos.distance_to(tpObject2->Position());
+		f32 dist3 = enemy_pos.distance_to(monster_pos);
 
 		return ((dist1 < dist3) && (dist2 > dist3));
 	};
@@ -125,8 +124,8 @@ public:
 
 	bool operator()	 (const CObject_ptr &tpObject1, const CObject_ptr &tpObject2) const
 	{
-		F32 dist1 = enemy_pos.distance_to(tpObject1->Position());
-		F32 dist2 = enemy_pos.distance_to(tpObject2->Position());
+		f32 dist1 = enemy_pos.distance_to(tpObject1->Position());
+		f32 dist2 = enemy_pos.distance_to(tpObject2->Position());
 
 		return (dist1 < dist2);		
 	};
@@ -140,7 +139,7 @@ bool CPolterTele::trace_object(CObject *obj, const Fvector &target)
 	obj->Center		(trace_from);
 	
 	Fvector			dir;
-	F32			range;
+	f32			range;
 	dir.sub			(target, trace_from);
 	
 	range			= dir.magnitude();
@@ -194,7 +193,7 @@ bool CPolterTele::tele_raise_objects()
 	tele_find_objects	(tele_objects, m_object->Position());
 
 	// получить список объектов между монстром и врагом
-	F32 dist			= Actor()->Position().distance_to(m_object->Position());
+	f32 dist			= Actor()->Position().distance_to(m_object->Position());
 	Fvector dir;
 	dir.sub				(Actor()->Position(), m_object->Position());
 	dir.normalize		();

@@ -16,7 +16,7 @@ void CStateControlCampAbstract::initialize()
 {
 	inherited::initialize			();
 
-	F32 angle			= ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),deg(10), std::greater<F32>());
+	f32 angle			= ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),deg(10), std::greater<f32>());
 	
 	collide::rq_result	l_rq;
 
@@ -28,7 +28,7 @@ void CStateControlCampAbstract::initialize()
 	Fvector				direction;
 
 	// trace discretely left
-	for (F32 ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang - ANGLE_DISP_STEP)) {
+	for (f32 ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang - ANGLE_DISP_STEP)) {
 		
 		direction.setHP	(ang, 0.f);
 		
@@ -41,7 +41,7 @@ void CStateControlCampAbstract::initialize()
 	}
 	
 	// trace discretely right
-	for (F32 ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang + ANGLE_DISP_STEP)) {
+	for (f32 ang = angle; angle_difference(ang, angle) < ANGLE_DISP; ang = angle_normalize(ang + ANGLE_DISP_STEP)) {
 		
 		direction.setHP	(ang, 0.f);
 
@@ -58,7 +58,7 @@ void CStateControlCampAbstract::initialize()
 	m_target_angle		= m_angle_from;
 
 	Fvector pos;
-	pos.mad(object->Position(), Fvector().setHP(angle,0.f), 3.f);
+	pos.mad(object->Position(), Fvector().setHP(angle,0.0f), 3.0f);
 	object->dir().face_target(pos);
 }
 
@@ -68,7 +68,7 @@ void CStateControlCampAbstract::execute()
 	update_target_angle						();
 
 	Fvector point;
-	point.mad								(object->Position(),Fvector().setHP(m_target_angle, 0.f), 3.f);
+	point.mad								(object->Position(),Fvector().setHP(m_target_angle, 0.0f), 3.0f);
 	
 	object->custom_dir().head_look_point	(point);
 	object->custom_anim().set_body_state	(CControllerAnimation::eTorsoIdle,CControllerAnimation::eLegsTypeSteal);

@@ -17,29 +17,29 @@ IC	CALifeSwitchManager::CALifeSwitchManager		(xrServer *server, pcstr section) :
 	seed				(u32(CPU::QPC() & 0xffffffff));
 }
 
-IC	F32 CALifeSwitchManager::online_distance		() const
+IC	f32 CALifeSwitchManager::online_distance		() const
 {
 	return				(m_online_distance);
 }
 
-IC	F32 CALifeSwitchManager::offline_distance		() const
+IC	f32 CALifeSwitchManager::offline_distance		() const
 {
 	return				(m_offline_distance);
 }
 
-IC	F32 CALifeSwitchManager::switch_distance		() const
+IC	f32 CALifeSwitchManager::switch_distance		() const
 {
 	return				(m_switch_distance);
 }
 
-IC	void CALifeSwitchManager::set_switch_distance	(F32 switch_distance)
+IC	void CALifeSwitchManager::set_switch_distance	(f32 switch_distance)
 {
 	m_switch_distance	= switch_distance;
 	m_online_distance	= m_switch_distance*(1.f - m_switch_factor);
 	m_offline_distance	= m_switch_distance*(1.f + m_switch_factor);
 }
 
-IC	void CALifeSwitchManager::set_switch_factor		(F32 switch_factor)
+IC	void CALifeSwitchManager::set_switch_factor		(f32 switch_factor)
 {
 	m_switch_factor		= switch_factor;
 	set_switch_distance	(switch_distance());

@@ -34,7 +34,7 @@ void	light::gi_generate	()
 		CDB::TRI&	T		= tris[R->id];
 		Fvector		Tv[3]	= { verts[T.verts[0]],verts[T.verts[1]],verts[T.verts[2]] };
 		Fvector		TN;		TN.mknormal		(Tv[0],Tv[1],Tv[2]);
-		F32		dot		= TN.dotproduct	(idir.invert(dir));
+		f32		dot		= TN.dotproduct	(idir.invert(dir));
 
 		light_indirect		LI;
 		LI.P.mad			(position,dir,R->range);
@@ -53,11 +53,11 @@ void	light::gi_generate	()
 
 	// normalize
 	if (indirect.size())	{
-		F32	target_E		=	ps_r2_GI_refl;
-		F32	total_E			=	0;
+		f32	target_E		=	ps_r2_GI_refl;
+		f32	total_E			=	0;
 		for (u32 it=0; it<indirect.size(); it++)
 			total_E				+=	indirect[it].E;
-		F32	scale_E			=	target_E/total_E;
+		f32	scale_E			=	target_E/total_E;
 		for (u32 it=0; it<indirect.size(); it++)
 			indirect[it].E		*=	scale_E;
 	}

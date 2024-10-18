@@ -134,7 +134,7 @@ bool CControllerPsyHit::check_conditions_final()
 	//trace_from	= get_head_position(m_object);
 	//trace_to	= get_head_position(Actor());
 
-	//F32 dist = trace_from.distance_to(trace_to);
+	//f32 dist = trace_from.distance_to(trace_to);
 	//Fvector trace_dir;
 	//trace_dir.sub(trace_to,trace_from);
 
@@ -214,7 +214,7 @@ void CControllerPsyHit::death_glide_start()
 	Fvector				dir;
 	dir.sub				(target_pos,src_pos);
 	
-	F32 dist			= dir.magnitude();
+	f32 dist			= dir.magnitude();
 	dir.normalize		();
 
 	target_pos.mad		(src_pos,dir,dist-4.8f);
@@ -224,8 +224,8 @@ void CControllerPsyHit::death_glide_start()
 
 	dir.sub(src_pos,target_pos);
 	dir.normalize();
-	F32 h;
-	F32 p;
+	f32 h;
+	f32 p;
 	dir.getHP(h,p);
 	dir.setHP(h,p+PI_DIV_3);
 	Actor()->character_physics_support()->movement()->ApplyImpulse(dir,Actor()->GetMass() * 530.f);

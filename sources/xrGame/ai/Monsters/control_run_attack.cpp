@@ -62,7 +62,7 @@ bool CControlRunAttack::check_start_conditions()
 	// check if faced enemy
 	if (!m_man->direction().is_face_target(enemy, PI_DIV_6)) return false;
 	
-	F32 dist = enemy->Position().distance_to(m_object->Position());
+	f32 dist = enemy->Position().distance_to(m_object->Position());
 	// check distance to enemy
 	if ((dist > m_max_dist) || (dist < m_min_dist)) return false;
 	
@@ -92,14 +92,14 @@ void CControlRunAttack::on_event(ControlCom::EEventType type, ControlCom::IEvent
 			VERIFY					(blend);
 
 			// animation time
-			F32					anim_time = blend->timeTotal / blend->speed;
+			f32					anim_time = blend->timeTotal / blend->speed;
 			
 			// run velocity
 			u32						velocity_mask	= MonsterMovement::eVelocityParameterRunNormal;
 			SVelocityParam			&velocity		= m_object->move().get_velocity(velocity_mask);
 
 			// distance
-			F32					path_dist		= anim_time * velocity.velocity.linear;
+			f32					path_dist		= anim_time * velocity.velocity.linear;
 
 			Fvector					dir;
 			dir.sub					(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());

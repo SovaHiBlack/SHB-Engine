@@ -67,11 +67,11 @@ public:
 	virtual void					PhTune								(dReal step)	{};
 
 	bool							m_bCanSpawnZone;
-	F32							m_fHealthRestoreSpeed;
-	F32 							m_fRadiationRestoreSpeed;
-	F32 							m_fSatietyRestoreSpeed;
-	F32							m_fPowerRestoreSpeed;
-	F32							m_fBleedingRestoreSpeed;
+	f32							m_fHealthRestoreSpeed;
+	f32 							m_fRadiationRestoreSpeed;
+	f32 							m_fSatietyRestoreSpeed;
+	f32							m_fPowerRestoreSpeed;
+	f32							m_fBleedingRestoreSpeed;
 	CHitImmunity 					m_ArtefactHitImmunities;
 
 protected:
@@ -80,15 +80,18 @@ protected:
 	MotionSVec						m_anim_hide;
 	MotionSVec						m_anim_show;
 	MotionSVec						m_anim_activate;
+
 public:
-	enum EAFHudStates {
+	enum EAFHudStates
+	{
 		eIdle		= 0,
 		eShowing,
 		eHiding,
 		eHidden,
-		eActivating,
+		eActivating
 	};
 	virtual	void					PlayAnimIdle		();
+
 public:
 	virtual void					Hide				();
 	virtual void					Show				();

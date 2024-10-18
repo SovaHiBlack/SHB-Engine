@@ -103,7 +103,7 @@ void CControlAnimation::play_part(SAnimationPart &part, PlayCallback callback)
 	if (bone_or_part == u16(-1)) bone_or_part = m_skeleton_animated->LL_PartID("default");
 	
 	// initialize synchronization of prev and current animation
-	F32 pos		= -1.f;
+	f32 pos		= -1.f;
 	if (part.blend && !part.blend->stop_at_end) 
 		pos			= fmod(part.blend->timeCurrent,part.blend->timeTotal)/part.blend->timeTotal;
 #ifdef DEBUG
@@ -134,7 +134,6 @@ void CControlAnimation::play_part(SAnimationPart &part, PlayCallback callback)
 	if ((part.motion != m_data.torso.motion) && part.blend)
 		m_object->CStepManager::on_animation_start(part.motion, part.blend);
 
-
 	ANIMATION_EVENT_MAP_IT it = m_anim_events.find(part.motion);
 	if (it != m_anim_events.end()) {
 		for (ANIMATION_EVENT_VEC_IT event_it = it->second.begin(); event_it != it->second.end(); ++event_it) {
@@ -143,8 +142,7 @@ void CControlAnimation::play_part(SAnimationPart &part, PlayCallback callback)
 	}
 }
 
-
-void CControlAnimation::add_anim_event(MotionID motion, F32 time_perc, u32 id)
+void CControlAnimation::add_anim_event(MotionID motion, f32 time_perc, u32 id)
 {
 	// if there is already event with exact timing - return
 	ANIMATION_EVENT_MAP_IT it = m_anim_events.find(motion);
@@ -169,7 +167,7 @@ void CControlAnimation::check_events(SAnimationPart &part)
 		ANIMATION_EVENT_MAP_IT it = m_anim_events.find(part.motion);
 		if (it != m_anim_events.end()) {
 
-			F32 cur_perc = F32(Device.dwTimeGlobal - part.time_started) / ((part.blend->timeTotal / part.blend->speed) * 1000);
+			f32 cur_perc = f32(Device.dwTimeGlobal - part.time_started) / ((part.blend->timeTotal / part.blend->speed) * 1000);
 
 			for (ANIMATION_EVENT_VEC_IT event_it = it->second.begin(); event_it != it->second.end(); ++event_it) {
 				SAnimationEvent &event = *event_it;
@@ -213,7 +211,7 @@ void CControlAnimation::restart(SAnimationPart &part, PlayCallback callback)
 	if (bone_or_part == u16(-1)) bone_or_part = m_skeleton_animated->LL_PartID("default");
 
 	//save 
-	F32 time_saved		= part.blend->timeCurrent;
+	f32 time_saved		= part.blend->timeCurrent;
 	
 	// start
 	part.blend				= m_skeleton_animated->LL_PlayCycle(bone_or_part,part.motion, TRUE, callback, this);

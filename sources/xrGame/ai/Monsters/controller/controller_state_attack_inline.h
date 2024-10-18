@@ -150,7 +150,7 @@ TEMPLATE_SPECIALIZATION
 void CStateControllerAttackAbstract::check_force_state() 
 {
 	//if (current_substate == eStateRun) {
-	//	F32 dist_to_enemy = object->Position().distance_to(object->EnemyMan.get_enemy_position());
+	//	f32 dist_to_enemy = object->Position().distance_to(object->EnemyMan.get_enemy_position());
 	//	if (dist_to_enemy > 10.f) {
 	//		get_state_current()->critical_finalize();
 	//		current_substate = u32(-1);

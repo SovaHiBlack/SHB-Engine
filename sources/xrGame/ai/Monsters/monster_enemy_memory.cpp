@@ -39,7 +39,7 @@ void CMonsterEnemyMemory::update()
 	// обновить опасность 
 	for (ENEMIES_MAP_IT it = m_objects.begin(); it != m_objects.end(); it++) {
 		u8		relation_value = u8(monster->tfGetRelationType(it->first));
-		F32	dist = monster->Position().distance_to(it->second.position);
+		f32	dist = monster->Position().distance_to(it->second.position);
 		it->second.danger = (1 + relation_value*relation_value*relation_value) / (1 + dist);
 	}
 }
@@ -120,7 +120,7 @@ SMonsterEnemy CMonsterEnemyMemory::get_enemy_info()
 ENEMIES_MAP_IT CMonsterEnemyMemory::find_best_enemy()
 {
 	ENEMIES_MAP_IT	it = m_objects.end();
-	F32			max_value = 0.f;
+	f32			max_value = 0.f;
 
 	// find best at home first
 	for (ENEMIES_MAP_IT I = m_objects.begin(); I != m_objects.end(); I++) {

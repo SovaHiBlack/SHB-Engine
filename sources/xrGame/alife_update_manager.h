@@ -27,7 +27,7 @@ private:
 
 protected:
 	u64					m_max_process_time;
-	F32				m_update_monster_factor;
+	f32				m_update_monster_factor;
 	u32					m_objects_per_update;
 	bool				m_changing_level;
 
@@ -43,14 +43,14 @@ public:
 						CALifeUpdateManager		(xrServer *server, pcstr section);
 	virtual 			~CALifeUpdateManager	();
 	virtual	shared_str	shedule_Name			() const		{ return shared_str("alife_simulator"); };
-	virtual F32		shedule_Scale			();
+	virtual f32		shedule_Scale			();
 	virtual void		shedule_Update			(u32 dt);	
 	virtual bool		shedule_Needed			()				{return true;};
 			void		update_switch			();
 			void		update_scheduled		(bool init_ef = true);
 			void		load					(pcstr game_name = 0, bool no_assert = false, bool new_only = false);
 			bool		load_game				(pcstr game_name, bool no_assert = false);
-	IC		F32		update_monster_factor	() const;
+	IC		f32		update_monster_factor	() const;
 			bool		change_level			(NET_Packet	&net_packet);
 			void		set_process_time		(int microseconds);
 			void		objects_per_update		(const u32 &objects_per_update);

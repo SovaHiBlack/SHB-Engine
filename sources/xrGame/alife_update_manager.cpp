@@ -80,7 +80,7 @@ CALifeUpdateManager::~CALifeUpdateManager	()
 	);
 }
 
-F32 CALifeUpdateManager::shedule_Scale	()
+f32 CALifeUpdateManager::shedule_Scale	()
 {
 	return					(.5f); // (schedule_min + schedule_max)*0.5f
 }
@@ -136,7 +136,7 @@ void CALifeUpdateManager::shedule_Update	(u32 dt)
 
 void CALifeUpdateManager::set_process_time	(int microseconds)
 {
-	graph().set_process_time		(F32(microseconds) - F32(microseconds)*update_monster_factor()/1000000.f);
+	graph().set_process_time		(f32(microseconds) - f32(microseconds)*update_monster_factor()/1000000.f);
 }
 
 void CALifeUpdateManager::objects_per_update(const u32 &objects_per_update)
@@ -272,7 +272,7 @@ void CALifeUpdateManager::load			(pcstr game_name, bool no_assert, bool new_only
 	}
 
 #ifdef DEBUG
-	Msg									("* Loading alife simulator is successfully completed (%7.3f Mb)", F32(Memory.mem_usage() - memory_usage)/1048576.0);
+	Msg									("* Loading alife simulator is successfully completed (%7.3f Mb)", f32(Memory.mem_usage() - memory_usage)/1048576.0);
 #endif
 	g_pGamePersistent->LoadTitle		("st_server_connecting");
 }
@@ -333,12 +333,12 @@ void CALifeUpdateManager::jump_to_level			(pcstr level_name) const
 	bool								failed = !ai().graph_engine().search(ai().game_graph(),graph().actor()->m_tGraphID,GameGraph::_GRAPH_ID(-1),0,evaluator);
 	if (failed) {
 		Msg								("! Cannot build path via game graph from the current level to the level %s!",level_name);
-		F32							min_dist = flt_max;
+		f32							min_dist = flt_max;
 		Fvector							current = ai().game_graph().vertex(graph().actor()->m_tGraphID)->game_point();
 		GameGraph::_GRAPH_ID			n = ai().game_graph().header().vertex_count();
 		for (GameGraph::_GRAPH_ID i=0; i<n; ++i)
 			if (ai().game_graph().vertex(i)->level_id() == level.id()) {
-				F32					distance = ai().game_graph().vertex(i)->game_point().distance_to_sqr(current);
+				f32					distance = ai().game_graph().vertex(i)->game_point().distance_to_sqr(current);
 				if (distance < min_dist) {
 					min_dist			= distance;
 					dest				= i;

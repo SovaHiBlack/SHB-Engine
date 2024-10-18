@@ -61,7 +61,7 @@ void CMonsterHome::load(pcstr line)
 	m_aggressive = false;
 }
 
-void CMonsterHome::setup(pcstr path_name, F32 min_radius, F32 max_radius, bool aggressive)
+void CMonsterHome::setup(pcstr path_name, f32 min_radius, f32 max_radius, bool aggressive)
 {
 	m_path			= ai().patrol_paths().path(path_name);
 	check_path		(m_object,m_path);
@@ -109,7 +109,6 @@ u32	CMonsterHome::get_place_in_cover()
 	return u32(-1);
 }
 
-
 bool CMonsterHome::at_home()
 {
 	return at_home(m_object->Position());
@@ -122,7 +121,7 @@ bool CMonsterHome::at_home(const Fvector &pos)
 	// check every point and distance to it
 	for (u32 i=0; i<m_path->vertex_count(); i++) {
 		const CPatrolPath::CVertex *vertex = m_path->vertex(i);
-		F32 dist = pos.distance_to(ai().level_graph().vertex_position(vertex->data().level_vertex_id()));
+		f32 dist = pos.distance_to(ai().level_graph().vertex_position(vertex->data().level_vertex_id()));
 
 		if (dist < m_radius_max) return true;
 	}
@@ -135,4 +134,3 @@ void CMonsterHome::remove_home()
 	m_path			= 0;
 	m_aggressive	= false;
 }
-

@@ -20,9 +20,9 @@ CBaseMonster::SDebugInfo CBaseMonster::show_debug_info()
 		return SDebugInfo();
 	}
 
-	F32 y				= 200;
-	F32 x				= (m_show_debug_info == 1) ? 40.f : F32(::Render->getTarget()->get_width() / 2) + 40.f;
-	const F32 delta_y	= 12;
+	f32 y				= 200;
+	f32 x				= (m_show_debug_info == 1) ? 40.f : f32(::Render->getTarget()->get_width() / 2) + 40.f;
+	const f32 delta_y	= 12.0f;
 
 	string256	text;
 
@@ -41,7 +41,6 @@ CBaseMonster::SDebugInfo CBaseMonster::show_debug_info()
 
 	sprintf_s(text, "Morale = [%f]", Morale.get_morale());
 	DBG().text(this).add_item(text,										 x, y+=delta_y, color);
-
 
 	DBG().text(this).add_item("-----------   MEMORY   ----------------", x, y+=delta_y, delimiter_color);
 
@@ -100,7 +99,6 @@ CBaseMonster::SDebugInfo CBaseMonster::show_debug_info()
 			sprintf_s(text,"Sound: type[%s] time[%u] power[%.3f] val[%i] src[+]", s_type, sound_elem.time, sound_elem.power, sound_elem.value);
 		else 
 			sprintf_s(text,"Sound: type[%s] time[%u] power[%.3f] val[%i] src[?]", s_type, sound_elem.time, sound_elem.power, sound_elem.value);
-
 
 	} else 
 		sprintf_s(text, "Sound: NONE");

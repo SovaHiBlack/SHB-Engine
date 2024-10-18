@@ -51,8 +51,8 @@ bool CStateMonsterEatingAbstract::check_start_conditions()
 		nearest_bone_pos	= corpse->Position(); 
 	} else nearest_bone_pos = object->character_physics_support()->movement()->PHCaptureGetNearestElemPos(corpse);
 
-	F32 dist				= nearest_bone_pos.distance_to(object->Position());
-	F32 dist_to_corpse	= object->db().m_fDistToCorpse;
+	f32 dist				= nearest_bone_pos.distance_to(object->Position());
+	f32 dist_to_corpse	= object->db().m_fDistToCorpse;
 	
 	if (dist + 0.5f < dist_to_corpse) return true;
 	return false;
@@ -70,8 +70,8 @@ bool CStateMonsterEatingAbstract::check_completion()
 		nearest_bone_pos	= corpse->Position(); 
 	} else nearest_bone_pos = object->character_physics_support()->movement()->PHCaptureGetNearestElemPos(corpse);
 
-	F32 dist				= nearest_bone_pos.distance_to(object->Position());
-	F32 dist_to_corpse	= object->db().m_fDistToCorpse;
+	f32 dist				= nearest_bone_pos.distance_to(object->Position());
+	f32 dist_to_corpse	= object->db().m_fDistToCorpse;
 	if (dist > dist_to_corpse+0.5f) return true;
 
 	return false;

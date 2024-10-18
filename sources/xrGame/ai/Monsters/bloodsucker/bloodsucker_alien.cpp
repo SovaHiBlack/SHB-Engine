@@ -19,20 +19,19 @@ class CAlienEffectorPP : public CEffectorPP {
 	typedef CEffectorPP inherited;
 
 	SPPInfo		state;
-	F32		factor;
-	F32		target_factor;
+	f32		factor;
+	f32		target_factor;
 
 public:
 					CAlienEffectorPP	(const SPPInfo &ppi, EEffectorPPType type);
 	virtual			~CAlienEffectorPP	();
 
-	void	Update			(F32 new_factor) {factor = new_factor;}
+	void	Update			(f32 new_factor) {factor = new_factor;}
 	void	Destroy			();
 
 private:
 	virtual	BOOL	Process			(SPPInfo& pp);
 };
-
 
 CAlienEffectorPP::CAlienEffectorPP(const SPPInfo &ppi, EEffectorPPType type) :
 CEffectorPP(type, flt_max, false)
@@ -78,21 +77,20 @@ void CAlienEffectorPP::Destroy()
 class CAlienEffector : public CEffectorCam {
 	typedef CEffectorCam inherited;	
 
-	F32	m_time_total;
+	f32	m_time_total;
 	Fvector	dangle_target;
 	Fvector dangle_current;
 
 	CAI_Bloodsucker *monster;
 
-	F32		m_current_fov;
+	f32		m_current_fov;
 	Fmatrix		m_prev_eye_matrix;
-	F32		m_inertion;
+	f32		m_inertion;
 
 public:
 					CAlienEffector	(ECamEffectorType type, CAI_Bloodsucker *obj);
-	virtual	BOOL	Process			(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect);
+	virtual	BOOL	Process			(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
 };
-
 
 #define DELTA_ANGLE_X		10 * PI / 180
 #define DELTA_ANGLE_Y		10 * PI / 180
@@ -103,7 +101,6 @@ public:
 #define	MAX_FOV				175.f
 #define FOV_SPEED			80.f
 #define	MAX_CAMERA_DIST		3.5f
-
 
 CAlienEffector::CAlienEffector(ECamEffectorType type, CAI_Bloodsucker *obj) :
 	inherited(type, flt_max)
@@ -120,7 +117,7 @@ CAlienEffector::CAlienEffector(ECamEffectorType type, CAI_Bloodsucker *obj) :
 	m_current_fov			= MIN_FOV;
 }
 
-BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	// Инициализация
 	Fmatrix	Mdef;
@@ -129,7 +126,6 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32&
 	Mdef.k.set			(d);
 	Mdef.i.crossproduct	(n,d);
 	Mdef.c.set			(p);
-
 
 	// set angle 
 	if (angle_lerp(dangle_current.x, dangle_target.x, ANGLE_SPEED, Device.fTimeDelta)) {
@@ -149,7 +145,7 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32&
 	cur_matrix.k = monster->Direction();
 	cur_matrix.c = get_head_position(monster);
 
-	F32	rel_dist = m_prev_eye_matrix.c.distance_to(cur_matrix.c) / MAX_CAMERA_DIST;
+	f32	rel_dist = m_prev_eye_matrix.c.distance_to(cur_matrix.c) / MAX_CAMERA_DIST;
 	clamp	(rel_dist, 0.f, 1.f);
 
 	def_lerp(m_inertion, 1 - rel_dist, rel_dist, Device.fTimeDelta);
@@ -163,10 +159,10 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32&
 	Mdef = m_prev_eye_matrix;
 
 	//set fov
-	F32	rel_speed = monster->m_fCurSpeed / 15.f;
+	f32	rel_speed = monster->m_fCurSpeed / 15.f;
 	clamp	(rel_speed,0.f,1.f);
 
-	F32	m_target_fov = MIN_FOV + (MAX_FOV-MIN_FOV) * rel_speed;
+	f32	m_target_fov = MIN_FOV + (MAX_FOV-MIN_FOV) * rel_speed;
 	def_lerp(m_current_fov, m_target_fov, FOV_SPEED, Device.fTimeDelta);
 	
 	fFov = m_current_fov;

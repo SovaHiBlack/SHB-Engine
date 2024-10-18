@@ -43,7 +43,7 @@ void CBaseMonster::Load(pcstr section)
 
 	m_pPhysics_support				->in_Load(section);
 
-	SetfHealth						( (F32)pSettings->r_u32		(section,"Health"));
+	SetfHealth						( (f32)pSettings->r_u32		(section,"Health"));
 
 	m_controlled					= smart_cast<CControlledEntityBase*>(this);
 
@@ -188,7 +188,7 @@ BOOL CBaseMonster::net_Spawn (CSE_Abstract* DC)
 //		VERIFY									(se_monster);
 //
 //		if (se_monster->m_flags.is(CSE_ALifeMonsterBase::flNeedCheckSpawnItem)) {
-//			F32 prob = Random.randF();
+//			f32 prob = Random.randF();
 //			if ((prob < m_spawn_probability) || fsimilar(m_spawn_probability,1.f)) 
 //				se_monster->m_flags.set(CSE_ALifeMonsterBase::flSkipSpawnItem, FALSE);
 //

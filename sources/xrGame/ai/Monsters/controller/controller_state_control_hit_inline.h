@@ -62,7 +62,7 @@ void CStateControllerControlHitAbstract::execute()
 TEMPLATE_SPECIALIZATION
 bool CStateControllerControlHitAbstract::check_start_conditions()
 {
-	F32 dist = object->Position().distance_to(object->EnemyMan.get_enemy_position());
+	f32 dist = object->Position().distance_to(object->EnemyMan.get_enemy_position());
 	if (dist < GOOD_DISTANCE_FOR_CONTROL_HIT) return false;
 
 	if (!object->EnemyMan.see_enemy_now()) return false; 

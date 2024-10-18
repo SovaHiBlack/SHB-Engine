@@ -7,8 +7,8 @@ class CMonsterHome {
 	CBaseMonster		*m_object;
 	const CPatrolPath	*m_path;
 
-	F32				m_radius_min;
-	F32				m_radius_max;
+	f32				m_radius_min;
+	f32				m_radius_max;
 
 	bool				m_aggressive;
 
@@ -16,7 +16,7 @@ public:
 				CMonsterHome		(CBaseMonster *obj) {m_object = obj;}
 
 		void	load				(pcstr line);
-		void	setup				(pcstr path_name, F32 min_radius, F32 max_radius, bool aggressive = false);
+		void	setup				(pcstr path_name, f32 min_radius, f32 max_radius, bool aggressive = false);
 		void	remove_home			();
 
 		u32		get_place			();

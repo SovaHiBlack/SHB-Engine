@@ -3,10 +3,10 @@
 #include "controller.h"
 #include "../../../game_object_space.h"
 
-const F32	_pmt_head_bone_limit	= PI_DIV_6;
-const F32	_pmt_torso_bone_limit	= PI_DIV_3;
-const F32	_pmt_rotation_speed		= PI_MUL_3;
-const F32	_pmt_min_speed			= deg(10);
+const f32	_pmt_head_bone_limit	= PI_DIV_6;
+const f32	_pmt_torso_bone_limit	= PI_DIV_3;
+const f32	_pmt_rotation_speed		= PI_MUL_3;
+const f32	_pmt_min_speed			= deg(10);
 
 void CControllerDirection::reinit()
 {
@@ -53,7 +53,7 @@ void CControllerDirection::update_head_orientation()
 	bonesAxis &x_spine	= m_bones.GetBoneParams	(m_bone_spine,	AXIS_X);
 	bonesAxis &x_head	= m_bones.GetBoneParams	(m_bone_head,	AXIS_X);
 
-	F32 yaw = x_spine.cur_yaw + x_head.cur_yaw;
+	f32 yaw = x_spine.cur_yaw + x_head.cur_yaw;
 
 	// установить параметры вращения по yaw
 	m_head_orient.current.yaw	= m_man->direction().get_heading_current() + yaw;
@@ -70,16 +70,16 @@ void CControllerDirection::head_look_point(const Fvector &look_point)
 {
 	m_head_look_point	= look_point;
 	
-	F32				dir_yaw,dir_pitch;
+	f32				dir_yaw,dir_pitch;
 	Fvector().sub		(look_point, get_head_position(m_controller)).getHP(dir_yaw,dir_pitch);
 	dir_yaw				= angle_normalize(-dir_yaw);
 	
-	F32 bone_angle_head;
-	F32 bone_angle_torso;
+	f32 bone_angle_head;
+	f32 bone_angle_torso;
 
 	// установить параметры вращения по heading
-	F32 cur_yaw		= m_man->direction().get_heading_current();
-	F32 dy			= _abs(angle_normalize_signed(dir_yaw - cur_yaw));		// дельта, на которую нужно поворачиваться
+	f32 cur_yaw		= m_man->direction().get_heading_current();
+	f32 dy			= _abs(angle_normalize_signed(dir_yaw - cur_yaw));		// дельта, на которую нужно поворачиваться
 
 	bone_angle_head		= _pmt_head_bone_limit	/ (_pmt_head_bone_limit + _pmt_torso_bone_limit) * dy;
 	bone_angle_torso	= _pmt_torso_bone_limit / (_pmt_head_bone_limit + _pmt_torso_bone_limit) * dy;
@@ -93,11 +93,11 @@ void CControllerDirection::head_look_point(const Fvector &look_point)
 	}
 	
 	// setup speed
-	F32				bone_speed;
+	f32				bone_speed;
 	bonesAxis			&x_spine = m_bones.GetBoneParams	(m_bone_spine,	AXIS_X);
 	bonesAxis			&x_head	 = m_bones.GetBoneParams	(m_bone_head,	AXIS_X);
 
-	F32 target_dy		= _abs(bone_angle_head + bone_angle_torso);
+	f32 target_dy		= _abs(bone_angle_head + bone_angle_torso);
 	if (fis_zero(target_dy))
 		bone_speed	= _pmt_min_speed;
 	else 

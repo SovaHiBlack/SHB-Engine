@@ -100,11 +100,11 @@ private:
 	ref_shader					s_bloom_dbg_1;
 	ref_shader					s_bloom_dbg_2;
 	ref_shader					s_bloom;
-	F32							f_bloom_factor;
+	f32							f_bloom_factor;
 
 	// Luminance
 	ref_shader					s_luminance;
-	F32							f_luminance_adapt;
+	f32							f_luminance_adapt;
 
 	// Combine
 	ref_geom					g_combine;
@@ -122,17 +122,17 @@ public:
 	ref_shader					s_menu;
 	ref_geom					g_menu;
 private:
-	F32							im_noise_time;
+	f32							im_noise_time;
 	u32							im_noise_shift_w;
 	u32							im_noise_shift_h;
 	
-	F32							param_blur;
-	F32							param_gray;
-	F32							param_duality_h;
-	F32							param_duality_v;
-	F32							param_noise;
-	F32							param_noise_scale;
-	F32							param_noise_fps;
+	f32							param_blur;
+	f32							param_gray;
+	f32							param_duality_h;
+	f32							param_duality_v;
+	f32							param_noise;
+	f32							param_noise_scale;
+	f32							param_noise_fps;
 	u32							param_color_base;
 	u32							param_color_gray;
 	u32							param_color_add;
@@ -154,7 +154,7 @@ public:
 	void						u_calc_tc_noise			(Fvector2& p0, Fvector2& p1);
 	void						u_calc_tc_duality_ss	(Fvector2& r0, Fvector2& r1, Fvector2& l0, Fvector2& l1);
 	BOOL						u_need_PP				();
-	BOOL						u_DBT_enable			(F32 zMin, F32 zMax);
+	BOOL						u_DBT_enable			(f32 zMin, f32 zMax);
 	void						u_DBT_disable			();
 
 	void						phase_scene_prepare		();
@@ -187,13 +187,13 @@ public:
 	void						phase_combine			();
 	void						phase_pp				();
 
-	virtual void				set_blur				(F32	f)		{ param_blur=f;						}
-	virtual void				set_gray				(F32	f)		{ param_gray=f;						}
-	virtual void				set_duality_h			(F32	f)		{ param_duality_h=_abs(f);			}
-	virtual void				set_duality_v			(F32	f)		{ param_duality_v=_abs(f);			}
-	virtual void				set_noise				(F32	f)		{ param_noise=f;					}
-	virtual void				set_noise_scale			(F32	f)		{ param_noise_scale=f;				}
-	virtual void				set_noise_fps			(F32	f)		{ param_noise_fps=_abs(f)+ EPSILON_7;	}
+	virtual void				set_blur				(f32	f)		{ param_blur=f;						}
+	virtual void				set_gray				(f32	f)		{ param_gray=f;						}
+	virtual void				set_duality_h			(f32	f)		{ param_duality_h=_abs(f);			}
+	virtual void				set_duality_v			(f32	f)		{ param_duality_v=_abs(f);			}
+	virtual void				set_noise				(f32	f)		{ param_noise=f;					}
+	virtual void				set_noise_scale			(f32	f)		{ param_noise_scale=f;				}
+	virtual void				set_noise_fps			(f32	f)		{ param_noise_fps=_abs(f)+ EPSILON_7;	}
 	virtual void				set_color_base			(u32	f)		{ param_color_base=f;				}
 	virtual void				set_color_gray			(u32	f)		{ param_color_gray=f;				}
 	virtual void				set_color_add			(u32	f)		{ param_color_add=f;				}

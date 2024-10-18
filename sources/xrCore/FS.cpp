@@ -246,7 +246,7 @@ void	IWriter::w_chunk(u32 type, pvoid data, u32 size)
 void 	IWriter::w_sdir(const Fvector& D)
 {
 	Fvector C;
-	F32 mag = D.magnitude();
+	f32 mag = D.magnitude();
 	if (mag > EPSILON_7)
 	{
 		C.div(D, mag);

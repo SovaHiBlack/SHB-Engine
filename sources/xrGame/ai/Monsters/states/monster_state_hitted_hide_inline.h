@@ -39,7 +39,7 @@ bool CStateMonsterHittedHideAbstract::check_start_conditions()
 TEMPLATE_SPECIALIZATION
 bool CStateMonsterHittedHideAbstract::check_completion()
 {
-	F32 dist = object->Position().distance_to(object->HitMemory.get_last_hit_position());
+	f32 dist = object->Position().distance_to(object->HitMemory.get_last_hit_position());
 
 	// good dist  
 	if (dist < GOOD_DISTANCE_IN_COVER) return false;

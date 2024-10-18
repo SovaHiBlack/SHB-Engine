@@ -3,7 +3,7 @@
 #include "poltergeist.h"
 #include "../../../detail_path_manager.h"
 
-void CPoltergeisMovementManager::move_along_path(CPHMovementControl *movement_control, Fvector &dest_position, F32 time_delta)
+void CPoltergeisMovementManager::move_along_path(CPHMovementControl *movement_control, Fvector &dest_position, f32 time_delta)
 {
 	if (!m_monster->is_hidden()) {
 		inherited::move_along_path(movement_control, dest_position, time_delta);
@@ -34,9 +34,9 @@ void CPoltergeisMovementManager::move_along_path(CPHMovementControl *movement_co
 	// Вычислить пройденную дистанцию, определить целевую позицию на маршруте, 
 	//			 изменить detail().curr_travel_point_index()
 
-	F32				desirable_speed		=	old_desirable_speed();				// желаемая скорость объекта
-	F32				dist				=	desirable_speed * time_delta;		// пройденное расстояние в соостветствие с желаемой скоростью 
-	F32				desirable_dist		=	dist;
+	f32				desirable_speed		=	old_desirable_speed();				// желаемая скорость объекта
+	f32				dist				=	desirable_speed * time_delta;		// пройденное расстояние в соостветствие с желаемой скоростью 
+	f32				desirable_dist		=	dist;
 
 	// определить целевую точку
 	Fvector				target;
@@ -46,9 +46,9 @@ void CPoltergeisMovementManager::move_along_path(CPHMovementControl *movement_co
 	// обновить detail().curr_travel_point_index() в соответствие с текущей позицией
 	while (detail().curr_travel_point_index() < detail().path().size() - 2) {
 
-		F32 pos_dist_to_cur_point			= dest_position.distance_to(detail().path()[detail().curr_travel_point_index()].position);
-		F32 pos_dist_to_next_point		= dest_position.distance_to(detail().path()[detail().curr_travel_point_index()+1].position);
-		F32 cur_point_dist_to_next_point	= detail().path()[detail().curr_travel_point_index()].position.distance_to(detail().path()[detail().curr_travel_point_index()+1].position);
+		f32 pos_dist_to_cur_point			= dest_position.distance_to(detail().path()[detail().curr_travel_point_index()].position);
+		f32 pos_dist_to_next_point		= dest_position.distance_to(detail().path()[detail().curr_travel_point_index()+1].position);
+		f32 cur_point_dist_to_next_point	= detail().path()[detail().curr_travel_point_index()].position.distance_to(detail().path()[detail().curr_travel_point_index()+1].position);
 
 		if ((pos_dist_to_cur_point > cur_point_dist_to_next_point) && (pos_dist_to_cur_point > pos_dist_to_next_point)) {
 			++detail().m_current_travel_point;			
@@ -61,7 +61,7 @@ void CPoltergeisMovementManager::move_along_path(CPHMovementControl *movement_co
 	dir_to_target.sub	(target, dest_position);
 
 	// дистанция до целевой точки
-	F32				dist_to_target = dir_to_target.magnitude();
+	f32				dist_to_target = dir_to_target.magnitude();
 
 	while (dist > dist_to_target) {
 		dest_position.set	(target);
@@ -93,8 +93,8 @@ void CPoltergeisMovementManager::move_along_path(CPHMovementControl *movement_co
 	dest_position.add	(motion);
 
 	// установить скорость
-	F32	real_motion	= motion.magnitude() + desirable_dist - dist;
-	F32	real_speed	= real_motion / time_delta;
+	f32	real_motion	= motion.magnitude() + desirable_dist - dist;
+	f32	real_speed	= real_motion / time_delta;
 
 	m_speed				= 0.5f * desirable_speed + 0.5f * real_speed;
 

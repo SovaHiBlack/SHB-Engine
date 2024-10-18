@@ -11,7 +11,7 @@ namespace PS
 	protected:
 		CPEDef*				m_Def;
 
-		F32				m_fElapsedLimit;
+		f32				m_fElapsedLimit;
 
 		int					m_HandleEffect;
 		int					m_HandleActionList;
@@ -40,7 +40,7 @@ namespace PS
 
 		void	 			OnFrame				(u32 dt);
 
-		virtual void		Render				(F32 LOD);
+		virtual void		Render				(f32 LOD);
 		virtual void		Copy				(IRender_Visual* pFrom);
 
 		virtual void 		OnDeviceCreate		();
@@ -58,7 +58,7 @@ namespace PS
 		virtual void		Stop				(BOOL bDefferedStop=TRUE);
 		virtual BOOL		IsPlaying			(){return m_RT_Flags.is(flRT_Playing);}
 
-		virtual F32			GetTimeLimit		(){VERIFY(m_Def); return m_Def->m_Flags.is(CPEDef::dfTimeLimit)?m_Def->m_fTimeLimit:-1.f;}
+		virtual f32			GetTimeLimit		(){VERIFY(m_Def); return m_Def->m_Flags.is(CPEDef::dfTimeLimit)?m_Def->m_fTimeLimit:-1.f;}
 
 		virtual const shared_str	Name			(){VERIFY(m_Def); return m_Def->m_Name;}
 
@@ -73,6 +73,6 @@ namespace PS
     void OnEffectParticleDead	(void* owner, u32 param, PAPI::Particle& m, u32 idx);
 
     extern const u32		uDT_STEP;
-	extern const F32		fDT_STEP;
+	extern const f32		fDT_STEP;
 }
 //---------------------------------------------------------------------------

@@ -71,10 +71,10 @@ public:
 	
 	virtual	BOOL			renderable_ShadowReceive		()	{ return TRUE;	}  
 	virtual void			Die								(CObject* who);
-	virtual void			HitSignal						(F32 amount, Fvector& vLocalDir, CObject* who, s16 element);
+	virtual void			HitSignal						(f32 amount, Fvector& vLocalDir, CObject* who, s16 element);
 	virtual	void			Hit								(SHit* pHDS);
-	virtual	void			PHHit							(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
-	virtual void			SelectAnimation					(const Fvector& _view, const Fvector& _move, F32 speed );
+	virtual	void			PHHit							(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual void			SelectAnimation					(const Fvector& _view, const Fvector& _move, f32 speed );
 
 	virtual void			Load							(pcstr section);
 	virtual DLL_Pure		*_construct						();
@@ -91,7 +91,6 @@ public:
 	virtual void			save							(NET_Packet &output_packet) {inherited::save(output_packet);}
 	virtual void			load							(IReader &input_packet)		{inherited::load(input_packet);}
 
-
 	virtual void			UpdateCL						();
 	virtual void			shedule_Update					(u32 dt);
 
@@ -102,13 +101,13 @@ public:
 
 	virtual void			init							() {}
 
-	virtual void			feel_sound_new					(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, F32 power);
+	virtual void			feel_sound_new					(CObject* who, int eType, CSound_UserDataPtr user_data, const Fvector &Position, f32 power);
 	virtual BOOL			feel_vision_isRelevant			(CObject* O);
 	virtual BOOL			feel_touch_on_contact			(CObject* O);
 	virtual BOOL			feel_touch_contact				(CObject *);
 
 	virtual bool			useful							(const CItemManager *manager, const CGameObject *object) const;
-	virtual F32			evaluate						(const CItemManager *manager, const CGameObject *object) const;
+	virtual f32			evaluate						(const CItemManager *manager, const CGameObject *object) const;
 
 	virtual void			OnEvent							(NET_Packet& P, u16 type);
 	virtual void			OnHUDDraw						(CCustomHUD* hud)			{return inherited::OnHUDDraw(hud);}
@@ -132,12 +131,12 @@ public:
 
 	virtual bool			IsTalkEnabled					() {return false;}
 
-	virtual void			HitEntity						(const CEntity *pEntity, F32 fDamage, F32 impulse, Fvector &dir);
+	virtual void			HitEntity						(const CEntity *pEntity, f32 fDamage, f32 impulse, Fvector &dir);
 	virtual	void			HitEntityInJump					(const CEntity *pEntity) {}
 
 	virtual	void			on_before_sell					(CInventoryItem *item);
-	F32			GetSatiety						()							{return 0.5f;}
-			void			ChangeSatiety					(F32 v)					{}
+	f32			GetSatiety						()							{return 0.5f;}
+			void			ChangeSatiety					(f32 v)					{}
 	// ---------------------------------------------------------------------------------
 	// Process scripts
 	// ---------------------------------------------------------------------------------
@@ -158,13 +157,11 @@ public:
 	
 	virtual void			SetScriptControl				(const bool bScriptControl, shared_str caSciptName);
 
-
 	bool					m_force_real_speed;
 	bool					m_script_processing_active;
 	bool					m_script_state_must_execute;
 
-
-	virtual void			jump							(const Fvector &position, F32 factor) {}
+	virtual void			jump							(const Fvector &position, f32 factor) {}
 
 	bool					m_skip_transfer_enemy;			
 	IC		void			skip_transfer_enemy				(bool value){m_skip_transfer_enemy = value;}
@@ -178,7 +175,7 @@ public:
 	// установка специфических анимаций 
 	virtual	void			CheckSpecParams					(u32 /**spec_params/**/) {}
 	virtual void			ForceFinalAnimation				() {}
-	virtual void			LookPosition					(Fvector to_point, F32 angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
+	virtual void			LookPosition					(Fvector to_point, f32 angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
 
 	// Team	
 	virtual void			ChangeTeam						(int team, int squad, int group);
@@ -207,12 +204,8 @@ public:
 	// Cover
 			bool			GetCorpseCover					(Fvector &position, u32 &vertex_id);
 			bool			GetCoverFromEnemy				(const Fvector &enemy_pos, Fvector &position, u32 &vertex_id);
-			bool			GetCoverFromPoint				(const Fvector &pos, Fvector &position, u32 &vertex_id, F32 min_dist, F32 max_dist, F32 radius);
-			bool			GetCoverCloseToPoint			(const Fvector &dest_pos, F32 min_dist, F32 max_dist, F32 deviation, F32 radius ,Fvector &position, u32 &vertex_id);
-
-
-
-
+			bool			GetCoverFromPoint				(const Fvector &pos, Fvector &position, u32 &vertex_id, f32 min_dist, f32 max_dist, f32 radius);
+			bool			GetCoverCloseToPoint			(const Fvector &dest_pos, f32 min_dist, f32 max_dist, f32 deviation, f32 radius ,Fvector &position, u32 &vertex_id);
 
 	// Movement Manager
 protected:
@@ -235,8 +228,7 @@ public:
 	// --------------------------------------------------------------------------------------
 
 	CCharacterPhysicsSupport	*m_pPhysics_support;
-	
-	
+
 	CMonsterCorpseCoverEvaluator	*m_corpse_cover_evaluator;
 	CCoverEvaluatorFarFromEnemy		*m_enemy_cover_evaluator;
 	CCoverEvaluatorCloseToEnemy		*m_cover_evaluator_close_point;
@@ -269,19 +261,19 @@ public:
 
 	// -----------------------------------------------------------------------------
 
-	CControlledEntityBase	*m_controlled;	
+	CControlledEntityBase	*m_controlled;
 
 	// -----------------------------------------------------------------------------
-	enum EMonsterType {
+	enum EMonsterType
+	{
 		eMonsterTypeUniversal	= u32(0),
 		eMonsterTypeIndoor,
-		eMonsterTypeOutdoor,
+		eMonsterTypeOutdoor
 	} m_monster_type;
 
 	// -----------------------------------------------------------------------------
 	// Home
 	CMonsterHome			*Home;
-
 
 	// -----------------------------------------------------------------------------
 	// Anomaly Detector
@@ -298,7 +290,7 @@ public:
 //	//-----------------------------------------------------------------
 //private:
 //	pcstr					m_item_section;
-//	F32					m_spawn_probability;
+//	f32					m_spawn_probability;
 
 	//--------------------------------------------------------------------
 	// Berserk
@@ -312,21 +304,18 @@ public:
 	// Panic Threshold (extension for scripts)
 	//--------------------------------------------------------------------
 
-	F32				m_default_panic_threshold;
-	IC	void				set_custom_panic_threshold	(F32 value);
+	f32				m_default_panic_threshold;
+	IC	void				set_custom_panic_threshold	(f32 value);
 	IC	void				set_default_panic_threshold	();
 	//--------------------------------------------------------------------
-
-
-
 
 	//////////////////////////////////////////////////////////////////////////
 	// -----------------------------------------------------------------------------
 	// Special Services (refactoring needed)
 		
 	void				on_kill_enemy				(const CEntity *obj);
-	void				Hit_Psy						(CObject *object, F32 value);
-	void				Hit_Wound					(CObject *object, F32 value, const Fvector &dir, F32 impulse);
+	void				Hit_Psy						(CObject *object, f32 value);
+	void				Hit_Wound					(CObject *object, f32 value, const Fvector &dir, f32 impulse);
 	CParticlesObject	*PlayParticles				(const shared_str& name, const Fvector &position, const Fvector &dir, BOOL auto_remove = TRUE, BOOL xformed = TRUE);
 	void				load_effector				(pcstr section, pcstr line, SAttackEffector &effector);
 
@@ -342,11 +331,9 @@ public:
 	bool						m_bRunTurnLeft;
 	bool						m_bRunTurnRight;
 
-
 	void						set_aggressive				(bool val = true) {m_bAggressive = val;}
 
 	//---------------------------------------------------------------------------------------
-
 
 	u32						m_prev_sound_type;
 	u32						get_attack_rebuild_time	();
@@ -364,7 +351,7 @@ IC	void					wake_up				(){m_bSleep = false;}
 	// Temp
 	u32						m_time_last_attack_success;
 	int						m_rank;
-	F32					m_melee_rotation_factor;
+	f32					m_melee_rotation_factor;
 
 private:
 	bool					ignore_collision_hit;	
@@ -373,7 +360,6 @@ public:
 	IC	void				set_ignore_collision_hit (bool value) {ignore_collision_hit = value;}
 	// -----------------------------------------------------------------------------
 	//////////////////////////////////////////////////////////////////////////
-
 
 public:
 	CControl_Manager		&control() {return (*m_control_manager);}
@@ -399,8 +385,6 @@ protected:
 	CControlManagerCustom	m_com_manager;
 
 	virtual void			create_base_controls	();
-
-
 
 	//////////////////////////////////////////////////////////////////////////
 	// Critical Wounded
@@ -433,14 +417,14 @@ public:
 public:
 	struct SDebugInfo {
 		bool	active;
-		F32	x;
-		F32	y;
-		F32	delta_y;
+		f32	x;
+		f32	y;
+		f32	delta_y;
 		u32		color;
 		u32		delimiter_color;
 
 		SDebugInfo() : active(false) {}
-		SDebugInfo(F32 px, F32 py, F32 dy, u32 c, u32 dc) : active(true), x(px), y(py), delta_y(dy), color (c), delimiter_color(dc) {}
+		SDebugInfo(f32 px, f32 py, f32 dy, u32 c, u32 dc) : active(true), x(px), y(py), delta_y(dy), color (c), delimiter_color(dc) {}
 	};
 	
 	u8						m_show_debug_info;	// 0 - none, 1 - first column, 2 - second column

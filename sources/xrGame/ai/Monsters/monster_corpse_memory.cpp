@@ -94,7 +94,7 @@ SMonsterCorpse CMonsterCorpseMemory::get_corpse_info()
 CORPSE_MAP_IT CMonsterCorpseMemory::find_best_corpse()
 {
 	CORPSE_MAP_IT	it = m_objects.end();
-	F32			min_dist = flt_max;
+	f32			min_dist = flt_max;
 
 	for (CORPSE_MAP_IT I = m_objects.begin(); I != m_objects.end(); I++) {
 		if (I->second.position.distance_to(monster->Position()) < min_dist) {

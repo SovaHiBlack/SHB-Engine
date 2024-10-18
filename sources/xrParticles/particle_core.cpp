@@ -14,13 +14,13 @@ ICF pVector RandVec()
 }
 
 // Return a random number with a normal distribution.
-F32 PAPI::NRand(F32 sigma)
+f32 PAPI::NRand(f32 sigma)
 {
 #define ONE_OVER_SIGMA_EXP (1.0f / 0.7975f)
 	
 	if(sigma == 0) return 0;
 	
-	F32 y;
+	f32 y;
 	do
 	{
 		y = -logf(drand48());
@@ -34,9 +34,9 @@ F32 PAPI::NRand(F32 sigma)
 }
 ////////////////////////////////////////////////////////////////////////////////
 // Stuff for the pDomain.
-pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
-				 F32 a2, F32 a3, F32 a4, F32 a5,
-				 F32 a6, F32 a7, F32 a8)
+pDomain::pDomain(PDomainEnum dtype, f32 a0, f32 a1,
+				 f32 a2, f32 a3, f32 a4, f32 a5,
+				 f32 a6, f32 a7, f32 a8)
 {
 	type = dtype;
 	switch(type)
@@ -56,27 +56,33 @@ pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
 		// p1 is the min corner. p2 is the max corner.
 		if(a0 < a3)
 		{
-			p1.x = a0; p2.x = a3;
+			p1.x = a0;
+			p2.x = a3;
 		}
 		else
 		{
-			p1.x = a3; p2.x = a0;
+			p1.x = a3;
+			p2.x = a0;
 		}
 		if(a1 < a4)
 		{
-			p1.y = a1; p2.y = a4;
+			p1.y = a1;
+			p2.y = a4;
 		}
 		else
 		{
-			p1.y = a4; p2.y = a1;
+			p1.y = a4;
+			p2.y = a1;
 		}
 		if(a2 < a5)
 		{
-			p1.z = a2; p2.z = a5;
+			p1.z = a2;
+			p2.z = a5;
 		}
 		else
 		{
-			p1.z = a5; p2.z = a2;
+			p1.z = a5;
+			p2.z = a2;
 		}
 		break;
 	case PDTriangle:
@@ -134,11 +140,13 @@ pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
 		p1 = pVector(a0, a1, a2);
 		if(a3 > a4)
 		{
-			radius1 = a3; radius2 = a4;
+			radius1 = a3;
+			radius2 = a4;
 		}
 		else
 		{
-			radius1 = a4; radius2 = a3;
+			radius1 = a4;
+			radius2 = a3;
 		}
 		radius1Sqr = radius1 * radius1;
 		radius2Sqr = radius2 * radius2;
@@ -155,18 +163,20 @@ pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
 			
 			if(a6 > a7)
 			{
-				radius1 = a6; radius2 = a7;
+				radius1 = a6;
+				radius2 = a7;
 			}
 			else
 			{
-				radius1 = a7; radius2 = a6;
+				radius1 = a7;
+				radius2 = a6;
 			}
 			radius1Sqr = _sqr(radius1);
 			
 			// Given an arbitrary nonzero vector3 n, make two orthonormal
 			// vectors u and v forming a frame [u,v,n.normalize()].
 			pVector n = p2;
-			F32 p2l2 = n.length2(); // Optimize this.
+			f32 p2l2 = n.length2(); // Optimize this.
 			n.normalize_safe();
 			
 			// radius2Sqr stores 1 / (p2.p2)
@@ -189,7 +199,7 @@ pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
 		{
 			p1 = pVector(a0, a1, a2);
 			radius1 = a3;
-			F32 tmp = 1.f/radius1;
+			f32 tmp = 1.f/radius1;
 			radius2Sqr = -0.5f*_sqr(tmp);
 			radius2 = ONEOVERSQRT2PI * tmp;
 		}
@@ -202,11 +212,13 @@ pDomain::pDomain(PDomainEnum dtype, F32 a0, F32 a1,
 			
 			if(a6 > a7)
 			{
-				radius1 = a6; radius2 = a7;
+				radius1 = a6;
+				radius2 = a7;
 			}
 			else
 			{
-				radius1 = a7; radius2 = a6;
+				radius1 = a7;
+				radius2 = a6;
 			}
 			
 			// Find a vector3 orthogonal to n.
@@ -241,7 +253,7 @@ BOOL pDomain::Within(const pVector &pos) const
 	case PDSphere:
 		{
 			pVector rvec(pos - p1);
-			F32 rSqr = rvec.length2();
+			f32 rSqr = rvec.length2();
 			return rSqr <= radius1Sqr && rSqr >= radius2Sqr;
 		}
 	case PDCylinder:
@@ -262,13 +274,13 @@ BOOL pDomain::Within(const pVector &pos) const
 			
 			// Check axial distance
 			// radius2Sqr stores 1 / (p2.p2)
-			F32 dist = (p2 * x) * radius2Sqr;
+			f32 dist = (p2 * x) * radius2Sqr;
 			if(dist < 0.0f || dist > 1.0f)
 				return FALSE;
 			
 			// Check radial distance; scale radius along axis for cones
 			pVector xrad = x - p2 * dist; // Radial component of x
-			F32 rSqr = xrad.length2();
+			f32 rSqr = xrad.length2();
 			
 			if(type == PDCone)
 				return (rSqr <= _sqr(dist * radius1) &&
@@ -280,7 +292,7 @@ BOOL pDomain::Within(const pVector &pos) const
 		{
 			pVector x(pos - p1);
 			// return exp(-0.5 * xSq * Sqr(oneOverSigma)) * ONEOVERSQRT2PI * oneOverSigma;
-			F32 Gx = expf(x.length2() * radius2Sqr) * radius2;
+			f32 Gx = expf(x.length2() * radius2Sqr) * radius2;
 			return (drand48() < Gx);
 		}
 	case PDPoint:
@@ -312,12 +324,16 @@ void pDomain::Generate(pVector &pos) const
 		break;
 	case PDTriangle:
 		{
-		F32 r1 = drand48();
-		F32 r2 = drand48();
-			if(r1 + r2 < 1.0f)
-				pos = p1 + u * r1 + v * r2;
-			else
-				pos = p1 + u * (1.0f-r1) + v * (1.0f-r2);
+		f32 r1 = drand48();
+		f32 r2 = drand48();
+		if (r1 + r2 < 1.0f)
+		{
+			pos = p1 + u * r1 + v * r2;
+		}
+		else
+		{
+			pos = p1 + u * (1.0f - r1) + v * (1.0f - r2);
+		}
 		}
 		break;
 	case PDRectangle:
@@ -342,13 +358,13 @@ void pDomain::Generate(pVector &pos) const
 	case PDCone:
 		{
 			// For a cone, p2 is the apex of the cone.
-		F32 dist = drand48(); // Distance between base and tip
-		F32 theta = drand48() * 2.0f * F32(M_PI); // Angle around axis
+		f32 dist = drand48(); // Distance between base and tip
+		f32 theta = drand48() * 2.0f * f32(M_PI); // Angle around axis
 			// Distance from axis
-		F32 r = radius2 + drand48() * (radius1 - radius2);
+		f32 r = radius2 + drand48() * (radius1 - radius2);
 			
-		F32 x = r * _cos(theta); // Weighting of each frame vector3
-		F32 y = r * _sin(theta);
+		f32 x = r * _cos(theta); // Weighting of each frame vector3
+		f32 y = r * _sin(theta);
 			
 			// Scale radius along axis for cones
 			if(type == PDCone)
@@ -368,12 +384,12 @@ void pDomain::Generate(pVector &pos) const
 		break;
 	case PDDisc:
 		{
-		F32 theta = drand48() * 2.0f * F32(M_PI); // Angle around normal
+		f32 theta = drand48() * 2.0f * f32(M_PI); // Angle around normal
 			// Distance from center
-		F32 r = radius2 + drand48() * (radius1 - radius2);
+		f32 r = radius2 + drand48() * (radius1 - radius2);
 			
-		F32 x = r * _cos(theta); // Weighting of each frame vector3
-		F32 y = r * _sin(theta);
+		f32 x = r * _cos(theta); // Weighting of each frame vector3
+		f32 y = r * _sin(theta);
 			
 			pos = p1 + u * x + v * y;
 		}
@@ -437,7 +453,7 @@ void pDomain::transform(const pDomain& domain, const Fmatrix& m)
 		m.transform_dir(v,domain.v);
 		break;
 	default:
-    	NODEFAULT;
+		NODEFAULT;
 	}
 }
 
@@ -447,4 +463,3 @@ void pDomain::transform_dir(const pDomain& domain, const Fmatrix& m)
 	M.c.set(0,0,0);
 	transform(domain,M);
 }
- 

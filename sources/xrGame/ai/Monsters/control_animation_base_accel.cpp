@@ -22,7 +22,7 @@ void CControlAnimationBase::accel_activate(EAccelType type)
 	m_accel.enable_braking	= true;
 }
 
-F32 CControlAnimationBase::accel_get(EAccelValue val)
+f32 CControlAnimationBase::accel_get(EAccelValue val)
 {
 	if (!accel_active(val)) return flt_max;
 
@@ -44,7 +44,7 @@ void CControlAnimationBase::accel_chain_add(EMotionAnim anim1, EMotionAnim anim2
 	m_accel.chain.push_back(v_temp);
 }
 
-bool CControlAnimationBase::accel_chain_get(F32 cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, F32& a_speed)
+bool CControlAnimationBase::accel_chain_get(f32 cur_speed, EMotionAnim target_anim, EMotionAnim &new_anim, f32& a_speed)
 {
 	VERIFY2(_abs(cur_speed)<1000, "CControlAnimationBase cur_speed too big");
 
@@ -67,8 +67,8 @@ bool CControlAnimationBase::accel_chain_get(F32 cur_speed, EMotionAnim target_an
 			VERIFY(item_it);
 			
 			SVelocityParam		*param	= &item_it->velocity;
-			F32				from	= param->velocity.linear * param->min_factor;
-			F32				to		= param->velocity.linear * param->max_factor;
+			f32				from	= param->velocity.linear * param->min_factor;
+			f32				to		= param->velocity.linear * param->max_factor;
 
 			if ( ((from <= cur_speed+EPS_L) && (cur_speed <= to + EPS_L))	|| 
 				((cur_speed < from) && (IT == I->begin()))					|| 
@@ -86,7 +86,7 @@ bool CControlAnimationBase::accel_chain_get(F32 cur_speed, EMotionAnim target_an
 		R_ASSERT2(best_param,"probably incompatible speed ranges");
 		// calc anim_speed
 		new_anim	= *best_anim;
-		F32 tmp	= GetAnimSpeed(new_anim);
+		f32 tmp	= GetAnimSpeed(new_anim);
 		VERIFY2(_abs(tmp)<1000, "CControlAnimationBase GetAnimSpeed returns too big speed");
 		a_speed		=  tmp * cur_speed / best_param->velocity.linear;
 		VERIFY2(_abs(a_speed)<1000, "CControlAnimationBase a_speed too big");
@@ -112,8 +112,8 @@ bool CControlAnimationBase::accel_chain_test()
 		for (SEQ_VECTOR_IT IT = I->begin() + 1; IT != I->end(); IT++) {
 			anim_to = m_anim_storage[*IT];
 
-			F32 from	=	anim_from->velocity.velocity.linear * anim_from->velocity.max_factor;
-			F32 to	=	anim_to->velocity.velocity.linear * anim_to->velocity.min_factor;
+			f32 from	=	anim_from->velocity.velocity.linear * anim_from->velocity.max_factor;
+			f32 to	=	anim_to->velocity.velocity.linear * anim_to->velocity.min_factor;
 
 			sprintf_s(error_msg,"Incompatible speed ranges. Monster[%s] From animation  [%s] To animation [%s]",*m_object->cName(),*anim_from->target_name, *anim_to->target_name);
  			VERIFY2(to < from, error_msg);
@@ -125,19 +125,19 @@ bool CControlAnimationBase::accel_chain_test()
 	return true;
 }
 
-bool CControlAnimationBase::accel_check_braking(F32 before_interval, F32 nominal_speed)
+bool CControlAnimationBase::accel_check_braking(f32 before_interval, f32 nominal_speed)
 {
 	if (!m_man->path_builder().is_moving_on_path())						return (braking_mode = false);
 	if (!accel_active(eAV_Braking))										return (braking_mode = false);
 
-	F32 acceleration = accel_get(eAV_Braking);
-	F32 braking_dist	= (nominal_speed * ((braking_mode) ? nominal_speed : m_man->movement().velocity_current())) / (2 * acceleration);
+	f32 acceleration = accel_get(eAV_Braking);
+	f32 braking_dist	= (nominal_speed * ((braking_mode) ? nominal_speed : m_man->movement().velocity_current())) / (2 * acceleration);
 
 	braking_dist += before_interval;
 	if (m_man->path_builder().is_path_end(braking_dist))				return (braking_mode = true);
 
 	// проверить точки пути, где необходимо остановиться
-	F32 dist = 0.f;	// дистанция до найденной точки	
+	f32 dist = 0.f;	// дистанция до найденной точки	
 	for (u32 i=m_man->path_builder().detail().curr_travel_point_index()+1; i < m_man->path_builder().detail().path().size(); i++) {
 		dist += m_man->path_builder().detail().path()[i].position.distance_to(m_man->path_builder().detail().path()[i-1].position);
 

@@ -19,27 +19,27 @@
 #endif
 
 #define drand48()		::Random.randF()
-//#define drand48() (((F32) rand())/((F32) RAND_MAX))
+//#define drand48() (((f32) rand())/((f32) RAND_MAX))
 
 namespace PAPI{
 	class pVector	: public Fvector
 	{
 	public:
-		IC 			pVector		(F32 ax, F32 ay, F32 az)	{ set(ax,ay,az);								}
+		IC 			pVector		(f32 ax, f32 ay, f32 az)	{ set(ax,ay,az);								}
 		IC 			pVector		()								{}
-		IC F32 	length		() const						{	return _sqrt(x*x+y*y+z*z);					}
-		IC F32 	length2		() const						{	return (x*x+y*y+z*z);						}
-		IC F32 	operator*	(const pVector &a) const		{	return x*a.x + y*a.y + z*a.z;				}
-		IC pVector 	operator*	(const F32 s) const			{	return pVector(x*s, y*s, z*s);				}
-		IC pVector 	operator/	(const F32 s) const			{
-			F32 invs = 1.0f / s;	return pVector(x*invs, y*invs, z*invs);	}
+		IC f32 	length		() const						{	return _sqrt(x*x+y*y+z*z);					}
+		IC f32 	length2		() const						{	return (x*x+y*y+z*z);						}
+		IC f32 	operator*	(const pVector &a) const		{	return x*a.x + y*a.y + z*a.z;				}
+		IC pVector 	operator*	(const f32 s) const			{	return pVector(x*s, y*s, z*s);				}
+		IC pVector 	operator/	(const f32 s) const			{
+			f32 invs = 1.0f / s;	return pVector(x*invs, y*invs, z*invs);	}
 		IC pVector 	operator+	(const pVector& a) const		{	return pVector(x+a.x, y+a.y, z+a.z);		}
 		IC pVector 	operator-	(const pVector& a) const		{	return pVector(x-a.x, y-a.y, z-a.z);		}
 		IC pVector 	operator-	()								{	x = -x;	y = -y;	z = -z;	return *this;		}
 		IC pVector& operator+=	(const pVector& a)				{	x += a.x;y += a.y;z += a.z;	return *this;	}
 		IC pVector& operator-=	(const pVector& a)		 		{	x -= a.x;y -= a.y;z -= a.z;	return *this;	}
-		IC pVector& operator*=	(const F32 a)					{	x *= a;	y *= a;	z *= a;	return *this;		}
-		IC pVector& operator/=	(const F32 a)					{	F32 b = 1.0f / a;	x *= b;	y *= b;	z *= b;	return *this;		}
+		IC pVector& operator*=	(const f32 a)					{	x *= a;	y *= a;	z *= a;	return *this;		}
+		IC pVector& operator/=	(const f32 a)					{	f32 b = 1.0f / a;	x *= b;	y *= b;	z *= b;	return *this;		}
 		IC pVector& operator=	(const pVector& a)				{	x = a.x;y = a.y;z = a.z;return *this;		}
 		IC pVector 	operator^	(const pVector& b) const		{	return pVector(y*b.z-z*b.y,z*b.x-x*b.z,x*b.y-y*b.x);		}
 	};
@@ -55,7 +55,7 @@ namespace PAPI{
 		pVector		size;   // 12
 		pVector		rot;	// 12   60
 		u32			color;	// 4
-		F32			age;	// 4
+		f32			age;	// 4
 		u16			frame;	// 2
 		Flags16		flags;	// 2
 	};                  	// 		72
@@ -135,7 +135,7 @@ namespace PAPI{
 		virtual void				StopEffect			(int effect_id, int alist_id, BOOL deffered=TRUE)=0;
 
 		// update&render
-		virtual void				Update				(int effect_id, int alist_id, F32 dt)=0;
+		virtual void				Update				(int effect_id, int alist_id, f32 dt)=0;
 		virtual void				Render				(int effect_id)=0;
 		virtual void				Transform			(int alist_id, const Fmatrix& m, const Fvector& velocity)=0;
 

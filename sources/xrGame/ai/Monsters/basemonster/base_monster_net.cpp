@@ -43,7 +43,7 @@ void CBaseMonster::net_Export(NET_Packet& P)
 	P.w						(&l_game_vertex_id,			sizeof(l_game_vertex_id));
 //	P.w						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
 //	P.w						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
-	F32					f1 = 0;
+	f32					f1 = 0.0f;
 	if (ai().game_graph().valid_vertex_id(l_game_vertex_id)) {
 		f1					= Position().distance_to	(ai().game_graph().vertex(l_game_vertex_id)->level_point());
 		P.w					(&f1,						sizeof(f1));
@@ -54,7 +54,6 @@ void CBaseMonster::net_Export(NET_Packet& P)
 		P.w					(&f1,						sizeof(f1));
 		P.w					(&f1,						sizeof(f1));
 	}
-
 }
 
 void CBaseMonster::net_Import(NET_Packet& P)
@@ -64,7 +63,7 @@ void CBaseMonster::net_Import(NET_Packet& P)
 
 	u8 flags;
 
-	F32 health;
+	f32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 
@@ -90,7 +89,7 @@ void CBaseMonster::net_Import(NET_Packet& P)
 
 //	P.r						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
 //	P.r						(&m_fGoingSpeed,			sizeof(m_fGoingSpeed));
-	F32					f1 = 0;
+	f32					f1 = 0.0f;
 	if (ai().game_graph().valid_vertex_id(l_game_vertex_id)) {
 		f1					= Position().distance_to	(ai().game_graph().vertex(l_game_vertex_id)->level_point());
 		P.r					(&f1,						sizeof(f1));
@@ -101,7 +100,6 @@ void CBaseMonster::net_Import(NET_Packet& P)
 		P.r					(&f1,						sizeof(f1));
 		P.r					(&f1,						sizeof(f1));
 	}
-
 
 	setVisible				(TRUE);
 	setEnabled				(TRUE);

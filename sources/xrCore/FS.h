@@ -71,9 +71,9 @@ public:
 	{
 		w(&d, sizeof(s8));
 	}
-	IC void			w_float(F32 d)
+	IC void			w_float(f32 d)
 	{
-		w(&d, sizeof(F32));
+		w(&d, sizeof(f32));
 	}
 	IC void			w_string(pcstr p)
 	{
@@ -125,23 +125,23 @@ public:
 	}
 
 	// quant writing functions
-	IC void 		w_float_q16(F32 a, F32 min, F32 max)
+	IC void 		w_float_q16(f32 a, f32 min, f32 max)
 	{
 		VERIFY(a >= min && a <= max);
-		F32 q = (a - min) / (max - min);
+		f32 q = (a - min) / (max - min);
 		w_u16(u16(iFloor(q * 65535.f + .5f)));
 	}
-	IC void 		w_float_q8(F32 a, F32 min, F32 max)
+	IC void 		w_float_q8(f32 a, f32 min, f32 max)
 	{
 		VERIFY(a >= min && a <= max);
-		F32 q = (a - min) / (max - min);
+		f32 q = (a - min) / (max - min);
 		w_u8(u8(iFloor(q * 255.f + .5f)));
 	}
-	IC void 		w_angle16(F32 a)
+	IC void 		w_angle16(f32 a)
 	{
 		w_float_q16(angle_normalize(a), 0, PI_MUL_2);
 	}
-	IC void 		w_angle8(F32 a)
+	IC void 		w_angle8(f32 a)
 	{
 		w_float_q8(angle_normalize(a), 0, PI_MUL_2);
 	}
@@ -171,6 +171,7 @@ class XRCORE_API CMemoryWriter : public IWriter
 	u32				position;
 	u32				mem_size;
 	u32				file_size;
+
 public:
 	CMemoryWriter()
 	{
@@ -210,7 +211,10 @@ public:
 #pragma warning(disable:4995)
 	IC void			free()
 	{
-		file_size = 0; position = 0; mem_size = 0; xr_free(data);
+		file_size = 0;
+		position = 0;
+		mem_size = 0;
+		xr_free(data);
 	}
 #pragma warning(pop)
 	bool			save_to(pcstr fn);
@@ -238,7 +242,7 @@ public:
 	IC BOOL			eof()	const
 	{
 		return impl().elapsed() <= 0;
-	};
+	}
 
 	IC void			r(pvoid p, int cnt)
 	{
@@ -247,48 +251,50 @@ public:
 
 	IC Fvector		r_vec3()
 	{
-		Fvector tmp; r(&tmp, 3 * sizeof(F32)); return tmp;
-	};
+		Fvector tmp; r(&tmp, 3 * sizeof(f32)); return tmp;
+	}
 	IC Fvector4		r_vec4()
 	{
-		Fvector4 tmp; r(&tmp, 4 * sizeof(F32)); return tmp;
-	};
+		Fvector4 tmp; r(&tmp, 4 * sizeof(f32)); return tmp;
+	}
 	IC u64			r_u64()
 	{
 		u64 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC u32			r_u32()
 	{
 		u32 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC u16			r_u16()
 	{
 		u16 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC u8			r_u8()
 	{
 		u8 tmp;		r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC s64			r_s64()
 	{
 		s64 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC s32			r_s32()
 	{
 		s32 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC s16			r_s16()
 	{
 		s16 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+	}
 	IC s8			r_s8()
 	{
 		s8 tmp;		r(&tmp, sizeof(tmp)); return tmp;
-	};
-	IC F32			r_float()
+	}
+	IC f32			r_float()
 	{
-		F32 tmp;	r(&tmp, sizeof(tmp)); return tmp;
-	};
+		f32 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
+	}
 	IC void			r_fvector4(Fvector4& v)
 	{
 		r(&v, sizeof(Fvector4));
@@ -318,25 +324,25 @@ public:
 		r(&v, sizeof(Fcolor));
 	}
 
-	IC F32		r_float_q16(F32 min, F32 max)
+	IC f32		r_float_q16(f32 min, f32 max)
 	{
 		u16	val = r_u16();
-		F32 A = (F32(val) * (max - min)) / 65535.f + min;		// floating-point-error possible
+		f32 A = (f32(val) * (max - min)) / 65535.f + min;		// floating-point-error possible
 		VERIFY((A >= min - EPSILON_7) && (A <= max + EPSILON_7));
 		return A;
 	}
-	IC F32		r_float_q8(F32 min, F32 max)
+	IC f32		r_float_q8(f32 min, f32 max)
 	{
 		u8 val = r_u8();
-		F32	A = (F32(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
+		f32	A = (f32(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
 		VERIFY((A >= min) && (A <= max));
 		return	A;
 	}
-	IC F32		r_angle16()
+	IC f32		r_angle16()
 	{
 		return r_float_q16(0, PI_MUL_2);
 	}
-	IC F32		r_angle8()
+	IC f32		r_angle8()
 	{
 		return r_float_q8(0, PI_MUL_2);
 	}
@@ -347,7 +353,7 @@ public:
 	IC void			r_sdir(Fvector& A)
 	{
 		u16	t = r_u16();
-		F32 s = r_float();
+		f32 s = r_float();
 		pvDecompress(A, t);
 		A.mul(s);
 	}
@@ -439,27 +445,28 @@ public:
 	IC int			elapsed()	const
 	{
 		return Size - Pos;
-	};
+	}
 	IC int			tell()	const
 	{
 		return Pos;
-	};
+	}
 	IC void			seek(int ptr)
 	{
-		Pos = ptr; VERIFY((Pos <= Size) && (Pos >= 0));
-	};
+		Pos = ptr;
+		VERIFY((Pos <= Size) && (Pos >= 0));
+	}
 	IC int			length()	const
 	{
 		return Size;
-	};
+	}
 	IC pvoid pointer()	const
 	{
 		return &(data[Pos]);
-	};
+	}
 	IC void			advance(int cnt)
 	{
 		Pos += cnt; VERIFY((Pos <= Size) && (Pos >= 0));
-	};
+	}
 
 public:
 	void			r(pvoid p, int cnt);
@@ -489,6 +496,7 @@ class XRCORE_API CVirtualFileRW : public IReader
 private:
 	pvoid hSrcFile;
 	pvoid hSrcMap;
+
 public:
 	CVirtualFileRW(pcstr cFileName);
 	virtual ~CVirtualFileRW();

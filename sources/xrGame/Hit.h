@@ -11,13 +11,13 @@
 
 struct SHit
 {
-						SHit					(F32 Power, Fvector& Dir, CObject* Who, u16 Element, Fvector PInBoneSpace, F32 Impulse, ALife::EHitType HitType, F32 aAP = 0.0f, bool AimBullet = false);
+						SHit					(f32 Power, Fvector& Dir, CObject* Who, u16 Element, Fvector PInBoneSpace, f32 Impulse, ALife::EHitType HitType, f32 aAP = 0.0f, bool AimBullet = false);
 						SHit					();
 
 	bool				is_valide				() const;
 	void				invalidate				();
 
-	IC F32				damage					() const
+	IC f32				damage					() const
 	{
 		VERIFY			(is_valide());
 		return			power;
@@ -42,7 +42,7 @@ struct SHit
 		VERIFY			(is_valide());
 		return			p_in_bone_space;
 	}
-	IC F32				phys_impulse			() const
+	IC f32				phys_impulse			() const
 	{
 		VERIFY			(is_valide());
 		return			impulse;
@@ -65,16 +65,16 @@ struct SHit
 	u16											PACKET_TYPE;
 	u16											DestID;
 
-	F32											power;
+	f32											power;
 	Fvector										dir;
 	CObject*									who;
 	u16											whoID;
 	u16											weaponID;
 	u16											boneID;
 	Fvector										p_in_bone_space;
-	F32											impulse;
+	f32											impulse;
 	ALife::EHitType								hit_type;
-	F32											ap;
+	f32											ap;
 	bool										aim_bullet;
 	//---------------------------------------------------
 	//GE_HIT_STATISTIC

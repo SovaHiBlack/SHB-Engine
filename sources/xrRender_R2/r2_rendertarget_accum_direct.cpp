@@ -17,8 +17,8 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	// Common calc for quad-rendering
 	u32		Offset;
 	u32		C					= color_rgba	(255,255,255,255);
-	F32	_w						= F32(Device.dwWidth);
-	F32	_h						= F32(Device.dwHeight);
+	f32	_w						= f32(Device.dwWidth);
+	f32	_h						= f32(Device.dwHeight);
 	Fvector2					p0,p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
@@ -128,7 +128,7 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 		// Make jitter texture
 		Fvector2					j0,j1;
 		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
-		//F32	scale_Y				= f32(Device.dwHeight)/ f32TEX_jitter);
+		//f32	scale_Y				= f32(Device.dwHeight)/ f32TEX_jitter);
 		f32	offset				= (.5f / f32(TEX_jitter));
 		j0.set						(offset,offset);
 		j1.set						(scale_X,scale_X).add(offset);

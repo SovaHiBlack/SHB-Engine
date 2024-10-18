@@ -12,15 +12,15 @@ private:
 	CBaseMonster	*m_object;
 
 	// ltx parameters
-	F32			m_min_attack_distance;
-	F32			m_max_attack_distance;
-	F32			m_as_min_dist;
-	F32			m_as_step;
+	f32			m_min_attack_distance;
+	f32			m_max_attack_distance;
+	f32			m_as_min_dist;
+	f32			m_as_step;
 
 	bool			m_hit_stack[HIT_STACK_SIZE];
 
-	F32			m_current_min_distance;
-	
+	f32			m_current_min_distance;
+
 public:
 			void	init_external			(CBaseMonster *obj) {m_object = obj;}
 	IC		void	load					(pcstr section);
@@ -31,17 +31,17 @@ public:
 
 			// Получить расстояние от fire_bone до врага
 			// Выполнить RayQuery от fire_bone в enemy.center
-			F32	distance_to_enemy		(const CEntity *enemy);
+			f32	distance_to_enemy		(const CEntity *enemy);
 
-	IC		F32	get_min_distance		();
-	IC		F32	get_max_distance		();
+	IC		f32	get_min_distance		();
+	IC		f32	get_max_distance		();
 
 	IC		bool	can_start_melee			(const CEntity *enemy);
 	IC		bool	should_stop_melee		(const CEntity *enemy);
 
 #ifdef DEBUG
-	IC		F32	dbg_as_min_dist			(){return m_as_min_dist;}
-	IC		F32	dbg_as_step				(){return m_as_step;}
+	IC		f32	dbg_as_min_dist			(){return m_as_min_dist;}
+	IC		f32	dbg_as_step				(){return m_as_step;}
 #endif
 
 };

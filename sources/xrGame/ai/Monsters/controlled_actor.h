@@ -18,7 +18,7 @@ class CControlledActor : public CActorInputHandler {
 
 public:
 	virtual void	reinit				();
-	virtual	F32	mouse_scale_factor	(){return flt_max;}
+	virtual	f32	mouse_scale_factor	(){return flt_max;}
 	virtual void	release				();
 	virtual void	install				(CActor *);
 	virtual void	install				();

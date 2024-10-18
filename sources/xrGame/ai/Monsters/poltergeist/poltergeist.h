@@ -20,7 +20,7 @@ class CPoltergeist :	public CBaseMonster ,
 
 	friend class CPoltergeisMovementManager;
 
-	F32					m_height;
+	f32					m_height;
 	bool					m_disable_hide;
 
 	SMotionVel				invisible_vel;
@@ -68,7 +68,7 @@ public:
 
 	// Dynamic Height
 			u32		time_height_updated;
-			F32	target_height;
+			f32	target_height;
 
 			void	UpdateHeight			();
 
@@ -140,8 +140,8 @@ class CPolterFlame : public CPolterSpecialAbility {
 	u32						m_time_fire_delay;
 	u32						m_time_fire_play;
 
-	F32					m_length;
-	F32					m_hit_value;
+	f32					m_length;
+	f32					m_hit_value;
 	u32						m_hit_delay;
 
 	u32						m_count;
@@ -149,22 +149,22 @@ class CPolterFlame : public CPolterSpecialAbility {
 
 	u32						m_time_flame_started;
 
-	F32					m_min_flame_dist;
-	F32					m_max_flame_dist;
-	F32					m_min_flame_height;
-	F32					m_max_flame_height;
+	f32					m_min_flame_dist;
+	f32					m_max_flame_dist;
+	f32					m_min_flame_height;
+	f32					m_max_flame_height;
 
-	F32					m_pmt_aura_radius;
+	f32					m_pmt_aura_radius;
 	
 	// Scanner
-	F32					m_scan_radius;
+	f32					m_scan_radius;
 	u32						m_scan_delay_min;
 	u32						m_scan_delay_max;
 	
 	SPPInfo					m_scan_effector_info;
-	F32					m_scan_effector_time;
-	F32					m_scan_effector_time_attack;
-	F32					m_scan_effector_time_release;
+	f32					m_scan_effector_time;
+	f32					m_scan_effector_time_attack;
+	f32					m_scan_effector_time_release;
 	ref_sound				m_scan_sound;
 
 	bool					m_state_scanning;
@@ -216,19 +216,19 @@ class CPolterTele : public CPolterSpecialAbility {
 	xr_vector<CObject*>	m_nearest;
 
 	// external params
-	F32				m_pmt_radius;
-	F32				m_pmt_object_min_mass;
-	F32				m_pmt_object_max_mass;
+	f32				m_pmt_radius;
+	f32				m_pmt_object_min_mass;
+	f32				m_pmt_object_max_mass;
 	u32					m_pmt_object_count;
 	u32					m_pmt_time_to_hold;
 	u32					m_pmt_time_to_wait;
 	u32					m_pmt_time_to_wait_in_objects;
 	u32					m_pmt_raise_time_to_wait_in_objects;
-	F32				m_pmt_distance;
-	F32				m_pmt_object_height;
+	f32				m_pmt_distance;
+	f32				m_pmt_object_height;
 	u32					m_pmt_time_object_keep;
-	F32				m_pmt_raise_speed;
-	F32				m_pmt_fly_velocity;
+	f32				m_pmt_raise_speed;
+	f32				m_pmt_fly_velocity;
 
 	ref_sound			m_sound_tele_hold;
 	ref_sound			m_sound_tele_throw;

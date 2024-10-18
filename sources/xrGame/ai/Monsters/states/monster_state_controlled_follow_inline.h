@@ -30,7 +30,7 @@ void CStateMonsterControlledFollowAbstract::reselect_state()
 	VERIFY(entity);
 	const CEntity *target_object = entity->get_data().m_object;
 
-	F32 dist = object->Position().distance_to(target_object->Position());
+	f32 dist = object->Position().distance_to(target_object->Position());
 	select_state(dist < Random.randF(STOP_DISTANCE, STAY_DISTANCE) ? eStateControlled_Follow_Wait : eStateControlled_Follow_WalkToObject);
 }
 

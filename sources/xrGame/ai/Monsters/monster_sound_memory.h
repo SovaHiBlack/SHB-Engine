@@ -42,7 +42,7 @@ typedef struct tagSoundElement
 	const CObject		*who;
 	TSoundDangerValue	type;
 	Fvector				position;		// позиция звука, не объекта, издавшего звук
-	F32				power;
+	f32				power;
 	TTime				time;			// время обнаружения звука
 
 	int					value;			// оценочное значение данного звука		
@@ -53,13 +53,13 @@ typedef struct tagSoundElement
 	bool operator < (const tagSoundElement &s) const  { 
 		return (value < s.value);
 	}
-	IC void SetConvert(const CObject* who, int eType, const Fvector &position, F32 power, TTime time) {
+	IC void SetConvert(const CObject* who, int eType, const Fvector &position, f32 power, TTime time) {
 		this->who = who; type = ConvertSoundType((ESoundTypes)eType); this->position = position; this->power = power; this->time = time;
 	}
 	TSoundDangerValue ConvertSoundType(ESoundTypes stype);
 
 	void CalcValue(TTime cur_time, Fvector cur_pos) {
-		value = FACTOR_SOUND_TYPE * u32(NONE_DANGEROUS_SOUND - WEAPON_SHOOTING) - iFloor(FACTOR_DISTANCE * cur_pos.distance_to(position)) - FACTOR_DELTA_TIME * iFloor(F32((cur_time - time) / 1000)) + FACTOR_SOUND_POWER * iFloor(power);
+		value = FACTOR_SOUND_TYPE * u32(NONE_DANGEROUS_SOUND - WEAPON_SHOOTING) - iFloor(FACTOR_DISTANCE * cur_pos.distance_to(position)) - FACTOR_DELTA_TIME * iFloor(f32((cur_time - time) / 1000)) + FACTOR_SOUND_POWER * iFloor(power);
 	}
 
 } SoundElem;
@@ -80,7 +80,7 @@ public:
 	void		init_external			(CBaseMonster *M, TTime mem_time);
 
 	void		HearSound				(const SoundElem &s);
-	void		HearSound				(const CObject* who, int eType, const Fvector &Position, F32 power, TTime time);
+	void		HearSound				(const CObject* who, int eType, const Fvector &Position, f32 power, TTime time);
 	IC	bool	IsRememberSound			() {return (!Sounds.empty());}		
 	void		GetSound				(SoundElem &s, bool &bDangerous);	// возвращает самый опасный звук
 	SoundElem	&GetSound				();
@@ -88,7 +88,7 @@ public:
 
 	void		UpdateHearing			();
 
-	bool		is_loud_sound			(F32 val);
+	bool		is_loud_sound			(f32 val);
 	
 	void		clear					() {Sounds.clear();}
 	void		remove_links			(CObject *O);

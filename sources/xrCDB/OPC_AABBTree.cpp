@@ -171,21 +171,21 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 			Means.y+=builder->GetSplittingValue(Index, 1);
 			Means.z+=builder->GetSplittingValue(Index, 2);
 		}
-		Means/= F32(mNbPrimitives);
+		Means/= f32(mNbPrimitives);
 
 		// Compute variances
 		Point Vars(0.0f, 0.0f, 0.0f);
 		for(i=0;i<mNbPrimitives;i++)
 		{
 			udword Index = mNodePrimitives[i];
-			F32 Cx = builder->GetSplittingValue(Index, 0);
-			F32 Cy = builder->GetSplittingValue(Index, 1);
-			F32 Cz = builder->GetSplittingValue(Index, 2);
+			f32 Cx = builder->GetSplittingValue(Index, 0);
+			f32 Cy = builder->GetSplittingValue(Index, 1);
+			f32 Cz = builder->GetSplittingValue(Index, 2);
 			Vars.x += (Cx - Means.x)*(Cx - Means.x);
 			Vars.y += (Cy - Means.y)*(Cy - Means.y);
 			Vars.z += (Cz - Means.z)*(Cz - Means.z);
 		}
-		Vars/= F32(mNbPrimitives-1);
+		Vars/= f32(mNbPrimitives-1);
 
 		// Choose axis with greatest variance
 		udword Axis = Vars.LargestAxis();
@@ -199,10 +199,10 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 	else if(builder->mRules&SPLIT_BALANCED)
 	{
 		// Test 3 axis, take the best
-		F32 Results[3];
-		NbPos = Split(0, builder);	Results[0] = F32(NbPos)/ F32(mNbPrimitives);
-		NbPos = Split(1, builder);	Results[1] = F32(NbPos)/ F32(mNbPrimitives);
-		NbPos = Split(2, builder);	Results[2] = F32(NbPos)/ F32(mNbPrimitives);
+		f32 Results[3];
+		NbPos = Split(0, builder);	Results[0] = f32(NbPos)/ f32(mNbPrimitives);
+		NbPos = Split(1, builder);	Results[1] = f32(NbPos)/ f32(mNbPrimitives);
+		NbPos = Split(2, builder);	Results[2] = f32(NbPos)/ f32(mNbPrimitives);
 		Results[0]-=0.5f;	Results[0]*=Results[0];
 		Results[1]-=0.5f;	Results[1]*=Results[1];
 		Results[2]-=0.5f;	Results[2]*=Results[2];
@@ -223,7 +223,7 @@ bool AABBTreeNode::Subdivide(AABBTreeBuilder* builder)
 		// Sort axis
 		Point Extents;	mBV.GetExtents(Extents);	// Box extents
 		udword SortedAxis[] = { 0, 1, 2 };
-		F32* Keys = (F32*)&Extents.x;
+		f32* Keys = (f32*)&Extents.x;
 		for(udword j=0;j<3;j++)
 		{
 			for(udword i=0;i<2;i++)
@@ -303,8 +303,6 @@ void AABBTreeNode::_BuildHierarchy(AABBTreeBuilder* builder)
 	if(mP)	mP->_BuildHierarchy(builder);
 	if(mN)	mN->_BuildHierarchy(builder);
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**

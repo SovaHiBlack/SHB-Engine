@@ -5,7 +5,7 @@
 // Vampire Postprocess Effector
 //////////////////////////////////////////////////////////////////////////
 
-CVampirePPEffector::CVampirePPEffector(const SPPInfo &ppi, F32 life_time) :
+CVampirePPEffector::CVampirePPEffector(const SPPInfo &ppi, f32 life_time) :
 	inherited(EEffectorPPType(eCEHit), life_time)
 {
 	state		= ppi;
@@ -22,15 +22,15 @@ BOOL CVampirePPEffector::Process(SPPInfo& pp)
 	inherited::Process(pp);
 
 	// amount of time passed in percents
-	F32 time_past_perc = (m_total - fLifeTime) / m_total;
+	f32 time_past_perc = (m_total - fLifeTime) / m_total;
 	
-	F32 factor;
+	f32 factor;
 	if (time_past_perc < TIME_ATTACK) {
 		factor = 0.75f * time_past_perc / TIME_ATTACK;
 	} else if (time_past_perc > (1 - TIME_ATTACK)) {
 		factor = 0.75f * (1-time_past_perc) / TIME_ATTACK;
 	} else {	
-		F32 time_past_sine_perc = (time_past_perc - TIME_ATTACK) * (1 / ( 1 - TIME_ATTACK + TIME_ATTACK));
+		f32 time_past_sine_perc = (time_past_perc - TIME_ATTACK) * (1 / ( 1 - TIME_ATTACK + TIME_ATTACK));
 		factor = 0.5f + 0.25f * _sin(PERC_TO_RAD(time_past_sine_perc));
 	}
 	
@@ -48,7 +48,7 @@ BOOL CVampirePPEffector::Process(SPPInfo& pp)
 #define DELTA_ANGLE_Z	DELTA_ANGLE_X
 #define ANGLE_SPEED		0.2f	
 #define BEST_DISTANCE	0.3f
-CVampireCameraEffector::CVampireCameraEffector(F32 time, const Fvector &src, const Fvector &tgt) :
+CVampireCameraEffector::CVampireCameraEffector(f32 time, const Fvector &src, const Fvector &tgt) :
 	inherited(eCEVampire, time)
 {
 	fLifeTime				= time;
@@ -70,12 +70,12 @@ CVampireCameraEffector::CVampireCameraEffector(F32 time, const Fvector &src, con
 	dangle_current.set	(0.f, 0.f, 0.f);
 }
 
-BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fFov, F32& fFar, F32& fAspect)
+BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	fLifeTime -= Device.fTimeDelta; if(fLifeTime<0) return FALSE;
 
 	// процент оставшегося времени
-	F32 time_left_perc = fLifeTime / m_time_total;
+	Ff3232 time_left_perc = fLifeTime / m_time_total;
 
 	// Инициализация
 	Fmatrix	Mdef;
@@ -85,12 +85,11 @@ BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fF
 	Mdef.i.crossproduct	(n,d);
 	Mdef.c.set			(p);
 
-	
 	//////////////////////////////////////////////////////////////////////////
 	// using formula: y = k - 2*k*abs(x-1/2)   k - max distance
-	//F32	cur_dist = m_dist * (1 - 2*_abs((1-time_left_perc) - 0.5f));
-	F32 time_passed	= 1-time_left_perc;
-	F32 cur_dist		= m_dist * (_sqrt(0.5f*0.5f - (time_passed - 0.5f)*(time_passed - 0.5f)) );
+	//f32	cur_dist = m_dist * (1 - 2*_abs((1-time_left_perc) - 0.5f));
+	f32 time_passed	= 1-time_left_perc;
+	f32 cur_dist		= m_dist * (_sqrt(0.5f*0.5f - (time_passed - 0.5f)*(time_passed - 0.5f)) );
 
 	Mdef.c.mad(m_direction, cur_dist);
 	
@@ -135,4 +134,3 @@ BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, F32& fF
 
 	return TRUE;
 }
-

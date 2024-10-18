@@ -9,8 +9,8 @@ class CControlMovementBase : public CControl_ComBase {
 	DEFINE_MAP			(u32, SVelocityParam, VELOCITY_MAP, VELOCITY_MAP_IT);
 	VELOCITY_MAP		m_velocities;
 
-	F32				m_velocity;
-	F32				m_accel;
+	f32				m_velocity;
+	f32				m_accel;
 
 public:
 	virtual void	load			(pcstr section);
@@ -24,9 +24,9 @@ public:
 
 			void	stop					();
 			void	stop_accel				();
-			void	set_velocity			(F32 val, bool max_acc = false);
-			void	set_accel				(F32 val) {m_accel = val;}
+			void	set_velocity			(f32 val, bool max_acc = false);
+			void	set_accel				(f32 val) {m_accel = val;}
 	
 	// services
-			F32	get_velocity_from_path	();
+			f32	get_velocity_from_path	();
 };

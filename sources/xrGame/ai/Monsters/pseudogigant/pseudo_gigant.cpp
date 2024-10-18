@@ -186,8 +186,8 @@ void CPseudoGigant::event_on_step()
 	CActor* pActor =  smart_cast<CActor*>(Level().CurrentEntity());
 	if(pActor)
 	{
-		F32 dist_to_actor = pActor->Position().distance_to(Position());
-		F32 max_dist		= MAX_STEP_RADIUS;
+		f32 dist_to_actor = pActor->Position().distance_to(Position());
+		f32 max_dist		= MAX_STEP_RADIUS;
 		if (dist_to_actor < max_dist) 
 			Actor()->Cameras().AddCamEffector(xr_new<CPseudogigantStepEffector>(
 				step_effector.time, 
@@ -210,7 +210,7 @@ bool CPseudoGigant::check_start_conditions(ControlCom::EControlType type)
 		if (m_time_next_threaten > time()) return false;
 		
 		// check distance to enemy
-		F32 dist = EnemyMan.get_enemy()->Position().distance_to(Position());
+		f32 dist = EnemyMan.get_enemy()->Position().distance_to(Position());
 		if ((dist > m_threaten_dist_max) || (dist < m_threaten_dist_min)) return false;
 	}
 
@@ -256,8 +256,8 @@ void CPseudoGigant::on_threaten_execute()
 	if (!pA) return;
 	if (pA->is_jump()) return;
 
-	F32 dist_to_enemy = pA->Position().distance_to(Position());
-	F32			hit_value;
+	f32 dist_to_enemy = pA->Position().distance_to(Position());
+	f32			hit_value;
 	hit_value		= m_kick_damage - m_kick_damage * dist_to_enemy / m_threaten_dist_max;
 	clamp			(hit_value,0.f,1.f);
 

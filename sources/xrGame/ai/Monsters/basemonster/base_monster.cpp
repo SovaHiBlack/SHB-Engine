@@ -164,15 +164,18 @@ void	CBaseMonster::Hit							(SHit* pHDS)
 	if (invulnerable())
 		return;
 
-	if (g_Alive())
-		if (!critically_wounded()) 
-			update_critical_wounded(pHDS->boneID,pHDS->power);
-
+	if (g_Alive( ))
+	{
+		if (!critically_wounded( ))
+		{
+			update_critical_wounded(pHDS->boneID, pHDS->power);
+		}
+	}
 
 	inherited::Hit(pHDS);
 }
 
-void CBaseMonster::PHHit(F32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, F32 impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
+void CBaseMonster::PHHit(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type /*=ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type);
 }
@@ -197,7 +200,7 @@ bool CBaseMonster::useful(const CItemManager *manager, const CGameObject *object
 	return false;
 }
 
-F32 CBaseMonster::evaluate(const CItemManager *manager, const CGameObject *object) const
+f32 CBaseMonster::evaluate(const CItemManager *manager, const CGameObject *object) const
 {
 	return (0.f);
 }
@@ -220,7 +223,6 @@ void CBaseMonster::ChangeTeam(int team, int squad, int group)
 	inherited::ChangeTeam			(team,squad,group);
 	monster_squad().register_member	((u8)g_Team(),(u8)g_Squad(),(u8)g_Group(), this);
 }
-
 
 void CBaseMonster::SetTurnAnimation(bool turn_left)
 {
@@ -255,19 +257,19 @@ void CBaseMonster::set_state_sound(u32 type, bool once)
 				// check distance to actor
 
 				if (Actor()->Position().distance_to(Position()) > db().m_fDistantIdleSndRange) {
-					delay = u32(F32(db().m_dwDistantIdleSndDelay) * _sqrt(F32(objects_count)));
+					delay = u32(f32(db().m_dwDistantIdleSndDelay) * _sqrt(f32(objects_count)));
 					type  = MonsterSound::eMonsterSoundIdleDistant;
 				} else {
-					delay = u32(F32(db().m_dwIdleSndDelay) * _sqrt(F32(objects_count)));
+					delay = u32(f32(db().m_dwIdleSndDelay) * _sqrt(f32(objects_count)));
 				}
 				
 				break;
 			case MonsterSound::eMonsterSoundEat:
-				delay = u32(F32(db().m_dwEatSndDelay) * _sqrt(F32(objects_count)));
+				delay = u32(f32(db().m_dwEatSndDelay) * _sqrt(f32(objects_count)));
 				break;
 			case MonsterSound::eMonsterSoundAggressive:
 			case MonsterSound::eMonsterSoundPanic:
-				delay = u32(F32(db().m_dwAttackSndDelay) * _sqrt(F32(objects_count)));
+				delay = u32(f32(db().m_dwAttackSndDelay) * _sqrt(f32(objects_count)));
 				break;
 			}
 
@@ -358,7 +360,7 @@ void CBaseMonster::TranslateActionToPathParams()
 
 u32 CBaseMonster::get_attack_rebuild_time()
 {
-	F32 dist = EnemyMan.get_enemy()->Position().distance_to(Position());
+	f32 dist = EnemyMan.get_enemy()->Position().distance_to(Position());
 	return (100 + u32(50.f * dist));
 }
 
@@ -424,6 +426,7 @@ void CBaseMonster::net_Relcase(CObject *O)
 		
 		monster_squad().remove_links(O);
 	}
+
 	m_pPhysics_support->in_NetRelcase(O);
 }
 	
@@ -555,5 +558,3 @@ void CBaseMonster::OnEvent(NET_Packet& P, u16 type)
 		break;
 	}
 }
-
-

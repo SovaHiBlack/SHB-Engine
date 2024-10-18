@@ -48,7 +48,7 @@ public:
 		eLegsRunStrafeLeftDamaged	= eLegsTypeRun	| 9,
 		eLegsRunStrafeRightDamaged	= eLegsTypeRun	| 10,
 
-		eLegsUndefined = u32(-1),
+		eLegsUndefined = u32(-1)
 	};
 
 	enum ETorsoActionType {
@@ -69,7 +69,7 @@ private:
 	TORSO_MOTION_MAP	m_torso;
 
 	struct SPathRotations{
-		F32			angle;
+		f32			angle;
 		ELegsActionType	legs_motion;
 	};
 	
@@ -88,12 +88,13 @@ public:
 
 			// load
 			void		load				();
-			void		add_path_rotation	(ELegsActionType action, F32 angle, ELegsActionType type);
+			void		add_path_rotation	(ELegsActionType action, f32 angle, ELegsActionType type);
 			
 			void		set_body_state		(ETorsoActionType, ELegsActionType);
 
 			void		set_path_params		();
 			void		on_switch_controller	();
+
 private:
 			void		select_velocity		();
 			void		set_path_direction	();
@@ -101,7 +102,7 @@ private:
 			void		select_torso_animation	();
 			void		select_legs_animation	();
 
-			SPathRotations	get_path_rotation	(F32 cur_yaw);
+			SPathRotations	get_path_rotation	(f32 cur_yaw);
 
 			bool		is_moving				();
 };

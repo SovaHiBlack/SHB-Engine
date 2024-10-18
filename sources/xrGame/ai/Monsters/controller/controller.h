@@ -45,8 +45,8 @@ class CController : public CBaseMonster {
 	SAuraSound		*current_aura_sound;
 
 public:	
-	F32			aura_radius;
-	F32			aura_damage;
+	f32			aura_radius;
+	f32			aura_damage;
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -129,8 +129,8 @@ public:
 			bool	can_tube_fire				();
 			u32		m_time_last_tube;
 			
-			F32	m_psy_hit_damage;
-			F32	m_tube_damage;
+			f32	m_psy_hit_damage;
+			f32	m_tube_damage;
 
 			void	set_psy_fire_delay_zero		();
 			void	set_psy_fire_delay_default	();

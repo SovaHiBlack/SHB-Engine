@@ -15,7 +15,7 @@
 #include "xrMessages.h"
 #include "Level.h"
 
-SHit::SHit(F32 Power, Fvector& Dir, CObject* Who, u16 Element, Fvector PInBoneSpace, F32 Impulse, ALife::EHitType HitType, F32 AP, bool AimBullet)
+SHit::SHit(f32 Power, Fvector& Dir, CObject* Who, u16 Element, Fvector PInBoneSpace, f32 Impulse, ALife::EHitType HitType, f32 AP, bool AimBullet)
 {
 	power					= Power;
 	dir.set					(Dir);

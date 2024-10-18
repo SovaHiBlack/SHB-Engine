@@ -44,7 +44,7 @@ bool CStateChimeraThreatenWalkAbstract::check_completion()
 {	
 	if (inherited::check_completion()) return true;
 
-	F32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
+	f32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
 	if (dist_to_enemy < DISTANCE_TO_ENEMY) return true;
 
 	return false;
@@ -55,7 +55,7 @@ bool CStateChimeraThreatenWalkAbstract::check_completion()
 TEMPLATE_SPECIALIZATION
 bool CStateChimeraThreatenWalkAbstract::check_start_conditions()
 {
-	F32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
+	f32 dist_to_enemy = object->EnemyMan.get_enemy_position().distance_to(object->Position());
 	if (dist_to_enemy < MAX_DISTANCE_TO_ENEMY) return true;
 	return false;
 }

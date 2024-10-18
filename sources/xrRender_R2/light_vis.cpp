@@ -20,13 +20,13 @@ void	light::vis_prepare			()
 	u32	frame	= Device.dwFrame;
 	if (frame	<	vis.frame2test)		return;
 
-	F32	safe_area					= VIEWPORT_NEAR;
+	f32	safe_area					= VIEWPORT_NEAR;
 	{
-		F32	a0	= deg2rad(Device.fFOV*Device.fASPECT/2.f);
-		F32	a1	= deg2rad(Device.fFOV/2.f);
-		F32	x0	= VIEWPORT_NEAR/_cos	(a0);
-		F32	x1	= VIEWPORT_NEAR/_cos	(a1);
-		F32	c	= _sqrt					(x0*x0 + x1*x1);
+		f32	a0	= deg2rad(Device.fFOV*Device.fASPECT/2.f);
+		f32	a1	= deg2rad(Device.fFOV/2.f);
+		f32	x0	= VIEWPORT_NEAR/_cos	(a0);
+		f32	x1	= VIEWPORT_NEAR/_cos	(a1);
+		f32	c	= _sqrt					(x0*x0 + x1*x1);
 		safe_area	= _max(_max(VIEWPORT_NEAR,_max(x0,x1)),c);
 	}
 

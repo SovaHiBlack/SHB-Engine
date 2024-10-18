@@ -31,7 +31,7 @@ void CStateBurerAttackRunAroundAbstract::initialize()
 	dir_from_enemy.sub			(object->Position(),object->EnemyMan.get_enemy()->Position());
 	dir_from_enemy.normalize	();
 
-	F32 dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
+	f32 dist = object->Position().distance_to(object->EnemyMan.get_enemy()->Position());
 
 	if (dist > 30.f) {							// бежать к врагу
 		selected_point.mad(object->Position(),dir_to_enemy,DIST_QUANT);

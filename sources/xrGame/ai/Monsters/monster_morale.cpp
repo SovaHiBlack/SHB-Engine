@@ -33,7 +33,7 @@ void CMonsterMorale::on_attack_success()
 
 void CMonsterMorale::update_schedule(u32 dt)
 {
-	F32 cur_v = 1.f;
+	f32 cur_v = 1.f;
 
 	switch (m_state) {
 		case eStable:		cur_v = m_v_stable;			break;

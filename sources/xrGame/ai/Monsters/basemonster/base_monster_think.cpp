@@ -68,10 +68,10 @@ void CBaseMonster::post_fsm_update()
 
 	if (is_state(state, eStateAttack) && control().path_builder().is_moving_on_path()) {
 
-		F32	dir_yaw = control().path_builder().detail().direction().getH();
-		F32	yaw_target = Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getH();
+		f32	dir_yaw = control().path_builder().detail().direction().getH();
+		f32	yaw_target = Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getH();
 
-		F32 angle_diff	= angle_difference(yaw_target, dir_yaw);
+		f32 angle_diff	= angle_difference(yaw_target, dir_yaw);
 
 		if ((angle_diff > PI_DIV_3) && (angle_diff < 5 * PI_DIV_6)) {
 			if (from_right(dir_yaw, yaw_target))	m_bRunTurnRight = true;

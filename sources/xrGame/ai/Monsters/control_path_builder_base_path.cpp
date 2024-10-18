@@ -9,7 +9,7 @@
 #include "../../level_path_manager.h"
 #include "../../ai_object_location.h"
 
-const F32		pmt_find_point_dist				= 30.f;
+const f32		pmt_find_point_dist				= 30.f;
 const u32		pmt_find_random_pos_attempts	= 5;
 
 //////////////////////////////////////////////////////////////////////////

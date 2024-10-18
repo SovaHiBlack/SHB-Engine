@@ -15,7 +15,7 @@ IC void	CMonsterMorale::set_normal_state()
 	m_state	= eStable;
 }
 
-IC void	CMonsterMorale::change(F32 value)
+IC void	CMonsterMorale::change(f32 value)
 {
 	m_morale +=	value;
 	clamp	(m_morale,0.f,1.f);
@@ -26,7 +26,7 @@ IC bool	CMonsterMorale::is_despondent()
 	return ((m_state == eDespondent) || (m_morale < m_despondent_threshold));	
 }
 
-IC F32 CMonsterMorale::get_morale()
+IC f32 CMonsterMorale::get_morale()
 {
 	return m_morale;
 }

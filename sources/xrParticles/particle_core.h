@@ -12,10 +12,10 @@ namespace PAPI{
 		PDomainEnum type;			// PABoxDomain, PASphereDomain, PAConeDomain...
 		pVector 	p1, p2;			// Box vertices, Sphere center, Cylinder/Cone ends
 		pVector 	u, v;			// Orthonormal basis vectors for Cylinder/Cone
-		F32 		radius1;		// Outer radius
-		F32 		radius2;		// Inner radius
-		F32 		radius1Sqr;		// Used for fast Within test of spheres,
-		F32 		radius2Sqr;		// and for mag. of u and v vectors for plane.
+		f32 		radius1;		// Outer radius
+		f32 		radius2;		// Inner radius
+		f32 		radius1Sqr;		// Used for fast Within test of spheres,
+		f32 		radius2Sqr;		// and for mag. of u and v vectors for plane.
 
 		BOOL 		Within			(const pVector &) const;
 		void 		Generate		(pVector &) const;
@@ -27,14 +27,13 @@ namespace PAPI{
 		IC 			pDomain			(){}
 		// Construct a domain in the standard way.
 					pDomain			(PDomainEnum dtype,
-									 F32 a0=0.0f, F32 a1=0.0f, F32 a2=0.0f,
-									 F32 a3=0.0f, F32 a4=0.0f, F32 a5=0.0f,
-									 F32 a6=0.0f, F32 a7=0.0f, F32 a8=0.0f);
+									 f32 a0=0.0f, f32 a1=0.0f, f32 a2=0.0f,
+									 f32 a3=0.0f, f32 a4=0.0f, f32 a5=0.0f,
+									 f32 a6=0.0f, f32 a7=0.0f, f32 a8=0.0f);
 	};
 	#pragma pack (pop)
 	// misc    
-	F32 			NRand			(F32 sigma = 1.0f);
+	f32 			NRand			(f32 sigma = 1.0f);
 };
 //---------------------------------------------------------------------------
 #endif
- 

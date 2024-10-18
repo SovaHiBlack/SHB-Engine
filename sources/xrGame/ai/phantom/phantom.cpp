@@ -281,8 +281,8 @@ CParticlesObject* CPhantom::PlayParticles(const shared_str& name, BOOL bAutoRemo
 //---------------------------------------------------------------------
 void CPhantom::UpdatePosition(const Fvector& tgt_pos) 
 {
-	F32				tgt_h;
-	F32				tgt_p;
+	f32				tgt_h;
+	f32				tgt_p;
 	Fvector			tgt_dir,cur_dir;
 	tgt_dir.sub		(tgt_pos,Position());
 	tgt_dir.getHP	(tgt_h,tgt_p);
@@ -297,13 +297,13 @@ void CPhantom::UpdatePosition(const Fvector& tgt_pos)
 	Position().mad	(prev_pos,cur_dir,fSpeed*Device.fTimeDelta);
 }
 
-void CPhantom::PsyHit(const CObject *object, F32 value)
+void CPhantom::PsyHit(const CObject *object, f32 value)
 {
 	NET_Packet			P;
 	SHit				HS;
 	HS.GenHeader		(GE_HIT, object->ID());				//				//	u_EventGen		(P,GE_HIT, object->ID());				
-	HS.whoID			= (ID());					// own			//	P.w_u16			(object->ID());							
-	HS.weaponID			= (ID());					// own			//	P.w_u16			(object->ID());							
+	HS.whoID			= (ID());							// own			//	P.w_u16			(object->ID());							
+	HS.weaponID			= (ID());							// own			//	P.w_u16			(object->ID());							
 	HS.dir				= (Fvector().set(0.f,1.f,0.f));		// direction	//	P.w_dir			(Fvector().set(0.f,1.f,0.f));			
 	HS.power			= (value);							// hit value	//	P.w_float		(value);								
 	HS.boneID			= (BI_NONE);						// bone			//	P.w_s16			(BI_NONE);								
@@ -340,9 +340,9 @@ void CPhantom::net_Export	(NET_Packet& P)					// export to server
 	P.w_u32				(Device.dwTimeGlobal);
 	P.w_u8				(flags);
 
-	F32				yaw;
-	F32 pitch;
-	F32 bank;
+	f32				yaw;
+	f32 pitch;
+	f32 bank;
 	XFORM().getHPB		(yaw,pitch,bank);
 	P.w_float /*w_angle8*/			(yaw);
 	P.w_float /*w_angle8*/			(yaw);
@@ -360,11 +360,11 @@ void CPhantom::net_Import	(NET_Packet& P)
 
 	u8					flags;
 
-	F32 health;
+	f32 health;
 	P.r_float			(health);
 	SetfHealth			(health);
 
-	F32 fDummy;
+	f32 fDummy;
 	u32 dwDummy;
 	P.r_float			(fDummy);
 	P.r_u32				(dwDummy);
@@ -373,10 +373,10 @@ void CPhantom::net_Import	(NET_Packet& P)
 	P.r_u32				(dwDummy);
 	P.r_u8				(flags);
 
-	F32				yaw;
-	F32 pitch;
-	F32 bank = 0.0f;
-	F32 roll = 0.0f;
+	f32				yaw;
+	f32 pitch;
+	f32 bank = 0.0f;
+	f32 roll = 0.0f;
 
 	P.r_float /*r_angle8*/			(yaw);
 	P.r_float /*r_angle8*/			(yaw);

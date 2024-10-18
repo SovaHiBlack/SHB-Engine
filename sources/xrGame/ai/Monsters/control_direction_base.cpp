@@ -19,14 +19,14 @@ void CControlDirectionBase::reinit()
 	m_man->capture		(this, ControlCom::eControlDir);
 }
 
-void CControlDirectionBase::face_target(const Fvector &position, u32 delay, F32 add_yaw)
+void CControlDirectionBase::face_target(const Fvector &position, u32 delay, f32 add_yaw)
 {
 	if (m_time_last_faced + delay > Device.dwTimeGlobal) return;
 
 	m_delay = delay;
 
-	F32	yaw;
-	F32 pitch;
+	f32	yaw;
+	f32 pitch;
 	Fvector dir;
 
 	dir.sub		(position, m_object->Position());
@@ -40,15 +40,15 @@ void CControlDirectionBase::face_target(const Fvector &position, u32 delay, F32 
 
 	m_time_last_faced	= Device.dwTimeGlobal;
 }
-void CControlDirectionBase::face_target(const CObject *obj,	u32 delay, F32 add_yaw)
+void CControlDirectionBase::face_target(const CObject *obj,	u32 delay, f32 add_yaw)
 {
 	face_target	(obj->Position(), delay, add_yaw);
 }
 
 void CControlDirectionBase::use_path_direction(bool reversed)
 {
-	F32 yaw;
-	F32 pitch;
+	f32 yaw;
+	f32 pitch;
 	m_man->path_builder().detail().direction().getHP	(yaw,pitch);
 
 	if (fsimilar(yaw,0.f, EPSILON_7)) return;
@@ -56,12 +56,12 @@ void CControlDirectionBase::use_path_direction(bool reversed)
 	m_heading.target = angle_normalize((reversed) ? (-yaw + PI) : (-yaw));
 }
 
-void CControlDirectionBase::set_heading_speed(F32 value, bool force)
+void CControlDirectionBase::set_heading_speed(f32 value, bool force)
 {
 	m_heading.speed_target = value;
 }
 
-void CControlDirectionBase::set_heading(F32 value, bool force)
+void CControlDirectionBase::set_heading(f32 value, bool force)
 {
 	m_heading.target = value;
 }

@@ -369,7 +369,7 @@ void CControlManagerCustom::jump(const Fvector &position)
 }
 
 
-void CControlManagerCustom::script_jump(const Fvector &position, F32 factor)
+void CControlManagerCustom::script_jump(const Fvector &position, f32 factor)
 {
 	if (!m_man->check_start_conditions(ControlCom::eControlJump)) return;
 
@@ -418,7 +418,7 @@ void CControlManagerCustom::check_jump_over_physics()
 	if (m_object->GetScriptControl()) return;
 
 	Fvector prev_pos	= m_object->Position();
-	F32	dist_sum	= 0.f;
+	f32	dist_sum	= 0.f;
 
 	for(u32 i = m_man->path_builder().detail().curr_travel_point_index(); i<m_man->path_builder().detail().path().size();i++) {
 		const DetailPathManager::STravelPathPoint &travel_point = m_man->path_builder().detail().path()[i];
@@ -435,11 +435,11 @@ void CControlManagerCustom::check_jump_over_physics()
 			Fvector dir = Fvector().sub(travel_point.position, m_object->Position());
 
 			// проверка на  Field-Of-View
-			F32	my_h	= m_object->Direction().getH();
-			F32	h		= dir.getH();
+			f32	my_h	= m_object->Direction().getH();
+			f32	h		= dir.getH();
 
-			F32 from	= angle_normalize(my_h - deg(8));
-			F32 to	= angle_normalize(my_h + deg(8));
+			f32 from	= angle_normalize(my_h - deg(8));
+			f32 to	= angle_normalize(my_h + deg(8));
 
 			if (!is_angle_between(h, from, to)) continue;
 
@@ -488,7 +488,7 @@ void CControlManagerCustom::check_rotation_jump()
 	m_man->activate				(ControlCom::eControlRotationJump);
 }
 
-void CControlManagerCustom::add_rotation_jump_data(pcstr left1, pcstr left2, pcstr right1, pcstr right2, F32 angle, u32 flags)
+void CControlManagerCustom::add_rotation_jump_data(pcstr left1, pcstr left2, pcstr right1, pcstr right2, f32 angle, u32 flags)
 {
 	SControlRotationJumpData	data;
 	fill_rotation_data			(data,left1,left2,right1,right2,angle,flags);
@@ -550,7 +550,7 @@ void CControlManagerCustom::check_melee_jump()
 //////////////////////////////////////////////////////////////////////////
 // Fill Rotation Data
 //////////////////////////////////////////////////////////////////////////
-void CControlManagerCustom::fill_rotation_data(SControlRotationJumpData	&data, pcstr left1, pcstr left2, pcstr right1, pcstr right2, F32 angle, u32 flags)
+void CControlManagerCustom::fill_rotation_data(SControlRotationJumpData	&data, pcstr left1, pcstr left2, pcstr right1, pcstr right2, f32 angle, u32 flags)
 {
 	VERIFY				(m_object->Visual());
 	CKinematicsAnimated	*skeleton_animated	= smart_cast<CKinematicsAnimated*>(m_object->Visual());
