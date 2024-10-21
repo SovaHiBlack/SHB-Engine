@@ -75,7 +75,7 @@ BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fF
 	fLifeTime -= Device.fTimeDelta; if(fLifeTime<0) return FALSE;
 
 	// процент оставшегося времени
-	Ff3232 time_left_perc = fLifeTime / m_time_total;
+	f32 time_left_perc = fLifeTime / m_time_total;
 
 	// Инициализация
 	Fmatrix	Mdef;

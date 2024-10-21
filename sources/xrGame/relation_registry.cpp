@@ -143,7 +143,7 @@ void RELATION_REGISTRY::SetGoodwill 	(u16 from, u16 to, CHARACTER_GOODWILL goodw
 {
 	RELATION_DATA& relation_data = relation_registry().registry().objects(from);
 
-	static Ivector2 gw_limits		= pSettings->r_ivector2(ACTIONS_POINTS_SECT, "personal_goodwill_limits");
+	static iVector2 gw_limits		= pSettings->r_ivector2(ACTIONS_POINTS_SECT, "personal_goodwill_limits");
 	clamp							(goodwill, gw_limits.x, gw_limits.y);
 
 	relation_data.personal[to].SetGoodwill(goodwill);
@@ -176,7 +176,7 @@ CHARACTER_GOODWILL	 RELATION_REGISTRY::GetCommunityGoodwill (CHARACTER_COMMUNITY
 
 void RELATION_REGISTRY::SetCommunityGoodwill 	(CHARACTER_COMMUNITY_INDEX from_community, u16 to_character, CHARACTER_GOODWILL goodwill)
 {
-	static Ivector2 gw_limits		= pSettings->r_ivector2(ACTIONS_POINTS_SECT, "community_goodwill_limits");
+	static iVector2 gw_limits		= pSettings->r_ivector2(ACTIONS_POINTS_SECT, "community_goodwill_limits");
 	clamp							(goodwill, gw_limits.x, gw_limits.y);
 	RELATION_DATA& relation_data	= relation_registry().registry().objects(to_character);
 

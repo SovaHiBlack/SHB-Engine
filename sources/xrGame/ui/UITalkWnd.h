@@ -50,7 +50,7 @@ public:
 	virtual bool		IR_OnKeyboardPress(int dik);
 	virtual bool		OnKeyboard(int dik, EUIMessages keyboard_action);
 	void				SwitchToTrade();
-	void				AddIconedMessage(pcstr text, pcstr texture_name, Frect texture_rect, pcstr templ_name);
+	void				AddIconedMessage(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name);
 
 protected:
 	//диалог

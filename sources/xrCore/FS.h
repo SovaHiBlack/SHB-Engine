@@ -119,9 +119,9 @@ public:
 	{
 		w(&v, sizeof(Ivector3));
 	}
-	IC void			w_ivector2(const Ivector2& v)
+	IC void			w_ivector2(const iVector2& v)
 	{
-		w(&v, sizeof(Ivector2));
+		w(&v, sizeof(iVector2));
 	}
 
 	// quant writing functions
@@ -315,9 +315,9 @@ public:
 	{
 		r(&v, sizeof(Ivector3));
 	}
-	IC void			r_ivector4(Ivector2& v)
+	IC void			r_ivector4(iVector2& v)
 	{
-		r(&v, sizeof(Ivector2));
+		r(&v, sizeof(iVector2));
 	}
 	IC void			r_fcolor(Fcolor& v)
 	{

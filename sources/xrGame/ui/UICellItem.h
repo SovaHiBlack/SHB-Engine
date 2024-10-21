@@ -22,7 +22,7 @@ protected:
 	xr_vector<CUICellItem*> m_childs;
 
 	CUIDragDropListEx*		m_pParentList;
-	Ivector2				m_grid_size;
+	iVector2				m_grid_size;
 	ICustomDrawCell*		m_custom_draw;
 	int						m_accelerator;
 	virtual void			UpdateItemText			();
@@ -43,7 +43,7 @@ public:
 				CUICellItem* Child					(u32 idx)				{return m_childs[idx];};
 				bool		HasChild					(CUICellItem* item);
 	virtual		bool		EqualTo					(CUICellItem* itm);
-	IC const	Ivector2&	GetGridSize				()						{return m_grid_size;}; //size in grid
+	IC const	iVector2&	GetGridSize				()						{return m_grid_size;}; //size in grid
 	IC			void		SetAccelerator			(int dik)				{m_accelerator=dik;};
 	IC			int			GetAccelerator			()		const			{return m_accelerator;};
 
@@ -64,11 +64,12 @@ private:
 	typedef		CUIWindow	inherited;
 	CUIStatic				m_static;
 	CUICellItem*			m_pParent;
-	Fvector2				m_pos_offset;
+	fVector2				m_pos_offset;
 	CUIDragDropListEx*		m_back_list;
+
 public:
 							CUIDragItem(CUICellItem* parent);
-	virtual		void		Init(const ref_shader& sh, const Frect& rect, const Frect& text_rect);
+	virtual		void		Init(const ref_shader& sh, const fRect& rect, const fRect& text_rect);
 	virtual					~CUIDragItem();
 			CUIStatic*		wnd						() {return &m_static;}
 	virtual		bool		OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
@@ -78,5 +79,5 @@ public:
 		CUICellItem*		ParentItem				()							{return m_pParent;}
 				void		SetBackList				(CUIDragDropListEx*l);
 	CUIDragDropListEx*		BackList				()							{return m_back_list;}
-				Fvector2	GetPosition				();
+	fVector2	GetPosition				();
 };

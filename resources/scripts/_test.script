@@ -43,13 +43,13 @@ end
 
 
 function main________________()
-	db.actor:give_game_news(game.translate_string("pass_to_2nd_door"), "ui\\ui_icons_task", Frect():set(0,100,50,50) ,0, 0)	
---	db.actor:give_talk_message("trader", "ui\\ui_icons_task",Frect():set(300,100,50,50),"iconed_trade_info")
---	db.actor:give_talk_message("Превед", "trader", "ui\\ui_icons_task",Frect():set(300,100,50,50),"iconed_trade_info")
---	db.actor:give_talk_message("Превед", "trader", "trader", "ui\\ui_icons_task",Frect():set(300,100,50,50),"iconed_trade_info")
---	db.actor:give_game_news("превед", "ui\\ui_icons_task", Frect():set(300,100,50,50),0,0)
---	db.actor:give_game_news("превед","trader", "ui\\ui_icons_task", Frect():set(300,100,50,50),0,0)
---	db.actor:give_game_news("trader","trader","trader", "ui\\ui_icons_task", Frect():set(300,100,50,50),0,0)
+	db.actor:give_game_news(game.translate_string("pass_to_2nd_door"), "ui\\ui_icons_task", fRect():set(0,100,50,50) ,0, 0)	
+--	db.actor:give_talk_message("trader", "ui\\ui_icons_task",fRect():set(300,100,50,50),"iconed_trade_info")
+--	db.actor:give_talk_message("Превед", "trader", "ui\\ui_icons_task",fRect():set(300,100,50,50),"iconed_trade_info")
+--	db.actor:give_talk_message("Превед", "trader", "trader", "ui\\ui_icons_task",fRect():set(300,100,50,50),"iconed_trade_info")
+--	db.actor:give_game_news("превед", "ui\\ui_icons_task", fRect():set(300,100,50,50),0,0)
+--	db.actor:give_game_news("превед","trader", "ui\\ui_icons_task", fRect():set(300,100,50,50),0,0)
+--	db.actor:give_game_news("trader","trader","trader", "ui\\ui_icons_task", fRect():set(300,100,50,50),0,0)
 end
 
 
@@ -76,13 +76,13 @@ function ___main()
 
 --	local news_text = "%c[255,160,160,160]" .. "Задание выполнено" .. "\\n" .. "%c[default]" .. "Информация о винтовке FN-2000 а также куча всякой лабуды типа убить долбаного стрелка или помочь сраному раненому"
 
---	db.actor:give_game_news(news_text, "ui\\ui_pop_up_active_back", Frect():set(0,0,16,16), 0, 0)
+--	db.actor:give_game_news(news_text, "ui\\ui_pop_up_active_back", fRect():set(0,0,16,16), 0, 0)
 --	local news_text = "%c[255,160,160,160]" .. "Задание выполнено" .. "\\n" .. "%c[default]" .. "Информация о винтовке FN-2000 а также куча всякой лабуды типа убить долбаного стрелка или помочь сраному раненому"
 --	local a,b = get_task_info("ui_iconsTotalSmall_found","_money")
 --	b:set(83,0,49,26)
 --	db.actor:give_game_news(news_text, a, b, 0, 0)
 
---	db.actor:give_talk_message(news_text, "ui\\ui_icons_task",Frect():set(300,100,50,50),"iconed_trade_info")
+--	db.actor:give_talk_message(news_text, "ui\\ui_icons_task",fRect():set(300,100,50,50),"iconed_trade_info")
 
 -- game.start_tutorial("credits_seq")
 	

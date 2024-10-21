@@ -83,7 +83,7 @@ void CUIProgressBar::Update()
 
 void CUIProgressBar::Draw()
 {
-	Frect					rect;
+	fRect					rect;
 	GetAbsoluteRect			(rect);
 
 	if(m_bBackgroundPresent){
@@ -92,7 +92,7 @@ void CUIProgressBar::Draw()
 		UI()->PopScissor	();
 	}
 
-	Frect progress_rect;
+	fRect progress_rect;
 
 	if(m_bIsHorizontal){
 		progress_rect.set	(0, 0, m_CurrentLength, GetHeight());
@@ -102,12 +102,13 @@ void CUIProgressBar::Draw()
 	}
 	
 	if(m_CurrentLength>0){
-		Fvector2 pos		= m_UIProgressItem.GetWndPos();	
+		fVector2 pos		= m_UIProgressItem.GetWndPos();
 		progress_rect.add	(rect.left + pos.x,rect.top + pos.y);
 
 		UI()->PushScissor	(progress_rect);
 		m_UIProgressItem.Draw();
 		UI()->PopScissor	();
 	}
+
 	m_last_render_frame	= Device.dwFrame;
 }

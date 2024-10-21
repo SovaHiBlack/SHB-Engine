@@ -25,7 +25,7 @@ public:
 	void				RemoveItemByTAG						(u32 tag_value);
 	void				RemoveAll							();
 
-	virtual void		Show								(const Frect& parent_rect, const Fvector2& point);
+	virtual void		Show								(const fRect& parent_rect, const fVector2& point);
 	virtual void		Hide								();
 
 	virtual void		Update								();

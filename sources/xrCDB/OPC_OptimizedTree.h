@@ -63,8 +63,8 @@
 	{
 		IMPLEMENT_IMPLICIT_NODE(AABBCollisionNode, CollisionAABB)
 
-		inline_			F32				GetVolume()		const	{ return mAABB.mExtents.x * mAABB.mExtents.y * mAABB.mExtents.z;	}
-		inline_			F32				GetSize()		const	{ return mAABB.mExtents.SquareMagnitude();	}
+		inline_			f32				GetVolume()		const	{ return mAABB.mExtents.x * mAABB.mExtents.y * mAABB.mExtents.z;	}
+		inline_			f32				GetSize()		const	{ return mAABB.mExtents.SquareMagnitude();	}
 		inline_			udword				GetRadius()		const
 						{
 							udword* Bits = (udword*)&mAABB.mExtents.x;

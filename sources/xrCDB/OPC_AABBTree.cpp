@@ -87,7 +87,7 @@ void  AABBTreeNode::destroy		(AABBTreeBuilder*	_tree)
 udword AABBTreeNode::Split(udword axis, AABBTreeBuilder* builder)
 {
 	// Get node split value
-	F32 SplitValue = builder->GetSplittingValueEx(mNodePrimitives, mNbPrimitives, mBV, axis);
+	f32 SplitValue = builder->GetSplittingValueEx(mNodePrimitives, mNbPrimitives, mBV, axis);
 
 	udword NbPos = 0;
 	// Loop through all node-related primitives. Their indices range from mNodePrimitives[0] to mNodePrimitives[mNbPrimitives-1].
@@ -99,7 +99,7 @@ udword AABBTreeNode::Split(udword axis, AABBTreeBuilder* builder)
 
 		// Test against the splitting value. The primitive value is tested against the enclosing-box center.
 		// [We only need an approximate partition of the enclosing box here.]
-		F32 PrimitiveValue = builder->GetSplittingValue(Index, axis);
+		f32 PrimitiveValue = builder->GetSplittingValue(Index, axis);
 
 		// Reorganize the list of indices in this order: positive - negative.
 		if(PrimitiveValue > SplitValue)

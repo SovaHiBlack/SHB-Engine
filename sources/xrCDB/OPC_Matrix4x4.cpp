@@ -76,7 +76,7 @@ ICEMATHS_API void IceMaths::InvertPRMatrix(Matrix4x4& dest, const Matrix4x4& src
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compute the cofactor of the Matrix at a specified location
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-F32 Matrix4x4::CoFactor(udword row, udword col) const
+f32 Matrix4x4::CoFactor(udword row, udword col) const
 {
 	return	 (( m[(row+1)&3][(col+1)&3]*m[(row+2)&3][(col+2)&3]*m[(row+3)&3][(col+3)&3] +
 				m[(row+1)&3][(col+2)&3]*m[(row+2)&3][(col+3)&3]*m[(row+3)&3][(col+1)&3] +
@@ -89,7 +89,7 @@ F32 Matrix4x4::CoFactor(udword row, udword col) const
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compute the determinant of the Matrix
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-F32 Matrix4x4::Determinant() const
+f32 Matrix4x4::Determinant() const
 {
 	return	m[0][0] * CoFactor(0, 0) +
 			m[0][1] * CoFactor(0, 1) +
@@ -102,13 +102,13 @@ F32 Matrix4x4::Determinant() const
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Matrix4x4& Matrix4x4::Invert()
 {
-	F32 Det = Determinant();
+	f32 Det = Determinant();
 	Matrix4x4 Temp;
 
 	if(_abs(Det) < MATRIX4X4_EPSILON)
 		return	*this;		// The matrix is not invertible! Singular case!
 
-	F32 IDet = 1.0f / Det;
+	f32 IDet = 1.0f / Det;
 
 	Temp.m[0][0] = CoFactor(0,0) * IDet;
 	Temp.m[1][0] = CoFactor(0,1) * IDet;
@@ -148,9 +148,9 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
 
 	// Compute the plane equation
 	Point n = ((p0-p1)^(p1-p2)).Normalize();
-	F32 D		= -(p0|n);
+	f32 D		= -(p0|n);
 	Plane PlaneEquation;
-	F32 Coeff;
+	f32 Coeff;
 	if(_abs(D)< EPSILON_4)	Coeff = -1.0f;
 	else					Coeff = -1.0f / _abs(D);
 	PlaneEquation.n.x = n.x * Coeff;
@@ -159,7 +159,7 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
 	PlaneEquation.d   = D * Coeff;
 
 	// Plane equation must be normalized!
-	F32 dot = PlaneEquation.n.x*light.x + PlaneEquation.n.y*light.y + PlaneEquation.n.z*light.z + PlaneEquation.d;
+	f32 dot = PlaneEquation.n.x*light.x + PlaneEquation.n.y*light.y + PlaneEquation.n.z*light.z + PlaneEquation.d;
 
 	m[0][0] = dot - light.x*PlaneEquation.n.x;
 	m[1][0] =     - light.x*PlaneEquation.n.y;
@@ -191,7 +191,7 @@ Matrix4x4& Matrix4x4::Shadow(const Point& light, const Point& p0, const Point& p
  *	\return		Self-Reference
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Matrix4x4& Matrix4x4::SphereMap(F32 scale)
+Matrix4x4& Matrix4x4::SphereMap(f32 scale)
 {
 	Identity();
 	m[0][0] = scale;
@@ -232,7 +232,7 @@ Matrix4x4& Matrix4x4::SelfShadow(const Point& light)
  *	\return		Self-Reference
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Matrix4x4& Matrix4x4::Rotozoom(F32 angle, F32 zoom, F32 posx, F32 posy)
+Matrix4x4& Matrix4x4::Rotozoom(f32 angle, f32 zoom, f32 posx, f32 posy)
 {
 	RotZ(angle);
 	Scale(zoom, zoom, zoom);
@@ -241,7 +241,7 @@ Matrix4x4& Matrix4x4::Rotozoom(F32 angle, F32 zoom, F32 posx, F32 posy)
 }
 
 // ### must be optimized... consider using the 3x3 version
-Matrix4x4& Matrix4x4::Rot(F32 angle, Point& p1, Point& p2)
+Matrix4x4& Matrix4x4::Rot(f32 angle, Point& p1, Point& p2)
 {
 	Point Axis = (p2 - p1).Normalize();
 
@@ -253,11 +253,11 @@ Matrix4x4& Matrix4x4::Rot(F32 angle, Point& p1, Point& p2)
 
 	Matrix4x4 Rx, InvRx;
 	Rx.Identity();
-	F32 d = _sqrt(Axis.y*Axis.y + Axis.z*Axis.z);
+	f32 d = _sqrt(Axis.y*Axis.y + Axis.z*Axis.z);
 	if(d!=0.0f)
 	{
-		F32 CosAngle = Axis.z / d;
-		F32 SinAngle = Axis.y / d;
+		f32 CosAngle = Axis.z / d;
+		f32 SinAngle = Axis.y / d;
 		Rx.SetRow(1, Point(0.0f, CosAngle, SinAngle));
 		Rx.SetRow(2, Point(0.0f, -SinAngle, CosAngle));
 	}

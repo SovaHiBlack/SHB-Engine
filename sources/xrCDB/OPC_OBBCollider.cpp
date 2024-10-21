@@ -410,7 +410,7 @@ inline_ BOOL OBBCollider::OBBContainsBox(const Point& bc, const Point& be)
 	f = p.x * mRModelToBox.m[0][2] + p.y * mRModelToBox.m[1][2] + p.z * mRModelToBox.m[2][2];	if(f>mB0.z || f<mB1.z) return FALSE;
 
 	Point p;
-	F32 f;
+	f32 f;
 
 	TEST_PT(be.x, be.y, be.z)
 	TEST_PT(-be.x, be.y, be.z)
@@ -427,20 +427,20 @@ inline_ BOOL OBBCollider::OBBContainsBox(const Point& bc, const Point& be)
 	// Yes there is:
 	// - compute model-box's AABB in OBB space
 	// - test AABB-in-AABB
-	F32 NCx = bc.x * mRModelToBox.m[0][0] + bc.y * mRModelToBox.m[1][0] + bc.z * mRModelToBox.m[2][0];
-	F32 NEx = _abs(mRModelToBox.m[0][0] * be.x) + _abs(mRModelToBox.m[1][0] * be.y) + _abs(mRModelToBox.m[2][0] * be.z);
+	f32 NCx = bc.x * mRModelToBox.m[0][0] + bc.y * mRModelToBox.m[1][0] + bc.z * mRModelToBox.m[2][0];
+	f32 NEx = _abs(mRModelToBox.m[0][0] * be.x) + _abs(mRModelToBox.m[1][0] * be.y) + _abs(mRModelToBox.m[2][0] * be.z);
 
 	if(mB0.x < NCx+NEx)	return FALSE;
 	if(mB1.x > NCx-NEx)	return FALSE;
 
-	F32 NCy = bc.x * mRModelToBox.m[0][1] + bc.y * mRModelToBox.m[1][1] + bc.z * mRModelToBox.m[2][1];
-	F32 NEy = _abs(mRModelToBox.m[0][1] * be.x) + _abs(mRModelToBox.m[1][1] * be.y) + _abs(mRModelToBox.m[2][1] * be.z);
+	f32 NCy = bc.x * mRModelToBox.m[0][1] + bc.y * mRModelToBox.m[1][1] + bc.z * mRModelToBox.m[2][1];
+	f32 NEy = _abs(mRModelToBox.m[0][1] * be.x) + _abs(mRModelToBox.m[1][1] * be.y) + _abs(mRModelToBox.m[2][1] * be.z);
 
 	if(mB0.y < NCy+NEy)	return FALSE;
 	if(mB1.y > NCy-NEy)	return FALSE;
 
-	F32 NCz = bc.x * mRModelToBox.m[0][2] + bc.y * mRModelToBox.m[1][2] + bc.z * mRModelToBox.m[2][2];
-	F32 NEz = _abs(mRModelToBox.m[0][2] * be.x) + _abs(mRModelToBox.m[1][2] * be.y) + _abs(mRModelToBox.m[2][2] * be.z);
+	f32 NCz = bc.x * mRModelToBox.m[0][2] + bc.y * mRModelToBox.m[1][2] + bc.z * mRModelToBox.m[2][2];
+	f32 NEz = _abs(mRModelToBox.m[0][2] * be.x) + _abs(mRModelToBox.m[1][2] * be.y) + _abs(mRModelToBox.m[2][2] * be.z);
 
 	if(mB0.z < NCz+NEz)	return FALSE;
 	if(mB1.z > NCz-NEz)	return FALSE;
@@ -494,8 +494,8 @@ void OBBCollider::_Collide(const AABBQuantizedNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform OBB-AABB overlap test
 	if(!BoxBoxOverlap(Extents, Center))	return;
@@ -548,8 +548,8 @@ void OBBCollider::_Collide(const AABBQuantizedNoLeafNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform OBB-AABB overlap test
 	if(!BoxBoxOverlap(Extents, Center))	return;

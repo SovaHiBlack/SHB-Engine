@@ -52,8 +52,8 @@ void CUIDebugFonts::FillUpList( )
 	CFontManager::FONTS_VEC& v				= UI( )->Font( )->m_all_fonts;
 	CFontManager::FONTS_VEC_IT it			= v.begin( );
 	CFontManager::FONTS_VEC_IT it_e			= v.end( );
-	Fvector2								pos;
-	Fvector2								sz;
+	fVector2								pos;
+	fVector2								sz;
 	pos.set									(0.0f, 0.0f);
 	sz.set									(UI_BASE_WIDTH, UI_BASE_HEIGHT);
 	string256								str;

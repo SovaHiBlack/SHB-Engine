@@ -109,7 +109,7 @@ void CUITaskRootItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 
 	m_taskImage->InitTexture(*obj->icon_texture_name);
 
-	Frect r = obj->icon_rect;
+	fRect r = obj->icon_rect;
 	m_taskImage->SetOriginalRect(r.x1, r.y1, r.x2, r.y2);
 	m_taskImage->ClipperOn( );
 	m_taskImage->SetStretchTexture(true);
@@ -144,7 +144,7 @@ void CUITaskRootItem::SetGameTask(CGameTask* gt, u16 obj_idx)
 	if (m_remTimeStatic->IsShown( ))
 	{
 		f32 _height = GetWndSize( ).y;
-		Fvector2 _pos = m_captionTime->GetWndPos( );
+		fVector2 _pos = m_captionTime->GetWndPos( );
 		_pos.y += m_captionTime->GetWndSize( ).y;
 		_pos.x = m_remTimeStatic->GetWndPos( ).x;
 

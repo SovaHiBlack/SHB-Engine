@@ -41,7 +41,8 @@ void	CRenderTarget::phase_smap_spot_tsh	(light* L)
 		RCache.set_Element				(shader->E[ SE_L_FILL ]	);
 
 		// Fill vertex buffer
-		Fvector2						p0,p1;
+		fVector2						p0;
+		fVector2						p1;
 		u32		Offset;
 		u32		C						= color_rgba	(255,255,255,255);
 		f32	_w						= f32(L->X.S.size);

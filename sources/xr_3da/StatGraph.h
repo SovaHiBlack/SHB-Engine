@@ -41,9 +41,10 @@ protected:
 	f32			mn;
 	f32 mx;
 	u32				max_item_count;
-	Ivector2 		lt,rb;
-	Ivector2 		grid;
-	Fvector2		grid_step;
+	iVector2		lt;
+	iVector2		rb;
+	iVector2 		grid;
+	fVector2		grid_step;
 	u32				grid_color;
 	u32				base_color;
 	u32				rect_color;
@@ -51,7 +52,6 @@ protected:
 	ref_geom 		hGeomTri;
 	ref_geom 		hGeomLine;
 
-	
 	struct SMarker {
 		EStyle			m_eStyle;
 		f32			m_fPos;

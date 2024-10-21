@@ -22,7 +22,7 @@ struct GAME_NEWS_DATA : public IPureSerializeObject<IReader,IWriter>
 	ALife::_TIME_ID		receive_time;
 
 	shared_str			texture_name;
-	Frect				tex_rect;
+	fRect				tex_rect;
 
 	pcstr				SingleLineText();
 

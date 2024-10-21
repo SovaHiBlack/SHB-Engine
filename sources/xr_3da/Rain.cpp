@@ -248,7 +248,7 @@ void	CEffect_Rain::Render	()
 		sC.add			(pos_trail);
 		if (!::Render->ViewBase.testSphere_dirty(sC,sR))	continue;
 		
-		static Fvector2 UV[2][4]={
+		static fVector2 UV[2][4]={
 			{{0,1},{0,0},{1,1},{1,0}},
 			{{1,0},{1,1},{0,0},{0,1}}
 		};

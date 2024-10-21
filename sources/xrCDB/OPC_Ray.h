@@ -56,7 +56,7 @@
 		 *	\param		t	[in] point's parameter [t=0 => pt = mP0, t=1 => pt = mP1]
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		inline_			void	ComputePoint(Point& pt, F32 t)	const	{	pt = mP0 + t * (mP1 - mP0);		}
+		inline_			void	ComputePoint(Point& pt, f32 t)	const	{	pt = mP0 + t * (mP1 - mP0);		}
 
 						Point	mP0;		//!< Start of segment
 						Point	mP1;		//!< End of segment

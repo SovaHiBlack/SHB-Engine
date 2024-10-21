@@ -19,7 +19,8 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	u32		C					= color_rgba	(255,255,255,255);
 	f32	_w						= f32(Device.dwWidth);
 	f32	_h						= f32(Device.dwHeight);
-	Fvector2					p0,p1;
+	fVector2					p0;
+	fVector2					p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 	f32	d_Z = EPSILON_7;
@@ -126,7 +127,8 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 		}
 
 		// Make jitter texture
-		Fvector2					j0,j1;
+		fVector2					j0;
+		fVector2					j1;
 		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
 		//f32	scale_Y				= f32(Device.dwHeight)/ f32TEX_jitter);
 		f32	offset				= (.5f / f32(TEX_jitter));
@@ -206,7 +208,8 @@ void CRenderTarget::accum_direct_blend	()
 		u32		C					= color_rgba	(255,255,255,255);
 		f32	_w					= f32(Device.dwWidth);
 		f32	_h					= f32(Device.dwHeight);
-		Fvector2					p0,p1;
+		fVector2					p0;
+		fVector2					p1;
 		p0.set						(.5f/_w, .5f/_h);
 		p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 		f32	d_Z = EPSILON_7;
@@ -246,7 +249,8 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 	u32		C					= color_rgba	(255,255,255,255);
 	f32	_w					= f32(Device.dwWidth);
 	f32	_h					= f32(Device.dwHeight);
-	Fvector2					p0,p1;
+	fVector2					p0;
+	fVector2					p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 	f32	d_Z = EPSILON_7;
@@ -334,7 +338,8 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 		}
 
 		// Make jitter texture
-		Fvector2					j0,j1;
+		fVector2					j0;
+		fVector2					j1;
 		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
 		//f32	scale_Y				= f32(Device.dwHeight)/ f32(TEX_jitter);
 		f32	offset				= (.5f / f32(TEX_jitter));
@@ -375,7 +380,8 @@ void CRenderTarget::accum_direct_lum	()
 	// u32		C					= color_rgba	(255,255,255,255);
 	f32	_w					= f32(Device.dwWidth);
 	f32	_h					= f32(Device.dwHeight);
-	Fvector2					p0,p1;
+	fVector2					p0;
+	fVector2					p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 	f32	d_Z	= EPSILON_7;
@@ -404,7 +410,8 @@ void CRenderTarget::accum_direct_lum	()
 		RCache.set_ColorWriteEnable			();
 
 		// Make jitter texture
-		Fvector2					j0,j1;
+		fVector2					j0;
+		fVector2					j1;
 		f32	scale_X				= f32(Device.dwWidth)	/ f32(TEX_jitter);
 //		f32	scale_Y				= f32(Device.dwHeight)/ f32(TEX_jitter);
 		f32	offset				= (.5f / f32(TEX_jitter));
@@ -413,11 +420,11 @@ void CRenderTarget::accum_direct_lum	()
 
 		struct v_aa	{
 			Fvector4	p;
-			Fvector2	uv0;
-			Fvector2	uvJ;
-			Fvector2	uv1;
-			Fvector2	uv2;
-			Fvector2	uv3;
+			fVector2	uv0;
+			fVector2	uvJ;
+			fVector2	uv1;
+			fVector2	uv2;
+			fVector2	uv3;
 			Fvector4	uv4;
 			Fvector4	uv5;
 		};

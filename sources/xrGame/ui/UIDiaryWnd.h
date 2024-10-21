@@ -44,7 +44,7 @@ protected:
 	CGameFont* m_pTreeItemFont;
 	u32					m_uTreeItemColor;
 
-	xr_vector<Fvector2>	m_sign_places;
+	xr_vector<fVector2>	m_sign_places;
 	CUIStatic* m_updatedSectionImage;
 	CUIStatic* m_oldSectionImage;
 

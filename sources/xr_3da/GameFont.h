@@ -23,7 +23,7 @@ private:
 	};
 protected:
 	Fvector2				vHalfPixel;
-	Ivector2				vTS;
+	iVector2				vTS;
 
 	EAligment				eCurrentAlignment;
 	u32						dwCurrentColor;

@@ -210,7 +210,7 @@ IC void CBackend::set_Geometry			(SGeometry* _geom)
 }
 
 
-IC void	CBackend::set_Scissor			(Irect*	R)
+IC void	CBackend::set_Scissor			(iRect*	R)
 {
 	if (R)			{
 		CHK_DX		(HW.pDevice->SetRenderState(D3DRS_SCISSORTESTENABLE,TRUE));

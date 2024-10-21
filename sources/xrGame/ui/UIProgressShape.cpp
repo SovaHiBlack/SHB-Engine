@@ -34,8 +34,7 @@ void CUIProgressShape::SetTextVisible(bool b){
 	m_bText = b;
 }
 
-
-void _make_rot(Fvector2& pt, const Fvector2& src, f32 sin_a, f32 cos_a, f32 angle){
+void _make_rot(fVector2& pt, const fVector2& src, f32 sin_a, f32 cos_a, f32 angle){
 	pt.x				= src.x*cos_a + src.y*sin_a;
 	pt.y				= src.y*cos_a - src.x*sin_a;
 }
@@ -61,29 +60,28 @@ void CUIProgressShape::Draw()
 	ref_geom	gm					= GetUIGeom();
 	RCache.set_Shader				(sh);
 	CTexture* T						= RCache.get_ActiveTexture(0);
-	Fvector2						tsize;
+	fVector2						tsize;
 	tsize.set						(f32(T->get_Width()), f32(T->get_Height()));
 
-	
 	u32	offset;
 	FVF::TL*	pv					= (FVF::TL*)RCache.Vertex.Lock	(m_sectorCount*3, gm.stride(), offset);
 
-	Frect pos_rect;
+	fRect pos_rect;
 	m_pTexture->GetAbsoluteRect		(pos_rect);
 	UI()->ClientToScreenScaled		(pos_rect.lt, pos_rect.x1, pos_rect.y1);
 	UI()->ClientToScreenScaled		(pos_rect.rb, pos_rect.x2, pos_rect.y2);
 
-	Fvector2						center_pos;
+	fVector2						center_pos;
 	pos_rect.getcenter				(center_pos);
 
-	Frect tex_rect					= m_pTexture->GetUIStaticItem().GetOriginalRect();
+	fRect tex_rect					= m_pTexture->GetUIStaticItem().GetOriginalRect();
 	
 	tex_rect.lt.x					/= tsize.x;
 	tex_rect.lt.y					/= tsize.y;
 	tex_rect.rb.x					/= tsize.x;
 	tex_rect.rb.y					/= tsize.y;
 
-	Fvector2						center_tex;
+	fVector2						center_tex;
 	tex_rect.getcenter				(center_tex);
 
 	f32		radius_pos			= pos_rect.width()/2.0f;
@@ -92,9 +90,10 @@ void CUIProgressShape::Draw()
 	f32		curr_angle			= 0.0f;
 	f32		sin_a				= _sin(curr_angle);
 	f32		cos_a				= _cos(curr_angle);
-	Fvector2	start_pos_pt,	prev_pos_pt;
-	Fvector2	start_tex_pt,	prev_tex_pt;
-	
+	fVector2	start_pos_pt;
+	fVector2	prev_pos_pt;
+	fVector2	start_tex_pt;
+	fVector2	prev_tex_pt;
 
 	start_pos_pt.set				(0.0f, -radius_pos);
 	prev_pos_pt						= start_pos_pt;
@@ -109,11 +108,11 @@ void CUIProgressShape::Draw()
 
 		pv->set						(center_pos.x, center_pos.y, color, center_tex.x, center_tex.y);++pv;
 
-		Fvector2	tp;
+		fVector2	tp;
 		tp.set						(prev_pos_pt);
 		tp.add						(center_pos);
 
-		Fvector2	tx;
+		fVector2	tx;
 		tx.set						(prev_tex_pt);
 		tx.add						(center_tex);
 

@@ -378,10 +378,10 @@ struct pred_stri : public std::binary_function<pstr, pstr, bool>
 DEFINE_VECTOR(bool, boolVec, boolIt);
 DEFINE_VECTOR(BOOL, BOOLVec, BOOLIt);
 DEFINE_VECTOR(BOOL*, LPBOOLVec, LPBOOLIt);
-DEFINE_VECTOR(Frect, FrectVec, FrectIt);
-DEFINE_VECTOR(Irect, IrectVec, IrectIt);
+DEFINE_VECTOR(fRect, FrectVec, FrectIt);
+DEFINE_VECTOR(iRect, IrectVec, IrectIt);
 DEFINE_VECTOR(Fplane, PlaneVec, PlaneIt);
-DEFINE_VECTOR(Fvector2, Fvector2Vec, Fvector2It);
+DEFINE_VECTOR(fVector2, Fvector2Vec, Fvector2It);
 DEFINE_VECTOR(Fvector, FvectorVec, FvectorIt);
 DEFINE_VECTOR(Fvector*, LPFvectorVec, LPFvectorIt);
 DEFINE_VECTOR(Fcolor, FcolorVec, FcolorIt);

@@ -28,7 +28,7 @@ private:
 protected:
 	f32			m_endMovingTime;
 	f32			m_targetZoom;
-	Frect			m_desiredMapRect;
+	fRect			m_desiredMapRect;
 	void			init_internal		();
 	void			update_target_state	();
 
@@ -206,7 +206,7 @@ void CMapActionZoomControl::execute		()
 
 	if(m_endMovingTime > Device.fTimeGlobal)
 	{
-		Frect current_rect		= gm->GetWndRect();
+		fRect current_rect		= gm->GetWndRect();
 		current_rect.x1			+= ((m_desiredMapRect.x1-current_rect.x1)/time_to)*dt;
 		current_rect.y1			+= ((m_desiredMapRect.y1-current_rect.y1)/time_to)*dt;
 		current_rect.x2			+= ((m_desiredMapRect.x2-current_rect.x2)/time_to)*dt;
@@ -268,12 +268,12 @@ bool CEvaluatorTargetMapShown::evaluate()
 {
 	if(m_storage->property(1)) return true;
 	if(m_storage->property(2)) return true;
-	Fvector2 pt					= m_object->m_tgtCenter; 
+	fVector2 pt					= m_object->m_tgtCenter;
 	pt.mul						(m_object->GlobalMap()->GetCurrentZoom());
-	Fvector2 _p;
+	fVector2 _p;
 	m_object->GlobalMap()->GetAbsolutePos(_p);
 	pt.add						(_p);
-	Frect	rect	=	m_object->ActiveMapRect();
+	fRect	rect	=	m_object->ActiveMapRect();
 			rect.grow	(rect.width(),rect.height());
 	if (rect.in(pt))	{
 		m_storage->set_property	(2,true);

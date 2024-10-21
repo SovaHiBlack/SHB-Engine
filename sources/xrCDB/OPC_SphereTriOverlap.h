@@ -9,16 +9,16 @@ BOOL SphereCollider::SphereTriOverlap(const Point& vert0, const Point& vert1, co
 	Point TriEdge1	= vert2 - vert0;
 
 	Point kDiff	= vert0 - mCenter;
-	F32 fA00	= TriEdge0.SquareMagnitude();
-	F32 fA01	= TriEdge0 | TriEdge1;
-	F32 fA11	= TriEdge1.SquareMagnitude();
-	F32 fB0	= kDiff | TriEdge0;
-	F32 fB1	= kDiff | TriEdge1;
-	F32 fC	= kDiff.SquareMagnitude();
-	F32 fDet	= _abs(fA00*fA11 - fA01*fA01);
-	F32 u		= fA01*fB1-fA11*fB0;
-	F32 v		= fA01*fB0-fA00*fB1;
-	F32 SqrDist;
+	f32 fA00	= TriEdge0.SquareMagnitude();
+	f32 fA01	= TriEdge0 | TriEdge1;
+	f32 fA11	= TriEdge1.SquareMagnitude();
+	f32 fB0	= kDiff | TriEdge0;
+	f32 fB1	= kDiff | TriEdge1;
+	f32 fC	= kDiff.SquareMagnitude();
+	f32 fDet	= _abs(fA00*fA11 - fA01*fA01);
+	f32 u		= fA01*fB1-fA11*fB0;
+	f32 v		= fA01*fB0-fA00*fB1;
+	f32 SqrDist;
 
 	if(u + v <= fDet)
 	{
@@ -66,7 +66,7 @@ BOOL SphereCollider::SphereTriOverlap(const Point& vert0, const Point& vert1, co
 			}
 			else
 			{
-				F32 fInvDet = 1.0f/fDet;
+				f32 fInvDet = 1.0f/fDet;
 				u *= fInvDet;
 				v *= fInvDet;
 				SqrDist = u*(fA00*u+fA01*v+2.0f*fB0) + v*(fA01*u+fA11*v+2.0f*fB1)+fC;
@@ -75,7 +75,7 @@ BOOL SphereCollider::SphereTriOverlap(const Point& vert0, const Point& vert1, co
 	}
 	else
 	{
-		F32 fTmp0, fTmp1, fNumer, fDenom;
+		f32 fTmp0, fTmp1, fNumer, fDenom;
 
 		if(u < 0.0f)  // region 2
 		{

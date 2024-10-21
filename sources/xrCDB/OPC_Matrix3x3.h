@@ -24,19 +24,19 @@
 		//! Empty constructor
 		inline_					Matrix3x3()									{}
 		//! Constructor from 9 values
-		inline_					Matrix3x3(F32 m00, F32 m01, F32 m02, F32 m10, F32 m11, F32 m12, F32 m20, F32 m21, F32 m22)
+		inline_					Matrix3x3(f32 m00, f32 m01, f32 m02, f32 m10, f32 m11, f32 m12, f32 m20, f32 m21, f32 m22)
 								{
 									m[0][0] = m00;	m[0][1] = m01;	m[0][2] = m02;
 									m[1][0] = m10;	m[1][1] = m11;	m[1][2] = m12;
 									m[2][0] = m20;	m[2][1] = m21;	m[2][2] = m22;
 								}
 		//! Copy constructor
-		inline_					Matrix3x3(const Matrix3x3& mat)				{ CopyMemory(m, &mat.m, 9*sizeof(F32));	}
+		inline_					Matrix3x3(const Matrix3x3& mat)				{ CopyMemory(m, &mat.m, 9*sizeof(f32));	}
 		//! Destructor
 		inline_					~Matrix3x3()								{}
 
 		//! Assign values
-		inline_	void			Set(F32 m00, F32 m01, F32 m02, F32 m10, F32 m11, F32 m12, F32 m20, F32 m21, F32 m22)
+		inline_	void			Set(f32 m00, f32 m01, f32 m02, f32 m10, f32 m11, f32 m12, f32 m20, f32 m21, f32 m22)
 				{
 					m[0][0] = m00;	m[0][1] = m01;	m[0][2] = m02;
 					m[1][0] = m10;	m[1][1] = m11;	m[1][2] = m12;
@@ -47,7 +47,7 @@
 		inline_	void			SetScale(const Point& p)					{ m[0][0] = p.x;	m[1][1] = p.y;	m[2][2] = p.z;	}
 
 		//! Sets the scale from floats. Values are put on the diagonal.
-		inline_	void			SetScale(F32 sx, F32 sy, F32 sz)		{ m[0][0] = sx;		m[1][1] = sy;	m[2][2] = sz;	}
+		inline_	void			SetScale(f32 sx, f32 sy, f32 sz)		{ m[0][0] = sx;		m[1][1] = sy;	m[2][2] = sz;	}
 
 		//! Scales from a Point. Each row is multiplied by a component.
 		inline_	void			Scale(const Point& p)
@@ -58,7 +58,7 @@
 				}
 
 		//! Scales from floats. Each row is multiplied by a value.
-		inline_	void			Scale(F32 sx, F32 sy, F32 sz)
+		inline_	void			Scale(f32 sx, f32 sy, f32 sz)
 				{
 					m[0][0] *= sx;	m[0][1] *= sx;	m[0][2] *= sx;
 					m[1][0] *= sy;	m[1][1] *= sy;	m[1][2] *= sy;
@@ -66,7 +66,7 @@
 				}
 
 		//! Copy from a Matrix3x3
-		inline_	void			Copy(const Matrix3x3& source)				{ CopyMemory(m, source.m, 9*sizeof(F32));			}
+		inline_	void			Copy(const Matrix3x3& source)				{ CopyMemory(m, source.m, 9*sizeof(f32));			}
 
 		// Row-column access
 		//! Returns a row.
@@ -79,7 +79,7 @@
 		inline_	void			SetCol(const udword c, const Point& p)		{ m[0][c] = p.x;	m[1][c] = p.y;	m[2][c] = p.z;	}
 
 		//! Computes the trace. The trace is the sum of the 3 diagonal components.
-		inline_	F32			Trace()					const				{ return m[0][0] + m[1][1] + m[2][2];				}
+		inline_	f32			Trace()					const				{ return m[0][0] + m[1][1] + m[2][2];				}
 		//! Clears the matrix.
 		inline_	void			Zero()										{ ZeroMemory(&m, sizeof(m));						}
 		//! Sets the identity matrix.
@@ -155,7 +155,7 @@
 					m[2][0] -= mat.m[2][0];	m[2][1] -= mat.m[2][1];	m[2][2] -= mat.m[2][2];
 				}
 		//! Mac
-		inline_	void			Mac(const Matrix3x3& a, const Matrix3x3& b, F32 s)
+		inline_	void			Mac(const Matrix3x3& a, const Matrix3x3& b, f32 s)
 				{
 					m[0][0] = a.m[0][0] + b.m[0][0] * s;
 					m[0][1] = a.m[0][1] + b.m[0][1] * s;
@@ -170,7 +170,7 @@
 					m[2][2] = a.m[2][2] + b.m[2][2] * s;
 				}
 		//! Mac
-		inline_	void			Mac(const Matrix3x3& a, F32 s)
+		inline_	void			Mac(const Matrix3x3& a, f32 s)
 				{
 					m[0][0] += a.m[0][0] * s;	m[0][1] += a.m[0][1] * s;	m[0][2] += a.m[0][2] * s;
 					m[1][0] += a.m[1][0] * s;	m[1][1] += a.m[1][1] * s;	m[1][2] += a.m[1][2] * s;
@@ -178,7 +178,7 @@
 				}
 
 		//! this = A * s
-		inline_	void			Mult(const Matrix3x3& a, F32 s)
+		inline_	void			Mult(const Matrix3x3& a, f32 s)
 				{
 					m[0][0] = a.m[0][0] * s;	m[0][1] = a.m[0][1] * s;	m[0][2] = a.m[0][2] * s;
 					m[1][0] = a.m[1][0] * s;	m[1][1] = a.m[1][1] * s;	m[1][2] = a.m[1][2] * s;
@@ -245,14 +245,14 @@
 				Matrix3x3&		FromTo(const Point& from, const Point& to);
 
 		//! Set a rotation matrix around the X axis.
-				void			RotX(F32 angle)	{ F32 Cos = _cos(angle), Sin = _sin(angle); Identity(); m[1][1] = m[2][2] = Cos; m[2][1] = -Sin;	m[1][2] = Sin;	}
+				void			RotX(f32 angle)	{ f32 Cos = _cos(angle), Sin = _sin(angle); Identity(); m[1][1] = m[2][2] = Cos; m[2][1] = -Sin;	m[1][2] = Sin;	}
 		//! Set a rotation matrix around the Y axis.
-				void			RotY(F32 angle)	{ F32 Cos = _cos(angle), Sin = _sin(angle); Identity(); m[0][0] = m[2][2] = Cos; m[2][0] = Sin;	m[0][2] = -Sin;	}
+				void			RotY(f32 angle)	{ f32 Cos = _cos(angle), Sin = _sin(angle); Identity(); m[0][0] = m[2][2] = Cos; m[2][0] = Sin;	m[0][2] = -Sin;	}
 		//! Set a rotation matrix around the Z axis.
-				void			RotZ(F32 angle)	{ F32 Cos = _cos(angle), Sin = _sin(angle); Identity(); m[0][0] = m[1][1] = Cos; m[1][0] = -Sin;	m[0][1] = Sin;	}
+				void			RotZ(f32 angle)	{ f32 Cos = _cos(angle), Sin = _sin(angle); Identity(); m[0][0] = m[1][1] = Cos; m[1][0] = -Sin;	m[0][1] = Sin;	}
 
 		//! Make a rotation matrix about an arbitrary angle
-				Matrix3x3&		Rot(F32 angle, const Point& axis);
+				Matrix3x3&		Rot(f32 angle, const Point& axis);
 
 		//! Transpose the matrix.
 				void			Transpose()
@@ -271,14 +271,14 @@
 				}
 
 		//! Compute the determinant of the matrix. We use the rule of Sarrus.
-				F32			Determinant()					const
+				f32			Determinant()					const
 				{
 					return (m[0][0]*m[1][1]*m[2][2] + m[0][1]*m[1][2]*m[2][0] + m[0][2]*m[1][0]*m[2][1])
 						-  (m[2][0]*m[1][1]*m[0][2] + m[2][1]*m[1][2]*m[0][0] + m[2][2]*m[1][0]*m[0][1]);
 				}
 /*
 		//! Compute a cofactor. Used for matrix inversion.
-				F32			CoFactor(ubyte row, ubyte column)	const
+				f32			CoFactor(ubyte row, ubyte column)	const
 				{
 					static sdword gIndex[3+2] = { 0, 1, 2, 0, 1 };
 					return	(m[gIndex[row+1]][gIndex[column+1]]*m[gIndex[row+2]][gIndex[column+2]] - m[gIndex[row+2]][gIndex[column+1]]*m[gIndex[row+1]][gIndex[column+2]]);
@@ -287,10 +287,10 @@
 		//! Invert the matrix. Determinant must be different from zero, else matrix can't be inverted.
 				Matrix3x3&		Invert()
 				{
-					F32 Det = Determinant();	// Must be !=0
+					f32 Det = Determinant();	// Must be !=0
 					Matrix3x3 Temp;
 
-					F32 OneOverDet = 1.0f / Det;
+					f32 OneOverDet = 1.0f / Det;
 
 					Temp.m[0][0] = +(m[1][1] * m[2][2] - m[2][1] * m[1][2]) * OneOverDet;
 					Temp.m[1][0] = -(m[1][0] * m[2][2] - m[2][0] * m[1][2]) * OneOverDet;
@@ -338,7 +338,7 @@
 					for(udword div=1; div<=NbTerms; div++)
 					{
 						Temp.Mult(Term, a);
-						Term.Mult(Temp, 1.0f / F32(div));
+						Term.Mult(Temp, 1.0f / f32(div));
 						// find next Term = Term * a / div
 						Add(Term);
 					}
@@ -346,7 +346,7 @@
 				}
 
 void FromQuat(const Quat &q);
-void FromQuatL2(const Quat &q, F32 l2);
+void FromQuatL2(const Quat &q, f32 l2);
 
 		// Arithmetic operators
 		//! Operator for Matrix3x3 Plus = Matrix3x3 + Matrix3x3;
@@ -388,7 +388,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 		inline_	Point			operator*(const Point& v)		const		{ return Point(ROW[0]|v, ROW[1]|v, ROW[2]|v); }
 
 		//! Operator for Matrix3x3 Mul = Matrix3x3 * float;
-		inline_	Matrix3x3		operator*(F32 s)				const
+		inline_	Matrix3x3		operator*(f32 s)				const
 				{
 					return Matrix3x3(
 					m[0][0]*s,	m[0][1]*s,	m[0][2]*s,
@@ -397,7 +397,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 				}
 
 		//! Operator for Matrix3x3 Mul = float * Matrix3x3;
-		inline_	friend Matrix3x3 operator*(F32 s, const Matrix3x3& mat)
+		inline_	friend Matrix3x3 operator*(f32 s, const Matrix3x3& mat)
 				{
 					return Matrix3x3(
 					s*mat.m[0][0],	s*mat.m[0][1],	s*mat.m[0][2],
@@ -406,7 +406,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 				}
 
 		//! Operator for Matrix3x3 Div = Matrix3x3 / float;
-		inline_	Matrix3x3		operator/(F32 s)				const
+		inline_	Matrix3x3		operator/(f32 s)				const
 				{
 					if (s)	s = 1.0f / s;
 					return Matrix3x3(
@@ -416,7 +416,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 				}
 
 		//! Operator for Matrix3x3 Div = float / Matrix3x3;
-		inline_	friend Matrix3x3 operator/(F32 s, const Matrix3x3& mat)
+		inline_	friend Matrix3x3 operator/(f32 s, const Matrix3x3& mat)
 				{
 					return Matrix3x3(
 					s/mat.m[0][0],	s/mat.m[0][1],	s/mat.m[0][2],
@@ -465,7 +465,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 				}
 
 		//! Operator for Matrix3x3 *= float
-		inline_	Matrix3x3&		operator*=(F32 s)
+		inline_	Matrix3x3&		operator*=(f32 s)
 				{
 					m[0][0] *= s;	m[0][1] *= s;	m[0][2] *= s;
 					m[1][0] *= s;	m[1][1] *= s;	m[1][2] *= s;
@@ -474,7 +474,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 				}
 
 		//! Operator for Matrix3x3 /= float
-		inline_	Matrix3x3&		operator/=(F32 s)
+		inline_	Matrix3x3&		operator/=(f32 s)
 				{
 					if (s)	s = 1.0f / s;
 					m[0][0] *= s;	m[0][1] *= s;	m[0][2] *= s;
@@ -494,7 +494,7 @@ void FromQuatL2(const Quat &q, F32 l2);
 
 		public:
 
-			F32			m[3][3];
+			f32			m[3][3];
 	};
 
 #endif // __ICEMATRIX3X3_H__

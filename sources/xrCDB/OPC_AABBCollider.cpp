@@ -430,8 +430,8 @@ void AABBCollider::_Collide(const AABBQuantizedNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform AABB-AABB overlap test
 	if(!AABBAABBOverlap(Extents, Center))	return;
@@ -484,8 +484,8 @@ void AABBCollider::_Collide(const AABBQuantizedNoLeafNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform AABB-AABB overlap test
 	if(!AABBAABBOverlap(Extents, Center))	return;

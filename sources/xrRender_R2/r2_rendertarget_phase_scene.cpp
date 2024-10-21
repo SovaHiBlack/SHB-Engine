@@ -55,7 +55,8 @@ void	CRenderTarget::phase_scene_end		()
 	u32		C					= color_rgba	(255,255,255,255);
 	f32	_w					= f32(Device.dwWidth);
 	f32	_h					= f32(Device.dwHeight);
-	Fvector2					p0,p1;
+	fVector2					p0;
+	fVector2					p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 	f32	d_Z = EPSILON_7;

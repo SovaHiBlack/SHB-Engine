@@ -132,8 +132,8 @@ private:
 	type_function					m_function																																						;
 	f32 x_min,x_max,s;
 	//f32 y_min,y_max;
-	//Fvector2 left_bottom;
-	//Fvector2 range;
+	//fVector2 left_bottom;
+	//fVector2 range;
 public:
 
 	CFunctionGraph						( )																																								;

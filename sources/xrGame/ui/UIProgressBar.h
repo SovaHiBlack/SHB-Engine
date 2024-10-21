@@ -11,14 +11,14 @@ class CUIProgressBar : public CUIWindow
 protected:
 	bool				m_bIsHorizontal;
 
-	Fvector2			m_ProgressPos; //x-current y-dest
+	fVector2			m_ProgressPos; //x-current y-dest
 	f32				m_MinPos;
 	f32				m_MaxPos;
 
 	f32				m_CurrentLength;
 	
 	bool				m_bBackgroundPresent;
-	Fvector2			m_BackgroundOffset;
+	fVector2			m_BackgroundOffset;
 	u32					m_last_render_frame;
 	void				UpdateProgressBar();
 	
@@ -27,6 +27,7 @@ public:
 	Fcolor				m_minColor;
 	Fcolor				m_maxColor;
 	f32				m_inertion;	//
+
 public:
 	CUIStatic			m_UIProgressItem;
 	CUIStatic			m_UIBackgroundItem;

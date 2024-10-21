@@ -17,7 +17,7 @@
 //! Declarations of type-independent methods (implemented in the .cpp)
 #define AABB_COMMON_METHODS																							\
 	AABB&	Add(const AABB& aabb);																					\
-	f32	CalculateBoxArea(const icePoint& eye, const Matrix4x4& mat, f32 width, F32 height, int& num)	const;	\
+	f32	CalculateBoxArea(const icePoint& eye, const Matrix4x4& mat, f32 width, f32 height, int& num)	const;	\
 	bool	IsInside(const AABB& box)																		const;
 
 	enum AABBType
@@ -292,7 +292,7 @@
 		 *	\return		the size of the AABB
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						F32		GetSize()								const		{ return mExtents.Max();					}
+						f32		GetSize()								const		{ return mExtents.Max();					}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -357,9 +357,9 @@
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		inline_			bool		Intersect(const AABB& a)				const
 						{
-			F32 tx = mCenter.x - a.mCenter.x;	F32 ex = a.mExtents.x + mExtents.x;	if(AIR(tx) > IR(ex))	return false;
-			F32 ty = mCenter.y - a.mCenter.y;	F32 ey = a.mExtents.y + mExtents.y;	if(AIR(ty) > IR(ey))	return false;
-			F32 tz = mCenter.z - a.mCenter.z;	F32 ez = a.mExtents.z + mExtents.z;	if(AIR(tz) > IR(ez))	return false;
+			f32 tx = mCenter.x - a.mCenter.x;	f32 ex = a.mExtents.x + mExtents.x;	if(AIR(tx) > IR(ex))	return false;
+			f32 ty = mCenter.y - a.mCenter.y;	f32 ey = a.mExtents.y + mExtents.y;	if(AIR(ty) > IR(ey))	return false;
+			f32 tz = mCenter.z - a.mCenter.z;	f32 ez = a.mExtents.z + mExtents.z;	if(AIR(tz) > IR(ez))	return false;
 							return true;
 						}
 

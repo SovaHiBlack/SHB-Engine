@@ -147,7 +147,7 @@ public:
 	*/
 	IC void					play					( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */);
 	IC void					play_at_pos				( CObject* O /*!< Object */,	const Fvector &pos /*!< 3D position */,	u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */);
-	IC void					play_no_feedback		( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */, Fvector* pos=0, f32* vol=0, f32* freq=0, Fvector2* range=0);
+	IC void					play_no_feedback		( CObject* O /*!< Object */,											u32 flags=0 /*!< Looping */, f32 delay=0.f /*!< Delay */, Fvector* pos=0, f32* vol=0, f32* freq=0, fVector2* range=0);
 	//@}
 
 	//! Stops playing this source
@@ -284,7 +284,7 @@ public:
 
 	virtual void					play					( ref_sound& S, CObject* O,						u32 flags=0, f32 delay=0.f)			= 0;
 	virtual void					play_at_pos				( ref_sound& S, CObject* O,	const Fvector &pos,	u32 flags=0, f32 delay=0.f)			= 0;
-	virtual void					play_no_feedback		( ref_sound& S, CObject* O,						u32 flags=0, f32 delay=0.f, Fvector* pos=0, f32* vol=0, f32* freq=0, Fvector2* range=0)= 0;
+	virtual void					play_no_feedback		( ref_sound& S, CObject* O,						u32 flags=0, f32 delay=0.f, Fvector* pos=0, f32* vol=0, f32* freq=0, fVector2* range=0)= 0;
 
 	virtual void					set_master_volume		(f32 f=1.f )																			= 0;
 	virtual void					set_geometry_env		( IReader* I )																			= 0;
@@ -313,7 +313,7 @@ IC void	ref_sound::clone						( const ref_sound& from,esound_type sound_type, in
 IC void	ref_sound::destroy						( )														{	VERIFY(!::Sound->i_locked()); 	::Sound->destroy	(*this);													}
 IC void	ref_sound::play							( CObject* O,						u32 flags, f32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play		(*this,O,flags,d);											}
 IC void	ref_sound::play_at_pos					( CObject* O, const Fvector &pos,	u32 flags, f32 d)	{	VERIFY(!::Sound->i_locked()); 	::Sound->play_at_pos(*this,O,pos,flags,d);										}
-IC void	ref_sound::play_no_feedback				( CObject* O, u32 flags, f32 d, Fvector* pos, f32* vol, f32* freq, Fvector2* range){	VERIFY(!::Sound->i_locked()); ::Sound->play_no_feedback(*this,O,flags,d,pos,vol,freq,range);	}
+IC void	ref_sound::play_no_feedback				( CObject* O, u32 flags, f32 d, Fvector* pos, f32* vol, f32* freq, fVector2* range){	VERIFY(!::Sound->i_locked()); ::Sound->play_no_feedback(*this,O,flags,d,pos,vol,freq,range);	}
 IC void	ref_sound::set_position					( const Fvector &pos)									{	VERIFY(!::Sound->i_locked()); 	VERIFY(_feedback());_feedback()->set_position(pos);								}
 IC void	ref_sound::set_frequency				(f32 freq)											{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_frequency(freq);							}
 IC void	ref_sound::set_range					(f32 min, f32 max )								{	VERIFY(!::Sound->i_locked()); 	if (_feedback())	_feedback()->set_range(min,max);							}

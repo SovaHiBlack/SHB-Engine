@@ -21,9 +21,9 @@ public:
 	virtual void		Draw			();
 	virtual void		Draw			(f32 x, f32 y);
 	virtual void		SetWndPos		(f32 x, f32 y);
-	virtual void		SetWndPos		(const Fvector2& pos);
-	virtual void		SetWndSize		(const Fvector2& size);
-	virtual void		SetWndRect		(const Frect& rect);
+	virtual void		SetWndPos		(const fVector2& pos);
+	virtual void		SetWndSize		(const fVector2& size);
+	virtual void		SetWndRect		(const fRect& rect);
 	virtual void		SetWidth		(f32 width);
 	virtual void		SetHeight		(f32 height);
 	virtual void		Update			();

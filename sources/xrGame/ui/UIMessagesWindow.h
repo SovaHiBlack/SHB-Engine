@@ -23,7 +23,7 @@ public:
 	CUIMessagesWindow( );
 	virtual				~CUIMessagesWindow( );
 
-	void				AddIconedPdaMessage(pcstr textureName, Frect originalRect, pcstr message, s32 iDelay);
+	void				AddIconedPdaMessage(pcstr textureName, fRect originalRect, pcstr message, s32 iDelay);
 	void				AddLogMessage(const shared_str& msg);
 	virtual void		Update( );
 

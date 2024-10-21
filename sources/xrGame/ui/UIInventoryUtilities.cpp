@@ -41,8 +41,8 @@ void InventoryUtilities::DestroyShaders( )
 
 bool InventoryUtilities::GreaterRoomInRuck(PIItem item1, PIItem item2)
 {
-	Ivector2 r1;
-	Ivector2 r2;
+	iVector2 r1;
+	iVector2 r2;
 	r1.x = item1->GetGridWidth( );
 	r1.y = item1->GetGridHeight( );
 	r2.x = item2->GetGridWidth( );

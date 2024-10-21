@@ -73,7 +73,7 @@
 		 *	\return		splitting value
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		virtual						F32		GetSplittingValue(udword index, udword axis)	const	= 0;
+		virtual						f32		GetSplittingValue(udword index, udword axis)	const	= 0;
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -85,7 +85,7 @@
 		 *	\return		splitting value
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		virtual						F32		GetSplittingValueEx(const udword* primitives, udword nb_prims, const AABB& global_box, udword axis)	const
+		virtual						f32		GetSplittingValueEx(const udword* primitives, udword nb_prims, const AABB& global_box, udword axis)	const
 									{
 										// Default split value = middle of the axis (using only the box)
 										return global_box.GetCenter(axis);
@@ -120,7 +120,7 @@
 		virtual									~AABBTreeOfAABBsBuilder()					{}
 
 		override(AABBTreeBuilder)	bool		ComputeGlobalBox(const udword* primitives, udword nb_prims, AABB& global_box)	const;
-		virtual	F32		GetSplittingValue(udword index, udword axis)	const;
+		virtual	f32		GetSplittingValue(udword index, udword axis)	const;
 
 		const						AABB*		mAABBList;			//!< Shortcut to an app-controlled list of AABBs.
 	};
@@ -135,8 +135,8 @@
 		virtual									~AABBTreeOfTrianglesBuilder()													{}
 
 		override(AABBTreeBuilder)	bool		ComputeGlobalBox(const udword* primitives, udword nb_prims, AABB& global_box)	const;
-		override(AABBTreeBuilder)	F32		GetSplittingValue(udword index, udword axis)	const;
-		override(AABBTreeBuilder)	F32		GetSplittingValue(const udword* primitives, udword nb_prims, const AABB& global_box, udword axis)	const;
+		override(AABBTreeBuilder)	f32		GetSplittingValue(udword index, udword axis)	const;
+		override(AABBTreeBuilder)	f32		GetSplittingValue(const udword* primitives, udword nb_prims, const AABB& global_box, udword axis)	const;
 
 		const				IndexedTriangle*	mTriList;			//!< Shortcut to an app-controlled list of triangles.
 		const						Point*		mVerts;				//!< Shortcut to an app-controlled list of vertices.

@@ -548,14 +548,14 @@ IC	f32 CLevelGraph::cover_in_direction(f32 angle, u32 vertex_id) const
 	return				(cover_in_direction(angle, vertex(vertex_id)));
 }
 
-IC	u32	 CLevelGraph::check_position_in_direction	(u32 start_vertex_id, const Fvector2 &start_position, const Fvector2 &finish_position) const
+IC	u32	 CLevelGraph::check_position_in_direction	(u32 start_vertex_id, const fVector2& start_position, const fVector2& finish_position) const
 {
 	if (inside(start_vertex_id,finish_position))
 		return				(start_vertex_id);
 	return					(check_position_in_direction_slow(start_vertex_id,start_position,finish_position));
 }
 
-IC	bool CLevelGraph::check_vertex_in_direction		(u32 start_vertex_id, const Fvector2 &start_position, u32 finish_vertex_id) const
+IC	bool CLevelGraph::check_vertex_in_direction		(u32 start_vertex_id, const fVector2& start_position, u32 finish_vertex_id) const
 {
 	if (start_vertex_id == finish_vertex_id)
 		return				(true);

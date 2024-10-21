@@ -22,13 +22,13 @@ public:
 // 2D Frustum & 2D Vertex
 //---------------------------------------------------------------------------------------
 struct S2DVert{
-	Fvector2	pt;
-	Fvector2	uv;
+	fVector2	pt;
+	fVector2	uv;
 				S2DVert		(){}
 				S2DVert		(f32 pX, f32 pY, f32 tU, f32 tV){pt.set(pX,pY);uv.set(tU,tV);}
 	void		set			(f32 pt_x, f32 pt_y, f32 uv_x, f32 uv_y){pt.set(pt_x,pt_y);uv.set(uv_x,uv_y);}
-	void		set			(const Fvector2& _pt, const Fvector2& _uv){pt.set(_pt);uv.set(_uv);}
-	void		rotate_pt	(const Fvector2& pivot, f32 cosA, f32 sinA, f32 kx);
+	void		set			(const fVector2& _pt, const fVector2& _uv){pt.set(_pt);uv.set(_uv);}
+	void		rotate_pt	(const fVector2& pivot, f32 cosA, f32 sinA, f32 kx);
 };
 #define UI_FRUSTUM_MAXPLANES	12
 #define UI_FRUSTUM_SAFE			(UI_FRUSTUM_MAXPLANES*4)
@@ -36,9 +36,9 @@ typedef svector<S2DVert,UI_FRUSTUM_SAFE>		sPoly2D;
 
 class C2DFrustum{//only rect form
 	svector<Fplane2,FRUSTUM_MAXPLANES> planes;
-	Frect						m_rect;
+	fRect						m_rect;
 public:
-	void		CreateFromRect	(const Frect& rect);
+	void		CreateFromRect	(const fRect& rect);
 	sPoly2D*	ClipPoly		(sPoly2D& S, sPoly2D& D) const;
 };
 
@@ -51,29 +51,29 @@ class ui_core: public CDeviceResetNotifier
 	CFontManager*	m_pFontManager;
 	CUICursor*		m_pUICursor;
 
-	Fvector2		m_pp_scale_;
-	Fvector2		m_scale_;
-	Fvector2*		m_current_scale;
+	fVector2		m_pp_scale_;
+	fVector2		m_scale_;
+	fVector2*		m_current_scale;
 
 	IC f32		ClientToScreenScaledX			(f32 left)				{return left * m_current_scale->x;};
 	IC f32		ClientToScreenScaledY			(f32 top)					{return top * m_current_scale->y;};
 
 public:
-	xr_stack<Frect> m_Scissors;
+	xr_stack<fRect> m_Scissors;
 	
 					ui_core							();
 					~ui_core						();
 	CFontManager*	Font							()							{return m_pFontManager;}
 	CUICursor*		GetUICursor						()							{return m_pUICursor;}
 
-	void			ClientToScreenScaled			(Fvector2& dest, f32 left, f32 top);
-	void			ClientToScreenScaled			(Fvector2& src_and_dest);
+	void			ClientToScreenScaled			(fVector2& dest, f32 left, f32 top);
+	void			ClientToScreenScaled			(fVector2& src_and_dest);
 	void			ClientToScreenScaledWidth		(f32& src_and_dest);
 	void			ClientToScreenScaledHeight		(f32& src_and_dest);
 
-	Frect			ScreenRect						();
+	fRect			ScreenRect						();
 	const C2DFrustum& ScreenFrustum					(){return (m_bPostprocess)?m_2DFrustumPP:m_2DFrustum;}
-	void			PushScissor						(const Frect& r, bool overlapped=false);
+	void			PushScissor						(const fRect& r, bool overlapped=false);
 	void			PopScissor						();
 
 	void			pp_start						();

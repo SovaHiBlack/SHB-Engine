@@ -488,10 +488,10 @@ u32 CInifile::r_color(pcstr S, pcstr L)
 	return color_rgba(r, g, b, a);
 }
 
-Ivector2 CInifile::r_ivector2(pcstr S, pcstr L)
+iVector2 CInifile::r_ivector2(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	Ivector2	V = { 0,0 };
+	iVector2	V = { 0,0 };
 	sscanf(C, "%d,%d", &V.x, &V.y);
 	return V;
 }
@@ -509,10 +509,10 @@ Ivector4 CInifile::r_ivector4(pcstr S, pcstr L)
 	sscanf(C, "%d,%d,%d,%d", &V.x, &V.y, &V.z, &V.w);
 	return V;
 }
-Fvector2 CInifile::r_fvector2(pcstr S, pcstr L)
+fVector2 CInifile::r_fvector2(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	Fvector2	V = { 0.f,0.f };
+	fVector2	V = { 0.0f,0.0f };
 	sscanf(C, "%f,%f", &V.x, &V.y);
 	return V;
 }
@@ -674,7 +674,7 @@ void	CInifile::w_color(pcstr S, pcstr L, u32				V, pcstr comment)
 	w_string(S, L, temp, comment);
 }
 
-void	CInifile::w_ivector2(pcstr S, pcstr L, const Ivector2& V, pcstr comment)
+void	CInifile::w_ivector2(pcstr S, pcstr L, const iVector2& V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%d,%d", V.x, V.y);
 	w_string(S, L, temp, comment);
@@ -691,7 +691,7 @@ void	CInifile::w_ivector4(pcstr S, pcstr L, const Ivector4& V, pcstr comment)
 	string128 temp; sprintf_s(temp, sizeof(temp), "%d,%d,%d,%d", V.x, V.y, V.z, V.w);
 	w_string(S, L, temp, comment);
 }
-void	CInifile::w_fvector2(pcstr S, pcstr L, const Fvector2& V, pcstr comment)
+void	CInifile::w_fvector2(pcstr S, pcstr L, const fVector2& V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%f,%f", V.x, V.y);
 	w_string(S, L, temp, comment);

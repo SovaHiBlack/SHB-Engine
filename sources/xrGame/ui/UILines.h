@@ -53,7 +53,7 @@ public:
 	virtual void			Draw										();
 	virtual void			Draw										(f32 x, f32 y);
 	virtual void			Update										();
-IC			void			SetWndSize_inline							(const Fvector2& wnd_size);
+IC			void			SetWndSize_inline							(const fVector2& wnd_size);
 
     // CDeviceResetNotifier methods
 	virtual void			OnDeviceReset								();
@@ -68,7 +68,7 @@ IC			void			SetWndSize_inline							(const Fvector2& wnd_size);
 			void			IncCursorPos								();
 			void			DecCursorPos								();
 protected:
-			Ivector2		m_cursor_pos;
+	iVector2		m_cursor_pos;
 			void			UpdateCursor								();
 				// %c[255,255,255,255]
 		u32					GetColorFromText							(const xr_string& str)							const;
@@ -128,6 +128,6 @@ public:
 	virtual void			SetTextPosY						(f32 y)						{m_textPos.y = y;}
 
 protected:
-	Fvector2				m_textPos;
+	fVector2				m_textPos;
 	CUILines				m_lines;
 };

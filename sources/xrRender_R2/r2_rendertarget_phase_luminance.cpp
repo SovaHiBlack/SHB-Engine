@@ -3,10 +3,10 @@
 #pragma pack(push,4)
 struct v_build	{
 	Fvector4	p;
-	Fvector2	uv0;
-	Fvector2	uv1;
-	Fvector2	uv2;
-	Fvector2	uv3;
+	fVector2	uv0;
+	fVector2	uv1;
+	fVector2	uv2;
+	fVector2	uv3;
 };
 
 struct v_filter {
@@ -32,16 +32,16 @@ void	CRenderTarget::phase_luminance()
 		f32		ts				= 64;
 		f32		_w				= f32(BLOOM_size_X);
 		f32		_h				= f32(BLOOM_size_Y);
-		Fvector2	one				= { 2.f/_w, 2.f/_h };	// two, infact
-		Fvector2	half			= { 1.f/_w, 1.f/_h };	// one, infact
-		Fvector2	a_0				= { half.x + 0,		half.y + 0		};
-		Fvector2	a_1				= { half.x + one.x, half.y + 0		};
-		Fvector2	a_2				= { half.x + 0,		half.y + one.y	};
-		Fvector2	a_3				= { half.x + one.x,	half.y + one.y	};
-		Fvector2	b_0				= { 1 + a_0.x,		1 + a_0.y		};
-		Fvector2	b_1				= { 1 + a_1.x,		1 + a_1.y		};
-		Fvector2	b_2				= { 1 + a_2.x,		1 + a_2.y		};
-		Fvector2	b_3				= { 1 + a_3.x,		1 + a_3.y		};
+		fVector2	one				= { 2.f/_w, 2.f/_h };	// two, infact
+		fVector2	half			= { 1.f/_w, 1.f/_h };	// one, infact
+		fVector2	a_0				= { half.x + 0,		half.y + 0		};
+		fVector2	a_1				= { half.x + one.x, half.y + 0		};
+		fVector2	a_2				= { half.x + 0,		half.y + one.y	};
+		fVector2	a_3				= { half.x + one.x,	half.y + one.y	};
+		fVector2	b_0				= { 1 + a_0.x,		1 + a_0.y		};
+		fVector2	b_1				= { 1 + a_1.x,		1 + a_1.y		};
+		fVector2	b_2				= { 1 + a_2.x,		1 + a_2.y		};
+		fVector2	b_3				= { 1 + a_3.x,		1 + a_3.y		};
 
 		// Fill vertex buffer
 		v_build* pv					= (v_build*) RCache.Vertex.Lock	(4,g_bloom_build->vb_stride,Offset);
@@ -61,7 +61,8 @@ void	CRenderTarget::phase_luminance()
 		// Build filter-kernel
 		f32		_ts				= 8;
 		f32		_src			= f32(64);
-		Fvector2	a[16],b[16];
+		fVector2	a[16];
+		fVector2	b[16];
 		for (int k=0; k<16; k++)	{
 			int	_x	= (k*2+1)%8;	// 1,3,5,7
 			int	_y	= ((k/4)*2+1);	// 1,1,1,1 ~ 3,3,3,3 ~...etc...
@@ -92,7 +93,8 @@ void	CRenderTarget::phase_luminance()
 		// Build filter-kernel
 		f32		_ts				= 1;
 		f32		_src			= f32(8);
-		Fvector2	a[16],b[16];
+		fVector2	a[16];
+		fVector2	b[16];
 		for (int k=0; k<16; k++)	{
 			int	_x	= (k*2+1)%8;	// 1,3,5,7
 			int	_y	= ((k/4)*2+1);	// 1,1,1,1 ~ 3,3,3,3 ~...etc...

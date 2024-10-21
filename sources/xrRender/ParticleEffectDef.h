@@ -10,7 +10,7 @@ namespace PAPI
 	struct ParticleEffect;
 	struct PAHeader;
 	struct ParticleAction;
-    DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
+	DEFINE_VECTOR(ParticleAction*,PAVec,PAVecIt);
 }
 struct EParticleAction;        
 
@@ -24,8 +24,8 @@ namespace PS
 	class PFunction;
 	struct SFrame
 	{
-		Fvector2			m_fTexSize;
-		Fvector2			reserved; 
+		fVector2			m_fTexSize;
+		fVector2			reserved;
 		int     			m_iFrameDimX;
 		int 				m_iFrameCount;
 		f32				m_fSpeed;
@@ -37,7 +37,7 @@ namespace PS
 			m_iFrameCount 	= 16;
 			m_fSpeed		= 24.f;
 		}
-		IC void       		CalculateTC(int frame, Fvector2& lt, Fvector2& rb)
+		IC void       		CalculateTC(int frame, fVector2& lt, fVector2& rb)
 		{
 			lt.x       	 	= (frame%m_iFrameDimX)*m_fTexSize.x;
 			lt.y        	= (frame/m_iFrameDimX)*m_fTexSize.y;
@@ -57,18 +57,18 @@ namespace PS
 			dfAnimated		= (1<<11),
 			dfRandomFrame   = (1<<12),
 			dfRandomPlayback= (1<<13),
-            
+			
 			dfTimeLimit		= (1<<14),
 
-            dfAlignToPath	= (1<<15),
-            dfCollision		= (1<<16),
-            dfCollisionDel	= (1<<17),
-            dfVelocityScale	= (1<<18),
-            dfCollisionDyn	= (1<<19),
+			dfAlignToPath	= (1<<15),
+			dfCollision		= (1<<16),
+			dfCollisionDel	= (1<<17),
+			dfVelocityScale	= (1<<18),
+			dfCollisionDyn	= (1<<19),
 			dfWorldAlign	= (1<<20),
-            dfFaceAlign		= (1<<21),
-            dfCulling		= (1<<22),
-            dfCullCCW		= (1<<23),
+			dfFaceAlign		= (1<<21),
+			dfCulling		= (1<<22),
+			dfCullCCW		= (1<<23),
 		};
 		shared_str		  	m_Name;
 		Flags32				m_Flags;
@@ -78,28 +78,28 @@ namespace PS
 		ref_shader			m_CachedShader;
 		SFrame				m_Frame;
 	// compiled actions
-        CMemoryWriter		m_Actions;
+		CMemoryWriter		m_Actions;
 	// def        
 		f32				m_fTimeLimit;			// time limit
 		int					m_MaxParticles;			// max particle count
-	    Fvector				m_VelocityScale;		// velocity scale
-	    Fvector				m_APDefaultRotation;	// align to path
-    // collision
+		Fvector				m_VelocityScale;		// velocity scale
+		Fvector				m_APDefaultRotation;	// align to path
+	// collision
 		f32 				m_fCollideOneMinusFriction;
 		f32 				m_fCollideResilience;
 		f32 				m_fCollideSqrCutoff;
 	// execute
 		void				ExecuteAnimate		(PAPI::Particle *particles, u32 p_cnt, f32 dt);
-        void				ExecuteCollision	(PAPI::Particle *particles, u32 p_cnt, f32 dt, CParticleEffect* owner, CollisionCallback cb);
+		void				ExecuteCollision	(PAPI::Particle *particles, u32 p_cnt, f32 dt, CParticleEffect* owner, CollisionCallback cb);
 
 	public:
-                            CPEDef				();
-                            ~CPEDef				();
-        
+							CPEDef				();
+							~CPEDef				();
+		
 		void				SetName				(pcstr name);
-        IC pcstr			Name				()const{return *m_Name;}
-        void				CreateShader		();
-        void				DestroyShader		();
+		IC pcstr			Name				()const{return *m_Name;}
+		void				CreateShader		();
+		void				DestroyShader		();
 
 		void 				Save				(IWriter& F);
 		BOOL 				Load				(IReader& F);

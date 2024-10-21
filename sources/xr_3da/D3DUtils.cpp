@@ -1075,7 +1075,7 @@ void CDrawUtilities::DrawGrid()
 	DU_DRAW_DP(D3DPT_LINELIST,vs_L,vBase,m_GridPoints.size()/2);
 }
 
-void CDrawUtilities::DrawSelectionRect(const Ivector2& m_SelStart, const Ivector2& m_SelEnd){
+void CDrawUtilities::DrawSelectionRect(const iVector2& m_SelStart, const iVector2& m_SelEnd){
 	VERIFY( Device.b_is_Ready );
 	// fill VB
 	_VertexStream*	Stream	= &RCache.Vertex;

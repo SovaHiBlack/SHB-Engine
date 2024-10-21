@@ -234,7 +234,7 @@ bool CUIComboBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action){
 	bool bCursorOverScb = false;
 //.	bCursorOverScb |= (0 <= x) && (GetWidth() >= x) && (0 <= y) && (GetHeight() >= y);
 
-//.	Frect wndRect		= m_list.ScrollBar()->GetWndRect();
+//.	fRect wndRect		= m_list.ScrollBar()->GetWndRect();
 //.	bCursorOverScb		= wndRect.in(m_list.ScrollBar()->cursor_pos)
 	bCursorOverScb		= m_list.ScrollBar()->CursorOverWindow();
 	switch (m_eState){

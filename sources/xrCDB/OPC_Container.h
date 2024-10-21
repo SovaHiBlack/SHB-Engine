@@ -19,7 +19,7 @@
 		public:
 		// Constructor / Destructor
 								Container();
-								Container(udword size, F32 growth_factor);
+								Container(udword size, f32 growth_factor);
 								~Container();
 		// Management
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +69,7 @@
 		 *	\return		Self-Reference
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		inline_	Container&		Add(F32 entry)
+		inline_	Container&		Add(f32 entry)
 				{
 					// Resize if needed
 					if(mCurNbEntries==mMaxNbEntries)	Resize();
@@ -79,13 +79,13 @@
 					return *this;
 				}
 
-		inline_	Container&		Add(const F32* entries, udword nb)
+		inline_	Container&		Add(const f32* entries, udword nb)
 				{
 					// Resize if needed
 					if(mCurNbEntries+nb>mMaxNbEntries)	Resize(nb);
 
 					// Add _new_ entry
-					CopyMemory(&mEntries[mCurNbEntries], entries, nb*sizeof(F32));
+					CopyMemory(&mEntries[mCurNbEntries], entries, nb*sizeof(f32));
 					mCurNbEntries+=nb;
 					return *this;
 				}
@@ -165,8 +165,8 @@
 		inline_	udword*			GetEntries()					const	{ return mEntries;			}	//!< Returns the list of entries.
 
 		// Growth control
-		inline_	F32				GetGrowthFactor()				const	{ return mGrowthFactor;		}	//!< Returns the growth factor
-		inline_	void			SetGrowthFactor(F32 growth)				{ mGrowthFactor = growth;	}	//!< Sets the growth factor
+		inline_	f32				GetGrowthFactor()				const	{ return mGrowthFactor;		}	//!< Returns the growth factor
+		inline_	void			SetGrowthFactor(f32 growth)				{ mGrowthFactor = growth;	}	//!< Sets the growth factor
 
 		//! Access as an array
 		inline_	udword&			operator[](udword i)			const	{ ASSERT(i>=0 && i<mCurNbEntries); return mEntries[i];	}
@@ -197,7 +197,7 @@
 				udword			mMaxNbEntries;		//!< Maximum possible number of entries
 				udword			mCurNbEntries;		//!< Current number of entries
 				udword*			mEntries;			//!< List of entries
-				F32				mGrowthFactor;		//!< Resize: _new_ number of entries = old number * mGrowthFactor
+				f32				mGrowthFactor;		//!< Resize: _new_ number of entries = old number * mGrowthFactor
 	};
 
 	class ICECORE_API Pairs : public Container

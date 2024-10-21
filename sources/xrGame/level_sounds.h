@@ -4,14 +4,15 @@
 struct SStaticSound
 {
 	ref_sound		m_Source;
-	Ivector2		m_ActiveTime;
-	Ivector2		m_PlayTime;
-	Ivector2		m_PauseTime;
+	iVector2		m_ActiveTime;
+	iVector2		m_PlayTime;
+	iVector2		m_PauseTime;
 	u32				m_NextTime;
 	u32				m_StopTime;
 	Fvector			m_Position;
 	f32			m_Volume;
 	f32			m_Freq;
+
 public:
 	void 			Load			(IReader& F);
 	void 			Update			(u32 gt, u32 rt);
@@ -25,9 +26,10 @@ struct	SMusicTrack
 #endif
 	ref_sound		m_SourceLeft;
 	ref_sound		m_SourceRight;
-	Ivector2		m_ActiveTime;
-	Ivector2		m_PauseTime;
+	iVector2		m_ActiveTime;
+	iVector2		m_PauseTime;
 	f32			m_Volume;
+
 public:
 	void			Load			(pcstr fn, pcstr params);
 	BOOL			IsPlaying		(){return m_SourceLeft._feedback() || m_SourceRight._feedback();}

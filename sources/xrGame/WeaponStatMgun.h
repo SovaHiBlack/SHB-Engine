@@ -53,10 +53,11 @@ private:
 	Fvector					m_fire_dir,m_fire_pos;
 
 	Fmatrix					m_i_bind_x_xform, m_i_bind_y_xform, m_fire_bone_xform;
-	Fvector2				m_lim_x_rot, m_lim_y_rot; //in bone space
+	fVector2				m_lim_x_rot; //in bone space
+	fVector2				m_lim_y_rot; //in bone space
 	CCartridge*				m_Ammo;
 	f32					m_barrel_speed;
-	Fvector2				m_dAngle;
+	fVector2				m_dAngle;
 	Fvector					m_destEnemyDir;
 	bool					m_allow_fire;
 	HUD_SOUND				sndShot;
@@ -96,5 +97,5 @@ public:
 	virtual CCameraBase*	Camera				()						{return camera;};
 
 	virtual void			Action				(int id, u32 flags);
-	virtual void			SetParam			(int id, Fvector2 val);
+	virtual void			SetParam			(int id, fVector2 val);
 };

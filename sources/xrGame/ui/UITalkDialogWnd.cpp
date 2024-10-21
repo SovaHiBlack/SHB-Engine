@@ -179,7 +179,7 @@ void CUITalkDialogWnd::AddAnswer(pcstr SpeakerName, pcstr str, bool bActor)
 	Actor()->game_news_registry->registry().objects().push_back(news_data);
 }
 
-void CUITalkDialogWnd::AddIconedAnswer(pcstr text, pcstr texture_name, Frect texture_rect, pcstr templ_name)
+void CUITalkDialogWnd::AddIconedAnswer(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name)
 {
 	CUIAnswerItemIconed* itm				= xr_new<CUIAnswerItemIconed>(m_uiXml,templ_name);
 	itm->Init								(text, texture_name, texture_rect);
@@ -285,7 +285,7 @@ CUIAnswerItemIconed::CUIAnswerItemIconed		(CUIXml* xml_doc, pcstr path)
 	xml_init.InitStatic				(*xml_doc, str, 0, m_icon);
 }
 
-void CUIAnswerItemIconed::Init		(pcstr text, pcstr texture_name, Frect texture_rect)
+void CUIAnswerItemIconed::Init		(pcstr text, pcstr texture_name, fRect texture_rect)
 {
 	inherited::Init					(text,"");
 	m_icon->CreateShader			(texture_name,"hud\\default");

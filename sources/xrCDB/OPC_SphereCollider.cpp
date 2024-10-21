@@ -198,7 +198,7 @@ BOOL SphereCollider::InitQuery(SphereCache& cache, const Sphere& sphere, const M
 		else
 		{
 			// We're interested in all contacts =>test the _new_ real sphere N(ew) against the previous fat sphere P(revious):
-			F32 r = _sqrt(cache.FatRadius2) - sphere.mRadius;
+			f32 r = _sqrt(cache.FatRadius2) - sphere.mRadius;
 			if(cache.Center.SquareDistance(mCenter) < r*r)
 			{
 				// - if N is included in P, return previous list
@@ -463,8 +463,8 @@ void SphereCollider::_Collide(const AABBQuantizedNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform Sphere-AABB overlap test
 	if(!SphereAABBOverlap(Center, Extents))	return;
@@ -517,8 +517,8 @@ void SphereCollider::_Collide(const AABBQuantizedNoLeafNode* node)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Perform Sphere-AABB overlap test
 	if(!SphereAABBOverlap(Center, Extents))	return;

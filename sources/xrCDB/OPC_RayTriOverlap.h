@@ -27,7 +27,7 @@ inline_ BOOL RayCollider::RayTriOverlap(const Point& vert0, const Point& vert1, 
 	Point pvec = mDir^edge2;
 
 	// If determinant is near zero, ray lies in plane of triangle
-	F32 det = edge1|pvec;
+	f32 det = edge1|pvec;
 
 	if(mCulling)
 	{
@@ -51,7 +51,7 @@ inline_ BOOL RayCollider::RayTriOverlap(const Point& vert0, const Point& vert1, 
 
 		// Calculate t, scale parameters, ray intersects triangle
 		mStabbedFace.mDistance = edge2|qvec;
-		F32 inv_det = 1.0f / det;
+		f32 inv_det = 1.0f / det;
 		mStabbedFace.mDistance *= inv_det;
 		mStabbedFace.mU *= inv_det;
 		mStabbedFace.mV *= inv_det;
@@ -60,7 +60,7 @@ inline_ BOOL RayCollider::RayTriOverlap(const Point& vert0, const Point& vert1, 
 	{
 		// the non-culling branch
 		if(det>-LOCAL_EPSILON && det<LOCAL_EPSILON)									return FALSE;
-		F32 inv_det = 1.0f / det;
+		f32 inv_det = 1.0f / det;
 
 		// Calculate distance from vert0 to ray origin
 		Point tvec = mOrigin - vert0;

@@ -32,7 +32,7 @@ void CUIFrameLineWnd::Init(pcstr base_name, f32 x, f32 y, f32 width, f32 height,
 
 void CUIFrameLineWnd::InitTexture(pcstr tex_name, bool horizontal){
 
-	Frect			rect;
+	fRect			rect;
 	GetAbsoluteRect	(rect);
 
 	bHorizontal = horizontal;
@@ -57,7 +57,7 @@ void CUIFrameLineWnd::Draw()
 {
 	if (m_bTextureAvailable)
 	{
-		Fvector2 p;
+		fVector2 p;
 		GetAbsolutePos		(p);
 		UIFrameLine.SetPos	(p.x, p.y);
 		UIFrameLine.Render	();

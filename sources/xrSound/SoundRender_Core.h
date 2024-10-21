@@ -78,7 +78,7 @@ public:
 
 	virtual void						play					( ref_sound& S, CObject* O,								u32 flags=0, f32 delay=0.f);
 	virtual void						play_at_pos				( ref_sound& S, CObject* O,		const Fvector &pos,		u32 flags=0, f32 delay=0.f);
-	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, f32 delay=0.f, Fvector* pos=0, f32* vol=0, f32* freq=0, Fvector2* range=0);
+	virtual void						play_no_feedback		( ref_sound& S, CObject* O,	u32 flags=0, f32 delay=0.f, Fvector* pos=0, f32* vol=0, f32* freq=0, fVector2* range=0);
 	virtual void						set_master_volume		(f32			f )=0;
 	virtual void						set_geometry_env		( IReader*		I );
 	virtual void						set_geometry_som		( IReader*		I );

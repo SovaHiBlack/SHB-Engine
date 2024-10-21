@@ -9,37 +9,37 @@ class CUICustomMap : public CUIStatic, public CUIWndCallback
 {
 protected:	
 	shared_str		m_name;
-	Frect			m_BoundRect;// real map size (meters)
+	fRect			m_BoundRect;// real map size (meters)
 	Flags16			m_flags;
 	enum EFlags{	eLocked	=(1<<0),};
 	f32			m_pointer_dist;
 
 public:
-	Frect			m_prevRect;
+	fRect			m_prevRect;
 					CUICustomMap					();
 	virtual			~CUICustomMap					();
 	virtual void	SetActivePoint					(const Fvector &vNewPoint);
 
 	virtual void	Init							(shared_str name, CInifile& gameLtx, pcstr sh_name);
-	virtual Fvector2 ConvertRealToLocal				(const Fvector2& src);// meters->pixels (relatively own left-top pos)
-	Fvector2		ConvertLocalToReal				(const Fvector2& src);
-	Fvector2		ConvertRealToLocalNoTransform	(const Fvector2& src);// meters->pixels (relatively own left-top pos)
+	virtual fVector2 ConvertRealToLocal				(const fVector2& src);// meters->pixels (relatively own left-top pos)
+	fVector2		ConvertLocalToReal				(const fVector2& src);
+	fVector2		ConvertRealToLocalNoTransform	(const fVector2& src);// meters->pixels (relatively own left-top pos)
 
-	bool			GetPointerTo					(const Fvector2& src, f32 item_radius, Fvector2& pos, f32& heading);//position and heading for drawing pointer to src pos
+	bool			GetPointerTo					(const fVector2& src, f32 item_radius, fVector2& pos, f32& heading);//position and heading for drawing pointer to src pos
 
 	void			FitToWidth						(f32 width);
 	void			FitToHeight						(f32 height);
 	f32			GetCurrentZoom					(){return GetWndRect().width()/m_BoundRect.width();}
-	const Frect&    BoundRect						()const					{return m_BoundRect;};
-	virtual void	OptimalFit						(const Frect& r);
+	const fRect&    BoundRect						()const					{return m_BoundRect;};
+	virtual void	OptimalFit						(const fRect& r);
 
 	shared_str		MapName							() {return m_name;}
 	virtual CUIGlobalMapSpot*	GlobalMapSpot		() {return NULL;}
 
 	virtual void	Update							();
 	virtual void	SendMessage						(CUIWindow* pWnd, s16 msg, void* pData);
-			bool	IsRectVisible					(Frect r);
-			bool	NeedShowPointer					(Frect r);
+			bool	IsRectVisible					(fRect r);
+			bool	NeedShowPointer					(fRect r);
 			bool	Locked							()				{return !!m_flags.test(eLocked);}
 			void	SetLocked						(bool b)		{m_flags.set(eLocked,b);}
 			void	SetPointerDistance				(f32 d)		{m_pointer_dist=d;};
@@ -60,7 +60,7 @@ private:
 	f32			m_max_zoom;
 
 public:
-	virtual Fvector2 ConvertRealToLocal		(const Fvector2& src);// pixels->pixels (relatively own left-top pos)
+	virtual fVector2 ConvertRealToLocal		(const fVector2& src);// pixels->pixels (relatively own left-top pos)
 
 					CUIGlobalMap			(CUIMapWnd*	pMapWnd);
 	virtual			~CUIGlobalMap			();
@@ -74,9 +74,9 @@ public:
 	virtual bool	OnMouse					(f32 x, f32 y, EUIMessages mouse_action);
 
 	CUIMapWnd*		MapWnd					() {return m_mapWnd;}
-	void			MoveWndDelta			(const Fvector2& d);
+	void			MoveWndDelta			(const fVector2& d);
 
-	f32			CalcOpenRect			(const Fvector2& center_point, Frect& map_desired_rect, f32 tgt_zoom);
+	f32			CalcOpenRect			(const fVector2& center_point, fRect& map_desired_rect, f32 tgt_zoom);
 
 	void			ClipByVisRect			();
 	virtual void	Update					();
@@ -85,7 +85,7 @@ public:
 class CUILevelMap: public CUICustomMap{
 	typedef  CUICustomMap inherited;
 	CUIMapWnd*					m_mapWnd;
-	Frect						m_GlobalRect;			// virtual map size (meters)
+	fRect						m_GlobalRect;			// virtual map size (meters)
 
 private:
 								CUILevelMap			(const CUILevelMap &obj) {}
@@ -95,13 +95,13 @@ public:
 								CUILevelMap			(CUIMapWnd*);
 	virtual						~CUILevelMap		();
 	virtual void				Init				(shared_str name, CInifile& gameLtx, pcstr sh_name);
-	const Frect&				GlobalRect			() const								{return m_GlobalRect;}
+	const fRect&				GlobalRect			() const								{return m_GlobalRect;}
 	virtual void				Draw				();
 	virtual void				Update				();
 	virtual bool				OnMouse				(f32 x, f32 y, EUIMessages mouse_action);
 	virtual void				SendMessage			(CUIWindow* pWnd, s16 msg, void* pData);
 	
-	Frect						CalcWndRectOnGlobal	();
+	fRect						CalcWndRectOnGlobal	();
 	CUIMapWnd*					MapWnd				() {return m_mapWnd;}
 
 	virtual		void			OnFocusLost			();

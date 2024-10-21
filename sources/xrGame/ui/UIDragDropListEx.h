@@ -42,10 +42,9 @@ private:
 	};
 	Flags8					m_flags;
 	CUICellItem*			m_selected_item;
-	Ivector2				m_orig_cell_capacity;
+	iVector2				m_orig_cell_capacity;
 
 protected:
-	
 	CUICellContainer*		m_container;
 	CUIScrollBar*			m_vScrollBar;
 
@@ -70,16 +69,16 @@ public:
 	DRAG_DROP_EVENT			m_f_item_selected;
 	DRAG_DROP_EVENT			m_f_item_rbutton_click;
 
-	const	Ivector2&		CellsCapacity		();
-			void			SetCellsCapacity	(const Ivector2 c);
-			void			SetStartCellsCapacity(const Ivector2 c){m_orig_cell_capacity=c;SetCellsCapacity(c);};
+	const	iVector2&		CellsCapacity		();
+			void			SetCellsCapacity	(const iVector2 c);
+			void			SetStartCellsCapacity(const iVector2 c){m_orig_cell_capacity=c;SetCellsCapacity(c);};
 			void			ResetCellsCapacity	(){VERIFY(ItemsCount()==0);SetCellsCapacity(m_orig_cell_capacity);};
-	 const	Ivector2&		CellSize			();
-			void			SetCellSize			(const Ivector2 new_sz);
+	 const	iVector2&		CellSize			();
+			void			SetCellSize			(const iVector2 new_sz);
 			int				ScrollPos			();
 			void			ReinitScroll		();
-			void			GetClientArea		(Frect& r);
-			Fvector2		GetDragItemPosition	();
+			void			GetClientArea		(fRect& r);
+			fVector2		GetDragItemPosition	();
 
 			void			SetAutoGrow			(bool b);
 			bool			IsAutoGrow			();
@@ -91,8 +90,8 @@ public:
 public:
 			// items management
 			virtual void	SetItem				(CUICellItem* itm); //auto
-			virtual void	SetItem				(CUICellItem* itm, Fvector2 abs_pos);  // start at cursor pos
-			virtual void	SetItem				(CUICellItem* itm, Ivector2 cell_pos); // start at cell
+			virtual void	SetItem				(CUICellItem* itm, fVector2 abs_pos);  // start at cursor pos
+			virtual void	SetItem				(CUICellItem* itm, iVector2 cell_pos); // start at cell
 					bool	CanSetItem			(CUICellItem* itm);
 
 			u32				ItemsCount			();
@@ -126,13 +125,13 @@ private:
 protected:
 	CUIDragDropListEx*			m_pParentDragDropList;
 
-	Ivector2					m_cellsCapacity;			//count		(col,	row)
-	Ivector2					m_cellSize;					//pixels	(width, height)
+	iVector2					m_cellsCapacity;			//count		(col,	row)
+	iVector2					m_cellSize;					//pixels	(width, height)
 	UI_CELLS_VEC				m_cells;
 
-	void						GetTexUVLT			(Fvector2& uv, u32 col, u32 row);
+	void						GetTexUVLT			(fVector2& uv, u32 col, u32 row);
 	void						ReinitSize			();
-	u32							GetCellsInRange		(const Irect& rect, UI_CELLS_VEC& res);
+	u32							GetCellsInRange		(const iRect& rect, UI_CELLS_VEC& res);
 
 public:							
 								CUICellContainer	(CUIDragDropListEx* parent);
@@ -141,24 +140,24 @@ public:
 protected:
 	virtual		void			Draw				();
 
-	IC const	Ivector2&		CellsCapacity		()								{return m_cellsCapacity;};	
-				void			SetCellsCapacity	(const Ivector2& c);
-	IC const	Ivector2&		CellSize			()								{return m_cellSize;};	
-				void			SetCellSize			(const Ivector2& new_sz);
-				Ivector2		TopVisibleCell		();
-				CUICell&		GetCellAt			(const Ivector2& pos);
-				Ivector2		PickCell			(const Fvector2& abs_pos);
-				Ivector2		GetItemPos			(CUICellItem* itm);
-				Ivector2		FindFreeCell		(const Ivector2& size);
-				bool			HasFreeSpace		(const Ivector2& size);
-				bool			IsRoomFree			(const Ivector2& pos, const Ivector2& size);
+	IC const	iVector2&		CellsCapacity		()								{return m_cellsCapacity;};
+				void			SetCellsCapacity	(const iVector2& c);
+	IC const	iVector2&		CellSize			()								{return m_cellSize;};
+				void			SetCellSize			(const iVector2& new_sz);
+				iVector2		TopVisibleCell		();
+				CUICell&		GetCellAt			(const iVector2& pos);
+				iVector2		PickCell			(const fVector2& abs_pos);
+				iVector2		GetItemPos			(CUICellItem* itm);
+				iVector2		FindFreeCell		(const iVector2& size);
+				bool			HasFreeSpace		(const iVector2& size);
+				bool			IsRoomFree			(const iVector2& pos, const iVector2& size);
 				
 				bool			AddSimilar			(CUICellItem* itm);
 				CUICellItem*	FindSimilar			(CUICellItem* itm);
 
-				void			PlaceItemAtPos		(CUICellItem* itm, Ivector2& cell_pos);
+				void			PlaceItemAtPos		(CUICellItem* itm, iVector2& cell_pos);
 				CUICellItem*	RemoveItem			(CUICellItem* itm, bool force_root);
-				bool			ValidCell			(const Ivector2& pos) const;
+				bool			ValidCell			(const iVector2& pos) const;
 
 				void			Grow				();
 				void			Shrink				();

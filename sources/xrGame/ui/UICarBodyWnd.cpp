@@ -470,8 +470,8 @@ void CUICarBodyWnd::ActivatePropertiesBox( )
 		m_pUIPropertiesBox->AutoUpdateSize( );
 		m_pUIPropertiesBox->BringAllToTop( );
 
-		Fvector2						cursor_pos;
-		Frect							vis_rect;
+		fVector2						cursor_pos;
+		fRect							vis_rect;
 
 		GetAbsoluteRect(vis_rect);
 		cursor_pos = GetUICursor( )->GetCursorPosition( );

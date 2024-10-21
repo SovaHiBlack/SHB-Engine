@@ -50,7 +50,7 @@ Container::Container() : mMaxNbEntries(0), mCurNbEntries(0), mEntries(null), mGr
  *	Constructor. Also allocates a given number of entries.
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Container::Container(udword size, F32 growth_factor) : mMaxNbEntries(0), mCurNbEntries(0), mEntries(null), mGrowthFactor(growth_factor)
+Container::Container(udword size, f32 growth_factor) : mMaxNbEntries(0), mCurNbEntries(0), mEntries(null), mGrowthFactor(growth_factor)
 {
 #ifdef CONTAINER_STATS
 	mNbContainers++;
@@ -88,7 +88,7 @@ bool Container::Resize(udword needed)
 #endif
 
 	// Get more entries
-	mMaxNbEntries = mMaxNbEntries ? udword(F32(mMaxNbEntries)*mGrowthFactor) : 2;	// Default nb Entries = 2
+	mMaxNbEntries = mMaxNbEntries ? udword(f32(mMaxNbEntries)*mGrowthFactor) : 2;	// Default nb Entries = 2
 	if(mMaxNbEntries<mCurNbEntries + needed)	mMaxNbEntries = mCurNbEntries + needed;
 
 	// Get some bytes for _new_ entries

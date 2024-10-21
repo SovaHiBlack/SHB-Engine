@@ -39,12 +39,12 @@ protected:
 	int						m_ttl;
 	u32						m_actual_time;
 	Fvector					m_position_global; //last global position, actual time only current frame 
-	Fvector2 				m_position_on_map; //last position on parent map, actual time only current frame
+	fVector2 				m_position_on_map; //last position on parent map, actual time only current frame
 
 	struct SCachedValues{
 		u32					m_updatedFrame;
-		Fvector2			m_Position;
-		Fvector2			m_Direction;
+		fVector2			m_Position;
+		fVector2			m_Direction;
 		shared_str			m_LevelName;
 		bool				m_Actuality;
 	};
@@ -75,8 +75,8 @@ public:
 	virtual void			UpdateMiniMap					(CUICustomMap* map);
 	virtual void			UpdateLevelMap					(CUICustomMap* map);
 
-	virtual Fvector2		Position						();
-	virtual Fvector2		Direction						();
+	virtual fVector2		Position						();
+	virtual fVector2		Direction						();
 	virtual shared_str		LevelName						();
 	u16						RefCount						() {return m_refCount;}
 	void					SetRefCount						(u16 c)		{m_refCount=c;}
@@ -132,8 +132,8 @@ public:
 							CUserDefinedMapLocation			(pcstr type, u16 object_id);
 	virtual					~CUserDefinedMapLocation		();
 	virtual bool			Update							(); //returns actual
-	virtual Fvector2		Position						();
-	virtual Fvector2		Direction						();
+	virtual fVector2		Position						();
+	virtual fVector2		Direction						();
 	virtual shared_str		LevelName						();
 
 			void			InitExternal					(const shared_str& level_name, const Fvector& pos);

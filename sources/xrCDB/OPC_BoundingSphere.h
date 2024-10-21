@@ -18,7 +18,7 @@
 		//! Constructor
 		inline_					Sphere()																		{}
 		//! Constructor
-		inline_					Sphere(const Point& center, F32 radius) : mCenter(center), mRadius(radius)	{}
+		inline_					Sphere(const Point& center, f32 radius) : mCenter(center), mRadius(radius)	{}
 		//! Constructor
 								Sphere(const udword n, Point* p);
 		//! Copy constructor
@@ -31,14 +31,14 @@
 
 		// Access methods
 		inline_	const Point&	GetCenter()		const						{ return mCenter; }
-		inline_	F32			GetRadius()		const						{ return mRadius; }
+		inline_	f32			GetRadius()		const						{ return mRadius; }
 
 		inline_	const Point&	Center()		const						{ return mCenter; }
-		inline_	F32			Radius()		const						{ return mRadius; }
+		inline_	f32			Radius()		const						{ return mRadius; }
 
-		inline_	Sphere&			Set(const Point& center, F32 radius)		{ mCenter = center; mRadius = radius; return *this; }
+		inline_	Sphere&			Set(const Point& center, f32 radius)		{ mCenter = center; mRadius = radius; return *this; }
 		inline_	Sphere&			SetCenter(const Point& center)				{ mCenter = center; return *this; }
-		inline_	Sphere&			SetRadius(F32 radius)						{ mRadius = radius; return *this; }
+		inline_	Sphere&			SetRadius(f32 radius)						{ mRadius = radius; return *this; }
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -61,7 +61,7 @@
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		inline_	bool			Contains(const Sphere& sphere)	const
 								{
-			F32 r = mRadius - sphere.mRadius;
+			f32 r = mRadius - sphere.mRadius;
 									return mCenter.SquareDistance(sphere.mCenter) < r*r;
 								}
 
@@ -76,7 +76,7 @@
 								{
 									// I assume if all 8 box vertices are inside the sphere, so does the whole box.
 									// Sounds ok but maybe there's a better way?
-			F32 R2 = mRadius * mRadius;
+			f32 R2 = mRadius * mRadius;
 									Point Max; aabb.GetMax(Max);
 									Point Min; aabb.GetMin(Min);
 
@@ -95,7 +95,7 @@
 
 		public:
 				Point			mCenter;		//!< Sphere center
-				F32			mRadius;		//!< Sphere radius
+				f32			mRadius;		//!< Sphere radius
 #ifdef OLD
 		private:
 				Sphere			PlanarCircumscribe3							(const Point& p0, const Point& p1, const Point& p2);

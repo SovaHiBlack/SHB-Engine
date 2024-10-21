@@ -55,7 +55,7 @@ public:
 
 	void				AddQuestion			(pcstr str, pcstr value);
 	void				AddAnswer			(pcstr SpeakerName, pcstr str, bool bActor);
-	void				AddIconedAnswer		(pcstr text, pcstr texture_name, Frect texture_rect, pcstr templ_name);
+	void				AddIconedAnswer		(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name);
 	void				ClearAll			();
 	void				ClearQuestions		();
 
@@ -110,6 +110,6 @@ class CUIAnswerItemIconed :public CUIAnswerItem
 
 public:
 					CUIAnswerItemIconed		(CUIXml* xml_doc, pcstr path);
-	void			Init					(pcstr text, pcstr texture_name, Frect texture_rect);
+	void			Init					(pcstr text, pcstr texture_name, fRect texture_rect);
 
 };

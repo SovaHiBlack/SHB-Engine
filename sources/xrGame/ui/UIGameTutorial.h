@@ -118,7 +118,7 @@ public:
 	f32					m_time_start;
 	f32					m_time_length;
 	string64				m_pda_section;
-	Fvector2				m_desired_cursor_pos;
+	fVector2				m_desired_cursor_pos;
 	s32						m_continue_dik_guard;
 
 public:

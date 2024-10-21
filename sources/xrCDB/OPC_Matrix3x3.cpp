@@ -61,7 +61,7 @@ Matrix3x3& Matrix3x3::FromTo(const Point& from, const Point& to)
 	#define EPSILON 0.000001f
 
 	Point v = from^to;
-	F32 e = from|to;
+	f32 e = from|to;
 
 	// "from" almost or equal to "to"-vector3?
 	if(e>1.0f - EPSILON)
@@ -88,14 +88,14 @@ Matrix3x3& Matrix3x3::FromTo(const Point& from, const Point& to)
 		/* M=(from, up, left), and we want to rotate to:      */
 		/* N=(-from, up, -left). This is done with the matrix:*/
 		/* N*M^T where M^T is the transpose of M              */
-		F32 fxx=-from.x*from.x; F32 fyy=-from.y*from.y; F32 fzz=-from.z*from.z;
-		F32 fxy=-from.x*from.y; F32 fxz=-from.x*from.z; F32 fyz=-from.y*from.z;
+		f32 fxx=-from.x*from.x; f32 fyy=-from.y*from.y; f32 fzz=-from.z*from.z;
+		f32 fxy=-from.x*from.y; f32 fxz=-from.x*from.z; f32 fyz=-from.y*from.z;
 
-		F32 uxx=Up.x*Up.x; F32 uyy=Up.y*Up.y; F32 uzz=Up.z*Up.z;
-		F32 uxy=Up.x*Up.y; F32 uxz=Up.x*Up.z; F32 uyz=Up.y*Up.z;
+		f32 uxx=Up.x*Up.x; f32 uyy=Up.y*Up.y; f32 uzz=Up.z*Up.z;
+		f32 uxy=Up.x*Up.y; f32 uxz=Up.x*Up.z; f32 uyz=Up.y*Up.z;
 
-		F32 lxx=-Left.x*Left.x; F32 lyy=-Left.y*Left.y; F32 lzz=-Left.z*Left.z;
-		F32 lxy=-Left.x*Left.y; F32 lxz=-Left.x*Left.z; F32 lyz=-Left.y*Left.z;
+		f32 lxx=-Left.x*Left.x; f32 lyy=-Left.y*Left.y; f32 lzz=-Left.z*Left.z;
+		f32 lxy=-Left.x*Left.y; f32 lxz=-Left.x*Left.z; f32 lyz=-Left.y*Left.z;
 		// symmetric matrix
 		m[0][0]=fxx+uxx+lxx;	m[1][0]=fxy+uxy+lxy;	m[2][0]=fxz+uxz+lxz;
 		m[0][1]=m[1][0];		m[1][1]=fyy+uyy+lyy;	m[2][1]=fyz+uyz+lyz;
@@ -111,12 +111,12 @@ Matrix3x3& Matrix3x3::FromTo(const Point& from, const Point& to)
 		mtx[2][0]=h*v[0]*v[2]-v[1]; mtx[2][1]=h*v[1]*v[2]+v[0]; mtx[2][2]=e+h*v[2]*v[2];
 	#else
 		// ...otherwise use this hand optimized version (9 mults less)
-		F32 h=(1.0f - e) / (v|v);
-		F32 hvx  = h*v.x;
-		F32 hvz  = h*v.z;
-		F32 hvxy = hvx*v.y;
-		F32 hvxz = hvx*v.z;
-		F32 hvyz = hvz*v.y;
+		f32 h=(1.0f - e) / (v|v);
+		f32 hvx  = h*v.x;
+		f32 hvz  = h*v.z;
+		f32 hvxy = hvx*v.y;
+		f32 hvxz = hvx*v.z;
+		f32 hvyz = hvz*v.y;
 		m[0][0]=e+hvx*v.x;	m[1][0]=hvxy-v.z;		m[2][0]=hvxz+v.y;
 		m[0][1]=hvxy+v.z;	m[1][1]=e+h*v.y*v.y;	m[2][1]=hvyz-v.x;
 		m[0][2]=hvxz-v.y;	m[1][2]=hvyz+v.x;		m[2][2]=e+hvz*v.z;

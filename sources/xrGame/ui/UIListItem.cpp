@@ -31,7 +31,7 @@ void CUIListItem::Init(f32 x, f32 y, f32 width, f32 height)
 {
 	inherited::Init(x, y, width, height);
 	SetPressMode(CUIButton::DOWN_PRESS);
-	SetPushOffset( Fvector2().set(0.0f,0.0f));
+	SetPushOffset(fVector2().set(0.0f,0.0f));
 }
 
 void CUIListItem::InitTexture(pcstr tex_name)

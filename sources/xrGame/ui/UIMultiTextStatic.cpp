@@ -38,7 +38,7 @@ void CUIMultiTextStatic::RemovePhraseByIndex(u32 idx)
 
 void CUIMultiTextStatic::Draw()
 {
-	Fvector2			p;
+	fVector2			p;
 	GetAbsolutePos		(p);
 
 	for (Phrases_it it = m_vPhrases.begin(); it != m_vPhrases.end(); ++it)
@@ -109,7 +109,7 @@ void CUIMultiTextStatic::SPh::SetText(pcstr fmt, ...)
 		STRING s;
 		CUIStatic::SetText(*str, s);
 
-		Frect r;
+		fRect r;
 		r.left		= 0;
 		r.right		= maxWidth;
 		r.top		= 0;

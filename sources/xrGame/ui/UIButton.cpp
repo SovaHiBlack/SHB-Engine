@@ -140,7 +140,7 @@ void CUIButton::OnClick(){
 
 void CUIButton::DrawTexture()
 {
-	Frect rect; 
+	fRect rect;
 	GetAbsoluteRect		(rect);
 
 	if(m_bAvailableTexture && m_bTextureEnable)
@@ -154,7 +154,7 @@ void CUIButton::DrawTexture()
 			m_UIStaticItem.SetRect(0, 0, rect.width(), rect.height());
 		else
 		{
-			Frect r={0,0,
+			fRect r={0,0,
 				m_UIStaticItem.GetOriginalRectScaled().width(),
 				m_UIStaticItem.GetOriginalRectScaled().height()};
 			m_UIStaticItem.SetRect(r);
@@ -182,7 +182,7 @@ void CUIButton::DrawHighlightedText(){
 		down_offset		= m_PushOffset.y;
 	}
 
-	Frect					rect;
+	fRect					rect;
 	GetAbsoluteRect			(rect);
 	u32 def_col = m_pLines->GetTextColor();
 	m_pLines->SetTextColor(m_HighlightColor);
@@ -215,7 +215,7 @@ void CUIButton::DrawText()
 }
 
 
-bool is_in2(const Frect& b1, const Frect& b2){
+bool is_in2(const fRect& b1, const fRect& b2){
 	return (b1.x1<b2.x1)&&(b1.x2>b2.x2)&&(b1.y1<b2.y1)&&(b1.y2>b2.y2);
 }
 
@@ -227,12 +227,12 @@ void  CUIButton::Update()
 	{
 		g_btnHint->SetHintText	(this,*m_hint_text);
 
-		Fvector2 c_pos			= GetUICursor()->GetCursorPosition();
-		Frect vis_rect;
+		fVector2 c_pos			= GetUICursor()->GetCursorPosition();
+		fRect vis_rect;
 		vis_rect.set			(0,0,UI_BASE_WIDTH, UI_BASE_HEIGHT);
 
 		//select appropriate position
-		Frect r;
+		fRect r;
 		r.set					(0.0f, 0.0f, g_btnHint->GetWidth(), g_btnHint->GetHeight());
 		r.add					(c_pos.x, c_pos.y);
 

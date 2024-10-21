@@ -41,11 +41,11 @@
 		//! Empty constructor
 		inline_					Point()														{}
 		//! Constructor from a single float
-		inline_					Point(F32 val) : x(val), y(val), z(val)					{}
+		inline_					Point(f32 val) : x(val), y(val), z(val)					{}
 		//! Constructor from floats
-		inline_					Point(F32 _x, F32 _y, F32 _z) : x(_x), y(_y), z(_z)	{}
+		inline_					Point(f32 _x, f32 _y, f32 _z) : x(_x), y(_y), z(_z)	{}
 		//! Constructor from array
-		inline_					Point(F32 f[3]) : x(f[_X]), y(f[_Y]), z(f[_Z])			{}
+		inline_					Point(f32 f[3]) : x(f[_X]), y(f[_Y]), z(f[_Z])			{}
 		//! Copy constructor
 		inline_					Point(const Point& p) : x(p.x), y(p.y), z(p.z)				{}
 		//! Destructor
@@ -65,27 +65,27 @@
 				Point&			UnitRandomVector();
 
 		//! Assignment from values
-		inline_	Point&			Set(F32 _x, F32 _y, F32 _z)		{ x  = _x;		y  = _y;	z  = _z;			return *this;	}
+		inline_	Point&			Set(f32 _x, f32 _y, f32 _z)		{ x  = _x;		y  = _y;	z  = _z;			return *this;	}
 		//! Assignment from array
-		inline_	Point&			Set(F32 f[3])							{ x  = f[_X];	y  = f[_Y];	z  = f[_Z];			return *this;	}
+		inline_	Point&			Set(f32 f[3])							{ x  = f[_X];	y  = f[_Y];	z  = f[_Z];			return *this;	}
 		//! Assignment from another point
 		inline_	Point&			Set(const Point& src)					{ x  = src.x;	y  = src.y;	z  = src.z;			return *this;	}
 
 		//! Adds a vector3
 		inline_	Point&			Add(const Point& p)						{ x += p.x;		y += p.y;	z += p.z;			return *this;	}
 		//! Adds a vector3
-		inline_	Point&			Add(F32 _x, F32 _y, F32 _z)		{ x += _x;		y += _y;	z += _z;			return *this;	}
+		inline_	Point&			Add(f32 _x, f32 _y, f32 _z)		{ x += _x;		y += _y;	z += _z;			return *this;	}
 		//! Adds a vector3
-		inline_	Point&			Add(F32 f[3])							{ x += f[_X];	y += f[_Y];	z += f[_Z];			return *this;	}
+		inline_	Point&			Add(f32 f[3])							{ x += f[_X];	y += f[_Y];	z += f[_Z];			return *this;	}
 		//! Adds vectors
 		inline_	Point&			Add(const Point& p, const Point& q)		{ x = p.x+q.x;	y = p.y+q.y;	z = p.z+q.z;	return *this;	}
 
 		//! Subtracts a vector3
 		inline_	Point&			Sub(const Point& p)						{ x -= p.x;		y -= p.y;	z -= p.z;			return *this;	}
 		//! Subtracts a vector3
-		inline_	Point&			Sub(F32 _x, F32 _y, F32 _z)		{ x -= _x;		y -= _y;	z -= _z;			return *this;	}
+		inline_	Point&			Sub(f32 _x, f32 _y, f32 _z)		{ x -= _x;		y -= _y;	z -= _z;			return *this;	}
 		//! Subtracts a vector3
-		inline_	Point&			Sub(F32 f[3])							{ x -= f[_X];	y -= f[_Y];	z -= f[_Z];			return *this;	}
+		inline_	Point&			Sub(f32 f[3])							{ x -= f[_X];	y -= f[_Y];	z -= f[_Z];			return *this;	}
 		//! Subtracts vectors
 		inline_	Point&			Sub(const Point& p, const Point& q)		{ x = p.x-q.x;	y = p.y-q.y;	z = p.z-q.z;	return *this;	}
 
@@ -95,10 +95,10 @@
 		inline_	Point&			Neg(const Point& a)						{ x = -a.x;		y = -a.y;		z = -a.z;		return *this;	}
 
 		//! Multiplies by a scalar
-		inline_	Point&			Mult(F32 s)							{ x *= s;		y *= s;		z *= s;				return *this;	}
+		inline_	Point&			Mult(f32 s)							{ x *= s;		y *= s;		z *= s;				return *this;	}
 
 		//! this = a * scalar
-		inline_	Point&			Mult(const Point& a, F32 scalar)
+		inline_	Point&			Mult(const Point& a, f32 scalar)
 								{
 									x = a.x * scalar;
 									y = a.y * scalar;
@@ -107,7 +107,7 @@
 								}
 
 		//! this = a + b * scalar
-		inline_	Point&			Mac(const Point& a, const Point& b, F32 scalar)
+		inline_	Point&			Mac(const Point& a, const Point& b, f32 scalar)
 								{
 									x = a.x + b.x * scalar;
 									y = a.y + b.y * scalar;
@@ -116,7 +116,7 @@
 								}
 
 		//! this = this + a * scalar
-		inline_	Point&			Mac(const Point& a, F32 scalar)
+		inline_	Point&			Mac(const Point& a, f32 scalar)
 								{
 									x += a.x * scalar;
 									y += a.y * scalar;
@@ -125,7 +125,7 @@
 								}
 
 		//! this = a - b * scalar
-		inline_	Point&			Msc(const Point& a, const Point& b, F32 scalar)
+		inline_	Point&			Msc(const Point& a, const Point& b, f32 scalar)
 								{
 									x = a.x - b.x * scalar;
 									y = a.y - b.y * scalar;
@@ -134,7 +134,7 @@
 								}
 
 		//! this = this - a * scalar
-		inline_	Point&			Msc(const Point& a, F32 scalar)
+		inline_	Point&			Msc(const Point& a, f32 scalar)
 								{
 									x -= a.x * scalar;
 									y -= a.y * scalar;
@@ -143,7 +143,7 @@
 								}
 
 		//! this = a + b * scalarb + c * scalarc
-		inline_	Point&			Mac2(const Point& a, const Point& b, F32 scalarb, const Point& c, F32 scalarc)
+		inline_	Point&			Mac2(const Point& a, const Point& b, f32 scalarb, const Point& c, f32 scalarc)
 								{
 									x = a.x + b.x * scalarb + c.x * scalarc;
 									y = a.y + b.y * scalarb + c.y * scalarc;
@@ -152,7 +152,7 @@
 								}
 
 		//! this = a - b * scalarb - c * scalarc
-		inline_	Point&			Msc2(const Point& a, const Point& b, F32 scalarb, const Point& c, F32 scalarc)
+		inline_	Point&			Msc2(const Point& a, const Point& b, f32 scalarb, const Point& c, f32 scalarc)
 								{
 									x = a.x - b.x * scalarb - c.x * scalarc;
 									y = a.y - b.y * scalarb - c.y * scalarc;
@@ -173,7 +173,7 @@
 		inline_	Point&			TransMult(const Matrix3x3& mat, const Point& a);
 
 		//! Linear interpolate between two vectors: this = a + t * (b - a)
-		inline_	Point&			Lerp(const Point& a, const Point& b, F32 t)
+		inline_	Point&			Lerp(const Point& a, const Point& b, f32 t)
 								{
 									x = a.x + t * (b.x - a.x);
 									y = a.y + t * (b.y - a.y);
@@ -186,14 +186,14 @@
 		//!			+ p1 * (3t^3 - 5t^2 + 2)/2
 		//!			+ p2 * (4t^2 - 3t^3 + t)/2
 		//!			+ p3 * (t^3 - t^2)/2
-		inline_	Point&			Herp(const Point& p0, const Point& p1, const Point& p2, const Point& p3, F32 t)
+		inline_	Point&			Herp(const Point& p0, const Point& p1, const Point& p2, const Point& p3, f32 t)
 								{
-			F32 t2 = t * t;
-			F32 t3 = t2 * t;
-			F32 kp0 = (2.0f * t2 - t3 - t) * 0.5f;
-			F32 kp1 = (3.0f * t3 - 5.0f * t2 + 2.0f) * 0.5f;
-			F32 kp2 = (4.0f * t2 - 3.0f * t3 + t) * 0.5f;
-			F32 kp3 = (t3 - t2) * 0.5f;
+			f32 t2 = t * t;
+			f32 t3 = t2 * t;
+			f32 kp0 = (2.0f * t2 - t3 - t) * 0.5f;
+			f32 kp1 = (3.0f * t3 - 5.0f * t2 + 2.0f) * 0.5f;
+			f32 kp2 = (4.0f * t2 - 3.0f * t3 + t) * 0.5f;
+			f32 kp3 = (t3 - t2) * 0.5f;
 									x = p0.x * kp0 + p1.x * kp1 + p2.x * kp2 + p3.x * kp3;
 									y = p0.y * kp0 + p1.y * kp1 + p2.y * kp2 + p3.y * kp3;
 									z = p0.z * kp0 + p1.z * kp1 + p2.z * kp2 + p3.z * kp3;
@@ -207,16 +207,16 @@
 		inline_	Point&			InvTransform(const Point& r, const Matrix3x3& rotpos, const Point& linpos);
 
 		//! Returns _min(x, y, z);
-		inline_	F32			Min()				const		{ return _min(x, _min(y, z));												}
+		inline_	f32			Min()				const		{ return _min(x, _min(y, z));												}
 		//! Returns _max(x, y, z);
-		inline_	F32			Max()				const		{ return _max(x, _max(y, z));												}
+		inline_	f32			Max()				const		{ return _max(x, _max(y, z));												}
 		//! Sets each element to be componentwise minimum
 		inline_	Point&			Min(const Point& p)				{ x = _min(x, p.x); y = _min(y, p.y); z = _min(z, p.z);	return *this;	}
 		//! Sets each element to be componentwise maximum
 		inline_	Point&			Max(const Point& p)				{ x = _max(x, p.x); y = _max(y, p.y); z = _max(z, p.z);	return *this;	}
 
 		//! Clamps each element
-		inline_	Point&			Clamp(F32 min, F32 max)
+		inline_	Point&			Clamp(f32 min, f32 max)
 								{
 									if(x<min)	x=min;	if(x>max)	x=max;
 									if(y<min)	y=min;	if(y>max)	y=max;
@@ -225,11 +225,11 @@
 								}
 
 		//! Computes square magnitude
-		inline_	F32			SquareMagnitude()	const		{ return x*x + y*y + z*z;												}
+		inline_	f32			SquareMagnitude()	const		{ return x*x + y*y + z*z;												}
 		//! Computes magnitude
-		inline_	F32			Magnitude()			const		{ return _sqrt(x*x + y*y + z*z);										}
+		inline_	f32			Magnitude()			const		{ return _sqrt(x*x + y*y + z*z);										}
 		//! Computes volume
-		inline_	F32			Volume()			const		{ return x * y * z;														}
+		inline_	f32			Volume()			const		{ return x * y * z;														}
 
 		//! Checks the point is near zero
 				bool			ApproxZero()		const		{ return SquareMagnitude() < EPSILON2;									}
@@ -263,7 +263,7 @@
 		//! Normalizes the vector3
 		inline_	Point&			Normalize()
 								{
-			F32 M = x*x + y*y + z*z;
+			f32 M = x*x + y*y + z*z;
 									if(M)
 									{
 										M = 1.0f / _sqrt(M);
@@ -275,9 +275,9 @@
 								}
 
 		//! Sets vector3 length
-		inline_	Point&			SetLength(F32 length)
+		inline_	Point&			SetLength(f32 length)
 								{
-			F32 NewLength = length / Magnitude();
+			f32 NewLength = length / Magnitude();
 									x *= NewLength;
 									y *= NewLength;
 									z *= NewLength;
@@ -285,19 +285,19 @@
 								}
 
 		//! Computes distance to another point
-		inline_	F32			Distance(const Point& b)			const
+		inline_	f32			Distance(const Point& b)			const
 								{
 									return _sqrt((x - b.x)*(x - b.x) + (y - b.y)*(y - b.y) + (z - b.z)*(z - b.z));
 								}
 
 		//! Computes square distance to another point
-		inline_	F32			SquareDistance(const Point& b)		const
+		inline_	f32			SquareDistance(const Point& b)		const
 								{
 									return ((x - b.x)*(x - b.x) + (y - b.y)*(y - b.y) + (z - b.z)*(z - b.z));
 								}
 
 		//! Dot product dp = this|a
-		inline_	F32			Dot(const Point& p)					const		{	return p.x * x + p.y * y + p.z * z;				}
+		inline_	f32			Dot(const Point& p)					const		{	return p.x * x + p.y * y + p.z * z;				}
 
 		//! Cross product this = a x b
 		inline_	Point&			Cross(const Point& a, const Point& b)
@@ -317,7 +317,7 @@
 		//! Returns largest axis
 		inline_	PointComponent	LargestAxis()						const
 								{
-									const F32* Vals = &x;
+									const f32* Vals = &x;
 									PointComponent m = _X;
 									if(Vals[_Y] > Vals[m]) m = _Y;
 									if(Vals[_Z] > Vals[m]) m = _Z;
@@ -327,7 +327,7 @@
 		//! Returns closest axis
 		inline_	PointComponent	ClosestAxis()						const
 								{
-									const F32* Vals = &x;
+									const f32* Vals = &x;
 									PointComponent m = _X;
 									if(AIR(Vals[_Y]) > AIR(Vals[m])) m = _Y;
 									if(AIR(Vals[_Z]) > AIR(Vals[m])) m = _Z;
@@ -337,7 +337,7 @@
 		//! Returns smallest axis
 		inline_	PointComponent	SmallestAxis()						const
 								{
-									const F32* Vals = &x;
+									const f32* Vals = &x;
 									PointComponent m = _X;
 									if(Vals[_Y] < Vals[m]) m = _Y;
 									if(Vals[_Z] < Vals[m]) m = _Z;
@@ -345,13 +345,13 @@
 								}
 
 		//! Refracts the point
-				Point&			Refract(const Point& eye, const Point& n, F32 refractindex, Point& refracted);
+				Point&			Refract(const Point& eye, const Point& n, f32 refractindex, Point& refracted);
 
 		//! Projects the point onto a plane
 				Point&			ProjectToPlane(const Plane& p);
 
 		//! Projects the point onto the screen
-				void			ProjectToScreen(F32 halfrenderwidth, F32 halfrenderheight, const Matrix4x4& mat, HPoint& projected) const;
+				void			ProjectToScreen(f32 halfrenderwidth, f32 halfrenderheight, const Matrix4x4& mat, HPoint& projected) const;
 
 		//! Unfolds the point onto a plane according to edge(a,b)
 				Point&			Unfold(Plane& p, Point& a, Point& b);
@@ -377,19 +377,19 @@
 		//! Operator for Point Mul   = Point * Point.
 		inline_	Point			operator*(const Point& p)			const		{ return Point(x * p.x, y * p.y, z * p.z);			}
 		//! Operator for Point Scale = Point * float.
-		inline_	Point			operator*(F32 s)					const		{ return Point(x * s,   y * s,   z * s );			}
+		inline_	Point			operator*(f32 s)					const		{ return Point(x * s,   y * s,   z * s );			}
 		//! Operator for Point Scale = float * Point.
-		inline_ friend	Point	operator*(F32 s, const Point& p)				{ return Point(s * p.x, s * p.y, s * p.z);			}
+		inline_ friend	Point	operator*(f32 s, const Point& p)				{ return Point(s * p.x, s * p.y, s * p.z);			}
 
 		//! Operator for Point Div   = Point / Point.
 		inline_	Point			operator/(const Point& p)			const		{ return Point(x / p.x, y / p.y, z / p.z);			}
 		//! Operator for Point Scale = Point / float.
-		inline_	Point			operator/(F32 s)					const		{ s = 1.0f / s; return Point(x * s, y * s, z * s);	}
+		inline_	Point			operator/(f32 s)					const		{ s = 1.0f / s; return Point(x * s, y * s, z * s);	}
 		//! Operator for Point Scale = float / Point.
-		inline_	friend	Point	operator/(F32 s, const Point& p)				{ return Point(s / p.x, s / p.y, s / p.z);			}
+		inline_	friend	Point	operator/(f32 s, const Point& p)				{ return Point(s / p.x, s / p.y, s / p.z);			}
 
 		//! Operator for float DotProd = Point | Point.
-		inline_	F32				operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
+		inline_	f32				operator|(const Point& p)			const		{ return x*p.x + y*p.y + z*p.z;						}
 		//! Operator for Point VecProd = Point ^ Point.
 		ICF		Point			operator^(const Point& p)			const
 								{
@@ -402,22 +402,22 @@
 		//! Operator for Point += Point.
 		inline_	Point&			operator+=(const Point& p)						{ x += p.x; y += p.y; z += p.z;	return *this;		}
 		//! Operator for Point += float.
-		inline_	Point&			operator+=(F32 s)								{ x += s;   y += s;   z += s;	return *this;		}
+		inline_	Point&			operator+=(f32 s)								{ x += s;   y += s;   z += s;	return *this;		}
 
 		//! Operator for Point -= Point.
 		inline_	Point&			operator-=(const Point& p)						{ x -= p.x; y -= p.y; z -= p.z;	return *this;		}
 		//! Operator for Point -= float.
-		inline_	Point&			operator-=(F32 s)								{ x -= s;   y -= s;   z -= s;	return *this;		}
+		inline_	Point&			operator-=(f32 s)								{ x -= s;   y -= s;   z -= s;	return *this;		}
 
 		//! Operator for Point *= Point.
 		inline_	Point&			operator*=(const Point& p)						{ x *= p.x; y *= p.y; z *= p.z;	return *this;		}
 		//! Operator for Point *= float.
-		inline_	Point&			operator*=(F32 s)								{ x *= s; y *= s; z *= s;		return *this;		}
+		inline_	Point&			operator*=(f32 s)								{ x *= s; y *= s; z *= s;		return *this;		}
 
 		//! Operator for Point /= Point.
 		inline_	Point&			operator/=(const Point& p)						{ x /= p.x; y /= p.y; z /= p.z;	return *this;		}
 		//! Operator for Point /= float.
-		inline_	Point&			operator/=(F32 s)								{ s = 1.0f/s; x *= s; y *= s; z *= s; return *this; }
+		inline_	Point&			operator/=(f32 s)								{ s = 1.0f/s; x *= s; y *= s; z *= s; return *this; }
 
 		// Logical operators
 
@@ -431,7 +431,7 @@
 		//! Operator for Point Mul = Point * Matrix3x3.
 		inline_	Point			operator*(const Matrix3x3& mat)		const
 								{
-									class ShadowMatrix3x3{ public: F32 m[3][3]; };	// To allow inlining
+									class ShadowMatrix3x3{ public: f32 m[3][3]; };	// To allow inlining
 									const ShadowMatrix3x3* Mat = (const ShadowMatrix3x3*)&mat;
 
 									return Point(
@@ -443,7 +443,7 @@
 		//! Operator for Point Mul = Point * Matrix4x4.
 		inline_	Point			operator*(const Matrix4x4& mat)		const
 								{
-									class ShadowMatrix4x4{ public: F32 m[4][4]; };	// To allow inlining
+									class ShadowMatrix4x4{ public: f32 m[4][4]; };	// To allow inlining
 									const ShadowMatrix4x4* Mat = (const ShadowMatrix4x4*)&mat;
 
 									return Point(
@@ -455,12 +455,12 @@
 		//! Operator for Point *= Matrix3x3.
 		inline_	Point&			operator*=(const Matrix3x3& mat)
 								{
-									class ShadowMatrix3x3{ public: F32 m[3][3]; };	// To allow inlining
+									class ShadowMatrix3x3{ public: f32 m[3][3]; };	// To allow inlining
 									const ShadowMatrix3x3* Mat = (const ShadowMatrix3x3*)&mat;
 
-									F32 xp = x * Mat->m[0][0] + y * Mat->m[1][0] + z * Mat->m[2][0];
-									F32 yp = x * Mat->m[0][1] + y * Mat->m[1][1] + z * Mat->m[2][1];
-									F32 zp = x * Mat->m[0][2] + y * Mat->m[1][2] + z * Mat->m[2][2];
+									f32 xp = x * Mat->m[0][0] + y * Mat->m[1][0] + z * Mat->m[2][0];
+									f32 yp = x * Mat->m[0][1] + y * Mat->m[1][1] + z * Mat->m[2][1];
+									f32 zp = x * Mat->m[0][2] + y * Mat->m[1][2] + z * Mat->m[2][2];
 
 									x = xp;	y = yp;	z = zp;
 
@@ -470,12 +470,12 @@
 		//! Operator for Point *= Matrix4x4.
 		inline_	Point&			operator*=(const Matrix4x4& mat)
 								{
-									class ShadowMatrix4x4{ public: F32 m[4][4]; };	// To allow inlining
+									class ShadowMatrix4x4{ public: f32 m[4][4]; };	// To allow inlining
 									const ShadowMatrix4x4* Mat = (const ShadowMatrix4x4*)&mat;
 
-									F32 xp = x * Mat->m[0][0] + y * Mat->m[1][0] + z * Mat->m[2][0] + Mat->m[3][0];
-									F32 yp = x * Mat->m[0][1] + y * Mat->m[1][1] + z * Mat->m[2][1] + Mat->m[3][1];
-									F32 zp = x * Mat->m[0][2] + y * Mat->m[1][2] + z * Mat->m[2][2] + Mat->m[3][2];
+									f32 xp = x * Mat->m[0][0] + y * Mat->m[1][0] + z * Mat->m[2][0] + Mat->m[3][0];
+									f32 yp = x * Mat->m[0][1] + y * Mat->m[1][1] + z * Mat->m[2][1] + Mat->m[3][1];
+									f32 zp = x * Mat->m[0][2] + y * Mat->m[1][2] + z * Mat->m[2][2] + Mat->m[3][2];
 
 									x = xp;	y = yp;	z = zp;
 
@@ -487,11 +487,11 @@
 		//! Cast a Point to a HPoint. w is set to zero.
 								operator	HPoint()				const;
 
-		inline_					operator	const	F32*() const	{ return &x; }
-		inline_					operator			F32*()			{ return &x; }
+		inline_					operator	const	f32*() const	{ return &x; }
+		inline_					operator f32*()			{ return &x; }
 
 		public:
-			F32			x, y, z;
+			f32			x, y, z;
 	};
 
 	FUNCTION ICEMATHS_API void Normalize1(Point& a);

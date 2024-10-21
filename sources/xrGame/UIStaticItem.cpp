@@ -70,15 +70,15 @@ void CUIStaticItem::Render()
 	if(alpha_ref!=-1)
 		CHK_DX(HW.pDevice->SetRenderState(D3DRS_ALPHAREF,alpha_ref));
 	// convert&set pos
-	Fvector2		bp;
+	fVector2		bp;
 	UI()->ClientToScreenScaled	(bp, f32(iPos.x), f32(iPos.y));
 	bp.x						= (f32)iFloor(bp.x);
 	bp.y						= (f32)iFloor(bp.y);
 
 	// actual rendering
 	u32							vOffset;
-	Fvector2					pos;
-	Fvector2					f_len;
+	fVector2					pos;
+	fVector2					f_len;
 	UI()->ClientToScreenScaled	(f_len, iVisRect.x2, iVisRect.y2 );
 
 	int tile_x					= fis_zero(iRemX)?iTileX:iTileX+1;
@@ -97,7 +97,7 @@ void CUIStaticItem::Render()
 	std::ptrdiff_t p_cnt		= (pv-start_pv)/3;						VERIFY((pv-start_pv)<=8*tile_x*tile_y);
 	RCache.Vertex.Unlock		(u32(pv-start_pv),hGeom_fan.stride());
 	// set scissor
-	Frect clip_rect				= {iPos.x,iPos.y,iPos.x+iVisRect.x2*iTileX+iRemX,iPos.y+iVisRect.y2*iTileY+iRemY};
+	fRect clip_rect				= {iPos.x,iPos.y,iPos.x+iVisRect.x2*iTileX+iRemX,iPos.y+iVisRect.y2*iTileY+iRemY};
 	UI()->PushScissor			(clip_rect);
 	// set geom
 	RCache.set_Geometry			(hGeom_fan);
@@ -116,9 +116,8 @@ void CUIStaticItem::Render(f32 angle)
 	if(alpha_ref!=-1)
 		CHK_DX(HW.pDevice->SetRenderState(D3DRS_ALPHAREF,alpha_ref));
 	// convert&set pos
-	Fvector2		bp_ns;
+	fVector2		bp_ns;
 	bp_ns.set		(iPos);
-
 
 	// actual rendering
 	u32		vOffset;

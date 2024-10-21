@@ -153,10 +153,10 @@ Ivector	vpack			(Fvector src)
 void	generate_jitter	(DWORD*	dest, u32 elem_count)
 {
 	const	int		cmax		= 8;
-	svector<Ivector2,cmax>		samples;
+	svector<iVector2,cmax>		samples;
 	while (samples.size()<elem_count*2)
 	{
-		Ivector2	test;
+		iVector2	test;
 		test.set	(::Random.randI(0,256),::Random.randI(0,256));
 		BOOL		valid = TRUE;
 		for (u32 t=0; t<samples.size(); t++)

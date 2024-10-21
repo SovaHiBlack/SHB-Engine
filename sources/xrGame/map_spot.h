@@ -11,7 +11,7 @@ class CMapSpot :public CUIStatic
 
 public:
 	bool					m_bScale;
-	Fvector2				m_originSize;
+	fVector2				m_originSize;
 	CMapSpot(CMapLocation*);
 	virtual					~CMapSpot( );
 	virtual		void		Load(CUIXml* xml, pcstr path);
@@ -40,7 +40,9 @@ class CMiniMapSpot :public CMapSpot
 {
 	typedef CMapSpot inherited;
 	ref_shader				m_icon_above, m_icon_normal, m_icon_below;
-	Frect					m_tex_rect_above, m_tex_rect_normal, m_tex_rect_below;
+	fRect					m_tex_rect_above;
+	fRect					m_tex_rect_normal;
+	fRect					m_tex_rect_below;
 
 public:
 	CMiniMapSpot(CMapLocation*);

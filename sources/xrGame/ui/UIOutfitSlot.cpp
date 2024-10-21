@@ -54,7 +54,7 @@ void CUIOutfitDragDropList::SetItem(CUICellItem* itm)
 	SetOutfit(itm);
 }
 
-void CUIOutfitDragDropList::SetItem(CUICellItem* itm, Fvector2 abs_pos)
+void CUIOutfitDragDropList::SetItem(CUICellItem* itm, fVector2 abs_pos)
 {
 	if (itm)
 	{
@@ -64,7 +64,7 @@ void CUIOutfitDragDropList::SetItem(CUICellItem* itm, Fvector2 abs_pos)
 	SetOutfit(itm);
 }
 
-void CUIOutfitDragDropList::SetItem(CUICellItem* itm, Ivector2 cell_pos)
+void CUIOutfitDragDropList::SetItem(CUICellItem* itm, iVector2 cell_pos)
 {
 	if (itm)
 	{

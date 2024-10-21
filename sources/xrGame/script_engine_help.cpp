@@ -62,7 +62,7 @@ xr_string &process_signature				(xr_string &str)
 xr_string member_to_string			(luabind::object const& e, pcstr function_signature)
 {
 #if !defined(LUABIND_NO_ERROR_CHECKING)
-    using namespace luabind;
+	using namespace luabind;
 	lua_State* L = e.lua_state();
 	LUABIND_CHECK_STACK(L);
 
@@ -108,9 +108,9 @@ xr_string member_to_string			(luabind::object const& e, pcstr function_signature
 		return s.str().c_str();
 	}
 
-    return to_string(e);
+	return to_string(e);
 #else
-    return "";
+	return "";
 #endif
 }
 

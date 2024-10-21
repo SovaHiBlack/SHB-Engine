@@ -378,8 +378,8 @@ void PlanesCollider::_Collide(const AABBQuantizedNode* node, udword clipmask)
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Test the box against the planes. If the box is completely culled, so are its children, hence we exit.
 	udword OutClipMask;
@@ -454,8 +454,8 @@ void PlanesCollider::_Collide(const AABBQuantizedNoLeafNode* node, udword clipma
 {
 	// Dequantize box
 	const QuantizedAABB* Box = &node->mAABB;
-	const Point Center(F32(Box->mCenter[0]) * mCenterCoeff.x, F32(Box->mCenter[1]) * mCenterCoeff.y, F32(Box->mCenter[2]) * mCenterCoeff.z);
-	const Point Extents(F32(Box->mExtents[0]) * mExtentsCoeff.x, F32(Box->mExtents[1]) * mExtentsCoeff.y, F32(Box->mExtents[2]) * mExtentsCoeff.z);
+	const Point Center(f32(Box->mCenter[0]) * mCenterCoeff.x, f32(Box->mCenter[1]) * mCenterCoeff.y, f32(Box->mCenter[2]) * mCenterCoeff.z);
+	const Point Extents(f32(Box->mExtents[0]) * mExtentsCoeff.x, f32(Box->mExtents[1]) * mExtentsCoeff.y, f32(Box->mExtents[2]) * mExtentsCoeff.z);
 
 	// Test the box against the planes. If the box is completely culled, so are its children, hence we exit.
 	udword OutClipMask;

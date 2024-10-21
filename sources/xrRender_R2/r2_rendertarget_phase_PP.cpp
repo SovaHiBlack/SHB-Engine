@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "r2_rendertarget.h"
 
-void	CRenderTarget::u_calc_tc_noise		(Fvector2& p0, Fvector2& p1)
+void	CRenderTarget::u_calc_tc_noise		(fVector2& p0, fVector2& p1)
 {
 	CTexture*	T					= RCache.get_ActiveTexture	(2);
 	VERIFY2		(T, "Texture #3 in noise shader should be setted up");
@@ -33,13 +33,15 @@ void	CRenderTarget::u_calc_tc_noise		(Fvector2& p0, Fvector2& p1)
 	p1.set		(end_u,		end_v	);
 }
 
-void CRenderTarget::u_calc_tc_duality_ss	(Fvector2& r0, Fvector2& r1, Fvector2& l0, Fvector2& l1)
+void CRenderTarget::u_calc_tc_duality_ss	(fVector2& r0, fVector2& r1, fVector2& l0, fVector2& l1)
 {
 	// Calculate ordinaty TCs from blur and SS
 	f32	tw			= f32(dwWidth);
 	f32	th			= f32(dwHeight);
 	if (dwHeight!=Device.dwHeight)	param_blur = 1.f;
-	Fvector2			shift,p0,p1;
+	fVector2			shift;
+	fVector2			p0;
+	fVector2			p1;
 	shift.set			(.5f/tw, .5f/th);
 	shift.mul			(param_blur);
 	p0.set				(.5f/tw, .5f/th).add			(shift);
@@ -83,7 +85,7 @@ struct TL_2c3uv		{
 	Fvector4	p		;
 	u32			color0	;
 	u32			color1	;
-	Fvector2	uv	[3]	;
+	fVector2	uv	[3]	;
 	IC void	set	(f32 x, f32 y, u32 c0, u32 c1, f32 u0, f32 v0, f32 u1, f32 v1, f32 u2, f32 v2)	{
 		p.set	(x,y, EPSILON_7,1.f);
 		color0 = c0; 
@@ -115,7 +117,12 @@ void CRenderTarget::phase_pp		()
 	f32	_w			= f32(Device.dwWidth);
 	f32	_h			= f32(Device.dwHeight);
 	
-	Fvector2			n0,n1,r0,r1,l0,l1;
+	fVector2			n0;
+	fVector2			n1;
+	fVector2			r0;
+	fVector2			r1;
+	fVector2			l0;
+	fVector2			l1;
 	u_calc_tc_duality_ss	(r0,r1,l0,l1);
 	u_calc_tc_noise			(n0,n1);
 

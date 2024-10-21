@@ -19,7 +19,7 @@ private:
 	friend class	CUIGameLog;
 
 	shared_str		m_scrollbar_profile;
-	void			DrawActiveBackFrame		(const Frect& rect, CUIListItem * itm);
+	void			DrawActiveBackFrame		(const fRect& rect, CUIListItem * itm);
 public:
 					CUIListWnd				();
 	virtual			~CUIListWnd				();

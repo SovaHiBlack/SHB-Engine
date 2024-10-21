@@ -41,8 +41,8 @@ public:
 	virtual void		SetShader(const ref_shader& sh)									= 0;
 	virtual void		SetTextureColor(u32 color)										= 0;
 	virtual u32			GetTextureColor()										const	= 0;
-	virtual void		SetOriginalRect(const Frect& r)									= 0;
-	virtual void		SetOriginalRectEx(const Frect& r)								= 0;
+	virtual void		SetOriginalRect(const fRect& r)									= 0;
+	virtual void		SetOriginalRectEx(const fRect& r)								= 0;
 };
 
 class IUIMultiTextureOwner{
@@ -99,10 +99,10 @@ public:
 	virtual void		Draw()											= 0;
 	virtual void		Draw(f32 x, f32 y)							= 0;
 	virtual void		Update()										= 0;
-	virtual void		SetWndPos(const Fvector2& pos)					= 0;
+	virtual void		SetWndPos(const fVector2& pos)					= 0;
 	virtual void		SetWndPos(f32 x, f32 y)						= 0;
-	virtual void		SetWndSize(const Fvector2& size)				= 0;
-	virtual void		SetWndRect(const Frect& rect)					= 0;
+	virtual void		SetWndSize(const fVector2& size)				= 0;
+	virtual void		SetWndRect(const fRect& rect)					= 0;
 	virtual void		SetHeight(f32 height)							= 0;
 	virtual void		SetWidth(f32 width)							= 0;
 /*
@@ -116,11 +116,11 @@ class CUISimpleWindow : public IUISimpleWindow {
 public:
 							CUISimpleWindow()							{m_alignment=waNone; m_wndPos.set(0,0); m_wndSize.set(0,0);}
 	virtual void			Init(f32 x, f32 y, f32 width, f32 height)	{m_wndPos.set(x,y);m_wndSize.set(width, height);}
-	virtual void			SetWndPos(const Fvector2& pos)				{m_wndPos.set(pos.x,pos.y);}
+	virtual void			SetWndPos(const fVector2& pos)				{m_wndPos.set(pos.x,pos.y);}
 	virtual void			SetWndPos(f32 x, f32 y)					{m_wndPos.set(x,y);}
-	IC		Fvector2		GetWndPos()							const	{return m_wndPos;}
-	virtual void			SetWndSize(const Fvector2& size)			{m_wndSize = size;}
-	IC		Fvector2		GetWndSize()						const	{return m_wndSize;}
+	IC		fVector2		GetWndPos()							const	{return m_wndPos;}
+	virtual void			SetWndSize(const fVector2& size)			{m_wndSize = size;}
+	IC		fVector2		GetWndSize()						const	{return m_wndSize;}
 	virtual void			SetHeight(f32 height)						{m_wndSize.y = height;}
 	IC		f32			GetHeight()							const	{return m_wndSize.y;}
 	virtual void			SetWidth(f32 width)						{m_wndSize.x = width;}
@@ -131,9 +131,9 @@ public:
 	virtual void			SetWndRect(f32 x, f32 y, f32 width, f32 height) {
 																						m_wndPos.set(x,y); 
 																						m_wndSize.set(width,height); }
-	virtual void			SetWndRect(const Frect& rect)				{SetWndRect(rect.lt.x, rect.lt.y, rect.width(), rect.height());}
-	IC		Frect			GetWndRect()						const	{Frect r; GetWndRect(r); return r;}
-	IC		void			GetWndRect(Frect& res)				const
+	virtual void			SetWndRect(const fRect& rect)				{SetWndRect(rect.lt.x, rect.lt.y, rect.width(), rect.height());}
+	IC		fRect			GetWndRect()						const	{fRect r; GetWndRect(r); return r;}
+	IC		void			GetWndRect(fRect& res)				const
 	{
 		switch (m_alignment){
 			case waNone:
@@ -152,12 +152,12 @@ public:
 		};
 	}
 				void			MoveWndDelta		(f32 dx, f32 dy)				{m_wndPos.x+=dx;m_wndPos.y+=dy;}
-				void			MoveWndDelta		(const Fvector2& d)					{ MoveWndDelta(d.x, d.y);	};
+				void			MoveWndDelta		(const fVector2& d)					{ MoveWndDelta(d.x, d.y);	};
 
 protected:
 	bool					m_bShowMe;
-	Fvector2				m_wndPos;
-	Fvector2				m_wndSize;
+	fVector2				m_wndPos;
+	fVector2				m_wndSize;
 	EWindowAlignment		m_alignment;
 };
 

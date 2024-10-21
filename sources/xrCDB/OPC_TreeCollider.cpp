@@ -418,12 +418,12 @@ bool AABBTreeCollider::Collide(const AABBQuantizedTree* tree0, const AABBQuantiz
 
 	// Dequantize box A
 	const AABBQuantizedNode* N0 = tree0->GetNodes();
-	const Point a(F32(N0->mAABB.mExtents[0]) * mExtentsCoeff0.x, F32(N0->mAABB.mExtents[1]) * mExtentsCoeff0.y, F32(N0->mAABB.mExtents[2]) * mExtentsCoeff0.z);
-	const Point Pa(F32(N0->mAABB.mCenter[0]) * mCenterCoeff0.x, F32(N0->mAABB.mCenter[1]) * mCenterCoeff0.y, F32(N0->mAABB.mCenter[2]) * mCenterCoeff0.z);
+	const Point a(f32(N0->mAABB.mExtents[0]) * mExtentsCoeff0.x, f32(N0->mAABB.mExtents[1]) * mExtentsCoeff0.y, f32(N0->mAABB.mExtents[2]) * mExtentsCoeff0.z);
+	const Point Pa(f32(N0->mAABB.mCenter[0]) * mCenterCoeff0.x, f32(N0->mAABB.mCenter[1]) * mCenterCoeff0.y, f32(N0->mAABB.mCenter[2]) * mCenterCoeff0.z);
 	// Dequantize box B
 	const AABBQuantizedNode* N1 = tree1->GetNodes();
-	const Point b(F32(N1->mAABB.mExtents[0]) * mExtentsCoeff1.x, F32(N1->mAABB.mExtents[1]) * mExtentsCoeff1.y, F32(N1->mAABB.mExtents[2]) * mExtentsCoeff1.z);
-	const Point Pb(F32(N1->mAABB.mCenter[0]) * mCenterCoeff1.x, F32(N1->mAABB.mCenter[1]) * mCenterCoeff1.y, F32(N1->mAABB.mCenter[2]) * mCenterCoeff1.z);
+	const Point b(f32(N1->mAABB.mExtents[0]) * mExtentsCoeff1.x, f32(N1->mAABB.mExtents[1]) * mExtentsCoeff1.y, f32(N1->mAABB.mExtents[2]) * mExtentsCoeff1.z);
+	const Point Pb(f32(N1->mAABB.mCenter[0]) * mCenterCoeff1.x, f32(N1->mAABB.mCenter[1]) * mCenterCoeff1.y, f32(N1->mAABB.mCenter[2]) * mCenterCoeff1.z);
 
 	// Perform collision query
 	_Collide(N0, N1, a, Pa, b, Pb);
@@ -862,32 +862,32 @@ void AABBTreeCollider::_Collide(const AABBQuantizedNode* b0, const AABBQuantized
 	{
 		// Dequantize box
 		const QuantizedAABB* Box = &b0->GetNeg()->mAABB;
-		const Point negPa(F32(Box->mCenter[0]) * mCenterCoeff0.x, F32(Box->mCenter[1]) * mCenterCoeff0.y, F32(Box->mCenter[2]) * mCenterCoeff0.z);
-		const Point nega(F32(Box->mExtents[0]) * mExtentsCoeff0.x, F32(Box->mExtents[1]) * mExtentsCoeff0.y, F32(Box->mExtents[2]) * mExtentsCoeff0.z);
+		const Point negPa(f32(Box->mCenter[0]) * mCenterCoeff0.x, f32(Box->mCenter[1]) * mCenterCoeff0.y, f32(Box->mCenter[2]) * mCenterCoeff0.z);
+		const Point nega(f32(Box->mExtents[0]) * mExtentsCoeff0.x, f32(Box->mExtents[1]) * mExtentsCoeff0.y, f32(Box->mExtents[2]) * mExtentsCoeff0.z);
 		_Collide(b0->GetNeg(), b1, nega, negPa, b, Pb);
 
 		if(ContactFound()) return;
 
 		// Dequantize box
 		Box = &b0->GetPos()->mAABB;
-		const Point posPa(F32(Box->mCenter[0]) * mCenterCoeff0.x, F32(Box->mCenter[1]) * mCenterCoeff0.y, F32(Box->mCenter[2]) * mCenterCoeff0.z);
-		const Point posa(F32(Box->mExtents[0]) * mExtentsCoeff0.x, F32(Box->mExtents[1]) * mExtentsCoeff0.y, F32(Box->mExtents[2]) * mExtentsCoeff0.z);
+		const Point posPa(f32(Box->mCenter[0]) * mCenterCoeff0.x, f32(Box->mCenter[1]) * mCenterCoeff0.y, f32(Box->mCenter[2]) * mCenterCoeff0.z);
+		const Point posa(f32(Box->mExtents[0]) * mExtentsCoeff0.x, f32(Box->mExtents[1]) * mExtentsCoeff0.y, f32(Box->mExtents[2]) * mExtentsCoeff0.z);
 		_Collide(b0->GetPos(), b1, posa, posPa, b, Pb);
 	}
 	else
 	{
 		// Dequantize box
 		const QuantizedAABB* Box = &b1->GetNeg()->mAABB;
-		const Point negPb(F32(Box->mCenter[0]) * mCenterCoeff1.x, F32(Box->mCenter[1]) * mCenterCoeff1.y, F32(Box->mCenter[2]) * mCenterCoeff1.z);
-		const Point negb(F32(Box->mExtents[0]) * mExtentsCoeff1.x, F32(Box->mExtents[1]) * mExtentsCoeff1.y, F32(Box->mExtents[2]) * mExtentsCoeff1.z);
+		const Point negPb(f32(Box->mCenter[0]) * mCenterCoeff1.x, f32(Box->mCenter[1]) * mCenterCoeff1.y, f32(Box->mCenter[2]) * mCenterCoeff1.z);
+		const Point negb(f32(Box->mExtents[0]) * mExtentsCoeff1.x, f32(Box->mExtents[1]) * mExtentsCoeff1.y, f32(Box->mExtents[2]) * mExtentsCoeff1.z);
 		_Collide(b0, b1->GetNeg(), a, Pa, negb, negPb);
 
 		if(ContactFound()) return;
 
 		// Dequantize box
 		Box = &b1->GetPos()->mAABB;
-		const Point posPb(F32(Box->mCenter[0]) * mCenterCoeff1.x, F32(Box->mCenter[1]) * mCenterCoeff1.y, F32(Box->mCenter[2]) * mCenterCoeff1.z);
-		const Point posb(F32(Box->mExtents[0]) * mExtentsCoeff1.x, F32(Box->mExtents[1]) * mExtentsCoeff1.y, F32(Box->mExtents[2]) * mExtentsCoeff1.z);
+		const Point posPb(f32(Box->mCenter[0]) * mCenterCoeff1.x, f32(Box->mCenter[1]) * mCenterCoeff1.y, f32(Box->mCenter[2]) * mCenterCoeff1.z);
+		const Point posb(f32(Box->mExtents[0]) * mExtentsCoeff1.x, f32(Box->mExtents[1]) * mExtentsCoeff1.y, f32(Box->mExtents[2]) * mExtentsCoeff1.z);
 		_Collide(b0, b1->GetPos(), a, Pa, posb, posPb);
 	}
 }
@@ -907,8 +907,8 @@ void AABBTreeCollider::_CollideTriBox(const AABBQuantizedNoLeafNode* b)
 {
 	// Dequantize box
 	const QuantizedAABB* bb = &b->mAABB;
-	const Point Pb(F32(bb->mCenter[0]) * mCenterCoeff1.x, F32(bb->mCenter[1]) * mCenterCoeff1.y, F32(bb->mCenter[2]) * mCenterCoeff1.z);
-	const Point eb(F32(bb->mExtents[0]) * mExtentsCoeff1.x, F32(bb->mExtents[1]) * mExtentsCoeff1.y, F32(bb->mExtents[2]) * mExtentsCoeff1.z);
+	const Point Pb(f32(bb->mCenter[0]) * mCenterCoeff1.x, f32(bb->mCenter[1]) * mCenterCoeff1.y, f32(bb->mCenter[2]) * mCenterCoeff1.z);
+	const Point eb(f32(bb->mExtents[0]) * mExtentsCoeff1.x, f32(bb->mExtents[1]) * mExtentsCoeff1.y, f32(bb->mExtents[2]) * mExtentsCoeff1.z);
 
 	// Perform triangle-box overlap test
 	if(!TriBoxOverlap(Pb, eb))	return;
@@ -933,8 +933,8 @@ void AABBTreeCollider::_CollideBoxTri(const AABBQuantizedNoLeafNode* b)
 {
 	// Dequantize box
 	const QuantizedAABB* bb = &b->mAABB;
-	const Point Pa(F32(bb->mCenter[0]) * mCenterCoeff0.x, F32(bb->mCenter[1]) * mCenterCoeff0.y, F32(bb->mCenter[2]) * mCenterCoeff0.z);
-	const Point ea(F32(bb->mExtents[0]) * mExtentsCoeff0.x, F32(bb->mExtents[1]) * mExtentsCoeff0.y, F32(bb->mExtents[2]) * mExtentsCoeff0.z);
+	const Point Pa(f32(bb->mCenter[0]) * mCenterCoeff0.x, f32(bb->mCenter[1]) * mCenterCoeff0.y, f32(bb->mCenter[2]) * mCenterCoeff0.z);
+	const Point ea(f32(bb->mExtents[0]) * mExtentsCoeff0.x, f32(bb->mExtents[1]) * mExtentsCoeff0.y, f32(bb->mExtents[2]) * mExtentsCoeff0.z);
 
 	// Perform triangle-box overlap test
 	if(!TriBoxOverlap(Pa, ea))	return;
@@ -959,12 +959,12 @@ void AABBTreeCollider::_Collide(const AABBQuantizedNoLeafNode* a, const AABBQuan
 {
 	// Dequantize box A
 	const QuantizedAABB* ab = &a->mAABB;
-	const Point Pa(F32(ab->mCenter[0]) * mCenterCoeff0.x, F32(ab->mCenter[1]) * mCenterCoeff0.y, F32(ab->mCenter[2]) * mCenterCoeff0.z);
-	const Point ea(F32(ab->mExtents[0]) * mExtentsCoeff0.x, F32(ab->mExtents[1]) * mExtentsCoeff0.y, F32(ab->mExtents[2]) * mExtentsCoeff0.z);
+	const Point Pa(f32(ab->mCenter[0]) * mCenterCoeff0.x, f32(ab->mCenter[1]) * mCenterCoeff0.y, f32(ab->mCenter[2]) * mCenterCoeff0.z);
+	const Point ea(f32(ab->mExtents[0]) * mExtentsCoeff0.x, f32(ab->mExtents[1]) * mExtentsCoeff0.y, f32(ab->mExtents[2]) * mExtentsCoeff0.z);
 	// Dequantize box B
 	const QuantizedAABB* bb = &b->mAABB;
-	const Point Pb(F32(bb->mCenter[0]) * mCenterCoeff1.x, F32(bb->mCenter[1]) * mCenterCoeff1.y, F32(bb->mCenter[2]) * mCenterCoeff1.z);
-	const Point eb(F32(bb->mExtents[0]) * mExtentsCoeff1.x, F32(bb->mExtents[1]) * mExtentsCoeff1.y, F32(bb->mExtents[2]) * mExtentsCoeff1.z);
+	const Point Pb(f32(bb->mCenter[0]) * mCenterCoeff1.x, f32(bb->mCenter[1]) * mCenterCoeff1.y, f32(bb->mCenter[2]) * mCenterCoeff1.z);
+	const Point eb(f32(bb->mExtents[0]) * mExtentsCoeff1.x, f32(bb->mExtents[1]) * mExtentsCoeff1.y, f32(bb->mExtents[2]) * mExtentsCoeff1.z);
 
 	// Perform BV-BV overlap test
 	if(!BoxBoxOverlap(ea, Pa, eb, Pb))	return;

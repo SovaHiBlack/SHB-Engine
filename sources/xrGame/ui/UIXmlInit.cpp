@@ -68,9 +68,9 @@ CUIXmlInit::~CUIXmlInit()
 
 //////////////////////////////////////////////////////////////////////////
 
-Frect CUIXmlInit::GetFRect(CUIXml& xml_doc, pcstr path, int index){
+fRect CUIXmlInit::GetFRect(CUIXml& xml_doc, pcstr path, int index){
 	R_ASSERT3(xml_doc.NavigateToNode(path,index), "XML node not found", path);
-	Frect rect;
+	fRect rect;
 	rect.set(0,0,0,0);
 	rect.x1 = xml_doc.ReadAttribFlt(path, index, "x");
 	rect.y1	= xml_doc.ReadAttribFlt(path, index, "y");
@@ -317,7 +317,7 @@ bool CUIXmlInit::Init3tButton(CUIXml& xml_doc, pcstr path, int index, CUI3tButto
 	f32 shadowOffsetX	= xml_doc.ReadAttribFlt(path, index, "shadow_offset_x", 0);
 	f32 shadowOffsetY	= xml_doc.ReadAttribFlt(path, index, "shadow_offset_y", 0);
 
-	pWnd->SetShadowOffset(Fvector2().set(shadowOffsetX, shadowOffsetY));
+	pWnd->SetShadowOffset(fVector2().set(shadowOffsetX, shadowOffsetY));
 
 	// init hint static
 	string256 hint;
@@ -387,8 +387,8 @@ bool CUIXmlInit::InitButton(CUIXml& xml_doc, pcstr path, int index, CUIButton* p
 	if(text_hint)
 		pWnd->m_hint_text	= CStringTable().translate(text_hint);
 
-	pWnd->SetShadowOffset	(Fvector2().set(shadowOffsetX, shadowOffsetY) );
-	pWnd->SetPushOffset		(Fvector2().set(pushOffsetX,pushOffsetY) );
+	pWnd->SetShadowOffset	(fVector2().set(shadowOffsetX, shadowOffsetY) );
+	pWnd->SetPushOffset		(fVector2().set(pushOffsetX,pushOffsetY) );
 
 	return true;
 }
@@ -407,7 +407,8 @@ bool CUIXmlInit::InitDragDropListEx(CUIXml& xml_doc, pcstr path, int index, CUID
 
 	pWnd->Init		(x,y, width,height);
 
-	Ivector2 w_cell_sz, w_cells;
+	iVector2 w_cell_sz;
+	iVector2 w_cells;
 
 	w_cell_sz.x				= xml_doc.ReadAttribInt(path, index, "cell_width");
 	w_cell_sz.y				= xml_doc.ReadAttribInt(path, index, "cell_height");
@@ -956,7 +957,7 @@ bool CUIXmlInit::InitTexture(CUIXml& xml_doc, pcstr path, int index, IUISingleTe
 	InitTexture(xml_doc, path, index, (IUIMultiTextureOwner*)pWnd);
 	strconcat(sizeof(buf),buf, path, ":texture");
 
-	Frect rect;
+	fRect rect;
 
 	rect.x1			= xml_doc.ReadAttribFlt(buf, index, "x", 0);
 	rect.y1			= xml_doc.ReadAttribFlt(buf, index, "y", 0);

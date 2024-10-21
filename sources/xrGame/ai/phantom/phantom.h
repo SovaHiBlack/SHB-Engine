@@ -46,7 +46,7 @@ private:
 
 	f32				fSpeed;
 	f32				fASpeed;
-	Fvector2			vHP;
+	fVector2			vHP;
 
 	f32				fContactHit;
 

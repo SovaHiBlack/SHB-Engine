@@ -419,7 +419,7 @@ IC f32			ThrowMinVelTime						(const Fvector& transference, f32 gravity_accel)
 }
 
 // returns num result, tgA result tangents of throw angle 
-IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_vel, f32 gravity_accel, Fvector2& tgA, f32& s)
+IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_vel, f32 gravity_accel, fVector2& tgA, f32& s)
 {
 	f32 sqx = transference.x * transference.x + transference.z * transference.z;
 	f32 sqv = throw_vel * throw_vel;
@@ -443,7 +443,7 @@ IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_v
 	return 2;
 }
 
-IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_vel, f32 gravity_accel, Fvector2& tgA)
+IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_vel, f32 gravity_accel, fVector2& tgA)
 {
 	f32 s;
 	return TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
@@ -452,7 +452,7 @@ IC u8				TransferenceAndThrowVelToTgA		(const Fvector& transference, f32 throw_v
 IC u8				TransferenceAndThrowVelToThrowDir	(const Fvector& transference, f32 throw_vel, f32 gravity_accel, Fvector	throw_dir[2])
 {
 	throw_dir[0] = throw_dir[1] = transference;
-	Fvector2 tgA;
+	fVector2 tgA;
 	f32 s;
 	u8 ret = TransferenceAndThrowVelToTgA(transference, throw_vel, gravity_accel, tgA, s);
 	switch (ret)

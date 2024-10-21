@@ -280,7 +280,7 @@ void	CSoundRender_Core::play					( ref_sound& S, CObject* O, u32 flags, f32 dela
 	else				i_play					(&S,flags&sm_Looped,delay);
 	if (flags&sm_2D)	S._feedback()->switch_to_2D();
 }
-void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags, f32 delay, Fvector* pos, f32* vol, f32* freq, Fvector2* range)
+void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags, f32 delay, Fvector* pos, f32* vol, f32* freq, fVector2* range)
 {
 	if (!bPresent || 0==S._handle())return;
 	verify_refsound		(S);

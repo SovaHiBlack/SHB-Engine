@@ -906,17 +906,18 @@ void CApplication::load_draw_internal()
 		FVF::TL* pv					= NULL;
 
 		// progress
-		f32 bw					= 1024.0f;
-		f32 bh					= 768.0f;
-		Fvector2					k; k.set(f32(_w)/bw, f32(_h)/bh);
+		f32 bw						= 1024.0f;
+		f32 bh						= 768.0f;
+		fVector2					k;
+		k.set						(f32(_w)/bw, f32(_h)/bh);
 
 		RCache.set_Shader			(sh_progress);
 		CTexture*	T				= RCache.get_ActiveTexture(0);
-		Fvector2					tsz;
+		fVector2					tsz;
 		tsz.set						((f32)T->get_Width(),(f32)T->get_Height());
-		Frect						back_text_coords;
-		Frect						back_coords;
-		Fvector2					back_size;
+		fRect						back_text_coords;
+		fRect						back_coords;
+		fVector2					back_size;
 
 		// progress background
 		static f32 offs			= -0.5f;
@@ -975,11 +976,11 @@ void CApplication::load_draw_internal()
 
 		// draw level-specific screenshot
 		if(hLevelLogo){
-			Frect						r;
+			fRect						r;
 			r.lt.set					(257,369);
 			r.lt.x						+= offs;
 			r.lt.y						+= offs;
-			r.rb.add					(r.lt,Fvector2().set(512,256));
+			r.rb.add					(r.lt, fVector2().set(512.0f,256.0f));
 			r.lt.mul					(k);						
 			r.rb.mul					(k);						
 			pv							= (FVF::TL*) RCache.Vertex.Lock(4,ll_hGeom.stride(),Offset);

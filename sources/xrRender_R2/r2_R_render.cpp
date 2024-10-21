@@ -164,7 +164,8 @@ void CRender::render_menu	()
 	RCache.set_Shader				( Target->s_menu	);
 	RCache.set_Geometry				( Target->g_menu	);
 
-	Fvector2						p0,p1;
+	fVector2						p0;
+	fVector2						p1;
 	u32								Offset;
 	u32		C						= color_rgba	(255,255,255,255);
 	f32	_w						= f32(Device.dwWidth);

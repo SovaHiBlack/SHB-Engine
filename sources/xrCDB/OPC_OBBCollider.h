@@ -90,19 +90,19 @@
 							Point			mB0;				//!< - mTModelToBox + mBoxExtents
 							Point			mB1;				//!< - mTModelToBox - mBoxExtents
 
-							F32			mBBx1;
-							F32			mBBy1;
-							F32			mBBz1;
+							f32			mBBx1;
+							f32			mBBy1;
+							f32			mBBz1;
 
-							F32			mBB_1;
-							F32			mBB_2;
-							F32			mBB_3;
-							F32			mBB_4;
-							F32			mBB_5;
-							F32			mBB_6;
-							F32			mBB_7;
-							F32			mBB_8;
-							F32			mBB_9;
+							f32			mBB_1;
+							f32			mBB_2;
+							f32			mBB_3;
+							f32			mBB_4;
+							f32			mBB_5;
+							f32			mBB_6;
+							f32			mBB_7;
+							f32			mBB_8;
+							f32			mBB_9;
 
 		// Leaf description
 							Point			mLeafVerts[3];		//!< Triangle vertices

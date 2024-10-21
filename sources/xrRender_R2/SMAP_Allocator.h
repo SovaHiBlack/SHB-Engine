@@ -2,7 +2,8 @@
 
 struct	SMAP_Rect
 {
-	Ivector2				min,max;
+	iVector2				min;
+	iVector2				max;
 	bool					intersect	(SMAP_Rect& R)					{
 		if( max.x < R.min.x )	return false;
 		if( max.y < R.min.y )	return false;
@@ -15,11 +16,11 @@ struct	SMAP_Rect
 		if (min.y==max.y)		return false;
 		return	true;
 	}
-	void					setup		(Ivector2& p, u32 size)			{
+	void					setup		(iVector2& p, u32 size)			{
 		min	= max =	p;
 		max.add		(size-1);
 	}
-	void					get_cp		(Ivector2& p0, Ivector2& p1)	{
+	void					get_cp		(iVector2& p0, iVector2& p1)	{
 		p0.set	(max.x+1,min.y);		// right
 		p1.set	(min.x,max.y+1);		// down
 	}
@@ -29,12 +30,13 @@ class	SMAP_Allocator
 {
 	u32						psize;		// pool size
 	xr_vector<SMAP_Rect>	stack;		// 
-	xr_vector<Ivector2>		cpoint;		// critical points
+	xr_vector<iVector2>		cpoint;		// critical points
 private:
 	void			_add	(SMAP_Rect& R)
 	{
 		stack.push_back		(R);
-		Ivector2			p0,p1;
+		iVector2			p0;
+		iVector2			p1;
 		R.get_cp			(p0,p1);
 		s32 ps				= s32(psize);
 		if ((p0.x<ps)&&(p0.y<ps))	cpoint.push_back(p0);	// 1st
@@ -53,7 +55,8 @@ public:
 
 		// setup first in the soup, if empty state
 		if (stack.empty())	{
-			Ivector2	p;	p.set(0,0);
+			iVector2	p;
+			p.set(0,0);
 			R.setup			(p,_size);
 			_add			(R);
 			return			true;

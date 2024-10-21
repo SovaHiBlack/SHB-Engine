@@ -61,7 +61,7 @@ private:
 
 public:
 	CUICustomMap*				m_tgtMap;
-	Fvector2					m_tgtCenter;
+	fVector2					m_tgtCenter;
 
 public:
 								CUIMapWnd				();
@@ -85,11 +85,11 @@ public:
 	virtual void				SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 
 	void						SetTargetMap			(CUICustomMap* m, bool bZoomIn = false);
-	void						SetTargetMap			(CUICustomMap* m, const Fvector2& pos, bool bZoomIn = false);
-	void						SetTargetMap			(const shared_str& name, const Fvector2& pos, bool bZoomIn = false);
+	void						SetTargetMap			(CUICustomMap* m, const fVector2& pos, bool bZoomIn = false);
+	void						SetTargetMap			(const shared_str& name, const fVector2& pos, bool bZoomIn = false);
 	void						SetTargetMap			(const shared_str& name, bool bZoomIn = false);
 
-	Frect						ActiveMapRect			()		{Frect r; m_UILevelFrame->GetAbsoluteRect(r); return r;};
+	fRect						ActiveMapRect			()		{fRect r; m_UILevelFrame->GetAbsoluteRect(r); return r;};
 	void						AddMapToRender			(CUICustomMap*);
 	void						RemoveMapToRender		(CUICustomMap*);
 	CUIGlobalMap*				GlobalMap				()		{return m_GlobalMap;};

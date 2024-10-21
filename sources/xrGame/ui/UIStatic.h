@@ -39,15 +39,15 @@ public:
 	virtual void	Draw					();
 	virtual void	Update					();
 	//
-			void	RescaleRelative2Rect(const Frect& r);	//need to save proportions of texture			
+			void	RescaleRelative2Rect(const fRect& r);	//need to save proportions of texture			
 
 	// IUISingleTextureOwner--------------------------------------------------------------------------------
 	virtual void		CreateShader				(pcstr tex, pcstr sh = "hud\\default");
 	virtual ref_shader& GetShader					();
 	virtual void		SetTextureColor				(u32 color);
 	virtual u32			GetTextureColor				() const;
-	virtual void		SetOriginalRect				(const Frect& r)			{m_UIStaticItem.SetOriginalRect(r);}
-	virtual void		SetOriginalRectEx			(const Frect& r)			{m_UIStaticItem.SetOriginalRectEx(r);}
+	virtual void		SetOriginalRect				(const fRect& r)			{m_UIStaticItem.SetOriginalRect(r);}
+	virtual void		SetOriginalRectEx			(const fRect& r)			{m_UIStaticItem.SetOriginalRectEx(r);}
 	//
 			void		SetVTextAlignment(EVTextAlignment al);
 	virtual void		SetColor					(u32 color)					{ m_UIStaticItem.SetColor(color);		}
@@ -57,10 +57,10 @@ public:
 	virtual void		InitTextureEx				(pcstr tex_name, pcstr sh_name="hud\\default");
 	CUIStaticItem*		GetStaticItem				()							{return &m_UIStaticItem;}
 			void		SetOriginalRect				(f32 x, f32 y, f32 width, f32 height)	{m_UIStaticItem.SetOriginalRect(x,y,width,height);}
-			void		SetHeadingPivot				(const Fvector2& p)			{m_UIStaticItem.SetHeadingPivot(p);}
+			void		SetHeadingPivot				(const fVector2& p)			{m_UIStaticItem.SetHeadingPivot(p);}
 			void		SetMask						(CUIFrameWindow *pMask);
 	virtual void		SetTextureOffset			(f32 x, f32 y)			{ m_TextureOffset.set(x, y); }
-			Fvector2	GetTextureOffeset			() const					{ return m_TextureOffset; }
+	fVector2	GetTextureOffeset			() const					{ return m_TextureOffset; }
 			void		TextureOn					()							{ m_bTextureEnable = true; }
 			void		TextureOff					()							{ m_bTextureEnable = false; }
 			void		TextureAvailable			(bool value)				{ m_bAvailableTexture = value; }
@@ -115,8 +115,8 @@ public:
 	virtual void ClipperOff					();
 	virtual void ClipperOff					(CUIStaticItem& UIStaticItem);
 	virtual bool GetClipperState			()								{return m_bClipper;}
-	void TextureClipper						(f32 offset_x = 0, f32 offset_y = 0,Frect* pClipRect = NULL);
-	void TextureClipper						(f32 offset_x, f32 offset_y, Frect* pClipRect, CUIStaticItem& UIStaticItem);
+	void TextureClipper						(f32 offset_x = 0, f32 offset_y = 0, fRect* pClipRect = NULL);
+	void TextureClipper						(f32 offset_x, f32 offset_y, fRect* pClipRect, CUIStaticItem& UIStaticItem);
 
 	
 	void			SetShader				(const ref_shader& sh);
@@ -131,9 +131,9 @@ public:
 	void		SetStretchTexture			(bool stretch_texture)	{m_bStretchTexture = stretch_texture;}
 	bool		GetStretchTexture			()						{return m_bStretchTexture;}
 
-	void		SetClipRect					(Frect r);
-	Frect		GetSelfClipRect				();
-	Frect		GetClipperRect				();	
+	void		SetClipRect					(fRect r);
+	fRect		GetSelfClipRect				();
+	fRect		GetClipperRect				();
 
 	// Анализируем текст на помещаемость его по длинне в заданную ширину, и если нет, то всталяем 
 	// "\n" реализуем таким образом wordwrap
@@ -182,23 +182,23 @@ protected:
 	bool m_bTextureEnable;
 	CUIStaticItem m_UIStaticItem;
 
-	Fvector2		m_TextOffset;
+	fVector2		m_TextOffset;
 
 	bool			m_bHeading;
 	f32			m_fHeading;
 
-    // Для вывода текстуры с обрезанием по маске используем CUIFrameWindow
+	// Для вывода текстуры с обрезанием по маске используем CUIFrameWindow
 	CUIFrameWindow	*m_pMask;
-	Fvector2		m_TextureOffset;
+	fVector2		m_TextureOffset;
 
 	// Обрезка надписи
 	EElipsisPosition	m_ElipsisPos;
-	void Elipsis(const Frect &rect, EElipsisPosition elipsisPos);
+	void Elipsis(const fRect& rect, EElipsisPosition elipsisPos);
 	int	m_iElipsisIndent;
-	Frect	m_ClipRect;
+	fRect	m_ClipRect;
 
 private:
-	Frect	m_xxxRect; // need by RescaleRelative2Rect(Frect& r). it is initializes only once in Init(x,y,width,height)
+	fRect	m_xxxRect; // need by RescaleRelative2Rect(fRect& r). it is initializes only once in Init(x,y,width,height)
 
 public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION

@@ -39,7 +39,7 @@ bool OBB::ContainsPoint(const Point& p) const
 	// Point * mRot maps from box space to world space
 	// mRot * Point maps from world space to box space (what we need here)
 
-	F32 f = mRot2.m[0][0] * RelPoint.x + mRot2.m[0][1] * RelPoint.y + mRot2.m[0][2] * RelPoint.z;
+	f32 f = mRot2.m[0][0] * RelPoint.x + mRot2.m[0][1] * RelPoint.y + mRot2.m[0][2] * RelPoint.z;
 	if(f >= mExtents.x || f <= -mExtents.x) return false;
 
 	f = mRot2.m[1][0] * RelPoint.x + mRot2.m[1][1] * RelPoint.y + mRot2.m[1][2] * RelPoint.z;

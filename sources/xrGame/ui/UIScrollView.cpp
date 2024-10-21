@@ -97,10 +97,10 @@ void CUIScrollView::Update				()
 void CUIScrollView::RecalcSize			()
 {
 	if(!m_pad)			return;
-	Fvector2			pad_size;
+	fVector2			pad_size;
 	pad_size.set		(0.0f, 0.0f);
 
-	Fvector2			item_pos;
+	fVector2			item_pos;
 	item_pos.set		(m_rightIndent, m_vertInterval + m_upIndent);
 	pad_size.y			+= m_upIndent;
 	pad_size.y			+= m_downIndent;
@@ -115,7 +115,6 @@ void CUIScrollView::RecalcSize			()
 			pad_size.y				+= m_vertInterval;
 			pad_size.x				= _max(pad_size.x, (*it)->GetWndSize().x);
 		}
-
 	}else{
 		for(WINDOW_LIST_it it = m_pad->GetChildWndList().begin(); m_pad->GetChildWndList().end() != it; ++it)
 		{
@@ -126,10 +125,9 @@ void CUIScrollView::RecalcSize			()
 			pad_size.y				+= m_vertInterval;
 			pad_size.x				= _max(pad_size.x, (*it)->GetWndSize().x);
 		}
-	};
+	}
 
 	m_pad->SetWndSize			(pad_size);
-
 
 	if(m_flags.test(eInverseDir) )
 		m_pad->SetWndPos		(m_pad->GetWndPos().x, GetHeight()-m_pad->GetHeight());
@@ -141,8 +139,7 @@ void CUIScrollView::RecalcSize			()
 
 void CUIScrollView::UpdateScroll		()
 {
-
-	Fvector2 w_pos					= m_pad->GetWndPos();
+	fVector2 w_pos					= m_pad->GetWndPos();
 	m_VScrollBar->SetHeight(GetHeight());
 	m_VScrollBar->SetRange		(0,iFloor(m_pad->GetHeight()*Scroll2ViewV()));
 
@@ -164,7 +161,7 @@ void CUIScrollView::Draw				()
 	if(m_flags.test	(eNeedRecalc) )
 		RecalcSize			();
 
-	Frect				visible_rect;
+	fRect				visible_rect;
 	GetAbsoluteRect		(visible_rect);
 	visible_rect.top	+= m_upIndent;
 	visible_rect.bottom -= m_downIndent;
@@ -175,7 +172,7 @@ void CUIScrollView::Draw				()
 			m_pad->GetChildWndList().end()!=it; 
 			++it)
 	{
-		Frect	item_rect;
+		fRect	item_rect;
 		(*it)->GetAbsoluteRect(item_rect);
 		if(visible_rect.intersected		(item_rect)){
 			if ((*it)->GetVisible())
@@ -197,7 +194,7 @@ bool CUIScrollView::NeedShowScrollBar(){
 void CUIScrollView::OnScrollV			(CUIWindow*, void*)
 {
 	int s_pos					= m_VScrollBar->GetScrollPos();
-	Fvector2 w_pos				= m_pad->GetWndPos();
+	fVector2 w_pos				= m_pad->GetWndPos();
 	m_pad->SetWndPos			(w_pos.x, f32(-s_pos));
 }
 
@@ -216,7 +213,7 @@ bool CUIScrollView::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 		break;
 		case WINDOW_MOUSE_MOVE:
 			if( pInput->iGetAsyncBtnState(0) ){
-				Fvector2	curr_pad_pos = m_pad->GetWndPos	();
+				fVector2	curr_pad_pos = m_pad->GetWndPos	();
 				curr_pad_pos.y				+= GetUICursor()->GetCursorPositionDelta().y;
 				
 				f32 max_pos = m_pad->GetHeight() - GetHeight();

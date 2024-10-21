@@ -932,11 +932,16 @@ public:
 #ifdef DEBUG
 extern void print_help(lua_State *L);
 
-struct CCC_LuaHelp : public IConsole_Command {
-	CCC_LuaHelp(pcstr N) : IConsole_Command(N)  { bEmptyArgsHandled = true; };
+struct CCC_LuaHelp : public IConsole_Command
+{
+	CCC_LuaHelp(pcstr N) : IConsole_Command(N)
+	{
+		bEmptyArgsHandled = true;
+	}
 
-	virtual void Execute(pcstr args) {
-		print_help(ai().script_engine().lua());
+	virtual void Execute(pcstr args)
+	{
+		print_help(ai( ).script_engine( ).lua( ));
 	}
 };
 

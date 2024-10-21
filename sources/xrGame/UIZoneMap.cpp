@@ -102,11 +102,11 @@ void CUIZoneMap::SetupCurrentMap( )
 
 	m_activeMap->Init(Level( ).name( ), *pLtx, "hud\\default");
 
-	Frect r;
+	fRect r;
 	m_clipFrame.GetAbsoluteRect(r);
 	m_activeMap->SetClipRect(r);
 
-	Fvector2						wnd_size;
+	fVector2						wnd_size;
 	f32 zoom_factor = f32(m_clipFrame.GetWndRect( ).width( )) / 100.0f;
 	wnd_size.x = m_activeMap->BoundRect( ).width( ) * zoom_factor;
 	wnd_size.y = m_activeMap->BoundRect( ).height( ) * zoom_factor;

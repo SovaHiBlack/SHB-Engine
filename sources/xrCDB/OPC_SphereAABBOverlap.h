@@ -11,15 +11,15 @@ inline_ BOOL SphereCollider::SphereAABBOverlap(const Point& center, const Point&
 	// Stats
 	mNbVolumeBVTests++;
 
-	F32 d = 0.0f;
+	f32 d = 0.0f;
 
 	//find the square of the distance
 	//from the sphere to the box
 
-//	F32 tmp = mCenter.x - center.x;
-//	F32 s = tmp + extents.x;
+//	f32 tmp = mCenter.x - center.x;
+//	f32 s = tmp + extents.x;
 
-	F32 tmp,s;
+	f32 tmp,s;
 
 	tmp = mCenter.x - center.x;
 	s = tmp + extents.x;

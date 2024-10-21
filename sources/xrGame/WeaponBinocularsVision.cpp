@@ -70,7 +70,7 @@ void SBinocVisibleObj::Update()
 
 	Fmatrix				xform;
 	xform.mul			(Device.mFullTransform,m_object->XFORM());
-	Fvector2	mn		={flt_max,flt_max},mx={flt_min,flt_min};
+	fVector2	mn		={flt_max,flt_max},mx={flt_min,flt_min};
 
 	for (u32 k=0; k<8; ++k){
 		Fvector p;
@@ -81,9 +81,9 @@ void SBinocVisibleObj::Update()
 		mx.x			= _max(mx.x,p.x);
 		mx.y			= _max(mx.y,p.y);
 	}
-	static Frect screen_rect={-1.0f, -1.0f, 1.0f, 1.0f};
+	static fRect screen_rect={-1.0f, -1.0f, 1.0f, 1.0f};
 
-	Frect				new_rect;
+	fRect				new_rect;
 	new_rect.lt			= mn;
 	new_rect.rb			= mx;
 

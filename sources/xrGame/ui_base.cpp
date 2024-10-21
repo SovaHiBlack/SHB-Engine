@@ -6,25 +6,25 @@
 
 CUICursor*	GetUICursor		()	{return UI()->GetUICursor();};
 ui_core*	UI				()	{return GamePersistent().m_pUI_core;};
-extern ENGINE_API Fvector2		g_current_font_scale;
+extern ENGINE_API fVector2		g_current_font_scale;
 
-void S2DVert::rotate_pt(const Fvector2& pivot, f32 cosA, f32 sinA, f32 kx)
+void S2DVert::rotate_pt(const fVector2& pivot, f32 cosA, f32 sinA, f32 kx)
 {
-	Fvector2 t		= pt;
+	fVector2 t		= pt;
 	t.sub			(pivot);
 	pt.x			= t.x*cosA+t.y*sinA;
 	pt.y			= t.y*cosA-t.x*sinA;
 	pt.x			*= kx;
 	pt.add			(pivot);
 }
-void C2DFrustum::CreateFromRect	(const Frect& rect)
+void C2DFrustum::CreateFromRect	(const fRect& rect)
 {
 	m_rect.set(f32(rect.x1), f32(rect.y1), f32(rect.x2), f32(rect.y2) );
 	planes.resize	(4);
-	planes[0].build	(rect.lt, Fvector2().set(-1, 0));
-	planes[1].build	(rect.lt, Fvector2().set( 0,-1));
-	planes[2].build	(rect.rb, Fvector2().set(+1, 0));
-	planes[3].build	(rect.rb, Fvector2().set( 0,+1));
+	planes[0].build	(rect.lt, fVector2().set(-1.0f, 0.0f));
+	planes[1].build	(rect.lt, fVector2().set( 0.0f,-1.0f));
+	planes[2].build	(rect.rb, fVector2().set(+1.0f, 0.0f));
+	planes[3].build	(rect.rb, fVector2().set( 0.0f,+1.0f));
 }
 
 sPoly2D* C2DFrustum::ClipPoly	(sPoly2D& S, sPoly2D& D) const
@@ -56,7 +56,8 @@ sPoly2D* C2DFrustum::ClipPoly	(sPoly2D& S, sPoly2D& D) const
 		// clip everything to this plane
 		cls[src->size()] = cls[0]	;
 		src->push_back((*src)[0])	;
-		Fvector2 dir_pt,dir_uv;
+		fVector2 dir_pt;
+		fVector2 dir_uv;
 		f32 denum,t;
 		for (j=0; j<src->size()-1; j++)	{
 			if ((*src)[j].pt.similar((*src)[j+1].pt, EPSILON_7)) continue;
@@ -102,19 +103,19 @@ void ui_core::OnDeviceReset()
 {
 	m_scale_.set		(f32(Device.dwWidth)/UI_BASE_WIDTH, f32(Device.dwHeight)/UI_BASE_HEIGHT );
 
-	m_2DFrustum.CreateFromRect	(Frect().set(	0.0f,
+	m_2DFrustum.CreateFromRect	(fRect().set(	0.0f,
 												0.0f,
 											 f32(Device.dwWidth),
 											 f32(Device.dwHeight)
 												));
 }
 
-void ui_core::ClientToScreenScaled(Fvector2& dest, f32 left, f32 top)
+void ui_core::ClientToScreenScaled(fVector2& dest, f32 left, f32 top)
 {
 	dest.set(ClientToScreenScaledX(left),	ClientToScreenScaledY(top));
 }
 
-void ui_core::ClientToScreenScaled(Fvector2& src_and_dest)
+void ui_core::ClientToScreenScaled(fVector2& src_and_dest)
 {
 	src_and_dest.set(ClientToScreenScaledX(src_and_dest.x),	ClientToScreenScaledY(src_and_dest.y));
 }
@@ -131,17 +132,17 @@ void ui_core::ClientToScreenScaledHeight(f32& src_and_dest)
 	src_and_dest		/= m_current_scale->y;
 }
 
-Frect ui_core::ScreenRect()
+fRect ui_core::ScreenRect()
 {
-	static Frect R={0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT};
+	static fRect R={0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT};
 	return R;
 }
 
-void ui_core::PushScissor(const Frect& r_tgt, bool overlapped)
+void ui_core::PushScissor(const fRect& r_tgt, bool overlapped)
 {
 //.	return;
-	Frect r_top			= ScreenRect();
-	Frect result		= r_tgt;
+	fRect r_top			= ScreenRect();
+	fRect result		= r_tgt;
 	if (!m_Scissors.empty()&&!overlapped){
 		r_top			= m_Scissors.top();
 	}
@@ -161,7 +162,7 @@ void ui_core::PushScissor(const Frect& r_tgt, bool overlapped)
 	result.rb.x 		= ClientToScreenScaledX(result.rb.x);
 	result.rb.y 		= ClientToScreenScaledY(result.rb.y);
 
-	Irect				r;
+	iRect				r;
 	r.x1 				= iFloor(result.x1);
 	r.x2 				= iFloor(result.x2+0.5f);
 	r.y1 				= iFloor(result.y1);
@@ -178,8 +179,8 @@ void ui_core::PopScissor()
 	if(m_Scissors.empty())
 		RCache.set_Scissor(NULL);
 	else{
-		const Frect& top= m_Scissors.top();
-		Irect tgt;
+		const fRect& top= m_Scissors.top();
+		iRect tgt;
 		tgt.lt.x 		= iFloor(ClientToScreenScaledX(top.lt.x));
 		tgt.lt.y 		= iFloor(ClientToScreenScaledY(top.lt.y));
 		tgt.rb.x 		= iFloor(ClientToScreenScaledX(top.rb.x));
@@ -214,7 +215,7 @@ void ui_core::pp_start()
 	m_bPostprocess		= true;
 
 	m_pp_scale_.set	(f32(::Render->getTarget()->get_width())/ f32(UI_BASE_WIDTH), f32(::Render->getTarget()->get_height())/ f32(UI_BASE_HEIGHT) );
-	m_2DFrustumPP.CreateFromRect(Frect().set(	0.0f,
+	m_2DFrustumPP.CreateFromRect(fRect().set(	0.0f,
 												0.0f,
 											 f32(::Render->getTarget()->get_width()),
 											 f32(::Render->getTarget()->get_height())

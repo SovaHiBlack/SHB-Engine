@@ -31,7 +31,7 @@
 		// Cached faces signature
 		CollisionAABB	FatBox;		//!< Box used when performing the query resulting in cached faces
 		// User settings
-		F32			FatCoeff;	//!< mRadius2 multiplier used to create a fat sphere
+		f32			FatCoeff;	//!< mRadius2 multiplier used to create a fat sphere
 	};
 
 	class OPCODE_API AABBCollider : public VolumeCollider

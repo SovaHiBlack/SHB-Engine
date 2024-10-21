@@ -211,7 +211,7 @@ void CWeaponStatMgun::cam_Update			(f32 dt, f32 fov)
 
 	Fvector d = C.k;
 	XFORM().transform_dir			(d);
-	Fvector2 des_cam_dir;
+	fVector2 des_cam_dir;
 
 	d.getHP(des_cam_dir.x, des_cam_dir.y);
 	des_cam_dir.mul(-1.0f);
@@ -252,7 +252,7 @@ void CWeaponStatMgun::Action				(int id, u32 flags)
 	}
 }
 
-void CWeaponStatMgun::SetParam			(int id, Fvector2 val)
+void CWeaponStatMgun::SetParam			(int id, fVector2 val)
 {
 	inheritedHolder::SetParam(id, val);
 	switch (id){

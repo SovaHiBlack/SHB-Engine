@@ -768,7 +768,6 @@
     <None Include="scripts\hide\level_news.script" />
     <None Include="scripts\hide\level_psy_antenna.script" />
     <None Include="scripts\hide\level_tips.script" />
-    <None Include="scripts\hide\lua_help.script" />
     <None Include="scripts\hide\memusage.script" />
     <None Include="scripts\hide\military_radio.script" />
     <None Include="scripts\hide\mil_tasks.script" />

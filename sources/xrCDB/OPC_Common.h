@@ -53,9 +53,9 @@
 		inline_				~CollisionAABB()					{}
 
 		//! Get component of the box's min point along a given axis
-		inline_	F32		GetMin(udword axis)		const		{ return ((const F32*)mCenter)[axis] - ((const F32*)mExtents)[axis];	}
+		inline_	f32		GetMin(udword axis)		const		{ return ((const f32*)mCenter)[axis] - ((const f32*)mExtents)[axis];	}
 		//! Get component of the box's max point along a given axis
-		inline_	F32		GetMax(udword axis)		const		{ return ((const F32*)mCenter)[axis] + ((const F32*)mExtents)[axis];	}
+		inline_	f32		GetMax(udword axis)		const		{ return ((const f32*)mCenter)[axis] + ((const f32*)mExtents)[axis];	}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -100,8 +100,8 @@
 		inline_				~CollisionFace()		{}
 
 				udword		mFaceID;				//!< Index of touched face
-				F32			mDistance;				//!< Distance from collider to hitpoint
-				F32			mU, mV;					//!< Impact barycentric coordinates
+				f32			mDistance;				//!< Distance from collider to hitpoint
+				f32			mU, mV;					//!< Impact barycentric coordinates
 	};
 
 	class OPCODE_API CollisionFaces : private Container

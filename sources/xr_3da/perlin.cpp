@@ -142,7 +142,7 @@ void CPerlinNoise2D::init()
 	}
 }
 
-f32 CPerlinNoise2D::noise(const Fvector2& vec)
+f32 CPerlinNoise2D::noise(const fVector2& vec)
 {
 	int bx0, bx1, by0, by1, b00, b10, b01, b11;
 	f32 rx0;
@@ -208,7 +208,7 @@ void CPerlinNoise2D::normalize(f32 v[2])
 
 f32 CPerlinNoise2D::Get(f32 x, f32 y)
 {
-	Fvector2 vec	= {x,y};
+	fVector2 vec	= {x,y};
 	f32 result	= 0.0f;
 	f32 amp		= mAmplitude;
 	vec[0]			*=mFrequency;

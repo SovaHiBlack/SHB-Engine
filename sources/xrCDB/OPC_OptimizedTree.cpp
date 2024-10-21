@@ -339,12 +339,12 @@ bool AABBNoLeafTree::Build(AABBTree* tree)
 													\
 	/* Compute quantization coeffs */				\
 	Point CQuantCoeff, EQuantCoeff;					\
-	CQuantCoeff.x = F32((1<<nbc)-1)/CMax.x;		\
-	CQuantCoeff.y = F32((1<<nbc)-1)/CMax.y;		\
-	CQuantCoeff.z = F32((1<<nbc)-1)/CMax.z;		\
-	EQuantCoeff.x = F32((1<<nbe)-1)/EMax.x;		\
-	EQuantCoeff.y = F32((1<<nbe)-1)/EMax.y;		\
-	EQuantCoeff.z = F32((1<<nbe)-1)/EMax.z;		\
+	CQuantCoeff.x = f32((1<<nbc)-1)/CMax.x;		\
+	CQuantCoeff.y = f32((1<<nbc)-1)/CMax.y;		\
+	CQuantCoeff.z = f32((1<<nbc)-1)/CMax.z;		\
+	EQuantCoeff.x = f32((1<<nbe)-1)/EMax.x;		\
+	EQuantCoeff.y = f32((1<<nbe)-1)/EMax.y;		\
+	EQuantCoeff.z = f32((1<<nbe)-1)/EMax.z;		\
 	/* Compute and save dequantization coeffs */	\
 	mCenterCoeff.x = 1.0f / CQuantCoeff.x;			\
 	mCenterCoeff.y = 1.0f / CQuantCoeff.y;			\
@@ -355,12 +355,12 @@ bool AABBNoLeafTree::Build(AABBTree* tree)
 
 #define PERFORM_QUANTIZATION														\
 	/* Quantize */																	\
-	((F32*)mNodes[i].mAABB.mCenter)[0] = sword(Nodes[i].mAABB.mCenter.x * CQuantCoeff.x);	\
-	((F32*)mNodes[i].mAABB.mCenter)[1] = sword(Nodes[i].mAABB.mCenter.y * CQuantCoeff.y);	\
-	((F32*)mNodes[i].mAABB.mCenter)[2] = sword(Nodes[i].mAABB.mCenter.z * CQuantCoeff.z);	\
-	((F32*)mNodes[i].mAABB.mExtents)[0] = uword(Nodes[i].mAABB.mExtents.x * EQuantCoeff.x);	\
-	((F32*)mNodes[i].mAABB.mExtents)[1] = uword(Nodes[i].mAABB.mExtents.y * EQuantCoeff.y);	\
-	((F32*)mNodes[i].mAABB.mExtents)[2] = uword(Nodes[i].mAABB.mExtents.z * EQuantCoeff.z);	\
+	((f32*)mNodes[i].mAABB.mCenter)[0] = sword(Nodes[i].mAABB.mCenter.x * CQuantCoeff.x);	\
+	((f32*)mNodes[i].mAABB.mCenter)[1] = sword(Nodes[i].mAABB.mCenter.y * CQuantCoeff.y);	\
+	((f32*)mNodes[i].mAABB.mCenter)[2] = sword(Nodes[i].mAABB.mCenter.z * CQuantCoeff.z);	\
+	((f32*)mNodes[i].mAABB.mExtents)[0] = uword(Nodes[i].mAABB.mExtents.x * EQuantCoeff.x);	\
+	((f32*)mNodes[i].mAABB.mExtents)[1] = uword(Nodes[i].mAABB.mExtents.y * EQuantCoeff.y);	\
+	((f32*)mNodes[i].mAABB.mExtents)[2] = uword(Nodes[i].mAABB.mExtents.z * EQuantCoeff.z);	\
 	/* Fix quantized boxes */														\
 	if(gFixQuantized)																\
 	{																				\
@@ -370,18 +370,18 @@ bool AABBNoLeafTree::Build(AABBTree* tree)
 		/* For each axis */															\
 		for(udword j=0;j<3;j++)														\
 		{	/* Dequantize the box center */											\
-			F32 qc = F32(((F32*)mNodes[i].mAABB.mCenter)[j]) * ((F32*)mCenterCoeff)[j];			\
+			f32 qc = f32(((f32*)mNodes[i].mAABB.mCenter)[j]) * ((f32*)mCenterCoeff)[j];			\
 			bool FixMe=true;														\
 			do																		\
 			{	/* Dequantize the box extent */										\
-				F32 qe = F32(((F32*)mNodes[i].mAABB.mExtents)[j]) * ((F32*)mExtentsCoeff)[j];	\
+				f32 qe = f32(((f32*)mNodes[i].mAABB.mExtents)[j]) * ((f32*)mExtentsCoeff)[j];	\
 				/* Compare real & dequantized values */								\
-				if(qc+qe<((F32*)Max)[j] || qc-qe>((F32*)Min)[j])	((F32*)mNodes[i].mAABB.mExtents)[j]++;	\
+				if(qc+qe<((f32*)Max)[j] || qc-qe>((f32*)Min)[j])	((f32*)mNodes[i].mAABB.mExtents)[j]++;	\
 				else								FixMe=false;					\
 				/* Prevent wrapping */												\
-				if(!((F32*)mNodes[i].mAABB.mExtents)[j])									\
+				if(!((f32*)mNodes[i].mAABB.mExtents)[j])									\
 				{																	\
-					((F32*)mNodes[i].mAABB.mExtents)[j]=0xffff;								\
+					((f32*)mNodes[i].mAABB.mExtents)[j]=0xffff;								\
 					FixMe=false;													\
 				}																	\
 			}while(FixMe);															\

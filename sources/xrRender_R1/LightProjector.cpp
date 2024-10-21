@@ -333,7 +333,8 @@ void CLightProjector::render	()
 	// Debug
 	{
 		// UV
-		Fvector2				p0,p1;
+		fVector2				p0;
+		fVector2				p1;
 		p0.set					(.5f/P_rt_size, .5f/P_rt_size);
 		p1.set					((P_rt_size+.5f)/P_rt_size, (P_rt_size+.5f)/P_rt_size);
 		

@@ -40,7 +40,7 @@ DEFINE_VECTOR(SChooseItem,ChooseItemVec,ChooseItemVecIt);
 // typedef
 typedef fastdelegate::FastDelegate2<ChooseItemVec&,void*>	   	TOnChooseFillItems;
 typedef fastdelegate::FastDelegate2<SChooseItem*, PropItemVec&>	TOnChooseSelectItem;
-typedef fastdelegate::FastDelegate3<pcstr, HDC, const Irect&> 	TOnDrawThumbnail;
+typedef fastdelegate::FastDelegate3<pcstr, HDC, const iRect&> 	TOnDrawThumbnail;
 typedef fastdelegate::FastDelegate0<>						   	TOnChooseClose;
 
 typedef void (*TOnChooseFillEvents)();

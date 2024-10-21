@@ -73,7 +73,7 @@ public:
 	void						iRelease					( IInputReceiver *pc );
 	BOOL						iGetAsyncKeyState			( int dik );
 	BOOL						iGetAsyncBtnState			( int btn );
-	void						iGetLastMouseDelta			( Ivector2& p )	{ p.set(offs[0],offs[1]); }
+	void						iGetLastMouseDelta			(iVector2& p )	{ p.set(offs[0],offs[1]); }
 
 	CInput						( BOOL bExclusive = true, int deviceForInit = default_key);
 	~CInput						( );

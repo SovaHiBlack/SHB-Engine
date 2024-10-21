@@ -121,9 +121,9 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 
 		.def("give_info_portion",			&CScriptGameObject::GiveInfoPortion)
 		.def("disable_info_portion",		&CScriptGameObject::DisableInfoPortion)
-		.def("give_game_news",				(bool (CScriptGameObject::*)(pcstr, pcstr,Frect,int,int))(&CScriptGameObject::GiveGameNews))
+		.def("give_game_news",				(bool (CScriptGameObject::*)(pcstr, pcstr, fRect,int,int))(&CScriptGameObject::GiveGameNews))
 
-		.def("give_talk_message",			(void (CScriptGameObject::*)(pcstr, pcstr,Frect, pcstr))(&CScriptGameObject::AddIconedTalkMessage))
+		.def("give_talk_message",			(void (CScriptGameObject::*)(pcstr, pcstr, fRect, pcstr))(&CScriptGameObject::AddIconedTalkMessage))
 		
 
 		.def("has_info",					&CScriptGameObject::HasInfo)

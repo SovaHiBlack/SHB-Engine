@@ -15,7 +15,7 @@ struct SBinocVisibleObj{
 	CUIStatic				m_lb;
 	CUIStatic				m_rt;
 	CUIStatic				m_rb;
-	Frect					cur_rect;
+	fRect					cur_rect;
 
 	f32					m_upd_speed;
 	Flags8					m_flags;

@@ -54,7 +54,7 @@ using namespace IceMaths;
 // WARNING: not inlined
 //Point::operator HPoint() const	{ return HPoint(x, y, z, 0.0f); }
 
-Point& Point::Refract(const Point& eye, const Point& n, F32 refractindex, Point& refracted)
+Point& Point::Refract(const Point& eye, const Point& n, f32 refractindex, Point& refracted)
 {
 	//	Point EyePt = eye position
 	//	Point p = current vertex
@@ -66,8 +66,8 @@ Point& Point::Refract(const Point& eye, const Point& n, F32 refractindex, Point&
 	Env.y = eye.y - y;
 	Env.z = eye.z - z;
 
-	F32 NDotE = n|Env;
-	F32 NDotN = n|n;
+	f32 NDotE = n|Env;
+	f32 NDotN = n|n;
 	NDotE /= refractindex;
 
 	// Refracted vector3
@@ -92,8 +92,8 @@ Point& Point::Unfold(Plane& p, Point& a, Point& b)
 	Plane TriPlane(a, b, v);
 
 	// Compute rotation angle
-	F32 CosAngle = p.n|TriPlane.n;
-	F32 Angle = acosf(CosAngle);
+	f32 CosAngle = p.n|TriPlane.n;
+	f32 Angle = acosf(CosAngle);
 	if(FastFabs(Angle)<EPSILON_4)	return *this;	// Point is already on plane // ## project
 
 	// Rotate around (a,b)
@@ -105,9 +105,9 @@ Point& Point::Unfold(Plane& p, Point& a, Point& b)
 	// 2) Rotate so that rotation axis = Z axis
 	Matrix3x3 M;
 	Point Axis = (p1t - p0t).Normalize();
-	F32 DpX = FastFabs(Axis.x);
-	F32 DpY = FastFabs(Axis.y);
-	F32 DpZ = FastFabs(Axis.z);
+	f32 DpX = FastFabs(Axis.x);
+	f32 DpY = FastFabs(Axis.y);
+	f32 DpZ = FastFabs(Axis.z);
 			if(FastFabs((Axis|Point(0.0f, 0.0f, 1.0f)) - 1.0f) < EPSILON_4)	M.Identity();
 	else	if(FastFabs((Axis|Point(0.0f, 0.0f, 1.0f)) + 1.0f) < EPSILON_4)	{ M.Identity(); Angle = -Angle; }
 	else																	M.MapToZ(Axis);
@@ -184,9 +184,9 @@ Point& Point::Transform(const Point& r, const Matrix3x3& rotpos, const Point& li
 
 Point& Point::InvTransform(const Point& r, const Matrix3x3& rotpos, const Point& linpos)
 {
-	F32 sx = r.x - linpos.x;
-	F32 sy = r.y - linpos.y;
-	F32 sz = r.z - linpos.z;
+	f32 sx = r.x - linpos.x;
+	f32 sy = r.y - linpos.y;
+	f32 sz = r.z - linpos.z;
 	x = sx * rotpos.m[0][0] + sy * rotpos.m[1][0] + sz * rotpos.m[2][0];
 	y = sx * rotpos.m[0][1] + sy * rotpos.m[1][1] + sz * rotpos.m[2][1];
 	z = sx * rotpos.m[0][2] + sy * rotpos.m[1][2] + sz * rotpos.m[2][2];

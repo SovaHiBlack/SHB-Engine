@@ -17,7 +17,7 @@ struct SThunderboltDesc
 	struct SFlare
 	{
 		f32					fOpacity;
-		Fvector2				fRadius;
+		fVector2				fRadius;
 		shared_str				texture;
 		shared_str				shader;
 		ref_shader				hShader;
@@ -79,7 +79,7 @@ private:
 	BOOL						bEnabled;
 
 	// params
-	Fvector2					p_var_alt;
+	fVector2					p_var_alt;
 	f32						p_var_long;
 	f32						p_min_dist;
 	f32						p_tilt;

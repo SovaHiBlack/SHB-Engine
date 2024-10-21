@@ -44,6 +44,6 @@ public:
 	CUIWpnParams* UIWpnParams;
 	CUIArtefactParams* UIArtefactParams;
 
-	Fvector2			UIItemImageSize;
+	fVector2			UIItemImageSize;
 	CUIStatic* UIItemImage;
 };

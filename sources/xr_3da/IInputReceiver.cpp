@@ -15,7 +15,7 @@ void	IInputReceiver::IR_Release						(void)
 	pInput->iRelease(this);
 }
 
-void	IInputReceiver::IR_GetLastMouseDelta			(Ivector2& p)
+void	IInputReceiver::IR_GetLastMouseDelta			(iVector2& p)
 {
 	VERIFY(pInput);
 	pInput->iGetLastMouseDelta( p );
@@ -47,25 +47,25 @@ BOOL IInputReceiver::IR_GetBtnState(int btn)
 	return pInput->iGetAsyncBtnState(btn);
 }
 
-void	IInputReceiver::IR_GetMousePosScreen			(Ivector2& p)
+void	IInputReceiver::IR_GetMousePosScreen			(iVector2& p)
 {
 	GetCursorPos((LPPOINT)&p);
 }
 
-void	IInputReceiver::IR_GetMousePosReal				(HWND hwnd, Ivector2 &p)
+void	IInputReceiver::IR_GetMousePosReal				(HWND hwnd, iVector2& p)
 {
 	IR_GetMousePosScreen(p);
 	if (hwnd) ScreenToClient(hwnd,(LPPOINT)&p);
 }
 
-void	IInputReceiver::IR_GetMousePosReal				(Ivector2 &p)
+void	IInputReceiver::IR_GetMousePosReal				(iVector2& p)
 {
 	IR_GetMousePosReal(Device.m_hWnd,p);
 }
 
 void	IInputReceiver::IR_GetMousePosIndependent		(Fvector2 &f)
 {
-	Ivector2 p;
+	iVector2 p;
 	IR_GetMousePosReal(p);
 	f.set(
 		2.f* f32(p.x)/ f32(Device.dwWidth)-1.f,

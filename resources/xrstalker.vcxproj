@@ -637,7 +637,6 @@
     <None Include="Scripts\level_psy_antenna.script" />
     <None Include="scripts\level_tasks.script" />
     <None Include="Scripts\level_weathers.script" />
-    <None Include="scripts\lua_help.script" />
     <None Include="scripts\memusage.script" />
     <None Include="Scripts\mil_tasks.script" />
     <None Include="Scripts\mil_test.script" />

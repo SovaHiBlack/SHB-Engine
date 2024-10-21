@@ -47,7 +47,7 @@ void CUIItemInfo::Init(pcstr xml_name)
 
 	if (uiXml.NavigateToNode("main_frame", 0))
 	{
-		Frect wnd_rect;
+		fRect wnd_rect;
 		wnd_rect.x1 = uiXml.ReadAttribFlt("main_frame", 0, "x", 0);
 		wnd_rect.y1 = uiXml.ReadAttribFlt("main_frame", 0, "y", 0);
 
@@ -201,7 +201,7 @@ void CUIItemInfo::InitItem(CInventoryItem* pInvItem)
 		UIItemImage->TextureOn( );
 		UIItemImage->ClipperOn( );
 		UIItemImage->SetStretchTexture(true);
-		Frect v_r = { 0.0f, 0.0f, f32(iGridWidth * INV_GRID_WIDTH), f32(iGridHeight * INV_GRID_HEIGHT) };
+		fRect v_r = { 0.0f, 0.0f, f32(iGridWidth * INV_GRID_WIDTH), f32(iGridHeight * INV_GRID_HEIGHT) };
 		if (UI( )->is_16_9_mode( ))
 		{
 			v_r.x2 /= 1.328f;

@@ -51,9 +51,9 @@ bool CScriptGameObject::DisableInfoPortion(pcstr info_id)
 	return true;
 }
 
-void _AddIconedTalkMessage(pcstr text, pcstr texture_name, const Frect& tex_rect, pcstr templ_name);
+void _AddIconedTalkMessage(pcstr text, pcstr texture_name, const fRect& tex_rect, pcstr templ_name);
 
-void  CScriptGameObject::AddIconedTalkMessage		(pcstr text, pcstr texture_name, Frect tex_rect, pcstr templ_name)
+void  CScriptGameObject::AddIconedTalkMessage		(pcstr text, pcstr texture_name, fRect tex_rect, pcstr templ_name)
 {
 	return _AddIconedTalkMessage	(text,
 									texture_name, 
@@ -61,7 +61,7 @@ void  CScriptGameObject::AddIconedTalkMessage		(pcstr text, pcstr texture_name, 
 									templ_name); 
 }
 
-void _AddIconedTalkMessage(pcstr text, pcstr texture_name, const Frect& tex_rect, pcstr templ_name)
+void _AddIconedTalkMessage(pcstr text, pcstr texture_name, const fRect& tex_rect, pcstr templ_name)
 {
 	CUIGame* pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
 	if(!pGame) return;
@@ -70,9 +70,9 @@ void _AddIconedTalkMessage(pcstr text, pcstr texture_name, const Frect& tex_rect
 		pGame->TalkMenu->AddIconedMessage(text, texture_name, tex_rect, templ_name?templ_name:"iconed_answer_item" );
 }
 
-bool _give_news	(pcstr news, pcstr texture_name, const Frect& tex_rect, int delay, int show_time);
+bool _give_news	(pcstr news, pcstr texture_name, const fRect& tex_rect, int delay, int show_time);
 
-bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, Frect tex_rect, int delay, int show_time)
+bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, fRect tex_rect, int delay, int show_time)
 {
 	return _give_news				(news,
 									texture_name, 
@@ -81,7 +81,7 @@ bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, Frect te
 									show_time);
 }
 
-bool _give_news	(pcstr text, pcstr texture_name, const Frect& tex_rect, int delay, int show_time)
+bool _give_news	(pcstr text, pcstr texture_name, const fRect& tex_rect, int delay, int show_time)
 {
 	GAME_NEWS_DATA				news_data;
 	news_data.news_text			= text;

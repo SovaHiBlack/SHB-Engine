@@ -89,7 +89,7 @@ void CUIInteractiveBackground<T>::Init(pcstr texture_e, f32 x, f32 y, f32 width,
 
 template <class T>
 T*	 CUIInteractiveBackground<T>::CreateE(){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 	if (!m_stateEnabled)
 	{
 		m_stateEnabled = xr_new<T>();
@@ -103,7 +103,7 @@ T*	 CUIInteractiveBackground<T>::CreateE(){
 
 template <class T>
 T*	 CUIInteractiveBackground<T>::CreateD(){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 	if (!m_stateDisabled)
 	{
 		m_stateDisabled = xr_new<T>();
@@ -116,7 +116,7 @@ T*	 CUIInteractiveBackground<T>::CreateD(){
 
 template <class T>
 T*	 CUIInteractiveBackground<T>::CreateT(){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 	if (!m_stateTouched)
 	{
 		m_stateTouched = xr_new<T>();
@@ -129,7 +129,7 @@ T*	 CUIInteractiveBackground<T>::CreateT(){
 
 template <class T>
 T*	 CUIInteractiveBackground<T>::CreateH(){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 	if (!m_stateHighlighted)
 	{
 		m_stateHighlighted = xr_new<T>();
@@ -142,7 +142,7 @@ T*	 CUIInteractiveBackground<T>::CreateH(){
 
 template <class T>
 T*	 CUIInteractiveBackground<T>::GetE(){
-    return m_stateEnabled;
+	return m_stateEnabled;
 }
 
 template <class T>
@@ -162,7 +162,7 @@ T*	 CUIInteractiveBackground<T>::GetH(){
 
 template <class T>
 void CUIInteractiveBackground<T>::InitEnabledState(pcstr texture_e){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 
 	if (!m_stateEnabled)
 	{
@@ -178,7 +178,7 @@ void CUIInteractiveBackground<T>::InitEnabledState(pcstr texture_e){
 
 template <class T>
 void CUIInteractiveBackground<T>::InitDisabledState(pcstr texture_d){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 
 	if (!m_stateDisabled)
 	{
@@ -192,8 +192,8 @@ void CUIInteractiveBackground<T>::InitDisabledState(pcstr texture_d){
 
 template <class T>
 void CUIInteractiveBackground<T>::InitHighlightedState(pcstr texture_h){
-	Frect r = GetWndRect();
-    
+	fRect r = GetWndRect();
+	
 	if (!m_stateHighlighted)
 	{
 		m_stateHighlighted = xr_new<T>();
@@ -206,9 +206,9 @@ void CUIInteractiveBackground<T>::InitHighlightedState(pcstr texture_h){
 
 template <class T>
 void CUIInteractiveBackground<T>::InitTouchedState(pcstr texture_d){
-	Frect r = GetWndRect();
+	fRect r = GetWndRect();
 
-    if (!m_stateTouched)
+	if (!m_stateTouched)
 	{
 		m_stateTouched = xr_new<T>();
 		m_stateTouched->SetAutoDelete(true);
@@ -239,7 +239,7 @@ void CUIInteractiveBackground<T>::SetState(UIState state){
 template <class T>
 void CUIInteractiveBackground<T>::Draw(){
 	if (m_stateCurrent)
-        m_stateCurrent->Draw();
+		m_stateCurrent->Draw();
 }
 
 template <class T>

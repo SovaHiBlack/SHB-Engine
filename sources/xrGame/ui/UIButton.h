@@ -63,9 +63,9 @@ public:
 	void				SetPressMode			(E_PRESS_MODE ePressMode)	{m_ePressMode = ePressMode;}
 	E_PRESS_MODE		GetPressMode			()							{return m_ePressMode;}
 	
-	void				SetPushOffset			(const Fvector2& offset)	{m_PushOffset = offset;}
-	Fvector2			GetPushOffset			()							{return m_PushOffset;}
-	void				SetShadowOffset			(const Fvector2& offset) { m_ShadowOffset = offset; }
+	void				SetPushOffset			(const fVector2& offset)	{m_PushOffset = offset;}
+	fVector2			GetPushOffset			()							{return m_PushOffset;}
+	void				SetShadowOffset			(const fVector2& offset) { m_ShadowOffset = offset; }
 	shared_str			m_hint_text;
 protected:
 	
@@ -73,9 +73,9 @@ protected:
 	bool				m_bIsSwitch;
 	bool				m_bButtonClicked;
 	E_PRESS_MODE		m_ePressMode;
-	Fvector2			m_PushOffset;
+	fVector2			m_PushOffset;
 	int					m_uAccelerator[2];
-	Fvector2			m_ShadowOffset;
+	fVector2			m_ShadowOffset;
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

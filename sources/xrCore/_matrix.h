@@ -541,12 +541,12 @@ public:
 		dest.y = v.x * _12 + v.y * _22 + v.z * _32 + _42;
 		dest.z = v.x * _13 + v.y * _23 + v.z * _33 + _43;
 	}
-	ICF	void	transform_tiny32(Fvector2& dest, const Tvector& v)	const // preferred to use
+	ICF	void	transform_tiny32(fVector2& dest, const Tvector& v)	const // preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21 + v.z * _31 + _41;
 		dest.y = v.x * _12 + v.y * _22 + v.z * _32 + _42;
 	}
-	ICF	void	transform_tiny23(Tvector& dest, const Fvector2& v)	const // preferred to use
+	ICF	void	transform_tiny23(Tvector& dest, const fVector2& v)	const // preferred to use
 	{
 		dest.x = v.x * _11 + v.y * _21 + _41;
 		dest.y = v.x * _12 + v.y * _22 + _42;
