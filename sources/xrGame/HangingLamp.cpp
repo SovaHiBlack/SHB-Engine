@@ -58,7 +58,7 @@ void CHangingLamp::Center	(Fvector& C) const
 
 f32 CHangingLamp::Radius	() const
 { 
-	return (renderable.visual)?renderable.visual->vis.sphere.R:EPS;
+	return (renderable.visual)?renderable.visual->vis.sphere.R: EPSILON_5;
 }
 
 void CHangingLamp::Load		(pcstr section)

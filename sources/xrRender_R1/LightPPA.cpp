@@ -65,7 +65,7 @@ void CLightR_Manager::render_point	()
 
 		// Culling
 		if (PPL.range<0.05f)														continue;
-		if (PPL.color.magnitude_sqr_rgb()<EPS)										continue;
+		if (PPL.color.magnitude_sqr_rgb()<EPSILON_5)										continue;
 		f32	alpha		= Device.vCameraPosition.distance_to(PPL.position)/MAX_DISTANCE;
 		if (alpha>=1)																continue;
 		if (!RImplementation.ViewBase.testSphere_dirty (PPL.position,PPL.range))	continue;
@@ -154,7 +154,7 @@ void CLightR_Manager::render_point	()
 		//		0. Dimm & Clip
 		f32	lc_dist				= lc_COP.distance_to	(L->spatial.sphere.P) - L->spatial.sphere.R;
 		f32	lc_scale			= 1 - lc_dist/lc_limit;
-		if		(lc_scale<EPS)		continue;
+		if		(lc_scale< EPSILON_5)		continue;
 		if		(L->range<0.01f)	continue;
 
 		//		1. Calculate light frustum
@@ -227,7 +227,7 @@ void CLightR_Manager::render_spot	()
 		//		0. Dimm & Clip
 		f32	lc_dist				= lc_COP.distance_to	(L->spatial.sphere.P) - L->spatial.sphere.R;
 		f32	lc_scale			= 1 - lc_dist/lc_limit;
-		if		(lc_scale<EPS)		continue;
+		if		(lc_scale< EPSILON_5)		continue;
 
 		//		1. Calculate light frustum
 		Fvector						L_dir,L_up,L_right,L_pos;

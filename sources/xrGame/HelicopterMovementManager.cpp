@@ -347,7 +347,7 @@ void SHeliMovementState::goByRoundPath(Fvector center_, f32 radius_, bool clockw
 	CPatrolPath* pp = xr_new<CPatrolPath>("heli_round_path");
 
 	f32 start_h	= 0.0f;
-	f32 end_h		= PI_MUL_2-EPS;
+	f32 end_h		= PI_MUL_2- EPSILON_5;
 
 	xr_vector<STmpPt> round_points;
 	xr_vector<STmpPt>::iterator it,it_e;

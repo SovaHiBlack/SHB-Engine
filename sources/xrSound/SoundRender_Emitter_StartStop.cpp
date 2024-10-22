@@ -19,7 +19,7 @@ void CSoundRender_Emitter::start(ref_sound* _owner, BOOL _loop, f32 delay)
 	p_source.freq			= 1.f;
 	p_source.max_ai_distance= source->m_fMaxAIDist;	// 300.f;
 
-    if (fis_zero(delay,EPS_L)){
+    if (fis_zero(delay, EPSILON_3)){
 		state				= _loop?stStartingLooped:stStarting;
     }else{
 		state				= _loop?stStartingLoopedDelayed:stStartingDelayed;

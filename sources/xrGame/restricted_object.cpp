@@ -119,7 +119,7 @@ u32	CRestrictedObject::accessible_nearest	(const Fvector &position, Fvector &res
 bool CRestrictedObject::accessible			(const Fvector &position) const
 {
 	START_PROFILE("Restricted Object/Accessible");
-	return						(accessible(position,EPS_L));
+	return						(accessible(position, EPSILON_3));
 	STOP_PROFILE;
 }
 
@@ -137,7 +137,7 @@ bool CRestrictedObject::accessible			(u32 level_vertex_id) const
 {
 	START_PROFILE("Restricted Object/Accessible");
 	VERIFY						(ai().level_graph().valid_vertex_id(level_vertex_id));
-	return						(accessible(level_vertex_id,EPS_L));
+	return						(accessible(level_vertex_id, EPSILON_3));
 	STOP_PROFILE;
 }
 

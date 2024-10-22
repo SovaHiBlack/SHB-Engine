@@ -52,7 +52,7 @@ void CRadioactiveZone::Affect(SZoneObjectInfo* O)
 		Fvector position_in_bone_space;
 		f32 power = Power(GO->Position().distance_to(pos));
 		f32 impulse = 0.f;
-		if(power > EPS) 
+		if(power > EPSILON_5)
 		{
 //.			m_dwDeltaTime = 0;
 			position_in_bone_space.set(0.f,0.f,0.f);

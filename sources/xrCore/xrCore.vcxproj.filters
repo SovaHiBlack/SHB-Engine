@@ -255,7 +255,7 @@
     <ClInclude Include="_obb.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_plane.h">
+    <ClInclude Include="_plane3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_plane2.h">
@@ -277,9 +277,6 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_vector2.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="_vector3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_vector4.h">
@@ -454,6 +451,7 @@
     <ClInclude Include="_constants.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="_vector3d.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="FileSystem.h">
@@ -479,5 +477,6 @@
     <None Include="rt_lzo1x_d.ch">
       <Filter>Compression\lzo</Filter>
     </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

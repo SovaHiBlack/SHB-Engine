@@ -271,7 +271,7 @@ BOOL CSE_ALifeItem::Net_Relevant			()
 	if (attached())
 		return					(false);
 
-	if (!m_physics_disabled && !fis_zero(State.linear_vel.square_magnitude(),EPS_L))
+	if (!m_physics_disabled && !fis_zero(State.linear_vel.square_magnitude(), EPSILON_3))
 		return					(true);
 
 #ifdef XRGAME_EXPORTS

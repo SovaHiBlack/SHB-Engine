@@ -145,7 +145,7 @@ public:
 	{
 		x = _abs(v.x); y = _abs(v.y); z = _abs(v.z);							return *this;
 	}
-	ICF BOOL	similar(const Self& v, T E = EPS_L) const
+	ICF BOOL	similar(const Self& v, T E = EPSILON_3) const
 	{
 		return _abs(x - v.x) < E && _abs(y - v.y) < E && _abs(z - v.z) < E;
 	};

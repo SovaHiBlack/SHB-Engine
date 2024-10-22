@@ -178,7 +178,7 @@ BOOL  CBulletManager::firetrace_callback(collide::rq_result& result, LPVOID para
 		
 
 		SGameMtl* mtl = GMLib.GetMaterialByIdx(hit_material_idx);
-		if( fsimilar(mtl->fShootFactor,1.0f,EPS) )//Если материал полностью простреливаемый
+		if( fsimilar(mtl->fShootFactor,1.0f, EPSILON_5) )//Если материал полностью простреливаемый
 		{
 			pData->bStopTracing		= false;
 		}else
@@ -411,7 +411,7 @@ std::pair<f32, f32>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvector& 
 	int bullet_state		= 0;
 #endif
 
-	if (fsimilar(mtl->fShootFactor,1.0f,EPS))//Если материал полностью простреливаемый, то
+	if (fsimilar(mtl->fShootFactor,1.0f, EPSILON_5))//Если материал полностью простреливаемый, то
 	{
 		#ifdef DEBUG
 		bullet_state = 2;
@@ -472,7 +472,7 @@ std::pair<f32, f32>  CBulletManager::ObjectHit	(SBullet* bullet, const Fvector& 
 		energy_lost = 1.f - bullet->speed/old_speed;
 		impulse = bullet->hit_impulse*speed_factor*energy_lost;
 		
-		bullet->pos.mad(bullet->pos,bullet->dir,EPS);//fake
+		bullet->pos.mad(bullet->pos,bullet->dir, EPSILON_5);//fake
 		//ввести коэффициент случайности при простреливании
 		Fvector rand_normal;
 		rand_normal.random_dir(bullet->dir, deg2rad(5.f)*energy_lost, Random);

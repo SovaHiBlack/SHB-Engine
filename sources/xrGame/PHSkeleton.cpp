@@ -196,8 +196,8 @@ void CPHSkeleton::SaveNetState(NET_Packet& P)
 		if(p.z>max.z)max.z=p.z;
 	}
 
-	min.sub(2.f*EPS_L);
-	max.add(2.f*EPS_L);
+	min.sub(2.f* EPSILON_3);
+	max.add(2.f* EPSILON_3);
 
 	P.w_vec3(min);
 	P.w_vec3(max);

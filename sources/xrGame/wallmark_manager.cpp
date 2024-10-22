@@ -149,7 +149,7 @@ void CWalmarkManager::StartWorkflow()
 			continue;
 		}
 */
-		f32 test					= dist-EPS_L;
+		f32 test					= dist- EPSILON_3;
 		
 		if(test>0.f)
 		{

@@ -94,7 +94,7 @@ void CRender::render_main	(Fmatrix&	m_ViewProjection, bool _fportals)
 				light*			L				= (light*)	(spatial->dcast_Light());
 				VERIFY							(L);
 				f32	lod		= L->get_LOD	();
-				if (lod>EPS_L)	{
+				if (lod> EPSILON_3)	{
 					vis_data&		vis		= L->get_homdata	( );
 					if	(HOM.visible(vis))	Lights.add_light	(L);
 				}
@@ -176,10 +176,10 @@ void CRender::render_menu	()
 	p1.set							((_w+.5f)/_w, (_h+.5f)/_h );
 
 	FVF::TL* pv						= (FVF::TL*) RCache.Vertex.Lock	(4,Target->g_menu->vb_stride,Offset);
-	pv->set							(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
-	pv->set							(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-	pv->set							(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-	pv->set							(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+	pv->set							(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+	pv->set							(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
+	pv->set							(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+	pv->set							(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 	RCache.Vertex.Unlock			(4,Target->g_menu->vb_stride);
 	RCache.Render					(D3DPT_TRIANGLELIST,Offset,0,4,0,2);
 }
@@ -201,7 +201,7 @@ void CRender::Render		()
 	// Configure
 	RImplementation.o.distortion				= FALSE;		// disable distorion
 	Fcolor					sun_color			= ((light*)Lights.sun_adapted._get())->color;
-	BOOL					bSUN				= ps_r2_ls_flags.test(R2FLAG_SUN) && (u_diffuse2s(sun_color.r,sun_color.g,sun_color.b)>EPS);
+	BOOL					bSUN				= ps_r2_ls_flags.test(R2FLAG_SUN) && (u_diffuse2s(sun_color.r,sun_color.g,sun_color.b)> EPSILON_5);
 	if (o.sunstatic)		bSUN				= FALSE;
 	// Msg						("sstatic: %s, sun: %s",o.sunstatic?"true":"false", bSUN?"true":"false");
 

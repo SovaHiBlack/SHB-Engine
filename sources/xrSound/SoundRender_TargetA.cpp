@@ -144,7 +144,7 @@ void	CSoundRender_TargetA::fill_parameters()
     }
 
 	VERIFY2(pEmitter,SE->source->file_name());
-	f32	_pitch	= pEmitter->p_source.freq;			clamp	(_pitch,EPS_L,2.f);
+	f32	_pitch	= pEmitter->p_source.freq;			clamp	(_pitch, EPSILON_3,2.f);
     if (!fsimilar(_pitch,cache_pitch)){
         cache_pitch	= _pitch;
         A_CHK(alSourcef	(pSource, AL_PITCH,				_pitch));

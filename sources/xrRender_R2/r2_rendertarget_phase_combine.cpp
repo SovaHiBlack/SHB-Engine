@@ -70,7 +70,7 @@ void	CRenderTarget::phase_combine	()
 		const f32 minamb			= 0.001f;
 		Fvector4	ambclr			= { _max(envdesc.ambient.x*2,minamb),	_max(envdesc.ambient.y*2,minamb),			_max(envdesc.ambient.z*2,minamb),	0	};
 					ambclr.mul		(ps_r2_sun_lumscale_amb);
-		Fvector4	envclr			= { envdesc.sky_color.x*2+EPS,	envdesc.sky_color.y*2+EPS,	envdesc.sky_color.z*2+EPS,	envdesc.weight					};
+		Fvector4	envclr			= { envdesc.sky_color.x*2+ EPSILON_5,	envdesc.sky_color.y*2+ EPSILON_5,	envdesc.sky_color.z*2+ EPSILON_5,	envdesc.weight					};
 		Fvector4	fogclr			= { envdesc.fog_color.x,	envdesc.fog_color.y,	envdesc.fog_color.z,		0	};
 					envclr.x		*= 2*ps_r2_sun_lumscale_hemi; 
 					envclr.y		*= 2*ps_r2_sun_lumscale_hemi; 
@@ -99,10 +99,10 @@ void	CRenderTarget::phase_combine	()
 
 		// Fill vertex buffer
 		Fvector4* pv				= (Fvector4*)	RCache.Vertex.Lock	(4,g_combine_VP->vb_stride,Offset);
-		pv->set						(hclip(EPS,		_w),	hclip(_h+EPS,	_h),	p0.x, p1.y);	pv++;
-		pv->set						(hclip(EPS,		_w),	hclip(EPS,		_h),	p0.x, p0.y);	pv++;
-		pv->set						(hclip(_w+EPS,	_w),	hclip(_h+EPS,	_h),	p1.x, p1.y);	pv++;
-		pv->set						(hclip(_w+EPS,	_w),	hclip(EPS,		_h),	p1.x, p0.y);	pv++;
+		pv->set						(hclip(EPSILON_5,		_w),	hclip(_h+ EPSILON_5,	_h),	p0.x, p1.y);	pv++;
+		pv->set						(hclip(EPSILON_5,		_w),	hclip(EPSILON_5,		_h),	p0.x, p0.y);	pv++;
+		pv->set						(hclip(_w+ EPSILON_5,	_w),	hclip(_h+ EPSILON_5,	_h),	p1.x, p1.y);	pv++;
+		pv->set						(hclip(_w+ EPSILON_5,	_w),	hclip(EPSILON_5,		_h),	p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_VP->vb_stride);
 
 		// Setup textures
@@ -189,10 +189,10 @@ void	CRenderTarget::phase_combine	()
 
 		// Fill vertex buffer
 		v_aa* pv					= (v_aa*) RCache.Vertex.Lock	(4,g_aa_AA->vb_stride,Offset);
-		pv->p.set(EPS, f32(_h+EPS),	EPS,1.f); pv->uv0.set(p0.x, p1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh);pv->uv5.set(p0.x-ddw,p1.y,p1.y,p0.x+ddw);pv->uv6.set(p0.x,p1.y-ddh,p1.y+ddh,p0.x);pv++;
-		pv->p.set(EPS,			EPS,			EPS,1.f); pv->uv0.set(p0.x, p0.y);pv->uv1.set(p0.x-ddw,p0.y-ddh);pv->uv2.set(p0.x+ddw,p0.y+ddh);pv->uv3.set(p0.x+ddw,p0.y-ddh);pv->uv4.set(p0.x-ddw,p0.y+ddh);pv->uv5.set(p0.x-ddw,p0.y,p0.y,p0.x+ddw);pv->uv6.set(p0.x,p0.y-ddh,p0.y+ddh,p0.x);pv++;
-		pv->p.set(f32(_w+EPS), f32(_h+EPS),	EPS,1.f); pv->uv0.set(p1.x, p1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh);pv->uv5.set(p1.x-ddw,p1.y,p1.y,p1.x+ddw);pv->uv6.set(p1.x,p1.y-ddh,p1.y+ddh,p1.x);pv++;
-		pv->p.set(f32(_w+EPS),EPS,			EPS,1.f); pv->uv0.set(p1.x, p0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh);pv->uv5.set(p1.x-ddw,p0.y,p0.y,p1.x+ddw);pv->uv6.set(p1.x,p0.y-ddh,p0.y+ddh,p1.x);pv++;
+		pv->p.set(EPSILON_5, f32(_h+ EPSILON_5), EPSILON_5,1.f); pv->uv0.set(p0.x, p1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh);pv->uv5.set(p0.x-ddw,p1.y,p1.y,p0.x+ddw);pv->uv6.set(p0.x,p1.y-ddh,p1.y+ddh,p0.x);pv++;
+		pv->p.set(EPSILON_5, EPSILON_5, EPSILON_5,1.f); pv->uv0.set(p0.x, p0.y);pv->uv1.set(p0.x-ddw,p0.y-ddh);pv->uv2.set(p0.x+ddw,p0.y+ddh);pv->uv3.set(p0.x+ddw,p0.y-ddh);pv->uv4.set(p0.x-ddw,p0.y+ddh);pv->uv5.set(p0.x-ddw,p0.y,p0.y,p0.x+ddw);pv->uv6.set(p0.x,p0.y-ddh,p0.y+ddh,p0.x);pv++;
+		pv->p.set(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5), EPSILON_5,1.f); pv->uv0.set(p1.x, p1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh);pv->uv5.set(p1.x-ddw,p1.y,p1.y,p1.x+ddw);pv->uv6.set(p1.x,p1.y-ddh,p1.y+ddh,p1.x);pv++;
+		pv->p.set(f32(_w+ EPSILON_5), EPSILON_5, EPSILON_5,1.f); pv->uv0.set(p1.x, p0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh);pv->uv5.set(p1.x-ddw,p0.y,p0.y,p1.x+ddw);pv->uv6.set(p1.x,p0.y-ddh,p0.y+ddh,p1.x);pv++;
 		RCache.Vertex.Unlock		(4,g_aa_AA->vb_stride);
 
 		// Draw COLOR
@@ -291,10 +291,10 @@ void	CRenderTarget::phase_combine	()
 
 			// Fill vertex buffer
 			FVF::TL* pv					= (FVF::TL*) RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-			pv->set						((IX+0)*_w+EPS,	(IY+1)*_h+EPS,	EPS,	1.f, C, p0.x, p1.y);	pv++;
-			pv->set						((IX+0)*_w+EPS,	(IY+0)*_h+EPS,	EPS,	1.f, C, p0.x, p0.y);	pv++;
-			pv->set						((IX+1)*_w+EPS,	(IY+1)*_h+EPS,	EPS,	1.f, C, p1.x, p1.y);	pv++;
-			pv->set						((IX+1)*_w+EPS,	(IY+0)*_h+EPS,	EPS,	1.f, C, p1.x, p0.y);	pv++;
+			pv->set						((IX+0)*_w+EPSILON_5,	(IY+1)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p0.x, p1.y);	pv++;
+			pv->set						((IX+0)*_w+EPSILON_5,	(IY+0)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p0.x, p0.y);	pv++;
+			pv->set						((IX+1)*_w+EPSILON_5,	(IY+1)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p1.x, p1.y);	pv++;
+			pv->set						((IX+1)*_w+EPSILON_5,	(IY+0)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p1.x, p0.y);	pv++;
 			RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 
 			// Draw COLOR
@@ -312,10 +312,10 @@ void	CRenderTarget::phase_combine	()
 
 			// Fill vertex buffer
 			FVF::TL* pv					= (FVF::TL*) RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-			pv->set						((IX+0)*_w+EPS,	(IY+1)*_h+EPS,	EPS,	1.f, C, p0.x, p1.y);	pv++;
-			pv->set						((IX+0)*_w+EPS,	(IY+0)*_h+EPS,	EPS,	1.f, C, p0.x, p0.y);	pv++;
-			pv->set						((IX+1)*_w+EPS,	(IY+1)*_h+EPS,	EPS,	1.f, C, p1.x, p1.y);	pv++;
-			pv->set						((IX+1)*_w+EPS,	(IY+0)*_h+EPS,	EPS,	1.f, C, p1.x, p0.y);	pv++;
+			pv->set						((IX+0)*_w+EPSILON_5,	(IY+1)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p0.x, p1.y);	pv++;
+			pv->set						((IX+0)*_w+EPSILON_5,	(IY+0)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p0.x, p0.y);	pv++;
+			pv->set						((IX+1)*_w+EPSILON_5,	(IY+1)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p1.x, p1.y);	pv++;
+			pv->set						((IX+1)*_w+EPSILON_5,	(IY+0)*_h+EPSILON_5,	EPSILON_5,	1.f, C, p1.x, p0.y);	pv++;
 			RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 
 			// Draw COLOR

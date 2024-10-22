@@ -469,7 +469,7 @@ void CSkeletonX_ext::_FillVerticesHW1W(const Fmatrix& view, CSkeletonWallmark& w
 		Fvector test_normal;
 		test_normal.mknormal	(p[0],p[1],p[2]);
 		f32 cosa				= test_normal.dotproduct(normal);
-		if (cosa<EPS)			continue;
+		if (cosa< EPSILON_5)			continue;
 		if (CDB::TestSphereTri(wm.ContactPoint(),size,p))
 		{
 			Fvector				UV;
@@ -508,7 +508,7 @@ void CSkeletonX_ext::_FillVerticesHW2W(const Fmatrix& view, CSkeletonWallmark& w
 		Fvector test_normal;
 		test_normal.mknormal	(p[0],p[1],p[2]);
 		f32 cosa				= test_normal.dotproduct(normal);
-		if (cosa<EPS)			continue;
+		if (cosa< EPSILON_5)			continue;
 		if (CDB::TestSphereTri(wm.ContactPoint(),size,p)){
 			Fvector				UV;
 			for (u32 k=0; k<3; k++){

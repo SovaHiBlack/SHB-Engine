@@ -40,17 +40,17 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	{
 		// Fill vertex buffer
 		FVF::TL* pv					= (FVF::TL*)	RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
-		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+		pv->set						(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+		pv->set						(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 		RCache.set_Geometry			(g_combine);
 
 		// setup
 		f32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
 		Fvector	dir					= L_dir;
-				dir.normalize().mul	(- _sqrt(intensity+EPS));
+				dir.normalize().mul	(- _sqrt(intensity+ EPSILON_5));
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_DIRECT]);		// masker
 		RCache.set_c				("Ldynamic_dir",		dir.x,dir.y,dir.z,0		);
 
@@ -137,10 +137,10 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 
 		// Fill vertex buffer
 		FVF::TL2uv* pv				= (FVF::TL2uv*) RCache.Vertex.Lock	(4,g_combine_2UV->vb_stride,Offset);
-		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
-		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y, j0.x, j0.y);	pv++;
-		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
-		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
+		pv->set						(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
+		pv->set						(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y, j0.x, j0.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_2UV->vb_stride);
 		RCache.set_Geometry			(g_combine_2UV);
 
@@ -217,10 +217,10 @@ void CRenderTarget::accum_direct_blend	()
 
 		// Fill vertex buffer
 		FVF::TL2uv* pv				= (FVF::TL2uv*) RCache.Vertex.Lock	(4,g_combine_2UV->vb_stride,Offset);
-		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, p0.x, p1.y);	pv++;
-		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y, p0.x, p0.y);	pv++;
-		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, p1.x, p1.y);	pv++;
-		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, p1.x, p0.y);	pv++;
+		pv->set						(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y, p0.x, p1.y);	pv++;
+		pv->set						(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y, p0.x, p0.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y, p1.x, p1.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_2UV->vb_stride);
 		RCache.set_Geometry			(g_combine_2UV);
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_ACCUM_2D]	);
@@ -273,17 +273,17 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 
 		// Fill vertex buffer
 		FVF::TL* pv					= (FVF::TL*)	RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
-		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+		pv->set						(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+		pv->set						(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine->vb_stride);
 		RCache.set_Geometry			(g_combine);
 
 		// setup
 		f32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
 		Fvector	dir					= L_dir;
-		dir.normalize().mul	(- _sqrt(intensity+EPS));
+		dir.normalize().mul	(- _sqrt(intensity+ EPSILON_5));
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_DIRECT]);		// masker
 		RCache.set_c				("Ldynamic_dir",		dir.x,dir.y,dir.z,0		);
 
@@ -348,10 +348,10 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 
 		// Fill vertex buffer
 		FVF::TL2uv* pv				= (FVF::TL2uv*) RCache.Vertex.Lock	(4,g_combine_2UV->vb_stride,Offset);
-		pv->set						(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
-		pv->set						(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y, j0.x, j0.y);	pv++;
-		pv->set						(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
-		pv->set						(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
+		pv->set						(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y, j0.x, j1.y);	pv++;
+		pv->set						(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y, j0.x, j0.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y, j1.x, j1.y);	pv++;
+		pv->set						(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y, j1.x, j0.y);	pv++;
 		RCache.Vertex.Unlock		(4,g_combine_2UV->vb_stride);
 		RCache.set_Geometry			(g_combine_2UV);
 
@@ -435,10 +435,10 @@ void CRenderTarget::accum_direct_lum	()
 		// Fill vertex buffer
 		VERIFY	(sizeof(v_aa)==g_aa_AA->vb_stride);
 		v_aa* pv					= (v_aa*) RCache.Vertex.Lock	(4,g_aa_AA->vb_stride,Offset);
-		pv->p.set(EPS, f32(_h+EPS),	EPS,1.f); pv->uv0.set(p0.x, p1.y);pv->uvJ.set(j0.x, j1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
-		pv->p.set(EPS,			EPS,			EPS,1.f); pv->uv0.set(p0.x, p0.y);pv->uvJ.set(j0.x, j0.y);pv->uv1.set(p0.x-ddw,p0.y-ddh);pv->uv2.set(p0.x+ddw,p0.y+ddh);pv->uv3.set(p0.x+ddw,p0.y-ddh);pv->uv4.set(p0.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
-		pv->p.set(f32(_w+EPS), f32(_h+EPS),	EPS,1.f); pv->uv0.set(p1.x, p1.y);pv->uvJ.set(j1.x, j1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
-		pv->p.set(f32(_w+EPS),EPS,			EPS,1.f); pv->uv0.set(p1.x, p0.y);pv->uvJ.set(j1.x, j0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(EPSILON_5, f32(_h+ EPSILON_5), EPSILON_5,1.f); pv->uv0.set(p0.x, p1.y);pv->uvJ.set(j0.x, j1.y);pv->uv1.set(p0.x-ddw,p1.y-ddh);pv->uv2.set(p0.x+ddw,p1.y+ddh);pv->uv3.set(p0.x+ddw,p1.y-ddh);pv->uv4.set(p0.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(EPSILON_5, EPSILON_5, EPSILON_5,1.f); pv->uv0.set(p0.x, p0.y);pv->uvJ.set(j0.x, j0.y);pv->uv1.set(p0.x-ddw,p0.y-ddh);pv->uv2.set(p0.x+ddw,p0.y+ddh);pv->uv3.set(p0.x+ddw,p0.y-ddh);pv->uv4.set(p0.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5), EPSILON_5,1.f); pv->uv0.set(p1.x, p1.y);pv->uvJ.set(j1.x, j1.y);pv->uv1.set(p1.x-ddw,p1.y-ddh);pv->uv2.set(p1.x+ddw,p1.y+ddh);pv->uv3.set(p1.x+ddw,p1.y-ddh);pv->uv4.set(p1.x-ddw,p1.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
+		pv->p.set(f32(_w+ EPSILON_5), EPSILON_5, EPSILON_5,1.f); pv->uv0.set(p1.x, p0.y);pv->uvJ.set(j1.x, j0.y);pv->uv1.set(p1.x-ddw,p0.y-ddh);pv->uv2.set(p1.x+ddw,p0.y+ddh);pv->uv3.set(p1.x+ddw,p0.y-ddh);pv->uv4.set(p1.x-ddw,p0.y+ddh,0,0);pv->uv5.set(0,0,0,0);pv++;
 		RCache.Vertex.Unlock		(4,g_aa_AA->vb_stride);
 		RCache.set_Geometry			(g_aa_AA);
 

@@ -270,7 +270,7 @@ void CLensFlare::OnFrame(int id)
 	vecY.crossproduct(vecX, vecDir);
 
 	CObject*	o_main		= g_pGameLevel->CurrentViewEntity();
-	STranspParam TP			(this,Device.vCameraPosition,vSunDir,1000.f,EPS_L);
+	STranspParam TP			(this,Device.vCameraPosition,vSunDir,1000.f, EPSILON_3);
 	collide::ray_defs RD	(TP.P,TP.D,TP.f,CDB::OPT_CULL,collide::rqtBoth);
 	if (m_ray_cache.result&&m_ray_cache.similar(TP.P,TP.D,TP.f)){
 		// similar with previous query == 0
@@ -348,7 +348,7 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 			_2render.push_back	(m_Current->m_Source.hShader);
 		}
 	}
-	if (fBlend>=EPS_L)
+	if (fBlend>= EPSILON_3)
 	{
 		if(bFlares){
 			vecDx.normalize		(vecAxis);
@@ -373,7 +373,7 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 			}
 		}
 		// gradient
-		if (bGradient&&(fGradientValue>=EPS_L)){
+		if (bGradient&&(fGradientValue>= EPSILON_3)){
 			if (m_Current->m_Flags.is(CLensFlareDescriptor::flGradient)){
 				vecSx.mul			(vecX, m_Current->m_Gradient.fRadius*fGradientValue*fDistance);
 				vecSy.mul			(vecY, m_Current->m_Gradient.fRadius*fGradientValue*fDistance);

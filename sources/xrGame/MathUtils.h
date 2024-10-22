@@ -290,7 +290,7 @@ IC void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, f32 dt,
 	w.sub(v2);
 	w.add(v1);
 	f32 sinus_2 = 1.0f - cosinus * cosinus, k = 2.0f / dt;
-	if (sinus_2 > EPS)
+	if (sinus_2 > EPSILON_5)
 	{
 		k *= acos(cosinus) / _sqrt(sinus_2);
 	}

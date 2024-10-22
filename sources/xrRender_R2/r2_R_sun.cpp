@@ -521,7 +521,7 @@ void CRender::render_sun				()
 			frustum_bb.modify		(xf);
 		}
 		Fbox&	bb					= frustum_bb;
-				bb.grow				(EPS);
+				bb.grow				(EPSILON_5);
 		D3DXMatrixOrthoOffCenterLH	((D3DXMATRIX*)&mdir_Project,bb.min.x,bb.max.x,  bb.min.y,bb.max.y,  bb.min.z-tweak_ortho_xform_initial_offs,bb.max.z);
 
 		// full-xform
@@ -812,8 +812,8 @@ void CRender::render_sun				()
 		}
 
 		// some tweaking
-		b_casters.grow				(EPS);
-		b_receivers.grow			(EPS);
+		b_casters.grow				(EPSILON_5);
+		b_receivers.grow			(EPSILON_5);
 
 		// because caster points are from coarse representation only allow to "shrink" box, not grow
 		// that is the same as if we first clip casters by frustum
@@ -823,14 +823,6 @@ void CRender::render_sun				()
 		if (b_receivers.max.x>+1)	b_receivers.max.x	=+1;
 		if (b_receivers.max.y>+1)	b_receivers.max.y	=+1;
 		if (b_casters.max.z>+1)		b_casters.max.z		=+1;
-
-		// refit?
-		/*
-		const f32 EPS				= 0.001f;
-		D3DXMATRIX					refit;
-		D3DXMatrixOrthoOffCenterLH	( &refit, b_receivers.min.x, b_receivers.max.x, b_receivers.min.y, b_receivers.max.y, b_casters.min.z-EPS, b_casters.max.z+EPS );
-		D3DXMatrixMultiply			( &m_LightViewProj, &m_LightViewProj, &refit);
-		*/
 
 		f32 boxWidth  = b_receivers.max.x - b_receivers.min.x;
 		f32 boxHeight = b_receivers.max.y - b_receivers.min.y;

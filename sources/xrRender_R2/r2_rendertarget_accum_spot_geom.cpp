@@ -19,7 +19,7 @@ Fvector du_cone_vertices[DU_CONE_NUMVERTEX]=
 	0.1913f,   -0.4619f, 1.0000f,
 	0.3536f,   -0.3536f, 1.0000f,
 	0.4619f,   -0.1913f, 1.0000f,
-	0.0000f,   0.0000f,	 1.0000f+EPS_L
+	0.0000f,   0.0000f,	 1.0000f+ EPSILON_3
 };
 u16 du_cone_faces[DU_CONE_NUMFACES*3]=
 {

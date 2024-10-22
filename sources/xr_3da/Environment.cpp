@@ -89,7 +89,7 @@ f32 CEnvironment::TimeWeight(f32 val, f32 min_t, f32 max_t)
 {
 	f32 weight	= 0.0f;
 	f32 length	= TimeDiff(min_t,max_t);
-	if (!fis_zero(length,EPS)){
+	if (!fis_zero(length, EPSILON_5)){
 		if (min_t>max_t){
 			if ((val>=min_t)||(val<=max_t))	weight = TimeDiff(min_t,val)/length;
 		}else{

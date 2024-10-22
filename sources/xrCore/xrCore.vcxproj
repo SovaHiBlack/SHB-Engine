@@ -340,7 +340,7 @@
     <ClInclude Include="_matrix.h" />
     <ClInclude Include="_matrix33.h" />
     <ClInclude Include="_obb.h" />
-    <ClInclude Include="_plane.h" />
+    <ClInclude Include="_plane3.h" />
     <ClInclude Include="_plane2.h" />
     <ClInclude Include="_quaternion.h" />
     <ClInclude Include="_random.h" />
@@ -351,10 +351,11 @@
     <ClInclude Include="_types.h" />
     <ClInclude Include="_type_traits.h" />
     <ClInclude Include="_vector2.h" />
-    <ClInclude Include="_vector3.h" />
+    <ClInclude Include="_vector3d.h" />
     <ClInclude Include="_vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="rt_lzo1x_c.ch" />
     <None Include="rt_lzo1x_d.ch" />
     <None Include="rt_lzo1_d.ch" />

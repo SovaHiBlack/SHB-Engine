@@ -204,7 +204,7 @@ public:
 	{
 		return (_abs(x - p.x) < eu && _abs(y - p.y) < ev);
 	}
-	IC bool			similar				(SelfCRef p, f32 E = EPS_L) const
+	IC bool			similar				(SelfCRef p, f32 E = EPSILON_3) const
 	{
 		return (_abs(x - p.x) < E && _abs(y - p.y) < E);
 	}

@@ -134,10 +134,10 @@ void CPHAICharacter::BringToDesired(f32 time, f32 velocity, f32 /**force/**/)
 		move.set(0,0,0);
 	}
 
-	if(vel>velocity)//&&velocity>EPS_L
+	if(vel>velocity)//&&velocity>EPSILON_3
 		vel=velocity;
 
-	if(velocity<EPS_L/fixed_step) 
+	if(velocity< EPSILON_3 /fixed_step)
 	{
 		vel=0.f;
 		move.set(0,0,0);

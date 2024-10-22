@@ -82,7 +82,7 @@ f32		ps_r2_aa_kernel				= 0.5f;				// r2-only
 f32		ps_r2_mblur					= 0.5f;				// .5f
 s32			ps_r2_GI_depth				= 1;				// 1..5
 s32			ps_r2_GI_photons			= 16;				// 8..64
-f32		ps_r2_GI_clip				= EPS_L;			// EPS
+f32		ps_r2_GI_clip				= EPSILON_3;			// EPS
 f32		ps_r2_GI_refl				= 0.9f;				// .9f
 f32		ps_r2_ls_depth_scale		= 1.00001f;			// 1.00001f
 f32		ps_r2_ls_depth_bias			= -0.0001f;			// -0.0001f
@@ -350,7 +350,7 @@ void		xrRender_initconsole	()
 	CMD4(CCC_Float,		"r2_gi_clip",			&ps_r2_GI_clip,				0.00001f,	0.1f	);
 	CMD4(CCC_Integer,	"r2_gi_depth",			&ps_r2_GI_depth,			1,		5		);
 	CMD4(CCC_Integer,	"r2_gi_photons",		&ps_r2_GI_photons,			8,		256		);
-	CMD4(CCC_Float,		"r2_gi_refl",			&ps_r2_GI_refl,				EPS_L,	0.99f	);
+	CMD4(CCC_Float,		"r2_gi_refl",			&ps_r2_GI_refl, EPSILON_3,	0.99f	);
 
 	CMD4(CCC_Integer,	"r2_wait_sleep",		&ps_r2_wait_sleep,			0,		1		);
 

@@ -25,12 +25,12 @@ f32		r_ssaHZBvsTEX;
 ICF	f32	CalcSSA				(f32& distSQ, Fvector& C, IRender_Visual* V)
 {
 	f32 R	= V->vis.sphere.R + 0;
-	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+EPS;
+	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+ EPSILON_5;
 	return	R/distSQ;
 }
 ICF	f32	CalcSSA				(f32& distSQ, Fvector& C, f32 R)
 {
-	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+EPS;
+	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+ EPSILON_5;
 	return	R/distSQ;
 }
 

@@ -97,7 +97,7 @@ void CLightShadows::set_object	(IRenderable* O)
 		f32		D				= C.distance_to(Device.vCameraPosition)+R;
 					// D=0 -> P=0; 
 					// R<S_ideal_size -> P=max, R>S_ideal_size -> P=min
-		f32		_priority		= (D/S_distance)*(S_ideal_size/(R+EPS));
+		f32		_priority		= (D/S_distance)*(S_ideal_size/(R+ EPSILON_5));
 		if (_priority<1.f)		current	= O;
 		else					current = 0;
 		
@@ -273,7 +273,7 @@ void CLightShadows::calculate	()
 			Fvector		v_D,v_N,v_R;
 			v_D.sub					(C.C,Lpos);
 			v_D.normalize			();
-			if(1-_abs(v_D.y)<EPS)	v_N.set(1,0,0);
+			if(1-_abs(v_D.y)< EPSILON_5)	v_N.set(1,0,0);
 			else            		v_N.set(0,1,0);
 			v_R.crossproduct		(v_N,v_D);
 			v_N.crossproduct		(v_D,v_R);

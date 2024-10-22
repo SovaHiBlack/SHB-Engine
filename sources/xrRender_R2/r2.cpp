@@ -368,7 +368,7 @@ void					CRender::add_Geometry			(IRender_Visual*		V )	{ add_Static(V,View->getM
 void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* verts)
 {
 	if (T->suppress_wm)	return;
-	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s>EPS_L), "Invalid static wallmark params");
+	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s> EPSILON_3), "Invalid static wallmark params");
 	Wallmarks->AddStaticWallmark	(T,verts,P,&*S,s);
 }
 

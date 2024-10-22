@@ -377,7 +377,7 @@ void CUILevelMap::Init(shared_str name, CInifile& gameLtx, pcstr sh_name)
 	f32 kw = m_GlobalRect.width( ) / BoundRect( ).width( );
 	f32 kh = m_GlobalRect.height( ) / BoundRect( ).height( );
 
-	if (FALSE == fsimilar(kw, kh, EPS_L))
+	if (FALSE == fsimilar(kw, kh, EPSILON_3))
 	{
 		Msg(" --incorrect global rect definition for map [%s]  kw=%f kh=%f", *MapName( ), kw, kh);
 		Msg(" --try x2=%f or  y2=%f", m_GlobalRect.x1 + kh * BoundRect( ).width( ), m_GlobalRect.y1 + kw * BoundRect( ).height( ));
@@ -389,7 +389,7 @@ void CUILevelMap::Init(shared_str name, CInifile& gameLtx, pcstr sh_name)
 void CUILevelMap::UpdateSpots( )
 {
 	DetachAll( );
-	if (fsimilar(MapWnd( )->GlobalMap( )->GetCurrentZoom( ), MapWnd( )->GlobalMap( )->GetMinZoom( ), EPS_L))
+	if (fsimilar(MapWnd( )->GlobalMap( )->GetCurrentZoom( ), MapWnd( )->GlobalMap( )->GetMinZoom( ), EPSILON_3))
 	{
 		return;
 	}
@@ -443,7 +443,7 @@ void CUILevelMap::Update( )
 		VERIFY(m_dwFocusReceiveTime >= 0);
 		if (Device.dwTimeGlobal > (m_dwFocusReceiveTime + 500))
 		{
-			if (fsimilar(MapWnd( )->GlobalMap( )->GetCurrentZoom( ), MapWnd( )->GlobalMap( )->GetMinZoom( ), EPS_L))
+			if (fsimilar(MapWnd( )->GlobalMap( )->GetCurrentZoom( ), MapWnd( )->GlobalMap( )->GetMinZoom( ), EPSILON_3))
 			{
 				MapWnd( )->ShowHint(this, *MapName( ));
 			}

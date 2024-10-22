@@ -235,7 +235,7 @@ void CPHMovementControl::Calculate(const xr_vector<DetailPathManager::STravelPat
 			_d.sub(path[0].position,new_position);
 			SetPathDir	(_d);
 			m_path_distance=GetPathDir().magnitude();
-			if(m_path_distance>EPS)
+			if(m_path_distance> EPSILON_5)
 			{
 				Fvector _d = GetPathDir();
 				_d.mul(1.f/m_path_distance);
@@ -589,7 +589,7 @@ void		CPHMovementControl::CorrectPathDir			(const Fvector &real_path_dir,const x
 	f32 plane_motion=dXZMag(real_path_dir);
 	if(fis_zero(plane_motion,epsilon))
 	{
-		if(!fis_zero(plane_motion,EPS))
+		if(!fis_zero(plane_motion, EPSILON_5))
 		{
 			corrected_path_dir.set(real_path_dir);
 			corrected_path_dir.y=0.f;
@@ -618,7 +618,7 @@ void CPHMovementControl::PathDIrLine(const xr_vector<DetailPathManager::STravelP
 	Fvector corrected_path_dir;CorrectPathDir(GetPathDir(),path,index,corrected_path_dir);
 	to_path_point.sub(vPathPoint,vPosition);	//_new position
 	f32 mag=to_path_point.magnitude();
-	if(mag<EPS)
+	if(mag< EPSILON_5)
 	{
 	dir.set(corrected_path_dir);
 	return;
@@ -637,7 +637,7 @@ void CPHMovementControl::PathDIrPoint(const xr_vector<DetailPathManager::STravel
 	to_path_point.sub(vPathPoint,vPosition);	//_new position
 	f32 mag=to_path_point.magnitude();
 
-	if(mag<EPS) //near the point
+	if(mag< EPSILON_5) //near the point
 	{  
 		if(0==index||m_path_size-1==index) //on path eidge
 		{
@@ -656,7 +656,7 @@ void CPHMovementControl::PathDIrPoint(const xr_vector<DetailPathManager::STravel
 		return;
 	}
 
-	if(mag<EPS||fis_zero(dXZMag(to_path_point),EPS))
+	if(mag< EPSILON_5 ||fis_zero(dXZMag(to_path_point), EPSILON_5))
 	{
 		dir.set(corrected_path_dir);
 		return;//mean dir
@@ -667,7 +667,7 @@ void CPHMovementControl::PathDIrPoint(const xr_vector<DetailPathManager::STravel
 
 	VERIFY(!fis_zero(tangent.magnitude()));
 	tangent.normalize();
-	if(dir.square_magnitude()>EPS)
+	if(dir.square_magnitude()> EPSILON_5)
 	{
 		if(tangent.dotproduct(dir)<0.f)tangent.invert();
 	}
@@ -954,7 +954,7 @@ void CPHMovementControl::GetJumpParam(Fvector &velocity, JumpType &type,const Fv
 	}
 
 	f32 rise_time=velosity.y/ph_world->Gravity();
-	if(_abs(rise_time-time)<EPS_L)
+	if(_abs(rise_time-time)< EPSILON_3)
 	{
 		type=jtHigh;
 	}

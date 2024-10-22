@@ -914,7 +914,7 @@ static const f32 pull_force=25.f;
 void CPHSimpleCharacter::ApplyAcceleration() 
 {
 	dVectorSetZero(m_control_force);
-	//if(m_max_velocity<EPS) return;
+	//if(m_max_velocity<EPSILON_5) return;
 	dMass m;
 	dBodyGetMass(m_body,&m);
 
@@ -1164,7 +1164,7 @@ void CPHSimpleCharacter::SafeAndLimitVelocity()
 		{
 			f32 sq_mag=m_acceleration.square_magnitude();
 			f32 ll_limit=m_ext_imulse.dotproduct(cast_fv(linear_velocity))*10.f/fixed_step;
-			if(sq_mag>EPS_L)
+			if(sq_mag> EPSILON_3)
 			{
 				Fvector acc;acc.set(Fvector().mul(m_acceleration,1.f/_sqrt(sq_mag)));
 				Fvector vll;vll.mul(cast_fv(linear_velocity),1.f/mag);

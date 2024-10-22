@@ -286,7 +286,7 @@ void CGlowManager::render_selected()
 			Fvector	dir;
 			dir.sub			(Device.vCameraPosition,G.position);
 			dist_sq			= dir.square_magnitude();
-			if (G.direction.square_magnitude()>EPS)	{
+			if (G.direction.square_magnitude()> EPSILON_5)	{
 				dir.div			(_sqrt(dist_sq));
 				scale			= dir.dotproduct(G.direction);
 			}

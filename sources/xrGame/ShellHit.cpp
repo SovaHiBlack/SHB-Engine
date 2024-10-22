@@ -52,7 +52,7 @@ void CPHShell::ExplosionHit(const Fvector& pos, const Fvector& dir, f32 val,cons
 			r_box.set(rad,rad,rad);
 			r_pos.random_point(r_box);
 			r_dir.random_dir();
-			if(!fis_zero(pos.magnitude(),EPS_L))
+			if(!fis_zero(pos.magnitude(), EPSILON_3))
 			{
 				r_dir.mul(0.5f);
 				r_dir.add(dir);

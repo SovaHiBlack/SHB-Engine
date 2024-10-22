@@ -70,7 +70,7 @@ IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvect
 	f32 v_smag=v.square_magnitude();
 	const f32 sq_r=r*r;
 
-	if(sq_sin<EPS)//paralel
+	if(sq_sin< EPSILON_5)//paralel
 	{
 		f32 tr1,tr2								;
 		f32 sq_dist=v_smag-Lr*Lr;//
@@ -97,7 +97,7 @@ IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvect
 		return true;
 	}
 
-	if(sq_cos<EPS)
+	if(sq_cos< EPSILON_5)
 	{
 		f32 tr1,tr2								;
 		//perp//

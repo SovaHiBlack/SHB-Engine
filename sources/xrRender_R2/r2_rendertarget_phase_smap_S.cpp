@@ -53,10 +53,10 @@ void	CRenderTarget::phase_smap_spot_tsh	(light* L)
 		p1.set							((_w+.5f)/_w, (_h+.5f)/_h );
 
 		FVF::TL* pv						= (FVF::TL*) RCache.Vertex.Lock	(4,g_combine->vb_stride,Offset);
-		pv->set							(EPS, f32(_h+EPS),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
-		pv->set							(EPS,			EPS,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
-		pv->set							(f32(_w+EPS), f32(_h+EPS),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
-		pv->set							(f32(_w+EPS),	EPS,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
+		pv->set							(EPSILON_5, f32(_h+ EPSILON_5),	d_Z,	d_W, C, p0.x, p1.y);	pv++;
+		pv->set							(EPSILON_5, EPSILON_5,			d_Z,	d_W, C, p0.x, p0.y);	pv++;
+		pv->set							(f32(_w+ EPSILON_5), f32(_h+ EPSILON_5),	d_Z,	d_W, C, p1.x, p1.y);	pv++;
+		pv->set							(f32(_w+ EPSILON_5), EPSILON_5,			d_Z,	d_W, C, p1.x, p0.y);	pv++;
 		RCache.Vertex.Unlock			(4,g_combine->vb_stride);
 		RCache.set_Geometry				(g_combine);
 

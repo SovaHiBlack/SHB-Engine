@@ -308,7 +308,7 @@ IC void	CIKLimb::GetPickDir(Fvector &v, const Fmatrix &gl_bone )
 	dir.add(sv_state.pick);
 	
 	f32 m = dir.magnitude();
-	if(m < EPS)
+	if(m < EPSILON_5)
 			return;
 	dir.mul(dir,1/m);
 	v.set( dir );
@@ -751,7 +751,7 @@ void CIKLimb::CalculateBones(SCalculateData &cd)
 void	DBG_DrawRotationLimitsY(const Fmatrix &start, f32 ang, f32 l, f32 h )
 {
 #ifdef DEBUG
-	DBG_DrawRotationY( start, ang - EPS, ang + EPS, 0.15f, D3DCOLOR_XRGB( 0, 255, 0 ), false, 1 );
+	DBG_DrawRotationY( start, ang - EPSILON_5, ang + EPSILON_5, 0.15f, D3DCOLOR_XRGB( 0, 255, 0 ), false, 1 );
 	DBG_DrawRotationY( start, l, h, 0.15f, D3DCOLOR_ARGB( 50, 0, 250, 0 ), true );
 #endif // DEBUG
 }
@@ -759,7 +759,7 @@ void	DBG_DrawRotationLimitsY(const Fmatrix &start, f32 ang, f32 l, f32 h )
 void	DBG_DrawRotationLimitsZ(const Fmatrix &start, f32 ang, f32 l, f32 h )
 {
 #ifdef DEBUG
-	DBG_DrawRotationZ( start, ang - EPS, ang + EPS, 0.15f, D3DCOLOR_XRGB( 0, 0, 255 ), false, 1 );
+	DBG_DrawRotationZ( start, ang - EPSILON_5, ang + EPSILON_5, 0.15f, D3DCOLOR_XRGB( 0, 0, 255 ), false, 1 );
 	DBG_DrawRotationZ( start, l, h, 0.15f, D3DCOLOR_ARGB( 50, 0, 0, 250 ), true );
 #endif // DEBUG
 }
@@ -767,7 +767,7 @@ void	DBG_DrawRotationLimitsZ(const Fmatrix &start, f32 ang, f32 l, f32 h )
 void	DBG_DrawRotationLimitsX(const Fmatrix &start, f32 ang, f32 l, f32 h )
 {
 #ifdef DEBUG
-	DBG_DrawRotationX( start, ang + EPS, ang - EPS, 0.15f, D3DCOLOR_XRGB( 255, 0, 0 ), false, 1 );
+	DBG_DrawRotationX( start, ang + EPSILON_5, ang - EPSILON_5, 0.15f, D3DCOLOR_XRGB( 255, 0, 0 ), false, 1 );
 	DBG_DrawRotationX( start, l, h, 0.15f, D3DCOLOR_ARGB( 50, 255, 0, 0 ), true );
 #endif // DEBUG
 }

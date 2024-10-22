@@ -999,13 +999,11 @@ void CCar::Drive()
 	for(;i!=e;++i)
 		i->Drive();
 	e_state_drive=drive;
-
 }
 
 void CCar::StartEngine()
 {
-	
-	if(m_fuel<EPS||b_engine_on) return;
+	if(m_fuel< EPSILON_5 ||b_engine_on) return;
 	PlayExhausts();
 	m_car_sound->Start();
 	b_engine_on=true;
@@ -1379,7 +1377,7 @@ void CCar::UpdateBack()
 		Fvector v;
 		m_pPhysicsShell->get_LinearVel(v);
 		//if(DriveWheelsMeanAngleRate()<m_breaks_to_back_rate)
-		if(v.dotproduct(XFORM().k)<EPS)
+		if(v.dotproduct(XFORM().k)< EPSILON_5)
 		{
 			StopBreaking();
 			DriveBack();
@@ -1618,8 +1616,6 @@ f32 CCar::EngineDriveSpeed()
 	//else					  return 0.f;
 }
 
-
-
 void CCar::UpdateFuel(f32 time_delta)
 {
 	if(!b_engine_on) return;
@@ -1627,7 +1623,7 @@ void CCar::UpdateFuel(f32 time_delta)
 		m_fuel-=time_delta*(m_current_rpm-m_min_rpm)*m_fuel_consumption;
 	else
 		m_fuel-=time_delta*m_min_rpm*m_fuel_consumption;
-	if(m_fuel<EPS) StopEngine();
+	if(m_fuel< EPSILON_5) StopEngine();
 }
 
 f32 CCar::AddFuel(f32 ammount)

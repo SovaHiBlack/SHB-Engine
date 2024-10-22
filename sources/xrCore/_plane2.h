@@ -83,7 +83,7 @@ public:
 		if (_abs(denom) < EPSILON_5) return false; // they are parallel
 
 		dist = -(n.dotproduct(u) + d) / denom;
-		if (dist < -EPS || dist > 1 + EPSILON_5) return false;
+		if (dist < -EPSILON_5 || dist > 1 + EPSILON_5) return false;
 		isect.mad(u, t, dist);
 		return true;
 	}

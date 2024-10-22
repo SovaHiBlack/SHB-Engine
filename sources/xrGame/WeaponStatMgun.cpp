@@ -184,14 +184,14 @@ void CWeaponStatMgun::UpdateBarrelDir()
 		f32 sv_x		= m_tgt_x_rot;
 		
 		clamp			(m_tgt_x_rot,-m_lim_x_rot.y,-m_lim_x_rot.x);
-		if (!fsimilar(sv_x,m_tgt_x_rot,EPS_L)) m_allow_fire=FALSE;
+		if (!fsimilar(sv_x,m_tgt_x_rot, EPSILON_3)) m_allow_fire=FALSE;
 	}
 	{// y angle
 		m_i_bind_y_xform.transform_dir(dep); dep.normalize();
 		m_tgt_y_rot		= angle_normalize_signed(m_bind_y_rot-dep.getH());
 		f32 sv_y		= m_tgt_y_rot;
 		clamp			(m_tgt_y_rot,-m_lim_y_rot.y,-m_lim_y_rot.x);
-		if (!fsimilar(sv_y,m_tgt_y_rot,EPS_L)) m_allow_fire=FALSE;
+		if (!fsimilar(sv_y,m_tgt_y_rot, EPSILON_3)) m_allow_fire=FALSE;
 	}
 
 	m_cur_x_rot		= angle_inertion_var(m_cur_x_rot,m_tgt_x_rot,0.5f,3.5f,PI_DIV_6,Device.fTimeDelta);

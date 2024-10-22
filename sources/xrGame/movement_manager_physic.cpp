@@ -93,7 +93,7 @@ void CMovementManager::move_along_path	(CPHMovementControl *movement_control, Fv
 
 //	VERIFY(movement_control->CharacterExist());
 
-	if (time_delta < EPS) return;
+	if (time_delta < EPSILON_5) return;
 
 	//#pragma todo("Dima to Kostia : Please change this piece of code to support paths with multiple desired velocities")	
 	

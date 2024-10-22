@@ -161,7 +161,7 @@ void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, f32 fMa
 			if	(
 					(fSquare1 - fSquare0 > fMaxSquare) || 
 					(
-						fsimilar(fSquare1 - fSquare0,fMaxSquare,EPS_L) && 
+						fsimilar(fSquare1 - fSquare0,fMaxSquare, EPSILON_3) &&
 						(_abs(fIncrement - object().movement().m_body.target.yaw) < _abs(fBestAngle - object().movement().m_body.target.yaw))
 					)
 				)
@@ -199,7 +199,7 @@ void CSightManager::vfValidateAngleDependency(f32 x1, f32& x2, f32 x3)
 {
 	f32	_x2	= angle_normalize_signed(x2 - x1);
 	f32	_x3	= angle_normalize_signed(x3 - x1);
-	if ((_x2*_x3 <= 0.f) && (_abs(_x2) + _abs(_x3) > PI - EPS_L))
+	if ((_x2*_x3 <= 0.f) && (_abs(_x2) + _abs(_x3) > PI - EPSILON_3))
 		x2  = x3;
 }
 
@@ -207,7 +207,7 @@ bool CSightManager::need_correction	(f32 x1, f32 x2, f32 x3)
 {
 	f32	_x2	= angle_normalize_signed(x2 - x1);
 	f32	_x3	= angle_normalize_signed(x3 - x1);
-	if ((_x2*_x3 <= 0) && (_abs(_x2) + _abs(_x3) > PI - EPS_L))
+	if ((_x2*_x3 <= 0) && (_abs(_x2) + _abs(_x3) > PI - EPSILON_3))
 		return			(true);
 	return				(false);
 }
@@ -321,7 +321,7 @@ void CSightManager::update			()
 				}
 			}
 			else {
-				if (angle_difference(object().movement().m_body.current.yaw,object().movement().m_head.target.yaw) > EPS_L) {
+				if (angle_difference(object().movement().m_body.current.yaw,object().movement().m_head.target.yaw) > EPSILON_3) {
 //					object().movement().m_body.target.yaw	= object().movement().m_head.current.yaw;
 					object().movement().m_body.target.yaw	= object().movement().m_head.target.yaw;
 				}
@@ -368,7 +368,7 @@ bool CSightManager::GetDirectionAnglesByPrevPositions(f32& yaw, f32& pitch)
 	VERIFY					(_valid(tPreviousPosition.vPosition));
 	VERIFY					(_valid(tCurrentPosition.vPosition));
 	tDirection.sub			(tCurrentPosition.vPosition,tPreviousPosition.vPosition);
-	if (tDirection.magnitude() < EPS_L)	return(false);
+	if (tDirection.magnitude() < EPSILON_3)	return(false);
 	tDirection.getHP		(yaw,pitch);
 	VERIFY					(_valid(yaw));
 	VERIFY					(_valid(pitch));

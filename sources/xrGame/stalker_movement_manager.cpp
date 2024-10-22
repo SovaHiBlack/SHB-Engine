@@ -379,7 +379,7 @@ void CStalkerMovementManager::parse_velocity_mask	()
 		if	(
 				(mental_state() != eMentalStateFree) ||
 //				(object().sight().current_action().sight_type() != SightManager::eSightTypePathDirection) ||
-				fis_zero(path_direction_angle(),EPS_L) ||
+				fis_zero(path_direction_angle(), EPSILON_3) ||
 				(m_last_turn_index == detail().curr_travel_point_index())
 			)
 		{
@@ -587,7 +587,7 @@ bool CStalkerMovementManager::is_object_on_the_way		(const CGameObject *object, 
 		return							(m_last_query_result);
 	}
 
-	if (distance - EPS_L > m_last_query_distance) {
+	if (distance - EPSILON_3 > m_last_query_distance) {
 		update_object_on_the_way		(object,distance);
 		return							(m_last_query_result);
 	}
@@ -696,7 +696,7 @@ void CStalkerMovementManager::check_for_bad_path	()
 	f32								distance = path[point_index + 1].position.distance_to(object().Position());
 	Fvector								current_direction = Fvector().sub(path[point_index + 1].position,path[point_index].position);
 	Fvector								next_direction;
-	if (current_direction.magnitude() >= EPS_L)
+	if (current_direction.magnitude() >= EPSILON_3)
 		current_direction.normalize		();
 	else
 		current_direction.set			(0.f,0.f,1.f);
@@ -711,7 +711,7 @@ void CStalkerMovementManager::check_for_bad_path	()
 		f32							magnitude = next_direction.magnitude();
 		distance						+= magnitude;
 		//. how can it be?
-		if (magnitude < EPS_L)
+		if (magnitude < EPSILON_3)
 			continue;
 
 		next_direction.normalize		();

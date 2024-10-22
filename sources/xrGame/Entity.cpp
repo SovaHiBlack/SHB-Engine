@@ -102,7 +102,7 @@ void	CEntity::Hit		(SHit* pHDS)
 	// Calc impulse
 	Fvector					vLocalDir;
 	f32					m = pHDS->dir.magnitude();
-	VERIFY					(m>EPS);
+	VERIFY					(m> EPSILON_5);
 	
 	// convert impulse into local coordinate system
 	Fmatrix					mInvXForm;

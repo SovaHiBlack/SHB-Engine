@@ -104,7 +104,7 @@ IC CLevelGraph::ELineIntersections  CLevelGraph::intersect(
 	* same side of line 1, the line segments do not intersect.
 	*/
 
-	if ((r3*r4 > EPS) && !fis_zero(r3, EPSILON_3) && !fis_zero(r4, EPSILON_3))     return (eLineIntersectionNone);
+	if ((r3*r4 > EPSILON_5) && !fis_zero(r3, EPSILON_3) && !fis_zero(r4, EPSILON_3))     return (eLineIntersectionNone);
 
 	/* Compute a2, b2, c2 */
 
@@ -122,7 +122,7 @@ IC CLevelGraph::ELineIntersections  CLevelGraph::intersect(
 	* not intersect.
 	*/
 
-	if ((r1*r2 > EPS) && !fis_zero(r1, EPSILON_3) && !fis_zero(r2, EPSILON_3))     return (eLineIntersectionNone);
+	if ((r1*r2 > EPSILON_5) && !fis_zero(r1, EPSILON_3) && !fis_zero(r2, EPSILON_3))     return (eLineIntersectionNone);
 
 	// Check for equality
 	if (fis_zero(r1*r2) && fis_zero(r3*r4)) return eLineIntersectionEqual;

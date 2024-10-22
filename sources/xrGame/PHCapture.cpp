@@ -122,18 +122,16 @@ void CPHCapture::PullingUpdate()
 		dJointSetFeedback (m_joint, &m_joint_feedback);
 		dJointSetFeedback (m_ajoint, &m_joint_feedback);
 		dJointSetBallAnchor(m_joint,capture_bone_position.x,capture_bone_position.y,capture_bone_position.z);
-
-
 		dJointSetAMotorAxis (m_ajoint, 0, 1, dir.x, dir.y, dir.z);
 
-		if(dir.x>EPS)
+		if(dir.x> EPSILON_5)
 		{
-			if(dir.y>EPS)
+			if(dir.y> EPSILON_5)
 			{
 				f32 mag=dir.x*dir.x+dir.y*dir.y;
 				dJointSetAMotorAxis (m_ajoint, 2, 2, -dir.y/mag, dir.x/mag, 0.f);
 			}
-			else if(dir.z>EPS)
+			else if(dir.z> EPSILON_5)
 			{
 				f32 mag=dir.x*dir.x+dir.z*dir.z;
 				dJointSetAMotorAxis (m_ajoint, 2, 2, -dir.z/mag,0.f,dir.x/mag);
@@ -145,10 +143,9 @@ void CPHCapture::PullingUpdate()
 		}
 		else
 		{
-			if(dir.y>EPS)
+			if(dir.y> EPSILON_5)
 			{
-
-				if(dir.z>EPS)
+				if(dir.z> EPSILON_5)
 				{
 					f32 mag=dir.y*dir.y+dir.z*dir.z;
 					dJointSetAMotorAxis (m_ajoint, 2, 2,0.f,-dir.z/mag,dir.y/mag);

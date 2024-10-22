@@ -46,7 +46,7 @@ public:
 			bool	is_from_right		(const Fvector &position);
 			bool	is_from_right		(f32 yaw);
 
-			bool	is_turning			(f32 eps_angle = EPS);
+			bool	is_turning			(f32 eps_angle = EPSILON_5);
 
 			void	get_heading			(f32& current, f32& target);
 			f32	get_heading_current	();

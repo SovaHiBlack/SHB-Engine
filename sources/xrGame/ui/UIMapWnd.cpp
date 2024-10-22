@@ -321,7 +321,7 @@ void CUIMapWnd::SetTargetMap			(CUICustomMap* m, const fVector2& pos, bool bZoom
  	}
 	else
 	{
-		if (bZoomIn && fsimilar(GlobalMap( )->GetCurrentZoom( ), GlobalMap( )->GetMinZoom( ), EPS_L))
+		if (bZoomIn && fsimilar(GlobalMap( )->GetCurrentZoom( ), GlobalMap( )->GetMinZoom( ), EPSILON_3))
 		{
 			SetZoom(GlobalMap( )->GetMaxZoom( ));
 		}

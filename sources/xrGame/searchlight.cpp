@@ -195,9 +195,9 @@ bool CProjector::bfAssignWatch(CScriptEntityAction *tpEntityAction)
 
 	bone_x.velocity	= l_tWatchAction.vel_bone_x;
 	f32 time		= delta_yaw / bone_x.velocity;
-	bone_y.velocity	= (fis_zero(time,EPS_L)? l_tWatchAction.vel_bone_y : delta_pitch / time);
+	bone_y.velocity	= (fis_zero(time, EPSILON_3)? l_tWatchAction.vel_bone_y : delta_pitch / time);
 	
-	return false == (l_tWatchAction.m_bCompleted = ((delta_yaw < EPS_L) && (delta_pitch < EPS_L)));
+	return false == (l_tWatchAction.m_bCompleted = ((delta_yaw < EPSILON_3) && (delta_pitch < EPSILON_3)));
 }
 
 bool CProjector::bfAssignObject(CScriptEntityAction *tpEntityAction)

@@ -196,7 +196,7 @@ void	light::xform_calc			()
 	else									L_dir.set(0,0,1);
 
 	// R&N
-	if (right.square_magnitude()>EPS)				{
+	if (right.square_magnitude()> EPSILON_5)				{
 		// use specified 'up' and 'right', just enshure ortho-normalization
 		L_right.set					(right);				L_right.normalize	();
 		L_up.crossproduct			(L_dir,L_right);		L_up.normalize		();
@@ -297,7 +297,7 @@ extern f32		ps_r2_slight_fade;
 f32	light::get_LOD					()
 {
 	if	(!flags.bShadow)	return 1;
-	f32	distSQ			= Device.vCameraPosition.distance_to_sqr(spatial.sphere.P)+EPS;
+	f32	distSQ			= Device.vCameraPosition.distance_to_sqr(spatial.sphere.P)+ EPSILON_5;
 	f32	ssa				= ps_r2_slight_fade * spatial.sphere.R/distSQ;
 	f32	lod				= _sqrt(clampr((ssa - r_ssaGLOD_end)/(r_ssaGLOD_start-r_ssaGLOD_end),0.f,1.f));
 	return	lod	;

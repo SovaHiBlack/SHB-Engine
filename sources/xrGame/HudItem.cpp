@@ -220,7 +220,7 @@ void CHudItem::UpdateHudInertion		(Fmatrix& hud_trans)
 		// clamp by PI_DIV_2
 		Fvector last;						last.normalize_safe(m_last_dir);
 		f32 dot							= last.dotproduct(xform.k);
-		if (dot<EPS){
+		if (dot< EPSILON_5){
 			Fvector v0;
 			v0.crossproduct			(m_last_dir,xform.k);
 			m_last_dir.crossproduct	(xform.k,v0);

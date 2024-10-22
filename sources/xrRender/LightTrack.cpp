@@ -189,7 +189,7 @@ void	CROS_impl::update	(IRenderable* O)
 
 			// 
 			f32	E			=	I->energy * xrL->color.intensity	();
-			if (E > EPS)		{
+			if (E > EPSILON_5)		{
 				// Select light
 				lights.push_back			(CROS_impl::Light())		;
 				CROS_impl::Light&	L		= lights.back()				;
@@ -202,7 +202,7 @@ void	CROS_impl::update	(IRenderable* O)
 
 		// Sun
 		f32	E			=	sun_smooth * sun->color.intensity	();
-		if (E > EPS)		{
+		if (E > EPSILON_5)		{
 			// Select light
 			lights.push_back			(CROS_impl::Light())		;
 			CROS_impl::Light&	L		= lights.back()				;
@@ -230,7 +230,7 @@ void	CROS_impl::update	(IRenderable* O)
 		for (u32 lit=0; lit<lights.size(); lit++)	{
 			f32	d	=	lights[lit].source->position.distance_to(position);
 			f32	r	=	lights[lit].source->range;
-			f32	a	=	clampr(1.f - d/(r+EPS),0.f,1.f)*(lights[lit].source->flags.bStatic?1.f:2.f);
+			f32	a	=	clampr(1.f - d/(r+ EPSILON_5),0.f,1.f)*(lights[lit].source->flags.bStatic?1.f:2.f);
 			lacc.x		+=	lights[lit].color.r*a;
 			lacc.y		+=	lights[lit].color.g*a;
 			lacc.z		+=	lights[lit].color.b*a;

@@ -154,7 +154,7 @@ public:
 	f32				GetXZVelocityActual			()		{ return dXZMag(vVelocity);}
 	f32				GetActVelProj				(const Fvector & dir){return vVelocity.dotproduct(dir);}
 	f32				GetActVelInGoingDir			(){		f32 r= GetActVelProj(GetPathDir());return r>0.f ? r : 0.f;}
-	f32				GetXZActVelInGoingDir		(){		f32 r= dXZDot(GetPathDir(),vVelocity);return r>EPS_L ? r : 0.f;}
+	f32				GetXZActVelInGoingDir		(){		f32 r= dXZDot(GetPathDir(),vVelocity);return r> EPSILON_3 ? r : 0.f;}
 	void				GetSmoothedVelocity			(Fvector& v){if(m_character)m_character->GetSmothedVelocity(v);else v.set(0,0,0);}
 	f32				GetContactSpeed				()		{ return fContactSpeed; }
 	void				GroundNormal				(Fvector &norm)					;

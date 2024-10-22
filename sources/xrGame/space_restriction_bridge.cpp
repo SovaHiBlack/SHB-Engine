@@ -135,7 +135,7 @@ bool CSpaceRestrictionBridge::out_of_border				(const Fvector &position)
 		return				(true);
 
 	Fsphere					temp;
-	temp.R					= EPS_L;
+	temp.R					= EPSILON_3;
 	temp.P					= position;
 	temp.P.y				= ai().level_graph().vertex_plane_y(level_vertex_id,position.x,position.z);
 	return					(!inside(temp));

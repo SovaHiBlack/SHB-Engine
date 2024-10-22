@@ -233,7 +233,7 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 				{
 					Fvector velocity;
 					l_this->PHGetLinearVell(velocity);
-					if (velocity.square_magnitude() > EPS)	
+					if (velocity.square_magnitude() > EPSILON_5)
 					{	//. desync?
 						velocity.normalize();
 						Triangle neg_tri;

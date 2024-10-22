@@ -741,7 +741,7 @@ void PAExplosion::Execute(ParticleEffect *effect, f32 dt)
 		
 		f32 Gd 		= expf(DistFromWaveSqr * inexp) * outexp;
 		
-		m.vel 			+= dir * (Gd * magdt / ((dist+EPS) * (distSqr + epsilon)));
+		m.vel 			+= dir * (Gd * magdt / ((dist+ EPSILON_5) * (distSqr + epsilon)));
 	}
 	
 	age += dt;

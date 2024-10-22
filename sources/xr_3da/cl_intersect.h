@@ -38,7 +38,7 @@ namespace CDB
 		// if determinant is near zero, ray lies in plane of triangle
 		det = edge1.dotproduct(pvec);
 		if (bCull){						// define TEST_CULL if culling is desired
-			if (det < EPS)  return false;
+			if (det < EPSILON_5)  return false;
 			tvec.sub(C, *p[0]);							// calculate distance from vert0 to ray origin
 			u = tvec.dotproduct(pvec);			// calculate U parameter and test bounds
 			if (u < 0.0 || u > det) return false;
@@ -51,7 +51,7 @@ namespace CDB
 			u *= inv_det;
 			v *= inv_det;
 		}else{											// the non-culling branch
-			if (det > -EPS && det < EPS) return false;
+			if (det > -EPSILON_5 && det < EPSILON_5) return false;
 			inv_det = 1.0f / det;
 			tvec.sub(C, *p[0]);							// calculate distance from vert0 to ray origin
 			u = tvec.dotproduct(pvec)*inv_det;	// calculate U parameter and test bounds
@@ -77,7 +77,7 @@ namespace CDB
 		// if determinant is near zero, ray lies in plane of triangle
 		det = edge1.dotproduct(pvec);
 		if (bCull){						// define TEST_CULL if culling is desired
-			if (det < EPS)  return false;
+			if (det < EPSILON_5)  return false;
 			tvec.sub(C, p[0]);							// calculate distance from vert0 to ray origin
 			u = tvec.dotproduct(pvec);			// calculate U parameter and test bounds
 			if (u < 0.0f || u > det) return false;
@@ -90,7 +90,7 @@ namespace CDB
 			u *= inv_det;
 			v *= inv_det;
 		}else{											// the non-culling branch
-			if (det > -EPS && det < EPS) return false;
+			if (det > -EPSILON_5 && det < EPSILON_5) return false;
 			inv_det = 1.0f / det;
 			tvec.sub(C, p[0]);							// calculate distance from vert0 to ray origin
 			u = tvec.dotproduct(pvec)*inv_det;	// calculate U parameter and test bounds

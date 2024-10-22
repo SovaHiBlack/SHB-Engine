@@ -29,7 +29,7 @@ IRender_Sector* CRender::detectSector(const Fvector& P)
 	// Select ID
 	int ID;
 	if (id1>=0) {
-		if (id2>=0) ID = (range1<=range2+EPS)?id1:id2;	// both was found
+		if (id2>=0) ID = (range1<=range2+ EPSILON_5)?id1:id2;	// both was found
 		else ID = id1;									// only id1 found
 	} else if (id2>=0) ID = id2;						// only id2 found
 	else return 0;

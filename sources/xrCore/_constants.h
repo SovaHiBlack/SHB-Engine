@@ -19,16 +19,10 @@
 #endif
 
 // Constants
-const	f32		EPS_S = 0.0000001f;
-const	f32		EPSILON_7 = 0.0000001f; // 0.0000001
-
-const	f32		EPS = 0.0000100f;
-const	f32		EPSILON_5 = 0.00001f; // 0.00001
-
-const	f32		EPSILON_4 = 0.0001f; // 0.0001
-
-const	f32		EPS_L = 0.0010000f;
-const	f32		EPSILON_3 = 0.001f; // 0.001
+const	f32		EPSILON_7 = 0.0000001f;
+const	f32		EPSILON_5 = 0.00001f;
+const	f32		EPSILON_4 = 0.0001f;
+const	f32		EPSILON_3 = 0.001f;
 
 const	f32		M_PI = 3.1415926535897932384626433832795f;
 const	f32		PI = 3.1415926535897932384626433832795f;

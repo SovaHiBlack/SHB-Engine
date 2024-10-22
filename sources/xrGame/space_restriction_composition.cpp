@@ -131,7 +131,7 @@ void CSpaceRestrictionComposition::initialize	()
 	for (u32 i=1; i<n ;++i)
 		m_sphere.R				= _max(m_sphere.R,m_sphere.P.distance_to(spheres[i].P) + spheres[i].R);
 
-	m_sphere.R					+= EPS_L;
+	m_sphere.R					+= EPSILON_3;
 
 	m_initialized				= true;
 

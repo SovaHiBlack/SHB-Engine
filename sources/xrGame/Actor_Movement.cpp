@@ -371,7 +371,7 @@ void CActor::g_Orientate	(u32 mstate_rl, f32 dt)
 			tgt_roll	= 0.0f;
 	}
 
-	if (!fsimilar(tgt_roll,r_torso_tgt_roll,EPS)){
+	if (!fsimilar(tgt_roll,r_torso_tgt_roll, EPSILON_5)){
 		angle_lerp		(r_torso_tgt_roll,tgt_roll,PI_MUL_2,dt);
 		r_torso_tgt_roll= angle_normalize_signed(r_torso_tgt_roll);
 	}

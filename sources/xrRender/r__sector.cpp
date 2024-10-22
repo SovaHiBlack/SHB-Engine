@@ -96,7 +96,7 @@ void	CPortal::Setup	(Fvector* V, int vcnt, CSector* face, CSector* back)
 	FPU::m24r	();
 
 	/*
-	if (_abs(1-P.n.magnitude())<EPS)
+	if (_abs(1-P.n.magnitude())<EPSILON_5)
 	Debug.fatal		(DEBUG_INFO,"Degenerated portal found at {%3.2f,%3.2f,%3.2f}.",VPUSH(poly[0]));
 	*/
 }
@@ -195,7 +195,7 @@ void CSector::traverse			(CFrustum &F, _scissor& R_scissor)
 				if (t.z < depth)	depth		= t.z;
 			}
 			// Msg	("bb(%s): (%f,%f)-(%f,%f), d=%f", PORTAL->bDualRender?"true":"false",bb.min.x, bb.min.y, bb.max.x, bb.max.y,depth);
-			if (depth<EPS)	{
+			if (depth< EPSILON_5)	{
 				scissor	= R_scissor;
 
 				// Cull by HOM (slower algo)

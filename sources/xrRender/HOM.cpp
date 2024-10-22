@@ -238,7 +238,7 @@ void CHOM::Render		(CFrustum& base)
 ICF	BOOL	xform_b0	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
 {
 	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;
-	if (z<EPS) return TRUE;
+	if (z< EPSILON_5) return TRUE;
 	f32 iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);
 	min.x=max.x	= (_x*X._11 + _y*X._21 + _z*X._31 + X._41)*iw;
 	min.y=max.y	= (_x*X._12 + _y*X._22 + _z*X._32 + X._42)*iw;	
@@ -249,7 +249,7 @@ ICF	BOOL	xform_b1	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, 
 {
 	f32 t;
 	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;
-	if (z<EPS)	return TRUE;
+	if (z< EPSILON_5)	return TRUE;
 	f32 iw	= 1.f/(_x*X._14 + _y*X._24 + _z*X._34 + X._44);
 	t 			= (_x*X._11 + _y*X._21 + _z*X._31 + X._41)*iw;	if (t<min.x) min.x=t; else if (t>max.x) max.x=t;
 	t			= (_x*X._12 + _y*X._22 + _z*X._32 + X._42)*iw;	if (t<min.y) min.y=t; else if (t>max.y) max.y=t;

@@ -7,7 +7,7 @@ void CLight_Compute_XFORM_and_VIS::compute_xf_spot	(light* L)
 	Fvector						L_dir,L_up,L_right,L_pos;
 	L_dir.set					(L->direction);			L_dir.normalize		();
 
-	if (L->right.square_magnitude()>EPS)				{
+	if (L->right.square_magnitude()> EPSILON_5)				{
 		// use specified 'up' and 'right', just enshure ortho-normalization
 		L_right.set					(L->right);				L_right.normalize	();
 		L_up.crossproduct			(L_dir,L_right);		L_up.normalize		();

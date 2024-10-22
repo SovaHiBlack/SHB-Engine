@@ -173,7 +173,7 @@ void CEffect_Thunderbolt::Bolt(int id, f32 period, f32 lt)
 	f32 next_v			= Random.randF();
 
 	if (next_v<p_second_prop){
-		next_lightning_time = Device.fTimeGlobal+lt+EPS_L;
+		next_lightning_time = Device.fTimeGlobal+lt+ EPSILON_3;
 	}else{
 		next_lightning_time = Device.fTimeGlobal+period+Random.randF(-period*0.3f,period*0.3f);
 		current->snd.play_no_feedback(0, 0, dist / 300.f, &pos, 0, 0, &fVector2( ).set(dist / 2, dist * 2.0f));
