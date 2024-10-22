@@ -48,7 +48,7 @@ void	CRenderTarget::phase_combine	()
 
 	// calc m-blur matrices
 	Fmatrix		m_previous, m_current;
-	Fvector2	m_blur_scale;
+	fVector2	m_blur_scale;
 	{
 		static Fmatrix		m_saved_viewproj;
 		

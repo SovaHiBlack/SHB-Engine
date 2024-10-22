@@ -22,7 +22,7 @@ enum EJointType
 
 struct SJointLimit
 {
-	Fvector2		limit;
+	fVector2		limit;
 	f32 			spring_factor;
 	f32 			damping_factor;
 	SJointLimit		(){Reset();}

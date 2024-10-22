@@ -190,7 +190,7 @@ void					CRender::add_Geometry			(IRender_Visual* V ){ add_Static(V,View->getMas
 void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* verts)
 {
 	if (T->suppress_wm)	return;
-	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s>EPS_L), "Invalid static wallmark params");
+	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s> EPSILON_3), "Invalid static wallmark params");
 	Wallmarks->AddStaticWallmark	(T,verts,P,&*S,s);
 }
 
@@ -328,7 +328,7 @@ void CRender::Calculate				()
 	// Check if camera is too near to some portal - if so force DualRender
 	if (rmPortals) 
 	{
-		Fvector box_radius;		box_radius.set(EPS_L*2,EPS_L*2,EPS_L*2);
+		Fvector box_radius;		box_radius.set(EPSILON_3 *2, EPSILON_3 *2, EPSILON_3 *2);
 		Sectors_xrc.box_options	(CDB::OPT_FULL_TEST);
 		Sectors_xrc.box_query	(rmPortals,Device.vCameraPosition,box_radius);
 		for (int K=0; K<Sectors_xrc.r_count(); K++)
@@ -547,7 +547,8 @@ void	CRender::ApplyBlur4		(FVF::TL4uv* pv, u32 w, u32 h, f32 k)
 	f32	_h					= f32(h);
 	f32	kw					= (1.f/_w)*k;
 	f32	kh					= (1.f/_h)*k;
-	Fvector2					p0,p1;
+	fVector2					p0;
+	fVector2					p1;
 	p0.set						(.5f/_w, .5f/_h);
 	p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 	u32		_c					= 0xffffffff;

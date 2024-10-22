@@ -85,7 +85,7 @@ bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
 #if 0
 	Fvector	dif;dif .sub( pos, pos_new );
 	f32	dif_m = dif.magnitude();
-	if(ret&&dif_m>EPS_L)
+	if(ret&&dif_m> EPSILON_3)
 	{
 		Msg("dif vec %f,%f,%f \n",dif.x,dif.y,dif.z);
 		Msg("dif mag %f \n",dif_m);
@@ -114,16 +114,16 @@ void CPHAICharacter::BringToDesired(f32 time, f32 velocity, f32 /**force/**/)
 	GetPosition(pos);
 
 	move.sub(m_vDesiredPosition,pos);
-	move.y=0.f;
+	move.y=0.0f;
 	f32 dist=move.magnitude();
 
 	f32 vel;
-	if(dist>EPS_L*100.f)
+	if(dist> EPSILON_3 *100.f)
 	{
 		vel=dist/time;
 		move.mul(1.f/dist);
 	}
-	else if(dist>EPS_L*10.f)
+	else if(dist> EPSILON_3 *10.f)
 	{
 		vel=dist*dist*dist;
 		move.mul(1.f/dist);

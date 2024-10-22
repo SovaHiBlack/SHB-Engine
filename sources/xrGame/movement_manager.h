@@ -226,7 +226,7 @@ public:
 	virtual void	on_build_path			() {}
 
 	template <typename T>
-	IC		bool	accessible				(T position_or_vertex_id, f32 radius = EPS_L) const;
+	IC		bool	accessible				(T position_or_vertex_id, f32 radius = EPSILON_3) const;
 
 	IC		void	extrapolate_path		(bool value);
 	IC		bool	extrapolate_path		() const;

@@ -194,7 +194,7 @@ void CPHActorCharacter::Jump(const Fvector& accel)
 		{
 			m_elevator_state.GetJumpDir(m_acceleration,m_jump_accel);
 			m_jump_accel.mul(JUMP_UP_VELOCITY/2.f);
- 			//if(accel.square_magnitude()>EPS_L)m_jump_accel.mul(4.f);
+ 			//if(accel.square_magnitude()>EPSILON_3)m_jump_accel.mul(4.f);
 		}
 		else{
 			m_jump_accel.set(vel[0]*JUMP_INCREASE_VELOCITY_RATE+m_acceleration.x/amag*0.2f,jump_up_velocity,vel[2]*JUMP_INCREASE_VELOCITY_RATE +m_acceleration.z/amag*0.2f);

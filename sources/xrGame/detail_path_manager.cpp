@@ -70,7 +70,7 @@ Fvector CDetailPathManager::direction() const
 	Fvector					direction;
 	direction.sub			(m_path[m_current_travel_point + 1].position, m_path[m_current_travel_point].position);
 
-	if (direction.square_magnitude() < EPS_L)
+	if (direction.square_magnitude() < EPSILON_3)
 		direction.set		(0.f,0.f,1.f);
 	else
 		direction.normalize	();

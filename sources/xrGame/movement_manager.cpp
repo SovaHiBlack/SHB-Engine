@@ -315,7 +315,7 @@ void CMovementManager::verify_detail_path		()
 
 	f32 distance = 0.f;
 	for (u32 i=detail().curr_travel_point_index() + 1, n=detail().path().size(); i<n; ++i) {
-		if (!restrictions().accessible(detail().path()[i].position,EPS_L)) {
+		if (!restrictions().accessible(detail().path()[i].position, EPSILON_3)) {
 			m_path_actuality	= false;
 			return;
 		}

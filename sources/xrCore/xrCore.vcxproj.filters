@@ -279,7 +279,7 @@
     <ClInclude Include="_vector2.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_vector3d.h">
+    <ClInclude Include="_vector3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_vector4.h">

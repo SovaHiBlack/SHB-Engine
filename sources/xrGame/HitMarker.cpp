@@ -5,8 +5,8 @@
 #include "..\XR_3DA\LightAnimLibrary.h"
 #include "UIStaticItem.h"
 
-static Fvector2			as_PC[5];
-static Fvector2			as_TC[5];
+static fVector2			as_PC[5];
+static fVector2			as_TC[5];
 const static u32		as_id[4 * 3] = { 0,1,4,  1,2,4,  2,3,4,  3,0,4 };
 
 CHitMarker::CHitMarker( )

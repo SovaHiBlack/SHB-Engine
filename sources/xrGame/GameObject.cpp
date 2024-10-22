@@ -327,7 +327,7 @@ BOOL CGameObject::net_Spawn		(CSE_Abstract*	DC)
 					) &&
 					can_validate_position_on_spawn()
 				)
-				Position().y		= EPS_L + ai().level_graph().vertex_plane_y(*ai_location().level_vertex(),Position().x,Position().z);
+				Position().y		= EPSILON_3 + ai().level_graph().vertex_plane_y(*ai_location().level_vertex(),Position().x,Position().z);
 		
 		}
  		inherited::net_Spawn	(DC);

@@ -351,7 +351,7 @@
     <ClInclude Include="_types.h" />
     <ClInclude Include="_type_traits.h" />
     <ClInclude Include="_vector2.h" />
-    <ClInclude Include="_vector3d.h" />
+    <ClInclude Include="_vector3.h" />
     <ClInclude Include="_vector4.h" />
   </ItemGroup>
   <ItemGroup>

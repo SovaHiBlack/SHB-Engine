@@ -9,8 +9,8 @@ struct _hw
 	Fvector		n0		;
 	Fvector		n1		;
 	u32			sun_af	;
-	Fvector2	t0		;
-	Fvector2	t1		;
+	fVector2	t0		;
+	fVector2	t1		;
 	u32			rgbh0	;
 	u32			rgbh1	;
 };

@@ -119,7 +119,7 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, f32 fDamage, f32 impulse, F
 			hd.mul(-1);
 			f32 d = -h1 + hd.getH();
 			s->wnd()->SetHeading	(d);
-			s->wnd()->SetHeadingPivot(Fvector2().set(256,512));
+			s->wnd()->SetHeadingPivot(fVector2().set(256.0f, 512.0f));
 			STOP_PROFILE;
 
 			//SetAttackEffector			();

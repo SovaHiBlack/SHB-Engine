@@ -11,6 +11,7 @@ public:
 		alRight,
 		alCenter
 	};
+
 private:
 	struct String
 	{
@@ -21,8 +22,9 @@ private:
 		u32			c;
 		EAligment	align;
 	};
+
 protected:
-	Fvector2				vHalfPixel;
+	fVector2				vHalfPixel;
 	iVector2				vTS;
 
 	EAligment				eCurrentAlignment;
@@ -30,7 +32,7 @@ protected:
 	f32						fCurrentHeight;
 	f32						fCurrentX;
 	f32						fCurrentY;
-	Fvector2				vInterval;
+	fVector2				vInterval;
 
 	Fvector 				*TCMap;
 	f32						fHeight;
@@ -75,7 +77,7 @@ public:
 
 	IC f32					GetHeight		(){return fCurrentHeight;};
 	IC void					SetInterval		(f32 x, f32 y) {vInterval.set(x,y);};
-	IC void					SetInterval		(const Fvector2& v) {vInterval.set(v);};
+	IC void					SetInterval		(const fVector2& v) {vInterval.set(v);};
 	IC void					SetAligment		(EAligment aligment){ eCurrentAlignment=aligment; }
 
 	f32					SizeOf_			(pcstr s );

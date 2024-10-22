@@ -210,7 +210,7 @@ public:
 	virtual void Execute(pcstr args) {
 		f32 id1 = 0.0f;
 		sscanf(args ,"%f",&id1);
-		if (id1 < EPS_L)
+		if (id1 < EPSILON_3)
 			Msg("Invalid time factor! (%.4f)",id1);
 		else {
 			if (!OnServer())

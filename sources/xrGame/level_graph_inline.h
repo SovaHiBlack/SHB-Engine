@@ -195,7 +195,7 @@ IC bool CLevelGraph::inside				(const u32 vertex_id, const Fvector &position, co
 	return				(inside(vertex(vertex_id),position,epsilon));
 }
 
-IC bool	CLevelGraph::inside				(const u32 vertex_id,	const Fvector2 &position) const
+IC bool	CLevelGraph::inside				(const u32 vertex_id,	const fVector2& position) const
 {
 	int					pxz	= iFloor(((position.x - header().box().min.x)/header().cell_size() + .5f))*m_row_length + iFloor((position.y - header().box().min.z)/header().cell_size() + .5f);
 	VERIFY				(pxz < (1 << MAX_NODE_BIT_COUNT) - 1);
@@ -374,25 +374,28 @@ IC	const u32 CLevelGraph::vertex_id(const CLevelGraph::CVertex *vertex) const
 	return				(u32(vertex - m_nodes));
 }
 
-IC  Fvector CLevelGraph::v3d(const Fvector2 &vector2d) const
+IC  Fvector CLevelGraph::v3d(const fVector2& vector2d) const
 {
 	return				(Fvector().set(vector2d.x,0.f,vector2d.y));
 }
 
-IC  Fvector2 CLevelGraph::v2d(const Fvector &vector3d) const
+IC  fVector2 CLevelGraph::v2d(const Fvector &vector3d) const
 {
-	return				(Fvector2().set(vector3d.x,vector3d.z));
+	return				(fVector2().set(vector3d.x,vector3d.z));
 }
 
 template <bool bAssignY, typename T>
-IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvector2 &start_point, const Fvector2 &finish_point, xr_vector<T> &tpaOutputPoints, const T &example, bool bAddFirstPoint, bool bClearPath) const
+IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const fVector2& start_point, const fVector2& finish_point, xr_vector<T> &tpaOutputPoints, const T &example, bool bAddFirstPoint, bool bClearPath) const
 {
 	if (!valid_vertex_position(v3d(finish_point)))
 		return				(false);
 
 	u32						cur_vertex_id = start_vertex_id, prev_vertex_id = start_vertex_id;
 	Fbox2					box;
-	Fvector2				identity, start, dest, dir;
+	fVector2				identity;
+	fVector2				start;
+	fVector2				dest;
+	fVector2				dir;
 	T						path_node = example;
 
 	identity.x = identity.y	= header().cell_size()/2.f;
@@ -400,7 +403,7 @@ IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvector2 &
 	dest					= finish_point;
 	dir.sub					(dest,start);
 	u32						dest_xz = vertex_position(v3d(dest)).xz();
-	Fvector2				temp;
+	fVector2				temp;
 	Fvector					pos3d;
 	unpack_xz				(vertex(start_vertex_id),temp.x,temp.y);
 
@@ -440,7 +443,7 @@ IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvector2 &
 			box.min			= box.max = temp;
 			box.grow		(identity);
 			if (box.pick_exact(start,dir)) {
-				Fvector2		temp;
+				fVector2		temp;
 				temp.add		(box.min,box.max);
 				temp.mul		(.5f);
 				f32			dist = _sqr(temp.x - dest.x) + _sqr(temp.y - dest.y);
@@ -452,10 +455,13 @@ IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const Fvector2 &
 
 				cur_sqr			= dist;
 
-				Fvector2		next1, next2;
+				fVector2		next1;
+				fVector2		next2;
+
 #ifdef DEBUG
-				next1			= next2 = Fvector2().set(0.f,0.f);
+				next1			= next2 = fVector2().set(0.0f,0.0f);
 #endif
+
 				Fvector			tIntersectPoint;
 
 				switch (I) {

@@ -96,14 +96,14 @@ void light::set_active		(bool a)
 
 void	light::set_position		(const Fvector& P)
 {
-	f32	eps					=	EPS_L;	//_max	(range*0.001f,EPS_L);
+	f32	eps					= EPSILON_3;	//_max	(range*0.001f,EPSILON_3);
 	if (position.similar(P,eps))return	;
 	position.set				(P);
 	spatial_move				();
 }
 
 void	light::set_range		(f32 R)			{
-	f32	eps					=	_max	(range*0.1f,EPS_L);
+	f32	eps					=	_max	(range*0.1f, EPSILON_3);
 	if (fsimilar(range,R,eps))	return	;
 	range						= R		;
 	spatial_move				();

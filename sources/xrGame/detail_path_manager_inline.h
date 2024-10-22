@@ -94,10 +94,10 @@ IC	void CDetailPathManager::set_path_type				(const EDetailPathType path_type)
 }
 
 IC	void CDetailPathManager::adjust_point(
-	const Fvector2		&source, 
+	const fVector2&		source,
 	f32				yaw,
 	f32				magnitude,
-	Fvector2			&dest
+	fVector2&		dest
 ) const
 {
 	dest.x				= -_sin(yaw);

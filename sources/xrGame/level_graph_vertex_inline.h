@@ -104,7 +104,7 @@ IC CLevelGraph::ELineIntersections  CLevelGraph::intersect(
 	* same side of line 1, the line segments do not intersect.
 	*/
 
-	if ((r3*r4 > EPS) && !fis_zero(r3,EPS_L) && !fis_zero(r4,EPS_L))     return (eLineIntersectionNone);
+	if ((r3*r4 > EPS) && !fis_zero(r3, EPSILON_3) && !fis_zero(r4, EPSILON_3))     return (eLineIntersectionNone);
 
 	/* Compute a2, b2, c2 */
 
@@ -122,7 +122,7 @@ IC CLevelGraph::ELineIntersections  CLevelGraph::intersect(
 	* not intersect.
 	*/
 
-	if ((r1*r2 > EPS) && !fis_zero(r1,EPS_L) && !fis_zero(r2,EPS_L))     return (eLineIntersectionNone);
+	if ((r1*r2 > EPS) && !fis_zero(r1, EPSILON_3) && !fis_zero(r2, EPSILON_3))     return (eLineIntersectionNone);
 
 	// Check for equality
 	if (fis_zero(r1*r2) && fis_zero(r3*r4)) return eLineIntersectionEqual;
@@ -216,12 +216,12 @@ IC CLevelGraph::ELineIntersections  CLevelGraph::intersect_no_check(
 
 IC bool CLevelGraph::similar(const Fvector &tPoint0, const Fvector &tPoint1) const
 {
-	return((_abs(tPoint0.x - tPoint1.x) < EPS_L) && (_abs(tPoint0.z - tPoint1.z) < EPS_L));
+	return((_abs(tPoint0.x - tPoint1.x) < EPSILON_3) && (_abs(tPoint0.z - tPoint1.z) < EPSILON_3));
 }
 
 IC bool CLevelGraph::inside(const Fvector &tPoint, const CLevelGraph::SContour &tContour) const
 {
-	return((tContour.v1.x - EPS_L <= tPoint.x) && (tContour.v1.z - EPS_L <= tPoint.z) && (tContour.v3.x + EPS_L >= tPoint.x) && (tContour.v3.z + EPS_L >= tPoint.z));
+	return((tContour.v1.x - EPSILON_3 <= tPoint.x) && (tContour.v1.z - EPSILON_3 <= tPoint.z) && (tContour.v3.x + EPSILON_3 >= tPoint.x) && (tContour.v3.z + EPSILON_3 >= tPoint.z));
 }
 
 IC void CLevelGraph::intersect(SSegment &tSegment, const SContour &tContour0, const SContour &tContour1) const
@@ -439,10 +439,10 @@ IC bool CLevelGraph::intersect(Fvector& dst, const Fvector& v1, const Fvector& v
 	f32		bary1 = (T.x-v1.x)/lx;
 	f32		bary2 = (T.z-v1.z)/lz;
 
-	if (fis_zero(lx,EPS_L))
+	if (fis_zero(lx, EPSILON_3))
 		bary1	= bary2;
 
-	if (fis_zero(lz,EPS_L))
+	if (fis_zero(lz, EPSILON_3))
 		bary2	= bary1;
 
 	f32		bary = (bary1+bary2)/2;
@@ -564,12 +564,12 @@ IC	bool CLevelGraph::check_vertex_in_direction		(u32 start_vertex_id, const fVec
 
 IC	u32 CLevelGraph::check_position_in_direction(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_position) const
 {
-	return					(check_position_in_direction(start_vertex_id,Fvector2().set(start_position.x,start_position.z),Fvector2().set(finish_position.x,finish_position.z)));
+	return					(check_position_in_direction(start_vertex_id, fVector2().set(start_position.x,start_position.z), fVector2().set(finish_position.x,finish_position.z)));
 }
 
 IC	bool CLevelGraph::check_vertex_in_direction(u32 start_vertex_id, const Fvector &start_position, u32 finish_vertex_id) const
 {
-	return					(check_vertex_in_direction(start_vertex_id,Fvector2().set(start_position.x,start_position.z),finish_vertex_id));
+	return					(check_vertex_in_direction(start_vertex_id, fVector2().set(start_position.x,start_position.z),finish_vertex_id));
 }
 
 template <class _predicate>

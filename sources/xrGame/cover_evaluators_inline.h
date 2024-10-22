@@ -38,8 +38,8 @@ IC	void CCoverEvaluatorBase::set_inertia				(u32 inertia_time)
 bool CCoverEvaluatorBase::inertia						(f32 radius)
 {
 //	m_actuality				= m_actuality && fsimilar(m_last_radius,radius);
-//	m_actuality				= m_actuality && ((m_last_radius + EPS_L) >= radius);
-	bool					radius_criteria = ((m_last_radius + EPS_L) >= radius);
+//	m_actuality				= m_actuality && ((m_last_radius + EPSILON_3) >= radius);
+	bool					radius_criteria = ((m_last_radius + EPSILON_3) >= radius);
 	bool					time_criteria = (Device.dwTimeGlobal < m_last_update + m_inertia_time);
 
 	m_last_radius			= radius;

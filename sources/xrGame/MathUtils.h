@@ -367,7 +367,7 @@ IC void				restrict_vector_in_dir				(Fvector& V, const Fvector& dir)
 
 IC bool				check_obb_sise						(Fobb& obb)
 {
-	return (!fis_zero(obb.m_halfsize.x, EPS_L) || !fis_zero(obb.m_halfsize.y, EPS_L) || !fis_zero(obb.m_halfsize.z, EPS_L));
+	return (!fis_zero(obb.m_halfsize.x, EPSILON_3) || !fis_zero(obb.m_halfsize.y, EPSILON_3) || !fis_zero(obb.m_halfsize.z, EPSILON_3));
 }
 
 IC f32			fsignum								(f32 val)

@@ -576,7 +576,7 @@ void CLevelGraph::draw_game_graph	()
 							t1 = t2;
 						}
 					}
-					if (tpALifeMonsterAbstract->m_fDistanceToPoint > EPS_L) {
+					if (tpALifeMonsterAbstract->m_fDistanceToPoint > EPSILON_3) {
 						Fvector t1 = ai().game_graph().vertex(tpALifeMonsterAbstract->m_tGraphID)->game_point();
 						Fvector t2 = ai().game_graph().vertex(tpALifeMonsterAbstract->m_tNextGraphID)->game_point();
 						t2.sub(t1);

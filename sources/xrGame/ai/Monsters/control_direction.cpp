@@ -48,7 +48,7 @@ void CControlDirection::update_frame()
 	// поправка угловой скорости в соответствии с текущей и таргетовой линейной скоростями
 	// heading speed correction
 	if (!fis_zero(m_man->movement().velocity_current()) && !fis_zero(m_man->movement().velocity_target()) && m_data.linear_dependency)
-		m_heading.current_speed	= m_data.heading.target_speed * m_man->movement().velocity_current() / (m_man->movement().velocity_target() + EPS_L);
+		m_heading.current_speed	= m_data.heading.target_speed * m_man->movement().velocity_current() / (m_man->movement().velocity_target() + EPSILON_3);
 	else 
 		velocity_lerp			(m_heading.current_speed, m_data.heading.target_speed, m_heading.current_acc, m_object->client_update_fdelta());
 

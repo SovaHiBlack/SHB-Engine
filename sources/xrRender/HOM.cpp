@@ -104,7 +104,7 @@ void CHOM::Load			()
 		rT.adjacent[2]	= (0xffffffff==adjacency[3*it+2])?((occTri*) (-1)):(m_pTris+adjacency[3*it+2]);
 		rT.flags		= clT.dummy;
 		rT.area			= Area	(v0,v1,v2);
-		if (rT.area<EPS_L)	{
+		if (rT.area< EPSILON_3)	{
 			Msg	("! Invalid HOM triangle (%f,%f,%f)-(%f,%f,%f)-(%f,%f,%f)",VPUSH(v0),VPUSH(v1),VPUSH(v2));
 		}
 		rT.plane.build	(v0,v1,v2);
@@ -235,7 +235,7 @@ void CHOM::Render		(CFrustum& base)
 	Device.Statistic->RenderCALC_HOM.End	();
 }
 
-ICF	BOOL	xform_b0	(Fvector2& min, Fvector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
+ICF	BOOL	xform_b0	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
 {
 	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;
 	if (z<EPS) return TRUE;
@@ -245,7 +245,7 @@ ICF	BOOL	xform_b0	(Fvector2& min, Fvector2& max, f32& minz, Fmatrix& X, f32 _x, 
 	minz		= 0.f+z*iw;
 	return FALSE;
 }
-ICF	BOOL	xform_b1	(Fvector2& min, Fvector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
+ICF	BOOL	xform_b1	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
 {
 	f32 t;
 	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;
@@ -259,7 +259,8 @@ ICF	BOOL	xform_b1	(Fvector2& min, Fvector2& max, f32& minz, Fmatrix& X, f32 _x, 
 IC	BOOL	_visible	(Fbox& B, Fmatrix& m_xform_01)
 {
 	// Find min/max points of xformed-box
-	Fvector2	min,max;
+	fVector2	min;
+	fVector2	max;
 	f32		z;
 	if (xform_b0(min,max,z,m_xform_01,B.min.x, B.min.y, B.min.z)) return TRUE;
 	if (xform_b1(min,max,z,m_xform_01,B.min.x, B.min.y, B.max.z)) return TRUE;
@@ -323,7 +324,8 @@ BOOL CHOM::visible		(sPoly& P)
 	if (!bEnabled)		return TRUE;
 
 	// Find min/max points of xformed-box
-	Fvector2	min,max;
+	fVector2	min;
+	fVector2	max;
 	f32		z;
 	
 	if (xform_b0(min,max,z,m_xform_01,P.front().x,P.front().y,P.front().z)) return TRUE;

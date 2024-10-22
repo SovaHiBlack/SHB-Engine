@@ -51,7 +51,7 @@ bool CCar::bfAssignMovement(CScriptEntityAction *tpEntityAction)
 	if (!!(l_tInput & CScriptMovementAction::eInputKeyEngineOn))	StartEngine();
 	if (!!(l_tInput & CScriptMovementAction::eInputKeyEngineOff)) StopEngine();
 
-	//if (_abs(tpEntityAction->m_tMovementAction.m_fSpeed) > EPS_L)
+	//if (_abs(tpEntityAction->m_tMovementAction.m_fSpeed) > EPSILON_3)
 		//m_current_rpm = _abs(tpEntityAction->m_tMovementAction.m_fSpeed*m_current_gear_ratio);
 
 	return	(true);
@@ -193,7 +193,7 @@ void CCar::Action(int id, u32 flags)
 {
 	if(m_car_weapon)m_car_weapon->Action(id,flags);
 }
-void CCar::SetParam(int id, Fvector2 val)
+void CCar::SetParam(int id, fVector2 val)
 {
 	if(m_car_weapon)m_car_weapon->SetParam(id,val);
 }

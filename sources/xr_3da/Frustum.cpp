@@ -216,19 +216,21 @@ void CFrustum::SimplifyPoly_AABB(sPoly* poly, Fplane& plane)
 	mView.build_camera_dir	(from,plane.n,up);
 
 	// Project and find extents
-	Fvector2	min,max;
+	fVector2	min;
+	fVector2	max;
 	min.set		(flt_max,flt_max);
 	max.set		(flt_min,flt_min);
 	for (u32 i=0; i<poly->size(); i++)
 	{
-		Fvector2 tmp;
+		fVector2 tmp;
 		mView.transform_tiny32(tmp,(*poly)[i]);
 		min.min(tmp.x,tmp.y);
 		max.max(tmp.x,tmp.y);
 	}
 
 	// Build other 2 points and inverse project
-	Fvector2	p1,p2;
+	fVector2	p1;
+	fVector2	p2;
 	p1.set		(min.x,max.y);
 	p2.set		(max.x,min.y);
 	mInv.invert	(mView);
@@ -256,10 +258,10 @@ void CFrustum::CreateOccluder(Fvector* p, int count, Fvector& vBase, CFrustum& c
 
 		// test edges to see which lies directly on plane
 		for (j=0; j<count; j++) {
-			if (cls[j]<EPS_L)
+			if (cls[j]< EPSILON_3)
 			{
 				int next = j+1; if (next>=count) next=0;
-				if (cls[next]<EPS_L) {
+				if (cls[next]< EPSILON_3) {
 					// both points lies on plane - mark as 'open'
 					edge[j] = true;
 				}

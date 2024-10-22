@@ -253,7 +253,7 @@ void CSE_ALifeHumanAbstract::vfDetachAll(bool bFictitious)
 			detach					(l_tpALifeInventoryItem,&I);
 		}
 	}
-	R_ASSERT2						((m_fCumulativeItemMass < EPS_L) && !m_iCumulativeItemVolume,"Invalid cumulative item mass or volume value");
+	R_ASSERT2						((m_fCumulativeItemMass < EPSILON_3) && !m_iCumulativeItemVolume,"Invalid cumulative item mass or volume value");
 }
 
 CSE_ALifeDynamicObject *CSE_ALifeHumanAbstract::tpfGetBestDetector()
@@ -575,7 +575,7 @@ int  CSE_ALifeHumanAbstract::ifChooseValuables()
 
 void CSE_ALifeHumanAbstract::vfAttachItems(ETakeType tTakeType)
 {
-	R_ASSERT2					(fHealth >= EPS_L,"Cannot graph().attach items to dead human");
+	R_ASSERT2					(fHealth >= EPSILON_3,"Cannot graph().attach items to dead human");
 	
 	CSE_ALifeGroupAbstract		*l_tpALifeGroupAbstract = smart_cast<CSE_ALifeGroupAbstract*>(this);
 	if (l_tpALifeGroupAbstract) {

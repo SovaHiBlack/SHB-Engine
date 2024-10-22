@@ -16,7 +16,7 @@ CWeaponShotEffector::CWeaponShotEffector()
 	bSingleShoot			= FALSE;
 	bSSActive				= FALSE;
 	m_LastSeed				= 0;
-	fRelaxSpeed				= EPS_L;
+	fRelaxSpeed				= EPSILON_3;
 	fAngleVertMax			= 0.f;
 	fAngleVertFrac			= 1.f;
 	fAngleHorzMax			= 0.f;

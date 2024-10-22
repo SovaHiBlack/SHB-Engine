@@ -27,7 +27,9 @@ public:
 	Flags32			m_Flags;
 
 	ECameraStyle	style;
-	Fvector2		lim_yaw,lim_pitch,lim_roll;
+	fVector2		lim_yaw;
+	fVector2		lim_pitch;
+	fVector2		lim_roll;
 	Fvector			rot_speed;
 
 	Fvector			vPosition;

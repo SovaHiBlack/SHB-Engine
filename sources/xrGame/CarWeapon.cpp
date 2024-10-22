@@ -254,13 +254,13 @@ void CCarWeapon::Action				(int id, u32 flags)
 			else					m_bAutoFire = false;
 		}break;
 		case eWpnToDefaultDir:{
-			SetParam(eWpnDesiredDir,Fvector2().set(m_bind_y_rot,m_bind_x_rot));
+			SetParam(eWpnDesiredDir, fVector2().set(m_bind_y_rot,m_bind_x_rot));
 		}break;
 			
 	}
 }
 
-void CCarWeapon::SetParam			(int id, Fvector2 val)
+void CCarWeapon::SetParam			(int id, fVector2 val)
 {
 	switch (id){
 		case eWpnDesiredDir:

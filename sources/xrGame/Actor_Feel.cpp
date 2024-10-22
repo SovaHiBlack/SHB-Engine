@@ -55,7 +55,7 @@ BOOL CActor::feel_touch_on_contact	(CObject *O)
 
 	Fsphere		sphere;
 	sphere.P	= Position();
-	sphere.R	= EPS_L;
+	sphere.R	= EPSILON_3;
 	if (custom_zone->inside(sphere))
 		return	(TRUE);
 

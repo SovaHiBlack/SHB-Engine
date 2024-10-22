@@ -35,7 +35,7 @@ ALife::EMeetActionType CSE_ALifeAnomalousZone::tfGetActionType(CSE_ALifeSchedula
 
 bool CSE_ALifeAnomalousZone::bfActive()
 {
-	return						(fis_zero(m_maxPower,EPS_L) || !interactive());
+	return						(fis_zero(m_maxPower, EPSILON_3) || !interactive());
 }
 
 CSE_ALifeDynamicObject *CSE_ALifeAnomalousZone::tpfGetBestDetector()

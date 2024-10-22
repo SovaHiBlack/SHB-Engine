@@ -107,9 +107,9 @@ public:
 	{
 		w(&v, sizeof(Fvector3));
 	}
-	IC void			w_fvector2(const Fvector2& v)
+	IC void			w_fvector2(const fVector2& v)
 	{
-		w(&v, sizeof(Fvector2));
+		w(&v, sizeof(fVector2));
 	}
 	IC void			w_ivector4(const Ivector4& v)
 	{
@@ -303,9 +303,9 @@ public:
 	{
 		r(&v, sizeof(Fvector3));
 	}
-	IC void			r_fvector2(Fvector2& v)
+	IC void			r_fvector2(fVector2& v)
 	{
-		r(&v, sizeof(Fvector2));
+		r(&v, sizeof(fVector2));
 	}
 	IC void			r_ivector4(Ivector4& v)
 	{

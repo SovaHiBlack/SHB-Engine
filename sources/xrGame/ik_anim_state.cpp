@@ -29,7 +29,7 @@ void	ik_anim_state::update		( CKinematicsAnimated *K, const	CBlend *b, u16 i )
  //Andy	is_step = m && b && blend_in( *b, m->get_interval( i ) );
 	VERIFY( K );
 	is_step = false;
-	if( !b || b->blendAmount <  b->blendPower - EPS_L )
+	if( !b || b->blendAmount <  b->blendPower - EPSILON_3)
 		return;
 	CMotionDef	&MD = *K->LL_GetMotionDef( b->motionID );
 

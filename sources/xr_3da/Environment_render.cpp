@@ -140,7 +140,7 @@ void CEnvironment::RenderClouds			()
 	if (0==g_pGameLevel)		return	;
 
 	// draw clouds
-	if (fis_zero(CurrentEnv.clouds_color.w,EPS_L))	return;
+	if (fis_zero(CurrentEnv.clouds_color.w, EPSILON_3))	return;
 
 	::Render->rmFar				();
 

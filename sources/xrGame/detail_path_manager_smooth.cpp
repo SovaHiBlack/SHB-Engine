@@ -35,23 +35,23 @@ IC	bool is_negative(f32 a)
 }
 
 IC	bool coincide_directions	(
-	const Fvector2	&start_circle_center,
-	const Fvector2	&start_tangent_point,
+	const fVector2&	start_circle_center,
+	const fVector2&	start_tangent_point,
 	f32			start_cross_product,
-	const Fvector2	&dest_circle_center,
-	const Fvector2	&dest_tangent_point,
+	const fVector2&	dest_circle_center,
+	const fVector2&	dest_tangent_point,
 	f32			dest_cross_product
 )
 {
 	if (fis_zero(start_cross_product)) {
-		Fvector2		circle_tangent_point_direction = Fvector2().sub(dest_tangent_point,dest_circle_center);
-		Fvector2		start_tangent_dest_tangent_direction = Fvector2().sub(dest_tangent_point,start_tangent_point);
+		fVector2		circle_tangent_point_direction = fVector2().sub(dest_tangent_point,dest_circle_center);
+		fVector2		start_tangent_dest_tangent_direction = fVector2().sub(dest_tangent_point,start_tangent_point);
 		f32				cp1 = start_tangent_dest_tangent_direction.crossproduct(circle_tangent_point_direction);
 		return			(dest_cross_product*cp1 >= 0.f);
 	}
 
-	Fvector2			circle_tangent_point_direction = Fvector2().sub(start_tangent_point,start_circle_center);
-	Fvector2			start_tangent_dest_tangent_direction = Fvector2().sub(dest_tangent_point,start_tangent_point);
+	fVector2			circle_tangent_point_direction = fVector2().sub(start_tangent_point,start_circle_center);
+	fVector2			start_tangent_dest_tangent_direction = fVector2().sub(dest_tangent_point,start_tangent_point);
 	f32				cp1 = start_tangent_dest_tangent_direction.crossproduct(circle_tangent_point_direction);
 	return				(start_cross_product*cp1 >= 0.f);
 }
@@ -73,7 +73,7 @@ bool CDetailPathManager::compute_tangent(
 	f32				dest_yaw;
 	f32				yaw1;
 	f32				yaw2;
-	Fvector2			direction;
+	fVector2			direction;
 
 	// computing 2D cross product for start point
 	direction.sub		(start.position,start_circle.center);
@@ -195,7 +195,8 @@ bool CDetailPathManager::build_circle_trajectory(
 		}
 		return			(true);
 	}
-	Fvector2			direction;
+
+	fVector2			direction;
 	Fvector				curr_pos;
 	u32					curr_vertex_id;
 	direction.sub		(position.position,position.center);
@@ -479,7 +480,7 @@ void CDetailPathManager::validate_vertex_position(STrajectoryPoint &point) const
 	center.mul				(.5f);
 	center.sub				(position);
 	center.normalize		();
-	center.mul				(EPS_L);
+	center.mul				(EPSILON_3);
 	position.add			(center);
 	point.position			= ai().level_graph().v2d(position);
 	VERIFY					(ai().level_graph().inside(point.vertex_id,point.position));
@@ -518,12 +519,12 @@ bool CDetailPathManager::init_build(
 	m_corrected_dest_position.y			= ai().level_graph().vertex_plane_y(dest.vertex_id,dest.position.x,dest.position.y);
 	m_corrected_dest_position.z			= dest.position.y;
 
-	if (start.direction.square_magnitude() < EPS_L)
+	if (start.direction.square_magnitude() < EPSILON_3)
 		start.direction.set				(0.f,1.f);
 	else
 		start.direction.normalize		();
 
-	if (dest.direction.square_magnitude() < EPS_L)
+	if (dest.direction.square_magnitude() < EPSILON_3)
 		dest.direction.set				(0.f,1.f);
 	else
 		dest.direction.normalize		();
@@ -624,8 +625,8 @@ IC	CDetailPathManager::STravelPoint CDetailPathManager::compute_better_key_point
 	CDetailPathManager::STravelPoint		result = point1;
 	f32						dist02 = point2.position.distance_to(point0.position);
 	f32						dist12 = point2.position.distance_to(point1.position);
-	Fvector2					direction21 = Fvector2().sub(point1.position,point2.position);
-	Fvector2					direction20 = Fvector2().sub(point0.position,point2.position);
+	fVector2					direction21 = fVector2().sub(point1.position,point2.position);
+	fVector2					direction20 = fVector2().sub(point0.position,point2.position);
 	direction21.normalize		();
 	direction20.normalize		();
 	f32						cos_alpha = direction21.dot(direction20);
@@ -682,10 +683,10 @@ IC	bool CDetailPathManager::better_key_point(
 	const STravelPoint	&point11 
 )
 {
-	Fvector2				direction100 = Fvector2().sub(point0.position,point10.position);
-	Fvector2				direction120 = Fvector2().sub(point2.position,point10.position);
-	Fvector2				direction101 = Fvector2().sub(point0.position,point11.position);
-	Fvector2				direction121 = Fvector2().sub(point2.position,point11.position);
+	fVector2				direction100 = fVector2().sub(point0.position,point10.position);
+	fVector2				direction120 = fVector2().sub(point2.position,point10.position);
+	fVector2				direction101 = fVector2().sub(point0.position,point11.position);
+	fVector2				direction121 = fVector2().sub(point2.position,point11.position);
 	direction100.normalize	();
 	direction120.normalize	();
 	direction101.normalize	();

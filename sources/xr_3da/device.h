@@ -59,10 +59,10 @@ public:
 	{
 		if (enabled&&!m_bNearer){
 			m_bNearer						= TRUE;
-			mProject._43					-= EPS_L;
+			mProject._43					-= EPSILON_3;
 		}else if (!enabled&&m_bNearer){
 			m_bNearer						= FALSE;
-			mProject._43					+= EPS_L;
+			mProject._43					+= EPSILON_3;
 		}
 		RCache.set_xform_project			(mProject);
 	}

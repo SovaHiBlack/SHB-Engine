@@ -67,7 +67,7 @@ protected:
 	shared_str			section;
 	EffectVec			effects;
 	xr_vector<ref_sound>sounds;
-	Fvector2			sound_dist;
+	fVector2			sound_dist;
 	iVector2			sound_period;
 	iVector2			effect_period;
 

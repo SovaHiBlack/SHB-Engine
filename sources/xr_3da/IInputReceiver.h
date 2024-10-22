@@ -10,8 +10,8 @@ public:
 	void			IR_GetMousePosScreen			(iVector2& p);
 	void			IR_GetMousePosReal				(HWND hwnd, iVector2& p);
 	void			IR_GetMousePosReal				(iVector2& p);
-	void			IR_GetMousePosIndependent		(Fvector2 &f);
-	void			IR_GetMousePosIndependentCrop	(Fvector2 &f);
+	void			IR_GetMousePosIndependent		(fVector2& f);
+	void			IR_GetMousePosIndependentCrop	(fVector2& f);
 	BOOL			IR_GetKeyState					(int dik);
 	BOOL			IR_GetBtnState					(int btn);
 	void			IR_Capture						(void);

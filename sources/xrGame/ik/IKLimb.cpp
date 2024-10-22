@@ -331,7 +331,7 @@ f32 CIKLimb::CollideFoot(f32 angle, const Fmatrix &gl_anim, Fplane &p, Fvector &
 		f32 dtoe_ax = axp.magnitude();
 		axp.sub( Fvector( ).mul( gl_anim.i, axp.dotproduct( gl_anim.i ) ) );
 		f32 dfoot = axp.magnitude( );
-		if( dtoe_ax > EPS_L &&  dfoot_tri < dtoe_ax && dfoot > EPS_L && dfoot < dtoe_ax )
+		if( dtoe_ax > EPSILON_3 &&  dfoot_tri < dtoe_ax && dfoot > EPSILON_3 && dfoot < dtoe_ax )
 		{
 			angle += asinf( dfoot_tri/dtoe_ax ) ;
 			VERIFY( _valid( angle ) );
@@ -641,7 +641,7 @@ void CIKLimb::Collide( SIKCollideData &cld, CGameObject *O, const Fmatrix &foot,
 			CDB::TRI	* tri	= Level( ).ObjectSpace.GetStaticTris( ) + R.element;
 			tri_plane( *tri, cld.m_plane );
 			cld.m_collide.add( pos, Fvector( ).mul( pick_v, R.range ) );
-			cld.clamp_down = R.range > pick_dist + EPS_L;
+			cld.clamp_down = R.range > pick_dist + EPSILON_3;
 		} else {
 			
 			IRender_Visual* V =R.O->Visual();

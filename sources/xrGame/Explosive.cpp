@@ -287,7 +287,7 @@ f32 CExplosive::TestPassEffect(const	Fvector	&source_p,	const	Fvector	&dir, f32 
 	f32 sq_ef_radius=ef_radius*ef_radius;
 	f32 dist_factor	=		sq_ef_radius/(range*range*(exp_dist_extinction_factor-1.f)+sq_ef_radius);
 	f32 shoot_factor=1.f;
-	if(range>EPS_L)
+	if(range> EPSILON_3)
 	{
 		VERIFY(!fis_zero(dir.square_magnitude()));
 		collide::ray_defs	RD		(source_p,dir,range,CDB::OPT_CULL,collide::rqtBoth);

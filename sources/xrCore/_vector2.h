@@ -2,7 +2,7 @@
 
 // Вектор на плоскости
 template <class T>
-struct _vector2
+class _vector2
 {
 public:
 	using TYPE							= T;
@@ -145,7 +145,7 @@ public:
 
 	IC TYPE			dot					(Self& p)
 	{
-		return x * p.x + y * p.y;
+		return (x * p.x + y * p.y);
 	}
 	IC TYPE			dot					(SelfCRef p) const
 	{
@@ -227,7 +227,7 @@ public:
 	TYPE&			operator[]			(s32 i) const
 	{
 		// assert: 0 <= i < 2; x and y are packed into 2*sizeof(f32) bytes
-		return (TYPE&)*(&x + i);
+		return ((TYPE&)*(&x + i));
 	}
 
 	IC SelfRef		normalize			( )
@@ -294,10 +294,6 @@ public:
 
 using iVector2							= _vector2<s32>;
 using fVector2							= _vector2<f32>;
-
-typedef _vector2<f32>		Fvector2;
-
-
 
 template <class T>
 BOOL				_valid				(const _vector2<T>& v)

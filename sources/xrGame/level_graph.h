@@ -127,7 +127,7 @@ public:
 	IC		bool	inside						(const CVertex *vertex, const Fvector &vertex_position) const;
 	IC		bool	inside						(const u32 vertex_id,	const CLevelGraph::CPosition &vertex_position) const;
 	IC		bool	inside						(const u32 vertex_id,	const Fvector &position) const;
-	IC		bool	inside						(const u32 vertex_id,	const Fvector2 &position) const;
+	IC		bool	inside						(const u32 vertex_id,	const fVector2& position) const;
 	IC		bool	inside						(const CVertex &vertex, const CLevelGraph::CPosition &vertex_position, const f32 epsilon) const;
 	IC		bool	inside						(const CVertex &vertex, const Fvector &vertex_position, const f32 epsilon) const;
 	IC		bool	inside						(const CVertex *vertex, const CLevelGraph::CPosition &vertex_position, const f32 epsilon) const;
@@ -181,19 +181,19 @@ public:
 	f32	mark_nodes_in_direction		(u32 start_vertex_id, const Fvector &start_position, const Fvector &finish_point, xr_vector<u32> &vertex_stack, xr_vector<bool> *vertex_marks) const;
 	f32	farthest_vertex_in_direction(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, u32 &finish_vertex_id, xr_vector<bool> *tpaMarks, bool check_accessability = false) const;
 			bool	create_straight_path		(u32 start_vertex_id, const Fvector &start_point, const Fvector &finish_point, xr_vector<Fvector> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
-			bool	create_straight_path		(u32 start_vertex_id, const Fvector2 &start_point, const Fvector2 &finish_point, xr_vector<Fvector> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
+			bool	create_straight_path		(u32 start_vertex_id, const fVector2& start_point, const fVector2& finish_point, xr_vector<Fvector> &tpaOutputPoints, xr_vector<u32> &tpaOutputNodes, bool bAddFirstPoint, bool bClearPath = true) const;
 	template <bool bAssignY, typename T>
-	IC		bool	create_straight_path		(u32 start_vertex_id, const Fvector2 &start_point, const Fvector2 &finish_point, xr_vector<T> &tpaOutputPoints, const T &example, bool bAddFirstPoint, bool bClearPath = true) const;
+	IC		bool	create_straight_path		(u32 start_vertex_id, const fVector2& start_point, const fVector2& finish_point, xr_vector<T> &tpaOutputPoints, const T &example, bool bAddFirstPoint, bool bClearPath = true) const;
 	template<typename T>
 	IC		void	assign_y_values				(xr_vector<T> &path);
 	template<typename P>
 	IC		void	iterate_vertices			(const Fvector &min_position, const Fvector &max_position, const P &predicate) const;
-	IC		bool	check_vertex_in_direction	(u32 start_vertex_id, const Fvector2 &start_position, u32 finish_vertex_id) const;
-	IC		u32		check_position_in_direction	(u32 start_vertex_id, const Fvector2 &start_position, const Fvector2 &finish_position) const;
-			bool	check_vertex_in_direction_slow	(u32 start_vertex_id, const Fvector2 &start_position, u32 finish_vertex_id) const;
-			u32		check_position_in_direction_slow(u32 start_vertex_id, const Fvector2 &start_position, const Fvector2 &finish_position) const;
-	IC		Fvector v3d							(const Fvector2 &vector2d) const;
-	IC		Fvector2 v2d						(const Fvector &vector3d) const;
+	IC		bool	check_vertex_in_direction	(u32 start_vertex_id, const fVector2& start_position, u32 finish_vertex_id) const;
+	IC		u32		check_position_in_direction	(u32 start_vertex_id, const fVector2& start_position, const fVector2& finish_position) const;
+			bool	check_vertex_in_direction_slow	(u32 start_vertex_id, const fVector2& start_position, u32 finish_vertex_id) const;
+			u32		check_position_in_direction_slow(u32 start_vertex_id, const fVector2& start_position, const fVector2& finish_position) const;
+	IC		Fvector v3d							(const fVector2& vector2d) const;
+	IC		fVector2 v2d						(const Fvector &vector3d) const;
 	IC		bool	valid_vertex_position		(const Fvector &position) const;
 			bool	neighbour_in_direction		(const Fvector &direction, u32 start_vertex_id) const;
 

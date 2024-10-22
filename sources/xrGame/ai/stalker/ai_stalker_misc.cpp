@@ -75,7 +75,7 @@ bool CAI_Stalker::useful		(const CItemManager *manager, const CGameObject *objec
 f32 CAI_Stalker::evaluate		(const CItemManager *manager, const CGameObject *object) const
 {
 	f32				distance = Position().distance_to_sqr(object->Position());
-	distance			= !fis_zero(distance) ? distance : EPS_L;
+	distance			= !fis_zero(distance) ? distance : EPSILON_3;
 	return				(distance);
 }
 

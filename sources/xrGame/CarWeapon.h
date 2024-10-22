@@ -39,7 +39,7 @@ public:
 				void		Load				(pcstr section);
 				void		UpdateCL			();
 			void			Action				(int id, u32 flags);
-			void			SetParam			(int id, Fvector2 val);
+			void			SetParam			(int id, fVector2 val);
 			void			SetParam			(int id, Fvector val);
 			bool			AllowFire			();
 			f32			FireDirDiff			();
@@ -62,7 +62,7 @@ private:
 	Fvector					m_fire_dir,m_fire_pos, m_fire_norm;
 
 	Fmatrix					m_i_bind_x_xform, m_i_bind_y_xform, m_fire_bone_xform;
-	Fvector2				m_lim_x_rot, m_lim_y_rot; //in bone space
+	fVector2				m_lim_x_rot, m_lim_y_rot; //in bone space
 	f32						m_min_gun_speed;
 	f32						m_max_gun_speed;
 	CCartridge*				m_Ammo;

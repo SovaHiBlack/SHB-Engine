@@ -50,7 +50,7 @@ KeyIt CEnvelope::FindKey(f32 t, f32 eps)
 void CEnvelope::InsertKey(f32 t, f32 val)
 {	
 	for (KeyIt k_it=keys.begin(); k_it!=keys.end(); k_it++){
-		if (fsimilar((*k_it)->time,t,EPS_L)){ 
+		if (fsimilar((*k_it)->time,t, EPSILON_3)){
 			(*k_it)->value= val;
 			return;
 		}
@@ -70,7 +70,7 @@ void CEnvelope::InsertKey(f32 t, f32 val)
 void CEnvelope::DeleteKey(f32 t)
 {	
 	for (KeyIt k_it=keys.begin(); k_it!=keys.end(); k_it++){
-		if (fsimilar((*k_it)->time,t,EPS_L)){ 
+		if (fsimilar((*k_it)->time,t, EPSILON_3)){
 			xr_delete(*k_it);
 			keys.erase(k_it);
 			return;

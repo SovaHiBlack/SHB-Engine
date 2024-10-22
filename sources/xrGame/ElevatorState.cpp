@@ -30,7 +30,7 @@ f32 CElevatorState::ClimbDirection()
 	Fvector d;
 	m_ladder->DToPlain(m_character,d);
 	f32 dir=m_character->ControlAccel().dotproduct(d);
-	if(dir>EPS_L)dir*=(m_character->CamDir().y+lookup_angle_sine);
+	if(dir> EPSILON_3)dir*=(m_character->CamDir().y+lookup_angle_sine);
 	return dir;
 }
 
@@ -260,12 +260,12 @@ bool CElevatorState::GetControlDir(Fvector& dir)
 	case	clbNone			: 		break;			
 	case 	clbNearUp		:		dist= m_ladder->DDUpperP(m_character,d);
 									if(	dXZDotNormalized(d,m_character->CamDir())>look_angle_cosine&&
-										!fis_zero(dist,EPS_L)&&m_character->ControlAccel().dotproduct(d)>0.f) dir.set(d);
+										!fis_zero(dist, EPSILON_3)&&m_character->ControlAccel().dotproduct(d)>0.f) dir.set(d);
 									break;						
 	case 	clbNearDown		:		
 									dist=m_ladder->DDLowerP(m_character,d);
 									if(dXZDotNormalized(d,m_character->CamDir())>look_angle_cosine&&
-									   !fis_zero(dist,EPS_L)&&m_character->ControlAccel().dotproduct(d)>0.f) dir.set(d);
+									   !fis_zero(dist, EPSILON_3)&&m_character->ControlAccel().dotproduct(d)>0.f) dir.set(d);
 									break;					
 	case 	clbClimbingUp	:		m_ladder->DDAxis(dir);
 									m_ladder->DDToAxis(m_character,d);

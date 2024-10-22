@@ -37,9 +37,9 @@ int dcTriListCollider::CollideBox(dxGeom* Box, int Flags, dContactGeom* Contacts
 	dVector3 BoxSides;
 	dGeomBoxGetLengths(Box,BoxSides);
 	dReal* R=const_cast<dReal*>(dGeomGetRotation(Box));
-	AABB.x=(dFabs(BoxSides[0]*R[0])+dFabs(BoxSides[1]*R[1])+dFabs(BoxSides[2]*R[2]))/2.f +10.f*EPS_L;
-	AABB.y=(dFabs(BoxSides[0]*R[4])+dFabs(BoxSides[1]*R[5])+dFabs(BoxSides[2]*R[6]))/2.f +10.f*EPS_L;
-	AABB.z=(dFabs(BoxSides[0]*R[8])+dFabs(BoxSides[1]*R[9])+dFabs(BoxSides[2]*R[10]))/2.f+10.f*EPS_L;
+	AABB.x=(dFabs(BoxSides[0]*R[0])+dFabs(BoxSides[1]*R[1])+dFabs(BoxSides[2]*R[2]))/2.f +10.f* EPSILON_3;
+	AABB.y=(dFabs(BoxSides[0]*R[4])+dFabs(BoxSides[1]*R[5])+dFabs(BoxSides[2]*R[6]))/2.f +10.f* EPSILON_3;
+	AABB.z=(dFabs(BoxSides[0]*R[8])+dFabs(BoxSides[1]*R[9])+dFabs(BoxSides[2]*R[10]))/2.f+10.f* EPSILON_3;
 	dBodyID box_body=dGeomGetBody(Box);
 	if(box_body)	{
 		const dReal*velocity=dBodyGetLinearVel(box_body);

@@ -40,7 +40,7 @@ void animation_movement_controller::OnFrame( )
 		deinitialize();
 		return;
 	}
-	if( m_control_blend->blend == CBlend::eAccrue && m_control_blend->blendPower - EPS_L > m_control_blend->blendAmount )
+	if( m_control_blend->blend == CBlend::eAccrue && m_control_blend->blendPower - EPSILON_3 > m_control_blend->blendAmount )
 			m_control_blend->timeCurrent =0;
 }
 

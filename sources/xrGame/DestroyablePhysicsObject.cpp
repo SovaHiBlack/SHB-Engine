@@ -113,11 +113,11 @@ void CDestroyablePhysicsObject::Destroy()
 
 		Fvector hdir;hdir.set(CPHDestroyable::FatalHit().direction());
 
-		if(fsimilar(_abs(m.j.dotproduct(hdir)),1.f,EPS_L))
+		if(fsimilar(_abs(m.j.dotproduct(hdir)),1.f, EPSILON_3))
 		{
 			do {
 				hdir.random_dir();
-			} while(fsimilar(_abs(m.j.dotproduct(hdir)),1.f,EPS_L));
+			} while(fsimilar(_abs(m.j.dotproduct(hdir)),1.f, EPSILON_3));
 		}
 		m.i.crossproduct(m.j,hdir);m.i.normalize();
 		m.k.crossproduct(m.i,m.j);

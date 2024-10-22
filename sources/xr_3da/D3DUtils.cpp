@@ -119,7 +119,7 @@ void CDrawUtilities::UpdateGrid(int number_of_cell, f32 square_size, int subdiv)
 // grid
 	int m_GridSubDiv[2];
 	int m_GridCounts[2];
-	Fvector2 m_GridStep;
+	fVector2 m_GridStep;
 
 	m_GridStep.set(square_size,square_size);
 	m_GridSubDiv[0] = subdiv;
@@ -818,7 +818,7 @@ void CDrawUtilities::DrawCone	(const Fmatrix& parent, const Fvector& apex, const
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawPlane	(const Fvector& p, const Fvector& n, const Fvector2& scale, u32 clr_s, u32 clr_w, BOOL bCull, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawPlane	(const Fvector& p, const Fvector& n, const fVector2& scale, u32 clr_s, u32 clr_w, BOOL bCull, BOOL bSolid, BOOL bWire)
 {
 	if (n.square_magnitude()< EPSILON_7) return;
 	// build final rotation / translation
@@ -865,7 +865,7 @@ void CDrawUtilities::DrawPlane	(const Fvector& p, const Fvector& n, const Fvecto
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawPlane  (const Fvector& center, const Fvector2& scale, const Fvector& rotate, u32 clr_s, u32 clr_w, BOOL bCull, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawPlane  (const Fvector& center, const fVector2& scale, const Fvector& rotate, u32 clr_s, u32 clr_w, BOOL bCull, BOOL bSolid, BOOL bWire)
 {
 	Fmatrix M;
 	M.setHPB		(rotate.y,rotate.x,rotate.z);

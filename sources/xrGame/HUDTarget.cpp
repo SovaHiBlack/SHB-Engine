@@ -237,7 +237,7 @@ void CHUDTarget::Render( )
 		u32			vOffset;
 		FVF::TL* pv = (FVF::TL*)RCache.Vertex.Lock(4, hGeom.stride( ), vOffset);
 
-		Fvector2		scr_size;
+		fVector2		scr_size;
 		scr_size.set(f32(Device.dwWidth), f32(Device.dwHeight));
 		f32			size_x = scr_size.x * di_size;
 		f32			size_y = scr_size.y * di_size;

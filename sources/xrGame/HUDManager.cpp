@@ -314,7 +314,7 @@ void CHUDManager::RenderUI( )
 		pFont->SetColor(0x80FF0000);
 		pcstr _str = CStringTable( ).translate("st_game_paused").c_str( );
 
-		Fvector2			_pos;
+		fVector2			_pos;
 		_pos.set(UI_BASE_WIDTH / 2.0f, UI_BASE_HEIGHT / 2.0f);
 		UI( )->ClientToScreenScaled(_pos);
 		pFont->SetAligment(CGameFont::alCenter);

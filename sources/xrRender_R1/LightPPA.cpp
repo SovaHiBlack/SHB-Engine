@@ -77,7 +77,7 @@ void CLightR_Manager::render_point	()
 		RCache.set_c		(hPPAcolor,factor.r,factor.g,factor.b,1);
 		{
 			// Build bbox
-			f32				size_f	= PPL.range+EPS_L;
+			f32				size_f	= PPL.range+EPSILON_3;
 			Fvector				size;	
 			size.set			(size_f,size_f,size_f);
 

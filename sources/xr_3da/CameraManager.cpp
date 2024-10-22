@@ -325,7 +325,7 @@ void CCameraManager::ApplyDevice (f32 _viewport_near)
 		T->set_gray					(pp_affected.gray);
 		T->set_noise				(pp_affected.noise.intensity);
 
-		clamp						(pp_affected.noise.grain,EPS_L,1000.0f);
+		clamp						(pp_affected.noise.grain, EPSILON_3,1000.0f);
 
 		T->set_noise_scale			(pp_affected.noise.grain);
 

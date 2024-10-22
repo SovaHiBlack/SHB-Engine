@@ -47,9 +47,9 @@ void CSE_ALifeMonsterAbstract::update								()
 		if (move_offline() && (m_tNextGraphID != m_tGraphID)) {
 			ALife::_TIME_ID				tCurTime = ai().alife().time_manager().game_time();
 			m_fDistanceFromPoint		+= f32(tCurTime - m_tTimeID)/1000.f/ai().alife().time_manager().normal_time_factor()*m_fCurSpeed;
-			if (m_fDistanceToPoint - m_fDistanceFromPoint < EPS_L) {
+			if (m_fDistanceToPoint - m_fDistanceFromPoint < EPSILON_3) {
 				bContinue = true;
-				if ((m_fDistanceFromPoint - m_fDistanceToPoint > EPS_L) && (m_fCurSpeed > EPS_L))
+				if ((m_fDistanceFromPoint - m_fDistanceToPoint > EPSILON_3) && (m_fCurSpeed > EPSILON_3))
 					m_tTimeID			= tCurTime - ALife::_TIME_ID(iFloor((m_fDistanceFromPoint - m_fDistanceToPoint)*1000.f/m_fCurSpeed));
 				m_fDistanceToPoint		= m_fDistanceFromPoint	= 0.0f;
 				m_tPrevGraphID			= m_tGraphID;
@@ -154,7 +154,7 @@ ALife::EMeetActionType	CSE_ALifeMonsterAbstract::tfGetActionType(CSE_ALifeSchedu
 bool CSE_ALifeMonsterAbstract::bfActive()
 {
 	CSE_ALifeGroupAbstract		*l_tpALifeGroupAbstract = smart_cast<CSE_ALifeGroupAbstract*>(this);
-	return						(/**/interactive() && /**/((l_tpALifeGroupAbstract && (l_tpALifeGroupAbstract->m_wCount > 0)) || (!l_tpALifeGroupAbstract && (fHealth > EPS_L))));
+	return						(/**/interactive() && /**/((l_tpALifeGroupAbstract && (l_tpALifeGroupAbstract->m_wCount > 0)) || (!l_tpALifeGroupAbstract && (fHealth > EPSILON_3))));
 }
 
 CSE_ALifeDynamicObject *CSE_ALifeMonsterAbstract::tpfGetBestDetector()

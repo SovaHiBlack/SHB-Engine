@@ -20,7 +20,7 @@ void bonesBone::Set(CBoneInstance *b, u8 a, f32 ty, f32 cy, f32 r_s)
 
 bool bonesBone::NeedTurn()
 {
-	if (!fsimilar(params.cur_yaw, params.target_yaw, EPS_L)) return true;
+	if (!fsimilar(params.cur_yaw, params.target_yaw, EPSILON_3)) return true;
 	return false;
 }
 

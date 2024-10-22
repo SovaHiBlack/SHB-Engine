@@ -273,7 +273,7 @@ virtual void ApplyDamage			(u16 level);
 		u32				open_time;
 		struct SDoorway
 		{
-		Fvector2		door_plane_ext;
+			fVector2		door_plane_ext;
 		_vector2<int>	door_plane_axes;
 			SDoor			*door;
 				 SDoorway	();
@@ -281,7 +281,7 @@ virtual void ApplyDamage			(u16 level);
 			void Init		(SDoor	*adoor);
 			void Trace		(const Fvector &point,const Fvector &dir);
 		};
-		Fvector2		door_plane_ext;
+		fVector2		door_plane_ext;
 		_vector2<int>	door_plane_axes;
 		Fvector			door_dir_in_door;
 		Fmatrix			closed_door_form_in_object;
@@ -568,7 +568,7 @@ public:
 	virtual void			ResetScriptData				(void *P=0);
 
 	virtual void			Action						(int id, u32 flags);
-	virtual void			SetParam					(int id, Fvector2 val);
+	virtual void			SetParam					(int id, fVector2 val);
 	virtual void			SetParam					(int id, Fvector val);
 			bool			HasWeapon					();
 			bool			WpnCanHit					();
