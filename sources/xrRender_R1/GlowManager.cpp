@@ -261,7 +261,7 @@ void CGlowManager::render_selected()
 	u32				pos = 0, count;
 	ref_shader		T;
 
-	Fplane			NP;
+	fPlane3			NP;
 	NP.build		(Device.vCameraPosition,Device.vCameraDirection);
 
 	f32		dlim2	= MAX_GlowsDist2;

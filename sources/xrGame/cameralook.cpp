@@ -26,7 +26,7 @@ CCameraLook::~CCameraLook()
 void CCameraLook::Update(Fvector& point, Fvector& /**noise_dangle/**/)
 {
 	vPosition.set		(point);
-	Fmatrix mR;
+	fMatrix4x4 mR;
 	mR.setHPB			(-yaw,-pitch,-roll);
 
 	vDirection.set		(mR.k);

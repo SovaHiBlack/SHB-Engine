@@ -380,7 +380,7 @@ DEFINE_VECTOR(BOOL, BOOLVec, BOOLIt);
 DEFINE_VECTOR(BOOL*, LPBOOLVec, LPBOOLIt);
 DEFINE_VECTOR(fRect, FrectVec, FrectIt);
 DEFINE_VECTOR(iRect, IrectVec, IrectIt);
-DEFINE_VECTOR(Fplane, PlaneVec, PlaneIt);
+DEFINE_VECTOR(fPlane3, PlaneVec, PlaneIt);
 DEFINE_VECTOR(fVector2, Fvector2Vec, Fvector2It);
 DEFINE_VECTOR(Fvector, FvectorVec, FvectorIt);
 DEFINE_VECTOR(Fvector*, LPFvectorVec, LPFvectorIt);

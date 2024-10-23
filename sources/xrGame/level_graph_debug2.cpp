@@ -132,7 +132,8 @@ void CLevelGraph::draw_nodes	()
 			}
 
 			// unpack plane
-			Fplane PL; Fvector vNorm;
+			fPlane3 PL;
+			Fvector vNorm;
 			pvDecompress(vNorm,N.plane());
 			PL.build	(PC,vNorm);
 

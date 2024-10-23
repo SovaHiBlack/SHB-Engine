@@ -17,10 +17,11 @@ private:
 	// Debug
 	xrCriticalSection					Lock;
 	CDB::MODEL							Static;
-	Fbox								m_BoundingVolume;
+	fBox3								m_BoundingVolume;
 	xrXRC								xrc;				// MT: dangerous
 	collide::rq_results					r_temp;				// MT: dangerous
 	xr_vector<ISpatial*>				r_spatial;			// MT: dangerous
+
 public:
 
 #ifdef DEBUG
@@ -50,7 +51,7 @@ public:
 	// General collision query
 	BOOL								RayQuery			( collide::rq_results& dest, const collide::ray_defs& rq, collide::rq_callback* cb, LPVOID user_data, collide::test_callback* tb, CObject* ignore_object);
 	BOOL								RayQuery			( collide::rq_results& dest, ICollisionForm* target, const collide::ray_defs& rq);
-	// void								BoxQuery			( collide::rq_results& dest, const Fbox& B, const Fmatrix& M, u32 flags=clGET_TRIS|clGET_BOXES|clQUERY_STATIC|clQUERY_DYNAMIC);
+	// void								BoxQuery			( collide::rq_results& dest, const fBox3& B, const Fmatrix& M, u32 flags=clGET_TRIS|clGET_BOXES|clQUERY_STATIC|clQUERY_DYNAMIC);
 
 	int									GetNearest			( xr_vector<CObject*>&	q_nearest, ICollisionForm *obj, f32 range );
 	int									GetNearest			( xr_vector<CObject*>&	q_nearest, const Fvector &point, f32 range, CObject* ignore_object );
@@ -59,7 +60,7 @@ public:
 	Fvector*							GetStaticVerts		() { return Static.get_verts(); }
 	CDB::MODEL*							GetStaticModel		() { return &Static;			}
 
-	const Fbox&							GetBoundingVolume	() { return m_BoundingVolume;}
+	const fBox3&							GetBoundingVolume	() { return m_BoundingVolume;}
 
 	// Debugging
 #ifdef DEBUG

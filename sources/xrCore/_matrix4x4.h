@@ -26,11 +26,11 @@
 // NOTE_4: The rotation sequence is ZXY
 
 template <class T>
-struct _matrix
+class _matrix4x4
 {
 public:
 	typedef T			TYPE;
-	typedef _matrix<T>	Self;
+	typedef _matrix4x4<T>	Self;
 	typedef Self& SelfRef;
 	typedef const Self& SelfCRef;
 	typedef _vector3<T>	Tvector;
@@ -661,13 +661,13 @@ public:
 	}
 };
 
-typedef		_matrix<f32>	Fmatrix;
-typedef		_matrix<double>	Dmatrix;
+typedef		_matrix4x4<f32>	Fmatrix;
+typedef		_matrix4x4<double>	Dmatrix;
 
-typedef _matrix<f32> fMatrix4x4;
+typedef _matrix4x4<f32> fMatrix4x4;
 
 template <class T>
-BOOL	_valid(const _matrix<T>& m)
+BOOL	_valid(const _matrix4x4<T>& m)
 {
 	return
 		_valid(m.i) && _valid(m._14_) &&

@@ -318,11 +318,11 @@ void CArtefact::UpdateXForm()
 		boneL = boneR2;
 
 		V->CalculateBones	();
-		Fmatrix& mL			= V->LL_GetTransform(u16(boneL));
-		Fmatrix& mR			= V->LL_GetTransform(u16(boneR));
+		fMatrix4x4& mL			= V->LL_GetTransform(u16(boneL));
+		fMatrix4x4& mR			= V->LL_GetTransform(u16(boneR));
 
 		// Calculate
-		Fmatrix				mRes;
+		fMatrix4x4				mRes;
 		Fvector				R,D,N;
 		D.sub				(mL.c,mR.c);	D.normalize_safe();
 		R.crossproduct		(mR.j,D);		R.normalize_safe();

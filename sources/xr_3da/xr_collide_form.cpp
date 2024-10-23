@@ -59,15 +59,15 @@ bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector& e_center)
 
 IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, const Fvector &D, f32& R, BOOL bCull)
 {
-	Fbox E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
+	fBox3 E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
 	// XForm world-2-local
 	Fvector	SL,DL,PL;
 	IM.transform_tiny	(SL,S);
 	IM.transform_dir	(DL,D);
 
 	// Actual test
-	Fbox::ERP_Result rp_res = E.Pick2(SL,DL,PL);
-	if ((rp_res==Fbox::rpOriginOutside)||(!bCull&&(rp_res==Fbox::rpOriginInside))){
+	fBox3::ERP_Result rp_res = E.Pick2(SL,DL,PL);
+	if ((rp_res== fBox3::rpOriginOutside)||(!bCull&&(rp_res== fBox3::rpOriginInside))){
 		f32 d = PL.distance_to_sqr(SL);
 		if (d<R*R) {
 			R		= _sqrt(d);
@@ -166,7 +166,7 @@ void CCF_Skeleton::BuildTopLevel()
 {
 	dwFrameTL			= Device.dwFrame;
 	IRender_Visual* K	= owner->Visual();
-	Fbox& B				= K->vis.box;
+	fBox3& B				= K->vis.box;
 	bv_box.min.average	(B.min);
 	bv_box.max.average	(B.max);
 	bv_box.grow			(0.05f);
@@ -275,7 +275,7 @@ BOOL CCF_EventBox::Contact(CObject* O)
 BOOL CCF_EventBox::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 {	return FALSE; }
 /*
-void CCF_EventBox::_BoxQuery(const Fbox& B, const Fmatrix& M, u32 flags)
+void CCF_EventBox::_BoxQuery(const fBox3& B, const Fmatrix& M, u32 flags)
 {   return; }
 */
 
@@ -316,14 +316,14 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 			break;
 		case 1: // box
 			{
-				Fbox				box;
+			fBox3				box;
 				box.identity		();
 				Fmatrix& B			= shape.data.ibox;
 				Fvector				S1,D1,P;
 				B.transform_tiny	(S1,dS);
 				B.transform_dir		(D1,dD);
-				Fbox::ERP_Result	rp_res 	= box.Pick2(S1,D1,P);
-				if ((rp_res==Fbox::rpOriginOutside)||(!(Q.flags&CDB::OPT_CULL)&&(rp_res==Fbox::rpOriginInside))){
+				fBox3::ERP_Result	rp_res 	= box.Pick2(S1,D1,P);
+				if ((rp_res== fBox3::rpOriginOutside)||(!(Q.flags&CDB::OPT_CULL)&&(rp_res== fBox3::rpOriginInside))){
 					f32 d			= P.distance_to_sqr(dS);
 					if (d<range*range) {
 						range		= _sqrt(d);
@@ -339,7 +339,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 	return bHIT;
 }
 /*
-void CCF_Shape::_BoxQuery(const Fbox& B, const Fmatrix& M, u32 flags)
+void CCF_Shape::_BoxQuery(const fBox3& B, const Fmatrix& M, u32 flags)
 {   return; }
 */
 void CCF_Shape::add_sphere	(Fsphere& S )
@@ -435,7 +435,7 @@ BOOL CCF_Shape::Contact		( CObject* O )
 
 				// Build points
 				Fvector A,B[8];
-				Fplane  P;
+				fPlane3  P;
 				A.set(-.5f, -.5f, -.5f);	Q.transform_tiny(B[0],A);
 				A.set(-.5f, -.5f, +.5f);	Q.transform_tiny(B[1],A);
 				A.set(-.5f, +.5f, +.5f);	Q.transform_tiny(B[2],A);

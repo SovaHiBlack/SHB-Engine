@@ -13,7 +13,7 @@ class occTri
 public:	
 	occTri*			adjacent	[3];
 	Fvector			raster		[3];
-	Fplane			plane;
+	fPlane3			plane;
 	f32				area;
 	u32				flags;
 	u32				skip;

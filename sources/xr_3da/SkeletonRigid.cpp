@@ -46,7 +46,8 @@ void CKinematics::CalculateBones			(BOOL bForceExact)
 		UCalc_Visibox		= -(::Random.randI(psSkeletonUpdate-1));
 
 		// the update itself
-		Fbox	Box; Box.invalidate();
+		fBox3	Box;
+		Box.invalidate();
 		for (u32 b=0; b<bones->size(); b++)
 		{
 			if			(!LL_GetBoneVisible(u16(b)))		continue;

@@ -24,7 +24,7 @@ IC	f32 CSpaceRestrictionShape::radius			(const CCF_Shape::shape_def &data) const
 {
 	switch (data.type) {
 		case 0	: return(data.data.sphere.R);
-		case 1	: return(Fbox().set(Fvector().set(-.5f,-.5f,-.5f),Fvector().set(.5f,.5f,.5f)).xform(data.data.box).getradius());
+		case 1	: return(fBox3().set(Fvector().set(-.5f,-.5f,-.5f),Fvector().set(.5f,.5f,.5f)).xform(data.data.box).getradius());
 		default : NODEFAULT;
 	}
 #ifdef DEBUG

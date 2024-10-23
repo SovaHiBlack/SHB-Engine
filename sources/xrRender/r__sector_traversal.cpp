@@ -141,7 +141,7 @@ void CPortalTraverser::dbg_draw		()
 	for (u32 s=0; s<dbg_sectors.size(); s++)	{
 		CSector*	S		= (CSector*)dbg_sectors[s];
 		FVF::L		verts	[5];
-		Fbox2		bb		= S->r_scissor_merged;
+		fBox2		bb		= S->r_scissor_merged;
 		bb.min.x			= bb.min.x * 2 - 1;
 		bb.max.x			= bb.max.x * 2 - 1;
 		bb.min.y			= (1-bb.min.y) * 2 - 1;

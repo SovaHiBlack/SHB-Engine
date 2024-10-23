@@ -45,7 +45,7 @@ sPoly2D* C2DFrustum::ClipPoly	(sPoly2D& S, sPoly2D& D) const
 	for (u32 i=0; i<planes.size(); i++)
 	{
 		// cache plane and swap lists
-		const Fplane2 &P	= planes[i]	;
+		const fPlane2& P	= planes[i]	;
 		std::swap			(src,dest)	;
 		dest->clear			()			;
 

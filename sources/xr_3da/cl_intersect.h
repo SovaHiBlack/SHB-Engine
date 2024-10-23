@@ -214,7 +214,7 @@ namespace CDB
 	}
 	//---------------------------------------------------------------------------
 
-	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector& T, const Fvector& extA, Fvector** p, BOOL bCulling){
+	IC bool TestBBoxTri(const fMatrix3x3& A, const Fvector& T, const Fvector& extA, Fvector** p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
 		Fvector D, E[2], N;
 		E[0].sub(*p[1],*p[0]);
@@ -315,7 +315,7 @@ namespace CDB
 		return true;
 	}
 
-	IC bool TestBBoxTri(const Fmatrix33& A, const Fvector& T, const Fvector& extA, Fvector* p, BOOL bCulling){
+	IC bool TestBBoxTri(const fMatrix3x3& A, const Fvector& T, const Fvector& extA, Fvector* p, BOOL bCulling){
 		// construct triangle normal, difference of center and vertex (18 ops)
 		Fvector D, E[2], N;
 		E[0].sub(p[1],p[0]);

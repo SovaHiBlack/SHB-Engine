@@ -108,7 +108,7 @@ void CSpaceRestrictionComposition::initialize	()
 	}
 
 	// computing almost minimum sphere which covers all the almost minimum spheres
-	Fbox3						temp;
+	fBox3						temp;
 	temp.min.x					= spheres[0].P.x - spheres[0].R;
 	temp.min.y					= spheres[0].P.y - spheres[0].R;
 	temp.min.z					= spheres[0].P.z - spheres[0].R;

@@ -341,7 +341,7 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	Fvector pos;
 	GetCharacterVelocity(vel);
 	GetCharacterPosition(pos);
-	//const Fbox& box =Box();
+	//const fBox3& box =Box();
 	f32 pass=	character_exist ? _abs(Box().getradius()-boxes[id].getradius()) : boxes[id].getradius();
 	f32 max_vel=pass/2.f/fnum_it/fnum_steps/fixed_step;
 	f32 max_a_vel=M_PI/8.f/fnum_it/fnum_steps/fixed_step;

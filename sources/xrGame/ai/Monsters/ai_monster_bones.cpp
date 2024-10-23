@@ -49,7 +49,7 @@ void bonesBone::Apply()
 	if ((axis & AXIS_Z) == AXIS_Z) z = params.cur_yaw;
 
 	// создать матрицу вращения и умножить на mTransform боны
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.setHPB (-y, -x, -z);
 	bone->mTransform.mulB_43	(M);
 }

@@ -83,7 +83,7 @@ public:
 			}
 #endif // #if 0
 public:
-	static inline void DMXPStoFMX(const dReal* R,const dReal* pos,Fmatrix& aTransform){
+	static IC void DMXPStoFMX(const dReal* R,const dReal* pos,Fmatrix& aTransform){
 
 			CopyMemory(&aTransform,R,sizeof(dMatrix3));
 			aTransform.transpose();
@@ -93,7 +93,7 @@ public:
 			aTransform._34=0.f;
 			aTransform._44=1.f;
 		};
-	static inline void DMXtoFMX(const dReal* R,Fmatrix& aTransform){
+	static IC void DMXtoFMX(const dReal* R,Fmatrix& aTransform){
 			aTransform._11=R[0];
 			aTransform._12=R[4];
 			aTransform._13=R[8];
@@ -110,7 +110,7 @@ public:
 			aTransform._34=0.f;
 			aTransform._44=1.f;
 	};
-	static inline void FMX33toDMX(const Fmatrix33& aTransform,dReal* R){	
+	static IC void FMX33toDMX(const fMatrix3x3& aTransform,dReal* R){
 		R[0]=aTransform._11;
 		R[4]=aTransform._12;
 		R[8]=aTransform._13;
@@ -123,7 +123,7 @@ public:
 		R[6]=aTransform._32;
 		R[10]=aTransform._33;
 		};
-	static inline void FMXtoDMX(const Fmatrix& aTransform,dReal* R){	
+	static IC void FMXtoDMX(const Fmatrix& aTransform,dReal* R){	
 		R[0]=aTransform._11;
 		R[4]=aTransform._12;
 		R[8]=aTransform._13;

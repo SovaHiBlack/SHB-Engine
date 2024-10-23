@@ -54,7 +54,7 @@ struct clQueryCollision
 		T.T					= one;
 		tris.push_back		(T);
 	}
-	IC void				AddBox(const Fmatrix& M, const Fbox& B)
+	IC void				AddBox(const Fmatrix& M, const fBox3& B)
 	{
 		Fobb			box;
 		Fvector			c;
@@ -86,7 +86,7 @@ protected:
 	CObject*		owner;			// владелец
 	u32				dwQueryID;
 protected:
-	Fbox			bv_box;			// (Local) BBox объекта
+	fBox3			bv_box;			// (Local) BBox объекта
 	Fsphere			bv_sphere;		// (Local) Sphere 
 private:
 	ECollisionFormType	m_type;
@@ -95,10 +95,10 @@ public:
 	virtual			~ICollisionForm	( );
 
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R) = 0;
-	//virtual void	_BoxQuery		( const Fbox& B, const Fmatrix& M, u32 flags)	= 0;
+	//virtual void	_BoxQuery		( const fBox3& B, const Fmatrix& M, u32 flags)	= 0;
 
 	IC CObject*		Owner			( )	const				{ return owner;			}
-	const Fbox&		getBBox			( )	const				{ return bv_box;		}
+	const fBox3&		getBBox			( )	const				{ return bv_box;		}
 	f32			getRadius		( )	const				{ return bv_sphere.R;	}
 	const Fsphere&	getSphere		( )	const				{ return bv_sphere;		}
 	const ECollisionFormType Type	( ) const				{ return m_type;		}
@@ -152,12 +152,13 @@ public:
 class ENGINE_API	CCF_EventBox : public ICollisionForm
 {
 private:
-	Fplane			Planes[6];
+	fPlane3			Planes[6];
+
 public:
 					CCF_EventBox	( CObject* _owner );
 
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R);
-	//virtual void	_BoxQuery		( const Fbox& B, const Fmatrix& M, u32 flags);
+	//virtual void	_BoxQuery		( const fBox3& B, const Fmatrix& M, u32 flags);
 
 	BOOL			Contact			( CObject* O );
 };
@@ -183,7 +184,7 @@ public:
 					CCF_Shape		( CObject* _owner );
 
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R);
-	//virtual void	_BoxQuery		( const Fbox& B, const Fmatrix& M, u32 flags);
+	//virtual void	_BoxQuery		( const fBox3& B, const Fmatrix& M, u32 flags);
 
 	void			add_sphere		( Fsphere& S	);
 	void			add_box			( Fmatrix& B	);

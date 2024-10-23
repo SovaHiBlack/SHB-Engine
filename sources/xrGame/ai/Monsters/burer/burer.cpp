@@ -241,7 +241,7 @@ void CBurer::UpdateGraviObject()
 	CParticlesObject* ps = CParticlesObject::Create(particle_gravi_wave,TRUE);
 
 	// вычислить позицию и направленность партикла
-	Fmatrix pos; 
+	fMatrix4x4 pos;
 	pos.identity();
 	pos.k.set(dir);
 	Fvector::generate_orthonormal_basis_normalized(pos.k,pos.j,pos.i);
@@ -323,7 +323,7 @@ void	CBurer::Hit								(SHit* pHDS)
 	if (m_shield_active && (pHDS->hit_type == ALife::eHitTypeFireWound) && (Device.dwFrame != last_hit_frame)) {
 
 		// вычислить позицию и направленность партикла
-		Fmatrix pos; 
+		fMatrix4x4 pos;
 		//CParticlesPlayer::MakeXFORM(this,element,Fvector().set(0.f,0.f,1.f),p_in_object_space,pos);
 		CParticlesPlayer::MakeXFORM(this,pHDS->bone(),pHDS->dir,pHDS->p_in_bone_space,pos);
 

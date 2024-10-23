@@ -273,7 +273,7 @@ namespace CDB
         }
     }
 
-	CollectorPacked::CollectorPacked(const Fbox &bb, int apx_vertices, int apx_faces)
+	CollectorPacked::CollectorPacked(const fBox3& bb, int apx_vertices, int apx_faces)
 	{
 		// Params
 		VMscale.set		(bb.max.x-bb.min.x, bb.max.y-bb.min.y, bb.max.z-bb.min.z);

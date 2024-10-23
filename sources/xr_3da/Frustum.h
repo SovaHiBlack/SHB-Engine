@@ -35,7 +35,7 @@ ENGINE_API		extern	u32	frustum_aabb_remap[8][6];
 class ENGINE_API	CFrustum
 {
 public:
-	struct fplane	: public Fplane
+	struct fplane	: public fPlane3
 	{
 		u32			aabb_overlap_id;	// [0..7]
 		void		cache	();	
@@ -61,17 +61,17 @@ public:
 	}
 public:
 	IC void			_clear				()				{ p_count=0; }
-	void			_add				(Fplane &P);
+	void			_add				(fPlane3& P);
 	void			_add				(Fvector& P1, Fvector& P2, Fvector& P3);
 
-	void			SimplifyPoly_AABB	(sPoly* P, Fplane& plane);
+	void			SimplifyPoly_AABB	(sPoly* P, fPlane3& plane);
 
 	void			CreateOccluder		(Fvector* p,	int count,		Fvector& vBase, CFrustum& clip);
 	BOOL			CreateFromClipPoly	(Fvector* p,	int count,		Fvector& vBase, CFrustum& clip);	// returns 'false' if creation failed
 	void			CreateFromPoints	(Fvector* p,	int count,		Fvector& vBase );
 	void			CreateFromMatrix	(Fmatrix &M,	u32 mask);
 	void			CreateFromPortal	(sPoly* P,		Fvector& vPN,	Fvector& vBase, Fmatrix& mFullXFORM);
-	void			CreateFromPlanes	(Fplane* p,		int count);
+	void			CreateFromPlanes	(fPlane3* p,		int count);
 
 	sPoly*			ClipPoly			(sPoly& src, sPoly& dest) const;
 

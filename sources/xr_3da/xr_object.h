@@ -111,7 +111,7 @@ public:
 	ICF Fvector&						Position			() 					{ return renderable.xform.c;		}
 	ICF const Fvector&					Position			() 			const	{ return renderable.xform.c;		}
 	virtual f32						Radius				()			const;
-	virtual const Fbox&					BoundingBox			()			const;
+	virtual const fBox3&					BoundingBox			()			const;
 	
 	IC IRender_Sector*					Sector				()					{ return H_Root()->spatial.sector;	}
 	IC IRender_ObjectSpecific*			ROS					()					{ return renderable_ROS();			}

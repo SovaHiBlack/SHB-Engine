@@ -37,7 +37,7 @@ public:
 	virtual void __stdcall DrawFaceNormal	   	(const Fvector* p, f32 size, u32 clr)=0;
 	virtual void __stdcall DrawFaceNormal	   	(const Fvector& C, const Fvector& N, f32 size, u32 clr)=0;
 	virtual void __stdcall DrawSelectionBox		(const Fvector& center, const Fvector& size, u32* c=0)=0;
-	virtual void __stdcall DrawSelectionBox		(const Fbox& box, u32* c=0)=0;
+	virtual void __stdcall DrawSelectionBox		(const fBox3& box, u32* c=0)=0;
 	virtual void __stdcall DrawIdentSphere		(BOOL bSolid, BOOL bWire, u32 clr_s, u32 clr_w)=0;
 	virtual void __stdcall DrawIdentSpherePart	(BOOL bSolid, BOOL bWire, u32 clr_s, u32 clr_w)=0;
 	virtual void __stdcall DrawIdentCone	   	(BOOL bSolid, BOOL bWire, u32 clr_s, u32 clr_w)=0;

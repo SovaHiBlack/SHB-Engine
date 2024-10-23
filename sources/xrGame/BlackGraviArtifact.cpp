@@ -51,7 +51,7 @@ BOOL CBlackGraviArtefact::net_Spawn(CSE_Abstract* DC)
 
 	CParticlesObject* pStaticPG;
 	pStaticPG = CParticlesObject::Create("anomaly\\galantine",FALSE);
-	Fmatrix pos;
+	fMatrix4x4 pos;
 	//pos.rotateY(1.57);
 	//pos.mulA(pos);
 	pos.scale(0.7f,0.7f,0.7f);
@@ -102,7 +102,7 @@ void CBlackGraviArtefact::UpdateCLChild()
 
 			CParticlesObject* pStaticPG;
 			pStaticPG = CParticlesObject::Create(*m_sParticleName,TRUE);
-			Fmatrix pos; 
+			fMatrix4x4 pos;
 			pos.set(XFORM()); 
 			Fvector vel; 
 			//vel.sub(Position(),ps_Element(0).vPosition); 

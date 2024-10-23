@@ -29,7 +29,7 @@ IC f32 CLevelGraph::distance(const Fvector &position, const Fvector &point0, con
 	return				(position.distance_to_sqr(R));
 }
 
-IC void CLevelGraph::project_point(const Fplane &plane, Fvector &point) const
+IC void CLevelGraph::project_point(const fPlane3& plane, Fvector &point) const
 {
 	point.y				-= plane.classify(point)/plane.n.y;
 }
@@ -357,7 +357,7 @@ IC void CLevelGraph::contour(CLevelGraph::SContour &_contour, const CLevelGraph:
 	Fvector					vertex_position = this->vertex_position	(vertex->p);
 
 	// decompress plane
-	Fplane					plane;	
+	fPlane3					plane;
 	pvDecompress			(plane.n,vertex->plane());
 	plane.d					= - plane.n.dotproduct(vertex_position);
 

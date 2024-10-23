@@ -229,12 +229,12 @@ void	CRenderTarget::phase_combine	()
 
 #ifdef DEBUG
 	RCache.set_CullMode	( CULL_CCW );
-	static	xr_vector<Fplane>		saved_dbg_planes;
+	static	xr_vector<fPlane3>		saved_dbg_planes;
 	if (bDebug)		saved_dbg_planes= dbg_planes;
 	else			dbg_planes		= saved_dbg_planes;
 	if (1) for (u32 it=0; it<dbg_planes.size(); it++)
 	{
-		Fplane&		P	=	dbg_planes[it];
+		fPlane3&		P	=	dbg_planes[it];
 		Fvector		zero	;
 		zero.mul	(P.n,P.d);
 		

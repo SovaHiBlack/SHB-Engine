@@ -18,7 +18,7 @@ namespace LevelGraph {
 		ICF	u32				vertex_count			() const;
 		ICF	f32			cell_size				() const;
 		ICF	f32			factor_y				() const;
-		ICF	const Fbox		&box					() const;
+		ICF	const fBox3&	box					() const;
 		ICF const xrGUID	&guid					() const;
 	};
 

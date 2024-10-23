@@ -110,7 +110,7 @@ public:
 	light_Package												LP_normal;
 	light_Package												LP_pending;
 
-	xr_vector<Fbox3,render_alloc<Fbox3> >						main_coarse_structure;
+	xr_vector<fBox3,render_alloc<fBox3> >						main_coarse_structure;
 
 	shared_str													c_sbase			;
 	shared_str													c_lmaterial		;
@@ -223,7 +223,7 @@ public:
 	// Main 
 	virtual void					flush						();
 	virtual void					set_Object					(IRenderable*		O	);
-	virtual	void					add_Occluder				(Fbox2&	bb_screenspace	);			// mask screen region as oclluded
+	virtual	void					add_Occluder				(fBox2&	bb_screenspace	);			// mask screen region as oclluded
 	virtual void					add_Visual					(IRender_Visual*	V	);			// add visual leaf	(no culling performed at all)
 	virtual void					add_Geometry				(IRender_Visual*	V	);			// add visual(s)	(all culling performed)
 
@@ -259,7 +259,7 @@ public:
 
 	// Occlusion culling
 	virtual BOOL					occ_visible					(vis_data&	V);
-	virtual BOOL					occ_visible					(Fbox&		B);
+	virtual BOOL					occ_visible					(fBox3&		B);
 	virtual BOOL					occ_visible					(sPoly&		P);
 
 	// Main

@@ -118,7 +118,7 @@ bool CUICustomMap::GetPointerTo(const fVector2& src, f32 item_radius, fVector2& 
 	rect = clip_rect_abs;
 	rect.sub(map_rect_abs.lt.x, map_rect_abs.lt.y);
 
-	Fbox2 f_clip_rect_local;
+	fBox2 f_clip_rect_local;
 	f_clip_rect_local.set(rect.x1, rect.y1, rect.x2, rect.y2);
 
 	fVector2 f_center;

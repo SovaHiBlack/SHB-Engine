@@ -57,7 +57,7 @@ int			phIterations											= 18;
 f32		phTimefactor											= 1.f;
 f32		phBreakCommonFactor										= 0.01f;
 f32		phRigidBreakWeaponFactor								= 1.f;
-Fbox		phBoundaries											= {1000.f,1000.f,-1000.f,-1000.f};
+fBox3		phBoundaries											= {1000.0f,1000.0f,-1000.0f,-1000.0f};
 f32		ph_tri_query_ex_aabb_rate								= 1.3f;
 int			ph_tri_clear_disable_count								= 10;
 dWorldID	phWorld;

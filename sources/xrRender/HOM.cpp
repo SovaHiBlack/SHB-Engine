@@ -256,7 +256,7 @@ ICF	BOOL	xform_b1	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, 
 	t			= 0.f+z*iw;										if (t<minz)	 minz =t;
 	return FALSE;
 }
-IC	BOOL	_visible	(Fbox& B, Fmatrix& m_xform_01)
+IC	BOOL	_visible	(fBox3& B, Fmatrix& m_xform_01)
 {
 	// Find min/max points of xformed-box
 	fVector2	min;
@@ -273,14 +273,14 @@ IC	BOOL	_visible	(Fbox& B, Fmatrix& m_xform_01)
 	return Raster.test	(min.x,min.y,max.x,max.y,z);
 }
 
-BOOL CHOM::visible		(Fbox3& B)
+BOOL CHOM::visible		(fBox3& B)
 {
 	if (!bEnabled)							return TRUE;
 	if (B.contains(Device.vCameraPosition))	return TRUE;
 	return _visible		(B,m_xform_01)		;
 }
 
-BOOL CHOM::visible		(Fbox2& B, f32 depth)
+BOOL CHOM::visible		(fBox2& B, f32 depth)
 {
 	if (!bEnabled)		return TRUE;
 	return Raster.test	(B.min.x,B.min.y,B.max.x,B.max.y,depth);

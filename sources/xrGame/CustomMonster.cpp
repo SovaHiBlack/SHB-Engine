@@ -116,7 +116,7 @@ void CCustomMonster::Load		(pcstr section)
 	// m_PhysicMovementControl: General
 
 	character_physics_support()->movement()->Load			(section);
-	//Fbox	bb;
+	//fBox3	bb;
 
 	//// m_PhysicMovementControl: BOX
 	//Fvector	vBOX0_center= pSettings->r_fvector3	(section,"ph_box0_center"	);
@@ -764,7 +764,7 @@ void CCustomMonster::PitchCorrection()
 	CLevelGraph::SContour	contour;
 	ai().level_graph().contour(contour, ai_location().level_vertex_id());
 	
-	Fplane  P;
+	fPlane3  P;
 	P.build(contour.v1,contour.v2,contour.v3);
 
 	Fvector position_on_plane;

@@ -61,7 +61,7 @@ void CLevelGraph::render	()
 #endif
 }
 
-void modify							(const int &vertex_id, Fbox &bounding_box)
+void modify							(const int &vertex_id, fBox3& bounding_box)
 {
 	const CGameGraph		&graph = ai().game_graph();
 	bounding_box.modify		(graph.vertex(vertex_id)->game_point());
@@ -76,7 +76,7 @@ void CLevelGraph::update_current_info	()
 {
 	m_current_actual		= true;
 
-	Fbox					bounding_box;
+	fBox3					bounding_box;
 	bounding_box.invalidate	();
 
 	bool					found = false;

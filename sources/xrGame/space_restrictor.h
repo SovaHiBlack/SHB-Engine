@@ -22,7 +22,7 @@ private:
 	};
 
 private:
-	typedef Fplane				CPlanesArray[PLANE_COUNT];
+	typedef fPlane3				CPlanesArray[PLANE_COUNT];
 
 private:
 	struct CPlanes {

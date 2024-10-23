@@ -316,7 +316,7 @@ IC void	CIKLimb::GetPickDir(Fvector &v, const Fmatrix &gl_bone )
 	sv_state.pick =v;
 }
 
-f32 CIKLimb::CollideFoot(f32 angle, const Fmatrix &gl_anim, Fplane &p, Fvector &ax )
+f32 CIKLimb::CollideFoot(f32 angle, const Fmatrix &gl_anim, fPlane3& p, Fvector &ax )
 {
 	Fvector nc_toe; gl_anim.transform_tiny( nc_toe, m_toe_position );				//non collided toe
 	f32 dfoot_plain	 =	m_toe_position.x;//xm.i.dotproduct( nc_toe ) - xm.i.dotproduct( xm.c );	//distanse from foot bone to foot plain
@@ -343,7 +343,7 @@ f32 CIKLimb::CollideFoot(f32 angle, const Fmatrix &gl_anim, Fplane &p, Fvector &
 	return angle;
 }
 
-IC void tri_plane(const CDB::TRI &tri, Fplane &p )
+IC void tri_plane(const CDB::TRI &tri, fPlane3& p )
 {
 	Fvector*	pVerts	= Level( ).ObjectSpace.GetStaticVerts( );
 	p.n.mknormal	( pVerts[tri.verts[0]], pVerts[tri.verts[1]], pVerts[tri.verts[2]] );
@@ -353,7 +353,7 @@ IC void tri_plane(const CDB::TRI &tri, Fplane &p )
 }
 
 const f32 min_dot = 0.9f;// M_SQRT1_2;//M_SQRT1_2;
-void CIKLimb::make_shift(Fmatrix &xm, const Fplane &p,const Fvector &pick_dir )
+void CIKLimb::make_shift(Fmatrix &xm, const fPlane3& p,const Fvector &pick_dir )
 {
 	Fvector shift = pick_dir;
 	Fvector toe; xm.transform_tiny( toe, m_toe_position );
@@ -380,7 +380,8 @@ void CIKLimb::GetFootStepMatrix( Fmatrix	&m, const Fmatrix &gl_anim, const  SIKC
 		m.set( gl_anim );
 		return;
 	}
-	Fplane p = cld.m_plane;//; tri_plane( *cld.m_tri, p );
+
+	fPlane3 p = cld.m_plane;//; tri_plane( *cld.m_tri, p );
 	Fmatrix xm; xm.set( gl_anim );
 	Fvector ax; ax.crossproduct( p.n, xm.i );
 	f32 s=ax.magnitude( );

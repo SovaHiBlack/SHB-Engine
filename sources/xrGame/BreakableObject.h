@@ -26,7 +26,8 @@ static	f32				m_immunity_factor;
 static	u32					m_remove_time;
 		u32					m_break_time;
 		bool				bRemoved;
-//		Fbox				m_saved_box;
+//		fBox3				m_saved_box;
+
 public:
 					CBreakableObject	();
 	virtual			~CBreakableObject	();

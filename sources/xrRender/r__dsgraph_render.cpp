@@ -518,7 +518,7 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CF
 #include "..\XR_3DA\fmesh.h"
 #include "flod.h"
 
-void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, Fbox& BB, int sh)
+void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, fBox3& BB, int sh)
 {
 	CSector*	S			= (CSector*)_S;
 	lstVisuals.clear		();

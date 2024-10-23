@@ -206,7 +206,7 @@ public:
 	// fpu
 	ICF BOOL		_box_fpu	(const Fvector& bCenter, const Fvector& bExtents, Fvector& coord)
 	{
-		Fbox		BB;
+		fBox3		BB;
 		BB.min.sub	(bCenter,bExtents);
 		BB.max.add	(bCenter,bExtents);
         return 		isect_fpu	(BB.min,BB.max,ray,coord);

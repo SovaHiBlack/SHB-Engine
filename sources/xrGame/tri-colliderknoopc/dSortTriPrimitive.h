@@ -23,8 +23,10 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 	bool	no_last_pos	=last_pos[0]==-dInfinity;
 	const dReal* p=dGeomGetPosition(o1);
 
-	Fbox last_box;last_box.setb(data->last_aabb_pos,data->last_aabb_size);
-	Fbox box;box.setb(cast_fv(p),AABB);
+	fBox3 last_box;
+	last_box.setb(data->last_aabb_pos,data->last_aabb_size);
+	fBox3 box;
+	box.setb(cast_fv(p),AABB);
 	
 
 	CDB::TRI*       T_array                         = Level().ObjectSpace.GetStaticTris();

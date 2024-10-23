@@ -24,8 +24,11 @@ void CCameraFirstEye::Load(pcstr section)
 
 void CCameraFirstEye::Update(Fvector& point, Fvector& noise_dangle)
 {
-	Fmatrix			mR, R;
-	Fmatrix			rX, rY, rZ;
+	fMatrix4x4		mR;
+	fMatrix4x4		R;
+	fMatrix4x4		rX;
+	fMatrix4x4		rY;
+	fMatrix4x4		rZ;
 	rX.rotateX		(noise_dangle.x);
 	rY.rotateY		(-noise_dangle.y);
 	rZ.rotateZ		(noise_dangle.z);

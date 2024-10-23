@@ -104,7 +104,7 @@ public:
 	IC virtual void __stdcall DrawFaceNormal(const Fvector& C, const Fvector& N, f32 size, u32 clr){
 		Fvector P; P.mad(C,N,size);DrawLine(C,P,clr);}
 	virtual void __stdcall DrawSelectionBox(const Fvector& center, const Fvector& size, u32* c=0);
-	IC virtual void __stdcall DrawSelectionBox(const Fbox& box, u32* c=0){
+	IC virtual void __stdcall DrawSelectionBox(const fBox3& box, u32* c=0){
 		Fvector S,C;
 		box.getsize(S);
 		box.getcenter(C);

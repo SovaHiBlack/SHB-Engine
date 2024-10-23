@@ -69,7 +69,7 @@ void CBreakableObject::shedule_Update	(u32 dt)
 void CBreakableObject::UpdateCL()
 {
 	inherited::UpdateCL();
-//	Fmatrix	d;
+//	fMatrix4x4	d;
 	if(m_pPhysicsShell&&m_pPhysicsShell->isFullActive())m_pPhysicsShell->InterpolateGlobalTransform(&XFORM());
 }
 void CBreakableObject::enable_notificate()
@@ -204,10 +204,10 @@ void CBreakableObject::Split()
 {
 	//for (u16 k=0; k<K->LL_BoneCount(); k++){
 	
-		//		Fmatrix& M = K->LL_GetTransform(k);
-		//		Fmatrix R; R.setHPB(-0.1,-0.1,-0.1);
+		//		fMatrix4x4& M = K->LL_GetTransform(k);
+		//		fMatrix4x4 R; R.setHPB(-0.1,-0.1,-0.1);
 		//		M.mulB		(R);
-		//		Fmatrix S;	S.scale(0.98f,0.98f,0.98f);
+		//		fMatrix4x4 S;	S.scale(0.98f,0.98f,0.98f);
 		//		M.mulB		(S);
 	//}
 }

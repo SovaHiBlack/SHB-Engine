@@ -569,7 +569,7 @@ void CCharacterPhysicsSupport::CollisionCorrectObjPos(const Fvector& start_from,
 {
 	Fvector shift;shift.sub(start_from,m_EntityAlife.Position());
 
-	Fbox box;
+	fBox3 box;
 	if(character_create)box.set(movement()->Box());
 	else	box.set(m_EntityAlife.BoundingBox());
 	Fvector vbox;Fvector activation_pos;

@@ -4,7 +4,7 @@
 struct	vis_data
 {
 	Fsphere		sphere;				//
-	Fbox		box;				//
+	fBox3		box;				//
 	u32			marker;				// for different sub-renders
 	u32			accept_frame;		// when it was requisted accepted for main render
 	u32			hom_frame;			// when to perform test - shedule

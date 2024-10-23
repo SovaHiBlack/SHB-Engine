@@ -694,7 +694,7 @@ void CPHMovementControl::Load					(pcstr section){
 	
 	//strcpy(m_capture_bone,pSettings->r_string(section,"capture_bone"));
 	
-	Fbox	bb;
+	fBox3	bb;
 
 	// m_PhysicMovementControl: BOX
 	Fvector	vBOX1_center= pSettings->r_fvector3	(section,"ph_box1_center"	);

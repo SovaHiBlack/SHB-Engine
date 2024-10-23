@@ -226,7 +226,7 @@ void CPHElement::SetTransform(const Fmatrix &m0){
 	CPHGeometryOwner::get_mc_vs_transform(mc,m0);
 	VERIFY_BOUNDARIES2(mc,phBoundaries,PhysicsRefObject(),"mass	center	in set transform");
 	dBodySetPosition(m_body,mc.x,mc.y,mc.z);
-	Fmatrix33 m33;
+	fMatrix3x3 m33;
 	m33.set(m0);
 	dMatrix3 R;
 	PHDynamicData::FMX33toDMX(m33,R);
@@ -1165,7 +1165,7 @@ void CPHElement::add_Mass(const SBoneShape& shape,const Fmatrix& offset,const Fv
 			dMassSetCylinder(&m,1.f,2,shape.cylinder.m_radius,shape.cylinder.m_height);
 			dMassAdjust(&m,mass);
 			dMatrix3 DMatx;
-			Fmatrix33 m33;
+			fMatrix3x3 m33;
 			m33.j.set(shape.cylinder.m_direction);
 			Fvector::generate_orthonormal_basis(m33.j,m33.k,m33.i);
 			PHDynamicData::FMX33toDMX(m33,DMatx);

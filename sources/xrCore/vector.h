@@ -84,12 +84,12 @@ template <class T> struct _quaternion;
 #include "_vector3.h"
 #include "_vector2.h"
 #include "_vector4.h"
-#include "_matrix.h"
-#include "_matrix33.h"
+#include "_matrix4x4.h"
+#include "_matrix3x3.h"
 #include "_quaternion.h"
 #include "_rect.h"
-#include "_fbox.h"
-#include "_fbox2.h"
+#include "_box2.h"
+#include "_box3.h"
 #include "_obb.h"
 #include "_sphere.h"
 #include "_cylinder.h"
@@ -215,7 +215,7 @@ IC f32		angle_inertion_var(f32 src, f32 tgt, f32 min_speed, f32 max_speed, f32 c
 }
 
 template <class T>
-IC _matrix<T>& _matrix<T>::rotation(const _quaternion<T>& Q)
+IC _matrix4x4<T>& _matrix4x4<T>::rotation(const _quaternion<T>& Q)
 {
 	T xx = Q.x * Q.x; T yy = Q.y * Q.y; T zz = Q.z * Q.z;
 	T xy = Q.x * Q.y; T xz = Q.x * Q.z; T yz = Q.y * Q.z;
@@ -229,7 +229,7 @@ IC _matrix<T>& _matrix<T>::rotation(const _quaternion<T>& Q)
 }
 
 template <class T>
-IC _matrix<T>& _matrix<T>::mk_xform(const _quaternion<T>& Q, const Tvector& V)
+IC _matrix4x4<T>& _matrix4x4<T>::mk_xform(const _quaternion<T>& Q, const Tvector& V)
 {
 	T xx = Q.x * Q.x; T yy = Q.y * Q.y; T zz = Q.z * Q.z;
 	T xy = Q.x * Q.y; T xz = Q.x * Q.z; T yz = Q.y * Q.z;
@@ -244,7 +244,7 @@ IC _matrix<T>& _matrix<T>::mk_xform(const _quaternion<T>& Q, const Tvector& V)
 
 #define TRACE_QZERO_TOLERANCE	0.1f
 template <class T>
-IC _quaternion<T>& _quaternion<T>::set(const _matrix<T>& M)
+IC _quaternion<T>& _quaternion<T>::set(const _matrix4x4<T>& M)
 {
 	f32 trace;
 	f32 s;

@@ -101,7 +101,7 @@ protected:
 	IC		void				all				(xr_vector<_object_type*> &objects, CQuadNode *node, int depth) const;
 
 public:
-	IC							CQuadTree		(const Fbox		&box, f32 min_cell_size, u32 max_node_count, u32 max_list_item_count);
+	IC							CQuadTree		(const fBox3& box, f32 min_cell_size, u32 max_node_count, u32 max_list_item_count);
 	virtual						~CQuadTree		();
 	IC		void				clear			();
 	IC		void				insert			(_object_type	*object);

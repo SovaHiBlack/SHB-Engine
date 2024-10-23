@@ -223,7 +223,7 @@ void CActor::PickupInfoDraw(CObject* object)
 //.	VERIFY(item || inventory_owner);
 	if(!item)		return;
 
-	Fmatrix			res;
+	fMatrix4x4			res;
 	res.mul			(Device.mFullTransform,object->XFORM());
 	Fvector4		v_res;
 	Fvector			shift;

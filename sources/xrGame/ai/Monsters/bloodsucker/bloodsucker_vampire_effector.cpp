@@ -78,7 +78,7 @@ BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fF
 	f32 time_left_perc = fLifeTime / m_time_total;
 
 	// Инициализация
-	Fmatrix	Mdef;
+	fMatrix4x4	Mdef;
 	Mdef.identity		();
 	Mdef.j.set			(n);
 	Mdef.k.set			(d);
@@ -122,10 +122,10 @@ BOOL CVampireCameraEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fF
 	//////////////////////////////////////////////////////////////////////////
 
 	// Установить углы смещения
-	Fmatrix		R;
+	fMatrix4x4		R;
 	R.setHPB	(dangle_current.x,dangle_current.y,dangle_current.z);
 
-	Fmatrix		mR;
+	fMatrix4x4		mR;
 	mR.mul		(Mdef,R);
 
 	d.set		(mR.k);

@@ -296,7 +296,7 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector &vControlAccel, f32& Jump
 	//-------------------------------------------------------------------------------	
 
 	//transform local dir to world dir
-	Fmatrix				mOrient;
+	fMatrix4x4				mOrient;
 	mOrient.rotateY		(-r_model_yaw);
 	mOrient.transform_dir(vControlAccel);
 	//XFORM().transform_dir(vControlAccel);
@@ -355,7 +355,7 @@ void CActor::g_Orientate	(u32 mstate_rl, f32 dt)
 	angle_lerp		(r_model_yaw_delta,calc_yaw,PI_MUL_4,dt);
 
 	// build matrix
-	Fmatrix mXFORM;
+	fMatrix4x4 mXFORM;
 	mXFORM.rotateY	(-(r_model_yaw + r_model_yaw_delta));
 	mXFORM.c.set	(Position());
 	XFORM().set		(mXFORM);
@@ -387,7 +387,8 @@ bool CActor::g_LadderOrient()
 	if(mag< EPSILON_3) return false;
 	leader_norm.div(mag);
 	leader_norm.invert();
-	Fmatrix M;M.set(Fidentity);
+	fMatrix4x4 M;
+	M.set(Fidentity);
 	M.k.set(leader_norm);
 	M.j.set(0.f,1.f,0.f);
 	generate_orthonormal_basis1(M.k,M.j,M.i);

@@ -71,8 +71,8 @@ const f32		respawn_auto = 7.0f;
 static f32 IReceived = 0.0f;
 static f32 ICoincidenced = 0.0f;
 
-static Fbox		bbStandBox;
-static Fbox		bbCrouchBox;
+static fBox3		bbStandBox;
+static fBox3		bbCrouchBox;
 static fVector3	vFootCenter;
 static fVector3	vFootExt;
 
@@ -262,7 +262,7 @@ void CActor::Load(pcstr section)
 	}
 	//////////////////////////////////////////////////////////////////////////
 
-	Fbox	bb;
+	fBox3	bb;
 	fVector3	vBOX_center;
 	fVector3	vBOX_size;
 
@@ -1218,7 +1218,7 @@ void CActor::RenderIndicator(fVector3 dpos, f32 r1, f32 r2, ref_shader IndShader
 	// base rect
 
 	CBoneInstance& BI = smart_cast<CKinematics*>(Visual( ))->LL_GetBoneInstance(u16(m_head));
-	Fmatrix M;
+	fMatrix4x4 M;
 	smart_cast<CKinematics*>(Visual( ))->CalculateBones( );
 	M.mul(XFORM( ), BI.mTransform);
 
@@ -1267,7 +1267,7 @@ void CActor::RenderText(pcstr Text, fVector3 dpos, f32* pdup, u32 color)
 	}
 
 	CBoneInstance& BI = smart_cast<CKinematics*>(Visual( ))->LL_GetBoneInstance(u16(m_head));
-	Fmatrix M;
+	fMatrix4x4 M;
 	smart_cast<CKinematics*>(Visual( ))->CalculateBones( );
 	M.mul(XFORM( ), BI.mTransform);
 	//------------------------------------------------
@@ -1331,7 +1331,7 @@ void CActor::RenderText(pcstr Text, fVector3 dpos, f32* pdup, u32 color)
 	*pdup = delta_up;
 }
 
-void CActor::SetPhPosition(const Fmatrix& transform)
+void CActor::SetPhPosition(const fMatrix4x4& transform)
 {
 	if (!m_pPhysicsShell)
 	{
@@ -1339,7 +1339,7 @@ void CActor::SetPhPosition(const Fmatrix& transform)
 	}
 }
 
-void CActor::ForceTransform(const Fmatrix& m)
+void CActor::ForceTransform(const fMatrix4x4& m)
 {
 	if (!g_Alive( ))
 	{

@@ -64,7 +64,7 @@ struct hdrCFORM
 	u32		version;
 	u32		vertcount;
 	u32		facecount;
-	Fbox	aabb;
+	fBox3	aabb;
 };
 
 struct	hdrNODES
@@ -73,7 +73,7 @@ struct	hdrNODES
 	u32		count;
 	f32	size;
 	f32	size_y;
-	Fbox	aabb;
+	fBox3	aabb;
 	xrGUID	guid;
 };
 #pragma pack(pop)

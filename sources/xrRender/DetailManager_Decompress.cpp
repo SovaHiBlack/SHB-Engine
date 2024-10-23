@@ -71,14 +71,14 @@ void		CDetailManager::cache_Decompress(Slot* S)
 	u32			d_size		= iCeil	(dm_slot_size/density);
 	svector<int,dm_obj_in_slot>		selected;
 
-    u32 p_rnd	= D.sx*D.sz; // нужно для того чтобы убрать полосы(ряды)
+	u32 p_rnd	= D.sx*D.sz; // нужно для того чтобы убрать полосы(ряды)
 	CRandom				r_selection	(0x12071980^p_rnd);
 	CRandom				r_jitter	(0x12071980^p_rnd);
 	CRandom				r_yaw		(0x12071980^p_rnd);
 	CRandom				r_scale		(0x12071980^p_rnd);
 
 	// Prepare to actual-bounds-calculations
-	Fbox				Bounds;
+	fBox3				Bounds;
 	Bounds.invalidate	();
 
 	// Decompressing itself
@@ -140,7 +140,7 @@ void		CDetailManager::cache_Decompress(Slot* S)
 
 			// X-Form BBox
 			Fmatrix		mScale,mXform;
-			Fbox		ItemBB;
+			fBox3		ItemBB;
 			Item.mRotY.rotateY				(r_yaw.randF	(0,PI_MUL_2));
 			Item.mRotY.translate_over		(Item_P);
 			mScale.scale					(Item.scale,Item.scale,Item.scale);

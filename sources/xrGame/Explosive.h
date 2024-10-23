@@ -174,7 +174,7 @@ add_to_type_list(CExplosive)
 
 IC void random_point_in_object_box(Fvector &out_pos,CObject* obj)
 {
-	const Fbox &l_b1 = obj->BoundingBox();
+	const fBox3& l_b1 = obj->BoundingBox();
 	Fvector l_c, l_d;l_b1.get_CD(l_c,l_d);
 	out_pos.random_point(l_d);
 	obj->XFORM().transform_tiny(out_pos);

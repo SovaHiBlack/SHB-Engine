@@ -126,7 +126,8 @@ BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, f32& dist)
 	else{
 		Fvector N	={0.f,-1.f,0.f};
 		Fvector P	={0.f,0.f,0.f};
-		Fplane PL; PL.build(P,N);
+		fPlane3 PL;
+		PL.build(P,N);
 		f32 dst	=dist;
 		if (PL.intersectRayDist(s,d,dst)&&(dst<=dist)){dist=dst; return true;}else return false;
 	}

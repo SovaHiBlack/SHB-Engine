@@ -3,7 +3,7 @@
 #include "..\XR_3DA\SkeletonAnimated.h" 
 #include "game_object_space.h"
 
-animation_movement_controller::animation_movement_controller( Fmatrix *_pObjXForm, CKinematics* _pKinematicsC, CBlend* b ):
+animation_movement_controller::animation_movement_controller(fMatrix4x4* _pObjXForm, CKinematics* _pKinematicsC, CBlend* b ):
 m_startObjXForm( *_pObjXForm ), 
 m_pObjXForm( *_pObjXForm ),
 m_pKinematicsC( _pKinematicsC ),
@@ -53,7 +53,8 @@ void animation_movement_controller::RootBoneCallback( CBoneInstance* B )
 
 	if(O->m_control_blend->playing)
 	{
-		Fmatrix m;m.mul_43(  B->mTransform, Fmatrix( ).invert( O->m_startRootXform ) );
+		fMatrix4x4 m;
+		m.mul_43(  B->mTransform, fMatrix4x4( ).invert( O->m_startRootXform ) );
 		O->m_pObjXForm.mul_43( O->m_startObjXForm, m );
 	} 
 	B->mTransform.set(O->m_startRootXform);

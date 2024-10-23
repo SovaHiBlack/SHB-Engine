@@ -26,114 +26,151 @@ public:
 
 	IC 	SelfRef	set(const Tvector& _min, const Tvector& _max)
 	{
-		min.set(_min);	max.set(_max);	return *this;
-	};
+		min.set(_min);
+		max.set(_max);
+		return *this;
+	}
 	IC	SelfRef	set(T x1, T y1, T x2, T y2)
 	{
-		min.set(x1, y1);	max.set(x2, y2);					return *this;
-	};
+		min.set(x1, y1);
+		max.set(x2, y2);
+		return *this;
+	}
 	IC	SelfRef	set(SelfCRef b)
 	{
-		min.set(b.min);	max.set(b.max);					return *this;
-	};
+		min.set(b.min);
+		max.set(b.max);
+		return *this;
+	}
 
 	IC	SelfRef	null()
 	{
-		min.set(0.f, 0.f);	max.set(0.f, 0.f);				return *this;
-	};
+		min.set(0.f, 0.f);
+		max.set(0.f, 0.f);
+		return *this;
+	}
 	IC	SelfRef	identity()
 	{
-		min.set(-0.5, -0.5, -0.5);	max.set(0.5, 0.5, 0.5);	return *this;
-	};
+		min.set(-0.5, -0.5, -0.5);
+		max.set(0.5, 0.5, 0.5);
+		return *this;
+	}
 	IC	SelfRef	invalidate()
 	{
-		min.set(type_max(T), type_max(T)); max.set(type_min(T), type_min(T)); return *this;
+		min.set(type_max(T), type_max(T));
+		max.set(type_min(T), type_min(T));
+		return *this;
 	}
 
 	IC	SelfRef	shrink(T s)
 	{
-		min.add(s); max.sub(s);				return *this;
-	};
+		min.add(s);
+		max.sub(s);
+		return *this;
+	}
 	IC	SelfRef	shrink(const Tvector& s)
 	{
-		min.add(s); max.sub(s);				return *this;
-	};
+		min.add(s);
+		max.sub(s);
+		return *this;
+	}
 	IC	SelfRef	grow(T s)
 	{
-		min.sub(s); max.add(s);				return *this;
-	};
+		min.sub(s);
+		max.add(s);
+		return *this;
+	}
 	IC	SelfRef	grow(const Tvector& s)
 	{
-		min.sub(s); max.add(s);				return *this;
-	};
+		min.sub(s);
+		max.add(s);
+		return *this;
+	}
 
 	IC	SelfRef	add(const Tvector& p)
 	{
-		min.add(p); max.add(p);				return *this;
-	};
+		min.add(p);
+		max.add(p);
+		return *this;
+	}
 	IC	SelfRef	offset(const Tvector& p)
 	{
-		min.add(p); max.add(p);				return *this;
-	};
+		min.add(p);
+		max.add(p);
+		return *this;
+	}
 	IC	SelfRef	add(SelfCRef b, const Tvector& p)
 	{
-		min.add(b.min, p); max.add(b.max, p);	return *this;
-	};
+		min.add(b.min, p);
+		max.add(b.max, p);
+		return *this;
+	}
 
 	IC	BOOL	contains(T x, T y)
 	{
 		return (x >= x1) && (x <= x2) && (y >= y1) && (y <= y2);
-	};
+	}
 	IC	BOOL	contains(const Tvector& p)
 	{
 		return contains(p.x, p.y);
-	};
+	}
 	IC	BOOL	contains(SelfCRef b)
 	{
 		return contains(b.min) && contains(b.max);
-	};
+	}
 
 	IC	BOOL	similar(SelfCRef b)
 	{
 		return min.similar(b.min) && max.similar(b.max);
-	};
+	}
 
 	IC	SelfRef	modify(const Tvector& p)
 	{
-		min.min(p); max.max(p);				return *this;
+		min.min(p);
+		max.max(p);
+		return *this;
 	}
 	IC	SelfRef	merge(SelfCRef b)
 	{
-		modify(b.min); modify(b.max);			return *this;
-	};
+		modify(b.min);
+		modify(b.max);
+		return *this;
+	}
 	IC	SelfRef	merge(SelfCRef b1, SelfCRef b2)
 	{
-		invalidate(); merge(b1); merge(b2);	return *this;
+		invalidate();
+		merge(b1);
+		merge(b2);
+		return *this;
 	}
 
 	IC	void	getsize(Tvector& R)	const
 	{
 		R.sub(max, min);
-	};
+	}
 	IC	void	getradius(Tvector& R)	const
 	{
-		getsize(R); R.mul(0.5f);
-	};
+		getsize(R);
+		R.mul(0.5f);
+	}
 	IC	T		getradius()				const
 	{
-		Tvector R; getsize(R); R.mul(0.5f);	return R.magnitude();
-	};
+		Tvector R;
+		getsize(R);
+		R.mul(0.5f);
+		return R.magnitude();
+	}
 
 	IC	void	getcenter(Tvector& C)	const
 	{
 		C.x = (min.x + max.x) * 0.5f;
 		C.y = (min.y + max.y) * 0.5f;
-	};
+	}
 	IC	void	getsphere(Tvector& C, T& R) const
 	{
 		getcenter(C);
 		R = C.distance_to(max);
-	};
+	}
 
 	// Detects if this box intersect other
 	IC	BOOL	intersect(SelfCRef box)
@@ -143,7 +180,7 @@ public:
 		if (min.x > box.max.x)	return FALSE;
 		if (min.y > box.max.y)	return FALSE;
 		return TRUE;
-	};
+	}
 
 	// Make's this box valid AABB
 	IC SelfRef sort()
@@ -153,12 +190,14 @@ public:
 		{
 			tmp = min.x; min.x = max.x; max.x = tmp;
 		}
+
 		if (min.y > max.y)
 		{
 			tmp = min.y; min.y = max.y; max.y = tmp;
 		}
+
 		return *this;
-	};
+	}
 
 	// Does the vector3 intersects box
 	IC BOOL Pick(const Tvector& start, const Tvector& dir)
@@ -174,11 +213,16 @@ public:
 			alpha = rvmin.x / dir.x;
 			yt = alpha * dir.y;
 			if (yt >= rvmin.y && yt <= rvmax.y)
+			{
 				return true;
+			}
+
 			alpha = rvmax.x / dir.x;
 			yt = alpha * dir.y;
 			if (yt >= rvmin.y && yt <= rvmax.y)
+			{
 				return true;
+			}
 		}
 
 		if (!fis_zero(dir.y))
@@ -186,14 +230,20 @@ public:
 			alpha = rvmin.y / dir.y;
 			xt = alpha * dir.x;
 			if (xt >= rvmin.x && xt <= rvmax.x)
+			{
 				return true;
+			}
+
 			alpha = rvmax.y / dir.y;
 			xt = alpha * dir.x;
 			if (xt >= rvmin.x && xt <= rvmax.x)
+			{
 				return true;
+			}
 		}
+
 		return false;
-	};
+	}
 	ICF BOOL pick_exact(const Tvector& start, const Tvector& dir)
 	{
 		T		alpha, xt, yt;
@@ -206,22 +256,38 @@ public:
 		{
 			alpha = rvmin.x / dir.x;
 			yt = alpha * dir.y;
-			if (yt >= rvmin.y - EPSILON_5 && yt <= rvmax.y + EPSILON_5)		return true;
+			if (yt >= rvmin.y - EPSILON_5 && yt <= rvmax.y + EPSILON_5)
+			{
+				return true;
+			}
+
 			alpha = rvmax.x / dir.x;
 			yt = alpha * dir.y;
-			if (yt >= rvmin.y - EPSILON_5 && yt <= rvmax.y + EPSILON_5)		return true;
+			if (yt >= rvmin.y - EPSILON_5 && yt <= rvmax.y + EPSILON_5)
+			{
+				return true;
+			}
 		}
+
 		if (_abs(dir.y) != 0)
 		{
 			alpha = rvmin.y / dir.y;
 			xt = alpha * dir.x;
-			if (xt >= rvmin.x - EPSILON_5 && xt <= rvmax.x + EPSILON_5)		return true;
+			if (xt >= rvmin.x - EPSILON_5 && xt <= rvmax.x + EPSILON_5)
+			{
+				return true;
+			}
+
 			alpha = rvmax.y / dir.y;
 			xt = alpha * dir.x;
-			if (xt >= rvmin.x - EPSILON_5 && xt <= rvmax.x + EPSILON_5)		return true;
+			if (xt >= rvmin.x - EPSILON_5 && xt <= rvmax.x + EPSILON_5)
+			{
+				return true;
+			}
 		}
+
 		return false;
-	};
+	}
 
 	IC u32& IR(T& x)
 	{
@@ -303,18 +369,17 @@ public:
 			case 3: result.set(max.x, min.y); break;
 			default: result.set(0.f, 0.f); break;
 		}
-	};
+	}
 	IC void getpoints(Tvector* result)
 	{
 		result[0].set(min.x, min.y);
 		result[1].set(min.x, min.y);
 		result[2].set(max.x, min.y);
 		result[3].set(max.x, min.y);
-	};
+	}
 };
 
-typedef _box2<f32>	Fbox2;
-typedef _box2<double>	Dbox2;
+using fBox2 = _box2<f32>;
 
 template <class T>
 BOOL	_valid(const _box2<T>& c)

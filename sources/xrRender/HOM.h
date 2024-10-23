@@ -33,7 +33,7 @@ public:
 	void					Unload		();
 	void					Render		(CFrustum&	base);
 
-	void					occlude		(Fbox2&		space) { }
+	void					occlude		(fBox2&		space) { }
 	void					Disable		();
 	void					Enable		();
 
@@ -46,9 +46,9 @@ public:
 	}
 
 	BOOL					visible		(vis_data&	vis);
-	BOOL					visible		(Fbox3&		B);
+	BOOL					visible		(fBox3&		B);
 	BOOL					visible		(sPoly&		P);
-	BOOL					visible		(Fbox2&		B, f32 depth);	// viewport-space (0..1)
+	BOOL					visible		(fBox2&		B, f32 depth);	// viewport-space (0..1)
 
 	CHOM	();
 	~CHOM	();

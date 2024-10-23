@@ -183,7 +183,7 @@ void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVer
 	// query for polygons in bounding box
 	// calculate adjacency
 	{
-		Fbox				bb_query;
+		fBox3				bb_query;
 		Fvector				bbc,bbd;
 		bb_query.set		(contact_point,contact_point);
 		bb_query.grow		(sz*2.5f);
@@ -222,7 +222,8 @@ void CWallmarksEngine::AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVer
 	// calc sphere
 	if (W->verts.size()<3) { static_wm_destroy(W); return; }
 	else {
-		Fbox bb;	bb.invalidate();
+		fBox3 bb;
+		bb.invalidate();
 
 		FVF::LIT* I=&*W->verts.begin	();
 		FVF::LIT* E=&*W->verts.end		();

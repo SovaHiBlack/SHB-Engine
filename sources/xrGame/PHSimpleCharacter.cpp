@@ -812,7 +812,8 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh()
 	center.y+=m_radius+CHWON_CALL_UP_SHIFT;
 
 	// perform single query / two usages
-	Fbox			query,tmp		;
+	fBox3			query;
+	fBox3			tmp;
 	Fvector			q_c, q_d		;
 	query.set		(center_forbid,center_forbid);
 	query.grow		(AABB_forbid				);

@@ -361,7 +361,7 @@ void					CRender::flush					()					{ r_dsgraph_render_graph	(0);						}
 
 BOOL					CRender::occ_visible			(vis_data& P)		{ return HOM.visible(P);								}
 BOOL					CRender::occ_visible			(sPoly& P)			{ return HOM.visible(P);								}
-BOOL					CRender::occ_visible			(Fbox& P)			{ return HOM.visible(P);								}
+BOOL					CRender::occ_visible			(fBox3& P)			{ return HOM.visible(P);								}
 
 void					CRender::add_Visual				(IRender_Visual*		V )	{ add_leafs_Dynamic(V);								}
 void					CRender::add_Geometry			(IRender_Visual*		V )	{ add_Static(V,View->getMask());					}
@@ -385,7 +385,7 @@ void					CRender::add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref
 {
 	Wallmarks->AddSkeletonWallmark				(xf, obj, sh, start, dir, size);
 }
-void					CRender::add_Occluder			(Fbox2&	bb_screenspace	)
+void					CRender::add_Occluder			(fBox2&	bb_screenspace	)
 {
 	HOM.occlude			(bb_screenspace);
 }

@@ -38,7 +38,7 @@ r_aabb_ssa		r_pixel_calculator::calculate	(IRender_Visual* V)	{
 		// setup matrices
 		Fmatrix						mProject,mView	;
 		Fvector						vFrom			;
-		Fbox						aabb			;
+		fBox3						aabb			;
 
 		// camera - left-to-right
 		mView.build_camera_dir		(vFrom.invert(cmDir[face]).mul(100.f),	cmDir[face],	cmNorm[face])	;

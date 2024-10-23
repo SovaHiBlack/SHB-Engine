@@ -19,11 +19,12 @@ void CRenderTarget::enable_dbt_bounds		(light* L)
 	if (vis!=fcvFully)								return;
 
 	// xform BB
-	Fbox	BB;
+	fBox3	BB;
 	Fvector	rr; rr.set(L->spatial.sphere.R,L->spatial.sphere.R,L->spatial.sphere.R);
 	BB.setb	(L->spatial.sphere.P, rr);
 
-	Fbox	bbp; bbp.invalidate();
+	fBox3	bbp;
+	bbp.invalidate();
 	for (u32 i=0; i<8; i++)		{
 		Fvector		pt;
 		BB.getpoint	(i,pt);
@@ -68,8 +69,10 @@ BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 		plane.w							= -(M._44 + M._43);
 		f32 denom						= -1.0f / _sqrt(_sqr(plane.x)+_sqr(plane.y)+_sqr(plane.z));
 		plane.mul						(denom);
-		Fplane	P;	P.n.set(plane.x,plane.y,plane.z); P.d = plane.w;
-		f32	p_dist					= P.classify	(L->spatial.sphere.P) - L->spatial.sphere.R;
+		fPlane3							P;
+		P.n.set							(plane.x,plane.y,plane.z);
+		P.d								= plane.w;
+		f32	p_dist						= P.classify	(L->spatial.sphere.P) - L->spatial.sphere.R;
 		near_intersect					= (p_dist<=0);
 	}
 #ifdef DEBUG
@@ -101,7 +104,7 @@ BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 		// if it does - do nothing, if doesn't - we look on light through portal
 
 		// 1. convert rect into -1..1 space
-		Fbox2		b_pp	= bb;
+		fBox2		b_pp	= bb;
 		b_pp.min.x			= b_pp.min.x * 2 - 1;
 		b_pp.max.x			= b_pp.max.x * 2 - 1;
 		b_pp.min.y			= (1-b_pp.min.y) * 2 - 1;

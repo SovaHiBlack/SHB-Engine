@@ -141,7 +141,7 @@
     <ClCompile Include="xrMemory_subst_msvc.cpp">
       <Filter>Memory manager</Filter>
     </ClCompile>
-    <ClCompile Include="xrDebugNew.cpp">
+    <ClCompile Include="xrDebug.cpp">
       <Filter>Debug core</Filter>
     </ClCompile>
     <ClCompile Include="blackbox\BlackBoxUI.cpp">
@@ -234,10 +234,10 @@
     <ClInclude Include="_cylinder.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_fbox.h">
+    <ClInclude Include="_box3.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_fbox2.h">
+    <ClInclude Include="_box2.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_flags.h">
@@ -246,16 +246,13 @@
     <ClInclude Include="_math.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_matrix.h">
+    <ClInclude Include="_matrix4x4.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_matrix33.h">
+    <ClInclude Include="_matrix3x3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_obb.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="_plane3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="_plane2.h">
@@ -451,7 +448,12 @@
     <ClInclude Include="_constants.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="_vector3d.h" />
+    <ClInclude Include="_vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="_plane3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="FileSystem.h">
@@ -477,6 +479,5 @@
     <None Include="rt_lzo1x_d.ch">
       <Filter>Compression\lzo</Filter>
     </None>
-    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

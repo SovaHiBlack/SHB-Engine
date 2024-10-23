@@ -120,7 +120,7 @@ void  CAI_Boar::BoneCallback(CBoneInstance *B)
 
 	if (!P->look_at_enemy) return;
 	
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.setHPB (0.0f,-P->_cur_delta,0.0f);
 	B->mTransform.mulB_43(M);
 }

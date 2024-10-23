@@ -65,7 +65,7 @@ void CPortal::OnRender	()
 void	CPortal::Setup	(Fvector* V, int vcnt, CSector* face, CSector* back)
 {
 	// calc sphere
-	Fbox				BB;
+	fBox3				BB;
 	BB.invalidate		();
 	for (int v=0; v<vcnt; v++)
 		BB.modify		(V[v]);
@@ -173,7 +173,7 @@ void CSector::traverse			(CFrustum &F, _scissor& R_scissor)
 		if (PortalTraverser.i_options&CPortalTraverser::VQ_SCISSOR && (!PORTAL->bDualRender))
 		{
 			// Build scissor rectangle in projection-space
-			Fbox2	bb;
+			fBox2	bb;
 			bb.invalidate();
 			f32 depth = flt_max;
 			sPoly&	p	= *P;

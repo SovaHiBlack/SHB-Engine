@@ -258,7 +258,7 @@ bool CBulletManager::CalcBullet (collide::rq_results & rq_storage, xr_vector<ISp
 		if(bullet->fly_dist>=bullet->max_dist)
 			return false;
 
-		Fbox level_box = Level().ObjectSpace.GetBoundingVolume();
+		fBox3 level_box = Level().ObjectSpace.GetBoundingVolume();
 		
 /*		if(!level_box.contains(bullet->pos))
 			return false;

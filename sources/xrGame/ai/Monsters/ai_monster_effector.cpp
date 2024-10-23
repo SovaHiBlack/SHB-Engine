@@ -66,7 +66,7 @@ BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov,
 	f32 time_left_perc = fLifeTime / total;
 
 	// Инициализация
-	Fmatrix	Mdef;
+	fMatrix4x4	Mdef;
 	Mdef.identity		();
 	Mdef.j.set			(n);
 	Mdef.k.set			(d);
@@ -82,10 +82,10 @@ BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov,
 	dangle.z = cur_amp/offset.z	* _sin(period_all/offset.z	* (1.0f - time_left_perc));
 
 	// Установить углы смещения
-	Fmatrix		R;
+	fMatrix4x4		R;
 	R.setHPB	(dangle.x,dangle.y,dangle.z);
 
-	Fmatrix		mR;
+	fMatrix4x4		mR;
 	mR.mul		(Mdef,R);
 
 	d.set		(mR.k);

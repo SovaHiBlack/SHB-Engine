@@ -134,7 +134,8 @@ void CLightProjector::calculate	()
 		else if (cache[slot].O!=O)									bValid = FALSE;	// not the same object
 		else {
 			// seems to be valid
-			Fbox	bb;		bb.xform		(O->renderable.visual->vis.box,O->renderable.xform);
+			fBox3	bb;
+			bb.xform		(O->renderable.visual->vis.box,O->renderable.xform);
 			if (cache[slot].BB.contains(bb))	{
 				// inside, but maybe timelimit exceeded?
 				if (Device.dwTimeGlobal > cache[slot].dwTimeValid)	bValid = FALSE;	// timeout
@@ -277,7 +278,7 @@ void CLightProjector::calculate	()
 
 		// Build bbox and render
 		Fvector					min,max;
-		Fbox					BB;
+		fBox3					BB;
 		min.set					(R.C.x-p_R,	R.C.y-(p_R+P_cam_range),	R.C.z-p_R);
 		max.set					(R.C.x+p_R,	R.C.y+0,					R.C.z+p_R);
 		BB.set					(min,max);

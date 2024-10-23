@@ -6,7 +6,7 @@
 class	CPortal;
 class	CSector;
 
-struct	_scissor					: public Fbox2
+struct	_scissor					: public fBox2
 {
 	f32	depth;
 };
@@ -20,8 +20,9 @@ class	CPortal						: public IRender_Portal
 private:
 	svector<Fvector,8>				poly;
 	CSector							*pFace,*pBack;
+
 public:
-	Fplane							P;
+	fPlane3							P;
 	Fsphere							S;
 	u32								marker;
 	BOOL							bDualRender;

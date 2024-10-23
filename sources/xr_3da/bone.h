@@ -160,14 +160,14 @@ class CBone
 	Fvector			    mot_rotate;		// XYZ format (Game format)
 	f32			    mot_length;
 
-	Fmatrix			    mot_transform;
+	fMatrix4x4			    mot_transform;
 
-	Fmatrix			    rest_transform;
-	Fmatrix			    rest_i_transform;
+	fMatrix4x4			    rest_transform;
+	fMatrix4x4			    rest_i_transform;
 
-	Fmatrix			    last_transform;
+	fMatrix4x4			    last_transform;
 
-	Fmatrix				render_transform;
+	fMatrix4x4				render_transform;
 
 public:
 	int				    SelfID;
@@ -206,11 +206,11 @@ public:
 	const Fvector&      _Offset			(){return mot_offset;}
 	const Fvector&      _Rotate			(){return mot_rotate;}
 	f32			    _Length			(){return mot_length;}
-	IC Fmatrix&		    _RTransform		(){return rest_transform;}
-	IC Fmatrix&		    _RITransform	(){return rest_i_transform;}
-	IC Fmatrix&		    _MTransform		(){return mot_transform;}
-	IC Fmatrix&		    _LTransform		(){return last_transform;}
-	IC Fmatrix&		    _RenderTransform(){return render_transform;}
+	IC fMatrix4x4&		    _RTransform		(){return rest_transform;}
+	IC fMatrix4x4&		    _RITransform	(){return rest_i_transform;}
+	IC fMatrix4x4&		    _MTransform		(){return mot_transform;}
+	IC fMatrix4x4&		    _LTransform		(){return last_transform;}
+	IC fMatrix4x4&		    _RenderTransform(){return render_transform;}
 	IC Fvector&			_RestOffset		(){return rest_offset;}
 	IC Fvector&		    _RestRotate		(){return rest_rotate;}
 	

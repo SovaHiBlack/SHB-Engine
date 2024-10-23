@@ -13,7 +13,7 @@ class motion_marks;
 struct SIKCollideData
 {
 	//CDB::TRI		*m_tri		;
-	Fplane			m_plane		;
+	fPlane3			m_plane		;
 	Fvector			m_collide	;
 	Fvector			m_anime		;
 	Fvector			m_pick_dir	;
@@ -58,8 +58,8 @@ IC				u16			get_id				()	{ return m_id; }
 private:
 				void		Invalidate			();
 				void		GetFootStepMatrix	( Fmatrix	&m, const Fmatrix &gl_anim, const  SIKCollideData &cld, bool collide );
-IC				f32		CollideFoot			(f32 angle, const Fmatrix &gl_anim, Fplane &p, Fvector &ax );
-IC				void		make_shift			(Fmatrix &xm, const Fplane &p,const Fvector &pick_dir );
+IC				f32		CollideFoot			(f32 angle, const Fmatrix &gl_anim, fPlane3& p, Fvector &ax );
+IC				void		make_shift			(Fmatrix &xm, const fPlane3& p,const Fvector &pick_dir );
 				void		ApplyContext		( SCalculateData& cd );
 				void		Solve				( SCalculateData& cd );
 				void		Collide				( SIKCollideData &cld, CGameObject *O, const Fmatrix &foot, bool foot_step );

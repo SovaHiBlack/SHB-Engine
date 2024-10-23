@@ -228,7 +228,7 @@ u32	 CLevelGraph::check_position_in_direction_slow	(u32 start_vertex_id, const f
 		return				(u32(-1));
 
 	u32						cur_vertex_id = start_vertex_id, prev_vertex_id = u32(-1);
-	Fbox2					box;
+	fBox2					box;
 	fVector2				identity;
 	fVector2				start;
 	fVector2				dest;
@@ -287,7 +287,7 @@ bool CLevelGraph::check_vertex_in_direction_slow	(u32 start_vertex_id, const fVe
 {
 	Fvector					finish_position = vertex_position(finish_vertex_id);
 	u32						cur_vertex_id = start_vertex_id, prev_vertex_id = u32(-1);
-	Fbox2					box;
+	fBox2					box;
 	fVector2				identity;
 	fVector2				start;
 	fVector2				dest;
@@ -355,7 +355,7 @@ bool CLevelGraph::create_straight_path(u32 start_vertex_id, const fVector2& star
 		return				(false);
 
 	u32						cur_vertex_id = start_vertex_id, prev_vertex_id = start_vertex_id;
-	Fbox2					box;
+	fBox2					box;
 	fVector2				identity;
 	fVector2				start;
 	fVector2				dest;
@@ -489,7 +489,7 @@ f32 CLevelGraph::cover_in_direction(f32 fAngle, f32 b1, f32 b0, f32 b3, f32 b2) 
 bool CLevelGraph::neighbour_in_direction	(const Fvector &direction, u32 start_vertex_id) const
 {
 	u32						cur_vertex_id = start_vertex_id, prev_vertex_id = u32(-1);
-	Fbox2					box;
+	fBox2					box;
 	fVector2				identity;
 	fVector2				start;
 	fVector2				dest;

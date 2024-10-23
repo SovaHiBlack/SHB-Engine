@@ -187,7 +187,7 @@ void CBastArtefact::UpdateCLChild()
 		{
 			CParticlesObject* pStaticPG;
 			pStaticPG = CParticlesObject::Create(*m_sParticleName,TRUE);
-			Fmatrix pos; 
+			fMatrix4x4 pos;
 			pos.set(XFORM()); 
 			Fvector vel; 
 			//vel.sub(Position(),ps_Element(0).vPosition); 

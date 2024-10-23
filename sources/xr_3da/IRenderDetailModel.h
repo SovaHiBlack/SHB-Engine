@@ -19,7 +19,7 @@ public:
 
 public:
 	Fsphere		bv_sphere;
-	Fbox		bv_bb;
+	fBox3		bv_bb;
 	flags32		m_Flags;
 	f32			m_fMinScale;
 	f32			m_fMaxScale;

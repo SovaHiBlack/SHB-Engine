@@ -8,7 +8,7 @@ public:
 	typedef Self& SelfRef;
 	typedef const Self& SelfCRef;
 	typedef _vector3<T>	Tvector;
-	typedef _matrix<T>	Tmatrix;
+	typedef _matrix4x4<T>	Tmatrix;
 protected:
 	static bool		clip(T fDenom, T fNumer, T& rfT0, T& rfT1)
 	{
@@ -48,7 +48,7 @@ protected:
 		return bNotEntirelyClipped && (rfT0 != fSaveT0 || rfT1 != fSaveT1);
 	}
 public:
-	_matrix33<T>	m_rotate;
+	_matrix3x3<T>	m_rotate;
 	Tvector			m_translate;
 	Tvector			m_halfsize;
 

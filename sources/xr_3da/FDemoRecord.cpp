@@ -102,7 +102,7 @@ INT	g_bDR_LM_4Steps = 0;
 INT g_iDR_LM_Step = 0;
 Fvector	g_DR_LM_Min, g_DR_LM_Max;
 
-void GetLM_BBox(Fbox &bb, INT Step)
+void GetLM_BBox(fBox3& bb, INT Step)
 {
 	f32 half_x = bb.min.x + (bb.max.x - bb.min.x)/2;
 	f32 half_z = bb.min.z + (bb.max.z - bb.min.z)/2;
@@ -149,7 +149,7 @@ void CDemoRecord::MakeLevelMapProcess()
 		s_hud_flag.assign	(psHUD_Flags);
 		psHUD_Flags.assign	(0);
 
-		Fbox bb								= g_pGameLevel->ObjectSpace.GetBoundingVolume();
+		fBox3 bb								= g_pGameLevel->ObjectSpace.GetBoundingVolume();
 
 		if (g_bDR_LM_UsePointsBBox)
 		{
@@ -176,7 +176,7 @@ void CDemoRecord::MakeLevelMapProcess()
 	case DEVICE_RESET_PRECACHE_FRAME_COUNT+2:{
 		m_bOverlapped				= FALSE;
 		string_path tmp;
-		Fbox bb						= g_pGameLevel->ObjectSpace.GetBoundingVolume();
+		fBox3 bb						= g_pGameLevel->ObjectSpace.GetBoundingVolume();
 
 		if (g_bDR_LM_UsePointsBBox)
 		{

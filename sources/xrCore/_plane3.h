@@ -98,7 +98,7 @@ public:
 			return ((dist > 0.0f) || fis_zero(dist));
 		}
 	}
-	IC BOOL			intersect			(const _vector3<TYPE>& u, const _vector3<TYPE>& v, _vector3<TYPE>& isect)
+	IC BOOL			intersect			(const _vector3<TYPE>& u, const _vector3<TYPE>& v, _vector3<TYPE>& isect) // u, v - segment; isect - intersection point
 	{
 		TYPE							denom;
 		_vector3<TYPE>					t;
@@ -119,7 +119,7 @@ public:
 		isect.mad						(u, t, dist);
 		return TRUE;
 	}
-	IC BOOL			intersect_2			(const _vector3<TYPE>& u, const _vector3<TYPE>& v, _vector3<TYPE>& isect)
+	IC BOOL			intersect_2			(const _vector3<TYPE>& u, const _vector3<TYPE>& v, _vector3<TYPE>& isect) // u, v - segment; isect - intersection point
 	{
 		TYPE							dist1;
 		TYPE							dist2;
@@ -136,7 +136,7 @@ public:
 		return TRUE;
 	}
 
-	IC SelfRef		transform			(_matrix<TYPE>& M)
+	IC SelfRef		transform			(_matrix4x4<TYPE>& M)
 	{
 		// rotate the normal
 		M.transform_dir					(n);
@@ -146,8 +146,7 @@ public:
 	}
 };
 
-typedef _plane3<f32>	Fplane;
-typedef _plane3<double>	Dplane;
+using fPlane3							= _plane3<f32>;
 
 template <class T>
 BOOL				_valid				(const _plane3<T>& s)

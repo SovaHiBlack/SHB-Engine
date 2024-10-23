@@ -206,7 +206,7 @@ IC bool	CLevelGraph::inside				(const u32 vertex_id,	const fVector2& position) c
 IC f32 CLevelGraph::vertex_plane_y	(const CLevelGraph::CVertex &vertex, const f32 X, const f32 Z) const
 {
 	Fvector				DUP, normal, v, v1, P;
-	Fplane				PL; 
+	fPlane3				PL;
 
 	DUP.set				(0,1,0);
 	pvDecompress		(normal,vertex.plane());
@@ -264,7 +264,7 @@ ICF f32	CLevelGraph::CHeader::factor_y() const
 	return				(size_y);
 }
 
-ICF const Fbox &CLevelGraph::CHeader::box() const
+ICF const fBox3& CLevelGraph::CHeader::box() const
 {
 	return				(aabb);
 }
@@ -391,7 +391,7 @@ IC	bool	CLevelGraph::create_straight_path	(u32 start_vertex_id, const fVector2& 
 		return				(false);
 
 	u32						cur_vertex_id = start_vertex_id, prev_vertex_id = start_vertex_id;
-	Fbox2					box;
+	fBox2					box;
 	fVector2				identity;
 	fVector2				start;
 	fVector2				dest;
@@ -543,7 +543,7 @@ template<typename T>
 IC	void CLevelGraph::assign_y_values		(xr_vector<T> &path)
 {
 	Fvector						DUP = {0,1,0}, normal, v1, P = {0,0,0};
-	Fplane						PL; 
+	fPlane3						PL;
 	const CVertex				*_vertex;
 	u32							prev_id = u32(-1);
 

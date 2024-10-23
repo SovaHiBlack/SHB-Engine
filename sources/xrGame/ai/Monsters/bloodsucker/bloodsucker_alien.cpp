@@ -84,7 +84,7 @@ class CAlienEffector : public CEffectorCam {
 	CAI_Bloodsucker *monster;
 
 	f32		m_current_fov;
-	Fmatrix		m_prev_eye_matrix;
+	fMatrix4x4		m_prev_eye_matrix;
 	f32		m_inertion;
 
 public:
@@ -120,7 +120,7 @@ CAlienEffector::CAlienEffector(ECamEffectorType type, CAI_Bloodsucker *obj) :
 BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	// Инициализация
-	Fmatrix	Mdef;
+	fMatrix4x4	Mdef;
 	Mdef.identity		();
 	Mdef.j.set			(n);
 	Mdef.k.set			(d);
@@ -141,7 +141,7 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32&
 	}
 
 	// update inertion
-	Fmatrix cur_matrix;
+	fMatrix4x4 cur_matrix;
 	cur_matrix.k = monster->Direction();
 	cur_matrix.c = get_head_position(monster);
 
@@ -169,10 +169,10 @@ BOOL CAlienEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32&
 	//////////////////////////////////////////////////////////////////////////
 
 	// Установить углы смещения
-	Fmatrix		R;
+	fMatrix4x4		R;
 	R.setHPB	(dangle_current.x,dangle_current.y,dangle_current.z);
 
-	Fmatrix		mR;
+	fMatrix4x4		mR;
 	mR.mul		(Mdef,R);
 
 	d.set		(mR.k);

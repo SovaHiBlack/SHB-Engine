@@ -443,7 +443,7 @@ void CLightShadows::render	()
 				A.push_back			(VERTS[t.verts[2]]);
 
 				// Calc plane, throw away degenerate tris and invisible to light polygons
-				Fplane				P;
+				fPlane3				P;
 				f32 mag = 0;
 				Fvector				t1,t2,n;
 				t1.sub				(A[0],A[1]);
@@ -491,7 +491,8 @@ void CLightShadows::render	()
 			tess_tri&	TT		= CI->tris[tid];
 			Fvector* 	v		= TT.v;
 			Fvector		T;
-			Fplane		ttp;	ttp.build_unit_normal(v[0],TT.N);
+			fPlane3		ttp;
+			ttp.build_unit_normal(v[0],TT.N);
 
 			if (ttp.classify(View)<0)						continue;
 			int	c0		= PLC_calc(v[0],TT.N,S.L,Le,S.C);

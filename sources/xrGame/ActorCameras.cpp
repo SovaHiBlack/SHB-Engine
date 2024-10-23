@@ -113,7 +113,7 @@ ICF void calc_point(Fvector& pt, f32 radius, f32 depth, f32 alpha)
 	pt.z	= depth;
 }
 
-ICF BOOL test_point(xrXRC& xrc, const Fmatrix& xform, const Fmatrix33& mat, const Fvector& ext, f32 radius, f32 angle)
+ICF BOOL test_point(xrXRC& xrc, const fMatrix4x4& xform, const fMatrix3x3& mat, const Fvector& ext, f32 radius, f32 angle)
 {
 	Fvector				pt;
 	calc_point			(pt,radius,VIEWPORT_NEAR/2,angle);
@@ -143,7 +143,8 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 	Fvector point={0,CameraHeight(),0}, dangle={0,0,0};
 	
 
-	Fmatrix				xform,xformR;
+	fMatrix4x4			xform;
+	fMatrix4x4			xformR;
 	xform.setXYZ		(0,r_torso.yaw,0);
 	xform.translate_over(XFORM().c);
 
@@ -161,7 +162,7 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 			f32 valid_angle	= alpha;
 			// xform with roll
 			xformR.setXYZ		(-r_torso.pitch,r_torso.yaw,-dZ);
-			Fmatrix33			mat; 
+			fMatrix3x3			mat;
 			mat.i				= xformR.i;
 			mat.j				= xformR.j;
 			mat.k				= xformR.k;
@@ -172,7 +173,7 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 			w/=2.f;
 			h/=2.f;
 			// find tris
-			Fbox box;
+			fBox3 box;
 			box.invalidate		();
 			box.modify			(src_pt);
 			box.modify			(tgt_pt);
@@ -180,7 +181,7 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 
 			// query
 			Fvector				bc,bd		;
-			Fbox				xf			; 
+			fBox3				xf			;
 			xf.xform			(box,xform)	;
 			xf.get_CD			(bc,bd)		;
 
@@ -271,7 +272,7 @@ void CActor::cam_Update(f32 dt, f32 fFOV)
 		f32 oobox_size			= 2*VIEWPORT_NEAR;
 
 
-		Fmatrix						_rot;
+		fMatrix4x4						_rot;
 		_rot.k						= C->vDirection;
 		_rot.c						= C->vPosition;
 		_rot.i.crossproduct			(C->vNormal,	_rot.k);

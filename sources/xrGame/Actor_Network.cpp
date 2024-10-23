@@ -988,7 +988,7 @@ extern	f32		g_cl_lvInterp;
 
 void CActor::CalculateInterpolationParams( )
 {
-	//	Fmatrix xformX0, xformX1;
+	//	fMatrix4x4 xformX0, xformX1;
 	CPHSynchronize* pSyncObj = NULL;
 	pSyncObj = PHGetSyncItem(0);
 	///////////////////////////////////////////////
@@ -1273,7 +1273,8 @@ void dbg_draw_piramid(Fvector pos, Fvector dir, f32 size, f32 xdir, u32 color)
 	p4.set(0, 0, size * 4);
 
 	bool Double = false;
-	Fmatrix t; t.identity( );
+	fMatrix4x4 t;
+	t.identity( );
 	if (_valid(dir) && dir.square_magnitude( ) > 0.01f)
 	{
 		t.k.normalize(dir);
@@ -1337,8 +1338,8 @@ void CActor::OnRender_Network( )
 				for (u16 i=0; i<BoneCount; i++)
 				{
 					Fobb BoneOBB = V->LL_GetBox(i);
-					Fmatrix BoneMatrix; BoneOBB.xform_get(BoneMatrix);
-					Fmatrix BoneMatrixRes; BoneMatrixRes.mul(V->LL_GetTransform(i), BoneMatrix);
+					fMatrix4x4 BoneMatrix; BoneOBB.xform_get(BoneMatrix);
+					fMatrix4x4 BoneMatrixRes; BoneMatrixRes.mul(V->LL_GetTransform(i), BoneMatrix);
 					BoneMatrix.mul(XFORM(), BoneMatrixRes);
 					Level().debug_renderer().draw_obb(BoneMatrix, BoneOBB.m_halfsize, color_rgba(0, 255, 0, 255));
 				};
@@ -1356,14 +1357,14 @@ void CActor::OnRender_Network( )
 						{
 							case SBoneShape::stBox:
 							{
-								Fmatrix M;
+								fMatrix4x4 M;
 								M.invert(I->b_IM);
 								Fvector h_size = I->b_hsize;
 								Level( ).debug_renderer( ).draw_obb(M, h_size, color_rgba(0, 255, 0, 255));
 							}break;
 							case SBoneShape::stCylinder:
 							{
-								Fmatrix M;
+								fMatrix4x4 M;
 								M.c.set(I->c_cylinder.m_center);
 								M.k.set(I->c_cylinder.m_direction);
 								Fvector				h_size;
@@ -1373,16 +1374,16 @@ void CActor::OnRender_Network( )
 							}break;
 							case SBoneShape::stSphere:
 							{
-								Fmatrix				l_ball;
+								fMatrix4x4				l_ball;
 								l_ball.scale(I->s_sphere.R, I->s_sphere.R, I->s_sphere.R);
 								l_ball.translate_add(I->s_sphere.P);
 								Level( ).debug_renderer( ).draw_ellipse(l_ball, color_rgba(0, 255, 0, 255));
 							}break;
-						};
-					};
+						}
+					}
 				}
-			};
-		};
+			}
+		}
 
 		if (!(dbg_net_Draw_Flags.is_any((1 << 1)))) return;
 
@@ -1396,7 +1397,10 @@ void CActor::OnRender_Network( )
 		//		dbg_draw_piramid(tmp.add(IEndT.Pos, tmp1), IEndT.Vel, size, -IEndT.o_model, color_rgba(0, 155, 0, 155));
 		dbg_draw_piramid(NET_Last.p_pos, NET_Last.p_velocity, size * 3 / 4, -NET_Last.o_model, color_rgba(255, 255, 255, 255));
 
-		Fmatrix MS, MH, ML, * pM = NULL;
+		fMatrix4x4 MS;
+		fMatrix4x4 MH;
+		fMatrix4x4 ML;
+		fMatrix4x4* pM = NULL;
 		ML.translate(0, 0.2f, 0);
 		MS.translate(0, 0.2f, 0);
 		MH.translate(0, 0.2f, 0);
@@ -1489,8 +1493,10 @@ void CActor::OnRender_Network( )
 			for (u16 i = 0; i < BoneCount; i++)
 			{
 				Fobb BoneOBB = V->LL_GetBox(i);
-				Fmatrix BoneMatrix; BoneOBB.xform_get(BoneMatrix);
-				Fmatrix BoneMatrixRes; BoneMatrixRes.mul(V->LL_GetTransform(i), BoneMatrix);
+				fMatrix4x4 BoneMatrix;
+				BoneOBB.xform_get(BoneMatrix);
+				fMatrix4x4 BoneMatrixRes;
+				BoneMatrixRes.mul(V->LL_GetTransform(i), BoneMatrix);
 				BoneMatrix.mul(XFORM( ), BoneMatrixRes);
 				Level( ).debug_renderer( ).draw_obb(BoneMatrix, BoneOBB.m_halfsize, color_rgba(0, 255, 0, 255));
 			};
@@ -1510,7 +1516,7 @@ void CActor::OnRender_Network( )
 
 				u32 Color = color_rgba(255, 0, 0, 255);
 
-				Fmatrix M;
+				fMatrix4x4 M;
 
 				M = Fidentity;
 				M.rotation(state.quaternion);
@@ -1537,7 +1543,7 @@ void CActor::OnRender_Network( )
 					SPHNetState state;// = m_States[i];
 					PHGetSyncItem(i)->get_State(state);
 
-					Fmatrix M;
+					fMatrix4x4 M;
 					M = Fidentity;
 					M.rotation(state.quaternion);
 					M.translate_add(state.position);
@@ -1586,7 +1592,7 @@ void CActor::OnRender_Network( )
 					r_qt_q8(PX, state.quaternion);
 					//					r_vec_q8(PX,state.linear_vel,min,max);
 										//===============================================
-					Fmatrix M;
+					fMatrix4x4 M;
 					M = Fidentity;
 					M.rotation(state.quaternion);
 					M.translate_add(state.position);
@@ -1662,7 +1668,7 @@ void CActor::OnPlayHeadShotParticle(NET_Packet P)
 	P.r_vec3(HitPos);
 	//-----------------------------------
 	if (!m_sHeadShotParticle.size( )) return;
-	Fmatrix pos;
+	fMatrix4x4 pos;
 	CParticlesPlayer::MakeXFORM(this, element, HitDir, HitPos, pos);
 	// установить particles
 	CParticlesObject* ps = NULL;

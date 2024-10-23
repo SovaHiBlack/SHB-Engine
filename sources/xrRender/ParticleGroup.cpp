@@ -230,7 +230,7 @@ struct zero_vis_pred : public std::unary_function<IRender_Visual*, bool>
 {
 	bool operator()(const IRender_Visual* x){ return x==0; }
 };
-void CParticleGroup::SItem::OnFrame(u32 u_dt, const CPGDef::SEffect& def, Fbox& box, bool& bPlaying)
+void CParticleGroup::SItem::OnFrame(u32 u_dt, const CPGDef::SEffect& def, fBox3& box, bool& bPlaying)
 {
 	CParticleEffect* E		= static_cast<CParticleEffect*>(_effect);
 	if (E){
@@ -360,7 +360,8 @@ void CParticleGroup::OnFrame(u32 u_dt)
 			if (!m_RT_Flags.is(flRT_DefferedStop)) Stop(true);
 
 		bool bPlaying = false;
-		Fbox box; box.invalidate();
+		fBox3 box;
+		box.invalidate();
 		for (SItemVecIt i_it=items.begin(); i_it!=items.end(); i_it++) 
 			i_it->OnFrame(u_dt,*m_Def->m_Effects[i_it-items.begin()],box,bPlaying);
 

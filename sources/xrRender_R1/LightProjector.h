@@ -24,7 +24,7 @@ private:
 		Fmatrix				UVgen		;
 		Fvector				UVclamp_min	;
 		Fvector				UVclamp_max	;
-		Fbox				BB			;
+		fBox3				BB			;
 		DWORD				dwFrame		;
 		DWORD				dwTimeValid	;
 	};

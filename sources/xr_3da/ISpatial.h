@@ -164,7 +164,7 @@ public:
 	~ISpatial_DB();
 
 	// managing
-	void							initialize		(Fbox& BB);
+	void							initialize		(fBox3& BB);
 	//void							destroy			();
 	void							insert			(ISpatial* S);
 	void							remove			(ISpatial* S);

@@ -156,19 +156,19 @@ BOOL CAnimatorCamEffector::Process (Fvector &p, Fvector &d, Fvector &n, f32& fFo
 		return FALSE;
 	}
 
-	const Fmatrix& m			= m_objectAnimator->XFORM();
+	const fMatrix4x4& m			= m_objectAnimator->XFORM();
 	m_objectAnimator->Update	(Device.fTimeDelta);
 
 	if(!m_bAbsolutePositioning)
 	{
-		Fmatrix Mdef;
+		fMatrix4x4 Mdef;
 		Mdef.identity				();
 		Mdef.j						= n;
 		Mdef.k						= d;
 		Mdef.i.crossproduct			(n,d);
 		Mdef.c						= p;
 
-		Fmatrix mr;
+		fMatrix4x4 mr;
 		mr.mul						(Mdef,m);
 		d							= mr.k;
 		n							= mr.j;
@@ -191,17 +191,17 @@ BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& 
 		return FALSE;
 	}
 
-	const Fmatrix& m			= m_objectAnimator->XFORM();
+	const fMatrix4x4& m			= m_objectAnimator->XFORM();
 	m_objectAnimator->Update	(Device.fTimeDelta);
 
-	Fmatrix Mdef;
+	fMatrix4x4 Mdef;
 	Mdef.identity				();
 	Mdef.j						= n;
 	Mdef.k						= d;
 	Mdef.i.crossproduct			(n,d);
 	Mdef.c						= p;
 
-	Fmatrix mr;
+	fMatrix4x4 mr;
 	mr.mul						(Mdef,m);
 
 	Fquaternion					q_src, q_dst, q_res;
@@ -214,7 +214,7 @@ BOOL CAnimatorCamLerpEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& 
 	VERIFY						(t>=0.f && t<=1.f);
 	q_res.slerp					(q_src, q_dst, t);
 	
-	Fmatrix						res;
+	fMatrix4x4						res;
 	res.rotation				(q_res);
 	res.c.lerp					(p, mr.c, t);
 
@@ -340,7 +340,7 @@ const f32	_max_fov_add	= 160.f;
 
 BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
 {
-	Fmatrix	Mdef;
+	fMatrix4x4	Mdef;
 	Mdef.identity		();
 	Mdef.j.set			(n);
 	Mdef.k.set			(m_direction);
@@ -376,13 +376,13 @@ BOOL CControllerPsyHitCamEffector::Process(Fvector &p, Fvector &d, Fvector &n, f
 	//////////////////////////////////////////////////////////////////////////
 
 	// Установить углы смещения
-	Fmatrix		R;
+	fMatrix4x4		R;
 	if (m_time_current > m_time_total) 
 		R.identity	();
 	else 
 		R.setHPB	(m_dangle_current.x,m_dangle_current.y,m_dangle_current.z);
 
-	Fmatrix		mR;
+	fMatrix4x4		mR;
 	mR.mul		(Mdef,R);
 
 	d.set		(mR.k);

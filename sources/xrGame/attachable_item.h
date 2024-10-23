@@ -15,7 +15,7 @@ class CAttachableItem {
 private:
 	CInventoryItem				*m_item;
 	shared_str					m_bone_name;
-	Fmatrix						m_offset;
+	fMatrix4x4						m_offset;
 	u16							m_bone_id;
 	bool						m_enabled;
 //	bool						m_auto_attach;
@@ -41,7 +41,7 @@ public:
 	IC		shared_str			bone_name				() const;
 	IC		u16					bone_id					() const;
 	IC		void				set_bone_id				(u16 bone_id);
-	IC		const Fmatrix		&offset					() const;
+	IC		const fMatrix4x4&	offset					() const;
 	IC		bool				enabled					() const;
 			void				enable					(bool value);
 
