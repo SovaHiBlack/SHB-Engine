@@ -254,7 +254,7 @@ NULL:*mtl_pair->CollideParticles[::Random.randI(0,mtl_pair->CollideParticles.siz
 
 	if( (ps_name && ShowMark) || (bullet->flags.explosive && bStatic) )
 	{
-		Fmatrix pos;
+		fMatrix4x4 pos;
 		pos.k.normalize(particle_dir);
 		Fvector::generate_orthonormal_basis(pos.k, pos.j, pos.i);
 		pos.c.set(vEnd);
@@ -309,7 +309,7 @@ void CBulletManager::DynamicObjectHit	(CBulletManager::_event& E)
 	// object-space
 	//вычислить координаты попадания
 	Fvector				p_in_object_space,position_in_bone_space;
-	Fmatrix				m_inv;
+	fMatrix4x4				m_inv;
 	m_inv.invert		(E.R.O->XFORM());
 	m_inv.transform_tiny(p_in_object_space, E.point);
 
@@ -319,8 +319,8 @@ void CBulletManager::DynamicObjectHit	(CBulletManager::_event& E)
 	if(V)
 	{
 		VERIFY3(V->LL_GetBoneVisible(u16(E.R.element)),*E.R.O->cNameVisual(),V->LL_BoneName_dbg(u16(E.R.element)));
-		Fmatrix& m_bone = (V->LL_GetBoneInstance(u16(E.R.element))).mTransform;
-		Fmatrix  m_inv_bone;
+		fMatrix4x4& m_bone = (V->LL_GetBoneInstance(u16(E.R.element))).mTransform;
+		fMatrix4x4 m_inv_bone;
 		m_inv_bone.invert(m_bone);
 		m_inv_bone.transform_tiny(position_in_bone_space, p_in_object_space);
 	}

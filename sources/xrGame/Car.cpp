@@ -122,7 +122,7 @@ void CCar::cb_Steer			(CBoneInstance* B)
 {
 	VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones receive returns 0 matrix");
 	CCar*	C			= static_cast<CCar*>(B->Callback_Param);
-	Fmatrix m;
+	fMatrix4x4 m;
 
 
 	m.rotateZ(C->m_steer_angle);
@@ -327,10 +327,12 @@ void CCar::RestoreNetState(CSE_PHSkeleton* po)
 	//as later may kill diable/enable state save it;
 	bool enable = PPhysicsShell()->isEnabled();
 /////////////////////////////////////////////////////////////////////////
-	Fmatrix restored_form;
+	fMatrix4x4 restored_form;
 	PPhysicsShell()->GetGlobalTransformDynamic(&restored_form);
 /////////////////////////////////////////////////////////////////////
-	Fmatrix inv ,replace,sof;
+	fMatrix4x4 inv;
+	fMatrix4x4 replace;
+	fMatrix4x4 sof;
 	sof.setXYZ(co->o_Angle.x,co->o_Angle.y,co->o_Angle.z);
 	sof.c.set(co->o_Position);
 	inv.set(restored_form);
@@ -634,7 +636,7 @@ bool CCar::attach_Actor(CGameObject* actor)
 //	HUD().GetUI()->UIMainIngameWnd->CarPanel().SetCarHealth(fEntityHealth/100.f);
 	//HUD().GetUI()->UIMainIngameWnd.ShowBattery(true);
 	//CBoneData&	bone_data=K->LL_GetData(id);
-	//Fmatrix driver_pos_tranform;
+	//fMatrix4x4 driver_pos_tranform;
 	//driver_pos_tranform.setHPB(bone_data.bind_hpb.x,bone_data.bind_hpb.y,bone_data.bind_hpb.z);
 	//driver_pos_tranform.c.set(bone_data.bind_translate);
 	//m_sits_transforms.push_back(driver_pos_tranform);

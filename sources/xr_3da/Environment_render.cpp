@@ -106,7 +106,7 @@ void CEnvironment::RenderSky		()
 	::Render->rmFar				();
 
 	// draw sky box
-	Fmatrix						mSky;
+	fMatrix4x4						mSky;
 	mSky.rotateY				(CurrentEnv.sky_rotation);
 	mSky.translate_over			(Device.vCameraPosition);
 
@@ -144,7 +144,7 @@ void CEnvironment::RenderClouds			()
 
 	::Render->rmFar				();
 
-	Fmatrix						mXFORM, mScale;
+	fMatrix4x4						mXFORM, mScale;
 	mScale.scale				(10,0.4f,10);
 	mXFORM.rotateY				(CurrentEnv.sky_rotation);
 	mXFORM.mulB_43				(mScale);

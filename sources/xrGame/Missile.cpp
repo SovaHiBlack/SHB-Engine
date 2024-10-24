@@ -339,7 +339,7 @@ void CMissile::OnAnimationEnd(u32 state)
 }
 
 
-void CMissile::UpdatePosition(const Fmatrix& trans)
+void CMissile::UpdatePosition(const fMatrix4x4& trans)
 {
 	XFORM().mul		(trans,offset());
 }
@@ -375,11 +375,11 @@ void CMissile::UpdateXForm	()
 		boneL = boneR2;
 
 		V->CalculateBones	();
-		Fmatrix& mL			= V->LL_GetTransform(u16(boneL));
-		Fmatrix& mR			= V->LL_GetTransform(u16(boneR));
+		fMatrix4x4& mL			= V->LL_GetTransform(u16(boneL));
+		fMatrix4x4& mR			= V->LL_GetTransform(u16(boneR));
 
 		// Calculate
-		Fmatrix				mRes;
+		fMatrix4x4				mRes;
 		Fvector				R,D,N;
 		D.sub				(mL.c,mR.c);	D.normalize_safe();
 		R.crossproduct		(mR.j,D);		R.normalize_safe();
@@ -407,7 +407,7 @@ void CMissile::setup_throw_params()
 	VERIFY					(entity);
 	CInventoryOwner			*inventory_owner = smart_cast<CInventoryOwner*>(H_Parent());
 	VERIFY					(inventory_owner);
-	Fmatrix					trans;
+	fMatrix4x4					trans;
 	trans.identity			();
 	Fvector					FirePos, FireDir;
 	if (this == inventory_owner->inventory().ActiveItem())
@@ -559,11 +559,11 @@ void  CMissile::UpdateFireDependencies_internal	()
 			V->CalculateBones		();
 
 			// fire point&direction
-			Fmatrix& parent			= m_pHUD->Transform	();
+			fMatrix4x4& parent			= m_pHUD->Transform	();
 			m_throw_direction.set	(parent.k);
 		}else{
 			// 3rd person
-			Fmatrix& parent			= H_Parent()->XFORM();
+			fMatrix4x4& parent			= H_Parent()->XFORM();
 
 			m_throw_direction.set	(m_vThrowDir);
 			parent.transform_dir	(m_throw_direction);

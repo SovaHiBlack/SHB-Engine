@@ -16,7 +16,7 @@ namespace PAPI{
 		ParticleAction	(){m_Flags.zero();}
 		
 		virtual void 	Execute		(ParticleEffect *pe, f32 dt)	= 0;
-		virtual void 	Transform	(const Fmatrix& m)				= 0;
+		virtual void 	Transform	(const fMatrix4x4& m)				= 0;
 
 		virtual void 	Load		(IReader& F)=0;
 		virtual void 	Save		(IWriter& F)=0;

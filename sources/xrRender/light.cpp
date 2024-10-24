@@ -209,7 +209,7 @@ void	light::xform_calc			()
 	}
 
 	// matrix
-	Fmatrix					mR;
+	fMatrix4x4					mR;
 	mR.i					= L_right;	mR._14	= 0;
 	mR.j					= L_up;		mR._24	= 0;
 	mR.k					= L_dir;	mR._34	= 0;
@@ -222,7 +222,8 @@ void	light::xform_calc			()
 		{
 			// scale of identity sphere
 			f32		L_R			= range;
-			Fmatrix		mScale;		mScale.scale	(L_R,L_R,L_R);
+			fMatrix4x4		mScale;
+			mScale.scale	(L_R,L_R,L_R);
 			m_xform.mul_43			(mR,mScale);
 		}
 		break;
@@ -230,14 +231,16 @@ void	light::xform_calc			()
 		{
 			// scale to account range and angle
 		f32		s			= 2.f*range*tanf(cone/2.f);
-			Fmatrix		mScale;		mScale.scale(s,s,range);	// make range and radius
+		fMatrix4x4		mScale;
+		mScale.scale(s,s,range);	// make range and radius
 			m_xform.mul_43			(mR,mScale);
 		}
 		break;
 	case IRender_Light::OMNIPART	:
 		{
 		f32		L_R			= 2*range;		// volume is half-radius
-			Fmatrix		mScale;		mScale.scale	(L_R,L_R,L_R);
+		fMatrix4x4		mScale;
+		mScale.scale	(L_R,L_R,L_R);
 			m_xform.mul_43			(mR,mScale);
 		}
 		break;

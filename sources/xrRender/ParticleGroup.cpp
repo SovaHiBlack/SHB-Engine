@@ -123,7 +123,8 @@ void CParticleGroup::SItem::Clear()
 void CParticleGroup::SItem::StartRelatedChild(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m)
 {
 	CParticleEffect*C		= static_cast<CParticleEffect*>(RImplementation.model_CreatePE(eff_name));
-	Fmatrix M; 				M.identity();
+	fMatrix4x4 M;
+	M.identity();
 	Fvector vel; 			vel.sub(m.pos,m.posB); vel.div(fDT_STEP);
 	if (emitter->m_RT_Flags.is(CParticleEffect::flRT_XFORM)){
 		M.set				(emitter->m_XFORM);
@@ -149,7 +150,8 @@ void CParticleGroup::SItem::StartFreeChild(CParticleEffect* emitter, pcstr nm, P
 {
 	CParticleEffect*C			= static_cast<CParticleEffect*>(RImplementation.model_CreatePE(nm));
 	if(!C->IsLooped()){
-		Fmatrix M; 				M.identity();
+		fMatrix4x4 M;
+		M.identity();
 		Fvector vel; 			vel.sub(m.pos,m.posB); vel.div(fDT_STEP);
 		if (emitter->m_RT_Flags.is(CParticleEffect::flRT_XFORM)){
 			M.set				(emitter->m_XFORM);
@@ -193,7 +195,7 @@ BOOL CParticleGroup::SItem::IsPlaying()
 	CParticleEffect* E	= static_cast<CParticleEffect*>(_effect);
 	return E?E->IsPlaying():FALSE;
 }
-void CParticleGroup::SItem::UpdateParent(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM)
+void CParticleGroup::SItem::UpdateParent(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM)
 {
 	CParticleEffect* E	= static_cast<CParticleEffect*>(_effect);
 	if (E) E->UpdateParent(m,velocity,bXFORM);
@@ -247,7 +249,8 @@ void CParticleGroup::SItem::OnFrame(u32 u_dt, const CPGDef::SEffect& def, fBox3&
 					for(u32 i = 0; i < p_cnt; i++){
 						PAPI::Particle &m	= particles[i]; 
 						CParticleEffect* C 	= static_cast<CParticleEffect*>(_children_related[i]);
-						Fmatrix M; 			M.translate(m.pos);
+						fMatrix4x4 M;
+						M.translate(m.pos);
 						Fvector vel; 		vel.sub(m.pos,m.posB); vel.div(fDT_STEP);
 						C->UpdateParent		(M,vel,FALSE);
 					}
@@ -379,7 +382,7 @@ void CParticleGroup::OnFrame(u32 u_dt)
 	}
 }
 
-void CParticleGroup::UpdateParent(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM)
+void CParticleGroup::UpdateParent(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM)
 {
 	m_InitialPosition		= m.c;
 	for (SItemVecIt i_it=items.begin(); i_it!=items.end(); i_it++) 

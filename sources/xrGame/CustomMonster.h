@@ -63,7 +63,7 @@ private:
 
 public:
 	// Eyes
-	Fmatrix				eye_matrix;
+	fMatrix4x4				eye_matrix;
 	int					eye_bone;
 	f32					eye_fov;
 	f32					eye_range;
@@ -83,7 +83,7 @@ public:
 	f32					m_fTimeUpdateDelta;
 	u32					m_dwLastUpdateTime;
 	u32					m_current_update;
-//	Fmatrix				m_tServerTransform;
+//	fMatrix4x4				m_tServerTransform;
 	
 	u32					m_dwCurrentTime;		// time updated in UpdateCL 
 
@@ -115,7 +115,7 @@ public:
 	virtual BOOL		feel_touch_on_contact	(CObject *);
 	virtual BOOL		feel_touch_contact		(CObject *);
 	// utils
-	void				mk_orientation			( Fvector& dir, Fmatrix& mR );
+	void				mk_orientation			( Fvector& dir, fMatrix4x4& mR );
 	void				mk_rotation				( Fvector& dir, SRotation &R);
 
 	// stream executors

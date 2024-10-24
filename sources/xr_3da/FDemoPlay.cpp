@@ -45,13 +45,13 @@ CDemoPlay::CDemoPlay(const char *name, f32 ms, u32 cycles, f32 life_time) : CEff
 		}
 		IReader*	fs	= FS.r_open	(name);
 		u32 sz			= fs->length();
-		if				(sz%sizeof(Fmatrix) != 0)	{
+		if				(sz%sizeof(fMatrix4x4) != 0)	{
 			FS.r_close	(fs);
 			g_pGameLevel->Cameras().RemoveCamEffector	(cefDemo);
 			return		;
 		}
 		
-		seq.resize		(sz/sizeof(Fmatrix));
+		seq.resize		(sz/sizeof(fMatrix4x4));
 		m_count			= seq.size();
 		CopyMemory	(&*seq.begin(),fs->pointer(),sz);
 		FS.r_close		(fs);
@@ -182,7 +182,7 @@ BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar
 	if (m_pMotion)
 	{
 		Fvector R;
-		Fmatrix mRotate;
+		fMatrix4x4 mRotate;
 		m_pMotion->_Evaluate	(m_MParam->Frame(),P,R);
 		m_MParam->Update		(Device.fTimeDelta,1.f,true);
 		fLifeTime				-= Device.fTimeDelta;
@@ -221,12 +221,15 @@ BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar
 		int f3=f2+1;  FIX(f3);
 		int f4=f3+1;  FIX(f4);
 		
-		Fmatrix *m1,*m2,*m3,*m4;
+		fMatrix4x4* m1;
+		fMatrix4x4* m2;
+		fMatrix4x4* m3;
+		fMatrix4x4* m4;
 		Fvector v[4];
-		m1 = (Fmatrix *) &seq[f1];
-		m2 = (Fmatrix *) &seq[f2];
-		m3 = (Fmatrix *) &seq[f3];
-		m4 = (Fmatrix *) &seq[f4];
+		m1 = (fMatrix4x4*) &seq[f1];
+		m2 = (fMatrix4x4*) &seq[f2];
+		m3 = (fMatrix4x4*) &seq[f3];
+		m4 = (fMatrix4x4*) &seq[f4];
 		
 		for (int i=0; i<4; i++) {
 			v[0].x = m1->m[i][0]; v[0].y = m1->m[i][1];  v[0].z = m1->m[i][2];
@@ -236,7 +239,7 @@ BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar
 			spline1	( t, &(v[0]), (Fvector *) &(Device.mView.m[i][0]) );
 		}
 		
-		Fmatrix mInvCamera;
+		fMatrix4x4 mInvCamera;
 		mInvCamera.invert(Device.mView);
 		N.set( mInvCamera._21, mInvCamera._22, mInvCamera._23 );
 		D.set( mInvCamera._31, mInvCamera._32, mInvCamera._33 );

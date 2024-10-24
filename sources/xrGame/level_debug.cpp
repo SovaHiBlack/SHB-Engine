@@ -109,7 +109,7 @@ void CLevelDebug::draw_object_info()
 			break;
 		}
 
-		Fmatrix		res;
+		fMatrix4x4		res;
 		res.mul		(Device.mFullTransform,it->first->XFORM());
 
 		Fvector4	v_res;

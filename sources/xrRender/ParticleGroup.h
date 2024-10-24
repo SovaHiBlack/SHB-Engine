@@ -18,8 +18,8 @@ namespace PS
 				flDefferedStop		= (1<<0),
 				flOnPlayChild		= (1<<1),
 				flEnabled			= (1<<2),
-                flOnPlayChildRewind	= (1<<4),
-                flOnBirthChild		= (1<<5),
+				flOnPlayChildRewind	= (1<<4),
+				flOnBirthChild		= (1<<5),
 				flOnDeadChild		= (1<<6),
 			};
 			Flags32			m_Flags;
@@ -50,40 +50,40 @@ namespace PS
 		f32				m_CurrentTime;
 		Fvector				m_InitialPosition;
 	public:
-    	DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
-    	struct SItem		{
-        	IRender_Visual*	_effect;
-            VisualVec		_children_related;
-            VisualVec		_children_free;
-        public:
-        	void			Set				(IRender_Visual* e);
-            void			Clear			();
+		DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
+		struct SItem		{
+			IRender_Visual*	_effect;
+			VisualVec		_children_related;
+			VisualVec		_children_free;
+		public:
+			void			Set				(IRender_Visual* e);
+			void			Clear			();
 
-            IC u32			GetVisuals		(xr_vector<IRender_Visual*>& visuals)
-            {
-            	visuals.reserve				(_children_related.size()+_children_free.size()+1);
-                if (_effect)				visuals.push_back(_effect);
-                visuals.insert				(visuals.end(),_children_related.begin(),_children_related.end());
-                visuals.insert				(visuals.end(),_children_free.begin(),_children_free.end());
-                return visuals.size();
-            }
-            
-            void			OnDeviceCreate	();
-            void			OnDeviceDestroy	();
+			IC u32			GetVisuals		(xr_vector<IRender_Visual*>& visuals)
+			{
+				visuals.reserve				(_children_related.size()+_children_free.size()+1);
+				if (_effect)				visuals.push_back(_effect);
+				visuals.insert				(visuals.end(),_children_related.begin(),_children_related.end());
+				visuals.insert				(visuals.end(),_children_free.begin(),_children_free.end());
+				return visuals.size();
+			}
+			
+			void			OnDeviceCreate	();
+			void			OnDeviceDestroy	();
 
-            void			StartRelatedChild	(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m);
-            void			StopRelatedChild	(u32 idx);
-            void			StartFreeChild		(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m);
+			void			StartRelatedChild	(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m);
+			void			StopRelatedChild	(u32 idx);
+			void			StartFreeChild		(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m);
 
-            void 			UpdateParent	(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM);
-            void			OnFrame			(u32 u_dt, const CPGDef::SEffect& def, fBox3& box, bool& bPlaying);
+			void 			UpdateParent	(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM);
+			void			OnFrame			(u32 u_dt, const CPGDef::SEffect& def, fBox3& box, bool& bPlaying);
 
-            u32				ParticlesCount	();
-            BOOL			IsPlaying		();
-            void			Play			();
-            void			Stop			(BOOL def_stop);
-        };
-        DEFINE_VECTOR(SItem,SItemVec,SItemVecIt)
+			u32				ParticlesCount	();
+			BOOL			IsPlaying		();
+			void			Play			();
+			void			Stop			(BOOL def_stop);
+		};
+		DEFINE_VECTOR(SItem,SItemVec,SItemVecIt)
 		SItemVec			items;
 	public:
 		enum{
@@ -101,7 +101,7 @@ namespace PS
 		virtual void 		OnDeviceCreate	();
 		virtual void 		OnDeviceDestroy	();
 
-		virtual void		UpdateParent	(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM);
+		virtual void		UpdateParent	(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM);
 
 		BOOL				Compile			(CPGDef* def);
 
@@ -115,7 +115,7 @@ namespace PS
 
 		virtual const shared_str	Name		(){VERIFY(m_Def); return m_Def->m_Name;}
 
-        virtual u32 		ParticlesCount	();
+		virtual u32 		ParticlesCount	();
 	};
 
 }

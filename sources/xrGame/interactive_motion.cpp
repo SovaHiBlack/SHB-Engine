@@ -152,7 +152,8 @@ void imotion_velocity::move_update(CPhysicsShell *s)
 {
 		if(!s->AnimToVelocityState( Device.fTimeDelta, 2 * default_l_limit, 10.f * default_w_limit ))
 			flags.set(fl_switch_dm_toragdoll,TRUE);
-		Fmatrix sv;sv.set(s->mXFORM);
+		fMatrix4x4 sv;
+		sv.set(s->mXFORM);
 		s->InterpolateGlobalTransform(&s->mXFORM);
 		s->mXFORM.set(sv);
 }

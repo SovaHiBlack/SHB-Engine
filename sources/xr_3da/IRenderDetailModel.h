@@ -31,7 +31,7 @@ public:
 	u32			number_indices;
 
 public:
-	virtual void					transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, u16* iDest, u32 iOffset)	= 0;
-	virtual void					transfer	(Fmatrix& mXform, fvfVertexOut* vDest, u32 C, u16* iDest, u32 iOffset, f32 du, f32 dv)	= 0;
+	virtual void					transfer	(fMatrix4x4& mXform, fvfVertexOut* vDest, u32 C, u16* iDest, u32 iOffset)	= 0;
+	virtual void					transfer	(fMatrix4x4& mXform, fvfVertexOut* vDest, u32 C, u16* iDest, u32 iOffset, f32 du, f32 dv)	= 0;
 	virtual ~IRender_DetailModel()	{};
 };

@@ -9,7 +9,7 @@ void 	XRCORE_API		Log(pcstr msg, u32			dop);
 void 	XRCORE_API		Log(pcstr msg, int  			dop);
 void 	XRCORE_API		Log(pcstr msg, f32			dop);
 void 	XRCORE_API		Log(pcstr msg, const Fvector& dop);
-void 	XRCORE_API		Log(pcstr msg, const Fmatrix& dop);
+void 	XRCORE_API		Log(pcstr msg, const fMatrix4x4& dop);
 void 	XRCORE_API		LogWinErr(pcstr msg, long 			err_code);
 
 typedef void	(*LogCallback)	(pcstr string);

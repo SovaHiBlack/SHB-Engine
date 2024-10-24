@@ -133,7 +133,7 @@ public:
 	IC Fvector				Up					()	const { return vNormal;	}
 	IC Fvector				Right				()	const { return vRight;	}
 	
-	IC void					camera_Matrix		(Fmatrix& M){M.set(vRight,vNormal,vDirection,vPosition);}
+	IC void					camera_Matrix		(fMatrix4x4& M){M.set(vRight,vNormal,vDirection,vPosition);}
 	void					Update				(const Fvector& P, const Fvector& D, const Fvector& N, f32 fFOV_Dest, f32 fASPECT_Dest, f32 fFAR_Dest, u32 flags=0);
 	void					Update				(const CCameraBase* C);
 	void					ApplyDevice			(f32 _viewport_near);

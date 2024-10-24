@@ -6,22 +6,21 @@
 #include "..\XR_3DA\skeletoncustom.h"
 #include "Level.h"
 
-void  
-CHelicopter::BoneMGunCallbackX(CBoneInstance *B)
+void CHelicopter::BoneMGunCallbackX(CBoneInstance *B)
 {
 	CHelicopter	* P = static_cast<CHelicopter*>(B->Callback_Param);
-	Fmatrix rX;		rX.rotateX		(P->m_cur_rot.x);
+	fMatrix4x4 rX;
+	rX.rotateX		(P->m_cur_rot.x);
 	B->mTransform.mulB_43			(rX);
 }
 
-void  
-CHelicopter::BoneMGunCallbackY(CBoneInstance *B)
+void CHelicopter::BoneMGunCallbackY(CBoneInstance *B)
 {
 	CHelicopter	* P = static_cast<CHelicopter*>(B->Callback_Param);
-	Fmatrix rY;		rY.rotateY		(P->m_cur_rot.y);
+	fMatrix4x4 rY;
+	rY.rotateY		(P->m_cur_rot.y);
 	B->mTransform.mulB_43			(rY);
 }
-
 
 void CHelicopter::OnEvent(	NET_Packet& P, u16 type) 
 {
@@ -253,7 +252,7 @@ void CHelicopter::UpdateMGunDir()
 	//.fake
 
 	m_allow_fire		= TRUE;
-	Fmatrix XFi;
+	fMatrix4x4 XFi;
 	XFi.invert			(XFORM());
 	Fvector dep;
 	XFi.transform_tiny	(dep,m_enemy.destEnemyPos);
@@ -284,7 +283,7 @@ void CHelicopter::startRocket(u16 idx)
 		VERIFY(pGrenade);
 		pGrenade->SetInitiator(this->ID());
 		
-		Fmatrix rocketXFORM;
+		fMatrix4x4 rocketXFORM;
 		(idx==1)?rocketXFORM=m_left_rocket_bone_xform:rocketXFORM=m_right_rocket_bone_xform;
 
 		Fvector vel;
@@ -292,7 +291,7 @@ void CHelicopter::startRocket(u16 idx)
 		dir.sub(m_enemy.destEnemyPos, rocketXFORM.c ).normalize_safe();
 		vel.mul(dir,CRocketLauncher::m_fLaunchSpeed);
 
-		Fmatrix xform;
+		fMatrix4x4 xform;
 		xform.identity();
 		xform.k.set(dir);
 		Fvector::generate_orthonormal_basis(xform.k,xform.j,xform.i);
@@ -312,7 +311,7 @@ void CHelicopter::startRocket(u16 idx)
 	}
 }
 
-const Fmatrix& CHelicopter::get_ParticlesXFORM()
+const fMatrix4x4& CHelicopter::get_ParticlesXFORM()
 {
 	return m_fire_bone_xform;
 }

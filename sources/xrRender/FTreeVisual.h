@@ -15,7 +15,8 @@ private:
 protected:
 	_5color						c_scale;
 	_5color						c_bias;
-	Fmatrix						xform;
+	fMatrix4x4						xform;
+
 public:
 	virtual void Render			(f32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void Load			(pcstr N, IReader *data, u32 dwFlags);

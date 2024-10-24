@@ -8,11 +8,12 @@ class	ENGINE_API	IRenderable			{
 public:
 	struct 
 	{
-		Fmatrix							xform						;
+		fMatrix4x4							xform						;
 		IRender_Visual*					visual						;
 		IRender_ObjectSpecific*			pROS						;
 		BOOL							pROS_Allowed				;
 	}	renderable;
+
 public:
 										IRenderable					();
 	virtual								~IRenderable				();

@@ -8,7 +8,7 @@ namespace PAPI{
 #define _METHODS	virtual void 	Load		(IReader& F);\
 					virtual void 	Save		(IWriter& F);\
 					virtual void 	Execute		(ParticleEffect *pe, f32 dt);\
-					virtual void 	Transform	(const Fmatrix& m);
+					virtual void 	Transform	(const fMatrix4x4& m);
 
 	struct PARTICLES_API PAAvoid : public ParticleAction
 	{

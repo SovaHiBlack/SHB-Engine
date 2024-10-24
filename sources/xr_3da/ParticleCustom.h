@@ -12,7 +12,7 @@ public:
 	virtual void 	OnDeviceCreate		()=0;
 	virtual void 	OnDeviceDestroy		()=0;
 
-	virtual void	UpdateParent		(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM)=0;
+	virtual void	UpdateParent		(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM)=0;
 	virtual void	OnFrame				(u32 dt)=0;
 
 	virtual void	Play				()=0;

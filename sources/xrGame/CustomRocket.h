@@ -76,7 +76,7 @@ public:
 	virtual	void			StartFlying				();
 	virtual	void			StopFlying				();
 
-	virtual	void			SetLaunchParams			(const Fmatrix& xform, 
+	virtual	void			SetLaunchParams			(const fMatrix4x4& xform,
 													 const Fvector& vel,
 													 const Fvector& angular_vel);
 
@@ -88,7 +88,7 @@ protected:
 
 	SRoketContact			m_contact;
 	//параметры которые задаются RocketLauncher-ом перед пуском
-	Fmatrix					m_LaunchXForm;
+	fMatrix4x4					m_LaunchXForm;
 	Fvector					m_vLaunchVelocity;
 	Fvector					m_vLaunchAngularVelocity;
 

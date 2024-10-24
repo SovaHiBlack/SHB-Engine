@@ -46,7 +46,7 @@ namespace Feel
 
 	public:
 		void						feel_vision_clear		();
-		void						feel_vision_query		(Fmatrix& mFull,	Fvector& P);
+		void						feel_vision_query		(fMatrix4x4& mFull,	Fvector& P);
 		void						feel_vision_update		(CObject* parent,	Fvector& P, f32 dt, f32 vis_threshold);
 		void	__stdcall			feel_vision_relcase		(CObject* object);
 		void						feel_vision_get			(xr_vector<CObject*>& R)		{

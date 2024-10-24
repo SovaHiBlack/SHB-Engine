@@ -54,7 +54,7 @@ BOOL CEffectorBobbing::Process		(Fvector &p, Fvector &d, Fvector &n, f32& /**fFo
 		else						fReminderFactor = 0.f;
 	}
 	if (!fsimilar(fReminderFactor,0)){
-		Fmatrix		M;
+		fMatrix4x4		M;
 		M.identity	();
 		M.j.set		(n);
 		M.k.set		(d);
@@ -92,10 +92,10 @@ BOOL CEffectorBobbing::Process		(Fvector &p, Fvector &d, Fvector &n, f32& /**fFo
 		dangle.z	=	_cosA;
 		dangle.y	=	_sinA;
 
-		Fmatrix		R;
+		fMatrix4x4		R;
 		R.setHPB	(dangle.x,dangle.y,dangle.z);
 
-		Fmatrix		mR;
+		fMatrix4x4		mR;
 		mR.mul		(M,R);
 		
 		d.set		(mR.k);

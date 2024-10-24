@@ -106,7 +106,8 @@ void CDestroyablePhysicsObject::Destroy()
 	if(*m_destroy_particles)
 	{		
 			//Fvector dir;dir.set(0,1,0);
-		Fmatrix m;m.identity();
+		fMatrix4x4 m;
+		m.identity();
 		/////////////////////////////////////////////////
 		m.j.set(0,1.f,0);
 		///////////////////////////////////////////////

@@ -139,7 +139,8 @@ void		CDetailManager::cache_Decompress(Slot* S)
 			Item.scale	= r_scale.randF		(Dobj->m_fMinScale*0.5f,Dobj->m_fMaxScale*0.9f);
 
 			// X-Form BBox
-			Fmatrix		mScale,mXform;
+			fMatrix4x4		mScale;
+			fMatrix4x4		mXform;
 			fBox3		ItemBB;
 			Item.mRotY.rotateY				(r_yaw.randF	(0,PI_MUL_2));
 			Item.mRotY.translate_over		(Item_P);

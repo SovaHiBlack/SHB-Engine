@@ -27,7 +27,7 @@ public:
 	struct	SlotItem	{								// один кустик
 		f32						scale;
 		f32						scale_calculated;
-		Fmatrix						mRotY;
+		fMatrix4x4						mRotY;
 		u32							vis_ID;				// индекс в visibility списке он же тип [не качается, качается1, качается2]
 		f32						c_hemi;
 		f32						c_sun;

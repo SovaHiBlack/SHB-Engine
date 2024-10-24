@@ -17,8 +17,9 @@ private:
 	CDB::MODEL*				m_pModel;
 	occTri*					m_pTris;
 	BOOL					bEnabled;
-	Fmatrix					m_xform;
-	Fmatrix					m_xform_01;
+	fMatrix4x4					m_xform;
+	fMatrix4x4					m_xform_01;
+
 #ifdef DEBUG
 	u32						tris_in_frame_visible	;
 	u32						tris_in_frame			;

@@ -50,9 +50,9 @@ private:
 
 	f32				fContactHit;
 
-	Fmatrix				XFORM_center				();
+	fMatrix4x4				XFORM_center				();
 
-	CParticlesObject*	PlayParticles				(const shared_str& name, BOOL bAutoRemove, const Fmatrix& xform);
+	CParticlesObject*	PlayParticles				(const shared_str& name, BOOL bAutoRemove, const fMatrix4x4& xform);
 //	void				PlayMotion					(MotionID);
 
 	void				UpdatePosition				(const Fvector& tgt_pos);

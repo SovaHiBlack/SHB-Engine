@@ -161,13 +161,13 @@ void CHOM::Render_DB			(CFrustum& base)
 	std::sort		(it,end,pred_fb(m_pTris,COP));
 
 	f32			view_dim	= occ_dim_0;
-	Fmatrix			m_viewport		= {
+	fMatrix4x4			m_viewport		= {
 		view_dim/2.f,			0.0f,					0.0f,		0.0f,
 		0.0f,					-view_dim/2.f,			0.0f,		0.0f,
 		0.0f,					0.0f,					1.0f,		0.0f,
 		view_dim/2.f + 0 + 0,	view_dim/2.f + 0 + 0,	0.0f,		1.0f
 	};
-	Fmatrix			m_viewport_01	= {
+	fMatrix4x4			m_viewport_01	= {
 		1.f/2.f,			0.0f,				0.0f,		0.0f,
 		0.0f,				-1.f/2.f,			0.0f,		0.0f,
 		0.0f,				0.0f,				1.0f,		0.0f,
@@ -235,7 +235,7 @@ void CHOM::Render		(CFrustum& base)
 	Device.Statistic->RenderCALC_HOM.End	();
 }
 
-ICF	BOOL	xform_b0	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
+ICF	BOOL	xform_b0	(fVector2& min, fVector2& max, f32& minz, fMatrix4x4& X, f32 _x, f32 _y, f32 _z)
 {
 	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;
 	if (z< EPSILON_5) return TRUE;
@@ -245,7 +245,7 @@ ICF	BOOL	xform_b0	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, 
 	minz		= 0.f+z*iw;
 	return FALSE;
 }
-ICF	BOOL	xform_b1	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, f32 _y, f32 _z)
+ICF	BOOL	xform_b1	(fVector2& min, fVector2& max, f32& minz, fMatrix4x4& X, f32 _x, f32 _y, f32 _z)
 {
 	f32 t;
 	f32 z		= _x*X._13 + _y*X._23 + _z*X._33 + X._43;
@@ -256,7 +256,7 @@ ICF	BOOL	xform_b1	(fVector2& min, fVector2& max, f32& minz, Fmatrix& X, f32 _x, 
 	t			= 0.f+z*iw;										if (t<minz)	 minz =t;
 	return FALSE;
 }
-IC	BOOL	_visible	(fBox3& B, Fmatrix& m_xform_01)
+IC	BOOL	_visible	(fBox3& B, fMatrix4x4& m_xform_01)
 {
 	// Find min/max points of xformed-box
 	fVector2	min;

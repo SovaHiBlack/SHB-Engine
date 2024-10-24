@@ -37,7 +37,7 @@ public:
 	{
 		return m_body;
 	}
-	void					set_rotation			(const Fmatrix& rot);
+	void					set_rotation			(const fMatrix4x4& rot);
 
 private:
 	virtual void			PhDataUpdate			(dReal step);

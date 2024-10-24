@@ -27,7 +27,7 @@ void CCar::SExhaust::Init()
 	CBoneData&	bone_data=K->LL_GetData(u16(bone_id));
 	transform.set(bone_data.bind_transform);
 	///transform.mulA(pcar->XFORM());
-	//Fmatrix element_transform;
+	//fMatrix4x4 element_transform;
 	//pelement->InterpolateGlobalTransform(&element_transform);
 	//element_transform.invert();
 	//transform.mulA(element_transform);
@@ -41,7 +41,7 @@ void CCar::SExhaust::Init()
 void CCar::SExhaust::Update()
 {
 	VERIFY(!ph_world->Processing());
-	Fmatrix global_transform;
+	fMatrix4x4 global_transform;
 	pelement->InterpolateGlobalTransform(&global_transform);
 	global_transform.mulB_43(transform);
 	dVector3 res;

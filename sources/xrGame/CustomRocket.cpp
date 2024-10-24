@@ -86,7 +86,7 @@ void CCustomRocket::net_Destroy()
 } 
 
 
-void CCustomRocket::SetLaunchParams (const Fmatrix& xform, 
+void CCustomRocket::SetLaunchParams (const fMatrix4x4& xform,
 									 const Fvector& vel,
 									 const Fvector& angular_vel)
 {
@@ -545,7 +545,7 @@ void CCustomRocket::UpdateParticles()
 	vel.mul(0.5f);
 	m_vPrevVel.set(vel);
 
-	Fmatrix particles_xform;
+	fMatrix4x4 particles_xform;
 	particles_xform.identity();
 	particles_xform.k.set(XFORM().k);
 	particles_xform.k.mul(-1.f);

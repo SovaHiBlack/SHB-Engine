@@ -105,7 +105,7 @@ void	CEntity::Hit		(SHit* pHDS)
 	VERIFY					(m> EPSILON_5);
 	
 	// convert impulse into local coordinate system
-	Fmatrix					mInvXForm;
+	fMatrix4x4					mInvXForm;
 	mInvXForm.invert		(XFORM());
 	mInvXForm.transform_dir	(vLocalDir,pHDS->dir);
 	vLocalDir.invert		();

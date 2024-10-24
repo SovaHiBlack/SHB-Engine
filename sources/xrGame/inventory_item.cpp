@@ -496,7 +496,7 @@ void CInventoryItem::PH_I_CrPr		()		// actions & operations between two phisic p
 	////////////////////////////////////
 	pSyncObj->get_State					(p->RecalculatedState);
 	///////////////////////////////////////////////
-	Fmatrix xformX;
+	fMatrix4x4 xformX;
 	pSyncObj->cv2obj_Xfrom(p->RecalculatedState.quaternion, p->RecalculatedState.position, xformX);
 
 	VERIFY2								(_valid(xformX),*object().cName());
@@ -556,7 +556,7 @@ void CInventoryItem::PH_A_CrPr		()
 
 	if (!m_flags.test(FInInterpolate)) return;
 	////////////////////////////////////
-	Fmatrix xformX;
+	fMatrix4x4 xformX;
 	pSyncObj->cv2obj_Xfrom(p->PredictedState.quaternion, p->PredictedState.position, xformX);
 
 	VERIFY2								(_valid(xformX),*object().cName());
@@ -583,7 +583,8 @@ void CInventoryItem::CalculateInterpolationParams()
 	CPHSynchronize* pSyncObj = NULL;
 	pSyncObj = object().PHGetSyncItem(0);
 	
-	Fmatrix xformX0, xformX1;	
+	fMatrix4x4 xformX0;
+	fMatrix4x4 xformX1;
 
 	if (m_flags.test(FInInterpolation))
 	{
@@ -711,7 +712,7 @@ void CInventoryItem::make_Interpolation	()
 			CPHSynchronize* pSyncObj		= NULL;
 			pSyncObj						= object().PHGetSyncItem(0);
 			pSyncObj->set_State				(p->PredictedState);
-			Fmatrix xformI;
+			fMatrix4x4 xformI;
 			pSyncObj->cv2obj_Xfrom			(p->PredictedState.quaternion, p->PredictedState.position, xformI);
 			VERIFY2							(_valid(object().renderable.xform),*object().cName());
 			object().XFORM().set			(xformI);
@@ -839,10 +840,10 @@ void CInventoryItem::UpdateXForm	()
 	//		boneL = boneR2;
 #pragma todo("TO ALL: serious performance problem")
 	V->CalculateBones	();
-	Fmatrix& mL			= V->LL_GetTransform(u16(boneL));
-	Fmatrix& mR			= V->LL_GetTransform(u16(boneR));
+	fMatrix4x4& mL			= V->LL_GetTransform(u16(boneL));
+	fMatrix4x4& mR			= V->LL_GetTransform(u16(boneR));
 	// Calculate
-	Fmatrix			mRes;
+	fMatrix4x4			mRes;
 	Fvector			R,D,N;
 	D.sub			(mL.c,mR.c);	D.normalize_safe();
 
@@ -876,7 +877,7 @@ void CInventoryItem::OnRender()
 
 		Fvector bc,bd; 
 		object().Visual()->vis.box.get_CD	(bc,bd);
-		Fmatrix	M = object().XFORM();
+		fMatrix4x4	M = object().XFORM();
 		M.c.add (bc);
 		Level().debug_renderer().draw_obb			(M,bd,color_rgba(0,0,255,255));
 /*
@@ -916,7 +917,7 @@ void CInventoryItem::OnRender()
 		//---------------------------------------------------------
 		if (OnClient() && !H_Parent() && m_bInInterpolation)
 		{
-			Fmatrix xformI;
+			fMatrix4x4 xformI;
 
 			xformI.rotation(IRecRot);
 			xformI.c.set(IRecPos);

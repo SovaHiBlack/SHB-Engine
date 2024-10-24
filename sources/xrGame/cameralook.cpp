@@ -138,13 +138,13 @@ void CCameraLook2::Update(Fvector& point, Fvector&)
 		UpdateAutoAim	();
 
 
-	Fmatrix mR;
+	fMatrix4x4 mR;
 	mR.setHPB						(-yaw,-pitch,-roll);
 
 	vDirection.set					(mR.k);
 	vNormal.set						(mR.j);
 
-	Fmatrix							a_xform;
+	fMatrix4x4							a_xform;
 	a_xform.setXYZ					(0, -yaw, 0);
 	a_xform.translate_over			(point);
 	Fvector _off					= m_cam_offset;
@@ -161,7 +161,7 @@ void CCameraLook2::UpdateAutoAim()
 	Fvector								_dest_dir;
 	_dest_dir.sub						(_dest_point, vPosition);
 	
-	Fmatrix								_m;
+	fMatrix4x4								_m;
 	_m.identity							();
 	_m.k.normalize_safe					(_dest_dir);
 	Fvector::generate_orthonormal_basis	(_m.k, _m.j, _m.i);

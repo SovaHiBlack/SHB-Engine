@@ -134,7 +134,7 @@ void CPhantom::SwitchToState_internal(EState new_state)
 {
 	if (new_state!=m_CurState){
 		CKinematicsAnimated *K	= smart_cast<CKinematicsAnimated*>(Visual());
-		Fmatrix	xform			= XFORM_center	();
+		fMatrix4x4	xform			= XFORM_center	();
 		UpdateEvent				= 0;
 		// after event
 		switch (m_CurState){
@@ -224,7 +224,7 @@ void CPhantom::OnDeadState()
 void CPhantom::UpdateFlyMedia()
 {
 	UpdatePosition	(m_enemy->Position());
-	Fmatrix	xform			= XFORM_center();
+	fMatrix4x4	xform			= XFORM_center();
 	// update particles
 	if (m_fly_particles){		
 		Fvector		vel;
@@ -262,15 +262,15 @@ void	CPhantom::Hit							(SHit* pHDS)
 	}
 }
 //---------------------------------------------------------------------
-Fmatrix	CPhantom::XFORM_center()
+fMatrix4x4	CPhantom::XFORM_center()
 {
 	Fvector			center;
 	Center			(center);
-	Fmatrix	xform	= XFORM();
+	fMatrix4x4	xform	= XFORM();
 	return			xform.translate_over(center);
 }
 
-CParticlesObject* CPhantom::PlayParticles(const shared_str& name, BOOL bAutoRemove, const Fmatrix& xform)
+CParticlesObject* CPhantom::PlayParticles(const shared_str& name, BOOL bAutoRemove, const fMatrix4x4& xform)
 {
 	CParticlesObject* ps = CParticlesObject::Create(name.c_str(),bAutoRemove);
 	ps->UpdateParent	(xform, zero_vel);

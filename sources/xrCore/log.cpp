@@ -137,7 +137,7 @@ void Log(pcstr msg, const Fvector& dop)
 	Log(buf);
 }
 
-void Log(pcstr msg, const Fmatrix& dop)
+void Log(pcstr msg, const fMatrix4x4& dop)
 {
 	char	buf[1024];
 

@@ -61,7 +61,7 @@ public:
 protected:
 	virtual void			UpdateFireDependencies_internal	();
 	virtual void			UpdateXForm						();
-	void					UpdatePosition					(const Fmatrix& trans);
+	void					UpdatePosition					(const fMatrix4x4& trans);
 	void					spawn_fake_missile				();
 
 	//инициализация если вещь в активном слоте или спрятана на OnH_B_Chield
@@ -80,7 +80,7 @@ protected:
 	u32						m_dwDestroyTimeMax;
 
 	Fvector					m_throw_direction;
-	Fmatrix					m_throw_matrix;
+	fMatrix4x4					m_throw_matrix;
 
 	CMissile				*m_fake_missile;
 

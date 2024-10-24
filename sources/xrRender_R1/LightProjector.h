@@ -21,7 +21,7 @@ private:
 	struct	recv			{
 		IRenderable*		O			;
 		Fvector				C			;
-		Fmatrix				UVgen		;
+		fMatrix4x4				UVgen		;
 		Fvector				UVclamp_min	;
 		Fvector				UVclamp_max	;
 		fBox3				BB			;

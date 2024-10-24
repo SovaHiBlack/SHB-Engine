@@ -130,7 +130,7 @@ void DBG_DrawLine ( const Fvector& p0, const Fvector& p1, u32 c )
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( p0, p1, c ) );
 }
 
-void DBG_DrawMatrix( const Fmatrix &m, f32 size, u8 a/* = 255*/ )
+void DBG_DrawMatrix( const fMatrix4x4& m, f32 size, u8 a/* = 255*/ )
 {
 	Fvector to;to.add( m.c,Fvector( ).mul( m.i, size ) );
 	DBG_DrawPHAbstruct( xr_new<SPHDBGDrawLine>( m.c, to, D3DCOLOR_XRGB(a, 0, 0 ) ) );
@@ -141,33 +141,34 @@ void DBG_DrawMatrix( const Fmatrix &m, f32 size, u8 a/* = 255*/ )
 }
 
 template<int>
-IC	void rotate(Fmatrix &m, f32 ang);
+IC	void rotate(fMatrix4x4& m, f32 ang);
 
 template<>
-IC	void rotate<0>(Fmatrix &m, f32 ang)
+IC	void rotate<0>(fMatrix4x4& m, f32 ang)
 {
 	m.rotateX( ang );
 }
 template<>
-IC	void rotate<1>(Fmatrix &m, f32 ang)
+IC	void rotate<1>(fMatrix4x4& m, f32 ang)
 {
 	m.rotateY( ang );
 }
 
 template<>
-IC	void rotate<2>(Fmatrix &m, f32 ang)
+IC	void rotate<2>(fMatrix4x4& m, f32 ang)
 {
 	m.rotateZ( ang );
 }
 
 template<int ax>
-void DBG_DrawRotation(f32 ang0, f32 ang1, const Fmatrix& m, const Fvector &l, f32 size, u32 ac, bool solid, u32 tessel)
+void DBG_DrawRotation(f32 ang0, f32 ang1, const fMatrix4x4& m, const Fvector &l, f32 size, u32 ac, bool solid, u32 tessel)
 {
 	Fvector from; from.set( m.c );
 	Fvector ln; ln.set( l ); ln.mul( size );
 
 	const f32 ftess = (f32)tessel;
-	Fmatrix mm; rotate<ax>( mm, ang0 );
+	fMatrix4x4 mm;
+	rotate<ax>( mm, ang0 );
 	mm.mulA_43( m );
 	Fmatrix r;
 	rotate<ax>( r, ( ang1 - ang0 ) / ftess );

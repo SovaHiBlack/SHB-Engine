@@ -27,7 +27,7 @@ private:
 		IRenderable*		O;
 		int					slot;
 		Fvector				C;
-		Fmatrix				M;
+		fMatrix4x4				M;
 		light*				L;
 		f32				E;
 	};

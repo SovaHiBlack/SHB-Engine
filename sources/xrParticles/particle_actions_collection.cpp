@@ -342,7 +342,7 @@ void PAPI::PAAvoid::Execute(ParticleEffect *effect, f32 dt)
 		break;
 	}
 }
-void PAPI::PAAvoid::Transform(const Fmatrix& m)
+void PAPI::PAAvoid::Transform(const fMatrix4x4& m)
 {
 	position.transform(positionL,m);
 }
@@ -664,7 +664,7 @@ void PABounce::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PABounce::Transform(const Fmatrix& m)
+void PABounce::Transform(const fMatrix4x4& m)
 {
 	position.transform(positionL,m);
 }
@@ -694,7 +694,7 @@ void PACopyVertexB::Execute(ParticleEffect *effect, f32 dt)
 	}
 */
 }
-void PACopyVertexB::Transform(const Fmatrix&){;}
+void PACopyVertexB::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Dampen velocities
@@ -717,7 +717,7 @@ void PADamping::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PADamping::Transform(const Fmatrix&){;}
+void PADamping::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Exert force on each particle away from explosion center
@@ -746,7 +746,7 @@ void PAExplosion::Execute(ParticleEffect *effect, f32 dt)
 	
 	age += dt;
 }
-void PAExplosion::Transform(const Fmatrix& m)
+void PAExplosion::Transform(const fMatrix4x4& m)
 {
 	m.transform_tiny(center,centerL);
 }
@@ -790,7 +790,7 @@ void PAFollow::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAFollow::Transform(const Fmatrix&){;}
+void PAFollow::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Inter-particle gravitation
@@ -847,7 +847,7 @@ void PAGravitate::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAGravitate::Transform(const Fmatrix&){;}
+void PAGravitate::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Acceleration in a constant direction
@@ -861,7 +861,7 @@ void PAGravity::Execute(ParticleEffect *effect, f32 dt)
 		effect->particles[i].vel += ddir;
 	}
 }
-void PAGravity::Transform(const Fmatrix&){;}
+void PAGravity::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Accelerate particles along a line
@@ -914,7 +914,7 @@ void PAJet::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAJet::Transform(const Fmatrix& m)
+void PAJet::Transform(const fMatrix4x4& m)
 {
 	m.transform_tiny	(center,centerL);
 	acc.transform_dir	(accL,m);
@@ -973,7 +973,7 @@ void PAScatter::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAScatter::Transform(const Fmatrix& m)
+void PAScatter::Transform(const fMatrix4x4& m)
 {
 	m.transform_tiny	(center,centerL);
 }
@@ -991,7 +991,7 @@ void PAKillOld::Execute(ParticleEffect *effect, f32 dt)
 			effect->Remove(i);
 	}
 }
-void PAKillOld::Transform(const Fmatrix&){;}
+void PAKillOld::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Match velocity to near neighbors
@@ -1064,7 +1064,7 @@ void PAMove::Execute(ParticleEffect *effect, f32 dt)
 		m.pos	+= m.vel * dt;
 	}
 }
-void PAMove::Transform(const Fmatrix&){;}
+void PAMove::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Accelerate particles towards a line
@@ -1120,7 +1120,7 @@ void PAOrbitLine::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAOrbitLine::Transform(const Fmatrix& m)
+void PAOrbitLine::Transform(const fMatrix4x4& m)
 {
 	m.transform_tiny(p,pL);
 	m.transform_dir(axis,axisL);
@@ -1170,7 +1170,7 @@ void PAOrbitPoint::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAOrbitPoint::Transform(const Fmatrix& m)
+void PAOrbitPoint::Transform(const fMatrix4x4& m)
 {
 	m.transform_tiny(center,centerL);
 }
@@ -1192,7 +1192,7 @@ void PARandomAccel::Execute(ParticleEffect *effect, f32 dt)
 		m.vel += acceleration * dt;
 	}
 }
-void PARandomAccel::Transform(const Fmatrix& m)
+void PARandomAccel::Transform(const fMatrix4x4& m)
 {
 	gen_acc.transform_dir(gen_accL,m);
 }
@@ -1214,7 +1214,7 @@ void PARandomDisplace::Execute(ParticleEffect *effect, f32 dt)
 		m.pos += displacement * dt;
 	}
 }
-void PARandomDisplace::Transform(const Fmatrix& m)
+void PARandomDisplace::Transform(const fMatrix4x4& m)
 {
 	gen_disp.transform_dir(gen_dispL,m);
 }
@@ -1235,7 +1235,7 @@ void PARandomVelocity::Execute(ParticleEffect *effect, f32 dt)
 		m.vel = velocity;
 	}
 }
-void PARandomVelocity::Transform(const Fmatrix& m)
+void PARandomVelocity::Transform(const fMatrix4x4& m)
 {
 	gen_vel.transform_dir(gen_velL,m);
 }
@@ -1336,7 +1336,7 @@ void PARestore::Execute(ParticleEffect *effect, f32 dt)
 	
 	time_left -= dt;
 }
-void PARestore::Transform(const Fmatrix&){;}
+void PARestore::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Kill particles with positions on wrong side of the specified domain
@@ -1352,7 +1352,7 @@ void PASink::Execute(ParticleEffect *effect, f32 dt)
 			effect->Remove(i);
 	}
 }
-void PASink::Transform(const Fmatrix& m)
+void PASink::Transform(const fMatrix4x4& m)
 {
 	position.transform(positionL,m);
 }
@@ -1371,7 +1371,7 @@ void PASinkVelocity::Execute(ParticleEffect *effect, f32 dt)
 			effect->Remove(i);
 	}
 }
-void PASinkVelocity::Transform(const Fmatrix& m)
+void PASinkVelocity::Transform(const fMatrix4x4& m)
 {
 	velocity.transform_dir(velocityL,m);
 }
@@ -1418,7 +1418,7 @@ void PASource::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PASource::Transform(const Fmatrix& m)
+void PASource::Transform(const fMatrix4x4& m)
 {
 	position.transform(positionL,m);
 	velocity.transform_dir(velocityL,m);
@@ -1446,7 +1446,7 @@ void PASpeedLimit::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PASpeedLimit::Transform(const Fmatrix&){;}
+void PASpeedLimit::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Change color of all particles toward the specified color
@@ -1467,7 +1467,7 @@ void PATargetColor::Execute(ParticleEffect *effect, f32 dt)
 //		m.alpha += (alpha - m.alpha) * scaleFac;
 	}
 }
-void PATargetColor::Transform(const Fmatrix&){;}
+void PATargetColor::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Change sizes of all particles toward the specified size
@@ -1487,7 +1487,7 @@ void PATargetSize::Execute(ParticleEffect *effect, f32 dt)
 		m.size += dif;
 	}
 }
-void PATargetSize::Transform(const Fmatrix&){;}
+void PATargetSize::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Change rotation of all particles toward the specified velocity
@@ -1506,7 +1506,7 @@ void PATargetRotate::Execute(ParticleEffect *effect, f32 dt)
 		m.rot	+= dif;
 	}
 }
-void PATargetRotate::Transform(const Fmatrix&){;}
+void PATargetRotate::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 // Change velocity of all particles toward the specified velocity
@@ -1520,7 +1520,7 @@ void PATargetVelocity::Execute(ParticleEffect *effect, f32 dt)
 		m.vel += (velocity - m.vel) * scaleFac;
 	}
 }
-void PATargetVelocity::Transform(const Fmatrix& m)
+void PATargetVelocity::Transform(const fMatrix4x4& m)
 {
 	m.transform_dir(velocity,velocityL);
 }
@@ -1619,7 +1619,7 @@ void PAVortex::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAVortex::Transform(const Fmatrix& m)
+void PAVortex::Transform(const fMatrix4x4& m)
 {
 	m.transform_tiny(center,centerL);
 	m.transform_dir(axis,axisL);
@@ -1657,5 +1657,5 @@ void PATurbulence::Execute(ParticleEffect *effect, f32 dt)
 		m.vel.mul(valMagScale);
 	}
 }
-void PATurbulence::Transform(const Fmatrix& m){}
+void PATurbulence::Transform(const fMatrix4x4& m){}
 //-------------------------------------------------------------------------------------------------

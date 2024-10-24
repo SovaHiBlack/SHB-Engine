@@ -74,7 +74,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 		return;
 
 	Fvector dr = dir;
-	Fmatrix m;
+	fMatrix4x4 m;
 	GetBaseMatrix(m,ea);
 
 #ifdef DEBUG
@@ -154,7 +154,7 @@ bool character_hit_animation_controller::IsEffected( u16	bi, CKinematics &ca )co
 	return false;
 }
 
-void character_hit_animation_controller::GetBaseMatrix( Fmatrix &m,CEntityAlive &ea)const
+void character_hit_animation_controller::GetBaseMatrix(fMatrix4x4& m,CEntityAlive &ea)const
 {
 	CKinematics* CA = smart_cast<CKinematics*>(ea.Visual());
 	m.mul_43(ea.XFORM(),CA->LL_GetTransform(base_bone));

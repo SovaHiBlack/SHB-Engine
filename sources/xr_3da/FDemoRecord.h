@@ -15,7 +15,7 @@ private:
 	IWriter*	file;
 	Fvector		m_HPB;
 	Fvector		m_Position;
-	Fmatrix		m_Camera;
+	fMatrix4x4		m_Camera;
 	u32			m_Stage;
 
 	Fvector		m_vT;

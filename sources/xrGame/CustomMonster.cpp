@@ -70,7 +70,7 @@ void CCustomMonster::SAnimState::Create(CKinematicsAnimated* K, pcstr base)
 //{
 //	CCustomMonster*		M = static_cast<CCustomMonster*> (B->Callback_Param);
 //
-//	Fmatrix					spin;
+//	fMatrix4x4					spin;
 //	spin.setXYZ				(0, M->NET_Last.o_torso.pitch, 0);
 //	B->mTransform.mulB_43	(spin);
 //}
@@ -220,7 +220,7 @@ void CCustomMonster::reload		(pcstr section)
 	m_panic_threshold			= pSettings->r_float(section,"panic_threshold");
 }
 
-void CCustomMonster::mk_orientation(Fvector &dir, Fmatrix& mR)
+void CCustomMonster::mk_orientation(Fvector &dir, fMatrix4x4& mR)
 {
 	// orient only in XZ plane
 	dir.y		= 0;
@@ -475,7 +475,7 @@ void CCustomMonster::UpdateCL	()
 		XFORM().translate_over		(NET_Last.p_pos);
 
 		if (!animation_movement_controlled() && m_update_rotation_on_frame) {
-			Fmatrix					M;
+			fMatrix4x4					M;
 			M.setHPB				(0.0f, -NET_Last.o_torso.pitch, 0.0f);
 			XFORM().mulB_43			(M);
 		}
@@ -516,8 +516,9 @@ void CCustomMonster::eye_pp_s0			( )
 	// Eye matrix
 	CKinematics* V							= smart_cast<CKinematics*>(Visual());
 	V->CalculateBones						();
-	Fmatrix&	mEye						= V->LL_GetTransform(u16(eye_bone));
-	Fmatrix		X;							X.mul_43	(XFORM(),mEye);
+	fMatrix4x4&	mEye						= V->LL_GetTransform(u16(eye_bone));
+	fMatrix4x4		X;
+	X.mul_43	(XFORM(),mEye);
 	VERIFY									(_valid(mEye));
 
 	const MonsterSpace::SBoneRotation		&rotation = head_orientation();
@@ -568,7 +569,9 @@ void CCustomMonster::eye_pp_s1			()
 	}
 	// Standart visibility
 	Device.Statistic->AI_Vis_Query.Begin		();
-	Fmatrix									mProject,mFull,mView;
+	fMatrix4x4								mProject;
+	fMatrix4x4								mFull;
+	fMatrix4x4								mView;
 	mView.build_camera_dir					(eye_matrix.c,eye_matrix.k,eye_matrix.j);
 	VERIFY									(_valid(eye_matrix));
 	mProject.build_projection				(deg2rad(new_fov),1,0.1f,new_range);

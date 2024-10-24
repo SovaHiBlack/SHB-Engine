@@ -105,7 +105,7 @@ public:
     	if (*p)	w(*p,(u32)xr_strlen(p)+1);
         else	w_u8(0);
 	}
-	IC void w_matrix			(Fmatrix& M)
+	IC void w_matrix			(fMatrix4x4& M)
 	{
 		w_vec3	(M.i);
 		w_vec3	(M.j);
@@ -262,7 +262,7 @@ public:
         r_advance	(dest.size()+1);
     }
 
-	IC void		r_matrix		(Fmatrix& M)
+	IC void		r_matrix		(fMatrix4x4& M)
 	{
 		r_vec3	(M.i);	M._14_	= 0;
 		r_vec3	(M.j);	M._24_	= 0;

@@ -386,10 +386,10 @@ void CDemoRecord::IR_OnMouseHold		(int btn)
 
 void CDemoRecord::RecordKey			()
 {
-	Fmatrix			g_matView;
+	fMatrix4x4			g_matView;
  
 	g_matView.invert(m_Camera);
-	file->w			(&g_matView,sizeof(Fmatrix));
+	file->w			(&g_matView,sizeof(fMatrix4x4));
 	iCount++;
 }
 

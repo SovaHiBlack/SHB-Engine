@@ -20,7 +20,7 @@ namespace PS
 
 		Fvector				m_InitialPosition;
 	public:
-        Fmatrix				m_XFORM;
+		fMatrix4x4				m_XFORM;
     protected:
     	DestroyCallback		m_DestroyCallback;
         CollisionCallback	m_CollisionCallback;
@@ -46,7 +46,7 @@ namespace PS
 		virtual void 		OnDeviceCreate		();
 		virtual void 		OnDeviceDestroy		();
 
-		virtual void		UpdateParent		(const Fmatrix& m, const Fvector& velocity, BOOL bXFORM);
+		virtual void		UpdateParent		(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM);
 
 		BOOL				Compile				(CPEDef* def);
 

@@ -173,7 +173,7 @@ void CHudItem::UpdateHudPosition	()
 		if(item().IsHidden()) 
 			SetHUDmode(FALSE);
 
-		Fmatrix							trans;
+		fMatrix4x4							trans;
 
 		CActor* pActor = smart_cast<CActor*>(object().H_Parent());
 		if(pActor){
@@ -185,7 +185,7 @@ void CHudItem::UpdateHudPosition	()
 	}
 }
 
-void CHudItem::UpdateHudAdditonal		(Fmatrix& hud_trans)
+void CHudItem::UpdateHudAdditonal		(fMatrix4x4& hud_trans)
 {
 }
 
@@ -204,10 +204,10 @@ static const f32 PITCH_OFFSET_D	= 0.02f;
 static const f32 ORIGIN_OFFSET	= -0.05f;
 static const f32 TENDTO_SPEED		= 5.f;
 
-void CHudItem::UpdateHudInertion		(Fmatrix& hud_trans)
+void CHudItem::UpdateHudInertion		(fMatrix4x4& hud_trans)
 {
 	if (m_pHUD && m_bInertionAllow && m_bInertionEnable){
-		Fmatrix								xform;//,xform_orig; 
+		fMatrix4x4								xform;//,xform_orig; 
 		Fvector& origin						= hud_trans.c; 
 		xform								= hud_trans;
 

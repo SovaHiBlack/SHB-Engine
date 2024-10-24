@@ -126,7 +126,7 @@ void CBulletManager::Load		()
 		m_ExplodeParticles.push_back	(_GetItem(explode_particles,k,tmp));
 }
 
-void CBulletManager::PlayExplodePS		(const Fmatrix& xf)
+void CBulletManager::PlayExplodePS		(const fMatrix4x4& xf)
 {
 	if (!m_ExplodeParticles.empty()){
 		const shared_str& ps_name		= m_ExplodeParticles[Random.randI(0, m_ExplodeParticles.size())];

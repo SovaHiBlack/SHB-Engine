@@ -812,7 +812,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 		u16 play_bone = PP->GetRandomBone(); 
 		if (play_bone!=BI_NONE){
 			CParticlesObject* pParticles = CParticlesObject::Create(*particle_str,TRUE);
-			Fmatrix xform;
+			fMatrix4x4 xform;
 
 			Fvector dir;
 			if(fis_zero(vel.magnitude()))
@@ -844,7 +844,7 @@ void CCustomZone::PlayBulletParticles(Fvector& pos)
 	CParticlesObject* pParticles;
 	pParticles = CParticlesObject::Create(*m_sEntranceParticlesSmall,TRUE);
 	
-	Fmatrix M;
+	fMatrix4x4 M;
 	M = XFORM();
 	M.c.set(pos);
 
@@ -913,7 +913,7 @@ void CCustomZone::StopObjectIdleParticles(CGameObject* pObject)
 
 void	CCustomZone::Hit					(SHit* pHDS)
 {
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.identity();
 	M.translate_over	(pHDS->p_in_bone_space);
 	M.mulA_43			(XFORM());

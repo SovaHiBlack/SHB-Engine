@@ -325,10 +325,12 @@ void CCharacterPhysicsSupport::in_shedule_Update( u32 DT )
 #endif
 const f32 cmp_angle = M_PI/10.f;
 const f32 cmp_ldisp = 0.1f;
-IC bool cmp(const Fmatrix &f0, const Fmatrix &f1 )
+IC bool cmp(const fMatrix4x4& f0, const fMatrix4x4& f1 )
 {
-	Fmatrix if0;if0.invert(f0);
-	Fmatrix cm;cm.mul_43(if0,f1);
+	fMatrix4x4 if0;
+	if0.invert(f0);
+	fMatrix4x4 cm;
+	cm.mul_43(if0,f1);
 	
 	Fvector ax;
 	f32 ang;
@@ -339,10 +341,12 @@ IC bool cmp(const Fmatrix &f0, const Fmatrix &f1 )
 	return ang < cmp_angle && cm.c.square_magnitude() < cmp_ldisp* cmp_ldisp ;
 }
 
-bool is_similar(const Fmatrix &m0,const Fmatrix &m1, f32 param)
+bool is_similar(const fMatrix4x4& m0,const fMatrix4x4& m1, f32 param)
 {
-	Fmatrix tmp1;tmp1.invert(m0);
-	Fmatrix tmp2;tmp2.mul(tmp1,m1);
+	fMatrix4x4 tmp1;
+	tmp1.invert(m0);
+	fMatrix4x4 tmp2;
+	tmp2.mul(tmp1,m1);
 	Fvector ax;
 	f32 ang;
 	Fquaternion q;
@@ -373,7 +377,8 @@ bool is_similar(const Fmatrix &m0,const Fmatrix &m1, f32 param)
 void CCharacterPhysicsSupport::KillHit(CObject *who, ALife::EHitType hit_type, f32& impulse)
 {
 	TestForWounded();
-	Fmatrix prev_pose;prev_pose.set(mXFORM);
+	fMatrix4x4 prev_pose;
+	prev_pose.set(mXFORM);
 	ActivateShell(who);
 #ifdef DEBUG
 	if(Type() == etStalker && xr_strcmp(dbg_stalker_death_anim, "none") != 0)
@@ -478,7 +483,7 @@ void CCharacterPhysicsSupport::in_UpdateCL( )
 #ifdef DEBUG
 	if(Type()==etStalker && ph_dbg_draw_mask1.test(phDbgHitAnims))
 	{
-		Fmatrix m;
+		fMatrix4x4 m;
 		m_hit_animations.GetBaseMatrix(m,m_EntityAlife);
 		DBG_DrawMatrix(m,1.5f);
 /*
@@ -487,10 +492,10 @@ void CCharacterPhysicsSupport::in_UpdateCL( )
 		u16 pb = K->LL_GetBoneRoot();
 		u16 nb = K->LL_BoneID("bip01_neck");
 		u16 eb = K->LL_BoneID("eye_right");
-		Fmatrix &mh  = K->LL_GetTransform(hb);
-		Fmatrix &mp  = K->LL_GetTransform(pb);
-		Fmatrix &me	 = K->LL_GetTransform(eb);
-		Fmatrix &mn	 = K->LL_GetTransform(nb);
+		fMatrix4x4 &mh  = K->LL_GetTransform(hb);
+		fMatrix4x4 &mp  = K->LL_GetTransform(pb);
+		fMatrix4x4 &me	 = K->LL_GetTransform(eb);
+		fMatrix4x4 &mn	 = K->LL_GetTransform(nb);
 		f32 d = DET(mh);
 		if(Fvector().sub(mh.c,mp.c).magnitude() < 0.3f||d<0.7 )//|| Fvector().sub(me.c,mn.c) < 0.5
 		{
@@ -603,7 +608,8 @@ void CCharacterPhysicsSupport::ActivateShell			( CObject* who )
 	//animation movement controller issues
 	bool	anim_mov_ctrl =m_EntityAlife.animation_movement_controlled( );
 	CBoneInstance	&BR = K->LL_GetBoneInstance( K->LL_GetBoneRoot( ) );
-	Fmatrix start_xform; start_xform.identity( );
+	fMatrix4x4 start_xform;
+	start_xform.identity( );
 	CBlend *anim_mov_blend = 0;
 	//f32	blend_time = 0;
 	if( anim_mov_ctrl )
@@ -709,14 +715,13 @@ void CCharacterPhysicsSupport::ActivateShell			( CObject* who )
 
 	if(anim_mov_ctrl && anim_mov_blend && anim_mov_blend->blend != CBlend::eFREE_SLOT &&  anim_mov_blend->timeCurrent + Device.fTimeDelta*anim_mov_blend->speed < anim_mov_blend->timeTotal-SAMPLE_SPF- EPSILON_5)//.
 	{
-		const Fmatrix sv_xform = mXFORM;
+		const fMatrix4x4 sv_xform = mXFORM;
 		mXFORM.set( start_xform );
 		//anim_mov_blend->blendPower = 1;
 		anim_mov_blend->timeCurrent  += Device.fTimeDelta * anim_mov_blend->speed;
 		m_pPhysicsShell->AnimToVelocityState( Device.fTimeDelta, 2 * default_l_limit, 10.f * default_w_limit );
 		mXFORM.set( sv_xform );
 	}
-
 }
 void CCharacterPhysicsSupport::in_ChangeVisual()
 {
@@ -868,7 +873,7 @@ void CCharacterPhysicsSupport::TestForWounded()
 	CKinematics* CKA=smart_cast<CKinematics*>(m_EntityAlife.Visual());
 	CKA->CalculateBones();
 	CBoneInstance CBI=CKA->LL_GetBoneInstance(0);
-	Fmatrix position_matrix;
+	fMatrix4x4 position_matrix;
 	position_matrix.mul(mXFORM,CBI.mTransform);
 	
 	xrXRC						xrc;

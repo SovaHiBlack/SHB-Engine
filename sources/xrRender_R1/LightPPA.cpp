@@ -160,7 +160,9 @@ void CLightR_Manager::render_point	()
 
 		//		1. Calculate light frustum
 		Fvector						L_dir,L_up,L_right,L_pos;
-		Fmatrix						L_view,L_project,L_combine;
+		fMatrix4x4					L_view;
+		fMatrix4x4					L_project;
+		fMatrix4x4					L_combine;
 		L_dir.set					(0,-1, 0);				
 		L_up.set					(0,	0, 1);				
 		L_right.crossproduct		(L_up,L_dir);			L_right.normalize	();
@@ -175,14 +177,15 @@ void CLightR_Manager::render_point	()
 		f32			fTexelOffs			= (.5f / SSM_tex_size);
 		f32			fRange				= 1.f  / L->range;
 		f32			fBias				= 0.f;
-		Fmatrix			m_TexelAdjust		= 
+		fMatrix4x4			m_TexelAdjust		=
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
 			0.0f,				-0.5f,				0.0f,			0.0f,
 			0.0f,				0.0f,				fRange,			0.0f,
 			0.5f + fTexelOffs,	0.5f + fTexelOffs,	fBias,			1.0f
 		};
-		Fmatrix		L_texgen;		L_texgen.mul	(m_TexelAdjust,L_combine);
+		fMatrix4x4		L_texgen;
+		L_texgen.mul	(m_TexelAdjust,L_combine);
 
 		//		2. Set global light-params to be used by shading
 		RImplementation.r1_dlight_light		= L;
@@ -232,7 +235,9 @@ void CLightR_Manager::render_spot	()
 
 		//		1. Calculate light frustum
 		Fvector						L_dir,L_up,L_right,L_pos;
-		Fmatrix						L_view,L_project,L_combine;
+		fMatrix4x4					L_view;
+		fMatrix4x4					L_project;
+		fMatrix4x4					L_combine;
 		L_dir.set					(L->direction);			L_dir.normalize		();
 		L_up.set					(0,1,0);				if (_abs(L_up.dotproduct(L_dir))>.99f)	L_up.set(0,0,1);
 		L_right.crossproduct		(L_up,L_dir);			L_right.normalize	();
@@ -246,14 +251,15 @@ void CLightR_Manager::render_spot	()
 		f32			fTexelOffs			= (.5f / SSM_tex_size);
 		f32			fRange				= 1.f  / L->range;
 		f32			fBias				= 0.f;
-		Fmatrix			m_TexelAdjust		= 
+		fMatrix4x4			m_TexelAdjust		=
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
 			0.0f,				-0.5f,				0.0f,			0.0f,
 			0.0f,				0.0f,				fRange,			0.0f,
 			0.5f + fTexelOffs,	0.5f + fTexelOffs,	fBias,			1.0f
 		};
-		Fmatrix		L_texgen;		L_texgen.mul	(m_TexelAdjust,L_combine);
+		fMatrix4x4		L_texgen;
+		L_texgen.mul	(m_TexelAdjust,L_combine);
 
 		//		2. Set global light-params to be used by shading
 		RImplementation.r1_dlight_light		= L;

@@ -54,7 +54,7 @@ private:
 	}									anim_mov_state;
 
 	CEntityAlive						&m_EntityAlife																																		;
-	Fmatrix								&mXFORM																																				;
+	fMatrix4x4&							mXFORM																																				;
 	CPhysicsShell						*&m_pPhysicsShell																																	;
 	CPhysicsShell						*m_physics_skeleton																																	;
 	CPHMovementControl					*m_PhysicMovementControl																															;

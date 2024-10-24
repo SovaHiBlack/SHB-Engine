@@ -37,7 +37,7 @@ public:
 	ref_shader		s_point;
 
 	u32				m_xform_frame;
-	Fmatrix			m_xform;
+	fMatrix4x4			m_xform;
 
 	struct _vis		{
 		u32			frame2test;		// frame the test is sheduled to
@@ -50,21 +50,21 @@ public:
 
 	union			_xform	{
 		struct		_D		{
-			Fmatrix						combine	;
+			fMatrix4x4						combine	;
 			s32							minX,maxX	;
 			s32							minY,maxY	;
 			BOOL						transluent	;
 		}	D;
 		struct		_P		{
-			Fmatrix						world		;
-			Fmatrix						view		;
-			Fmatrix						project		;
-			Fmatrix						combine		;
+			fMatrix4x4						world		;
+			fMatrix4x4						view		;
+			fMatrix4x4						project		;
+			fMatrix4x4						combine		;
 		}	P;
 		struct		_S		{
-			Fmatrix						view		;
-			Fmatrix						project		;
-			Fmatrix						combine		;
+			fMatrix4x4						view		;
+			fMatrix4x4						project		;
+			fMatrix4x4						combine		;
 			u32							size		;
 			u32							posX		;
 			u32							posY		;

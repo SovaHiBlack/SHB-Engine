@@ -244,7 +244,8 @@ void CLightShadows::calculate	()
 			}
 			
 			// calculate projection-matrix
-			Fmatrix		mProject,mProjectR;
+			fMatrix4x4		mProject;
+			fMatrix4x4		mProjectR;
 			f32		p_dist	=	C.C.distance_to(Lpos);
 			f32		p_R		=	C.O->renderable.visual->vis.sphere.R;
 			f32		p_hat	=	p_R/p_dist;
@@ -269,7 +270,7 @@ void CLightShadows::calculate	()
 			RCache.set_xform_project		(mProject);
 			
 			// calculate view-matrix
-			Fmatrix		mView;
+			fMatrix4x4		mView;
 			Fvector		v_D,v_N,v_R;
 			v_D.sub					(C.C,Lpos);
 			v_D.normalize			();
@@ -281,7 +282,8 @@ void CLightShadows::calculate	()
 			RCache.set_xform_view	(mView);
 			
 			// combine and build frustum
-			Fmatrix					mCombine,mCombineR;
+			fMatrix4x4				mCombine;
+			fMatrix4x4				mCombineR;
 			mCombine.mul			(mProject,mView);
 			mCombineR.mul			(mProjectR,mView);
 			

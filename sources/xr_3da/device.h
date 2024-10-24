@@ -95,10 +95,10 @@ public:
 	Fvector									vCameraDirection;
 	Fvector									vCameraTop;
 	Fvector									vCameraRight;
-	Fmatrix									mView;
-	Fmatrix									mProject;
-	Fmatrix									mFullTransform;
-	Fmatrix									mInvFullTransform;
+	fMatrix4x4									mView;
+	fMatrix4x4									mProject;
+	fMatrix4x4									mFullTransform;
+	fMatrix4x4									mInvFullTransform;
 	f32										fFOV;
 	f32										fASPECT;
 	

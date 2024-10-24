@@ -117,7 +117,7 @@ void FTreeVisual::Render	(f32 LOD)
 	if (tvs.dwFrame!=Device.dwFrame)	tvs.calculate();
 	// setup constants
 #if RENDER==R_R2
-	Fmatrix					xform_v			;
+	fMatrix4x4					xform_v			;
 							xform_v.mul_43	(RCache.get_xform_view(),xform);
 							RCache.set_c	(m_xform_v,	xform_v);									// matrix
 #endif

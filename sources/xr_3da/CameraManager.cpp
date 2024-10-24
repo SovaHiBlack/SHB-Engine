@@ -353,7 +353,7 @@ void CCameraManager::ResetPP()
 
 void CCameraManager::Dump()
 {
-	Fmatrix mInvCamera;
+	fMatrix4x4 mInvCamera;
 	Fvector _R,_U,_T,_P;
 	
 	mInvCamera.invert(Device.mView);

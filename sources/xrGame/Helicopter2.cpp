@@ -77,8 +77,8 @@ void CHelicopter::UpdateHeliParticles	()
 	}
 //lighting
 	if(m_light_render->get_active()){
-		Fmatrix xf;
-		Fmatrix& M = K->LL_GetTransform(u16(m_light_bone));
+		fMatrix4x4 xf;
+		fMatrix4x4& M = K->LL_GetTransform(u16(m_light_bone));
 		xf.mul		(XFORM(),M);
 		VERIFY(!fis_zero(DET(xf)));
 

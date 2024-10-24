@@ -49,7 +49,7 @@ void CDetailManager::soft_Render	()
 			// Fill VB (and flush it as nesessary)
 			RCache.set_Shader	(Object.shader);
 
-			Fmatrix		mXform;
+			fMatrix4x4		mXform;
 			for (u32 L_ID=0; L_ID<lock_count; L_ID++){
 				// Calculate params
 				u32	item_start	= L_ID*o_per_lock;
@@ -73,7 +73,7 @@ void CDetailManager::soft_Render	()
 					f32	scale			= Instance.scale_calculated;
 
 					// Build matrix
-					Fmatrix& M = Instance.mRotY;
+					fMatrix4x4& M = Instance.mRotY;
 					mXform._11=M._11*scale;	mXform._12=M._12*scale;	mXform._13=M._13*scale;	mXform._14=M._14;
 					mXform._21=M._21*scale;	mXform._22=M._22*scale;	mXform._23=M._23*scale;	mXform._24=M._24;
 					mXform._31=M._31*scale;	mXform._32=M._32*scale;	mXform._33=M._33*scale;	mXform._34=M._34;

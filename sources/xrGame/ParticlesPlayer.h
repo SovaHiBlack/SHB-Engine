@@ -22,7 +22,7 @@ public:
 	{
 		CParticlesObject*	ps;
 		//Fvector				dir;
-		//Fmatrix				x_form;
+		//fMatrix4x4				x_form;
 		Fvector				angles;
 		u16					sender_id;	//id - объекта, который запустил партиклы
 		u32					life_time;	//время жизни партикла (-1) - бесконечно
@@ -79,15 +79,15 @@ public:
 	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const Fvector& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
 	void					StartParticles			(const shared_str& ps_name, const Fvector& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
 
-	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles			(const shared_str& ps_name, const Fmatrix& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const fMatrix4x4& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles			(const shared_str& ps_name, const fMatrix4x4& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
 
 
 	void					StopParticles			(u16 sender_ID, u16 bone_id, bool bDestroy);
 	void					StopParticles			(const shared_str& particles_name, u16 bone_id, bool bDestroy);
 	void					AutoStopParticles		(const shared_str& ps_name, u16 bone_id,u32 life_time);
 
-	static void				MakeXFORM				(CObject* pObject, u16 bone_id, const Fvector& dir, const Fvector& offset, Fmatrix& result);
+	static void				MakeXFORM				(CObject* pObject, u16 bone_id, const Fvector& dir, const Fvector& offset, fMatrix4x4& result);
 	static void				GetBonePos				(CObject* pObject, u16 bone_id, const Fvector& offset, Fvector& result);
 	u16						GetNearestBone			(CKinematics* K, u16 bone_id);
 	IC u16					GetRandomBone			(){ u16 l_PBCount=u16(m_Bones.size()); if(l_PBCount) return m_Bones[(u16)Random.randI(l_PBCount)].index; else return BI_NONE;}

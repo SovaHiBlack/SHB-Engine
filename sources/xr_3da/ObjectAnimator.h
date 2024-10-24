@@ -12,7 +12,7 @@ protected:
 
 	shared_str			m_Name;
 	
-	Fmatrix				m_XFORM;
+	fMatrix4x4				m_XFORM;
 	SAnimParams			m_MParam;
 	MotionVec			m_Motions;
 	f32				m_Speed;
@@ -36,7 +36,7 @@ public:
 	void				Stop			();
 	IC BOOL				IsPlaying		(){return m_MParam.bPlay;}
 
-	IC const Fmatrix&	XFORM			(){return m_XFORM;}
+	IC const fMatrix4x4&	XFORM			(){return m_XFORM;}
 	f32				GetLength		();
 	// Update
 	void				Update			(f32 dt);

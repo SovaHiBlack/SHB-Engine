@@ -79,7 +79,7 @@ namespace Feel {
 		for (; Ii!=IiE; ++Ii)if (Ii->O==object){ feel_visible.erase(Ii); break; }
 	}
 
-	void	Vision::feel_vision_query	(Fmatrix& mFull, Fvector& P)
+	void	Vision::feel_vision_query	(fMatrix4x4& mFull, Fvector& P)
 	{
 		CFrustum								Frustum		;
 		Frustum.CreateFromMatrix				(mFull,FRUSTUM_P_LRTB|FRUSTUM_P_FAR);
@@ -163,13 +163,15 @@ namespace Feel {
 
 			// Fetch data
 			Fvector				OP;
-			Fmatrix				mE;
+			fMatrix4x4				mE;
 			const fBox3&			B = I->O->CFORM()->getBBox();
-			const Fmatrix&		M = I->O->XFORM();
+			const fMatrix4x4&		M = I->O->XFORM();
 
 			// Build OBB + Ellipse and X-form point
 			Fvector				c,r;
-			Fmatrix				T,mR,mS;
+			fMatrix4x4			T;
+			fMatrix4x4			mR;
+			fMatrix4x4			mS;
 			B.getcenter			(c);
 			B.getradius			(r);
 			T.translate			(c);

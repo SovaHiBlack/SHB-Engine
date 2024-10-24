@@ -183,7 +183,7 @@ void CLightProjector::calculate	()
 
 		// Msg					("[%f,%f,%f]-%f",C.C.x,C.C.y,C.C.z,C.O->renderable.visual->vis.sphere.R);
 		// calculate projection-matrix
-		Fmatrix		mProject;
+		fMatrix4x4		mProject;
 		f32		p_R			=	R.O->renderable.visual->vis.sphere.R * 1.1f;
 		VERIFY2		(p_R> EPSILON_3,"Object has no physical size");
 		f32		p_hat		=	p_R/P_cam_dist;
@@ -194,7 +194,7 @@ void CLightProjector::calculate	()
 		RCache.set_xform_project		(mProject);
 		
 		// calculate view-matrix
-		Fmatrix		mView;
+		fMatrix4x4		mView;
 		Fvector		v_C, v_Cs, v_N;
 		v_C.set					(R.C);
 		v_Cs					= v_C;
@@ -225,7 +225,7 @@ void CLightProjector::calculate	()
 			CKinematics* K = dynamic_cast<CKinematics*>(OO->Visual());
 			
 			for(u16 ii=0; ii<K->LL_BoneCount();++ii){
-				Fmatrix tr;
+				fMatrix4x4 tr;
 
 				tr = K->LL_GetTransform(ii);
 				Log("bone ",K->LL_BoneName_dbg(ii));
@@ -257,13 +257,14 @@ void CLightProjector::calculate	()
 		CHK_DX					(HW.pDevice->Clear(0,0, D3DCLEAR_TARGET, color_rgba_f(cap.x,cap.y,cap.z, (cap.x+cap.y+cap.z)/4.f), 1, 0 ));
 
 		// calculate uv-gen matrix and clamper
-		Fmatrix					mCombine;		mCombine.mul	(mProject,mView);
-		Fmatrix					mTemp;
+		fMatrix4x4					mCombine;
+		mCombine.mul	(mProject,mView);
+		fMatrix4x4					mTemp;
 		f32					fSlotSize		= f32(P_o_size)/ f32(P_rt_size);
 		f32					fSlotX			= f32(s_x*P_o_size)/ f32(P_rt_size);
 		f32					fSlotY			= f32(s_y*P_o_size)/ f32(P_rt_size);
 		f32					fTexelOffs		= (.5f / P_rt_size);
-		Fmatrix					m_TexelAdjust	= 
+		fMatrix4x4					m_TexelAdjust	=
 		{
 			0.5f/*x-scale*/,	0.0f,							0.0f,				0.0f,
 			0.0f,				-0.5f/*y-scale*/,				0.0f,				0.0f,
