@@ -137,7 +137,7 @@ BOOL CTeamBaseZone::feel_touch_contact	(CObject* O)
 }
 
 #ifdef DEBUG
-extern	Flags32	dbg_net_Draw_Flags;
+extern	flags32	dbg_net_Draw_Flags;
 void CTeamBaseZone::OnRender() 
 {
 	if(!bDebug) return;

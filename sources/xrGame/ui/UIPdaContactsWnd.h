@@ -15,7 +15,7 @@ class CUIPdaContactsWnd: public CUIWindow
 private:
 	typedef CUIWindow inherited;
 	enum				{flNeedUpdate  =(1<<0),};
-	Flags8				m_flags;
+	flags8				m_flags;
 	xr_vector<CPda*>	m_pda_list;
 
 public:

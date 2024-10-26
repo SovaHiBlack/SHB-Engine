@@ -21,7 +21,7 @@ public:
 	Fvector			right		;
 	f32			range		;
 	f32			cone		;
-	Fcolor			color		;
+	fColor			color		;
 
 	vis_data		hom			;
 	u32				frame_render;
@@ -86,7 +86,7 @@ public:
 	virtual void	set_cone				(f32 angle);
 	virtual void	set_range				(f32 R);
 	virtual void	set_virtual_size		(f32 R)						{};
-	virtual void	set_color				(const Fcolor& C)				{ color.set(C);				}
+	virtual void	set_color				(const fColor& C)				{ color.set(C);				}
 	virtual void	set_color				(f32 r, f32 g, f32 b)		{ color.set(r,g,b,1);		}
 	virtual void	set_texture				(pcstr name);
 

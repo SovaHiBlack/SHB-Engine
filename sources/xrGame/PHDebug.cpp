@@ -11,8 +11,8 @@
 
 #include "DebugRenderer.h"
 
-Flags32		ph_dbg_draw_mask						;
-Flags32		ph_dbg_draw_mask1						;
+flags32		ph_dbg_draw_mask						;
+flags32		ph_dbg_draw_mask1						;
 bool		draw_frame=0;
 
 pcstr	dbg_trace_object						=NULL;

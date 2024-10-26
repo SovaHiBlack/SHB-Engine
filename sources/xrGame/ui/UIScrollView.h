@@ -21,7 +21,7 @@ enum {eVertFlip=(1<<0),eNeedRecalc=(1<<1),eFixedScrollBar=(1<<2),eItemsSelectabe
 
 	f32			m_vertInterval;
 	
-	Flags16			m_flags;
+	flags16			m_flags;
 	shared_str		m_scrollbar_profile;
 
 virtual void		RecalcSize			();

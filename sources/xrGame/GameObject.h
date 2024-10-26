@@ -53,7 +53,7 @@ class CGameObject :
 {
 	typedef CObject inherited;
 	bool							m_spawned;
-	Flags32							m_server_flags;
+	flags32							m_server_flags;
 	CAI_ObjectLocation				*m_ai_location;
 	ALife::_STORY_ID				m_story_id;
 	animation_movement_controller	*m_anim_mov_ctrl;

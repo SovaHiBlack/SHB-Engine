@@ -57,7 +57,7 @@ namespace PAPI{
 		u32			color;	// 4
 		f32			age;	// 4
 		u16			frame;	// 2
-		Flags16		flags;	// 2
+		flags16		flags;	// 2
 	};                  	// 		72
 
 	typedef void (* OnBirthParticleCB)	(void* owner, u32 param, PAPI::Particle& P, u32 idx);

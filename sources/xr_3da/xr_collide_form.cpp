@@ -57,7 +57,7 @@ bool CCF_Skeleton::_ElementCenter(u16 elem_id, Fvector& e_center)
 	return false;
 }
 
-IC bool RAYvsOBB(const Fmatrix& IM, const Fvector& b_hsize, const Fvector &S, const Fvector &D, f32& R, BOOL bCull)
+IC bool RAYvsOBB(const fMatrix4x4& IM, const Fvector& b_hsize, const Fvector &S, const Fvector &D, f32& R, BOOL bCull)
 {
 	fBox3 E	= {-b_hsize.x, -b_hsize.y, -b_hsize.z,	b_hsize.x,	b_hsize.y,	b_hsize.z};
 	// XForm world-2-local
@@ -83,12 +83,12 @@ IC bool RAYvsSPHERE(const Fsphere& s_sphere, const Fvector &S, const Fvector &D,
 	VERIFY				(R>=0.f);
 	return				((rp_res==Fsphere::rpOriginOutside)||(!bCull&&(rp_res==Fsphere::rpOriginInside)));
 }
-IC bool RAYvsCYLINDER(const Fcylinder& c_cylinder, const Fvector &S, const Fvector &D, f32& R, BOOL bCull)
+IC bool RAYvsCYLINDER(const fCylinder& c_cylinder, const Fvector &S, const Fvector &D, f32& R, BOOL bCull)
 {
 	// Actual test
-	Fcylinder::ERP_Result rp_res = c_cylinder.intersect(S,D,R);
+	fCylinder::ERP_Result rp_res = c_cylinder.intersect(S,D,R);
 	VERIFY				(R>=0.f);
-	return				((rp_res==Fcylinder::rpOriginOutside)||(!bCull&&(rp_res==Fcylinder::rpOriginInside)));
+	return				((rp_res== fCylinder::rpOriginOutside)||(!bCull&&(rp_res== fCylinder::rpOriginInside)));
 }
 
 CCF_Skeleton::CCF_Skeleton(CObject* O) : ICollisionForm(O,cftObject)
@@ -104,7 +104,7 @@ void CCF_Skeleton::BuildState()
 	dwFrame				= Device.dwFrame;
 	CKinematics* K		= PKinematics(owner->Visual());
 	K->CalculateBones	();
-	const Fmatrix& L2W	= owner->XFORM();
+	const fMatrix4x4& L2W	= owner->XFORM();
 	
 	if (vis_mask!=K->LL_GetBonesVisible()){
 		vis_mask		= K->LL_GetBonesVisible();
@@ -123,11 +123,13 @@ void CCF_Skeleton::BuildState()
 	for (ElementVecIt I=elements.begin(); I!=elements.end(); I++){
 		if (!I->valid())		continue;
 		SBoneShape&	shape		= K->LL_GetData(I->elem_id).shape;
-		Fmatrix					ME,T,TW;
-		const Fmatrix& Mbone	= K->LL_GetTransform(I->elem_id);
+		fMatrix4x4					ME;
+		fMatrix4x4					T;
+		fMatrix4x4					TW;
+		const fMatrix4x4& Mbone	= K->LL_GetTransform(I->elem_id);
 		switch (I->type){
 			case SBoneShape::stBox:{
-				const Fobb& B		= shape.box;
+				const fObb& B		= shape.box;
 				B.xform_get			(ME			);
 				I->b_hsize.set		(B.m_halfsize);
 				// prepare matrix World to Element
@@ -150,7 +152,7 @@ void CCF_Skeleton::BuildState()
 				I->s_sphere.R		= S.R;
 			}break;
 			case SBoneShape::stCylinder:{
-				const Fcylinder& C	= shape.cylinder;
+				const fCylinder& C	= shape.cylinder;
 				Mbone.transform_tiny(I->c_cylinder.m_center,C.m_center);
 				L2W.transform_tiny	(I->c_cylinder.m_center);
 				Mbone.transform_dir	(I->c_cylinder.m_direction,C.m_direction);
@@ -240,7 +242,7 @@ CCF_EventBox::CCF_EventBox( CObject* O ) : ICollisionForm(O,cftShape)
 	A[6].set( +1, -1, +1);
 	A[7].set( +1, -1, -1);
 
-	const Fmatrix& T = O->XFORM();
+	const fMatrix4x4& T = O->XFORM();
 	for (int i=0; i<8; i++) {
 		A[i].mul(.5f);
 		T.transform_tiny(B[i],A[i]);
@@ -275,7 +277,7 @@ BOOL CCF_EventBox::Contact(CObject* O)
 BOOL CCF_EventBox::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 {	return FALSE; }
 /*
-void CCF_EventBox::_BoxQuery(const fBox3& B, const Fmatrix& M, u32 flags)
+void CCF_EventBox::_BoxQuery(const fBox3& B, const fMatrix4x4& M, u32 flags)
 {   return; }
 */
 
@@ -289,7 +291,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 {	
 	// Convert ray into local model space
 	Fvector dS, dD;
-	Fmatrix temp; 
+	fMatrix4x4 temp;
 	temp.invert			(owner->XFORM());
 	temp.transform_tiny	(dS,Q.start);
 	temp.transform_dir	(dD,Q.dir);
@@ -318,7 +320,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 			{
 			fBox3				box;
 				box.identity		();
-				Fmatrix& B			= shape.data.ibox;
+				fMatrix4x4& B			= shape.data.ibox;
 				Fvector				S1,D1,P;
 				B.transform_tiny	(S1,dS);
 				B.transform_dir		(D1,dD);
@@ -339,7 +341,7 @@ BOOL CCF_Shape::_RayQuery(const collide::ray_defs& Q, collide::rq_results& R)
 	return bHIT;
 }
 /*
-void CCF_Shape::_BoxQuery(const fBox3& B, const Fmatrix& M, u32 flags)
+void CCF_Shape::_BoxQuery(const fBox3& B, const fMatrix4x4& M, u32 flags)
 {   return; }
 */
 void CCF_Shape::add_sphere	(Fsphere& S )

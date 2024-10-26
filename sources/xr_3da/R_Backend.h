@@ -178,26 +178,26 @@ public:
 
 	// constants - direct (fast)
 	ICF	void						set_c				(R_constant* C, const Fmatrix& A)									{ if (C)		constants.set(C,A);					}
-	ICF	void						set_c				(R_constant* C, const Fvector4& A)									{ if (C)		constants.set(C,A);					}
+	ICF	void						set_c				(R_constant* C, const fVector4& A)									{ if (C)		constants.set(C,A);					}
 	ICF	void						set_c				(R_constant* C, f32 x, f32 y, f32 z, f32 w)					{ if (C)		constants.set(C,x,y,z,w);			}
 	ICF	void						set_ca				(R_constant* C, u32 e, const Fmatrix& A)							{ if (C)		constants.seta(C,e,A);				}
-	ICF	void						set_ca				(R_constant* C, u32 e, const Fvector4& A)							{ if (C)		constants.seta(C,e,A);				}
+	ICF	void						set_ca				(R_constant* C, u32 e, const fVector4& A)							{ if (C)		constants.seta(C,e,A);				}
 	ICF	void						set_ca				(R_constant* C, u32 e, f32 x, f32 y, f32 z, f32 w)			{ if (C)		constants.seta(C,e,x,y,z,w);		}
 
 	// constants - LPCSTR (slow)
 	ICF	void						set_c				(pcstr n, const Fmatrix& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
-	ICF	void						set_c				(pcstr n, const Fvector4& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
+	ICF	void						set_c				(pcstr n, const fVector4& A)										{ if(ctable)	set_c	(&*ctable->get(n),A);		}
 	ICF	void						set_c				(pcstr n, f32 x, f32 y, f32 z, f32 w)						{ if(ctable)	set_c	(&*ctable->get(n),x,y,z,w);	}
 	ICF	void						set_ca				(pcstr n, u32 e, const Fmatrix& A)									{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
-	ICF	void						set_ca				(pcstr n, u32 e, const Fvector4& A)								{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
+	ICF	void						set_ca				(pcstr n, u32 e, const fVector4& A)								{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
 	ICF	void						set_ca				(pcstr n, u32 e, f32 x, f32 y, f32 z, f32 w)				{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
 
 	// constants - shared_str (average)
 	ICF	void						set_c				(shared_str& n, const Fmatrix& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
-	ICF	void						set_c				(shared_str& n, const Fvector4& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
+	ICF	void						set_c				(shared_str& n, const fVector4& A)									{ if(ctable)	set_c	(&*ctable->get(n),A);			}
 	ICF	void						set_c				(shared_str& n, f32 x, f32 y, f32 z, f32 w)					{ if(ctable)	set_c	(&*ctable->get(n),x,y,z,w);	}
 	ICF	void						set_ca				(shared_str& n, u32 e, const Fmatrix& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
-	ICF	void						set_ca				(shared_str& n, u32 e, const Fvector4& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
+	ICF	void						set_ca				(shared_str& n, u32 e, const fVector4& A)							{ if(ctable)	set_ca	(&*ctable->get(n),e,A);		}
 	ICF	void						set_ca				(shared_str& n, u32 e, f32 x, f32 y, f32 z, f32 w)			{ if(ctable)	set_ca	(&*ctable->get(n),e,x,y,z,w);}
 
 	ICF	void						Render				(D3DPRIMITIVETYPE T, u32 baseV, u32 startV, u32 countV, u32 startI, u32 PC);

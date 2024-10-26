@@ -40,7 +40,7 @@ private:
 		flAutoGrow			=	(1<<1),
 		flCustomPlacement	=	(1<<2)
 	};
-	Flags8					m_flags;
+	flags8					m_flags;
 	CUICellItem*			m_selected_item;
 	iVector2				m_orig_cell_capacity;
 

@@ -59,7 +59,7 @@ protected:
 								FIsQuestItem		=(1<<11),
 	};
 
-	Flags16						m_flags;
+	flags16						m_flags;
 public:
 								CInventoryItem		();
 	virtual						~CInventoryItem		();

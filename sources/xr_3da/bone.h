@@ -52,10 +52,10 @@ struct SBoneShape
 	};
 
 	u16				type;		// 2
-	Flags16			flags;		// 2
-	Fobb			box;      	// 15*4
+	flags16			flags;		// 2
+	fObb			box;      	// 15*4
 	Fsphere			sphere;		// 4*4
-	Fcylinder		cylinder;	// 8*4
+	fCylinder		cylinder;	// 8*4
 	SBoneShape		(){Reset();}
 	void			Reset()
 	{
@@ -85,7 +85,7 @@ struct SJointIKData
 	enum{
 		flBreakable	= (1<<0),
 	};
-	Flags32			ik_flags;
+	flags32			ik_flags;
 	f32			break_force;	// [0..+INF]
 	f32			break_torque;	// [0..+INF]
 
@@ -176,7 +176,7 @@ public:
 
 public:
 	// editor part
-	Flags8			    flags;    
+	flags8			    flags;
 	enum{
 		flSelected	    = (1<<0),
 	};

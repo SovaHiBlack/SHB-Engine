@@ -24,7 +24,7 @@ void cl_light_PR::setup		(R_constant* C)					{
 	else													RCache.set_c	(C,P.x,P.y,P.z,1.f/R);
 }
 void cl_light_C::setup		(R_constant* C)					{
-	Fcolor		_C	= RImplementation.r1_dlight_light->color;
+	fColor		_C	= RImplementation.r1_dlight_light->color;
 				_C.mul_rgb	(RImplementation.r1_dlight_scale);
 	RCache.set_c	(C,_C.r,_C.g,_C.b,1.f);
 }
@@ -72,7 +72,7 @@ void CLightR_Manager::render_point	()
 
 		// Calculations and rendering
 		Device.Statistic->RenderDUMP_Lights.Begin();
-		Fcolor				factor;
+		fColor				factor;
 		factor.mul_rgba		(PPL.color,(1-alpha));
 		RCache.set_c		(hPPAcolor,factor.r,factor.g,factor.b,1);
 		{

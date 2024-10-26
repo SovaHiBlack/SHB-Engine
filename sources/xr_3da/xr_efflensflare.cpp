@@ -231,7 +231,7 @@ void CLensFlare::OnFrame(int id)
 
 	Fvector vecPos;
 
-	Fmatrix	matEffCamPos;
+	fMatrix4x4	matEffCamPos;
 	matEffCamPos.identity();
 	// Calculate our position and direction
 
@@ -320,8 +320,8 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 	if(!m_Current)		return;
 	VERIFY				(m_Current);
 
-	Fcolor				dwLight;
-	Fcolor				color;
+	fColor				dwLight;
+	fColor				color;
 	Fvector				vec, vecSx, vecSy;
 	Fvector				vecDx, vecDy;
 

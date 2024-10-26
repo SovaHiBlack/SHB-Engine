@@ -29,7 +29,7 @@ public:
 		flSource		= (1<<1),
 		flGradient 		= (1<<2)
 	};
-	Flags32				m_Flags;
+	flags32				m_Flags;
 	
 	// source
 	SSource				m_Source;
@@ -70,7 +70,7 @@ protected:
 	BOOL				bRender;
 
 	// variable
-	Fcolor				LightColor;
+	fColor				LightColor;
 	f32				fGradientValue;
 
 	ref_geom			hGeom;

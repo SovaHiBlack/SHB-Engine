@@ -8,7 +8,7 @@ class CUINewsWnd: public CUIWindow
 {
 	typedef CUIWindow inherited;
 	enum eFlag{eNeedAdd=(1<<0)};
-	Flags16			m_flags;
+	flags16			m_flags;
 
 public:
 					CUINewsWnd	();

@@ -27,11 +27,11 @@ public:
 		VERIFY				(item);
 		return item->Length_ms();
 	}
-	Fcolor	calculate		(f32 T)
+	fColor	calculate		(f32 T)
 	{
 		int frame;
 		VERIFY				(item);
-		return Fcolor().set(item->CalculateRGB(T,frame));
+		return fColor().set(item->CalculateRGB(T,frame));
 	}
 };
 

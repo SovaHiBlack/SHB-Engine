@@ -95,7 +95,7 @@ public:
 	ref_texture			sky_texture_env	;
 	ref_texture			clouds_texture	;
 
-	Fvector4			clouds_color	;
+	fVector4			clouds_color	;
 	Fvector3			sky_color		;
 	f32				sky_rotation	;
 
@@ -115,7 +115,7 @@ public:
 	f32				wind_direction;
 	
 	Fvector3			ambient		;
-	Fvector4			hemi_color	;	// w = R2 correction
+	fVector4			hemi_color	;	// w = R2 correction
 	Fvector3			sun_color	;
 	Fvector3			sun_dir		;
 
@@ -264,5 +264,5 @@ public:
 	void					OnDeviceDestroy		();
 };
 
-ENGINE_API extern Flags32	psEnvFlags;
+ENGINE_API extern flags32	psEnvFlags;
 ENGINE_API extern f32		psVisDistance;

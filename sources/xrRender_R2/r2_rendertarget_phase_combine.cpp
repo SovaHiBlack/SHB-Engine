@@ -68,14 +68,15 @@ void	CRenderTarget::phase_combine	()
 		Fmatrix		m_v2w;			m_v2w.invert				(Device.mView		);
 		CEnvDescriptorMixer& envdesc= g_pGamePersistent->Environment().CurrentEnv		;
 		const f32 minamb			= 0.001f;
-		Fvector4	ambclr			= { _max(envdesc.ambient.x*2,minamb),	_max(envdesc.ambient.y*2,minamb),			_max(envdesc.ambient.z*2,minamb),	0	};
+		fVector4	ambclr			= { _max(envdesc.ambient.x*2,minamb),	_max(envdesc.ambient.y*2,minamb),			_max(envdesc.ambient.z*2,minamb),	0	};
 					ambclr.mul		(ps_r2_sun_lumscale_amb);
-		Fvector4	envclr			= { envdesc.sky_color.x*2+ EPSILON_5,	envdesc.sky_color.y*2+ EPSILON_5,	envdesc.sky_color.z*2+ EPSILON_5,	envdesc.weight					};
-		Fvector4	fogclr			= { envdesc.fog_color.x,	envdesc.fog_color.y,	envdesc.fog_color.z,		0	};
+					fVector4	envclr			= { envdesc.sky_color.x*2+ EPSILON_5,	envdesc.sky_color.y*2+ EPSILON_5,	envdesc.sky_color.z*2+ EPSILON_5,	envdesc.weight					};
+					fVector4	fogclr			= { envdesc.fog_color.x,	envdesc.fog_color.y,	envdesc.fog_color.z,		0	};
 					envclr.x		*= 2*ps_r2_sun_lumscale_hemi; 
 					envclr.y		*= 2*ps_r2_sun_lumscale_hemi; 
 					envclr.z		*= 2*ps_r2_sun_lumscale_hemi;
-		Fvector4	sunclr,sundir;
+					fVector4	sunclr;
+					fVector4	sundir;
 
 		// sun-params
 		{
@@ -98,7 +99,7 @@ void	CRenderTarget::phase_combine	()
 		p1.set						((_w+.5f)/_w, (_h+.5f)/_h );
 
 		// Fill vertex buffer
-		Fvector4* pv				= (Fvector4*)	RCache.Vertex.Lock	(4,g_combine_VP->vb_stride,Offset);
+		fVector4* pv				= (fVector4*)	RCache.Vertex.Lock	(4,g_combine_VP->vb_stride,Offset);
 		pv->set						(hclip(EPSILON_5,		_w),	hclip(_h+ EPSILON_5,	_h),	p0.x, p1.y);	pv++;
 		pv->set						(hclip(EPSILON_5,		_w),	hclip(EPSILON_5,		_h),	p0.x, p0.y);	pv++;
 		pv->set						(hclip(_w+ EPSILON_5,	_w),	hclip(_h+ EPSILON_5,	_h),	p1.x, p1.y);	pv++;
@@ -170,14 +171,14 @@ void	CRenderTarget::phase_combine	()
 	{
 		// 
 		struct v_aa	{
-			Fvector4	p;
+			fVector4	p;
 			fVector2	uv0;
 			fVector2	uv1;
 			fVector2	uv2;
 			fVector2	uv3;
 			fVector2	uv4;
-			Fvector4	uv5;
-			Fvector4	uv6;
+			fVector4	uv5;
+			fVector4	uv6;
 		};
 
 		f32	_w					= f32(Device.dwWidth);

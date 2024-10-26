@@ -11,7 +11,7 @@ namespace PAPI{
 		enum{
 			ALLOW_ROTATE	= (1<<1)
 		};
-		Flags32			m_Flags;
+		flags32			m_Flags;
 		PActionEnum		type;	// Type field
 		ParticleAction	(){m_Flags.zero();}
 		

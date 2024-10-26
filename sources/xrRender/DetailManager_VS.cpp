@@ -131,7 +131,8 @@ void CDetailManager::hw_Unload()
 void CDetailManager::hw_Render()
 {
 	// Render-prepare
-	Fvector4	dir1,dir2;
+	fVector4	dir1;
+	fVector4	dir2;
 	f32		tm_rot1		= (PI_MUL_2*Device.fTimeGlobal/swing_current.rot1);
 	f32		tm_rot2		= (PI_MUL_2*Device.fTimeGlobal/swing_current.rot2);
 	dir1.set				(_sin(tm_rot1),0,_cos(tm_rot1),0).normalize().mul(swing_current.amp1);
@@ -142,7 +143,7 @@ void CDetailManager::hw_Render()
 
 	// Wave0
 	f32		scale			=	1.0f/ f32(quant);
-	Fvector4	wave;
+	fVector4	wave;
 	wave.set				(1.f/5.f,		1.f/7.f,	1.f/3.f,	Device.fTimeGlobal*swing_current.speed);
 	RCache.set_c			(&*hwc_consts,	scale,		scale,		ps_r__Detail_l_aniso,	ps_r__Detail_l_ambient);				// consts
 	RCache.set_c			(&*hwc_wave,	wave.div(PI_MUL_2));	// wave
@@ -185,7 +186,7 @@ void	CDetailManager::hw_Render_dump		(ref_constant x_array, u32 var_id, u32 lod_
 			RCache.set_Element				(Object.shader->E[lod_id]);
 			RImplementation.apply_lmaterial	();
 			u32			c_base				= x_array->vs.index;
-			Fvector4*	c_storage			= RCache.get_ConstantCache_Vertex().get_array_f().access(c_base);
+			fVector4*	c_storage			= RCache.get_ConstantCache_Vertex().get_array_f().access(c_base);
 
 			u32 dwBatch	= 0;
 

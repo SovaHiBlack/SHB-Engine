@@ -473,10 +473,10 @@ f32 CInifile::r_float(pcstr S, pcstr L)
 	pcstr		C = r_string(S, L);
 	return		f32(atof(C));
 }
-Fcolor CInifile::r_fcolor(pcstr S, pcstr L)
+fColor CInifile::r_fcolor(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	Fcolor		V = { 0,0,0,0 };
+	fColor		V = { 0,0,0,0 };
 	sscanf(C, "%f,%f,%f,%f", &V.r, &V.g, &V.b, &V.a);
 	return V;
 }
@@ -502,10 +502,10 @@ Ivector3 CInifile::r_ivector3(pcstr S, pcstr L)
 	sscanf(C, "%d,%d,%d", &V.x, &V.y, &V.z);
 	return V;
 }
-Ivector4 CInifile::r_ivector4(pcstr S, pcstr L)
+iVector4 CInifile::r_ivector4(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	Ivector4	V = { 0,0,0,0 };
+	iVector4	V = { 0,0,0,0 };
 	sscanf(C, "%d,%d,%d,%d", &V.x, &V.y, &V.z, &V.w);
 	return V;
 }
@@ -523,10 +523,10 @@ Fvector3 CInifile::r_fvector3(pcstr S, pcstr L)
 	sscanf(C, "%f,%f,%f", &V.x, &V.y, &V.z);
 	return V;
 }
-Fvector4 CInifile::r_fvector4(pcstr S, pcstr L)
+fVector4 CInifile::r_fvector4(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	Fvector4	V = { 0.f,0.f,0.f,0.f };
+	fVector4	V = { 0.0f,0.0f,0.0f,0.0f };
 	sscanf(C, "%f,%f,%f,%f", &V.x, &V.y, &V.z, &V.w);
 	return V;
 }
@@ -662,7 +662,7 @@ void	CInifile::w_float(pcstr S, pcstr L, f32				V, pcstr comment)
 	string128 temp; sprintf_s(temp, sizeof(temp), "%f", V);
 	w_string(S, L, temp, comment);
 }
-void	CInifile::w_fcolor(pcstr S, pcstr L, const Fcolor& V, pcstr comment)
+void	CInifile::w_fcolor(pcstr S, pcstr L, const fColor& V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%f,%f,%f,%f", V.r, V.g, V.b, V.a);
 	w_string(S, L, temp, comment);
@@ -686,7 +686,7 @@ void	CInifile::w_ivector3(pcstr S, pcstr L, const Ivector3& V, pcstr comment)
 	w_string(S, L, temp, comment);
 }
 
-void	CInifile::w_ivector4(pcstr S, pcstr L, const Ivector4& V, pcstr comment)
+void	CInifile::w_ivector4(pcstr S, pcstr L, const iVector4& V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%d,%d,%d,%d", V.x, V.y, V.z, V.w);
 	w_string(S, L, temp, comment);
@@ -703,7 +703,7 @@ void	CInifile::w_fvector3(pcstr S, pcstr L, const Fvector3& V, pcstr comment)
 	w_string(S, L, temp, comment);
 }
 
-void	CInifile::w_fvector4(pcstr S, pcstr L, const Fvector4& V, pcstr comment)
+void	CInifile::w_fvector4(pcstr S, pcstr L, const fVector4& V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%f,%f,%f,%f", V.x, V.y, V.z, V.w);
 	w_string(S, L, temp, comment);

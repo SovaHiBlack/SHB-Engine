@@ -162,7 +162,9 @@ CPhysicsShell*	P_build_SimpleShell(CGameObject* obj, f32 mass,bool not_active_st
 #ifdef DEBUG
 	pPhysicsShell->dbg_obj=smart_cast<CPhysicsShellHolder*>(obj);
 #endif
-	Fobb obb; obj->Visual()->vis.box.get_CD(obb.m_translate,obb.m_halfsize); obb.m_rotate.identity();
+	fObb obb;
+	obj->Visual()->vis.box.get_CD(obb.m_translate,obb.m_halfsize);
+	obb.m_rotate.identity();
 	CPhysicsElement* E = P_create_Element(); R_ASSERT(E); E->add_Box(obb);
 	pPhysicsShell->add_Element(E);
 	pPhysicsShell->setMass(mass);

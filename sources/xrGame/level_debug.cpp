@@ -112,7 +112,7 @@ void CLevelDebug::draw_object_info()
 		fMatrix4x4		res;
 		res.mul		(Device.mFullTransform,it->first->XFORM());
 
-		Fvector4	v_res;
+		fVector4	v_res;
 
 		f32		delta_height = 0.f;
 

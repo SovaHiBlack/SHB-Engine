@@ -34,4 +34,4 @@ public:
 
 ENGINE_API extern f32			psMouseSens;
 ENGINE_API extern f32			psMouseSensScale;
-ENGINE_API extern Flags32		psMouseInvert;
+ENGINE_API extern flags32		psMouseInvert;

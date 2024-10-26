@@ -144,7 +144,7 @@ public:
 		flDrawThumbnail	= (1<<4),
 		flSorted		= (1<<5),
 	};
-	Flags32				m_Flags;
+	flags32				m_Flags;
 public:
 						PropItem		(EPropType _type):type(_type),prop_color(0),val_color(0),item(0),key(0),OnClickEvent(0),OnDrawTextEvent(0),OnItemFocused(0){m_Flags.zero();}
 	virtual 			~PropItem		()
@@ -284,7 +284,7 @@ public:
 	enum{
 		flFirstOnly		= (1<<0)
 	};
-	Flags32				m_Flags;
+	flags32				m_Flags;
 public:
 						ButtonValue		(const shared_str& val, u32 flags)
 	{
@@ -418,9 +418,9 @@ public:
 };
 //------------------------------------------------------------------------------
 
-IC bool operator == (const Fcolor& A, const Fcolor& B)
+IC bool operator == (const fColor& A, const fColor& B)
 {	return !!A.similar_rgba(B); }
-typedef CustomValue<Fcolor>		ColorValue;
+typedef CustomValue<fColor>		ColorValue;
 //------------------------------------------------------------------------------
 
 template <class T>
@@ -514,7 +514,7 @@ public:
 	enum{
 		flInvertedDraw	= (1<<0),
 	};
-	Flags32				m_Flags;
+	flags32				m_Flags;
 public:
 						FlagValueCustom	(u32 mask, pcstr c0, pcstr c1)
 	{
@@ -557,9 +557,9 @@ public:
 	}
 };
 //------------------------------------------------------------------------------
-typedef FlagValue<Flags8>	Flag8Value;
-typedef FlagValue<Flags16>	Flag16Value;
-typedef FlagValue<Flags32>	Flag32Value;
+typedef FlagValue<flags8>	Flag8Value;
+typedef FlagValue<flags16>	Flag16Value;
+typedef FlagValue<flags32>	Flag32Value;
 //------------------------------------------------------------------------------
 template <class T>
 bool operator == (_flags<T> const & A, _flags<T>  const & B){return A.flags==B.flags;}

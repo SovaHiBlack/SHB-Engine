@@ -5,9 +5,9 @@ struct Flight
 {
 public:
 	u32           type;             /* Type of light source */
-	Fcolor          diffuse;          /* Diffuse color of light */
-	Fcolor          specular;         /* Specular color of light */
-	Fcolor          ambient;          /* Ambient color of light */
+	fColor          diffuse;          /* Diffuse color of light */
+	fColor          specular;         /* Specular color of light */
+	fColor          ambient;          /* Ambient color of light */
 	Fvector         position;         /* Position in world space */
 	Fvector         direction;        /* Direction in world space */
 	f32		    range;            /* Cutoff range */
@@ -48,10 +48,10 @@ public:
 struct Fmaterial
 {
 public:
-	Fcolor			diffuse;        /* Diffuse color RGBA */
-	Fcolor			ambient;        /* Ambient color RGB */
-	Fcolor		    specular;       /* Specular 'shininess' */
-	Fcolor			emissive;       /* Emissive color RGB */
+	fColor			diffuse;        /* Diffuse color RGBA */
+	fColor			ambient;        /* Ambient color RGB */
+	fColor		    specular;       /* Specular 'shininess' */
+	fColor			emissive;       /* Emissive color RGB */
 	f32			power;          /* Sharpness if specular highlight */
 
 	IC	void		set	(f32 r, f32 g, f32 b)
@@ -72,7 +72,7 @@ public:
 		diffuse.a = ambient.a = a;
 		power	  = 0;
 	}
-	IC	void	set	(Fcolor &c)
+	IC	void	set	(fColor& c)
 	{
 		ZeroMemory	( this, sizeof(Fmaterial) );
 		diffuse.r = ambient.r = c.r;

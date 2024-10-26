@@ -160,7 +160,7 @@ struct XRCORE_API xr_shortcut
 		struct
 		{
 			u8	 	key;
-			Flags8	ext;
+			flags8	ext;
 		};
 		u16		hotkey;
 	};

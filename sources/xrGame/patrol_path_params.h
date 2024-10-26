@@ -34,7 +34,7 @@ public:
 			u32						point				(const Fvector &point) const;
 			pcstr					name				(u32 index) const;
 			bool					flag				(u32 index, u8 flag_index) const;
-			Flags32					flags				(u32 index) const;
+			flags32					flags				(u32 index) const;
 			bool					terminal			(u32 index) const;
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

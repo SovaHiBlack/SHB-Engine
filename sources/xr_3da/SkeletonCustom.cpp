@@ -116,7 +116,7 @@ void CKinematics::DebugRender(Fmatrix& XFORM)
 
 	for (u32 b=0; b<bones->size(); b++)
 	{
-		Fobb&		obb		= (*bones)[b]->obb;
+		fObb&		obb		= (*bones)[b]->obb;
 		Fmatrix&	Mbone	= bone_instances[b].mTransform;
 		Fmatrix		Mbox;	obb.xform_get(Mbox);
 		Fmatrix		X;		X.mul(Mbone,Mbox);
@@ -258,7 +258,7 @@ void	CKinematics::Load(pcstr N, IReader *data, u32 dwFlags)
 		data->r_stringZ				(buf,sizeof(buf));	strlwr(buf);
 		L_parents.push_back			(buf);
 
-		data->r						(&pBone->obb,sizeof(Fobb));
+		data->r						(&pBone->obb,sizeof(fObb));
         visimask.set				(u64(1)<<ID,TRUE);
 	}
 	std::sort	(bone_map_N->begin(),bone_map_N->end(),pred_sort_N);
@@ -568,7 +568,7 @@ void CKinematics::EnumBoneVertices	(SEnumVerticesCallback &C, u16 bone_id)
 }
 #include "cl_intersect.h"
 
-DEFINE_VECTOR(Fobb,OBBVec,OBBVecIt);
+DEFINE_VECTOR(fObb,OBBVec,OBBVecIt);
 
 bool	CKinematics::	PickBone			(const Fmatrix &parent_xform,  Fvector& normal, f32& dist, const Fvector& start, const Fvector& dir, u16 bone_id)
 {
@@ -597,14 +597,14 @@ void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start
 	f32 dist				= flt_max;
 	BOOL picked				= FALSE;
 
-	DEFINE_VECTOR			(Fobb,OBBVec,OBBVecIt);
+	DEFINE_VECTOR			(fObb,OBBVec,OBBVecIt);
 	OBBVec					cache_obb;
 	cache_obb.resize		(LL_BoneCount());
 
 	for (u16 k=0; k<LL_BoneCount(); k++){
 		CBoneData& BD		= LL_GetData(k);
 		if (LL_GetBoneVisible(k)&&!BD.shape.flags.is(SBoneShape::sfNoPickable)){
-			Fobb& obb		= cache_obb[k];
+			fObb& obb		= cache_obb[k];
 			obb.transform	(BD.obb,LL_GetBoneInstance(k).mTransform);
 			if (CDB::TestRayOBB(S,D, obb))
 				for (u32 i=0; i<children.size(); i++)
@@ -624,7 +624,7 @@ void CKinematics::AddWallmark(const Fmatrix* parent_xform, const Fvector3& start
 	for (k=0; k<LL_BoneCount(); k++){
 		CBoneData& BD		= LL_GetData(k);  
 		if (LL_GetBoneVisible(k)&&!BD.shape.flags.is(SBoneShape::sfNoPickable)){
-			Fobb& obb		= cache_obb[k];
+			fObb& obb		= cache_obb[k];
 			if (CDB::TestSphereOBB(test_sphere, obb))
 				test_bones.push_back(k);
 		}

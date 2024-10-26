@@ -74,10 +74,10 @@ bool CPatrolPathParams::flag			(u32 index, u8 flag_index) const
 	return				(!!(m_path->vertex(index)->data().flags() & (u32(1) << flag_index)));
 }
 
-Flags32 CPatrolPathParams::flags		(u32 index) const
+flags32 CPatrolPathParams::flags		(u32 index) const
 {
 	VERIFY				(m_path->vertex(index));
-	return				(Flags32().assign(m_path->vertex(index)->data().flags()));
+	return				(flags32().assign(m_path->vertex(index)->data().flags()));
 }
 
 pcstr	CPatrolPathParams::name	(u32 index) const

@@ -95,13 +95,13 @@ public:
 	{
 		w(p.c_str() ? p.c_str() : "", (u32)p.size()); w_u8(0);
 	}
-	IC void			w_fcolor(const Fcolor& v)
+	IC void			w_fcolor(const fColor& v)
 	{
-		w(&v, sizeof(Fcolor));
+		w(&v, sizeof(fColor));
 	}
-	IC void			w_fvector4(const Fvector4& v)
+	IC void			w_fvector4(const fVector4& v)
 	{
-		w(&v, sizeof(Fvector4));
+		w(&v, sizeof(fVector4));
 	}
 	IC void			w_fvector3(const Fvector3& v)
 	{
@@ -111,9 +111,9 @@ public:
 	{
 		w(&v, sizeof(fVector2));
 	}
-	IC void			w_ivector4(const Ivector4& v)
+	IC void			w_ivector4(const iVector4& v)
 	{
-		w(&v, sizeof(Ivector4));
+		w(&v, sizeof(iVector4));
 	}
 	IC void			w_ivector3(const Ivector3& v)
 	{
@@ -253,9 +253,11 @@ public:
 	{
 		Fvector tmp; r(&tmp, 3 * sizeof(f32)); return tmp;
 	}
-	IC Fvector4		r_vec4()
+	IC fVector4		r_vec4()
 	{
-		Fvector4 tmp; r(&tmp, 4 * sizeof(f32)); return tmp;
+		fVector4 tmp;
+		r(&tmp, 4 * sizeof(f32));
+		return tmp;
 	}
 	IC u64			r_u64()
 	{
@@ -295,9 +297,9 @@ public:
 		r(&tmp, sizeof(tmp));
 		return tmp;
 	}
-	IC void			r_fvector4(Fvector4& v)
+	IC void			r_fvector4(fVector4& v)
 	{
-		r(&v, sizeof(Fvector4));
+		r(&v, sizeof(fVector4));
 	}
 	IC void			r_fvector3(Fvector3& v)
 	{
@@ -307,9 +309,9 @@ public:
 	{
 		r(&v, sizeof(fVector2));
 	}
-	IC void			r_ivector4(Ivector4& v)
+	IC void			r_ivector4(iVector4& v)
 	{
-		r(&v, sizeof(Ivector4));
+		r(&v, sizeof(iVector4));
 	}
 	IC void			r_ivector4(Ivector3& v)
 	{
@@ -319,9 +321,9 @@ public:
 	{
 		r(&v, sizeof(iVector2));
 	}
-	IC void			r_fcolor(Fcolor& v)
+	IC void			r_fcolor(fColor& v)
 	{
-		r(&v, sizeof(Fcolor));
+		r(&v, sizeof(fColor));
 	}
 
 	IC f32		r_float_q16(f32 min, f32 max)

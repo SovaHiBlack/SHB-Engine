@@ -236,13 +236,13 @@ BOOL CTorch::net_Spawn(CSE_Abstract* DC)
 	lanim					= LALib.FindItem(pUserData->r_string("torch_definition","color_animator"));
 	guid_bone				= K->LL_BoneID	(pUserData->r_string("torch_definition","guide_bone"));	VERIFY(guid_bone!=BI_NONE);
 
-	Fcolor clr				= pUserData->r_fcolor				("torch_definition",(b_r2)?"color_r2":"color");
+	fColor clr				= pUserData->r_fcolor				("torch_definition",(b_r2)?"color_r2":"color");
 	fBrightness				= clr.intensity();
 	f32 range				= pUserData->r_float				("torch_definition",(b_r2)?"range_r2":"range");
 	light_render->set_color	(clr);
 	light_render->set_range	(range);
 
-	Fcolor clr_o			= pUserData->r_fcolor				("torch_definition",(b_r2)?"omni_color_r2":"omni_color");
+	fColor clr_o			= pUserData->r_fcolor				("torch_definition",(b_r2)?"omni_color_r2":"omni_color");
 	f32 range_o			= pUserData->r_float				("torch_definition",(b_r2)?"omni_range_r2":"omni_range");
 	light_omni->set_color	(clr_o);
 	light_omni->set_range	(range_o);
@@ -415,7 +415,7 @@ void CTorch::UpdateCL()
 	// возвращает в формате BGR
 	u32 clr					= lanim->CalculateBGR(Device.fTimeGlobal,frame); 
 
-	Fcolor					fclr;
+	fColor					fclr;
 	fclr.set				((f32)color_get_B(clr),(f32)color_get_G(clr),(f32)color_get_R(clr),1.f);
 	fclr.mul_rgb			(fBrightness/255.f);
 	if (can_use_dynamic_lights())

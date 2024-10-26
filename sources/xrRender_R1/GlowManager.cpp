@@ -68,7 +68,7 @@ void	CGlow::set_radius		(f32 R)			{
 void	CGlow::set_texture		(pcstr name)		{
 	shader.create				("effects\\glow",name);
 }
-void	CGlow::set_color		(const Fcolor& C)	{
+void	CGlow::set_color		(const fColor& C)	{
 	color						= C;
 }
 void	CGlow::set_color		(f32 r, f32 g, f32 b)	{

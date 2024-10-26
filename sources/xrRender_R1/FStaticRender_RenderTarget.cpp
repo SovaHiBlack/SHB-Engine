@@ -207,7 +207,7 @@ void CRenderTarget::Begin		()
 }
 
 struct TL_2c3uv {
-	Fvector4	p;
+	fVector4	p;
 	u32			color0;
 	u32			color1;
 	fVector2	uv	[3];

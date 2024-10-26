@@ -27,7 +27,7 @@ XRSOUND_API extern f32				psSoundVFactor			;
 XRSOUND_API extern f32				psSoundVMusic			;
 XRSOUND_API extern f32				psSoundRolloff			;
 XRSOUND_API extern f32				psSoundOcclusionScale	;
-XRSOUND_API extern Flags32			psSoundFlags			;
+XRSOUND_API extern flags32			psSoundFlags			;
 XRSOUND_API extern int				psSoundTargets			;
 XRSOUND_API extern int				psSoundCacheSizeMB		;
 

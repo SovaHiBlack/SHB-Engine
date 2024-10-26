@@ -78,7 +78,7 @@ public:
 	shared_str						s_name;
 	u8								s_gameid;
 	u8								s_RP;
-	Flags16							s_flags;		// state flags
+	flags16							s_flags;		// state flags
 	xr_vector<u16>					children;
 
 	// update data
@@ -95,7 +95,7 @@ public:
 
 	// ALife spawn params
 	// obsolete, just because we hope to uncomment all this stuff
-	Flags32							m_spawn_flags;
+	flags32							m_spawn_flags;
 
 	//client object custom data serialization
 	xr_vector<u8>					client_data;
@@ -121,7 +121,7 @@ public:
 	virtual void		__stdcall	set_name_replace(pcstr s) {xr_free(s_name_replace); s_name_replace = xr_strdup(s);};
 	virtual Fvector&	__stdcall	position		();
 	virtual Fvector&	__stdcall	angle			();
-	virtual Flags16&	__stdcall	flags			();
+	virtual flags16&	__stdcall	flags			();
 	virtual CSE_Visual* __stdcall	visual			();
 	virtual ISE_Shape*  __stdcall	shape			();
 	virtual CSE_Motion* __stdcall	motion			();

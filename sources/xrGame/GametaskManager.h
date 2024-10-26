@@ -12,11 +12,12 @@ class CGameTaskManager
 {
 	CGameTaskWrapper*		m_gametasks;
 	enum		{eChanged	= (1<<0),};
-	Flags8					m_flags;
+	flags8					m_flags;
+
 protected:
 	void					UpdateActiveTask				();
-public:
 
+public:
 							CGameTaskManager				();
 							~CGameTaskManager				();
 

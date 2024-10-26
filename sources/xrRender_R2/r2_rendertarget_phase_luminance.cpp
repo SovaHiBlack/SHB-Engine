@@ -2,7 +2,7 @@
 
 #pragma pack(push,4)
 struct v_build	{
-	Fvector4	p;
+	fVector4	p;
 	fVector2	uv0;
 	fVector2	uv1;
 	fVector2	uv2;
@@ -10,8 +10,8 @@ struct v_build	{
 };
 
 struct v_filter {
-	Fvector4	p;
-	Fvector4	uv[8];
+	fVector4	p;
+	fVector4	uv[8];
 };
 #pragma pack(pop)
 

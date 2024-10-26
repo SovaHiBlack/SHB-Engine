@@ -7,7 +7,7 @@ class CDelayedActionFuse
 		flInitialized		=			1<<1,
 		flNoConditionChange =			1<<2
 	};
-	Flags8		m_dafflags								;
+	flags8		m_dafflags								;
 	f32		m_fTime									;
 	f32		m_fSpeedChangeCondition					;
 

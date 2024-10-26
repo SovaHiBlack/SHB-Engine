@@ -27,7 +27,7 @@ struct st_BoneMotion
 	};
 	shared_str		name;
 	CEnvelope*	envs			[ctMaxChannel];
-	Flags8		m_Flags;
+	flags8		m_Flags;
 				st_BoneMotion()	{name=0; m_Flags.zero(); ZeroMemory(envs,sizeof(CEnvelope*)*ctMaxChannel);}
 	void        SetName(pcstr nm)	{	name=nm;	}
 };

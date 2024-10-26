@@ -59,7 +59,7 @@ protected:
 	bool					bWorking;
 
 	f32					fTimeToFire;
-	Fvector4				fvHitPower;
+	fVector4				fvHitPower;
 	//f32					fHitPower;
 	f32					fHitImpulse;
 
@@ -84,9 +84,9 @@ protected:
 // Lights
 //////////////////////////////////////////////////////////////////////////
 protected:
-	Fcolor					light_base_color;
+	fColor					light_base_color;
 	f32					light_base_range;
-	Fcolor					light_build_color;
+	fColor					light_build_color;
 	f32					light_build_range;
 	ref_light				light_render;
 	f32					light_var_color;

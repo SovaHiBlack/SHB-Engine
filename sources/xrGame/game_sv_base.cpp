@@ -874,7 +874,7 @@ void game_sv_GameState::on_death	(CSE_Abstract *e_dest, CSE_Abstract *e_src)
 }
 
 #ifdef DEBUG
-extern	Flags32	dbg_net_Draw_Flags;
+extern	flags32	dbg_net_Draw_Flags;
 
 void		game_sv_GameState::OnRender				()
 {

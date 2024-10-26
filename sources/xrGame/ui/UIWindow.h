@@ -239,7 +239,7 @@ protected:
 
 #ifdef DEBUG
 	int m_dbg_id;
-	Flags32					m_dbg_flag;
+	flags32					m_dbg_flag;
 #endif
 
 public:

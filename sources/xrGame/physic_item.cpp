@@ -143,7 +143,7 @@ void CPhysicItem::setup_physic_shell	()
 void CPhysicItem::create_box_physic_shell	()
 {
 	// Physics (Box)
-	Fobb obb; 
+	fObb obb;
 	Visual()->vis.box.get_CD(obb.m_translate,obb.m_halfsize); 
 	obb.m_rotate.identity();
 	
@@ -156,14 +156,12 @@ void CPhysicItem::create_box_physic_shell	()
 	R_ASSERT(m_pPhysicsShell);
 	m_pPhysicsShell->add_Element(E);
 	m_pPhysicsShell->setDensity(2000.f);
-	
-
 }
 
 void CPhysicItem::create_box2sphere_physic_shell()
 {
 	// Physics (Box)
-	Fobb								obb;
+	fObb								obb;
 	Visual()->vis.box.get_CD			(obb.m_translate,obb.m_halfsize);
 	obb.m_rotate.identity				();
 

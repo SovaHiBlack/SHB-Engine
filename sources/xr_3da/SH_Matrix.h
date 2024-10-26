@@ -22,7 +22,7 @@ public:
 	u32				dwMode;
     union{
 		u32		tcm;				// mask for tc-modifiers
-        Flags32	tcm_flags;
+		flags32	tcm_flags;
     };
 	WaveForm		scaleU, scaleV;
 	WaveForm		rotate;

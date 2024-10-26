@@ -32,7 +32,7 @@ class CMainMenu :
 		flGameSaveScreenshot= (1<<6),
 		flNeedVidRestart	= (1<<7),
 	};
-	Flags16			m_Flags;
+	flags16			m_Flags;
 	string_path		m_screenshot_name;
 	u32				m_screenshotFrame;
 	void						ReadTextureInfo		();

@@ -363,7 +363,7 @@ void CActor::update_camera (CCameraShotEffector* effector)
 
 #ifdef DEBUG
 void dbg_draw_frustum (f32 FOV, f32 _FAR, f32 A, Fvector &P, Fvector &D, Fvector &U);
-extern	Flags32	dbg_net_Draw_Flags;
+extern	flags32	dbg_net_Draw_Flags;
 
 void CActor::OnRender	()
 {

@@ -24,7 +24,8 @@ public:
 	pstr		m_Add;
 	pstr		m_DefExt;
 	pstr		m_FilterCaption;
-	Flags32		m_Flags;
+	flags32		m_Flags;
+
 public:
 	FS_Path(pcstr _Root, pcstr _Add, pcstr _DefExt = 0, pcstr _FilterString = 0, u32 flags = 0);
 	~FS_Path();

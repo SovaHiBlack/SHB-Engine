@@ -76,7 +76,7 @@ static fBox3		bbCrouchBox;
 static fVector3	vFootCenter;
 static fVector3	vFootExt;
 
-Flags32			psActorFlags = { 0 };
+flags32			psActorFlags = { 0 };
 
 CActor::CActor( ) : CEntityAlive( )
 {
@@ -1308,7 +1308,7 @@ void CActor::RenderText(pcstr Text, fVector3 dpos, f32* pdup, u32 color)
 	//------------------------------------------------
 	M.c.y += dpos.y;
 
-	Fvector4 v_res;
+	fVector4 v_res;
 	Device.mFullTransform.transform(v_res, M.c);
 
 	if (v_res.z < 0 || v_res.w < 0)

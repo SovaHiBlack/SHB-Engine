@@ -7,7 +7,7 @@ class CPHActivationShape : public CPHObject
 {
 	dBodyID					m_body;
 	dGeomID					m_geom;
-	Flags16					m_flags;
+	flags16					m_flags;
 	CSafeFixedRotationState	m_safe_state;
 
 public:

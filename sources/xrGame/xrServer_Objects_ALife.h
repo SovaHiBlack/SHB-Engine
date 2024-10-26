@@ -394,7 +394,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectHangingLamp,CSE_ALifeDynamicObjectVi
 		flPointAmbient				= (1<<5),
 	};
 
-	Flags16							flags;
+	flags16							flags;
 // light color    
 	u32								color;
 	f32							brightness;

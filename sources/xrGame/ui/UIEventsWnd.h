@@ -30,7 +30,7 @@ class CUIEventsWnd : public CUIWindow, public CUIWndCallback
 		flMapMode = (1 << 1)
 	};
 
-	Flags16						m_flags;
+	flags16						m_flags;
 	ETaskFilters				m_currFilter;
 	CUIFrameWindow* m_UILeftFrame;
 	CUIWindow* m_UIRightWnd;

@@ -160,7 +160,7 @@ void CLevelGraph::draw_stalkers		(const int &vertex_id)
 
 	bool						show_text = true;
 	for (;;) {
-		Fvector4				temp;
+		fVector4				temp;
 		Device.mFullTransform.transform (temp,position);
 		font.OutSetI			(temp.x,-temp.y);
 		font.SetHeightI			(.05f/_sqrt(temp.w));
@@ -264,7 +264,7 @@ void CLevelGraph::draw_stalkers		(const int &vertex_id)
 		direction.add			(position0);
 		render.draw_aabb		(direction,radius,radius,radius,color);
 
-		Fvector4				temp;
+		fVector4				temp;
 		Device.mFullTransform.transform (temp,direction);
 		
 		if (temp.z < 0.f)
@@ -304,7 +304,7 @@ void CLevelGraph::draw_objects		(const int &vertex_id)
 
 	bool						show_text = true;
 	for (;;) {
-		Fvector4				temp;
+		fVector4				temp;
 		Device.mFullTransform.transform (temp,position);
 		font.OutSetI			(temp.x,-temp.y);
 		font.SetHeightI			(.05f/_sqrt(temp.w));
@@ -408,7 +408,7 @@ void CLevelGraph::draw_objects		(const int &vertex_id)
 		direction.add			(position0);
 		render.draw_aabb		(direction,radius,radius,radius,color);
 
-		Fvector4				temp;
+		fVector4				temp;
 		Device.mFullTransform.transform (temp,direction);
 		
 		if (temp.z < 0.f)
@@ -498,7 +498,7 @@ void CLevelGraph::draw_game_graph	()
 			Level().debug_renderer().draw_line(Fidentity,t1,t2,D3DCOLOR_XRGB(0,255,0));
 		}
 		Fvector         T;
-		Fvector4        S;
+		fVector4        S;
 		T.set			(t1);
 		//T.y+= 1.5f;
 		T.y+= 1.5f/10.f;
@@ -541,7 +541,7 @@ void CLevelGraph::draw_game_graph	()
 				Level().debug_renderer().draw_aabb(t1,.5f,.5f,.5f,D3DCOLOR_XRGB(255,255,255));
 				//Level().debug_renderer().draw_line(Fidentity,t1,t2,D3DCOLOR_XRGB(255,255,255));
 				Fvector         T;
-				Fvector4        S;
+				fVector4        S;
 				T.set			(t1);
 				//T.y+= 1.5f;
 				T.y+= 1.5f;

@@ -105,7 +105,7 @@ protected:
 	};
 	u32					m_owner_id;		//if created from artefact
 	u32					m_ttl;
-	Flags32				m_zone_flags;
+	flags32				m_zone_flags;
 	//список объетков, находящихся в зоне
 	CActor*				m_pLocalActor;
 
@@ -246,7 +246,7 @@ protected:
 
 	//подсветка idle состояния
 	ref_light				m_pIdleLight;
-	Fcolor					m_IdleLightColor;
+	fColor					m_IdleLightColor;
 	f32						m_fIdleLightRange;
 	f32						m_fIdleLightHeight;
 	f32						m_fIdleLightRangeDelta;
@@ -259,7 +259,7 @@ protected:
 	//подсветка выброса
 	ref_light				m_pLight;
 	f32						m_fLightRange;
-	Fcolor					m_LightColor;
+	fColor					m_LightColor;
 	f32						m_fLightTime;
 	f32						m_fLightTimeLeft;
 	f32						m_fLightHeight;

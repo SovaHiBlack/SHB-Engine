@@ -72,7 +72,7 @@ BOOL CProjector::net_Spawn(CSE_Abstract* DC)
 	guid_bone				= K->LL_BoneID	(pUserData->r_string("projector_definition","guide_bone"));		VERIFY(guid_bone!=BI_NONE);
 	bone_x.id				= K->LL_BoneID	(pUserData->r_string("projector_definition","rotation_bone_x"));VERIFY(bone_x.id!=BI_NONE);
 	bone_y.id				= K->LL_BoneID	(pUserData->r_string("projector_definition","rotation_bone_y"));VERIFY(bone_y.id!=BI_NONE);
-	Fcolor clr				= pUserData->r_fcolor				("projector_definition","color");
+	fColor clr				= pUserData->r_fcolor				("projector_definition","color");
 	fBrightness				= clr.intensity();
 	light_render->set_color	(clr);
 	light_render->set_range	(pUserData->r_float					("projector_definition","range"));
@@ -145,7 +145,7 @@ void CProjector::UpdateCL	()
 			// возвращает в формате BGR
 			u32 clr			= lanim->CalculateBGR(Device.fTimeGlobal,frame); 
 
-			Fcolor			fclr;
+			fColor			fclr;
 			fclr.set		((f32)color_get_B(clr),(f32)color_get_G(clr),(f32)color_get_R(clr),1.f);
 			fclr.mul_rgb	(fBrightness/255.f);
 			light_render->set_color(fclr);

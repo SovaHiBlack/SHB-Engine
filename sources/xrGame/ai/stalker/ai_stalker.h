@@ -296,7 +296,7 @@ public:
 
 	//флаги, какие действия совершал актер по отношению к сталкеру
 	//(помог, атаковал и т.д.)
-	Flags32								m_actor_relation_flags;
+	flags32								m_actor_relation_flags;
 
 	// ALife
 private:

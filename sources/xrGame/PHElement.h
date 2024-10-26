@@ -46,7 +46,7 @@ class CPHElement	:
 	dReal						k_l;						//->to shell ??		//st
 	//ObjectContactCallbackFun*	temp_for_push_out;			//->to shell ??		//aux
 	//u32							push_untill;				//->to shell ??		//st
-	Flags8						m_flags;					//
+	flags8						m_flags;					//
 	enum				
 	{
 		flActive				=	1<<0,
@@ -81,8 +81,8 @@ public:
 ////////////////////////////////////////////////Geometry/////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual	void						add_Sphere								(const Fsphere&		V);															//aux
-	virtual	void						add_Box									(const Fobb&		V);															//aux
-	virtual	void						add_Cylinder							(const Fcylinder&	V);															//aux
+	virtual	void						add_Box									(const fObb&		V);															//aux
+	virtual	void						add_Cylinder							(const fCylinder&	V);															//aux
 	virtual void						add_Shape								(const SBoneShape& shape);														//aux
 	virtual void						add_Shape								(const SBoneShape& shape,const Fmatrix& offset);								//aux
 	virtual CODEGeom*					last_geom								(){return CPHGeometryOwner::last_geom();}										//aux
@@ -120,7 +120,7 @@ public:																																				//
 	virtual void						setInertia								(const dMass& M);																//aux
 	virtual void						addInertia								(const dMass& M);
 	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture=NULL);//aux
-	virtual	void						set_BoxMass								(const Fobb& box, f32 mass);													//aux
+	virtual	void						set_BoxMass								(const fObb& box, f32 mass);													//aux
 	virtual void						setMass									(f32 M);																		//aux
 	virtual f32						getMass									(){return m_mass.mass;}															//aux
 	virtual	dMass*						getMassTensor							();	//aux

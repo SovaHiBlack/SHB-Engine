@@ -24,7 +24,7 @@ class CPHObject :
 #endif
 	DECLARE_PHLIST_ITEM(CPHObject)
 
-			Flags8	m_flags;
+	flags8	m_flags;
 
 			enum{
 					st_activated					=(1<<0),

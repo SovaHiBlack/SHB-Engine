@@ -27,7 +27,7 @@ struct SArtefactActivation{
 	struct SStateDef{
 		f32		m_time;
 		shared_str	m_snd;
-		Fcolor		m_light_color;
+		fColor		m_light_color;
 		f32		m_light_range;
 		shared_str	m_particle;
 		shared_str	m_animation;

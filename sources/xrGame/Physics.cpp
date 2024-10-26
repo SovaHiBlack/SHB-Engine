@@ -154,8 +154,8 @@ IC static int CollideIntoGroup(dGeomID o1, dGeomID o2,dJointGroupID jointGroup,C
 		surface.mu=material_2->fPHFriction*material_1->fPHFriction;
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 
-		Flags32	&flags_1=material_1->Flags;
-		Flags32	&flags_2=material_2->Flags;
+		flags32& flags_1=material_1->Flags;
+		flags32& flags_2=material_2->Flags;
 
 		if(is_tri_1)
 		{

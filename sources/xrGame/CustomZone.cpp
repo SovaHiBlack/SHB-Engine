@@ -729,7 +729,7 @@ void CCustomZone::UpdateIdleLight	()
 
 	int frame = 0;
 	u32 clr					= m_pIdleLAnim->CalculateBGR(Device.fTimeGlobal,frame); // возвращает в формате BGR
-	Fcolor					fclr;
+	fColor					fclr;
 	fclr.set				((f32)color_get_B(clr)/255.f,(f32)color_get_G(clr)/255.f,(f32)color_get_R(clr)/255.f,1.f);
 	
 	f32 range = m_fIdleLightRange + m_fIdleLightRangeDelta*::Random.randF(-1.f,1.f);

@@ -43,7 +43,7 @@ void cb(CBoneInstance* B)
 
 }
 
-void P_BuildStaticGeomShell(CPHStaticGeomShell* pUnbrokenObject,CGameObject* obj,ObjectContactCallbackFun* object_contact_callback,Fobb &b)
+void P_BuildStaticGeomShell(CPHStaticGeomShell* pUnbrokenObject,CGameObject* obj,ObjectContactCallbackFun* object_contact_callback, fObb& b)
 {
 	pUnbrokenObject->add_Box	(b);
 	pUnbrokenObject->Activate	(obj->XFORM());
@@ -53,7 +53,7 @@ void P_BuildStaticGeomShell(CPHStaticGeomShell* pUnbrokenObject,CGameObject* obj
 	pUnbrokenObject->set_ObjectContactCallback(object_contact_callback);
 	CPHCollideValidator::SetNonDynamicObject(*pUnbrokenObject);
 }
-CPHStaticGeomShell* P_BuildStaticGeomShell(CGameObject* obj,ObjectContactCallbackFun* object_contact_callback,Fobb &b)
+CPHStaticGeomShell* P_BuildStaticGeomShell(CGameObject* obj,ObjectContactCallbackFun* object_contact_callback, fObb& b)
 {
 	CPHStaticGeomShell* pUnbrokenObject=xr_new<CPHStaticGeomShell>();
 	P_BuildStaticGeomShell(pUnbrokenObject,obj,object_contact_callback,b);
@@ -62,7 +62,7 @@ CPHStaticGeomShell* P_BuildStaticGeomShell(CGameObject* obj,ObjectContactCallbac
 
 CPHStaticGeomShell* P_BuildStaticGeomShell(CGameObject* obj,ObjectContactCallbackFun* object_contact_callback)
 {
-	Fobb			b;
+	fObb			b;
 	IRender_Visual* V=obj->Visual();
 	R_ASSERT2(V,"need visual to build");
 

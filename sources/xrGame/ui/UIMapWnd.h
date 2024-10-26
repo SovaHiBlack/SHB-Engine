@@ -32,7 +32,7 @@ public:
 					lmZoomOut		= (1<<4),
 					lmFirst			= (1<<5),
 				};
-	Flags32						m_flags;
+	flags32						m_flags;
 
 private:
 	f32						m_currentZoom;

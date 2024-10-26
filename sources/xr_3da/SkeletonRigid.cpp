@@ -51,7 +51,7 @@ void CKinematics::CalculateBones			(BOOL bForceExact)
 		for (u32 b=0; b<bones->size(); b++)
 		{
 			if			(!LL_GetBoneVisible(u16(b)))		continue;
-			Fobb&		obb		= (*bones)[b]->obb;
+			fObb&		obb		= (*bones)[b]->obb;
 			Fmatrix&	Mbone	= bone_instances[b].mTransform;
 			Fmatrix		Mbox;	obb.xform_get(Mbox);
 			Fmatrix		X;		X.mul_43(Mbone,Mbox);

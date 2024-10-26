@@ -53,7 +53,7 @@ public:
 	// writing - utilities
 	IC void	w_float		(f32 a       )	{ w(&a,4);					}			// float
 	IC void w_vec3		( const Fvector& a) { w(&a,3*sizeof(f32));	}			// vec3
-	IC void w_vec4		( const Fvector4& a){ w(&a,4*sizeof(f32));	}			// vec4
+	IC void w_vec4		( const fVector4& a){ w(&a,4*sizeof(f32));	}			// vec4
 	IC void w_u64		( u64 a			)	{ w(&a,8);					}			// qword (8b)
 	IC void w_s64		( s64 a			)	{ w(&a,8);					}			// qword (8b)
 	IC void w_u32		( u32 a			)	{ w(&a,4);					}			// dword (4b)
@@ -188,7 +188,7 @@ public:
 
 	// reading - utilities
 	IC void		r_vec3			(Fvector& A)	{ r(&A,3*sizeof(f32));		} // vec3
-	IC void		r_vec4			(Fvector4& A)	{ r(&A,4*sizeof(f32));		} // vec4
+	IC void		r_vec4			(fVector4& A)	{ r(&A,4*sizeof(f32));		} // vec4
 	IC void		r_float			(f32& A )		{ r(&A,4);						} // float
 	IC void 	r_u64			(u64& A)		{ r(&A,8);						} // qword (8b)
 	IC void 	r_s64			(s64& A)		{ r(&A,8);						} // qword (8b)
@@ -201,7 +201,7 @@ public:
 	IC void		r_s8			(s8&  A)		{ r(&A,1);						} // byte (1b)
 	// IReader compatibility
 	IC Fvector	r_vec3			()		{Fvector A;r(&A,3*sizeof(f32));	return(A);		} // vec3
-	IC Fvector4	r_vec4			()		{Fvector4 A;r(&A,4*sizeof(f32));	return(A);		} // vec4
+	IC fVector4	r_vec4			()		{fVector4 A;r(&A,4*sizeof(f32));	return(A);		} // vec4
 	IC f32	r_float_q8		(f32 min, f32 max){		f32 A;r_float_q8(A,min,max);return A;}
 	IC f32	r_float_q16		(f32 min, f32 max){ f32 A;r_float_q16(A,min,max);return A;}
 	IC f32	r_float			()		{ f32 A; r(&A,4);					return(A);		} // float

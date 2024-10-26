@@ -6,10 +6,8 @@ struct dContact;
 #include "..\XR_3DA\StatGraph.h"
 #define DRAW_CONTACTS
 
-
-
-extern	Flags32			ph_dbg_draw_mask						;
-extern	Flags32			ph_dbg_draw_mask1						;
+extern	flags32			ph_dbg_draw_mask						;
+extern	flags32			ph_dbg_draw_mask1						;
 extern	bool			draw_frame								;
 extern	u32				dbg_tries_num							;
 extern	u32				dbg_saved_tries_for_active_objects		;

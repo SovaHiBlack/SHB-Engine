@@ -99,8 +99,8 @@ public:
 
 	// Geometry xform
 	virtual void						Center				(Fvector& C) const;
-	IC const Fmatrix&					XFORM				()			 const	{ VERIFY(_valid(renderable.xform));	return renderable.xform;	}
-	ICF Fmatrix&						XFORM				()					{ return renderable.xform;			}
+	IC const fMatrix4x4&					XFORM				()			 const	{ VERIFY(_valid(renderable.xform));	return renderable.xform;	}
+	ICF fMatrix4x4&						XFORM				()					{ return renderable.xform;			}
 	virtual void						spatial_register	();
 	virtual void						spatial_unregister	();
 	virtual void						spatial_move		();
@@ -176,7 +176,7 @@ public:
 	// Position stack
 	IC u32								ps_Size				()			const	{ return PositionStack.size(); }
 	virtual	SavedPosition				ps_Element			(u32 ID)	const;
-	virtual void						ForceTransform		(const Fmatrix& m)	{};
+	virtual void						ForceTransform		(const fMatrix4x4& m)	{};
 
 	// HUD
 	virtual void						OnHUDDraw			(CCustomHUD* hud)	{};

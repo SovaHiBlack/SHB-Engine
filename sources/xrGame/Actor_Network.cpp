@@ -1262,7 +1262,7 @@ void CActor::load(IReader& input_packet)
 }
 
 #ifdef DEBUG
-extern	Flags32	dbg_net_Draw_Flags;
+extern	flags32	dbg_net_Draw_Flags;
 void dbg_draw_piramid(Fvector pos, Fvector dir, f32 size, f32 xdir, u32 color)
 {
 	Fvector p0, p1, p2, p3, p4;
@@ -1337,7 +1337,7 @@ void CActor::OnRender_Network( )
 				u16 BoneCount = V->LL_BoneCount();
 				for (u16 i=0; i<BoneCount; i++)
 				{
-					Fobb BoneOBB = V->LL_GetBox(i);
+					fObb BoneOBB = V->LL_GetBox(i);
 					fMatrix4x4 BoneMatrix; BoneOBB.xform_get(BoneMatrix);
 					fMatrix4x4 BoneMatrixRes; BoneMatrixRes.mul(V->LL_GetTransform(i), BoneMatrix);
 					BoneMatrix.mul(XFORM(), BoneMatrixRes);
@@ -1492,15 +1492,15 @@ void CActor::OnRender_Network( )
 			u16 BoneCount = V->LL_BoneCount( );
 			for (u16 i = 0; i < BoneCount; i++)
 			{
-				Fobb BoneOBB = V->LL_GetBox(i);
+				fObb BoneOBB = V->LL_GetBox(i);
 				fMatrix4x4 BoneMatrix;
 				BoneOBB.xform_get(BoneMatrix);
 				fMatrix4x4 BoneMatrixRes;
 				BoneMatrixRes.mul(V->LL_GetTransform(i), BoneMatrix);
 				BoneMatrix.mul(XFORM( ), BoneMatrixRes);
 				Level( ).debug_renderer( ).draw_obb(BoneMatrix, BoneOBB.m_halfsize, color_rgba(0, 255, 0, 255));
-			};
-		};
+			}
+		}
 
 		if (!m_States.empty( ))
 		{

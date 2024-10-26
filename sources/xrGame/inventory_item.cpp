@@ -213,7 +213,7 @@ void CInventoryItem::OnH_A_Chield()
 	inherited::OnH_A_Chield		();
 }
 #ifdef DEBUG
-extern	Flags32	dbg_net_Draw_Flags;
+extern	flags32	dbg_net_Draw_Flags;
 #endif
 
 void CInventoryItem::UpdateCL()

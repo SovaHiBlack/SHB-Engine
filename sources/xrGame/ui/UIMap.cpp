@@ -37,7 +37,7 @@ void CUICustomMap::Init(shared_str name, CInifile& gameLtx, pcstr sh_name)
 {
 	m_name = name;
 	pcstr tex;
-	Fvector4 tmp;
+	fVector4 tmp;
 	if (gameLtx.line_exist(m_name, "texture"))
 	{
 		tex = gameLtx.r_string(m_name, "texture");
@@ -370,7 +370,7 @@ void CUILevelMap::Draw( )
 void CUILevelMap::Init(shared_str name, CInifile& gameLtx, pcstr sh_name)
 {
 	inherited::Init(name, gameLtx, sh_name);
-	Fvector4 tmp = gameLtx.r_fvector4(MapName( ), "global_rect");
+	fVector4 tmp = gameLtx.r_fvector4(MapName( ), "global_rect");
 	m_GlobalRect.set(tmp.x, tmp.y, tmp.z, tmp.w);
 
 #ifdef DEBUG

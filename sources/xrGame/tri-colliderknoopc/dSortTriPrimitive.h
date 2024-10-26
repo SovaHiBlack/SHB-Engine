@@ -123,7 +123,7 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 		}
 
 	bool b_pushing=*pushing_neg||*pushing_b_neg;
-	gl_cl_tries_state.resize(data->cashed_tries.size(),Flags8().assign(0));
+	gl_cl_tries_state.resize(data->cashed_tries.size(), flags8().assign(0));
 	B=data->cashed_tries.begin(),E=data->cashed_tries.end();
 	for (I=B; I!=E; ++I)
 	{

@@ -21,7 +21,7 @@ public:
 	struct	Light			{
 		light*				source				;
 		f32				energy				;
-		Fcolor				color				;
+		fColor				color				;
 	};
 public:
 	// general

@@ -26,8 +26,8 @@ struct clQueryCollision
 {
 	xr_vector<CObject*>		objects;		// affected objects
 	xr_vector<clQueryTri>	tris;			// triangles		(if queried)
-	xr_vector<Fobb>			boxes;			// boxes/ellipsoids	(if queried)
-	xr_vector<Fvector4>		spheres;		// spheres			(if queried)
+	xr_vector<fObb>			boxes;			// boxes/ellipsoids	(if queried)
+	xr_vector<fVector4>		spheres;		// spheres			(if queried)
 	
 	IC void				Clear	()
 	{
@@ -36,7 +36,7 @@ struct clQueryCollision
 		boxes.clear		();
 		spheres.clear	();
 	}
-	IC void				AddTri( const Fmatrix& m, const CDB::TRI* one, const Fvector* verts ) 
+	IC void				AddTri( const fMatrix4x4& m, const CDB::TRI* one, const Fvector* verts )
 	{
 		clQueryTri	T;
 		m.transform_tiny	(T.p[0],verts[one->verts[0]]);
@@ -54,21 +54,22 @@ struct clQueryCollision
 		T.T					= one;
 		tris.push_back		(T);
 	}
-	IC void				AddBox(const Fmatrix& M, const fBox3& B)
+	IC void				AddBox(const fMatrix4x4& M, const fBox3& B)
 	{
-		Fobb			box;
+		fObb			box;
 		Fvector			c;
 		B.getcenter		(c);
 		B.getradius		(box.m_halfsize);
 		
-		Fmatrix			T,R;
+		fMatrix4x4		T;
+		fMatrix4x4		R;
 		T.translate		(c);
 		R.mul_43		(M,T);
 
 		box.xform_set	(R);
 		boxes.push_back	(box);
 	}
-	IC void				AddBox(const Fobb& B)
+	IC void				AddBox(const fObb& B)
 	{
 		boxes.push_back	(B);
 	}
@@ -95,7 +96,7 @@ public:
 	virtual			~ICollisionForm	( );
 
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R) = 0;
-	//virtual void	_BoxQuery		( const fBox3& B, const Fmatrix& M, u32 flags)	= 0;
+	//virtual void	_BoxQuery		( const fBox3& B, const fMatrix4x4& M, u32 flags)	= 0;
 
 	IC CObject*		Owner			( )	const				{ return owner;			}
 	const fBox3&		getBBox			( )	const				{ return bv_box;		}
@@ -110,14 +111,14 @@ public:
 	struct SElement{
 		union{
 			struct{
-				Fmatrix	b_IM;		// world 2 bone xform
+				fMatrix4x4	b_IM;		// world 2 bone xform
 				Fvector	b_hsize;
 			};
 			struct{
 				Fsphere	s_sphere;
 			};
 			struct{
-				Fcylinder c_cylinder;
+				fCylinder c_cylinder;
 			};
 		};
 		u16				type;
@@ -158,7 +159,7 @@ public:
 					CCF_EventBox	( CObject* _owner );
 
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R);
-	//virtual void	_BoxQuery		( const fBox3& B, const Fmatrix& M, u32 flags);
+	//virtual void	_BoxQuery		( const fBox3& B, const fMatrix4x4& M, u32 flags);
 
 	BOOL			Contact			( CObject* O );
 };
@@ -170,8 +171,8 @@ public:
 	{
 		Fsphere		sphere;
 		struct{
-			Fmatrix	box;
-			Fmatrix	ibox;
+			fMatrix4x4	box;
+			fMatrix4x4	ibox;
 		};
 	};
 	struct shape_def
@@ -184,10 +185,10 @@ public:
 					CCF_Shape		( CObject* _owner );
 
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R);
-	//virtual void	_BoxQuery		( const fBox3& B, const Fmatrix& M, u32 flags);
+	//virtual void	_BoxQuery		( const fBox3& B, const fMatrix4x4& M, u32 flags);
 
 	void			add_sphere		( Fsphere& S	);
-	void			add_box			( Fmatrix& B	);
+	void			add_box			(fMatrix4x4& B	);
 	void			ComputeBounds	( );
 	BOOL			Contact			( CObject* O	);
 	xr_vector<shape_def>& Shapes	(){return shapes;}

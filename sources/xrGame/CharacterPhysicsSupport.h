@@ -37,7 +37,7 @@ enum EState
 private:
 	EType								m_eType;
 	EState								m_eState;
-	Flags8								m_flags;
+	flags8								m_flags;
 	enum Fags 
 	{
 		fl_death_anim_on			=1<<0,

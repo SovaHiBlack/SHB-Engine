@@ -24,8 +24,8 @@ public:
 class	R_constant_array
 {
 public:
-	typedef		R_constant_cache<Fvector4,256>	t_f;
-	typedef		R_constant_cache<Ivector4,16>	t_i;
+	typedef		R_constant_cache<fVector4,256>	t_f;
+	typedef		R_constant_cache<iVector4,16>	t_i;
 	typedef		R_constant_cache<BOOL,16>		t_b;
 public:
 	ALIGN(16)	t_f					c_f;
@@ -40,7 +40,7 @@ public:
 	void					set		(R_constant* C, R_constant_load& L, const Fmatrix& A)
 	{
 		VERIFY		(RC_float == C->type);
-		Fvector4*	it	= c_f.access	(L.index);
+		fVector4*	it	= c_f.access	(L.index);
 		switch		(L.cls)
 		{
 		case RC_2x4:
@@ -72,7 +72,7 @@ public:
 		}
 	}
 
-	void					set		(R_constant* C, R_constant_load& L, const Fvector4& A)
+	void					set		(R_constant* C, R_constant_load& L, const fVector4& A)
 	{
 		VERIFY		(RC_float	== C->type);
 		VERIFY		(RC_1x4		== L.cls);
@@ -84,7 +84,7 @@ public:
 	{
 		VERIFY		(RC_float == C->type);
 		u32			base;
-		Fvector4*	it;
+		fVector4*	it;
 		switch		(L.cls)
 		{
 		case RC_2x4:
@@ -122,7 +122,7 @@ public:
 		}
 	}
 
-	void					seta	(R_constant* C, R_constant_load& L, u32 e, const Fvector4& A)
+	void					seta	(R_constant* C, R_constant_load& L, u32 e, const fVector4& A)
 	{
 		VERIFY		(RC_float	== C->type);
 		VERIFY		(RC_1x4		== L.cls);
@@ -145,12 +145,12 @@ public:
 		if (C->destination&1)		{ a_pixel.set	(C,C->ps,A); a_pixel.b_dirty=TRUE;		}
 		if (C->destination&2)		{ a_vertex.set	(C,C->vs,A); a_vertex.b_dirty=TRUE;		}
 	}
-	ICF void				set		(R_constant* C, const Fvector4& A)		{
+	ICF void				set		(R_constant* C, const fVector4& A)		{
 		if (C->destination&1)		{ a_pixel.set	(C,C->ps,A); a_pixel.b_dirty=TRUE;		}
 		if (C->destination&2)		{ a_vertex.set	(C,C->vs,A); a_vertex.b_dirty=TRUE;		}
 	}
 	ICF void				set		(R_constant* C, f32 x, f32 y, f32 z, f32 w)	{
-		Fvector4 data;		data.set(x,y,z,w);
+		fVector4 data;		data.set(x,y,z,w);
 		set					(C,data);
 	}
 
@@ -159,12 +159,13 @@ public:
 		if (C->destination&1)		{ a_pixel.seta	(C,C->ps,e,A); a_pixel.b_dirty=TRUE;	}
 		if (C->destination&2)		{ a_vertex.seta	(C,C->vs,e,A); a_vertex.b_dirty=TRUE;	}
 	}
-	ICF void				seta	(R_constant* C, u32 e, const Fvector4& A)		{
+	ICF void				seta	(R_constant* C, u32 e, const fVector4& A)		{
 		if (C->destination&1)		{ a_pixel.seta	(C,C->ps,e,A); a_pixel.b_dirty=TRUE;	}
 		if (C->destination&2)		{ a_vertex.seta	(C,C->vs,e,A); a_vertex.b_dirty=TRUE;	}
 	}
 	ICF void				seta	(R_constant* C, u32 e, f32 x, f32 y, f32 z, f32 w)	{
-		Fvector4 data;		data.set(x,y,z,w);
+		fVector4 data;
+		data.set(x,y,z,w);
 		seta				(C,e,data);
 	}
 

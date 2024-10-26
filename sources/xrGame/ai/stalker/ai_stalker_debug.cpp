@@ -908,7 +908,7 @@ void CAI_Stalker::dbg_draw_vision	()
 	fMatrix4x4						res;
 	res.mul						(Device.mFullTransform,XFORM());
 
-	Fvector4					v_res;
+	fVector4					v_res;
 
 	res.transform				(v_res,shift);
 

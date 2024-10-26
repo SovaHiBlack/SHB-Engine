@@ -17,6 +17,8 @@
 
 #ifdef DEBUG
 #	include "DebugRenderer.h"
+#include "customzone.h"
+#include "hudmanager.h"
 #endif
 
 CSpaceRestrictor::~CSpaceRestrictor	()
@@ -200,11 +202,7 @@ continue_loop:
 }
 
 #ifdef DEBUG
-
-#include "customzone.h"
-#include "hudmanager.h"
-
-extern	Flags32	dbg_net_Draw_Flags;
+extern	flags32	dbg_net_Draw_Flags;
 
 void CSpaceRestrictor::OnRender	()
 {
@@ -255,7 +253,7 @@ void CSpaceRestrictor::OnRender	()
 		Fmatrix		res;
 		res.mul		(Device.mFullTransform, XFORM());
 
-		Fvector4	v_res;
+		fVector4	v_res;
 
 		f32		delta_height = 0.f;
 

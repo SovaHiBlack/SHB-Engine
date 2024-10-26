@@ -150,7 +150,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	ALife::EHitType					m_tHitType;
 	pcstr							m_caAmmoSections;
 	u32								m_dwAmmoAvailable;
-	Flags8							m_addon_flags;
+	flags8							m_addon_flags;
 	u8								m_bZoom;
 	u32								m_ef_main_weapon_type;
 	u32								m_ef_weapon_type;

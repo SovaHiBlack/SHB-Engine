@@ -115,10 +115,11 @@ public:
 class CBoxGeom : public CODEGeom
 {
 	typedef CODEGeom inherited																						;
-	Fobb	m_box;
+	fObb	m_box;
+
 public:
-							CBoxGeom			(const Fobb& box)													;
-//	virtual					~CBoxGeom			(const Fobb& box)													;
+							CBoxGeom			(const fObb& box)													;
+//	virtual					~CBoxGeom			(const fObb& box)													;
 	virtual		f32		volume				()																	;
 	virtual		f32		radius				()																	;
 	virtual		void		get_extensions_bt	(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext) ;
@@ -151,9 +152,9 @@ virtual const	Fvector&	local_center		()																	;
 class CCylinderGeom : public CODEGeom
 {
 	typedef CODEGeom inherited																						;
-	Fcylinder m_cylinder;
+	fCylinder m_cylinder;
 public:
-							CCylinderGeom		(const Fcylinder& cyl)												;
+							CCylinderGeom		(const fCylinder& cyl)												;
 	virtual		f32		volume				()																	;
 	virtual		f32		radius				()																	;
 	virtual		void		get_extensions_bt	(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext) ;

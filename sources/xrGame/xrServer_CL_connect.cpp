@@ -23,7 +23,7 @@ void xrServer::Perform_connect_spawn(CSE_Abstract* E, xrClientData* CL, NET_Pack
 	if (Parent)		Perform_connect_spawn	(Parent,CL,P);
 
 	// Process
-	Flags16			save = E->s_flags;
+	flags16			save = E->s_flags;
 	//-------------------------------------------------
 	E->s_flags.set	(M_SPAWN_UPDATE,TRUE);
 	if (0==E->owner)	

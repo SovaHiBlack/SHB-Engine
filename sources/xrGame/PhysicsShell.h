@@ -110,8 +110,8 @@ public:
 	virtual		void							set_ContactCallback						(ContactCallbackFun	*callback)																						= 0;
 	virtual		CPhysicsShellHolder				*PhysicsRefObject						()																													= 0;
 	virtual		void							add_Sphere								(const Fsphere&		V)																								= 0;
-	virtual		void							add_Box									(const Fobb&		V)																								= 0;
-	virtual		void							add_Cylinder							(const Fcylinder&	V)																								= 0;
+	virtual		void							add_Box									(const fObb&		V)																								= 0;
+	virtual		void							add_Cylinder							(const fCylinder&	V)																								= 0;
 	virtual		void							add_Shape								(const SBoneShape& shape)																							= 0;
 	virtual		void							add_Shape								(const SBoneShape& shape,const Fmatrix& offset)																		= 0;
 	virtual		CODEGeom						*last_geom								()																													= 0;
@@ -119,7 +119,7 @@ public:
 	virtual		void							add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture=NULL)	= 0;
 	virtual		void							set_ParentElement						(CPhysicsElement* p)																								= 0;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void							set_BoxMass								(const Fobb& box, f32 mass)																						= 0;
+	virtual		void							set_BoxMass								(const fObb& box, f32 mass)																						= 0;
 	virtual		void							setInertia								(const dMass& M)																									= 0;																
 	virtual		void							addInertia								(const dMass& M)																									= 0;
 	virtual		void							setMassMC								(f32 M,const Fvector& mass_center)																				= 0;
@@ -307,7 +307,7 @@ IC					CKinematics					*PKinematics								()																{return m_pKinemati
 	virtual			void						RunSimulation								(bool place_current_forms=true)																= 0;
 	virtual			void						UpdateRoot									()																							= 0;
 	virtual			void            		    ZeroCallbacks								()																							= 0;
-	virtual			void						ResetCallbacks								(u16 id,Flags64 &mask)																		= 0;
+	virtual			void						ResetCallbacks								(u16 id, flags64& mask)																		= 0;
 	virtual			void						SetCallbacks								(BoneCallbackFun* callback)																	= 0;
 	virtual			void						EnabledCallbacks							(BOOL val)																					= 0;
 	virtual			void						ToAnimBonesPositions						()																							= 0;

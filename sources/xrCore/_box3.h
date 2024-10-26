@@ -4,12 +4,12 @@ template <class T>
 class _box3
 {
 public:
-	typedef T			TYPE;
-	typedef _box3<T>	Self;
-	typedef Self& SelfRef;
-	typedef const Self& SelfCRef;
-	typedef _vector3<T>	Tvector;
-	typedef _matrix4x4<T>	Tmatrix;
+	using TYPE = T;
+	using Self = _box3<TYPE>;
+	using SelfRef = Self&;
+	using SelfCRef = const Self&;
+	using Tvector = _vector3<TYPE>;
+	using Tmatrix = _matrix4x4<TYPE>;
 
 	union
 	{
@@ -18,19 +18,24 @@ public:
 			Tvector	min;
 			Tvector	max;
 		};
+
 		struct
 		{
-			T x1, y1, z1;
-			T x2, y2, z2;
+			TYPE x1;
+			TYPE y1;
+			TYPE z1;
+			TYPE x2;
+			TYPE y2;
+			TYPE z2;
 		};
 	};
 
 	IC	BOOL	is_valid( )
 	{
-		return (x2 >= x1) && (y2 >= y1) && (z2 >= z1);
+		return ((x2 >= x1) && (y2 >= y1) && (z2 >= z1));
 	}
 
-	IC	const T* data( ) const
+	IC	const TYPE* data( ) const
 	{
 		return &min.x;
 	}
@@ -41,7 +46,7 @@ public:
 		max.set(_max);
 		return *this;
 	}
-	IC	SelfRef	set(T x1, T y1, T z1, T x2, T y2, T z2)
+	IC	SelfRef	set(TYPE x1, TYPE y1, TYPE z1, TYPE x2, TYPE y2, TYPE z2)
 	{
 		min.set(x1, y1, z1);
 		max.set(x2, y2, z2);
@@ -74,10 +79,12 @@ public:
 	}
 	IC	SelfRef	invalidate( )
 	{
-		min.set(type_max(T), type_max(T), type_max(T)); max.set(type_min(T), type_min(T), type_min(T));	return *this;
+		min.set(type_max(TYPE), type_max(TYPE), type_max(TYPE));
+		max.set(type_min(TYPE), type_min(TYPE), type_min(TYPE));
+		return *this;
 	}
 
-	IC	SelfRef	shrink(T s)
+	IC	SelfRef	shrink(TYPE s)
 	{
 		min.add(s);
 		max.sub(s);
@@ -89,7 +96,7 @@ public:
 		max.sub(s);
 		return *this;
 	}
-	IC	SelfRef	grow(T s)
+	IC	SelfRef	grow(TYPE s)
 	{
 		min.sub(s);
 		max.add(s);
@@ -127,22 +134,22 @@ public:
 		return *this;
 	}
 
-	ICF	BOOL	contains(T x, T y, T z)		const
+	ICF	BOOL	contains(TYPE x, TYPE y, TYPE z) const
 	{
-		return (x >= x1) && (x <= x2) && (y >= y1) && (y <= y2) && (z >= z1) && (z <= z2);
+		return ((x >= x1) && (x <= x2) && (y >= y1) && (y <= y2) && (z >= z1) && (z <= z2));
 	}
-	ICF	BOOL	contains(const Tvector& p)	const
+	ICF	BOOL	contains(const Tvector& p) const
 	{
 		return contains(p.x, p.y, p.z);
 	}
-	ICF	BOOL	contains(SelfCRef b)		const
+	ICF	BOOL	contains(SelfCRef b) const
 	{
-		return contains(b.min) && contains(b.max);
+		return (contains(b.min) && contains(b.max));
 	}
 
-	IC	BOOL	similar(SelfCRef b)		const
+	IC	BOOL	similar(SelfCRef b) const
 	{
-		return min.similar(b.min) && max.similar(b.max);
+		return (min.similar(b.min) && max.similar(b.max));
 	}
 
 	ICF	SelfRef	modify(const Tvector& p)
@@ -151,10 +158,10 @@ public:
 		max.max(p);
 		return *this;
 	}
-	ICF	SelfRef	modify(T x, T y, T z)
+	ICF	SelfRef	modify(TYPE x, TYPE y, TYPE z)
 	{
-		_vector3<T> tmp = { x,y,z };
-		return		modify(tmp);
+		_vector3<TYPE> tmp = { x,y,z };
+		return modify(tmp);
 	}
 	IC	SelfRef	merge(SelfCRef b)
 	{
@@ -173,7 +180,9 @@ public:
 	{
 		// The three edges transformed: you can efficiently transform an X-only vector3
 		// by just getting the "X" column of the matrix
-		Tvector vx, vy, vz;
+		Tvector vx;
+		Tvector vy;
+		Tvector vz;
 		vx.mul(m.i, B.max.x - B.min.x);
 		vy.mul(m.j, B.max.y - B.min.y);
 		vz.mul(m.k, B.max.z - B.min.z);
@@ -184,15 +193,87 @@ public:
 
 		// Take the transformed min & axes and find _new_ extents
 		// Using CPU code in the right place is faster...
-		if (negative(vx.x))	min.x += vx.x; else max.x += vx.x;
-		if (negative(vx.y))	min.y += vx.y; else max.y += vx.y;
-		if (negative(vx.z))	min.z += vx.z; else max.z += vx.z;
-		if (negative(vy.x))	min.x += vy.x; else max.x += vy.x;
-		if (negative(vy.y))	min.y += vy.y; else max.y += vy.y;
-		if (negative(vy.z))	min.z += vy.z; else max.z += vy.z;
-		if (negative(vz.x))	min.x += vz.x; else max.x += vz.x;
-		if (negative(vz.y))	min.y += vz.y; else max.y += vz.y;
-		if (negative(vz.z))	min.z += vz.z; else max.z += vz.z;
+		if (negative(vx.x))
+		{
+			min.x += vx.x;
+		}
+		else
+		{
+			max.x += vx.x;
+		}
+
+		if (negative(vx.y))
+		{
+			min.y += vx.y;
+		}
+		else
+		{
+			max.y += vx.y;
+		}
+
+		if (negative(vx.z))
+		{
+			min.z += vx.z;
+		}
+		else
+		{
+			max.z += vx.z;
+		}
+
+		if (negative(vy.x))
+		{
+			min.x += vy.x;
+		}
+		else
+		{
+			max.x += vy.x;
+		}
+
+		if (negative(vy.y))
+		{
+			min.y += vy.y;
+		}
+		else
+		{
+			max.y += vy.y;
+		}
+
+		if (negative(vy.z))
+		{
+			min.z += vy.z;
+		}
+		else
+		{
+			max.z += vy.z;
+		}
+
+		if (negative(vz.x))
+		{
+			min.x += vz.x;
+		}
+		else
+		{
+			max.x += vz.x;
+		}
+
+		if (negative(vz.y))
+		{
+			min.y += vz.y;
+		}
+		else
+		{
+			max.y += vz.y;
+		}
+
+		if (negative(vz.z))
+		{
+			min.z += vz.z;
+		}
+		else
+		{
+			max.z += vz.z;
+		}
+
 		return *this;
 	}
 	ICF	SelfRef	xform(const Tmatrix& m)
@@ -211,61 +292,90 @@ public:
 		getsize(R);
 		R.mul(0.5f);
 	}
-	IC	T			getradius( )				const
+	IC	TYPE			getradius( )				const
 	{
 		Tvector R;
 		getradius(R);
 		return R.magnitude( );
 	}
-	IC	T			getvolume( )				const
+	IC	TYPE			getvolume( )				const
 	{
 		Tvector sz;
 		getsize(sz);
-		return sz.x * sz.y * sz.z;
+		return (sz.x * sz.y * sz.z);
 	}
 	IC	SelfCRef	getcenter(Tvector& C)	const
 	{
 		C.x = (min.x + max.x) * 0.5f;
 		C.y = (min.y + max.y) * 0.5f;
 		C.z = (min.z + max.z) * 0.5f;
-		return				*this;
+		return *this;
 	}
-	IC	SelfCRef	get_CD(Tvector& bc, Tvector& bd)	const // center + dimensions
+	IC	SelfCRef	get_CD(Tvector& bc, Tvector& bd) const // center + dimensions
 	{
 		bd.sub(max, min).mul(.5f);
 		bc.add(min, bd);
-		return				*this;
+		return *this;
 	}
 	IC	SelfRef		scale(f32 s)					// 0.1 means make 110%, -0.1 means make 90%
 	{
-		Fvector	bd;	bd.sub(max, min).mul(s);
+		Fvector	bd;
+		bd.sub(max, min).mul(s);
 		grow(bd);
-		return				*this;
+		return *this;
 	}
-	IC	SelfCRef	getsphere(Tvector& C, T& R) const
+	IC	SelfCRef	getsphere(Tvector& C, TYPE& R) const
 	{
 		getcenter(C);
 		R = C.distance_to(max);
-		return				*this;
+		return *this;
 	}
 
 	// Detects if this box intersect other
 	ICF	BOOL	intersect(SelfCRef box)
 	{
-		if (max.x < box.min.x)	return FALSE;
-		if (max.y < box.min.y)	return FALSE;
-		if (max.z < box.min.z)	return FALSE;
-		if (min.x > box.max.x)	return FALSE;
-		if (min.y > box.max.y)	return FALSE;
-		if (min.z > box.max.z)	return FALSE;
+		if (max.x < box.min.x)
+		{
+			return FALSE;
+		}
+
+		if (max.y < box.min.y)
+		{
+			return FALSE;
+		}
+
+		if (max.z < box.min.z)
+		{
+			return FALSE;
+		}
+
+		if (min.x > box.max.x)
+		{
+			return FALSE;
+		}
+
+		if (min.y > box.max.y)
+		{
+			return FALSE;
+		}
+
+		if (min.z > box.max.z)
+		{
+			return FALSE;
+		}
+
 		return TRUE;
 	}
 
 	// Does the vector3 intersects box
 	IC BOOL Pick(const Tvector& start, const Tvector& dir)
 	{
-		T	alpha, xt, yt, zt;
-		Tvector rvmin, rvmax;
+		TYPE	alpha;
+		TYPE	xt;
+		TYPE	yt;
+		TYPE	zt;
+		Tvector	rvmin;
+		Tvector	rvmax;
 
 		rvmin.sub(min, start);
 		rvmax.sub(max, start);
@@ -279,7 +389,7 @@ public:
 				zt = alpha * dir.z;
 				if (zt >= rvmin.z && zt <= rvmax.z)
 				{
-					return true;
+					return TRUE;
 				}
 			}
 
@@ -290,7 +400,7 @@ public:
 				zt = alpha * dir.z;
 				if (zt >= rvmin.z && zt <= rvmax.z)
 				{
-					return true;
+					return TRUE;
 				}
 			}
 		}
@@ -304,7 +414,7 @@ public:
 				zt = alpha * dir.z;
 				if (zt >= rvmin.z && zt <= rvmax.z)
 				{
-					return true;
+					return TRUE;
 				}
 			}
 
@@ -315,7 +425,7 @@ public:
 				zt = alpha * dir.z;
 				if (zt >= rvmin.z && zt <= rvmax.z)
 				{
-					return true;
+					return TRUE;
 				}
 			}
 		}
@@ -329,7 +439,7 @@ public:
 				yt = alpha * dir.y;
 				if (yt >= rvmin.y && yt <= rvmax.y)
 				{
-					return true;
+					return TRUE;
 				}
 			}
 
@@ -340,17 +450,17 @@ public:
 				yt = alpha * dir.y;
 				if (yt >= rvmin.y && yt <= rvmax.y)
 				{
-					return true;
+					return TRUE;
 				}
 			}
 		}
 
-		return false;
+		return FALSE;
 	}
 
-	IC u32& IR(T& x)
+	IC u32& IR(TYPE& x)
 	{
-		return (u32&) x;
+		return (u32&)x;
 	}
 	enum ERP_Result
 	{
@@ -491,19 +601,55 @@ public:
 		return rpNone;
 	}
 
-	IC void getpoint(int index, Tvector& result) const
+	IC void getpoint(s32 index, Tvector& result) const
 	{
 		switch (index)
 		{
-			case 0: result.set(min.x, min.y, min.z); break;
-			case 1: result.set(min.x, min.y, max.z); break;
-			case 2: result.set(max.x, min.y, max.z); break;
-			case 3: result.set(max.x, min.y, min.z); break;
-			case 4: result.set(min.x, max.y, min.z); break;
-			case 5: result.set(min.x, max.y, max.z); break;
-			case 6: result.set(max.x, max.y, max.z); break;
-			case 7: result.set(max.x, max.y, min.z); break;
-			default: result.set(0, 0, 0); break;
+			case 0:
+			{
+				result.set(min.x, min.y, min.z);
+			}
+			break;
+			case 1:
+			{
+				result.set(min.x, min.y, max.z);
+			}
+			break;
+			case 2:
+			{
+				result.set(max.x, min.y, max.z);
+			}
+			break;
+			case 3:
+			{
+				result.set(max.x, min.y, min.z);
+			}
+			break;
+			case 4:
+			{
+				result.set(min.x, max.y, min.z);
+			}
+			break;
+			case 5:
+			{
+				result.set(min.x, max.y, max.z);
+			}
+			break;
+			case 6:
+			{
+				result.set(max.x, max.y, max.z);
+			}
+			break;
+			case 7:
+			{
+				result.set(max.x, max.y, min.z);
+			}
+			break;
+			default:
+			{
+				result.set(0, 0, 0);
+			}
+			break;
 		}
 	}
 
@@ -522,7 +668,7 @@ public:
 	IC SelfRef modify(SelfCRef src, const Tmatrix& M)
 	{
 		Tvector pt;
-		for (int i = 0; i < 8; i++)
+		for (s32 i = 0; i < 8; i++)
 		{
 			src.getpoint(i, pt);
 			M.transform_tiny(pt);

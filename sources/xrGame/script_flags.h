@@ -10,7 +10,7 @@
 
 #include "script_export_space.h"
 
-typedef class_exporter<Flags32> CScriptFlags;
+typedef class_exporter<flags32> CScriptFlags;
 
 add_to_type_list(CScriptFlags)
 #undef script_type_list

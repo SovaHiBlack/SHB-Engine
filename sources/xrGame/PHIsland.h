@@ -14,7 +14,7 @@ class CPHIslandFlags
 	static const	int base				=	8		;
 	static const	int shift_to_variable	=	base/2	;
 	static const	int mask_static			=	0xf		;
-	Flags8			flags								;
+	flags8			flags								;
 
 	enum 
 	{

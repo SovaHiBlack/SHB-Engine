@@ -38,7 +38,7 @@ public:
 	virtual void					set_range			(f32 R)							= 0;
 	virtual void					set_virtual_size	(f32 R)							= 0;
 	virtual void					set_texture			(pcstr name)						= 0;
-	virtual void					set_color			(const Fcolor& C)					= 0;
+	virtual void					set_color			(const fColor& C)					= 0;
 	virtual void					set_color			(f32 r, f32 g, f32 b)			= 0;
 	virtual ~IRender_Light()		;
 };
@@ -58,7 +58,7 @@ public:
 	virtual void					set_direction		(const Fvector& P)					= 0;
 	virtual void					set_radius			(f32 R)							= 0;
 	virtual void					set_texture			(pcstr name)						= 0;
-	virtual void					set_color			(const Fcolor& C)					= 0;
+	virtual void					set_color			(const fColor& C)					= 0;
 	virtual void					set_color			(f32 r, f32 g, f32 b)			= 0;
 	virtual ~IRender_Glow()			;
 };

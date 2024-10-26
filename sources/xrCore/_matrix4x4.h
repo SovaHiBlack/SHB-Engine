@@ -34,7 +34,7 @@ public:
 	typedef Self& SelfRef;
 	typedef const Self& SelfCRef;
 	typedef _vector3<T>	Tvector;
-public:
+
 	union
 	{
 		struct
@@ -55,7 +55,7 @@ public:
 	};
 
 	// Class members
-	ICF	SelfRef	set(const Self& a)
+	ICF	SelfRef	set(SelfCRef a)
 	{
 		i.set(a.i); _14_ = a._14;
 		j.set(a.j); _24_ = a._24;
@@ -71,7 +71,7 @@ public:
 		c.set(C); _44_ = 1;
 		return *this;
 	}
-	ICF	SelfRef	identity(void)
+	ICF	SelfRef	identity( )
 	{
 		_11 = 1; _12 = 0; _13 = 0; _14 = 0;
 		_21 = 0; _22 = 1; _23 = 0; _24 = 0;
@@ -83,7 +83,7 @@ public:
 	ICF	SelfRef	mk_xform(const _quaternion<T>& Q, const Tvector& V);
 
 	// Multiply RES = A[4x4]*B[4x4] (WITH projection)
-	ICF	SelfRef	mul(const Self& A, const Self& B)
+	ICF	SelfRef	mul(SelfCRef A, SelfCRef B)
 	{
 		VERIFY((this != &A) && (this != &B));
 		m[0][0] = A.m[0][0] * B.m[0][0] + A.m[1][0] * B.m[0][1] + A.m[2][0] * B.m[0][2] + A.m[3][0] * B.m[0][3];
@@ -109,7 +109,7 @@ public:
 	}
 
 	// Multiply RES = A[4x3]*B[4x3] (no projection), faster than ordinary multiply
-	ICF	SelfRef	mul_43(const Self& A, const Self& B)
+	ICF	SelfRef	mul_43(SelfCRef A, SelfCRef B)
 	{
 		VERIFY((this != &A) && (this != &B));
 		m[0][0] = A.m[0][0] * B.m[0][0] + A.m[1][0] * B.m[0][1] + A.m[2][0] * B.m[0][2];
@@ -133,27 +133,35 @@ public:
 		m[3][3] = 1;
 		return *this;
 	}
-	IC	SelfRef	mulA_44(const Self& A)			// mul after 
+	IC	SelfRef	mulA_44(SelfCRef A)			// mul after 
 	{
-		Self B; B.set(*this); 	mul(A, B);
+		Self B;
+		B.set(*this);
+		mul(A, B);
 		return *this;
-	};
-	IC	SelfRef	mulB_44(const Self& B)			// mul before
+	}
+	IC	SelfRef	mulB_44(SelfCRef B)			// mul before
 	{
-		Self A; A.set(*this); 	mul(A, B);
+		Self A;
+		A.set(*this);
+		mul(A, B);
 		return *this;
-	};
-	ICF	SelfRef	mulA_43(const Self& A)			// mul after (no projection)
+	}
+	ICF	SelfRef	mulA_43(SelfCRef A)			// mul after (no projection)
 	{
-		Self B; B.set(*this); 	mul_43(A, B);
+		Self B;
+		B.set(*this);
+		mul_43(A, B);
 		return *this;
-	};
-	ICF	SelfRef	mulB_43(const Self& B)			// mul before (no projection)
+	}
+	ICF	SelfRef	mulB_43(SelfCRef B)			// mul before (no projection)
 	{
-		Self A; A.set(*this); 	mul_43(A, B);
+		Self A;
+		A.set(*this);
+		mul_43(A, B);
 		return *this;
-	};
-	IC	SelfRef	invert(const Self& a)
+	}
+	IC	SelfRef	invert(SelfCRef a)
 	{		// important: this is 4x3 invert, not the 4x4 one
 // faster than self-invert
 		T fDetInv = (a._11 * (a._22 * a._33 - a._23 * a._32) -
@@ -185,14 +193,18 @@ public:
 		return *this;
 	}
 
-	IC	bool	invert_b(const Self& a)
+	IC	bool	invert_b(SelfCRef a)
 	{		// important: this is 4x3 invert, not the 4x4 one
 // faster than self-invert
 		T fDetInv = (a._11 * (a._22 * a._33 - a._23 * a._32) -
 					 a._12 * (a._21 * a._33 - a._23 * a._31) +
 					 a._13 * (a._21 * a._32 - a._22 * a._31));
 
-		if (_abs(fDetInv) <= flt_zero)	return	false;
+		if (_abs(fDetInv) <= flt_zero)
+		{
+			return	false;
+		}
+
 		fDetInv = 1.0f / fDetInv;
 
 		_11 = fDetInv * (a._22 * a._33 - a._23 * a._32);
@@ -219,10 +231,12 @@ public:
 
 	IC	SelfRef	invert()					// slower than invert other matrix
 	{
-		Self a;	a.set(*this);	invert(a);
+		Self a;
+		a.set(*this);
+		invert(a);
 		return *this;
 	}
-	IC	SelfRef	transpose(const Self& matSource)	// faster version of transpose
+	IC	SelfRef	transpose(SelfCRef matSource)	// faster version of transpose
 	{
 		_11 = matSource._11;	_12 = matSource._21;	_13 = matSource._31;	_14 = matSource._41;
 		_21 = matSource._12;	_22 = matSource._22;	_23 = matSource._32;	_24 = matSource._42;
@@ -232,17 +246,21 @@ public:
 	}
 	IC	SelfRef	transpose()						// self transpose - slower
 	{
-		Self a;	a.set(*this);	transpose(a);
+		Self a;
+		a.set(*this);
+		transpose(a);
 		return *this;
 	}
 	IC	SelfRef	translate(const Tvector& Loc)		// setup translation matrix
 	{
-		identity();	c.set(Loc.x, Loc.y, Loc.z);
+		identity();
+		c.set(Loc.x, Loc.y, Loc.z);
 		return *this;
 	}
 	IC	SelfRef	translate(T _x, T _y, T _z) // setup translation matrix
 	{
-		identity(); c.set(_x, _y, _z);
+		identity();
+		c.set(_x, _y, _z);
 		return *this;
 	}
 	IC	SelfRef	translate_over(const Tvector& Loc)	// modify only translation
@@ -262,7 +280,10 @@ public:
 	}
 	IC	SelfRef	scale(T x, T y, T z)	// setup scale matrix
 	{
-		identity(); m[0][0] = x; m[1][1] = y; m[2][2] = z;
+		identity();
+		m[0][0] = x;
+		m[1][1] = y;
+		m[2][2] = z;
 		return *this;
 	}
 	IC	SelfRef	scale(const Tvector& v)			// setup scale matrix
@@ -274,30 +295,42 @@ public:
 	{
 		T cosa = _cos(Angle);
 		T sina = _sin(Angle);
-		i.set(1, 0, 0);	_14 = 0;
-		j.set(0, cosa, sina);	_24 = 0;
-		k.set(0, -sina, cosa);	_34 = 0;
-		c.set(0, 0, 0);	_44 = 1;
+		i.set(1, 0, 0);
+		_14 = 0;
+		j.set(0, cosa, sina);
+		_24 = 0;
+		k.set(0, -sina, cosa);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
 		return *this;
 	}
 	IC	SelfRef	rotateY(T Angle)				// rotation about Y axis
 	{
 		T cosa = _cos(Angle);
 		T sina = _sin(Angle);
-		i.set(cosa, 0, -sina);	_14 = 0;
-		j.set(0, 1, 0);	_24 = 0;
-		k.set(sina, 0, cosa);	_34 = 0;
-		c.set(0, 0, 0);	_44 = 1;
+		i.set(cosa, 0, -sina);
+		_14 = 0;
+		j.set(0, 1, 0);
+		_24 = 0;
+		k.set(sina, 0, cosa);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
 		return *this;
 	}
 	IC	SelfRef	rotateZ(T Angle)				// rotation about Z axis
 	{
 		T cosa = _cos(Angle);
 		T sina = _sin(Angle);
-		i.set(cosa, sina, 0);	_14 = 0;
-		j.set(-sina, cosa, 0);	_24 = 0;
-		k.set(0, 0, 1);	_34 = 0;
-		c.set(0, 0, 0);	_44 = 1;
+		i.set(cosa, sina, 0);
+		_14 = 0;
+		j.set(-sina, cosa, 0);
+		_24 = 0;
+		k.set(0, 0, 1);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
 		return *this;
 	}
 
@@ -314,27 +347,75 @@ public:
 
 	IC	SelfRef	mapXYZ()
 	{
-		i.set(1, 0, 0); _14 = 0; j.set(0, 1, 0); _24 = 0; k.set(0, 0, 1); _34 = 0; c.set(0, 0, 0); _44 = 1;	return *this;
+		i.set(1, 0, 0);
+		_14 = 0;
+		j.set(0, 1, 0);
+		_24 = 0;
+		k.set(0, 0, 1);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
+		return *this;
 	}
 	IC	SelfRef	mapXZY()
 	{
-		i.set(1, 0, 0); _14 = 0; j.set(0, 0, 1); _24 = 0; k.set(0, 1, 0); _34 = 0; c.set(0, 0, 0); _44 = 1;	return *this;
+		i.set(1, 0, 0);
+		_14 = 0;
+		j.set(0, 0, 1);
+		_24 = 0;
+		k.set(0, 1, 0);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
+		return *this;
 	}
 	IC	SelfRef	mapYXZ()
 	{
-		i.set(0, 1, 0); _14 = 0; j.set(1, 0, 0); _24 = 0; k.set(0, 0, 1); _34 = 0; c.set(0, 0, 0); _44 = 1;	return *this;
+		i.set(0, 1, 0);
+		_14 = 0;
+		j.set(1, 0, 0);
+		_24 = 0;
+		k.set(0, 0, 1);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
+		return *this;
 	}
 	IC	SelfRef	mapYZX()
 	{
-		i.set(0, 1, 0); _14 = 0; j.set(0, 0, 1); _24 = 0; k.set(1, 0, 0); _34 = 0; c.set(0, 0, 0); _44 = 1;	return *this;
+		i.set(0, 1, 0);
+		_14 = 0;
+		j.set(0, 0, 1);
+		_24 = 0;
+		k.set(1, 0, 0);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
+		return *this;
 	}
 	IC	SelfRef	mapZXY()
 	{
-		i.set(0, 0, 1); _14 = 0; j.set(1, 0, 0); _24 = 0; k.set(0, 1, 0); _34 = 0; c.set(0, 0, 0); _44 = 1;	return *this;
+		i.set(0, 0, 1);
+		_14 = 0;
+		j.set(1, 0, 0);
+		_24 = 0;
+		k.set(0, 1, 0);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
+		return *this;
 	}
 	IC	SelfRef	mapZYX()
 	{
-		i.set(0, 0, 1); _14 = 0; j.set(0, 1, 0); _24 = 0; k.set(1, 0, 0); _34 = 0; c.set(0, 0, 0); _44 = 1;	return *this;
+		i.set(0, 0, 1);
+		_14 = 0;
+		j.set(0, 1, 0);
+		_24 = 0;
+		k.set(1, 0, 0);
+		_34 = 0;
+		c.set(0, 0, 0);
+		_44 = 1;
+		return *this;
 	}
 
 	IC	SelfRef	rotation(const Tvector& axis, T Angle)
@@ -360,7 +441,8 @@ public:
 	// mirror X
 	IC	SelfRef	mirrorX()
 	{
-		identity();	m[0][0] = -1;
+		identity();
+		m[0][0] = -1;
 		return *this;
 	}
 	IC	SelfRef	mirrorX_over()
@@ -377,7 +459,8 @@ public:
 	// mirror Y
 	IC	SelfRef	mirrorY()
 	{
-		identity();	m[1][1] = -1;
+		identity();
+		m[1][1] = -1;
 		return *this;
 	}
 	IC	SelfRef	mirrorY_over()
@@ -394,7 +477,8 @@ public:
 	// mirror Z
 	IC	SelfRef	mirrorZ()
 	{
-		identity();		m[2][2] = -1;
+		identity();
+		m[2][2] = -1;
 		return *this;
 	}
 	IC	SelfRef	mirrorZ_over()
@@ -407,7 +491,7 @@ public:
 		m[2][2] *= -1;
 		return *this;
 	}
-	IC	SelfRef	mul(const Self& A, T v)
+	IC	SelfRef	mul(SelfCRef A, T v)
 	{
 		m[0][0] = A.m[0][0] * v;	m[0][1] = A.m[0][1] * v;	m[0][2] = A.m[0][2] * v;	m[0][3] = A.m[0][3] * v;
 		m[1][0] = A.m[1][0] * v;	m[1][1] = A.m[1][1] * v;	m[1][2] = A.m[1][2] * v;	m[1][3] = A.m[1][3] * v;
@@ -423,7 +507,7 @@ public:
 		m[3][0] *= v;		m[3][1] *= v;		m[3][2] *= v;		m[3][3] *= v;
 		return *this;
 	}
-	IC	SelfRef	div(const Self& A, T v)
+	IC	SelfRef	div(SelfCRef A, T v)
 	{
 		VERIFY(_abs(v) > 0.000001f);
 		return mul(A, 1.0f / v);
@@ -523,7 +607,7 @@ public:
 		return *this;
 	}
 
-	IC	SelfRef	inertion(const Self& mat, T v)
+	IC	SelfRef	inertion(SelfCRef mat, T v)
 	{
 		T iv = 1.f - v;
 		for (int i = 0; i < 4; i++)
@@ -558,7 +642,7 @@ public:
 		dest.y = v.x * _12 + v.y * _22 + v.z * _32;
 		dest.z = v.x * _13 + v.y * _23 + v.z * _33;
 	}
-	IC	void	transform(Fvector4& dest, const Tvector& v)	const 	// preferred to use
+	IC	void	transform(fVector4& dest, const Tvector& v)	const 	// preferred to use
 	{
 		dest.w = v.x * _14 + v.y * _24 + v.z * _34 + _44;
 		dest.x = (v.x * _11 + v.y * _21 + v.z * _31 + _41) / dest.w;
@@ -677,5 +761,5 @@ BOOL	_valid(const _matrix4x4<T>& m)
 		;
 }
 
-extern XRCORE_API Fmatrix	Fidentity;
+extern XRCORE_API fMatrix4x4	Fidentity;
 extern XRCORE_API Dmatrix	Didentity;

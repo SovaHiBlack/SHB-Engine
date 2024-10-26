@@ -103,7 +103,7 @@ protected:
 	};	
 
 private:
-	Flags8					uFlags;
+	flags8					uFlags;
 	f32					m_oldWidth;
 };
 

@@ -45,7 +45,7 @@ public:
 	enum{
 		flObstacle					= (1<<0)
 	};
-	Flags8							flags;
+	flags8							flags;
 public:
 									CSE_Visual		(pcstr name=0);
 	virtual							~CSE_Visual		();
@@ -95,7 +95,7 @@ public:
 		flVisualAnimationChange		= u32(1 << 2),
 		flMotionChange				= u32(1 << 3),
 	};
-	Flags32							m_editor_flags;
+	flags32							m_editor_flags;
 	IC	void						set_editor_flag	(u32 mask)	{m_editor_flags.set	(mask,TRUE);}
 
 public:
@@ -108,7 +108,7 @@ public:
 	virtual void		__stdcall	set_name_replace(pcstr) = 0;
 	virtual Fvector&	__stdcall	position		() = 0;
 	virtual Fvector&	__stdcall	angle			() = 0;
-	virtual Flags16&	__stdcall	flags			() = 0;
+	virtual flags16&	__stdcall	flags			() = 0;
 	virtual ISE_Shape*  __stdcall	shape			() = 0;
 	virtual CSE_Visual* __stdcall	visual			() = 0;
 	virtual CSE_Motion* __stdcall	motion			() = 0;

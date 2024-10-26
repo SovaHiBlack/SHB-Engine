@@ -14,7 +14,7 @@ struct lanim_cont{
 	CLAItem*				m_lanim;
 	f32					m_lanim_start_time;
 	f32					m_lanim_delay_time;
-	Flags8					m_lanimFlags;
+	flags8					m_lanimFlags;
 
 	void					set_defaults		();
 };

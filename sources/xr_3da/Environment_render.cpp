@@ -151,7 +151,7 @@ void CEnvironment::RenderClouds			()
 	mXFORM.translate_over		(Device.vCameraPosition);
 
 	Fvector wd0,wd1;
-	Fvector4 wind_dir;
+	fVector4 wind_dir;
 	wd0.setHP					(PI_DIV_4,0);
 	wd1.setHP					(PI_DIV_4+PI_DIV_8,0);
 	wind_dir.set				(wd0.x,wd0.z,wd1.x,wd1.z).mul(0.5f).add(0.5f).mul(255.f);

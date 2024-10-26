@@ -419,14 +419,14 @@ void CRenderTarget::accum_direct_lum	()
 		j1.set						(scale_X,scale_X).add(offset);
 
 		struct v_aa	{
-			Fvector4	p;
+			fVector4	p;
 			fVector2	uv0;
 			fVector2	uvJ;
 			fVector2	uv1;
 			fVector2	uv2;
 			fVector2	uv3;
-			Fvector4	uv4;
-			Fvector4	uv5;
+			fVector4	uv4;
+			fVector4	uv5;
 		};
 		f32	smooth				= 0.6f;
 		f32	ddw					= smooth/_w;

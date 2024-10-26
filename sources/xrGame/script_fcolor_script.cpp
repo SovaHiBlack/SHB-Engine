@@ -16,14 +16,14 @@ void CScriptFcolor::script_register(lua_State *L)
 {
 	module(L)
 	[
-		class_<Fcolor>("fcolor")
-			.def_readwrite("r",					&Fcolor::r)
-			.def_readwrite("g",					&Fcolor::g)
-			.def_readwrite("b",					&Fcolor::b)
-			.def_readwrite("a",					&Fcolor::a)
+		class_<fColor>("fColor")
+			.def_readwrite("r",					&fColor::r)
+			.def_readwrite("g",					&fColor::g)
+			.def_readwrite("b",					&fColor::b)
+			.def_readwrite("a",					&fColor::a)
 			.def(								constructor<>())
-			.def("set",							(Fcolor & (Fcolor::*)(f32, f32, f32, f32))(&Fcolor::set),														return_reference_to(_1))
-			.def("set",							(Fcolor & (Fcolor::*)(const Fcolor &))(&Fcolor::set),																return_reference_to(_1))
-			.def("set",							(Fcolor & (Fcolor::*)(u32))(&Fcolor::set),																			return_reference_to(_1))
+			.def("set",							(fColor & (fColor::*)(f32, f32, f32, f32))(&fColor::set),														return_reference_to(_1))
+			.def("set",							(fColor & (fColor::*)(const fColor&))(&fColor::set),																return_reference_to(_1))
+			.def("set",							(fColor & (fColor::*)(u32))(&fColor::set),																			return_reference_to(_1))
 	];
 }

@@ -62,7 +62,7 @@ public:
 	shared_str			name;
 
 	vecBones			children;		// bones which are slaves to this
-	Fobb				obb;			
+	fObb				obb;
 
 	Fmatrix				bind_transform;
 	Fmatrix				m2b_transform;	// model to bone conversion transform
@@ -204,7 +204,7 @@ protected:
 	u32							UCalc_Time				;
 	s32							UCalc_Visibox			;
 
-	Flags64						visimask;
+	flags64						visimask;
 	
 	CSkeletonX*					LL_GetChild				(u32 idx);
 
@@ -246,7 +246,7 @@ public:
 	u16							LL_VisibleBoneCount	()					{	u64 F=visimask.flags&((u64(1)<<u64(LL_BoneCount()))-1); return (u16)btwCount1(F); }
 	ICF Fmatrix&				LL_GetTransform		(u16 bone_id)		{	return LL_GetBoneInstance(bone_id).mTransform;					}
 	ICF Fmatrix&				LL_GetTransform_R	(u16 bone_id)		{	return LL_GetBoneInstance(bone_id).mRenderTransform;			}	// rendering only
-	Fobb&						LL_GetBox			(u16 bone_id)		{	VERIFY(bone_id<LL_BoneCount());	return (*bones)[bone_id]->obb;	}
+	fObb&						LL_GetBox			(u16 bone_id)		{	VERIFY(bone_id<LL_BoneCount());	return (*bones)[bone_id]->obb;	}
 	void						LL_GetBindTransform (xr_vector<Fmatrix>& matrices);
 	int 						LL_GetBoneGroups 	(xr_vector<xr_vector<u16> >& groups);
 

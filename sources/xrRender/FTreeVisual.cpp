@@ -88,8 +88,8 @@ struct	FTreeVisual_setup
 {
 	u32			dwFrame;
 	f32		scale;
-	Fvector4	wave;
-	Fvector4	wind;
+	fVector4	wave;
+	fVector4	wind;
 
 	FTreeVisual_setup() 
 	{

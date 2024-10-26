@@ -131,8 +131,8 @@ void	SPHNetState::net_Export(NET_Packet& P)
 	//P.w_vec3(force);
 	//P.w_vec3(torque);
 	P.w_vec3(position);
-	P.w_vec4(*((Fvector4*)&quaternion));
-	//P.w_vec4(*((Fvector4*)&previous_quaternion));
+	P.w_vec4(*((fVector4*)&quaternion));
+	//P.w_vec4(*((fVector4*)&previous_quaternion));
 	P.w_u8	((u8)enabled);
 
 }
@@ -144,8 +144,8 @@ void	SPHNetState::read				(src&			P)
 	force.set(0.f,0.f,0.f);				//P.r_vec3(force);
 	torque.set(0.f,0.f,0.f);			//P.r_vec3(torque);
 	position=P.r_vec3();
-	*((Fvector4*)&quaternion)=P.r_vec4();
-	previous_quaternion.set(quaternion);//P.r_vec4(*((Fvector4*)&previous_quaternion));
+	*((fVector4*)&quaternion)=P.r_vec4();
+	previous_quaternion.set(quaternion);//P.r_vec4(*((fVector4*)&previous_quaternion));
 	enabled=!!P.r_u8	();
 }
 
@@ -182,8 +182,8 @@ void SPHNetState::net_Save(NET_Packet &P,const Fvector& min,const Fvector& max)
 	//P.w_vec3(position);
 	w_vec_q8(P,position,min,max);
 	w_qt_q8(P,quaternion);
-	//P.w_vec4(*((Fvector4*)&quaternion));
-	//P.w_vec4(*((Fvector4*)&previous_quaternion));
+	//P.w_vec4(*((fVector4*)&quaternion));
+	//P.w_vec4(*((fVector4*)&previous_quaternion));
 	P.w_u8	((u8)enabled);
 }
 template<typename src>

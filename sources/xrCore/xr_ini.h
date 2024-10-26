@@ -134,8 +134,8 @@ public:
 	{
 		return r_float(*S, L);
 	}
-	Fcolor		r_fcolor(pcstr S, pcstr L);
-	Fcolor		r_fcolor(const shared_str& S, pcstr L)
+	fColor		r_fcolor(pcstr S, pcstr L);
+	fColor		r_fcolor(const shared_str& S, pcstr L)
 	{
 		return r_fcolor(*S, L);
 	}
@@ -154,8 +154,8 @@ public:
 	{
 		return r_ivector3(*S, L);
 	}
-	Ivector4	r_ivector4(pcstr S, pcstr L);
-	Ivector4	r_ivector4(const shared_str& S, pcstr L)
+	iVector4	r_ivector4(pcstr S, pcstr L);
+	iVector4	r_ivector4(const shared_str& S, pcstr L)
 	{
 		return r_ivector4(*S, L);
 	}
@@ -169,8 +169,8 @@ public:
 	{
 		return r_fvector3(*S, L);
 	}
-	Fvector4	r_fvector4(pcstr S, pcstr L);
-	Fvector4	r_fvector4(const shared_str& S, pcstr L)
+	fVector4	r_fvector4(pcstr S, pcstr L);
+	fVector4	r_fvector4(const shared_str& S, pcstr L)
 	{
 		return r_fvector4(*S, L);
 	}
@@ -191,14 +191,14 @@ public:
 	void		w_s16(pcstr S, pcstr L, s16				V, pcstr comment = 0);
 	void		w_s32(pcstr S, pcstr L, s32				V, pcstr comment = 0);
 	void		w_float(pcstr S, pcstr L, f32				V, pcstr comment = 0);
-	void		w_fcolor(pcstr S, pcstr L, const Fcolor& V, pcstr comment = 0);
+	void		w_fcolor(pcstr S, pcstr L, const fColor& V, pcstr comment = 0);
 	void		w_color(pcstr S, pcstr L, u32				V, pcstr comment = 0);
 	void		w_ivector2(pcstr S, pcstr L, const iVector2& V, pcstr comment = 0);
 	void		w_ivector3(pcstr S, pcstr L, const Ivector3& V, pcstr comment = 0);
-	void		w_ivector4(pcstr S, pcstr L, const Ivector4& V, pcstr comment = 0);
+	void		w_ivector4(pcstr S, pcstr L, const iVector4& V, pcstr comment = 0);
 	void		w_fvector2(pcstr S, pcstr L, const fVector2& V, pcstr comment = 0);
 	void		w_fvector3(pcstr S, pcstr L, const Fvector3& V, pcstr comment = 0);
-	void		w_fvector4(pcstr S, pcstr L, const Fvector4& V, pcstr comment = 0);
+	void		w_fvector4(pcstr S, pcstr L, const fVector4& V, pcstr comment = 0);
 	void		w_bool(pcstr S, pcstr L, BOOL				V, pcstr comment = 0);
 
 	void		remove_line(pcstr S, pcstr L);

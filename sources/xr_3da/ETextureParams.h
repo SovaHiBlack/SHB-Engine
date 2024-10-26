@@ -83,7 +83,7 @@ struct STextureParams{
 
 	// texture part
 	ETFormat	        fmt;
-	Flags32		        flags;
+	flags32		        flags;
 	u32			        border_color;
 	u32			        fade_color;
 	u32			        fade_amount;

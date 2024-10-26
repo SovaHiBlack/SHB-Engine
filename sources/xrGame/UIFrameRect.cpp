@@ -27,7 +27,7 @@ void CUIFrameRect::InitTexture(pcstr texture){
 	strcpy			(buf,texture); if (strext(buf)) *strext(buf)=0;
 
 	if (FS.exist(fn,"$game_textures$",buf,".ini")){
-		Fvector4	v;
+		fVector4	v;
 		//uFlags.set	(flSingleTex,TRUE);
 		CInifile* ini= CInifile::Create(fn,TRUE);
 		pcstr sh	= ini->r_string("frame","shader");

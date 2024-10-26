@@ -15,7 +15,7 @@ protected:
 	ref_sound		m_sound;
 	ref_texture		m_texture;
 	shared_str		m_fn;
-	Flags8			m_flags;
+	flags8			m_flags;
 	enum			{eStoping=(1<<0),ePlaying=(1<<1),eLooped=(1<<2)};
 private:
 	void			OnBtnPlayClicked		();

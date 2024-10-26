@@ -462,7 +462,7 @@ extern int			psNET_ServerUpdate;
 extern int			psNET_ServerPending;
 extern int			psNET_DedicatedSleep;
 extern char			psNET_Name[32];
-extern Flags32		psEnvFlags;
+extern flags32		psEnvFlags;
 extern f32		r__dtex_range;
 
 extern int			g_ErrorLineCount;

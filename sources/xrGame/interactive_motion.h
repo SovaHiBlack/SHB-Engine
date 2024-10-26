@@ -5,7 +5,7 @@ class interactive_motion
 {
 	MotionID motion;
 protected:
-	Flags8	 flags;
+	flags8	 flags;
 	enum Flag
 	{
 		fl_use_death_motion			=1<<4,

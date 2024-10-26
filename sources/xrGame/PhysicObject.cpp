@@ -108,12 +108,10 @@ void CPhysicObject::Load(pcstr section)
 	CPHSkeleton::Load(section);
 }
 
-
 void CPhysicObject::shedule_Update		(u32 dt)
 {
 	inherited::shedule_Update(dt);
 	CPHSkeleton::Update(dt);
-
 }
 void CPhysicObject::UpdateCL()
 {
@@ -123,21 +121,18 @@ void CPhysicObject::UpdateCL()
 }
 void CPhysicObject::PHObjectPositionUpdate	()
 {
-	
 	if(m_pPhysicsShell)
 	{
-
-
 		if(m_type==epotBox) 
 		{
 			m_pPhysicsShell->Update();
 			XFORM().set			(m_pPhysicsShell->mXFORM);
 		}
 		else
-			m_pPhysicsShell->InterpolateGlobalTransform(&XFORM());
+		{
+			m_pPhysicsShell->InterpolateGlobalTransform(&XFORM( ));
+		}
 	}
-
-
 }
 
 void CPhysicObject::AddElement(CPhysicsElement* root_e, int id)
@@ -147,14 +142,12 @@ void CPhysicObject::AddElement(CPhysicsElement* root_e, int id)
 	CPhysicsElement* E	= P_create_Element();
 	CBoneInstance& B	= K->LL_GetBoneInstance(u16(id));
 	E->mXFORM.set		(K->LL_GetTransform(u16(id)));
-	Fobb bb			= K->LL_GetBox(u16(id));
-
-
+	fObb bb			= K->LL_GetBox(u16(id));
 	if(bb.m_halfsize.magnitude()<0.05f)
 	{
 		bb.m_halfsize.add(0.05f);
-
 	}
+
 	E->add_Box			(bb);
 	E->setMass			(10.f);
 	E->set_ParentElement(root_e);

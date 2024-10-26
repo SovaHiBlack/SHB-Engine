@@ -7,7 +7,7 @@
 #include "xr_object.h"
 
 int		g_ErrorLineCount	= 15;
-Flags32 g_stats_flags		= {0};
+flags32 g_stats_flags		= {0};
 
 // stats
 DECLARE_RP(Stats);

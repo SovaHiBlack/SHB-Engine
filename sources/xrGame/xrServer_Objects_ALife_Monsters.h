@@ -30,7 +30,7 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 //	int								m_iCumulativeItemVolume;
 	u32								m_dwMoney;
 	f32							m_fMaxItemMass;
-	Flags32							m_trader_flags;
+	flags32							m_trader_flags;
 
 	////////////////////////////////////////////////////
 	//character profile info

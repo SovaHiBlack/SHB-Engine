@@ -30,7 +30,7 @@ public:
 		Fvector	P0,P1;
 		u32		color;
 	};
-	xr_vector<std::pair<Fsphere,Fcolor> >		dbg_spheres;
+	xr_vector<std::pair<Fsphere, fColor> >		dbg_spheres;
 	xr_vector<dbg_line_t>						dbg_lines;
 	xr_vector<fPlane3>							dbg_planes;
 #endif

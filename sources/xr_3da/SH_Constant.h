@@ -9,7 +9,7 @@ class	ENGINE_API	CConstant	: public xr_resource_named									{
 public:
 	enum			{ modeProgrammable=0, modeWaveForm	};
 public:
-	Fcolor			const_float;
+	fColor			const_float;
 	u32				const_dword;
 
 	u32				dwFrame;
@@ -28,7 +28,7 @@ public:
 		const_float.set	(r,g,b,a);
 		const_dword		= const_float.get();
 	}
-	IC void			set_float	(Fcolor& c)
+	IC void			set_float	(fColor& c)
 	{
 		const_float.set	(c);
 		const_dword		= const_float.get();

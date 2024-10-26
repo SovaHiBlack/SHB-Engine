@@ -26,7 +26,8 @@ class CUIEncyclopediaWnd: public CUIWindow
 private:
 	typedef CUIWindow inherited;
 	enum {eNeedReload=(1<<0)};
-	Flags16				m_flags;
+	flags16				m_flags;
+
 public:
 						CUIEncyclopediaWnd			();
 	virtual				~CUIEncyclopediaWnd			();

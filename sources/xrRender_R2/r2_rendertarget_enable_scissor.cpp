@@ -62,7 +62,7 @@ BOOL CRenderTarget::enable_scissor		(light* L)		// true if intersects near plane
 	BOOL	near_intersect				= FALSE;
 	{
 		Fmatrix& M						= Device.mFullTransform;
-		Fvector4 plane;
+		fVector4 plane;
 		plane.x							= -(M._14 + M._13);
 		plane.y							= -(M._24 + M._23);
 		plane.z							= -(M._34 + M._33);

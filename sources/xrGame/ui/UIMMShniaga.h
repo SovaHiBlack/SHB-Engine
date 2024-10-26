@@ -74,5 +74,5 @@ protected:
 		fl_MovingStoped = 2
 	};
 
-	Flags32				m_flags;
+	flags32				m_flags;
 };

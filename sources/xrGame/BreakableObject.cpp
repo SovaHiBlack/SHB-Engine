@@ -163,10 +163,9 @@ void CBreakableObject::CreateBroken()
 	dMassSetBox(&m,m_Shell->getMass()/100.f,1.f,1.f,1.f);
 	m_Shell->addEquelInertiaToEls(m);
 	m_Shell->SmoothElementsInertia(0.3f);
-	Fobb b;
+	fObb b;
 	Visual()->vis.box.getradius(b.m_halfsize);
 	m_Shell->SetMaxAABBRadius(_max(_max(b.m_halfsize.x,b.m_halfsize.y),b.m_halfsize.z)*2.f);//+2.f
-
 }
 
 void CBreakableObject::ActivateBroken()

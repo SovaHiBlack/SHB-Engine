@@ -50,10 +50,10 @@ public		:
 class ENGINE_API	CCC_Mask : public IConsole_Command
 {
 protected	:
-	Flags32*	value;
+	flags32*	value;
 	u32			mask;
 public		:
-	CCC_Mask(pcstr N, Flags32* V, u32 M) :
+	CCC_Mask(pcstr N, flags32* V, u32 M) :
 	  IConsole_Command(N),
 	  value(V),
 	  mask(M)
@@ -76,10 +76,10 @@ public		:
 class ENGINE_API	CCC_ToggleMask : public IConsole_Command
 {
 protected	:
-	Flags32*	value;
+	flags32*	value;
 	u32			mask;
 public		:
-	CCC_ToggleMask(pcstr N, Flags32* V, u32 M) :
+	CCC_ToggleMask(pcstr N, flags32* V, u32 M) :
 	  IConsole_Command(N),
 	  value(V),
 	  mask(M)

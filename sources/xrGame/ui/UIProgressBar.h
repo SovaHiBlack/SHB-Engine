@@ -24,8 +24,8 @@ protected:
 	
 public:
 	bool				m_bUseColor;
-	Fcolor				m_minColor;
-	Fcolor				m_maxColor;
+	fColor				m_minColor;
+	fColor				m_maxColor;
 	f32				m_inertion;	//
 
 public:

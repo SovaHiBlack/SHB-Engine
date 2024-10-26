@@ -41,31 +41,31 @@ protected:
 	int 				ID; 	// auto number
 public:
 	enum{
-    	flBreakable		= (1ul<<0ul),
+		flBreakable		= (1ul<<0ul),
 //		flShootable 	= (1ul<<1ul),
-        flBounceable	= (1ul<<2ul),
-        flSkidmark		= (1ul<<3ul),
-        flBloodmark		= (1ul<<4ul),
-        flClimable		= (1ul<<5ul),
+		flBounceable	= (1ul<<2ul),
+		flSkidmark		= (1ul<<3ul),
+		flBloodmark		= (1ul<<4ul),
+		flClimable		= (1ul<<5ul),
 //		flWalkOn		= (1ul<<6ul), // obsolette
-        flPassable		= (1ul<<7ul),
-        flDynamic		= (1ul<<8ul),
-        flLiquid 		= (1ul<<9ul),
+		flPassable		= (1ul<<7ul),
+		flDynamic		= (1ul<<8ul),
+		flLiquid 		= (1ul<<9ul),
 		flSuppressShadows	= (1ul<<10ul),
 		flSuppressWallmarks	= (1ul<<11ul),
 		flActorObstacle	= (1ul<<12ul),
 
-        flInjurious		= (1ul<<28ul),// flInjurious = fInjuriousSpeed > 0.f
+		flInjurious		= (1ul<<28ul),// flInjurious = fInjuriousSpeed > 0.f
 		flShootable 	= (1ul<<29ul),
-        flTransparent	= (1ul<<30ul),
-        flSlowDown		= (1ul<<31ul) // flSlowDown = (fFlotationFactor<1.f)
-    };
+		flTransparent	= (1ul<<30ul),
+		flSlowDown		= (1ul<<31ul) // flSlowDown = (fFlotationFactor<1.f)
+	};
 public:
 	shared_str			m_Name;
-    shared_str			m_Desc;
+	shared_str			m_Desc;
 
-    Flags32				Flags;
-    // physics part
+	flags32				Flags;
+	// physics part
 	f32				fPHFriction;            // ?
 	f32				fPHDamping;             // ?
 	f32				fPHSpring;              // ?
@@ -80,77 +80,77 @@ public:
 	f32				fSndOcclusionFactor;	// 0.f - 1.f    (1.f-полностью слышен)
 public:
 	SGameMtl			()
-    {
-        ID						= -1;
+	{
+		ID						= -1;
 		m_Name					= "unknown";
-        Flags.zero				();
-        // factors
-        fFlotationFactor		= 1.f;
-        fShootFactor			= 0.f;
-        fBounceDamageFactor		= 1.f;
-        fInjuriousSpeed 		= 0.f;
-        fVisTransparencyFactor	= 0.f;
-        fSndOcclusionFactor		= 0.f;
-        // physics
-        fPHFriction				= 1.f;
-        fPHDamping				= 1.f;
-        fPHSpring				= 1.f;
-        fPHBounceStartVelocity  = 0.f;
-        fPHBouncing				= 0.1f;
+		Flags.zero				();
+		// factors
+		fFlotationFactor		= 1.f;
+		fShootFactor			= 0.f;
+		fBounceDamageFactor		= 1.f;
+		fInjuriousSpeed 		= 0.f;
+		fVisTransparencyFactor	= 0.f;
+		fSndOcclusionFactor		= 0.f;
+		// physics
+		fPHFriction				= 1.f;
+		fPHDamping				= 1.f;
+		fPHSpring				= 1.f;
+		fPHBounceStartVelocity  = 0.f;
+		fPHBouncing				= 0.1f;
 	}
-    void 				Load			(IReader& fs);
-    void 				Save			(IWriter& fs);
-    IC int				GetID			(){return ID;}
+	void 				Load			(IReader& fs);
+	void 				Save			(IWriter& fs);
+	IC int				GetID			(){return ID;}
 };
 DEFINE_VECTOR(SGameMtl*,GameMtlVec,GameMtlIt);
 
 struct SGameMtlPair{
 	friend class CGameMtlLibrary;
-    CGameMtlLibrary*	m_Owner;
+	CGameMtlLibrary*	m_Owner;
 private:
 	int					mtl0;
 	int					mtl1;
 protected:
 	int 				ID; 	// auto number
-    int					ID_parent;
+	int					ID_parent;
 public:
 	enum{
 //		flFlotation		= (1<<0),
-        flBreakingSounds= (1<<1),
-        flStepSounds	= (1<<2),
+		flBreakingSounds= (1<<1),
+		flStepSounds	= (1<<2),
 //		flCollideSounds	= (1<<3),
-        flCollideSounds		= (1<<4),
-        flCollideParticles	= (1<<5),
-        flCollideMarks		= (1<<6)
-    };
-    Flags32				OwnProps;
+		flCollideSounds		= (1<<4),
+		flCollideParticles	= (1<<5),
+		flCollideMarks		= (1<<6)
+	};
+	flags32				OwnProps;
 //	properties
-    SoundVec			BreakingSounds;
-    SoundVec			StepSounds;
-    SoundVec			CollideSounds;
-    PSVec				CollideParticles;
-    ShaderVec			CollideMarks;
+	SoundVec			BreakingSounds;
+	SoundVec			StepSounds;
+	SoundVec			CollideSounds;
+	PSVec				CollideParticles;
+	ShaderVec			CollideMarks;
 
 public:
 	SGameMtlPair		(CGameMtlLibrary* owner)
-    {
-    	mtl0			= -1;
-    	mtl1			= -1;
-        ID				= -1;
-        ID_parent		= -1;
-        m_Owner			= owner;
-        OwnProps.one	();
+	{
+		mtl0			= -1;
+		mtl1			= -1;
+		ID				= -1;
+		ID_parent		= -1;
+		m_Owner			= owner;
+		OwnProps.one	();
 	}
 	~SGameMtlPair		();
-    IC int				GetMtl0			(){return mtl0;}
-    IC int				GetMtl1			(){return mtl1;}
-    IC int				GetID			(){return ID;}
-    IC void				SetPair			(int m0, int m1){mtl0=m0; mtl1=m1;}
+	IC int				GetMtl0			(){return mtl0;}
+	IC int				GetMtl1			(){return mtl1;}
+	IC int				GetID			(){return ID;}
+	IC void				SetPair			(int m0, int m1){mtl0=m0; mtl1=m1;}
 	IC bool				IsPair			(int m0, int m1){return !!(((mtl0==m0)&&(mtl1==m1))||((mtl0==m1)&&(mtl1==m0)));}
-    void				Save			(IWriter& fs);
-    void				Load			(IReader& fs);
-    IC int 				GetParent		(){return ID_parent;}
-    BOOL				SetParent		(int parent);
+	void				Save			(IWriter& fs);
+	void				Load			(IReader& fs);
+	IC int 				GetParent		(){return ID_parent;}
+	BOOL				SetParent		(int parent);
 
 #ifdef DEBUG
 	pcstr				dbg_Name		();
@@ -164,27 +164,27 @@ class CGameMtlLibrary{
 	int					material_pair_index;
 
 	GameMtlVec			materials;
-    GameMtlPairVec		material_pairs;
+	GameMtlPairVec		material_pairs;
 
-    // game part
-    u32					material_count;
-    GameMtlPairVec		material_pairs_rt;
+	// game part
+	u32					material_count;
+	GameMtlPairVec		material_pairs_rt;
 
 public:
 	CGameMtlLibrary		()
 	{
-	    material_index 		= 0;
-	    material_pair_index = 0;
-        material_count	    = 0;
-    }
+		material_index 		= 0;
+		material_pair_index = 0;
+		material_count	    = 0;
+	}
 	~CGameMtlLibrary	()
 	{
 		/*
-    	R_ASSERT		(0==material_pairs_rt.size());
-    	R_ASSERT		(0==material_pairs.size());
-    	R_ASSERT		(0==materials.size());
+		R_ASSERT		(0==material_pairs_rt.size());
+		R_ASSERT		(0==material_pairs.size());
+		R_ASSERT		(0==materials.size());
 		*/
-    }
+	}
 	IC void				Unload			()
 	{
 		material_count	= 0;
@@ -197,30 +197,30 @@ public:
 			xr_delete	(*p_it);
 		material_pairs.clear();
 	}
-    // material routine
-    IC GameMtlIt 		GetMaterialIt	(pcstr name)
-    {
-        for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
-            if (0==strcmpi(*(*it)->m_Name,name)) return it;
-        return materials.end();
-    }
-    IC GameMtlIt 		GetMaterialIt	(shared_str& name)
-    {
-        for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
-            if (name.equal((*it)->m_Name)) return it;
-        return materials.end();
-    }
-    IC GameMtlIt 		GetMaterialItByID(int id)
-    {
-        for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
-            if ((*it)->ID==id) return it;
-        return materials.end();
-    }
+	// material routine
+	IC GameMtlIt 		GetMaterialIt	(pcstr name)
+	{
+		for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
+			if (0==strcmpi(*(*it)->m_Name,name)) return it;
+		return materials.end();
+	}
+	IC GameMtlIt 		GetMaterialIt	(shared_str& name)
+	{
+		for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
+			if (name.equal((*it)->m_Name)) return it;
+		return materials.end();
+	}
+	IC GameMtlIt 		GetMaterialItByID(int id)
+	{
+		for (GameMtlIt it=materials.begin(); materials.end() != it; ++it)
+			if ((*it)->ID==id) return it;
+		return materials.end();
+	}
 	IC u32				GetMaterialID	(pcstr name)
-    {
-    	GameMtlIt it	= GetMaterialIt	(name);
-        return (it==materials.end())?GAMEMTL_NONE_ID:(*it)->ID;
-    }
+	{
+		GameMtlIt it	= GetMaterialIt	(name);
+		return (it==materials.end())?GAMEMTL_NONE_ID:(*it)->ID;
+	}
 
 	IC u16				GetMaterialIdx	(int ID)		{GameMtlIt it=GetMaterialItByID(ID);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
 	IC u16				GetMaterialIdx	(pcstr name)	{GameMtlIt it=GetMaterialIt(name);VERIFY(materials.end() != it); return (u16)(it-materials.begin());}
@@ -231,7 +231,7 @@ public:
 	IC GameMtlIt		LastMaterial	(){return materials.end();}
 	IC u32				CountMaterial	(){return materials.size();}
 
-    // material pair routine
+	// material pair routine
 	IC SGameMtlPair*	GetMaterialPair		(u16 idx0, u16 idx1){R_ASSERT((idx0<material_count)&&(idx1<material_count)); return material_pairs_rt[idx1*material_count+idx0];}
 
 	IC GameMtlPairIt	FirstMaterialPair	(){return material_pairs.begin();}

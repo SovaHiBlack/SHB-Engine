@@ -18,7 +18,7 @@
 
 #ifdef DEBUG
 #	include "ai_debug.h"
-	extern Flags32 psAI_Flags;
+	extern flags32 psAI_Flags;
 #endif
 
 extern void export_classes(lua_State *L);

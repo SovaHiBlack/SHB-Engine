@@ -143,15 +143,14 @@ dGeomID CPHGeometryOwner::dSpacedGeometry()
 	else return (*m_geoms.begin())->geometry_transform();
 }
 
-void CPHGeometryOwner::			add_Box		(const Fobb&		V)
+void CPHGeometryOwner::			add_Box		(const fObb&		V)
 {
-	Fobb box;
+	fObb box;
 	box=V;
 	if(box.m_halfsize.x<0.005f) box.m_halfsize.x=0.005f;
 	if(box.m_halfsize.y<0.005f) box.m_halfsize.y=0.005f;
 	if(box.m_halfsize.z<0.005f) box.m_halfsize.z=0.005f;
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CBoxGeom>(box)));
-
 }
 
 void CPHGeometryOwner::			add_Sphere	(const Fsphere&	V)
@@ -159,7 +158,7 @@ void CPHGeometryOwner::			add_Sphere	(const Fsphere&	V)
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CSphereGeom>(V)));
 }
 
-void CPHGeometryOwner::add_Cylinder	(const Fcylinder& V)
+void CPHGeometryOwner::add_Cylinder	(const fCylinder& V)
 {
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CCylinderGeom>(V)));
 }
@@ -170,7 +169,7 @@ void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const Fmatrix& offset)
 	switch(shape.type) {
 	case SBoneShape::stBox	:
 		{
-			Fobb box=shape.box;
+		fObb box=shape.box;
 			Fmatrix m;
 			m.set(offset);
 			//Fmatrix position;
@@ -194,7 +193,7 @@ void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const Fmatrix& offset)
 
 	case SBoneShape::stCylinder :
 		{
-			Fcylinder C=shape.cylinder;
+		fCylinder C=shape.cylinder;
 			offset.transform_tiny(C.m_center);
 			offset.transform_dir(C.m_direction);
 			add_Cylinder(C);

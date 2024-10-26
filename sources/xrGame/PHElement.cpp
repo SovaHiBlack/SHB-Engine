@@ -64,7 +64,7 @@ CPHElement::CPHElement()																															//aux
 	m_volume=0.f;
 }
 
-void CPHElement::add_Box		(const Fobb&		V)
+void CPHElement::add_Box		(const fObb&		V)
 {
 	CPHGeometryOwner::add_Box(V);
 }
@@ -75,7 +75,7 @@ void CPHElement::add_Sphere	(const Fsphere&	V)
 	CPHGeometryOwner::add_Sphere(V);
 }
 
-void CPHElement::add_Cylinder	(const Fcylinder& V)
+void CPHElement::add_Cylinder	(const fCylinder& V)
 {
 	CPHGeometryOwner::add_Cylinder(V);
 }
@@ -1212,7 +1212,7 @@ void CPHElement::add_Mass(const SBoneShape& shape,const Fmatrix& offset,const Fv
 	m_mass_center.set(new_mc);
 }
 
-void CPHElement::set_BoxMass(const Fobb& box, f32 mass)
+void CPHElement::set_BoxMass(const fObb& box, f32 mass)
 {
 	dMassSetZero(&m_mass);
 	m_mass_center.set(box.m_translate);
@@ -1222,7 +1222,6 @@ void CPHElement::set_BoxMass(const Fobb& box, f32 mass)
 	dMatrix3 DMatx;
 	PHDynamicData::FMX33toDMX(box.m_rotate,DMatx);
 	dMassRotate(&m_mass,DMatx);
-
 }
 
 void CPHElement::calculate_it_data_use_density(const Fvector& mc, f32 density)

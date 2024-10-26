@@ -17,7 +17,7 @@ public:
 			eIndicators		= (1<<1),};
 	recvItem		(CUIDialogWnd*);
 	CUIDialogWnd*	m_item;
-	Flags8			m_flags;
+	flags8			m_flags;
 };
 
 class CDialogHolder :public ISheduled,public pureFrame

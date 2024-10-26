@@ -249,7 +249,7 @@ int	CScriptGameObject::animation_count		() const
 	return				((int)stalker->animation().script_animations().size());
 }
 
-Flags32 CScriptGameObject::get_actor_relation_flags () const
+flags32 CScriptGameObject::get_actor_relation_flags () const
 {
 	CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(&object());
 	THROW(stalker);
@@ -257,7 +257,7 @@ Flags32 CScriptGameObject::get_actor_relation_flags () const
 	return stalker->m_actor_relation_flags;
 }
 
-void CScriptGameObject::set_actor_relation_flags (Flags32 flags)
+void CScriptGameObject::set_actor_relation_flags (flags32 flags)
 {
 	CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(&object());
 	THROW(stalker);

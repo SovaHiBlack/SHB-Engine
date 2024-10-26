@@ -154,7 +154,7 @@ void CLevelGraph::draw_nodes	()
 			// render id
 			if (bHL) {
 				Fvector		T;
-				Fvector4	S;
+				fVector4	S;
 				T.set		(PC); T.y+=0.3f;
 				Device.mFullTransform.transform	(S,T);
 				if (S.z < 0 || S.z < 0)												continue;

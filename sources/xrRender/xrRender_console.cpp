@@ -46,7 +46,7 @@ s32			ps_r__tf_Anisotropic		= 4		;
 f32		ps_r1_ssaLOD_A				= 64.0f	;
 f32		ps_r1_ssaLOD_B				= 48.0f	;
 f32		ps_r1_tf_Mipbias			= 0.0f	;
-Flags32		ps_r1_flags					= { R1FLAG_DLIGHTS };		// r1-only
+flags32		ps_r1_flags					= { R1FLAG_DLIGHTS };		// r1-only
 f32		ps_r1_lmodel_lerp			= 0.1f	;
 f32		ps_r1_dlights_clip			= 30.0f	;
 f32		ps_r1_pps_u					= 0.0f	;
@@ -61,7 +61,7 @@ f32		ps_r2_ssaLOD_B				= 32.0f	;
 f32		ps_r2_tf_Mipbias			= 0.0f	;
 
 // R2-specific
-Flags32		ps_r2_ls_flags				= { R2FLAG_SUN | R2FLAG_SUN_IGNORE_PORTALS | R2FLAG_EXP_DONT_TEST_UNSHADOWED | R2FLAG_USE_NVSTENCIL | R2FLAG_EXP_SPLIT_SCENE | R2FLAG_EXP_MT_CALC};	// r2-only
+flags32		ps_r2_ls_flags				= { R2FLAG_SUN | R2FLAG_SUN_IGNORE_PORTALS | R2FLAG_EXP_DONT_TEST_UNSHADOWED | R2FLAG_USE_NVSTENCIL | R2FLAG_EXP_SPLIT_SCENE | R2FLAG_EXP_MT_CALC};	// r2-only
 f32		ps_r2_df_parallax_h			= 0.02f;
 f32		ps_r2_df_parallax_range		= 75.0f;
 f32		ps_r2_tonemap_middlegray	= 0.25f;			// r2-only

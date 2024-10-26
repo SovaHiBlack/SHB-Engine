@@ -8,27 +8,32 @@ public:
 	typedef _cylinder<T>Self;
 	typedef Self& SelfRef;
 	typedef const Self& SelfCRef;
-public:
+
 	_vector3<T>	m_center;
 	_vector3<T>	m_direction;
 	T			m_height;
 	T			m_radius;
-public:
-	IC SelfRef	invalidate()
+
+	IC SelfRef	invalidate( )
 	{
-		m_center.set(0, 0, 0); m_direction.set(0, 0, 0); m_height = 0; m_radius = 0; return *this;
+		m_center.set(0, 0, 0);
+		m_direction.set(0, 0, 0);
+		m_height = 0;
+		m_radius = 0;
+		return *this;
 	}
-	IC int		intersect(const _vector3<T>& start, const _vector3<T>& dir, T afT[2]) const
+	IC s32		intersect(const _vector3<T>& start, const _vector3<T>& dir, T afT[2]) const
 	{
 		T fEpsilon = 1e-12f;
 
 		// set up quadratic Q(t) = a*t^2 + 2*b*t + c
 		_vector3<T> kU, kV, kW = m_direction;
 		_vector3<T>::generate_orthonormal_basis(kW, kU, kV);
-		_vector3<T> kD; kD.set(kU.dotproduct(dir), kV.dotproduct(dir), kW.dotproduct(dir));
+		_vector3<T> kD;
+		kD.set(kU.dotproduct(dir), kV.dotproduct(dir), kW.dotproduct(dir));
 
 #ifdef DEBUG
-		if (kD.square_magnitude() <= std::numeric_limits<T>::min())
+		if (kD.square_magnitude( ) <= std::numeric_limits<T>::min( ))
 		{
 			Msg("dir :%f,%f,%f", dir.x, dir.y, dir.z);
 			Msg("kU :%f,%f,%f", kU.x, kU.y, kU.z);
@@ -38,10 +43,12 @@ public:
 		}
 #endif // DEBUG
 
-		T fDLength = kD.normalize_magn();
+		T fDLength = kD.normalize_magn( );
 		T fInvDLength = 1.0f / fDLength;
-		_vector3<T> kDiff; kDiff.sub(start, m_center);
-		_vector3<T> kP; kP.set(kU.dotproduct(kDiff), kV.dotproduct(kDiff), kW.dotproduct(kDiff));
+		_vector3<T> kDiff;
+		kDiff.sub(start, m_center);
+		_vector3<T> kP;
+		kP.set(kU.dotproduct(kDiff), kV.dotproduct(kDiff), kW.dotproduct(kDiff));
 		T fHalfHeight = 0.5f * m_height;
 		T fRadiusSqr = m_radius * m_radius;
 
@@ -97,19 +104,23 @@ public:
 		}
 
 		// test plane intersections first
-		int iQuantity = 0;
+		s32 iQuantity = 0;
 		fInv = 1.0f / kD.z;
 		fT0 = (+fHalfHeight - kP.z) * fInv;
 		fTmp0 = kP.x + fT0 * kD.x;
 		fTmp1 = kP.y + fT0 * kD.y;
 		if (fTmp0 * fTmp0 + fTmp1 * fTmp1 <= fRadiusSqr)
+		{
 			afT[iQuantity++] = fT0 * fInvDLength;
+		}
 
 		fT1 = (-fHalfHeight - kP.z) * fInv;
 		fTmp0 = kP.x + fT1 * kD.x;
 		fTmp1 = kP.y + fT1 * kD.y;
 		if (fTmp0 * fTmp0 + fTmp1 * fTmp1 <= fRadiusSqr)
+		{
 			afT[iQuantity++] = fT1 * fInvDLength;
+		}
 
 		if (iQuantity == 2)
 		{
@@ -140,12 +151,16 @@ public:
 			if (fT0 <= fT1)
 			{
 				if (fT0 <= fT && fT <= fT1)
+				{
 					afT[iQuantity++] = fT * fInvDLength;
+				}
 			}
 			else
 			{
 				if (fT1 <= fT && fT <= fT0)
+				{
 					afT[iQuantity++] = fT * fInvDLength;
+				}
 			}
 
 			if (iQuantity == 2)
@@ -159,12 +174,16 @@ public:
 			if (fT0 <= fT1)
 			{
 				if (fT0 <= fT && fT <= fT1)
+				{
 					afT[iQuantity++] = fT * fInvDLength;
+				}
 			}
 			else
 			{
 				if (fT1 <= fT && fT <= fT0)
+				{
 					afT[iQuantity++] = fT * fInvDLength;
+				}
 			}
 		}
 		else
@@ -173,12 +192,16 @@ public:
 			if (fT0 <= fT1)
 			{
 				if (fT0 <= fT && fT <= fT1)
+				{
 					afT[iQuantity++] = fT * fInvDLength;
+				}
 			}
 			else
 			{
 				if (fT1 <= fT && fT <= fT0)
+				{
 					afT[iQuantity++] = fT * fInvDLength;
+				}
 			}
 		}
 
@@ -194,37 +217,43 @@ public:
 	IC ERP_Result	intersect(const _vector3<T>& start, const _vector3<T>& dir, T& dist) const
 	{
 		T				afT[2];
-		int cnt;
+		s32 cnt;
 		if (0 != (cnt = intersect(start, dir, afT)))
 		{
 			bool		o_inside = false;
 			bool		b_result = false;
-			for (int k = 0; k < cnt; k++)
+			for (s32 k = 0; k < cnt; k++)
 			{
-				if (afT[k] < 0.f)
+				if (afT[k] < 0.0f)
 				{
-					if (cnt == 2)o_inside = true;	continue;
+					if (cnt == 2)
+					{
+						o_inside = true;
+					}
+
+					continue;
 				}
+
 				if (afT[k] < dist)
 				{
-					dist = afT[k];		b_result = true;
+					dist = afT[k];
+					b_result = true;
 				}
 			}
-			return		b_result ? (o_inside ? rpOriginInside : rpOriginOutside) : rpNone;
+
+			return (b_result ? (o_inside ? rpOriginInside : rpOriginOutside) : rpNone);
 		}
 		else
 		{
-			return		rpNone;
+			return rpNone;
 		}
 	}
-	//----------------------------------------------------------------------------
 };
 
-typedef _cylinder<f32>	Fcylinder;
-typedef _cylinder<double>	Dcylinder;
+using fCylinder = _cylinder<f32>;
 
 template <class T>
 BOOL	_valid(const _cylinder<T>& c)
 {
-	return _valid(c.m_center) && _valid(c.m_direction) && _valid(c.m_height) && _valid(c.m_radius);
+	return (_valid(c.m_center) && _valid(c.m_direction) && _valid(c.m_height) && _valid(c.m_radius));
 }

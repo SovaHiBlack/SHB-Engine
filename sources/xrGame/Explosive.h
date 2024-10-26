@@ -121,7 +121,7 @@ protected:
 		flReadyToExplode		=1<<2	,
 		flExploded				=1<<3	
 	};
-	Flags8						m_explosion_flags;
+	flags8						m_explosion_flags;
 	///////////////////////////////////////////////
 	//Должен ли объект быть скрыт после взрыва: true - для всех кроме дымовой гранаты
 	BOOL						m_bHideInExplosion;
@@ -146,7 +146,7 @@ protected:
 	
 	//подсветка взрыва
 	ref_light					m_pLight;
-	Fcolor						m_LightColor;
+	fColor						m_LightColor;
 	f32						m_fLightRange;
 	f32						m_fLightTime;
 	

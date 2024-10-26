@@ -359,7 +359,7 @@ void CODEGeom::destroy()
 	m_geom_transform=NULL;
 }
 
-CBoxGeom::CBoxGeom(const Fobb& box)
+CBoxGeom::CBoxGeom(const fObb& box)
 {
 	m_box=box;
 }
@@ -572,7 +572,7 @@ void CSphereGeom::set_position(const Fvector& ref_point)
 	dGeomSetPosition(geom(),local_position[0],local_position[1],local_position[2]);
 }
 
-CCylinderGeom::CCylinderGeom(const Fcylinder& cyl)
+CCylinderGeom::CCylinderGeom(const fCylinder& cyl)
 {
 	m_cylinder=cyl;
 }

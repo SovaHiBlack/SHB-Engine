@@ -326,7 +326,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 Fvector3		wform	(Fmatrix& m, Fvector3& v)
 {
-	Fvector4	r;
+	fVector4	r;
 	r.x			= v.x*m._11 + v.y*m._21 + v.z*m._31 + m._41;
 	r.y			= v.x*m._12 + v.y*m._22 + v.z*m._32 + m._42;
 	r.z			= v.x*m._13 + v.y*m._23 + v.z*m._33 + m._43;

@@ -24,7 +24,7 @@ public:
 		flPositionRigid		= (1<<1),
 		flDirectionRigid	= (1<<2),
 	};
-	Flags32			m_Flags;
+	flags32			m_Flags;
 
 	ECameraStyle	style;
 	fVector2		lim_yaw;

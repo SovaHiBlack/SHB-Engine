@@ -71,7 +71,7 @@ namespace PS
 			dfCullCCW		= (1<<23),
 		};
 		shared_str		  	m_Name;
-		Flags32				m_Flags;
+		flags32				m_Flags;
 	// texture
 		shared_str		  	m_ShaderName;
 		shared_str		  	m_TextureName;

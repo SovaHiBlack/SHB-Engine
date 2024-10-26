@@ -11,7 +11,7 @@ class CMonsterEnemyManager {
 	u32					vertex;
 	u32					time_last_seen;
 
-	Flags32				flags;
+	flags32				flags;
 	bool				forced;
 
 	bool				expediency;
@@ -48,7 +48,7 @@ public:
 	u32					get_enemy_vertex			() {return vertex;}
 	TTime				get_enemy_time_last_seen	() {return time_last_seen;}
 
-	Flags32				&get_flags					() {return flags;}
+	flags32&			get_flags					() {return flags;}
 	
 	bool				see_enemy_now				();
 	bool				enemy_see_me_now			();
