@@ -347,9 +347,9 @@ bool CScriptEntity::bfAssignAnimation(CScriptEntityAction *tpEntityAction)
 	return							(true);
 }
 
-const Fmatrix CScriptEntity::GetUpdatedMatrix(shared_str caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset)
+const fMatrix4x4 CScriptEntity::GetUpdatedMatrix(shared_str caBoneName, const Fvector &tPositionOffset, const Fvector &tAngleOffset)
 {
-	Fmatrix			l_tMatrix;
+	fMatrix4x4			l_tMatrix;
 
 	l_tMatrix.setHPB(VPUSH(tAngleOffset));
 	l_tMatrix.c		= tPositionOffset;
@@ -375,7 +375,7 @@ bool CScriptEntity::bfAssignSound(CScriptEntityAction *tpEntityAction)
 #ifdef _DEBUG
 //				Msg									("%6d Starting sound %s",Device.dwTimeGlobal,*l_tSoundAction.m_caSoundToPlay);
 #endif
-				const Fmatrix	&l_tMatrix = GetUpdatedMatrix(l_tSoundAction.m_caBoneName,l_tSoundAction.m_tSoundPosition,l_tSoundAction.m_tSoundAngles);
+				const fMatrix4x4& l_tMatrix = GetUpdatedMatrix(l_tSoundAction.m_caBoneName,l_tSoundAction.m_tSoundPosition,l_tSoundAction.m_tSoundAngles);
 				m_current_sound->play_at_pos(m_object,l_tMatrix.c,l_tSoundAction.m_bLooped ? sm_Looped : 0);
 				l_tSoundAction.m_bStartedToPlay = true;
 			}
@@ -402,7 +402,7 @@ bool CScriptEntity::bfAssignParticles(CScriptEntityAction *tpEntityAction)
 	if (l_tParticleAction.m_tpParticleSystem) {
 		if (true/** !l_tParticleAction.m_tpParticleSystem/**/)
 			if (!l_tParticleAction.m_bStartedToPlay) {
-				const Fmatrix	&l_tMatrix = GetUpdatedMatrix(*l_tParticleAction.m_caBoneName,l_tParticleAction.m_tParticlePosition,l_tParticleAction.m_tParticleAngles);
+				const fMatrix4x4& l_tMatrix = GetUpdatedMatrix(*l_tParticleAction.m_caBoneName,l_tParticleAction.m_tParticlePosition,l_tParticleAction.m_tParticleAngles);
 				Fvector zero_vel={0.f,0.f,0.f};
 				l_tParticleAction.m_tpParticleSystem->UpdateParent(l_tMatrix,zero_vel);
 				l_tParticleAction.m_tpParticleSystem->play_at_pos(l_tMatrix.c);

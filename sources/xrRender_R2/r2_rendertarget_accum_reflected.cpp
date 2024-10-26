@@ -24,13 +24,13 @@ void CRenderTarget::accum_reflected		(light* L)
 	else			RCache.set_CullMode		(CULL_CCW);		// front
 
 	// 2D texgen (texture adjustment matrix)
-	Fmatrix			m_Texgen;
+	fMatrix4x4			m_Texgen;
 	{
 		f32	_w						= f32(Device.dwWidth);
 		f32	_h						= f32(Device.dwHeight);
 		f32	o_w						= (.5f / _w);
 		f32	o_h						= (.5f / _h);
-		Fmatrix			m_TexelAdjust		= 
+		fMatrix4x4			m_TexelAdjust		=
 		{
 			0.5f,				0.0f,				0.0f,			0.0f,
 			0.0f,				-0.5f,				0.0f,			0.0f,

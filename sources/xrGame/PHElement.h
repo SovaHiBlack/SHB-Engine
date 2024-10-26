@@ -41,7 +41,7 @@ class CPHElement	:
 //	dVector3					m_safe_position;			//e					//st
 //	dQuaternion					m_safe_quaternion;
 //	dVector3					m_safe_velocity;			//e					//st
-//	Fmatrix						m_inverse_local_transform;	//e				//bt
+//	fMatrix4x4						m_inverse_local_transform;	//e				//bt
 	dReal						k_w;						//->to shell ??		//st
 	dReal						k_l;						//->to shell ??		//st
 	//ObjectContactCallbackFun*	temp_for_push_out;			//->to shell ??		//aux
@@ -84,7 +84,7 @@ public:
 	virtual	void						add_Box									(const fObb&		V);															//aux
 	virtual	void						add_Cylinder							(const fCylinder&	V);															//aux
 	virtual void						add_Shape								(const SBoneShape& shape);														//aux
-	virtual void						add_Shape								(const SBoneShape& shape,const Fmatrix& offset);								//aux
+	virtual void						add_Shape								(const SBoneShape& shape,const fMatrix4x4& offset);								//aux
 	virtual CODEGeom*					last_geom								(){return CPHGeometryOwner::last_geom();}										//aux
 	virtual bool						has_geoms								(){return CPHGeometryOwner::has_geoms();}
 	virtual void						set_ContactCallback						(ContactCallbackFun* callback);													//aux (may not be)
@@ -119,12 +119,12 @@ public:																																				//
 	virtual void						setDensityMC							(f32 M,const Fvector& mass_center);											//aux
 	virtual void						setInertia								(const dMass& M);																//aux
 	virtual void						addInertia								(const dMass& M);
-	virtual void						add_Mass								(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture=NULL);//aux
+	virtual void						add_Mass								(const SBoneShape& shape,const fMatrix4x4& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture=NULL);//aux
 	virtual	void						set_BoxMass								(const fObb& box, f32 mass);													//aux
 	virtual void						setMass									(f32 M);																		//aux
 	virtual f32						getMass									(){return m_mass.mass;}															//aux
 	virtual	dMass*						getMassTensor							();	//aux
-			void						ReAdjustMassPositions					(const Fmatrix &shift_pivot, f32 density);										//aux
+			void						ReAdjustMassPositions					(const fMatrix4x4& shift_pivot, f32 density);										//aux
 			void						ResetMass								(f32 density);																//aux
 			void						CutVelocity								(f32 l_limit, f32 a_limit);
 ///////////////////////////////////////////////////PushOut///////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,7 +146,7 @@ public:																																				//
 ////////////////////////////////////////////////Updates///////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			bool						AnimToVel								(f32 dt, f32 l_limit, f32 a_limit );
-			void						BoneGlPos								(Fmatrix &m,CBoneInstance* B);
+			void						BoneGlPos								(fMatrix4x4& m,CBoneInstance* B);
 			void						ToBonePos								(CBoneInstance* B);
 
 			void						SetBoneCallbackOverwrite				(bool v);
@@ -199,19 +199,19 @@ public:																																				//
 	virtual	void						net_Export						(NET_Packet& P)				  ;
 ///////////////////////////////////////////////////Position///////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual void						SetTransform					(const Fmatrix& m0);															//
-	virtual void						TransformPosition				(const Fmatrix &form);
+	virtual void						SetTransform					(const fMatrix4x4& m0);															//
+	virtual void						TransformPosition				(const fMatrix4x4& form);
 	virtual void						getQuaternion					(Fquaternion& quaternion);														//
 	virtual void						setQuaternion					(const Fquaternion& quaternion);												//
 	virtual void						SetGlobalPositionDynamic		(const Fvector& position);														//
 	virtual void						GetGlobalPositionDynamic		(Fvector* v);																	//
-	virtual void						cv2obj_Xfrom					(const Fquaternion& q,const Fvector& pos, Fmatrix& xform);						//
-	virtual void						cv2bone_Xfrom					(const Fquaternion& q,const Fvector& pos, Fmatrix& xform);						//
-	virtual void						InterpolateGlobalTransform		(Fmatrix* m);																	//called UpdateCL vis influent
+	virtual void						cv2obj_Xfrom					(const Fquaternion& q,const Fvector& pos, fMatrix4x4& xform);						//
+	virtual void						cv2bone_Xfrom					(const Fquaternion& q,const Fvector& pos, fMatrix4x4& xform);						//
+	virtual void						InterpolateGlobalTransform		(fMatrix4x4* m);																	//called UpdateCL vis influent
 	virtual void						InterpolateGlobalPosition		(Fvector* v);																	//aux
-	virtual void						GetGlobalTransformDynamic		(Fmatrix* m);																	//aux
-IC			void						InverceLocalForm				(Fmatrix&)	;
-IC			void						MulB43InverceLocalForm			(Fmatrix&)	;
+	virtual void						GetGlobalTransformDynamic		(fMatrix4x4* m);																	//aux
+IC			void						InverceLocalForm				(fMatrix4x4&)	;
+IC			void						MulB43InverceLocalForm			(fMatrix4x4&)	;
 
 ////////////////////////////////////////////////////Structure/////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -233,22 +233,22 @@ IC			void						MulB43InverceLocalForm			(Fmatrix&)	;
 			void						PassEndGeoms							(u16 from,u16 to,CPHElement* dest);										//aux
 ////////////////////////////////////////////////////Build/Activate////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual void						Activate				(const Fmatrix& m0, f32 dt01, const Fmatrix& m2,bool disable=false);					//some isues not to be aux
-	virtual void						Activate				(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);//some isues not to be aux
+	virtual void						Activate				(const fMatrix4x4& m0, f32 dt01, const fMatrix4x4& m2,bool disable=false);					//some isues not to be aux
+	virtual void						Activate				(const fMatrix4x4& transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);//some isues not to be aux
 	virtual void						Activate				(bool disable=false);									//some isues not to be aux
-	virtual void						Activate				(const Fmatrix& start_from, bool disable=false);										//some isues not to be aux
+	virtual void						Activate				(const fMatrix4x4& start_from, bool disable=false);										//some isues not to be aux
 	virtual void						Deactivate				();																						//aux																																			//aux
 			void						CreateSimulBase			();//create body & cpace																//aux
-			void						ReInitDynamics			(const Fmatrix &shift_pivot, f32 density);												//set body & geom positions					
+			void						ReInitDynamics			(const fMatrix4x4& shift_pivot, f32 density);												//set body & geom positions					
 			void						PresetActive			();																						//
 			void						build									();																		//aux
 			void						build									(bool disable);															//aux
 			void						destroy									();																		//called anywhere ph state influent
 			void						Start									();																		//aux
 			void						RunSimulation							();																		//called anywhere ph state influent
-			void						RunSimulation							(const Fmatrix& start_from);											//
+			void						RunSimulation							(const fMatrix4x4& start_from);											//
 			void						ClearDestroyInfo						();
-			void						GetAnimBonePos							(Fmatrix &bp);
+			void						GetAnimBonePos							(fMatrix4x4& bp);
 	//		bool						CheckBreakConsistent					()
 	CPHElement										();																						//aux
 	virtual ~CPHElement								();																						//aux

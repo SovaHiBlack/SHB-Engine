@@ -170,7 +170,7 @@ void DBG_DrawRotation(f32 ang0, f32 ang1, const fMatrix4x4& m, const Fvector &l,
 	fMatrix4x4 mm;
 	rotate<ax>( mm, ang0 );
 	mm.mulA_43( m );
-	Fmatrix r;
+	fMatrix4x4 r;
 	rotate<ax>( r, ( ang1 - ang0 ) / ftess );
 	for( u32 i = 0; tessel > i; ++i )
 	{
@@ -184,17 +184,17 @@ void DBG_DrawRotation(f32 ang0, f32 ang1, const fMatrix4x4& m, const Fvector &l,
 	}
 }
 
-void	DBG_DrawRotationX( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel )
+void	DBG_DrawRotationX( const fMatrix4x4& m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel )
 {
 	DBG_DrawRotation<0>( ang0 , ang1, m, Fvector().set(0,0,1) ,size, ac, solid, tessel );
 }
 
-void	DBG_DrawRotationY( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel  )
+void	DBG_DrawRotationY( const fMatrix4x4& m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel  )
 {
 	DBG_DrawRotation<1>( ang0 , ang1, m, Fvector().set(1,0,0),size, ac, solid, tessel );
 }
 
-void	DBG_DrawRotationZ( const Fmatrix &m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel  )
+void	DBG_DrawRotationZ( const fMatrix4x4& m, f32 ang0, f32 ang1, f32 size, u32 ac, bool solid, u32 tessel  )
 {
 	DBG_DrawRotation<2>( ang0 , ang1, m, Fvector().set(0,1,0), size, ac, solid, tessel );
 }
@@ -220,8 +220,10 @@ void DBG_DrawAABB(const Fvector& center,const Fvector& AABB,u32 c)
 
 struct SPHDBGDrawOBB: public SPHDBGDrawAbsract
 {
-	Fmatrix m;Fvector h;u32 c;
-	SPHDBGDrawOBB(const Fmatrix am,const Fvector ah, u32 ac)
+	fMatrix4x4 m;
+	Fvector h;
+	u32 c;
+	SPHDBGDrawOBB(const fMatrix4x4 am,const Fvector ah, u32 ac)
 	{
 		m.set(am);h.set(ah);c=ac;
 	}
@@ -231,7 +233,7 @@ struct SPHDBGDrawOBB: public SPHDBGDrawAbsract
 	}
 };
 
-void DBG_DrawOBB(const Fmatrix& m,const Fvector h,u32 c)
+void DBG_DrawOBB(const fMatrix4x4& m,const Fvector h,u32 c)
 {
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawOBB>(m,h,c));
 }
@@ -246,7 +248,10 @@ struct SPHDBGDrawPoint :public SPHDBGDrawAbsract
 	virtual void render()
 	{
 		//Level().debug_renderer().draw_aabb(p,size,size,size,c);
-		Fmatrix m;m.identity();m.scale(size,size,size);m.c.set(p);
+		fMatrix4x4 m;
+		m.identity();
+		m.scale(size,size,size);
+		m.c.set(p);
 		Level().debug_renderer().draw_ellipse(m,c);
 	}
 };

@@ -2,7 +2,7 @@
 
 #include "r_backend_xform.h"
 
-void	R_xforms::set_W			(const Fmatrix& m)
+void	R_xforms::set_W			(const fMatrix4x4& m)
 {
 	m_w.set			(m);
 	m_wv.mul_43		(m_v,m_w);
@@ -12,7 +12,7 @@ void	R_xforms::set_W			(const Fmatrix& m)
 	if (c_wvp)		RCache.set_c(c_wvp,	m_wvp);
 	RCache.set_xform(D3DTS_WORLD,m);
 }
-void	R_xforms::set_V			(const Fmatrix& m)
+void	R_xforms::set_V			(const fMatrix4x4& m)
 {
 	m_v.set			(m);
 	m_wv.mul_43		(m_v,m_w);
@@ -24,7 +24,7 @@ void	R_xforms::set_V			(const Fmatrix& m)
 	if (c_wvp)		RCache.set_c(c_wvp,	m_wvp);
 	RCache.set_xform(D3DTS_VIEW,m);
 }
-void	R_xforms::set_P			(const Fmatrix& m)
+void	R_xforms::set_P			(const fMatrix4x4& m)
 {
 	m_p.set			(m);
 	m_vp.mul		(m_p,m_v);

@@ -37,7 +37,7 @@ public:
 //	t_i&					get_array_i		()	{ return c_i;	}
 //	t_b&					get_array_b		()	{ return c_b;	}
 
-	void					set		(R_constant* C, R_constant_load& L, const Fmatrix& A)
+	void					set		(R_constant* C, R_constant_load& L, const fMatrix4x4& A)
 	{
 		VERIFY		(RC_float == C->type);
 		fVector4*	it	= c_f.access	(L.index);
@@ -80,7 +80,7 @@ public:
 		c_f.dirty	(L.index,L.index+1);
 	}
 
-	void					seta	(R_constant* C, R_constant_load& L, u32 e, const Fmatrix& A)
+	void					seta	(R_constant* C, R_constant_load& L, u32 e, const fMatrix4x4& A)
 	{
 		VERIFY		(RC_float == C->type);
 		u32			base;
@@ -141,7 +141,7 @@ public:
 	void					flush_cache	();
 public:
 	// fp, non-array versions
-	ICF void				set		(R_constant* C, const Fmatrix& A)		{
+	ICF void				set		(R_constant* C, const fMatrix4x4& A)		{
 		if (C->destination&1)		{ a_pixel.set	(C,C->ps,A); a_pixel.b_dirty=TRUE;		}
 		if (C->destination&2)		{ a_vertex.set	(C,C->vs,A); a_vertex.b_dirty=TRUE;		}
 	}
@@ -155,7 +155,7 @@ public:
 	}
 
 	// fp, array versions
-	ICF void				seta	(R_constant* C, u32 e, const Fmatrix& A)		{
+	ICF void				seta	(R_constant* C, u32 e, const fMatrix4x4& A)		{
 		if (C->destination&1)		{ a_pixel.seta	(C,C->ps,e,A); a_pixel.b_dirty=TRUE;	}
 		if (C->destination&2)		{ a_vertex.seta	(C,C->vs,e,A); a_vertex.b_dirty=TRUE;	}
 	}

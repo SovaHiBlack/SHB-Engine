@@ -166,9 +166,9 @@ void CSoundRender_Core::set_geometry_som(IReader* I)
 	VERIFY2			(geom,"Corrupted SOM file");
 	// Load tris and merge them
 	struct SOM_poly{
-		Fvector3	v1;
-		Fvector3	v2;
-		Fvector3	v3;
+		fVector3	v1;
+		fVector3	v2;
+		fVector3	v3;
 		u32			b2sided;
 		f32		occ;
 	};

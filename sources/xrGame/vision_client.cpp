@@ -45,7 +45,9 @@ void vision_client::eye_pp_s01					()
 	f32						field_of_view, aspect_ratio, near_plane, far_plane;
 	camera						(c, k, j, field_of_view, aspect_ratio, near_plane, far_plane);
 
-	Fmatrix						mProject,mFull,mView;
+	fMatrix4x4					mProject;
+	fMatrix4x4					mFull;
+	fMatrix4x4					mView;
 	mView.build_camera_dir		(c,k,j);
 	m_position					= c;
 	mProject.build_projection	(field_of_view,aspect_ratio,near_plane,far_plane);

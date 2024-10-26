@@ -21,7 +21,8 @@ void CWeaponMounted::BoneCallbackX(CBoneInstance *B)
 	CWeaponMounted	*P = static_cast<CWeaponMounted*>(B->Callback_Param);
 
 	if (P->Owner()){
-		Fmatrix rX;		rX.rotateX		(P->camera->pitch+P->m_dAngle.y);
+		fMatrix4x4 rX;
+		rX.rotateX		(P->camera->pitch+P->m_dAngle.y);
 		B->mTransform.mulB_43(rX);
 	}
 }
@@ -31,7 +32,8 @@ void CWeaponMounted::BoneCallbackY(CBoneInstance *B)
 	CWeaponMounted	*P = static_cast<CWeaponMounted*>(B->Callback_Param);
 
 	if (P->Owner()){
-		Fmatrix rY;		rY.rotateY		(P->camera->yaw+P->m_dAngle.x);
+		fMatrix4x4 rY;
+		rY.rotateY		(P->camera->yaw+P->m_dAngle.x);
 		B->mTransform.mulB_43(rY);
 	}
 }
@@ -220,7 +222,7 @@ void	CWeaponMounted::cam_Update			(f32 dt, f32 fov)
 	CKinematics* K					= smart_cast<CKinematics*>(Visual());
 	K->CalculateBones_Invalidate	();
 	K->CalculateBones				();
-	const Fmatrix& C				= K->LL_GetTransform(camera_bone);
+	const fMatrix4x4& C				= K->LL_GetTransform(camera_bone);
 	XFORM().transform_tiny			(P,C.c);
 
 	if(OwnerActor()){
@@ -250,10 +252,11 @@ bool	CWeaponMounted::attach_Actor		(CGameObject* actor)
 	CBoneInstance& biY		= smart_cast<CKinematics*>(Visual())->LL_GetBoneInstance(rotate_y_bone);	
 	biY.set_callback		(bctCustom,BoneCallbackY,this);
 	// set actor to mounted position
-	const Fmatrix& A	= K->LL_GetTransform(actor_bone);
+	const fMatrix4x4& A	= K->LL_GetTransform(actor_bone);
 	Fvector ap;
 	XFORM().transform_tiny	(ap,A.c);
-	Fmatrix AP; AP.translate(ap);
+	fMatrix4x4 AP;
+	AP.translate(ap);
 	if(OwnerActor()) OwnerActor()->SetPhPosition	(AP);
 	processing_activate		();
 	return true;
@@ -348,7 +351,7 @@ void CWeaponMounted::UpdateFire()
 	}
 }
 
-const Fmatrix&	 CWeaponMounted::get_ParticlesXFORM	()
+const fMatrix4x4&	 CWeaponMounted::get_ParticlesXFORM	()
 {
 	return fire_bone_xform;
 }

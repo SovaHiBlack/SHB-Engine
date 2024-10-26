@@ -10,7 +10,7 @@
 
 #include "script_export_space.h"
 
-typedef class_exporter<Fmatrix> CScriptFmatrix;
+typedef class_exporter<fMatrix4x4> CScriptFmatrix;
 
 add_to_type_list(CScriptFmatrix)
 #undef script_type_list

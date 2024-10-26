@@ -12,26 +12,26 @@ IC void		R_xforms::set_c_wv			(R_constant* C)		{	c_wv	= C;	RCache.set_c(C,m_wv);
 IC void		R_xforms::set_c_vp			(R_constant* C)		{	c_vp	= C;	RCache.set_c(C,m_vp);	};
 IC void		R_xforms::set_c_wvp			(R_constant* C)		{	c_wvp	= C;	RCache.set_c(C,m_wvp);	};
 
-IC void		CBackend::set_xform			(u32 ID, const Fmatrix& M)
+IC void		CBackend::set_xform			(u32 ID, const fMatrix4x4& M)
 {
 	stat.xforms			++;
 	CHK_DX				(HW.pDevice->SetTransform((D3DTRANSFORMSTATETYPE)ID,(D3DMATRIX*)&M));
 }
-IC	void	CBackend::set_xform_world	(const Fmatrix& M)
+IC	void	CBackend::set_xform_world	(const fMatrix4x4& M)
 { 
 	xforms.set_W(M);	
 }
-IC	void	CBackend::set_xform_view	(const Fmatrix& M)
+IC	void	CBackend::set_xform_view	(const fMatrix4x4& M)
 { 
 	xforms.set_V(M);	
 }
-IC	void	CBackend::set_xform_project	(const Fmatrix& M)
+IC	void	CBackend::set_xform_project	(const fMatrix4x4& M)
 { 
 	xforms.set_P(M);	
 }
-IC	const Fmatrix&	CBackend::get_xform_world	()	{ return xforms.get_W();	}
-IC	const Fmatrix&	CBackend::get_xform_view	()	{ return xforms.get_V();	}
-IC	const Fmatrix&	CBackend::get_xform_project	()	{ return xforms.get_P();	}
+IC	const fMatrix4x4&	CBackend::get_xform_world	()	{ return xforms.get_W();	}
+IC	const fMatrix4x4&	CBackend::get_xform_view	()	{ return xforms.get_V();	}
+IC	const fMatrix4x4&	CBackend::get_xform_project	()	{ return xforms.get_P();	}
 
 IC void CBackend::set_RT				(IDirect3DSurface9* RT, u32 ID)
 {

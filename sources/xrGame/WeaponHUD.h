@@ -12,7 +12,8 @@ public:
 	Fvector				m_fp2_offset;
 	Fvector				m_sp_offset;
 
-	Fmatrix				m_offset;
+	fMatrix4x4				m_offset;
+
 public:
 	virtual				~weapon_hud_value		();
 	BOOL				load					(const shared_str& section, CHudItem* owner);
@@ -48,7 +49,7 @@ class CWeaponHUD
 	bool				m_bHidden;
 	bool				m_bVisible;
 
-	Fmatrix				m_Transform;
+	fMatrix4x4				m_Transform;
 
 	//shared HUD data
 	shared_weapon_hud	m_shared_data;
@@ -79,7 +80,7 @@ public:
 	void				Init			();
 
 	IC IRender_Visual*	Visual			()	{ return m_shared_data.animations();			}
-	IC Fmatrix&			Transform		()	{ return m_Transform;							}
+	IC fMatrix4x4&			Transform		()	{ return m_Transform;							}
 
 	int					FireBone		()	{return m_shared_data.get_value()->m_fire_bone;	}
 	const Fvector&		FirePoint		()	{return m_shared_data.get_value()->m_fp_offset;	}
@@ -98,7 +99,7 @@ public:
 	void				animDisplay		(MotionID M, BOOL bMixIn);
 	MotionID			animGet			(pcstr name);
 	
-	void				UpdatePosition	(const Fmatrix& transform);
+	void				UpdatePosition	(const fMatrix4x4& transform);
 
 	bool				IsHidden		() {return m_bHidden;}
 	void				Hide			() {m_bHidden = true;}

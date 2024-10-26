@@ -16,11 +16,11 @@ public:
 	crashhandler* get_crashhandler()
 	{
 		return handler;
-	};
+	}
 	void			set_crashhandler(crashhandler* _handler)
 	{
 		handler = _handler;
-	};
+	}
 
 	on_dialog* get_on_dialog()
 	{

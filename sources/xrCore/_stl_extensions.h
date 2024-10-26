@@ -19,13 +19,12 @@ public:
 	typedef const T& const_reference;
 	typedef T			value_type;
 
-public:
 	template<class _Other>
 	struct rebind
 	{
 		typedef xalloc<_Other> other;
 	};
-public:
+
 	pointer					address(reference _Val) const
 	{
 		return (&_Val);
@@ -34,12 +33,12 @@ public:
 	{
 		return (&_Val);
 	}
-	xalloc()
-	{}
+	xalloc( )
+	{ }
 	xalloc(const xalloc<T>&)
-	{}
+	{ }
 	template<class _Other>							xalloc(const xalloc<_Other>&)
-	{}
+	{ }
 	template<class _Other>	xalloc<T>& operator=		(const xalloc<_Other>&)
 	{
 		return (*this);
@@ -68,7 +67,7 @@ public:
 	{
 		std::_Destroy(p);
 	}
-	size_type				max_size() const
+	size_type				max_size( ) const
 	{
 		size_type _Count = (size_type)(-1) / sizeof(T);
 		return (0 < _Count ? _Count : 1);
@@ -94,29 +93,29 @@ struct xr_allocator
 	}
 };
 
-template<class _Ty, class _Other>	inline	bool operator==(const xalloc<_Ty>&, const xalloc<_Other>&)
+template<class _Ty, class _Other>	IC	bool operator==(const xalloc<_Ty>&, const xalloc<_Other>&)
 {
 	return (true);
 }
-template<class _Ty, class _Other>	inline	bool operator!=(const xalloc<_Ty>&, const xalloc<_Other>&)
+template<class _Ty, class _Other>	IC	bool operator!=(const xalloc<_Ty>&, const xalloc<_Other>&)
 {
 	return (false);
 }
 
 namespace std
 {
-	template<class _Tp1, class _Tp2>	inline	xalloc<_Tp2>& __stl_alloc_rebind(xalloc<_Tp1>& __a, const _Tp2*)
+	template<class _Tp1, class _Tp2>	IC	xalloc<_Tp2>& __stl_alloc_rebind(xalloc<_Tp1>& __a, const _Tp2*)
 	{
 		return (xalloc<_Tp2>&)(__a);
 	}
-	template<class _Tp1, class _Tp2>	inline	xalloc<_Tp2>	__stl_alloc_create(xalloc<_Tp1>&, const _Tp2*)
+	template<class _Tp1, class _Tp2>	IC	xalloc<_Tp2> __stl_alloc_create(xalloc<_Tp1>&, const _Tp2*)
 	{
-		return xalloc<_Tp2>();
+		return xalloc<_Tp2>( );
 	}
 };
 
 // string(char)
-typedef		std::basic_string<char, std::char_traits<char>, xalloc<char> >	xr_string;
+typedef std::basic_string<char, std::char_traits<char>, xalloc<char>> xr_string;
 
 // vector
 template	<typename T, typename allocator = xalloc<T> >
@@ -129,74 +128,80 @@ public:
 	typedef allocator					allocator_type;
 
 public:
-	xr_vector() : inherited()
-	{}
+	xr_vector( ) : inherited( )
+	{ }
 	xr_vector(size_t _count, const T& _value) : inherited(_count, _value)
-	{}
+	{ }
 	explicit xr_vector(size_t _count) : inherited(_count)
-	{}
-	u32		size() const
+	{ }
+	u32		size( ) const
 	{
-		return (u32)inherited::size();
+		return (u32)inherited::size( );
 	}
 
-	void	clear_and_free()
+	void	clear_and_free( )
 	{
-		inherited::clear();
+		inherited::clear( );
 	}
-	void	clear_not_free()
+	void	clear_not_free( )
 	{
-		erase(begin(), end());
+		erase(begin( ), end( ));
 	}
-	void	clear_and_reserve()
+	void	clear_and_reserve( )
 	{
-		if (capacity() <= (size() + size() / 4)) clear_not_free(); else
+		if (capacity( ) <= (size( ) + size( ) / 4))
 		{
-			u32 old = size(); clear_and_free(); reserve(old);
+			clear_not_free( );
+		}
+		else
+		{
+			u32 old = size( );
+			clear_and_free( );
+			reserve(old);
 		}
 	}
 
 #ifdef M_DONTDEFERCLEAR_EXT
-	void	clear()
+	void	clear( )
 	{
-		clear_and_free();
+		clear_and_free( );
 	}
 #else
-	void	clear()
+	void	clear( )
 	{
-		clear_not_free();
+		clear_not_free( );
 	}
 #endif
 
 	const_reference operator[]	(size_type _Pos) const
 	{
 		{
-			VERIFY(_Pos < size());
-		} return (*(begin() + _Pos));
+			VERIFY(_Pos < size( ));
+		} return (*(begin( ) + _Pos));
 	}
 	reference operator[]		(size_type _Pos)
 	{
 		{
-			VERIFY(_Pos < size());
-		} return (*(begin() + _Pos));
+			VERIFY(_Pos < size( ));
+		} return (*(begin( ) + _Pos));
 	}
 };
 
 // vector<bool>
 template <>
-class xr_vector<bool, xalloc<bool> > : public std::vector<bool, xalloc<bool> >
+class xr_vector<bool, xalloc<bool>> : public std::vector<bool, xalloc<bool>>
 {
 private:
-	typedef std::vector<bool, xalloc<bool> > inherited;
+	typedef std::vector<bool, xalloc<bool>> inherited;
 
 public:
-	u32		size() const
+	u32		size( ) const
 	{
-		return (u32)inherited::size();
+		return (u32)inherited::size( );
 	}
-	void	clear()
+	void	clear( )
 	{
-		erase(begin(), end());
+		erase(begin( ), end( ));
 	}
 };
 
@@ -207,13 +212,13 @@ private:
 	typedef std::vector<bool, allocator> inherited;
 
 public:
-	u32		size() const
+	u32		size( ) const
 	{
-		return (u32)inherited::size();
+		return (u32)inherited::size( );
 	}
-	void	clear()
+	void	clear( )
 	{
-		erase(begin(), end());
+		erase(begin( ), end( ));
 	}
 };
 
@@ -225,9 +230,9 @@ public:
 	typedef typename allocator								allocator_type;
 	typedef typename allocator_type::value_type				value_type;
 	typedef typename allocator_type::size_type				size_type;
-	u32		size() const
+	u32		size( ) const
 	{
-		return (u32)__super::size();
+		return (u32)__super::size( );
 	}
 };
 
@@ -241,33 +246,33 @@ public:
 	typedef typename allocator_type::size_type				size_type;
 
 	//explicit			stack(const allocator_type& _Al = allocator_type()) : c(_Al) {}
-	allocator_type		get_allocator() const
+	allocator_type		get_allocator( ) const
 	{
-		return (c.get_allocator());
+		return c.get_allocator( );
 	}
-	bool				empty() const
+	bool				empty( ) const
 	{
-		return (c.empty());
+		return c.empty( );
 	}
-	u32					size() const
+	u32					size( ) const
 	{
-		return c.size();
+		return c.size( );
 	}
-	value_type& top()
+	value_type& top( )
 	{
-		return (c.back());
+		return c.back( );
 	}
-	const value_type& top() const
+	const value_type& top( ) const
 	{
-		return (c.back());
+		return c.back( );
 	}
 	void				push(const value_type& _X)
 	{
 		c.push_back(_X);
 	}
-	void				pop()
+	void				pop( )
 	{
-		c.pop_back();
+		c.pop_back( );
 	}
 	bool				operator==		(const xr_stack<_Ty, _C>& _X) const
 	{
@@ -300,37 +305,37 @@ protected:
 
 template	<typename T, typename allocator = xalloc<T> >									class	xr_list : public std::list<T, allocator>
 {
-public: u32 size() const
+public: u32 size( ) const
 {
-	return (u32)__super::size();
+	return (u32)__super::size( );
 }
 };
 template	<typename K, class P = std::less<K>, typename allocator = xalloc<K> >				class	xr_set : public std::set<K, P, allocator>
 {
-public: u32 size() const
+public: u32 size( ) const
 {
-	return (u32)__super::size();
+	return (u32)__super::size( );
 }
 };
 template	<typename K, class P = std::less<K>, typename allocator = xalloc<K> >				class	xr_multiset : public std::multiset<K, P, allocator>
 {
-public: u32 size() const
+public: u32 size( ) const
 {
-	return (u32)__super::size();
+	return (u32)__super::size( );
 }
 };
 template	<typename K, class V, class P = std::less<K>, typename allocator = xalloc<std::pair<K, V> > >	class	xr_map : public std::map<K, V, P, allocator>
 {
-public: u32 size() const
+public: u32 size( ) const
 {
-	return (u32)__super::size();
+	return (u32)__super::size( );
 }
 };
 template	<typename K, class V, class P = std::less<K>, typename allocator = xalloc<std::pair<K, V> > >	class	xr_multimap : public std::multimap<K, V, P, allocator>
 {
-public: u32 size() const
+public: u32 size( ) const
 {
-	return (u32)__super::size();
+	return (u32)__super::size( );
 }
 };
 

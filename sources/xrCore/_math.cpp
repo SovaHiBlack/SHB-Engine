@@ -12,7 +12,7 @@
 
 // Initialized on startup
 XRCORE_API	fMatrix4x4			Fidentity;
-XRCORE_API	Dmatrix			Didentity;
+XRCORE_API	dMatrix4x4			Didentity;
 XRCORE_API	CRandom			Random;
 
 u16 getFPUsw()
@@ -89,7 +89,6 @@ namespace FPU
 		::Random.seed(u32(CPU::GetCLK() % (1i64 << 32i64)));
 	}
 };
-
 
 namespace CPU
 {
@@ -180,7 +179,7 @@ namespace CPU
 };
 
 //------------------------------------------------------------------------------------
-void _initialize_cpu(void)
+void _initialize_cpu( )
 {
 	Msg("* Detected CPU: %s %s, F%d/M%d/S%d, %.2f mhz, %d-clk 'rdtsc'",
 		CPU::ID.v_name, CPU::ID.model_name,
@@ -196,7 +195,7 @@ void _initialize_cpu(void)
 		CPU::ID.feature &= ~_CPU_FEATURE_3DNOW;
 		CPU::ID.feature &= ~_CPU_FEATURE_SSE;
 		CPU::ID.feature &= ~_CPU_FEATURE_SSE2;
-	};
+	}
 
 	string128	features;	strcpy_s(features, sizeof(features), "RDTSC");
 	if (CPU::ID.feature & _CPU_FEATURE_MMX)	strcat(features, ", MMX");

@@ -27,7 +27,7 @@ public:
 		void						add_Box									(const fObb&		V);															//aux
 		void						add_Cylinder							(const fCylinder&	V);															//aux
 		void						add_Shape								(const SBoneShape& shape);														//aux
-		void						add_Shape								(const SBoneShape& shape,const Fmatrix& offset);								//aux
+		void						add_Shape								(const SBoneShape& shape,const fMatrix4x4& offset);								//aux
 		CODEGeom*					last_geom								(){if(m_geoms.empty())return NULL; return m_geoms.back();}						//aux
 		bool						has_geoms								(){return !m_geoms.empty();}
 		void						set_ContactCallback						(ContactCallbackFun* callback);													//aux (may not be)
@@ -56,10 +56,10 @@ f32						get_volume								()		{calc_volume_data();return m_volume;};									//
 		void						get_Extensions							(const Fvector& axis, f32 center_prg, f32& lo_ext, f32& hi_ext);			//aux
 		void						get_MaxAreaDir							(Fvector& dir);
 		f32						getRadius								();
-		void						setStaticForm							(const Fmatrix& form);
+		void						setStaticForm							(const fMatrix4x4& form);
 		void						setPosition								(const Fvector& pos);
 		void						clear_cashed_tries						();
-		void						get_mc_vs_transform						(Fvector& mc,const Fmatrix& m);
+		void						get_mc_vs_transform						(Fvector& mc,const fMatrix4x4& m);
 protected:
 		void						build									();
 		void						CreateSimulBase							();

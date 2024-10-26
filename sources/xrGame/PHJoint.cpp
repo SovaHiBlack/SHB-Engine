@@ -47,7 +47,8 @@ void CPHJoint::CreateBall()
 {
 	m_joint=dJointCreateBall(0,0);
 	Fvector pos;
-	Fmatrix first_matrix,second_matrix;
+	fMatrix4x4 first_matrix;
+	fMatrix4x4 second_matrix;
 	CPHElement* first=(pFirst_element);
 	CPHElement* second=(pSecond_element);
 	
@@ -71,7 +72,8 @@ void CPHJoint::CreateHinge()
 	m_joint=dJointCreateHinge(0,0);
 
 	Fvector pos;
-	Fmatrix first_matrix,second_matrix;
+	fMatrix4x4 first_matrix;
+	fMatrix4x4 second_matrix;
 	Fvector axis;
 
 	CPHElement* first=(pFirst_element);
@@ -94,7 +96,7 @@ default:NODEFAULT;
 
 	first_matrix.invert();
 
-	Fmatrix rotate;
+	fMatrix4x4 rotate;
 	rotate.mul(first_matrix,second_matrix);
 
 	f32 hi,lo;
@@ -117,14 +119,13 @@ default:NODEFAULT;
 	dJointSetHingeParam(m_joint,dParamCFM ,m_cfm);
 }
 
-
 void CPHJoint::CreateHinge2()
 {
-
 	m_joint=dJointCreateHinge2(0,0);
 
 	Fvector pos;
-	Fmatrix first_matrix,second_matrix;
+	fMatrix4x4 first_matrix;
+	fMatrix4x4 second_matrix;
 	Fvector axis;
 	CPHElement* first=(pFirst_element);
 	CPHElement* second=(pSecond_element);
@@ -147,10 +148,10 @@ void CPHJoint::CreateHinge2()
 
 	/////////////////////////////////////////////
 
-	Fmatrix first_matrix_inv;
+	fMatrix4x4 first_matrix_inv;
 	first_matrix_inv.set(first_matrix);
 	first_matrix_inv.invert();
-	Fmatrix rotate;
+	fMatrix4x4 rotate;
 
 	rotate.mul(first_matrix_inv,second_matrix);
 	/////////////////////////////////////////////
@@ -195,7 +196,8 @@ void CPHJoint::CreateHinge2()
 void CPHJoint::CreateSlider()
 {
 	Fvector pos;
-	Fmatrix first_matrix,second_matrix;
+	fMatrix4x4 first_matrix;
+	fMatrix4x4 second_matrix;
 	Fvector axis;
 	CPHElement* first=(pFirst_element);
 	CPHElement* second=(pSecond_element);
@@ -232,8 +234,6 @@ void CPHJoint::CreateSlider()
 		axes[1].vs=vs_second;
 	}
 
-
-
 	m_joint1=dJointCreateAMotor(0,0);
 	dJointSetAMotorMode (m_joint1, dAMotorEuler);
 	dJointSetAMotorNumAxes (m_joint1, 1);
@@ -241,11 +241,10 @@ void CPHJoint::CreateSlider()
 	dJointAttach(m_joint1,body1,body2);
 
 	/////////////////////////////////////////////
-
-	Fmatrix first_matrix_inv;
+	fMatrix4x4 first_matrix_inv;
 	first_matrix_inv.set(first_matrix);
 	first_matrix_inv.invert();
-	Fmatrix rotate;
+	fMatrix4x4 rotate;
 	rotate.mul(first_matrix_inv,second_matrix);
 	/////////////////////////////////////////////
 
@@ -303,10 +302,9 @@ void CPHJoint::CreateSlider()
 #endif
 void CPHJoint::CreateFullControl()
 {
-
-
 	Fvector pos;
-	Fmatrix first_matrix,second_matrix;
+	fMatrix4x4 first_matrix;
+	fMatrix4x4 second_matrix;
 	Fvector axis;
 	CPHElement* first=(pFirst_element);
 	CPHElement* second=(pSecond_element);
@@ -328,14 +326,9 @@ case vs_global:pShell->mXFORM.transform_tiny(pos,anchor);break;
 default:NODEFAULT;	
 	}
 	//////////////////////////////////////
-
-
-
 	m_joint=dJointCreateBall(0,0);
 	dJointAttach(m_joint,body1,body2);
 	dJointSetBallAnchor(m_joint,pos.x,pos.y,pos.z);
-
-
 
 	m_joint1=dJointCreateAMotor(0,0);
 	dJointSetAMotorMode (m_joint1, dAMotorEuler);
@@ -344,11 +337,10 @@ default:NODEFAULT;
 	dJointAttach(m_joint1,body1,body2);
 
 	/////////////////////////////////////////////
-
-	Fmatrix first_matrix_inv;
+	fMatrix4x4 first_matrix_inv;
 	first_matrix_inv.set(first_matrix);
 	first_matrix_inv.invert();
-	Fmatrix rotate;
+	fMatrix4x4 rotate;
 	rotate.mul(first_matrix_inv,second_matrix);
 	/////////////////////////////////////////////
 
@@ -473,7 +465,8 @@ void CPHJoint::SetLimits(const f32 low, const f32 high, const int axis_num)
 
 	axes[ax].low=low;
 	axes[ax].high=high;
-	Fmatrix m1,m2;
+	fMatrix4x4 m1;
+	fMatrix4x4 m2;
 	m1.set(pFirst_element->mXFORM);
 	m1.invert();
 	m2.mul(m1,pSecond_element->mXFORM);
@@ -1055,7 +1048,7 @@ u16 CPHJoint::GetAxesNumber()
 {
 	return u16(axes.size());
 }
-void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix,const Fmatrix& rotate)
+void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const fMatrix4x4& first_matrix,const fMatrix4x4& second_matrix,const fMatrix4x4& rotate)
 {
 	switch(axes[ax_num].vs)
 	{
@@ -1084,23 +1077,21 @@ void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix
 	}
 }
 
-void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix)
+void CPHJoint::CalcAxis(int ax_num,Fvector& axis, f32& lo, f32& hi,const fMatrix4x4& first_matrix,const fMatrix4x4& second_matrix)
 {
 	switch(axes[ax_num].vs)
 	{
-
 	case vs_first :first_matrix.transform_dir(axis,axes[ax_num].direction);	break;
 	case vs_second:second_matrix.transform_dir(axis,axes[ax_num].direction); break;
 	case vs_global:pShell->mXFORM.transform_dir(axis,axes[ax_num].direction);break;
 	default:		NODEFAULT;							
 	}
 
-
-	Fmatrix inv_first_matrix;
+	fMatrix4x4 inv_first_matrix;
 	inv_first_matrix.set(first_matrix);
 	inv_first_matrix.invert();
 
-	Fmatrix rotate;
+	fMatrix4x4 rotate;
 	rotate.mul(inv_first_matrix,second_matrix);
 
 	f32 shift_angle;

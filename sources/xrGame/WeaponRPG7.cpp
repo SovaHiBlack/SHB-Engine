@@ -120,7 +120,7 @@ void CWeaponRPG7::switch2_Fire	()
 			E->g_fireParams				(this, p1,d);
 		}
 
-		Fmatrix								launch_matrix;
+		fMatrix4x4								launch_matrix;
 		launch_matrix.identity				();
 		launch_matrix.k.set					(d);
 		Fvector::generate_orthonormal_basis(launch_matrix.k,

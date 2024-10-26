@@ -173,7 +173,6 @@ public:
 };
 
 typedef _sphere<f32>	Fsphere;
-typedef _sphere<double> Dsphere;
 
 template <class T>
 BOOL	_valid(const _sphere<T>& s)

@@ -4,9 +4,9 @@
 
 using namespace luabind;
 
-Fmatrix	global_transform(CPhysicsElement* E)
+fMatrix4x4	global_transform(CPhysicsElement* E)
 {
-	Fmatrix m;
+	fMatrix4x4 m;
 	E->GetGlobalTransformDynamic(&m);
 	return m;
 }

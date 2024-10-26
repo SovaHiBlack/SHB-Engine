@@ -1048,7 +1048,7 @@ void PAMatchVelocity::Execute(ParticleEffect *effect, f32 dt)
 		}
 	}
 }
-void PAMatchVelocity::Transform(const Fmatrix&){;}
+void PAMatchVelocity::Transform(const fMatrix4x4&){;}
 //-------------------------------------------------------------------------------------------------
 
 void PAMove::Execute(ParticleEffect *effect, f32 dt)

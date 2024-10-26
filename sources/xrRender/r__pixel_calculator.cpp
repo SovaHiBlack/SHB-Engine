@@ -36,7 +36,7 @@ r_aabb_ssa		r_pixel_calculator::calculate	(IRender_Visual* V)	{
 	u32	id				[6]		;
 	for (u32 face=0; face<6; face++)	{
 		// setup matrices
-		Fmatrix						mProject,mView	;
+		fMatrix4x4						mProject,mView	;
 		Fvector						vFrom			;
 		fBox3						aabb			;
 

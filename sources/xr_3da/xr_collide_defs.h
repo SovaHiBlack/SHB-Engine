@@ -15,8 +15,8 @@ namespace collide
 		f32	d;
 	};
 	struct			elipsoid {
-		Fmatrix	mL2W;		// convertion from sphere(000,1) to real space
-		Fmatrix	mW2L;		// convertion from real space to sphere(000,1)
+		fMatrix4x4	mL2W;		// convertion from sphere(000,1) to real space
+		fMatrix4x4	mW2L;		// convertion from real space to sphere(000,1)
 	};
 	struct			ray_cache
 	{

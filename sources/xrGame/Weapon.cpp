@@ -125,10 +125,10 @@ void CWeapon::UpdateXForm	()
 			boneL = boneR2;
 #pragma todo("TO ALL: serious performance problem")
 		V->CalculateBones	();
-		Fmatrix& mL			= V->LL_GetTransform(u16(boneL));
-		Fmatrix& mR			= V->LL_GetTransform(u16(boneR));
+		fMatrix4x4& mL			= V->LL_GetTransform(u16(boneL));
+		fMatrix4x4& mR			= V->LL_GetTransform(u16(boneR));
 		// Calculate
-		Fmatrix				mRes;
+		fMatrix4x4				mRes;
 		Fvector				R,D,N;
 		D.sub				(mL.c,mR.c);	
 
@@ -169,8 +169,8 @@ void CWeapon::UpdateFireDependencies_internal()
 			V->CalculateBones		();
 
 			// fire point&direction
-			Fmatrix& fire_mat		= V->LL_GetTransform(u16(m_pHUD->FireBone()));
-			Fmatrix& parent			= m_pHUD->Transform	();
+			fMatrix4x4& fire_mat		= V->LL_GetTransform(u16(m_pHUD->FireBone()));
+			fMatrix4x4& parent			= m_pHUD->Transform	();
 
 			const Fvector& fp		= m_pHUD->FirePoint();
 			const Fvector& fp2		= m_pHUD->FirePoint2();
@@ -193,7 +193,7 @@ void CWeapon::UpdateFireDependencies_internal()
 									m_firedeps.m_FireParticlesXForm.j, m_firedeps.m_FireParticlesXForm.i);
 		} else {
 			// 3rd person or no parent
-			Fmatrix& parent			= XFORM();
+			fMatrix4x4& parent			= XFORM();
 			Fvector& fp				= vLoadedFirePoint;
 			Fvector& fp2			= vLoadedFirePoint2;
 			Fvector& sp				= vLoadedShellPoint;
@@ -230,7 +230,7 @@ void CWeapon::ForceUpdateFireParticles()
 		Fvector					p, d; 
 		smart_cast<CEntity*>(H_Parent())->g_fireParams	(this, p,d);
 
-		Fmatrix						_pxf;
+		fMatrix4x4						_pxf;
 		_pxf.k						= d;
 		_pxf.i.crossproduct			(Fvector().set(0.0f,1.0f,0.0f),	_pxf.k);
 		_pxf.j.crossproduct			(_pxf.k,		_pxf.i);
@@ -744,7 +744,7 @@ void CWeapon::SetDefaults()
 	m_bZoomMode			= false;
 }
 
-void CWeapon::UpdatePosition(const Fmatrix& trans)
+void CWeapon::UpdatePosition(const fMatrix4x4& trans)
 {
 	Position().set		(trans.c);
 	XFORM().mul			(trans,m_strapped_mode ? m_StrapOffset : m_Offset);
@@ -1375,7 +1375,7 @@ bool CWeapon::ready_to_kill	() const
 	);
 }
 
-void CWeapon::UpdateHudAdditonal		(Fmatrix& trans)
+void CWeapon::UpdateHudAdditonal		(fMatrix4x4& trans)
 {
 	CActor* pActor = smart_cast<CActor*>(H_Parent());
 	if(!pActor) return;
@@ -1383,11 +1383,11 @@ void CWeapon::UpdateHudAdditonal		(Fmatrix& trans)
 	if(		(pActor->IsZoomAimingMode() && m_fZoomRotationFactor<=1.f) ||
 			(!pActor->IsZoomAimingMode() && m_fZoomRotationFactor>0.f))
 	{
-		Fmatrix hud_rotation;
+		fMatrix4x4 hud_rotation;
 		hud_rotation.identity();
 		hud_rotation.rotateX(m_pHUD->ZoomRotateX()*m_fZoomRotationFactor);
 
-		Fmatrix hud_rotation_y;
+		fMatrix4x4 hud_rotation_y;
 		hud_rotation_y.identity();
 		hud_rotation_y.rotateY(m_pHUD->ZoomRotateY()*m_fZoomRotationFactor);
 		hud_rotation.mulA_43(hud_rotation_y);

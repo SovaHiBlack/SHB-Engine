@@ -549,7 +549,7 @@ bool CCar::SDoor::TestPass(const Fvector& pos, const Fvector& dir)
 		//CBoneData& bd=K->LL_GetData(bone_id);
 		K->LL_GetBindTransform(bones_bind_forms);
 		//		fObb bb=bd.obb;
-		Fmatrix pf;
+		fMatrix4x4 pf;
 		pf.mul(pcar->XFORM(), bones_bind_forms[bone_id]);
 		Fvector dif;
 		dif.sub(pf.c, pos);

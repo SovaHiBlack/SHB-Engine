@@ -157,7 +157,7 @@ void	CEffect_Rain::Render	()
 	u32 desired_items			= iFloor	(0.5f*(1.f+factor)* f32(max_desired_items));
 	// visual
 	f32		factor_visual	= factor/2.f+.5f;
-	Fvector3	f_rain_color	= g_pGamePersistent->Environment().CurrentEnv.rain_color;
+	fVector3	f_rain_color	= g_pGamePersistent->Environment().CurrentEnv.rain_color;
 	u32			u_rain_color	= color_rgba_f(f_rain_color.x,f_rain_color.y,f_rain_color.z,factor_visual);
 
 	// born _new_ if needed
@@ -287,7 +287,8 @@ void	CEffect_Rain::Render	()
 		_IndexStream& _IS		= RCache.Index;
 		RCache.set_Shader		(DM_Drop->shader);
 		
-		Fmatrix					mXform,mScale;
+		fMatrix4x4				mXform;
+		fMatrix4x4				mScale;
 		int						pcount  = 0;
 		u32						v_offset,i_offset;
 		u32						vCount_Lock		= particles_cache*DM_Drop->number_vertices;

@@ -142,7 +142,7 @@ void CStepManager::update()
 				CParticlesObject* ps = CParticlesObject::Create(ps_name,TRUE);
 
 				// вычислить позицию и направленность партикла
-				Fmatrix pos; 
+				fMatrix4x4 pos;
 
 				// установить направление
 				pos.k.set(Fvector().set(0.0f,1.0f,0.0f));
@@ -190,9 +190,9 @@ Fvector	CStepManager::get_foot_position(ELegType leg_type)
 	R_ASSERT2(m_foot_bones[leg_type] != BI_NONE, "foot bone had not been set");
 
 	CKinematics *pK					= smart_cast<CKinematics*>(m_object->Visual());
-	const Fmatrix& bone_transform = pK->LL_GetBoneInstance(m_foot_bones[leg_type]).mTransform;	
+	const fMatrix4x4& bone_transform = pK->LL_GetBoneInstance(m_foot_bones[leg_type]).mTransform;
 
-	Fmatrix					global_transform;
+	fMatrix4x4					global_transform;
 	global_transform.mul_43	(m_object->XFORM(),bone_transform);
 
 	return global_transform.c;

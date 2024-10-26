@@ -252,7 +252,7 @@ void CPerlinNoise3D::init()
 	}
 }
 
-f32 CPerlinNoise3D::noise(const Fvector3& vec)
+f32 CPerlinNoise3D::noise(const fVector3& vec)
 {
 	int bx0, bx1, by0, by1, bz0, bz1, b00, b10, b01, b11;
 	f32 rx0;
@@ -334,7 +334,7 @@ void CPerlinNoise3D::normalize(f32 v[3])
 
 f32 CPerlinNoise3D::Get(f32 x, f32 y, f32 z)
 {
-	Fvector3 vec	= {x,y,z};
+	fVector3 vec	= {x,y,z};
 	f32 result	= 0.0f;
 	f32 amp		= mAmplitude;
 	vec[0]			*=mFrequency;

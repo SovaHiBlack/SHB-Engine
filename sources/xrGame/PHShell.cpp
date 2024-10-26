@@ -380,7 +380,7 @@ void  CPHShell::StataticRootBonesCallBack			(CBoneInstance* B){
 	E->StataticRootBonesCallBack(B);
 }
 
-void CPHShell::SetTransform	(const Fmatrix& m0){
+void CPHShell::SetTransform	(const fMatrix4x4& m0){
 
 	mXFORM.set(m0);
 	ELEMENT_I i=elements.begin();
@@ -502,18 +502,18 @@ void	CPHShell::set_AngularVel(const Fvector& velocity)
 	for(;i!=e;i++) (*i)->set_AngularVel(velocity);
 }
 
-
-void CPHShell::TransformPosition(const Fmatrix &form)
+void CPHShell::TransformPosition(const fMatrix4x4& form)
 {
 	ELEMENT_I i=elements.begin(),e=elements.end();
 	for(;i!=e;i++) (*i)->TransformPosition(form);
 }
 
-void CPHShell::SetGlTransformDynamic(const Fmatrix &form)
+void CPHShell::SetGlTransformDynamic(const fMatrix4x4& form)
 {
 	VERIFY(isActive());
 	VERIFY(_valid(form));
-	Fmatrix current,replace;
+	fMatrix4x4 current;
+	fMatrix4x4 replace;
 	GetGlobalTransformDynamic(&current);
 	current.invert();
 	replace.mul(form,current);
@@ -613,7 +613,7 @@ ICF bool no_physics_shape(const SBoneShape& shape)
 	return shape.type==SBoneShape::stNone||shape.flags.test(SBoneShape::sfNoPhysics);
 }
 
-void CPHShell::AddElementRecursive(CPhysicsElement* root_e, u16 id,Fmatrix global_parent,u16 element_number,bool* vis_check)
+void CPHShell::AddElementRecursive(CPhysicsElement* root_e, u16 id, fMatrix4x4 global_parent,u16 element_number,bool* vis_check)
 {
 
 	//CBoneInstance& B	= m_pKinematics->LL_GetBoneInstance(u16(id));
@@ -624,7 +624,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, u16 id,Fmatrix globa
 
 	CBoneData& bone_data= m_pKinematics->LL_GetData(u16(id));
 	SJointIKData& joint_data=bone_data.IK_data;
-	Fmatrix fm_position;
+	fMatrix4x4 fm_position;
 	fm_position.set		(bone_data.bind_transform);
 	fm_position.mulA_43	(global_parent);
 	flags64 mask;
@@ -670,7 +670,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, u16 id,Fmatrix globa
 	{
 		if(joint_data.type==jtRigid && root_e ) //
 		{
-			Fmatrix vs_root_position;
+			fMatrix4x4 vs_root_position;
 			vs_root_position.set(root_e->mXFORM);
 			vs_root_position.invert();
 			vs_root_position.mulB_43(fm_position);
@@ -1005,7 +1005,7 @@ void CPHShell::AddElementRecursive(CPhysicsElement* root_e, u16 id,Fmatrix globa
 		Msg("all bones transform:--------");
 		
 		for(u16 ii=0; ii<K->LL_BoneCount();++ii){
-			Fmatrix tr;
+			fMatrix4x4 tr;
 
 			tr = K->LL_GetTransform(ii);
 			Log("bone ",K->LL_BoneName_dbg(ii));
@@ -1146,7 +1146,7 @@ void CPHShell::UpdateRoot()
 	(*i)->InterpolateGlobalTransform(&mXFORM);
 }
 
-void CPHShell::InterpolateGlobalTransform(Fmatrix* m)
+void CPHShell::InterpolateGlobalTransform(fMatrix4x4* m)
 {
 	//if(!CPHObject::is_active()&&!CPHObject::NetInterpolation()) return;
 
@@ -1166,7 +1166,7 @@ void CPHShell::InterpolateGlobalTransform(Fmatrix* m)
 	}
 }
 
-void CPHShell::GetGlobalTransformDynamic(Fmatrix* m)
+void CPHShell::GetGlobalTransformDynamic(fMatrix4x4* m)
 {
 	ELEMENT_I i,e;
 	i=elements.begin(); e=elements.end();
@@ -1190,10 +1190,10 @@ void CPHShell::GetGlobalPositionDynamic(Fvector* v)
 	VERIFY2(_valid(*v),"not valide result position");
 }
 
-void CPHShell::ObjectToRootForm(const Fmatrix& form)
+void CPHShell::ObjectToRootForm(const fMatrix4x4& form)
 {
-	Fmatrix M;
-	Fmatrix ILF;
+	fMatrix4x4 M;
+	fMatrix4x4 ILF;
 	(*elements.begin())->InverceLocalForm(ILF);
 	M.mul(m_object_in_root,ILF);
 	M.invert();
@@ -1393,7 +1393,7 @@ void	CPHShell::		setForce				(const Fvector& force)
 		(*i)->setForce(force);
 }
 
-void CPHShell::PlaceBindToElFormsRecursive(Fmatrix parent,u16 id,u16 element, flags64& mask)
+void CPHShell::PlaceBindToElFormsRecursive(fMatrix4x4 parent,u16 id,u16 element, flags64& mask)
 {
 	CBoneData& bone_data= m_pKinematics->LL_GetData(u16(id));
 	SJointIKData& joint_data=bone_data.IK_data;
@@ -1422,7 +1422,7 @@ void CPHShell::BonesBindCalculate(u16 id_from)
 	BonesBindCalculateRecursive(Fidentity,0);
 }
 
-void CPHShell::BonesBindCalculateRecursive(Fmatrix parent,u16 id)
+void CPHShell::BonesBindCalculateRecursive(fMatrix4x4 parent,u16 id)
 {
 	CBoneInstance& bone_instance=m_pKinematics->LL_GetBoneInstance(id);
 	CBoneData& bone_data= m_pKinematics->LL_GetData(u16(id));

@@ -4,7 +4,7 @@
 
 void	__stdcall	xrTransfer_x86	(LPVOID vDest, LPVOID vSrc, u32 vCount, u32 vStride,
 									 LPWORD iDest, LPWORD iSrc, u32 iCount, u32 iOffset,
-									 Fmatrix* xform)
+									 fMatrix4x4* xform)
 {
 	// Transfer vertices
 	if (xform) 

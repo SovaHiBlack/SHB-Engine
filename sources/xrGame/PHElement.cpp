@@ -220,7 +220,7 @@ void		CPHElement::Deactivate()
 	}
 }
 
-void CPHElement::SetTransform(const Fmatrix &m0){
+void CPHElement::SetTransform(const fMatrix4x4& m0){
 	VERIFY2(_valid(m0),"invalid_form_in_set_transform");
 	Fvector mc;
 	CPHGeometryOwner::get_mc_vs_transform(mc,m0);
@@ -274,14 +274,14 @@ void CPHElement::SetGlobalPositionDynamic(const Fvector& position)
 	m_shell->spatial_move();
 }
 
-void CPHElement::TransformPosition(const Fmatrix &form)
+void CPHElement::TransformPosition(const fMatrix4x4& form)
 {
 	if(!isActive())return;
 	VERIFY(_valid(form));
 	R_ASSERT2(m_body,"body is not created");
-	Fmatrix bm;
+	fMatrix4x4 bm;
 	PHDynamicData::DMXPStoFMX(dBodyGetRotation(m_body),dBodyGetPosition(m_body),bm);
-	Fmatrix new_bm;
+	fMatrix4x4 new_bm;
 	new_bm.mul(form,bm);
 	dMatrix3 dBM;
 	PHDynamicData::FMXtoDMX(new_bm,dBM);
@@ -300,7 +300,7 @@ CPHElement::~CPHElement	()
 	DeleteFracturesHolder();
 }
 
-void CPHElement::Activate(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable){
+void CPHElement::Activate(const fMatrix4x4& transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable){
 	VERIFY(!isActive());
 	mXFORM.set(transform);
 	Start();
@@ -325,15 +325,13 @@ void CPHElement::Activate(const Fmatrix &transform,const Fvector& lin_vel,const 
 		K->LL_GetBoneInstance(m_SelfID).set_callback(bctPhysics,m_shell->GetBonesCallback(),static_cast<CPhysicsElement*>(this));
 	}
 }
-void CPHElement::Activate(const Fmatrix &m0, f32 dt01,const Fmatrix &m2,bool disable){
+void CPHElement::Activate(const fMatrix4x4& m0, f32 dt01,const fMatrix4x4& m2,bool disable){
 
 	Fvector lvel,avel;
 	lvel.set(m2.c.x-m0.c.x,m2.c.y-m0.c.y,m2.c.z-m0.c.z);
 	avel.set(0.f,0.f,0.f);
 	Activate(m0,lvel,avel,disable);
-
 }
-
 
 void CPHElement::Activate(bool disable){
 
@@ -341,19 +339,17 @@ void CPHElement::Activate(bool disable){
 	lvel.set(0.f,0.f,0.f);
 	avel.set(0.f,0.f,0.f);
 	Activate(mXFORM,lvel,avel,disable);
-
 }
 
-void CPHElement::Activate(const Fmatrix& start_from,bool disable){
+void CPHElement::Activate(const fMatrix4x4& start_from,bool disable){
 	VERIFY(_valid(start_from));
-	Fmatrix globe;
+	fMatrix4x4 globe;
 	globe.mul_43(start_from,mXFORM);
 
 	Fvector lvel,avel;
 	lvel.set(0.f,0.f,0.f);
 	avel.set(0.f,0.f,0.f);
 	Activate(globe,lvel,avel,disable);
-
 }
 
 void CPHElement::Update(){
@@ -608,7 +604,8 @@ void	CPHElement::	applyImpulseTrace		(const Fvector& pos, const Fvector& dir, f3
 			CKinematics* K=m_shell->PKinematics();
 			if(K)
 			{
-				Fmatrix m;m.set(K->LL_GetTransform(m_SelfID));
+				fMatrix4x4 m;
+				m.set(K->LL_GetTransform(m_SelfID));
 				m.invert();m.mulB_43(K->LL_GetTransform(id));
 				m.transform(body_pos,pos);
 				body_pos.sub(m_mass_center);
@@ -660,7 +657,7 @@ void CPHElement::applyImpact(const SPHImpact& I)
 	}
 	
 }
-void CPHElement::InterpolateGlobalTransform(Fmatrix* m){
+void CPHElement::InterpolateGlobalTransform(fMatrix4x4* m){
 	if(!m_flags.test(flUpdate))
 	{
 		GetGlobalTransformDynamic(m);
@@ -673,7 +670,7 @@ void CPHElement::InterpolateGlobalTransform(Fmatrix* m){
 	m_flags.set(flUpdate,FALSE);
 	VERIFY(_valid(*m));
 }
-void CPHElement::GetGlobalTransformDynamic(Fmatrix* m)
+void CPHElement::GetGlobalTransformDynamic(fMatrix4x4* m)
 {
 	PHDynamicData::DMXPStoFMX(dBodyGetRotation(m_body),dBodyGetPosition(m_body),*m);
 	MulB43InverceLocalForm(*m);
@@ -705,31 +702,25 @@ void CPHElement::build(bool disable){
 	m_body_interpolation.SetBody(m_body);
 	//previous_f[0]=dInfinity;
 	if(disable) dBodyDisable(m_body);
-
-
 }
 
-void CPHElement::RunSimulation(const Fmatrix& start_from)
+void CPHElement::RunSimulation(const fMatrix4x4& start_from)
 {
-
 	RunSimulation();
 	//	if(place_current_forms)
 	{
-		Fmatrix globe;
+		fMatrix4x4 globe;
 		globe.mul(start_from,mXFORM);
 		SetTransform(globe);
 	}
 	//dVectorSet(m_safe_position,dBodyGetPosition(m_body));
 	//dQuaternionSet(m_safe_quaternion,dBodyGetQuaternion(m_body));
 	//dVectorSet(m_safe_velocity,dBodyGetLinearVel(m_body));
-
 }
-
-
 
 void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 {
-	Fmatrix parent;
+	fMatrix4x4 parent;
 	VERIFY2( isActive(),"the element is not active");
 	VERIFY(_valid(m_shell->mXFORM));
 	//VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones callback resive 0 matrix");
@@ -744,7 +735,7 @@ void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 		VERIFY(!m_shell->dSpace()->lock_count);
 		mXFORM.set(B->mTransform);
 		//m_start_time=Device.fTimeGlobal;
-		Fmatrix global_transform;
+		fMatrix4x4 global_transform;
 		//if(m_parent_element)
 		global_transform.mul_43(m_shell->mXFORM,mXFORM);
 		SetTransform(global_transform);
@@ -796,13 +787,13 @@ void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 
 }
 
-void CPHElement::BoneGlPos(Fmatrix &m,CBoneInstance* B)
+void CPHElement::BoneGlPos(fMatrix4x4& m,CBoneInstance* B)
 {
 	VERIFY(m_shell);
 	m.mul_43(m_shell->mXFORM, B->mTransform);
 }
 
-void CPHElement::GetAnimBonePos(Fmatrix &bp)
+void CPHElement::GetAnimBonePos(fMatrix4x4& bp)
 {
 	VERIFY(m_shell->PKinematics());
 	CKinematicsAnimated *ak = m_shell->PKinematics()->dcast_PKinematicsAnimated();
@@ -837,21 +828,24 @@ bool CPHElement::AnimToVel(f32 dt, f32 l_limit, f32 a_limit )
 	VERIFY(m_shell->PKinematics());
 	//CBoneInstance *BI = &m_shell->PKinematics()->LL_GetBoneInstance(m_SelfID);
 //
-//	Fmatrix bp;BoneGlPos(bp,BI);
+//	fMatrix4x4 bp;BoneGlPos(bp,BI);
 //
 	CPhysicsShellHolder	*ph = PhysicsRefObject();
 	VERIFY(ph);
-	Fmatrix bpl;GetAnimBonePos(bpl);
-	Fmatrix bp;bp.mul_43(ph->XFORM(),bpl);
+	fMatrix4x4 bpl;
+	GetAnimBonePos(bpl);
+	fMatrix4x4 bp;
+	bp.mul_43(ph->XFORM(),bpl);
 	//BoneGlPos(bp,BI);
 
-	Fmatrix cp;
+	fMatrix4x4 cp;
 	GetGlobalTransformDynamic(&cp);
 
 	//Fquaternion q0; q0.set(cp);
 
 	cp.invert();
-	Fmatrix diff;diff.mul_43(cp,bp);
+	fMatrix4x4 diff;
+	diff.mul_43(cp,bp);
 	if(dt< EPSILON_7)
 		dt = EPSILON_7;
 	Fvector mc1;
@@ -887,7 +881,7 @@ void CPHElement::ToBonePos(CBoneInstance* B)
 
 	mXFORM.set(B->mTransform);
 	
-	Fmatrix global_transform;
+	fMatrix4x4 global_transform;
 	BoneGlPos(global_transform,B);
 	SetTransform(global_transform);
 	FillInterpolation();
@@ -901,7 +895,7 @@ void	CPHElement::SetBoneCallbackOverwrite				(bool v)
 }
 void CPHElement::BonesCallBack(CBoneInstance* B)
 {
-	Fmatrix parent;
+	fMatrix4x4 parent;
 	VERIFY (isActive());
 	VERIFY(_valid(m_shell->mXFORM));
 	//VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones callback receive 0 matrix");
@@ -1117,7 +1111,7 @@ void	CPHElement::applyImpulse(const Fvector& dir, f32 val)//aux
 
 
 
-void CPHElement::add_Shape(const SBoneShape& shape,const Fmatrix& offset)
+void CPHElement::add_Shape(const SBoneShape& shape,const fMatrix4x4& offset)
 {
 	CPHGeometryOwner::add_Shape(shape,offset);
 }
@@ -1129,7 +1123,7 @@ void CPHElement::add_Shape(const SBoneShape& shape)
 
 #pragma todo(remake it using Geometry functions)
 
-void CPHElement::add_Mass(const SBoneShape& shape,const Fmatrix& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture)
+void CPHElement::add_Mass(const SBoneShape& shape,const fMatrix4x4& offset,const Fvector& mass_center, f32 mass,CPHFracture* fracture)
 {
 
 	dMass m;
@@ -1140,7 +1134,7 @@ void CPHElement::add_Mass(const SBoneShape& shape,const Fmatrix& offset,const Fv
 		{
 			dMassSetBox(&m,1.f,shape.box.m_halfsize.x*2.f,shape.box.m_halfsize.y*2.f,shape.box.m_halfsize.z*2.f);
 			dMassAdjust(&m,mass);
-			Fmatrix box_transform;
+			fMatrix4x4 box_transform;
 			shape.box.xform_get(box_transform);
 			PHDynamicData::FMX33toDMX(shape.box.m_rotate,DMatx);
 			dMassRotate(&m,DMatx);
@@ -1336,7 +1330,7 @@ void CPHElement::CreateSimulBase()
 	dBodyDisable(m_body);
 	CPHGeometryOwner::CreateSimulBase();
 }
-void CPHElement::ReAdjustMassPositions(const Fmatrix &shift_pivot, f32 density)
+void CPHElement::ReAdjustMassPositions(const fMatrix4x4& shift_pivot, f32 density)
 {
 
 	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
@@ -1382,7 +1376,7 @@ void CPHElement::ResetMass(f32 density)
 
 	CPHGeometryOwner::setPosition(m_mass_center);
 }
-void CPHElement::ReInitDynamics(const Fmatrix &shift_pivot, f32 density)
+void CPHElement::ReInitDynamics(const fMatrix4x4& shift_pivot, f32 density)
 {
 	VERIFY(_valid(shift_pivot)&&_valid(density));
 	ReAdjustMassPositions(shift_pivot,density);
@@ -1407,7 +1401,7 @@ void CPHElement::PresetActive()
 	CBoneInstance& B=m_shell->PKinematics()->LL_GetBoneInstance(m_SelfID);
 	mXFORM.set(B.mTransform);
 	//m_start_time=Device.fTimeGlobal;
-	Fmatrix global_transform;
+	fMatrix4x4 global_transform;
 	global_transform.mul_43(m_shell->mXFORM, mXFORM);
 	SetTransform(global_transform);
 
@@ -1454,8 +1448,7 @@ u16	CPHElement::numberOfGeoms()
 	return CPHGeometryOwner::numberOfGeoms();
 }
 
-
-void CPHElement::cv2bone_Xfrom(const Fquaternion& q,const Fvector& pos, Fmatrix& xform)
+void CPHElement::cv2bone_Xfrom(const Fquaternion& q,const Fvector& pos, fMatrix4x4& xform)
 {
 	VERIFY2(_valid(q)&&_valid(pos),"cv2bone_Xfrom receive wrong data");
 	xform.rotation(q);
@@ -1464,7 +1457,7 @@ void CPHElement::cv2bone_Xfrom(const Fquaternion& q,const Fvector& pos, Fmatrix&
 	MulB43InverceLocalForm(xform);
 	VERIFY2(_valid(xform),"cv2bone_Xfrom returns wrong data");
 }
-void CPHElement::cv2obj_Xfrom(const Fquaternion& q,const Fvector& pos, Fmatrix& xform)
+void CPHElement::cv2obj_Xfrom(const Fquaternion& q,const Fvector& pos, fMatrix4x4& xform)
 {
 	
 	cv2bone_Xfrom(q,pos,xform);

@@ -129,10 +129,10 @@ private:
 	// Calculation
 private:
 			void				BoneChain_Calculate		(const CBoneData* bd, CBoneInstance &bi,u8 channel_mask, bool ignore_callbacks);
-			void				CLBone					(const CBoneData* bd, CBoneInstance &bi, const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, u8 mask_channel = (1<<0));
+			void				CLBone					(const CBoneData* bd, CBoneInstance &bi, const fMatrix4x4* parent,const CBlendInstance::BlendSVec &Blend, u8 mask_channel = (1<<0));
 public:
-	virtual void				Bone_Calculate			(CBoneData* bd, Fmatrix* parent);
-			void				Bone_GetAnimPos			(Fmatrix& pos,u16 id, u8 channel_mask, bool ignore_callbacks);
+	virtual void				Bone_Calculate			(CBoneData* bd, fMatrix4x4* parent);
+			void				Bone_GetAnimPos			(fMatrix4x4& pos,u16 id, u8 channel_mask, bool ignore_callbacks);
 	virtual void				OnCalculateBones		();
 
 private:

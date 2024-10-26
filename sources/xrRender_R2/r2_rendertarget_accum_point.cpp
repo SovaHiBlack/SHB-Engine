@@ -54,8 +54,10 @@ void CRenderTarget::accum_point		(light* L)
 	*/
 
 	// 2D texgens 
-	Fmatrix			m_Texgen;			u_compute_texgen_screen	(m_Texgen	);
-	Fmatrix			m_Texgen_J;			u_compute_texgen_jitter	(m_Texgen_J	);
+	fMatrix4x4			m_Texgen;
+	u_compute_texgen_screen	(m_Texgen	);
+	fMatrix4x4			m_Texgen_J;
+	u_compute_texgen_jitter	(m_Texgen_J	);
 
 	// Draw volume with projective texgen
 	{

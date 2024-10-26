@@ -12,7 +12,7 @@ const Fvector&	CWeaponStatMgun::get_CurrentFirePoint()
 	return m_fire_pos;
 }
 
-const Fmatrix&	CWeaponStatMgun::get_ParticlesXFORM	()						
+const fMatrix4x4&	CWeaponStatMgun::get_ParticlesXFORM	()
 {
 	return m_fire_bone_xform;
 }

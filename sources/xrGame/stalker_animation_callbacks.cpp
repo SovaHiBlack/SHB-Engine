@@ -45,7 +45,7 @@ void _detail::callback		(CBoneInstance *B)
 	CAI_Stalker*			A = static_cast<CAI_Stalker*>(B->Callback_Param);
 	VERIFY					(_valid(B->mTransform));
 	Fvector c				= B->mTransform.c;
-	Fmatrix					spin;
+	fMatrix4x4					spin;
 	f32						yaw_factor = 0.0f;
 	f32						pitch_factor = 0.0f;
 	if (A->sight().use_torso_look())

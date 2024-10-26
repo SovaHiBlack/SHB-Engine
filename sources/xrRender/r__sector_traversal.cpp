@@ -14,9 +14,9 @@ CPortalTraverser::CPortalTraverser	()
 xr_vector<IRender_Sector*>				dbg_sectors;
 #endif
 
-void CPortalTraverser::traverse			(IRender_Sector* start, CFrustum& F, Fvector& vBase, Fmatrix& mXFORM, u32 options)
+void CPortalTraverser::traverse			(IRender_Sector* start, CFrustum& F, Fvector& vBase, fMatrix4x4& mXFORM, u32 options)
 {
-	Fmatrix			m_viewport_01	= {
+	fMatrix4x4			m_viewport_01	= {
 		1.f/2.f,			0.0f,				0.0f,		0.0f,
 		0.0f,				-1.f/2.f,			0.0f,		0.0f,
 		0.0f,				0.0f,				1.0f,		0.0f,

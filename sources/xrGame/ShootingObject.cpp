@@ -211,7 +211,7 @@ void CShootingObject::UpdateParticles (CParticlesObject*& pParticles,
 {
 	if(!pParticles)		return;
 
-	Fmatrix particles_pos; 
+	fMatrix4x4 particles_pos;
 	particles_pos.set	(get_ParticlesXFORM());
 	particles_pos.c.set	(pos);
 	
@@ -261,7 +261,6 @@ void CShootingObject::LoadFlameParticles (pcstr section, pcstr prefix)
 	m_sSmokeParticlesCurrent = m_sSmokeParticles;
 }
 
-
 void CShootingObject::OnShellDrop	(const Fvector& play_pos,
 									 const Fvector& parent_vel)
 {
@@ -270,14 +269,13 @@ void CShootingObject::OnShellDrop	(const Fvector& play_pos,
 
 	CParticlesObject* pShellParticles	= CParticlesObject::Create(*m_sShellParticles,TRUE);
 
-	Fmatrix particles_pos; 
+	fMatrix4x4 particles_pos;
 	particles_pos.set		(get_ParticlesXFORM());
 	particles_pos.c.set		(play_pos);
 
 	pShellParticles->UpdateParent		(particles_pos, parent_vel); 
 	pShellParticles->Play				();
 }
-
 
 //партиклы дыма
 void CShootingObject::StartSmokeParticles	(const Fvector& play_pos,
@@ -321,7 +319,7 @@ void CShootingObject::UpdateFlameParticles	()
 	if(0==m_sFlameParticlesCurrent.size())		return;
 	if(!m_pFlameParticles)				return;
 
-	Fmatrix		pos; 
+	fMatrix4x4		pos;
 	pos.set		(get_ParticlesXFORM()	); 
 	pos.c.set	(get_CurrentFirePoint()	);
 

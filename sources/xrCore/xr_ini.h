@@ -164,8 +164,8 @@ public:
 	{
 		return r_fvector2(*S, L);
 	}
-	Fvector3	r_fvector3(pcstr S, pcstr L);
-	Fvector3	r_fvector3(const shared_str& S, pcstr L)
+	fVector3	r_fvector3(pcstr S, pcstr L);
+	fVector3	r_fvector3(const shared_str& S, pcstr L)
 	{
 		return r_fvector3(*S, L);
 	}
@@ -197,7 +197,7 @@ public:
 	void		w_ivector3(pcstr S, pcstr L, const Ivector3& V, pcstr comment = 0);
 	void		w_ivector4(pcstr S, pcstr L, const iVector4& V, pcstr comment = 0);
 	void		w_fvector2(pcstr S, pcstr L, const fVector2& V, pcstr comment = 0);
-	void		w_fvector3(pcstr S, pcstr L, const Fvector3& V, pcstr comment = 0);
+	void		w_fvector3(pcstr S, pcstr L, const fVector3& V, pcstr comment = 0);
 	void		w_fvector4(pcstr S, pcstr L, const fVector4& V, pcstr comment = 0);
 	void		w_bool(pcstr S, pcstr L, BOOL				V, pcstr comment = 0);
 

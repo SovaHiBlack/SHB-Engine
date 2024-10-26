@@ -99,7 +99,6 @@ void  CWeaponHUD::Init()
 	m_pCallbackItem				= NULL;
 }
 
-
 void  CWeaponHUD::net_DestroyHud()
 {
 	m_bStopAtEndAnimIsRunning	= false;
@@ -107,7 +106,7 @@ void  CWeaponHUD::net_DestroyHud()
 	Visible						(false);
 }
 
-void CWeaponHUD::UpdatePosition(const Fmatrix& trans)
+void CWeaponHUD::UpdatePosition(const fMatrix4x4& trans)
 {
 	m_Transform.mul				(trans,m_shared_data.get_value()->m_offset);
 	VERIFY						(!fis_zero(DET(m_Transform)));

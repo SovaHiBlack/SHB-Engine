@@ -916,7 +916,7 @@ IC void keys_substruct(CKey	*R, const CKey	*BR, int b_count )
 	}
 }
 
-IC void q_scalem(Fmatrix &m, f32 v)
+IC void q_scalem(fMatrix4x4& m, f32 v)
 {
 	Fquaternion q;
 	q.set(m);
@@ -925,37 +925,40 @@ IC void q_scalem(Fmatrix &m, f32 v)
 }
 
 //sclale base' * q by scale_factor returns result in matrix  m_res
-IC void q_scale_vs_basem(Fmatrix &m_res,const Fquaternion &q, const Fquaternion &base, f32 scale_factor)
+IC void q_scale_vs_basem(fMatrix4x4& m_res,const Fquaternion &q, const Fquaternion &base, f32 scale_factor)
 {
-	Fmatrix mb,imb;
+	fMatrix4x4 mb;
+	fMatrix4x4 imb;
 	mb.rotation(base);
 	imb.invert(mb);
 
-	Fmatrix m;m.rotation(q);
+	fMatrix4x4 m;
+	m.rotation(q);
 	m_res.mul(imb,m);
 	q_scalem(m_res,scale_factor);
 }
 
-
 IC void q_add_scaled_basem( Fquaternion &q, const Fquaternion &base, const Fquaternion &q0, const Fquaternion &q1, f32 v1 )
 {
 	//VERIFY(0.f =< v && 1.f >= v );
-	Fmatrix m0;m0.rotation(q0);
-	Fmatrix m,ml1;
+	fMatrix4x4 m0;
+	m0.rotation(q0);
+	fMatrix4x4 m;
+	fMatrix4x4 ml1;
 	q_scale_vs_basem( ml1, q1, base, v1 );
 	m.mul(m0,ml1);
 	q.set(m);
 	q.normalize();
 }
 
-IC f32 DET(const Fmatrix &a){
+IC f32 DET(const fMatrix4x4& a){
 	return
 		(( a._11 * ( a._22 * a._33 - a._23 * a._32 ) -
 		a._12 * ( a._21 * a._33 - a._23 * a._31 ) +
 		a._13 * ( a._21 * a._32 - a._22 * a._31 ) ));
 }
 
-IC bool check_scale(const Fmatrix &m)
+IC bool check_scale(const fMatrix4x4& m)
 {
 	f32 det = DET(m);
 	return (0.8f<det&&det<1.3f);
@@ -963,7 +966,7 @@ IC bool check_scale(const Fmatrix &m)
 
 IC bool check_scale(const Fquaternion &q)
 {
-	Fmatrix m;
+	fMatrix4x4 m;
 	m.rotation(q);
 	return check_scale(m);
 }
@@ -999,7 +1002,7 @@ IC void MixChannels(CKey &Result,const CKey	*R,const f32* BA,int b_count)
 }
 
 // calculate single bone with key blending and callbck calling
-void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,const Fmatrix *parent,const CBlendInstance::BlendSVec &Blend, u8 channel_mask /*= (1<<0)*/)
+void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,const fMatrix4x4* parent,const CBlendInstance::BlendSVec &Blend, u8 channel_mask /*= (1<<0)*/)
 {
 	u16 SelfID		= bd->GetSelfID();
 	if (LL_GetBoneVisible(SelfID)){
@@ -1062,9 +1065,10 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 			//Mix channels
 			//MixInterlerp(Result,channels,BCA,ch_count);
 			MixChannels( Result, channels,  BC, ch_count );
-			Fmatrix					RES;
+			fMatrix4x4					RES;
 			RES.mk_xform			(Result.Q,Result.T);
 			BONE_INST.mTransform.mul_43(*parent,RES);
+
 #ifdef DEBUG
 		
 		if(!check_scale(RES))
@@ -1142,13 +1146,13 @@ void CKinematicsAnimated::CLBone(const CBoneData* bd,CBoneInstance& BONE_INST,co
 	}
 }
 
-void	CKinematicsAnimated::Bone_GetAnimPos(Fmatrix& pos,u16 id,u8 mask_channel, bool ignore_callbacks)
+void	CKinematicsAnimated::Bone_GetAnimPos(fMatrix4x4& pos,u16 id,u8 mask_channel, bool ignore_callbacks)
 {
 	CBoneInstance bi = LL_GetBoneInstance(id);
 	BoneChain_Calculate(&LL_GetData(id),bi,mask_channel,ignore_callbacks);
 	pos.set(bi.mTransform);
 }
-void CKinematicsAnimated::Bone_Calculate(CBoneData* bd, Fmatrix *parent)
+void CKinematicsAnimated::Bone_Calculate(CBoneData* bd, fMatrix4x4* parent)
 {
 	u16 SelfID					= bd->GetSelfID();
 	CBlendInstance& BLEND_INST	= LL_GetBlendInstance(SelfID);

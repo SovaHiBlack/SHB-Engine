@@ -268,13 +268,13 @@ void CSightManager::Exec_Look		(f32 dt)
 #endif
 
 #if 0
-	Fmatrix				mXFORM;
+	fMatrix4x4				mXFORM;
 	mXFORM.setHPB		(-body.current.yaw,0,0);
 	mXFORM.c.set		(m_object->Position());
 	m_object->XFORM().set(mXFORM);
 #else
 
-	Fmatrix				&m = m_object->XFORM();
+	fMatrix4x4& m = m_object->XFORM();
 /*
 	if(m_object->animation_movement_controlled	( )	)
 	{

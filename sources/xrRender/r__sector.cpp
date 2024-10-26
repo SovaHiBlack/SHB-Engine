@@ -179,7 +179,7 @@ void CSector::traverse			(CFrustum &F, _scissor& R_scissor)
 			sPoly&	p	= *P;
 			for		(u32 vit=0; vit<p.size(); vit++)	{
 				fVector4	t;
-				Fmatrix&	M	= PortalTraverser.i_mXFORM_01;
+				fMatrix4x4&	M	= PortalTraverser.i_mXFORM_01;
 				Fvector&	v	= p[vit];
 
 				t.x = v.x*M._11 + v.y*M._21 + v.z*M._31 + M._41;

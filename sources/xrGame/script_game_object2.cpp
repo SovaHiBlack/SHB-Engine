@@ -321,7 +321,7 @@ void CScriptGameObject::SetActorPosition			(Fvector pos)
 {
 	CActor* actor = smart_cast<CActor*>(&object());
 	if(actor){
-		Fmatrix F = actor->XFORM();
+		fMatrix4x4 F = actor->XFORM();
 		F.c = pos;
 		actor->ForceTransform(F);
 //		actor->XFORM().c = pos;

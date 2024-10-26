@@ -22,7 +22,6 @@ typedef	signed		__int64	s64;
 typedef	unsigned	__int64	u64;
 
 using f32 = float;
-//typedef float				f32;
 typedef double				f64;
 
 using pstr = char*;

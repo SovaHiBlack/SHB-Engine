@@ -7,7 +7,7 @@ struct		XRCORE_API	str_value
 	u32					dwReference;
 	u32					dwLength;
 	u32					dwCRC;
-	char				value[];
+	char				value[ ];
 };
 struct		XRCORE_API	str_value_cmp
 { // less
@@ -27,11 +27,11 @@ private:
 	cdb												container;
 public:
 	str_value* dock(pcstr value);
-	void				clean();
-	void				dump();
-	void				verify();
-	u32					stat_economy();
-	~str_container();
+	void				clean( );
+	void				dump( );
+	void				verify( );
+	u32					stat_economy( );
+	~str_container( );
 };
 XRCORE_API	extern		str_container* g_pStringContainer;
 
@@ -42,26 +42,26 @@ private:
 	str_value* p_;
 protected:
 	// ref-counting
-	void				_dec()
+	void				_dec( )
 	{
 		if (0 == p_) return;	p_->dwReference--; 	if (0 == p_->dwReference)	p_ = 0;
 	}
 public:
 	void				_set(pcstr rhs)
 	{
-		str_value* v = g_pStringContainer->dock(rhs); if (0 != v) v->dwReference++; _dec(); p_ = v;
+		str_value* v = g_pStringContainer->dock(rhs); if (0 != v) v->dwReference++; _dec( ); p_ = v;
 	}
 	void				_set(shared_str const& rhs)
 	{
-		str_value* v = rhs.p_; if (0 != v) v->dwReference++; _dec(); p_ = v;
+		str_value* v = rhs.p_; if (0 != v) v->dwReference++; _dec( ); p_ = v;
 	}
-	const str_value* _get()	const
+	const str_value* _get( )	const
 	{
 		return p_;
 	}
 public:
 	// construction
-	shared_str()
+	shared_str( )
 	{
 		p_ = 0;
 	}
@@ -73,9 +73,9 @@ public:
 	{
 		p_ = 0;	_set(rhs);
 	}
-	~shared_str()
+	~shared_str( )
 	{
-		_dec();
+		_dec( );
 	}
 
 	// assignment & accessors
@@ -87,11 +87,11 @@ public:
 	{
 		_set(rhs);	return (shared_str&)*this;
 	}
-	pcstr				operator*	() const
+	pcstr				operator*	( ) const
 	{
 		return p_ ? p_->value : 0;
 	}
-	bool				operator!	() const
+	bool				operator!	( ) const
 	{
 		return p_ == 0;
 	}
@@ -99,13 +99,13 @@ public:
 	{
 		return p_->value[id];
 	}
-	pcstr				c_str() const
+	pcstr				c_str( ) const
 	{
 		return p_ ? p_->value : 0;
 	}
 
 	// misc func
-	u32					size()						const
+	u32					size( )						const
 	{
 		if (0 == p_) return 0; else return p_->dwLength;
 	}
@@ -139,19 +139,19 @@ public:
 // res_ptr > res_ptr
 IC bool operator	==	(shared_str const& a, shared_str const& b)
 {
-	return a._get() == b._get();
+	return a._get( ) == b._get( );
 }
 IC bool operator	!=	(shared_str const& a, shared_str const& b)
 {
-	return a._get() != b._get();
+	return a._get( ) != b._get( );
 }
 IC bool operator	<	(shared_str const& a, shared_str const& b)
 {
-	return a._get() < b._get();
+	return a._get( ) < b._get( );
 }
 IC bool operator	>	(shared_str const& a, shared_str const& b)
 {
-	return a._get() > b._get();
+	return a._get( ) > b._get( );
 }
 
 // externally visible standart functionality
@@ -161,7 +161,7 @@ IC void swap(shared_str& lhs, shared_str& rhs)
 }
 IC u32	xr_strlen(shared_str& a)
 {
-	return a.size();
+	return a.size( );
 }
 IC int	xr_strcmp(const shared_str& a, pcstr b)
 {
@@ -178,7 +178,7 @@ IC int	xr_strcmp(const shared_str& a, const shared_str& b)
 }
 IC void	xr_strlwr(xr_string& src)
 {
-	for (xr_string::iterator it = src.begin(); it != src.end(); it++) *it = xr_string::value_type(tolower(*it));
+	for (xr_string::iterator it = src.begin( ); it != src.end( ); it++) *it = xr_string::value_type(tolower(*it));
 }
 IC void	xr_strlwr(shared_str& src)
 {

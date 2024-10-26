@@ -558,15 +558,15 @@ public:
 		}
 	}
 };
+
+using fVector3 = _vector3<f32>;
+
 typedef _vector3<f32>		Fvector;
 typedef _vector3<f32>		Fvector3;
 typedef _vector3<double>	Dvector;
 typedef _vector3<double>	Dvector3;
 typedef _vector3<s32>		Ivector;
 typedef _vector3<s32>		Ivector3;
-
-typedef _vector3<f32>		fVector3;
-
 
 template <class T>
 BOOL	_valid(const _vector3<T>& v)
@@ -648,7 +648,7 @@ aa2_largest:	// aa2 is largest
 	}
 	return	TRUE;
 }
-IC BOOL	exact_normalize(Fvector3& a)
+IC BOOL	exact_normalize(fVector3& a)
 {
 	return exact_normalize(&a.x);
 }

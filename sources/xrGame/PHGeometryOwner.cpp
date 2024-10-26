@@ -164,15 +164,15 @@ void CPHGeometryOwner::add_Cylinder	(const fCylinder& V)
 }
 
 
-void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const Fmatrix& offset)
+void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const fMatrix4x4& offset)
 {
 	switch(shape.type) {
 	case SBoneShape::stBox	:
 		{
 		fObb box=shape.box;
-			Fmatrix m;
+		fMatrix4x4 m;
 			m.set(offset);
-			//Fmatrix position;
+			//fMatrix4x4 position;
 			//position.set(box.m_rotate);
 			//position.c.set(box.m_translate);
 			//position.mulA(offset);
@@ -334,17 +334,17 @@ f32 CPHGeometryOwner::getRadius()
 	else				  return 0.f;
 }
 
-void CPHGeometryOwner::get_mc_vs_transform(Fvector& mc,const Fmatrix& m)
+void CPHGeometryOwner::get_mc_vs_transform(Fvector& mc,const fMatrix4x4& m)
 {
 	mc.set(m_mass_center);
 	m.transform_tiny(mc);
 	VERIFY2(_valid(mc),"invalid mc in_set_transform");
 }
 
-void CPHGeometryOwner::setStaticForm(const Fmatrix& form)
+void CPHGeometryOwner::setStaticForm(const fMatrix4x4& form)
 {
 	if(!b_builded) return;
-	Fmatrix f;
+	fMatrix4x4 f;
 	f.set(form);
 	get_mc_vs_transform(f.c,form);
 	GEOM_I i=m_geoms.begin(),e=m_geoms.end();

@@ -84,7 +84,7 @@ add_to_type_list(CSE_Motion)
 #define script_type_list save_type_list(CSE_Motion)
 
 struct ISE_AbstractLEOwner{
-	virtual void		__stdcall	get_bone_xform	(pcstr name, Fmatrix& xform) = 0;
+	virtual void		__stdcall	get_bone_xform	(pcstr name, fMatrix4x4& xform) = 0;
 };
 
 struct ISE_Abstract {
@@ -113,7 +113,7 @@ public:
 	virtual CSE_Visual* __stdcall	visual			() = 0;
 	virtual CSE_Motion* __stdcall	motion			() = 0;
 	virtual bool		__stdcall	validate		() = 0;
-	virtual void 		__stdcall	on_render		(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const Fmatrix& parent,int priority, bool strictB2F) = 0;
+	virtual void 		__stdcall	on_render		(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F) = 0;
 };
 
 #pragma warning(pop)

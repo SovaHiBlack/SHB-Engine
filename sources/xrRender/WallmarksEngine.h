@@ -40,8 +40,8 @@ private:
 	wm_slot*			FindSlot				(ref_shader shader);
 	wm_slot*			AppendSlot				(ref_shader shader);
 private:
-	void				BuildMatrix				(Fmatrix &dest, f32 invsz, const Fvector& from);
-	void				RecurseTri				(u32 T,	Fmatrix &mView, static_wallmark	&W);
+	void				BuildMatrix				(fMatrix4x4& dest, f32 invsz, const Fvector& from);
+	void				RecurseTri				(u32 T, fMatrix4x4& mView, static_wallmark	&W);
 	void				AddWallmark_internal	(CDB::TRI* pTri, const Fvector* pVerts, const Fvector &contact_point, ref_shader hTexture, f32 sz);
 
 	static_wallmark*	static_wm_allocate		();
@@ -54,7 +54,7 @@ public:
 	// edit wallmarks
 	void				AddStaticWallmark		(CDB::TRI* pTri, const Fvector* pVerts, const Fvector &contact_point, ref_shader hTexture, f32 sz);
 	void				AddSkeletonWallmark		(intrusive_ptr<CSkeletonWallmark> wm);
-	void				AddSkeletonWallmark		(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size);
+	void				AddSkeletonWallmark		(const fMatrix4x4* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size);
 
 	// render
 	void				Render					();

@@ -17,7 +17,7 @@ virtual		void			InitContact			(dContact* c,bool& do_collide,u16 /*material_idx_1
 virtual		u16				get_elements_number				()								{return 0;};
 virtual		CPHSynchronize	*get_element_sync				(u16 element)					{return NULL;};		
 public:
-			void			Activate			(const Fmatrix& form);
+			void			Activate			(const fMatrix4x4& form);
 			void			Deactivate			();
 							CPHStaticGeomShell	();
 };

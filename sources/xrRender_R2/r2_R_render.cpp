@@ -11,7 +11,7 @@ IC	bool	pred_sp_sort	(ISpatial*	_1, ISpatial* _2)
 	return	d1<d2	;
 }
 
-void CRender::render_main	(Fmatrix&	m_ViewProjection, bool _fportals)
+void CRender::render_main	(fMatrix4x4&	m_ViewProjection, bool _fportals)
 {
 //	Msg						("---begin");
 	marker					++;
@@ -217,7 +217,8 @@ void CRender::Render		()
 	if (ps_r2_ls_flags.test(R2FLAG_ZFILL))		{
 		Device.Statistic->RenderCALC.Begin			();
 		f32		z_distance	= ps_r2_zfill		;
-		Fmatrix		m_zfill, m_project				;
+		fMatrix4x4		m_zfill;
+		fMatrix4x4		m_project;
 		m_project.build_projection	(
 			deg2rad(Device.fFOV/* *Device.fASPECT*/), 
 			Device.fASPECT, VIEWPORT_NEAR, 

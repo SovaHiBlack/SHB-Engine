@@ -12,7 +12,7 @@ void CMatrix::Calculate()
 			return;
 		case modeTCM:
 			{
-				Fmatrix		T;
+			fMatrix4x4		T;
 				f32		sU = 1;
 				f32 sV = 1;
 				f32 t = Device.fTimeGlobal;
@@ -58,7 +58,7 @@ void CMatrix::Calculate()
 			return;
 		case modeC_refl:
 			{
-				Fmatrix	M	= Device.mView;
+			fMatrix4x4	M	= Device.mView;
 				M._41		= 0.f;
 				M._42		= 0.f;
 				M._43		= 0.f;

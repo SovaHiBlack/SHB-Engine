@@ -37,7 +37,6 @@ int IsCPUID()
 
 void _os_support(int feature, int& res)
 {
-
 	__try
 	{
 		switch (feature)
@@ -86,7 +85,7 @@ void _os_support(int feature, int& res)
 *
 ****************************************************/
 
-void map_mname(int family, int model, pcstr v_name, pstr m_name)
+void map_mname(s32 family, s32 model, pcstr v_name, pstr m_name)
 {
 	if (!strncmp("AuthenticAMD", v_name, 12))
 	{
@@ -103,8 +102,8 @@ void map_mname(int family, int model, pcstr v_name, pstr m_name)
 					case 1:		strcpy(m_name, "K5 Model 1");	break;
 					case 2:		strcpy(m_name, "K5 Model 2");	break;
 					case 3:		strcpy(m_name, "K5 Model 3");	break;
-					case 4:     break;	// Not really used
-					case 5:     break;  // Not really used
+					case 4:		break;	// Not really used
+					case 5:		break;	// Not really used
 					case 6:		strcpy(m_name, "K6 Model 1");	break;
 					case 7:		strcpy(m_name, "K6 Model 2");	break;
 					case 8:		strcpy(m_name, "K6-2");			break;
@@ -129,7 +128,7 @@ void map_mname(int family, int model, pcstr v_name, pstr m_name)
 					case 5:		strcpy(m_name, "ATHLON TB");		break;
 					case 6:		strcpy(m_name, "ATHLON XP");		break;
 					case 7:		strcpy(m_name, "DURON XP");			break;
-					default:    strcpy(m_name, "K7 Family");		break;
+					default:	strcpy(m_name, "K7 Family");		break;
 				}
 				break;
 		}
@@ -149,7 +148,7 @@ void map_mname(int family, int model, pcstr v_name, pstr m_name)
 					case 5:		strcpy(m_name, "i486SX2");			break;
 					case 7:		strcpy(m_name, "i486DX2E");			break;
 					case 8:		strcpy(m_name, "i486DX4");			break;
-					default:    strcpy(m_name, "i486 family");		break;
+					default:	strcpy(m_name, "i486 family");		break;
 				}
 				break;
 			case 5:
@@ -195,7 +194,6 @@ void map_mname(int family, int model, pcstr v_name, pstr m_name)
 	{
 		strcpy(m_name, "Unknown");
 	}
-
 }
 
 

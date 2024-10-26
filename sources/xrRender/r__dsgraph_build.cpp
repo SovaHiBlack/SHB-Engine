@@ -163,7 +163,7 @@ void R_dsgraph_structure::r_dsgraph_insert_dynamic	(IRender_Visual *pVisual, Fve
 #if RENDER==R_R2
 	if (val_recorder)			{
 		fBox3		temp		;
-		Fmatrix&	xf			= *RI.val_pTransform;
+		fMatrix4x4&	xf			= *RI.val_pTransform;
 		temp.xform	(pVisual->vis.box,xf);
 		val_recorder->push_back	(temp);
 	}

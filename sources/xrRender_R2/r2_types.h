@@ -82,5 +82,5 @@ const		u32					LUMINANCE_size		= 16	;
 
 extern		f32	ps_r2_gloss_factor;
 IC	f32	u_diffuse2s	(f32 x, f32 y, f32 z)	{ f32	v = (x+y+z)/3.f;	return ps_r2_gloss_factor * ((v<1)?powf(v,2.f/3.f):v); }
-IC	f32	u_diffuse2s	(Fvector3& c)				{ return u_diffuse2s(c.x,c.y,c.z);					}
+IC	f32	u_diffuse2s	(fVector3& c)				{ return u_diffuse2s(c.x,c.y,c.z);					}
 

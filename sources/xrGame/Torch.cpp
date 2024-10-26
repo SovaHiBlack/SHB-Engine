@@ -303,7 +303,7 @@ void CTorch::UpdateCL()
 	if (!m_switched_on)			return;
 
 	CBoneInstance			&BI = smart_cast<CKinematics*>(Visual())->LL_GetBoneInstance(guid_bone);
-	Fmatrix					M;
+	fMatrix4x4					M;
 
 	if (H_Parent()) 
 	{

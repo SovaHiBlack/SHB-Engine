@@ -39,15 +39,15 @@ s16	q_tc	(f32 v)
 	return	s16	(_v);
 }
 #ifdef _DEBUG
-f32 errN	(Fvector3 v, u8* qv)
+f32 errN	(fVector3 v, u8* qv)
 {
-	Fvector3	uv;	
+	fVector3	uv;
 	uv.set		(f32(qv[0]), f32(qv[1]), f32(qv[2])).div(255.f).mul(2.f).sub(1.f);
 	uv.normalize();
 	return		v.dotproduct(uv);
 }
 #else
-f32 errN	(Fvector3 v, u8* qv)	{ return 0; }
+f32 errN	(fVector3 v, u8* qv)	{ return 0; }
 #endif
 
 static	D3DVERTEXELEMENT9 dwDecl_01W	[] =	// 24bytes

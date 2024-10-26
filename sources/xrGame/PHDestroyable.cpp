@@ -215,7 +215,7 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 	CInifile		*own_ini  =own_K->LL_UserData()								;
 	CInifile		*new_ini  =new_K->LL_UserData()								;
 	//////////////////////////////////////////////////////////////////////////////////	
-	Fmatrix			own_transform;
+	fMatrix4x4			own_transform;
 	own_shell		->GetGlobalTransformDynamic		(&own_transform)			;
 	new_shell		->SetGlTransformDynamic			(own_transform)				;
 	////////////////////////////////////////////////////////////
@@ -279,7 +279,8 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 			if(m_fatal_hit.is_valide() && m_fatal_hit.bone()!=BI_NONE )
 			{
 				Fvector pos;
-				Fmatrix m;m.set(own_K->LL_GetTransform(m_fatal_hit.bone()));
+				fMatrix4x4 m;
+				m.set(own_K->LL_GetTransform(m_fatal_hit.bone()));
 				m.mulA_43		(PPhysicsShellHolder()->XFORM());
 				m.transform_tiny(pos,m_fatal_hit.bone_space_position());
 				e->applyImpulseVsGF(pos,m_fatal_hit.direction(),m_fatal_hit.phys_impulse()*imp_transition_factor);

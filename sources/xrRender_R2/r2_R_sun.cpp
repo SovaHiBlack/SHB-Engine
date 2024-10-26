@@ -11,7 +11,7 @@ f32			OLES_SUN_LIMIT_27_01_07			= 180.f		;
 //////////////////////////////////////////////////////////////////////////
 // tables to calculate view-frustum bounds in world space
 // note: D3D uses [0..1] range for Z
-static Fvector3		corners [8]			= {
+static fVector3		corners [8]			= {
 	{ -1, -1,  0 },		{ -1, -1, +1},
 	{ -1, +1, +1 },		{ -1, +1,  0},
 	{ +1, +1, +1 },		{ +1, +1,  0},
@@ -192,9 +192,9 @@ public:
 	struct	_poly
 	{
 		xr_vector<int>	points;
-		Fvector3		planeN;
+		fVector3		planeN;
 		f32			planeD;
-		f32			classify	(Fvector3& p)	{	return planeN.dotproduct(p)+planeD; 	}
+		f32			classify	(fVector3& p)	{	return planeN.dotproduct(p)+planeD; 	}
 	};
 	struct	_edge
 	{
@@ -204,7 +204,7 @@ public:
 		bool			equal		(_edge& E)												{ return p0==E.p0 && p1==E.p1;	}
 	};
 public:
-	xr_vector<Fvector3>		points;
+	xr_vector<fVector3>		points;
 	xr_vector<_poly>		polys;
 	xr_vector<_edge>		edges;
 public:
@@ -213,7 +213,8 @@ public:
 		for (int it=0; it<int(polys.size()); it++)
 		{
 			_poly&			P	=	polys[it];
-			Fvector3		t1,t2;
+			fVector3		t1;
+			fVector3		t2;
 			t1.sub					(points[P.points[0]], points[P.points[1]]);
 			t2.sub					(points[P.points[0]], points[P.points[2]]);
 			P.planeN.crossproduct	(t1,t2).normalize();
@@ -238,12 +239,12 @@ public:
 			}
 		}
 	}
-	void				compute_caster_model	(xr_vector<fPlane3>& dest, Fvector3 direction)
+	void				compute_caster_model	(xr_vector<fPlane3>& dest, fVector3 direction)
 	{
 		CRenderTarget&	T	= *RImplementation.Target;
 
 		// COG
-		Fvector3	cog	= {0,0,0};
+		fVector3	cog = { 0.0f, 0.0f, 0.0f };
 		for			(int it=0; it<int(points.size()); it++)	cog.add	(points[it]);
 		cog.div		(f32(points.size()));
 
@@ -290,7 +291,7 @@ public:
 			if	(edges[e].counter != 0)	continue;
 			_edge&		E		= edges[e];
 			if		(_debug)	T.dbg_addline(points[E.p0],points[E.p1],color_rgba(255,255,255,255));
-			Fvector3	point;
+			fVector3	point;
 			points.push_back	(point.sub(points[E.p0],direction));
 			points.push_back	(point.sub(points[E.p1],direction));
 			polys.push_back		(_poly());
@@ -324,7 +325,7 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////////
-Fvector3		wform	(Fmatrix& m, Fvector3& v)
+fVector3		wform	(fMatrix4x4& m, fVector3& v)
 {
 	fVector4	r;
 	r.x			= v.x*m._11 + v.y*m._21 + v.z*m._31 + m._41;
@@ -332,7 +333,7 @@ Fvector3		wform	(Fmatrix& m, Fvector3& v)
 	r.z			= v.x*m._13 + v.y*m._23 + v.z*m._33 + m._43;
 	r.w			= v.x*m._14 + v.y*m._24 + v.z*m._34 + m._44;
 	// VERIFY		(r.w>0.f);
-	Fvector3	r3 = { r.x/r.w, r.y/r.w, r.z/r.w };
+	fVector3	r3 = { r.x/r.w, r.y/r.w, r.z/r.w };
 	return		r3;
 }
 
@@ -372,7 +373,7 @@ struct	DumbClipper
 		return	true;
 	}
 	D3DXVECTOR3			point		(fBox3& bb, int i) const { return D3DXVECTOR3( (i&1)?bb.min.x:bb.max.x, (i&2)?bb.min.y:bb.max.y, (i&4)?bb.min.z:bb.max.z );  }
-	fBox3				clipped_AABB(xr_vector<fBox3,render_alloc<fBox3> >& src, Fmatrix& xf)
+	fBox3				clipped_AABB(xr_vector<fBox3,render_alloc<fBox3> >& src, fMatrix4x4& xf)
 	{
 		fBox3		result;
 		result.invalidate		();
@@ -430,10 +431,10 @@ D3DXVECTOR2 BuildTSMProjectionMatrix_caster_depth_bounds(D3DXMATRIX& lightSpaceB
 	f32		max_z = -1e32f;
 	D3DXMATRIX	minmax_xf;
 	D3DXMatrixMultiply	(&minmax_xf,(D3DXMATRIX*)&Device.mView,&lightSpaceBasis);
-	Fmatrix&	minmax_xform = *((Fmatrix*)&minmax_xf);
+	fMatrix4x4&	minmax_xform = *((fMatrix4x4*)&minmax_xf);
 	for		(u32 c=0; c<s_casters.size(); c++)
 	{
-		Fvector3	pt;
+		fVector3	pt;
 		for			(int e=0; e<8; e++)	{
 			s_casters[c].getpoint	(e,pt);
 			pt		= wform			(minmax_xform, pt);
@@ -450,7 +451,9 @@ void CRender::render_sun				()
 	D3DXMATRIX		m_LightViewProj		;
 
 	// calculate view-frustum bounds in world space
-	Fmatrix	ex_project, ex_full, ex_full_inverse;
+	fMatrix4x4	ex_project;
+	fMatrix4x4	ex_full;
+	fMatrix4x4	ex_full_inverse;
 	{
 		f32 _far_	= min(OLES_SUN_LIMIT_27_01_07, g_pGamePersistent->Environment().CurrentEnv.far_plane);
 		ex_project.build_projection	(deg2rad(Device.fFOV/* *Device.fASPECT*/),Device.fASPECT,ps_r2_sun_near,_far_);
@@ -462,18 +465,18 @@ void CRender::render_sun				()
 	// Also compute virtual light position and sector it is inside
 	CFrustum					cull_frustum	;
 	xr_vector<fPlane3>			cull_planes		;
-	Fvector3					cull_COP		;
+	fVector3					cull_COP		;
 	CSector*					cull_sector		;
-	Fmatrix						cull_xform		;
+	fMatrix4x4						cull_xform		;
 	{
 		FPU::m64r					();
 		// Lets begin from base frustum
-		Fmatrix		fullxform_inv	= ex_full_inverse;
+		fMatrix4x4		fullxform_inv	= ex_full_inverse;
 		DumbConvexVolume<false>		hull;
 		{
 			hull.points.reserve		(8);
 			for						(int p=0; p<8; p++)	{
-				Fvector3				xf	= wform		(fullxform_inv,corners[p]);
+				fVector3				xf	= wform		(fullxform_inv,corners[p]);
 				hull.points.push_back	(xf);
 			}
 			for (int plane=0; plane<6; plane++)	{
@@ -510,7 +513,8 @@ void CRender::render_sun				()
 
 		// Create approximate ortho-xform
 		// view: auto find 'up' and 'right' vectors
-		Fmatrix						mdir_View, mdir_Project;
+		fMatrix4x4					mdir_View;
+		fMatrix4x4					mdir_Project;
 		Fvector						L_dir,L_up,L_right,L_pos;
 		L_pos.set					(fuckingsun->position);
 		L_dir.set					(fuckingsun->direction).normalize	();
@@ -778,7 +782,7 @@ void CRender::render_sun				()
 
 		// create clipper
 		DumbClipper	view_clipper;
-		Fmatrix&	xform		= *((Fmatrix*)&m_LightViewProj);
+		fMatrix4x4&	xform		= *((fMatrix4x4*)&m_LightViewProj);
 		view_clipper.frustum.CreateFromMatrix(ex_full,FRUSTUM_P_ALL);
 		for		(int p=0; p<view_clipper.frustum.p_count; p++)
 		{
@@ -789,7 +793,7 @@ void CRender::render_sun				()
 		// 
 		fBox3		b_casters;
 		fBox3		b_receivers;
-		Fvector3	pt			;
+		fVector3	pt			;
 
 		// casters
 		b_casters.invalidate	();
@@ -805,7 +809,9 @@ void CRender::render_sun				()
 		// receivers
 		b_receivers.invalidate	();
 		b_receivers		= view_clipper.clipped_AABB	(s_receivers,xform);
-		Fmatrix	x_project, x_full, x_full_inverse;
+		fMatrix4x4	x_project;
+		fMatrix4x4	x_full;
+		fMatrix4x4	x_full_inverse;
 		{
 			x_project.build_projection	(deg2rad(Device.fFOV/* *Device.fASPECT*/),Device.fASPECT,ps_r2_sun_near,ps_r2_sun_near+tweak_guaranteed_range);
 			x_full.mul					(x_project,Device.mView);
@@ -846,7 +852,7 @@ void CRender::render_sun				()
 	}
 
 	// Finalize & Cleanup
-	fuckingsun->X.D.combine			= *((Fmatrix*)&m_LightViewProj);
+	fuckingsun->X.D.combine			= *((fMatrix4x4*)&m_LightViewProj);
 	s_receivers.clear				();
 	s_casters.clear					();
 
@@ -893,7 +899,9 @@ void CRender::render_sun_near	()
 	D3DXMATRIX		m_LightViewProj		;
 
 	// calculate view-frustum bounds in world space
-	Fmatrix	ex_project, ex_full, ex_full_inverse;
+	fMatrix4x4	ex_project;
+	fMatrix4x4	ex_full;
+	fMatrix4x4	ex_full_inverse;
 	{
 		ex_project.build_projection	(deg2rad(Device.fFOV/* *Device.fASPECT*/),Device.fASPECT,VIEWPORT_NEAR,ps_r2_sun_near); 
 		ex_full.mul					(ex_project,Device.mView);
@@ -904,13 +912,13 @@ void CRender::render_sun_near	()
 	// Also compute virtual light position and sector it is inside
 	CFrustum					cull_frustum;
 	xr_vector<fPlane3>			cull_planes;
-	Fvector3					cull_COP;
+	fVector3					cull_COP;
 	CSector*					cull_sector;
-	Fmatrix						cull_xform;
+	fMatrix4x4						cull_xform;
 	{
 		FPU::m64r					();
 		// Lets begin from base frustum
-		Fmatrix		fullxform_inv	= ex_full_inverse;
+		fMatrix4x4		fullxform_inv	= ex_full_inverse;
 #ifdef	_DEBUG
 		typedef		DumbConvexVolume<true>	t_volume;
 #else
@@ -920,7 +928,7 @@ void CRender::render_sun_near	()
 		{
 			hull.points.reserve		(9);
 			for	(int p=0; p<8; p++)	{
-				Fvector3				xf	= wform		(fullxform_inv,corners[p]);
+				fVector3				xf	= wform		(fullxform_inv,corners[p]);
 				hull.points.push_back	(xf);
 			}
 			for (int plane=0; plane<6; plane++)	{
@@ -961,7 +969,8 @@ void CRender::render_sun_near	()
 
 		// Create approximate ortho-xform
 		// view: auto find 'up' and 'right' vectors
-		Fmatrix						mdir_View, mdir_Project;
+		fMatrix4x4					mdir_View;
+		fMatrix4x4					mdir_Project;
 		Fvector						L_dir,L_up,L_right,L_pos;
 		L_pos.set					(fuckingsun->position);
 		L_dir.set					(fuckingsun->direction).normalize	();
@@ -1000,13 +1009,13 @@ void CRender::render_sun_near	()
 
 		// build viewport xform
 		f32	view_dim			= f32(RImplementation.o.smapsize);
-		Fmatrix	m_viewport			= {
+		fMatrix4x4	m_viewport			= {
 			view_dim/2.f,	0.0f,				0.0f,		0.0f,
 			0.0f,			-view_dim/2.f,		0.0f,		0.0f,
 			0.0f,			0.0f,				1.0f,		0.0f,
 			view_dim/2.f,	view_dim/2.f,		0.0f,		1.0f
 		};
-		Fmatrix				m_viewport_inv;
+		fMatrix4x4				m_viewport_inv;
 		D3DXMatrixInverse	((D3DXMATRIX*)&m_viewport_inv,0,(D3DXMATRIX*)&m_viewport);
 
 		// snap view-position to pixel
@@ -1017,13 +1026,14 @@ void CRender::render_sun_near	()
 		cam_pixel.y			= floorf	(cam_pixel.y);
 		Fvector cam_snapped	= wform		(m_viewport_inv,cam_pixel);
 		Fvector diff;		diff.sub	(cam_snapped,cam_proj				);
-		Fmatrix adjust;		adjust.translate(diff);
+		fMatrix4x4 adjust;
+		adjust.translate(diff);
 		cull_xform.mulA_44	(adjust);
 
 		// calculate scissor
 		fBox3		scissor				;
 		scissor.invalidate();
-		Fmatrix		scissor_xf			;
+		fMatrix4x4		scissor_xf			;
 					scissor_xf.mul		(m_viewport,cull_xform);
 		for (int it=0; it<9; it++)	{
 			Fvector	xf	= wform		(scissor_xf,hull.points[it]);
@@ -1054,7 +1064,7 @@ void CRender::render_sun_near	()
 	r_dsgraph_render_subspace				(cull_sector, &cull_frustum, cull_xform, cull_COP, TRUE);
 
 	// Finalize & Cleanup
-	fuckingsun->X.D.combine					= cull_xform;	//*((Fmatrix*)&m_LightViewProj);
+	fuckingsun->X.D.combine					= cull_xform;	//*((fMatrix4x4*)&m_LightViewProj);
 
 	// Render shadow-map
 	//. !!! We should clip based on shrinked frustum (again)

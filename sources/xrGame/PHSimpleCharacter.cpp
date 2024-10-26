@@ -832,7 +832,8 @@ bool CPHSimpleCharacter::ValidateWalkOnMesh()
 #ifdef DEBUG
 	if(ph_dbg_draw_mask.test(phDbgCharacterControl))
 	{
-		Fmatrix m;m.identity();
+		fMatrix4x4 m;
+		m.identity();
 		m.i.set(sd_dir);
 		m.k.set(accel);
 		m.c.set(center);
@@ -1072,7 +1073,7 @@ void CPHSimpleCharacter::SetMas(dReal mass){
 #ifdef DEBUG
 void CPHSimpleCharacter::OnRender(){
 	if(!b_exist) return;
-	Fmatrix m;
+	fMatrix4x4 m;
 	m.identity();
 	Fvector n=*(Fvector*)m_ground_contact_normal;
 	n.mul(100.f);
@@ -1084,7 +1085,7 @@ void CPHSimpleCharacter::OnRender(){
 
 	Fvector scale;
 	scale.set(0.35f,0.35f,0.35f);
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.identity();
 	M.scale(scale);
 	M.c.set(pos);
@@ -1343,7 +1344,7 @@ u16 CPHSimpleCharacter::RetriveContactBone()
 		CBoneInstance* bone_instances=&K->LL_GetBoneInstance(0);
 		Fvector pos_in_object;
 		pos_in_object.sub(m_collision_damage_info.HitPos(),object->Position());//vector from object center to contact position currently in global frame
-		Fmatrix object_form;
+		fMatrix4x4 object_form;
 		object_form.set(object->XFORM());
 		object_form.transpose();
 		object_form.transform_dir(pos_in_object); //project pos_in_object on object axes now it is position of contact in object frame

@@ -26,7 +26,7 @@ private:
 	u16						camera_bone;
 
 	Fvector					fire_pos, fire_dir;
-	Fmatrix					fire_bone_xform;
+	fMatrix4x4					fire_bone_xform;
 	fVector2				m_dAngle;
 	static void 			BoneCallbackX		(CBoneInstance *B);
 	static void				BoneCallbackY		(CBoneInstance *B);
@@ -37,7 +37,7 @@ public:
 
 	// for shooting object
 	virtual const Fvector&	get_CurrentFirePoint()	{return fire_pos;}
-	virtual const Fmatrix&	get_ParticlesXFORM()	;
+	virtual const fMatrix4x4&	get_ParticlesXFORM()	;
 
 	//////////////////////////////////////////////////
 	// непосредственно обработка стрельбы

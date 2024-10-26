@@ -140,8 +140,8 @@ void CSpaceRestrictor::prepare			() const
 				break;
 			}
 			case 1 : { // box
-				Fmatrix					sphere;
-				const Fmatrix			&box = (*I).data.box;
+				fMatrix4x4				sphere;
+				const fMatrix4x4&		box = (*I).data.box;
 				sphere.mul_43			(XFORM(),box);
 
 				// Build points
@@ -210,7 +210,8 @@ void CSpaceRestrictor::OnRender	()
 	if (!(dbg_net_Draw_Flags.is_any((1<<2)))) return;
 	RCache.OnFrameEnd();
 	Fvector l_half; l_half.set(.5f, .5f, .5f);
-	Fmatrix l_ball, l_box;
+	fMatrix4x4 l_ball;
+	fMatrix4x4 l_box;
 	xr_vector<CCF_Shape::shape_def> &l_shapes = ((CCF_Shape*)CFORM())->Shapes();
 	xr_vector<CCF_Shape::shape_def>::iterator l_pShape;
 	
@@ -250,7 +251,7 @@ void CSpaceRestrictor::OnRender	()
 	
 //DRAW name
 
-		Fmatrix		res;
+		fMatrix4x4		res;
 		res.mul		(Device.mFullTransform, XFORM());
 
 		fVector4	v_res;

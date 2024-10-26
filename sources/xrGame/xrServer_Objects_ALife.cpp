@@ -986,12 +986,13 @@ void CSE_ALifeObjectHangingLamp::FillProps	(pcstr pref, PropItemVec& values)
 }
 
 #define VIS_RADIUS 		0.25f
-void CSE_ALifeObjectHangingLamp::on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const Fmatrix& parent,int priority, bool strictB2F)
+void CSE_ALifeObjectHangingLamp::on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F)
 {
 	inherited1::on_render		(du,owner,bSelected,parent,priority,strictB2F);
 	if ((1==priority)&&(false==strictB2F)){
 		u32 clr					= bSelected?0x00FFFFFF:0x00FFFF00;
-		Fmatrix main_xform, ambient_xform;
+		fMatrix4x4 main_xform;
+		fMatrix4x4 ambient_xform;
 		owner->get_bone_xform		(*light_main_bone,main_xform);
 		main_xform.mulA_43			(parent);
 		if(flags.is(flPointAmbient) ){

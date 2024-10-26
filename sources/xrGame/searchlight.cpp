@@ -32,12 +32,11 @@ void CProjector::Load(pcstr section)
 	inherited::Load(section);
 }
 
-
 void  CProjector::BoneCallbackX(CBoneInstance *B)
 {
 	CProjector	*P = static_cast<CProjector*>(B->Callback_Param);
 
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.setHPB (0.0f, P->_current.pitch,0.0f);
 	B->mTransform.mulB_43(M);
 }
@@ -49,7 +48,7 @@ void  CProjector::BoneCallbackY(CBoneInstance *B)
 	f32 delta_yaw = angle_difference(P->_start.yaw,P->_current.yaw);
 	if (angle_normalize_signed(P->_start.yaw - P->_current.yaw) > 0) delta_yaw = -delta_yaw;
 
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.setHPB (-delta_yaw, 0.0, 0.0f);
 	B->mTransform.mulB_43(M);
 }
@@ -153,7 +152,7 @@ void CProjector::UpdateCL	()
 		}
 
 		CBoneInstance& BI = smart_cast<CKinematics*>(Visual())->LL_GetBoneInstance(guid_bone);
-		Fmatrix M;
+		fMatrix4x4 M;
 
 		M.mul(XFORM(),BI.mTransform);
 

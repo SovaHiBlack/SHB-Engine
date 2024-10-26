@@ -516,10 +516,10 @@ fVector2 CInifile::r_fvector2(pcstr S, pcstr L)
 	sscanf(C, "%f,%f", &V.x, &V.y);
 	return V;
 }
-Fvector3 CInifile::r_fvector3(pcstr S, pcstr L)
+fVector3 CInifile::r_fvector3(pcstr S, pcstr L)
 {
 	pcstr		C = r_string(S, L);
-	Fvector3	V = { 0.f,0.f,0.f };
+	fVector3	V = { 0.0f, 0.0f, 0.0f };
 	sscanf(C, "%f,%f,%f", &V.x, &V.y, &V.z);
 	return V;
 }
@@ -697,7 +697,7 @@ void	CInifile::w_fvector2(pcstr S, pcstr L, const fVector2& V, pcstr comment)
 	w_string(S, L, temp, comment);
 }
 
-void	CInifile::w_fvector3(pcstr S, pcstr L, const Fvector3& V, pcstr comment)
+void	CInifile::w_fvector3(pcstr S, pcstr L, const fVector3& V, pcstr comment)
 {
 	string128 temp; sprintf_s(temp, sizeof(temp), "%f,%f,%f", V.x, V.y, V.z);
 	w_string(S, L, temp, comment);

@@ -31,12 +31,12 @@
 struct XRCORE_API xr_token
 {
 	pcstr		name;
-	int				id;
+	s32				id;
 };
 // ----------------------------------------------------------------------------
-IC pcstr get_token_name(xr_token* tokens, int key)
+IC pcstr get_token_name(xr_token* tokens, s32 key)
 {
-	for (int k = 0; tokens[k].name; k++)
+	for (s32 k = 0; tokens[k].name; k++)
 	{
 		if (key == tokens[k].id)
 		{
@@ -47,9 +47,9 @@ IC pcstr get_token_name(xr_token* tokens, int key)
 	return "";
 }
 // ----------------------------------------------------------------------------
-IC int get_token_id(xr_token* tokens, pcstr key)
+IC s32 get_token_id(xr_token* tokens, pcstr key)
 {
-	for (int k = 0; tokens[k].name; k++)
+	for (s32 k = 0; tokens[k].name; k++)
 	{
 		if (stricmp(tokens[k].name, key) == 0)
 		{
@@ -95,9 +95,11 @@ IC f32	_cos(f32 x)
 IC BOOL		_valid(const f32 x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
-	int			cls = _fpclass(double(x));
+	s32			cls = _fpclass(f64(x));
 	if (cls & (_FPCLASS_SNAN + _FPCLASS_QNAN + _FPCLASS_NINF + _FPCLASS_PINF + _FPCLASS_ND + _FPCLASS_PD))
-		return	false;
+	{
+		return false;
+	}
 
 	/*	*****other cases are*****
 	_FPCLASS_NN Negative normalized non-zero
@@ -105,33 +107,35 @@ IC BOOL		_valid(const f32 x)
 	_FPCLASS_PZ Positive 0 (+0)
 	_FPCLASS_PN Positive normalized non-zero
 	*/
-	return		true;
+	return true;
 }
 
 
 // double
-IC double	_abs(double x)
+IC f64	_abs(f64 x)
 {
 	return fabs(x);
 }
-IC double	_sqrt(double x)
+IC f64	_sqrt(f64 x)
 {
 	return sqrt(x);
 }
-IC double	_sin(double x)
+IC f64	_sin(f64 x)
 {
 	return sin(x);
 }
-IC double	_cos(double x)
+IC f64	_cos(f64 x)
 {
 	return cos(x);
 }
-IC BOOL		_valid(const double x)
+IC BOOL		_valid(const f64 x)
 {
 	// check for: Signaling NaN, Quiet NaN, Negative infinity ( –INF), Positive infinity (+INF), Negative denormalized, Positive denormalized
-	int			cls = _fpclass(x);
+	s32 cls = _fpclass(x);
 	if (cls & (_FPCLASS_SNAN + _FPCLASS_QNAN + _FPCLASS_NINF + _FPCLASS_PINF + _FPCLASS_ND + _FPCLASS_PD))
+	{
 		return false;
+	}
 
 	/*	*****other cases are*****
 	_FPCLASS_NN Negative normalized non-zero
@@ -139,7 +143,7 @@ IC BOOL		_valid(const double x)
 	_FPCLASS_PZ Positive 0 (+0)
 	_FPCLASS_PN Positive normalized non-zero
 	*/
-	return		true;
+	return true;
 }
 
 // int8
@@ -213,7 +217,7 @@ IC s64		_max(s64 x, s64 y)
 IC u32							xr_strlen(pcstr S);
 
 // string management
-IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2)
+IC pcstr						strconcat(s32 dest_sz, pstr dest, pcstr S1, pcstr S2)
 {
 	u32 l1 = xr_strlen(S1);
 	strcpy_s(dest, dest_sz, S1);
@@ -223,7 +227,7 @@ IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2)
 }
 
 // dest = S1+S2+S3
-IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3)
+IC pcstr						strconcat(s32 dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -236,7 +240,7 @@ IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3)
 }
 
 // dest = S1+S2+S3+S4
-IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4)
+IC pcstr						strconcat(s32 dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -251,7 +255,7 @@ IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pc
 }
 
 // dest = S1+S2+S3+S4+S5
-IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4, pcstr S5)
+IC pcstr						strconcat(s32 dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4, pcstr S5)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -268,7 +272,7 @@ IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pc
 }
 
 // dest = S1+S2+S3+S4+S5+S6
-IC pcstr						strconcat(int dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4, pcstr S5, pcstr S6)
+IC pcstr						strconcat(s32 dest_sz, pstr dest, pcstr S1, pcstr S2, pcstr S3, pcstr S4, pcstr S5, pcstr S6)
 {
 	u32 l1 = xr_strlen(S1);
 	u32 l2 = xr_strlen(S2);
@@ -304,11 +308,11 @@ IC pstr xr_strlwr(pstr S)
 }
 
 #ifdef BREAK_AT_STRCMP
-XRCORE_API	int					xr_strcmp(pcstr S1, pcstr S2);
+XRCORE_API	s32					xr_strcmp(pcstr S1, pcstr S2);
 #else
-IC int							xr_strcmp(pcstr S1, pcstr S2)
+IC s32							xr_strcmp(pcstr S1, pcstr S2)
 {
-	return (int)strcmp(S1, S2);
+	return (s32)strcmp(S1, S2);
 }
 #endif
 

@@ -15,7 +15,8 @@ using namespace		Opcode;
 #	define _MM_ALIGN16	__declspec(align(16))
 #endif // _MM_ALIGN16
 
-struct	_MM_ALIGN16		vec_t	: public Fvector3	{ 
+struct	_MM_ALIGN16		vec_t	: public fVector3
+{
 	f32		pad;
 };
 vec_t	vec_c	(f32 _x, f32 _y, f32 _z)	{ vec_t v; v.x=_x;v.y=_y;v.z=_z;v.pad=0; return v; }

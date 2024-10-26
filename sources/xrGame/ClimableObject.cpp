@@ -14,7 +14,7 @@
 static const f32 down_leader_extension_tolerance=0.2f;
 static const f32 up_leader_extension_tolerance=0.0f;
 
-IC void OrientToNorm(const Fvector& normal,Fmatrix& form, fObb& box)
+IC void OrientToNorm(const Fvector& normal, fMatrix4x4& form, fObb& box)
 {
 	
 	Fvector * ax_pointer= (Fvector*)&form;

@@ -205,7 +205,7 @@ void ApplySpawnIniToPhysicShell(CInifile* ini,CPhysicsShell* physics_shell,bool 
 		}
 }
 
-void	get_box(CPhysicsShell*	shell,const	Fmatrix& form,	Fvector&	sz,Fvector&	c)
+void	get_box(CPhysicsShell*	shell,const	fMatrix4x4& form,	Fvector&	sz,Fvector&	c)
 {
 	c.set(0,0,0);
 	for(int i=0;3>i;++i)

@@ -54,11 +54,14 @@ void CRenderTarget::accum_spot	(light* L)
 	RCache.set_CullMode				(CULL_CW);		// back
 
 	// 2D texgens 
-	Fmatrix			m_Texgen;			u_compute_texgen_screen	(m_Texgen	);
-	Fmatrix			m_Texgen_J;			u_compute_texgen_jitter	(m_Texgen_J	);
+	fMatrix4x4			m_Texgen;
+	u_compute_texgen_screen	(m_Texgen	);
+	fMatrix4x4			m_Texgen_J;
+	u_compute_texgen_jitter	(m_Texgen_J	);
 
 	// Shadow xform (+texture adjustment matrix)
-	Fmatrix			m_Shadow,m_Lmap;
+	fMatrix4x4			m_Shadow;
+	fMatrix4x4			m_Lmap;
 	{
 		f32			smapsize			= f32(RImplementation.o.smapsize);
 		f32			fTexelOffs			= (.5f / smapsize);
@@ -67,7 +70,7 @@ void CRenderTarget::accum_spot	(light* L)
 		f32			view_sy				= f32(L->X.S.posY+1)/smapsize;
 		f32			fRange				= f32(1.f)*ps_r2_ls_depth_scale;
 		f32			fBias				= ps_r2_ls_depth_bias;
-		Fmatrix			m_TexelAdjust		= {
+		fMatrix4x4			m_TexelAdjust		= {
 			view_dim/2.f,							0.0f,									0.0f,		0.0f,
 			0.0f,									-view_dim/2.f,							0.0f,		0.0f,
 			0.0f,									0.0f,									fRange,		0.0f,
@@ -75,9 +78,11 @@ void CRenderTarget::accum_spot	(light* L)
 		};
 
 		// compute xforms
-		Fmatrix			xf_world;		xf_world.invert	(Device.mView);
-		Fmatrix			xf_view			= L->X.S.view;
-		Fmatrix			xf_project;		xf_project.mul	(m_TexelAdjust,L->X.S.project);
+		fMatrix4x4			xf_world;
+		xf_world.invert	(Device.mView);
+		fMatrix4x4			xf_view			= L->X.S.view;
+		fMatrix4x4			xf_project;
+		xf_project.mul	(m_TexelAdjust,L->X.S.project);
 		m_Shadow.mul					(xf_view, xf_world);
 		m_Shadow.mulA_44				(xf_project	);
 
@@ -85,7 +90,7 @@ void CRenderTarget::accum_spot	(light* L)
 						view_dim			= 1.f;
 						view_sx				= 0.f;
 						view_sy				= 0.f;
-		Fmatrix			m_TexelAdjust2		= {
+						fMatrix4x4			m_TexelAdjust2		= {
 			view_dim/2.f,							0.0f,									0.0f,		0.0f,
 			0.0f,									-view_dim/2.f,							0.0f,		0.0f,
 			0.0f,									0.0f,									fRange,		0.0f,

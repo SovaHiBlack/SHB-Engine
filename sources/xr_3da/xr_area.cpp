@@ -174,7 +174,9 @@ void CObjectSpace::dbgRender()
 	for (u32 i=0; i<q_debug.boxes.size(); i++)
 	{
 		fObb&		obb		= q_debug.boxes[i];
-		Fmatrix		X,S,R;
+		fMatrix4x4		X;
+		fMatrix4x4		S;
+		fMatrix4x4		R;
 		obb.xform_get(X);
 		RCache.dbg_DrawOBB(X,obb.m_halfsize,D3DCOLOR_XRGB(255,0,0));
 		S.scale		(obb.m_halfsize);
@@ -187,7 +189,7 @@ void CObjectSpace::dbgRender()
 	{
 		std::pair<Fsphere,u32>& P = dbg_S[i];
 		Fsphere&	S = P.first;
-		Fmatrix		M;
+		fMatrix4x4		M;
 		M.scale		(S.R,S.R,S.R);
 		M.translate_over(S.P);
 		RCache.dbg_DrawEllipse(M,P.second);

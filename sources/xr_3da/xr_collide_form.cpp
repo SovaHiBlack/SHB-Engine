@@ -351,7 +351,7 @@ void CCF_Shape::add_sphere	(Fsphere& S )
 	shapes.back().data.sphere.set(S);
 }
 
-void CCF_Shape::add_box		(Fmatrix& B )
+void CCF_Shape::add_box		(fMatrix4x4& B )
 {
 	shapes.push_back(shape_def());
 	shapes.back().type	= 1;
@@ -380,7 +380,7 @@ void CCF_Shape::ComputeBounds()
 		case 1:	// box
 			{
 				Fvector		A,B;
-				Fmatrix&	T		= shapes[el].data.box;
+				fMatrix4x4&	T		= shapes[el].data.box;
 				
 				// Build points
 				A.set( -.5f, -.5f, -.5f); T.transform_tiny	(B,A); bv_box.modify(B);
@@ -413,7 +413,7 @@ BOOL CCF_Shape::Contact		( CObject* O )
 	}else return FALSE;
 	
 	// Get our matrix
-	const Fmatrix& XF	= Owner()->XFORM();
+	const fMatrix4x4& XF	= Owner()->XFORM();
 	
 	// Iterate
 	for (u32 el=0; el<shapes.size(); el++)
@@ -431,8 +431,8 @@ BOOL CCF_Shape::Contact		( CObject* O )
 			break;
 		case 1:	// box
 			{
-				Fmatrix		Q;
-				Fmatrix&	T		= shapes[el].data.box;
+			fMatrix4x4		Q;
+			fMatrix4x4&	T		= shapes[el].data.box;
 				Q.mul_43			( XF,T);
 
 				// Build points

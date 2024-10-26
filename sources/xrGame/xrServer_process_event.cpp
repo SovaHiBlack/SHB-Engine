@@ -164,7 +164,6 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 			u16					id_dest		=	destination, id_src;
 			P.r_u16				(id_src);
 
-
 			xrClientData *l_pC	= ID_to_client(sender);
 
 			CSE_Abstract*		e_dest		= receiver;	// кто умер
@@ -173,10 +172,15 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 				break;
 
 			CSE_Abstract*		e_src		= game->get_entity_from_eid	(id_src	);	// кто убил
-			if (!e_src) {
+			if (!e_src)
+			{
 				xrClientData*	C = (xrClientData*)	game->get_client(id_src);
-				if (C) e_src = C->owner;
-			};
+				if (C)
+				{
+					e_src = C->owner;
+				}
+			}
+
 			VERIFY				(e_src);
 //			R_ASSERT2			(e_dest && e_src, "Killer or/and being killed are offline or not exist at all :(");
 
@@ -184,7 +188,8 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 
 			xrClientData*		c_src		= e_src->owner;				// клиент, чей юнит убил
 
-			if (c_src->owner->ID == id_src) {
+			if (c_src->owner->ID == id_src)
+			{
 				// Main unit
 				P.w_begin			(M_EVENT);
 				P.w_u32				(timestamp);

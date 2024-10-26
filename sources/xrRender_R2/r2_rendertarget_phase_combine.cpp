@@ -47,13 +47,15 @@ void	CRenderTarget::phase_combine	()
 	//}
 
 	// calc m-blur matrices
-	Fmatrix		m_previous, m_current;
+		fMatrix4x4		m_previous;
+		fMatrix4x4		m_current;
 	fVector2	m_blur_scale;
 	{
-		static Fmatrix		m_saved_viewproj;
+		static fMatrix4x4		m_saved_viewproj;
 		
 		// (new-camera) -> (world) -> (old_viewproj)
-		Fmatrix	m_invview;	m_invview.invert	(Device.mView);
+		fMatrix4x4	m_invview;
+		m_invview.invert	(Device.mView);
 		m_previous.mul		(m_saved_viewproj,m_invview);
 		m_current.set		(Device.mProject)		;
 		m_saved_viewproj.set(Device.mFullTransform)	;
@@ -65,7 +67,8 @@ void	CRenderTarget::phase_combine	()
 	if (!_menu_pp)
 	{
 		// Compute params
-		Fmatrix		m_v2w;			m_v2w.invert				(Device.mView		);
+		fMatrix4x4		m_v2w;
+		m_v2w.invert				(Device.mView		);
 		CEnvDescriptorMixer& envdesc= g_pGamePersistent->Environment().CurrentEnv		;
 		const f32 minamb			= 0.001f;
 		fVector4	ambclr			= { _max(envdesc.ambient.x*2,minamb),	_max(envdesc.ambient.y*2,minamb),			_max(envdesc.ambient.z*2,minamb),	0	};
@@ -275,7 +278,7 @@ void	CRenderTarget::phase_combine	()
 		if (0) for (u32 it=0; it<dbg_spheres.size(); it++)
 		{
 			Fsphere				S	= dbg_spheres[it].first;
-			Fmatrix				M;	
+			fMatrix4x4				M;	
 			u32				ccc		= dbg_spheres[it].second.get();
 			M.scale					(S.R,S.R,S.R);
 			M.translate_over		(S.P);

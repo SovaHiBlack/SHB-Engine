@@ -26,7 +26,7 @@ BOOL CRenderDevice::Begin	()
 {
 	HW.Validate		();
 	HRESULT	_hr		= HW.pDevice->TestCooperativeLevel();
-    if (FAILED(_hr))
+	if (FAILED(_hr))
 	{
 		// If the device was lost, do not render until we get it back
 		if		(D3DERR_DEVICELOST==_hr)		{
@@ -96,7 +96,7 @@ void CRenderDevice::End		(void)
 	// end scene
 	RCache.OnFrameEnd	();
 	Memory.dbg_check		();
-    CHK_DX				(HW.pDevice->EndScene());
+	CHK_DX				(HW.pDevice->EndScene());
 
 	HRESULT _hr		= HW.pDevice->Present( NULL, NULL, NULL, NULL );
 	if				(D3DERR_DEVICELOST==_hr)	return;			// we will handle this later
@@ -156,7 +156,7 @@ void CRenderDevice::Run			()
 //	DUMP_PHASE;
 	g_bLoaded		= FALSE;
 	MSG				msg;
-    BOOL			bGotMsg;
+	BOOL			bGotMsg;
 	Log				("Starting engine...");
 	thread_name		("X-RAY Primary thread");
 
@@ -179,25 +179,33 @@ void CRenderDevice::Run			()
 	thread_spawn				(mt_Thread,"X-RAY Secondary thread",0,0);
 
 	// Message cycle
-    PeekMessage					( &msg, NULL, 0U, 0U, PM_NOREMOVE );
+	PeekMessage					( &msg, NULL, 0U, 0U, PM_NOREMOVE );
 
 	seqAppStart.Process			(rp_AppStart);
 
 	CHK_DX(HW.pDevice->Clear(0,0,D3DCLEAR_TARGET,D3DCOLOR_XRGB(0,0,0),1,0));
 
 	while( WM_QUIT != msg.message  )
-    {
-        bGotMsg = PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE );
-        if( bGotMsg )
-        {
-              TranslateMessage	( &msg );
-              DispatchMessage	( &msg );
-         }
-        else
-        {
-			if (b_is_Ready) {
-				if (psDeviceFlags.test(rsStatistic))	g_bEnableStatGather	= TRUE;
-				else									g_bEnableStatGather	= FALSE;
+	{
+		bGotMsg = PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE );
+		if( bGotMsg )
+		{
+			  TranslateMessage	( &msg );
+			  DispatchMessage	( &msg );
+		 }
+		else
+		{
+			if (b_is_Ready)
+			{
+				if (psDeviceFlags.test(rsStatistic))
+				{
+					g_bEnableStatGather = true;
+				}
+				else
+				{
+					g_bEnableStatGather = false;
+				}
+
 				if(g_loading_events.size())
 				{
 					if( g_loading_events.front() () )
@@ -264,8 +272,8 @@ void CRenderDevice::Run			()
 				Sleep		(100);
 			}
 			if (!b_is_Active)	Sleep	(1);
-        }
-    }
+		}
+	}
 	seqAppEnd.Process		(rp_AppEnd);
 
 	// Stop Balance-Thread

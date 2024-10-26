@@ -52,8 +52,8 @@ class CPHJoint: public CPhysicsJoint{
 				void 					SetForceActive				(const int axis_num)																																																	;
 				void 					SetVelocityActive			(const int axis_num)																																																	;
 				void					SetLimitsActive				(int axis_num)																																																			;
-				void 					CalcAxis					(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix)																													;
-				void 					CalcAxis					(int ax_num,Fvector& axis, f32& lo, f32& hi,const Fmatrix& first_matrix,const Fmatrix& second_matrix,const Fmatrix& rotate)																							;
+				void 					CalcAxis					(int ax_num,Fvector& axis, f32& lo, f32& hi,const fMatrix4x4& first_matrix,const fMatrix4x4& second_matrix)																													;
+				void 					CalcAxis					(int ax_num,Fvector& axis, f32& lo, f32& hi,const fMatrix4x4& first_matrix,const fMatrix4x4& second_matrix,const fMatrix4x4& rotate)																							;
 	virtual		u16						GetAxesNumber				()																																																						;
 	virtual		void 					SetAxisSDfactors			(f32 spring_factor, f32 damping_factor,int axis_num)																																									;
 	virtual		void 					SetJointSDfactors			(f32 spring_factor, f32 damping_factor)																																												;
@@ -118,7 +118,7 @@ IC				CPHElement				*PSecondElement 			()																																							
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-IC void own_axis(const Fmatrix& m,Fvector& axis){
+IC void own_axis(const fMatrix4x4& m,Fvector& axis){
 	if(m._11==1.f) {axis.set(1.f,0.f,0.f); return;}
 	f32 k=m._13*m._21-m._11*m._23+m._23;
 
@@ -139,7 +139,7 @@ IC void own_axis(const Fmatrix& m,Fvector& axis){
 	return;
 }
 
-IC void own_axis_angle(const Fmatrix& m,Fvector& axis, f32& angle){
+IC void own_axis_angle(const fMatrix4x4& m,Fvector& axis, f32& angle){
 	own_axis(m,axis);
 	Fvector ort1,ort2;
 	if(!(axis.z==0.f&&axis.y==0.f)){
@@ -162,7 +162,7 @@ IC void own_axis_angle(const Fmatrix& m,Fvector& axis, f32& angle){
 	if(sinus<0.f) angle= -angle;
 }
 
-IC void axis_angleB(const Fmatrix& m, const Fvector& axis, f32& angle){
+IC void axis_angleB(const fMatrix4x4& m, const Fvector& axis, f32& angle){
 
 	Fvector ort1,ort2;
 	if(!(fis_zero(axis.z)&&fis_zero(axis.y))){
@@ -193,7 +193,7 @@ IC void axis_angleB(const Fmatrix& m, const Fvector& axis, f32& angle){
 	if(sinus<0.f) angle= -angle;
 }
 
-IC void axis_angleA(const Fmatrix& m, const Fvector& axis, f32& angle){
+IC void axis_angleA(const fMatrix4x4& m, const Fvector& axis, f32& angle){
 
 	Fvector ort1,ort2,axis_t;
 	m.transform_dir(axis_t,axis);

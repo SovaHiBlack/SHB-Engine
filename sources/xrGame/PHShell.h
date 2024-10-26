@@ -29,8 +29,9 @@ class CPHShell: public CPhysicsShell,public CPHObject {
 
 protected:
 	dSpaceID			    m_space;
+
 public:
-	Fmatrix					m_object_in_root;
+	fMatrix4x4					m_object_in_root;
 	CPHShell								();							
 	virtual ~CPHShell						();
 	virtual void			applyImpulseTrace		(const Fvector& pos, const Fvector& dir, f32 val,const u16 id);
@@ -64,10 +65,10 @@ public:
 
 	virtual void			Update					()	;											
 
-	virtual void			Activate				(const Fmatrix& m0, f32 dt01, const Fmatrix& m2,bool disable=false);
-	virtual void			Activate				(const Fmatrix &transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);
+	virtual void			Activate				(const fMatrix4x4& m0, f32 dt01, const fMatrix4x4& m2,bool disable=false);
+	virtual void			Activate				(const fMatrix4x4& transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable=false);
 	virtual void			Activate				(bool disable=false);
-	virtual void			Activate				(const Fmatrix& start_from, bool disable=false){};
+	virtual void			Activate				(const fMatrix4x4& start_from, bool disable=false){};
 
 private:
 			void			activate				(bool disable);	
@@ -139,8 +140,8 @@ public:
 	virtual		void				get_AngularVel					(Fvector& velocity);
 	virtual		void				set_LinearVel					(const Fvector& velocity);
 	virtual		void				set_AngularVel					(const Fvector& velocity);
-	virtual		void				TransformPosition				(const Fmatrix &form);
-	virtual		void				SetGlTransformDynamic			(const Fmatrix &form);
+	virtual		void				TransformPosition				(const fMatrix4x4& form);
+	virtual		void				SetGlTransformDynamic			(const fMatrix4x4& form);
 	virtual		void				set_ApplyByGravity				(bool flag);
 	virtual		bool				get_ApplyByGravity				();
 	virtual		void				SetMaterial						(u16 m);
@@ -198,14 +199,14 @@ public:
 	virtual		void				set_DisableParams				(const SAllDDOParams& params);
 	virtual		void				UpdateRoot						();
 	virtual		void				SmoothElementsInertia			(f32 k);
-	virtual		void				InterpolateGlobalTransform		(Fmatrix* m);
+	virtual		void				InterpolateGlobalTransform		(fMatrix4x4* m);
 	virtual		void				InterpolateGlobalPosition		(Fvector* v);
-	virtual		void				GetGlobalTransformDynamic		(Fmatrix* m);
+	virtual		void				GetGlobalTransformDynamic		(fMatrix4x4* m);
 	virtual		void				GetGlobalPositionDynamic		(Fvector* v);
-	virtual		Fmatrix&			ObjectInRoot					(){return m_object_in_root;}
-	virtual		void				ObjectToRootForm				(const Fmatrix& form);
+	virtual		fMatrix4x4&			ObjectInRoot					(){return m_object_in_root;}
+	virtual		void				ObjectToRootForm				(const fMatrix4x4& form);
 	virtual		dSpaceID			dSpace							(){return m_space;}
-	virtual		void				SetTransform					(const Fmatrix& m0);
+	virtual		void				SetTransform					(const fMatrix4x4& m0);
 	virtual		void				AddTracedGeom					(u16 element=0,u16 geom=0);
 	virtual		void				SetAllGeomTraced				();
 	virtual		void				SetPrefereExactIntegration		();
@@ -232,10 +233,10 @@ private:
 				void				AddSplitter			  			(CPHShellSplitter::EType type,u16 element,u16 joint)							;
 				void				AddSplitter			  			(CPHShellSplitter::EType type,u16 element,u16 joint,u16 position)				;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				void				AddElementRecursive				(CPhysicsElement* root_e, u16 id,Fmatrix global_parent,u16 element_number,bool *vis_check)		;
-				void				PlaceBindToElFormsRecursive		(Fmatrix parent,u16 id,u16 element, flags64& mask);
+				void				AddElementRecursive				(CPhysicsElement* root_e, u16 id, fMatrix4x4 global_parent,u16 element_number,bool *vis_check)		;
+				void				PlaceBindToElFormsRecursive		(fMatrix4x4 parent,u16 id,u16 element, flags64& mask);
 				void				BonesBindCalculate				(u16 id_from=0);
-				void				BonesBindCalculateRecursive		(Fmatrix parent,u16 id);
+				void				BonesBindCalculateRecursive		(fMatrix4x4 parent,u16 id);
 				void				ZeroCallbacksRecursive			(u16 id)																		;
 				void				SetCallbacksRecursive			(u16 id,u16 element)															;
 				void				ResetCallbacksRecursive			(u16 id,u16 element, flags64& mask)												;

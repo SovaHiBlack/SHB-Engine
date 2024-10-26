@@ -52,23 +52,20 @@ element_fracture CPHFracturesHolder::SplitFromEnd(CPHElement* element,u16 fractu
 	const CBoneInstance& new_bi=pKinematics->LL_GetBoneInstance(new_element->m_SelfID);
 	const CBoneInstance& old_bi=pKinematics->LL_GetBoneInstance(element->m_SelfID);
 
-
-
-	Fmatrix shift_pivot;
+	fMatrix4x4 shift_pivot;
 	shift_pivot.set		(new_bi.mTransform);
 	shift_pivot.invert	();
 	shift_pivot.mulB_43	(old_bi.mTransform);
 	/////////////////////////////////////////////
 	f32 density=element->getDensity();
 	new_element->SetShell(element->PHShell());
-	Fmatrix current_transtform;
+	fMatrix4x4 current_transtform;
 	element->GetGlobalTransformDynamic(&current_transtform);
 	InitNewElement(new_element,shift_pivot,density);
-	Fmatrix shell_form;
+	fMatrix4x4 shell_form;
 	element->PHShell()->GetGlobalTransformDynamic(&shell_form);
 	current_transtform.mulA_43	(shell_form);
 	new_element->SetTransform	(current_transtform);
-
 
 	//dBodyID new_element_body=new_element->get_body();
 	//dBodyAddForce(new_element_body,fract_i->m_pos_in_element[0],
@@ -157,7 +154,7 @@ void CPHFracturesHolder::SplitProcess(CPHElement* element,ELEMENT_PAIR_VECTOR &n
 	}
 }
 
-void CPHFracturesHolder::InitNewElement(CPHElement* element,const Fmatrix &shift_pivot, f32 density)
+void CPHFracturesHolder::InitNewElement(CPHElement* element,const fMatrix4x4& shift_pivot, f32 density)
 {
 element->CreateSimulBase();
 element->ReInitDynamics(shift_pivot,density);

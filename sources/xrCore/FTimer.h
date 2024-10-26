@@ -183,7 +183,7 @@ public:
 	}
 };
 
-extern XRCORE_API BOOL			g_bEnableStatGather;
+extern XRCORE_API bool			g_bEnableStatGather;
 class XRCORE_API CStatTimer
 {
 public:

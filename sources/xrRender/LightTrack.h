@@ -68,7 +68,7 @@ public:
 		if (dwFrameSmooth!=Device.dwFrame)		update_smooth();
 		return									sun_smooth;
 	}
-	ICF Fvector3&			get_approximate		()	{
+	ICF fVector3&			get_approximate		()	{
 		if (dwFrameSmooth!=Device.dwFrame)		update_smooth();
 		return									approximate;
 	}

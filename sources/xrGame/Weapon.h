@@ -266,11 +266,11 @@ public:
 protected:
 	pcstr					m_strap_bone0;
 	pcstr					m_strap_bone1;
-	Fmatrix					m_StrapOffset;
+	fMatrix4x4					m_StrapOffset;
 	bool					m_strapped_mode;
 	bool					m_can_be_strapped;
 
-	Fmatrix					m_Offset;
+	fMatrix4x4					m_Offset;
 	// 0-используется без участия рук, 1-одна рука, 2-две руки
 	EHandDependence			eHandDependence;
 	bool					m_bIsSingleHanded;
@@ -284,7 +284,7 @@ private:
 	//текущее положение и напрвление для партиклов
 	struct					_firedeps
 	{
-		Fmatrix				m_FireParticlesXForm;	//направление для партиклов огня и дыма
+		fMatrix4x4				m_FireParticlesXForm;	//направление для партиклов огня и дыма
 		Fvector				vLastFP, vLastFP2	;	//огня
 		Fvector				vLastFD				;	// direction
 		Fvector				vLastSP				;	//гильз	
@@ -300,9 +300,9 @@ private:
 
 protected:
 	virtual void			UpdateFireDependencies_internal	();
-	virtual void			UpdatePosition			(const Fmatrix& transform);	//.
+	virtual void			UpdatePosition			(const fMatrix4x4& transform);	//.
 	virtual void			UpdateXForm				();
-	virtual void			UpdateHudAdditonal		(Fmatrix&);
+	virtual void			UpdateHudAdditonal		(fMatrix4x4&);
 	IC		void			UpdateFireDependencies	()			{ if (dwFP_Frame==Device.dwFrame) return; UpdateFireDependencies_internal(); };
 
 	virtual void			LoadFireParams		(pcstr section, pcstr prefix);
@@ -315,7 +315,7 @@ public:
 
 	virtual const Fvector&	get_CurrentFirePoint	()			{ return get_LastFP();				}
 	virtual const Fvector&	get_CurrentFirePoint2	()			{ return get_LastFP2();				}
-	virtual const Fmatrix&	get_ParticlesXFORM		()			{ UpdateFireDependencies(); return m_firedeps.m_FireParticlesXForm;	}
+	virtual const fMatrix4x4&	get_ParticlesXFORM		()			{ UpdateFireDependencies(); return m_firedeps.m_FireParticlesXForm;	}
 	virtual void			ForceUpdateFireParticles();
 
 	//////////////////////////////////////////////////////////////////////////

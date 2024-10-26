@@ -297,7 +297,7 @@ Fvector	CScriptGameObject::bone_position	(pcstr bone_name) const
 	else
 		bone_id			= smart_cast<CKinematics*>(object().Visual())->LL_GetBoneRoot();
 
-	Fmatrix				matrix;
+	fMatrix4x4				matrix;
 	matrix.mul_43		(object().XFORM(),smart_cast<CKinematics*>(object().Visual())->LL_GetBoneInstance(bone_id).mTransform);
 	return				(matrix.c);
 }

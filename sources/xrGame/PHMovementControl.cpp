@@ -877,11 +877,11 @@ Fvector CPHMovementControl::PHCaptureGetNearestElemPos(const CPhysicsShellHolder
 	return v;
 }
 
-Fmatrix CPHMovementControl::PHCaptureGetNearestElemTransform(CPhysicsShellHolder* object)
+fMatrix4x4 CPHMovementControl::PHCaptureGetNearestElemTransform(CPhysicsShellHolder* object)
 {
 	CPhysicsElement *ph_elem =  object->m_pPhysicsShell->NearestToPoint(vPosition);
 
-	Fmatrix m;
+	fMatrix4x4 m;
 	ph_elem->GetGlobalTransformDynamic(&m);
 
 	return m;

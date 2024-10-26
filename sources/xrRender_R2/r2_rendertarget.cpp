@@ -58,13 +58,13 @@ void	CRenderTarget::u_stencil_optimize	(BOOL		common_stencil)
 }
 
 // 2D texgen (texture adjustment matrix)
-void	CRenderTarget::u_compute_texgen_screen	(Fmatrix& m_Texgen)
+void	CRenderTarget::u_compute_texgen_screen	(fMatrix4x4& m_Texgen)
 {
 	f32	_w						= f32(Device.dwWidth);
 	f32	_h						= f32(Device.dwHeight);
 	f32	o_w						= (.5f / _w);
 	f32	o_h						= (.5f / _h);
-	Fmatrix			m_TexelAdjust		= 
+	fMatrix4x4			m_TexelAdjust		=
 	{
 		0.5f,				0.0f,				0.0f,			0.0f,
 		0.0f,				-0.5f,				0.0f,			0.0f,
@@ -75,10 +75,10 @@ void	CRenderTarget::u_compute_texgen_screen	(Fmatrix& m_Texgen)
 }
 
 // 2D texgen for jitter (texture adjustment matrix)
-void	CRenderTarget::u_compute_texgen_jitter	(Fmatrix&		m_Texgen_J)
+void	CRenderTarget::u_compute_texgen_jitter	(fMatrix4x4&		m_Texgen_J)
 {
 	// place into	0..1 space
-	Fmatrix			m_TexelAdjust		= 
+	fMatrix4x4			m_TexelAdjust		=
 	{
 		0.5f,				0.0f,				0.0f,			0.0f,
 		0.0f,				-0.5f,				0.0f,			0.0f,

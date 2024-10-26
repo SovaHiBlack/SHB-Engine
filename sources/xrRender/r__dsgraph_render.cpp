@@ -365,8 +365,8 @@ void R_dsgraph_structure::r_dsgraph_render_hud	()
 	ENGINE_API extern f32		psHUD_FOV;
 
 	// Change projection
-	Fmatrix Pold				= Device.mProject;
-	Fmatrix FTold				= Device.mFullTransform;
+	fMatrix4x4 Pold				= Device.mProject;
+	fMatrix4x4 FTold				= Device.mFullTransform;
 	Device.mProject.build_projection(
 		deg2rad(psHUD_FOV*Device.fFOV /* *Device.fASPECT*/ ), 
 		Device.fASPECT, VIEWPORT_NEAR, 
@@ -429,7 +429,7 @@ void	R_dsgraph_structure::r_dsgraph_render_distort	()
 
 //////////////////////////////////////////////////////////////////////////
 // sub-space rendering - shortcut to render with frustum extracted from matrix
-void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, Fmatrix& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals)
+void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, fMatrix4x4& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals)
 {
 	CFrustum	temp;
 	temp.CreateFromMatrix			(mCombined,	FRUSTUM_P_ALL);
@@ -437,7 +437,7 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, Fm
 }
 
 // sub-space rendering - main procedure
-void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CFrustum* _frustum, Fmatrix& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals)
+void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CFrustum* _frustum, fMatrix4x4& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals)
 {
 	VERIFY							(_sector);
 	RImplementation.marker			++;			// !!! critical here

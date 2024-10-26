@@ -42,15 +42,15 @@ s16	q_tc	(f32 v)
 	return	s16	(_v);
 }
 #ifdef _DEBUG
-f32 errN	(Fvector3 v, u8* qv)
+f32 errN	(fVector3 v, u8* qv)
 {
-	Fvector3	uv;	
+	fVector3	uv;	
 	uv.set		(f32(qv[0]),f32(qv[1]),f32(qv[2])).div(255.f).mul(2.f).sub(1.f);
 	uv.normalize();
 	return		v.dotproduct(uv);
 }
 #else
-f32 errN	(Fvector3 v, u8* qv)	{ return 0; }
+f32 errN	(fVector3 v, u8* qv)	{ return 0; }
 #endif
 
 static	D3DVERTEXELEMENT9 dwDecl_01W	[] =	// 24bytes
@@ -69,7 +69,7 @@ struct	vertHW_1W
 	u32			_T		;
 	u32			_B		;
 	s16			_tc		[2];
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, fVector2& tc, int index)
+	void set	(fVector3& P, fVector3 N, fVector3 T, fVector3 B, fVector2& tc, int index)
 	{
 		N.normalize_safe();
 		T.normalize_safe();
@@ -112,7 +112,7 @@ struct	vertHW_2W
 	u32			_T		;
 	u32			_B		;
 	s16			_tc_i	[4];
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, fVector2& tc, int index0, int index1, f32 w)
+	void set	(fVector3& P, fVector3 N, fVector3 T, fVector3 B, fVector2& tc, int index0, int index1, f32 w)
 	{
 		N.normalize_safe	();
 		T.normalize_safe	();
@@ -157,7 +157,7 @@ struct	vertHW_NW
 	u32			_weights;		// weights,				4*1		=	4b, 28b
 	s16			_tc		[2];	// qtc,					2*2		=	4b,	32b
 	//								*total*						=	32b
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, fVector2& tc, int index0, int index1, f32 w)
+	void set	(fVector3& P, fVector3 N, fVector3 T, fVector3 B, fVector2& tc, int index0, int index1, f32 w)
 	{
 		N.normalize_safe	();
 		T.normalize_safe	();
@@ -227,7 +227,8 @@ void CSkeletonX::_Render	(ref_geom& hGeom, u32 vCount, u32 iOffset, u32 pCount)
 		break;
 	case RM_SINGLE:	
 		{
-			Fmatrix	W;	W.mul_43	(RCache.xforms.m_w,Parent->LL_GetTransform_R	(u16(RMS_boneid)));
+		fMatrix4x4	W;
+		W.mul_43	(RCache.xforms.m_w,Parent->LL_GetTransform_R	(u16(RMS_boneid)));
 			RCache.set_xform_world	(W);
 			RCache.set_Geometry		(hGeom);
 			RCache.Render			(D3DPT_TRIANGLELIST,0,0,vCount,iOffset,pCount);
@@ -241,7 +242,7 @@ void CSkeletonX::_Render	(ref_geom& hGeom, u32 vCount, u32 iOffset, u32 pCount)
 			ref_constant			array	= RCache.get_c				(s_bones_array_const);
 			u32						count	= RMS_bonecount;
 			for (u32 mid = 0; mid<count; mid++)	{
-				Fmatrix&	M				= Parent->LL_GetTransform_R				(u16(mid));
+				fMatrix4x4&	M				= Parent->LL_GetTransform_R				(u16(mid));
 				u32			id				= mid*3;
 				RCache.set_ca	(&*array,id+0,M._11,M._21,M._31,M._41);
 				RCache.set_ca	(&*array,id+1,M._12,M._22,M._32,M._42);
@@ -421,7 +422,7 @@ BOOL	CSkeletonX::_PickBoneSoft1W	(Fvector& normal, f32& dist, const Fvector& S, 
 		u32 idx			= (*it)*3;
 		for (u32 k=0; k<3; k++){
 			vertBoned1W& vert		= Vertices1W[indices[idx+k]];
-			const Fmatrix& xform	= Parent->LL_GetBoneInstance((u16)vert.matrix).mRenderTransform; 
+			const fMatrix4x4& xform	= Parent->LL_GetBoneInstance((u16)vert.matrix).mRenderTransform;
 			xform.transform_tiny	(p[k],vert.P);
 		}
 		f32 u;
@@ -446,8 +447,8 @@ BOOL CSkeletonX::_PickBoneSoft2W	(Fvector& normal, f32& dist, const Fvector& S, 
 		for (u32 k=0; k<3; k++){
 			Fvector		P0,P1;
 			vertBoned2W& vert		= Vertices2W[indices[idx+k]];
-			Fmatrix& xform0			= Parent->LL_GetBoneInstance(vert.matrix0).mRenderTransform; 
-			Fmatrix& xform1			= Parent->LL_GetBoneInstance(vert.matrix1).mRenderTransform; 
+			fMatrix4x4& xform0			= Parent->LL_GetBoneInstance(vert.matrix0).mRenderTransform;
+			fMatrix4x4& xform1			= Parent->LL_GetBoneInstance(vert.matrix1).mRenderTransform;
 			xform0.transform_tiny	(P0,vert.P);
 			xform1.transform_tiny	(P1,vert.P);
 			p[k].lerp				(P0,P1,vert.w);
@@ -465,7 +466,7 @@ BOOL CSkeletonX::_PickBoneSoft2W	(Fvector& normal, f32& dist, const Fvector& S, 
 }
 
 // Fill Vertices
-void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16* indices, CBoneData::FacesVec& faces)
+void CSkeletonX::_FillVerticesSoft1W(const fMatrix4x4& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY				(*Vertices1W);
 	for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
@@ -477,7 +478,7 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 			F.bone_id[k][0]			= (u16)vert.matrix;
 			F.bone_id[k][1]			= F.bone_id[k][0];
 			F.weight[k]				= 0.f;
-			const Fmatrix& xform	= Parent->LL_GetBoneInstance(F.bone_id[k][0]).mRenderTransform; 
+			const fMatrix4x4& xform	= Parent->LL_GetBoneInstance(F.bone_id[k][0]).mRenderTransform;
 			F.vert[k].set			(vert.P);
 			xform.transform_tiny	(p[k],F.vert[k]);
 		}
@@ -498,7 +499,7 @@ void CSkeletonX::_FillVerticesSoft1W(const Fmatrix& view, CSkeletonWallmark& wm,
 		}
 	}
 }
-void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16* indices, CBoneData::FacesVec& faces)
+void CSkeletonX::_FillVerticesSoft2W(const fMatrix4x4& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16* indices, CBoneData::FacesVec& faces)
 {
 	VERIFY				(*Vertices2W);
 	for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
@@ -511,8 +512,8 @@ void CSkeletonX::_FillVerticesSoft2W(const Fmatrix& view, CSkeletonWallmark& wm,
 			F.bone_id[k][0]			= vert.matrix0;
 			F.bone_id[k][1]			= vert.matrix1;
 			F.weight[k]				= vert.w;
-			Fmatrix& xform0			= Parent->LL_GetBoneInstance(F.bone_id[k][0]).mRenderTransform; 
-			Fmatrix& xform1			= Parent->LL_GetBoneInstance(F.bone_id[k][1]).mRenderTransform; 
+			fMatrix4x4& xform0			= Parent->LL_GetBoneInstance(F.bone_id[k][0]).mRenderTransform;
+			fMatrix4x4& xform1			= Parent->LL_GetBoneInstance(F.bone_id[k][1]).mRenderTransform;
 			F.vert[k].set			(vert.P);		
 			xform0.transform_tiny	(P0,F.vert[k]);
 			xform1.transform_tiny	(P1,F.vert[k]);

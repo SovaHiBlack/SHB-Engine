@@ -15,7 +15,7 @@
 void 	CWeaponStatMgun::BoneCallbackX		(CBoneInstance *B)
 {
 	CWeaponStatMgun	*P = static_cast<CWeaponStatMgun*>(B->Callback_Param);
-	Fmatrix rX;
+	fMatrix4x4 rX;
 	rX.rotateX		(P->m_cur_x_rot);
 	B->mTransform.mulB_43(rX);
 }
@@ -23,7 +23,7 @@ void 	CWeaponStatMgun::BoneCallbackX		(CBoneInstance *B)
 void 	CWeaponStatMgun::BoneCallbackY		(CBoneInstance *B)
 {
 	CWeaponStatMgun	*P = static_cast<CWeaponStatMgun*>(B->Callback_Param);
-	Fmatrix rY;
+	fMatrix4x4 rY;
 	rY.rotateY		(P->m_cur_y_rot);
 	B->mTransform.mulB_43(rY);
 }
@@ -97,7 +97,7 @@ BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)
 	CBoneData& bdY			= K->LL_GetData(m_rotate_y_bone); VERIFY(bdY.IK_data.type==jtJoint);
 	m_lim_y_rot.set			(bdY.IK_data.limits[1].limit.x,bdY.IK_data.limits[1].limit.y);
 
-	xr_vector<Fmatrix> matrices;
+	xr_vector<fMatrix4x4> matrices;
 	K->LL_GetBindTransform	(matrices);
 	m_i_bind_x_xform.invert	(matrices[m_rotate_x_bone]);
 	m_i_bind_y_xform.invert	(matrices[m_rotate_y_bone]);
@@ -174,7 +174,7 @@ void CWeaponStatMgun::UpdateBarrelDir()
 	m_fire_bone_xform.transform_dir	(m_fire_dir);
 
 	m_allow_fire		= true;
-	Fmatrix				XFi;
+	fMatrix4x4				XFi;
 	XFi.invert			(XFORM());
 	Fvector				dep;
 	XFi.transform_dir	(dep,m_destEnemyDir);
@@ -206,7 +206,7 @@ void CWeaponStatMgun::cam_Update			(f32 dt, f32 fov)
 	CKinematics* K					= smart_cast<CKinematics*>(Visual());
 	K->CalculateBones_Invalidate	();
 	K->CalculateBones				();
-	const Fmatrix& C				= K->LL_GetTransform(m_camera_bone);
+	const fMatrix4x4& C				= K->LL_GetTransform(m_camera_bone);
 	XFORM().transform_tiny			(P,C.c);
 
 	Fvector d = C.k;

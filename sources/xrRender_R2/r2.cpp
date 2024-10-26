@@ -381,7 +381,7 @@ void					CRender::add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm)
 {
 	Wallmarks->AddSkeletonWallmark				(wm);
 }
-void					CRender::add_SkeletonWallmark	(const Fmatrix* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size)
+void					CRender::add_SkeletonWallmark	(const fMatrix4x4* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size)
 {
 	Wallmarks->AddSkeletonWallmark				(xf, obj, sh, start, dir, size);
 }
