@@ -79,7 +79,7 @@ BOOL CClimableObject::	net_Spawn			( CSE_Abstract* DC)
 {
 	CSE_Abstract				*e = (CSE_Abstract*)(DC);
 	CSE_ALifeObjectClimable	*CLB=smart_cast<CSE_ALifeObjectClimable*>(e);
-	const Fmatrix& b=CLB->shapes[0].data.box;
+	const fMatrix4x4& b=CLB->shapes[0].data.box;
 	m_box.m_halfsize.set(b._11,b._22,b._33);
 	m_radius=_max(_max(m_box.m_halfsize.x,m_box.m_halfsize.y),m_box.m_halfsize.z);
 
@@ -351,7 +351,8 @@ void CClimableObject ::OnRender()
 {
 	if (!dbg_net_Draw_Flags.test(1<<10)&&!ph_dbg_draw_mask.test(phDbgLadder)) return;
 
-	Fmatrix form;m_box.xform_get(form);
+	fMatrix4x4 form;
+	m_box.xform_get(form);
 	//form.mulA(XFORM());
 	Level().debug_renderer().draw_obb(XFORM(),m_box.m_halfsize,D3DCOLOR_XRGB(0,0,255));
 	Fvector p1,p2,d;

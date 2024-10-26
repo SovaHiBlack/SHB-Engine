@@ -130,8 +130,8 @@ public:
 
 	virtual void __stdcall DrawGrid	();
 	virtual void __stdcall DrawPivot	(const Fvector& pos, f32 sz=5.0f);
-	virtual void __stdcall DrawAxis	(const Fmatrix& T);
-	virtual void __stdcall DrawObjectAxis(const Fmatrix& T, f32 sz, BOOL sel);
+	virtual void __stdcall DrawAxis	(const fMatrix4x4& T);
+	virtual void __stdcall DrawObjectAxis(const fMatrix4x4& T, f32 sz, BOOL sel);
 	virtual void __stdcall DrawSelectionRect(const iVector2& m_SelStart, const iVector2& m_SelEnd);
 
 	virtual void __stdcall DrawPrimitiveL(D3DPRIMITIVETYPE pt, u32 pc, Fvector* vertices, int vc, u32 color, BOOL bCull, BOOL bCycle);

@@ -234,7 +234,7 @@ void CDrawUtilities::OnDeviceDestroy()
 
 void CDrawUtilities::DrawSpotLight(const Fvector& p, const Fvector& d, f32 range, f32 phi, u32 clr)
 {
-	Fmatrix T;
+	fMatrix4x4 T;
 	Fvector p1;
 	f32 H;
 	f32 P;
@@ -270,7 +270,7 @@ void CDrawUtilities::DrawDirectionalLight(const Fvector& p, const Fvector& d, f3
 {
 	f32 r=radius*0.71f;
 	Fvector R,N,D; D.normalize(d);
-	Fmatrix rot;
+	fMatrix4x4 rot;
 
 	N.set		(0,1,0);
 	if (_abs(D.y)>0.99f) N.set(1,0,0);
@@ -663,7 +663,9 @@ void CDrawUtilities::DrawBox(const Fvector& offs, const Fvector& Size, BOOL bSol
 
 void CDrawUtilities::DrawOBB(const Fmatrix& parent, const fObb& box, u32 clr_s, u32 clr_w)
 {
-	Fmatrix			R,S,X;
+	fMatrix4x4			R;
+	fMatrix4x4			S;
+	fMatrix4x4			X;
 	box.xform_get	(R);
 	S.scale			(box.m_halfsize.x*2.f,box.m_halfsize.y*2.f,box.m_halfsize.z*2.f);
 	X.mul_43		(R,S);
@@ -673,9 +675,10 @@ void CDrawUtilities::DrawOBB(const Fmatrix& parent, const fObb& box, u32 clr_s, 
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawAABB(const Fmatrix& parent, const Fvector& center, const Fvector& size, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawAABB(const fMatrix4x4& parent, const Fvector& center, const Fvector& size, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
-	Fmatrix			R,S;
+	fMatrix4x4			R;
+	fMatrix4x4		S;
 	S.scale			(size.x*2.f,size.y*2.f,size.z*2.f);
 	S.translate_over(center);
 	R.mul_43		(parent,S); 
@@ -685,7 +688,7 @@ void CDrawUtilities::DrawAABB(const Fmatrix& parent, const Fvector& center, cons
 
 void CDrawUtilities::DrawAABB(const Fvector& p0, const Fvector& p1, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
-	Fmatrix			R;
+	fMatrix4x4			R;
 	Fvector	C; C.set((p1.x+p0.x)*0.5f,(p1.y+p0.y)*0.5f,(p1.z+p0.z)*0.5f);
 	R.scale			(_abs(p1.x-p0.x),_abs(p1.y-p0.y),_abs(p1.z-p0.z));
 	R.translate_over(C);
@@ -693,9 +696,9 @@ void CDrawUtilities::DrawAABB(const Fvector& p0, const Fvector& p1, u32 clr_s, u
 	DrawIdentBox	(bSolid,bWire,clr_s,clr_w);
 }
 
-void CDrawUtilities::DrawSphere(const Fmatrix& parent, const Fvector& center, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawSphere(const fMatrix4x4& parent, const Fvector& center, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
-	Fmatrix B;
+	fMatrix4x4 B;
 	B.scale				(radius,radius,radius);
 	B.translate_over	(center);
 	B.mulA_43			(parent);
@@ -766,9 +769,9 @@ void CDrawUtilities::DD_DrawFace_end()
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawCylinder(const Fmatrix& parent, const Fvector& center, const Fvector& dir, f32 height, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawCylinder(const fMatrix4x4& parent, const Fvector& center, const Fvector& dir, f32 height, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
-	Fmatrix mScale;
+	fMatrix4x4 mScale;
 	mScale.scale		(2.f*radius,2.f*radius,height);
 	
 	// build final rotation / translation
@@ -778,23 +781,24 @@ void CDrawUtilities::DrawCylinder(const Fmatrix& parent, const Fvector& center, 
 	L_right.crossproduct(L_up,L_dir);           L_right.normalize       ();
 	L_up.crossproduct   (L_dir,L_right);        L_up.normalize          ();
 
-	Fmatrix         	mR;
+	fMatrix4x4         	mR;
 	mR.i                = L_right;              mR._14          = 0;
 	mR.j                = L_up;                 mR._24          = 0;
 	mR.k                = L_dir;                mR._34          = 0;
 	mR.c                = center;		  		mR._44          = 1;
 
 	// final xform
-	Fmatrix xf;			xf.mul (mR,mScale);
+	fMatrix4x4 xf;
+	xf.mul (mR,mScale);
 	xf.mulA_43			(parent);
 	RCache.set_xform_world(xf);
 	DrawIdentCylinder	(bSolid,bWire,clr_s,clr_w);
 }
 //----------------------------------------------------
 
-void CDrawUtilities::DrawCone	(const Fmatrix& parent, const Fvector& apex, const Fvector& dir, f32 height, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
+void CDrawUtilities::DrawCone	(const fMatrix4x4& parent, const Fvector& apex, const Fvector& dir, f32 height, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)
 {
-	Fmatrix mScale;
+	fMatrix4x4 mScale;
 	mScale.scale		(2.f*radius,2.f*radius,height);
 	
 	// build final rotation / translation
@@ -804,14 +808,15 @@ void CDrawUtilities::DrawCone	(const Fmatrix& parent, const Fvector& apex, const
 	L_right.crossproduct(L_up,L_dir);           L_right.normalize       ();
 	L_up.crossproduct   (L_dir,L_right);        L_up.normalize          ();
 
-	Fmatrix         	mR;
+	fMatrix4x4         	mR;
 	mR.i                = L_right;              mR._14          = 0;
 	mR.j                = L_up;                 mR._24          = 0;
 	mR.k                = L_dir;                mR._34          = 0;
 	mR.c                = apex;			  		mR._44          = 1;
 
 	// final xform
-	Fmatrix xf;			xf.mul (mR,mScale);
+	fMatrix4x4 xf;
+	xf.mul (mR,mScale);
 	xf.mulA_43			(parent);
 	RCache.set_xform_world(xf);
 	DrawIdentCone		(bSolid,bWire,clr_s,clr_w);
@@ -827,7 +832,7 @@ void CDrawUtilities::DrawPlane	(const Fvector& p, const Fvector& n, const fVecto
 	L_right.crossproduct(L_up,L_dir);           L_right.normalize	();
 	L_dir.crossproduct  (L_right,L_up);        	L_dir.normalize		();
 
-	Fmatrix         	mR;
+	fMatrix4x4         	mR;
 	mR.i                = L_right;              mR._14          = 0;
 	mR.j                = L_up;                 mR._24          = 0;
 	mR.k                = L_dir;                mR._34          = 0;
@@ -867,7 +872,7 @@ void CDrawUtilities::DrawPlane	(const Fvector& p, const Fvector& n, const fVecto
 
 void CDrawUtilities::DrawPlane  (const Fvector& center, const fVector2& scale, const Fvector& rotate, u32 clr_s, u32 clr_w, BOOL bCull, BOOL bSolid, BOOL bWire)
 {
-	Fmatrix M;
+	fMatrix4x4 M;
 	M.setHPB		(rotate.y,rotate.x,rotate.z);
 	M.translate_over(center);
 	// fill VB
@@ -949,7 +954,7 @@ void CDrawUtilities::DrawCross(const Fvector& p, f32 szx1, f32 szy1, f32 szz1, f
 	pv->set(p.x,p.y,p.z+szz2,clr); pv++;
 	pv->set(p.x,p.y,p.z-szz1,clr); pv++;
 	if (bRot45){
-		Fmatrix M;
+		fMatrix4x4 M;
 		M.setHPB(PI_DIV_4,PI_DIV_4,PI_DIV_4);
 		for(int i=0;i<6;i++,pv++){
 			pv->p.sub((pv-6)->p,p);
@@ -968,7 +973,7 @@ void CDrawUtilities::DrawPivot(const Fvector& pos, f32 sz){
 	DrawCross(pos, sz, sz, sz, sz, sz, sz, 0xFF7FFF7F);
 }
 
-void CDrawUtilities::DrawAxis(const Fmatrix& T)
+void CDrawUtilities::DrawAxis(const fMatrix4x4& T)
 {
 	_VertexStream*	Stream	= &RCache.Vertex;
 	Fvector p[6];
@@ -1014,7 +1019,7 @@ void CDrawUtilities::DrawAxis(const Fmatrix& T)
 	m_Font->Out(p[5].x-1,p[5].y-1,"z");
 }
 
-void CDrawUtilities::DrawObjectAxis(const Fmatrix& T, f32 sz, BOOL sel)
+void CDrawUtilities::DrawObjectAxis(const fMatrix4x4& T, f32 sz, BOOL sel)
 {
 	VERIFY( Device.b_is_Ready );
 	_VertexStream*	Stream	= &RCache.Vertex;
@@ -1068,7 +1073,7 @@ void CDrawUtilities::DrawGrid()
 	for (FLvertexIt v_it=m_GridPoints.begin(); v_it!=m_GridPoints.end(); v_it++,pv++) pv->set(*v_it);
 	Stream->Unlock(m_GridPoints.size(),vs_L->vb_stride);
 	// Render it as triangle list
-	Fmatrix ddd;
+	fMatrix4x4 ddd;
 	ddd.identity();
 	RCache.set_xform_world(ddd);
 	DU_DRAW_SH(Device.m_WireShader);

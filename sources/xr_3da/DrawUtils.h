@@ -58,8 +58,8 @@ public:
 
 	virtual void __stdcall DrawGrid				()=0;
 	virtual void __stdcall DrawPivot		   	(const Fvector& pos, f32 sz=5.0f)=0;
-	virtual void __stdcall DrawAxis				(const Fmatrix& T)=0;
-	virtual void __stdcall DrawObjectAxis	   	(const Fmatrix& T, f32 sz, BOOL sel)=0;
+	virtual void __stdcall DrawAxis				(const fMatrix4x4& T)=0;
+	virtual void __stdcall DrawObjectAxis	   	(const fMatrix4x4& T, f32 sz, BOOL sel)=0;
 	virtual void __stdcall DrawSelectionRect   	(const iVector2& m_SelStart, const iVector2& m_SelEnd)=0;
 
 	virtual void __stdcall OutText				(const Fvector& pos, pcstr text, u32 color=0xFF000000, u32 shadow_color=0xFF909090)=0;
