@@ -61,7 +61,7 @@ IC	void CStalkerMovementManager::add_velocity			(int mask, f32 linear, f32 compu
 IC	f32 CStalkerMovementManager::path_direction_angle	()
 {
 	if (!path().empty() && (path().size() > detail().curr_travel_point_index() + 1)) {
-		Fvector					t;
+		fVector3					t;
 		t.sub					(
 			path()[detail().curr_travel_point_index() + 1].position,
 			path()[detail().curr_travel_point_index()].position
@@ -90,7 +90,7 @@ void CStalkerMovementManager::initialize()
 	set_nearest_accessible_position();
 }
 
-void CStalkerMovementManager::set_desired_position(const Fvector *desired_position)
+void CStalkerMovementManager::set_desired_position(const fVector3* desired_position)
 {
 	if (desired_position) {
 		m_target.m_use_desired_position	= true;
@@ -100,7 +100,7 @@ void CStalkerMovementManager::set_desired_position(const Fvector *desired_positi
 	else {
 		m_target.m_use_desired_position	= false;
 #ifdef DEBUG
-		m_target.m_desired_position		= Fvector().set(flt_max,flt_max,flt_max);
+		m_target.m_desired_position		= fVector3().set(flt_max,flt_max,flt_max);
 #endif
 	}
 }
@@ -113,7 +113,7 @@ IC	void CStalkerMovementManager::setup_body_orientation	()
 	if (path().size() <= detail().curr_travel_point_index() + 1)
 		return;
 
-	Fvector					temp;
+	fVector3					temp;
 	temp.sub					(
 		path()[detail().curr_travel_point_index() + 1].position,
 		path()[detail().curr_travel_point_index()].position
@@ -134,8 +134,8 @@ CStalkerMovementManager::CStalkerMovementManager	(CAI_Stalker *object) :
 	m_object					= object;
 	m_velocities				= 0;
 	m_last_query_object			= 0;
-	m_last_query_position		= Fvector().set(flt_max,flt_max,flt_max);
-	m_last_query_object_position= Fvector().set(flt_max,flt_max,flt_max);
+	m_last_query_position		= fVector3().set(flt_max,flt_max,flt_max);
+	m_last_query_object_position= fVector3().set(flt_max,flt_max,flt_max);
 	m_last_query_result			= false;
 	m_last_query_distance		= flt_max;
 	m_force_update				= false;
@@ -191,8 +191,8 @@ void CStalkerMovementManager::reinit				()
 
 	m_current.m_use_desired_position	= false;
 	m_current.m_use_desired_direction	= false;
-	m_current.m_desired_position		= Fvector().set(flt_max,flt_max,flt_max);
-	m_current.m_desired_direction		= Fvector().set(flt_max,flt_max,flt_max);
+	m_current.m_desired_position		= fVector3().set(flt_max,flt_max,flt_max);
+	m_current.m_desired_direction		= fVector3().set(flt_max,flt_max,flt_max);
 	m_current.m_body_state				= eBodyStateStand;
 	m_current.m_movement_type			= eMovementTypeStand;
 	m_current.m_mental_state			= eMentalStateDanger;
@@ -237,7 +237,7 @@ void CStalkerMovementManager::setup_movement_params	()
 	if (use_desired_position()) {
 		VERIFY								(_valid(desired_position()));
 		if (!restrictions().accessible(desired_position())) {
-			Fvector							temp;
+			fVector3							temp;
 			level_path().set_dest_vertex	(restrictions().accessible_nearest(desired_position(),temp));
 			detail().set_dest_position		(temp);
 		}
@@ -247,13 +247,13 @@ void CStalkerMovementManager::setup_movement_params	()
 	else {
 		if ((path_type() != MovementManager::ePathTypePatrolPath) && (path_type() != MovementManager::ePathTypeGamePath)  && (path_type() != MovementManager::ePathTypeNoPath)) {
 			if (!restrictions().accessible(level_path().dest_vertex_id())) {
-				Fvector							temp;
+				fVector3							temp;
 				level_path().set_dest_vertex	(restrictions().accessible_nearest(ai().level_graph().vertex_position(level_path().dest_vertex_id()),temp));
 				detail().set_dest_position		(temp);
 			}
 			else {
 				u32								vertex_id = level_path().dest_vertex_id();
-				Fvector							vertex_position = ai().level_graph().vertex_position(level_path().dest_vertex_id());
+				fVector3							vertex_position = ai().level_graph().vertex_position(level_path().dest_vertex_id());
 				VERIFY2							(
 					restrictions().accessible(vertex_position) || show_restrictions(&restrictions()),
 					make_string(
@@ -484,7 +484,7 @@ void CStalkerMovementManager::set_nearest_accessible_position()
 	set_nearest_accessible_position(object().Position(),object().ai_location().level_vertex_id());
 }
 
-void CStalkerMovementManager::set_nearest_accessible_position(Fvector desired_position, u32 level_vertex_id)
+void CStalkerMovementManager::set_nearest_accessible_position(fVector3 desired_position, u32 level_vertex_id)
 {
 	if (!ai().level_graph().inside(level_vertex_id,desired_position))
 		desired_position		= ai().level_graph().vertex_position(level_vertex_id);
@@ -492,7 +492,7 @@ void CStalkerMovementManager::set_nearest_accessible_position(Fvector desired_po
 		desired_position.y		= ai().level_graph().vertex_plane_y(level_vertex_id,desired_position.x,desired_position.z);
 
 	if (!restrictions().accessible(desired_position)) {
-		level_vertex_id			= restrictions().accessible_nearest(Fvector().set(desired_position),desired_position);
+		level_vertex_id			= restrictions().accessible_nearest(fVector3().set(desired_position),desired_position);
 		VERIFY					(restrictions().accessible(level_vertex_id));
 		VERIFY					(restrictions().accessible(desired_position));
 	}
@@ -572,8 +572,8 @@ void CStalkerMovementManager::setup_speed_from_animation(const f32& speed)
 void CStalkerMovementManager::on_build_path				()
 {
 	m_last_query_object					= 0;
-	m_last_query_position				= Fvector().set(flt_max,flt_max,flt_max);
-	m_last_query_object_position		= Fvector().set(flt_max,flt_max,flt_max);
+	m_last_query_position				= fVector3().set(flt_max,flt_max,flt_max);
+	m_last_query_object_position		= fVector3().set(flt_max,flt_max,flt_max);
 	m_last_query_result					= false;
 	m_last_query_distance				= flt_max;
 }
@@ -605,7 +605,7 @@ bool CStalkerMovementManager::is_object_on_the_way		(const CGameObject *object, 
 	return								(m_last_query_result);
 }
 
-IC f32 distance_to_line								(const Fvector &p0, const Fvector &p1, const Fvector &p2)
+IC f32 distance_to_line								(const fVector3& p0, const fVector3& p1, const fVector3& p2)
 {
 	if (p0.similar(p2))
 		return							(0.f);
@@ -613,22 +613,22 @@ IC f32 distance_to_line								(const Fvector &p0, const Fvector &p1, const Fvec
 	if (p1.similar(p2))
 		return							(0.f);
 
-	Fvector								p0p2 = Fvector().sub(p2,p0);
+	fVector3								p0p2 = fVector3().sub(p2,p0);
 	f32								p0p2_magnitude = p0p2.magnitude();
 	if (p0.similar(p1))
 		return							(p0p2_magnitude);
 
 	p0p2.normalize						();
 	
-	Fvector								p0p1 = Fvector().sub(p1,p0);
+	fVector3								p0p1 = fVector3().sub(p1,p0);
 	p0p1.normalize						();
 
 	f32								cos_alpha = p0p2.dotproduct(p0p1);
 	if (cos_alpha < 0.f)
 		return							(p0p2_magnitude);
 
-	Fvector								p1p2 = Fvector().sub(p2,p1);
-	Fvector								p1p0 = Fvector(p0p1).invert();
+	fVector3								p1p2 = fVector3().sub(p2,p1);
+	fVector3								p1p0 = fVector3(p0p1).invert();
 	if (p1p2.dotproduct(p1p0) < 0.f)
 		return							(p1p2.magnitude());
 
@@ -653,7 +653,7 @@ void CStalkerMovementManager::update_object_on_the_way	(const CGameObject *objec
 	m_last_query_result					= false;
 	m_last_query_distance				= distance;
 
-	Fvector								position = object->Position();
+	fVector3								position = object->Position();
 	f32								current_distance = 0.f;
 	xr_vector<STravelPathPoint>::const_iterator	I = detail().path().begin() + detail().curr_travel_point_index() + 1;
 	xr_vector<STravelPathPoint>::const_iterator	E = detail().path().end();
@@ -694,8 +694,8 @@ void CStalkerMovementManager::check_for_bad_path	()
 		return;
 
 	f32								distance = path[point_index + 1].position.distance_to(object().Position());
-	Fvector								current_direction = Fvector().sub(path[point_index + 1].position,path[point_index].position);
-	Fvector								next_direction;
+	fVector3								current_direction = fVector3().sub(path[point_index + 1].position,path[point_index].position);
+	fVector3								next_direction;
 	if (current_direction.magnitude() >= EPSILON_3)
 		current_direction.normalize		();
 	else
@@ -707,7 +707,7 @@ void CStalkerMovementManager::check_for_bad_path	()
 	PATH::const_iterator				J = I + 1;
 	VERIFY								(J != E);
 	for ( ; J != E; ++I, ++J) {
-		next_direction					= Fvector().sub((*J).position,(*I).position);
+		next_direction					= fVector3().sub((*J).position,(*I).position);
 		f32							magnitude = next_direction.magnitude();
 		distance						+= magnitude;
 		//. how can it be?

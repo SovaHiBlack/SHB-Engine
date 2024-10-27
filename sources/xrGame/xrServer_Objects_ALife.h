@@ -128,7 +128,7 @@ public:
 	virtual void					spawn_supplies		(pcstr);
 	virtual void					spawn_supplies		();
 			CALifeSimulator			&alife				() const;
-	virtual Fvector					draw_level_position	() const;
+	virtual fVector3					draw_level_position	() const;
 	virtual	bool					keep_saved_data_anyway	() const;
 #endif
 SERVER_ENTITY_DECLARE_END
@@ -324,8 +324,8 @@ add_to_type_list(CSE_ALifeSpaceRestrictor)
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeLevelChanger,CSE_ALifeSpaceRestrictor)
 	GameGraph::_GRAPH_ID			m_tNextGraphID;
 	u32								m_dwNextNodeID;
-	Fvector							m_tNextPosition;
-	Fvector							m_tAngles;
+	fVector3							m_tNextPosition;
+	fVector3							m_tAngles;
 	shared_str						m_caLevelToChange;
 	shared_str						m_caLevelPointToChange;
 	BOOL							m_bSilentMode;
@@ -513,7 +513,7 @@ add_to_type_list(CSE_ALifeMountedWeapon)
 
 SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeStationaryMgun,CSE_ALifeDynamicObjectVisual)
 	bool							m_bWorking;
-	Fvector							m_destEnemyDir;
+fVector3							m_destEnemyDir;
 
 									CSE_ALifeStationaryMgun	(pcstr caSection);
 	virtual							~CSE_ALifeStationaryMgun	();

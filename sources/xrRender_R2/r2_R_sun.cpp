@@ -223,10 +223,10 @@ public:
 			// verify
 			if (_debug)
 			{
-				Fvector&		p0	= points[P.points[0]];
-				Fvector&		p1	= points[P.points[1]];
-				Fvector&		p2	= points[P.points[2]];
-				Fvector&		p3	= points[P.points[3]];
+				fVector3&		p0	= points[P.points[0]];
+				fVector3&		p1	= points[P.points[1]];
+				fVector3&		p2	= points[P.points[2]];
+				fVector3&		p3	= points[P.points[3]];
 				fPlane3	p012;
 				p012.build(p0,p1,p2);
 				fPlane3	p123;
@@ -388,7 +388,7 @@ struct	DumbClipper
 				for (int c=0; c<8; c++)
 				{
 					D3DXVECTOR3		p0	= point		(bb,c);
-					Fvector			x0	= wform		(xf,*((Fvector*)(&p0)));
+					fVector3			x0	= wform		(xf,*((fVector3*)(&p0)));
 					result.modify	(x0	);
 				}
 				break;
@@ -401,8 +401,8 @@ struct	DumbClipper
 						D3DXVECTOR3		p0	= point	(bb,c0);
 						D3DXVECTOR3		p1	= point	(bb,c1);
 						if (!clip(p0,p1))	continue;
-						Fvector			x0	= wform	(xf,*((Fvector*)(&p0)));
-						Fvector			x1	= wform	(xf,*((Fvector*)(&p1)));
+						fVector3			x0	= wform	(xf,*((fVector3*)(&p0)));
+						fVector3			x1	= wform	(xf,*((fVector3*)(&p1)));
 						result.modify	(x0	);
 						result.modify	(x1	);
 					}
@@ -515,7 +515,10 @@ void CRender::render_sun				()
 		// view: auto find 'up' and 'right' vectors
 		fMatrix4x4					mdir_View;
 		fMatrix4x4					mdir_Project;
-		Fvector						L_dir,L_up,L_right,L_pos;
+		fVector3					L_dir;
+		fVector3					L_up;
+		fVector3					L_right;
+		fVector3					L_pos;
 		L_pos.set					(fuckingsun->position);
 		L_dir.set					(fuckingsun->direction).normalize	();
 		L_up.set					(0,1,0);					if (_abs(L_up.dotproduct(L_dir))>.99f)	L_up.set(0,0,1);
@@ -527,7 +530,7 @@ void CRender::render_sun				()
 		fBox3	frustum_bb;
 		frustum_bb.invalidate();
 		for (int it=0; it<8; it++)	{
-			Fvector	xf	= wform		(mdir_View,hull.points[it]);
+			fVector3	xf	= wform		(mdir_View,hull.points[it]);
 			frustum_bb.modify		(xf);
 		}
 		fBox3&	bb					= frustum_bb;
@@ -971,7 +974,10 @@ void CRender::render_sun_near	()
 		// view: auto find 'up' and 'right' vectors
 		fMatrix4x4					mdir_View;
 		fMatrix4x4					mdir_Project;
-		Fvector						L_dir,L_up,L_right,L_pos;
+		fVector3					L_dir;
+		fVector3					L_up;
+		fVector3					L_right;
+		fVector3					L_pos;
 		L_pos.set					(fuckingsun->position);
 		L_dir.set					(fuckingsun->direction).normalize	();
 		L_right.set					(1,0,0);					if (_abs(L_right.dotproduct(L_dir))>.99f)	L_right.set(0,0,1);
@@ -995,7 +1001,7 @@ void CRender::render_sun_near	()
 		frustum_bb.invalidate	();
 		hull.points.push_back		(Device.vCameraPosition);
 		for (int it=0; it<9; it++)	{
-			Fvector	xf	= wform		(mdir_View,hull.points[it]);
+			fVector3	xf	= wform		(mdir_View,hull.points[it]);
 			frustum_bb.modify		(xf);
 		}
 		f32	size_x				= frustum_bb.max.x - frustum_bb.min.x;
@@ -1020,12 +1026,13 @@ void CRender::render_sun_near	()
 
 		// snap view-position to pixel
 		cull_xform.mul		(mdir_Project,mdir_View	);
-		Fvector cam_proj	= wform		(cull_xform,Device.vCameraPosition	);
-		Fvector	cam_pixel	= wform		(m_viewport,cam_proj				);
+		fVector3 cam_proj	= wform		(cull_xform,Device.vCameraPosition	);
+		fVector3	cam_pixel	= wform		(m_viewport,cam_proj				);
 		cam_pixel.x			= floorf	(cam_pixel.x);
 		cam_pixel.y			= floorf	(cam_pixel.y);
-		Fvector cam_snapped	= wform		(m_viewport_inv,cam_pixel);
-		Fvector diff;		diff.sub	(cam_snapped,cam_proj				);
+		fVector3 cam_snapped	= wform		(m_viewport_inv,cam_pixel);
+		fVector3 diff;
+		diff.sub	(cam_snapped,cam_proj				);
 		fMatrix4x4 adjust;
 		adjust.translate(diff);
 		cull_xform.mulA_44	(adjust);
@@ -1036,7 +1043,7 @@ void CRender::render_sun_near	()
 		fMatrix4x4		scissor_xf			;
 					scissor_xf.mul		(m_viewport,cull_xform);
 		for (int it=0; it<9; it++)	{
-			Fvector	xf	= wform		(scissor_xf,hull.points[it]);
+			fVector3	xf	= wform		(scissor_xf,hull.points[it]);
 			scissor.modify			(xf);
 		}
 		s32		limit					= RImplementation.o.smapsize-1;

@@ -28,9 +28,9 @@ public:
 	EGoalType			m_tGoalType;
 	CParticlesObject	*m_tpParticleSystem;
 	bool				m_bStartedToPlay;
-	Fvector				m_tParticlePosition;
-	Fvector				m_tParticleAngles;
-	Fvector				m_tParticleVelocity;
+	fVector3				m_tParticlePosition;
+	fVector3				m_tParticleAngles;
+	fVector3				m_tParticleVelocity;
 	bool				m_bAutoRemove;
 
 public:
@@ -39,10 +39,10 @@ public:
 	IC					CScriptParticleAction	(pcstr caPartcileToRun, const CParticleParams &tParticleParams = CParticleParams(), bool bAutoRemove = false);
 	virtual				~CScriptParticleAction	();
 			void		SetParticle				(pcstr caParticleToRun, bool bAutoRemove);
-	IC		void		SetPosition				(const Fvector &tPosition);
+	IC		void		SetPosition				(const fVector3& tPosition);
 	IC		void		SetBone					(pcstr caBoneName);
-	IC		void		SetAngles				(const Fvector &tAngleOffset);
-	IC		void		SetVelocity				(const Fvector &tVelocity);
+	IC		void		SetAngles				(const fVector3& tAngleOffset);
+	IC		void		SetVelocity				(const fVector3& tVelocity);
 	IC		void		initialize				();
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

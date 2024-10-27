@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "r2.h"
 
-IRender_Sector* CRender::detectSector(const Fvector& P)
+IRender_Sector* CRender::detectSector(const fVector3& P)
 {
 	IRender_Sector*	S	= NULL;	
-	Fvector			dir; 
+	fVector3			dir;
 	Sectors_xrc.ray_options		(CDB::OPT_ONLYNEAREST);
 
 	dir.set				(0,-1,0);
@@ -17,7 +17,7 @@ IRender_Sector* CRender::detectSector(const Fvector& P)
 	return S;
 }
 
-IRender_Sector* CRender::detectSector(const Fvector& P, Fvector& dir)
+IRender_Sector* CRender::detectSector(const fVector3& P, fVector3& dir)
 {
 	// Portals model
 	int		id1		= -1;

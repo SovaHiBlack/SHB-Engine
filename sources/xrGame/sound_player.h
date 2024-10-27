@@ -82,7 +82,7 @@ public:
 			xr_delete							(m_sound);
 		}
 
-				void	play_at_pos				(CObject *object, const Fvector &position)
+				void	play_at_pos				(CObject *object, const fVector3& position)
 		{
 			m_sound->play_at_pos				(object,position);
 			m_started							= true;
@@ -127,7 +127,7 @@ private:
 	CObject										*m_object;
 	shared_str									m_sound_prefix;
 
-	IC		Fvector		compute_sound_point			(const CSoundSingle &sound);
+	IC		fVector3		compute_sound_point			(const CSoundSingle &sound);
 			void		remove_inappropriate_sounds	(u32 sound_mask);
 			void		update_playing_sounds		();
 			bool		check_sound_legacy			(u32 internal_type) const;

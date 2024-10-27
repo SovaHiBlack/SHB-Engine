@@ -221,11 +221,11 @@ public:
 #ifdef DEBUG
 	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int vcnt, u16* pIdx, int pcnt);
 	void dbg_Draw					(D3DPRIMITIVETYPE T, FVF::L* pVerts, int pcnt);
-	IC void dbg_DrawAABB			(Fvector& T, f32 sx, f32 sy, f32 sz, u32 C)						{	Fvector half_dim;	half_dim.set(sx,sy,sz); fMatrix4x4	TM;	TM.translate(T); dbg_DrawOBB(TM,half_dim,C);	}
-	void dbg_DrawOBB				(fMatrix4x4& T, Fvector& half_dim, u32 C);
-	IC void dbg_DrawTRI				(fMatrix4x4& T, Fvector* p, u32 C)											{	dbg_DrawTRI(T,p[0],p[1],p[2],C);	}
-	void dbg_DrawTRI				(fMatrix4x4& T, Fvector& p1, Fvector& p2, Fvector& p3, u32 C);
-	void dbg_DrawLINE				(fMatrix4x4& T, Fvector& p1, Fvector& p2, u32 C);
+	IC void dbg_DrawAABB			(fVector3& T, f32 sx, f32 sy, f32 sz, u32 C)						{	fVector3 half_dim;	half_dim.set(sx,sy,sz); fMatrix4x4	TM;	TM.translate(T); dbg_DrawOBB(TM,half_dim,C);	}
+	void dbg_DrawOBB				(fMatrix4x4& T, fVector3& half_dim, u32 C);
+	IC void dbg_DrawTRI				(fMatrix4x4& T, fVector3* p, u32 C)											{	dbg_DrawTRI(T,p[0],p[1],p[2],C);	}
+	void dbg_DrawTRI				(fMatrix4x4& T, fVector3& p1, fVector3& p2, fVector3& p3, u32 C);
+	void dbg_DrawLINE				(fMatrix4x4& T, fVector3& p1, fVector3& p2, u32 C);
 	void dbg_DrawEllipse			(fMatrix4x4& T, u32 C);
 #endif // DEBUG
 

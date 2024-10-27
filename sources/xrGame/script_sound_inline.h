@@ -24,12 +24,12 @@ IC	void CScriptSound::Play					(CScriptGameObject *object, f32 delay)
 	Play					(object,delay,0);
 }
 		
-IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const Fvector &position)
+IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const fVector3& position)
 {
 	PlayAtPos				(object,position,0.f,0);
 }
 
-IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const Fvector &position, f32 delay)
+IC	void CScriptSound::PlayAtPos			(CScriptGameObject *object, const fVector3& position, f32 delay)
 {
 	PlayAtPos				(object,position,delay,0);
 }
@@ -88,7 +88,7 @@ IC	void CScriptSound::StopDeffered			()
 	m_sound.stop_deffered();
 }
 
-IC	void CScriptSound::SetPosition			(const Fvector &position)
+IC	void CScriptSound::SetPosition			(const fVector3& position)
 {
 	VERIFY				(m_sound._handle());
 	m_sound.set_position(position);

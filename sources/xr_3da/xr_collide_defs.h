@@ -4,14 +4,14 @@ class ENGINE_API CObject;
 namespace collide 
 {
 	struct			tri {
-		Fvector	e10;
+		fVector3	e10;
 		f32 e10s;
-		Fvector	e21;
+		fVector3	e21;
 		f32 e21s;
-		Fvector	e02;
+		fVector3	e02;
 		f32 e02s;
-		Fvector p[3];
-		Fvector N;
+		fVector3 p[3];
+		fVector3 N;
 		f32	d;
 	};
 	struct			elipsoid {
@@ -21,13 +21,13 @@ namespace collide
 	struct			ray_cache
 	{
 		// previous state
-		Fvector				start;
-		Fvector				dir;
+		fVector3				start;
+		fVector3				dir;
 		f32				range;
 		BOOL				result;
 
 		// cached vertices
-		Fvector				verts[3];
+		fVector3				verts[3];
 		ray_cache() 
 		{
 			start.set	(0,0,0);
@@ -38,14 +38,14 @@ namespace collide
 			verts[1].set(0,0,0);
 			verts[2].set(0,0,0);
 		}
-		void				set		(const Fvector& _start, const Fvector& _dir, const f32 _range,const BOOL _result)
+		void				set		(const fVector3& _start, const fVector3& _dir, const f32 _range,const BOOL _result)
 		{
 			start	= _start;
 			dir		= _dir;
 			range	= _range;
 			result	= _result;
 		}
-		BOOL				similar	(const Fvector& _start, const Fvector& _dir, const f32 _range)
+		BOOL				similar	(const fVector3& _start, const fVector3& _dir, const f32 _range)
 		{
 			if (!_start.similar(start))					return FALSE;
 			if (!fsimilar(1.f,dir.dotproduct(_dir)))	return FALSE;
@@ -64,12 +64,12 @@ namespace collide
 	};
 	struct			ray_defs
 	{
-		Fvector		start;
-		Fvector		dir;
+		fVector3		start;
+		fVector3		dir;
 		f32		range;
 		u32			flags;
 		rq_target	tgt;
-		ray_defs	(const Fvector& _start, const Fvector& _dir, f32 _range, u32 _flags, rq_target _tgt)
+		ray_defs	(const fVector3& _start, const fVector3& _dir, f32 _range, u32 _flags, rq_target _tgt)
 		{
 			start	= _start;
 			dir		= _dir;

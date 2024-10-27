@@ -10,8 +10,7 @@
 #include "PHElement.h"
 #include "PHShell.h"
 
-
-void CPHShell::applyHit(const Fvector& pos, const Fvector& dir, f32 val,const u16 id,ALife::EHitType hit_type)
+void CPHShell::applyHit(const fVector3& pos, const fVector3& dir, f32 val,const u16 id,ALife::EHitType hit_type)
 {
 	if(id==u16(-1)) return;//
 #pragma	todo("Kosya to kosya:this code shold treat all hit types")
@@ -28,16 +27,16 @@ void CPHShell::applyHit(const Fvector& pos, const Fvector& dir, f32 val,const u1
 	}
 }
 
-void CPHShell::ExplosionHit(const Fvector& pos, const Fvector& dir, f32 val,const u16 id)
+void CPHShell::ExplosionHit(const fVector3& pos, const fVector3& dir, f32 val,const u16 id)
 {
 	if(!isActive()) return;
 	EnableObject(0);
-	//Fvector local_pos;local_pos.set(0.f,0.f,0.f);
+	//fVector3 local_pos;local_pos.set(0.f,0.f,0.f);
 	ELEMENT_I i=elements.begin(),e=elements.end();
 	f32 impulse=val/_sqrt(_sqrt((f32)elements.size()));
 	for(;i!=e;i++)
 	{	
-		//Fvector max_area_dir;	
+		//fVector3 max_area_dir;	
 		CPHElement* element=(*i);
 		//element->get_MaxAreaDir(max_area_dir);
 		//f32	sign=max_area_dir.dotproduct(dir)>0.f ? 1.f : -1.f;
@@ -47,7 +46,9 @@ void CPHShell::ExplosionHit(const Fvector& pos, const Fvector& dir, f32 val,cons
 		for(u16 j=0;j<gn;++j)
 		{
 			
-			Fvector r_dir,r_pos,r_box;
+			fVector3 r_dir;
+			fVector3 r_pos;
+			fVector3 r_box;
 			f32 rad=element->getRadius();
 			r_box.set(rad,rad,rad);
 			r_pos.random_point(r_box);

@@ -288,7 +288,7 @@ public:
 			void					vfCheckForPopulationChanges();
 	virtual	void					add_online				(const bool &update_registries);
 	virtual	void					add_offline				(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-	virtual Fvector					draw_level_position		() const;
+	virtual fVector3					draw_level_position		() const;
 	virtual	bool					redundant				() const;
 #endif
 	virtual bool					need_update				(CSE_ALifeDynamicObject *object);
@@ -304,8 +304,8 @@ add_to_type_list(CSE_ALifeMonsterAbstract)
 SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor,CSE_ALifeCreatureAbstract,CSE_ALifeTraderAbstract,CSE_PHSkeleton)
 	
 	u16								mstate;
-	Fvector							accel;
-	Fvector							velocity;
+fVector3							accel;
+fVector3							velocity;
 //	f32							fArmor;
 	f32							fRadiation;
 	u8								weapon;

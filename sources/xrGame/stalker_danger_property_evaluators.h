@@ -93,7 +93,7 @@ protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 private:
-	Fvector				m_cover_selection_position;
+	fVector3				m_cover_selection_position;
 
 public:
 						CStalkerPropertyEvaluatorDangerUnknownCoverActual	(CAI_Stalker *object = 0, pcstr evaluator_name = "");

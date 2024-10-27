@@ -25,8 +25,8 @@ void	r_pixel_calculator::end		()
 }
 
 //								+X,				-X,				+Y,				-Y,			+Z,				-Z
-static Fvector cmNorm[6]	= {{0.f,1.f,0.f}, {0.f,1.f,0.f}, {0.f,0.f,-1.f},{0.f,0.f,1.f}, {0.f,1.f,0.f}, {0.f,1.f,0.f}};
-static Fvector cmDir[6]		= {{1.f,0.f,0.f}, {-1.f,0.f,0.f},{0.f,1.f,0.f}, {0.f,-1.f,0.f},{0.f,0.f,1.f}, {0.f,0.f,-1.f}};
+static fVector3 cmNorm[6]	= {{0.0f,1.0f,0.0f}, {0.0f,1.0f,0.0f}, {0.0f,0.0f,-1.0f},{0.0f,0.0f,1.0f}, {0.0f,1.0f,0.0f}, {0.0f,1.0f,0.0f}};
+static fVector3 cmDir[6]		= {{1.0f,0.0f,0.0f}, {-1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f}, {0.0f,-1.0f,0.0f},{0.0f,0.0f,1.0f}, {0.0f,0.0f,-1.0f}};
 
 r_aabb_ssa		r_pixel_calculator::calculate	(IRender_Visual* V)	{
 	r_aabb_ssa	result			= {0};
@@ -37,7 +37,7 @@ r_aabb_ssa		r_pixel_calculator::calculate	(IRender_Visual* V)	{
 	for (u32 face=0; face<6; face++)	{
 		// setup matrices
 		fMatrix4x4						mProject,mView	;
-		Fvector						vFrom			;
+		fVector3						vFrom			;
 		fBox3						aabb			;
 
 		// camera - left-to-right

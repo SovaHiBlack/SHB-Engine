@@ -27,7 +27,8 @@ public:
 	IBlender*					b_combine;
 #ifdef DEBUG
 	struct		dbg_line_t		{
-		Fvector	P0,P1;
+		fVector3	P0;
+		fVector3	P1;
 		u32		color;
 	};
 	xr_vector<std::pair<Fsphere, fColor> >		dbg_spheres;
@@ -202,7 +203,7 @@ public:
 	virtual u32					get_height				()				{ return dwHeight;					}
 
 #ifdef DEBUG
-	IC void						dbg_addline				(Fvector& P0, Fvector& P1, u32 c)					{
+	IC void						dbg_addline				(fVector3& P0, fVector3& P1, u32 c)					{
 		dbg_lines.push_back		(dbg_line_t());
 		dbg_lines.back().P0		= P0;
 		dbg_lines.back().P1		= P1;
@@ -212,7 +213,7 @@ public:
 		dbg_planes.push_back(P0);
 	}
 #else
-	IC void						dbg_addline				(Fvector& P0, Fvector& P1, u32 c)					{}
+	IC void						dbg_addline				(fVector3& P0, fVector3& P1, u32 c)					{}
 	IC void						dbg_addplane			(fPlane3& P0,  u32 c)								{}
 #endif
 };

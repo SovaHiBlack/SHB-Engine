@@ -11,7 +11,7 @@
 
 //////////////////////////////////////////////////////////////////////////
 // half box def
-static	Fvector3	hbox_verts[24]	=
+static	fVector3	hbox_verts[24]	=
 {
 	{-1.f,	-1.f,	-1.f}, {-1.f,	-1.01f,	-1.f},	// down
 	{ 1.f,	-1.f,	-1.f}, { 1.f,	-1.01f,	-1.f},	// down
@@ -52,11 +52,11 @@ static	u16			hbox_faces[20*3]	=
 
 #pragma pack(push,1)
 struct v_skybox				{
-	Fvector3	p;
+	fVector3	p;
 	u32			color;
-	Fvector3	uv	[2];
+	fVector3	uv	[2];
 
-	void		set			(Fvector3& _p, u32 _c, Fvector3& _tc)
+	void		set			(fVector3& _p, u32 _c, fVector3& _tc)
 	{
 		p					= _p;
 		color				= _c;
@@ -66,10 +66,10 @@ struct v_skybox				{
 };
 const	u32 v_skybox_fvf	= D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX2 | D3DFVF_TEXCOORDSIZE3(0) | D3DFVF_TEXCOORDSIZE3(1);
 struct v_clouds				{
-	Fvector3	p;
+	fVector3	p;
 	u32			color;
 	u32			intensity;
-	void		set			(Fvector3& _p, u32 _c, u32 _i)
+	void		set			(fVector3& _p, u32 _c, u32 _i)
 	{
 		p					= _p;
 		color				= _c;

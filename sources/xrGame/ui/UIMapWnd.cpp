@@ -568,7 +568,7 @@ void CUIMapWnd::OnToolActorClicked		(CUIWindow*, void*)
 {
 	if (GlobalMap()->Locked())			return;
 
-	Fvector v					= Level().CurrentEntity()->Position();
+	fVector3 v					= Level().CurrentEntity()->Position();
 	fVector2 v2;
 	v2.set						(v.x,v.z);
 

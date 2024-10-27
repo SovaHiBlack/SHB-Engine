@@ -212,8 +212,8 @@ void CPsyDogPhantom::Think()
 	if (!EnemyMan.get_enemy()) return;
 	if (!control().direction().is_face_target(EnemyMan.get_enemy(), PI_DIV_6)) return;
 
-	Fvector target;
-	target.mad(Position(),Direction(), 10.f);
+	fVector3 target;
+	target.mad(Position(),Direction(), 10.0f);
 
 	// нода в прямой видимости?
 	control().path_builder().restrictions().add_border(Position(), target);

@@ -138,7 +138,7 @@ public:
 
 	void		r_pmask											(bool _1, bool _2, bool _wm=false)				{ pmask[0]=_1; pmask[1]=_2;	pmask_wmark = _wm; }
 
-	void		r_dsgraph_insert_dynamic						(IRender_Visual	*pVisual, Fvector& Center);
+	void		r_dsgraph_insert_dynamic						(IRender_Visual	*pVisual, fVector3& Center);
 	void		r_dsgraph_insert_static							(IRender_Visual	*pVisual);
 
 	void		r_dsgraph_render_graph							(u32	_priority,	bool _clear=true);
@@ -148,8 +148,8 @@ public:
 	void		r_dsgraph_render_emissive						();
 	void		r_dsgraph_render_wmarks							();
 	void		r_dsgraph_render_distort						();
-	void		r_dsgraph_render_subspace						(IRender_Sector* _sector, CFrustum* _frustum, fMatrix4x4& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals=FALSE	);
-	void		r_dsgraph_render_subspace						(IRender_Sector* _sector, fMatrix4x4& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals=FALSE	);
+	void		r_dsgraph_render_subspace						(IRender_Sector* _sector, CFrustum* _frustum, fMatrix4x4& mCombined, fVector3& _cop, BOOL _dynamic, BOOL _precise_portals=FALSE	);
+	void		r_dsgraph_render_subspace						(IRender_Sector* _sector, fMatrix4x4& mCombined, fVector3& _cop, BOOL _dynamic, BOOL _precise_portals=FALSE	);
 	void		r_dsgraph_render_R1_box							(IRender_Sector* _sector, fBox3& _bb, int _element);
 
 public:

@@ -10,7 +10,7 @@
 
 #include "script_export_space.h"
 
-typedef class_exporter<Fvector> CScriptFvector;
+typedef class_exporter<fVector3> CScriptFvector;
 
 add_to_type_list(CScriptFvector)
 #undef script_type_list

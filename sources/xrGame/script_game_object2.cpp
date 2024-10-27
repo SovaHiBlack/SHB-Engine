@@ -51,7 +51,7 @@ void CScriptGameObject::explode	(u32 level_time)
 	if (!explosive)
 		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CExplosive : cannot access class member explode!");
 	else {
-		Fvector normal;
+		fVector3 normal;
 		explosive->FindNormal(normal);
 		explosive->SetInitiator(object().ID());
 		explosive->GenExplodeEvent(object().Position(), normal);
@@ -156,7 +156,7 @@ void CScriptGameObject::Hit(CScriptHit *tpLuaHit)
 		HS.boneID = 		(V->LL_BoneID(tLuaHit.m_caBoneName));			//		P.w_s16		(V->LL_BoneID(tLuaHit.m_caBoneName));
 	else																	//	else
 		HS.boneID = 		(s16(0));										//		P.w_s16		(s16(0));
-	HS.p_in_bone_space = Fvector().set(0,0,0);								//	P.w_vec3		(Fvector().set(0,0,0));
+	HS.p_in_bone_space = fVector3().set(0.0f,0.0f,0.0f);								//	P.w_vec3		(fVector3().set(0,0,0));
 	HS.impulse = tLuaHit.m_fImpulse;										//	P.w_float		(tLuaHit.m_fImpulse);
 	HS.hit_type = (ALife::EHitType)(tLuaHit.m_tHitType);					//	P.w_u16			(u16(tLuaHit.m_tHitType));
 	HS.Write_Packet(P);						
@@ -216,12 +216,12 @@ u32 CScriptGameObject::memory_time(const CScriptGameObject &lua_game_object)
 		return				(monster->memory().memory_time(&lua_game_object.object()));
 }
 
-Fvector CScriptGameObject::memory_position(const CScriptGameObject &lua_game_object)
+fVector3 CScriptGameObject::memory_position(const CScriptGameObject &lua_game_object)
 {
 	CCustomMonster			*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster) {
 		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CScriptEntity : cannot access class member memory!");
-		return				(Fvector().set(0.f,0.f,0.f));
+		return				fVector3().set(0.0f,0.0f,0.0f);
 	}
 	else
 		return				(monster->memory().memory_position(&lua_game_object.object()));
@@ -317,7 +317,7 @@ void CScriptGameObject::RestoreDefaultStartDialog()
 	pDialogManager->RestoreDefaultStartDialog();
 }
 
-void CScriptGameObject::SetActorPosition			(Fvector pos)
+void CScriptGameObject::SetActorPosition			(fVector3 pos)
 {
 	CActor* actor = smart_cast<CActor*>(&object());
 	if(actor){
@@ -434,7 +434,7 @@ void CScriptGameObject::debug_planner				(const script_planner *planner)
 }
 #endif
 
-u32 CScriptGameObject::location_on_path				(f32 distance, Fvector *location)
+u32 CScriptGameObject::location_on_path				(f32 distance, fVector3* location)
 {
 	if (!location) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : location_on_path -> specify destination location!");

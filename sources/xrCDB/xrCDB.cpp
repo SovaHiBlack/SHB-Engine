@@ -13,15 +13,15 @@ BOOL APIENTRY DllMain( HANDLE hModule,
 					  LPVOID lpReserved
 					  )
 {
-    switch (ul_reason_for_call)
+	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
 		break;
-    }
-    return TRUE;
+	}
+	return TRUE;
 }
 
 // Model building
@@ -46,7 +46,7 @@ MODEL::~MODEL()
 struct	BTHREAD_params
 {
 	MODEL*				M;
-	Fvector*			V;
+	fVector3*			V;
 	int					Vcnt;
 	TRI*				T;
 	int					Tcnt;
@@ -66,10 +66,10 @@ void	MODEL::build_thread		(void *params)
 	//Msg						("* xrCDB: cform build completed, memory usage: %d K",P.M->memory()/1024);
 }
 
-void	MODEL::build			(Fvector* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc, void* bcp)
+void	MODEL::build			(fVector3* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc, void* bcp)
 {
 	R_ASSERT					(S_INIT == status);
-    R_ASSERT					((Vcnt>=4)&&(Tcnt>=2));
+	R_ASSERT					((Vcnt>=4)&&(Tcnt>=2));
 
 	_initialize_cpu_thread		();
 
@@ -84,12 +84,12 @@ void	MODEL::build			(Fvector* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc,
 	}
 }
 
-void	MODEL::build_internal	(Fvector* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc, void* bcp)
+void	MODEL::build_internal	(fVector3* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc, void* bcp)
 {
 	// verts
 	verts_count	= Vcnt;
-	verts		= xr_alloc<Fvector>	(verts_count);
-	CopyMemory	(verts,V,verts_count*sizeof(Fvector));
+	verts		= xr_alloc<fVector3>	(verts_count);
+	CopyMemory	(verts,V,verts_count*sizeof(fVector3));
 	
 	// tris
 	tris_count	= Tcnt;
@@ -144,7 +144,7 @@ void	MODEL::build_internal	(Fvector* V, int Vcnt, TRI* T, int Tcnt, build_callba
 u32 MODEL::memory	()
 {
 	if (S_BUILD==status)	{ Msg	("! xrCDB: model still isn't ready"); return 0; }
-	u32 V					= verts_count*sizeof(Fvector);
+	u32 V					= verts_count*sizeof(fVector3);
 	u32 T					= tris_count *sizeof(TRI);
 	return tree->GetUsedBytes()+V+T+sizeof(*this)+sizeof(*tree);
 }

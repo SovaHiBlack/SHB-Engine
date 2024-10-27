@@ -44,7 +44,7 @@ void _detail::callback		(CBoneInstance *B)
 {
 	CAI_Stalker*			A = static_cast<CAI_Stalker*>(B->Callback_Param);
 	VERIFY					(_valid(B->mTransform));
-	Fvector c				= B->mTransform.c;
+	fVector3 c				= B->mTransform.c;
 	fMatrix4x4					spin;
 	f32						yaw_factor = 0.0f;
 	f32						pitch_factor = 0.0f;
@@ -63,7 +63,7 @@ void _detail::callback		(CBoneInstance *B)
 	f32						effector_pitch = 0.0f;
 	if (A->weapon_shot_effector().IsActive())
 	{
-		Fvector				temp;
+		fVector3				temp;
 		A->weapon_shot_effector().GetDeltaAngle(temp);
 		effector_yaw		= temp.y;
 		VERIFY				(_valid(effector_yaw));

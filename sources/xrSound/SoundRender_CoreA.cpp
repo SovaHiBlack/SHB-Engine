@@ -94,7 +94,7 @@ void CSoundRender_CoreA::_initialize	(u64 window)
     // initialize listener
     A_CHK				        (alListener3f		(AL_POSITION,0.f,0.f,0.f));
     A_CHK				        (alListener3f		(AL_VELOCITY,0.f,0.f,0.f));
-    Fvector	orient[2]	        = {{0.f,0.f,1.f},{0.f,1.f,0.f}};
+	fVector3	orient[2]	        = {{0.0f,0.0f,1.0f},{0.0f,1.0f,0.0f}};
     A_CHK				        (alListenerfv		(AL_ORIENTATION,&orient[0].x));
     A_CHK				        (alListenerf		(AL_GAIN,1.f));
 
@@ -176,7 +176,7 @@ void	CSoundRender_CoreA::i_eax_get			(const GUID* guid, u32 prop, void* val, u32
 	eaxGet	    		  	    (guid, prop, 0, val, sz);
 }
 
-void CSoundRender_CoreA::update_listener		( const Fvector& P, const Fvector& D, const Fvector& N, f32 dt )
+void CSoundRender_CoreA::update_listener		( const fVector3& P, const fVector3& D, const fVector3& N, f32 dt )
 {
 	inherited::update_listener(P,D,N,dt);
 

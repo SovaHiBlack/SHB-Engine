@@ -22,7 +22,7 @@ void	IGame_Level::SoundEvent_Register	( ref_sound_data_ptr S, f32 range )
 	clamp					(range,0.1f,500.f);
 
 	const CSound_params* p	= S->feedback->get_params();
-	Fvector snd_position	= p->position;
+	fVector3 snd_position	= p->position;
 	if(S->feedback->is_2D()){
 		snd_position.add	(Sound->listener_position());
 	}
@@ -34,7 +34,7 @@ void	IGame_Level::SoundEvent_Register	( ref_sound_data_ptr S, f32 range )
 	VERIFY					(_valid(p->volume));
 
 	// Query objects
-	Fvector					bb_size	=	{range,range,range};
+	fVector3					bb_size	=	{range,range,range};
 	g_SpatialSpace->q_box	(snd_ER,0,STYPE_REACTTOSOUND,snd_position,bb_size);
 
 	// Iterate
@@ -111,12 +111,13 @@ CObjectSpace::~CObjectSpace	( )
 #endif
 }
 //----------------------------------------------------------------------
-IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const Fvector &point, f32 range, CObject* ignore_object )
+IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const fVector3& point, f32 range, CObject* ignore_object )
 {
 	// Query objects
 	q_nearest.clear_not_free		( );
 	Fsphere				Q;	Q.set	(point,range);
-	Fvector				B;	B.set	(range,range,range);
+	fVector3				B;
+	B.set	(range,range,range);
 	g_SpatialSpace->q_box(r_spatial,0,STYPE_COLLIDEABLE,point,B);
 
 	// Iterate
@@ -140,7 +141,7 @@ IC int   CObjectSpace::GetNearest( xr_vector<CObject*>&	q_nearest, ICollisionFor
 }
 
 //----------------------------------------------------------------------
-static void __stdcall	build_callback	(Fvector* V, int Vcnt, CDB::TRI* T, int Tcnt, void* params)
+static void __stdcall	build_callback	(fVector3* V, int Vcnt, CDB::TRI* T, int Tcnt, void* params)
 {
 	g_pGameLevel->Load_GameSpecific_CFORM( T, Tcnt );
 }
@@ -151,7 +152,7 @@ void CObjectSpace::Load	()
 
 	hdrCFORM					H;
 	F->r						(&H,sizeof(hdrCFORM));
-	Fvector*	verts			= (Fvector*)F->pointer();
+	fVector3*	verts			= (fVector3*)F->pointer();
 	CDB::TRI*	tris			= (CDB::TRI*)(verts+H.vertcount);
 	R_ASSERT					(CFORM_CURRENT_VERSION==H.version);
 	Static.build				( verts, H.vertcount, tris, H.facecount, build_callback );

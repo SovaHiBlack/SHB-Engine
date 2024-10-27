@@ -106,19 +106,19 @@ u8		fpackZ			(f32 v)				{
 	clamp	(_v,0,255);
 	return	u8(_v);
 }
-Fvector	vunpack			(s32 x, s32 y, s32 z)	{
-	Fvector	pck;
+fVector3	vunpack			(s32 x, s32 y, s32 z)	{
+	fVector3	pck;
 	pck.x	= (f32(x)/255.f - .5f)*2.f;
 	pck.y	= (f32(y)/255.f - .5f)*2.f;
 	pck.z	= -f32(z)/255.f;
 	return	pck;
 }
-Fvector	vunpack			(Ivector src)			{
+fVector3	vunpack			(Ivector src)			{
 	return	vunpack	(src.x,src.y,src.z);
 }
-Ivector	vpack			(Fvector src)
+Ivector	vpack			(fVector3 src)
 {
-	Fvector			_v;
+	fVector3			_v;
 	int	bx			= fpack	(src.x);
 	int by			= fpack	(src.y);
 	int bz			= fpackZ(src.z);

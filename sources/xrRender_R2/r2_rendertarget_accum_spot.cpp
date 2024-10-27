@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-extern Fvector du_cone_vertices[DU_CONE_NUMVERTEX];
+extern fVector3 du_cone_vertices[DU_CONE_NUMVERTEX];
 
 void CRenderTarget::accum_spot	(light* L)
 {
@@ -104,7 +104,9 @@ void CRenderTarget::accum_spot	(light* L)
 	}
 
 	// Common constants
-	Fvector		L_dir,L_clr,L_pos;
+	fVector3		L_dir;
+	fVector3		L_clr;
+	fVector3		L_pos;
 	f32 L_spec;
 	L_clr.set					(L->color.r,L->color.g,L->color.b);
 	L_clr.mul					(L->get_LOD());

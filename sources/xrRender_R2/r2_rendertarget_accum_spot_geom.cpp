@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-Fvector du_cone_vertices[DU_CONE_NUMVERTEX]=
+fVector3 du_cone_vertices[DU_CONE_NUMVERTEX]=
 {
 	0.0000f,    0.0000f, 0.0000f,
 	0.5000f,   0.0000f,	 1.0000f,

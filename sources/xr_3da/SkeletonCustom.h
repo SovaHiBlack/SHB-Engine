@@ -72,7 +72,7 @@ public:
 	u16					game_mtl_idx;
 	SJointIKData		IK_data;
 	f32				mass;
-	Fvector				center_of_mass;
+	fVector3				center_of_mass;
 
 	DEFINE_VECTOR		(u16,FacesVec,FacesVecIt);
 	DEFINE_VECTOR		(FacesVec,ChildFacesVec,ChildFacesVecIt);
@@ -133,7 +133,7 @@ public:
 public:
 	Fsphere				m_Bounds;		// 16		world space
 public:									
-						CSkeletonWallmark	(CKinematics* p,const fMatrix4x4* m, ref_shader s, const Fvector& cp, f32 ts):
+						CSkeletonWallmark	(CKinematics* p,const fMatrix4x4* m, ref_shader s, const fVector3& cp, f32 ts):
 						m_Parent(p),m_XForm(m),m_Shader(s),m_fTimeStart(ts),m_ContactPoint(cp)
 						{
 #ifdef DEBUG
@@ -150,7 +150,7 @@ public:
 
 	IC CKinematics*		Parent				(){return m_Parent;}
 	IC u32				VCount				(){return m_Faces.size()*3;}
-	IC bool				Similar				(ref_shader& sh, const Fvector& cp, f32 eps){return (m_Shader==sh)&&m_ContactPoint.similar(cp,eps);}
+	IC bool				Similar				(ref_shader& sh, const fVector3& cp, f32 eps){return (m_Shader==sh)&&m_ContactPoint.similar(cp,eps);}
 	IC f32			TimeStart			(){return m_fTimeStart;}
 	IC const fMatrix4x4*	XFORM				(){return m_XForm;}
 	IC const fVector3&	ContactPoint		(){return m_ContactPoint;}
@@ -228,7 +228,7 @@ public:
 	void						ClearWallmarks		();
 public:
 				
-				bool			PickBone			(const fMatrix4x4& parent_xform, Fvector& normal, f32& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
+				bool			PickBone			(const fMatrix4x4& parent_xform, fVector3& normal, f32& dist, const fVector3& start, const fVector3& dir, u16 bone_id);
 	virtual		void			EnumBoneVertices	(SEnumVerticesCallback &C, u16 bone_id);
 public:
 								CKinematics			();

@@ -37,7 +37,7 @@ void CRadioactiveZone::Affect(SZoneObjectInfo* O)
 	
 	if(GO) 
 	{
-		Fvector pos; 
+		fVector3 pos;
 		XFORM().transform_tiny(pos,CFORM()->getSphere().P);
 
 #ifdef DEBUG		
@@ -46,10 +46,10 @@ void CRadioactiveZone::Affect(SZoneObjectInfo* O)
 		if(bDebug) Msg("%s %s", *GO->cName(), pow);
 #endif
 
-		Fvector dir; 
+		fVector3 dir;
 		dir.set(0,0,0);
 	
-		Fvector position_in_bone_space;
+		fVector3 position_in_bone_space;
 		f32 power = Power(GO->Position().distance_to(pos));
 		f32 impulse = 0.f;
 		if(power > EPSILON_5)

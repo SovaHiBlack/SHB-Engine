@@ -27,8 +27,8 @@ class CStalkerMovementParams {
 	friend class CStalkerMovementManager;
 
 private:
-	Fvector								m_desired_position;
-	Fvector								m_desired_direction;
+	fVector3								m_desired_position;
+	fVector3								m_desired_direction;
 	MonsterSpace::EBodyState			m_body_state;
 	MonsterSpace::EMovementType			m_movement_type;
 	MonsterSpace::EMentalState			m_mental_state;

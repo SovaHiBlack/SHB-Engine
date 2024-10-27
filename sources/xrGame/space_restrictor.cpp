@@ -25,7 +25,7 @@ CSpaceRestrictor::~CSpaceRestrictor	()
 {
 }
 
-void CSpaceRestrictor::Center		(Fvector& C) const
+void CSpaceRestrictor::Center		(fVector3& C) const
 {
 	XFORM().transform_tiny			(C,CFORM()->getSphere().P);
 }
@@ -145,7 +145,8 @@ void CSpaceRestrictor::prepare			() const
 				sphere.mul_43			(XFORM(),box);
 
 				// Build points
-				Fvector					A,B[8];
+				fVector3					A;
+				fVector3				B[8];
 				CPlanes					temp;
 				A.set					(-.5f, -.5f, -.5f);	sphere.transform_tiny(B[0],A);
 				A.set					(-.5f, -.5f, +.5f);	sphere.transform_tiny(B[1],A);
@@ -209,7 +210,8 @@ void CSpaceRestrictor::OnRender	()
 	if(!bDebug) return;
 	if (!(dbg_net_Draw_Flags.is_any((1<<2)))) return;
 	RCache.OnFrameEnd();
-	Fvector l_half; l_half.set(.5f, .5f, .5f);
+	fVector3 l_half;
+	l_half.set(0.5f, 0.5f, 0.5f);
 	fMatrix4x4 l_ball;
 	fMatrix4x4 l_box;
 	xr_vector<CCF_Shape::shape_def> &l_shapes = ((CCF_Shape*)CFORM())->Shapes();
@@ -229,10 +231,11 @@ void CSpaceRestrictor::OnRender	()
 		{
 		case 0:
 			{
-                Fsphere &l_sphere = l_pShape->data.sphere;
+				Fsphere &l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
 				//l_ball.scale(1.f, 1.f, 1.f);
-				Fvector l_p; XFORM().transform(l_p, l_sphere.P);
+				fVector3 l_p; 
+				XFORM().transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
 				//l_ball.mul(XFORM(), l_ball);
 				//l_ball.mul(l_ball, XFORM());
@@ -259,7 +262,7 @@ void CSpaceRestrictor::OnRender	()
 		f32		delta_height = 0.f;
 
 		// get up on 2 meters
-		Fvector shift;
+		fVector3 shift;
 		static f32 gx = 0.0f;
 		static f32 gy = 2.0f;
 		static f32 gz = 0.0f;

@@ -384,7 +384,8 @@ public:
 extern  INT	g_bDR_LM_UsePointsBBox;
 extern	INT	g_bDR_LM_4Steps;
 extern	INT g_iDR_LM_Step;
-extern	Fvector	g_DR_LM_Min, g_DR_LM_Max;
+extern	fVector3	g_DR_LM_Min;
+extern	fVector3	g_DR_LM_Max;
 
 class CCC_DR_ClearPoint : public IConsole_Command
 {
@@ -406,7 +407,7 @@ class CCC_DR_TakePoint : public IConsole_Command
 public:
 	CCC_DR_TakePoint(pcstr N) : IConsole_Command(N)	{ bEmptyArgsHandled = TRUE; };
 	virtual void Execute(pcstr args) {
-		Fvector CamPos =  Device.vCameraPosition;
+		fVector3 CamPos =  Device.vCameraPosition;
 
 		if (g_DR_LM_Min.x > CamPos.x)	g_DR_LM_Min.x = CamPos.x;
 		if (g_DR_LM_Min.z > CamPos.z)	g_DR_LM_Min.z = CamPos.z;

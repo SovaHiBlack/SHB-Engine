@@ -44,7 +44,7 @@ namespace MemorySpace {
 	struct CHitObject;
 };
 
-const CCoverPoint *CScriptGameObject::best_cover	(const Fvector &position, const Fvector &enemy_position, f32 radius, f32 min_enemy_distance, f32 max_enemy_distance)
+const CCoverPoint *CScriptGameObject::best_cover	(const fVector3& position, const fVector3& enemy_position, f32 radius, f32 min_enemy_distance, f32 max_enemy_distance)
 {
 	CAI_Stalker		*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -56,7 +56,7 @@ const CCoverPoint *CScriptGameObject::best_cover	(const Fvector &position, const
 	return			(point);
 }
 
-const CCoverPoint *CScriptGameObject::safe_cover	(const Fvector &position, f32 radius, f32 min_distance)
+const CCoverPoint *CScriptGameObject::safe_cover	(const fVector3& position, f32 radius, f32 min_distance)
 {
 	CAI_Stalker		*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
@@ -311,7 +311,7 @@ void CScriptGameObject::set_desired_position	()
 		stalker->movement().set_desired_position	(0);
 }
 
-void CScriptGameObject::set_desired_position	(const Fvector *desired_position)
+void CScriptGameObject::set_desired_position	(const fVector3* desired_position)
 {
 	CAI_Stalker										*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker)
@@ -331,7 +331,7 @@ void  CScriptGameObject::set_desired_direction	()
 		stalker->movement().set_desired_direction	(0);
 }
 
-void  CScriptGameObject::set_desired_direction	(const Fvector *desired_direction)
+void  CScriptGameObject::set_desired_direction	(const fVector3* desired_direction)
 {
 	CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker)
@@ -475,7 +475,7 @@ DetailPathManager::EDetailPathType CScriptGameObject::detail_path_type	() const
 	return			(DetailPathManager::eDetailPathTypeSmooth);
 }
 
-void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const Fvector *vector3d, u32 dwLookOverDelay)
+void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const fVector3* vector3d, u32 dwLookOverDelay)
 {
 	CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker)
@@ -493,7 +493,7 @@ void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, bool to
 		stalker->sight().setup	(sight_type,torso_look,path);
 }
 
-void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const Fvector &vector3d, bool torso_look = false)
+void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const fVector3& vector3d, bool torso_look = false)
 {
 	CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker)
@@ -502,7 +502,7 @@ void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const F
 		stalker->sight().setup	(sight_type,vector3d,torso_look);
 }
 
-void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const Fvector *vector3d)
+void CScriptGameObject::set_sight		(SightManager::ESightType sight_type, const fVector3* vector3d)
 {
 	CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker)
@@ -684,15 +684,15 @@ void CScriptGameObject::patrol_path_make_inactual	()
 	monster->movement().patrol().make_inactual();
 }
 
-Fvector	CScriptGameObject::head_orientation		() const
+fVector3	CScriptGameObject::head_orientation		() const
 {
 	CAI_Stalker		*stalker = smart_cast<CAI_Stalker*>(&object());
 	if (!stalker) {
 		ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"CScriptGameObject : cannot access class member head_orientation!");
-		return		(Fvector().set(flt_max,flt_max,flt_max));
+		return		(fVector3().set(flt_max,flt_max,flt_max));
 	}
 	const SRotation	&r = stalker->movement().head_orientation().current;
-	return			(Fvector().setHP(-r.yaw,-r.pitch));
+	return			(fVector3().setHP(-r.yaw,-r.pitch));
 }
 
 void CScriptGameObject::info_add(pcstr text)
@@ -709,7 +709,7 @@ void CScriptGameObject::info_clear()
 #endif
 }
 
-void CScriptGameObject::jump(const Fvector &position, f32 factor)
+void CScriptGameObject::jump(const fVector3& position, f32 factor)
 {
 	CBaseMonster	*monster = smart_cast<CBaseMonster*>(&object());
 	if (!monster) {

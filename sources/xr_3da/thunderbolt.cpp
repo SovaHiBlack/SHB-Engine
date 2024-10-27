@@ -115,7 +115,7 @@ int CEffect_Thunderbolt::AppendDef(CInifile* pIni, pcstr sect)
 	return collection.size()-1;
 }
 
-BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, f32& dist)
+BOOL CEffect_Thunderbolt::RayPick(const fVector3& s, const fVector3& d, f32& dist)
 {
 	BOOL bRes 	= TRUE;
 
@@ -124,8 +124,8 @@ BOOL CEffect_Thunderbolt::RayPick(const Fvector& s, const Fvector& d, f32& dist)
 	bRes 				= g_pGameLevel->ObjectSpace.RayPick(s,d,dist,collide::rqtBoth,RQ,E);	
 	if (bRes) dist	 	= RQ.range;
 	else{
-		Fvector N	={0.f,-1.f,0.f};
-		Fvector P	={0.f,0.f,0.f};
+		fVector3 N	={0.0f,-1.0f,0.0f};
+		fVector3 P	={0.0f,0.0f,0.0f};
 		fPlane3 PL;
 		PL.build(P,N);
 		f32 dst	=dist;
@@ -147,7 +147,8 @@ void CEffect_Thunderbolt::Bolt(int id, f32 period, f32 lt)
 
 	fMatrix4x4 XF;
 	fMatrix4x4 S;
-	Fvector pos,dev;
+	fVector3 pos;
+	fVector3 dev;
 	f32 sun_h;
 	f32 sun_p;
 	g_pGamePersistent->Environment().CurrentEnv.sun_dir.getHP			(sun_h,sun_p);
@@ -161,7 +162,7 @@ void CEffect_Thunderbolt::Bolt(int id, f32 period, f32 lt)
 	dev.z		            = Random.randF(-p_tilt,p_tilt);
 	XF.setXYZi	            (dev);               
 
-	Fvector light_dir 		= {0.f,-1.f,0.f};
+	fVector3 light_dir 		= {0.0f,-1.0f,0.0f};
 	XF.transform_dir		(light_dir);
 	lightning_size			= FAR_DIST*2.f;
 	RayPick					(pos,light_dir,lightning_size);
@@ -196,7 +197,7 @@ void CEffect_Thunderbolt::OnFrame(int id, f32 period, f32 duration)
 	if (state==stWorking){
 		if (current_time>life_time) state = stIdle;
 		current_time	+= Device.fTimeDelta;
-		Fvector fClr;		
+		fVector3 fClr;
 		int frame;
 		u32 uClr		= current->color_anim->CalculateRGB(current_time/life_time,frame);
 		fClr.set		(f32(color_get_R(uClr))/255.f, f32(color_get_G(uClr)/255.f), f32(color_get_B(uClr)/255.f));
@@ -243,7 +244,8 @@ void CEffect_Thunderbolt::Render()
 		RCache.set_CullMode	(CULL_CCW);
 
 		// gradient
-		Fvector				vecSx, vecSy;
+		fVector3				vecSx;
+		fVector3			vecSy;
 		u32					VS_Offset;
 		FVF::LIT *pv		= (FVF::LIT*) RCache.Vertex.Lock(8,hGeom_gradient.stride(),VS_Offset);
 		// top

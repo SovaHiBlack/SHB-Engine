@@ -66,7 +66,7 @@ struct	vertHW_1W
 	u32			_T		;
 	u32			_B		;
 	s16			_tc		[2];
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, fVector2& tc, int index)
+	void set	(fVector3& P, fVector3 N, fVector3 T, fVector3 B, fVector2& tc, int index)
 	{
 		N.normalize_safe();
 		T.normalize_safe();
@@ -109,7 +109,7 @@ struct	vertHW_2W
 	u32			_T		;
 	u32			_B		;
 	s16			_tc_i	[4];
-	void set	(Fvector3& P, Fvector3 N, Fvector3 T, Fvector3 B, fVector2& tc, int index0, int index1, f32 w)
+	void set	(fVector3& P, fVector3 N, fVector3 T, fVector3 B, fVector2& tc, int index0, int index1, f32 w)
 	{
 		N.normalize_safe	();
 		T.normalize_safe	();
@@ -403,7 +403,6 @@ BOOL CSkeletonX_ext::_PickBoneHW2W		(Fvector& normal, f32& dist, const Fvector& 
 	return intersect;
 }
 
-
 BOOL CSkeletonX_ext::_PickBone		(Fvector& normal, f32& dist, const Fvector& start, const Fvector& dir, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount)
 {
 	VERIFY							(Parent && (ChildIDX!=u16(-1)));
@@ -436,7 +435,6 @@ BOOL CSkeletonX_PM::PickBone		(Fvector& normal, f32& dist, const Fvector& start,
 	FSlideWindow& SW				= nSWI.sw[0];
 	return inherited2::_PickBone	(normal,dist,start,dir,this,bone_id,iBase+SW.offset,SW.num_tris*3);
 }
-
 
 void	CSkeletonX_ST::		EnumBoneVertices( SEnumVerticesCallback &C, u16 bone_id )
 {
@@ -555,61 +553,6 @@ void CSkeletonX_PM::FillVertices	(const fMatrix4x4& view, CSkeletonWallmark& wm,
 	inherited2::_FillVertices		(view,wm,normal,size,this,bone_id,iBase+SW.offset,SW.num_tris*3);
 }
 
-
-/*
-template < typename _Pred >
-IC void EnumFaces( _Pred &pred, CBoneData::FacesVec& faces)
-{
-	for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++)
-		pred(*it)
-}
-void CSkeletonX_ext::TEnumBoneVertices	( Vertices1W &verteses, u16 bone_id, u16* indices, CBoneData::FacesVec& faces, SEnumVerticesCallback &C ) const
-{
-		for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
-		Fvector			p[3];
-		u32 idx			= (*it)*3;
-		for (u32 k=0; k<3; k++){
-			vertBoned1W& vert		= Vertices1W[indices[idx+k]];
-		}}
-							
-}
-void CSkeletonX_ext::TEnumBoneVertices	( Vertices2W &verteses, u16 bone_id, u16* indices, CBoneData::FacesVec& faces, SEnumVerticesCallback &C ) const
-{
-		for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
-		Fvector			p[3];
-		u32 idx			= (*it)*3;
-		for (u32 k=0; k<3; k++){
-			Fvector		P0,P1;
-			vertBoned2W& vert		= Vertices2W[indices[idx+k]];
-		}}
-							
-}
-void CSkeletonX_ext::TEnumBoneVertices	( vertHW_1W &verteses, u16 bone_id, u16* indices, CBoneData::FacesVec& faces, SEnumVerticesCallback &C ) const
-{
-		for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
-		Fvector			p[3];
-		u32 idx			= (*it)*3;
-		CSkeletonWallmark::WMFace F;
-		for (u32 k=0; k<3; k++){
-			vertHW_1W& vert			= vertices[indices[idx+k]];	
-							
-}
-void CSkeletonX_ext::TEnumBoneVertices	( vertHW_2W &verteses, u16 bone_id, u16* indices, CBoneData::FacesVec& faces, SEnumVerticesCallback &C ) const
-{
-	for (CBoneData::FacesVecIt it=faces.begin(); it!=faces.end(); it++){
-		Fvector			p[3];
-		u32 idx			= (*it)*3;
-		CSkeletonWallmark::WMFace F;
-		for (u32 k=0; k<3; k++){
-			Fvector		P0,P1;
-			vertHW_2W& vert			= vertices[indices[idx+k]];
-			
-		}}
-							
-}
-*/
-
-
 template <typename vertex_buffer_type>
 IC void TEnumBoneVertices	(vertex_buffer_type vertices, u16* indices, CBoneData::FacesVec& faces, SEnumVerticesCallback &C ) 
 {
@@ -625,7 +568,6 @@ IC void TEnumBoneVertices	(vertex_buffer_type vertices, u16* indices, CBoneData:
 
 void	CSkeletonX_ext::_EnumBoneVertices	( SEnumVerticesCallback &C, Fvisual* V, u16 bone_id, u32 iBase, u32 iCount ) const
 {
-
 	VERIFY							(Parent && (ChildIDX!=u16(-1)));
 	CBoneData& BD					= Parent->LL_GetData(bone_id);
 	CBoneData::FacesVec*	faces	= &BD.child_faces[ChildIDX];
@@ -653,4 +595,3 @@ void	CSkeletonX_ext::_EnumBoneVertices	( SEnumVerticesCallback &C, Fvisual* V, u
 		CHK_DX				(V->p_rm_Vertices->Unlock());
 	CHK_DX				(V->p_rm_Indices->Unlock());
 }
-

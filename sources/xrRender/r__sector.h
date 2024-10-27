@@ -18,7 +18,7 @@ class	CPortal						: public IRender_Portal
 #endif
 {
 private:
-	svector<Fvector,8>				poly;
+	svector<fVector3,8>				poly;
 	CSector							*pFace,*pBack;
 
 public:
@@ -27,15 +27,15 @@ public:
 	u32								marker;
 	BOOL							bDualRender;
 
-	void							Setup								(Fvector* V, int vcnt, CSector* face, CSector* back);
+	void							Setup								(fVector3* V, int vcnt, CSector* face, CSector* back);
 
-	svector<Fvector,8>&				getPoly()							{ return poly;		}
+	svector<fVector3,8>&				getPoly()							{ return poly;		}
 	CSector*						Back()								{ return pBack;		}
 	CSector*						Front()								{ return pFace;		}
 	CSector*						getSector		(CSector* pFrom)	{ return pFrom==pFace?pBack:pFace; }
-	CSector*						getSectorFacing	(const Fvector& V)	{ if (P.classify(V)>0) return pFace; else return pBack; }
-	CSector*						getSectorBack	(const Fvector& V)	{ if (P.classify(V)>0) return pBack; else return pFace;	}
-	f32								distance		(const Fvector &V)	{ return _abs(P.classify(V)); }
+	CSector*						getSectorFacing	(const fVector3& V)	{ if (P.classify(V)>0) return pFace; else return pBack; }
+	CSector*						getSectorBack	(const fVector3& V)	{ if (P.classify(V)>0) return pBack; else return pFace;	}
+	f32								distance		(const fVector3&V)	{ return _abs(P.classify(V)); }
 
 									CPortal			();
 	virtual							~CPortal		();
@@ -79,7 +79,7 @@ public:
 public:
 	u32										i_marker;		// input
 	u32										i_options;		// input:	culling options
-	Fvector									i_vBase;		// input:	"view" point
+	fVector3									i_vBase;		// input:	"view" point
 	fMatrix4x4									i_mXFORM;		// input:	4x4 xform
 	fMatrix4x4									i_mXFORM_01;	// 
 	CSector*								i_start;		// input:	starting point
@@ -87,11 +87,12 @@ public:
 	xr_vector<std::pair<CPortal*, f32> >	f_portals;		// 
 	ref_shader								f_shader;
 	ref_geom								f_geom;
+
 public:
 									CPortalTraverser	();
 	void							initialize			();
 	void							destroy				();
-	void							traverse			(IRender_Sector* start, CFrustum& F, Fvector& vBase, fMatrix4x4& mXFORM, u32 options);
+	void							traverse			(IRender_Sector* start, CFrustum& F, fVector3& vBase, fMatrix4x4& mXFORM, u32 options);
 	void							fade_portal			(CPortal* _p, f32 ssa);
 	void							fade_render			();
 #ifdef DEBUG

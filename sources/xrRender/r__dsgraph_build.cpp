@@ -22,19 +22,19 @@ f32		r_ssaGLOD_start;
 f32		r_ssaGLOD_end;
 f32		r_ssaHZBvsTEX;
 
-ICF	f32	CalcSSA				(f32& distSQ, Fvector& C, IRender_Visual* V)
+ICF	f32	CalcSSA				(f32& distSQ, fVector3& C, IRender_Visual* V)
 {
 	f32 R	= V->vis.sphere.R + 0;
 	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+ EPSILON_5;
 	return	R/distSQ;
 }
-ICF	f32	CalcSSA				(f32& distSQ, Fvector& C, f32 R)
+ICF	f32	CalcSSA				(f32& distSQ, fVector3& C, f32 R)
 {
 	distSQ	= Device.vCameraPosition.distance_to_sqr(C)+ EPSILON_5;
 	return	R/distSQ;
 }
 
-void R_dsgraph_structure::r_dsgraph_insert_dynamic	(IRender_Visual *pVisual, Fvector& Center)
+void R_dsgraph_structure::r_dsgraph_insert_dynamic	(IRender_Visual *pVisual, fVector3& Center)
 {
 	CRender&	RI			=	RImplementation;
 
@@ -314,7 +314,7 @@ void CRender::add_leafs_Dynamic	(IRender_Visual *pVisual)
 			BOOL	_use_lod			= FALSE	;
 			if (pV->m_lod)				
 			{
-				Fvector							Tpos;
+				fVector3							Tpos;
 				f32		D;
 				val_pTransform->transform_tiny	(Tpos, pV->vis.sphere.P);
 				f32		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere
@@ -336,7 +336,7 @@ void CRender::add_leafs_Dynamic	(IRender_Visual *pVisual)
 		{
 			// General type of visual
 			// Calculate distance to it's center
-			Fvector							Tpos;
+		fVector3							Tpos;
 			val_pTransform->transform_tiny	(Tpos, pVisual->vis.sphere.P);
 			r_dsgraph_insert_dynamic		(pVisual,Tpos);
 		}
@@ -428,7 +428,7 @@ void CRender::add_leafs_Static(IRender_Visual *pVisual)
 BOOL CRender::add_Dynamic(IRender_Visual *pVisual, u32 planes)
 {
 	// Check frustum visibility and calculate distance to visual's center
-	Fvector		Tpos;	// transformed position
+	fVector3		Tpos;	// transformed position
 	EFC_Visible	VIS;
 
 	val_pTransform->transform_tiny	(Tpos, pVisual->vis.sphere.P);
@@ -482,7 +482,7 @@ BOOL CRender::add_Dynamic(IRender_Visual *pVisual, u32 planes)
 			BOOL	_use_lod			= FALSE	;
 			if (pV->m_lod)				
 			{
-				Fvector							Tpos;
+				fVector3							Tpos;
 				f32		D;
 				val_pTransform->transform_tiny	(Tpos, pV->vis.sphere.P);
 				f32		ssa		=	CalcSSA	(D,Tpos,pV->vis.sphere.R/2.f);	// assume dynamics never consume full sphere

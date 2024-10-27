@@ -23,7 +23,7 @@ struct SStateDataAction {
 // SStateDataMoveToPoint
 //////////////////////////////////////////////////////////////////////////
 struct SStateDataMoveToPoint {
-	Fvector				point;
+	fVector3				point;
 	u32					vertex;
 	
 	bool				accelerated;
@@ -58,7 +58,7 @@ struct SStateDataMoveToPointEx : public SStateDataMoveToPoint {
 // SStateHideFromPoint
 //////////////////////////////////////////////////////////////////////////
 struct SStateHideFromPoint {
-	Fvector				point;
+	fVector3				point;
 	
 	bool				accelerated;
 	bool				braking;
@@ -89,7 +89,7 @@ struct SStateHideFromPoint {
 // SStateDataLookToPoint
 //////////////////////////////////////////////////////////////////////////
 struct SStateDataLookToPoint {
-	Fvector				point;
+	fVector3				point;
 	u32					face_delay;
 	SStateDataAction	action;
 
@@ -103,7 +103,7 @@ struct SStateDataLookToPoint {
 // SStateDataMoveAroundPoint
 //////////////////////////////////////////////////////////////////////////
 struct SStateDataMoveAroundPoint {
-	Fvector				point;
+	fVector3				point;
 	u32					vertex;
 	
 	f32				radius;
@@ -126,11 +126,9 @@ struct SStateDataMoveAroundPoint {
 // SStateDataActionLook
 //////////////////////////////////////////////////////////////////////////
 struct SStateDataActionLook : public SStateDataAction {
-	Fvector		point;			
+	fVector3		point;
 
 	SStateDataActionLook() {
 		point.set	(0.f,0.f,0.f);
 	}
 };
-
-

@@ -327,13 +327,13 @@ public:
 	}
 
 	// makes unit rotation
-	IC	SelfRef	rotationYawPitchRoll(const Fvector& ypr)
+	IC	SelfRef	rotationYawPitchRoll(const fVector3& ypr)
 	{
 		return rotationYawPitchRoll(ypr.x, ypr.y, ypr.z);
 	}
 
 	// set a quaternion from an axis and a rotation around the axis
-	IC	SelfRef	rotation(Fvector& axis, T angle)
+	IC	SelfRef	rotation(fVector3& axis, T angle)
 	{
 		T	sinTheta;
 
@@ -348,7 +348,7 @@ public:
 	// gets an axis and angle of rotation around the axis from a quaternion
 	// returns TRUE if there is an axis.
 	// returns FALSE if there is no axis (and Axis is set to 0,0,0, and Theta is 0)
-	IC	BOOL	get_axis_angle(Fvector& axis, T& angle)
+	IC	BOOL	get_axis_angle(fVector3& axis, T& angle)
 	{
 		T OneOverSinTheta;
 

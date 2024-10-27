@@ -319,7 +319,7 @@ public:
 	}
 	IC	SelfRef		scale(f32 s)					// 0.1 means make 110%, -0.1 means make 90%
 	{
-		Fvector	bd;
+		fVector3	bd;
 		bd.sub(max, min).mul(s);
 		grow(bd);
 		return *this;

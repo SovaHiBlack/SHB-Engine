@@ -11,7 +11,7 @@ class CStateMonsterLookToUnprotectedArea : public CState<_Object> {
 
 	SStateDataAction	data;
 
-	Fvector				target_point;	
+	fVector3				target_point;
 
 public:
 						CStateMonsterLookToUnprotectedArea	(_Object *obj);

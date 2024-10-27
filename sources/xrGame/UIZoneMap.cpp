@@ -63,7 +63,7 @@ void CUIZoneMap::SetHeading(f32 angle)
 	m_compass.SetHeading(angle);
 }
 
-void CUIZoneMap::UpdateRadar(Fvector pos)
+void CUIZoneMap::UpdateRadar(fVector3 pos)
 {
 	m_clipFrame.Update( );
 	m_background.Update( );

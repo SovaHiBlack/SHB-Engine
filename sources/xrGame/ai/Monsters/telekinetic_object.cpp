@@ -102,7 +102,7 @@ void CTelekineticObject::raise(f32 step)
 	
 	step *= strength;
 	
-	Fvector dir;
+	fVector3 dir;
 	dir.set(0.f,1.0f,0.f);
 
 	f32 elem_size = f32(object->m_pPhysicsShell->Elements().size());
@@ -144,7 +144,7 @@ void CTelekineticObject::keep()
 	f32 cur_h		= object->Position().y;
 
 	// установить dir в соответствие с текущей высотой
-	Fvector dir;
+	fVector3 dir;
 	if (cur_h > target_height+ 0.6f)			dir.set(0.f,-1.0f,0.f);
 	else if (cur_h < target_height+ 0.6f)		dir.set(0.f,1.0f,0.f);
 	else {
@@ -166,9 +166,8 @@ void CTelekineticObject::keep()
 void CTelekineticObject::release() 
 {
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
-	
-	
-	Fvector dir_inv;
+
+	fVector3 dir_inv;
 	dir_inv.set(0.f,-1.0f,0.f);
 
 		// включить гравитацию
@@ -182,7 +181,7 @@ void CTelekineticObject::release()
 	switch_state(TS_None);
 }
 
-void CTelekineticObject::fire_t(const Fvector &target, f32 time)
+void CTelekineticObject::fire_t(const fVector3& target, f32 time)
 {
 	switch_state(TS_Fire);
 	//time_fire_started	= Device.dwTimeGlobal;
@@ -192,7 +191,7 @@ void CTelekineticObject::fire_t(const Fvector &target, f32 time)
 	// включить гравитацию
 	object->m_pPhysicsShell->set_ApplyByGravity(TRUE);
 
-	Fvector transference;
+	fVector3 transference;
 	transference.sub(target,object->Position());
 	TransferenceToThrowVel(transference,time,object->EffectiveGravity());
 	object->m_pPhysicsShell->set_LinearVel(transference);
@@ -204,7 +203,7 @@ void CTelekineticObject::fire_t(const Fvector &target, f32 time)
 		sound_hold.stop();
 }
 
-void CTelekineticObject::fire(const Fvector &target, f32 power)
+void CTelekineticObject::fire(const fVector3& target, f32 power)
 {
 	//state				= TS_Fire;
 	switch_state(TS_Fire);
@@ -213,7 +212,7 @@ void CTelekineticObject::fire(const Fvector &target, f32 power)
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
 
 	// вычислить направление
-	Fvector dir;
+	fVector3 dir;
 	dir.sub(target,object->Position());
 	dir.normalize();
 
@@ -254,7 +253,7 @@ void CTelekineticObject::rotate()
 	if (!object || !object->m_pPhysicsShell || !object->m_pPhysicsShell->isActive()) return;
 	
 	// вычислить направление
-	Fvector dir;
+	fVector3 dir;
 	dir.random_dir();
 	dir.normalize();
 

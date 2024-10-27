@@ -18,10 +18,10 @@ void	__stdcall	xrTransfer_x86	(LPVOID vDest, LPVOID vSrc, u32 vCount, u32 vStrid
 		case 8:		// 32 byte vertex	(pos(12)+norm(12)+uv1(8))
 			for (; sit!=send; sit+=vStride, dit+=vStride)
 			{
-				Fvector*	sP	= (Fvector*)sit;
-				Fvector*	dP	= (Fvector*)dit;
-				Fvector*	sN	= (Fvector*)(sit+3*4);
-				Fvector*	dN	= (Fvector*)(dit+3*4);
+				fVector3*	sP	= (fVector3*)sit;
+				fVector3*	dP	= (fVector3*)dit;
+				fVector3*	sN	= (fVector3*)(sit+3*4);
+				fVector3*	dN	= (fVector3*)(dit+3*4);
 				xform->transform_tiny	(*dP,*sP);
 				xform->transform_dir	(*dN,*sN);
 				CopyMemory	(dit+GeomBytes,sit+GeomBytes,8);
@@ -30,10 +30,10 @@ void	__stdcall	xrTransfer_x86	(LPVOID vDest, LPVOID vSrc, u32 vCount, u32 vStrid
 		case 16:	// 40 byte vertex	(pos(12)+norm(12)+uv1(8)+uv2(8))
 			for (; sit!=send; sit+=vStride, dit+=vStride)
 			{
-				Fvector*	sP	= (Fvector*)sit;
-				Fvector*	dP	= (Fvector*)dit;
-				Fvector*	sN	= (Fvector*)(sit+3*4);
-				Fvector*	dN	= (Fvector*)(dit+3*4);
+				fVector3*	sP	= (fVector3*)sit;
+				fVector3*	dP	= (fVector3*)dit;
+				fVector3*	sN	= (fVector3*)(sit+3*4);
+				fVector3*	dN	= (fVector3*)(dit+3*4);
 				xform->transform_tiny	(*dP,*sP);
 				xform->transform_dir	(*dN,*sN);
 				CopyMemory	(dit+GeomBytes,sit+GeomBytes,16);
@@ -42,10 +42,10 @@ void	__stdcall	xrTransfer_x86	(LPVOID vDest, LPVOID vSrc, u32 vCount, u32 vStrid
 		default:	// any size
 			for (; sit!=send; sit+=vStride, dit+=vStride)
 			{
-				Fvector*	sP	= (Fvector*)sit;
-				Fvector*	dP	= (Fvector*)dit;
-				Fvector*	sN	= (Fvector*)(sit+3*4);
-				Fvector*	dN	= (Fvector*)(dit+3*4);
+				fVector3*	sP	= (fVector3*)sit;
+				fVector3*	dP	= (fVector3*)dit;
+				fVector3*	sN	= (fVector3*)(sit+3*4);
+				fVector3*	dN	= (fVector3*)(dit+3*4);
 				xform->transform_tiny	(*dP,*sP);
 				xform->transform_dir	(*dN,*sN);
 				CopyMemory	(dit+GeomBytes,sit+GeomBytes,remain);

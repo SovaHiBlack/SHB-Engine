@@ -14,7 +14,8 @@ weapon_hud_container* g_pWeaponHUDContainer=0;
 BOOL weapon_hud_value::load(const shared_str& section, CHudItem* owner)
 {	
 	// Geometry and transform
-	Fvector						pos,ypr;
+	fVector3					pos;
+	fVector3					ypr;
 	pos							= pSettings->r_fvector3(section,"position");
 	ypr							= pSettings->r_fvector3(section,"orientation");
 	ypr.mul						(PI/180.f);

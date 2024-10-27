@@ -21,7 +21,7 @@ IC	CSpaceRestrictionBase &CSpaceRestrictionBridge::object	() const
 }
 
 template <typename T>
-IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvector &position, Fvector &result, bool out_restriction)
+IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const fVector3& position, fVector3& result, bool out_restriction)
 {
 #pragma todo("Dima to Dima : _Warning : this place can be optimized in case of a slowdown")
 	VERIFY							(initialized());
@@ -68,7 +68,7 @@ IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvecto
 	VERIFY	(ai().level_graph().valid_vertex_id(selected));
 
 	{
-		Fvector		center = ai().level_graph().vertex_position(selected);
+		fVector3		center = ai().level_graph().vertex_position(selected);
 		f32		offset = ai().level_graph().header().cell_size()*.5f - EPSILON_3;
 		bool		found = false;
 		min_dist_sqr = flt_max;
@@ -76,7 +76,7 @@ IC	u32	CSpaceRestrictionBridge::accessible_nearest	(T &restriction, const Fvecto
 			Fsphere		current;
 			current.R	= EPSILON_3;
 #ifdef DEBUG
-			current.P	= Fvector().set(flt_max,flt_max,flt_max);
+			current.P	= fVector3().set(flt_max,flt_max,flt_max);
 #endif
 			switch (i) {
 				case 0 : current.P.set(center.x + offset,center.y,center.z + offset); break;

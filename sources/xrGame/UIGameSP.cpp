@@ -203,7 +203,7 @@ void CUIGame::ReInitShownUI( )
 }
 
 extern ENGINE_API BOOL bShowPauseString;
-void CUIGame::ChangeLevel(GameGraph::_GRAPH_ID game_vert_id, u32 level_vert_id, Fvector pos, Fvector ang, Fvector pos2, Fvector ang2, bool b)
+void CUIGame::ChangeLevel(GameGraph::_GRAPH_ID game_vert_id, u32 level_vert_id, fVector3 pos, fVector3 ang, fVector3 pos2, fVector3 ang2, bool b)
 {
 	if (!MainInputReceiver( ) || MainInputReceiver( ) != UIChangeLevelWnd)
 	{

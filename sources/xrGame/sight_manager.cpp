@@ -49,9 +49,9 @@ void CSightManager::reload			(pcstr section)
 	m_max_right_angle			= deg2rad(READ_IF_EXISTS(pSettings,r_float,section,"max_right_torso_angle",60.f));
 }
 
-void CSightManager::SetPointLookAngles(const Fvector &tPosition, f32& yaw, f32& pitch, const CGameObject *object)
+void CSightManager::SetPointLookAngles(const fVector3& tPosition, f32& yaw, f32& pitch, const CGameObject *object)
 {
-	Fvector			tTemp;
+	fVector3			tTemp;
 	tTemp.sub		(tPosition,m_object->eye_matrix.c);
 	tTemp.getHP		(yaw,pitch);
 	VERIFY			(_valid(yaw));
@@ -60,15 +60,15 @@ void CSightManager::SetPointLookAngles(const Fvector &tPosition, f32& yaw, f32& 
 	pitch			*= -1;
 }
 
-void CSightManager::SetFirePointLookAngles(const Fvector &tPosition, f32& yaw, f32& pitch, const CGameObject *object)
+void CSightManager::SetFirePointLookAngles(const fVector3& tPosition, f32& yaw, f32& pitch, const CGameObject *object)
 {
-	Fvector			tTemp;
+	fVector3			tTemp;
 
 	if (object && object->use_center_to_aim()) {
 		m_object->Center(tTemp);
 #if 1
 		//. hack is here, just because our actor model is animated with 20cm shift
-		m_object->XFORM().transform_tiny(tTemp,Fvector().set(.2f,tTemp.y - m_object->Position().y,0.f));
+		m_object->XFORM().transform_tiny(tTemp, fVector3().set(0.2f,tTemp.y - m_object->Position().y,0.0f));
 #else
 		const CEntityAlive	*entity_alive = smart_cast<const CEntityAlive*>(object);
 		if (!entity_alive || entity_alive->g_Alive()) {
@@ -76,12 +76,12 @@ void CSightManager::SetFirePointLookAngles(const Fvector &tPosition, f32& yaw, f
 			tTemp.z		= m_object->Position().z;
 		}
 #endif
-		tTemp.sub		(tPosition,Fvector(tTemp));
+		tTemp.sub		(tPosition, fVector3(tTemp));
 		if (fis_zero(tTemp.square_magnitude()))
 			tTemp.set	(0.f,0.f,1.f);
 	}
 	else {
-		Fvector		my_position;
+		fVector3		my_position;
 		if (m_object->eye_matrix.c.distance_to_xz_sqr(tPosition) < .1f)
 			my_position	= m_object->Position();
 		else
@@ -184,10 +184,10 @@ void CSightManager::SetLessCoverLook(const CLevelGraph::CVertex *tpNode, f32 fMa
 	VERIFY					(_valid(object().movement().m_head.target.yaw));
 }
 
-bool CSightManager::bfIf_I_SeePosition(Fvector tPosition) const
+bool CSightManager::bfIf_I_SeePosition(fVector3 tPosition) const
 {
 	f32				yaw, pitch;
-	Fvector				tVector;
+	fVector3				tVector;
 	tVector.sub			(tPosition,m_object->Position());
 	tVector.getHP		(yaw,pitch);
 	yaw					= angle_normalize_signed(-yaw);
@@ -345,7 +345,7 @@ void CSightManager::update			()
 bool CSightManager::GetDirectionAngles				(f32& yaw, f32& pitch)
 {
 	if (!object().movement().path().empty() && (m_object->movement().detail().curr_travel_point_index() + 1 < m_object->movement().detail().path().size())) {
-		Fvector				t;
+		fVector3				t;
 		t.sub					(
 			object().movement().path()[m_object->movement().detail().curr_travel_point_index() + 1].position,
 			object().movement().path()[m_object->movement().detail().curr_travel_point_index()].position
@@ -358,7 +358,7 @@ bool CSightManager::GetDirectionAngles				(f32& yaw, f32& pitch)
 
 bool CSightManager::GetDirectionAnglesByPrevPositions(f32& yaw, f32& pitch)
 {
-	Fvector					tDirection;
+	fVector3					tDirection;
 	int						i = m_object->ps_Size	();
 
 	if (i < 2) 

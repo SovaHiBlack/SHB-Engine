@@ -27,7 +27,8 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	f32 d_W = 1.f;
 
 	// Common constants (light-related)
-	Fvector		L_dir,L_clr;
+	fVector3		L_dir;
+	fVector3		L_clr;
 	f32 L_spec;
 	L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
@@ -49,7 +50,7 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 
 		// setup
 		f32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
-		Fvector	dir					= L_dir;
+		fVector3	dir					= L_dir;
 				dir.normalize().mul	(- _sqrt(intensity+ EPSILON_5));
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_DIRECT]);		// masker
 		RCache.set_c				("Ldynamic_dir",		dir.x,dir.y,dir.z,0		);
@@ -61,7 +62,8 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 	}
 
 	// recalculate d_Z, to perform depth-clipping
-	Fvector	center_pt;			center_pt.mad	(Device.vCameraPosition,Device.vCameraDirection,ps_r2_sun_near);
+	fVector3	center_pt;
+	center_pt.mad	(Device.vCameraPosition,Device.vCameraDirection,ps_r2_sun_near);
 	Device.mFullTransform.transform(center_pt)	;
 	d_Z							= center_pt.z	;
 
@@ -101,7 +103,8 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 			// tsm-bias
 			if ( (SE_SUN_FAR == sub_phase) && (RImplementation.o.HW_smap) )
 			{
-				Fvector		bias;	bias.mul		(L_dir,ps_r2_sun_tsm_bias);
+				fVector3		bias;
+				bias.mul		(L_dir,ps_r2_sun_tsm_bias);
 				fMatrix4x4		bias_t;
 				bias_t.translate(bias);
 				m_shadow.mulB_44	(bias_t);
@@ -114,14 +117,18 @@ void CRenderTarget::accum_direct		(u32 sub_phase)
 		{
 			static	f32	w_shift		= 0;
 			fMatrix4x4			m_xform;
-			Fvector			direction	= fuckingsun->direction	;
+			fVector3			direction	= fuckingsun->direction	;
 			f32	w_dir				= g_pGamePersistent->Environment().CurrentEnv.wind_direction	;
 			//f32	w_speed				= g_pGamePersistent->Environment().CurrentEnv.wind_velocity	;
-			Fvector			normal	;	normal.setHP(w_dir,0);
+			fVector3			normal	;
+			normal.setHP(w_dir,0.0f);
 							w_shift		+=	0.003f*Device.fTimeDelta;
-			Fvector			position;	position.set(0,0,0);
+							fVector3			position;
+							position.set(0.0f,0.0f,0.0f);
 			m_xform.build_camera_dir	(position,direction,normal)	;
-			Fvector			localnormal;m_xform.transform_dir(localnormal,normal); localnormal.normalize();
+			fVector3			localnormal;
+			m_xform.transform_dir(localnormal,normal);
+			localnormal.normalize();
 			m_clouds_shadow.mul			(m_xform,xf_invview)		;
 			m_xform.scale				(0.002f,0.002f,1.f)			;
 			m_clouds_shadow.mulA_44		(m_xform)					;
@@ -260,7 +267,8 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 	f32 d_W = 1.f;
 
 	// Common constants (light-related)
-	Fvector		L_dir,L_clr;
+	fVector3		L_dir;
+	fVector3		L_clr;
 	f32 L_spec;
 	L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
@@ -285,7 +293,7 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 
 		// setup
 		f32	intensity			= 0.3f*fuckingsun->color.r + 0.48f*fuckingsun->color.g + 0.22f*fuckingsun->color.b;
-		Fvector	dir					= L_dir;
+		fVector3	dir					= L_dir;
 		dir.normalize().mul	(- _sqrt(intensity+ EPSILON_5));
 		RCache.set_Element			(s_accum_mask->E[SE_MASK_DIRECT]);		// masker
 		RCache.set_c				("Ldynamic_dir",		dir.x,dir.y,dir.z,0		);
@@ -297,7 +305,8 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 	}
 
 	// recalculate d_Z, to perform depth-clipping
-	Fvector	center_pt;			center_pt.mad	(Device.vCameraPosition,Device.vCameraDirection,ps_r2_sun_near);
+	fVector3	center_pt;
+	center_pt.mad	(Device.vCameraPosition,Device.vCameraDirection,ps_r2_sun_near);
 	Device.mFullTransform.transform(center_pt)	;
 	d_Z							= center_pt.z	;
 
@@ -335,7 +344,8 @@ void CRenderTarget::accum_direct_f		(u32 sub_phase)
 			// tsm-bias
 			if (SE_SUN_FAR == sub_phase)
 			{
-				Fvector		bias;	bias.mul		(L_dir,ps_r2_sun_tsm_bias);
+				fVector3		bias;
+				bias.mul		(L_dir,ps_r2_sun_tsm_bias);
 				fMatrix4x4		bias_t;
 				bias_t.translate(bias);
 				m_shadow.mulB_44	(bias_t);
@@ -394,7 +404,8 @@ void CRenderTarget::accum_direct_lum	()
 	//f32 d_W = 1.f;
 
 	// Common constants (light-related)
-	Fvector		L_dir,L_clr;
+	fVector3		L_dir;
+	fVector3		L_clr;
 	f32 L_spec;
 	L_clr.set					(fuckingsun->color.r,fuckingsun->color.g,fuckingsun->color.b);
 	L_spec						= u_diffuse2s	(L_clr);
@@ -402,7 +413,8 @@ void CRenderTarget::accum_direct_lum	()
 	L_dir.normalize				();
 
 	// recalculate d_Z, to perform depth-clipping
-	Fvector	center_pt;			center_pt.mad	(Device.vCameraPosition,Device.vCameraDirection,ps_r2_sun_near);
+	fVector3	center_pt;
+	center_pt.mad	(Device.vCameraPosition,Device.vCameraDirection,ps_r2_sun_near);
 	Device.mFullTransform.transform(center_pt)	;
 	d_Z							= center_pt.z	;
 

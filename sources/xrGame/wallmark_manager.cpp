@@ -20,7 +20,7 @@ void CWalmarkManager::Clear()
 	m_wallmarks.clear();
 }
 
-void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos, 
+void CWalmarkManager::AddWallmark(const fVector3& dir, const fVector3& start_pos,
 								  f32 range, f32 wallmark_size,
 								  SHADER_VECTOR& wallmarks_vector,int t)
 {
@@ -30,10 +30,10 @@ void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos,
 	if(pMaterial->Flags.is(SGameMtl::flBloodmark))
 	{
 		//вычислить нормаль к пораженной поверхности
-		Fvector*	pVerts	= Level().ObjectSpace.GetStaticVerts();
+		fVector3*	pVerts	= Level().ObjectSpace.GetStaticVerts();
 
 		//вычислить точку попадания
-		Fvector end_point;
+		fVector3 end_point;
 		end_point.set(0,0,0);
 		end_point.mad(start_pos, dir, range);
 
@@ -49,7 +49,7 @@ void CWalmarkManager::AddWallmark(const Fvector& dir, const Fvector& start_pos,
 }
 
 /*
-void CWalmarkManager::PlaceWallmark(const Fvector& dir, const Fvector& start_pos, 
+void CWalmarkManager::PlaceWallmark(const fVector3& dir, const fVector3& start_pos, 
 									  f32 trace_dist, f32 wallmark_size,
 									  SHADER_VECTOR& wallmarks_vector,CObject* ignore_obj)
 {
@@ -74,7 +74,7 @@ void CWalmarkManager::PlaceWallmark(const Fvector& dir, const Fvector& start_pos
 }
 */
 
-void CWalmarkManager::PlaceWallmarks( const Fvector& start_pos)
+void CWalmarkManager::PlaceWallmarks( const fVector3& start_pos)
 {
 	m_pos				= start_pos;
 //.	pcstr				sect				= pSettings->r_string(m_owner->cNameSect(), "wallmark_section");
@@ -85,7 +85,7 @@ void CWalmarkManager::PlaceWallmarks( const Fvector& start_pos)
 	StartWorkflow		();
 }
 
-f32 Distance (const Fvector& rkPoint, const Fvector rkTri[3], f32& pfSParam, f32& pfTParam, Fvector& closest, Fvector& dir);
+f32 Distance (const fVector3& rkPoint, const fVector3 rkTri[3], f32& pfSParam, f32& pfTParam, fVector3& closest, fVector3& dir);
 
 void CWalmarkManager::StartWorkflow()
 {
@@ -95,15 +95,15 @@ void CWalmarkManager::StartWorkflow()
 	u32					max_wallmarks_count = pSettings->r_u32(sect,"max_count");
 
 	XRC.box_options							(0);
-	XRC.box_query							(Level().ObjectSpace.GetStaticModel(),m_pos,Fvector().set(m_trace_dist,m_trace_dist,m_trace_dist));
+	XRC.box_query							(Level().ObjectSpace.GetStaticModel(),m_pos, fVector3().set(m_trace_dist,m_trace_dist,m_trace_dist));
 
 	CDB::TRI*		T_array					= Level().ObjectSpace.GetStaticTris();
-	Fvector*		V_array					= Level().ObjectSpace.GetStaticVerts();
+	fVector3*		V_array					= Level().ObjectSpace.GetStaticVerts();
 	CDB::RESULT*	R_begin                 = XRC.r_begin();
 	CDB::RESULT*    R_end                   = XRC.r_end();
 //.	Triangle		ntri;
 //.	f32			ndist					= dInfinity;
-//.	Fvector			npoint;
+//.	fVector3			npoint;
 	u32				wm_count	= 0;
 
 	u32 _ray_test		= 0;
@@ -112,8 +112,8 @@ void CWalmarkManager::StartWorkflow()
 	u32 _not_dist		= 0;
 /*
 	DBG_OpenCashedDraw		();
-	DBG_DrawAABB			(m_pos,Fvector().set(m_trace_dist,m_trace_dist,m_trace_dist),D3DCOLOR_XRGB(255,0,0));
-	DBG_DrawAABB			(m_pos,Fvector().set(0.05f,0.05f,0.05f),D3DCOLOR_XRGB(0,255,0));
+	DBG_DrawAABB			(m_pos,fVector3().set(m_trace_dist,m_trace_dist,m_trace_dist),D3DCOLOR_XRGB(255,0,0));
+	DBG_DrawAABB			(m_pos,fVector3().set(0.05f,0.05f,0.05f),D3DCOLOR_XRGB(0,255,0));
 	
 	CTimer T; T.Start();
 */
@@ -124,16 +124,16 @@ void CWalmarkManager::StartWorkflow()
 		if(wm_count >= max_wallmarks_count) break;
 		
 //.		Triangle					tri;
-		Fvector						end_point;
+		fVector3						end_point;
 //.		ETriDist					c;
-		Fvector						pdir;
+		fVector3						pdir;
 		f32						pfSParam;
 		f32						pfTParam;
 
 //.		CalculateTriangle			(T_array+Res->id,cast_fp(m_pos),tri);
 		
 //.		f32 dist					= DistToTri(&tri,cast_fp(m_pos),cast_fp(pdir),cast_fp(end_point),c,V_array);
-		Fvector						_tri[3];
+		fVector3						_tri[3];
 
 		CDB::TRI*		_t			= T_array + Res->id;
 
@@ -188,7 +188,7 @@ void CWalmarkManager::StartWorkflow()
 */
 }
 /*
-void CWalmarkManager::PlaceWallmarks(const Fvector& start_pos,CObject* ignore_obj)
+void CWalmarkManager::PlaceWallmarks(const fVector3& start_pos,CObject* ignore_obj)
 {
 	if(m_wallmarks)
 			PlaceWallmarks(start_pos,m_trace_dist,m_wallmark_size,*m_wallmarks,ignore_obj);
@@ -214,13 +214,16 @@ void CWalmarkManager::Load (pcstr section)
 	}
 }
 
-f32 Distance (const Fvector& rkPoint, const Fvector rkTri[3], f32& pfSParam, f32& pfTParam, Fvector& closest, Fvector& dir)
+f32 Distance (const fVector3& rkPoint, const fVector3 rkTri[3], f32& pfSParam, f32& pfTParam, fVector3& closest, fVector3& dir)
 {
-//.    Fvector kDiff = rkTri.Origin() - rkPoint;
-	Fvector kDiff;		kDiff.sub	( rkTri[0], rkPoint); //
+//.    fVector3 kDiff = rkTri.Origin() - rkPoint;
+	fVector3 kDiff;
+	kDiff.sub	( rkTri[0], rkPoint); //
 
-	Fvector Edge0; Edge0.sub(rkTri[1], rkTri[0]); //
-	Fvector Edge1; Edge1.sub(rkTri[2], rkTri[0]); //
+	fVector3 Edge0;
+	Edge0.sub(rkTri[1], rkTri[0]); //
+	fVector3 Edge1;
+	Edge1.sub(rkTri[2], rkTri[0]); //
 
 //.    f32 fA00 = rkTri.Edge0().SquaredLength();
 	f32 fA00 = Edge0.square_magnitude();

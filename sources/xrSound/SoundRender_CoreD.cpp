@@ -202,7 +202,7 @@ void	CSoundRender_CoreD::i_eax_get			(const GUID* guid, u32 prop, void* val, u32
 	R_CHK	(pExtensions->Get		(*guid, prop, NULL, 0, val, sz, &total_bytes));
 }
 
-void CSoundRender_CoreD::update_listener( const Fvector& P, const Fvector& D, const Fvector& N, f32 dt )
+void CSoundRender_CoreD::update_listener( const fVector3& P, const fVector3& D, const fVector3& N, f32 dt )
 {
 	inherited::update_listener(P,D,N,dt);
 	Listener.vVelocity.sub			(P, Listener.vPosition );

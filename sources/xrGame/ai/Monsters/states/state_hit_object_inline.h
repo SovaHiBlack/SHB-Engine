@@ -29,8 +29,8 @@ void CStateMonsterHitObjectAbstract::execute()
 	if (!m_hitted && (time_state_started + TIME_POINTBREAK < Device.dwTimeGlobal)) {
 		m_hitted		= true;
 		
-		Fvector			dir;
-		dir.add			(Fvector().sub(target->Position(), object->Position()), object->Direction());
+		fVector3			dir;
+		dir.add			(fVector3().sub(target->Position(), object->Position()), object->Direction());
 		dir.normalize	();
 		target->m_pPhysicsShell->applyImpulse(dir,IMPULSE * target->m_pPhysicsShell->getMass());
 	}
@@ -53,7 +53,7 @@ bool CStateMonsterHitObjectAbstract::check_start_conditions()
 		if (!obj || !obj->m_pPhysicsShell) continue;
 
 		// определить дистанцию до врага
-		Fvector d;
+		fVector3 d;
 		d.sub(obj->Position(),object->Position());
 
 		// проверка на  Field-Of-Hit

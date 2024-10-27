@@ -23,7 +23,7 @@ public:
 	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
 	virtual void	net_Destroy			();
 
-	virtual void	Center				(Fvector &C)	const;
+	virtual void	Center				(fVector3& C)	const;
 	virtual f32		Radius				() const;
 
 	virtual void	shedule_Update		(u32 dt);

@@ -26,7 +26,7 @@ protected:
 	ref_light		light_render;
 	ref_light		light_omni;
 	ref_glow		glow_render;
-	Fvector			m_focus;
+	fVector3			m_focus;
 
 private:
 	inline	bool	can_use_dynamic_lights	();

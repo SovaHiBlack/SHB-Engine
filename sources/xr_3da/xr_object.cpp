@@ -90,7 +90,7 @@ void CObject::setVisible			(BOOL _visible)
 	}
 }
 
-void	CObject::Center					(Fvector& C)	const	{ VERIFY2(renderable.visual,*cName()); renderable.xform.transform_tiny(C,renderable.visual->vis.sphere.P);	}
+void	CObject::Center					(fVector3& C)	const	{ VERIFY2(renderable.visual,*cName()); renderable.xform.transform_tiny(C,renderable.visual->vis.sphere.P);	}
 f32	CObject::Radius					()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.sphere.R;								}
 const	fBox3&	CObject::BoundingBox	()				const	{ VERIFY2(renderable.visual,*cName()); return renderable.visual->vis.box;									}
 
@@ -218,18 +218,27 @@ void	CObject::spatial_update		(f32 eps_P, f32 eps_R)
 		}
 	}
 
-	if (bUpdate)		{
-		spatial_move	();
-	} else {
-		if (spatial.node_ptr)	
+	if (bUpdate)
+	{
+		spatial_move( );
+	}
+	else
+	{
+		if (spatial.node_ptr)
 		{	// Object registered!
-			if (!fsimilar(Radius(),spatial.sphere.R,eps_R))	spatial_move();
-			else			{
-				Fvector			C;
-				Center			(C);
-				if (!C.similar(spatial.sphere.P,eps_P))	spatial_move();
+			if (!fsimilar(Radius( ), spatial.sphere.R, eps_R))
+			{
+				spatial_move( );
 			}
-			// else nothing to do :_)
+			else
+			{
+				fVector3			C;
+				Center(C);
+				if (!C.similar(spatial.sphere.P, eps_P))
+				{
+					spatial_move( );
+				}
+			}
 		}
 	}
 }

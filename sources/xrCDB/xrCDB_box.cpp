@@ -84,14 +84,15 @@ class box_collider
 public:
 	COLLIDER*		dest;
 	TRI*			tris;
-	Fvector*		verts;
+	fVector3*		verts;
 	
-	Fvector			b_min, b_max;
+	fVector3		b_min;
+	fVector3		b_max;
 	Point			center, extents;
 
 	Point			mLeafVerts	[3];
 	
-	IC void			_init		(COLLIDER* CL, Fvector* V, TRI* T, const Fvector& C, const Fvector& E)
+	IC void			_init		(COLLIDER* CL, fVector3* V, TRI* T, const fVector3& C, const fVector3& E)
 	{
 		dest		= CL;
 		verts		= V;
@@ -101,7 +102,7 @@ public:
 		b_min.sub	(C,E);
 		b_max.add	(C,E);
 	}
-	ICF	bool		_box		(const Fvector& C, const Fvector& E)
+	ICF	bool		_box		(const fVector3& C, const fVector3& E)
 	{
 		if( b_max.x < C.x-E.x )	return false;
 		if( b_max.y < C.y-E.y )	return false;
@@ -190,9 +191,18 @@ public:
 	void			_prim		(DWORD prim)
 	{
 		TRI&	T	= tris[prim];
-		Fvector& v0	= verts[ T.verts[0] ];	mLeafVerts[0].x = v0.x;	mLeafVerts[0].y = v0.y;	mLeafVerts[0].z = v0.z;
-		Fvector& v1	= verts[ T.verts[1] ];	mLeafVerts[1].x = v1.x;	mLeafVerts[1].y = v1.y;	mLeafVerts[1].z = v1.z;
-		Fvector& v2	= verts[ T.verts[2] ];	mLeafVerts[2].x = v2.x;	mLeafVerts[2].y = v2.y;	mLeafVerts[2].z = v2.z;
+		fVector3& v0	= verts[ T.verts[0] ];
+		mLeafVerts[0].x = v0.x;
+		mLeafVerts[0].y = v0.y;
+		mLeafVerts[0].z = v0.z;
+		fVector3& v1	= verts[ T.verts[1] ];
+		mLeafVerts[1].x = v1.x;
+		mLeafVerts[1].y = v1.y;
+		mLeafVerts[1].z = v1.z;
+		fVector3& v2	= verts[ T.verts[2] ];
+		mLeafVerts[2].x = v2.x;
+		mLeafVerts[2].y = v2.y;
+		mLeafVerts[2].z = v2.z;
 		if (!_tri())			return;
 		RESULT& R	= dest->r_add();
 		R.id		= prim;
@@ -204,7 +214,7 @@ public:
 	void			_stab		(const AABBNoLeafNode* node)
 	{
 		// Actual box-box test
-		if (!_box((Fvector&)node->mAABB.mCenter,(Fvector&)node->mAABB.mExtents))	return;
+		if (!_box((fVector3&)node->mAABB.mCenter,(fVector3&)node->mAABB.mExtents))	return;
 		
 		// 1st chield
 		if (node->HasLeaf())	_prim	(node->GetPrimitive());
@@ -219,7 +229,7 @@ public:
 	}
 };
 
-void COLLIDER::box_query(const MODEL *m_def, const Fvector& b_center, const Fvector& b_dim)
+void COLLIDER::box_query(const MODEL *m_def, const fVector3& b_center, const fVector3& b_dim)
 {
 	m_def->syncronize		();
 

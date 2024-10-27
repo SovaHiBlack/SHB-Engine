@@ -458,7 +458,7 @@ void CWeaponMagazined::state_Fire	(f32 dt)
 {
 	VERIFY(fTimeToFire>0.f);
 
-	Fvector					p1, d; 
+	fVector3					p1, d;
 	p1.set(get_LastFP());
 	d.set(get_LastFD());
 
@@ -536,7 +536,7 @@ void CWeaponMagazined::OnShot		()
 	PlayAnimShoot		();
 
 	// Shell Drop
-	Fvector vel; 
+	fVector3 vel;
 	PHGetLinearVell(vel);
 	OnShellDrop					(get_LastSP(), vel);
 

@@ -129,7 +129,9 @@ void CWeapon::UpdateXForm	()
 		fMatrix4x4& mR			= V->LL_GetTransform(u16(boneR));
 		// Calculate
 		fMatrix4x4				mRes;
-		Fvector				R,D,N;
+		fVector3				R;
+		fVector3				D;
+		fVector3				N;
 		D.sub				(mL.c,mR.c);	
 
 		if(fis_zero(D.magnitude()))
@@ -172,9 +174,9 @@ void CWeapon::UpdateFireDependencies_internal()
 			fMatrix4x4& fire_mat		= V->LL_GetTransform(u16(m_pHUD->FireBone()));
 			fMatrix4x4& parent			= m_pHUD->Transform	();
 
-			const Fvector& fp		= m_pHUD->FirePoint();
-			const Fvector& fp2		= m_pHUD->FirePoint2();
-			const Fvector& sp		= m_pHUD->ShellPoint();
+			const fVector3& fp		= m_pHUD->FirePoint();
+			const fVector3& fp2		= m_pHUD->FirePoint2();
+			const fVector3& sp		= m_pHUD->ShellPoint();
 
 			fire_mat.transform_tiny	(m_firedeps.vLastFP,fp);
 			parent.transform_tiny	(m_firedeps.vLastFP);
@@ -189,14 +191,13 @@ void CWeapon::UpdateFireDependencies_internal()
 
 			m_firedeps.m_FireParticlesXForm.identity();
 			m_firedeps.m_FireParticlesXForm.k.set(m_firedeps.vLastFD);
-			Fvector::generate_orthonormal_basis_normalized(m_firedeps.m_FireParticlesXForm.k,
-									m_firedeps.m_FireParticlesXForm.j, m_firedeps.m_FireParticlesXForm.i);
+			fVector3::generate_orthonormal_basis_normalized(m_firedeps.m_FireParticlesXForm.k, m_firedeps.m_FireParticlesXForm.j, m_firedeps.m_FireParticlesXForm.i);
 		} else {
 			// 3rd person or no parent
 			fMatrix4x4& parent			= XFORM();
-			Fvector& fp				= vLoadedFirePoint;
-			Fvector& fp2			= vLoadedFirePoint2;
-			Fvector& sp				= vLoadedShellPoint;
+			fVector3& fp				= vLoadedFirePoint;
+			fVector3& fp2			= vLoadedFirePoint2;
+			fVector3& sp				= vLoadedShellPoint;
 
 			parent.transform_tiny	(m_firedeps.vLastFP,fp);
 			parent.transform_tiny	(m_firedeps.vLastFP2,fp2);
@@ -227,12 +228,13 @@ void CWeapon::ForceUpdateFireParticles()
 				Log("H_Parent", H_Parent()->cNameSect().c_str());
 		}
 
-		Fvector					p, d; 
+		fVector3					p;
+		fVector3					d;
 		smart_cast<CEntity*>(H_Parent())->g_fireParams	(this, p,d);
 
-		fMatrix4x4						_pxf;
+		fMatrix4x4					_pxf;
 		_pxf.k						= d;
-		_pxf.i.crossproduct			(Fvector().set(0.0f,1.0f,0.0f),	_pxf.k);
+		_pxf.i.crossproduct			(fVector3().set(0.0f,1.0f,0.0f),	_pxf.k);
 		_pxf.j.crossproduct			(_pxf.k,		_pxf.i);
 		_pxf.c						= XFORM().c;
 		
@@ -251,7 +253,8 @@ void CWeapon::Load		(pcstr section)
 
 #ifdef DEBUG
 	{
-		Fvector				pos,ypr;
+		fVector3			pos;
+		fVector3			ypr;
 		pos					= pSettings->r_fvector3		(section,"position");
 		ypr					= pSettings->r_fvector3		(section,"orientation");
 		ypr.mul				(PI/180.f);
@@ -262,7 +265,8 @@ void CWeapon::Load		(pcstr section)
 
 	m_StrapOffset			= m_Offset;
 	if (pSettings->line_exist(section,"strap_position") && pSettings->line_exist(section,"strap_orientation")) {
-		Fvector				pos,ypr;
+		fVector3				pos;
+		fVector3			ypr;
 		pos					= pSettings->r_fvector3		(section,"strap_position");
 		ypr					= pSettings->r_fvector3		(section,"strap_orientation");
 		ypr.mul				(PI/180.f);
@@ -1259,7 +1263,8 @@ void CWeapon::reload			(pcstr section)
 	}
 
 	{
-		Fvector				pos,ypr;
+		fVector3				pos;
+		fVector3			ypr;
 		pos					= pSettings->r_fvector3		(section,"position");
 		ypr					= pSettings->r_fvector3		(section,"orientation");
 		ypr.mul				(PI/180.f);
@@ -1270,7 +1275,8 @@ void CWeapon::reload			(pcstr section)
 
 	m_StrapOffset			= m_Offset;
 	if (pSettings->line_exist(section,"strap_position") && pSettings->line_exist(section,"strap_orientation")) {
-		Fvector				pos,ypr;
+		fVector3				pos;
+		fVector3			ypr;
 		pos					= pSettings->r_fvector3		(section,"strap_position");
 		ypr					= pSettings->r_fvector3		(section,"strap_orientation");
 		ypr.mul				(PI/180.f);
@@ -1392,7 +1398,7 @@ void CWeapon::UpdateHudAdditonal		(fMatrix4x4& trans)
 		hud_rotation_y.rotateY(m_pHUD->ZoomRotateY()*m_fZoomRotationFactor);
 		hud_rotation.mulA_43(hud_rotation_y);
 
-		Fvector offset = m_pHUD->ZoomOffset();
+		fVector3 offset = m_pHUD->ZoomOffset();
 		offset.mul					(m_fZoomRotationFactor);
 		hud_rotation.translate_over	(offset);
 		trans.mulB_43				(hud_rotation);

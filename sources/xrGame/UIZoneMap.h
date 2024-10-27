@@ -24,7 +24,7 @@ public:
 	void						Init( );
 
 	void						Render( );
-	void						UpdateRadar(Fvector pos);
+	void						UpdateRadar(fVector3 pos);
 
 	void						SetScale(f32 s)
 	{

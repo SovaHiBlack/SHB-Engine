@@ -54,31 +54,33 @@ struct CShapeTestPredicate {
 
 void CSpaceRestrictionShape::fill_shape		(const CCF_Shape::shape_def &shape)
 {
-	Fvector							start,dest;
+	fVector3						start;
+	fVector3						dest;
 	switch (shape.type) {
 		case 0 : {
-			start.sub				(Fvector().set(shape.data.sphere.P),Fvector().set(shape.data.sphere.R,0.f,shape.data.sphere.R));
-			dest.add				(Fvector().set(shape.data.sphere.P),Fvector().set(shape.data.sphere.R,0.f,shape.data.sphere.R));
+			start.sub				(fVector3().set(shape.data.sphere.P), fVector3().set(shape.data.sphere.R,0.f,shape.data.sphere.R));
+			dest.add				(fVector3().set(shape.data.sphere.P), fVector3().set(shape.data.sphere.R,0.f,shape.data.sphere.R));
 			start.add				(m_restrictor->Position());
 			dest.add				(m_restrictor->Position());
 			break;
 		}
 		case 1 : {
-			Fvector					points[8] = {
-				Fvector().set(-.5f,-.5f,-.5f),
-				Fvector().set(-.5f,-.5f,+.5f),
-				Fvector().set(-.5f,+.5f,-.5f),
-				Fvector().set(-.5f,+.5f,+.5f),
-				Fvector().set(+.5f,-.5f,-.5f),
-				Fvector().set(+.5f,-.5f,+.5f),
-				Fvector().set(+.5f,+.5f,-.5f),
-				Fvector().set(+.5f,+.5f,+.5f)
+			fVector3					points[8] =
+			{
+				fVector3().set(-0.5f,-0.5f,-0.5f),
+				fVector3().set(-0.5f,-0.5f,+0.5f),
+				fVector3().set(-0.5f,+0.5f,-0.5f),
+				fVector3().set(-0.5f,+0.5f,+0.5f),
+				fVector3().set(+0.5f,-0.5f,-0.5f),
+				fVector3().set(+0.5f,-0.5f,+0.5f),
+				fVector3().set(+0.5f,+0.5f,-0.5f),
+				fVector3().set(+0.5f,+0.5f,+0.5f)
 			};
-			start					= Fvector().set(flt_max,flt_max,flt_max);
-			dest					= Fvector().set(flt_min,flt_min,flt_min);
+			start					= fVector3().set(flt_max,flt_max,flt_max);
+			dest					= fVector3().set(flt_min,flt_min,flt_min);
 			fMatrix4x4				Q;
 			Q.mul_43				(m_restrictor->XFORM(),shape.data.box);
-			Fvector					temp;
+			fVector3					temp;
 			for (int i=0; i<8; ++i) {
 				Q.transform_tiny	(temp,points[i]);
 				start.x				= _min(start.x,temp.x);

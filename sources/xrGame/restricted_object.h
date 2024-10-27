@@ -44,12 +44,12 @@ public:
 	virtual BOOL			net_Spawn						(CSE_Abstract* data);
 	virtual void			net_Destroy						();
 			void			add_border						(u32 start_vertex_id, f32 radius) const;
-			void			add_border						(const Fvector &start_position, const Fvector &dest_position) const;
+			void			add_border						(const fVector3& start_position, const fVector3& dest_position) const;
 			void			add_border						(u32 start_vertex_id, u32 dest_vertex_id) const;
 			void			remove_border					() const;
-			u32				accessible_nearest				(const Fvector &position, Fvector &result) const;
-			bool			accessible						(const Fvector &position) const;
-			bool			accessible						(const Fvector &position, f32 radius) const;
+			u32				accessible_nearest				(const fVector3& position, fVector3& result) const;
+			bool			accessible						(const fVector3& position) const;
+			bool			accessible						(const fVector3& position, f32 radius) const;
 			bool			accessible						(u32 level_vertex_id) const;
 			bool			accessible						(u32 level_vertex_id, f32 radius) const;
 			void			add_restrictions				(const xr_vector<ALife::_OBJECT_ID> &out_restrictions, const xr_vector<ALife::_OBJECT_ID> &in_restrictions);

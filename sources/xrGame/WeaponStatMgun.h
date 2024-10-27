@@ -48,9 +48,11 @@ public:
 //shooting
 private:
 	u16						m_rotate_x_bone, m_rotate_y_bone, m_fire_bone, m_camera_bone;
-	f32					m_tgt_x_rot, m_tgt_y_rot, m_cur_x_rot, m_cur_y_rot, m_bind_x_rot, m_bind_y_rot;
-	Fvector					m_bind_x, m_bind_y;
-	Fvector					m_fire_dir,m_fire_pos;
+	f32						m_tgt_x_rot, m_tgt_y_rot, m_cur_x_rot, m_cur_y_rot, m_bind_x_rot, m_bind_y_rot;
+	fVector3				m_bind_x;
+	fVector3				m_bind_y;
+	fVector3				m_fire_dir;
+	fVector3				m_fire_pos;
 
 	fMatrix4x4				m_i_bind_x_xform;
 	fMatrix4x4				m_i_bind_y_xform;
@@ -60,7 +62,7 @@ private:
 	CCartridge*				m_Ammo;
 	f32					m_barrel_speed;
 	fVector2				m_dAngle;
-	Fvector					m_destEnemyDir;
+	fVector3					m_destEnemyDir;
 	bool					m_allow_fire;
 	HUD_SOUND				sndShot;
 	f32					camRelaxSpeed;
@@ -68,7 +70,7 @@ private:
 
 protected:
 	void					UpdateBarrelDir		();
-	virtual const Fvector&	get_CurrentFirePoint();
+	virtual const fVector3&	get_CurrentFirePoint();
 	virtual const fMatrix4x4&	get_ParticlesXFORM	();
 
 	virtual	void			FireStart			();
@@ -80,7 +82,7 @@ protected:
 			void			SetDesiredDir		(f32 h, f32 p);
 //HolderCustom
 public:
-	virtual bool			Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos) {return !Owner();};
+	virtual bool			Use					(const fVector3& pos,const fVector3& dir,const fVector3& foot_pos) {return !Owner();};
 	virtual void			OnMouseMove			(int x, int y);
 	virtual void			OnKeyboardPress		(int dik);
 	virtual void			OnKeyboardRelease	(int dik);
@@ -94,7 +96,7 @@ public:
 	virtual void			detach_Actor		();
 	virtual bool			allowWeapon			()	const				{return false;};
 	virtual bool			HUDView				()	const				{return true;};
-	virtual Fvector			ExitPosition		()						{return Fvector().set(0.0f,0.0f,0.0f);};
+	virtual fVector3			ExitPosition		()						{return fVector3().set(0.0f,0.0f,0.0f);};
 
 	virtual CCameraBase*	Camera				()						{return camera;};
 

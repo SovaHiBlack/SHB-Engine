@@ -34,11 +34,12 @@ CTracer::~CTracer()
 {
 }
 
-IC void FillSprite_Circle      (FVF::LIT*& pv, const Fvector& pos, const f32 r1, f32 r2, u32 color)
+IC void FillSprite_Circle      (FVF::LIT*& pv, const fVector3& pos, const f32 r1, f32 r2, u32 color)
 {
-	const Fvector& T        = Device.vCameraTop;
-	const Fvector& R        = Device.vCameraRight;
-	Fvector Vr, Vt;
+	const fVector3& T        = Device.vCameraTop;
+	const fVector3& R        = Device.vCameraRight;
+	fVector3 Vr;
+	fVector3 Vt;
 	Vr.x            = R.x*r1;
 	Vr.y            = R.y*r1;
 	Vr.z            = R.z*r1;
@@ -46,7 +47,10 @@ IC void FillSprite_Circle      (FVF::LIT*& pv, const Fvector& pos, const f32 r1,
 	Vt.y            = T.y*r2;
 	Vt.z            = T.z*r2;
 
-	Fvector         a,b,c,d;
+	fVector3         a;
+	fVector3		b;
+	fVector3		c;
+	fVector3		d;
 	a.sub           (Vt,Vr);
 	b.add           (Vt,Vr);
 	c.invert        (a);
@@ -57,13 +61,15 @@ IC void FillSprite_Circle      (FVF::LIT*& pv, const Fvector& pos, const f32 r1,
 	pv->set         (b.x+pos.x,b.y+pos.y,b.z+pos.z, color, 1.f,0.f);        pv++;
 }
 
-IC void FillSprite_Line	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, f32 r1, f32 r2, u32 color)
+IC void FillSprite_Line	(FVF::LIT*& pv, const fVector3& pos, const fVector3& dir, f32 r1, f32 r2, u32 color)
 {
-	const Fvector& T        = dir;
+	const fVector3& T        = dir;
 
-	Fvector R;      R.crossproduct(T,Device.vCameraDirection).normalize_safe();
+	fVector3 R;
+	R.crossproduct(T,Device.vCameraDirection).normalize_safe();
 	
-	Fvector Vr, Vt;
+	fVector3 Vr;
+	fVector3 Vt;
 	Vr.x            = R.x*r1;
 	Vr.y            = R.y*r1;
 	Vr.z            = R.z*r1;
@@ -71,7 +77,10 @@ IC void FillSprite_Line	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, 
 	Vt.y            = T.y*r2;
 	Vt.z            = T.z*r2;
 
-	Fvector         a,b,c,d;
+	fVector3         a;
+	fVector3 b;
+	fVector3 c;
+	fVector3 d;
 	a.sub           (Vt,Vr);
 	b.add           (Vt,Vr);
 	c.invert        (a);
@@ -82,9 +91,9 @@ IC void FillSprite_Line	(FVF::LIT*& pv, const Fvector& pos, const Fvector& dir, 
 	pv->set         (b.x+pos.x,b.y+pos.y,b.z+pos.z, color, 1.f,0.5f);        pv++;
 }
 
-void CTracer::Render	(FVF::LIT*&verts, const Fvector& pos, const Fvector& center, const Fvector& dir, f32 length, f32 width, u8 colorID)
+void CTracer::Render	(FVF::LIT*&verts, const fVector3& pos, const fVector3& center, const fVector3& dir, f32 length, f32 width, u8 colorID)
 {
-	if (::Render->ViewBase.testSphere_dirty((Fvector&)center,length*.5f)){
+	if (::Render->ViewBase.testSphere_dirty((fVector3&)center,length*.5f)){
 		if (colorID >= m_aColors.size()) colorID = 0;
 		FillSprite_Circle	(verts,pos,width*.5f,width*.5f, m_aColors[colorID]);
 		FillSprite_Line	(verts,center,dir,width*.5f,length*.5f, m_aColors[colorID]);

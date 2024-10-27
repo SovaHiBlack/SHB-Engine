@@ -64,9 +64,13 @@ protected:
 	f32				fBlend;
 	u32					dwFrame;
 
-	Fvector				vSunDir;
-	Fvector				vecLight;
-	Fvector				vecX, vecY, vecDir, vecAxis, vecCenter;
+	fVector3				vSunDir;
+	fVector3				vecLight;
+	fVector3				vecX;
+	fVector3			vecY;
+	fVector3			vecDir;
+	fVector3			vecAxis;
+	fVector3			vecCenter;
 	BOOL				bRender;
 
 	// variable

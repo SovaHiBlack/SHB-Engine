@@ -184,33 +184,48 @@ public		:
 
 class ENGINE_API	CCC_Vector3 : public IConsole_Command
 {
-protected	:
-	Fvector*		value;
-	Fvector			min,max;
-public		:
-	CCC_Vector3(pcstr N, Fvector* V, const Fvector _min, const Fvector _max) :
-	  IConsole_Command(N),
-	  value(V)
+protected:
+	fVector3* value;
+	fVector3		min;
+	fVector3		max;
+
+public:
+	CCC_Vector3(pcstr N, fVector3* V, const fVector3 _min, const fVector3 _max) : IConsole_Command(N), value(V)
 	{
 		min.set(_min);
 		max.set(_max);
-	};
+	}
 
-	virtual void	Execute	(pcstr args)
+	virtual void	Execute(pcstr args)
 	{
-		Fvector v;
-		if (3!=sscanf(args,"%f,%f,%f",&v.x,&v.y,&v.z))	{ InvalidSyntax(); return; }
-		if (v.x<min.x || v.y<min.y || v.z<min.z)		{ InvalidSyntax(); return; }
-		if (v.x>max.x || v.y>max.y || v.z>max.z)		{ InvalidSyntax(); return; }
+		fVector3 v;
+		if (3 != sscanf(args, "%f,%f,%f", &v.x, &v.y, &v.z))
+		{
+			InvalidSyntax( );
+			return;
+		}
+
+		if (v.x < min.x || v.y < min.y || v.z < min.z)
+		{
+			InvalidSyntax( );
+			return;
+		}
+
+		if (v.x > max.x || v.y > max.y || v.z > max.z)
+		{
+			InvalidSyntax( );
+			return;
+		}
+
 		value->set(v);
 	}
-	virtual void	Status	(TStatus& S)
-	{	
-		sprintf_s	(S,sizeof(S),"%f,%f,%f",value->x,value->y,value->z);
+	virtual void	Status(TStatus& S)
+	{
+		sprintf_s(S, sizeof(S), "%f,%f,%f", value->x, value->y, value->z);
 	}
-	virtual void	Info	(TInfo& I)
-	{	
-		sprintf_s(I,sizeof(I),"vector3 in range [%f,%f,%f]-[%f,%f,%f]",min.x,min.y,min.z,max.x,max.y,max.z);
+	virtual void	Info(TInfo& I)
+	{
+		sprintf_s(I, sizeof(I), "vector3 in range [%f,%f,%f]-[%f,%f,%f]", min.x, min.y, min.z, max.x, max.y, max.z);
 	}
 };
 

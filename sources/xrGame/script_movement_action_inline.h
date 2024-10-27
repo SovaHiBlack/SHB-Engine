@@ -17,7 +17,7 @@ IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBody
 	SetSpeed			(fSpeed);
 }
 
-IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const Fvector &tPosition, f32 fSpeed)
+IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EBodyState tBodyState, MonsterSpace::EMovementType tMovementType, DetailPathManager::EDetailPathType tPathType, const fVector3& tPosition, f32 fSpeed)
 {
 	SetBodyState		(tBodyState);
 	SetMovementType		(tMovementType);
@@ -35,7 +35,7 @@ IC	CScriptMovementAction::CScriptMovementAction		(const EInputKeys tInputKeys, f
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------						
 // Monsters
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, Fvector &tPosition, f32	dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
+IC	CScriptMovementAction::CScriptMovementAction		(MonsterSpace::EScriptMonsterMoveAction tAct, fVector3& tPosition, f32	dist_to_end, MonsterSpace::EScriptMonsterSpeedParam speed_param)
 {																																			
 	m_tMoveAction		= tAct;
 	SetPosition			(tPosition);																										
@@ -78,7 +78,7 @@ IC	void CScriptMovementAction::SetPatrolPath		(const CPatrolPath *path, shared_s
 	m_bCompleted		= false;
 }
 
-IC	void CScriptMovementAction::SetPosition			(const Fvector &tPosition)
+IC	void CScriptMovementAction::SetPosition			(const fVector3& tPosition)
 {
 	m_tDestinationPosition = tPosition;
 	m_tGoalType			= eGoalTypePathPosition;

@@ -23,7 +23,7 @@ void	CEnvModifier::load	(IReader* fs)
 	fs->r_fvector3	(hemi_color);
 }
 
-f32	CEnvModifier::sum	(CEnvModifier& M, Fvector3& view)
+f32	CEnvModifier::sum	(CEnvModifier& M, fVector3& view)
 {
 	f32	_dist_sq	=	view.distance_to_sqr(M.position);
 	if (_dist_sq>=(M.radius*M.radius))	return 0;

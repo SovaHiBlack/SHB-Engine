@@ -96,14 +96,18 @@ void CKinematics::DebugRender(fMatrix4x4& XFORM)
 	CBoneData::BoneDebug	dbgLines;
 	(*bones)[iRoot]->DebugQuery	(dbgLines);
 
-	Fvector Z;  Z.set(0,0,0);
-	Fvector H1; H1.set(0.01f,0.01f,0.01f);
-	Fvector H2; H2.mul(H1,2);
+	fVector3 Z;
+	Z.set(0.0f,0.0f,0.0f);
+	fVector3 H1;
+	H1.set(0.01f,0.01f,0.01f);
+	fVector3 H2;
+	H2.mul(H1,2);
 	for (u32 i=0; i<dbgLines.size(); i+=2)	{
 		fMatrix4x4& M1 = bone_instances[dbgLines[i]].mTransform;
 		fMatrix4x4& M2 = bone_instances[dbgLines[i+1]].mTransform;
 
-		Fvector P1,P2;
+		fVector3 P1;
+		fVector3 P2;
 		M1.transform_tiny(P1,Z);
 		M2.transform_tiny(P2,Z);
 		RCache.dbg_DrawLINE(XFORM,P1,P2,D3DCOLOR_XRGB(0,255,0));
@@ -298,7 +302,8 @@ void	CKinematics::Load(pcstr N, IReader *data, u32 dwFlags)
 			IKD->r_stringZ	(B->game_mtl_name);
 			IKD->r			(&B->shape,sizeof(SBoneShape));
 			B->IK_data.Import(*IKD,vers);
-			Fvector vXYZ,vT;
+			fVector3 vXYZ;
+			fVector3 vT;
 			IKD->r_fvector3	(vXYZ);
 			IKD->r_fvector3	(vT);
 			B->bind_transform.setXYZi(vXYZ);
@@ -549,11 +554,14 @@ void CKinematics::LL_GetBindTransform(xr_vector<fMatrix4x4>& matrices)
 	RecursiveBindTransform	(this,matrices,iRoot,Fidentity);
 }
 
-void BuildMatrix		(fMatrix4x4& mView, f32 invsz, const Fvector norm, const Fvector& from)
+void BuildMatrix		(fMatrix4x4& mView, f32 invsz, const fVector3 norm, const fVector3& from)
 {
 	// build projection
 	fMatrix4x4				mScale;
-	Fvector				at,up,right,y;
+	fVector3				at;
+	fVector3				up;
+	fVector3				right;
+	fVector3				y;
 	at.sub				(from,norm);
 	y.set				(0,1,0);
 	if (_abs(norm.y)>.99f) y.set(1,0,0);
@@ -572,9 +580,10 @@ void CKinematics::EnumBoneVertices	(SEnumVerticesCallback &C, u16 bone_id)
 
 DEFINE_VECTOR(fObb,OBBVec,OBBVecIt);
 
-bool	CKinematics::	PickBone			(const fMatrix4x4& parent_xform,  Fvector& normal, f32& dist, const Fvector& start, const Fvector& dir, u16 bone_id)
+bool	CKinematics::	PickBone			(const fMatrix4x4& parent_xform, fVector3& normal, f32& dist, const fVector3& start, const fVector3& dir, u16 bone_id)
 {
-	Fvector S,D;//normal		= {0,0,0}
+	fVector3	S;
+	fVector3	D;
 	// transform ray from world to model
 	fMatrix4x4 P;
 	P.invert	(parent_xform);
@@ -591,7 +600,9 @@ bool	CKinematics::	PickBone			(const fMatrix4x4& parent_xform,  Fvector& normal,
 
 void CKinematics::AddWallmark(const fMatrix4x4* parent_xform, const fVector3& start, const fVector3& dir, ref_shader shader, f32 size)
 {
-	Fvector S,D,normal		= {0,0,0};
+	fVector3 S;
+	fVector3 ;
+	fVector3 normal = { 0,0,0 };
 	// transform ray from world to model
 	fMatrix4x4 P;
 	P.invert	(*parent_xform);
@@ -618,7 +629,8 @@ void CKinematics::AddWallmark(const fMatrix4x4* parent_xform, const fVector3& st
 	if (!picked) return; 
  
 	// calculate contact point
-	Fvector cp;	cp.mad		(S,D,dist); 
+	fVector3 cp;
+	cp.mad		(S,D,dist); 
  
 	// collect collide boxes
 	Fsphere test_sphere;
@@ -651,7 +663,8 @@ void CKinematics::AddWallmark(const fMatrix4x4* parent_xform, const fVector3& st
 	wm->XFORM()->transform_tiny	(wm->m_Bounds.P,cp);
 	wm->m_Bounds.R				= wm->m_Bounds.R; 
 
-	Fvector tmp; tmp.invert		(D);
+	fVector3 tmp;
+	tmp.invert		(D);
 	normal.add(tmp).normalize	();
 
 	// build UV projection matrix
@@ -715,14 +728,15 @@ void CKinematics::RenderWallmark(intrusive_ptr<CSkeletonWallmark> wm, FVF::LIT* 
 		CSkeletonWallmark::WMFace F = wm->m_Faces[f_idx];
 		f32 w	= (Device.fTimeGlobal-wm->TimeStart())/LIFE_TIME;
 		for (u32 k=0; k<3; k++){
-			Fvector P;
+			fVector3 P;
 			if (F.bone_id[k][0]==F.bone_id[k][1]){
 				// 1-link
 				fMatrix4x4& xform0			= LL_GetBoneInstance(F.bone_id[k][0]).mRenderTransform;
 				xform0.transform_tiny	(P,F.vert[k]);
 			}else{
 				// 2-link
-				Fvector P0,P1;
+				fVector3 P0;
+				fVector3 P1;
 				fMatrix4x4& xform0			= LL_GetBoneInstance(F.bone_id[k][0]).mRenderTransform;
 				fMatrix4x4& xform1			= LL_GetBoneInstance(F.bone_id[k][1]).mRenderTransform;
 				xform0.transform_tiny	(P0,F.vert[k]);

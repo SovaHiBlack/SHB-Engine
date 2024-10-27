@@ -52,7 +52,7 @@ public:
 	virtual	BOOL				net_Spawn			(CSE_Abstract* data);
 	virtual	void				net_Destroy			();
 			bool				inside				(const Fsphere &sphere) const;
-	virtual void				Center				(Fvector &C) const;
+	virtual void				Center				(fVector3& C) const;
 	virtual f32				Radius				() const;
 	virtual BOOL				UsedAI_Locations	();
 	virtual void				spatial_move		();

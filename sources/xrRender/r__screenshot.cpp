@@ -10,7 +10,7 @@ IC u32 convert				(f32 c)	{
 	if (C>255) C=255;
 	return C;
 }
-IC void MouseRayFromPoint	( Fvector& direction, int x, int y, fMatrix4x4& m_CamMat )
+IC void MouseRayFromPoint	(fVector3& direction, int x, int y, fMatrix4x4& m_CamMat )
 {
 	int halfwidth		= Device.dwWidth/2;
 	int halfheight		= Device.dwHeight/2;

@@ -52,7 +52,7 @@ void CScriptZone::shedule_Update(u32 dt)
 	inherited::shedule_Update	(dt);
 
 	const Fsphere				&s = CFORM()->getSphere();
-	Fvector						P;
+	fVector3						P;
 	XFORM().transform_tiny		(P,s.P);
 	feel_touch_update			(P,s.R);
 }
@@ -98,7 +98,8 @@ void CScriptZone::OnRender()
 {
 	if(!bDebug) return;
 	RCache.OnFrameEnd();
-	Fvector l_half; l_half.set(.5f, .5f, .5f);
+	fVector3 l_half;
+	l_half.set(0.5f, 0.5f, 0.5f);
 	fMatrix4x4 l_ball;
 	fMatrix4x4 l_box;
 	xr_vector<CCF_Shape::shape_def> &l_shapes = ((CCF_Shape*)CFORM())->Shapes();
@@ -112,7 +113,8 @@ void CScriptZone::OnRender()
 			{
                 Fsphere &l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
-				Fvector l_p; XFORM().transform(l_p, l_sphere.P);
+				fVector3 l_p;
+				XFORM().transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
 				Level().debug_renderer().draw_ellipse(l_ball, D3DCOLOR_XRGB(0,255,255));
 			}

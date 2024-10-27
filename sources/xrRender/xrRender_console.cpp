@@ -255,7 +255,8 @@ void		xrRender_initconsole	()
 	CMD1(CCC_ModelPoolStat,"stat_models"		);
 #endif // DEBUG
 
-	Fvector	tw_min,tw_max;
+	fVector3	tw_min;
+	fVector3	tw_max;
 	
 	CMD4(CCC_Float,		"r__geometry_lod",		&ps_r__LOD,					0.1f,	1.2f		);
 

@@ -136,7 +136,8 @@ protected:
 	//  [7/20/2005]
 	//после какого патрона, при непрерывной стрельбе, начинаетс€ отдача (сделано из-зи јбакана)
 	int				m_iShootEffectorStart;
-	Fvector			m_vStartPos, m_vStartDir;
+	fVector3			m_vStartPos;
+	fVector3		m_vStartDir;
 	//  [7/20/2005]
 	//флаг того, что мы остановились после того как выстрел€ли
 	//ровно столько патронов, сколько было задано в m_iQueueSize

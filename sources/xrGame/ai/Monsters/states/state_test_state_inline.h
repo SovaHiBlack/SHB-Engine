@@ -30,7 +30,7 @@ void CStateMonsterTestStateAbstract::setup_substates()
 	if (current_substate == eStateCustom) {
 		SStateDataMoveToPointEx data;
 
-		Fvector dest_pos = Level().CurrentEntity()->Position();
+		fVector3 dest_pos = Level().CurrentEntity()->Position();
 		dest_pos = random_position(dest_pos, 20.f);
 
 		if (!object->control().path_builder().restrictions().accessible(dest_pos)) {

@@ -16,12 +16,12 @@ CSoundRender_Emitter*	CSoundRender_Core::i_play(ref_sound* S, BOOL _loop, f32 de
 	return E;
 }
 
-void CSoundRender_Core::update	( const Fvector& P, const Fvector& D, const Fvector& N )
+void CSoundRender_Core::update	( const fVector3& P, const fVector3& D, const fVector3& N )
 {
 	u32 it;
 
 	if (0==bReady)				return;
-    bLocked						= TRUE;
+	bLocked						= TRUE;
 	u32 new_tm					= Timer.GetElapsed_ms();
 	Timer_Delta					= new_tm-Timer_Value;
 	f32 dt					= f32(Timer_Delta)/1000.f;
@@ -96,20 +96,20 @@ void CSoundRender_Core::update	( const Fvector& P, const Fvector& D, const Fvect
 	}
 
 	// update EAX
-    if (psSoundFlags.test(ss_EAX) && bEAX){
-        if (bListenerMoved){
-            bListenerMoved			= FALSE;
-            e_target				= *get_environment	(P);
-        }
-        e_current.lerp				(e_current,e_target,dt);
+	if (psSoundFlags.test(ss_EAX) && bEAX){
+		if (bListenerMoved){
+			bListenerMoved			= FALSE;
+			e_target				= *get_environment	(P);
+		}
+		e_current.lerp				(e_current,e_target,dt);
 
-        i_eax_listener_set			(&e_current);
+		i_eax_listener_set			(&e_current);
 		i_eax_commit_setting		();
 	}
 
-    // update listener
-    update_listener					(P,D,N,dt);
-    
+	// update listener
+	update_listener					(P,D,N,dt);
+	
 	// Start rendering of pending targets
 	if (!s_targets_defer.empty())
 	{
@@ -121,7 +121,7 @@ void CSoundRender_Core::update	( const Fvector& P, const Fvector& D, const Fvect
 	// Events
 	update_events					();
 
-    bLocked							= FALSE;
+	bLocked							= FALSE;
 }
 
 static	u32	g_saved_event_count		= 0;
@@ -173,13 +173,14 @@ void	CSoundRender_Core::statistic			(CSound_stats*  dest, CSound_stats_ext*  ext
 	}
 }
 
-f32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& snd_pt, f32 dispersion )
+f32 CSoundRender_Core::get_occlusion_to( const fVector3& hear_pt, const fVector3& snd_pt, f32 dispersion )
 {
 	f32 occ_value			= 1.0f;
 
 	if (0!=geom_SOM){
 		// Calculate RAY params
-		Fvector	pos,dir;
+		fVector3	pos;
+		fVector3	dir;
 		pos.random_dir			();
 		pos.mul					(dispersion);
 		pos.add					(snd_pt);
@@ -191,7 +192,7 @@ f32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& 
 		geom_DB.ray_query		(geom_SOM,hear_pt,dir,range);
 		u32 r_cnt				= geom_DB.r_count();
 		CDB::RESULT*	_B 		= geom_DB.r_begin();
-          
+		  
 		if (0!=r_cnt){
 			for (u32 k=0; k<r_cnt; k++){
 				CDB::RESULT* R	 = _B+k;
@@ -202,13 +203,14 @@ f32 CSoundRender_Core::get_occlusion_to( const Fvector& hear_pt, const Fvector& 
 	return occ_value;
 }
 
-f32 CSoundRender_Core::get_occlusion(Fvector& P, f32 R, Fvector* occ)
+f32 CSoundRender_Core::get_occlusion(fVector3& P, f32 R, fVector3* occ)
 {
 	f32 occ_value			= 1.0f;
 
 	// Calculate RAY params
-	Fvector base			= listener_position();
-	Fvector	pos,dir;
+	fVector3 base			= listener_position();
+	fVector3	pos;
+	fVector3	dir;
 	f32	range;
 	pos.random_dir			();
 	pos.mul					(R);
@@ -234,7 +236,7 @@ f32 CSoundRender_Core::get_occlusion(Fvector& P, f32 R, Fvector* occ)
 				const CDB::RESULT*	R = geom_DB.r_begin		();
 
 				const CDB::TRI&		T = geom_MODEL->get_tris	() [ R->id ];
-				const Fvector*		V = geom_MODEL->get_verts	();
+				const fVector3*		V = geom_MODEL->get_verts	();
 				occ[0].set			(V[T.verts[0]]);
 				occ[1].set			(V[T.verts[1]]);
 				occ[2].set			(V[T.verts[2]]);
@@ -246,7 +248,7 @@ f32 CSoundRender_Core::get_occlusion(Fvector& P, f32 R, Fvector* occ)
 		geom_DB.ray_options		(CDB::OPT_CULL);
 		geom_DB.ray_query		(geom_SOM,base,dir,range);
 		u32 r_cnt				= geom_DB.r_count();
-        CDB::RESULT*	_B 		= geom_DB.r_begin();
+		CDB::RESULT*	_B 		= geom_DB.r_begin();
 
 		if (0!=r_cnt){
 			for (u32 k=0; k<r_cnt; k++){

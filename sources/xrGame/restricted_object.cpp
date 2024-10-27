@@ -108,7 +108,7 @@ void CRestrictedObject::net_Destroy			()
 	Level().space_restriction_manager().unrestrict	(m_object->ID());
 }
 
-u32	CRestrictedObject::accessible_nearest	(const Fvector &position, Fvector &result) const
+u32	CRestrictedObject::accessible_nearest	(const fVector3& position, fVector3& result) const
 {
 	START_PROFILE("Restricted Object/Accessible Nearest");
 	VERIFY						(!accessible(position));
@@ -116,14 +116,14 @@ u32	CRestrictedObject::accessible_nearest	(const Fvector &position, Fvector &res
 	STOP_PROFILE;
 }
 
-bool CRestrictedObject::accessible			(const Fvector &position) const
+bool CRestrictedObject::accessible			(const fVector3& position) const
 {
 	START_PROFILE("Restricted Object/Accessible");
 	return						(accessible(position, EPSILON_3));
 	STOP_PROFILE;
 }
 
-bool CRestrictedObject::accessible			(const Fvector &position, f32 radius) const
+bool CRestrictedObject::accessible			(const fVector3& position, f32 radius) const
 {
 	START_PROFILE("Restricted Object/Accessible");
 	Fsphere						sphere;
@@ -165,7 +165,7 @@ void CRestrictedObject::add_border			(u32 start_vertex_id, f32 radius) const
 	STOP_PROFILE;
 }
 
-void CRestrictedObject::add_border			(const Fvector &start_position, const Fvector &dest_position) const
+void CRestrictedObject::add_border			(const fVector3& start_position, const fVector3& dest_position) const
 {
 	START_PROFILE("Restricted Object/Add Border");	
 

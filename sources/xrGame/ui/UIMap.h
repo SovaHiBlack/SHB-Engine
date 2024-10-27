@@ -18,7 +18,7 @@ public:
 	fRect			m_prevRect;
 					CUICustomMap					();
 	virtual			~CUICustomMap					();
-	virtual void	SetActivePoint					(const Fvector &vNewPoint);
+	virtual void	SetActivePoint					(const fVector3& vNewPoint);
 
 	virtual void	Init							(shared_str name, CInifile& gameLtx, pcstr sh_name);
 	virtual fVector2 ConvertRealToLocal				(const fVector2& src);// meters->pixels (relatively own left-top pos)

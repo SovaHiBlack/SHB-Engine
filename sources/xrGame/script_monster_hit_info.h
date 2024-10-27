@@ -7,17 +7,17 @@ class CScriptGameObject;
 class CScriptMonsterHitInfo {
 public:
 	CScriptGameObject			*who;
-	Fvector					direction;
+	fVector3					direction;
 	int						time;
 
 	CScriptMonsterHitInfo		()
 	{
 		who				= 0;
 		time			= 0;
-		direction		= Fvector().set(0.f,0.f,1.f);
+		direction		= fVector3().set(0.0f,0.0f,1.0f);
 	}
 
-	void set(CScriptGameObject *p_who, Fvector p_direction, int p_time) {
+	void set(CScriptGameObject *p_who, fVector3 p_direction, int p_time) {
 		who			= p_who;
 		direction	= p_direction;
 		time		= p_time;

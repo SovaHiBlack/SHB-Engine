@@ -216,7 +216,7 @@ void CSoundRender_Core::set_geometry_env(IReader* I)
 	
 	hdrCFORM			H;
 	geom->r				(&H,sizeof(hdrCFORM));
-	Fvector*	verts	= (Fvector*)geom->pointer();
+	fVector3*	verts	= (fVector3*)geom->pointer();
 	CDB::TRI*	tris	= (CDB::TRI*)(verts+H.vertcount);
 	for (u32 it=0; it<H.facecount; it++)
 	{
@@ -280,7 +280,7 @@ void	CSoundRender_Core::play					( ref_sound& S, CObject* O, u32 flags, f32 dela
 	else				i_play					(&S,flags&sm_Looped,delay);
 	if (flags&sm_2D)	S._feedback()->switch_to_2D();
 }
-void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags, f32 delay, Fvector* pos, f32* vol, f32* freq, fVector2* range)
+void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags, f32 delay, fVector3* pos, f32* vol, f32* freq, fVector2* range)
 {
 	if (!bPresent || 0==S._handle())return;
 	verify_refsound		(S);
@@ -297,7 +297,7 @@ void	CSoundRender_Core::play_no_feedback		( ref_sound& S, CObject* O, u32 flags,
 	if (vol)			S._feedback()->set_volume   (*vol);
 	S._p				= orig;
 }
-void	CSoundRender_Core::play_at_pos			( ref_sound& S, CObject* O, const Fvector &pos, u32 flags, f32 delay)
+void	CSoundRender_Core::play_at_pos			( ref_sound& S, CObject* O, const fVector3& pos, u32 flags, f32 delay)
 {
 	if (!bPresent || 0==S._handle())return;
 	verify_refsound		(S);
@@ -339,7 +339,7 @@ void CSoundRender_Core::_destroy_data( ref_sound_data& S)
 	S.handle						= NULL;
 }
 
-CSoundRender_Environment*	CSoundRender_Core::get_environment			( const Fvector& P )
+CSoundRender_Environment*	CSoundRender_Core::get_environment			( const fVector3& P )
 {
 	static CSoundRender_Environment	identity;
 
@@ -347,7 +347,7 @@ CSoundRender_Environment*	CSoundRender_Core::get_environment			( const Fvector& 
 		return &s_user_environment;
 	}else{
 		if (geom_ENV){
-			Fvector	dir				= {0,-1,0};
+			fVector3	dir				= {0.0f,-1.0f,0.0f};
 
 			geom_DB.ray_options		(CDB::OPT_ONLYNEAREST);
 			geom_DB.ray_query		(geom_ENV,P,dir,1000.f);
@@ -355,8 +355,8 @@ CSoundRender_Environment*	CSoundRender_Core::get_environment			( const Fvector& 
 				CDB::RESULT*		r	= geom_DB.r_begin();
            
 				CDB::TRI*			T	= geom_ENV->get_tris()+r->id;
-				Fvector*			V	= geom_ENV->get_verts();
-				Fvector tri_norm;
+				fVector3*			V	= geom_ENV->get_verts();
+				fVector3 tri_norm;
 				tri_norm.mknormal		(V[T->verts[0]],V[T->verts[1]],V[T->verts[2]]);
 				f32	dot				= dir.dotproduct(tri_norm);
 				if (dot<0){
@@ -392,7 +392,7 @@ void						CSoundRender_Core::env_apply		()
     bListenerMoved			= TRUE;
 }
 
-void CSoundRender_Core::update_listener( const Fvector& P, const Fvector& D, const Fvector& N, f32 dt )
+void CSoundRender_Core::update_listener( const fVector3& P, const fVector3& D, const fVector3& N, f32 dt )
 {
 }
 

@@ -59,8 +59,8 @@ public:
 public:
 //------------------------------------------------------------------------------
 // predefind event routines
-	virtual bool 				__stdcall 	FvectorRDOnAfterEdit(PropValue* sender, Fvector& edit_val)=0;
-	virtual void 				__stdcall 	FvectorRDOnBeforeEdit(PropValue* sender,Fvector& edit_val)=0;
+	virtual bool 				__stdcall 	FvectorRDOnAfterEdit(PropValue* sender, fVector3& edit_val)=0;
+	virtual void 				__stdcall 	FvectorRDOnBeforeEdit(PropValue* sender, fVector3& edit_val)=0;
 	virtual void 				__stdcall 	FvectorRDOnDraw		(PropValue* sender, xr_string& draw_val)=0;
 	virtual bool 				__stdcall 	floatRDOnAfterEdit	(PropValue* sender, f32& edit_val)=0;
 	virtual void 				__stdcall 	floatRDOnBeforeEdit	(PropValue* sender, f32& edit_val)=0;
@@ -86,7 +86,7 @@ public:
 	virtual U32Value* 	  		__stdcall	CreateU32		    (PropItemVec& items, shared_str key, u32* val, u32 mn=0, u32 mx=100, u32 inc=1)=0;
 	virtual FloatValue* 		__stdcall	CreateFloat		    (PropItemVec& items, shared_str key, f32* val, f32 mn=0.f, f32 mx=1.f, f32 inc=0.01f, int decim=2)=0;
 	virtual BOOLValue* 	  		__stdcall	CreateBOOL		    (PropItemVec& items, shared_str key, BOOL* val)=0;
-	virtual VectorValue*  	 	__stdcall	CreateVector	    (PropItemVec& items, shared_str key, Fvector* val, f32 mn=0.f, f32 mx=1.f, f32 inc=0.01f, int decim=2)=0;
+	virtual VectorValue*  	 	__stdcall	CreateVector	    (PropItemVec& items, shared_str key, fVector3* val, f32 mn=0.f, f32 mx=1.f, f32 inc=0.01f, int decim=2)=0;
 	virtual Flag8Value*			__stdcall	CreateFlag8		    (PropItemVec& items, shared_str key, flags8* val, u8 mask, pcstr c0=0, pcstr c1=0, u32 flags=0)=0;
 	virtual Flag16Value*		__stdcall	CreateFlag16	    (PropItemVec& items, shared_str key, flags16* val, u16 mask, pcstr c0=0, pcstr c1=0, u32 flags=0)=0;
 	virtual Flag32Value*		__stdcall	CreateFlag32	    (PropItemVec& items, shared_str key, flags32* val, u32 mask, pcstr c0=0, pcstr c1=0, u32 flags=0)=0;
@@ -99,7 +99,7 @@ public:
 	virtual RListValue* 	 	__stdcall	CreateRList		    (PropItemVec& items, shared_str key, shared_str* val, shared_str* lst, u32 cnt)=0;
 	virtual U32Value*  			__stdcall	CreateColor		    (PropItemVec& items, shared_str key, u32* val)=0;
 	virtual ColorValue*			__stdcall	CreateFColor	    (PropItemVec& items, shared_str key, fColor* val)=0;
-	virtual VectorValue*		__stdcall	CreateVColor	    (PropItemVec& items, shared_str key, Fvector* val)=0;
+	virtual VectorValue*		__stdcall	CreateVColor	    (PropItemVec& items, shared_str key, fVector3* val)=0;
 	virtual RTextValue* 		__stdcall	CreateRText		    (PropItemVec& items, shared_str key, shared_str* val)=0;
 	virtual STextValue* 		__stdcall	CreateSText		    (PropItemVec& items, shared_str key, xr_string* val)=0;      
 	virtual WaveValue* 			__stdcall	CreateWave		    (PropItemVec& items, shared_str key, WaveForm* val)=0;
@@ -107,7 +107,7 @@ public:
 	virtual ShortcutValue*		__stdcall	CreateShortcut		(PropItemVec& items, shared_str key, xr_shortcut* val)=0;
 
 	virtual FloatValue* 		__stdcall	CreateAngle		    (PropItemVec& items, shared_str key, f32* val, f32 mn=flt_min, f32 mx=flt_max, f32 inc=0.01f, int decim=2)=0;
-	virtual VectorValue* 		__stdcall	CreateAngle3	    (PropItemVec& items, shared_str key, Fvector* val, f32 mn=flt_min, f32 mx=flt_max, f32 inc=0.01f, int decim=2)=0;
+	virtual VectorValue* 		__stdcall	CreateAngle3	    (PropItemVec& items, shared_str key, fVector3* val, f32 mn=flt_min, f32 mx=flt_max, f32 inc=0.01f, int decim=2)=0;
 	virtual RTextValue* 		__stdcall	CreateName		    (PropItemVec& items, shared_str key, shared_str* val, ListItem* owner)=0;  
 	virtual RTextValue* 		__stdcall	CreateNameCB		(PropItemVec& items, shared_str key, shared_str* val, TOnDrawTextEvent=0, RTextValue::TOnBeforeEditEvent=0, RTextValue::TOnAfterEditEvent=0)=0;
 

@@ -429,7 +429,7 @@ void	R_dsgraph_structure::r_dsgraph_render_distort	()
 
 //////////////////////////////////////////////////////////////////////////
 // sub-space rendering - shortcut to render with frustum extracted from matrix
-void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, fMatrix4x4& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals)
+void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, fMatrix4x4& mCombined, fVector3& _cop, BOOL _dynamic, BOOL _precise_portals)
 {
 	CFrustum	temp;
 	temp.CreateFromMatrix			(mCombined,	FRUSTUM_P_ALL);
@@ -437,7 +437,7 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, fM
 }
 
 // sub-space rendering - main procedure
-void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CFrustum* _frustum, fMatrix4x4& mCombined, Fvector& _cop, BOOL _dynamic, BOOL _precise_portals)
+void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CFrustum* _frustum, fMatrix4x4& mCombined, fVector3& _cop, BOOL _dynamic, BOOL _precise_portals)
 {
 	VERIFY							(_sector);
 	RImplementation.marker			++;			// !!! critical here
@@ -449,7 +449,8 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CF
 
 	if (_precise_portals && RImplementation.rmPortals)		{
 		// Check if camera is too near to some portal - if so force DualRender
-		Fvector box_radius;		box_radius.set	(EPSILON_3 *20, EPSILON_3 *20, EPSILON_3 *20);
+		fVector3 box_radius;
+		box_radius.set	(EPSILON_3 *20, EPSILON_3 *20, EPSILON_3 *20);
 		RImplementation.Sectors_xrc.box_options	(CDB::OPT_FULL_TEST);
 		RImplementation.Sectors_xrc.box_query	(RImplementation.rmPortals,_cop,box_radius);
 		for (int K=0; K<RImplementation.Sectors_xrc.r_count(); K++)

@@ -69,7 +69,7 @@ public:
 
 			bool				accessible						(ALife::_OBJECT_ID id, const Fsphere &sphere);
 			bool				accessible						(ALife::_OBJECT_ID id, u32 level_vertex_id, f32 radius);
-			u32					accessible_nearest				(ALife::_OBJECT_ID id, const Fvector &position, Fvector &result);
+			u32					accessible_nearest				(ALife::_OBJECT_ID id, const fVector3& position, fVector3& result);
 
 	IC		bool				restriction_presented			(shared_str restrictions, shared_str restriction) const;
 

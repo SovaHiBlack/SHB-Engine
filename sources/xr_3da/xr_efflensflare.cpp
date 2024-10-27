@@ -144,13 +144,13 @@ CLensFlare::~CLensFlare()
 }
 
 struct STranspParam		{
-	Fvector				P;
-	Fvector				D;
+	fVector3				P;
+	fVector3				D;
 	f32				f;
 	CLensFlare*			parent;
 	f32				vis;
 	f32				vis_threshold;
-	STranspParam		(CLensFlare* p, const Fvector& _P, const Fvector& _D, f32 _f, f32 _vis_threshold):P(_P),D(_D),f(_f),parent(p),vis(1.f),vis_threshold(_vis_threshold){}
+	STranspParam		(CLensFlare* p, const fVector3& _P, const fVector3& _D, f32 _f, f32 _vis_threshold):P(_P),D(_D),f(_f),parent(p),vis(1.f),vis_threshold(_vis_threshold){}
 };
 
 IC BOOL material_callback(collide::rq_result& result, LPVOID params)
@@ -166,7 +166,7 @@ IC BOOL material_callback(collide::rq_result& result, LPVOID params)
 		CDB::TRI* T	= g_pGameLevel->ObjectSpace.GetStaticTris()+result.element;
 		vis			= g_pGamePersistent->MtlTransparent(T->material);
 		if (fis_zero(vis)){
-			Fvector* V	= g_pGameLevel->ObjectSpace.GetStaticVerts();
+			fVector3* V	= g_pGameLevel->ObjectSpace.GetStaticVerts();
 			fp->parent->m_ray_cache.set				(fp->P,fp->D,fp->f,TRUE);
 			fp->parent->m_ray_cache.verts[0].set	(V[T->verts[0]]);
 			fp->parent->m_ray_cache.verts[1].set	(V[T->verts[1]]);
@@ -199,7 +199,7 @@ void CLensFlare::OnFrame(int id)
 
 	// color
 	f32 tf		= g_pGamePersistent->Environment().fTimeFactor;
-	Fvector& c		= g_pGamePersistent->Environment().CurrentEnv.sun_color;
+	fVector3& c		= g_pGamePersistent->Environment().CurrentEnv.sun_color;
 	LightColor.set	(c.x,c.y,c.z,1.f); 
 
 	CLensFlareDescriptor* desc = (id==-1)?0:&m_Palette[id];
@@ -229,7 +229,7 @@ void CLensFlare::OnFrame(int id)
 	//
 	f32 fDot;
 
-	Fvector vecPos;
+	fVector3 vecPos;
 
 	fMatrix4x4	matEffCamPos;
 	matEffCamPos.identity();
@@ -295,7 +295,7 @@ void CLensFlare::OnFrame(int id)
 	// gradient
 	if (m_Current->m_Flags.is(CLensFlareDescriptor::flGradient))
 	{
-		Fvector				scr_pos;
+		fVector3				scr_pos;
 		Device.mFullTransform.transform	( scr_pos, vecLight );
 		f32 kx = 1;
 		f32 ky = 1;
@@ -322,8 +322,11 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 
 	fColor				dwLight;
 	fColor				color;
-	Fvector				vec, vecSx, vecSy;
-	Fvector				vecDx, vecDy;
+	fVector3			vec;
+	fVector3			vecSx;
+	fVector3			vecSy;
+	fVector3				vecDx;
+	fVector3			vecDy;
 
 	dwLight.set							( LightColor );
 	svector<ref_shader,MAX_Flares>		_2render;

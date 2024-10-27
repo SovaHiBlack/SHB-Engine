@@ -54,7 +54,7 @@ void FLOD::Load			(pcstr N, IReader *data, u32 dwFlags)
 	geom.create			(dwDecl, RCache.Vertex.Buffer(), RCache.QuadIB);
 
 	// lod correction
-	Fvector3			S;
+	fVector3			S;
 	vis.box.getradius	(S);
 	f32 r 			= vis.sphere.R;
 	std::sort			(&S.x,&S.x+3);

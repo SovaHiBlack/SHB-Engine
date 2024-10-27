@@ -44,12 +44,12 @@ void CScriptGameObject::SetNonscriptUsable(bool nonscript_usable)
 	else l_tpUseableScriptObject->set_nonscript_usable(nonscript_usable);
 }
 
-Fvector CScriptGameObject::GetCurrentDirection()
+fVector3 CScriptGameObject::GetCurrentDirection()
 {
 	CProjector	*obj = smart_cast<CProjector*>(&object());
 	if (!obj) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Script Object : cannot access class member GetCurrentDirection!");
-		return Fvector().set(0.f,0.f,0.f);
+		return fVector3().set(0.0f,0.0f,0.0f);
 	}
 	return obj->GetCurrentDirection();
 }
@@ -200,7 +200,7 @@ void CScriptGameObject::set_fastcall(const luabind::functor<bool> &functor, cons
 	Level().ph_commander_scripts().add_call(c,a);
 }
 
-void CScriptGameObject::set_const_force(const Fvector &dir, f32 value,u32 time_interval)
+void CScriptGameObject::set_const_force(const fVector3& dir, f32 value,u32 time_interval)
 {
 	CPhysicsShell	*shell=object().cast_physics_shell_holder()->PPhysicsShell();
 	if(!ph_world)	{
@@ -212,7 +212,9 @@ void CScriptGameObject::set_const_force(const Fvector &dir, f32 value,u32 time_i
 		return;
 	}
 
-	Fvector force;force.set(dir);force.mul(value);
+	fVector3 force;
+	force.set(dir);
+	force.mul(value);
 	CPHConstForceAction *a=	xr_new<CPHConstForceAction>(shell,force);
 	CPHExpireOnStepCondition *cn=xr_new<CPHExpireOnStepCondition>();
 	cn->set_time_interval(time_interval);

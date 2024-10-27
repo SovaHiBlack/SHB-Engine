@@ -302,7 +302,7 @@ void	thread_spawn(thread_t* entry, pcstr	name, unsigned	stack, pvoid arglist)
 	_beginthread(thread_entry, stack, startup);
 }
 
-void spline1(f32 t, Fvector* p, Fvector* ret)
+void spline1(f32 t, fVector3* p, fVector3* ret)
 {
 	f32     t2 = t * t;
 	f32     t3 = t2 * t;
@@ -324,7 +324,7 @@ void spline1(f32 t, Fvector* p, Fvector* ret)
 	}
 }
 
-void spline2(f32 t, Fvector* p, Fvector* ret)
+void spline2(f32 t, fVector3* p, fVector3* ret)
 {
 	f32	s = 1.0f - t;
 	f32   t2 = t * t;
@@ -344,7 +344,7 @@ void spline2(f32 t, Fvector* p, Fvector* ret)
 #define beta1 1.0f
 #define beta2 0.8f
 
-void spline3(f32 t, Fvector* p, Fvector* ret)
+void spline3(f32 t, fVector3* p, fVector3* ret)
 {
 	f32	s = 1.0f - t;
 	f32   t2 = t * t;

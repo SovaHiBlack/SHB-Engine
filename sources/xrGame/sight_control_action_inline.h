@@ -35,7 +35,7 @@ IC	const SightManager::ESightType &CSightControlAction::sight_type	() const
 	return				(m_sight_type);
 }
 
-IC	const Fvector &CSightControlAction::vector3d	() const
+IC	const fVector3& CSightControlAction::vector3d	() const
 {
 	return				(m_vector3d);
 }

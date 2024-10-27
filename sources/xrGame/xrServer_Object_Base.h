@@ -82,8 +82,8 @@ public:
 	xr_vector<u16>					children;
 
 	// update data
-	Fvector							o_Position;
-	Fvector							o_Angle;
+	fVector3							o_Position;
+	fVector3							o_Angle;
 	CLASS_ID						m_tClassID;
 	int								m_script_clsid;
 	shared_str						m_ini_string;
@@ -119,8 +119,8 @@ public:
 		s_name		= s;
 	};
 	virtual void		__stdcall	set_name_replace(pcstr s) {xr_free(s_name_replace); s_name_replace = xr_strdup(s);};
-	virtual Fvector&	__stdcall	position		();
-	virtual Fvector&	__stdcall	angle			();
+	virtual fVector3&	__stdcall	position		();
+	virtual fVector3&	__stdcall	angle			();
 	virtual flags16&	__stdcall	flags			();
 	virtual CSE_Visual* __stdcall	visual			();
 	virtual ISE_Shape*  __stdcall	shape			();
@@ -129,7 +129,7 @@ public:
 	virtual void 		__stdcall	on_render		(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F){}
 	//
 
-	IC		const Fvector			&Position		() const					{return o_Position;};
+	IC		const fVector3&			Position		() const					{return o_Position;};
 	// we need this to prevent virtual inheritance :-(
 	virtual CSE_Abstract			*base			();
 	virtual const CSE_Abstract		*base			() const;

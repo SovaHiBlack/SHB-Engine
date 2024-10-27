@@ -164,7 +164,7 @@ void CSpectator::IR_OnKeyboardHold(int cmd)
 
 	if ((cam_active==eacFreeFly)||(cam_active==eacFreeLook)){
 		CCameraBase* C	= cameras	[cam_active];
-		Fvector vmove={0,0,0};
+		fVector3 vmove={0.0f,0.0f,0.0f};
 		switch(cmd){
 		case kUP:
 		case kDOWN: 
@@ -181,12 +181,12 @@ void CSpectator::IR_OnKeyboardHold(int cmd)
 			vmove.mad( C->vDirection, -Device.fTimeDelta*Accel_mul );
 			break;
 		case kR_STRAFE:{
-			Fvector right;
+			fVector3 right;
 			right.crossproduct(C->vNormal,C->vDirection);
 			vmove.mad( right, Device.fTimeDelta*Accel_mul );
 			}break;
 		case kL_STRAFE:{
-			Fvector right;
+			fVector3 right;
 			right.crossproduct(C->vNormal,C->vDirection);
 			vmove.mad( right, -Device.fTimeDelta*Accel_mul );
 			}break;
@@ -284,7 +284,9 @@ void CSpectator::cam_Update	(CActor* A)
 		CCameraBase* cam			= cameras[cam_active];
 		switch(cam_active) {
 		case eacFirstEye:{
-			Fvector P, D, N;
+			fVector3 P;
+			fVector3 D;
+			fVector3 N;
 			pACam->Get				(P, D, N);
 			cam->Set				(P, D, N);
 			}break;
@@ -298,9 +300,11 @@ void CSpectator::cam_Update	(CActor* A)
 			fMatrix4x4 tmp;
 			tmp.identity();
 			
-			Fvector point, point1, dangle;
-			point.set	(0.f,1.6f,0.f);
-			point1.set	(0.f,1.6f,0.f);			
+			fVector3 point;
+			fVector3 point1;
+			fVector3 dangle;
+			point.set	(0.0f,1.6f,0.0f);
+			point1.set	(0.0f,1.6f,0.0f);
 			M.transform_tiny		(point);
 			tmp.translate_over(point);
 			tmp.transform_tiny		(point1);
@@ -309,7 +313,9 @@ void CSpectator::cam_Update	(CActor* A)
 			}break;
 		}
 		//-----------------------------------
-		Fvector P, D, N;
+		fVector3 P;
+		fVector3 D;
+		fVector3 N;
 		cam->Get(P, D, N);
 		cameras[eacFreeFly]->Set(P, D, N);
 		cameras[eacFreeFly]->Set(cam->yaw, cam->pitch, 0);
@@ -319,7 +325,8 @@ void CSpectator::cam_Update	(CActor* A)
 		g_pGameLevel->Cameras().Update(cam);
 	}else{
 		CCameraBase* cam			= cameras[eacFreeFly];
-		Fvector point, dangle;
+		fVector3 point;
+		fVector3 dangle;
 		point.set					(0.f,1.6f,0.f);
 		XFORM().transform_tiny	(point);
 

@@ -22,8 +22,8 @@ static const f32		TIME_2_HIDE					= 5.f;
 static const f32		TORCH_INERTION_CLAMP		= PI_DIV_6;
 static const f32		TORCH_INERTION_SPEED_MAX	= 7.5f;
 static const f32		TORCH_INERTION_SPEED_MIN	= 0.5f;
-static const Fvector	TORCH_OFFSET				= {-0.2f,+0.1f,-0.3f};
-static const Fvector	OMNI_OFFSET					= {-0.2f,+0.1f,-0.1f};
+static const fVector3	TORCH_OFFSET				= {-0.2f,+0.1f,-0.3f};
+static const fVector3	OMNI_OFFSET					= {-0.2f,+0.1f,-0.1f};
 static const f32		OPTIMIZATION_DISTANCE		= 100.f;
 
 static bool stalker_use_dynamic_lights	= false;
@@ -326,14 +326,15 @@ void CTorch::UpdateCL()
 			m_prev_hp.x		= angle_inertion_var(m_prev_hp.x,-actor->cam_FirstEye()->yaw,TORCH_INERTION_SPEED_MIN,TORCH_INERTION_SPEED_MAX,TORCH_INERTION_CLAMP,Device.fTimeDelta);
 			m_prev_hp.y		= angle_inertion_var(m_prev_hp.y,-actor->cam_FirstEye()->pitch,TORCH_INERTION_SPEED_MIN,TORCH_INERTION_SPEED_MAX,TORCH_INERTION_CLAMP,Device.fTimeDelta);
 
-			Fvector			dir,right,up;	
+			fVector3			dir;
+			fVector3 right;
+			fVector3 up;
 			dir.setHP		(m_prev_hp.x+m_delta_h,m_prev_hp.y);
-			Fvector::generate_orthonormal_basis_normalized(dir,up,right);
-
+			fVector3::generate_orthonormal_basis_normalized(dir,up,right);
 
 			if (true)
 			{
-				Fvector offset				= M.c; 
+				fVector3 offset				= M.c;
 				offset.mad					(M.i,TORCH_OFFSET.x);
 				offset.mad					(M.j,TORCH_OFFSET.y);
 				offset.mad					(M.k,TORCH_OFFSET.z);
@@ -369,7 +370,7 @@ void CTorch::UpdateCL()
 				light_render->set_position	(M.c);
 				light_render->set_rotation	(M.k,M.i);
 
-				Fvector offset				= M.c; 
+				fVector3 offset				= M.c;
 				offset.mad					(M.i,OMNI_OFFSET.x);
 				offset.mad					(M.j,OMNI_OFFSET.y);
 				offset.mad					(M.k,OMNI_OFFSET.z);

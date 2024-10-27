@@ -53,7 +53,7 @@ public:
 	virtual BOOL			net_Spawn				(CSE_Abstract* DC);
 	virtual void			net_Destroy				( );
 
-	virtual void			Center					(Fvector& C)	const	{C.set(Position());}
+	virtual void			Center					(fVector3& C)	const	{C.set(Position());}
 	virtual f32				Radius					( )				const	{return EPSILON_5;}
 	virtual CGameObject*	cast_game_object		( )						{return this;}
 	virtual IInputReceiver*	cast_input_receiver		( )						{return this;}

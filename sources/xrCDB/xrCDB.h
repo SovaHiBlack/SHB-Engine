@@ -45,7 +45,7 @@ namespace CDB
 	};
 
 	// Build callback
-	typedef		void __stdcall	build_callback	(Fvector* V, int Vcnt, TRI* T, int Tcnt, void* params);
+	typedef		void __stdcall	build_callback	(fVector3* V, int Vcnt, TRI* T, int Tcnt, void* params);
 
 	// Model definition
 	class		XRCDB_API		MODEL
@@ -66,13 +66,14 @@ namespace CDB
 		// tris
 		TRI*					tris;
 		int						tris_count;
-		Fvector*				verts;
+		fVector3*				verts;
 		int						verts_count;
+	
 	public:
 		MODEL();
 		~MODEL();
 
-		IC Fvector*				get_verts		()			{ return verts;		}
+		IC fVector3*				get_verts		()			{ return verts;		}
 		IC int					get_verts_count	()	const	{ return verts_count;}
 		IC TRI*					get_tris		()			{ return tris;		}
 		IC int					get_tris_count	()	const	{ return tris_count;}
@@ -88,15 +89,15 @@ namespace CDB
 		}
 
 		static	void			build_thread	(void*);
-		void					build_internal	(Fvector* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc=NULL, void* bcp=NULL);
-		void					build			(Fvector* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc=NULL, void* bcp=NULL);
+		void					build_internal	(fVector3* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc=NULL, void* bcp=NULL);
+		void					build			(fVector3* V, int Vcnt, TRI* T, int Tcnt, build_callback* bc=NULL, void* bcp=NULL);
 		u32						memory			();
 	};
 
 	// Collider result
 	struct XRCDB_API RESULT
 	{
-		Fvector			verts	[3];
+		fVector3			verts	[3];
 		union	{
 			u32			dummy;				// 4b
 			struct {
@@ -134,10 +135,10 @@ namespace CDB
 		~COLLIDER		();
 
 		ICF void		ray_options		(u32 f)	{	ray_mode = f;		}
-		void			ray_query		(const MODEL *m_def, const Fvector& r_start,  const Fvector& r_dir, f32 r_range = 10000.0f);
+		void			ray_query		(const MODEL *m_def, const fVector3& r_start,  const fVector3& r_dir, f32 r_range = 10000.0f);
 
 		ICF void		box_options		(u32 f)	{	box_mode = f;		}
-		void			box_query		(const MODEL *m_def, const Fvector& b_center, const Fvector& b_dim);
+		void			box_query		(const MODEL *m_def, const fVector3& b_center, const fVector3& b_dim);
 
 		ICF void		frustum_options	(u32 f)	{	frustum_mode = f;	}
 		void			frustum_query	(const MODEL *m_def, const CFrustum& F);
@@ -154,19 +155,19 @@ namespace CDB
 	//
 	class XRCDB_API Collector
 	{
-		xr_vector<Fvector>	verts;
+		xr_vector<fVector3>	verts;
 		xr_vector<TRI>		faces;
 
-		u32				VPack				( const Fvector& V, f32 eps);
+		u32				VPack				( const fVector3& V, f32 eps);
 	public:
-		void			add_face			( const Fvector& v0, const Fvector& v1, const Fvector& v2, u16 material, u16 sector	);
-		void			add_face_D			( const Fvector& v0, const Fvector& v1, const Fvector& v2, u32 dummy );
-		void			add_face_packed		( const Fvector& v0, const Fvector& v1, const Fvector& v2, u16 material, u16 sector, f32 eps = EPSILON_5);
-		void			add_face_packed_D	( const Fvector& v0, const Fvector& v1, const Fvector& v2, u32 dummy, f32 eps = EPSILON_5);
-        void			remove_duplicate_T	( );
+		void			add_face			( const fVector3& v0, const fVector3& v1, const fVector3& v2, u16 material, u16 sector	);
+		void			add_face_D			( const fVector3& v0, const fVector3& v1, const fVector3& v2, u32 dummy );
+		void			add_face_packed		( const fVector3& v0, const fVector3& v1, const fVector3& v2, u16 material, u16 sector, f32 eps = EPSILON_5);
+		void			add_face_packed_D	( const fVector3& v0, const fVector3& v1, const fVector3& v2, u32 dummy, f32 eps = EPSILON_5);
+		void			remove_duplicate_T	( );
 		void			calc_adjacency		( xr_vector<u32>& dest		);
 
-		Fvector*		getV			()	{ return &*verts.begin();		}
+		fVector3*		getV			()	{ return &*verts.begin();		}
 		size_t			getVS			() 	{ return verts.size();			}
 		TRI*			getT			()	{ return &*faces.begin();		}
 		size_t			getTS			()	{ return faces.size();			}
@@ -187,14 +188,15 @@ namespace CDB
 		typedef xr_vector<u32>		DWORDList;
 		typedef DWORDList::iterator	DWORDIt;
 
-		xr_vector<Fvector>	verts;
+		xr_vector<fVector3>	verts;
 		xr_vector<TRI>		faces;
 
-		Fvector				VMmin, VMscale;
+		fVector3			VMmin;
+		fVector3			VMscale;
 		DWORDList			VM		[clpMX+1][clpMY+1][clpMZ+1];
-		Fvector				VMeps;
+		fVector3				VMeps;
 
-		u32					VPack		( const Fvector& V);
+		u32					VPack		( const fVector3& V);
 	public:
 		CollectorPacked	(const fBox3& bb, int apx_vertices=5000, int apx_faces=5000);
 
@@ -203,10 +205,10 @@ namespace CDB
 		//			verts
 		//		}
 
-		void				add_face	( const Fvector& v0, const Fvector& v1, const Fvector& v2, u16 material, u16 sector );
-		void				add_face_D	( const Fvector& v0, const Fvector& v1, const Fvector& v2, u32 dummy );
-		xr_vector<Fvector>& getV_Vec()	{ return verts;				}
-		Fvector*			getV()		{ return &*verts.begin();	}
+		void				add_face	( const fVector3& v0, const fVector3& v1, const fVector3& v2, u16 material, u16 sector );
+		void				add_face_D	( const fVector3& v0, const fVector3& v1, const fVector3& v2, u32 dummy );
+		xr_vector<fVector3>& getV_Vec()	{ return verts;				}
+		fVector3*			getV()		{ return &*verts.begin();	}
 		size_t				getVS()		{ return verts.size();		}
 		TRI*				getT()		{ return &*faces.begin();	}
 		size_t				getTS()		{ return faces.size();		}

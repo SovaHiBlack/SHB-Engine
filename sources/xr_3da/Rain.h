@@ -13,9 +13,9 @@ class ENGINE_API CEffect_Rain
 private:
 	struct	Item
 	{
-		Fvector			P;
-		Fvector			Phit;
-		Fvector			D;
+		fVector3			P;
+		fVector3			Phit;
+		fVector3			D;
 		f32			fSpeed;
 		u32				dwTime_Life;
 		u32				dwTime_Hit;
@@ -70,8 +70,8 @@ private:
 
 	// Some methods
 	void							Born			(Item& dest, f32 radius);
-	void							Hit				(Fvector& pos);
-	BOOL							RayPick			(const Fvector& s, const Fvector& d, f32& range, collide::rq_target tgt);
+	void							Hit				(fVector3& pos);
+	BOOL							RayPick			(const fVector3& s, const fVector3& d, f32& range, collide::rq_target tgt);
 	void							RenewItem		(Item& dest, f32 height, BOOL bHit);
 public:
 									CEffect_Rain	();

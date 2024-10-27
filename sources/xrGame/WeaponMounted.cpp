@@ -216,8 +216,9 @@ void	CWeaponMounted::OnKeyboardHold		(int dik)
 
 void	CWeaponMounted::cam_Update			(f32 dt, f32 fov)
 {
-	Fvector							P,Da;
-	Da.set							(0,0,0);
+	fVector3							P;
+	fVector3						Da;
+	Da.set							(0.0f,0.0f,0.0f);
 
 	CKinematics* K					= smart_cast<CKinematics*>(Visual());
 	K->CalculateBones_Invalidate	();
@@ -234,7 +235,7 @@ void	CWeaponMounted::cam_Update			(f32 dt, f32 fov)
 	Level().Cameras().Update					(Camera());
 }
 
-bool	CWeaponMounted::Use					(const Fvector& pos,const Fvector& dir,const Fvector& foot_pos)
+bool	CWeaponMounted::Use					(const fVector3& pos,const fVector3& dir,const fVector3& foot_pos)
 {
 	return !Owner();
 }
@@ -253,7 +254,7 @@ bool	CWeaponMounted::attach_Actor		(CGameObject* actor)
 	biY.set_callback		(bctCustom,BoneCallbackY,this);
 	// set actor to mounted position
 	const fMatrix4x4& A	= K->LL_GetTransform(actor_bone);
-	Fvector ap;
+	fVector3 ap;
 	XFORM().transform_tiny	(ap,A.c);
 	fMatrix4x4 AP;
 	AP.translate(ap);
@@ -278,7 +279,7 @@ void	CWeaponMounted::detach_Actor		()
 	processing_deactivate		();
 }
 
-Fvector	CWeaponMounted::ExitPosition		()
+fVector3	CWeaponMounted::ExitPosition		()
 {
 	return XFORM().c;
 }
@@ -287,7 +288,6 @@ CCameraBase*	CWeaponMounted::Camera				()
 {
 	return camera;
 }
-
 
 void CWeaponMounted::FireStart()
 {

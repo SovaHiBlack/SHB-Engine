@@ -73,7 +73,7 @@ void SBinocVisibleObj::Update()
 	fVector2	mn		={flt_max,flt_max},mx={flt_min,flt_min};
 
 	for (u32 k=0; k<8; ++k){
-		Fvector p;
+		fVector3 p;
 		b.getpoint		(k,p);
 		xform.transform	(p);
 		mn.x			= _min(mn.x,p.x);
@@ -205,7 +205,7 @@ void CBinocularsVision::Update()
 			new_vis_obj->create_default		(m_frame_color.get());
 			new_vis_obj->m_upd_speed			= m_rotating_speed;
 			if(NULL==m_snd_found._feedback())
-				m_snd_found.play_at_pos			(0,Fvector().set(0,0,0),sm_2D);
+				m_snd_found.play_at_pos			(0, fVector3().set(0.0f,0.0f,0.0f),sm_2D);
 		}
 	}
 

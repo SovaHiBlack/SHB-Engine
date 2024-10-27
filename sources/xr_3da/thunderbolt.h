@@ -69,7 +69,7 @@ private:
 
 	ref_geom			  		hGeom_gradient;
 
-	Fvector						lightning_center;
+	fVector3						lightning_center;
 	f32						lightning_size;
 	f32						lightning_phase;
 
@@ -89,7 +89,7 @@ private:
 	f32						p_fog_color;
 
 private:
-	BOOL						RayPick				(const Fvector& s, const Fvector& d, f32& range);
+	BOOL						RayPick				(const fVector3& s, const fVector3& d, f32& range);
 	void						Bolt				(int id, f32 period, f32 life_time);
 
 public:                     

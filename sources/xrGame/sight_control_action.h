@@ -22,7 +22,7 @@ public:
 	IC	bool							completed			() const;
 	IC	bool							use_torso_look		() const;
 	IC	const SightManager::ESightType	&sight_type			() const;
-	IC	const Fvector					&vector3d			() const;
+	IC	const fVector3&					vector3d			() const;
 	IC	const CGameObject				&object				() const;
 };
 

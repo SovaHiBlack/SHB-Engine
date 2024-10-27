@@ -130,7 +130,7 @@ void CSightAction::execute_position				()
 
 void CSightAction::execute_object				()
 {
-	Fvector					look_pos;
+	fVector3					look_pos;
 	m_object_to_look->Center(look_pos);
 
 	const CEntityAlive		*entity_alive = smart_cast<const CEntityAlive*>(m_object_to_look);

@@ -62,7 +62,7 @@ void CStalkerActionDangerInDirectionTakeCover::execute							()
 	if (!object().memory().danger().selected())
 		return;
 
-	Fvector								position = object().memory().danger().selected()->position();
+	fVector3								position = object().memory().danger().selected()->position();
 
 	object().sight().setup				(CSightAction(SightManager::eSightTypePosition,position,true));
 
@@ -137,7 +137,7 @@ void CStalkerActionDangerInDirectionLookOut::execute							()
 //
 //	if (!mem_object.m_object)
 //		return;
-	Fvector								position = object().memory().danger().selected()->position();
+	fVector3								position = object().memory().danger().selected()->position();
 
 	object().sight().setup				(CSightAction(SightManager::eSightTypePosition,position,true));
 
@@ -147,7 +147,7 @@ void CStalkerActionDangerInDirectionLookOut::execute							()
 		return;
 	}
 
-//	Fvector								position = mem_object.m_object_params.m_position;
+//	fVector3								position = mem_object.m_object_params.m_position;
 	object().m_ce_close->setup			(position,10.f,170.f,10.f);
 	const CCoverPoint					*point = ai().cover_manager().best_cover(object().Position(),10.f,*object().m_ce_close,CStalkerMovementRestrictor(m_object,true,false));
 	if (!point || (point->position().similar(object().Position()) && object().movement().path_completed())) {
@@ -211,7 +211,7 @@ void CStalkerActionDangerInDirectionHoldPosition::execute						()
 //	if (!mem_object.m_object)
 //		return;
 
-	Fvector								position = object().memory().danger().selected()->position();
+	fVector3								position = object().memory().danger().selected()->position();
 
 	if (current_cover(m_object) < 3.f)
 		m_storage->set_property			(eWorldPropertyLookedOut,false);
@@ -272,7 +272,7 @@ void CStalkerActionDangerInDirectionDetour::execute								()
 	if (!mem_object.m_object)
 		return;
 
-	Fvector								position = object().memory().danger().selected()->position();
+	fVector3								position = object().memory().danger().selected()->position();
 
 	if (object().movement().path_completed()) {
 		object().m_ce_angle->setup			(position,10.f,object().ffGetRange(),mem_object.m_object_params.m_level_vertex_id);
@@ -340,7 +340,7 @@ void CStalkerActionDangerInDirectionSearch::execute							()
 	if (!mem_object.m_object)
 		return;
 
-	Fvector								position = object().memory().danger().selected()->position();
+	fVector3								position = object().memory().danger().selected()->position();
 
 	if (object().movement().path_completed()) {
 		object().m_ce_ambush->setup		(position,mem_object.m_self_params.m_position,10.f);

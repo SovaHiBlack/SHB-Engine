@@ -78,7 +78,7 @@ public:
 public:
 	// Sector detection and visibility
 	CSector*													pLastSector;
-	Fvector														vLastCameraPos;
+	fVector3														vLastCameraPos;
 	u32															uLastLTRACK;
 	xr_vector<IRender_Portal*>									Portals;
 	xr_vector<IRender_Sector*>									Sectors;
@@ -133,7 +133,7 @@ private:
 	void							add_leafs_Static			(IRender_Visual	*pVisual);					// if detected node's full visibility
 
 public:
-	IRender_Sector*					rimp_detectSector			(Fvector& P, Fvector& D);
+	IRender_Sector*					rimp_detectSector			(fVector3& P, fVector3& D);
 	void							render_main					(fMatrix4x4& mCombined, bool _fportals);
 	void							render_forward				();
 	void							render_smap_direct			(fMatrix4x4& mCombined);
@@ -153,7 +153,7 @@ public:
 	IRender_Portal*					getPortal					(int id);
 	IRender_Sector*					getSectorActive				();
 	IRender_Visual*					model_CreatePE				(pcstr name);
-	IRender_Sector*					detectSector				(const Fvector& P, Fvector& D);
+	IRender_Sector*					detectSector				(const fVector3& P, fVector3& D);
 
 	// HW-occlusion culling
 	IC u32							occq_begin					(u32&	ID		)	{ return HWOCC.occq_begin	(ID);	}
@@ -217,7 +217,7 @@ public:
 	virtual ref_shader				getShader					(int id);
 	virtual IRender_Sector*			getSector					(int id);
 	virtual IRender_Visual*			getVisual					(int id);
-	virtual IRender_Sector*			detectSector				(const Fvector& P);
+	virtual IRender_Sector*			detectSector				(const fVector3& P);
 	virtual IRender_Target*			getTarget					();
 
 	// Main 
@@ -228,10 +228,10 @@ public:
 	virtual void					add_Geometry				(IRender_Visual*	V	);			// add visual(s)	(all culling performed)
 
 	// wallmarks
-	virtual void					add_StaticWallmark			(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* V);
+	virtual void					add_StaticWallmark			(ref_shader& S, const fVector3& P, f32 s, CDB::TRI* T, fVector3* V);
 	virtual void					clear_static_wallmarks		();
 	virtual void					add_SkeletonWallmark		(intrusive_ptr<CSkeletonWallmark> wm);
-	virtual void					add_SkeletonWallmark		(const fMatrix4x4* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size);
+	virtual void					add_SkeletonWallmark		(const fMatrix4x4* xf, CKinematics* obj, ref_shader& sh, const fVector3& start, const fVector3& dir, f32 size);
 
 	//
 	virtual IBlender*				blender_create				(CLASS_ID cls);

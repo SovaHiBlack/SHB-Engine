@@ -30,15 +30,15 @@ public:
 			bool					inside						(u32 level_vertex_id, bool partially_inside);
 			bool					inside						(u32 level_vertex_id, bool partially_inside, f32 radius);
 			shared_str				name						() const;
-			u32						accessible_nearest			(const Fvector &position, Fvector &result, bool out_restriction);
+			u32						accessible_nearest			(const fVector3& position, fVector3& result, bool out_restriction);
 			bool					shape						() const;
 			bool					default_restrictor			() const;
-			bool					on_border					(const Fvector &position) const;
-			bool					out_of_border				(const Fvector &position);
+			bool					on_border					(const fVector3& position) const;
+			bool					out_of_border				(const fVector3& position);
 			Fsphere					sphere						() const;
 
 	template <typename T>
-	IC		u32						accessible_nearest			(T &restriction, const Fvector &position, Fvector &result, bool out_restriction);
+	IC		u32						accessible_nearest			(T &restriction, const fVector3& position, fVector3& result, bool out_restriction);
 	template <typename T>
 	IC		const xr_vector<u32>	&accessible_neighbour_border(T &restriction, bool out_restriction);
 };

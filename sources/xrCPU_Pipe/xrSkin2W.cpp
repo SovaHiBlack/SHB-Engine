@@ -3,21 +3,6 @@
 #include "..\XR_3DA\skeletonX.h"
 #include "..\XR_3DA\skeletoncustom.h"
 
-/*
-struct vertBoned2W	// (1+3+3 + 1+3+3 + 2)*4 = 16*4 = 64 bytes
-{
-	u16	matrix0;
-	u16	matrix1;
-	Fvector	P0;
-	Fvector	N0;
-	Fvector	P1;
-	Fvector	N1;
-	f32	w;
-	f32	u;
-	f32 v;
-};
-*/
-
 //#pragma optimize("a",on)
 // it means no aliasing inside the function, /Oa compiler option
 void __stdcall xrSkin2W_x86(vertRender*		D,
@@ -29,7 +14,10 @@ void __stdcall xrSkin2W_x86(vertRender*		D,
 	int U_Count			= vCount;
 	vertBoned2W*	V	= S;
 	vertBoned2W*	E	= V+U_Count;
-	Fvector			P0,N0,P1,N1;
+	fVector3			P0;
+	fVector3			N0;
+	fVector3			P1;
+	fVector3			N1;
 
 	// NON-Unrolled loop
 	for (; S!=E; ){
