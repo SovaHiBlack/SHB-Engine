@@ -205,14 +205,14 @@ void ApplySpawnIniToPhysicShell(CInifile* ini,CPhysicsShell* physics_shell,bool 
 		}
 }
 
-void	get_box(CPhysicsShell*	shell,const	fMatrix4x4& form,	Fvector&	sz,Fvector&	c)
+void	get_box(CPhysicsShell*	shell,const	fMatrix4x4& form, fVector3&	sz, fVector3&	c)
 {
 	c.set(0,0,0);
 	for(int i=0;3>i;++i)
 	{	
 		f32 lo,hi;
-		const	Fvector &ax=cast_fv(((const	f32*)&form+i*4));
+		const	fVector3& ax=cast_fv(((const	f32*)&form+i*4));
 		shell->get_Extensions(ax,0,lo,hi);
-		sz[i]=hi-lo;c.add(Fvector().mul(ax,(lo+hi)/2));
+		sz[i]=hi-lo;c.add(fVector3().mul(ax,(lo+hi)/2));
 	}
 }

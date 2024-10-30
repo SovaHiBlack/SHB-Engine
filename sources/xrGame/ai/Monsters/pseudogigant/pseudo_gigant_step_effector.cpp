@@ -11,7 +11,7 @@ CPseudogigantStepEffector::CPseudogigantStepEffector(f32 time, f32 amp, f32 peri
 	this->power		= power;
 }
 
-BOOL CPseudogigantStepEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
+BOOL CPseudogigantStepEffector::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	fLifeTime -= Device.fTimeDelta; if(fLifeTime<0) return FALSE;
 
@@ -30,7 +30,7 @@ BOOL CPseudogigantStepEffector::Process(Fvector &p, Fvector &d, Fvector &n, f32&
 	f32 k				= 1 - time_left_perc + EPSILON_3 + (1 - power);
 	f32 cur_amp		= max_amp * (PI / 180) / (10 * k * k);
 
-	Fvector dangle; 
+	fVector3 dangle;
 	dangle.x = cur_amp/2	* _sin(period_all	* (1.0f - time_left_perc));
 	dangle.y = cur_amp		* _cos(period_all/2 * (1.0f - time_left_perc));
 	dangle.z = cur_amp/4	* _sin(period_all/4	* (1.0f - time_left_perc));

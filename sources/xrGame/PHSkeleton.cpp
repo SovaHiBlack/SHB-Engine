@@ -175,7 +175,8 @@ void CPHSkeleton::SaveNetState(NET_Packet& P)
 		P.w_u16(0);
 	}
 	/////////////////////////////
-	Fvector min,max;
+	fVector3 min;
+	fVector3 max;
 
 	min.set(F_MAX,F_MAX,F_MAX);
 	max.set(-F_MAX,-F_MAX,-F_MAX);
@@ -186,7 +187,7 @@ void CPHSkeleton::SaveNetState(NET_Packet& P)
 	{
 		SPHNetState state;
 		obj->PHGetSyncItem(i)->get_State(state);
-		Fvector& p=state.position;
+		fVector3& p=state.position;
 		if(p.x<min.x)min.x=p.x;
 		if(p.y<min.y)min.y=p.y;
 		if(p.z<min.z)min.z=p.z;

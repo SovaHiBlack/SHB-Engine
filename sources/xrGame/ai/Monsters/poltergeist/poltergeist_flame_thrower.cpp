@@ -78,7 +78,7 @@ void CPolterFlame::load(pcstr section)
 
 void CPolterFlame::create_flame(const CObject *target_object)
 {
-	Fvector position;
+	fVector3 position;
 	if (!get_valid_flame_position(target_object, position)) return;
 
 	SFlameElement *element			= xr_new<SFlameElement>();
@@ -91,7 +91,7 @@ void CPolterFlame::create_flame(const CObject *target_object)
 	element->particles_object		= 0;
 	element->time_last_hit			= 0;
 
-	Fvector target_point			= get_head_position(const_cast<CObject*>(target_object));
+	fVector3 target_point			= get_head_position(const_cast<CObject*>(target_object));
 	element->target_dir.sub			(target_point, element->position);
 	element->target_dir.normalize	();
 	
@@ -204,7 +204,7 @@ void CPolterFlame::update_schedule()
 							HS.dir				= (elem->target_dir);					//					P.w_dir			(element->target_dir);
 							HS.power			= (hit_value);							//					P.w_float		(m_flame_hit_value);
 							HS.boneID			= (BI_NONE);							//					P.w_s16			(BI_NONE);
-							HS.p_in_bone_space	= (Fvector().set(0.f,0.f,0.f));			//					P.w_vec3		(Fvector().set(0.f,0.f,0.f));
+							HS.p_in_bone_space	= (fVector3().set(0.0f,0.0f,0.0f));			//					P.w_vec3		(fVector3().set(0.0f,0.0f,0.0f));
 							HS.impulse			= (0.f);								//					P.w_float		(0.f);
 							HS.hit_type			= (ALife::eHitTypeBurn);				//					P.w_u16			(u16(ALife::eHitTypeBurn));
 
@@ -276,17 +276,17 @@ void CPolterFlame::on_die()
 
 #define FIND_POINT_ATTEMPT_COUNT	5
 
-bool CPolterFlame::get_valid_flame_position(const CObject *target_object, Fvector &res_pos)
+bool CPolterFlame::get_valid_flame_position(const CObject *target_object, fVector3& res_pos)
 {
 	const CGameObject *Obj = smart_cast<const CGameObject *>(target_object);
 	if (!Obj) return (false);
 
-	Fvector dir;
+	fVector3 dir;
 	f32 h;
 	f32 p;
 
-	Fvector vertex_position;
-	Fvector new_pos;
+	fVector3 vertex_position;
+	fVector3 new_pos;
 
 	for (u32 i=0; i<FIND_POINT_ATTEMPT_COUNT; i++) {
 		

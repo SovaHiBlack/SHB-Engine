@@ -28,8 +28,8 @@ protected:
 										SCollisionDamageInfo		()										;
 				void					Construct					()										;
 				f32					ContactVelocity				()				const					;
-				void					HitDir						(Fvector &dir)	const					;
-			IC	const Fvector&			HitPos						()				const					{return cast_fv(m_damege_contact.geom.pos);}
+				void					HitDir						(fVector3& dir)	const					;
+			IC	const fVector3&			HitPos						()				const					{return cast_fv(m_damege_contact.geom.pos);}
 				void					Reinit						()										;
 				dContact				m_damege_contact;
 				SCollisionHitCallback	*m_hit_callback;
@@ -42,7 +42,7 @@ protected:
 	/////////////////////////// callback
 	ObjectContactCallbackFun*	m_object_contact_callback;
 	////////////////////////// geometry
-	Fvector m_last_move;
+	fVector3 m_last_move;
 	dGeomID m_geom_shell;
 	dGeomID m_wheel;
 	dGeomID m_hat;
@@ -62,8 +62,8 @@ protected:
 	dJointFeedback m_capture_joint_feedback;
 	////////////////////////// movement
 	dVector3 m_control_force;
-	Fvector	 m_acceleration;	
-	Fvector  m_cam_dir;
+	fVector3	 m_acceleration;
+	fVector3  m_cam_dir;
 	dVector3 m_wall_contact_normal;
 	dVector3 m_ground_contact_normal;
 	dVector3 m_clamb_depart_position;
@@ -78,7 +78,7 @@ protected:
 
 	dVector3 m_jump_depart_position;
 	dVector3 m_death_position;
-	Fvector  m_jump_accel;
+	fVector3  m_jump_accel;
 
 	//movement state
 	bool is_contact					;
@@ -110,7 +110,7 @@ protected:
 	bool	b_clamb_jump				;
 	bool	b_external_impulse			;
 	u64		m_ext_impuls_stop_step		;
-	Fvector m_ext_imulse				;
+	fVector3 m_ext_imulse				;
 	bool	b_death_pos					;
 	bool	b_foot_mtl_check			;
 	dReal	m_friction_factor;
@@ -134,12 +134,12 @@ public:
 	//Check state
 	virtual		bool			 		ContactWas						()					{if(b_meet_control) {b_meet_control=false;return true;} else return false;}
 	virtual		EEnvironment	 		CheckInvironment				()					;
-	virtual		void			 		GroundNormal					(Fvector &norm)		;
+	virtual		void			 		GroundNormal					(fVector3& norm)		;
 	virtual		const ICollisionDamageInfo	*CollisionDamageInfo ()const {return this;}
 private:
 	virtual		f32			 	ContactVelocity				()const				{return m_collision_damage_info.ContactVelocity();}
-	virtual		void			 	HitDir							(Fvector& dir)const	{return m_collision_damage_info.HitDir(dir);}
-	virtual		const Fvector&	 	HitPos							()const				{return m_collision_damage_info.HitPos();}
+	virtual		void			 	HitDir							(fVector3& dir)const	{return m_collision_damage_info.HitDir(dir);}
+	virtual		const fVector3&	 	HitPos							()const				{return m_collision_damage_info.HitPos();}
 	virtual		u16				 	DamageInitiatorID				()const				;
 	virtual		CObject			 	*DamageInitiator				()const				;
 	virtual		ALife::EHitType	 	HitType							()const				;
@@ -166,37 +166,37 @@ public:
 	void					SetStaticContactCallBack			(ContactCallbackFun* calback);
 	virtual		void		SwitchOFFInitContact				()					;
 	virtual		void		SwitchInInitContact					()					;
-	virtual		void		SetAcceleration						(Fvector accel)		;
-	virtual		Fvector		GetAcceleration						()					{ return m_acceleration; };
-	virtual     void		SetCamDir							(const Fvector& cam_dir);
-	virtual	const Fvector&	CamDir								()const				{return m_cam_dir;}
+	virtual		void		SetAcceleration						(fVector3 accel)		;
+	virtual		fVector3		GetAcceleration						()					{ return m_acceleration; };
+	virtual     void		SetCamDir							(const fVector3& cam_dir);
+	virtual	const fVector3&	CamDir								()const				{return m_cam_dir;}
 	virtual		void		SetMaterial							(u16 material)		;
-	virtual		void		SetPosition							(Fvector pos)		;
-	virtual		void		GetVelocity							(Fvector& vvel)		;
-	virtual		void		GetSmothedVelocity					(Fvector& vvel)		;
-	virtual		void		SetVelocity							(Fvector vel)		;
+	virtual		void		SetPosition							(fVector3 pos)		;
+	virtual		void		GetVelocity							(fVector3& vvel)		;
+	virtual		void		GetSmothedVelocity					(fVector3& vvel)		;
+	virtual		void		SetVelocity							(fVector3 vel)		;
 	virtual		void		SetAirControlFactor					(f32 factor)		{m_air_control_factor=factor;}
 	virtual		void		SetElevator							(CClimableObject* climable){m_elevator_state.SetElevator(climable);};
 	virtual	CElevatorState	*ElevatorState						()					;
 	virtual		void		SetCollisionDamageFactor			(f32 f)			{m_collision_damage_factor=f;}
-	virtual		void		GetPosition							(Fvector& vpos)		;
-	virtual		void		GetPreviousPosition					(Fvector& pos)		;
+	virtual		void		GetPosition							(fVector3& vpos)		;
+	virtual		void		GetPreviousPosition					(fVector3& pos)		;
 	virtual		f32		FootRadius							()					;
-	virtual		void		DeathPosition						(Fvector& deathPos)	;
-	virtual		void		IPosition							(Fvector& pos)		;
+	virtual		void		DeathPosition						(fVector3& deathPos)	;
+	virtual		void		IPosition							(fVector3& pos)		;
 	virtual		u16			ContactBone							();
-	virtual		void		ApplyImpulse						(const Fvector& dir, const dReal P);
-	virtual		void		ApplyForce							(const Fvector& force);
-	virtual		void		ApplyForce							(const Fvector& dir, f32 force);
+	virtual		void		ApplyImpulse						(const fVector3& dir, const dReal P);
+	virtual		void		ApplyForce							(const fVector3& force);
+	virtual		void		ApplyForce							(const fVector3& dir, f32 force);
 	virtual		void		ApplyForce							(f32 x, f32 y, f32 z);
-	virtual		void		AddControlVel						(const Fvector& vel);
+	virtual		void		AddControlVel						(const fVector3& vel);
 	virtual		void		SetMaximumVelocity					(dReal vel)			{m_max_velocity=vel;}
 	virtual		dReal		GetMaximumVelocity					()					{ return m_max_velocity;}
 	virtual		void		SetJupmUpVelocity					(dReal velocity)	{jump_up_velocity=velocity;}
 	virtual		bool		JumpState							()					{
 																				return b_jumping||b_jump;
 																					};
-	virtual	const Fvector&  ControlAccel						()const				{return m_acceleration;}
+	virtual	const fVector3&  ControlAccel						()const				{return m_acceleration;}
 	virtual		bool		TouchRestrictor						(ERestrictionType rttype);
 	virtual		f32&		FrictionFactor						()					{return m_friction_factor;}
 	virtual		void		SetMas								(dReal mass)		;

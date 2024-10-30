@@ -92,11 +92,13 @@ void CPolterTele::update_schedule()
 //////////////////////////////////////////////////////////////////////////
 // Выбор подходящих объектов для телекинеза
 //////////////////////////////////////////////////////////////////////////
-class best_object_predicate {
-	Fvector enemy_pos;
-	Fvector monster_pos;
+class best_object_predicate
+{
+	fVector3 enemy_pos;
+	fVector3 monster_pos;
+
 public:
-	best_object_predicate(const Fvector &m_pos, const Fvector &pos) {
+	best_object_predicate(const fVector3& m_pos, const fVector3& pos) {
 		monster_pos = m_pos;
 		enemy_pos	= pos;
 	}
@@ -111,13 +113,15 @@ public:
 	};
 };
 
-class best_object_predicate2 {
-	Fvector enemy_pos;
-	Fvector monster_pos;
+class best_object_predicate2
+{
+	fVector3 enemy_pos;
+	fVector3 monster_pos;
+
 public:
 	typedef CObject*	CObject_ptr;
 
-	best_object_predicate2(const Fvector &m_pos, const Fvector &pos) {
+	best_object_predicate2(const fVector3& m_pos, const fVector3& pos) {
 		monster_pos = m_pos;
 		enemy_pos	= pos;
 	}
@@ -133,12 +137,12 @@ public:
 
 //////////////////////////////////////////////////////////////////////////
 
-bool CPolterTele::trace_object(CObject *obj, const Fvector &target)
+bool CPolterTele::trace_object(CObject *obj, const fVector3& target)
 {
-	Fvector			trace_from;
+	fVector3			trace_from;
 	obj->Center		(trace_from);
 	
-	Fvector			dir;
+	fVector3			dir;
 	f32			range;
 	dir.sub			(target, trace_from);
 	
@@ -153,7 +157,7 @@ bool CPolterTele::trace_object(CObject *obj, const Fvector &target)
 	return false;
 }
 
-void CPolterTele::tele_find_objects(xr_vector<CObject*> &objects, const Fvector &pos) 
+void CPolterTele::tele_find_objects(xr_vector<CObject*> &objects, const fVector3& pos)
 {
 	m_nearest.clear_not_free		();
 	Level().ObjectSpace.GetNearest	(m_nearest, pos, m_pmt_radius, NULL);
@@ -172,7 +176,7 @@ void CPolterTele::tele_find_objects(xr_vector<CObject*> &objects, const Fvector 
 			m_object->CTelekinesis::is_active_object(obj) || 
 			!obj->m_pPhysicsShell->get_ApplyByGravity()) continue;
 		
-		Fvector center;
+		fVector3 center;
 		Actor()->Center(center);
 		
 		if (trace_object(obj, center) || trace_object(obj, get_head_position(Actor())))
@@ -194,11 +198,11 @@ bool CPolterTele::tele_raise_objects()
 
 	// получить список объектов между монстром и врагом
 	f32 dist			= Actor()->Position().distance_to(m_object->Position());
-	Fvector dir;
+	fVector3 dir;
 	dir.sub				(Actor()->Position(), m_object->Position());
 	dir.normalize		();
 
-	Fvector pos;
+	fVector3 pos;
 	pos.mad				(m_object->Position(), dir, dist / 2.f);
 	tele_find_objects	(tele_objects, pos);	
 
@@ -248,7 +252,7 @@ void CPolterTele::tele_fire_objects()
 		CTelekineticObject tele_object = m_object->CTelekinesis::get_object_by_index(i);
 		//if (tele_object.get_state() != TS_Fire) {
 		if ((tele_object.get_state() == TS_Raise) || (tele_object.get_state() == TS_Keep))  {
-			Fvector					enemy_pos;
+			fVector3					enemy_pos;
 			enemy_pos				= get_head_position(Actor());
 			m_object->CTelekinesis::fire_t	(tele_object.get_object(),enemy_pos, tele_object.get_object()->Position().distance_to(enemy_pos) / m_pmt_fly_velocity);
 			return;

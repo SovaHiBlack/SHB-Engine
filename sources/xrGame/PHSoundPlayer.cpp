@@ -14,11 +14,12 @@ CPHSoundPlayer::~CPHSoundPlayer( )
 	m_object = NULL;
 }
 
-void CPHSoundPlayer::Play(SGameMtlPair* mtl_pair, const Fvector& pos)
+void CPHSoundPlayer::Play(SGameMtlPair* mtl_pair, const fVector3& pos)
 {
 	if (!m_sound._feedback( ))
 	{
-		Fvector vel; m_object->PHGetLinearVell(vel);
+		fVector3 vel;
+		m_object->PHGetLinearVell(vel);
 		if (vel.square_magnitude( ) > 0.01f)
 		{
 			CLONE_MTL_SOUND(m_sound, mtl_pair, CollideSounds);

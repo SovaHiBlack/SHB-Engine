@@ -5,9 +5,10 @@
 #include "PhysicsShellHolder.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "PHCollideValidator.h"
+
 void CPHStaticGeomShell::get_spatial_params()
 {
-	Fvector					AABB;
+	fVector3					AABB;
 	spatialParsFromDGeom	(dSpacedGeometry(),spatial.sphere.P,AABB,spatial.sphere.R);
 }
 

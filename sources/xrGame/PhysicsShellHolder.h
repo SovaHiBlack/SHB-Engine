@@ -76,14 +76,14 @@ public:
 	virtual void						enable_notificate			()							{;}
 
 public:
-	virtual void			PHGetLinearVell		(Fvector& velocity);
-	virtual void			PHSetLinearVell		(Fvector& velocity);
+	virtual void			PHGetLinearVell		(fVector3& velocity);
+	virtual void			PHSetLinearVell		(fVector3& velocity);
 	virtual void			PHSetMaterial		(pcstr m);
 	virtual void			PHSetMaterial		(u16 m);
 			void			PHSaveState			(NET_Packet &P);
 			void			PHLoadState			(IReader &P);
 	virtual f32				GetMass				();
-	virtual	void			PHHit				(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type=ALife::eHitTypeWound);
+	virtual	void			PHHit				(f32 P, fVector3& dir, CObject *who,s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type=ALife::eHitTypeWound);
 	virtual	void			Hit					(SHit* pHDS);
 ///////////////////////////////////////////////////////////////////////
 	virtual u16				PHGetSyncItemsNumber();

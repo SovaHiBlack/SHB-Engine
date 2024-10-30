@@ -22,7 +22,7 @@
 //#define drand48() (((f32) rand())/((f32) RAND_MAX))
 
 namespace PAPI{
-	class pVector	: public Fvector
+	class pVector	: public fVector3
 	{
 	public:
 		IC 			pVector		(f32 ax, f32 ay, f32 az)	{ set(ax,ay,az);								}
@@ -137,7 +137,7 @@ namespace PAPI{
 		// update&render
 		virtual void				Update				(int effect_id, int alist_id, f32 dt)=0;
 		virtual void				Render				(int effect_id)=0;
-		virtual void				Transform			(int alist_id, const fMatrix4x4& m, const Fvector& velocity)=0;
+		virtual void				Transform			(int alist_id, const fMatrix4x4& m, const fVector3& velocity)=0;
 
 		// effect
 		virtual void				RemoveParticle		(int effect_id, u32 p_id)=0;

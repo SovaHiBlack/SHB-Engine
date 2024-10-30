@@ -60,12 +60,12 @@ void CPHShell::Activate(const fMatrix4x4& m0, f32 dt01,const fMatrix4x4& m2,bool
 /////////////////////////////////////////////////////////////////////////////
 	//mXFORM.set(m0);
 	//Activate(disable);
-	Fvector lin_vel;
+	fVector3 lin_vel;
 	lin_vel.sub(m2.c,m0.c);
 	set_LinearVel(lin_vel);
 }
 
-void CPHShell::Activate(const fMatrix4x4& transform,const Fvector& lin_vel,const Fvector& ang_vel,bool disable){
+void CPHShell::Activate(const fMatrix4x4& transform,const fVector3& lin_vel,const fVector3& ang_vel,bool disable){
 
 	if(isActive())return;
 	activate(disable);
