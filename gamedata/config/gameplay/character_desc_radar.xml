@@ -5,7 +5,6 @@
 	<specific_character id="rad_monolit_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -37,7 +36,6 @@
 	<specific_character id="rad_monolit_regular_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -69,7 +67,6 @@
 	<specific_character id="rad_monolit_regular_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -101,7 +98,6 @@
 	<specific_character id="rad_monolit_regular_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -133,7 +129,6 @@
 	<specific_character id="rad_monolit_regular_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -165,7 +160,6 @@
 	<specific_character id="rad_monolit_regular_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -197,7 +191,6 @@
 	<specific_character id="rad_monolit_regular_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -229,7 +222,6 @@
 	<specific_character id="rad_monolit_regular_default8" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -261,7 +253,6 @@
 	<specific_character id="rad_monolit_bunker_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -294,7 +285,6 @@
 	<specific_character id="rad_monolit_bunker_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -327,7 +317,6 @@
 	<specific_character id="rad_monolit_bunker_default3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -360,7 +349,6 @@
 	<specific_character id="rad_monolit_bunker_default4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_mask</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -393,7 +381,6 @@
 	<specific_character id="rad_monolit_bunker_default5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -426,7 +413,6 @@
 	<specific_character id="rad_monolit_bunker_default6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -459,7 +445,6 @@
 	<specific_character id="rad_monolit_bunker_default7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -492,7 +477,6 @@
 	<specific_character id="rad_monolit_bunker_default8" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -527,7 +511,6 @@
 	<specific_character id="rad_monolit_strong_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>
@@ -559,7 +542,6 @@
 	<specific_character id="rad_monolit_strong_default2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
-		<map_icon x="3" y="0"></map_icon>
 		<bio>rad_monolith_general_bio</bio>
 
 		<class>rad_Monolit_regular</class>

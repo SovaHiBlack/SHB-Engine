@@ -6,7 +6,6 @@
 	<specific_character id="actor" no_random = "1">
 		<name>actor_name</name>
 		<icon>ui_npc_u_actor</icon>
-		<map_icon x="2" y="5"></map_icon>
 
 		<team>Actor</team>
 		<supplies>
@@ -25,7 +24,6 @@
 	<specific_character id="mp_actor" no_random = "1">
 		<name>actor_name</name>
 		<icon>ui_npc_u_actor</icon>
-		<map_icon x="2" y="5"></map_icon>
 
 		<team>mp_actor</team>
 		<supplies/>
@@ -41,11 +39,11 @@
 	<specific_character id="stalker_general_default" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>Опытный сталкер. Детальная информация отсутствует.</bio>
 
 		<class>Stalker_general</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		
 		<rank>400</rank>
 		<reputation>0</reputation>
@@ -67,11 +65,11 @@
 <specific_character id="stalker_osoznanie" team_default = "1">
 		<name>Osoznanie</name>
 		<icon>ui_npc_u_ucheniy_1_strong</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>Представитель проекта "Осознание".</bio>
 
 		<class>osoznanie</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 		
 		<rank>900</rank>
 		<reputation>0</reputation>

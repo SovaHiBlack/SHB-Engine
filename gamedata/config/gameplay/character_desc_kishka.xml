@@ -5,11 +5,11 @@
 <specific_character id="ds_bandit_1" team_default = "1">
 		<name>GENERATE_NAME_private</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_soldier_regular_bio</bio>
 
 		<class>ds_bandit_1</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+	<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -33,11 +33,11 @@
 	<specific_character id="ds_bandit_2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_bandit_2</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -61,11 +61,11 @@
 	<specific_character id="ds_bandit_3" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_bandit_3</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -88,11 +88,11 @@
 	<specific_character id="ds_bandit_4" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_bandit_4</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -117,11 +117,11 @@
 	<specific_character id="ds_bandit_5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_bandit_5</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -145,11 +145,11 @@
 	<specific_character id="ds_bandit_6" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_bandit_6</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -173,11 +173,11 @@
 	<specific_character id="ds_dolg_1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_dolg_1</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -200,11 +200,11 @@
 	<specific_character id="ds_dolg_2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_dolg_2</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -229,11 +229,11 @@
 	<specific_character id="ds_dolg_3" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_dolg_3</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -258,11 +258,11 @@
 	<specific_character id="ds_dolg_4" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_dolg_4</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -287,11 +287,11 @@
 	<specific_character id="ds_dolg_5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_dolg_5</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -316,11 +316,11 @@
 	<specific_character id="ds_dolg_6" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_dolg_6</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -346,11 +346,11 @@
 	<specific_character id="ds_nauch_1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_nauch_1</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -373,11 +373,11 @@
 	<specific_character id="ds_nauch_2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_nauch_2</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -403,11 +403,11 @@
 	<specific_character id="ds_kill_1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_kill_1</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -433,11 +433,11 @@
 	<specific_character id="ds_kill_2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_kill_2</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -464,11 +464,11 @@
 	<specific_character id="ds_kill_3" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_kill_3</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -495,11 +495,11 @@
 	<specific_character id="ds_kill_4" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_kill_4</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -524,11 +524,11 @@
 	<specific_character id="ds_kill_5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_kill_5</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -554,11 +554,11 @@
 	<specific_character id="ds_mil_1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_1</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -585,11 +585,11 @@
 	<specific_character id="ds_mil_2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_2</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -616,11 +616,11 @@
 	<specific_character id="ds_mil_3" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_3</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -648,11 +648,11 @@
 	<specific_character id="ds_mil_4" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_4</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -680,11 +680,11 @@
 	<specific_character id="ds_mil_5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_5</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -712,11 +712,11 @@
 	<specific_character id="ds_mil_6" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_6</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -744,11 +744,11 @@
 	<specific_character id="ds_mil_7" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_7</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -775,11 +775,11 @@
 	<specific_character id="ds_mil_8" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_8</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -806,11 +806,11 @@
 	<specific_character id="ds_mil_9" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_9</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
@@ -837,11 +837,11 @@
 	<specific_character id="ds_mil_10" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon x="12" y="2"></icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>ds_sergant_regular_bio</bio>
 
 		<class>ds_mil_10</class>
-		<community>stalker</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>300</rank>
 		<reputation>0</reputation>
