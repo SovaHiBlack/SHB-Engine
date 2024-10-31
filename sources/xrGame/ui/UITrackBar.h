@@ -33,7 +33,7 @@ protected:
 			void 	UpdatePos				();
 			void 	UpdatePosRelativeToMouse();
 
-    CUI3tButton*		m_pSlider;
+	CUI3tButton*		m_pSlider;
 	CUIFrameLineWnd*	m_pFrameLine;
 	CUIFrameLineWnd*	m_pFrameLine_d;
 	bool				m_b_invert;

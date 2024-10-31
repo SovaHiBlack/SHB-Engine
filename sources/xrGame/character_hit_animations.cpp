@@ -33,7 +33,6 @@ void character_hit_animation_controller::SetupHitMotions(CKinematicsAnimated &ca
 	base_bone	= ca.LL_BoneID("bip01_spine1");//bip01_spine1
 	for( u16 i = 0; num_anims>i; ++i )
 		block_times[i] = 0;
-
 }
 ICF int sign(f32 x)
 {

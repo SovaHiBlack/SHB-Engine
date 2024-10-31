@@ -3,7 +3,7 @@
 // Module		: Hit.cpp
 // Author		: Anahoret
 // Description	: 
-// ===================================== SovaHiBlack© - 2022 ======================================
+// ===================================== SovaHiBlack© - 2024 ======================================
 
 #include "stdafx.h"
 
@@ -15,7 +15,7 @@
 #include "xrMessages.h"
 #include "Level.h"
 
-SHit::SHit(f32 Power, Fvector& Dir, CObject* Who, u16 Element, Fvector PInBoneSpace, f32 Impulse, ALife::EHitType HitType, f32 AP, bool AimBullet)
+SHit::SHit(f32 Power, fVector3& Dir, CObject* Who, u16 Element, fVector3 PInBoneSpace, f32 Impulse, ALife::EHitType HitType, f32 AP, bool AimBullet)
 {
 	power					= Power;
 	dir.set					(Dir);

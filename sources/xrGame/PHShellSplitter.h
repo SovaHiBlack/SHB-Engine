@@ -10,6 +10,7 @@ class CPHShellSplitter
 
 public:
 	enum EType				  {splElement,splJoint}										;
+
 private:
 	bool						m_breaked												;
 	EType						m_type													;
@@ -19,7 +20,6 @@ private:
 	CPHShellSplitter			()														;
 };
 
-//class CPHShellSplitter;
 class CPHShell;
 class CODEGeom;
 typedef std::pair<u16,CODEGeom*>	id_geom;
@@ -37,7 +37,6 @@ SPLITTER_STORAGE				m_splitters																																	;			//
 GEOM_MAP						m_geom_root_map																																;			//to find geom pointer by bone id
 virtual	void					PhTune						(dReal step)																									;						//call fractures PhTune for element splitters m_pShell->m_elements[m_splitters[i]->m_element]->m_pFracturesHolder->PhTune()
 virtual void					PhDataUpdate				(dReal step)																									;				//call fractures PhDataUpdate for element splitters m_pShell->m_elements[m_splitters[i]->m_element]->m_pFracturesHolder->PhDataUpdate()
-		bool					CheckSplitter				(u16 aspl)																										;		//
 		shell_root				SplitJoint					(u16 aspl)																										;		//create new shell moving into it departed elements and joints 
 		shell_root				ElementSingleSplit			(const element_fracture &split_elem,const CPHElement* source_element)											;
 		void					SplitElement				(u16 aspl,PHSHELL_PAIR_VECTOR &out_shels)																		;//

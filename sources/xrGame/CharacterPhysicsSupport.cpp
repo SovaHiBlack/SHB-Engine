@@ -57,11 +57,16 @@ IC bool is_imotion(interactive_motion *im)
 
 CCharacterPhysicsSupport::~CCharacterPhysicsSupport()
 {
-	if(m_flags.test(fl_skeleton_in_shell))
+	if (m_flags.test(fl_skeleton_in_shell))
 	{
-		if(m_physics_skeleton)m_physics_skeleton->Deactivate();
-		xr_delete(m_physics_skeleton);//!b_skeleton_in_shell
+		if (m_physics_skeleton)
+		{
+			m_physics_skeleton->Deactivate( );
+		}
+
+		xr_delete(m_physics_skeleton);
 	}
+
 	xr_delete(m_PhysicMovementControl);
 	VERIFY(!m_interactive_motion);
 }
@@ -77,12 +82,9 @@ CCharacterPhysicsSupport::CCharacterPhysicsSupport(EType atype,CEntityAlive* aen
 	m_flags.assign(0);
 	m_eType=atype;
 	m_eState=esAlive;
-	//b_death_anim_on					= false;
 	m_flags.set(fl_death_anim_on,FALSE);
 	m_pPhysicsShell					=	NULL;
-	//m_saved_impulse					= 0.f;
 	m_physics_skeleton				=	NULL;
-	//b_skeleton_in_shell				= false;
 	m_flags.set(fl_skeleton_in_shell,FALSE);
 	m_shot_up_factor				=0.f;
 	m_after_death_velocity_factor	=1.f;
@@ -110,7 +112,7 @@ CCharacterPhysicsSupport::CCharacterPhysicsSupport(EType atype,CEntityAlive* aen
 void CCharacterPhysicsSupport::SetRemoved()
 {
 	m_eState=esRemoved;
-	if(m_flags.test(fl_skeleton_in_shell))//b_skeleton_in_shell
+	if(m_flags.test(fl_skeleton_in_shell))
 	{
 		if(m_pPhysicsShell->isEnabled())
 		{
@@ -284,16 +286,11 @@ void CCharacterPhysicsSupport::in_NetDestroy( )
 
 void	CCharacterPhysicsSupport::in_NetSave( NET_Packet& P )
 {
-	
 	CPHSkeleton::SaveNetState( P );
 }
 
 void CCharacterPhysicsSupport::in_Init( )
 {
-	
-	//b_death_anim_on					= false;
-	//m_pPhysicsShell					= NULL;
-	//m_saved_impulse					= 0.f;
 }
 
 void CCharacterPhysicsSupport::in_shedule_Update( u32 DT )
@@ -445,7 +442,7 @@ IC		void	CCharacterPhysicsSupport::						UpdateDeathAnims				()
 {
 	VERIFY(m_pPhysicsShell->isFullActive());
 
-	if(!m_flags.test(fl_death_anim_on) && !is_imotion(m_interactive_motion))//!m_flags.test(fl_use_death_motion)//!b_death_anim_on&&m_pPhysicsShell->isFullActive()
+	if(!m_flags.test(fl_death_anim_on) && !is_imotion(m_interactive_motion))
 	{
 		smart_cast<CKinematicsAnimated*>(m_EntityAlife.Visual())->PlayCycle("death_init");
 		m_flags.set(fl_death_anim_on,TRUE);
@@ -556,7 +553,6 @@ void CCharacterPhysicsSupport::CreateSkeleton()
 	velocity.mul(1.25f*m_after_death_velocity_factor);
 	m_pPhysicsShell->set_LinearVel(velocity);
 	smart_cast<CKinematics*>(m_EntityAlife.Visual())->CalculateBones();
-	//b_death_anim_on=false;
 	m_flags.set(fl_death_anim_on,FALSE);
 	m_eState=esDead;
 }

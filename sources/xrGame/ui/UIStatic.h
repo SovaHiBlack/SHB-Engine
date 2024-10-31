@@ -66,7 +66,6 @@ public:
 			void		TextureAvailable			(bool value)				{ m_bAvailableTexture = value; }
 			bool		TextureAvailable			()							{ return m_bAvailableTexture;}
 
-
 	// own
 	virtual void		SetHighlightColor			(const u32 uColor)	{ m_HighlightColor = uColor; }
 			void		EnableTextHighlighting		(bool value)		{ m_bEnableTextHighlighting = value; }
@@ -103,9 +102,7 @@ public:
 			u32		GetTextAlign_script			();
 			void	SetTextColor_script			(int a, int r, int g, int b){SetTextColor(color_argb(a,r,g,b));}
 			u32&	GetTextColorRef				();
-//#pragma todo("Satan->Satan : delete next two functions")
-//	virtual void			SetTextAlign		(CGameFont::EAligment align);
-//	CGameFont::EAligment	GetTextAlign		();
+
 			void AdjustHeightToText			();
 			void AdjustWidthToText			();
 			void HighlightText(bool bHighlight) {m_bEnableTextHighlighting = bHighlight;}

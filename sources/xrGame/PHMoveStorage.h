@@ -2,8 +2,6 @@
 
 #include "phgeometryowner.h"
 
-//DEFINE_VECTOR(dReal *&,POSITIONS_STORAGE,POSITIONS_I);
-
 class CPHPositionsPairs
 {
 	GEOM_I geom;

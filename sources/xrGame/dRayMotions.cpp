@@ -12,6 +12,7 @@ int dCollideCylRay(dxGeom *o1, dxGeom *o2, int flags,dContactGeom *contact, int 
 #include "..\xrODE\collision_std.h"
 #pragma warning(default:4995)
 #pragma warning(default:4267)
+
 struct dxRayMotions
 {
 	dGeomID ray;
@@ -27,11 +28,6 @@ int dRayMotionsClassUser = -1;
 
 #define CONTACT(p,skip) ((dContactGeom*) (((pstr)p) + (skip)))
 
-
-
-
-
-
 int dCollideRMB (dxGeom *o1, dxGeom *o2, int flags,
 				  dContactGeom *contact, int skip)
 {
@@ -42,11 +38,11 @@ int dCollideRMB (dxGeom *o1, dxGeom *o2, int flags,
 		c->g1 = rm->ray_ownwer;
 		//c->depth*=60.f;
 	}
+
 	return ret;
 }
 
-int dCollideRMS(dxGeom *o1, dxGeom *o2, int flags,
-				 dContactGeom *contact, int skip)
+int dCollideRMS(dxGeom* o1, dxGeom* o2, int flags, dContactGeom* contact, int skip)
 {
 	dxRayMotions	*rm = (dxRayMotions*) dGeomGetClassData(o1);
 	int ret= dCollideRaySphere (rm->ray, o2,flags, contact, skip);
@@ -55,6 +51,7 @@ int dCollideRMS(dxGeom *o1, dxGeom *o2, int flags,
 		c->g1 = rm->ray_ownwer;
 		//c->depth*=60.f;
 	}
+
 	return ret;
 }
 
@@ -68,8 +65,7 @@ inline void revert_contact(dContactGeom *c)
 	c->g2 = tmp;
 }
 
-int dCollideRMCyl (dxGeom *o1, dxGeom *o2, int flags,
-				 dContactGeom *contact, int skip)
+int dCollideRMCyl(dxGeom* o1, dxGeom* o2, int flags, dContactGeom* contact, int skip)
 {
 	dxRayMotions	*rm = (dxRayMotions*) dGeomGetClassData(o1);
 	int ret=	dCollideCylRay (o2,rm->ray,flags,contact,skip);
@@ -80,6 +76,7 @@ int dCollideRMCyl (dxGeom *o1, dxGeom *o2, int flags,
 		c->g1 = rm->ray_ownwer;
 		//c->depth*=60.f;
 	}
+
 	return ret;
 }
 

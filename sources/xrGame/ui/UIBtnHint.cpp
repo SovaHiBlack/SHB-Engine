@@ -3,12 +3,9 @@
 #include "UIFrameLineWnd.h"
 #include "UIXmlInit.h"
 
-CUIButtonHint*		g_btnHint = NULL; 
+CUIButtonHint*		g_btnHint = NULL;
 
-
-
-CUIButtonHint::CUIButtonHint	()
-:m_ownerWnd(NULL),m_enabledOnFrame(false)
+CUIButtonHint::CUIButtonHint	():m_ownerWnd(NULL),m_enabledOnFrame(false)
 {
 	Device.seqRender.Add		(this, REG_PRIORITY_LOW-1000);
 
@@ -26,8 +23,6 @@ CUIButtonHint::CUIButtonHint	()
 	m_text						= xr_new<CUIStatic>();m_text->SetAutoDelete(true);
 	AttachChild					(m_text);
 	xml_init.InitStatic			(uiXml,"button_hint:description",0,m_text);
-
-
 }
 
 CUIButtonHint::~CUIButtonHint	()

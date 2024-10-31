@@ -1,6 +1,8 @@
 #pragma once
 #include "..\XR_3DA\SkeletonAnimated.h"
+
 class CPhysicsShell;
+
 class interactive_motion
 {
 	MotionID motion;

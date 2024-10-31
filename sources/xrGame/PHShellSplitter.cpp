@@ -37,10 +37,7 @@ shell_root CPHShellSplitterHolder::SplitJoint(u16 aspl)
 	u16 end_element=m_pShell->joints[start_joint]->JointDestroyInfo()->m_end_element;
 	u16 end_joint=m_pShell->joints[start_joint]->JointDestroyInfo()->m_end_joint;
 
-
 	shell_root ret = mk_pair(new_shell,(m_pShell->joints[start_joint])->BoneID());
-
-
 
 	CShellSplitInfo split_inf;
 	split_inf.m_bone_id=m_pShell->joints[start_joint]->BoneID();
@@ -66,8 +63,6 @@ shell_root CPHShellSplitterHolder::SplitJoint(u16 aspl)
 
 void CPHShellSplitterHolder::PassEndSplitters(const CShellSplitInfo& spl_inf,CPHShell* dest,u16 jt_add_shift,u16 el_add_shift)
 {
-
-
 	CPHShellSplitterHolder*	&dest_holder=dest->m_spliter_holder;
 	if(!dest_holder)dest_holder=xr_new<CPHShellSplitterHolder>(dest);
 
@@ -79,7 +74,6 @@ void CPHShellSplitterHolder::PassEndSplitters(const CShellSplitInfo& spl_inf,CPH
 
 	R_ASSERT2(source_elements.size()>=spl_inf.m_start_el_num&&source_elements.size()>=spl_inf.m_end_el_num,"wrong spl_inf");
 
-	
 	for(;i_elem!=e_elem;++i_elem)	//until start elem in both joint or elem split fractures 
 		//end elems have to be corrected 
 		//if grater then end elem in moving diapason
@@ -88,8 +82,7 @@ void CPHShellSplitterHolder::PassEndSplitters(const CShellSplitInfo& spl_inf,CPH
 		if(!fracturesHolder) continue;
 		FRACTURE_I f_i=fracturesHolder->m_fractures.begin(),f_e=fracturesHolder->m_fractures.end();
 		for(;f_i!=f_e;++f_i)
-		{
-		
+		{		
 				u16	&end_el_num=f_i->m_end_el_num;
 				u16 &start_el_num=f_i->m_start_el_num;
 				if(end_el_num>=spl_inf.m_end_el_num)		end_el_num=end_el_num-shift_e;
@@ -119,15 +112,13 @@ void CPHShellSplitterHolder::PassEndSplitters(const CShellSplitInfo& spl_inf,CPH
 			if(end_joint>=spl_inf.m_end_jt_num)		end_joint=end_joint-shift_j;
 		}
 	}
-	
 
 	//now process diapason that tobe unsplited
 
 	e_elem=source_elements.begin()+spl_inf.m_end_el_num;
 	u16 passed_shift_e=spl_inf.m_start_el_num-u16(dest_elements.size());
 	u16 passed_shift_j = u16(-1) & (spl_inf.m_start_jt_num + jt_add_shift);
-	for(;i_elem!=e_elem;++i_elem)	
-
+	for(;i_elem!=e_elem;++i_elem)
 	{
 		CPHFracturesHolder	*fracturesHolder=(*i_elem)->FracturesHolder();
 		if(!fracturesHolder) continue;

@@ -7,13 +7,10 @@
 #include "Phdestroyable.h"
 #include "character_hit_animations.h"
 
-
 class CPhysicsShell;
 class CPHMovementControl;
 class CIKLimbsController;
 class interactive_motion;
-
-
 
 class CCharacterPhysicsSupport :
 public CPHSkeleton,
@@ -71,9 +68,7 @@ private:
 	f32									skel_fatal_impulse_factor																															;
 	f32									skel_ddelay																																			;
 	f32									skel_remain_time																																	;
-/////////////////////////////////////////////////
-	//bool								b_death_anim_on																																		;
-	//bool								b_skeleton_in_shell																																	;
+
 ///////////////////////////////////////////////////////////////////////////
 	f32									m_shot_up_factor																																	;
 	f32									m_after_death_velocity_factor																														;

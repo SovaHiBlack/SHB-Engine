@@ -10,8 +10,9 @@
 #include "..\xrODE\joint.h"
 #pragma warning(default:4995)
 #pragma warning(default:4267)
+
 extern	class CPHWorld	*ph_world;
-static const f32 torque_factor=10000000.f;
+static const f32 torque_factor=10000000.0f;
 CPHFracturesHolder::CPHFracturesHolder()
 {
 	m_has_breaks=false;
