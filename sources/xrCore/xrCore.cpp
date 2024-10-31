@@ -11,9 +11,9 @@
 #	include	<malloc.h>
 #endif // DEBUG
 
-XRCORE_API		xrCore	Core;
-XRCORE_API		u32		build_id;
-XRCORE_API		pcstr	build_date;
+CORE_API		xrCore	Core;
+CORE_API		u32		build_id;
+CORE_API		pcstr	build_date;
 
 namespace CPU
 {

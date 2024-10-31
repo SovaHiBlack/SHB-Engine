@@ -28,7 +28,7 @@
 
 // token type definition
 // ----------------------------------------------------------------------------
-struct XRCORE_API xr_token
+struct CORE_API xr_token
 {
 	pcstr		name;
 	s32				id;
@@ -308,7 +308,7 @@ IC pstr xr_strlwr(pstr S)
 }
 
 #ifdef BREAK_AT_STRCMP
-XRCORE_API	s32					xr_strcmp(pcstr S1, pcstr S2);
+CORE_API	s32					xr_strcmp(pcstr S1, pcstr S2);
 #else
 IC s32							xr_strcmp(pcstr S1, pcstr S2)
 {
@@ -316,6 +316,6 @@ IC s32							xr_strcmp(pcstr S1, pcstr S2)
 }
 #endif
 
-XRCORE_API	pstr timestamp(string64& dest);
+CORE_API	pstr timestamp(string64& dest);
 
-extern XRCORE_API u32			crc32(pcvoid P, u32 len);
+extern CORE_API u32			crc32(pcvoid P, u32 len);

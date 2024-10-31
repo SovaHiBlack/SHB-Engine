@@ -95,7 +95,7 @@ pstr xr_strdup(pcstr string)
 	return	memory;
 }
 
-XRCORE_API		BOOL			is_stack_ptr(pvoid _ptr)
+CORE_API		BOOL			is_stack_ptr(pvoid _ptr)
 {
 	int			local_value = 0;
 	pvoid ptr_refsound = _ptr;

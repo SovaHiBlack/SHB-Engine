@@ -25,8 +25,8 @@ BOOL	g_bIntroFinished			= FALSE;
 int		max_load_stage = 0;
 
 // computing build id
-XRCORE_API	pcstr	build_date;
-XRCORE_API	u32		build_id;
+CORE_API	pcstr	build_date;
+CORE_API	u32		build_id;
 
 #define NO_MULTI_INSTANCES
 
@@ -380,7 +380,7 @@ struct damn_keys_filter {
 #include "xr_ioc_cmd.h"
 
 typedef void DUMMY_STUFF (const void*,const u32&,void*);
-XRCORE_API DUMMY_STUFF	*g_temporary_stuff;
+CORE_API DUMMY_STUFF	*g_temporary_stuff;
 
 #define TRIVIAL_ENCRYPTOR_DECODER
 #include "trivial_encryptor.h"

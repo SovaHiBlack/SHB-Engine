@@ -3,7 +3,7 @@
 #pragma pack(push,4)
 //////////////////////////////////////////////////////////////////////////
 #pragma warning(disable : 4200)
-struct		XRCORE_API	smem_value
+struct		CORE_API	smem_value
 {
 	u32					dwReference;
 	u32					dwCRC;
@@ -39,7 +39,7 @@ IC bool					smem_equal(const smem_value* A, u32 dwCRC, u32 dwLength, u8* ptr)
 #pragma warning(default : 4200)
 
 //////////////////////////////////////////////////////////////////////////
-class		XRCORE_API	smem_container
+class		CORE_API	smem_container
 {
 private:
 	typedef xr_vector<smem_value*>		cdb;
@@ -52,7 +52,7 @@ public:
 	u32					stat_economy();
 	~smem_container();
 };
-XRCORE_API	extern		smem_container* g_pSharedMemoryContainer;
+CORE_API	extern		smem_container* g_pSharedMemoryContainer;
 
 //////////////////////////////////////////////////////////////////////////
 template <class T>

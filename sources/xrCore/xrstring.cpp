@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-XRCORE_API	extern		str_container* g_pStringContainer = NULL;
+CORE_API	extern		str_container* g_pStringContainer = NULL;
 
 #define		HEADER		12			// ref + len + crc
 

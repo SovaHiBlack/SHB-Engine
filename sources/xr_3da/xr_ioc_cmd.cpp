@@ -179,7 +179,7 @@ public:
 	}
 };
 
-XRCORE_API void _dump_open_files(int mode);
+CORE_API void _dump_open_files(int mode);
 class CCC_DumpOpenFiles : public IConsole_Command
 {
 public:

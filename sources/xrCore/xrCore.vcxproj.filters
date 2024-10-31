@@ -19,12 +19,6 @@
     <Filter Include="FS">
       <UniqueIdentifier>{bc176fd0-08ee-449b-9423-bc5dcbbd3e1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FS\stream_reader">
-      <UniqueIdentifier>{d19ad8e8-b720-4099-bb52-a09b34612eaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FS\file_stream_reader">
-      <UniqueIdentifier>{f1233d36-ecb4-4666-9bbe-7993e519b73a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Memory manager">
       <UniqueIdentifier>{37ad4db8-ba27-4fae-9e23-68c9a6ec31ff}</UniqueIdentifier>
     </Filter>
@@ -54,6 +48,12 @@
     </Filter>
     <Filter Include="Compression\lzo">
       <UniqueIdentifier>{f87f5e7b-4b41-4ff5-bc0f-9ae02506c557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FS\FileStreamReader">
+      <UniqueIdentifier>{f1233d36-ecb4-4666-9bbe-7993e519b73a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FS\StreamReader">
+      <UniqueIdentifier>{d19ad8e8-b720-4099-bb52-a09b34612eaa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,11 +108,11 @@
     <ClCompile Include="xr_ini.cpp">
       <Filter>FS</Filter>
     </ClCompile>
-    <ClCompile Include="stream_reader.cpp">
-      <Filter>FS\stream_reader</Filter>
+    <ClCompile Include="StreamReader.cpp">
+      <Filter>FS\StreamReader</Filter>
     </ClCompile>
-    <ClCompile Include="file_stream_reader.cpp">
-      <Filter>FS\file_stream_reader</Filter>
+    <ClCompile Include="FileStreamReader.cpp">
+      <Filter>FS\FileStreamReader</Filter>
     </ClCompile>
     <ClCompile Include="memory_usage.cpp">
       <Filter>Memory manager</Filter>
@@ -330,14 +330,14 @@
     <ClInclude Include="xr_ini.h">
       <Filter>FS</Filter>
     </ClInclude>
-    <ClInclude Include="stream_reader.h">
-      <Filter>FS\stream_reader</Filter>
+    <ClInclude Include="StreamReader.h">
+      <Filter>FS\StreamReader</Filter>
     </ClInclude>
-    <ClInclude Include="stream_reader_inline.h">
-      <Filter>FS\stream_reader</Filter>
+    <ClInclude Include="StreamReader_inline.h">
+      <Filter>FS\StreamReader</Filter>
     </ClInclude>
-    <ClInclude Include="file_stream_reader.h">
-      <Filter>FS\file_stream_reader</Filter>
+    <ClInclude Include="FileStreamReader.h">
+      <Filter>FS\FileStreamReader</Filter>
     </ClInclude>
     <ClInclude Include="xrMemory.h">
       <Filter>Memory manager</Filter>
@@ -479,5 +479,6 @@
     <None Include="rt_lzo1x_d.ch">
       <Filter>Compression\lzo</Filter>
     </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

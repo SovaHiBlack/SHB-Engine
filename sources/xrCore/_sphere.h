@@ -180,4 +180,4 @@ BOOL	_valid(const _sphere<T>& s)
 	return _valid(s.P) && _valid(s.R);
 }
 
-void	XRCORE_API		Fsphere_compute(Fsphere& dest, const fVector3* verts, int count);
+void	CORE_API		Fsphere_compute(Fsphere& dest, const fVector3* verts, int count);

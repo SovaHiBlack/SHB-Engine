@@ -4,29 +4,29 @@
 
 namespace FPU
 {
-	XRCORE_API void	 m24( );
-	XRCORE_API void	 m24r( );
-	XRCORE_API void	 m53( );
-	XRCORE_API void	 m53r( );
-	XRCORE_API void	 m64( );
-	XRCORE_API void	 m64r( );
+	CORE_API void	 m24( );
+	CORE_API void	 m24r( );
+	CORE_API void	 m53( );
+	CORE_API void	 m53r( );
+	CORE_API void	 m64( );
+	CORE_API void	 m64r( );
 };
 namespace CPU
 {
-	XRCORE_API extern u64				clk_per_second;
-	XRCORE_API extern u64				clk_per_milisec;
-	XRCORE_API extern u64				clk_per_microsec;
-	XRCORE_API extern u64				clk_overhead;
-	XRCORE_API extern f32				clk_to_seconds;
-	XRCORE_API extern f32				clk_to_milisec;
-	XRCORE_API extern f32				clk_to_microsec;
+	CORE_API extern u64				clk_per_second;
+	CORE_API extern u64				clk_per_milisec;
+	CORE_API extern u64				clk_per_microsec;
+	CORE_API extern u64				clk_overhead;
+	CORE_API extern f32				clk_to_seconds;
+	CORE_API extern f32				clk_to_milisec;
+	CORE_API extern f32				clk_to_microsec;
 
-	XRCORE_API extern u64				qpc_freq;
-	XRCORE_API extern u64				qpc_overhead;
-	XRCORE_API extern u32				qpc_counter;
+	CORE_API extern u64				qpc_freq;
+	CORE_API extern u64				qpc_overhead;
+	CORE_API extern u32				qpc_counter;
 
-	XRCORE_API extern	_processor_info	ID;
-	XRCORE_API extern	u64				QPC();
+	CORE_API extern	_processor_info	ID;
+	CORE_API extern	u64				QPC();
 
 #pragma warning(disable:4035)
 	IC u64	GetCLK( )
@@ -37,13 +37,13 @@ namespace CPU
 #pragma warning(default:4035)
 };
 
-extern XRCORE_API	void	_initialize_cpu();
-extern XRCORE_API	void	_initialize_cpu_thread();
+extern CORE_API	void	_initialize_cpu();
+extern CORE_API	void	_initialize_cpu_thread();
 
 // threading
 typedef				void	thread_t(pvoid);
-extern XRCORE_API	void	thread_name(pcstr name);
-extern XRCORE_API	void	thread_spawn(
+extern CORE_API	void	thread_name(pcstr name);
+extern CORE_API	void	thread_spawn(
 	thread_t* entry,
 	pcstr	name,
 	unsigned	stack,

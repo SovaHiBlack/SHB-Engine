@@ -38,7 +38,7 @@
 #include "xrCore_platform.h"
 
 // *** try to minimize code bloat of STLport
-#ifdef XRCORE_EXPORTS				// no exceptions, export allocator and common stuff
+#ifdef CORE_EXPORTS				// no exceptions, export allocator and common stuff
 #	define _STLP_DESIGNATED_DLL	1
 #	define _STLP_USE_DECLSPEC		1
 #else
@@ -102,10 +102,10 @@
 #pragma warning (disable : 4100 )		// unreferenced formal parameter
 
 // Our headers
-#ifdef XRCORE_EXPORTS
-#	define XRCORE_API __declspec(dllexport)
+#ifdef CORE_EXPORTS
+#	define CORE_API __declspec(dllexport)
 #else
-#	define XRCORE_API __declspec(dllimport)
+#	define CORE_API __declspec(dllimport)
 #endif
 
 #include "_types.h"
@@ -127,7 +127,7 @@
 #include "xr_shared.h"
 
 // stl ext
-struct XRCORE_API xr_rtoken
+struct CORE_API xr_rtoken
 {
 	shared_str	name;
 	int	   	id;
@@ -147,7 +147,7 @@ public:
 };
 
 #pragma pack (push,1)
-struct XRCORE_API xr_shortcut
+struct CORE_API xr_shortcut
 {
 	enum
 	{
@@ -214,7 +214,7 @@ public:
 };
 
 // ********************************************** The Core definition
-class XRCORE_API xrCore
+class CORE_API xrCore
 {
 public:
 	string64	ApplicationName;
@@ -228,4 +228,4 @@ public:
 	void		_initialize(pcstr ApplicationName, LogCallback cb = 0, BOOL init_fs = TRUE, pcstr fs_fname = 0);
 	void		_destroy();
 };
-extern XRCORE_API xrCore Core;
+extern CORE_API xrCore Core;

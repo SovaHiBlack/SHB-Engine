@@ -10,11 +10,12 @@
 
 #include "LocatorAPI_defs.h"
 
-class XRCORE_API CStreamReader;
+class CORE_API CStreamReader;
 
-class XRCORE_API CLocatorAPI
+class CORE_API CLocatorAPI
 {
 	friend class FS_Path;
+
 public:
 	struct	file
 	{
@@ -26,6 +27,7 @@ public:
 		u32						size_compressed;// if (size_real==size_compressed) - uncompressed
 		u32						modif;			// for editor
 	};
+
 private:
 	struct	file_pred : public 	std::binary_function<file&, file&, bool>
 	{
@@ -184,5 +186,5 @@ public:
 	void						unlock_rescan();
 };
 
-extern XRCORE_API	CLocatorAPI* xr_FS;
+extern CORE_API	CLocatorAPI* xr_FS;
 #define FS (*xr_FS)

@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include <errno.h>
 
-XRCORE_API void vminfo(size_t* _free, size_t* reserved, size_t* committed)
+CORE_API void vminfo(size_t* _free, size_t* reserved, size_t* committed)
 {
 	MEMORY_BASIC_INFORMATION memory_info;
 	memory_info.BaseAddress = 0;
@@ -25,7 +25,7 @@ XRCORE_API void vminfo(size_t* _free, size_t* reserved, size_t* committed)
 	}
 }
 
-XRCORE_API void log_vminfo()
+CORE_API void log_vminfo()
 {
 	size_t  w_free, w_reserved, w_committed;
 	vminfo(&w_free, &w_reserved, &w_committed);

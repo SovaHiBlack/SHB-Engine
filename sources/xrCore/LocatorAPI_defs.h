@@ -9,7 +9,7 @@ enum FS_List
 	FS_forcedword = u32(-1)
 };
 
-class XRCORE_API FS_Path
+class CORE_API FS_Path
 {
 public:
 	enum
@@ -40,7 +40,7 @@ public:
 struct 				_finddata64i32_t;
 #define _FINDDATA_T	_finddata64i32_t
 
-struct XRCORE_API FS_File
+struct CORE_API FS_File
 {
 	enum
 	{
@@ -52,6 +52,7 @@ struct XRCORE_API FS_File
 	long     	size;
 	xr_string	name;			// low-case name
 	void		set(xr_string nm, long sz, time_t modif, unsigned attr);
+
 public:
 	FS_File()
 	{}
@@ -66,4 +67,4 @@ public:
 };
 DEFINE_SET(FS_File, FS_FileSet, FS_FileSetIt);
 
-extern bool	XRCORE_API PatternMatch(pcstr s, pcstr mask);
+extern bool	CORE_API PatternMatch(pcstr s, pcstr mask);

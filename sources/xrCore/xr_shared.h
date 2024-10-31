@@ -1,6 +1,6 @@
 #pragma once
 
-class XRCORE_API shared_value
+class CORE_API shared_value
 {
 public:
 	int						m_ref_cnt;

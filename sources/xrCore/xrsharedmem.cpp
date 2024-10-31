@@ -2,7 +2,7 @@
 
 using namespace std;
 
-XRCORE_API	smem_container* g_pSharedMemoryContainer = NULL;
+CORE_API	smem_container* g_pSharedMemoryContainer = NULL;
 
 smem_value* smem_container::dock(u32 dwCRC, u32 dwLength, pvoid ptr)
 {

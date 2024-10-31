@@ -782,5 +782,5 @@ BOOL	_valid(const _matrix4x4<T>& m)
 		;
 }
 
-extern XRCORE_API fMatrix4x4	Fidentity;
-extern XRCORE_API dMatrix4x4	Didentity;
+extern CORE_API fMatrix4x4	Fidentity;
+extern CORE_API dMatrix4x4	Didentity;

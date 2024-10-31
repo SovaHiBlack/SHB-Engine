@@ -11,7 +11,7 @@
 #include "xrMemory_pso.h"
 #include "xrMemory_POOL.h"
 
-class XRCORE_API		xrMemory
+class CORE_API		xrMemory
 {
 public:
 	struct				mdbg
@@ -59,7 +59,7 @@ public:
 	pso_MemFill32* mem_fill32;
 };
 
-extern XRCORE_API	xrMemory	Memory;
+extern CORE_API	xrMemory	Memory;
 
 #undef	ZeroMemory
 #undef	CopyMemory
@@ -118,7 +118,7 @@ IC pvoid xr_realloc(pvoid P, size_t size)
 }
 #endif // DEBUG_MEMORY_NAME
 
-XRCORE_API	pstr xr_strdup(pcstr string);
+CORE_API	pstr xr_strdup(pcstr string);
 
 #ifdef DEBUG_MEMORY_NAME
 // Global new/delete override
@@ -164,7 +164,7 @@ const		u32			mem_generic = mem_pools_count + 1;
 extern		MEMPOOL		mem_pools[mem_pools_count];
 extern		BOOL		mem_initialized;
 
-XRCORE_API void vminfo(size_t* _free, size_t* reserved, size_t* committed);
-XRCORE_API void log_vminfo();
+CORE_API void vminfo(size_t* _free, size_t* reserved, size_t* committed);
+CORE_API void log_vminfo();
 
-XRCORE_API u32	mem_usage_impl(u32* pBlocksUsed, u32* pBlocksFree);
+CORE_API u32	mem_usage_impl(u32* pBlocksUsed, u32* pBlocksFree);

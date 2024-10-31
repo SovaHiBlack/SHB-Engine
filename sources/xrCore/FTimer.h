@@ -2,7 +2,7 @@
 
 class	CTimer_paused;
 
-class XRCORE_API				pauseMngr
+class CORE_API				pauseMngr
 {
 	xr_vector<CTimer_paused*>	m_timers;
 	BOOL						m_paused;
@@ -17,9 +17,9 @@ public:
 	void	UnRegister(CTimer_paused* t);
 };
 
-extern XRCORE_API pauseMngr		g_pauseMngr;
+extern CORE_API pauseMngr		g_pauseMngr;
 
-class XRCORE_API CTimerBase
+class CORE_API CTimerBase
 {
 protected:
 	u64			qwStartTime;
@@ -58,7 +58,7 @@ public:
 	}
 };
 
-class XRCORE_API CTimer : public CTimerBase
+class CORE_API CTimer : public CTimerBase
 {
 private:
 	typedef CTimerBase					inherited;
@@ -140,7 +140,7 @@ public:
 	}
 };
 
-class XRCORE_API CTimer_paused_ex : public CTimer
+class CORE_API CTimer_paused_ex : public CTimer
 {
 	u64							save_clock;
 public:
@@ -170,7 +170,7 @@ public:
 	}
 };
 
-class XRCORE_API CTimer_paused : public CTimer_paused_ex
+class CORE_API CTimer_paused : public CTimer_paused_ex
 {
 public:
 	CTimer_paused()
@@ -183,8 +183,8 @@ public:
 	}
 };
 
-extern XRCORE_API bool			g_bEnableStatGather;
-class XRCORE_API CStatTimer
+extern CORE_API bool			g_bEnableStatGather;
+class CORE_API CStatTimer
 {
 public:
 	CTimer		T;

@@ -11,9 +11,9 @@
 #include <mmsystem.h>
 
 // Initialized on startup
-XRCORE_API	fMatrix4x4			Fidentity;
-XRCORE_API	dMatrix4x4			Didentity;
-XRCORE_API	CRandom			Random;
+CORE_API	fMatrix4x4			Fidentity;
+CORE_API	dMatrix4x4			Didentity;
+CORE_API	CRandom			Random;
 
 u16 getFPUsw()
 {
@@ -31,32 +31,32 @@ namespace FPU
 	u16			_64 = 0;
 	u16			_64r = 0;
 
-	XRCORE_API void 	m24()
+	CORE_API void 	m24()
 	{
 		u16		p = _24;
 		__asm fldcw p;
 	}
-	XRCORE_API void 	m24r()
+	CORE_API void 	m24r()
 	{
 		u16		p = _24r;
 		__asm fldcw p;
 	}
-	XRCORE_API void 	m53()
+	CORE_API void 	m53()
 	{
 		u16		p = _53;
 		__asm fldcw p;
 	}
-	XRCORE_API void 	m53r()
+	CORE_API void 	m53r()
 	{
 		u16		p = _53r;
 		__asm fldcw p;
 	}
-	XRCORE_API void 	m64()
+	CORE_API void 	m64()
 	{
 		u16		p = _64;
 		__asm fldcw p;
 	}
-	XRCORE_API void 	m64r()
+	CORE_API void 	m64r()
 	{
 		u16		p = _64r;
 		__asm fldcw p;
@@ -92,20 +92,20 @@ namespace FPU
 
 namespace CPU
 {
-	XRCORE_API u64				clk_per_second;
-	XRCORE_API u64				clk_per_milisec;
-	XRCORE_API u64				clk_per_microsec;
-	XRCORE_API u64				clk_overhead;
-	XRCORE_API f32				clk_to_seconds;
-	XRCORE_API f32				clk_to_milisec;
-	XRCORE_API f32				clk_to_microsec;
-	XRCORE_API u64				qpc_freq = 0;
-	XRCORE_API u64				qpc_overhead = 0;
-	XRCORE_API u32				qpc_counter = 0;
+	CORE_API u64				clk_per_second;
+	CORE_API u64				clk_per_milisec;
+	CORE_API u64				clk_per_microsec;
+	CORE_API u64				clk_overhead;
+	CORE_API f32				clk_to_seconds;
+	CORE_API f32				clk_to_milisec;
+	CORE_API f32				clk_to_microsec;
+	CORE_API u64				qpc_freq = 0;
+	CORE_API u64				qpc_overhead = 0;
+	CORE_API u32				qpc_counter = 0;
 
-	XRCORE_API _processor_info	ID;
+	CORE_API _processor_info	ID;
 
-	XRCORE_API u64				QPC()
+	CORE_API u64				QPC()
 	{
 		u64		_dest;
 		QueryPerformanceCounter((PLARGE_INTEGER)&_dest);

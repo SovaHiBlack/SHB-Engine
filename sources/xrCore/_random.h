@@ -68,4 +68,4 @@ public:
 	}
 };
 
-XRCORE_API extern	CRandom				Random;
+CORE_API extern	CRandom				Random;

@@ -2,7 +2,7 @@
 
 #include "fs_internal.h"
 
-XRCORE_API CInifile* pSettings = NULL;
+CORE_API CInifile* pSettings = NULL;
 
 CInifile* CInifile::Create(pcstr szFileName, BOOL ReadOnly)
 {
@@ -28,7 +28,7 @@ bool item_pred(const CInifile::Item& x, pcstr val)
 //------------------------------------------------------------------------------
 //Тело функций Inifile
 //------------------------------------------------------------------------------
-XRCORE_API void _parse(pstr dest, pcstr src)
+CORE_API void _parse(pstr dest, pcstr src)
 {
 	if (src)
 	{
@@ -54,7 +54,7 @@ XRCORE_API void _parse(pstr dest, pcstr src)
 	*dest = 0;
 }
 
-XRCORE_API void _decorate(pstr dest, pcstr src)
+CORE_API void _decorate(pstr dest, pcstr src)
 {
 	if (src)
 	{

@@ -9,10 +9,10 @@ struct xr_token;
 //Описание Inifile
 //-----------------------------------------------------------------------------------------------------------
 
-class XRCORE_API CInifile
+class CORE_API CInifile
 {
 public:
-	struct XRCORE_API	Item
+	struct CORE_API	Item
 	{
 		shared_str	first;
 		shared_str	second;
@@ -32,7 +32,7 @@ public:
 	typedef xr_vector<Item>				Items;
 	typedef Items::const_iterator		SectCIt;
 	typedef Items::iterator				SectIt_;
-	struct XRCORE_API	Sect
+	struct CORE_API	Sect
 	{
 		shared_str		Name;
 		Items			Data;
@@ -205,4 +205,4 @@ public:
 };
 
 // Main configuration file
-extern XRCORE_API CInifile* pSettings;
+extern CORE_API CInifile* pSettings;

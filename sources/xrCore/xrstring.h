@@ -2,14 +2,14 @@
 
 #pragma pack(push,4)
 #pragma warning(disable : 4200)
-struct		XRCORE_API	str_value
+struct		CORE_API	str_value
 {
 	u32					dwReference;
 	u32					dwLength;
 	u32					dwCRC;
 	char				value[ ];
 };
-struct		XRCORE_API	str_value_cmp
+struct		CORE_API	str_value_cmp
 { // less
 	IC bool		operator ()	(const str_value* A, const str_value* B) const
 	{
@@ -19,7 +19,7 @@ struct		XRCORE_API	str_value_cmp
 #pragma warning(default : 4200)
 
 //////////////////////////////////////////////////////////////////////////
-class		XRCORE_API	str_container
+class		CORE_API	str_container
 {
 private:
 	typedef xr_multiset<str_value*, str_value_cmp>	cdb;
@@ -33,7 +33,7 @@ public:
 	u32					stat_economy( );
 	~str_container( );
 };
-XRCORE_API	extern		str_container* g_pStringContainer;
+CORE_API	extern		str_container* g_pStringContainer;
 
 //////////////////////////////////////////////////////////////////////////
 class					shared_str

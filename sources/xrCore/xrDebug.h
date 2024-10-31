@@ -3,7 +3,7 @@
 typedef void		crashhandler(void);
 typedef void		on_dialog(bool before);
 
-class XRCORE_API	xrDebug
+class CORE_API	xrDebug
 {
 private:
 	crashhandler* handler;
@@ -58,8 +58,8 @@ IC	std::string __cdecl	make_string(pcstr format, ...)
 	return		(temp);
 }
 
-extern XRCORE_API	xrDebug		Debug;
+extern CORE_API	xrDebug		Debug;
 
-XRCORE_API void LogStackTrace(pcstr header);
+CORE_API void LogStackTrace(pcstr header);
 
 #include "xrDebug_macros.h"

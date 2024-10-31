@@ -5,36 +5,38 @@
 
 #define CFS_CompressMark	(1ul << 31ul)
 
-XRCORE_API void VerifyPath(pcstr path);
+CORE_API void VerifyPath(pcstr path);
 
 #ifdef DEBUG
-XRCORE_API	extern	u32		g_file_mapped_memory;
-XRCORE_API	extern	u32		g_file_mapped_count;
-XRCORE_API			void	dump_file_mappings();
-extern	void	register_file_mapping(pvoid address, const u32& size, pcstr file_name);
-extern	void	unregister_file_mapping(pvoid address, const u32& size);
+CORE_API extern u32		g_file_mapped_memory;
+CORE_API extern u32		g_file_mapped_count;
+CORE_API void	dump_file_mappings( );
+extern void	register_file_mapping(pvoid address, const u32& size, pcstr file_name);
+extern void	unregister_file_mapping(pvoid address, const u32& size);
 #endif // DEBUG
 
 //------------------------------------------------------------------------------------
 // Write
 //------------------------------------------------------------------------------------
-class XRCORE_API IWriter
+class CORE_API IWriter
 {
 private:
 	xr_stack<u32>		chunk_pos;
+
 public:
 	shared_str			fName;
+
 public:
-	IWriter()
-	{}
-	virtual	~IWriter()
+	IWriter( )
+	{ }
+	virtual	~IWriter( )
 	{
-		R_ASSERT3(chunk_pos.empty(), "Opened chunk not closed.", *fName);
+		R_ASSERT3(chunk_pos.empty( ), "Opened chunk not closed.", *fName);
 	}
 
 	// kernel
 	virtual void	seek(u32 pos) = 0;
-	virtual u32		tell() = 0;
+	virtual u32		tell( ) = 0;
 
 	virtual void	w(pcvoid ptr, u32 count) = 0;
 
@@ -77,23 +79,28 @@ public:
 	}
 	IC void			w_string(pcstr p)
 	{
-		w(p, (u32)xr_strlen(p)); w_u8(13); w_u8(10);
+		w(p, (u32) xr_strlen(p));
+		w_u8(13);
+		w_u8(10);
 	}
 	IC void			w_stringZ(pcstr p)
 	{
-		w(p, (u32)xr_strlen(p) + 1);
+		w(p, (u32) xr_strlen(p) + 1);
 	}
 	IC void			w_stringZ(const shared_str& p)
 	{
-		w(*p ? *p : "", p.size()); w_u8(0);
+		w(*p ? *p : "", p.size( ));
+		w_u8(0);
 	}
 	IC void			w_stringZ(shared_str& p)
 	{
-		w(*p ? *p : "", p.size()); w_u8(0);
+		w(*p ? *p : "", p.size( ));
+		w_u8(0);
 	}
 	IC void			w_stringZ(const xr_string& p)
 	{
-		w(p.c_str() ? p.c_str() : "", (u32)p.size()); w_u8(0);
+		w(p.c_str( ) ? p.c_str( ) : "", (u32) p.size( ));
+		w_u8(0);
 	}
 	IC void			w_fcolor(const fColor& v)
 	{
@@ -129,21 +136,21 @@ public:
 	{
 		VERIFY(a >= min && a <= max);
 		f32 q = (a - min) / (max - min);
-		w_u16(u16(iFloor(q * 65535.f + .5f)));
+		w_u16(u16(iFloor(q * 65535.0f + 0.5f)));
 	}
 	IC void 		w_float_q8(f32 a, f32 min, f32 max)
 	{
 		VERIFY(a >= min && a <= max);
 		f32 q = (a - min) / (max - min);
-		w_u8(u8(iFloor(q * 255.f + .5f)));
+		w_u8(u8(iFloor(q * 255.0f + 0.5f)));
 	}
 	IC void 		w_angle16(f32 a)
 	{
-		w_float_q16(angle_normalize(a), 0, PI_MUL_2);
+		w_float_q16(angle_normalize(a), 0.0f, PI_MUL_2);
 	}
 	IC void 		w_angle8(f32 a)
 	{
-		w_float_q8(angle_normalize(a), 0, PI_MUL_2);
+		w_float_q8(angle_normalize(a), 0.0f, PI_MUL_2);
 	}
 	IC void 		w_dir(const Fvector& D)
 	{
@@ -153,19 +160,19 @@ public:
 	void	__cdecl	w_printf(pcstr format, ...);
 
 	// generalized chunking
-	u32				align();
+	u32				align( );
 	void			open_chunk(u32 type);
-	void			close_chunk();
-	u32				chunk_size();					// returns size of currently opened chunk, 0 otherwise
+	void			close_chunk( );
+	u32				chunk_size( );					// returns size of currently opened chunk, 0 otherwise
 	void			w_compressed(pvoid ptr, u32 count);
 	void			w_chunk(u32 type, pvoid data, u32 size);
-	virtual bool	valid()
+	virtual bool	valid( )
 	{
 		return true;
 	}
 };
 
-class XRCORE_API CMemoryWriter : public IWriter
+class CORE_API CMemoryWriter : public IWriter
 {
 	u8* data;
 	u32				position;
@@ -173,14 +180,14 @@ class XRCORE_API CMemoryWriter : public IWriter
 	u32				file_size;
 
 public:
-	CMemoryWriter()
+	CMemoryWriter( )
 	{
 		data = 0;
 		position = 0;
 		mem_size = 0;
 		file_size = 0;
 	}
-	virtual	~CMemoryWriter();
+	virtual	~CMemoryWriter( );
 
 	// kernel
 	virtual void	w(pcvoid ptr, u32 count);
@@ -189,27 +196,28 @@ public:
 	{
 		position = pos;
 	}
-	virtual u32		tell()
+	virtual u32		tell( )
 	{
 		return position;
 	}
 
 	// specific
-	IC u8* pointer()
+	IC u8* pointer( )
 	{
 		return data;
 	}
-	IC u32			size() const
+	IC u32			size( ) const
 	{
 		return file_size;
 	}
-	IC void			clear()
+	IC void			clear( )
 	{
-		file_size = 0; position = 0;
+		file_size = 0;
+		position = 0;
 	}
 #pragma warning(push)
 #pragma warning(disable:4995)
-	IC void			free()
+	IC void			free( )
 	{
 		file_size = 0;
 		position = 0;
@@ -227,71 +235,89 @@ template <typename implementation_type>
 class IReaderBase
 {
 public:
-	virtual			~IReaderBase()
-	{}
+	virtual			~IReaderBase( )
+	{ }
 
-	IC implementation_type& impl()
+	IC implementation_type& impl( )
 	{
-		return *(implementation_type*)this;
+		return *(implementation_type*) this;
 	}
-	IC const implementation_type& impl() const
+	IC const implementation_type& impl( ) const
 	{
-		return *(implementation_type*)this;
+		return *(implementation_type*) this;
 	}
 
-	IC BOOL			eof()	const
+	IC BOOL			eof( )	const
 	{
-		return impl().elapsed() <= 0;
+		return impl( ).elapsed( ) <= 0;
 	}
 
 	IC void			r(pvoid p, int cnt)
 	{
-		impl().r(p, cnt);
+		impl( ).r(p, cnt);
 	}
 
-	IC Fvector		r_vec3()
+	IC Fvector		r_vec3( )
 	{
-		Fvector tmp; r(&tmp, 3 * sizeof(f32)); return tmp;
+		Fvector tmp;
+		r(&tmp, 3 * sizeof(f32));
+		return tmp;
 	}
-	IC fVector4		r_vec4()
+	IC fVector4		r_vec4( )
 	{
 		fVector4 tmp;
 		r(&tmp, 4 * sizeof(f32));
 		return tmp;
 	}
-	IC u64			r_u64()
+	IC u64			r_u64( )
 	{
-		u64 tmp;	r(&tmp, sizeof(tmp)); return tmp;
+		u64 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC u32			r_u32()
+	IC u32			r_u32( )
 	{
-		u32 tmp;	r(&tmp, sizeof(tmp)); return tmp;
+		u32 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC u16			r_u16()
+	IC u16			r_u16( )
 	{
-		u16 tmp;	r(&tmp, sizeof(tmp)); return tmp;
+		u16 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC u8			r_u8()
+	IC u8			r_u8( )
 	{
-		u8 tmp;		r(&tmp, sizeof(tmp)); return tmp;
+		u8 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC s64			r_s64()
+	IC s64			r_s64( )
 	{
-		s64 tmp;	r(&tmp, sizeof(tmp)); return tmp;
+		s64 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC s32			r_s32()
+	IC s32			r_s32( )
 	{
-		s32 tmp;	r(&tmp, sizeof(tmp)); return tmp;
+		s32 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC s16			r_s16()
+	IC s16			r_s16( )
 	{
-		s16 tmp;	r(&tmp, sizeof(tmp)); return tmp;
+		s16 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC s8			r_s8()
+	IC s8			r_s8( )
 	{
-		s8 tmp;		r(&tmp, sizeof(tmp)); return tmp;
+		s8 tmp;
+		r(&tmp, sizeof(tmp));
+		return tmp;
 	}
-	IC f32			r_float()
+	IC f32			r_float( )
 	{
 		f32 tmp;
 		r(&tmp, sizeof(tmp));
@@ -328,61 +354,70 @@ public:
 
 	IC f32		r_float_q16(f32 min, f32 max)
 	{
-		u16	val = r_u16();
-		f32 A = (f32(val) * (max - min)) / 65535.f + min;		// floating-point-error possible
+		u16	val = r_u16( );
+		f32 A = (f32(val) * (max - min)) / 65535.0f + min;		// floating-point-error possible
 		VERIFY((A >= min - EPSILON_7) && (A <= max + EPSILON_7));
 		return A;
 	}
 	IC f32		r_float_q8(f32 min, f32 max)
 	{
-		u8 val = r_u8();
+		u8 val = r_u8( );
 		f32	A = (f32(val) / 255.0001f) * (max - min) + min;	// floating-point-error possible
 		VERIFY((A >= min) && (A <= max));
-		return	A;
+		return A;
 	}
-	IC f32		r_angle16()
+	IC f32		r_angle16( )
 	{
 		return r_float_q16(0, PI_MUL_2);
 	}
-	IC f32		r_angle8()
+	IC f32		r_angle8( )
 	{
 		return r_float_q8(0, PI_MUL_2);
 	}
 	IC void			r_dir(Fvector& A)
 	{
-		u16 t = r_u16(); pvDecompress(A, t);
+		u16 t = r_u16( );
+		pvDecompress(A, t);
 	}
 	IC void			r_sdir(Fvector& A)
 	{
-		u16	t = r_u16();
-		f32 s = r_float();
+		u16	t = r_u16( );
+		f32 s = r_float( );
 		pvDecompress(A, t);
 		A.mul(s);
 	}
 	// Set file pointer to start of chunk data (0 for root chunk)
-	IC	void		rewind()
+	IC	void		rewind( )
 	{
-		impl().seek(0);
+		impl( ).seek(0);
 	}
 
 	IC	u32 		find_chunk(u32 ID, BOOL* bCompressed = 0)
 	{
-		u32	dwSize, dwType;
+		u32 dwSize;
+		u32 dwType;
 
-		rewind();
-		while (!eof())
+		rewind( );
+		while (!eof( ))
 		{
-			dwType = r_u32();
-			dwSize = r_u32();
+			dwType = r_u32( );
+			dwSize = r_u32( );
 			if ((dwType & (~CFS_CompressMark)) == ID)
 			{
+				VERIFY((u32) impl( ).tell( ) + dwSize <= (u32) impl( ).length( ));
+				if (bCompressed)
+				{
+					*bCompressed = dwType & CFS_CompressMark;
+				}
 
-				VERIFY((u32)impl().tell() + dwSize <= (u32)impl().length());
-				if (bCompressed) *bCompressed = dwType & CFS_CompressMark;
 				return dwSize;
 			}
-			else	impl().advance(dwSize);
+			else
+			{
+				impl( ).advance(dwSize);
+			}
 		}
+
 		return 0;
 	}
 
@@ -394,7 +429,10 @@ public:
 			r(dest, dwSize);
 			return TRUE;
 		}
-		else return FALSE;
+		else
+		{
+			return FALSE;
+		}
 	}
 
 	IC	BOOL		r_chunk_safe(u32 ID, pvoid dest, u32 dest_size)	// чтение XR Chunk'ов (4b-ID,4b-size,??b-data)
@@ -406,27 +444,30 @@ public:
 			r(dest, dwSize);
 			return TRUE;
 		}
-		else return FALSE;
+		else
+		{
+			return FALSE;
+		}
 	}
 };
 
-class XRCORE_API IReader : public IReaderBase<IReader>
+class CORE_API IReader : public IReaderBase<IReader>
 {
 protected:
 	pstr data;
-	int				Pos;
-	int				Size;
-	int				iterpos;
+	s32				Pos;
+	s32				Size;
+	s32				iterpos;
 
 public:
-	IC				IReader()
+	IC				IReader( )
 	{
 		Pos = 0;
 	}
 
-	IC				IReader(pvoid _data, int _size, int _iterpos = 0)
+	IC				IReader(pvoid _data, s32 _size, s32 _iterpos = 0)
 	{
-		data = (pstr)_data;
+		data = (pstr) _data;
 		Size = _size;
 		Pos = 0;
 		iterpos = _iterpos;
@@ -438,52 +479,55 @@ protected:
 		if (p % 16)
 		{
 			return ((p % 16) + 1) * 16 - p;
-		} return 0;
+		}
+		
+		return 0;
 	}
 
-	u32 			advance_term_string();
+	u32 			advance_term_string( );
 
 public:
-	IC int			elapsed()	const
+	IC s32			elapsed( ) const
 	{
 		return Size - Pos;
 	}
-	IC int			tell()	const
+	IC s32			tell( ) const
 	{
 		return Pos;
 	}
-	IC void			seek(int ptr)
+	IC void			seek(s32 ptr)
 	{
 		Pos = ptr;
 		VERIFY((Pos <= Size) && (Pos >= 0));
 	}
-	IC int			length()	const
+	IC s32			length( ) const
 	{
 		return Size;
 	}
-	IC pvoid pointer()	const
+	IC pvoid pointer( ) const
 	{
 		return &(data[Pos]);
 	}
-	IC void			advance(int cnt)
+	IC void			advance(s32 cnt)
 	{
-		Pos += cnt; VERIFY((Pos <= Size) && (Pos >= 0));
+		Pos += cnt;
+		VERIFY((Pos <= Size) && (Pos >= 0));
 	}
 
 public:
-	void			r(pvoid p, int cnt);
+	void			r(pvoid p, s32 cnt);
 
 	void			r_string(pstr dest, u32 tgt_sz);
 	void			r_string(xr_string& dest);
 
-	void			skip_stringZ();
+	void			skip_stringZ( );
 
 	void			r_stringZ(pstr dest, u32 tgt_sz);
 	void			r_stringZ(shared_str& dest);
 	void			r_stringZ(xr_string& dest);
 
 public:
-	void			close();
+	void			close( );
 
 public:
 	// поиск XR Chunk'ов - возврат - размер или 0
@@ -493,7 +537,7 @@ public:
 	IReader* open_chunk_iterator(u32& ID, IReader* previous = NULL);	// NULL=first
 };
 
-class XRCORE_API CVirtualFileRW : public IReader
+class CORE_API CVirtualFileRW : public IReader
 {
 private:
 	pvoid hSrcFile;
@@ -501,5 +545,5 @@ private:
 
 public:
 	CVirtualFileRW(pcstr cFileName);
-	virtual ~CVirtualFileRW();
+	virtual ~CVirtualFileRW( );
 };
