@@ -187,7 +187,8 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 		}break;
 	case GE_MOVE_ACTOR:
 		{
-			Fvector NewPos, NewRot;
+		fVector3 NewPos;
+		fVector3 NewRot;
 			P.r_vec3(NewPos);
 			P.r_vec3(NewRot);
 			
@@ -227,7 +228,7 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 	case GE_ACTOR_JUMPING:
 		{
 			/*
-			Fvector dir;
+			fVector3 dir;
 			P.r_dir(dir);
 			f32 jump = P.r_float();
 			NET_SavedAccel = dir;
@@ -240,7 +241,7 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 	}
 }
 
-void			CActor::MoveActor		(Fvector NewPos, Fvector NewDir)
+void			CActor::MoveActor		(fVector3 NewPos, fVector3 NewDir)
 {
 	fMatrix4x4	M = XFORM();
 	M.translate(NewPos);

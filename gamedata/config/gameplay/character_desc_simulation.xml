@@ -2657,11 +2657,11 @@
 	<specific_character id="sim_soldier_regular_default4" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>sim_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>125</rank>
 		<reputation>6</reputation>
@@ -2689,11 +2689,11 @@
 	<specific_character id="sim_soldier_regular_default5" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_regular_bio</bio>
 
 		<class>sim_Soldier_regular</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>149</rank>
 		<reputation>21</reputation>
@@ -2724,11 +2724,11 @@
 	<specific_character id="sim_soldier_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>sim_Soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>670</rank>
 		<reputation>19</reputation>
@@ -2756,11 +2756,11 @@
 	<specific_character id="sim_soldier_specnaz_default2" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_soldier_specnaz_bio</bio>
 
 		<class>sim_Soldier_specnaz</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>765</rank>
 		<reputation>23</reputation>
@@ -2791,11 +2791,11 @@
 	<specific_character id="sim_soldier_commander1" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_beret</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>sim_Soldier_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>860</rank>
 		<reputation>20</reputation>
@@ -2823,11 +2823,11 @@
 	<specific_character id="sim_soldier_commander2" team_default = "1">
 		<name>GENERATE_NAME_captain</name>
 		<icon>ui_npc_u_soldier_beret_3</icon>
-		<map_icon x="2" y="0"></map_icon>
 		<bio>sim_soldier_commander_bio</bio>
 
 		<class>sim_Soldier_commander</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>910</rank>
 		<reputation>-23</reputation>
@@ -2855,11 +2855,11 @@
 	<specific_character id="sim_soldier_sniper_default1" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_obichniy</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>Рядовой солдат. Детальная информация отсутствует.</bio>
 
 		<class>sim_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>600</rank>
 		<reputation>0</reputation>
@@ -2887,11 +2887,11 @@
 	<specific_character id="sim_soldier_sniper_default2" team_default = "1">
 		<name>GENERATE_NAME_sergeant</name>
 		<icon>ui_npc_u_soldier_bandana</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>sim_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 	
 		<rank>603</rank>
 		<reputation>4</reputation>
@@ -2919,11 +2919,11 @@
 	<specific_character id="sim_soldier_sniper_default3" team_default = "1">
 		<name>GENERATE_NAME_lieutenant</name>
 		<icon>ui_npc_u_soldier_bandana_5</icon>
-		<map_icon x="1" y="2"></map_icon>
 		<bio>sim_soldier_sniper_bio</bio>
 
 		<class>sim_Soldier_sniper</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 		
 		<rank>697</rank>
 		<reputation>-9</reputation>
@@ -2952,13 +2952,13 @@
 	<specific_character id="sim_Soldier_master" team_default = "1">
 		<name>GENERATE_NAME_captain</name>
 		<icon>ui_npc_u_stalker_militari_antigas_2</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>sim_Soldier_master_bio</bio>
 
 		<team>Soldier_military</team>
 		
 		<class>sim_Soldier_master</class>
-		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>military</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<snd_config>characters_voice\human_03\military\</snd_config>
 		<crouch_type>0</crouch_type>
@@ -2986,16 +2986,16 @@
 
 
 
-;----------------------Stalkers Quest Profiles-----------------------
+	<!-- === Stalkers Quest Profiles === -->
 <!--Oleg Gusarov-->
 	<specific_character id="sim_stalker_veteran_gusarov" team_default = "1">
 		<name>sim_stalker_veteran_gusarov_name</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_gusarov_bio</bio>
 
 		<class>sim_stalker_veteran_gusarov</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>789</rank>
 		<reputation>78</reputation>
@@ -3024,7 +3024,6 @@
 <specific_character id="sim_Svoboda_specnaz_leshii" team_default = "1">
 		<name>sim_Svoboda_specnaz_leshii_name</name>
 		<icon>ui_npc_u_stalker_sv_hood_9</icon>
-		<map_icon x="5" y="0"></map_icon>
 		<bio>sim_Svoboda_specnaz_leshii_bio</bio>
 
 		<team>Svoboda_specnaz</team>
@@ -3033,7 +3032,8 @@
 		<crouch_type>-1</crouch_type>
 
 		<class>sim_Svoboda_specnaz_leshii</class>
-		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+		<community>freedom</community>
+	<terrain_sect>stalker_freedom_terrain</terrain_sect>
 
 		<rank>811</rank>
 		<reputation>113</reputation>
@@ -3059,11 +3059,11 @@
 	<specific_character id="sim_stalker_master_chuchelo" team_default = "1">
 		<name>sim_stalker_master_chuchelo_name</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_chuchelo_bio</bio>
 
 		<class>sim_stalker_master_chuchelo</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 				
 		<rank>920</rank>
 		<reputation>145</reputation>
@@ -3093,11 +3093,11 @@
 	<specific_character id="sim_stalker_general_upir" team_default = "1">
 		<name>sim_stalker_general_upir_name</name>
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_general_upir_bio</bio>
 
 		<class>sim_stalker_general_upir</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		
 		<rank>396</rank>
 		<reputation>-34</reputation>
@@ -3125,11 +3125,11 @@
 	<specific_character id="sim_stalker_master_diador" team_default = "1">
 		<name>sim_stalker_master_diador_name</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_diador_bio</bio>
 
 		<class>sim_stalker_master_diador</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<snd_config>characters_voice\human_03\stalker\</snd_config>
 		
@@ -3159,11 +3159,11 @@
 	<specific_character id="sim_ecolog_zob" team_default = "1">
 		<name>sim_ecolog_zob_name</name>
 		<icon>ui_npc_u_stalker_ecolog</icon>
-		<map_icon x="0" y="6"></map_icon>
 		<bio>sim_ecolog_zob_bio</bio>
 
 		<class>sim_ecolog_zob</class>
-		<community>stalker</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_ecolog_terrain</terrain_sect>
 
 		<rank>654</rank>
 		<reputation>3</reputation>
@@ -3191,11 +3191,11 @@
 <specific_character id="sim_stalker_novice_neumeha" team_default = "1">
 		<name>sim_stalker_novice_neumeha_name</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>sim_stalker_novice_neumeha_bio</bio>
 
 		<class>sim_stalker_novice_neumeha</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 		
 		<rank>167</rank>
 		<reputation>-6</reputation>
@@ -3221,13 +3221,13 @@
 	<specific_character id="sim_bandit_master_kocherga" team_default = "1">
 		<name>sim_bandit_master_kocherga_name</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_master_kocherga_bio</bio>
 		
 		<team>Bandit_master</team>
 		
 		<class>sim_bandit_master_kocherga</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>902</rank>
 		<reputation>-163</reputation>
@@ -3255,11 +3255,11 @@
 	<specific_character id="sim_dolg_veteran_barin" team_default = "1">
 		<name>sim_dolg_veteran_barin_name</name>
 		<icon>ui_npc_u_stalker_do_antigas</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_veteran_barin_bio</bio>
 
 		<class>sim_dolg_veteran_barin</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>651</rank>
 		<reputation>-35</reputation>
@@ -3288,11 +3288,11 @@
 	<specific_character id="sim_stalker_veteran_vorobey" team_default = "1">
 		<name>sim_stalker_veteran_vorobey_name</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_vorobey_bio</bio>
 
 		<class>sim_stalker_veteran_vorobey</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>789</rank>
 		<reputation>78</reputation>
@@ -3321,11 +3321,11 @@
 	<specific_character id="sim_stalker_master_master" team_default = "1">
 		<name>sim_stalker_master_master_name</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_master_bio</bio>
 
 		<class>sim_stalker_master_master</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 
 		<snd_config>characters_voice\human_03\stalker\</snd_config>
 		<crouch_type>0</crouch_type>		
@@ -3354,11 +3354,11 @@
 	<specific_character id="sim_dolg_veteran_prapor" team_default = "1">
 		<name>sim_dolg_veteran_prapor_name</name>
 		<icon>ui_npc_u_stalker_do_antigas</icon>
-		<map_icon x="4" y="0"></map_icon>
 		<bio>sim_dolg_veteran_prapor_bio</bio>
 
 		<class>sim_dolg_veteran_prapor</class>
-		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<community>dolg</community>
+		<terrain_sect>stalker_dolg_terrain</terrain_sect>
 
 		<rank>667</rank>
 		<reputation>-67</reputation>
@@ -3389,7 +3389,6 @@
 <specific_character id="sim_svoboda_specnaz_prut" team_default = "1">
 		<name>sim_svoboda_specnaz_prut_name</name>
 		<icon>ui_npc_u_stalker_sv_hood_9</icon>
-		<map_icon x="5" y="0"></map_icon>
 		<bio>sim_svoboda_specnaz_prut_bio</bio>
 
 		<team>Svoboda_specnaz</team>
@@ -3397,7 +3396,8 @@
 		<snd_config>characters_voice\human_03\freedom\</snd_config>
 		<crouch_type>-1</crouch_type>		
 		<class>sim_svoboda_specnaz_prut</class>
-		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+		<community>freedom</community>
+	<terrain_sect>stalker_freedom_terrain</terrain_sect>
 
 		<rank>764</rank>
 		<reputation>154</reputation>
@@ -3422,11 +3422,11 @@
 	<specific_character id="sim_stalker_veteran_umnik" team_default = "1">
 		<name>sim_stalker_veteran_umnik_name</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_umnik_bio</bio>
 
 		<class>sim_stalker_veteran_umnik</class>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>864</rank>
 		<reputation>110</reputation>
@@ -3454,13 +3454,13 @@
 	<specific_character id="sim_bandit_master_fraer" team_default = "1">
 		<name>sim_bandit_master_fraer_name</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_master_fraer_bio</bio>
 		
 		<team>Bandit_master</team>
 		
 		<class>sim_bandit_master_fraer</class>
-		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>bandit</community>
+		<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>911</rank>
 		<reputation>-236</reputation>
@@ -3487,7 +3487,6 @@
 	<specific_character id="sim_stalker_master_polkan" team_default = "1">
 		<name>sim_stalker_master_polkan_name</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_polkan_bio</bio>
 
 		<class>sim_stalker_master_polkan</class>
@@ -3522,11 +3521,11 @@
 	<specific_character id="bar_arena_stalker_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_2</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_1</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		
 		<rank>34</rank>
 		<reputation>6</reputation>
@@ -3549,11 +3548,11 @@
 <specific_character id="bar_arena_stalker_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_2</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>630</rank>
 		<reputation>55</reputation>
@@ -3575,11 +3574,11 @@
 <specific_character id="bar_arena_stalker_3_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_3_1</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>613</rank>
 		<reputation>-64</reputation>
@@ -3600,11 +3599,11 @@
 <specific_character id="bar_arena_stalker_3_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_3_2</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>566</rank>
 		<reputation>-32</reputation>
@@ -3629,11 +3628,11 @@
 <specific_character id="bar_arena_stalker_4_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_4_1</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>500</rank>
 		<reputation>123</reputation>
@@ -3654,11 +3653,11 @@
 <specific_character id="bar_arena_stalker_4_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_4_2</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>500</rank>
 		<reputation>123</reputation>
@@ -3679,11 +3678,11 @@
 <specific_character id="bar_arena_stalker_4_3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_nauchniy</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_4_3</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 			
 		<rank>513</rank>
 		<reputation>103</reputation>
@@ -3706,11 +3705,11 @@
 	<specific_character id="bar_arena_stalker_4_4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_4</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_4_4</class>
-		<community>actor_dolg</community> <terrain_sect>stalker_terrain</terrain_sect> 
+		<community>actor_dolg</community>
+		<terrain_sect>stalker_terrain</terrain_sect> 
 		
 		<rank>34</rank>
 		<reputation>6</reputation>
@@ -3732,11 +3731,11 @@
 	<specific_character id="bar_arena_stalker_4_5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_green_stalker_3</icon>
-		<map_icon x="0" y="0"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<class>bar_arena_stalker_4_5</class>
-		<community>actor_dolg</community> <terrain_sect>stalker_terrain</terrain_sect> 
+		<community>actor_dolg</community>
+		<terrain_sect>stalker_terrain</terrain_sect> 
 		
 		<rank>39</rank>
 		<reputation>8</reputation>
@@ -3761,13 +3760,13 @@
 	<specific_character id="bar_arena_stalker_5_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_militari_antigas_2</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<team>Soldier_military</team>
 		
 		<class>bar_arena_stalker_5_1</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>arena_enemy</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<snd_config>characters_voice\human_03\military\</snd_config>
 		<crouch_type>-1</crouch_type>		
@@ -3787,13 +3786,13 @@
 	<specific_character id="bar_arena_stalker_5_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_militari_antigas_2</icon>
-		<map_icon x="2" y="2"></map_icon>
 		<bio>bar_arena_stalker</bio>
 
 		<team>Soldier_military</team>
 		
 		<class>bar_arena_stalker_5_2</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<community>arena_enemy</community>
+		<terrain_sect>stalker_military_terrain</terrain_sect>
 
 		<snd_config>characters_voice\human_03\military\</snd_config>
 		<crouch_type>-1</crouch_type>		
@@ -3816,11 +3815,11 @@
 <specific_character id="bar_arena_stalker_6_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 		
 		<class>bar_arena_stalker_6_1</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>302</rank>
 		<reputation>-68</reputation>
@@ -3841,11 +3840,11 @@
 <specific_character id="bar_arena_stalker_6_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 		
 		<class>bar_arena_stalker_6_2</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>269</rank>
 		<reputation>-46</reputation>
@@ -3866,11 +3865,11 @@
 <specific_character id="bar_arena_stalker_6_3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_4</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 		
 		<class>bar_arena_stalker_6_3</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>289</rank>
 		<reputation>-87</reputation>
@@ -3891,11 +3890,11 @@
 <specific_character id="bar_arena_stalker_6_4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_5</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 		
 		<class>bar_arena_stalker_6_4</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>316</rank>
 		<reputation>-114</reputation>
@@ -3916,11 +3915,11 @@
 <specific_character id="bar_arena_stalker_6_5" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 		
 		<class>bar_arena_stalker_6_5</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>364</rank>
 		<reputation>-146</reputation>
@@ -3941,11 +3940,11 @@
 <specific_character id="bar_arena_stalker_6_6" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_bandit_master</icon>
-		<map_icon x="3" y="2"></map_icon>
 		<bio>sim_bandit_general_bio</bio>
 		
 		<class>bar_arena_stalker_6_6</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_bandit_terrain</terrain_sect>
 		
 		<rank>400</rank>
 		<reputation>-246</reputation>
@@ -3969,11 +3968,11 @@
 <specific_character id="bar_arena_stalker_7" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>bar_arena_stalker_7</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 				
 		<rank>923</rank>
 		<reputation>164</reputation>
@@ -4000,11 +3999,11 @@
 <specific_character id="bar_arena_stalker_8_1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>bar_arena_stalker_8_1</class>
-		<community>arena_enemy</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>arena_enemy</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 				
 		<rank>931</rank>
 		<reputation>126</reputation>
@@ -4025,11 +4024,11 @@
 <specific_character id="bar_arena_stalker_8_2" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>bar_arena_stalker_8_2</class>
-		<community>military</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>military</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 				
 		<rank>919</rank>
 		<reputation>111</reputation>
@@ -4050,11 +4049,11 @@
 <specific_character id="bar_arena_stalker_8_3" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>bar_arena_stalker_8_3</class>
-		<community>bandit</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>bandit</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 				
 		<rank>906</rank>
 		<reputation>-364</reputation>
@@ -4075,11 +4074,11 @@
 <specific_character id="bar_arena_stalker_8_4" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
-		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_master_bio</bio>
 
 		<class>bar_arena_stalker_8_4</class>
-		<community>monolith</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>monolith</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
 				
 		<rank>923</rank>
 		<reputation>-654</reputation>
@@ -4104,9 +4103,9 @@
 		<icon>ui_npc_u_stalker_bandit_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4120,9 +4119,9 @@
 		<icon>ui_npc_u_stalker_bandit_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4136,9 +4135,9 @@
 		<icon>ui_npc_u_stalker_bandit_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4152,9 +4151,9 @@
 		<icon>ui_npc_u_stalker_bandit_8</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4168,9 +4167,9 @@
 		<icon>ui_npc_u_stalker_bandit_master</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4184,9 +4183,9 @@
 		<icon>ui_npc_u_stalker_bandit_veteran</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4200,9 +4199,9 @@
 		<icon>ui_npc_u_stalker_do_antigas</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4216,9 +4215,9 @@
 		<icon>ui_npc_u_stalker_do_balon_8</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4232,9 +4231,9 @@
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4248,9 +4247,9 @@
 		<icon>ui_npc_u_stalker_do_exoskeleton</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4264,9 +4263,9 @@
 		<icon>ui_npc_u_stalker_do_mask</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4280,9 +4279,9 @@
 		<icon>ui_npc_u_stalker_do_nauchniy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4296,9 +4295,9 @@
 		<icon>ui_npc_u_stalker_ecolog</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4312,9 +4311,9 @@
 		<icon>ui_npc_u_stalker_ecolog_military</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4328,9 +4327,9 @@
 		<icon>ui_npc_u_stalker_ki_antigas</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4344,9 +4343,9 @@
 		<icon>ui_npc_u_stalker_ki_exoskeleton</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4360,9 +4359,9 @@
 		<icon>ui_npc_u_stalker_ki_head_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4376,9 +4375,9 @@
 		<icon>ui_npc_u_stalker_ki_mask</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4392,9 +4391,9 @@
 		<icon>ui_npc_u_stalker_ki_nauchniy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4408,9 +4407,9 @@
 		<icon>ui_npc_u_stalker_militari_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4424,9 +4423,9 @@
 		<icon>ui_npc_u_stalker_militari_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4440,9 +4439,9 @@
 		<icon>ui_npc_u_stalker_militari_antigas_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4456,9 +4455,9 @@
 		<icon>ui_npc_u_stalker_militari_antigas_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4472,9 +4471,9 @@
 		<icon>ui_npc_u_soldier_antigas</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4488,9 +4487,9 @@
 		<icon>ui_npc_u_soldier_bandana</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4504,9 +4503,9 @@
 		<icon>ui_npc_u_soldier_bandana_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4520,9 +4519,9 @@
 		<icon>ui_npc_u_soldier_mask</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4536,9 +4535,9 @@
 		<icon>ui_npc_u_soldier_obichniy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4552,9 +4551,9 @@
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4568,9 +4567,9 @@
 		<icon>ui_npc_u_soldier_bandana_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4584,9 +4583,9 @@
 		<icon>ui_npc_u_soldier_bandana_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4600,9 +4599,9 @@
 		<icon>ui_npc_u_soldier_bandana_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4616,9 +4615,9 @@
 		<icon>ui_npc_u_soldier_bandana_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4632,9 +4631,9 @@
 		<icon>ui_npc_u_stalker_mo_exo</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4648,9 +4647,9 @@
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4664,9 +4663,9 @@
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4680,9 +4679,9 @@
 		<icon>ui_npc_u_stalker_mo_mask</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4696,9 +4695,9 @@
 		<icon>ui_npc_u_stalker_mo_nauchniy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4712,9 +4711,9 @@
 		<icon>ui_npc_u_stalker_bar_security</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4728,9 +4727,9 @@
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4744,9 +4743,9 @@
 		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4760,9 +4759,9 @@
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4776,9 +4775,9 @@
 		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4792,9 +4791,9 @@
 		<icon>ui_npc_u_stalker_neytral_hood_8</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4808,9 +4807,9 @@
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4824,9 +4823,9 @@
 		<icon>ui_npc_u_stalker_neytral_nauchniy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4840,9 +4839,9 @@
 		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4856,9 +4855,9 @@
 		<icon>ui_npc_u_green_stalker_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4872,9 +4871,9 @@
 		<icon>ui_npc_u_green_stalker_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4888,9 +4887,9 @@
 		<icon>ui_npc_u_green_stalker_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4904,9 +4903,9 @@
 		<icon>ui_npc_u_green_stalker_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4920,9 +4919,9 @@
 		<icon>ui_npc_u_green_stalker_6</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4936,9 +4935,9 @@
 		<icon>ui_npc_u_green_stalker_10</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4952,9 +4951,9 @@
 		<icon>ui_npc_u_green_stalker_antigas</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4968,9 +4967,9 @@
 		<icon>ui_npc_u_stalker_zombie1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -4984,9 +4983,9 @@
 		<icon>ui_npc_u_stalker_zombie2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5000,9 +4999,9 @@
 		<icon>ui_npc_u_stalker_zombie3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5016,9 +5015,9 @@
 		<icon>ui_npc_u_stalker_zombie4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5032,9 +5031,9 @@
 		<icon>ui_npc_u_stalker_zombie5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5048,9 +5047,9 @@
 		<icon>ui_npc_u_stalker_zombie6</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5064,9 +5063,9 @@
 		<icon>ui_npc_u_stalker_zombie7</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5080,9 +5079,9 @@
 		<icon>ui_npc_u_stalker_zombie8</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5096,9 +5095,9 @@
 		<icon>ui_npc_u_zombie_exoskeleton</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5112,9 +5111,9 @@
 		<icon>ui_npc_u_zombie_fresh_0</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5128,9 +5127,9 @@
 		<icon>ui_npc_u_zombie_fresh_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5144,9 +5143,9 @@
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5160,9 +5159,9 @@
 		<icon>ui_npc_u_stalker_sv_exoskeleton</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5176,9 +5175,9 @@
 		<icon>ui_npc_u_stalker_sv_hood_9</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5192,9 +5191,9 @@
 		<icon>ui_npc_u_stalker_sv_hood_91</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5208,9 +5207,9 @@
 		<icon>ui_npc_u_stalker_sv_nauchniy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5224,9 +5223,9 @@
 		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5240,9 +5239,9 @@
 		<icon>ui_npc_u_stalker_sv_rukzak_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5256,9 +5255,9 @@
 		<icon>ui_npc_u_stalker_sv_rukzak_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5272,9 +5271,9 @@
 		<icon>ui_npc_u_stalker_sv_rukzak_3_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5291,9 +5290,9 @@
 		<icon>ui_npc_u_stalker_bandit_borov</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5307,9 +5306,9 @@
 		<icon>ui_npc_u_stalker_do_balon_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5323,9 +5322,9 @@
 		<icon>ui_npc_u_stalker_do_komandir</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5339,9 +5338,9 @@
 		<icon>ui_npc_u_stalker_do_balon_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5355,9 +5354,9 @@
 		<icon>ui_npc_u_stalker_do_balon_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5371,9 +5370,9 @@
 		<icon>ui_npc_u_stalker_do_balon_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5387,9 +5386,9 @@
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5403,9 +5402,9 @@
 		<icon>ui_npc_u_stalker_do_mask_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5419,9 +5418,9 @@
 		<icon>ui_npc_u_stalker_ki_head_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5435,9 +5434,9 @@
 		<icon>ui_npc_u_stalker_ki_informator</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5451,9 +5450,9 @@
 		<icon>ui_npc_u_soldier_bandana_6</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5467,9 +5466,9 @@
 		<icon>ui_npc_u_soldier_beret</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5483,9 +5482,9 @@
 		<icon>ui_npc_u_soldier_beret_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5499,9 +5498,9 @@
 		<icon>ui_npc_u_soldier_beret_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5515,9 +5514,9 @@
 		<icon>ui_npc_u_soldier_beret_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5531,9 +5530,9 @@
 		<icon>ui_npc_u_soldier_beret_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5547,9 +5546,9 @@
 		<icon>ui_npc_u_stalker_neytral_balon_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5563,9 +5562,9 @@
 		<icon>ui_npc_u_stalker_neytral_balon_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5579,9 +5578,9 @@
 		<icon>ui_npc_u_stalker_neytral_balon_5</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5595,9 +5594,9 @@
 		<icon>ui_npc_u_stalker_neytral_balon_6</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5611,9 +5610,9 @@
 		<icon>ui_npc_u_stalker_neytral_hood_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5627,9 +5626,9 @@
 		<icon>ui_npc_u_stalker_neytral_rukzak_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5643,9 +5642,9 @@
 		<icon>ui_npc_u_stalker_neytral_rukzak_3</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5659,9 +5658,9 @@
 		<icon>ui_npc_u_stalker_neytral_rukzak_4</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5675,9 +5674,9 @@
 		<icon>ui_npc_u_stalker_prizrak</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5691,9 +5690,9 @@
 		<icon>ui_npc_u_green_stalker_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5707,9 +5706,9 @@
 		<icon>ui_npc_u_green_stalker_7</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5723,9 +5722,9 @@
 		<icon>ui_npc_u_green_stalker_8</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5739,9 +5738,9 @@
 		<icon>ui_npc_u_green_stalker_11</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5755,9 +5754,9 @@
 		<icon>ui_npc_u_stalker_sv_balon_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5771,9 +5770,9 @@
 		<icon>ui_npc_u_stalker_sv_balon_10</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5787,9 +5786,9 @@
 		<icon>ui_npc_u_stalker_sv_cook</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5803,9 +5802,9 @@
 		<icon>ui_npc_u_stalker_sv_leader</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5819,9 +5818,9 @@
 		<icon>ui_npc_u_stalker_sv_rukzak_1</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5835,9 +5834,9 @@
 		<icon>ui_npc_u_stalker_sv_max</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5851,9 +5850,9 @@
 		<icon>ui_npc_u_trader</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5867,9 +5866,9 @@
 		<icon>ui_npc_u_barman</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5883,9 +5882,9 @@
 		<icon>ui_npc_u_ucheniy_2</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5899,9 +5898,9 @@
 		<icon>ui_npc_u_actor</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5915,9 +5914,9 @@
 		<icon>ui_npc_u_barman</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>
@@ -5931,9 +5930,9 @@
 		<icon>ui_npc_u_izgoy</icon>
 		
 		<name>Test</name>
-		<map_icon x="1" y="0"></map_icon>
 		<bio></bio>
-		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<community>stalker</community>
+		<terrain_sect>stalker_terrain</terrain_sect>
 		<rank>900</rank>
 		<reputation>0</reputation>
 		<snd_config>characters_voice\human_01\</snd_config>

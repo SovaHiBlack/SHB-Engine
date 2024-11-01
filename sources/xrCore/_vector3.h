@@ -719,8 +719,7 @@ public:
 using fVector3 = _vector3<f32>;
 
 typedef _vector3<f32>		Fvector;
-typedef _vector3<double>	Dvector;
-typedef _vector3<double>	Dvector3;
+
 typedef _vector3<s32>		Ivector;
 typedef _vector3<s32>		Ivector3;
 

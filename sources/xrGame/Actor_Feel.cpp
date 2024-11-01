@@ -92,10 +92,11 @@ ICF static BOOL info_trace_callback(collide::rq_result& result, LPVOID params)
 	return				FALSE;
 }
 
-BOOL CActor::CanPickItem(const CFrustum& frustum, const Fvector& from, CObject* item)
+BOOL CActor::CanPickItem(const CFrustum& frustum, const fVector3& from, CObject* item)
 {
 	BOOL	bOverlaped		= FALSE;
-	Fvector dir,to; 
+	fVector3 dir;
+	fVector3 to;
 	item->Center			(to);
 	f32 range				= dir.sub(to,from).magnitude();
 	if (range>0.25f){
@@ -173,7 +174,9 @@ void	CActor::PickupModeUpdate_COD	()
 		CMissile*	pMissile	= smart_cast<CMissile*> (spatial->dcast_CObject        ());
 		if (pMissile && !pMissile->Useful()) continue;
 		
-		Fvector A, B, tmp; 
+		fVector3 A;
+		fVector3 B;
+		fVector3 tmp;
 		pIItem->object().Center			(A);
 		if (A.distance_to_sqr(Position())>4) continue;
 
@@ -226,7 +229,7 @@ void CActor::PickupInfoDraw(CObject* object)
 	fMatrix4x4			res;
 	res.mul			(Device.mFullTransform,object->XFORM());
 	fVector4		v_res;
-	Fvector			shift;
+	fVector3		shift;
 
 	draw_str = item->Name/*Complex*/();
 	shift.set(0,0,0);
@@ -244,7 +247,7 @@ void CActor::PickupInfoDraw(CObject* object)
 	HUD().Font().pFontLetterica16Russian->Out			(x,y,draw_str);
 }
 
-void CActor::feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector& Position, f32 power)
+void CActor::feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power)
 {
 	if(who == this)
 		m_snd_noise = _max(m_snd_noise,power);

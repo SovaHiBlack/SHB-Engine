@@ -44,7 +44,7 @@ void CAI_Crow::SSound::Load	(pcstr prefix)
 	R_ASSERT(m_Sounds.size());
 }
 
-void CAI_Crow::SSound::SetPosition	(const Fvector& pos)
+void CAI_Crow::SSound::SetPosition	(const fVector3& pos)
 {
 	for (int i=0; i<(int)m_Sounds.size(); ++i)
 		if (m_Sounds[i]._feedback())
@@ -174,7 +174,7 @@ void CAI_Crow::switch2_DeathDead()
 
 void CAI_Crow::switch2_DeathFall()
 {
-	Fvector V;
+	fVector3 V;
 	V.mul(XFORM().k,fSpeed);
 //	m_PhysicMovementControl->SetVelocity(V);
 	smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle	(m_Anims.m_death.GetRandom(),TRUE,cb_OnHitEndPlaying,this);
@@ -184,10 +184,10 @@ void CAI_Crow::state_Flying		(f32 fdt)
 {
 	// Update position and orientation of the planes
 	f32 fAT = fASpeed * fdt		;
-	Fvector& vDirection = XFORM().k	;
+	fVector3& vDirection = XFORM().k	;
 
 	// Tweak orientation based on last position and goal
-	Fvector vOffset;
+	fVector3 vOffset;
 	vOffset.sub(vGoalDir,Position());
 
 	// First, tweak the pitch
@@ -224,7 +224,7 @@ void CAI_Crow::state_Flying		(f32 fdt)
 	Position().mad	(vOldPosition,vDirection,fSpeed*fdt);
 }
 
-static Fvector vV={0,0,0};
+static fVector3 vV={0.0f,0.0f,0.0f};
 void CAI_Crow::state_DeathFall()
 {
 	Fvector tAcceleration	;

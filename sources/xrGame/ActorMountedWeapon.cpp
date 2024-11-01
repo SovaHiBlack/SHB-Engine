@@ -18,7 +18,8 @@ bool CActor::use_MountedWeapon(CHolderCustom* object)
 		return true;
 	}else{
 		if(wpn){
-			Fvector center;	Center(center);
+			fVector3 center;
+			Center(center);
 			if(wpn->Use(Device.vCameraPosition, Device.vCameraDirection,center)){
 				if(wpn->attach_Actor(this)){
 					// destroy actor character

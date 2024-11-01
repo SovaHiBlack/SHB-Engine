@@ -121,7 +121,7 @@ public:
 	// Render
 	virtual void						renderable_Render( );
 	virtual BOOL						renderable_ShadowGenerate( );
-	virtual void						feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector& Position, f32 power);
+	virtual void						feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
 	virtual Feel::Sound* dcast_FeelSound( )
 	{
 		return this;
@@ -212,10 +212,10 @@ public:
 
 	virtual void						Die(CObject* who);
 	virtual void						Hit(SHit* pHDS);
-	virtual void						PHHit(f32 P, Fvector& dir, CObject* who, s16 element, Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type);
-	virtual void						HitSignal(f32 P, Fvector& vLocalDir, CObject* who, s16 element);
+	virtual void						PHHit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type);
+	virtual void						HitSignal(f32 P, fVector3& vLocalDir, CObject* who, s16 element);
 	void						HitSector(CObject* who, CObject* weapon);
-	void						HitMark(f32 P, Fvector dir, CObject* who, s16 element, Fvector position_in_bone_space, f32 impulse, ALife::EHitType hit_type);
+	void						HitMark(f32 P, fVector3 dir, CObject* who, s16 element, fVector3 position_in_bone_space, f32 impulse, ALife::EHitType hit_type);
 
 	virtual f32							GetMass( );
 	virtual f32							Radius( ) const;
@@ -404,7 +404,7 @@ protected:
 	CCameraBase* cameras[eacMaxCam];
 	EActorCameras			cam_active;
 	f32						fPrevCamPos;
-	Fvector					vPrevCamDir;
+	fVector3					vPrevCamDir;
 	f32						fCurAVelocity;
 	CEffectorBobbing* pCamBobbing;
 
@@ -472,7 +472,7 @@ public:
 	// Motions (передвижени€ актрера)
 	//////////////////////////////////////////////////////////////////////////
 public:
-	void					g_cl_CheckControls(u32 mstate_wf, Fvector& vControlAccel, f32& Jump, f32 dt);
+	void					g_cl_CheckControls(u32 mstate_wf, fVector3& vControlAccel, f32& Jump, f32 dt);
 	void					g_cl_ValidateMState(f32 dt, u32 mstate_wf);
 	void					g_cl_Orientate(u32 mstate_rl, f32 dt);
 	void					g_sv_Orientate(u32 mstate_rl, f32 dt);
@@ -529,7 +529,7 @@ public:
 	//////////////////////////////////////////////////////////////////////////
 public:
 	virtual void						g_WeaponBones(int& L, int& R1, int& R2);
-	virtual void						g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D);
+	virtual void						g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
 	virtual BOOL						g_State(SEntityState& state) const;
 	virtual	f32							GetWeaponAccuracy( ) const;
 	bool						IsZoomAimingMode( ) const
@@ -555,12 +555,12 @@ protected:
 	//crouch+no acceleration
 	f32									m_fDispCrouchNoAccelFactor;
 	//смещение firepoint относительно default firepoint дл€ бросани€ болтов и гранат
-	Fvector								m_vMissileOffset;
+	fVector3								m_vMissileOffset;
 
 public:
 	// ѕолучение, и запись смещени€ дл€ гранат
-	Fvector								GetMissileOffset( ) const;
-	void								SetMissileOffset(const Fvector& vNewOffset);
+	fVector3								GetMissileOffset( ) const;
+	void								SetMissileOffset(const fVector3& vNewOffset);
 
 protected:
 	//косточки используемые при стрельбе
@@ -597,7 +597,7 @@ public:
 
 protected:
 	xr_deque<net_update>	NET;
-	Fvector					NET_SavedAccel;
+	fVector3					NET_SavedAccel;
 	net_update				NET_Last;
 	BOOL					NET_WasInterpolating;	// previous update was by interpolation or by extrapolation
 	u32						NET_Time;				// server time of last update
@@ -622,10 +622,12 @@ protected:
 	/// spline coeff /////////////////////
 	f32				SCoeff[3][4];			//коэффициэнты дл€ сплайна Ѕизье
 	f32				HCoeff[3][4];			//коэффициэнты дл€ сплайна Ёрмита
-	Fvector			IPosS, IPosH, IPosL;	//положение актера после интерпол€ции Ѕизье, Ёрмита, линейной
+	fVector3		IPosS;	//
+	fVector3		IPosH;	//
+	fVector3		IPosL;	//положение актера после интерпол€ции Ѕизье, Ёрмита, линейной
 
 #ifdef DEBUG
-	DEF_DEQUE(VIS_POSITION, Fvector);
+	DEF_DEQUE(VIS_POSITION, fVector3);
 
 	VIS_POSITION	LastPosS;
 	VIS_POSITION	LastPosH;
@@ -667,13 +669,13 @@ protected:
 	// Actor physics
 	//////////////////////////////////////////////////////////////////////////
 public:
-	void			g_Physics(Fvector& accel, f32 jump, f32 dt);
+	void			g_Physics(fVector3& accel, f32 jump, f32 dt);
 	virtual void			ForceTransform(const fMatrix4x4& m);
 	void			SetPhPosition(const fMatrix4x4& pos);
 	virtual void			PH_B_CrPr( ); // actions & operations before physic correction-prediction steps
 	virtual void			PH_I_CrPr( ); // actions & operations after correction before prediction steps
 	virtual void			PH_A_CrPr( ); // actions & operations after phisic correction-prediction steps
-	virtual void			MoveActor(Fvector NewPos, Fvector NewDir);
+	virtual void			MoveActor(fVector3 NewPos, fVector3 NewDir);
 
 	virtual void			SpawnAmmoForWeapon(CInventoryItem* pIItem);
 	virtual void			RemoveAmmoForWeapon(CInventoryItem* pIItem);
@@ -699,8 +701,8 @@ public:
 	virtual void			ChangeVisual(shared_str NewVisual);
 	virtual void			OnChangeVisual( );
 
-	virtual void			RenderIndicator(Fvector dpos, f32 r1, f32 r2, ref_shader IndShader);
-	virtual void			RenderText(pcstr Text, Fvector dpos, f32* pdup, u32 color);
+	virtual void			RenderIndicator(fVector3 dpos, f32 r1, f32 r2, ref_shader IndShader);
+	virtual void			RenderText(pcstr Text, fVector3 dpos, f32* pdup, u32 color);
 
 	//////////////////////////////////////////////////////////////////////////
 	// Controlled Routines
@@ -737,8 +739,8 @@ protected:
 	friend class CLevelGraph;
 #endif // def DEBUG
 
-	Fvector							m_AutoPickUp_AABB;
-	Fvector							m_AutoPickUp_AABB_Offset;
+	fVector3							m_AutoPickUp_AABB;
+	fVector3							m_AutoPickUp_AABB_Offset;
 
 	void							Check_for_AutoPickUp( );
 
@@ -769,8 +771,8 @@ protected:
 	u16							m_iLastHitterID;
 	u16							m_iLastHittingWeaponID;
 	s16							m_s16LastHittedElement;
-	Fvector						m_vLastHitDir;
-	Fvector						m_vLastHitPos;
+	fVector3						m_vLastHitDir;
+	fVector3						m_vLastHitPos;
 	f32							m_fLastHealth;
 	bool						m_bWasHitted;
 	bool						m_bWasBackStabbed;
@@ -778,7 +780,7 @@ protected:
 	virtual		bool			Check_for_BackStab_Bone(u16 element);
 
 public:
-	virtual void				SetHitInfo(CObject* who, CObject* weapon, s16 element, Fvector Pos, Fvector Dir);
+	virtual void				SetHitInfo(CObject* who, CObject* weapon, s16 element, fVector3 Pos, fVector3 Dir);
 
 	virtual	bool				InventoryAllowSprint( );
 	virtual void				OnNextWeaponSlot( );
@@ -788,8 +790,8 @@ public:
 	virtual	void				on_weapon_shot_start(CWeapon* weapon);
 	virtual	void				on_weapon_shot_stop(CWeapon* weapon);
 	virtual	void				on_weapon_hide(CWeapon* weapon);
-	Fvector				weapon_recoil_delta_angle( );
-	Fvector				weapon_recoil_last_delta( );
+	fVector3				weapon_recoil_delta_angle( );
+	fVector3				weapon_recoil_last_delta( );
 
 protected:
 	virtual	void				update_camera(CCameraShotEffector* effector);
@@ -820,7 +822,7 @@ public:
 
 private:
 	collide::rq_results			RQR;
-	BOOL				CanPickItem(const CFrustum& frustum, const Fvector& from, CObject* item);
+	BOOL				CanPickItem(const CFrustum& frustum, const fVector3& from, CObject* item);
 	xr_vector<ISpatial*>		ISpatialResult;
 
 private:

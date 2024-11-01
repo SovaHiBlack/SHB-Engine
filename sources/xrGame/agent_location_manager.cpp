@@ -44,10 +44,11 @@ struct CRemoveOldDangerCover {
 	}
 };
 
-struct CDangerLocationPredicate {
-	Fvector				m_position;
+struct CDangerLocationPredicate 
+{
+	fVector3				m_position;
 
-	IC			CDangerLocationPredicate	(const Fvector &position)
+	IC			CDangerLocationPredicate	(const fVector3& position)
 	{
 		m_position		= position;
 	}
@@ -58,7 +59,7 @@ struct CDangerLocationPredicate {
 	}
 };
 
-IC	CAgentLocationManager::CDangerLocationPtr CAgentLocationManager::location	(const Fvector &position)
+IC	CAgentLocationManager::CDangerLocationPtr CAgentLocationManager::location	(const fVector3& position)
 {
 	LOCATIONS::iterator	I = std::find_if(m_danger_locations.begin(),m_danger_locations.end(),CDangerLocationPredicate(position));
 	if (I != m_danger_locations.end())

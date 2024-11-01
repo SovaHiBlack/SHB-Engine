@@ -45,7 +45,7 @@ public:
 						CAnimatorCamEffector	();
 	virtual				~CAnimatorCamEffector	();
 			void		Start					(pcstr fn);
-	virtual	BOOL		Process					(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
+	virtual	BOOL		Process					(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect);
 			void		SetCyclic				(bool b)				{m_bCyclic=b;}
 	virtual	BOOL		Valid					();
 	f32		GetAnimatorLength		()						{return fLifeTime;};
@@ -61,7 +61,7 @@ public:
 	CAnimatorCamEffectorScriptCB	(pcstr _cb){cb_name =_cb;};
 	virtual	BOOL		Valid					();
 	virtual BOOL		AllowProcessingIfInvalid()	{return m_bAbsolutePositioning;}
-	virtual	void		ProcessIfInvalid		(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
+	virtual	void		ProcessIfInvalid		(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect);
 };
 
 class CAnimatorCamLerpEffector :public CAnimatorCamEffector
@@ -72,7 +72,7 @@ protected:
 
 public:
 			void		SetFactorFunc				(GET_KOEFF_FUNC f)	{m_func=f;}
-	virtual	BOOL		Process						(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
+	virtual	BOOL		Process						(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect);
 };
 
 class CAnimatorCamLerpEffectorConst :public CAnimatorCamLerpEffector
@@ -125,14 +125,14 @@ class CControllerPsyHitCamEffector :public CEffectorCam
 	
 	f32				m_time_total;
 	f32				m_time_current;
-	Fvector				m_dangle_target;
-	Fvector				m_dangle_current;
-	Fvector				m_position_source;
-	Fvector				m_direction;
+	fVector3				m_dangle_target;
+	fVector3				m_dangle_current;
+	fVector3				m_position_source;
+	fVector3				m_direction;
 	f32				m_distance;
 
 public:
-						CControllerPsyHitCamEffector	(ECamEffectorType type, const Fvector &src_pos, const Fvector &target_pos, f32 time);
-	virtual	BOOL		Process							(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
+						CControllerPsyHitCamEffector	(ECamEffectorType type, const fVector3& src_pos, const fVector3& target_pos, f32 time);
+	virtual	BOOL		Process							(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect);
 };
 //////////////////////////////////////////////////////////////////////////

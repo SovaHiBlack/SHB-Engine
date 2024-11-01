@@ -56,7 +56,7 @@ f32 CActor::GetWeaponAccuracy() const
 	return dispersion;
 }
 
-void CActor::g_fireParams	(const CHudItem* pHudItem, Fvector &fire_pos, Fvector &fire_dir)
+void CActor::g_fireParams	(const CHudItem* pHudItem, fVector3& fire_pos, fVector3& fire_dir)
 {
 //	VERIFY			(inventory().ActiveItem());
 
@@ -66,7 +66,7 @@ void CActor::g_fireParams	(const CHudItem* pHudItem, Fvector &fire_pos, Fvector 
 	const CMissile	*pMissile = smart_cast <const CMissile*> (pHudItem);
 	if (pMissile)
 	{
-		Fvector offset;
+		fVector3 offset;
 		XFORM().transform_dir(offset, m_vMissileOffset);
 		fire_pos.add(offset);
 	}
@@ -207,10 +207,10 @@ void CActor::on_weapon_hide				(CWeapon *weapon)
 		effector->Clear				();
 }
 
-Fvector CActor::weapon_recoil_delta_angle	()
+fVector3 CActor::weapon_recoil_delta_angle	()
 {
 	CCameraShotEffector				*effector = smart_cast<CCameraShotEffector*>(Cameras().GetCamEffector(eCEShot));
-	Fvector							result = {0.f,0.f,0.f};
+	fVector3							result = {0.0f,0.0f,0.0f};
 
 	if (effector)
 		effector->GetDeltaAngle		(result);
@@ -218,10 +218,10 @@ Fvector CActor::weapon_recoil_delta_angle	()
 	return							(result);
 }
 
-Fvector CActor::weapon_recoil_last_delta()
+fVector3 CActor::weapon_recoil_last_delta()
 {
 	CCameraShotEffector				*effector = smart_cast<CCameraShotEffector*>(Cameras().GetCamEffector(eCEShot));
-	Fvector							result = {0.f,0.f,0.f};
+	fVector3							result = {0.0f,0.0f,0.0f};
 
 	if (effector)
 		effector->GetLastDelta		(result);
