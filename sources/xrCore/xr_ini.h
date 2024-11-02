@@ -149,8 +149,8 @@ public:
 	{
 		return r_ivector2(*S, L);
 	}
-	Ivector3	r_ivector3(pcstr S, pcstr L);
-	Ivector3	r_ivector3(const shared_str& S, pcstr L)
+	iVector3	r_ivector3(pcstr S, pcstr L);
+	iVector3	r_ivector3(const shared_str& S, pcstr L)
 	{
 		return r_ivector3(*S, L);
 	}
@@ -194,7 +194,7 @@ public:
 	void		w_fcolor(pcstr S, pcstr L, const fColor& V, pcstr comment = 0);
 	void		w_color(pcstr S, pcstr L, u32				V, pcstr comment = 0);
 	void		w_ivector2(pcstr S, pcstr L, const iVector2& V, pcstr comment = 0);
-	void		w_ivector3(pcstr S, pcstr L, const Ivector3& V, pcstr comment = 0);
+	void		w_ivector3(pcstr S, pcstr L, const iVector3& V, pcstr comment = 0);
 	void		w_ivector4(pcstr S, pcstr L, const iVector4& V, pcstr comment = 0);
 	void		w_fvector2(pcstr S, pcstr L, const fVector2& V, pcstr comment = 0);
 	void		w_fvector3(pcstr S, pcstr L, const fVector3& V, pcstr comment = 0);

@@ -113,10 +113,11 @@ fVector3	vunpack			(s32 x, s32 y, s32 z)	{
 	pck.z	= -f32(z)/255.f;
 	return	pck;
 }
-fVector3	vunpack			(Ivector src)			{
-	return	vunpack	(src.x,src.y,src.z);
+fVector3 vunpack(iVector3 src)
+{
+	return vunpack(src.x, src.y, src.z);
 }
-Ivector	vpack			(fVector3 src)
+iVector3	vpack			(fVector3 src)
 {
 	fVector3			_v;
 	int	bx			= fpack	(src.x);
@@ -125,27 +126,35 @@ Ivector	vpack			(fVector3 src)
 	// dumb test
 	f32	e_best	= flt_max;
 	int		r=bx,g=by,b=bz;
+
 #ifdef DEBUG
 	int		d=0;
 #else
 	int		d=3;
 #endif
-	for (int x=_max(bx-d,0); x<=_min(bx+d,255); x++)
-	for (int y=_max(by-d,0); y<=_min(by+d,255); y++)
-	for (int z=_max(bz-d,0); z<=_min(bz+d,255); z++)
+
+	for (s32 x = _max(bx - d, 0); x <= _min(bx + d, 255); x++)
 	{
-		_v				= vunpack(x,y,z);
-		f32	m		= _v.magnitude();
-		f32	me		= _abs(m-1.f);
-		if	(me>0.03f)	continue;
-		_v.div	(m);
-		f32	e		= _abs(src.dotproduct(_v)-1.f);
-		if (e<e_best)	{
-			e_best		= e;
-			r=x,g=y,b=z;
+		for (s32 y = _max(by - d, 0); y <= _min(by + d, 255); y++)
+		{
+			for (s32 z = _max(bz - d, 0); z <= _min(bz + d, 255); z++)
+			{
+				_v = vunpack(x, y, z);
+				f32	m = _v.magnitude( );
+				f32	me = _abs(m - 1.f);
+				if (me > 0.03f)	continue;
+				_v.div(m);
+				f32	e = _abs(src.dotproduct(_v) - 1.f);
+				if (e < e_best)
+				{
+					e_best = e;
+					r = x, g = y, b = z;
+				}
+			}
 		}
 	}
-	Ivector		ipck;
+
+	iVector3		ipck;
 	ipck.set	(r,g,b);
 	return		ipck;
 }

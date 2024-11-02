@@ -189,12 +189,12 @@ public:
 	virtual void						UpdateCL							();
 	virtual void						shedule_Update						(u32 dt);
 	virtual void						Think								();
-	virtual void						SelectAnimation						(const Fvector& _view, const Fvector& _move, f32 speed );
+	virtual void						SelectAnimation						(const fVector3& _view, const fVector3& _move, f32 speed );
 	virtual BOOL						UsedAI_Locations					();
 
 	virtual void						g_WeaponBones						(int &L, int &R1, int &R2);
-	virtual void						g_fireParams						(const CHudItem* pHudItem, Fvector& P, Fvector& D);
-	virtual void						HitSignal							(f32 P,	Fvector& vLocalDir, CObject* who, s16 element);
+	virtual void						g_fireParams						(const CHudItem* pHudItem, fVector3& P, fVector3& D);
+	virtual void						HitSignal							(f32 P, fVector3& vLocalDir, CObject* who, s16 element);
 	virtual void						Die									(CObject* who);
 
 	virtual void						OnEvent								(NET_Packet& P, u16 type);
@@ -203,7 +203,7 @@ public:
 	virtual void						renderable_Render					();
 	virtual void						Exec_Look							(f32 dt);
 	virtual	void						Hit									(SHit* pHDS);
-	virtual	void						PHHit								(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual	void						PHHit								(f32 P, fVector3& dir, CObject *who,s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
 	virtual BOOL						feel_vision_isRelevant				(CObject* who);
 	virtual f32						Radius								() const;
 #ifdef DEBUG
@@ -279,8 +279,8 @@ private:
 	collide::rq_results	rq_storage;
 
 private:
-			void						can_kill_entity			(const Fvector &position, const Fvector &direction, f32 distance, collide::rq_results& rq_storage);
-			void						can_kill_entity_from	(const Fvector &position, Fvector direction, f32 distance);
+			void						can_kill_entity			(const fVector3& position, const fVector3& direction, f32 distance, collide::rq_results& rq_storage);
+			void						can_kill_entity_from	(const fVector3& position, fVector3 direction, f32 distance);
 			void						update_can_kill_info	();
 
 public:
@@ -396,7 +396,7 @@ public:
 	virtual	void						on_weapon_shot_stop				(CWeapon *weapon);
 	virtual	void						on_weapon_hide					(CWeapon *weapon);
 	IC		CWeaponShotEffector			&weapon_shot_effector			() const;
-	IC		Fvector						weapon_shot_effector_direction	(const Fvector &current) const;
+	IC		fVector3						weapon_shot_effector_direction	(const fVector3& current) const;
 	virtual void						UpdateCamera					();
 	virtual	bool						can_attach						(const CInventoryItem *inventory_item) const;
 	virtual	bool						use_simplified_visual			() const {return (already_dead());};
@@ -451,14 +451,14 @@ private:
 	const CCoverPoint					*m_best_cover_advance_cover;
 
 private:
-	f32						best_cover_value					(const Fvector &position_to_cover_from);
-			const CCoverPoint			*find_best_cover					(const Fvector &position_to_cover_from);
-			void						update_best_cover_actuality			(const Fvector &position_to_cover_from);
+	f32						best_cover_value					(const fVector3& position_to_cover_from);
+			const CCoverPoint			*find_best_cover					(const fVector3& position_to_cover_from);
+			void						update_best_cover_actuality			(const fVector3& position_to_cover_from);
 			void						on_best_cover_changed				(const CCoverPoint *new_cover, const CCoverPoint *old_cover);
 
 public:
 			void						best_cover_can_try_advance			();
-			const CCoverPoint			*best_cover							(const Fvector &position_to_cover_from);
+			const CCoverPoint			*best_cover							(const fVector3& position_to_cover_from);
 
 public:
 			void						subscribe_on_best_cover_changed		(const on_best_cover_changed_delegate &delegate);
@@ -480,20 +480,20 @@ public:
 private:
 	// actuality parameters
 	bool								m_throw_actual;
-	Fvector								m_computed_object_position;
-	Fvector								m_computed_object_direction;
+	fVector3								m_computed_object_position;
+	fVector3								m_computed_object_direction;
 	// target parameters
-	Fvector								m_throw_target;
+	fVector3								m_throw_target;
 	// computed
 	f32								m_throw_force;
-	Fvector								m_throw_position;
-	Fvector								m_throw_direction;
+	fVector3								m_throw_position;
+	fVector3								m_throw_direction;
 
 public:
 	virtual	bool						use_default_throw_force				();
 	virtual	f32						missile_throw_force					();
 	virtual	bool						use_throw_randomness				();
-			void						throw_target						(const Fvector &position); 
+			void						throw_target						(const fVector3& position);
 			void						update_throw_params					(); 
 
 #ifdef DEBUG

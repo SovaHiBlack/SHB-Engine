@@ -197,7 +197,7 @@ void CCar::SetParam(int id, fVector2 val)
 {
 	if(m_car_weapon)m_car_weapon->SetParam(id,val);
 }
-void CCar::SetParam			(int id, Fvector val)
+void CCar::SetParam			(int id, fVector3 val)
 {
 	if(m_car_weapon)m_car_weapon->SetParam(id,val);
 }
@@ -230,11 +230,11 @@ bool CCar::isObjectVisible			(CScriptGameObject* O_)
 			return false;
 		}
 		CObject* O = &O_->object();
-		Fvector dir_to_object;
-		Fvector to_point;
+		fVector3 dir_to_object;
+		fVector3 to_point;
 		O->Center(to_point);
 		
-		Fvector				from_point;
+		fVector3				from_point;
 		Center				(from_point);
 	
 		if(HasWeapon())
@@ -256,9 +256,9 @@ bool CCar::HasWeapon()
 	return (m_car_weapon != NULL);
 }
 
-Fvector CCar::CurrentVel()
+fVector3 CCar::CurrentVel()
 {
-	Fvector lin_vel;
+	fVector3 lin_vel;
 	m_pPhysicsShell->get_LinearVel(lin_vel);
 
 	return lin_vel;

@@ -45,9 +45,10 @@ void CBlackGraviArtefact::Load(pcstr section)
 
 BOOL CBlackGraviArtefact::net_Spawn(CSE_Abstract* DC)
 {
-	if(!inherited::net_Spawn(DC)) return FALSE;
-
-
+	if (!inherited::net_Spawn(DC))
+	{
+		return FALSE;
+	}
 
 	CParticlesObject* pStaticPG;
 	pStaticPG = CParticlesObject::Create("anomaly\\galantine",FALSE);
@@ -57,12 +58,10 @@ BOOL CBlackGraviArtefact::net_Spawn(CSE_Abstract* DC)
 	pos.scale(0.7f,0.7f,0.7f);
 	pos.translate_over(XFORM().c);
 	
-	Fvector vel;
-	vel.set(0,0,0);
+	fVector3 vel;
+	vel.set(0.0f,0.0f,0.0f);
 	pStaticPG->UpdateParent(pos, vel); 
 	pStaticPG->Play();
-
-
 
 	return TRUE;
 }
@@ -94,7 +93,7 @@ void CBlackGraviArtefact::UpdateCLChild()
 
 	if (getVisible() && m_pPhysicsShell) {
 		if (m_bStrike) {
-			Fvector	P; 
+			fVector3	P;
 			P.set(Position());
 			feel_touch_update(P,m_fRadius);
 
@@ -104,7 +103,7 @@ void CBlackGraviArtefact::UpdateCLChild()
 			pStaticPG = CParticlesObject::Create(*m_sParticleName,TRUE);
 			fMatrix4x4 pos;
 			pos.set(XFORM()); 
-			Fvector vel; 
+			fVector3 vel;
 			//vel.sub(Position(),ps_Element(0).vPosition); 
 			//vel.div((Level().timeServer()-ps_Element(0).dwTime)/1000.f);
 			vel.set(0,0,0);
@@ -166,10 +165,10 @@ BOOL CBlackGraviArtefact::feel_touch_contact(CObject* O)
 void CBlackGraviArtefact::GraviStrike()
 {
 	xr_list<s16>		elements_list;
-	xr_list<Fvector>	bone_position_list;
+	xr_list<fVector3>	bone_position_list;
 
-	Fvector object_pos					; 
-	Fvector strike_dir					;
+	fVector3 object_pos					;
+	fVector3 strike_dir					;
 
 	rq_storage.r_clear	();
 
@@ -212,7 +211,7 @@ void CBlackGraviArtefact::GraviStrike()
 			while(!elements_list.empty()) 
 			{
 				s16 element = elements_list.front();
-				Fvector bone_pos = bone_position_list.front();
+				fVector3 bone_pos = bone_position_list.front();
 				
 				NET_Packet		P;
 				SHit	HS;

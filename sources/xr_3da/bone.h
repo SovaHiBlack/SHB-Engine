@@ -104,7 +104,7 @@ struct SJointIKData
 		break_force		= 0.f;
 		break_torque	= 0.f;
 	}
-	void				clamp_by_limits(Fvector& dest_xyz);
+	void				clamp_by_limits(fVector3& dest_xyz);
 	void				Export(IWriter& F)
 	{
 		F.w_u32			(type);
@@ -152,12 +152,12 @@ class CBone
 	shared_str			name;
 	shared_str			parent_name;
 	shared_str			wmap;
-	Fvector			    rest_offset;
-	Fvector			    rest_rotate;    // XYZ format (Game format)
+	fVector3			    rest_offset;
+	fVector3			    rest_rotate;    // XYZ format (Game format)
 	f32			    rest_length;
 
-	Fvector			    mot_offset;
-	Fvector			    mot_rotate;		// XYZ format (Game format)
+	fVector3			    mot_offset;
+	fVector3			    mot_rotate;		// XYZ format (Game format)
 	f32			    mot_length;
 
 	fMatrix4x4			    mot_transform;
@@ -185,7 +185,7 @@ public:
 	SBoneShape		    shape;
 
 	f32			    mass;
-	Fvector			    center_of_mass;
+	fVector3			    center_of_mass;
 
 public:
 						CBone			();
@@ -194,7 +194,7 @@ public:
 	void			    SetName			(pcstr p){name		= p; xr_strlwr(name);		}
 	void			    SetParentName	(pcstr p){parent_name	= p; xr_strlwr(parent_name);}
 	void			    SetWMap			(pcstr p){wmap		= p;}
-	void			    SetRestParams	(f32 length, const Fvector& offset, const Fvector& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
+	void			    SetRestParams	(f32 length, const fVector3& offset, const fVector3& rotate){rest_offset.set(offset);rest_rotate.set(rotate);rest_length=length;};
 
 	shared_str		    Name			(){return name;}
 	shared_str		    ParentName		(){return parent_name;}
@@ -203,18 +203,18 @@ public:
 	IC BOOL			    IsRoot			(){return (parent==0);}
 
 	// transformation
-	const Fvector&      _Offset			(){return mot_offset;}
-	const Fvector&      _Rotate			(){return mot_rotate;}
+	const fVector3&      _Offset			(){return mot_offset;}
+	const fVector3&      _Rotate			(){return mot_rotate;}
 	f32			    _Length			(){return mot_length;}
 	IC fMatrix4x4&		    _RTransform		(){return rest_transform;}
 	IC fMatrix4x4&		    _RITransform	(){return rest_i_transform;}
 	IC fMatrix4x4&		    _MTransform		(){return mot_transform;}
 	IC fMatrix4x4&		    _LTransform		(){return last_transform;}
 	IC fMatrix4x4&		    _RenderTransform(){return render_transform;}
-	IC Fvector&			_RestOffset		(){return rest_offset;}
-	IC Fvector&		    _RestRotate		(){return rest_rotate;}
+	IC fVector3&			_RestOffset		(){return rest_offset;}
+	IC fVector3&		    _RestRotate		(){return rest_rotate;}
 	
-	void			    _Update			(const Fvector& T, const Fvector& R){mot_offset.set(T); mot_rotate.set(R); mot_length=rest_length;}
+	void			    _Update			(const fVector3& T, const fVector3& R){mot_offset.set(T); mot_rotate.set(R); mot_length=rest_length;}
 	void			    Reset			(){mot_offset.set(rest_offset); mot_rotate.set(rest_rotate); mot_length=rest_length;}
 
 	// IO

@@ -92,7 +92,7 @@ void CAI_Trader::BoneCallback(CBoneInstance *B)
 
 void CAI_Trader::LookAtActor(CBoneInstance *B)
 {
-	Fvector dir;
+	fVector3 dir;
 	dir.sub(Level().CurrentEntity()->Position(),Position());
 
 	f32 yaw;
@@ -249,7 +249,7 @@ void CAI_Trader::g_WeaponBones	(int &L, int &R1, int &R2)
 	L				= V->LL_BoneID("bip01_l_finger1");
 }
 
-void CAI_Trader::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
+void CAI_Trader::g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D)
 {
 	VERIFY			(inventory().ActiveItem());
 	if (g_Alive() && inventory().ActiveItem()) {

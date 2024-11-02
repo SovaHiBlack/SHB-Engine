@@ -94,7 +94,7 @@ f32 CAI_Stalker::GetWeaponAccuracy	() const
 			return			(base*m_disp_stand_crouch_zoom);
 }
 
-void CAI_Stalker::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
+void CAI_Stalker::g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D)
 {
 //.	VERIFY				(inventory().ActiveItem());
 	if (!inventory().ActiveItem()) {
@@ -102,7 +102,7 @@ void CAI_Stalker::g_fireParams(const CHudItem* pHudItem, Fvector& P, Fvector& D)
 		Msg				("! CAI_Stalker::g_fireParams() : VERIFY(inventory().ActiveItem())");
 #endif // DEBUG
 		P				= Position();
-		D				= Fvector().set(0.f,0.f,1.f);
+		D				= fVector3().set(0.0f,0.0f,1.0f);
 		return;
 	}
 
@@ -236,7 +236,7 @@ void			CAI_Stalker::Hit					(SHit* pHDS)
 				(pHDS->bone() != BI_NONE)
 			)
 			{
-				Fvector					D;
+				fVector3					D;
 				f32					yaw;
 				f32					pitch;
 				D.getHP					(yaw,pitch);
@@ -272,7 +272,7 @@ void			CAI_Stalker::Hit					(SHit* pHDS)
 	inherited::Hit					(&HDS);
 }
 
-void CAI_Stalker::HitSignal				(f32 amount, Fvector& vLocalDir, CObject* who, s16 element)
+void CAI_Stalker::HitSignal				(f32 amount, fVector3& vLocalDir, CObject* who, s16 element)
 {
 	if (getDestroy())
 		return;
@@ -546,7 +546,7 @@ IC BOOL ray_query_callback	(collide::rq_result& result, LPVOID params)
 	return								(false);
 }
 
-void CAI_Stalker::can_kill_entity		(const Fvector &position, const Fvector &direction, f32 distance, collide::rq_results& rq_storage)
+void CAI_Stalker::can_kill_entity		(const fVector3& position, const fVector3& direction, f32 distance, collide::rq_results& rq_storage)
 {
 	VERIFY							(!fis_zero(direction.square_magnitude()));
 
@@ -561,7 +561,7 @@ void CAI_Stalker::can_kill_entity		(const Fvector &position, const Fvector &dire
 	m_pick_distance					= _max(m_pick_distance,params.m_pick_distance);
 }
 
-void CAI_Stalker::can_kill_entity_from	(const Fvector &position, Fvector direction, f32 distance)
+void CAI_Stalker::can_kill_entity_from	(const fVector3& position, fVector3 direction, f32 distance)
 {
 	m_pick_distance			= 0.f;
 	rq_storage.r_clear		();
@@ -625,7 +625,8 @@ void CAI_Stalker::update_can_kill_info	()
 	m_can_kill_member		= false;
 	m_can_kill_enemy		= false;
 
-	Fvector					position, direction;
+	fVector3					position;
+	fVector3				direction;
 	VERIFY					(inventory().ActiveItem());
 	g_fireParams			(0,position,direction);
 	can_kill_entity_from	(position,direction,start_pick_distance());
@@ -826,7 +827,7 @@ f32 CAI_Stalker::missile_throw_force		()
 	return					(m_throw_force);
 }
 
-void CAI_Stalker::throw_target				(const Fvector &position)
+void CAI_Stalker::throw_target				(const fVector3& position)
 {
 	f32					distance_to_sqr = position.distance_to_sqr(m_throw_target);
 	m_throw_actual			= m_throw_actual && (distance_to_sqr < _sqr(.1f));
@@ -851,7 +852,7 @@ void CAI_Stalker::update_throw_params		()
 	m_throw_position		= eye_matrix.c;
 
 	// computing velocity with minimum magnitude
-	Fvector					velocity;
+	fVector3					velocity;
 	velocity.sub			(m_throw_target,m_throw_position);
 	f32					time = ThrowMinVelTime(velocity,ph_world->Gravity());
 	TransferenceToThrowVel	(velocity,time,ph_world->Gravity());

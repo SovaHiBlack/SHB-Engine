@@ -5,10 +5,10 @@ template<typename _Object>
 class	CStateBurerAttackRunAround : public CState<_Object> {
 	typedef CState<_Object>	inherited;
 
-	Fvector				selected_point;
+	fVector3				selected_point;
 	u32					time_started;
 
-	Fvector				dest_direction;
+	fVector3				dest_direction;
 
 public:
 						CStateBurerAttackRunAround	(_Object *obj);

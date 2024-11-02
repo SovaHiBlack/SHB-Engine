@@ -8,7 +8,7 @@ class CMotionStats {
 
 	struct elem {
 		f32	speed;
-		Fvector position;
+		fVector3 position;
 		TTime	time;
 	};
 

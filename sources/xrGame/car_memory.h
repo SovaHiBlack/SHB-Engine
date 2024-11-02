@@ -20,9 +20,9 @@ private:
 	f32				m_fov_deg;
 	f32				m_aspect;
 	f32				m_far_plane;
-	Fvector			m_view_position;
-	Fvector			m_view_direction;
-	Fvector			m_view_normal;
+	fVector3			m_view_position;
+	fVector3			m_view_direction;
+	fVector3			m_view_normal;
 
 public:
 					car_memory				(CCar *object);
@@ -31,9 +31,9 @@ public:
 
 	virtual	BOOL	feel_vision_isRelevant	(CObject *object);
 	virtual	void	camera					(
-						Fvector &position,
-						Fvector &direction,
-						Fvector &normal,
+		fVector3& position,
+		fVector3& direction,
+		fVector3& normal,
 		f32& field_of_view,
 		f32& aspect_ratio,
 		f32& near_plane,

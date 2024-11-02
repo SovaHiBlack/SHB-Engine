@@ -39,7 +39,7 @@ public:
 									CALifeSmartTerrainTask	(const shared_str &patrol_path_name, const u32 &patrol_point_index = 0);
 			GameGraph::_GRAPH_ID	game_vertex_id			() const;
 			u32						level_vertex_id			() const;
-			Fvector					position				() const;
+			fVector3					position				() const;
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

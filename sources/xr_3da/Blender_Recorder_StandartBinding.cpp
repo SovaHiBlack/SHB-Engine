@@ -97,7 +97,7 @@ static cl_times		binder_times;
 class cl_eye_P		: public R_constant_setup {
 	virtual void setup(R_constant* C)
 	{
-		Fvector&		V	= Device.vCameraPosition;
+		fVector3&		V	= Device.vCameraPosition;
 		RCache.set_c	(C,V.x,V.y,V.z,1);
 	}
 };
@@ -107,7 +107,7 @@ static cl_eye_P		binder_eye_P;
 class cl_eye_D		: public R_constant_setup {
 	virtual void setup(R_constant* C)
 	{
-		Fvector&		V	= Device.vCameraDirection;
+		fVector3&		V	= Device.vCameraDirection;
 		RCache.set_c	(C,V.x,V.y,V.z,0);
 	}
 };
@@ -117,7 +117,7 @@ static cl_eye_D		binder_eye_D;
 class cl_eye_N		: public R_constant_setup {
 	virtual void setup(R_constant* C)
 	{
-		Fvector&		V	= Device.vCameraTop;
+		fVector3&		V	= Device.vCameraTop;
 		RCache.set_c	(C,V.x,V.y,V.z,0);
 	}
 };
@@ -151,7 +151,7 @@ class cl_sun0_dir_e	: public R_constant_setup {
 	fVector4	result;
 	virtual void setup	(R_constant* C)	{
 		if (marker!=Device.dwFrame)	{
-			Fvector D;
+			fVector3 D;
 			CEnvDescriptor&	desc		= g_pGamePersistent->Environment().CurrentEnv;
 			Device.mView.transform_dir	(D,desc.sun_dir);
 			D.normalize					();

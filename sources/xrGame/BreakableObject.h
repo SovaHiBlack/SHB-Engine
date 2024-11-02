@@ -17,8 +17,8 @@ private:
 static	f32				m_damage_threshold;
 static	f32				m_health_threshhold;
 static	f32				m_immunity_factor;
-		Fvector				m_contact_damage_pos;
-		Fvector				m_contact_damage_dir;
+fVector3				m_contact_damage_pos;
+fVector3				m_contact_damage_dir;
 
 		f32				fHealth;
 		CPHStaticGeomShell	*m_pUnbrokenObject;
@@ -53,7 +53,7 @@ private:
 	void			ActivateBroken		();
 	void			Split				();
 	void			Break				();
-	void			ApplyExplosion		(const Fvector &dir, f32 impulse);
+	void			ApplyExplosion		(const fVector3& dir, f32 impulse);
 	void			CheckHitBreak		(f32 power,ALife::EHitType hit_type);
 	void			ProcessDamage		();
 	void			SendDestroy			();

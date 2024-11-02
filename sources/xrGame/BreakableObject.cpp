@@ -220,7 +220,8 @@ void CBreakableObject::Break()
 	u16 el_num=m_pPhysicsShell->get_ElementsNumber();
 	for(u16 i=0;i<el_num;i++)
 	{
-		Fvector pos,dir;
+		fVector3 pos;
+		fVector3 dir;
 		pos.set(Random.randF(-0.3f,0.3f),Random.randF(-0.3f,0.3f),Random.randF(-0.3f,0.3f));
 		dir.set(Random.randF(-0.3f,0.3f),Random.randF(-0.3f,0.3f),Random.randF(-0.3f,0.3f));
 		dir.normalize();
@@ -316,15 +317,14 @@ void CBreakableObject::CheckHitBreak(f32 power,ALife::EHitType hit_type)
 	if(hit_type==ALife::eHitTypeStrike)Break();
 }
 
-void CBreakableObject::ApplyExplosion(const Fvector &dir, f32 impulse)
+void CBreakableObject::ApplyExplosion(const fVector3& dir, f32 impulse)
 {
 	if(!m_pPhysicsShell) return;
-	Fvector pos;pos.set(0.f,0.f,0.f);
+	fVector3 pos;pos.set(0.0f,0.0f,0.0f);
 	u16 el_num=m_pPhysicsShell->get_ElementsNumber();
 	for(u16 i=0;i<el_num;i++)
-	{	
-		
-		Fvector max_area_dir;
+	{
+		fVector3 max_area_dir;
 		CPhysicsElement* element=m_pPhysicsShell->get_ElementByStoreOrder(i);
 		element->get_MaxAreaDir(max_area_dir);
 		f32 sign = max_area_dir.dotproduct(dir) > 0.0f ? 1.0f : -1.0f;

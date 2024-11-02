@@ -91,12 +91,12 @@ public:
 		self->base::spatial_move();
 	}
 
-	virtual	Fvector			spatial_sector_point		()
+	virtual	fVector3			spatial_sector_point		()
 	{
-		return	(call_member<Fvector>(this,"spatial_sector_point"));
+		return	(call_member<fVector3>(this,"spatial_sector_point"));
 	}
 
-	static	Fvector			spatial_sector_point_static	(base *self)
+	static	fVector3			spatial_sector_point_static	(base *self)
 	{
 		return	(self->base::spatial_sector_point());
 	}
@@ -221,7 +221,7 @@ typedef IRenderableWrapper<IRenderable,luabind::wrap_base> CIRenderableWrapper;
 ///**
 //	virtual BOOL			Ready				();
 //	virtual CObject*		H_SetParent			(CObject* O);
-//	virtual void			Center				(Fvector& C) const;
+//	virtual void			Center				(fVector3& C) const;
 //	virtual f32			Radius				() const;
 //	virtual const fBox3&		BoundingBox			() const;
 //	virtual void			Load				(pcstr section);
@@ -301,22 +301,22 @@ public:
 	IC						CEntityWrapper		() {}
 	virtual					~CEntityWrapper		() {}
 
-	virtual void			HitSignal			(f32 P, Fvector &local_dir,	CObject* who, s16 element)
+	virtual void			HitSignal			(f32 P, fVector3& local_dir,	CObject* who, s16 element)
 	{
 		luabind::call_member<void>(this,"HitSignal",P,local_dir,who,element);
 	}
 
-	static	void			HitSignal_static	(CEntity *self, f32 P, Fvector &local_dir,	CObject* who, s16 element)
+	static	void			HitSignal_static	(CEntity *self, f32 P, fVector3& local_dir,	CObject* who, s16 element)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function CEntity::HitSignal!");
 	}
 
-	virtual void			HitImpulse			(f32 P, Fvector &vWorldDir, 	Fvector& vLocalDir)
+	virtual void			HitImpulse			(f32 P, fVector3& vWorldDir, fVector3& vLocalDir)
 	{
 		luabind::call_member<void>(this,"HitImpulse",P,vWorldDir,vLocalDir);
 	}
 
-	static	void			HitImpulse_static	(f32 P, Fvector &vWorldDir, 	Fvector& vLocalDir)
+	static	void			HitImpulse_static	(f32 P, fVector3& vWorldDir, fVector3& vLocalDir)
 	{
 		ai().script_engine().script_log(eLuaMessageTypeError,"You are trying to call a pure virtual function CEntity::HitImpulse!");
 	}

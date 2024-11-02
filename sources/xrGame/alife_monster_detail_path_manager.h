@@ -24,7 +24,7 @@ private:
 	struct parameters {
 		GameGraph::_GRAPH_ID			m_game_vertex_id;
 		u32								m_level_vertex_id;
-		Fvector							m_position;
+		fVector3							m_position;
 	};
 
 private:
@@ -56,7 +56,7 @@ public:
 	IC		object_type	&object							() const;
 
 public:
-			void		target							(const GameGraph::_GRAPH_ID &game_vertex_id, const u32 &level_vertex_id, const Fvector &position);
+			void		target							(const GameGraph::_GRAPH_ID &game_vertex_id, const u32 &level_vertex_id, const fVector3& position);
 			void		target							(const GameGraph::_GRAPH_ID &game_vertex_id);
 			void		target							(const CALifeSmartTerrainTask &task);
 			void		target							(const CALifeSmartTerrainTask *task);
@@ -74,7 +74,7 @@ public:
 			bool		failed							() const;
 	IC		const PATH	&path							() const;
 	IC		const f32& walked_distance				() const;
-			Fvector		draw_level_position				() const;
+	fVector3		draw_level_position				() const;
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

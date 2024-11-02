@@ -46,13 +46,13 @@ void  CAmebaZone::Affect(SZoneObjectInfo* O)
 	sprintf_s(l_pow, "zone hit. %.1f", Power(distance_to_center(O->object)));
 	if(bDebug) Msg("%s %s",*pGameObject->cName(), l_pow);
 #endif
-	Fvector hit_dir; 
-	hit_dir.set(::Random.randF(-.5f,.5f), 
-		::Random.randF(.0f,1.f), 
-		::Random.randF(-.5f,.5f)); 
+	fVector3 hit_dir;
+	hit_dir.set(::Random.randF(-0.5f,0.5f), 
+		::Random.randF(0.0f,1.0f), 
+		::Random.randF(-0.5f,0.5f)); 
 	hit_dir.normalize();
 
-	Fvector position_in_bone_space;
+	fVector3 position_in_bone_space;
 
 	f32 power = Power(distance_to_center(O->object));
 	f32 impulse = m_fHitImpulseScale*power*pGameObject->GetMass();
@@ -83,7 +83,7 @@ void CAmebaZone::PhTune(dReal step)
 			CPHMovementControl* mc=EA->character_physics_support()->movement();
 			if(mc)
 			{
-				//Fvector vel;
+				//fVector3 vel;
 				//mc->GetCharacterVelocity(vel);
 				//vel.invert();
 				//vel.mul(mc->GetMass());
@@ -111,8 +111,9 @@ void CAmebaZone::SwitchZoneState(EZoneState new_state)
 
 f32 CAmebaZone::distance_to_center(CObject* O)
 {
-	Fvector P; 
+	fVector3 P;
 	XFORM().transform_tiny(P,CFORM()->getSphere().P);
-	Fvector OP;OP.set(O->Position());
+	fVector3 OP;
+	OP.set(O->Position());
 	return _sqrt((P.x-OP.x)*(P.x-OP.x)+(P.x-OP.x)*(P.x-OP.x));
 }

@@ -227,11 +227,11 @@ void CAI_Crow::state_Flying		(f32 fdt)
 static fVector3 vV={0.0f,0.0f,0.0f};
 void CAI_Crow::state_DeathFall()
 {
-	Fvector tAcceleration	;
+	fVector3 tAcceleration	;
 	tAcceleration.set		(0,-10.f,0);
 	if (m_pPhysicsShell)
 	{
-		Fvector velocity;
+		fVector3 velocity;
 		m_pPhysicsShell->get_LinearVel(velocity);
 		if(velocity.y>-0.001f) st_target = eDeathDead;
 	}
@@ -306,7 +306,7 @@ void CAI_Crow::shedule_Update		(u32 DT)
 		// At random times, change the direction (goal) of the plane
 		if(fGoalChangeTime<=0)	{
 			fGoalChangeTime += fGoalChangeDelta+fGoalChangeDelta*Random.randF(-0.5f,0.5f);
-			Fvector vP;
+			fVector3 vP;
 			vP.set(Device.vCameraPosition.x,Device.vCameraPosition.y+fMinHeight,Device.vCameraPosition.z);
 			vGoalDir.x		= vP.x+vVarGoal.x*Random.randF(-0.5f,0.5f); 
 			vGoalDir.y		= vP.y+vVarGoal.y*Random.randF(-0.5f,0.5f);
@@ -394,7 +394,7 @@ void CAI_Crow::net_Import	(NET_Packet& P)
 	XFORM().setHPB		(yaw,pitch,bank);
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitSignal	(f32 /**HitAmount/**/, Fvector& /**local_dir/**/, CObject* who, s16 /**element/**/)
+void CAI_Crow::HitSignal	(f32 /**HitAmount/**/, fVector3& /**local_dir/**/, CObject* who, s16 /**element/**/)
 {
 	//bool				first_time = !!g_Alive(); 
 //	bool				first_time = !PPhysicsShell(); 
@@ -408,7 +408,7 @@ void CAI_Crow::HitSignal	(f32 /**HitAmount/**/, Fvector& /**local_dir/**/, CObje
 	else smart_cast<CKinematicsAnimated*>(Visual())->PlayCycle(m_Anims.m_death_dead.GetRandom());
 }
 //---------------------------------------------------------------------
-void CAI_Crow::HitImpulse	(f32	/**amount/**/,		Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CAI_Crow::HitImpulse	(f32	/**amount/**/, fVector3& /**vWorldDir/**/, fVector3& /**vLocalDir/**/)
 {
 }
 //---------------------------------------------------------------------

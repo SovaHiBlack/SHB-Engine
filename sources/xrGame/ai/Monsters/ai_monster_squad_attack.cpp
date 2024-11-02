@@ -76,7 +76,7 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 		lines.push_back(last);
 	}
 
-	Fvector target_pos = enemy->Position();
+	fVector3 target_pos = enemy->Position();
 	f32	next_right_yaw	= delta_yaw;
 	f32	next_left_yaw	= delta_yaw;
 
@@ -97,7 +97,7 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 		f32 p1;
 		f32 h2;
 		f32 p2;
-		Fvector dir;
+		fVector3 dir;
 		dir.sub(target_pos, first.p_from);
 		dir.getHP(h1,p1);	
 		dir.sub(target_pos, cur_line.p_from);
@@ -127,7 +127,8 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 	// ѕройти по всем лини€м и заполнить таргеты у npc
 	f32 first_h;
 	f32 first_p;
-	Fvector d; d.sub(target_pos,first.p_from);
+	fVector3 d;
+	d.sub(target_pos,first.p_from);
 	d.getHP(first_h, first_p);
 
 	for (u32 i = 0; i < lines.size(); i++){

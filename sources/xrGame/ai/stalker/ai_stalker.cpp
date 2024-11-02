@@ -149,14 +149,14 @@ void CAI_Stalker::reinit			()
 	m_best_cover_value				= flt_max;
 
 	m_throw_actual					= false;
-	m_computed_object_position		= Fvector().set(flt_max,flt_max,flt_max);
-	m_computed_object_direction		= Fvector().set(flt_max,flt_max,flt_max);
+	m_computed_object_position		= fVector3().set(flt_max,flt_max,flt_max);
+	m_computed_object_direction		= fVector3().set(flt_max,flt_max,flt_max);
 
-	m_throw_target					= Fvector().set(flt_max,flt_max,flt_max);
+	m_throw_target					= fVector3().set(flt_max,flt_max,flt_max);
 
 	m_throw_force					= flt_max;
-	m_throw_position				= Fvector().set(flt_max,flt_max,flt_max);
-	m_throw_direction				= Fvector().set(flt_max,flt_max,flt_max);
+	m_throw_position				= fVector3().set(flt_max,flt_max,flt_max);
+	m_throw_direction				= fVector3().set(flt_max,flt_max,flt_max);
 
 	brain().CStalkerPlanner::m_storage.set_property	(StalkerDecisionSpace::eWorldPropertyCriticallyWounded,	false);
 
@@ -661,7 +661,7 @@ void CAI_Stalker::UpdateCL()
 	STOP_PROFILE
 }
 
-void CAI_Stalker ::PHHit				(f32 P,Fvector &dir, CObject *who,s16 element,Fvector p_in_object_space, f32 impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
+void CAI_Stalker ::PHHit				(f32 P, fVector3& dir, CObject *who,s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type /*ALife::eHitTypeWound*/)
 {
 	m_pPhysics_support->in_Hit(P,dir,who,element,p_in_object_space,impulse,hit_type,!g_Alive());
 }
@@ -692,7 +692,7 @@ void CAI_Stalker::shedule_Update		( u32 DT )
 	VERIFY				(!NET.empty());
 	while ((NET.size()>2) && (NET[1].dwTimeStamp<dwTimeCL)) NET.pop_front();
 
-	Fvector				vNewPosition = Position();
+	fVector3				vNewPosition = Position();
 	VERIFY				(_valid(Position()));
 	// *** general stuff
 	f32 dt			= f32(DT)/1000.0f;
@@ -754,7 +754,7 @@ void CAI_Stalker::shedule_Update		( u32 DT )
 		f32							temp = conditions().health();
 		if (temp > 0) {
 			START_PROFILE("stalker/schedule_update/feel_touch")
-			Fvector C;
+				fVector3 C;
 			f32 R;
 			Center(C);
 			R = Radius();
@@ -885,7 +885,7 @@ void CAI_Stalker::Think			()
 	STOP_PROFILE
 }
 
-void CAI_Stalker::SelectAnimation(const Fvector &view, const Fvector &move, f32 speed)
+void CAI_Stalker::SelectAnimation(const fVector3& view, const fVector3& move, f32 speed)
 {
 	if (!Device.Paused())
 		animation().update();
@@ -954,7 +954,7 @@ void CAI_Stalker::UpdateCamera			()
 {
 	f32								new_range = eye_range;
 	f32								new_fov = eye_fov;
-	Fvector								temp = eye_matrix.k;
+	fVector3								temp = eye_matrix.k;
 	if (g_Alive()) {
 		update_range_fov				(new_range, new_fov, memory().visual().current_state().m_max_view_distance*eye_range, eye_fov);
 		if (weapon_shot_effector().IsActive())

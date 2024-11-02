@@ -18,7 +18,7 @@ void CALifeMonsterDetailPathManager::script_register	(lua_State *L)
 	module(L)
 	[
 		class_<CALifeMonsterDetailPathManager>("CALifeMonsterDetailPathManager")
-			.def("target",		(void (CALifeMonsterDetailPathManager::*)(const GameGraph::_GRAPH_ID &, const u32 &, const Fvector &))(&CALifeMonsterDetailPathManager::target))
+			.def("target",		(void (CALifeMonsterDetailPathManager::*)(const GameGraph::_GRAPH_ID &, const u32 &, const fVector3&))(&CALifeMonsterDetailPathManager::target))
 			.def("target",		(void (CALifeMonsterDetailPathManager::*)(const GameGraph::_GRAPH_ID &))(&CALifeMonsterDetailPathManager::target))
 			.def("target",		(void (CALifeMonsterDetailPathManager::*)(const CALifeSmartTerrainTask *))(&CALifeMonsterDetailPathManager::target))
 			.def("speed	",		(void (CALifeMonsterDetailPathManager::*)(const f32&))(&CALifeMonsterDetailPathManager::speed))

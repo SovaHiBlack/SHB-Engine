@@ -32,10 +32,9 @@ void CCar::SExhaust::Init()
 	//element_transform.invert();
 	//transform.mulA(element_transform);
 	p_pgobject=CParticlesObject::Create(*pcar->m_exhaust_particles,FALSE);
-	Fvector zero_vector;
-	zero_vector.set(0.f,0.f,0.f);
+	fVector3 zero_vector;
+	zero_vector.set(0.0f,0.0f,0.0f);
 	p_pgobject->UpdateParent(pcar->XFORM(), zero_vector );
-
 }
 
 void CCar::SExhaust::Update()
@@ -45,9 +44,9 @@ void CCar::SExhaust::Update()
 	pelement->InterpolateGlobalTransform(&global_transform);
 	global_transform.mulB_43(transform);
 	dVector3 res;
-	Fvector	 res_vel;
+	fVector3	 res_vel;
 	dBodyGetPointVel(pelement->get_body(),global_transform.c.x,global_transform.c.y,global_transform.c.z,res);
-	CopyMemory (&res_vel,res,sizeof(Fvector));
+	CopyMemory (&res_vel,res,sizeof(fVector3));
 	//velocity.mul(0.95f);
 	//res_vel.mul(0.05f);
 	//velocity.add(res_vel);

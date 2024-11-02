@@ -6,7 +6,7 @@ class	CBloodsuckerStateAttack : public CStateMonsterAttack<_Object> {
 	typedef CStateMonsterAttack<_Object> inherited_attack;
 
 	u32				m_time_stop_invis;
-	Fvector			m_dir_point;
+	fVector3			m_dir_point;
 
 public:
 					CBloodsuckerStateAttack		(_Object *obj);
@@ -18,6 +18,7 @@ public:
 	virtual	void	critical_finalize			();
 	
 	virtual void	setup_substates				();
+
 private:
 			void	update_invisibility			();
 			bool	check_hiding				();

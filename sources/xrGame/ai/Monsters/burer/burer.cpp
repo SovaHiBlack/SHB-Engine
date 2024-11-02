@@ -187,15 +187,15 @@ void CBurer::UpdateGraviObject()
 		
 	if (dist < m_gravi_step) return;
 	
-	Fvector new_pos;
-	Fvector dir;
+	fVector3 new_pos;
+	fVector3 dir;
 	dir.sub(m_gravi_object.target_pos,m_gravi_object.cur_pos);
 	dir.normalize();
 	
 	new_pos.mad(m_gravi_object.cur_pos,dir,dist);
 
 	// Trace to enemy 
-	Fvector enemy_center;
+	fVector3 enemy_center;
 	m_gravi_object.enemy->Center(enemy_center);
 	dir.sub(enemy_center, new_pos);
 	dir.normalize();
@@ -221,7 +221,7 @@ void CBurer::UpdateGraviObject()
 			}
 			
 			if (b_enemy_visible) {
-				Fvector impulse_dir;
+				fVector3 impulse_dir;
 
 				impulse_dir.set(0.0f,0.0f,1.0f);
 				impulse_dir.normalize();
@@ -244,7 +244,7 @@ void CBurer::UpdateGraviObject()
 	fMatrix4x4 pos;
 	pos.identity();
 	pos.k.set(dir);
-	Fvector::generate_orthonormal_basis_normalized(pos.k,pos.j,pos.i);
+	fVector3::generate_orthonormal_basis_normalized(pos.k,pos.j,pos.i);
 	// установить позицию
 	pos.translate_over(m_gravi_object.cur_pos);
 
@@ -260,14 +260,14 @@ void CBurer::UpdateGraviObject()
 		CPhysicsShellHolder  *obj = smart_cast<CPhysicsShellHolder *>(m_nearest[i]);
 		if (!obj || !obj->m_pPhysicsShell) continue;
 		
-		Fvector dir;
+		fVector3 dir;
 		dir.sub(obj->Position(), m_gravi_object.cur_pos);
 		dir.normalize();
 		obj->m_pPhysicsShell->applyImpulse(dir,m_gravi_impulse_to_objects * obj->m_pPhysicsShell->getMass());
 	}
 
 	// играть звук
-	Fvector snd_pos = m_gravi_object.cur_pos;
+	fVector3 snd_pos = m_gravi_object.cur_pos;
 	snd_pos.y += 0.5f;
 	if (sound_gravi_wave._feedback())		{
 		sound_gravi_wave.set_position	(snd_pos);
@@ -295,7 +295,7 @@ void CBurer::StartGraviPrepare()
 	CActor *pA = const_cast<CActor *>(smart_cast<const CActor*>(enemy));
 	if (!pA) return;
 
-	pA->CParticlesPlayer::StartParticles(particle_gravi_prepare,Fvector().set(0.0f,0.1f,0.0f),pA->ID());
+	pA->CParticlesPlayer::StartParticles(particle_gravi_prepare, fVector3().set(0.0f,0.1f,0.0f),pA->ID());
 }
 void CBurer::StopGraviPrepare() 
 {
@@ -309,7 +309,7 @@ void CBurer::StartTeleObjectParticle(CGameObject *pO)
 {
 	CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(pO);
 	if(!PP) return;
-	PP->StartParticles(particle_tele_object,Fvector().set(0.0f,0.1f,0.0f),pO->ID());
+	PP->StartParticles(particle_tele_object, fVector3().set(0.0f,0.1f,0.0f),pO->ID());
 }
 void CBurer::StopTeleObjectParticle(CGameObject *pO) 
 {
@@ -324,13 +324,13 @@ void	CBurer::Hit								(SHit* pHDS)
 
 		// вычислить позицию и направленность партикла
 		fMatrix4x4 pos;
-		//CParticlesPlayer::MakeXFORM(this,element,Fvector().set(0.f,0.f,1.f),p_in_object_space,pos);
+		//CParticlesPlayer::MakeXFORM(this,element,fVector3().set(0.f,0.f,1.f),p_in_object_space,pos);
 		CParticlesPlayer::MakeXFORM(this,pHDS->bone(),pHDS->dir,pHDS->p_in_bone_space,pos);
 
 		// установить particles
 		CParticlesObject* ps = CParticlesObject::Create(particle_fire_shield,TRUE);
 		
-		ps->UpdateParent(pos,Fvector().set(0.f,0.f,0.f));
+		ps->UpdateParent(pos, fVector3().set(0.0f,0.0f,0.0f));
 		GamePersistent().ps_needtoplay.push_back(ps);
 
 	} else if (!m_shield_active)

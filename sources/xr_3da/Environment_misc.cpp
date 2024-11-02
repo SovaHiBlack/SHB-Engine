@@ -122,7 +122,7 @@ CEnvDescriptor::CEnvDescriptor()
 #define	C_CHECK(C)	if (C.x<0 || C.x>2 || C.y<0 || C.y>2 || C.z<0 || C.z>2)	{ Msg("! Invalid '%s' in env-section '%s'",#C,S);}
 void CEnvDescriptor::load	(pcstr exec_tm, pcstr S, CEnvironment* parent)
 {
-	Ivector3 tm				={0,0,0};
+	iVector3 tm				={0,0,0};
 	sscanf					(exec_tm,"%d:%d:%d",&tm.x,&tm.y,&tm.z);
 	R_ASSERT3				((tm.x>=0)&&(tm.x<24)&&(tm.y>=0)&&(tm.y<60)&&(tm.z>=0)&&(tm.z<60),"Incorrect weather time",S);
 	exec_time				= tm.x*3600.f+tm.y*60.f+tm.z;

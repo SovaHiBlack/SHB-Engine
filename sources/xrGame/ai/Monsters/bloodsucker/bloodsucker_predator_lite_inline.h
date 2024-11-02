@@ -146,7 +146,7 @@ void CStateBloodsuckerPredatorLiteAbstract::setup_substates()
 
 		SStateDataLookToPoint	data;
 
-		Fvector dir;
+		fVector3 dir;
 		object->CoverMan->less_cover_direction(dir);
 
 		data.point.mad			(object->Position(),dir,10.f);

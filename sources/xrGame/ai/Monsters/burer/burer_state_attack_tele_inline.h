@@ -144,7 +144,7 @@ bool CStateBurerAttackTeleAbstract::check_completion()
 //////////////////////////////////////////////////////////////////////////
 
 TEMPLATE_SPECIALIZATION
-void CStateBurerAttackTeleAbstract::FindFreeObjects(xr_vector<CObject*> &tpObjects, const Fvector &pos)
+void CStateBurerAttackTeleAbstract::FindFreeObjects(xr_vector<CObject*> &tpObjects, const fVector3& pos)
 {
 	Level().ObjectSpace.GetNearest	(tpObjects, pos, object->m_tele_find_radius, NULL);
 
@@ -182,11 +182,11 @@ void CStateBurerAttackTeleAbstract::FindObjects	()
 
 	// получить список объектов между монстром и врагом
 	f32 dist = object->EnemyMan.get_enemy()->Position().distance_to(object->Position());
-	Fvector dir;
+	fVector3 dir;
 	dir.sub(object->EnemyMan.get_enemy()->Position(), object->Position());
 	dir.normalize();
 
-	Fvector pos;
+	fVector3 pos;
 	pos.mad							(object->Position(), dir, dist / 2.f);
 	FindFreeObjects					(m_nearest, pos);	
 
@@ -250,7 +250,7 @@ void CStateBurerAttackTeleAbstract::ExecuteTeleFire()
 {
 	object->com_man().ta_pointbreak();
 
-	Fvector enemy_pos;
+	fVector3 enemy_pos;
 	enemy_pos	= get_head_position(const_cast<CEntityAlive*>(object->EnemyMan.get_enemy()));
 	object->CTelekinesis::fire_t(selected_object,enemy_pos, 0.55f);
 
@@ -291,10 +291,11 @@ bool CStateBurerAttackTeleAbstract::CheckTeleStart()
 // Выбор подходящих объектов для телекинеза
 //////////////////////////////////////////////////////////////////////////
 class best_object_predicate {
-	Fvector enemy_pos;
-	Fvector monster_pos;
+	fVector3 enemy_pos;
+	fVector3 monster_pos;
+
 public:
-	best_object_predicate(const Fvector &m_pos, const Fvector &pos) {
+	best_object_predicate(const fVector3& m_pos, const fVector3& pos) {
 		monster_pos = m_pos;
 		enemy_pos	= pos;
 	}
@@ -310,10 +311,11 @@ public:
 };
 
 class best_object_predicate2 {
-	Fvector enemy_pos;
-	Fvector monster_pos;
+	fVector3 enemy_pos;
+	fVector3 monster_pos;
+
 public:
-	best_object_predicate2(const Fvector &m_pos, const Fvector &pos) {
+	best_object_predicate2(const fVector3& m_pos, const fVector3& pos) {
 		monster_pos = m_pos;
 		enemy_pos	= pos;
 	}

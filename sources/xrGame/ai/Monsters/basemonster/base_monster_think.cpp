@@ -69,7 +69,7 @@ void CBaseMonster::post_fsm_update()
 	if (is_state(state, eStateAttack) && control().path_builder().is_moving_on_path()) {
 
 		f32	dir_yaw = control().path_builder().detail().direction().getH();
-		f32	yaw_target = Fvector().sub(EnemyMan.get_enemy()->Position(), Position()).getH();
+		f32	yaw_target = fVector3().sub(EnemyMan.get_enemy()->Position(), Position()).getH();
 
 		f32 angle_diff	= angle_difference(yaw_target, dir_yaw);
 

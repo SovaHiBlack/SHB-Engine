@@ -22,7 +22,7 @@ void CCameraFirstEye::Load(pcstr section)
 	style				= csFirstEye;
 }
 
-void CCameraFirstEye::Update(Fvector& point, Fvector& noise_dangle)
+void CCameraFirstEye::Update(fVector3& point, fVector3& noise_dangle)
 {
 	fMatrix4x4		mR;
 	fMatrix4x4		R;

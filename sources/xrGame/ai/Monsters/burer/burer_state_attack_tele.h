@@ -50,7 +50,7 @@ private:
 			void		SelectObjects			();
 
 			// internal for FindObjects
-			void		FindFreeObjects			(xr_vector<CObject*> &tpObjects, const Fvector &pos);
+			void		FindFreeObjects			(xr_vector<CObject*> &tpObjects, const fVector3& pos);
 
 private:
 };

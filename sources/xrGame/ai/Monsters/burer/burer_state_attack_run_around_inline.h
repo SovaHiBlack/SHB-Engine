@@ -21,10 +21,11 @@ void CStateBurerAttackRunAroundAbstract::initialize()
 	inherited::initialize		();
 
 	time_started				= Device.dwTimeGlobal;
-	dest_direction.set			(0.f,0.f,0.f);
+	dest_direction.set			(0.0f,0.0f,0.0f);
 
 	// select point
-	Fvector						dir_to_enemy, dir_from_enemy;
+	fVector3					dir_to_enemy;
+	fVector3					dir_from_enemy;
 	dir_to_enemy.sub			(object->EnemyMan.get_enemy()->Position(),object->Position());
 	dir_to_enemy.normalize		();
 

@@ -58,7 +58,7 @@ CMonsterEffectorHit::CMonsterEffectorHit(f32 time, f32 amp, f32 periods, f32 pow
 	offset.set		(Random.randF(1,2),Random.randF(1,6),Random.randF(1,6));
 }
 
-BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
+BOOL CMonsterEffectorHit::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	fLifeTime -= Device.fTimeDelta; if(fLifeTime<0) return FALSE;
 
@@ -76,7 +76,7 @@ BOOL CMonsterEffectorHit::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov,
 	f32 period_all	= period_number * PI_MUL_2;		// макс. значение цикла
 	f32 cur_amp		= max_amp * (PI / 180) * time_left_perc;
 
-	Fvector dangle;
+	fVector3 dangle;
 	dangle.x = cur_amp/offset.x	* _sin(period_all/offset.x	* (1.0f - time_left_perc));
 	dangle.y = cur_amp/offset.y	* _cos(period_all/offset.y	* (1.0f - time_left_perc));
 	dangle.z = cur_amp/offset.z	* _sin(period_all/offset.z	* (1.0f - time_left_perc));

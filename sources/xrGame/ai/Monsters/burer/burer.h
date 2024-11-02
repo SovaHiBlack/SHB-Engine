@@ -31,9 +31,9 @@ public:
 
 	struct	GraviObject {
 		bool		active;
-		Fvector		cur_pos;
-		Fvector		target_pos;
-		Fvector		from_pos;
+		fVector3		cur_pos;
+		fVector3		target_pos;
+		fVector3		from_pos;
 
 		u32			time_last_update;
 
@@ -45,7 +45,7 @@ public:
 		}
 		
 		
-		void		activate(const CEntityAlive *e, const Fvector &cp, const Fvector &tp) {
+		void		activate(const CEntityAlive *e, const fVector3& cp, const fVector3& tp) {
 			active				= true;
 			from_pos			= cp;
 			cur_pos				= cp;

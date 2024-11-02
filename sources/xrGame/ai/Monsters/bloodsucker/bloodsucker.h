@@ -32,7 +32,7 @@ public:
 	
 	virtual bool			use_center_to_aim		() const {return true;}
 	virtual bool			check_start_conditions	(ControlCom::EControlType);
-	virtual void			HitEntity				(const CEntity *pEntity, f32 fDamage, f32 impulse, Fvector &dir);
+	virtual void			HitEntity				(const CEntity *pEntity, f32 fDamage, f32 impulse, fVector3& dir);
 	
 	//--------------------------------------------------------------------
 	// Utils
@@ -45,7 +45,7 @@ public:
 private:
 	static	void			BoneCallback			(CBoneInstance *B);
 			void			vfAssignBones			();
-			void			LookDirection			(Fvector to_dir, f32 bone_turn_speed);
+			void			LookDirection			(fVector3 to_dir, f32 bone_turn_speed);
 
 
 	bonesManipulation		Bones;

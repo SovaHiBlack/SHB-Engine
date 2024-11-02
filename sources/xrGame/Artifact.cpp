@@ -110,8 +110,9 @@ BOOL CArtefact::net_Spawn(CSE_Abstract* DC)
 {
 	BOOL result = inherited::net_Spawn(DC);
 	if (*m_sParticlesName) 
-	{Fvector dir;
-		dir.set(0,1,0);
+	{
+		fVector3 dir;
+		dir.set(0.0f,1.0f,0.0f);
 		CParticlesPlayer::StartParticles(m_sParticlesName,dir,ID(),-1, false);
 	}
 
@@ -166,8 +167,8 @@ void CArtefact::OnH_B_Independent(bool just_before_destroy)
 	StartLights();
 	if (*m_sParticlesName) 
 	{
-		Fvector dir;
-		dir.set(0,1,0);
+		fVector3 dir;
+		dir.set(0.0f,1.0f,0.0f);
 		CParticlesPlayer::StartParticles(m_sParticlesName,dir,ID(),-1, false);
 	}
 }
@@ -185,12 +186,16 @@ void CArtefact::UpdateWorkload		(u32 dt)
 {
 	VERIFY(!ph_world->Processing());
 	// particles - velocity
-	Fvector vel = {0, 0, 0};
+	fVector3 vel = {0.0f, 0.0f, 0.0f};
 	if (H_Parent()) 
 	{
 		CPhysicsShellHolder* pPhysicsShellHolder = smart_cast<CPhysicsShellHolder*>(H_Parent());
-		if(pPhysicsShellHolder) pPhysicsShellHolder->PHGetLinearVell(vel);
+		if (pPhysicsShellHolder)
+		{
+			pPhysicsShellHolder->PHGetLinearVell(vel);
+		}
 	}
+
 	CParticlesPlayer::SetParentVel	(vel);
 
 	// 
@@ -211,15 +216,30 @@ void CArtefact::shedule_Update		(u32 dt)
 
 	//////////////////////////////////////////////////////////////////////////
 	// check "fast-mode" border
-	if (H_Parent())			o_switch_2_slow	();
-	else					{
-		Fvector	center;			Center(center);
+	if (H_Parent( ))
+	{
+		o_switch_2_slow( );
+	}
+	else
+	{
+		fVector3	center;
+		Center(center);
 		BOOL	rendering		= (Device.dwFrame==o_render_frame);
 		f32	cam_distance	= Device.vCameraPosition.distance_to(center)-Radius();
-		if (rendering || (cam_distance < FASTMODE_DISTANCE))	o_switch_2_fast	();
-		else													o_switch_2_slow	();
+		if (rendering || (cam_distance < FASTMODE_DISTANCE))
+		{
+			o_switch_2_fast( );
+		}
+		else
+		{
+			o_switch_2_slow( );
+		}
 	}
-	if (!o_fastmode)		UpdateWorkload	(dt);
+
+	if (!o_fastmode)
+	{
+		UpdateWorkload(dt);
+	}
 }
 
 void CArtefact::create_physic_shell	()
@@ -322,8 +342,10 @@ void CArtefact::UpdateXForm()
 		fMatrix4x4& mR			= V->LL_GetTransform(u16(boneR));
 
 		// Calculate
-		fMatrix4x4				mRes;
-		Fvector				R,D,N;
+		fMatrix4x4			mRes;
+		fVector3			R;
+		fVector3			D;
+		fVector3			N;
 		D.sub				(mL.c,mR.c);	D.normalize_safe();
 		R.crossproduct		(mR.j,D);		R.normalize_safe();
 		N.crossproduct		(D,R);			N.normalize_safe();
@@ -503,14 +525,15 @@ void SArtefactActivation::UpdateActivation()
 
 void SArtefactActivation::PhDataUpdate(dReal step)
 {
-	if (m_cur_activation_state==eFlying) {
-		Fvector dir	= {0, -1.f, 0};
-		if(Level().ObjectSpace.RayTest(m_af->Position(), dir, 1.0f, collide::rqtBoth,NULL,m_af) ){
-			dir.y = ph_world->Gravity()*1.1f; 
+	if (m_cur_activation_state == eFlying)
+	{
+		fVector3 dir = { 0.0f, -1.0f, 0.0f };
+		if (Level( ).ObjectSpace.RayTest(m_af->Position( ), dir, 1.0f, collide::rqtBoth, NULL, m_af))
+		{
+			dir.y = ph_world->Gravity( ) * 1.1f;
 			m_af->m_pPhysicsShell->applyGravityAccel(dir);
 		}
 	}
-
 }
 void SArtefactActivation::ChangeEffects()
 {
@@ -523,7 +546,7 @@ void SArtefactActivation::ChangeEffects()
 	if(state_def.m_snd.size()){
 		m_snd.create			(*state_def.m_snd,st_Effect,sg_SourceType);
 		m_snd.play_at_pos		(m_af,	m_af->Position());
-	};
+	}
 
 	m_light->set_range		(	state_def.m_light_range);
 	m_light->set_color		(	state_def.m_light_color.r,
@@ -531,19 +554,19 @@ void SArtefactActivation::ChangeEffects()
 								state_def.m_light_color.b);
 	
 	if(state_def.m_particle.size()){
-		Fvector dir;
-		dir.set(0,1,0);
+		fVector3 dir;
+		dir.set(0.0f,1.0f,0.0f);
 
 		m_af->CParticlesPlayer::StartParticles(	state_def.m_particle,
 												dir,
 												m_af->ID(),
 												iFloor(state_def.m_time*1000) );
-	};
+	}
+
 	if(state_def.m_animation.size()){
 		CKinematicsAnimated	*K=smart_cast<CKinematicsAnimated*>(m_af->Visual());
 		if(K)K->PlayCycle(*state_def.m_animation);
 	}
-
 }
 
 void SArtefactActivation::UpdateEffects()
@@ -565,7 +588,7 @@ void SArtefactActivation::SpawnAnomaly()
 	f32 zone_power	= (f32)atof(_GetItem(str,2,tmp));
 	pcstr zone_sect	= _GetItem(str,0,tmp); //must be last call of _GetItem... (LPCSTR !!!)
 
-		Fvector pos;
+	fVector3 pos;
 		m_af->Center(pos);
 		CSE_Abstract		*object = Level().spawn_item(	zone_sect,
 															pos,
