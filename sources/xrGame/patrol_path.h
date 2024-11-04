@@ -14,7 +14,7 @@
 class CPatrolPath : public CGraphAbstractSerialize<CPatrolPoint, f32,u32> {
 private:
 	struct CAlwaysTrueEvaluator {
-		IC	bool	operator()	(const Fvector &position) const
+		IC	bool	operator()	(const fVector3& position) const
 		{
 			return	(true);
 		}
@@ -34,8 +34,8 @@ public:
 			CPatrolPath		&load_raw		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, IReader &stream);
 	IC		const CVertex	*point			(shared_str name) const;
 	template <typename T>
-	IC		const CVertex	*point			(const Fvector &position, const T &evaluator) const;
-	IC		const CVertex	*point			(const Fvector &position) const;
+	IC		const CVertex* point(const fVector3& position, const T& evaluator) const;
+	IC		const CVertex* point(const fVector3& position) const;
 
 #ifdef DEBUG
 public:

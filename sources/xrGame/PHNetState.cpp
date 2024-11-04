@@ -263,7 +263,7 @@ void SPHBonesData::net_Load(NET_Packet &P)
 	}
 }
 
-void SPHBonesData::set_min_max(const Fvector& _min, const Fvector& _max)
+void SPHBonesData::set_min_max(const fVector3& _min, const fVector3& _max)
 {
 	VERIFY( !_min.similar(_max) );
 	m_min = _min;

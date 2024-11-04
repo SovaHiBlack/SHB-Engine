@@ -85,8 +85,8 @@ void SMusicTrack::Load(pcstr fn, pcstr params)
 
 void	SMusicTrack::Play()
 {
-	m_SourceLeft.play_at_pos	(0,Fvector().set(-0.5f,0.f,0.3f),sm_2D);
-	m_SourceRight.play_at_pos	(0,Fvector().set(+0.5f,0.f,0.3f),sm_2D);
+	m_SourceLeft.play_at_pos	(0, fVector3().set(-0.5f,0.0f,0.3f),sm_2D);
+	m_SourceRight.play_at_pos	(0, fVector3().set(+0.5f,0.0f,0.3f),sm_2D);
 	SetVolume					(1.0f);
 }
 

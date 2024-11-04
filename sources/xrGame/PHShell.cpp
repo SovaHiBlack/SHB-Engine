@@ -42,8 +42,6 @@ CPHShell::~CPHShell				()
 }
 CPHShell::CPHShell()
 {
-	//bActive=false;
-	//bActivating=false;
 	m_flags.assign(0);
 	m_flags.set(flActivating,FALSE);
 	m_flags.set(flActive,FALSE);

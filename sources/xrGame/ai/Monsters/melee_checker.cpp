@@ -11,12 +11,12 @@ f32 CMeleeChecker::distance_to_enemy(const CEntity *enemy)
 	f32 dist = enemy->Position().distance_to	(m_object->Position());
 	if (dist > MAX_TRACE_ENEMY_RANGE)			return dist;
 
-	Fvector					enemy_center;
+	fVector3					enemy_center;
 	enemy->Center			(enemy_center);
 
-	Fvector					my_head_pos = get_head_position(m_object);
+	fVector3					my_head_pos = get_head_position(m_object);
 	
-	Fvector					dir; 
+	fVector3					dir;
 	dir.sub					(enemy_center, my_head_pos);
 	dir.normalize_safe		();
 

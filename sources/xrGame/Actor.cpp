@@ -73,8 +73,6 @@ static f32 ICoincidenced = 0.0f;
 
 static fBox3		bbStandBox;
 static fBox3		bbCrouchBox;
-static fVector3	vFootCenter;
-static fVector3	vFootExt;
 
 flags32			psActorFlags = { 0 };
 

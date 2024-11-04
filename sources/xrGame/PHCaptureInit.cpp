@@ -209,23 +209,18 @@ CPHCapture::CPHCapture(CPHCharacter   *a_character,CPhysicsShellHolder	*a_taget_
 	}
 
 	Init(ini);
-
 }
-
-
 
 void CPHCapture::Init(CInifile* ini)
 {
-	Fvector dir;
-	Fvector capture_bone_position;
+	fVector3 dir;
+	fVector3 capture_bone_position;
 	capture_bone_position.set(m_capture_bone->mTransform.c);
 	b_character_feedback=true;
 	(m_character->PhysicsRefObject())->XFORM().transform_tiny(capture_bone_position);
 
-
 	m_taget_element->GetGlobalPositionDynamic(&dir);
 	dir.sub(capture_bone_position,dir);
-
 
 	m_pull_distance=ini->r_float("capture","pull_distance");
 	if(dir.magnitude()>m_pull_distance)

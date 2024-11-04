@@ -26,7 +26,7 @@ struct HUD_SOUND
 	static void		DestroySound	(	HUD_SOUND& hud_snd);
 
 	static void		PlaySound		(	HUD_SOUND& snd,
-									const Fvector& position,
+									const fVector3& position,
 									const CObject* parent,
 									bool hud_mode,
 									bool looped = false);
@@ -39,7 +39,7 @@ struct HUD_SOUND
 		else				return	FALSE;
 	}
 
-	ICF void		set_position	(const Fvector& pos)
+	ICF void		set_position	(const fVector3& pos)
 	{
 		if(m_activeSnd)	{ 
 			if (m_activeSnd->snd._feedback()&&!m_activeSnd->snd._feedback()->is_2D())	

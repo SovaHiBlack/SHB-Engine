@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CParticleParams::CParticleParams	(const Fvector &tPositionOffset, const Fvector &tAnglesOffset, const Fvector &tVelocity)
+IC	CParticleParams::CParticleParams(const fVector3& tPositionOffset, const fVector3& tAnglesOffset, const fVector3& tVelocity)
 {
 	m_tParticlePosition	= tPositionOffset;
 	m_tParticleAngles	= tAnglesOffset;

@@ -10,7 +10,7 @@ public:
 	{
 		geom=i;
 	}
-	void Positions(const Fvector *&p0,const Fvector *&p1);
+	void Positions(const fVector3*& p0,const fVector3*& p1);
 	IC CPHPositionsPairs& operator ++	()
 	{
 		++geom;

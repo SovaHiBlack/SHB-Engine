@@ -26,7 +26,7 @@ CLevelChanger::~CLevelChanger	()
 {
 }
 
-void CLevelChanger::Center		(Fvector& C) const
+void CLevelChanger::Center		(fVector3& C) const
 {
 	XFORM().transform_tiny		(C,CFORM()->getSphere().P);
 }
@@ -85,7 +85,7 @@ BOOL CLevelChanger::net_Spawn	(CSE_Abstract* DC)
 	BOOL						bOk = inherited::net_Spawn(DC);
 	if (bOk) {
 		l_pShape->ComputeBounds	();
-		Fvector					P;
+		fVector3					P;
 		XFORM().transform_tiny	(P,CFORM()->getSphere().P);
 		setEnabled				(TRUE);
 	}
@@ -98,7 +98,7 @@ void CLevelChanger::shedule_Update(u32 dt)
 	inherited::shedule_Update	(dt);
 
 	const Fsphere				&s = CFORM()->getSphere();
-	Fvector						P;
+	fVector3						P;
 	XFORM().transform_tiny		(P,s.P);
 	feel_touch_update			(P,s.R);
 
@@ -123,7 +123,8 @@ void CLevelChanger::feel_touch_new	(CObject *tpObject)
 		Level().Send(p,net_flags(TRUE));
 		return;
 	}
-	Fvector			p,r;
+	fVector3		p;
+	fVector3		r;
 	bool			b = get_reject_pos(p,r);
 	CUIGame		*pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
 	if (pGame)
@@ -132,7 +133,7 @@ void CLevelChanger::feel_touch_new	(CObject *tpObject)
 	m_entrance_time	= Device.fTimeGlobal;
 }
 
-bool CLevelChanger::get_reject_pos(Fvector& p, Fvector& r)
+bool CLevelChanger::get_reject_pos(fVector3& p, fVector3& r)
 {
 		p.set(0,0,0);
 		r.set(0,0,0);
@@ -150,7 +151,7 @@ bool CLevelChanger::get_reject_pos(Fvector& p, Fvector& r)
 			pt						= &patrol_path->vertex(0)->data();
 			p						= pt->position();
 
-			Fvector tmp;
+			fVector3 tmp;
 			pt						= &patrol_path->vertex(1)->data();
 			tmp.sub					(pt->position(),p);
 			tmp.getHP				(r.y,r.x);
@@ -176,7 +177,8 @@ void CLevelChanger::update_actor_invitation()
 
 		if(m_entrance_time+5.0f < Device.fTimeGlobal){
 			CUIGame* pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
-			Fvector p,r;
+			fVector3 p;
+			fVector3 r;
 			bool b = get_reject_pos(p,r);
 			if(pGame)pGame->ChangeLevel(m_game_vertex_id,m_level_vertex_id,m_position,m_angles,p,r,b);
 			m_entrance_time		= Device.fTimeGlobal;

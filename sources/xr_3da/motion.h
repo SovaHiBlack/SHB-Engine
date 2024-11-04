@@ -84,7 +84,7 @@ public:
 
 	void			Clear			();
 
-	void			_Evaluate		(f32 t, Fvector& T, Fvector& R);
+	void			_Evaluate		(f32 t, fVector3& T, fVector3& R);
 	virtual void	Save			(IWriter& F);
 	virtual bool	Load			(IReader& F);
 

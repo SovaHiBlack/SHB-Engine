@@ -42,7 +42,7 @@ BOOL CLevel::Load_GameSpecific_After()
 		u32				chunk = 0;
 		string256		ref_name;
 		fMatrix4x4			transform;
-		Fvector			zero_vel={0.f,0.f,0.f};
+		fVector3			zero_vel={0.0f,0.0f,0.0f};
 		for (IReader *OBJ = F->open_chunk_iterator(chunk); OBJ; OBJ = F->open_chunk_iterator(chunk,OBJ)) {
 			OBJ->r_stringZ				(ref_name,sizeof(ref_name));
 			OBJ->r						(&transform,sizeof(fMatrix4x4));

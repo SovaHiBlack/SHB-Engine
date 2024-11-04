@@ -41,12 +41,12 @@ namespace LevelGraph {
 	};
 
 	struct SSegment {
-		Fvector v1;
-		Fvector v2;
+		fVector3 v1;
+		fVector3 v2;
 	};
 
 	struct SContour : public SSegment {
-		Fvector v3;
-		Fvector v4;
+		fVector3 v3;
+		fVector3 v4;
 	};
 };

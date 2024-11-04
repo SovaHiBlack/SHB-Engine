@@ -42,7 +42,8 @@ void CLight_DB::Load			(IReader *fs)
 			F->r						(&controller,4);
 			F->r						(&Ldata,sizeof(Flight));
 			if (Ldata.type==D3DLIGHT_DIRECTIONAL)	{
-				Fvector tmp_R;		tmp_R.set(1,0,0);
+				fVector3 tmp_R;
+				tmp_R.set(1.0f,0.0f,0.0f);
 
 				// directional (base)
 				sun_original		= L;
@@ -59,7 +60,8 @@ void CLight_DB::Load			(IReader *fs)
 			}
 			else
 			{
-				Fvector tmp_D,tmp_R;
+				fVector3 tmp_D;
+				fVector3 tmp_R;
 				tmp_D.set			(0,0,-1);	// forward
 				tmp_R.set			(1,0,0);	// right
 
@@ -77,23 +79,6 @@ void CLight_DB::Load			(IReader *fs)
 		F->close			();
 	}
 	R_ASSERT2(sun_original && sun_adapted,"Where is sun?");
-
-	// fake spot
-	/*
-	if (0)
-	{
-		Fvector	P;			P.set(-5.58f,	-0.00f + 2, -3.63f);
-		Fvector	D;			D.set(0,-1,0);
-		light*	fake		= Create();
-		fake->set_type		(IRender_Light::SPOT);
-		fake->set_color		(1,1,1);
-		fake->set_cone		(deg2rad(60.f));
-		fake->set_direction	(D);
-		fake->set_position	(P);
-		fake->set_range		(3.f);
-		fake->set_active	(true);
-	}
-	*/
 }
 
 void			CLight_DB::Unload	()
@@ -161,7 +146,10 @@ void			CLight_DB::Update			()
 		}
 #endif
 		VERIFY2						(E.sun_dir.y<0,"Invalid sun direction settings in evironment-config");
-		Fvector						OD,OP,AD,AP;
+		fVector3						OD;
+		fVector3 OP;
+		fVector3 AD;
+		fVector3 AP;
 		OD.set						(E.sun_dir).normalize			();
 		OP.mad						(Device.vCameraPosition,OD,-500.f);
 		AD.set(0,-.75f,0).add		(E.sun_dir);

@@ -129,7 +129,7 @@ void Log(pcstr msg, f32 dop)
 	Log(buf);
 }
 
-void Log(pcstr msg, const Fvector& dop)
+void Log(pcstr msg, const fVector3& dop)
 {
 	char buf[1024];
 

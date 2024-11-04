@@ -6,12 +6,12 @@ class	ENGINE_API	IRender_DetailModel
 {
 public:
 	struct fvfVertexIn	{
-		Fvector	P;
+		fVector3	P;
 		f32		u;
 		f32		v;
 	};
 	struct fvfVertexOut	{
-		Fvector P;
+		fVector3 P;
 		u32		C;
 		f32		u;
 		f32		v;

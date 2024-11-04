@@ -25,8 +25,8 @@ struct SBullet
 	}				flags				;
 	u16				bullet_material_idx	;
 
-	Fvector			pos					;			//текущая позиция
-	Fvector			dir					;			
+	fVector3			pos					;			//текущая позиция
+	fVector3			dir					;
 	f32			speed				;			//текущая скорость
 	
 	u16				parent_id			;			//ID персонажа который иницировал действие
@@ -62,8 +62,8 @@ public:
 					SBullet				();
 					~SBullet			();
 
-	void			Init				(const	Fvector& position,
-										const	Fvector& direction,
+	void			Init				(const	fVector3& position,
+										const	fVector3& direction,
 										 f32	start_speed,
 										 f32	power,
 										 f32	impulse,
@@ -102,11 +102,12 @@ private:
 		BOOL				Repeated	;	// последовательное повторное попадание в динамический объект
 		_hit				result		;
 		SBullet				bullet		;
-		Fvector				normal		;
-		Fvector				point		;
+		fVector3				normal		;
+		fVector3				point		;
 		collide::rq_result	R			;
 		u16					tgt_material;
 	};
+
 protected:
 	SoundVec				m_WhineSounds		;
 	RStringVec				m_ExplodeParticles	;
@@ -146,14 +147,14 @@ protected:
 	f32 					m_fTracerLengthMin;
 
 protected:
-	void					PlayWhineSound		(SBullet* bullet, CObject* object, const Fvector& pos);
+	void					PlayWhineSound		(SBullet* bullet, CObject* object, const fVector3& pos);
 	void					PlayExplodePS		(const fMatrix4x4& xf);
 	//функция обработки хитов объектов
 	static BOOL 			test_callback		(const collide::ray_defs& rd, CObject* object, LPVOID params);
 	static BOOL				firetrace_callback	(collide::rq_result& result, LPVOID params);
 
 	// Deffer event
-	void					RegisterEvent		(EventType Type, BOOL _dynamic, SBullet* bullet, const Fvector& end_point, collide::rq_result& R, u16 target_material);
+	void					RegisterEvent		(EventType Type, BOOL _dynamic, SBullet* bullet, const fVector3& end_point, collide::rq_result& R, u16 target_material);
 	
 	//попадание по динамическому объекту
 	void					DynamicObjectHit	(_event& E);
@@ -162,12 +163,12 @@ protected:
 	void					StaticObjectHit		(_event& E);
 
 	//попадание по любому объекту, на выходе - импульс и сила переданные пулей объекту
-	_hit					ObjectHit			(SBullet* bullet, const Fvector& end_point, 
-												collide::rq_result& R, u16 target_material, Fvector& hit_normal);
+	_hit					ObjectHit			(SBullet* bullet, const fVector3& end_point,
+												collide::rq_result& R, u16 target_material, fVector3& hit_normal);
 	//отметка на пораженном объекте
-	void					FireShotmark		(SBullet* bullet, const Fvector& vDir, 
-												const Fvector &vEnd,    collide::rq_result& R,  u16 target_material,
-												const Fvector& vNormal, bool ShowMark = true);
+	void					FireShotmark		(SBullet* bullet, const fVector3& vDir,
+												const fVector3&vEnd,    collide::rq_result& R,  u16 target_material,
+												const fVector3& vNormal, bool ShowMark = true);
 	//просчет полета пули за некоторый промежуток времени
 	//принимается что на этом участке пуля движется прямолинейно
 	//и равномерно, а после просчета также изменяется текущая
@@ -182,7 +183,7 @@ public:
 
 	void 					Load				();
 	void 					Clear				();
-	void 					AddBullet			(const Fvector& position, const Fvector& direction, 
+	void 					AddBullet			(const fVector3& position, const fVector3& direction,
 												 f32 starting_speed, f32 power, f32 impulse,
 												u16	sender_id, u16 sendersweapon_id,
 												ALife::EHitType e_hit_type, f32 maximum_distance,

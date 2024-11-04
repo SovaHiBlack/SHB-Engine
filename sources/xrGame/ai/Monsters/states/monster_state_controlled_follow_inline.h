@@ -58,7 +58,7 @@ void CStateMonsterControlledFollowAbstract::setup_substates()
 		VERIFY(entity);
 		const CEntity *target_object = entity->get_data().m_object;
 
-		Fvector dest_pos = random_position(target_object->Position(), 10.f);
+		fVector3 dest_pos = random_position(target_object->Position(), 10.0f);
 		if (!object->control().path_builder().restrictions().accessible(dest_pos)) {
 			data.vertex		= object->control().path_builder().restrictions().accessible_nearest(dest_pos, data.point);
 		} else {

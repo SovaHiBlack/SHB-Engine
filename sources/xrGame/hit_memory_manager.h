@@ -58,7 +58,7 @@ public:
 
 public:
 			void				add					(const CEntityAlive	*who);
-			void				add					(f32 amount, const Fvector &local_direction, const CObject *who, s16 element);
+			void				add(f32 amount, const fVector3& local_direction, const CObject* who, s16 element);
 			void				add					(const CHitObject &hit_object);
 
 public:

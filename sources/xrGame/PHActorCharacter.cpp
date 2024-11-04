@@ -170,9 +170,12 @@ void SPHCharacterRestrictor::SetMaterial(u16 material)
 	dGeomGetUserData(m_restrictor)->material=material;
 }
 
-void CPHActorCharacter::SetAcceleration(Fvector accel)
+void CPHActorCharacter::SetAcceleration(fVector3 accel)
 {
-	Fvector cur_a,input_a; f32 cur_mug,input_mug;
+	fVector3 cur_a;
+	fVector3 input_a;
+	f32 cur_mug;
+	f32 input_mug;
 	cur_a.set(m_acceleration);cur_mug=m_acceleration.magnitude();
 	if(!fis_zero(cur_mug))cur_a.mul(1.f/cur_mug);
 	input_a.set(accel);input_mug=accel.magnitude();
@@ -181,7 +184,7 @@ void CPHActorCharacter::SetAcceleration(Fvector accel)
 						inherited::SetAcceleration(accel);
 }
 
-void CPHActorCharacter::Jump(const Fvector& accel)
+void CPHActorCharacter::Jump(const fVector3& accel)
 {
 	if(!b_exist) return;
 	if(!b_lose_control && (m_ground_contact_normal[1]>0.5f||m_elevator_state.ClimbingState()))

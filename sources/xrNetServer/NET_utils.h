@@ -52,7 +52,7 @@ public:
 
 	// writing - utilities
 	IC void	w_float		(f32 a       )	{ w(&a,4);					}			// float
-	IC void w_vec3		( const Fvector& a) { w(&a,3*sizeof(f32));	}			// vec3
+	IC void w_vec3		( const fVector3& a) { w(&a,3*sizeof(f32));	}			// vec3
 	IC void w_vec4		( const fVector4& a){ w(&a,4*sizeof(f32));	}			// vec4
 	IC void w_u64		( u64 a			)	{ w(&a,8);					}			// qword (8b)
 	IC void w_s64		( s64 a			)	{ w(&a,8);					}			// qword (8b)
@@ -81,11 +81,11 @@ public:
 	IC void w_angle8	(f32 a		)	{
 		w_float_q8	(angle_normalize(a),0,PI_MUL_2);
 	}
-	IC void w_dir		( const Fvector& D) {
+	IC void w_dir		( const fVector3& D) {
 		w_u16(pvCompress(D));
 	}
-	IC void w_sdir		( const Fvector& D) {
-		Fvector C;
+	IC void w_sdir		( const fVector3& D) {
+		fVector3 C;
 		f32 mag		= D.magnitude();
 		if (mag> EPSILON_7)	{
 			C.div		(D,mag);
@@ -187,7 +187,7 @@ public:
 	}
 
 	// reading - utilities
-	IC void		r_vec3			(Fvector& A)	{ r(&A,3*sizeof(f32));		} // vec3
+	IC void		r_vec3			(fVector3& A)	{ r(&A,3*sizeof(f32));		} // vec3
 	IC void		r_vec4			(fVector4& A)	{ r(&A,4*sizeof(f32));		} // vec4
 	IC void		r_float			(f32& A )		{ r(&A,4);						} // float
 	IC void 	r_u64			(u64& A)		{ r(&A,8);						} // qword (8b)
@@ -200,7 +200,7 @@ public:
 	IC void		r_u8			(u8&  A)		{ r(&A,1);						} // byte (1b)
 	IC void		r_s8			(s8&  A)		{ r(&A,1);						} // byte (1b)
 	// IReader compatibility
-	IC Fvector	r_vec3			()		{Fvector A;r(&A,3*sizeof(f32));	return(A);		} // vec3
+	IC fVector3	r_vec3			()		{fVector3 A;r(&A,3*sizeof(f32));	return(A);		} // vec3
 	IC fVector4	r_vec4			()		{fVector4 A;r(&A,4*sizeof(f32));	return(A);		} // vec4
 	IC f32	r_float_q8		(f32 min, f32 max){		f32 A;r_float_q8(A,min,max);return A;}
 	IC f32	r_float_q16		(f32 min, f32 max){ f32 A;r_float_q16(A,min,max);return A;}
@@ -231,9 +231,9 @@ public:
 	}
 	IC void		r_angle16		(f32& A)		{ r_float_q16	(A,0,PI_MUL_2);	}
 	IC void		r_angle8		(f32& A)		{ r_float_q8	(A,0,PI_MUL_2);	}
-	IC void		r_dir			(Fvector& A)	{ u16 t; r_u16(t); pvDecompress  (A,t); }
+	IC void		r_dir			(fVector3& A)	{ u16 t; r_u16(t); pvDecompress  (A,t); }
 
-	IC void		r_sdir			(Fvector& A)
+	IC void		r_sdir			(fVector3& A)
 	{
 		u16	t;
 		r_u16	(t);

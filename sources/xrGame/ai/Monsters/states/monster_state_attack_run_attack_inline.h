@@ -47,7 +47,7 @@ bool CStateMonsterAttackRunAttackAbstract::check_start_conditions()
 	if (!object->control().direction().is_face_target(object->EnemyMan.get_enemy(), deg(30))) return false;
 	
 	// try to build path
-	Fvector target_position;
+	fVector3 target_position;
 	target_position.mad(object->Position(), object->Direction(), object->db().m_run_attack_path_dist);
 	
 	//if (!object->control().path_builder().build_special(target_position, u32(-1), MonsterMovement::eVelocityParamsRunAttack)) return false;

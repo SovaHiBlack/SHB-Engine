@@ -60,7 +60,8 @@ void CLightProjector::set_object	(IRenderable* O)
 			return;
 		}
 
-		Fvector		C;	O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
+		fVector3		C;
+		O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
 		f32		R	= O->renderable.visual->vis.sphere.R;
 		f32		D	= C.distance_to	(Device.vCameraPosition)+R;
 
@@ -99,9 +100,9 @@ void CLightProjector::setup		(int id)
 	f32			dist		= R.C.distance_to	(Device.vCameraPosition)+Rd;
 	f32			factor		= _sqr(dist/clipD(Rd))*(1-ps_r1_lmodel_lerp) + ps_r1_lmodel_lerp;
 	RCache.set_c	(c_xform,	R.UVgen);
-	Fvector&	m	= R.UVclamp_min;
+	fVector3&	m	= R.UVclamp_min;
 	RCache.set_ca	(c_clamp,	0,m.x,m.y,m.z,factor);
-	Fvector&	M	= R.UVclamp_max;
+	fVector3&	M	= R.UVclamp_max;
 	RCache.set_ca	(c_clamp,	1,M.x,M.y,M.z,0);
 }
 
@@ -173,7 +174,8 @@ void CLightProjector::calculate	()
 		VERIFY2			(_valid(O->renderable.xform),"Invalid object transformation");
 		VERIFY2			(_valid(O->renderable.visual->vis.sphere.P),"Invalid object's visual sphere");
 
-		Fvector			C;		O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
+		fVector3			C;
+		O->renderable.xform.transform_tiny		(C,O->renderable.visual->vis.sphere.P);
 		R.O						= O;
 		R.C						= C;
 		R.C.y					+= O->renderable.visual->vis.sphere.R*0.1f;		//. YURA: 0.1 can be more
@@ -195,7 +197,9 @@ void CLightProjector::calculate	()
 		
 		// calculate view-matrix
 		fMatrix4x4		mView;
-		Fvector		v_C, v_Cs, v_N;
+		fVector3		v_C;
+		fVector3 v_Cs;
+		fVector3 v_N;
 		v_C.set					(R.C);
 		v_Cs					= v_C;
 		v_C.y					+=	P_cam_dist;
@@ -203,13 +207,14 @@ void CLightProjector::calculate	()
 		VERIFY					(_valid(v_C) && _valid(v_Cs) && _valid(v_N));
 
 		// validate
-		Fvector		v;
+		fVector3		v;
 		v.sub		(v_Cs,v_C);;
+
 #ifdef DEBUG
 		if ((v.x*v.x+v.y*v.y+v.z*v.z)<=flt_zero)	{
 			CObject* OO = dynamic_cast<CObject*>(R.O);
 			Msg("Object[%s] Visual[%s] has invalid position. ",*OO->cName(),*OO->cNameVisual());
-			Fvector cc;
+			fVector3 cc;
 			OO->Center(cc);
 			Log("center=",cc);
 
@@ -253,7 +258,7 @@ void CLightProjector::calculate	()
 		CHK_DX					(HW.pDevice->SetViewport(&VP));
 
 		// Clear color to ambience
-		Fvector&	cap			=	LT->get_approximate();
+		fVector3&	cap			=	LT->get_approximate();
 		CHK_DX					(HW.pDevice->Clear(0,0, D3DCLEAR_TARGET, color_rgba_f(cap.x,cap.y,cap.z, (cap.x+cap.y+cap.z)/4.f), 1, 0 ));
 
 		// calculate uv-gen matrix and clamper
@@ -278,7 +283,8 @@ void CLightProjector::calculate	()
 		R.UVgen.mulA_44			(mTemp);
 
 		// Build bbox and render
-		Fvector					min,max;
+		fVector3					min;
+		fVector3				max;
 		fBox3					BB;
 		min.set					(R.C.x-p_R,	R.C.y-(p_R+P_cam_range),	R.C.z-p_R);
 		max.set					(R.C.x+p_R,	R.C.y+0,					R.C.z+p_R);
@@ -327,7 +333,7 @@ void CLightProjector::render	()
 	Device.Resources->OnFrameEnd	();
 	for (u32 it=0; it<boxes.size(); it++)
 	{
-		Fvector C,D; boxes[it].get_CD	(C,D);
+		fVector3 C,D; boxes[it].get_CD	(C,D);
 		RCache.dbg_DrawAABB	(C,D.x,D.y,D.z,0xffffffff);
 	}
 	boxes.clear();

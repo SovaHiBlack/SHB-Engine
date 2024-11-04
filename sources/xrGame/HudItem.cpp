@@ -72,7 +72,7 @@ void CHudItem::net_Destroy()
 	m_dwStateTime		= 0;
 }
 
-void CHudItem::PlaySound	(HUD_SOUND& hud_snd, const Fvector& position)
+void CHudItem::PlaySound	(HUD_SOUND& hud_snd, const fVector3& position)
 {
 	HUD_SOUND::PlaySound	(hud_snd, position, object().H_Root(), !!GetHUDmode());
 }
@@ -208,20 +208,20 @@ void CHudItem::UpdateHudInertion		(fMatrix4x4& hud_trans)
 {
 	if (m_pHUD && m_bInertionAllow && m_bInertionEnable){
 		fMatrix4x4								xform;//,xform_orig; 
-		Fvector& origin						= hud_trans.c; 
+		fVector3& origin						= hud_trans.c;
 		xform								= hud_trans;
 
-		static Fvector						m_last_dir={0,0,0};
+		static fVector3						m_last_dir={0.0f,0.0f,0.0f};
 
 		// calc difference
-		Fvector								diff_dir;
+		fVector3								diff_dir;
 		diff_dir.sub						(xform.k, m_last_dir);
 
 		// clamp by PI_DIV_2
-		Fvector last;						last.normalize_safe(m_last_dir);
+		fVector3 last;						last.normalize_safe(m_last_dir);
 		f32 dot							= last.dotproduct(xform.k);
 		if (dot< EPSILON_5){
-			Fvector v0;
+			fVector3 v0;
 			v0.crossproduct			(m_last_dir,xform.k);
 			m_last_dir.crossproduct	(xform.k,v0);
 			diff_dir.sub			(xform.k, m_last_dir);

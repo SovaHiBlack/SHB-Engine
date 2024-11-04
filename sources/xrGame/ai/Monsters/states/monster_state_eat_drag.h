@@ -4,11 +4,11 @@ template<typename _Object>
 class CStateMonsterDrag : public CState<_Object> {
 	typedef CState<_Object>		inherited;
 
-	Fvector				m_cover_position;
+	fVector3				m_cover_position;
 	u32					m_cover_vertex_id;
 	
 	bool				m_failed;
-	Fvector				m_corpse_start_position;
+	fVector3				m_corpse_start_position;
 
 public:
 						CStateMonsterDrag		(_Object *obj);
@@ -21,6 +21,5 @@ public:
 
 	virtual bool		check_completion		();
 };
-
 
 #include "monster_state_eat_drag_inline.h"

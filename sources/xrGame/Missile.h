@@ -79,7 +79,7 @@ protected:
 	u32						m_dwDestroyTime;
 	u32						m_dwDestroyTimeMax;
 
-	Fvector					m_throw_direction;
+	fVector3					m_throw_direction;
 	fMatrix4x4					m_throw_matrix;
 
 	CMissile				*m_fake_missile;
@@ -93,11 +93,11 @@ protected:
 
 protected:
 	//относительная точка и направление вылета гранаты
-	Fvector					m_vThrowPoint;
-	Fvector					m_vThrowDir;
+	fVector3					m_vThrowPoint;
+	fVector3					m_vThrowDir;
 	//для HUD
-	Fvector					m_vHudThrowPoint;
-	Fvector					m_vHudThrowDir;
+	fVector3					m_vHudThrowPoint;
+	fVector3					m_vHudThrowDir;
 
 	//имена анимаций
 	shared_str				m_sAnimShow;

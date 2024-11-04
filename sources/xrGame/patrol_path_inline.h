@@ -19,7 +19,7 @@ IC	const CPatrolPath::CVertex *CPatrolPath::point	(shared_str name) const
 }
 
 template <typename T>
-IC	const CPatrolPath::CVertex *CPatrolPath::point	(const Fvector &position, const T &evaluator) const
+IC	const CPatrolPath::CVertex* CPatrolPath::point(const fVector3& position, const T& evaluator) const
 {
 	const CPatrolPath::CVertex	*nearest = 0;
 	f32						best_distance = flt_max;
@@ -37,7 +37,7 @@ IC	const CPatrolPath::CVertex *CPatrolPath::point	(const Fvector &position, cons
 	return						(nearest);
 }
 
-IC	const CPatrolPath::CVertex *CPatrolPath::point	(const Fvector &position) const
+IC	const CPatrolPath::CVertex* CPatrolPath::point(const fVector3& position) const
 {
 	return						(point(position,CAlwaysTrueEvaluator()));
 }

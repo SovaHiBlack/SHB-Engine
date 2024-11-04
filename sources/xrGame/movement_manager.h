@@ -157,7 +157,7 @@ private:
 	EPathState				m_path_state;
 	EPathType				m_path_type;
 	bool					m_enabled;
-	Fvector					m_on_disable_object_position;
+	fVector3					m_on_disable_object_position;
 	f32					m_old_desirable_speed;
 	bool					m_extrapolate_path;
 	bool					m_build_at_once;
@@ -198,7 +198,7 @@ public:
 	virtual void	reload					(pcstr caSection);
 	virtual BOOL	net_Spawn				(CSE_Abstract* data);
 	virtual void	net_Destroy				();
-	virtual	void	on_frame				(CPHMovementControl *movement_control, Fvector &dest_position);
+	virtual	void	on_frame				(CPHMovementControl *movement_control, fVector3& dest_position);
 	IC		bool	actual					() const;
 			bool	actual_all				() const;
 	IC		void	set_path_type			(EPathType path_type);
@@ -217,7 +217,7 @@ public:
 	IC		void	set_body_orientation	(const MonsterSpace::SBoneRotation &orientation);
 	IC		const CBoneRotation &body_orientation() const;
 			void	update_path				();
-	virtual	void	move_along_path			(CPHMovementControl *movement_control, Fvector &dest_position, f32 time_delta);
+	virtual	void	move_along_path			(CPHMovementControl *movement_control, fVector3& dest_position, f32 time_delta);
 
 	IC		f32	speed					() const;
 	f32	speed					(CPHMovementControl *movement_control) const;

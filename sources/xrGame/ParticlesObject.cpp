@@ -10,10 +10,9 @@
 #include "..\XR_3DA\render.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
-const Fvector zero_vel		= {0.f,0.f,0.f};
+const fVector3 zero_vel		= {0.0f,0.0f,0.0f};
 
-CParticlesObject::CParticlesObject	(pcstr p_name, BOOL bAutoRemove, bool destroy_on_game_load) :
-	inherited				(destroy_on_game_load)
+CParticlesObject::CParticlesObject(pcstr p_name, BOOL bAutoRemove, bool destroy_on_game_load) : inherited(destroy_on_game_load)
 {
 	Init					(p_name,0,bAutoRemove);
 }
@@ -75,7 +74,8 @@ void CParticlesObject::UpdateSpatial()
 	// spatial	(+ workaround occasional bug inside particle-system)
 	if (_valid(renderable.visual->vis.sphere))
 	{
-		Fvector	P;	f32	R;
+		fVector3	P;
+		f32	R;
 		renderable.xform.transform_tiny	(P,renderable.visual->vis.sphere.P);
 		R								= renderable.visual->vis.sphere.R;
 		if (0==spatial.type)	{
@@ -112,7 +112,7 @@ void CParticlesObject::Play		()
 	m_bStopping					= false;
 }
 
-void CParticlesObject::play_at_pos(const Fvector& pos, BOOL xform)
+void CParticlesObject::play_at_pos(const fVector3& pos, BOOL xform)
 {
 	IParticleCustom* V			= smart_cast<IParticleCustom*>(renderable.visual); VERIFY(V);
 	fMatrix4x4 m;
@@ -182,14 +182,14 @@ void CParticlesObject::SetXFORM			(const fMatrix4x4& m)
 	UpdateSpatial		();
 }
 
-void CParticlesObject::UpdateParent		(const fMatrix4x4& m, const Fvector& vel)
+void CParticlesObject::UpdateParent		(const fMatrix4x4& m, const fVector3& vel)
 {
 	IParticleCustom* V	= smart_cast<IParticleCustom*>(renderable.visual); VERIFY(V);
 	V->UpdateParent		(m,vel,FALSE);
 	UpdateSpatial		();
 }
 
-Fvector& CParticlesObject::Position		()
+fVector3& CParticlesObject::Position		()
 {
 	return renderable.visual->vis.sphere.P;
 }

@@ -18,7 +18,7 @@ namespace PS
 {
 	class CParticleEffect;
 
-	typedef BOOL ( * CollisionCallback)(CParticleEffect* E, PAPI::Particle& P, const Fvector& pt, const Fvector& norm); // TRUE-continue collision exec
+	typedef BOOL ( * CollisionCallback)(CParticleEffect* E, PAPI::Particle& P, const fVector3& pt, const fVector3& norm); // TRUE-continue collision exec
 	typedef void ( * DestroyCallback)	(CParticleEffect* E, PAPI::Particle& P);
 
 	class PFunction;
@@ -82,8 +82,8 @@ namespace PS
 	// def        
 		f32				m_fTimeLimit;			// time limit
 		int					m_MaxParticles;			// max particle count
-		Fvector				m_VelocityScale;		// velocity scale
-		Fvector				m_APDefaultRotation;	// align to path
+		fVector3				m_VelocityScale;		// velocity scale
+		fVector3				m_APDefaultRotation;	// align to path
 	// collision
 		f32 				m_fCollideOneMinusFriction;
 		f32 				m_fCollideResilience;

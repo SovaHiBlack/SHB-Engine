@@ -37,7 +37,7 @@ void CPHJoint::SetBackRef(CPhysicsJoint** j)
 void CPHJoint::CreateBall( )
 {
 	m_joint = dJointCreateBall(0, 0);
-	Fvector pos;
+	fVector3 pos;
 	fMatrix4x4 first_matrix;
 	fMatrix4x4 second_matrix;
 	CPHElement* first = (pFirst_element);
@@ -63,10 +63,10 @@ void CPHJoint::CreateHinge( )
 {
 	m_joint = dJointCreateHinge(0, 0);
 
-	Fvector pos;
+	fVector3 pos;
 	fMatrix4x4 first_matrix;
 	fMatrix4x4 second_matrix;
-	Fvector axis;
+	fVector3 axis;
 
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
@@ -115,22 +115,37 @@ void CPHJoint::CreateHinge2( )
 {
 	m_joint = dJointCreateHinge2(0, 0);
 
-	Fvector pos;
+	fVector3 pos;
 	fMatrix4x4 first_matrix;
 	fMatrix4x4 second_matrix;
-	Fvector axis;
+	fVector3 axis;
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
 	VERIFY(first && second);
 	first->GetGlobalTransformDynamic(&first_matrix);
 	second->GetGlobalTransformDynamic(&second_matrix);
-	pos.set(0, 0, 0);
+	pos.set(0.0f, 0.0f, 0.0f);
 	switch (vs_anchor)
 	{
-		case vs_first:first_matrix.transform_tiny(pos, anchor); break;
-		case vs_second:second_matrix.transform_tiny(pos, anchor); break;
-		case vs_global:pShell->mXFORM.transform_tiny(pos, anchor); break;
-		default:NODEFAULT;
+		case vs_first:
+		{
+			first_matrix.transform_tiny(pos, anchor);
+		}
+		break;
+		case vs_second:
+		{
+			second_matrix.transform_tiny(pos, anchor);
+		}
+		break;
+		case vs_global:
+		{
+			pShell->mXFORM.transform_tiny(pos, anchor);
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 	//////////////////////////////////////
 
@@ -188,10 +203,10 @@ void CPHJoint::CreateHinge2( )
 }
 void CPHJoint::CreateSlider( )
 {
-	Fvector pos;
+	fVector3 pos;
 	fMatrix4x4 first_matrix;
 	fMatrix4x4 second_matrix;
-	Fvector axis;
+	fVector3 axis;
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
 
@@ -202,13 +217,28 @@ void CPHJoint::CreateSlider( )
 	second->GetGlobalTransformDynamic(&second_matrix);
 	dBodyID body2 = body_for_joint(second);
 
-	pos.set(0, 0, 0);
+	pos.set(0.0f, 0.0f, 0.0f);
 	switch (vs_anchor)
 	{
-		case vs_first:first_matrix.transform_tiny(pos, anchor); break;
-		case vs_second:second_matrix.transform_tiny(pos, anchor); break;
-		case vs_global:pShell->mXFORM.transform_tiny(pos, anchor); break;
-		default:NODEFAULT;
+		case vs_first:
+		{
+			first_matrix.transform_tiny(pos, anchor);
+		}
+		break;
+		case vs_second:
+		{
+			second_matrix.transform_tiny(pos, anchor);
+		}
+		break;
+		case vs_global:
+		{
+			pShell->mXFORM.transform_tiny(pos, anchor);
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 	//////////////////////////////////////
 
@@ -219,12 +249,11 @@ void CPHJoint::CreateSlider( )
 		axes[0].vs = vs_first;
 		axes[1].vs = vs_first;
 	}
-	else
-		if (body2)
-		{
-			axes[0].vs = vs_second;
-			axes[1].vs = vs_second;
-		}
+	else if (body2)
+	{
+		axes[0].vs = vs_second;
+		axes[1].vs = vs_second;
+	}
 
 	m_joint1 = dJointCreateAMotor(0, 0);
 	dJointSetAMotorMode(m_joint1, dAMotorEuler);
@@ -296,10 +325,10 @@ void CPHJoint::CreateSlider( )
 #endif
 void CPHJoint::CreateFullControl( )
 {
-	Fvector pos;
+	fVector3 pos;
 	fMatrix4x4 first_matrix;
 	fMatrix4x4 second_matrix;
-	Fvector axis;
+	fVector3 axis;
 	CPHElement* first = (pFirst_element);
 	CPHElement* second = (pSecond_element);
 	VERIFY(first);
@@ -309,13 +338,28 @@ void CPHJoint::CreateFullControl( )
 	second->GetGlobalTransformDynamic(&second_matrix);
 	dBodyID body2 = body_for_joint(second);
 
-	pos.set(0, 0, 0);
+	pos.set(0.0f, 0.0f, 0.0f);
 	switch (vs_anchor)
 	{
-		case vs_first:first_matrix.transform_tiny(pos, anchor); break;
-		case vs_second:second_matrix.transform_tiny(pos, anchor); break;
-		case vs_global:pShell->mXFORM.transform_tiny(pos, anchor); break;
-		default:NODEFAULT;
+		case vs_first:
+		{
+			first_matrix.transform_tiny(pos, anchor);
+		}
+		break;
+		case vs_second:
+		{
+			second_matrix.transform_tiny(pos, anchor);
+		}
+		break;
+		case vs_global:
+		{
+			pShell->mXFORM.transform_tiny(pos, anchor);
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 	//////////////////////////////////////
 	m_joint = dJointCreateBall(0, 0);
@@ -449,13 +493,24 @@ void CPHJoint::SetLimits(const f32 low, const f32 high, const int axis_num)
 	LimitAxisNum(ax);
 	if (-1 == ax)return;
 
-	Fvector axis;
+	fVector3 axis;
 	switch (axes[ax].vs)
 	{
-		case vs_first:pFirst_element->mXFORM.transform_dir(axis, axes[ax].direction);	break;
-		case vs_second:pSecond_element->mXFORM.transform_dir(axis, axes[ax].direction); break;
+		case vs_first:
+		{
+			pFirst_element->mXFORM.transform_dir(axis, axes[ax].direction);
+		}
+		break;
+		case vs_second:
+		{
+			pSecond_element->mXFORM.transform_dir(axis, axes[ax].direction);
+		}
+		break;
 		case vs_global:
-		default:		axis.set(axes[ax].direction);
+		default:
+		{
+			axis.set(axes[ax].direction);
+		}
 	}
 
 	axes[ax].low = low;
@@ -474,7 +529,10 @@ void CPHJoint::SetLimits(const f32 low, const f32 high, const int axis_num)
 	axes[ax].zero = zer;
 	//m2.invert();
 	//axes[ax].zero_transform.set(m2);
-	if (bActive)SetLimitsActive(axis_num);
+	if (bActive)
+	{
+		SetLimitsActive(axis_num);
+	}
 }
 
 CPHJoint::CPHJoint(CPhysicsJoint::enumType type, CPhysicsElement* first, CPhysicsElement* second)
@@ -1055,7 +1113,7 @@ u16 CPHJoint::GetAxesNumber( )
 {
 	return u16(axes.size( ));
 }
-void CPHJoint::CalcAxis(int ax_num, Fvector& axis, f32& lo, f32& hi, const fMatrix4x4& first_matrix, const fMatrix4x4& second_matrix, const fMatrix4x4& rotate)
+void CPHJoint::CalcAxis(int ax_num, fVector3& axis, f32& lo, f32& hi, const fMatrix4x4& first_matrix, const fMatrix4x4& second_matrix, const fMatrix4x4& rotate)
 {
 	switch (axes[ax_num].vs)
 	{
@@ -1088,7 +1146,7 @@ void CPHJoint::CalcAxis(int ax_num, Fvector& axis, f32& lo, f32& hi, const fMatr
 	}
 }
 
-void CPHJoint::CalcAxis(int ax_num, Fvector& axis, f32& lo, f32& hi, const fMatrix4x4& first_matrix, const fMatrix4x4& second_matrix)
+void CPHJoint::CalcAxis(int ax_num, fVector3& axis, f32& lo, f32& hi, const fMatrix4x4& first_matrix, const fMatrix4x4& second_matrix)
 {
 	switch (axes[ax_num].vs)
 	{
@@ -1154,14 +1212,14 @@ void CPHJoint::GetLimits(f32& lo_limit, f32& hi_limit, int axis_num)
 	}
 }
 
-void CPHJoint::GetAxisDir(int num, Fvector& axis, eVs& vs)
+void CPHJoint::GetAxisDir(int num, fVector3& axis, eVs& vs)
 {
 	LimitAxisNum(num);
 	vs = axes[num].vs;
 	axis.set(axes[num].direction);
 }
 
-void CPHJoint::GetAxisDirDynamic(int num, Fvector& axis)
+void CPHJoint::GetAxisDirDynamic(int num, fVector3& axis)
 {
 	LimitAxisNum(num);
 	dVector3 result;
@@ -1178,14 +1236,13 @@ void CPHJoint::GetAxisDirDynamic(int num, Fvector& axis)
 		case full_control:			dJointGetAMotorAxis(m_joint1, num, result);
 			break;
 		case slider:				dJointGetSliderAxis(m_joint, result);
-
 	}
+
 	axis.set(result[0], result[1], result[2]);
 }
 
-void CPHJoint::GetAnchorDynamic(Fvector& anchor)
+void CPHJoint::GetAnchorDynamic(fVector3& anchor)
 {
-
 	dVector3 result;
 	switch (eType)
 	{

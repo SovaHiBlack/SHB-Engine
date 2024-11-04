@@ -9,7 +9,7 @@ protected:
 
 	u32					m_target_node;
 	bool				m_skip_camp;
-	Fvector				m_danger_pos;
+	fVector3				m_danger_pos;
 
 public:
 						CStateMonsterDangerMoveToHomePoint(_Object *obj);
@@ -22,8 +22,9 @@ public:
 
 	virtual	void		reselect_state			();
 	virtual	void		setup_substates			();
+
 private:
-			Fvector		&get_most_danger_pos	();
+	fVector3&			get_most_danger_pos	();
 };
 
 #include "monster_state_home_point_danger_inline.h"

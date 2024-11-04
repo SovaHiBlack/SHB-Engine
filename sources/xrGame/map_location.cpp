@@ -196,7 +196,7 @@ fVector2 CMapLocation::Direction()
 		if(!pObject)
 			res.set(0.0f, 0.0f);
 		else{
-			const Fvector& op = pObject->Direction();
+			const fVector3& op = pObject->Direction();
 			res.set(op.x, op.z);
 		}
 	}
@@ -407,7 +407,7 @@ void CMapLocation::UpdateSpot(CUICustomMap* map, CMapSpot* sp )
 				{
 					GameGraph::_GRAPH_ID gid = (*lit)->ai_location().game_vertex_id();
 					Msg("[%d]",gid);
-					Fvector p = ai().game_graph().vertex(gid)->level_point();
+					fVector3 p = ai().game_graph().vertex(gid)->level_point();
 					Msg("lch_name=%s pos=%f %f %f",*ai().game_graph().header().level(ai().game_graph().vertex(gid)->level_id()).name(), p.x, p.y, p.z);
 				}
 			}
@@ -437,7 +437,7 @@ void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp )
 		map->AttachChild(sp);
 
 		fVector2 tt = map->ConvertLocalToReal(m_position_on_map);
-		Fvector ttt;
+		fVector3 ttt;
 		ttt.set		(tt.x, 0.0f, tt.y);
 		f32 dist_to_target = Level().CurrentEntity()->Position().distance_to(ttt);
 		map->SetPointerDistance	(dist_to_target);
@@ -644,7 +644,7 @@ CUserDefinedMapLocation::~CUserDefinedMapLocation		()
 {
 }
 
-void CUserDefinedMapLocation::InitExternal(const shared_str& level_name, const Fvector& pos)
+void CUserDefinedMapLocation::InitExternal(const shared_str& level_name, const fVector3& pos)
 {
 	m_level_name		= level_name;
 	m_position_global	= pos;

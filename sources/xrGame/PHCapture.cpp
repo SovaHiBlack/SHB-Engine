@@ -79,7 +79,6 @@ void CPHCapture::PhTune(dReal /**step/**/)
 		break;
 	default: NODEFAULT;
 	}
-
 }
 
 void CPHCapture::PullingUpdate()
@@ -90,8 +89,8 @@ void CPHCapture::PullingUpdate()
 		return;
 	}
 
-	Fvector dir;
-	Fvector capture_bone_position;
+	fVector3 dir;
+	fVector3 capture_bone_position;
 	CObject* object=smart_cast<CObject*>(m_character->PhysicsRefObject());
 	capture_bone_position.set(m_capture_bone->mTransform.c);
 	object->XFORM().transform_tiny(capture_bone_position);
@@ -103,10 +102,11 @@ void CPHCapture::PullingUpdate()
 		Release();
 		return;
 	}
+
 	dir.mul(1.f/dist);
 	if(dist<m_capture_distance)
 	{
-		m_back_force=0.f;
+		m_back_force=0.0f;
 
 		m_joint=dJointCreateBall(0,0);
 		m_island.AddJoint(m_joint);
@@ -239,7 +239,7 @@ void CPHCapture::CapturedUpdate()
 		m_character->ApplyForce(m_joint_feedback.f1[0]/f,m_joint_feedback.f1[1]/f,m_joint_feedback.f1[2]/f);
 	}
 
-	Fvector capture_bone_position;
+	fVector3 capture_bone_position;
 	CObject* object=smart_cast<CObject*>(m_character->PhysicsRefObject());
 	capture_bone_position.set(m_capture_bone->mTransform.c);
 	object->XFORM().transform_tiny(capture_bone_position);

@@ -455,7 +455,6 @@ void CPHShellSplitterHolder::PhDataUpdate(dReal step)
 		case CPHShellSplitter::splJoint:
 			{
 				CPHJoint *j=m_pShell->joints[i->m_joint];
-				//if(j->bActive)
 				i->m_breaked=j->JointDestroyInfo()->Update()||i->m_breaked;
 				break;
 			}

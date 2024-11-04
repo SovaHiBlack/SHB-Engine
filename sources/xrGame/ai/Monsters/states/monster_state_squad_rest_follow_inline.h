@@ -72,7 +72,7 @@ void CStateMonsterSquadRestFollowAbstract::setup_substates()
 	if (current_substate == eStateSquad_RestFollow_WalkToPoint) {
 		SStateDataMoveToPointEx data;
 
-		Fvector dest_pos = monster_squad().get_squad(object)->GetCommand(object).position;
+		fVector3 dest_pos = monster_squad().get_squad(object)->GetCommand(object).position;
 		if (!object->control().path_builder().restrictions().accessible(dest_pos)) {
 			data.vertex		= object->control().path_builder().restrictions().accessible_nearest(dest_pos, data.point);
 		} else {

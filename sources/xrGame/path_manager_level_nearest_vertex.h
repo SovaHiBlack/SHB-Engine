@@ -63,7 +63,7 @@ protected:
 	int			x0,y0;
 	u32			max_range_sqr;
 	f32		m_cell_dist;
-	Fvector		m_target_position;
+	fVector3		m_target_position;
 	f32		m_best_distance_to_target;
 
 public:

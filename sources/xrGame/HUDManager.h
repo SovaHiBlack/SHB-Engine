@@ -66,7 +66,7 @@ public:
 		return pUI;
 	}
 
-	void		Hit(s32 idx, f32 power, const Fvector& dir);
+	void		Hit(s32 idx, f32 power, const fVector3& dir);
 	CFontManager& Font( )
 	{
 		return *(UI( )->Font( ));

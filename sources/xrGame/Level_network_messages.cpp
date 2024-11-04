@@ -118,14 +118,15 @@ void CLevel::ClientReceive()
 				for (u8 i=0; i<Count; i++)
 				{
 					u16 ID = P->r_u16();					
-					Fvector NewPos, NewDir;
+					fVector3 NewPos;
+					fVector3 NewDir;
 					P->r_vec3(NewPos);
 					P->r_vec3(NewDir);
 
 					CActor*	OActor	= smart_cast<CActor*>(Objects.net_Find		(ID));
 					if (0 == OActor)		break;
 					OActor->MoveActor(NewPos, NewDir);
-				};
+				}
 
 				NET_Packet PRespond;
 				PRespond.w_begin(M_MOVE_PLAYERS_RESPOND);

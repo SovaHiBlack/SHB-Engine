@@ -8,7 +8,7 @@ protected:
 	typedef CState<_Object>		inherited;
 	typedef CState<_Object>*	state_ptr;
 
-	Fvector		last_point;
+	fVector3		last_point;
 
 public:
 						CStateMonsterSquadRestFollow	(_Object *obj);

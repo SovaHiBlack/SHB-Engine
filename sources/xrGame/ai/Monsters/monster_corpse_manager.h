@@ -7,7 +7,7 @@ class CMonsterCorpseManager {
 	CBaseMonster			*monster;
 	
 	const CEntityAlive	*corpse;
-	Fvector				position;
+	fVector3				position;
 	u32					vertex;
 	TTime				time_last_seen;
 
@@ -24,7 +24,7 @@ public:
 	void				unforce_corpse			();
 
 	const CEntityAlive *get_corpse				() {return corpse;}
-	const Fvector		&get_corpse_position	() {return position;}
+	const fVector3&		get_corpse_position	() {return position;}
 	u32					get_corpse_vertex		() {return vertex;}
 	TTime				get_corpse_time_last_seen() {return time_last_seen;}
 

@@ -341,7 +341,7 @@ void CHUDManager::ShowCrosshair(bool show)
 	m_pHUDTarget->m_bShowCrosshair = show;
 }
 
-void CHUDManager::Hit(int idx, f32 power, const Fvector& dir)
+void CHUDManager::Hit(int idx, f32 power, const fVector3& dir)
 {
 	HitMarker.Hit(idx, dir);
 }

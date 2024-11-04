@@ -10,8 +10,8 @@
 
 struct	CLightR_Vertex
 {
-	Fvector			P;
-	Fvector			N;
+	fVector3			P;
+	fVector3			N;
 	f32				u0;
 	f32				v0;
 	f32				u1;

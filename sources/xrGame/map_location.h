@@ -38,7 +38,7 @@ protected:
 	u16						m_refCount;
 	int						m_ttl;
 	u32						m_actual_time;
-	Fvector					m_position_global; //last global position, actual time only current frame 
+	fVector3					m_position_global; //last global position, actual time only current frame 
 	fVector2 				m_position_on_map; //last position on parent map, actual time only current frame
 
 	struct SCachedValues{
@@ -84,7 +84,7 @@ public:
 	u16						Release							() {--m_refCount; return m_refCount;}
 	u16						ObjectID						() {return m_objectID;}
 	virtual		bool		Update							(); //returns actual
-	Fvector					GetLastPosition					() {return m_position_global;};
+	fVector3					GetLastPosition					() {return m_position_global;};
 	bool					Serializable					() const {return !!m_flags.test(eSerailizable);}
 	void					SetSerializable					(bool b) {m_flags.set(eSerailizable,b);}
 
@@ -126,7 +126,8 @@ class CUserDefinedMapLocation :public CMapLocation
 {
 	typedef CMapLocation inherited;
 	shared_str				m_level_name;
-	Fvector					m_position;
+	fVector3					m_position;
+
 public:
 	GameGraph::_GRAPH_ID	m_graph_id;
 							CUserDefinedMapLocation			(pcstr type, u16 object_id);
@@ -136,7 +137,7 @@ public:
 	virtual fVector2		Direction						();
 	virtual shared_str		LevelName						();
 
-			void			InitExternal					(const shared_str& level_name, const Fvector& pos);
+			void			InitExternal					(const shared_str& level_name, const fVector3& pos);
 	virtual void			save							(IWriter &stream);
 	virtual void			load							(IReader &stream);
 

@@ -10,7 +10,7 @@ struct SHitMark
 	f32			m_HitDirection;
 	CLAItem* m_lanim;
 
-	SHitMark(const ref_shader& sh, const Fvector& dir);
+	SHitMark(const ref_shader& sh, const fVector3& dir);
 	~SHitMark( );
 	bool			IsActive( );
 	void			UpdateAnim( );
@@ -29,6 +29,6 @@ public:
 	~CHitMarker( );
 
 	void					Render( );
-	void					Hit(s32 id, const Fvector& dir);
+	void					Hit(s32 id, const fVector3& dir);
 	void					InitShader(pcstr tex_name);
 };

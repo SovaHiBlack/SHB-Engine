@@ -1,20 +1,20 @@
 #include "stdafx.h"
 #include "ISpatial.h"
 
-extern Fvector	c_spatial_offset[8];
+extern fVector3	c_spatial_offset[8];
 
 template <bool b_first>
 class	walker
 {
 public:
 	u32				mask;
-	Fvector			center;
-	Fvector			size;
+	fVector3			center;
+	fVector3			size;
 	fBox3			box;
 	ISpatial_DB*	space;
 
 public:
-	walker					(ISpatial_DB*	_space, u32 _mask, const Fvector& _center, const Fvector&	_size)
+	walker					(ISpatial_DB*	_space, u32 _mask, const fVector3& _center, const fVector3&	_size)
 	{
 		mask	= _mask;
 		center	= _center;
@@ -22,7 +22,7 @@ public:
 		box.setb(center,size);
 		space	= _space;
 	}
-	void		walk		(ISpatial_NODE* N, Fvector& n_C, f32 n_R)
+	void		walk		(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 	{
 		// box
 		f32	n_vR	=		2*n_R;
@@ -38,7 +38,7 @@ public:
 			ISpatial*		S	= *_it;
 			if (0==(S->spatial.type&mask))	continue;
 
-			Fvector&		sC		= S->spatial.sphere.P;
+			fVector3&		sC		= S->spatial.sphere.P;
 			f32				sR		= S->spatial.sphere.R;
 			fBox3			sB;
 			sB.set	(sC.x-sR, sC.y-sR, sC.z-sR, sC.x+sR, sC.y+sR, sC.z+sR);
@@ -53,14 +53,18 @@ public:
 		for (u32 octant=0; octant<8; octant++)
 		{
 			if (0==N->children[octant])	continue;
-			Fvector		c_C;			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
+			fVector3		c_C;
+			c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 			walk						(N->children[octant],c_C,c_R);
-			if (b_first && !space->q_result->empty())	return;
+			if (b_first && !space->q_result->empty( ))
+			{
+				return;
+			}
 		}
 	}
 };
 
-void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector& _center, const Fvector& _size)
+void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const fVector3& _center, const fVector3& _size)
 {
 	cs.Enter			();
 	q_result			= &R;
@@ -70,8 +74,8 @@ void	ISpatial_DB::q_box			(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fve
 	cs.Leave			();
 }
 
-void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const Fvector& _center, const f32 _radius)
+void	ISpatial_DB::q_sphere		(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const fVector3& _center, const f32 _radius)
 {
-	Fvector			_size			= {_radius,_radius,_radius};
+	fVector3			_size			= {_radius,_radius,_radius};
 	q_box							(R,_o,_mask,_center,_size);
 }

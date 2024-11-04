@@ -47,12 +47,14 @@ CHOM::~CHOM()
 #pragma pack(push,4)
 struct HOM_poly			
 {
-	Fvector	v1,v2,v3;
+	fVector3	v1;
+	fVector3 v2;
+	fVector3 v3;
 	u32		flags;
 };
 #pragma pack(pop)
 
-IC f32	Area		(Fvector& v0, Fvector& v1, Fvector& v2)
+IC f32	Area		(fVector3& v0, fVector3& v1, fVector3& v2)
 {
 	f32	e1 = v0.distance_to(v1);
 	f32	e2 = v0.distance_to(v2);
@@ -96,9 +98,9 @@ void CHOM::Load			()
 	{
 		CDB::TRI&	clT = CL.getT()[it];
 		occTri&		rT	= m_pTris[it];
-		Fvector&	v0	= CL.getV()[clT.verts[0]];
-		Fvector&	v1	= CL.getV()[clT.verts[1]];
-		Fvector&	v2	= CL.getV()[clT.verts[2]];
+		fVector3&	v0	= CL.getV()[clT.verts[0]];
+		fVector3&	v1	= CL.getV()[clT.verts[1]];
+		fVector3&	v2	= CL.getV()[clT.verts[2]];
 		rT.adjacent[0]	= (0xffffffff==adjacency[3*it+0])?((occTri*) (-1)):(m_pTris+adjacency[3*it+0]);
 		rT.adjacent[1]	= (0xffffffff==adjacency[3*it+1])?((occTri*) (-1)):(m_pTris+adjacency[3*it+1]);
 		rT.adjacent[2]	= (0xffffffff==adjacency[3*it+2])?((occTri*) (-1)):(m_pTris+adjacency[3*it+2]);
@@ -130,10 +132,11 @@ void CHOM::Unload		()
 class	pred_fb	{
 public:
 	occTri*		m_pTris	;
-	Fvector		camera	;
+	fVector3		camera	;
+
 public:
 	pred_fb		(occTri* _t) : m_pTris(_t)	{}
-	pred_fb		(occTri* _t, Fvector& _c) : m_pTris(_t), camera(_c)	{}
+	pred_fb		(occTri* _t, fVector3& _c) : m_pTris(_t), camera(_c)	{}
 	ICF bool	operator()		(const CDB::RESULT& _1, const CDB::RESULT& _2) const {
 		occTri&	t0	= m_pTris	[_1.id];
 		occTri&	t1	= m_pTris	[_2.id];
@@ -156,7 +159,7 @@ void CHOM::Render_DB			(CFrustum& base)
 	CDB::RESULT*	it			= xrc.r_begin	();
 	CDB::RESULT*	end			= xrc.r_end		();
 	
-	Fvector			COP			= Device.vCameraPosition;
+	fVector3			COP			= Device.vCameraPosition;
 	end				= std::remove_if	(it,end,pred_fb(m_pTris));
 	std::sort		(it,end,pred_fb(m_pTris,COP));
 
@@ -181,6 +184,7 @@ void CHOM::Render_DB			(CFrustum& base)
 	clip.CreateFromMatrix		(Device.mFullTransform,FRUSTUM_P_NEAR);
 	sPoly						src,dst;
 	u32		_frame				= Device.dwFrame	;
+
 #ifdef DEBUG
 	tris_in_frame				= xrc.r_count();
 	tris_in_frame_visible		= 0;
@@ -199,7 +203,7 @@ void CHOM::Render_DB			(CFrustum& base)
 
 		// Access to triangle vertices
 		CDB::TRI& t		= m_pModel->get_tris()	[it->id];
-		Fvector*  v		= m_pModel->get_verts();
+		fVector3*  v		= m_pModel->get_verts();
 		src.clear		();	dst.clear	();
 		src.push_back	(v[t.verts[0]]);
 		src.push_back	(v[t.verts[1]]);
@@ -354,7 +358,7 @@ void CHOM::OnRender	()
 			static LVec	line;	line.resize(m_pModel->get_tris_count()*6);
 			for (int it=0; it<m_pModel->get_tris_count(); it++){
 				CDB::TRI* T		= m_pModel->get_tris()+it;
-				Fvector* verts	= m_pModel->get_verts();
+				fVector3* verts	= m_pModel->get_verts();
 				poly[it*3+0].set(*(verts+T->verts[0]),0x80FFFFFF);
 				poly[it*3+1].set(*(verts+T->verts[1]),0x80FFFFFF);
 				poly[it*3+2].set(*(verts+T->verts[2]),0x80FFFFFF);

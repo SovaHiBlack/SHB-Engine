@@ -28,13 +28,11 @@ public:
 	void				remove_links			(CObject *O);
 	
 	void				add_enemy				(const CEntityAlive *enemy);
-	void				add_enemy				(const CEntityAlive *enemy, const Fvector &pos, u32 vertex, u32 time);
+	void				add_enemy(const CEntityAlive* enemy, const fVector3& pos, u32 vertex, u32 time);
 
 private:
-
 	void				remove_non_actual		();
 
 	ENEMIES_MAP_IT		find_best_enemy			();
-
 };
 

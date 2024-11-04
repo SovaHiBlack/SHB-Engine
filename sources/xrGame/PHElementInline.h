@@ -9,7 +9,8 @@ IC void CPHElement::InverceLocalForm(fMatrix4x4& m)
 
 IC void CPHElement::MulB43InverceLocalForm(fMatrix4x4& m)
 {
-	Fvector ic;ic.set(m_mass_center);
+	fVector3 ic;
+	ic.set(m_mass_center);
 	ic.invert();
 	m.transform_dir(ic);
 	m.c.add(ic);

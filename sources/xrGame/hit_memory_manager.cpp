@@ -69,7 +69,7 @@ const CHitObject *CHitMemoryManager::hit					(const CEntityAlive *object) const
 
 void CHitMemoryManager::add					(const CEntityAlive *entity_alive)
 {
-	add						(0,Fvector().set(0,0,1),entity_alive,0);
+	add						(0.0f, fVector3().set(0.0f,0.0f,1.0f),entity_alive,0);
 }
 
 void CHitMemoryManager::Load				(pcstr section)
@@ -90,7 +90,7 @@ void CHitMemoryManager::reload				(pcstr section)
 	m_max_hit_count			= READ_IF_EXISTS(pSettings,r_s32,section,"DynamicHitCount",1);
 }
 
-void CHitMemoryManager::add					(f32 amount, const Fvector &vLocalDir, const CObject *who, s16 element)
+void CHitMemoryManager::add(f32 amount, const fVector3& vLocalDir, const CObject* who, s16 element)
 {
 #ifndef MASTER_GOLD
 	if (who && (who->CLS_ID == CLSID_OBJECT_ACTOR) && psAI_Flags.test(aiIgnoreActor))
@@ -115,7 +115,7 @@ void CHitMemoryManager::add					(f32 amount, const Fvector &vLocalDir, const COb
 		element
 	);
 
-	Fvector						direction;
+	fVector3						direction;
 	m_object->XFORM().transform_dir	(direction,vLocalDir);
 
 	const CEntityAlive			*entity_alive = smart_cast<const CEntityAlive*>(who);

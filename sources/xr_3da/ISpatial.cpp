@@ -7,7 +7,7 @@
 ENGINE_API ISpatial_DB*		g_SpatialSpace			= NULL;
 ENGINE_API ISpatial_DB*		g_SpatialSpacePhysic	= NULL;
 
-Fvector	c_spatial_offset	[8]	= 
+fVector3	c_spatial_offset	[8]	=
 {
 	{ -1, -1, -1	},
 	{  1, -1, -1	},
@@ -30,7 +30,7 @@ ISpatial::ISpatial			(ISpatial_DB* space)
 	spatial.sector			= NULL;
 	spatial.space			= space;
 }
-ISpatial::~ISpatial			(void)
+ISpatial::~ISpatial			( )
 {
 	spatial_unregister		();
 }
@@ -46,7 +46,7 @@ BOOL	ISpatial::spatial_inside()
 	return TRUE;
 }
 
-BOOL	verify_sp	(ISpatial* sp, Fvector& node_center, f32 node_radius)
+BOOL	verify_sp	(ISpatial* sp, fVector3& node_center, f32 node_radius)
 {
 	f32	dr	= -(- node_radius + sp->spatial.sphere.R);
 	if (sp->spatial.sphere.P.x < node_center.x - dr)	return FALSE;
@@ -151,17 +151,17 @@ ISpatial_DB::~ISpatial_DB()
 	}
 }
 
-
 void			ISpatial_DB::initialize(fBox3& BB)
 {
 	if (0==m_root)			
 	{
 		// initialize
-		Fvector bbc,bbd;
+		fVector3 bbc;
+		fVector3 bbd;
 		BB.get_CD				(bbc,bbd);
 
-		bbc.set					(0,0,0);			// generic
-		bbd.set					(1024,1024,1024);	// generic
+		bbc.set					(0.0f,0.0f,0.0f);			// generic
+		bbd.set					(1024.0f,1024.0f,1024.0f);	// generic
 
 		allocator_pool.reserve	(128);
 		m_center.set			(bbc);
@@ -190,7 +190,7 @@ void			ISpatial_DB::_node_destroy(ISpatial_NODE* &P)
 	P							= NULL;
 }
 
-void			ISpatial_DB::_insert	(ISpatial_NODE* N, Fvector& n_C, f32 n_R)
+void			ISpatial_DB::_insert	(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 {
 	//*** we are assured that object lives inside our node
 	f32	n_vR	= 2*n_R;
@@ -213,9 +213,10 @@ void			ISpatial_DB::_insert	(ISpatial_NODE* N, Fvector& n_C, f32 n_R)
 	if (s_R<c_R)
 	{
 		// object can be pushed further down - select "octant", calc node position
-		Fvector&	s_C					=	rt_insert_object->spatial.sphere.P;
+		fVector3&	s_C					=	rt_insert_object->spatial.sphere.P;
 		u32			octant				=	_octant	(n_C,s_C);
-		Fvector		c_C;				c_C.mad	(n_C,c_spatial_offset[octant],c_R);
+		fVector3		c_C;
+		c_C.mad	(n_C,c_spatial_offset[octant],c_R);
 		VERIFY			(octant == _octant(n_C,c_C));				// check table assosiations
 		ISpatial_NODE*	&chield			= N->children[octant];
 

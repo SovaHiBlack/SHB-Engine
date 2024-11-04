@@ -16,7 +16,7 @@ public:
 	virtual void	setup_substates						();
 
 private:
-			Fvector	get_target_position					();
+	fVector3	get_target_position					();
 
 };
 

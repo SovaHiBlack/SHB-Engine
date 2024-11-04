@@ -22,7 +22,7 @@ public:
 	mask_type			m_mask;
 	mask_type			m_distribute_mask;
 	f32				m_probability;
-	Fvector				m_enemy_position;
+	fVector3				m_enemy_position;
 	u32					m_level_time;
 
 public:

@@ -79,9 +79,9 @@ void CMonsterHitMemory::remove_non_actual()
 	);
 }
 
-Fvector CMonsterHitMemory::get_last_hit_dir()
+fVector3 CMonsterHitMemory::get_last_hit_dir()
 {
-	Fvector			dir = monster->Direction();
+	fVector3			dir = monster->Direction();
 
 	// найти последний по времени хит
 	SMonsterHit		last_hit;
@@ -143,7 +143,7 @@ CObject	*CMonsterHitMemory::get_last_hit_object()
 	return last_hit.object;
 }
 
-Fvector CMonsterHitMemory::get_last_hit_position()
+fVector3 CMonsterHitMemory::get_last_hit_position()
 {
 	SMonsterHit		last_hit;
 	last_hit.time	= 0;

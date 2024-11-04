@@ -48,7 +48,8 @@ namespace PS
 	{
 		const CPGDef*		m_Def;
 		f32				m_CurrentTime;
-		Fvector				m_InitialPosition;
+		fVector3				m_InitialPosition;
+
 	public:
 		DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
 		struct SItem		{
@@ -75,7 +76,7 @@ namespace PS
 			void			StopRelatedChild	(u32 idx);
 			void			StartFreeChild		(CParticleEffect* emitter, pcstr eff_name, PAPI::Particle& m);
 
-			void 			UpdateParent	(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM);
+			void 			UpdateParent	(const fMatrix4x4& m, const fVector3& velocity, BOOL bXFORM);
 			void			OnFrame			(u32 u_dt, const CPGDef::SEffect& def, fBox3& box, bool& bPlaying);
 
 			u32				ParticlesCount	();
@@ -102,7 +103,7 @@ namespace PS
 		virtual void 		OnDeviceCreate	();
 		virtual void 		OnDeviceDestroy	();
 
-		virtual void		UpdateParent	(const fMatrix4x4& m, const Fvector& velocity, BOOL bXFORM);
+		virtual void		UpdateParent	(const fMatrix4x4& m, const fVector3& velocity, BOOL bXFORM);
 
 		BOOL				Compile			(CPGDef* def);
 

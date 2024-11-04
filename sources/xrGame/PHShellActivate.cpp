@@ -51,15 +51,11 @@ void CPHShell::Activate(const fMatrix4x4& m0, f32 dt01,const fMatrix4x4& m2,bool
 		SetCallbacks(GetBonesCallback());
 	}
 
-	//bActive=true;
-	//bActivating=true;
 	m_flags.set(flActive,TRUE);
 	m_flags.set(flActivating,TRUE);
 	spatial_register();
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
-	//mXFORM.set(m0);
-	//Activate(disable);
 	fVector3 lin_vel;
 	lin_vel.sub(m2.c,m0.c);
 	set_LinearVel(lin_vel);
@@ -85,21 +81,11 @@ void CPHShell::Activate(const fMatrix4x4& transform,const fVector3& lin_vel,cons
 	{
 		SetCallbacks(GetBonesCallback());
 	}
+
 	spatial_register();
-	//bActive=true;
-	//bActivating=true;
 	m_flags.set(flActivating,TRUE);
 	m_flags.set(flActive,TRUE);
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-	//mXFORM.set(transform);
-	//Activate(disable);
-	//set_LinearVel(lin_vel);
-	//set_AngularVel(ang_vel);
-
 }
-
-
 
 void CPHShell::Activate(bool disable)
 { 
@@ -174,7 +160,7 @@ void CPHShell::AfterSetActive()
 {
 	if(isActive())	return;
 	PureActivate();
-	//bActive=true;
+
 	m_flags.set(flActive,TRUE);
 	ELEMENT_I i=elements.begin(),e=elements.end();
 	for(;i!=e;++i)(*i)->PresetActive();
@@ -184,7 +170,7 @@ void CPHShell::AfterSetActive()
 void CPHShell::PureActivate()
 {
 	if(isActive())	return;
-	//bActive=true;
+
 	m_flags.set(flActive,TRUE);
 	if(!CPHObject::is_active()) vis_update_deactivate();
 	EnableObject(0);
@@ -239,17 +225,17 @@ void CPHShell::Deactivate(){
 		(*i)->Deactivate();
 
 	JOINT_I j;
-	for(j=joints.begin();joints.end() != j;++j)
-		(*j)->Deactivate();
+	for (j = joints.begin( ); joints.end( ) != j; ++j)
+	{
+		(*j)->Deactivate( );
+	}	
 
-	
-
-	if(m_space) {
+	if (m_space)
+	{
 		dSpaceDestroy(m_space);
-		m_space=NULL;
+		m_space = NULL;
 	}
-	//bActive=false;
-	//bActivating=false;
+
 	m_flags.set(flActivating,FALSE);
 	m_flags.set(flActive,FALSE);
 	m_traced_geoms.clear();

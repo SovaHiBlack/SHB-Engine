@@ -20,10 +20,10 @@ private:
 	typedef	R_dsgraph::_MatrixItem	NODE;		
 	struct	recv			{
 		IRenderable*		O			;
-		Fvector				C			;
+		fVector3				C			;
 		fMatrix4x4				UVgen		;
-		Fvector				UVclamp_min	;
-		Fvector				UVclamp_max	;
+		fVector3				UVclamp_min	;
+		fVector3				UVclamp_max	;
 		fBox3				BB			;
 		DWORD				dwFrame		;
 		DWORD				dwTimeValid	;

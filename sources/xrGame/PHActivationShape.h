@@ -28,11 +28,11 @@ public:
 
 							CPHActivationShape		( );
 							~CPHActivationShape		( );
-	void					Create					(const Fvector start_pos, const Fvector start_size, CPhysicsShellHolder* ref_obj, EType type = etBox, u16 flags = 0);
+	void					Create					(const fVector3 start_pos, const fVector3 start_size, CPhysicsShellHolder* ref_obj, EType type = etBox, u16 flags = 0);
 	void					Destroy					( );
-	bool					Activate				(const Fvector need_size, u16 steps, f32 max_displacement, f32 max_rotation, bool un_freeze_later = false);
-	const Fvector&			Position				( );
-	void					Size					(Fvector& size);
+	bool					Activate				(const fVector3 need_size, u16 steps, f32 max_displacement, f32 max_rotation, bool un_freeze_later = false);
+	const fVector3&			Position				( );
+	void					Size					(fVector3& size);
 	dBodyID					ODEBody					( )
 	{
 		return m_body;

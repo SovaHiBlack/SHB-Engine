@@ -103,9 +103,9 @@ public:
 	virtual void		Create								(dVector3 sizes);
 	virtual void		Destroy								(void);
 	virtual void		SetPhysicsRefObject					(CPhysicsShellHolder* ref_object);
-	virtual void		SetAcceleration						(Fvector accel);
+	virtual void		SetAcceleration						(fVector3 accel);
 	virtual	void		Disable								();
-	virtual	void		Jump								(const Fvector& jump_velocity);
+	virtual	void		Jump								(const fVector3& jump_velocity);
 	virtual void		InitContact							(dContact* c,bool &do_collide,u16	material_idx_1 ,u16 material_idx_2);
 			void		SetRestrictorRadius					(CPHCharacter::ERestrictionType rtype, f32 r);
 virtual		void		ChooseRestrictionType				(ERestrictionType my_type, f32 my_depth,CPHCharacter *ch);

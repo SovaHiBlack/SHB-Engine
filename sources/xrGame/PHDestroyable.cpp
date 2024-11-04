@@ -278,7 +278,7 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 			f32 random_hit=random_min*e->getMass();
 			if(m_fatal_hit.is_valide() && m_fatal_hit.bone()!=BI_NONE )
 			{
-				Fvector pos;
+				fVector3 pos;
 				fMatrix4x4 m;
 				m.set(own_K->LL_GetTransform(m_fatal_hit.bone()));
 				m.mulA_43		(PPhysicsShellHolder()->XFORM());
@@ -286,15 +286,18 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate *dn)
 				e->applyImpulseVsGF(pos,m_fatal_hit.direction(),m_fatal_hit.phys_impulse()*imp_transition_factor);
 				random_hit+=random_hit_imp*m_fatal_hit.phys_impulse();
 			}
-			Fvector rnd_dir;rnd_dir.random_dir();
+			fVector3 rnd_dir;
+			rnd_dir.random_dir();
 			e->applyImpulse(rnd_dir,random_hit);
-			Fvector mc; mc.set(e->mass_Center());
+			fVector3 mc;
+			mc.set(e->mass_Center());
 			dVector3 res_lvell;
 			dBodyGetPointVel(own_body,mc.x,mc.y,mc.z,res_lvell);
 			cast_fv(res_lvell).mul(lv_transition_factor);
 			e->set_LinearVel(cast_fv(res_lvell));
 			
-			Fvector res_avell;res_avell.set(cast_fv(dBodyGetAngularVel(own_body)));
+			fVector3 res_avell;
+			res_avell.set(cast_fv(dBodyGetAngularVel(own_body)));
 			res_avell.mul(av_transition_factor);
 			e->set_AngularVel(res_avell);
 		}

@@ -137,7 +137,8 @@ public:
 		if(dV_valid(linear_velocity))
 		{
 			dReal mag;
-			Fvector vlinear_velocity;vlinear_velocity.set(cast_fv(linear_velocity));
+			fVector3 vlinear_velocity;
+			vlinear_velocity.set(cast_fv(linear_velocity));
 			mag=_sqrt(linear_velocity[0]*linear_velocity[0]+linear_velocity[2]*linear_velocity[2]);//
 			if(mag>l_limit)
 			{
@@ -293,18 +294,29 @@ private:
 
 bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_steps/*5*/, f32 resolve_depth/*=0.01f*/)
 {
-	bool  character_exist=CharacterExist();
+	bool character_exist=CharacterExist();
 	if(character_exist&&trying_times[id]!=u32(-1))
 	{
-		Fvector dif;dif.sub(trying_poses[id],cast_fv(dBodyGetPosition(m_character->get_body())));
-		if(Device.dwTimeGlobal-trying_times[id]<500&&dif.magnitude()<0.05f)
-																	return false;
+		fVector3 dif;
+		dif.sub(trying_poses[id],cast_fv(dBodyGetPosition(m_character->get_body())));
+		if (Device.dwTimeGlobal - trying_times[id] < 500 && dif.magnitude( ) < 0.05f)
+		{
+			return false;
+		}
 	}
-	if(!m_character||m_character->PhysicsRefObject()->PPhysicsShell())return false;
+
+	if (!m_character || m_character->PhysicsRefObject( )->PPhysicsShell( ))
+	{
+		return false;
+	}
+
 	DWORD old_id=BoxID();
 
-	bool  character_disabled=character_exist && !m_character->IsEnabled();
-	if(character_exist&&id==old_id)return true;
+	bool character_disabled=character_exist && !m_character->IsEnabled();
+	if (character_exist && id == old_id)
+	{
+		return true;
+	}
 
 	if(!character_exist)
 	{
@@ -337,17 +349,17 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	f32	fnum_steps= f32(num_steps);
 	f32	fnum_steps_r=1.f/fnum_steps;
 
-	Fvector vel;
-	Fvector pos;
+	fVector3 vel;
+	fVector3 pos;
 	GetCharacterVelocity(vel);
 	GetCharacterPosition(pos);
 	//const fBox3& box =Box();
 	f32 pass=	character_exist ? _abs(Box().getradius()-boxes[id].getradius()) : boxes[id].getradius();
 	f32 max_vel=pass/2.f/fnum_it/fnum_steps/fixed_step;
 	f32 max_a_vel=M_PI/8.f/fnum_it/fnum_steps/fixed_step;
-	dBodySetForce(GetBody(),0.f,0.f,0.f);
-	dBodySetLinearVel(GetBody(),0.f,0.f,0.f);
-	Calculate(Fvector().set(0,0,0),Fvector().set(1,0,0),0,0,0,0);
+	dBodySetForce(GetBody(),0.0f,0.0f,0.0f);
+	dBodySetLinearVel(GetBody(),0.0f,0.0f,0.0f);
+	Calculate(fVector3().set(0.0f,0.0f,0.0f), fVector3().set(1.0f,0.0f,0.0f),0.0f,0.0f,0.0f,false);
 	CVelocityLimiter vl(GetBody(),max_vel,max_vel);
 	max_vel=1.f/fnum_it/fnum_steps/fixed_step;
 
@@ -357,31 +369,34 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	vl.l_limit*=(fnum_it*fnum_steps/5.f);
 	vl.y_limit=vl.l_limit;
 ////////////////////////////////////
-	for(int m=0;30>m;++m)
+	for(s32 m=0;30>m;++m)
 	{
-		Calculate(Fvector().set(0,0,0),Fvector().set(1,0,0),0,0,0,0);
+		Calculate(fVector3().set(0.0f,0.0f,0.0f), fVector3().set(1.0f,0.0f,0.0f),0.0f,0.0f,0.0f,false);
 		EnableCharacter();
-		m_character->ApplyForce(0,ph_world->Gravity()*m_character->Mass(),0);
-		max_depth=0.f;
+		m_character->ApplyForce(0.0f,ph_world->Gravity()*m_character->Mass(),0.0f);
+		max_depth=0.0f;
 		ph_world->Step();
 		if(max_depth	<	resolve_depth) 
 		{
 			break;
 		}	
+
 		ph_world->CutVelocity(max_vel,max_a_vel);
 	}
-	vl.l_limit/=(fnum_it*fnum_steps/5.f);
+
+	vl.l_limit/=(fnum_it*fnum_steps/5.0f);
 	vl.y_limit=vl.l_limit;
 /////////////////////////////////////
 
-	for(int m=0;num_steps>m;++m)
+	for(s32 m=0;num_steps>m;++m)
 	{
 		f32 param =fnum_steps_r*(1+m);
 		InterpolateBox(id,param);
 		ret=false;
-		for(int i=0;num_it>i;++i){
-			max_depth=0.f;
-			Calculate(Fvector().set(0,0,0),Fvector().set(1,0,0),0,0,0,0);
+		for(s32 i=0;num_it>i;++i)
+		{
+			max_depth=0.0f;
+			Calculate(fVector3().set(0.0f,0.0f,0.0f), fVector3().set(1.0f,0.0f,0.0f),0.0f,0.0f,0.0f,false);
 			EnableCharacter();
 			m_character->ApplyForce(0,ph_world->Gravity()*m_character->Mass(),0);
 			ph_world->Step();
@@ -392,8 +407,13 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 				break;
 			}	
 		}
-		if(!ret) break;
+
+		if (!ret)
+		{
+			break;
+		}
 	}
+
 	m_character->SwitchInInitContact();
 	vl.Deactivate();
 

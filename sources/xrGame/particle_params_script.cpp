@@ -18,8 +18,8 @@ void CParticleParams::script_register(lua_State *L)
 	[
 		class_<CParticleParams>("particle_params")
 			.def(								constructor<>())
-			.def(								constructor<const Fvector &>())
-			.def(								constructor<const Fvector &,const Fvector &>())
-			.def(								constructor<const Fvector &,const Fvector &,const Fvector &>())
+			.def(								constructor<const fVector3&>())
+			.def(								constructor<const fVector3&,const fVector3&>())
+			.def(								constructor<const fVector3&,const fVector3&,const fVector3&>())
 	];
 }

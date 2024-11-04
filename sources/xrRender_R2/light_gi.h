@@ -2,8 +2,8 @@
 
 struct	light_indirect
 {
-	Fvector			P;
-	Fvector			D;
+	fVector3			P;
+	fVector3			D;
 	f32			E;
 	IRender_Sector*	S;
 };

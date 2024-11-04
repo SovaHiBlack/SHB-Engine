@@ -76,7 +76,8 @@ void CObjectAnimator::Load(const char * name)
 void CObjectAnimator::Update(f32 dt)
 {
 	if (m_Current){
-		Fvector R,P;
+		fVector3 R;
+		fVector3 P;
 		m_Current->_Evaluate(m_MParam.Frame(),P,R);
 		m_MParam.Update	(dt,m_Speed,bLoop);
 		m_XFORM.setXYZi	(R.x,R.y,R.z);

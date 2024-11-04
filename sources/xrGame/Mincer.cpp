@@ -55,7 +55,7 @@ void CMincer::Load (pcstr section)
 BOOL CMincer::net_Spawn(CSE_Abstract* DC)
 {
 	BOOL result=inherited::net_Spawn(DC);
-	Fvector C;
+	fVector3 C;
 	Center(C);
 	C.y+=m_fTeleHeight;
 	m_telekinetics.SetCenter(C);
@@ -81,7 +81,7 @@ BOOL	CMincer::feel_touch_contact				(CObject* O)
 {
 	return inherited::feel_touch_contact(O)&&smart_cast<CPhysicsShellHolder *>(O);
 }
-void CMincer:: AffectThrow	(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const Fvector& throw_in_dir, f32 dist)
+void CMincer:: AffectThrow	(SZoneObjectInfo* O, CPhysicsShellHolder* GO,const fVector3& throw_in_dir, f32 dist)
 {
 	inherited::AffectThrow(O,GO,throw_in_dir,dist);
 }
@@ -105,20 +105,20 @@ bool CMincer::BlowoutState	()
 	Telekinesis().deactivate();
 	return ret;
 }
-void CMincer ::ThrowInCenter(Fvector& C)
+void CMincer ::ThrowInCenter(fVector3& C)
 {
 	C.set(m_telekinetics.Center());
 	C.y=Position().y;
 }
 
-void CMincer ::Center	(Fvector& C) const
+void CMincer ::Center	(fVector3& C) const
 {
 	C.set(Position());
 }
 
 void CMincer::NotificateDestroy			(CPHDestroyableNotificate *dn)
 {
-	Fvector dir;
+	fVector3 dir;
 	f32 impulse;
 	//if(!m_telekinetics.has_impacts()) return;
 
@@ -128,27 +128,29 @@ void CMincer::NotificateDestroy			(CPHDestroyableNotificate *dn)
 	CParticlesPlayer* PP = smart_cast<CParticlesPlayer*>(obj);
 	if(PP && *m_torn_particles)
 	{
-		PP->StartParticles(m_torn_particles,Fvector().set(0,1,0),ID());
+		PP->StartParticles(m_torn_particles, fVector3().set(0.0f,1.0f,0.0f),ID());
 	}
 	m_tearing_sound.play_at_pos(0,m_telekinetics.Center());
 
-	Fvector position_in_bone_space, throw_in_dir;
+	fVector3 position_in_bone_space;
+	fVector3 throw_in_dir;
 	position_in_bone_space.set		(0.0f, 0.0f, 0.0f);
 	throw_in_dir.set				(1.0f, 0.0f, 1.0f);
 	CreateHit(obj->ID(),ID(),throw_in_dir,0.0f,0,position_in_bone_space,impulse,ALife::eHitTypeExplosion);
 }
 
-void CMincer::AffectPullAlife(CEntityAlive* EA,const Fvector& throw_in_dir, f32 dist)
+void CMincer::AffectPullAlife(CEntityAlive* EA,const fVector3& throw_in_dir, f32 dist)
 {
 	f32 power=Power(dist);
-	//Fvector dir;
+	//fVector3 dir;
 	//dir.random_dir(throw_in_dir,2.f*M_PI);
 	if(EA->CLS_ID!=CLSID_OBJECT_ACTOR)
 	{
-		Fvector pos_in_bone_space;
-		pos_in_bone_space.set(0,0,0);
+		fVector3 pos_in_bone_space;
+		pos_in_bone_space.set(0.0f,0.0f,0.0f);
 		CreateHit(EA->ID(),ID(),throw_in_dir,power,0,pos_in_bone_space,0.0f,m_eHitTypeBlowout);
 	}
+
 	inherited::AffectPullAlife(EA,throw_in_dir,dist);
 }
 

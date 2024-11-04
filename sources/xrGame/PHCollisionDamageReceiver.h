@@ -14,7 +14,7 @@ DAMAGE_CONTROLED_BONES_V m_controled_bones;
 protected:
 	virtual CPhysicsShellHolder*		PPhysicsShellHolder			()																		=0;
 			void						Init						()																		;
-			void						Hit							(u16 source_id,u16 bone_id, f32 power,const Fvector &dir,Fvector &pos)	;
+			void						Hit							(u16 source_id,u16 bone_id, f32 power,const fVector3& dir, fVector3& pos)	;
 			void						Clear						()																		;
 private:
 			void						BoneInsert					(u16 id, f32 k)														;

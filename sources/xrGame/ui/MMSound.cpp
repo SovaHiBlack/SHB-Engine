@@ -95,8 +95,8 @@ void CMMSound::music_Play( )
 	m_music_l.create(_path, st_Music, sg_SourceType);
 	m_music_r.create(_path2, st_Music, sg_SourceType);
 
-	m_music_l.play_at_pos(NULL, Fvector( ).set(-0.5f, 0.f, 0.3f), sm_2D);
-	m_music_r.play_at_pos(NULL, Fvector( ).set(+0.5f, 0.f, 0.3f), sm_2D);
+	m_music_l.play_at_pos(NULL, fVector3( ).set(-0.5f, 0.0f, 0.3f), sm_2D);
+	m_music_r.play_at_pos(NULL, fVector3( ).set(+0.5f, 0.0f, 0.3f), sm_2D);
 }
 
 void CMMSound::music_Update( )

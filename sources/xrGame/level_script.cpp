@@ -150,7 +150,7 @@ u32 get_time_minutes()
 	return			mins;
 }
 
-f32 cover_in_direction(u32 level_vertex_id, const Fvector &direction)
+f32 cover_in_direction(u32 level_vertex_id, const fVector3& direction)
 {
 	f32			y,p;
 	direction.getHP	(y,p);
@@ -162,18 +162,18 @@ f32 rain_factor()
 	return			(g_pGamePersistent->Environment().CurrentEnv.rain_density);
 }
 
-u32	vertex_in_direction(u32 level_vertex_id, Fvector direction, f32 max_distance)
+u32	vertex_in_direction(u32 level_vertex_id, fVector3 direction, f32 max_distance)
 {
 	direction.normalize_safe();
 	direction.mul	(max_distance);
-	Fvector			start_position = ai().level_graph().vertex_position(level_vertex_id);
-	Fvector			finish_position = Fvector(start_position).add(direction);
+	fVector3			start_position = ai().level_graph().vertex_position(level_vertex_id);
+	fVector3			finish_position = fVector3(start_position).add(direction);
 	u32				result = u32(-1);
 	ai().level_graph().farthest_vertex_in_direction(level_vertex_id,start_position,finish_position,result,0);
 	return			(ai().level_graph().valid_vertex_id(result) ? result : level_vertex_id);
 }
 
-Fvector vertex_position(u32 level_vertex_id)
+fVector3 vertex_position(u32 level_vertex_id)
 {
 	return			(ai().level_graph().vertex_position(level_vertex_id));
 }
@@ -357,7 +357,7 @@ void enable_input()
 	g_bDisableAllInput = false;
 }
 
-void spawn_phantom(const Fvector &position)
+void spawn_phantom(const fVector3& position)
 {
 	Level().spawn_item("m_phantom", position, u32(-1), u16(-1), false);
 }

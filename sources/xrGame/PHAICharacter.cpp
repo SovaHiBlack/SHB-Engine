@@ -25,15 +25,17 @@ void CPHAICharacter::Create(dVector3 sizes)
 	inherited::Create(sizes);
 	m_forced_physics_control=false;//.
 }
-bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
+bool CPHAICharacter::TryPosition(fVector3 pos,bool exact_state){
 	if(!b_exist) return false;
 	if(m_forced_physics_control||JumpState()) return false;//b_was_on_object||b_on_object||
 	if(	DoCollideObj	())	return false;
-	Fvector	current_pos;
+	fVector3	current_pos;
 	GetPosition(current_pos);
-	Fvector	cur_vel;GetVelocity(cur_vel);
+	fVector3	cur_vel;
+	GetVelocity(cur_vel);
 
-	Fvector	displace;displace.sub(pos,current_pos);
+	fVector3	displace;
+	displace.sub(pos,current_pos);
 	f32	disp_mag=displace.magnitude();
 	
 	if( fis_zero( disp_mag ) || fis_zero( Device.fTimeDelta ) ) 
@@ -56,7 +58,8 @@ bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
 	}
 	rest = disp_mag - fsteps_num * disp_pstep ;
 
-	Fvector	vel;vel.mul(displace,disp_pstep/fixed_step/disp_mag);
+	fVector3	vel;
+	vel.mul(displace,disp_pstep/fixed_step/disp_mag);
 	bool	ret=true;
 	int save_gm=dBodyGetGravityMode(m_body);
 	dBodySetGravityMode(m_body,0);
@@ -80,10 +83,12 @@ bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
 
 	dBodySetGravityMode(m_body,save_gm);
 	SetVelocity(cur_vel);
-	Fvector	pos_new;GetPosition(pos_new);
+	fVector3	pos_new;
+	GetPosition(pos_new);
 
 #if 0
-	Fvector	dif;dif .sub( pos, pos_new );
+	fVector3	dif;
+	dif .sub( pos, pos_new );
 	f32	dif_m = dif.magnitude();
 	if(ret&&dif_m> EPSILON_3)
 	{
@@ -102,7 +107,7 @@ bool CPHAICharacter::TryPosition(Fvector pos,bool exact_state){
 	return ret;
 }
 
-void CPHAICharacter::		SetPosition							(Fvector pos)	
+void CPHAICharacter::		SetPosition							(fVector3 pos)
 {
 	m_vDesiredPosition.set(pos);
 	inherited::SetPosition(pos);
@@ -110,7 +115,8 @@ void CPHAICharacter::		SetPosition							(Fvector pos)
 
 void CPHAICharacter::BringToDesired(f32 time, f32 velocity, f32 /**force/**/)
 {
-	Fvector pos,move;
+	fVector3 pos;
+	fVector3 move;
 	GetPosition(pos);
 
 	move.sub(m_vDesiredPosition,pos);
@@ -148,7 +154,7 @@ void CPHAICharacter::BringToDesired(f32 time, f32 velocity, f32 /**force/**/)
 	SetAcceleration(move);
 }
 
-void	CPHAICharacter::Jump(const Fvector& jump_velocity)
+void	CPHAICharacter::Jump(const fVector3& jump_velocity)
 {
 	b_jump=true;
 	m_jump_accel.set(jump_velocity);
@@ -187,11 +193,11 @@ void	CPHAICharacter::OnRender()
 
 	if(!b_exist) return;
 
-	Fvector pos;
+	fVector3 pos;
 	GetDesiredPosition(pos);
 	pos.y+=m_radius;
 
-	Fvector scale;
+	fVector3 scale;
 	scale.set(0.35f,0.35f,0.35f);
 	fMatrix4x4 M;
 	M.identity();

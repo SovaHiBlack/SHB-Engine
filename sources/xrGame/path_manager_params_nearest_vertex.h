@@ -18,10 +18,10 @@ struct SNearestVertex : public SBaseParameters<
 	_index_type,
 	_iteration_type
 > {
-	Fvector			m_target_position;
+	fVector3			m_target_position;
 
 	IC	SNearestVertex (
-			const Fvector			&target_position,
+		const fVector3& target_position,
 			_dist_type				max_range = _dist_type(6000),
 			_iteration_type			max_iteration_count = _iteration_type(-1),
 			u32						max_visited_node_count = u32(-1)

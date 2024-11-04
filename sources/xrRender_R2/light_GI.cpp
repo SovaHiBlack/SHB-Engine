@@ -17,11 +17,12 @@ void	light::gi_generate	()
 	xrXRC&		xrc		= RImplementation.Sectors_xrc;
 	CDB::MODEL*	model	= g_pGameLevel->ObjectSpace.GetStaticModel	();
 	CDB::TRI*	tris	= g_pGameLevel->ObjectSpace.GetStaticTris	();
-	Fvector*	verts	= g_pGameLevel->ObjectSpace.GetStaticVerts	();
+	fVector3*	verts	= g_pGameLevel->ObjectSpace.GetStaticVerts	();
 	xrc.ray_options		(CDB::OPT_CULL|CDB::OPT_ONLYNEAREST);
 
 	for (int it=0; it<int(indirect_photons*8); it++)	{
-		Fvector	dir,idir;
+		fVector3	dir;
+		fVector3 idir;
 		switch	(flags.type)		{
 		case IRender_Light::POINT		:	dir.random_dir(random);					break;
 		case IRender_Light::SPOT		:	dir.random_dir(direction,cone,random);	break;
@@ -32,8 +33,9 @@ void	light::gi_generate	()
 		if (!xrc.r_count()) continue;
 		CDB::RESULT *R		= RImplementation.Sectors_xrc.r_begin	();
 		CDB::TRI&	T		= tris[R->id];
-		Fvector		Tv[3]	= { verts[T.verts[0]],verts[T.verts[1]],verts[T.verts[2]] };
-		Fvector		TN;		TN.mknormal		(Tv[0],Tv[1],Tv[2]);
+		fVector3		Tv[3]	= { verts[T.verts[0]],verts[T.verts[1]],verts[T.verts[2]] };
+		fVector3		TN;
+		TN.mknormal		(Tv[0],Tv[1],Tv[2]);
 		f32		dot		= TN.dotproduct	(idir.invert(dir));
 
 		light_indirect		LI;

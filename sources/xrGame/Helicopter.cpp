@@ -287,7 +287,8 @@ f32 GetCurrAcc(f32 V0, f32 V1, f32 dist, f32 a0, f32 a1);
 
 void CHelicopter::MoveStep()
 {
-	Fvector dir, pathDir;
+	fVector3 dir;
+	fVector3 pathDir;
 	f32 desired_H = m_movement.currPathH;
 	f32 desired_P;
 	if(m_movement.type != eMovNone){
@@ -358,7 +359,7 @@ void CHelicopter::MoveStep()
 	angle_lerp	(m_body.currBodyHPB.y, needBodyP, m_body.model_angSpeedPitch, STEP);
 
 	f32 sign;
-	Fvector cp;
+	fVector3 cp;
 	cp.crossproduct (pathDir,dir);
 	(cp.y>0.0)?sign=1.0f:sign=-1.0f;
 	f32 ang_diff = angle_difference (m_movement.currPathH, desired_H);
@@ -444,12 +445,12 @@ void CHelicopter::goPatrolByPatrolPath (pcstr path_name, int start_idx)
 	m_movement.goPatrolByPatrolPath (path_name, start_idx);
 }
 
-void CHelicopter::goByRoundPath(Fvector center, f32 radius, bool clockwise)
+void CHelicopter::goByRoundPath(fVector3 center, f32 radius, bool clockwise)
 {
 	m_movement.goByRoundPath(center, radius, clockwise);
 }
 
-void CHelicopter::LookAtPoint(Fvector point, bool do_it)
+void CHelicopter::LookAtPoint(fVector3 point, bool do_it)
 {
 	m_body.LookAtPoint(point,do_it);
 }

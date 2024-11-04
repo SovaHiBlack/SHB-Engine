@@ -50,10 +50,11 @@ private:
 	f32					sun_value			;
 	f32					sun_smooth			;
 
-	Fvector					approximate			;
+	fVector3					approximate			;
+
 public:
 	virtual	void			force_mode			(u32 mode)		{ MODE = mode;															};
-	virtual f32			get_luminocity		()				{ Fvector one; return one.set(1,1,1).div(3.f).dotproduct(approximate);	};
+	virtual f32			get_luminocity		()				{ fVector3 one; return one.set(1,1,1).div(3.f).dotproduct(approximate);	};
 	virtual f32			get_luminocity_hemi	()				{ return get_hemi();}
 
 	void					add					(light*			L);
