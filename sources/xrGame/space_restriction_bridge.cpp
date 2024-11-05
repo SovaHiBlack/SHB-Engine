@@ -59,7 +59,7 @@ bool CSpaceRestrictionBridge::default_restrictor		() const
 	return				(object().default_restrictor());
 }
 
-Fsphere CSpaceRestrictionBridge::sphere					() const
+fSphere CSpaceRestrictionBridge::sphere					() const
 {
 	return				(object().sphere());
 }
@@ -78,7 +78,7 @@ bool CSpaceRestrictionBridge::inside					(u32 level_vertex_id, bool partially_in
 	STOP_PROFILE;
 }
 
-bool CSpaceRestrictionBridge::inside					(const Fsphere &sphere)
+bool CSpaceRestrictionBridge::inside(const fSphere& sphere)
 {
 	START_PROFILE("Restricted Object/Bridge/Inside Position");
 	return		(object().inside(sphere));
@@ -134,7 +134,7 @@ bool CSpaceRestrictionBridge::out_of_border				(const fVector3& position)
 	if (!ai().level_graph().valid_vertex_id(level_vertex_id))
 		return				(true);
 
-	Fsphere					temp;
+	fSphere					temp;
 	temp.R					= EPSILON_3;
 	temp.P					= position;
 	temp.P.y				= ai().level_graph().vertex_plane_y(level_vertex_id,position.x,position.z);

@@ -139,13 +139,14 @@
 #define QEPSILON				0.00001f
 
 template <class T>
-struct CORE_API _quaternion
+class CORE_API _quaternion
 {
 public:
 	typedef T				TYPE;
 	typedef _quaternion<T>	Self;
 	typedef Self& SelfRef;
 	typedef const Self& SelfCRef;
+
 private:
 	IC T _asin_(T x)
 	{
@@ -189,8 +190,8 @@ public:
 */
 	IC	SelfRef	mul(SelfCRef q1l, SelfCRef q2l)
 	{
-		VERIFY(q1l.isValid());
-		VERIFY(q2l.isValid());
+		VERIFY(q1l.isValid( ));
+		VERIFY(q2l.isValid( ));
 
 		w = ((q1l.w * q2l.w) - (q1l.x * q2l.x)
 			 - (q1l.y * q2l.y) - (q1l.z * q2l.z));
@@ -241,7 +242,7 @@ public:
 	}
 
 	// validates numerical stability
-	IC	const BOOL	isValid(void) const
+	IC	const BOOL	isValid( ) const
 	{
 		if ((w * w) < 0.0f)	return false;
 		if ((x * x) < 0.0f)	return false;
@@ -251,9 +252,9 @@ public:
 	}
 
 	// checks for Unit-length quanternion
-	IC	const BOOL	isUnit(void)
+	IC	const BOOL	isUnit( )
 	{
-		T m = magnitude();
+		T m = magnitude( );
 
 		if ((m < 1.0 + UNIT_TOLERANCE) && (m > 1.0 - UNIT_TOLERANCE))
 			return true;
@@ -261,11 +262,11 @@ public:
 	}
 
 	// normalizes Q to be a unit geQuaternion
-	IC	SelfRef	normalize(void)
+	IC	SelfRef	normalize( )
 	{
 		T	m, one_over_magnitude;
 
-		m = _sqrt(magnitude());
+		m = _sqrt(magnitude( ));
 
 		if ((m < QZERO_TOLERANCE) && (m > -QZERO_TOLERANCE))
 			return *this;
@@ -284,7 +285,7 @@ public:
 	{
 		return set(Q.w, -Q.x, -Q.y, -Q.z);
 	}
-	IC	SelfRef	inverse()
+	IC	SelfRef	inverse( )
 	{
 		return set(w, -x, -y, -z);
 	}
@@ -292,19 +293,19 @@ public:
 	{
 		return set(-Q.w, -Q.x, -Q.y, -Q.z);
 	}
-	IC	SelfRef	inverse_with_w()
+	IC	SelfRef	inverse_with_w( )
 	{
 		return set(-w, -x, -y, -z);
 	}
 
 	// identity - no rotation
-	IC	SelfRef	identity(void)
+	IC	SelfRef	identity( )
 	{
 		return set(1.f, 0.f, 0.f, 0.f);
 	}
 
 	// square length
-	IC	T	magnitude(void)
+	IC	T	magnitude( )
 	{
 		return w * w + x * x + y * y + z * z;
 	}
@@ -411,8 +412,8 @@ public:
 			Scale0 = 1.0f - tm;
 			Scale1 = tm;
 		}
-		Scale1 *= sign;
 
+		Scale1 *= sign;
 		x = Scale0 * Q0.x + Scale1 * Q1.x;
 		y = Scale0 * Q0.y + Scale1 * Q1.y;
 		z = Scale0 * Q0.z + Scale1 * Q1.z;
@@ -425,16 +426,16 @@ public:
 	{
 		if (	// they are the same but with opposite signs
 			((_abs(x + Q.x) <= Tolerance)
-			&& (_abs(y + Q.y) <= Tolerance)
-			&& (_abs(z + Q.z) <= Tolerance)
-			&& (_abs(w + Q.w) <= Tolerance)
-			)
+			 && (_abs(y + Q.y) <= Tolerance)
+			 && (_abs(z + Q.z) <= Tolerance)
+			 && (_abs(w + Q.w) <= Tolerance)
+			 )
 			||  // they are the same with same signs
 			((_abs(x - Q.x) <= Tolerance)
-			&& (_abs(y - Q.y) <= Tolerance)
-			&& (_abs(z - Q.z) <= Tolerance)
-			&& (_abs(w - Q.w) <= Tolerance)
-			)
+			 && (_abs(y - Q.y) <= Tolerance)
+			 && (_abs(z - Q.z) <= Tolerance)
+			 && (_abs(w - Q.w) <= Tolerance)
+			 )
 			)
 			return true;
 		else
@@ -464,13 +465,12 @@ public:
 	}
 };
 
-typedef _quaternion<f32>	Fquaternion;
-typedef _quaternion<double>	Dquaternion;
+using fQuaternion = _quaternion<f32>;
 
 template <class T>
 BOOL	_valid(const _quaternion<T>& s)
 {
-	return _valid(s.x) && _valid(s.y) && _valid(s.z) && _valid(s.w);
+	return (_valid(s.x) && _valid(s.y) && _valid(s.z) && _valid(s.w));
 }
 
 #undef UNIT_TOLERANCE

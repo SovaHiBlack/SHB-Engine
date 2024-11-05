@@ -79,7 +79,7 @@ public:
 	void				net_DestroyHud	();
 	void				Init			();
 
-	IC IRender_Visual*	Visual			()	{ return m_shared_data.animations();			}
+	IC IRenderVisual*	Visual			()	{ return m_shared_data.animations();			}
 	IC fMatrix4x4&			Transform		()	{ return m_Transform;							}
 
 	int					FireBone		()	{return m_shared_data.get_value()->m_fire_bone;	}

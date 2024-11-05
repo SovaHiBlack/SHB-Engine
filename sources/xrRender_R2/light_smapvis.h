@@ -8,12 +8,12 @@ public:
 		state_working	= 1,
 		state_usingTC	= 3,
 	}							state;
-	xr_vector<IRender_Visual*>	invisible;
+	xr_vector<IRenderVisual*>	invisible;
 
 	u32							frame_sleep;
 	u32							test_count;
 	u32							test_current;
-	IRender_Visual*				testQ_V;
+	IRenderVisual*				testQ_V;
 	u32							testQ_id;
 	u32							testQ_frame;
 public:
@@ -30,5 +30,5 @@ public:
 
 	IC	bool		sleep		()			{ return Device.dwFrame > frame_sleep; }
 
-	virtual		void	rfeedback_static	(IRender_Visual*	V);
+	virtual		void	rfeedback_static	(IRenderVisual*	V);
 };

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "..\XR_3DA\fmesh.h"
+#include "..\XR_3DA\mesh.h"
 #include "flod.h"
 
 struct _hw 
@@ -63,7 +63,7 @@ void FLOD::Load			(pcstr N, IReader *data, u32 dwFlags)
 	f32 Ss			= M_PI*r*r;
 	lod_factor			= Sf/Ss;
 }
-void FLOD::Copy			(IRender_Visual *pFrom	)
+void FLOD::Copy(IRenderVisual* pFrom)
 {
 	inherited::Copy		(pFrom);
 

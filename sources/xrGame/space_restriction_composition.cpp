@@ -53,7 +53,7 @@ IC	void CSpaceRestrictionComposition::merge	(CBaseRestrictionPtr restriction)
 	m_border.insert				(m_border.begin(),restriction->border().begin(),restriction->border().end());
 }
 
-bool CSpaceRestrictionComposition::inside					(const Fsphere &sphere)
+bool CSpaceRestrictionComposition::inside					(const fSphere& sphere)
 {
 	if (!initialized()) {
 		initialize				();
@@ -91,7 +91,7 @@ void CSpaceRestrictionComposition::initialize	()
 		if (!m_space_restriction_holder->restriction(_GetItem(*m_space_restrictors,i,element))->initialized())
 			return;
 
-	Fsphere						*spheres = (Fsphere*)_alloca(n*sizeof(Fsphere));
+	fSphere* spheres = (fSphere*)_alloca(n * sizeof(fSphere));
 	for (u32 i=0; i<n ;++i) {
 		SpaceRestrictionHolder::CBaseRestrictionPtr	restriction = 
 			m_space_restriction_holder->restriction(
@@ -203,7 +203,7 @@ void CSpaceRestrictionComposition::test_correctness()
 }
 #endif
 
-Fsphere CSpaceRestrictionComposition::sphere	() const
+fSphere CSpaceRestrictionComposition::sphere	() const
 {
 	NODEFAULT;
 #ifdef DEBUG

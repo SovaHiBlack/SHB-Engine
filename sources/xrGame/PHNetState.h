@@ -11,13 +11,13 @@ struct SPHNetState
 	fVector3		position;
 	fVector3		previous_position;
 	union{
-		Fquaternion quaternion;
+		fQuaternion quaternion;
 		struct{
 			fVector3	accel;
 			f32	max_velocity;
 		};
 	};
-	Fquaternion	previous_quaternion;
+	fQuaternion	previous_quaternion;
 	bool		enabled;
 	void								net_Export			(		NET_Packet&		P);					
 	void								net_Import			(		NET_Packet&		P);

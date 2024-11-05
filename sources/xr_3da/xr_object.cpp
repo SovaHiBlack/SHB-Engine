@@ -5,7 +5,7 @@
 //#include "xr_area.h"
 #include "render.h"
 //#include "xrLevel.h"
-#include "fbasicvisual.h"
+#include "BasicVisual.h"
 
 //#include "x_ray.h"
 //#include "GameFont.h"
@@ -35,7 +35,7 @@ void CObject::cNameVisual_set	(shared_str N)
 	// replace model
 	if (*N && N[0]) 
 	{
-		IRender_Visual			*old_v = renderable.visual;
+		IRenderVisual* old_v = renderable.visual;
 		
 		NameVisual				= N;
 		renderable.visual		= Render->model_Create	(*N);

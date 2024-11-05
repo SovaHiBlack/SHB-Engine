@@ -3,7 +3,7 @@
 
 #include "SkeletonAnimated.h"
 //#include "SkeletonX.h"
-#include "fmesh.h"
+#include "mesh.h"
 
 extern int	psSkeletonUpdate;
 
@@ -71,11 +71,11 @@ MotionID CKinematicsAnimated::LL_MotionID	(pcstr B)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){
-    	shared_motions* s_mots	= &m_Motions[k].motions;
+		shared_motions* s_mots	= &m_Motions[k].motions;
 		accel_map::iterator I 	= s_mots->motion_map()->find(LPSTR(B));
-    	if (I!=s_mots->motion_map()->end())	{ motion_ID.set(u16(k),I->second); break; }
-    }
-    return motion_ID;
+		if (I!=s_mots->motion_map()->end())	{ motion_ID.set(u16(k),I->second); break; }
+	}
+	return motion_ID;
 }
 u16 CKinematicsAnimated::LL_PartID		(pcstr B)
 {
@@ -93,16 +93,16 @@ MotionID CKinematicsAnimated::ID_Cycle_Safe(pcstr  N)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){
-    	shared_motions* s_mots	= &m_Motions[k].motions;
+		shared_motions* s_mots	= &m_Motions[k].motions;
 		accel_map::iterator I 	= s_mots->cycle()->find(LPSTR(N));
 		if (I!=s_mots->cycle()->end())	{	motion_ID.set(u16(k),I->second); break;}
-    }
-    return motion_ID;
+	}
+	return motion_ID;
 }
 MotionID CKinematicsAnimated::ID_Cycle	(shared_str  N)
 {
 	MotionID motion_ID		= ID_Cycle_Safe	(N);	R_ASSERT3(motion_ID.valid(),"! MODEL: can't find cycle: ", N.c_str());
-    return motion_ID;
+	return motion_ID;
 }
 MotionID CKinematicsAnimated::ID_Cycle_Safe(shared_str  N)
 {
@@ -220,7 +220,7 @@ CBlend*	CKinematicsAnimated::LL_PlayCycle(u16 part, MotionID motion_ID, BOOL  bM
 
 //	shared_motions* s_mots	= &m_Motions[motion.slot];
 //	CMotionDef* m_def		= s_mots->motion_def(motion.idx);
-    
+	
 	// Process old cycles and create _new_
 	if( channel == 0 )
 	{
@@ -241,11 +241,11 @@ CBlend*	CKinematicsAnimated::LL_PlayCycle(u16 part, MotionID motion_ID, BOOL  bM
 CBlend*	CKinematicsAnimated::LL_PlayCycle		(u16 part, MotionID motion_ID, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam, u8 channel /*=0*/)
 {
 	VERIFY					(motion_ID.valid()); 
-    CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
-    VERIFY					(m_def);
+	CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
+	VERIFY					(m_def);
 	return LL_PlayCycle		(part,motion_ID,bMixIn, 
-    						 m_def->Accrue(),m_def->Falloff(),m_def->Speed(),m_def->StopAtEnd(), 
-                             Callback,CallbackParam,channel);
+							 m_def->Accrue(),m_def->Falloff(),m_def->Speed(),m_def->StopAtEnd(), 
+							 Callback,CallbackParam,channel);
 }
 CBlend*	CKinematicsAnimated::PlayCycle		(pcstr  N, BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam,u8 channel  /*= 0*/)
 {
@@ -256,11 +256,11 @@ CBlend*	CKinematicsAnimated::PlayCycle		(pcstr  N, BOOL bMixIn, PlayCallback Cal
 CBlend*	CKinematicsAnimated::PlayCycle		(MotionID motion_ID,  BOOL bMixIn, PlayCallback Callback, LPVOID CallbackParam,u8 channel /*= 0*/)
 {	
 	VERIFY					(motion_ID.valid()); 
-    CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
-    VERIFY					(m_def);
+	CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
+	VERIFY					(m_def);
 	return LL_PlayCycle		(m_def->bone_or_part,motion_ID,bMixIn, 
-    						 m_def->Accrue(),m_def->Falloff(),m_def->Speed(),m_def->StopAtEnd(), 
-                             Callback,CallbackParam,channel);
+							 m_def->Accrue(),m_def->Falloff(),m_def->Speed(),m_def->StopAtEnd(), 
+							 Callback,CallbackParam,channel);
 }
 
 // fx'es
@@ -268,30 +268,30 @@ MotionID CKinematicsAnimated::ID_FX_Safe		(pcstr  N)
 {
 	MotionID motion_ID;
 	for (int k=int(m_Motions.size())-1; k>=0; --k){
-    	shared_motions* s_mots	= &m_Motions[k].motions;
+		shared_motions* s_mots	= &m_Motions[k].motions;
 		accel_map::iterator I 	= s_mots->fx()->find(LPSTR(N));
 		if (I!=s_mots->fx()->end())	{	motion_ID.set(u16(k),I->second); break;}
-    }
-    return motion_ID;
+	}
+	return motion_ID;
 }
 MotionID CKinematicsAnimated::ID_FX			(pcstr  N)
 {
 	MotionID motion_ID		= ID_FX_Safe(N);R_ASSERT3(motion_ID.valid(),"! MODEL: can't find FX: ", N);
-    return motion_ID;
+	return motion_ID;
 }
 CBlend*	CKinematicsAnimated::PlayFX			(MotionID motion_ID, f32 power_scale)
 {
 	VERIFY					(motion_ID.valid()); 
-    CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
-    VERIFY					(m_def);
+	CMotionDef* m_def		= m_Motions[motion_ID.slot].motions.motion_def(motion_ID.idx);
+	VERIFY					(m_def);
 	return LL_PlayFX		(m_def->bone_or_part,motion_ID,
-    						 m_def->Accrue(),m_def->Falloff(),
-                             m_def->Speed(),m_def->Power()*power_scale);
+							 m_def->Accrue(),m_def->Falloff(),
+							 m_def->Speed(),m_def->Power()*power_scale);
 }
 CBlend*	CKinematicsAnimated::PlayFX			(pcstr  N, f32 power_scale)
 {
 	MotionID motion_ID		= ID_FX(N);
-    return PlayFX 			(motion_ID,power_scale);
+	return PlayFX 			(motion_ID,power_scale);
 }
 //u16 part,u8 channel, MotionID motion_ID, BOOL  bMixing, f32 blendAccrue, f32 blendFalloff, f32 Speed, BOOL noloop, PlayCallback Callback, LPVOID CallbackParam)
 
@@ -436,7 +436,7 @@ void CKinematicsAnimated::UpdateTracks	()
 			break;
 */
 		case CBlend::eAccrue:
-            B.blendAmount 	+= dt*B.blendAccrue*B.blendPower*B.speed;
+			B.blendAmount 	+= dt*B.blendAccrue*B.blendPower*B.speed;
 			if (B.blendAmount>=B.blendPower) {
 				// switch to fixed
 				B.blendAmount	= B.blendPower;
@@ -473,7 +473,7 @@ void CKinematicsAnimated::Release()
 //.	xr_delete(m_cycle);
 //.	xr_delete(m_fx);
 
-    inherited::Release	();
+	inherited::Release	();
 }
 
 CKinematicsAnimated::~CKinematicsAnimated	()
@@ -483,7 +483,7 @@ CKinematicsAnimated::~CKinematicsAnimated	()
 
 void	CKinematicsAnimated::IBoneInstances_Create()
 {
-    inherited::IBoneInstances_Create();
+	inherited::IBoneInstances_Create();
 	u32				size	= bones->size();
 	blend_instances			= xr_alloc<CBlendInstance>(size);
 	for (u32 i=0; i<size; i++)
@@ -492,7 +492,7 @@ void	CKinematicsAnimated::IBoneInstances_Create()
 
 void	CKinematicsAnimated::IBoneInstances_Destroy()
 {
-    inherited::IBoneInstances_Destroy();
+	inherited::IBoneInstances_Destroy();
 	if (blend_instances) {
 		xr_free(blend_instances);
 		blend_instances = NULL;
@@ -500,13 +500,13 @@ void	CKinematicsAnimated::IBoneInstances_Destroy()
 }
 
 #define PCOPY(a)	a = pFrom->a
-void CKinematicsAnimated::Copy(IRender_Visual *P) 
+void CKinematicsAnimated::Copy(IRenderVisual*P)
 {
 	inherited::Copy	(P);
 
 	CKinematicsAnimated* pFrom = (CKinematicsAnimated*)P;
 	PCOPY			(m_Motions);
-    PCOPY			(m_Partition);
+	PCOPY			(m_Partition);
 
 	IBlend_Startup			();
 }
@@ -561,47 +561,47 @@ void CKinematicsAnimated::Load(pcstr N, IReader *data, u32 dwFlags)
 
 	// Globals
 	blend_instances		= NULL;
-    m_Partition			= NULL;
+	m_Partition			= NULL;
 	Update_LastTime 	= 0;
 
 	// Load animation
-    if (data->find_chunk(OGF_S_MOTION_REFS)){
-    	string_path		items_nm;
-        data->r_stringZ	(items_nm,sizeof(items_nm));
-        u32 set_cnt		= _GetItemCount(items_nm);
-        R_ASSERT		(set_cnt<MAX_ANIM_SLOT);
+	if (data->find_chunk(OGF_S_MOTION_REFS)){
+		string_path		items_nm;
+		data->r_stringZ	(items_nm,sizeof(items_nm));
+		u32 set_cnt		= _GetItemCount(items_nm);
+		R_ASSERT		(set_cnt<MAX_ANIM_SLOT);
 		m_Motions.reserve(set_cnt);
-    	string_path		nm;
-        for (u32 k=0; k<set_cnt; k++){
-        	_GetItem	(items_nm,k,nm);
-            strcat		(nm,".omf");
-            string_path	fn;
-            if (!FS.exist(fn, "$level$", nm)){
-                if (!FS.exist(fn, "$game_meshes$", nm)){
-                    Debug.fatal	(DEBUG_INFO,"Can't find motion file '%s'.",nm);
-                }
-            }
-            // Check compatibility
-            m_Motions.push_back				(SMotionsSlot());
-            if( !g_pMotionsContainer->has(nm) ) //optimize fs operations
+		string_path		nm;
+		for (u32 k=0; k<set_cnt; k++){
+			_GetItem	(items_nm,k,nm);
+			strcat		(nm,".omf");
+			string_path	fn;
+			if (!FS.exist(fn, "$level$", nm)){
+				if (!FS.exist(fn, "$game_meshes$", nm)){
+					Debug.fatal	(DEBUG_INFO,"Can't find motion file '%s'.",nm);
+				}
+			}
+			// Check compatibility
+			m_Motions.push_back				(SMotionsSlot());
+			if( !g_pMotionsContainer->has(nm) ) //optimize fs operations
 			{
 				IReader* MS						= FS.r_open(fn);
 				m_Motions.back().motions.create	(nm,MS,bones);
 				FS.r_close						(MS);
 			}
 			m_Motions.back().motions.create	(nm,NULL,bones);
-    	}
-    }else{
+		}
+	}else{
 		string_path	nm;
 		strconcat			(sizeof(nm),nm,N,".ogf");
 		m_Motions.push_back(SMotionsSlot());
 		m_Motions.back().motions.create(nm,data,bones);
-    }
+	}
 
-    R_ASSERT				(m_Motions.size());
+	R_ASSERT				(m_Motions.size());
 
-    m_Partition				= m_Motions[0].motions.partition();
-    
+	m_Partition				= m_Motions[0].motions.partition();
+	
 	// initialize motions
 	for (MotionsSlotVecIt m_it=m_Motions.begin(); m_it!=m_Motions.end(); m_it++){
 		SMotionsSlot& MS	= *m_it;
@@ -640,37 +640,14 @@ struct ConsistantKey
 
 IC bool operator < (const ConsistantKey& A, const ConsistantKey& B)	// note: inverse operator
 {	return A.w>B.w; }
-/*
-IC void MakeKeysConsistant(ConsistantKey *keys, int count)
-{
-	// sort in decreasing order
-	std::sort(keys,keys+count);
 
-	// recalc
-	for (int i=0; i<count-1; i++) {
-		Fquaternion Q1,Q2;
-		Q1.add(keys[i].K->Q,keys[i+1].K->Q);
-		Q2.sub(keys[i].K->Q,keys[i+1].K->Q);
-		if (Q1.magnitude()<Q2.magnitude())	keys[i+1].K->Q.inverse_with_w();
-	}
-}
-*/
 IC void MakeKeysSelected(ConsistantKey *keys, int count)
 {
 	// sort in decreasing order
 	std::sort(keys,keys+count);
 }
 
-/*
-ICF f32 smooth(f32 x)
-{
-    f32 x0	= x*2.f-1.f;
-    f32 s 	= (x0<0.f)?-1.f:1.f;
-
-    return ((s*pow(_abs(x0),1.f/1.5f))+1.f)/2.f;
-}
-*/
-IC	void QR2Quat(const CKeyQR &K,Fquaternion &Q)
+IC	void QR2Quat(const CKeyQR& K, fQuaternion& Q)
 {
 	Q.x		= f32(K.x)*KEY_QuantI;
 	Q.y		= f32(K.y)*KEY_QuantI;
@@ -701,7 +678,8 @@ IC void Dequantize(CKey& K,const CBlend& BD,const CMotion& M)
 	}else{
 		const CKeyQR*		K1r		=	&M._keysR[(frame+0)%count];
 		const CKeyQR*		K2r		=	&M._keysR[(frame+1)%count];
-		Fquaternion	Q1,Q2;
+		fQuaternion	Q1;
+		fQuaternion Q2;
 		QR2Quat(*K1r,Q1);
 		QR2Quat(*K2r,Q2);
 		D->Q.slerp	(Q1,Q2,clampr(delta,0.f,1.f));
@@ -858,7 +836,7 @@ IC void MixInterlerp( CKey &Result, const CKey	*R, const f32* BA, int b_count )
 
 IC void key_sub(CKey &rk, const CKey &k0, const CKey& k1)//sub right
 {
-	Fquaternion q;
+	fQuaternion q;
 	q.inverse(k1.Q);
 	rk.Q.mul(k0.Q,q);
 	//rk.Q.normalize();//?
@@ -872,14 +850,13 @@ IC void key_identity(CKey &k)
 }
 
 IC void key_add(CKey &res, const CKey &k0, const CKey &k1)//add right
-{
-	
-	res.Q.set(Fquaternion().mul(k0.Q,k1.Q));
+{	
+	res.Q.set(fQuaternion().mul(k0.Q,k1.Q));
 	//res.Q.normalize();
 	res.T.add(k0.T,k1.T);
 }
 
-IC void q_scale(Fquaternion &q, f32 v)
+IC void q_scale(fQuaternion& q, f32 v)
 {
 	f32 angl;
 	fVector3 ax;
@@ -919,14 +896,14 @@ IC void keys_substruct(CKey	*R, const CKey	*BR, int b_count )
 
 IC void q_scalem(fMatrix4x4& m, f32 v)
 {
-	Fquaternion q;
+	fQuaternion q;
 	q.set(m);
 	q_scale(q,v);
 	m.rotation(q);
 }
 
 //sclale base' * q by scale_factor returns result in matrix  m_res
-IC void q_scale_vs_basem(fMatrix4x4& m_res,const Fquaternion &q, const Fquaternion &base, f32 scale_factor)
+IC void q_scale_vs_basem(fMatrix4x4& m_res,const fQuaternion& q, const fQuaternion& base, f32 scale_factor)
 {
 	fMatrix4x4 mb;
 	fMatrix4x4 imb;
@@ -939,7 +916,7 @@ IC void q_scale_vs_basem(fMatrix4x4& m_res,const Fquaternion &q, const Fquaterni
 	q_scalem(m_res,scale_factor);
 }
 
-IC void q_add_scaled_basem( Fquaternion &q, const Fquaternion &base, const Fquaternion &q0, const Fquaternion &q1, f32 v1 )
+IC void q_add_scaled_basem(fQuaternion& q, const fQuaternion& base, const fQuaternion& q0, const fQuaternion& q1, f32 v1 )
 {
 	//VERIFY(0.f =< v && 1.f >= v );
 	fMatrix4x4 m0;
@@ -965,7 +942,7 @@ IC bool check_scale(const fMatrix4x4& m)
 	return (0.8f<det&&det<1.3f);
 }
 
-IC bool check_scale(const Fquaternion &q)
+IC bool check_scale(const fQuaternion& q)
 {
 	fMatrix4x4 m;
 	m.rotation(q);

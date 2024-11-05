@@ -28,7 +28,7 @@ void	r_pixel_calculator::end		()
 static fVector3 cmNorm[6]	= {{0.0f,1.0f,0.0f}, {0.0f,1.0f,0.0f}, {0.0f,0.0f,-1.0f},{0.0f,0.0f,1.0f}, {0.0f,1.0f,0.0f}, {0.0f,1.0f,0.0f}};
 static fVector3 cmDir[6]		= {{1.0f,0.0f,0.0f}, {-1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f}, {0.0f,-1.0f,0.0f},{0.0f,0.0f,1.0f}, {0.0f,0.0f,-1.0f}};
 
-r_aabb_ssa		r_pixel_calculator::calculate	(IRender_Visual* V)	{
+r_aabb_ssa		r_pixel_calculator::calculate	(IRenderVisual* V)	{
 	r_aabb_ssa	result			= {0};
 	f32		area			= f32(_sqr(rt_dimensions));
 
@@ -75,7 +75,7 @@ void	r_pixel_calculator	::run	()
 	begin	();
 	for (u32 it=0; it<RImplementation.Visuals.size(); it++)
 	{
-		if (0==dynamic_cast<IRender_Mesh*>(RImplementation.Visuals[it]))		continue;
+		if (0==dynamic_cast<IRenderMesh*>(RImplementation.Visuals[it]))		continue;
 		Msg	("*%d*",it);
 		calculate	(RImplementation.Visuals[it]);
 	}

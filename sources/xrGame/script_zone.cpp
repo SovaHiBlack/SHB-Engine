@@ -51,7 +51,7 @@ void CScriptZone::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update	(dt);
 
-	const Fsphere				&s = CFORM()->getSphere();
+	const fSphere& s = CFORM( )->getSphere( );
 	fVector3						P;
 	XFORM().transform_tiny		(P,s.P);
 	feel_touch_update			(P,s.R);
@@ -111,7 +111,7 @@ void CScriptZone::OnRender()
 		{
 		case 0:
 			{
-                Fsphere &l_sphere = l_pShape->data.sphere;
+			fSphere& l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
 				fVector3 l_p;
 				XFORM().transform(l_p, l_sphere.P);

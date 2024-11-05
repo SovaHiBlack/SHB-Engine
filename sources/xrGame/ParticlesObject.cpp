@@ -5,7 +5,7 @@
 
 #include "ParticlesObject.h"
 #include "..\XR_3DA\defines.h"
-#include "..\XR_3DA\fbasicvisual.h"
+#include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\ParticleCustom.h"
 #include "..\XR_3DA\render.h"
 #include "..\XR_3DA\IGame_Persistent.h"

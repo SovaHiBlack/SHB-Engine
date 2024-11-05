@@ -43,30 +43,27 @@ void CGraviArtefact::Load(pcstr section)
 //	m_fEnergy = pSettings->r_float(section,"energy");
 }
 
-
-
-void CGraviArtefact::UpdateCLChild() 
+void CGraviArtefact::UpdateCLChild( )
 {
-
-	VERIFY(!ph_world->Processing());
-	if (getVisible() && m_pPhysicsShell) {
-		if (m_fJumpHeight) {
-			Fvector dir; 
-			dir.set(0, -1.f, 0);
+	VERIFY(!ph_world->Processing( ));
+	if (getVisible( ) && m_pPhysicsShell)
+	{
+		if (m_fJumpHeight)
+		{
+			fVector3 dir;
+			dir.set(0.0f, -1.0f, 0.0f);
 			collide::rq_result RQ;
-			
+
 			//проверить высоту артифакта
-			if(Level().ObjectSpace.RayPick(Position(), dir, m_fJumpHeight, collide::rqtBoth, RQ, this)) 
+			if (Level( ).ObjectSpace.RayPick(Position( ), dir, m_fJumpHeight, collide::rqtBoth, RQ, this))
 			{
-				dir.y = 1.f; 
-				m_pPhysicsShell->applyImpulse(dir, 
-											  30.f * Device.fTimeDelta * 
-											  m_pPhysicsShell->getMass());
+				dir.y = 1.0f;
+				m_pPhysicsShell->applyImpulse(dir, 30.f * Device.fTimeDelta * m_pPhysicsShell->getMass( ));
 			}
 		}
-	} else 
-		if(H_Parent()) 
-		{
-			XFORM().set(H_Parent()->XFORM());
-		};
+	}
+	else if (H_Parent( ))
+	{
+		XFORM( ).set(H_Parent( )->XFORM( ));
+	}
 }

@@ -67,7 +67,7 @@ IC	bool CSpaceRestriction::applied					() const
 	return							(m_applied);
 }
 
-IC	bool CSpaceRestriction::inside					(const Fsphere &sphere)
+IC	bool CSpaceRestriction::inside					(const fSphere& sphere)
 {
 	return							(accessible(sphere));
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include		"fhierrarhyvisual.h"
+#include "HierrarhyVisual.h"
 #include		"bone.h"
 
 // consts
@@ -121,7 +121,7 @@ public:
 #ifdef DEBUG
 	u32					used_in_render;	
 #endif
-	Fsphere				m_LocalBounds;	// 16		model space
+	fSphere				m_LocalBounds;	// 16		model space
 	struct WMFace{
 		fVector3		vert	[3];
 		fVector2		uv		[3];
@@ -131,7 +131,7 @@ public:
 	DEFINE_VECTOR		(WMFace,WMFacesVec,WMFacesVecIt);
 	WMFacesVec			m_Faces;		// 16 
 public:
-	Fsphere				m_Bounds;		// 16		world space
+	fSphere				m_Bounds;		// 16		world space
 public:									
 						CSkeletonWallmark	(CKinematics* p,const fMatrix4x4* m, ref_shader s, const fVector3& cp, f32 ts):
 						m_Parent(p),m_XForm(m),m_Shader(s),m_fTimeStart(ts),m_ContactPoint(cp)
@@ -170,11 +170,12 @@ DEFINE_VECTOR(intrusive_ptr<CSkeletonWallmark>,SkeletonWMVec,SkeletonWMVecIt);
 #	define _DBG_SINGLE_USE_MARKER
 #endif
 
-class ENGINE_API	CKinematics: public FHierrarhyVisual
+class ENGINE_API	CKinematics: public CHierrarhyVisual
 {
-	typedef FHierrarhyVisual	inherited;
+	typedef CHierrarhyVisual	inherited;
 	friend class				CBoneData;
 	friend class				CSkeletonX;
+
 public: 
 #ifdef DEBUG
 	BOOL						dbg_single_use_marker;
@@ -184,12 +185,12 @@ public:
 public:
 	typedef xr_vector<std::pair<shared_str,u16> >	accel;
 public:
-	IRender_Visual*				m_lod;
+	IRenderVisual*				m_lod;
 protected:
 	SkeletonWMVec				wallmarks;
 	u32							wm_frame;
 
-	xr_vector<IRender_Visual*>	children_invisible	;
+	xr_vector<IRenderVisual*>	children_invisible	;
 
 	// Globals
 	CInifile*					pUserData;
@@ -270,7 +271,7 @@ public:
 #endif
 
 	// General "Visual" stuff
-	virtual void				Copy				(IRender_Visual *pFrom);
+	virtual void				Copy				(IRenderVisual*pFrom);
 	virtual void				Load				(pcstr N, IReader *data, u32 dwFlags);
 	virtual void 				Spawn				();
 	virtual void				Depart				();
@@ -290,4 +291,4 @@ public:
 		return sz;
 	}
 };
-IC CKinematics* PKinematics		(IRender_Visual* V)		{ return V?V->dcast_PKinematics():0; }
+IC CKinematics* PKinematics		(IRenderVisual* V)		{ return V?V->dcast_PKinematics():0; }

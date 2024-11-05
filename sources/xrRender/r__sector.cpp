@@ -6,7 +6,7 @@
 #include "r__sector.h"
 #include "..\XR_3DA\xrLevel.h"
 #include "..\XR_3DA\xr_object.h"
-#include "..\XR_3DA\fbasicvisual.h"
+#include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 //////////////////////////////////////////////////////////////////////

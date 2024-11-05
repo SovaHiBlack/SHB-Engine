@@ -26,7 +26,7 @@ public:
 			const xr_vector<u32>	&border						() const;
 			bool					initialized					() const;
 			void					initialize					();
-			bool					inside						(const Fsphere &sphere);
+			bool					inside						(const fSphere& sphere);
 			bool					inside						(u32 level_vertex_id, bool partially_inside);
 			bool					inside						(u32 level_vertex_id, bool partially_inside, f32 radius);
 			shared_str				name						() const;
@@ -35,7 +35,7 @@ public:
 			bool					default_restrictor			() const;
 			bool					on_border					(const fVector3& position) const;
 			bool					out_of_border				(const fVector3& position);
-			Fsphere					sphere						() const;
+			fSphere					sphere						() const;
 
 	template <typename T>
 	IC		u32						accessible_nearest			(T &restriction, const fVector3& position, fVector3& result, bool out_restriction);

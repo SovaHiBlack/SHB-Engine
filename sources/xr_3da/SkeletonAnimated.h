@@ -210,7 +210,7 @@ public:
 	CBlend*						PlayFX			(MotionID M, f32 power_scale);
 
 	// General "Visual" stuff
-	virtual void				Copy			(IRender_Visual *pFrom);
+	virtual void				Copy(IRenderVisual* pFrom);
 	virtual void				Load			(pcstr N, IReader *data, u32 dwFlags);
 	virtual void				Release			();
 	virtual void				Spawn			();
@@ -229,4 +229,4 @@ public:
 		return					(blend_cycles[bone_part_id]);
 	}
 };
-IC CKinematicsAnimated* PKinematicsAnimated(IRender_Visual* V) { return V?V->dcast_PKinematicsAnimated():0; }
+IC CKinematicsAnimated* PKinematicsAnimated(IRenderVisual* V) { return V?V->dcast_PKinematicsAnimated():0; }

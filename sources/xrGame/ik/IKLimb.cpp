@@ -437,7 +437,7 @@ void CollideGoal(fMatrix4x4& g, const  SIKCollideData& cld)
 	}
 }
 
-IC f32 clamp_rotation(Fquaternion& q, f32 v)
+IC f32 clamp_rotation(fQuaternion& q, f32 v)
 {
 	f32 angl;
 	fVector3 ax;
@@ -454,7 +454,7 @@ IC f32 clamp_rotation(Fquaternion& q, f32 v)
 
 IC f32  clamp_rotation(fMatrix4x4& m, f32 v)
 {
-	Fquaternion q;
+	fQuaternion q;
 	q.set(m);
 	f32 r = clamp_rotation(q, v);
 	fVector3 c = m.c;
@@ -465,7 +465,7 @@ IC f32  clamp_rotation(fMatrix4x4& m, f32 v)
 
 IC void get_axix_angle(const fMatrix4x4& m, fVector3& ax, f32& angl)
 {
-	Fquaternion q;
+	fQuaternion q;
 	q.set(m);
 	q.get_axis_angle(ax, angl);
 }
@@ -682,7 +682,7 @@ void CIKLimb::Collide(SIKCollideData& cld, CGameObject* O, const fMatrix4x4& foo
 		}
 		else
 		{
-			IRender_Visual* V = R.O->Visual( );
+			IRenderVisual* V = R.O->Visual( );
 			if (V)
 			{
 				CKinematics* K = V->dcast_PKinematics( );

@@ -1,4 +1,3 @@
-//---------------------------------------------------------------------------
 #pragma once
 
 #include "..\XR_3DA\ParticleCustom.h"
@@ -51,16 +50,16 @@ namespace PS
 		fVector3				m_InitialPosition;
 
 	public:
-		DEFINE_VECTOR(IRender_Visual*,VisualVec,VisualVecIt);
+		DEFINE_VECTOR(IRenderVisual*,VisualVec,VisualVecIt);
 		struct SItem		{
-			IRender_Visual*	_effect;
+			IRenderVisual*	_effect;
 			VisualVec		_children_related;
 			VisualVec		_children_free;
 		public:
-			void			Set				(IRender_Visual* e);
+			void			Set				(IRenderVisual* e);
 			void			Clear			();
 
-			IC u32			GetVisuals		(xr_vector<IRender_Visual*>& visuals)
+			IC u32			GetVisuals		(xr_vector<IRenderVisual*>& visuals)
 			{
 				visuals.reserve				(_children_related.size()+_children_free.size()+1);
 				if (_effect)				visuals.push_back(_effect);
@@ -98,7 +97,7 @@ namespace PS
 		virtual				~CParticleGroup	();
 		virtual void	 	OnFrame			(u32 dt);
 
-		virtual void		Copy			(IRender_Visual* pFrom) {FATAL("Can't duplicate particle system - NOT IMPLEMENTED");}
+		virtual void		Copy			(IRenderVisual* pFrom) {FATAL("Can't duplicate particle system - NOT IMPLEMENTED");}
 
 		virtual void 		OnDeviceCreate	();
 		virtual void 		OnDeviceDestroy	();

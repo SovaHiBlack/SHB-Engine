@@ -167,12 +167,12 @@ IC	const xrGUID &CGameGraph::CHeader::guid							() const
 	return						(m_guid);
 }
 
-IC	const Fvector &GameGraph::CVertex::level_point					() const
+IC	const fVector3& GameGraph::CVertex::level_point( ) const
 {
 	return						(tLocalPoint);
 }
 
-IC	const Fvector &GameGraph::CVertex::game_point					() const
+IC	const fVector3& GameGraph::CVertex::game_point( ) const
 {
 	return						(tGlobalPoint);
 }

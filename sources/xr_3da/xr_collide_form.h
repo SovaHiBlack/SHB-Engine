@@ -88,9 +88,11 @@ protected:
 	u32				dwQueryID;
 protected:
 	fBox3			bv_box;			// (Local) BBox объекта
-	Fsphere			bv_sphere;		// (Local) Sphere 
+	fSphere			bv_sphere;		// (Local) Sphere 
+
 private:
 	ECollisionFormType	m_type;
+
 public:
 					ICollisionForm	( CObject* _owner, ECollisionFormType tp );
 	virtual			~ICollisionForm	( );
@@ -101,7 +103,7 @@ public:
 	IC CObject*		Owner			( )	const				{ return owner;			}
 	const fBox3&		getBBox			( )	const				{ return bv_box;		}
 	f32			getRadius		( )	const				{ return bv_sphere.R;	}
-	const Fsphere&	getSphere		( )	const				{ return bv_sphere;		}
+	const fSphere&	getSphere		( )	const				{ return bv_sphere;		}
 	const ECollisionFormType Type	( ) const				{ return m_type;		}
 };
 
@@ -115,7 +117,7 @@ public:
 				fVector3	b_hsize;
 			};
 			struct{
-				Fsphere	s_sphere;
+				fSphere	s_sphere;
 			};
 			struct{
 				fCylinder c_cylinder;
@@ -169,7 +171,7 @@ class ENGINE_API	CCF_Shape	: public ICollisionForm
 public:
 	union shape_data
 	{
-		Fsphere		sphere;
+		fSphere		sphere;
 		struct{
 			fMatrix4x4	box;
 			fMatrix4x4	ibox;
@@ -187,7 +189,7 @@ public:
 	virtual BOOL	_RayQuery		( const collide::ray_defs& Q, collide::rq_results& R);
 	//virtual void	_BoxQuery		( const fBox3& B, const fMatrix4x4& M, u32 flags);
 
-	void			add_sphere		( Fsphere& S	);
+	void			add_sphere		(fSphere& S	);
 	void			add_box			(fMatrix4x4& B	);
 	void			ComputeBounds	( );
 	BOOL			Contact			( CObject* O	);

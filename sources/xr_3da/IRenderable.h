@@ -9,7 +9,7 @@ public:
 	struct 
 	{
 		fMatrix4x4							xform						;
-		IRender_Visual*					visual						;
+		IRenderVisual*					visual						;
 		IRender_ObjectSpecific*			pROS						;
 		BOOL							pROS_Allowed				;
 	}	renderable;

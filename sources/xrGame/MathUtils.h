@@ -277,7 +277,7 @@ IC void				dMatrixSmallDeviationAdd			(const dReal* matrix33_from, const dReal* 
 	vector_dev[2] += matrix33_from[4] - matrix33_to[4];
 }
 
-IC void				twoq_2w								(const Fquaternion& q1, const Fquaternion& q2, f32 dt, fVector3& w)
+IC void				twoq_2w								(const fQuaternion& q1, const fQuaternion& q2, f32 dt, fVector3& w)
 {
 	fVector3 v1;
 	fVector3 v2;

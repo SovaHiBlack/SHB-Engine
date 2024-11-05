@@ -154,7 +154,7 @@ void CPHGeometryOwner::			add_Box		(const fObb&		V)
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CBoxGeom>(box)));
 }
 
-void CPHGeometryOwner::			add_Sphere	(const Fsphere&	V)
+void CPHGeometryOwner::			add_Sphere	(const fSphere&	V)
 {
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CSphereGeom>(V)));
 }
@@ -185,7 +185,7 @@ void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const fMatrix4x4& offse
 		}
 	case SBoneShape::stSphere	:
 		{
-			Fsphere sphere=shape.sphere;
+		fSphere sphere=shape.sphere;
 			offset.transform_tiny(sphere.P);
 			add_Sphere(sphere);
 			break;

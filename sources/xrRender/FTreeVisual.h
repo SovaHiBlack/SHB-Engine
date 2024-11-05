@@ -3,15 +3,16 @@
 // refs
 struct	FSlideWindowItem;
 
-class	FTreeVisual				:	public IRender_Visual, public IRender_Mesh
+class	FTreeVisual : public IRenderVisual, public IRenderMesh
 {
 private:
 	struct	_5color
 	{
-		Fvector					rgb;		// - all static lighting
+		fVector3					rgb;		// - all static lighting
 		f32					hemi;		// - hemisphere
 		f32					sun;		// - sun
 	};
+
 protected:
 	_5color						c_scale;
 	_5color						c_bias;
@@ -20,7 +21,7 @@ protected:
 public:
 	virtual void Render			(f32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void Load			(pcstr N, IReader *data, u32 dwFlags);
-	virtual void Copy			(IRender_Visual *pFrom	);
+	virtual void Copy(IRenderVisual* pFrom);
 	virtual void Release		();
 
 	FTreeVisual(void);
@@ -36,7 +37,7 @@ public:
 
 	virtual void	Render			(f32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void	Load			(pcstr N, IReader *data, u32 dwFlags);
-	virtual void	Copy			(IRender_Visual *pFrom	);
+	virtual void	Copy(IRenderVisual* pFrom);
 	virtual void	Release			();
 private:
 	FTreeVisual_ST				(const FTreeVisual_ST& other);
@@ -55,7 +56,7 @@ public:
 
 	virtual void	Render			(f32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void	Load			(pcstr N, IReader *data, u32 dwFlags);
-	virtual void	Copy			(IRender_Visual *pFrom	);
+	virtual void	Copy(IRenderVisual* pFrom);
 	virtual void	Release			();
 private:
 	FTreeVisual_PM				(const FTreeVisual_PM& other);

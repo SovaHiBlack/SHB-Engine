@@ -396,7 +396,7 @@ bool CActor::g_LadderOrient()
 	//M.j.invert();
 
 
-	//Fquaternion q1,q2,q3;
+	//fQuaternion q1,q2,q3;
 	//q1.set(XFORM());
 	//q2.set(M);
 	//q3.slerp(q1,q2,dt);

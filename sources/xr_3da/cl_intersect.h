@@ -641,7 +641,7 @@ namespace CDB
 		e1.sub(*p[2], *p[0]);
 		return TestSphereTri(sphereOrigin,sphereRadius,*p[0],e0,e1);
 	}
-	IC bool TestSphereOBB(const Fsphere& rkSphere, const fObb& rkBox)
+	IC bool TestSphereOBB(const fSphere& rkSphere, const fObb& rkBox)
 	{
 		// Test for intersection in the coordinate system of the box by
 		// transforming the sphere into that coordinate system.

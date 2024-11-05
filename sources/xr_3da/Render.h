@@ -6,7 +6,7 @@
 
 // refs
 class ENGINE_API	IRenderable;
-class ENGINE_API	IRender_Visual;
+class ENGINE_API	IRenderVisual;
 class ENGINE_API	IBlender;
 class ENGINE_API	CSkeletonWallmark;
 class ENGINE_API	CKinematics;
@@ -182,7 +182,7 @@ public:
 	virtual pcstr					getShaderPath			()											= 0;
 	virtual ref_shader				getShader				(int id)									= 0;
 	virtual IRender_Sector*			getSector				(int id)									= 0;
-	virtual IRender_Visual*			getVisual				(int id)									= 0;
+	virtual IRenderVisual*			getVisual				(int id)									= 0;
 	virtual IRender_Sector*			detectSector			(const fVector3& P)							= 0;
 	virtual IRender_Target*			getTarget				()											= 0;
 
@@ -195,8 +195,8 @@ public:
 	virtual void					flush					()											= 0;	
 	virtual void					set_Object				(IRenderable*		O	)					= 0;
 	virtual	void					add_Occluder			(fBox2&	bb_screenspace	)					= 0;	// mask screen region as oclluded (-1..1, -1..1)
-	virtual void					add_Visual				(IRender_Visual*	V	)					= 0;	// add visual leaf	(no culling performed at all)
-	virtual void					add_Geometry			(IRender_Visual*	V	)					= 0;	// add visual(s)	(all culling performed)
+	virtual void					add_Visual				(IRenderVisual*	V	)					= 0;	// add visual leaf	(no culling performed at all)
+	virtual void					add_Geometry			(IRenderVisual*	V	)					= 0;	// add visual(s)	(all culling performed)
 	virtual void					add_StaticWallmark		(ref_shader& S, const fVector3& P, f32 s, CDB::TRI* T, fVector3* V)=0;
 	virtual void					clear_static_wallmarks	()=0;
 	virtual void					add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm)						= 0;
@@ -215,12 +215,12 @@ public:
 	virtual void					glow_destroy			(IRender_Glow* p_)							{ };
 
 	// Models
-	virtual IRender_Visual*			model_CreateParticles	(pcstr name)								= 0;
+	virtual IRenderVisual*			model_CreateParticles	(pcstr name)								= 0;
 	virtual IRender_DetailModel*	model_CreateDM			(IReader*	F)								= 0;
-	virtual IRender_Visual*			model_Create			(pcstr name, IReader*	data=0)				= 0;
-	virtual IRender_Visual*			model_CreateChild		(pcstr name, IReader*	data)				= 0;
-	virtual IRender_Visual*			model_Duplicate			(IRender_Visual*	V)						= 0;
-	virtual void					model_Delete			(IRender_Visual* &	V, BOOL bDiscard=FALSE)	= 0;
+	virtual IRenderVisual*			model_Create			(pcstr name, IReader*	data=0)				= 0;
+	virtual IRenderVisual*			model_CreateChild		(pcstr name, IReader*	data)				= 0;
+	virtual IRenderVisual*			model_Duplicate			(IRenderVisual*	V)						= 0;
+	virtual void					model_Delete			(IRenderVisual* &	V, BOOL bDiscard=FALSE)	= 0;
 	virtual void 					model_Delete			(IRender_DetailModel* & F)					= 0;
 	virtual void					model_Logging			(BOOL bEnable)								= 0;
 	virtual void					models_Prefetch			()											= 0;

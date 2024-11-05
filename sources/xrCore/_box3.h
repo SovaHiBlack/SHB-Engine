@@ -313,7 +313,7 @@ public:
 	}
 	IC	SelfCRef	get_CD(Tvector& bc, Tvector& bd) const // center + dimensions
 	{
-		bd.sub(max, min).mul(.5f);
+		bd.sub(max, min).mul(0.5f);
 		bc.add(min, bd);
 		return *this;
 	}

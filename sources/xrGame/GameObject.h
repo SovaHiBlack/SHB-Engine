@@ -125,7 +125,7 @@ public:
 	virtual void			renderable_Render	();
 	virtual void			OnEvent				(NET_Packet& P, u16 type);
 	virtual	void			Hit					(SHit* pHDS) {};
-	virtual void			SetHitInfo				(CObject* who, CObject* weapon, s16 element, Fvector Pos, Fvector Dir)	{};
+	virtual void			SetHitInfo				(CObject* who, CObject* weapon, s16 element, fVector3 Pos, fVector3 Dir)	{};
 	virtual	BOOL			BonePassBullet		(int boneID) { return FALSE; }
 
 	//игровое имя объекта

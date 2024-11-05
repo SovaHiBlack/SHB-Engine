@@ -115,7 +115,8 @@ IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const fVector3
 {
 	// Query objects
 	q_nearest.clear_not_free		( );
-	Fsphere				Q;	Q.set	(point,range);
+	fSphere				Q;
+	Q.set	(point,range);
 	fVector3				B;
 	B.set	(range,range,range);
 	g_SpatialSpace->q_box(r_spatial,0,STYPE_COLLIDEABLE,point,B);
@@ -127,7 +128,7 @@ IC int	CObjectSpace::GetNearest	( xr_vector<CObject*>&	q_nearest, const fVector3
 		CObject* O				= (*it)->dcast_CObject		();
 		if (0==O)				continue;
 		if (O==ignore_object)	continue;
-		Fsphere mS				= { O->spatial.sphere.P, O->spatial.sphere.R	};
+		fSphere mS				= { O->spatial.sphere.P, O->spatial.sphere.R	};
 		if (Q.intersect(mS))	q_nearest.push_back(O);
 	}
 
@@ -188,8 +189,8 @@ void CObjectSpace::dbgRender()
 
 	for (i=0; i<dbg_S.size(); i++)
 	{
-		std::pair<Fsphere,u32>& P = dbg_S[i];
-		Fsphere&	S = P.first;
+		std::pair<fSphere,u32>& P = dbg_S[i];
+		fSphere&	S = P.first;
 		fMatrix4x4		M;
 		M.scale		(S.R,S.R,S.R);
 		M.translate_over(S.P);

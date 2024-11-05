@@ -1,9 +1,10 @@
 #pragma once
-#include "..\XR_3DA\fhierrarhyvisual.h"
+#include "..\XR_3DA\HierrarhyVisual.h"
 
-class	FLOD	:	public FHierrarhyVisual
+class	FLOD	:	public CHierrarhyVisual
 {
-	typedef FHierrarhyVisual inherited;
+	typedef CHierrarhyVisual inherited;
+
 public:
 	struct _vertex
 	{
@@ -36,5 +37,5 @@ public:
 public:
 	virtual void Render			(f32 LOD		);									// LOD - Level Of Detail  [0.0f - min, 1.0f - max], Ignored
 	virtual void Load			(pcstr N, IReader *data, u32 dwFlags);
-	virtual void Copy			(IRender_Visual *pFrom	);
+	virtual void Copy(IRenderVisual* pFrom);
 };

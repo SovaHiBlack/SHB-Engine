@@ -77,7 +77,7 @@ public:
 
 	virtual void					UpdateGameType		() {};
 
-	virtual void					RegisterModel		(IRender_Visual* V) = 0;
+	virtual void					RegisterModel		(IRenderVisual* V) = 0;
 
 	virtual	f32					MtlTransparent		(u32 mtl_idx) = 0;
 

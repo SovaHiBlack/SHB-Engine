@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "gamepersistent.h"
-#include "..\XR_3DA\fmesh.h"
+#include "..\XR_3DA\mesh.h"
 #include "..\XR_3DA\xr_ioconsole.h"
 #include "gamemtllib.h"
 #include "..\XR_3DA\skeletoncustom.h"
@@ -84,7 +84,7 @@ CGamePersistent::~CGamePersistent(void)
 	Engine.Event.Handler_Detach	(eQuickLoad,this);
 }
 
-void CGamePersistent::RegisterModel(IRender_Visual* V)
+void CGamePersistent::RegisterModel(IRenderVisual* V)
 {
 	// Check types
 	switch (V->Type){
@@ -205,7 +205,7 @@ void CGamePersistent::WeathersUpdate()
 				ref_sound* snd			= env_amb->get_rnd_sound();
 				ambient_sound_next_time	= Device.dwTimeGlobal + env_amb->get_rnd_sound_time();
 				if (snd){
-					Fvector	pos;
+					fVector3	pos;
 					f32	angle		= ::Random.randF(PI_MUL_2);
 					pos.x				= _cos(angle);
 					pos.y				= 0;
@@ -224,7 +224,8 @@ void CGamePersistent::WeathersUpdate()
 					ambient_effect_next_time		= Device.dwTimeGlobal + env_amb->get_rnd_effect_time();
 					ambient_effect_stop_time		= Device.dwTimeGlobal + eff->life_time;
 					ambient_particles				= CParticlesObject::Create(eff->particles.c_str(),FALSE,false);
-					Fvector pos; pos.add			(Device.vCameraPosition,eff->offset); 
+					fVector3 pos;
+					pos.add			(Device.vCameraPosition,eff->offset);
 					ambient_particles->play_at_pos	(pos);
 					if (eff->sound._handle())		eff->sound.play_at_pos(0,pos);
 				}

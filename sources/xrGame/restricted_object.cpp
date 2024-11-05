@@ -126,7 +126,7 @@ bool CRestrictedObject::accessible			(const fVector3& position) const
 bool CRestrictedObject::accessible			(const fVector3& position, f32 radius) const
 {
 	START_PROFILE("Restricted Object/Accessible");
-	Fsphere						sphere;
+	fSphere						sphere;
 	sphere.P					= position;
 	sphere.R					= radius;
 	return						(Level().space_restriction_manager().accessible(object().ID(),sphere));

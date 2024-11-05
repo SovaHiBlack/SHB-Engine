@@ -43,7 +43,7 @@ namespace PS
 		void	 			OnFrame				(u32 dt);
 
 		virtual void		Render				(f32 LOD);
-		virtual void		Copy				(IRender_Visual* pFrom);
+		virtual void		Copy				(IRenderVisual* pFrom);
 
 		virtual void 		OnDeviceCreate		();
 		virtual void 		OnDeviceDestroy		();

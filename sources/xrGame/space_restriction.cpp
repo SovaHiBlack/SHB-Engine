@@ -49,7 +49,7 @@ struct CRemoveMergedFreeInRestrictions {
 	}
 };
 
-bool CSpaceRestriction::accessible				(const Fsphere &sphere)
+bool CSpaceRestriction::accessible(const fSphere& sphere)
 {
 	if (!initialized()) {
 		initialize					();
@@ -319,7 +319,7 @@ u32	CSpaceRestriction::accessible_nearest		(const fVector3& position, fVector3& 
 	return							(m_in_space_restriction->accessible_nearest(m_in_space_restriction,position,result,false));
 }
 
-bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, const Fsphere &sphere) const
+bool CSpaceRestriction::affect(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, const fSphere& sphere) const
 {
 	if (bridge->inside(sphere))
 		return						(false);
@@ -335,7 +335,7 @@ bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr 
 
 bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, u32 start_vertex_id, f32 radius) const
 {
-	Fsphere							sphere;
+	fSphere							sphere;
 	sphere.P						= ai().level_graph().vertex_position(start_vertex_id);
 	sphere.R						= radius;
 	return							(affect(bridge,sphere));
@@ -343,7 +343,8 @@ bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr 
 
 bool CSpaceRestriction::affect					(SpaceRestrictionHolder::CBaseRestrictionPtr bridge, const fVector3& start_position, const fVector3& dest_position) const
 {
-	Fsphere							sphere0, sphere1;
+	fSphere							sphere0;
+	fSphere							sphere1;
 	sphere0.P						= start_position;
 	sphere0.R						= 0.f;
 	sphere1.P						= dest_position;

@@ -24,7 +24,7 @@ enum{
 #pragma pack(push,2)
 struct ENGINE_API CKey
 {
-	Fquaternion	Q;			// rotation
+	fQuaternion	Q;			// rotation
 	fVector3		T;			// translation
 };
 struct ENGINE_API CKeyQR

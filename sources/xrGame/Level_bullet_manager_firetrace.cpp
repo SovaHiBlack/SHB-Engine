@@ -56,11 +56,11 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 				if (actor || stalker)
 				{
 					// попали в актера или сталкера
-					Fsphere S = cform->getSphere( );
+					fSphere S = cform->getSphere( );
 					entity->XFORM( ).transform_tiny(S.P);
 					f32 dist = rd.range;
 					// проверим попали ли мы в описывающую сферу 
-					if (Fsphere::rpNone != S.intersect_full(bullet->pos, bullet->dir, dist))
+					if (fSphere::rpNone != S.intersect_full(bullet->pos, bullet->dir, dist))
 					{
 						// да попали, найдем кто стрел€л
 						bool play_whine = true;

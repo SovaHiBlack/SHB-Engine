@@ -283,7 +283,7 @@ void	CRenderTarget::phase_combine	()
 #ifdef DEBUG
 		if (0) for (u32 it=0; it<dbg_spheres.size(); it++)
 		{
-			Fsphere				S	= dbg_spheres[it].first;
+			fSphere				S	= dbg_spheres[it].first;
 			fMatrix4x4				M;	
 			u32				ccc		= dbg_spheres[it].second.get();
 			M.scale					(S.R,S.R,S.R);

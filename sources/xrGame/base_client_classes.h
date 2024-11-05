@@ -16,8 +16,8 @@ class ISheduled;
 class IRenderable;
 class ICollidable;
 class CObject;
-class IRender_Visual;
-class FHierrarhyVisual;
+class IRenderVisual;
+class CHierrarhyVisual;
 class CBlend;
 class CKinematics;
 class CKinematicsAnimated;
@@ -57,12 +57,12 @@ add_to_type_list(CBlendScript)
 #undef script_type_list
 #define script_type_list save_type_list(CBlendScript)
 
-typedef class_exporter<IRender_Visual>	IRender_VisualScript;
+typedef class_exporter<IRenderVisual>	IRender_VisualScript;
 add_to_type_list(IRender_VisualScript)
 #undef script_type_list
 #define script_type_list save_type_list(IRender_VisualScript)
 /*
-typedef class_exporter<FHierrarhyVisual>	FHierrarhyVisualScript;
+typedef class_exporter<CHierrarhyVisual>	FHierrarhyVisualScript;
 add_to_type_list(FHierrarhyVisualScript)
 #undef script_type_list
 #define script_type_list save_type_list(FHierrarhyVisualScript)

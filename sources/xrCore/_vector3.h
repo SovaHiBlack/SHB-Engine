@@ -35,20 +35,6 @@ public:
 		z = _z;
 		return *this;
 	}
-	//ICF SelfRef set(const _vector3<f32>& v)
-	//{
-	//	x = TYPE(v.x);
-	//	y = TYPE(v.y);
-	//	z = TYPE(v.z);
-	//	return *this;
-	//}
-	//ICF SelfRef set(const _vector3<f64>& v)
-	//{
-	//	x = TYPE(v.x);
-	//	y = TYPE(v.y);
-	//	z = TYPE(v.z);
-	//	return *this;
-	//}
 	ICF SelfRef set(SelfCRef v)
 	{
 		x = TYPE(v.x);
@@ -457,7 +443,7 @@ public:
 	}
 	IC SelfRef random_dir(SelfCRef ConeAxis, f32 ConeAngle, CRandom& R = ::Random)
 	{
-		Self				rnd;
+		Self rnd;
 		rnd.random_dir(R);
 		mad(ConeAxis, rnd, R.randF(tanf(ConeAngle)));
 		normalize();

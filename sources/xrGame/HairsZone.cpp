@@ -63,7 +63,7 @@ void CHairsZone::Affect(SZoneObjectInfo* O)
 
 	if(O->zone_ignore) return;
 
-	Fvector P; 
+	fVector3 P;
 	XFORM().transform_tiny(P,CFORM()->getSphere().P);
 
 #ifdef DEBUG
@@ -74,13 +74,13 @@ void CHairsZone::Affect(SZoneObjectInfo* O)
 	}
 #endif
 
-	Fvector hit_dir; 
+	fVector3 hit_dir;
 	hit_dir.set(::Random.randF(-.5f,.5f), 
 		::Random.randF(.0f,1.f), 
 		::Random.randF(-.5f,.5f)); 
 	hit_dir.normalize();
 
-	Fvector position_in_bone_space;
+	fVector3 position_in_bone_space;
 
 	P.y=0.f;
 	f32 power = Power(pGameObject->Position().distance_to(P));

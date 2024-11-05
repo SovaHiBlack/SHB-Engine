@@ -30,13 +30,13 @@ private:
 	};
 
 private:
-	typedef xr_vector<Fsphere>	SPHERES;
+	typedef xr_vector<fSphere>	SPHERES;
 	typedef xr_vector<CPlanes>	BOXES;
 
 private:
 	mutable SPHERES				m_spheres;
 	mutable BOXES				m_boxes;
-	mutable Fsphere				m_selfbounds;
+	mutable fSphere				m_selfbounds;
 	mutable bool				m_actuality;
 
 private:
@@ -44,14 +44,14 @@ private:
 private:
 	IC		void				actual				(bool value) const;
 			void				prepare				() const;
-			bool				prepared_inside		(const Fsphere &sphere) const;
+			bool				prepared_inside		(const fSphere& sphere) const;
 
 public:
 	IC							CSpaceRestrictor	();
 	virtual						~CSpaceRestrictor	();
 	virtual	BOOL				net_Spawn			(CSE_Abstract* data);
 	virtual	void				net_Destroy			();
-			bool				inside				(const Fsphere &sphere) const;
+			bool				inside				(const fSphere& sphere) const;
 	virtual void				Center				(fVector3& C) const;
 	virtual f32				Radius				() const;
 	virtual BOOL				UsedAI_Locations	();

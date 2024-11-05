@@ -204,7 +204,9 @@ BOOL CAnimatorCamLerpEffector::Process(fVector3& p, fVector3& d, fVector3& n, f3
 	fMatrix4x4 mr;
 	mr.mul						(Mdef,m);
 
-	Fquaternion					q_src, q_dst, q_res;
+	fQuaternion					q_src;
+	fQuaternion					q_dst;
+	fQuaternion					q_res;
 	q_src.set					(Mdef);
 	q_dst.set					(mr);
 

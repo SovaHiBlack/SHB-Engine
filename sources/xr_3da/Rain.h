@@ -29,7 +29,7 @@ private:
 	{
 		Particle		*next,*prev;
 		fMatrix4x4			mXForm;
-		Fsphere			bounds;
+		fSphere			bounds;
 		f32			time;
 	};
 	enum	States

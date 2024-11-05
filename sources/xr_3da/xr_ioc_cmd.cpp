@@ -5,7 +5,7 @@
 //#include "x_ray.h"
 #include "xr_ioconsole.h"
 #include "xr_ioc_cmd.h"
-//#include "fbasicvisual.h"
+//#include "BasicVisual.h"
 #include "cameramanager.h"
 #include "environment.h"
 //#include "xr_input.h"

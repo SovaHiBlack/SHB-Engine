@@ -75,7 +75,7 @@ public:
 			void	unfreeze				();
 
 		// Services
-		IC	f32	motion_time				(MotionID motion_id, IRender_Visual *visual);
+			IC	f32	motion_time(MotionID motion_id, IRenderVisual* visual);
 
 private:
 	void	play				();
@@ -93,7 +93,7 @@ public:
 };
 
 // get motion time, when just MotionID available
-IC f32 CControlAnimation::motion_time(MotionID motion_id, IRender_Visual *visual)
+IC f32 CControlAnimation::motion_time(MotionID motion_id, IRenderVisual* visual)
 {
 	CKinematicsAnimated	*skeleton_animated	= smart_cast<CKinematicsAnimated*>(visual);
 	VERIFY				(skeleton_animated);

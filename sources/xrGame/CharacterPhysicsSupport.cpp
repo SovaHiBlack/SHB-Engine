@@ -331,7 +331,7 @@ IC bool cmp(const fMatrix4x4& f0, const fMatrix4x4& f1 )
 	
 	Fvector ax;
 	f32 ang;
-	Fquaternion q;
+	fQuaternion q;
 	q.set(cm);
 	q.get_axis_angle(ax,ang);
 
@@ -346,7 +346,7 @@ bool is_similar(const fMatrix4x4& m0,const fMatrix4x4& m1, f32 param)
 	tmp2.mul(tmp1,m1);
 	Fvector ax;
 	f32 ang;
-	Fquaternion q;
+	fQuaternion q;
 	q.set(tmp2);
 	q.get_axis_angle(ax,ang);
 	return _abs(ang)<M_PI/2.f;

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "r2.h"
 #include "..\XR_3DA\resourcemanager.h"
-#include "..\XR_3DA\fbasicvisual.h"
-#include "..\XR_3DA\fmesh.h"
+#include "..\XR_3DA\BasicVisual.h"
+#include "..\XR_3DA\mesh.h"
 #include "..\XR_3DA\xrLevel.h"
 #include "..\XR_3DA\x_ray.h"
 #include "..\XR_3DA\IGame_Persistent.h"
@@ -232,7 +232,7 @@ void CRender::LoadVisuals(IReader *fs)
 {
 	IReader*		chunk	= 0;
 	u32			index	= 0;
-	IRender_Visual*		V		= 0;
+	IRenderVisual*		V		= 0;
 	ogf_header		H;
 
 	while ((chunk=fs->open_chunk(index))!=0)

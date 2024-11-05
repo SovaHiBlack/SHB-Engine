@@ -27,11 +27,13 @@ IC BOOL  dis_zero(double	val, double	cmp = EPSILON_7)
 // degree 2 radians and vice-versa
 namespace implement
 {
-	template <class T>	ICF T	deg2rad(T val)
+	template <class T>
+	ICF T	deg2rad(T val)
 	{
 		return (val * T(M_PI) / T(180));
 	};
-	template <class T>	ICF T	rad2deg(T val)
+	template <class T>
+	ICF T	rad2deg(T val)
 	{
 		return (val * T(180) / T(M_PI));
 	};
@@ -57,7 +59,14 @@ ICF double	rad2deg(double val)
 template <class T>
 IC void clamp(T& val, const T& _low, const T& _high)
 {
-	if (val < _low) val = _low; else if (val > _high) val = _high;
+	if (val < _low)
+	{
+		val = _low;
+	}
+	else if (val > _high)
+	{
+		val = _high;
+	}
 };
 template <class T>
 IC T	clampr(const T& val, const T& _low, const T& _high)
@@ -73,7 +82,8 @@ IC f32 snapto(f32 value, f32 snap)
 }
 
 // pre-definitions
-template <class T> struct _quaternion;
+template <class T>
+class _quaternion;
 
 #pragma pack(push)
 #pragma pack(1)

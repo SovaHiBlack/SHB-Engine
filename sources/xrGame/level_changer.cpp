@@ -97,7 +97,7 @@ void CLevelChanger::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update	(dt);
 
-	const Fsphere				&s = CFORM()->getSphere();
+	const fSphere& s = CFORM( )->getSphere( );
 	fVector3						P;
 	XFORM().transform_tiny		(P,s.P);
 	feel_touch_update			(P,s.R);

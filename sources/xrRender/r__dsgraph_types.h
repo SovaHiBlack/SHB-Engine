@@ -68,13 +68,13 @@ namespace	R_dsgraph
 	// Elementary types
 	struct _NormalItem	{
 		f32				ssa;
-		IRender_Visual*		pVisual;
+		IRenderVisual*		pVisual;
 	};
 
 	struct _MatrixItem	{
 		f32				ssa;
 		IRenderable*		pObject;
-		IRender_Visual*		pVisual;
+		IRenderVisual*		pVisual;
 		fMatrix4x4				Matrix;				// matrix (copy)
 	};
 
@@ -85,7 +85,7 @@ namespace	R_dsgraph
 
 	struct _LodItem		{
 		f32				ssa;
-		IRender_Visual*		pVisual;
+		IRenderVisual*		pVisual;
 	};
 
 #ifdef USE_RESOURCE_DEBUGGER

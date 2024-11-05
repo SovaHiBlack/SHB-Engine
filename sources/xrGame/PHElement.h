@@ -78,7 +78,7 @@ IC	void					UpdateInterpolation				()																				//interpolation called 
 public:
 ////////////////////////////////////////////////Geometry/////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual	void						add_Sphere								(const Fsphere&		V);															//aux
+	virtual	void						add_Sphere								(const fSphere&		V);															//aux
 	virtual	void						add_Box									(const fObb&		V);															//aux
 	virtual	void						add_Cylinder							(const fCylinder&	V);															//aux
 	virtual void						add_Shape								(const SBoneShape& shape);														//aux
@@ -199,12 +199,12 @@ public:																																				//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual void						SetTransform					(const fMatrix4x4& m0);															//
 	virtual void						TransformPosition				(const fMatrix4x4& form);
-	virtual void						getQuaternion					(Fquaternion& quaternion);														//
-	virtual void						setQuaternion					(const Fquaternion& quaternion);												//
+	virtual void						getQuaternion					(fQuaternion& quaternion);														//
+	virtual void						setQuaternion					(const fQuaternion& quaternion);												//
 	virtual void						SetGlobalPositionDynamic		(const fVector3& position);														//
 	virtual void						GetGlobalPositionDynamic		(fVector3* v);																	//
-	virtual void						cv2obj_Xfrom					(const Fquaternion& q,const fVector3& pos, fMatrix4x4& xform);						//
-	virtual void						cv2bone_Xfrom					(const Fquaternion& q,const fVector3& pos, fMatrix4x4& xform);						//
+	virtual void						cv2obj_Xfrom					(const fQuaternion& q,const fVector3& pos, fMatrix4x4& xform);						//
+	virtual void						cv2bone_Xfrom					(const fQuaternion& q,const fVector3& pos, fMatrix4x4& xform);						//
 	virtual void						InterpolateGlobalTransform		(fMatrix4x4* m);																	//called UpdateCL vis influent
 	virtual void						InterpolateGlobalPosition		(fVector3* v);																	//aux
 	virtual void						GetGlobalTransformDynamic		(fMatrix4x4* m);																	//aux

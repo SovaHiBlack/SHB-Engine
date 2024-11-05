@@ -19,8 +19,8 @@ public:
 	ref_shader			shader		;
 	u32					dwFrame		;
 
-	Fvector				position	;
-	Fvector				direction	;
+	fVector3				position	;
+	fVector3				direction	;
 	f32				radius		;
 	fColor				color		;
 
@@ -29,14 +29,15 @@ public:
 	collide::ray_cache	RayCache	;
 	u32					qid_pass	;
 	u32					qid_total	;
+
 public:
 	CGlow();
 	virtual	~CGlow();
 
 	virtual void					set_active			(bool);
 	virtual bool					get_active			();
-	virtual void					set_position		(const Fvector& P);
-	virtual void					set_direction		(const Fvector& P);
+	virtual void					set_position		(const fVector3& P);
+	virtual void					set_direction		(const fVector3& P);
 	virtual void					set_radius			(f32			R);
 	virtual void					set_texture			(pcstr			name);
 	virtual void					set_color			(const fColor&	C);
@@ -57,6 +58,7 @@ class CGlowManager
 
 	BOOL					b_hardware		;
 	u32						dwTestID		;
+
 public:
 	void	add				(ref_glow	g)	;
 

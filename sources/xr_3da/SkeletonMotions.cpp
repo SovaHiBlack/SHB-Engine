@@ -3,7 +3,7 @@
 
 #include "SkeletonMotions.h"
 //#include "SkeletonAnimated.h"
-#include "fmesh.h"
+#include "mesh.h"
 #include "motion.h"
 
 motions_container*	g_pMotionsContainer	= 0;

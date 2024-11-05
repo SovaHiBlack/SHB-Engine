@@ -211,7 +211,7 @@ void CSpaceRestrictionShape::test_correctness	()
 }
 #endif
 
-bool CSpaceRestrictionShape::inside	(const Fsphere &sphere)
+bool CSpaceRestrictionShape::inside	(const fSphere& sphere)
 {
 	VERIFY							(m_initialized);
 	VERIFY							(m_restrictor);
@@ -224,9 +224,9 @@ shared_str	CSpaceRestrictionShape::name() const
 	return							(m_restrictor->cName());
 }
 
-Fsphere CSpaceRestrictionShape::sphere	() const
+fSphere CSpaceRestrictionShape::sphere	() const
 {
-	Fsphere							result;
+	fSphere							result;
 	m_restrictor->Center			(result.P);
 	result.R						= m_restrictor->Radius();
 	return							(result);

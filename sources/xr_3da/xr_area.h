@@ -27,7 +27,7 @@ public:
 #ifdef DEBUG
 	ref_shader							sh_debug;
 	clQueryCollision					q_debug;			// MT: dangerous
-	xr_vector<std::pair<Fsphere,u32> >	dbg_S;				// MT: dangerous
+	xr_vector<std::pair<fSphere,u32> >	dbg_S;				// MT: dangerous
 #endif
 
 private:

@@ -49,7 +49,7 @@ public:
 	virtual void __stdcall DrawAABB				(const fMatrix4x4& parent, const Fvector& center, const Fvector& size, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
 	virtual void __stdcall DrawOBB				(const fMatrix4x4& parent, const fObb& box, u32 clr_s, u32 clr_w)=0;
 	virtual void __stdcall DrawSphere		   	(const fMatrix4x4& parent, const Fvector& center, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
-	virtual void __stdcall DrawSphere		   	(const fMatrix4x4& parent, const Fsphere& S, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
+	virtual void __stdcall DrawSphere		   	(const fMatrix4x4& parent, const fSphere& S, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
 	virtual void __stdcall DrawCylinder			(const fMatrix4x4& parent, const Fvector& center, const Fvector& dir, f32 height, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
 	virtual void __stdcall DrawCone				(const fMatrix4x4& parent, const Fvector& apex, const Fvector& dir, f32 height, f32 radius, u32 clr_s, u32 clr_w, BOOL bSolid, BOOL bWire)=0;
 	virtual void __stdcall DrawPlane		   	(const Fvector& center, const fVector2& scale, const Fvector& rotate, u32 clr_s, u32 clr_w, BOOL bCull, BOOL bSolid, BOOL bWire)=0;

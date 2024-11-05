@@ -270,13 +270,13 @@
     <ClInclude Include="FDemoRecord.h">
       <Filter>Game API\Demo</Filter>
     </ClInclude>
-    <ClInclude Include="FBasicVisual.h">
+    <ClInclude Include="BasicVisual.h">
       <Filter>Render\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="FHierrarhyVisual.h">
+    <ClInclude Include="HierrarhyVisual.h">
       <Filter>Render\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="Fmesh.h">
+    <ClInclude Include="mesh.h">
       <Filter>Render\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="ParticleCustom.h">
@@ -617,13 +617,13 @@
     <ClCompile Include="FDemoRecord.cpp">
       <Filter>Game API\Demo</Filter>
     </ClCompile>
-    <ClCompile Include="FBasicVisual.cpp">
+    <ClCompile Include="BasicVisual.cpp">
       <Filter>Render\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="FHierrarhyVisual.cpp">
+    <ClCompile Include="HierrarhyVisual.cpp">
       <Filter>Render\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="fmesh.cpp">
+    <ClCompile Include="mesh.cpp">
       <Filter>Render\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="ParticleCustom.cpp">
@@ -860,5 +860,8 @@
     <Image Include="ui_splash3.bmp">
       <Filter>General\Resources</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

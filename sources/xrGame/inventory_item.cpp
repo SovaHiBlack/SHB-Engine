@@ -42,13 +42,13 @@ struct net_updateData
 #endif
 
 	fVector3			IStartPos;
-	Fquaternion		IStartRot;
+	fQuaternion		IStartRot;
 
 	fVector3			IRecPos;
-	Fquaternion		IRecRot;
+	fQuaternion		IRecRot;
 
 	fVector3			IEndPos;
-	Fquaternion		IEndRot;	
+	fQuaternion		IEndRot;
 
 	SPHNetState		LastState;
 	SPHNetState		RecalculatedState;
@@ -730,7 +730,7 @@ void CInventoryItem::make_Interpolation	()
 			else if (factor < 0) factor = 0;
 
 			fVector3 IPos;
-			Fquaternion IRot;
+			fQuaternion IRot;
 
 			f32 c = factor;
 			for (u32 k=0; k<3; k++)

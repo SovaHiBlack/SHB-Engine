@@ -56,7 +56,7 @@ void __fastcall mapMatrix_Render	(mapMatrixItems& N)
 void __fastcall sorted_L1		(mapSorted_Node *N)
 {
 	VERIFY (N);
-	IRender_Visual *V				= N->val.pVisual;
+	IRenderVisual* V = N->val.pVisual;
 	VERIFY (V && V->shader._get());
 	RCache.set_Element				(N->val.se);
 	RCache.set_xform_world			(N->val.Matrix);
@@ -467,7 +467,7 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CF
 	for (u32 s_it=0; s_it<PortalTraverser.r_sectors.size(); s_it++)
 	{
 		CSector*	sector		= (CSector*)PortalTraverser.r_sectors[s_it];
-		IRender_Visual*	root	= sector->root();
+		IRenderVisual*	root	= sector->root();
 		for (u32 v_it=0; v_it<sector->r_frustums.size(); v_it++)	{
 			set_Frustum			(&(sector->r_frustums[v_it]));
 			add_Geometry		(root);
@@ -514,9 +514,9 @@ void	R_dsgraph_structure::r_dsgraph_render_subspace	(IRender_Sector* _sector, CF
 }
 
 #include "stdafx.h"
-#include "..\XR_3DA\fhierrarhyvisual.h"
+#include "..\XR_3DA\HierrarhyVisual.h"
 #include "..\XR_3DA\SkeletonCustom.h"
-#include "..\XR_3DA\fmesh.h"
+#include "..\XR_3DA\mesh.h"
 #include "flod.h"
 
 void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, fBox3& BB, int sh)
@@ -527,20 +527,20 @@ void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, fBox3& BB
 	
 	for (u32 test=0; test<lstVisuals.size(); test++)
 	{
-		IRender_Visual*	V		= 	lstVisuals[test];
+		IRenderVisual*	V		= 	lstVisuals[test];
 		
 		// Visual is 100% visible - simply add it
-		xr_vector<IRender_Visual*>::iterator I,E;	// it may be usefull for 'hierrarhy' visuals
+		xr_vector<IRenderVisual*>::iterator I,E;	// it may be usefull for 'hierrarhy' visuals
 		
 		switch (V->Type) {
 		case MT_HIERRARHY:
 			{
 				// Add all children
-				FHierrarhyVisual* pV = (FHierrarhyVisual*)V;
+			CHierrarhyVisual* pV = (CHierrarhyVisual*)V;
 				I = pV->children.begin	();
 				E = pV->children.end		();
 				for (; I!=E; I++)		{
-					IRender_Visual* T			= *I;
+					IRenderVisual* T			= *I;
 					if (BB.intersect(T->vis.box))	lstVisuals.push_back(T);
 				}
 			}
@@ -554,7 +554,7 @@ void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, fBox3& BB
 				I = pV->children.begin	();
 				E = pV->children.end		();
 				for (; I!=E; I++)		{
-					IRender_Visual* T				= *I;
+					IRenderVisual* T				= *I;
 					if (BB.intersect(T->vis.box))	lstVisuals.push_back(T);
 				}
 			}
@@ -565,7 +565,7 @@ void	R_dsgraph_structure::r_dsgraph_render_R1_box	(IRender_Sector* _S, fBox3& BB
 				I = pV->children.begin		();
 				E = pV->children.end		();
 				for (; I!=E; I++)		{
-					IRender_Visual* T				= *I;
+					IRenderVisual* T				= *I;
 					if (BB.intersect(T->vis.box))	lstVisuals.push_back(T);
 				}
 			}

@@ -109,7 +109,7 @@ void CPGDef::Save(IWriter& F)
 //------------------------------------------------------------------------------
 // Particle Group item
 //------------------------------------------------------------------------------
-void CParticleGroup::SItem::Set(IRender_Visual* e)
+void CParticleGroup::SItem::Set(IRenderVisual* e)
 {
 	_effect=e;
 }
@@ -143,7 +143,7 @@ void CParticleGroup::SItem::StartRelatedChild(CParticleEffect* emitter, pcstr ef
 void CParticleGroup::SItem::StopRelatedChild(u32 idx)
 {
 	VERIFY(idx<_children_related.size());
-	IRender_Visual*& V 			= _children_related[idx];
+	IRenderVisual*& V 			= _children_related[idx];
 	((CParticleEffect*)V)->Stop	(TRUE);
 	_children_free.push_back	(V);
 	_children_related[idx]		= _children_related.back();
@@ -233,9 +233,9 @@ void OnGroupParticleDead(void* owner, u32 param, PAPI::Particle& m, u32 idx)
 		PG->items[param].StartFreeChild			(PE,*eff->m_OnDeadChildName,m);
 }
 //------------------------------------------------------------------------------
-struct zero_vis_pred : public std::unary_function<IRender_Visual*, bool>
+struct zero_vis_pred : public std::unary_function<IRenderVisual*, bool>
 {
-	bool operator()(const IRender_Visual* x){ return x==0; }
+	bool operator()(const IRenderVisual* x){ return x==0; }
 };
 void CParticleGroup::SItem::OnFrame(u32 u_dt, const CPGDef::SEffect& def, fBox3& box, bool& bPlaying)
 {

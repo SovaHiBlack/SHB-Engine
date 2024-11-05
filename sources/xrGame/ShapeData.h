@@ -9,7 +9,7 @@ struct CShapeData
     };
 	union shape_data
 	{
-		Fsphere		sphere;
+		fSphere		sphere;
 		fMatrix4x4		box;
 	};
 	struct shape_def

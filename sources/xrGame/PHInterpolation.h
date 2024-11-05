@@ -15,12 +15,12 @@ void	UpdatePositions		();
 void	UpdateRotations		();
 void	ResetPositions		();
 void	ResetRotations		();
-void	GetRotation			(Fquaternion& q, u16 num);
+void	GetRotation			(fQuaternion& q, u16 num);
 void	GetPosition			(fVector3& p, u16 num);
-void	SetRotation			(const Fquaternion& q, u16 num);
+void	SetRotation			(const fQuaternion& q, u16 num);
 void	SetPosition			(const fVector3& p, u16 num);
 private:
 	dBodyID m_body;
 	CCycleConstStorage<fVector3,PH_INTERPOLATION_POINTS>				qPositions;
-	CCycleConstStorage<Fquaternion,PH_INTERPOLATION_POINTS>			qRotations;
+	CCycleConstStorage<fQuaternion,PH_INTERPOLATION_POINTS>			qRotations;
 };

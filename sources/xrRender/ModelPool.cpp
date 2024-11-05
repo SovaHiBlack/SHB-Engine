@@ -3,30 +3,30 @@
 #include "ModelPool.h"
 
 #include "..\XR_3DA\IGame_Persistent.h"
-#include "..\XR_3DA\fmesh.h"
-#include "..\XR_3DA\fhierrarhyvisual.h"
+#include "..\XR_3DA\mesh.h"
+#include "..\XR_3DA\HierrarhyVisual.h"
 #include "..\XR_3DA\SkeletonAnimated.h"
-#include "fvisual.h"
-#include "fprogressive.h"
+#include "Visual.h"
+#include "Progressive.h"
 #include "fskinned.h"
 #include "flod.h"
 #include "ftreevisual.h"
 #include "ParticleGroup.h"
 
-IRender_Visual*	CModelPool::Instance_Create(u32 type)
+IRenderVisual*	CModelPool::Instance_Create(u32 type)
 {
-	IRender_Visual *V = NULL;
+	IRenderVisual* V = NULL;
 
 	// Check types
 	switch (type) {
 	case MT_NORMAL:				// our base visual
-		V	= xr_new<Fvisual>				();
+		V	= xr_new<CVisual>				();
 		break;
 	case MT_HIERRARHY:
-		V	= xr_new<FHierrarhyVisual>		();
+		V	= xr_new<CHierrarhyVisual>		();
 		break;
 	case MT_PROGRESSIVE:		// dynamic-resolution visual
-		V	= xr_new<FProgressive>			();
+		V	= xr_new<CProgressive>			();
 		break;
 	case MT_SKELETON_ANIM:
 		V	= xr_new<CKinematicsAnimated>	();
@@ -64,21 +64,21 @@ IRender_Visual*	CModelPool::Instance_Create(u32 type)
 	return		V;
 }
 
-IRender_Visual*	CModelPool::Instance_Duplicate	(IRender_Visual* V)
+IRenderVisual*	CModelPool::Instance_Duplicate	(IRenderVisual* V)
 {
 	R_ASSERT(V);
-	IRender_Visual* N		= Instance_Create(V->Type);
+	IRenderVisual* N		= Instance_Create(V->Type);
 	N->Copy			(V);
 	N->Spawn		();
-    // inc ref counter
+	// inc ref counter
 	for (xr_vector<ModelDef>::iterator I=Models.begin(); I!=Models.end(); I++) 
 		if (I->model==V){ I->refs++; break;}
 	return N;
 }
 
-IRender_Visual*	CModelPool::Instance_Load		(pcstr N, BOOL allow_register)
+IRenderVisual*	CModelPool::Instance_Load		(pcstr N, BOOL allow_register)
 {
-	IRender_Visual	*V;
+	IRenderVisual* V;
 	string_path		fn;
 	string_path		name;
 
@@ -115,9 +115,9 @@ IRender_Visual*	CModelPool::Instance_Load		(pcstr N, BOOL allow_register)
 	return V;
 }
 
-IRender_Visual*	CModelPool::Instance_Load(pcstr name, IReader* data, BOOL allow_register)
+IRenderVisual*	CModelPool::Instance_Load(pcstr name, IReader* data, BOOL allow_register)
 {
-	IRender_Visual	*V;
+	IRenderVisual* V;
 	
 	ogf_header			H;
 	data->r_chunk_safe	(OGF_HEADER,&H,sizeof(H));
@@ -129,7 +129,7 @@ IRender_Visual*	CModelPool::Instance_Load(pcstr name, IReader* data, BOOL allow_
 	return V;
 }
 
-void		CModelPool::Instance_Register(pcstr N, IRender_Visual* V)
+void		CModelPool::Instance_Register(pcstr N, IRenderVisual* V)
 {
 	// Registration
 	ModelDef			M;
@@ -147,10 +147,12 @@ void CModelPool::Destroy()
 	// Registry
 	while(!Registry.empty()){
 		REGISTRY_IT it	= Registry.begin();
-		IRender_Visual* V=(IRender_Visual*)it->first;
+		IRenderVisual* V=(IRenderVisual*)it->first;
+
 #ifdef _DEBUG
 		Msg				("ModelPool: Destroy object: '%s'",*V->dbg_name);
 #endif
+
 		DeleteInternal	(V,TRUE);
 	}
 
@@ -172,8 +174,8 @@ void CModelPool::Destroy()
 CModelPool::CModelPool()
 {
 	bLogging				= TRUE;
-    bForceDiscard 			= FALSE;
-    bAllowChildrenDuplicate	= TRUE; 
+	bForceDiscard 			= FALSE;
+	bAllowChildrenDuplicate	= TRUE; 
 	g_pMotionsContainer		= xr_new<motions_container>();
 }
 
@@ -183,9 +185,9 @@ CModelPool::~CModelPool()
 	xr_delete				(g_pMotionsContainer);
 }
 
-IRender_Visual* CModelPool::Instance_Find(pcstr N)
+IRenderVisual* CModelPool::Instance_Find(pcstr N)
 {
-	IRender_Visual*				Model=0;
+	IRenderVisual*				Model=0;
 	xr_vector<ModelDef>::iterator	I;
 	for (I=Models.begin(); I!=Models.end(); I++)
 	{
@@ -197,7 +199,7 @@ IRender_Visual* CModelPool::Instance_Find(pcstr N)
 	return Model;
 }
 
-IRender_Visual* CModelPool::Create(pcstr name, IReader* data)
+IRenderVisual* CModelPool::Create(pcstr name, IReader* data)
 {
 	string_path low_name;	VERIFY	(xr_strlen(name)<sizeof(low_name));
 	strcpy(low_name,name);	strlwr	(low_name);
@@ -209,36 +211,36 @@ IRender_Visual* CModelPool::Create(pcstr name, IReader* data)
 	if (it!=Pool.end())
 	{
 		// 1. Instance found
-        IRender_Visual*		Model	= it->second;
+		IRenderVisual*		Model	= it->second;
 		Model->Spawn		();
 		Pool.erase			(it);
 		return				Model;
 	} else {
 		// 1. Search for already loaded model (reference, base model)
-		IRender_Visual* Base		= Instance_Find		(low_name);
+		IRenderVisual* Base		= Instance_Find		(low_name);
 
 		if (0==Base){
 			// 2. If not found
 			bAllowChildrenDuplicate	= FALSE;
 			if (data)		Base = Instance_Load(low_name,data,TRUE);
-            else			Base = Instance_Load(low_name,TRUE);
+			else			Base = Instance_Load(low_name,TRUE);
 			bAllowChildrenDuplicate	= TRUE;
 		}
-        // 3. If found - return (cloned) reference
-        IRender_Visual*		Model	= Instance_Duplicate(Base);
-        Registry.insert		( mk_pair(Model,low_name) );
-        return				Model;
+		// 3. If found - return (cloned) reference
+		IRenderVisual*		Model	= Instance_Duplicate(Base);
+		Registry.insert		( mk_pair(Model,low_name) );
+		return				Model;
 	}
 }
 
-IRender_Visual* CModelPool::CreateChild(pcstr name, IReader* data)
+IRenderVisual* CModelPool::CreateChild(pcstr name, IReader* data)
 {
 	string256 low_name;		VERIFY	(xr_strlen(name)<256);
 	strcpy(low_name,name);	strlwr	(low_name);
 	if (strext(low_name))	*strext	(low_name) = 0;
 
 	// 1. Search for already loaded model
-	IRender_Visual* Base	= Instance_Find(low_name);
+	IRenderVisual* Base	= Instance_Find(low_name);
 //.	if (0==Base) Base	 	= Instance_Load(name,data,FALSE);
 	if(0==Base)
 	{
@@ -246,18 +248,18 @@ IRender_Visual* CModelPool::CreateChild(pcstr name, IReader* data)
 		else			Base = Instance_Load	(low_name,FALSE);
 	}
 
-    IRender_Visual* Model	= bAllowChildrenDuplicate?Instance_Duplicate(Base):Base;
-    return					Model;
+	IRenderVisual* Model	= bAllowChildrenDuplicate?Instance_Duplicate(Base):Base;
+	return					Model;
 }
 
 extern ENGINE_API BOOL				g_bRendering; 
-void	CModelPool::DeleteInternal	(IRender_Visual* &V, BOOL bDiscard)
+void	CModelPool::DeleteInternal(IRenderVisual*& V, BOOL bDiscard)
 {
 	VERIFY					(!g_bRendering);
-    if (!V)					return;
+	if (!V)					return;
 	V->Depart				();
 	if (bDiscard||bForceDiscard){
-    	Discard	(V, TRUE); 
+		Discard	(V, TRUE); 
 	}else{
 		//
 		REGISTRY_IT	it		= Registry.find	(V);
@@ -273,7 +275,7 @@ void	CModelPool::DeleteInternal	(IRender_Visual* &V, BOOL bDiscard)
 	V	=	NULL;
 }
 
-void	CModelPool::Delete		(IRender_Visual* &V, BOOL bDiscard)
+void	CModelPool::Delete(IRenderVisual*& V, BOOL bDiscard)
 {
 	if (NULL==V)				return;
 	if (g_bRendering){
@@ -292,7 +294,7 @@ void	CModelPool::DeleteQueue		()
 	ModelsToDelete.clear			();
 }
 
-void	CModelPool::Discard	(IRender_Visual* &V, BOOL b_complete)
+void	CModelPool::Discard(IRenderVisual*& V, BOOL b_complete)
 {
 	//
 	REGISTRY_IT	it		= Registry.find	(V);
@@ -312,11 +314,11 @@ void	CModelPool::Discard	(IRender_Visual* &V, BOOL b_complete)
 					if(b_complete || strchr(*name,'#'))
 					{
 						VERIFY(I->refs>0);
-            			I->refs--; 
+						I->refs--; 
 						if (0==I->refs)
 						{
-                			bForceDiscard		= TRUE;
-	            			I->model->Release	();
+							bForceDiscard		= TRUE;
+							I->model->Release	();
 							xr_delete			(I->model);	
 							Models.erase		(I);
 							bForceDiscard		= FALSE;
@@ -349,7 +351,7 @@ void CModelPool::Prefetch()
 	CInifile::Sect& sect	= pSettings->r_section(section);
 	for (CInifile::SectCIt I=sect.Data.begin(); I!=sect.Data.end(); I++)	{
 		const CInifile::Item& item= *I;
-		IRender_Visual* V	= Create(item.first.c_str());
+		IRenderVisual* V = Create(item.first.c_str( ));
 		Delete				(V,FALSE);
 	}
 	Logging					(TRUE);
@@ -365,14 +367,14 @@ void CModelPool::ClearPool( BOOL b_complete)
 	Pool.clear			();
 }
 
-IRender_Visual* CModelPool::CreatePE	(PS::CPEDef* source)
+IRenderVisual* CModelPool::CreatePE	(PS::CPEDef* source)
 {
 	PS::CParticleEffect* V	= (PS::CParticleEffect*)Instance_Create(MT_PARTICLE_EFFECT);
 	V->Compile		(source);
 	return V;
 }
 
-IRender_Visual* CModelPool::CreatePG	(PS::CPGDef* source)
+IRenderVisual* CModelPool::CreatePG	(PS::CPGDef* source)
 {
 	PS::CParticleGroup* V	= (PS::CParticleGroup*)Instance_Create(MT_PARTICLE_GROUP);
 	V->Compile		(source);
@@ -398,7 +400,7 @@ void CModelPool::dump()
 	int free_cnt			= 0;
 	for (REGISTRY_IT it=Registry.begin(); it!=Registry.end(); it++)
 	{
-		CKinematics* K		= PKinematics((IRender_Visual*)it->first);
+		CKinematics* K		= PKinematics((IRenderVisual*)it->first);
 		VERIFY				(K);
 		if (K){
 			u32 cur			= K->mem_usage	(true);

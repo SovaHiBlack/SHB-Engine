@@ -8,31 +8,31 @@
 #include <d3dx9.h>
 #pragma warning(default:4995)
 
-#include "..\XR_3DA\fmesh.h"
-#include "fvisual.h"
+#include "..\XR_3DA\mesh.h"
+#include "Visual.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-Fvisual::Fvisual()  : IRender_Visual()
+CVisual::CVisual( ) : IRenderVisual( )
 {
 	m_fast	=	0;
 }
 
-Fvisual::~Fvisual()
+CVisual::~CVisual()
 {
 	xr_delete	(m_fast);
 }
 
-void Fvisual::Release	()
+void CVisual::Release	()
 {
-	IRender_Visual::Release	();
+	IRenderVisual::Release	();
 }
 
-void Fvisual::Load		(pcstr N, IReader *data, u32 dwFlags)
+void CVisual::Load		(pcstr N, IReader *data, u32 dwFlags)
 {
-	IRender_Visual::Load		(N,data,dwFlags);
+	IRenderVisual::Load		(N,data,dwFlags);
 
 	D3DVERTEXELEMENT9	dcl		[MAX_FVF_DECL_SIZE];
 	D3DVERTEXELEMENT9*	vFormat	= 0;
@@ -69,7 +69,7 @@ void Fvisual::Load		(pcstr N, IReader *data, u32 dwFlags)
 			destructor<IReader>	def		(geomdef().open_chunk	(OGF_GCONTAINER));
 
 			// we have fast-mesh
-			m_fast						= xr_new<IRender_Mesh>	();
+			m_fast						= xr_new<IRenderMesh>	();
 
 			// verts
 			D3DVERTEXELEMENT9*	fmt		= 0;
@@ -162,7 +162,7 @@ void Fvisual::Load		(pcstr N, IReader *data, u32 dwFlags)
 		rm_geom.create		(vFormat,p_rm_Vertices,p_rm_Indices);
 }
 
-void Fvisual::Render		(f32)
+void CVisual::Render		(f32)
 {
 #if RENDER==R_R2
 	if (m_fast && RImplementation.phase==CRender::PHASE_SMAP)
@@ -183,11 +183,11 @@ void Fvisual::Render		(f32)
 }
 
 #define PCOPY(a)	a = pFrom->a
-void	Fvisual::Copy			(IRender_Visual *pSrc)
+void	CVisual::Copy(IRenderVisual* pSrc)
 {
-	IRender_Visual::Copy		(pSrc);
+	IRenderVisual::Copy		(pSrc);
 
-	Fvisual	*pFrom				= dynamic_cast<Fvisual*> (pSrc);
+	CVisual* pFrom = dynamic_cast<CVisual*> (pSrc);
 
 	PCOPY	(rm_geom);
 

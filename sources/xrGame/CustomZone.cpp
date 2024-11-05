@@ -512,7 +512,7 @@ void CCustomZone::shedule_Update(u32 dt)
 
 	if (IsEnabled())
 	{
-		const Fsphere& s		= CFORM()->getSphere();
+		const fSphere& s		= CFORM()->getSphere();
 		Fvector					P;
 		XFORM().transform_tiny	(P,s.P);
 

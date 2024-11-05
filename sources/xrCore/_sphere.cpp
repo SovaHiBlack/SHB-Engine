@@ -139,7 +139,6 @@ void Miniball::move_to_front(It j)
 	L.splice(L.begin(), L, j);
 }
 
-
 void Miniball::pivot_mb(It i)
 {
 	It t = ++L.begin();
@@ -338,12 +337,14 @@ bool Basis::push(const fVector3& p)
 	return true;
 }
 
-void Fsphere_compute(Fsphere& dest, const fVector3* verts, int count)
+void Fsphere_compute(fSphere& dest, const fVector3* verts, s32 count)
 {
 	Miniball mb;
 
-	for (int i = 0; i < count; i++)
+	for (s32 i = 0; i < count; i++)
+	{
 		mb.check_in(verts[i]);
+	}
 
 	mb.build();
 

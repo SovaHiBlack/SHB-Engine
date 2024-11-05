@@ -22,7 +22,7 @@ static void r_vec_q8(src& P, fVector3& vec,const fVector3& min,const fVector3& m
 	clamp(vec.y,min.y,max.y);
 	clamp(vec.z,min.z,max.z);
 }
-static void w_qt_q8(NET_Packet& P,const Fquaternion& q)
+static void w_qt_q8(NET_Packet& P,const fQuaternion& q)
 {
 	//fVector3 Q;
 	//Q.set(q.x,q.y,q.z);
@@ -46,7 +46,7 @@ static void w_qt_q8(NET_Packet& P,const Fquaternion& q)
 }
 
 template<typename src>
-static void r_qt_q8(src& P,Fquaternion& q)
+static void r_qt_q8(src& P, fQuaternion& q)
 {
 	//// x^2 + y^2 + z^2 + w^2 = 1
 	//P.r_float_q8(q.x,-1.f,1.f);
@@ -87,7 +87,7 @@ static void r_vec_q16(NET_Packet& P, fVector3& vec,const fVector3& min,const fVe
 	//clamp(vec.z,min.z,max.z);
 }
 template<typename src>
-static void w_qt_q16(src& P,const Fquaternion& q)
+static void w_qt_q16(src& P,const fQuaternion& q)
 {
 	//fVector3 Q;
 	//Q.set(q.x,q.y,q.z);
@@ -102,7 +102,7 @@ static void w_qt_q16(src& P,const Fquaternion& q)
 	P.w_float_q16(q.w,-1.f,1.f);
 }
 
-static void r_qt_q16(NET_Packet& P,Fquaternion& q)
+static void r_qt_q16(NET_Packet& P, fQuaternion& q)
 {
 	// x^2 + y^2 + z^2 + w^2 = 1
 	//P.r_float_q16(q.x,-1.f,1.f);

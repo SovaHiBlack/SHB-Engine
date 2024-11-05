@@ -192,7 +192,7 @@
     <ClInclude Include="..\xrRender\FLOD.h">
       <Filter>Models\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="..\xrRender\FProgressive.h">
+    <ClInclude Include="..\xrRender\Progressive.h">
       <Filter>Models\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="..\xrRender\FSkinned.h">
@@ -201,7 +201,7 @@
     <ClInclude Include="..\xrRender\FTreeVisual.h">
       <Filter>Models\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="..\xrRender\FVisual.h">
+    <ClInclude Include="..\xrRender\Visual.h">
       <Filter>Models\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="..\xrRender\ParticleEffect.h">
@@ -434,7 +434,7 @@
     <ClCompile Include="..\xrRender\FLOD.cpp">
       <Filter>Models\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="..\xrRender\FProgressive.cpp">
+    <ClCompile Include="..\xrRender\Progressive.cpp">
       <Filter>Models\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="..\xrRender\FSkinned.cpp">
@@ -443,7 +443,7 @@
     <ClCompile Include="..\xrRender\FTreeVisual.cpp">
       <Filter>Models\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="..\xrRender\FVisual.cpp">
+    <ClCompile Include="..\xrRender\Visual.cpp">
       <Filter>Models\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="..\xrRender\ParticleEffect.cpp">

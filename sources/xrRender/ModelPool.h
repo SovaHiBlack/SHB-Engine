@@ -3,7 +3,7 @@
 #pragma once
 
 // refs
-class ENGINE_API IRender_Visual;
+class ENGINE_API IRenderVisual;
 namespace PS	{ 
 	struct ENGINE_API SEmitter; 
 };
@@ -22,18 +22,18 @@ private:
 	struct ModelDef
 	{
 		shared_str			name;
-		IRender_Visual*		model;
+		IRenderVisual*		model;
         u32					refs;
         ModelDef()			{ refs=0;model=0; }
 	};
 
-	typedef xr_multimap<shared_str,IRender_Visual*,str_pred>	POOL;
+	typedef xr_multimap<shared_str, IRenderVisual*,str_pred>	POOL;
 	typedef POOL::iterator										POOL_IT;
-	typedef xr_map<IRender_Visual*,shared_str>					REGISTRY;
+	typedef xr_map<IRenderVisual*,shared_str>					REGISTRY;
 	typedef REGISTRY::iterator									REGISTRY_IT;
 private:
 	xr_vector<ModelDef>			Models;				// Reference / Base
-	xr_vector<IRender_Visual*>	ModelsToDelete;		// 
+	xr_vector<IRenderVisual*>	ModelsToDelete;		// 
 	REGISTRY					Registry;			// Just pairing of pointer / Name
 	POOL						Pool;				// Unused / Inactive
 	BOOL						bLogging;
@@ -44,20 +44,20 @@ private:
 public:
                             CModelPool			();
 	virtual 				~CModelPool			();
-	IRender_Visual*			Instance_Create		(u32 Type);
-	IRender_Visual*			Instance_Duplicate	(IRender_Visual* V);
-	IRender_Visual*			Instance_Load		(pcstr N, BOOL allow_register);
-	IRender_Visual*			Instance_Load		(pcstr N, IReader* data, BOOL allow_register);
-	void					Instance_Register	(pcstr N, IRender_Visual* V);
-	IRender_Visual*			Instance_Find		(pcstr N);
+	IRenderVisual*			Instance_Create		(u32 Type);
+	IRenderVisual*			Instance_Duplicate	(IRenderVisual* V);
+	IRenderVisual*			Instance_Load		(pcstr N, BOOL allow_register);
+	IRenderVisual*			Instance_Load		(pcstr N, IReader* data, BOOL allow_register);
+	void					Instance_Register	(pcstr N, IRenderVisual* V);
+	IRenderVisual*			Instance_Find		(pcstr N);
 
-	IRender_Visual*			CreatePE			(PS::CPEDef* source);
-	IRender_Visual*			CreatePG			(PS::CPGDef* source);
-	IRender_Visual*			Create				(pcstr name, IReader* data=0);
-	IRender_Visual*			CreateChild			(pcstr name, IReader* data);
-	void					Delete				(IRender_Visual* &V, BOOL bDiscard=FALSE);
-	void					Discard				(IRender_Visual* &V, BOOL b_complete);
-	void					DeleteInternal		(IRender_Visual* &V, BOOL bDiscard=FALSE);
+	IRenderVisual*			CreatePE			(PS::CPEDef* source);
+	IRenderVisual*			CreatePG			(PS::CPGDef* source);
+	IRenderVisual*			Create				(pcstr name, IReader* data=0);
+	IRenderVisual*			CreateChild			(pcstr name, IReader* data);
+	void					Delete				(IRenderVisual* &V, BOOL bDiscard=FALSE);
+	void					Discard				(IRenderVisual* &V, BOOL b_complete);
+	void					DeleteInternal		(IRenderVisual* &V, BOOL bDiscard=FALSE);
 	void					DeleteQueue			();
 
 	void					Logging				(BOOL bEnable)	{ bLogging=bEnable; }

@@ -54,7 +54,8 @@ BOOL CGrenade::net_Spawn(CSE_Abstract* DC)
 {
 	m_dwGrenadeIndependencyTime			= 0;
 	BOOL ret= inherited::net_Spawn		(DC);
-	Fvector box;BoundingBox().getsize	(box);
+	fVector3 box;
+	BoundingBox().getsize	(box);
 	f32 max_size						= _max(_max(box.x,box.y),box.z);
 	box.set								(max_size,max_size,max_size);
 	box.mul								(3.f);
@@ -93,7 +94,7 @@ void CGrenade::State(u32 state)
 	{
 	case MS_THREATEN:
 		{
-			Fvector						C;
+		fVector3						C;
 			Center						(C);
 			PlaySound					(sndCheckout,C);
 		}break;
@@ -140,17 +141,13 @@ void CGrenade::Throw()
 	m_thrown = true;
 }
 
-
-
 void CGrenade::Destroy() 
 {
 	//Generate Expode event
-	Fvector						normal;
+	fVector3						normal;
 	FindNormal					(normal);
 	CExplosive::GenExplodeEvent	(Position(), normal);
 }
-
-
 
 bool CGrenade::Useful() const
 {

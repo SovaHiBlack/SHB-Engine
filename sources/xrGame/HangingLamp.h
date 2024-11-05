@@ -61,7 +61,7 @@ public:
 	virtual void	net_Import		(NET_Packet& P);
 	virtual BOOL	UsedAI_Locations();
 
-	virtual void	Center			(Fvector& C)	const;
+	virtual void	Center			(fVector3& C)	const;
 	virtual f32	Radius			()				const;
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

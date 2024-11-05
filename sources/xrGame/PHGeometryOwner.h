@@ -23,7 +23,7 @@ protected:
 		ObjectContactCallbackFun*	object_contact_callback;//->to shell ??		//st
 
 public:
-		void						add_Sphere								(const Fsphere&		V);															//aux
+		void						add_Sphere								(const fSphere&		V);															//aux
 		void						add_Box									(const fObb&		V);															//aux
 		void						add_Cylinder							(const fCylinder&	V);															//aux
 		void						add_Shape								(const SBoneShape& shape);														//aux

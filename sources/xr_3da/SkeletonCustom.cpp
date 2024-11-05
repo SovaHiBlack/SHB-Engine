@@ -3,7 +3,7 @@
 
 #include "SkeletonCustom.h"
 #include "SkeletonX.h"
-#include "fmesh.h"
+#include "mesh.h"
 #include "Render.h"
 
 int			psSkeletonUpdate	= 32;
@@ -187,7 +187,7 @@ void CBoneData::CalculateM2B(const fMatrix4x4& parent)
 
 CSkeletonX* CKinematics::LL_GetChild	(u32 idx)
 {
-	IRender_Visual*	V	= children[idx];
+	IRenderVisual*	V	= children[idx];
 	CSkeletonX*		B	= dynamic_cast<CSkeletonX*>(V);
 	return			B	;
 }
@@ -398,7 +398,7 @@ void CKinematics::LL_Validate()
 }
 
 #define PCOPY(a)	a = pFrom->a
-void CKinematics::Copy(IRender_Visual *P) 
+void CKinematics::Copy(IRenderVisual* P)
 {
 	inherited::Copy	(P);
 
@@ -633,7 +633,7 @@ void CKinematics::AddWallmark(const fMatrix4x4* parent_xform, const fVector3& st
 	cp.mad		(S,D,dist); 
  
 	// collect collide boxes
-	Fsphere test_sphere;
+	fSphere test_sphere;
 	test_sphere.set			(cp,size); 
 	U16Vec					test_bones;
 	test_bones.reserve		(LL_BoneCount());

@@ -236,9 +236,9 @@ public:
 	virtual		f32		FootRadius( ) = 0;
 	virtual		void		get_State(SPHNetState& state);
 	virtual		void		set_State(const	SPHNetState& state);
-	virtual		void		cv2obj_Xfrom(const Fquaternion& q, const fVector3& pos, fMatrix4x4& xform)
+	virtual		void		cv2obj_Xfrom(const fQuaternion& q, const fVector3& pos, fMatrix4x4& xform)
 	{ }
-	virtual		void		cv2bone_Xfrom(const Fquaternion& q, const fVector3& pos, fMatrix4x4& xform)
+	virtual		void		cv2bone_Xfrom(const fQuaternion& q, const fVector3& pos, fMatrix4x4& xform)
 	{ }
 	virtual	const fVector3& ControlAccel( )const = 0;
 	virtual		f32& FrictionFactor( ) = 0;

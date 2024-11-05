@@ -344,7 +344,7 @@ void CHelicopter::MoveStep()
 	}
 
 	if(	m_body.b_looking_at_point){
-		Fvector desired_dir;
+		fVector3 desired_dir;
 		desired_dir.sub(m_body.looking_point, m_movement.currP ).normalize_safe();
 
 		f32 center_desired_H,tmp_P;

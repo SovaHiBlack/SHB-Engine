@@ -28,7 +28,7 @@ protected:
 	RESTRICTIONS			m_restrictions;
 	shared_str				m_space_restrictors;
 	CSpaceRestrictionHolder	*m_space_restriction_holder;
-	Fsphere					m_sphere;
+	fSphere					m_sphere;
 
 #ifdef DEBUG
 private:
@@ -42,14 +42,16 @@ public:
 	IC						CSpaceRestrictionComposition	(CSpaceRestrictionHolder *space_restriction_holder, shared_str space_restrictors);
 		virtual				~CSpaceRestrictionComposition	();
 		virtual void		initialize						();
-		virtual bool		inside							(const Fsphere &sphere);
+		virtual bool		inside							(const fSphere& sphere);
 	IC	virtual shared_str	name							() const;
 	IC	virtual bool		shape							() const;
 	IC	virtual bool		default_restrictor				() const;
-		virtual	Fsphere		sphere							() const;
+		virtual	fSphere		sphere							() const;
+
 #ifdef DEBUG
 				void		test_correctness				();
 #endif
+
 };
 
 #include "space_restriction_composition_inline.h"

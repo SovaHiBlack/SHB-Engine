@@ -6,7 +6,7 @@
 #include "LightShadows.h"
 #include "..\xrRender\LightTrack.h"
 #include "..\XR_3DA\xr_object.h"
-#include "..\XR_3DA\fbasicvisual.h"
+#include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\CustomHUD.h"
  
 const	f32		S_distance		= 48;
@@ -300,7 +300,7 @@ void CLightShadows::calculate	()
 			for (u32 n_it=0; n_it<C.nodes.size(); n_it++)
 			{
 				NODE& N					=	C.nodes[n_it];
-				IRender_Visual *V		=	N.pVisual;
+				IRenderVisual*V		=	N.pVisual;
 				RCache.set_Element		(V->shader->E[SE_R1_LMODELS]);
 				RCache.set_xform_world	(N.Matrix);
 				V->Render				(-1.0f);

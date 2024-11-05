@@ -1,30 +1,29 @@
-// FProgressive.cpp: implementation of the FProgressive class.
+// Progressive.cpp: implementation of the CProgressive class.
 //
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
-#include "..\XR_3DA\fmesh.h"
-#include "FProgressive.h"
+#include "..\XR_3DA\mesh.h"
+#include "Progressive.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-FProgressive::FProgressive	() : Fvisual()
+CProgressive::CProgressive() : CVisual()
 {
 	xSWI			= 0;
 	last_lod		= 0;
 }
 
-FProgressive::~FProgressive	()
+CProgressive::~CProgressive()
 {
-
 }
 
-void FProgressive::Release	()
+void CProgressive::Release	()
 {
-	Fvisual::Release();
+	CVisual::Release();
 	xr_free			(nSWI.sw);
 	if (xSWI)		{
 		xr_free			(xSWI->sw);
@@ -32,19 +31,19 @@ void FProgressive::Release	()
 	}
 }
 
-void FProgressive::Load		(pcstr N, IReader *data, u32 dwFlags)
+void CProgressive::Load		(pcstr N, IReader *data, u32 dwFlags)
 {
-	Fvisual::Load	(N,data,dwFlags);
+	CVisual::Load	(N,data,dwFlags);
 
 	// normal SWI
 	destructor<IReader> lods (data->open_chunk	(OGF_SWIDATA));
-    nSWI.reserved[0]	= lods().r_u32();	// reserved 16 bytes
-    nSWI.reserved[1]	= lods().r_u32();
-    nSWI.reserved[2]	= lods().r_u32();
-    nSWI.reserved[3]	= lods().r_u32();
-    nSWI.count			= lods().r_u32();
+	nSWI.reserved[0]	= lods().r_u32();	// reserved 16 bytes
+	nSWI.reserved[1]	= lods().r_u32();
+	nSWI.reserved[2]	= lods().r_u32();
+	nSWI.reserved[3]	= lods().r_u32();
+	nSWI.count			= lods().r_u32();
 	VERIFY				(NULL==nSWI.sw);
-    nSWI.sw				= xr_alloc<FSlideWindow>(nSWI.count);
+	nSWI.sw				= xr_alloc<FSlideWindow>(nSWI.count);
 	lods().r			(nSWI.sw,nSWI.count*sizeof(FSlideWindow));
 
 	// fast
@@ -66,7 +65,7 @@ void FProgressive::Load		(pcstr N, IReader *data, u32 dwFlags)
 #endif
 }
 
-void FProgressive::Render	(f32 LOD)
+void CProgressive::Render	(f32 LOD)
 {
 #if RENDER==R_R2
 	if (m_fast && RImplementation.phase==CRender::PHASE_SMAP)
@@ -106,10 +105,10 @@ void FProgressive::Render	(f32 LOD)
 }
 
 #define PCOPY(a)	a = pFrom->a
-void	FProgressive::Copy	(IRender_Visual *pSrc)
+void	CProgressive::Copy(IRenderVisual* pSrc)
 {
-	Fvisual::Copy	(pSrc);
-	FProgressive	*pFrom = (FProgressive *)pSrc;
+	CVisual::Copy	(pSrc);
+	CProgressive* pFrom = (CProgressive*)pSrc;
 	PCOPY			(nSWI);
 	PCOPY			(xSWI);
 }

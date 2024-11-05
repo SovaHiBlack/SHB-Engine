@@ -211,14 +211,14 @@
     <ClInclude Include="Environment.h" />
     <ClInclude Include="ETextureParams.h" />
     <ClInclude Include="EventAPI.h" />
-    <ClInclude Include="FBasicVisual.h" />
+    <ClInclude Include="BasicVisual.h" />
     <ClInclude Include="FDemoPlay.h" />
     <ClInclude Include="FDemoRecord.h" />
     <ClInclude Include="Feel_Sound.h" />
     <ClInclude Include="Feel_Touch.h" />
     <ClInclude Include="Feel_Vision.h" />
-    <ClInclude Include="FHierrarhyVisual.h" />
-    <ClInclude Include="Fmesh.h" />
+    <ClInclude Include="HierrarhyVisual.h" />
+    <ClInclude Include="mesh.h" />
     <ClInclude Include="Frustum.h" />
     <ClInclude Include="FVF.h" />
     <ClInclude Include="GameFont.h" />
@@ -339,13 +339,13 @@
     <ClCompile Include="Environment_render.cpp" />
     <ClCompile Include="ETextureParams.cpp" />
     <ClCompile Include="EventAPI.cpp" />
-    <ClCompile Include="FBasicVisual.cpp" />
+    <ClCompile Include="BasicVisual.cpp" />
     <ClCompile Include="FDemoPlay.cpp" />
     <ClCompile Include="FDemoRecord.cpp" />
     <ClCompile Include="Feel_Touch.cpp" />
     <ClCompile Include="Feel_Vision.cpp" />
-    <ClCompile Include="FHierrarhyVisual.cpp" />
-    <ClCompile Include="fmesh.cpp" />
+    <ClCompile Include="HierrarhyVisual.cpp" />
+    <ClCompile Include="mesh.cpp" />
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="GameFont.cpp" />
     <ClCompile Include="HW.cpp" />
@@ -462,6 +462,9 @@
     <ProjectReference Include="..\xrSound\xrSound.vcxproj">
       <Project>{ccca7859-eb86-493e-9b53-c4235f45b3c5}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

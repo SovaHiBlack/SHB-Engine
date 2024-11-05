@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 #pragma once
 
-#include "..\XR_3DA\FBasicVisual.h"
+#include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\ParticleCustom.h"
 
 namespace PAPI

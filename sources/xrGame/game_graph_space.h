@@ -30,7 +30,7 @@ namespace GameGraph {
 
 		SLevel {
 		shared_str				m_name;
-		Fvector					m_offset;
+		fVector3					m_offset;
 		_LEVEL_ID				m_id;
 		shared_str				m_section;
 		xrGUID					m_guid;
@@ -41,7 +41,7 @@ namespace GameGraph {
 			return				(m_name);
 		}
 
-		IC const Fvector &offset		() const
+		IC const fVector3& offset( ) const
 		{
 			return				(m_offset);
 		}
@@ -85,8 +85,8 @@ namespace GameGraph {
 	class
 
 		CVertex {
-		Fvector						tLocalPoint;
-		Fvector						tGlobalPoint;
+		fVector3						tLocalPoint;
+		fVector3						tGlobalPoint;
 		u32							tLevelID:8;
 		u32							tNodeID:24;
 		u8							tVertexTypes[LOCATION_TYPE_COUNT];
@@ -95,8 +95,8 @@ namespace GameGraph {
 		u8							tNeighbourCount;
 		u8							tDeathPointCount;
 	public:
-		IC	const Fvector			&level_point		() const;
-		IC	const Fvector			&game_point			() const;
+		IC	const fVector3& level_point( ) const;
+		IC	const fVector3& game_point( ) const;
 		IC	_LEVEL_ID				level_id			() const;
 		IC	u32						level_vertex_id		() const;
 		IC	const u8				*vertex_type		() const;
@@ -137,12 +137,12 @@ namespace GameGraph {
 	class
 
 		CLevelPoint  {
-		Fvector		tPoint;
+		fVector3		tPoint;
 		u32			tNodeID;
 		f32		fDistance;
 
 	public:
-		IC const Fvector			&level_point		() const
+		IC const fVector3& level_point( ) const
 		{
 			return				(tPoint);
 		}

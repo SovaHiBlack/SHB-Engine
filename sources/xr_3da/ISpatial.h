@@ -66,7 +66,7 @@ public:
 	struct	_spatial
 	{
 		u32						type;
-		Fsphere					sphere;
+		fSphere					sphere;
 		fVector3					node_center;	// Cached node center for TBV optimization
 		f32					node_radius;	// Cached node bounds for TBV optimization
 		ISpatial_NODE*			node_ptr;		// Cached parent node for "empty-members" optimization

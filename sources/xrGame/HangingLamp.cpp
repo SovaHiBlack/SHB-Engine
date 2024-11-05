@@ -47,7 +47,7 @@ void CHangingLamp::RespawnInit()
 	}
 }
 
-void CHangingLamp::Center	(Fvector& C) const 
+void CHangingLamp::Center	(fVector3& C) const
 { 
 	if (renderable.visual){
 		renderable.xform.transform_tiny(C,renderable.visual->vis.sphere.P);	

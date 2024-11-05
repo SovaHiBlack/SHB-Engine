@@ -146,7 +146,7 @@ void CSpaceRestrictionManager::unrestrict						(ALife::_OBJECT_ID id)
 	collect_garbage								();
 }
 
-bool CSpaceRestrictionManager::accessible						(ALife::_OBJECT_ID id, const Fsphere &sphere)
+bool CSpaceRestrictionManager::accessible						(ALife::_OBJECT_ID id, const fSphere& sphere)
 {
 	CRestrictionPtr				client_restriction = restriction(id);
 	if (client_restriction)

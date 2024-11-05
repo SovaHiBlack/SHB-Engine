@@ -494,7 +494,7 @@ void CRender::render_sun				()
 		for		(u32 s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
-			IRender_Visual*		V		= S->root()				;
+			IRenderVisual*		V		= S->root()				;
 			f32				vol		= V->vis.box.getvolume();
 			if (vol>largest_sector_vol)	{
 				largest_sector_vol		= vol;
@@ -563,7 +563,7 @@ void CRender::render_sun				()
 		for		(u32 s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
-			IRender_Visual*		root	= S->root()				;
+			IRenderVisual*		root	= S->root()				;
 
 			set_Frustum			(&cull_frustum);
 			add_Geometry		(root);
@@ -953,7 +953,7 @@ void CRender::render_sun_near	()
 		for		(u32 s=0; s<Sectors.size(); s++)
 		{
 			CSector*			S		= (CSector*)Sectors[s]	;
-			IRender_Visual*		V		= S->root()				;
+			IRenderVisual*		V		= S->root()				;
 			f32				vol		= V->vis.box.getvolume();
 			if (vol>largest_sector_vol)	{
 				largest_sector_vol		= vol;

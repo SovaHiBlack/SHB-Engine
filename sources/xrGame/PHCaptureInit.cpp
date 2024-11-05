@@ -169,11 +169,8 @@ CPHCapture::CPHCapture(CPHCharacter   *a_character,CPhysicsShellHolder	*a_taget_
 	u16 capture_bone_id=p_kinematics->LL_BoneID(ini->r_string("capture","bone"));
 	R_ASSERT2(capture_bone_id!=BI_NONE,"wrong capture bone");
 	m_capture_bone=&p_kinematics->LL_GetBoneInstance(capture_bone_id);
-		
 
-
-	IRender_Visual* V=m_taget_object->Visual();
-
+	IRenderVisual* V=m_taget_object->Visual();
 	if(!V)
 	{
 		m_taget_object=NULL;

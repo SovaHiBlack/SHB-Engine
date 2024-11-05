@@ -10,7 +10,7 @@
 #include "base_client_classes.h"
 #include "base_client_classes_wrappers.h"
 #include "..\XR_3DA\feel_sound.h"
-#include "..\XR_3DA\fbasicvisual.h"
+#include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "ai/stalker/ai_stalker.h"
 #include "..\xrNetServer/net_utils.h"
@@ -154,9 +154,9 @@ void IRender_VisualScript::script_register		(lua_State *L)
 {
 	module(L)
 	[
-		class_<IRender_Visual>("IRender_Visual")
+		class_<IRenderVisual>("IRenderVisual")
 			.def(constructor<>())
-			.def("dcast_PKinematicsAnimated",&IRender_Visual::dcast_PKinematicsAnimated)
+			.def("dcast_PKinematicsAnimated",&IRenderVisual::dcast_PKinematicsAnimated)
 	];
 }
 
@@ -188,7 +188,7 @@ void CKinematicsScript::script_register		(lua_State *L)
 {
 	module(L)
 		[
-			class_<CKinematics, FHierrarhyVisual>("CKinematics")
+			class_<CKinematics, CHierrarhyVisual>("CKinematics")
 			//			.def(constructor<>())
 		];
 }
@@ -197,7 +197,7 @@ void FHierrarhyVisualScript::script_register		(lua_State *L)
 {
 	module(L)
 		[
-			class_<FHierrarhyVisual, IRender_Visual>("FHierrarhyVisual")
+			class_<CHierrarhyVisual, IRenderVisual>("CHierrarhyVisual")
 			//			.def(constructor<>())
 		];
 }

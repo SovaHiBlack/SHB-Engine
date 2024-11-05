@@ -5,10 +5,10 @@
 #include "stdafx.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "..\XR_3DA\environment.h"
-#include "..\XR_3DA\fbasicvisual.h"
+#include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\CustomHUD.h"
 #include "..\XR_3DA\xr_object.h"
-#include "..\XR_3DA\fmesh.h"
+#include "..\XR_3DA\mesh.h"
 #include "..\XR_3DA\SkeletonCustom.h"
 #include "..\xrRender\lighttrack.h"
  
@@ -17,7 +17,7 @@ using	namespace		R_dsgraph;
 CRender													RImplementation;
 
 //////////////////////////////////////////////////////////////////////////
-ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, f32 cdist_sq)
+ShaderElement* CRender::rimp_select_sh_dynamic(IRenderVisual* pVisual, f32 cdist_sq)
 {
 	switch (phase)		{
 	case PHASE_NORMAL:	return (RImplementation.L_Projector->shadowing()?pVisual->shader->E[SE_R1_NORMAL_HQ]:pVisual->shader->E[SE_R1_NORMAL_LQ])._get();
@@ -30,7 +30,7 @@ ShaderElement*			CRender::rimp_select_sh_dynamic	(IRender_Visual	*pVisual, f32 c
 #endif
 }
 //////////////////////////////////////////////////////////////////////////
-ShaderElement*			CRender::rimp_select_sh_static	(IRender_Visual	*pVisual, f32 cdist_sq)
+ShaderElement* CRender::rimp_select_sh_static(IRenderVisual* pVisual, f32 cdist_sq)
 {
 	switch (phase)		{
 	case PHASE_NORMAL:	return (((_sqrt(cdist_sq) - pVisual->vis.sphere.R)<44)?pVisual->shader->E[SE_R1_NORMAL_HQ]:pVisual->shader->E[SE_R1_NORMAL_LQ])._get();
@@ -122,10 +122,10 @@ void					CRender::OnFrame				()
 // Implementation
 IRender_ObjectSpecific*	CRender::ros_create				(IRenderable* parent)					{ return xr_new<CROS_impl>();			}
 void					CRender::ros_destroy			(IRender_ObjectSpecific* &p)			{ xr_delete(p);							}
-IRender_Visual*			CRender::model_Create			(pcstr name, IReader* data)			{ return Models->Create(name,data);		}
-IRender_Visual*			CRender::model_CreateChild		(pcstr name, IReader* data)			{ return Models->CreateChild(name,data);}
-IRender_Visual*			CRender::model_Duplicate		(IRender_Visual* V)						{ return Models->Instance_Duplicate(V);	}
-void					CRender::model_Delete			(IRender_Visual* &V, BOOL bDiscard)		{ Models->Delete(V,bDiscard);			}
+IRenderVisual*			CRender::model_Create			(pcstr name, IReader* data)			{ return Models->Create(name,data);		}
+IRenderVisual*			CRender::model_CreateChild		(pcstr name, IReader* data)			{ return Models->CreateChild(name,data);}
+IRenderVisual*			CRender::model_Duplicate		(IRenderVisual* V)						{ return Models->Instance_Duplicate(V);	}
+void					CRender::model_Delete			(IRenderVisual* &V, BOOL bDiscard)		{ Models->Delete(V,bDiscard);			}
 IRender_DetailModel*	CRender::model_CreateDM			(IReader*F)
 {
 	CDetail*	D		= xr_new<CDetail> ();
@@ -142,13 +142,13 @@ void					CRender::model_Delete			(IRender_DetailModel* & F)
 		F				= NULL;
 	}
 }
-IRender_Visual*			CRender::model_CreatePE			(pcstr name)
+IRenderVisual*			CRender::model_CreatePE			(pcstr name)
 { 
 	PS::CPEDef*	SE		= PSLibrary.FindPED	(name);		R_ASSERT3(SE,"Particle effect doesn't exist",name);
 	return				Models->CreatePE	(SE);
 }
 
-IRender_Visual*			CRender::model_CreateParticles	(pcstr name)
+IRenderVisual*			CRender::model_CreateParticles	(pcstr name)
 { 
 	PS::CPEDef*	SE		= PSLibrary.FindPED	(name);
 	if (SE) return		Models->CreatePE	(SE);
@@ -164,7 +164,7 @@ ref_shader				CRender::getShader				(int id)			{ VERIFY(id<int(Shaders.size()));
 IRender_Portal*			CRender::getPortal				(int id)			{ VERIFY(id<int(Portals.size()));	return Portals[id];	}
 IRender_Sector*			CRender::getSector				(int id)			{ VERIFY(id<int(Sectors.size()));	return Sectors[id];	}
 IRender_Sector*			CRender::getSectorActive		()					{ return pLastSector;									}
-IRender_Visual*			CRender::getVisual				(int id)			{ VERIFY(id<int(Visuals.size()));	return Visuals[id];	}
+IRenderVisual*			CRender::getVisual				(int id)			{ VERIFY(id<int(Visuals.size()));	return Visuals[id];	}
 D3DVERTEXELEMENT9*		CRender::getVB_Format			(int id)			{ VERIFY(id<int(DCL.size()));		return DCL[id].begin();	}
 IDirect3DVertexBuffer9*	CRender::getVB					(int id)			{ VERIFY(id<int(VB.size()));		return VB[id];		}
 IDirect3DIndexBuffer9*	CRender::getIB					(int id)			{ VERIFY(id<int(IB.size()));		return IB[id];		}
@@ -181,13 +181,13 @@ BOOL					CRender::occ_visible			(vis_data& P)		{ return HOM.visible(P);								}
 BOOL					CRender::occ_visible			(sPoly& P)			{ return HOM.visible(P);								}
 BOOL					CRender::occ_visible			(fBox3& P)			{ return HOM.visible(P);								}
 ENGINE_API	extern BOOL g_bRendering;
-void					CRender::add_Visual				(IRender_Visual* V )
+void					CRender::add_Visual				(IRenderVisual* V )
 {
 	VERIFY				(g_bRendering);
 	add_leafs_Dynamic	(V);									
 }
-void					CRender::add_Geometry			(IRender_Visual* V ){ add_Static(V,View->getMask());						}
-void					CRender::add_StaticWallmark		(ref_shader& S, const Fvector& P, f32 s, CDB::TRI* T, Fvector* verts)
+void					CRender::add_Geometry			(IRenderVisual* V ){ add_Static(V,View->getMask());						}
+void					CRender::add_StaticWallmark		(ref_shader& S, const fVector3& P, f32 s, CDB::TRI* T, fVector3* verts)
 {
 	if (T->suppress_wm)	return;
 	VERIFY2							(_valid(P) && _valid(s) && T && verts && (s> EPSILON_3), "Invalid static wallmark params");
@@ -203,7 +203,7 @@ void					CRender::add_SkeletonWallmark	(intrusive_ptr<CSkeletonWallmark> wm)
 {
 	Wallmarks->AddSkeletonWallmark				(wm);
 }
-void					CRender::add_SkeletonWallmark	(const fMatrix4x4* xf, CKinematics* obj, ref_shader& sh, const Fvector& start, const Fvector& dir, f32 size)
+void					CRender::add_SkeletonWallmark	(const fMatrix4x4* xf, CKinematics* obj, ref_shader& sh, const fVector3& start, const fVector3& dir, f32 size)
 {
 	Wallmarks->AddSkeletonWallmark				(xf, obj, sh, start, dir, size);
 }
@@ -328,7 +328,7 @@ void CRender::Calculate				()
 	// Check if camera is too near to some portal - if so force DualRender
 	if (rmPortals) 
 	{
-		Fvector box_radius;		box_radius.set(EPSILON_3 *2, EPSILON_3 *2, EPSILON_3 *2);
+		fVector3 box_radius;		box_radius.set(EPSILON_3 *2, EPSILON_3 *2, EPSILON_3 *2);
 		Sectors_xrc.box_options	(CDB::OPT_FULL_TEST);
 		Sectors_xrc.box_query	(rmPortals,Device.vCameraPosition,box_radius);
 		for (int K=0; K<Sectors_xrc.r_count(); K++)
@@ -360,7 +360,7 @@ void CRender::Calculate				()
 			for (u32 s_it=0; s_it<PortalTraverser.r_sectors.size(); s_it++)
 			{
 				CSector*	sector		= (CSector*)PortalTraverser.r_sectors[s_it];
-				IRender_Visual*	root	= sector->root();
+				IRenderVisual*	root	= sector->root();
 				for (u32 v_it=0; v_it<sector->r_frustums.size(); v_it++)
 				{
 					set_Frustum			(&(sector->r_frustums[v_it]));

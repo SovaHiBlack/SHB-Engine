@@ -3,7 +3,7 @@
 #include "..\XR_3DA\igame_persistent.h"
 #include "..\XR_3DA\igame_level.h"
 #include "..\XR_3DA\environment.h"
-#include "..\XR_3DA\fmesh.h"
+#include "..\XR_3DA\mesh.h"
 
 #include "ftreevisual.h"
 
@@ -16,22 +16,22 @@ shared_str					c_c_bias	;
 shared_str					c_c_scale	;
 shared_str					c_c_sun		;
 
-FTreeVisual::FTreeVisual	(void)
+FTreeVisual::FTreeVisual	( )
 {
 }
 
-FTreeVisual::~FTreeVisual	(void)
+FTreeVisual::~FTreeVisual	( )
 {
 }
 
 void FTreeVisual::Release	()
 {
-	IRender_Visual::Release	();
+	IRenderVisual::Release	();
 }
 
 void FTreeVisual::Load		(pcstr N, IReader *data, u32 dwFlags)
 {
-	IRender_Visual::Load		(N,data,dwFlags);
+	IRenderVisual::Load		(N,data,dwFlags);
 
 	D3DVERTEXELEMENT9*	vFormat	= NULL;
 
@@ -139,9 +139,9 @@ void FTreeVisual::Render	(f32 LOD)
 }
 
 #define PCOPY(a)	a = pFrom->a
-void	FTreeVisual::Copy	(IRender_Visual *pSrc)
+void	FTreeVisual::Copy(IRenderVisual* pSrc)
 {
-	IRender_Visual::Copy	(pSrc);
+	IRenderVisual::Copy(pSrc);
 
 	FTreeVisual	*pFrom		= dynamic_cast<FTreeVisual*> (pSrc);
 
@@ -187,7 +187,7 @@ void FTreeVisual_ST::Render		(f32 LOD)
 	RCache.Render				(D3DPT_TRIANGLELIST,vBase,0,vCount,iBase,dwPrimitives);
 	RCache.stat.r.s_flora.add	(vCount);
 }
-void FTreeVisual_ST::Copy		(IRender_Visual *pSrc)
+void FTreeVisual_ST::Copy(IRenderVisual* pSrc)
 {
 	inherited::Copy				(pSrc);
 }
@@ -195,7 +195,7 @@ void FTreeVisual_ST::Copy		(IRender_Visual *pSrc)
 //-----------------------------------------------------------------------------------
 // Progressive Tree
 //-----------------------------------------------------------------------------------
-FTreeVisual_PM::FTreeVisual_PM(void)
+FTreeVisual_PM::FTreeVisual_PM( )
 {
 	pSWI						= 0;
 	last_lod					= 0;
@@ -230,7 +230,7 @@ void FTreeVisual_PM::Render		(f32 LOD)
 	RCache.Render				(D3DPT_TRIANGLELIST,vBase,0,SW.num_verts,iBase+SW.offset,SW.num_tris);
 	RCache.stat.r.s_flora.add	(SW.num_verts);
 }
-void FTreeVisual_PM::Copy		(IRender_Visual *pSrc)
+void FTreeVisual_PM::Copy(IRenderVisual* pSrc)
 {
 	inherited::Copy				(pSrc);
 	FTreeVisual_PM	*pFrom		= dynamic_cast<FTreeVisual_PM*> (pSrc);
