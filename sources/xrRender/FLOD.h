@@ -8,7 +8,7 @@ class	FLOD	:	public CHierrarhyVisual
 public:
 	struct _vertex
 	{
-		Fvector		v;
+		fVector3		v;
 		fVector2	t;
 		u32			c_rgb_hemi;	// rgb,hemi
 		u8			c_sun;
@@ -16,14 +16,14 @@ public:
 	struct _face
 	{
 		_vertex		v[4]	;
-		Fvector		N		;
+		fVector3		N		;
 	};
 	struct _hw 
 	{
-		Fvector		p0		;
-		Fvector		p1		;
-		Fvector		n0		;
-		Fvector		n1		;
+		fVector3		p0		;
+		fVector3		p1		;
+		fVector3		n0		;
+		fVector3		n1		;
 		u32			sun_af	;
 		fVector2	t0		;
 		fVector2	t1		;

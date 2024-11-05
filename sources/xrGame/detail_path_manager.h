@@ -97,11 +97,11 @@ private:
 	EDetailPathType								m_path_type;
 
 private:
-	Fvector										m_start_position;
-	Fvector										m_start_direction;
-	Fvector										m_dest_position;
-	Fvector										m_corrected_dest_position;
-	Fvector										m_dest_direction;
+	fVector3										m_start_position;
+	fVector3										m_start_direction;
+	fVector3										m_dest_position;
+	fVector3										m_corrected_dest_position;
+	fVector3										m_dest_direction;
 
 private:
 	xr_vector<STravelPathPoint>					m_path;
@@ -166,20 +166,20 @@ public:
 	virtual			~CDetailPathManager			();
 	virtual	void	reinit						();
 			bool	valid						() const;
-			Fvector direction					() const;
+			fVector3 direction					() const;
 			bool	actual						() const;
 	IC		bool	failed						() const;
-	IC		bool	completed					(const Fvector &position, bool bRealCompleted = true) const;
-			bool	valid						(const Fvector &position) const;
+	IC		bool	completed(const fVector3& position, bool bRealCompleted = true) const;
+	bool	valid(const fVector3& position) const;
 	IC		u32		curr_travel_point_index		() const;
 
 public:
 	IC		const xr_vector<STravelPathPoint>	&path					() const;
 	IC		const STravelPathPoint				&curr_travel_point		() const;
-	IC		const Fvector						&start_position			() const;
-	IC		const Fvector						&start_direction		() const;
-	IC		const Fvector						&dest_position			() const;
-	IC		const Fvector						&dest_direction			() const;
+	IC		const fVector3& start_position( ) const;
+	IC		const fVector3& start_direction( ) const;
+	IC		const fVector3& dest_position( ) const;
+	IC		const fVector3& dest_direction( ) const;
 	IC		const u32							velocity_mask			() const;
 	IC		const u32							desirable_mask			() const;
 	IC		const bool							try_min_time			() const;
@@ -188,10 +188,10 @@ public:
 	IC		const STravelParams					&velocity				(const u32 &velocity_id) const;
 	IC		const VELOCITIES					&velocities				() const;
 	IC		void								add_velocity			(const u32 &velocity_id, const STravelParams &params);
-	IC		void								set_start_position		(const Fvector &start_position);
-	IC		void								set_start_direction		(const Fvector &start_direction);
-	IC		void								set_dest_position		(const Fvector &dest_position);
-	IC		void								set_dest_direction		(const Fvector &dest_direction);
+	IC		void								set_start_position(const fVector3& start_position);
+	IC		void								set_start_direction(const fVector3& start_direction);
+	IC		void								set_dest_position(const fVector3& dest_position);
+	IC		void								set_dest_direction(const fVector3& dest_direction);
 	IC		void								set_path_type			(const EDetailPathType path_type);
 	IC		void								set_velocity_mask		(const u32 mask);
 	IC		void								set_desirable_mask		(const u32 mask);
@@ -205,7 +205,7 @@ public:
 public:
 			void								on_travel_point_change	(const u32 &previous_travel_point_index);
 	IC		const f32&							distance_to_target		();
-			u32									location_on_path		(const CGameObject *object, f32 distance, Fvector &result) const;
+	u32									location_on_path(const CGameObject* object, f32 distance, fVector3& result) const;
 };
 
 #include "detail_path_manager_inline.h"

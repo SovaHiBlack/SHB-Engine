@@ -167,7 +167,7 @@ extern f32 r_ssaDISCARD;
 
 void CDetailManager::UpdateVisibleM()
 {
-	Fvector		EYE				= Device.vCameraPosition;
+	fVector3		EYE				= Device.vCameraPosition;
 	
 	CFrustum	View;
 	View.CreateFromMatrix		(Device.mFullTransform, FRUSTUM_P_LRTB + FRUSTUM_P_FAR);
@@ -285,7 +285,7 @@ void __stdcall	CDetailManager::MT_CALC		()
 	if (m_frame_calc!=Device.dwFrame)	
 		if ((m_frame_rendered+1)==Device.dwFrame) //already rendered
 		{
-			Fvector		EYE				= Device.vCameraPosition;
+			fVector3		EYE				= Device.vCameraPosition;
 			int s_x	= iFloor			(EYE.x/dm_slot_size+.5f);
 			int s_z	= iFloor			(EYE.z/dm_slot_size+.5f);
 
@@ -296,5 +296,6 @@ void __stdcall	CDetailManager::MT_CALC		()
 			UpdateVisibleM				();
 			m_frame_calc				= Device.dwFrame;
 		}
+
 	MT.Leave					        ();
 }

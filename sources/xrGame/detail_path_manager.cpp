@@ -29,8 +29,8 @@ void CDetailPathManager::reinit			()
 {
 	m_actuality				= false;
 	m_failed				= false;
-	m_start_position		= Fvector().set(0,0,0);
-	m_dest_position			= Fvector().set(0,0,0);
+	m_start_position		= fVector3().set(0.0f,0.0f,0.0f);
+	m_dest_position			= fVector3().set(0.0f,0.0f,0.0f);
 	m_current_travel_point	= u32(-1);
 	m_path_type				= eDetailPathTypeSmooth;
 	m_path.clear			();
@@ -40,7 +40,7 @@ void CDetailPathManager::reinit			()
 	m_use_dest_orientation	= false;
 	m_state_patrol_path		= false;
 	m_time_path_built		= 0;
-	m_extrapolate_length	= 8.f;
+	m_extrapolate_length	= 8.0f;
 	m_distance_to_target	= flt_max;
 	m_distance_to_target_actual	= false;
 }
@@ -57,21 +57,21 @@ bool CDetailPathManager::valid			() const
 	return					(b);
 }
 
-bool CDetailPathManager::valid			(const Fvector &position) const
+bool CDetailPathManager::valid			(const fVector3& position) const
 {
 	return					(!!_valid(position));
 }
 
-Fvector CDetailPathManager::direction() const
+fVector3 CDetailPathManager::direction() const
 {
 	if ((m_path.size() < 2) || (m_path.size() <= m_current_travel_point + 1))
-		return				(Fvector().set(0,0,1));
+		return				fVector3().set(0.0f,0.0f,1.0f);
 	
-	Fvector					direction;
+	fVector3					direction;
 	direction.sub			(m_path[m_current_travel_point + 1].position, m_path[m_current_travel_point].position);
 
 	if (direction.square_magnitude() < EPSILON_3)
-		direction.set		(0.f,0.f,1.f);
+		direction.set		(0.0f,0.0f,1.0f);
 	else
 		direction.normalize	();
 
@@ -150,7 +150,7 @@ void CDetailPathManager::on_travel_point_change	(const u32 &previous_travel_poin
 }
 
 #include "GameObject.h"
-u32 CDetailPathManager::location_on_path		(const CGameObject *object, f32 distance, Fvector &result) const
+u32 CDetailPathManager::location_on_path		(const CGameObject *object, f32 distance, fVector3& result) const
 {
 	VERIFY						(m_restricted_object);
 	result						= object->Position();

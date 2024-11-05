@@ -26,7 +26,7 @@ namespace Feel
 
 		void						o_new		(CObject* E);
 		void						o_delete	(CObject* E);
-		void						o_trace		(Fvector& P, f32 dt, f32 vis_threshold);
+		void						o_trace		(fVector3& P, f32 dt, f32 vis_threshold);
 
 	public:
 									Vision		();
@@ -37,31 +37,31 @@ namespace Feel
 			CObject*			O;
 			collide::ray_cache	Cache;
 			f32					Cache_vis;
-			Fvector				cp_LP;
-			Fvector				cp_LR_src;
-			Fvector				cp_LR_dst;
-			Fvector				cp_LAST;	// last point found to be visible
+			fVector3				cp_LP;
+			fVector3				cp_LR_src;
+			fVector3				cp_LR_dst;
+			fVector3				cp_LAST;	// last point found to be visible
 		};
 		xr_vector<feel_visible_Item>	feel_visible;
 
 	public:
 		void						feel_vision_clear		();
-		void						feel_vision_query		(fMatrix4x4& mFull,	Fvector& P);
-		void						feel_vision_update		(CObject* parent,	Fvector& P, f32 dt, f32 vis_threshold);
+		void						feel_vision_query		(fMatrix4x4& mFull, fVector3& P);
+		void						feel_vision_update		(CObject* parent, fVector3& P, f32 dt, f32 vis_threshold);
 		void	__stdcall			feel_vision_relcase		(CObject* object);
 		void						feel_vision_get			(xr_vector<CObject*>& R)		{
 			R.clear					();
 			xr_vector<feel_visible_Item>::iterator I=feel_visible.begin(),E=feel_visible.end();
 			for (; I!=E; I++)	if (positive(I->fuzzy)) R.push_back(I->O);
 		}
-		Fvector						feel_vision_get_vispoint(CObject* _O)					{
+		fVector3						feel_vision_get_vispoint(CObject* _O)					{
 			xr_vector<feel_visible_Item>::iterator I=feel_visible.begin(),E=feel_visible.end();
 			for (; I!=E; I++)		if (_O == I->O) {
 				VERIFY	(positive(I->fuzzy));
 				return	I->cp_LAST;
 			}
 			VERIFY2		(0, "There is no such object in the potentially visible list" );
-			return		Fvector().set(flt_max,flt_max,flt_max);
+			return		fVector3().set(flt_max,flt_max,flt_max);
 		}
 		virtual		BOOL			feel_vision_isRelevant	(CObject* O)					= 0;
 		virtual		f32				feel_vision_mtl_transp	(CObject* O, u32 element)		= 0;

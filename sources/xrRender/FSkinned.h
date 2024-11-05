@@ -58,8 +58,8 @@ public:
 	virtual void			Release			();
 	virtual void			AfterLoad		(CKinematics* parent, u16 child_idx);
 	virtual void			EnumBoneVertices(SEnumVerticesCallback &C, u16 bone_id);
-	virtual BOOL			PickBone		(Fvector& normal, f32& dist, const Fvector& start, const Fvector& dir, u16 bone_id);
-	virtual void			FillVertices	(const fMatrix4x4& view, CSkeletonWallmark& wm, const Fvector& normal, f32 size, u16 bone_id);
+	virtual BOOL			PickBone		(fVector3& normal, f32& dist, const fVector3& start, const fVector3& dir, u16 bone_id);
+	virtual void			FillVertices	(const fMatrix4x4& view, CSkeletonWallmark& wm, const fVector3& normal, f32 size, u16 bone_id);
 private:
 	CSkeletonX_PM				(const CSkeletonX_PM& other);
 	void	operator=			( const CSkeletonX_PM& other);

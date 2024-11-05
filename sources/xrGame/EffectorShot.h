@@ -41,8 +41,8 @@ public:
 	void			SetRndSeed			(s32 Seed);
 
 	virtual void	Shot				(f32 angle);
-	virtual void	GetDeltaAngle		(Fvector& delta_angle);
-	virtual void	GetLastDelta		(Fvector& delta_angle);
+	virtual void	GetDeltaAngle		(fVector3& delta_angle);
+	virtual void	GetLastDelta		(fVector3& delta_angle);
 	virtual	void	Clear				();
 
 	virtual void	ApplyLastAngles			(f32* pitch, f32* yaw);
@@ -57,7 +57,7 @@ public:
 					CCameraShotEffector	(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac);
 	virtual			~CCameraShotEffector();
 	
-	virtual	BOOL	Process				(Fvector &delta_p, Fvector &delta_d, Fvector &delta_n, f32& fFov, f32& fFar, f32& fAspect);
+	virtual	BOOL	Process(fVector3& delta_p, fVector3& delta_d, fVector3& delta_n, f32& fFov, f32& fFar, f32& fAspect);
 
 	virtual void	SetActor			(CActor* pActor) {m_pActor = pActor;};
 	

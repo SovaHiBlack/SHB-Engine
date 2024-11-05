@@ -24,10 +24,10 @@ public:
 	flags					m_mask;
 
 public:
-	IC		bool			operator==	(const Fvector &position) const;
+	IC		bool			operator==	(const fVector3& position) const;
 	virtual	bool			operator==	(const CObject *object) const;
 	virtual bool			useful		() const;
-	virtual const Fvector	&position	() const = 0;
+	virtual const fVector3& position( ) const = 0;
 	IC		const flags		&mask		() const;
 };
 

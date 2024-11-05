@@ -294,9 +294,9 @@ void IWriter::w_chunk(u32 type, pvoid data, u32 size)
 
 	close_chunk( );
 }
-void IWriter::w_sdir(const Fvector& D)
+void IWriter::w_sdir(const fVector3& D)
 {
-	Fvector C;
+	fVector3 C;
 	f32 mag = D.magnitude( );
 	if (mag > EPSILON_7)
 	{

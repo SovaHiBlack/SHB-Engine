@@ -44,14 +44,15 @@ void		CDetailManager::cache_Decompress(Slot* S)
 	DetailSlot&	DS		= QueryDB(D.sx,D.sz);
 
 	// Select polygons
-	Fvector		bC,bD;
+	fVector3		bC;
+	fVector3 bD;
 	D.vis.box.get_CD	(bC,bD);
 
 	xrc.box_options		(CDB::OPT_FULL_TEST); 
 	xrc.box_query		(g_pGameLevel->ObjectSpace.GetStaticModel(),bC,bD);
 	u32	triCount		= xrc.r_count	();
 	CDB::TRI*	tris	= g_pGameLevel->ObjectSpace.GetStaticTris();
-	Fvector*	verts	= g_pGameLevel->ObjectSpace.GetStaticVerts();
+	fVector3*	verts	= g_pGameLevel->ObjectSpace.GetStaticVerts();
 
 	if (0==triCount)	return;
 
@@ -110,12 +111,13 @@ void		CDetailManager::cache_Decompress(Slot* S)
 			// Position (XZ)
 			f32		rx = (f32(x)/ f32(d_size))*dm_slot_size + D.vis.box.min.x;
 			f32		rz = (f32(z)/ f32(d_size))*dm_slot_size + D.vis.box.min.z;
-			Fvector		Item_P;
+			fVector3		Item_P;
 			Item_P.set	(rx + r_jitter.randFs(jitter), D.vis.box.max.y, rz + r_jitter.randFs(jitter));
 
 			// Position (Y)
 			f32 y		= D.vis.box.min.y-5;
-			Fvector	dir; dir.set(0,-1,0);
+			fVector3	dir;
+			dir.set(0.0f,-1.0f,0.0f);
 
 			f32		r_u;
 			f32 r_v;
@@ -123,7 +125,7 @@ void		CDetailManager::cache_Decompress(Slot* S)
 			for (u32 tid=0; tid<triCount; tid++)
 			{
 				CDB::TRI&	T		= tris[xrc.r_begin()[tid].id];
-				Fvector		Tv[3]	= { verts[T.verts[0]],verts[T.verts[1]],verts[T.verts[2]] };
+				fVector3		Tv[3]	= { verts[T.verts[0]],verts[T.verts[1]],verts[T.verts[2]] };
 				if (CDB::TestRayTri(Item_P,dir,Tv,r_u,r_v,r_range,TRUE))
 				{
 					if (r_range>=0)	{

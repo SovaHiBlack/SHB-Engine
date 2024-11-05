@@ -144,7 +144,7 @@ void CDemoPlay::stat_Stop	()
 }
 
 #define FIX(a) while (a>=m_count) a-=m_count
-void spline1(f32 t, Fvector *p, Fvector *ret )
+void spline1(f32 t, fVector3* p, fVector3* ret)
 {
 	f32     t2  = t * t;
 	f32     t3  = t2 * t;
@@ -166,7 +166,7 @@ void spline1(f32 t, Fvector *p, Fvector *ret )
 	}
 }
 
-BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar, f32& fAspect)
+BOOL CDemoPlay::Process(fVector3& P, fVector3& D, fVector3& N, f32& fFov, f32& fFar, f32& fAspect)
 {
 	// skeep a few frames before counting
 	if (Device.dwPrecacheFrame)	return	TRUE;
@@ -181,7 +181,7 @@ BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar
 	// Process motion
 	if (m_pMotion)
 	{
-		Fvector R;
+		fVector3 R;
 		fMatrix4x4 mRotate;
 		m_pMotion->_Evaluate	(m_MParam->Frame(),P,R);
 		m_MParam->Update		(Device.fTimeDelta,1.f,true);
@@ -225,7 +225,7 @@ BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar
 		fMatrix4x4* m2;
 		fMatrix4x4* m3;
 		fMatrix4x4* m4;
-		Fvector v[4];
+		fVector3 v[4];
 		m1 = (fMatrix4x4*) &seq[f1];
 		m2 = (fMatrix4x4*) &seq[f2];
 		m3 = (fMatrix4x4*) &seq[f3];
@@ -236,7 +236,7 @@ BOOL CDemoPlay::Process(Fvector &P, Fvector &D, Fvector &N, f32& fFov, f32& fFar
 			v[1].x = m2->m[i][0]; v[1].y = m2->m[i][1];  v[1].z = m2->m[i][2];
 			v[2].x = m3->m[i][0]; v[2].y = m3->m[i][1];  v[2].z = m3->m[i][2];
 			v[3].x = m4->m[i][0]; v[3].y = m4->m[i][1];  v[3].z = m4->m[i][2];
-			spline1	( t, &(v[0]), (Fvector *) &(Device.mView.m[i][0]) );
+			spline1	( t, &(v[0]), (fVector3*) &(Device.mView.m[i][0]) );
 		}
 		
 		fMatrix4x4 mInvCamera;

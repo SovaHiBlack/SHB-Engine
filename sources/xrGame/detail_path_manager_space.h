@@ -16,11 +16,11 @@ namespace DetailPathManager {
 	};
 
 	struct STravelPathPoint {
-		Fvector				position;
+		fVector3				position;
 		u32					vertex_id;
 		u32					velocity;
 
-		IC	void set_position	(const Fvector &pos)
+		IC	void set_position(const fVector3& pos)
 		{
 			position		= pos;
 		}
@@ -30,7 +30,7 @@ namespace DetailPathManager {
 			vertex_id		= _vertex_id;
 		}
 
-		IC	Fvector &get_position	()
+		IC	fVector3& get_position( )
 		{
 			return			(position);
 		}

@@ -49,9 +49,9 @@ CEnvironment::CEnvironment	()
 	wind_gust_factor		= 0.f;
 
 	// fill clouds hemi verts & faces 
-	const Fvector* verts;
+	const fVector3* verts;
 	CloudsVerts.resize		(xrHemisphereVertices(2,verts));
-	CopyMemory			(&CloudsVerts.front(),verts,CloudsVerts.size()*sizeof(Fvector));
+	CopyMemory			(&CloudsVerts.front(),verts,CloudsVerts.size()*sizeof(fVector3));
 	const u16* indices;
 	CloudsIndices.resize	(xrHemisphereIndices(2,indices));
 	CopyMemory			(&CloudsIndices.front(),indices,CloudsIndices.size()*sizeof(u16));
@@ -291,7 +291,7 @@ void CEnvironment::OnFrame()
 	EM.ambient.set			( 0,0,0 );
 	EM.sky_color.set		( 0,0,0 );
 	EM.hemi_color.set		( 0,0,0 );
-	Fvector	view			= Device.vCameraPosition;
+	fVector3	view			= Device.vCameraPosition;
 	f32	mpower			= 0;
 	for (xr_vector<CEnvModifier>::iterator mit=Modifiers.begin(); mit!=Modifiers.end(); mit++)
 		mpower				+= EM.sum(*mit,view);

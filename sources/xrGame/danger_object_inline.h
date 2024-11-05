@@ -10,7 +10,7 @@
 
 IC	CDangerObject::CDangerObject											(
 	const CEntityAlive	*object,
-	const Fvector &position,
+	const fVector3& position,
 	u32 time,
 	const EDangerType &type,
 	const EDangerPerceiveType &perceive_type,
@@ -30,7 +30,7 @@ IC	const CEntityAlive *CDangerObject::object								() const
 	return				(m_object);
 }
 
-IC	const Fvector &CDangerObject::position									() const
+IC	const fVector3& CDangerObject::position( ) const
 {
 	return				(m_position);
 }

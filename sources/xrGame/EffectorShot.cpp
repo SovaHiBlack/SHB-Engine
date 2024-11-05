@@ -137,14 +137,14 @@ void CWeaponShotEffector::Clear				()
 	m_LastSeed		= 0;
 };
 
-void CWeaponShotEffector::GetDeltaAngle	(Fvector &delta_angle)
+void CWeaponShotEffector::GetDeltaAngle(fVector3& delta_angle)
 {
 	delta_angle.x			= -fAngleVert;
 	delta_angle.y			= -fAngleHorz;
 	delta_angle.z			= 0.0f;
 }
 
-void CWeaponShotEffector::GetLastDelta		(Fvector& delta_angle)
+void CWeaponShotEffector::GetLastDelta		(fVector3& delta_angle)
 {
 	delta_angle.x			= -fLastDeltaVert;
 	delta_angle.y			= -fLastDeltaHorz;
@@ -183,22 +183,27 @@ CCameraShotEffector::~CCameraShotEffector()
 {
 }
 
-BOOL CCameraShotEffector::Process	(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
+BOOL CCameraShotEffector::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect)
 {
-	if (bActive){
-		f32		h;
-		f32		p;
-		d.getHP		(h,p);
+	if (bActive)
+	{
+		f32 h;
+		f32 p;
+		d.getHP(h, p);
 		if (bSingleShoot)
 		{
 			if (bSSActive)
-				d.setHP		(h+fLastDeltaHorz,p+fLastDeltaVert);
+			{
+				d.setHP(h + fLastDeltaHorz, p + fLastDeltaVert);
+			}
 		}
 		else
-			d.setHP		(h+fAngleHorz,p+fAngleVert);
+		{
+			d.setHP(h + fAngleHorz, p + fAngleVert);
+		}
 
-		Update		();
+		Update( );
 	}
+
 	return TRUE;
 }
-

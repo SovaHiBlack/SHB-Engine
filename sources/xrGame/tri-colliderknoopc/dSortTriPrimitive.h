@@ -15,7 +15,7 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 							  T primitive,
 							  dxGeom		*o1,		dxGeom			*o2,
 							  int			flags,		dContactGeom	*contact,	int skip,
-							  const Fvector&	AABB
+							  const fVector3&	AABB
 							  )
 {
 	dxGeomUserData* data=dGeomGetUserData(o1);
@@ -30,11 +30,12 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 	
 
 	CDB::TRI*       T_array                         = Level().ObjectSpace.GetStaticTris();
-	const Fvector*	 V_array						 = Level().ObjectSpace.GetStaticVerts();
+	const fVector3*	 V_array						 = Level().ObjectSpace.GetStaticVerts();
 	if(no_last_pos||!last_box.contains(box))
 	{
 		
-		Fvector aabb;aabb.set(AABB);
+		fVector3 aabb;
+		aabb.set(AABB);
 		aabb.mul(ph_tri_query_ex_aabb_rate);
 	///////////////////////////////////////////////////////////////////////////////////////////////
 		XRC.box_options                (0);

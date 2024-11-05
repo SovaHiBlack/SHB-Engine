@@ -32,7 +32,7 @@ class ENGINE_API CDemoPlay :	public CEffectorCam
 	void				stat_Stop	()		;
 
 public:
-	virtual	BOOL		Process		(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect);
+	virtual	BOOL		Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect);
 
 						CDemoPlay	(const char *name, f32 ms, u32 cycles, f32 life_time=60*60*1000);
 	virtual				~CDemoPlay	();

@@ -29,7 +29,7 @@ void			CFrustum::_add			(fPlane3& P)
 	planes[p_count].cache	();
 	p_count					++;
 }
-void			CFrustum::_add			(Fvector& P1, Fvector& P2, Fvector&P3)
+void			CFrustum::_add			(fVector3& P1, fVector3& P2, fVector3&P3)
 {
 	VERIFY(p_count<FRUSTUM_MAXPLANES);
 	planes[p_count].build_precise	(P1,P2,P3);
@@ -56,7 +56,7 @@ u32				frustum_aabb_remap [8][6]	=
 };
 
 //////////////////////////////////////////////////////////////////////
-EFC_Visible	CFrustum::testSphere			(Fvector& c, f32 r, u32& test_mask) const
+EFC_Visible	CFrustum::testSphere			(fVector3& c, f32 r, u32& test_mask) const
 {
 	u32	bit = 1;
 	for (int i=0; i<p_count; i++, bit<<=1)
@@ -67,10 +67,11 @@ EFC_Visible	CFrustum::testSphere			(Fvector& c, f32 r, u32& test_mask) const
 			if (_abs(cls)>=r) test_mask&=~bit;			// fully - no need to test this plane
 		}
 	}
+
 	return test_mask ? fcvPartial:fcvFully;
 }
 
-BOOL	CFrustum::testSphere_dirty		(Fvector& c, f32 r) const
+BOOL	CFrustum::testSphere_dirty		(fVector3& c, f32 r) const
 {
 	switch (p_count) {
 		case 12:if (planes[11].classify(c)>r)	return FALSE;
@@ -107,7 +108,7 @@ EFC_Visible	CFrustum::testAABB			(const f32* mM, u32& test_mask) const
 	return test_mask ? fcvPartial:fcvFully;
 }
 
-EFC_Visible	CFrustum::testSAABB			(Fvector& c, f32 r, const f32* mM, u32& test_mask) const
+EFC_Visible	CFrustum::testSAABB			(fVector3& c, f32 r, const f32* mM, u32& test_mask) const
 {
 	u32	bit = 1;
 	for (int i=0; i<p_count; i++, bit<<=1)
@@ -126,20 +127,26 @@ EFC_Visible	CFrustum::testSAABB			(Fvector& c, f32 r, const f32* mM, u32& test_m
 	return test_mask ? fcvPartial:fcvFully;
 }
 
-BOOL		CFrustum::testPolyInside_dirty(Fvector* p, int count) const
+BOOL		CFrustum::testPolyInside_dirty(fVector3* p, int count) const
 {
-	Fvector* e = p+count;
+	fVector3* e = p+count;
 	for (int i=0; i<p_count; i++)
 	{
 		const fplane &P = planes[i];
-		for (Fvector* I=p; I!=e; I++)
-			if (P.classify(*I)>0) return false;
+		for (fVector3* I = p; I != e; I++)
+		{
+			if (P.classify(*I) > 0)
+			{
+				return false;
+			}
+		}
 	}
+
 	return true;
 }
 
 //////////////////////////////////////////////////////////////////////
-void CFrustum::CreateFromPoints(Fvector* p, int count, Fvector& COP)
+void CFrustum::CreateFromPoints(fVector3* p, int count, fVector3& COP)
 {
 	VERIFY(count<FRUSTUM_MAXPLANES);
 	VERIFY(count>=3);
@@ -166,7 +173,7 @@ void CFrustum::CreateFromPlanes(fPlane3* p, int count){
 	p_count = count;
 }
 
-void CFrustum::CreateFromPortal(sPoly* poly, Fvector& vPN, Fvector& vBase, fMatrix4x4& mFullXFORM)
+void CFrustum::CreateFromPortal(sPoly* poly, fVector3& vPN, fVector3& vBase, fMatrix4x4& mFullXFORM)
 {
 	fPlane3	P;
 	P.build_precise	((*poly)[0],(*poly)[1],(*poly)[2]);
@@ -208,10 +215,17 @@ void CFrustum::SimplifyPoly_AABB(sPoly* poly, fPlane3& plane)
 {
 	fMatrix4x4		mView;
 	fMatrix4x4		mInv;
-	Fvector		from,up,right,y;
+	fVector3		from;
+	fVector3		up;
+	fVector3		right;
+	fVector3		y;
 	from.set	((*poly)[0]);
-	y.set		(0,1,0);
-	if (_abs(plane.n.y)>0.99f) y.set(1,0,0);
+	y.set		(0.0f,1.0f,0.0f);
+	if (_abs(plane.n.y) > 0.99f)
+	{
+		y.set(1.0f, 0.0f, 0.0f);
+	}
+
 	right.crossproduct		(y,plane.n);
 	up.crossproduct			(plane.n,right);
 	mView.build_camera_dir	(from,plane.n,up);
@@ -243,7 +257,7 @@ void CFrustum::SimplifyPoly_AABB(sPoly* poly, fPlane3& plane)
 	mInv.transform_tiny23(poly->last(),p2);		poly->inc();
 }
 
-void CFrustum::CreateOccluder(Fvector* p, int count, Fvector& vBase, CFrustum& clip)
+void CFrustum::CreateOccluder(fVector3* p, int count, fVector3& vBase, CFrustum& clip)
 {
 	VERIFY(count<FRUSTUM_SAFE);
 	VERIFY(count>=3);
@@ -300,7 +314,7 @@ sPoly*	CFrustum::ClipPoly(sPoly& S, sPoly& D) const
 		// clip everything to this plane
 		cls[src->size()] = cls[0];
 		src->push_back((*src)[0]);
-		Fvector D;
+		fVector3 D;
 		f32 denum;
 		f32 t;
 		for (j=0; j<src->size()-1; j++)
@@ -344,7 +358,7 @@ sPoly*	CFrustum::ClipPoly(sPoly& S, sPoly& D) const
 	return dest;
 }
 
-BOOL CFrustum::CreateFromClipPoly(Fvector* p, int count, Fvector& vBase, CFrustum& clip)
+BOOL CFrustum::CreateFromClipPoly(fVector3* p, int count, fVector3& vBase, CFrustum& clip)
 {
 	VERIFY(count<FRUSTUM_MAXPLANES);
 	VERIFY(count>=3);

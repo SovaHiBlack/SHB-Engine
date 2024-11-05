@@ -245,7 +245,7 @@ void CEntityAlive::net_Destroy	()
 	inherited::net_Destroy		();
 }
 
-void CEntityAlive::HitImpulse	(f32 /**amount/**/, Fvector& /**vWorldDir/**/, Fvector& /**vLocalDir/**/)
+void CEntityAlive::HitImpulse	(f32 /**amount/**/, fVector3& /**vWorldDir/**/, fVector3& /**vLocalDir/**/)
 {
 	//	f32 Q					= 2*f32(amount)/m_PhysicMovementControl->GetMass();
 	//	m_PhysicMovementControl->vExternalImpulse.mad	(vWorldDir,Q);
@@ -344,8 +344,8 @@ void CEntityAlive::PHFreeze()
 //////////////////////////////////////////////////////////////////////
 
 //добавление кровавых отметок на стенах, после получения хита
-void CEntityAlive::BloodyWallmarks (f32 P, const Fvector &dir, s16 element,
-									const Fvector& position_in_object_space)
+void CEntityAlive::BloodyWallmarks(f32 P, const fVector3& dir, s16 element,
+									const fVector3& position_in_object_space)
 {
 	if(BI_NONE == (u16)element)
 		return;
@@ -353,7 +353,7 @@ void CEntityAlive::BloodyWallmarks (f32 P, const Fvector &dir, s16 element,
 	//вычислить координаты попадания
 	CKinematics* V = smart_cast<CKinematics*>(Visual());
 		
-	Fvector start_pos = position_in_object_space;
+	fVector3 start_pos = position_in_object_space;
 	if(V)
 	{
 		fMatrix4x4& m_bone = (V->LL_GetBoneInstance(u16(element))).mTransform;
@@ -370,12 +370,10 @@ void CEntityAlive::BloodyWallmarks (f32 P, const Fvector &dir, s16 element,
 	clamp(wallmark_size, m_fBloodMarkSizeMin, m_fBloodMarkSizeMax);
 
 	VERIFY(m_pBloodMarksVector);
-	PlaceBloodWallmark(dir, start_pos, m_fBloodMarkDistance, 
-						wallmark_size, *m_pBloodMarksVector);
-
+	PlaceBloodWallmark(dir, start_pos, m_fBloodMarkDistance, wallmark_size, *m_pBloodMarksVector);
 }
 
-void CEntityAlive::PlaceBloodWallmark(const Fvector& dir, const Fvector& start_pos, 
+void CEntityAlive::PlaceBloodWallmark(const fVector3& dir, const fVector3& start_pos,
 									  f32 trace_dist, f32 wallmark_size,
 									  SHADER_VECTOR& wallmarks_vector)
 {
@@ -401,11 +399,11 @@ void CEntityAlive::PlaceBloodWallmark(const Fvector& dir, const Fvector& start_p
 		if(pMaterial->Flags.is(SGameMtl::flBloodmark))
 		{
 			//вычислить нормаль к пораженной поверхности
-			Fvector*	pVerts	= Level().ObjectSpace.GetStaticVerts();
+			fVector3*	pVerts	= Level().ObjectSpace.GetStaticVerts();
 
 			//вычислить точку попадания
-			Fvector end_point;
-			end_point.set(0,0,0);
+			fVector3 end_point;
+			end_point.set(0.0f,0.0f,0.0f);
 			end_point.mad(start_pos, dir, result.range);
 
 			ref_shader wallmarkShader = wallmarks_vector[::Random.randI(wallmarks_vector.size())];
@@ -417,8 +415,6 @@ void CEntityAlive::PlaceBloodWallmark(const Fvector& dir, const Fvector& start_p
 		}
 	}
 }
-
-
 
 void CEntityAlive::StartFireParticles(CWound* pWound)
 {
@@ -443,14 +439,14 @@ void CEntityAlive::StartFireParticles(CWound* pWound)
 		{
 			CParticlesPlayer::StartParticles(pWound->GetParticleName(), 
 				pWound->GetParticleBoneNum(),
-				Fvector().set(0,1,0),
+											 fVector3().set(0.0f,1.0f,0.0f),
 				ID(), 
 				u32(f32(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f)), false);
 		}
 		else
 		{
 			CParticlesPlayer::StartParticles(pWound->GetParticleName(), 
-				Fvector().set(0,1,0),
+											 fVector3().set(0.0f,1.0f,0.0f),
 				ID(), 
 				u32(f32(m_dwMinBurnTime)*::Random.randF(0.5f,1.5f)), false);
 		}
@@ -551,13 +547,13 @@ void CEntityAlive::UpdateBloodDrops()
 			VERIFY(m_pBloodDropsVector);
 			if(pWound->GetBoneNum() != BI_NONE)
 			{
-				Fvector pos;
-				Fvector pos_distort;
+				fVector3 pos;
+				fVector3 pos_distort;
 				pos_distort.random_dir();
 				pos_distort.mul(0.15f);
-				CParticlesPlayer::GetBonePos(this, pWound->GetBoneNum(), Fvector().set(0,0,0), pos);
+				CParticlesPlayer::GetBonePos(this, pWound->GetBoneNum(), fVector3().set(0.0f,0.0f,0.0f), pos);
 				pos.add(pos_distort);
-				PlaceBloodWallmark(Fvector().set(0.f, -1.f, 0.f),
+				PlaceBloodWallmark(fVector3().set(0.0f, -1.0f, 0.0f),
 								pos, m_fBloodMarkDistance, 
 								m_fBloodDropSize, *m_pBloodDropsVector);
 			}
@@ -627,7 +623,7 @@ u32	 CEntityAlive::ef_detector_type	() const
 	VERIFY	(m_ef_detector_type != u32(-1));
 	return	(m_ef_detector_type);
 }
-void CEntityAlive::PHGetLinearVell(Fvector& velocity)
+void CEntityAlive::PHGetLinearVell(fVector3& velocity)
 {
 	if(character_physics_support())
 	{

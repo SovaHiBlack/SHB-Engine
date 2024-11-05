@@ -58,7 +58,7 @@ public:
 		u32 			life_time;
 		ref_sound		sound;		
 		shared_str		particles;
-		Fvector			offset;
+		fVector3			offset;
 		f32			wind_gust_factor;
 	};
 	DEFINE_VECTOR(SEffect,EffectVec,EffectVecIt);

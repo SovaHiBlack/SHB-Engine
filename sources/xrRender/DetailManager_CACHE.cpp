@@ -86,7 +86,7 @@ BOOL	CDetailManager::cache_Validate	()
 	return TRUE;
 }
 
-void	CDetailManager::cache_Update	(int v_x, int v_z, Fvector& view, int limit)
+void	CDetailManager::cache_Update	(int v_x, int v_z, fVector3& view, int limit)
 {
 	bool bNeedMegaUpdate	= (cache_cx!=v_x)||(cache_cz!=v_z);
 	// *****	Cache shift
@@ -160,7 +160,7 @@ void	CDetailManager::cache_Update	(int v_x, int v_z, Fvector& view, int limit)
 				VERIFY		(stPending == S->type);
 
 				// Estimate
-				Fvector		C;
+				fVector3		C;
 				S->vis.box.getcenter	(C);
 				f32		D	= view.distance_to_sqr	(C);
 

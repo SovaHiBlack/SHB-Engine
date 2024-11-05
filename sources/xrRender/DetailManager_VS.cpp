@@ -71,7 +71,7 @@ void CDetailManager::hw_Load	()
 				u32 mid	=	batch*c_size;
 				for (u32 v=0; v<D.number_vertices; v++)
 				{
-					Fvector&	vP = D.vertices[v].P;
+					fVector3&	vP = D.vertices[v].P;
 					pV->x	=	vP.x;
 					pV->y	=	vP.y;
 					pV->z	=	vP.z;
@@ -172,8 +172,11 @@ void	CDetailManager::hw_Render_dump		(ref_constant x_array, u32 var_id, u32 lod_
 	vis_list& list	=	m_visibles	[var_id];
 
 	CEnvDescriptor&	desc	= g_pGamePersistent->Environment().CurrentEnv;
-	Fvector					c_sun,c_ambient,c_hemi;
-	c_sun.set				(desc.sun_color.x,	desc.sun_color.y,	desc.sun_color.z);	c_sun.mul(.5f);
+	fVector3					c_sun;
+	fVector3 c_ambient;
+	fVector3 c_hemi;
+	c_sun.set				(desc.sun_color.x,	desc.sun_color.y,	desc.sun_color.z);
+	c_sun.mul(0.5f);
 	c_ambient.set			(desc.ambient.x,	desc.ambient.y,		desc.ambient.z);
 	c_hemi.set				(desc.hemi_color.x, desc.hemi_color.y,	desc.hemi_color.z);
 
@@ -209,7 +212,7 @@ void	CDetailManager::hw_Render_dump		(ref_constant x_array, u32 var_id, u32 lod_
 
 					// Build color
 #if RENDER==R_R1
-					Fvector C;
+					fVector3 C;
 					C.set					(c_ambient);
 //					C.mad					(c_lmap,Instance.c_rgb);
 					C.mad					(c_hemi,Instance.c_hemi);

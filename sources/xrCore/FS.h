@@ -152,11 +152,11 @@ public:
 	{
 		w_float_q8(angle_normalize(a), 0.0f, PI_MUL_2);
 	}
-	IC void 		w_dir(const Fvector& D)
+	IC void 		w_dir(const fVector3& D)
 	{
 		w_u16(pvCompress(D));
 	}
-	void 			w_sdir(const Fvector& D);
+	void 			w_sdir(const fVector3& D);
 	void	__cdecl	w_printf(pcstr format, ...);
 
 	// generalized chunking
@@ -257,9 +257,9 @@ public:
 		impl( ).r(p, cnt);
 	}
 
-	IC Fvector		r_vec3( )
+	IC fVector3		r_vec3( )
 	{
-		Fvector tmp;
+		fVector3 tmp;
 		r(&tmp, 3 * sizeof(f32));
 		return tmp;
 	}
@@ -374,12 +374,12 @@ public:
 	{
 		return r_float_q8(0, PI_MUL_2);
 	}
-	IC void			r_dir(Fvector& A)
+	IC void			r_dir(fVector3& A)
 	{
 		u16 t = r_u16( );
 		pvDecompress(A, t);
 	}
-	IC void			r_sdir(Fvector& A)
+	IC void			r_sdir(fVector3& A)
 	{
 		u16	t = r_u16( );
 		f32 s = r_float( );

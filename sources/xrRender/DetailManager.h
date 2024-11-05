@@ -32,7 +32,7 @@ public:
 		f32						c_hemi;
 		f32						c_sun;
 #if RENDER==R_R1
-		Fvector						c_rgb;
+		fVector3						c_rgb;
 #endif
 	};
 	DEFINE_VECTOR(SlotItem*,SlotItemVec,SlotItemVecIt);
@@ -139,7 +139,7 @@ public:
 	DetailSlot&						QueryDB			(int sx, int sz);
     
 	void							cache_Initialize();
-	void							cache_Update	(int sx, int sz, Fvector& view, int limit);
+	void							cache_Update	(int sx, int sz, fVector3& view, int limit);
 	void							cache_Task		(int gx, int gz, Slot* D);
 	Slot*							cache_Query		(int sx, int sz);
 	void							cache_Decompress(Slot* D);

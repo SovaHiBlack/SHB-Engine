@@ -105,14 +105,15 @@ void CDestroyablePhysicsObject::Destroy()
 	}
 	if(*m_destroy_particles)
 	{		
-			//Fvector dir;dir.set(0,1,0);
+			//fVector3 dir;dir.set(0,1,0);
 		fMatrix4x4 m;
 		m.identity();
 		/////////////////////////////////////////////////
 		m.j.set(0,1.f,0);
 		///////////////////////////////////////////////
 
-		Fvector hdir;hdir.set(CPHDestroyable::FatalHit().direction());
+		fVector3 hdir;
+		hdir.set(CPHDestroyable::FatalHit().direction());
 
 		if(fsimilar(_abs(m.j.dotproduct(hdir)),1.f, EPSILON_3))
 		{
@@ -120,9 +121,11 @@ void CDestroyablePhysicsObject::Destroy()
 				hdir.random_dir();
 			} while(fsimilar(_abs(m.j.dotproduct(hdir)),1.f, EPSILON_3));
 		}
-		m.i.crossproduct(m.j,hdir);m.i.normalize();
-		m.k.crossproduct(m.i,m.j);
-			StartParticles(m_destroy_particles,m,ID());
+
+		m.i.crossproduct(m.j, hdir);
+		m.i.normalize( );
+		m.k.crossproduct(m.i, m.j);
+		StartParticles(m_destroy_particles, m, ID( ));
 	}
 	SheduleRegister();
 }

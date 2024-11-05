@@ -51,7 +51,7 @@ public:
 	virtual	void			create_anim_mov_ctrl	( CBlend* b );
 	virtual	void			destroy_anim_mov_ctrl	( );
 
-	virtual void			HitImpulse				(f32 amount, Fvector& vWorldDir, Fvector& vLocalDir);
+	virtual void			HitImpulse				(f32 amount, fVector3& vWorldDir, fVector3& vLocalDir);
 	virtual	void			Hit						(SHit* pHDS);
 	virtual void			Die						(CObject* who);
 	virtual void			g_WeaponBones			(int &L, int &R1, int &R2)										= 0;
@@ -66,6 +66,7 @@ public:
 	virtual	f32			ffGetRange				()	const			= 0;
 	
 	virtual bool			human_being				() const			{return	(false);}
+
 public:
 	//IC	CPHMovementControl*					PMovement					()						{return m_PhysicMovementControl;}
 
@@ -74,11 +75,12 @@ public:
 	virtual void							PHUnFreeze					()						;
 	virtual void							PHFreeze					()						;
 
-	virtual void							PHGetLinearVell				(Fvector& velocity)		;
+	virtual void							PHGetLinearVell				(fVector3& velocity)		;
 	virtual CPHSoundPlayer*					ph_sound_player				()						;
 	virtual	CIKLimbsController				*character_ik_controller	()						;
 	virtual SCollisionHitCallback			*get_collision_hit_callback	()						;
 	virtual bool							set_collision_hit_callback	(SCollisionHitCallback *cc);
+
 protected:
 	DEFINE_VECTOR				(CWound*, WOUND_VECTOR, WOUND_VECTOR_IT);
 	WOUND_VECTOR				m_ParticleWounds;
@@ -86,23 +88,26 @@ protected:
 	virtual void				StartFireParticles(CWound* pWound);
 	virtual void				UpdateFireParticles();
 	virtual void				LoadFireParticles(pcstr section);
+
 public:	
 	static  void				UnloadFireParticles	();
+
 protected:
 	static STR_VECTOR*			m_pFireParticlesVector;
 	static u32					m_dwMinBurnTime;
 	static f32				m_fStartBurnWoundSize;
 	static f32				m_fStopBurnWoundSize;
 
-
-	virtual void				BloodyWallmarks			(f32 P, const Fvector &dir, s16 element, const Fvector& position_in_object_space);
+	virtual void				BloodyWallmarks(f32 P, const fVector3& dir, s16 element, const fVector3& position_in_object_space);
 	static  void				LoadBloodyWallmarks		(pcstr section);
+
 public:	
 	static  void				UnloadBloodyWallmarks	();
 
 	void						ClearBloodWounds		() {m_BloodWounds.clear();};
+
 protected:
-	virtual void				PlaceBloodWallmark		(const Fvector& dir, const Fvector& start_pos, 
+	virtual void				PlaceBloodWallmark(const fVector3& dir, const fVector3& start_pos,
 														 f32 trace_dist, f32 wallmark_size,
 														SHADER_VECTOR& wallmarks_vector);
 

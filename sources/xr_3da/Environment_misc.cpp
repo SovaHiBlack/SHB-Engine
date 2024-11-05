@@ -11,7 +11,7 @@
 //-----------------------------------------------------------------------------
 void	CEnvModifier::load	(IReader* fs)
 {
-//	Fvector			dummy;
+//	fVector3			dummy;
 	fs->r_fvector3	(position);
 	radius			= fs->r_float	();
 	power			= fs->r_float	();

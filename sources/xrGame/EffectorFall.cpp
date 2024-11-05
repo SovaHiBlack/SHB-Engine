@@ -15,7 +15,7 @@ CEffectorFall::~CEffectorFall()
 {
 }
 
-BOOL CEffectorFall::Process(Fvector &p, Fvector &d, Fvector &n, f32& fFov, f32& fFar, f32& fAspect)
+BOOL CEffectorFall::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	fPhase+=FALL_SPEED*Device.fTimeDelta;
 	if (fPhase<1)	p.y-=FALL_MAXDIST*fPower*_sin(M_PI*fPhase+M_PI);

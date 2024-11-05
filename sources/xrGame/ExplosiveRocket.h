@@ -39,7 +39,7 @@ public:
 	virtual void OnH_B_Independent	(bool just_before_destroy);
 	virtual void UpdateCL			();
 
-	virtual void Contact(const Fvector &pos, const Fvector &normal);
+	virtual void Contact(const fVector3& pos, const fVector3& normal);
 
 	virtual void OnEvent (NET_Packet& P, u16 type) ;
 

@@ -89,7 +89,7 @@ void			CEffectorZoomInertion::CalcNextPoint		()
 	m_vTargetVel.sub(m_vTargetPoint, m_vLastPoint);
 };
 
-BOOL CEffectorZoomInertion::Process		(Fvector &p, Fvector &d, Fvector &n, 
+BOOL CEffectorZoomInertion::Process(fVector3& p, fVector3& d, fVector3& n,
 										 f32& fFov, f32& fFar, f32& fAspect)
 {
 	bool camera_moved = false;
@@ -98,10 +98,8 @@ BOOL CEffectorZoomInertion::Process		(Fvector &p, Fvector &d, Fvector &n,
 	if(!d.similar(m_vOldCameraDir, m_fCameraMoveEpsilon))
 		camera_moved = true;
 
-
-	Fvector dir;
+	fVector3 dir;
 	dir.sub(m_vCurrentPoint,m_vTargetPoint);
-
 
 ///	if(dir.magnitude()<m_fEpsilon || m_dwTimePassed>m_dwDeltaTime)
 //	if (m_dwTimePassed>m_dwDeltaTime)
@@ -118,15 +116,17 @@ BOOL CEffectorZoomInertion::Process		(Fvector &p, Fvector &d, Fvector &n,
 
 			m_vLastPoint.set(m_vTargetPoint);
 			CalcNextPoint();
-		};
+		}
 	}
 
 	m_vCurrentPoint.lerp(m_vLastPoint, m_vTargetPoint, f32(m_dwTimePassed)/m_dwDeltaTime);
 
 	m_vOldCameraDir = d;	
 
-	if(!camera_moved)
+	if (!camera_moved)
+	{
 		d.add(m_vCurrentPoint);
+	}
 
 	m_dwTimePassed += Device.dwTimeDelta;
 
