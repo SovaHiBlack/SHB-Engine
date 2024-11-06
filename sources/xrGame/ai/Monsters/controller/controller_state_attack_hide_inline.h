@@ -45,7 +45,7 @@ void CStateControllerHideAbstract::execute()
 	object->sound().play				(MonsterSound::eMonsterSoundAggressive, 0,0,object->db().m_dwAttackSndDelay);
 	
 	if (object->HitMemory.get_last_hit_time() > object->EnemyMan.get_enemy_time_last_seen()) {
-		Fvector pos;
+		fVector3 pos;
 		pos.mad(object->Position(),object->HitMemory.get_last_hit_dir(),5.f);
 		pos.y += 1.5f;
 		object->custom_dir().head_look_point(pos);

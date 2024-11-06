@@ -7,7 +7,7 @@ class CStateControlHideLite : public CState<_Object> {
 	typedef	CState<_Object>*	state_ptr;
 
 	struct {
-		Fvector position;
+		fVector3 position;
 		u32		node;
 	} target;
 

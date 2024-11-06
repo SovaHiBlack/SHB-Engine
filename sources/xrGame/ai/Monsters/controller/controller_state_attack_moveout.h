@@ -5,7 +5,7 @@ class CStateControlMoveOut : public CState<_Object> {
 	typedef	CState<_Object>		inherited;
 	typedef	CState<_Object>*	state_ptr;
 
-	Fvector			m_look_point;
+	fVector3			m_look_point;
 	
 	u32				m_last_time_look_point_updated;
 	u32				m_current_delay;
@@ -15,7 +15,7 @@ class CStateControlMoveOut : public CState<_Object> {
 		eMoveToLastEnemyLocation
 	} m_state;
 
-	Fvector			m_target_position;
+	fVector3			m_target_position;
 	u32				m_target_node;
 
 	u32				m_enemy_vertex;	

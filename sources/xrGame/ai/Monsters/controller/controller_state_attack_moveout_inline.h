@@ -100,7 +100,7 @@ void CStateControlMoveOutAbstract::update_look_point()
 
 	if ((Random.randI(100) < LOOK_COVER_PROBABILITY) && (m_last_time_look_point_updated != 0)) {
 		f32 angle			= ai().level_graph().vertex_cover_angle(object->ai_location().level_vertex_id(),deg(10), std::greater<f32>());
-		m_look_point.mad	(object->Position(), Fvector().setHP(angle,0.f), 3.f);
+		m_look_point.mad	(object->Position(), fVector3().setHP(angle,0.0f), 3.0f);
 		m_current_delay		= DEFAULT_LOOK_POINT_CHANGE_DELAY;
 	} else {
 		m_look_point		= object->EnemyMan.get_enemy_position();

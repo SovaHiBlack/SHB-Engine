@@ -91,7 +91,7 @@ void SPrimitiveBuffer::CreateFromData(D3DPRIMITIVETYPE _pt, u32 _p_cnt, u32 FVF,
 	R_CHK				(pVB->Lock(0,0,(LPVOID*)&bytes,0));
 	FLvertexVec	verts	(v_cnt);
 	for (u32 k=0; k<v_cnt; ++k)
-		verts[k].set	(((Fvector*)vertices)[k],0xFFFFFFFF);
+		verts[k].set	(((fVector3*)vertices)[k],0xFFFFFFFF);
 	Memory.mem_copy		(bytes,&*verts.begin(),v_cnt*stride);
 	R_CHK				(pVB->Unlock());
 	if (i_cnt){ 

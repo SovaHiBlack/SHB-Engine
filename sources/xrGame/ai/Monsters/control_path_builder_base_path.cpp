@@ -64,10 +64,10 @@ void CControlPathBuilderBase::find_target_point_set()
 
 		// 2. быстрый тест на недостижимость цели (выбрать случайную позицию)
 		if (!m_man->path_builder().accessible(m_target_found.position)) {
-			m_target_found.node = m_man->path_builder().restrictions().accessible_nearest(Fvector().set(m_target_found.position),m_target_found.position);
+			m_target_found.node = m_man->path_builder().restrictions().accessible_nearest(fVector3().set(m_target_found.position),m_target_found.position);
 			
-			Fvector	pos_random;	
-			Fvector dir;		
+			fVector3	pos_random;
+			fVector3 dir;
 			dir.random_dir			();
 
 			pos_random.mad			(m_object->Position(), dir, pmt_find_point_dist);
@@ -83,8 +83,7 @@ void CControlPathBuilderBase::find_target_point_set()
 	// I. Выбрать позицию
 
 	if (m_target_type == eRetreatFromTarget) {
-		Fvector	dir;
-
+		fVector3	dir;
 		dir.sub						(m_object->Position(), m_target_found.position);
 		dir.normalize_safe			();
 		m_target_found.position.mad	(m_object->Position(), dir, pmt_find_point_dist);
@@ -92,15 +91,15 @@ void CControlPathBuilderBase::find_target_point_set()
 
 	// проверить позицию на accessible
 	if (!m_man->path_builder().accessible(m_target_found.position)) {
-		m_target_found.node = m_man->path_builder().restrictions().accessible_nearest(Fvector().set(m_target_found.position),m_target_found.position);
+		m_target_found.node = m_man->path_builder().restrictions().accessible_nearest(fVector3().set(m_target_found.position),m_target_found.position);
 	}
 	
 	// если новая позиция = позиции монстра - выбрать рандомную валидную позицию
 	for (u32 i = 0; i < pmt_find_random_pos_attempts; i++ ) {
 		if (m_target_found.position.similar(m_object->Position(), 0.5f)) {
 			
-			Fvector	pos_random;	
-			Fvector dir;		
+			fVector3	pos_random;
+			fVector3 dir;
 			dir.random_dir			();
 
 			pos_random.mad			(m_object->Position(), dir, pmt_find_point_dist);
@@ -122,8 +121,8 @@ void CControlPathBuilderBase::find_target_point_failed()
 {
 	// если новая позиция = позиции монстра - выбрать рандомную валидную позицию
 	for (u32 i = 0; i < pmt_find_random_pos_attempts; i++ ) {
-		Fvector	pos_random;	
-		Fvector dir;		
+		fVector3	pos_random;
+		fVector3 dir;
 		dir.random_dir			();
 
 		pos_random.mad			(m_object->Position(), dir, pmt_find_point_dist);
@@ -150,7 +149,7 @@ void CControlPathBuilderBase::find_node()
 
 	if (ai().level_graph().valid_vertex_id(m_target_found.node) && m_man->path_builder().accessible(m_target_found.node)) {
 		// корректировка позиции
-		m_man->path_builder().fix_position(Fvector().set(m_target_found.position), m_target_found.node, m_target_found.position);
+		m_man->path_builder().fix_position(fVector3().set(m_target_found.position), m_target_found.node, m_target_found.position);
 		return;
 	}
 
@@ -159,7 +158,7 @@ void CControlPathBuilderBase::find_node()
 		m_target_found.node = ai().level_graph().vertex_id(m_target_found.position);
 		if (ai().level_graph().valid_vertex_id(m_target_found.node) && m_man->path_builder().accessible(m_target_found.node)) {
 			// корректировка позиции
-			m_man->path_builder().fix_position(Fvector().set(m_target_found.position), m_target_found.node, m_target_found.position);
+			m_man->path_builder().fix_position(fVector3().set(m_target_found.position), m_target_found.node, m_target_found.position);
 			return;
 		}
 	}

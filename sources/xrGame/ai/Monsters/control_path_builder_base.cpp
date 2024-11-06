@@ -88,19 +88,18 @@ void CControlPathBuilderBase::on_stop_control(ControlCom::EControlType type)
 
 void CControlPathBuilderBase::detour_graph_points(u32 game_graph_vertex_id)
 {
-	
 	m_game_graph_target_vertex	= game_graph_vertex_id;
 	set_game_path_type			();
 }
 
-void CControlPathBuilderBase::set_dest_direction(const Fvector &dir)
+void CControlPathBuilderBase::set_dest_direction(const fVector3& dir)
 {
 	if (m_last_time_dir_set + m_time > time()) return;
 	m_dest_dir.set			(dir);
 	m_last_time_dir_set		 = time();
 }
 
-void CControlPathBuilderBase::set_target_accessible(STarget &target, const Fvector &position)
+void CControlPathBuilderBase::set_target_accessible(STarget& target, const fVector3& position)
 {
 	if (!m_man->path_builder().accessible(position)) {
 		target.node			= m_man->path_builder().restrictions().accessible_nearest(position, target.position);

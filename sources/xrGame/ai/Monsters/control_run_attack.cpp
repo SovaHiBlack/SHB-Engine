@@ -101,11 +101,11 @@ void CControlRunAttack::on_event(ControlCom::EEventType type, ControlCom::IEvent
 			// distance
 			f32					path_dist		= anim_time * velocity.velocity.linear;
 
-			Fvector					dir;
+			fVector3					dir;
 			dir.sub					(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());
 			dir.normalize_safe		();
 
-			Fvector					target_position;
+			fVector3					target_position;
 			target_position.mad		(m_object->Position(), dir, path_dist);
 
 			if (!m_man->build_path_line	(this, target_position, u32(-1), velocity_mask | MonsterMovement::eVelocityParameterStand)) {

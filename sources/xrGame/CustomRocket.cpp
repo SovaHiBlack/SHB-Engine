@@ -87,8 +87,8 @@ void CCustomRocket::net_Destroy()
 
 
 void CCustomRocket::SetLaunchParams (const fMatrix4x4& xform,
-									 const Fvector& vel,
-									 const Fvector& angular_vel)
+									 const fVector3& vel,
+									 const fVector3& angular_vel)
 {
 	VERIFY2						(_valid(xform),"SetLaunchParams. Invalid xform argument!");
 	m_LaunchXForm				= xform;
@@ -143,7 +143,7 @@ void CCustomRocket::create_physic_shell	()
 	CPhysicsElement						*E = P_create_Element	();
 	R_ASSERT							(E);
 
-	Fvector								ax;
+	fVector3								ax;
 	f32									radius;
 	CHOOSE_MAX(
 		obb.m_halfsize.x, ax.set(obb.m_rotate.i); ax.mul(obb.m_halfsize.x); radius = _min(obb.m_halfsize.y, obb.m_halfsize.z); obb.m_halfsize.y /= 2.f; obb.m_halfsize.z /= 2.f,
@@ -179,7 +179,6 @@ void CCustomRocket::create_physic_shell	()
 void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,SGameMtl * material_1,SGameMtl * material_2) 
 {
 	do_colide = false;
-	
 
 	dxGeomUserData *l_pUD1 = NULL;
 	dxGeomUserData *l_pUD2 = NULL;
@@ -188,10 +187,10 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 
 	SGameMtl* material=0;
 	CCustomRocket *l_this = l_pUD1 ? smart_cast<CCustomRocket*>(l_pUD1->ph_ref_object) : NULL;
-	Fvector vUp;
+	fVector3 vUp;
 	if(!l_this){
 		l_this = l_pUD2 ? smart_cast<CCustomRocket*>(l_pUD2->ph_ref_object) : NULL;
-		vUp.invert(*(Fvector*)&c.geom.normal);
+		vUp.invert(*(fVector3*)&c.geom.normal);
 
 		//if(dGeomGetClass(c.geom.g1)==dTriListClass)
 		//	material=GMLib.GetMaterialByIdx((u16)c.surface.mode);
@@ -200,15 +199,15 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 		material=material_1;
 
 	}else{
-		vUp.set(*(Fvector*)&c.geom.normal);	
+		vUp.set(*(fVector3*)&c.geom.normal);
 
 		//if(dGeomGetClass(c.geom.g2)==dTriListClass)
 		//	material=GMLib.GetMaterialByIdx((u16)c.surface.mode);
 		//else
 		//	material=GMLib.GetMaterialByIdx(l_pUD1->material);
 		material=material_2;
-
 	}
+
 	VERIFY(material);
 	if(material->Flags.is(SGameMtl::flPassable)) return;
 
@@ -220,10 +219,13 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 	{
 		if(l_this->m_pOwner) 
 		{
-			Fvector l_pos; l_pos.set(l_this->Position());
+			fVector3 l_pos;
+			l_pos.set(l_this->Position());
+
 #ifdef DEBUG
 			bool corrected_pos=false;
 #endif
+
 			if(!l_pUD1||!l_pUD2) 
 			{
 				dGeomID g				=NULL						;
@@ -232,25 +234,27 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 
 				if(l_pUD->pushing_neg) 
 				{
-					Fvector velocity;
+					fVector3 velocity;
 					l_this->PHGetLinearVell(velocity);
 					if (velocity.square_magnitude() > EPSILON_5)
 					{	//. desync?
 						velocity.normalize();
 						Triangle neg_tri;
 						CalculateTriangle(l_pUD->neg_tri,g,neg_tri);
-						f32 cosinus=velocity.dotproduct(*((Fvector*)neg_tri.norm));
+						f32 cosinus=velocity.dotproduct(*((fVector3*)neg_tri.norm));
 						VERIFY(_valid(neg_tri.dist));
 						f32 dist=neg_tri.dist/cosinus;
 						velocity.mul(dist*1.1f);
 						l_pos.sub(velocity);
+
 #ifdef DEBUG
 						corrected_pos=true;
 //.	DBG_OpenCashedDraw();
-//.	const Fvector*	 V_array	= Level().ObjectSpace.GetStaticVerts();
+//.	const fVector3*	 V_array	= Level().ObjectSpace.GetStaticVerts();
 //.	DBG_DrawTri(neg_tri.T, V_array, D3DCOLOR_XRGB(255,255,0));
 //.	DBG_ClosedCashedDraw(50000);
 #endif
+
 					}
 				}
 			}
@@ -261,15 +265,14 @@ void CCustomRocket::ObjectContactCallback(bool& do_colide,bool bo1,dContact& c ,
 			
 			l_this->Contact(l_pos, vUp);
 			l_this->m_pPhysicsShell->DisableCollision();
-			l_this->m_pPhysicsShell->set_LinearVel(Fvector().set(0,0,0));
-			l_this->m_pPhysicsShell->set_AngularVel(Fvector().set(0,0,0));
-			l_this->m_pPhysicsShell->setForce(Fvector().set(0,0,0));
-			l_this->m_pPhysicsShell->setTorque(Fvector().set(0,0,0));
+			l_this->m_pPhysicsShell->set_LinearVel(fVector3().set(0.0f,0.0f,0.0f));
+			l_this->m_pPhysicsShell->set_AngularVel(fVector3().set(0.0f,0.0f,0.0f));
+			l_this->m_pPhysicsShell->setForce(fVector3().set(0.0f,0.0f,0.0f));
+			l_this->m_pPhysicsShell->setTorque(fVector3().set(0.0f,0.0f,0.0f));
 			l_this->m_pPhysicsShell->set_ApplyByGravity(false);
-			l_this->setEnabled(FALSE);
-			
+			l_this->setEnabled(FALSE);			
 		}
-	} else {}
+	}
 }
 
 void CCustomRocket::Load(pcstr section)
@@ -308,12 +311,10 @@ void  CCustomRocket::reload		(pcstr section)
 
 	if(pSettings->line_exist(section,"snd_fly_sound")){
 		m_flyingSound.create(pSettings->r_string(section,"snd_fly_sound"),st_Effect,sg_SourceType);
-	}
-
-	
+	}	
 }
 
-void CCustomRocket::Contact(const Fvector &pos, const Fvector &normal)
+void CCustomRocket::Contact(const fVector3& pos, const fVector3& normal)
 {
 m_contact.contact=true;
 m_contact.pos.set(pos);
@@ -449,8 +450,9 @@ void CCustomRocket::UpdateEnginePh			()
 	if (Level().In_NetCorrectionPrediction()) return;
 	f32 force = m_fEngineImpulse*fixed_step;// * Device.fTimeDelta;
 	f32 k_back=1.0f;
-	Fvector l_pos, l_dir; 
-	l_pos.set(0, 0,-2.f);
+	fVector3 l_pos;
+	fVector3 l_dir;
+	l_pos.set(0.0f, 0.0f,-2.0f);
 	l_dir.set(XFORM().k);
 
 	l_dir.normalize();
@@ -539,7 +541,7 @@ void CCustomRocket::UpdateParticles()
 
 	if(!m_pEngineParticles && !m_pFlyParticles) return;
 
-	Fvector vel;
+	fVector3 vel;
 	PHGetLinearVell(vel);
 
 	vel.add(m_vPrevVel,vel);
@@ -550,10 +552,10 @@ void CCustomRocket::UpdateParticles()
 	particles_xform.identity();
 	particles_xform.k.set(XFORM().k);
 	particles_xform.k.mul(-1.f);
-	Fvector::generate_orthonormal_basis(particles_xform.k, 
+	fVector3::generate_orthonormal_basis(particles_xform.k,
 										particles_xform.j, 
 										particles_xform.i);
-    particles_xform.c.set	(XFORM().c);
+	particles_xform.c.set	(XFORM().c);
 
 	if(m_pEngineParticles)	m_pEngineParticles->UpdateParent(particles_xform, vel);
 	if(m_pFlyParticles)		m_pFlyParticles->UpdateParent(particles_xform, vel);

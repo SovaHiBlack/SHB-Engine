@@ -12,7 +12,7 @@ enum ETask {
 struct SControlledInfo {
 	ETask			m_task;
 	const CEntity	*m_object;
-	Fvector			m_position;
+	fVector3			m_position;
 	u32				m_node;		
 	f32			m_radius;
 };

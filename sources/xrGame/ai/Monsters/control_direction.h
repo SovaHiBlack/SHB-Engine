@@ -40,10 +40,10 @@ public:
 	virtual void	update_frame		();
 	
 	// services
-			bool	is_face_target		(const Fvector &position, f32 eps_angle);
+	bool	is_face_target(const fVector3& position, f32 eps_angle);
 			bool	is_face_target		(const CObject *obj, f32 eps_angle);
 
-			bool	is_from_right		(const Fvector &position);
+			bool	is_from_right(const fVector3& position);
 			bool	is_from_right		(f32 yaw);
 
 			bool	is_turning			(f32 eps_angle = EPSILON_5);
@@ -51,7 +51,7 @@ public:
 			void	get_heading			(f32& current, f32& target);
 			f32	get_heading_current	();
 
-			f32	angle_to_target		(const Fvector &position);
+			f32	angle_to_target(const fVector3& position);
 
 private:				
 			void	pitch_correction	();

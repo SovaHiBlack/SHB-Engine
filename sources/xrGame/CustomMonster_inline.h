@@ -12,7 +12,7 @@ IC	bool CCustomMonster::angle_lerp_bounds(f32& a, f32 b, f32 c, f32 d)
 	return(false);
 };
 
-IC void CCustomMonster::vfNormalizeSafe(Fvector& Vector)
+IC void CCustomMonster::vfNormalizeSafe(fVector3& Vector)
 {
 	f32 fMagnitude = Vector.magnitude();
 	if (fMagnitude > EPSILON_3) {
@@ -21,9 +21,9 @@ IC void CCustomMonster::vfNormalizeSafe(Fvector& Vector)
 		Vector.z /= fMagnitude;
 	}
 	else {
-		Vector.x = 1.f;
-		Vector.y = 0.f;
-		Vector.z = 0.f;
+		Vector.x = 1.0f;
+		Vector.y = 0.0f;
+		Vector.z = 0.0f;
 	}
 }
 

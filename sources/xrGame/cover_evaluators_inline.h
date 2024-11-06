@@ -52,7 +52,7 @@ IC	void CCoverEvaluatorBase::setup						()
 	m_initialized			= true;
 }
 
-IC	void CCoverEvaluatorBase::initialize				(const Fvector &start_position, bool fake_call)
+IC	void CCoverEvaluatorBase::initialize(const fVector3& start_position, bool fake_call)
 {
 	VERIFY					(initialized());
 	m_start_position		= start_position;
@@ -73,7 +73,7 @@ IC	bool CCoverEvaluatorBase::initialized				() const
 	return					(m_initialized);
 }
 
-IC	bool CCoverEvaluatorBase::accessible				(const Fvector &position)
+IC	bool CCoverEvaluatorBase::accessible(const fVector3& position)
 {
 	return					(m_object ? object().accessible(position) : true);
 }
@@ -113,13 +113,13 @@ IC	CCoverEvaluatorCloseToEnemy::CCoverEvaluatorCloseToEnemy	(CRestrictedObject *
 	m_current_distance		= flt_max;
 }
 
-IC	void CCoverEvaluatorCloseToEnemy::initialize(const Fvector &start_position, bool fake_call)
+IC	void CCoverEvaluatorCloseToEnemy::initialize(const fVector3& start_position, bool fake_call)
 {
 	inherited::initialize	(start_position,fake_call);
 	m_current_distance		= m_start_position.distance_to(m_enemy_position);
 }
 
-IC	void CCoverEvaluatorCloseToEnemy::setup		(const Fvector &enemy_position, f32 min_enemy_distance, f32 max_enemy_distance, f32 deviation)
+IC	void CCoverEvaluatorCloseToEnemy::setup(const fVector3& enemy_position, f32 min_enemy_distance, f32 max_enemy_distance, f32 deviation)
 {
 	inherited::setup		();
 	
@@ -148,7 +148,7 @@ IC	CCoverEvaluatorAngle::CCoverEvaluatorAngle	(CRestrictedObject *object) : inhe
 	m_level_vertex_id	= u32(-1);
 }
 
-IC	void CCoverEvaluatorAngle::setup		(const Fvector &enemy_position, f32 min_enemy_distance, f32 max_enemy_distance, u32 level_vertex_id)
+IC	void CCoverEvaluatorAngle::setup(const fVector3& enemy_position, f32 min_enemy_distance, f32 max_enemy_distance, u32 level_vertex_id)
 {
 	inherited::setup		(enemy_position,min_enemy_distance,max_enemy_distance);
 	m_actuality				= m_actuality && (m_level_vertex_id == level_vertex_id);

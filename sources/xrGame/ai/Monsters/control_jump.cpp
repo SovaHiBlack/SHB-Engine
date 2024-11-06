@@ -84,7 +84,7 @@ void CControlJump::on_release()
 //////////////////////////////////////////////////////////////////////////
 // Start jump
 //////////////////////////////////////////////////////////////////////////
-void CControlJump::start_jump(const Fvector &point)
+void CControlJump::start_jump(const fVector3& point)
 {
 	// initialize internals
 	m_velocity_bounced					= false;
@@ -116,7 +116,7 @@ void CControlJump::start_jump(const Fvector &point)
 			f32 dist = time * vel.velocity.linear;
 
 			// check nodes in direction
-			Fvector target_point;
+			fVector3 target_point;
 			target_point.mad(m_object->Position(), m_object->Direction(), dist);
 			if (m_man->path_builder().accessible(target_point)) {
 				// нода в прямой видимости?
@@ -248,9 +248,9 @@ bool CControlJump::is_on_the_ground()
 	if (m_time_started == 0) return false;
 	if (m_time_started + (m_jump_time*1000) > time()) return false;
 
-	Fvector direction;
-	direction.set(0.f, -1.f, 0.f);
-	Fvector trace_from;
+	fVector3 direction;
+	direction.set(0.0f, -1.0f, 0.0f);
+	fVector3 trace_from;
 	m_object->Center(trace_from);
 
 	collide::rq_result		l_rq;
@@ -273,7 +273,7 @@ void CControlJump::grounding()
 		return;
 	}
 
-	Fvector target_position;
+	fVector3 target_position;
 	target_position.mad(m_object->Position(), m_object->Direction(), m_build_line_distance);
 
 	if (!m_man->build_path_line(this, target_position, u32(-1), m_data.state_ground.velocity_mask | MonsterMovement::eVelocityParameterStand)) stop();
@@ -300,7 +300,7 @@ void CControlJump::stop()
 
 //////////////////////////////////////////////////////////////////////////
 // Get target point in world space
-Fvector CControlJump::get_target(CObject *obj)
+fVector3 CControlJump::get_target(CObject *obj)
 {
 	u16 bone_id			= smart_cast<CKinematics*>(obj->Visual())->LL_GetBoneRoot			();
 	CBoneInstance &bone = smart_cast<CKinematics*>(obj->Visual())->LL_GetBoneInstance		(bone_id);
@@ -372,7 +372,7 @@ void CControlJump::hit_test()
 	if (!m_data.target_object)	return;
 
 	// Проверить на нанесение хита во время прыжка
-	Fvector trace_from;
+	fVector3 trace_from;
 	m_object->Center(trace_from);
 
 	collide::rq_result	l_rq;
@@ -387,7 +387,7 @@ void CControlJump::hit_test()
 		
 		m_object_hitted = true;
 		// определить дистанцию до врага
-		Fvector d;
+		fVector3 d;
 		d.sub(m_data.target_object->Position(),m_object->Position());
 		if (d.magnitude() > m_hit_trace_range) m_object_hitted = false;
 
@@ -420,8 +420,8 @@ bool CControlJump::can_jump(CObject *target)
 {
 	if (m_time_next_allowed > Device.dwTimeGlobal) return false;
 
-	Fvector source_position		= m_object->Position	();
-	Fvector target_position;
+	fVector3 source_position		= m_object->Position	();
+	fVector3 target_position;
 	target->Center				(target_position);
 
 	// проверка на dist
@@ -429,7 +429,7 @@ bool CControlJump::can_jump(CObject *target)
 	if ((dist < m_min_distance) || (dist > m_max_distance)) return false;
 
 	// получить вектор направления и его мир угол
-	f32		dir_yaw = Fvector().sub(target_position, source_position).getH();
+	f32		dir_yaw = fVector3().sub(target_position, source_position).getH();
 	dir_yaw		= angle_normalize(-dir_yaw);
 
 	// проверка на angle
@@ -459,7 +459,7 @@ bool CControlJump::can_jump(CObject *target)
 			f32 dist = time * vel.velocity.linear;
 
 			// check nodes in direction
-			Fvector target_point;
+			fVector3 target_point;
 			target_point.mad(m_object->Position(), m_object->Direction(), dist);
 
 			if (m_man->path_builder().accessible(target_point)) {
@@ -482,7 +482,7 @@ bool CControlJump::can_jump(CObject *target)
 	return true;
 }
 
-Fvector CControlJump::predict_position(CObject *obj, const Fvector &pos)
+fVector3 CControlJump::predict_position(CObject* obj, const fVector3& pos)
 {
 	return pos;
 
@@ -495,12 +495,12 @@ Fvector CControlJump::predict_position(CObject *obj, const Fvector &pos)
 
 	//
 
-	//Fvector					dir;
+	//fVector3					dir;
 	//dir.set					(entity->movement_control()->GetVelocity());
 	//f32 speed				= dir.magnitude();
 	//dir.normalize_safe		();
 
-	//Fvector					prediction_pos;
+	//fVector3					prediction_pos;
 	////prediction_pos.mad		(pos, dir, prediction_dist);
 	//prediction_pos.mad		(pos, dir, speed * jump_time / 2);
 

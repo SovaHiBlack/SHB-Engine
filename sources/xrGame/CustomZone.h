@@ -275,10 +275,10 @@ protected:
 
 	void					CreateHit					(	u16 id_to, 
 															u16 id_from, 
-															const Fvector& hit_dir, 
+															const fVector3& hit_dir,
 														 f32 hit_power,
 															s16 bone_id, 
-															const Fvector& pos_in_bone, 
+															const fVector3& pos_in_bone,
 														 f32 hit_impulse,
 															ALife::EHitType hit_type);
 		
@@ -293,7 +293,7 @@ protected:
 				void		PlayAwakingParticles		();
 				void		PlayBlowoutParticles		();
 				void		PlayEntranceParticles		(CGameObject* pObject);
-				void		PlayBulletParticles			(Fvector& pos );
+				void		PlayBulletParticles			(fVector3& pos );
 
 				void		PlayHitParticles			(CGameObject* pObject);
 
@@ -306,7 +306,7 @@ protected:
 
 	//обновление, если зона передвигается
 	virtual		void		OnMove						();
-	Fvector					m_vPrevPos;
+	fVector3					m_vPrevPos;
 	u32						m_dwLastTimeMoved;
 
 	//видимость зоны детектором

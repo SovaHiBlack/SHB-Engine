@@ -493,7 +493,7 @@ void CControlAnimationBase::check_hit(MotionID motion, f32 time_perc)
 
 	bool should_hit = true;
 	// определить дистанцию до врага
-	Fvector d;
+	fVector3 d;
 	d.sub(enemy->Position(),m_object->Position());
 	if (d.magnitude() > params.dist) should_hit = false;
 	

@@ -13,8 +13,8 @@ class CRocketLauncher;
 struct SRoketContact
 {
 	bool contact;
-	Fvector pos;
-	Fvector up;
+	fVector3 pos;
+	fVector3 up;
 	SRoketContact()
 	{
 		contact = false;
@@ -27,6 +27,7 @@ class CCustomRocket : public CPhysicItem,
 private:
 	typedef CPhysicItem inherited;
 	friend CRocketLauncher;
+
 public:
 	//////////////////////////////////////////////////////////////////////////
 	//	Generic
@@ -77,8 +78,8 @@ public:
 	virtual	void			StopFlying				();
 
 	virtual	void			SetLaunchParams			(const fMatrix4x4& xform,
-													 const Fvector& vel,
-													 const Fvector& angular_vel);
+													 const fVector3& vel,
+													 const fVector3& angular_vel);
 
 	virtual void			OnEvent					(NET_Packet& P, u16 type);
 	bool					m_bLaunched;
@@ -89,8 +90,8 @@ protected:
 	SRoketContact			m_contact;
 	//параметры которые задаются RocketLauncher-ом перед пуском
 	fMatrix4x4					m_LaunchXForm;
-	Fvector					m_vLaunchVelocity;
-	Fvector					m_vLaunchAngularVelocity;
+	fVector3					m_vLaunchVelocity;
+	fVector3					m_vLaunchAngularVelocity;
 
 	enum ERocketState{
 		eInactive,		//ракета неактивна и находиться в инвентаре
@@ -113,7 +114,7 @@ protected:
 	int			m_dwEngineTime;
 
 	//обработка столкновения
-	virtual void			Contact(const Fvector &pos, const Fvector &normal);
+	virtual void			Contact(const fVector3& pos, const fVector3& normal);
 			void			PlayContact();
 	static	void			ObjectContactCallback(bool& do_colide,bool bo1,dContact& c,SGameMtl * /*material_1*/,SGameMtl * /*material_2*/);
 
@@ -150,7 +151,7 @@ protected:
 	shared_str			m_sFlyParticles;
 	CParticlesObject*	m_pFlyParticles;
 
-	Fvector				m_vPrevVel;
+	fVector3				m_vPrevVel;
 	f32					m_time_to_explode;
 
 #ifdef	DEBUG

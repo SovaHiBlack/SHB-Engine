@@ -66,12 +66,12 @@ void CControllerDirection::update_schedule()
 	update_head_orientation		();
 }
 
-void CControllerDirection::head_look_point(const Fvector &look_point)
+void CControllerDirection::head_look_point(const fVector3& look_point)
 {
 	m_head_look_point	= look_point;
 	
 	f32				dir_yaw,dir_pitch;
-	Fvector().sub		(look_point, get_head_position(m_controller)).getHP(dir_yaw,dir_pitch);
+	fVector3().sub		(look_point, get_head_position(m_controller)).getHP(dir_yaw,dir_pitch);
 	dir_yaw				= angle_normalize(-dir_yaw);
 	
 	f32 bone_angle_head;

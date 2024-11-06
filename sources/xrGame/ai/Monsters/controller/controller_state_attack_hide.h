@@ -8,7 +8,7 @@ class CStateControlHide : public CState<_Object> {
 	bool			m_cover_reached;
 
 	struct {
-		Fvector position;
+		fVector3 position;
 		u32		node;
 	} target;
 

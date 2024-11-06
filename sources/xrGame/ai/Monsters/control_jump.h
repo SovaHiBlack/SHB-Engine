@@ -4,7 +4,7 @@
 
 struct SControlJumpData : public ControlCom::IComData {
 	CObject					*target_object;
- 	Fvector					target_position;
+	fVector3					target_position;
 	f32					force_factor;
 
 	enum EFlags {	
@@ -66,7 +66,7 @@ class CControlJump : public CControl_ComCustom<SControlJumpData> {
 	u32				m_time_started;			// time jump started
 	f32			m_jump_time;			// physical-counted time of jump
 	f32			m_blend_speed;			// current anim blend speed
-	Fvector			m_target_position;		// save target position for internal needs
+	fVector3			m_target_position;		// save target position for internal needs
 
 	// state flags
 	bool			m_object_hitted;
@@ -101,7 +101,7 @@ private:
 			// build path after jump 
 			void	grounding			();
 			// get target position according to object center point
-			Fvector get_target			(CObject *obj);
+			fVector3 get_target			(CObject *obj);
 			// check for hit object
 			void	hit_test			();
 
@@ -109,9 +109,9 @@ private:
 			bool	is_on_the_ground	();
 
 			// position prediction
-			Fvector	predict_position	(CObject *obj, const Fvector &pos);
+			fVector3	predict_position(CObject* obj, const fVector3& pos);
 
-			void	start_jump			(const Fvector &point);
+			void	start_jump(const fVector3& point);
 
 			// animation control method
 			void	select_next_anim_state	();

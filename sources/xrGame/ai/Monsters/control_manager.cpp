@@ -366,7 +366,7 @@ bool CControl_Manager::check_start_conditions(ControlCom::EControlType type)
 	return m_control_elems[type]->check_start_conditions();
 }
 
-bool CControl_Manager::build_path_line(CControl_Com *com, const Fvector &target, u32 node, u32 vel_mask)
+bool CControl_Manager::build_path_line(CControl_Com* com, const fVector3& target, u32 node, u32 vel_mask)
 {
 	CControl_Com *path		= m_control_elems[ControlCom::eControlPath];
 	VERIFY					(com == path->ced()->capturer());

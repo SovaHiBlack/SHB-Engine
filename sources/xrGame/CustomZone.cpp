@@ -513,7 +513,7 @@ void CCustomZone::shedule_Update(u32 dt)
 	if (IsEnabled())
 	{
 		const fSphere& s		= CFORM()->getSphere();
-		Fvector					P;
+		fVector3					P;
 		XFORM().transform_tiny	(P,s.P);
 
 		// update
@@ -665,7 +665,7 @@ f32 CCustomZone::effective_radius()
 
 f32 CCustomZone::distance_to_center(CObject* O)
 {
-	Fvector P; 
+	fVector3 P;
 	XFORM().transform_tiny(P,CFORM()->getSphere().P);
 	return P.distance_to(O->Position());
 }
@@ -708,7 +708,7 @@ void  CCustomZone::StartIdleLight	()
 	if(m_pIdleLight)
 	{
 		m_pIdleLight->set_range(m_fIdleLightRange);
-		Fvector pos = Position();
+		fVector3 pos = Position();
 		pos.y += m_fIdleLightHeight;
 		m_pIdleLight->set_position(pos);
 		m_pIdleLight->set_active(true);
@@ -736,11 +736,10 @@ void CCustomZone::UpdateIdleLight	()
 	m_pIdleLight->set_range	(range);
 	m_pIdleLight->set_color	(fclr);
 
-	Fvector pos		= Position();
+	fVector3 pos		= Position();
 	pos.y			+= m_fIdleLightHeight;
 	m_pIdleLight->set_position(pos);
 }
-
 
 void CCustomZone::PlayBlowoutParticles()
 {
@@ -775,7 +774,7 @@ void CCustomZone::PlayHitParticles(CGameObject* pObject)
 		if (PP){
 			u16 play_bone = PP->GetRandomBone(); 
 			if (play_bone!=BI_NONE)
-				PP->StartParticles	(particle_str,play_bone,Fvector().set(0,1,0), ID());
+				PP->StartParticles	(particle_str,play_bone, fVector3().set(0.0f,1.0f,0.0f), ID());
 		}
 	}
 }
@@ -799,7 +798,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 		particle_str = m_sEntranceParticlesBig;
 	}
 
-	Fvector vel;
+	fVector3 vel;
 	CPhysicsShellHolder* shell_holder=smart_cast<CPhysicsShellHolder*>(pObject);
 	if(shell_holder)
 		shell_holder->PHGetLinearVell(vel);
@@ -814,16 +813,16 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 			CParticlesObject* pParticles = CParticlesObject::Create(*particle_str,TRUE);
 			fMatrix4x4 xform;
 
-			Fvector dir;
+			fVector3 dir;
 			if(fis_zero(vel.magnitude()))
-				dir.set(0,1,0);
+				dir.set(0.0f,1.0f,0.0f);
 			else
 			{
 				dir.set(vel);
 				dir.normalize();
 			}
 
-			PP->MakeXFORM			(pObject,play_bone,dir,Fvector().set(0,0,0),xform);
+			PP->MakeXFORM			(pObject,play_bone,dir, fVector3().set(0.0f,0.0f,0.0f),xform);
 			pParticles->UpdateParent(xform, vel);
 			{
 				pParticles->Play		();
@@ -834,8 +833,7 @@ void CCustomZone::PlayEntranceParticles(CGameObject* pObject)
 	}
 }
 
-
-void CCustomZone::PlayBulletParticles(Fvector& pos)
+void CCustomZone::PlayBulletParticles(fVector3& pos)
 {
 	m_entrance_sound.play_at_pos(0, pos);
 
@@ -876,7 +874,7 @@ void CCustomZone::PlayObjectIdleParticles(CGameObject* pObject)
 	//. new
 	PP->StopParticles (particle_str, BI_NONE, true);
 
-	PP->StartParticles (particle_str, Fvector().set(0,1,0), ID());
+	PP->StartParticles (particle_str, fVector3().set(0.0f,1.0f,0.0f), ID());
 	if (!IsEnabled())
 		PP->StopParticles	(particle_str, BI_NONE, true);
 }
@@ -929,11 +927,10 @@ void CCustomZone::StartBlowoutLight		()
 	m_pLight->set_color(m_LightColor.r, m_LightColor.g, m_LightColor.b);
 	m_pLight->set_range(m_fLightRange);
 	
-	Fvector pos = Position();
+	fVector3 pos = Position();
 	pos.y		+= m_fLightHeight;
 	m_pLight->set_position(pos);
 	m_pLight->set_active(true);
-
 }
 
 void  CCustomZone::StopBlowoutLight		()
@@ -958,12 +955,14 @@ void CCustomZone::UpdateBlowoutLight	()
 							m_LightColor.b*scale);
 		m_pLight->set_range(r);
 
-		Fvector pos			= Position();
+		fVector3 pos			= Position();
 		pos.y				+= m_fLightHeight;
 		m_pLight->set_position(pos);
 	}
 	else
-		StopBlowoutLight ();
+	{
+		StopBlowoutLight( );
+	}
 }
 
 void CCustomZone::AffectObjects()
@@ -1025,7 +1024,7 @@ void  CCustomZone::OnMove()
 		f32 time_delta	= f32(Device.dwTimeGlobal - m_dwLastTimeMoved)/1000.f;
 		m_dwLastTimeMoved	= Device.dwTimeGlobal;
 
-		Fvector				vel;
+		fVector3				vel;
 			
 		if(fis_zero(time_delta))
 			vel = zero_vel;
@@ -1189,11 +1188,10 @@ void CCustomZone::SpawnArtefact()
 	}
 	R_ASSERT(i<m_ArtefactSpawn.size());
 
-	Fvector pos;
+	fVector3 pos;
 	Center(pos);
 	Level().spawn_item(*m_ArtefactSpawn[i].section, pos, ai_location().level_vertex_id(), ID());
 }
-
 
 void CCustomZone::BornArtefact()
 {
@@ -1232,7 +1230,7 @@ void CCustomZone::ThrowOutArtefact(CArtefact* pArtefact)
 
 	m_ArtefactBornSound.play_at_pos(0, pArtefact->Position());
 
-	Fvector dir;
+	fVector3 dir;
 	dir.random_dir();
 	pArtefact->m_pPhysicsShell->applyImpulse (dir, m_fThrowOutPower);
 }
@@ -1300,10 +1298,10 @@ u32	CCustomZone::ef_weapon_type		() const
 
 void CCustomZone::CreateHit	(	u16 id_to, 
 								u16 id_from, 
-								const Fvector& hit_dir, 
+								const fVector3& hit_dir,
 							 f32 hit_power,
 								s16 bone_id, 
-								const Fvector& pos_in_bone, 
+								const fVector3& pos_in_bone,
 							 f32 hit_impulse,
 								ALife::EHitType hit_type)
 {
@@ -1313,7 +1311,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 			id_from	= (u16)m_owner_id;
 
 		NET_Packet	l_P;
-		Fvector hdir = hit_dir;
+		fVector3 hdir = hit_dir;
 		SHit	Hit = SHit(hit_power, hdir, this, bone_id, pos_in_bone, hit_impulse, hit_type);		
 		Hit.GenHeader(GE_HIT, id_to);
 		Hit.whoID = id_from;
@@ -1321,7 +1319,7 @@ void CCustomZone::CreateHit	(	u16 id_to,
 		Hit.Write_Packet(l_P);
 
 		u_EventSend	(l_P);
-	};
+	}
 }
 
 void CCustomZone::net_Relcase(CObject* O)

@@ -1481,7 +1481,7 @@ void CCC_RegisterCommands()
 
 
 #ifndef MASTER_GOLD
-	CMD4(CCC_Vector3,				"psp_cam_offset",				&CCameraLook2::m_cam_offset, Fvector().set(-1000,-1000,-1000),Fvector().set(1000,1000,1000));
+	CMD4(CCC_Vector3,				"psp_cam_offset",				&CCameraLook2::m_cam_offset, fVector3().set(-1000.0f,-1000.0f,-1000.0f), fVector3().set(1000.0f,1000.0f,1000.0f));
 #endif // MASTER_GOLD
 
 #ifdef DEBUG

@@ -5,7 +5,7 @@
 class CControlledActor : public CActorInputHandler {
 	typedef CActorInputHandler inherited;
 	
-	Fvector m_target_point;
+	fVector3 m_target_point;
 	
 	bool	m_turned_yaw;
 	bool	m_turned_pitch;
@@ -24,7 +24,7 @@ public:
 	virtual void	install				();
 	virtual bool	authorized			(int cmd);
 
-			void	look_point			(const Fvector &point);
+	void	look_point(const fVector3& point);
 			bool	is_turning			();
 
 			void	frame_update		();

@@ -29,7 +29,7 @@ void CControlRotationJump::activate()
 	m_man->path_stop	(this);
 	m_man->move_stop	(this);
 
-	f32 yaw			= Fvector().sub(m_object->EnemyMan.get_enemy()->Position(), m_object->Position()).getH();
+	f32 yaw			= fVector3().sub(m_object->EnemyMan.get_enemy()->Position(), m_object->Position()).getH();
 	m_right_side		=  m_man->direction().is_from_right(angle_normalize(-yaw));
 	
 	//////////////////////////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ bool CControlRotationJump::check_start_conditions()
 	if (!m_object->EnemyMan.get_enemy())					return false;
 	if (m_time_next_rotation_jump > Device.dwTimeGlobal)	return false;
 
-	Fvector									enemy_position;
+	fVector3									enemy_position;
 	enemy_position.set						(m_object->EnemyMan.get_enemy()->Position());
 	if (m_man->direction().is_face_target(enemy_position, CHECK_YAW))	return false;
 	
@@ -95,7 +95,7 @@ void CControlRotationJump::stop_at_once()
 	f32 target_yaw;
 	if (m_data.flags.is(SControlRotationJumpData::eRotateOnce) && m_object->EnemyMan.get_enemy()) {
 		// if rotate once so rotate to enemy
-		Fvector					dir_to_enemy;
+		fVector3					dir_to_enemy;
 		dir_to_enemy.sub		(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());
 		dir_to_enemy.normalize	();
 		target_yaw				= angle_normalize(-dir_to_enemy.getH());
@@ -152,7 +152,7 @@ void CControlRotationJump::build_line_first()
 	u32 velocity_mask	= MonsterMovement::eVelocityParameterStand | MonsterMovement::eVelocityParameterRunNormal;
 	m_stage				= eStop;
 	
-	Fvector target_position;
+	fVector3 target_position;
 	target_position.mad(m_object->Position(), m_object->Direction(), m_dist);
 
 	if (!m_man->build_path_line(this, target_position, u32(-1), velocity_mask)) {
@@ -203,7 +203,7 @@ void CControlRotationJump::build_line_second()
 	SControlDirectionData					*ctrl_data_dir = (SControlDirectionData*)m_man->data(this, ControlCom::eControlDir); 
 	VERIFY									(ctrl_data_dir);	
 
-	Fvector					dir_to_enemy;
+	fVector3					dir_to_enemy;
 	dir_to_enemy.sub		(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());
 	dir_to_enemy.normalize	();
 	
@@ -223,7 +223,7 @@ void CControlRotationJump::build_line_second()
 
 	m_stage = eRun;
 
-	Fvector target_position;
+	fVector3 target_position;
 	target_position.mad(m_object->Position(), dir_to_enemy, m_dist);
 
 	if (!m_man->build_path_line(this, target_position, u32(-1), velocity_mask)) {

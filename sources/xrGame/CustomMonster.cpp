@@ -173,7 +173,7 @@ void CCustomMonster::reload		(pcstr section)
 	m_panic_threshold			= pSettings->r_float(section,"panic_threshold");
 }
 
-void CCustomMonster::mk_orientation(Fvector &dir, fMatrix4x4& mR)
+void CCustomMonster::mk_orientation(fVector3& dir, fMatrix4x4& mR)
 {
 	// orient only in XZ plane
 	dir.y		= 0;
@@ -183,7 +183,8 @@ void CCustomMonster::mk_orientation(Fvector &dir, fMatrix4x4& mR)
 		// normalize
 		dir.x /= len;
 		dir.z /= len;
-		Fvector up;	up.set(0,1,0);
+		fVector3 up;
+		up.set(0.0f,1.0f,0.0f);
 		mR.rotation	(dir,up);
 	}
 }
@@ -397,7 +398,7 @@ void CCustomMonster::UpdateCL	()
 			u32	d2					= B.dwTimeStamp - A.dwTimeStamp;
 //			VERIFY					(d2);
 			f32					factor = d2 ? (f32(d1)/ f32(d2)) : 1.0f;
-			Fvector					l_tOldPosition = Position();
+			fVector3					l_tOldPosition = Position();
 			NET_Last.lerp			(A,B,factor);
 			if (Local()) {
 				NET_Last.p_pos		= l_tOldPosition;
@@ -570,7 +571,7 @@ void CCustomMonster::UpdateCamera()
 	g_pGameLevel->Cameras().Update(eye_matrix.c,eye_matrix.k,eye_matrix.j,new_fov,.75f,new_range);
 }
 
-void CCustomMonster::HitSignal(f32 /**perc/**/, Fvector& /**vLocalDir/**/, CObject* /**who/**/)
+void CCustomMonster::HitSignal(f32 /**perc/**/, fVector3& /**vLocalDir/**/, CObject* /**who/**/)
 {
 }
 
@@ -629,7 +630,7 @@ BOOL CCustomMonster::net_Spawn	(CSE_Abstract* DC)
 		if (movement().restrictions().accessible(ai_location().level_vertex_id()))
 			movement().set_level_dest_vertex		(ai_location().level_vertex_id());
 		else {
-			Fvector									dest_position;
+			fVector3									dest_position;
 			u32										level_vertex_id;
 			level_vertex_id							= movement().restrictions().accessible_nearest(ai().level_graph().vertex_position(ai_location().level_vertex_id()),dest_position);
 			movement().set_level_dest_vertex		(level_vertex_id);
@@ -723,16 +724,17 @@ void CCustomMonster::PitchCorrection()
 	fPlane3  P;
 	P.build(contour.v1,contour.v2,contour.v3);
 
-	Fvector position_on_plane;
+	fVector3 position_on_plane;
 	P.project(position_on_plane,Position());
 
 	// находим проекцию точки, лежащей на векторе текущего направления
-	Fvector dir_point, proj_point;
+	fVector3 dir_point;
+	fVector3 proj_point;
 	dir_point.mad(position_on_plane, Direction(), 1.f);
 	P.project(proj_point,dir_point);
 	
 	// получаем искомый вектор направления
-	Fvector target_dir;
+	fVector3 target_dir;
 	target_dir.sub(proj_point,position_on_plane);
 
 	f32 yaw;
@@ -740,7 +742,6 @@ void CCustomMonster::PitchCorrection()
 	target_dir.getHP(yaw,pitch);
 
 	movement().m_body.target.pitch = -pitch;
-
 }
 
 BOOL CCustomMonster::feel_touch_on_contact	(CObject *O)
@@ -798,7 +799,7 @@ f32 CCustomMonster::feel_vision_mtl_transp(CObject* O, u32 element)
 	return	(memory().visual().feel_vision_mtl_transp(O,element));
 }
 
-void CCustomMonster::feel_sound_new	(CObject* who, int type, CSound_UserDataPtr user_data, const Fvector &position, f32 power)
+void CCustomMonster::feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const fVector3& position, f32 power)
 {
 	if (getDestroy())
 		return;
@@ -998,7 +999,7 @@ bool CCustomMonster::update_critical_wounded	(const u16 &bone_id, const f32& pow
 
 #ifdef DEBUG
 
-extern void dbg_draw_frustum (f32 FOV, f32 _FAR, f32 A, Fvector &P, Fvector &D, Fvector &U);
+extern void dbg_draw_frustum(f32 FOV, f32 _FAR, f32 A, fVector3& P, fVector3& D, fVector3& U);
 void draw_visiblity_rays	(CCustomMonster *self, const CObject *object, collide::rq_results& rq_storage);
 
 void CCustomMonster::OnRender()
@@ -1015,26 +1016,40 @@ void CCustomMonster::OnRender()
 		f32									radius0 = !i ? 0.1f : 0.15f;
 		f32									radius1 = !i ? 0.2f : 0.3f;
 		{
-			for (u32 I=1; I<path.size(); ++I) {
-				const DetailPathManager::STravelPathPoint&	N1 = path[I-1];	Fvector	P1; P1.set(N1.position); P1.y+=0.1f;
-				const DetailPathManager::STravelPathPoint&	N2 = path[I];	Fvector	P2; P2.set(N2.position); P2.y+=0.1f;
+			for (u32 I = 1; I < path.size( ); ++I)
+			{
+				const DetailPathManager::STravelPathPoint& N1 = path[I - 1];
+				fVector3	P1;
+				P1.set(N1.position);
+				P1.y += 0.1f;
+				const DetailPathManager::STravelPathPoint& N2 = path[I];
+				fVector3	P2;
+				P2.set(N2.position);
+				P2.y += 0.1f;
 				if (!fis_zero(P1.distance_to_sqr(P2), EPSILON_3))
-					Level().debug_renderer().draw_line			(Fidentity,P1,P2,color0);
-				if ((path.size() - 1) == I) // песледний box?
-					Level().debug_renderer().draw_aabb			(P1,radius0,radius0,radius0,color1);
-				else 
-					Level().debug_renderer().draw_aabb			(P1,radius0,radius0,radius0,color2);
+				{
+					Level( ).debug_renderer( ).draw_line(Fidentity, P1, P2, color0);
+				}
+
+				if ((path.size( ) - 1) == I) // песледний box?
+				{
+					Level( ).debug_renderer( ).draw_aabb(P1, radius0, radius0, radius0, color1);
+				}
+				else
+				{
+					Level( ).debug_renderer( ).draw_aabb(P1, radius0, radius0, radius0, color2);
+				}
 			}
 
 			for (u32 I=1; I<keys.size(); ++I) {
 				CDetailPathManager::STravelPoint	temp;
 				temp		= keys[I - 1]; 
-				Fvector		P1;
+				fVector3		P1;
 				P1.set		(temp.position.x,ai().level_graph().vertex_plane_y(temp.vertex_id),temp.position.y);
 				P1.y		+= 0.1f;
 
 				temp		= keys[I]; 
-				Fvector		P2;
+				fVector3		P2;
 				P2.set		(temp.position.x,ai().level_graph().vertex_plane_y(temp.vertex_id),temp.position.y);
 				P2.y		+= 0.1f;
 
@@ -1048,19 +1063,19 @@ void CCustomMonster::OnRender()
 		u32					node = movement().level_dest_vertex_id();
 		if (node == u32(-1)) node = 0;
 
-		Fvector				P1 = ai().level_graph().vertex_position(node);
+		fVector3				P1 = ai().level_graph().vertex_position(node);
 		P1.y				+= 1.f;
 		Level().debug_renderer().draw_aabb	(P1,.5f,1.f,.5f,D3DCOLOR_XRGB(255,0,0));
 	}
 	if (g_Alive()) {
 		if (memory().enemy().selected()) {
-			Fvector				P1 = memory().memory(memory().enemy().selected()).m_object_params.m_position;
+			fVector3				P1 = memory().memory(memory().enemy().selected()).m_object_params.m_position;
 			P1.y				+= 1.f;
 			Level().debug_renderer().draw_aabb	(P1,1.f,1.f,1.f,D3DCOLOR_XRGB(0,0,0));
 		}
 
 		if (memory().danger().selected()) {
-			Fvector				P1 = memory().danger().selected()->position();
+			fVector3				P1 = memory().danger().selected()->position();
 			P1.y				+= 1.f;
 			Level().debug_renderer().draw_aabb	(P1,1.f,1.f,1.f,D3DCOLOR_XRGB(0,0,0));
 		}

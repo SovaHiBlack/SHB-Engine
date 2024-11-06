@@ -24,7 +24,7 @@ bool CControlMeleeJump::check_start_conditions()
 	if (!m_object->EnemyMan.get_enemy())				return false;
 	if (m_time_next_melee_jump > Device.dwTimeGlobal)	return false;
 
-	Fvector				enemy_position;
+	fVector3				enemy_position;
 	enemy_position.set	(m_object->EnemyMan.get_enemy()->Position());
 	if (m_man->direction().is_face_target(enemy_position, CHECK_YAW))				return false;
 	if (enemy_position.distance_to(m_object->Position()) > MAX_DISTANCE_TO_ENEMY)	return false;
@@ -42,7 +42,7 @@ void CControlMeleeJump::activate()
 	m_man->move_stop	(this);
 
 	// get	direction to enemy
-	Fvector					dir_to_enemy;
+	fVector3					dir_to_enemy;
 	dir_to_enemy.set		(m_object->Direction());
 	dir_to_enemy.sub		(m_object->EnemyMan.get_enemy()->Position(), m_object->Position());
 	dir_to_enemy.normalize	();
