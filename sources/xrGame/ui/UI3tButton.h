@@ -49,7 +49,7 @@ public:
 	
 	//virtual void Enable(bool bEnable);	
 	virtual bool 	OnMouse						(f32 x, f32 y, EUIMessages mouse_action);
-	virtual bool 	OnMouseDown					(int mouse_btn);
+	virtual bool 	OnMouseDown					(s32 mouse_btn);
 			void 	SetCheckMode				(bool mode) {m_bCheckMode = mode;}
 
 	CUIStatic			m_hint;

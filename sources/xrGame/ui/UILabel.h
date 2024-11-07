@@ -4,9 +4,9 @@
 #include "UILines.h"
 class CLAItem;
 
-class CUILabel : public CUIFrameLineWnd, public CUILinesOwner //IUITextControl 
+class CUILabel : public CUIFrameLineWnd, public CUILinesOwner
 {
-	CLAItem*				m_lanim;
+	CLAItem* m_lanim;
 	f32					m_lainm_start_time;
 
 public:
@@ -14,12 +14,12 @@ public:
 	virtual void SetWidth(f32 width);
 	virtual void SetHeight(f32 height);
 	virtual void SetFont(CGameFont* pFont);
-    // CUIFrameLineWnd
+	// CUIFrameLineWnd
 	virtual void			Init(f32 x, f32 y, f32 width, f32 height);
-	virtual void			Draw();
-	virtual void			Update			();
+	virtual void			Draw( );
+	virtual void			Update( );
 
 	// own
-	CUILabel();
-			void			SetLightAnim			(pcstr lanim);
+	CUILabel( );
+	void			SetLightAnim(pcstr lanim);
 };

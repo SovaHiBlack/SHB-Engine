@@ -3,44 +3,63 @@
 #include "UILines.h"
 #include "UIWindow.h"
 
-class CUICustomEdit : public CUIWindow, public CUILinesOwner {
+class CUICustomEdit : public CUIWindow, public CUILinesOwner
+{
 	u32				m_max_symb_count;
+
 public:
-	CUICustomEdit();
-	virtual ~CUICustomEdit();
+	CUICustomEdit( );
+	virtual ~CUICustomEdit( );
 	// CUILinesOwner
-	virtual void			SetFont(CGameFont* pFont)					{CUILinesOwner::SetFont(pFont);}
-	virtual CGameFont*		GetFont()									{return CUILinesOwner::GetFont();}
+	virtual void			SetFont(CGameFont* pFont)
+	{
+		CUILinesOwner::SetFont(pFont);
+	}
+	virtual CGameFont* GetFont( )
+	{
+		return CUILinesOwner::GetFont( );
+	}
 	virtual void			SetTextColor(u32 color);
 	virtual void			SetTextColorD(u32 color);
 
-	virtual void	Init			(f32 x, f32 y, f32 width, f32 height);
-	virtual void	SendMessage		(CUIWindow* pWnd, s16 msg, void* pData = NULL);
+	virtual void	Init(f32 x, f32 y, f32 width, f32 height);
+	virtual void	SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData = NULL);
 
-	virtual bool	OnMouse			(f32 x, f32 y, EUIMessages mouse_action);
-	virtual bool	OnKeyboard		(int dik, EUIMessages keyboard_action);
-	virtual void	OnFocusLost		();
+	virtual bool	OnMouse(f32 x, f32 y, EUIMessages mouse_action);
+	virtual bool	OnKeyboard(int dik, EUIMessages keyboard_action);
+	virtual void	OnFocusLost( );
 
-	virtual void	Update			();
-	virtual void	Draw			();
+	virtual void	Update( );
+	virtual void	Draw( );
 
-			void	CaptureFocus	(bool bCapture) { m_bInputFocus = bCapture; }
-	virtual	void	SetText			(pcstr str);
-	virtual pcstr GetText();
-			void	SetMaxCharCount	(u32 cnt)			{m_max_symb_count = cnt;}
-	virtual void	Enable			(bool status);
-			void	SetNumbersOnly	(bool status);
-			void	SetFloatNumbers	(bool status);
-			void	SetPasswordMode	(bool mode = true);			
-			void	SetDbClickMode	(bool mode = true)	{m_bFocusByDbClick = mode;}
-			void	SetCursorColor	(u32 color)			{m_lines.SetCursorColor(color);}
-			
-			void	SetLightAnim			(pcstr lanim);
+	void	CaptureFocus(bool bCapture)
+	{
+		m_bInputFocus = bCapture;
+	}
+	virtual void	SetText(pcstr str);
+	virtual pcstr GetText( );
+	void	SetMaxCharCount(u32 cnt)
+	{
+		m_max_symb_count = cnt;
+	}
+	virtual void	Enable(bool status);
+	void	SetNumbersOnly(bool status);
+	void	SetFloatNumbers(bool status);
+	void	SetPasswordMode(bool mode = true);
+	void	SetDbClickMode(bool mode = true)
+	{
+		m_bFocusByDbClick = mode;
+	}
+	void	SetCursorColor(u32 color)
+	{
+		m_lines.SetCursorColor(color);
+	}
+
+	void	SetLightAnim(pcstr lanim);
 
 protected:
-
-	bool KeyPressed(int dik);
-	bool KeyReleased(int dik);
+	bool KeyPressed(s32 dik);
+	bool KeyReleased(s32 dik);
 
 	void AddLetter(char c);
 	virtual void AddChar(char c);
@@ -55,10 +74,10 @@ protected:
 	u32 m_textColor[2];
 
 	//DIK клавиши, кот. нажата и удерживается, 0 если такой нет
-	int m_iKeyPressAndHold;
+	s32 m_iKeyPressAndHold;
 	bool m_bHoldWaitMode;
 
-//	u32	m_cursorColor;
+	//	u32	m_cursorColor;
 
-	CLAItem*				m_lanim;
+	CLAItem* m_lanim;
 };

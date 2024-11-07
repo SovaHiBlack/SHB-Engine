@@ -15,17 +15,18 @@ class game_cl_GameState;
 
 //////////////////////////////////////////////////////////////////////////
 
-class CUIEditBox : public CUIMultiTextureOwner, public CUIOptionsItem, public CUICustomEdit{
+class CUIEditBox : public CUIMultiTextureOwner, public CUIOptionsItem, public CUICustomEdit
+{
 public:
-					CUIEditBox		();
-	virtual			~CUIEditBox		();
+	CUIEditBox( );
+	virtual			~CUIEditBox( );
 
 	virtual void	Init(f32 x, f32 y, f32 width, f32 heigt);
 
 	// CUIOptionsItem
-	virtual void	SetCurrentValue();
-	virtual void	SaveValue();
-	virtual bool	IsChanged();
+	virtual void	SetCurrentValue( );
+	virtual void	SaveValue( );
+	virtual bool	IsChanged( );
 
 	// CUIMultiTextureOwner
 	virtual void	InitTexture(pcstr texture);

@@ -12,7 +12,7 @@
 
 #include "../UIStaticItem.h"
 
-class CUIFrameLine: public CUICustomItem
+class CUIFrameLine : public CUICustomItem
 {
 	friend class CUIFrameLineWnd;
 	enum
@@ -37,15 +37,27 @@ protected:
 	u8			uFlags;
 	bool		bHorizontalOrientation;
 
-	void		UpdateSize		();
+	void		UpdateSize( );
 
 public:
-				CUIFrameLine	();
-	void		Init			(pcstr base_name, f32 x, f32 y, f32 size, bool horizontal, DWORD align);
-	void		InitTexture		(pcstr texture);
-	void		SetColor		(u32 cl);
-	IC void		SetPos			(f32 left, f32 top)		{ iPos.set(left,top);	uFlags &=~ flValidSize; }
-	IC void		SetSize			(f32 size)				{ iSize = size;			uFlags &=~ flValidSize; }
-	IC void		SetOrientation	(bool bIsHorizontal)	{ bHorizontalOrientation = bIsHorizontal; uFlags &=~ flValidSize; }
-	void		Render			();
+	CUIFrameLine( );
+	void		Init(pcstr base_name, f32 x, f32 y, f32 size, bool horizontal, DWORD align);
+	void		InitTexture(pcstr texture);
+	void		SetColor(u32 cl);
+	IC void		SetPos(f32 left, f32 top)
+	{
+		iPos.set(left, top);
+		uFlags &= ~flValidSize;
+	}
+	IC void		SetSize(f32 size)
+	{
+		iSize = size;	
+		uFlags &= ~flValidSize;
+	}
+	IC void		SetOrientation(bool bIsHorizontal)
+	{
+		bHorizontalOrientation = bIsHorizontal;
+		uFlags &= ~flValidSize;
+	}
+	void		Render( );
 };

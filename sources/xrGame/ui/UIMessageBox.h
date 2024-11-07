@@ -6,38 +6,40 @@
 class CUI3tButton;
 class CUIEditBox;
 
-class CUIMessageBox: public CUIStatic
+class CUIMessageBox : public CUIStatic
 {
 private:
 	typedef CUIStatic inherited;
+
 public:
-				CUIMessageBox		();
-	virtual		~CUIMessageBox		();
+	CUIMessageBox( );
+	virtual		~CUIMessageBox( );
 
 	//разновидности MessageBox
-	typedef enum {		
-		MESSAGEBOX_OK, 
+	typedef enum
+	{
+		MESSAGEBOX_OK,
 		MESSAGEBOX_INFO,
-		MESSAGEBOX_YES_NO, 
-		MESSAGEBOX_YES_NO_CANCEL, 
-		MESSAGEBOX_DIRECT_IP, 
-		MESSAGEBOX_PASSWORD, 
-		MESSAGEBOX_QUIT_WINDOWS, 
-		MESSAGEBOX_QUIT_GAME 
+		MESSAGEBOX_YES_NO,
+		MESSAGEBOX_YES_NO_CANCEL,
+		MESSAGEBOX_DIRECT_IP,
+		MESSAGEBOX_PASSWORD,
+		MESSAGEBOX_QUIT_WINDOWS,
+		MESSAGEBOX_QUIT_GAME
 	} E_MESSAGEBOX_STYLE;
 
-			void Init				(pcstr box_template);
-			void Clear				();
-	virtual void SetText			(pcstr str);
-	virtual pcstr GetText			();
-	pcstr		 GetHost			();
-	pcstr		 GetPassword		();
-	pcstr		 GetUserPassword	();
+	void Init(pcstr box_template);
+	void Clear( );
+	virtual void SetText(pcstr str);
+	virtual pcstr GetText( );
+	pcstr		 GetHost( );
+	pcstr		 GetPassword( );
+	pcstr		 GetUserPassword( );
 	void		 SetUserPasswordMode(bool);
-	void		 SetPasswordMode	(bool);
+	void		 SetPasswordMode(bool);
 
-	virtual bool OnMouse			(f32 x, f32 y, EUIMessages mouse_action);
-	virtual void SendMessage		(CUIWindow *pWnd, s16 msg, void *pData);
+	virtual bool OnMouse(f32 x, f32 y, EUIMessages mouse_action);
+	virtual void SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData);
 
 protected:
 	xr_string	m_ret_val;
@@ -45,15 +47,15 @@ protected:
 	CUI3tButton* m_UIButtonNo;
 	CUI3tButton* m_UIButtonCancel;
 
-	CUIStatic*	m_UIStaticPicture;
-	CUIStatic*	m_UIStaticText;
-	CUIStatic*	m_UIStaticHost;
-	CUIStatic*	m_UIStaticPass;
-	CUIStatic*	m_UIStaticUserPass;
+	CUIStatic* m_UIStaticPicture;
+	CUIStatic* m_UIStaticText;
+	CUIStatic* m_UIStaticHost;
+	CUIStatic* m_UIStaticPass;
+	CUIStatic* m_UIStaticUserPass;
 	CUIEditBox* m_UIEditHost;
 	CUIEditBox* m_UIEditPass;
 	CUIEditBox* m_UIEditUserPass;
-	 
+
 	E_MESSAGEBOX_STYLE m_eMessageBoxStyle;
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

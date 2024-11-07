@@ -3,28 +3,28 @@
 #include "UIEditBoxEx.h"
 #include "UIFrameWindow.h"
 
-
-
-CUIEditBoxEx::CUIEditBoxEx()
+CUIEditBoxEx::CUIEditBoxEx( )
 {
-	m_pFrameWindow = xr_new<CUIFrameWindow>();
+	m_pFrameWindow = xr_new<CUIFrameWindow>( );
 	AttachChild(m_pFrameWindow);
 	m_lines.SetTextComplexMode(true);
 	m_lines.SetCutWordsMode(true);
 	m_lines.SetUseNewLineMode(false);
-	m_lines.SetVTextAlignment(valTop);		
+	m_lines.SetVTextAlignment(valTop);
 }
 
-CUIEditBoxEx::~CUIEditBoxEx()
+CUIEditBoxEx::~CUIEditBoxEx( )
 {
 	xr_delete(m_pFrameWindow);
-}	
-
-void CUIEditBoxEx::Init(f32 x, f32 y, f32 width, f32 height){
-	m_pFrameWindow->Init(0,0,width,height);
-	CUICustomEdit::Init(x,y,width,height);
 }
 
-void CUIEditBoxEx::InitTexture(pcstr texture){
+void CUIEditBoxEx::Init(f32 x, f32 y, f32 width, f32 height)
+{
+	m_pFrameWindow->Init(0.0f, 0.0f, width, height);
+	CUICustomEdit::Init(x, y, width, height);
+}
+
+void CUIEditBoxEx::InitTexture(pcstr texture)
+{
 	m_pFrameWindow->InitTexture(texture);
 }

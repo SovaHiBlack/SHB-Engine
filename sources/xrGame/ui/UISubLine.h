@@ -10,17 +10,18 @@
 
 // Attention! Destructor is not virtual.
 // if you want to inherite this class then make _coresponding_ changes
-class CUISubLine{
+class CUISubLine
+{
 public:
-	CUISubLine();
+	CUISubLine( );
 	CUISubLine(const CUISubLine& other);
-	~CUISubLine();
+	~CUISubLine( );
 
-CUISubLine& operator=(const CUISubLine& other);
-	
-const CUISubLine*	Cut2Pos(int i);
-	void			Draw(CGameFont* pFont, f32 x, f32 y)	const;
-	void			FreeBuffer();
+	CUISubLine& operator=(const CUISubLine& other);
+
+	const CUISubLine* Cut2Pos(s32 i);
+	void			Draw(CGameFont* pFont, f32 x, f32 y) const;
+	void			FreeBuffer( );
 
 	xr_string	m_text;
 	u32			m_color;

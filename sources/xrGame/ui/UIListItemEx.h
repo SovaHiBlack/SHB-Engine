@@ -10,19 +10,20 @@
 #pragma once
 #include "uilistitem.h"
 
-class CUIListItemEx :
-	public CUIListItem
+class CUIListItemEx : public CUIListItem
 {
 private:
 	typedef CUIListItem inherited;
 
 public:
-	CUIListItemEx(void);
-	virtual ~CUIListItemEx(void);
-	virtual void SendMessage(CUIWindow *pWnd, s16 msg, void* pData);
+	CUIListItemEx( );
+	virtual ~CUIListItemEx( );
+	virtual void SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData);
 	virtual void SetSelectionColor(u32 dwColor);
-	virtual void Draw();
-	virtual void dummy			(){}
+	virtual void Draw( );
+	virtual void dummy( )
+	{ }
+
 protected:
 	u32 m_dwSelectionColor;
 };
