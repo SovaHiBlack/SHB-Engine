@@ -179,48 +179,52 @@ f32		CClimableObject::DDToAxis(CPHCharacter* actor, fVector3& out_dir)const
 	return to_mag_and_dir(out_dir);
 }
 
-void	CClimableObject::	POnAxis	(CPHCharacter	*actor,Fvector	&P)const
+void	CClimableObject::POnAxis(CPHCharacter* actor, fVector3& P)const
 {
 	VERIFY(actor);
 	actor->GetFootCenter(P);
 	prg_pos_on_axis(Position(),m_axis,P);
 }
-void		CClimableObject::	LowerPoint			(Fvector &P)const
+void		CClimableObject::LowerPoint(fVector3& P)const
 {
 	P.sub(XFORM().c,m_axis);
 	P.add(m_norm);
 }
 
-void		CClimableObject::	UpperPoint			(Fvector &P)const
+void		CClimableObject::UpperPoint(fVector3& P)const
 {
 	P.add(XFORM().c,m_axis);
 	P.add(m_norm);
 }
 
-void		CClimableObject::DToAxis(CPHCharacter *actor,Fvector &dir)const
+void		CClimableObject::DToAxis(CPHCharacter* actor, fVector3& dir)const
 {
 	VERIFY(actor);
 	POnAxis(actor,dir);
-	Fvector pos;actor->GetFootCenter(pos);
+	fVector3 pos;
+	actor->GetFootCenter(pos);
 	dir.sub(pos);
 }
-void CClimableObject::DSideToAxis		(CPHCharacter	*actor,Fvector	&dir)const
+void CClimableObject::DSideToAxis(CPHCharacter* actor, fVector3& dir)const
 {
 	VERIFY(actor);
 	DToAxis(actor,dir);
-	Fvector side;side.set(m_side);
+	fVector3 side;
+	side.set(m_side);
 	to_mag_and_dir(side);
 	side.mul(side.dotproduct(dir));
 	dir.set(side);
 }
 
-f32 CClimableObject::DDSideToAxis(CPHCharacter *actor,Fvector &dir)const
+f32 CClimableObject::DDSideToAxis(CPHCharacter* actor, fVector3& dir)const
 {
 	VERIFY(actor);
 	DToAxis(actor,dir);
-	Fvector side;side.set(m_side);to_mag_and_dir(side);
+	fVector3 side;
+	side.set(m_side);
+	to_mag_and_dir(side);
 	f32 dot=side.dotproduct(dir);
-	if(dot>0.f)
+	if(dot>0.0f)
 	{
 		dir.set(side);
 		return dot;
@@ -231,14 +235,13 @@ f32 CClimableObject::DDSideToAxis(CPHCharacter *actor,Fvector &dir)const
 		dir.invert();
 		return -dot;
 	}
-	
 }
 
-void CClimableObject::DToPlain(CPHCharacter* actor, Fvector& dist) const
+void CClimableObject::DToPlain(CPHCharacter* actor, fVector3& dist) const
 {
 	VERIFY(actor);
 	DToAxis(actor, dist);
-	Fvector norm;
+	fVector3 norm;
 	norm.set(m_norm);
 	to_mag_and_dir(norm);
 	f32 dot = norm.dotproduct(dist);
@@ -246,7 +249,7 @@ void CClimableObject::DToPlain(CPHCharacter* actor, Fvector& dist) const
 	dist.set(norm);
 }
 
-f32 CClimableObject::DDToPlain(CPHCharacter *actor,Fvector &dir)const
+f32 CClimableObject::DDToPlain(CPHCharacter* actor, fVector3& dir)const
 {
 	VERIFY(actor);
 	DToPlain(actor,dir);
@@ -256,7 +259,7 @@ f32 CClimableObject::DDToPlain(CPHCharacter *actor,Fvector &dir)const
 bool CClimableObject::InTouch(CPHCharacter *actor)const
 {
 	VERIFY(actor);
-	Fvector dir;
+	fVector3 dir;
 	const f32 normal_tolerance=0.05f;
 	f32 foot_radius=actor->FootRadius();
 	return (DDToPlain(actor,dir)<foot_radius+m_norm.magnitude()+normal_tolerance&&
@@ -266,7 +269,8 @@ bool CClimableObject::InTouch(CPHCharacter *actor)const
 f32 CClimableObject::AxDistToUpperP(CPHCharacter *actor) const
 {
 	VERIFY(actor);
-	Fvector v1,v2;
+	fVector3 v1;
+	fVector3 v2;
 	actor->GetFootCenter(v1);
 	UpperPoint(v2);
 	v2.sub(v1);
@@ -277,7 +281,8 @@ f32 CClimableObject::AxDistToUpperP(CPHCharacter *actor) const
 f32 CClimableObject::AxDistToLowerP(CPHCharacter *actor)const
 {
 	VERIFY(actor);
-	Fvector v1,v2;
+	fVector3 v1;
+	fVector3 v2;
 	actor->GetFootCenter(v1);
 	LowerPoint(v2);
 	v2.sub(v1);
@@ -290,13 +295,13 @@ bool CClimableObject::InRange(CPHCharacter *actor)const
 	return AxDistToLowerP(actor)>-down_leader_extension_tolerance && AxDistToUpperP(actor)+actor->FootRadius()>-up_leader_extension_tolerance;
 }
 
-
 bool CClimableObject::BeforeLadder(CPHCharacter *actor, f32 tolerance/*=0.f*/)const
 {
 	VERIFY(actor);
-	Fvector d;
+	fVector3 d;
 	DToAxis(actor,d);
-	Fvector n;n.set(Norm());
+	fVector3 n;
+	n.set(Norm());
 	f32 width=to_mag_and_dir(n);
 	return d.dotproduct(n)<-(width+actor->FootRadius()/2.f+tolerance);
 }
@@ -305,7 +310,6 @@ BOOL CClimableObject::UsedAI_Locations()
 {
 	return FALSE;
 }
-
 
 void CClimableObject::ObjectContactCallback(bool&	do_colide,bool bo1,dContact& c,SGameMtl * /*material_1*/,SGameMtl * /*material_2*/)
 {
@@ -316,31 +320,39 @@ void CClimableObject::ObjectContactCallback(bool&	do_colide,bool bo1,dContact& c
 	CClimableObject* this_object=NULL;
 	CPHCharacter* ch=NULL;
 	f32 norm_sign = 0.0f;
-	if(bo1) {
-			usr_data_ch=usr_data_2;
-			usr_data_lad=usr_data_1;
-			norm_sign=-1.f;
-		}
-	else {
-			norm_sign=1.f;
-			usr_data_ch=usr_data_1;
-			usr_data_lad=usr_data_2;
+	if (bo1)
+	{
+		usr_data_ch = usr_data_2;
+		usr_data_lad = usr_data_1;
+		norm_sign = -1.0f;
+	}
+	else
+	{
+		norm_sign = 1.0f;
+		usr_data_ch = usr_data_1;
+		usr_data_lad = usr_data_2;
 	}
 
-	if(usr_data_ch&&usr_data_ch->ph_object&&usr_data_ch->ph_object->CastType()==CPHObject::tpCharacter)
-		ch=static_cast<CPHCharacter*>(usr_data_ch->ph_object);
+	if (usr_data_ch && usr_data_ch->ph_object && usr_data_ch->ph_object->CastType( ) == CPHObject::tpCharacter)
+	{
+		ch = static_cast<CPHCharacter*>(usr_data_ch->ph_object);
+	}
 	else
 	{
 		do_colide=false;
 		return;
 	}
+
 	VERIFY(ch);
 	VERIFY(usr_data_lad);
 	this_object=static_cast<CClimableObject*>(usr_data_lad->ph_ref_object);
 	VERIFY(this_object);
-	if(!this_object->BeforeLadder(ch,-0.1f)) do_colide=false;
-	
+	if (!this_object->BeforeLadder(ch, -0.1f))
+	{
+		do_colide = false;
+	}	
 }
+
 #ifdef DEBUG
 extern	flags32	dbg_net_Draw_Flags;
 void CClimableObject ::OnRender()
@@ -351,7 +363,9 @@ void CClimableObject ::OnRender()
 	m_box.xform_get(form);
 	//form.mulA(XFORM());
 	Level().debug_renderer().draw_obb(XFORM(),m_box.m_halfsize,D3DCOLOR_XRGB(0,0,255));
-	Fvector p1,p2,d;
+	fVector3 p1;
+	fVector3 p2;
+	fVector3 d;
 	d.set(m_axis);
 	p1.add(XFORM().c,d);
 	p2.sub(XFORM().c,d);

@@ -10,19 +10,19 @@ namespace PAPI{
 		u32			max_particles;			// Max particles allowed in effect.
 		u32			particles_allocated;	// Actual allocated size.
 		Particle*	particles;				// Actually, num_particles in size
-        OnBirthParticleCB 	b_cb;
-        OnDeadParticleCB	d_cb;
-        void*				owner;
-        u32					param;
-        
-        public:
+		OnBirthParticleCB 	b_cb;
+		OnDeadParticleCB	d_cb;
+		void*				owner;
+		u32					param;
+		
+		public:
 					ParticleEffect	(int mp)
 		{
-        	owner					= 0;
-            param 					= 0;
-        	b_cb					= 0;
-        	d_cb					= 0;
-   			p_count					= 0;
+			owner					= 0;
+			param 					= 0;
+			b_cb					= 0;
+			d_cb					= 0;
+			p_count					= 0;
 			max_particles			= mp;
 			particles_allocated		= max_particles;
 			particles				= xr_alloc<Particle>(max_particles);
@@ -63,10 +63,10 @@ namespace PAPI{
 		}
 		IC void		Remove			(int i)
 		{
-        	if (0==p_count)			return;
+			if (0==p_count)			return;
 			Particle& m				= particles[i];
-            if (d_cb)				d_cb(owner,param,m,i);
-            m 						= particles[--p_count]; // не менять правило удаления !!! (dependence ParticleGroup)
+			if (d_cb)				d_cb(owner,param,m,i);
+			m 						= particles[--p_count]; // не менять правило удаления !!! (dependence ParticleGroup)
 		}
 
 		IC BOOL		Add				(const pVector &pos, const pVector &posB,
@@ -85,7 +85,7 @@ namespace PAPI{
 				P.age 		= age;
 				P.frame 	= frame;
 				P.flags.assign(flags); 
-	            if (b_cb)	b_cb(owner,param,P,p_count);
+				if (b_cb)	b_cb(owner,param,P,p_count);
 				p_count++;
 				return TRUE;
 			}

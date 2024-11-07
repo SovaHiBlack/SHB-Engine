@@ -164,16 +164,21 @@ private:
 	{
 		return PI_DIV_2 - _asin_(x);
 	}
+
 public:
 	T x, y, z, w;
 
 	IC	SelfRef	set(T W, T X, T Y, T Z)	// don't normalize
 	{
-		x = X; y = Y; z = Z; w = W;			return *this;
+		x = X;
+		y = Y;
+		z = Z;
+		w = W;			return *this;
 	}
 	IC	SelfRef	set(SelfCRef Q)				// don't normalize
 	{
-		set(Q.w, Q.x, Q.y, Q.z);	return *this;
+		set(Q.w, Q.x, Q.y, Q.z);
+		return *this;
 	}
 
 	IC SelfRef	set(const _matrix4x4<T>& m);
@@ -193,17 +198,10 @@ public:
 		VERIFY(q1l.isValid( ));
 		VERIFY(q2l.isValid( ));
 
-		w = ((q1l.w * q2l.w) - (q1l.x * q2l.x)
-			 - (q1l.y * q2l.y) - (q1l.z * q2l.z));
-
-		x = ((q1l.w * q2l.x) + (q1l.x * q2l.w)
-			 + (q1l.y * q2l.z) - (q1l.z * q2l.y));
-
-		y = ((q1l.w * q2l.y) - (q1l.x * q2l.z)
-			 + (q1l.y * q2l.w) + (q1l.z * q2l.x));
-
-		z = ((q1l.w * q2l.z) + (q1l.x * q2l.y)
-			 - (q1l.y * q2l.x) + (q1l.z * q2l.w));
+		w = ((q1l.w * q2l.w) - (q1l.x * q2l.x) - (q1l.y * q2l.y) - (q1l.z * q2l.z));
+		x = ((q1l.w * q2l.x) + (q1l.x * q2l.w) + (q1l.y * q2l.z) - (q1l.z * q2l.y));
+		y = ((q1l.w * q2l.y) - (q1l.x * q2l.z) + (q1l.y * q2l.w) + (q1l.z * q2l.x));
+		z = ((q1l.w * q2l.z) + (q1l.x * q2l.y) - (q1l.y * q2l.x) + (q1l.z * q2l.w));
 		return *this;
 	}
 
@@ -244,10 +242,26 @@ public:
 	// validates numerical stability
 	IC	const BOOL	isValid( ) const
 	{
-		if ((w * w) < 0.0f)	return false;
-		if ((x * x) < 0.0f)	return false;
-		if ((y * y) < 0.0f)	return false;
-		if ((z * z) < 0.0f)	return false;
+		if ((w * w) < 0.0f)
+		{
+			return false;
+		}
+
+		if ((x * x) < 0.0f)
+		{
+			return false;
+		}
+
+		if ((y * y) < 0.0f)
+		{
+			return false;
+		}
+
+		if ((z * z) < 0.0f)
+		{
+			return false;
+		}
+
 		return true;
 	}
 
@@ -257,7 +271,10 @@ public:
 		T m = magnitude( );
 
 		if ((m < 1.0 + UNIT_TOLERANCE) && (m > 1.0 - UNIT_TOLERANCE))
+		{
 			return true;
+		}
+
 		return false;
 	}
 
@@ -269,7 +286,9 @@ public:
 		m = _sqrt(magnitude( ));
 
 		if ((m < QZERO_TOLERANCE) && (m > -QZERO_TOLERANCE))
+		{
 			return *this;
+		}
 
 		one_over_magnitude = 1.0f / m;
 
@@ -301,13 +320,13 @@ public:
 	// identity - no rotation
 	IC	SelfRef	identity( )
 	{
-		return set(1.f, 0.f, 0.f, 0.f);
+		return set(1.0f, 0.0f, 0.0f, 0.0f);
 	}
 
 	// square length
 	IC	T	magnitude( )
 	{
-		return w * w + x * x + y * y + z * z;
+		return (w * w + x * x + y * y + z * z);
 	}
 
 	// makes unit rotation
@@ -382,7 +401,9 @@ public:
 
 #ifdef DEBUG
 		if (!((T(0) <= tm) && (tm <= T(1))))
+		{
 			Debug.fatal(DEBUG_INFO, "Quaternion::slerp - invalid 'tm' arrived: %f", tm);
+		}
 #endif // DEBUG
 
 		T cosom = (Q0.w * Q1.w) + (Q0.x * Q1.x) + (Q0.y * Q1.y) + (Q0.z * Q1.z);
@@ -390,17 +411,17 @@ public:
 		if (cosom < 0)
 		{
 			cosom = -cosom;
-			sign = -1.f;
+			sign = -1.0f;
 		}
 		else
 		{
-			sign = 1.f;
+			sign = 1.0f;
 		}
 
 		if ((1.0f - cosom) > EPSILON_5)
 		{
 			T	omega = _acos_(cosom);
-			T	i_sinom = 1.f / _sin(omega);
+			T	i_sinom = 1.0f / _sin(omega);
 			T	t_omega = tm * omega;
 			Scale0 = _sin(omega - t_omega) * i_sinom;
 			Scale1 = _sin(t_omega) * i_sinom;

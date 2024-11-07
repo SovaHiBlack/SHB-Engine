@@ -40,7 +40,9 @@ void ParseFile(pcstr path, CMemoryWriter& W, IReader* F, CXml* xml)
 				}
 
 				if (!I)
+				{
 					I = FS.r_open(path, inc_name);
+				}
 
 				if (!I)
 				{
@@ -48,13 +50,15 @@ void ParseFile(pcstr path, CMemoryWriter& W, IReader* F, CXml* xml)
 					sprintf(str, "XML file[%s] parsing failed. Can't find include file:[%s]", path, inc_name);
 					R_ASSERT2(false, str);
 				}
+
 				ParseFile(path, W, I, xml);
 				FS.r_close(I);
 			}
 		}
 		else
+		{
 			W.w_string(str);
-
+		}
 	}
 }
 

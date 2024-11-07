@@ -60,8 +60,8 @@ namespace PAPI{
 		flags16		flags;	// 2
 	};                  	// 		72
 
-	typedef void (* OnBirthParticleCB)	(void* owner, u32 param, PAPI::Particle& P, u32 idx);
-	typedef void (* OnDeadParticleCB)	(void* owner, u32 param, PAPI::Particle& P, u32 idx);
+	typedef void (* OnBirthParticleCB)	(pvoid owner, u32 param, PAPI::Particle& P, u32 idx);
+	typedef void (* OnDeadParticleCB)	(pvoid owner, u32 param, PAPI::Particle& P, u32 idx);
 	//////////////////////////////////////////////////////////////////////
 	// Type codes for domains
 	enum PDomainEnum
@@ -119,37 +119,38 @@ namespace PAPI{
 	};
 	struct ParticleAction;
 
-	class IParticleManager{
+	class IParticleManager
+	{
 	public:
 									IParticleManager	(){}
 		virtual						~IParticleManager	(){}
 
 		// create&destroy
-		virtual int					CreateEffect		(u32 max_particles)=0;
-		virtual void				DestroyEffect		(int effect_id)=0;
-		virtual int					CreateActionList	()=0;
-		virtual void				DestroyActionList	(int alist_id)=0;
+		virtual s32					CreateEffect		(u32 max_particles)=0;
+		virtual void				DestroyEffect		(s32 effect_id)=0;
+		virtual s32					CreateActionList	()=0;
+		virtual void				DestroyActionList	(s32 alist_id)=0;
 
 		// control
-		virtual void				PlayEffect			(int effect_id, int alist_id)=0;
-		virtual void				StopEffect			(int effect_id, int alist_id, BOOL deffered=TRUE)=0;
+		virtual void				PlayEffect			(s32 effect_id, s32 alist_id)=0;
+		virtual void				StopEffect			(s32 effect_id, s32 alist_id, BOOL deffered=TRUE)=0;
 
 		// update&render
-		virtual void				Update				(int effect_id, int alist_id, f32 dt)=0;
-		virtual void				Render				(int effect_id)=0;
-		virtual void				Transform			(int alist_id, const fMatrix4x4& m, const fVector3& velocity)=0;
+		virtual void				Update				(s32 effect_id, s32 alist_id, f32 dt)=0;
+		virtual void				Render				(s32 effect_id)=0;
+		virtual void				Transform			(s32 alist_id, const fMatrix4x4& m, const fVector3& velocity)=0;
 
 		// effect
-		virtual void				RemoveParticle		(int effect_id, u32 p_id)=0;
-		virtual void				SetMaxParticles		(int effect_id, u32 max_particles)=0;
-		virtual void				SetCallback			(int effect_id, OnBirthParticleCB b, OnDeadParticleCB d, void* owner, u32 param)=0;
-		virtual void				GetParticles		(int effect_id, Particle*& particles, u32& cnt)=0;
-		virtual u32					GetParticlesCount	(int effect_id)=0;
+		virtual void				RemoveParticle		(s32 effect_id, u32 p_id)=0;
+		virtual void				SetMaxParticles		(s32 effect_id, u32 max_particles)=0;
+		virtual void				SetCallback			(s32 effect_id, OnBirthParticleCB b, OnDeadParticleCB d, pvoid owner, u32 param)=0;
+		virtual void				GetParticles		(s32 effect_id, Particle*& particles, u32& cnt)=0;
+		virtual u32					GetParticlesCount	(s32 effect_id)=0;
 		
 		// action
 		virtual ParticleAction*		CreateAction		(PActionEnum type)=0;
-		virtual u32					LoadActions			(int alist_id, IReader& R)=0;
-		virtual void				SaveActions			(int alist_id, IWriter& W)=0;
+		virtual u32					LoadActions			(s32 alist_id, IReader& R)=0;
+		virtual void				SaveActions			(s32 alist_id, IWriter& W)=0;
 	};
 
 	PARTICLES_API IParticleManager* ParticleManager		();

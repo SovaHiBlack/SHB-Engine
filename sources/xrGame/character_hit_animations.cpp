@@ -64,7 +64,7 @@ IC void	play_cycle(CKinematicsAnimated* CA,const MotionID &m,u8 channel,u32 &tim
 	}
 }
 
-void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const Fvector &bone_pos, u16 bi, CEntityAlive &ea)const
+void character_hit_animation_controller::PlayHitMotion(const fVector3& dir, const fVector3& bone_pos, u16 bi, CEntityAlive& ea) const
 {
 	CKinematicsAnimated* CA = smart_cast<CKinematicsAnimated*>(ea.Visual());
 	
@@ -72,7 +72,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 	if( !(CA->LL_BoneCount() > bi) )
 		return;
 
-	Fvector dr = dir;
+	fVector3 dr = dir;
 	fMatrix4x4 m;
 	GetBaseMatrix(m,ea);
 
@@ -80,7 +80,7 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 	if(ph_dbg_draw_mask1.test(phDbgHitAnims))
 	{
 		DBG_OpenCashedDraw();
-		DBG_DrawLine(m.c,Fvector().sub(m.c,Fvector().mul(dir,1.5)),D3DCOLOR_XRGB(255,0,255));
+		DBG_DrawLine(m.c, fVector3().sub(m.c, fVector3().mul(dir,1.5f)),D3DCOLOR_XRGB(255,0,255));
 		DBG_ClosedCashedDraw(1000);
 	}
 #endif
@@ -88,11 +88,11 @@ void character_hit_animation_controller::PlayHitMotion(const Fvector &dir,const 
 	m.invert();
 	m.transform_dir(dr);
 //
-	Fvector hit_point;
+	fVector3 hit_point;
 	CA->LL_GetTransform(bi).transform_tiny(hit_point,bone_pos);
 	ea.XFORM().transform_tiny(hit_point);
 	m.transform_tiny(hit_point);
-	Fvector torqu;		
+	fVector3 torqu;
 	torqu.crossproduct(dr,hit_point);
 	hit_point.x = 0;
 	f32 rotational_ammount = hit_point.magnitude()*power_factor*3;//_abs(torqu.x)

@@ -22,7 +22,7 @@ public:
 
 	ICN s32			randI				( )
 	{
-		return(((holdrand = holdrand * 214013L + 2531011L) >> 16) & 0x7fff);
+		return (((holdrand = holdrand * 214013L + 2531011L) >> 16) & 0x7fff);
 	}
 	IC s32			randI				(s32 max)
 	{

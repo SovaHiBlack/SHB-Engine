@@ -75,7 +75,10 @@ void CParticleEffect::RefreshShader( )
 void CParticleEffect::UpdateParent(const fMatrix4x4& m, const fVector3& velocity, BOOL bXFORM)
 {
 	m_RT_Flags.set(flRT_XFORM, bXFORM);
-	if (bXFORM)				m_XFORM.set(m);
+	if (bXFORM)
+	{
+		m_XFORM.set(m);
+	}
 	else
 	{
 		m_InitialPosition = m.c;

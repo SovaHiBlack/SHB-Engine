@@ -123,7 +123,7 @@ IC		CIKLimbsController				*ik_controller					()	{return	m_ik_controller;}
 		bool							IsRemoved						(){return m_eState==esRemoved;}
 		bool							IsSpecificDamager				()																{return !!m_flags.test(fl_specific_bonce_demager)	;}
 		f32								BonceDamageFactor				(){return m_BonceDamageFactor;}
-		void							set_movement_position			( const Fvector &pos );
+		void							set_movement_position			( const fVector3&pos );
 //////////////////base hierarchi methods///////////////////////////////////////////////////
 		void							CreateCharacter					();
 		void 							in_UpdateCL()																																		;
@@ -133,12 +133,12 @@ IC		CIKLimbsController				*ik_controller					()	{return	m_ik_controller;}
 		void							in_NetRelcase					(CObject* O)																										;
 		void 							in_Init							()																													;
 		void 							in_Load							(pcstr section)																									;
-		void 							in_Hit							(f32 P,Fvector &dir, CObject *who, s16 element,Fvector p_in_object_space, f32 impulse,ALife::EHitType hit_type ,bool is_killing=false);
+		void 							in_Hit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type, bool is_killing = false);
 		void							in_NetSave						(NET_Packet& P)																										;
 		void							in_ChangeVisual					();
 		void							on_create_anim_mov_ctrl			();
 		void							on_destroy_anim_mov_ctrl		();
-		void							PHGetLinearVell					(Fvector& velocity);
+		void							PHGetLinearVell(fVector3& velocity);
 		SCollisionHitCallback*			get_collision_hit_callback		();
 		bool							set_collision_hit_callback		(SCollisionHitCallback* cc);
 /////////////////////////////////////////////////////////////////
@@ -153,8 +153,8 @@ private:
 static	void							DeathAnimCallback				(CBlend *B)																											;
 		void							CreateIKController				()																													;
 		void							DestroyIKController				()																													;
-		void							CollisionCorrectObjPos			(const Fvector& start_from,bool character_create=false);
-		void							FlyTo							(const	Fvector &disp);
+		void							CollisionCorrectObjPos(const fVector3& start_from, bool character_create = false);
+		void							FlyTo(const	fVector3& disp);
 		void							TestForWounded					();
 IC		void							UpdateFrictionAndJointResistanse();
 IC		void							UpdateDeathAnims				();

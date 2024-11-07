@@ -39,9 +39,5 @@ public:
 		f32& near_plane,
 		f32& far_plane
 					);
-			void	set_camera(
-						const Fvector &position,
-						const Fvector &direction,
-						const Fvector &normal
-					);
+	void	set_camera(const fVector3& position, const fVector3& direction, const fVector3& normal);
 };
