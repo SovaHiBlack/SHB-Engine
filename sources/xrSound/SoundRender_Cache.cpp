@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include ".\soundrender_cache.h"
+#include "soundrender_cache.h"
 
 CSoundRender_Cache::CSoundRender_Cache	()
 {

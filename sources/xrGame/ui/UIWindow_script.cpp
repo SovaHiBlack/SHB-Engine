@@ -62,7 +62,7 @@ pcstr	get_texture_name(pcstr icon_name)
 	return CUITextureMaster::GetTextureFileName(icon_name);
 }
 
-TEX_INFO	get_texture_info(pcstr name, pcstr def_name)
+STextureInfo	get_texture_info(pcstr name, pcstr def_name)
 {
 	return CUITextureMaster::FindItem(name, def_name);
 }
@@ -88,9 +88,9 @@ void CUIWindow::script_register(lua_State *L)
 		def("GetFontGraffiti50Russian",	&GetFontGraffiti50Russian),
 		def("GetFontLetterica25",		&GetFontLetterica25),
 
-		class_<TEX_INFO>("TEX_INFO")
-		.def("get_file_name",	 			&TEX_INFO::get_file_name)
-		.def("get_rect",					&TEX_INFO::get_rect),
+		class_<STextureInfo>("STextureInfo")
+		.def("get_file_name",	 			&STextureInfo::get_file_name)
+		.def("get_rect",					&STextureInfo::get_rect),
 
 		def("GetTextureName",			&get_texture_name),
 		def("GetTextureRect",			&get_texture_rect),

@@ -1,28 +1,31 @@
-// file:		UITextureMaster.h
-// description:	holds info about shared textures. able to initialize external controls
-//				through IUITextureControl interface
-// created:		11.05.2005
-// author:		Serge Vynnychenko
-// mail:		narrator@gsc-game.kiev.ua
-//
-// copyright 2005 GSC Game World
-
+// ========================================== SHB_Engine ==========================================
+// Projekt		: Game
+// Module		: UITextureMaster.cpp
+// Author		: Anahoret
+// Description	: содержит общую информацию о текстурах. Возможность инициализации внешних текстур
+//				  через интерфейс IUISimpleTextureControl
+// ===================================== SovaHiBlack© - 2024 ======================================
 
 #include "stdafx.h"
+#pragma hdrstop
+
 #include "UITextureMaster.h"
 #include "uiabstract.h"
 #include "xrUIXmlParser.h"
 
-xr_map<shared_str, TEX_INFO>	CUITextureMaster::m_textures;
+xr_map<shared_str, STextureInfo>	CUITextureMaster::m_textures;
+
 #ifdef DEBUG
 u32									CUITextureMaster::m_time = 0;
-#endif
+#endif // def DEBUG
 
 void CUITextureMaster::WriteLog( )
 {
+
 #ifdef DEBUG
 	Msg("UI texture manager work time is %d ms", m_time);
-#endif
+#endif // def DEBUG
+
 }
 void CUITextureMaster::ParseShTexInfo(pcstr xml_file)
 {
@@ -32,10 +35,9 @@ void CUITextureMaster::ParseShTexInfo(pcstr xml_file)
 
 	s32 num = uiXml.GetNodesNum("", 0, "texture");
 	// regions regs;
-	for (int i = 0; i < num; i++)
+	for (s32 i = 0; i < num; i++)
 	{
-		TEX_INFO info;
-
+		STextureInfo info;
 		info.file = file;
 
 		info.rect.x1 = uiXml.ReadAttribFlt("texture", i, "x");
@@ -55,12 +57,13 @@ bool CUITextureMaster::IsSh(pcstr texture_name)
 
 void CUITextureMaster::InitTexture(pcstr texture_name, IUISimpleTextureControl* tc)
 {
+
 #ifdef DEBUG
 	CTimer T;
 	T.Start( );
-#endif
+#endif // def DEBUG
 
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 
 	it = m_textures.find(texture_name);
 
@@ -70,23 +73,24 @@ void CUITextureMaster::InitTexture(pcstr texture_name, IUISimpleTextureControl* 
 		tc->SetOriginalRectEx((*it).second.rect);
 #ifdef DEBUG
 		m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 		return;
 	}
 	tc->CreateShader(texture_name);
 #ifdef DEBUG
 	m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 }
 
 void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISimpleTextureControl* tc)
 {
+
 #ifdef DEBUG
 	CTimer T;
 	T.Start( );
-#endif
+#endif // def DEBUG
 
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 
 	it = m_textures.find(texture_name);
 
@@ -96,29 +100,32 @@ void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISim
 		tc->SetOriginalRectEx((*it).second.rect);
 #ifdef DEBUG
 		m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 		return;
 	}
 	tc->CreateShader(texture_name, shader_name);
 #ifdef DEBUG
 	m_time += T.GetElapsed_ms( );
-#endif
+#endif // def DEBUG
 }
 
 f32 CUITextureMaster::GetTextureHeight(pcstr texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	if (it != m_textures.end( ))
+	{
 		return (*it).second.rect.height( );
+	}
+
 	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
 	return 0;
 }
 
 fRect CUITextureMaster::GetTextureRect(pcstr texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 		return (*it).second.rect;
@@ -129,7 +136,7 @@ fRect CUITextureMaster::GetTextureRect(pcstr texture_name)
 
 f32 CUITextureMaster::GetTextureWidth(pcstr texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	if (it != m_textures.end( ))
@@ -140,7 +147,7 @@ f32 CUITextureMaster::GetTextureWidth(pcstr texture_name)
 
 pcstr CUITextureMaster::GetTextureFileName(pcstr texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	if (it != m_textures.end( ))
@@ -149,9 +156,9 @@ pcstr CUITextureMaster::GetTextureFileName(pcstr texture_name)
 	return 0;
 }
 
-TEX_INFO CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_name)
+STextureInfo CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_name)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	if (it != m_textures.end( ))
@@ -165,7 +172,7 @@ TEX_INFO CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_name)
 
 void CUITextureMaster::GetTextureShader(pcstr texture_name, ref_shader& sh)
 {
-	xr_map<shared_str, TEX_INFO>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
 
 	R_ASSERT3(it != m_textures.end( ), "can't find texture", texture_name);
