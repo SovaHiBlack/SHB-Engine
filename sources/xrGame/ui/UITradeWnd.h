@@ -21,7 +21,7 @@ public:
 
 	virtual void		Init						();
 
-	virtual void		SendMessage					(CUIWindow *pWnd, s16 msg, void *pData);
+	virtual void		SendMessage					(CUIWindow *pWnd, s16 msg, pvoid pData);
 
 	void				InitTrade					(CInventoryOwner* pOur, CInventoryOwner* pOthers);
 	

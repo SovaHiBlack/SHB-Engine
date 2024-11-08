@@ -28,8 +28,8 @@ protected:
 	CUICharacterInfo*										UICharacterInfo;
 			void			FillList						();
 	CUIScrollView*											UIList;
-			void			AddStalkerItem					(CUIXml* xml, int num, CSE_ALifeTraderAbstract* t);
-			void			AddActorItem					(CUIXml* xml, int num, CSE_ALifeTraderAbstract* t);
+			void			AddStalkerItem					(CUIXml* xml, s32 num, CSE_ALifeTraderAbstract* t);
+			void			AddActorItem					(CUIXml* xml, s32 num, CSE_ALifeTraderAbstract* t);
 
 public:
 	CUIScrollView&			GetTopList						()			{return *UIList;}
@@ -51,9 +51,9 @@ public:
 public:
 							CUIStalkerRankingInfoItem		(CUIStalkersRankingWnd*);
 	
-			void			Init							(CUIXml* xml, pcstr path, int idx);
+			void			Init							(CUIXml* xml, pcstr path, s32 idx);
 	virtual void			SetSelected						(bool b);
-	virtual bool			OnMouseDown						(int mouse_btn);
+	virtual bool			OnMouseDown						(s32 mouse_btn);
 };
 
 class CUIStalkerRankingElipsisItem : public CUIStalkerRankingInfoItem
@@ -63,5 +63,5 @@ class CUIStalkerRankingElipsisItem : public CUIStalkerRankingInfoItem
 public:
 							CUIStalkerRankingElipsisItem	(CUIStalkersRankingWnd*);
 	virtual void			SetSelected						(bool b);
-	virtual bool			OnMouseDown						(int mouse_btn);
+	virtual bool			OnMouseDown						(s32 mouse_btn);
 };

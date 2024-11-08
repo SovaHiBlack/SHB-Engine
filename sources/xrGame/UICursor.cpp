@@ -26,10 +26,10 @@ void CUICursor::InitInternal( )
 {
 	m_static = xr_new<CUIStatic>( );
 	m_static->InitTextureEx("ui\\ui_ani_cursor", "hud\\cursor");
-	fRect						rect;
+	fRect rect;
 	rect.set(0.0f, 0.0f, 40.0f, 40.0f);
 	m_static->SetOriginalRect(rect);
-	fVector2					sz;
+	fVector2 sz;
 	sz.set(rect.rb);
 	if (UI( )->is_16_9_mode( ))
 	{
@@ -59,7 +59,7 @@ void CUICursor::OnRender( )
 		F->SetHeightI(0.02f);
 		F->OutSetI(0.0f, -0.9f);
 		F->SetColor(0xffffffff);
-		fVector2			pt = GetCursorPosition( );
+		fVector2 pt = GetCursorPosition( );
 		F->OutNext("%f-%f", pt.x, pt.y);
 	}
 #endif
@@ -71,7 +71,7 @@ void CUICursor::OnRender( )
 
 fVector2 CUICursor::GetCursorPosition( )
 {
-	return  vPos;
+	return vPos;
 }
 
 fVector2 CUICursor::GetCursorPositionDelta( )
@@ -84,7 +84,7 @@ fVector2 CUICursor::GetCursorPositionDelta( )
 
 void CUICursor::UpdateCursorPosition( )
 {
-	POINT		p;
+	POINT p;
 	BOOL r = GetCursorPos(&p);
 	R_ASSERT(r);
 
@@ -99,7 +99,7 @@ void CUICursor::UpdateCursorPosition( )
 void CUICursor::SetUICursorPosition(fVector2 pos)
 {
 	vPos = pos;
-	POINT		p;
+	POINT p;
 	p.x = iFloor(vPos.x / (UI_BASE_WIDTH / (f32)Device.dwWidth));
 	p.y = iFloor(vPos.y / (UI_BASE_HEIGHT / (f32)Device.dwHeight));
 

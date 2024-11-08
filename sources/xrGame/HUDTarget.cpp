@@ -50,7 +50,7 @@ IC	f32	recon_minspeed( )
 }
 IC	f32	recon_maxspeed( )
 {
-	return 10.f;
+	return 10.0f;
 }
 
 CHUDTarget::CHUDTarget( )
@@ -151,11 +151,11 @@ void CHUDTarget::Render( )
 	// Render cursor
 	u32 C = C_DEFAULT;
 
-	FVF::TL				PT;
-	fVector3				p2;
+	FVF::TL PT;
+	fVector3 p2;
 	p2.mad(p1, dir, RQ.range);
 	PT.transform(p2, Device.mFullTransform);
-	f32				di_size = C_SIZE / powf(PT.p.w, 0.2f);
+	f32 di_size = C_SIZE / powf(PT.p.w, 0.2f);
 
 	CGameFont* F = HUD( ).Font( ).pFontGraffiti19Russian;
 	F->SetAligment(CGameFont::alCenter);

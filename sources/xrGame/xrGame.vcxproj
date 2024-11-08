@@ -2247,7 +2247,6 @@
     <ClCompile Include="UIDialogHolder.cpp" />
     <ClCompile Include="UIFrameRect.cpp" />
     <ClCompile Include="UIGameCustom.cpp" />
-    <ClCompile Include="UIGameCustom_script.cpp" />
     <ClCompile Include="UIGameSP.cpp" />
     <ClCompile Include="UIGame_custom_script.cpp" />
     <ClCompile Include="UIStaticItem.cpp" />

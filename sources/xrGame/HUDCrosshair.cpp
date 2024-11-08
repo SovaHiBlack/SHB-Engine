@@ -26,13 +26,9 @@ void CHUDCrosshair::Load( )
 	// все размеры в процентах от длины экрана
 	// длина крестика
 	cross_length_perc = pSettings->r_float(HUD_CURSOR_SECTION, "cross_length");
-
 	min_radius_perc = pSettings->r_float(HUD_CURSOR_SECTION, "min_radius");
-
 	max_radius_perc = pSettings->r_float(HUD_CURSOR_SECTION, "max_radius");
-
 	cross_color = pSettings->r_fcolor(HUD_CURSOR_SECTION, "cross_color").get( );
-
 	radius_speed_perc = pSettings->r_float(HUD_CURSOR_SECTION, "radius_lerp_speed");
 }
 
