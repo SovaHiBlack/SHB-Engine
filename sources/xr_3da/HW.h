@@ -28,7 +28,7 @@ public:
 		pDevice		= NULL;
 		pBaseRT		= NULL;
 		pBaseZB		= NULL;
-	};
+	}
 
 	void					CreateD3D				();
 	void					DestroyD3D				();
@@ -46,9 +46,9 @@ public:
 	BOOL					support					(D3DFORMAT fmt, DWORD type, DWORD usage);
 
 #ifdef DEBUG
-	void	Validate(void)	{	VERIFY(pDevice); VERIFY(pD3D); };
+	void	Validate( )	{	VERIFY(pDevice); VERIFY(pD3D); }
 #else // DEBUG
-	void	Validate(void)	{};
+	void	Validate( )	{}
 #endif // DEBUG
 
 };

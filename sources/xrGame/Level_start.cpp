@@ -7,7 +7,7 @@
 #include "..\XR_3DA\x_ray.h"
 #include "..\XR_3DA\device.h"
 #include "..\XR_3DA\IGame_Persistent.h"
-#include "..\XR_3DA\xr_ioconsole.h"
+#include "..\XR_3DA\Console.h"
 #include "MainMenu.h"
 
 BOOL CLevel::net_Start	(pcstr op_server, pcstr op_client )

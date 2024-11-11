@@ -7,11 +7,13 @@
 #include "physicsshellholder.h"
 #include "PHSkeleton.h"
 #include "script_export_space.h"
+
 // refs
-class CLAItem;
+class CLightAnimItem;
 class CPhysicsElement;
 class CSE_ALifeObjectHangingLamp;
 class CPHElement;
+
 class CHangingLamp: 
 public CPhysicsShellHolder,
 public CPHSkeleton
@@ -23,7 +25,7 @@ private:
 
 	ref_light		light_render;
 	ref_light		light_ambient;
-	CLAItem*		lanim;
+	CLightAnimItem*		lanim;
 	f32			ambient_power;
 	
 	ref_glow		glow_render;

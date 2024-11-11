@@ -11,14 +11,14 @@
 //=============================================================================
 #pragma once
 
-class CLAItem;
+class CLightAnimItem;
 
 class CUIColorAnimatorWrapper
 {
 public:
 				CUIColorAnimatorWrapper		( );
 				~CUIColorAnimatorWrapper	( )
-	{ };
+	{ }
 	// animationName - имя цветовой анимации
 	// colorToModify - указатель на цвет который меняем
 	explicit	CUIColorAnimatorWrapper		(const shared_str& animationName);
@@ -59,7 +59,7 @@ public:
 
 private:
 	// Собственно анимация
-	CLAItem*								colorAnimation;
+	CLightAnimItem*								colorAnimation;
 	// Предыдущее запоменное значение глобального времени игры
 	f32										prevGlobalTime;
 	// Время прошедшее с начала анимации
@@ -80,7 +80,7 @@ private:
 	f32										kRev;
 
 public:
-	CLAItem*	GetAnimation				( ) const
+	CLightAnimItem*	GetAnimation				( ) const
 	{
 		return colorAnimation;
 	}

@@ -36,11 +36,11 @@ public:
 	virtual		f32				GetEnvironmentGameTimeFactor		();
 	virtual		void				SetEnvironmentGameTimeFactor		(const f32 fTimeFactor);
 
-	virtual		bool				change_level			(NET_Packet &net_packet, ClientID sender);
-	virtual		void				save_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		bool				load_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				reload_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				switch_distance			(NET_Packet &net_packet, ClientID sender);
+	virtual		bool				change_level			(NET_Packet &net_packet, CClientID sender);
+	virtual		void				save_game				(NET_Packet &net_packet, CClientID sender);
+	virtual		bool				load_game				(NET_Packet &net_packet, CClientID sender);
+	virtual		void				reload_game				(NET_Packet &net_packet, CClientID sender);
+	virtual		void				switch_distance			(NET_Packet &net_packet, CClientID sender);
 	virtual		BOOL				CanHaveFriendlyFire		()	{return FALSE;}
 	virtual		void				teleport_object			(NET_Packet &packet, u16 id);
 	virtual		void				add_restriction			(NET_Packet &packet, u16 id);

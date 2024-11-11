@@ -4,7 +4,7 @@
 
 #include "net_server.h"
 
-XRNETSERVER_API ClientID BroadcastCID(0xffffffff);
+XRNETSERVER_API CClientID BroadcastCID(0xffffffff);
 
 void ip_address::set(pcstr src_string)
 {
@@ -45,7 +45,7 @@ IClient::~IClient()
 {
 }
 
-IClient*	IPureServer::ID_to_client		(ClientID ID, bool ScanAll)
+IClient*	IPureServer::ID_to_client		(CClientID ID, bool ScanAll)
 {
 	if ( 0 == ID.value() )			return NULL;
 	csPlayers.Enter	();
@@ -93,17 +93,17 @@ IPureServer::EConnect IPureServer::Connect(pcstr options)
 void IPureServer::Disconnect	()
 { }
 
-void	IPureServer::SendTo_LL(ClientID ID/*DPNID ID*/, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
+void	IPureServer::SendTo_LL(CClientID ID/*DPNID ID*/, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
 {
 	FATAL("");
 }
 
-void	IPureServer::SendTo		(ClientID ID/*DPNID ID*/, NET_Packet& P, u32 dwFlags, u32 dwTimeout)
+void	IPureServer::SendTo		(CClientID ID/*DPNID ID*/, NET_Packet& P, u32 dwFlags, u32 dwTimeout)
 {
 	SendTo_LL( ID, P.B.data, P.B.count, dwFlags, dwTimeout );
 }
 
-void	IPureServer::SendBroadcast_LL(ClientID exclude, void* data, u32 size, u32 dwFlags)
+void	IPureServer::SendBroadcast_LL(CClientID exclude, void* data, u32 size, u32 dwFlags)
 {
 	csPlayers.Enter();
 	
@@ -120,13 +120,13 @@ void	IPureServer::SendBroadcast_LL(ClientID exclude, void* data, u32 size, u32 d
 	csPlayers.Leave	();
 }
 
-void	IPureServer::SendBroadcast(ClientID exclude, NET_Packet& P, u32 dwFlags)
+void	IPureServer::SendBroadcast(CClientID exclude, NET_Packet& P, u32 dwFlags)
 {
 	// Perform broadcasting
 	SendBroadcast_LL( exclude, P.B.data, P.B.count, dwFlags );
 }
 
-u32	IPureServer::OnMessage	(NET_Packet& P, ClientID sender)	// Non-Zero means broadcasting with "flags" as returned
+u32	IPureServer::OnMessage	(NET_Packet& P, CClientID sender)	// Non-Zero means broadcasting with "flags" as returned
 {
 	return 0;
 }

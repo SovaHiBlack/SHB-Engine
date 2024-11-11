@@ -203,7 +203,7 @@ void game_sv_Single::SetEnvironmentGameTimeFactor		(const f32 fTimeFactor)
 //	return(inherited::SetGameTimeFactor(fTimeFactor));
 }
 
-bool game_sv_Single::change_level					(NET_Packet &net_packet, ClientID sender)
+bool game_sv_Single::change_level					(NET_Packet &net_packet, CClientID sender)
 {
 	if (ai().get_alife())
 		return					(alife().change_level(net_packet));
@@ -211,7 +211,7 @@ bool game_sv_Single::change_level					(NET_Packet &net_packet, ClientID sender)
 		return					(true);
 }
 
-void game_sv_Single::save_game						(NET_Packet &net_packet, ClientID sender)
+void game_sv_Single::save_game						(NET_Packet &net_packet, CClientID sender)
 {
 	if (!ai().get_alife())
 		return;
@@ -219,7 +219,7 @@ void game_sv_Single::save_game						(NET_Packet &net_packet, ClientID sender)
 	alife().save				(net_packet);
 }
 
-bool game_sv_Single::load_game					(NET_Packet &net_packet, ClientID sender)
+bool game_sv_Single::load_game					(NET_Packet &net_packet, CClientID sender)
 {
 	if (!ai().get_alife())
 		return					(inherited::load_game(net_packet,sender));
@@ -228,11 +228,11 @@ bool game_sv_Single::load_game					(NET_Packet &net_packet, ClientID sender)
 	return						(alife().load_game(*game_name,true));
 }
 
-void game_sv_Single::reload_game				(NET_Packet &net_packet, ClientID sender)
+void game_sv_Single::reload_game				(NET_Packet &net_packet, CClientID sender)
 {
 }
 
-void game_sv_Single::switch_distance			(NET_Packet &net_packet, ClientID sender)
+void game_sv_Single::switch_distance			(NET_Packet &net_packet, CClientID sender)
 {
 	if (!ai().get_alife())
 		return;

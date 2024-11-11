@@ -14,7 +14,8 @@ using namespace luabind;
 
 struct lanim_wrapper
 {
-	CLAItem* item;
+	CLightAnimItem* item;
+
 public:
 			lanim_wrapper	(pcstr name){load(name);}
 	void	load			(pcstr name)

@@ -5,7 +5,7 @@
 #include "game_base.h"
 #include "alife_space.h"
 #include "script_export_space.h"
-#include "..\xrNetServer\client_id.h"
+#include "..\xrNetServer\ClientID.h"
 
 enum ERoundEnd_Result
 {
@@ -37,7 +37,7 @@ protected:
 //	BOOL							m_bVotingEnabled;
 		
 	//Events
-	virtual		void				OnEvent					(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender );
+	virtual		void				OnEvent					(NET_Packet &tNetPacket, u16 type, u32 time, CClientID sender );
 
 	virtual		void				ReadOptions				(shared_str &options);
 	virtual		void				ConsoleCommands_Create	();
@@ -70,15 +70,14 @@ public:
 	virtual		bool				HasMapRotation			() {return m_bMapRotation; };
 	
 public:
-	virtual		void				OnPlayerConnect			(ClientID id_who);
-	virtual		void				OnPlayerDisconnect		(ClientID id_who, pstr Name, u16 GameID);
-	virtual		void				OnPlayerReady			(ClientID id_who)							   {};
-	virtual		void				OnPlayerEnteredGame		(ClientID id_who)	{};
-	virtual		void				OnPlayerConnectFinished	(ClientID id_who)	{};
-	virtual		void				OnPlayerFire			(ClientID id_who, NET_Packet &P) {};
-	virtual		void				OnPlayer_Sell_Item		(ClientID id_who, NET_Packet &P) {};
-				void				GenerateGameMessage		(NET_Packet &P);
-	
+	virtual		void				OnPlayerConnect			(CClientID id_who);
+	virtual		void				OnPlayerDisconnect		(CClientID id_who, pstr Name, u16 GameID);
+	virtual		void				OnPlayerReady			(CClientID id_who)							   {}
+	virtual		void				OnPlayerEnteredGame		(CClientID id_who)	{}
+	virtual		void				OnPlayerConnectFinished	(CClientID id_who)	{}
+	virtual		void				OnPlayerFire			(CClientID id_who, NET_Packet &P) {}
+	virtual		void				OnPlayer_Sell_Item		(CClientID id_who, NET_Packet &P) {}
+				void				GenerateGameMessage		(NET_Packet &P);	
 
 	virtual		void				OnRoundStart			();									// старт раунда
 	virtual		void				OnRoundEnd				();	//	round_end_reason			// конец раунда
@@ -93,7 +92,7 @@ public:
 	virtual		BOOL				IsVotingEnabled			(u16 flag);
 	virtual		bool				IsVotingActive			()	{ return false; };
 	virtual		void				SetVotingActive			( bool Active )	{ };
-	virtual		void				OnVoteStart				(pcstr VoteCommand, ClientID sender)			{};
+	virtual		void				OnVoteStart				(pcstr VoteCommand, CClientID sender)			{};
 	virtual		void				OnVoteStop				()				{};
 
 public:
@@ -103,13 +102,13 @@ public:
 	virtual		game_PlayerState*	get_eid					(u16 id);
 	virtual		void*				get_client				(u16 id); //if exist
 	virtual		game_PlayerState*	get_it					(u32 it);
-	virtual		game_PlayerState*	get_id					(ClientID id);
+	virtual		game_PlayerState*	get_id					(CClientID id);
 	
 	virtual		pcstr				get_name_it				(u32 it);
-	virtual		pcstr				get_name_id				(ClientID id);
-				pcstr				get_player_name_id		(ClientID id);
-	virtual		u16					get_id_2_eid			(ClientID id);
-	virtual		ClientID			get_it_2_id				(u32 it);
+	virtual		pcstr				get_name_id				(CClientID id);
+				pcstr				get_player_name_id		(CClientID id);
+	virtual		u16					get_id_2_eid			(CClientID id);
+	virtual		CClientID			get_it_2_id				(u32 it);
 	virtual		u32					get_players_count		();
 				CSE_Abstract*		get_entity_from_eid		(u16 id);
 				RPoint				getRP					(u16 team_idx, u32 rp_idx);
@@ -126,14 +125,14 @@ public:
 	
 	virtual		void				OnSwitchPhase			(u32 old_phase, u32 new_phase);	
 				CSE_Abstract*		spawn_begin				(pcstr N);
-				CSE_Abstract*		spawn_end				(CSE_Abstract* E, ClientID id);
+				CSE_Abstract*		spawn_end				(CSE_Abstract* E, CClientID id);
 
 	// Utilities
 				f32							get_option_f			(pcstr lst, pcstr name, f32 def = 0.0f);
 	s32								get_option_i			(pcstr lst, pcstr name, s32 def = 0);
 	string64&						get_option_s			(pcstr lst, pcstr name, pcstr def = 0);
 	virtual		u32					get_alive_count			(u32 team);
-	virtual		xr_vector<u16>*		get_children			(ClientID id_who);
+	virtual		xr_vector<u16>*		get_children			(CClientID id_who);
 	void							u_EventGen				(NET_Packet& P, u16 type, u16 dest	);
 	void							u_EventSend				(NET_Packet& P, u32 dwFlags = DPNSEND_GUARANTEED);
 
@@ -151,17 +150,17 @@ public:
 	// Main
 	virtual		void				Create					(shared_str& options);
 	virtual		void				Update					();
-	virtual		void				net_Export_State		(NET_Packet& P, ClientID id_to);				// full state
-	virtual		void				net_Export_Update		(NET_Packet& P, ClientID id_to, ClientID id);		// just incremental update for specific client
+	virtual		void				net_Export_State		(NET_Packet& P, CClientID id_to);				// full state
+	virtual		void				net_Export_Update		(NET_Packet& P, CClientID id_to, CClientID id);		// just incremental update for specific client
 	virtual		void				net_Export_GameTime		(NET_Packet& P);						// update GameTime only for remote clients
 
-	virtual		bool				change_level			(NET_Packet &net_packet, ClientID sender);
-	virtual		void				save_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		bool				load_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				reload_game				(NET_Packet &net_packet, ClientID sender);
-	virtual		void				switch_distance			(NET_Packet &net_packet, ClientID sender);
+	virtual		bool				change_level			(NET_Packet &net_packet, CClientID sender);
+	virtual		void				save_game				(NET_Packet &net_packet, CClientID sender);
+	virtual		bool				load_game				(NET_Packet &net_packet, CClientID sender);
+	virtual		void				reload_game				(NET_Packet &net_packet, CClientID sender);
+	virtual		void				switch_distance			(NET_Packet &net_packet, CClientID sender);
 
-				void				AddDelayedEvent			(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender );
+				void				AddDelayedEvent			(NET_Packet &tNetPacket, u16 type, u32 time, CClientID sender );
 				void				ProcessDelayedEvent		();
 	virtual		BOOL				isFriendlyFireEnabled	()	{return FALSE;};
 	virtual		BOOL				CanHaveFriendlyFire		()	= 0;

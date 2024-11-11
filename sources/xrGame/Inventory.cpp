@@ -723,8 +723,7 @@ PIItem CInventory::Same(const PIItem pIItem, bool bSearchRuck) const
 	return NULL;
 }
 
-//ищем на поясе вещь для слота 
-
+// ищем на поясе вещь для слота
 PIItem CInventory::SameSlot(const u32 slot, PIItem pIItem, bool bSearchRuck) const
 {
 	if(slot == NO_ACTIVE_SLOT) 	return NULL;
@@ -740,7 +739,7 @@ PIItem CInventory::SameSlot(const u32 slot, PIItem pIItem, bool bSearchRuck) con
 	return NULL;
 }
 
-//найти в инвенторе вещь с указанным именем
+// найти в инвенторе вещь с указанным именем
 PIItem CInventory::Get(pcstr name, bool bSearchRuck) const
 {
 	const TIItemContainer &list = bSearchRuck ? m_ruck : m_belt;

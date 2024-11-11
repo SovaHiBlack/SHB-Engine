@@ -189,7 +189,7 @@ CSE_Abstract *CALifeSimulator__spawn_item2		(CALifeSimulator *self, pcstr sectio
 	self->server().FreeID				(item->ID,0);
 	F_entity_Destroy					(item);
 
-	ClientID							clientID;
+	CClientID							clientID;
 	clientID.set						(0xffff);
 
 	u16									dummy;
@@ -237,7 +237,7 @@ CSE_Abstract *CALifeSimulator__spawn_ammo		(CALifeSimulator *self, pcstr section
 	self->server().FreeID				(item->ID,0);
 	F_entity_Destroy					(item);
 
-	ClientID							clientID;
+	CClientID							clientID;
 	clientID.set						(0xffff);
 
 	u16									dummy;

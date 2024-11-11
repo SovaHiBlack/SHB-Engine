@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "..\XR_3DA\xr_effgamma.h"
+#include "..\XR_3DA\GammaControl.h"
 #include "..\xrRender\tga.h"
 #include "..\XR_3DA\xrImage_Resampler.h"
 

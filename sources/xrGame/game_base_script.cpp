@@ -2,10 +2,9 @@
 
 #include "game_base.h"
 #include "xrServer_script_macroses.h"
-#include "..\xrNetServer\client_id.h"
+#include "..\xrNetServer\ClientID.h"
 
 using namespace luabind;
-
 
 template <typename T>
 struct CWrapperBase : public T, public luabind::wrap_base {
@@ -51,13 +50,11 @@ void game_PlayerState::script_register(lua_State *L)
 			.def("clear",						&BaseType::clear, &WrapType::clear_static)
 			.def("net_Export",					&BaseType::net_Export, &WrapType::net_Export_static)
 			.def("net_Import",					&BaseType::net_Import, &WrapType::net_Import_static)
-			
 		];
 }
 
 void game_GameState::script_register(lua_State *L)
 {
-
 	module(L)
 		[
 			luabind::class_< game_GameState, DLL_Pure >("game_GameState")
@@ -72,5 +69,4 @@ void game_GameState::script_register(lua_State *L)
 			.def("Round",						&game_GameState::Round)
 			.def("StartTime",					&game_GameState::StartTime)
 		];
-
 }

@@ -11,7 +11,7 @@
 #include "ai_space.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
-#include "..\XR_3DA\XR_IOConsole.h"
+#include "..\XR_3DA\Console.h"
 #include "ui/UIInventoryUtilities.h"//
 
 xrClientData::xrClientData	():IClient(Device.GetTimerGlobal())
@@ -82,7 +82,7 @@ void		xrServer::client_Replicate	()
 {
 }
 
-IClient*	xrServer::client_Find_Get	(ClientID ID)
+IClient*	xrServer::client_Find_Get	(CClientID ID)
 {
 	ip_address				cAddress;
 
@@ -203,14 +203,12 @@ void xrServer::Update	()
 		u16					ID;
 		Packet.r_begin		(ID);
 		R_ASSERT(M_SPAWN==ID);
-		ClientID clientID; 
+		CClientID clientID;
 		clientID.set(0xffff);
 		Process_spawn		(Packet,clientID);
 	}
 
-
 	SendUpdatesToAll();
-
 
 	if (game->sv_force_sync)	Perform_game_export();
 
@@ -363,7 +361,7 @@ void console_log_cb(pcstr text)
 	_tmp_log.push_back	(text);
 }
 
-u32 xrServer::OnDelayedMessage	(NET_Packet& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
+u32 xrServer::OnDelayedMessage	(NET_Packet& P, CClientID sender)			// Non-Zero means broadcasting with "flags" as returned
 {
 	if (g_pGameLevel && Level().IsDemoSave()) 
 		Level().Demo_StoreServerData(P.B.data, P.B.count);
@@ -416,7 +414,7 @@ u32 xrServer::OnDelayedMessage	(NET_Packet& P, ClientID sender)			// Non-Zero me
 }
 
 extern	f32	g_fCatchObjectTime;
-u32 xrServer::OnMessage	(NET_Packet& P, ClientID sender)			// Non-Zero means broadcasting with "flags" as returned
+u32 xrServer::OnMessage	(NET_Packet& P, CClientID sender)			// Non-Zero means broadcasting with "flags" as returned
 {
 	if (g_pGameLevel && Level().IsDemoSave()) Level().Demo_StoreServerData(P.B.data, P.B.count);
 	u16			type;
@@ -551,7 +549,8 @@ u32 xrServer::OnMessage	(NET_Packet& P, ClientID sender)			// Non-Zero means bro
 		}break;
 	case M_CHANGE_LEVEL_GAME:
 		{
-			ClientID CID; CID.set		(0xffffffff);
+		CClientID CID;
+		CID.set		(0xffffffff);
 			SendBroadcast				(CID,P,net_flags(TRUE,TRUE));
 		}break;
 	case M_CL_AUTH:
@@ -642,7 +641,7 @@ bool xrServer::CheckAdminRights(const shared_str& user, const shared_str& pass, 
 	return				res;
 }
 
-void xrServer::SendTo_LL			(ClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
+void xrServer::SendTo_LL			(CClientID ID, void* data, u32 size, u32 dwFlags, u32 dwTimeout)
 {
 	if (SV_Client && SV_Client->ID==ID)
 	{
@@ -841,7 +840,7 @@ void xrServer::ProceedDelayedPackets()
 	DelayedPackestCS.Leave();
 };
 
-void xrServer::AddDelayedPacket	(NET_Packet& Packet, ClientID Sender)
+void xrServer::AddDelayedPacket	(NET_Packet& Packet, CClientID Sender)
 {
 	DelayedPackestCS.Enter();
 

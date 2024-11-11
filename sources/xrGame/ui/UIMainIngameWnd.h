@@ -18,7 +18,7 @@ extern s32				g_bHudAdjustMode;
 extern f32			g_fHudAdjustValue;
 
 class					CUIPdaMsgListItem;
-class					CLAItem;
+class CLightAnimItem;
 class					CUIZoneMap;
 class					CUIArtefactPanel;
 class					CUIScrollView;

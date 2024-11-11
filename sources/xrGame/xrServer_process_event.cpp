@@ -10,7 +10,7 @@
 #include "xrServer_Objects_ALife_Items.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
-void xrServer::Process_event	(NET_Packet& P, ClientID sender)
+void xrServer::Process_event	(NET_Packet& P, CClientID sender)
 {
 #	ifdef SLOW_VERIFY_ENTITIES
 			VERIFY					(verify_entities());
@@ -132,7 +132,7 @@ void xrServer::Process_event	(NET_Packet& P, ClientID sender)
 				P.B.count -= 4;
 				P.w_u32(sender.value());
 			};
-			game->AddDelayedEvent(P,GAME_EVENT_ON_HIT, 0, ClientID() );
+			game->AddDelayedEvent(P,GAME_EVENT_ON_HIT, 0, CClientID() );
 		} break;
 	case GE_ASSIGN_KILLER: {
 		u16							id_src;

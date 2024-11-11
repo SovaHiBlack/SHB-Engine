@@ -218,4 +218,3 @@ BOOL CTheoraStream::Load(pcstr fname)
 	Reset				();
 	return				res;
 }
-

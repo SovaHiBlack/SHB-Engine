@@ -14,25 +14,12 @@
 #include "ai_space.h"
 #include "script_engine.h"
 
-//#define USE_WRITER_READER
 class CSE_Abstract;
 class NET_Packet;
 class CSE_ALifeMonsterAbstract;
 class CALifeSmartTerrainTask;
 
 #define INHERIT_PURE
-
-//#ifndef USE_WRITER_READER
-//#	define INHERIT_PURE \
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			NET_Packet)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			NET_Packet)
-//#else
-//#	define INHERIT_PURE \
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			NET_Packet)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			NET_Packet)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(save,			IWriter)\
-//	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1	(load,			IReader)
-//#endif
 
 #define INHERIT_ABSTRACT \
 	INHERIT_PURE\
@@ -116,7 +103,6 @@ template <typename T>
 struct CWrapperAbstract : public T, public luabind::wrap_base {
 	typedef T							inherited;
 	typedef CWrapperAbstract<T>			self_type;
-
 	CWrapperAbstract					(pcstr section) : inherited(section){}
 	INHERIT_ABSTRACT;
 };
@@ -171,20 +157,6 @@ struct CWrapperAbstractItem : public T, public luabind::wrap_base {
 
 #define luabind_virtual_pure(a,b) \
 	.def(	constructor<pcstr>())
-
-//#ifndef USE_WRITER_READER
-//#	define luabind_virtual_pure(a,b) \
-//		.def(	constructor<pcstr>()) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,NET_Packet&,NET_Packet*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,NET_Packet&,NET_Packet*) 
-//#else
-//#	define luabind_virtual_pure(a,b) \
-//		.def(	constructor<pcstr>()) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,NET_Packet&,NET_Packet*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,NET_Packet&,NET_Packet*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,save,void,IWriter&,IWriter*) \
-//		DEFINE_LUABIND_VIRTUAL_FUNCTION_EXPLICIT_1(a,b,load,void,IReader&,IReader*)
-//#endif
 
 #define luabind_virtual_abstract(a,b) \
 	DEFINE_LUABIND_VIRTUAL_FUNCTION(a,b,FillProps	) \
@@ -451,4 +423,3 @@ struct CWrapperAbstractItem : public T, public luabind::wrap_base {
 #define luabind_class_item4(a,b,c,d,e,f) \
 	DEFINE_LUABIND_CLASS_WRAPPER_4(a,CWrapperAbstractItem<a>,b,c,d,e,f) \
 	luabind_virtual_Item(a,CWrapperAbstractItem<a>)
-

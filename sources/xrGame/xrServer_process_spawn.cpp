@@ -7,7 +7,7 @@
 #	include "xrserver_objects_alife_items.h"
 #endif
 
-CSE_Abstract* xrServer::Process_spawn(NET_Packet& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent, CSE_Abstract* tpExistedEntity)
+CSE_Abstract* xrServer::Process_spawn(NET_Packet& P, CClientID sender, BOOL bSpawnWithClientsMainEntityAsParent, CSE_Abstract* tpExistedEntity)
 {
 	// create server entity
 	xrClientData* CL	= ID_to_client	(sender);
@@ -142,7 +142,8 @@ CSE_Abstract* xrServer::Process_spawn(NET_Packet& P, ClientID sender, BOOL bSpaw
 		E->Spawn_Write		(Packet,FALSE	);
 		if (E->s_flags.is(M_SPAWN_UPDATE))
 			E->UPDATE_Write	(Packet);
-		ClientID clientID;clientID.set(0);
+		CClientID clientID;
+		clientID.set(0);
 		SendBroadcast		(clientID, Packet, net_flags(TRUE,TRUE));
 	}
 	if (!tpExistedEntity)

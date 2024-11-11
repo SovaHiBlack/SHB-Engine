@@ -5,7 +5,8 @@
 class ENGINE_API CAviPlayerCustom;
 class ENGINE_API CTheoraSurface;
 
-class ENGINE_API CTexture			: public xr_resource_named				{
+class ENGINE_API CTexture			: public xr_resource_named
+{
 public:
 	struct 
 	{

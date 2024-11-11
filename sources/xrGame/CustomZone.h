@@ -4,7 +4,7 @@
 #include "..\XR_3DA\feel_touch.h"
 
 class CActor;
-class CLAItem;
+class CLightAnimItem;
 class CArtefact;
 class CParticlesObject;
 class CZoneEffector;
@@ -32,7 +32,6 @@ struct SZoneObjectInfo
 	bool operator == (const CGameObject* O) const {return object==O;}
 };
 
-
 class CCustomZone :
 	public CSpaceRestrictor,
 	public Feel::Touch
@@ -44,7 +43,6 @@ public:
 	CZoneEffector*		m_effector;
 
 public:
-
 						CCustomZone						(void);
 	virtual				~CCustomZone					();
 
@@ -92,7 +90,8 @@ public:
 	} EZoneState;
 
 protected:
-	enum EZoneFlags{
+	enum EZoneFlags
+	{
 		eIgnoreNonAlive			=(1<<0),
 		eIgnoreSmall			=(1<<1),
 		eIgnoreArtefact			=(1<<2),
@@ -121,12 +120,9 @@ protected:
 	f32					m_fEffectiveRadius;
 
 	//тип наносимого хита
-	ALife::EHitType		m_eHitTypeBlowout;
-
-	
+	ALife::EHitType		m_eHitTypeBlowout;	
 
 	EZoneState			m_eZoneState;
-
 
 	//текущее время пребывания зоны в определенном состоянии 
 	int					m_iStateTime;
@@ -157,14 +153,14 @@ protected:
 				void		UpdateOnOffState			();
 	virtual		void		GoEnabledState				();
 	virtual		void		GoDisabledState				();
+
 public:
-				bool		IsEnabled					()	{return m_eZoneState != eZoneStateDisabled; };
+				bool		IsEnabled					()	{return m_eZoneState != eZoneStateDisabled; }
 				void		ZoneEnable					();	
 				void		ZoneDisable					();
 	EZoneState				ZoneState					() {return m_eZoneState;}
+
 protected:
-
-
 	//воздействие зоной на объект
 	virtual		void		Affect						(SZoneObjectInfo* O)  {}
 
@@ -178,7 +174,6 @@ protected:
 //	bool					m_bZoneReady;
 	//если в зоне есть не disabled объекты
 	bool					m_bZoneActive;
-
 
 	//параметры для выброса, с какой задержкой 
 	//включать эффекты и логику
@@ -201,7 +196,6 @@ protected:
 	void					StopWind					();
 	void					UpdateWind					();
 
-
 	//время, через которое, зона перестает реагировать 
 	//на объект мертвый объект (-1 если не указано)
 	int						m_iDisableHitTime;
@@ -218,7 +212,6 @@ protected:
 	shared_str				m_sBlowoutParticles;
 	shared_str				m_sAccumParticles;
 	shared_str				m_sAwakingParticles;
-
 
 	//появление большого и мальнекого объекта в зоне
 	shared_str				m_sEntranceParticlesSmall;
@@ -250,7 +243,7 @@ protected:
 	f32						m_fIdleLightRange;
 	f32						m_fIdleLightHeight;
 	f32						m_fIdleLightRangeDelta;
-	CLAItem*				m_pIdleLAnim;
+	CLightAnimItem*				m_pIdleLAnim;
 
 	void					StartIdleLight				();
 	void					StopIdleLight				();

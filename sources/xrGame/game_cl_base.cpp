@@ -93,7 +93,7 @@ void	game_cl_GameState::net_import_state	(NET_Packet& P)
 	PLAYERS_MAP_IT I;
 	for (u16 p_it=0; p_it<p_count; ++p_it)
 	{
-		ClientID			ID;
+		CClientID			ID;
 		P.r_clientID		(ID);
 		
 		game_PlayerState*   IP;
@@ -127,7 +127,7 @@ void	game_cl_GameState::net_import_state	(NET_Packet& P)
 void	game_cl_GameState::net_import_update(NET_Packet& P)
 {
 	// Read
-	ClientID			ID;
+	CClientID			ID;
 	P.r_clientID		(ID);
 
 	// Update
@@ -228,7 +228,7 @@ game_PlayerState* game_cl_GameState::GetPlayerByOrderID		(u32 idx)
 	return ps;
 }
 
-ClientID game_cl_GameState::GetClientIDByOrderID	(u32 idx)
+CClientID game_cl_GameState::GetClientIDByOrderID	(u32 idx)
 {
 	PLAYERS_MAP_IT I = players.begin();
 	std::advance(I,idx);

@@ -2,11 +2,12 @@
 
 #include "UIFrameLineWnd.h"
 #include "UILines.h"
-class CLAItem;
+
+class CLightAnimItem;
 
 class CUILabel : public CUIFrameLineWnd, public CUILinesOwner
 {
-	CLAItem* m_lanim;
+	CLightAnimItem* m_lanim;
 	f32					m_lainm_start_time;
 
 public:

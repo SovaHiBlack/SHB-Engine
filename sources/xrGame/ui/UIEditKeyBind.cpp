@@ -4,7 +4,7 @@
 #include "UIColorAnimatorWrapper.h"//
 #include "../xr_level_controller.h"
 #include "../object_broker.h"
-#include "../..\XR_3DA\xr_ioconsole.h"
+#include "../..\XR_3DA\Console.h"
 
 CUIEditKeyBind::CUIEditKeyBind(bool bPrim)
 {

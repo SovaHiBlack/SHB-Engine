@@ -1,6 +1,6 @@
 #pragma once
 
-enum	EGameActions
+enum EGameActions
 {
 	kLEFT,
 	kRIGHT,
@@ -11,15 +11,15 @@ enum	EGameActions
 	kCROUCH_TOGGLE,
 	kACCEL,
 	kSPRINT_TOGGLE,
-						
+
 	kFWD,
 	kBACK,
 	kL_STRAFE,
 	kR_STRAFE,
-						
+
 	kL_LOOKOUT,
 	kR_LOOKOUT,
-						
+
 	kENGINE,
 	kCAM_1,
 	kCAM_2,
@@ -27,7 +27,7 @@ enum	EGameActions
 	kCAM_4,
 	kCAM_ZOOM_IN,
 	kCAM_ZOOM_OUT,
-						
+
 	kTORCH,
 	kNIGHT_VISION,
 	kWPN_1,
@@ -46,7 +46,7 @@ enum	EGameActions
 	kWPN_FUNC,
 	kWPN_FIREMODE_PREV,
 	kWPN_FIREMODE_NEXT,
-						
+
 	kPAUSE,
 	kDROP,
 	kUSE,
@@ -64,15 +64,15 @@ enum	EGameActions
 	kMAP,
 	kCONTACTS,
 	kEXT_1,
-						
+
 	kVOTE_BEGIN,
 	kVOTE,
 	kVOTEYES,
 	kVOTENO,
-						
+
 	kNEXT_SLOT,
 	kPREV_SLOT,
-						
+
 	kSPEECH_MENU_0,
 	kSPEECH_MENU_1,
 	kSPEECH_MENU_2,
@@ -80,31 +80,32 @@ enum	EGameActions
 	kSPEECH_MENU_4,
 	kSPEECH_MENU_5,
 	kSPEECH_MENU_6,
-	kSPEECH_MENU_7,		
-	kSPEECH_MENU_8,		
+	kSPEECH_MENU_7,
+	kSPEECH_MENU_8,
 	kSPEECH_MENU_9,
-						
+
 	kUSE_BANDAGE,
-	kUSE_MEDKIT,		
-	
+	kUSE_MEDKIT,
+
 	kQUICK_SAVE,
 	kQUICK_LOAD,
 
 	kLASTACTION,
 	kNOTBINDED,
-	kFORCEDWORD		= u32(-1)
+	kFORCEDWORD = u32(-1)
 };
 
-struct _keyboard		
+struct _keyboard
 {
 	pcstr		key_name;
 	int			dik;
 	xr_string	key_local_name;
 };
-enum _key_group{
-	_both	=	(1<<0)			,
-	_sp		=	_both | (1<<1)	,
-	_mp		=	_both | (1<<2)	,
+enum _key_group
+{
+	_both = (1 << 0),
+	_sp = _both | (1 << 1),
+	_mp = _both | (1 << 2),
 };
 
 extern _key_group g_current_keygroup;
@@ -118,50 +119,50 @@ struct _action
 	_key_group		key_group;
 };
 
-pcstr			dik_to_keyname			(int _dik);
-int				keyname_to_dik			(pcstr _name);
-_keyboard*		keyname_to_ptr			(pcstr _name);
-_keyboard*		dik_to_ptr				(int _dik, bool bSafe);
+pcstr			dik_to_keyname(s32 _dik);
+s32				keyname_to_dik(pcstr _name);
+_keyboard* keyname_to_ptr(pcstr _name);
+_keyboard* dik_to_ptr(s32 _dik, bool bSafe);
 
-pcstr			id_to_action_name		(EGameActions _id);
-EGameActions	action_name_to_id		(pcstr _name);
-_action*		action_name_to_ptr		(pcstr _name);
+pcstr			id_to_action_name(EGameActions _id);
+EGameActions	action_name_to_id(pcstr _name);
+_action* action_name_to_ptr(pcstr _name);
 
-extern _action		actions		[];
-//extern _keyboard	keyboards	[];
-//extern xr_vector< _keyboard >	keyboards;
+extern _action		actions[ ];
 
 #define bindings_count kLASTACTION
 struct _binding
 {
-	_action*		m_action;
-	_keyboard*		m_keyboard[2];
+	_action* m_action;
+	_keyboard* m_keyboard[2];
 };
 
-extern _binding g_key_bindings[];
+extern _binding g_key_bindings[ ];
 
-bool				is_binded			(EGameActions action_id, int dik);
-int					get_action_dik		(EGameActions action_id);
-EGameActions		get_binded_action	(int dik);
+bool				is_binded(EGameActions action_id, s32 dik);
+int					get_action_dik(EGameActions action_id);
+EGameActions		get_binded_action(s32 dik);
 
-extern void		CCC_RegisterInput();
+extern void		CCC_RegisterInput( );
 
-struct _conCmd	{
+struct _conCmd
+{
 	shared_str	cmd;
 };
 
-class ConsoleBindCmds{
+class ConsoleBindCmds
+{
 public:
-	xr_map<int,_conCmd>		m_bindConsoleCmds;
+	xr_map<s32, _conCmd>		m_bindConsoleCmds;
 
-	void 	bind			(int dik, pcstr N);
-	void 	unbind			(int dik);
-	bool 	execute			(int dik);
-	void 	clear			();
-	void 	save			(IWriter* F);
+	void	bind(s32 dik, pcstr N);
+	void	unbind(s32 dik);
+	bool	execute(s32 dik);
+	void	clear( );
+	void	save(IWriter* F);
 };
 
-void GetActionAllBinding	(pcstr action, pstr dst_buff, int dst_buff_sz);
+void GetActionAllBinding(pcstr action, pstr dst_buff, s32 dst_buff_sz);
 
 extern ConsoleBindCmds		bindConsoleCmds;
 

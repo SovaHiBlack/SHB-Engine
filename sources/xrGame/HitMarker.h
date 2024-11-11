@@ -1,14 +1,14 @@
 #pragma once
 
 class CUIStaticItem;
-class CLAItem;
+class CLightAnimItem;
 
 struct SHitMark
 {
 	CUIStaticItem* m_UIStaticItem;
 	f32			m_StartTime;
 	f32			m_HitDirection;
-	CLAItem* m_lanim;
+	CLightAnimItem* m_lanim;
 
 	SHitMark(const ref_shader& sh, const fVector3& dir);
 	~SHitMark( );

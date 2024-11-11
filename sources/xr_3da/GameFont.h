@@ -125,7 +125,7 @@ public:
 
 	virtual void			OnRender( );
 
-	IC	void				Clear( )
+	IC void				Clear( )
 	{
 		strings.clear( );
 	}

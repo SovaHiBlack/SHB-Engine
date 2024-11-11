@@ -12,7 +12,7 @@
 #include "object_interfaces.h"
 #include "script_value_container.h"
 #include "alife_space.h"
-#include "..\xrNetServer\client_id.h"
+#include "..\xrNetServer\ClientID.h"
 
 class NET_Packet;
 class xrClientData;
@@ -105,7 +105,7 @@ public:
 	
 									CSE_Abstract	(pcstr caSection);
 	virtual							~CSE_Abstract	();
-	virtual void					OnEvent			(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender ){};
+	virtual void					OnEvent			(NET_Packet &tNetPacket, u16 type, u32 time, CClientID sender ){};
 	virtual void					FillProps		(pcstr pref, PropItemVec &items);
 	virtual BOOL					Net_Relevant	(){return TRUE;};
 	//

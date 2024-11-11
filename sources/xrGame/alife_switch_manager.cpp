@@ -57,7 +57,7 @@ void CALifeSwitchManager::add_online(CSE_ALifeDynamicObject *object, bool update
 	CSE_Abstract					*l_tpAbstract = smart_cast<CSE_Abstract*>(object);
 	server().entity_Destroy			(l_tpAbstract);
 	object->s_flags.or				(M_SPAWN_UPDATE);
-	ClientID						clientID;
+	CClientID						clientID;
 	clientID.set					(server().GetServerClient() ? server().GetServerClient()->ID.value() : 0);
 	server().Process_spawn			(tNetPacket,clientID,FALSE,l_tpAbstract);
 	object->s_flags.and				(u16(-1) ^ M_SPAWN_UPDATE);

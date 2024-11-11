@@ -2,7 +2,7 @@
 
 #include "gamepersistent.h"
 #include "..\XR_3DA\mesh.h"
-#include "..\XR_3DA\xr_ioconsole.h"
+#include "..\XR_3DA\Console.h"
 #include "gamemtllib.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "profiler.h"

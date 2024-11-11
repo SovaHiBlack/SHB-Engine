@@ -79,5 +79,5 @@ protected:
 
 	//	u32	m_cursorColor;
 
-	CLAItem* m_lanim;
+	CLightAnimItem* m_lanim;
 };

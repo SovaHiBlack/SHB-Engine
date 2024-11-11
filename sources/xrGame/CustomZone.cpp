@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "..\XR_3DA\xr_ioconsole.h"
+#include "..\XR_3DA\Console.h"
 #include "customzone.h"
 #include "Hit.h"
 #include "PHDestroyable.h"

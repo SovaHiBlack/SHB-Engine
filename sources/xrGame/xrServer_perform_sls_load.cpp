@@ -14,7 +14,7 @@ void xrServer::SLS_Load	(IReader& fs)
 		F->r			(P.B.data,P.B.count);
 		P.r_begin		(u_id);
 		R_ASSERT		(M_SPAWN == u_id);
-		ClientID		clientID;
+		CClientID		clientID;
 		clientID.set	(0);
 		Process_spawn	(P,clientID);
 

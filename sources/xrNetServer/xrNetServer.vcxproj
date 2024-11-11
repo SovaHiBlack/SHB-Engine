@@ -166,7 +166,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="client_id.h" />
+    <ClInclude Include="ClientID.h" />
     <ClInclude Include="NET_Client.h" />
     <ClInclude Include="NET_Messages.h" />
     <ClInclude Include="NET_Server.h" />
@@ -186,6 +186,9 @@
     <ProjectReference Include="..\xrCore\xrCore.vcxproj">
       <Project>{a0f7d1fb-59a7-4717-a7e4-96f37e91998e}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

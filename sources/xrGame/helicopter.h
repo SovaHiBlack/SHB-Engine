@@ -15,7 +15,7 @@
 #include "Explosive.h"
 
 class CScriptGameObject;
-class CLAItem;
+class CLightAnimItem;
 class CHelicopterMovManager;
 class CHelicopter;
 
@@ -246,7 +246,7 @@ protected:
 	ref_sound						m_brokenSound;
 	//	ref_sound						m_explodeSound;
 	ref_light						m_light_render;
-	CLAItem* m_lanim;
+	CLightAnimItem* m_lanim;
 	u16								m_light_bone, m_smoke_bone;
 	f32							m_light_range, m_light_brightness;
 	fColor							m_light_color;

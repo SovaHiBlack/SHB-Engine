@@ -13,4 +13,4 @@
 #endif
 
 
-XRNETSERVER_API extern ClientID BroadcastCID;
+XRNETSERVER_API extern CClientID BroadcastCID;

@@ -2,7 +2,7 @@
 
 #include "script_object.h"
 
-class CLAItem;
+class CLightAnimItem;
 
 class CProjector: public CScriptObject {
 	typedef	CScriptObject		inherited;
@@ -11,7 +11,7 @@ class CProjector: public CScriptObject {
 	friend void		BoneCallbackY(CBoneInstance *B);
 
 	f32			fBrightness;
-	CLAItem*		lanim;
+	CLightAnimItem*		lanim;
 	fVector3			m_pos;
 	ref_light		light_render;
 	ref_glow		glow_render;

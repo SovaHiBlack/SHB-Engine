@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "console_registrator.h"
-#include "..\XR_3DA\xr_ioconsole.h"
+#include "..\XR_3DA\Console.h"
 
 using namespace luabind;
 

@@ -10,7 +10,8 @@
 #include "igame_persistent.h"
 
 #include "xr_input.h"
-#include "xr_ioconsole.h"
+#include "Console.h"
+#include "ConsoleCommand.h"
 #include "x_ray.h"
 #include "std_classes.h"
 #include "GameFont.h"
@@ -376,8 +377,6 @@ struct damn_keys_filter {
 #undef dwStickyKeysStructSize
 #undef dwFilterKeysStructSize
 #undef dwToggleKeysStructSize
-
-#include "xr_ioc_cmd.h"
 
 typedef void DUMMY_STUFF (const void*,const u32&,void*);
 CORE_API DUMMY_STUFF	*g_temporary_stuff;

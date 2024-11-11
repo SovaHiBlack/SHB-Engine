@@ -5,16 +5,16 @@
 #include "hudsound.h"
 #include "script_export_space.h"
 
-class CLAItem;
+class CLightAnimItem;
 class CMonsterEffector;
 
 class CTorch : public CInventoryItemObject {
 private:
-    typedef	CInventoryItemObject	inherited;
+	typedef	CInventoryItemObject	inherited;
 
 protected:
 	f32			fBrightness;
-	CLAItem*		lanim;
+	CLightAnimItem*		lanim;
 	f32			time2hide;
 
 	u16				guid_bone;

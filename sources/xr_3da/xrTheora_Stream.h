@@ -25,6 +25,7 @@ class ENGINE_API CTheoraStream{
 protected:
 	int					ReadData			();
 	BOOL				ParseHeaders		();
+
 public:
 						CTheoraStream		();
 	virtual				~CTheoraStream		();

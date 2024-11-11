@@ -31,6 +31,7 @@ public:
 	DEFINE_MAP_PRED(pcstr,SVS*,				map_VS,			map_VSIt,			str_pred);
 	DEFINE_MAP_PRED(pcstr,SPS*,				map_PS,			map_PSIt,			str_pred);
 	DEFINE_MAP_PRED(pcstr,texture_detail,	map_TD,			map_TDIt,			str_pred);
+
 private:
 	// data
 	map_Blender											m_blenders;
@@ -60,15 +61,17 @@ private:
 	
 	xr_vector<ref_texture>								m_necessary;
 	// misc
+
 public:
-	CTextureDescrMngr									m_textures_description;
-//.	CInifile*											m_textures_description;
+	CTextureDescrManager								m_textures_description;
 	xr_vector<std::pair<shared_str,R_constant_setup*> >	v_constant_setup;
 	lua_State*											LSVM;
 	BOOL												bDeferredLoad;
+
 private:
 	void							LS_Load				();
 	void							LS_Unload			();
+
 public:
 	// Miscelaneous
 	void							_ParseList			(sh_list& dest, pcstr names);
@@ -135,7 +138,7 @@ public:
 	Shader*							_lua_Create			(pcstr		s_shader, pcstr s_textures);
 	BOOL							_lua_HasShader		(pcstr		s_shader);
 
-	CResourceManager						()	: bDeferredLoad(TRUE)/*, m_description(0)*/	{	}
+	CResourceManager						()	: bDeferredLoad(TRUE) {	}
 	~CResourceManager						()	;
 
 	void			OnDeviceCreate			(IReader* F);
@@ -156,7 +159,6 @@ public:
 	void			DeleteGeom				(const SGeometry* VS		);
 	void			DeferredLoad			(BOOL E)					{ bDeferredLoad=E;	}
 	void			DeferredUpload			();
-//.	void			DeferredUnload			();
 	void			Evict					();
 	void			StoreNecessaryTextures	();
 	void			DestroyNecessaryTextures();

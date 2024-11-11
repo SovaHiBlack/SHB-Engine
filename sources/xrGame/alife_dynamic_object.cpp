@@ -183,7 +183,7 @@ void CSE_InventoryBox::add_online	(const bool &update_registries)
 	CSE_ALifeDynamicObjectVisual		*object = (this);
 
 	NET_Packet					tNetPacket;
-	ClientID					clientID;
+	CClientID					clientID;
 	clientID.set				(object->alife().server().GetServerClient() ? object->alife().server().GetServerClient()->ID.value() : 0);
 
 	ALife::OBJECT_IT			I = object->children.begin();

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "game_base.h"
-#include "..\xrNetServer\client_id.h"
+#include "..\xrNetServer\ClientID.h"
 #include "WeaponAmmo.h"
 //#include "Level_Bullet_Manager.h"
 
@@ -36,15 +36,14 @@ protected:
 	bool								m_bServerControlHits;	
 
 public:
-	typedef xr_map<ClientID,game_PlayerState*>	PLAYERS_MAP;
+	typedef xr_map<CClientID,game_PlayerState*>	PLAYERS_MAP;
 	typedef PLAYERS_MAP::iterator				PLAYERS_MAP_IT;
 	typedef PLAYERS_MAP::const_iterator			PLAYERS_MAP_CIT;
 
 	PLAYERS_MAP							players;
-	ClientID							local_svdpnid;
+	CClientID							local_svdpnid;
 	game_PlayerState*					local_player;
 //.	xr_vector<CGameObject*>				targets;
-
 
 	WeaponUsageStatistic				*m_WeaponUsageStatistic;	
 	virtual		void				reset_ui				();
@@ -90,7 +89,7 @@ public:
 
 				game_PlayerState*	GetPlayerByGameID		(u32 GameID);
 				game_PlayerState*	GetPlayerByOrderID		(u32 id);
-				ClientID			GetClientIDByOrderID	(u32 id);
+				CClientID			GetClientIDByOrderID	(u32 id);
 				u32					GetPlayersCount			() const {return players.size();};
 	virtual		CUIGameCustom*		createGameUI			(){return NULL;};
 	virtual		void				GetMapEntities			(xr_vector<SZoneMapEntityData>& dst)	{};

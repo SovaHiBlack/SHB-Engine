@@ -19,7 +19,7 @@ void xrServer::OnCL_Disconnected	(IClient* CL)
 	P.w_u16( (NULL != xrCData) ? xrCData->ps->GameID : 0);
 	P.r_pos = 0;
 	
-	ClientID clientID;
+	CClientID clientID;
 	clientID.set(0);
 	
 	if (xrCData->owner != 0)

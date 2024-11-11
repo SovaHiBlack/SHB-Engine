@@ -264,10 +264,10 @@
     <ClInclude Include="Feel_Vision.h">
       <Filter>Game API\Feelers</Filter>
     </ClInclude>
-    <ClInclude Include="FDemoPlay.h">
+    <ClInclude Include="DemoPlay.h">
       <Filter>Game API\Demo</Filter>
     </ClInclude>
-    <ClInclude Include="FDemoRecord.h">
+    <ClInclude Include="DemoRecord.h">
       <Filter>Game API\Demo</Filter>
     </ClInclude>
     <ClInclude Include="BasicVisual.h">
@@ -330,7 +330,7 @@
     <ClInclude Include="HWCaps.h">
       <Filter>Render\Execution &amp; 3D\HW</Filter>
     </ClInclude>
-    <ClInclude Include="xr_effgamma.h">
+    <ClInclude Include="GammaControl.h">
       <Filter>Render\Execution &amp; 3D\Gamma</Filter>
     </ClInclude>
     <ClInclude Include="WaveForm.h">
@@ -453,10 +453,10 @@
     <ClInclude Include="xrXRC.h">
       <Filter>Engine\Collision Core</Filter>
     </ClInclude>
-    <ClInclude Include="xr_ioc_cmd.h">
+    <ClInclude Include="ConsoleCommand.h">
       <Filter>Engine\Console</Filter>
     </ClInclude>
-    <ClInclude Include="XR_IOConsole.h">
+    <ClInclude Include="Console.h">
       <Filter>Engine\Console</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
@@ -611,10 +611,10 @@
     <ClCompile Include="Feel_Vision.cpp">
       <Filter>Game API\Feelers</Filter>
     </ClCompile>
-    <ClCompile Include="FDemoPlay.cpp">
+    <ClCompile Include="DemoPlay.cpp">
       <Filter>Game API\Demo</Filter>
     </ClCompile>
-    <ClCompile Include="FDemoRecord.cpp">
+    <ClCompile Include="DemoRecord.cpp">
       <Filter>Game API\Demo</Filter>
     </ClCompile>
     <ClCompile Include="BasicVisual.cpp">
@@ -692,7 +692,7 @@
     <ClCompile Include="HWCaps.cpp">
       <Filter>Render\Execution &amp; 3D\HW</Filter>
     </ClCompile>
-    <ClCompile Include="xr_effgamma.cpp">
+    <ClCompile Include="GammaControl.cpp">
       <Filter>Render\Execution &amp; 3D\Gamma</Filter>
     </ClCompile>
     <ClCompile Include="Blenders\Blender.cpp">
@@ -815,10 +815,10 @@
     <ClCompile Include="xrXRC.cpp">
       <Filter>Engine\Collision Core</Filter>
     </ClCompile>
-    <ClCompile Include="xr_ioc_cmd.cpp">
+    <ClCompile Include="ConsoleCommand.cpp">
       <Filter>Engine\Console</Filter>
     </ClCompile>
-    <ClCompile Include="XR_IOConsole.cpp">
+    <ClCompile Include="Console.cpp">
       <Filter>Engine\Console</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">

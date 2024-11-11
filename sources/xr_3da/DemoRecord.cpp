@@ -1,4 +1,4 @@
-// CDemoRecord.cpp: implementation of the CDemoRecord class.
+// DemoRecord.cpp: implementation of the CDemoRecord class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -7,8 +7,8 @@
 #include "x_ray.h"
 
 #include "gamefont.h"
-#include "fDemoRecord.h"
-#include "xr_ioconsole.h"
+#include "DemoRecord.h"
+#include "Console.h"
 #include "xr_input.h"
 #include "xr_object.h"
 #include "render.h"
@@ -16,11 +16,7 @@
 
 CDemoRecord* xrDemoRecord = 0;
 
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
-CDemoRecord::CDemoRecord(const char* name, f32 life_time) : CEffectorCam(cefDemo, life_time/*,FALSE*/)
+CDemoRecord::CDemoRecord(pcstr name, f32 life_time) : CEffectorCam(cefDemo, life_time/*,FALSE*/)
 {
 	_unlink(name);
 	file = FS.w_open(name);
@@ -86,9 +82,9 @@ CDemoRecord::~CDemoRecord( )
 	}
 }
 
-//								+X,				-X,				+Y,				-Y,			+Z,				-Z
-static fVector3 cmNorm[6] = { {0.0f,1.0f,0.0f}, {0.0f,1.0f,0.0f}, {0.0f,0.0f,-1.0f},{0.0f,0.0f,1.0f}, {0.0f,1.0f,0.0f}, {0.0f,1.0f,0.0f} };
-static fVector3 cmDir[6] = { {1.0f,0.0f,0.0f}, {-1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f}, {0.0f,-1.0f,0.0f},{0.0f,0.0f,1.0f}, {0.0f,0.0f,-1.0f} };
+//										+X,					-X,					+Y,					-Y,					+Z,					-Z
+static fVector3 cmNorm[6] = { {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f} };
+static fVector3 cmDir[6] = { {1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f} };
 
 static flags32	s_hud_flag = { 0 };
 static flags32	s_dev_flags = { 0 };
@@ -111,14 +107,15 @@ void CDemoRecord::MakeScreenshotFace( )
 		}
 		break;
 	}
+
 	m_Stage++;
 }
 
-INT	g_bDR_LM_UsePointsBBox = 0;
-INT	g_bDR_LM_4Steps = 0;
+INT g_bDR_LM_UsePointsBBox = 0;
+INT g_bDR_LM_4Steps = 0;
 INT g_iDR_LM_Step = 0;
-fVector3	g_DR_LM_Min;
-fVector3	g_DR_LM_Max;
+fVector3 g_DR_LM_Min;
+fVector3 g_DR_LM_Max;
 
 void GetLM_BBox(fBox3& bb, INT Step)
 {
@@ -399,7 +396,7 @@ BOOL CDemoRecord::Process(fVector3& P, fVector3& D, fVector3& N, f32& fFov, f32&
 	return TRUE;
 }
 
-void CDemoRecord::IR_OnKeyboardPress(int dik)
+void CDemoRecord::IR_OnKeyboardPress(s32 dik)
 {
 	if (dik == DIK_GRAVE)
 	{
@@ -524,7 +521,7 @@ void CDemoRecord::IR_OnMouseMove(s32 dx, s32 dy)
 	}
 }
 
-void CDemoRecord::IR_OnMouseHold(int btn)
+void CDemoRecord::IR_OnMouseHold(s32 btn)
 {
 	switch (btn)
 	{

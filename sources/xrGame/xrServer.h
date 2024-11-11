@@ -65,7 +65,7 @@ private:
 
 	struct DelayedPacket
 	{
-		ClientID		SenderID;
+		CClientID		SenderID;
 		NET_Packet		Packet;
 		bool operator == (const DelayedPacket& other)
 		{
@@ -76,8 +76,8 @@ private:
 	xrCriticalSection			DelayedPackestCS;
 	xr_deque<DelayedPacket>		m_aDelayedPackets;
 	void						ProceedDelayedPackets	();
-	void						AddDelayedPacket		(NET_Packet& Packet, ClientID Sender);
-	u32							OnDelayedMessage		(NET_Packet& P, ClientID sender);			// Non-Zero means broadcasting with "flags" as returned
+	void						AddDelayedPacket		(NET_Packet& Packet, CClientID Sender);
+	u32							OnDelayedMessage		(NET_Packet& P, CClientID sender);			// Non-Zero means broadcasting with "flags" as returned
 
 	void						SendUpdatesToAll		();
 private:
@@ -126,13 +126,13 @@ public:
 	void					Perform_reject			(CSE_Abstract* what, CSE_Abstract* from, int delta);
 	void					Perform_destroy			(CSE_Abstract* tpSE_Abstract, u32 mode);
 
-	CSE_Abstract*			Process_spawn			(NET_Packet& P, ClientID sender, BOOL bSpawnWithClientsMainEntityAsParent=FALSE, CSE_Abstract* tpExistedEntity=0);
-	void					Process_update			(NET_Packet& P, ClientID sender);
-	void					Process_save			(NET_Packet& P, ClientID sender);
-	void					Process_event			(NET_Packet& P, ClientID sender);
-	void					Process_event_ownership	(NET_Packet& P, ClientID sender, u32 time, u16 ID, BOOL bForced = FALSE);
-	bool					Process_event_reject	(NET_Packet& P, const ClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message = true);
-	void					Process_event_destroy	(NET_Packet& P, ClientID sender, u32 time, u16 ID, NET_Packet* pEPack);
+	CSE_Abstract*			Process_spawn			(NET_Packet& P, CClientID sender, BOOL bSpawnWithClientsMainEntityAsParent=FALSE, CSE_Abstract* tpExistedEntity=0);
+	void					Process_update			(NET_Packet& P, CClientID sender);
+	void					Process_save			(NET_Packet& P, CClientID sender);
+	void					Process_event			(NET_Packet& P, CClientID sender);
+	void					Process_event_ownership	(NET_Packet& P, CClientID sender, u32 time, u16 ID, BOOL bForced = FALSE);
+	bool					Process_event_reject	(NET_Packet& P, const CClientID sender, const u32 time, const u16 id_parent, const u16 id_entity, bool send_message = true);
+	void					Process_event_destroy	(NET_Packet& P, CClientID sender, u32 time, u16 ID, NET_Packet* pEPack);
 	
 	xrClientData*			SelectBestClientToMigrateTo		(CSE_Abstract* E, BOOL bForceAnother=FALSE);
 	void					SendConnectResult		(IClient* CL, u8 res, u8 res1, pstr ResultStr);
@@ -160,15 +160,15 @@ public:
 	virtual ~xrServer		();
 
 	// extended functionality
-	virtual u32				OnMessage			(NET_Packet& P, ClientID sender);	// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage			(NET_Packet& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
 	virtual void			OnCL_Connected		(IClient* CL);
 	virtual void			OnCL_Disconnected	(IClient* CL);
 	virtual bool			OnCL_QueryHost		();
-	virtual void			SendTo_LL			(ClientID ID, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
+	virtual void			SendTo_LL			(CClientID ID, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
 
 	virtual IClient*		client_Create		();								// create client info
 	virtual void			client_Replicate	();								// replicate current state to client
-	virtual IClient*		client_Find_Get		(ClientID ID);					// Find earlier disconnected client
+	virtual IClient*		client_Find_Get		(CClientID ID);					// Find earlier disconnected client
 	virtual void			client_Destroy		(IClient* C);					// destroy client info
 
 	// utilities
@@ -180,7 +180,7 @@ public:
 	IC void					clients_Lock		()			{	csPlayers.Enter();	}
 	IC void					clients_Unlock		()			{   csPlayers.Leave();	}
 
-	xrClientData*			ID_to_client		(ClientID ID, bool ScanAll = false ) { return (xrClientData*)(IPureServer::ID_to_client( ID, ScanAll)); }
+	xrClientData*			ID_to_client		(CClientID ID, bool ScanAll = false ) { return (xrClientData*)(IPureServer::ID_to_client( ID, ScanAll)); }
 	CSE_Abstract*			ID_to_entity		(u16 ID);
 
 	// main

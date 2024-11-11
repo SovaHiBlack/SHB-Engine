@@ -6,11 +6,10 @@
 #include "script_engine.h"
 #include "script_engine_space.h"
 #include "level.h"
-#include "xrserver.h"
 #include "ai_space.h"
 #include "game_sv_event_queue.h"
-#include "..\XR_3DA\XR_IOConsole.h"
-#include "..\XR_3DA\xr_ioc_cmd.h"
+#include "..\XR_3DA\Console.h"
+#include "..\XR_3DA\ConsoleCommand.h"
 #include "string_table.h"
 
 #ifdef DEBUG
@@ -47,18 +46,19 @@ game_PlayerState*	game_sv_GameState::get_it					(u32 it)
 	else				return C->ps;
 }
 
-game_PlayerState*	game_sv_GameState::get_id					(ClientID id)							
+game_PlayerState*	game_sv_GameState::get_id					(CClientID id)
 {
 	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 	if (0==C)			return NULL;
 	else				return C->ps;
 }
 
-ClientID				game_sv_GameState::get_it_2_id				(u32 it)
+CClientID				game_sv_GameState::get_it_2_id				(u32 it)
 {
 	xrClientData*	C	= (xrClientData*)m_server->client_Get		(it);
 	if (0==C){
-		ClientID clientID;clientID.set(0);
+		CClientID clientID;
+		clientID.set(0);
 		return clientID;
 	}
 	else				return C->ID;
@@ -71,14 +71,14 @@ pcstr				game_sv_GameState::get_name_it				(u32 it)
 	else				return *C->name;
 }
 
-pcstr				game_sv_GameState::get_name_id				(ClientID id)
+pcstr				game_sv_GameState::get_name_id				(CClientID id)
 {
 	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 	if (0==C)			return 0;
 	else				return *C->name;
 }
 
-pcstr				game_sv_GameState::get_player_name_id				(ClientID id)
+pcstr				game_sv_GameState::get_player_name_id				(CClientID id)
 {
 	xrClientData* xrCData	=	m_server->ID_to_client(id);
 	if(xrCData)
@@ -92,7 +92,7 @@ u32					game_sv_GameState::get_players_count		()
 	return				m_server->client_Count();
 }
 
-u16					game_sv_GameState::get_id_2_eid				(ClientID id)
+u16					game_sv_GameState::get_id_2_eid				(CClientID id)
 {
 	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 	if (0==C)			return 0xffff;
@@ -165,7 +165,7 @@ u32					game_sv_GameState::get_alive_count			(u32 team)
 	return alive;
 }
 
-xr_vector<u16>*		game_sv_GameState::get_children				(ClientID id)
+xr_vector<u16>*		game_sv_GameState::get_children				(CClientID id)
 {
 	xrClientData*	C	= (xrClientData*)m_server->ID_to_client	(id);
 	if (0==C)			return 0;
@@ -224,7 +224,7 @@ void				game_sv_GameState::signal_Syncronize		()
 }
 
 // Network
-void game_sv_GameState::net_Export_State						(NET_Packet& P, ClientID to)
+void game_sv_GameState::net_Export_State						(NET_Packet& P, CClientID to)
 {
 	// Generic
 	P.w_clientID	(to);
@@ -270,7 +270,7 @@ void game_sv_GameState::net_Export_State						(NET_Packet& P, ClientID to)
 		if (Base==A)	
 			A->setFlag(GAME_PLAYER_FLAG_LOCAL);
 
-		ClientID clientID = get_it_2_id	(p_it);
+		CClientID clientID = get_it_2_id	(p_it);
 		P.w_clientID			(clientID);
 		A->net_Export			(P, TRUE);
 		
@@ -280,7 +280,7 @@ void game_sv_GameState::net_Export_State						(NET_Packet& P, ClientID to)
 	net_Export_GameTime(P);
 }
 
-void game_sv_GameState::net_Export_Update(NET_Packet& P, ClientID id_to, ClientID id)
+void game_sv_GameState::net_Export_Update(NET_Packet& P, CClientID id_to, CClientID id)
 {
 	game_PlayerState* A		= get_id		(id);
 	if (A)
@@ -308,12 +308,12 @@ void game_sv_GameState::net_Export_GameTime						(NET_Packet& P)
 };
 
 
-void game_sv_GameState::OnPlayerConnect			(ClientID /**id_who/**/)
+void game_sv_GameState::OnPlayerConnect			(CClientID /**id_who/**/)
 {
 	signal_Syncronize	();
 }
 
-void game_sv_GameState::OnPlayerDisconnect		(ClientID /**id_who/**/, pstr, u16 )
+void game_sv_GameState::OnPlayerDisconnect		(CClientID /**id_who/**/, pstr, u16 )
 {
 	signal_Syncronize	();
 }
@@ -508,7 +508,7 @@ CSE_Abstract*		game_sv_GameState::spawn_begin				(pcstr N)
 	return A;
 }
 
-CSE_Abstract*		game_sv_GameState::spawn_end				(CSE_Abstract* E, ClientID id)
+CSE_Abstract*		game_sv_GameState::spawn_end				(CSE_Abstract* E, CClientID id)
 {
 	NET_Packet						P;
 	u16								skip_header;
@@ -579,25 +579,25 @@ game_sv_GameState::~game_sv_GameState()
 	ConsoleCommands_Clear();
 }
 
-bool game_sv_GameState::change_level (NET_Packet &net_packet, ClientID sender)
+bool game_sv_GameState::change_level (NET_Packet &net_packet, CClientID sender)
 {
 	return						(true);
 }
 
-void game_sv_GameState::save_game (NET_Packet &net_packet, ClientID sender)
+void game_sv_GameState::save_game (NET_Packet &net_packet, CClientID sender)
 {
 }
 
-bool game_sv_GameState::load_game (NET_Packet &net_packet, ClientID sender)
+bool game_sv_GameState::load_game (NET_Packet &net_packet, CClientID sender)
 {
 	return						(true);
 }
 
-void game_sv_GameState::reload_game (NET_Packet &net_packet, ClientID sender)
+void game_sv_GameState::reload_game (NET_Packet &net_packet, CClientID sender)
 {
 }
 
-void game_sv_GameState::switch_distance (NET_Packet &net_packet, ClientID sender)
+void game_sv_GameState::switch_distance (NET_Packet &net_packet, CClientID sender)
 {
 }
 
@@ -617,20 +617,20 @@ void game_sv_GameState::OnHit (u16 id_hitter, u16 id_hitted, NET_Packet& P)
 	};
 }
 
-void game_sv_GameState::OnEvent (NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender )
+void game_sv_GameState::OnEvent (NET_Packet &tNetPacket, u16 type, u32 time, CClientID sender )
 {
 	switch	(type)
 	{	
 	case GAME_EVENT_PLAYER_CONNECTED:
 		{
-			ClientID ID;
+		CClientID ID;
 			tNetPacket.r_clientID(ID);
 			OnPlayerConnect(ID);
 		}break;
 
 	case GAME_EVENT_PLAYER_DISCONNECTED:
 		{
-			ClientID ID;
+		CClientID ID;
 			tNetPacket.r_clientID(ID);
 			string1024 PlayerName;
 			tNetPacket.r_stringZ(PlayerName);
@@ -731,7 +731,7 @@ void game_sv_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 	signal_Syncronize	(); 
 }
 
-void game_sv_GameState::AddDelayedEvent(NET_Packet &tNetPacket, u16 type, u32 time, ClientID sender )
+void game_sv_GameState::AddDelayedEvent(NET_Packet &tNetPacket, u16 type, u32 time, CClientID sender )
 {
 //	OnEvent(tNetPacket,type,time,sender);
 	m_event_queue->Create(tNetPacket,type,time,sender);

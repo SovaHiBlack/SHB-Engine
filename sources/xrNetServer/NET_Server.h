@@ -4,7 +4,7 @@
 
 struct SClientConnectData
 {
-	ClientID		clientID;
+	CClientID		clientID;
 	string64		name;
 	string64		pass;
 	u32				process_id;
@@ -53,10 +53,10 @@ public:
 		u32		bVerified	: 1;
 	};
 
-                        IClient( CTimer* timer );
+						IClient( CTimer* timer );
 	virtual             ~IClient();
 
-	ClientID			ID;
+	CClientID			ID;
 	string128			m_guid;
 	shared_str			name;
 	shared_str			pass;
@@ -68,11 +68,14 @@ public:
 	DWORD				m_dwPort;
 	u32					process_id;
 
-    IPureServer*        server;
+	IPureServer*        server;
 };
 
 
-IC bool operator== (IClient const* pClient, ClientID const& ID) { return pClient->ID == ID; }
+IC bool operator== (const IClient* pClient, const CClientID& ID)
+{
+	return pClient->ID == ID;
+}
 
 class CServerInfo;
 
@@ -96,7 +99,7 @@ protected:
 
 	CTimer*					device_timer;
 
-	IClient*				ID_to_client		(ClientID ID, bool ScanAll = false);
+	IClient*				ID_to_client		(CClientID ID, bool ScanAll = false);
 
 	virtual IClient*		new_client			( SClientConnectData* cl_data )   =0;
 public:
@@ -107,14 +110,14 @@ public:
 	virtual void			Disconnect			();
 
 	// send
-	virtual void			SendTo_LL			(ClientID ID, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
+	virtual void			SendTo_LL			(CClientID ID, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
 
-	void					SendTo				(ClientID ID, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
-	void					SendBroadcast_LL	(ClientID exclude, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED);
-	void					SendBroadcast		(ClientID exclude, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED);
+	void					SendTo				(CClientID ID, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
+	void					SendBroadcast_LL	(CClientID exclude, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED);
+	void					SendBroadcast		(CClientID exclude, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED);
 
 	// extended functionality
-	virtual u32				OnMessage			(NET_Packet& P, ClientID sender);	// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage			(NET_Packet& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
 	virtual bool			OnCL_QueryHost		()		{ return true; };
 
 	virtual IClient*		client_Create		()				= 0;			// create client info

@@ -6,12 +6,12 @@
 #include "../script_export_space.h"
 
 class CUIFrameWindow;
-class CLAItem;
+class CLightAnimItem;
 class CUIXml;
 class CUILines;
 
 struct lanim_cont{
-	CLAItem*				m_lanim;
+	CLightAnimItem*				m_lanim;
 	f32					m_lanim_start_time;
 	f32					m_lanim_delay_time;
 	flags8					m_lanimFlags;

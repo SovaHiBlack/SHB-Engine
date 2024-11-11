@@ -23,6 +23,7 @@ class	adopt_sampler
 {
 	CBlender_Compile*		C;
 	u32						stage;
+
 public:
 	adopt_sampler			(CBlender_Compile*	_C, u32 _stage)		: C(_C), stage(_stage)		{ if (u32(-1)==stage) C=0;		}
 	adopt_sampler			(const adopt_sampler&	_C)				: C(_C.C), stage(_C.stage)	{ if (u32(-1)==stage) C=0;		}

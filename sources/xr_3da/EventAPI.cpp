@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "EventAPI.h"
-#include "xr_ioconsole.h"
+#include "Console.h"
 
 extern	void msRead			();
 extern	void msCreate		(pcstr name);

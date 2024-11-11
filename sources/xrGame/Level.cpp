@@ -2,8 +2,8 @@
 
 #include <functional>// раньше небыло
 
-#include "..\XR_3DA\fdemorecord.h"
-#include "..\XR_3DA\fdemoplay.h"
+#include "..\XR_3DA\DemoRecord.h"
+#include "..\XR_3DA\DemoPlay.h"
 #include "..\XR_3DA\environment.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "ParticlesObject.h"
@@ -44,7 +44,7 @@
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "clsid_game.h"
 #include "MainMenu.h"
-#include "..\XR_3DA\XR_IOConsole.h"
+#include "..\XR_3DA\Console.h"
 
 #ifdef DEBUG
 #	include "level_debug.h"

@@ -5,7 +5,7 @@
 
 //refs
 class ENGINE_API IRender_DetailModel;
-class ENGINE_API CLAItem;
+class ENGINE_API CLightAnimItem;
 
 struct SThunderboltDesc
 {
@@ -26,7 +26,7 @@ struct SThunderboltDesc
 	SFlare						m_GradientTop;
 	SFlare						m_GradientCenter;
 	shared_str					name;
-	CLAItem*					color_anim;
+	CLightAnimItem*					color_anim;
 
 public:
 								SThunderboltDesc	(CInifile* pIni, pcstr sect);
