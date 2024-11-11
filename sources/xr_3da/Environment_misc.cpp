@@ -37,7 +37,6 @@ f32	CEnvModifier::sum(CEnvModifier& M, fVector3& view)
 	fog_color.mad(M.fog_color, _power);
 	fog_density += M.fog_density * _power;
 	ambient.mad(M.ambient, _power);
-	//	lmap_color.mad		(M.lmap_color,_power);
 	sky_color.mad(M.sky_color, _power);
 	hemi_color.mad(M.hemi_color, _power);
 	return _power;
@@ -203,7 +202,6 @@ void CEnvDescriptor::load(pcstr exec_tm, pcstr S, CEnvironment* parent)
 	C_CHECK(fog_color);
 	C_CHECK(rain_color);
 	C_CHECK(ambient);
-	//	C_CHECK					(lmap_color	);
 	C_CHECK(hemi_color);
 	C_CHECK(sun_color);
 	on_device_create( );

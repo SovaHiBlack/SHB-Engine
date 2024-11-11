@@ -195,12 +195,12 @@ void CLensFlare::OnFrame(int id)
 
 	dwFrame			= Device.dwFrame;
 
-	vSunDir.mul		(g_pGamePersistent->Environment().CurrentEnv.sun_dir,-1);
+	vSunDir.mul		(g_pGamePersistent->Environment().CurrentEnv.sun_dir,-1.0f);
 
 	// color
 	f32 tf		= g_pGamePersistent->Environment().fTimeFactor;
 	fVector3& c		= g_pGamePersistent->Environment().CurrentEnv.sun_color;
-	LightColor.set	(c.x,c.y,c.z,1.f); 
+	LightColor.set	(c.x,c.y,c.z,1.0f);
 
 	CLensFlareDescriptor* desc = (id==-1)?0:&m_Palette[id];
 
