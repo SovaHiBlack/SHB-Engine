@@ -11,17 +11,18 @@
 class ENGINE_API CEngine
 {
 	HMODULE				hPSGP;
+
 public:
 	// DLL api stuff
 	CEngineAPI			External;
 	CEventAPI			Event;
 	CSheduler			Sheduler;
 
-	void				Initialize	();
-	void				Destroy		();
-	
-	CEngine();
-	~CEngine();
+	void				Initialize( );
+	void				Destroy( );
+
+	CEngine( );
+	~CEngine( );
 };
 
 ENGINE_API extern xrDispatchTable	PSGP;

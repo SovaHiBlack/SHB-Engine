@@ -20,7 +20,7 @@
 #include "smallft.h"
 
 #include "backends.h"
-#include "envelope.h"
+#include "Envelope.h"
 
 #ifndef EHMER_MAX
 #define EHMER_MAX 56

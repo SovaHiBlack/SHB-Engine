@@ -17,11 +17,11 @@
 #include "character_info.h"
 
 #ifndef XRGAME_EXPORTS
-#	include "bone.h"
+#	include "Bone.h"
 #	include "defines.h"
 pcstr GAME_CONFIG = "game.ltx";
 #else
-#	include "..\XR_3DA\bone.h"
+#	include "..\XR_3DA\Bone.h"
 #	include "..\XR_3DA\render.h"
 #endif
 

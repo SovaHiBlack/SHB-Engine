@@ -6,8 +6,7 @@
 #pragma once
 
 #include "ParticlesObject.h"
-#include "..\XR_3DA\bone.h"
-
+#include "..\XR_3DA\Bone.h"
 
 DEFINE_VECTOR(CParticlesObject*, PARTICLES_PTR_VECTOR, PARTICLES_PTR_VECTOR_IT);
 
@@ -15,7 +14,6 @@ class CObject;
 
 class CParticlesPlayer 
 {
-
 public:
 	//структура с внутренней информацией о партикле
 	struct SParticlesInfo

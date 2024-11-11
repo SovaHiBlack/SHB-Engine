@@ -14,9 +14,9 @@
 #include "clsid_game.h"
 
 #ifndef XRGAME_EXPORTS
-#	include "bone.h"
+#	include "Bone.h"
 #else
-#	include "..\XR_3DA\bone.h"
+#	include "..\XR_3DA\Bone.h"
 #	ifdef DEBUG
 #		define PHPH_DEBUG
 #	endif

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "motion.h"
-#include "envelope.h"
+#include "Envelope.h"
 
 #define EOBJ_OMOTION   			0x1100
 #define EOBJ_SMOTION   			0x1200
@@ -58,7 +58,7 @@ COMotion::COMotion( ) :CCustomMotion( )
 COMotion::COMotion(COMotion* source) :CCustomMotion(source)
 {
 	// bone motions
-	for (int ch = 0; ch < ctMaxChannel; ch++)
+	for (s32 ch = 0; ch < ctMaxChannel; ch++)
 	{
 		envs[ch] = xr_new<CEnvelope>(source->envs[ch]);
 	}
@@ -168,8 +168,8 @@ void SAnimParams::Set(CCustomMotion* M)
 {
 	Set((f32)M->FrameStart( ), (f32)M->FrameEnd( ), M->FPS( ));
 	t = min_t;
-	//    bPlay=true;
 }
+
 void SAnimParams::Update(f32 dt, f32 speed, bool loop)
 {
 	if (!bPlay)
@@ -223,7 +223,6 @@ void CClip::Save(IWriter& F)
 	F.close_chunk( );
 }
 //------------------------------------------------------------------------------
-
 bool CClip::Load(IReader& F)
 {
 	R_ASSERT(F.find_chunk(EOBJ_CLIP_VERSION_CHUNK));
@@ -248,17 +247,43 @@ bool CClip::Load(IReader& F)
 	return true;
 }
 //------------------------------------------------------------------------------
-
 bool CClip::Equal(CClip* c)
 {
-	if (!name.equal(c->name)) 			return false;
-	if (!cycles[0].equal(c->cycles[0])) return false;
-	if (!cycles[1].equal(c->cycles[1])) return false;
-	if (!cycles[2].equal(c->cycles[2])) return false;
-	if (!cycles[3].equal(c->cycles[3])) return false;
-	if (!fx.equal(c->fx)) 				return false;
-	if (length != c->length)				return false;
+	if (!name.equal(c->name))
+	{
+		return false;
+	}
+
+	if (!cycles[0].equal(c->cycles[0]))
+	{
+		return false;
+	}
+
+	if (!cycles[1].equal(c->cycles[1]))
+	{
+		return false;
+	}
+
+	if (!cycles[2].equal(c->cycles[2]))
+	{
+		return false;
+	}
+
+	if (!cycles[3].equal(c->cycles[3]))
+	{
+		return false;
+	}
+
+	if (!fx.equal(c->fx))
+	{
+		return false;
+	}
+
+	if (length != c->length)
+	{
+		return false;
+	}
+
 	return true;
 }
 //------------------------------------------------------------------------------
-

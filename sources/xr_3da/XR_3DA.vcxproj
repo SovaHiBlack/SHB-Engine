@@ -186,7 +186,7 @@
     <ClInclude Include="Blenders\Blender.h" />
     <ClInclude Include="Blenders\Blender_CLSID.h" />
     <ClInclude Include="Blenders\Blender_Recorder.h" />
-    <ClInclude Include="bone.h" />
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="CameraBase.h" />
     <ClInclude Include="CameraDefs.h" />
     <ClInclude Include="CameraManager.h" />
@@ -207,7 +207,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineAPI.h" />
     <ClInclude Include="EnnumerateVertices.h" />
-    <ClInclude Include="envelope.h" />
+    <ClInclude Include="Envelope.h" />
     <ClInclude Include="Environment.h" />
     <ClInclude Include="ETextureParams.h" />
     <ClInclude Include="EventAPI.h" />

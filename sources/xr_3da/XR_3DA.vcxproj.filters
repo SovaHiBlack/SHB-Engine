@@ -243,10 +243,10 @@
     <ClInclude Include="xr_collide_form.h">
       <Filter>Game API\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="bone.h">
+    <ClInclude Include="Bone.h">
       <Filter>Game API\Animator</Filter>
     </ClInclude>
-    <ClInclude Include="envelope.h">
+    <ClInclude Include="Envelope.h">
       <Filter>Game API\Animator</Filter>
     </ClInclude>
     <ClInclude Include="motion.h">

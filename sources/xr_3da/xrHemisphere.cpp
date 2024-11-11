@@ -539,16 +539,17 @@ const fVector3 hemi_3[HEMI3_VERTS] =
 };
 #pragma warning(default:4305)
 
-void xrHemisphereBuild(int quality, f32 energy, xrHemisphereIterator* iterator, LPVOID param)
+void xrHemisphereBuild(s32 quality, f32 energy, xrHemisphereIterator* iterator, LPVOID param)
 {
 	const fVector3* hemi = 0;
-	int h_count = xrHemisphereVertices(quality, hemi); VERIFY(h_count > 0);
+	s32 h_count = xrHemisphereVertices(quality, hemi);
+	VERIFY(h_count > 0);
 	// Calculate energy
 	f32 total = (f32)h_count;
-	f32 E = 1.f / total;
+	f32 E = 1.0f / total;
 
 	// Iterate
-	for (int i = 0; i < h_count; i++)
+	for (s32 i = 0; i < h_count; i++)
 	{
 		f32 x = -f32(hemi[i][0]);
 		f32 y = -f32(hemi[i][1]);
@@ -561,50 +562,62 @@ void xrHemisphereBuild(int quality, f32 energy, xrHemisphereIterator* iterator, 
 	}
 }
 
-int xrHemisphereVertices(int quality, const fVector3*& verts)
+s32 xrHemisphereVertices(s32 quality, const fVector3*& verts)
 {
 	// SELECT table
-	int				h_count = 0;
+	s32				h_count = 0;
 	switch (quality)
 	{
 		case 1:	// LOW quality
-		h_count = HEMI1_VERTS;
-		verts = hemi_1;
+		{
+			h_count = HEMI1_VERTS;
+			verts = hemi_1;
+		}
 		break;
 		case 2:	// HIGH quality
-		h_count = HEMI2_VERTS;
-		verts = hemi_2;
+		{
+			h_count = HEMI2_VERTS;
+			verts = hemi_2;
+		}
 		break;
 		case 3:	// SUPER HIGH quality
 		h_count = HEMI3_VERTS;
-		verts = hemi_3;
+		{
+			verts = hemi_3;
+		}
 		break;
 		default:// NO 	
-		NODEFAULT;
+		{
+			NODEFAULT;
+		}
 	}
+
 	return h_count;
 }
 
-int xrHemisphereIndices(int quality, const u16*& indices)
+s32 xrHemisphereIndices(s32 quality, const u16*& indices)
 {
 	// SELECT table
-	int				h_count = 0;
+	s32 h_count = 0;
 	switch (quality)
 	{
 		case 1:	// LOW quality
-		h_count = HEMI1_FACES * 3;
-		indices = hemi_1v;
+		{
+			h_count = HEMI1_FACES * 3;
+			indices = hemi_1v;
+		}
 		break;
 		case 2:	// HIGH quality
-		h_count = HEMI2_FACES * 3;
-		indices = hemi_2v;
+		{
+			h_count = HEMI2_FACES * 3;
+			indices = hemi_2v;
+		}
 		break;
-		//	case 3:	// SUPER HIGH quality
-		//		h_count		= HEMI3_FACES*3;
-		//		indices		= hemi_3v;
-		//		break;
 		default:// NO 	
-		NODEFAULT;
+		{
+			NODEFAULT;
+		}
 	}
+
 	return h_count;
 }

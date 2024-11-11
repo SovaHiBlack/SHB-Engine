@@ -1,7 +1,7 @@
 #pragma once
 
 #include "HierrarhyVisual.h"
-#include		"bone.h"
+#include "Bone.h"
 
 // consts
 const	u32					MAX_BONE_PARAMS		=	4;

@@ -5,11 +5,11 @@
 
 bool motion_sort_pred(COMotion* a, COMotion* b)
 {
-	return a->name < b->name;
+	return (a->name < b->name);
 }
 bool motion_find_pred(COMotion* a, shared_str b)
 {
-	return a->name < b;
+	return (a->name < b);
 }
 
 //////////////////////////////////////////////////////////////////////

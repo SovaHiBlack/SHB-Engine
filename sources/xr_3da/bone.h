@@ -52,7 +52,7 @@ struct SBoneShape
 	{
 		sfNoPickable = (1 << 0), 	// use only in RayPick
 		sfRemoveAfterBreak = (1 << 1),
-		sfNoPhysics = (1 << 2),
+		sfNoPhysics = (1 << 2)
 	};
 
 	u16				type;		// 2
@@ -77,9 +77,18 @@ struct SBoneShape
 	{
 		switch (type)
 		{
-			case stBox: 	return !fis_zero(box.m_halfsize.x) && !fis_zero(box.m_halfsize.y) && !fis_zero(box.m_halfsize.z);
-			case stSphere: 	return !fis_zero(sphere.R);
-			case stCylinder:return !fis_zero(cylinder.m_height) && !fis_zero(cylinder.m_radius) && !fis_zero(cylinder.m_direction.square_magnitude( ));
+			case stBox:
+			{
+				return (!fis_zero(box.m_halfsize.x) && !fis_zero(box.m_halfsize.y) && !fis_zero(box.m_halfsize.z));
+			}
+			case stSphere:
+			{
+				return !fis_zero(sphere.R);
+			}
+			case stCylinder:
+			{
+				return (!fis_zero(cylinder.m_height) && !fis_zero(cylinder.m_radius) && !fis_zero(cylinder.m_direction.square_magnitude( )));
+			}
 		}
 
 		return true;
@@ -123,11 +132,9 @@ struct SJointIKData
 	void				Export(IWriter& F)
 	{
 		F.w_u32(type);
-		for (int k = 0; k < 3; k++)
+		for (s32 k = 0; k < 3; k++)
 		{
-			// Kostya Slipchenko say:
-			// направление вращения в ОДЕ отличается от направления вращение в X-Ray 
-			// поэтому меняем знак у лимитов
+			// направление вращения в ОДЕ отличается от направления вращение в X-Ray поэтому меняем знак у лимитов
 			F.w_float(_min(-limits[k].limit.x, -limits[k].limit.y)); // min (swap special for ODE) 
 			F.w_float(_max(-limits[k].limit.x, -limits[k].limit.y)); // max (swap special for ODE)
 			F.w_float(limits[k].spring_factor);
@@ -145,7 +152,7 @@ struct SJointIKData
 	}
 	bool				Import(IReader& F, u16 vers)
 	{
-		type = (EJointType)F.r_u32( );
+		type = (EJointType) F.r_u32( );
 		F.r(limits, sizeof(SJointLimit) * 3);
 		spring_factor = F.r_float( );
 		damping_factor = F.r_float( );
@@ -156,10 +163,11 @@ struct SJointIKData
 		{
 			friction = F.r_float( );
 		}
+
 		return true;
 	}
 };
-#pragma pack( pop )
+#pragma pack(pop)
 
 // refs
 class CBone;
@@ -170,41 +178,41 @@ class CBone
 	shared_str			name;
 	shared_str			parent_name;
 	shared_str			wmap;
-	fVector3			    rest_offset;
-	fVector3			    rest_rotate;    // XYZ format (Game format)
-	f32			    rest_length;
+	fVector3			rest_offset;
+	fVector3			rest_rotate;	// XYZ format (Game format)
+	f32					rest_length;
 
-	fVector3			    mot_offset;
-	fVector3			    mot_rotate;		// XYZ format (Game format)
-	f32			    mot_length;
+	fVector3			mot_offset;
+	fVector3			mot_rotate;		// XYZ format (Game format)
+	f32					mot_length;
 
-	fMatrix4x4			    mot_transform;
+	fMatrix4x4			mot_transform;
 
-	fMatrix4x4			    rest_transform;
-	fMatrix4x4			    rest_i_transform;
+	fMatrix4x4			rest_transform;
+	fMatrix4x4			rest_i_transform;
 
-	fMatrix4x4			    last_transform;
+	fMatrix4x4			last_transform;
 
-	fMatrix4x4				render_transform;
+	fMatrix4x4			render_transform;
 
 public:
-	int				    SelfID;
-	CBone* parent;
+	s32					SelfID;
+	CBone*				parent;
 	BoneVec				children;
 
 public:
 	// editor part
-	flags8			    flags;
+	flags8				flags;
 	enum
 	{
 		flSelected = (1 << 0)
 	};
-	SJointIKData	    IK_data;
-	shared_str			   game_mtl;
-	SBoneShape		    shape;
+	SJointIKData		IK_data;
+	shared_str			game_mtl;
+	SBoneShape			shape;
 
-	f32			    mass;
-	fVector3			    center_of_mass;
+	f32					mass;
+	fVector3			center_of_mass;
 
 public:
 	CBone( );
@@ -296,11 +304,15 @@ public:
 
 	void			    _Update(const fVector3& T, const fVector3& R)
 	{
-		mot_offset.set(T); mot_rotate.set(R); mot_length = rest_length;
+		mot_offset.set(T);
+		mot_rotate.set(R);
+		mot_length = rest_length;
 	}
 	void			    Reset( )
 	{
-		mot_offset.set(rest_offset); mot_rotate.set(rest_rotate); mot_length = rest_length;
+		mot_offset.set(rest_offset);
+		mot_rotate.set(rest_rotate);
+		mot_length = rest_length;
 	}
 
 	// IO

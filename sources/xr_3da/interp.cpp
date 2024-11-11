@@ -25,17 +25,26 @@
 //
 //For example, range( 3 pi, 0, 2 pi, i ) returns pi, with i = 1.
 //======================================================================
-static f32 range(f32 v, f32 lo, f32 hi, int* i)
+static f32 range(f32 v, f32 lo, f32 hi, s32* i)
 {
 	f32 v2;
 	f32 r = hi - lo;
 	if (r == 0.0)
 	{
-		if (i) *i = 0;
+		if (i)
+		{
+			*i = 0;
+		}
+
 		return lo;
 	}
-	v2 = lo + v - r * (f32)floor((f32)v / r);
-	if (i) *i = -(int)((v2 - v) / r + (v2 > v ? 0.5 : -0.5));
+
+	v2 = lo + v - r * (f32) floor((f32) v / r);
+	if (i)
+	{
+		*i = -(s32) ((v2 - v) / r + (v2 > v ? 0.5 : -0.5));
+	}
+
 	return v2;
 }
 
@@ -59,7 +68,6 @@ static void hermite(f32 t, f32* h1, f32* h2, f32* h3, f32* h4)
 	*h3 = *h4 - t2 + t;
 }
 
-
 //======================================================================
 //bezier()
 //
@@ -80,9 +88,8 @@ static f32 bezier(f32 x0, f32 x1, f32 x2, f32 x3, f32 t)
 	b = 3.0f * (x2 - x1) - c;
 	a = x3 - x0 - c - b;
 
-	return a * t3 + b * t2 + c * t + x0;
+	return (a * t3 + b * t2 + c * t + x0);
 }
-
 
 //======================================================================
 //bez2_time()
@@ -99,18 +106,24 @@ static f32 bez2_time(f32 x0, f32 x1, f32 x2, f32 x3, f32 time, f32* t0, f32* t1)
 
 	t = *t0 + (*t1 - *t0) * 0.5f;
 	v = bezier(x0, x1, x2, x3, t);
-	if (_abs(time - v) > .0001f)
+	if (_abs(time - v) > 0.0001f)
 	{
 		if (v > time)
+		{
 			*t1 = t;
+		}
 		else
+		{
 			*t0 = t;
+		}
+
 		return bez2_time(x0, x1, x2, x3, time, t0, t1);
 	}
 	else
+	{
 		return t;
+	}
 }
-
 
 //======================================================================
 //bez2()
@@ -126,17 +139,24 @@ static f32 bez2(st_Key* key0, st_Key* key1, f32 time)
 	f32 t1 = 1.0f;
 
 	if (key0->shape == SHAPE_BEZ2)
+	{
 		x = key0->time + key0->param[2];
+	}
 	else
+	{
 		x = key0->time + (key1->time - key0->time) / 3.0f;
+	}
 
-	t = bez2_time(key0->time, x, key1->time + key1->param[0], key1->time,
-				  time, &t0, &t1);
+	t = bez2_time(key0->time, x, key1->time + key1->param[0], key1->time, time, &t0, &t1);
 
 	if (key0->shape == SHAPE_BEZ2)
+	{
 		y = key0->value + key0->param[3];
+	}
 	else
+	{
 		y = key0->value + key0->param[1] / 3.0f;
+	}
 
 	return bezier(key0->value, y, key1->param[1] + key1->value, key1->value, t);
 }
@@ -159,48 +179,63 @@ static f32 outgoing(st_Key* key0p, st_Key* key0, st_Key* key1)
 	switch (key0->shape)
 	{
 		case SHAPE_TCB:
-		a = (1.0f - key0->tension) * (1.0f + key0->continuity) * (1.0f + key0->bias);
-		b = (1.0f - key0->tension) * (1.0f - key0->continuity) * (1.0f - key0->bias);
-		d = key1->value - key0->value;
-
-		if (key0p)
 		{
-			t = (key1->time - key0->time) / (key1->time - key0p->time);
-			out = t * (a * (key0->value - key0p->value) + b * d);
+			a = (1.0f - key0->tension) * (1.0f + key0->continuity) * (1.0f + key0->bias);
+			b = (1.0f - key0->tension) * (1.0f - key0->continuity) * (1.0f - key0->bias);
+			d = key1->value - key0->value;
+			if (key0p)
+			{
+				t = (key1->time - key0->time) / (key1->time - key0p->time);
+				out = t * (a * (key0->value - key0p->value) + b * d);
+			}
+			else
+			{
+				out = b * d;
+			}
 		}
-		else
-			out = b * d;
 		break;
-
 		case SHAPE_LINE:
-		d = key1->value - key0->value;
-		if (key0p)
 		{
-			t = (key1->time - key0->time) / (key1->time - key0p->time);
-			out = t * (key0->value - key0p->value + d);
+			d = key1->value - key0->value;
+			if (key0p)
+			{
+				t = (key1->time - key0->time) / (key1->time - key0p->time);
+				out = t * (key0->value - key0p->value + d);
+			}
+			else
+			{
+				out = d;
+			}
 		}
-		else
-			out = d;
 		break;
-
 		case SHAPE_BEZI:
 		case SHAPE_HERM:
-		out = key0->param[1];
-		if (key0p)
-			out *= (key1->time - key0->time) / (key1->time - key0p->time);
+		{
+			out = key0->param[1];
+			if (key0p)
+			{
+				out *= (key1->time - key0->time) / (key1->time - key0p->time);
+			}
+		}
 		break;
-
 		case SHAPE_BEZ2:
-		out = key0->param[3] * (key1->time - key0->time);
-		if (_abs(key0->param[2]) > 1e-5f)
-			out /= key0->param[2];
-		else
-			out *= 1e5f;
+		{
+			out = key0->param[3] * (key1->time - key0->time);
+			if (_abs(key0->param[2]) > 1e-5f)
+			{
+				out /= key0->param[2];
+			}
+			else
+			{
+				out *= 1e5f;
+			}
+		}
 		break;
-
 		case SHAPE_STEP:
 		default:
-		out = 0.0f;
+		{
+			out = 0.0f;
+		}
 		break;
 	}
 
@@ -224,48 +259,63 @@ static f32 incoming(st_Key* key0, st_Key* key1, st_Key* key1n)
 	switch (key1->shape)
 	{
 		case SHAPE_LINE:
-		d = key1->value - key0->value;
-		if (key1n)
 		{
-			t = (key1->time - key0->time) / (key1n->time - key0->time);
-			in = t * (key1n->value - key1->value + d);
+			d = key1->value - key0->value;
+			if (key1n)
+			{
+				t = (key1->time - key0->time) / (key1n->time - key0->time);
+				in = t * (key1n->value - key1->value + d);
+			}
+			else
+			{
+				in = d;
+			}
 		}
-		else
-			in = d;
 		break;
-
 		case SHAPE_TCB:
-		a = (1.0f - key1->tension) * (1.0f - key1->continuity) * (1.0f + key1->bias);
-		b = (1.0f - key1->tension) * (1.0f + key1->continuity) * (1.0f - key1->bias);
-		d = key1->value - key0->value;
-
-		if (key1n)
 		{
-			t = (key1->time - key0->time) / (key1n->time - key0->time);
-			in = t * (b * (key1n->value - key1->value) + a * d);
+			a = (1.0f - key1->tension) * (1.0f - key1->continuity) * (1.0f + key1->bias);
+			b = (1.0f - key1->tension) * (1.0f + key1->continuity) * (1.0f - key1->bias);
+			d = key1->value - key0->value;
+			if (key1n)
+			{
+				t = (key1->time - key0->time) / (key1n->time - key0->time);
+				in = t * (b * (key1n->value - key1->value) + a * d);
+			}
+			else
+			{
+				in = a * d;
+			}
 		}
-		else
-			in = a * d;
 		break;
-
 		case SHAPE_BEZI:
 		case SHAPE_HERM:
-		in = key1->param[0];
-		if (key1n)
-			in *= (key1->time - key0->time) / (key1n->time - key0->time);
+		{
+			in = key1->param[0];
+			if (key1n)
+			{
+				in *= (key1->time - key0->time) / (key1n->time - key0->time);
+			}
+		}
 		break;
-
 		case SHAPE_BEZ2:
-		in = key1->param[1] * (key1->time - key0->time);
-		if (_abs(key1->param[0]) > 1e-5f)
-			in /= key1->param[0];
-		else
-			in *= 1e5f;
+		{
+			in = key1->param[1] * (key1->time - key0->time);
+			if (_abs(key1->param[0]) > 1e-5f)
+			{
+				in /= key1->param[0];
+			}
+			else
+			{
+				in *= 1e5f;
+			}
+		}
 		break;
-
 		case SHAPE_STEP:
 		default:
-		in = 0.0f;
+		{
+			in = 0.0f;
+		}
 		break;
 	}
 
@@ -280,7 +330,14 @@ static f32 incoming(st_Key* key0, st_Key* key1, st_Key* key1n)
 //======================================================================
 f32 evalEnvelope(CEnvelope* env, f32 time)
 {
-	st_Key* key0, * key1, * skey, * ekey, * skey_n, * ekey_p, * key0_p = 0, * key1_n = 0;
+	st_Key* key0;
+	st_Key* key1;
+	st_Key* skey;
+	st_Key* ekey;
+	st_Key* skey_n;
+	st_Key* ekey_p;
+	st_Key* key0_p = 0;
+	st_Key* key1_n = 0;
 	f32 t;
 	f32 h1;
 	f32 h2;
@@ -292,14 +349,19 @@ f32 evalEnvelope(CEnvelope* env, f32 time)
 	s32 noff;
 
 	// if there's no key, the value is 0
-	if (env->keys.empty( )) return 0.0f;
+	if (env->keys.empty( ))
+	{
+		return 0.0f;
+	}
 
 	// if there's only one key, the value is constant
 	if (env->keys.size( ) == 1)
+	{
 		return env->keys[0]->value;
+	}
 
 	// find the first and last keys
-	int sz = env->keys.size( );
+	s32 sz = env->keys.size( );
 	skey = env->keys[0];
 	ekey = env->keys[sz - 1];
 	skey_n = env->keys[1];
@@ -310,23 +372,39 @@ f32 evalEnvelope(CEnvelope* env, f32 time)
 	{
 		switch (env->behavior[0])
 		{
-			case BEH_RESET:            return 0.0f;
-			case BEH_CONSTANT:			return skey->value;
+			case BEH_RESET:
+			{
+				return 0.0f;
+			}
+			case BEH_CONSTANT:
+			{
+				return skey->value;
+			}
 			case BEH_REPEAT:
-			time = range(time, skey->time, ekey->time, NULL);
+			{
+				time = range(time, skey->time, ekey->time, NULL);
+			}
 			break;
 			case BEH_OSCILLATE:
-			time = range(time, skey->time, ekey->time, &noff);
-			if (noff % 2)
-				time = ekey->time - skey->time - time;
+			{
+				time = range(time, skey->time, ekey->time, &noff);
+				if (noff % 2)
+				{
+					time = ekey->time - skey->time - time;
+				}
+			}
 			break;
 			case BEH_OFFSET:
-			time = range(time, skey->time, ekey->time, &noff);
-			offset = noff * (ekey->value - skey->value);
+			{
+				time = range(time, skey->time, ekey->time, &noff);
+				offset = noff * (ekey->value - skey->value);
+			}
 			break;
 			case BEH_LINEAR:
-			out = outgoing(0, skey, skey_n) / (skey_n->time - skey->time);
-			return out * (time - skey->time) + skey->value;
+			{
+				out = outgoing(0, skey, skey_n) / (skey_n->time - skey->time);
+				return (out * (time - skey->time) + skey->value);
+			}
 		}
 	}
 	// use post-behavior if time is after last key time
@@ -334,38 +412,67 @@ f32 evalEnvelope(CEnvelope* env, f32 time)
 	{
 		switch (env->behavior[1])
 		{
-			case BEH_RESET:            return 0.0f;
-			case BEH_CONSTANT:			return ekey->value;
+			case BEH_RESET:
+			{
+				return 0.0f;
+			}
+			case BEH_CONSTANT:
+			{
+				return ekey->value;
+			}
 			case BEH_REPEAT:
-			time = range(time, skey->time, ekey->time, NULL);
+			{
+				time = range(time, skey->time, ekey->time, NULL);
+			}
 			break;
 			case BEH_OSCILLATE:
-			time = range(time, skey->time, ekey->time, &noff);
-			if (noff % 2)
-				time = ekey->time - skey->time - time;
+			{
+				time = range(time, skey->time, ekey->time, &noff);
+				if (noff % 2)
+				{
+					time = ekey->time - skey->time - time;
+				}
+			}
 			break;
 			case BEH_OFFSET:
-			time = range(time, skey->time, ekey->time, &noff);
-			offset = noff * (ekey->value - skey->value);
+			{
+				time = range(time, skey->time, ekey->time, &noff);
+				offset = noff * (ekey->value - skey->value);
+			}
 			break;
 			case BEH_LINEAR:
-			in = incoming(ekey_p, ekey, 0) / (ekey->time - ekey_p->time);
-			return in * (time - ekey->time) + ekey->value;
+			{
+				in = incoming(ekey_p, ekey, 0) / (ekey->time - ekey_p->time);
+				return (in * (time - ekey->time) + ekey->value);
+			}
 		}
 	}
 	// get the endpoints of the interval being evaluated
-	int k = 0;
+	s32 k = 0;
 	while (time > env->keys[k + 1]->time) k++;
 	VERIFY((k + 1) < sz);
 
 	key1 = env->keys[k + 1];
 	key0 = env->keys[k];
-	if (k > 0)  		key0_p = env->keys[k - 1];
-	if ((k + 2) < sz) 	key1_n = env->keys[k + 2];
+	if (k > 0)
+	{
+		key0_p = env->keys[k - 1];
+	}
+
+	if ((k + 2) < sz)
+	{
+		key1_n = env->keys[k + 2];
+	}
 
 	// check for singularities first
-	if (time == key0->time)		return key0->value + offset;
-	else if (time == key1->time)	return key1->value + offset;
+	if (time == key0->time)
+	{
+		return ((key0->value + offset);
+	}
+	else if (time == key1->time)
+	{
+		return (key1->value + offset);
+	}
 
 	// get interval length, time in [0, 1]
 	t = (time - key0->time) / (key1->time - key0->time);
@@ -376,14 +483,27 @@ f32 evalEnvelope(CEnvelope* env, f32 time)
 		case SHAPE_TCB:
 		case SHAPE_BEZI:
 		case SHAPE_HERM:
-		out = outgoing(key0_p, key0, key1);
-		in = incoming(key0, key1, key1_n);
-		hermite(t, &h1, &h2, &h3, &h4);
-		return h1 * key0->value + h2 * key1->value + h3 * out + h4 * in + offset;
-		case SHAPE_BEZ2:         return bez2(key0, key1, time) + offset;
-		case SHAPE_LINE:         return key0->value + t * (key1->value - key0->value) + offset;
-		case SHAPE_STEP:         return key0->value + offset;
+		{
+			out = outgoing(key0_p, key0, key1);
+			in = incoming(key0, key1, key1_n);
+			hermite(t, &h1, &h2, &h3, &h4);
+			return (h1 * key0->value + h2 * key1->value + h3 * out + h4 * in + offset);
+		}
+		case SHAPE_BEZ2:
+		{
+			return (bez2(key0, key1, time) + offset);
+		}
+		case SHAPE_LINE:
+		{
+			return (key0->value + t * (key1->value - key0->value) + offset);
+		}
+		case SHAPE_STEP:
+		{
+			return (key0->value + offset);
+		}
 		default:
-		return offset;
+		{
+			return offset;
+		}
 	}
 }

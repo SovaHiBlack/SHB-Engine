@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\XR_3DA\envelope.h"
+#include "..\XR_3DA\Envelope.h"
 #include "..\XR_3DA\EffectorPP.h"
 #include "..\XR_3DA\cameramanager.h"
 

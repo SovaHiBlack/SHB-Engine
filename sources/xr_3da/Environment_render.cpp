@@ -85,10 +85,13 @@ const	u32 v_clouds_fvf = D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_SPECULAR;
 // Environment render
 //-----------------------------------------------------------------------------
 extern f32 psHUD_FOV;
-BOOL bNeed_re_create_env = FALSE;
+bool bNeed_re_create_env = false;
 void CEnvironment::RenderSky( )
 {
-	if (0 == g_pGameLevel)		return;
+	if (0 == g_pGameLevel)
+	{
+		return;
+	}
 
 	// clouds_sh.create		("clouds","null");
 	//. this is the bug-fix for the case when the sky is broken
@@ -103,17 +106,19 @@ void CEnvironment::RenderSky( )
 		sh_2geom.create(v_skybox_fvf, RCache.Vertex.Buffer( ), RCache.Index.Buffer( ));
 		clouds_sh.create("clouds", "null");
 		clouds_geom.create(v_clouds_fvf, RCache.Vertex.Buffer( ), RCache.Index.Buffer( ));
-		bNeed_re_create_env = FALSE;
+		bNeed_re_create_env = false;
 	}
+
 	::Render->rmFar( );
 
 	// draw sky box
-	fMatrix4x4						mSky;
+	fMatrix4x4 mSky;
 	mSky.rotateY(CurrentEnv.sky_rotation);
 	mSky.translate_over(Device.vCameraPosition);
 
-	u32		i_offset, v_offset;
-	u32		C = color_rgba(iFloor(CurrentEnv.sky_color.x * 255.f), iFloor(CurrentEnv.sky_color.y * 255.f), iFloor(CurrentEnv.sky_color.z * 255.f), iFloor(CurrentEnv.weight * 255.f));
+	u32 i_offset;
+	u32 v_offset;
+	u32 C = color_rgba(iFloor(CurrentEnv.sky_color.x * 255.0f), iFloor(CurrentEnv.sky_color.y * 255.0f), iFloor(CurrentEnv.sky_color.z * 255.0f), iFloor(CurrentEnv.weight * 255.0f));
 
 	// Fill index buffer
 	u16* pib = RCache.Index.Lock(20 * 3, i_offset);
@@ -122,7 +127,11 @@ void CEnvironment::RenderSky( )
 
 	// Fill vertex buffer
 	v_skybox* pv = (v_skybox*)RCache.Vertex.Lock(12, sh_2geom.stride( ), v_offset);
-	for (u32 v = 0; v < 12; v++)	pv[v].set(hbox_verts[v * 2], C, hbox_verts[v * 2 + 1]);
+	for (u32 v = 0; v < 12; v++)
+	{
+		pv[v].set(hbox_verts[v * 2], C, hbox_verts[v * 2 + 1]);
+	}
+
 	RCache.Vertex.Unlock(12, sh_2geom.stride( ));
 
 	// Render
@@ -139,15 +148,22 @@ void CEnvironment::RenderSky( )
 
 void CEnvironment::RenderClouds( )
 {
-	if (0 == g_pGameLevel)		return;
+	if (0 == g_pGameLevel)
+	{
+		return;
+	}
 
 	// draw clouds
-	if (fis_zero(CurrentEnv.clouds_color.w, EPSILON_3))	return;
+	if (fis_zero(CurrentEnv.clouds_color.w, EPSILON_3))
+	{
+		return;
+	}
 
 	::Render->rmFar( );
 
-	fMatrix4x4						mXFORM, mScale;
-	mScale.scale(10, 0.4f, 10);
+	fMatrix4x4 mXFORM;
+	fMatrix4x4 mScale;
+	mScale.scale(10.0f, 0.4f, 10.0f);
 	mXFORM.rotateY(CurrentEnv.sky_rotation);
 	mXFORM.mulB_43(mScale);
 	mXFORM.translate_over(Device.vCameraPosition);
@@ -155,12 +171,13 @@ void CEnvironment::RenderClouds( )
 	fVector3 wd0;
 	fVector3 wd1;
 	fVector4 wind_dir;
-	wd0.setHP(PI_DIV_4, 0);
-	wd1.setHP(PI_DIV_4 + PI_DIV_8, 0);
-	wind_dir.set(wd0.x, wd0.z, wd1.x, wd1.z).mul(0.5f).add(0.5f).mul(255.f);
-	u32		i_offset, v_offset;
-	u32		C0 = color_rgba(iFloor(wind_dir.x), iFloor(wind_dir.y), iFloor(wind_dir.w), iFloor(wind_dir.z));
-	u32		C1 = color_rgba(iFloor(CurrentEnv.clouds_color.x * 255.f), iFloor(CurrentEnv.clouds_color.y * 255.f), iFloor(CurrentEnv.clouds_color.z * 255.f), iFloor(CurrentEnv.clouds_color.w * 255.f));
+	wd0.setHP(PI_DIV_4, 0.0f);
+	wd1.setHP(PI_DIV_4 + PI_DIV_8, 0.0f);
+	wind_dir.set(wd0.x, wd0.z, wd1.x, wd1.z).mul(0.5f).add(0.5f).mul(255.0f);
+	u32 i_offset;
+	u32 v_offset;
+	u32 C0 = color_rgba(iFloor(wind_dir.x), iFloor(wind_dir.y), iFloor(wind_dir.w), iFloor(wind_dir.z));
+	u32 C1 = color_rgba(iFloor(CurrentEnv.clouds_color.x * 255.0f), iFloor(CurrentEnv.clouds_color.y * 255.0f), iFloor(CurrentEnv.clouds_color.z * 255.0f), iFloor(CurrentEnv.clouds_color.w * 255.0f));
 
 	// Fill index buffer
 	u16* pib = RCache.Index.Lock(CloudsIndices.size( ), i_offset);
@@ -170,7 +187,10 @@ void CEnvironment::RenderClouds( )
 	// Fill vertex buffer
 	v_clouds* pv = (v_clouds*)RCache.Vertex.Lock(CloudsVerts.size( ), clouds_geom.stride( ), v_offset);
 	for (FvectorIt it = CloudsVerts.begin( ); it != CloudsVerts.end( ); it++, pv++)
+	{
 		pv->set(*it, C0, C1);
+	}
+
 	RCache.Vertex.Unlock(CloudsVerts.size( ), clouds_geom.stride( ));
 
 	// Render
@@ -185,7 +205,10 @@ void CEnvironment::RenderClouds( )
 
 void CEnvironment::RenderFlares( )
 {
-	if (0 == g_pGameLevel)			return;
+	if (0 == g_pGameLevel)
+	{
+		return;
+	}
 
 	// 1
 	eff_LensFlare->Render(FALSE, TRUE, TRUE);
@@ -193,7 +216,10 @@ void CEnvironment::RenderFlares( )
 
 void CEnvironment::RenderLast( )
 {
-	if (0 == g_pGameLevel)			return;
+	if (0 == g_pGameLevel)
+	{
+		return;
+	}
 
 	// 2
 	eff_Rain->Render( );
@@ -202,7 +228,6 @@ void CEnvironment::RenderLast( )
 
 void CEnvironment::OnDeviceCreate( )
 {
-	//.	bNeed_re_create_env			= TRUE;
 	sh_2sky.create(&m_b_skybox, "skybox_2t");
 	sh_2geom.create(v_skybox_fvf, RCache.Vertex.Buffer( ), RCache.Index.Buffer( ));
 	clouds_sh.create("clouds", "null");
@@ -210,21 +235,31 @@ void CEnvironment::OnDeviceCreate( )
 
 	// weathers
 	{
-		EnvsMapIt _I, _E;
+		EnvsMapIt _I;
+		EnvsMapIt _E;
 		_I = WeatherCycles.begin( );
 		_E = WeatherCycles.end( );
 		for (; _I != _E; _I++)
+		{
 			for (EnvIt it = _I->second.begin( ); it != _I->second.end( ); it++)
+			{
 				(*it)->on_device_create( );
+			}
+		}
 	}
 	// effects
 	{
-		EnvsMapIt _I, _E;
+		EnvsMapIt _I;
+		EnvsMapIt _E;
 		_I = WeatherFXs.begin( );
 		_E = WeatherFXs.end( );
 		for (; _I != _E; _I++)
+		{
 			for (EnvIt it = _I->second.begin( ); it != _I->second.end( ); it++)
+			{
 				(*it)->on_device_create( );
+			}
+		}
 	}
 
 	Invalidate( );
@@ -242,22 +277,32 @@ void CEnvironment::OnDeviceDestroy( )
 	clouds_geom.destroy( );
 	// weathers
 	{
-		EnvsMapIt _I, _E;
+		EnvsMapIt _I;
+		EnvsMapIt _E;
 		_I = WeatherCycles.begin( );
 		_E = WeatherCycles.end( );
 		for (; _I != _E; _I++)
+		{
 			for (EnvIt it = _I->second.begin( ); it != _I->second.end( ); it++)
+			{
 				(*it)->on_device_destroy( );
+			}
+		}
 	}
 	// effects
 	{
-		EnvsMapIt _I, _E;
+		EnvsMapIt _I;
+		EnvsMapIt _E;
 		_I = WeatherFXs.begin( );
 		_E = WeatherFXs.end( );
 		for (; _I != _E; _I++)
+		{
 			for (EnvIt it = _I->second.begin( ); it != _I->second.end( ); it++)
+			{
 				(*it)->on_device_destroy( );
+			}
+		}
 	}
-	CurrentEnv.destroy( );
 
+	CurrentEnv.destroy( );
 }

@@ -10,7 +10,7 @@
 #include "alife_space.h"
 #include "Hit.h"
 #include "ode_include.h"
-#include "..\XR_3DA\bone.h"
+#include "..\XR_3DA\Bone.h"
 #include "../xrNetServer/net_utils.h"
 #include "xrMessages.h"
 #include "Level.h"

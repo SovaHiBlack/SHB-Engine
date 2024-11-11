@@ -54,7 +54,7 @@ void CRenderDevice::Destroy( )
 	xr_delete(Statistic);
 }
 
-extern BOOL bNeed_re_create_env;
+extern bool bNeed_re_create_env;
 void CRenderDevice::Reset(bool precache)
 {
 
@@ -83,7 +83,7 @@ void CRenderDevice::Reset(bool precache)
 	if (g_pGamePersistent)
 	{
 		//.		g_pGamePersistent->Environment().OnDeviceCreate();
-		bNeed_re_create_env = TRUE;
+		bNeed_re_create_env = true;
 	}
 
 	_SetupStates( );
