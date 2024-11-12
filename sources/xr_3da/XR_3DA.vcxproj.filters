@@ -156,7 +156,7 @@
     <ClInclude Include="IInputReceiver.h">
       <Filter>Interfaces\Input</Filter>
     </ClInclude>
-    <ClInclude Include="xr_input.h">
+    <ClInclude Include="Input.h">
       <Filter>Interfaces\Input</Filter>
     </ClInclude>
     <ClInclude Include="ISheduled.h">
@@ -497,7 +497,7 @@
     <ClCompile Include="IInputReceiver.cpp">
       <Filter>Interfaces\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Xr_input.cpp">
+    <ClCompile Include="Input.cpp">
       <Filter>Interfaces\Input</Filter>
     </ClCompile>
     <ClCompile Include="ISheduled.cpp">

@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 
-#include "render.h"
+#include "Render.h"
 
 #include "BasicVisual.h"
 #include "mesh.h"

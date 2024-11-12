@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Environment.h"
-#include "render.h"
+#include "Render.h"
 
 #include "xr_efflensflare.h"
 #include "rain.h"

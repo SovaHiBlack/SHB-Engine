@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "ResourceManager.h"
-#include "render.h"
+#include "Render.h"
 #include "IGame_Persistent.h"
 #include "IGame_Level.h"
 #include "CustomHUD.h"

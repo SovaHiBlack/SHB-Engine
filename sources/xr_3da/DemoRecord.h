@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "iinputreceiver.h"
+#include "IInputReceiver.h"
 #include "effector.h"
 
 class ENGINE_API CDemoRecord : public CEffectorCam, public IInputReceiver

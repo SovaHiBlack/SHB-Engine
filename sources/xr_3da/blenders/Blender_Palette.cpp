@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
 #include "Blender.h"
-
-//////////////////////////////////////////////////////////////////////
 #include "blender_clsid.h"
+#include "..\Render.h"
+
 IC bool		p_sort			(IBlender* A, IBlender* B)
 {
 	return stricmp(A->getComment(),B->getComment())<0;
@@ -55,7 +55,6 @@ void		IBlender::CreatePalette(xr_vector<IBlender*> &palette)
 	std::sort		(palette.begin(),palette.end(),p_sort);
 }
 
-#include "..\render.h"
 IBlender*	IBlender::Create	(CLASS_ID cls)
 {
 	return ::Render->blender_create	(cls);

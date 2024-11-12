@@ -6,7 +6,7 @@
 
 #include "HierrarhyVisual.h"
 #include "mesh.h"
-#include "render.h"
+#include "Render.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

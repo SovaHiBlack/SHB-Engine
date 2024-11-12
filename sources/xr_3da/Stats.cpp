@@ -3,7 +3,7 @@
 
 #include "ISpatial.h"
 #include "IGame_Persistent.h"
-#include "render.h"
+#include "Render.h"
 #include "xr_object.h"
 
 s32		g_ErrorLineCount = 15;

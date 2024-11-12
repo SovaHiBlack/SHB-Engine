@@ -2,7 +2,7 @@
 
 #include "ResourceManager.h"
 
-#include "render.h"
+#include "Render.h"
     
 #include "tntQAVI.h"
 #include "xrTheora_Surface.h"

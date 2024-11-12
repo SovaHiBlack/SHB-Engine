@@ -22,7 +22,7 @@
 pcstr GAME_CONFIG = "game.ltx";
 #else
 #	include "..\XR_3DA\Bone.h"
-#	include "..\XR_3DA\render.h"
+#	include "..\XR_3DA\Render.h"
 #endif
 
 bool SortStringsByAlphabetPred (const shared_str& s1, const shared_str& s2)

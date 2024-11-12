@@ -1,8 +1,7 @@
 #include "stdafx.h"
-#include <dinput.h>
+#include "..\XR_3DA\Input.h"
 #include "..\XR_3DA\Console.h"
 #include "..\XR_3DA\ConsoleCommand.h"
-#include "..\XR_3DA\xr_input.h"
 #include "xr_level_controller.h"
 #include "string_table.h"
 

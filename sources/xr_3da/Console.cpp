@@ -7,9 +7,9 @@
 #include "igame_persistent.h"
 
 //#include "x_ray.h"
+#include "Input.h"
 #include "Console.h"
 #include "ConsoleCommand.h"
-#include "xr_input.h"
 #include "GameFont.h"
 //#include "CustomHUD.h"
 

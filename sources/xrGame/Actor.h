@@ -2,7 +2,7 @@
 
 #include "..\XR_3DA\feel_touch.h"
 #include "..\XR_3DA\feel_sound.h"
-#include "..\XR_3DA\iinputreceiver.h"
+#include "..\XR_3DA\IInputReceiver.h"
 #include "..\XR_3DA\SkeletonAnimated.h"
 #include "actor_flags.h"
 #include "actor_defs.h"

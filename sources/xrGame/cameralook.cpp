@@ -4,6 +4,9 @@
 #include "..\XR_3DA\Cameramanager.h"
 #include "xr_level_controller.h"
 #include "actor.h"
+#include "..\XR_3DA\Input.h"
+#include "visual_memory_manager.h"
+#include "actor_memory.h"
 
 CCameraLook::CCameraLook(CObject* p, u32 flags ) 
 :CCameraBase(p, flags)
@@ -76,10 +79,6 @@ void CCameraLook::OnActivate( CCameraBase* old_cam )
 	if (yaw>PI_MUL_2) yaw-=PI_MUL_2;
 	if (yaw<-PI_MUL_2)yaw+=PI_MUL_2;
 }
-
-#include "..\XR_3DA\xr_input.h"
-#include "visual_memory_manager.h"
-#include "actor_memory.h"
 
 int cam_dik = DIK_LSHIFT;
 

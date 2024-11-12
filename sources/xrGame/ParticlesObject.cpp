@@ -7,7 +7,7 @@
 #include "..\XR_3DA\defines.h"
 #include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\ParticleCustom.h"
-#include "..\XR_3DA\render.h"
+#include "..\XR_3DA\Render.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 const fVector3 zero_vel		= {0.0f,0.0f,0.0f};

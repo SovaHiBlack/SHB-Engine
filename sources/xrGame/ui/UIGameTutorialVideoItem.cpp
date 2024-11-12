@@ -5,7 +5,7 @@
 #include "UIStatic.h"
 #include "UIXmlInit.h"
 #include "../object_broker.h"
-#include "..\..\XR_3DA\xr_input.h"
+#include "..\..\XR_3DA\Input.h"
 #include "../xr_level_controller.h"
 
 extern ENGINE_API BOOL bShowPauseString;

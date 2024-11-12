@@ -21,7 +21,7 @@
 #include "huditem.h"
 #include "ui/UIDialogWnd.h"
 #include "clsid_game.h"
-#include "..\XR_3DA\xr_input.h"
+#include "..\XR_3DA\Input.h"
 #include "saved_game_wrapper.h"
 
 #ifdef _DEBUG

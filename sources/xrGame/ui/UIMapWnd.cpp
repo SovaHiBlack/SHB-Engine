@@ -18,8 +18,7 @@
 
 #include "../HUDManager.h"
 
-#include <dinput.h>				//remove me !!!
-#include "../..\XR_3DA\xr_input.h"		//remove me !!!
+#include "../..\XR_3DA\Input.h"		//remove me !!!
 
 const	int			SCROLLBARS_SHIFT			= 5;
 const	int			VSCROLLBAR_STEP				= 20; // В пикселях

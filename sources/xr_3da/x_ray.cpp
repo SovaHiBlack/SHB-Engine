@@ -9,7 +9,7 @@
 #include "igame_level.h"
 #include "igame_persistent.h"
 
-#include "xr_input.h"
+#include "Input.h"
 #include "Console.h"
 #include "ConsoleCommand.h"
 #include "x_ray.h"

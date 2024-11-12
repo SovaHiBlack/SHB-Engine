@@ -289,7 +289,7 @@
     <ClInclude Include="xr_collide_form.h" />
     <ClInclude Include="GammaControl.h" />
     <ClInclude Include="xr_efflensflare.h" />
-    <ClInclude Include="xr_input.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleCommand.h" />
     <ClInclude Include="xr_object.h" />
@@ -427,7 +427,7 @@
     <ClCompile Include="xr_collide_form.cpp" />
     <ClCompile Include="GammaControl.cpp" />
     <ClCompile Include="xr_efflensflare.cpp" />
-    <ClCompile Include="Xr_input.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="ConsoleCommand.cpp" />
     <ClCompile Include="xr_object.cpp" />

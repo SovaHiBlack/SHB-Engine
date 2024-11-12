@@ -14,7 +14,7 @@
 #pragma warning(default:4995)
 
 #include "x_ray.h"
-#include "render.h"
+#include "Render.h"
 #include "resourcemanager.h"
 #include "igame_level.h"
 #include "IGame_Persistent.h"

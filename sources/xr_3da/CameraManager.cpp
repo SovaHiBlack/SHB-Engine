@@ -14,7 +14,7 @@
 
 //#include "x_ray.h"
 //#include "gamefont.h"
-#include "render.h"
+#include "Render.h"
 
 f32	psCamInert = 0.7f;
 f32	psCamSlideInert = 0.25f;

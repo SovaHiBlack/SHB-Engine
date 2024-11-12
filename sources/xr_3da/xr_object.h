@@ -2,9 +2,9 @@
 
 #include "ispatial.h"
 #include "isheduled.h"
-//#include "iinputreceiver.h"
+//#include "IInputReceiver.h"
 #include "irenderable.h"
-#include "icollidable.h"
+#include "ICollidable.h"
 
 // refs
 class	ENGINE_API	IRenderVisual;

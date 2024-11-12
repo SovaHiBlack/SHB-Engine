@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "render.h"
+#include "Render.h"
 #include "Thunderbolt.h"
 #include "igame_persistent.h"
 #include "LightAnimLibrary.h"

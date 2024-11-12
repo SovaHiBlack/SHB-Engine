@@ -27,7 +27,7 @@
 #include "game_cl_base_weapon_usage_statistic.h"
 
 // breakpoints
-#include "..\XR_3DA\xr_input.h"
+#include "..\XR_3DA\Input.h"
 
 //
 #include "Actor.h"

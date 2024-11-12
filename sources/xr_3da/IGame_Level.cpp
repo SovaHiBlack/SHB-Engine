@@ -5,7 +5,7 @@
 #include "x_ray.h"
 #include "std_classes.h"
 #include "customHUD.h"
-#include "render.h"
+#include "Render.h"
 //#include "gamefont.h"
 #include "xrLevel.h"
 #include "CameraManager.h"

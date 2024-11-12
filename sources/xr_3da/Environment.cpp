@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "render.h"
+#include "Render.h"
 
 #include "Environment.h"
 #include "xr_efflensflare.h"

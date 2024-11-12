@@ -9,9 +9,9 @@
 #include "gamefont.h"
 #include "DemoRecord.h"
 #include "Console.h"
-#include "xr_input.h"
+#include "Input.h"
 #include "xr_object.h"
-#include "render.h"
+#include "Render.h"
 #include "CustomHUD.h"
 
 CDemoRecord* xrDemoRecord = 0;

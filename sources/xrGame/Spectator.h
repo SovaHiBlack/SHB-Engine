@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\XR_3DA\feel_touch.h"
-#include "..\XR_3DA\iinputreceiver.h"
+#include "..\XR_3DA\IInputReceiver.h"
 
 #include "entity.h"
 #include "actor_flags.h"

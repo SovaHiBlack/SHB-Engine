@@ -4,7 +4,7 @@
 #include "igame_persistent.h"
 #include "environment.h"
 
-#include "render.h"
+#include "Render.h"
 #include "igame_level.h"
 #include "xr_area.h"
 #include "xr_object.h"

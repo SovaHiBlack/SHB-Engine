@@ -1,6 +1,6 @@
 #pragma once
 
-#include "iinputreceiver.h"
+#include "IInputReceiver.h"
 
 ENGINE_API extern flags32		psHUD_Flags;
 #define HUD_CROSSHAIR			(1<<0)

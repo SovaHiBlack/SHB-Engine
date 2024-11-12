@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "..\XR_3DA\render.h"
+//#include "..\XR_3DA\Render.h"
 #include "..\XR_3DA\irenderable.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "..\XR_3DA\environment.h"

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "render.h"
+#include "Render.h"
 #include "ResourceManager.h"
 #include "tss.h"
 #include "blenders\blender.h"

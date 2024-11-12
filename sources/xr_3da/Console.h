@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "iinputreceiver.h"
+#include "IInputReceiver.h"
 
 //refs
 class ENGINE_API CGameFont;

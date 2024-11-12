@@ -12,24 +12,24 @@ public:
 	void			IR_GetMousePosReal				(iVector2& p);
 	void			IR_GetMousePosIndependent		(fVector2& f);
 	void			IR_GetMousePosIndependentCrop	(fVector2& f);
-	BOOL			IR_GetKeyState					(int dik);
-	BOOL			IR_GetBtnState					(int btn);
-	void			IR_Capture						(void);
-	void			IR_Release						(void);
+	BOOL			IR_GetKeyState					(s32 dik);
+	BOOL			IR_GetBtnState					(s32 btn);
+	void			IR_Capture						( );
+	void			IR_Release						( );
 
-	virtual void	IR_OnDeactivate					(void);
-	virtual void	IR_OnActivate					(void);
+	virtual void	IR_OnDeactivate					( );
+	virtual void	IR_OnActivate					( );
 
-	virtual void	IR_OnMousePress					(int btn)		{};
-	virtual void	IR_OnMouseRelease				(int btn)		{};
-	virtual void	IR_OnMouseHold					(int btn)		{};
-	virtual void	IR_OnMouseWheel					(int direction)	{};
-	virtual void	IR_OnMouseMove					(int x, int y)	{};
-	virtual void	IR_OnMouseStop					(int x, int y)	{};
+	virtual void	IR_OnMousePress					(s32 btn)		{}
+	virtual void	IR_OnMouseRelease				(s32 btn)		{}
+	virtual void	IR_OnMouseHold					(s32 btn)		{}
+	virtual void	IR_OnMouseWheel					(s32 direction)	{}
+	virtual void	IR_OnMouseMove					(s32 x, s32 y)	{}
+	virtual void	IR_OnMouseStop					(s32 x, s32 y)	{}
 
-	virtual void	IR_OnKeyboardPress				(int dik)		{};
-	virtual void	IR_OnKeyboardRelease			(int dik)		{};
-	virtual void	IR_OnKeyboardHold				(int dik)		{};
+	virtual void	IR_OnKeyboardPress				(s32 dik)		{}
+	virtual void	IR_OnKeyboardRelease			(s32 dik)		{}
+	virtual void	IR_OnKeyboardHold				(s32 dik)		{}
 };
 
 ENGINE_API extern f32			psMouseSens;

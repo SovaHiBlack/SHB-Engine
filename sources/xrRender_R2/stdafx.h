@@ -20,7 +20,7 @@
 
 #include "..\XR_3DA\resourcemanager.h"
 #include "..\XR_3DA\vis_common.h"
-#include "..\XR_3DA\render.h"
+#include "..\XR_3DA\Render.h"
 #include "..\XR_3DA\_d3d_extensions.h"
 #include "..\XR_3DA\igame_level.h"
 #include "..\XR_3DA\blenders\blender.h"
