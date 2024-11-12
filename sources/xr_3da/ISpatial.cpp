@@ -119,8 +119,7 @@ void	ISpatial::spatial_updatesector_internal( )
 void			ISpatial_NODE::_init(ISpatial_NODE* _parent)
 {
 	parent = _parent;
-	children[0] = children[1] = children[2] = children[3] =
-		children[4] = children[5] = children[6] = children[7] = NULL;
+	children[0] = children[1] = children[2] = children[3] = children[4] = children[5] = children[6] = children[7] = NULL;
 	items.clear( );
 }
 
@@ -174,19 +173,26 @@ void			ISpatial_DB::initialize(fBox3& BB)
 		m_center.set(bbc);
 		m_bounds = _max(_max(bbd.x, bbd.y), bbd.z);
 		rt_insert_object = NULL;
-		if (0 == m_root)	m_root = _node_create( );
+		if (0 == m_root)
+		{
+			m_root = _node_create( );
+		}
+
 		m_root->_init(NULL);
 	}
 }
 ISpatial_NODE* ISpatial_DB::_node_create( )
 {
 	stat_nodes++;
-	if (allocator_pool.empty( ))			return allocator.create( );
+	if (allocator_pool.empty( ))
+	{
+		return allocator.create( );
+	}
 	else
 	{
 		ISpatial_NODE* N = allocator_pool.back( );
 		allocator_pool.pop_back( );
-		return			N;
+		return N;
 	}
 }
 void			ISpatial_DB::_node_destroy(ISpatial_NODE*& P)
@@ -221,8 +227,8 @@ void			ISpatial_DB::_insert(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 	{
 		// object can be pushed further down - select "octant", calc node position
 		fVector3& s_C = rt_insert_object->spatial.sphere.P;
-		u32			octant = _octant(n_C, s_C);
-		fVector3		c_C;
+		u32 octant = _octant(n_C, s_C);
+		fVector3 c_C;
 		c_C.mad(n_C, c_spatial_offset[octant], c_R);
 		VERIFY(octant == _octant(n_C, c_C));				// check table assosiations
 		ISpatial_NODE*& chield = N->children[octant];
@@ -234,6 +240,7 @@ void			ISpatial_DB::_insert(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 			chield->_init(N);
 			VERIFY(chield);
 		}
+
 		VERIFY(chield);
 		_insert(chield, c_C, c_R);
 		VERIFY(chield);
@@ -254,19 +261,28 @@ void			ISpatial_DB::insert(ISpatial* S)
 #ifdef DEBUG
 	stat_insert.Begin( );
 
-	BOOL		bValid = _valid(S->spatial.sphere.R) && _valid(S->spatial.sphere.P);
+	BOOL bValid = _valid(S->spatial.sphere.R) && _valid(S->spatial.sphere.P);
 	if (!bValid)
 	{
 		CObject* O = dynamic_cast<CObject*>(S);
-		if (O)			Debug.fatal(DEBUG_INFO, "Invalid OBJECT position or radius (%s)", O->cName( ));
+		if (O)
+		{
+			Debug.fatal(DEBUG_INFO, "Invalid OBJECT position or radius (%s)", O->cName( ));
+		}
 		else
 		{
 			CPS_Instance* P = dynamic_cast<CPS_Instance*>(S);
-			if (P)		Debug.fatal(DEBUG_INFO, "Invalid PS spatial position{%3.2f,%3.2f,%3.2f} or radius{%3.2f}", VPUSH(S->spatial.sphere.P), S->spatial.sphere.R);
-			else		Debug.fatal(DEBUG_INFO, "Invalid OTHER spatial position{%3.2f,%3.2f,%3.2f} or radius{%3.2f}", VPUSH(S->spatial.sphere.P), S->spatial.sphere.R);
+			if (P)
+			{
+				Debug.fatal(DEBUG_INFO, "Invalid PS spatial position{%3.2f,%3.2f,%3.2f} or radius{%3.2f}", VPUSH(S->spatial.sphere.P), S->spatial.sphere.R);
+			}
+			else
+			{
+				Debug.fatal(DEBUG_INFO, "Invalid OTHER spatial position{%3.2f,%3.2f,%3.2f} or radius{%3.2f}", VPUSH(S->spatial.sphere.P), S->spatial.sphere.R);
+			}
 		}
 	}
-#endif // DEBUG
+#endif // def DEBUG
 
 	if (verify_sp(S, m_center, m_bounds))
 	{
@@ -286,14 +302,17 @@ void			ISpatial_DB::insert(ISpatial* S)
 
 #ifdef DEBUG
 	stat_insert.End( );
-#endif // DEBUG
+#endif // def DEBUG
 
 	cs.Leave( );
 }
 
 void			ISpatial_DB::_remove(ISpatial_NODE* N, ISpatial_NODE* N_sub)
 {
-	if (0 == N)							return;
+	if (0 == N)
+	{
+		return;
+	}
 
 	//*** we are assured that node contains N_sub and this subnode is empty
 	u32 octant = u32(-1);
@@ -310,7 +329,10 @@ void			ISpatial_DB::_remove(ISpatial_NODE* N, ISpatial_NODE* N_sub)
 	_node_destroy(N->children[octant]);
 
 	// Recurse
-	if (N->_empty( ))					_remove(N->parent, N);
+	if (N->_empty( ))
+	{
+		_remove(N->parent, N);
+	}
 }
 
 void			ISpatial_DB::remove(ISpatial* S)
@@ -319,17 +341,20 @@ void			ISpatial_DB::remove(ISpatial* S)
 
 #ifdef DEBUG
 	stat_remove.Begin( );
-#endif // DEBUG
+#endif // def DEBUG
 
 	ISpatial_NODE* N = S->spatial.node_ptr;
 	N->_remove(S);
 
 	// Recurse
-	if (N->_empty( ))					_remove(N->parent, N);
+	if (N->_empty( ))
+	{
+		_remove(N->parent, N);
+	}
 
 #ifdef DEBUG
 	stat_remove.End( );
-#endif // DEBUG
+#endif // def DEBUG
 
 	cs.Leave( );
 }
@@ -338,10 +363,14 @@ void			ISpatial_DB::update(u32 nodes/* =8 */)
 {
 
 #ifdef DEBUG
-	if (0 == m_root)	return;
+	if (0 == m_root)
+	{
+		return;
+	}
+
 	cs.Enter( );
 	VERIFY(verify( ));
 	cs.Leave( );
-#endif // DEBUG
+#endif // def DEBUG
 
 }
