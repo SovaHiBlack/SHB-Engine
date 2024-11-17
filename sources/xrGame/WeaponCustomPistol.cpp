@@ -6,28 +6,24 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-CWeaponCustomPistol::CWeaponCustomPistol(pcstr name) : CWeaponMagazined(name,SOUND_TYPE_WEAPON_PISTOL)
+CWeaponCustomPistol::CWeaponCustomPistol(pcstr name) : CWeaponMagazined(name, SOUND_TYPE_WEAPON_PISTOL)
+{ }
+
+CWeaponCustomPistol::~CWeaponCustomPistol( )
+{ }
+void CWeaponCustomPistol::switch2_Fire( )
 {
+	m_bFireSingleShot = true;
+	bWorking = false;
+	m_iShotNum = 0;
+	m_bStopedAfterQueueFired = false;
 }
 
-CWeaponCustomPistol::~CWeaponCustomPistol()
+void CWeaponCustomPistol::FireEnd( )
 {
-}
-void CWeaponCustomPistol::switch2_Fire	()
-{
-	m_bFireSingleShot			= true;
-	bWorking					= false;
-	m_iShotNum					= 0;
-	m_bStopedAfterQueueFired	= false;
-}
-
-
-
-void CWeaponCustomPistol::FireEnd() 
-{
-	if(fTime<=0) 
+	if (fTime <= 0.0f)
 	{
 		m_bPending = false;
-		inherited::FireEnd();
+		inherited::FireEnd( );
 	}
 }

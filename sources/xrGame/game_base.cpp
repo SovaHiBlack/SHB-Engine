@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "game_base.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "level.h"
 #include "xrMessages.h"

@@ -3,8 +3,6 @@
 #include "WeaponPistol.h"
 #include "script_export_space.h"
 
-#define SND_RIC_COUNT 5
- 
 class CWeaponFORT: public CWeaponPistol
 {
 private:

@@ -24,7 +24,7 @@
 #include "cover_point.h"
 #include "danger_cover_location.h"
 #include "cover_evaluators.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "cover_manager.h"
 #include "stalker_movement_restriction.h"
 

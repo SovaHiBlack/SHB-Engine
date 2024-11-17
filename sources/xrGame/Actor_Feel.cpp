@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "actor.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "mercuryball.h"
 #include "inventory.h"
 #include "hudmanager.h"

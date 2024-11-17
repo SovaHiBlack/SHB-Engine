@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "cover_evaluators.h"
 #include "cover_point.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level_graph.h"
 #include "game_graph.h"
 #include "game_level_cross_table.h"

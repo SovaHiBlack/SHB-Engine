@@ -15,7 +15,7 @@
 #include "object_broker.h"
 
 #ifdef XRGAME_EXPORTS
-#	include "ai_space.h"
+#	include "AISpace.h"
 #endif
 
 #ifdef DEBUG

@@ -9,7 +9,7 @@
 
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "cover_evaluators.h"
 #include "cover_point.h"
@@ -17,7 +17,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "stalker_animation_manager.h"
 #include "stalker_planner.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "inventory.h"
 #include "customzone.h"
 #include "patrol_path_manager.h"

@@ -11,7 +11,7 @@
 #include "space_restriction_manager.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "level.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level_graph.h"
 #include "space_restriction.h"
 #include "space_restriction_bridge.h"

@@ -19,7 +19,7 @@ protected:
 
 protected:
 	lua_Debug					*m_stack[max_stack_size];
-	int							m_current_stack_level;
+	s32							m_current_stack_level;
 
 public:
 								CScriptStackTracker		();

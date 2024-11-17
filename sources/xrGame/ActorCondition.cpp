@@ -9,14 +9,14 @@
 #include "game_base_space.h"
 #include "autosave_manager.h"
 #include "xrserver.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
 #include "game_object_space.h"
 #include "ui\UIVideoPlayerWnd.h"
 #include "script_callback_ex.h"
 #include "object_broker.h"
-#include "weapon.h"
+#include "Weapon.h"
 
 #define MAX_SATIETY					1.0f
 #define START_SATIETY				0.5f

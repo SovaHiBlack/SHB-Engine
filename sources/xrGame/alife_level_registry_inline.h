@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "ai_space.h"
+#include "AISpace.h"
 
 IC	CALifeLevelRegistry::CALifeLevelRegistry	(const GameGraph::_LEVEL_ID &level_id)
 {

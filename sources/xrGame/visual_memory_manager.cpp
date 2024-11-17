@@ -18,7 +18,7 @@
 #include "gamemtllib.h"
 #include "agent_manager.h"
 #include "agent_member_manager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "profiler.h"
 #include "actor.h"
 #include "..\XR_3DA\camerabase.h"

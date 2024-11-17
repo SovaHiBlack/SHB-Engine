@@ -10,7 +10,7 @@
 #include "xrServer_objects_ALife_Monsters.h"
 #include "alife_human_brain.h"
 #include "alife_human_object_handler.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_group_registry.h"
 

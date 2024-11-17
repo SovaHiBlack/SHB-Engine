@@ -9,7 +9,7 @@
 
 #include "script_action_wrapper.h"
 #include "script_game_object.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 
 void CScriptActionWrapper::setup				(CScriptGameObject *object, CPropertyStorage *storage)

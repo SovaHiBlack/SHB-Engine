@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "script_ini_file.h"
 #include "script_engine.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "object_factory.h"
 
 CScriptIniFile::CScriptIniFile		(IReader *F, pcstr path) :

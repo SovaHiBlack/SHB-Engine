@@ -186,7 +186,7 @@ void CPhraseDialog::Load(shared_str dialog_id)
 }
 
 #include "script_engine.h"
-#include "ai_space.h"
+#include "AISpace.h"
 
 void CPhraseDialog::load_shared	(pcstr)
 {

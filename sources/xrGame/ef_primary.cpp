@@ -7,12 +7,12 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "entity_alive.h"
 #include "inventoryowner.h"
 #include "alife_simulator.h"
 #include "ef_storage.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 #include "inventory.h"
 #include "xrServer_Objects_ALife_Monsters.h"

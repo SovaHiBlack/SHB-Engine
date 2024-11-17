@@ -31,7 +31,7 @@
 #include "agent_location_manager.h"
 #include "danger_cover_location.h"
 #include "ai/stalker/ai_stalker_space.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "danger_manager.h"
 #include "detail_path_manager.h"
 #include "weaponmagazined.h"

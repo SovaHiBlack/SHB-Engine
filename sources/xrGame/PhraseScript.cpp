@@ -2,7 +2,7 @@
 
 #include "PhraseScript.h"
 #include "script_engine.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "gameobject.h"
 #include "script_game_object.h"
 #include "infoportion.h"

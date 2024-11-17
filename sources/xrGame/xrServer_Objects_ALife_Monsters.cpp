@@ -13,7 +13,7 @@
 #include "object_broker.h"
 #include "alife_human_brain.h"
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "character_info.h"
 #include "specific_character.h"
 

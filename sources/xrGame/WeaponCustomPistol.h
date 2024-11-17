@@ -2,17 +2,20 @@
 
 #include "WeaponMagazined.h"
 
-#define SND_RIC_COUNT 5
- 
-class CWeaponCustomPistol: public CWeaponMagazined
+class CWeaponCustomPistol : public CWeaponMagazined
 {
 private:
 	typedef CWeaponMagazined inherited;
+
 public:
-					CWeaponCustomPistol	(pcstr name);
-	virtual			~CWeaponCustomPistol();
-	virtual	int		GetCurrentFireMode	() { return 1; };
+	CWeaponCustomPistol(pcstr name);
+	virtual ~CWeaponCustomPistol( );
+	virtual s32 GetCurrentFireMode( )
+	{
+		return 1;
+	}
+
 protected:
-	virtual void	FireEnd				();
-	virtual void	switch2_Fire		();
+	virtual void FireEnd( );
+	virtual void switch2_Fire( );
 };

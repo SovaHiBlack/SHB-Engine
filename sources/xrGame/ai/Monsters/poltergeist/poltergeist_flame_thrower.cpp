@@ -5,7 +5,7 @@
 #include "../../../level_graph.h"
 #include "../../../level.h"
 #include "../../../../xrNetServer/net_utils.h"
-#include "../../../ai_space.h"
+#include "../../../AISpace.h"
 #include "../../../restricted_object.h"
 #include "../../../actor.h"
 #include "../ai_monster_effector.h"

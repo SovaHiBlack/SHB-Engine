@@ -10,7 +10,7 @@
 #include "script_sound.h"
 #include "script_game_object.h"
 #include "gameobject.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 
 CScriptSound::CScriptSound				(pcstr caSoundName, ESoundTypes sound_type)

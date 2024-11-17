@@ -3,7 +3,8 @@
 #include <theora/theora.h>
 #include "../xrCore/StreamReader.h"
 
-class ENGINE_API CTheoraStream{
+class ENGINE_API CTheoraStream
+{
 	friend	class		CTheoraSurface;
 
 	ogg_sync_state		o_sync_state;
@@ -13,7 +14,7 @@ class ENGINE_API CTheoraStream{
 	theora_comment		t_comment;
 	theora_state		t_state;
 
-	CStreamReader		*source;
+	CStreamReader* source;
 
 	yuv_buffer			t_yuv_buffer;
 
@@ -23,18 +24,21 @@ class ENGINE_API CTheoraStream{
 	f32				fpms;
 
 protected:
-	int					ReadData			();
-	BOOL				ParseHeaders		();
+	s32					ReadData( );
+	BOOL				ParseHeaders( );
 
 public:
-						CTheoraStream		();
-	virtual				~CTheoraStream		();
+	CTheoraStream( );
+	virtual				~CTheoraStream( );
 
-	BOOL				Load				(pcstr fname);
+	BOOL				Load(pcstr fname);
 
-	void				Reset				();
+	void				Reset( );
 
-	BOOL				Decode				(u32 tm_play);
+	BOOL				Decode(u32 tm_play);
 
-	yuv_buffer*			CurrentFrame		()					{return &t_yuv_buffer;}
+	yuv_buffer* CurrentFrame( )
+	{
+		return &t_yuv_buffer;
+	}
 };

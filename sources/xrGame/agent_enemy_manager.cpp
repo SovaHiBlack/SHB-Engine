@@ -11,7 +11,7 @@
 #include "agent_manager.h"
 #include "agent_memory_manager.h"
 #include "agent_member_manager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "ef_storage.h"
 #include "ef_pattern.h"
 #include "member_order.h"

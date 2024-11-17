@@ -8,7 +8,7 @@
 #include "../..\XR_3DA\Input.h"
 #include "../xr_level_controller.h"
 #include "../script_engine.h"
-#include "../ai_space.h"
+#include "../AISpace.h"
 
 void CUISequenceItem::Load(CUIXml* xml, s32 idx)
 {

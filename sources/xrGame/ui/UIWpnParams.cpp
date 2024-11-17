@@ -4,7 +4,7 @@
 #include "UIXmlInit.h"
 #include "../level.h"
 #include "../game_base_space.h"
-#include "../ai_space.h"
+#include "../AISpace.h"
 #include "../script_engine.h"
 
 struct SLuaWpnParams

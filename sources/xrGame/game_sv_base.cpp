@@ -6,7 +6,7 @@
 #include "script_engine.h"
 #include "script_engine_space.h"
 #include "level.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_sv_event_queue.h"
 #include "..\XR_3DA\Console.h"
 #include "..\XR_3DA\ConsoleCommand.h"

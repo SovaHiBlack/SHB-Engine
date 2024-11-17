@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "alife_story_registry.h"
 #include "xrServer_Objects_ALife.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 
 CALifeStoryRegistry::~CALifeStoryRegistry	()

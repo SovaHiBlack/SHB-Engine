@@ -4,12 +4,13 @@
 
 extern fVector3	c_spatial_offset[8];
 
-class	walker
+class walker
 {
 public:
 	u32				mask;
-	CFrustum* F;
-	ISpatial_DB* space;
+	CFrustum*		F;
+	ISpatial_DB*	space;
+
 public:
 	walker(ISpatial_DB* _space, u32 _mask, const CFrustum* _F)
 	{
@@ -17,13 +18,16 @@ public:
 		F = (CFrustum*) _F;
 		space = _space;
 	}
-	void		walk(ISpatial_NODE* N, fVector3& n_C, f32 n_R, u32 fmask)
+	void walk(ISpatial_NODE* N, fVector3& n_C, f32 n_R, u32 fmask)
 	{
 		// box
-		f32	n_vR = 2 * n_R;
-		fBox3	BB;
+		f32 n_vR = 2 * n_R;
+		fBox3 BB;
 		BB.set(n_C.x - n_vR, n_C.y - n_vR, n_C.z - n_vR, n_C.x + n_vR, n_C.y + n_vR, n_C.z + n_vR);
-		if (fcvNone == F->testAABB(BB.data( ), fmask))	return;
+		if (fcvNone == F->testAABB(BB.data( ), fmask))
+		{
+			return;
+		}
 
 		// test items
 		xr_vector<ISpatial*>::iterator _it = N->items.begin( );
@@ -31,33 +35,43 @@ public:
 		for (; _it != _end; _it++)
 		{
 			ISpatial* S = *_it;
-			if (0 == (S->spatial.type & mask))	continue;
+			if (0 == (S->spatial.type & mask))
+			{
+				continue;
+			}
 
 			fVector3& sC = S->spatial.sphere.P;
-			f32			sR = S->spatial.sphere.R;
-			u32				tmask = fmask;
-			if (fcvNone == F->testSphere(sC, sR, tmask))	continue;
+			f32 sR = S->spatial.sphere.R;
+			u32 tmask = fmask;
+			if (fcvNone == F->testSphere(sC, sR, tmask))
+			{
+				continue;
+			}
 
 			space->q_result->push_back(S);
 		}
 
 		// recurse
-		f32	c_R = n_R / 2;
+		f32 c_R = n_R / 2;
 		for (u32 octant = 0; octant < 8; octant++)
 		{
-			if (0 == N->children[octant])	continue;
-			fVector3		c_C;
+			if (0 == N->children[octant])
+			{
+				continue;
+			}
+
+			fVector3 c_C;
 			c_C.mad(n_C, c_spatial_offset[octant], c_R);
 			walk(N->children[octant], c_C, c_R, fmask);
 		}
 	}
 };
 
-void	ISpatial_DB::q_frustum(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const CFrustum& _frustum)
+void ISpatial_DB::q_frustum(xr_vector<ISpatial*>& R, u32 _o, u32 _mask, const CFrustum& _frustum)
 {
 	cs.Enter( );
 	q_result = &R;
 	q_result->clear_not_free( );
-	walker				W(this, _mask, &_frustum); W.walk(m_root, m_center, m_bounds, _frustum.getMask( ));
+	walker W(this, _mask, &_frustum); W.walk(m_root, m_center, m_bounds, _frustum.getMask( ));
 	cs.Leave( );
 }

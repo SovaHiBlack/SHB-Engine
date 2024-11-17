@@ -5,7 +5,7 @@
 #include "xrserver_objects.h"
 #include "game_base.h"
 #include "game_cl_base.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_object_registry.h"
 #include "xrServer_Objects_ALife_Items.h"
 #include "xrServer_Objects_ALife_Monsters.h"

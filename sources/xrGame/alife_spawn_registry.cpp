@@ -10,7 +10,7 @@
 #include "alife_spawn_registry.h"
 #include "object_broker.h"
 #include "game_base.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 
 #pragma warning(push)

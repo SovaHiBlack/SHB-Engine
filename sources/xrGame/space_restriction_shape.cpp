@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "space_restriction_shape.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level_graph.h"
 #include "space_restrictor.h"
 #include "graph_engine.h"

@@ -4,8 +4,6 @@
 
 #pragma once
 
-#define SND_RIC_COUNT 5
-
 #include "..\XR_3DA\Render.h"
 #include "..\XR_3DA\feel_touch.h"
 #include "inventory_item.h"
@@ -14,8 +12,10 @@
 #include "DamageSource.h"
 #include "wallmark_manager.h"
 #include "ParticlesObject.h"
+
 class IRender_Light;
 DEFINE_VECTOR(CPhysicsShellHolder*, BLASTED_OBJECTS_V, BLASTED_OBJECTS_I);
+
 class CExplosive :
 	public IDamageSource
 {

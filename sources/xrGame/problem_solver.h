@@ -142,7 +142,7 @@ public:
 	virtual	void						clear					();
 };
 
-#include "ai_space.h"
+#include "AISpace.h"
 
 #include "graph_engine.h"
 #include "object_broker.h"

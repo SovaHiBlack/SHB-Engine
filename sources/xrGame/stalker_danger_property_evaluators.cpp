@@ -17,7 +17,7 @@
 #include "agent_member_manager.h"
 #include "stalker_movement_manager.h"
 #include "cover_evaluators.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "cover_manager.h"
 #include "cover_point.h"
 #include "stalker_movement_restriction.h"

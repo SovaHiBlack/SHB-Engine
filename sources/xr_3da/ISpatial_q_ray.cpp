@@ -10,38 +10,43 @@
 #	define _MM_ALIGN16		__declspec(align(16))
 #endif // _MM_ALIGN16
 
-struct	_MM_ALIGN16		vec_t : public fVector3
+struct _MM_ALIGN16 vec_t : public fVector3
 {
 	f32		pad;
 };
-vec_t	vec_c(f32 _x, f32 _y, f32 _z)
+vec_t vec_c(f32 _x, f32 _y, f32 _z)
 {
-	vec_t v; v.x = _x; v.y = _y; v.z = _z; v.pad = 0; return v;
+	vec_t v;
+	v.x = _x;
+	v.y = _y;
+	v.z = _z;
+	v.pad = 0;
+	return v;
 }
-struct _MM_ALIGN16		aabb_t
+struct _MM_ALIGN16 aabb_t
 {
-	vec_t		min;
-	vec_t		max;
+	vec_t min;
+	vec_t max;
 };
-struct _MM_ALIGN16		ray_t
+struct _MM_ALIGN16 ray_t
 {
-	vec_t		pos;
-	vec_t		inv_dir;
-	vec_t		fwd_dir;
+	vec_t pos;
+	vec_t inv_dir;
+	vec_t fwd_dir;
 };
 struct ray_segment_t
 {
-	f32		t_near;
-	f32		t_far;
+	f32 t_near;
+	f32 t_far;
 };
 
 ICF u32& uf(f32& x)
 {
-	return (u32&) x;
+	return (u32&)x;
 }
-ICF BOOL	isect_fpu(const fVector3& min, const fVector3& max, const ray_t& ray, fVector3& coord)
+ICF BOOL isect_fpu(const fVector3& min, const fVector3& max, const ray_t& ray, fVector3& coord)
 {
-	fVector3				MaxT;
+	fVector3 MaxT;
 	MaxT.x = MaxT.y = MaxT.z = -1.0f;
 	BOOL Inside = TRUE;
 
@@ -50,78 +55,141 @@ ICF BOOL	isect_fpu(const fVector3& min, const fVector3& max, const ray_t& ray, f
 	{
 		coord[0] = min[0];
 		Inside = FALSE;
-		if (uf(ray.inv_dir[0]))	MaxT[0] = (min[0] - ray.pos[0]) * ray.inv_dir[0]; // Calculate T distances to candidate planes
+		if (uf(ray.inv_dir[0]))
+		{
+			// Calculate T distances to candidate planes
+			MaxT[0] = (min[0] - ray.pos[0]) * ray.inv_dir[0];
+		}
 	}
 	else if (ray.pos[0] > max[0])
 	{
 		coord[0] = max[0];
 		Inside = FALSE;
-		if (uf(ray.inv_dir[0]))	MaxT[0] = (max[0] - ray.pos[0]) * ray.inv_dir[0]; // Calculate T distances to candidate planes
+		if (uf(ray.inv_dir[0]))
+		{
+			// Calculate T distances to candidate planes
+			MaxT[0] = (max[0] - ray.pos[0]) * ray.inv_dir[0];
+		}
 	}
+
 	if (ray.pos[1] < min[1])
 	{
 		coord[1] = min[1];
 		Inside = FALSE;
-		if (uf(ray.inv_dir[1]))	MaxT[1] = (min[1] - ray.pos[1]) * ray.inv_dir[1]; // Calculate T distances to candidate planes
+		if (uf(ray.inv_dir[1]))
+		{
+			// Calculate T distances to candidate planes
+			MaxT[1] = (min[1] - ray.pos[1]) * ray.inv_dir[1];
+		}
 	}
 	else if (ray.pos[1] > max[1])
 	{
 		coord[1] = max[1];
 		Inside = FALSE;
-		if (uf(ray.inv_dir[1]))	MaxT[1] = (max[1] - ray.pos[1]) * ray.inv_dir[1]; // Calculate T distances to candidate planes
+		if (uf(ray.inv_dir[1]))
+		{
+			// Calculate T distances to candidate planes
+			MaxT[1] = (max[1] - ray.pos[1]) * ray.inv_dir[1];
+		}
 	}
+
 	if (ray.pos[2] < min[2])
 	{
 		coord[2] = min[2];
 		Inside = FALSE;
-		if (uf(ray.inv_dir[2]))	MaxT[2] = (min[2] - ray.pos[2]) * ray.inv_dir[2]; // Calculate T distances to candidate planes
+		if (uf(ray.inv_dir[2]))
+		{
+			// Calculate T distances to candidate planes
+			MaxT[2] = (min[2] - ray.pos[2]) * ray.inv_dir[2];
+		}
 	}
 	else if (ray.pos[2] > max[2])
 	{
 		coord[2] = max[2];
 		Inside = FALSE;
-		if (uf(ray.inv_dir[2]))	MaxT[2] = (max[2] - ray.pos[2]) * ray.inv_dir[2]; // Calculate T distances to candidate planes
+		if (uf(ray.inv_dir[2]))
+		{
+			// Calculate T distances to candidate planes
+			MaxT[2] = (max[2] - ray.pos[2]) * ray.inv_dir[2];
+		}
 	}
 
 	// Ray ray.pos inside bounding box
 	if (Inside)
 	{
 		coord = ray.pos;
-		return		true;
+		return true;
 	}
 
 	// Get largest of the maxT's for final choice of intersection
 	u32 WhichPlane = 0;
-	if (MaxT[1] > MaxT[0])				WhichPlane = 1;
-	if (MaxT[2] > MaxT[WhichPlane])	WhichPlane = 2;
+	if (MaxT[1] > MaxT[0])
+	{
+		WhichPlane = 1;
+	}
+
+	if (MaxT[2] > MaxT[WhichPlane])
+	{
+		WhichPlane = 2;
+	}
 
 	// Check final candidate actually inside box (if max < 0)
-	if (uf(MaxT[WhichPlane]) & 0x80000000) return false;
+	if (uf(MaxT[WhichPlane]) & 0x80000000)
+	{
+		return false;
+	}
 
 	if (0 == WhichPlane)
 	{	// 1 & 2
 		coord[1] = ray.pos[1] + MaxT[0] * ray.fwd_dir[1];
-		if ((coord[1] < min[1]) || (coord[1] > max[1]))	return false;
+		if ((coord[1] < min[1]) || (coord[1] > max[1]))
+		{
+			return false;
+		}
+
 		coord[2] = ray.pos[2] + MaxT[0] * ray.fwd_dir[2];
-		if ((coord[2] < min[2]) || (coord[2] > max[2]))	return false;
+		if ((coord[2] < min[2]) || (coord[2] > max[2]))
+		{
+			return false;
+		}
+
 		return true;
 	}
+
 	if (1 == WhichPlane)
 	{	// 0 & 2
 		coord[0] = ray.pos[0] + MaxT[1] * ray.fwd_dir[0];
-		if ((coord[0] < min[0]) || (coord[0] > max[0]))	return false;
+		if ((coord[0] < min[0]) || (coord[0] > max[0]))
+		{
+			return false;
+		}
+
 		coord[2] = ray.pos[2] + MaxT[1] * ray.fwd_dir[2];
-		if ((coord[2] < min[2]) || (coord[2] > max[2]))	return false;
+		if ((coord[2] < min[2]) || (coord[2] > max[2]))
+		{
+			return false;
+		}
+
 		return true;
 	}
+
 	if (2 == WhichPlane)
 	{	// 0 & 1
 		coord[0] = ray.pos[0] + MaxT[2] * ray.fwd_dir[0];
-		if ((coord[0] < min[0]) || (coord[0] > max[0]))	return false;
+		if ((coord[0] < min[0]) || (coord[0] > max[0]))
+		{
+			return false;
+		}
+
 		coord[1] = ray.pos[1] + MaxT[2] * ray.fwd_dir[1];
-		if ((coord[1] < min[1]) || (coord[1] > max[1]))	return false;
+		if ((coord[1] < min[1]) || (coord[1] > max[1]))
+		{
+			return false;
+		}
+
 		return true;
 	}
+
 	return false;
 }
 

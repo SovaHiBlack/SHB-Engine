@@ -12,13 +12,13 @@
 #include "../../script_entity_action.h"
 #include "../../torch.h"
 #include "../../inventory.h"
-#include "../../weapon.h"
+#include "../../Weapon.h"
 #include "../../weaponmagazined.h"
 #include "../../..\XR_3DA\skeletoncustom.h"
 #include "../../script_engine.h"
 #include "../../sight_manager.h"
 #include "../../stalker_movement_manager.h"
-#include "../../ai_space.h"
+#include "../../AISpace.h"
 
 CWeapon	*CAI_Stalker::GetCurrentWeapon() const
 {

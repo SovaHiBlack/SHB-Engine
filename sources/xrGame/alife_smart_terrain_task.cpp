@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "alife_smart_terrain_task.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "patrol_path_storage.h"
 #include "patrol_path.h"
 #include "patrol_point.h"

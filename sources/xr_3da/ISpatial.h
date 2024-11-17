@@ -98,6 +98,7 @@ public:
 		{
 			return;
 		}
+
 		spatial_updatesector_internal( );
 	}
 
@@ -177,10 +178,22 @@ private:
 	IC u32							_octant(fVector3& base, fVector3& rel)
 	{
 		u32 o = 0;
-		if (rel.x > base.x) o += 1;
-		if (rel.y > base.y) o += 2;
-		if (rel.z > base.z) o += 4;
-		return	o;
+		if (rel.x > base.x)
+		{
+			o += 1;
+		}
+
+		if (rel.y > base.y)
+		{
+			o += 2;
+		}
+
+		if (rel.z > base.z)
+		{
+			o += 4;
+		}
+
+		return o;
 	}
 
 	ISpatial_NODE* _node_create( );

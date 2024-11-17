@@ -3,7 +3,7 @@
 #include "ui/UIInventoryUtilities.h"//
 #include "level.h"
 #include "date_time.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_time_manager.h"
 

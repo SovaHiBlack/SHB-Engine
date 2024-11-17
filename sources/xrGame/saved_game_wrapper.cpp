@@ -11,7 +11,7 @@
 #include "alife_time_manager.h"
 #include "alife_object_registry.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 #include "alife_simulator_header.h"
 

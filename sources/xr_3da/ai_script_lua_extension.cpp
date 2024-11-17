@@ -13,7 +13,7 @@
 
 
 #ifndef ENGINE_BUILD
-	#include "ai_space.h"
+	#include "AISpace.h"
 #endif
 
 using namespace Script;

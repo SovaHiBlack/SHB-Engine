@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "script_binder.h"
 #include "xrServer_Objects_ALife.h"

@@ -90,7 +90,6 @@ void CALifeSpawnRegistry::fill_new_spawns_single		(SPAWN_GRAPH::CVertex *vertex,
 		accumulator				+= (*I).weight();
 
 	f32						probability = randF(accumulator);
-//	f32						group_probability = vertex->data()->object().m_spawn_probability;
 	f32						group_probability = 1.f;
 
 	if (probability >= accumulator*group_probability)

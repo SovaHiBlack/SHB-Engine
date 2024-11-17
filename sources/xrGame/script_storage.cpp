@@ -36,7 +36,7 @@ pcstr	file_header = 0;
 
 #ifndef ENGINE_BUILD
 #	include "script_engine.h"
-#	include "ai_space.h"
+#	include "AISpace.h"
 #else
 #	define NO_XRGAME_SCRIPT_ENGINE
 #endif

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "weaponcustompistol.h"
 
 class CWeaponPistol :

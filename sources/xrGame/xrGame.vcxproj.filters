@@ -4425,10 +4425,10 @@
     <ClInclude Include="ai_sounds.h">
       <Filter>AI\ASound</Filter>
     </ClInclude>
-    <ClInclude Include="ai_space.h">
+    <ClInclude Include="AISpace.h">
       <Filter>AI\ASpace</Filter>
     </ClInclude>
-    <ClInclude Include="ai_space_inline.h">
+    <ClInclude Include="AISpace_inline.h">
       <Filter>AI\ASpace</Filter>
     </ClInclude>
     <ClInclude Include="CameraFirstEye.h">
@@ -7196,7 +7196,7 @@
     <ClCompile Include="ai_sounds.cpp">
       <Filter>AI\ASound</Filter>
     </ClCompile>
-    <ClCompile Include="ai_space.cpp">
+    <ClCompile Include="AISpace.cpp">
       <Filter>AI\ASpace</Filter>
     </ClCompile>
     <ClCompile Include="CameraFirstEye.cpp">

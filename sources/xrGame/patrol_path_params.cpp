@@ -9,7 +9,7 @@
 
 #include "patrol_path_params.h"
 #include "patrol_path_manager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 
 CPatrolPathParams::CPatrolPathParams	(pcstr caPatrolPathToGo, const PatrolPathManager::EPatrolStartType tPatrolPathStart, const PatrolPathManager::EPatrolRouteType tPatrolPathStop, bool bRandom, u32 index)
 {

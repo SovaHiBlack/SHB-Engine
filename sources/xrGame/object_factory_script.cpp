@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "object_factory.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "object_item_script.h"
 

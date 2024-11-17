@@ -18,7 +18,7 @@
 #		include "ai/stalker/ai_stalker.h"
 #		include "ui/uiwindow.h"
 #		include "customzone.h"
-#		include "weapon.h"
+#		include "Weapon.h"
 #		include "cameraeffector.h"
 #	endif
 #	include "xrServer_Objects_ALife_Monsters.h"

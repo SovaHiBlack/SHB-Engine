@@ -21,7 +21,7 @@
 #include "../../stalker_planner.h"
 #include "../../script_game_object.h"
 #include "../../stalker_animation_manager.h"
-#include "../../weapon.h"
+#include "../../Weapon.h"
 #include "../../sound_player.h"
 #include "../../inventory.h"
 #include "../../object_handler_planner.h"

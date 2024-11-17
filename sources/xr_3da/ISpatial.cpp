@@ -22,10 +22,10 @@ fVector3	c_spatial_offset[8] =
 //////////////////////////////////////////////////////////////////////////
 ISpatial::ISpatial(ISpatial_DB* space)
 {
-	spatial.sphere.P.set(0, 0, 0);
-	spatial.sphere.R = 0;
-	spatial.node_center.set(0, 0, 0);
-	spatial.node_radius = 0;
+	spatial.sphere.P.set(0.0f, 0.0f, 0.0f);
+	spatial.sphere.R = 0.0f;
+	spatial.node_center.set(0.0f, 0.0f, 0.0f);
+	spatial.node_radius = 0.0f;
 	spatial.node_ptr = NULL;
 	spatial.sector = NULL;
 	spatial.space = space;
@@ -37,24 +37,72 @@ ISpatial::~ISpatial( )
 BOOL	ISpatial::spatial_inside( )
 {
 	f32	dr = -(-spatial.node_radius + spatial.sphere.R);
-	if (spatial.sphere.P.x < spatial.node_center.x - dr)	return FALSE;
-	if (spatial.sphere.P.x > spatial.node_center.x + dr)	return FALSE;
-	if (spatial.sphere.P.y < spatial.node_center.y - dr)	return FALSE;
-	if (spatial.sphere.P.y > spatial.node_center.y + dr)	return FALSE;
-	if (spatial.sphere.P.z < spatial.node_center.z - dr)	return FALSE;
-	if (spatial.sphere.P.z > spatial.node_center.z + dr)	return FALSE;
+	if (spatial.sphere.P.x < spatial.node_center.x - dr)
+	{
+		return FALSE;
+	}
+
+	if (spatial.sphere.P.x > spatial.node_center.x + dr)
+	{
+		return FALSE;
+	}
+
+	if (spatial.sphere.P.y < spatial.node_center.y - dr)
+	{
+		return FALSE;
+	}
+
+	if (spatial.sphere.P.y > spatial.node_center.y + dr)
+	{
+		return FALSE;
+	}
+
+	if (spatial.sphere.P.z < spatial.node_center.z - dr)
+	{
+		return FALSE;
+	}
+
+	if (spatial.sphere.P.z > spatial.node_center.z + dr)
+	{
+		return FALSE;
+	}
+
 	return TRUE;
 }
 
 BOOL	verify_sp(ISpatial* sp, fVector3& node_center, f32 node_radius)
 {
 	f32	dr = -(-node_radius + sp->spatial.sphere.R);
-	if (sp->spatial.sphere.P.x < node_center.x - dr)	return FALSE;
-	if (sp->spatial.sphere.P.x > node_center.x + dr)	return FALSE;
-	if (sp->spatial.sphere.P.y < node_center.y - dr)	return FALSE;
-	if (sp->spatial.sphere.P.y > node_center.y + dr)	return FALSE;
-	if (sp->spatial.sphere.P.z < node_center.z - dr)	return FALSE;
-	if (sp->spatial.sphere.P.z > node_center.z + dr)	return FALSE;
+	if (sp->spatial.sphere.P.x < node_center.x - dr)
+	{
+		return FALSE;
+	}
+
+	if (sp->spatial.sphere.P.x > node_center.x + dr)
+	{
+		return FALSE;
+	}
+
+	if (sp->spatial.sphere.P.y < node_center.y - dr)
+	{
+		return FALSE;
+	}
+
+	if (sp->spatial.sphere.P.y > node_center.y + dr)
+	{
+		return FALSE;
+	}
+
+	if (sp->spatial.sphere.P.z < node_center.z - dr)
+	{
+		return FALSE;
+	}
+
+	if (sp->spatial.sphere.P.z > node_center.z + dr)
+	{
+		return FALSE;
+	}
+
 	return TRUE;
 }
 
@@ -112,7 +160,10 @@ void	ISpatial::spatial_updatesector_internal( )
 {
 	IRender_Sector* S = ::Render->detectSector(spatial_sector_point( ));
 	spatial.type &= ~STYPEFLAG_INVALIDSECTOR;
-	if (S)				spatial.sector = S;
+	if (S)
+	{
+		spatial.sector = S;
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -206,7 +257,7 @@ void			ISpatial_DB::_node_destroy(ISpatial_NODE*& P)
 void			ISpatial_DB::_insert(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 {
 	//*** we are assured that object lives inside our node
-	f32	n_vR = 2 * n_R;
+	f32 n_vR = 2 * n_R;
 	VERIFY(N);
 	VERIFY(verify_sp(rt_insert_object, n_C, n_vR));
 
@@ -221,8 +272,8 @@ void			ISpatial_DB::_insert(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 	}
 
 	// we have to check if it can be putted further down
-	f32	s_R = rt_insert_object->spatial.sphere.R;	// spatial bounds
-	f32	c_R = n_R / 2;								// children bounds
+	f32 s_R = rt_insert_object->spatial.sphere.R;	// spatial bounds
+	f32 c_R = n_R / 2;								// children bounds
 	if (s_R < c_R)
 	{
 		// object can be pushed further down - select "octant", calc node position
@@ -231,6 +282,7 @@ void			ISpatial_DB::_insert(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 		fVector3 c_C;
 		c_C.mad(n_C, c_spatial_offset[octant], c_R);
 		VERIFY(octant == _octant(n_C, c_C));				// check table assosiations
+
 		ISpatial_NODE*& chield = N->children[octant];
 
 		if (0 == chield)
@@ -254,7 +306,7 @@ void			ISpatial_DB::_insert(ISpatial_NODE* N, fVector3& n_C, f32 n_R)
 	}
 }
 
-void			ISpatial_DB::insert(ISpatial* S)
+void ISpatial_DB::insert(ISpatial* S)
 {
 	cs.Enter( );
 
@@ -307,7 +359,7 @@ void			ISpatial_DB::insert(ISpatial* S)
 	cs.Leave( );
 }
 
-void			ISpatial_DB::_remove(ISpatial_NODE* N, ISpatial_NODE* N_sub)
+void ISpatial_DB::_remove(ISpatial_NODE* N, ISpatial_NODE* N_sub)
 {
 	if (0 == N)
 	{
@@ -316,14 +368,39 @@ void			ISpatial_DB::_remove(ISpatial_NODE* N, ISpatial_NODE* N_sub)
 
 	//*** we are assured that node contains N_sub and this subnode is empty
 	u32 octant = u32(-1);
-	if (N_sub == N->children[0])			octant = 0;
-	else if (N_sub == N->children[1])		octant = 1;
-	else if (N_sub == N->children[2])		octant = 2;
-	else if (N_sub == N->children[3])		octant = 3;
-	else if (N_sub == N->children[4])		octant = 4;
-	else if (N_sub == N->children[5])		octant = 5;
-	else if (N_sub == N->children[6])		octant = 6;
-	else if (N_sub == N->children[7])		octant = 7;
+	if (N_sub == N->children[0])
+	{
+		octant = 0;
+	}
+	else if (N_sub == N->children[1])
+	{
+		octant = 1;
+	}
+	else if (N_sub == N->children[2])
+	{
+		octant = 2;
+	}
+	else if (N_sub == N->children[3])
+	{
+		octant = 3;
+	}
+	else if (N_sub == N->children[4])
+	{
+		octant = 4;
+	}
+	else if (N_sub == N->children[5])
+	{
+		octant = 5;
+	}
+	else if (N_sub == N->children[6])
+	{
+		octant = 6;
+	}
+	else if (N_sub == N->children[7])
+	{
+		octant = 7;
+	}
+
 	VERIFY(octant < 8);
 	VERIFY(N_sub->_empty( ));
 	_node_destroy(N->children[octant]);

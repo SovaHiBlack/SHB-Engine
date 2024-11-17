@@ -11,7 +11,7 @@
 #include "script_export_macroses.h"
 #include "xrEProps.h"
 #include "..\xrNetServer\net_utils.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 
 class CSE_Abstract;

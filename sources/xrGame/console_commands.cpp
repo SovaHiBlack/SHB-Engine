@@ -28,7 +28,7 @@
 #include "phworld.h"
 #include "string_table.h"
 #include "autosave_manager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "ai/monsters/BaseMonster/base_monster.h"
 #include "date_time.h"
 #include "mt_config.h"

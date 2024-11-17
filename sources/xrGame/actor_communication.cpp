@@ -10,7 +10,7 @@
 #include "PhraseDialog.h"
 #include "character_info.h"
 #include "relation_registry.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_registry_container.h"
 #include "script_game_object.h"

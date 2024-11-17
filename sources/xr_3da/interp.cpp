@@ -467,7 +467,7 @@ f32 evalEnvelope(CEnvelope* env, f32 time)
 	// check for singularities first
 	if (time == key0->time)
 	{
-		return ((key0->value + offset);
+		return (key0->value + offset);
 	}
 	else if (time == key1->time)
 	{

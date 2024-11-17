@@ -508,8 +508,8 @@
     <ClInclude Include="ai_object_location_inline.h" />
     <ClInclude Include="AI_PhraseDialogManager.h" />
     <ClInclude Include="ai_sounds.h" />
-    <ClInclude Include="ai_space.h" />
-    <ClInclude Include="ai_space_inline.h" />
+    <ClInclude Include="AISpace.h" />
+    <ClInclude Include="AISpace_inline.h" />
     <ClInclude Include="alife_abstract_registry.h" />
     <ClInclude Include="alife_abstract_registry_inline.h" />
     <ClInclude Include="alife_combat_manager.h" />
@@ -1650,7 +1650,7 @@
     <ClCompile Include="ai\trader\trader_animation.cpp" />
     <ClCompile Include="AI_PhraseDialogManager.cpp" />
     <ClCompile Include="ai_sounds.cpp" />
-    <ClCompile Include="ai_space.cpp" />
+    <ClCompile Include="AISpace.cpp" />
     <ClCompile Include="ai_stalker_alife.cpp" />
     <ClCompile Include="alife_anomalous_zone.cpp" />
     <ClCompile Include="alife_combat_manager.cpp" />

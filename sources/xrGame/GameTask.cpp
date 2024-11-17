@@ -11,7 +11,7 @@
 #include "script_engine.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_object_registry.h"
 #include "alife_simulator.h"
 #include "alife_story_registry.h"

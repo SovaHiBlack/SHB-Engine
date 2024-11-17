@@ -9,7 +9,7 @@
 #pragma once
 
 #include "abstract_path_manager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "graph_engine.h"
 
 #define TEMPLATE_SPECIALIZATION template <\

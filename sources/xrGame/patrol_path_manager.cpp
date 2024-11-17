@@ -11,7 +11,7 @@
 #include "patrol_path_manager.h"
 #include "script_game_object.h"
 #include "restricted_object.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "ai_object_location.h"
 #include "script_entity_space.h"

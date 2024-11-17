@@ -4,7 +4,8 @@
 
 class CScriptGameObject;
 
-class CScriptSoundInfo {
+class CScriptSoundInfo
+{
 public:
 	CScriptGameObject			*who;
 	fVector3					position;

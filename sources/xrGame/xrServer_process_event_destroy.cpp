@@ -5,7 +5,7 @@
 #include "xrserver_objects.h"
 #include "game_base.h"
 #include "game_cl_base.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_object_registry.h"
 
 xr_string xrServer::ent_name_safe(u16 eid)

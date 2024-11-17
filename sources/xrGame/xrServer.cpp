@@ -8,7 +8,7 @@
 #include "xrServer_Objects_ALife_All.h"
 #include "level.h"
 #include "game_cl_base.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 #include "..\XR_3DA\Console.h"

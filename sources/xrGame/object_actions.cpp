@@ -13,7 +13,7 @@
 #include "xr_level_controller.h"
 #include "xrmessages.h"
 #include "fooditem.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "weaponmagazined.h"
 #include "object_handler_space.h"
 #include "stalker_animation_manager.h"

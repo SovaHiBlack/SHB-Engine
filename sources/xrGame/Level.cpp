@@ -13,7 +13,7 @@
 #include "game_cl_base.h"
 #include "entity_alive.h"
 #include "hudmanager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "ai_debug.h"
 #include "PHdynamicdata.h"
 #include "Physics.h"
@@ -168,7 +168,7 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 	//---------------------------------------------------------	
 }
 
-extern CAI_Space* g_ai_space;
+extern CAISpace* g_ai_space;
 
 CLevel::~CLevel( )
 {

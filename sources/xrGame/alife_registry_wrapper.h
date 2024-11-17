@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 
 

@@ -17,7 +17,7 @@
 #include "game_cl_base.h"
 #include "ui/UIDialogWnd.h"
 #include "date_time.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level_graph.h"
 #include "PHCommander.h"
 #include "PHScriptCall.h"

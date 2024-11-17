@@ -3,8 +3,6 @@
 #include "explosive.h"
 #include "..\XR_3DA\feel_touch.h"
 
-#define SND_RIC_COUNT 5
-
 class CGrenade :
 	public CMissile,
 	public CExplosive

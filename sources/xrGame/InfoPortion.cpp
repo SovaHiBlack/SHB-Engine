@@ -4,7 +4,7 @@
 #include "gameobject.h"
 #include "encyclopedia_article.h"
 #include "gametask.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_story_registry.h"
 #include "xrServer_Objects_ALife.h"

@@ -362,7 +362,7 @@ void CLocatorAPI::ProcessArchive(pcstr _path, pcstr base_path)
 	R_ASSERT(A.size > 0);
 
 	// Create base path
-	string_path			base;
+	string_path base;
 	if (!base_path)
 	{
 		strcpy_s(base, sizeof(base), *path);
@@ -379,8 +379,9 @@ void CLocatorAPI::ProcessArchive(pcstr _path, pcstr base_path)
 	strcat(base, "\\");
 
 	// Read headers
-	IReader* hdr = open_chunk(A.hSrcFile, 1); R_ASSERT(hdr);
-	RStringVec	fv;
+	IReader* hdr = open_chunk(A.hSrcFile, 1);
+	R_ASSERT(hdr);
+	RStringVec fv;
 	while (!hdr->eof( ))
 	{
 		string_path name;

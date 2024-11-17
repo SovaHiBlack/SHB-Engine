@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "client_spawn_manager.h" 
-#include "ai_space.h" 
+#include "AISpace.h" 
 #include "script_engine.h" 
 #include "level.h"
 #include "gameobject.h"

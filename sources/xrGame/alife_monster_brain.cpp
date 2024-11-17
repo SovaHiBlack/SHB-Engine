@@ -15,7 +15,7 @@
 #	include "alife_monster_movement_manager.h"
 #	include "alife_monster_detail_path_manager.h"
 #	include "alife_monster_patrol_path_manager.h"
-#	include "ai_space.h"
+#	include "AISpace.h"
 #	include "ef_storage.h"
 #	include "ef_primary.h"
 #	include "alife_simulator.h"

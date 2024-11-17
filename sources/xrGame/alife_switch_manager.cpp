@@ -14,7 +14,7 @@
 #include "alife_schedule_registry.h"
 #include "game_level_cross_table.h"
 #include "xrserver.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level_graph.h"
 
 #ifdef DEBUG

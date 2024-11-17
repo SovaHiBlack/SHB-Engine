@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "autosave_manager.h"
 #include "date_time.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level.h"
 #include "xrMessages.h"
 #include "hudmanager.h"

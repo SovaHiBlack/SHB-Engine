@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 
-#include "weapon.h"
+#include "Weapon.h"
 #include "inventoryowner.h"
 #include "actor.h"
 #include "inventory_item_impl.h"

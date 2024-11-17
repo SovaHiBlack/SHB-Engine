@@ -12,7 +12,7 @@
 
 #include "../CustomOutfit.h"
 
-#include "../weapon.h"
+#include "../Weapon.h"
 
 #include "../script_process.h"
 

@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "space_restriction_base.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "level_graph.h"
 
 #define DEFAULT_RADIUS EPSILON_3

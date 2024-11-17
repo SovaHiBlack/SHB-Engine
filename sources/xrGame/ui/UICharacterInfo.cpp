@@ -16,7 +16,7 @@
 #include "UIScrollView.h"
 
 #include "../alife_simulator.h"
-#include "../ai_space.h"
+#include "../AISpace.h"
 #include "../alife_object_registry.h"
 #include "../xrServer.h"
 #include "../xrServer_Objects_ALife_Monsters.h"

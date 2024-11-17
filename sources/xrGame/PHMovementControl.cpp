@@ -8,7 +8,7 @@
 #include "PHAICharacter.h"
 #include "PHActorCharacter.h"
 #include "PHCapture.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "detail_path_manager.h"
 #include "GameMtlLib.h"
 #include "Level.h"

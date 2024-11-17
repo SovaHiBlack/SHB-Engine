@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "game_graph.h"
-#include "ai_space.h"
+#include "AISpace.h"
 
 using namespace luabind;
 

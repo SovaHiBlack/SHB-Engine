@@ -11,7 +11,7 @@
 #include "Actor.h"
 #include "CharacterPhysicsSupport.h"
 #include "ai_object_location.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 #include "PHCollideValidator.h"
 #include "PHShell.h"

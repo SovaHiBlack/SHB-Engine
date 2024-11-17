@@ -189,7 +189,7 @@ void CDialogHolder::SetMainInputReceiver	(CUIDialogWnd* ir, bool _find_remove)
 		m_input_receivers.push_back(recvItem(ir));
 	}
 };
-//. #include "ai_space.h"
+//. #include "AISpace.h"
 //. #include "script_engine.h"
 void CDialogHolder::StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators)
 {

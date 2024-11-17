@@ -7,7 +7,7 @@
 #include "InventoryOwner.h"
 #include "GameObject.h"
 #include "xrMessages.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "ai_debug.h"
 #include "alife_simulator.h"
 #include "alife_registry_container.h"

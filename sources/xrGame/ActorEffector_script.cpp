@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "ActorEffector.h"
 #include "..\XR_3DA\ObjectAnimator.h"

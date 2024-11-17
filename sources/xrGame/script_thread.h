@@ -22,7 +22,7 @@ struct lua_State;
 {
 private:
 	shared_str				m_script_name;
-	int						m_thread_reference;
+	s32						m_thread_reference;
 	bool					m_active;
 	lua_State				*m_virtual_machine;
 
@@ -37,7 +37,7 @@ public:
 			bool			update				();
 	IC		bool			active				() const;
 	IC		shared_str		script_name			() const;
-	IC		int				thread_reference	() const;
+	IC		s32				thread_reference	() const;
 	IC		lua_State		*lua				() const;
 };
 

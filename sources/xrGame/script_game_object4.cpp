@@ -9,7 +9,7 @@
 #include "script_zone.h"
 #include "ai/trader/ai_trader.h"
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 
 #include "ai/stalker/ai_stalker.h"

@@ -10,7 +10,7 @@
 #include "sound_player.h"
 #include "script_engine.h"
 #include "ai/stalker/ai_stalker_space.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "..\XR_3DA\xr_object.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "profiler.h"

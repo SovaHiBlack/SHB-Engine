@@ -6,7 +6,7 @@
 #include "stdafx.h"
 #include "phrase.h"
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "gameobject.h"
 #include "script_game_object.h"
 

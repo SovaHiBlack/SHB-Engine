@@ -8,15 +8,15 @@
 #include "PhraseDialogManager.h"
 #include "PhraseDialog.h"
 
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "gameobject.h"
 #include "script_game_object.h"
 
-CPhraseDialogManager::CPhraseDialogManager	(void)
+CPhraseDialogManager::CPhraseDialogManager	( )
 {
 }
-CPhraseDialogManager::~CPhraseDialogManager	(void)
+CPhraseDialogManager::~CPhraseDialogManager	( )
 {
 }
 

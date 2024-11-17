@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "alife_monster_patrol_path_manager.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "patrol_path_storage.h"
 #include "patrol_path.h"
 #include "patrol_point.h"

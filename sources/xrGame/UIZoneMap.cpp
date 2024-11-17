@@ -12,7 +12,7 @@
 #include "game_cl_base.h"
 
 #include "actor.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 
 #include "ui/UIMap.h"//

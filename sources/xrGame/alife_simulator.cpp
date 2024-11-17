@@ -9,7 +9,7 @@
 
 #include "alife_simulator.h"
 #include "xrServer_Objects_ALife.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 #include "script_engine.h"
 #include "mainmenu.h"

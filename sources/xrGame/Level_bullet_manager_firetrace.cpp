@@ -18,7 +18,7 @@
 #include "character_info.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "..\XR_3DA\xr_collide_defs.h"
-#include "weapon.h"
+#include "Weapon.h"
 
 //константы shoot_factor, определ€ющие 
 //поведение пули при столкновении с объектом

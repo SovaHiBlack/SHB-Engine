@@ -26,11 +26,10 @@ struct SPrimitiveBuffer
 	{
 		DU_DRAW_DP(p_type, pGeom, 0, p_cnt);
 	}
+
 public:
-	SPrimitiveBuffer( ) :OnRender(0), pGeom(0)
-	{
-		;
-	}
+	SPrimitiveBuffer( ) : OnRender(0), pGeom(0)
+	{ }
 	void					CreateFromData(D3DPRIMITIVETYPE _pt, u32 _p_cnt, u32 FVF, LPVOID vertices, u32 _v_cnt, u16* indices = 0, u32 _i_cnt = 0);
 	void					Destroy( );
 	void					Render( )
@@ -55,20 +54,24 @@ class CDrawUtilities : public CDUInterface, public pureRender
 	SPrimitiveBuffer		m_SolidBox;
 	SPrimitiveBuffer		m_WireBox;
 	CGameFont* m_Font;
+
 public:
 	ref_geom 	vs_L;
 	ref_geom 	vs_TL;
 	ref_geom 	vs_LIT;
+
 protected:
 	FVF::L* m_DD_pv;
 	FVF::L* m_DD_pv_start;
 	u32 		m_DD_base;
 	BOOL		m_DD_wire;
 	void 		DD_DrawFace_flush(BOOL try_again);
+
 public:
 	void 		DD_DrawFace_begin(BOOL bWire);
 	void 		DD_DrawFace_push(const fVector3& p0, const fVector3& p1, const fVector3& p2, u32 clr);
 	void 		DD_DrawFace_end( );
+
 public:
 	CDrawUtilities( )
 	{
@@ -84,7 +87,7 @@ public:
 	void OnDeviceCreate( );
 	void OnDeviceDestroy( );
 
-	void UpdateGrid(int number_of_cell, f32 square_size, int subdiv = 10);
+	void UpdateGrid(s32 number_of_cell, f32 square_size, s32 subdiv = 10);
 
 	//----------------------------------------------------
 	virtual void __stdcall DrawCross(const fVector3& p, f32 szx1, f32 szy1, f32 szz1, f32 szx2, f32 szy2, f32 szz2, u32 clr, BOOL bRot45 = false);
@@ -104,7 +107,7 @@ public:
 	virtual void __stdcall DrawSound(const fVector3& p, f32 radius, u32 clr);
 	virtual void __stdcall DrawLineSphere(const fVector3& p, f32 radius, u32 clr, BOOL bCross);
 
-	virtual void __stdcall dbgDrawPlacement(const fVector3& p, int sz, u32 clr, pcstr caption = 0, u32 clr_font = 0xffffffff);
+	virtual void __stdcall dbgDrawPlacement(const fVector3& p, s32 sz, u32 clr, pcstr caption = 0, u32 clr_font = 0xffffffff);
 	virtual void __stdcall dbgDrawVert(const fVector3& p0, u32 clr, pcstr caption = 0);
 	virtual void __stdcall dbgDrawEdge(const fVector3& p0, const fVector3& p1, u32 clr, pcstr caption = 0);
 	virtual void __stdcall dbgDrawFace(const fVector3& p0, const fVector3& p1, const fVector3& p2, u32 clr, pcstr caption = 0);
@@ -175,9 +178,9 @@ public:
 	virtual void __stdcall DrawObjectAxis(const fMatrix4x4& T, f32 sz, BOOL sel);
 	virtual void __stdcall DrawSelectionRect(const iVector2& m_SelStart, const iVector2& m_SelEnd);
 
-	virtual void __stdcall DrawPrimitiveL(D3DPRIMITIVETYPE pt, u32 pc, fVector3* vertices, int vc, u32 color, BOOL bCull, BOOL bCycle);
-	virtual void __stdcall DrawPrimitiveTL(D3DPRIMITIVETYPE pt, u32 pc, FVF::TL* vertices, int vc, BOOL bCull, BOOL bCycle);
-	virtual void __stdcall DrawPrimitiveLIT(D3DPRIMITIVETYPE pt, u32 pc, FVF::LIT* vertices, int vc, BOOL bCull, BOOL bCycle);
+	virtual void __stdcall DrawPrimitiveL(D3DPRIMITIVETYPE pt, u32 pc, fVector3* vertices, s32 vc, u32 color, BOOL bCull, BOOL bCycle);
+	virtual void __stdcall DrawPrimitiveTL(D3DPRIMITIVETYPE pt, u32 pc, FVF::TL* vertices, s32 vc, BOOL bCull, BOOL bCycle);
+	virtual void __stdcall DrawPrimitiveLIT(D3DPRIMITIVETYPE pt, u32 pc, FVF::LIT* vertices, s32 vc, BOOL bCull, BOOL bCycle);
 
 	virtual void __stdcall OutText(const fVector3& pos, pcstr text, u32 color = 0xFF000000, u32 shadow_color = 0xFF909090);
 

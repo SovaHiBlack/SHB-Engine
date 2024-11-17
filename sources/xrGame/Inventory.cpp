@@ -3,7 +3,7 @@
 #include "inventory.h"
 #include "actor.h"
 #include "trade.h"
-#include "weapon.h"
+#include "Weapon.h"
 
 #include "ui/UIInventoryUtilities.h"//
 
@@ -13,7 +13,7 @@
 //#include "game_cl_base.h"
 #include "xr_level_controller.h"
 #include "level.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "entitycondition.h"
 #include "game_base_space.h"
 #include "clsid_game.h"

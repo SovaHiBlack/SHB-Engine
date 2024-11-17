@@ -5,7 +5,7 @@
 
 #include "actor.h"
 #include "inventory.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "..\XR_3DA\CameraBase.h"
 #include "xrMessages.h"
 

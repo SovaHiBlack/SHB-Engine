@@ -94,8 +94,12 @@ void CMapLocationRegistry::save(IWriter& stream)
 		stream.w_u32(size);
 		i = (*I).second.begin( );
 		for (; i != e; ++i)
+		{
 			if ((*i).location->Serializable( ))
+			{
 				(*i).save(stream);
+			}
+		}
 	}
 }
 
@@ -141,7 +145,10 @@ CMapLocation* CMapManager::AddMapLocation(const shared_str& spot_type, u16 id)
 
 CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 {
-	if (!Level( ).CurrentViewEntity( ))return NULL;
+	if (!Level( ).CurrentViewEntity( ))
+	{
+		return NULL;
+	}
 
 	ALife::ERelationType relation = ALife::eRelationTypeFriend;
 	CInventoryOwner* pActor = smart_cast<CInventoryOwner*>(Level( ).CurrentViewEntity( ));
@@ -149,8 +156,10 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 	shared_str sname = RELATION_REGISTRY( ).GetSpotName(relation);
 
 	CEntityAlive* pEntAlive = smart_cast<CEntityAlive*>(pInvOwner);
-	if (!pEntAlive->g_Alive( )) sname = "deadbody_location";
-
+	if (!pEntAlive->g_Alive( ))
+	{
+		sname = "deadbody_location";
+	}
 
 	FindLocationBySpotID key(sname, pInvOwner->object_id( ));
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
@@ -162,7 +171,9 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 		return l;
 	}
 	else
+	{
 		(*it).location->AddRef( );
+	}
 
 	return (*it).location;
 }
@@ -173,14 +184,15 @@ void CMapManager::RemoveMapLocation(const shared_str& spot_type, u16 id)
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
 	if (it != Locations( ).end( ))
 	{
-
 		if (1 == (*it).location->RefCount( ))
 		{
 			delete_data(*it);
 			Locations( ).erase(it);
 		}
 		else
+		{
 			(*it).location->Release( );
+		}
 	}
 }
 
@@ -222,7 +234,9 @@ CMapLocation* CMapManager::GetMapLocation(const shared_str& spot_type, u16 id)
 	FindLocationBySpotID key(spot_type, id);
 	Locations_it it = std::find_if(Locations( ).begin( ), Locations( ).end( ), key);
 	if (it != Locations( ).end( ))
+	{
 		return (*it).location;
+	}
 
 	return 0;
 }
@@ -234,6 +248,7 @@ void CMapManager::Update( )
 	{
 		(*it).actual = (*it).location->Update( );
 	}
+
 	std::sort(Locations( ).begin( ), Locations( ).end( ));
 
 	while ((!Locations( ).empty( )) && (!Locations( ).back( ).actual))
@@ -247,7 +262,9 @@ void CMapManager::DisableAllPointers( )
 {
 	Locations_it it = Locations( ).begin( );
 	for (; it != Locations( ).end( ); ++it)
+	{
 		(*it).location->DisablePointer( );
+	}
 }
 
 Locations& CMapManager::Locations( )

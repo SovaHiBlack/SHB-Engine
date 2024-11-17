@@ -3,7 +3,7 @@
 #include "customdetector.h"
 #include "uigamesp.h"
 #include "hudmanager.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "artifact.h"
 #include "scope.h"
 #include "silencer.h"

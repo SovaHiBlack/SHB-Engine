@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "saved_game_wrapper.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 #include "xr_time.h"
 

@@ -9,7 +9,7 @@
 #include "net_queue.h"
 #include "MainMenu.h"
 #include "space_restriction_manager.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "script_engine.h"
 #include "stalker_animation_data_storage.h"
 #include "client_spawn_manager.h"

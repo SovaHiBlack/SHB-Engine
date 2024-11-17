@@ -12,7 +12,7 @@
 #include "level.h"
 #include "space_restriction_manager.h"
 #include "restriction_space.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "CustomZone.h"
 
 #ifdef DEBUG

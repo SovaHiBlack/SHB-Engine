@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "ai/stalker/ai_stalker.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_space.h"
 #include "inventory.h"
@@ -16,7 +16,7 @@
 #include "pda.h"
 #include "eatable_item.h"
 #include "medkit.h"
-#include "weapon.h"
+#include "Weapon.h"
 #include "customdetector.h"
 #include "ef_storage.h"
 #include "ef_primary.h"

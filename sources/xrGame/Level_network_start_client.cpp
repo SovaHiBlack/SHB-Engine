@@ -7,7 +7,7 @@
 #include "..\XR_3DA\x_ray.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "PhysicsGamePars.h"
-#include "ai_space.h"
+#include "AISpace.h"
 
 extern	pureFrame*				g_pNetProcessor;
 

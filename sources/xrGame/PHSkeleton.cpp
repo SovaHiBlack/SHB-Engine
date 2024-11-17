@@ -11,7 +11,7 @@
 #include "PHObject.h"
 #include "PHCollideValidator.h"
 #include "ai_object_location.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "game_graph.h"
 #include "PHDestroyable.h"
 #define F_MAX         3.402823466e+38F

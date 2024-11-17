@@ -19,7 +19,7 @@
 #include "../../../level_debug.h"
 #include "../../../game_object_space.h"
 #include "../../../detail_path_manager.h"
-#include "../../../ai_space.h"
+#include "../../../AISpace.h"
 #include "../../../cover_point.h"
 #include "../../../cover_manager.h"
 

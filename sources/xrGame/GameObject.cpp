@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "..\XR_3DA\BasicVisual.h"
 #include "PhysicsShell.h"
-#include "ai_space.h"
+#include "AISpace.h"
 #include "CustomMonster.h" 
 #include "physicobject.h"
 #include "HangingLamp.h"

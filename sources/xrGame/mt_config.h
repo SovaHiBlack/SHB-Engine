@@ -8,7 +8,7 @@
 
 #pragma once
 
-extern	flags32				g_mt_config;
+extern flags32				g_mt_config;
 
 #define mtLevelPath			(1<<0)
 #define mtDetailPath		(1<<1)
