@@ -32,14 +32,14 @@
 #include "ai/monsters/BaseMonster/base_monster.h"
 #include "date_time.h"
 #include "mt_config.h"
-#include "zone_effector.h"
+#include "ZoneEffector.h"
 #include "GameTask.h"
 #include "MainMenu.h"
 #include "saved_game_wrapper.h"
 #include "level_graph.h"
 #include "..\XR_3DA\resourcemanager.h"
 #include "doug_lea_memory_allocator.h"
-#include "cameralook.h"
+#include "CameraLook.h"
 
 #ifdef DEBUG
 #	include "PHDebug.h"

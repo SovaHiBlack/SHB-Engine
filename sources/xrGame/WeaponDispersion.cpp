@@ -9,7 +9,7 @@
 #include "actor.h"
 #include "inventory_item_impl.h"
 
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "effectorshot.h"
 #include "EffectorShotX.h"
 

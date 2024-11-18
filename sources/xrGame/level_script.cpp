@@ -28,6 +28,8 @@
 #include "map_manager.h"
 #include "map_location.h"
 #include "phworld.h"
+#include "ActorEffector.h"
+#include "UIGameCustom.h"
 
 using namespace luabind;
 
@@ -252,7 +254,7 @@ CUIDialogWnd* main_input_receiver()
 {
 	return HUD().GetUI()->MainInputReceiver();
 }
-#include "UIGameCustom.h"
+
 void hide_indicators()
 {
 	HUD().GetUI()->UIGame()->HideShownDialogs();
@@ -400,7 +402,6 @@ void iterate_sounds2				(pcstr prefix, u32 max_count, luabind::object object, lu
 	iterate_sounds				(prefix,max_count,temp);
 }
 
-#include "actoreffector.h"
 f32 add_cam_effector(pcstr fn, int id, bool cyclic, pcstr cb_func)
 {
 	CAnimatorCamEffectorScriptCB* e		= xr_new<CAnimatorCamEffectorScriptCB>(cb_func);
@@ -456,9 +457,6 @@ extern int get_actor_ranking();
 extern void add_human_to_top_list		(u16 id);
 extern void remove_human_from_top_list	(u16 id);
 
-
-
-#include "ActorEffector.h"
 void add_complex_effector(pcstr section, int id)
 {
 	AddEffector(Actor(),id, section);

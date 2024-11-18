@@ -2,7 +2,7 @@
 
 #include "actorcondition.h"
 #include "actor.h"
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "inventory.h"
 #include "level.h"
 #include "sleepeffector.h"

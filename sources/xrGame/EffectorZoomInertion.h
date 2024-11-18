@@ -35,20 +35,25 @@ class CEffectorZoomInertion : public CEffectorCam
 
 	CRandom		m_Random;
 
-	void			CalcNextPoint		();
-	void			LoadParams			(pcstr Section, pcstr Prefix);
+	void			CalcNextPoint( );
+	void			LoadParams(pcstr Section, pcstr Prefix);
+
 public:
-	CEffectorZoomInertion				();
-	virtual ~CEffectorZoomInertion		();
+	CEffectorZoomInertion( );
+	virtual ~CEffectorZoomInertion( );
 
-			void	Load				();
-			void	SetParams			(f32 disp);
+	void	Load( );
+	void	SetParams(f32 disp);
 
-			virtual	BOOL	Process(fVector3& delta_p, fVector3& delta_d,
-									fVector3& delta_n, f32& fFov,
-										 f32& fFar, f32& fAspect);
-	virtual	void	SetRndSeed				(s32 Seed) { m_Random.seed(Seed); };
-	virtual	void	Init				(CWeaponMagazined*	pWeapon);
+	virtual BOOL	Process(fVector3& delta_p, fVector3& delta_d, fVector3& delta_n, f32& fFov, f32& fFar, f32& fAspect);
+	virtual void	SetRndSeed(s32 Seed)
+	{
+		m_Random.seed(Seed);
+	}
+	virtual void	Init(CWeaponMagazined* pWeapon);
 
-	virtual CEffectorZoomInertion	*cast_effector_zoom_inertion	()	{return this;}
+	virtual CEffectorZoomInertion* cast_effector_zoom_inertion( )
+	{
+		return this;
+	}
 };

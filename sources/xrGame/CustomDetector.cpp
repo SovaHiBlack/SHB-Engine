@@ -6,7 +6,7 @@
 #include "inventory.h"
 #include "level.h"
 #include "map_manager.h"
-#include "cameraEffector.h"
+#include "CameraEffector.h"
 #include "actor.h"
 #include "ai_sounds.h"
 

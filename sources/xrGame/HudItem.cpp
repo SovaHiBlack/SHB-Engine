@@ -8,7 +8,7 @@
 #include "physic_item.h"
 #include "WeaponHUD.h"
 #include "actor.h"
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "Missile.h"
 #include "xrmessages.h"
 #include "level.h"

@@ -14,7 +14,7 @@
 #include "artifact.h"
 #include "ai_object_location.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "zone_effector.h"
+#include "ZoneEffector.h"
 #include "breakableobject.h"
 
 //////////////////////////////////////////////////////////////////////////

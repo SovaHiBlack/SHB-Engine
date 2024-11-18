@@ -4,7 +4,7 @@
 #include "entity_alive.h"
 #include "hudsound.h"
 #include "actor.h"
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "EffectorShot.h"
 
 const fVector3&	CWeaponStatMgun::get_CurrentFirePoint()

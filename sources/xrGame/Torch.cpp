@@ -15,7 +15,7 @@
 #include "game_base_space.h"
 
 #include "UIGameCustom.h"
-#include "actorEffector.h"
+#include "ActorEffector.h"
 #include "CustomOutfit.h"
 
 static const f32		TIME_2_HIDE					= 5.f;
@@ -160,7 +160,6 @@ void CTorch::SwitchNightVision(bool vision_on)
 		}
 	}
 }
-
 
 void CTorch::UpdateSwitchNightVision   ()
 {

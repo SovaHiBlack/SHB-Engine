@@ -15,7 +15,7 @@
 #include "Weapon.h"
 
 #include "actor.h"
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "level.h"
 #include "level_bullet_manager.h"
 #include "xrmessages.h"

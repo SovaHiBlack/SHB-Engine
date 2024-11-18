@@ -607,7 +607,7 @@
     <ClInclude Include="callback_info.h" />
     <ClInclude Include="CameraEffector.h" />
     <ClInclude Include="CameraFirstEye.h" />
-    <ClInclude Include="cameralook.h" />
+    <ClInclude Include="CameraLook.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CarDamageParticles.h" />
     <ClInclude Include="CarLights.h" />
@@ -1472,7 +1472,7 @@
     <ClInclude Include="xr_level_controller.h" />
     <ClInclude Include="xr_time.h" />
     <ClInclude Include="ZoneVisual.h" />
-    <ClInclude Include="zone_effector.h" />
+    <ClInclude Include="ZoneEffector.h" />
     <ClInclude Include="ZudaArtifact.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1721,7 +1721,7 @@
     <ClCompile Include="BottleItem.cpp" />
     <ClCompile Include="BreakableObject.cpp" />
     <ClCompile Include="CameraFirstEye.cpp" />
-    <ClCompile Include="cameralook.cpp" />
+    <ClCompile Include="CameraLook.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="CarCameras.cpp" />
     <ClCompile Include="CarDamageParticles.cpp" />
@@ -2467,7 +2467,7 @@
     <ClCompile Include="xr_level_controller.cpp" />
     <ClCompile Include="xr_time.cpp" />
     <ClCompile Include="ZoneVisual.cpp" />
-    <ClCompile Include="zone_effector.cpp" />
+    <ClCompile Include="ZoneEffector.cpp" />
     <ClCompile Include="ZudaArtifact.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 #include "entity.h"
 #include "actor.h"
 
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "effectorshot.h"
 
 #include "level_bullet_manager.h"

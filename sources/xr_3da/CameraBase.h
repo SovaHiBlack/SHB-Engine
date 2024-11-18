@@ -52,7 +52,7 @@ public:
 	}
 	virtual void	OnActivate(CCameraBase* old_cam)
 	{ }
-	virtual	void	OnDeactivate( )
+	virtual void	OnDeactivate( )
 	{ }
 	virtual void	Move(s32 cmd, f32 val = 0.0f, f32 factor = 1.0f)
 	{ }

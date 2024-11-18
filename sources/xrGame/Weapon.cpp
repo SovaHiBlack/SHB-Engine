@@ -15,7 +15,7 @@
 #include "xrserver_objects_alife_items.h"
 
 #include "actor.h"
-#include "actoreffector.h"
+#include "ActorEffector.h"
 #include "level.h"
 
 #include "xr_level_controller.h"

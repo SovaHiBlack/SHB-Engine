@@ -4434,7 +4434,7 @@
     <ClInclude Include="CameraFirstEye.h">
       <Filter>Core\Client\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="cameralook.h">
+    <ClInclude Include="CameraLook.h">
       <Filter>Core\Client\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="ActorEffector.h">
@@ -4464,7 +4464,7 @@
     <ClInclude Include="PostprocessAnimator.h">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClInclude>
-    <ClInclude Include="zone_effector.h">
+    <ClInclude Include="ZoneEffector.h">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClInclude>
     <ClInclude Include="EffectorShot.h">
@@ -7202,7 +7202,7 @@
     <ClCompile Include="CameraFirstEye.cpp">
       <Filter>Core\Client\Cameras</Filter>
     </ClCompile>
-    <ClCompile Include="cameralook.cpp">
+    <ClCompile Include="CameraLook.cpp">
       <Filter>Core\Client\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="ActorEffector.cpp">
@@ -7232,7 +7232,7 @@
     <ClCompile Include="PostprocessAnimator.cpp">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClCompile>
-    <ClCompile Include="zone_effector.cpp">
+    <ClCompile Include="ZoneEffector.cpp">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
     </ClCompile>
     <ClCompile Include="EffectorShot.cpp">
