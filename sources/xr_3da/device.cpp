@@ -360,7 +360,7 @@ void CRenderDevice::Pause(BOOL bOn, BOOL bTimer, BOOL bSound, pcstr reason)
 
 #ifdef DEBUG
 	Msg("pause [%s] timer=[%s] sound=[%s] reason=%s", bOn ? "ON" : "OFF", bTimer ? "ON" : "OFF", bSound ? "ON" : "OFF", reason);
-#endif // DEBUG
+#endif // def DEBUG
 
 	if (bOn)
 	{
@@ -369,7 +369,7 @@ void CRenderDevice::Pause(BOOL bOn, BOOL bTimer, BOOL bSound, pcstr reason)
 			bShowPauseString = TRUE;
 		}
 
-		if (bTimer/*&& g_pGamePersistent->CanBePaused() */)
+		if (bTimer)
 		{
 			g_pauseMngr.Pause(TRUE);
 		}
@@ -380,13 +380,13 @@ void CRenderDevice::Pause(BOOL bOn, BOOL bTimer, BOOL bSound, pcstr reason)
 
 #ifdef DEBUG
 			Log("snd_emitters_[true]", snd_emitters_);
-#endif // DEBUG
+#endif // def DEBUG
 
 		}
 	}
 	else
 	{
-		if (bTimer && /*g_pGamePersistent->CanBePaused() &&*/ g_pauseMngr.Paused( ))
+		if (bTimer && g_pauseMngr.Paused( ))
 		{
 			g_pauseMngr.Pause(FALSE);
 		}

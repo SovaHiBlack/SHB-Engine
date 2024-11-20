@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Level.h"
-#include "Level_Bullet_Manager.h"
+#include "BulletManager.h"
 #include "xrserver.h"
 #include "xrmessages.h"
 #include "game_cl_base.h"
@@ -12,7 +12,7 @@
 #include "AISpace.h"
 #include "script_engine.h"
 #include "stalker_animation_data_storage.h"
-#include "client_spawn_manager.h"
+#include "ClientSpawnManager.h"
 #include "seniority_hierarchy_holder.h"
 
 const int max_objects_size			= 2*1024;

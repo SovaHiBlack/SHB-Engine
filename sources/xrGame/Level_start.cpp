@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "level.h"
-#include "Level_Bullet_Manager.h"
+#include "BulletManager.h"
 #include "xrserver.h"
 #include "game_cl_base.h"
 #include "xrmessages.h"

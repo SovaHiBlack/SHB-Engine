@@ -14,7 +14,7 @@
 #include "clsid_game.h"
 #include "ef_storage.h"
 #include "ef_pattern.h"
-#include "autosave_manager.h"
+#include "AutosaveManager.h"
 #include "ai_object_location.h"
 #include "level_graph.h"
 #include "level.h"

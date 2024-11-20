@@ -3,7 +3,7 @@
 #include "game_base.h"
 #include "..\xrNetServer\ClientID.h"
 #include "WeaponAmmo.h"
-//#include "Level_Bullet_Manager.h"
+//#include "BulletManager.h"
 
 class	NET_Packet;
 class	CGameObject;

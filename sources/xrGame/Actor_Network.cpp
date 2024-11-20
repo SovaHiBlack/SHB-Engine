@@ -18,7 +18,7 @@
 #include "infoportion.h"
 #include "alife_registry_wrappers.h"
 #include "..\XR_3DA\skeletonanimated.h"
-#include "client_spawn_manager.h"
+#include "ClientSpawnManager.h"
 #include "Hit.h"
 #include "PHDestroyable.h"
 #include "CharacterPhysicsSupport.h"

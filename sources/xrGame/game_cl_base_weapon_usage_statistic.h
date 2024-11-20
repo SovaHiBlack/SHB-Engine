@@ -1,6 +1,6 @@
 #pragma once
 
-#include "level_bullet_manager.h"
+#include "BulletManager.h"
 #include "game_base_kill_type.h"
 
 struct BulletData 

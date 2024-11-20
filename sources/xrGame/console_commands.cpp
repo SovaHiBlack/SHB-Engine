@@ -27,7 +27,7 @@
 #include "PhysicsGamePars.h"
 #include "phworld.h"
 #include "string_table.h"
-#include "autosave_manager.h"
+#include "AutosaveManager.h"
 #include "AISpace.h"
 #include "ai/monsters/BaseMonster/base_monster.h"
 #include "date_time.h"

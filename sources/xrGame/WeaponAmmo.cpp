@@ -5,7 +5,7 @@
 #include "Actor_Flags.h"
 #include "inventory.h"
 #include "Weapon.h"
-#include "level_bullet_manager.h"
+#include "BulletManager.h"
 #include "AISpace.h"
 #include "gamemtllib.h"
 #include "level.h"

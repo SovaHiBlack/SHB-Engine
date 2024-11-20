@@ -7,7 +7,7 @@
 #include "level.h"
 #include "sleepeffector.h"
 #include "game_base_space.h"
-#include "autosave_manager.h"
+#include "AutosaveManager.h"
 #include "xrserver.h"
 #include "AISpace.h"
 #include "script_callback_ex.h"

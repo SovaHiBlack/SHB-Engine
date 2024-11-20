@@ -85,7 +85,7 @@
 #	include	"HangingLamp.h"
 #	include "holder_custom.h"
 #	include "GameTask.h"
-#	include "client_spawn_manager.h"
+#	include "ClientSpawnManager.h"
 #	include "script_zone.h"
 #	include "ef_storage.h"
 #	include "ai/stalker/ai_stalker.h"

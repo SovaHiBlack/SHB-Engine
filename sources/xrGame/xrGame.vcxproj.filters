@@ -4491,7 +4491,7 @@
     <ClInclude Include="LevelGameDef.h">
       <Filter>Core\Client\Level</Filter>
     </ClInclude>
-    <ClInclude Include="Level_Bullet_Manager.h">
+    <ClInclude Include="BulletManager.h">
       <Filter>Core\Client\Level\Bullet Manager</Filter>
     </ClInclude>
     <ClInclude Include="Tracer.h">
@@ -4524,16 +4524,16 @@
     <ClInclude Include="group_hierarchy_holder_inline.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\GroupHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="client_spawn_manager.h">
+    <ClInclude Include="ClientSpawnManager.h">
       <Filter>Core\Client\Level\ClientSpawnManager</Filter>
     </ClInclude>
-    <ClInclude Include="client_spawn_manager_inline.h">
+    <ClInclude Include="ClientSpawnManager_inline.h">
       <Filter>Core\Client\Level\ClientSpawnManager</Filter>
     </ClInclude>
-    <ClInclude Include="autosave_manager.h">
+    <ClInclude Include="AutosaveManager.h">
       <Filter>Core\Client\Level\AutosaveManager</Filter>
     </ClInclude>
-    <ClInclude Include="autosave_manager_inline.h">
+    <ClInclude Include="AutosaveManager_inline.h">
       <Filter>Core\Client\Level\AutosaveManager</Filter>
     </ClInclude>
     <ClInclude Include="level_sounds.h">
@@ -7292,10 +7292,7 @@
     <ClCompile Include="Level_start.cpp">
       <Filter>Core\Client\Level</Filter>
     </ClCompile>
-    <ClCompile Include="Level_Bullet_Manager.cpp">
-      <Filter>Core\Client\Level\Bullet Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Level_bullet_manager_firetrace.cpp">
+    <ClCompile Include="BulletManager.cpp">
       <Filter>Core\Client\Level\Bullet Manager</Filter>
     </ClCompile>
     <ClCompile Include="Tracer.cpp">
@@ -7313,13 +7310,10 @@
     <ClCompile Include="group_hierarchy_holder.cpp">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\GroupHierarchyHolder</Filter>
     </ClCompile>
-    <ClCompile Include="client_spawn_manager.cpp">
+    <ClCompile Include="ClientSpawnManager.cpp">
       <Filter>Core\Client\Level\ClientSpawnManager</Filter>
     </ClCompile>
-    <ClCompile Include="client_spawn_manager_script.cpp">
-      <Filter>Core\Client\Level\ClientSpawnManager</Filter>
-    </ClCompile>
-    <ClCompile Include="autosave_manager.cpp">
+    <ClCompile Include="AutosaveManager.cpp">
       <Filter>Core\Client\Level\AutosaveManager</Filter>
     </ClCompile>
     <ClCompile Include="level_sounds.cpp">

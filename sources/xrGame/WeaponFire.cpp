@@ -13,7 +13,7 @@
 #include "ActorEffector.h"
 #include "effectorshot.h"
 
-#include "level_bullet_manager.h"
+#include "BulletManager.h"
 
 #define FLAME_TIME 0.05f
 

@@ -24,8 +24,7 @@
 #include "..\XR_3DA\camerabase.h"
 #include "gamepersistent.h"
 #include "actor_memory.h"
-#include "client_spawn_manager.h"
-#include "client_spawn_manager.h"
+#include "ClientSpawnManager.h"
 #include "memory_manager.h"
 
 #ifndef MASTER_GOLD

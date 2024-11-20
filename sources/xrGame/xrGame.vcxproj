@@ -587,8 +587,8 @@
     <ClInclude Include="attachable_item_inline.h" />
     <ClInclude Include="attachment_owner.h" />
     <ClInclude Include="attachment_owner_inline.h" />
-    <ClInclude Include="autosave_manager.h" />
-    <ClInclude Include="autosave_manager_inline.h" />
+    <ClInclude Include="AutosaveManager.h" />
+    <ClInclude Include="AutosaveManager_inline.h" />
     <ClInclude Include="a_star.h" />
     <ClInclude Include="a_star_inline.h" />
     <ClInclude Include="base_client_classes.h" />
@@ -621,8 +621,8 @@
     <ClInclude Include="character_rank.h" />
     <ClInclude Include="character_reputation.h" />
     <ClInclude Include="ChooseTypes.h" />
-    <ClInclude Include="client_spawn_manager.h" />
-    <ClInclude Include="client_spawn_manager_inline.h" />
+    <ClInclude Include="ClientSpawnManager.h" />
+    <ClInclude Include="ClientSpawnManager_inline.h" />
     <ClInclude Include="ClimableObject.h" />
     <ClInclude Include="clsid_game.h" />
     <ClInclude Include="condition_state.h" />
@@ -815,7 +815,7 @@
     <ClInclude Include="key_binding_registrator.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelGameDef.h" />
-    <ClInclude Include="Level_Bullet_Manager.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="level_changer.h" />
     <ClInclude Include="level_debug.h" />
     <ClInclude Include="level_graph.h" />
@@ -1711,7 +1711,7 @@
     <ClCompile Include="Artifact.cpp" />
     <ClCompile Include="attachable_item.cpp" />
     <ClCompile Include="attachment_owner.cpp" />
-    <ClCompile Include="autosave_manager.cpp" />
+    <ClCompile Include="AutosaveManager.cpp" />
     <ClCompile Include="base_client_classes_script.cpp" />
     <ClCompile Include="BastArtifact.cpp" />
     <ClCompile Include="BlackDrops.cpp" />
@@ -1740,8 +1740,7 @@
     <ClCompile Include="character_info.cpp" />
     <ClCompile Include="character_rank.cpp" />
     <ClCompile Include="character_reputation.cpp" />
-    <ClCompile Include="client_spawn_manager.cpp" />
-    <ClCompile Include="client_spawn_manager_script.cpp" />
+    <ClCompile Include="ClientSpawnManager.cpp" />
     <ClCompile Include="ClimableObject.cpp" />
     <ClCompile Include="console_commands.cpp" />
     <ClCompile Include="console_registrator_script.cpp" />
@@ -1884,8 +1883,7 @@
     <ClCompile Include="item_manager.cpp" />
     <ClCompile Include="key_binding_registrator_script.cpp" />
     <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Level_Bullet_Manager.cpp" />
-    <ClCompile Include="Level_bullet_manager_firetrace.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="level_changer.cpp" />
     <ClCompile Include="level_debug.cpp" />
     <ClCompile Include="level_graph.cpp" />

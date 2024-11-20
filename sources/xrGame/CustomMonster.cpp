@@ -45,7 +45,7 @@
 #include "actor.h"
 #include "alife_simulator.h"
 #include "alife_object_registry.h"
-#include "client_spawn_manager.h"
+#include "ClientSpawnManager.h"
 
 #ifdef DEBUG
 #	include "DebugRenderer.h"
