@@ -346,7 +346,7 @@ BOOL CAI_Stalker::net_Spawn			(CSE_Abstract* DC)
 
 	//загрузить иммунитеты из модельки сталкера
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual()); VERIFY(pKinematics);
-	CInifile* ini = pKinematics->LL_UserData();
+	CIniFile* ini = pKinematics->LL_UserData();
 	if(ini)
 	{
 		if(ini->section_exist("immunities"))
@@ -1007,9 +1007,9 @@ void CAI_Stalker::fill_bones_body_parts	(pcstr bone_id, const ECriticalWoundType
 	CKinematics				*kinematics	= smart_cast<CKinematics*>(Visual());
 	VERIFY					(kinematics);
 
-	CInifile::Sect			&body_part_section = pSettings->r_section(body_part_section_id);
-	CInifile::SectCIt		I = body_part_section.Data.begin();
-	CInifile::SectCIt		E = body_part_section.Data.end();
+	CIniFile::Sect			&body_part_section = pSettings->r_section(body_part_section_id);
+	CIniFile::SectCIt		I = body_part_section.Data.begin();
+	CIniFile::SectCIt		E = body_part_section.Data.end();
 	for ( ; I != E; ++I)
 		m_bones_body_parts.insert	(
 			std::make_pair(

@@ -72,7 +72,7 @@ void CGameFont::Initialize(pcstr cShader, pcstr cTextureName)
 	string_path fn, buf;
 	strcpy_s(buf, cTexture); if (strext(buf)) *strext(buf) = 0;
 	R_ASSERT2(FS.exist(fn, "$game_textures$", buf, ".ini"), fn);
-	CInifile* ini = CInifile::Create(fn);
+	CIniFile* ini = CIniFile::Create(fn);
 
 	nNumChars = 0x100;
 	TCMap = (fVector3*)xr_realloc((pvoid)TCMap, nNumChars * sizeof(fVector3));
@@ -139,7 +139,7 @@ void CGameFont::Initialize(pcstr cShader, pcstr cTextureName)
 
 	fCurrentHeight = fHeight;
 
-	CInifile::Destroy(ini);
+	CIniFile::Destroy(ini);
 
 	// Shading
 	pShader.create(cShader, cTexture);

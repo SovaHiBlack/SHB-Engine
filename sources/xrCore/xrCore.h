@@ -60,7 +60,7 @@
 #define __inline		inline
 #define IC				inline
 #define ICF				__forceinline			// !!! this should be used only in critical places found by PROFILER
-#define ICN			__declspec (noinline)	
+#define ICN				__declspec (noinline)	
 
 #ifndef DEBUG
 #pragma inline_depth	( 254 )
@@ -130,8 +130,8 @@
 struct CORE_API xr_rtoken
 {
 	shared_str	name;
-	int	   	id;
-	xr_rtoken(pcstr _nm, int _id)
+	s32	   	id;
+	xr_rtoken(pcstr _nm, s32 _id)
 	{
 		name = _nm; id = _id;
 	}
@@ -186,7 +186,7 @@ DEFINE_VECTOR(xr_rtoken, RTokenVec, RTokenVecIt);
 #include "FS.h"
 #include "log.h"
 #include "xr_trims.h"
-#include "xr_ini.h"
+#include "IniFile.h"
 #include "LocatorAPI.h"
 #include "FileSystem.h"
 #include "FTimer.h"

@@ -31,6 +31,7 @@ using pvoid = void*;
 using pVoid = void*;
 using pcvoid = const void*;
 
+typedef	char	string8[8];
 typedef	char	string16[16];
 typedef	char	string32[32];
 typedef	char	string64[64];

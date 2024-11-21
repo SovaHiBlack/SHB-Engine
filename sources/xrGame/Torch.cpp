@@ -230,7 +230,7 @@ BOOL CTorch::net_Spawn(CSE_Abstract* DC)
 	bool b_r2				= !!psDeviceFlags.test(rsR2);
 
 	CKinematics* K			= smart_cast<CKinematics*>(Visual());
-	CInifile* pUserData		= K->LL_UserData(); 
+	CIniFile* pUserData		= K->LL_UserData();
 	R_ASSERT3				(pUserData,"Empty Torch user data!",torch->get_visual());
 	lanim					= LALib.FindItem(pUserData->r_string("torch_definition","color_animator"));
 	guid_bone				= K->LL_BoneID	(pUserData->r_string("torch_definition","guide_bone"));	VERIFY(guid_bone!=BI_NONE);

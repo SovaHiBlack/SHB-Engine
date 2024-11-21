@@ -24,7 +24,7 @@ public:
 		VerifyPath(*fName);
 		if (exclusive)
 		{
-			int handle = _sopen(*fName, _O_WRONLY | _O_TRUNC | _O_CREAT | _O_BINARY, SH_DENYWR);
+			s32 handle = _sopen(*fName, _O_WRONLY | _O_TRUNC | _O_CREAT | _O_BINARY, SH_DENYWR);
 			hf = _fdopen(handle, "wb");
 		}
 		else
@@ -37,7 +37,7 @@ public:
 		}
 	}
 
-	virtual 		~CFileWriter( )
+	virtual ~CFileWriter( )
 	{
 		if (0 != hf)
 		{
@@ -57,7 +57,7 @@ public:
 		if ((0 != hf) && (0 != count))
 		{
 			const u32 mb_sz = 0x1000000;
-			u8* ptr = (u8*) _ptr;
+			u8* ptr = (u8*)_ptr;
 			for (s32 req_size = count; req_size > mb_sz; req_size -= mb_sz, ptr += mb_sz)
 			{
 				size_t W = fwrite(ptr, mb_sz, 1, hf);
@@ -96,6 +96,7 @@ public:
 	{ }
 	virtual		~CTempReader( );
 };
+
 class CPackReader : public IReader
 {
 	pvoid base_address;
@@ -114,17 +115,20 @@ public:
 	CFileReader(pcstr name);
 	virtual		~CFileReader( );
 };
+
 class CCompressedReader : public IReader
 {
 public:
 	CCompressedReader(pcstr name, pcstr sign);
 	virtual		~CCompressedReader( );
 };
+
 class CVirtualFileReader : public IReader
 {
 private:
 	pvoid hSrcFile;
 	pvoid hSrcMap;
+
 public:
 	CVirtualFileReader(pcstr cFileName);
 	virtual		~CVirtualFileReader( );

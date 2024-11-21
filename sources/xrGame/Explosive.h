@@ -27,7 +27,7 @@ public:
 	virtual						~CExplosive(void);
 
 	virtual void 				Load(pcstr section);
-	virtual void				Load(CInifile* ini, pcstr section);
+	virtual void				Load(CIniFile* ini, pcstr section);
 
 	virtual void 				net_Destroy( );
 	virtual void				net_Relcase(CObject* O);

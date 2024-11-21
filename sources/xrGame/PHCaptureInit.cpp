@@ -64,7 +64,7 @@ CPHCapture::CPHCapture	(CPHCharacter   *a_character, CPhysicsShellHolder	*a_tage
 		return;
 	}
 
-	CInifile* ini=p_kinematics->LL_UserData();
+	CIniFile* ini=p_kinematics->LL_UserData();
 
 	if(!ini)
 	{
@@ -143,7 +143,7 @@ CPHCapture::CPHCapture(CPHCharacter   *a_character,CPhysicsShellHolder	*a_taget_
 		return;
 	}
 
-	CInifile* ini=p_kinematics->LL_UserData();
+	CIniFile* ini=p_kinematics->LL_UserData();
 
 	if(!ini)
 	{
@@ -208,7 +208,7 @@ CPHCapture::CPHCapture(CPHCharacter   *a_character,CPhysicsShellHolder	*a_taget_
 	Init(ini);
 }
 
-void CPHCapture::Init(CInifile* ini)
+void CPHCapture::Init(CIniFile* ini)
 {
 	fVector3 dir;
 	fVector3 capture_bone_position;

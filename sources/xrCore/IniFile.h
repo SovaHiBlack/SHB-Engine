@@ -1,15 +1,10 @@
 #pragma once
 
 // refs
-class	CInifile;
+class	CIniFile;
 struct xr_token;
 
-
-//-----------------------------------------------------------------------------------------------------------
-//Описание Inifile
-//-----------------------------------------------------------------------------------------------------------
-
-class CORE_API CInifile
+class CORE_API CIniFile
 {
 public:
 	struct CORE_API	Item
@@ -19,16 +14,17 @@ public:
 
 #ifdef DEBUG
 		shared_str	comment;
-#endif // DEBUG
+#endif // def DEBUG
 
-		Item() : first(0), second(0)
+		Item( ) : first(0), second(0)
 
 #ifdef DEBUG
 			, comment(0)
-#endif // DEBUG
+#endif // def DEBUG
 
-		{};
+		{ }
 	};
+
 	typedef xr_vector<Item>				Items;
 	typedef Items::const_iterator		SectCIt;
 	typedef Items::iterator				SectIt_;
@@ -37,39 +33,39 @@ public:
 		shared_str		Name;
 		Items			Data;
 
-		//.		IC SectCIt		begin()		{ return Data.begin();	}
-		//.		IC SectCIt		end()		{ return Data.end();	}
-		//.		IC size_t		size()		{ return Data.size();	}
-		//.		IC void			clear()		{ Data.clear();			}
 		BOOL			line_exist(pcstr L, pcstr* val = 0);
 	};
+
 	typedef	xr_vector<Sect*>		Root;
 	typedef Root::iterator			RootIt;
 
 	// factorisation
-	static CInifile* Create(pcstr szFileName, BOOL ReadOnly = TRUE);
-	static void			Destroy(CInifile*);
+	static CIniFile* Create(pcstr szFileName, BOOL ReadOnly = TRUE);
+	static void			Destroy(CIniFile*);
 	static IC BOOL		IsBOOL(pcstr B)
 	{
 		return (xr_strcmp(B, "on") == 0 || xr_strcmp(B, "yes") == 0 || xr_strcmp(B, "true") == 0 || xr_strcmp(B, "1") == 0);
 	}
+
 private:
 	pstr		fName;
 	Root		DATA;
 	BOOL		bReadOnly;
 	void		Load(IReader* F, pcstr path);
+
 public:
 	BOOL		bSaveAtEnd;
+
 public:
-	CInifile(IReader* F, pcstr path = 0);
-	CInifile(pcstr szFileName, BOOL ReadOnly = TRUE, BOOL bLoadAtStart = TRUE, BOOL SaveAtEnd = TRUE);
-	virtual 	~CInifile();
+	CIniFile(IReader* F, pcstr path = 0);
+	CIniFile(pcstr szFileName, BOOL ReadOnly = TRUE, BOOL bLoadAtStart = TRUE, BOOL SaveAtEnd = TRUE);
+	virtual 	~CIniFile( );
 	bool		save_as(pcstr new_fname = 0);
 
-	pcstr		fname()
+	pcstr		fname( )
 	{
 		return fName;
-	};
+	}
 
 	Sect& r_section(pcstr S);
 	Sect& r_section(const shared_str& S);
@@ -79,7 +75,7 @@ public:
 	u32			line_count(const shared_str& S);
 	BOOL		section_exist(pcstr S);
 	BOOL		section_exist(const shared_str& S);
-	Root& sections()
+	Root& sections( )
 	{
 		return DATA;
 	}
@@ -179,9 +175,9 @@ public:
 	{
 		return r_bool(*S, L);
 	}
-	int			r_token(pcstr S, pcstr L, const xr_token* token_list);
-	BOOL		r_line(pcstr S, int L, pcstr* N, pcstr* V);
-	BOOL		r_line(const shared_str& S, int L, pcstr* N, pcstr* V);
+	s32			r_token(pcstr S, pcstr L, const xr_token* token_list);
+	BOOL		r_line(pcstr S, s32 L, pcstr* N, pcstr* V);
+	BOOL		r_line(const shared_str& S, s32 L, pcstr* N, pcstr* V);
 
 	void		w_string(pcstr S, pcstr L, pcstr			V, pcstr comment = 0);
 	void		w_u8(pcstr S, pcstr L, u8				V, pcstr comment = 0);
@@ -205,4 +201,4 @@ public:
 };
 
 // Main configuration file
-extern CORE_API CInifile* pSettings;
+extern CORE_API CIniFile* pSettings;

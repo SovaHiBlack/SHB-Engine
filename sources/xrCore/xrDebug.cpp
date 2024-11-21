@@ -24,15 +24,15 @@ extern bool shared_str_initialized;
 #	define USE_OWN_MINI_DUMP
 #endif // DEBUG
 
-CORE_API	xrDebug		Debug;
+CORE_API xrDebug		Debug;
 
-static bool	error_after_dialog = false;
+static bool error_after_dialog = false;
 
 extern void copy_to_clipboard(pcstr string);
 
 void copy_to_clipboard(pcstr string)
 {
-	if (IsDebuggerPresent())
+	if (IsDebuggerPresent( ))
 	{
 		return;
 	}
@@ -45,23 +45,23 @@ void copy_to_clipboard(pcstr string)
 	HGLOBAL				handle = GlobalAlloc(GHND | GMEM_DDESHARE, (strlen(string) + 1) * sizeof(char));
 	if (!handle)
 	{
-		CloseClipboard();
+		CloseClipboard( );
 		return;
 	}
 
 	pstr memory = (pstr)GlobalLock(handle);
 	strcpy(memory, string);
 	GlobalUnlock(handle);
-	EmptyClipboard();
+	EmptyClipboard( );
 	SetClipboardData(CF_TEXT, handle);
-	CloseClipboard();
+	CloseClipboard( );
 }
 
 void update_clipboard(pcstr string)
 {
 
 #ifdef DEBUG
-	if (IsDebuggerPresent())
+	if (IsDebuggerPresent( ))
 	{
 		return;
 	}
@@ -74,7 +74,7 @@ void update_clipboard(pcstr string)
 	HGLOBAL				handle = GetClipboardData(CF_TEXT);
 	if (!handle)
 	{
-		CloseClipboard();
+		CloseClipboard( );
 		copy_to_clipboard(string);
 		return;
 	}
@@ -87,13 +87,13 @@ void update_clipboard(pcstr string)
 	GlobalUnlock(handle);
 
 	strcat(buffer, string);
-	CloseClipboard();
+	CloseClipboard( );
 	copy_to_clipboard(buffer);
 #endif // def DEBUG
 
 }
 
-extern void BuildStackTrace();
+extern void BuildStackTrace( );
 extern char g_stackTrace[100][4096];
 extern int	g_stackTraceCount;
 
@@ -104,23 +104,23 @@ void LogStackTrace(pcstr header)
 		return;
 	}
 
-	BuildStackTrace();
+	BuildStackTrace( );
 
 	Msg("%s", header);
 
-	for (int i = 1; i < g_stackTraceCount; ++i)
+	for (s32 i = 1; i < g_stackTraceCount; ++i)
 	{
 		Msg("%s", g_stackTrace[i]);
 	}
 }
 
-void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, int line, pcstr function, pstr assertion_info)
+void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, s32 line, pcstr function, pstr assertion_info)
 {
 	pstr				buffer = assertion_info;
 	pcstr				endline = "\n";
 	pcstr				prefix = "[error]";
 	bool				extended_description = (description && !argument0 && strchr(description, '\n'));
-	for (int i = 0; i < 2; ++i)
+	for (s32 i = 0; i < 2; ++i)
 	{
 		if (!i)
 		{
@@ -171,7 +171,7 @@ void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr arg
 			if (shared_str_initialized)
 			{
 				Msg("%s", assertion_info);
-				FlushLog();
+				FlushLog( );
 			}
 
 			buffer = assertion_info;
@@ -185,7 +185,7 @@ void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr arg
 	memory_monitor::flush_each_time(false);
 #endif // def USE_MEMORY_MONITOR
 
-	if (!IsDebuggerPresent() && !strstr(GetCommandLine(), "-no_call_stack_assert"))
+	if (!IsDebuggerPresent( ) && !strstr(GetCommandLine( ), "-no_call_stack_assert"))
 	{
 		if (shared_str_initialized)
 		{
@@ -196,9 +196,9 @@ void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr arg
 		buffer += sprintf(buffer, "stack trace:%s%s", endline, endline);
 #endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
-		BuildStackTrace();
+		BuildStackTrace( );
 
-		for (int i = 2; i < g_stackTraceCount; ++i)
+		for (s32 i = 2; i < g_stackTraceCount; ++i)
 		{
 			if (shared_str_initialized)
 			{
@@ -213,7 +213,7 @@ void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr arg
 
 		if (shared_str_initialized)
 		{
-			FlushLog();
+			FlushLog( );
 		}
 
 		copy_to_clipboard(assertion_info);
@@ -222,16 +222,16 @@ void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr arg
 
 void xrDebug::do_exit(const std::string& message)
 {
-	FlushLog();
-	MessageBox(NULL, message.c_str(), "Error", MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
-	TerminateProcess(GetCurrentProcess(), 1);
+	FlushLog( );
+	MessageBox(NULL, message.c_str( ), "Error", MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
+	TerminateProcess(GetCurrentProcess( ), 1);
 }
 
-void xrDebug::backend(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::backend(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	static xrCriticalSection CS;
 
-	CS.Enter();
+	CS.Enter( );
 
 	error_after_dialog = true;
 
@@ -247,45 +247,50 @@ void xrDebug::backend(pcstr expression, pcstr description, pcstr argument0, pcst
 #endif // def USE_OWN_ERROR_MESSAGE_WINDOW
 
 	if (handler)
-		handler();
+	{
+		handler( );
+	}
 
-	if (get_on_dialog())
-		get_on_dialog()	(true);
+	if (get_on_dialog( ))
+	{
+		get_on_dialog( ) (true);
+	}
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	int					result = MessageBox(GetTopWindow(NULL),
-											assertion_info,
-											"Fatal Error",
-											MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL);
-
+	s32 result = MessageBox(GetTopWindow(NULL), assertion_info, "Fatal Error", MB_CANCELTRYCONTINUE | MB_ICONERROR | MB_SYSTEMMODAL);
 	switch (result)
 	{
 		case IDCANCEL:
 		{
 			DEBUG_INVOKE;
-			break;
 		}
+		break;
 		case IDTRYAGAIN:
 		{
 			error_after_dialog = false;
-			break;
 		}
+		break;
 		case IDCONTINUE:
 		{
 			error_after_dialog = false;
 			ignore_always = true;
-			break;
 		}
-		default: NODEFAULT;
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 #else // USE_OWN_ERROR_MESSAGE_WINDOW
 	DEBUG_INVOKE;
 #endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
-	if (get_on_dialog())
-		get_on_dialog()	(false);
+	if (get_on_dialog( ))
+	{
+		get_on_dialog( ) (false);
+	}
 
-	CS.Leave();
+	CS.Leave( );
 }
 
 pcstr xrDebug::error2string(long code)
@@ -304,42 +309,42 @@ pcstr xrDebug::error2string(long code)
 	return		result;
 }
 
-void xrDebug::error(long hr, pcstr expr, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::error(long hr, pcstr expr, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::error(long hr, pcstr expr, pcstr e2, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::error(long hr, pcstr expr, pcstr e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, e2, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::fail(pcstr e1, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend("assertion failed", e1, 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, const std::string& e2, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::fail(pcstr e1, const std::string& e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
-	backend(e1, e2.c_str(), 0, 0, file, line, function, ignore_always);
+	backend(e1, e2.c_str( ), 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr e2, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::fail(pcstr e1, pcstr e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, e3, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr e4, pcstr file, int line, pcstr function, bool& ignore_always)
+void xrDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr e4, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, e3, e4, file, line, function, ignore_always);
 }
 
-void __cdecl xrDebug::fatal(pcstr file, int line, pcstr function, pcstr F, ...)
+void __cdecl xrDebug::fatal(pcstr file, s32 line, pcstr function, pcstr F, ...)
 {
 	string1024	buffer;
 
@@ -353,19 +358,19 @@ void __cdecl xrDebug::fatal(pcstr file, int line, pcstr function, pcstr F, ...)
 	backend("fatal error", "<no expression>", buffer, 0, file, line, function, ignore_always);
 }
 
-int out_of_memory_handler(size_t size)
+s32 out_of_memory_handler(size_t size)
 {
-	Memory.mem_compact();
+	Memory.mem_compact( );
 	u32						process_heap = mem_usage_impl(nullptr, nullptr);
-	int						eco_strings = (int)g_pStringContainer->stat_economy();
-	int						eco_smem = (int)g_pSharedMemoryContainer->stat_economy();
+	s32						eco_strings = (s32)g_pStringContainer->stat_economy( );
+	s32						eco_smem = (s32)g_pSharedMemoryContainer->stat_economy( );
 	Msg("* [x-ray]: process heap[%d K]", process_heap / 1024);
 	Msg("* [x-ray]: economy: strings[%d K], smem[%d K]", eco_strings / 1024, eco_smem);
 	Debug.fatal(DEBUG_INFO, "Out of memory. Memory request: %d K", size / 1024);
-	return					1;
+	return 1;
 }
 
-extern pcstr log_name();
+extern pcstr log_name( );
 
 #if 1
 extern void BuildStackTrace(struct _EXCEPTION_POINTERS* pExceptionInfo);
@@ -430,7 +435,9 @@ void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
 			__try
 			{
 				if (FS.path_exist("$logs$"))
+				{
 					FS.update_path(szDumpPath, "$logs$", szDumpPath);
+				}
 			}
 			__except (EXCEPTION_EXECUTE_HANDLER)
 			{
@@ -440,7 +447,7 @@ void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
 				strcat(szDumpPath, temp);
 			}
 
-			string_path	log_file_name;
+			string_path log_file_name;
 			strconcat(sizeof(log_file_name), log_file_name, szDumpPath, ".log");
 			FlushLog(log_file_name);
 
@@ -452,18 +459,19 @@ void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
 				MoveMemory(szDumpPath, szDumpPath + 5, strlen(szDumpPath));
 				hFile = ::CreateFile(szDumpPath, GENERIC_WRITE, FILE_SHARE_WRITE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 			}
+
 			if (hFile != INVALID_HANDLE_VALUE)
 			{
 				_MINIDUMP_EXCEPTION_INFORMATION ExInfo;
 
-				ExInfo.ThreadId = ::GetCurrentThreadId();
+				ExInfo.ThreadId = ::GetCurrentThreadId( );
 				ExInfo.ExceptionPointers = pExceptionInfo;
 				ExInfo.ClientPointers = NULL;
 
 				// write the dump
 				MINIDUMP_TYPE	dump_flags = MINIDUMP_TYPE(MiniDumpNormal | MiniDumpFilterMemory | MiniDumpScanMemory);
 
-				BOOL bOK = pDump(GetCurrentProcess(), GetCurrentProcessId(), hFile, dump_flags, &ExInfo, NULL, NULL);
+				BOOL bOK = pDump(GetCurrentProcess( ), GetCurrentProcessId( ), hFile, dump_flags, &ExInfo, NULL, NULL);
 				if (bOK)
 				{
 					sprintf(szScratch, "Saved dump file to '%s'", szDumpPath);
@@ -472,14 +480,14 @@ void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
 				}
 				else
 				{
-					sprintf(szScratch, "Failed to save dump file to '%s' (error %d)", szDumpPath, GetLastError());
+					sprintf(szScratch, "Failed to save dump file to '%s' (error %d)", szDumpPath, GetLastError( ));
 					szResult = szScratch;
 				}
 				::CloseHandle(hFile);
 			}
 			else
 			{
-				sprintf(szScratch, "Failed to create dump file '%s' (error %d)", szDumpPath, GetLastError());
+				sprintf(szScratch, "Failed to create dump file '%s' (error %d)", szDumpPath, GetLastError( ));
 				szResult = szScratch;
 			}
 		}
@@ -498,7 +506,7 @@ void save_mini_dump(_EXCEPTION_POINTERS* pExceptionInfo)
 void format_message(pstr buffer, const u32& buffer_size)
 {
 	LPVOID		message;
-	DWORD		error_code = GetLastError();
+	DWORD		error_code = GetLastError( );
 
 	if (!error_code)
 	{
@@ -526,21 +534,27 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 	string256				error_message;
 	format_message(error_message, sizeof(error_message));
 
-	if (!error_after_dialog && !strstr(GetCommandLine(), "-no_call_stack_assert"))
+	if (!error_after_dialog && !strstr(GetCommandLine( ), "-no_call_stack_assert"))
 	{
 		CONTEXT				save = *pExceptionInfo->ContextRecord;
 		BuildStackTrace(pExceptionInfo);
 		*pExceptionInfo->ContextRecord = save;
 
 		if (shared_str_initialized)
+		{
 			Msg("stack trace:\n");
+		}
+
 		copy_to_clipboard("stack trace:\r\n\r\n");
 
 		string4096			buffer;
-		for (int i = 0; i < g_stackTraceCount; ++i)
+		for (s32 i = 0; i < g_stackTraceCount; ++i)
 		{
 			if (shared_str_initialized)
+			{
 				Msg("%s", g_stackTrace[i]);
+			}
+
 			sprintf(buffer, "%s\r\n", g_stackTrace[i]);
 			update_clipboard(buffer);
 		}
@@ -548,7 +562,9 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 		if (*error_message)
 		{
 			if (shared_str_initialized)
+			{
 				Msg("\n%s", error_message);
+			}
 
 			strcat(error_message, "\r\n");
 			update_clipboard(error_message);
@@ -556,7 +572,9 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 	}
 
 	if (shared_str_initialized)
-		FlushLog();
+	{
+		FlushLog( );
+	}
 
 #ifndef USE_OWN_ERROR_MESSAGE_WINDOW
 #	ifdef USE_OWN_MINI_DUMP
@@ -565,8 +583,10 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 #else // USE_OWN_ERROR_MESSAGE_WINDOW
 	if (!error_after_dialog)
 	{
-		if (Debug.get_on_dialog())
-			Debug.get_on_dialog()	(true);
+		if (Debug.get_on_dialog( ))
+		{
+			Debug.get_on_dialog( ) (true);
+		}
 
 		MessageBox(NULL, "Fatal error occured\n\nPress OK to abort program execution", "Fatal error", MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
 	}
@@ -574,34 +594,41 @@ LONG WINAPI UnhandledFilter(_EXCEPTION_POINTERS* pExceptionInfo)
 
 	if (!previous_filter)
 	{
+
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-		if (Debug.get_on_dialog())
-			Debug.get_on_dialog()	(false);
+		if (Debug.get_on_dialog( ))
+		{
+			Debug.get_on_dialog( ) (false);
+		}
 #endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
-		return				(EXCEPTION_CONTINUE_SEARCH);
+		return EXCEPTION_CONTINUE_SEARCH;
 	}
 
 	previous_filter(pExceptionInfo);
 
 #ifdef USE_OWN_ERROR_MESSAGE_WINDOW
-	if (Debug.get_on_dialog())
-		Debug.get_on_dialog()		(false);
+	if (Debug.get_on_dialog( ))
+	{
+		Debug.get_on_dialog( ) (false);
+	}
 #endif // USE_OWN_ERROR_MESSAGE_WINDOW
 
-	return					(EXCEPTION_CONTINUE_SEARCH);
+	return EXCEPTION_CONTINUE_SEARCH;
 }
 #endif
 
 //////////////////////////////////////////////////////////////////////
-typedef int(__cdecl* _PNH)(size_t);
-_CRTIMP int		__cdecl _set_new_mode(int);
+typedef s32(__cdecl* _PNH)(size_t);
+_CRTIMP s32		__cdecl _set_new_mode(s32);
 _CRTIMP _PNH	__cdecl _set_new_handler(_PNH);
 
-void _terminate()
+void _terminate( )
 {
-	if (strstr(GetCommandLine(), "-silent_error_mode"))
+	if (strstr(GetCommandLine( ), "-silent_error_mode"))
+	{
 		exit(-1);
+	}
 
 	string4096				assertion_info;
 
@@ -631,7 +658,7 @@ void _terminate()
 	//	FATAL					("Unexpected application termination");
 }
 
-void debug_on_thread_spawn()
+void debug_on_thread_spawn( )
 {
 	std::set_terminate(_terminate);
 }
@@ -665,35 +692,39 @@ static void invalid_parameter_handler(
 	size_t							converted_chars = 0;
 	//		errno_t							err = 
 	if (expression)
-		wcstombs_s(
-			&converted_chars,
-			expression_,
-			sizeof(expression_),
-			expression,
-			(wcslen(expression) + 1) * 2 * sizeof(char)
-		);
+	{
+		wcstombs_s(&converted_chars,
+				   expression_,
+				   sizeof(expression_),
+				   expression,
+				   (wcslen(expression) + 1) * 2 * sizeof(char));
+	}
 	else
+	{
 		strcpy_s(expression_, "");
+	}
 
 	if (function)
-		wcstombs_s(
-			&converted_chars,
-			function_,
-			sizeof(function_),
-			function,
-			(wcslen(function) + 1) * 2 * sizeof(char)
-		);
+	{
+		wcstombs_s(&converted_chars,
+				   function_,
+				   sizeof(function_),
+				   function,
+				   (wcslen(function) + 1) * 2 * sizeof(char));
+	}
 	else
+	{
 		strcpy_s(function_, __FUNCTION__);
+	}
 
 	if (file)
-		wcstombs_s(
-			&converted_chars,
-			file_,
-			sizeof(file_),
-			file,
-			(wcslen(file) + 1) * 2 * sizeof(char)
-		);
+	{
+		wcstombs_s(&converted_chars,
+				   file_,
+				   sizeof(file_),
+				   file,
+				   (wcslen(file) + 1) * 2 * sizeof(char));
+	}
 	else
 	{
 		line = __LINE__;
@@ -712,39 +743,39 @@ static void invalid_parameter_handler(
 	);
 }
 
-static void std_out_of_memory_handler()
+static void std_out_of_memory_handler( )
 {
 	handler_base("std: out of memory");
 }
 
-static void pure_call_handler()
+static void pure_call_handler( )
 {
 	handler_base("pure virtual function call");
 }
 
-static void abort_handler(int signal)
+static void abort_handler(s32 signal)
 {
 	handler_base("application is aborting");
 }
 
-static void floating_point_handler(int signal)
+static void floating_point_handler(s32 signal)
 {
 	handler_base("floating point error");
 }
 
-static void illegal_instruction_handler(int signal)
+static void illegal_instruction_handler(s32 signal)
 {
 	handler_base("illegal instruction");
 }
 
-static void termination_handler(int signal)
+static void termination_handler(s32 signal)
 {
 	handler_base("termination with exit code 3");
 }
 
-void	xrDebug::_initialize()
+void xrDebug::_initialize( )
 {
-	debug_on_thread_spawn();
+	debug_on_thread_spawn( );
 
 	_set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
 	signal(SIGABRT, abort_handler);

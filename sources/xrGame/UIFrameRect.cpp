@@ -32,7 +32,7 @@ void CUIFrameRect::InitTexture(pcstr texture)
 	if (FS.exist(fn, "$game_textures$", buf, ".ini"))
 	{
 		fVector4 v;
-		CInifile* ini = CInifile::Create(fn, TRUE);
+		CIniFile* ini = CIniFile::Create(fn, TRUE);
 		pcstr sh = ini->r_string("frame", "shader");
 		frame[fmBK].CreateShader(texture, sh);
 		frame[fmL].CreateShader(texture, sh);
@@ -70,7 +70,7 @@ void CUIFrameRect::InitTexture(pcstr texture)
 		v = ini->r_fvector4("frame", "lb");
 		frame[fmLB].SetOriginalRect(v.x, v.y, v.z, v.w);
 		frame[fmLB].SetRect(0.0f, 0.0f, v.z, v.w);
-		CInifile::Destroy(ini);
+		CIniFile::Destroy(ini);
 	}
 	else
 	{

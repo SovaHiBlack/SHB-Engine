@@ -79,7 +79,7 @@ BOOL CWeaponStatMgun::net_Spawn(CSE_Abstract* DC)
 	if(!inheritedPH::net_Spawn	(DC)) return FALSE;
 
 	CKinematics* K			= smart_cast<CKinematics*>(Visual());
-	CInifile* pUserData		= K->LL_UserData(); 
+	CIniFile* pUserData		= K->LL_UserData();
 
 	R_ASSERT2				(pUserData,"Empty WeaponStatMgun user data!");
 

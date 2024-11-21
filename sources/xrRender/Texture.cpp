@@ -8,12 +8,9 @@
 #include <d3dx9.h>
 #pragma warning(default:4995)
 
-// #include "std_classes.h"
-// #include "xr_avi.h"
-
-void fix_texture_name(LPSTR fn)
+void fix_texture_name(pstr fn)
 {
-	LPSTR _ext = strext(fn);
+	pstr _ext = strext(fn);
 	if(  _ext					&&
 	  (0==stricmp(_ext,".tga")	||
 		0==stricmp(_ext,".dds")	||
@@ -22,14 +19,14 @@ void fix_texture_name(LPSTR fn)
 		*_ext = 0;
 }
 
-int get_texture_load_lod(pcstr fn)
+s32 get_texture_load_lod(pcstr fn)
 {
-	CInifile::Sect& sect	= pSettings->r_section("reduce_lod_texture_list");
-	CInifile::SectCIt it_	= sect.Data.begin();
-	CInifile::SectCIt it_e_	= sect.Data.end();
+	CIniFile::Sect& sect	= pSettings->r_section("reduce_lod_texture_list");
+	CIniFile::SectCIt it_	= sect.Data.begin();
+	CIniFile::SectCIt it_e_	= sect.Data.end();
 
-	CInifile::SectCIt it	= it_;
-	CInifile::SectCIt it_e	= it_e_;
+	CIniFile::SectCIt it	= it_;
+	CIniFile::SectCIt it_e	= it_e_;
 
 	for(;it!=it_e;++it)
 	{

@@ -105,7 +105,7 @@
     <ClCompile Include="log.cpp">
       <Filter>FS</Filter>
     </ClCompile>
-    <ClCompile Include="xr_ini.cpp">
+    <ClCompile Include="IniFile.cpp">
       <Filter>FS</Filter>
     </ClCompile>
     <ClCompile Include="StreamReader.cpp">
@@ -327,7 +327,7 @@
     <ClInclude Include="log.h">
       <Filter>FS</Filter>
     </ClInclude>
-    <ClInclude Include="xr_ini.h">
+    <ClInclude Include="IniFile.h">
       <Filter>FS</Filter>
     </ClInclude>
     <ClInclude Include="StreamReader.h">

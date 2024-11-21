@@ -10,7 +10,7 @@ struct	SOneDDOParams
 struct	SAllDDOParams
 {
 	void				Reset						()	;
-	void				Load			(CInifile* ini)	;
+	void				Load			(CIniFile* ini)	;
 	SOneDDOParams		translational					;
 	SOneDDOParams		rotational						;
 	u16					L2frames						;

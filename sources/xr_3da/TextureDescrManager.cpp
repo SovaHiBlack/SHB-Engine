@@ -37,15 +37,15 @@ void CTextureDescrManager::LoadLTX( )
 
 	if (FS.exist(fname))
 	{
-		CInifile ini(fname);
+		CIniFile ini(fname);
 		if (ini.section_exist("association"))
 		{
-			CInifile::Sect& data = ini.r_section("association");
-			CInifile::SectCIt I = data.Data.begin( );
-			CInifile::SectCIt E = data.Data.end( );
+			CIniFile::Sect& data = ini.r_section("association");
+			CIniFile::SectCIt I = data.Data.begin( );
+			CIniFile::SectCIt E = data.Data.end( );
 			for (; I != E; ++I)
 			{
-				const CInifile::Item& item = *I;
+				const CIniFile::Item& item = *I;
 
 				texture_desc& desc = m_texture_details[item.first];
 				desc.m_assoc = xr_new<texture_assoc>( );
@@ -78,10 +78,10 @@ void CTextureDescrManager::LoadLTX( )
 
 		if (ini.section_exist("specification"))
 		{
-			CInifile::Sect& sect = ini.r_section("specification");
-			for (CInifile::SectCIt I2 = sect.Data.begin( ); I2 != sect.Data.end( ); ++I2)
+			CIniFile::Sect& sect = ini.r_section("specification");
+			for (CIniFile::SectCIt I2 = sect.Data.begin( ); I2 != sect.Data.end( ); ++I2)
 			{
-				const CInifile::Item& item = *I2;
+				const CIniFile::Item& item = *I2;
 
 				texture_desc& desc = m_texture_details[item.first];
 				desc.m_spec = xr_new<texture_spec>( );

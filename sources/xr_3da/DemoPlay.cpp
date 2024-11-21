@@ -160,7 +160,7 @@ void CDemoPlay::stat_Stop( )
 		}
 
 		FS.update_path(fname, "$app_data_root$", fname);
-		CInifile res(fname, FALSE, FALSE, TRUE);
+		CIniFile res(fname, FALSE, FALSE, TRUE);
 		res.w_float("general", "renderer", f32(::Render->get_generation( )) / 10.0f, "dx-level required");
 		res.w_float("general", "min", rfps_min, "absolute minimum");
 		res.w_float("general", "max", rfps_max, "absolute maximum");

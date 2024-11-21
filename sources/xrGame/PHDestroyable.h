@@ -55,7 +55,7 @@ public:
 			void						Destroy						(u16 ref_id=u16(-1), pcstr section="ph_skeleton_object")													;
 			SHit						&FatalHit					(){return m_fatal_hit;}
 			void						Load						(pcstr section)																							;
-			void						Load						(CInifile* ini, pcstr section)																				;
+			void						Load						(CIniFile* ini, pcstr section)																				;
 virtual		void						NotificateDestroy			(CPHDestroyableNotificate *dn)																				;
 			void						PhysicallyRemoveSelf		()																											;
 IC			bool						Destroyable					()										{return !!m_flags.test(fl_destroyable);}

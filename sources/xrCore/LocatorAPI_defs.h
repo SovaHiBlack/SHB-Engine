@@ -16,8 +16,9 @@ public:
 	{
 		flRecurse = (1 << 0),
 		flNotif = (1 << 1),
-		flNeedRescan = (1 << 2),
+		flNeedRescan = (1 << 2)
 	};
+
 public:
 	pstr		m_Path;
 	pstr		m_Root;
@@ -30,7 +31,6 @@ public:
 	FS_Path(pcstr _Root, pcstr _Add, pcstr _DefExt = 0, pcstr _FilterString = 0, u32 flags = 0);
 	~FS_Path();
 	pcstr		_update(string_path& dest, pcstr src) const;
-	//.	void		_update		(xr_string& dest, pcstr src) const;
 	void		_set(pstr add);
 	void		_set_root(pstr root);
 
@@ -45,13 +45,14 @@ struct CORE_API FS_File
 	enum
 	{
 		flSubDir = (1 << 0),
-		flVFS = (1 << 1),
+		flVFS = (1 << 1)
 	};
-	unsigned 	attrib;
+
+	u32 	attrib;
 	time_t	  	time_write;
 	long     	size;
 	xr_string	name;			// low-case name
-	void		set(xr_string nm, long sz, time_t modif, unsigned attr);
+	void		set(xr_string nm, long sz, time_t modif, u32 attr);
 
 public:
 	FS_File()
@@ -62,9 +63,10 @@ public:
 	FS_File(xr_string nm, long sz, time_t modif, unsigned attr);
 	bool 		operator<	(const FS_File& _X) const
 	{
-		return xr_strcmp(name.c_str(), _X.name.c_str()) < 0;
+		return (xr_strcmp(name.c_str(), _X.name.c_str()) < 0);
 	}
 };
+
 DEFINE_SET(FS_File, FS_FileSet, FS_FileSetIt);
 
 extern bool	CORE_API PatternMatch(pcstr s, pcstr mask);

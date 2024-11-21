@@ -85,7 +85,7 @@ BOOL CHangingLamp::net_Spawn(CSE_Abstract* DC)
 	fColor					clr;
 
 	// set bone id
-//	CInifile* pUserData		= K->LL_UserData(); 
+//	CIniFile* pUserData		= K->LL_UserData(); 
 //	R_ASSERT3				(pUserData,"Empty HangingLamp user data!",lamp->get_visual());
 	xr_delete(collidable.model);
 	if (Visual()){

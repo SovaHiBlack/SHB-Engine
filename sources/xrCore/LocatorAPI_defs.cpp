@@ -43,8 +43,16 @@ FS_Path::FS_Path(pcstr _Root, pcstr _Add, pcstr _DefExt, pcstr _FilterCaption, u
 	//	VERIFY			(_Root&&_Root[0]);
 	string_path		temp;
 	strcpy_s(temp, sizeof(temp), _Root);
-	if (_Add) 		strcat(temp, _Add);
-	if (temp[0] && temp[xr_strlen(temp) - 1] != '\\') strcat(temp, "\\");
+	if (_Add)
+	{
+		strcat(temp, _Add);
+	}
+
+	if (temp[0] && temp[xr_strlen(temp) - 1] != '\\')
+	{
+		strcat(temp, "\\");
+	}
+
 	m_Path = xr_strlwr(xr_strdup(temp));
 	m_DefExt = _DefExt ? xr_strlwr(xr_strdup(_DefExt)) : 0;
 	m_FilterCaption = _FilterCaption ? xr_strlwr(xr_strdup(_FilterCaption)) : 0;
@@ -53,7 +61,7 @@ FS_Path::FS_Path(pcstr _Root, pcstr _Add, pcstr _DefExt, pcstr _FilterCaption, u
 	m_Flags.assign(flags);
 }
 
-FS_Path::~FS_Path()
+FS_Path::~FS_Path( )
 {
 	xr_free(m_Root);
 	xr_free(m_Path);
@@ -72,7 +80,11 @@ void	FS_Path::_set(pstr add)
 	// m_Path
 	string_path		temp;
 	strconcat(sizeof(temp), temp, m_Root, m_Add);
-	if (temp[xr_strlen(temp) - 1] != '\\') strcat(temp, "\\");
+	if (temp[xr_strlen(temp) - 1] != '\\')
+	{
+		strcat(temp, "\\");
+	}
+
 	xr_free(m_Path);
 	m_Path = xr_strlwr(xr_strdup(temp));
 }
@@ -80,15 +92,21 @@ void	FS_Path::_set(pstr add)
 void	FS_Path::_set_root(pstr root)
 {
 	// m_Root
-//	R_ASSERT		(root);
 	xr_free(m_Root);
 	m_Root = xr_strlwr(xr_strdup(root));
-	if (m_Root[0] && m_Root[xr_strlen(m_Root) - 1] != '\\') strcat(m_Root, "\\");
+	if (m_Root[0] && m_Root[xr_strlen(m_Root) - 1] != '\\')
+	{
+		strcat(m_Root, "\\");
+	}
 
 	// m_Path
 	string_path		temp;
 	strconcat(sizeof(temp), temp, m_Root, m_Add ? m_Add : "");
-	if (*temp && temp[xr_strlen(temp) - 1] != '\\') strcat(temp, "\\");
+	if (*temp && temp[xr_strlen(temp) - 1] != '\\')
+	{
+		strcat(temp, "\\");
+	}
+
 	xr_free(m_Path);
 	m_Path = xr_strlwr(xr_strdup(temp));
 }
@@ -102,14 +120,8 @@ pcstr FS_Path::_update(string_path& dest, pcstr src)const
 	strconcat(sizeof(dest), dest, m_Path, temp);
 	return xr_strlwr(dest);
 }
-/*
-void FS_Path::_update(xr_string& dest, pcstr src)const
-{
-	R_ASSERT(src);
-	dest			= xr_string(m_Path)+src;
-	xr_strlwr		(dest);
-}*/
-void FS_Path::rescan_path_cb()
+
+void FS_Path::rescan_path_cb( )
 {
 	m_Flags.set(flNeedRescan, TRUE);
 	FS.m_Flags.set(CLocatorAPI::flNeedRescan, TRUE);
@@ -119,22 +131,45 @@ bool CORE_API PatternMatch(pcstr s, pcstr mask)
 {
 	pcstr cp = 0;
 	pcstr mp = 0;
-	for (; *s && *mask != '*'; mask++, s++) if (*mask != *s && *mask != '?') return false;
+	for (; *s && *mask != '*'; mask++, s++)
+	{
+		if (*mask != *s && *mask != '?')
+		{
+			return false;
+		}
+	}
+
 	for (;;)
 	{
 		if (!*s)
 		{
-			while (*mask == '*') mask++; return !*mask;
+			while (*mask == '*')
+			{
+				mask++;
+			}
+
+			return !*mask;
 		}
+
 		if (*mask == '*')
 		{
-			if (!*++mask) return true; mp = mask; cp = s + 1; continue;
+			if (!*++mask)
+			{
+				return true;
+			}
+			
+			mp = mask;
+			cp = s + 1;
+			continue;
 		}
+
 		if (*mask == *s || *mask == '?')
 		{
-			mask++, s++; continue;
+			mask++, s++;
+			continue;
 		}
-		mask = mp; s = cp++;
+
+		mask = mp;
+		s = cp++;
 	}
 }
-

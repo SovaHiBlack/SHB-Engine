@@ -622,7 +622,7 @@ bool xrServer::CheckAdminRights(const shared_str& user, const shared_str& pass, 
 	FS.update_path		(fn,"$app_data_root$","radmins.ltx");
 	if(FS.exist(fn))
 	{
-		CInifile			ini(fn);
+		CIniFile			ini(fn);
 		if(ini.line_exist("radmins",user.c_str()))
 		{
 			if (ini.r_string ("radmins",user.c_str()) == pass)

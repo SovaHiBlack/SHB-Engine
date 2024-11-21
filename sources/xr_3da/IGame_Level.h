@@ -58,6 +58,7 @@ protected:
 
 	// temporary
 	xr_vector<ISpatial*>		snd_ER;
+
 public:
 	CObjectList					Objects; 
 	CObjectSpace				ObjectSpace;
@@ -65,8 +66,9 @@ public:
 
 	BOOL						bReady;
 
-	CInifile*					pLevel;
+	CIniFile*					pLevel;
 	CCustomHUD*					pHUD;
+
 public:	// deferred sound events
 	struct	_esound_delegate	{
 		Feel::Sound*			dest	;
@@ -74,6 +76,7 @@ public:	// deferred sound events
 		f32					power	;
 	};
 	xr_vector<_esound_delegate>	snd_Events;
+
 public:
 	// Main, global functions
 	IGame_Level					();

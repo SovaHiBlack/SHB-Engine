@@ -33,7 +33,7 @@ CCarWeapon::CCarWeapon(CPhysicsShellHolder* obj)
 	m_Ammo		= xr_new<CCartridge>();
 
 	CKinematics* K			= smart_cast<CKinematics*>(m_object->Visual());
-	CInifile* pUserData		= K->LL_UserData(); 
+	CIniFile* pUserData		= K->LL_UserData();
 
 	m_rotate_x_bone			= K->LL_BoneID	(pUserData->r_string("mounted_weapon_definition","rotate_x_bone"));
 	m_rotate_y_bone			= K->LL_BoneID	(pUserData->r_string("mounted_weapon_definition","rotate_y_bone"));

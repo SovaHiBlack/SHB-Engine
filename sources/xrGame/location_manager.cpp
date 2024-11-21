@@ -10,11 +10,10 @@
 #include "location_manager.h"
 #include "gameobject.h"
 
-extern void	setup_location_types	(GameGraph::TERRAIN_VECTOR &m_vertex_types, CInifile *ini, pcstr string);
+extern void	setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* ini, pcstr string);
 
-CLocationManager::~CLocationManager	()
-{
-}
+CLocationManager::~CLocationManager( )
+{ }
 
 void CLocationManager::Load(pcstr section)
 {
@@ -28,9 +27,9 @@ void CLocationManager::Load(pcstr section)
 	}
 }
 
-void CLocationManager::reload		(pcstr section)
+void CLocationManager::reload(pcstr section)
 {
-	if (!m_object->spawn_ini() || !m_object->spawn_ini()->section_exist("alife") || !m_object->spawn_ini()->line_exist("alife","terrain"))
+	if (!m_object->spawn_ini( ) || !m_object->spawn_ini( )->section_exist("alife") || !m_object->spawn_ini( )->line_exist("alife", "terrain"))
 		return;
-	setup_location_types			(m_vertex_types,m_object->spawn_ini(),m_object->spawn_ini()->r_string("alife","terrain"));
+	setup_location_types(m_vertex_types, m_object->spawn_ini( ), m_object->spawn_ini( )->r_string("alife", "terrain"));
 }

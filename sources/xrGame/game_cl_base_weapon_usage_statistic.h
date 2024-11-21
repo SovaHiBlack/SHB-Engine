@@ -41,9 +41,6 @@ struct HitData
 
 	bool			operator	==		(u32 ID)	{return ID == BulletID;};
 	bool			operator	!=		(u32 ID)	{return ID != BulletID;};
-	//-----------------------------------------------------------
-//	void				Write						(FILE* pFile);
-//	void				WriteLtx					(CInifile& ini, pcstr sect, pcstr perfix);
 };
 
 DEF_VECTOR	(HITS_VEC, HitData);
@@ -74,9 +71,6 @@ struct Weapon_Statistic
 
 	bool			FindHit				(u32 BulletID, HITS_VEC_it& Hit_it);
 	bool			operator	==		(pcstr name){int res = xr_strcmp(WName.c_str(), name);return	res	 == 0;}
-	//-----------------------------------------------------------
-//	void				Write						(FILE* pFile);
-//	void				WriteLtx					(CInifile& ini, pcstr sect);
 };
 
 DEF_VECTOR		(WEAPON_STATS, Weapon_Statistic);
@@ -110,9 +104,6 @@ struct Player_Statistic
 	void			net_load			(NET_Packet* P);
 
 	bool			operator	==		(pcstr name){int res = xr_strcmp(PName.c_str(), name);return	res	 == 0;}
-	//-----------------------------------------------------------
-//	void				Write						(FILE* pFile);
-//	void				WriteLtx					(CInifile& ini, pcstr sect);
 };
 
 DEF_VECTOR	(PLAYERS_STATS, Player_Statistic);
@@ -202,9 +193,6 @@ struct WeaponUsageStatistic {
 	void				OnUpdateRespond				(NET_Packet* P);
 	//-----------------------------------------------
 	string_path			mFileName;
-
-//	void				Write						(FILE* pFile);
-//	void				WriteLtx					(CInifile& ini);
 };
 
 struct Bullet_Check_Respond_True

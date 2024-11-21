@@ -57,7 +57,7 @@ private:
 	void CapturedUpdate( );
 	void ReleasedUpdate( );
 	void ReleaseInCallBack( );
-	void Init(CInifile* ini);
+	void Init(CIniFile* ini);
 
 	void Deactivate( );
 	void CreateBody( );

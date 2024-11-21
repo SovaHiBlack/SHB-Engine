@@ -46,7 +46,7 @@ void SCarLight::ParseDefinitions(pcstr section)
 
 	// set bone id
 	CKinematics*			pKinematics=smart_cast<CKinematics*>(m_holder->PCar()->Visual());
-	CInifile* ini		=	pKinematics->LL_UserData();
+	CIniFile* ini		=	pKinematics->LL_UserData();
 	
 	fColor					clr;
 	clr.set					(ini->r_fcolor(section,"color"));
@@ -132,7 +132,7 @@ void CCarLights::Init(CCar* pcar)
 
 void CCarLights::ParseDefinitions()
 {
-	CInifile* ini= smart_cast<CKinematics*>(m_pcar->Visual())->LL_UserData();
+	CIniFile* ini= smart_cast<CKinematics*>(m_pcar->Visual())->LL_UserData();
 	if(!ini->section_exist("lights")) return;
 	pcstr S=  ini->r_string("lights","headlights");
 	string64					S1;

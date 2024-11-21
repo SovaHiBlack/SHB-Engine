@@ -47,7 +47,7 @@ void CSE_ALifeTraderAbstract::spawn_supplies	()
 		{
 #pragma warning(push)
 #pragma warning(disable:4238)
-			CInifile					ini(
+			CIniFile					ini(
 				&IReader				(
 					(void*)(*dynamic_object->m_ini_string),
 					xr_strlen(dynamic_object->m_ini_string)

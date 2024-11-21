@@ -10,7 +10,7 @@ class ENGINE_API CLightAnimItem;
 struct SThunderboltDesc
 {
 	// geom
-	IRender_DetailModel*		l_model;
+	IRender_DetailModel* l_model;
 	// sound
 	ref_sound					snd;
 	// gradient
@@ -21,28 +21,34 @@ struct SThunderboltDesc
 		shared_str				texture;
 		shared_str				shader;
 		ref_shader				hShader;
-		SFlare()				{ fOpacity = 0; fRadius.set(0.f,0.f);}
+		SFlare( )
+		{
+			fOpacity = 0; fRadius.set(0.f, 0.f);
+		}
 	};
 	SFlare						m_GradientTop;
 	SFlare						m_GradientCenter;
 	shared_str					name;
-	CLightAnimItem*					color_anim;
+	CLightAnimItem* color_anim;
 
 public:
-								SThunderboltDesc	(CInifile* pIni, pcstr sect);
-								~SThunderboltDesc	();
+	SThunderboltDesc(CIniFile* pIni, pcstr sect);
+	~SThunderboltDesc( );
 };
 
 struct SThunderboltCollection
 {
-	DEFINE_VECTOR(SThunderboltDesc*,DescVec,DescIt);
+	DEFINE_VECTOR(SThunderboltDesc*, DescVec, DescIt);
 	DescVec			  			palette;
 	shared_str					section;
 
 public:
-								SThunderboltCollection	(CInifile* pIni, pcstr sect);
-								~SThunderboltCollection	();
-	SThunderboltDesc*			GetRandomDesc			(){VERIFY(palette.size()>0); return palette[Random.randI(palette.size())];}
+	SThunderboltCollection(CIniFile* pIni, pcstr sect);
+	~SThunderboltCollection( );
+	SThunderboltDesc* GetRandomDesc( )
+	{
+		VERIFY(palette.size( ) > 0); return palette[Random.randI(palette.size( ))];
+	}
 };
 
 #define THUNDERBOLT_CACHE_SIZE	8
@@ -50,9 +56,9 @@ public:
 class ENGINE_API CEffect_Thunderbolt
 {
 protected:
-	DEFINE_VECTOR(SThunderboltCollection*,CollectionVec,CollectionVecIt);
+	DEFINE_VECTOR(SThunderboltCollection*, CollectionVec, CollectionVecIt);
 	CollectionVec				collection;
-	SThunderboltDesc*			current;
+	SThunderboltDesc* current;
 
 private:
 	fMatrix4x4					current_xform;
@@ -89,15 +95,15 @@ private:
 	f32						p_fog_color;
 
 private:
-	BOOL						RayPick				(const fVector3& s, const fVector3& d, f32& range);
-	void						Bolt				(int id, f32 period, f32 life_time);
+	BOOL						RayPick(const fVector3& s, const fVector3& d, f32& range);
+	void						Bolt(int id, f32 period, f32 life_time);
 
-public:                     
-								CEffect_Thunderbolt	(); 
-								~CEffect_Thunderbolt();
+public:
+	CEffect_Thunderbolt( );
+	~CEffect_Thunderbolt( );
 
-	void						OnFrame				(int id, f32 period, f32 duration);
-	void						Render				();
+	void						OnFrame(int id, f32 period, f32 duration);
+	void						Render( );
 
-	int							AppendDef			(CInifile* pIni, pcstr sect);
+	int							AppendDef(CIniFile* pIni, pcstr sect);
 };

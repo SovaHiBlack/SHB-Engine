@@ -39,7 +39,7 @@ protected:
 
 private:
 			void		reload_foot_bones		();
-			void		load_foot_bones			(CInifile::Sect &data);
+			void		load_foot_bones			(CIniFile::Sect &data);
 			
 			f32		get_blend_time			();
 };

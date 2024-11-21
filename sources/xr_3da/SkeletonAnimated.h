@@ -14,7 +14,7 @@ class   ENGINE_API CBlend;
 class 	ENGINE_API CKinematicsAnimated;
 class   ENGINE_API CBoneInstanceAnimated;
 struct	ENGINE_API CKey;
-class	ENGINE_API CInifile;
+class	ENGINE_API CIniFile;
 
 struct MotionID {
 private:

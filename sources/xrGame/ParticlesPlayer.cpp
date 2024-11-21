@@ -73,16 +73,15 @@ void CParticlesPlayer::LoadParticles(CKinematics* K)
 	VERIFY				(K);
 
 	m_Bones.clear();
-	
 
 	//считать список косточек и соответствующих
 	//офсетов  куда можно вешать партиклы
-	CInifile* ini		= K->LL_UserData();
+	CIniFile* ini		= K->LL_UserData();
 	if(ini&&ini->section_exist("particle_bones")){
 		bone_mask		= 0;
-		CInifile::Sect& data		= ini->r_section("particle_bones");
-		for (CInifile::SectCIt I=data.Data.begin(); I!=data.Data.end(); I++){
-			const CInifile::Item& item	= *I;
+		CIniFile::Sect& data		= ini->r_section("particle_bones");
+		for (CIniFile::SectCIt I=data.Data.begin(); I!=data.Data.end(); I++){
+			const CIniFile::Item& item	= *I;
 			u16 index				= K->LL_BoneID(*item.first); 
 			R_ASSERT3(index != BI_NONE, "Particles bone not found", *item.first);
 			fVector3					offs;

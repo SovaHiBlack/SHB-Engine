@@ -18,13 +18,13 @@ public:
 						CDamageManager	();
 	virtual				~CDamageManager	();
 	virtual	DLL_Pure	*_construct		();
-	virtual	void		reload			(pcstr section,CInifile* ini);
-	virtual	void		reload			(pcstr section, pcstr sub_section,CInifile* ini);
+	virtual	void		reload			(pcstr section, CIniFile* ini);
+	virtual	void		reload			(pcstr section, pcstr sub_section, CIniFile* ini);
 	
 	virtual	void		HitScale		(const int bone_num, f32& hit_scale, f32& wound_scale, bool aim_bullet=false);
 
 private:
-			void		load_section	(pcstr section,CInifile* ini);
+			void		load_section	(pcstr section, CIniFile* ini);
 			// init default params
-			void		init_bones		(pcstr section,CInifile* ini);
+			void		init_bones		(pcstr section, CIniFile* ini);
 };

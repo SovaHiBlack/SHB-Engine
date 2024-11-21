@@ -11,25 +11,28 @@ static LogCallback			LogCB = 0;
 void FlushLog(pcstr file_name)
 {
 	if (no_log)
+	{
 		return;
+	}
 
-	logCS.Enter();
+	logCS.Enter( );
 
 	IWriter* f = FS.w_open(file_name);
 	if (f)
 	{
-		for (u32 it = 0; it < LogFile->size(); it++)
+		for (u32 it = 0; it < LogFile->size( ); it++)
 		{
 			pcstr		s = *((*LogFile)[it]);
 			f->w_string(s ? s : "");
 		}
+
 		FS.w_close(f);
 	}
 
-	logCS.Leave();
+	logCS.Leave( );
 }
 
-void FlushLog()
+void FlushLog( )
 {
 	FlushLog(logFName);
 }
@@ -37,32 +40,34 @@ void FlushLog()
 void AddOne(pcstr split)
 {
 	if (!LogFile)
+	{
 		return;
+	}
 
-	logCS.Enter();
+	logCS.Enter( );
 
 #ifdef DEBUG
 	OutputDebugString(split);
 	OutputDebugString("\n");
-#endif
+#endif // def DEBUG
 
-	//	DUMP_PHASE;
-	{
-		shared_str			temp = shared_str(split);
-		//		DUMP_PHASE;
-		LogFile->push_back(temp);
-	}
+	shared_str			temp = shared_str(split);
+	LogFile->push_back(temp);
 
 	//exec CallBack
-	if (LogExecCB && LogCB)LogCB(split);
+	if (LogExecCB && LogCB)
+	{
+		LogCB(split);
+	}
 
-	logCS.Leave();
+	logCS.Leave( );
 }
 
 void Log(pcstr s)
 {
-	int		i, j;
-	char	split[1024];
+	s32 i;
+	s32 j;
+	string1024 split;
 
 	for (i = 0, j = 0; s[i] != 0; i++)
 	{
@@ -71,8 +76,10 @@ void Log(pcstr s)
 			split[j] = 0;	// end of line
 			if (split[0] == 0)
 			{
-				split[0] = ' '; split[1] = 0;
+				split[0] = ' ';
+				split[1] = 0;
 			}
+
 			AddOne(split);
 			j = 0;
 		}
@@ -81,6 +88,7 @@ void Log(pcstr s)
 			split[j++] = s[i];
 		}
 	}
+
 	split[j] = 0;
 	AddOne(split);
 }
@@ -88,34 +96,44 @@ void Log(pcstr s)
 void __cdecl Msg(pcstr format, ...)
 {
 	va_list mark;
-	string1024	buf;
+	string1024 buf;
 	va_start(mark, format);
-	int sz = _vsnprintf(buf, sizeof(buf) - 1, format, mark); buf[sizeof(buf) - 1] = 0;
+	s32 sz = _vsnprintf(buf, sizeof(buf) - 1, format, mark);
+	buf[sizeof(buf) - 1] = 0;
 	va_end(mark);
-	if (sz)		Log(buf);
+	if (sz)
+	{
+		Log(buf);
+	}
 }
 
 void Log(pcstr msg, pcstr dop)
 {
-	char buf[1024];
+	string1024 buf;
 
-	if (dop)	sprintf_s(buf, sizeof(buf), "%s %s", msg, dop);
-	else		sprintf_s(buf, sizeof(buf), "%s", msg);
+	if (dop)
+	{
+		sprintf_s(buf, sizeof(buf), "%s %s", msg, dop);
+	}
+	else
+	{
+		sprintf_s(buf, sizeof(buf), "%s", msg);
+	}
 
 	Log(buf);
 }
 
 void Log(pcstr msg, u32 dop)
 {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s(buf, sizeof(buf), "%s %d", msg, dop);
 	Log(buf);
 }
 
-void Log(pcstr msg, int dop)
+void Log(pcstr msg, s32 dop)
 {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s(buf, sizeof(buf), "%s %d", msg, dop);
 	Log(buf);
@@ -123,7 +141,7 @@ void Log(pcstr msg, int dop)
 
 void Log(pcstr msg, f32 dop)
 {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s(buf, sizeof(buf), "%s %f", msg, dop);
 	Log(buf);
@@ -131,7 +149,7 @@ void Log(pcstr msg, f32 dop)
 
 void Log(pcstr msg, const fVector3& dop)
 {
-	char buf[1024];
+	string1024 buf;
 
 	sprintf_s(buf, sizeof(buf), "%s (%f,%f,%f)", msg, dop.x, dop.y, dop.z);
 	Log(buf);
@@ -139,7 +157,7 @@ void Log(pcstr msg, const fVector3& dop)
 
 void Log(pcstr msg, const fMatrix4x4& dop)
 {
-	char	buf[1024];
+	string1024 buf;
 
 	sprintf_s(buf, sizeof(buf), "%s:\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n%f,%f,%f,%f\n", msg, dop.i.x, dop.i.y, dop.i.z, dop._14_
 			  , dop.j.x, dop.j.y, dop.j.z, dop._24_
@@ -158,15 +176,15 @@ void SetLogCB(LogCallback cb)
 	LogCB = cb;
 }
 
-pcstr log_name()
+pcstr log_name( )
 {
-	return				(logFName);
+	return logFName;
 }
 
-void InitLog()
+void InitLog( )
 {
 	R_ASSERT(LogFile == NULL);
-	LogFile = xr_new< xr_vector<shared_str> >();
+	LogFile = xr_new< xr_vector<shared_str> >( );
 }
 
 void CreateLog(BOOL nl)
@@ -174,23 +192,28 @@ void CreateLog(BOOL nl)
 	no_log = nl;
 	strconcat(sizeof(logFName), logFName, Core.ApplicationName, "_", Core.UserName, ".log");
 	if (FS.path_exist("$logs$"))
+	{
 		FS.update_path(logFName, "$logs$", logFName);
+	}
+
 	if (!no_log)
 	{
 		IWriter* f = FS.w_open(logFName);
 		if (f == NULL)
 		{
 			MessageBox(NULL, "Can't create log file.", "Error", MB_ICONERROR);
-			abort();
+			abort( );
 		}
+
 		FS.w_close(f);
 	}
+
 	LogFile->reserve(128);
 }
 
-void CloseLog(void)
+void CloseLog( )
 {
-	FlushLog();
-	LogFile->clear();
+	FlushLog( );
+	LogFile->clear( );
 	xr_delete(LogFile);
 }
