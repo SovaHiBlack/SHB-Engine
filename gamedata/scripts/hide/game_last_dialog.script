@@ -17,7 +17,7 @@ function uiDialog:__init() super()
     function GetFontDI();
     function GetFontHeaderRussian();
     function GetFontGraffiti19Russian();
-    function GetFontLetterica25();
+    function GetFontLetterica25Russian();
     function GetFontMedium();
     function GetFontLetterica16Russian();
     function GetFontSmall();

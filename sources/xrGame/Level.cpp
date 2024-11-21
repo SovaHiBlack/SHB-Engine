@@ -29,7 +29,7 @@
 #include "date_time.h"
 #include "space_restriction_manager.h"
 #include "seniority_hierarchy_holder.h"
-#include "space_restrictor.h"
+#include "SpaceRestrictor.h"
 #include "ClientSpawnManager.h"
 #include "AutosaveManager.h"
 #include "ClimableObject.h"

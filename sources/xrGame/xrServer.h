@@ -196,7 +196,7 @@ public:
 	void					create_direct_client();
 
 	virtual void			Assign_ServerType	( string512& res ) {};
-	virtual bool			HasPassword			()	{ return false; }
+//	virtual bool			HasPassword			()	{ return false; }
 	virtual bool			HasProtected		()	{ return false; }
 
 	virtual void			GetServerInfo		( CServerInfo* si );

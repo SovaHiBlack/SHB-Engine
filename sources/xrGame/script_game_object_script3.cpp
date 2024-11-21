@@ -25,7 +25,7 @@
 #include "helicopter.h"
 #include "HangingLamp.h"
 #include "holder_custom.h"
-#include "script_zone.h"
+#include "ScriptZone.h"
 #include "relation_registry.h"
 #include "GameTask.h"
 #include "car.h"

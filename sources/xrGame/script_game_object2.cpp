@@ -12,7 +12,7 @@
 #include "AISpace.h"
 #include "script_engine.h"
 #include "explosive.h"
-#include "script_zone.h"
+#include "ScriptZone.h"
 #include "object_handler.h"
 #include "script_hit.h"
 #include "..\XR_3DA\skeletoncustom.h"

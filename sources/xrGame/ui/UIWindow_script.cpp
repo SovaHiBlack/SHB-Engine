@@ -40,13 +40,12 @@ CGameFont* GetFontLetterica16Russian()
 {return mngr().pFontLetterica16Russian;}
 CGameFont* GetFontLetterica18Russian()
 {return mngr().pFontLetterica18Russian;}
+CGameFont* GetFontLetterica25Russian( )
+{return mngr( ).pFontLetterica25Russian;}
 CGameFont* GetFontGraffiti32Russian()
 {return mngr().pFontGraffiti32Russian;}
 CGameFont* GetFontGraffiti50Russian()
 {return mngr().pFontGraffiti50Russian;}
-CGameFont* GetFontLetterica25()
-{return mngr().pFontLetterica25;}
-
 
 int GetARGB(u16 a, u16 r, u16 g, u16 b)
 {return color_argb(a,r,g,b);}
@@ -84,9 +83,9 @@ void CUIWindow::script_register(lua_State *L)
 		def("GetFontGraffiti22Russian",	&GetFontGraffiti22Russian),
 		def("GetFontLetterica16Russian",&GetFontLetterica16Russian),
 		def("GetFontLetterica18Russian",&GetFontLetterica18Russian),
+		def("GetFontLetterica25Russian",&GetFontLetterica25Russian),
 		def("GetFontGraffiti32Russian",	&GetFontGraffiti32Russian),
 		def("GetFontGraffiti50Russian",	&GetFontGraffiti50Russian),
-		def("GetFontLetterica25",		&GetFontLetterica25),
 
 		class_<STextureInfo>("STextureInfo")
 		.def("get_file_name",	 			&STextureInfo::get_file_name)

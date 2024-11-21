@@ -23,7 +23,7 @@
 
 #ifdef DEBUG
 #	include "level.h"
-#	include "space_restrictor.h"
+#	include "SpaceRestrictor.h"
 #endif // DEBUG
 
 int g_restriction_checker = 0;

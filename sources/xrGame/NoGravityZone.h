@@ -1,15 +1,15 @@
 #pragma once
 #include "CustomZone.h"
 
-class CNoGravityZone :
-	public CCustomZone
+class CNoGravityZone : public CCustomZone
 {
-typedef CCustomZone inherited;
-public:
+	typedef CCustomZone inherited;
+
 protected:
-	virtual		void	enter_Zone						(SZoneObjectInfo& io)				;
-	virtual		void	exit_Zone						(SZoneObjectInfo& io)				;
+	virtual		void	enter_Zone(SZoneObjectInfo& io);
+	virtual		void	exit_Zone(SZoneObjectInfo& io);
+
 private:
-				void	switchGravity					(SZoneObjectInfo& io,bool val)		;
-	virtual		void	UpdateWorkload					(u32	dt	)						;
+	void	switchGravity(SZoneObjectInfo& io, bool val);
+	virtual		void	UpdateWorkload(u32	dt);
 };

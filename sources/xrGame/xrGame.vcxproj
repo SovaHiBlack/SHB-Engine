@@ -816,7 +816,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelGameDef.h" />
     <ClInclude Include="BulletManager.h" />
-    <ClInclude Include="level_changer.h" />
+    <ClInclude Include="LevelChanger.h" />
     <ClInclude Include="level_debug.h" />
     <ClInclude Include="level_graph.h" />
     <ClInclude Include="level_graph_inline.h" />
@@ -1137,7 +1137,7 @@
     <ClInclude Include="script_world_property.h" />
     <ClInclude Include="script_world_property_inline.h" />
     <ClInclude Include="script_world_state.h" />
-    <ClInclude Include="script_zone.h" />
+    <ClInclude Include="ScriptZone.h" />
     <ClInclude Include="searchlight.h" />
     <ClInclude Include="seniority_hierarchy_holder.h" />
     <ClInclude Include="seniority_hierarchy_holder_inline.h" />
@@ -1188,8 +1188,8 @@
     <ClInclude Include="space_restriction_manager_inline.h" />
     <ClInclude Include="space_restriction_shape.h" />
     <ClInclude Include="space_restriction_shape_inline.h" />
-    <ClInclude Include="space_restrictor.h" />
-    <ClInclude Include="space_restrictor_inline.h" />
+    <ClInclude Include="SpaceRestrictor.h" />
+    <ClInclude Include="SpaceRestrictor_inline.h" />
     <ClInclude Include="specific_character.h" />
     <ClInclude Include="Spectator.h" />
     <ClInclude Include="squad_hierarchy_holder.h" />
@@ -1471,7 +1471,7 @@
     <ClInclude Include="xrServer_Space.h" />
     <ClInclude Include="xr_level_controller.h" />
     <ClInclude Include="xr_time.h" />
-    <ClInclude Include="ZoneVisual.h" />
+    <ClInclude Include="VisualZone.h" />
     <ClInclude Include="ZoneEffector.h" />
     <ClInclude Include="ZudaArtifact.h" />
   </ItemGroup>
@@ -1884,7 +1884,7 @@
     <ClCompile Include="key_binding_registrator_script.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="BulletManager.cpp" />
-    <ClCompile Include="level_changer.cpp" />
+    <ClCompile Include="LevelChanger.cpp" />
     <ClCompile Include="level_debug.cpp" />
     <ClCompile Include="level_graph.cpp" />
     <ClCompile Include="level_graph_debug.cpp" />
@@ -2118,8 +2118,7 @@
     <ClCompile Include="script_watch_action_script.cpp" />
     <ClCompile Include="script_world_property_script.cpp" />
     <ClCompile Include="script_world_state_script.cpp" />
-    <ClCompile Include="script_zone.cpp" />
-    <ClCompile Include="script_zone_script.cpp" />
+    <ClCompile Include="ScriptZone.cpp" />
     <ClCompile Include="searchlight.cpp" />
     <ClCompile Include="seniority_hierarchy_holder.cpp" />
     <ClCompile Include="server_entity_wrapper.cpp" />
@@ -2145,8 +2144,7 @@
     <ClCompile Include="space_restriction_holder.cpp" />
     <ClCompile Include="space_restriction_manager.cpp" />
     <ClCompile Include="space_restriction_shape.cpp" />
-    <ClCompile Include="space_restrictor.cpp" />
-    <ClCompile Include="space_restrictor_script.cpp" />
+    <ClCompile Include="SpaceRestrictor.cpp" />
     <ClCompile Include="specific_character.cpp" />
     <ClCompile Include="Spectator.cpp" />
     <ClCompile Include="squad_hierarchy_holder.cpp" />
@@ -2464,7 +2462,7 @@
     <ClCompile Include="xrServer_sls_clear.cpp" />
     <ClCompile Include="xr_level_controller.cpp" />
     <ClCompile Include="xr_time.cpp" />
-    <ClCompile Include="ZoneVisual.cpp" />
+    <ClCompile Include="VisualZone.cpp" />
     <ClCompile Include="ZoneEffector.cpp" />
     <ClCompile Include="ZudaArtifact.cpp" />
   </ItemGroup>

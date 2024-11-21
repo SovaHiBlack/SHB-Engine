@@ -23,7 +23,7 @@
 #include "action_planner.h"
 #include "PhysicsShell.h"
 #include "helicopter.h"
-#include "script_zone.h"
+#include "ScriptZone.h"
 #include "relation_registry.h"
 #include "danger_object.h"
 

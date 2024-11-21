@@ -122,11 +122,11 @@
 #	include "mincer.h"
 #	include "gravizone.h"
 #	include "radioactivezone.h"
-#	include "level_changer.h"
-#	include "script_zone.h"
+#	include "LevelChanger.h"
+#	include "ScriptZone.h"
 #	include "team_base_zone.h"
 #	include "torridZone.h"
-#	include "ZoneVisual.h"
+#	include "VisualZone.h"
 #	include "hairszone.h"
 #	include "amebazone.h"
 #	include "nogravityzone.h"
@@ -150,7 +150,7 @@
 
 #	include "UIGameSP.h"
 #	include	"climableobject.h"
-#	include "space_restrictor.h"
+#	include "SpaceRestrictor.h"
 #	include "smart_zone.h"
 #	include "InventoryBox.h"
 

@@ -45,14 +45,14 @@ void CRadioactiveZone::Affect(SZoneObjectInfo* O)
 		fVector3 pos;
 		XFORM( ).transform_tiny(pos, CFORM( )->getSphere( ).P);
 
-#ifdef DEBUG		
+#ifdef DEBUG
 		char pow[255];
 		sprintf_s(pow, "zone hit. %.3f", Power(GO->Position( ).distance_to(pos)));
 		if (bDebug)
 		{
 			Msg("%s %s", *GO->cName( ), pow);
 		}
-#endif
+#endif // def DEBUG
 
 		fVector3 dir;
 		dir.set(0.0f, 0.0f, 0.0f);

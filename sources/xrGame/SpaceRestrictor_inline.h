@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: space_restrictor_inline.h
+//	Module 		: SpaceRestrictor_inline.h
 //	Created 	: 17.08.2004
 //  Modified 	: 17.08.2004
 //	Author		: Dmitriy Iassenev

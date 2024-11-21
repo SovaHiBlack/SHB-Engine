@@ -32,7 +32,7 @@
 
 extern int keyname_to_dik(pcstr);
 
-#define ARIAL_FONT_NAME			"arial"
+#define ARIAL14_FONT_NAME		"arial_14"
 
 #define MEDIUM_FONT_NAME		"medium"
 #define SMALL_FONT_NAME			"small"
@@ -673,7 +673,7 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, pcstr path, s32 index, u32& color, CG
 		{
 			pFnt = UI( )->Font( )->pFontGraffiti50Russian;
 		}
-		else if (!xr_strcmp(*font_name, "arial_14"))
+		else if (!xr_strcmp(*font_name, "ARIAL14_FONT_NAME"))
 		{
 			pFnt = UI( )->Font( )->pFontArial14;
 		}
@@ -695,7 +695,7 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, pcstr path, s32 index, u32& color, CG
 		}
 		else if (!xr_strcmp(*font_name, LETTERICA25_FONT_NAME))
 		{
-			pFnt = UI( )->Font( )->pFontLetterica25;
+			pFnt = UI( )->Font( )->pFontLetterica25Russian;
 		}
 		else if (!xr_strcmp(*font_name, DI_FONT_NAME))
 		{

@@ -21,15 +21,13 @@ add_to_type_list(SZoneMapEntityData)
 #undef script_type_list
 #define script_type_list save_type_list(SZoneMapEntityData)
 
-//#include "game_cl_base_weapon_usage_statistic.h"
-
 struct WeaponUsageStatistic;
 
 class	game_cl_GameState	: public game_GameState, public ISheduled
 {
 	typedef game_GameState	inherited;
 	shared_str							m_game_type_name;
-//	bool								m_bCrosshair;	//был ли показан прицел-курсор HUD перед вызовом меню
+
 protected:
 	CUIGameCustom*						m_game_ui_custom;
 	u16									m_u16VotingEnabled;	
@@ -43,7 +41,6 @@ public:
 	PLAYERS_MAP							players;
 	CClientID							local_svdpnid;
 	game_PlayerState*					local_player;
-//.	xr_vector<CGameObject*>				targets;
 
 	WeaponUsageStatistic				*m_WeaponUsageStatistic;	
 	virtual		void				reset_ui				();
@@ -51,23 +48,24 @@ public:
 
 private:
 				void				switch_Phase			(u32 new_phase)		{inherited::switch_Phase(new_phase);};
-protected:
 
+protected:
 	virtual		void				OnSwitchPhase			(u32 old_phase, u32 new_phase);	
 
 	//for scripting enhancement
 	virtual		void				TranslateGameMessage	(u32 msg, NET_Packet& P);
 
 	virtual		shared_str			shedule_Name			() const		{ return shared_str("game_cl_GameState"); };
-	virtual		f32				shedule_Scale			();
+	virtual		f32					shedule_Scale			();
 	virtual		bool				shedule_Needed			()				{return true;};
 
 				void				sv_GameEventGen			(NET_Packet& P);
 				void				sv_EventSend			(NET_Packet& P);
+
 public:
 									game_cl_GameState		();
 	virtual							~game_cl_GameState		();
-	pcstr				type_name				() const {return *m_game_type_name;};
+				pcstr				type_name				() const {return *m_game_type_name;};
 				void				set_type_name			(pcstr s);
 	virtual		void				Init					(){};
 	virtual		void				net_import_state		(NET_Packet& P);
@@ -94,19 +92,17 @@ public:
 	virtual		CUIGameCustom*		createGameUI			(){return NULL;};
 	virtual		void				GetMapEntities			(xr_vector<SZoneMapEntityData>& dst)	{};
 
-
 				void				StartStopMenu			(CUIDialogWnd* pDialog, bool bDoHideIndicators);
 	virtual		void				shedule_Update			(u32 dt);
 
-	void							u_EventGen				(NET_Packet& P, u16 type, u16 dest);
-	void							u_EventSend				(NET_Packet& P);
+				void				u_EventGen				(NET_Packet& P, u16 type, u16 dest);
+				void				u_EventSend				(NET_Packet& P);
 
 	virtual		void				ChatSayTeam				(const shared_str &phrase)	{};
 	virtual		void				ChatSayAll				(const shared_str &phrase)	{};
 	virtual		void				OnChatMessage			(NET_Packet* P)	{};
 	virtual		void				OnWarnMessage			(NET_Packet* P)	{};
 	virtual		void				OnRadminMessage			(u16 type, NET_Packet* P)	{};
-	
 
 	virtual		bool				IsVotingEnabled			()	{return m_u16VotingEnabled != 0;};
 	virtual		bool				IsVotingEnabled			(u16 flag) {return (m_u16VotingEnabled & flag) != 0;};

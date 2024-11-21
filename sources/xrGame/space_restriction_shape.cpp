@@ -10,7 +10,7 @@
 #include "space_restriction_shape.h"
 #include "AISpace.h"
 #include "level_graph.h"
-#include "space_restrictor.h"
+#include "SpaceRestrictor.h"
 #include "graph_engine.h"
 
 struct CBorderMergePredicate {

@@ -2110,7 +2110,7 @@
     <Filter Include="UI\Common\DiaryWnd">
       <UniqueIdentifier>{9405ff7b-7cc6-4814-92c1-49c04bf991b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\zones\ZoneVisual">
+    <Filter Include="Core\Client\Objects\zones\VisualZone">
       <UniqueIdentifier>{36c5cae5-67b9-4a7f-a7d6-fa2e1129eab8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -5064,7 +5064,7 @@
     <ClInclude Include="GraviZone.h">
       <Filter>Core\Client\Objects\zones\GraviZone</Filter>
     </ClInclude>
-    <ClInclude Include="level_changer.h">
+    <ClInclude Include="LevelChanger.h">
       <Filter>Core\Client\Objects\zones\LevelChanger</Filter>
     </ClInclude>
     <ClInclude Include="Mincer.h">
@@ -5076,7 +5076,7 @@
     <ClInclude Include="RadioactiveZone.h">
       <Filter>Core\Client\Objects\zones\RadioactiveZone</Filter>
     </ClInclude>
-    <ClInclude Include="script_zone.h">
+    <ClInclude Include="ScriptZone.h">
       <Filter>Core\Client\Objects\zones\ScriptZone</Filter>
     </ClInclude>
     <ClInclude Include="team_base_zone.h">
@@ -5085,13 +5085,13 @@
     <ClInclude Include="TorridZone.h">
       <Filter>Core\Client\Objects\zones\TorridZone</Filter>
     </ClInclude>
-    <ClInclude Include="ZoneVisual.h">
-      <Filter>Core\Client\Objects\zones\ZoneVisual</Filter>
+    <ClInclude Include="VisualZone.h">
+      <Filter>Core\Client\Objects\zones\VisualZone</Filter>
     </ClInclude>
-    <ClInclude Include="space_restrictor.h">
+    <ClInclude Include="SpaceRestrictor.h">
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
     </ClInclude>
-    <ClInclude Include="space_restrictor_inline.h">
+    <ClInclude Include="SpaceRestrictor_inline.h">
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
     </ClInclude>
     <ClInclude Include="HairsZone.h">
@@ -7829,7 +7829,7 @@
     <ClCompile Include="GraviZone.cpp">
       <Filter>Core\Client\Objects\zones\GraviZone</Filter>
     </ClCompile>
-    <ClCompile Include="level_changer.cpp">
+    <ClCompile Include="LevelChanger.cpp">
       <Filter>Core\Client\Objects\zones\LevelChanger</Filter>
     </ClCompile>
     <ClCompile Include="Mincer.cpp">
@@ -7847,10 +7847,7 @@
     <ClCompile Include="RadioactiveZone.cpp">
       <Filter>Core\Client\Objects\zones\RadioactiveZone</Filter>
     </ClCompile>
-    <ClCompile Include="script_zone.cpp">
-      <Filter>Core\Client\Objects\zones\ScriptZone</Filter>
-    </ClCompile>
-    <ClCompile Include="script_zone_script.cpp">
+    <ClCompile Include="ScriptZone.cpp">
       <Filter>Core\Client\Objects\zones\ScriptZone</Filter>
     </ClCompile>
     <ClCompile Include="team_base_zone.cpp">
@@ -7859,13 +7856,10 @@
     <ClCompile Include="TorridZone.cpp">
       <Filter>Core\Client\Objects\zones\TorridZone</Filter>
     </ClCompile>
-    <ClCompile Include="ZoneVisual.cpp">
-      <Filter>Core\Client\Objects\zones\ZoneVisual</Filter>
+    <ClCompile Include="VisualZone.cpp">
+      <Filter>Core\Client\Objects\zones\VisualZone</Filter>
     </ClCompile>
-    <ClCompile Include="space_restrictor.cpp">
-      <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
-    </ClCompile>
-    <ClCompile Include="space_restrictor_script.cpp">
+    <ClCompile Include="SpaceRestrictor.cpp">
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
     </ClCompile>
     <ClCompile Include="HairsZone.cpp">

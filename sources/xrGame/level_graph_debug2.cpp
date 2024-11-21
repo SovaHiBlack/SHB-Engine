@@ -27,7 +27,7 @@
 #include "game_cl_base.h"
 #include "space_restriction_manager.h"
 #include "space_restriction.h"
-#include "space_restrictor.h"
+#include "SpaceRestrictor.h"
 #include "space_restriction_base.h"
 #include "detail_path_manager.h"
 #include "memory_manager.h"

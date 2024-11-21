@@ -6,7 +6,7 @@
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
 
-#include "script_zone.h"
+#include "ScriptZone.h"
 #include "ai/trader/ai_trader.h"
 
 #include "AISpace.h"

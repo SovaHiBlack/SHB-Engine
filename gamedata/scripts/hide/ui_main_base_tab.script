@@ -29,7 +29,7 @@ function main_base_tab:InitControls(x, y)
 	self.btn.y = 0
 	self.btn.width = 256
 	self.btn.height = 33
-	self.btn.font = GetFontLetterica25()
+	self.btn.font = GetFontLetterica25Russian()
 	self.btn.texture = "ui\\ui_btn_mm"
 	
 	-- CODE

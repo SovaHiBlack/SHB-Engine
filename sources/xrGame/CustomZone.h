@@ -1,6 +1,6 @@
 #pragma once
 
-#include "space_restrictor.h"
+#include "SpaceRestrictor.h"
 #include "..\XR_3DA\feel_touch.h"
 
 class CActor;
@@ -32,9 +32,7 @@ struct SZoneObjectInfo
 	bool operator == (const CGameObject* O) const {return object==O;}
 };
 
-class CCustomZone :
-	public CSpaceRestrictor,
-	public Feel::Touch
+class CCustomZone : public CSpaceRestrictor, public Feel::Touch
 {
 private:
 	typedef	CSpaceRestrictor inherited;
@@ -100,7 +98,7 @@ protected:
 		eBlowoutLight			=(1<<5),
 		eIdleLight				=(1<<6),
 		eSpawnBlowoutArtefacts	=(1<<7),
-		eUseOnOffTime			=(1<<8),
+		eUseOnOffTime			=(1<<8)
 	};
 	u32					m_owner_id;		//if created from artefact
 	u32					m_ttl;
@@ -110,23 +108,21 @@ protected:
 
 	//максимальная сила заряда зоны
 	f32					m_fMaxPower;
-
 	//линейный коэффициент затухания в зависимости от расстояния
 	f32					m_fAttenuation;
-	//процент удара зоны, который пойдет на физический импульс	
+	//процент удара зоны, который пойдет на физический импульс
 	f32					m_fHitImpulseScale;
-	//размер радиуса в процентах от оригинального, 
-	//где действует зона
+	//размер радиуса в процентах от оригинального, где действует зона
 	f32					m_fEffectiveRadius;
 
 	//тип наносимого хита
-	ALife::EHitType		m_eHitTypeBlowout;	
+	ALife::EHitType		m_eHitTypeBlowout;
 
 	EZoneState			m_eZoneState;
 
 	//текущее время пребывания зоны в определенном состоянии 
-	int					m_iStateTime;
-	int					m_iPreviousStateTime;
+	s32					m_iStateTime;
+	s32					m_iPreviousStateTime;
 	
 	u32					m_TimeToDisable;
 	u32					m_TimeToEnable;
@@ -136,7 +132,7 @@ protected:
 	//массив с временами, сколько каждое состояние должно 
 	//длиться (если 0, то мгновенно -1 - бесконечность, 
 	//-2 - вообще не должно вызываться)
-	typedef	svector<int, eZoneStateMax>					StateTimeSVec;
+	typedef	svector<s32, eZoneStateMax>					StateTimeSVec;
 	StateTimeSVec		m_StateTime;
 
 	virtual		void		SwitchZoneState				(EZoneState new_state);
@@ -171,7 +167,7 @@ protected:
 
 	u32						m_dwDeltaTime;
 	u32						m_dwPeriod;
-//	bool					m_bZoneReady;
+
 	//если в зоне есть не disabled объекты
 	bool					m_bZoneActive;
 
@@ -198,10 +194,10 @@ protected:
 
 	//время, через которое, зона перестает реагировать 
 	//на объект мертвый объект (-1 если не указано)
-	int						m_iDisableHitTime;
+	s32						m_iDisableHitTime;
 	//тоже самое но для маленьких объектов
-	int						m_iDisableHitTimeSmall;
-	int						m_iDisableIdleTime;
+	s32						m_iDisableHitTimeSmall;
+	s32						m_iDisableIdleTime;
 
 	////////////////////////////////
 	// имена партиклов зоны
@@ -243,7 +239,7 @@ protected:
 	f32						m_fIdleLightRange;
 	f32						m_fIdleLightHeight;
 	f32						m_fIdleLightRangeDelta;
-	CLightAnimItem*				m_pIdleLAnim;
+	CLightAnimItem*			m_pIdleLAnim;
 
 	void					StartIdleLight				();
 	void					StopIdleLight				();
@@ -262,7 +258,6 @@ protected:
 	void					UpdateBlowoutLight			();
 
 	//список партиклов для объетов внутри зоны
-//	DEFINE_MAP (CObject*, SZoneObjectInfo, OBJECT_INFO_MAP, OBJECT_INFO_MAP_IT);
 	DEFINE_VECTOR(SZoneObjectInfo,OBJECT_INFO_VEC,OBJECT_INFO_VEC_IT);
 	OBJECT_INFO_VEC			m_ObjectInfoMap;
 
@@ -311,8 +306,7 @@ public:
 protected:
 	virtual			void	SpawnArtefact				();
 
-	//рождение артефакта в зоне, во время ее срабатывания
-	//и присоединение его к зоне
+	//рождение артефакта в зоне, во время ее срабатывания и присоединение его к зоне
 					void	BornArtefact				();
 	//выброс артефактов из зоны
 					void	ThrowOutArtefact			(CArtefact* pArtefact);
@@ -324,15 +318,12 @@ protected:
 	DEFINE_VECTOR(CArtefact*, ARTEFACT_VECTOR, ARTEFACT_VECTOR_IT);
 	ARTEFACT_VECTOR			m_SpawnedArtefacts;
 
-	//есть ли вообще функция выбрасывания артефактов во время срабатывания
-//	bool					m_bSpawnBlowoutArtefacts;
-	//вероятность того, что артефакт засповниться при единичном 
-	//срабатывании аномалии
-	f32					m_fArtefactSpawnProbability;
+	//вероятность того, что артефакт засповниться при единичном срабатывании аномалии
+	f32						m_fArtefactSpawnProbability;
 	//величина импульса выкидывания артефакта из зоны
-	f32					 m_fThrowOutPower;
+	f32						m_fThrowOutPower;
 	//высота над центром зоны, где будет появляться артефакт
-	f32					m_fArtefactSpawnHeight;
+	f32						m_fArtefactSpawnHeight;
 
 	//имя партиклов, которые проигрываются во время и на месте рождения артефакта
 	shared_str				m_sArtefactSpawnParticles;
@@ -355,10 +346,11 @@ protected:
 	u32						m_ef_anomaly_type;
 	u32						m_ef_weapon_type;
 	BOOL					m_b_always_fastmode;
+
 public:
 	virtual u32				ef_anomaly_type				() const;
 	virtual u32				ef_weapon_type				() const;
-	virtual	bool			register_schedule			() const {return true;}
+	virtual bool			register_schedule			() const {return true;}
 
 	// optimization FAST/SLOW mode
 public:						

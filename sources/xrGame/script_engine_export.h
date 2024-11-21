@@ -86,7 +86,7 @@
 #	include "holder_custom.h"
 #	include "GameTask.h"
 #	include "ClientSpawnManager.h"
-#	include "script_zone.h"
+#	include "ScriptZone.h"
 #	include "ef_storage.h"
 #	include "ai/stalker/ai_stalker.h"
 #	include "ai/monsters/bloodsucker/bloodsucker.h"
@@ -152,6 +152,6 @@
 #	include "mosquitobald.h"
 #	include "HairsZone.h"
 #	include "ai/trader/ai_trader.h"
-#	include "space_restrictor.h"
+#	include "SpaceRestrictor.h"
 #	include "physicobject.h"
 #endif

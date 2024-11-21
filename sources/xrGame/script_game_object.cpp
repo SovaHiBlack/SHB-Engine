@@ -29,7 +29,7 @@
 #include "ai_object_location.h"
 #include "custommonster.h"
 #include "entitycondition.h"
-#include "space_restrictor.h"
+#include "SpaceRestrictor.h"
 #include "detail_path_manager.h"
 #include "level_graph.h"
 #include "actor.h"
