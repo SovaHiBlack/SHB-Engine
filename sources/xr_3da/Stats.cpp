@@ -404,7 +404,7 @@ void CStats::OnDeviceCreate( )
 {
 	g_bDisableRedText = strstr(Core.Params, "-xclsx") ? true : false;
 
-	pFont = xr_new<CGameFont>("stat_font", CGameFont::fsDeviceIndependent);
+	pFont = xr_new<CGameFont>("hud_font_small", CGameFont::fsDeviceIndependent);
 
 	if (!pSettings->section_exist("evaluation")
 		|| !pSettings->line_exist("evaluation", "line1")

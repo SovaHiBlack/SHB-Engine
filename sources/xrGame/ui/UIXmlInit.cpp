@@ -32,21 +32,22 @@
 
 extern int keyname_to_dik(pcstr);
 
-#define ARIAL14_FONT_NAME		"arial_14"
-
-#define MEDIUM_FONT_NAME		"medium"
 #define SMALL_FONT_NAME			"small"
+#define MEDIUM_FONT_NAME		"medium"
+#define DI_FONT_NAME			"di"
+
+#define ARIAL14_FONT_NAME		"arial14"
+#define ARIAL21_FONT_NAME		"arial21"
 
 #define GRAFFITI19_FONT_NAME	"graffiti19"
 #define GRAFFITI22_FONT_NAME	"graffiti22"
 #define GRAFFITI32_FONT_NAME	"graffiti32"
+#define GRAFFITI40_FONT_NAME	"graffiti40"
 #define GRAFFITI50_FONT_NAME	"graffiti50"
-
 #define LETTERICA16_FONT_NAME	"letterica16"
 #define LETTERICA18_FONT_NAME	"letterica18"
 #define LETTERICA25_FONT_NAME	"letterica25"
 
-#define DI_FONT_NAME			"di"
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -240,7 +241,7 @@ bool CUIXmlInit::InitSpin(CUIXml& xml_doc, pcstr path, s32 index, CUICustomSpin*
 
 bool CUIXmlInit::InitText(CUIXml& xml_doc, pcstr path, s32 index, CUIStatic* pWnd)
 {
-	InitText(xml_doc, path, index, (IUITextControl*)pWnd);
+	InitText(xml_doc, path, index, (IUITextControl*) pWnd);
 	shared_str al = xml_doc.ReadAttrib(path, index, "vert_align", "");
 	if (0 == xr_strcmp(al, "c"))
 	{
@@ -657,7 +658,27 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, pcstr path, s32 index, u32& color, CG
 
 	if (*font_name)
 	{
-		if (!xr_strcmp(*font_name, GRAFFITI19_FONT_NAME))
+		if (!xr_strcmp(*font_name, SMALL_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontSmall;
+		}
+		else if (!xr_strcmp(*font_name, MEDIUM_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontMedium;
+		}
+		else if (!xr_strcmp(*font_name, DI_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontDI;
+		}
+		else if (!xr_strcmp(*font_name, ARIAL14_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontArial14;
+		}
+		else if (!xr_strcmp(*font_name, ARIAL21_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontArial21;
+		}
+		else if (!xr_strcmp(*font_name, GRAFFITI19_FONT_NAME))
 		{
 			pFnt = UI( )->Font( )->pFontGraffiti19Russian;
 		}
@@ -669,21 +690,13 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, pcstr path, s32 index, u32& color, CG
 		{
 			pFnt = UI( )->Font( )->pFontGraffiti32Russian;
 		}
+		else if (!xr_strcmp(*font_name, GRAFFITI40_FONT_NAME))
+		{
+			pFnt = UI( )->Font( )->pFontGraffiti40Russian;
+		}
 		else if (!xr_strcmp(*font_name, GRAFFITI50_FONT_NAME))
 		{
 			pFnt = UI( )->Font( )->pFontGraffiti50Russian;
-		}
-		else if (!xr_strcmp(*font_name, "ARIAL14_FONT_NAME"))
-		{
-			pFnt = UI( )->Font( )->pFontArial14;
-		}
-		else if (!xr_strcmp(*font_name, MEDIUM_FONT_NAME))
-		{
-			pFnt = UI( )->Font( )->pFontMedium;
-		}
-		else if (!xr_strcmp(*font_name, SMALL_FONT_NAME))
-		{
-			pFnt = UI( )->Font( )->pFontStat;
 		}
 		else if (!xr_strcmp(*font_name, LETTERICA16_FONT_NAME))
 		{
@@ -696,10 +709,6 @@ bool CUIXmlInit::InitFont(CUIXml& xml_doc, pcstr path, s32 index, u32& color, CG
 		else if (!xr_strcmp(*font_name, LETTERICA25_FONT_NAME))
 		{
 			pFnt = UI( )->Font( )->pFontLetterica25Russian;
-		}
-		else if (!xr_strcmp(*font_name, DI_FONT_NAME))
-		{
-			pFnt = UI( )->Font( )->pFontDI;
 		}
 		else
 		{
@@ -781,7 +790,7 @@ bool CUIXmlInit::InitLabel(CUIXml& xml_doc, pcstr path, s32 index, CUILabel* pWn
 
 	string256 buf;
 	strconcat(sizeof(buf), buf, path, ":text");
-	InitText(xml_doc, buf, index, (IUITextControl*)pWnd);
+	InitText(xml_doc, buf, index, (IUITextControl*) pWnd);
 
 	f32 text_x = xml_doc.ReadAttribFlt(buf, index, "x", 0);
 	f32 text_y = xml_doc.ReadAttribFlt(buf, index, "y", 0);
@@ -805,7 +814,7 @@ bool CUIXmlInit::InitCustomEdit(CUIXml& xml_doc, pcstr path, s32 index, CUICusto
 
 	string256 foo;
 	u32 color;
-	InitText(xml_doc, strconcat(sizeof(foo), foo, path, ":text"), index, (IUITextControl*)pWnd);
+	InitText(xml_doc, strconcat(sizeof(foo), foo, path, ":text"), index, (IUITextControl*) pWnd);
 
 	strconcat(sizeof(foo), foo, path, ":text_color:e");
 	if (xml_doc.NavigateToNode(foo, index))
@@ -1020,7 +1029,7 @@ bool CUIXmlInit::InitTexture(CUIXml& xml_doc, pcstr path, s32 index, IUIMultiTex
 bool CUIXmlInit::InitTexture(CUIXml& xml_doc, pcstr path, s32 index, IUISingleTextureOwner* pWnd)
 {
 	string256 buf;
-	InitTexture(xml_doc, path, index, (IUIMultiTextureOwner*)pWnd);
+	InitTexture(xml_doc, path, index, (IUIMultiTextureOwner*) pWnd);
 	strconcat(sizeof(buf), buf, path, ":texture");
 
 	fRect rect;

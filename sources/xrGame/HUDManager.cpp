@@ -13,17 +13,20 @@ CFontManager::CFontManager( )
 {
 	Device.seqDeviceReset.Add(this, REG_PRIORITY_HIGH);
 
+	m_all_fonts.push_back(&pFontSmall);
 	m_all_fonts.push_back(&pFontMedium);// used cpp
 	m_all_fonts.push_back(&pFontDI);// used cpp
 	m_all_fonts.push_back(&pFontArial14);// used xml
+	m_all_fonts.push_back(&pFontArial21);
 	m_all_fonts.push_back(&pFontGraffiti19Russian);
 	m_all_fonts.push_back(&pFontGraffiti22Russian);
+	m_all_fonts.push_back(&pFontGraffiti32Russian);
+	m_all_fonts.push_back(&pFontGraffiti40Russian);
+	m_all_fonts.push_back(&pFontGraffiti50Russian);
 	m_all_fonts.push_back(&pFontLetterica16Russian);
 	m_all_fonts.push_back(&pFontLetterica18Russian);
-	m_all_fonts.push_back(&pFontGraffiti32Russian);
-	m_all_fonts.push_back(&pFontGraffiti50Russian);
+
 	m_all_fonts.push_back(&pFontLetterica25Russian);
-	m_all_fonts.push_back(&pFontStat);
 
 	FONTS_VEC_IT it = m_all_fonts.begin( );
 	FONTS_VEC_IT it_e = m_all_fonts.end( );
@@ -37,22 +40,24 @@ CFontManager::CFontManager( )
 
 void CFontManager::InitializeFonts( )
 {
+	InitializeFont(pFontSmall, "hud_font_small", CGameFont::fsDeviceIndependent);
 	InitializeFont(pFontMedium, "hud_font_medium");
 	InitializeFont(pFontDI, "hud_font_di", CGameFont::fsGradient | CGameFont::fsDeviceIndependent);
 	InitializeFont(pFontArial14, "ui_font_arial_14");
+	InitializeFont(pFontArial21, "ui_font_arial_21");
 	InitializeFont(pFontGraffiti19Russian, "ui_font_graffiti19_russian");
 	InitializeFont(pFontGraffiti22Russian, "ui_font_graffiti22_russian");
 	InitializeFont(pFontGraffiti32Russian, "ui_font_graffiti32_russian");
+	InitializeFont(pFontGraffiti40Russian, "ui_font_graffiti40_russian");
 	InitializeFont(pFontGraffiti50Russian, "ui_font_graffiti50_russian");
 	InitializeFont(pFontLetterica16Russian, "ui_font_letterica16_russian");
 	InitializeFont(pFontLetterica18Russian, "ui_font_letterica18_russian");
 	InitializeFont(pFontLetterica25Russian, "ui_font_letterica25_russian");
-	InitializeFont(pFontStat, "stat_font", CGameFont::fsDeviceIndependent);
 }
 
 pcstr CFontManager::GetFontTexName(pcstr section)
 {
-	static pstr tex_names[ ] = { "texture800","texture","texture1600" };
+	static pstr tex_names[ ] = { "texture800", "texture", "texture1600" };
 	s32 def_idx = 1;//default 1024x768
 	s32 idx = def_idx;
 

@@ -22,7 +22,7 @@ CUICustomSpin::CUICustomSpin()
 	m_pBtnDown					= xr_new<CUI3tButton>();
 	m_pLines					= xr_new<CUILines>();
 
-    m_pFrameLine->SetAutoDelete	(true);
+	m_pFrameLine->SetAutoDelete	(true);
 	m_pBtnUp->SetAutoDelete		(true);
 	m_pBtnDown->SetAutoDelete	(true);
 
@@ -111,7 +111,7 @@ void CUICustomSpin::Update()
 		m_pBtnUp->SetButtonMode(CUIButton::BUTTON_NORMAL);
 	if(!m_pBtnDown->CursorOverWindow())
 		m_pBtnDown->SetButtonMode(CUIButton::BUTTON_NORMAL);
-    
+	
 	if (CUIButton::BUTTON_PUSHED == m_pBtnUp->GetButtonsState() && m_pBtnUp->CursorOverWindow())
 	{		
 		if (m_time_begin < Device.dwTimeContinual - m_p_delay)
@@ -158,7 +158,7 @@ void CUICustomSpin::Update()
 
 	if (IsEnabled())
 	{
-        m_pBtnUp->Enable		(CanPressUp());
+		m_pBtnUp->Enable		(CanPressUp());
 		m_pBtnDown->Enable		(CanPressDown());
 		m_pLines->SetTextColor	(m_textColor[0]);
 	}else

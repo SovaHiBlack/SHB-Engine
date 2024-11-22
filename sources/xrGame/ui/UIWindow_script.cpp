@@ -16,39 +16,31 @@ CFontManager& mngr(){
 }
 
 // hud font
-CGameFont* GetFontSmall()
-{return mngr().pFontStat;}
+s32 GetARGB(u16 a, u16 r, u16 g, u16 b)
+{return color_argb(a, r, g, b);}
 
+CGameFont* GetFontSmall()
+{return mngr().pFontSmall;}
 CGameFont* GetFontMedium()
 {return mngr().pFontMedium;}
 CGameFont* GetFontDI()
 {return mngr().pFontDI;}
-/*
-	//חאדמכמגמקםûי רנטפע
-CGameFont* GetFontHeaderRussian()
-{return mngr().pFontHeaderRussian;}
-
-CGameFont* GetFontHeaderEurope()
-{return mngr().pFontHeaderEurope;}
-*/
-//רנטפעû הכÿ טםעונפויסא
 CGameFont* GetFontGraffiti19Russian()
 {return mngr().pFontGraffiti19Russian;}
 CGameFont* GetFontGraffiti22Russian()
 {return mngr().pFontGraffiti22Russian;}
+CGameFont* GetFontGraffiti32Russian( )
+{return mngr( ).pFontGraffiti32Russian;}
+CGameFont* GetFontGraffiti40Russian( )
+{return mngr( ).pFontGraffiti40Russian;}
+CGameFont* GetFontGraffiti50Russian( )
+{return mngr( ).pFontGraffiti50Russian;}
 CGameFont* GetFontLetterica16Russian()
 {return mngr().pFontLetterica16Russian;}
 CGameFont* GetFontLetterica18Russian()
 {return mngr().pFontLetterica18Russian;}
 CGameFont* GetFontLetterica25Russian( )
 {return mngr( ).pFontLetterica25Russian;}
-CGameFont* GetFontGraffiti32Russian()
-{return mngr().pFontGraffiti32Russian;}
-CGameFont* GetFontGraffiti50Russian()
-{return mngr().pFontGraffiti50Russian;}
-
-int GetARGB(u16 a, u16 r, u16 g, u16 b)
-{return color_argb(a,r,g,b);}
 
 
 fRect	get_texture_rect(pcstr icon_name)
@@ -77,15 +69,15 @@ void CUIWindow::script_register(lua_State *L)
 		def("GetFontSmall",				&GetFontSmall),
 		def("GetFontMedium",			&GetFontMedium),
 		def("GetFontDI",				&GetFontDI),
-//.		def("GetFontHeaderRussian",		&GetFontHeaderRussian),
-//.		def("GetFontHeaderEurope",		&GetFontHeaderEurope),
 		def("GetFontGraffiti19Russian",	&GetFontGraffiti19Russian),
 		def("GetFontGraffiti22Russian",	&GetFontGraffiti22Russian),
+		def("GetFontGraffiti32Russian", &GetFontGraffiti32Russian),
+		def("GetFontGraffiti40Russian", &GetFontGraffiti40Russian),
+		def("GetFontGraffiti50Russian", &GetFontGraffiti50Russian),
 		def("GetFontLetterica16Russian",&GetFontLetterica16Russian),
 		def("GetFontLetterica18Russian",&GetFontLetterica18Russian),
 		def("GetFontLetterica25Russian",&GetFontLetterica25Russian),
-		def("GetFontGraffiti32Russian",	&GetFontGraffiti32Russian),
-		def("GetFontGraffiti50Russian",	&GetFontGraffiti50Russian),
+
 
 		class_<STextureInfo>("STextureInfo")
 		.def("get_file_name",	 			&STextureInfo::get_file_name)

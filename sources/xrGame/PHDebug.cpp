@@ -288,7 +288,7 @@ struct SPHDBGOutText : public SPHDBGDrawAbsract
 	virtual void render( )
 	{
 		//if(rendered) return;
-		HUD( ).Font( ).pFontStat->OutNext(s);
+		HUD( ).Font( ).pFontSmall->OutNext(s);
 		rendered = true;
 	}
 };
@@ -516,7 +516,7 @@ void PH_DBG_Clear( )
 void PH_DBG_Render( )
 {
 	if (ph_dbg_draw_mask.test(phDbgDrawZDisable))CHK_DX(HW.pDevice->SetRenderState(D3DRS_ZENABLE, 0));
-	HUD( ).Font( ).pFontStat->OutSet(550, 250);
+	HUD( ).Font( ).pFontSmall->OutSet(550, 250);
 
 	if (ph_dbg_draw_mask.test(phDbgDrawEnabledAABBS))
 	{
@@ -568,7 +568,7 @@ void PH_DBG_Render( )
 			Level( ).debug_renderer( ).draw_line(Fidentity, c.pos, dir, D3DCOLOR_XRGB(255 * is_cyl, 0, 255 * !is_cyl));
 		}
 	}
-	//	HUD().Font().pFontStat->OutNext("---------------------");
+	//	HUD().Font().pFontSmall->OutNext("---------------------");
 #endif
 
 	if (ph_dbg_draw_mask.test(phDbgDrawZDisable))CHK_DX(HW.pDevice->SetRenderState(D3DRS_ZENABLE, 1));
