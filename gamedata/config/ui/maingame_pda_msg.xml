@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
+<?xml version='1.0' encoding="utf-8"?>
 <!-- CHARACTER INFO IN THE MAINGAME WINDOW CONTACT -->
 <window>
 	<!-- ICON -->
@@ -9,4 +9,3 @@
 		<text x="10" y="0" font="letterica16" r="255" g="255" b="255"/>
 	</text_static>
 </window>
-

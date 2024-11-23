@@ -50,9 +50,10 @@ void CUIFrameWindow::Draw()
 	inherited::Draw();
 }
 
-void CUIFrameWindow::Update(){
-	CUIWindow::Update();
-	m_UIWndFrame.Update();
+void CUIFrameWindow::Update( )
+{
+	CUIWindow::Update( );
+	m_UIWndFrame.Update( );
 }
 
 void CUIFrameWindow::SetWidth(f32 width)

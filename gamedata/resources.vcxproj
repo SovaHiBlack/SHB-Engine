@@ -1805,7 +1805,6 @@
     <Xml Include="config\ui\inventorymp.xml" />
     <Xml Include="config\ui\inventorymp_new.xml" />
     <Xml Include="config\ui\inventorymp_new2.xml" />
-    <Xml Include="config\ui\inventory_character.xml" />
     <Xml Include="config\ui\inventory_item.xml" />
     <Xml Include="config\ui\inventory_item_16.xml" />
     <Xml Include="config\ui\inventory_new.xml" />
@@ -1844,7 +1843,6 @@
     <Xml Include="config\ui\pda_character_new.xml" />
     <Xml Include="config\ui\pda_contacts.xml" />
     <Xml Include="config\ui\pda_contacts_new.xml" />
-    <Xml Include="config\ui\pda_dialog.xml" />
     <Xml Include="config\ui\pda_dialog_character.xml" />
     <Xml Include="config\ui\pda_dialog_character_16.xml" />
     <Xml Include="config\ui\pda_events.xml" />

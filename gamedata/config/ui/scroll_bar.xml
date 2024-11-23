@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding="utf-8"?>
 <scroll_bar>
 	<default height="16">
 		<left_arrow width="16" height="16">
@@ -14,8 +13,7 @@
 		<box>
 			<texture>ui\ui_scb_scroll_box</texture>
 		</box>
-		
-		
+
 		<up_arrow width="16" height="16">
 			<_texture_e>ui\ui_scb_up_arrow</_texture_e>
 			<texture_e>ui_scroll_btn_up</texture_e>
@@ -23,16 +21,16 @@
 		<down_arrow width="16" height="16">
 			<_texture_e>ui\ui_scb_down_arrow</_texture_e>
 			<texture_e>ui_scroll_btn_down</texture_e>
-		</down_arrow>		
+		</down_arrow>
 		<back_v width="16" height="16">
 			<_texture>ui\ui_scb_back_v</_texture>
 			<texture>ui_scroll_back</texture>
-		</back_v>		
+		</back_v>
 		<box_v>
 			<_texture>ui\ui_scb_scroll_box_v</_texture>
 			<texture>ui_scroll_box</texture>
-		</box_v>		
-	</default>	
+		</box_v>
+	</default>
 	<pda height="17">
 		<up_arrow width="17" height="21">
 			<texture_e>ui_scroll_PDA_btn_up_e</texture_e>
@@ -44,7 +42,7 @@
 			<texture_h>ui_scroll_PDA_btn_down_h</texture_h>
 			<texture_t>ui_scroll_PDA_btn_down_t</texture_t>
 		</down_arrow>
-		
+
 		<left_arrow width="21" height="17">
 			<texture_e>ui_scroll_PDA_btn_left_e</texture_e>
 			<texture_h>ui_scroll_PDA_btn_left_h</texture_h>
@@ -55,19 +53,20 @@
 			<texture_h>ui_scroll_PDA_btn_right_h</texture_h>
 			<texture_t>ui_scroll_PDA_btn_right_t</texture_t>
 		</right_arrow>
-		
+
 		<back width="21" height="17">
 			<texture>ui_scroll_PDA_back_hor</texture>
-		</back>		
+		</back>
 		<back_v width="21" height="17">
 			<texture>ui_scroll_PDA_back</texture>
 		</back_v>
-		
+
 		<box>
 			<texture>ui_scroll_PDA_back_hor</texture>
 		</box>
-		<box_v> <!--width="17" height="30"-->
+		<box_v>
+			<!--width="17" height="30"-->
 			<texture>ui_scroll_PDA_box_e</texture>
-		</box_v>	
+		</box_v>
 	</pda>
 </scroll_bar>

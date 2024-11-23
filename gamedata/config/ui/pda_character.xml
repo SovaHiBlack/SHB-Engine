@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="UTF-8"?>
+<?xml version='1.0' encoding="utf-8"?>
 <!-- CHARACTER INFO IN THE PDA CONTACT -->
 <window>
 	<name_static x="0" y="0" width="260" height="18">
@@ -16,7 +16,6 @@
 		<text x="0" y="0" font="letterica16" r="150" g="150" b="180" a="255"/>
 	</community_static>
 
-
 	<!-- REPUTATION -->
 	<reputation_caption x="0" y="34" width="240" height="15">
 		<text x="0" y="0" font="letterica16" r="128" g="128" b="128" a="255">ui_st_reputation</text>
@@ -25,7 +24,6 @@
 		<text x="0" y="0" font="letterica16" r="150" g="150" b="180" a="255"/>
 	</reputation_static>
 
-	
 	<!-- RELATION -->
 	<relation_caption x="0" y="48" width="240" height="15">
 		<text x="0" y="0" font="letterica16" r="128" g="128" b="128" a="255">ui_st_relation</text>
@@ -42,16 +40,13 @@
 		<text x="0" y="0" font="letterica16" r="150" g="150" b="180"/>
 	</rank_static>
 
-
 	<pda_char_auto_statics>
 		<auto_static x="5" y="5" width="10" height="10">
-		<texture>ui\ui_pda_contacts_online</texture>
+			<texture>ui\ui_pda_contacts_online</texture>
 		</auto_static>
 
 		<auto_static x="0" y="85" width="395" height="3" stretch="1">
-		<texture>ui\ui_pda_horizontal_line</texture>
+			<texture>ui\ui_pda_horizontal_line</texture>
 		</auto_static>
-
 	</pda_char_auto_statics>
 </window>
-
