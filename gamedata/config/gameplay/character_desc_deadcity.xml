@@ -1,5 +1,4 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
 	<!-- STALKER -->
 	<!-- DOCTOR -->
@@ -20,14 +19,14 @@
 		<supplies>
 			[spawn] \n
 			cit_doctors_key \n
-#include "gameplay\character_food.xml"
-<!-- #include "gameplay\character_drugs.xml" -->
+			#include "gameplay\character_food.xml"
+			<!-- #include "gameplay\character_drugs.xml" -->
 		</supplies>
 
 		<start_dialog>cit_doctor_hello_dialog</start_dialog>
 		<actor_dialog>cit_doctor_main_dialog</actor_dialog>
 		<actor_dialog>cit_doctor_escape_dialog</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- KILLERS -->
@@ -53,9 +52,9 @@
 			ammo_9x19_fmj = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -82,9 +81,9 @@
 			ammo_9x19_fmj = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -112,8 +111,8 @@
 			ammo_9x19_fmj = 1 \n
 			wpn_sig550 \n
 			ammo_5.56x45_ss190 = 1 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -141,8 +140,8 @@
 			wpn_sig550 \n
 			ammo_5.56x45_ss190 = 1 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -171,8 +170,8 @@
 			wpn_sig550 \n
 			ammo_5.56x45_ss190 = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -202,8 +201,8 @@
 			ammo_5.56x45_ss190 = 2 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -232,8 +231,8 @@
 			ammo_5.56x45_ss190 = 2 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -266,8 +265,8 @@
 			device_torch \n
 			cit_leader_killer_pda \n
 			cit_killers_documents \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -294,8 +293,8 @@
 			vodka = 3 \n
 			wpn_hpsa \n
 			ammo_9x19_pbp = 1 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -323,9 +322,9 @@
 			wpn_l85 \n
 			ammo_5.56x45_ss190 = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -352,8 +351,8 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -380,8 +379,8 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -408,8 +407,8 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -437,9 +436,9 @@
 			wpn_l85 \n
 			ammo_5.56x45_ss190 = 2 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -466,8 +465,8 @@
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -494,8 +493,8 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -524,8 +523,8 @@
 			ammo_5.56x45_ss190 = 3 \n
 			ammo_5.56x45_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -554,8 +553,8 @@
 			ammo_5.56x45_ss190 = 3 \n
 			ammo_5.56x45_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
 		<start_dialog>hello_dialog</start_dialog>
@@ -586,7 +585,6 @@
 			cit_vp_pda \n
 		</supplies>
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
 </xml>

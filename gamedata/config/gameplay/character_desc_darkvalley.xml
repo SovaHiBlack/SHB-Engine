@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="windows-1251"?>
-
+<?xml version='1.0' encoding="windows-1251"?>
 <xml>
-
 	<!-- BANDITS -->
 	<!-- BOROV -->
 	<specific_character id="val_bandit_borov" team_default="1">
@@ -31,7 +29,7 @@
 			;val_key_to_underground \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -59,7 +57,7 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -87,11 +85,11 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -118,12 +116,12 @@
 			device_torch \n
 			wpn_mp5 \n
 			ammo_9x19_fmj \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -150,11 +148,11 @@
 			device_torch \n
 			wpn_bm16 \n
 			ammo_12x70_buck = 1 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -179,11 +177,11 @@
 			wpn_pb \n
 			ammo_9x18_pmm = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -206,7 +204,7 @@
 		<crouch_type>1</crouch_type>
 		<supplies></supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -234,12 +232,12 @@
 			wpn_bm16 \n
 			ammo_12x76_dart = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -266,11 +264,11 @@
 			wpn_ak74 = 1, 0, 1, 0 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -297,11 +295,11 @@
 			wpn_ak74 = 1, 0, 1, 0 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -328,11 +326,11 @@
 			wpn_mp5 \n
 			ammo_9x19_pbp = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -360,12 +358,12 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -392,11 +390,11 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -423,11 +421,11 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -455,11 +453,11 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -486,11 +484,11 @@
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -521,18 +519,18 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_dolg_regular_default2" team_default="1">
@@ -559,17 +557,17 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_dolg_regular_default3" team_default="1">
@@ -596,17 +594,17 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- PRISONER -->
@@ -629,16 +627,16 @@
 		<crouch_type>0</crouch_type>
 		<supplies>
 			[spawn] \n
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- NAP1 -->
@@ -668,13 +666,13 @@
 			wpn_addon_scope \n
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- CAPTIVE -->
@@ -697,16 +695,16 @@
 		<crouch_type>0</crouch_type>
 		<supplies>
 			[spawn] \n
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 
 		<actor_dialog>esc_stalker_talk_level</actor_dialog>
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- MONOLITH -->
@@ -731,10 +729,10 @@
 			ammo_9x19_fmj \n
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_criticals_1.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -759,10 +757,10 @@
 			ammo_9x19_pbp = 1 \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_criticals_1.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -791,11 +789,11 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_criticals_5.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -822,11 +820,11 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_criticals_5.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -853,11 +851,11 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_criticals_5.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -884,11 +882,11 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_5.xml"
+		#include "gameplay\character_criticals_5.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -917,11 +915,11 @@
 			ammo_5.45x39_ap = 1 \n
 			ammo_5.45x39_fmj = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -948,11 +946,11 @@
 			wpn_abakan \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -979,11 +977,11 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1010,11 +1008,11 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1043,12 +1041,12 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
@@ -1077,14 +1075,14 @@
 			device_torch \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_novice_default4" team_default="1">
@@ -1109,13 +1107,13 @@
 			wpn_walther \n
 			ammo_9x19_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_novice_default5" team_default="1">
@@ -1140,13 +1138,13 @@
 			wpn_pm \n
 			ammo_9x18_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_novice_default6" team_default="1">
@@ -1173,13 +1171,13 @@
 			device_torch \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_novice_default10" team_default="1">
@@ -1204,13 +1202,13 @@
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- GENERAL -->
@@ -1238,14 +1236,14 @@
 			wpn_bm16 \n
 			ammo_12x76_zhekan = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_general_default2" team_default="1">
@@ -1272,14 +1270,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_general_default3" team_default="1">
@@ -1306,13 +1304,13 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_general_default4" team_default="1">
@@ -1339,13 +1337,13 @@
 			wpn_ak74u \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="val_stalker_general_default5" team_default="1">
@@ -1372,13 +1370,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- X18 -->
@@ -1405,7 +1403,7 @@
 			device_torch \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>dar_explorer_dialog</start_dialog>
 	</specific_character>
@@ -1424,10 +1422,9 @@
 
 		<visual>actors\neytral\stalker_neytral_hood_8</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1446,10 +1443,9 @@
 
 		<visual>actors\novice\green_stalker_2</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1468,10 +1464,9 @@
 
 		<visual>actors\stalker_zombi\stalker_zombie5</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_criticals_1.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1490,10 +1485,9 @@
 
 		<visual>actors\ecolog\stalker_ecolog</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
@@ -1519,13 +1513,12 @@
 			wpn_abakan \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
-
 </xml>

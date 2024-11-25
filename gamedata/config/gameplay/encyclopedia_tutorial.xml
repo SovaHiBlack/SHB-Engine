@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding="utf-8"?>
 <encyclopedia>
 
 	<article id="tutorial_binocular" name="binocular" group="tutorial">
@@ -45,5 +44,4 @@
 	<article id="tutorial_wound" name="wound" group="tutorial">
 		<text>wound_tutorial</text>
 	</article>
-
 </encyclopedia>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version='1.0' encoding="windows-1251"?>
 
 <game_tasks_data>
 
@@ -125,5 +125,4 @@
 			<object_story_id>Escape_dinamite</object_story_id>
 		</objective>
 	</game_task>
-
 </game_tasks_data>

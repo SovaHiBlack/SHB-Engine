@@ -1,4 +1,4 @@
-<game_task id="yan_kill_brain_task" prio="335">
+	<game_task id="yan_kill_brain_task" prio="335">
 		<title>yan_kill_brain</title>
 		<objective>
 			<text>yan_kill_brain</text>
@@ -28,17 +28,18 @@
 			<text>yan_kill_brain_task</text>
 			<map_location_type>green_location</map_location_type>
 			<object_story_id>yan_labx16switcher_primary_1_green</object_story_id>
-			<infoportion_complete>yan_labx16_switcher_primary_off</infoportion_complete>			
+			<infoportion_complete>yan_labx16_switcher_primary_off</infoportion_complete>
 		</objective>
-</game_task>
-<game_task id="yan_kill_brain_task_2" prio="330">
-		<title>yan_kill_brain_task_2</title>		
+	</game_task>
+
+	<game_task id="yan_kill_brain_task_2" prio="330">
+		<title>yan_kill_brain_task_2</title>
 		<objective>
 			<text>yan_kill_brain_task_2</text>
 			<icon>ui_iconsTotal_yan_kill_brain_task_2</icon>
 			<infoportion_complete>yan_kill_brain_done</infoportion_complete>
 			<article>descr_yan_kill_brain_2</article>
-		</objective>	
+		</objective>
 		<objective>
 			<text>yan_secret_tonnel</text>
 			<map_location_type>green_location</map_location_type>
@@ -50,10 +51,10 @@
 			<map_location_type hint="yan_scientist_return">green_location</map_location_type>
 			<object_story_id>yan_general_ecolog</object_story_id>
 			<infoportion_complete>yan_kill_brain_done</infoportion_complete>
-		</objective>		
-</game_task>
+		</objective>
+	</game_task>
 
-<game_task id="yan_find_scientist" prio="355">
+	<game_task id="yan_find_scientist" prio="355">
 		<title>yan_find_scientist</title>
 		<objective>
 			<text>yan_find_scientist</text>
@@ -82,9 +83,9 @@
 			<object_story_id>yan_general_ecolog</object_story_id>
 			<infoportion_complete>yan_find_scientist_done</infoportion_complete>
 		</objective>
-</game_task>
+	</game_task>
 
-<game_task id="yan_find_scientist_semenov" prio="355">
+	<game_task id="yan_find_scientist_semenov" prio="355">
 		<title>yan_find_scientist</title>
 		<objective>
 			<text>yan_find_scientist</text>
@@ -113,9 +114,9 @@
 			<object_story_id>yan_general_ecolog</object_story_id>
 			<infoportion_complete>yan_find_scientist_done</infoportion_complete>
 		</objective>
-</game_task>
+	</game_task>
 
-<game_task id="yan_scientist_return_task" prio="345">
+	<game_task id="yan_scientist_return_task" prio="345">
 		<title>yan_scientist_return_task</title>
 		<objective>
 			<text>yan_scientist_return_task</text>
@@ -129,9 +130,9 @@
 			<object_story_id>yan_general_ecolog</object_story_id>
 			<infoportion_complete>yan_find_vasilyev_start</infoportion_complete>
 		</objective>
-</game_task>
+	</game_task>
 
-<game_task id="yan_find_vasilyev_task" prio="340">
+	<game_task id="yan_find_vasilyev_task" prio="340">
 		<title>yan_find_vasilyev_task</title>
 		<objective>
 			<text>yan_find_vasilyev_task</text>
@@ -153,9 +154,9 @@
 			<map_location_hidden>1</map_location_hidden>
 			<infoportion_complete>yan_find_laboratory_end</infoportion_complete>
 		</objective>
-</game_task>
+	</game_task>
 
-<game_task id="yan_find_ghost_task" prio="325">
+	<game_task id="yan_find_ghost_task" prio="325">
 		<title>yan_find_ghost_task</title>
 		<objective>
 			<text>yan_find_ghost_task</text>
@@ -175,8 +176,9 @@
 			<object_story_id>yan_ghost</object_story_id>
 			<function_complete>yantar_tasks.has_labx16_documents</function_complete>
 		</objective>
-</game_task>
-<game_task id="yan_provodnik_task">
+	</game_task>
+
+	<game_task id="yan_provodnik_task">
 		<title>yan_provodnik_task</title>
 		<objective>
 			<text>yan_provodnik_task</text>
@@ -190,8 +192,7 @@
 			<object_story_id>escape_provodnik</object_story_id>
 			<infoportion_complete>esc_find_doctor_start</infoportion_complete>
 		</objective>
-</game_task>
-
+	</game_task>
 
 	<game_task id="yan_scientist_job" prio="0">
 		<title>yan_scientist_job</title>

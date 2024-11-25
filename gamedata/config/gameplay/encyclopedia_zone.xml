@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding="utf-8"?>
 <encyclopedia>
 
 	<!-- ARTIFACTS -->
@@ -327,5 +326,4 @@
 		<texture x="500" y="150" width="100" height="100">ui\ui_icon_photo</texture>
 		<text>enc_zone_zone-story_story-raid</text>
 	</article>
-
 </encyclopedia>

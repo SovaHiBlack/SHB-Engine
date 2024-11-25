@@ -40,7 +40,6 @@
 			<map_location_type hint="gar_kill_boars_2">green_location</map_location_type>
 			<object_story_id>gar_dolg_blockpost</object_story_id>
 			<infoportion_complete>gar_kill_boars_request</infoportion_complete>
-
 		</objective>
 	</game_task>
 

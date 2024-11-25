@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
-<!-- MONOLITH -->
-<!-- AMBUSH -->
+	<!-- MONOLITH -->
+	<!-- AMBUSH -->
 	<specific_character id="pri_monolith_ambush_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
@@ -25,11 +24,11 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -55,15 +54,15 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- AMBUSH SPECNAZ -->
+	<!-- AMBUSH SPECNAZ -->
 	<specific_character id="pri_monolith_ambush_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
@@ -85,11 +84,11 @@
 			wpn_groza \n
 			ammo_9x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -115,15 +114,15 @@
 			ammo_9x39_sp5 = 1 \n
 			grenade_f1 = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- AMBUSH EXO -->
+	<!-- AMBUSH EXO -->
 	<specific_character id="pri_monolith_ambush_exo_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
@@ -146,11 +145,11 @@
 			ammo_9x39_ap = 1 \n
 			grenade_f1 = 2 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -175,15 +174,15 @@
 			wpn_groza \n
 			ammo_9x39_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-					
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- REGULAR -->
+	<!-- REGULAR -->
 	<specific_character id="pri_monolith_regular_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_head_1</icon>
@@ -204,11 +203,11 @@
 			ammo_9x18_fmj = 1 \n
 			wpn_wincheaster1300 \n
 			ammo_12x76_zhekan = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -232,11 +231,11 @@
 			ammo_11.43x23_hydro \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -260,11 +259,11 @@
 			ammo_9x18_fmj = 1 \n
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -288,15 +287,15 @@
 			ammo_11.43x23_hydro \n
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- SPECNAZ -->
+	<!-- SPECNAZ -->
 	<specific_character id="pri_monolith_specnaz_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_hood_9</icon>
@@ -317,12 +316,12 @@
 			ammo_11.43x23_fmj = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 2 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -346,16 +345,16 @@
 			ammo_9x19_fmj  = 1 \n
 			wpn_abakan \n
 			ammo_5.45x39_ap = 2 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- EXO -->
+	<!-- EXO -->
 	<specific_character id="pri_monolith_exo_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
@@ -376,12 +375,12 @@
 			ammo_11.43x23_fmj = 1 \n
 			wpn_g36 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -405,16 +404,16 @@
 			ammo_9x19_fmj  = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 2 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- LEADER -->
+	<!-- LEADER -->
 	<specific_character id="pri_monolith_leader" team_default = "1">
 		<name>pri_monolith_leader_name</name>
 		<icon>ui_npc_u_stalker_mo_exo</icon>
@@ -435,17 +434,17 @@
 			ammo_11.43x23_hydro = 1 \n
 			wpn_vintorez \n
 			ammo_9x39_ap = 3 \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-					
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- STALKER -->
-<!-- FOLLOWERS -->
+	<!-- STALKER -->
+	<!-- FOLLOWERS -->
 	<specific_character id="pri_followers_bomber" team_default = "1">
 		<name>pri_followers_bomber_name</name>
 		<icon>ui_npc_u_stalker_neytral_exoskeleton</icon>
@@ -454,7 +453,7 @@
 		<class>pri_followers_bomber</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>941</rank>
 		<reputation>18</reputation>
 
@@ -468,16 +467,16 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="pri_followers_leader" team_default = "1">
@@ -488,7 +487,7 @@
 		<class>pri_followers_leader</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>960</rank>
 		<reputation>18</reputation>
 
@@ -502,16 +501,16 @@
 			wpn_val \n
 			ammo_9x39_ap = 3 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"		
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="pri_followers_stalker1" team_default = "1">
@@ -522,7 +521,7 @@
 		<class>pri_followers</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>937</rank>
 		<reputation>18</reputation>
 
@@ -536,16 +535,16 @@
 			wpn_sig550 \n
 			ammo_5.56x45_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"		
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="pri_followers_stalker2" team_default = "1">
@@ -556,7 +555,7 @@
 		<class>pri_followers</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>911</rank>
 		<reputation>19</reputation>
 
@@ -570,15 +569,15 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 3 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"		
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="pri_followers_stalker3" team_default = "1">
@@ -589,7 +588,7 @@
 		<class>pri_followers</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>940</rank>
 		<reputation>12</reputation>
 
@@ -603,15 +602,15 @@
 			wpn_val \n
 			ammo_9x39_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"		
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="pri_followers_stalker4" team_default = "1">
@@ -622,7 +621,7 @@
 		<class>pri_followers</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>905</rank>
 		<reputation>15</reputation>
 
@@ -636,15 +635,15 @@
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"		
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="pri_followers_stalker5" team_default = "1">
@@ -655,7 +654,7 @@
 		<class>pri_followers</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-			
+
 		<rank>957</rank>
 		<reputation>13</reputation>
 
@@ -669,19 +668,19 @@
 			wpn_groza \n
 			ammo_9x39_ap = 2 \n
 			device_torch \n
-#include "gameplay\character_food.xml"
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_2.xml"
-		
+
+		#include "gameplay\character_criticals_2.xml"
+
 		<money min="5000" max="10000" infinitive="0"/>
-			
-#include "gameplay\character_dialogs.xml"		
+
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-<!-- SOLDIER -->
-<!-- SUICIDE -->
+	<!-- SOLDIER -->
+	<!-- SUICIDE -->
 	<specific_character id="pri_soldier_suicide_default1" team_default = "1">
 		<name>pri_zombied_soldier_name</name>
 		<icon>ui_npc_u_soldier_spetsnaz</icon>
@@ -690,7 +689,7 @@
 		<class>pri_soldier_suicide</class>
 		<community>zombied</community>
 		<terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>344</rank>
 		<reputation>-242</reputation>
 
@@ -701,10 +700,10 @@
 			[spawn] \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro \n
-		</supplies>	
-		
-#include "gameplay\character_criticals_6.xml"
-					
+		</supplies>
+
+		#include "gameplay\character_criticals_6.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -716,7 +715,7 @@
 		<class>pri_soldier_suicide</class>
 		<community>zombied</community>
 		<terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>376</rank>
 		<reputation>-286</reputation>
 
@@ -727,14 +726,14 @@
 			[spawn] \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro \n
-		</supplies>	
-		
-#include "gameplay\character_criticals_5.xml"
-					
+		</supplies>
+
+		#include "gameplay\character_criticals_5.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- ZOMBIED -->
+	<!-- ZOMBIED -->
 	<specific_character id="pri_zombied_suicide_default1" team_default = "1">
 		<name>pri_zombied_stalker_name</name>
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
@@ -743,7 +742,7 @@
 		<class>pri_zombied_suicide</class>
 		<community>zombied</community>
 		<terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>538</rank>
 		<reputation>-303</reputation>
 
@@ -754,11 +753,11 @@
 			[spawn] \n
 			wpn_sig220 \n
 			ammo_11.43x23_hydro \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-			
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -770,7 +769,7 @@
 		<class>pri_zombied</class>
 		<community>zombied</community>
 		<terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>512</rank>
 		<reputation>-338</reputation>
 
@@ -783,15 +782,15 @@
 			ammo_11.43x23_hydro \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-			
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-<!-- VETERANS-->
+	<!-- VETERANS-->
 	<specific_character id="pri_zombied_veteran_default1" team_default = "1">
 		<name>pri_zombied_stalker_name</name>
 		<icon>ui_npc_u_stalker_zombie_specnaz</icon>
@@ -800,7 +799,7 @@
 		<class>pri_zombied_veteran</class>
 		<community>zombied</community>
 		<terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>737</rank>
 		<reputation>-487</reputation>
 
@@ -813,11 +812,11 @@
 			ammo_11.43x23_fmj = 1 \n
 			wpn_abakan \n
 			ammo_5.45x39_ap = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-			
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
@@ -829,7 +828,7 @@
 		<class>pri_zombied_veteran</class>
 		<community>zombied</community>
 		<terrain_sect>stalker_zombied_terrain</terrain_sect>
-		
+
 		<rank>816</rank>
 		<reputation>-576</reputation>
 
@@ -840,11 +839,11 @@
 			[spawn] \n
 			wpn_spas12 \n
 			ammo_12x76_dart = 1 \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_drugs.xml"
 		</supplies>
-		
-#include "gameplay\character_criticals_1.xml"
-			
+
+		#include "gameplay\character_criticals_1.xml"
+
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 </xml>

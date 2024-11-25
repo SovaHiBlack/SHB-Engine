@@ -1,8 +1,5 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
-	
-
 	<specific_character id="actor" no_random = "1">
 		<name>actor_name</name>
 		<icon>ui_npc_u_actor</icon>
@@ -12,10 +9,10 @@
 			[spawn] \n
 			device_torch \n
 		</supplies>
-		
+
 		<class>actor</class>
 		<community>actor</community>
-	
+
 		<rank>00</rank>
 		<reputation>0</reputation>
 		<visual>actors\hero\stalker_novice</visual>
@@ -27,15 +24,15 @@
 
 		<team>mp_actor</team>
 		<supplies/>
-		
+
 		<class>mp_actor</class>
 		<community>actor</community>
-	
+
 		<rank>00</rank>
 		<reputation>0</reputation>
 		<visual>actors\hero\stalker_novice</visual>
 	</specific_character>
-	
+
 	<specific_character id="stalker_general_default" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
@@ -44,7 +41,7 @@
 		<class>Stalker_general</class>
 		<community>stalker</community>
 		<terrain_sect>stalker_terrain</terrain_sect>
-		
+
 		<rank>400</rank>
 		<reputation>0</reputation>
 
@@ -56,30 +53,28 @@
 			wpn_bm16 \n
 			ammo_12x76_zhekan = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 		<start_dialog>hello_dialog</start_dialog>
 	</specific_character>
 
-
-<specific_character id="stalker_osoznanie" team_default = "1">
+	<specific_character id="stalker_osoznanie" team_default = "1">
 		<name>Osoznanie</name>
 		<icon>ui_npc_u_ucheniy_1_strong</icon>
 		<bio>Представитель проекта "Осознание".</bio>
 
 		<class>osoznanie</class>
 		<community>stalker</community>
-	<terrain_sect>stalker_terrain</terrain_sect>
-		
+		<terrain_sect>stalker_terrain</terrain_sect>
+
 		<rank>900</rank>
 		<reputation>0</reputation>
 
 		<visual>actors\ucheniy\ucheniy_1_strong</visual>
 		<snd_config>characters_voice\human_01\</snd_config>
-		
+
 		<supplies>
 		</supplies>
-		
 
 		<start_dialog>oso_osoznanie_start</start_dialog>
 		<actor_dialog>oso_who_are_you</actor_dialog>
@@ -92,5 +87,5 @@
 		<actor_dialog>oso_what_next</actor_dialog>
 		<actor_dialog>oso_yes</actor_dialog>
 		<actor_dialog>oso_no</actor_dialog>
-	</specific_character>	
+	</specific_character>
 </xml>

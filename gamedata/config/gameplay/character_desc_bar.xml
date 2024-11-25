@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
-
 	<specific_character id="bar_barman" no_random = "1">
 		<name>bar_barmen_name</name>
 		<icon>ui_npc_u_barman</icon>
@@ -58,7 +56,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_3_start</start_dialog>
 	</specific_character>
@@ -86,7 +84,7 @@
 			ammo_9x19_pbp \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_4_start</start_dialog>
 	</specific_character>
@@ -114,7 +112,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_5_start</start_dialog>
 	</specific_character>
@@ -142,7 +140,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_visitors_6_start</start_dialog>
 	</specific_character>
@@ -170,7 +168,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_7_start</start_dialog>
 	</specific_character>
@@ -198,7 +196,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_8_start</start_dialog>
 	</specific_character>
@@ -228,7 +226,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_bar_visitors_9_start</start_dialog>
 	</specific_character>
@@ -256,7 +254,7 @@
 			ammo_9x39_pab9 \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_10_start</start_dialog>
 	</specific_character>
@@ -284,7 +282,7 @@
 			ammo_5.56x45_ss190 \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_13_start</start_dialog>
 	</specific_character>
@@ -312,9 +310,9 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_guard2" team_default = "1">
@@ -340,9 +338,9 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- BAR OSVEDOMITEL -->
@@ -369,7 +367,7 @@
 			wpn_addon_grenade_launcher \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_osvedomitel_start</start_dialog>
 		<actor_dialog>bar_bar_osvedomitel_trade_info</actor_dialog>
@@ -400,7 +398,7 @@
 			ammo_5.56x45_ss190 \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_bar_hunter_start</start_dialog>
 		<actor_dialog>bar_bar_hunter_quest_start</actor_dialog>
@@ -432,7 +430,7 @@
 			detector_advances \n
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_bar_drunk_dolg_start</start_dialog>
 		<actor_dialog>tm_drunk_dolg_dialog</actor_dialog>
@@ -462,7 +460,7 @@
 			ammo_5.45x39_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_bar_visitors_14_start</start_dialog>
 		<actor_dialog>tm_lisiy_dialog</actor_dialog>
@@ -491,7 +489,7 @@
 			ammo_9x19_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_criticals_1.xml"
 
 		<start_dialog>bar_bar_psih_start_pain</start_dialog>
 		<actor_dialog>bar_bar_psih_talk_pain</actor_dialog>
@@ -522,11 +520,11 @@
 			[spawn] \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_arena_man_start</start_dialog>
 		<actor_dialog>bar_arena_man_job</actor_dialog>
@@ -553,13 +551,13 @@
 			[spawn] \n
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_savage" team_default = "1">
@@ -584,9 +582,9 @@
 			ammo_12x70_buck \n
 		</supplies>
 
-#include "gameplay\character_criticals_1.xml"
+		#include "gameplay\character_criticals_1.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--DOLG LEADER-->
@@ -613,11 +611,11 @@
 			ammo_11.43x23_hydro \n
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_dolg_leader_start</start_dialog>
 		<actor_dialog>bar_dolg_leader_join</actor_dialog>
@@ -650,11 +648,11 @@
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_dolg_petrenko_start</start_dialog>
 		<actor_dialog>tm_petrenko_dialog</actor_dialog>
@@ -685,14 +683,14 @@
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_dolg_ivancov_start</start_dialog>
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--DOLG Начальник Охраны-->
@@ -720,11 +718,11 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_dolg_base_guard_start</start_dialog>
 		<actor_dialog>bar_dolg_base_guard_talk</actor_dialog>
@@ -756,11 +754,11 @@
 			ammo_5.45x39_fmj \n
 			detector_advances \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
 		<start_dialog>bar_dolg_zastava</start_dialog>
 		<actor_dialog>bar_dolg_zastava_about_zastava</actor_dialog>
@@ -795,7 +793,7 @@
 			hand_radio \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
 		<start_dialog>bar_ecolog_crush_professor_start</start_dialog>
 		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
@@ -826,11 +824,11 @@
 			ammo_9x19_fmj \n
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
 		<start_dialog>bar_svoboda_volkodav_start</start_dialog>
 		<actor_dialog>bar_svoboda_volkodav_info_dp</actor_dialog>
@@ -861,13 +859,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
 			bar_tiran_pda \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_2.xml"
+		#include "gameplay\character_criticals_2.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- ******************* CRAZY VETERANS ********************** -->
@@ -895,13 +893,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
 			bar_lucky_pda \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_crazy_veterans_1" team_default = "1">
@@ -925,13 +923,13 @@
 			[spawn] \n
 			wpn_mp5 \n
 			ammo_9x19_pbp \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_crazy_veterans_2" team_default = "1">
@@ -955,13 +953,13 @@
 			[spawn] \n
 			wpn_mp5 \n
 			ammo_9x19_pbp \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!-- ************************ Гордон Фримен *********************** -->
@@ -988,9 +986,9 @@
 			ammo_11.43x23_fmj \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--DOLG REGULAR-->
@@ -1020,14 +1018,14 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 	</specific_character>
 
@@ -1054,14 +1052,14 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 	</specific_character>
 
@@ -1088,14 +1086,14 @@
 			wpn_abakan \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_items.xml" \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 		<actor_dialog>bar_dolg_base_guard_acces</actor_dialog>
 	</specific_character>
 
@@ -1123,14 +1121,14 @@
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml" \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_sniper_default2" team_default = "1">
@@ -1156,14 +1154,14 @@
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_sniper_default3" team_default = "1">
@@ -1189,14 +1187,14 @@
 			wpn_l85 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"	\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"	\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--DOLG SPECNAZ-->
@@ -1222,14 +1220,14 @@
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-#include "gameplay\character_items.xml"	\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"	\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_veteran_default2" team_default = "1">
@@ -1254,14 +1252,14 @@
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-#include "gameplay\character_items.xml"	\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"	\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_veteran_default3" team_default = "1">
@@ -1288,14 +1286,14 @@
 			ammo_9x39_ap = 1 \n
 			ammo_9x39_sp5 = 1 \n
 			ammo_vog-25p = 2 \n
-#include "gameplay\character_items.xml"	\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"	\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_veteran_default4" team_default = "1">
@@ -1320,14 +1318,14 @@
 			ammo_9x19_fmj \n
 			wpn_groza \n
 			ammo_9x39_ap \n
-#include "gameplay\character_items.xml" \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--DOLG MASTER-->
@@ -1353,14 +1351,14 @@
 			ammo_11.43x23_fmj \n
 			wpn_val \n
 			ammo_9x39_sp5 = 1 \n
-#include "gameplay\character_items.xml" \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_2.xml"
+		#include "gameplay\character_criticals_2.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_dolg_master_default2" team_default = "1">
@@ -1386,14 +1384,14 @@
 			wpn_groza \n
 			ammo_9x39_sp5 = 2 \n
 			ammo_vog-25p = 2 \n
-#include "gameplay\character_items.xml"	\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"	\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_6.xml"
+		#include "gameplay\character_criticals_6.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--STALKER NOVICE-->
@@ -1418,13 +1416,13 @@
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default2" team_default = "1">
@@ -1448,13 +1446,13 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default3" team_default = "1">
@@ -1478,13 +1476,13 @@
 			wpn_pb \n
 			ammo_9x18_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default4" team_default = "1">
@@ -1508,13 +1506,13 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default5" team_default = "1">
@@ -1538,13 +1536,13 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default6" team_default = "1">
@@ -1568,13 +1566,13 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default9" team_default = "1">
@@ -1598,13 +1596,13 @@
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_novice_default10" team_default = "1">
@@ -1628,13 +1626,13 @@
 			wpn_pm \n
 			ammo_9x18_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--STALKER GENERAL-->
@@ -1661,14 +1659,14 @@
 			wpn_bm16 \n
 			ammo_12x76_zhekan = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_general_default2" team_default = "1">
@@ -1694,14 +1692,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml" \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_general_default3" team_default = "1">
@@ -1727,14 +1725,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_general_default4" team_default = "1">
@@ -1760,14 +1758,14 @@
 			wpn_ak74u \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_general_default5" team_default = "1">
@@ -1793,14 +1791,14 @@
 			wpn_ak74 \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--STALKER VETERAN-->
@@ -1827,14 +1825,14 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default2" team_default = "1">
@@ -1860,14 +1858,14 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default3" team_default = "1">
@@ -1893,14 +1891,14 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default4" team_default = "1">
@@ -1926,14 +1924,14 @@
 			wpn_ak74 \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_stalker_veteran_default5" team_default = "1">
@@ -1959,14 +1957,14 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 = 1 \n
 			device_torch \n
-#include "gameplay\character_items.xml"\n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_items.xml"\n
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--ECOLOG GUARD-->
@@ -1994,9 +1992,9 @@
 			ammo_5.56x45_ap = 1 \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_ecolog_guard_default2" team_default = "1">
@@ -2023,9 +2021,9 @@
 			ammo_5.56x45_ap = 1 \n
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--KILLER REGULAR-->
@@ -2050,13 +2048,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_regular_default2" team_default = "1">
@@ -2080,13 +2078,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_regular_default3" team_default = "1">
@@ -2110,13 +2108,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--KILLER SNIPER-->
@@ -2140,13 +2138,13 @@
 			[spawn] \n
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_sniper_on_enter" team_default = "1">
@@ -2169,13 +2167,13 @@
 			[spawn] \n
 			wpn_ak74 = 1, scope \n
 			ammo_5.45x39_fmj = 1 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_rpg" team_default = "1">
@@ -2200,13 +2198,13 @@
 			ammo_og-7b = 1 \n
 			wpn_walther \n
 			ammo_9x19_fmj \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--KILLER SPECNAZ-->
@@ -2232,13 +2230,13 @@
 			ammo_9x19_pbp = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_specnaz_default2" team_default = "1">
@@ -2263,13 +2261,13 @@
 			ammo_9x19_pbp = 1 \n
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_specnaz_default3" team_default = "1">
@@ -2295,13 +2293,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_killer_specnaz_default4" team_default = "1">
@@ -2327,13 +2325,13 @@
 			wpn_lr300 \n
 			ammo_5.56x45_ss190 \n
 			device_torch \n
-#include "gameplay\character_food.xml" \n
-#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml" \n
+			#include "gameplay\character_drugs.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_4.xml"
+		#include "gameplay\character_criticals_4.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<!--DELME:only for presentation-->
@@ -2359,14 +2357,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default2" team_default = "1">
@@ -2391,14 +2389,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default3" team_default = "1">
@@ -2423,14 +2421,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default4" team_default = "1">
@@ -2455,14 +2453,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default5" team_default = "1">
@@ -2487,14 +2485,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 	<specific_character id="bar_arena_respawner_default6" team_default = "1">
@@ -2519,14 +2517,14 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-#include "gameplay\character_drugs.xml"
-#include "gameplay\character_food.xml"
-#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
+			#include "gameplay\character_food.xml"
+			#include "gameplay\character_items.xml"
 		</supplies>
 
-#include "gameplay\character_criticals_3.xml"
+		#include "gameplay\character_criticals_3.xml"
 
-#include "gameplay\character_dialogs.xml"
+		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
 </xml>

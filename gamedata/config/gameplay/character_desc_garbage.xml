@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <xml>
-
 	<specific_character id="gar_seriy" team_default = "1">
 		<name>gar_seryi_name</name>
 		<icon>ui_npc_u_stalker_neytral_hood_4</icon>
@@ -66,7 +64,6 @@
 		<actor_dialog>dm_cool_info_dialog</actor_dialog>
 		<actor_dialog>dm_help_wounded_medkit_dialog</actor_dialog>
 	</specific_character>
-
 
 	<specific_character id="gar_hellcar" team_default = "1">
 		<name>gar_hellcar_name</name>
@@ -219,7 +216,7 @@
 			device_torch \n
 			wpn_bm16 \n
 			ammo_12x70_buck \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -248,7 +245,7 @@
 			wpn_pm \n
 			ammo_9x18_fmj \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
+			#include "gameplay\character_items.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -256,9 +253,7 @@
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
 
-
 	<!--BANDIT general-->
-
 	<specific_character id="gar_bandit_general_default1" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
 		<icon>ui_npc_u_stalker_bandit_3</icon>
@@ -282,8 +277,8 @@
 			wpn_bm16 \n
 			ammo_12x70_buck = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml"	\n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -314,8 +309,8 @@
 			wpn_mp5 = 1 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml"	\n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -342,12 +337,12 @@
 		<supplies>
 			[spawn] \n
 			wpn_pm \n
-			ammo_9x18_fmj	= 1 \n
+			ammo_9x18_fmj = 1 \n
 			wpn_mp5 \n
 			ammo_9x19_pbp = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -356,7 +351,6 @@
 	</specific_character>
 
 	<!--Stalker general-->
-
 	<specific_character id="gar_stalker_general_default1" team_default = "1">
 		<name>GENERATE_NAME_stalker</name>
 		<icon>ui_npc_u_stalker_neytral_hood_uzor</icon>
@@ -381,8 +375,8 @@
 			wpn_bm16 \n
 			ammo_12x70_buck = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -414,8 +408,8 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -447,8 +441,8 @@
 			wpn_mp5 \n
 			ammo_9x19_fmj = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -480,8 +474,8 @@
 			wpn_ak74u \n
 			ammo_5.45x39_ap = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -514,15 +508,14 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
 		#include "gameplay\character_criticals_4.xml"
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
 
 	<specific_character id="gar_wounded_bandit" team_default = "1">
 		<name>GENERATE_NAME_bandit</name>
@@ -580,8 +573,8 @@
 			wpn_ak74u \n
 			ammo_5.45x39_fmj \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -614,8 +607,8 @@
 			wpn_ak74u \n
 			ammo_5.45x39_ap \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -648,8 +641,8 @@
 			wpn_ak74u \n
 			ammo_5.45x39_ap \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -682,7 +675,7 @@
 			wpn_bm16 \n
 			ammo_12x76_dart \n
 			device_torch \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -713,12 +706,12 @@
 		<supplies>
 			[spawn] \n
 			wpn_pm \n
-			ammo_9x18_fmj	= 1 \n
+			ammo_9x18_fmj = 1 \n
 			wpn_mp5 \n
 			ammo_9x19_pbp = 1 \n
 			device_torch \n
-			#include "gameplay\character_items.xml" \n
-			#include "gameplay\character_drugs.xml" \n
+			#include "gameplay\character_items.xml"
+			#include "gameplay\character_drugs.xml"
 			#include "gameplay\character_food.xml"
 		</supplies>
 
@@ -745,7 +738,6 @@
 
 		<visual>actors\bandit\stalker_bandit_master</visual>
 		<supplies>
-			[spawn] \n
 		</supplies>
 
 		#include "gameplay\character_criticals_4.xml"
@@ -753,5 +745,4 @@
 		<start_dialog>hello_dialog</start_dialog>
 		#include "gameplay\character_dialogs.xml"
 	</specific_character>
-
 </xml>

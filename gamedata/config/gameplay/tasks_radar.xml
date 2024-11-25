@@ -1,5 +1,3 @@
-	
-
 	<game_task id="rad_get_to_aes" prio="250">
 		<title>rad_get_to_aes</title>
 		<objective>
@@ -34,11 +32,11 @@
 			<map_location_type hint="aes_sarcofag_hint">green_location</map_location_type>
 			<infoportion_complete>aes_found_sarcofag</infoportion_complete>
 			<object_story_id>aes_sarcofag</object_story_id>
-            <map_location_hidden>1</map_location_hidden>
+			<map_location_hidden>1</map_location_hidden>
 		</objective>
 	</game_task>
 
-<!--DELME: only for presentation -->
+	<!-- DELME: only for presentation -->
 	<game_task id="pripyat_task_1" prio="277">
 		<title>pripyat_task_title</title>
 		<objective>
@@ -61,6 +59,5 @@
 			<map_location_hidden>1</map_location_hidden>
 			<infoportion_complete>pri_stadium_reached</infoportion_complete>
 			<infoportion_complete>pri_stadium_scene_start</infoportion_complete>
-			
 		</objective>
 	</game_task>

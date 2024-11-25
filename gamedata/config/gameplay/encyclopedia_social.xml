@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding="utf-8"?>
 <encyclopedia>
 
 	<!-- Military -->
@@ -73,5 +72,4 @@
 		<texture x="128" y="128" width="128" height="128">ui\ui_icons_npc</texture>
 		<text>enc_social_stalker-clans_loners</text>
 	</article>
-
 </encyclopedia>

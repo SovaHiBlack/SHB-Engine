@@ -1,7 +1,5 @@
-<?xml version='1.0' encoding="UTF-8"?>
-
+<?xml version='1.0' encoding="utf-8"?>
 <xml>
-
 	<!-- НОВЫЕ ПРОФИЛЯ -->
 	<character id="actor">
 		<class>Actor</class>
@@ -737,7 +735,6 @@
 		<class>bar_Killer_specnaz</class>
 	</character>
 
-
 	<!-- Yantar + X16 -->
 
 	<!-- Zombied -->
@@ -918,7 +915,6 @@
 		<class>rad_Ecolog</class>
 	</character>
 
-
 	<!-- Pripyat -->
 	<!-- Monolith -->
 	<character id="pri_monolith_ambush">
@@ -1060,7 +1056,6 @@
 
 	<!-- Simulation -->
 	<!--Bandits-->
-
 	<character id="sim_bandit_novice">
 		<class>sim_bandit_novice</class>
 	</character>
@@ -1345,7 +1340,6 @@
 	</character>
 
 	<!-- NPCs for level selo_face -->
-
 	<character id="sim_test_000">
 		<class>sim_test_000</class>
 	</character>
@@ -1805,5 +1799,4 @@
 	<character id="sim_test_114">
 		<class>sim_test_114</class>
 	</character>
-
 </xml>

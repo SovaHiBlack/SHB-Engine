@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding="utf-8"?>
 <encyclopedia>
 
 	<!-- AMMO -->
@@ -347,5 +346,4 @@
 		<ltx>grenade_gd-05</ltx>
 		<text>enc_weapons1_grenade-gd05</text>
 	</article>
-
 </encyclopedia>
