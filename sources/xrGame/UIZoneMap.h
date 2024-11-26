@@ -7,40 +7,40 @@ class CUICustomMap;
 
 class CUIZoneMap
 {
-	CUICustomMap* m_activeMap;
-	f32						m_fScale;
+	CUICustomMap*						m_activeMap;
+	f32									m_fScale;
 
-	CUIStatic					m_background;
-	CUIStatic					m_center;
-	CUIStatic					m_compass;
-	CUIStatic					m_clipFrame;
-	CUIStatic					m_pointerDistanceText;
+	CUIStatic							m_background;
+	CUIStatic							m_center;
+	CUIStatic							m_compass;
+	CUIStatic							m_clipFrame;
+	CUIStatic							m_pointerDistanceText;
 
 public:
-	CUIZoneMap( );
-	virtual						~CUIZoneMap( );
+					CUIZoneMap			( );
+	virtual			~CUIZoneMap			( );
 
-	void						SetHeading(f32 angle);
-	void						Init( );
+	void			SetHeading			(f32 angle);
+	void			Init				( );
 
-	void						Render( );
-	void						UpdateRadar(fVector3 pos);
+	void			Render				( );
+	void			UpdateRadar			(fVector3 pos);
 
-	void						SetScale(f32 s)
+	void			SetScale			(f32 s)
 	{
 		m_fScale = s;
 	}
-	f32						GetScale( )
+	f32				GetScale			( )
 	{
 		return m_fScale;
 	}
 
-	bool						ZoomIn( );
-	bool						ZoomOut( );
+	bool			ZoomIn				( );
+	bool			ZoomOut				( );
 
-	CUIStatic& Background( )
+	CUIStatic&		Background			( )
 	{
 		return m_background;
 	}
-	void						SetupCurrentMap( );
+	void			SetupCurrentMap		( );
 };

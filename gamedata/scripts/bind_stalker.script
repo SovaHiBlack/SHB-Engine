@@ -1,8 +1,8 @@
-function init    (obj)
+function init (obj)
 	xr_motivator.AddToMotivator(obj)
 end
 
-function actor_init    (npc)
+function actor_init (npc)
 	npc:bind_object(actor_binder(npc))
 end
 
@@ -13,9 +13,9 @@ local game_difficulty_by_num = {
 	[3] = "gd_master"
 	}
 
-lasthealth  = 0
-lasttime	= 0
-post_process = 0
+lasthealth        = 0
+lasttime          = 0
+post_process      = 0
 local weapon_hide = false
 ----------------------------------------------------------------------------------------------------------------------
 class "actor_binder" (object_binder)
@@ -27,7 +27,7 @@ function actor_binder:__init (obj) super(obj)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:net_spawn(data)
-	printf("actor net spawn")		
+	printf("actor net spawn")
 
 	level.show_indicators()
 
@@ -40,7 +40,7 @@ function actor_binder:net_spawn(data)
 	end
 
 	db.add_actor(self.object)
-	
+
 	if self.st.disable_input_time == nil then
 		level.enable_input()
 	end
@@ -65,7 +65,7 @@ function actor_binder:net_destroy()
 --	game_stats.shutdown ()
 	db.del_actor(self.object)
 
-    sr_light.clean_up ()
+	sr_light.clean_up ()
 
 	self.object:set_callback(callback.inventory_info, nil)
 	self.object:set_callback(callback.article_info, nil)
@@ -119,12 +119,12 @@ function actor_binder:take_item_from_box(box, item)
 	end
 
 	treasure_manager.take_item_from_box(box, story_id)
---[[	
+--[[
 	local respawner = se_respawn.get_respawner_by_parent(story_id)
 	if respawner == nil then
 		return
 	end
-	
+
 	--' Необходимо уменьшить счетчик в респавнере
 	respawner:remove_spawned(item:id())
 
@@ -134,10 +134,10 @@ function actor_binder:take_item_from_box(box, item)
 	end
 
 	local npc = smart_terrain.gulag:get_nearest_online_obj(db.actor:position())
-    if npc ~= nil then
-	    xr_sound.set_sound_play(npc, "reac_box")
-	    xr_gulag.setGulagEnemy(smart_terrain:name() , db.actor)		
-    end
+	if npc ~= nil then
+		xr_sound.set_sound_play(npc, "reac_box")
+		xr_gulag.setGulagEnemy(smart_terrain:name(), db.actor)
+	end
 ]]
 end
 ----------------------------------------------------------------------------------------------------------------------
@@ -158,17 +158,19 @@ function actor_binder:info_callback(npc, info_id)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_trade (item, sell_bye, money)
-    if sell_bye == true then
-       game_stats.money_trade_update (money)
-    else       
-       game_stats.money_trade_update (-money) 
-    end   
+	if sell_bye == true then
+		game_stats.money_trade_update (money)
+	else
+		game_stats.money_trade_update (-money) 
+	end
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:article_callback(npc, group, name)
 	--printf("article_callback [%s][%s]", group, name)
-	if device().precache_frame >1 then return end
-	
+	if device().precache_frame >1 then
+		return
+	end
+
 	if group == "Diary" then
 		news_manager.send_encyclopedy("diary", group)
 	else
@@ -177,13 +179,13 @@ function actor_binder:article_callback(npc, group, name)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_take (obj)
-    level_tasks.proceed(self.object)
-    --game_stats.update_take_item (obj, self.object)
+	level_tasks.proceed(self.object)
+	--game_stats.update_take_item (obj, self.object)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_drop (obj)
-    level_tasks.proceed(self.object)
-    --game_stats.update_drop_item (obj, self.object)
+	level_tasks.proceed(self.object)
+	--game_stats.update_drop_item (obj, self.object)
 end
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -267,21 +269,19 @@ function actor_binder:update(delta)
 			self.object:restore_weapon()
 			self.weapon_hide = false
 		end
-	end	
+	end
 
 	-- обновление рестрикторов, которые под логикой, срабатывает через интервалы времени
 	if self.next_restrictors_update_time < time then
 		bind_restrictor.actor_update(delta)
-
 		self.next_restrictors_update_time = time + 200
-
 		task_manager.actor_update()
 	end
 
 	-- обновление постпроцессов
 	if post_process ~= 0 then
 		if post_process:update () == true then
-		   post_process = 0
+			post_process = 0
 		end
 	end
 
@@ -306,17 +306,15 @@ function actor_binder:update(delta)
 		end
 	end
 
-
-
- 	if self.bCheckStart then
-		printf("SET DEFAULT INFOS")		
+	if self.bCheckStart then
+		printf("SET DEFAULT INFOS")
 
 		if not has_alife_info("storyline_actor_start") and
 		   (level.name() == "l01_escape")
 		then
 			self.object:give_info_portion("storyline_actor_start")
 			_G.g_start_avi = true
-			printf("*AVI* RUN START AVI")			
+			printf("*AVI* RUN START AVI")
 		end
 
 --		if not has_alife_info("encyclopedy") then

@@ -10,7 +10,7 @@ struct event_comparer
 	shared_str			name;
 	s16					event;
 
-	event_comparer(shared_str n, s16 e) :name(n), event(e)
+	event_comparer(shared_str n, s16 e) : name(n), event(e)
 	{ }
 	bool operator ()(SCallbackInfo* i)
 	{
@@ -28,7 +28,7 @@ void CUIWndCallback::Register(CUIWindow* pChild)
 	pChild->SetMessageTarget(smart_cast<CUIWindow*>(this));
 }
 
-void CUIWndCallback::OnEvent(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIWndCallback::OnEvent(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	if (!pWnd)
 	{

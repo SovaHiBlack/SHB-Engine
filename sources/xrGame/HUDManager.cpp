@@ -25,7 +25,6 @@ CFontManager::CFontManager( )
 	m_all_fonts.push_back(&pFontGraffiti50Russian);
 	m_all_fonts.push_back(&pFontLetterica16Russian);
 	m_all_fonts.push_back(&pFontLetterica18Russian);
-
 	m_all_fonts.push_back(&pFontLetterica25Russian);
 
 	FONTS_VEC_IT it = m_all_fonts.begin( );
@@ -319,7 +318,7 @@ void CHUDManager::RenderUI( )
 		pFont->SetColor(0x80FF0000);
 		pcstr _str = CStringTable( ).translate("st_game_paused").c_str( );
 
-		fVector2			_pos;
+		fVector2 _pos;
 		_pos.set(UI_BASE_WIDTH / 2.0f, UI_BASE_HEIGHT / 2.0f);
 		UI( )->ClientToScreenScaled(_pos);
 		pFont->SetAligment(CGameFont::alCenter);
@@ -346,7 +345,7 @@ void CHUDManager::ShowCrosshair(bool show)
 	m_pHUDTarget->m_bShowCrosshair = show;
 }
 
-void CHUDManager::Hit(int idx, f32 power, const fVector3& dir)
+void CHUDManager::Hit(s32 idx, f32 power, const fVector3& dir)
 {
 	HitMarker.Hit(idx, dir);
 }

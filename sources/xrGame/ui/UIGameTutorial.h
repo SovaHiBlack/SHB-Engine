@@ -46,7 +46,7 @@ public:
 	virtual void			IR_OnKeyboardHold(s32 dik);
 
 	virtual void			IR_OnMouseWheel(s32 direction);
-	virtual void			IR_OnActivate(void);
+	virtual void			IR_OnActivate( );
 };
 
 class CUISequenceItem
@@ -140,8 +140,8 @@ public:
 
 class CUISequenceVideoItem : public CUISequenceItem
 {
-	typedef CUISequenceItem	inherited;
-	ref_sound				m_sound[2];
+	typedef CUISequenceItem inherited;
+	ref_sound m_sound[2];
 	CTexture* m_texture;
 	enum
 	{

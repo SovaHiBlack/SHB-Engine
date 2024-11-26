@@ -71,7 +71,7 @@ void CUIZoneMap::UpdateRadar(fVector3 pos)
 
 	if (m_activeMap->GetPointerDistance( ) > 0.5f)
 	{
-		string64	str;
+		string64 str;
 		sprintf_s(str, "%.1f m.", m_activeMap->GetPointerDistance( ));
 		m_pointerDistanceText.SetText(str);
 	}
@@ -106,7 +106,7 @@ void CUIZoneMap::SetupCurrentMap( )
 	m_clipFrame.GetAbsoluteRect(r);
 	m_activeMap->SetClipRect(r);
 
-	fVector2						wnd_size;
+	fVector2 wnd_size;
 	f32 zoom_factor = f32(m_clipFrame.GetWndRect( ).width( )) / 100.0f;
 	wnd_size.x = m_activeMap->BoundRect( ).width( ) * zoom_factor;
 	wnd_size.y = m_activeMap->BoundRect( ).height( ) * zoom_factor;

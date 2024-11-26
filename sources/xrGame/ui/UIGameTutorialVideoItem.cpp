@@ -33,10 +33,10 @@ CUISequenceVideoItem::~CUISequenceVideoItem( )
 
 bool CUISequenceVideoItem::IsPlaying( )
 {
-	return					(!!m_flags.test(etiPlaying));
+	return !!m_flags.test(etiPlaying);
 }
 
-void CUISequenceVideoItem::Load(CUIXml* xml, int idx)
+void CUISequenceVideoItem::Load(CUIXml* xml, s32 idx)
 {
 	CUISequenceItem::Load(xml, idx);
 
@@ -74,7 +74,7 @@ void CUISequenceVideoItem::Load(CUIXml* xml, int idx)
 		bool is_16_9 = UI( )->is_16_9_mode( );
 		f32 kw_image = UI_BASE_WIDTH / texture_coords.width( );
 
-		fVector2										wnd_size;
+		fVector2 wnd_size;
 
 		wnd_size.x = UI_BASE_WIDTH;
 		wnd_size.y = texture_coords.height( ) * kw_image;

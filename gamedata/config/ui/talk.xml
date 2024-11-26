@@ -19,7 +19,7 @@
 
 	<button x="437" y="726" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1">
 		<texture>ui_button_main01</texture>
-		<text align="c"	font="graffiti22" r="238" g="153" b="26">ui_st_trade</text>
+		<text align="c" font="graffiti22" r="238" g="153" b="26">ui_st_trade</text>
 	</button>
 
 	<frame_line_window x="218" y="42" width="600" height="470" vertical="1">

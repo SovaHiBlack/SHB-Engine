@@ -585,7 +585,6 @@ bool CUIXmlInit::InitProgressShape(CUIXml& xml_doc, pcstr path, s32 index, CUIPr
 	}
 
 	string256 _path;
-
 	if (xml_doc.NavigateToNode(strconcat(sizeof(_path), _path, path, ":back"), index))
 	{
 		InitStatic(xml_doc, _path, index, pWnd->m_pBackground);
@@ -890,7 +889,6 @@ bool CUIXmlInit::InitEditBox(CUIXml& xml_doc, pcstr path, s32 index, CUIEditBox*
 	InitCustomEdit(xml_doc, path, index, pWnd);
 	InitTexture(xml_doc, path, index, pWnd);
 	InitOptionsItem(xml_doc, path, index, pWnd);
-
 	return true;
 }
 

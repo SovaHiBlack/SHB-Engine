@@ -11,7 +11,7 @@
 	<static x="5" y="5" width="150" height="200">
 		<texture>ui\ui_mg_back_map</texture>
 	</static>
-	
+
 	<!-- radiation -->
 	<static x="935" y="235" width="50" height="50">
 		<texture>ui\ui_mg_icon_radiation_small</texture>
@@ -22,12 +22,12 @@
 	<static x="935" y="235" width="50" height="50">
 		<texture>ui\ui_mg_icon_radiation_hard</texture>
 	</static>
-	
+
 	<!-- wound -->
 	<static x="940" y="300" width="100" height="50">
 		<texture>ui\ui_mg_icon_wound</texture>
 	</static>
-	
+
 	<!-- WEAPON -->
 	<static x="860" y="685" width="200" height="100">
 		<text x="0" y="4" font="small" r="255" g="255" b="255" a="130"></text>
@@ -50,10 +50,8 @@
 		<text x="103" y="2" font="normal" r="239" g="154" b="29" a="230"></text>
 	</static>
 
-
 	<!-- PDA Message List-->
-	<list x="15" y="325" width="525" height="420" item_height = "70"></list>
-	
+	<list x="15" y="325" width="525" height="420" item_height="70"></list>
 
 	<!-- health bar -->
 	<progress_bar x="876" y="658" length="120" broad="20" horz="1" min="0" max="100" pos="0">
@@ -67,15 +65,15 @@
 		<background x="0" y="0">ui\ui_mg_progress_efficiency_empty</background>
 	</progress_bar>
 
-	<!-- "health" string OLD!!! REMOVE AFTER UPDATE  -->
+	<!-- "health" string OLD!!! REMOVE AFTER UPDATE -->
 	<static x="80" y="6" width="100" height="30">
 		<text x="0" y="0" font="small" r="255" g="255" b="255" a="130">armor</text>
 	</static>
 
-	<!-- "armor" string OLD!!! REMOVE AFTER UPDATE  -->
+	<!-- "armor" string OLD!!! REMOVE AFTER UPDATE -->
 	<static x="80" y="6" width="100" height="30">
 		<text x="0" y="0" font="small" r="255" g="255" b="255" a="130">armor</text>
-	</static>              
+	</static>
 
 	<!-- armor -->
 	<static x="860" y="590" width="150" height="200">
@@ -103,12 +101,12 @@
 	<fatigue_static			x="940" y="510" width="50" height="50">
 		<texture>ui\ui_mn_fatigue_hard</texture>
 	</fatigue_static>
-    
+
 	<!-- MONEY INDICATORS. MP ONLY -->
 	<money_mt_static		x="860" y="40" width="200" height="200">
 		<text x="85" y="4" font="small" r="255" g="255" b="255" a="130">money</text>
 		<texture>ui\ui_mn_weapons</texture>
-		
+
 		<phrase x="20" y="15" font="graffiti50" r="238" g="155" b="23" a="255"></phrase>
 		<phrase x="20" y="65" font="graffiti32" r="238" g="155" b="23" a="255">
 			<animation anim="fade" period="3" cyclic="0"></animation>

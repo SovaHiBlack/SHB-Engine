@@ -51,7 +51,6 @@ end
 
 
 function main()
-
 	if _G.g_start_avi==nil then
 		_G.g_start_avi=false
 	end
@@ -59,7 +58,6 @@ function main()
 	while _G.g_start_avi ~= true do
 		wait()
 	end
-
 
 	local dlg = test_avi_dlg()
 	
@@ -92,6 +90,4 @@ function main()
 	if level.enable_input ~= nil then
 		level.enable_input()
 	end
-
 end
-

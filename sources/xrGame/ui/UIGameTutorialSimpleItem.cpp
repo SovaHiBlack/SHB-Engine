@@ -55,7 +55,7 @@ CUIWindow* find_child_window(CUIWindow* parent, const shared_str& _name)
 	return NULL;
 }
 
-void CUISequenceSimpleItem::Load(CUIXml* xml, int idx)
+void CUISequenceSimpleItem::Load(CUIXml* xml, s32 idx)
 {
 	CUISequenceItem::Load(xml, idx);
 
@@ -70,8 +70,8 @@ void CUISequenceSimpleItem::Load(CUIXml* xml, int idx)
 	}
 
 	m_time_length = xml->ReadFlt("length_sec", 0, 0);
-	m_desired_cursor_pos.x = xml->ReadAttribFlt("cursor_pos", 0, "x", 1024);
-	m_desired_cursor_pos.y = xml->ReadAttribFlt("cursor_pos", 0, "y", 768);
+	m_desired_cursor_pos.x = xml->ReadAttribFlt("cursor_pos", 0, "x", 1024.0f);
+	m_desired_cursor_pos.y = xml->ReadAttribFlt("cursor_pos", 0, "y", 768.0f);
 	strcpy(m_pda_section, xml->Read("pda_section", 0, ""));
 
 	pcstr str = xml->Read("pause_state", 0, "ignore");
@@ -107,9 +107,9 @@ void CUISequenceSimpleItem::Load(CUIXml* xml, int idx)
 	xml->SetLocalRoot(_lsr);
 
 	// initialize auto_static
-	int cnt = xml->GetNodesNum("main_wnd", 0, "auto_static");
+	s32 cnt = xml->GetNodesNum("main_wnd", 0, "auto_static");
 	m_subitems.resize(cnt);
-	string64						sname;
+	string64 sname;
 	for (int i = 0; i < cnt; ++i)
 	{
 		XML_NODE* _sr = xml->GetLocalRoot( );
@@ -118,8 +118,8 @@ void CUISequenceSimpleItem::Load(CUIXml* xml, int idx)
 		sprintf_s(sname, "auto_static_%d", i);
 
 		SSubItem* _si = &m_subitems[i];
-		_si->m_start = xml->ReadAttribFlt("auto_static", i, "start_time", 0);
-		_si->m_length = xml->ReadAttribFlt("auto_static", i, "length_sec", 0);
+		_si->m_start = xml->ReadAttribFlt("auto_static", i, "start_time", 0.0f);
+		_si->m_length = xml->ReadAttribFlt("auto_static", i, "length_sec", 0.0f);
 		_si->m_visible = false;
 		_si->m_wnd = smart_cast<CUIStatic*>(find_child_window(m_UIWindow, sname));
 		VERIFY(_si->m_wnd);
@@ -306,7 +306,7 @@ bool CUISequenceSimpleItem::Stop(bool bForce)
 	return true;
 }
 
-void CUISequenceSimpleItem::OnKeyboardPress(int dik)
+void CUISequenceSimpleItem::OnKeyboardPress(s32 dik)
 {
 	if (!m_flags.test(etiCanBeStopped))
 	{

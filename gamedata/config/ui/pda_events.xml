@@ -25,7 +25,7 @@
 				</text_color_>
 			</primary_or_all>
 
-			<filter_tab x="15" y="450" width = "293" height="18">
+			<filter_tab x="15" y="450" width="293" height="18">
 				<button x="5" y="0" width="70" height="18" hint="pda_btn_active_hint">
 					<text align="l" x="0" y="0" font="letterica18" r="255" g="255" b="255" complex_mode="0">pda_btn_active</text>
 					<text_color>

@@ -6,34 +6,54 @@
 #include "uiwindow.h"
 class CDialogHolder;
 
-class CUIDialogWnd : public CUIWindow  
+class CUIDialogWnd : public CUIWindow
 {
 private:
 	typedef CUIWindow inherited;
-	CDialogHolder*	m_pHolder;
+	CDialogHolder* m_pHolder;
+
 protected:
-	bool			IR_process					();
+	bool			IR_process( );
+
 public:
 	bool										m_bWorkInPause;
-	CUIDialogWnd								();
-	virtual ~ CUIDialogWnd						();
+	CUIDialogWnd( );
+	virtual ~CUIDialogWnd( );
 
-	virtual void Show							();
-	virtual void Hide							();
-	virtual void Update							();
+	virtual void Show( );
+	virtual void Hide( );
+	virtual void Update( );
 
-	virtual bool IR_OnKeyboardPress				(int dik);
-	virtual bool IR_OnKeyboardRelease			(int dik);
-	virtual bool IR_OnMouseMove					(int dx, int dy);
-	virtual bool IR_OnMouseWheel				(int direction);
-	virtual bool IR_OnKeyboardHold				(int dik);
-	virtual bool OnKeyboard						(int dik, EUIMessages keyboard_action);
-	virtual bool OnKeyboardHold					(int dik);
+	virtual bool IR_OnKeyboardPress(s32 dik);
+	virtual bool IR_OnKeyboardRelease(s32 dik);
+	virtual bool IR_OnMouseMove(s32 dx, s32 dy);
+	virtual bool IR_OnMouseWheel(s32 direction);
+	virtual bool IR_OnKeyboardHold(s32 dik);
+	virtual bool OnKeyboard(s32 dik, EUIMessages keyboard_action);
+	virtual bool OnKeyboardHold(s32 dik);
 
-	CDialogHolder* GetHolder					()					{return m_pHolder;};
-			void SetHolder						(CDialogHolder* h)	{m_pHolder = h;};
-	virtual bool StopAnyMove					(){return true;}
-	virtual bool NeedCursor						()const {return true;}
-	virtual bool WorkInPause					()const {return m_bWorkInPause;}
-	virtual bool Dispatch						(int cmd, int param)				{return true;}
+	CDialogHolder* GetHolder( )
+	{
+		return m_pHolder;
+	}
+	void SetHolder(CDialogHolder* h)
+	{
+		m_pHolder = h;
+	}
+	virtual bool StopAnyMove( )
+	{
+		return true;
+	}
+	virtual bool NeedCursor( ) const
+	{
+		return true;
+	}
+	virtual bool WorkInPause( ) const
+	{
+		return m_bWorkInPause;
+	}
+	virtual bool Dispatch(s32 cmd, s32 param)
+	{
+		return true;
+	}
 };

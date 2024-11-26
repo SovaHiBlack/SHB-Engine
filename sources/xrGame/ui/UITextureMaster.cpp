@@ -125,10 +125,12 @@ f32 CUITextureMaster::GetTextureHeight(pcstr texture_name)
 
 fRect CUITextureMaster::GetTextureRect(pcstr texture_name)
 {
-	xr_map<shared_str, STextureInfo>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
+	{
 		return (*it).second.rect;
+	}
 
 	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
 	return fRect( );
@@ -136,33 +138,38 @@ fRect CUITextureMaster::GetTextureRect(pcstr texture_name)
 
 f32 CUITextureMaster::GetTextureWidth(pcstr texture_name)
 {
-	xr_map<shared_str, STextureInfo>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator it;
 	it = m_textures.find(texture_name);
-
 	if (it != m_textures.end( ))
+	{
 		return (*it).second.rect.width( );
+	}
+
 	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
 	return 0;
 }
 
 pcstr CUITextureMaster::GetTextureFileName(pcstr texture_name)
 {
-	xr_map<shared_str, STextureInfo>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator it;
 	it = m_textures.find(texture_name);
-
 	if (it != m_textures.end( ))
+	{
 		return *((*it).second.file);
+	}
+
 	R_ASSERT3(false, "CUITextureMaster::GetTextureFileName Can't find texture", texture_name);
 	return 0;
 }
 
 STextureInfo CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_name)
 {
-	xr_map<shared_str, STextureInfo>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator it;
 	it = m_textures.find(texture_name);
-
 	if (it != m_textures.end( ))
+	{
 		return (it->second);
+	}
 	else
 	{
 		R_ASSERT2(m_textures.find(def_texture_name) != m_textures.end( ), texture_name);
@@ -172,7 +179,7 @@ STextureInfo CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_na
 
 void CUITextureMaster::GetTextureShader(pcstr texture_name, ref_shader& sh)
 {
-	xr_map<shared_str, STextureInfo>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator it;
 	it = m_textures.find(texture_name);
 
 	R_ASSERT3(it != m_textures.end( ), "can't find texture", texture_name);

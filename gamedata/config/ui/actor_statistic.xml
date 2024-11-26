@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding="utf-8"?>
 <window>
-	<list x="20" y="87" width="420" height="370" item_height = "18">
+	<list x="20" y="87" width="420" height="370" item_height="18">
 		<font font="letterica18" r="255" g="255" b="255"></font>
 	</list>
 

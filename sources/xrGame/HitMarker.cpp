@@ -63,7 +63,7 @@ SHitMark::SHitMark(const ref_shader& sh, const fVector3& dir)
 	m_UIStaticItem = xr_new<CUIStaticItem>( );
 	m_UIStaticItem->SetShader(sh);
 	m_UIStaticItem->SetPos(256.0f, 128.0f);
-	m_UIStaticItem->SetRect(.0f, .0f, 512.0f, 512.0f);
+	m_UIStaticItem->SetRect(0.0f, 0.0f, 512.0f, 512.0f);
 }
 
 void SHitMark::UpdateAnim( )

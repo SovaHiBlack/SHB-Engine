@@ -1,7 +1,7 @@
 <credits_seq>
 	<global_wnd x="0" y="0" width="1024" height="768">
 
-		<auto_static x="0" y="0" width="728" height="660" stretch = "1">
+		<auto_static x="0" y="0" width="728" height="660" stretch="1">
 			<texture x="0" y="0" width="728" height="660">ui\ui_mm_credits_back</texture>
 		</auto_static>
 
@@ -658,9 +658,7 @@
 				<text align="l" font="graffiti32" color="white">st_tereschuk2</text>
 			</auto_static>
 
-
-			<!--        THQ          -->
-
+			<!-- THQ -->
 			<!-- next frame -->
 			<auto_static start_time="128" length_sec="67" x="186" y="40" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="graffiti50" color="white">st_thq</text>
@@ -675,7 +673,6 @@
 			<auto_static start_time="130" length_sec="5" x="185" y="240" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="graffiti32" color="white">st_vallejo</text>
 			</auto_static>
-
 
 			<!-- next frame -->
 			<auto_static start_time="135" length_sec="5" x="185" y="180" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
@@ -1735,10 +1732,7 @@
 				<text align="c" font="graffiti32" color="white">st_centkowski</text>
 			</auto_static>
 
-
-
-			<!--     linguistic testing performed by     -->
-
+			<!-- linguistic testing performed by -->
 			<!-- next frame -->
 			<auto_static start_time="342" length_sec="6" x="185" y="150" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="letterica25" color="ui_clr_1">st_linguistic_testing_performed</text>
@@ -1845,10 +1839,7 @@
 			<auto_static start_time="363" length_sec="10" x="85" y="440" width="700" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="graffiti22" color="white">foley</text>
 			</auto_static>
-
-
-			<!--               PLASTIC WAX                 -->
-
+			<!-- PLASTIC WAX -->
 			<!-- next frame -->
 			<auto_static start_time="374" length_sec="41" x="186" y="40" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="graffiti50" color="white">st_wax</text>
@@ -1859,7 +1850,6 @@
 			<auto_static start_time="375" length_sec="5" x="185" y="310" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="graffiti32" color="white">st_maddams</text>
 			</auto_static>
-
 
 			<!-- next frame -->
 			<auto_static start_time="380" length_sec="5" x="185" y="130" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
@@ -2079,11 +2069,7 @@
 				<text align="c" font="graffiti32" color="white">st_spoard</text>
 			</auto_static>
 
-
-
-
-			<!--               SPECIAL THANKS                 -->
-
+			<!-- SPECIAL THANKS -->
 			<!-- next frame -->
 			<auto_static start_time="417" length_sec="52" x="185" y="40" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
 				<text align="c" font="graffiti50" color="ui_clr_1">st_special_thanks</text>
