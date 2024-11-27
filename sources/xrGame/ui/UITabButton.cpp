@@ -22,7 +22,7 @@ bool CUITabButton::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 	return CUIWindow::OnMouse(x, y, mouse_action);
 }
 
-bool CUITabButton::OnMouseDown(int mouse_btn)
+bool CUITabButton::OnMouseDown(s32 mouse_btn)
 {
 	if (mouse_btn == MOUSE_1)
 	{
@@ -50,17 +50,20 @@ void CUITabButton::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 	switch (msg)
 	{
 		case TAB_CHANGED:
-		if (this == pWnd)
 		{
-			m_eButtonState = BUTTON_PUSHED;
-			OnClick( );
-		}
-		else
-		{
-			m_eButtonState = BUTTON_NORMAL;
+			if (this == pWnd)
+			{
+				m_eButtonState = BUTTON_PUSHED;
+				OnClick( );
+			}
+			else
+			{
+				m_eButtonState = BUTTON_NORMAL;
+			}
 		}
 		break;
 		default:
-		;
+		{
+		}
 	}
 }

@@ -4,17 +4,8 @@
 #include "UITabControl.h"
 #include "UITabButton.h"
 
-CUITabControl::CUITabControl( )
-	: m_iPushedIndex(0),
-	m_iPrevPushedIndex(0),
-	m_cGlobalTextColor(0xFFFFFFFF),
-	m_cActiveTextColor(0xFFFFFFFF),
-	m_cActiveButtonColor(0xFFFFFFFF),
-	m_cGlobalButtonColor(0xFFFFFFFF),
-	m_bAcceleratorsEnable(true)
-{
-
-}
+CUITabControl::CUITabControl( ) : m_iPushedIndex(0), m_iPrevPushedIndex(0), m_cGlobalTextColor(0xFFFFFFFF), m_cActiveTextColor(0xFFFFFFFF), m_cActiveButtonColor(0xFFFFFFFF), m_cGlobalButtonColor(0xFFFFFFFF), m_bAcceleratorsEnable(true)
+{ }
 
 CUITabControl::~CUITabControl( )
 {
@@ -203,7 +194,7 @@ bool CUITabControl::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 
 CUIButton* CUITabControl::GetButtonByIndex(s32 i)
 {
-	R_ASSERT(i >= 0 && i < (s32)m_TabsArr.size( ));
+	R_ASSERT(i >= 0 && i < (s32) m_TabsArr.size( ));
 	return m_TabsArr[i];
 }
 

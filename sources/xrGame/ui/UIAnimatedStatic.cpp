@@ -11,28 +11,20 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-CUIAnimatedStatic::CUIAnimatedStatic()
-	:	m_uFrameCount			(0),
-		m_uAnimationDuration	(0),
-		m_uTimeElapsed			(0),
-		m_uAnimCols				(0xffffffff),
-		m_bCyclic				(true),
-		m_bParamsChanged		(true),
-		m_uFrameWidth			(0),
-		m_uFrameHeight			(0),
-		m_uCurFrame				(0xffffffff),
-		m_bPlaying				(false),
-		m_prevTime				(0)
+CUIAnimatedStatic::CUIAnimatedStatic( ) : m_uFrameCount(0), m_uAnimationDuration(0), m_uTimeElapsed(0), m_uAnimCols(0xffffffff), m_bCyclic(true), m_bParamsChanged(true), m_uFrameWidth(0), m_uFrameHeight(0), m_uCurFrame(0xffffffff), m_bPlaying(false), m_prevTime(0)
 {
-	m_pos.set(0,0);
-	ClipperOn();
+	m_pos.set(0.0f, 0.0f);
+	ClipperOn( );
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-void CUIAnimatedStatic::Update()
+void CUIAnimatedStatic::Update( )
 {
-	if (!m_bPlaying) return;
+	if (!m_bPlaying)
+	{
+		return;
+	}
 
 	static u32 oneFrameDuration = 0;
 
@@ -56,7 +48,9 @@ void CUIAnimatedStatic::Update()
 	{
 		Rewind(0);
 		if (!m_bCyclic)
-			Stop();
+		{
+			Stop( );
+		}
 	}
 
 	// “еперь вычисл€ем кадры в зависимости от времени
@@ -73,16 +67,16 @@ void CUIAnimatedStatic::Update()
 
 void CUIAnimatedStatic::SetFrame(const u32 frameNum)
 {
-	//static u32 currRow = 0xffffffff, currCol = 0xffffffff;
-	int currRow = frameNum / m_uAnimCols;
-	int currCol = frameNum % m_uAnimCols;
-	GetUIStaticItem().SetOriginalRect(m_pos.x + f32(currCol*m_uFrameWidth), m_pos.y + f32(currRow*m_uFrameHeight), f32(m_uFrameWidth), f32(m_uFrameHeight));
+	s32 currRow = frameNum / m_uAnimCols;
+	s32 currCol = frameNum % m_uAnimCols;
+	GetUIStaticItem( ).SetOriginalRect(m_pos.x + f32(currCol * m_uFrameWidth), m_pos.y + f32(currRow * m_uFrameHeight), f32(m_uFrameWidth), f32(m_uFrameHeight));
 }
 
-void CUIAnimatedStatic::SetAnimPos(f32 pos){
+void CUIAnimatedStatic::SetAnimPos(f32 pos)
+{
 	R_ASSERT(pos >= 0 && pos <= 1);
 
-	u32 curFrame = u32(m_uFrameCount*pos);
+	u32 curFrame = u32(m_uFrameCount * pos);
 
 	if (curFrame != m_uCurFrame)
 	{

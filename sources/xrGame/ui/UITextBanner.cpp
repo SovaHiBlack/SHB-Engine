@@ -5,12 +5,7 @@
 #include "stdafx.h"
 #include "UITextBanner.h"
 
-CUITextBanner::CUITextBanner( )
-	: m_bAnimate(true),
-	m_Cl(0xffffffff),
-	m_pFont(NULL),
-	fontSize(-1.0f),
-	aligment(CGameFont::alLeft)
+CUITextBanner::CUITextBanner( ) : m_bAnimate(true), m_Cl(0xffffffff), m_pFont(NULL), fontSize(-1.0f), aligment(CGameFont::alLeft)
 { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +20,10 @@ EffectParams* CUITextBanner::SetStyleParams(const TextBannerStyles styleName)
 	if (tbsNone == styleName)
 	{
 		if (!m_StyleParams.empty( ))
+		{
 			m_StyleParams.clear( );
+		}
+
 		return NULL;
 	}
 
@@ -42,8 +40,12 @@ void CUITextBanner::Update( )
 	if (m_bAnimate)
 	{
 		for (; it != m_StyleParams.end( ); ++it)
+		{
 			if (it->second.bOn)
+			{
 				it->second.fTimePassed += Device.fTimeDelta;
+			}
+		}
 	}
 }
 
@@ -51,7 +53,10 @@ void CUITextBanner::Update( )
 
 void CUITextBanner::Out(f32 x, f32 y, pcstr fmt, ...)
 {
-	if (!fmt) return;
+	if (!fmt)
+	{
+		return;
+	}
 
 	StyleParams_it it = m_StyleParams.begin( );
 
@@ -63,6 +68,7 @@ void CUITextBanner::Out(f32 x, f32 y, pcstr fmt, ...)
 		{
 			EffectFade( );
 		}
+
 		// Flicker effect
 		if (it->first & tbsFlicker)
 		{
@@ -82,8 +88,6 @@ void CUITextBanner::Out(f32 x, f32 y, pcstr fmt, ...)
 	R_ASSERT(m_pFont);
 	m_pFont->SetColor(m_Cl);
 	m_pFont->SetAligment(aligment);
-	//	if(fontSize>0.0f)
-	//		m_pFont->SetHeight(fontSize);
 
 	fVector2 pos;
 	UI( )->ClientToScreenScaled(pos, x, y);
@@ -97,7 +101,10 @@ void CUITextBanner::EffectFade( )
 	EffectParams& fade = m_StyleParams[tbsFade];
 
 	// Проверям включена ли анимация
-	if (!fade.bOn) return;
+	if (!fade.bOn)
+	{
+		return;
+	}
 
 	// Если пришло время сменить направление фейда
 	if (fade.fTimePassed > fade.fPeriod)
@@ -109,9 +116,14 @@ void CUITextBanner::EffectFade( )
 		}
 
 		if (0 == fade.iEffectStage)
+		{
 			fade.iEffectStage = 1;
+		}
 		else
+		{
 			fade.iEffectStage = 0;
+		}
+
 		fade.fTimePassed = 0;
 	}
 
@@ -132,7 +144,10 @@ void CUITextBanner::EffectFlicker( )
 	EffectParams& flicker = m_StyleParams[tbsFlicker];
 
 	// Проверям включена ли анимация
-	if (!flicker.bOn) return;
+	if (!flicker.bOn)
+	{
+		return;
+	}
 
 	// Если пришло время, показать/спрятать надпись
 	if (flicker.fTimePassed > flicker.fPeriod)
@@ -144,9 +159,14 @@ void CUITextBanner::EffectFlicker( )
 		}
 
 		if (0 == flicker.iEffectStage)
+		{
 			flicker.iEffectStage = 1;
+		}
 		else
+		{
 			flicker.iEffectStage = 0;
+		}
+
 		flicker.fTimePassed = 0;
 	}
 

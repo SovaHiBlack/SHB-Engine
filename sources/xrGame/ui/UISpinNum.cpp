@@ -8,159 +8,154 @@
 #include "UISpinNum.h"
 #include "UILines.h"
 
-CUISpinNum::CUISpinNum()
-:	m_iVal(0),
-	m_iMin(0),
-	m_iMax(100),
-	m_iStep(1)
-{
+CUISpinNum::CUISpinNum( ) : m_iVal(0), m_iMin(0), m_iMax(100), m_iStep(1)
+{ }
 
-}
-
-void CUISpinNum::SetCurrentValue()
+void CUISpinNum::SetCurrentValue( )
 {
 	GetOptIntegerValue(m_iVal, m_iMin, m_iMax);
-	SetValue();
+	SetValue( );
 }
 
-void CUISpinNum::SaveValue()
+void CUISpinNum::SaveValue( )
 {
-	CUIOptionsItem::SaveValue();
+	CUIOptionsItem::SaveValue( );
 	SaveOptIntegerValue(m_iVal);
 }
 
-bool CUISpinNum::IsChanged()
+bool CUISpinNum::IsChanged( )
 {
-	int val, min, max;
+	s32 val;
+	s32 min;
+	s32 max;
 	GetOptIntegerValue(val, min, max);
-    return m_iVal != val;
+	return (m_iVal != val);
 }
 
 void CUISpinNum::Init(f32 x, f32 y, f32 width, f32 height)
 {
-	CUICustomSpin::Init(x,y,width,height);
-	SetValue();
+	CUICustomSpin::Init(x, y, width, height);
+	SetValue( );
 }
 
-void CUISpinNum::IncVal()
+void CUISpinNum::IncVal( )
 {
-	if (CanPressUp())
+	if (CanPressUp( ))
+	{
 		m_iVal += m_iStep;
+	}
 
-	SetValue();
+	SetValue( );
 }
 
-void CUISpinNum::DecVal()
+void CUISpinNum::DecVal( )
 {
-	if (CanPressDown())
+	if (CanPressDown( ))
+	{
 		m_iVal -= m_iStep;
+	}
 
-	SetValue();
+	SetValue( );
 }
 
-void CUISpinNum::OnBtnUpClick()
+void CUISpinNum::OnBtnUpClick( )
 {
-	IncVal						();
-	CUICustomSpin::OnBtnUpClick	();
+	IncVal( );
+	CUICustomSpin::OnBtnUpClick( );
 }
 
-void CUISpinNum::OnBtnDownClick()
+void CUISpinNum::OnBtnDownClick( )
 {
-	DecVal						();
-	CUICustomSpin::OnBtnDownClick();
+	DecVal( );
+	CUICustomSpin::OnBtnDownClick( );
 }
 
-void CUISpinNum::SetValue()
+void CUISpinNum::SetValue( )
 {
-	string16	buff;
-	m_pLines->SetText(itoa(m_iVal, buff, 10)); 
+	string16 buff;
+	m_pLines->SetText(itoa(m_iVal, buff, 10));
 }
 
-bool CUISpinNum::CanPressUp()
+bool CUISpinNum::CanPressUp( )
 {
-	return m_iVal + m_iStep <= m_iMax;
-
+	return (m_iVal + m_iStep <= m_iMax);
 }
 
-bool CUISpinNum::CanPressDown()
+bool CUISpinNum::CanPressDown( )
 {
-	return m_iVal - m_iStep >= m_iMin;
+	return (m_iVal - m_iStep >= m_iMin);
 }
 
-CUISpinFlt::CUISpinFlt()
-:	m_fVal(0),
-	m_fMin(0),
-	m_fMax(100),
-	m_fStep(0.1f)
-{}
+CUISpinFlt::CUISpinFlt( ) : m_fVal(0.0f), m_fMin(0.0f), m_fMax(100.0f), m_fStep(0.1f)
+{ }
 
-
-void CUISpinFlt::SetCurrentValue()
+void CUISpinFlt::SetCurrentValue( )
 {
 	GetOptFloatValue(m_fVal, m_fMin, m_fMax);
-	SetValue();
+	SetValue( );
 }
 
-void CUISpinFlt::SaveValue()
+void CUISpinFlt::SaveValue( )
 {
-	CUIOptionsItem::SaveValue();
+	CUIOptionsItem::SaveValue( );
 	SaveOptFloatValue(m_fVal);
 }
 
-bool CUISpinFlt::IsChanged()
+bool CUISpinFlt::IsChanged( )
 {
-	f32 val, min, max;
+	f32 val;
+	f32 min;
+	f32 max;
 	GetOptFloatValue(val, min, max);
-    return !fsimilar		(m_fVal,val);
+	return !fsimilar(m_fVal, val);
 }
 
 void CUISpinFlt::Init(f32 x, f32 y, f32 width, f32 height)
 {
-	CUICustomSpin::Init(x,y,width,height);
-	SetValue();
+	CUICustomSpin::Init(x, y, width, height);
+	SetValue( );
 }
 
-void CUISpinFlt::IncVal()
+void CUISpinFlt::IncVal( )
 {
 	m_fVal += m_fStep;
-	SetValue();
+	SetValue( );
 }
 
-void CUISpinFlt::DecVal()
+void CUISpinFlt::DecVal( )
 {
 	m_fVal -= m_fStep;
-	SetValue();
+	SetValue( );
 }
 
-void CUISpinFlt::OnBtnUpClick()
+void CUISpinFlt::OnBtnUpClick( )
 {
-	IncVal		();
+	IncVal( );
 
-	CUICustomSpin::OnBtnUpClick();
+	CUICustomSpin::OnBtnUpClick( );
 }
 
-void CUISpinFlt::OnBtnDownClick()
+void CUISpinFlt::OnBtnDownClick( )
 {
-	DecVal			();
+	DecVal( );
 
-	CUICustomSpin::OnBtnDownClick();
+	CUICustomSpin::OnBtnDownClick( );
 }
 
-void CUISpinFlt::SetValue()
+void CUISpinFlt::SetValue( )
 {
-	clamp					(m_fVal, m_fMin, m_fMax);
-	string16				buff;
-	sprintf_s					(buff,"%.1f",m_fVal);
-	m_pLines->SetText		(buff); 
+	clamp(m_fVal, m_fMin, m_fMax);
+	string16 buff;
+	sprintf_s(buff, "%.1f", m_fVal);
+	m_pLines->SetText(buff);
 }
 
-bool CUISpinFlt::CanPressUp()
+bool CUISpinFlt::CanPressUp( )
 {
-	return m_fVal + m_fStep <= m_fMax;
-
+	return (m_fVal + m_fStep <= m_fMax);
 }
 
-bool CUISpinFlt::CanPressDown()
+bool CUISpinFlt::CanPressDown( )
 {
-	return (m_fVal - m_fStep > m_fMin) || fsimilar(m_fVal-m_fStep, m_fMin);
+	return ((m_fVal - m_fStep > m_fMin) || fsimilar(m_fVal - m_fStep, m_fMin));
 }

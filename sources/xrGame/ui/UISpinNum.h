@@ -6,61 +6,71 @@
 
 #include "UICustomSpin.h"
 
-class CUISpinNum : public CUICustomSpin 
+class CUISpinNum : public CUICustomSpin
 {
 public:
-					CUISpinNum			();
+	CUISpinNum( );
 
-	virtual void	Init				(f32 x, f32 y, f32 width, f32 height);
+	virtual void	Init(f32 x, f32 y, f32 width, f32 height);
 
 	// CUIOptionsItem
-	virtual void	SetCurrentValue		();
-	virtual void	SaveValue			();
-	virtual bool	IsChanged			();
+	virtual void	SetCurrentValue( );
+	virtual void	SaveValue( );
+	virtual bool	IsChanged( );
 
-    virtual void	OnBtnUpClick		();
-	virtual void	OnBtnDownClick		();
+	virtual void	OnBtnUpClick( );
+	virtual void	OnBtnDownClick( );
 
-			void	SetMax				(int max)	{m_iMax=max;};
-			void	SetMin				(int min)	{m_iMin=min;};
-			int		Value				() const {return m_iVal;}
+	void	SetMax(s32 max)
+	{
+		m_iMax = max;
+	}
+	void	SetMin(s32 min)
+	{
+		m_iMin = min;
+	}
+	s32		Value( ) const
+	{
+		return m_iVal;
+	}
+
 protected:
-			void	SetValue			();
-	virtual bool	CanPressUp			();
-	virtual bool	CanPressDown		();
-	virtual void		IncVal			();
-	virtual void		DecVal			();
+	void	SetValue( );
+	virtual bool	CanPressUp( );
+	virtual bool	CanPressDown( );
+	virtual void		IncVal( );
+	virtual void		DecVal( );
 
-	int		m_iMax;
-	int		m_iMin;
-	int		m_iStep;
-	int		m_iVal;
+	s32		m_iMax;
+	s32		m_iMin;
+	s32		m_iStep;
+	s32		m_iVal;
 };
 
-class CUISpinFlt : public CUICustomSpin 
+class CUISpinFlt : public CUICustomSpin
 {
 public:
-	CUISpinFlt();
+	CUISpinFlt( );
 
-	virtual void	Init				(f32 x, f32 y, f32 width, f32 height);
+	virtual void	Init(f32 x, f32 y, f32 width, f32 height);
 
 	// CUIOptionsItem
-	virtual void	SetCurrentValue		();
-	virtual void	SaveValue			();
-	virtual bool	IsChanged			();
+	virtual void	SetCurrentValue( );
+	virtual void	SaveValue( );
+	virtual bool	IsChanged( );
 
-    virtual void	OnBtnUpClick		();
-	virtual void	OnBtnDownClick		();
+	virtual void	OnBtnUpClick( );
+	virtual void	OnBtnDownClick( );
 
-			void	SetMax				(f32 max);
-			void	SetMin				(f32 min);
+	void	SetMax(f32 max);
+	void	SetMin(f32 min);
 
 protected:
-			void	SetValue			();
-	virtual bool	CanPressUp			();
-	virtual bool	CanPressDown		();
-	virtual void	IncVal				();
-	virtual void	DecVal				();
+	void	SetValue( );
+	virtual bool	CanPressUp( );
+	virtual bool	CanPressDown( );
+	virtual void	IncVal( );
+	virtual void	DecVal( );
 
 	f32		m_fMax;
 	f32		m_fMin;
