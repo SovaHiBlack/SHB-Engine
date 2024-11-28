@@ -39,7 +39,7 @@ void CUIPropertiesBox::Init(f32 x, f32 y, f32 width, f32 height)
 	m_UIListWnd.Init(OFFSET_X, OFFSET_Y, width - OFFSET_X * 2, height - OFFSET_Y * 2);
 }
 
-void CUIPropertiesBox::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIPropertiesBox::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	if (pWnd == &m_UIListWnd)
 	{
@@ -49,10 +49,11 @@ void CUIPropertiesBox::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 			Hide( );
 		}
 	}
+
 	inherited::SendMessage(pWnd, msg, pData);
 }
 
-bool CUIPropertiesBox::AddItem(pcstr  str, void* pData, u32 tag_value)
+bool CUIPropertiesBox::AddItem(pcstr str, pvoid pData, u32 tag_value)
 {
 	CUIListBoxItem* itm = m_UIListWnd.AddItem(str);
 	itm->SetTAG(tag_value);
@@ -60,6 +61,7 @@ bool CUIPropertiesBox::AddItem(pcstr  str, void* pData, u32 tag_value)
 
 	return true;
 }
+
 void CUIPropertiesBox::RemoveItemByTAG(u32 tag)
 {
 	m_UIListWnd.RemoveWindow(m_UIListWnd.GetItemByTAG(tag));
@@ -72,25 +74,25 @@ void CUIPropertiesBox::RemoveAll( )
 
 void CUIPropertiesBox::Show(const fRect& parent_rect, const fVector2& point)
 {
-	fVector2						prop_pos;
+	fVector2 prop_pos;
 	fVector2 prop_size = GetWndSize( );
 
 	if (point.x - prop_size.x > parent_rect.x1 && point.y + prop_size.y < parent_rect.y2)
 	{
 		prop_pos.set(point.x - prop_size.x, point.y);
 	}
+	else if (point.x - prop_size.x > parent_rect.x1 && point.y - prop_size.y > parent_rect.y1)
+	{
+		prop_pos.set(point.x - prop_size.x, point.y - prop_size.y);
+	}
+	else if (point.x + prop_size.x < parent_rect.x2 && point.y - prop_size.y > parent_rect.y1)
+	{
+		prop_pos.set(point.x, point.y - prop_size.y);
+	}
 	else
-		if (point.x - prop_size.x > parent_rect.x1 && point.y - prop_size.y > parent_rect.y1)
-		{
-			prop_pos.set(point.x - prop_size.x, point.y - prop_size.y);
-		}
-		else
-			if (point.x + prop_size.x < parent_rect.x2 && point.y - prop_size.y > parent_rect.y1)
-			{
-				prop_pos.set(point.x, point.y - prop_size.y);
-			}
-			else
-				prop_pos.set(point.x, point.y);
+	{
+		prop_pos.set(point.x, point.y);
+	}
 
 	SetWndPos(prop_pos);
 
@@ -112,19 +114,23 @@ void CUIPropertiesBox::Hide( )
 	m_pMouseCapturer = NULL;
 
 	if (GetParent( )->GetMouseCapturer( ) == this)
+	{
 		GetParent( )->SetCapture(this, false);
+	}
 }
 
 bool CUIPropertiesBox::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 {
 	bool cursor_on_box;
 
-
 	if (x >= 0 && x < GetWidth( ) && y >= 0 && y < GetHeight( ))
+	{
 		cursor_on_box = true;
+	}
 	else
+	{
 		cursor_on_box = false;
-
+	}
 
 	if (mouse_action == WINDOW_LBUTTON_DOWN && !cursor_on_box)
 	{
@@ -146,26 +152,43 @@ void CUIPropertiesBox::AutoUpdateSize( )
 	m_UIListWnd.UpdateChildrenLenght( );
 }
 
-//int CUIPropertiesBox::GetClickedIndex() 
-//{
-////	return m_iClickedElement;
-//}
-
 CUIListBoxItem* CUIPropertiesBox::GetClickedItem( )
 {
 	return m_UIListWnd.GetSelectedItem( );
 }
+
 void CUIPropertiesBox::Update( )
 {
 	inherited::Update( );
 }
+
 void CUIPropertiesBox::Draw( )
 {
 	inherited::Draw( );
 }
 
-bool CUIPropertiesBox::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CUIPropertiesBox::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	Hide( );
 	return true;
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CUIPropertiesBox::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CUIPropertiesBox, CUIFrameWindow>("CUIPropertiesBox")
+				.def(constructor<>( ))
+				//		.def("AddItem",					&CUIPropertiesBox::AddItem)
+				.def("RemoveItem", &CUIPropertiesBox::RemoveItemByTAG)
+				.def("RemoveAll", &CUIPropertiesBox::RemoveAll)
+				.def("Show", (void(CUIPropertiesBox::*)(int, int)) & CUIPropertiesBox::Show)
+				.def("Hide", &CUIPropertiesBox::Hide)
+				.def("AutoUpdateSize", &CUIPropertiesBox::AutoUpdateSize)
+				.def("AddItem", &CUIPropertiesBox::AddItem_script)
+				//		.def("",					&CUIPropertiesBox::)
+		];
 }

@@ -8,6 +8,7 @@ class CUIProgressBar : public CUIWindow
 {
 	friend class		CUIXmlInit;
 	typedef CUIWindow	inherited;
+
 protected:
 	bool				m_bIsHorizontal;
 
@@ -16,12 +17,12 @@ protected:
 	f32				m_MaxPos;
 
 	f32				m_CurrentLength;
-	
+
 	bool				m_bBackgroundPresent;
 	fVector2			m_BackgroundOffset;
 	u32					m_last_render_frame;
-	void				UpdateProgressBar();
-	
+	void				UpdateProgressBar( );
+
 public:
 	bool				m_bUseColor;
 	fColor				m_minColor;
@@ -32,20 +33,34 @@ public:
 	CUIStatic			m_UIProgressItem;
 	CUIStatic			m_UIBackgroundItem;
 
-						CUIProgressBar				();
-	virtual				~CUIProgressBar				();
+	CUIProgressBar( );
+	virtual				~CUIProgressBar( );
 
-	virtual void		Init						(f32 x, f32 y, f32 width, f32 height, bool bIsHorizontal);
+	virtual void		Init(f32 x, f32 y, f32 width, f32 height, bool bIsHorizontal);
 
-	void				SetRange					(f32 _Min, f32 _Max)	{ m_MinPos = _Min;  m_MaxPos = _Max; UpdateProgressBar();}
-	f32				GetRange_min				() 							{ return  m_MinPos;}
-	f32				GetRange_max				() 							{ return  m_MaxPos;}
+	void				SetRange(f32 _Min, f32 _Max)
+	{
+		m_MinPos = _Min;
+		m_MaxPos = _Max;
+		UpdateProgressBar( );
+	}
+	f32				GetRange_min( )
+	{
+		return m_MinPos;
+	}
+	f32				GetRange_max( )
+	{
+		return m_MaxPos;
+	}
 
-	void				SetProgressPos				(f32 _Pos);
-	f32				GetProgressPos				()							{ return m_ProgressPos.y; }
+	void				SetProgressPos(f32 _Pos);
+	f32				GetProgressPos( )
+	{
+		return m_ProgressPos.y;
+	}
 
-	virtual void		Draw						();
-	virtual void		Update						();
+	virtual void		Draw( );
+	virtual void		Update( );
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

@@ -2328,17 +2328,11 @@
     <ClCompile Include="ui\UIPdaMsgListItem.cpp" />
     <ClCompile Include="ui\UIPdaWnd.cpp" />
     <ClCompile Include="ui\UIProgressBar.cpp" />
-    <ClCompile Include="ui\UIProgressBar_script.cpp" />
     <ClCompile Include="ui\UIProgressShape.cpp" />
     <ClCompile Include="ui\UIPropertiesBox.cpp" />
-    <ClCompile Include="ui\UIPropertiesBox_script.cpp" />
     <ClCompile Include="ui\UIRadioButton.cpp" />
     <ClCompile Include="ui\UIScriptWnd.cpp" />
     <ClCompile Include="ui\UIScriptWnd_script.cpp">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4511;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4511;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-    </ClCompile>
-    <ClCompile Include="ui\uiscriptwnd_script2.cpp">
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4511;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4511;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>

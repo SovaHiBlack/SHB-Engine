@@ -251,13 +251,13 @@ bool CUIScrollView::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 			m_VScrollBar->TryScrollDec( );
 			return true;
 		}
-			break;
+		break;
 		case WINDOW_MOUSE_WHEEL_DOWN:
 		{
 			m_VScrollBar->TryScrollInc( );
 			return true;
 		}
-			break;
+		break;
 		case WINDOW_MOUSE_MOVE:
 		{
 			if (pInput->iGetAsyncBtnState(0))
@@ -273,7 +273,7 @@ bool CUIScrollView::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 				return true;
 			}
 		}
-			break;
+		break;
 	}
 
 	return false;

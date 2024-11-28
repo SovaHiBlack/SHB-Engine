@@ -13,6 +13,7 @@
 #include "UIFrameLineWnd.h"
 #include "UIProgressBar.h"
 #include "UITabControl.h"
+#include "UIListWnd.h"
 
 #include "uiscriptwnd_script.h"
 
@@ -54,6 +55,25 @@ export_class &script_register_ui_window1(export_class &instance)
 		.def("GetCheckButton",	(CUICheckButton* (BaseType::*)(pcstr)) &BaseType::GetControl<CUICheckButton>)
 		.def("GetRadioButton",	(CUIRadioButton* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIRadioButton>)
 //		.def("GetRadioGroup",	(CUIRadioGroup* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIRadioGroup>)
+
+	;return	(instance);
+}
+
+export_class &script_register_ui_window2(export_class &instance)
+{
+	instance
+		.def("GetStatic",		(CUIStatic* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIStatic>)
+		.def("GetEditBox",		(CUIEditBox* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIEditBox>)
+		.def("GetDialogWnd",	(CUIDialogWnd* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIDialogWnd>)
+		.def("GetFrameWindow",	(CUIFrameWindow* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIFrameWindow>)
+		.def("GetFrameLineWnd",	(CUIFrameLineWnd* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIFrameLineWnd>)
+		.def("GetProgressBar",	(CUIProgressBar* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIProgressBar>)
+		.def("GetTabControl",	(CUITabControl* (BaseType::*)(pcstr)) &BaseType::GetControl<CUITabControl>)
+		.def("GetListWnd",		(CUIListWnd* (BaseType::*)(pcstr)) &BaseType::GetControl<CUIListWnd>)
+
+		.def("OnKeyboard",		&BaseType::OnKeyboard, &WrapType::OnKeyboard_static)
+		.def("Update",			&BaseType::Update, &WrapType::Update_static)
+		.def("Dispatch",		&BaseType::Dispatch, &WrapType::Dispatch_static)
 
 	;return	(instance);
 }
