@@ -1,29 +1,74 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+    <string id="dolg_talk_about_3">
+        <text>text in default</text>
+    </string>
     <string id="dolg_talk_about_0">
         <text>dolg_talk_about_0 default text</text>
         <text ln="rus">dolg_talk_about_0 Rus text</text>
         <text ln="eng">dolg_talk_about_0 Eng text</text>
         <text ln="ua">text in ua</text>
     </string>
-    <string id="new_stupid_dialog_0">
-        <text>default text</text>
-        <text ln="eng">text in eng</text>
-        <text ln="rus">text in rus</text>
+    <string id="dolg_talk_about_11">
+        <text>text in default</text>
     </string>
-    <string id="new_stupid_dialog_100">
-        <text>text in default 100</text>
+    <string id="dolg_talk_about_2">
+        <text>text in default</text>
     </string>
-    <string id="new_stupid_dialog_200">
-        <text>text in default 200</text>
+    <string id="dolg_talk_about_1">
+        <text>text in default</text>
     </string>
     <string id="new_stupid_dialog_300">
+        <text>text in default</text>
+    </string>
+    <string id="new_stupid_dialog_201">
         <text>text in default</text>
     </string>
     <string id="new_stupid_dialog_101">
         <text>text in default 101</text>
     </string>
-    <string id="new_stupid_dialog_201">
-        <text>text in default</text>
+    <string id="new_stupid_dialog_200">
+        <text>text in default 200</text>
+    </string>
+    <string id="new_stupid_dialog_100">
+        <text>text in default 100</text>
+    </string>
+    <string id="new_stupid_dialog_0">
+        <text>default text</text>
+        <text ln="eng">text in eng</text>
+        <text ln="rus">text in rus</text>
+    </string>
+    <string id="New_21">
+        <text>Дождик капает</text>
+    </string>
+    <string id="New_2">
+        <text>Что нового в Зоне?</text>
+    </string>
+    <string id="New_3">
+        <text>Пойду я, пожалуй</text>
+    </string>
+    <string id="New_1">
+        <text>Расскажи о Стрелке</text>
+    </string>
+    <string id="New_1121">
+        <text>Да, пропал</text>
+    </string>
+    <string id="New_0">
+        <text>Привет</text>
+    </string>
+    <string id="New_11">
+        <text>Стрелок - очень модный штрих. Нашел путь к центру и пропал.</text>
+    </string>
+    <string id="New_113">
+        <text>Спасибо за инфу</text>
+    </string>
+    <string id="New_1111">
+        <text>Да, к центру</text>
+    </string>
+    <string id="New_112">
+        <text>Пропал?</text>
+    </string>
+    <string id="New_111">
+        <text>К центру?</text>
     </string>
 </string_table>
