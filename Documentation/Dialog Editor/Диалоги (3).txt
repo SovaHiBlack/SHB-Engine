@@ -1,0 +1,335 @@
+---------------------------------Как сделать простой диалог.----------------------------------------
+
+1. Открываем, например файл dialogs_escape.xml (gamedata/config/gameplay) и пишем в конец:
+
+<dialog id="test_dialog">
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+Это скелет диалога. В нём будут написаны все инфопоршни и actions.
+
+<dialog id="test_dialog"> - это название диалога, которое нужно будет написать НПС.
+
+<phrase id="0"> - номер фразы.
+
+<text>test_dialog_0</text> - это текст фразы.
+
+<next>?</next> - переход к фразе.
+
+2. Теперь нужно написать тексты диалога. Заходим в файл "stable_dialogs_bar.xml" (gamedata/config/text/rus) и пишем в конце:
+
+<string id="test_dialog_0">
+	<text>Это тэстовый диалог</text>
+</string>
+<string id="test_dialog_1">
+	<text>Угу.</text>
+</string>
+
+<string id="test_dialog_0"> - это то, на что ссылается скелет диалога.
+
+<text>Это тэстовый диалог</text> - собственно текст.
+
+!!!ВНИМАНИЕ!!! Все диалоги начинаются со слов Меченого.
+
+3. Теперь нужно прописать этот диалог НПС. Например Бармену.
+Открываем файл "character_desc_bar.xml" и находим секцию Бармена. Она идёт самой первой.
+После всех 
+<actor_dialog>???</actor_dialog>
+Прописываем свой:
+<actor_dialog>test_dialog</actor_dialog>
+
+------------------------------Как создать диалог посложнее.-----------------------------------------
+Создать диалог с разными вариантами ответов, который исчезнет после прочтения.
+
+1. Открываем, например файл dialogs_escape.xml (gamedata/config/gameplay) и пишем в конец:
+
+<dialog id="test_dialog">
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+			<next>2</next>
+			<next>3</next>
+		</phrase>
+		<phrase id="2">
+			<text>test_dialog_2</text>
+		</phrase>
+		<phrase id="3">
+			<text>test_dialog_3</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<next>2</next> и <next>3</next> это возможные ответы Меченого.
+
+2. Теперь нужно написать тексты диалога. Заходим в файл "stable_dialogs_bar.xml" (gamedata/config/text/rus) и пишем в конце:
+
+<string id="test_dialog_0">
+	<text>Как дела?</text>
+</string>
+<string id="test_dialog_1">
+	<text>Нормально, а у тебя?</text>
+</string>
+<string id="test_dialog_2">
+	<text>Нормально</text>
+</string>
+<string id="test_dialog_3">
+	<text>Хреново.</text>
+</string>
+
+3.Чтобы этот диалог не появлялся, пишем инфопоршень. Например в файле info_l01escape.xml
+
+Пишем:
+
+<info_portion id="test_pogovoril"></info_portion>
+
+4.Дописываем инфопоршень в скелет диалога:
+
+<dialog id="test_dialog">
+<dont_has_info>test_pogovoril</dont_has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+			<next>2</next>
+			<next>3</next>
+		</phrase>
+		<phrase id="2">
+			<text>test_dialog_2</text>
+			<give_info>test_pogovoril</give_info>
+		</phrase>
+		<phrase id="3">
+			<text>test_dialog_3</text>
+			<give_info>test_pogovoril</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dont_has_info>test_pogovoril</dont_has_info> - если ГГ получил инфопоршень, диалог не показывать.
+
+<give_info>test_pogovoril</give_info> - дать ГГ инфопоршень.
+
+Получается, что когда ГГ скажет любую из 2 фраз, диалог больше не появится.
+
+----------------------------Как сделать разные action в диалогах.-----------------------------------
+
+1.Создаём обычный диалог:
+
+<dialog id="test_dialog">
+<dont_has_info>test_pogovoril</dont_has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+			<next>2</next>
+			<next>3</next>
+			<next>4</next>
+		</phrase>
+		<phrase id="2">
+			<text>test_dialog_2</text>
+		</phrase>
+		<phrase id="3">
+			<text>test_dialog_3</text>
+		</phrase>
+		<phrase id="4">
+			<text>test_dialog_4</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+C такими текстами:
+
+<string id="test_dialog_0">
+	<text>Я тестю функции.</text>
+</string>
+<string id="test_dialog_1">
+	<text>Ок, какую?</text>
+</string>
+ <string id="test_dialog_2">
+	<text>Дать деньги</text>
+</string>
+<string id="test_dialog_3">
+	<text>Дать ПМ</text>
+</string>
+<string id="test_dialog_4">
+	<text>Заспавнить ПМ</text>
+</string>
+
+2.Создаём свой скрипт в папке gamedata/script например test.script и пишем в него 3 функции:
+
+function dat_dengi(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 3000, "in")
+end
+
+Это функция отдачи денег ГГ. На месте 3000 любое число.
+На месте dat_dengi любое название.
+
+function dat_item(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_pm", "in")
+end
+
+Это функция отдачи предмета ГГ. На месте wpn_pm любой предмет.
+На месте dat_item любое название.
+
+function spawn_item_or_monster_or_stalker()
+	alife():create("wpn_pm",vector():set(pos),lvid,gvid)
+end
+
+Это функция спавна чего либо. На месте wpn_pm любой предмет,монстр или сталкер.
+На месте (pos),lvid,gvid) любые координаты.
+На месте spawn_item_or_monster_or_stalker любое название.
+
+Так же функция может быть одна, но с несколькими действиями. 
+
+function all(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 3000, "in")
+	dialogs.relocate_item_section(second_speaker, "wpn_pm", "in")
+	alife():create("wpn_pm",vector():set(pos),lvid,gvid)
+end
+
+Значит что одновременно ГГ дадут 3000 рублей, ПМ и по заданным координатам заспавнится ПМ.
+
+3.Впишем функции в диалог:
+
+<dialog id="test_dialog">
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+			<next>2</next>
+			<next>3</next>
+			<next>4</next>
+		</phrase>
+		<phrase id="2">
+			<text>test_dialog_2</text>
+			<action>test.dat_dengi</action>
+		</phrase>
+		<phrase id="3">
+			<text>test_dialog_3</text>
+			<action>test.dat_item</action>
+		</phrase>
+		<phrase id="4">
+			<text>test_dialog_4</text>
+			<action>test.spawn_item_or_monster_or_stalker</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+Это значит что после после фразы
+<text>test_dialog_2</text>
+ГГ дадут 3000руб.
+
+Это значит что после после фразы
+<text>test_dialog_3</text>
+ГГ дадут ПМ.
+
+Это значит что после после фразы
+<text>test_dialog_3</text>
+Заспавнится ПМ.
+
+-----------------------------Как сделать разные precondition в диалогах.----------------------------
+Прекондишоны - это проверки на появление диалога
+
+1.Создаём обычный диалог:
+
+<dialog id="test_dialog">
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+			<next>2</next>
+			<next>3</next>
+		</phrase>
+		<phrase id="2">
+			<text>test_dialog_2</text>
+		</phrase>
+		<phrase id="3">
+			<text>test_dialog_3</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+C такими текстами:
+
+<string id="test_dialog_0">
+	<text>Тест прекондишонов.</text>
+</string>
+<string id="test_dialog_1">
+	<text>Какой?</text>
+</string>
+<string id="test_dialog_2">
+	<text>Эта фраза появляется если у ГГ есть ??? рублей.</text>
+</string>
+<string id="test_dialog_3">
+	<text>Эта фраза появляется если у ГГ есть ??? предмет.</text>
+</string>
+
+2.Создаём свой скрипт в папке gamedata/script например test.script и пишем в него 3 функции-прекондишона:
+
+function has_money_???()
+	local money = math.floor(200 * xr_statistic_freeplay.get_freeplay_statistic():get_found_pda_discount())
+	return db.actor:money()>=money
+end
+
+Это функция проверки количества денег ГГ. На месте 200 любое число.
+На месте has_money_??? любое название.
+
+function has_item(task, objective)
+	if db.actor ~= nil then
+	return db.actor:object("wpn_pm") ~= nil
+	end
+	return false
+end
+
+Это функция проверки наличия какого либо предмета у ГГ. На месте wpn_pm любой предмет.
+На месте has_item любое название.
+
+3.Впишем функции в диалог:
+
+<dialog id="test_dialog">
+	<phrase_list>
+		<phrase id="0">
+			<text>test_dialog_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>test_dialog_1</text>
+			<next>2</next>
+			<next>3</next>
+		</phrase>
+		<phrase id="2">
+			<text>test_dialog_2</text>
+			<precondition>test.has_money???</precondition>
+		</phrase>
+		<phrase id="3">
+			<text>test_dialog_3</text>
+			<precondition>test.has_item</precondition>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+Это значит что фраза <text>test_dialog_2</text> появится если у ГГ есть 200рублей.
+Это значит что фраза <text>test_dialog_3</text> появится если у ГГ есть ПМ.

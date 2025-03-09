@@ -1,0 +1,110 @@
+Cложность: Сложно.
+
+-Как сделать разные precondition в диалогах.
+Прекондишоны - это проверки на появление диалога
+
+1.Создаём обычный диалог:
+
+
+Код
+<dialog id="test_dialog">
+        <phrase_list>
+            <phrase id="0">
+        <text>test_dialog_0</text>
+        <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>test_dialog_1</text>
+        <next>2</next>
+        <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <text>test_dialog_2</text>
+            </phrase>
+            <phrase id="3">
+                <text>test_dialog_3</text>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+C такими текстами:
+
+
+Код
+<string id="test_dialog_0">
+        <text>Тест прекондишонов.</text>
+    </string>
+    <string id="test_dialog_1">
+        <text>Какой?</text>
+    </string>
+    <string id="test_dialog_2">
+        <text>Эта фраза появляется если у ГГ есть ??? рублей.</text>
+    </string>
+    <string id="test_dialog_3">
+        <text>Эта фраза появляется если у ГГ есть ??? предмет.</text>
+    </string>
+
+
+
+
+2.Создаём свой скрипт в папке gamedata/script например test.script и пишем в него 3 
+
+функции-прекондишона:
+
+
+Код
+function has_money_???()
+  local money = math.floor(200 * 
+
+xr_statistic_freeplay.get_freeplay_statistic():get_found_pda_discount())
+  return db.actor:money()>=money
+end
+
+
+Это функция проверки количества денег ГГ. На месте 200 любое число.
+На месте has_money_??? любое название.
+------------------------------------------------------------
+
+Код
+function has_item(task, objective) 
+if db.actor ~= nil then
+return db.actor:object("wpn_pm") ~= nil
+end
+return false
+end
+
+
+Это функция проверки наличия какого либо предмета у ГГ. На месте wpn_pm любой предмет.
+На месте has_item любое название.
+------------------------------------------------------------
+
+3.Впишем функции в диалог:
+
+
+Код
+<dialog id="test_dialog">
+        <phrase_list>
+            <phrase id="0">
+        <text>test_dialog_0</text>
+        <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>test_dialog_1</text>
+        <next>2</next>
+        <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <text>test_dialog_2</text>
+        <precondition>test.has_money???</precondition>
+            </phrase>
+            <phrase id="3">
+                <text>test_dialog_3</text>
+        <precondition>test.has_item</precondition>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+
+Это значит что фраза <text>test_dialog_2</text> появится если у ГГ есть 200рублей
+Это значит что фраза <text>test_dialog_3</text> появится если у ГГ есть ПМ.

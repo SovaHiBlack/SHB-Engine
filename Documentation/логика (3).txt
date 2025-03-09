@@ -1,0 +1,420 @@
+Недавно решил поэкспериментировать с анимками НПС, и теперь выкладываю результаты моих опытов над "людьми". Разумеется, опытные модмейкеры все это давно знают – поэтому материал предназначен для новичков, которые еще не освоили как прописывать неписям разные прикольные анимки, а заодно и озвучку через логику. Все анимки взяты из файла state_lib. script. Анимки, которые имеются в движке, но не вписаны в указанный файл, не рассматриваются. Это тема для отдельной статьи. Озвучка взята из файла sound_script (папка misc). Конечно, хотелось использовать и звуковые темы не вписанные в этот файл, но имеющиеся в папке sounds - но с этим еще надо разобраться.
+[править]
+Часть первая.
+
+Вся изложенная ниже схема является единым целым и ее можно ставить в ltx –ный файл логики любому вашему НПС целиком. Она будет зациклена и повторяться по кругу если кое-где поставить другие варианты перехода от одной ремарки к другой.
+
+[logic]
+active = remark@base 
+danger = danger_condition 
+meet = meet
+
+[remark@base]
+anim = hello_wpn
+no_move = true
+target = actor
+meet = meet
+on_actor_dist_le = 2| remark@sit
+
+[meet] 
+meet_state = 10|salut@esc_bridge_soldiers| 5|salut_free@esc_lager_killer
+meet_state_wpn = 10|ward@cit_base_guard_talk_to_actor2| 5|probe_2@gar_bandits_seryi
+victim = 10|actor
+victim_wpn = 10|actor
+use = true
+use_wpn = true
+meet_dialog	= escape_lager_guard_start_dialog 
+
+В базовой ремарке мой чувак использует анимку Волка - hello_wpn – одной рукой машет ГГ, другой держит ствол. Это начальная анимка, которая будет отрабатываться НПС, пока ГГ не подойдет на дистанцию встречи. В секции meet задается схема реагирования НПС при подходе к нему эктора. В строчке meet_state – реакция при подходе безоружного ГГ. На расстоянии 10 метров НПС отдает честь, затем встает в позицию «смирно» - руки по швам. Это анимка salut. Ближе 5 метров – тоже самое, дальше переходит в позицию «вольно». Это анимка salut_free. В секции meet можно задавать и то, что НПС будет базарить при виде эктора. В моей схеме: «чего стоишь сталкер, подходи, будем разговаривать» (esc_bridge_soldiers) отдавая салют, и на второй дистанции - «разбежались сосунки и т.д». (esc_lager_killer) В строчке meet_state_wpn - реакция НПС если эктор с пушкой в руках. У меня в этой схеме он встает в позу ward – руки за спиной, голова наклонена вниз. Словом поза тюремщика или надсмотрщика (ward примерно так и переводится). В этой позе НПС на дистанции ближе 10 метров орет «повторяю для тупых - отошел к дальней стене камеры…» (cit_base_guard_talk_to_actor2), а если ГГ подойдет еще ближе - «ты щас сдохнешь падла, понял…» (gar_bandits_seryi) и еще несколько рандомных фраз, которые заданы звуковой темой gar_bandits_seryi. К начальной анимке также можно добавлять любую звуковую тему через строчку snd. В данной ремарке ее нет.
+
+Переходим к следующей схеме. Так как все эти схему у меня завязаны вместе, то переход ко второй ремарке произойдет, когда ГГ подойдет к НПС на дистанцию ближе двух метров. Прописано этой в строчке on_actor_dist_le = 2| remark@sit
+
+
+[remark@sit]
+anim = sit_ass
+snd = mil_guard_to_max
+no_move = true
+target = actor
+meet = no_meet
+;on_actor_dist_le = 2| remark@raciya
+;on_timer = 30000| remark@ raciya
+on_signal = sound_end| remark@raciya
+danger = danger_condition
+
+
+Итак, что делает НПС в этой ремарке. Сидит на заднице - sit_ass, орет - mil_guard_to_max – «макс, у нас тут проблема на хуторе нарисовалась, собирай народ…» В секции meet прописано отсутствие встречи, так как задано no_meet . Так что разговаривать с ГГ непись не будет. После отработки заданной звуковой темы идет переход к к ремарке remark@ raciya. Сделано это через строчку on_signal = sound_end| remark@raciya. Переведу: на сигнал «конец звуковой темы» переходим к схеме remark@raciya.
+
+Следующая схема.
+
+[remark@raciya]
+anim = choose 
+snd = bar_arena_public
+no_move = true
+target = actor
+meet = meet@raciya
+on_timer = 120000| remark@work
+;on_actor_dist_ge = 35| remark@work
+danger = danger_condition
+
+[meet@raciya]
+meet_state = 7|binocular@val_escort_guards| 5|guard_rac@mil_pavlik_to_ara
+meet_state_wpn = 7|hide_rac@mil_ara_ambush                                       
+victim = 7|actor 
+victim_wpn = 7|actor 
+use = true 
+use_wpn = true 
+meet_dialog	= escape_lager_guard_start_dialog
+
+Анимка choose – ГГ что-то высматривает: оглядывается по сторонам, прикладывает руку ко лбу, так же как это делам мы, когда смотрим вдаль против солнца. Звуковая тема – что то там из реплик на арене. При встрече – смотрит в бинокль (если он у него есть) и издевательски базарит - «скоро ты будешь работать обедом для мутантов» (в этой теме реплик несколько). На 5 метрах достает рацию (если есть) - анимка guard_rac и базарит реплики из темы предателя Павлика на милитари «все чисто можете подходить». При угрозе стволом - анимка hide_rac («сидит с рацией»), базар - «это засада, уходим» Через 120 секунд - переход к следующей ремарке: on_timer = 120000| remark@work
+
+[remark@work]
+anim = caution
+no_move = true
+snd = mil_max_before_collect
+target = actor
+on_timer = 30000| remark@work2
+meet = no_meet
+danger = danger_condition
+
+Анимка caution – ГГ слегка согнувшись, что-то внимательно высматривает на земле, руки прикладывает к коленям. А затем радостно сообщает - «ребята у нас появилась работа». Видимо, что-то высмотрел интересное. Через 30 секунд - снова переход.
+
+[remark@work2]
+anim = search
+no_move = true
+snd = mil_collect_phrase3
+target = actor
+on_timer = 30000| remark@zombied
+meet = no_meet
+danger = danger_condition
+
+Анимка search - поиск, только более развернутый. ГГ встает на колени или на корточки и начинает что-то искать. Что он при этом произносит – узнаете, когда послушаете. Через 30 секунд переход к схеме зомби.
+
+[remark@zombied]
+anim = trans_zombied
+snd = pri_followers_leader_phrase1_1
+no_move = true
+target = actor
+on_timer = 60000| remark@wounded
+meet = meet@zombied
+danger = danger_condition
+
+[meet@zombied]
+meet_state =  5|trans_0@hail
+meet_state_wpn	= 5|trans_1@hail
+victim		= 5|actor  
+victim_wpn	= 5|actor
+use			= true
+use_wpn		= true
+meet_dialog	= escape_lager_guard_start_dialog
+
+Анимка trans_zombied - падает на колени, головой двигает вверх-вниз. trans_1 - также стоит на коленях, только головой вращает по кругу. trans_0 – то же самое, только более энергичней. Или наоборот - извиняюсь если перепутал.
+
+Схема раненый. Тут все понятно.
+
+[remark@wounded]
+anim = wounded_heavy_3
+snd = help_heavy
+target = actor
+meet = no_meet
+on_timer = 30000| remark@dinner
+danger = danger_condition
+
+
+wounded_heavy_3 – это анимка тяжелораненого. (есть еще и другие анимки раненого). Чувак скрючившись, грохнется на землю. Но на ней не остается, а тут же встает и бежит в сторону в денжере. Что и понятно – здоровье то у него норм. Остальные неписи видевшие как чувак упал, так же срываются в денжере с места. Ищут того, кто «стрелял». Не удивляйтесь, но так они запрограммированы.
+
+Схема обед.
+
+[remark@dinner]
+anim = sit_knee
+no_move = true
+target = actor
+meet = meet@dinner
+danger = danger_condition
+on_actor_dist_ge = 15| remark@dynamite
+
+[meet@dinner]
+meet_state	= 5|eat_bread@wait| 3|eat_energy@wait
+meet_state_wpn	= 5|eat_kolbasa@wait| 3|eat_vodka@val_escort_dead
+victim = 8|actor 
+victim_wpn = 8|actor 
+use = true 
+use_wpn = true 
+meet_dialog	= escape_lager_guard_start_dialog
+
+sit_knee - чувак сидит на заднице, опираясь на руку. eat_bread, eat_kolbasa, eat_energy, eat_vodka - тут я думаю ничего объяснять не надо. Чувак хавает и пьет. Пригубив водки, произносит – «пусть земля тебе будет пухом» При отходе эктора на дистанцию больше 15 метров - переход к схеме динамит. Звуковая тема wait – это пауза, в которой непись ничего не говорит.
+
+[remark@dynamite]
+anim = dynamite
+no_move = true
+target = actor
+meet = no_meet
+on_timer = 30000| remark@claim
+danger = danger_condition
+
+dynamite – закладка динамита. Как это выглядит – помните долговца на милитари у стены с динамитом?
+
+
+[remark@claim]
+anim = claim
+snd = esc_wolf_thanks
+target = actor
+meet = meet@claim
+danger = danger_condition
+on_timer = 60000| remark@story
+
+
+Анимка claim - НПС подзывает ГГ рукой. snd = esc_wolf_thanks - здесь НПС произносит фразу волка: «меченый теперь тебе проход в лагерь открыт, подходи».
+
+
+[meet@claim]
+meet_state	= 7|refuse@mil_collect_phrase5| 5|probe_2@mil_collect_phrase6 
+meet_state_wpn	= 7|backoff@gar_dm_bandit_demand          
+victim		= 7|actor   
+victim_wpn	= 7|actor
+use			= true
+use_wpn		= true
+meet_dialog	= escape_lager_guard_start_dialog
+
+Анимка refuse - непись пожимает плечами и произносит mil_collect_phrase5 - «не срать». probe_2 - судя по сопровождающим ее звукам (независимо от прописанной мной звуковой темы) – это анимка Круглова (его манипуляции с прибором, а может Сахарова - впрочем, это не важно). Если у вашего НПС будет в руках оружие - то смотреться она будет куда интереснее, так как выглядит будто непись проверяет свой ствол, совершая массу интересных движений. Фраза mil_collect_phrase6 - «опа – с нами новое мясо».
+
+backoff - обычная анимка. Непись начинает махать стволом в разные стороны – типа убери ствол, меченый. Фраза - gar_dm_bandit_demand - «бабки артефакты гони», «ты че козел не врубаешься», «гони бабло или бошку отстрелим». Так как тема рандомная (с окончанием rnd в имени темы в файле sound_script – то и фраз несколько)
+
+
+[remark@story]
+anim = mode_shlem
+no_move = true
+target = actor
+meet = meet@story
+danger = danger_condition
+on_actor_dist_ge = 30| %+passage_to_story_end%
+on_info = {+passage_to_story_end} remark@story_end
+
+[meet@story]
+meet_state	= 10|probe@wait| 5|probe_1@hail     
+meet_state_wpn	= 10|probe_2@wait| 5|suicide@mil_crazy
+victim = 10|actor 
+victim_wpn = 10|actor 
+use = true 
+use_wpn = true 
+meet_dialog	= escape_lager_guard_start_dialog
+
+
+mode_shlem - анимка то ли Круглова, то ли Сахарова. Непись будет что то вертеть в руках. probe_1 – тоже самое что и probe_2 , только здесь он плечами вроде бы не дергает. suicide - самоубийство. Советую посмотреть – тем более с озвучкой mil_crazy. probe - укороченный вариант probe_2 и probe_1
+
+[remark@story_end]
+anim = probe_3
+no_move = true
+snd = agr_doctor_1        
+target = actor
+on_signal = sound_end| remark@base
+;on_timer = 180000| remark@ base
+meet = no_meet
+danger = danger_condition
+
+[danger_condition]
+ignore_distance = 10
+
+probe_3 - интересная анимка (похоже что кругловская)- чувак срывается с места в панике, затем сгибается как будто от боли, хватается за голову. agr_doctor_1 - базар доктора в тайнике стрелка.
+
+Теперь поясню строчки
+
+on_actor_dist_ge = 30| %+passage_to_story_end%
+on_info = {+passage_to_story_end} remark@story_end
+
+Когда эктор отойдет от НПС дальше чем 30 метров, ГГ выдается инфопоршень passage_to_story_end. После его получения - on_info - произойдет переход к базовой ремарке. Сам инфопоршень необходимо регистрировать в соответствующих файлах. Так как мой НПС находится на кордоне, то поршень я сунул в файл info_l01escape. Сообственно инфопоршень в строчке on_actor_dist_ge писать не обязательно(я его использовал только для примера) - можно просто поставить имя следующей ремарки - и в нужный момент произойдет переход. Но инфопоршень может понадобиться для других случаев.
+
+Как я уже говорил в начале, схему можно сделать полностью зацикленной. Нужно лишь в тех блоках, где идет переход к следующей схеме через on_signal поставить таймер или дистанцию. Почему так - не знаю. Но у меня по второму кругу схема стопорилась на тех блоках, где шел переход через on_signal = sound_end|. По таймеру же все прекрасно крутится. Схема из второй части - как раз зацикленная.
+
+P.S. : Кажется понял почему у меня стопорилась схема при использовании перехода on_signal = sound_end|. Дело в том, что если в имени звука, по завершении которого схема должна перейти к новому блоку стоит флажок seq, то он вроде как отыграется только один раз (если в этой теме нет дополнительных реплик). Следовательно по второму кругу он просто не будет срабатывать, а значит и схема застопорится. Так что для этого нужно ставить звук в имени которого в файле sound_script есть флажок rnd. Тема mil_guard_to_max как раз с флажком seq (и реплика только одна - без вариантов). Потому здесь (в схеме sit) она и будет стопориться на втором круге, если не заменить тему на другую. Но это еще надо проверить. Закоментированные строчки - пред которыми стоит ; - может смело выкидывать - это остатки проб разных вариантов.
+[править]
+Часть вторая.
+
+Еще одна схема. На этот раз в нее добавлены еще постэффекты.
+
+[logic]
+active = remark@base 
+danger = danger_condition 
+meet = meet
+
+[remark@base]
+anim = hello_wpn
+no_move = true
+target = actor
+meet = meet
+on_actor_dist_le = 2| remark@punch
+danger = danger_condition 
+
+С первой ремаркой все понятно. Переход ко второй на дистанции ближе 2 метров.
+
+[remark@punch]
+anim = punch
+snd = cit_jail_guard_sneer
+meet = meet@punch
+target = actor
+on_signal = sound_end| %=run_cam_effector(fatigue)% 
+on_timer = 60000| remark@doctor_wakeup  %=run_postprocess(deadcity_wake:1777:false)%   
+danger = danger_condition 
+
+[meet@punch]
+meet_state	= 5|hide_s_left@wait| 4|hide_s_right@wait
+meet_state_wpn	= 5|backoff2@threat_back
+victim = 10|actor 
+victim_wpn = 10|actor 
+use = true 
+use_wpn = true 
+meet_dialog	= escape_lager_guard_start_dialog
+
+punch– анимка удара рукой (или прикладом). Так как я не специалист по боксу, то не скажу точно как именно называется этот удар с правой в челюсть. Если поставите ее в meet_state_wpn на дистанции 2 метра - ГГ получит реальный удар в морду прикладом ствола. Так как я эксперементировал на своем торговце - то он (будучи безоружным) бил чисто кулаком. А если вместо запуска анимации камеры %=run_cam_effector(fatigue)% поставите запуск функции %=killactor%, то НПС кинется вас убивать.
+
+hide_s_left и hide_s_right - непись присядет с разворотом ствола вправо или влево. backoff2 - более веселая анимка backoff. НПС покажет ГГ что-то вроде фака, перед тем как помахать стволом и при этом скажет что-то весьма нелицеприятное. %=run_cam_effector(fatigue)% - это вызов анимации камеры fatigue из папки anims. Земля уйдет из под ног ГГ. Ненадолго. Сработает сразу же после окончания фразы cit_jail_guard_sneer. А ровно через минуту от начала работы схемы – запуск постпроцесса %=run_postprocess(deadcity_wake:1777:false)% и переход к следующей схеме.
+
+deadcity_wake – это постпроцесс, который должен был использоваться в Мертвом городе, если бы разрабы МГ все таки доделали. Если не видели - обязательно посмотрите.Сначала черный экран, затем прояснение с раздвоением картинки и красным фоном.
+
+В следующей схеме идет продолжение постпроцесса – первые 15 секунд. Потом его остановка: on_timer = 15000| %=stop_postprocess(1777)%.
+
+[remark@doctor_wakeup]
+anim = doctor_wakeup
+snd = cit_doctor_start_dlg
+meet = meet@doctor_wakeup
+target = actor
+on_timer = 15000| %=stop_postprocess(1777)%
+on_timer2 = 180000| remark@prisoner 
+danger = danger_condition 
+
+[meet@doctor_wakeup]
+meet_state	= 3|sleep@cit_jail_guard_sleep| 2|sleep_sit@wait
+meet_state_wpn	= 3|wounded_zombie@wait
+victim = 10|actor 
+victim_wpn = 10|actor 
+use = true 
+use_wpn = true 
+meet_dialog	= escape_lager_guard_start_dialog
+
+Начальная анимация - doctor_wakeup – доктор в мертвом городе. НПС склонится вниз – как будто над чьим то телом (по задумке – над меченым) и начнет базарить. Но совсем не то, что стоит у меня в строчке snd. Видимо, данная анимка завязана со звуком, и иначе не идет. Фразу прописанную мною - cit_doctor_start_dlg – нпс произнесет потом. Обе озвучки длинные – та, что идет с анимкой – монолог доктора в подземелье агропрома в тайнике Стрелка – типа, «что ж ты меченый в растяжку полез, сам же придумал эту хрень…» Моя озвучка - cit_doctor_start_dlg – неиспользованный монолог доктора в мертвом городе. Через 180 секунд – завершение схемы и переход к следующей.
+
+
+Схема – пленный.
+
+[remark@prisoner]
+anim = prisoner
+snd = agr_krot_fear
+meet = meet@prisoner
+target = actor
+on_timer = 60000| remark@base
+danger = danger_condition
+
+[meet@prisoner]
+meet_state	= 5|help_me@gar_dm_newbie_no_money
+meet_state_wpn	= 5|hands_up@agr_dont_shoot
+victim = 10|actor 
+victim_wpn = 10|actor 
+use = true 
+use_wpn = true 
+meet_dialog	= escape_lager_guard_start_dialog
+
+[danger_condition]
+ignore_distance = 10
+
+
+Анимка – prisoner – пленный. Помните Шустрого у бандитов? Вот это она и есть. Фраза - agr_krot_fear – не смотря на то, что в названии звуковой темы имя Крота, орет ее Шустрый: типа братцы я тут, спасите.
+
+help_me - машет рукой сидя на одном колене и орет, что у него "нет денег" - gar_dm_newbie_no_money . hands_up - руки кверху и орет "не убивай дяденька" (или типа того) - agr_dont_shoot.
+
+Через 60 секунд возврат к базовой ремарке.
+[править]
+Часть третья.
+
+В файле state_lib – большая библиотека анимок. Я успел попробовать только часть. У одного бармена их 12. Правда, из пяти опробованных мной сработала только одна bar_sleep - НПС положит голову на руки сложенные перед лицом и будет спать стоя.
+
+Анимки - barman_talk_freу, barman_shock, barman_wait_danger, barman_walk_danger - никакого эффекта не дали. Видимо, они работают только на бармене. Остальные пробуйте сами.
+
+Анимка psy_pain – пораженный пси-излучением. Чувак сядет на колени, начнет трясти головой и бить себе руками по голове.
+
+psycho_pain – вроде бы тоже самое, только чувак обхватывает голову руками и так сидит.
+
+
+Анимки psy_shoot, psy_armed, psycho_pain, psycho_shoot– пока остаются на стадии исследования. Так как с ними либо глючит, либо вылетает. 
+
+я сам новичек в этом деле но это легко поэтому знаю во первых инфопоршн не нужен
+нужно прописать ему логику
+[logic]
+active=sleeper
+trade = misc\trade_prapor.ltx---основная логика
+on_death = death
+
+[sleeper]
+path_main=esc_blokpost_prapor_main1
+on_actor_dist_le_nvis = 2 |remark@esc_prapor--------если актер ближе двух метров выполнить
+
+[remark@esc_prapor]
+snd = esc_saw--вот сдесь название звуковой схемы
+anim = eat_vodka---------------------------------что выполнить (сесеть,выпить водки ,сказать фразу)
+target = actor
+meet = no_meet
+on_signal = sound_end| remark@esc_prapor_go------по окончании проигрыша звука выполнить
+
+[remark@esc_prapor_go]
+path_rest=rest-------все что угодно(просто у меня так)
+anim = sit
+target = actor
+meet = meet@esc_prapor_meet
+--пользоваться сполером не умею 
+
+Svoboда,
+
+custom_data = <<END
+[smart_terrain]
+none = true
+
+cfg = scripts\az_patrul_1.ltx
+END
+
+А чтобы ходил не тупо по маршруту, если такая простая логика, то лучше так - а тайминги и вероятности проставишь сам.
+"=="
+
+[piyan_kapitan_look]
+points = p0,p1,p2
+p0:name = wp00|t=1000
+p0:flags = 0x1
+p0:position = -147.18115234375,-0.584499299526215,-305.457458496094
+p0:game_vertex_id = 447
+p0:level_vertex_id = 90847
+
+p1:name = wp01|t=1000
+p1:flags = 0x2
+p1:position = -151.469772338867,1.54915750026703,-294.154266357422
+p1:game_vertex_id = 447
+p1:level_vertex_id = 86489
+
+p2:name = wp02|t=1000
+p2:flags = 0x3
+p2:position = -154.860473632813,0.0715790092945099,-300.463287353516
+p2:game_vertex_id = 447
+p2:level_vertex_id = 82560
+
+
+[piyan_kapitan_walk]
+points = p0,p1,p2
+p0:name = wp00
+p0:flags = 0x1
+p0:position = -146.631423950195,-0.615138828754425,-305.455871582031
+p0:game_vertex_id = 447
+p0:level_vertex_id = 91609
+p0:links = p1(1),p2(1)
+
+p1:name = wp01
+p1:flags = 0x2
+p1:position = -150.6865234375,1.56070673465729,-293.817443847656
+p1:game_vertex_id = 447
+p1:level_vertex_id = 87210
+p1:links = p0(1),p2(1)
+
+p2:name = wp02
+p2:flags = 0x3
+p2:position = -155.097885131836,0.12029841542244,-300.179504394531
+p2:game_vertex_id = 447
+p2:level_vertex_id = 81791
+p2:links = p0(1),p1(1)
+
+
+Сообщение отредактировал Arhara - 24.3.2010, 2:23

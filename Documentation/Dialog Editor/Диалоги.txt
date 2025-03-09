@@ -1,0 +1,718 @@
+<dialog id="test_dialog">
+    <phrase_list>
+
+        <phrase id="0">
+            <text>test_dialog_0</text>
+            <next>1</next>
+        </phrase>
+
+        <phrase id="1">
+            <text>test_dialog_1</text>
+            <next>2</next>
+        </phrase>
+
+        <phrase id="2">
+            <text>test_dialog_2</text>
+            <next>3</next>
+        </phrase>
+
+        <phrase id="3">
+            <text>test_dialog_3</text>
+            <next>4</next>
+        </phrase>
+
+        <phrase id="4">
+            <text>test_dialog_4</text>
+            <next>5</next>
+        </phrase>
+
+        <phrase id="5">
+            <text>test_dialog_5</text>
+            <action>test.spawn_item_stalker</action>
+        </phrase>
+
+    </phrase_list>
+</dialog>
+
+---------------------------------------как я создал квест для прохода в баре к Воронину до того как принес бармену доки из x-16.----------------------------------------------------------------------------------------------------------------------------
+
+1) Надо создать наш диалог. Ищем файл stable_dialogs_bar(путь gamedata\config\text\rus) и в конце пищем два диалога примерно вот таких:
+
+<string id="bar_ohran_propusk_0">
+<text>Дружище послушай, у меня очень ценная информация для твоего командира, давай как-нибудь договоримся?</text>
+</string>
+<string id="bar_ohran_propusk_1">
+<text>В принципе можно,но услуга за услугу.Дело у меня есть к тебе меченый.У меня клиент есть, хорошо платит но ему нужны только ценные артефакты. Сможешь мне принести артефакт Панцирь?</text>
+</string>
+<string id="bar_ohran_propusk_2">
+<text>Ну ты и ... ладно жди достану тебе панцири, черепаха ты наша.</text>
+</string>
+<string id="bar_ohran_propusk_3">
+<text>Ну ты и жлоб поглядывай за углами вдруг шальная пуля прилетит.</text>
+</string>
+
+
+<string id="bar_friend_propusk_0">
+<text>Привет сержант не забыл наш уговор?.</text>
+</string>
+<string id="bar_friend_propusk_1">
+<text>Да помню-помню было такое,долго же ты,а еще меня черепахой называл,а сам... ну ладно принес?.</text>
+</string>
+<string id="bar_friend_propusk_2">
+<text>А как же держи,попотеть пришлось.</text>
+</string>
+<string id="bar_friend_propusk_3">
+<text>Ну в нашем деле не без этого проходи че стоишь.</text>
+</string>
+
+Первый называется bar_ohran_propusk, а второй bar_friend_propusk. Учтите все диалоги должны начинаться со слов меченого.
+2)Находим файл dialogs_bar(путь gamedata\config\gameplay) и составляем скелет нашего диалога опять же в конце файла:
+<dialog id="bar_ohran_propusk">
+<phrase_list>
+<phrase id="0">
+<text>bar_ohran_propusk_0</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>bar_ohran_propusk_1</text>
+<next>2</next>
+<next>3</next>
+</phrase>
+<phrase id="2">
+<text>bar_ohran_propusk_2</text>
+</phrase>
+<phrase id="3">
+<text>bar_ohran_propusk_3</text>
+<action>dialogs.break_dialog</action>
+</phrase>
+</phrase_list>
+</dialog>
+<dialog id="bar_friend_propusk">
+<phrase_list>
+<phrase id="0">
+<text>bar_friend_propusk_0</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>bar_friend_propusk_1</text>
+<next>2</next>
+</phrase>
+<phrase id="2">
+<text>bar_friend_propusk_2</text>
+<next>3</next>
+</phrase>
+<phrase id="3">
+<text>bar_friend_propusk_3</text>
+</phrase>
+</phrase_list>
+</dialog>
+Все у нас есть диалог. Вот эта строчка <action>dialogs.break_dialog</action> означает что из скриптового файла
+dialogs вызывается функция break_dialog. Т.е. если мы откажемся нести арт Пличко то диалог прерывается.
+Все если мы правильно сделали то сохраняем наши изменения.
+3) Находим файл character_desc_bar и ищем Пличко(тот что нас не пускает к Воронину) и добавляем ему два диалога:
+
+<actor_dialog>bar_ohran_propusk</actor_dialog>
+<actor_dialog>bar_friend_propusk</actor_dialog> - это наши диалоги.
+<start_dialog>bar_dolg_base_guard_start</start_dialog>
+<actor_dialog>bar_dolg_base_guard_talk</actor_dialog>
+<actor_dialog>bar_dolg_base_guard_story</actor_dialog>
+<actor_dialog>bar_dolg_base_guard_rules</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+Сохраняем наши изменения и запускаем игру если мы сделали все правильно то у него появиться два диалога.
+
+Диалог мы сделали, но нам теперь нужно сделать так чтобы он нас пустил к Воронину т.е. приделать Пличко квест.
+В папке gameplay есть много файлов таких как info_known_objects,info_l05dark_valley и т.д. Это все инфопоршни игры без них квест не получиться. Нам надо создать свои инфопоршни. Создадим свой файл где будут лежать наши инфопоршни.Я назвал сой файл info_dan_way(не забудь те прописать его в файле system т.е. добавить к остальным файлам с инфопоршними свой файл)
+Внутри он будет выглядеть примерно так
+<?xml version='1.0' encoding="windows-1251" ?>
+
+<game_information_portions>
+
+<info_portion id="bar_dolg_propusk_start"> это наши инфопоршень №1
+<task>bar_dolg_propusk</task> это цель задания которая указывается в game_tasks
+</info_portion>
+
+<info_portion id="bar_dolg_propusk_have"></info_portion> это наши инфопоршень №2
+
+<info_portion id="bar_dolg_propusk_done"></info_portion>это наши инфопоршень №3
+
+</game_information_portions>
+
+Дальше открываем game_tasks и после всех инклудов вписываем наш квест
+
+<game_task id="bar_dolg_propusk">
+<title>Принести арты Пличко</title>
+<objective>
+<text>Найти артефакт панцирь</text>
+<icon>ui_iconsTotal_artefact</icon>
+<infoportion_complete>bar_dolg_propusk_done</infoportion_complete>
+</objective>
+<objective>
+<text>Найти артефакт панцирь</text>
+<icon height="50" width="50" x="100" y="50">ui\ui_icons_task</icon>
+<function_complete>dan_dialog.bar_dolg_propusk_have</function_complete>
+<infoportion_set_complete>bar_dolg_propusk_have</infoportion_set_complete>
+</objective>
+<objective>
+<text>Принести артефакт Пличко</text>
+<map_location_type hint="Пличко">blue_location</map_location_type>
+<object_story_id>bar_dolg_guard_commander</object_story_id>
+<infoportion_complete>bar_dolg_propusk_done</infoportion_complete>
+</objective>
+</game_task>
+
+Все теперь нам надо добавить инфопоршни в наш диалог, находим dialogs_bar ищем в нем наши диалоги и добавляем инфопоршни;
+<dialog id="bar_ohran_propusk">
+<dont_has_info>bar_dolg_propusk_start</dont_has_info> это значит что диалог не появиться у Пличко
+<dont_has_info>bar_dolg_propusk_have</dont_has_info> если сработали наши инфопоршни т.е. чтобы
+<dont_has_info>bar_dolg_propusk_done</dont_has_info> после выполнения задания диалог вновь не появлялся
+<phrase_list>
+<phrase id="0">
+<text>bar_ohran_propusk_0</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>bar_ohran_propusk_1</text>
+<next>2</next>
+<next>3</next>
+</phrase>
+<phrase id="2">
+<text>bar_ohran_propusk_2</text>
+<action>dan_dialog.bar_dolg_propusk_have</action> т.е. будет выполняться функция
+<give_info>bar_dolg_propusk_start</give_info> bar_dolg_propusk_have из сриптового файла dan_dialog.
+</phrase>
+<phrase id="3">
+<text>bar_ohran_propusk_3</text>
+<give_info>bar_dolg_propusk_start</give_info> информации о получении первого инфопоршня.
+<action>dialogs.break_dialog</action>
+</phrase>
+</phrase_list>
+</dialog>
+
+
+<dialog id="bar_friend_propusk">
+<dont_has_info>bar_dolg_propusk_done</dont_has_info> не показывать после получения 3 инфопоршня
+<has_info>bar_dolg_propusk_have</has_info> показывать если есть второй инфопоршень
+<phrase_list>
+<phrase id="0">
+<text>bar_friend_propusk_0</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>bar_friend_propusk_1</text>
+<next>2</next>
+</phrase>
+<phrase id="2">
+<text>bar_friend_propusk_2</text>
+<action>dan_dialog.bar_dolg_propusk_done</action> вызывается функция bar_dolg_propusk_done
+<give_info>bar_dolg_propusk_done</give_info> информация о получения 3 инфопоршня задание выполенено
+<next>3</next>
+</phrase>
+<phrase id="3">
+<text>bar_friend_propusk_3</text>
+<give_info>bar_dolg_base_pass</give_info> это срабатывает инфопоршни о пропуске нас на базу долга.
+<give_info>bar_dolg_community_start</give_info>
+<give_info>bar_dolg_community_leader</give_info>
+</phrase>
+</phrase_list>
+</dialog>
+Теперь нам надо создать свой скриптовой файл и вписать 2 функции. Одна нужна для проверки наличия в инвентаре панциря и соответственно включения инфопоршня bar_dolg_propusk_have. Вторая для передачи Пличко
+арта. Например dan_dialog и вписать наши функции.
+
+function bar_dolg_propusk_have(task, objective) эта функция проверяет наличие арта
+if db.actor ~= nil then
+return db.actor:object("af_armor_3") ~= nil
+end
+return false
+end
+
+function bar_dolg_propusk_done(first_speaker, second_speaker) эта функция отдачи арта Пличко
+dialogs.relocate_item_section(second_speaker, "af_armor_3", "out")
+second_speaker:set_relation(game_object.friend, first_speaker) эта строчка делает Пличко другом.
+end
+
+Ну вот вроде все. Если сделали все правильно, то после того, как принесли арт Пличко, вас свободно пропустят на базу долга. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Подскажите, плз, скрипт для изымания денег у главгероя (определенной суммы, как плату за информацию). И еще, функцию проверки количества денег у персонажа.
+
+
+Пример из amk:
+проверяем наличие 30000
+
+function actor_has_money_30000()
+return db.actor:money()>=30000
+end
+
+отдаем 30000
+
+function give_money_30000(t1,t2)
+local npc=t1
+if npc:id()==db.actor:id() then
+npc=t2
+end
+dialogs.relocate_money(npc,30000,"out")
+end 
+
+Эта функция для проверки денег у ГГ.
+Чтобы диалог не начинался надо вставить в начале диалога
+
+<precondition>new_dialog.actor_has_money_30000</precondition>
+
+И тогда если нет столько денег, то диалог не появиться. 
+
+ создал квестик
+-----------------------------------------------------------------------------------------------
+<dialog id="export_weapons_1">
+<phrase_list>
+<phrase id="0">
+<text>zdorova_sidor,_mogno_y_teba_orygie zakazat?</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>da,_y_mena_est_lr300_i_svd</text>
+<next>2</next>
+<next>3</next>
+</phrase>
+<phrase id="2">
+<text>davai_lr300</text>
+<next>21</next>
+</phrase>
+<phrase id="21">
+<text>prinesi_3_konservu</text>
+<next>22</next>
+<next>0</next>
+</phrase>
+<phrase id="22">
+<preconditions>export_weapons_1.have_a_conserva</preconditions>
+<action>export_weapons_1.otdat_conserva</action>
+<text>prines_ia_tvoi_konservu</text>
+<next>23</next>
+</phrase>
+<phrase id="23">
+<text>dergi_svoiy_vintovky</text>
+<action>export_weapons_1.vzat_vintovky</action>
+<next>0</next>
+</phrase>
+
+<phrase id="3">
+<text>bla-bla</text>
+<next>31</next>
+</phrase>
+<phrase id="31">
+<text>bla-bla</text>
+<next>32</next>
+</phrase>
+<phrase id="32">
+<text>bla-bla</text>
+<next>0</next>
+</phrase>
+</phrase_list>
+</dialog>
+----------------------------------------------------------------------
+function have_a_conserva(task, objective)
+if db.actor ~= nil then
+return db.actor:object("conserva") ~= nil
+end
+return false
+end
+
+function otdat_konserva(first_speaker, second_speaker)
+dialogs.relocate_item_section(second_speaker, "conserva", "out")
+end
+
+function vzat_vintovky(first_speaker, second_speaker)
+dialogs.relocate_item_section(first_speaker, "wpn_lr300", "in")
+end
+
+
+все работает, но консервы не исчезают - это раз. Как их сделать по ттри не врублюсь, ведь если ставить
+function otdat_konserva(first_speaker, second_speaker)
+dialogs.relocate_item_section(second_speaker, "conserva", "out")
+dialogs.relocate_item_section(second_speaker, "conserva", "out")
+dialogs.relocate_item_section(second_speaker, "conserva", "out")
+end
+пропадает все равно одна, если вызывать одну функцию три раза - вылет...
+хз..хз.. что делать о_0
+
+
+--------------------
+Истина где-то рядом...
+
+ Если установлен НЛС, то можно вот таким образом:
+Код
+function otdat_konserva(first_speaker, second_speaker)
+    sak.out_item_namber("conserva", 3)
+end
+
+Если нет НЛС, то помимо вышеуказанного, нужно дописать в свой скрипт вот это (пусть меня поправят, если я не прав):
+Код
+function out_item_namber(itm_section,need_number)
+    reloc_params.itm_section=itm_section
+    reloc_params.itm_cnt=need_number
+    reloc_params.itm_cnt_found=0
+    db.actor:iterate_inventory(checkout_items_count,db.actor)
+    reloc_params.itm_cnt_found=0
+    if reloc_params.itm_cnt_found<=reloc_params.itm_cnt then
+        db.actor:iterate_inventory(out_items_count,db.actor)
+    end
+    news_manager.relocate_item(db.actor, "out", itm_section)
+    reloc_params={}
+end
+
+И в sak.out_item_namber("conserva", 3), вместо sak пропиши свой скрипт, в который добавишь второй код. К примеру, вышеуказанное записано в скрипт ferrari.script:
+Код
+function otdat_konserva(first_speaker, second_speaker)
+    ferrari.out_item_namber("conserva", 3)
+end
+
+
+поправлю - кроме вышеуказанной функции необходимы функции подсчета и проверки:
+Код
+function out_items_count(actor,item)
+    if item.section and item:section()==reloc_params.itm_section and reloc_params.itm_cnt_found<reloc_params.itm_cnt then
+        amk.remove_item_from_inventory(item, actor)
+        reloc_params.itm_cnt_found = reloc_params.itm_cnt_found + 1
+    end
+end
+function checkout_items_count(actor,item)
+    if item.section and item:section()==reloc_params.itm_section then
+        reloc_params.itm_cnt_found = reloc_params.itm_cnt_found + 1
+    end
+end
+
+----------------------------------------------------------------------------------------
+
+Вот еще простая функция передачи предмета
+
+function atp_barman_wpn_addon_sil_762_ar(first_speaker, second_speaker)
+local item = ""
+local actor, trader
+if db.actor and db.actor:id() == first_speaker:id() then
+actor = first_speaker
+trader = second_speaker
+else
+actor = second_speaker
+trader = first_speaker
+end
+flamethrower.relocate_n_items_section(trader, "vodka", "out", 10)
+dialogs.relocate_item_section(actor, "wpn_addon_sil_762_ar", "in", 1)
+end
+
+Только запомни если передаешь один предмет то используешь
+dialogs.relocate_item_section
+
+если больше одного
+flamethrower.relocate_n_items_section
+
+И ничего дописывать не надо, правда это только на АМК прокатит, либо тебе нужен будет скрипт амк
+flamethrower.script 
+
+function have_item_namber(itm,need_namber)
+local actor=db.actor
+items_count=0
+itemin=itm
+actor:iterate_inventory(cheking_item,actor)
+if items_count>=need_namber then
+return true
+else
+return false
+end
+end
+
+
+PS за скриптик спасибо колмогору
+
+
+Вызывать так
+
+function have_4kolbasa()
+return barter.have_item_namber("kolbasa",4) ~= false
+end
+
+А соответствено have_4kolbasa()засунуть в прекондишн в диалоге можно 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+ Все сделал, как вы сказали товарисчи, реакции - ноль. Ни колбасы не получил и куртки при мне остались.
+<dialog id="skupka_luta">
+<phrase_list>
+<phrase id="0">
+<text>lut_1</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>lut_2</text>
+<next>2</next>
+</phrase>
+<!--------------------разветвление------------------->
+<!-------------2 ветка---------------->
+<phrase id="2">
+<text>lut_banditki1</text>
+<next>21</next>
+</phrase>
+<phrase id="21">
+<text>lut_banditki2</text>
+<next>22</next>
+<next>999</next>
+</phrase>
+<phrase id="22">
+<preconditions>ferrrari.banditki_pro</preconditions>
+<text>lut_banditki3</text>
+<next>23</next>
+</phrase>
+<phrase id="23">
+<text>lut_banditki4</text>
+<action>ferrari.banditki</action>
+<next>0</next>
+</phrase>
+<phrase id="999">
+<text>lut_9999</text>
+<next>9999</next>
+</phrase>
+<phrase id="9999">
+<text>lut_99999</text>
+<next>0</next>
+</phrase>
+</phrase_list>
+</dialog>
+
+function banditki_pro()
+ferrari.have_item_namber("bandit_outfit",5) ~= false
+end
+
+function banditki(first_speaker, second_speaker)
+local item = ""
+local actor, trader
+if db.actor and db.actor:id() == first_speaker:id() then
+actor = first_speaker
+trader = second_speaker
+else
+actor = second_speaker
+trader = first_speaker
+end
+flamethrower.relocate_n_items_section(first_speaker, "bandit_outfit", "out", 5)
+dialogs.relocate_item_section(second_speaker, "kolbasa", "in")
+end
+
+
+На проверку наличия попробуй ещё такую функцию:
+function banditki_pro(first_speaker, second_speaker)
+local actor, trader
+if db.actor and db.actor:id() == first_speaker:id() then
+actor = first_speaker
+trader = second_speaker
+else
+actor = second_speaker
+trader = first_speaker
+end
+
+local outfit = 0
+actor:iterate_inventory(function (dummy, item) if item:section()=="bandit_outfit" then outfit=outfit+1 end end, nil)
+if vodka>=5 then
+return true
+else
+return false
+end
+end
+
+Где 5 - это количество предметов. Выдача у тебя, вроде, правильно написана. 
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Народ помогите пожалуйста, как правильно сделать что бы после выполнение квеста спавнились npc, скрипт у меня есть а надо толька правильно вставить функцию в диалог, но в это и проблема не знаю как правильно поставить где и между какими строками (а точней мне надо, что бы спавн происходил после выполнение квеста когда надо было командиру Свободы принести бронежилет военных) smile.gif
+
+Надо сделать проверку у ГГ на определенный предмет. В твоем случае на проверку наличия в инвентаре бронежилета.
+
+function checking_taken_item()
+if not has_alife_info("твой инфопоршн") then
+if obj:section()=="название бронежилета" then название функции спавна НПС()
+end
+end
+end
+
+Функцию checking_taken_item надо вставить в bind_stalker.script вот сюда:
+
+function actor_binder:on_item_take (obj)
+level_tasks.proceed(self.object)
+--game_stats.update_take_item (obj, self.object)
+
+--AMK UTILS--
+amk.on_item_take(obj)
+amk_utils.actor_item_take(obj)
+--AMK UTILS--
+spawn_zombi.checking_taken_item(obj) -- spawn_zombi - это файл, где находится твоя функция проверки.
+
+Еще надо в функцию спавна НПС вставить инфопоршн, который указываешь в функции проверки.
+Это для того, чтобы при переходе через локации каждый раз не срабатывала функция спавна при наличии у ГГ этого бронежилета.
+
+function spawn_zombied()
+local obj = alife():create("amk_zombied_1",vector():set(254.20483398438,-8.3238792419434,-132.53259277344),370220,404)
+db.actor:give_info_portion("твой инфопоршн")
+end 
+
+И ещё вопрос можешь привести пример скрипта что бы после его запуска он удалял (убирал) указанный предмет из рюкзака игрока, например бронника “specops_outfit” smile.gif
+
+
+function delete_bronik()
+local obj = db.actor:object("specops_outfit")
+if obj then
+local se_obj = alife():object(obj:id())
+if se_obj then
+alife():release(se_obj)
+end
+end
+end 
+
+Либо, если непись прописан в all.spawnе, поставить ему:
+
+[spawner]
+cond = {+infoportion}
+Где: infoportion - условие, инфопоршен (который можно добавить в диалог, к примеру), при выполнении которого, заспавнится данный непись. 
+
+пишу в stable_dialogs_bar:
+<string id="bar_barmen_tolk_0">
+<text>Линк, здорово!!! Раскажи, что-нибудь! Ато устал я.</text>
+</string>
+<string id="bar_barmen_tolk_1">
+<text>Есть новый слух. Говорят те кто во время супер-выброса выжили, преобретают сверхестественные способности, ну или подыхают в течении
+
+недели. А погибают очень интересно. Кто видели говорят, что у человека просто ноги подгинаются и падает он, так прям посреди дароги. А
+
+те что сверхестественные способности получают, тоже долго не живут. Знаешь почему?. Потому, что их на приключения тянет. Говорят один
+
+мен полез в рукопашку с кровососом, ну кровососос его и кокнул, но говорят схватка долгая была. Нет ну ты представляешь..........на
+
+кровососа.......ха, во дает. Ну вот собственно и все.</text>
+</string>
+<string id="bar_barmen_tolk_2">
+<text>Дааа.....вот люди!!!</text>
+</string>
+<string id="bar_barmen_tolk_3">
+<text>Ладно пойду я.</text>
+</string>
+
+И в dialogs_bar:
+
+<dialog id="bar_barmen_tolk">
+<phrase_list>
+<phrase id="0">
+<text>bar_barmen_tolk_0</text>
+<next>1</next>
+</phrase>
+<phrase id="1">
+<text>bar_barmen_tolk_1</text>
+<next>2</next>
+<next>3</next>
+</phrase>
+<phrase id="2">
+<text>bar_barmen_tolk_2</text>
+</phrase>
+<phrase id="3">
+<text>bar_barmen_tolk_3</text>
+</phrase>
+</phrase_list>
+</dialog> 
+
+Вылет при запуске игры жалуется на dialogs_bar. Что я неправильно делаю ( хочу дабавить диалог бармену ) 
+
+-----------------------как зделать так, чтоб диалог активировался только при наличии предмета?---------------------------------------
+
+В скрипте делаешь функцию, проверяющую наличие и в диалоге ставишь precondition. Допустим, есть скрипт wawka_dialog, в нём функция:
+Код
+function chemodan_have(first_speaker, second_speaker)
+      return first_speaker:object("chemodan") ~= nil
+end
+Где - chemodan - нужный предмет. Тогда в диалоге этот прекондишн будет выглядеть:
+Код
+    <precondition>wawka_dialog.chemodan_have</precondition>
+Вставляй его в самое начало (для примера - кусок диалога):
+Код
+<dialog id="chemodan_dialog">
+    <precondition>wawka_dialog.chemodan_have</precondition>
+    <phrase_list>
+        <phrase id="0">
+            <text>chemodan_dialog_0</text>
+            <next>1</next>
+        </phrase>
+
+Геныч, для этого нужно создать task - как пример, загляни в game_task.xml. Строки, которые отвечают за отметку:
+Код
+            <map_location_type hint="Волк">blue_location</map_location_type>
+            <object_story_id>Escape_novice_lager_volk</object_story_id>
+
+В первой - пишешь имя\название, во второй имя объекта из all.spawnа или файла game_story_ids.ltx blue_location - значит, что отметка будет бледно голубой, green_location - зелёной.
+Геныч, по поводу вопроса в "Ковыряемся", загляни в xr_effects.script (чтоб сон сделать), а чтоб его активировать и чтоб заставить непися стоять на месте, почитай Wiki, статьи "настройка логики". Так долго объяснять - но нужно для непися создавать логику, да и для активации сна при нажатии на ворота, нужно редактировать логику этих ворот. Сон, ролик - разницы никакой.
+
+Здрасте всем. Никак не могу понять как надо прописывать чтобы после не большого диалога у ГГ появился какой либо предмет?
+допустим пример такоц:
+- Слушай, Сидорович а где моя бутылка водки?
+- Водка? А ну да - водка. Вот она держи.
+P.S. Стоит у меня мод АМК 1.4.1
+
+Надо после разговора активировать вот такую функцию:
+
+function esc_kostya_ammo()
+local obj = alife():create("ammo_12x70_buck", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+end
+
+И тогда у ГГ в рюкзаке появится то, что ты пропишешь. 
+
+-----------------------------------------------------------Как написать функцию для precondition в диалогах на то, что некоторая непись с определённым id жива и мертва?-------------------------------------------------
+
+примерно так
+function check_npc_alive(sid)
+local npc = level_object_by_sid (тут номер)
+if npc ~= nil and npc:alive () == true then
+return true
+end
+return false
+end
+Цитата
+Спасибо, но там не совсем то... Там НПС посылают в уже заданную точку, она прописана в all.spawn, а мне нужно отправлять НПС в любую точку, например к меченому.
+
+Ну для начала, нужно сделать диалоги и task (в game_tasks.xml)... А чтобы задание засчиталось при смерти "клиента", нужно ему прописать в логике:
+Код
+on_death = death
+
+[death]
+on_info = {=killed_by_actor} %+инфопоршен%
+То есть, если "клиент" скончался и скончался именно от рук ГГ, то выдать инфопоршен.
+Инфопоршен прописать в task, в <infoportion_complete>инфопоршен</infoportion_complete>
+А чтобы непися заспавнить, с уникальным именем, необходимо создать ему профиль в character_desc_*.xml. В "Ковыряемся в файлах" очень подробно всё расписано. И не раз. Если не разберёшься, пиши в личку - ближе к вечеру отвечу.
+
+В логике впиши выдачу инфопоршна при убийстве нпс.
+[logic]
+on_death = on_death
+[on_death]
+on_info = %+info_nps_dead%
+А в квест впиши это
+<infoportion_complete>info_nps_dead</infoportion_complete> 
+
+---------------------Как сделать так, чтобы квест выполнялся после убийства не 1 НПС, а группы ( 3 - 5 )? --------------------------------------------
+
+сделать логику:
+[logic]
+on_death = on_death
+[on_death]
+on_info = %+info_nps_dead1%
+
+другому сделать:
+[logic]
+on_death = on_death
+[on_death]
+on_info = %+info_nps_dead2%
+И так далее.
+А потом в квест вписать в теге функтион_комплит test.test
+дальше создаем файл тест и в нем пишем
+function test()
+if db.actor:has_info("info_nps_dead2") and db.actor:has_info("info_nps_dead1") and db.actor:has_info("info_nps_dead3") then
+return true
+end
+end
+
+-----------------------Какая нужна логика для выдачи инфопоршня при взятии предмета? ---------------------------------------------------
+
+V!RU$, в бинд сталкере найди функцию on_item_take(obj)
+и перед последним end введи
+if obj and obj:section() == "предмет" then db.actor:give_info_portion("info") end 

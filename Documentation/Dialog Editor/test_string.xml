@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+    <string id="test_dialog_0">
+        <text>Привет! Как дела?</text>
+    </string>
+    <string id="test_dialog_201">
+        <text>у тебя всегда так</text>
+    </string>
+    <string id="test_dialog_202">
+        <text>может завтра будет лучше</text>
+    </string>
+    <string id="test_dialog_100">
+        <text>Плохо.</text>
+    </string>
+    <string id="test_dialog_200">
+        <text>так тебе и надо</text>
+    </string>
+</string_table>

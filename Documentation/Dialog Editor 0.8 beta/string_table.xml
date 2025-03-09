@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+    <string id="dolg_talk_about_0">
+        <text>dolg_talk_about_0 default text</text>
+        <text ln="rus">dolg_talk_about_0 Rus text</text>
+        <text ln="eng">dolg_talk_about_0 Eng text</text>
+        <text ln="ua">text in ua</text>
+    </string>
+    <string id="new_stupid_dialog_0">
+        <text>default text</text>
+        <text ln="eng">text in eng</text>
+        <text ln="rus">text in rus</text>
+    </string>
+    <string id="new_stupid_dialog_100">
+        <text>text in default 100</text>
+    </string>
+    <string id="new_stupid_dialog_200">
+        <text>text in default 200</text>
+    </string>
+    <string id="new_stupid_dialog_300">
+        <text>text in default</text>
+    </string>
+    <string id="new_stupid_dialog_101">
+        <text>text in default 101</text>
+    </string>
+    <string id="new_stupid_dialog_201">
+        <text>text in default</text>
+    </string>
+</string_table>

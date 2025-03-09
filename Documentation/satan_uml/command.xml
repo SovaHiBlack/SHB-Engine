@@ -1,0 +1,9 @@
+<team id="green" rounds="30" mean_money="300" mean_lifetime="400">
+	<!-- mean mony updates dynamicaly in engine-->
+	<weapon_statistic>
+		<weapon id="ak_47" price="370">
+			<money>400</money>
+			<money>700</money>
+		</weapon>
+	</weapon_statistic>	
+</team>

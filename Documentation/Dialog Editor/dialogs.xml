@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="dolg_talk_about">
+        <phrase_list>
+            <phrase id="3">
+                <text>dolg_talk_about_3</text>
+            </phrase>
+            <phrase id="0">
+                <text>dolg_talk_about_0</text>
+                <script_text>dolt_script_text</script_text>
+                <goodwill>55</goodwill>
+                <precondition>qq</precondition>
+                <precondition>precondtition</precondition>
+                <action>some_action</action>
+                <disable_info>disable_me</disable_info>
+                <dont_has_info>dont_has</dont_has_info>
+                <give_info>give_me</give_info>
+                <has_info>some_info</has_info>
+                <has_info>info2</has_info>
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="11">
+                <text>dolg_talk_about_11</text>
+            </phrase>
+            <phrase id="2">
+                <text>dolg_talk_about_2</text>
+            </phrase>
+            <phrase id="1">
+                <text>dolg_talk_about_1</text>
+                <next>11</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="new_stupid_dialog">
+        <phrase_list>
+            <phrase id="300">
+                <text>new_stupid_dialog_300</text>
+            </phrase>
+            <phrase id="201">
+                <text>new_stupid_dialog_201</text>
+            </phrase>
+            <phrase id="101">
+                <text>new_stupid_dialog_101</text>
+                <next>201</next>
+            </phrase>
+            <phrase id="200">
+                <text>new_stupid_dialog_200</text>
+                <next>300</next>
+            </phrase>
+            <phrase id="100">
+                <text>new_stupid_dialog_100</text>
+                <next>200</next>
+            </phrase>
+            <phrase id="0">
+                <text>new_stupid_dialog_0</text>
+                <script_text>ss</script_text>
+                <goodwill>55</goodwill>
+                <precondition>super precondition</precondition>
+                <has_info>11</has_info>
+                <has_info>22</has_info>
+                <next>100</next>
+                <next>101</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+    <dialog id="New">
+        <phrase_list>
+            <phrase id="21">
+                <text>New_21</text>
+            </phrase>
+            <phrase id="2">
+                <text>New_2</text>
+                <next>21</next>
+            </phrase>
+            <phrase id="3">
+                <text>New_3</text>
+            </phrase>
+            <phrase id="1">
+                <text>New_1</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="1121">
+                <text>New_1121</text>
+                <next>111</next>
+                <next>112</next>
+                <next>113</next>
+            </phrase>
+            <phrase id="0">
+                <text>New_0</text>
+                <next>1</next>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="11">
+                <text>New_11</text>
+                <next>111</next>
+                <next>112</next>
+                <next>113</next>
+            </phrase>
+            <phrase id="113">
+                <text>New_113</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1111">
+                <text>New_1111</text>
+                <next>111</next>
+                <next>112</next>
+                <next>113</next>
+            </phrase>
+            <phrase id="112">
+                <text>New_112</text>
+                <next>1121</next>
+            </phrase>
+            <phrase id="111">
+                <text>New_111</text>
+                <next>1111</next>
+            </phrase>
+        </phrase_list>
+    </dialog>
+</game_dialogs>

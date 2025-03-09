@@ -1,0 +1,322 @@
+SoC. Создание новых веток диалогов
+Содержание
+
+    1 Создание новых веток диалогов.
+        1.1 Теория:
+        1.2 Практика:
+        1.3 Практический пример не работает со вторым патчем - решение проблемы
+            1.3.1 Дополение от XiaNi
+    2 Авторы
+
+Создание новых веток диалогов.
+Теория:
+
+(Если где то чего то напутал исправляйте, многое писал интуитивно)
+
+1) Списки веток диалогов содержатся в файлах вида gamedata/config/gameplay/character_desc_*.xml
+
+Это например:
+character_desc_zombied.xml
+character_desc_stalker.xml
+character_desc_garbage.xml и т. д.
+
+Файлы character_desc_*.xml можно сравнить со стволом дерева диалогов. В них перечисляется названия прикрепляемых к НПС веток диалогов.
+
+Например, вот список веток диалогов с Сидоровичем, взятый из файла character_desc_escape.xml
+
+		<start_dialog>escape_trader_start_dialog</start_dialog>
+		<actor_dialog>escape_trader_talk_info</actor_dialog>
+		<actor_dialog>escape_trader_jobs</actor_dialog>
+		<actor_dialog>tm_trader_dialog</actor_dialog>
+		<actor_dialog>tm_trader_reward</actor_dialog>
+		<actor_dialog>escape_trader_done_blockpost_box</actor_dialog>
+
+В свою очередь, каждая ветка диалога также может ветвится.
+
+2) Ветвление веток прописывается уже в других файлах. Например, ветвление веток диалога с Сидоровичем содержится в файле gamedata/config/gameplay/dialogs_escape.xml Возьмем оттуда, к примеру, ветвление ветки escape_trader_jobs
+
+(ветвление веток обычно очень большое, поэтому я приведу только часть):
+
+<dialog id="escape_trader_talk_info">
+        <precondition>escape_dialog.trader_has_talk_info_wr</precondition>
+        <has_info>tutorial_end</has_info>
+        <phrase_list>
+            <phrase id="1">
+                <text>escape_trader_talk_info_1</text>
+                <next>100</next>
+                <next>99</next>
+	      <next>9995</next>
+            </phrase>
+ 
+              …
+              …
+              …
+            <phrase id="0">
+                <text>escape_trader_talk_info_0</text>
+                <next>1</next>
+            </phrase>
+        </phrase_list>
+</dialog>
+
+Здесь <precondition>…</precondition> - это скриптовая проверка выполнения условия. Ветка появится в диалоге, только если условие выполняется. Конкретно <precondition>escape_dialog.trader_has_talk_info_wr</precondition> из ветки escape_trader_talk_info есть обращение к функции trader_has_talk_info_wr, находящейся в файле-скрипте gamedata/scripts/escape_dialog.script.
+
+Функция выглядит так:
+
+function trader_has_talk_info_wr( trader, actor )
+	return true
+end
+
+<precondition>escape_dialog.trader_has_talk_info_wr</precondition> в принципе выполняется всегда, т. к. функция всегда возвращает истbну и <dialog id="escape_trader_talk_info"> пропускается в списке реплик. Но для конкретной ветки может быть несколько precondition и других условий.
+
+Далее.
+<has_info>tutorial_end</has_info> - это также своего рода проверка условия. В данном случае проверка на то, закончена стадия tutorial'а или нет. Т. е. ветка будет допущена в список реплик, если стадия tutorial'а закончена. более детально об этом в конце данной статьи. При окончании tutorial'а выдается инфопорция tutorial_end, которая и является стержнем данной проверки.
+
+А далее идут конкретные фразы содержащие ссылки на вытекающие фразы
+
+Фраза:
+
+<phrase id="0">
+                <text>escape_trader_talk_info_0</text>
+                <next>1</next>
+</phrase>
+
+это основа ветки escape_trader_talk_info. Вообще, в любой основной ветке любого диалога фраза <phrase id="0"> будет основой, из которой далее будет все вытекать.
+
+<next>1</next> - это ссылка на вытекающую фразу <phrase id="1">:
+
+       <phrase id="1">
+                <text>escape_trader_talk_info_1</text>
+                <next>100</next>
+                <next>99</next>
+	    <next>9995</next>
+        </phrase>
+
+В свою очередь <next>100</next>, <next>99</next>, <next>9995</next> - это ссылки на фразы веточки растущие из фразы <phrase id="1">.
+
+3) Текст каждой фразы содержится уже в четвертом файле. Для диалога с Сидоровичем тексты лежат в файле gamedata/config/text/rus/stable_dialogs_escape.xml
+
+	<string id="escape_trader_talk_info_0">
+		<text>Есть несколько вопросов.</text>
+	</string>
+	<string id="escape_trader_talk_info_1">
+		<text>Спрашивай, только я ведь всего не знаю. Сам понимаешь, сижу тут целыми днями, а жизнь - она вся там, снаружи, в Зоне. Могу рассказать о Зоне вообще, а немного могу о ближайших окрестностях, где сам ходил.</text>
+	</string>
+
+Эти строки содержат тексты для фраз <phrase id="0"> и <phrase id="1">
+
+Итого диалоги разложены по 4 а то и более файлам.
+
+Да кстати, путь по веткам может быть зацикленным если того требует диалог. Например так:
+
+<phrase id="0">
+            <text>…</text>
+            <next>1</next>
+            <next>2</next>
+ </phrase>
+<phrase id="1">
+            <text>…</text>
+            <next>11</next>
+            <next>12</next>
+ </phrase>
+<phrase id="11">
+            <text>…</text>
+            <next>1</next>  - Это возврат к фразе 1. (зацикливание)  
+            <next>111</next>
+ </phrase>
+
+Практика:
+
+Добавим в диалог с Сидоровичем ветку своего собственного изготовления.Например такую:
+
+Меченый: Сидрыч а почему это у тебя зеленые человечки, что по столу бегают, такие худые? 
+Сидорович: Чего?!!
+Меченый: Ты их совсем, совсем не кормишь?
+Сидорович: В следующий раз, как пойдешь в зону, бери-ка  вместо водяры побольше антирада. А то мало что таким перегаром дышишь, уже до зеленых человечков долечился… Шутник.
+
+Для этого:
+
+1) В файле gamedata/config/gameplay/character_desc_escape.xml в конце списка веток для trader_а суем свою ветку с произвольным названием. (например <actor_dialog>escape_trader_letat_gusi</actor_dialog>)
+
+Т.е у нас получится так
+
+		…
+	<specific_character id="escape_trader" no_random = "1">
+		…
+		…
+		…
+		<start_dialog>escape_trader_start_dialog</start_dialog>
+		<actor_dialog>escape_trader_talk_info</actor_dialog>
+		<actor_dialog>escape_trader_jobs</actor_dialog>
+		<actor_dialog>tm_trader_dialog</actor_dialog>
+		<actor_dialog>tm_trader_reward</actor_dialog>
+		<actor_dialog>escape_trader_done_blockpost_box</actor_dialog>
+                        <actor_dialog>escape_trader_letat_gusi</actor_dialog>
+	</specific_character>
+		…
+
+Записываем изменения, и с файлом character_desc_escape.xml уже все.
+
+2) Теперь берем файл gamedata/config/gameplay/dialogs_escape.xml
+
+Диалогу:
+
+Меченый: Сидрыч а почему это у тебя зеленые человечки, что по столу бегают, такие худые? 
+Сидорович: Чего?!!
+Меченый: Ты их совсем, совсем не кормишь?
+Сидорович: В следующий раз, как пойдешь в зону, бери-ка  вместо водяры побольше антирада. А то мало что таким перегаром дышишь, уже до зеленых человечков долечился… Шутник.
+
+который мы хотим реализовать, будет соответствовать такая структура:
+
+<phrase id="0">
+            <text>escape_trader_letat_gusi_0</text>
+            <next>1</next>
+</phrase>
+<phrase id="1">
+            <text>escape_trader_letat_gusi_1</text>
+            <next>2</next>
+ </phrase>
+<phrase id="2">
+            <text> escape_trader_letat_gusi_2</text>
+            <next>3</next>
+</phrase>
+<phrase id="3">
+            <text> escape_trader_letat_gusi_3</text>
+</phrase>
+
+Условия наличия ветки в диалоге можно взять из ветки <dialog id="escape_trader_talk_info"> Т. е. берем условия
+
+<precondition>escape_dialog.trader_has_talk_info_wr</precondition>
+
+и
+
+<has_info>tutorial_end</has_info>
+
+(Можно было конечно прописать в скрипте еще одно условие для ветки, чтоб она появилась только один раз, а потом больше не возникала. Но об этом как-нибудь позже допишу.)
+
+В итоге у нас получилась такая структура:
+
+<dialog id="escape_trader_letat_gusi">
+        <precondition>escape_dialog.trader_has_talk_info_wr</precondition>
+        <has_info>tutorial_end</has_info>
+        <phrase_list>
+                   <phrase id="0">
+                             <text>escape_trader_letat_gusi_0</text>
+                              <next>1</next>
+                    </phrase>
+                     <phrase id="1">
+                               <text>escape_trader_letat_gusi_1</text>
+                                <next>2</next>
+                     </phrase>
+                     <phrase id="2">
+                                <text> escape_trader_letat_gusi_2</text>
+                                <next>3</next>
+                     </phrase>
+                     <phrase id="3">
+                                  <text> escape_trader_letat_gusi_3</text>
+                      </phrase>
+        </phrase_list>
+  </dialog>
+
+Ее нужно вставить в любом месте между dialog id_шниками других веток в файле dialogs_escape.xml.
+
+Главное не промахнутся и засунуть именно между, а не внутрь одного из dialog id
+
+Все что находится между тегами <dialog id="***"> и </dialog> это внутенности конкретного dialog id
+
+Т.е совать наш
+
+<dialog id="escape_trader_letat_gusi">
+ …  
+</dialog>
+
+надо
+
+<dialog id="*** ">
+…
+</dialog>
+здесь
+<dialog id="*** ">
+…
+</dialog>
+
+но
+
+<dialog id="*** ">
+не здесь
+</dialog>
+
+После сохранения внесенных изменений с файлом dialogs_escape.xml все.
+
+3) Теперь вбиваем сами текстовички в файле gamedata/config/text/rus/stable_dialogs_escape.xml
+
+
+Т.е нам надо в файле stable_dialogs_escape.xml вставить такую конструкцию:
+
+	<string id="escape_trader_letat_gusi_0">
+		<text>Сидрыч а почему это у тебя зеленые человечки, что по столу бегают, такие худые?</text>
+	</string>
+	<string id="escape_trader_letat_gusi_1">
+		<text>Чего?!!</text>
+	</string>
+	<string id="escape_trader_letat_gusi_2">
+		<text>Ты их совсем, совсем не кормишь?</text>
+	</string>
+	<string id="escape_trader_letat_gusi_3">
+		<text>В следующий раз, как пойдешь в зону, бери-ка  вместо водяры побольше антирада. А то мало что таким перегаром дышишь, уже до зеленых человечков долечился… Шутник.</text>
+	</string>
+
+в любом месте между уже существующими string id
+
+      <string id="*** ">
+	</string>
+              сюда
+	<string id="*** ">
+	</string>
+
+Но не внутрь одного из существующих string id
+
+      <string id="*** ">
+               не сюда
+	</string>
+
+После сохранения изменений, у нас все готово. Можно грузить игру и смотреть что получилось.
+Практический пример не работает со вторым патчем - решение проблемы
+
+По крайней мере со вторым патчем несовместимо условие
+
+<precondition>escape_dialog.trader_has_talk_info_wr</precondition>
+
+Использование этого условия приведет к вылету
+
+так как со вторым патчем из файла escape_dialog.script была удалена функция:
+
+function trader_has_talk_info_wr( trader, actor ) 
+   return true 
+end
+
+можно либо воткнуть эту функцию обратно в escape_dialog.script
+
+либо использовать другие более мение подходящие условия, например:
+
+<precondition>escape_dialog.trader_alredy_give_job</precondition>
+
+Дополение от XiaNi
+
+По поводу <precondition> в данном примере.. он тут реально вообще не нужен тем более что возвращает всегда одно и то же... тут уж или реально надо использовать функцию которая хоть чтото проверяет нужное для диалога... а так... диалог и так будет активным если убрать <precondition> (в данном случае это 100%)
+
+<has_info> и <dont_has_info> это условия на присутствие и соответственно отсутствие у игрока "информации" которая, на самом деле, всего лишь флажок, что пользователь слышал о чем-то или видел что-то который выдается: 1. условиями "логики" прописанной объектам или неписям. 2. скриптами 3. диалогами через например "<give_info>tutorial_end</give_info>"
+
+В принципе <has_info> соответствует скриптовому аналогу функции has_alife_info так например <has_info>tutorial_end</has_info> можно заменить на <precondition>escape_dialog.check_tutor_end</precondition> и дописать в escape_dialog.script строчки :
+
+ 
+function check_tutor_end(actor, npc)
+if	has_alife_info("tutorial_end")
+	then
+	 return true
+        else
+         return false
+	end
+end
+ 
+
+в которой мы проверяем есть ли информация tutorial_end у игрока. 
