@@ -1,21 +1,24 @@
 #pragma once
 
-enum EPointType{
-    ptRPoint=0,
-    ptEnvMod,
-    ptSpawnPoint,
-    ptMaxType,
-    pt_force_dword=u32(-1)
+enum EPointType
+{
+	ptRPoint = 0,
+	ptEnvMod,
+	ptSpawnPoint,
+	ptMaxType,
+	pt_force_dword = u32(-1)
 };
 
-enum EWayType{
-    wtPatrolPath=0,
-    wtMaxType,
-    wt_force_dword=u32(-1)
+enum EWayType
+{
+	wtPatrolPath = 0,
+	wtMaxType,
+	wt_force_dword = u32(-1)
 };
 
-enum ERPpointType{		// [0..255]
-	rptActorSpawn		= 0
+enum ERPpointType
+{		// [0..255]
+	rptActorSpawn = 0
 };
 
 // BASE offset

@@ -11,8 +11,8 @@ struct CWrapperBase : public T, public luabind::wrap_base {
 	typedef T inherited;
 	typedef CWrapperBase<T>	self_type;
 
-	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1(net_Export, NET_Packet)
-	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1(net_Import, NET_Packet)
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1(net_Export, CNetPacket)
+	DEFINE_LUA_WRAPPER_METHOD_R2P1_V1(net_Import, CNetPacket)
 	DEFINE_LUA_WRAPPER_METHOD_V0(clear)
 };
 

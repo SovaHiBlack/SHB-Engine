@@ -297,24 +297,23 @@ private:
 	CALifeMonsterBrain				*m_brain;
 
 public:
-SERVER_ENTITY_DECLARE_END
-add_to_type_list(CSE_ALifeMonsterAbstract)
+	SERVER_ENTITY_DECLARE_END
+		add_to_type_list(CSE_ALifeMonsterAbstract)
 #define script_type_list save_type_list(CSE_ALifeMonsterAbstract)
 
-SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor,CSE_ALifeCreatureAbstract,CSE_ALifeTraderAbstract,CSE_PHSkeleton)
-	
-	u16								mstate;
-fVector3							accel;
-fVector3							velocity;
-//	f32							fArmor;
+		SERVER_ENTITY_DECLARE_BEGIN3(CSE_ALifeCreatureActor, CSE_ALifeCreatureAbstract, CSE_ALifeTraderAbstract, CSE_PHSkeleton)
+
+		u16								mstate;
+	fVector3							accel;
+	fVector3							velocity;
 	f32							fRadiation;
 	u8								weapon;
 	///////////////////////////////////////////
 	u16								m_u16NumItems;
 	u16								m_holderID;
-//	DEF_DEQUE		(PH_STATES, SPHNetState); 
+	//	DEF_DEQUE		(PH_STATES, SPHNetState); 
 	SPHNetState						m_AliveState;
-//	PH_STATES						m_DeadStates;
+	//	PH_STATES						m_DeadStates;
 
 	// статический массив - 6 float(вектора пределов квантизации) + m_u16NumItems*(7 u8) (позиция и поворот кости)
 	u8								m_BoneDataSize;

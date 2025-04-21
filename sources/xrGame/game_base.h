@@ -7,7 +7,7 @@
 #pragma pack(push,1)
 
 struct	game_PlayerState;//fw
-class	NET_Packet;
+class	CNetPacket;
 
 struct		RPoint
 {
@@ -87,8 +87,8 @@ public:
 			
 			s16		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;} 
 
-	virtual void	net_Export				(NET_Packet& P, BOOL Full = FALSE);
-	virtual void	net_Import				(NET_Packet& P);
+	virtual void	net_Export				(CNetPacket& P, BOOL Full = FALSE);
+	virtual void	net_Import				(CNetPacket& P);
 	//---------------------------------------
 	
 	DEF_VECTOR(PLAYER_ITEMS_LIST, u16);
@@ -109,19 +109,17 @@ add_to_type_list(game_PlayerState)
 #undef script_type_list
 #define script_type_list save_type_list(game_PlayerState)
 
-
 struct	game_TeamState
 {
-	int			score;
+	s32			score;
 	u16			num_targets;
 
 	game_TeamState();
 };
 
-
 #pragma pack(pop)
 
-class	game_GameState : public DLL_Pure
+class game_GameState : public DLL_Pure
 {
 protected:
 	s32								m_type;

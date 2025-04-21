@@ -1,6 +1,6 @@
 #pragma once
 
-class NET_Packet;
+class CNetPacket;
 
 struct SPHNetState
 {
@@ -19,14 +19,14 @@ struct SPHNetState
 	};
 	fQuaternion	previous_quaternion;
 	bool		enabled;
-	void								net_Export			(		NET_Packet&		P);					
-	void								net_Import			(		NET_Packet&		P);
+	void								net_Export			(CNetPacket&		P);
+	void								net_Import			(CNetPacket&		P);
 	void								net_Import			(		IReader&		P);
-	void								net_Save			(		NET_Packet&		P);					
-	void								net_Load			(		NET_Packet&		P);
+	void								net_Save			(CNetPacket&		P);
+	void								net_Load			(CNetPacket&		P);
 	void								net_Load			(		IReader&		P);
-	void								net_Save			(		NET_Packet&		P,const fVector3& min,const fVector3& max);
-	void								net_Load			(		NET_Packet&		P,const fVector3& min,const fVector3& max);
+	void								net_Save			(CNetPacket&		P,const fVector3& min,const fVector3& max);
+	void								net_Load			(CNetPacket&		P,const fVector3& min,const fVector3& max);
 	void								net_Load			(		IReader&		P,const fVector3& min,const fVector3& max);
 private:
 template<typename src>
@@ -47,8 +47,8 @@ struct SPHBonesData
 
 public:
 	SPHBonesData		()						  ;
-	void								net_Save			(		NET_Packet&		P);					
-	void								net_Load			(		NET_Packet&		P);
+	void								net_Save			(CNetPacket&		P);
+	void								net_Load			(CNetPacket&		P);
 	void								net_Load			(		IReader&		P);
 	void								set_min_max			(const fVector3& _min, const fVector3& _max);
 	const fVector3&						get_min				()	const	{return m_min;}

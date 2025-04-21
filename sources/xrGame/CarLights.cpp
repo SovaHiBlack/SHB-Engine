@@ -136,15 +136,14 @@ void CCarLights::ParseDefinitions()
 	if(!ini->section_exist("lights")) return;
 	pcstr S=  ini->r_string("lights","headlights");
 	string64					S1;
-	int count =					_GetItemCount(S);
-	for (int i=0 ;i<count; ++i) 
+	s32 count =					_GetItemCount(S);
+	for (s32 i=0 ;i<count; ++i)
 	{
 		_GetItem					(S,i,S1);
 		m_lights.push_back(xr_new<SCarLight>());
 		m_lights.back()->Init(this);
 		m_lights.back()->ParseDefinitions(S1);
 	}
-	
 }
 
 void CCarLights::Update()
@@ -156,7 +155,6 @@ void CCarLights::Update()
 
 void CCarLights::SwitchHeadLights()
 {
-	
 	VERIFY(!ph_world->Processing());
 	LIGHTS_I i =m_lights.begin(),e=m_lights.end();
 	for(;i!=e;++i) (*i)->Switch();
@@ -164,11 +162,11 @@ void CCarLights::SwitchHeadLights()
 
 void CCarLights::TurnOnHeadLights()
 {
-
 	VERIFY(!ph_world->Processing());
 	LIGHTS_I i =m_lights.begin(),e=m_lights.end();
 	for(;i!=e;++i) (*i)->TurnOn();
 }
+
 void CCarLights::TurnOffHeadLights()
 {
 	VERIFY(!ph_world->Processing());
@@ -181,6 +179,7 @@ bool CCarLights::IsLight(u16 bone_id)
 	SCarLight* light=NULL;
 	return findLight(bone_id,light);
 }
+
 bool CCarLights::findLight(u16 bone_id,SCarLight* &light)
 {
 	LIGHTS_I i,e=m_lights.end();
@@ -190,6 +189,7 @@ bool CCarLights::findLight(u16 bone_id,SCarLight* &light)
 	light=*i;
 	return i!=e;
 }
+
 CCarLights::~CCarLights()
 {
 	LIGHTS_I i =m_lights.begin(),e=m_lights.end();

@@ -9,7 +9,6 @@
 #include "Level.h"
 #include "BoneProtections.h"
 
-
 CCustomOutfit::CCustomOutfit()
 {
 	m_slot = OUTFIT_SLOT;
@@ -17,8 +16,10 @@ CCustomOutfit::CCustomOutfit()
 	m_flags.set(FUsingCondition, TRUE);
 
 	m_HitTypeProtection.resize(ALife::eHitTypeMax);
-	for(int i=0; i<ALife::eHitTypeMax; i++)
+	for (s32 i = 0; i < ALife::eHitTypeMax; i++)
+	{
 		m_HitTypeProtection[i] = 1.0f;
+	}
 
 	m_boneProtection = xr_new<SBoneProtections>();
 }
@@ -28,13 +29,13 @@ CCustomOutfit::~CCustomOutfit()
 	xr_delete(m_boneProtection);
 }
 
-void CCustomOutfit::net_Export(NET_Packet& P)
+void CCustomOutfit::net_Export(CNetPacket& P)
 {
 	inherited::net_Export	(P);
 	P.w_float_q8			(m_fCondition,0.0f,1.0f);
 }
 
-void CCustomOutfit::net_Import(NET_Packet& P)
+void CCustomOutfit::net_Import(CNetPacket& P)
 {
 	inherited::net_Import	(P);
 	P.r_float_q8			(m_fCondition,0.0f,1.0f);
@@ -103,7 +104,7 @@ f32	CCustomOutfit::HitThruArmour(f32 hit_power, s16 element, f32 AP)
 	return NewHitPower;
 };
 
-BOOL	CCustomOutfit::BonePassBullet					(int boneID)
+BOOL	CCustomOutfit::BonePassBullet					(s32 boneID)
 {
 	return m_boneProtection->getBonePassBullet(s16(boneID));
 };

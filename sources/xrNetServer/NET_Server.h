@@ -117,7 +117,7 @@ public:
 	void					SendBroadcast		(CClientID exclude, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED);
 
 	// extended functionality
-	virtual u32				OnMessage			(NET_Packet& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
+	virtual u32				OnMessage			(CNetPacket& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned
 	virtual bool			OnCL_QueryHost		()		{ return true; };
 
 	virtual IClient*		client_Create		()				= 0;			// create client info

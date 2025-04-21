@@ -42,9 +42,9 @@ class CControlledEntity : public CControlledEntityBase {
 	SControlledInfo		m_data;
 	
 	struct SGroupID {
-		int team_id;
-		int squad_id;
-		int group_id;
+		s32 team_id;
+		s32 squad_id;
+		s32 group_id;
 	} saved_id;
 
 	_Object				*m_object;

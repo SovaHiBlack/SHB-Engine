@@ -157,7 +157,7 @@ bool CGrenade::Useful() const
 	return res;
 }
 
-void CGrenade::OnEvent(NET_Packet& P, u16 type) 
+void CGrenade::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CExplosive::OnEvent			(P,type);
@@ -171,7 +171,7 @@ void CGrenade::PutNextToSlot()
 	//выкинуть гранату из инвентаря
 	if (m_pCurrentInventory)
 	{
-		NET_Packet						P;
+		CNetPacket						P;
 		m_pCurrentInventory->Ruck		(this);
 
 		this->u_EventGen				(P, GEG_PLAYER_ITEM2RUCK, this->H_Parent()->ID());

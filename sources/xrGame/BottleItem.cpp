@@ -35,7 +35,7 @@ void CBottleItem::Load(pcstr section)
 	m_alcohol = READ_IF_EXISTS(pSettings, r_float, section, "eat_alcohol", 0.0f);
 }
 
-void CBottleItem::OnEvent(NET_Packet& P, u16 type) 
+void CBottleItem::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P,type);
 
@@ -77,7 +77,7 @@ void	CBottleItem::Hit					(SHit* pHDS)
 		//Generate Expode event
 		if (Local()) 
 		{
-			NET_Packet		P;
+			CNetPacket		P;
 			u_EventGen		(P,GE_GRENADE_EXPLODE,ID());	
 			u_EventSend		(P);
 		};

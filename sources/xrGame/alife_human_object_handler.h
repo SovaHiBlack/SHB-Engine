@@ -41,12 +41,12 @@ public:
 			CSE_ALifeItemWeapon		*best_weapon				();
 
 public:
-			int						choose_equipment			(ALife::OBJECT_VECTOR *objects = 0);
-			int						choose_weapon				(const ALife::EWeaponPriorityType &weapon_priority_type, ALife::OBJECT_VECTOR *objects = 0);
-			int						choose_food					(ALife::OBJECT_VECTOR *objects = 0);
-			int						choose_medikit				(ALife::OBJECT_VECTOR *objects = 0);
-			int						choose_detector				(ALife::OBJECT_VECTOR *objects = 0);
-			int						choose_valuables			();
+	s32						choose_equipment			(ALife::OBJECT_VECTOR *objects = 0);
+	s32						choose_weapon				(const ALife::EWeaponPriorityType &weapon_priority_type, ALife::OBJECT_VECTOR *objects = 0);
+	s32						choose_food					(ALife::OBJECT_VECTOR *objects = 0);
+	s32						choose_medikit				(ALife::OBJECT_VECTOR *objects = 0);
+	s32						choose_detector				(ALife::OBJECT_VECTOR *objects = 0);
+	s32						choose_valuables			();
 			bool					choose_fast					();
 			void					choose_group				(CSE_ALifeGroupAbstract *group_abstract);
 			void					attach_items				();

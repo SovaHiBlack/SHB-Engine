@@ -165,7 +165,7 @@ void CAI_PseudoDog::HitEntityInJump		(const CEntity *pEntity)
 }
 
 #ifdef _DEBUG
-void CAI_PseudoDog::debug_on_key(int key)
+void CAI_PseudoDog::debug_on_key(s32 key)
 {
 }
 #endif

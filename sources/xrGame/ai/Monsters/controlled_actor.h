@@ -22,7 +22,7 @@ public:
 	virtual void	release				();
 	virtual void	install				(CActor *);
 	virtual void	install				();
-	virtual bool	authorized			(int cmd);
+	virtual bool	authorized			(s32 cmd);
 
 	void	look_point(const fVector3& point);
 			bool	is_turning			();

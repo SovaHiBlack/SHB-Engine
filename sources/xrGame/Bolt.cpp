@@ -24,7 +24,7 @@ void CBolt::OnH_A_Chield()
 	
 }
 
-void CBolt::OnEvent(NET_Packet& P, u16 type) 
+void CBolt::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P,type);
 }

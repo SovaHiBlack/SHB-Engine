@@ -8,7 +8,7 @@
 #include "../../../Hit.h"
 #include "../../../PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
-void CBaseMonster::net_Save			(NET_Packet& P)
+void CBaseMonster::net_Save			(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	m_pPhysics_support->in_NetSave(P);
@@ -19,7 +19,7 @@ BOOL CBaseMonster::net_SaveRelevant	()
 	return (inherited::net_SaveRelevant() || BOOL(PPhysicsShell()!=NULL));
 }
 
-void CBaseMonster::net_Export(NET_Packet& P) 
+void CBaseMonster::net_Export(CNetPacket& P)
 {
 	R_ASSERT				(Local());
 
@@ -56,7 +56,7 @@ void CBaseMonster::net_Export(NET_Packet& P)
 	}
 }
 
-void CBaseMonster::net_Import(NET_Packet& P)
+void CBaseMonster::net_Import(CNetPacket& P)
 {
 	R_ASSERT				(Remote());
 	net_update				N;

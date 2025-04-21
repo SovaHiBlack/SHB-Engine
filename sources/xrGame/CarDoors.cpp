@@ -643,7 +643,7 @@ bool CCar::SDoor::CanEnter(const fVector3& pos, const fVector3& dir, const fVect
 	return (state == opened || state == broken || !joint) && TestPass(foot_pos, dir) && IsInArea(pos, dir);//
 }
 
-void CCar::SDoor::SaveNetState(NET_Packet& P)
+void CCar::SDoor::SaveNetState(CNetPacket& P)
 {
 	CSE_ALifeCar::SDoorState ds;
 	ds.health = Health();

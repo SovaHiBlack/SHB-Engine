@@ -237,7 +237,7 @@ shared_str CRestrictedObject::base_out_restrictions	() const
 
 IC	void CRestrictedObject::add_object_restriction(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type)
 {
-	NET_Packet			net_packet;
+	CNetPacket			net_packet;
 	object().u_EventGen	(net_packet,GE_ADD_RESTRICTION,object().ID());
 	net_packet.w		(&id,sizeof(id));
 	net_packet.w		(&restrictor_type,sizeof(restrictor_type));
@@ -246,7 +246,7 @@ IC	void CRestrictedObject::add_object_restriction(ALife::_OBJECT_ID id, const Re
 
 IC	void CRestrictedObject::remove_object_restriction(ALife::_OBJECT_ID id, const RestrictionSpace::ERestrictorTypes &restrictor_type)
 {
-	NET_Packet			net_packet;
+	CNetPacket			net_packet;
 	object().u_EventGen	(net_packet,GE_REMOVE_RESTRICTION,object().ID());
 	net_packet.w		(&id,sizeof(id));
 	net_packet.w		(&restrictor_type,sizeof(restrictor_type));
@@ -364,7 +364,7 @@ void CRestrictedObject::remove_restrictions	(const shared_str &out_restrictions,
 
 void CRestrictedObject::remove_all_restrictions	(const RestrictionSpace::ERestrictorTypes &restrictor_type)
 {
-	NET_Packet			net_packet;
+	CNetPacket			net_packet;
 	object().u_EventGen	(net_packet,GE_REMOVE_ALL_RESTRICTIONS,object().ID());
 	net_packet.w		(&restrictor_type,sizeof(restrictor_type));
 	Level().Send		(net_packet,net_flags(TRUE,TRUE));

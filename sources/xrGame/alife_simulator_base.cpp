@@ -136,7 +136,7 @@ CSE_Abstract *CALifeSimulatorBase::spawn_item	(pcstr section, const fVector3& po
 
 CSE_Abstract *CALifeSimulatorBase::create(CSE_ALifeGroupAbstract *tpALifeGroupAbstract, CSE_ALifeDynamicObject *j)
 {
-	NET_Packet					tNetPacket;
+	CNetPacket					tNetPacket;
 	pcstr						S = pSettings->r_string(tpALifeGroupAbstract->base()->s_name,"monster_section");
 	CSE_Abstract				*l_tpAbstract = F_entity_Create(S);
 	R_ASSERT2					(l_tpAbstract,"Can't create entity.");
@@ -181,7 +181,7 @@ void CALifeSimulatorBase::create(CSE_ALifeDynamicObject *&i, CSE_ALifeDynamicObj
 	i							= smart_cast<CSE_ALifeDynamicObject*>(tpSE_Abstract);
 	R_ASSERT2					(i,"Non-ALife object in the 'game.spawn'");
 
-	NET_Packet					tNetPacket;
+	CNetPacket					tNetPacket;
 	j->Spawn_Write				(tNetPacket,TRUE);
 	i->Spawn_Read				(tNetPacket);
 	tNetPacket.w_begin			(M_UPDATE);

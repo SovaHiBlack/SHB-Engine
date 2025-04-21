@@ -543,23 +543,27 @@ void CWeapon::net_Import(NET_Packet& P)
 		else OnZoomOut();
 	};
 	switch (wstate)
-	{	
-	case eFire:
-	case eFire2:
-	case eSwitch:
-	case eReload:
+	{
+		case eFire:
+		case eFire2:
+		case eSwitch:
+		case eReload:
 		{
-		}break;	
-	default:
+		}
+		break;
+		default:
 		{
-			if (ammoType >= m_ammoTypes.size())
-				Msg("!! Weapon [%d], State - [%d]", ID(), wstate);
+			if (ammoType >= m_ammoTypes.size( ))
+			{
+				Msg("!! Weapon [%d], State - [%d]", ID( ), wstate);
+			}
 			else
 			{
 				m_ammoType = ammoType;
 				SetAmmoElapsed((ammo_elapsed));
 			}
-		}break;
+		}
+		break;
 	}
 	
 	VERIFY((u32)iAmmoElapsed == m_magazine.size());
@@ -583,8 +587,8 @@ void CWeapon::load(IReader &input_packet)
 	load_data		(m_ammoType,		input_packet);
 	load_data		(m_bZoomMode,		input_packet);
 
-	if (m_bZoomMode)	OnZoomIn();
-		else			OnZoomOut();
+	if (m_bZoomMode) { OnZoomIn(); }
+	else { OnZoomOut(); }
 }
 
 
@@ -613,7 +617,7 @@ void CWeapon::OnEvent(NET_Packet& P, u16 type)
 			else
 				m_set_next_ammoType_on_reload = u8(NextAmmo);
 
-			if (OnClient()) SetAmmoElapsed(int(AmmoElapsed));			
+			if (OnClient()) SetAmmoElapsed(s32(AmmoElapsed));			
 			OnStateSwitch	(u32(state));
 		}
 		break;
@@ -1411,7 +1415,7 @@ void CWeapon::UpdateHudAdditonal		(fMatrix4x4& trans)
 	}
 }
 
-void	CWeapon::SetAmmoElapsed	(int ammo_count)
+void	CWeapon::SetAmmoElapsed	(s32 ammo_count)
 {
 	iAmmoElapsed				= ammo_count;
 

@@ -284,7 +284,7 @@ public:
 			}
 			else
 			{
-				NET_Packet P;
+				CNetPacket P;
 				P.w_begin(M_SWITCH_DISTANCE);
 				P.w_float(id1);
 				Level( ).Send(P, net_flags(TRUE, TRUE));
@@ -499,7 +499,7 @@ public:
 		if (!xr_strlen(S))
 		{
 			strconcat(sizeof(S), S, Core.UserName, "_", "quicksave");
-			NET_Packet net_packet;
+			CNetPacket net_packet;
 			net_packet.w_begin(M_SAVE_GAME);
 			net_packet.w_stringZ(S);
 			net_packet.w_u8(0);
@@ -513,7 +513,7 @@ public:
 				return;
 			}
 
-			NET_Packet net_packet;
+			CNetPacket net_packet;
 			net_packet.w_begin(M_SAVE_GAME);
 			net_packet.w_stringZ(S);
 			net_packet.w_u8(1);
@@ -593,7 +593,7 @@ public:
 			Device.Pause(FALSE, TRUE, TRUE, "CCC_ALifeLoadFrom");
 		}
 
-		NET_Packet net_packet;
+		CNetPacket net_packet;
 		net_packet.w_begin(M_LOAD_GAME);
 		net_packet.w_stringZ(saved_game);
 		Level( ).Send(net_packet, net_flags(TRUE));
@@ -1394,7 +1394,7 @@ static CCC_RadioGroupMask2 x##CCC_RadioGroupMask2(&x##CCC_RadioMask1,&x##CCC_Rad
 
 struct CCC_DbgBullets : public CCC_Integer
 {
-	CCC_DbgBullets(pcstr N, int* V, int _min = 0, int _max = 999) : CCC_Integer(N, V, _min, _max)
+	CCC_DbgBullets(pcstr N, s32* V, s32 _min = 0, s32 _max = 999) : CCC_Integer(N, V, _min, _max)
 	{ }
 
 	virtual void Execute(pcstr args)

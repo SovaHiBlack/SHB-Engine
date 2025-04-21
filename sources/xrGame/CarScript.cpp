@@ -15,16 +15,16 @@ void CCar::script_register(lua_State *L)
 		class_<CCar,bases<CGameObject,CHolderCustom> >("CCar")
 			.enum_("wpn_action")
 				[
-					value("eWpnDesiredDir",							int(CCarWeapon::eWpnDesiredDir)),
-					value("eWpnDesiredPos",							int(CCarWeapon::eWpnDesiredPos)),
-					value("eWpnActivate",							int(CCarWeapon::eWpnActivate)),
-					value("eWpnFire",								int(CCarWeapon::eWpnFire)),
-					value("eWpnAutoFire",							int(CCarWeapon::eWpnAutoFire)),
-					value("eWpnToDefaultDir",						int(CCarWeapon::eWpnToDefaultDir))
+					value("eWpnDesiredDir", s32(CCarWeapon::eWpnDesiredDir)),
+					value("eWpnDesiredPos", s32(CCarWeapon::eWpnDesiredPos)),
+					value("eWpnActivate", s32(CCarWeapon::eWpnActivate)),
+					value("eWpnFire", s32(CCarWeapon::eWpnFire)),
+					value("eWpnAutoFire", s32(CCarWeapon::eWpnAutoFire)),
+					value("eWpnToDefaultDir", s32(CCarWeapon::eWpnToDefaultDir))
 				]
 		.def("Action",			&CCar::Action)
-//		.def("SetParam",		(void (CCar::*)(int,fVector2)) &CCar::SetParam)
-		.def("SetParam",		(void (CCar::*)(int, fVector3)) &CCar::SetParam)
+//		.def("SetParam",		(void (CCar::*)(s32,fVector2)) &CCar::SetParam)
+		.def("SetParam",		(void (CCar::*)(s32, fVector3)) &CCar::SetParam)
 		.def("CanHit",			&CCar::WpnCanHit)
 		.def("FireDirDiff",		&CCar::FireDirDiff)
 		.def("IsObjectVisible",	&CCar::isObjectVisible)

@@ -228,12 +228,12 @@ typedef IRenderableWrapper<IRenderable,luabind::wrap_base> CIRenderableWrapper;
 //	virtual void			UpdateCL			();
 //	virtual BOOL			net_Spawn			(CSE_Abstract* data);
 //	virtual void			net_Destroy			();
-//	virtual void			net_Export			(NET_Packet& P);
-//	virtual void			net_Import			(NET_Packet& P);
-//	virtual	void			net_ImportInput		(NET_Packet& P);
+//	virtual void			net_Export			(CNetPacket& P);
+//	virtual void			net_Import			(CNetPacket& P);
+//	virtual	void			net_ImportInput		(CNetPacket& P);
 //	virtual BOOL			net_Relevant		();
-//	virtual void			net_MigrateInactive	(NET_Packet& P);
-//	virtual void			net_MigrateActive	(NET_Packet& P);
+//	virtual void			net_MigrateInactive	(CNetPacket& P);
+//	virtual void			net_MigrateActive	(CNetPacket& P);
 //	virtual void			net_Relcase			(CObject* O);
 //	virtual	SavedPosition	ps_Element			(u32 ID) const;
 //	virtual void			ForceTransform		(const fMatrix4x4& m);
@@ -265,22 +265,22 @@ public:
 		return self->CGameObject::use(who_use);
 	}
 
-	virtual void			net_Import			(NET_Packet &packet)
+	virtual void			net_Import			(CNetPacket&packet)
 	{
 		call<void>("net_Import",&packet);
 	}
 
-	static	void			net_Import_static	(CGameObject *self, NET_Packet *packet)
+	static	void			net_Import_static	(CGameObject *self, CNetPacket*packet)
 	{
 		self->CGameObject::net_Import(*packet);
 	}
 
-	virtual void			net_Export			(NET_Packet &packet)
+	virtual void			net_Export			(CNetPacket&packet)
 	{
 		call<void>("net_Export",&packet);
 	}
 
-	static	void			net_Export_static	(CGameObject *self, NET_Packet *packet)
+	static	void			net_Export_static	(CGameObject *self, CNetPacket*packet)
 	{
 		self->CGameObject::net_Export(*packet);
 	}

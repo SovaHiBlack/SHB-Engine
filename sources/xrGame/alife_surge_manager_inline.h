@@ -8,7 +8,5 @@
 
 #pragma once
 
-IC	CALifeSurgeManager::CALifeSurgeManager				(xrServer *server, pcstr section) :
-	inherited		(server,section)
-{
-}
+IC	CALifeSurgeManager::CALifeSurgeManager(xrServer* server, pcstr section) : inherited(server, section)
+{ }

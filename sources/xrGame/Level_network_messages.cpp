@@ -23,7 +23,7 @@ void CLevel::ClientReceive()
 	m_dwRPC = 0;
 	m_dwRPS = 0;
 
-	for (NET_Packet* P = net_msg_Retreive(); P; P=net_msg_Retreive())
+	for (CNetPacket* P = net_msg_Retreive(); P; P=net_msg_Retreive())
 	{
 		//-----------------------------------------------------
 		m_dwRPC++;
@@ -56,7 +56,7 @@ void CLevel::ClientReceive()
 			if (g_bDebugEvents)		ProcessGameEvents();
 			break;
 		case M_EVENT_PACK:
-			NET_Packet	tmpP;
+			CNetPacket	tmpP;
 			while (!P->r_eof())
 			{
 				tmpP.B.count = P->r_u8();
@@ -65,7 +65,7 @@ void CLevel::ClientReceive()
 
 				game_events->insert		(tmpP);
 				if (g_bDebugEvents)		ProcessGameEvents();
-			};			
+			}			
 			break;
 		case M_UPDATE:
 			{
@@ -128,7 +128,7 @@ void CLevel::ClientReceive()
 					OActor->MoveActor(NewPos, NewDir);
 				}
 
-				NET_Packet PRespond;
+				CNetPacket PRespond;
 				PRespond.w_begin(M_MOVE_PLAYERS_RESPOND);
 				Send(PRespond, net_flags(TRUE, TRUE));
 			}break;
@@ -295,7 +295,7 @@ void				CLevel::OnMessage				(void* data, u32 size)
 		
 		if (!m_aDemoData.empty() && net_IsSyncronised())
 		{
-//			NET_Packet *P = &(m_aDemoData.front());
+//			CNetPacket *P = &(m_aDemoData.front());
 			DemoDataStruct *P = &(m_aDemoData.front());
 			m_bDemoStarted = TRUE;
 			Msg("! ------------- Demo Started ------------");
@@ -313,11 +313,11 @@ void				CLevel::OnMessage				(void* data, u32 size)
 	IPureClient::OnMessage(data, size);	
 
 	DemoCS.Leave();
-};
+}
 
-NET_Packet*				CLevel::net_msg_Retreive		()
+CNetPacket*				CLevel::net_msg_Retreive		()
 {
-	NET_Packet* P = NULL;
+	CNetPacket* P = NULL;
 
 	DemoCS.Enter();
 
@@ -328,4 +328,3 @@ NET_Packet*				CLevel::net_msg_Retreive		()
 
 	return P;
 }
-

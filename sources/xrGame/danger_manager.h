@@ -10,13 +10,15 @@
 
 #include "danger_object.h"
 
-namespace MemorySpace {
+namespace MemorySpace
+{
 	struct CVisibleObject;
 	struct CSoundObject;
 	struct CHitObject;
 };
 
-class CDangerManager  {
+class CDangerManager
+{
 public:
 	typedef xr_vector<CDangerObject>		OBJECTS;
 	typedef OBJECTS							DANGERS;
@@ -30,44 +32,44 @@ public:
 private:
 	DANGERS				m_objects;
 	IGNORED				m_ignored;
-	const CDangerObject	*m_selected;
+	const CDangerObject* m_selected;
 	u32					m_time_line;
 
 private:
-	CCustomMonster		*m_object;
+	CCustomMonster* m_object;
 
 public:
-	IC					CDangerManager		(CCustomMonster *object);
-	virtual				~CDangerManager		();
-	virtual void		Load				(pcstr section);
-	virtual void		reinit				();
-	virtual void		reload				(pcstr section);
-	virtual void		update				();
-	virtual bool		useful				(const CDangerObject &object) const;
-	virtual bool		is_useful			(const CDangerObject &object) const;
-	virtual	f32			evaluate			(const CDangerObject &object) const;
-	virtual	f32			do_evaluate			(const CDangerObject &object) const;
-			void		remove_links		(const CObject *object);
-	IC		void		reset				();
+	IC					CDangerManager(CCustomMonster* object);
+	virtual				~CDangerManager( );
+	virtual void		Load(pcstr section);
+	virtual void		reinit( );
+	virtual void		reload(pcstr section);
+	virtual void		update( );
+	virtual bool		useful(const CDangerObject& object) const;
+	virtual bool		is_useful(const CDangerObject& object) const;
+	virtual	f32			evaluate(const CDangerObject& object) const;
+	virtual	f32			do_evaluate(const CDangerObject& object) const;
+	void		remove_links(const CObject* object);
+	IC		void		reset( );
 
 public:
-			void		add					(const CVisibleObject &object);
-			void		add					(const CSoundObject &object);
-			void		add					(const CHitObject &object);
-			void		add					(const CDangerObject &object);
-			void		ignore				(const CGameObject *object);
+	void		add(const CVisibleObject& object);
+	void		add(const CSoundObject& object);
+	void		add(const CHitObject& object);
+	void		add(const CDangerObject& object);
+	void		ignore(const CGameObject* object);
 
 public:
-	IC		u32			time_line			() const;
-	IC		void		time_line			(u32 value);
+	IC		u32			time_line( ) const;
+	IC		void		time_line(u32 value);
 
 public:
-	IC		const CDangerObject	*selected	() const;
-	IC		const OBJECTS		&objects	() const;
+	IC		const CDangerObject* selected( ) const;
+	IC		const OBJECTS& objects( ) const;
 
 public:
-			void		save				(NET_Packet &packet) const;
-			void		load				(IReader &packet);
+	void		save(CNetPacket& packet) const;
+	void		load(IReader& packet);
 };
 
 #include "danger_manager_inline.h"

@@ -12,7 +12,7 @@ struct NET_Buffer
 	u32									count;
 };
 
-class NET_Packet
+class CNetPacket
 {
 public:
 	void			construct			(pcvoid data, u32 size)

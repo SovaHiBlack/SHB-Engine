@@ -103,7 +103,7 @@ void CAgentEnemyManager::fill_enemies			()
 	VERIFY								(!m_enemies.empty());
 
 	{
-		for (int i=0, n=(int)m_wounded.size(); i<n; ++i) {
+		for (s32 i=0, n=(s32)m_wounded.size(); i<n; ++i) {
 			const CEntityAlive			*enemy = m_wounded[i].first;
 			ENEMIES::const_iterator		I = std::find(m_enemies.begin(),m_enemies.end(),enemy);
 			if (I != m_enemies.end())
@@ -464,7 +464,7 @@ void CAgentEnemyManager::assign_wounded			()
 		const CAI_Stalker	*processor = 0;
 		f32				best_distance_sqr = flt_max;
 
-		for (int i=0; i<2; ++i) {
+		for (s32 i=0; i<2; ++i) {
 			ENEMIES::iterator	I = m_enemies.begin();
 			ENEMIES::iterator	E = m_enemies.end();
 			for ( ; I != E; ++I) {

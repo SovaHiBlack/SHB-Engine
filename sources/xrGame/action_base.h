@@ -76,7 +76,7 @@ public:
 	IC		void 				set_weight			(const _edge_value_type &weight);
 	IC		bool				first_time			() const;
 
-	virtual	void				save				(NET_Packet &packet) {}
+	virtual	void				save				(CNetPacket& packet) {}
 	virtual	void				load				(IReader &packet) {}
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

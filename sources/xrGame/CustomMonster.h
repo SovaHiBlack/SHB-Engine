@@ -64,7 +64,7 @@ private:
 public:
 	// Eyes
 	fMatrix4x4				eye_matrix;
-	int					eye_bone;
+	s32					eye_bone;
 	f32					eye_fov;
 	f32					eye_range;
 
@@ -142,13 +142,13 @@ public:
 	virtual void		Die						( CObject* who);
 
 	virtual void		HitSignal				(f32 P, fVector3& vLocalDir, CObject* who);
-	virtual void		g_WeaponBones			(int &/**L/**/, int &/**R1/**/, int &/**R2/**/) {};
+	virtual void		g_WeaponBones			(s32&/**L/**/, s32&/**R1/**/, s32&/**R2/**/) {};
 	virtual void		shedule_Update					( u32		DT		);
 	virtual void		UpdateCL				( );
 
 	// Network
-	virtual void		net_Export				(NET_Packet& P);				// export to server
-	virtual void		net_Import				(NET_Packet& P);				// import from server
+	virtual void		net_Export				(CNetPacket& P);				// export to server
+	virtual void		net_Import				(CNetPacket& P);				// import from server
 	virtual void		net_Relcase				(CObject*	 O);
 
 	virtual void		SelectAnimation			( const fVector3& _view, const fVector3& _move, f32 speed ) = 0;
@@ -175,7 +175,7 @@ public:
 	virtual	Feel::Sound*		dcast_FeelSound			()			{ return this;	}
 	virtual	void				Hit						(SHit* pHDS);
 
-	virtual void				OnEvent					( NET_Packet& P, u16 type		);
+	virtual void				OnEvent					(CNetPacket& P, u16 type		);
 	virtual void				net_Destroy				();
 	virtual BOOL				UsedAI_Locations		();
 	///////////////////////////////////////////////////////////////////////
@@ -196,7 +196,7 @@ public:
 	}
 	virtual	void				PitchCorrection			();
 
-	virtual void				save					(NET_Packet &output_packet);
+	virtual void				save					(CNetPacket& output_packet);
 	virtual void				load					(IReader &input_packet);
 	virtual BOOL				net_SaveRelevant		()							{return inherited::net_SaveRelevant();}
 	
@@ -214,7 +214,7 @@ public:
 
 	IC		CMemoryManager		&memory					() const;
 	virtual f32					feel_vision_mtl_transp	(CObject* O, u32 element);
-	virtual	void				feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
+	virtual	void				feel_sound_new(CObject* who, s32 type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
 
 	virtual bool				useful					(const CItemManager *manager, const CGameObject *object) const;
 	virtual f32					evaluate				(const CItemManager *manager, const CGameObject *object) const;

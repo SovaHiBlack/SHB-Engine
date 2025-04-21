@@ -242,9 +242,9 @@ void CController::load_friend_community_overrides(pcstr section)
 	pcstr src = pSettings->r_string(section,"Friend_Community_Overrides");
 	
 	// parse src
-	int item_count = _GetItemCount(src);
+	s32 item_count = _GetItemCount(src);
 	m_friend_community_overrides.resize(item_count);
-	for (int i=0; i<item_count; i++) {
+	for (s32 i=0; i<item_count; i++) {
 		string128	st;
 		_GetItem	(src,i,st);
 		m_friend_community_overrides[i] = st;
@@ -698,7 +698,7 @@ CBaseMonster::SDebugInfo CController::show_debug_info()
 #endif
 
 #ifdef _DEBUG
-void CController::debug_on_key(int key)
+void CController::debug_on_key(s32 key)
 {
 	switch (key){
 	case DIK_MINUS:

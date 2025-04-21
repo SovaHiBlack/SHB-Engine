@@ -41,17 +41,17 @@ public:
 
 	virtual void Contact(const fVector3& pos, const fVector3& normal);
 
-	virtual void OnEvent (NET_Packet& P, u16 type) ;
+	virtual void OnEvent (CNetPacket& P, u16 type) ;
 
 	virtual	void Hit	(SHit* pHDS)
 						{ inherited::Hit(pHDS); };
 
 public:
 	virtual BOOL			UsedAI_Locations	()				{return inherited::UsedAI_Locations();}
-	virtual void			net_Import			(NET_Packet& P)	{inherited::net_Import(P);}
-	virtual void			net_Export			(NET_Packet& P) {inherited::net_Export(P);}
+	virtual void			net_Import			(CNetPacket& P)	{inherited::net_Import(P);}
+	virtual void			net_Export			(CNetPacket& P) {inherited::net_Export(P);}
 	
-	virtual void			save				(NET_Packet &output_packet) {inherited::save(output_packet);}
+	virtual void			save				(CNetPacket& output_packet) {inherited::save(output_packet);}
 	virtual void			load				(IReader &input_packet)		{inherited::load(input_packet);}
 	virtual BOOL			net_SaveRelevant	()							{return inherited::net_SaveRelevant();}
 

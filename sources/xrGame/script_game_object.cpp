@@ -41,11 +41,11 @@ class CScriptBinderObject;
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-fVector3	CScriptGameObject::Center()
+fVector3 CScriptGameObject::Center( )
 {
 	fVector3 c;
 	m_game_object->Center(c);
-	return	c;
+	return c;
 }
 
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Position,			CGameObject,	Position, fVector3, fVector3());
@@ -86,24 +86,24 @@ BIND_FUNCTION10	(&object(),	CScriptGameObject::GetEnemyStrength,	CScriptEntity,	
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetActionCount,		CScriptEntity,	GetActionCount,		u32,					0);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::can_script_capture,	CScriptEntity,	can_script_capture,	bool,					0);
 
-u32	CScriptGameObject::level_vertex_id		() const
+u32 CScriptGameObject::level_vertex_id( ) const
 {
-	return						(object().ai_location().level_vertex_id());
+	return object( ).ai_location( ).level_vertex_id( );
 }
 
-u32 CScriptGameObject::game_vertex_id		() const
+u32 CScriptGameObject::game_vertex_id( ) const
 {
-	return						(object().ai_location().game_vertex_id());
+	return object( ).ai_location( ).game_vertex_id( );
 }
 
-f32 CScriptGameObject::level_vertex_light	(const u32 &level_vertex_id) const
+f32 CScriptGameObject::level_vertex_light(const u32& level_vertex_id) const
 {
-	return						((f32)ai().level_graph().vertex(level_vertex_id)->light()/15.f);
+	return						((f32)ai( ).level_graph( ).vertex(level_vertex_id)->light( ) / 15.0f);
 }
 
-CScriptIniFile *CScriptGameObject::spawn_ini			() const
+CScriptIniFile* CScriptGameObject::spawn_ini( ) const
 {
-	return			((CScriptIniFile*)object().spawn_ini());
+	return (CScriptIniFile*)object( ).spawn_ini( );
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -154,43 +154,53 @@ const CScriptEntityAction *CScriptGameObject::GetActionByIndex(u32 action_index)
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-CPhysicsShell* CScriptGameObject::get_physics_shell() const
+CPhysicsShell* CScriptGameObject::get_physics_shell( ) const
 {
-	CPhysicsShellHolder* ph_shell_holder =smart_cast<CPhysicsShellHolder*>(&object());
-	if(! ph_shell_holder) return NULL;
-	return ph_shell_holder->PPhysicsShell();
+	CPhysicsShellHolder* ph_shell_holder = smart_cast<CPhysicsShellHolder*>(&object( ));
+	if (!ph_shell_holder)
+	{
+		return NULL;
+	}
+
+	return ph_shell_holder->PPhysicsShell( );
 }
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-CHelicopter* CScriptGameObject::get_helicopter	()
+CHelicopter* CScriptGameObject::get_helicopter( )
 {
-	CHelicopter		*helicopter = smart_cast<CHelicopter*>(&object());
-	if (!helicopter) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CGameObject : cannot access class member get_helicopter!");
+	CHelicopter* helicopter = smart_cast<CHelicopter*>(&object( ));
+	if (!helicopter)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CGameObject : cannot access class member get_helicopter!");
 		NODEFAULT;
 	}
+
 	return helicopter;
 }
 
-CHangingLamp* CScriptGameObject::get_hanging_lamp()
+CHangingLamp* CScriptGameObject::get_hanging_lamp( )
 {
-	CHangingLamp*	lamp = smart_cast<CHangingLamp*>(&object());
-	if (!lamp) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CGameObject : it is not a lamp!");
+	CHangingLamp* lamp = smart_cast<CHangingLamp*>(&object( ));
+	if (!lamp)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CGameObject : it is not a lamp!");
 		NODEFAULT;
 	}
+
 	return lamp;
 }
 
-CHolderCustom* CScriptGameObject::get_custom_holder()
+CHolderCustom* CScriptGameObject::get_custom_holder( )
 {
-	CHolderCustom* holder=smart_cast<CHolderCustom*>(&object());
-	if(!holder){
-		ai().script_engine().script_log(ScriptStorage::eLuaMessageTypeError,"CGameObject : it is not a holder!");
+	CHolderCustom* holder = smart_cast<CHolderCustom*>(&object( ));
+	if (!holder)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CGameObject : it is not a holder!");
 	}
+
 	return holder;
 }
 
@@ -198,14 +208,16 @@ CHolderCustom* CScriptGameObject::get_custom_holder()
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-pcstr CScriptGameObject::WhoHitName()
+pcstr CScriptGameObject::WhoHitName( )
 {
-	CEntityAlive *entity_alive = smart_cast<CEntityAlive*>(&object());
+	CEntityAlive* entity_alive = smart_cast<CEntityAlive*>(&object( ));
 	if (entity_alive)
-		return			entity_alive->conditions().GetWhoHitLastTime()?(*entity_alive->conditions().GetWhoHitLastTime()->cName()):NULL;
-	else 
 	{
-		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CScriptGameObject : cannot access class member  WhoHitName()");
+		return			entity_alive->conditions( ).GetWhoHitLastTime( ) ? (*entity_alive->conditions( ).GetWhoHitLastTime( )->cName( )) : NULL;
+	}
+	else
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CScriptGameObject : cannot access class member  WhoHitName()");
 		return			NULL;
 	}
 }
@@ -306,27 +318,36 @@ fVector3	CScriptGameObject::bone_position	(pcstr bone_name) const
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-u32 CScriptGameObject::GetAmmoElapsed()
+u32 CScriptGameObject::GetAmmoElapsed( )
 {
-	const CWeapon	*weapon = smart_cast<const CWeapon*>(&object());
+	const CWeapon* weapon = smart_cast<const CWeapon*>(&object( ));
 	if (!weapon)
-		return		(0);
-	return			(weapon->GetAmmoElapsed());
+	{
+		return 0;
+	}
+
+	return weapon->GetAmmoElapsed( );
 }
 
-void CScriptGameObject::SetAmmoElapsed(int ammo_elapsed)
+void CScriptGameObject::SetAmmoElapsed(s32 ammo_elapsed)
 {
-	CWeapon	*weapon = smart_cast<CWeapon*>(&object());
-	if (!weapon) return;
+	CWeapon* weapon = smart_cast<CWeapon*>(&object( ));
+	if (!weapon)
+	{
+		return;
+	}
+
 	weapon->SetAmmoElapsed(ammo_elapsed);
 }
 
-u32 CScriptGameObject::GetAmmoCurrent() const
+u32 CScriptGameObject::GetAmmoCurrent( ) const
 {
-	const CWeapon	*weapon = smart_cast<const CWeapon*>(&object());
+	const CWeapon* weapon = smart_cast<const CWeapon*>(&object( ));
 	if (!weapon)
-		return		(0);
-	return			(weapon->GetAmmoCurrent(true));
+	{
+		return 0;
+	}
+	return weapon->GetAmmoCurrent(true);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -335,26 +356,30 @@ u32 CScriptGameObject::GetAmmoCurrent() const
 
 void CScriptGameObject::SetQueueSize(u32 queue_size)
 {
-	CWeaponMagazined		*weapon = smart_cast<CWeaponMagazined*>(&object());
-	if (!weapon) {
-		ai().script_engine().script_log	(ScriptStorage::eLuaMessageTypeError,"CWeaponMagazined : cannot access class member SetQueueSize!");
+	CWeaponMagazined* weapon = smart_cast<CWeaponMagazined*>(&object( ));
+	if (!weapon)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CWeaponMagazined : cannot access class member SetQueueSize!");
 		return;
 	}
-	weapon->SetQueueSize	(queue_size);
+
+	weapon->SetQueueSize(queue_size);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 //// Inventory Owner
 ////////////////////////////////////////////////////////////////////////////
 
-u32	CScriptGameObject::Cost			() const
+u32 CScriptGameObject::Cost( ) const
 {
-	CInventoryItem		*inventory_item = smart_cast<CInventoryItem*>(&object());
-	if (!inventory_item) {
-		ai().script_engine().script_log			(ScriptStorage::eLuaMessageTypeError,"CSciptEntity : cannot access class member Cost!");
+	CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object( ));
+	if (!inventory_item)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CSciptEntity : cannot access class member Cost!");
 		return			(false);
 	}
-	return				(inventory_item->Cost());
+
+	return				(inventory_item->Cost( ));
 }
 
 f32 CScriptGameObject::GetCondition	() const

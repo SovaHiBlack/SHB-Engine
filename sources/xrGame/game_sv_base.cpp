@@ -226,7 +226,7 @@ void				game_sv_GameState::signal_Syncronize( )
 }
 
 // Network
-void game_sv_GameState::net_Export_State(NET_Packet& P, CClientID to)
+void game_sv_GameState::net_Export_State(CNetPacket& P, CClientID to)
 {
 	// Generic
 	P.w_clientID(to);
@@ -282,7 +282,7 @@ void game_sv_GameState::net_Export_State(NET_Packet& P, CClientID to)
 	net_Export_GameTime(P);
 }
 
-void game_sv_GameState::net_Export_Update(NET_Packet& P, CClientID id_to, CClientID id)
+void game_sv_GameState::net_Export_Update(CNetPacket& P, CClientID id_to, CClientID id)
 {
 	game_PlayerState* A = get_id(id);
 	if (A)
@@ -299,7 +299,7 @@ void game_sv_GameState::net_Export_Update(NET_Packet& P, CClientID id_to, CClien
 	};
 };
 
-void game_sv_GameState::net_Export_GameTime(NET_Packet& P)
+void game_sv_GameState::net_Export_GameTime(CNetPacket& P)
 {
 	//Syncronize GameTime 
 	P.w_u64(GetGameTime( ));
@@ -511,7 +511,7 @@ CSE_Abstract* game_sv_GameState::spawn_begin(pcstr N)
 
 CSE_Abstract* game_sv_GameState::spawn_end(CSE_Abstract* E, CClientID id)
 {
-	NET_Packet						P;
+	CNetPacket						P;
 	u16								skip_header;
 	E->Spawn_Write(P, TRUE);
 	P.r_begin(skip_header);
@@ -521,12 +521,12 @@ CSE_Abstract* game_sv_GameState::spawn_end(CSE_Abstract* E, CClientID id)
 	return N;
 }
 
-void game_sv_GameState::GenerateGameMessage(NET_Packet& P)
+void game_sv_GameState::GenerateGameMessage(CNetPacket& P)
 {
 	P.w_begin(M_GAMEMESSAGE);
 };
 
-void game_sv_GameState::u_EventGen(NET_Packet& P, u16 type, u16 dest)
+void game_sv_GameState::u_EventGen(CNetPacket& P, u16 type, u16 dest)
 {
 	P.w_begin(M_EVENT);
 	P.w_u32(Level( ).timeServer( ));//Device.TimerAsync());
@@ -534,7 +534,7 @@ void game_sv_GameState::u_EventGen(NET_Packet& P, u16 type, u16 dest)
 	P.w_u16(dest);
 }
 
-void game_sv_GameState::u_EventSend(NET_Packet& P, u32 dwFlags)
+void game_sv_GameState::u_EventSend(CNetPacket& P, u32 dwFlags)
 {
 	m_server->SendBroadcast(BroadcastCID, P, dwFlags);
 }
@@ -582,26 +582,26 @@ game_sv_GameState::~game_sv_GameState( )
 	ConsoleCommands_Clear( );
 }
 
-bool game_sv_GameState::change_level(NET_Packet& net_packet, CClientID sender)
+bool game_sv_GameState::change_level(CNetPacket& net_packet, CClientID sender)
 {
 	return						(true);
 }
 
-void game_sv_GameState::save_game(NET_Packet& net_packet, CClientID sender)
+void game_sv_GameState::save_game(CNetPacket& net_packet, CClientID sender)
 { }
 
-bool game_sv_GameState::load_game(NET_Packet& net_packet, CClientID sender)
+bool game_sv_GameState::load_game(CNetPacket& net_packet, CClientID sender)
 {
 	return						(true);
 }
 
-void game_sv_GameState::reload_game(NET_Packet& net_packet, CClientID sender)
+void game_sv_GameState::reload_game(CNetPacket& net_packet, CClientID sender)
 { }
 
-void game_sv_GameState::switch_distance(NET_Packet& net_packet, CClientID sender)
+void game_sv_GameState::switch_distance(CNetPacket& net_packet, CClientID sender)
 { }
 
-void game_sv_GameState::OnHit(u16 id_hitter, u16 id_hitted, NET_Packet& P)
+void game_sv_GameState::OnHit(u16 id_hitter, u16 id_hitted, CNetPacket& P)
 {
 	CSE_Abstract* e_hitter = get_entity_from_eid(id_hitter);
 	CSE_Abstract* e_hitted = get_entity_from_eid(id_hitted);
@@ -617,7 +617,7 @@ void game_sv_GameState::OnHit(u16 id_hitter, u16 id_hitted, NET_Packet& P)
 	};
 }
 
-void game_sv_GameState::OnEvent(NET_Packet& tNetPacket, u16 type, u32 time, CClientID sender)
+void game_sv_GameState::OnEvent(CNetPacket& tNetPacket, u16 type, u32 time, CClientID sender)
 {
 	switch (type)
 	{
@@ -722,7 +722,7 @@ void game_sv_GameState::NewPlayerName_Replace(void* pClient, pcstr NewPlayerName
 	CL->name._set(NewPlayerName);
 
 	//---------------------------------------------------------
-	NET_Packet P;
+	CNetPacket P;
 	P.w_begin(M_CHANGE_SELF_NAME);
 	P.w_stringZ(NewPlayerName);
 	m_server->SendTo(CL->ID, P);
@@ -734,7 +734,7 @@ void game_sv_GameState::OnSwitchPhase(u32 old_phase, u32 new_phase)
 	signal_Syncronize( );
 }
 
-void game_sv_GameState::AddDelayedEvent(NET_Packet& tNetPacket, u16 type, u32 time, CClientID sender)
+void game_sv_GameState::AddDelayedEvent(CNetPacket& tNetPacket, u16 type, u32 time, CClientID sender)
 {
 	//	OnEvent(tNetPacket,type,time,sender);
 	m_event_queue->Create(tNetPacket, type, time, sender);
@@ -766,16 +766,16 @@ RPoint game_sv_GameState::getRP(u16 team_idx, u32 rp_idx)
 		return RPoint( );
 };
 
-void game_sv_GameState::teleport_object(NET_Packet& packet, u16 id)
+void game_sv_GameState::teleport_object(CNetPacket& packet, u16 id)
 { }
 
-void game_sv_GameState::add_restriction(NET_Packet& packet, u16 id)
+void game_sv_GameState::add_restriction(CNetPacket& packet, u16 id)
 { }
 
-void game_sv_GameState::remove_restriction(NET_Packet& packet, u16 id)
+void game_sv_GameState::remove_restriction(CNetPacket& packet, u16 id)
 { }
 
-void game_sv_GameState::remove_all_restrictions(NET_Packet& packet, u16 id)
+void game_sv_GameState::remove_all_restrictions(CNetPacket& packet, u16 id)
 { }
 
 void game_sv_GameState::MapRotation_AddMap(pcstr MapName)

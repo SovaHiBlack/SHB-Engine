@@ -26,24 +26,32 @@ CALifeGraphRegistry::~CALifeGraphRegistry	()
 	xr_delete						(m_level);
 }
 
-void CALifeGraphRegistry::on_load			()
+void CALifeGraphRegistry::on_load( )
 {
-	for (int i=0; i<GameGraph::LOCATION_TYPE_COUNT; ++i) {
+	for (s32 i = 0; i < GameGraph::LOCATION_TYPE_COUNT; ++i)
+	{
 		{
-			for (int j=0; j<GameGraph::LOCATION_COUNT; ++j)
-				m_terrain[i][j].clear();
+			for (s32 j = 0; j < GameGraph::LOCATION_COUNT; ++j)
+			{
+				m_terrain[i][j].clear( );
+			}
 		}
-		for (GameGraph::_GRAPH_ID j=0; j<(GameGraph::_GRAPH_ID)ai().game_graph().header().vertex_count(); ++j)
-			m_terrain[i][ai().game_graph().vertex(j)->vertex_type()[i]].push_back(j);
+
+		for (GameGraph::_GRAPH_ID j = 0; j < (GameGraph::_GRAPH_ID)ai( ).game_graph( ).header( ).vertex_count( ); ++j)
+		{
+			m_terrain[i][ai( ).game_graph( ).vertex(j)->vertex_type( )[i]].push_back(j);
+		}
 	}
 
-	m_objects.resize				(ai().game_graph().header().vertex_count());
+	m_objects.resize(ai( ).game_graph( ).header( ).vertex_count( ));
 
 	{
-		GRAPH_REGISTRY::iterator	I = m_objects.begin();
-		GRAPH_REGISTRY::iterator	E = m_objects.end();
-		for ( ; I != E; ++I)
-			(*I).objects().clear	();
+		GRAPH_REGISTRY::iterator	I = m_objects.begin( );
+		GRAPH_REGISTRY::iterator	E = m_objects.end( );
+		for (; I != E; ++I)
+		{
+			(*I).objects( ).clear( );
+		}
 	}
 }
 
@@ -69,7 +77,7 @@ void CALifeGraphRegistry::setup_current_level	()
 {
 	m_level						= xr_new<CALifeLevelRegistry>(ai().game_graph().vertex(actor()->m_tGraphID)->level_id());
 	level().set_process_time	(m_process_time);
-	for (int i=0, n=ai().game_graph().header().vertex_count(); i<n; ++i)
+	for (s32 i=0, n=ai().game_graph().header().vertex_count(); i<n; ++i)
 		if (ai().game_graph().vertex(i)->level_id() == level().level_id()) {
 			D_OBJECT_P_MAP::const_iterator	I = m_objects[i].objects().objects().begin();
 			D_OBJECT_P_MAP::const_iterator	E = m_objects[i].objects().objects().end();
@@ -88,7 +96,7 @@ void CALifeGraphRegistry::setup_current_level	()
 	GameGraph::LEVEL_MAP::const_iterator I = ai().game_graph().header().levels().find(ai().game_graph().vertex(actor()->m_tGraphID)->level_id());
 	R_ASSERT2					(ai().game_graph().header().levels().end() != I,"Graph point level ID not found!");
 
-	int							id = pApp->Level_ID(*(*I).second.name());
+	s32							id = pApp->Level_ID(*(*I).second.name());
 	VERIFY3						(id >= 0,"Level is corrupted or doesn't exist",*(*I).second.name());
 	pApp->Level_Set				(id);
 	ai().load					(*(*I).second.name());

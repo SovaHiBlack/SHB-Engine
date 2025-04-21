@@ -46,7 +46,7 @@ void SStatSectionData::load(IReader &stream)
 
 	if(ai().get_alife()->header().version()==0x0002)
 	{
-	int tmp;
+		s32 tmp;
 	load_data			(tmp,				stream);
 		switch(tmp)
 		{

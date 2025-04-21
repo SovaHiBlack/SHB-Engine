@@ -40,12 +40,12 @@ public:
 	virtual void	OnH_B_Chield			();
 	virtual void	OnH_A_Chield			();
 	virtual void	UpdateCL				();
-	virtual void	OnEvent					(NET_Packet& P, u16 type);
+	virtual void	OnEvent					(CNetPacket& P, u16 type);
 	virtual BOOL	net_Spawn				(CSE_Abstract* DC);
 	virtual void	net_Destroy				();
-	virtual void	net_Import				(NET_Packet& P);					// import from server
-	virtual void	net_Export				(NET_Packet& P);					// export to server
-	virtual void	save					(NET_Packet &output_packet);
+	virtual void	net_Import				(CNetPacket& P);					// import from server
+	virtual void	net_Export				(CNetPacket& P);					// export to server
+	virtual void	save					(CNetPacket&output_packet);
 	virtual void	load					(IReader &input_packet);
 	virtual BOOL	net_SaveRelevant		()								{return TRUE;}
 	virtual void	renderable_Render		();

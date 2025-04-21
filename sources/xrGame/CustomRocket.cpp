@@ -618,7 +618,7 @@ void CCustomRocket::StopFlying				()
 	StopLights();
 }
 
-void	CCustomRocket::OnEvent(NET_Packet& P, u16 type)
+void	CCustomRocket::OnEvent(CNetPacket& P, u16 type)
 {
 	switch (type)
 	{

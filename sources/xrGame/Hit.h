@@ -53,10 +53,10 @@ struct SHit
 		return hit_type;
 	}
 
-	void				Read_Packet				(NET_Packet Packet);
-	void				Read_Packet_Cont		(NET_Packet Packet);
-	void				Write_Packet			(NET_Packet& Packet);
-	void				Write_Packet_Cont		(NET_Packet& Packet);
+	void				Read_Packet				(CNetPacket Packet);
+	void				Read_Packet_Cont		(CNetPacket Packet);
+	void				Write_Packet			(CNetPacket& Packet);
+	void				Write_Packet_Cont		(CNetPacket& Packet);
 
 	void				GenHeader				(u16 PacketType, u16 ID);
 	//-----------------------------------------------------

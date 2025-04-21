@@ -54,7 +54,7 @@ void CBaseMonster::Load(pcstr section)
 	m_anomaly_detector->load(section);
 	CoverMan->load( );
 
-	m_rank = (pSettings->line_exist(section, "rank")) ? int(pSettings->r_u32(section, "rank")) : 0;
+	m_rank = (pSettings->line_exist(section, "rank")) ? s32(pSettings->r_u32(section, "rank")) : 0;
 
 	m_melee_rotation_factor = READ_IF_EXISTS(pSettings, r_float, section, "Melee_Rotation_Factor", 1.5f);
 	berserk_always = READ_IF_EXISTS(!!pSettings, r_bool, section, "berserk_always", false);

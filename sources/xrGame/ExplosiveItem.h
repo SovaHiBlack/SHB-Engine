@@ -24,15 +24,15 @@ public:
 	virtual void				Load					(pcstr section)							;
 	virtual BOOL				net_Spawn				(CSE_Abstract* DC)							{return CInventoryItemObject::net_Spawn(DC);}
 	virtual void				net_Destroy				()											;
-	virtual void				net_Export				(NET_Packet& P)								{CInventoryItemObject::net_Export(P);}
-	virtual void				net_Import				(NET_Packet& P)								{CInventoryItemObject::net_Import(P);}
+	virtual void				net_Export				(CNetPacket& P)								{CInventoryItemObject::net_Export(P);}
+	virtual void				net_Import				(CNetPacket& P)								{CInventoryItemObject::net_Import(P);}
 	virtual void				net_Relcase				(CObject* O )								;
 	virtual CGameObject			*cast_game_object		()											{return this;}
 	virtual CExplosive*			cast_explosive			()											{return this;}
 	virtual IDamageSource*		cast_IDamageSource		()											{return CExplosive::cast_IDamageSource();}
 	virtual void				GetRayExplosionSourcePos(fVector3& pos);
 	virtual void				ActivateExplosionBox(const fVector3& size, fVector3& in_out_pos);
-	virtual void				OnEvent					(NET_Packet& P, u16 type)					;
+	virtual void				OnEvent					(CNetPacket& P, u16 type)					;
 	virtual	void				Hit						(SHit* pHDS)								;
 	virtual void				shedule_Update			(u32 dt)									;
 	virtual bool				shedule_Needed			();

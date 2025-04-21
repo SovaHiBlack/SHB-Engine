@@ -27,7 +27,7 @@ bool CSE_ALifeHumanAbstract::bfPerformAttack						()
 	return									(brain().perform_attack());
 }
 
-ALife::EMeetActionType CSE_ALifeHumanAbstract::tfGetActionType		(CSE_ALifeSchedulable *schedulable, int iGroupIndex, bool bMutualDetection)
+ALife::EMeetActionType CSE_ALifeHumanAbstract::tfGetActionType		(CSE_ALifeSchedulable *schedulable, s32 iGroupIndex, bool bMutualDetection)
 {
 	return									(brain().action_type(schedulable,iGroupIndex,bMutualDetection));
 }

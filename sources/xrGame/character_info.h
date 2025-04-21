@@ -9,7 +9,7 @@
 #include "shared_data.h"
 #include "xml_str_id_loader.h"
 
-class NET_Packet;
+class CNetPacket;
 
 #include "specific_character.h"
 
@@ -65,7 +65,7 @@ public:
 
 #ifdef XRGAME_EXPORTS
 	void 						load				(IReader&);
-	void 						save				(NET_Packet&);
+	void 						save				(CNetPacket&);
 
 	//инициализация профиля подразумевает
 	//загрузку соответствующего CSpecificCharacter, по 

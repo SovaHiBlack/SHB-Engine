@@ -18,9 +18,9 @@
 extern const f32 MIN_SUITABLE_ENEMY_DISTANCE = 3.0f;
 
 #ifdef _DEBUG
-static int g_advance_search_count		= 0;
-static int g_near_cover_search_count	= 0;
-static int g_far_cover_search_count		= 0;
+static s32 g_advance_search_count		= 0;
+static s32 g_near_cover_search_count	= 0;
+static s32 g_far_cover_search_count		= 0;
 #endif
 
 void CAI_Stalker::subscribe_on_best_cover_changed	(const on_best_cover_changed_delegate &delegate)

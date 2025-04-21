@@ -77,7 +77,7 @@ void CPhysicsSkeletonObject::shedule_Update(u32 dt)
 	CPHSkeleton::Update(dt);
 }
 
-void CPhysicsSkeletonObject::net_Save(NET_Packet& P)
+void CPhysicsSkeletonObject::net_Save(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);

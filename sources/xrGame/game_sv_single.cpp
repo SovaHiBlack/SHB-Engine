@@ -203,7 +203,7 @@ void game_sv_Single::SetEnvironmentGameTimeFactor		(const f32 fTimeFactor)
 //	return(inherited::SetGameTimeFactor(fTimeFactor));
 }
 
-bool game_sv_Single::change_level					(NET_Packet &net_packet, CClientID sender)
+bool game_sv_Single::change_level					(CNetPacket& net_packet, CClientID sender)
 {
 	if (ai().get_alife())
 		return					(alife().change_level(net_packet));
@@ -211,7 +211,7 @@ bool game_sv_Single::change_level					(NET_Packet &net_packet, CClientID sender)
 		return					(true);
 }
 
-void game_sv_Single::save_game						(NET_Packet &net_packet, CClientID sender)
+void game_sv_Single::save_game						(CNetPacket& net_packet, CClientID sender)
 {
 	if (!ai().get_alife())
 		return;
@@ -219,7 +219,7 @@ void game_sv_Single::save_game						(NET_Packet &net_packet, CClientID sender)
 	alife().save				(net_packet);
 }
 
-bool game_sv_Single::load_game					(NET_Packet &net_packet, CClientID sender)
+bool game_sv_Single::load_game					(CNetPacket& net_packet, CClientID sender)
 {
 	if (!ai().get_alife())
 		return					(inherited::load_game(net_packet,sender));
@@ -228,11 +228,11 @@ bool game_sv_Single::load_game					(NET_Packet &net_packet, CClientID sender)
 	return						(alife().load_game(*game_name,true));
 }
 
-void game_sv_Single::reload_game				(NET_Packet &net_packet, CClientID sender)
+void game_sv_Single::reload_game				(CNetPacket& net_packet, CClientID sender)
 {
 }
 
-void game_sv_Single::switch_distance			(NET_Packet &net_packet, CClientID sender)
+void game_sv_Single::switch_distance			(CNetPacket& net_packet, CClientID sender)
 {
 	if (!ai().get_alife())
 		return;
@@ -240,7 +240,7 @@ void game_sv_Single::switch_distance			(NET_Packet &net_packet, CClientID sender
 	alife().set_switch_distance	(net_packet.r_float());
 }
 
-void game_sv_Single::teleport_object			(NET_Packet &net_packet, u16 id)
+void game_sv_Single::teleport_object			(CNetPacket& net_packet, u16 id)
 {
 	if (!ai().get_alife())
 		return;
@@ -256,7 +256,7 @@ void game_sv_Single::teleport_object			(NET_Packet &net_packet, u16 id)
 	alife().teleport_object (id,game_vertex_id,level_vertex_id,position);
 }
 
-void game_sv_Single::add_restriction			(NET_Packet &packet, u16 id)
+void game_sv_Single::add_restriction			(CNetPacket& packet, u16 id)
 {
 	if (!ai().get_alife())
 		return;
@@ -270,7 +270,7 @@ void game_sv_Single::add_restriction			(NET_Packet &packet, u16 id)
 	alife().add_restriction (id,restriction_id,restriction_type);
 }
 
-void game_sv_Single::remove_restriction			(NET_Packet &packet, u16 id)
+void game_sv_Single::remove_restriction			(CNetPacket& packet, u16 id)
 {
 	if (!ai().get_alife())
 		return;
@@ -284,7 +284,7 @@ void game_sv_Single::remove_restriction			(NET_Packet &packet, u16 id)
 	alife().remove_restriction (id,restriction_id,restriction_type);
 }
 
-void game_sv_Single::remove_all_restrictions	(NET_Packet &packet, u16 id)
+void game_sv_Single::remove_all_restrictions	(CNetPacket& packet, u16 id)
 {
 	if (!ai().get_alife())
 		return;

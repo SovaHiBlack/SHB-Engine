@@ -46,7 +46,7 @@ void CExplosiveItem::StartTimerEffects	()
 	CParticlesPlayer::StartParticles(pSettings->r_string(*cNameSect(),"set_timer_particles"), fVector3().set(0.0f,1.0f,0.0f),ID());
 
 }
-void CExplosiveItem::OnEvent (NET_Packet& P, u16 type)
+void CExplosiveItem::OnEvent (CNetPacket& P, u16 type)
 {
 	CExplosive::OnEvent (P, type);
 	inherited::OnEvent (P, type);

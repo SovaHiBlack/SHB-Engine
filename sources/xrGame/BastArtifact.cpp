@@ -143,7 +143,7 @@ void CBastArtefact::UpdateCLChild()
 				{
 					do
 					{
-						int rnd = ::Random.randI(m_AliveList.size());
+						s32 rnd = ::Random.randI(m_AliveList.size());
 						pEntityToHit = m_AliveList[rnd];
 					} while (pEntityToHit == m_pHitedEntity);
 				}

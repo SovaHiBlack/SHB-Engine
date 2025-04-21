@@ -76,22 +76,21 @@ struct SActorMotions
 };
 
 //vehicle anims
-struct	SVehicleAnimCollection
+struct SVehicleAnimCollection
 {
 	static const u16 MAX_IDLES = 3;
 	u16				idles_num;
 	MotionID		idles[MAX_IDLES];
 	MotionID		steer_left;
 	MotionID		steer_right;
-					SVehicleAnimCollection	();
-	void			Create				(CKinematicsAnimated* K,u16 num);
+					SVehicleAnimCollection				();
+	void			Create								(CKinematicsAnimated* K,u16 num);
 };
+
 struct SActorVehicleAnims
 {
-	static const int TYPES_NUMBER=2;
+	static const s32 TYPES_NUMBER=2;
 	SVehicleAnimCollection m_vehicles_type_collections	[TYPES_NUMBER];
 						SActorVehicleAnims				();
 	void				Create							(CKinematicsAnimated* K);
 };
-
-

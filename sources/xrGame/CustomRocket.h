@@ -81,7 +81,7 @@ public:
 													 const fVector3& vel,
 													 const fVector3& angular_vel);
 
-	virtual void			OnEvent					(NET_Packet& P, u16 type);
+	virtual void			OnEvent					(CNetPacket& P, u16 type);
 	bool					m_bLaunched;
 protected:
 	//указатель на владельца RocketLauncher - который стреляет ракету
@@ -106,12 +106,12 @@ protected:
 	//двигатель присутствует
 	bool		m_bEnginePresent;
 	//время работы двигателя с момента старта
-	int			m_dwEngineWorkTime;
+	s32			m_dwEngineWorkTime;
 	//сила работы двигателя (размер импульса в секунду)
 	f32			m_fEngineImpulse;
 	f32			m_fEngineImpulseUp;
 	//текущее время работы двигателя
-	int			m_dwEngineTime;
+	s32			m_dwEngineTime;
 
 	//обработка столкновения
 	virtual void			Contact(const fVector3& pos, const fVector3& normal);

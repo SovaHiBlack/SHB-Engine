@@ -31,7 +31,7 @@ public:
 
 private:
 #ifdef _DEBUG	
-	virtual void	debug_on_key		(int key);
+	virtual void	debug_on_key		(s32 key);
 #endif
 
 public:

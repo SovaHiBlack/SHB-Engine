@@ -31,10 +31,10 @@ typedef enum {
 } TSoundDangerValue;
 
 
-#define FACTOR_SOUND_TYPE	int(8)
-#define FACTOR_DISTANCE		int(1)
-#define FACTOR_DELTA_TIME	int(2)
-#define FACTOR_SOUND_POWER	int(50)
+#define FACTOR_SOUND_TYPE	s32(8)
+#define FACTOR_DISTANCE		s32(1)
+#define FACTOR_DELTA_TIME	s32(2)
+#define FACTOR_SOUND_POWER	s32(50)
 
 
 typedef struct tagSoundElement
@@ -45,7 +45,7 @@ typedef struct tagSoundElement
 	f32				power;
 	TTime				time;			// время обнаружения звука
 
-	int					value;			// оценочное значение данного звука		
+	s32					value;			// оценочное значение данного звука		
 
 	tagSoundElement() {  
 		who = 0; type = NONE_DANGEROUS_SOUND; position.set(0,0,0); power = 0.f; time = 0; value = 0;
@@ -53,7 +53,7 @@ typedef struct tagSoundElement
 	bool operator < (const tagSoundElement &s) const  { 
 		return (value < s.value);
 	}
-	IC void SetConvert(const CObject* who, int eType, const fVector3& position, f32 power, TTime time)
+	IC void SetConvert(const CObject* who, s32 eType, const fVector3& position, f32 power, TTime time)
 	{
 		this->who = who; type = ConvertSoundType((ESoundTypes)eType); this->position = position; this->power = power; this->time = time;
 	}
@@ -81,7 +81,7 @@ public:
 	void		init_external			(CBaseMonster *M, TTime mem_time);
 
 	void		HearSound				(const SoundElem &s);
-	void		HearSound(const CObject* who, int eType, const fVector3& Position, f32 power, TTime time);
+	void		HearSound(const CObject* who, s32 eType, const fVector3& Position, f32 power, TTime time);
 	IC	bool	IsRememberSound			() {return (!Sounds.empty());}		
 	void		GetSound				(SoundElem &s, bool &bDangerous);	// возвращает самый опасный звук
 	SoundElem	&GetSound				();
@@ -98,6 +98,6 @@ public:
 	bool		hear_help_sound			();
 	u32			hear_help_sound_node	(){VERIFY(m_help_node != u32(-1)); return m_help_node;}
 
-	void		check_help_sound		(int eType, u32 node);
+	void		check_help_sound		(s32 eType, u32 node);
 };
 

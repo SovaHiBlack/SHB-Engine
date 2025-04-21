@@ -349,7 +349,7 @@ void SHeliEnemy::Update( )
 	};
 }
 
-void SHeliEnemy::save(NET_Packet& output_packet)
+void SHeliEnemy::save(CNetPacket& output_packet)
 {
 	output_packet.w_s16((s16)type);
 	output_packet.w_vec3(destEnemyPos);
@@ -417,7 +417,7 @@ void SHeliBodyState::LookAtPoint(fVector3 point, bool do_it)
 	type = (do_it) ? eBodyToPoint : eBodyByPath;
 }
 
-void SHeliBodyState::save(NET_Packet& output_packet)
+void SHeliBodyState::save(CNetPacket& output_packet)
 {
 	output_packet.w_s16((s16)type);
 	output_packet.w_u8(b_looking_at_point ? 1 : 0);

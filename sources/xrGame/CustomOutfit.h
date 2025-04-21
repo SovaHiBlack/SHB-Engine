@@ -45,9 +45,9 @@ public:
 	f32								m_additional_weight2;
 	shared_str						m_NightVisionSect;
 	virtual u32						ef_equipment_type		() const;
-	virtual	BOOL					BonePassBullet			(int boneID);
+	virtual	BOOL					BonePassBullet			(s32 boneID);
 	const shared_str&				GetFullIconName			() const	{return m_full_icon_name;};
 
-	virtual void			net_Export			(NET_Packet& P);
-	virtual void			net_Import			(NET_Packet& P);
+	virtual void			net_Export			(CNetPacket& P);
+	virtual void			net_Import			(CNetPacket& P);
 };

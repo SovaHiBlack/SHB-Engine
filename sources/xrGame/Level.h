@@ -156,12 +156,12 @@ private:
 	bool						m_bConnectResult;
 	xr_string					m_sConnectResult;
 public:	
-	void						OnGameSpyChallenge(NET_Packet* P) //KRodin: удалить, если не вызывается!
+	void						OnGameSpyChallenge(CNetPacket* P) //KRodin: удалить, если не вызывается!
 	{
 		Msg("!!Called OnGameSpyChallenge!");
 	}
 	void						OnBuildVersionChallenge			();
-	void						OnConnectResult					(NET_Packet* P);
+	void						OnConnectResult					(CNetPacket* P);
 public:
 	//////////////////////////////////////////////	
 	// static particles
@@ -204,7 +204,7 @@ protected:
 
 	bool	xr_stdcall			net_start_finalizer				();
 
-	void						net_OnChangeSelfName			(NET_Packet* P);
+	void						net_OnChangeSelfName			(CNetPacket* P);
 
 public:
 	// sounds
@@ -230,8 +230,8 @@ public:
 	virtual void				OnEvent					( EVENT E, u64 P1, u64 P2 );
 	virtual void				OnFrame					( void );
 	virtual void				OnRender				( );
-	void						cl_Process_Event		(u16 dest, u16 type, NET_Packet& P);
-	void						cl_Process_Spawn		(NET_Packet& P);
+	void						cl_Process_Event		(u16 dest, u16 type, CNetPacket& P);
+	void						cl_Process_Spawn		(CNetPacket& P);
 	void						ProcessGameEvents		( );
 	void						ProcessGameSpawns		( );
 
@@ -251,12 +251,12 @@ public:
 
 
 	// Game
-	void						InitializeClientGame	(NET_Packet& P);
+	void						InitializeClientGame	(CNetPacket& P);
 	void						ClientReceive			();
 	void						ClientSend				();
 	void						ClientSave				();
-			u32					Objects_net_Save		(NET_Packet* _Packet, u32 start, u32 count);
-	virtual	void				Send					(NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
+			u32					Objects_net_Save		(CNetPacket* _Packet, u32 start, u32 count);
+	virtual	void				Send					(CNetPacket& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
 	
 	void						g_cl_Spawn				(pcstr name, u8 rp, u16 flags, fVector3 pos);	// only ask server
 	void						g_sv_Spawn				(CSE_Abstract* E);					// server reply/command spawning

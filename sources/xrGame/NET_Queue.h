@@ -14,7 +14,7 @@ public:
 	u16					destination;
 	xr_vector<u8>		data;
 public:
-	void				import		(NET_Packet& P)
+	void				import		(CNetPacket& P)
 	{
 		data.clear		();
 		P.r_begin		(ID			);	//VERIFY(M_EVENT==ID);
@@ -45,7 +45,7 @@ public:
 			P.r				(&*data.begin(),size);
 		}
 	}
-	void				export		(NET_Packet& P)
+	void				export		(CNetPacket& P)
 	{
 		u16	ID			=	M_EVENT;
 		P.w_begin		(ID			);
@@ -54,7 +54,7 @@ public:
 		P.w_u16			(destination);
 		if (data.size())	P.w(&*data.begin(),(u32)data.size());
 	}
-	void				implication	(NET_Packet& P) const
+	void				implication	(CNetPacket& P) const
 	{
 		CopyMemory	(P.B.data,&*data.begin(),(u32)data.size());
 		P.B.count		= (u32)data.size();
@@ -72,7 +72,7 @@ public:
 //	xr_multiset<NET_Event>	queue;	
 	xr_deque<NET_Event>	queue;
 public:
-	IC void				insert		(NET_Packet& P)
+	IC void				insert		(CNetPacket& P)
 	{
 		NET_Event		E;
 		E.import		(P);
@@ -115,7 +115,7 @@ public:
 		/**/
 		return			TRUE;
 	}
-	IC void				get			(u16& ID, u16& dest, u16& type, NET_Packet& P)
+	IC void				get			(u16& ID, u16& dest, u16& type, CNetPacket& P)
 	{
 		const NET_Event& E	= *queue.begin();
 		ID					= E.ID;

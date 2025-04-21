@@ -136,7 +136,7 @@ void CControlAnimationBase::select_animation(bool anim_end)
 	VERIFY(anim_it);
 
 	// определить необходимый индекс
-	int index;
+	s32 index;
 	if (-1 != anim_it->spec_id) index = anim_it->spec_id;
 	else {
 		VERIFY(anim_it->count != 0);
@@ -407,7 +407,7 @@ void CControlAnimationBase::UpdateAnimCount()
 		string128	s, s_temp; 
 		u8 count = 0;
 
-		for (int i=0; ; ++i) {
+		for (s32 i=0; ; ++i) {
 			strconcat	(sizeof(s_temp),s_temp, *((*it)->target_name),itoa(i,s,10));
 			pcstr		name	= s_temp;
 			MotionID	id		= skel->ID_Cycle_Safe(name);

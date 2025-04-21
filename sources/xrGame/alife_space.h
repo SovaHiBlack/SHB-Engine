@@ -44,9 +44,9 @@ namespace ALife {
 	typedef u32 _SPAWN_STORY_ID;							// Spawn Story ID
 
 	struct SSumStackCell {
-		int						i1;
-		int						i2;
-		int						iCurrentSum;
+		s32						i1;
+		s32						i2;
+		s32						iCurrentSum;
 	};
 
 	enum ECombatResult {
@@ -162,7 +162,7 @@ xr_token							hit_types_token							[ ];
 		return get_token_name(hit_types_token, tHitType);
 	}
 
-	DEFINE_VECTOR	(int,						INT_VECTOR,						INT_IT);
+	DEFINE_VECTOR	(s32,						INT_VECTOR,						INT_IT);
 	DEFINE_VECTOR	(_OBJECT_ID,				OBJECT_VECTOR,					OBJECT_IT);
 	DEFINE_VECTOR	(CSE_ALifeInventoryItem*,	ITEM_P_VECTOR,					ITEM_P_IT);
 	DEFINE_VECTOR	(CSE_ALifeItemWeapon*,		WEAPON_P_VECTOR,				WEAPON_P_IT);

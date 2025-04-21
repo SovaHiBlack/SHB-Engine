@@ -150,7 +150,7 @@ void draw_planner						(const planner_type &brain, pcstr start_indent, pcstr ind
 	HUD().Font().pFontSmall->OutNext	("%s%sselected    : %s",start_indent,indent,_brain.action2string(brain.solution().front()));
 	// solution
 	HUD().Font().pFontSmall->OutNext	("%s%ssolution",start_indent,indent);
-	for (int i=0; i<(int)brain.solution().size(); ++i)
+	for (s32 i=0; i<(s32)brain.solution().size(); ++i)
 		HUD().Font().pFontSmall->OutNext("%s%s%s%s",start_indent,indent,indent,_brain.action2string(brain.solution()[i]));
 	// current
 	HUD().Font().pFontSmall->OutNext	("%s%scurrent world state",start_indent,indent);

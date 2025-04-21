@@ -116,12 +116,12 @@ public:
 	virtual void						shedule_Update(u32 T);
 	virtual void						UpdateCL( );
 
-	virtual void						OnEvent(NET_Packet& P, u16 type);
+	virtual void						OnEvent(CNetPacket& P, u16 type);
 
 	// Render
 	virtual void						renderable_Render( );
 	virtual BOOL						renderable_ShadowGenerate( );
-	virtual void						feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
+	virtual void						feel_sound_new(CObject* who, s32 type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
 	virtual Feel::Sound* dcast_FeelSound( )
 	{
 		return this;
@@ -208,7 +208,7 @@ public:
 	virtual void						OnItemDrop(CInventoryItem* inventory_item);
 	virtual void						OnItemDropUpdate( );
 
-	virtual void						OnPlayHeadShotParticle(NET_Packet P);
+	virtual void						OnPlayHeadShotParticle(CNetPacket P);
 
 	virtual void						Die(CObject* who);
 	virtual void						Hit(SHit* pHDS);
@@ -517,22 +517,22 @@ protected:
 	// User input/output
 	//////////////////////////////////////////////////////////////////////////
 public:
-	virtual void			IR_OnMouseMove(int x, int y);
-	virtual void			IR_OnKeyboardPress(int dik);
-	virtual void			IR_OnKeyboardRelease(int dik);
-	virtual void			IR_OnKeyboardHold(int dik);
-	virtual void			IR_OnMouseWheel(int direction);
-	virtual	f32				GetLookFactor( );
+	virtual void			IR_OnMouseMove(s32 x, s32 y);
+	virtual void			IR_OnKeyboardPress(s32 dik);
+	virtual void			IR_OnKeyboardRelease(s32 dik);
+	virtual void			IR_OnKeyboardHold(s32 dik);
+	virtual void			IR_OnMouseWheel(s32 direction);
+	virtual f32				GetLookFactor( );
 
 	//////////////////////////////////////////////////////////////////////////
 	// Weapon fire control (оружие актрера)
 	//////////////////////////////////////////////////////////////////////////
 public:
-	virtual void						g_WeaponBones(int& L, int& R1, int& R2);
-	virtual void						g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
-	virtual BOOL						g_State(SEntityState& state) const;
-	virtual	f32							GetWeaponAccuracy( ) const;
-	bool						IsZoomAimingMode( ) const
+	virtual void			g_WeaponBones(s32& L, s32& R1, s32& R2);
+	virtual void			g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
+	virtual BOOL			g_State(SEntityState& state) const;
+	virtual f32				GetWeaponAccuracy( ) const;
+	bool					IsZoomAimingMode( ) const
 	{
 		return m_bZoomAimingMode;
 	}
@@ -564,17 +564,17 @@ public:
 
 protected:
 	//косточки используемые при стрельбе
-	int									m_r_hand;
-	int									m_l_finger1;
-	int									m_r_finger2;
-	int									m_head;
+	s32									m_r_hand;
+	s32									m_l_finger1;
+	s32									m_r_finger2;
+	s32									m_head;
 
-	int									m_l_clavicle;
-	int									m_r_clavicle;
-	int									m_spine2;
-	int									m_spine1;
-	int									m_spine;
-	int									m_neck;
+	s32									m_l_clavicle;
+	s32									m_r_clavicle;
+	s32									m_spine2;
+	s32									m_spine1;
+	s32									m_spine;
+	s32									m_neck;
 
 	//////////////////////////////////////////////////////////////////////////
 	// Network
@@ -583,16 +583,16 @@ protected:
 
 public:
 	virtual BOOL						net_Spawn(CSE_Abstract* DC);
-	virtual void						net_Export(NET_Packet& P);				// export to server
-	virtual void						net_Import(NET_Packet& P);				// import from server
+	virtual void						net_Export(CNetPacket& P);				// export to server
+	virtual void						net_Import(CNetPacket& P);				// import from server
 	virtual void						net_Destroy( );
 	virtual BOOL						net_Relevant( );								// relevant for export to server
 	virtual	void						net_Relcase(CObject* O);					//
 	virtual void xr_stdcall				on_requested_spawn(CObject* object);
 	//object serialization
-	virtual void						save(NET_Packet& output_packet);
+	virtual void						save(CNetPacket& output_packet);
 	virtual void						load(IReader& input_packet);
-	virtual void						net_Save(NET_Packet& P);
+	virtual void						net_Save(CNetPacket& P);
 	virtual	BOOL						net_SaveRelevant( );
 
 protected:
@@ -603,8 +603,8 @@ protected:
 	u32						NET_Time;				// server time of last update
 
 	//---------------------------------------------
-	void					net_Import_Base(NET_Packet& P);
-	void					net_Import_Physic(NET_Packet& P);
+	void					net_Import_Base(CNetPacket& P);
+	void					net_Import_Physic(CNetPacket& P);
 	void					net_Import_Base_proceed( );
 	void					net_Import_Physic_proceed( );
 	//---------------------------------------------
@@ -652,7 +652,7 @@ protected:
 	DEF_DEQUE(PH_STATES, SPHNetState);
 	PH_STATES				m_States;
 	u16						m_u16NumBones;
-	void					net_ExportDeadBody(NET_Packet& P);
+	void					net_ExportDeadBody(CNetPacket& P);
 	//---------------------------------------------
 	void					CalculateInterpolationParams( );
 	//---------------------------------------------
@@ -817,7 +817,7 @@ public:
 	}
 	virtual CVisualMemoryManager* visual_memory( ) const;
 
-	virtual BOOL				BonePassBullet(int boneID);
+	virtual BOOL				BonePassBullet(s32 boneID);
 	virtual void				On_B_NotCurrentEntity( );
 
 private:

@@ -29,8 +29,8 @@ u32 get_rank(const shared_str&)
 }
 
 
-static const int MAX_AMMO_ATTACH_COUNT = 10;
-static const int enough_ammo_box_count = 1;
+static const s32 MAX_AMMO_ATTACH_COUNT = 10;
+static const s32 enough_ammo_box_count = 1;
 
 IC	bool CAI_Stalker::CTradeItem::operator<		(const CTradeItem &trade_item) const
 {
@@ -80,7 +80,7 @@ u32 CAI_Stalker::fill_items						(CInventory &inventory, CGameObject *old_owner,
 
 void CAI_Stalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, CGameObject *new_owner)
 {
-	NET_Packet			P;
+	CNetPacket			P;
 	CGameObject			*O = old_owner;
 	O->u_EventGen		(P,GE_TRADE_SELL,O->ID());
 	P.w_u16				(u16(item->object().ID()));
@@ -149,7 +149,7 @@ void CAI_Stalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_
 			continue;
 
 		ai().ef_storage().non_alife().member_item() = &(*I).m_item->object();
-		int						j = ai().ef_storage().m_pfPersonalWeaponType->dwfGetWeaponType();
+		s32						j = ai().ef_storage().m_pfPersonalWeaponType->dwfGetWeaponType();
 		f32					current_value = -1.0f;
 		switch (weapon_priority_type) {
 			case ALife::eWeaponPriorityTypeKnife : {
@@ -338,7 +338,7 @@ bool CAI_Stalker::non_conflicted					(const CInventoryItem *item, const CWeapon 
 
 bool CAI_Stalker::enough_ammo						(const CWeapon *new_weapon) const
 {
-	int						ammo_box_count = 0;
+	s32						ammo_box_count = 0;
 
 	TIItemContainer::const_iterator	I = inventory().m_all.begin();
 	TIItemContainer::const_iterator	E = inventory().m_all.end();
@@ -354,7 +354,7 @@ bool CAI_Stalker::enough_ammo						(const CWeapon *new_weapon) const
 	return					(false);
 }
 
-bool CAI_Stalker::conflicted						(const CInventoryItem *item, const CWeapon *new_weapon, bool new_wepon_enough_ammo, int new_weapon_rank) const
+bool CAI_Stalker::conflicted						(const CInventoryItem *item, const CWeapon *new_weapon, bool new_wepon_enough_ammo, s32 new_weapon_rank) const
 {
 	if (non_conflicted(item,new_weapon))
 		return				(false);
@@ -435,7 +435,7 @@ void CAI_Stalker::remove_personal_only_ammo			(const CInventoryItem *item)
 			if (xr_strcmp(*I,(*i)->object().cNameSect()))
 				continue;
 
-			NET_Packet		packet;
+			CNetPacket		packet;
 			u_EventGen		(packet,GE_DESTROY,(*i)->object().ID());
 			u_EventSend		(packet);
 		}

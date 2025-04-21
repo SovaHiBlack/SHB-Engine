@@ -399,7 +399,7 @@ void  CInventory::ActivateNextItemInActiveSlot()
 
 	bool res = Ruck						(current_item);
 	R_ASSERT							(res);
-	NET_Packet							P;
+	CNetPacket							P;
 	current_item->object().u_EventGen	(P, GEG_PLAYER_ITEM2RUCK, current_item->object().H_Parent()->ID());
 	P.w_u16								(current_item->object().ID());
 	current_item->object().u_EventSend	(P);
@@ -533,7 +533,7 @@ void CInventory::SendActionEvent(s32 cmd, u32 flags)
 	CActor *pActor = smart_cast<CActor*>(m_pOwner);
 	if (!pActor) return;
 
-	NET_Packet		P;
+	CNetPacket		P;
 	pActor->u_EventGen		(P,GE_INV_ACTION, pActor->ID());
 	P.w_s32					(cmd);
 	P.w_u32					(flags);
@@ -698,7 +698,7 @@ void CInventory::UpdateDropItem(PIItem pIItem)
 		pIItem->SetDropManual(FALSE);
 		if ( OnServer() ) 
 		{
-			NET_Packet					P;
+			CNetPacket					P;
 			pIItem->object().u_EventGen	(P, GE_OWNERSHIP_REJECT, pIItem->object().H_Parent()->ID());
 			P.w_u16						(u16(pIItem->object().ID()));
 			pIItem->object().u_EventSend(P);
@@ -894,7 +894,7 @@ bool CInventory::Eat(PIItem pIItem)
 
 	if(pItemToEat->Empty() && entity_alive->Local())
 	{
-		NET_Packet					P;
+		CNetPacket					P;
 		CGameObject::u_EventGen		(P,GE_OWNERSHIP_REJECT,entity_alive->ID());
 		P.w_u16						(pIItem->object().ID());
 		CGameObject::u_EventSend	(P);

@@ -45,7 +45,7 @@ void	CCar::cam_Update			(f32 dt, f32 fov)
 	Level().Cameras().Update		(active_camera);
 }
 
-void	CCar::OnCameraChange		(int type)
+void	CCar::OnCameraChange		(s32 type)
 {
 	if(Owner())
 	{

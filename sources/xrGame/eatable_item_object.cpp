@@ -66,7 +66,7 @@ void CEatableItemObject::UpdateCL			()
 	CEatableItem::UpdateCL			();
 }
 
-void CEatableItemObject::OnEvent			(NET_Packet& P, u16 type)
+void CEatableItemObject::OnEvent			(CNetPacket& P, u16 type)
 {
 	CPhysicItem::OnEvent				(P, type);
 	CEatableItem::OnEvent				(P, type);
@@ -85,17 +85,17 @@ void CEatableItemObject::net_Destroy		()
 	CPhysicItem::net_Destroy			();
 }
 
-void CEatableItemObject::net_Import		(NET_Packet& P) 
+void CEatableItemObject::net_Import		(CNetPacket& P)
 {	
 	CEatableItem::net_Import			(P);
 }
 
-void CEatableItemObject::net_Export		(NET_Packet& P) 
+void CEatableItemObject::net_Export		(CNetPacket& P)
 {	
 	CEatableItem::net_Export			(P);
 }
 
-void CEatableItemObject::save				(NET_Packet &packet)
+void CEatableItemObject::save				(CNetPacket&packet)
 {
 	CPhysicItem::save					(packet);
 	CEatableItem::save				(packet);

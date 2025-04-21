@@ -27,11 +27,10 @@
 
 bool g_bAutoClearCrouch = true;
 
-void CActor::IR_OnKeyboardPress(int cmd)
+void CActor::IR_OnKeyboardPress(s32 cmd)
 {
 	if (Remote())		return;
 
-//	if (conditions().IsSleeping())	return;
 	if (IsTalking())	return;
 	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))	return;
 	
@@ -43,7 +42,7 @@ void CActor::IR_OnKeyboardPress(int cmd)
 			//-----------------------------
 			if (OnServer())
 			{
-				NET_Packet P;
+				CNetPacket P;
 				P.w_begin(M_PLAYER_FIRE); 
 				P.w_u16(ID());
 				u_EventSend(P);
@@ -69,7 +68,7 @@ void CActor::IR_OnKeyboardPress(int cmd)
 		{
 			mstate_wishful |= mcJump;
 			{
-//				NET_Packet	P;
+//				CNetPacket	P;
 //				u_EventGen(P, GE_ACTOR_JUMPING, ID());
 //				u_EventSend(P);
 			}
@@ -158,7 +157,7 @@ void CActor::IR_OnKeyboardPress(int cmd)
 		}break;
 	}
 }
-void CActor::IR_OnMouseWheel(int direction)
+void CActor::IR_OnMouseWheel(s32 direction)
 {
 	if(inventory().Action( (direction>0)? kWPN_ZOOM_DEC:kWPN_ZOOM_INC , CMD_START)) return;
 
@@ -168,11 +167,10 @@ void CActor::IR_OnMouseWheel(int direction)
 	else
 		OnPrevWeaponSlot				();
 }
-void CActor::IR_OnKeyboardRelease(int cmd)
+void CActor::IR_OnKeyboardRelease(s32 cmd)
 {
 	if (Remote())		return;
 
-//	if (conditions().IsSleeping())	return;
 	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))	return;
 
 	if (g_Alive())	
@@ -200,10 +198,9 @@ void CActor::IR_OnKeyboardRelease(int cmd)
 	}
 }
 
-void CActor::IR_OnKeyboardHold(int cmd)
+void CActor::IR_OnKeyboardHold(s32 cmd)
 {
 	if (Remote() || !g_Alive())					return;
-//	if (conditions().IsSleeping())				return;
 	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))	return;
 	if (IsTalking())							return;
 
@@ -237,10 +234,12 @@ void CActor::IR_OnKeyboardHold(int cmd)
 	}
 }
 
-void CActor::IR_OnMouseMove(int dx, int dy)
+void CActor::IR_OnMouseMove(s32 dx, s32 dy)
 {
-	if (Remote())		return;
-//	if (conditions().IsSleeping())	return;
+	if (Remote( ))
+	{
+		return;
+	}
 
 	if(m_holder) 
 	{
@@ -315,17 +314,16 @@ void CActor::ActorUse()
 	//mstate_real = 0;
 	PickupModeOn();
 
-		
 	if (m_holder)
 	{
 		CGameObject*	GO			= smart_cast<CGameObject*>(m_holder);
-		NET_Packet		P;
+		CNetPacket		P;
 		CGameObject::u_EventGen		(P, GEG_PLAYER_DETACH_HOLDER, ID());
 		P.w_u32						(GO->ID());
 		CGameObject::u_EventSend	(P);
 		return;
 	}
-				
+
 	if(character_physics_support()->movement()->PHCapture())
 		character_physics_support()->movement()->PHReleaseObject();
 
@@ -378,7 +376,7 @@ void CActor::ActorUse()
 		{
 			if (object && smart_cast<CHolderCustom*>(object))
 			{
-					NET_Packet		P;
+				CNetPacket		P;
 					CGameObject::u_EventGen		(P, GEG_PLAYER_ATTACH_HOLDER, ID());
 					P.w_u32						(object->ID());
 					CGameObject::u_EventSend	(P);
@@ -394,7 +392,6 @@ BOOL CActor::HUDview				( )const
 		((!m_holder) || (m_holder && m_holder->allowWeapon() && m_holder->HUDView() ) ); 
 }
 
-//void CActor::IR_OnMousePress(int btn)
 static	u32 SlotsToCheck [] = {
 		KNIFE_SLOT		,		// 0
 		PISTOL_SLOT		,		// 1

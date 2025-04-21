@@ -63,7 +63,7 @@ void CActor::AddEncyclopediaArticle	 (const CInfoPortion* info_portion) const
 		article_vector.push_back(ARTICLE_DATA(*it, Level().GetGameTime(), article.data()->articleType));
 		pcstr g;
 		pcstr n;
-		int _atype = article.data()->articleType;
+		s32 _atype = article.data()->articleType;
 		g = *(article.data()->group);
 		n = *(article.data()->name);
 		callback(GameObject::eArticleInfo)(lua_game_object(), g, n, _atype);
@@ -224,37 +224,45 @@ void CActor::StartTalk (CInventoryOwner* talk_partner)
 	CInventoryOwner::StartTalk(talk_partner);
 }
 
-void CActor::NewPdaContact		(CInventoryOwner* pInvOwner)
-{	
-	bool b_alive = !!(smart_cast<CEntityAlive*>(pInvOwner))->g_Alive();
-	HUD().GetUI()->UIMainIngameWnd->AnimateContacts(b_alive);
+void CActor::NewPdaContact(CInventoryOwner* pInvOwner)
+{
+	bool b_alive = !!(smart_cast<CEntityAlive*>(pInvOwner))->g_Alive( );
+	HUD( ).GetUI( )->UIMainIngameWnd->AnimateContacts(b_alive);
 
-	Level().MapManager().AddRelationLocation		( pInvOwner );
+	Level( ).MapManager( ).AddRelationLocation(pInvOwner);
 
-	if( HUD().GetUI() ){
-		CUIGame* pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
+	if (HUD( ).GetUI( ))
+	{
+		CUIGame* pGame = smart_cast<CUIGame*>(HUD( ).GetUI( )->UIGame( ));
 
-		if(pGame)
-			pGame->PdaMenu->PdaContentsChanged	(pda_section::contacts);
+		if (pGame)
+		{
+			pGame->PdaMenu->PdaContentsChanged(pda_section::contacts);
+		}
 	}
 }
 
-void CActor::LostPdaContact		(CInventoryOwner* pInvOwner)
+void CActor::LostPdaContact(CInventoryOwner* pInvOwner)
 {
 	CGameObject* GO = smart_cast<CGameObject*>(pInvOwner);
-	if (GO){
+	if (GO)
+	{
 
-		for(int t = ALife::eRelationTypeFriend; t<ALife::eRelationTypeLast; ++t){
+		for (s32 t = ALife::eRelationTypeFriend; t < ALife::eRelationTypeLast; ++t)
+		{
 			ALife::ERelationType tt = (ALife::ERelationType)t;
-			Level().MapManager().RemoveMapLocation(RELATION_REGISTRY().GetSpotName(tt),	GO->ID());
+			Level( ).MapManager( ).RemoveMapLocation(RELATION_REGISTRY( ).GetSpotName(tt), GO->ID( ));
 		}
-		Level().MapManager().RemoveMapLocation("deadbody_location",	GO->ID());
-	};
 
-	if( HUD().GetUI() ){
-		CUIGame* pGame = smart_cast<CUIGame*>(HUD().GetUI()->UIGame());
-		if(pGame){
-			pGame->PdaMenu->PdaContentsChanged	(pda_section::contacts);
+		Level( ).MapManager( ).RemoveMapLocation("deadbody_location", GO->ID( ));
+	}
+
+	if (HUD( ).GetUI( ))
+	{
+		CUIGame* pGame = smart_cast<CUIGame*>(HUD( ).GetUI( )->UIGame( ));
+		if (pGame)
+		{
+			pGame->PdaMenu->PdaContentsChanged(pda_section::contacts);
 		}
 	}
 }

@@ -36,8 +36,8 @@ struct HitData
 
 	bool	Completed;
 
-	void			net_save			(NET_Packet* P);
-	void			net_load			(NET_Packet* P);
+	void			net_save			(CNetPacket* P);
+	void			net_load			(CNetPacket* P);
 
 	bool			operator	==		(u32 ID)	{return ID == BulletID;};
 	bool			operator	!=		(u32 ID)	{return ID != BulletID;};
@@ -66,8 +66,8 @@ struct Weapon_Statistic
 	Weapon_Statistic(pcstr Name);
 	~Weapon_Statistic();
 
-	void			net_save			(NET_Packet* P);
-	void			net_load			(NET_Packet* P);
+	void			net_save			(CNetPacket* P);
+	void			net_load			(CNetPacket* P);
 
 	bool			FindHit				(u32 BulletID, HITS_VEC_it& Hit_it);
 	bool			operator	==		(pcstr name){int res = xr_strcmp(WName.c_str(), name);return	res	 == 0;}
@@ -100,8 +100,8 @@ struct Player_Statistic
 
 	WEAPON_STATS_it	FindPlayersWeapon	(pcstr WeaponName);
 
-	void			net_save			(NET_Packet* P);
-	void			net_load			(NET_Packet* P);
+	void			net_save			(CNetPacket* P);
+	void			net_load			(CNetPacket* P);
 
 	bool			operator	==		(pcstr name){int res = xr_strcmp(PName.c_str(), name);return	res	 == 0;}
 };
@@ -179,7 +179,7 @@ struct WeaponUsageStatistic {
 	void				OnBullet_Check_Result		(bool Result);
 	//-----------------------------------------------
 	void				Send_Check_Respond			();
-	void				On_Check_Respond			(NET_Packet* P);
+	void				On_Check_Respond			(CNetPacket* P);
 
 	//void				OnPlayerKilled				(game_PlayerState* ps);
 	void				OnPlayerSpawned				(game_PlayerState* ps);
@@ -189,8 +189,8 @@ struct WeaponUsageStatistic {
 	void				OnExplosionKill				(game_PlayerState* ps, const SHit& hit);
 	//-----------------------------------------------
 	void				Update						();
-	void				OnUpdateRequest				(NET_Packet* P);
-	void				OnUpdateRespond				(NET_Packet* P);
+	void				OnUpdateRequest				(CNetPacket* P);
+	void				OnUpdateRespond				(CNetPacket* P);
 	//-----------------------------------------------
 	string_path			mFileName;
 };

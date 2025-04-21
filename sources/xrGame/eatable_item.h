@@ -25,8 +25,9 @@ public:
 
 	virtual void			OnH_B_Independent			(bool just_before_destroy);
 	virtual	void			UseBy						(CEntityAlive* npc);
-			bool			Empty						()	const				{return m_iPortionsNum==0;};
-protected:	
+			bool			Empty						() const				{return m_iPortionsNum==0;};
+
+protected:
 	//влияние при поедании вещи на параметры игрока
 	f32					m_fHealthInfluence;
 	f32					m_fPowerInfluence;
@@ -38,7 +39,6 @@ protected:
 
 	//количество порций еды, 
 	//-1 - порция одна и больше не бывает (чтоб не выводить надпись в меню)
-	int						m_iPortionsNum;
-	int						m_iStartPortionsNum;
+	s32						m_iPortionsNum;
+	s32						m_iStartPortionsNum;
 };
-

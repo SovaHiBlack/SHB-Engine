@@ -117,14 +117,14 @@ public:
 
 	virtual BOOL			net_Spawn(CSE_Abstract* DC);
 	virtual void			net_Destroy( );
-	virtual void			net_Save(NET_Packet& P);
+	virtual void			net_Save(CNetPacket& P);
 	virtual	BOOL			net_SaveRelevant( );
-	virtual void			net_Export(NET_Packet& P);
-	virtual void			net_Import(NET_Packet& P);
+	virtual void			net_Export(CNetPacket& P);
+	virtual void			net_Import(CNetPacket& P);
 	virtual void			net_Relcase(CObject* O);
 
 	//save/load server serialization
-	virtual void			save(NET_Packet& output_packet)
+	virtual void			save(CNetPacket& output_packet)
 	{
 		inherited::save(output_packet);
 	}
@@ -145,7 +145,7 @@ public:
 	virtual void			init( )
 	{ }
 
-	virtual void			feel_sound_new(CObject* who, int eType, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
+	virtual void			feel_sound_new(CObject* who, s32 eType, CSound_UserDataPtr user_data, const fVector3& Position, f32 power);
 	virtual BOOL			feel_vision_isRelevant(CObject* O);
 	virtual BOOL			feel_touch_on_contact(CObject* O);
 	virtual BOOL			feel_touch_contact(CObject*);
@@ -153,7 +153,7 @@ public:
 	virtual bool			useful(const CItemManager* manager, const CGameObject* object) const;
 	virtual f32			evaluate(const CItemManager* manager, const CGameObject* object) const;
 
-	virtual void			OnEvent(NET_Packet& P, u16 type);
+	virtual void			OnEvent(CNetPacket& P, u16 type);
 	virtual void			OnHUDDraw(CCustomHUD* hud)
 	{
 		return inherited::OnHUDDraw(hud);
@@ -229,7 +229,7 @@ public:
 
 	virtual	CEntity* GetCurrentEnemy( );
 	virtual	CEntity* GetCurrentCorpse( );
-	virtual int				get_enemy_strength( );
+	virtual s32				get_enemy_strength( );
 
 	virtual void			SetScriptControl(const bool bScriptControl, shared_str caSciptName);
 
@@ -246,7 +246,7 @@ public:
 		m_skip_transfer_enemy = value;
 	}
 
-	IC		int				Rank( )
+	IC		s32				Rank( )
 	{
 		return m_rank;
 	}
@@ -262,8 +262,8 @@ public:
 	{ }
 	virtual void			LookPosition(fVector3 to_point, f32 angular_speed = PI_DIV_3);		// каждый монстр может по-разному реализвать эту функ (e.g. кровосос с поворотом головы и т.п.)
 
-	// Team	
-	virtual void			ChangeTeam(int team, int squad, int group);
+	// Team
+	virtual void			ChangeTeam(s32 team, s32 squad, s32 group);
 
 	// ---------------------------------------------------------------------------------
 	// Abilities
@@ -487,7 +487,7 @@ public:
 
 	// Temp
 	u32						m_time_last_attack_success;
-	int						m_rank;
+	s32						m_rank;
 	f32					m_melee_rotation_factor;
 
 private:
@@ -601,7 +601,7 @@ public:
 #endif
 
 #ifdef _DEBUG
-	virtual void			debug_on_key(int key)
+	virtual void			debug_on_key(s32 key)
 	{ }
 #endif
 	//////////////////////////////////////////////////////////////////////////

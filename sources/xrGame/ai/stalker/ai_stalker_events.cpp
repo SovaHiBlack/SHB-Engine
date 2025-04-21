@@ -21,7 +21,7 @@ using namespace MonsterSpace;
 
 #define SILENCE
 
-void CAI_Stalker::OnEvent		(NET_Packet& P, u16 type)
+void CAI_Stalker::OnEvent		(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -54,7 +54,7 @@ void CAI_Stalker::OnEvent		(NET_Packet& P, u16 type)
 			}
 			else {
 //				DropItemSendMessage(O);
-				NET_Packet				P;
+				CNetPacket				P;
 				u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16					(u16(O->ID()));
 				u_EventSend				(P);
@@ -102,7 +102,7 @@ void CAI_Stalker::feel_touch_new				(CObject* O)
 #ifndef SILENCE
 		Msg("Taking item %s (%d)!",*I->cName(),I->ID());
 #endif
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P,GE_OWNERSHIP_TAKE,ID());
 		P.w_u16			(u16(I->object().ID()));
 		u_EventSend		(P);
@@ -118,7 +118,7 @@ void CAI_Stalker::DropItemSendMessage(CObject *O)
 	Msg("Dropping item!");
 #endif
 	// We doesn't have similar weapon - pick up it
-	NET_Packet				P;
+	CNetPacket				P;
 	u_EventGen				(P,GE_OWNERSHIP_REJECT,ID());
 	P.w_u16					(u16(O->ID()));
 	u_EventSend				(P);

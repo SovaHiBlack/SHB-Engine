@@ -280,7 +280,7 @@ void CScriptGameObject::DropItem			(CScriptGameObject* pItem)
 		return;
 	}
 
-	NET_Packet						P;
+	CNetPacket						P;
 	CGameObject::u_EventGen			(P,GE_OWNERSHIP_REJECT, object().ID());
 	P.w_u16							(pItem->object().ID());
 	CGameObject::u_EventSend		(P);
@@ -290,7 +290,7 @@ void CScriptGameObject::DropItemAndTeleport	(CScriptGameObject* pItem, fVector3 
 {
 	DropItem						(pItem);
 
-	NET_Packet						PP;
+	CNetPacket						PP;
 	CGameObject::u_EventGen			(PP,GE_CHANGE_POS, pItem->object().ID());
 	PP.w_vec3						(position);
 	CGameObject::u_EventSend		(PP);

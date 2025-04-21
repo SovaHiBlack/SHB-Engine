@@ -513,7 +513,6 @@
     <ClInclude Include="alife_abstract_registry.h" />
     <ClInclude Include="alife_abstract_registry_inline.h" />
     <ClInclude Include="alife_combat_manager.h" />
-    <ClInclude Include="alife_combat_manager_inline.h" />
     <ClInclude Include="alife_communication_manager.h" />
     <ClInclude Include="alife_communication_space.h" />
     <ClInclude Include="alife_graph_registry.h" />
@@ -522,10 +521,8 @@
     <ClInclude Include="alife_group_registry_inline.h" />
     <ClInclude Include="alife_human_brain.h" />
     <ClInclude Include="alife_human_brain_inline.h" />
-    <ClInclude Include="alife_human_brain_save.h" />
     <ClInclude Include="alife_human_object_handler.h" />
     <ClInclude Include="alife_human_object_handler_inline.h" />
-    <ClInclude Include="alife_human_object_handler_save.h" />
     <ClInclude Include="alife_interaction_manager.h" />
     <ClInclude Include="alife_level_registry.h" />
     <ClInclude Include="alife_level_registry_inline.h" />

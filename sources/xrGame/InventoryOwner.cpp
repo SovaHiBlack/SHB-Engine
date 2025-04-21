@@ -153,7 +153,7 @@ void CInventoryOwner::net_Destroy( )
 }
 
 
-void	CInventoryOwner::save(NET_Packet& output_packet)
+void	CInventoryOwner::save(CNetPacket& output_packet)
 {
 	if (inventory( ).GetActiveSlot( ) == NO_ACTIVE_SLOT)
 		output_packet.w_u8((u8)(-1));
@@ -329,7 +329,7 @@ void CInventoryOwner::spawn_supplies( )
 		CSE_ALifeItemPDA* pda = smart_cast<CSE_ALifeItemPDA*>(abstract);
 		R_ASSERT(pda);
 		pda->m_original_owner = (u16)game_object->ID( );
-		NET_Packet							P;
+		CNetPacket							P;
 		abstract->Spawn_Write(P, TRUE);
 		Level( ).Send(P, net_flags(TRUE));
 		F_entity_Destroy(abstract);
@@ -519,7 +519,7 @@ void CInventoryOwner::set_money(u32 amount, bool bSendEvent)
 	if (bSendEvent)
 	{
 		CGameObject* object = smart_cast<CGameObject*>(this);
-		NET_Packet				packet;
+		CNetPacket				packet;
 		object->u_EventGen(packet, GE_MONEY, object->ID( ));
 		packet.w_u32(m_money);
 		object->u_EventSend(packet);

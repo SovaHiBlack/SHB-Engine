@@ -51,8 +51,8 @@ public:
 			void		load					(pcstr game_name = 0, bool no_assert = false, bool new_only = false);
 			bool		load_game				(pcstr game_name, bool no_assert = false);
 	IC		f32		update_monster_factor	() const;
-			bool		change_level			(NET_Packet	&net_packet);
-			void		set_process_time		(int microseconds);
+			bool		change_level			(CNetPacket&net_packet);
+			void		set_process_time		(s32 microseconds);
 			void		objects_per_update		(const u32 &objects_per_update);
 			void		set_switch_online		(ALife::_OBJECT_ID id, bool value);
 			void		set_switch_offline		(ALife::_OBJECT_ID id, bool value);

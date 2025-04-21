@@ -24,7 +24,7 @@ namespace MovementManager { enum EPathType;};
 namespace DetailPathManager { enum EDetailPathType;};
 namespace SightManager {enum ESightType;};
 
-class NET_Packet;
+class CNetPacket;
 class CGameTask;
 
 namespace PatrolPathManager { 
@@ -344,7 +344,7 @@ public:
 
 			pcstr				GetPatrolPathName	();
 			u32					GetAmmoElapsed		();
-			void				SetAmmoElapsed		(int ammo_elapsed);
+			void				SetAmmoElapsed		(s32 ammo_elapsed);
 			u32					GetAmmoCurrent		() const;
 			void				SetQueueSize		(u32 queue_size);
 			CScriptGameObject	*GetBestEnemy		();

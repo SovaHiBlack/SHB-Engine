@@ -84,7 +84,7 @@ void CDamageManager::load_section(pcstr section, CIniFile* ini)
 		if (xr_strcmp(*(*i).first, "default"))
 		{ // read all except default line
 			VERIFY(m_object);
-			int						bone = kinematics->LL_BoneID(i->first);
+			s32						bone = kinematics->LL_BoneID(i->first);
 			R_ASSERT2(BI_NONE != bone, *(*i).first);
 			CBoneInstance& bone_instance = kinematics->LL_GetBoneInstance(u16(bone));
 			bone_instance.set_param(0, (f32)atof(_GetItem(*(*i).second, 0, buffer)));
@@ -109,7 +109,7 @@ void CDamageManager::load_section(pcstr section, CIniFile* ini)
 }
 
 
-void  CDamageManager::HitScale(const int element, f32& hit_scale, f32& wound_scale, bool aim_bullet)
+void  CDamageManager::HitScale(const s32 element, f32& hit_scale, f32& wound_scale, bool aim_bullet)
 {
 	if (BI_NONE == u16(element))
 	{

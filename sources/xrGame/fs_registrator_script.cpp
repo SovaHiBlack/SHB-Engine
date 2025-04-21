@@ -139,10 +139,10 @@ FS_file_list file_list_open_script(CLocatorAPI* fs, pcstr initial, u32 flags)
 FS_file_list file_list_open_script_2(CLocatorAPI* fs, pcstr initial, pcstr folder, u32 flags)
 {	return FS_file_list(fs->file_list_open(initial,folder,flags));}
 
-void dir_delete_script_2(CLocatorAPI* fs, pcstr path, pcstr nm, int remove_files)
+void dir_delete_script_2(CLocatorAPI* fs, pcstr path, pcstr nm, s32 remove_files)
 {	fs->dir_delete(path,nm,remove_files);}
 
-void dir_delete_script(CLocatorAPI* fs, pcstr full_path, int remove_files)
+void dir_delete_script(CLocatorAPI* fs, pcstr full_path, s32 remove_files)
 {	fs->dir_delete(full_path,remove_files);}
 
 pcstr get_file_age_str(CLocatorAPI* fs, pcstr nm)
@@ -193,19 +193,19 @@ void fs_registrator::script_register(lua_State *L)
 		class_<CLocatorAPI>("FS")
 			.enum_("FS_sort_mode")
 			[
-				value("FS_sort_by_name_up",				int(FS_file_list_ex::eSortByNameUp)),
-				value("FS_sort_by_name_down",			int(FS_file_list_ex::eSortByNameDown)),
-				value("FS_sort_by_size_up",				int(FS_file_list_ex::eSortBySizeUp)),
-				value("FS_sort_by_size_down",			int(FS_file_list_ex::eSortBySizeDown)),
-				value("FS_sort_by_modif_up",			int(FS_file_list_ex::eSortByModifUp)),
-				value("FS_sort_by_modif_down",			int(FS_file_list_ex::eSortByModifDown))
+				value("FS_sort_by_name_up", s32(FS_file_list_ex::eSortByNameUp)),
+				value("FS_sort_by_name_down", s32(FS_file_list_ex::eSortByNameDown)),
+				value("FS_sort_by_size_up", s32(FS_file_list_ex::eSortBySizeUp)),
+				value("FS_sort_by_size_down", s32(FS_file_list_ex::eSortBySizeDown)),
+				value("FS_sort_by_modif_up", s32(FS_file_list_ex::eSortByModifUp)),
+				value("FS_sort_by_modif_down", s32(FS_file_list_ex::eSortByModifDown))
 			]
 			.enum_("FS_List")
 			[
-				value("FS_ListFiles",					int(FS_ListFiles)),
-				value("FS_ListFolders",					int(FS_ListFolders)),
-				value("FS_ClampExt",					int(FS_ClampExt)),
-				value("FS_RootOnly",					int(FS_RootOnly))
+				value("FS_ListFiles", s32(FS_ListFiles)),
+				value("FS_ListFolders", s32(FS_ListFolders)),
+				value("FS_ClampExt", s32(FS_ClampExt)),
+				value("FS_RootOnly", s32(FS_RootOnly))
 			]
 			.def("path_exist",							&CLocatorAPI::path_exist)
 			.def("update_path",							&update_path_script)

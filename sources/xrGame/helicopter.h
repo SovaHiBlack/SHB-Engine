@@ -34,7 +34,7 @@ struct SHeliEnemy
 	f32							fStartFireTime;
 	void reinit( );
 	void Update( );
-	void save(NET_Packet& output_packet);
+	void save(CNetPacket& output_packet);
 	void load(IReader& input_packet);
 	void Load(pcstr section);
 };
@@ -61,7 +61,7 @@ struct SHeliBodyState
 	void		reinit( );
 	void		LookAtPoint(fVector3 point, bool do_it);
 
-	void save(NET_Packet& output_packet);
+	void save(CNetPacket& output_packet);
 	void load(IReader& input_packet);
 	void Load(pcstr section);
 };
@@ -135,7 +135,7 @@ public:
 	void	SetDestPosition(fVector3* pos);
 	void	goPatrolByPatrolPath(pcstr path_name, int start_idx);
 	void	CreateRoundPoints(fVector3 center, f32 radius, f32 start_h, f32 end_h, xr_vector<STmpPt>& round_points);
-	void	save(NET_Packet& output_packet);
+	void	save(CNetPacket& output_packet);
 	void	load(IReader& input_packet);
 	void	Load(pcstr section);
 	void	net_Destroy( );
@@ -306,12 +306,12 @@ public:
 
 	virtual BOOL					net_Spawn(CSE_Abstract* DC);
 	virtual void					net_Destroy( );
-	virtual void					net_Export(NET_Packet& P)
+	virtual void					net_Export(CNetPacket& P)
 	{ }
-	virtual void					net_Import(NET_Packet& P)
+	virtual void					net_Import(CNetPacket& P)
 	{ }
 	virtual void					net_Relcase(CObject* O);
-	virtual void					save(NET_Packet& output_packet);
+	virtual void					save(CNetPacket& output_packet);
 	virtual void					load(IReader& input_packet);
 
 	virtual void					SpawnInitPhysics(CSE_Abstract* D);
@@ -319,7 +319,7 @@ public:
 	{
 		return PhysicsShellHolder( );
 	}
-	virtual void					net_Save(NET_Packet& P);
+	virtual void					net_Save(CNetPacket& P);
 	virtual	BOOL					net_SaveRelevant( )
 	{
 		return (inherited::net_SaveRelevant( ) && BOOL(PPhysicsShell( ) != NULL)) || m_exploded;
@@ -338,7 +338,7 @@ public:
 		return TRUE;
 	}
 
-	virtual void					OnEvent(NET_Packet& P, u16 type);
+	virtual void					OnEvent(CNetPacket& P, u16 type);
 	virtual void					UpdateCL( );
 	virtual void					shedule_Update(u32		time_delta);
 	void					MoveStep( );

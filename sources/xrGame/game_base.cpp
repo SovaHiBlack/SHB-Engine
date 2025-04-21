@@ -74,7 +74,7 @@ void game_PlayerState::resetFlag(u16 f)
 	flags__ &= ~(f);
 }
 
-void	game_PlayerState::net_Export(NET_Packet& P, BOOL Full)
+void	game_PlayerState::net_Export(CNetPacket& P, BOOL Full)
 {
 	P.w_u8(Full ? 1 : 0);
 	if (Full)
@@ -99,7 +99,7 @@ void	game_PlayerState::net_Export(NET_Packet& P, BOOL Full)
 	P.w_u32(Device.dwTimeGlobal - DeathTime);
 };
 
-void	game_PlayerState::net_Import(NET_Packet& P)
+void	game_PlayerState::net_Import(CNetPacket& P)
 {
 	BOOL	bFullUpdate = !!P.r_u8( );
 

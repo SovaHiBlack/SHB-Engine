@@ -20,7 +20,7 @@ class CGameObject;
 class CEntityAlive;
 class CCustomZone;
 class CInfoPortionWrapper;
-class NET_Packet;
+class CNetPacket;
 class CCharacterInfo;
 class CSpecificCharacter;
 class CTradeParameters;
@@ -48,23 +48,20 @@ public:
 	virtual void		Load(pcstr section);
 	virtual void		reinit( );
 	virtual void		reload(pcstr section);
-	virtual void		OnEvent(NET_Packet& P, u16 type);
+	virtual void		OnEvent(CNetPacket& P, u16 type);
 
 	//serialization
-	virtual void	save(NET_Packet& output_packet);
+	virtual void	save(CNetPacket& output_packet);
 	virtual void	load(IReader& input_packet);
-
 
 	//обновление
 	virtual void	UpdateInventoryOwner(u32 deltaT);
 	virtual bool	CanPutInSlot(PIItem item, u32 slot)
 	{
 		return true;
-	};
-
+	}
 
 	CPda* GetPDA( ) const;
-
 
 	// инвентарь
 	CInventory* m_inventory;

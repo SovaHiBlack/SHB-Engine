@@ -239,7 +239,7 @@ void CCoverEvaluatorRandomGame::finalize	()
 	if (m_covers.empty())
 		return;
 
-	m_selected				= m_covers[::Random.randI((int)m_covers.size())];
+	m_selected				= m_covers[::Random.randI((s32)m_covers.size())];
 }
 
 //////////////////////////////////////////////////////////////////////////

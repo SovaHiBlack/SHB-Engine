@@ -251,7 +251,7 @@ void	CCar::net_Destroy( )
 	b_breaks = false;
 }
 
-void CCar::net_Save(NET_Packet& P)
+void CCar::net_Save(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	SaveNetState(P);
@@ -263,7 +263,7 @@ BOOL CCar::net_SaveRelevant( )
 	//return !m_explosion_flags.test(CExplosive::flExploding)&&!CExplosive::IsExploded()&&!CPHDestroyable::Destroyed()&&!b_exploded;
 }
 
-void CCar::SaveNetState(NET_Packet& P)
+void CCar::SaveNetState(CNetPacket& P)
 {
 	CPHSkeleton::SaveNetState(P);
 	P.w_vec3(Position( ));
@@ -481,14 +481,14 @@ void	CCar::renderable_Render( )
 		m_car_weapon->Render_internal( );
 }
 
-void	CCar::net_Export(NET_Packet& P)
+void	CCar::net_Export(CNetPacket& P)
 {
 	inherited::net_Export(P);
 	//	P.w_u32 (Level().timeServer());
 	//	P.w_u16 (0);
 }
 
-void	CCar::net_Import(NET_Packet& P)
+void	CCar::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 	//	u32 TimeStamp = 0;
@@ -615,14 +615,17 @@ bool CCar::attach_Actor(CGameObject* actor)
 
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
 	CIniFile* ini = K->LL_UserData( );
-	int id;
+	s32 id;
 	if (ini->line_exist("car_definition", "driver_place"))
+	{
 		id = K->LL_BoneID(ini->r_string("car_definition", "driver_place"));
+	}
 	else
 	{
 		Owner( )->setVisible(0);
 		id = K->LL_GetBoneRoot( );
 	}
+
 	CBoneInstance& instance = K->LL_GetBoneInstance(u16(id));
 	m_sits_transforms.push_back(instance.mTransform);
 	OnCameraChange(ectFirst);
@@ -773,10 +776,14 @@ void CCar::ParseDefinitions( )
 	m_gear_ratious.push_back(ini->r_fvector3("transmission_gear_ratio", "R"));
 	m_gear_ratious[0][0] = -m_gear_ratious[0][0] * main_gear_ratio;
 	string32 rat_num;
-	for (int i = 1; true; ++i)
+	for (s32 i = 1; true; ++i)
 	{
 		sprintf_s(rat_num, "N%d", i);
-		if (!ini->line_exist("transmission_gear_ratio", rat_num)) break;
+		if (!ini->line_exist("transmission_gear_ratio", rat_num))
+		{
+			break;
+		}
+
 		fVector3 gear_rat = ini->r_fvector3("transmission_gear_ratio", rat_num);
 		gear_rat[0] *= main_gear_ratio;
 		gear_rat[1] *= (1.f / 60.f * 2.f * M_PI);
@@ -1452,22 +1459,32 @@ bool CCar::Use(const fVector3& pos, const fVector3& dir, const fVector3& foot_po
 	if (g_pGameLevel->ObjectSpace.RayQuery(RQR, collidable.model, Q))
 	{
 		collide::rq_results& R = RQR;
-		int y = R.r_count( );
-		for (int k = 0; k < y; ++k)
+		s32 y = R.r_count( );
+		for (s32 k = 0; k < y; ++k)
 		{
 			collide::rq_result* I = R.r_begin( ) + k;
 			if (is_Door((u16)I->element, i))
 			{
 				bool front = i->second.IsFront(pos, dir);
-				if ((Owner( ) && !front) || (!Owner( ) && front))i->second.Use( );
-				if (i->second.state == SDoor::broken) break;
-				return false;
+				if ((Owner( ) && !front) || (!Owner( ) && front))
+				{
+					i->second.Use( );
+				}
 
+				if (i->second.state == SDoor::broken)
+				{
+					break;
+				}
+
+				return false;
 			}
 		}
 	}
 
-	if (Owner( ))return Exit(pos, dir);
+	if (Owner( ))
+	{
+		return Exit(pos, dir);
+	}
 
 	return false;
 
@@ -1660,7 +1677,7 @@ void CCar::ResetKeys( )
 
 #undef   _USE_MATH_DEFINES
 
-void CCar::OnEvent(NET_Packet& P, u16 type)
+void CCar::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P, type);
 	CExplosive::OnEvent(P, type);
@@ -1681,7 +1698,7 @@ void CCar::OnEvent(NET_Packet& P, u16 type)
 			else
 			{
 				if (!O || !O->H_Parent( ) || (this != O->H_Parent( ))) return;
-				NET_Packet P;
+				CNetPacket P;
 				u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
 				P.w_u16(u16(O->ID( )));
 				u_EventSend(P);
@@ -1710,10 +1727,13 @@ void CCar::ResetScriptData(void* P)
 
 void CCar::PhDataUpdate(dReal step)
 {
-	if (m_repairing)Revert( );
+	if (m_repairing)
+	{
+		Revert( );
+	}
+
 	LimitWheels( );
 	UpdateFuel(step);
-
 
 	//if(fwp)
 	{
@@ -1727,9 +1747,11 @@ void CCar::PhDataUpdate(dReal step)
 	}
 
 	if (brp)
+	{
 		HandBreak( );
+	}
 	//////////////////////////////////////////////////////////
-	for (int k = 0; k < (int)m_doors_update.size( ); ++k)
+	for (s32 k = 0; k < (s32)m_doors_update.size( ); ++k)
 	{
 		SDoor* D = m_doors_update[k];
 		if (!D->update)
@@ -1759,7 +1781,6 @@ u16 CCar::DriverAnimationType( )
 
 void CCar::OnAfterExplosion( )
 {
-
 }
 
 void CCar::OnBeforeExplosion( )
@@ -1769,10 +1790,17 @@ void CCar::OnBeforeExplosion( )
 
 void CCar::CarExplode( )
 {
+	if (b_exploded)
+	{
+		return;
+	}
 
-	if (b_exploded) return;
 	CPHSkeleton::SetNotNeedSave( );
-	if (m_car_weapon)m_car_weapon->Action(CCarWeapon::eWpnActivate, 0);
+	if (m_car_weapon)
+	{
+		m_car_weapon->Action(CCarWeapon::eWpnActivate, 0);
+	}
+
 	m_lights.TurnOffHeadLights( );
 	b_exploded = true;
 	CExplosive::GenExplodeEvent(Position( ), fVector3( ).set(0.0f, 1.0f, 0.0f));
@@ -1780,68 +1808,34 @@ void CCar::CarExplode( )
 	CActor* A = OwnerActor( );
 	if (A)
 	{
-		if (!m_doors.empty( ))m_doors.begin( )->second.GetExitPosition(m_exit_position);
-		else m_exit_position.set(Position( ));
+		if (!m_doors.empty( ))
+		{
+			m_doors.begin( )->second.GetExitPosition(m_exit_position);
+		}
+		else
+		{
+			m_exit_position.set(Position( ));
+		}
+
 		A->detach_Vehicle( );
-		if (A->g_Alive( ) <= 0.f)A->character_physics_support( )->movement( )->DestroyCharacter( );
+		if (A->g_Alive( ) <= 0.0f)
+		{
+			A->character_physics_support( )->movement( )->DestroyCharacter( );
+		}
 	}
 
 	if (CPHDestroyable::CanDestroy( ))
+	{
 		CPHDestroyable::Destroy(ID( ), "physic_destroyable_object");
+	}
 }
-//void CCar::object_contactCallbackFun(bool& do_colide,dContact& c,SGameMtl * /*material_1*/,SGameMtl * /*material_2*/)
-//{
-//
-//	dxGeomUserData *l_pUD1 = NULL;
-//	dxGeomUserData *l_pUD2 = NULL;
-//	l_pUD1 = retrieveGeomUserData(c.geom.g1);
-//	l_pUD2 = retrieveGeomUserData(c.geom.g2);
-//
-//	if(! l_pUD1) return;
-//	if(!l_pUD2) return;
-//
-//	CEntityAlive* capturer=smart_cast<CEntityAlive*>(l_pUD1->ph_ref_object);
-//	if(capturer)
-//	{
-//		CPHCapture* capture=capturer->m_PhysicMovementControl->PHCapture();
-//		if(capture)
-//		{
-//			if(capture->m_taget_element->PhysicsRefObject()==l_pUD2->ph_ref_object)
-//			{
-//				do_colide = false;
-//				capture->m_taget_element->Enable();
-//				if(capture->e_state==CPHCapture::cstReleased) capture->ReleaseInCallBack();
-//			}
-//
-//		}
-//
-//
-//	}
-//
-//	capturer=smart_cast<CEntityAlive*>(l_pUD2->ph_ref_object);
-//	if(capturer)
-//	{
-//		CPHCapture* capture=capturer->m_PhysicMovementControl->PHCapture();
-//		if(capture)
-//		{
-//			if(capture->m_taget_element->PhysicsRefObject()==l_pUD1->ph_ref_object)
-//			{
-//				do_colide = false;
-//				capture->m_taget_element->Enable();
-//				if(capture->e_state==CPHCapture::cstReleased) capture->ReleaseInCallBack();
-//			}
-//
-//		}
-//
-//	}
-//}
 
 template <class T> IC void CCar::fill_wheel_vector(pcstr S, xr_vector<T>& type_wheels)
 {
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	string64					S1;
-	int count = _GetItemCount(S);
-	for (int i = 0; i < count; ++i)
+	s32 count = _GetItemCount(S);
+	for (s32 i = 0; i < count; ++i)
 	{
 		_GetItem(S, i, S1);
 
@@ -1855,7 +1849,6 @@ template <class T> IC void CCar::fill_wheel_vector(pcstr S, xr_vector<T>& type_w
 		if (J == bone_map.end( ))
 		{
 			bone_map.insert(mk_pair(bone_id, physicsBone( )));
-
 
 			SWheel& wheel = (m_wheels_map.insert(mk_pair(bone_id, SWheel(this)))).first->second;
 			wheel.bone_id = bone_id;
@@ -1875,8 +1868,8 @@ IC void CCar::fill_exhaust_vector(pcstr S, xr_vector<SExhaust>& exhausts)
 {
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	string64					S1;
-	int count = _GetItemCount(S);
-	for (int i = 0; i < count; ++i)
+	s32 count = _GetItemCount(S);
+	for (s32 i = 0; i < count; ++i)
 	{
 		_GetItem(S, i, S1);
 
@@ -1891,21 +1884,20 @@ IC void CCar::fill_exhaust_vector(pcstr S, xr_vector<SExhaust>& exhausts)
 		{
 			bone_map.insert(mk_pair(bone_id, physicsBone( )));
 		}
-
 	}
 }
 
 IC void CCar::fill_doors_map(pcstr S, xr_map<u16, SDoor>& doors)
 {
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
-	string64					S1;
-	int count = _GetItemCount(S);
-	for (int i = 0; i < count; ++i)
+	string64 S1;
+	s32 count = _GetItemCount(S);
+	for (s32 i = 0; i < count; ++i)
 	{
 		_GetItem(S, i, S1);
 
 		u16 bone_id = pKinematics->LL_BoneID(S1);
-		SDoor						door(this);
+		SDoor door(this);
 		door.bone_id = bone_id;
 		doors.insert(mk_pair(bone_id, door));
 		BONE_P_PAIR_IT J = bone_map.find(bone_id);
@@ -1913,7 +1905,6 @@ IC void CCar::fill_doors_map(pcstr S, xr_map<u16, SDoor>& doors)
 		{
 			bone_map.insert(mk_pair(bone_id, physicsBone( )));
 		}
-
 	}
 }
 
@@ -1921,7 +1912,7 @@ DLL_Pure* CCar::_construct( )
 {
 	inherited::_construct( );
 	CScriptEntity::_construct( );
-	return						(this);
+	return (this);
 }
 
 u16 CCar::Initiator( )
@@ -1931,7 +1922,10 @@ u16 CCar::Initiator( )
 		return Owner( )->ID( );
 	}
 	//else if(CExplosive::Initiator()!=u16(-1))return CExplosive::Initiator();
-	else return ID( );
+	else
+	{
+		return ID( );
+	}
 }
 
 f32	CCar::RefWheelMaxSpeed( )

@@ -236,7 +236,7 @@ typedef		shared_str			anim_string;
 struct SAnimItem
 {
 	anim_string		target_name;	// "stand_idle_"
-	int				spec_id;		// (-1) - any,  (0 - ...) - идентификатор 3
+	s32				spec_id;		// (-1) - any,  (0 - ...) - идентификатор 3
 	u8				count;			// количество анимаций : "idle_0", "idle_1", "idle_2" 
 	
 	SVelocityParam	velocity;

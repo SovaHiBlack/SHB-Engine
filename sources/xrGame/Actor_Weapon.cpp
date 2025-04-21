@@ -72,11 +72,11 @@ void CActor::g_fireParams	(const CHudItem* pHudItem, fVector3& fire_pos, fVector
 	}
 }
 
-void CActor::g_WeaponBones	(int &L, int &R1, int &R2)
+void CActor::g_WeaponBones(s32& L, s32& R1, s32& R2)
 {
-	R1				= m_r_hand;
-	R2				= m_r_finger2;
-	L				= m_l_finger1;
+	R1 = m_r_hand;
+	R2 = m_r_finger2;
+	L = m_l_finger1;
 }
 
 BOOL CActor::g_State (SEntityState& state) const
@@ -94,7 +94,7 @@ void CActor::SetWeaponHideState (u32 State, bool bSet)
 {
 	if (g_Alive() && this == Level().CurrentControlEntity())
 	{
-		NET_Packet	P;
+		CNetPacket	P;
 		u_EventGen	(P, GEG_PLAYER_WEAPON_HIDE_STATE, ID());
 		P.w_u32		(State);
 		P.w_u8		(u8(bSet));

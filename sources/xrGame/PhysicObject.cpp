@@ -81,7 +81,7 @@ void CPhysicObject::net_Destroy()
 	CPHSkeleton::RespawnInit();
 }
 
-void CPhysicObject::net_Save(NET_Packet& P)
+void CPhysicObject::net_Save(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);

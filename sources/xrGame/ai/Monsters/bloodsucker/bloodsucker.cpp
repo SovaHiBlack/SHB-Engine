@@ -467,7 +467,7 @@ CBaseMonster::SDebugInfo CAI_Bloodsucker::show_debug_info()
 }
 
 #ifdef _DEBUG
-void CAI_Bloodsucker::debug_on_key(int key)
+void CAI_Bloodsucker::debug_on_key(s32 key)
 {
 	switch (key){
 	case DIK_MINUS:

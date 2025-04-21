@@ -62,15 +62,15 @@ CHARACTER_GOODWILL CHARACTER_COMMUNITY::relation		(CHARACTER_COMMUNITY_INDEX to)
 
 CHARACTER_GOODWILL  CHARACTER_COMMUNITY::relation		(CHARACTER_COMMUNITY_INDEX from, CHARACTER_COMMUNITY_INDEX to)
 {
-	VERIFY(from >= 0 && from <(int)m_relation_table.table().size());
-	VERIFY(to >= 0 && to <(int)m_relation_table.table().size());
+	VERIFY(from >= 0 && from <(s32)m_relation_table.table().size());
+	VERIFY(to >= 0 && to <(s32)m_relation_table.table().size());
 	
 	return m_relation_table.table()[from][to];
 }
 
 f32 CHARACTER_COMMUNITY::sympathy			(CHARACTER_COMMUNITY_INDEX comm)
 {
-	VERIFY(comm >= 0 && comm <(int)m_sympathy_table.table().size());
+	VERIFY(comm >= 0 && comm <(s32)m_sympathy_table.table().size());
 	return m_sympathy_table.table()[comm][0];
 }
 

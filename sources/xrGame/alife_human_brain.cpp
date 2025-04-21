@@ -55,10 +55,10 @@ CALifeHumanBrain::CALifeHumanBrain			(object_type *object) : inherited(object)
 	R_ASSERT2						((iFloor(ai().ef_storage().m_pfEquipmentType->ffGetMaxResultValue() + .5f) == 5) && (iFloor(ai().ef_storage().m_pfMainWeaponType->ffGetMaxResultValue() + .5f) == 4),"Recompile Level Editor and xrAI and rebuild file \"game.spawn\"!");
 #endif
 
-	for (int i=0, n=m_cpEquipmentPreferences.size(); i<n; ++i)
+	for (s32 i=0, n=m_cpEquipmentPreferences.size(); i<n; ++i)
 		m_cpEquipmentPreferences[i]	= u8(::Random.randI(3));
 
-	for (int i=0, n=m_cpMainWeaponPreferences.size(); i<n; ++i)
+	for (s32 i=0, n=m_cpMainWeaponPreferences.size(); i<n; ++i)
 		m_cpMainWeaponPreferences[i]= u8(::Random.randI(3));
 }
 
@@ -69,13 +69,13 @@ CALifeHumanBrain::~CALifeHumanBrain			()
 #endif
 }
 
-void CALifeHumanBrain::on_state_write		(NET_Packet &packet)
+void CALifeHumanBrain::on_state_write		(CNetPacket& packet)
 {
 	save_data						(m_cpEquipmentPreferences,packet);
 	save_data						(m_cpMainWeaponPreferences,packet);
 }
 
-void CALifeHumanBrain::on_state_read		(NET_Packet &packet)
+void CALifeHumanBrain::on_state_read		(CNetPacket& packet)
 {
 	if (object().m_wVersion <= 19)
 		return;

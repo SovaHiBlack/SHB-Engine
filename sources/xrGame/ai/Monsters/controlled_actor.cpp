@@ -110,7 +110,7 @@ bool CControlledActor::is_turning()
 	return (!m_turned_yaw || !m_turned_pitch);
 }
 
-bool CControlledActor::authorized(int cmd)
+bool CControlledActor::authorized(s32 cmd)
 {
 	if (cmd == kWPN_1)		return true;
 	if (cmd == kWPN_FIRE) {

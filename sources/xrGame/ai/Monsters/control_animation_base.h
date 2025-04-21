@@ -89,8 +89,8 @@ public:
 			void		ScheduledInit	();
 
 	// создание карты анимаций (выполнять на Monster::Load)
-	void		AddAnim					(EMotionAnim ma, pcstr tn, int s_id, SVelocityParam *vel, EPState p_s);
-	void		AddAnim					(EMotionAnim ma, pcstr tn, int s_id, SVelocityParam *vel, EPState p_s, pcstr fx_front, pcstr fx_back, pcstr fx_left, pcstr fx_right);
+	void		AddAnim					(EMotionAnim ma, pcstr tn, s32 s_id, SVelocityParam *vel, EPState p_s);
+	void		AddAnim					(EMotionAnim ma, pcstr tn, s32 s_id, SVelocityParam *vel, EPState p_s, pcstr fx_front, pcstr fx_back, pcstr fx_left, pcstr fx_right);
 
 	// -------------------------------------
 

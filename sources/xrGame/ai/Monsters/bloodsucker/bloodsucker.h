@@ -140,7 +140,7 @@ public:
 	virtual CBaseMonster::SDebugInfo show_debug_info();
 
 #ifdef _DEBUG
-			void debug_on_key						(int key);
+			void debug_on_key						(s32 key);
 #endif
 
 #endif

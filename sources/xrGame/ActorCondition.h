@@ -61,7 +61,7 @@ public:
 		VERIFY			(m_object);
 		return			(*m_object);
 	}
-	virtual void			save					(NET_Packet &output_packet);
+	virtual void			save					(CNetPacket& output_packet);
 	virtual void			load					(IReader &input_packet);
 
 protected:

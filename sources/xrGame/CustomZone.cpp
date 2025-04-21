@@ -454,12 +454,12 @@ void CCustomZone::net_Destroy( )
 	m_ObjectInfoMap.clear( );
 }
 
-void CCustomZone::net_Import(NET_Packet& P)
+void CCustomZone::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 }
 
-void CCustomZone::net_Export(NET_Packet& P)
+void CCustomZone::net_Export(CNetPacket& P)
 {
 	inherited::net_Export(P);
 }
@@ -629,8 +629,8 @@ void CCustomZone::shedule_Update(u32 dt)
 
 			info.time_in_zone += dt;
 
-			if ((!info.small_object && m_iDisableHitTime != -1 && (int) info.time_in_zone > m_iDisableHitTime) ||
-				(info.small_object && m_iDisableHitTimeSmall != -1 && (int) info.time_in_zone > m_iDisableHitTimeSmall))
+			if ((!info.small_object && m_iDisableHitTime != -1 && (s32) info.time_in_zone > m_iDisableHitTime) ||
+				(info.small_object && m_iDisableHitTimeSmall != -1 && (s32) info.time_in_zone > m_iDisableHitTimeSmall))
 			{
 				if (!pEntityAlive || !pEntityAlive->g_Alive( ))
 				{
@@ -638,7 +638,7 @@ void CCustomZone::shedule_Update(u32 dt)
 				}
 			}
 
-			if (m_iDisableIdleTime != -1 && (int) info.time_in_zone > m_iDisableIdleTime)
+			if (m_iDisableIdleTime != -1 && (s32) info.time_in_zone > m_iDisableIdleTime)
 			{
 				if (!pEntityAlive || !pEntityAlive->g_Alive( ))
 				{
@@ -1285,7 +1285,7 @@ void CCustomZone::OnMove( )
 	}
 }
 
-void CCustomZone::OnEvent(NET_Packet& P, u16 type)
+void CCustomZone::OnEvent(CNetPacket& P, u16 type)
 {
 	switch (type)
 	{
@@ -1383,7 +1383,7 @@ void CCustomZone::SwitchZoneState(EZoneState new_state)
 	if (OnServer( ))
 	{
 		// !!! “олько одна запись дл€ данного состо€ни€ !!!
-		NET_Packet P;
+		CNetPacket P;
 		u_EventGen(P, GE_ZONE_STATE_CHANGE, ID( ));
 		P.w_u8(u8(new_state));
 		u_EventSend(P);
@@ -1490,7 +1490,7 @@ void CCustomZone::BornArtefact( )
 	{
 		if (pArtefact->H_Parent( ) && (pArtefact->H_Parent( )->ID( ) == this->ID( )))	//. todo: need to remove on actual message parsing
 		{
-			NET_Packet P;
+			CNetPacket P;
 			u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
 			P.w_u16(pArtefact->ID( ));
 			u_EventSend(P);
@@ -1610,7 +1610,7 @@ void CCustomZone::CreateHit(u16 id_to,
 			id_from = (u16) m_owner_id;
 		}
 
-		NET_Packet l_P;
+		CNetPacket l_P;
 		fVector3 hdir = hit_dir;
 		SHit Hit = SHit(hit_power, hdir, this, bone_id, pos_in_bone, hit_impulse, hit_type);
 		Hit.GenHeader(GE_HIT, id_to);
@@ -1718,7 +1718,7 @@ void CCustomZone::UpdateOnOffState( )
 void CCustomZone::GoDisabledState( )
 {
 	//switch to disable
-	NET_Packet P;
+	CNetPacket P;
 	u_EventGen(P, GE_ZONE_STATE_CHANGE, ID( ));
 	P.w_u8(u8(eZoneStateDisabled));
 	u_EventSend(P);
@@ -1738,7 +1738,7 @@ void CCustomZone::GoDisabledState( )
 void CCustomZone::GoEnabledState( )
 {
 	//switch to idle
-	NET_Packet P;
+	CNetPacket P;
 	u_EventGen(P, GE_ZONE_STATE_CHANGE, ID( ));
 	P.w_u8(u8(eZoneStateIdle));
 	u_EventSend(P);

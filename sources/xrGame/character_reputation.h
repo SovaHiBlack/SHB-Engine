@@ -7,27 +7,24 @@
 
 #include "ini_id_loader.h"
 #include "ini_table_loader.h"
-
 #include "character_info_defs.h"
-
 
 struct REPUTATION_DATA
 {
-	REPUTATION_DATA (int, shared_str, pcstr);
+	REPUTATION_DATA (s32, shared_str, pcstr);
 
 	shared_str					id;
-	int							index;
+	s32							index;
 	CHARACTER_REPUTATION_VALUE	threshold;
 };
-
 
 class CHARACTER_REPUTATION;
 
 class CHARACTER_REPUTATION: 
-	public CIni_IdToIndex<1, REPUTATION_DATA, shared_str, int, CHARACTER_REPUTATION>
+	public CIni_IdToIndex<1, REPUTATION_DATA, shared_str, s32, CHARACTER_REPUTATION>
 {
 private:
-	typedef CIni_IdToIndex<1, REPUTATION_DATA, shared_str, int, CHARACTER_REPUTATION> inherited;
+	typedef CIni_IdToIndex<1, REPUTATION_DATA, shared_str, s32, CHARACTER_REPUTATION> inherited;
 	friend inherited;
 
 public:
@@ -37,20 +34,20 @@ public:
 	void						set				(CHARACTER_REPUTATION_VALUE);
 
 	shared_str					id				() const;
-	int							index			() const	{return m_current_index;};
+	s32							index			() const	{return m_current_index;};
 	CHARACTER_REPUTATION_VALUE	value			() const	{return m_current_value;};
 
-	static int					ValueToIndex    (CHARACTER_REPUTATION_VALUE);
+	static s32					ValueToIndex    (CHARACTER_REPUTATION_VALUE);
 
 private:
 	CHARACTER_REPUTATION_VALUE	m_current_value;
-	int							m_current_index;
+	s32							m_current_index;
 
 	static	void				InitIdToIndex	();
 public:
 	//отношение между репутациями
-	static CHARACTER_GOODWILL	relation			(int from, int to);
-	CHARACTER_GOODWILL			relation			(int to);
+	static CHARACTER_GOODWILL	relation			(s32 from, s32 to);
+	CHARACTER_GOODWILL			relation			(s32 to);
 
 	static void					DeleteIdToIndexData	();
 

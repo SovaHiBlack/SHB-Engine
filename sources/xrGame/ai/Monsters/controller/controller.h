@@ -160,7 +160,7 @@ public:
 
 private:
 #ifdef _DEBUG	
-		virtual void	debug_on_key		(int key);
+		virtual void	debug_on_key		(s32 key);
 
 		fVector3			P1;
 		fVector3			P2;

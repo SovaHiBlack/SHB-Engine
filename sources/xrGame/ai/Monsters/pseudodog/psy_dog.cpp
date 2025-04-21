@@ -91,7 +91,7 @@ bool CPsyDog::spawn_phantom()
 	pSE_Monster->m_spec_object_id = ID();
 	
 	// spawn here
-	NET_Packet					P;
+	CNetPacket					P;
 	phantom->Spawn_Write		(P,TRUE);
 	Level().Send				(P,net_flags(TRUE));
 	F_entity_Destroy			(phantom);
@@ -291,7 +291,7 @@ void CPsyDogPhantom::destroy_me()
 		m_parent_id						= 0xffff;
 	}
 
-	NET_Packet		P;
+	CNetPacket		P;
 	u_EventGen		(P,GE_DESTROY,ID());
 	u_EventSend		(P);
 }
@@ -300,7 +300,7 @@ void CPsyDogPhantom::destroy_from_parent()
 {
 	m_parent_id		= 0xffff;
 
-	NET_Packet		P;
+	CNetPacket		P;
 	u_EventGen		(P,GE_DESTROY,ID());
 	u_EventSend		(P);
 }

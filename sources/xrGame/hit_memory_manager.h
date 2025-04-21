@@ -14,7 +14,8 @@
 #	define USE_SELECTED_HIT
 #endif
 
-namespace MemorySpace {
+namespace MemorySpace
+{
 	struct CHitObject;
 };
 
@@ -22,13 +23,15 @@ class CEntityAlive;
 class CCustomMonster;
 class CAI_Stalker;
 
-class CHitMemoryManager {
+class CHitMemoryManager
+{
 public:
 	typedef MemorySpace::CHitObject					CHitObject;
 	typedef xr_vector<CHitObject>					HITS;
 
 private:
-	struct CDelayedHitObject {
+	struct CDelayedHitObject
+	{
 		ALife::_OBJECT_ID		m_object_id;
 		CHitObject				m_hit_object;
 	};
@@ -37,50 +40,50 @@ private:
 	typedef xr_vector<CDelayedHitObject>			DELAYED_HIT_OBJECTS;
 
 private:
-	CCustomMonster				*m_object;
-	CAI_Stalker					*m_stalker;
-	HITS						*m_hits;
+	CCustomMonster* m_object;
+	CAI_Stalker* m_stalker;
+	HITS* m_hits;
 	DELAYED_HIT_OBJECTS			m_delayed_objects;
 	u32							m_max_hit_count;
 #ifdef USE_SELECTED_HIT
-	CHitObject					*m_selected_hit;
+	CHitObject* m_selected_hit;
 #endif
 	ALife::_OBJECT_ID			m_last_hit_object_id;
 
 public:
-	IC							CHitMemoryManager	(CCustomMonster *object, CAI_Stalker *stalker);
-	virtual						~CHitMemoryManager	();
-	virtual	void				Load				(pcstr section);
-	virtual	void				reinit				();
-	virtual	void				reload				(pcstr section);
-	virtual void				update				();
-			void				remove_links		(CObject *object);
+	IC							CHitMemoryManager(CCustomMonster* object, CAI_Stalker* stalker);
+	virtual						~CHitMemoryManager( );
+	virtual	void				Load(pcstr section);
+	virtual	void				reinit( );
+	virtual	void				reload(pcstr section);
+	virtual void				update( );
+	void				remove_links(CObject* object);
 
 public:
-			void				add					(const CEntityAlive	*who);
-			void				add(f32 amount, const fVector3& local_direction, const CObject* who, s16 element);
-			void				add					(const CHitObject &hit_object);
+	void				add(const CEntityAlive* who);
+	void				add(f32 amount, const fVector3& local_direction, const CObject* who, s16 element);
+	void				add(const CHitObject& hit_object);
 
 public:
-	IC		const HITS			&objects			() const;
+	IC		const HITS& objects( ) const;
 #ifdef USE_SELECTED_HIT
-	IC		const CHitObject	*hit				() const;
+	IC		const CHitObject* hit( ) const;
 #endif
-			const CHitObject	*hit				(const CEntityAlive *object) const;
-	IC		void				set_squad_objects	(HITS *squad_objects);
-	IC		const ALife::_OBJECT_ID	&last_hit_object_id	() const;
+	const CHitObject* hit(const CEntityAlive* object) const;
+	IC		void				set_squad_objects(HITS* squad_objects);
+	IC		const ALife::_OBJECT_ID& last_hit_object_id( ) const;
 
 public:
-			void				enable				(const CObject *object, bool enable);
-			CCustomMonster		&object				() const;
+	void				enable(const CObject* object, bool enable);
+	CCustomMonster& object( ) const;
 
 public:
-			void				save				(NET_Packet &packet) const;
-			void				load				(IReader &packet);
-			void				on_requested_spawn	(CObject *object);
+	void				save(CNetPacket& packet) const;
+	void				load(IReader& packet);
+	void				on_requested_spawn(CObject* object);
 
 private:
-			void				clear_delayed_objects	();
+	void				clear_delayed_objects( );
 };
 
 #include "hit_memory_manager_inline.h"

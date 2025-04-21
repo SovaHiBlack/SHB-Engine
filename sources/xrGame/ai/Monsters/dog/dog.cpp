@@ -135,7 +135,7 @@ void CAI_Dog::CheckSpecParams(u32 spec_params)
 }
 
 #ifdef _DEBUG
-void CAI_Dog::debug_on_key(int key)
+void CAI_Dog::debug_on_key(s32 key)
 {
 	CKinematicsAnimated *skel = smart_cast<CKinematicsAnimated *>(Visual());
 

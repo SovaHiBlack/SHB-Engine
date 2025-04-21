@@ -274,7 +274,7 @@ void CPseudoGigant::on_threaten_execute()
 	Actor()->lock_accel_for	(m_time_kick_actor_slow_down);
 	
 	// Нанести хит
-	NET_Packet	l_P;
+	CNetPacket	l_P;
 	SHit		HS;
 
 	HS.GenHeader		(GE_HIT, pA->ID());														//	u_EventGen	(l_P,GE_HIT, pA->ID());

@@ -921,7 +921,7 @@ void CBulletManager::DynamicObjectHit(CBulletManager::_event& E)
 		Hit.weaponID = E.bullet.weapon_id;
 		Hit.BulletID = E.bullet.m_dwID;
 
-		NET_Packet np;
+		CNetPacket np;
 		Hit.Write_Packet(np);
 
 		//		Msg("Hit sended: %d[%d,%d]", Hit.whoID, Hit.weaponID, Hit.BulletID);

@@ -70,7 +70,7 @@
 
 using namespace StalkerSpace;
 
-extern int g_AI_inactive_time;
+extern s32 g_AI_inactive_time;
 
 CAI_Stalker::CAI_Stalker			()
 {
@@ -165,7 +165,7 @@ void CAI_Stalker::reinit			()
 //		pcstr							weights = pSettings->r_string(cNameSect(),"critical_wound_weights");
 		pcstr							weights = SpecificCharacter().critical_wound_weights();
 		string16						temp;
-		for (int i=0, n=_GetItemCount(weights); i<n; ++i)
+		for (s32 i=0, n=_GetItemCount(weights); i<n; ++i)
 			m_critical_wound_weights.push_back((f32)atof(_GetItem(weights,i,temp)));
 	}
 
@@ -285,7 +285,7 @@ void CAI_Stalker::Die				(CObject* who)
 			if (std::find(weapon->m_ammoTypes.begin(),weapon->m_ammoTypes.end(),(*I)->object().cNameSect()) == weapon->m_ammoTypes.end())
 				continue;
 
-			NET_Packet				packet;
+			CNetPacket				packet;
 			u_EventGen				(packet,GE_DESTROY,(*I)->object().ID());
 			u_EventSend				(packet);
 		}
@@ -436,7 +436,7 @@ void CAI_Stalker::net_Destroy()
 	xr_delete						(m_boneHitProtection);
 }
 
-void CAI_Stalker::net_Save			(NET_Packet& P)
+void CAI_Stalker::net_Save			(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	m_pPhysics_support->in_NetSave(P);
@@ -447,7 +447,7 @@ BOOL CAI_Stalker::net_SaveRelevant	()
 	return (inherited::net_SaveRelevant() || BOOL(PPhysicsShell()!=NULL));
 }
 
-void CAI_Stalker::net_Export		(NET_Packet& P)
+void CAI_Stalker::net_Export		(CNetPacket& P)
 {
 	R_ASSERT						(Local());
 
@@ -490,7 +490,7 @@ void CAI_Stalker::net_Export		(NET_Packet& P)
 	P.w_stringZ						(m_sStartDialog);
 }
 
-void CAI_Stalker::net_Import		(NET_Packet& P)
+void CAI_Stalker::net_Import		(CNetPacket& P)
 {
 	R_ASSERT						(Remote());
 	net_update						N;
@@ -972,7 +972,7 @@ bool CAI_Stalker::can_attach			(const CInventoryItem *inventory_item) const
 	return								(CObjectHandler::can_attach(inventory_item));
 }
 
-void CAI_Stalker::save (NET_Packet &packet)
+void CAI_Stalker::save (CNetPacket& packet)
 {
 	inherited::save			(packet);
 	CInventoryOwner::save	(packet);

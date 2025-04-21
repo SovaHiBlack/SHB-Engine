@@ -46,7 +46,7 @@ void CRocketLauncher::SpawnRocket(pcstr rocket_section, CGameObject* parent_rock
 	D->RespawnTime		=	0;
 	
 	// Send
-	NET_Packet			P;
+	CNetPacket			P;
 	D->Spawn_Write		(P,TRUE);
 	Level().Send		(P,net_flags(TRUE));
 	// Destroy

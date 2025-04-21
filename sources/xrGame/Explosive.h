@@ -41,7 +41,7 @@ public:
 	static f32 				ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPhysicsShellHolder* blasted_obj, const fVector3& expl_centre, const f32 expl_radius);
 
 
-	virtual void 				OnEvent(NET_Packet& P, u16 type);//{inherited::OnEvent( P, type);}
+	virtual void 				OnEvent(CNetPacket& P, u16 type);//{inherited::OnEvent( P, type);}
 	virtual void				OnAfterExplosion( );
 	virtual void				OnBeforeExplosion( );
 	virtual void 				SetCurrentParentID(u16 parent_id)
@@ -93,44 +93,44 @@ protected:
 
 private:
 	void				PositionUpdate( );
-	static		void				GetRaySourcePos(CExplosive* exp_obj, const fVector3& expl_centre, fVector3& p);
+	static void			GetRaySourcePos(CExplosive* exp_obj, const fVector3& expl_centre, fVector3& p);
 
 	void				ExplodeWaveProcessObject(collide::rq_results& storage, CPhysicsShellHolder* sh);
 	void				ExplodeWaveProcess( );
-	static		f32				TestPassEffect(const	fVector3& source_p, const	fVector3& dir, f32 range, f32 ef_radius, collide::rq_results& storage, CObject* blasted_obj);
+	static f32			TestPassEffect(const	fVector3& source_p, const	fVector3& dir, f32 range, f32 ef_radius, collide::rq_results& storage, CObject* blasted_obj);
 	void				LightCreate( );
 	void				LightDestroy( );
+
 protected:
-
-	CWalmarkManager				m_wallmark_manager;
+	CWalmarkManager			m_wallmark_manager;
 	//ID персонажа который иницировал действие
-	u16							m_iCurrentParentID;
+	u16						m_iCurrentParentID;
 
-	//bool						m_bReadyToExplode;
-	fVector3						m_vExplodePos;
-	fVector3 					m_vExplodeSize;
-	fVector3 					m_vExplodeDir;
+	//bool					m_bReadyToExplode;
+	fVector3				m_vExplodePos;
+	fVector3				m_vExplodeSize;
+	fVector3				m_vExplodeDir;
 
 	//параметры взрыва
-	f32 						m_fBlastHit;
-	f32 						m_fBlastHitImpulse;
-	f32 						m_fBlastRadius;
+	f32						m_fBlastHit;
+	f32						m_fBlastHitImpulse;
+	f32						m_fBlastRadius;
 
 	//параметры и количество осколков
-	f32 						m_fFragsRadius;
-	f32 						m_fFragHit;
-	f32 						m_fFragHitImpulse;
-	int	  						m_iFragsNum;
+	f32						m_fFragsRadius;
+	f32						m_fFragHit;
+	f32						m_fFragHitImpulse;
+	s32						m_iFragsNum;
 
 	//типы наносимых хитов
-	ALife::EHitType 			m_eHitTypeBlast;
-	ALife::EHitType 			m_eHitTypeFrag;
+	ALife::EHitType			m_eHitTypeBlast;
+	ALife::EHitType			m_eHitTypeFrag;
 
 	//фактор подпроса предмета вверх взрывной волной 
 	f32						m_fUpThrowFactor;
 
 	//список пораженных объектов
-	BLASTED_OBJECTS_V			m_blasted_objects;
+	BLASTED_OBJECTS_V		m_blasted_objects;
 
 	//текущая продолжительность взрыва
 	f32						m_fExplodeDuration;
@@ -146,40 +146,40 @@ protected:
 		flReadyToExplode = 1 << 2,
 		flExploded = 1 << 3
 	};
-	flags8						m_explosion_flags;
+	flags8					m_explosion_flags;
 	///////////////////////////////////////////////
 	//Должен ли объект быть скрыт после взрыва: true - для всех кроме дымовой гранаты
-	BOOL						m_bHideInExplosion;
-	bool						m_bAlreadyHidden;
-	virtual void				HideExplosive( );
-	//bool						m_bExploding;
-	//bool						m_bExplodeEventSent;
+	BOOL					m_bHideInExplosion;
+	bool					m_bAlreadyHidden;
+	virtual void			HideExplosive( );
+	//bool					m_bExploding;
+	//bool					m_bExplodeEventSent;
 
 	//////////////////////////////////////////////
 	//для разлета осколков
 	f32						m_fFragmentSpeed;
 
 	//звуки
-	ref_sound					sndExplode;
-	ESoundTypes					m_eSoundExplode;
+	ref_sound				sndExplode;
+	ESoundTypes				m_eSoundExplode;
 
 	//размер отметки на стенах
 	f32						fWallmarkSize;
 
 	//эффекты и подсветка
-	shared_str					m_sExplodeParticles;
+	shared_str				m_sExplodeParticles;
 
 	//подсветка взрыва
-	ref_light					m_pLight;
-	fColor						m_LightColor;
+	ref_light				m_pLight;
+	fColor					m_LightColor;
 	f32						m_fLightRange;
 	f32						m_fLightTime;
 
 	virtual	void				StartLight( );
 	virtual	void				StopLight( );
 
-	BOOL						m_bDynamicParticles;
-	CParticlesObject* m_pExpParticle;
+	BOOL					m_bDynamicParticles;
+	CParticlesObject*		m_pExpParticle;
 	virtual void				UpdateExplosionParticles( );
 
 	// эффектор

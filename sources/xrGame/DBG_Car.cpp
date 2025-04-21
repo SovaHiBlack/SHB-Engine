@@ -39,7 +39,8 @@ void CCar::DbgCreatePlots()
 	eStateDrive state=e_state_drive;
 	e_state_drive=drive;
 //////////////////////////////
-	int y_pos=0,y_w=100;
+	s32 y_pos = 0;
+	s32 y_w = 100;
 	m_dbg_power_rpm.Init(CFunctionGraph::type_function(this,&CCar::Parabola),m_min_rpm,m_max_rpm,0,y_pos,500,y_w,1000,D3DCOLOR_XRGB(0,0,255));
 	m_dbg_power_rpm.AddMarker(CStatGraph::stVert, 0, D3DCOLOR_XRGB(255, 0, 0));
 	m_dbg_power_rpm.AddMarker(CStatGraph::stHor, 0, D3DCOLOR_XRGB(0, 0, 255));

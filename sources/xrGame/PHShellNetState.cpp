@@ -5,7 +5,7 @@
 #include "phworld.h"
 #include "phshell.h"
 
-void CPHShell::net_Import(NET_Packet& P)
+void CPHShell::net_Import(CNetPacket& P)
 {
 	ELEMENT_I i=elements.begin(),e=elements.end();
 	for(;i!=e;++i)
@@ -14,7 +14,7 @@ void CPHShell::net_Import(NET_Packet& P)
 	}	
 }
 
-void CPHShell::net_Export(NET_Packet& P)
+void CPHShell::net_Export(CNetPacket& P)
 {
 	ELEMENT_I i=elements.begin(),e=elements.end();
 	for(;i!=e;++i)

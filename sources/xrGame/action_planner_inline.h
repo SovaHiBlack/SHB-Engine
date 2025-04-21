@@ -73,7 +73,7 @@ void CPlanner::update				()
 			show_current_world_state();
 			show_target_world_state	();
 			Msg						("%6d : Solution for object %s [%d vertices searched]",Device.dwTimeGlobal,object_name(),ai().graph_engine().solver_algorithm().data_storage().get_visited_node_count());
-			for (int i=0; i<(int)solution().size(); ++i)
+			for (s32 i=0; i<(s32)solution().size(); ++i)
 				Msg					("%s",action2string(solution()[i]));
 		}
 	}
@@ -275,7 +275,7 @@ IC	void CPlanner::show				(pcstr offset)
 #endif
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::save	(NET_Packet &packet)
+IC	void CPlanner::save	(CNetPacket& packet)
 {
 	{
 		EVALUATORS::iterator		I = m_evaluators.begin();

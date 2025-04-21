@@ -120,7 +120,7 @@ void CActor::PickupModeUpdate()
 		m_pUsableObject && m_pUsableObject->nonscript_usable() &&
 		!Level().m_feel_deny.is_object_denied(smart_cast<CGameObject*>(inventory().m_pTarget)) )
 	{
-		NET_Packet P;
+		CNetPacket P;
 		u_EventGen(P,GE_OWNERSHIP_TAKE, ID());
 		P.w_u16(inventory().m_pTarget->object().ID());
 		u_EventSend(P);
@@ -247,8 +247,10 @@ void CActor::PickupInfoDraw(CObject* object)
 	HUD().Font().pFontLetterica16Russian->Out			(x,y,draw_str);
 }
 
-void CActor::feel_sound_new(CObject* who, int type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power)
+void CActor::feel_sound_new(CObject* who, s32 type, CSound_UserDataPtr user_data, const fVector3& Position, f32 power)
 {
-	if(who == this)
-		m_snd_noise = _max(m_snd_noise,power);
+	if (who == this)
+	{
+		m_snd_noise = _max(m_snd_noise, power);
+	}
 }

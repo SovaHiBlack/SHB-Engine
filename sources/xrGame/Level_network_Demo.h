@@ -41,7 +41,7 @@ private:
 		u32			m_dwFrame;
 		u32			m_dwTimeReceive;
 		union		{
-			NET_Packet	Packet;
+			CNetPacket	Packet;
 			DemoFrameTime	FrameTime;
 		};
 	};
@@ -88,5 +88,5 @@ public:
 	bool						IsServerDemo			()	{return (m_sDemoHeader.bServerClient != 0);};
 	bool						IsClientDemo			()	{return (m_sDemoHeader.bServerClient == 0);};
 
-	virtual	NET_Packet*			net_msg_Retreive		();
+	virtual	CNetPacket*			net_msg_Retreive		();
 private:

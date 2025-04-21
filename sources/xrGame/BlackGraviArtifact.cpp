@@ -213,7 +213,7 @@ void CBlackGraviArtefact::GraviStrike()
 				s16 element = elements_list.front();
 				fVector3 bone_pos = bone_position_list.front();
 				
-				NET_Packet		P;
+				CNetPacket		P;
 				SHit	HS;
 				HS.GenHeader(GE_HIT, pGameObject->ID());	//				u_EventGen		(P,GE_HIT, pGameObject->ID());				
 				HS.whoID  =ID();							//				P.w_u16			(ID());

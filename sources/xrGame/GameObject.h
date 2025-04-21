@@ -168,8 +168,8 @@ public:
 	CIniFile* m_ini_file;
 
 	// Utilities
-	static void				u_EventGen(NET_Packet& P, u32 type, u32 dest);
-	static void				u_EventSend(NET_Packet& P, u32 dwFlags = DPNSEND_GUARANTEED);
+	static void				u_EventGen(CNetPacket& P, u32 type, u32 dest);
+	static void				u_EventSend(CNetPacket& P, u32 dwFlags = DPNSEND_GUARANTEED);
 
 	// Methods
 	virtual void			Load(pcstr section);
@@ -179,10 +179,10 @@ public:
 	virtual void			UpdateCL( );
 	virtual void			OnChangeVisual( );
 	//object serialization
-	virtual void			net_Save(NET_Packet& net_packet);
+	virtual void			net_Save(CNetPacket& net_packet);
 	virtual void			net_Load(IReader& ireader);
 	virtual BOOL			net_SaveRelevant( );
-	virtual void			save(NET_Packet& output_packet);
+	virtual void			save(CNetPacket& output_packet);
 	virtual void			load(IReader& input_packet);
 
 	virtual BOOL			net_Relevant( )
@@ -199,7 +199,7 @@ public:
 	virtual bool			shedule_Needed( );
 
 	virtual void			renderable_Render( );
-	virtual void			OnEvent(NET_Packet& P, u16 type);
+	virtual void			OnEvent(CNetPacket& P, u16 type);
 	virtual	void			Hit(SHit* pHDS)
 	{ };
 	virtual void			SetHitInfo(CObject* who, CObject* weapon, s16 element, fVector3 Pos, fVector3 Dir)

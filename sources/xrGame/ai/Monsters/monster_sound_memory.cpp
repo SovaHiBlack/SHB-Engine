@@ -73,7 +73,7 @@ void CMonsterSoundMemory::HearSound(const SoundElem &s)
 
 }
 
-void CMonsterSoundMemory::HearSound(const CObject* who, int eType, const fVector3& Position, f32 power, TTime time)
+void CMonsterSoundMemory::HearSound(const CObject* who, s32 eType, const fVector3& Position, f32 power, TTime time)
 {
 	SoundElem s;
 	s.SetConvert(who,eType,Position,power,time);
@@ -199,7 +199,7 @@ bool CMonsterSoundMemory::hear_help_sound()
 	return true;
 }
 
-void CMonsterSoundMemory::check_help_sound(int eType, u32 node)
+void CMonsterSoundMemory::check_help_sound(s32 eType, u32 node)
 {
 	if ((eType & SOUND_TYPE_MONSTER_ATTACKING) != SOUND_TYPE_MONSTER_ATTACKING) return;
 	if ((eType & SOUND_TYPE_MONSTER_INJURING) != SOUND_TYPE_MONSTER_INJURING) return;

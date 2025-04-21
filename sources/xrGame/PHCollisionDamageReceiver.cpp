@@ -78,7 +78,7 @@ void CPHCollisionDamageReceiver::Hit(u16 source_id, u16 bone_id, f32 power, cons
 	power *= i->second;
 	if (power < hit_threthhold)return;
 
-	NET_Packet		P;
+	CNetPacket		P;
 	CPhysicsShellHolder* ph = PPhysicsShellHolder( );
 	SHit	HS;
 

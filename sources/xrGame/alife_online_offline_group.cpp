@@ -26,7 +26,7 @@ CSE_ALifeItemWeapon *CSE_ALifeOnlineOfflineGroup::tpfGetBestWeapon		(ALife::EHit
 	return						(0);
 }
 
-ALife::EMeetActionType CSE_ALifeOnlineOfflineGroup::tfGetActionType		(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection)
+ALife::EMeetActionType CSE_ALifeOnlineOfflineGroup::tfGetActionType		(CSE_ALifeSchedulable *tpALifeSchedulable, s32 iGroupIndex, bool bMutualDetection)
 {
 	return						(ALife::eMeetActionTypeIgnore);
 }

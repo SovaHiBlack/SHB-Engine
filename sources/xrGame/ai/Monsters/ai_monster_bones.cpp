@@ -79,7 +79,7 @@ void bonesManipulation::AddBone (CBoneInstance *bone, u8 axis_used)
 
 void bonesManipulation::SetMotion(CBoneInstance *bone, u8 axis, f32 target_yaw, f32 r_speed, u32 t)
 {
-	int index = -1;
+	s32 index = -1;
 	// найти бону bone в m_Bones
 	for (u32 i=0; i<m_Bones.size(); ++i)  {
 		if ((m_Bones[i].bone == bone) && (m_Bones[i].axis == axis)) {

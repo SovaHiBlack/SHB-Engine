@@ -120,14 +120,14 @@ void CHudItem::SwitchState(u32 S)
 	if (object().Local() && !object().getDestroy())	
 	{
 		// !!! Just single entry for given state !!!
-		NET_Packet		P;
+		CNetPacket		P;
 		object().u_EventGen		(P,GE_WPN_STATE_CHANGE,object().ID());
 		P.w_u8			(u8(S));
 		object().u_EventSend		(P);
 	}
 }
 
-void CHudItem::OnEvent		(NET_Packet& P, u16 type)
+void CHudItem::OnEvent		(CNetPacket& P, u16 type)
 {
 	switch (type)
 	{

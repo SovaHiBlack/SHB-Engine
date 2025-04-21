@@ -22,7 +22,7 @@ void CHelicopter::BoneMGunCallbackY(CBoneInstance *B)
 	B->mTransform.mulB_43			(rY);
 }
 
-void CHelicopter::OnEvent(	NET_Packet& P, u16 type) 
+void CHelicopter::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P,type);
 	CExplosive::OnEvent(P,type);
@@ -306,7 +306,7 @@ void CHelicopter::startRocket(u16 idx)
 		VERIFY2(_valid(xform),"CHelicopter::startRocket. Invalid xform");
 		LaunchRocket(xform,  vel, zero_vel);
 
-		NET_Packet P;
+		CNetPacket P;
 		u_EventGen(P,GE_LAUNCH_ROCKET,ID());
 		P.w_u16(u16( getCurrentRocket()->ID()));
 		u_EventSend(P);

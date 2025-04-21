@@ -15,21 +15,19 @@
 #pragma warning(push)
 #pragma warning(disable:4005)
 
-class CALifeSimulator : 
-	public CALifeUpdateManager,
-	public CALifeInteractionManager
+class CALifeSimulator : public CALifeUpdateManager, public CALifeInteractionManager
 {
 protected:
-	virtual void	setup_simulator		(CSE_ALifeObject *object);
-	virtual void	reload				(pcstr section);
+	virtual void	setup_simulator(CSE_ALifeObject* object);
+	virtual void	reload(pcstr section);
 
 public:
-					CALifeSimulator		(xrServer *server, shared_str* command_line);
-	virtual			~CALifeSimulator	();
-	virtual	void	destroy				();
+	CALifeSimulator(xrServer* server, shared_str* command_line);
+	virtual			~CALifeSimulator( );
+	virtual void	destroy( );
 
 #if 0//def DEBUG
-			void	validate			();
+	void	validate( );
 #endif //DEBUG
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

@@ -9,7 +9,7 @@ class CInventoryBox :public CGameObject
 public:
 				bool	m_in_use;
 						CInventoryBox					();
-	virtual		void	OnEvent							(NET_Packet& P, u16 type);
+	virtual		void	OnEvent							(CNetPacket& P, u16 type);
 	virtual		BOOL	net_Spawn						(CSE_Abstract* DC);
 	virtual		void	net_Relcase						(CObject* O	);
 				void	AddAvailableItems				(TIItemContainer& items_container) const;

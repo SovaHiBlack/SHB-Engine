@@ -178,7 +178,7 @@ void						CLevel::Demo_Load				(pcstr DemoName)
 //	FILE* fTDemo = fopen(DemoFileName, "rb");
 //	if (fTDemo)
 	{
-//		NET_Packet NewPacket;
+//		CNetPacket NewPacket;
 		DemoDataStruct NewData;
 		Msg("\n------- Loading Demo... ---------\n");
 

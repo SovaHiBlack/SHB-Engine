@@ -22,7 +22,7 @@
 
 using namespace luabind;
 
-typedef xr_vector<std::pair<shared_str, int> >	STORY_PAIRS;
+typedef xr_vector<std::pair<shared_str, s32> >	STORY_PAIRS;
 typedef STORY_PAIRS								SPAWN_STORY_PAIRS;
 pcstr											_INVALID_STORY_ID = "INVALID_STORY_ID";
 pcstr											_INVALID_SPAWN_STORY_ID = "INVALID_SPAWN_STORY_ID";
@@ -183,7 +183,7 @@ CSE_Abstract* CALifeSimulator__spawn_item2(CALifeSimulator* self, pcstr section,
 	if (!object->m_bOnline)
 		return							(self->spawn_item(section, position, level_vertex_id, game_vertex_id, id_parent));
 
-	NET_Packet							packet;
+	CNetPacket							packet;
 	packet.w_begin(M_SPAWN);
 	packet.w_stringZ(section);
 
@@ -201,7 +201,7 @@ CSE_Abstract* CALifeSimulator__spawn_item2(CALifeSimulator* self, pcstr section,
 	return								(self->server( ).Process_spawn(packet, clientID));
 }
 
-CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, pcstr section, const fVector3& position, u32 level_vertex_id, GameGraph::_GRAPH_ID game_vertex_id, ALife::_OBJECT_ID id_parent, int ammo_to_spawn)
+CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, pcstr section, const fVector3& position, u32 level_vertex_id, GameGraph::_GRAPH_ID game_vertex_id, ALife::_OBJECT_ID id_parent, s32 ammo_to_spawn)
 {
 	//	if (id_parent == ALife::_OBJECT_ID(-1))
 	//		return							(self->spawn_item(section,position,level_vertex_id,game_vertex_id,id_parent));
@@ -228,7 +228,7 @@ CSE_Abstract* CALifeSimulator__spawn_ammo(CALifeSimulator* self, pcstr section, 
 		return							(item);
 	}
 
-	NET_Packet							packet;
+	CNetPacket							packet;
 	packet.w_begin(M_SPAWN);
 	packet.w_stringZ(section);
 
@@ -272,7 +272,7 @@ void CALifeSimulator__release(CALifeSimulator* self, CSE_Abstract* object, bool)
 	}
 
 	// awful hack, for stohe only
-	NET_Packet							packet;
+	CNetPacket							packet;
 	packet.w_begin(M_EVENT);
 	packet.w_u32(Level( ).timeServer( ));
 	packet.w_u16(GE_DESTROY);
@@ -280,7 +280,7 @@ void CALifeSimulator__release(CALifeSimulator* self, CSE_Abstract* object, bool)
 	Level( ).Send(packet, net_flags(TRUE, TRUE));
 }
 
-pcstr get_level_name(const CALifeSimulator* self, int level_id)
+pcstr get_level_name(const CALifeSimulator* self, s32 level_id)
 {
 	pcstr								result = *ai( ).game_graph( ).header( ).level((GameGraph::_LEVEL_ID)level_id).name( );
 	return								(result);
@@ -384,13 +384,13 @@ void CALifeSimulator::script_register(lua_State* L)
 	{
 		if (story_ids.empty( ))
 			generate_story_ids(
-				story_ids,
-				INVALID_STORY_ID,
-				"story_ids",
-				"INVALID_STORY_ID",
-				"Invalid story id description (contains spaces)!",
-				"INVALID_STORY_ID redifinition!",
-				"Duplicated story id description!"
+			story_ids,
+			INVALID_STORY_ID,
+			"story_ids",
+			"INVALID_STORY_ID",
+			"Invalid story id description (contains spaces)!",
+			"INVALID_STORY_ID redifinition!",
+			"Duplicated story id description!"
 			);
 
 		luabind::class_<class_exporter<CALifeSimulator> >	instance("story_ids");
@@ -406,13 +406,13 @@ void CALifeSimulator::script_register(lua_State* L)
 	{
 		if (spawn_story_ids.empty( ))
 			generate_story_ids(
-				spawn_story_ids,
-				INVALID_SPAWN_STORY_ID,
-				"spawn_story_ids",
-				"INVALID_SPAWN_STORY_ID",
-				"Invalid spawn story id description (contains spaces)!",
-				"INVALID_SPAWN_STORY_ID redifinition!",
-				"Duplicated spawn story id description!"
+			spawn_story_ids,
+			INVALID_SPAWN_STORY_ID,
+			"spawn_story_ids",
+			"INVALID_SPAWN_STORY_ID",
+			"Invalid spawn story id description (contains spaces)!",
+			"INVALID_SPAWN_STORY_ID redifinition!",
+			"Duplicated spawn story id description!"
 			);
 
 		luabind::class_<class_exporter<class_exporter<CALifeSimulator> > >	instance("spawn_story_ids");
@@ -429,9 +429,9 @@ void CALifeSimulator::script_register(lua_State* L)
 #if 0//def DEBUG
 struct dummy
 {
-	int count;
+	s32 count;
 	lua_State* state;
-	int ref;
+	s32 ref;
 };
 
 void CALifeSimulator::validate( )
@@ -453,11 +453,11 @@ void CALifeSimulator::validate( )
 		VERIFY2(
 			base->m_self.state( ),
 			make_string(
-				"0x%08x name[%s] name_replace[%s]",
-				*(int*)&_state,
-				(*I).second->data( )->object( ).name( ),
-				(*I).second->data( )->object( ).name_replace( )
-			)
+			"0x%08x name[%s] name_replace[%s]",
+			*(s32*)&_state,
+			(*I).second->data( )->object( ).name( ),
+			(*I).second->data( )->object( ).name_replace( )
+		)
 		);
 	}
 }

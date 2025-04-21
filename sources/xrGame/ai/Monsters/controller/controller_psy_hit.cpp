@@ -75,7 +75,7 @@ void CControllerPsyHit::deactivate()
 	m_man->unsubscribe				(this, ControlCom::eventAnimationEnd);
 
 	if (m_blocked) {
-		NET_Packet			P;
+		CNetPacket			P;
 
 		Actor()->u_EventGen	(P, GEG_PLAYER_WEAPON_HIDE_STATE, Actor()->ID());
 		P.w_u32				(INV_STATE_BLOCK_ALL);
@@ -232,7 +232,7 @@ void CControllerPsyHit::death_glide_start()
 
 	set_sound_state					(eStart);
 
-	NET_Packet			P;
+	CNetPacket			P;
 	Actor()->u_EventGen	(P, GEG_PLAYER_WEAPON_HIDE_STATE, Actor()->ID());
 	P.w_u32				(INV_STATE_BLOCK_ALL);
 	P.w_u8				(u8(true));

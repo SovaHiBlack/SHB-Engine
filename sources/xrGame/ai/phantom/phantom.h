@@ -67,9 +67,9 @@ public:
 	virtual BOOL		net_Spawn					( CSE_Abstract* DC );
 	virtual void		net_Destroy					();
 	
-	virtual void		net_Export					(NET_Packet& P);
-	virtual void		net_Import					(NET_Packet& P);
-	virtual void		save						(NET_Packet &output_packet);
+	virtual void		net_Export					(CNetPacket& P);
+	virtual void		net_Import					(CNetPacket& P);
+	virtual void		save						(CNetPacket& output_packet);
 	virtual void		load						(IReader &input_packet);
 
 	virtual void		shedule_Update				(u32 DT); 

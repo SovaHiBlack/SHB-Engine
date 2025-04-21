@@ -38,9 +38,9 @@ public:
 	static void				BoneCallbackY		(CBoneInstance *B);
 				void		Load				(pcstr section);
 				void		UpdateCL			();
-			void			Action				(int id, u32 flags);
-			void			SetParam			(int id, fVector2 val);
-			void			SetParam			(int id, fVector3 val);
+			void			Action				(s32 id, u32 flags);
+			void			SetParam			(s32 id, fVector2 val);
+			void			SetParam			(s32 id, fVector3 val);
 			bool			AllowFire			();
 			f32			FireDirDiff			();
 			IC bool			IsActive			() {return m_bActive;}

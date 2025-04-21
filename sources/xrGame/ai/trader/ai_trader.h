@@ -22,8 +22,8 @@ class CBlend;
 class CSoundPlayer;
 class CTraderAnimation;
 
-class CAI_Trader : public CEntityAlive, 
-	public CInventoryOwner, 
+class CAI_Trader : public CEntityAlive,
+	public CInventoryOwner,
 	public CScriptEntity,
 	public CAI_PhraseDialogManager
 {
@@ -34,108 +34,170 @@ private:
 	bool				m_busy_now;
 
 public:
-	CAI_Trader		();
-	virtual				~CAI_Trader		();
+	CAI_Trader( );
+	virtual				~CAI_Trader( );
 
-	virtual CAttachmentOwner*			cast_attachment_owner	()						{return this;}
-	virtual CInventoryOwner*			cast_inventory_owner	()						{return this;}
-	virtual CEntityAlive*				cast_entity_alive		()						{return this;}
-	virtual CEntity*					cast_entity				()						{return this;}
-	virtual CGameObject*				cast_game_object		()						{return this;}
-	virtual CPhysicsShellHolder*		cast_physics_shell_holder	()					{return this;}
-	virtual CParticlesPlayer*			cast_particles_player	()						{return this;}
-	virtual CScriptEntity*				cast_script_entity		()						{return this;}
+	virtual CAttachmentOwner* cast_attachment_owner( )
+	{
+		return this;
+	}
+	virtual CInventoryOwner* cast_inventory_owner( )
+	{
+		return this;
+	}
+	virtual CEntityAlive* cast_entity_alive( )
+	{
+		return this;
+	}
+	virtual CEntity* cast_entity( )
+	{
+		return this;
+	}
+	virtual CGameObject* cast_game_object( )
+	{
+		return this;
+	}
+	virtual CPhysicsShellHolder* cast_physics_shell_holder( )
+	{
+		return this;
+	}
+	virtual CParticlesPlayer* cast_particles_player( )
+	{
+		return this;
+	}
+	virtual CScriptEntity* cast_script_entity( )
+	{
+		return this;
+	}
 
-	virtual DLL_Pure	*_construct		();
-	virtual void		Load			(pcstr section );
-	virtual BOOL		net_Spawn		( CSE_Abstract* DC );
-	virtual void		net_Export		(NET_Packet& P);
-	virtual void		net_Import		(NET_Packet& P);
-	virtual	void		net_Destroy		();
+	virtual DLL_Pure* _construct( );
+	virtual void		Load(pcstr section);
+	virtual BOOL		net_Spawn(CSE_Abstract* DC);
+	virtual void		net_Export(CNetPacket& P);
+	virtual void		net_Import(CNetPacket& P);
+	virtual	void		net_Destroy( );
 
-	virtual void		save			(NET_Packet &output_packet);
-	virtual void		load			(IReader &input_packet);
-	virtual BOOL		net_SaveRelevant()							{return inherited::net_SaveRelevant();}
+	virtual void		save(CNetPacket& output_packet);
+	virtual void		load(IReader& input_packet);
+	virtual BOOL		net_SaveRelevant( )
+	{
+		return inherited::net_SaveRelevant( );
+	}
 
-	virtual void		Die				(CObject* who);
-	virtual void		Think			();
-	virtual void		HitSignal		(f32 /**P/**/, fVector3&/**local_dir/**/,	CObject* /**who/**/, s16 /**element/**/){};
-	virtual void		HitImpulse		(f32 /**P/**/, fVector3&/**vWorldDir/**/, fVector3& /**vLocalDir/**/){};
-	virtual	void		Hit				(SHit* pHDS){inherited::Hit(pHDS);}
-	virtual	void		UpdateCL		();
+	virtual void		Die(CObject* who);
+	virtual void		Think( );
+	virtual void		HitSignal(f32 /**P/**/, fVector3&/**local_dir/**/, CObject* /**who/**/, s16 /**element/**/)
+	{ }
+	virtual void		HitImpulse(f32 /**P/**/, fVector3&/**vWorldDir/**/, fVector3& /**vLocalDir/**/)
+	{ }
+	virtual	void		Hit(SHit* pHDS)
+	{
+		inherited::Hit(pHDS);
+	}
+	virtual	void		UpdateCL( );
 
-	virtual void		g_fireParams			(const CHudItem* pHudItem, fVector3& P, fVector3& D);
-	virtual void		g_WeaponBones			(int &L, int &R1, int &R2);
-	virtual	f32			ffGetFov				()	const {return 150.f;}
-	virtual	f32			ffGetRange				()	const {return 30.f;}
-	virtual	void		OnEvent					(NET_Packet& P, u16 type);
-	virtual	void		feel_touch_new			(CObject* O);
-	virtual	void		DropItemSendMessage		(CObject *O);
-	virtual void		shedule_Update			(u32 dt);
+	virtual void		g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
+	virtual void		g_WeaponBones(s32& L, s32& R1, s32& R2);
+	virtual	f32			ffGetFov( )	const
+	{
+		return 150.f;
+	}
+	virtual	f32			ffGetRange( )	const
+	{
+		return 30.f;
+	}
+	virtual	void		OnEvent(CNetPacket& P, u16 type);
+	virtual	void		feel_touch_new(CObject* O);
+	virtual	void		DropItemSendMessage(CObject* O);
+	virtual void		shedule_Update(u32 dt);
 
-	virtual BOOL		UsedAI_Locations		();
+	virtual BOOL		UsedAI_Locations( );
 
 	///////////////////////////////////////////////////////////////////////
-	virtual u16					PHGetSyncItemsNumber	()			{return inherited ::PHGetSyncItemsNumber();}
-	virtual CPHSynchronize*		PHGetSyncItem			(u16 item)	{return inherited ::PHGetSyncItem(item);}
-	virtual void				PHUnFreeze				()			{return inherited ::PHUnFreeze();}
-	virtual void				PHFreeze				()			{return inherited ::PHFreeze();}
-	///////////////////////////////////////////////////////////////////////
+	virtual u16					PHGetSyncItemsNumber( )
+	{
+		return inherited::PHGetSyncItemsNumber( );
+	}
+	virtual CPHSynchronize* PHGetSyncItem(u16 item)
+	{
+		return inherited::PHGetSyncItem(item);
+	}
+	virtual void				PHUnFreeze( )
+	{
+		return inherited::PHUnFreeze( );
+	}
+	virtual void				PHFreeze( )
+	{
+		return inherited::PHFreeze( );
+	}
+///////////////////////////////////////////////////////////////////////
 
-	virtual void			reinit					();
-	virtual void			reload					(pcstr section);
+	virtual void			reinit( );
+	virtual void			reload(pcstr section);
 
-	static	void			BoneCallback			(CBoneInstance *B);
-			void			LookAtActor				(CBoneInstance *B);
+	static	void			BoneCallback(CBoneInstance* B);
+	void			LookAtActor(CBoneInstance* B);
 
-			void			OnStartTrade			();
-			void			OnStopTrade				();
+	void			OnStartTrade( );
+	void			OnStopTrade( );
 
-	//игровое имя
-	virtual pcstr			Name					() const {return CInventoryOwner::Name();}
+//игровое имя
+	virtual pcstr			Name( ) const
+	{
+		return CInventoryOwner::Name( );
+	}
 
-	virtual	bool			can_attach				(const CInventoryItem *inventory_item) const;
-	virtual bool			use_bolts				() const;
-	virtual	void			spawn_supplies			();
+	virtual	bool			can_attach(const CInventoryItem* inventory_item) const;
+	virtual bool			use_bolts( ) const;
+	virtual	void			spawn_supplies( );
 
-	virtual	bool			bfAssignSound			(CScriptEntityAction *tpEntityAction);
+	virtual	bool			bfAssignSound(CScriptEntityAction* tpEntityAction);
 
-	virtual	ALife::ERelationType tfGetRelationType	(const CEntityAlive *tpEntityAlive) const;
+	virtual	ALife::ERelationType tfGetRelationType(const CEntityAlive* tpEntityAlive) const;
 
 	//////////////////////////////////////////////////////////////////////////
 	//генерируемые задания
 public:
 	//проверяет список артефактов в заказах
-	virtual	u32				ArtefactPrice			(CArtefact* pArtefact);
+	virtual	u32				ArtefactPrice(CArtefact* pArtefact);
 	//продажа артефакта, с последуещим изменением списка заказов  (true - если артефакт был в списке)
-	virtual	bool			BuyArtefact				(CArtefact* pArtefact);
+	virtual	bool			BuyArtefact(CArtefact* pArtefact);
 
 public:
-	IC		bool			busy_now				() const
+	IC		bool			busy_now( ) const
 	{
 		return				(m_busy_now);
 	}
 
 private:
-	CSoundPlayer			*m_sound_player;
+	CSoundPlayer* m_sound_player;
 
 public:
-	IC		CSoundPlayer	&sound					() const
+	IC		CSoundPlayer& sound( ) const
 	{
-		VERIFY				(m_sound_player);
+		VERIFY(m_sound_player);
 		return				(*m_sound_player);
 	}
-	virtual bool			natural_weapon			() const {return false;}
-	virtual bool			natural_detector		() const {return false;}
-	virtual bool			AllowItemToTrade 		(CInventoryItem const * item, EItemPlace place) const;
+	virtual bool			natural_weapon( ) const
+	{
+		return false;
+	}
+	virtual bool			natural_detector( ) const
+	{
+		return false;
+	}
+	virtual bool			AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const;
 
-			void			dialog_sound_start		(pcstr phrase);
-			void			dialog_sound_stop		();
+	void			dialog_sound_start(pcstr phrase);
+	void			dialog_sound_stop( );
 
 private:
-	CTraderAnimation	*AnimMan;
+	CTraderAnimation* AnimMan;
 public:
-	CTraderAnimation	&animation					() {return (*AnimMan);}
+	CTraderAnimation& animation( )
+	{
+		return (*AnimMan);
+	}
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 

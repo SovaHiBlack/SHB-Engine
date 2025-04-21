@@ -146,7 +146,7 @@ void CMissile::spawn_fake_missile()
 		VERIFY						(alife_object);
 		alife_object->m_flags.set	(CSE_ALifeObject::flCanSave,FALSE);
 
-		NET_Packet			P;
+		CNetPacket			P;
 		object->Spawn_Write	(P,TRUE);
 		Level().Send		(P,net_flags(TRUE));
 		F_entity_Destroy	(object);
@@ -456,14 +456,14 @@ void CMissile::Throw()
 
 	if (Local() && H_Parent()) 
 	{
-		NET_Packet						P;
+		CNetPacket						P;
 		u_EventGen						(P,GE_OWNERSHIP_REJECT,ID());
 		P.w_u16							(u16(m_fake_missile->ID()));
 		u_EventSend						(P);
 	}
 }
 
-void CMissile::OnEvent(NET_Packet& P, u16 type) 
+void CMissile::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent		(P,type);
 	u16						id;

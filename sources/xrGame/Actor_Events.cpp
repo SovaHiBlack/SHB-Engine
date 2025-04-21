@@ -30,7 +30,7 @@ IC BOOL BE	(BOOL A, BOOL B)
 	return a==b;
 }
 
-void CActor::OnEvent		(NET_Packet& P, u16 type)
+void CActor::OnEvent		(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -81,7 +81,7 @@ void CActor::OnEvent		(NET_Packet& P, u16 type)
 			} 
 			else 
 			{
-				NET_Packet P;
+				CNetPacket P;
 				u_EventGen(P,GE_OWNERSHIP_REJECT,ID());
 				P.w_u16(u16(O->ID()));
 				u_EventSend(P);

@@ -230,11 +230,11 @@ void CObjectList::net_Unregister	(CObject* O)
 
 int	g_Dump_Export_Obj = 0;
 
-u32	CObjectList::net_Export			(NET_Packet* _Packet,	u32 start, u32 max_object_size	)
+u32	CObjectList::net_Export			(CNetPacket* _Packet,	u32 start, u32 max_object_size	)
 {
 	if (g_Dump_Export_Obj) Msg("---- net_export --- ");
 
-	NET_Packet& Packet	= *_Packet;
+	CNetPacket& Packet	= *_Packet;
 	u32			position;
 	for (; start<objects_active.size() + objects_sleeping.size(); start++)			{
 		CObject* P = (start<objects_active.size()) ? objects_active[start] : objects_sleeping[start-objects_active.size()];
@@ -269,7 +269,7 @@ u32	CObjectList::net_Export			(NET_Packet* _Packet,	u32 start, u32 max_object_si
 
 int	g_Dump_Import_Obj = 0;
 
-void CObjectList::net_Import		(NET_Packet* Packet)
+void CObjectList::net_Import		(CNetPacket* Packet)
 {
 	if (g_Dump_Import_Obj) Msg("---- net_import --- ");
 

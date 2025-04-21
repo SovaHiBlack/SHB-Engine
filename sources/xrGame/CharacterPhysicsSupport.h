@@ -134,7 +134,7 @@ IC		CIKLimbsController				*ik_controller					()	{return	m_ik_controller;}
 		void 							in_Init							()																													;
 		void 							in_Load							(pcstr section)																									;
 		void 							in_Hit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type, bool is_killing = false);
-		void							in_NetSave						(NET_Packet& P)																										;
+		void							in_NetSave						(CNetPacket& P)																										;
 		void							in_ChangeVisual					();
 		void							on_create_anim_mov_ctrl			();
 		void							on_destroy_anim_mov_ctrl		();

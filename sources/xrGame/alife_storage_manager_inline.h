@@ -8,9 +8,8 @@
 
 #pragma once
 
-IC	CALifeStorageManager::CALifeStorageManager			(xrServer *server, pcstr section) :
-	inherited	(server,section)
+IC CALifeStorageManager::CALifeStorageManager(xrServer* server, pcstr section) : inherited(server, section)
 {
-	m_section				= section;
-	strcpy					(m_save_name,"");
+	m_section = section;
+	strcpy(m_save_name, "");
 }

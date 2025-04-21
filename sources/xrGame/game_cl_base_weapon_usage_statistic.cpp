@@ -20,7 +20,7 @@ BulletData::BulletData(shared_str FName, shared_str WName, SBullet* pBullet)
 	Removed = false;
 };
 
-void			HitData::net_save			(NET_Packet* P)
+void			HitData::net_save			(CNetPacket* P)
 {
 	P->w_vec3(Pos0);
 	P->w_vec3(Pos1);
@@ -29,7 +29,7 @@ void			HitData::net_save			(NET_Packet* P)
 	P->w_s16(BoneID);
 	P->w_u8(Deadly ? 1 : 0);
 };
-void			HitData::net_load			(NET_Packet* P)
+void			HitData::net_load			(CNetPacket* P)
 {
 	P->r_vec3(Pos0);
 	P->r_vec3(Pos1);
@@ -61,7 +61,7 @@ Weapon_Statistic::~Weapon_Statistic()
 	ZeroMemory(m_Basket, sizeof(m_Basket));
 };
 
-void Weapon_Statistic::net_save(NET_Packet* P)
+void Weapon_Statistic::net_save(CNetPacket* P)
 {
 	m_dwRoundsFired_d = m_dwRoundsFired - m_dwRoundsFired_d;
 	P->w_u32(m_dwRoundsFired_d);	m_dwRoundsFired_d = m_dwRoundsFired;
@@ -86,7 +86,7 @@ void Weapon_Statistic::net_save(NET_Packet* P)
 		else i++;
 	}
 };
-void Weapon_Statistic::net_load(NET_Packet* P)
+void Weapon_Statistic::net_load(CNetPacket* P)
 {
 	m_dwRoundsFired += P->r_u32();
 	m_dwBulletsFired += P->r_u32();
@@ -121,7 +121,7 @@ Player_Statistic::~Player_Statistic()
 	aWeaponStats.clear_and_free();
 };
 
-void Player_Statistic::net_save(NET_Packet* P)
+void Player_Statistic::net_save(CNetPacket* P)
 {
 	P->w_u32(m_dwTotalShots_d); m_dwTotalShots_d = 0;
 	P->w_u32(aWeaponStats.size());
@@ -133,7 +133,7 @@ void Player_Statistic::net_save(NET_Packet* P)
 	}
 };
 
-void Player_Statistic::net_load(NET_Packet* P)
+void Player_Statistic::net_load(CNetPacket* P)
 {
 	m_dwTotalShots += P->r_u32();
 	u32 NumWeapons = P->r_u32();
@@ -377,7 +377,7 @@ void WeaponUsageStatistic::OnBullet_Check_Result(bool Result)
 void WeaponUsageStatistic::Send_Check_Respond()
 {
 	if (!OnServer()) return;
-	NET_Packet P;
+	CNetPacket P;
 	string1024 STrue, SFalse;
 	for (u32 i=0; i<m_Requests.size(); i++)
 	{
@@ -434,7 +434,7 @@ void WeaponUsageStatistic::Send_Check_Respond()
 	};
 }
 
-void WeaponUsageStatistic::On_Check_Respond(NET_Packet* P)
+void WeaponUsageStatistic::On_Check_Respond(CNetPacket* P)
 {
 	if (!P) return;
 	u8 NumFalse = P->r_u8();
@@ -590,19 +590,19 @@ void WeaponUsageStatistic::Update()
 		//---------------------------------------------
 		m_dwLastUpdateTime = Level().timeServer();
 		//---------------------------------------------
-		NET_Packet P;
+		CNetPacket P;
 		P.w_begin	(M_STATISTIC_UPDATE);
 		P.w_u32		(Level().timeServer());
 		Level().Send(P);
 	}
 };
 
-void WeaponUsageStatistic::OnUpdateRequest(NET_Packet*)
+void WeaponUsageStatistic::OnUpdateRequest(CNetPacket*)
 {
 	if (aPlayersStatistic.empty()) return;
 	Player_Statistic& PS = aPlayersStatistic.front();
 	//-------------------------------------------------
-	NET_Packet P;
+	CNetPacket P;
 	P.w_begin(M_STATISTIC_UPDATE_RESPOND);
 	//-------------------------------------------------
 	P.w_stringZ(PS.PName);
@@ -611,7 +611,7 @@ void WeaponUsageStatistic::OnUpdateRequest(NET_Packet*)
 	Level().Send(P);
 };
 
-void WeaponUsageStatistic::OnUpdateRespond(NET_Packet* P)
+void WeaponUsageStatistic::OnUpdateRespond(CNetPacket* P)
 {
 	if (!P) return;
 	shared_str PName;

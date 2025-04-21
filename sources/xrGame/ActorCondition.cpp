@@ -286,7 +286,7 @@ bool CActorCondition::IsLimping() const
 }
 extern bool g_bShowHudInfo;
 
-void CActorCondition::save(NET_Packet &output_packet)
+void CActorCondition::save(CNetPacket&output_packet)
 {
 	inherited::save		(output_packet);
 	save_data			(m_fAlcohol, output_packet);

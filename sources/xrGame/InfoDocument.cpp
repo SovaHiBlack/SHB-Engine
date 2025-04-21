@@ -66,7 +66,7 @@ void CInfoDocument::OnH_A_Chield()
 	//создать и отправить пакет о получении новой информации
 	if(m_Info.size())
 	{
-		NET_Packet		P;
+		CNetPacket		P;
 		u_EventGen		(P,GE_INFO_TRANSFER, H_Parent()->ID());
 		P.w_u16			(ID());						//отправитель
 		P.w_stringZ		(m_Info);				//сообщение

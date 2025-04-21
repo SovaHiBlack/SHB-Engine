@@ -28,7 +28,7 @@
 #include "../../../ActorEffector.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 
-void CBaseMonster::feel_sound_new(CObject* who, int eType, CSound_UserDataPtr user_data, const fVector3& Position, f32 power)
+void CBaseMonster::feel_sound_new(CObject* who, s32 eType, CSound_UserDataPtr user_data, const fVector3& Position, f32 power)
 {
 	if (!g_Alive())		return;
 
@@ -92,7 +92,7 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, f32 fDamage, f32 impulse, f
 		CEntity		*pEntityNC	= const_cast<CEntity*>(pEntity);
 		VERIFY		(pEntityNC);
 		
-		NET_Packet	l_P;
+		CNetPacket	l_P;
 		SHit		HS;
 		HS.GenHeader(GE_HIT, pEntityNC->ID());													//		u_EventGen	(l_P,GE_HIT, pEntityNC->ID());
 		HS.whoID			= (ID());															//		l_P.w_u16	(ID());
@@ -126,7 +126,7 @@ void CBaseMonster::HitEntity(const CEntity *pEntity, f32 fDamage, f32 impulse, f
 			
 			f32 time_to_lock		= fDamage * MAX_LOCK_TIME;
 			clamp					(time_to_lock, 0.f, MAX_LOCK_TIME);
-			Actor()->lock_accel_for	(int(time_to_lock * 1000));
+			Actor()->lock_accel_for	(s32(time_to_lock * 1000));
 
 			//////////////////////////////////////////////////////////////////////////
 			//
@@ -272,7 +272,7 @@ void CBaseMonster::SetAttackEffector()
 
 void CBaseMonster::Hit_Psy(CObject *object, f32 value)
 {
-	NET_Packet		P;
+	CNetPacket		P;
 	SHit			HS;
 	HS.GenHeader		(GE_HIT, object->ID());				//					//	u_EventGen		(P,GE_HIT, object->ID());				// 
 	HS.whoID			= (ID());									// own		//	P.w_u16			(ID());									// own
@@ -289,7 +289,7 @@ void CBaseMonster::Hit_Psy(CObject *object, f32 value)
 
 void CBaseMonster::Hit_Wound(CObject *object, f32 value, const fVector3& dir, f32 impulse)
 {
-	NET_Packet	P;
+	CNetPacket	P;
 	SHit		HS;
 	HS.GenHeader(GE_HIT, object->ID());														//	u_EventGen	(P,GE_HIT, object->ID());
 	HS.whoID			= (ID());															//	P.w_u16		(ID());

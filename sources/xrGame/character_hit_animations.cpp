@@ -34,15 +34,19 @@ void character_hit_animation_controller::SetupHitMotions(CKinematicsAnimated &ca
 	for( u16 i = 0; num_anims>i; ++i )
 		block_times[i] = 0;
 }
-ICF int sign(f32 x)
+
+ICF s32 sign(f32 x)
 {
 	return x < 0 ? -1 : 1;
 }
 
 IC void set_blend_params(CBlend *B)
 {
-	if(!B)
+	if (!B)
+	{
 		return;
+	}
+
 	B->blendAmount = 1.0;
 }
 

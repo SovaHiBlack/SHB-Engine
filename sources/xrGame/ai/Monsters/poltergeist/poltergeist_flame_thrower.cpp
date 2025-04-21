@@ -196,7 +196,7 @@ void CPolterFlame::update_schedule()
 							f32		hit_value;
 							hit_value	= m_hit_value - m_hit_value * rq.range / m_length;
 
-							NET_Packet			P;
+							CNetPacket			P;
 							SHit				HS;
 							HS.GenHeader		(GE_HIT, elem->target_object->ID());	//					u_EventGen		(P,GE_HIT, element->target_object->ID());
 							HS.whoID			= (m_object->ID());						//					P.w_u16			(ID());

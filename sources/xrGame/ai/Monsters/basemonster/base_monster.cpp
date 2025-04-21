@@ -207,7 +207,7 @@ f32 CBaseMonster::evaluate(const CItemManager *manager, const CGameObject *objec
 
 //////////////////////////////////////////////////////////////////////////
 
-void CBaseMonster::ChangeTeam(int team, int squad, int group)
+void CBaseMonster::ChangeTeam(s32 team, s32 squad, s32 group)
 {
 	if ((team == g_Team()) && (squad == g_Squad()) && (group == g_Group())) return;
 
@@ -506,7 +506,7 @@ bool CBaseMonster::check_start_conditions(ControlCom::EControlType type)
 	return true;
 }
 
-void CBaseMonster::OnEvent(NET_Packet& P, u16 type)
+void CBaseMonster::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);

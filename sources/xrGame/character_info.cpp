@@ -173,7 +173,7 @@ void CCharacterInfo::load	(IReader& stream)
 	stream.r_stringZ	(m_StartDialog);
 }
 
-void CCharacterInfo::save	(NET_Packet& stream)
+void CCharacterInfo::save	(CNetPacket& stream)
 {
 	stream.w_stringZ	(m_StartDialog);
 }

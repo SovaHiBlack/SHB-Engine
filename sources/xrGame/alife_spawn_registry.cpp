@@ -94,9 +94,9 @@ void CALifeSpawnRegistry::load(pcstr spawn_name)
 
 struct dummy
 {
-	int							count;
+	s32							count;
 	lua_State*					state;
-	int							ref;
+	s32							ref;
 };
 
 void CALifeSpawnRegistry::load(IReader& file_stream, xrGUID* save_guid)

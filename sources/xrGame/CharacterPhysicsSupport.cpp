@@ -321,7 +321,7 @@ void CCharacterPhysicsSupport::in_NetDestroy( )
 	DestroyIKController( );
 }
 
-void	CCharacterPhysicsSupport::in_NetSave(NET_Packet& P)
+void	CCharacterPhysicsSupport::in_NetSave(CNetPacket& P)
 {
 	CPHSkeleton::SaveNetState(P);
 }

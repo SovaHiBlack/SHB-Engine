@@ -26,7 +26,7 @@ class CHudItem;
 class CWeaponAmmo;
 class CWeapon;
 class CPhysicsShellHolder;
-class NET_Packet;
+class CNetPacket;
 class CEatableItem;
 struct SPHNetState;
 struct net_update_IItem;
@@ -73,7 +73,7 @@ public:
 	shared_str					ItemDescription		() { return m_Description; }
 	virtual void				GetBriefInfo		(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count) {};
 	
-	virtual void				OnEvent				(NET_Packet& P, u16 type);
+	virtual void				OnEvent				(CNetPacket& P, u16 type);
 	
 	virtual bool				Useful				() const;									// !!! Переопределить. (см. в Inventory.cpp)
 	virtual bool				Attach				(PIItem pIItem, bool b_send_event) {return false;}
@@ -98,7 +98,7 @@ public:
     virtual void				OnH_B_Independent	(bool just_before_destroy);
 	virtual void				OnH_A_Independent	();
 
-	virtual void				save				(NET_Packet &output_packet);
+	virtual void				save				(CNetPacket&output_packet);
 	virtual void				load				(IReader &input_packet);
 	virtual BOOL				net_SaveRelevant	()								{return TRUE;}
 
@@ -181,8 +181,8 @@ public:
 #endif
 	virtual void				PH_A_CrPr			(); // actions & operations after phisic correction-prediction steps
 
-	virtual void				net_Import			(NET_Packet& P);					// import from server
-	virtual void				net_Export			(NET_Packet& P);					// export to server
+	virtual void				net_Import			(CNetPacket& P);					// import from server
+	virtual void				net_Export			(CNetPacket& P);					// export to server
 
 public:
 	virtual void				activate_physic_shell		();

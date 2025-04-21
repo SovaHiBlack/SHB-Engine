@@ -269,7 +269,7 @@ bool CMovementManager::actual_all				() const
 
 void CMovementManager::teleport					(u32 game_vertex_id)
 {
-	NET_Packet				net_packet;
+	CNetPacket				net_packet;
 	GameGraph::_GRAPH_ID	_game_vertex_id = (GameGraph::_GRAPH_ID)game_vertex_id;
 	u32						_level_vertex_id = ai().game_graph().vertex(_game_vertex_id)->level_vertex_id();
 	fVector3					position = ai().game_graph().vertex(_game_vertex_id)->level_point();

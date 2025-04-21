@@ -196,7 +196,7 @@ CActor::~CActor( )
 #endif // def DEBUG
 
 	//xr_delete(Weapons);
-	for (int i = 0; i < eacMaxCam; ++i)
+	for (s32 i = 0; i < eacMaxCam; ++i)
 	{
 		xr_delete(cameras[i]);
 	}
@@ -333,14 +333,14 @@ void CActor::Load(pcstr section)
 	m_vMissileOffset = pSettings->r_fvector3(section, "missile_throw_offset");
 
 	pcstr hit_snd_sect = pSettings->r_string(section, "hit_sounds");
-	for (int hit_type = 0; hit_type < (int)ALife::eHitTypeMax; ++hit_type)
+	for (s32 hit_type = 0; hit_type < (s32)ALife::eHitTypeMax; ++hit_type)
 	{
 		pcstr hit_name = ALife::g_cafHitType2String((ALife::EHitType)hit_type);
 		pcstr hit_snds = READ_IF_EXISTS(pSettings, r_string, hit_snd_sect, hit_name, "");
-		int cnt = _GetItemCount(hit_snds);
+		s32 cnt = _GetItemCount(hit_snds);
 		string128		tmp;
 		VERIFY(cnt != 0);
-		for (int i = 0; i < cnt; ++i)
+		for (s32 i = 0; i < cnt; ++i)
 		{
 			sndHit[hit_type].push_back(ref_sound( ));
 			sndHit[hit_type].back( ).create(_GetItem(hit_snds, i, tmp), st_Effect, sg_SourceType);
@@ -523,7 +523,7 @@ void CActor::HitMark(f32 P, fVector3 dir, CObject* who, s16 element, fVector3 po
 			CEffectorCam* ce = Cameras( ).GetCamEffector((ECamEffectorType)effFireHit);
 			if (!ce)
 			{
-				int id = -1;
+				s32 id = -1;
 				fVector3 cam_pos;
 				fVector3 cam_dir;
 				fVector3 cam_norm;
@@ -727,7 +727,7 @@ void CActor::g_Physics(fVector3& _accel, f32 jump, f32 dt)
 			{
 				SHit HDS = SHit(character_physics_support( )->movement( )->gcontact_HealthLost, hdir, di->DamageInitiator( ), character_physics_support( )->movement( )->ContactBone( ), di->HitPos( ), 0.0f, di->HitType( ));
 
-				NET_Packet	l_P;
+				CNetPacket	l_P;
 				HDS.GenHeader(GE_HIT, ID( ));
 				HDS.whoID = di->DamageInitiator( )->ID( );
 				HDS.weaponID = di->DamageInitiator( )->ID( );
@@ -1372,7 +1372,7 @@ bool CActor::use_bolts( ) const
 	return CInventoryOwner::use_bolts( );
 }
 
-int		g_iCorpseRemove = 1;
+s32 g_iCorpseRemove = 1;
 
 bool CActor::NeedToDestroyObject( ) const
 {

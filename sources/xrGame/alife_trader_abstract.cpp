@@ -78,7 +78,7 @@ void CSE_ALifeTraderAbstract::vfInitInventory()
 #if 0//def DEBUG
 bool CSE_ALifeTraderAbstract::check_inventory_consistency	()
 {
-	int							volume = 0;
+	s32							volume = 0;
 	f32						mass = 0.0f;
 	xr_vector<ALife::_OBJECT_ID>::const_iterator	I = base()->children.begin();
 	xr_vector<ALife::_OBJECT_ID>::const_iterator	E = base()->children.end();
@@ -156,7 +156,7 @@ void CSE_ALifeDynamicObject::detach(CSE_ALifeInventoryItem *tpALifeInventoryItem
 
 void add_online_impl						(CSE_ALifeDynamicObject *object, const bool &update_registries)
 {
-	NET_Packet					tNetPacket;
+	CNetPacket					tNetPacket;
 	CClientID					clientID;
 	clientID.set				(object->alife().server().GetServerClient() ? object->alife().server().GetServerClient()->ID.value() : 0);
 

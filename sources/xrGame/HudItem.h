@@ -7,7 +7,7 @@
 
 class CSE_Abstract;
 class CPhysicItem;
-class NET_Packet;
+class CNetPacket;
 struct HUD_SOUND;
 class CInventoryItem;
 
@@ -54,7 +54,7 @@ public:
 	virtual void	SwitchState			(u32 S);
 	//прием сообщения с сервера и его обработка
 	virtual void	OnStateSwitch		(u32 S);
-	virtual void	OnEvent				(NET_Packet& P, u16 type);
+	virtual void	OnEvent				(CNetPacket& P, u16 type);
 
 	virtual void	OnH_A_Chield		();
 	virtual void	OnH_B_Chield		();

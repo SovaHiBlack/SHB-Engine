@@ -18,7 +18,7 @@
 #include "script_callback_ex.h"
 #include "game_object_space.h"
 
-void  CInventoryOwner::OnEvent (NET_Packet& P, u16 type)
+void  CInventoryOwner::OnEvent (CNetPacket& P, u16 type)
 {
 	switch (type)
 	{
@@ -128,7 +128,7 @@ void CInventoryOwner::TransferInfo(shared_str info_id, bool add_info) const
 	const CObject* pThisObject = smart_cast<const CObject*>(this); VERIFY(pThisObject);
 
 	//отправляем от нашему PDA пакет информации с номером
-	NET_Packet		P;
+	CNetPacket		P;
 	CGameObject::u_EventGen(P, GE_INFO_TRANSFER, pThisObject->ID());
 	P.w_u16			(pThisObject->ID());					//отправитель
 	P.w_stringZ		(info_id);							//сообщение

@@ -127,7 +127,7 @@ void CLevelChanger::feel_touch_new(CObject* tpObject)
 
 	if (m_bSilentMode)
 	{
-		NET_Packet p;
+		CNetPacket p;
 		p.w_begin(M_CHANGE_LEVEL);
 		p.w(&m_game_vertex_id, sizeof(m_game_vertex_id));
 		p.w(&m_level_vertex_id, sizeof(m_level_vertex_id));

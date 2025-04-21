@@ -21,7 +21,7 @@ public:
 	virtual void Load				(pcstr section);
 	
 
-	void	OnEvent					(NET_Packet& P, u16 type);
+	void	OnEvent					(CNetPacket& P, u16 type);
 
 
 	virtual	void	Hit				(SHit* pHDS);

@@ -28,7 +28,7 @@ CSE_ALifeItemWeapon	*CSE_ALifeAnomalousZone::tpfGetBestWeapon(ALife::EHitType &t
 	return						(m_tpCurrentBestWeapon);
 }
 
-ALife::EMeetActionType CSE_ALifeAnomalousZone::tfGetActionType(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection)
+ALife::EMeetActionType CSE_ALifeAnomalousZone::tfGetActionType(CSE_ALifeSchedulable *tpALifeSchedulable, s32 iGroupIndex, bool bMutualDetection)
 {
 	return						(ALife::eMeetActionTypeAttack);
 }

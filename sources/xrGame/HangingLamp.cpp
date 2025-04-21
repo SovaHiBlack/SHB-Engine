@@ -170,7 +170,7 @@ void	CHangingLamp::CopySpawnInit		()
 	if(!K->LL_GetBoneVisible(light_bone))
 		TurnOff();
 }
-void	CHangingLamp::net_Save			(NET_Packet& P)	
+void	CHangingLamp::net_Save			(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);
@@ -338,12 +338,12 @@ void CHangingLamp::CreateBody(CSE_ALifeObjectHangingLamp	*lamp)
 	ApplySpawnIniToPhysicShell(&lamp->spawn_ini(),m_pPhysicsShell,fixed_bones[0]!='\0');
 }
 
-void CHangingLamp::net_Export(NET_Packet& P)
+void CHangingLamp::net_Export(CNetPacket& P)
 {
 	VERIFY					(Local());
 }
 
-void CHangingLamp::net_Import(NET_Packet& P)
+void CHangingLamp::net_Import(CNetPacket& P)
 {
 	VERIFY					(Remote());
 }

@@ -72,7 +72,7 @@ void SHit::invalidate()
 	aim_bullet				= false;
 }
 
-void SHit::Read_Packet(NET_Packet Packet)
+void SHit::Read_Packet(CNetPacket Packet)
 {
 	u16 type_dummy;
 	Packet.r_begin			(type_dummy);
@@ -82,7 +82,7 @@ void SHit::Read_Packet(NET_Packet Packet)
 
 	Read_Packet_Cont		(Packet);
 }
-void SHit::Read_Packet_Cont(NET_Packet Packet)
+void SHit::Read_Packet_Cont(CNetPacket Packet)
 {
 	Packet.r_u16			(whoID);
 	Packet.r_u16			(weaponID);
@@ -107,7 +107,7 @@ void SHit::Read_Packet_Cont(NET_Packet Packet)
 	}
 }
 
-void SHit::Write_Packet(NET_Packet& Packet)
+void SHit::Write_Packet(CNetPacket& Packet)
 {
 	Packet.w_begin			(M_EVENT);
 	Packet.w_u32			(Time);
@@ -116,7 +116,7 @@ void SHit::Write_Packet(NET_Packet& Packet)
 
 	Write_Packet_Cont		(Packet);
 }
-void SHit::Write_Packet_Cont(NET_Packet& Packet)
+void SHit::Write_Packet_Cont(CNetPacket& Packet)
 {
 	Packet.w_u16			(whoID);
 	Packet.w_u16			(weaponID);

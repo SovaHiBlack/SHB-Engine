@@ -199,7 +199,7 @@ void CZombie::fake_death_stand_up()
 }
 
 #ifdef _DEBUG
-void CZombie::debug_on_key(int key)
+void CZombie::debug_on_key(s32 key)
 {
 	switch (key){
 	case DIK_MINUS:

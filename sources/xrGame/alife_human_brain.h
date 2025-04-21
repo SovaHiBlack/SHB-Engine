@@ -39,8 +39,8 @@ public:
 	virtual								~CALifeHumanBrain	();
 
 public:
-			void						on_state_write		(NET_Packet &packet);
-			void						on_state_read		(NET_Packet &packet);
+			void						on_state_write		(CNetPacket&packet);
+			void						on_state_read		(CNetPacket&packet);
 
 public:
 	IC		object_type					&object				() const;

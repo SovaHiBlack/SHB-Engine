@@ -52,14 +52,14 @@ void CPHElement::set_State(const SPHNetState& state)
 	m_flags.set(flUpdate,TRUE);
 }
 
-void CPHElement	::net_Export(NET_Packet& P)
+void CPHElement	::net_Export(CNetPacket& P)
 {
 	SPHNetState state;
 	get_State(state);
 	state.net_Export(P);
 }
 
-void CPHElement::net_Import(NET_Packet& P)
+void CPHElement::net_Import(CNetPacket& P)
 {
 	SPHNetState state;
 	state.net_Import(P);

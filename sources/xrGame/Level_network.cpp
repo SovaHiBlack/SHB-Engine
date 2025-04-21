@@ -114,7 +114,7 @@ void CLevel::net_Stop		()
 
 void CLevel::ClientSend()
 {
-	NET_Packet				P;
+	CNetPacket				P;
 	u32						start	= 0;
 	//----------- for E3 -----------------------------
 //	if () 
@@ -170,9 +170,9 @@ void CLevel::ClientSend()
 
 }
 
-u32	CLevel::Objects_net_Save	(NET_Packet* _Packet, u32 start, u32 max_object_size)
+u32	CLevel::Objects_net_Save	(CNetPacket* _Packet, u32 start, u32 max_object_size)
 {
-	NET_Packet& Packet	= *_Packet;
+	CNetPacket& Packet	= *_Packet;
 	u32			position;
 	for (; start<Objects.o_count(); start++)	{
 		CObject		*_P = Objects.o_get_by_iterator(start);
@@ -203,7 +203,7 @@ u32	CLevel::Objects_net_Save	(NET_Packet* _Packet, u32 start, u32 max_object_siz
 
 void CLevel::ClientSave	()
 {
-	NET_Packet		P;
+	CNetPacket		P;
 	u32				start	= 0;
 
 	for (;;) {
@@ -221,7 +221,7 @@ void CLevel::ClientSave	()
 extern		f32		phTimefactor;
 extern		BOOL		g_SV_Disable_Auth_Check;
 
-void CLevel::Send		(NET_Packet& P, u32 dwFlags, u32 dwTimeout)
+void CLevel::Send		(CNetPacket& P, u32 dwFlags, u32 dwTimeout)
 {
 	if (IsDemoPlay() && m_bDemoStarted) return;
 	// optimize the case when server located in our memory
@@ -260,7 +260,7 @@ const int ConnectionTimeOut = 60000; //1 min
 
 BOOL			CLevel::Connect2Server				(pcstr options)
 {
-	NET_Packet					P;
+	CNetPacket					P;
 	m_bConnectResultReceived	= false	;
 	m_bConnectResult			= true	;
 	if (!Connect(options))		return	FALSE;
@@ -276,7 +276,7 @@ BOOL			CLevel::Connect2Server				(pcstr options)
 		u32 CurTime = GetTickCount();
 		if (CurTime > EndTime)
 		{
-			NET_Packet	P;
+			CNetPacket	P;
 			P.B.count = 0;
 			P.r_pos = 0;
 
@@ -309,18 +309,18 @@ BOOL			CLevel::Connect2Server				(pcstr options)
 	Send		(P, net_flags(TRUE, TRUE, TRUE, TRUE));
 	//---------------------------------------------------------------------------
 	return TRUE;
-};
+}
 
 void			CLevel::OnBuildVersionChallenge		()
 {
-	NET_Packet P;
+	CNetPacket P;
 	P.w_begin				(M_CL_AUTH);
 	u64 auth = FS.auth_get();
 	P.w_u64					(auth);
 	Send					(P, net_flags(TRUE, TRUE, TRUE, TRUE));
-};
+}
 
-void			CLevel::OnConnectResult				(NET_Packet*	P)
+void			CLevel::OnConnectResult				(CNetPacket*	P)
 {
 	// multiple results can be sent during connection they should be "AND-ed"
 	m_bConnectResultReceived	= true;
@@ -373,7 +373,7 @@ void			CLevel::ClearAllObjects				()
 			if (!pObj->H_Parent()) 
 				continue;
 			//-----------------------------------------------------------
-			NET_Packet					GEN;
+			CNetPacket					GEN;
 			GEN.w_begin					(M_EVENT);
 			//------------------		---------------------------		
 			GEN.w_u32					(Level().timeServer());
@@ -399,7 +399,7 @@ void			CLevel::ClearAllObjects				()
 		CObject* pObj = Level().Objects.o_get_by_iterator(i);
 		R_ASSERT(pObj->H_Parent()==NULL);
 		//-----------------------------------------------------------
-		NET_Packet			GEN;
+		CNetPacket			GEN;
 		GEN.w_begin			(M_EVENT);
 		//---------------------------------------------		
 		GEN.w_u32			(Level().timeServer());
@@ -429,9 +429,9 @@ void				CLevel::OnSessionFull			()
 void				CLevel::OnConnectRejected		()
 {
 	IPureClient::OnConnectRejected();
-};
+}
 
-void				CLevel::net_OnChangeSelfName			(NET_Packet* P)
+void				CLevel::net_OnChangeSelfName			(CNetPacket* P)
 {
 	if (!P) return;
 	string64 NewName			;
