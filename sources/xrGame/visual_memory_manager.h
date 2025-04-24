@@ -135,7 +135,7 @@ public:
 #endif
 
 public:
-			void					save						(NET_Packet &packet) const;
+			void					save						(CNetPacket& packet) const;
 			void					load						(IReader &packet);
 			void					on_requested_spawn			(CObject *object);
 

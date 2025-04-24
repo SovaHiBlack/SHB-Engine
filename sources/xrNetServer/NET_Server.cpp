@@ -98,7 +98,7 @@ void	IPureServer::SendTo_LL(CClientID ID/*DPNID ID*/, void* data, u32 size, u32 
 	FATAL("");
 }
 
-void	IPureServer::SendTo		(CClientID ID/*DPNID ID*/, NET_Packet& P, u32 dwFlags, u32 dwTimeout)
+void	IPureServer::SendTo		(CClientID ID/*DPNID ID*/, CNetPacket& P, u32 dwFlags, u32 dwTimeout)
 {
 	SendTo_LL( ID, P.B.data, P.B.count, dwFlags, dwTimeout );
 }
@@ -120,13 +120,13 @@ void	IPureServer::SendBroadcast_LL(CClientID exclude, void* data, u32 size, u32 
 	csPlayers.Leave	();
 }
 
-void	IPureServer::SendBroadcast(CClientID exclude, NET_Packet& P, u32 dwFlags)
+void	IPureServer::SendBroadcast(CClientID exclude, CNetPacket& P, u32 dwFlags)
 {
 	// Perform broadcasting
 	SendBroadcast_LL( exclude, P.B.data, P.B.count, dwFlags );
 }
 
-u32	IPureServer::OnMessage	(NET_Packet& P, CClientID sender)	// Non-Zero means broadcasting with "flags" as returned
+u32	IPureServer::OnMessage	(CNetPacket& P, CClientID sender)	// Non-Zero means broadcasting with "flags" as returned
 {
 	return 0;
 }

@@ -11,7 +11,7 @@ void xrServer::OnCL_Disconnected	(IClient* CL)
 	csPlayers.Enter			();
 
 	// Game config (all, info includes deleted player now, excludes at the next cl-update)
-	NET_Packet P;
+	CNetPacket P;
 	P.B.count = 0;
 	P.w_clientID(CL->ID);
 	P.w_stringZ(CL->name);

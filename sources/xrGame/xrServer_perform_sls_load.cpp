@@ -5,7 +5,7 @@
 void xrServer::SLS_Load	(IReader& fs)
 {
 	// Generate spawn+update
-	NET_Packet			P;
+	CNetPacket			P;
 	u16					u_id = 0xffff;
 	u32					C;
 	for (IReader *F = fs.open_chunk_iterator(C); F; F = fs.open_chunk_iterator(C,F)) {

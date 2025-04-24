@@ -98,7 +98,7 @@ void CTrade::TransferItem(CInventoryItem* pItem, bool bBuying)
 		swap(O1, O2);
 	}
 
-	NET_Packet				P;
+	CNetPacket				P;
 	O1->u_EventGen(P, GE_TRADE_SELL, O1->ID( ));
 	P.w_u16(pItem->object( ).ID( ));
 	O1->u_EventSend(P);

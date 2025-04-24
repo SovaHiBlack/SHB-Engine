@@ -374,7 +374,7 @@ void CSoundMemoryManager::remove_links	(CObject *object)
 #endif
 }
 
-void CSoundMemoryManager::save	(NET_Packet &packet) const
+void CSoundMemoryManager::save	(CNetPacket& packet) const
 {
 	if (!m_object->g_Alive())
 		return;

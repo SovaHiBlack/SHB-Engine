@@ -8,7 +8,7 @@ INetQueue::INetQueue()
 {
 	unused.reserve	(128);
 	for (int i=0; i<16; i++)
-		unused.push_back	(xr_new<NET_Packet>());
+		unused.push_back	(xr_new<CNetPacket>());
 }
 
 INetQueue::~INetQueue()
@@ -22,21 +22,20 @@ INetQueue::~INetQueue()
 
 static u32 LastTimeCreate = 0;
 
-void INetQueue::CreateCommit(NET_Packet* P)
+void INetQueue::CreateCommit(CNetPacket* P)
 {
 	cs.Enter		();
 	ready.push_back	(P);
 	cs.Leave		();
 }
 
-NET_Packet*		INetQueue::CreateGet()
+CNetPacket*		INetQueue::CreateGet()
 {
-	NET_Packet*	P			= 0;
+	CNetPacket*	P			= 0;
 	cs.Enter		();
-
 	if (unused.empty())	
 	{
-		P					= xr_new<NET_Packet> ();
+		P					= xr_new<CNetPacket> ();
 
 		LastTimeCreate = GetTickCount();
 	} else 
@@ -44,13 +43,14 @@ NET_Packet*		INetQueue::CreateGet()
 		P					= unused.back();
 		unused.pop_back		();
 	}
+
 	cs.Leave		();
 	return	P;
 }
 
-NET_Packet*		INetQueue::Retreive	()
+CNetPacket*		INetQueue::Retreive	()
 {
-	NET_Packet*	P			= 0;
+	CNetPacket*	P			= 0;
 	cs.Enter		();
 	if (!ready.empty())		P = ready.front();
 	//---------------------------------------------	
@@ -110,7 +110,7 @@ void IPureClient::Disconnect()
 void	IPureClient::OnMessage(void* data, u32 size)
 {
 	// One of the messages - decompress it
-	NET_Packet* P = net_Queue.CreateGet();
+	CNetPacket* P = net_Queue.CreateGet();
 
 	P->construct			(data, size);
 	P->timeReceive			= timeServer_Async();
@@ -120,7 +120,7 @@ void	IPureClient::OnMessage(void* data, u32 size)
 	net_Queue.CreateCommit	(P);
 }
 
-void	IPureClient::Send( NET_Packet& packet, u32 dwFlags, u32 dwTimeout )
+void	IPureClient::Send(CNetPacket& packet, u32 dwFlags, u32 dwTimeout )
 {
 	FATAL("");
 }

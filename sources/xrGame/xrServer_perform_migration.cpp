@@ -6,7 +6,7 @@ void xrServer::PerformMigration(CSE_Abstract* E, xrClientData* from, xrClientDat
 {
 	return;
 //	R_ASSERT	(from != to);
-//	NET_Packet	P;
+//	CNetPacket	P;
 //
 //	// Send to current 'client' signal to deactivate 'entity'
 //	{

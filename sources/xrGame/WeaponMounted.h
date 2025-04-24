@@ -70,8 +70,8 @@ public:
 
 	virtual BOOL			net_Spawn			(CSE_Abstract* DC);
 	virtual void			net_Destroy			();
-	virtual void			net_Export			(NET_Packet& P);	// export to server
-	virtual void			net_Import			(NET_Packet& P);	// import from server
+	virtual void			net_Export			(CNetPacket& P);	// export to server
+	virtual void			net_Import			(CNetPacket& P);	// import from server
 
 	virtual void			UpdateCL			();
 	virtual void			shedule_Update		(u32 dt);
@@ -81,10 +81,10 @@ public:
 	virtual	BOOL			UsedAI_Locations	(){return FALSE;}
 
 	// control functions
-	virtual void			OnMouseMove			(int x, int y);
-	virtual void			OnKeyboardPress		(int dik);
-	virtual void			OnKeyboardRelease	(int dik);
-	virtual void			OnKeyboardHold		(int dik);
+	virtual void			OnMouseMove			(s32 x, s32 y);
+	virtual void			OnKeyboardPress		(s32 dik);
+	virtual void			OnKeyboardRelease	(s32 dik);
+	virtual void			OnKeyboardHold		(s32 dik);
 
 	virtual CInventory*		GetInventory		(){return 0;}
 

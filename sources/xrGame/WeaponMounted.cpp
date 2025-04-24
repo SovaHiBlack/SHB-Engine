@@ -120,12 +120,12 @@ void	CWeaponMounted::net_Destroy()
 	xr_delete(m_pPhysicsShell);
 }
 
-void	CWeaponMounted::net_Export(NET_Packet& P)
+void	CWeaponMounted::net_Export(CNetPacket& P)
 {
 	inherited::net_Export(P);
 }
 
-void	CWeaponMounted::net_Import(NET_Packet& P)
+void	CWeaponMounted::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 }

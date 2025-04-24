@@ -47,14 +47,14 @@ void CSE_Visual::set_visual	   	(pcstr name, bool load)
 	visual_name					= tmp; 
 }
 
-void CSE_Visual::visual_read   	(NET_Packet &tNetPacket, u16 version)
+void CSE_Visual::visual_read   	(CNetPacket& tNetPacket, u16 version)
 {
 	tNetPacket.r_stringZ		(visual_name);
 	if (version>103)
 		flags.assign			(tNetPacket.r_u8());
 }
 
-void CSE_Visual::visual_write  	(NET_Packet	&tNetPacket)
+void CSE_Visual::visual_write  	(CNetPacket& tNetPacket)
 {
 	tNetPacket.w_stringZ		(visual_name);
 	tNetPacket.w_u8				(flags.get());
@@ -99,12 +99,12 @@ void CSE_Motion::set_motion		(pcstr name)
 	motion_name					= name;
 }
 
-void CSE_Motion::motion_read	(NET_Packet	&tNetPacket)
+void CSE_Motion::motion_read	(CNetPacket& tNetPacket)
 {
 	tNetPacket.r_stringZ		(motion_name);
 }
 
-void CSE_Motion::motion_write	(NET_Packet	&tNetPacket)
+void CSE_Motion::motion_write	(CNetPacket& tNetPacket)
 {
 	tNetPacket.w_stringZ			(motion_name);
 }

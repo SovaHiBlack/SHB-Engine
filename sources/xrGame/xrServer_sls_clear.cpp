@@ -40,7 +40,7 @@ void xrServer::Perform_destroy	(CSE_Abstract* object, u32 mode)
 #	endif
 #endif
 
-	NET_Packet				P;
+		CNetPacket				P;
 	P.w_begin				(M_EVENT);
 	P.w_u32					(Device.dwTimeGlobal - 2*NET_Latency);
 	P.w_u16					(GE_DESTROY);

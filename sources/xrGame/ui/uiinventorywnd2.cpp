@@ -19,7 +19,7 @@ CUICellItem* CUIInventoryWnd::CurrentItem( )
 
 PIItem CUIInventoryWnd::CurrentIItem( )
 {
-	return	((m_pCurrentCellItem) ? (PIItem) m_pCurrentCellItem->m_pData : NULL);
+	return	((m_pCurrentCellItem) ? (PIItem)m_pCurrentCellItem->m_pData : NULL);
 }
 
 void CUIInventoryWnd::SetCurrentItem(CUICellItem* itm)
@@ -139,7 +139,7 @@ void CUIInventoryWnd::DropCurrentItem(bool b_all)
 		for (u32 i = 0; i < cnt; ++i)
 		{
 			CUICellItem* itm = CurrentItem( )->PopChild( );
-			PIItem			iitm = (PIItem) itm->m_pData;
+			PIItem			iitm = (PIItem)itm->m_pData;
 			SendEvent_Item_Drop(iitm);
 		}
 
@@ -153,7 +153,7 @@ void CUIInventoryWnd::DropCurrentItem(bool b_all)
 bool CUIInventoryWnd::ToSlot(CUICellItem* itm, bool force_place)
 {
 	CUIDragDropListEx* old_owner = itm->OwnerList( );
-	PIItem	iitem = (PIItem) itm->m_pData;
+	PIItem	iitem = (PIItem)itm->m_pData;
 	u32 _slot = iitem->GetSlot( );
 
 	if (GetInventory( )->CanPutInSlot(iitem))
@@ -174,7 +174,7 @@ bool CUIInventoryWnd::ToSlot(CUICellItem* itm, bool force_place)
 		SendEvent_Item2Slot(iitem);
 		SendEvent_ActivateSlot(iitem);
 
-		return								true;
+		return true;
 	}
 	else
 	{	// in case slot is busy
@@ -188,7 +188,7 @@ bool CUIInventoryWnd::ToSlot(CUICellItem* itm, bool force_place)
 		VERIFY(slot_list->ItemsCount( ) == 1);
 
 		CUICellItem* slot_cell = slot_list->GetItemIdx(0);
-		VERIFY(slot_cell && ((PIItem) slot_cell->m_pData) == _iitem);
+		VERIFY(slot_cell && ((PIItem)slot_cell->m_pData) == _iitem);
 
 		bool result = ToBag(slot_cell, false);
 		VERIFY(result);
@@ -199,7 +199,7 @@ bool CUIInventoryWnd::ToSlot(CUICellItem* itm, bool force_place)
 
 bool CUIInventoryWnd::ToBag(CUICellItem* itm, bool b_use_cursor_pos)
 {
-	PIItem	iitem = (PIItem) itm->m_pData;
+	PIItem	iitem = (PIItem)itm->m_pData;
 
 	if (GetInventory( )->CanPutInRuck(iitem))
 	{
@@ -237,7 +237,7 @@ bool CUIInventoryWnd::ToBag(CUICellItem* itm, bool b_use_cursor_pos)
 
 bool CUIInventoryWnd::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
 {
-	PIItem	iitem = (PIItem) itm->m_pData;
+	PIItem	iitem = (PIItem)itm->m_pData;
 	if (GetInventory( )->CanPutInBelt(iitem))
 	{
 		CUIDragDropListEx* old_owner = itm->OwnerList( );
@@ -266,10 +266,10 @@ bool CUIInventoryWnd::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
 		}
 
 		SendEvent_Item2Belt(iitem);
-		return								true;
+		return true;
 	}
 
-	return									false;
+	return false;
 }
 
 void CUIInventoryWnd::AddItemToBag(PIItem pItem)
@@ -286,7 +286,7 @@ bool CUIInventoryWnd::OnItemStartDrag(CUICellItem* itm)
 bool CUIInventoryWnd::OnItemSelected(CUICellItem* itm)
 {
 	SetCurrentItem(itm);
-	return				false;
+	return false;
 }
 
 bool CUIInventoryWnd::OnItemDrop(CUICellItem* itm)
@@ -334,7 +334,7 @@ bool CUIInventoryWnd::OnItemDrop(CUICellItem* itm)
 
 bool CUIInventoryWnd::OnItemDbClick(CUICellItem* itm)
 {
-	if (TryUseItem((PIItem) itm->m_pData))
+	if (TryUseItem((PIItem)itm->m_pData))
 	{
 		return true;
 	}
@@ -374,7 +374,7 @@ bool CUIInventoryWnd::OnItemRButtonClick(CUICellItem* itm)
 {
 	SetCurrentItem(itm);
 	ActivatePropertiesBox( );
-	return						false;
+	return false;
 }
 
 CUIDragDropListEx* CUIInventoryWnd::GetSlotList(u32 slot_idx)

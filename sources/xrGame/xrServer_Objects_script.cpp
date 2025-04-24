@@ -38,39 +38,39 @@ struct CWrapperBase : public T, public luabind::wrap_base {
 		{
 		}
 
-		virtual void STATE_Read(NET_Packet& p1)
+		virtual void STATE_Read(CNetPacket& p1)
 		{
 			call<void>("STATE_Read",&p1);
 		}
-		static  void STATE_Read_static(inherited* ptr, NET_Packet* p1)
+		static void STATE_Read_static(inherited* ptr, CNetPacket* p1)
 		{
 			Log("Attempt to call pure virtual method STATE_Read in CSE_Abstract");
 			//ptr->self_type::inherited::STATE_Read(*p1);
 		}
-		virtual void STATE_Write(NET_Packet& p1)
+		virtual void STATE_Write(CNetPacket& p1)
 		{
 			call<void>("STATE_Write",&p1);
 		}
-		static  void STATE_Write_static(inherited* ptr, NET_Packet* p1)
+		static  void STATE_Write_static(inherited* ptr, CNetPacket* p1)
 		{
 			Log("Attempt to call pure virtual method STATE_Write in CSE_Abstract");
 			//ptr->self_type::inherited::STATE_Write(*p1);
 		}
 
-		virtual void UPDATE_Read(NET_Packet& p1)
+		virtual void UPDATE_Read(CNetPacket& p1)
 		{
 			call<void>("UPDATE_Read",&p1);
 		}
-		static  void UPDATE_Read_static(inherited* ptr, NET_Packet* p1)
+		static  void UPDATE_Read_static(inherited* ptr, CNetPacket* p1)
 		{
 			Log("Attempt to call pure virtual method UPDATE_Read in CSE_Abstract");
 			//ptr->self_type::inherited::UPDATE_Read(*p1);
 		}
-		virtual void UPDATE_Write(NET_Packet& p1)
+		virtual void UPDATE_Write(CNetPacket& p1)
 		{
 			call<void>("UPDATE_Write",&p1);
 		}
-		static  void UPDATE_Write_static(inherited* ptr, NET_Packet* p1)
+		static  void UPDATE_Write_static(inherited* ptr, CNetPacket* p1)
 		{
 			Log("Attempt to call pure virtual method UPDATE_Write in CSE_Abstract");
 			//ptr->self_type::inherited::UPDATE_Write(*p1);
@@ -113,7 +113,7 @@ void CSE_Abstract::script_register(lua_State *L)
 			.def			("STATE_Read",		&BaseType::STATE_Read, &WrapType::STATE_Read_static)
 			.def			("STATE_Write",		&BaseType::STATE_Write, &WrapType::STATE_Write_static)
 			.def			("UPDATE_Read",		&BaseType::UPDATE_Read, &WrapType::UPDATE_Read_static)
-			.def			("UPDATE_Write",		&BaseType::UPDATE_Write, &WrapType::UPDATE_Write_static)
+			.def			("UPDATE_Write",	&BaseType::UPDATE_Write, &WrapType::UPDATE_Write_static)
 //			.def(		constructor<pcstr>())
 	];
 }

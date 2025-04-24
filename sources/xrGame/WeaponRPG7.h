@@ -15,7 +15,7 @@ public:
 
 	virtual BOOL net_Spawn		(CSE_Abstract* DC);
 	virtual void OnStateSwitch	(u32 S);
-	virtual void OnEvent		(NET_Packet& P, u16 type);
+	virtual void OnEvent		(CNetPacket& P, u16 type);
 	virtual void ReloadMagazine	();
 	virtual void Load			(pcstr section);
 	virtual void switch2_Fire	();
@@ -26,7 +26,7 @@ public:
 			void UpdateMissileVisibility	();
 	virtual void UnloadMagazine				(bool spawn_ammo = true);
 
-	virtual void net_Import			( NET_Packet& P);				// import from server
+	virtual void net_Import			(CNetPacket& P);				// import from server
 protected:
 	shared_str	m_sGrenadeBoneName;
 	shared_str	m_sHudGrenadeBoneName;

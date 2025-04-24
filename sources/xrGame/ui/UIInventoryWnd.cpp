@@ -232,7 +232,7 @@ bool CUIInventoryWnd::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 		if (UIPropertiesBox.IsShown( ))
 		{
 			UIPropertiesBox.Hide( );
-			return						true;
+			return true;
 		}
 	}
 
@@ -324,7 +324,7 @@ void CUIInventoryWnd::AttachAddon(PIItem item_to_upgrade)
 	R_ASSERT(item_to_upgrade);
 	if (OnClient( ))
 	{
-		NET_Packet								P;
+		CNetPacket P;
 		item_to_upgrade->object( ).u_EventGen(P, GE_ADDON_ATTACH, item_to_upgrade->object( ).ID( ));
 		P.w_u32(CurrentIItem( )->object( ).ID( ));
 		item_to_upgrade->object( ).u_EventSend(P);
@@ -348,7 +348,7 @@ void CUIInventoryWnd::DetachAddon(pcstr addon_name)
 	PlaySnd(eInvDetachAddon);
 	if (OnClient( ))
 	{
-		NET_Packet								P;
+		CNetPacket P;
 		CurrentIItem( )->object( ).u_EventGen(P, GE_ADDON_DETACH, CurrentIItem( )->object( ).ID( ));
 		P.w_stringZ(addon_name);
 		CurrentIItem( )->object( ).u_EventSend(P);
@@ -367,7 +367,7 @@ void CUIInventoryWnd::DetachAddon(pcstr addon_name)
 
 void CUIInventoryWnd::SendEvent_ActivateSlot(PIItem	pItem)
 {
-	NET_Packet						P;
+	CNetPacket						P;
 	pItem->object( ).u_EventGen(P, GEG_PLAYER_ACTIVATE_SLOT, pItem->object( ).H_Parent( )->ID( ));
 	P.w_u32(pItem->GetSlot( ));
 	pItem->object( ).u_EventSend(P);
@@ -375,7 +375,7 @@ void CUIInventoryWnd::SendEvent_ActivateSlot(PIItem	pItem)
 
 void CUIInventoryWnd::SendEvent_Item2Slot(PIItem	pItem)
 {
-	NET_Packet						P;
+	CNetPacket						P;
 	pItem->object( ).u_EventGen(P, GEG_PLAYER_ITEM2SLOT, pItem->object( ).H_Parent( )->ID( ));
 	P.w_u16(pItem->object( ).ID( ));
 	pItem->object( ).u_EventSend(P);
@@ -384,7 +384,7 @@ void CUIInventoryWnd::SendEvent_Item2Slot(PIItem	pItem)
 
 void CUIInventoryWnd::SendEvent_Item2Belt(PIItem	pItem)
 {
-	NET_Packet						P;
+	CNetPacket						P;
 	pItem->object( ).u_EventGen(P, GEG_PLAYER_ITEM2BELT, pItem->object( ).H_Parent( )->ID( ));
 	P.w_u16(pItem->object( ).ID( ));
 	pItem->object( ).u_EventSend(P);
@@ -393,7 +393,7 @@ void CUIInventoryWnd::SendEvent_Item2Belt(PIItem	pItem)
 
 void CUIInventoryWnd::SendEvent_Item2Ruck(PIItem	pItem)
 {
-	NET_Packet						P;
+	CNetPacket						P;
 	pItem->object( ).u_EventGen(P, GEG_PLAYER_ITEM2RUCK, pItem->object( ).H_Parent( )->ID( ));
 	P.w_u16(pItem->object( ).ID( ));
 	pItem->object( ).u_EventSend(P);
@@ -407,7 +407,7 @@ void CUIInventoryWnd::SendEvent_Item_Drop(PIItem	pItem)
 
 	if (OnClient( ))
 	{
-		NET_Packet					P;
+		CNetPacket					P;
 		pItem->object( ).u_EventGen(P, GE_OWNERSHIP_REJECT, pItem->object( ).H_Parent( )->ID( ));
 		P.w_u16(pItem->object( ).ID( ));
 		pItem->object( ).u_EventSend(P);
@@ -419,7 +419,7 @@ void CUIInventoryWnd::SendEvent_Item_Drop(PIItem	pItem)
 void CUIInventoryWnd::SendEvent_Item_Eat(PIItem	pItem)
 {
 	R_ASSERT(pItem->m_pCurrentInventory == m_pInv);
-	NET_Packet						P;
+	CNetPacket						P;
 	pItem->object( ).u_EventGen(P, GEG_PLAYER_ITEM_EAT, pItem->object( ).H_Parent( )->ID( ));
 	P.w_u16(pItem->object( ).ID( ));
 	pItem->object( ).u_EventSend(P);

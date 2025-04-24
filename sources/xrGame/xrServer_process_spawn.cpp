@@ -7,7 +7,7 @@
 #	include "xrserver_objects_alife_items.h"
 #endif
 
-CSE_Abstract* xrServer::Process_spawn(NET_Packet& P, CClientID sender, BOOL bSpawnWithClientsMainEntityAsParent, CSE_Abstract* tpExistedEntity)
+CSE_Abstract* xrServer::Process_spawn(CNetPacket& P, CClientID sender, BOOL bSpawnWithClientsMainEntityAsParent, CSE_Abstract* tpExistedEntity)
 {
 	// create server entity
 	xrClientData* CL	= ID_to_client	(sender);
@@ -124,7 +124,7 @@ CSE_Abstract* xrServer::Process_spawn(NET_Packet& P, CClientID sender, BOOL bSpa
 	}
 
 	// create packet and broadcast packet to everybody
-	NET_Packet				Packet;
+	CNetPacket				Packet;
 	if (CL) 
 	{
 		// For local ONLY

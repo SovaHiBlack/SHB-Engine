@@ -22,11 +22,11 @@ CUIOutfitDragDropList::~CUIOutfitDragDropList( )
 
 void CUIOutfitDragDropList::SetOutfit(CUICellItem* itm)
 {
-	m_background->Init(0, 0, GetWidth( ), GetHeight( ));
+	m_background->Init(0.0f, 0.0f, GetWidth( ), GetHeight( ));
 	m_background->SetStretchTexture(true);
 	if (itm)
 	{
-		PIItem _iitem = (PIItem) itm->m_pData;
+		PIItem _iitem = (PIItem)itm->m_pData;
 		CCustomOutfit* pOutfit = smart_cast<CCustomOutfit*>(_iitem); VERIFY(pOutfit);
 		m_background->InitTexture(pOutfit->GetFullIconName( ).c_str( ));
 	}
@@ -79,7 +79,7 @@ CUICellItem* CUIOutfitDragDropList::RemoveItem(CUICellItem* itm, bool force_root
 	VERIFY(!force_root);
 	CUICellItem* ci = inherited::RemoveItem(itm, force_root);
 	SetOutfit(NULL);
-	return								ci;
+	return ci;
 }
 
 void CUIOutfitDragDropList::Draw( )

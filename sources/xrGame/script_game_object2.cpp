@@ -142,7 +142,7 @@ void CScriptGameObject::play_cycle(pcstr anim)
 void CScriptGameObject::Hit(CScriptHit *tpLuaHit)
 {
 	CScriptHit		&tLuaHit = *tpLuaHit;
-	NET_Packet		P;
+	CNetPacket		P;
 	SHit			HS;
 	HS.GenHeader(GE_HIT,object().ID());										//	object().u_EventGen(P,GE_HIT,object().ID());
 	THROW2			(tLuaHit.m_tpDraftsman,"Where is hit initiator??!");	//	THROW2			(tLuaHit.m_tpDraftsman,"Where is hit initiator??!");

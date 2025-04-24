@@ -497,7 +497,7 @@ BOOL CWeapon::IsUpdating()
 	return bIsActiveItem || bWorking || m_bPending || getVisible();
 }
 
-void CWeapon::net_Export(NET_Packet& P)
+void CWeapon::net_Export(CNetPacket& P)
 {
 	inherited::net_Export	(P);
 
@@ -512,7 +512,7 @@ void CWeapon::net_Export(NET_Packet& P)
 	P.w_u8					((u8)m_bZoomMode);
 }
 
-void CWeapon::net_Import(NET_Packet& P)
+void CWeapon::net_Import(CNetPacket& P)
 {
 	inherited::net_Import (P);
 
@@ -569,7 +569,7 @@ void CWeapon::net_Import(NET_Packet& P)
 	VERIFY((u32)iAmmoElapsed == m_magazine.size());
 }
 
-void CWeapon::save(NET_Packet &output_packet)
+void CWeapon::save(CNetPacket& output_packet)
 {
 	inherited::save	(output_packet);
 	save_data		(iAmmoElapsed,		output_packet);
@@ -592,7 +592,7 @@ void CWeapon::load(IReader &input_packet)
 }
 
 
-void CWeapon::OnEvent(NET_Packet& P, u16 type) 
+void CWeapon::OnEvent(CNetPacket& P, u16 type)
 {
 	switch (type)
 	{
@@ -884,16 +884,21 @@ void CWeapon::SpawnAmmo(u32 boxCurr, pcstr ammoSect, u32 ParentID)
 		while(boxCurr) 
 		{
 			l_pA->a_elapsed			= (u16)(boxCurr > l_pA->m_boxSize ? l_pA->m_boxSize : boxCurr);
-			NET_Packet				P;
+			CNetPacket				P;
 			D->Spawn_Write			(P, TRUE);
 			Level().Send			(P,net_flags(TRUE));
 
-			if(boxCurr > l_pA->m_boxSize) 
-				boxCurr				-= l_pA->m_boxSize;
-			else 
-				boxCurr				= 0;
+			if (boxCurr > l_pA->m_boxSize)
+			{
+				boxCurr -= l_pA->m_boxSize;
+			}
+			else
+			{
+				boxCurr = 0;
+			}
 		}
-	};
+	}
+
 	F_entity_Destroy				(D);
 }
 
@@ -1216,7 +1221,7 @@ void CWeapon::SwitchState(u32 S)
 		&& m_pCurrentInventory && OnServer())	
 	{
 		// !!! Just single entry for given state !!!
-		NET_Packet		P;
+		CNetPacket		P;
 		CHudItem::object().u_EventGen		(P,GE_WPN_STATE_CHANGE,CHudItem::object().ID());
 		P.w_u8			(u8(S));
 		P.w_u8			(u8(m_sub_state));

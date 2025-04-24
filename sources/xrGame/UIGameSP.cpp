@@ -261,7 +261,7 @@ void CChangeLevelWnd::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 void CChangeLevelWnd::OnOk( )
 {
 	Game( ).StartStopMenu(this, true);
-	NET_Packet								p;
+	CNetPacket p;
 	p.w_begin(M_CHANGE_LEVEL);
 	p.w(&m_game_vertex_id, sizeof(m_game_vertex_id));
 	p.w(&m_level_vertex_id, sizeof(m_level_vertex_id));

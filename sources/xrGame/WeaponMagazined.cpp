@@ -1123,7 +1123,7 @@ f32	CWeaponMagazined::GetWeaponDeterioration	()
 	return m_iShotNum*conditionDecreasePerShot;
 }
 
-void CWeaponMagazined::save(NET_Packet &output_packet)
+void CWeaponMagazined::save(CNetPacket& output_packet)
 {
 	inherited::save	(output_packet);
 	save_data		(m_iQueueSize, output_packet);
@@ -1139,14 +1139,14 @@ void CWeaponMagazined::load(IReader &input_packet)
 	load_data		(m_iCurFireMode, input_packet);
 }
 
-void CWeaponMagazined::net_Export	(NET_Packet& P)
+void CWeaponMagazined::net_Export	(CNetPacket& P)
 {
 	inherited::net_Export (P);
 
 	P.w_u8(u8(m_iCurFireMode&0x00ff));
 }
 
-void CWeaponMagazined::net_Import	(NET_Packet& P)
+void CWeaponMagazined::net_Import	(CNetPacket& P)
 {
 	//	if (Level().IsDemoPlay())
 	//		Msg("CWeapon::net_Import [%d]", ID());

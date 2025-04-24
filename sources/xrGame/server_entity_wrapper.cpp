@@ -21,7 +21,7 @@ CServerEntityWrapper::~CServerEntityWrapper	()
 
 void CServerEntityWrapper::save				(IWriter &stream)
 {
-	NET_Packet				net_packet;
+	CNetPacket				net_packet;
 
 	// Spawn
 	stream.open_chunk		(0);
@@ -50,7 +50,7 @@ void CServerEntityWrapper::save				(IWriter &stream)
 
 void CServerEntityWrapper::load				(IReader &stream)
 {
-	NET_Packet				net_packet;
+	CNetPacket				net_packet;
 	u16						ID;
 	IReader					*chunk;
 	
@@ -86,7 +86,7 @@ void CServerEntityWrapper::load				(IReader &stream)
 
 void CServerEntityWrapper::save_update		(IWriter &stream)
 {
-//	NET_Packet				net_packet;
+//	CNetPacket				net_packet;
 //	net_packet.w_begin		(M_UPDATE);
 //	m_object->save_update	(net_packet);
 //	stream.w_u16			(u16(net_packet.B.count));
@@ -95,7 +95,7 @@ void CServerEntityWrapper::save_update		(IWriter &stream)
 
 void CServerEntityWrapper::load_update		(IReader &stream)
 {
-//	NET_Packet				net_packet;
+//	CNetPacket				net_packet;
 //	u16						ID;
 //
 //	net_packet.B.count		= stream.r_u16();

@@ -56,10 +56,10 @@ void CPureServerObject::save(IWriter& tMemoryStream)
 void CPureServerObject::load(IReader& tFileStream)
 { }
 
-void CPureServerObject::load(NET_Packet& tNetPacket)
+void CPureServerObject::load(CNetPacket& tNetPacket)
 { }
 
-void CPureServerObject::save(NET_Packet& tNetPacket)
+void CPureServerObject::save(CNetPacket& tNetPacket)
 { }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -158,7 +158,7 @@ CIniFile& CSE_Abstract::spawn_ini( )
 	return						(*m_ini_file);
 }
 
-void CSE_Abstract::Spawn_Write(NET_Packet& tNetPacket, BOOL bLocal)
+void CSE_Abstract::Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal)
 {
 	// generic
 	tNetPacket.w_begin(M_SPAWN);
@@ -206,7 +206,7 @@ void CSE_Abstract::Spawn_Write(NET_Packet& tNetPacket, BOOL bLocal)
 	tNetPacket.w_seek(position, &size, sizeof(u16));
 }
 
-BOOL CSE_Abstract::Spawn_Read(NET_Packet& tNetPacket)
+BOOL CSE_Abstract::Spawn_Read(CNetPacket& tNetPacket)
 {
 	u16							dummy16;
 	// generic
@@ -293,7 +293,7 @@ BOOL CSE_Abstract::Spawn_Read(NET_Packet& tNetPacket)
 	return						TRUE;
 }
 
-void	CSE_Abstract::load(NET_Packet& tNetPacket)
+void	CSE_Abstract::load(CNetPacket& tNetPacket)
 {
 	CPureServerObject::load(tNetPacket);
 	u16 client_data_size = (m_wVersion > 93) ? tNetPacket.r_u16( ) : tNetPacket.r_u8( ); //не может быть больше 256 байт

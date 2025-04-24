@@ -18,7 +18,7 @@
 #endif // XRGAME_EXPORTS
 #include "ShapeData.h"
 
-class NET_Packet;
+class CNetPacket;
 class CDUInterface;
 
 #ifndef XRGAME_EXPORTS
@@ -50,8 +50,8 @@ public:
 									CSE_Visual		(pcstr name=0);
 	virtual							~CSE_Visual		();
 
-	void							visual_read		(NET_Packet& P, u16 version);
-	void							visual_write	(NET_Packet& P);
+	void							visual_read		(CNetPacket& P, u16 version);
+	void							visual_write	(CNetPacket& P);
 
     void							set_visual		(pcstr name, bool load=true);
 	pcstr							get_visual		() const {return *visual_name;};
@@ -70,8 +70,8 @@ public:
 									CSE_Motion 		(pcstr name=0);
 	virtual							~CSE_Motion		();
 
-	void							motion_read		(NET_Packet& P);
-	void							motion_write	(NET_Packet& P);
+	void							motion_read		(CNetPacket& P);
+	void							motion_write	(CNetPacket& P);
 
     void							set_motion		(pcstr name);
 	pcstr							get_motion		() const {return *motion_name;};
@@ -99,8 +99,8 @@ public:
 	IC	void						set_editor_flag	(u32 mask)	{m_editor_flags.set	(mask,TRUE);}
 
 public:
-	virtual void		__stdcall	Spawn_Write		(NET_Packet &tNetPacket, BOOL bLocal) = 0;
-	virtual BOOL		__stdcall	Spawn_Read		(NET_Packet &tNetPacket) = 0;
+	virtual void		__stdcall	Spawn_Write		(CNetPacket& tNetPacket, BOOL bLocal) = 0;
+	virtual BOOL		__stdcall	Spawn_Read		(CNetPacket& tNetPacket) = 0;
 	virtual void		__stdcall	FillProp		(pcstr pref, PropItemVec &items) = 0;
 	virtual pcstr		__stdcall	name			() const = 0;
 	virtual void		__stdcall	set_name		(pcstr) = 0;

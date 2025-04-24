@@ -7,16 +7,17 @@ struct ip_address;
 class XRNETSERVER_API INetQueue
 {
 	xrCriticalSection		cs;
-	xr_deque<NET_Packet*>	ready;
-	xr_vector<NET_Packet*>	unused;
+	xr_deque<CNetPacket*>	ready;
+	xr_vector<CNetPacket*>	unused;
+
 public:
 	INetQueue();
 	~INetQueue();
 
-	NET_Packet*			CreateGet	();
-	void				CreateCommit(NET_Packet*);
+	CNetPacket*			CreateGet	();
+	void				CreateCommit(CNetPacket*);
 
-	NET_Packet*			Retreive();
+	CNetPacket*			Retreive();
 	void				Release	();
 };
 
@@ -49,12 +50,12 @@ public:
 	pcstr					net_SessionName			()	{ return nullptr; }
 
 	// receive
-	IC virtual	NET_Packet*	net_msg_Retreive		()	{ return net_Queue.Retreive();	}
+	IC virtual	CNetPacket*	net_msg_Retreive		()	{ return net_Queue.Retreive();	}
 	IC void					net_msg_Release			()	{ net_Queue.Release();			}
 
 	// send
-	virtual	void			Send					(NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
-	virtual void			OnMessage				(void* data, u32 size);
+	virtual	void			Send					(CNetPacket& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
+	virtual void			OnMessage				(pvoid data, u32 size);
 	virtual void			OnConnectRejected		()	{};
 
 	// time management

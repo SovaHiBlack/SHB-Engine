@@ -438,7 +438,7 @@ void CStalkerCombatPlanner::add_actions			()
 	add_operator			(eWorldOperatorCriticallyWounded,		action);
 }
 
-void CStalkerCombatPlanner::save(NET_Packet &packet)
+void CStalkerCombatPlanner::save(CNetPacket& packet)
 {
 	inherited::save			(packet);
 }

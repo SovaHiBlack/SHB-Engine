@@ -20,10 +20,10 @@
 
 #define	SERVER_ENTITY_DECLARE_END \
 public:\
-	virtual void 			UPDATE_Read		(NET_Packet& P); \
-	virtual void 			UPDATE_Write	(NET_Packet& P); \
-	virtual void 			STATE_Read		(NET_Packet& P, u16 size); \
-	virtual void 			STATE_Write		(NET_Packet& P); \
+	virtual void 			UPDATE_Read		(CNetPacket& P); \
+	virtual void 			UPDATE_Write	(CNetPacket& P); \
+	virtual void 			STATE_Read		(CNetPacket& P, u16 size); \
+	virtual void 			STATE_Write		(CNetPacket& P); \
 	SERVER_ENTITY_EDITOR_METHODS \
 };
 

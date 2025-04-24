@@ -11,7 +11,7 @@ class CUIMainIngameWnd;
 class CUIMessagesWindow;
 struct SDrawStaticStruct;
 
-class CUI			: public CDialogHolder
+class CUI : public CDialogHolder
 {
 	CUIGameCustom*			pUIGame;
 	bool					m_bShowGameIndicators;
@@ -20,6 +20,7 @@ public:
 	CHUDManager*			m_Parent;
 	CUIMainIngameWnd*		UIMainIngameWnd;
 	CUIMessagesWindow*		m_pMessagesWnd;
+
 public:
 							CUI						(CHUDManager* p);
 	virtual					~CUI					();
@@ -41,7 +42,7 @@ public:
 
 	void					ShowGameIndicators		();
 	void					HideGameIndicators		();
-	bool					GameIndicatorsShown		()					{return m_bShowGameIndicators;};
+	bool					GameIndicatorsShown		()					{return m_bShowGameIndicators;}
 
 	void					ShowCrosshair			();
 	void					HideCrosshair			();
@@ -50,4 +51,3 @@ public:
 	SDrawStaticStruct*		AddInfoMessage			(pcstr message);
 	void					OnConnected				();
 };
-

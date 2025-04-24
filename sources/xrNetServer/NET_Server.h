@@ -89,6 +89,7 @@ public:
 		ErrMax,
 		ErrNoError = ErrMax,
 	};
+
 protected:
 	shared_str				connect_options;
 
@@ -112,9 +113,9 @@ public:
 	// send
 	virtual void			SendTo_LL			(CClientID ID, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
 
-	void					SendTo				(CClientID ID, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
-	void					SendBroadcast_LL	(CClientID exclude, void* data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED);
-	void					SendBroadcast		(CClientID exclude, NET_Packet& P, u32 dwFlags=DPNSEND_GUARANTEED);
+	void					SendTo				(CClientID ID, CNetPacket& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
+	void					SendBroadcast_LL	(CClientID exclude, pvoid data, u32 size, u32 dwFlags=DPNSEND_GUARANTEED);
+	void					SendBroadcast		(CClientID exclude, CNetPacket& P, u32 dwFlags=DPNSEND_GUARANTEED);
 
 	// extended functionality
 	virtual u32				OnMessage			(CNetPacket& P, CClientID sender);	// Non-Zero means broadcasting with "flags" as returned

@@ -20,7 +20,7 @@ xr_string xrServer::ent_name_safe(u16 eid)
 	return buff;
 }
 
-void xrServer::Process_event_destroy	(NET_Packet& P, CClientID sender, u32 time, u16 ID, NET_Packet* pEPack)
+void xrServer::Process_event_destroy	(CNetPacket& P, CClientID sender, u32 time, u16 ID, CNetPacket* pEPack)
 {
 	u32								MODE = net_flags(TRUE,TRUE);
 	// Parse message
@@ -35,7 +35,7 @@ void xrServer::Process_event_destroy	(NET_Packet& P, CClientID sender, u32 time,
 	{
 		Msg							("!SV:ge_destroy: [%d] not found on server",id_dest);
 		return;
-	};
+	}
 
 	R_ASSERT						(e_dest);
 	xrClientData					*c_dest = e_dest->owner;				// клиент, чей юнит
@@ -46,7 +46,8 @@ void xrServer::Process_event_destroy	(NET_Packet& P, CClientID sender, u32 time,
 	u16								parent_id = e_dest->ID_Parent;
 
 	//---------------------------------------------
-	NET_Packet	P2, *pEventPack = pEPack;
+	CNetPacket	P2;
+	CNetPacket* pEventPack = pEPack;
 	P2.w_begin	(M_EVENT_PACK);
 	//---------------------------------------------
 	// check if we have children 
@@ -63,7 +64,7 @@ void xrServer::Process_event_destroy	(NET_Packet& P, CClientID sender, u32 time,
 	}
 	else 
 	{
-		NET_Packet	tmpP;
+		CNetPacket	tmpP;
 		if (0xffff != parent_id && Process_event_reject(P,sender,time,parent_id,ID,false)) 
 		{
 			game->u_EventGen(tmpP, GE_OWNERSHIP_REJECT, parent_id);
@@ -74,13 +75,13 @@ void xrServer::Process_event_destroy	(NET_Packet& P, CClientID sender, u32 time,
 			
 			pEventPack->w_u8(u8(tmpP.B.count));
 			pEventPack->w(&tmpP.B.data, tmpP.B.count);
-		};
+		}
 		
  		game->u_EventGen(tmpP, GE_DESTROY, id_dest);
 		
 		pEventPack->w_u8(u8(tmpP.B.count));
 		pEventPack->w(&tmpP.B.data, tmpP.B.count);
-	};
+	}
 
 	if (NULL == pEPack && NULL != pEventPack)
 	{

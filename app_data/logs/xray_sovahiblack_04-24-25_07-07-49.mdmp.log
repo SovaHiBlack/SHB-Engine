@@ -32231,3 +32231,4 @@ stack trace:
 9600023:7723CEBB ntdll.dll, RtlInitializeExceptionChain()
 9600023:7723CE41 ntdll.dll, RtlGetAppContainerNamedObjectPath()
 registering file d:\shb-engine\debug-win32\..\app_data\logs\xray_sovahiblack.log - 3745830
+registering file d:\shb-engine\debug-win32\..\app_data\logs\xray_sovahiblack.log - 3745922

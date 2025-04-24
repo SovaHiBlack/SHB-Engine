@@ -14,7 +14,7 @@ public:
 	virtual			~CWeaponRG6				();
 	virtual BOOL	net_Spawn				(CSE_Abstract* DC);
 	virtual void	Load					(pcstr section);
-	virtual void	OnEvent					(NET_Packet& P, u16 type);
+	virtual void	OnEvent					(CNetPacket& P, u16 type);
 protected:
 	virtual void	FireStart				();
 	virtual u8		AddCartridge			(u8 cnt);

@@ -312,7 +312,7 @@ void CScriptGameObject::TransferItem(CScriptGameObject* pItem, CScriptGameObject
 	}
 
 	// выбросить у себя 
-	NET_Packet						P;
+	CNetPacket						P;
 	CGameObject::u_EventGen			(P,GE_OWNERSHIP_REJECT, object().ID());
 	P.w_u16							(pIItem->object().ID());
 	CGameObject::u_EventSend		(P);

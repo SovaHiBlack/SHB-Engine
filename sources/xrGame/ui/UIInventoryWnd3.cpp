@@ -48,7 +48,7 @@ void CUIInventoryWnd::ActivatePropertiesBox( )
 	CGrenadeLauncher* pGrenadeLauncher = smart_cast<CGrenadeLauncher*>	(CurrentIItem( ));
 	CBottleItem* pBottleItem = smart_cast<CBottleItem*>		(CurrentIItem( ));
 
-	bool	b_show = false;
+	bool b_show = false;
 
 	if (!pOutfit && CurrentIItem( )->GetSlot( ) != NO_ACTIVE_SLOT && !m_pInv->m_slots[CurrentIItem( )->GetSlot( )].m_bPersistent && m_pInv->CanPutInSlot(CurrentIItem( )))
 	{
@@ -113,7 +113,7 @@ void CUIInventoryWnd::ActivatePropertiesBox( )
 				CUICellItem* itm = CurrentItem( );
 				for (u32 i = 0; i < itm->ChildsCount( ); ++i)
 				{
-					pWeapon = smart_cast<CWeaponMagazined*>((CWeapon*) itm->Child(i)->m_pData);
+					pWeapon = smart_cast<CWeaponMagazined*>((CWeapon*)itm->Child(i)->m_pData);
 					if (pWeapon->GetAmmoElapsed( ))
 					{
 						b = true;
@@ -136,14 +136,14 @@ void CUIInventoryWnd::ActivatePropertiesBox( )
 		if (m_pInv->m_slots[PISTOL_SLOT].m_pIItem != NULL && m_pInv->m_slots[PISTOL_SLOT].m_pIItem->CanAttach(pScope))
 		{
 			PIItem tgt = m_pInv->m_slots[PISTOL_SLOT].m_pIItem;
-			UIPropertiesBox.AddItem("st_attach_scope_to_pistol", (pvoid) tgt, INVENTORY_ATTACH_ADDON);
+			UIPropertiesBox.AddItem("st_attach_scope_to_pistol", (pvoid)tgt, INVENTORY_ATTACH_ADDON);
 			b_show = true;
 		}
 
 		if (m_pInv->m_slots[RIFLE_SLOT].m_pIItem != NULL && m_pInv->m_slots[RIFLE_SLOT].m_pIItem->CanAttach(pScope))
 		{
 			PIItem tgt = m_pInv->m_slots[RIFLE_SLOT].m_pIItem;
-			UIPropertiesBox.AddItem("st_attach_scope_to_rifle", (pvoid) tgt, INVENTORY_ATTACH_ADDON);
+			UIPropertiesBox.AddItem("st_attach_scope_to_rifle", (pvoid)tgt, INVENTORY_ATTACH_ADDON);
 			b_show = true;
 		}
 	}
@@ -152,14 +152,14 @@ void CUIInventoryWnd::ActivatePropertiesBox( )
 		if (m_pInv->m_slots[PISTOL_SLOT].m_pIItem != NULL && m_pInv->m_slots[PISTOL_SLOT].m_pIItem->CanAttach(pSilencer))
 		{
 			PIItem tgt = m_pInv->m_slots[PISTOL_SLOT].m_pIItem;
-			UIPropertiesBox.AddItem("st_attach_silencer_to_pistol", (pvoid) tgt, INVENTORY_ATTACH_ADDON);
+			UIPropertiesBox.AddItem("st_attach_silencer_to_pistol", (pvoid)tgt, INVENTORY_ATTACH_ADDON);
 			b_show = true;
 		}
 
 		if (m_pInv->m_slots[RIFLE_SLOT].m_pIItem != NULL && m_pInv->m_slots[RIFLE_SLOT].m_pIItem->CanAttach(pSilencer))
 		{
 			PIItem tgt = m_pInv->m_slots[RIFLE_SLOT].m_pIItem;
-			UIPropertiesBox.AddItem("st_attach_silencer_to_rifle", (pvoid) tgt, INVENTORY_ATTACH_ADDON);
+			UIPropertiesBox.AddItem("st_attach_silencer_to_rifle", (pvoid)tgt, INVENTORY_ATTACH_ADDON);
 			b_show = true;
 		}
 	}
@@ -168,7 +168,7 @@ void CUIInventoryWnd::ActivatePropertiesBox( )
 		if (m_pInv->m_slots[RIFLE_SLOT].m_pIItem != NULL && m_pInv->m_slots[RIFLE_SLOT].m_pIItem->CanAttach(pGrenadeLauncher))
 		{
 			PIItem tgt = m_pInv->m_slots[RIFLE_SLOT].m_pIItem;
-			UIPropertiesBox.AddItem("st_attach_gl_to_rifle", (pvoid) tgt, INVENTORY_ATTACH_ADDON);
+			UIPropertiesBox.AddItem("st_attach_gl_to_rifle", (pvoid)tgt, INVENTORY_ATTACH_ADDON);
 			b_show = true;
 		}
 	}
@@ -206,7 +206,7 @@ void CUIInventoryWnd::ActivatePropertiesBox( )
 
 		if (CurrentItem( )->ChildsCount( ))
 		{
-			UIPropertiesBox.AddItem("st_drop_all", (pvoid) 33, INVENTORY_DROP_ACTION);
+			UIPropertiesBox.AddItem("st_drop_all", (pvoid)33, INVENTORY_DROP_ACTION);
 		}
 	}
 
@@ -249,7 +249,7 @@ void CUIInventoryWnd::ProcessPropertiesBoxClicked( )
 			case INVENTORY_DROP_ACTION:
 			{
 				pvoid d = UIPropertiesBox.GetClickedItem( )->GetData( );
-				bool b_all = (d == (pvoid) 33);
+				bool b_all = (d == (pvoid)33);
 
 				DropCurrentItem(b_all);
 			}
@@ -261,7 +261,7 @@ void CUIInventoryWnd::ProcessPropertiesBoxClicked( )
 			break;
 			case INVENTORY_ATTACH_ADDON:
 			{
-				AttachAddon((PIItem) (UIPropertiesBox.GetClickedItem( )->GetData( )));
+				AttachAddon((PIItem)(UIPropertiesBox.GetClickedItem( )->GetData( )));
 			}
 			break;
 			case INVENTORY_DETACH_SCOPE_ADDON:
@@ -287,11 +287,11 @@ void CUIInventoryWnd::ProcessPropertiesBoxClicked( )
 			case INVENTORY_UNLOAD_MAGAZINE:
 			{
 				CUICellItem* itm = CurrentItem( );
-				(smart_cast<CWeaponMagazined*>((CWeapon*) itm->m_pData))->UnloadMagazine( );
+				(smart_cast<CWeaponMagazined*>((CWeapon*)itm->m_pData))->UnloadMagazine( );
 				for (u32 i = 0; i < itm->ChildsCount( ); ++i)
 				{
 					CUICellItem* child_itm = itm->Child(i);
-					(smart_cast<CWeaponMagazined*>((CWeapon*) child_itm->m_pData))->UnloadMagazine( );
+					(smart_cast<CWeaponMagazined*>((CWeapon*)child_itm->m_pData))->UnloadMagazine( );
 				}
 			}
 			break;
@@ -323,7 +323,7 @@ bool CUIInventoryWnd::DropItem(PIItem itm, CUIDragDropListEx* lst)
 	}
 
 	CUICellItem* _citem = lst->ItemsCount( ) ? lst->GetItemIdx(0) : NULL;
-	PIItem _iitem = _citem ? (PIItem) _citem->m_pData : NULL;
+	PIItem _iitem = _citem ? (PIItem)_citem->m_pData : NULL;
 
 	if (!_iitem)
 	{
@@ -337,5 +337,5 @@ bool CUIInventoryWnd::DropItem(PIItem itm, CUIDragDropListEx* lst)
 
 	AttachAddon(_iitem);
 
-	return							true;
+	return true;
 }

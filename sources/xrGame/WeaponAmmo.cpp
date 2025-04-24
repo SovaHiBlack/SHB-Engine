@@ -190,14 +190,14 @@ void CWeaponAmmo::UpdateCL()
 	VERIFY2								(_valid(renderable.xform),*cName());
 }
 
-void CWeaponAmmo::net_Export(NET_Packet& P) 
+void CWeaponAmmo::net_Export(CNetPacket& P)
 {
 	inherited::net_Export	(P);
 	
 	P.w_u16					(m_boxCurr);
 }
 
-void CWeaponAmmo::net_Import(NET_Packet& P) 
+void CWeaponAmmo::net_Import(CNetPacket& P)
 {
 	inherited::net_Import	(P);
 

@@ -29,7 +29,7 @@ CWound::~CWound( )
 #define WOUND_MAX 10.0f
 
 //serialization
-void CWound::save(NET_Packet& output_packet)
+void CWound::save(CNetPacket& output_packet)
 {
 	output_packet.w_u8((u8) m_iBoneNum);
 	for (s32 i = 0; i < ALife::eHitTypeMax; i++)

@@ -136,7 +136,7 @@ void CWeaponBinoculars::ZoomDec()
 	clamp(m_fZoomFactor,m_fScopeZoomFactor, min_zoom_factor);
 }
 
-void CWeaponBinoculars::save(NET_Packet &output_packet)
+void CWeaponBinoculars::save(CNetPacket& output_packet)
 {
 	inherited::save(output_packet);
 	save_data		(m_fRTZoomFactor,output_packet);

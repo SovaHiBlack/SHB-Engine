@@ -41,6 +41,6 @@ public:
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
-	virtual	void		save						(NET_Packet &packet);
+	virtual	void		save						(CNetPacket& packet);
 	virtual	void		load						(IReader &packet);
 };
