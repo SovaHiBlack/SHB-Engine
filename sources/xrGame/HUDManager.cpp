@@ -239,7 +239,7 @@ void CHUDManager::Render_First( )
 		return;
 	}
 
-	// only shadow 
+	// only shadow
 	::Render->set_Invisible(TRUE);
 	::Render->set_Object(O->H_Root( ));
 	O->renderable_Render( );

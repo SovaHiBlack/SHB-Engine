@@ -109,7 +109,7 @@ public:
 	// NOTE: Unoptimized
 	IC SelfRef		transform(SelfCRef src, const Tmatrix& M)
 	{
-		Tmatrix	srcR;
+		Tmatrix srcR;
 		Tmatrix destR;
 
 		src.xform_get(srcR);
@@ -119,7 +119,7 @@ public:
 		return *this;
 	}
 
-	IC bool 		intersect(const Tvector& start, const Tvector& dir, T& dist) const
+	IC bool			intersect(const Tvector& start, const Tvector& dir, T& dist) const
 	{
 		// convert ray to box coordinates
 		Tvector kDiff;

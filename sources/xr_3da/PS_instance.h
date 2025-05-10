@@ -4,10 +4,7 @@
 #include "isheduled.h"
 #include "irenderable.h"
 
-class ENGINE_API CPS_Instance :
-	public ISpatial,
-	public ISheduled,
-	public IRenderable
+class ENGINE_API CPS_Instance : public ISpatial, public ISheduled, public IRenderable
 {
 	friend class			IGame_Persistent;
 
@@ -15,7 +12,7 @@ private:
 	bool					m_destroy_on_game_load;
 
 protected:
-	int						m_iLifeTime;
+	s32						m_iLifeTime;
 	BOOL					m_bAutoRemove;
 	BOOL					m_bDead;
 

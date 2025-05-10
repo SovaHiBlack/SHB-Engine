@@ -6,10 +6,12 @@
 
 class CUIOptionsItem;
 
-class CUIOptionsManager{
+class CUIOptionsManager
+{
 	friend class CUIOptionsItem;
-public:	
-	CUIOptionsManager();
+
+public:
+	CUIOptionsManager( );
 
 	void SeveBackupValues(pcstr group);
 	void SetCurrentValues(pcstr group);
@@ -17,13 +19,13 @@ public:
 	bool IsGroupChanged(pcstr group);
 	void UndoGroup(pcstr group);
 
-	void OptionsPostAccept();
-	void DoVidRestart();
-	void DoSndRestart();
+	void OptionsPostAccept( );
+	void DoVidRestart( );
+	void DoSndRestart( );
 
 	void SendMessage2Group(pcstr group, pcstr message);
 
-protected:	
+protected:
 	void RegisterItem(CUIOptionsItem* item, pcstr group);
 	void UnRegisterGroup(pcstr group);
 	void UnRegisterItem(CUIOptionsItem* item);

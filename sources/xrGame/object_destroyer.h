@@ -25,7 +25,7 @@ struct CDestroyer {
 		delete_data					(data.second);
 	}
 
-	template <typename T, int size>
+	template <typename T, s32 size>
 	IC	static void delete_data(svector<T,size> &data)
 	{
 		svector<T,size>::iterator	I = data.begin();

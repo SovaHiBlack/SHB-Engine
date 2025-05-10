@@ -2,7 +2,7 @@
 
 #include "ISheduled.h"
 
-class	ENGINE_API	CSheduler
+class ENGINE_API CSheduler
 {
 private:
 	struct Item

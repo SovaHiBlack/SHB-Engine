@@ -26,7 +26,8 @@ u32	 	dbg_saved_tries_for_active_objects = 0;
 u32	 	dbg_total_saved_tries = 0;
 u32	 	dbg_reused_queries_per_step = 0;
 u32	 	dbg_new_queries_per_step = 0;
-f32	dbg_vel_collid_damage_to_display = 7.f;
+f32	dbg_vel_collid_damage_to_display = 7.0f;
+
 #ifdef DRAW_CONTACTS
 CONTACT_VECTOR Contacts0;
 CONTACT_VECTOR Contacts1;
@@ -143,7 +144,7 @@ void DBG_DrawMatrix(const fMatrix4x4& m, f32 size, u8 a/* = 255*/)
 	DBG_DrawPHAbstruct(xr_new<SPHDBGDrawLine>(m.c, to, D3DCOLOR_XRGB(0, 0, a)));
 }
 
-template<int>
+template<s32>
 IC	void rotate(fMatrix4x4& m, f32 ang);
 
 template<>
@@ -164,7 +165,7 @@ IC	void rotate<2>(fMatrix4x4& m, f32 ang)
 	m.rotateZ(ang);
 }
 
-template<int ax>
+template<s32 ax>
 void DBG_DrawRotation(f32 ang0, f32 ang1, const fMatrix4x4& m, const fVector3& l, f32 size, u32 ac, bool solid, u32 tessel)
 {
 	fVector3 from;
@@ -324,22 +325,39 @@ void DBG_DrawPHAbstruct(SPHDBGDrawAbsract* a)
 {
 	if (dbg_ph_draw_mode != dmCashed)
 	{
-		if (ph_world->Processing( )) dbg_ph_draw_mode = dmSecondaryThread;
-		else					   dbg_ph_draw_mode = dmSimple;
+		if (ph_world->Processing( ))
+		{
+			dbg_ph_draw_mode = dmSecondaryThread;
+		}
+		else
+		{
+			dbg_ph_draw_mode = dmSimple;
+		}
 	}
 	switch (dbg_ph_draw_mode)
 	{
 		case dmSecondaryThread:
-		if (draw_frame)
 		{
-			push(dbg_draw_abstruct0, a);
+			if (draw_frame)
+			{
+				push(dbg_draw_abstruct0, a);
+			}
+			else
+			{
+				push(dbg_draw_abstruct1, a);
+			}
 		}
-		else
+		break;
+		case dmCashed:
 		{
-			push(dbg_draw_abstruct1, a);
-		}										break;
-		case dmCashed:	push(dbg_draw_cashed, a); break;
-		case dmSimple:	push(dbg_draw_simple, a); break;
+			push(dbg_draw_cashed, a);
+		}
+		break;
+		case dmSimple:
+		{
+			push(dbg_draw_simple, a);
+		}
+		break;
 	}
 }
 
@@ -414,6 +432,7 @@ void DBG_PHAbstructRender( )
 		{
 			(*i)->render( );
 		}
+
 		clear_vector(dbg_draw_simple);
 	}
 	//capped_cylinder_ray_collision_test();
@@ -515,7 +534,11 @@ void PH_DBG_Clear( )
 
 void PH_DBG_Render( )
 {
-	if (ph_dbg_draw_mask.test(phDbgDrawZDisable))CHK_DX(HW.pDevice->SetRenderState(D3DRS_ZENABLE, 0));
+	if (ph_dbg_draw_mask.test(phDbgDrawZDisable))
+	{
+		CHK_DX(HW.pDevice->SetRenderState(D3DRS_ZENABLE, 0));
+	}
+
 	HUD( ).Font( ).pFontSmall->OutSet(550, 250);
 
 	if (ph_dbg_draw_mask.test(phDbgDrawEnabledAABBS))
@@ -571,7 +594,10 @@ void PH_DBG_Render( )
 	//	HUD().Font().pFontSmall->OutNext("---------------------");
 #endif
 
-	if (ph_dbg_draw_mask.test(phDbgDrawZDisable))CHK_DX(HW.pDevice->SetRenderState(D3DRS_ZENABLE, 1));
+	if (ph_dbg_draw_mask.test(phDbgDrawZDisable))
+	{
+		CHK_DX(HW.pDevice->SetRenderState(D3DRS_ZENABLE, 1));
+	}
 }
 
 void DBG_DrawStatBeforeFrameStep( )
@@ -643,7 +669,7 @@ CFunctionGraph::~CFunctionGraph( )
 	xr_delete(m_stat_graph);
 	m_function.clear( );
 }
-void CFunctionGraph::Init(type_function fun, f32 x0, f32 x1, int l, int t, int w, int h, int points_num/*=500*/, u32 color/*=*/, u32 bk_color)
+void CFunctionGraph::Init(type_function fun, f32 x0, f32 x1, s32 l, s32 t, s32 w, s32 h, s32 points_num/*=500*/, u32 color/*=*/, u32 bk_color)
 {
 	x_min = x0; x_max = x1;
 	m_stat_graph = xr_new<CStatGraph>( );
@@ -693,7 +719,10 @@ void CFunctionGraph::ScaleMarkerPos(u32 ID, f32& p)
 void CFunctionGraph::ScaleMarkerPos(CStatGraph::EStyle Style, f32& p)
 {
 	VERIFY(IsActive( ));
-	if (Style == CStatGraph::stVert)	p = ScaleX(p);
+	if (Style == CStatGraph::stVert)
+	{
+		p = ScaleX(p);
+	}
 }
 void CFunctionGraph::Clear( )
 {

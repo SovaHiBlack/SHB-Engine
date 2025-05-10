@@ -3,19 +3,19 @@
 #include "Input.h"
 #include "IInputReceiver.h"
 
-void	IInputReceiver::IR_Capture( )
+void IInputReceiver::IR_Capture( )
 {
 	VERIFY(pInput);
 	pInput->iCapture(this);
 }
 
-void	IInputReceiver::IR_Release( )
+void IInputReceiver::IR_Release( )
 {
 	VERIFY(pInput);
 	pInput->iRelease(this);
 }
 
-void	IInputReceiver::IR_GetLastMouseDelta(iVector2& p)
+void IInputReceiver::IR_GetLastMouseDelta(iVector2& p)
 {
 	VERIFY(pInput);
 	pInput->iGetLastMouseDelta(p);
@@ -59,12 +59,12 @@ BOOL IInputReceiver::IR_GetBtnState(s32 btn)
 	return pInput->iGetAsyncBtnState(btn);
 }
 
-void	IInputReceiver::IR_GetMousePosScreen(iVector2& p)
+void IInputReceiver::IR_GetMousePosScreen(iVector2& p)
 {
 	GetCursorPos((LPPOINT) &p);
 }
 
-void	IInputReceiver::IR_GetMousePosReal(HWND hwnd, iVector2& p)
+void IInputReceiver::IR_GetMousePosReal(HWND hwnd, iVector2& p)
 {
 	IR_GetMousePosScreen(p);
 	if (hwnd)
@@ -73,19 +73,19 @@ void	IInputReceiver::IR_GetMousePosReal(HWND hwnd, iVector2& p)
 	}
 }
 
-void	IInputReceiver::IR_GetMousePosReal(iVector2& p)
+void IInputReceiver::IR_GetMousePosReal(iVector2& p)
 {
 	IR_GetMousePosReal(Device.m_hWnd, p);
 }
 
-void	IInputReceiver::IR_GetMousePosIndependent(fVector2& f)
+void IInputReceiver::IR_GetMousePosIndependent(fVector2& f)
 {
 	iVector2 p;
 	IR_GetMousePosReal(p);
 	f.set(2.0f * f32(p.x) / f32(Device.dwWidth) - 1.0f, 2.0f * f32(p.y) / f32(Device.dwHeight) - 1.0f);
 }
 
-void	IInputReceiver::IR_GetMousePosIndependentCrop(fVector2& f)
+void IInputReceiver::IR_GetMousePosIndependentCrop(fVector2& f)
 {
 	IR_GetMousePosIndependent(f);
 	if (f.x < -1.0f)

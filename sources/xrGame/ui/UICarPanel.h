@@ -11,7 +11,7 @@ private:
 	CUIProgressBar		UICarHealthBar;
 
 public:
-	// Установить 
+	// Установить
 	void				SetCarHealth	(f32 value);
 	void				SetSpeed		(f32 speed);
 	void				SetRPM			(f32 rmp);

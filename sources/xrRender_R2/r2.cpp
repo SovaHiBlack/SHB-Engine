@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "r2.h"
 #include "..\XR_3DA\BasicVisual.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\CustomHUD.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "..\XR_3DA\environment.h"

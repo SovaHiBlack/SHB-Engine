@@ -18,7 +18,7 @@
 
 using namespace Script;
 
-int __cdecl Lua::LuaOut(Lua::ELuaMessageType tLuaMessageType, pcstr caFormat, ...)
+s32 __cdecl Lua::LuaOut(Lua::ELuaMessageType tLuaMessageType, pcstr caFormat, ...)
 {
 
 #ifndef ENGINE_BUILD
@@ -89,7 +89,7 @@ int __cdecl Lua::LuaOut(Lua::ELuaMessageType tLuaMessageType, pcstr caFormat, ..
 
 	strcpy_s(S2, S);
 	S1 = S2 + xr_strlen(S);
-	int		l_iResult = vsprintf(S1, caFormat, l_tMarker);
+	s32		l_iResult = vsprintf(S1, caFormat, l_tMarker);
 	Msg("%s", S2);
 
 	strcpy_s(S2, SS);
@@ -238,7 +238,7 @@ void vfCopyGlobals(CLuaVirtualMachine* tpLuaVM)
 
 bool Script::bfLoadBuffer(CLuaVirtualMachine* tpLuaVM, pcstr caBuffer, size_t tSize, pcstr caScriptName, pcstr caNameSpaceName)
 {
-	int				l_iErrorCode;
+	s32				l_iErrorCode;
 	if (caNameSpaceName)
 	{
 		string256		insert;
@@ -251,7 +251,9 @@ bool Script::bfLoadBuffer(CLuaVirtualMachine* tpLuaVM, pcstr caBuffer, size_t tS
 		xr_free(script);
 	}
 	else
+	{
 		l_iErrorCode = luaL_loadbuffer(tpLuaVM, caBuffer, tSize, caScriptName);
+	}
 
 	if (l_iErrorCode)
 	{
@@ -284,7 +286,7 @@ bool bfDoFile(CLuaVirtualMachine* tpLuaVM, pcstr caScriptName, pcstr caNameSpace
 	if (bCall)
 	{
 		lua_call(tpLuaVM, 0, 0);
-		//		int			l_iErrorCode = lua_pcall(tpLuaVM,0,0,0);
+		//		s32			l_iErrorCode = lua_pcall(tpLuaVM,0,0,0);
 		//		if (l_iErrorCode) {
 
 		//#ifdef DEBUG
@@ -426,7 +428,7 @@ CLuaVirtualMachine* Script::get_namespace_table(CLuaVirtualMachine* tpLuaVM, pcs
 	return					(tpLuaVM);
 }
 
-bool	Script::bfIsObjectPresent(CLuaVirtualMachine* tpLuaVM, pcstr identifier, int type)
+bool	Script::bfIsObjectPresent(CLuaVirtualMachine* tpLuaVM, pcstr identifier, s32 type)
 {
 	lua_pushnil(tpLuaVM);
 	while (lua_next(tpLuaVM, -2))
@@ -442,7 +444,7 @@ bool	Script::bfIsObjectPresent(CLuaVirtualMachine* tpLuaVM, pcstr identifier, in
 	return	(false);
 }
 
-bool	Script::bfIsObjectPresent(CLuaVirtualMachine* tpLuaVM, pcstr namespace_name, pcstr identifier, int type)
+bool	Script::bfIsObjectPresent(CLuaVirtualMachine* tpLuaVM, pcstr namespace_name, pcstr identifier, s32 type)
 {
 	if (xr_strlen(namespace_name) && !bfGetNamespaceTable(tpLuaVM, namespace_name))
 		return				(false);

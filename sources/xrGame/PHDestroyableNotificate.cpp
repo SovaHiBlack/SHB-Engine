@@ -6,7 +6,7 @@
 #include "PHDestroyable.h"
 #include "Level.h"
 #include "xrServer_Object_Base.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "PhysicsShellHolder.h"
 #include "xrServer_Objects.h"
 

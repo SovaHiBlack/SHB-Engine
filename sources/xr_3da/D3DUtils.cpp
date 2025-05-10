@@ -1287,7 +1287,7 @@ void CDrawUtilities::DrawAxis(const fMatrix4x4& T)
 	f32 dx = -f32(Device.dwWidth) / 2.2f;
 	f32 dy = f32(Device.dwHeight) / 2.25f;
 
-	for (int i = 0; i < 6; i++, pv++)
+	for (s32 i = 0; i < 6; i++, pv++)
 	{
 		pv->color = c[i];
 		pv->transform(p[i], Device.mFullTransform);

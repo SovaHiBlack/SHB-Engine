@@ -106,12 +106,12 @@ public:
 	CLensFlare( );
 	virtual				~CLensFlare( );
 
-	void				OnFrame(int id);
+	void				OnFrame(s32 id);
 	void __fastcall		Render(BOOL bSun, BOOL bFlares, BOOL bGradient);
 	void 				OnDeviceCreate( );
 	void 				OnDeviceDestroy( );
 
-	int					AppendDef(CIniFile* pIni, pcstr sect);
+	s32					AppendDef(CIniFile* pIni, pcstr sect);
 
 	void				Invalidate( )
 	{

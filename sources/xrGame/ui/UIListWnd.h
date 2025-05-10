@@ -7,7 +7,6 @@
 
 #define DEFAULT_ITEM_HEIGHT 30
 
-
 DEF_LIST(LIST_ITEM_LIST, CUIListItem*);
 class CUIScrollBar;
 class CUIFrameLineWnd;
@@ -94,7 +93,7 @@ public:
 
 	void 			ScrollToBegin( );
 	void 			ScrollToEnd( );
-	void 			ScrollToPos(int position);
+	void 			ScrollToPos(s32 position);
 
 	IC bool			IsActiveBackgroundEnabled( )
 	{

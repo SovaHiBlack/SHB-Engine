@@ -26,7 +26,7 @@ public:
 	virtual void	SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData = NULL);
 
 	virtual bool	OnMouse(f32 x, f32 y, EUIMessages mouse_action);
-	virtual bool	OnKeyboard(int dik, EUIMessages keyboard_action);
+	virtual bool	OnKeyboard(s32 dik, EUIMessages keyboard_action);
 	virtual void	OnFocusLost( );
 
 	virtual void	Update( );

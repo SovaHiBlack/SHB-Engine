@@ -35,21 +35,23 @@ class SGameTaskObjective : public IPureSerializeObject<IReader, IWriter>
 {
 	friend struct SGameTaskKey;
 	friend class CGameTaskManager;
+
 private:
 	ETaskState				task_state;
 	CGameTask* parent;
-	int						idx;
+	s32						idx;
 	void					SendInfo(xr_vector<shared_str>&);
 	void					CallAllFuncs(xr_vector<luabind::functor<bool> >& v);
 	bool					CheckInfo(xr_vector<shared_str>&);
 	bool					CheckFunctions(xr_vector<luabind::functor<bool> >& v);
 	void					SetTaskState(ETaskState new_state);
+
 public:
 	SScriptObjectiveHelper	m_pScriptHelper;
 	virtual void			save(IWriter& stream);
 	virtual void			load(IReader& stream);
 
-	SGameTaskObjective(CGameTask* parent, int idx);
+	SGameTaskObjective(CGameTask* parent, s32 idx);
 	SGameTaskObjective();
 	shared_str				description;
 	shared_str				article_id;
@@ -82,7 +84,7 @@ public:
 	// for scripting access
 	void					SetDescription_script(pcstr _descr);
 	void					SetArticleID_script(pcstr _id);
-	int						GetIDX_script()
+	s32						GetIDX_script()
 	{
 		return idx;
 	}
@@ -125,7 +127,7 @@ public:
 	bool					HasLinkedMapLocations();
 	bool					HasInProgressObjective();
 
-	SGameTaskObjective& Objective(int objectice_id)
+	SGameTaskObjective& Objective(s32 objectice_id)
 	{
 		return m_Objectives[objectice_id];
 	}
@@ -145,13 +147,13 @@ public:
 	{
 		return *m_Title;
 	}
-	void					SetPriority_script(int _prio);
-	int						GetPriority_script()
+	void					SetPriority_script(s32 _prio);
+	s32						GetPriority_script()
 	{
 		return m_priority;
 	}
 	void					AddObjective_script(SGameTaskObjective* O);
-	SGameTaskObjective* GetObjective_script(int objective_id)
+	SGameTaskObjective* GetObjective_script(s32 objective_id)
 	{
 		return &(Objective(objective_id));
 	}
@@ -163,7 +165,7 @@ public:
 	{
 		m_ID = _id;
 	}
-	int						GetObjectiveSize_script()
+	s32						GetObjectiveSize_script()
 	{
 		return m_Objectives.size();
 	}

@@ -6,8 +6,6 @@
 #include "UIEditBox.h"
 #include "UIListWnd.h"
 #include "UIFrameWindow.h"
-
-
 #include "../PhraseDialogDefs.h"
 
 class CActor;
@@ -15,66 +13,68 @@ class CInventoryOwner;
 class CPhraseDialogManager;
 class CUITalkDialogWnd;
 class CUITradeWnd;
-///////////////////////////////////////
-//
-///////////////////////////////////////
 
-class CUITalkWnd: public CUIDialogWnd
+class CUITalkWnd : public CUIDialogWnd
 {
 private:
 	typedef CUIDialogWnd inherited;
 	ref_sound			m_sound;
-	void				PlaySnd					(pcstr text);
-	void				StopSnd					();
+	void				PlaySnd(pcstr text);
+	void				StopSnd( );
+
 public:
-						CUITalkWnd();
-	virtual				~CUITalkWnd();
+	CUITalkWnd( );
+	virtual				~CUITalkWnd( );
 
-	virtual void		Init();
+	virtual void		Init( );
 
-	virtual bool		StopAnyMove					(){return true;}
-	virtual void		SendMessage					(CUIWindow* pWnd, s16 msg, void* pData = NULL);
+	virtual bool		StopAnyMove( )
+	{
+		return true;
+	}
+	virtual void		SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData = NULL);
 
-	virtual void		Draw();
-	virtual void		Update();
-		
-	virtual void		Show();
-	virtual void		Hide();
-	
-	void				Stop();					//deffered
+	virtual void		Draw( );
+	virtual void		Update( );
 
-	void				UpdateQuestions();
-	void				NeedUpdateQuestions();
+	virtual void		Show( );
+	virtual void		Hide( );
+
+	void				Stop( );					//deffered
+
+	void				UpdateQuestions( );
+	void				NeedUpdateQuestions( );
 	//инициализации начального диалога собеседника
-	void				InitOthersStartDialog();
+	void				InitOthersStartDialog( );
 	virtual bool		IR_OnKeyboardPress(int dik);
 	virtual bool		OnKeyboard(int dik, EUIMessages keyboard_action);
-	void				SwitchToTrade();
+	void				SwitchToTrade( );
 	void				AddIconedMessage(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name);
 
 protected:
 	//диалог
-	void				InitTalkDialog			();
-	void				AskQuestion				();
+	void				InitTalkDialog( );
+	void				AskQuestion( );
 
-	void				SayPhrase				(const shared_str& phrase_id);
+	void				SayPhrase(const shared_str& phrase_id);
 
 	// Функции добавления строк в листы вопросов и ответов
 public:
-	void				AddQuestion				(const shared_str& text, const shared_str& id);
-	void				AddAnswer				(const shared_str& text, pcstr SpeakerName);
+	void				AddQuestion(const shared_str& text, const shared_str& id);
+	void				AddAnswer(const shared_str& text, pcstr SpeakerName);
+
 protected:
 	//для режима торговли
-	CUITradeWnd*			UITradeWnd;
-	CUITalkDialogWnd*		UITalkDialogWnd;
+	CUITradeWnd* UITradeWnd;
+	CUITalkDialogWnd* UITalkDialogWnd;
 
 
 	//указатель на владельца инвентаря вызвавшего менюшку
 	//и его собеседника
-	CActor*				m_pActor;
-	CInventoryOwner*	m_pOurInvOwner;
-	CInventoryOwner*	m_pOthersInvOwner;
-	
+	CActor* m_pActor;
+	CInventoryOwner* m_pOurInvOwner;
+	CInventoryOwner* m_pOthersInvOwner;
+
 	CPhraseDialogManager* m_pOurDialogManager;
 	CPhraseDialogManager* m_pOthersDialogManager;
 
@@ -86,6 +86,6 @@ protected:
 
 	//текущий диалог, если NULL, то переходим в режим выбора темы
 	DIALOG_SHARED_PTR	m_pCurrentDialog;
-	bool				TopicMode				();
-	void				ToTopicMode				();
+	bool				TopicMode( );
+	void				ToTopicMode( );
 };

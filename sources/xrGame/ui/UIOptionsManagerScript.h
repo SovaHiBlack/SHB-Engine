@@ -2,14 +2,15 @@
 
 #include "../script_export_space.h"
 
-class CUIOptionsManagerScript {
+class CUIOptionsManagerScript
+{
 public:
 	void SaveBackupValues(pcstr group);
 	void SetCurrentValues(pcstr group);
 	void SaveValues(pcstr group);
 	bool IsGroupChanged(pcstr group);
 	void UndoGroup(pcstr group);
-	void OptionsPostAccept();
+	void OptionsPostAccept( );
 	void SendMessage2Group(pcstr group, pcstr message);
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

@@ -19,7 +19,7 @@ struct SLuaWpnParams
 
 SLuaWpnParams::SLuaWpnParams( )
 {
-	bool	functor_exists;
+	bool functor_exists;
 	functor_exists = ai( ).script_engine( ).functor("ui_wpn_params.GetRPM", m_functorRPM);
 	VERIFY(functor_exists);
 	functor_exists = ai( ).script_engine( ).functor("ui_wpn_params.GetDamage", m_functorDamage);

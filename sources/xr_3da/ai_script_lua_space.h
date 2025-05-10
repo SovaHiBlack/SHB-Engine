@@ -1,7 +1,9 @@
 #pragma once
 
-namespace Lua {
-	enum ELuaMessageType {
+namespace Lua
+{
+	enum ELuaMessageType
+	{
 		eLuaMessageTypeInfo = u32(0),
 		eLuaMessageTypeError,
 		eLuaMessageTypeMessage,
@@ -9,9 +11,8 @@ namespace Lua {
 		eLuaMessageTypeHookReturn,
 		eLuaMessageTypeHookLine,
 		eLuaMessageTypeHookCount,
-		eLuaMessageTypeHookTailReturn = u32(-1),
+		eLuaMessageTypeHookTailReturn = u32(-1)
 	};
 
-	int __cdecl LuaOut(ELuaMessageType tLuaMessageType, pcstr caFormat, ...);
+	s32 __cdecl LuaOut(ELuaMessageType tLuaMessageType, pcstr caFormat, ...);
 }
-

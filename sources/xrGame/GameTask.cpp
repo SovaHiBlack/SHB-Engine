@@ -22,15 +22,13 @@
 ALife::_STORY_ID	story_id		(pcstr story_id);
 u16					storyId2GameId	(ALife::_STORY_ID);
 
-
-
 using namespace luabind;
 
 ALife::_STORY_ID	story_id	(pcstr story_id)
 {
-	int res=
+	s32 res=
 							(
-		object_cast<int>(
+		object_cast<s32>(
 			luabind::object(
 				luabind::get_globals(
 					ai().script_engine().lua()
@@ -93,15 +91,17 @@ void CGameTask::Load(const TASK_ID& id)
 	g_gameTaskXml->SetLocalRoot		(task_node);
 	m_Title							= g_gameTaskXml->Read(g_gameTaskXml->GetLocalRoot(), "title", 0, NULL);
 	m_priority						= g_gameTaskXml->ReadAttribInt(g_gameTaskXml->GetLocalRoot(), "prio", -1);
+
 #ifdef DEBUG
 	if(m_priority == u32(-1))
 	{
 		Msg("Game Task [%s] has no priority", *id);
 	}
 #endif // DEBUG
-	int tag_num						= g_gameTaskXml->GetNodesNum(g_gameTaskXml->GetLocalRoot(),"objective");
+
+	s32 tag_num						= g_gameTaskXml->GetNodesNum(g_gameTaskXml->GetLocalRoot(),"objective");
 	m_Objectives.clear		();
-	for(int i=0; i<tag_num; i++)
+	for(s32 i=0; i<tag_num; i++)
 	{
 		XML_NODE*	l_root = NULL;
 		l_root							= g_gameTaskXml->NavigateToNode("objective",i); 
@@ -170,9 +170,9 @@ void CGameTask::Load(const TASK_ID& id)
 
 
 //------infoportion_complete
-		int info_num					= g_gameTaskXml->GetNodesNum(l_root,"infoportion_complete");
+		s32 info_num					= g_gameTaskXml->GetNodesNum(l_root,"infoportion_complete");
 		objective.m_completeInfos.resize(info_num);
-		int j;
+		s32 j;
 		for(j=0; j<info_num; ++j)
 			objective.m_completeInfos[j]= g_gameTaskXml->Read(l_root, "infoportion_complete", j, NULL);
 
@@ -256,7 +256,7 @@ bool CGameTask::HasInProgressObjective()
 	return false;
 }
 
-SGameTaskObjective::SGameTaskObjective		(CGameTask* parent, int _idx)
+SGameTaskObjective::SGameTaskObjective		(CGameTask* parent, s32 _idx)
 :description		(NULL),
 article_id			(NULL),
 map_location		(NULL),
@@ -457,7 +457,7 @@ void CGameTask::SetTitle_script(pcstr _title)
 	m_Title	= _title;
 }
 
-void CGameTask::SetPriority_script(int _prio)		
+void CGameTask::SetPriority_script(s32 _prio)
 {
 	m_priority	= _prio;
 }
@@ -622,14 +622,14 @@ void CGameTask::script_register(lua_State* L)
 			class_<enum_exporter<ETaskState> >("task")
 			.enum_("task_state")
 		[
-			value("fail", int(eTaskStateFail)),
-			value("in_progress", int(eTaskStateInProgress)),
-			value("completed", int(eTaskStateCompleted)),
-			value("task_dummy", int(eTaskStateDummy))
+			value("fail", s32(eTaskStateFail)),
+			value("in_progress", s32(eTaskStateInProgress)),
+			value("completed", s32(eTaskStateCompleted)),
+			value("task_dummy", s32(eTaskStateDummy))
 		],
 
 		class_<SGameTaskObjective>("SGameTaskObjective")
-		.def(constructor<CGameTask*, int>( ))
+		.def(constructor<CGameTask*, s32>( ))
 		.def("set_description", &SGameTaskObjective::SetDescription_script)
 		.def("get_description", &SGameTaskObjective::GetDescription_script)
 		.def("set_article_id", &SGameTaskObjective::SetArticleID_script)
@@ -654,7 +654,6 @@ void CGameTask::script_register(lua_State* L)
 		.def("get_idx", &SGameTaskObjective::GetIDX_script)
 		.def("get_state", &SGameTaskObjective::TaskState),
 
-
 		class_<CGameTask>("CGameTask")
 		.def(constructor<>( ))
 		.def("load", &CGameTask::Load_script)
@@ -667,6 +666,5 @@ void CGameTask::script_register(lua_State* L)
 		.def("get_id", &CGameTask::GetID_script)
 		.def("set_id", &CGameTask::SetID_script)
 		.def("get_objectives_cnt", &CGameTask::GetObjectiveSize_script)
-
 		];
 }

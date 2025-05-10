@@ -96,14 +96,14 @@ private:
 
 private:
 	BOOL						RayPick(const fVector3& s, const fVector3& d, f32& range);
-	void						Bolt(int id, f32 period, f32 life_time);
+	void						Bolt(s32 id, f32 period, f32 life_time);
 
 public:
 	CEffect_Thunderbolt( );
 	~CEffect_Thunderbolt( );
 
-	void						OnFrame(int id, f32 period, f32 duration);
+	void						OnFrame(s32 id, f32 period, f32 duration);
 	void						Render( );
 
-	int							AppendDef(CIniFile* pIni, pcstr sect);
+	s32							AppendDef(CIniFile* pIni, pcstr sect);
 };

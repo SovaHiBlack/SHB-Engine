@@ -55,47 +55,47 @@ enum OGF_SkeletonVertType
 	OGF_VERTEXFORMAT_FVF_NL = 3 * 0x12071980
 };
 
-const u16	xrOGF_SMParamsVersion = 4;
+const u16			xrOGF_SMParamsVersion = 4;
 
 // OGF_DESC
 struct ogf_desc
 {
-	shared_str	source_file;
-	shared_str	build_name;
-	time_t		build_time;
-	shared_str	create_name;
-	time_t		create_time;
-	shared_str	modif_name;
-	time_t		modif_time;
+	shared_str		source_file;
+	shared_str		build_name;
+	time_t			build_time;
+	shared_str		create_name;
+	time_t			create_time;
+	shared_str		modif_name;
+	time_t			modif_time;
 	ogf_desc( ) : build_time(0), create_time(0), modif_time(0)
 	{ }
-	void 	Load(IReader& F);
-	void 	Save(IWriter& F);
+	void	Load(IReader& F);
+	void	Save(IWriter& F);
 };
 
 // OGF_BBOX
 struct ogf_bbox
 {
-	fVector3 min;
-	fVector3 max;
+	fVector3		min;
+	fVector3		max;
 };
 
 // OGF_BSPHERE
 struct ogf_bsphere
 {
-	fVector3 c;
-	f32 r;
+	fVector3		c;
+	f32				r;
 };
 
 // OGF_HEADER
-const u8	xrOGF_FormatVersion = 4;
+const u8			xrOGF_FormatVersion = 4;
 struct ogf_header
 {
-	u8			format_version;			// = xrOGF_FormatVersion
-	u8			type;					// MT
-	u16			shader_id;				// should not be ZERO
-	ogf_bbox	bb;
-	ogf_bsphere	bs;
+	u8				format_version;			// = xrOGF_FormatVersion
+	u8				type;					// MT
+	u16				shader_id;				// should not be ZERO
+	ogf_bbox		bb;
+	ogf_bsphere		bs;
 };
 
 // Sliding Window Record
@@ -108,7 +108,7 @@ struct ENGINE_API	FSlideWindow
 
 struct ENGINE_API	FSlideWindowItem
 {
-	FSlideWindow* sw;
+	FSlideWindow*	sw;
 	u32				count;
 	u32				reserved[4];
 	FSlideWindowItem( ) : sw(0), count(0)

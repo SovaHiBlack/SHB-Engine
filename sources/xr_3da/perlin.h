@@ -5,70 +5,87 @@
 class ENGINE_API CPerlinNoiseCustom
 {
 protected:
-	int		mSeed;
+	s32		mSeed;
 	bool	mReady;
 
-	int		p					[SAMPLE_SIZE + SAMPLE_SIZE + 2];
+	s32		p[SAMPLE_SIZE + SAMPLE_SIZE + 2];
 
 protected:
-	int		mOctaves;
+	s32		mOctaves;
 	f32	mFrequency;
 	f32	mAmplitude;
 	xr_vector<f32> mTimes;
 
 public:
-			CPerlinNoiseCustom	(int seed):
-								mOctaves(2),mFrequency(1),mAmplitude(1),mSeed(seed),mReady(false){}
-	IC void	SetParams			(int oct, f32 freq, f32 amp)
+	CPerlinNoiseCustom(s32 seed) : mOctaves(2), mFrequency(1), mAmplitude(1), mSeed(seed), mReady(false)
+	{ }
+	IC void	SetParams(s32 oct, f32 freq, f32 amp)
 	{
-		mOctaves				= oct;
-		mFrequency				= freq;
-		mAmplitude				= amp;
+		mOctaves = oct;
+		mFrequency = freq;
+		mAmplitude = amp;
 	}
-	IC void	SetOctaves			(int oct)	{mOctaves	= oct; mTimes.resize(mOctaves);}
-	IC void	SetFrequency		(f32 freq){mFrequency	= freq;}
-	IC void	SetAmplitude		(f32 amp)	{mAmplitude	= amp;}
+	IC void	SetOctaves(s32 oct)
+	{
+		mOctaves = oct;
+		mTimes.resize(mOctaves);
+	}
+	IC void	SetFrequency(f32 freq)
+	{
+		mFrequency = freq;
+	}
+	IC void	SetAmplitude(f32 amp)
+	{
+		mAmplitude = amp;
+	}
 };
 
-class ENGINE_API CPerlinNoise1D: public CPerlinNoiseCustom
+class ENGINE_API CPerlinNoise1D : public CPerlinNoiseCustom
 {
 private:
-	f32	noise				(f32 arg);
-	f32	g1					[SAMPLE_SIZE + SAMPLE_SIZE + 2];
+	f32	noise(f32 arg);
+	f32	g1[SAMPLE_SIZE + SAMPLE_SIZE + 2];
 
-	void	init				();
+	void	init( );
 	f32	mPrevContiniousTime;
 
 public:
-			CPerlinNoise1D		(int seed):CPerlinNoiseCustom(seed){mPrevContiniousTime=0.0f;}
-			f32	Get					(f32 x);
-			f32	GetContinious		(f32 v);
+	CPerlinNoise1D(s32 seed) :CPerlinNoiseCustom(seed)
+	{
+		mPrevContiniousTime = 0.0f;
+	}
+	f32	Get(f32 x);
+	f32	GetContinious(f32 v);
 };
 
-class ENGINE_API CPerlinNoise2D: public CPerlinNoiseCustom
+class ENGINE_API CPerlinNoise2D : public CPerlinNoiseCustom
 {
 private:
-	f32	noise				(const fVector2& vec);
-	void	normalize			(f32 v[2]);
+	f32	noise(const fVector2& vec);
+	void	normalize(f32 v[2]);
 
-	f32	g2					[SAMPLE_SIZE + SAMPLE_SIZE + 2][2];
+	f32	g2[SAMPLE_SIZE + SAMPLE_SIZE + 2][2];
 
-	void	init				();
+	void	init( );
+
 public:
-			CPerlinNoise2D		(int seed):CPerlinNoiseCustom(seed){}
-			f32	Get					(f32 x, f32 y);
+	CPerlinNoise2D(s32 seed) : CPerlinNoiseCustom(seed)
+	{ }
+	f32	Get(f32 x, f32 y);
 };
 
-class ENGINE_API CPerlinNoise3D: public CPerlinNoiseCustom
+class ENGINE_API CPerlinNoise3D : public CPerlinNoiseCustom
 {
 private:
-	f32	noise				(const fVector3& vec);
-	void	normalize			(f32 v[3]);
+	f32	noise(const fVector3& vec);
+	void	normalize(f32 v[3]);
 
-	f32	g3					[SAMPLE_SIZE + SAMPLE_SIZE + 2][3];
+	f32	g3[SAMPLE_SIZE + SAMPLE_SIZE + 2][3];
 
-	void	init				();
+	void	init( );
+
 public:
-			CPerlinNoise3D		(int seed):CPerlinNoiseCustom(seed){}
-			f32	Get					(f32 x, f32 y, f32 z);
+	CPerlinNoise3D(s32 seed) : CPerlinNoiseCustom(seed)
+	{ }
+	f32	Get(f32 x, f32 y, f32 z);
 };

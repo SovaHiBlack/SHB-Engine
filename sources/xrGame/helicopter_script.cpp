@@ -3,17 +3,17 @@
 #include "helicopter.h"
 #include "script_game_object.h"
 
-int CHelicopter::GetMovementState()
+s32 CHelicopter::GetMovementState()
 {
 	return m_movement.type;
 }
 
-int CHelicopter::GetHuntState()
+s32 CHelicopter::GetHuntState()
 {
 	return m_enemy.type;
 }
 
-int CHelicopter::GetBodyState()
+s32 CHelicopter::GetBodyState()
 {
 	return	m_body.type;
 }
@@ -29,28 +29,28 @@ void CHelicopter::script_register(lua_State *L)
 			.def(constructor<>())
 			.enum_("state")
 				[
-					value("eAlive",									int(CHelicopter::eAlive)),
-					value("eDead",									int(CHelicopter::eDead))
+					value("eAlive", s32(CHelicopter::eAlive)),
+					value("eDead", s32(CHelicopter::eDead))
 				]
 			.enum_("movement_state")
 				[
-					value("eMovNone",								int(eMovNone)),
-					value("eMovToPoint",							int(eMovToPoint)),
-					value("eMovPatrolPath",							int(eMovPatrolPath)),
-					value("eMovRoundPath",							int(eMovRoundPath)),
-					value("eMovLanding",							int(eMovLanding)),
-					value("eMovTakeOff",							int(eMovTakeOff))
+					value("eMovNone", s32(eMovNone)),
+					value("eMovToPoint", s32(eMovToPoint)),
+					value("eMovPatrolPath", s32(eMovPatrolPath)),
+					value("eMovRoundPath", s32(eMovRoundPath)),
+					value("eMovLanding", s32(eMovLanding)),
+					value("eMovTakeOff", s32(eMovTakeOff))
 				]
 			.enum_("hunt_state")
 				[
-					value("eEnemyNone",								int(eEnemyNone)),
-					value("eEnemyPoint",							int(eEnemyPoint)),
-					value("eEnemyEntity",							int(eEnemyEntity))
+					value("eEnemyNone", s32(eEnemyNone)),
+					value("eEnemyPoint", s32(eEnemyPoint)),
+					value("eEnemyEntity", s32(eEnemyEntity))
 				]
 			.enum_("body_state")
 				[
-					value("eBodyByPath",							int(eBodyByPath)),
-					value("eBodyToPoint",							int(eBodyToPoint))
+					value("eBodyByPath", s32(eBodyByPath)),
+					value("eBodyToPoint", s32(eBodyToPoint))
 				]
 
 				.def("GetState",							&CHelicopter::state_script)

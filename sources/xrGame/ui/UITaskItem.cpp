@@ -302,7 +302,7 @@ bool CUITaskSubItem::OnDbClick( )
 
 	bool bIsActive = (Actor( )->GameTaskManager( ).ActiveObjective( ) == obj);
 	Actor( )->GameTaskManager( ).SetActiveTask((!bIsActive) ? m_GameTask->m_ID : "", m_TaskObjectiveIdx);
-	return										true;
+	return true;
 }
 
 void CUITaskSubItem::OnActiveObjectiveClicked( )

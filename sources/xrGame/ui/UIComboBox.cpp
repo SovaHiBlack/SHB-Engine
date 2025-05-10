@@ -84,7 +84,7 @@ CUIListBoxItem* CUIComboBox::AddItem_(pcstr str, s32 _data)
 {
 	R_ASSERT2(m_bInited, "Can't add item to ComboBox before Initialization");
 	CUIListBoxItem* itm = m_list.AddItem(str);
-	itm->SetData((pvoid) (__int64) _data);
+	itm->SetData((pvoid)(__int64)_data);
 	return itm;
 }
 
@@ -95,7 +95,7 @@ void CUIComboBox::OnListItemSelect( )
 
 	s32 bk_itoken_id = m_itoken_id;
 
-	m_itoken_id = (s32) (__int64) itm->GetData( );
+	m_itoken_id = (s32)(__int64)itm->GetData( );
 	ShowList(false);
 
 	if (bk_itoken_id != m_itoken_id)
@@ -123,7 +123,7 @@ void CUIComboBox::SetCurrentValue( )
 	CUIListBoxItem* itm = m_list.GetSelectedItem( );
 	if (itm)
 	{
-		m_itoken_id = (s32) (__int64) itm->GetData( );
+		m_itoken_id = (s32)(__int64)itm->GetData( );
 	}
 	else
 	{	 //first
@@ -153,7 +153,7 @@ void CUIComboBox::SetItem(s32 idx)
 {
 	m_list.SetSelectedIDX(idx);
 	CUIListBoxItem* itm = m_list.GetSelectedItem( );
-	m_itoken_id = (s32) (__int64) itm->GetData( );
+	m_itoken_id = (s32)(__int64)itm->GetData( );
 
 	m_text.SetText(m_list.GetSelectedText( ));
 }

@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "map_location.h"
-#include "map_spot.h"//
+#include "UIMapSpot.h"
 #include "map_manager.h"
 
 #include "level.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "AISpace.h"
 #include "game_graph.h"
 #include "xrServer.h"
@@ -113,7 +113,7 @@ void CMapLocation::LoadSpot(pcstr type, bool bReload)
 		{
 			if (!bReload)
 			{
-				m_level_spot = xr_new<CMapSpot>(this);
+				m_level_spot = xr_new<CUIMapSpot>(this);
 			}
 
 			m_level_spot->Load(g_uiSpotXml, str);
@@ -128,7 +128,7 @@ void CMapLocation::LoadSpot(pcstr type, bool bReload)
 		{
 			if (!bReload)
 			{
-				m_level_spot_pointer = xr_new<CMapSpotPointer>(this);
+				m_level_spot_pointer = xr_new<CUIMapSpotPointer>(this);
 			}
 
 			m_level_spot_pointer->Load(g_uiSpotXml, str);
@@ -148,7 +148,7 @@ void CMapLocation::LoadSpot(pcstr type, bool bReload)
 		{
 			if (!bReload)
 			{
-				m_minimap_spot = xr_new<CMiniMapSpot>(this);
+				m_minimap_spot = xr_new<CUIMiniMapSpot>(this);
 			}
 
 			m_minimap_spot->Load(g_uiSpotXml, str);
@@ -163,7 +163,7 @@ void CMapLocation::LoadSpot(pcstr type, bool bReload)
 		{
 			if (!bReload)
 			{
-				m_minimap_spot_pointer = xr_new<CMapSpotPointer>(this);
+				m_minimap_spot_pointer = xr_new<CUIMapSpotPointer>(this);
 			}
 
 			m_minimap_spot_pointer->Load(g_uiSpotXml, str);
@@ -353,7 +353,7 @@ bool CMapLocation::Update( ) //returns actual
 extern xr_vector<CLevelChanger*>	g_lchangers;
 xr_vector<u32> map_point_path;
 
-void CMapLocation::UpdateSpot(CUICustomMap* map, CMapSpot* sp)
+void CMapLocation::UpdateSpot(CUICustomMap* map, CUIMapSpot* sp)
 {
 	if (map->MapName( ) == LevelName( ))
 	{
@@ -404,7 +404,7 @@ void CMapLocation::UpdateSpot(CUICustomMap* map, CMapSpot* sp)
 
 		if (GetSpotPointer(sp))
 		{
-			CMapSpot* s = GetSpotBorder(sp);
+			CUIMapSpot* s = GetSpotBorder(sp);
 			if (s)
 			{
 				s->SetWndPos(sp->GetWndPos( ));
@@ -502,7 +502,7 @@ void CMapLocation::UpdateSpot(CUICustomMap* map, CMapSpot* sp)
 	}
 }
 
-void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp)
+void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CUIMapSpotPointer* sp)
 {
 	if (sp->GetParent( ))
 	{	// already is child
@@ -530,7 +530,7 @@ void CMapLocation::UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp)
 
 void CMapLocation::UpdateMiniMap(CUICustomMap* map)
 {
-	CMapSpot* sp = m_minimap_spot;
+	CUIMapSpot* sp = m_minimap_spot;
 	if (!sp)
 	{
 		return;
@@ -544,7 +544,7 @@ void CMapLocation::UpdateMiniMap(CUICustomMap* map)
 
 void CMapLocation::UpdateLevelMap(CUICustomMap* map)
 {
-	CMapSpot* sp = m_level_spot;
+	CUIMapSpot* sp = m_level_spot;
 	if (!sp)
 	{
 		return;
@@ -595,7 +595,7 @@ pcstr CMapLocation::GetHint( )
 	return *stbl.translate(m_hint);
 }
 
-CMapSpotPointer* CMapLocation::GetSpotPointer(CMapSpot* sp)
+CUIMapSpotPointer* CMapLocation::GetSpotPointer(CUIMapSpot* sp)
 {
 	R_ASSERT(sp);
 	if (!PointerEnabled( ))
@@ -615,7 +615,7 @@ CMapSpotPointer* CMapLocation::GetSpotPointer(CMapSpot* sp)
 	return NULL;
 }
 
-CMapSpot* CMapLocation::GetSpotBorder(CMapSpot* sp)
+CUIMapSpot* CMapLocation::GetSpotBorder(CUIMapSpot* sp)
 {
 	R_ASSERT(sp);
 	if (!PointerEnabled( ))
@@ -627,7 +627,7 @@ CMapSpot* CMapLocation::GetSpotBorder(CMapSpot* sp)
 	{
 		if (NULL == m_level_map_spot_border)
 		{
-			m_level_map_spot_border = xr_new<CMapSpot>(this);
+			m_level_map_spot_border = xr_new<CUIMapSpot>(this);
 			m_level_map_spot_border->Load(g_uiSpotXml, "level_map_spot_border");
 		}
 
@@ -637,7 +637,7 @@ CMapSpot* CMapLocation::GetSpotBorder(CMapSpot* sp)
 	{
 		if (NULL == m_mini_map_spot_border)
 		{
-			m_mini_map_spot_border = xr_new<CMapSpot>(this);
+			m_mini_map_spot_border = xr_new<CUIMapSpot>(this);
 			m_mini_map_spot_border->Load(g_uiSpotXml, "mini_map_spot_border");
 		}
 

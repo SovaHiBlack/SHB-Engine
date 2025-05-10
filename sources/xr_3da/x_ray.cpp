@@ -118,7 +118,8 @@ void InitEngine( )
 
 void InitSettings( )
 {
-	string_path					fname;
+	string_path fname;
+
 	FS.update_path(fname, "$game_config$", "system.ltx");
 	pSettings = xr_new<CIniFile>(fname, TRUE);
 	CHECK_OR_EXIT(!pSettings->sections( ).empty( ), make_string("Cannot find file %s.\nReinstalling application may fix this problem.", fname));
@@ -131,13 +132,12 @@ void InitSettings( )
 void InitConsole( )
 {
 	Console = xr_new<CConsole>( );
-
 	Console->Initialize( );
 
 	strcpy_s(Console->ConfigFile, "user.ltx");
 	if (strstr(Core.Params, "-ltx "))
 	{
-		string64				c_name;
+		string64 c_name;
 		sscanf(strstr(Core.Params, "-ltx ") + 5, "%[^ ] ", c_name);
 		strcpy_s(Console->ConfigFile, c_name);
 	}
@@ -186,7 +186,6 @@ void destroyEngine( )
 void execUserScript( )
 {
 	// Execute script
-
 	Console->Execute("unbindall");
 	Console->ExecuteScript(Console->ConfigFile);
 }
@@ -458,7 +457,7 @@ CORE_API DUMMY_STUFF* g_temporary_stuff;
 
 //#define RUSSIAN_BUILD
 
-int APIENTRY WinMain_impl(HINSTANCE hInstance,
+s32 APIENTRY WinMain_impl(HINSTANCE hInstance,
 						  HINSTANCE hPrevInstance,
 						  pstr lpCmdLine,
 						  s32       nCmdShow)
@@ -535,24 +534,27 @@ int APIENTRY WinMain_impl(HINSTANCE hInstance,
 		pcstr benchName = "-batch_benchmark ";
 		if (strstr(lpCmdLine, benchName))
 		{
-			int sz = xr_strlen(benchName);
-			string64				b_name;
+			s32 sz = xr_strlen(benchName);
+			string64 b_name;
 			sscanf(strstr(Core.Params, benchName) + sz, "%[^ ] ", b_name);
 			doBenchmark(b_name);
 			return 0;
 		}
 
 		if (strstr(Core.Params, "-r2a"))
+		{
 			Console->Execute("renderer renderer_r2a");
+		}
+		else if (strstr(Core.Params, "-r2"))
+		{
+			Console->Execute("renderer renderer_r2");
+		}
 		else
-			if (strstr(Core.Params, "-r2"))
-				Console->Execute("renderer renderer_r2");
-			else
-			{
-				CCC_LoadCFG_custom* pTmp = xr_new<CCC_LoadCFG_custom>("renderer ");
-				pTmp->Execute(Console->ConfigFile);
-				xr_delete(pTmp);
-			}
+		{
+			CCC_LoadCFG_custom* pTmp = xr_new<CCC_LoadCFG_custom>("renderer ");
+			pTmp->Execute(Console->ConfigFile);
+			xr_delete(pTmp);
+		}
 
 		InitInput( );
 		Engine.External.Initialize( );
@@ -560,7 +562,7 @@ int APIENTRY WinMain_impl(HINSTANCE hInstance,
 		Startup( );
 		Core._destroy( );
 
-		char* _args[3];
+		pstr _args[3];
 		// check for need to execute something external
 		if (/*xr_strlen(g_sLaunchOnExit_params) && */xr_strlen(g_sLaunchOnExit_app))
 		{
@@ -568,7 +570,7 @@ int APIENTRY WinMain_impl(HINSTANCE hInstance,
 			GetModuleFileName(NULL, ModuleFileName, 4096);
 
 			string4096 ModuleFilePath = "";
-			char* ModuleName = NULL;
+			pstr ModuleName = NULL;
 			GetFullPathName(ModuleFileName, 4096, ModuleFilePath, &ModuleName);
 			ModuleName[0] = 0;
 			strcat(ModuleFilePath, g_sLaunchOnExit_app);
@@ -583,13 +585,14 @@ int APIENTRY WinMain_impl(HINSTANCE hInstance,
 		// Delete application presence mutex
 		CloseHandle(hCheckPresenceMutex);
 #endif
+
 	}
 	// here damn_keys_filter class instanse will be destroyed
 
 	return						0;
 }
 
-int stack_overflow_exception_filter(int exception_code)
+s32 stack_overflow_exception_filter(s32 exception_code)
 {
 	if (exception_code == EXCEPTION_STACK_OVERFLOW)
 	{
@@ -600,13 +603,15 @@ int stack_overflow_exception_filter(int exception_code)
 		return EXCEPTION_EXECUTE_HANDLER;
 	}
 	else
+	{
 		return EXCEPTION_CONTINUE_SEARCH;
+	}
 }
 
-int APIENTRY WinMain(HINSTANCE hInstance,
+s32 APIENTRY WinMain(HINSTANCE hInstance,
 					 HINSTANCE hPrevInstance,
-					 char* lpCmdLine,
-					 int       nCmdShow)
+					 pstr lpCmdLine,
+					 s32       nCmdShow)
 {
 	__try
 	{
@@ -625,31 +630,52 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 pcstr _GetFontTexName(pcstr section)
 {
-	static char* tex_names[ ] = { "texture800","texture","texture1600" };
-	int def_idx = 1;//default 1024x768
-	int idx = def_idx;
+	static char* tex_names[ ] = {"texture800","texture","texture1600"};
+	s32 def_idx = 1;//default 1024x768
+	s32 idx = def_idx;
 
 #if 0
 	u32 w = Device.dwWidth;
 
-	if (w <= 800)		idx = 0;
-	else if (w <= 1280)idx = 1;
-	else 			idx = 2;
+	if (w <= 800)
+	{
+		idx = 0;
+	}
+	else if (w <= 1280)
+	{
+		idx = 1;
+	}
+	else
+	{
+		idx = 2;
+	}
 #else
 	u32 h = Device.dwHeight;
 
-	if (h <= 600)		idx = 0;
-	else if (h <= 900)	idx = 1;
-	else 			idx = 2;
+	if (h <= 600)
+	{
+		idx = 0;
+	}
+	else if (h <= 900)
+	{
+		idx = 1;
+	}
+	else
+	{
+		idx = 2;
+	}
 #endif
-
 
 	while (idx >= 0)
 	{
 		if (pSettings->line_exist(section, tex_names[idx]))
+		{
 			return pSettings->r_string(section, tex_names[idx]);
+		}
+
 		--idx;
 	}
+
 	return pSettings->r_string(section, tex_names[def_idx]);
 }
 
@@ -664,16 +690,27 @@ void _InitializeFont(CGameFont*& F, pcstr section, u32 flags)
 		Device.seqRender.Add(F, REG_PRIORITY_LOW - 1000);
 	}
 	else
+	{
 		F->Initialize("font", font_tex_name);
+	}
 
 	if (pSettings->line_exist(section, "size"))
 	{
 		f32 sz = pSettings->r_float(section, "size");
-		if (flags & CGameFont::fsDeviceIndependent)	F->SetHeightI(sz);
-		else										F->SetHeight(sz);
+		if (flags & CGameFont::fsDeviceIndependent)
+		{
+			F->SetHeightI(sz);
+		}
+		else
+		{
+			F->SetHeight(sz);
+		}
 	}
+
 	if (pSettings->line_exist(section, "interval"))
+	{
 		F->SetInterval(pSettings->r_fvector2(section, "interval"));
+	}
 }
 
 CApplication::CApplication( )
@@ -696,8 +733,14 @@ CApplication::CApplication( )
 	// Register us
 	Device.seqFrame.Add(this, REG_PRIORITY_HIGH + 1000);
 
-	if (psDeviceFlags.test(mtSound))	Device.seqFrameMT.Add(&SoundProcessor);
-	else								Device.seqFrame.Add(&SoundProcessor);
+	if (psDeviceFlags.test(mtSound))
+	{
+		Device.seqFrameMT.Add(&SoundProcessor);
+	}
+	else
+	{
+		Device.seqFrame.Add(&SoundProcessor);
+	}
 
 	Console->Show( );
 
@@ -740,8 +783,8 @@ void CApplication::OnEvent(EVENT E, u64 P1, u64 P2)
 	}
 	else if (E == eStart)
 	{
-		LPSTR		op_server = LPSTR(P1);
-		LPSTR		op_client = LPSTR(P2);
+		pstr op_server = pstr(P1);
+		pstr op_client = pstr(P2);
 		R_ASSERT(0 == g_pGameLevel);
 		R_ASSERT(0 != g_pGamePersistent);
 
@@ -758,6 +801,7 @@ void CApplication::OnEvent(EVENT E, u64 P1, u64 P2)
 			g_pGameLevel->net_Start(op_server, op_client);
 			pApp->LoadEnd( );
 		}
+
 		xr_free(op_server);
 		xr_free(op_client);
 	}
@@ -776,6 +820,7 @@ void CApplication::OnEvent(EVENT E, u64 P1, u64 P2)
 				Console->Execute("main_menu on");
 			}
 		}
+
 		R_ASSERT(0 != g_pGamePersistent);
 		g_pGamePersistent->Disconnect( );
 	}
@@ -821,14 +866,21 @@ void CApplication::destroy_loading_shaders( )
 	//.	::Sound->mute			(false);
 }
 
-u32 calc_progress_color(u32, u32, int, int);
+u32 calc_progress_color(u32, u32, s32, s32);
 
 void CApplication::LoadDraw( )
 {
-	if (g_appLoaded)				return;
+	if (g_appLoaded)
+	{
+		return;
+	}
+
 	Device.dwFrame += 1;
 
-	if (!Device.Begin( ))		return;
+	if (!Device.Begin( ))
+	{
+		return;
+	}
 
 	load_draw_internal( );
 
@@ -848,9 +900,13 @@ void CApplication::LoadTitleInt(pcstr str)
 	Log(app_title);
 
 	if (g_pGamePersistent->GameType( ) == 1 && strstr(Core.Params, "alife"))
+	{
 		max_load_stage = 17;
+	}
 	else
+	{
 		max_load_stage = 14;
+	}
 
 	LoadDraw( );
 }
@@ -861,7 +917,10 @@ void CApplication::OnFrame( )
 	Engine.Event.OnFrame( );
 	g_SpatialSpace->update( );
 	g_SpatialSpacePhysic->update( );
-	if (g_pGameLevel)				g_pGameLevel->SoundEvent_Dispatch( );
+	if (g_pGameLevel)
+	{
+		g_pGameLevel->SoundEvent_Dispatch( );
+	}
 }
 
 void CApplication::Level_Append(pcstr folder)
@@ -878,7 +937,7 @@ void CApplication::Level_Append(pcstr folder)
 		FS.exist("$game_levels$", N4)
 		)
 	{
-		sLevelInfo			LI;
+		sLevelInfo LI;
 		LI.folder = xr_strdup(folder);
 		LI.name = 0;
 		Levels.push_back(LI);
@@ -890,8 +949,13 @@ void CApplication::Level_Scan( )
 #pragma todo("container is created in stack!")
 	xr_vector<char*>* folder = FS.file_list_open("$game_levels$", FS_ListFolders | FS_RootOnly);
 	R_ASSERT(folder && folder->size( ));
-	for (u32 i = 0; i < folder->size( ); i++)	Level_Append((*folder)[i]);
+	for (u32 i = 0; i < folder->size( ); i++)
+	{
+		Level_Append((*folder)[i]);
+	}
+
 	FS.file_list_close(folder);
+
 #ifdef DEBUG
 	folder = FS.file_list_open("$game_levels$", "$debug$\\", FS_ListFolders | FS_RootOnly);
 	if (folder)
@@ -906,32 +970,44 @@ void CApplication::Level_Scan( )
 		FS.file_list_close(folder);
 	}
 #endif
+
 }
 
 void CApplication::Level_Set(u32 L)
 {
-	if (L >= Levels.size( ))	return;
+	if (L >= Levels.size( ))
+	{
+		return;
+	}
 	Level_Current = L;
 	FS.get_path("$level$")->_set(Levels[L].folder);
 
-	string_path					temp;
-	string_path					temp2;
+	string_path temp;
+	string_path temp2;
 	strconcat(sizeof(temp), temp, "intro\\intro_", Levels[L].folder);
 	temp[xr_strlen(temp) - 1] = 0;
 	if (FS.exist(temp2, "$game_textures$", temp, ".dds"))
+	{
 		hLevelLogo.create("font", temp);
+	}
 	else
+	{
 		hLevelLogo.create("font", "intro\\intro_no_start_picture");
+	}
 }
 
-int CApplication::Level_ID(pcstr name)
+s32 CApplication::Level_ID(pcstr name)
 {
-	char buffer[256];
+	string256 buffer;
 	strconcat(sizeof(buffer), buffer, name, "\\");
 	for (u32 I = 0; I < Levels.size( ); I++)
 	{
-		if (0 == stricmp(buffer, Levels[I].folder))	return int(I);
+		if (0 == stricmp(buffer, Levels[I].folder))
+		{
+			return s32(I);
+		}
 	}
+
 	return -1;
 }
 
@@ -941,11 +1017,11 @@ void doBenchmark(pcstr name)
 	string_path in_file;
 	FS.update_path(in_file, "$app_data_root$", name);
 	CIniFile ini(in_file);
-	int test_count = ini.line_count("benchmark");
+	s32 test_count = ini.line_count("benchmark");
 	pcstr test_name;
 	pcstr t;
 	shared_str test_command;
-	for (int i = 0; i < test_count; ++i)
+	for (s32 i = 0; i < test_count; ++i)
 	{
 		ini.r_line("benchmark", i, &test_name, &t);
 		strcpy_s(g_sBenchmarkName, test_name);
@@ -983,6 +1059,7 @@ void CApplication::load_draw_internal( )
 		CHK_DX(HW.pDevice->Clear(0, 0, D3DCLEAR_TARGET, D3DCOLOR_ARGB(0, 0, 0, 0), 1, 0));
 		return;
 	}
+
 	// Draw logo
 	u32	Offset;
 	u32	C = 0xffffffff;
@@ -1007,31 +1084,48 @@ void CApplication::load_draw_internal( )
 	// progress background
 	static f32 offs = -0.5f;
 
-	back_size.set(1024, 768);
-	back_text_coords.lt.set(0, 0); back_text_coords.rb.add(back_text_coords.lt, back_size);
-	back_coords.lt.set(offs, offs); back_coords.rb.add(back_coords.lt, back_size);
+	back_size.set(1024.0f, 768.0f);
+	back_text_coords.lt.set(0.0f, 0.0f);
+	back_text_coords.rb.add(back_text_coords.lt, back_size);
+	back_coords.lt.set(offs, offs);
+	back_coords.rb.add(back_coords.lt, back_size);
 
-	back_coords.lt.mul(k); back_coords.rb.mul(k);
+	back_coords.lt.mul(k);
+	back_coords.rb.mul(k);
 
-	back_text_coords.lt.x /= tsz.x; back_text_coords.lt.y /= tsz.y; back_text_coords.rb.x /= tsz.x; back_text_coords.rb.y /= tsz.y;
+	back_text_coords.lt.x /= tsz.x;
+	back_text_coords.lt.y /= tsz.y;
+	back_text_coords.rb.x /= tsz.x;
+	back_text_coords.rb.y /= tsz.y;
+
 	pv = (FVF::TL*)RCache.Vertex.Lock(4, ll_hGeom.stride( ), Offset);
-	pv->set(back_coords.lt.x, back_coords.rb.y, C, back_text_coords.lt.x, back_text_coords.rb.y);	pv++;
-	pv->set(back_coords.lt.x, back_coords.lt.y, C, back_text_coords.lt.x, back_text_coords.lt.y);	pv++;
-	pv->set(back_coords.rb.x, back_coords.rb.y, C, back_text_coords.rb.x, back_text_coords.rb.y);	pv++;
-	pv->set(back_coords.rb.x, back_coords.lt.y, C, back_text_coords.rb.x, back_text_coords.lt.y);	pv++;
+	pv->set(back_coords.lt.x, back_coords.rb.y, C, back_text_coords.lt.x, back_text_coords.rb.y);
+	pv++;
+	pv->set(back_coords.lt.x, back_coords.lt.y, C, back_text_coords.lt.x, back_text_coords.lt.y);
+	pv++;
+	pv->set(back_coords.rb.x, back_coords.rb.y, C, back_text_coords.rb.x, back_text_coords.rb.y);
+	pv++;
+	pv->set(back_coords.rb.x, back_coords.lt.y, C, back_text_coords.rb.x, back_text_coords.lt.y);
+	pv++;
 	RCache.Vertex.Unlock(4, ll_hGeom.stride( ));
 
 	RCache.set_Geometry(ll_hGeom);
 	RCache.Render(D3DPT_TRIANGLELIST, Offset, 0, 4, 0, 2);
 
 	// progress bar
-	back_size.set(268, 37);
-	back_text_coords.lt.set(0, 768); back_text_coords.rb.add(back_text_coords.lt, back_size);
-	back_coords.lt.set(379, 726); back_coords.rb.add(back_coords.lt, back_size);
+	back_size.set(268.0f, 37.0f);
+	back_text_coords.lt.set(0.0f, 768.0f);
+	back_text_coords.rb.add(back_text_coords.lt, back_size);
+	back_coords.lt.set(379.0f, 726.0f);
+	back_coords.rb.add(back_coords.lt, back_size);
 
-	back_coords.lt.mul(k); back_coords.rb.mul(k);
+	back_coords.lt.mul(k);
+	back_coords.rb.mul(k);
 
-	back_text_coords.lt.x /= tsz.x; back_text_coords.lt.y /= tsz.y; back_text_coords.rb.x /= tsz.x; back_text_coords.rb.y /= tsz.y;
+	back_text_coords.lt.x /= tsz.x;
+	back_text_coords.lt.y /= tsz.y;
+	back_text_coords.rb.x /= tsz.x;
+	back_text_coords.rb.y /= tsz.y;
 
 	u32 v_cnt = 40;
 	pv = (FVF::TL*)RCache.Vertex.Lock(2 * (v_cnt + 1), ll_hGeom2.stride( ), Offset);
@@ -1043,9 +1137,12 @@ void CApplication::load_draw_internal( )
 	for (u32 idx = 0; idx < v_cnt + 1; ++idx)
 	{
 		clr = calc_progress_color(idx, v_cnt, load_stage, max_load_stage);
-		pv->set(back_coords.lt.x + pos_delta * idx + offs, back_coords.rb.y + offs, 0 + EPSILON_7, 1, clr, back_text_coords.lt.x + tc_delta * idx, back_text_coords.rb.y);	pv++;
-		pv->set(back_coords.lt.x + pos_delta * idx + offs, back_coords.lt.y + offs, 0 + EPSILON_7, 1, clr, back_text_coords.lt.x + tc_delta * idx, back_text_coords.lt.y);	pv++;
+		pv->set(back_coords.lt.x + pos_delta * idx + offs, back_coords.rb.y + offs, 0 + EPSILON_7, 1, clr, back_text_coords.lt.x + tc_delta * idx, back_text_coords.rb.y);
+		pv++;
+		pv->set(back_coords.lt.x + pos_delta * idx + offs, back_coords.lt.y + offs, 0 + EPSILON_7, 1, clr, back_text_coords.lt.x + tc_delta * idx, back_text_coords.lt.y);
+		pv++;
 	}
+
 	VERIFY(u32(pv - _pv) == 2 * (v_cnt + 1));
 	RCache.Vertex.Unlock(2 * (v_cnt + 1), ll_hGeom2.stride( ));
 
@@ -1057,24 +1154,28 @@ void CApplication::load_draw_internal( )
 	pFontSystem->Clear( );
 	pFontSystem->SetColor(color_rgba(157, 140, 120, 255));
 	pFontSystem->SetAligment(CGameFont::alCenter);
-	pFontSystem->OutI(0.f, 0.815f, app_title);
+	pFontSystem->OutI(0.0f, 0.815f, app_title);
 	pFontSystem->OnRender( );
 
 	// draw level-specific screenshot
 	if (hLevelLogo)
 	{
-		fRect						r;
-		r.lt.set(257, 369);
+		fRect r;
+		r.lt.set(257.0f, 369.0f);
 		r.lt.x += offs;
 		r.lt.y += offs;
 		r.rb.add(r.lt, fVector2( ).set(512.0f, 256.0f));
 		r.lt.mul(k);
 		r.rb.mul(k);
 		pv = (FVF::TL*)RCache.Vertex.Lock(4, ll_hGeom.stride( ), Offset);
-		pv->set(r.lt.x, r.rb.y, C, 0, 1);	pv++;
-		pv->set(r.lt.x, r.lt.y, C, 0, 0);	pv++;
-		pv->set(r.rb.x, r.rb.y, C, 1, 1);	pv++;
-		pv->set(r.rb.x, r.lt.y, C, 1, 0);	pv++;
+		pv->set(r.lt.x, r.rb.y, C, 0.0f, 1.0f);
+		pv++;
+		pv->set(r.lt.x, r.lt.y, C, 0.0f, 0.0f);
+		pv++;
+		pv->set(r.rb.x, r.rb.y, C, 1.0f, 1.0f);
+		pv++;
+		pv->set(r.rb.x, r.lt.y, C, 1.0f, 0.0f);
+		pv++;
 		RCache.Vertex.Unlock(4, ll_hGeom.stride( ));
 
 		RCache.set_Shader(hLevelLogo);
@@ -1083,10 +1184,12 @@ void CApplication::load_draw_internal( )
 	}
 }
 
-u32 calc_progress_color(u32 idx, u32 total, int stage, int max_stage)
+u32 calc_progress_color(u32 idx, u32 total, s32 stage, s32 max_stage)
 {
 	if (idx > (total / 2))
+	{
 		idx = total - idx;
+	}
 
 	f32 kk = (f32(stage + 1) / f32(max_stage)) * (total / 2.0f);
 	f32 f = 1 / (exp((f32(idx) - kk) * 0.5f) + 1.0f);

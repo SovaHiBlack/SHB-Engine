@@ -7,7 +7,7 @@
 #include "Render.h"
 #include "igame_level.h"
 #include "xr_area.h"
-#include "xr_object.h"
+#include "Object.h"
 
 static const s32	max_desired_items = 2500;
 static const f32	source_radius = 12.5f;

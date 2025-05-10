@@ -56,15 +56,15 @@ protected:
 			> inherited;
 
 protected:
-	int					x1;
+	s32					x1;
 //	f32				y1;
-	int					z1;
-	int					x2;
+	s32					z1;
+	s32					x2;
 //	f32				y2;
-	int					z2;
-	int					x3;
+	s32					z2;
+	s32					x3;
 //	f32				y3;
-	int					z3;
+	s32					z3;
 //	f32				square_size_y;
 //	f32				size_y;
 	f32				m_sqr_distance_xz;

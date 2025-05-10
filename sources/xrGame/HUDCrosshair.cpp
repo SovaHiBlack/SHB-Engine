@@ -25,11 +25,11 @@ void CHUDCrosshair::Load( )
 {
 	// все размеры в процентах от длины экрана
 	// длина крестика
-	cross_length_perc = pSettings->r_float(HUD_CURSOR_SECTION, "cross_length");
-	min_radius_perc = pSettings->r_float(HUD_CURSOR_SECTION, "min_radius");
-	max_radius_perc = pSettings->r_float(HUD_CURSOR_SECTION, "max_radius");
-	cross_color = pSettings->r_fcolor(HUD_CURSOR_SECTION, "cross_color").get( );
-	radius_speed_perc = pSettings->r_float(HUD_CURSOR_SECTION, "radius_lerp_speed");
+	cross_length_perc		= pSettings->r_float(HUD_CURSOR_SECTION, "cross_length");
+	min_radius_perc			= pSettings->r_float(HUD_CURSOR_SECTION, "min_radius");
+	max_radius_perc			= pSettings->r_float(HUD_CURSOR_SECTION, "max_radius");
+	radius_speed_perc		= pSettings->r_float(HUD_CURSOR_SECTION, "radius_lerp_speed");
+	cross_color				= pSettings->r_fcolor(HUD_CURSOR_SECTION, "cross_color").get( );
 }
 
 // выставляет radius от min_radius до max_radius
@@ -39,7 +39,7 @@ void CHUDCrosshair::SetDispersion(f32 disp)
 	fVector3 R = { VIEWPORT_NEAR * _sin(disp), 0.0f, VIEWPORT_NEAR };
 	Device.mProject.transform(r, R);
 
-	fVector2		scr_size;
+	fVector2 scr_size;
 	scr_size.set(f32(::Render->getTarget( )->get_width( )), f32(::Render->getTarget( )->get_height( )));
 	f32 radius_pixels = _abs(r.x) * scr_size.x / 2.0f;
 	target_radius = radius_pixels;
@@ -49,14 +49,14 @@ extern ENGINE_API BOOL g_bRendering;
 void CHUDCrosshair::OnRender( )
 {
 	VERIFY(g_bRendering);
-	fVector2		center;
-	fVector2		scr_size;
+	fVector2 center;
+	fVector2 scr_size;
 	scr_size.set(f32(::Render->getTarget( )->get_width( )), f32(::Render->getTarget( )->get_height( )));
 	center.set(scr_size.x / 2.0f, scr_size.y / 2.0f);
 
 	// draw back
-	u32			dwOffset;
-	u32			dwCount;
+	u32 dwOffset;
+	u32 dwCount;
 	dwCount = 10;
 	FVF::TL0uv* pv_start = (FVF::TL0uv*)RCache.Vertex.Lock(dwCount, hGeomLine->vb_stride, dwOffset);
 	FVF::TL0uv* pv = pv_start;

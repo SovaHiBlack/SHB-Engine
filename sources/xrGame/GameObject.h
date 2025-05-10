@@ -4,7 +4,7 @@
 #pragma once
 
 #include <depr/dplay8.h>// раньше небыло
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "xrServer_Space.h"
 #include "alife_space.h"
 #include "UsableScriptObject.h"
@@ -201,10 +201,10 @@ public:
 	virtual void			renderable_Render( );
 	virtual void			OnEvent(CNetPacket& P, u16 type);
 	virtual	void			Hit(SHit* pHDS)
-	{ };
+	{ }
 	virtual void			SetHitInfo(CObject* who, CObject* weapon, s16 element, fVector3 Pos, fVector3 Dir)
-	{ };
-	virtual	BOOL			BonePassBullet(int boneID)
+	{ }
+	virtual	BOOL			BonePassBullet(s32 boneID)
 	{
 		return FALSE;
 	}
@@ -226,7 +226,7 @@ public:
 	///////////////////////////////////////////////////////////////////////
 
 		// Position stack
-	virtual	SavedPosition	ps_Element(u32 ID) const;
+	virtual	SSavedPosition	ps_Element(u32 ID) const;
 
 	void			setup_parent_ai_locations(bool assign_position = true);
 	void			validate_ai_locations(bool decrement_reference = true);
@@ -330,11 +330,11 @@ public:
 
 private:
 	mutable CScriptGameObject* m_lua_game_object;
-	int						m_script_clsid;
+	s32						m_script_clsid;
 
 public:
 	CScriptGameObject* lua_game_object( ) const;
-	int				clsid( ) const
+	s32				clsid( ) const
 	{
 		THROW(m_script_clsid >= 0);
 		return				(m_script_clsid);

@@ -452,7 +452,7 @@ void capped_cylinder_ray_collision_test( )
 	c.intersect(pos, dir, ir);
 	RAYvsCYLINDER(c, pos, dir, R, TRUE);//false
 	CTimer t; t.Start( );
-	for (int i = 0; i < 1000000; i++)
+	for (s32 i = 0; i < 1000000; i++)
 	{
 		fCylinder c;
 		c.m_center.random_point(fVector3( ).set(2.0f, 2.0f, 2.0f));
@@ -470,7 +470,7 @@ void capped_cylinder_ray_collision_test( )
 
 	Msg("my RAYvsCYLINDE time %f ms", t.GetElapsed_sec( ) * 1000.0f);
 	t.Start( );
-	for (int i = 0; i < 1000000; i++)
+	for (s32 i = 0; i < 1000000; i++)
 	{
 		fCylinder c;
 		c.m_center.random_point(fVector3( ).set(2.0f, 2.0f, 2.0f));

@@ -275,7 +275,7 @@ void CCameraManager::Update(const fVector3& P, const fVector3& D, const fVector3
 	BOOL bOverlapped = FALSE;
 	if (m_EffectorsCam.size( ))
 	{
-		for (int i = m_EffectorsCam.size( ) - 1; i >= 0; i--)
+		for (s32 i = m_EffectorsCam.size( ) - 1; i >= 0; i--)
 		{
 			CEffectorCam* eff = m_EffectorsCam[i];
 			if (eff->Valid( ) && eff->Process(vPosition, vDirection, vNormal, fFov, fFar, fAspect))

@@ -29,9 +29,14 @@ void SHeliMovementState::Load(pcstr section)
 	LinearAcc_fw = pSettings->r_float(section, "path_linear_acc_fw");
 	LinearAcc_bk = pSettings->r_float(section, "path_linear_acc_bk");
 	if (pSettings->line_exist(section, "flag_by_new_acc"))
+	{
 		isAdnAcc = pSettings->r_float(section, "flag_by_new_acc");
+	}
 	else
-		isAdnAcc = 0;
+	{
+		isAdnAcc = 0.0f;
+	}
+
 	onPointRangeDist = pSettings->r_float(section, "on_point_range_dist");
 	maxLinearSpeed = pSettings->r_float(section, "velocity");
 	min_altitude = pSettings->r_float(section, "min_altitude");
@@ -56,10 +61,14 @@ f32 SHeliMovementState::GetAngSpeedPitch(f32 speed)
 
 f32 SHeliMovementState::GetAngSpeedHeading(f32 speed)
 {
-	if (isAdnAcc == 0) return HeadingSpK * speed + HeadingSpB;
-
-	else return AngSH / (2 * HeadingSpB - AngSH + speed * (HeadingSpB - AngSH) / 2);
-		//HeadingSpK*speed+HeadingSpB; old veersion
+	if (isAdnAcc == 0)
+	{
+		return (HeadingSpK * speed + HeadingSpB);
+	}
+	else
+	{
+		return (AngSH / (2 * HeadingSpB - AngSH + speed * (HeadingSpB - AngSH) / 2));
+	}
 }
 
 void SHeliMovementState::Update( )
@@ -80,7 +89,7 @@ void SHeliMovementState::Update( )
 			break;
 		default:
 			NODEFAULT;
-	};
+	}
 }
 
 void SHeliMovementState::reinit( )
@@ -113,14 +122,12 @@ void SHeliMovementState::UpdatePatrolPath( )
 {
 	if (AlreadyOnPoint( ))
 	{
-
 		f32 dist = GetDistanceToDestPosition( );
 		parent->callback(GameObject::eHelicopterOnPoint)(dist, currP, currPatrolVertex ? currPatrolVertex->vertex_id( ) : -1);
 		CPatrolPath::const_iterator b, e;
 		currPatrolPath->begin(currPatrolVertex, b, e);
 		if (b != e)
 		{
-
 			if (need_to_del_path && currPatrolVertex->data( ).flags( ))//fake flags that signals entrypoint for round path
 				SetPointFlags(currPatrolVertex->vertex_id( ), 0);
 
@@ -147,12 +154,16 @@ void SHeliMovementState::UpdateMovToPoint( )
 		type = eMovNone;
 	}
 }
+
 extern f32 STEP;
 bool SHeliMovementState::AlreadyOnPoint( )
 {
 	f32 dist = GetDistanceToDestPosition( );
 	bool res = false;
-	if (dist <= 0.1f) res = true;
+	if (dist <= 0.1f)
+	{
+		res = true;
+	}
 
 	if (dist < onPointRangeDist)
 	{
@@ -212,7 +223,7 @@ void SHeliMovementState::SetDestPosition(fVector3* pos)
 	}
 }
 
-void SHeliMovementState::goPatrolByPatrolPath(pcstr path_name, int start_idx)
+void SHeliMovementState::goPatrolByPatrolPath(pcstr path_name, s32 start_idx)
 {
 	if (need_to_del_path && currPatrolPath)
 	{
@@ -301,9 +312,10 @@ void SHeliMovementState::load(IReader& input_packet)
 	if (type == eMovPatrolPath)
 	{
 		currPatrolPath = ai( ).patrol_paths( ).path(patrol_path_name);
-		int idx = input_packet.r_s32( );
+		s32 idx = input_packet.r_s32( );
 		currPatrolVertex = currPatrolPath->vertex(idx);
 	}
+
 	if (type == eMovRoundPath)
 	{
 		goByRoundPath(round_center, round_radius, !round_reverse);

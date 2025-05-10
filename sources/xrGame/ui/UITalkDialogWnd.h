@@ -14,25 +14,35 @@
 class CUIScrollView;
 class CUIXml;
 
-class CUITalkDialogWnd: public CUIWindow, public CUIWndCallback
+class CUITalkDialogWnd : public CUIWindow, public CUIWndCallback
 {
 private:
 	typedef CUIWindow inherited;
-	CUIXml*			m_uiXml;
+	CUIXml* m_uiXml;
+
 public:
-	CUITalkDialogWnd();
-	virtual ~CUITalkDialogWnd();
+	CUITalkDialogWnd( );
+	virtual ~CUITalkDialogWnd( );
 
 	virtual void Init(f32 x, f32 y, f32 width, f32 height);
-	
-	virtual void SendMessage(CUIWindow* pWnd, s16 msg, void* pData = NULL);
 
-	virtual void Show();
-	virtual void Hide();
+	virtual void SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData = NULL);
 
-	u32			GetHeaderColor()		{ return m_iNameTextColor; }
-	CGameFont *	GetHeaderFont()			{ return m_pNameTextFont; }
-	u32			GetOurReplicsColor()	{ return m_uOurReplicsColor; }
+	virtual void Show( );
+	virtual void Hide( );
+
+	u32			GetHeaderColor( )
+	{
+		return m_iNameTextColor;
+	}
+	CGameFont* GetHeaderFont( )
+	{
+		return m_pNameTextFont;
+	}
+	u32			GetOurReplicsColor( )
+	{
+		return m_uOurReplicsColor;
+	}
 
 	shared_str			m_ClickedQuestionID;
 
@@ -47,32 +57,32 @@ public:
 
 	CUI3tButton			UIToTradeButton;
 
-	//информация о персонажах 
+	//информация о персонажах
 	CUIStatic			UIOurIcon;
 	CUIStatic			UIOthersIcon;
 	CUICharacterInfo	UICharacterInfoLeft;
 	CUICharacterInfo	UICharacterInfoRight;
 
-	void				AddQuestion			(pcstr str, pcstr value);
-	void				AddAnswer			(pcstr SpeakerName, pcstr str, bool bActor);
-	void				AddIconedAnswer		(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name);
-	void				ClearAll			();
-	void				ClearQuestions		();
+	void				AddQuestion(pcstr str, pcstr value);
+	void				AddAnswer(pcstr SpeakerName, pcstr str, bool bActor);
+	void				AddIconedAnswer(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name);
+	void				ClearAll( );
+	void				ClearQuestions( );
 
-	void				SetOsoznanieMode	(bool b);
+	void				SetOsoznanieMode(bool b);
+
 private:
-	CUIScrollView*			UIQuestionsList;
-	CUIScrollView*			UIAnswersList;
+	CUIScrollView* UIQuestionsList;
+	CUIScrollView* UIAnswersList;
 
 	// Шрифт и цвет текста с именем персонажа
-	CGameFont			*m_pNameTextFont;
+	CGameFont* m_pNameTextFont;
 	u32					m_iNameTextColor;
 	// Цвет тeкста и шрифт наших реплик
 	u32					m_uOurReplicsColor;
 
-	void __stdcall		OnTradeClicked			(CUIWindow* w, void*);
-	void __stdcall		OnQuestionClicked		(CUIWindow* w, void*);
-	
+	void __stdcall		OnTradeClicked(CUIWindow* w, pvoid);
+	void __stdcall		OnQuestionClicked(CUIWindow* w, pvoid);
 };
 
 class CUIQuestionItem :public CUIWindow, public CUIWndCallback
@@ -81,13 +91,13 @@ class CUIQuestionItem :public CUIWindow, public CUIWndCallback
 	f32			m_min_height;
 
 public:
-	CUI3tButton*	m_text;
+	CUI3tButton* m_text;
 	shared_str		m_s_value;
-					CUIQuestionItem			(CUIXml* xml_doc, pcstr path);
-	void			Init					(pcstr val, pcstr text);
+	CUIQuestionItem(CUIXml* xml_doc, pcstr path);
+	void			Init(pcstr val, pcstr text);
 
-	virtual void	SendMessage				(CUIWindow* pWnd, s16 msg, void* pData = NULL);
-	void __stdcall	OnTextClicked			(CUIWindow* w, void*);
+	virtual void	SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData = NULL);
+	void __stdcall	OnTextClicked(CUIWindow* w, void*);
 };
 
 class CUIAnswerItem :public CUIWindow
@@ -96,20 +106,20 @@ class CUIAnswerItem :public CUIWindow
 
 	f32			m_min_height;
 	f32			m_bottom_footer;
-	CUIStatic*		m_text;
-	CUIStatic*		m_name;
+	CUIStatic* m_text;
+	CUIStatic* m_name;
+
 public:
-					CUIAnswerItem			(CUIXml* xml_doc, pcstr path);
-	void			Init					(pcstr text, pcstr name);
+	CUIAnswerItem(CUIXml* xml_doc, pcstr path);
+	void			Init(pcstr text, pcstr name);
 };
 
 class CUIAnswerItemIconed :public CUIAnswerItem
 {
 	typedef CUIAnswerItem inherited;
-	CUIStatic*		m_icon;
+	CUIStatic* m_icon;
 
 public:
-					CUIAnswerItemIconed		(CUIXml* xml_doc, pcstr path);
-	void			Init					(pcstr text, pcstr texture_name, fRect texture_rect);
-
+	CUIAnswerItemIconed(CUIXml* xml_doc, pcstr path);
+	void			Init(pcstr text, pcstr texture_name, fRect texture_rect);
 };

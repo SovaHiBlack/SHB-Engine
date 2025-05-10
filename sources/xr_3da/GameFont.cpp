@@ -4,7 +4,7 @@
 #include "Render.h"
 
 extern ENGINE_API BOOL g_bRendering;
-ENGINE_API fVector2		g_current_font_scale = { 1.0f,1.0f };
+ENGINE_API fVector2		g_current_font_scale = {1.0f,1.0f};
 
 CGameFont::CGameFont(pcstr section, u32 flags)
 {
@@ -392,9 +392,7 @@ u16 CGameFont::SplitByWidth(u16* puBuffer, u16 uBufferSize, f32 fTargetWidth, pc
 	return nLines;
 }
 
-void CGameFont::MasterOut(
-	BOOL bCheckDevice, BOOL bUseCoords, BOOL bScaleCoords, BOOL bUseSkip,
-	f32 _x, f32 _y, f32 _skip, pcstr fmt, va_list p)
+void CGameFont::MasterOut(BOOL bCheckDevice, BOOL bUseCoords, BOOL bScaleCoords, BOOL bUseSkip, f32 _x, f32 _y, f32 _skip, pcstr fmt, va_list p)
 {
 	if (bCheckDevice && (!Device.b_is_Active))
 	{
@@ -409,7 +407,7 @@ void CGameFont::MasterOut(
 	rs.height = fCurrentHeight;
 	rs.align = eCurrentAlignment;
 
-	int vs_sz = _vsnprintf(rs.string, sizeof(rs.string) - 1, fmt, p);
+	s32 vs_sz = _vsnprintf(rs.string, sizeof(rs.string) - 1, fmt, p);
 
 	VERIFY((vs_sz != -1) && (rs.string[vs_sz] == '\0'));
 

@@ -15,7 +15,7 @@ CORE_API	fMatrix4x4			Fidentity;
 CORE_API	dMatrix4x4			Didentity;
 CORE_API	CRandom			Random;
 
-u16 getFPUsw()
+u16 getFPUsw( )
 {
 	u16		SW;
 	__asm	fstcw SW;
@@ -31,62 +31,62 @@ namespace FPU
 	u16			_64 = 0;
 	u16			_64r = 0;
 
-	CORE_API void 	m24()
+	CORE_API void 	m24( )
 	{
 		u16		p = _24;
 		__asm fldcw p;
 	}
-	CORE_API void 	m24r()
+	CORE_API void 	m24r( )
 	{
 		u16		p = _24r;
 		__asm fldcw p;
 	}
-	CORE_API void 	m53()
+	CORE_API void 	m53( )
 	{
 		u16		p = _53;
 		__asm fldcw p;
 	}
-	CORE_API void 	m53r()
+	CORE_API void 	m53r( )
 	{
 		u16		p = _53r;
 		__asm fldcw p;
 	}
-	CORE_API void 	m64()
+	CORE_API void 	m64( )
 	{
 		u16		p = _64;
 		__asm fldcw p;
 	}
-	CORE_API void 	m64r()
+	CORE_API void 	m64r( )
 	{
 		u16		p = _64r;
 		__asm fldcw p;
 	}
 
-	void		initialize()
+	void		initialize( )
 	{
-		_clear87();
+		_clear87( );
 
 		_control87(_PC_24, MCW_PC);
 		_control87(_RC_CHOP, MCW_RC);
-		_24 = getFPUsw();	// 24, chop
+		_24 = getFPUsw( );	// 24, chop
 		_control87(_RC_NEAR, MCW_RC);
-		_24r = getFPUsw();	// 24, rounding
+		_24r = getFPUsw( );	// 24, rounding
 
 		_control87(_PC_53, MCW_PC);
 		_control87(_RC_CHOP, MCW_RC);
-		_53 = getFPUsw();	// 53, chop
+		_53 = getFPUsw( );	// 53, chop
 		_control87(_RC_NEAR, MCW_RC);
-		_53r = getFPUsw();	// 53, rounding
+		_53r = getFPUsw( );	// 53, rounding
 
 		_control87(_PC_64, MCW_PC);
 		_control87(_RC_CHOP, MCW_RC);
-		_64 = getFPUsw();	// 64, chop
+		_64 = getFPUsw( );	// 64, chop
 		_control87(_RC_NEAR, MCW_RC);
-		_64r = getFPUsw();	// 64, rounding
+		_64r = getFPUsw( );	// 64, rounding
 
-		m24r();
+		m24r( );
 
-		::Random.seed(u32(CPU::GetCLK() % (1i64 << 32i64)));
+		::Random.seed(u32(CPU::GetCLK( ) % (1i64 << 32i64)));
 	}
 };
 
@@ -105,7 +105,7 @@ namespace CPU
 
 	CORE_API _processor_info	ID;
 
-	CORE_API u64				QPC()
+	CORE_API u64				QPC( )
 	{
 		u64		_dest;
 		QueryPerformanceCounter((PLARGE_INTEGER)&_dest);
@@ -113,31 +113,31 @@ namespace CPU
 		return	_dest;
 	}
 
-	void Detect()
+	void Detect( )
 	{
 		// General CPU identification
 		if (!_cpuid(&ID))
 		{
 			// Core.Fatal		("Fatal error: can't detect CPU/FPU.");
-			abort();
+			abort( );
 		}
 
 		// Timers & frequency
 		u64			start, end;
 		u32			dwStart, dwTest;
 
-		SetPriorityClass(GetCurrentProcess(), REALTIME_PRIORITY_CLASS);
+		SetPriorityClass(GetCurrentProcess( ), REALTIME_PRIORITY_CLASS);
 
 		// Detect Freq
-		dwTest = timeGetTime();
+		dwTest = timeGetTime( );
 		do
 		{
-			dwStart = timeGetTime();
+			dwStart = timeGetTime( );
 		}
 		while (dwTest == dwStart);
-		start = GetCLK();
-		while (timeGetTime() - dwStart < 1000);
-		end = GetCLK();
+		start = GetCLK( );
+		while (timeGetTime( ) - dwStart < 1000);
+		end = GetCLK( );
 		clk_per_second = end - start;
 
 		// Detect RDTSC Overhead
@@ -145,8 +145,8 @@ namespace CPU
 		u64 dummy = 0;
 		for (int i = 0; i < 256; i++)
 		{
-			start = GetCLK();
-			clk_overhead += GetCLK() - start - dummy;
+			start = GetCLK( );
+			clk_overhead += GetCLK( ) - start - dummy;
 		}
 		clk_overhead /= 256;
 
@@ -155,12 +155,12 @@ namespace CPU
 		qpc_overhead = 0;
 		for (i = 0; i < 256; i++)
 		{
-			start = QPC();
-			qpc_overhead += QPC() - start - dummy;
+			start = QPC( );
+			qpc_overhead += QPC( ) - start - dummy;
 		}
 		qpc_overhead /= 256;
 
-		SetPriorityClass(GetCurrentProcess(), NORMAL_PRIORITY_CLASS);
+		SetPriorityClass(GetCurrentProcess( ), NORMAL_PRIORITY_CLASS);
 
 		clk_per_second -= clk_overhead;
 		clk_per_milisec = clk_per_second / 1000;
@@ -204,11 +204,11 @@ void _initialize_cpu( )
 	if (CPU::ID.feature & _CPU_FEATURE_SSE2)	strcat(features, ", SSE2");
 	Msg("* CPU Features: %s\n", features);
 
-	Fidentity.identity();	// Identity matrix
-	Didentity.identity();	// Identity matrix
-	pvInitializeStatics();	// Lookup table for compressed normals
-	FPU::initialize();
-	_initialize_cpu_thread();
+	Fidentity.identity( );	// Identity matrix
+	Didentity.identity( );	// Identity matrix
+	pvInitializeStatics( );	// Lookup table for compressed normals
+	FPU::initialize( );
+	_initialize_cpu_thread( );
 }
 
 // per-thread initialization
@@ -220,14 +220,14 @@ void _initialize_cpu( )
 #define _MM_SET_FLUSH_ZERO_MODE(mode) _mm_setcsr((_mm_getcsr() & ~_MM_FLUSH_ZERO_MASK) | (mode))
 #define _MM_SET_DENORMALS_ZERO_MODE(mode) _mm_setcsr((_mm_getcsr() & ~_MM_DENORMALS_ZERO_MASK) | (mode))
 static	BOOL	_denormals_are_zero_supported = TRUE;
-void debug_on_thread_spawn();
+void debug_on_thread_spawn( );
 
-void _initialize_cpu_thread()
+void _initialize_cpu_thread( )
 {
-	debug_on_thread_spawn();
+	debug_on_thread_spawn( );
 
 	// fpu & sse 
-	FPU::m24r();
+	FPU::m24r( );
 
 	if (CPU::ID.feature & _CPU_FEATURE_SSE)
 	{
@@ -287,7 +287,7 @@ void	__cdecl			thread_entry(pvoid _params)
 	thread_t* entry = startup->entry;
 	pvoid arglist = startup->args;
 	xr_delete(startup);
-	_initialize_cpu_thread();
+	_initialize_cpu_thread( );
 
 	// call
 	entry(arglist);
@@ -295,7 +295,7 @@ void	__cdecl			thread_entry(pvoid _params)
 
 void	thread_spawn(thread_t* entry, pcstr	name, unsigned	stack, pvoid arglist)
 {
-	THREAD_STARTUP* startup = xr_new<THREAD_STARTUP>();
+	THREAD_STARTUP* startup = xr_new<THREAD_STARTUP>( );
 	startup->entry = entry;
 	startup->name = (pstr)name;
 	startup->args = arglist;

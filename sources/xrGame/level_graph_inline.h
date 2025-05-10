@@ -53,12 +53,12 @@ IC	void CLevelGraph::unpack_xz(const CLevelGraph::CPosition& vertex_position, u3
 	z = vertex_position.xz( ) % m_row_length;
 }
 
-IC	void CLevelGraph::unpack_xz(const CLevelGraph::CPosition& vertex_position, int& x, int& z) const
+IC	void CLevelGraph::unpack_xz(const CLevelGraph::CPosition& vertex_position, s32& x, s32& z) const
 {
 	u32					_x, _z;
 	unpack_xz(vertex_position, _x, _z);
-	x = (int)_x;
-	z = (int)_z;
+	x = (s32)_x;
+	z = (s32)_z;
 }
 
 IC	void CLevelGraph::unpack_xz(const CLevelGraph::CPosition& vertex_position, f32& x, f32& z) const
@@ -96,9 +96,9 @@ ICF	const fVector3& CLevelGraph::vertex_position(fVector3& dest_position, const 
 
 IC	const CLevelGraph::CPosition& CLevelGraph::vertex_position(CLevelGraph::CPosition& dest_position, const fVector3& source_position) const
 {
-	VERIFY(iFloor((source_position.z - header( ).box( ).min.z) / header( ).cell_size( ) + .5f) < (int)m_row_length);
-	int					pxz = iFloor(((source_position.x - header( ).box( ).min.x) / header( ).cell_size( ) + .5f)) * m_row_length + iFloor((source_position.z - header( ).box( ).min.z) / header( ).cell_size( ) + .5f);
-	int					py = iFloor(65535.f * (source_position.y - header( ).box( ).min.y) / header( ).factor_y( ) + EPSILON_7);
+	VERIFY(iFloor((source_position.z - header( ).box( ).min.z) / header( ).cell_size( ) + .5f) < (s32)m_row_length);
+	s32					pxz = iFloor(((source_position.x - header( ).box( ).min.x) / header( ).cell_size( ) + .5f)) * m_row_length + iFloor((source_position.z - header( ).box( ).min.z) / header( ).cell_size( ) + .5f);
+	s32					py = iFloor(65535.f * (source_position.y - header( ).box( ).min.y) / header( ).factor_y( ) + EPSILON_7);
 	VERIFY(pxz < (1 << MAX_NODE_BIT_COUNT) - 1);
 	dest_position.xz(u32(pxz));
 	clamp(py, 0, 65535);
@@ -197,7 +197,7 @@ IC bool CLevelGraph::inside(const u32 vertex_id, const fVector3& position, const
 
 IC bool	CLevelGraph::inside(const u32 vertex_id, const fVector2& position) const
 {
-	int					pxz = iFloor(((position.x - header( ).box( ).min.x) / header( ).cell_size( ) + .5f)) * m_row_length + iFloor((position.y - header( ).box( ).min.z) / header( ).cell_size( ) + .5f);
+	s32					pxz = iFloor(((position.x - header( ).box( ).min.x) / header( ).cell_size( ) + .5f)) * m_row_length + iFloor((position.y - header( ).box( ).min.z) / header( ).cell_size( ) + .5f);
 	VERIFY(pxz < (1 << MAX_NODE_BIT_COUNT) - 1);
 	bool				b = vertex(vertex_id)->position( ).xz( ) == u32(pxz);
 	return				(b);
@@ -283,7 +283,7 @@ ICF u8	CLevelGraph::CVertex::light( ) const
 	return				(NodeCompressed::light( ));
 }
 
-ICF u32	CLevelGraph::CVertex::link(int index) const
+ICF u32	CLevelGraph::CVertex::link(s32 index) const
 {
 	return				(NodeCompressed::link(u8(index)));
 }
@@ -572,10 +572,10 @@ IC	bool	CLevelGraph::create_straight_path(u32 start_vertex_id, const fVector2& s
 template<typename T>
 IC	void CLevelGraph::assign_y_values(xr_vector<T>& path)
 {
-	fVector3						DUP = { 0.0f,1.0f,0.0f };
+	fVector3						DUP = {0.0f,1.0f,0.0f};
 	fVector3 normal;
 	fVector3 v1;
-	fVector3 P = { 0.0f,0.0f,0.0f };
+	fVector3 P = {0.0f,0.0f,0.0f};
 	fPlane3						PL;
 	const CVertex* _vertex;
 	u32							prev_id = u32(-1);
@@ -608,10 +608,10 @@ IC	bool CLevelGraph::valid_vertex_position(const fVector3& position) const
 	if ((position.x < header( ).box( ).min.x - header( ).cell_size( ) * .5f) || (position.x > header( ).box( ).max.x + header( ).cell_size( ) * .5f) || (position.z < header( ).box( ).min.z - header( ).cell_size( ) * .5f) || (position.z > header( ).box( ).max.z + header( ).cell_size( ) * .5f))
 		return			(false);
 
-	if (!(iFloor((position.z - header( ).box( ).min.z) / header( ).cell_size( ) + .5f) < (int)m_row_length))
+	if (!(iFloor((position.z - header( ).box( ).min.z) / header( ).cell_size( ) + .5f) < (s32)m_row_length))
 		return			(false);
 
-	if (!(iFloor((position.x - header( ).box( ).min.x) / header( ).cell_size( ) + .5f) < (int)m_column_length))
+	if (!(iFloor((position.x - header( ).box( ).min.x) / header( ).cell_size( ) + .5f) < (s32)m_column_length))
 		return			(false);
 
 	return				((vertex_position(position).xz( ) < (1 << MAX_NODE_BIT_COUNT) - 1));

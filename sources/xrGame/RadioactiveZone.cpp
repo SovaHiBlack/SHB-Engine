@@ -78,7 +78,7 @@ BOOL CRadioactiveZone::feel_touch_contact(CObject* O)
 	CActor* A = smart_cast<CActor*>(O);
 	if (A)
 	{
-		if (!((CCF_Shape*) CFORM( ))->Contact(O))
+		if (!((CCF_Shape*)CFORM( ))->Contact(O))
 		{
 			return FALSE;
 		}

@@ -97,7 +97,7 @@ public:
 	}
 	void 				Load(IReader& fs);
 	void 				Save(IWriter& fs);
-	IC int				GetID( )
+	IC s32				GetID( )
 	{
 		return ID;
 	}
@@ -244,7 +244,7 @@ public:
 
 		return materials.end( );
 	}
-	IC GameMtlIt 		GetMaterialItByID(int id)
+	IC GameMtlIt 		GetMaterialItByID(s32 id)
 	{
 		for (GameMtlIt it = materials.begin( ); materials.end( ) != it; ++it)
 		{
@@ -262,7 +262,7 @@ public:
 		return ((it == materials.end( )) ? GAMEMTL_NONE_ID : (*it)->ID);
 	}
 
-	IC u16				GetMaterialIdx(int ID)
+	IC u16				GetMaterialIdx(s32 ID)
 	{
 		GameMtlIt it = GetMaterialItByID(ID);
 		VERIFY(materials.end( ) != it);

@@ -7,7 +7,7 @@
 #include "../string_table.h"
 
 #include "../actor.h"
-#include "../uigamesp.h"
+#include "../UIGame.h"
 #include "../hudmanager.h"
 
 #include "../CustomOutfit.h"

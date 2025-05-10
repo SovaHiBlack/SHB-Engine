@@ -6,7 +6,7 @@
 
 #include "../actor.h"
 #include "../HUDManager.h"
-#include "../UIGameSP.h"
+#include "../UIGame.h"
 #include "../PDA.h"
 #include "../character_info.h"
 #include "../level.h"
@@ -166,7 +166,7 @@ void CUITalkWnd::UpdateQuestions( )
 	m_bNeedToUpdateQuestions = false;
 }
 
-void CUITalkWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUITalkWnd::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	if (pWnd == UITalkDialogWnd && msg == TALK_DIALOG_TRADE_BUTTON_CLICKED)
 	{
@@ -197,7 +197,8 @@ void UpdateCameraDirection(CGameObject* pTo)
 
 	des_dir.sub(des_pt, cam->vPosition);
 
-	f32 p, h;
+	f32 p;
+	f32 h;
 	des_dir.getHP(h, p);
 
 	if (angle_difference(cam->yaw, -h) > 0.2)
@@ -270,20 +271,24 @@ void CUITalkWnd::Hide( )
 	m_pActor = NULL;
 }
 
-bool  CUITalkWnd::TopicMode( )
+bool CUITalkWnd::TopicMode( )
 {
 	return NULL == m_pCurrentDialog.get( );
 }
 
-void  CUITalkWnd::ToTopicMode( )
+void CUITalkWnd::ToTopicMode( )
 {
 	m_pCurrentDialog = DIALOG_SHARED_PTR((CPhraseDialog*) NULL);
 }
 
 void CUITalkWnd::AskQuestion( )
 {
-	if (m_bNeedToUpdateQuestions) return;//quick dblclick:(
-	shared_str					phrase_id;
+	if (m_bNeedToUpdateQuestions)
+	{//quick dblclick:(
+		return;
+	}
+
+	shared_str phrase_id;
 
 	//игрок выбрал тему разговора
 	if (TopicMode( ))
@@ -292,7 +297,7 @@ void CUITalkWnd::AskQuestion( )
 			(!m_pOurDialogManager->HaveAvailableDialog(UITalkDialogWnd->m_ClickedQuestionID)))
 		{
 
-			string128	s;
+			string128 s;
 			sprintf_s(s, "ID = [%s] of selected question is out of range of available dialogs ", UITalkDialogWnd->m_ClickedQuestionID);
 			VERIFY2(FALSE, s);
 		}
@@ -311,11 +316,8 @@ void CUITalkWnd::AskQuestion( )
 	NeedUpdateQuestions( );
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUITalkWnd::SayPhrase(const shared_str& phrase_id)
 {
-
 	AddAnswer(m_pCurrentDialog->GetPhraseText(phrase_id), m_pOurInvOwner->Name( ));
 	m_pOurDialogManager->SayPhrase(m_pCurrentDialog, phrase_id);
 	//если диалог завершился, перейти в режим выбора темы
@@ -338,7 +340,11 @@ void CUITalkWnd::AddQuestion(const shared_str& text, const shared_str& value)
 void CUITalkWnd::AddAnswer(const shared_str& text, pcstr SpeakerName)
 {
 	//для пустой фразы вообще ничего не выводим
-	if (text.size( ) == 0) return;
+	if (text.size( ) == 0)
+	{
+		return;
+	}
+
 	PlaySnd(text.c_str( ));
 
 	bool i_am = (0 == xr_strcmp(SpeakerName, m_pOurInvOwner->Name( )));
@@ -349,7 +355,6 @@ void CUITalkWnd::SwitchToTrade( )
 {
 	if (m_pOurInvOwner->IsTradeEnabled( ) && m_pOthersInvOwner->IsTradeEnabled( ))
 	{
-
 		UITalkDialogWnd->Hide( );
 
 		UITradeWnd->InitTrade(m_pOurInvOwner, m_pOthersInvOwner);
@@ -360,7 +365,7 @@ void CUITalkWnd::SwitchToTrade( )
 	}
 }
 
-bool CUITalkWnd::IR_OnKeyboardPress(int dik)
+bool CUITalkWnd::IR_OnKeyboardPress(s32 dik)
 {
 	//.	StopSnd						();
 	EGameActions cmd = get_binded_action(dik);
@@ -370,24 +375,31 @@ bool CUITalkWnd::IR_OnKeyboardPress(int dik)
 		{
 			return true;
 		}
+
 		GetHolder( )->StartStopMenu(this, true);
 		return true;
 	}
+
 	return inherited::IR_OnKeyboardPress(dik);
 }
 
-bool CUITalkWnd::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CUITalkWnd::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	if (m_pOthersInvOwner && m_pOthersInvOwner->NeedOsoznanieMode( ))
 	{
 		return true;
 	}
+
 	return inherited::OnKeyboard(dik, keyboard_action);
 }
 
 void CUITalkWnd::PlaySnd(pcstr text)
 {
-	if (xr_strlen(text) == 0) return;
+	if (xr_strlen(text) == 0)
+	{
+		return;
+	}
+
 	StopSnd( );
 
 	string_path	fn;

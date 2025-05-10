@@ -23,8 +23,8 @@ public:
 	virtual void		SetCurrentValue( );
 	virtual void		SaveValue( );
 	virtual bool		IsChanged( );
-	virtual void 		SeveBackUpValue( );
-	virtual void 		Undo( );
+	virtual void		SeveBackUpValue( );
+	virtual void		Undo( );
 
 	pcstr		GetText( );
 

@@ -834,7 +834,7 @@
     <ClInclude Include="map_location.h" />
     <ClInclude Include="map_location_defs.h" />
     <ClInclude Include="map_manager.h" />
-    <ClInclude Include="map_spot.h" />
+    <ClInclude Include="UIMapSpot.h" />
     <ClInclude Include="material_manager.h" />
     <ClInclude Include="material_manager_inline.h" />
     <ClInclude Include="MathUtils.h" />
@@ -1289,7 +1289,7 @@
     <ClInclude Include="UIDialogHolder.h" />
     <ClInclude Include="UIFrameRect.h" />
     <ClInclude Include="UIGameCustom.h" />
-    <ClInclude Include="UIGameSP.h" />
+    <ClInclude Include="UIGame.h" />
     <ClInclude Include="UIGame_custom_script.h" />
     <ClInclude Include="UIStaticItem.h" />
     <ClInclude Include="UIZoneMap.h" />
@@ -1907,7 +1907,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="map_location.cpp" />
     <ClCompile Include="map_manager.cpp" />
-    <ClCompile Include="map_spot.cpp" />
+    <ClCompile Include="UIMapSpot.cpp" />
     <ClCompile Include="material_manager.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="medkit.cpp" />
@@ -2240,7 +2240,7 @@
     <ClCompile Include="UIDialogHolder.cpp" />
     <ClCompile Include="UIFrameRect.cpp" />
     <ClCompile Include="UIGameCustom.cpp" />
-    <ClCompile Include="UIGameSP.cpp" />
+    <ClCompile Include="UIGame.cpp" />
     <ClCompile Include="UIGame_custom_script.cpp" />
     <ClCompile Include="UIStaticItem.cpp" />
     <ClCompile Include="UIZoneMap.cpp" />

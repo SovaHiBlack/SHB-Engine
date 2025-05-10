@@ -182,11 +182,11 @@ BOOL CHelicopter::net_Spawn(CSE_Abstract* DC)
 
 	if (pUserData->section_exist(s))
 	{
-		int lc = pUserData->line_count(s);
+		s32 lc = pUserData->line_count(s);
 		pcstr name;
 		pcstr value;
 		s16 boneID;
-		for (int i = 0; i < lc; ++i)
+		for (s32 i = 0; i < lc; ++i)
 		{
 			pUserData->r_line(s, i, &name, &value);
 			boneID = K->LL_BoneID(name);
@@ -458,7 +458,7 @@ void CHelicopter::shedule_Update(u32 time_delta)
 	if (m_ready_explode)ExplodeHelicopter( );
 }
 
-void CHelicopter::goPatrolByPatrolPath(pcstr path_name, int start_idx)
+void CHelicopter::goPatrolByPatrolPath(pcstr path_name, s32 start_idx)
 {
 	m_movement.goPatrolByPatrolPath(path_name, start_idx);
 }

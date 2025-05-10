@@ -72,7 +72,6 @@ void CPHElement::add_Cylinder(const fCylinder& V)
 
 void CPHElement::build( )
 {
-
 	m_body = dBodyCreate(0);//phWorld
 	//m_saved_contacts=dJointGroupCreate (0);
 	//b_contacts_saved=false;
@@ -86,7 +85,7 @@ void CPHElement::build( )
 	}
 	else
 	{
-		VERIFY2(m_mass.mass > 0.f, "Element has bad mass");
+		VERIFY2(m_mass.mass > 0.0f, "Element has bad mass");
 		dBodySetMass(m_body, &m_mass);
 	}
 
@@ -163,38 +162,38 @@ dMass CPHElement::recursive_mass_summ(u16 start_geom, FRACTURE_I cur_fracture)
 		cur_fracture->SetMassParts(m_mass, recursive_mass_summ(start_geom, cur_fracture));
 	return end_mass;
 }
-void		CPHElement::setDensity(f32 M)
+
+void CPHElement::setDensity(f32 M)
 {
 	calculate_it_data_use_density(get_mc_data( ), M);
 }
 
-void		CPHElement::setMass(f32 M)
+void CPHElement::setMass(f32 M)
 {
-
 	calculate_it_data(get_mc_data( ), M);
 }
 
-void		CPHElement::setDensityMC(f32 M, const fVector3& mass_center)
+void CPHElement::setDensityMC(f32 M, const fVector3& mass_center)
 {
 	m_mass_center.set(mass_center);
 	calc_volume_data( );
 	calculate_it_data_use_density(mass_center, M);
 }
 
-void		CPHElement::setMassMC(f32 M, const fVector3& mass_center)
+void CPHElement::setMassMC(f32 M, const fVector3& mass_center)
 {
 	m_mass_center.set(mass_center);
 	calc_volume_data( );
 	calculate_it_data(mass_center, M);
 }
 
-void		CPHElement::Start( )
+void CPHElement::Start( )
 {
 	build( );
 	RunSimulation( );
 }
 
-void		CPHElement::Deactivate( )
+void CPHElement::Deactivate( )
 {
 	VERIFY(isActive( ));
 
@@ -235,26 +234,40 @@ void CPHElement::getQuaternion(fQuaternion& quaternion)
 	quaternion.set(-q[0], q[1], q[2], q[3]);
 	VERIFY(_valid(quaternion));
 }
+
 void CPHElement::setQuaternion(const fQuaternion& quaternion)
 {
 	VERIFY(_valid(quaternion));
-	if (!isActive( )) return;
-	dQuaternion q = { -quaternion.w,quaternion.x,quaternion.y,quaternion.z };
+	if (!isActive( ))
+	{
+		return;
+	}
+
+	dQuaternion q = {-quaternion.w,quaternion.x,quaternion.y,quaternion.z};
 	dBodySetQuaternion(m_body, q);
 	CPHDisablingRotational::Reinit( );
 	m_flags.set(flUpdate, TRUE);
 	m_shell->spatial_move( );
 }
+
 void CPHElement::GetGlobalPositionDynamic(fVector3* v)
 {
-	if (!isActive( )) return;
+	if (!isActive( ))
+	{
+		return;
+	}
+
 	v->set((*(fVector3*)dBodyGetPosition(m_body)));
 	VERIFY(_valid(*v));
 }
 
 void CPHElement::SetGlobalPositionDynamic(const fVector3& position)
 {
-	if (!isActive( )) return;
+	if (!isActive( ))
+	{
+		return;
+	}
+
 	VERIFY(_valid(position));
 	VERIFY_BOUNDARIES2(position, phBoundaries, PhysicsRefObject( ), "SetGlobalPosition argument ");
 	dBodySetPosition(m_body, position.x, position.y, position.z);
@@ -506,10 +519,10 @@ void CPHElement::PhDataUpdate(dReal step)
 
 	if (!fis_zero(k_w))
 		dBodyAddTorque(
-			m_body,
-			-angular_velocity[0] * k_w,
-			-angular_velocity[1] * k_w,
-			-angular_velocity[2] * k_w
+		m_body,
+		-angular_velocity[0] * k_w,
+		-angular_velocity[1] * k_w,
+		-angular_velocity[2] * k_w
 		);
 
 	dMass mass;
@@ -519,10 +532,10 @@ void CPHElement::PhDataUpdate(dReal step)
 
 	if (!fis_zero(l_air))
 		dBodyAddForce(
-			m_body,
-			-linear_velocity[0] * l_air,
-			-linear_velocity[1] * l_air,
-			-linear_velocity[2] * l_air
+		m_body,
+		-linear_velocity[0] * l_air,
+		-linear_velocity[1] * l_air,
+		-linear_velocity[2] * l_air
 		);
 	VERIFY(dBodyStateValide(m_body));
 	VERIFY2(dV_valid(dBodyGetPosition(m_body)), "invalid body position");
@@ -1173,7 +1186,7 @@ void CPHElement::add_Mass(const SBoneShape& shape, const fMatrix4x4& offset, con
 			break;
 		}
 		case SBoneShape::stNone:
-		break;
+			break;
 		default: NODEFAULT;
 	}
 

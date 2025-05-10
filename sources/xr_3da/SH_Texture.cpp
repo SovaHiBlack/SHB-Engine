@@ -85,8 +85,8 @@ void CTexture::apply_theora	(u32 dwStage)	{
 		u32 _w				= pTheora->Width(false);
 
 		R_CHK				(T2D->LockRect(0,&R,&rect,0));
-		R_ASSERT			(R.Pitch == int(pTheora->Width(false)*4));
-		int _pos			= 0;
+		R_ASSERT			(R.Pitch == s32(pTheora->Width(false)*4));
+		s32 _pos			= 0;
 		pTheora->DecompressFrame((u32*)R.pBits, _w - rect.right, _pos);
 		VERIFY				(u32(_pos) == rect.bottom*_w);
 		R_CHK				(T2D->UnlockRect(0));
@@ -101,7 +101,7 @@ void CTexture::apply_avi	(u32 dwStage)	{
 		// AVI
 		D3DLOCKED_RECT R;
 		R_CHK	(T2D->LockRect(0,&R,NULL,0));
-		R_ASSERT(R.Pitch == int(pAVI->m_dwWidth*4));
+		R_ASSERT(R.Pitch == s32(pAVI->m_dwWidth*4));
 		//		R_ASSERT(pAVI->DecompressFrame((u32*)(R.pBits)));
 		BYTE* ptr; pAVI->GetFrame(&ptr);
 		CopyMemory(R.pBits,ptr,pAVI->m_dwWidth*pAVI->m_dwHeight*4);

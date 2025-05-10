@@ -34,13 +34,13 @@ public:
 
 	ITEM_TABLE&			table			();
 	void				clear			();
-	void				set_table_params(pcstr sect, int width = -1) {table_sect = sect; table_width = width;}
+	void				set_table_params(pcstr sect, s32 width = -1) {table_sect = sect; table_width = width;}
 
 private:
 	ITEM_TABLE*			m_pTable;
 	pcstr				table_sect;
 	//ширина таблицы, если -1 то таблица делается квадратной (ширина равна высоте)
-	int					table_width;
+	s32					table_width;
 
 	//перобразование из LPCSTR в T_ITEM
 
@@ -52,7 +52,7 @@ private:
 	}
 
 	template <>
-		T_ITEM				convert<int>		(pcstr str)
+		T_ITEM				convert<s32>		(pcstr str)
 	{
 		return atoi(str);
 	}
@@ -73,7 +73,7 @@ typename CSIni_Table::ITEM_TABLE* CSIni_Table::m_pTable = NULL;
 TEMPLATE_SPECIALIZATION
 pcstr CSIni_Table::table_sect = NULL;
 TEMPLATE_SPECIALIZATION
-int CSIni_Table::table_width = -1;
+s32 CSIni_Table::table_width = -1;
 */
 
 TEMPLATE_SPECIALIZATION
@@ -121,7 +121,7 @@ typename CSIni_Table::ITEM_TABLE& CSIni_Table::table	()
 		(*m_pTable)[cur_index].resize(cur_table_width);
 		for(std::size_t j=0; j<cur_table_width; j++)
 		{
-			(*m_pTable)[cur_index][j] = convert<typename T_ITEM>(_GetItem(*(*i).second,(int)j,buffer));
+			(*m_pTable)[cur_index][j] = convert<typename T_ITEM>(_GetItem(*(*i).second,(s32)j,buffer));
 		}
 	}
 

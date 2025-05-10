@@ -6,15 +6,15 @@ class CEntityAlive;
 class character_hit_animation_controller
 {
 public:
-	void								SetupHitMotions					( CKinematicsAnimated &ca );
+	void								SetupHitMotions(CKinematicsAnimated& ca);
 	void								PlayHitMotion(const fVector3& dir, const fVector3& bone_pos, u16 bi, CEntityAlive& ea) const;
-	void								GetBaseMatrix					(fMatrix4x4& m, CEntityAlive &ea)const;
+	void								GetBaseMatrix(fMatrix4x4& m, CEntityAlive& ea) const;
 
 private:
-	bool								IsEffected						( u16	bi, CKinematics &ca  )const;
+	bool								IsEffected(u16	bi, CKinematics& ca) const;
 
 	//
-	u16									base_bone;			
+	u16									base_bone;
 	MotionID							bkhit_motion;
 	MotionID							fvhit_motion;
 	MotionID							rthit_motion;
@@ -24,7 +24,7 @@ private:
 	MotionID							all_shift_down;
 	MotionID							hit_downl;
 	MotionID							hit_downr;
-	static	const	u16					num_anims = 7;
+	static const u16					num_anims = 7;
 	mutable u32							block_times[num_anims];
 	//
 };

@@ -89,7 +89,7 @@ void CHelicopter::UpdateHeliParticles( )
 
 		if (m_lanim)
 		{
-			int frame;
+			s32 frame;
 			u32 clr = m_lanim->CalculateBGR(Device.fTimeGlobal, frame); // òþ÷ò¨ð•ðõª ò ¯þ¨üðªõ BGR
 			fColor					fclr;
 			fclr.set((f32)color_get_B(clr), (f32)color_get_G(clr), (f32)color_get_R(clr), 1.f);
@@ -235,8 +235,8 @@ void	CHelicopter::Hit(SHit* pHDS)
 	};
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
-		 smart_cast<CAI_Stalker*>(pHDS->who) ||
-		 smart_cast<CCustomZone*>(pHDS->who))
+		smart_cast<CAI_Stalker*>(pHDS->who) ||
+		smart_cast<CCustomZone*>(pHDS->who))
 		)
 	{
 		callback(GameObject::eHelicopterOnHit)(pHDS->damage( ), pHDS->impulse, pHDS->hit_type, pHDS->who->ID( ));
@@ -337,7 +337,7 @@ void SHeliEnemy::Update( )
 	{
 		case eEnemyNone:
 		case eEnemyPoint:
-		break;
+			break;
 		case eEnemyEntity:
 		{
 			CObject* O = Level( ).Objects.net_Find(destEnemyID);
@@ -345,7 +345,7 @@ void SHeliEnemy::Update( )
 			else	type = eEnemyNone;
 		}break;
 		default:
-		NODEFAULT;
+			NODEFAULT;
 	};
 }
 

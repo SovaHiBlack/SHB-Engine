@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "uigamesp.h"
+#include "UIGame.h"
 #include "actor.h"
 #include "level.h"
 

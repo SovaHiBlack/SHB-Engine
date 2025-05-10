@@ -41,7 +41,7 @@ public:
 		void		cache	();	
 	};
 	fplane			planes	[FRUSTUM_MAXPLANES];
-	int				p_count;
+	s32				p_count;
 
 public:
 	ICF EFC_Visible		AABB_OverlapPlane	(const fplane& P, const f32* mM) const
@@ -67,29 +67,29 @@ public:
 
 	void			SimplifyPoly_AABB	(sPoly* P, fPlane3& plane);
 
-	void			CreateOccluder		(fVector3* p,	int count, fVector3& vBase, CFrustum& clip);
-	BOOL			CreateFromClipPoly	(fVector3* p,	int count, fVector3& vBase, CFrustum& clip);	// returns 'false' if creation failed
-	void			CreateFromPoints	(fVector3* p,	int count, fVector3& vBase );
+	void			CreateOccluder		(fVector3* p, s32 count, fVector3& vBase, CFrustum& clip);
+	BOOL			CreateFromClipPoly	(fVector3* p, s32 count, fVector3& vBase, CFrustum& clip);	// returns 'false' if creation failed
+	void			CreateFromPoints	(fVector3* p, s32 count, fVector3& vBase );
 	void			CreateFromMatrix	(fMatrix4x4& M,	u32 mask);
 	void			CreateFromPortal	(sPoly* P, fVector3& vPN, fVector3& vBase, fMatrix4x4& mFullXFORM);
-	void			CreateFromPlanes	(fPlane3* p,		int count);
+	void			CreateFromPlanes	(fPlane3* p, s32 count);
 
 	sPoly*			ClipPoly			(sPoly& src, sPoly& dest) const;
 
 	u32				getMask				() const { return (1<<p_count)-1; }
 
-	EFC_Visible		testSphere			(fVector3& c, f32 r, u32& test_mask)					const;
-	BOOL			testSphere_dirty	(fVector3& c, f32 r)									const;
-	EFC_Visible		testAABB			(const f32* mM, u32& test_mask)						const;
-	EFC_Visible		testSAABB			(fVector3& c, f32 r, const f32* mM, u32& test_mask)	const;
-	BOOL			testPolyInside_dirty(fVector3* p, int count)									const;
+	EFC_Visible		testSphere			(fVector3& c, f32 r, u32& test_mask) const;
+	BOOL			testSphere_dirty	(fVector3& c, f32 r) const;
+	EFC_Visible		testAABB			(const f32* mM, u32& test_mask) const;
+	EFC_Visible		testSAABB			(fVector3& c, f32 r, const f32* mM, u32& test_mask) const;
+	BOOL			testPolyInside_dirty(fVector3* p, s32 count) const;
 
-	IC BOOL			testPolyInside		(sPoly& src)											const
+	IC BOOL			testPolyInside		(sPoly& src) const
 	{
 		sPoly d;
 		return !!ClipPoly(src,d);
 	}
-	IC BOOL			testPolyInside		(fVector3* p, int count)									const
+	IC BOOL			testPolyInside		(fVector3* p, s32 count) const
 	{
 		sPoly src(p,count);
 		return testPolyInside(src);

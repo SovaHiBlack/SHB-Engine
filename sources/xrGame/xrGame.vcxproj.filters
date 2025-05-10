@@ -5631,7 +5631,7 @@
     <ClInclude Include="ui\UIPdaWnd.h">
       <Filter>UI\Common\PdaWnd</Filter>
     </ClInclude>
-    <ClInclude Include="map_spot.h">
+    <ClInclude Include="UIMapSpot.h">
       <Filter>UI\Common\MapWnd</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIMap.h">
@@ -5949,7 +5949,7 @@
     <ClInclude Include="UIGameCustom.h">
       <Filter>UI\GameTypes\GameCustom</Filter>
     </ClInclude>
-    <ClInclude Include="UIGameSP.h">
+    <ClInclude Include="UIGame.h">
       <Filter>UI\GameTypes\Single</Filter>
     </ClInclude>
     <ClInclude Include="UIGame_custom_script.h">
@@ -8387,7 +8387,7 @@
     <ClCompile Include="ui\UIPdaWnd.cpp">
       <Filter>UI\Common\PdaWnd</Filter>
     </ClCompile>
-    <ClCompile Include="map_spot.cpp">
+    <ClCompile Include="UIMapSpot.cpp">
       <Filter>UI\Common\MapWnd</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIMap.cpp">
@@ -8705,7 +8705,7 @@
     <ClCompile Include="UIGameCustom.cpp">
       <Filter>UI\GameTypes\GameCustom</Filter>
     </ClCompile>
-    <ClCompile Include="UIGameSP.cpp">
+    <ClCompile Include="UIGame.cpp">
       <Filter>UI\GameTypes\Single</Filter>
     </ClCompile>
     <ClCompile Include="UIGame_custom_script.cpp">

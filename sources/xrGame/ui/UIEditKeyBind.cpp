@@ -85,7 +85,7 @@ void CUIEditKeyBind::OnFocusLost( )
 	m_lines.SetTextColor((subst_alpha(m_lines.GetTextColor( ), color_get_A(0xffffffff))));
 }
 
-bool CUIEditKeyBind::OnMouseDown(int mouse_btn)
+bool CUIEditKeyBind::OnMouseDown(s32 mouse_btn)
 {
 	if (m_bEditMode)
 	{
@@ -106,7 +106,7 @@ bool CUIEditKeyBind::OnMouseDown(int mouse_btn)
 		strcat(message, m_keyboard->key_name);
 		SendMessage2Group("key_binding", message);
 
-		return					true;
+		return true;
 	}
 
 	if (mouse_btn == MOUSE_1)
@@ -117,7 +117,7 @@ bool CUIEditKeyBind::OnMouseDown(int mouse_btn)
 	return CUILabel::OnMouseDown(mouse_btn);
 }
 
-bool CUIEditKeyBind::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CUIEditKeyBind::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	if (dik == MOUSE_1 || dik == MOUSE_2 || dik == MOUSE_3)
 	{
@@ -145,7 +145,7 @@ bool CUIEditKeyBind::OnKeyboard(int dik, EUIMessages keyboard_action)
 		OnFocusLost( );
 		m_bChanged = true;
 		SendMessage2Group("key_binding", message);
-		return				true;
+		return true;
 	}
 
 	return false;
@@ -171,12 +171,12 @@ void CUIEditKeyBind::Register(pcstr entry, pcstr group)
 
 void CUIEditKeyBind::SetCurrentValue( )
 {
-	string64				buff;
+	string64 buff;
 	ZeroMemory(buff, sizeof(buff));
 
 	_binding* pbinding = &g_key_bindings[m_action->id];
 
-	int idx = (m_bPrimary) ? 0 : 1;
+	s32 idx = (m_bPrimary) ? 0 : 1;
 	m_keyboard = pbinding->m_keyboard[idx];
 
 	if (m_keyboard)
@@ -221,7 +221,7 @@ bool CUIEditKeyBind::IsChanged( )
 void CUIEditKeyBind::OnMessage(pcstr message)
 {
 	// message = "command=key"
-	int eq = (int) strcspn(message, "=");
+	s32 eq = (s32)strcspn(message, "=");
 
 	if (!m_keyboard)
 	{
@@ -233,7 +233,7 @@ void CUIEditKeyBind::OnMessage(pcstr message)
 		return;
 	}
 
-	string64			command;
+	string64 command;
 	strcpy(command, message);
 	command[eq] = 0;
 

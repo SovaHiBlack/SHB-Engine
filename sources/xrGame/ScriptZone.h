@@ -20,7 +20,7 @@ class CScriptZone : public CSpaceRestrictor, public Feel::Touch
 public:
 	typedef	CSpaceRestrictor inherited;
 
-					CScriptZone( );
+	CScriptZone( );
 	virtual			~CScriptZone( );
 	virtual void	reinit( );
 	virtual BOOL	net_Spawn(CSE_Abstract* DC);

@@ -3,7 +3,7 @@
 #include "..\XR_3DA\Console.h"
 #include "Entity.h"
 #include "HUDManager.h"
-#include "UIGameSP.h"
+#include "UIGame.h"
 #include "actor.h"
 #include "level.h"
 #include "game_cl_base.h"

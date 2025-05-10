@@ -71,7 +71,7 @@ void CMincer::net_Destroy( )
 void CMincer::feel_touch_new(CObject* O)
 {
 	inherited::feel_touch_new(O);
-	if (m_eZoneState == eZoneStateBlowout && (m_dwBlowoutExplosionTime > (u32) m_iStateTime))
+	if (m_eZoneState == eZoneStateBlowout && (m_dwBlowoutExplosionTime > (u32)m_iStateTime))
 	{
 		CPhysicsShellHolder* GO = smart_cast<CPhysicsShellHolder*>(O);
 		Telekinesis( ).activate(GO, m_fThrowInImpulse, m_fTeleHeight, 100000);
@@ -100,7 +100,7 @@ bool CMincer::BlowoutState( )
 
 	//}
 
-	if (m_dwBlowoutExplosionTime < (u32) m_iPreviousStateTime || m_dwBlowoutExplosionTime >= (u32) m_iStateTime)
+	if (m_dwBlowoutExplosionTime < (u32)m_iPreviousStateTime || m_dwBlowoutExplosionTime >= (u32)m_iStateTime)
 	{
 		return ret;
 	}

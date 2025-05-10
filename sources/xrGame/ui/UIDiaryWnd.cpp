@@ -244,7 +244,7 @@ void CUIDiaryWnd::LoadNewsTab( )
 	g_pda_info_state &= ~pda_section::news;
 }
 
-void CUIDiaryWnd::OnSrcListItemClicked(CUIWindow* w, void* p)
+void CUIDiaryWnd::OnSrcListItemClicked(CUIWindow* w, pvoid p)
 {
 	CUITreeViewItem* pSelItem = (CUITreeViewItem*)p;
 	m_DescrView->Clear( );
@@ -265,7 +265,7 @@ void CUIDiaryWnd::Draw( )
 	m_updatedSectionImage->Update( );
 	m_oldSectionImage->Update( );
 
-	fVector2									tab_pos;
+	fVector2 tab_pos;
 	m_FilterTab->GetAbsolutePos(tab_pos);
 
 	fVector2 pos;

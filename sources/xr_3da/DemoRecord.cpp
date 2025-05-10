@@ -10,7 +10,7 @@
 #include "DemoRecord.h"
 #include "Console.h"
 #include "Input.h"
-#include "xr_object.h"
+#include "Object.h"
 #include "Render.h"
 #include "CustomHUD.h"
 
@@ -83,11 +83,11 @@ CDemoRecord::~CDemoRecord( )
 }
 
 //										+X,					-X,					+Y,					-Y,					+Z,					-Z
-static fVector3 cmNorm[6] = { {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f} };
-static fVector3 cmDir[6] = { {1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f} };
+static fVector3 cmNorm[6] = {{0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, -1.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f, 0.0f}};
+static fVector3 cmDir[6] = {{1.0f, 0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f, -1.0f}};
 
-static flags32	s_hud_flag = { 0 };
-static flags32	s_dev_flags = { 0 };
+static flags32	s_hud_flag = {0};
+static flags32	s_dev_flags = {0};
 
 void CDemoRecord::MakeScreenshotFace( )
 {

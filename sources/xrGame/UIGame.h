@@ -28,8 +28,8 @@ public:
 	CUIGame( );
 	virtual				~CUIGame( );
 
-	virtual	void		reset_ui( );
-	virtual	void		shedule_Update(u32 dt);
+	virtual void		reset_ui( );
+	virtual void		shedule_Update(u32 dt);
 	virtual void		SetClGame(game_cl_GameState* g);
 	virtual bool		IR_OnKeyboardPress(s32 dik);
 	virtual bool		IR_OnKeyboardRelease(s32 dik);

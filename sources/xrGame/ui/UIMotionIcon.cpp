@@ -121,7 +121,7 @@ void CUIMotionIcon::Update( )
 
 	inherited::Update( );
 
-	// m_luminosity_progress 
+	//m_luminosity_progress
 	{
 		f32 len = m_noise_progress.GetRange_max( ) - m_noise_progress.GetRange_min( );
 		f32 cur_pos = m_luminosity_progress.GetProgressPos( );

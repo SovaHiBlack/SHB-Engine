@@ -38,7 +38,7 @@ public:
 	virtual void Draw( );
 	virtual void Update( );
 
-	bool OnKeyboardPress(int dik);
+	bool OnKeyboardPress(s32 dik);
 
 protected:
 	CUIStatic			UIStaticDiskIO;
@@ -109,7 +109,7 @@ public:
 	void				TurnOffWarningIcon(EWarningIcons icon);
 
 	// Пороги изменения цвета индикаторов, загружаемые из system.ltx
-	typedef				xr_map<EWarningIcons, xr_vector<f32> >	Thresholds;
+	typedef				xr_map<EWarningIcons, xr_vector<f32>>		Thresholds;
 	typedef				Thresholds::iterator						Thresholds_it;
 	Thresholds			m_Thresholds;
 

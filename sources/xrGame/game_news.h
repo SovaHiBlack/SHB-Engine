@@ -6,25 +6,28 @@
 
 #define DEFAULT_NEWS_SHOW_TIME	5000
 
+struct GAME_NEWS_DATA : public IPureSerializeObject<IReader, IWriter>
+{
+	enum eNewsType
+	{
+		eNews = 0,
+		eTalk = 1
+	} m_type;
+	GAME_NEWS_DATA( );
 
-struct GAME_NEWS_DATA : public IPureSerializeObject<IReader,IWriter>
-{	
-	enum eNewsType{eNews=0, eTalk=1,} m_type;
-						GAME_NEWS_DATA		();
-
-	virtual void		load				(IReader&);
-	virtual void		save				(IWriter&);
+	virtual void		load(IReader&);
+	virtual void		save(IWriter&);
 
 
 	shared_str			news_text;
-	int					show_time;
+	s32					show_time;
 
 	ALife::_TIME_ID		receive_time;
 
 	shared_str			texture_name;
 	fRect				tex_rect;
 
-	pcstr				SingleLineText();
+	pcstr				SingleLineText( );
 
 private:
 	//полный текст новостей, формируется при первом обращении

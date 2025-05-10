@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "LightProjector.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "..\xrRender\lighttrack.h"
 
 // tir2.xrdemo		-> 45.2

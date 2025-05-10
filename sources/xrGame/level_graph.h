@@ -103,7 +103,7 @@ public:
 	ICF		bool	valid_vertex_id(u32 vertex_id) const;
 	IC		const GameGraph::_LEVEL_ID& level_id( ) const;
 	IC		void	unpack_xz(const CLevelGraph::CPosition& vertex_position, u32& x, u32& z) const;
-	IC		void	unpack_xz(const CLevelGraph::CPosition& vertex_position, int& x, int& z) const;
+	IC		void	unpack_xz(const CLevelGraph::CPosition& vertex_position, s32& x, s32& z) const;
 	IC		void	unpack_xz(const CLevelGraph::CPosition& vertex_position, f32& x, f32& z) const;
 	template <typename T>
 	IC		void	unpack_xz(const CLevelGraph::CVertex& vertex, T& x, T& z) const;
@@ -176,7 +176,7 @@ public:
 	IC		const u32 vertex_id(const CLevelGraph::CVertex* vertex) const;
 	u32		vertex_id(const fVector3& position) const;
 	u32		vertex(u32 current_vertex_id, const fVector3& position) const;
-	void	choose_point(const fVector3& start_point, const fVector3& finish_point, const SContour& contour, int vertex_id, fVector3& temp_point, int& saved_index) const;
+	void	choose_point(const fVector3& start_point, const fVector3& finish_point, const SContour& contour, s32 vertex_id, fVector3& temp_point, s32& saved_index) const;
 	IC		bool	check_vertex_in_direction(u32 start_vertex_id, const fVector3& start_position, u32 finish_vertex_id) const;
 	IC		u32		check_position_in_direction(u32 start_vertex_id, const fVector3& start_position, const fVector3& finish_position) const;
 	f32	check_position_in_direction(u32 start_vertex_id, const fVector3& start_position, const fVector3& finish_position, const f32 max_distance) const;
@@ -206,20 +206,20 @@ private:
 	ref_shader			sh_debug;
 
 private:
-	int					m_current_level_id;
+	s32					m_current_level_id;
 	bool				m_current_actual;
 	fVector3				m_current_center;
 	fVector3				m_current_radius;
 
 public:
-	void		setup_current_level(const int& level_id);
+	void		setup_current_level(const s32& level_id);
 
 private:
 	fVector3		convert_position(const fVector3& position);
-	void		draw_edge(const int& vertex_id0, const int& vertex_id1);
-	void		draw_vertex(const int& vertex_id);
-	void		draw_stalkers(const int& vertex_id);
-	void		draw_objects(const int& vertex_id);
+	void		draw_edge(const s32& vertex_id0, const s32& vertex_id1);
+	void		draw_vertex(const s32& vertex_id);
+	void		draw_stalkers(const s32& vertex_id);
+	void		draw_objects(const s32& vertex_id);
 	void		update_current_info( );
 
 private:

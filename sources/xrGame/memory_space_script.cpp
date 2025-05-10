@@ -20,9 +20,9 @@ CScriptGameObject *not_yet_visible_object(const MemorySpace::CNotYetVisibleObjec
 	return			(object.m_object->lua_game_object());
 }
 
-int get_sound_type(const CSoundObject &sound_object)
+s32 get_sound_type(const CSoundObject &sound_object)
 {
-	return			((int)sound_object.m_sound_type);
+	return			((s32)sound_object.m_sound_type);
 }
 
 template <typename T>

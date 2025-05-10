@@ -98,7 +98,8 @@ IC	bool CNearestVertexPathManager::is_accessible	(const _index_type &vertex_id) 
 	if (!inherited::is_accessible(vertex_id))
 		return				(false);
 
-	int						x4,y4;
+	s32						x4;
+	s32						y4;
 	graph->unpack_xz		(graph->vertex(vertex_id),x4,y4);
 	return					(u32(_sqr(x0 - x4) + _sqr(y0 - y4)) <= max_range_sqr);
 }

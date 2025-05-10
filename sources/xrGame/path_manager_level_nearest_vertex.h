@@ -60,11 +60,12 @@ protected:
 			> inherited;
 
 protected:
-	int			x0,y0;
+	s32			x0;
+	s32			y0;
 	u32			max_range_sqr;
-	f32		m_cell_dist;
-	fVector3		m_target_position;
-	f32		m_best_distance_to_target;
+	f32			m_cell_dist;
+	fVector3	m_target_position;
+	f32			m_best_distance_to_target;
 
 public:
 	virtual				~CPathManager	();

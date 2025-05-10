@@ -14,14 +14,10 @@
 //#include "../hudmanager.h"
 #include "UITextureMaster.h"
 
-//////////////////////////////////////////////////////////////////////////
-
 CUIFrameLine::CUIFrameLine( ) : uFlags(0), iSize(0), bHorizontalOrientation(true)
 {
 	iPos.set(0, 0);
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 void CUIFrameLine::Init(pcstr base_name, f32 x, f32 y, f32 size, bool horizontal, DWORD align)
 {
@@ -42,8 +38,6 @@ void CUIFrameLine::InitTexture(pcstr texture)
 	CUITextureMaster::InitTexture(strconcat(sizeof(buf), buf, texture, "_e"), &elements[flSecond]);
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUIFrameLine::SetColor(u32 cl)
 {
 	for (s32 i = 0; i < flMax; ++i)
@@ -51,8 +45,6 @@ void CUIFrameLine::SetColor(u32 cl)
 		elements[i].SetColor(cl);
 	}
 }
-
-//////////////////////////////////////////////////////////////////////////
 
 void CUIFrameLine::UpdateSize( )
 {

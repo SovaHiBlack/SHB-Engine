@@ -150,7 +150,7 @@ extern CActor* g_actor;
 void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, pcstr path)
 {
 	CGameFont* pF;
-	u32	color;
+	u32 color;
 	f32 height;
 
 	height = xml_doc.ReadAttribFlt(path, 0, "btn_height");
@@ -159,14 +159,14 @@ void CUIMMShniaga::CreateList(xr_vector<CUIStatic*>& lst, CUIXml& xml_doc, pcstr
 	CUIXmlInit::InitFont(xml_doc, path, 0, color, pF);
 	R_ASSERT(pF);
 
-	int nodes_num = xml_doc.GetNodesNum(path, 0, "btn");
+	s32 nodes_num = xml_doc.GetNodesNum(path, 0, "btn");
 
 	XML_NODE* tab_node = xml_doc.NavigateToNode(path, 0);
 	xml_doc.SetLocalRoot(tab_node);
 
 	CUIStatic* st;
 
-	for (int i = 0; i < nodes_num; ++i)
+	for (s32 i = 0; i < nodes_num; ++i)
 	{
 		st = xr_new<CUIStatic>( );
 		st->Init(0.0f, 0.0f, m_view->GetDesiredChildWidth( ), height);
@@ -234,7 +234,7 @@ bool CUIMMShniaga::IsButton(CUIWindow* st)
 	return false;
 }
 
-void CUIMMShniaga::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIMMShniaga::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	CUIWindow::SendMessage(pWnd, msg, pData);
 	if (IsButton(pWnd))
@@ -242,13 +242,15 @@ void CUIMMShniaga::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 		switch (msg)
 		{
 			case STATIC_FOCUS_RECEIVED:
+			{
 				SelectBtn(pWnd);
-				break;
+			}
+			break;
 		}
 	}
 }
 
-void CUIMMShniaga::SelectBtn(int btn)
+void CUIMMShniaga::SelectBtn(s32 btn)
 {
 	R_ASSERT(btn >= 0);
 	if (0 == m_page)
@@ -267,7 +269,7 @@ void CUIMMShniaga::SelectBtn(int btn)
 void CUIMMShniaga::SelectBtn(CUIWindow* btn)
 {
 	R_ASSERT(m_page >= 0);
-	for (int i = 0; i < (int) m_buttons.size( ); i++)
+	for (s32 i = 0; i < (s32)m_buttons.size( ); i++)
 	{
 		if (0 == m_page)
 		{
@@ -301,7 +303,7 @@ void CUIMMShniaga::Update( )
 		//		playing = true;
 		fVector2 pos = m_shniaga->GetWndPos( );
 		f32 l = 2 * PI * m_anims[0]->GetHeight( ) / 2;
-		int n = iFloor(pos.y / l);
+		s32 n = iFloor(pos.y / l);
 		f32 a = 2 * PI * (pos.y - l * n) / l;
 		m_anims[0]->SetHeading(-a);
 		m_anims[1]->SetHeading(a);
@@ -353,43 +355,60 @@ void CUIMMShniaga::OnBtnClick( )
 	}
 }
 
-bool CUIMMShniaga::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CUIMMShniaga::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	if (WINDOW_KEY_PRESSED == keyboard_action)
 	{
 		switch (dik)
 		{
 			case DIK_UP:
+			{
 				if (m_selected_btn > 0)
+				{
 					SelectBtn(m_selected_btn - 1);
+				}
+
 				return true;
+			}
 			case DIK_DOWN:
+			{
 				if (m_selected_btn < BtnCount( ) - 1)
+				{
 					SelectBtn(m_selected_btn + 1);
+				}
+
 				return true;
+			}
 			case DIK_RETURN:
+			{
 				OnBtnClick( );
 				return true;
+			}
 			case DIK_ESCAPE:
+			{
 				if (1 == m_page)
+				{
 					ShowMain( );
+				}
+
 				return true;
+			}
 		}
 	}
 
 	return CUIWindow::OnKeyboard(dik, keyboard_action);
 }
 
-int CUIMMShniaga::BtnCount( )
+s32 CUIMMShniaga::BtnCount( )
 {
 	R_ASSERT(-1);
 	if (m_page == 0)
 	{
-		return (int) m_buttons.size( );
+		return (s32)m_buttons.size( );
 	}
 	else if (m_page == 1)
 	{
-		return (int) m_buttons_new.size( );
+		return (s32)m_buttons_new.size( );
 	}
 	else
 	{
@@ -400,7 +419,6 @@ int CUIMMShniaga::BtnCount( )
 f32 CUIMMShniaga::pos(f32 x1, f32 x2, u32 t)
 {
 	f32 x = 0.0f;
-
 	if (t >= 0 && t <= m_run_time)
 	{
 		x = log(1 + (t * 10.0f) / m_run_time) / log(11.0f);
@@ -415,7 +433,6 @@ f32 CUIMMShniaga::pos(f32 x1, f32 x2, u32 t)
 	}
 
 	x *= abs(x2 - x1);
-
 	if (x2 - x1 < 0)
 	{
 		return x1 - x;
@@ -466,15 +483,19 @@ void CUIMMShniaga::ProcessEvent(EVENT ev)
 			// reset flags
 			m_flags.set(fl_SoundFinalized, FALSE);
 			m_flags.set(fl_MovingStoped, FALSE);
-		}	break;
+		}
+		break;
 		case E_Finilize:
+		{
 			if (!m_flags.test(fl_SoundFinalized))
 			{
 				m_sound->whell_Click( );
-
 				m_flags.set(fl_SoundFinalized, TRUE);
-			}	break;
+			}
+		}
+		break;
 		case E_Stop:
+		{
 			if (!m_flags.test(fl_MovingStoped))
 			{
 				m_sound->whell_Stop( );
@@ -485,8 +506,13 @@ void CUIMMShniaga::ProcessEvent(EVENT ev)
 				m_shniaga->SetWndPos(pos);
 
 				m_flags.set(fl_MovingStoped, TRUE);
-			}	break;
-		case E_Update:		m_sound->music_Update( );
-			break;
+			}
+		}
+		break;
+		case E_Update:
+		{
+			m_sound->music_Update( );
+		}
+		break;
 	}
 }

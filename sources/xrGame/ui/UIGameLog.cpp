@@ -34,7 +34,7 @@ CUIStatic* CUIGameLog::AddLogMessage(pcstr msg)
 	pItem->SetClrAnimDelay(5000.0f);
 	pItem->SetClrLightAnim(CHAT_LOG_ITEMS_ANIMATION, false, true, true, true);
 	ForceUpdate( );
-	return							pItem;
+	return pItem;
 }
 
 // warning: initialization of item is incomplete!

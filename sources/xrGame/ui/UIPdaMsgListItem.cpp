@@ -30,7 +30,7 @@ void CUIPdaMsgListItem::Init(f32 x, f32 y, f32 width, f32 height)
 	bool xml_result = uiXml.Init(CONFIG_PATH, UI_PATH, PDA_MSG_MAINGAME_CHAR);
 	R_ASSERT2(xml_result, "xml file not found");
 
-	CUIXmlInit				xml_init;
+	CUIXmlInit xml_init;
 	AttachChild(&UIIcon);
 	xml_init.InitStatic(uiXml, "icon_static", 0, &UIIcon);
 

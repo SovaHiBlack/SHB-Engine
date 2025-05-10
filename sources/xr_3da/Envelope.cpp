@@ -197,9 +197,9 @@ f32 CEnvelope::Evaluate(f32 time)
 
 void CEnvelope::Save(IWriter& F)
 {
-	F.w_u8((u8) behavior[0]);
-	F.w_u8((u8) behavior[1]);
-	F.w_u16((u16) keys.size( ));
+	F.w_u8((u8)behavior[0]);
+	F.w_u8((u8)behavior[1]);
+	F.w_u16((u16)keys.size( ));
 	for (KeyIt k_it = keys.begin( ); k_it != keys.end( ); k_it++)
 	{
 		(*k_it)->Save(F);
@@ -209,7 +209,7 @@ void CEnvelope::Save(IWriter& F)
 void CEnvelope::Load_1(IReader& F)
 {
 	Clear( );
-	F.r(behavior, sizeof(int) * 2);
+	F.r(behavior, sizeof(s32) * 2);
 	s32 y = F.r_u32( );
 	keys.resize(y);
 	for (u32 i = 0; i < keys.size( ); i++)
@@ -255,7 +255,7 @@ void CEnvelope::LoadA(IReader& F)
 			R_ASSERT(cnt == 9);
 			K.value = f[0];
 			K.time = f[1];
-			K.shape = (u8) f[2];
+			K.shape = (u8)f[2];
 			if (K.shape == SHAPE_TCB)
 			{
 				K.tension = f[3];

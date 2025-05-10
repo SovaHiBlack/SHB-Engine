@@ -4,7 +4,7 @@
 #include "ISpatial.h"
 #include "IGame_Persistent.h"
 #include "Render.h"
-#include "xr_object.h"
+#include "Object.h"
 
 s32		g_ErrorLineCount = 15;
 flags32 g_stats_flags = { 0 };

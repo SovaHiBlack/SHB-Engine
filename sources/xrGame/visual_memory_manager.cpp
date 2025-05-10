@@ -263,8 +263,8 @@ f32 CVisualMemoryManager::get_object_velocity	(const CGameObject *game_object, c
 	if ((game_object->ps_Size() < 2) || (not_yet_visible_object.m_prev_time == game_object->ps_Element(game_object->ps_Size() - 2).dwTime))
 		return							(0.f);
 
-	CObject::SavedPosition	pos0 = game_object->ps_Element	(game_object->ps_Size() - 2);
-	CObject::SavedPosition	pos1 = game_object->ps_Element	(game_object->ps_Size() - 1);
+	CObject::SSavedPosition	pos0 = game_object->ps_Element	(game_object->ps_Size() - 2);
+	CObject::SSavedPosition	pos1 = game_object->ps_Element	(game_object->ps_Size() - 1);
 
 	return					(
 		pos1.vPosition.distance_to(pos0.vPosition)/

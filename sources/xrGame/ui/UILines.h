@@ -88,7 +88,7 @@ public:
 	f32				GetVisibleHeight( );
 
 	// cursor control
-	int				m_iCursorPos;
+	s32				m_iCursorPos;
 	void			IncCursorPos( );
 	void			DecCursorPos( );
 

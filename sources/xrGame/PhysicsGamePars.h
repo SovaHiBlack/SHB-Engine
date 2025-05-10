@@ -18,4 +18,4 @@ struct CharacterEffectPars
 	const static f32 vel_cret_wallmark;
 };
 
-void	LoadPhysicsGameParams	( );
+void	LoadPhysicsGameParams( );

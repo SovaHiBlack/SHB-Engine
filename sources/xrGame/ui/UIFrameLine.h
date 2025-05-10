@@ -51,7 +51,7 @@ public:
 	}
 	IC void		SetSize(f32 size)
 	{
-		iSize = size;	
+		iSize = size;
 		uFlags &= ~flValidSize;
 	}
 	IC void		SetOrientation(bool bIsHorizontal)

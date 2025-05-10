@@ -60,9 +60,10 @@ protected:
 			> inherited;
 
 protected:
-	int			x0,y0;
+	s32			x0;
+	s32			y0;
 	u32			max_range_sqr;
-	f32		m_cell_dist;
+	f32			m_cell_dist;
 
 public:
 	virtual				~CPathManager	();

@@ -5,7 +5,6 @@
 #include "stdafx.h"
 
 #include "Render.h"
-
 #include "BasicVisual.h"
 #include "mesh.h"
 
@@ -73,7 +72,7 @@ void IRenderVisual::Load(pcstr N, IReader* data, u32)
 }
 
 #define PCOPY(a)	a = pFrom->a
-void	IRenderVisual::Copy(IRenderVisual* pFrom)
+void IRenderVisual::Copy(IRenderVisual* pFrom)
 {
 	PCOPY(Type);
 	PCOPY(shader);

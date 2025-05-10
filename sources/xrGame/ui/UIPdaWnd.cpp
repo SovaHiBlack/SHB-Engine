@@ -58,8 +58,6 @@ CUIPdaWnd::~CUIPdaWnd( )
 	delete_data(m_oldSectionImage);
 }
 
-//////////////////////////////////////////////////////////////////////////
-
 void CUIPdaWnd::Init( )
 {
 	CUIXml uiXml;
@@ -137,13 +135,13 @@ void CUIPdaWnd::Init( )
 	RearrangeTabButtons(UITabControl, m_sign_places_main);
 }
 
-void CUIPdaWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUIPdaWnd::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	if (pWnd == UITabControl)
 	{
 		if (TAB_CHANGED == msg)
 		{
-			SetActiveSubdialog((EPdaTabs) UITabControl->GetActiveIndex( ));
+			SetActiveSubdialog((EPdaTabs)UITabControl->GetActiveIndex( ));
 		}
 	}
 	else
@@ -204,46 +202,65 @@ void CUIPdaWnd::SetActiveSubdialog(EPdaTabs section)
 	switch (section)
 	{
 		case eptDiary:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIDiaryWnd);
 			InventoryUtilities::SendInfoToActor("ui_pda_events");
 			g_pda_info_state &= ~pda_section::diary;
-			break;
+		}
+		break;
 		case eptContacts:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIPdaContactsWnd);
 			InventoryUtilities::SendInfoToActor("ui_pda_contacts");
 			g_pda_info_state &= ~pda_section::contacts;
-			break;
+		}
+		break;
 		case eptMap:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIMapWnd);
 			g_pda_info_state &= ~pda_section::map;
-			break;
+		}
+		break;
 		case eptEncyclopedia:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIEncyclopediaWnd);
 			InventoryUtilities::SendInfoToActor("ui_pda_encyclopedia");
 			g_pda_info_state &= ~pda_section::encyclopedia;
-			break;
+		}
+		break;
 		case eptActorStatistic:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIActorInfo);
 			InventoryUtilities::SendInfoToActor("ui_pda_actor_info");
 			g_pda_info_state &= ~pda_section::statistics;
-			break;
+		}
+		break;
 		case eptRanking:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIStalkersRanking);
 			g_pda_info_state &= ~pda_section::ranking;
 			InventoryUtilities::SendInfoToActor("ui_pda_ranking");
-			break;
+		}
+		break;
 		case eptQuests:
+		{
 			m_pActiveDialog = smart_cast<CUIWindow*>(UIEventsWnd);
 			g_pda_info_state &= ~pda_section::quests;
-			break;
+		}
+		break;
 		default:
+		{
 			Msg("not registered button identifier [%d]", UITabControl->GetActiveIndex( ));
+		}
 	}
+
 	UIMainPdaFrame->AttachChild(m_pActiveDialog);
 	m_pActiveDialog->Show(true);
 
 	if (UITabControl->GetActiveIndex( ) != section)
+	{
 		UITabControl->SetNewActiveTab(section);
+	}
 
 	m_pActiveSection = section;
 }
@@ -262,23 +279,20 @@ void CUIPdaWnd::PdaContentsChanged(pda_section::part type)
 	{
 		UIEncyclopediaWnd->ReloadArticles( );
 	}
-	else
-		if (type == pda_section::news)
-		{
-			UIDiaryWnd->AddNews( );
-			UIDiaryWnd->MarkNewsAsRead(UIDiaryWnd->IsShown( ));
-		}
-		else
-			if (type == pda_section::quests)
-			{
-				UIEventsWnd->Reload( );
-			}
-			else
-				if (type == pda_section::contacts)
-				{
-					UIPdaContactsWnd->Reload( );
-					b = false;
-				}
+	else if (type == pda_section::news)
+	{
+		UIDiaryWnd->AddNews( );
+		UIDiaryWnd->MarkNewsAsRead(UIDiaryWnd->IsShown( ));
+	}
+	else if (type == pda_section::quests)
+	{
+		UIEventsWnd->Reload( );
+	}
+	else if (type == pda_section::contacts)
+	{
+		UIPdaContactsWnd->Reload( );
+		b = false;
+	}
 
 	if (b)
 	{
@@ -298,7 +312,7 @@ void CUIPdaWnd::DrawUpdatedSections( )
 	m_updatedSectionImage->Update( );
 	m_oldSectionImage->Update( );
 
-	fVector2									tab_pos;
+	fVector2 tab_pos;
 	UITabControl->GetAbsolutePos(tab_pos);
 
 	fVector2 pos;
@@ -306,63 +320,118 @@ void CUIPdaWnd::DrawUpdatedSections( )
 	pos = m_sign_places_main[eptQuests];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::quests)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 
 	pos = m_sign_places_main[eptMap];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::map)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 
 	pos = m_sign_places_main[eptDiary];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::diary)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 
 	pos = m_sign_places_main[eptContacts];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::contacts)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 
 	pos = m_sign_places_main[eptRanking];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::ranking)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 
 	pos = m_sign_places_main[eptActorStatistic];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::statistics)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 
 	pos = m_sign_places_main[eptEncyclopedia];
 	pos.add(tab_pos);
 	if (g_pda_info_state & pda_section::encyclopedia)
+	{
 		draw_sign(m_updatedSectionImage, pos);
+	}
 	else
+	{
 		draw_sign(m_oldSectionImage, pos);
+	}
 }
 
 void CUIPdaWnd::Reset( )
 {
 	inherited::Reset( );
-	if (UIMapWnd)			UIMapWnd->Reset( );
-	if (UIPdaContactsWnd)	UIPdaContactsWnd->Reset( );
-	if (UIEncyclopediaWnd)	UIEncyclopediaWnd->Reset( );
-	if (UIDiaryWnd)			UIDiaryWnd->Reset( );
-	if (UIActorInfo)		UIActorInfo->Reset( );
-	if (UIStalkersRanking)	UIStalkersRanking->Reset( );
-	if (UIEventsWnd)		UIEventsWnd->Reset( );
+	if (UIMapWnd)
+	{
+		UIMapWnd->Reset( );
+	}
+
+	if (UIPdaContactsWnd)
+	{
+		UIPdaContactsWnd->Reset( );
+	}
+
+	if (UIEncyclopediaWnd)
+	{
+		UIEncyclopediaWnd->Reset( );
+	}
+
+	if (UIDiaryWnd)
+	{
+		UIDiaryWnd->Reset( );
+	}
+
+	if (UIActorInfo)
+	{
+		UIActorInfo->Reset( );
+	}
+
+	if (UIStalkersRanking)
+	{
+		UIStalkersRanking->Reset( );
+	}
+
+	if (UIEventsWnd)
+	{
+		UIEventsWnd->Reset( );
+	}
 }
 
 void RearrangeTabButtons(CUITabControl* pTab, xr_vector<fVector2>& vec_sign_places)
@@ -373,9 +442,9 @@ void RearrangeTabButtons(CUITabControl* pTab, xr_vector<fVector2>& vec_sign_plac
 	vec_sign_places.clear( );
 	vec_sign_places.resize(btn_vec->size( ));
 
-	fVector2					pos;
+	fVector2 pos;
 	pos.set((*it)->GetWndPos( ));
-	fVector2					sign_sz;
+	fVector2 sign_sz;
 	sign_sz.set(9.0f + 3.0f, 11.0f);
 	u32 idx = 0;
 	f32	btn_text_len = 0.0f;
@@ -397,7 +466,7 @@ void RearrangeTabButtons(CUITabControl* pTab, xr_vector<fVector2>& vec_sign_plac
 
 		vec_sign_places[idx].set(pos);
 		vec_sign_places[idx].y += iFloor(((*it)->GetWndSize( ).y - sign_sz.y) / 2.0f);
-		vec_sign_places[idx].y = (f32) iFloor(vec_sign_places[idx].y);
+		vec_sign_places[idx].y = (f32)iFloor(vec_sign_places[idx].y);
 		pos.x += sign_sz.x;
 
 		(*it)->SetWndPos(pos);

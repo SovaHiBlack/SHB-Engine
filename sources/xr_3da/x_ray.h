@@ -20,7 +20,7 @@ private:
 	ref_geom				ll_hGeom2;
 
 	ref_shader				sh_progress;
-	int						load_stage;
+	s32						load_stage;
 
 	u32						ll_dwReference;
 
@@ -39,7 +39,7 @@ public:
 	xr_vector<sLevelInfo>	Levels;
 	u32						Level_Current;
 	void					Level_Scan( );
-	int						Level_ID(pcstr name);
+	s32						Level_ID(pcstr name);
 	void					Level_Set(u32 ID);
 
 	// Loading

@@ -25,7 +25,7 @@ public:
 		u16					sender_id;	//id - объекта, который запустил партиклы
 		u32					life_time;	//время жизни партикла (-1) - бесконечно
 		
-		//int					cur_time;	//текущее время существования партикла
+		//s32					cur_time;	//текущее время существования партикла
 		//bool				auto_stop;	//автоматическая остановка партиклов, когда закончится время
 	};
 	DEFINE_VECTOR			(SParticlesInfo,ParticlesInfoList,ParticlesInfoListIt);
@@ -75,11 +75,11 @@ public:
 	
 	void					UpdateParticles			();
 
-	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const fVector3& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles			(const shared_str& ps_name, const fVector3& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const fVector3& dir, u16 sender_id, s32 life_time = -1, bool auto_stop = true);
+	void					StartParticles			(const shared_str& ps_name, const fVector3& dir, u16 sender_id, s32 life_time = -1, bool auto_stop = true);
 
-	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const fMatrix4x4& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
-	void					StartParticles			(const shared_str& ps_name, const fMatrix4x4& dir, u16 sender_id, int life_time = -1, bool auto_stop = true);
+	void					StartParticles			(const shared_str& ps_name, u16 bone_num,  const fMatrix4x4& dir, u16 sender_id, s32 life_time = -1, bool auto_stop = true);
+	void					StartParticles			(const shared_str& ps_name, const fMatrix4x4& dir, u16 sender_id, s32 life_time = -1, bool auto_stop = true);
 
 
 	void					StopParticles			(u16 sender_ID, u16 bone_id, bool bDestroy);

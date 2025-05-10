@@ -90,7 +90,7 @@ public:
 	};
 
 public:
-	virtual	void					force_mode(u32 mode) = 0;
+	virtual void					force_mode(u32 mode) = 0;
 	virtual f32						get_luminocity( ) = 0;
 	virtual f32						get_luminocity_hemi( ) = 0;
 
@@ -168,14 +168,14 @@ public:
 
 public:
 	// feature level
-	virtual	GenerationLevel			get_generation( ) = 0;
+	virtual GenerationLevel			get_generation( ) = 0;
 	// Loading / Unloading
-	virtual	void					create( ) = 0;
-	virtual	void					destroy( ) = 0;
-	virtual	void					reset_begin( ) = 0;
-	virtual	void					reset_end( ) = 0;
+	virtual void					create( ) = 0;
+	virtual void					destroy( ) = 0;
+	virtual void					reset_begin( ) = 0;
+	virtual void					reset_end( ) = 0;
 
-	virtual	void					level_Load(IReader*) = 0;
+	virtual void					level_Load(IReader*) = 0;
 	virtual void					level_Unload( ) = 0;
 
 	virtual IDirect3DBaseTexture9* texture_load(pcstr	fname, u32& msize) = 0;

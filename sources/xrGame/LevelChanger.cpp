@@ -18,7 +18,7 @@
 #include "game_level_cross_table.h"
 
 #include "HudManager.h"
-#include "UIGameSP.h"
+#include "UIGame.h"
 
 #include "patrol_path.h"
 #include "patrol_path_storage.h"
@@ -54,7 +54,7 @@ BOOL CLevelChanger::net_Spawn(CSE_Abstract* DC)
 	CCF_Shape* l_pShape = xr_new<CCF_Shape>(this);
 	collidable.model = l_pShape;
 
-	CSE_Abstract* l_tpAbstract = (CSE_Abstract*) (DC);
+	CSE_Abstract* l_tpAbstract = (CSE_Abstract*)(DC);
 	CSE_ALifeLevelChanger* l_tpALifeLevelChanger = smart_cast<CSE_ALifeLevelChanger*>(l_tpAbstract);
 	R_ASSERT(l_tpALifeLevelChanger);
 
@@ -179,7 +179,7 @@ bool CLevelChanger::get_reject_pos(fVector3& p, fVector3& r)
 
 BOOL CLevelChanger::feel_touch_contact(CObject* object)
 {
-	return ((((CCF_Shape*) CFORM( ))->Contact(object)) && smart_cast<CActor*>(object));
+	return ((((CCF_Shape*)CFORM( ))->Contact(object)) && smart_cast<CActor*>(object));
 }
 
 void CLevelChanger::update_actor_invitation( )

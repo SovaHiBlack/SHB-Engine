@@ -13,7 +13,7 @@
 #include "../WeaponHUD.h"
 #include "../character_info.h"
 #include "../inventory.h"
-#include "../UIGameSP.h"
+#include "../UIGame.h"
 #include "../weaponmagazined.h"
 #include "../missile.h"
 #include "../Grenade.h"
@@ -105,10 +105,10 @@ CUIMainIngameWnd::~CUIMainIngameWnd( )
 
 void CUIMainIngameWnd::Init( )
 {
-	CUIXml						uiXml;
+	CUIXml uiXml;
 	uiXml.Init(CONFIG_PATH, UI_PATH, MAININGAME_XML);
 
-	CUIXmlInit					xml_init;
+	CUIXmlInit xml_init;
 	CUIWindow::Init(0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT);
 
 	Enable(false);
@@ -266,7 +266,7 @@ void CUIMainIngameWnd::Draw( )
 	}
 	else
 	{
-		u32		alpha = clampr(iFloor(255.0f * (1.0f - (Device.fTimeGlobal - UIStaticDiskIO_start_time) / 1.0f)), 0, 255);
+		u32 alpha = clampr(iFloor(255.0f * (1.0f - (Device.fTimeGlobal - UIStaticDiskIO_start_time) / 1.0f)), 0, 255);
 		UIStaticDiskIO.Show(true);
 		UIStaticDiskIO.SetColor(color_rgba(255, 255, 255, alpha));
 	}
@@ -361,7 +361,7 @@ void CUIMainIngameWnd::Update( )
 
 	if (!(Device.dwFrame % 30))
 	{
-		string256				text_str;
+		string256 text_str;
 		CPda* _pda = m_pActor->GetPDA( );
 		u32 _cn = 0;
 		if (_pda && 0 != (_cn = _pda->ActiveContactsNum( )))
@@ -494,7 +494,7 @@ void CUIMainIngameWnd::Update( )
 	CUIWindow::Update( );
 }
 
-bool CUIMainIngameWnd::OnKeyboardPress(int dik)
+bool CUIMainIngameWnd::OnKeyboardPress(s32 dik)
 {
 
 #if 0//def DEBUG
@@ -1346,9 +1346,9 @@ void CUIMainIngameWnd::UpdateActiveItemInfo( )
 	PIItem item = m_pActor->inventory( ).ActiveItem( );
 	if (item)
 	{
-		xr_string					str_name;
-		xr_string					icon_sect_name;
-		xr_string					str_count;
+		xr_string str_name;
+		xr_string icon_sect_name;
+		xr_string str_count;
 		item->GetBriefInfo(str_name, icon_sect_name, str_count);
 
 		UIWeaponSignAmmo.Show(true);

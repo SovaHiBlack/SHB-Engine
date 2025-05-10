@@ -8,7 +8,7 @@
 #include "..\XR_3DA\x_ray.h"
 #include "..\XR_3DA\GameFont.h"
 #include "GlowManager.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 
 #define FADE_SCALE_UP		4096.f
 #define FADE_SCALE_DOWN		1024.f

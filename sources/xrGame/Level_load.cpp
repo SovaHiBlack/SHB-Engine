@@ -131,8 +131,8 @@ void CLevel::Load_GameSpecific_CFORM	( CDB::TRI* tris, u32 count )
 	translator.push_back				(translation_pair(u32(-1),default_id));
 
 	u16									index = 0, static_mtl_count = 1;
-	int max_ID							= 0;
-	int max_static_ID					= 0;
+	s32 max_ID							= 0;
+	s32 max_static_ID					= 0;
 	for (GameMtlIt I=GMLib.FirstMaterial(); GMLib.LastMaterial()!=I; ++I, ++index) {
 		if (!(*I)->Flags.test(SGameMtl::flDynamic)) {
 			++static_mtl_count;

@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "xrSheduler.h"
-#include "xr_object.h"
+#include "Sheduler.h"
+#include "Object.h"
 
 ISheduled::ISheduled( )
 {

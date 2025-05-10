@@ -208,8 +208,8 @@ ICF BOOL isect_fpu(const fVector3& min, const fVector3& max, const ray_t& ray, f
 
 static const f32 flt_plus_inf = -logf(0);	// let's keep C and C++ compilers happy.
 static const f32 _MM_ALIGN16
-ps_cst_plus_inf[4] = { flt_plus_inf,  flt_plus_inf,  flt_plus_inf,  flt_plus_inf },
-ps_cst_minus_inf[4] = { -flt_plus_inf, -flt_plus_inf, -flt_plus_inf, -flt_plus_inf };
+ps_cst_plus_inf[4] = {flt_plus_inf,  flt_plus_inf,  flt_plus_inf,  flt_plus_inf},
+ps_cst_minus_inf[4] = {-flt_plus_inf, -flt_plus_inf, -flt_plus_inf, -flt_plus_inf};
 
 ICF BOOL isect_sse(const aabb_t& box, const ray_t& ray, f32& dist)
 {
@@ -344,7 +344,7 @@ public:
 			ISpatial* S = *_it;
 			if (mask != (S->spatial.type & mask))	continue;
 			fSphere& sS = S->spatial.sphere;
-			int				quantity;
+			s32				quantity;
 			f32			afT[2];
 			fSphere::ERP_Result	result = sS.intersect(ray.pos, ray.fwd_dir, range, quantity, afT);
 
@@ -354,13 +354,26 @@ public:
 				{
 					switch (result)
 					{
-						case fSphere::rpOriginInside:	range = afT[0] < range ? afT[0] : range;	break;
-						case fSphere::rpOriginOutside:	range = afT[0];						break;
+						case fSphere::rpOriginInside:
+						{
+							range = afT[0] < range ? afT[0] : range;
+						}
+						break;
+						case fSphere::rpOriginOutside:
+						{
+							range = afT[0];
+						}
+						break;
 					}
+
 					range2 = range * range;
 				}
+
 				space->q_result->push_back(S);
-				if (b_first)				return;
+				if (b_first)
+				{
+					return;
+				}
 			}
 		}
 
@@ -377,9 +390,10 @@ public:
 	}
 };
 
-void	ISpatial_DB::q_ray(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const fVector3& _start, const fVector3& _dir, f32 _range)
+void ISpatial_DB::q_ray(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const fVector3& _start, const fVector3& _dir, f32 _range)
 {
 	cs.Enter( );
+
 	q_result = &R;
 	q_result->clear_not_free( );
 	if (CPU::ID.feature & _CPU_FEATURE_SSE)
@@ -388,22 +402,26 @@ void	ISpatial_DB::q_ray(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const fV
 		{
 			if (_o & O_ONLYNEAREST)
 			{
-				walker<true, true, true>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<true, true, true>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 			else
 			{
-				walker<true, true, false>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<true, true, false>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 		}
 		else
 		{
 			if (_o & O_ONLYNEAREST)
 			{
-				walker<true, false, true>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<true, false, true>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 			else
 			{
-				walker<true, false, false>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<true, false, false>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 		}
 	}
@@ -413,24 +431,29 @@ void	ISpatial_DB::q_ray(xr_vector<ISpatial*>& R, u32 _o, u32 _mask_and, const fV
 		{
 			if (_o & O_ONLYNEAREST)
 			{
-				walker<false, true, true>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<false, true, true>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 			else
 			{
-				walker<false, true, false>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<false, true, false>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 		}
 		else
 		{
 			if (_o & O_ONLYNEAREST)
 			{
-				walker<false, false, true>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<false, false, true>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 			else
 			{
-				walker<false, false, false>	W(this, _mask_and, _start, _dir, _range);	W.walk(m_root, m_center, m_bounds);
+				walker<false, false, false>	W(this, _mask_and, _start, _dir, _range);
+				W.walk(m_root, m_center, m_bounds);
 			}
 		}
 	}
+
 	cs.Leave( );
 }

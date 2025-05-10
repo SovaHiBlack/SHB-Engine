@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "level_debug.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "level.h"
 #include "HUDManager.h"
 

@@ -2,5 +2,5 @@
 
 struct SEnumVerticesCallback
 {
-	virtual void operator () (const fVector3& p)		=	0;
+	virtual void operator () (const fVector3& p) = 0;
 };

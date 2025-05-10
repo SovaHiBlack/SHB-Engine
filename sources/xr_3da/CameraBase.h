@@ -14,7 +14,9 @@ protected:
 	CObject* parent;
 
 public:
-	BOOL			bClampYaw, bClampPitch, bClampRoll;
+	BOOL			bClampYaw;
+	BOOL			bClampPitch;
+	BOOL			bClampRoll;
 	f32				yaw;
 	f32				pitch;
 	f32				roll;
@@ -31,11 +33,11 @@ public:
 	fVector2		lim_yaw;
 	fVector2		lim_pitch;
 	fVector2		lim_roll;
-	fVector3			rot_speed;
+	fVector3		rot_speed;
 
-	fVector3			vPosition;
-	fVector3			vDirection;
-	fVector3			vNormal;
+	fVector3		vPosition;
+	fVector3		vDirection;
+	fVector3		vNormal;
 	f32				f_fov;
 	f32				f_aspect;
 

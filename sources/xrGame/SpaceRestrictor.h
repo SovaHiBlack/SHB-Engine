@@ -60,7 +60,7 @@ public:
 	virtual BOOL							UsedAI_Locations( );
 	virtual void							spatial_move( );
 	IC		bool							actual( ) const;
-	virtual CSpaceRestrictor*				cast_restrictor( )
+	virtual CSpaceRestrictor* cast_restrictor( )
 	{
 		return this;
 	}

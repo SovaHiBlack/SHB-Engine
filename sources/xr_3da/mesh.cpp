@@ -44,7 +44,7 @@ static u32 dwPositionPart[8] =
 #define FAKES 0xffffffff
 #define FAKEZ 0xfffffffe
 
-void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, u32 dwCount)
+void ConvertVertices(u32 dwTypeDest, pvoid pDest, u32 dwTypeSrc, pvoid pSource, u32 dwCount)
 // assuming that pDest is large enought to maintain all the data
 {
 	u32	TransferMask[64];
@@ -85,10 +85,12 @@ void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, 
 	{	// DEST & SRC
 		TransferMask[tmPos++] = tmPosSrc++;
 	}
+
 	if ((dwTypeDest & D3DFVF_PSIZE) && !(dwTypeSrc & D3DFVF_PSIZE))
 	{	// DEST & !SRC
 		TransferMask[tmPos++] = FAKEZ;// fake data
 	}
+
 	if (!(dwTypeDest & D3DFVF_PSIZE) && (dwTypeSrc & D3DFVF_PSIZE))
 	{	// !DEST & SRC
 		tmPosSrc++;					// skip it
@@ -101,10 +103,12 @@ void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, 
 		TransferMask[tmPos++] = tmPosSrc++;
 		TransferMask[tmPos++] = tmPosSrc++;
 	}
+
 	if ((dwTypeDest & D3DFVF_NORMAL) && !(dwTypeSrc & D3DFVF_NORMAL))
 	{	// DEST & !SRC
 		FATAL("Source format doesn't have NORMAL but destination HAS");
 	}
+
 	if (!(dwTypeDest & D3DFVF_NORMAL) && (dwTypeSrc & D3DFVF_NORMAL))
 	{	// !DEST & SRC
 		tmPosSrc++;					// skip it
@@ -117,10 +121,12 @@ void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, 
 	{	// DEST & SRC
 		TransferMask[tmPos++] = tmPosSrc++;
 	}
+
 	if ((dwTypeDest & D3DFVF_DIFFUSE) && !(dwTypeSrc & D3DFVF_DIFFUSE))
 	{	// DEST & !SRC
 		TransferMask[tmPos++] = FAKES;	// fake data - white
 	}
+
 	if (!(dwTypeDest & D3DFVF_DIFFUSE) && (dwTypeSrc & D3DFVF_DIFFUSE))
 	{	// !DEST & SRC
 		tmPosSrc++;						// skip it
@@ -131,10 +137,12 @@ void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, 
 	{	// DEST & SRC
 		TransferMask[tmPos++] = tmPosSrc++;
 	}
+
 	if ((dwTypeDest & D3DFVF_SPECULAR) && !(dwTypeSrc & D3DFVF_SPECULAR))
 	{	// DEST & !SRC
 		TransferMask[tmPos++] = FAKES;	// fake data - white
 	}
+
 	if (!(dwTypeDest & D3DFVF_SPECULAR) && (dwTypeSrc & D3DFVF_SPECULAR))
 	{	// !DEST & SRC
 		tmPosSrc++;						// skip it
@@ -157,6 +165,7 @@ void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, 
 		{
 			FATAL("Source vertex format doesn't has texture coords at all");
 		}
+
 		// Copy real TC
 		u32 dwStage0TC = tmPosSrc;
 		for (u32 i = 0; i < dwTSrc; i++)
@@ -164,6 +173,7 @@ void ConvertVertices(u32 dwTypeDest, void* pDest, u32 dwTypeSrc, void* pSource, 
 			TransferMask[tmPos++] = tmPosSrc++;
 			TransferMask[tmPos++] = tmPosSrc++;
 		}
+
 		// Duplicate stage0 TC
 		for (i = dwTSrc; i < dwTDest; i++)
 		{

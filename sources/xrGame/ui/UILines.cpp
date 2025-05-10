@@ -13,7 +13,6 @@
 #include "UIXmlInit.h"
 #include "uilinestd.h"
 
-
 CUILines::CUILines( )
 {
 	m_pFont = NULL;
@@ -118,12 +117,12 @@ void CUILines::AddCharAtCursor(const char ch)
 
 void CUILines::MoveCursorToEnd( )
 {
-	m_iCursorPos = (s32) m_text.size( );
+	m_iCursorPos = (s32)m_text.size( );
 }
 
 void CUILines::DelChar( )
 {
-	const s32 sz = (s32) m_text.size( );
+	const s32 sz = (s32)m_text.size( );
 	if (m_iCursorPos < sz)
 	{
 		m_text.erase(m_text.begin( ) + m_iCursorPos);
@@ -306,7 +305,7 @@ void CUILines::ParseText( )
 			bool b_last_subl = (sbl_idx == sbl_cnt - 1);
 			CUISubLine& sbl = line->m_subLines[sbl_idx];
 			//.			Msg("%s",sbl.m_text.c_str());
-			u32 sub_len = (u32) sbl.m_text.length( );
+			u32 sub_len = (u32)sbl.m_text.length( );
 			u32 curr_w_pos = 0;
 
 			u32 last_space_idx = 0;
@@ -321,7 +320,6 @@ void CUILines::ParseText( )
 
 				f32 w1 = get_str_width(m_pFont, sbl.m_text[idx]);
 				bool bOver = (curr_width + w1 + __eps > max_width);
-
 				if (bOver || b_last_ch)
 				{
 					if (last_space_idx && !b_last_ch)
@@ -428,19 +426,19 @@ void CUILines::Draw(f32 x, f32 y)
 
 		if (uFlags.test(flPasswordMode))
 		{
-			s32 sz = (s32) m_text.size( );
+			s32 sz = (s32)m_text.size( );
 			for (s32 i = 0; i < sz; i++)
 			{
 				passText[i] = '*';
 			}
 
 			passText[sz] = 0;
-			m_pFont->SetAligment((CGameFont::EAligment) m_eTextAlign);
+			m_pFont->SetAligment((CGameFont::EAligment)m_eTextAlign);
 			m_pFont->Out(text_pos.x, text_pos.y, "%s", passText);
 		}
 		else
 		{
-			m_pFont->SetAligment((CGameFont::EAligment) m_eTextAlign);
+			m_pFont->SetAligment((CGameFont::EAligment)m_eTextAlign);
 			m_pFont->Out(text_pos.x, text_pos.y, "%s", m_text.c_str( ));
 		}
 	}
@@ -456,8 +454,8 @@ void CUILines::Draw(f32 x, f32 y)
 
 		u32 size = m_lines.size( );
 
-		m_pFont->SetAligment((CGameFont::EAligment) m_eTextAlign);
-		for (s32 i = 0; i < (s32) size; i++)
+		m_pFont->SetAligment((CGameFont::EAligment)m_eTextAlign);
+		for (s32 i = 0; i < (s32)size; i++)
 		{
 			pos.x = x + GetIndentByAlign( );
 			m_lines[i].Draw(m_pFont, pos.x, pos.y);
@@ -475,8 +473,7 @@ void CUILines::Draw( )
 }
 
 void CUILines::Update( )
-{
-}
+{ }
 
 void CUILines::OnDeviceReset( )
 {
@@ -676,8 +673,7 @@ void CUILines::SetWndSize_inline(const fVector2& wnd_size)
 
 void CUILines::IncCursorPos( )
 {
-	const s32 txt_len = (s32) m_text.size( );
-
+	const s32 txt_len = (s32)m_text.size( );
 	if (0 == txt_len)
 	{
 		return;
@@ -693,8 +689,7 @@ void CUILines::IncCursorPos( )
 
 void CUILines::DecCursorPos( )
 {
-	const s32 txt_len = (s32) m_text.size( );
-
+	const s32 txt_len = (s32)m_text.size( );
 	if (0 == txt_len)
 	{
 		return;
@@ -713,7 +708,7 @@ void CUILines::UpdateCursor( )
 	if (uFlags.test(flComplexMode) && !m_text.empty( ))
 	{
 		ParseText( );
-		const s32 sz = (s32) m_lines.size( );
+		const s32 sz = (s32)m_lines.size( );
 		s32 len = 0;
 		for (s32 i = 0; i < sz; i++)
 		{

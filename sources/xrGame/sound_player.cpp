@@ -11,7 +11,7 @@
 #include "script_engine.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "AISpace.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "profiler.h"
 #include "sound_collection_storage.h"

@@ -847,7 +847,9 @@ void CInventoryItem::UpdateXForm( )
 	VERIFY(V);
 
 	// Get matrices
-	int				boneL, boneR, boneR2;
+	s32				boneL;
+	s32 boneR;
+	s32 boneR2;
 	E->g_WeaponBones(boneL, boneR, boneR2);
 	//	if ((HandDependence() == hd1Hand) || (STATE == eReload) || (!E->g_Alive()))
 	//		boneL = boneR2;
@@ -1019,20 +1021,20 @@ f32 CInventoryItem::GetKillMsgHeight( ) const
 	return READ_IF_EXISTS(pSettings, r_float, m_object->cNameSect( ), "kill_msg_height", 0.0f);
 }
 
-int  CInventoryItem::GetGridWidth( ) const
+s32 CInventoryItem::GetGridWidth( ) const
 {
 	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_width");
 }
 
-int  CInventoryItem::GetGridHeight( ) const
+s32 CInventoryItem::GetGridHeight( ) const
 {
 	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_height");
 }
-int  CInventoryItem::GetXPos( ) const
+s32 CInventoryItem::GetXPos( ) const
 {
 	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_x");
 }
-int  CInventoryItem::GetYPos( ) const
+s32 CInventoryItem::GetYPos( ) const
 {
 	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_y");
 }

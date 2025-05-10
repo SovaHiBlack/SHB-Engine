@@ -37,7 +37,7 @@ BOOL CSpaceRestrictor::net_Spawn(CSE_Abstract* data)
 {
 	actual(false);
 
-	CSE_Abstract* abstract = (CSE_Abstract*) data;
+	CSE_Abstract* abstract = (CSE_Abstract*)data;
 	CSE_ALifeSpaceRestrictor* se_shape = smart_cast<CSE_ALifeSpaceRestrictor*>(abstract);
 	R_ASSERT(se_shape);
 
@@ -137,7 +137,7 @@ void CSpaceRestrictor::prepare( ) const
 	m_spheres.resize(0);
 	m_boxes.resize(0);
 
-	const CCF_Shape* shape = (const CCF_Shape*) collidable.model;
+	const CCF_Shape* shape = (const CCF_Shape*)collidable.model;
 
 	typedef xr_vector<CCF_Shape::shape_def> SHAPES;
 
@@ -261,7 +261,7 @@ void CSpaceRestrictor::OnRender( )
 	l_half.set(0.5f, 0.5f, 0.5f);
 	fMatrix4x4 l_ball;
 	fMatrix4x4 l_box;
-	xr_vector<CCF_Shape::shape_def>& l_shapes = ((CCF_Shape*) CFORM( ))->Shapes( );
+	xr_vector<CCF_Shape::shape_def>& l_shapes = ((CCF_Shape*)CFORM( ))->Shapes( );
 	xr_vector<CCF_Shape::shape_def>::iterator l_pShape;
 
 	u32 Color = 0;

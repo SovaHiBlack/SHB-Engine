@@ -4,21 +4,21 @@
 class CUIStatic;
 class CEncyclopediaArticle;
 
-class CUIEncyclopediaArticleWnd :public CUIWindow
+class CUIEncyclopediaArticleWnd : public CUIWindow
 {
-typedef	CUIWindow		inherited;
+	typedef	CUIWindow		inherited;
 
-CUIStatic*				m_UIImage;
-CUIStatic*				m_UIText;
-CEncyclopediaArticle*	m_Article;
+	CUIStatic* m_UIImage;
+	CUIStatic* m_UIText;
+	CEncyclopediaArticle* m_Article;
 
 protected:
-			void		AdjustLauout				();
+	void		AdjustLauout( );
 
 public:
-					CUIEncyclopediaArticleWnd		();
-	virtual			~CUIEncyclopediaArticleWnd		();
-			void	Init							(pcstr xml_name, pcstr start_from);
-			void	SetArticle						(CEncyclopediaArticle*);
-			void	SetArticle						(pcstr);
+	CUIEncyclopediaArticleWnd( );
+	virtual			~CUIEncyclopediaArticleWnd( );
+	void	Init(pcstr xml_name, pcstr start_from);
+	void	SetArticle(CEncyclopediaArticle*);
+	void	SetArticle(pcstr);
 };

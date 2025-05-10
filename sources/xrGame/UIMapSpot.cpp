@@ -1,39 +1,38 @@
 #include "stdafx.h"
-#include "map_spot.h"//
+#include "UIMapSpot.h"
 #include "map_location.h"
 
 #include "ui/UIXmlInit.h"
 #include "ui/UIMapWnd.h"//
 #include "level.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "object_broker.h"
 #include "ui/UITextureMaster.h"
 
-CMapSpot::CMapSpot(CMapLocation* ml)
-	:m_map_location(ml)
+CUIMapSpot::CUIMapSpot(CMapLocation* ml) : m_map_location(ml)
 {
 	ClipperOn( );
 	m_bScale = false;
 }
 
-CMapSpot::~CMapSpot( )
+CUIMapSpot::~CUIMapSpot( )
 { }
 
-void CMapSpot::Load(CUIXml* xml, pcstr path)
+void CUIMapSpot::Load(CUIXml* xml, pcstr path)
 {
 	CUIXmlInit::InitStatic(*xml, path, 0, this);
-	int i = xml->ReadAttribInt(path, 0, "scale", 0);
+	s32 i = xml->ReadAttribInt(path, 0, "scale", 0);
 	m_bScale = (i == 1);
 
 	m_originSize = GetWndSize( );
 }
 
-pcstr CMapSpot::GetHint( )
+pcstr CUIMapSpot::GetHint( )
 {
 	return MapLocation( )->GetHint( );
 }
 
-void CMapSpot::Update( )
+void CUIMapSpot::Update( )
 {
 	inherited::Update( );
 	if (m_bCursorOverWindow)
@@ -46,37 +45,37 @@ void CMapSpot::Update( )
 	}
 }
 
-bool CMapSpot::OnMouseDown(int mouse_btn)
+bool CUIMapSpot::OnMouseDown(s32 mouse_btn)
 {
 	return false;
 }
 
-void CMapSpot::OnFocusLost( )
+void CUIMapSpot::OnFocusLost( )
 {
 	inherited::OnFocusLost( );
 	GetMessageTarget( )->SendMessage(this, MAP_HIDE_HINT, NULL);
 }
 
-CMapSpotPointer::CMapSpotPointer(CMapLocation* ml) :inherited(ml)
+CUIMapSpotPointer::CUIMapSpotPointer(CMapLocation* ml) :inherited(ml)
 {
 	ClipperOn( );
 }
 
-CMapSpotPointer::~CMapSpotPointer( )
+CUIMapSpotPointer::~CUIMapSpotPointer( )
 { }
 
-pcstr CMapSpotPointer::GetHint( )
+pcstr CUIMapSpotPointer::GetHint( )
 {
 	return NULL;
 }
 
-CMiniMapSpot::CMiniMapSpot(CMapLocation* ml) :inherited(ml)
+CUIMiniMapSpot::CUIMiniMapSpot(CMapLocation* ml) : inherited(ml)
 { }
 
-CMiniMapSpot::~CMiniMapSpot( )
+CUIMiniMapSpot::~CUIMiniMapSpot( )
 { }
 
-void CMiniMapSpot::Load(CUIXml* xml, pcstr path)
+void CUIMiniMapSpot::Load(CUIXml* xml, pcstr path)
 {
 	inherited::Load(xml, path);
 
@@ -160,7 +159,7 @@ void CMiniMapSpot::Load(CUIXml* xml, pcstr path)
 	m_UIStaticItem.SetOriginalRect(_stored_rect);
 }
 
-void CMiniMapSpot::Draw( )
+void CUIMiniMapSpot::Draw( )
 {
 	CObject* O = Level( ).CurrentViewEntity( );
 	if (O && m_icon_above && m_icon_below)

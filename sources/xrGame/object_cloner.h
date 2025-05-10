@@ -47,7 +47,7 @@ struct CCloner {
 		clone(_1.second,_2.second);
 	}
 
-	template <typename T, int size>
+	template <typename T, s32 size>
 	IC	static void clone(const svector<T,size> &_1, svector<T,size> &_2)
 	{
 		_2.resize						(_1.size());

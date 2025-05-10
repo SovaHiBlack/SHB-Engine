@@ -2,7 +2,7 @@
 #include "../level.h"
 #include "../map_location.h"
 #include "../map_manager.h"
-#include "../map_spot.h"//
+#include "../UIMapSpot.h"
 #include "UIMap.h"//
 #include "UIMapWnd.h"//
 #include "../..\XR_3DA\Input.h"		//remove me !!!
@@ -13,7 +13,7 @@ const u32			ourLevelMapColor = 0xffffffff;
 
 CUICustomMap::CUICustomMap( )
 {
-	m_BoundRect.set(0, 0, 0, 0);
+	m_BoundRect.set(0.0f, 0.0f, 0.0f, 0.0f);
 	SetWindowName("map");
 	m_flags.zero( );
 	SetPointerDistance(0.0f);
@@ -50,7 +50,7 @@ void CUICustomMap::Init(shared_str name, CIniFile& gameLtx, pcstr sh_name)
 	}
 
 	m_BoundRect.set(tmp.x, tmp.y, tmp.z, tmp.w);
-	CUIStatic::InitEx(tex, sh_name, 0, 0, m_BoundRect.width( ), m_BoundRect.height( ));
+	CUIStatic::InitEx(tex, sh_name, 0.0f, 0.0f, m_BoundRect.width( ), m_BoundRect.height( ));
 
 	SetStretchTexture(true);
 	ClipperOn( );
@@ -104,11 +104,11 @@ fVector2 CUICustomMap::ConvertRealToLocalNoTransform(const fVector2& src)// mete
 //position and heading for drawing pointer to src pos
 bool CUICustomMap::GetPointerTo(const fVector2& src, f32 item_radius, fVector2& pos, f32& heading)
 {
-	fRect		clip_rect_abs = GetClipperRect( ); //absolute rect coords
-	fRect		map_rect_abs;
+	fRect clip_rect_abs = GetClipperRect( ); //absolute rect coords
+	fRect map_rect_abs;
 	GetAbsoluteRect(map_rect_abs);
 
-	fRect		rect;
+	fRect rect;
 	BOOL res = rect.intersection(clip_rect_abs, map_rect_abs);
 	if (!res)
 	{
@@ -181,16 +181,16 @@ void CUICustomMap::SetActivePoint(const fVector3& vNewPoint)
 		return;
 	}
 
-	fVector2	pos_on_map = ConvertRealToLocalNoTransform(pos);
-	fRect		map_abs_rect;
+	fVector2 pos_on_map = ConvertRealToLocalNoTransform(pos);
+	fRect map_abs_rect;
 	GetAbsoluteRect(map_abs_rect);
-	fVector2	pos_abs;
+	fVector2 pos_abs;
 
 	pos_abs.set(map_abs_rect.lt);
 	pos_abs.add(pos_on_map);
 
-	fRect		clip_abs_rect = GetClipperRect( );
-	fVector2	clip_center;
+	fRect clip_abs_rect = GetClipperRect( );
+	fVector2 clip_center;
 	clip_abs_rect.getcenter(clip_center);
 	clip_center.sub(pos_abs);
 	MoveWndDelta(clip_center);
@@ -218,7 +218,7 @@ bool CUICustomMap::NeedShowPointer(fRect r)
 	return !map_visible_rect.intersected(r);
 }
 
-void	CUICustomMap::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void	CUICustomMap::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	CUIWndCallback::OnEvent(pWnd, msg, pData);
 }
@@ -235,7 +235,7 @@ bool CUIGlobalMap::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 		if (MapWnd( ))
 		{
 			MapWnd( )->Hint(MapName( ));
-			return			true;
+			return true;
 		}
 	}
 
@@ -263,7 +263,11 @@ void CUIGlobalMap::Update( )
 	for (WINDOW_LIST_it it = m_ChildWndList.begin( ); m_ChildWndList.end( ) != it; ++it)
 	{
 		CUICustomMap* m = smart_cast<CUICustomMap*>(*it);
-		if (!m)					continue;
+		if (!m)
+		{
+			continue;
+		}
+
 		m->DetachAll( );
 	}
 
@@ -274,10 +278,26 @@ void CUIGlobalMap::ClipByVisRect( )
 {
 	fRect r = GetWndRect( );
 	fRect clip = GetClipperRect( );
-	if (r.x2 < clip.width( ))	r.x1 += clip.width( ) - r.x2;
-	if (r.y2 < clip.height( ))	r.y1 += clip.height( ) - r.y2;
-	if (r.x1 > 0.0f)			r.x1 = 0.0f;
-	if (r.y1 > 0.0f)			r.y1 = 0.0f;
+	if (r.x2 < clip.width( ))
+	{
+		r.x1 += clip.width( ) - r.x2;
+	}
+
+	if (r.y2 < clip.height( ))
+	{
+		r.y1 += clip.height( ) - r.y2;
+	}
+
+	if (r.x1 > 0.0f)
+	{
+		r.x1 = 0.0f;
+	}
+
+	if (r.y1 > 0.0f)
+	{
+		r.y1 = 0.0f;
+	}
+
 	SetWndPos(r.x1, r.y1);
 }
 
@@ -298,7 +318,7 @@ void CUIGlobalMap::MoveWndDelta(const fVector2& d)
 
 f32 CUIGlobalMap::CalcOpenRect(const fVector2& center_point, fRect& map_desired_rect, f32 tgt_zoom)
 {
-	fVector2                    new_center_pt;
+	fVector2 new_center_pt;
 	// calculate desired rect in new zoom
 	map_desired_rect.set(0.0f, 0.0f, BoundRect( ).width( ) * tgt_zoom, BoundRect( ).height( ) * tgt_zoom);
 	// calculate center point in new zoom (center_point is in identity global map space)
@@ -315,10 +335,26 @@ f32 CUIGlobalMap::CalcOpenRect(const fVector2& center_point, fRect& map_desired_
 	// clamp pos by vis rect
 	const fRect& r = map_desired_rect;
 	fVector2 np = r.lt;
-	if (r.x2 < vis_w)	np.x += vis_w - r.x2;
-	if (r.y2 < vis_h)	np.y += vis_h - r.y2;
-	if (r.x1 > 0.0f)	np.x = 0.0f;
-	if (r.y1 > 0.0f)	np.y = 0.0f;
+	if (r.x2 < vis_w)
+	{
+		np.x += vis_w - r.x2;
+	}
+
+	if (r.y2 < vis_h)
+	{
+		np.y += vis_h - r.y2;
+	}
+
+	if (r.x1 > 0.0f)
+	{
+		np.x = 0.0f;
+	}
+
+	if (r.y1 > 0.0f)
+	{
+		np.y = 0.0f;
+	}
+
 	np.sub(r.lt);
 	map_desired_rect.add(np.x, np.y);
 	// calculate max way dist
@@ -345,8 +381,7 @@ CUILevelMap::CUILevelMap(CUIMapWnd* p)
 }
 
 CUILevelMap::~CUILevelMap( )
-{
-}
+{ }
 
 void CUILevelMap::Draw( )
 {
@@ -354,7 +389,7 @@ void CUILevelMap::Draw( )
 	{
 		for (WINDOW_LIST_it it = m_ChildWndList.begin( ); m_ChildWndList.end( ) != it; ++it)
 		{
-			CMapSpot* sp = smart_cast<CMapSpot*>((*it));
+			CUIMapSpot* sp = smart_cast<CUIMapSpot*>((*it));
 			if (sp && sp->m_bScale)
 			{
 				fVector2 sz = sp->m_originSize;
@@ -383,6 +418,7 @@ void CUILevelMap::Init(shared_str name, CIniFile& gameLtx, pcstr sh_name)
 		Msg(" --try x2=%f or  y2=%f", m_GlobalRect.x1 + kh * BoundRect( ).width( ), m_GlobalRect.y1 + kw * BoundRect( ).height( ));
 	}
 #endif
+
 	//	Msg("Succesfully loaded map %s. Zoom=%f",*name, kw);
 }
 
@@ -426,8 +462,8 @@ fRect CUILevelMap::CalcWndRectOnGlobal( )
 void CUILevelMap::Update( )
 {
 	CUIGlobalMap* w = MapWnd( )->GlobalMap( );
-	fRect			rect;
-	fVector2		tmp;
+	fRect rect;
+	fVector2 tmp;
 
 	tmp = w->ConvertRealToLocal(GlobalRect( ).lt);
 	rect.lt = tmp;
@@ -472,20 +508,21 @@ bool CUILevelMap::OnMouse(f32 x, f32 y, EUIMessages mouse_action)
 		if (MapWnd( ))
 		{
 			MapWnd( )->Hint(MapName( ));
-			return			true;
+			return true;
 		}
 	}
 
 	return false;
 }
 
-void CUILevelMap::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
+void CUILevelMap::SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData)
 {
 	inherited::SendMessage(pWnd, msg, pData);
 
 	if (msg == MAP_SHOW_HINT)
 	{
-		CMapSpot* sp = smart_cast<CMapSpot*>(pWnd); VERIFY(sp);
+		CUIMapSpot* sp = smart_cast<CUIMapSpot*>(pWnd);
+		VERIFY(sp);
 		MapWnd( )->ShowHint(pWnd, sp->GetHint( ));
 	}
 	else if (msg == MAP_HIDE_HINT)

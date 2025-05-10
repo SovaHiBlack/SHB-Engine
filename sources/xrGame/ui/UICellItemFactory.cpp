@@ -4,7 +4,6 @@
 
 CUICellItem* create_cell_item(CInventoryItem* itm)
 {
-
 	CWeaponAmmo* pAmmo = smart_cast<CWeaponAmmo*>(itm);
 	if (pAmmo)
 	{

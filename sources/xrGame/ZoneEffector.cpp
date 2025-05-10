@@ -2,7 +2,7 @@
 #include "ZoneEffector.h"
 #include "level.h"
 #include "clsid_game.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\cameramanager.h"
 #include "actor.h"
 #include "ActorEffector.h"

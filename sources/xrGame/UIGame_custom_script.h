@@ -15,7 +15,7 @@ public:
 	{
 		inherited::SetClGame(g);
 	}
-	virtual	void					Init( )
+	virtual void					Init( )
 	{ }
 	virtual void					ReInitShownUI( )
 	{ }

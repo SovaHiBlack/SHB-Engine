@@ -7,7 +7,7 @@
 
 #include "igame_level.h"
 #include "xr_area.h"
-#include "xr_object.h"
+#include "Object.h"
 
 static const f32 MAX_DIST_FACTOR = 0.95f;
 
@@ -16,7 +16,7 @@ SThunderboltDesc::SThunderboltDesc(CIniFile* pIni, pcstr sect)
 	name = sect;
 	color_anim = LALib.FindItem(pIni->r_string(sect, "color_anim"));
 	VERIFY(color_anim);
-	color_anim->fFPS = (f32) color_anim->iFrameCount;
+	color_anim->fFPS = (f32)color_anim->iFrameCount;
 	m_GradientTop.shader = pIni->r_string(sect, "gradient_top_shader");
 	m_GradientTop.texture = pIni->r_string(sect, "gradient_top_texture");
 	m_GradientTop.fRadius = pIni->r_fvector2(sect, "gradient_top_radius");
@@ -152,8 +152,8 @@ BOOL CEffect_Thunderbolt::RayPick(const fVector3& s, const fVector3& d, f32& dis
 	}
 	else
 	{
-		fVector3 N = { 0.0f, -1.0f, 0.0f };
-		fVector3 P = { 0.0f, 0.0f, 0.0f };
+		fVector3 N = {0.0f, -1.0f, 0.0f};
+		fVector3 P = {0.0f, 0.0f, 0.0f};
 		fPlane3 PL;
 		PL.build(P, N);
 		f32 dst = dist;
@@ -175,7 +175,7 @@ BOOL CEffect_Thunderbolt::RayPick(const fVector3& s, const fVector3& d, f32& dis
 
 void CEffect_Thunderbolt::Bolt(s32 id, f32 period, f32 lt)
 {
-	VERIFY(id >= 0 && id < (s32) collection.size( ));
+	VERIFY(id >= 0 && id < (s32)collection.size( ));
 	state = stWorking;
 	life_time = lt + Random.randF(-lt * 0.5f, lt * 0.5f);
 	current_time = 0.0f;
@@ -199,7 +199,7 @@ void CEffect_Thunderbolt::Bolt(s32 id, f32 period, f32 lt)
 	dev.z = Random.randF(-p_tilt, p_tilt);
 	XF.setXYZi(dev);
 
-	fVector3 light_dir = { 0.0f,-1.0f,0.0f };
+	fVector3 light_dir = {0.0f,-1.0f,0.0f};
 	XF.transform_dir(light_dir);
 	lightning_size = FAR_DIST * 2.f;
 	RayPick(pos, light_dir, lightning_size);
@@ -225,7 +225,7 @@ void CEffect_Thunderbolt::Bolt(s32 id, f32 period, f32 lt)
 	current_direction.invert( );	// for env-sun
 }
 
-void CEffect_Thunderbolt::OnFrame(int id, f32 period, f32 duration)
+void CEffect_Thunderbolt::OnFrame(s32 id, f32 period, f32 duration)
 {
 	BOOL enabled = (id >= 0);
 	if (bEnabled != enabled)
@@ -242,12 +242,12 @@ void CEffect_Thunderbolt::OnFrame(int id, f32 period, f32 duration)
 		if (current_time > life_time) state = stIdle;
 		current_time += Device.fTimeDelta;
 		fVector3 fClr;
-		int frame;
+		s32 frame;
 		u32 uClr = current->color_anim->CalculateRGB(current_time / life_time, frame);
-		fClr.set(f32(color_get_R(uClr)) / 255.f, f32(color_get_G(uClr) / 255.f), f32(color_get_B(uClr) / 255.f));
+		fClr.set(f32(color_get_R(uClr)) / 255.0f, f32(color_get_G(uClr) / 255.0f), f32(color_get_B(uClr) / 255.0f));
 
 		lightning_phase = 1.5f * (current_time / life_time);
-		clamp(lightning_phase, 0.f, 1.f);
+		clamp(lightning_phase, 0.0f, 1.0f);
 
 		g_pGamePersistent->Environment( ).CurrentEnv.sky_color.mad(fClr, p_sky_color);
 		g_pGamePersistent->Environment( ).CurrentEnv.sun_color.mad(fClr, p_sun_color);
@@ -275,7 +275,7 @@ void CEffect_Thunderbolt::Render( )
 		u32					v_offset, i_offset;
 		u32					vCount_Lock = current->l_model->number_vertices;
 		u32					iCount_Lock = current->l_model->number_indices;
-		IRender_DetailModel::fvfVertexOut* v_ptr = (IRender_DetailModel::fvfVertexOut*) RCache.Vertex.Lock(vCount_Lock, hGeom_model->vb_stride, v_offset);
+		IRender_DetailModel::fvfVertexOut* v_ptr = (IRender_DetailModel::fvfVertexOut*)RCache.Vertex.Lock(vCount_Lock, hGeom_model->vb_stride, v_offset);
 		u16* i_ptr = RCache.Index.Lock(iCount_Lock, i_offset);
 		// XForm verts
 		current->l_model->transfer(current_xform, v_ptr, 0xffffffff, i_ptr, 0, 0.f, dv);
@@ -292,7 +292,7 @@ void CEffect_Thunderbolt::Render( )
 		fVector3				vecSx;
 		fVector3			vecSy;
 		u32					VS_Offset;
-		FVF::LIT* pv = (FVF::LIT*) RCache.Vertex.Lock(8, hGeom_gradient.stride( ), VS_Offset);
+		FVF::LIT* pv = (FVF::LIT*)RCache.Vertex.Lock(8, hGeom_gradient.stride( ), VS_Offset);
 		// top
 		{
 			u32 c_val = iFloor(current->m_GradientTop.fOpacity * lightning_phase * 255.f);

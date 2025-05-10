@@ -7,11 +7,11 @@
 #define VLOAD_FORCESOFTWARE		(1<<2)
 
 // The class itself
-class	ENGINE_API				CKinematicsAnimated;
-class	ENGINE_API				CKinematics;
-class	ENGINE_API				IParticleCustom;
+class ENGINE_API				CKinematicsAnimated;
+class ENGINE_API				CKinematics;
+class ENGINE_API				IParticleCustom;
 
-struct	ENGINE_API				IRenderMesh
+struct ENGINE_API				IRenderMesh
 {
 	// format
 	ref_geom					rm_geom;
@@ -29,7 +29,8 @@ struct	ENGINE_API				IRenderMesh
 
 	IRenderMesh( )
 	{
-		p_rm_Vertices = 0; p_rm_Indices = 0;
+		p_rm_Vertices = 0;
+		p_rm_Indices = 0;
 	}
 	virtual ~IRenderMesh( );
 
@@ -39,7 +40,7 @@ private:
 };
 
 // The class itself
-class	ENGINE_API				IRenderVisual
+class ENGINE_API				IRenderVisual
 {
 public:
 
@@ -63,11 +64,11 @@ public:
 	virtual void				Depart( )
 	{ }
 
-	virtual	CKinematics* dcast_PKinematics( )
+	virtual CKinematics* dcast_PKinematics( )
 	{
 		return 0;
 	}
-	virtual	CKinematicsAnimated* dcast_PKinematicsAnimated( )
+	virtual CKinematicsAnimated* dcast_PKinematicsAnimated( )
 	{
 		return 0;
 	}

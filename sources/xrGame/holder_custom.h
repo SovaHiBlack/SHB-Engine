@@ -12,37 +12,64 @@ class CActor;
 class CHolderCustom
 {
 private:
-	CGameObject*			m_owner;
-	CActor*					m_ownerActor;
+	CGameObject* m_owner;
+	CActor* m_ownerActor;
+
 protected:
-	CGameObject*			Owner				(){return m_owner;}
-	CActor*					OwnerActor			(){return m_ownerActor;}
+	CGameObject* Owner( )
+	{
+		return m_owner;
+	}
+	CActor* OwnerActor( )
+	{
+		return m_ownerActor;
+	}
+
 public:
-							CHolderCustom		()				{m_owner=NULL;m_ownerActor=NULL;}
-	virtual					~CHolderCustom		()				{;}
-	virtual	void			UpdateEx			(f32 fov){}; //called by owner
-	virtual CHolderCustom	*cast_holder_custom	()				{return this;}
-			bool			Engaged				()				{return m_owner!=NULL;}
-	virtual void			OnMouseMove			(int x, int y)	= 0;
-	virtual void			OnKeyboardPress		(int dik)		= 0;
-	virtual void			OnKeyboardRelease	(int dik)		= 0;
-	virtual void			OnKeyboardHold		(int dik)		= 0;
+	CHolderCustom( )
+	{
+		m_owner = NULL;
+		m_ownerActor = NULL;
+	}
+	virtual					~CHolderCustom( )
+	{
+			}
+	virtual	void			UpdateEx(f32 fov)
+	{ } //called by owner
+	virtual CHolderCustom* cast_holder_custom( )
+	{
+		return this;
+	}
+	bool			Engaged( )
+	{
+		return m_owner != NULL;
+	}
+	virtual void			OnMouseMove(s32 x, s32 y) = 0;
+	virtual void			OnKeyboardPress(s32 dik) = 0;
+	virtual void			OnKeyboardRelease(s32 dik) = 0;
+	virtual void			OnKeyboardHold(s32 dik) = 0;
 	// Inventory for the car
-	virtual CInventory*		GetInventory		()				= 0;
+	virtual CInventory* GetInventory( ) = 0;
 
-	virtual void			cam_Update			(f32 dt, f32 fov=90.0f)		= 0;
+	virtual void			cam_Update(f32 dt, f32 fov = 90.0f) = 0;
 
-	virtual bool			Use					(const fVector3& pos,const fVector3& dir,const fVector3& foot_pos)=0;
-	virtual bool			attach_Actor		(CGameObject* actor);
-	virtual void			detach_Actor		();
-	virtual bool			allowWeapon			()	const		= 0;
-	virtual bool			HUDView				() const		= 0;
-	virtual fVector3			ExitPosition		()				= 0;
-	virtual fVector3			ExitVelocity		()				{return fVector3().set(0.0f,0.0f,0.0f);}
-	virtual CCameraBase*	Camera				()				= 0;
-	virtual void			Action				(int id, u32 flags)				{};
-	virtual void			SetParam			(int id, fVector2 val)			{};
-	virtual void			SetParam			(int id, fVector3 val)			{};
+	virtual bool			Use(const fVector3& pos, const fVector3& dir, const fVector3& foot_pos) = 0;
+	virtual bool			attach_Actor(CGameObject* actor);
+	virtual void			detach_Actor( );
+	virtual bool			allowWeapon( )	const = 0;
+	virtual bool			HUDView( ) const = 0;
+	virtual fVector3			ExitPosition( ) = 0;
+	virtual fVector3			ExitVelocity( )
+	{
+		return fVector3( ).set(0.0f, 0.0f, 0.0f);
+	}
+	virtual CCameraBase* Camera( ) = 0;
+	virtual void			Action(s32 id, u32 flags)
+	{ }
+	virtual void			SetParam(s32 id, fVector2 val)
+	{ }
+	virtual void			SetParam(s32 id, fVector3 val)
+	{ }
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 

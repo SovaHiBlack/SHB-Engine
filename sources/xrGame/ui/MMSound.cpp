@@ -16,11 +16,11 @@ void CMMSound::Init(CUIXml& xml_doc, pcstr path)
 	string256 _path;
 	m_bRandom = xml_doc.ReadAttribInt(path, 0, "random") ? true : false;
 
-	int nodes_num = xml_doc.GetNodesNum(path, 0, "menu_music");
+	s32 nodes_num = xml_doc.GetNodesNum(path, 0, "menu_music");
 
 	XML_NODE* tab_node = xml_doc.NavigateToNode(path, 0);
 	xml_doc.SetLocalRoot(tab_node);
-	for (int i = 0; i < nodes_num; ++i)
+	for (s32 i = 0; i < nodes_num; ++i)
 	{
 		m_play_list.push_back(xml_doc.Read("menu_music", i, ""));
 	}
@@ -42,7 +42,7 @@ void CMMSound::Init(CUIXml& xml_doc, pcstr path)
 
 bool CMMSound::check_file(pcstr fname)
 {
-	string_path		_path;
+	string_path _path;
 	strconcat(sizeof(_path), _path, fname, ".ogg");
 	return FS.exist("$game_sounds$", _path) ? true : false;
 }
@@ -83,10 +83,10 @@ void CMMSound::music_Play( )
 		return;
 	}
 
-	int i = Random.randI(m_play_list.size( ));
+	s32 i = Random.randI(m_play_list.size( ));
 
-	string_path		_path;
-	string_path		_path2;
+	string_path _path;
+	string_path _path2;
 	strconcat(sizeof(_path), _path, m_play_list[i].c_str( ), "_l.ogg");
 	strconcat(sizeof(_path2), _path2, m_play_list[i].c_str( ), "_r.ogg");
 	VERIFY(FS.exist("$game_sounds$", _path));

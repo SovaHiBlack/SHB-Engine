@@ -6,7 +6,6 @@
 //
 // Copyright 2005 GSC Game World
 
-
 #include "stdafx.h"
 #include "UILine.h"
 #include "uilinestd.h"
@@ -153,7 +152,6 @@ void CUILine::Draw(CGameFont* pFont, f32 x, f32 y) const
 {
 	f32 length = 0.0f;
 	s32 size = m_subLines.size( );
-
 	for (s32 i = 0; i < size; i++)
 	{
 		m_subLines[i].Draw(pFont, x + length, y);
@@ -190,7 +188,6 @@ const CUILine* CUILine::CutByLength(CGameFont* pFont, f32 length, BOOL cut_word)
 
 	Position pos;
 	InitPos(pos);
-
 	if (!pos.word_1.exist( )) // void string
 	{
 		if (m_subLines[0].m_last_in_line)
@@ -278,8 +275,8 @@ bool CUILine::GetWord(Word& w, const xr_string& text, s32 begin) const
 
 	if (npos == last && npos != first)
 	{
-		w.pos = (int) first;
-		w.len = (int) (text.length( ) - first);
+		w.pos = (s32) first;
+		w.len = (s32) (text.length( ) - first);
 		w.len_full = w.len;
 		return true;
 	}
@@ -296,8 +293,8 @@ bool CUILine::GetWord(Word& w, const xr_string& text, s32 begin) const
 			return false;
 		}
 
-		w.pos = (int) first;
-		w.len = (int) (last - first + 1);
+		w.pos = (s32) first;
+		w.len = (s32) (last - first + 1);
 		w.len_full = w.len;
 		return true;
 	}

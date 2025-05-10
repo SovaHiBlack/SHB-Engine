@@ -68,7 +68,7 @@ public:
 	IC		CLIENT_BASE_CLASS			*client_object					(const CLASS_ID &clsid) const;
 	IC		SERVER_BASE_CLASS			*server_object					(const CLASS_ID &clsid, pcstr section) const;
 
-	IC		int							script_clsid					(const CLASS_ID &clsid) const;
+	IC		s32							script_clsid					(const CLASS_ID &clsid) const;
 			void						register_script					() const;
 			void						register_script_class			(pcstr client_class, pcstr server_class, pcstr clsid, pcstr script_clsid);
 			void						register_script_class			(pcstr unknown_class, pcstr clsid, pcstr script_clsid);

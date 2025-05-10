@@ -25,7 +25,7 @@ class CUIDiaryWnd : public CUIWindow, public CUIWndCallback
 	};
 
 protected:
-	EDiaryFilter		m_currFilter;
+	EDiaryFilter m_currFilter;
 
 	CUINewsWnd* m_UINewsWnd;
 
@@ -40,9 +40,9 @@ protected:
 	CUIListWnd* m_SrcListWnd;
 	CUIScrollView* m_DescrView;
 	CGameFont* m_pTreeRootFont;
-	u32					m_uTreeRootColor;
+	u32 m_uTreeRootColor;
 	CGameFont* m_pTreeItemFont;
-	u32					m_uTreeItemColor;
+	u32 m_uTreeItemColor;
 
 	xr_vector<fVector2>	m_sign_places;
 	CUIStatic* m_updatedSectionImage;
@@ -63,7 +63,7 @@ protected:
 	void		Reload(EDiaryFilter new_filter);
 
 public:
-						CUIDiaryWnd( );
+	CUIDiaryWnd( );
 	virtual				~CUIDiaryWnd( );
 
 	virtual void		SendMessage(CUIWindow* pWnd, s16 msg, pvoid pData);

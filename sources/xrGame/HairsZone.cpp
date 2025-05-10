@@ -37,8 +37,8 @@ void CHairsZone::CheckForAwaking( )
 		/*
 				u32 cnt = pObject->ps_Size();
 				if(cnt>2){
-					CObject::SavedPosition p0 = pObject->ps_Element(cnt-1);
-					CObject::SavedPosition p1 = pObject->ps_Element(cnt-2);
+					CObject::SSavedPosition p0 = pObject->ps_Element(cnt-1);
+					CObject::SSavedPosition p1 = pObject->ps_Element(cnt-2);
 
 					f32 dist	= p0.vPosition.distance_to(p1.vPosition);
 					f32 tm	= (p0.dwTime-p1.dwTime)/1000.0f;

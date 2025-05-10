@@ -9,7 +9,7 @@
 
 CUIInventoryCellItem::CUIInventoryCellItem(CInventoryItem* itm)
 {
-	m_pData = (pvoid) itm;
+	m_pData = (pvoid)itm;
 
 	inherited::SetShader(InventoryUtilities::GetEquipmentIconsShader( ));
 
@@ -64,11 +64,10 @@ void CUIAmmoCellItem::UpdateItemText( )
 	{
 		xr_vector<CUICellItem*>::iterator it = m_childs.begin( );
 		xr_vector<CUICellItem*>::iterator it_e = m_childs.end( );
-
 		u16 total = object( )->m_boxCurr;
 		for (; it != it_e; ++it)
 		{
-			total = total + ((CUIAmmoCellItem*) (*it))->object( )->m_boxCurr;
+			total = total + ((CUIAmmoCellItem*)(*it))->object( )->m_boxCurr;
 		}
 
 		string32 str;
@@ -103,7 +102,6 @@ CUIWeaponCellItem::CUIWeaponCellItem(CWeapon* itm) : inherited(itm)
 		m_addon_offset[eLauncher].set(object( )->GetGrenadeLauncherX( ), object( )->GetGrenadeLauncherY( ));
 	}
 }
-
 
 CUIWeaponCellItem::~CUIWeaponCellItem( )
 { }

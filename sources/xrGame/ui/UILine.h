@@ -78,7 +78,7 @@ public:
 	{
 		return m_subLines.empty( );
 	}
- 
+
 protected:
 	s32				GetSize( );
 	bool			GetWord(Word& w, const xr_string& text, s32 begin) const;

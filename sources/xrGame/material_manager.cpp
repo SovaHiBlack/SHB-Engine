@@ -77,9 +77,10 @@ void CMaterialManager::update(f32 time_delta, f32 volume, f32 step_time, bool st
 		if (m_time_to_step < 0)
 		{
 			SoundVec& snd_array = mtl_pair->StepSounds;
-
 			if (m_run_mode && mtl_pair->BreakingSounds.size( ) > 0)
+			{
 				snd_array = mtl_pair->BreakingSounds;
+			}
 
 			if (snd_array.size( ) > 0)
 			{
@@ -90,18 +91,23 @@ void CMaterialManager::update(f32 time_delta, f32 volume, f32 step_time, bool st
 				m_step_sound[m_step_id].play_at_pos(m_object, position);
 			}
 		}
+
 		m_time_to_step -= time_delta;
 	}
 	else
+	{
 		m_time_to_step = 0;
+	}
 
 
-	for (int i = 0; i < 4; i++)
+	for (s32 i = 0; i < 4; i++)
+	{
 		if (m_step_sound[i]._feedback( ))
 		{
 			m_step_sound[i].set_position(position);
 			m_step_sound[i].set_volume(1.f * volume);
 		}
+	}
 }
 
 void CMaterialManager::set_run_mode(bool run_mode)

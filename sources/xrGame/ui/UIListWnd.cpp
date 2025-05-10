@@ -105,7 +105,7 @@ void CUIListWnd::SetWidth(f32 width)
 
 void CUIListWnd::RemoveItem(s32 index)
 {
-	if (index < 0 || index >= (s32) m_ItemList.size( ))
+	if (index < 0 || index >= (s32)m_ItemList.size( ))
 	{
 		return;
 	}
@@ -135,7 +135,7 @@ void CUIListWnd::RemoveItem(s32 index)
 		m_ScrollBar->SetRange(0, 0);
 	}
 
-	m_ScrollBar->SetPageSize(s16((u32) m_iRowNum < m_ItemList.size( ) ? m_iRowNum : m_ItemList.size( )));
+	m_ScrollBar->SetPageSize(s16((u32)m_iRowNum < m_ItemList.size( ) ? m_iRowNum : m_ItemList.size( )));
 	m_ScrollBar->SetScrollPos(s16(m_iFirstShownIndex));
 	m_ScrollBar->Refresh( );
 
@@ -151,7 +151,7 @@ void CUIListWnd::RemoveItem(s32 index)
 
 CUIListItem* CUIListWnd::GetItem(s32 index)
 {
-	if (index < 0 || index >= (s32) m_ItemList.size( ))
+	if (index < 0 || index >= (s32)m_ItemList.size( ))
 	{
 		return NULL;
 	}
@@ -378,7 +378,7 @@ void CUIListWnd::DrawActiveBackFrame(const fRect& rect, CUIListItem* itm)
 	f32 _d = GetItemHeight( ) - m_ActiveBackgroundFrame->GetHeight( );
 	if (_d > 0)
 	{
-		_pos.y += (f32) iFloor(_d / 2.0f);
+		_pos.y += (f32)iFloor(_d / 2.0f);
 	}
 
 	m_ActiveBackgroundFrame->SetWndPos(_pos);
@@ -547,7 +547,7 @@ void CUIListWnd::UpdateScrollBar( )
 		return;
 	}
 
-	if ((s32) m_ItemList.size( ) <= m_ScrollBar->GetPageSize( ))
+	if ((s32)m_ItemList.size( ) <= m_ScrollBar->GetPageSize( ))
 	{
 		m_ScrollBar->Show(false);
 	}
@@ -574,7 +574,7 @@ void CUIListWnd::ActivateList(bool activity)
 
 void CUIListWnd::ScrollToBegin( )
 {
-	m_ScrollBar->SetScrollPos((s16) m_ScrollBar->GetMinRange( ));
+	m_ScrollBar->SetScrollPos((s16)m_ScrollBar->GetMinRange( ));
 	m_iFirstShownIndex = m_ScrollBar->GetScrollPos( );
 	UpdateList( );
 }
@@ -585,7 +585,7 @@ void CUIListWnd::ScrollToEnd( )
 {
 	u32 pos = m_ScrollBar->GetMaxRange( ) - m_ScrollBar->GetPageSize( ) + 1;
 
-	if ((s32) pos > m_ScrollBar->GetMinRange( ))
+	if ((s32)pos > m_ScrollBar->GetMinRange( ))
 	{
 		m_ScrollBar->SetScrollPos(pos);
 	}

@@ -35,7 +35,7 @@ f32 CLevelGraph::distance(const fVector3& position, const CLevelGraph::CVertex* 
 	return					(best);
 }
 
-void CLevelGraph::choose_point(const fVector3& start_point, const fVector3& finish_point, const SContour& _contour, int node_id, fVector3& temp_point, int& saved_index) const
+void CLevelGraph::choose_point(const fVector3& start_point, const fVector3& finish_point, const SContour& _contour, s32 node_id, fVector3& temp_point, s32& saved_index) const
 {
 	SContour					tNextContour;
 	SSegment					tNextSegment;
@@ -47,7 +47,7 @@ void CLevelGraph::choose_point(const fVector3& start_point, const fVector3& fini
 	u32							dwIntersect = intersect(start_point.x, start_point.z, finish_point.x, finish_point.z, tNextSegment.v1.x, tNextSegment.v1.z, tNextSegment.v2.x, tNextSegment.v2.z, &tIntersectPoint.x, &tIntersectPoint.z);
 	if (!dwIntersect)
 		return;
-	for (int i = 0; i < 4; ++i)
+	for (s32 i = 0; i < 4; ++i)
 	{
 		switch (i)
 		{
@@ -115,7 +115,7 @@ f32 CLevelGraph::check_position_in_direction(u32 start_vertex_id, const fVector3
 {
 	SContour				_contour;
 	const_iterator			I, E;
-	int						saved_index, iPrevIndex = -1, iNextNode;
+	s32						saved_index, iPrevIndex = -1, iNextNode;
 	fVector3					start_point = start_position;
 	fVector3			temp_point = start_position;
 	fVector3			finish_point = finish_position;
@@ -169,7 +169,7 @@ f32 CLevelGraph::mark_nodes_in_direction(u32 start_vertex_id, const fVector3& st
 {
 	SContour				_contour;
 	const_iterator			I, E;
-	int						saved_index, iPrevIndex = -1, iNextNode;
+	s32						saved_index, iPrevIndex = -1, iNextNode;
 	fVector3					temp_point = start_point;
 	f32					fDistance = start_point.distance_to(finish_point), fCurDistance = 0.f;
 	u32						dwCurNode = start_vertex_id;
@@ -207,7 +207,7 @@ f32 CLevelGraph::farthest_vertex_in_direction(u32 start_vertex_id, const fVector
 {
 	SContour				_contour;
 	const_iterator			I, E;
-	int						saved_index, iPrevIndex = -1, iNextNode;
+	s32						saved_index, iPrevIndex = -1, iNextNode;
 	fVector3					temp_point = start_point;
 	f32					fDistance = start_point.distance_to(finish_point), fCurDistance = 0.f;
 	u32						dwCurNode = start_vertex_id;

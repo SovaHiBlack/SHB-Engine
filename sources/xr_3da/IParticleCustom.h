@@ -1,6 +1,6 @@
 #pragma once
 
-class ENGINE_API	IParticleCustom : public IRenderVisual
+class ENGINE_API IParticleCustom : public IRenderVisual
 {
 public:
 	// geometry-format
@@ -22,7 +22,7 @@ public:
 
 	virtual u32		ParticlesCount( ) = 0;
 
-	virtual f32	GetTimeLimit( ) = 0;
+	virtual f32		GetTimeLimit( ) = 0;
 	virtual BOOL	IsLooped( )
 	{
 		return GetTimeLimit( ) < 0.0f;

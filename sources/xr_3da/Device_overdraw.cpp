@@ -40,7 +40,7 @@ void CRenderDevice::overdrawEnd( )
 	CHK_DX(HW.pDevice->SetFVF(FVF::F_TL));
 
 	// Render gradients
-	for (int I = 0; I < 12; I++)
+	for (s32 I = 0; I < 12; I++)
 	{
 		u32	_c = I * 256 / 13;
 		u32	c = D3DCOLOR_XRGB(_c, _c, _c);

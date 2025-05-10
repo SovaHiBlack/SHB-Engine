@@ -2,7 +2,7 @@
 
 #include "pure.h"
 
-ENGINE_API int	__cdecl	_REG_Compare(const void *e1, const void *e2)
+ENGINE_API s32	__cdecl	_REG_Compare(pcvoid e1, pcvoid e2)
 {
 	_REG_INFO *p1 = (_REG_INFO *)e1;
 	_REG_INFO *p2 = (_REG_INFO *)e2;

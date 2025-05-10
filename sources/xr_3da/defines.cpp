@@ -1,14 +1,14 @@
 #include "stdafx.h"
 
 #ifdef DEBUG
-	BOOL bDebug	= FALSE;
+BOOL bDebug = FALSE;
 #endif // DEBUG
 
 // Video
 u32			psCurrentVidMode[2] = {1024,768};
-u32			psCurrentBPP		= 32;
+u32			psCurrentBPP = 32;
 // release version always has "mt_*" enabled
-flags32		psDeviceFlags		= {rsFullscreen|rsDetails|mtPhysics|mtSound|rsDrawStatic|rsDrawDynamic};
+flags32		psDeviceFlags = {rsFullscreen | rsDetails | mtPhysics | mtSound | rsDrawStatic | rsDrawDynamic};
 
 // textures 
-int			psTextureLOD		= 0;
+s32			psTextureLOD = 0;

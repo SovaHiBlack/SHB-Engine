@@ -158,7 +158,7 @@ void SHit::_dump()
 	Log						("weaponID=",			weaponID);
 	Log						("element=",			boneID);
 	Log						("p_in_bone_space=",	p_in_bone_space);
-	Log						("hit_type=",			(int)hit_type);
+	Log						("hit_type=",			(s32)hit_type);
 	Log						("ap=",					ap);
 	Msg						("SHit::_dump()---end");
 }

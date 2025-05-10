@@ -3,9 +3,9 @@
 #include "xrMessages.h"
 
 extern BOOL		g_bCheckTime;
-static int g_dwEventDelay = 0;
+static s32 g_dwEventDelay = 0;
 
-class	NET_Event
+class CNETEvent
 {
 public:
 	u16					ID;
@@ -13,77 +13,86 @@ public:
 	u16					type;
 	u16					destination;
 	xr_vector<u8>		data;
+
 public:
-	void				import		(CNetPacket& P)
+	void import(CNetPacket& P)
 	{
-		data.clear		();
-		P.r_begin		(ID			);	//VERIFY(M_EVENT==ID);
+		data.clear( );
+		P.r_begin(ID);	//VERIFY(M_EVENT==ID);
 		switch (ID)
 		{
-		case M_SPAWN:
+			case M_SPAWN:
 			{
-				P.read_start();
+				P.read_start( );
 //				timestamp = P->
-			}break;
-		case M_EVENT:
+			}
+			break;
+			case M_EVENT:
 			{
-				P.r_u32			(timestamp	);
-				timestamp += u32(g_dwEventDelay);				
-				P.r_u16			(type		);
-				P.r_u16			(destination);
-			}break;
-		default:
+				P.r_u32(timestamp);
+				timestamp += u32(g_dwEventDelay);
+				P.r_u16(type);
+				P.r_u16(destination);
+			}
+			break;
+			default:
 			{
 				VERIFY(0);
-			}break;
-		}		
+			}
+			break;
+		}
 
-		u32 size		= P.r_elapsed();
-		if (size)	
+		u32 size = P.r_elapsed( );
+		if (size)
 		{
-			data.resize		(size);
-			P.r				(&*data.begin(),size);
+			data.resize(size);
+			P.r(&*data.begin( ), size);
 		}
 	}
-	void				export		(CNetPacket& P)
+	void export		(CNetPacket& P)
 	{
-		u16	ID			=	M_EVENT;
-		P.w_begin		(ID			);
-		P.w_u32			(timestamp	);
-		P.w_u16			(type		);
-		P.w_u16			(destination);
-		if (data.size())	P.w(&*data.begin(),(u32)data.size());
+		u16	ID = M_EVENT;
+		P.w_begin(ID);
+		P.w_u32(timestamp);
+		P.w_u16(type);
+		P.w_u16(destination);
+		if (data.size( ))
+		{
+			P.w(&*data.begin( ), (u32)data.size( ));
+		}
 	}
-	void				implication	(CNetPacket& P) const
+	void				implication(CNetPacket& P) const
 	{
-		CopyMemory	(P.B.data,&*data.begin(),(u32)data.size());
-		P.B.count		= (u32)data.size();
-		P.r_pos			= 0;
+		CopyMemory(P.B.data, &*data.begin( ), (u32)data.size( ));
+		P.B.count = (u32)data.size( );
+		P.r_pos = 0;
 	}
 };
 
-IC bool operator < (const NET_Event& A, const NET_Event& B)	{ return A.timestamp<B.timestamp; }
+IC bool operator < (const CNETEvent& A, const CNETEvent& B)
+{
+	return A.timestamp < B.timestamp;
+}
 
-
-
-class	NET_Queue_Event
+class	CNETQueueEvent
 {
 public:
-//	xr_multiset<NET_Event>	queue;	
-	xr_deque<NET_Event>	queue;
+//	xr_multiset<CNETEvent>	queue;	
+	xr_deque<CNETEvent>	queue;
+
 public:
-	IC void				insert		(CNetPacket& P)
+	IC void				insert(CNetPacket& P)
 	{
-		NET_Event		E;
-		E.import		(P);
+		CNETEvent		E;
+		E.import(P);
 //		queue.insert	(E);
-		queue.push_back	(E);
+		queue.push_back(E);
 		/*
 		//-------------------------------------------
 #ifdef DEBUG
 		shared_str EventName;
 		string16 tmp;
-		
+
 		switch (E.type)
 		{
 		case 1: EventName = "GE_OWNERSHIP_TAKE [1]"; break;
@@ -93,18 +102,21 @@ public:
 		default: EventName = itoa(E.type, tmp, 10); break;
 		}
 
-		Msg("Event %s to %d - at %d", *EventName, E.destination, E.timestamp);		
+		Msg("Event %s to %d - at %d", *EventName, E.destination, E.timestamp);
 #endif
 		//-------------------------------------------
 		//*/
 	}
-	IC BOOL				available	(u32 T)
+	IC BOOL				available(u32 T)
 	{
 //		if (queue.empty()/* || (T<queue.begin()->timestamp)*/)	return FALSE;
 //		else												return TRUE;
-		if (queue.empty()) return FALSE;
+		if (queue.empty( ))
+		{
+			return FALSE;
+		}
 		/**
-		else 
+		else
 		{
 			if (!g_bCheckTime) return TRUE;
 #ifdef _DEBUG
@@ -113,16 +125,16 @@ public:
 			return TRUE;
 		}
 		/**/
-		return			TRUE;
+		return TRUE;
 	}
-	IC void				get			(u16& ID, u16& dest, u16& type, CNetPacket& P)
+	IC void				get(u16& ID, u16& dest, u16& type, CNetPacket& P)
 	{
-		const NET_Event& E	= *queue.begin();
-		ID					= E.ID;
-		dest				= E.destination;
-		type				= E.type;
-		E.implication		(P);
+		const CNETEvent& E = *queue.begin( );
+		ID = E.ID;
+		dest = E.destination;
+		type = E.type;
+		E.implication(P);
 //		queue.erase			(queue.begin());
-		queue.pop_front();
+		queue.pop_front( );
 	}
 };

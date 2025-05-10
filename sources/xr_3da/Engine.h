@@ -6,7 +6,7 @@
 #include "EngineAPI.h"
 #include "EventAPI.h"
 #include "xrCPU_Pipe.h"
-#include "xrSheduler.h"
+#include "Sheduler.h"
 
 class ENGINE_API CEngine
 {

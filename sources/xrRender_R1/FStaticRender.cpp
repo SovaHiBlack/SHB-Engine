@@ -7,7 +7,7 @@
 #include "..\XR_3DA\environment.h"
 #include "..\XR_3DA\BasicVisual.h"
 #include "..\XR_3DA\CustomHUD.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\mesh.h"
 #include "..\XR_3DA\SkeletonCustom.h"
 #include "..\xrRender\lighttrack.h"

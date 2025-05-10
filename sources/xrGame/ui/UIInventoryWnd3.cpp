@@ -327,12 +327,12 @@ bool CUIInventoryWnd::DropItem(PIItem itm, CUIDragDropListEx* lst)
 
 	if (!_iitem)
 	{
-		return	false;
+		return false;
 	}
 
 	if (!_iitem->CanAttach(itm))
 	{
-		return	false;
+		return false;
 	}
 
 	AttachAddon(_iitem);

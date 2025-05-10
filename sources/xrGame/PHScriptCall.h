@@ -7,9 +7,7 @@
 //	f1.typ
 //}
 
-class CPHScriptCondition:
-	public CPHCondition,
-	public CPHReqComparerV
+class CPHScriptCondition : public CPHCondition, public CPHReqComparerV
 {
 	luabind::functor<bool>			*m_lua_function;
 

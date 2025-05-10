@@ -20,7 +20,7 @@ class CUIProgressShape;
 class CUIMessagesWindow : public CUIWindow
 {
 public:
-	CUIMessagesWindow( );
+						CUIMessagesWindow( );
 	virtual				~CUIMessagesWindow( );
 
 	void				AddIconedPdaMessage(pcstr textureName, fRect originalRect, pcstr message, s32 iDelay);

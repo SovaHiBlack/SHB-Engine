@@ -253,11 +253,12 @@ void CEnvDescriptorMixer::clear( )
 	clouds_r_textures.push_back(zero);
 	clouds_r_textures.push_back(zero);
 }
-int get_ref_count(IUnknown* ii);
+
+s32 get_ref_count(IUnknown* ii);
 void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor& B, f32 f, CEnvModifier& M, f32 m_power)
 {
-	f32	_power = 1.f / (m_power + 1);	// the environment itself
-	f32	fi = 1 - f;
+	f32	_power = 1.0f / (m_power + 1);	// the environment itself
+	f32	fi = 1.0f - f;
 
 	sky_r_textures.clear( );
 	sky_r_textures.push_back(mk_pair(0, A.sky_texture));
@@ -343,25 +344,41 @@ void	CEnvironment::mods_unload( )
 void CEnvironment::load( )
 {
 	tonemap = Device.Resources->_CreateTexture("$user$tonemap");	//. hack
-	if (!eff_Rain)    		eff_Rain = xr_new<CEffect_Rain>( );
-	if (!eff_LensFlare)		eff_LensFlare = xr_new<CLensFlare>( );
-	if (!eff_Thunderbolt)	eff_Thunderbolt = xr_new<CEffect_Thunderbolt>( );
+	if (!eff_Rain)
+	{
+		eff_Rain = xr_new<CEffect_Rain>( );
+	}
+
+	if (!eff_LensFlare)
+	{
+		eff_LensFlare = xr_new<CLensFlare>( );
+	}
+
+	if (!eff_Thunderbolt)
+	{
+		eff_Thunderbolt = xr_new<CEffect_Thunderbolt>( );
+	}
+
 	// load weathers
 	if (WeatherCycles.empty( ))
 	{
 		pcstr first_weather = 0;
-		int weather_count = pSettings->line_count("weathers");
-		for (int w_idx = 0; w_idx < weather_count; w_idx++)
+		s32 weather_count = pSettings->line_count("weathers");
+		for (s32 w_idx = 0; w_idx < weather_count; w_idx++)
 		{
 			pcstr weather;
 			pcstr sect_w;
 			if (pSettings->r_line("weathers", w_idx, &weather, &sect_w))
 			{
-				if (0 == first_weather) first_weather = weather;
-				int env_count = pSettings->line_count(sect_w);
+				if (0 == first_weather)
+				{
+					first_weather = weather;
+				}
+
+				s32 env_count = pSettings->line_count(sect_w);
 				pcstr exec_tm;
 				pcstr sect_e;
-				for (int env_idx = 0; env_idx < env_count; env_idx++)
+				for (s32 env_idx = 0; env_idx < env_count; env_idx++)
 				{
 					if (pSettings->r_line(sect_w, env_idx, &exec_tm, &sect_e))
 					{
@@ -385,26 +402,30 @@ void CEnvironment::load( )
 			R_ASSERT3(_I->second.size( ) > 1, "Environment in weather must >=2", *_I->first);
 			std::sort(_I->second.begin( ), _I->second.end( ), sort_env_etl_pred);
 		}
+
 		R_ASSERT2(!WeatherCycles.empty( ), "Empty weathers.");
 		SetWeather(first_weather);
 	}
+
 	// load weather effects
 	if (WeatherFXs.empty( ))
 	{
-		int line_count = pSettings->line_count("weather_effects");
-		for (int w_idx = 0; w_idx < line_count; w_idx++)
+		s32 line_count = pSettings->line_count("weather_effects");
+		for (s32 w_idx = 0; w_idx < line_count; w_idx++)
 		{
 			pcstr weather;
 			pcstr sect_w;
 			if (pSettings->r_line("weather_effects", w_idx, &weather, &sect_w))
 			{
 				EnvVec& env = WeatherFXs[weather];
-				env.push_back(xr_new<CEnvDescriptor>( )); env.back( )->exec_time_loaded = 0;
-				env.push_back(xr_new<CEnvDescriptor>( )); env.back( )->exec_time_loaded = 0;
-				int env_count = pSettings->line_count(sect_w);
+				env.push_back(xr_new<CEnvDescriptor>( ));
+				env.back( )->exec_time_loaded = 0;
+				env.push_back(xr_new<CEnvDescriptor>( ));
+				env.back( )->exec_time_loaded = 0;
+				s32 env_count = pSettings->line_count(sect_w);
 				pcstr exec_tm;
 				pcstr sect_e;
-				for (int env_idx = 0; env_idx < env_count; env_idx++)
+				for (s32 env_idx = 0; env_idx < env_count; env_idx++)
 				{
 					if (pSettings->r_line(sect_w, env_idx, &exec_tm, &sect_e))
 					{
@@ -418,9 +439,12 @@ void CEnvironment::load( )
 
 					}
 				}
-				env.push_back(xr_new<CEnvDescriptor>( )); env.back( )->exec_time_loaded = DAY_LENGTH;
+
+				env.push_back(xr_new<CEnvDescriptor>( ));
+				env.back( )->exec_time_loaded = DAY_LENGTH;
 			}
 		}
+
 		// sorting weather envs
 		EnvsMapIt _I = WeatherFXs.begin( );
 		EnvsMapIt _E = WeatherFXs.end( );
@@ -441,7 +465,9 @@ void CEnvironment::unload( )
 	for (; _I != _E; _I++)
 	{
 		for (EnvIt it = _I->second.begin( ); it != _I->second.end( ); it++)
+		{
 			xr_delete(*it);
+		}
 	}
 
 	WeatherCycles.clear( );
@@ -451,12 +477,18 @@ void CEnvironment::unload( )
 	for (; _I != _E; _I++)
 	{
 		for (EnvIt it = _I->second.begin( ); it != _I->second.end( ); it++)
+		{
 			xr_delete(*it);
+		}
 	}
+
 	WeatherFXs.clear( );
 	// clear ambient
 	for (EnvAmbVecIt it = Ambients.begin( ); it != Ambients.end( ); it++)
+	{
 		xr_delete(*it);
+	}
+
 	Ambients.clear( );
 	// misc
 	xr_delete(eff_Rain);

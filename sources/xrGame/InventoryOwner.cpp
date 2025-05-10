@@ -251,7 +251,7 @@ void CInventoryOwner::StartTalk(CInventoryOwner* talk_partner, bool start_trade)
 	if (start_trade)
 		GetTrade( )->StartTrade(talk_partner);
 }
-#include "UIGameSP.h"
+#include "UIGame.h"
 #include "HUDmanager.h"
 #include "ui\UITalkWnd.h"
 

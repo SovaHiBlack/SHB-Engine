@@ -19,7 +19,7 @@ void CUITaskDescrWnd::Init(CUIXml* doc, pcstr start_from)
 
 	xml_init.InitWindow(*doc, start_from, 0, this);
 
-	string512				str;
+	string512 str;
 
 	m_UIMainFrame = xr_new<CUIFrameWindow>( );
 	m_UIMainFrame->SetAutoDelete(true);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\XR_3DA\ParticleCustom.h"
+#include "..\XR_3DA\IParticleCustom.h"
 
 namespace PS
 {

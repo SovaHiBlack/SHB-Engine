@@ -3,13 +3,13 @@
 #include "alife_space.h"
 #include "game_graph_space.h"
 
-class CMapSpot;
-class CMiniMapSpot;
-class CMapSpotPointer;
+class CUIMapSpot;
+class CUIMiniMapSpot;
+class CUIMapSpotPointer;
 class CUICustomMap;
 class CInventoryOwner;
 
-class CMapLocation :public IPureDestroyableObject
+class CMapLocation : public IPureDestroyableObject
 {
 public:
 	enum ELocationFlags
@@ -26,17 +26,17 @@ public:
 protected:
 	flags32					m_flags;
 	shared_str				m_hint;
-	CMapSpot* m_level_spot;
-	CMapSpotPointer* m_level_spot_pointer;
-	CMiniMapSpot* m_minimap_spot;
-	CMapSpotPointer* m_minimap_spot_pointer;
+	CUIMapSpot* m_level_spot;
+	CUIMapSpotPointer* m_level_spot_pointer;
+	CUIMiniMapSpot* m_minimap_spot;
+	CUIMapSpotPointer* m_minimap_spot_pointer;
 
-	CMapSpot* m_level_map_spot_border;
-	CMapSpot* m_mini_map_spot_border;
+	CUIMapSpot* m_level_map_spot_border;
+	CUIMapSpot* m_mini_map_spot_border;
 
 	u16						m_objectID;
 	u16						m_refCount;
-	int						m_ttl;
+	s32						m_ttl;
 	u32						m_actual_time;
 	fVector3					m_position_global; //last global position, actual time only current frame 
 	fVector2 				m_position_on_map; //last position on parent map, actual time only current frame
@@ -57,10 +57,10 @@ private:
 
 protected:
 	void					LoadSpot(pcstr type, bool bReload);
-	void					UpdateSpot(CUICustomMap* map, CMapSpot* sp);
-	void					UpdateSpotPointer(CUICustomMap* map, CMapSpotPointer* sp);
-	CMapSpotPointer* GetSpotPointer(CMapSpot* sp);
-	CMapSpot* GetSpotBorder(CMapSpot* sp);
+	void					UpdateSpot(CUICustomMap* map, CUIMapSpot* sp);
+	void					UpdateSpotPointer(CUICustomMap* map, CUIMapSpotPointer* sp);
+	CUIMapSpotPointer* GetSpotPointer(CUIMapSpot* sp);
+	CUIMapSpot* GetSpotBorder(CUIMapSpot* sp);
 
 public:
 	CMapLocation(pcstr type, u16 object_id);
@@ -121,7 +121,7 @@ public:
 	{
 		return m_objectID;
 	}
-	virtual		bool		Update( ); //returns actual
+	virtual bool		Update( ); //returns actual
 	fVector3					GetLastPosition( )
 	{
 		return m_position_global;

@@ -12,7 +12,7 @@ public:
 	virtual		bool			EqualTo(CUICellItem* itm);
 	CInventoryItem* object( )
 	{
-		return (CInventoryItem*) m_pData;
+		return (CInventoryItem*)m_pData;
 	}
 };
 
@@ -29,7 +29,7 @@ public:
 	virtual		bool			EqualTo(CUICellItem* itm);
 	CWeaponAmmo* object( )
 	{
-		return (CWeaponAmmo*) m_pData;
+		return (CWeaponAmmo*)m_pData;
 	}
 };
 
@@ -63,7 +63,7 @@ public:
 	virtual		void			Update( );
 	CWeapon* object( )
 	{
-		return (CWeapon*) m_pData;
+		return (CWeapon*)m_pData;
 	}
 	virtual		void			OnAfterChild( );
 	virtual		CUIDragItem* CreateDragItem( );

@@ -105,7 +105,7 @@ ICF static BOOL pick_trace_callback(collide::rq_result& result, pvoid params)
 
 void CHUDTarget::CursorOnFrame( )
 {
-	fVector3				p1;
+	fVector3 p1;
 	fVector3 dir;
 
 	p1 = Device.vCameraPosition;
@@ -159,7 +159,7 @@ void CHUDTarget::Render( )
 
 	CGameFont* F = HUD( ).Font( ).pFontGraffiti19Russian;
 	F->SetAligment(CGameFont::alCenter);
-	F->OutSetI(0.f, 0.05f);
+	F->OutSetI(0.0f, 0.05f);
 
 	if (psHUD_Flags.test(HUD_CROSSHAIR_DIST))
 	{

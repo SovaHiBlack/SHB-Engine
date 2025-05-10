@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "WallmarksEngine.h"
 
-//#include "..\XR_3DA\xr_object.h"
+//#include "..\XR_3DA\Object.h"
 //#include "..\XR_3DA\x_ray.h"
 //#include "..\XR_3DA\GameFont.h"
 #include "..\XR_3DA\SkeletonCustom.h"

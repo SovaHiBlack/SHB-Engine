@@ -16,7 +16,7 @@ class CUITaskItem;
 
 class CUIEventsWnd : public CUIWindow, public CUIWndCallback
 {
-	typedef CUIWindow			inherited;
+	typedef CUIWindow inherited;
 	enum ETaskFilters
 	{
 		eActiveTask = 0,
@@ -30,8 +30,8 @@ class CUIEventsWnd : public CUIWindow, public CUIWndCallback
 		flMapMode = (1 << 1)
 	};
 
-	flags16						m_flags;
-	ETaskFilters				m_currFilter;
+	flags16 m_flags;
+	ETaskFilters m_currFilter;
 	CUIFrameWindow* m_UILeftFrame;
 	CUIWindow* m_UIRightWnd;
 	CUIFrameLineWnd* m_UILeftHeader;

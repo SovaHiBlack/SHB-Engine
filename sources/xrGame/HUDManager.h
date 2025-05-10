@@ -52,17 +52,17 @@ private:
 public:
 	CHUDManager( );
 	virtual					~CHUDManager( );
-	virtual		void		OnEvent(EVENT E, u64 P1, u64 P2);
+	virtual void		OnEvent(EVENT E, u64 P1, u64 P2);
 
-	virtual		void		Load( );
+	virtual void		Load( );
 
-	virtual		void		Render_First( );
-	virtual		void		Render_Last( );
-	virtual		void		OnFrame( );
+	virtual void		Render_First( );
+	virtual void		Render_Last( );
+	virtual void		OnFrame( );
 
-	virtual		void		RenderUI( );
+	virtual void		RenderUI( );
 
-	virtual		IC CUI* GetUI( )
+	virtual IC CUI* GetUI( )
 	{
 		return pUI;
 	}

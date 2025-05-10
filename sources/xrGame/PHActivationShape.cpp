@@ -32,7 +32,7 @@ static f32 erp = 1.0f;
 #	define	CHECK_POS(pos, msg, br)
 #endif // def DEBUG
 
-void ActivateTestDepthCallback				(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
+void ActivateTestDepthCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
 	if (do_colide && !material_1->Flags.test(SGameMtl::flPassable) && !material_2->Flags.test(SGameMtl::flPassable))
 	{
@@ -46,25 +46,25 @@ void ActivateTestDepthCallback				(bool& do_colide, bool bo1, dContact& c, SGame
 	}
 }
 
-void StaticEnvironment						(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
+void StaticEnvironment(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
 	dJointID contact_joint = dJointCreateContact(0, ContactGroup, &c);
 
 	if (bo1)
 	{
-		((CPHActivationShape*) (retrieveGeomUserData(c.geom.g1)->callback_data))->DActiveIsland( )->ConnectJoint(contact_joint);
+		((CPHActivationShape*)(retrieveGeomUserData(c.geom.g1)->callback_data))->DActiveIsland( )->ConnectJoint(contact_joint);
 		dJointAttach(contact_joint, dGeomGetBody(c.geom.g1), 0);
 	}
 	else
 	{
-		((CPHActivationShape*) (retrieveGeomUserData(c.geom.g2)->callback_data))->DActiveIsland( )->ConnectJoint(contact_joint);
+		((CPHActivationShape*)(retrieveGeomUserData(c.geom.g2)->callback_data))->DActiveIsland( )->ConnectJoint(contact_joint);
 		dJointAttach(contact_joint, 0, dGeomGetBody(c.geom.g2));
 	}
 
 	do_colide = false;
 }
 
-void GetMaxDepthCallback					(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
+void GetMaxDepthCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
 	if (do_colide && !material_1->Flags.test(SGameMtl::flPassable) && !material_2->Flags.test(SGameMtl::flPassable))
 	{
@@ -76,7 +76,7 @@ void GetMaxDepthCallback					(bool& do_colide, bool bo1, dContact& c, SGameMtl* 
 	//do_colide=false;
 }
 
-void RestoreVelocityState					(V_PH_WORLD_STATE& state)
+void RestoreVelocityState(V_PH_WORLD_STATE& state)
 {
 	V_PH_WORLD_STATE::iterator i = state.begin( ), e = state.end( );
 	for (; e != i; ++i)
@@ -92,7 +92,7 @@ void RestoreVelocityState					(V_PH_WORLD_STATE& state)
 	}
 }
 
-CPHActivationShape::CPHActivationShape		( )
+CPHActivationShape::CPHActivationShape( )
 {
 	m_geom = NULL;
 	m_body = NULL;
@@ -100,12 +100,12 @@ CPHActivationShape::CPHActivationShape		( )
 	m_flags.set(flFixedRotation, TRUE);
 }
 
-CPHActivationShape::~CPHActivationShape		( )
+CPHActivationShape::~CPHActivationShape( )
 {
 	VERIFY(!m_body && !m_geom);
 }
 
-void CPHActivationShape::Create				(const fVector3 start_pos, const fVector3 start_size, CPhysicsShellHolder* ref_obj, EType _type, u16 flags)
+void CPHActivationShape::Create(const fVector3 start_pos, const fVector3 start_size, CPhysicsShellHolder* ref_obj, EType _type, u16 flags)
 {
 	VERIFY(ref_obj);
 	m_body = dBodyCreate(0);
@@ -139,7 +139,7 @@ void CPHActivationShape::Create				(const fVector3 start_pos, const fVector3 sta
 	m_flags.set(flags, TRUE);
 }
 
-void CPHActivationShape::Destroy			( )
+void CPHActivationShape::Destroy( )
 {
 	VERIFY(m_geom && m_body);
 	spatial_unregister( );
@@ -151,7 +151,7 @@ void CPHActivationShape::Destroy			( )
 	m_body = NULL;
 }
 
-bool CPHActivationShape::Activate			(const fVector3 need_size, u16 steps, f32 max_displacement, f32 max_rotation, bool un_freeze_later)
+bool CPHActivationShape::Activate(const fVector3 need_size, u16 steps, f32 max_displacement, f32 max_rotation, bool un_freeze_later)
 {
 
 #ifdef DEBUG
@@ -219,7 +219,7 @@ bool CPHActivationShape::Activate			(const fVector3 need_size, u16 steps, f32 ma
 	bool ret = false;
 	V_PH_WORLD_STATE temp_state;
 	ph_world->GetState(temp_state);
-	for (int m = 0; steps > m; ++m)
+	for (s32 m = 0; steps > m; ++m)
 	{
 		//f32 param =fnum_steps_r*(1+m);
 		//InterpolateBox(id,param);
@@ -229,7 +229,7 @@ bool CPHActivationShape::Activate			(const fVector3 need_size, u16 steps, f32 ma
 		do
 		{
 			ret = false;
-			for (int i = 0; num_it > i; ++i)
+			for (s32 i = 0; num_it > i; ++i)
 			{
 				max_depth = 0.f;
 				ph_world->Step( );
@@ -277,38 +277,38 @@ bool CPHActivationShape::Activate			(const fVector3 need_size, u16 steps, f32 ma
 	return ret;
 }
 
-const fVector3& CPHActivationShape::Position	( )
+const fVector3& CPHActivationShape::Position( )
 {
 	return cast_fv(dBodyGetPosition(m_body));
 }
 
-void CPHActivationShape::Size				(fVector3& size)
+void CPHActivationShape::Size(fVector3& size)
 {
 	dGeomBoxGetLengths(m_geom, cast_fp(size));
 }
 
-void CPHActivationShape::PhDataUpdate		(dReal step)
+void CPHActivationShape::PhDataUpdate(dReal step)
 {
 	m_safe_state.new_state(m_body);
 }
 
-void CPHActivationShape::PhTune				(dReal step)
+void CPHActivationShape::PhTune(dReal step)
 { }
 
-dGeomID CPHActivationShape::dSpacedGeom		( )
+dGeomID CPHActivationShape::dSpacedGeom( )
 {
 	return m_geom;
 }
 
-void CPHActivationShape::get_spatial_params	( )
+void CPHActivationShape::get_spatial_params( )
 {
 	spatialParsFromDGeom(m_geom, spatial.sphere.P, AABB, spatial.sphere.R);
 }
 
-void CPHActivationShape::InitContact		(dContact* c, bool& do_collide, u16, u16)
+void CPHActivationShape::InitContact(dContact* c, bool& do_collide, u16, u16)
 { }
 
-void CPHActivationShape::CutVelocity		(f32 l_limit, f32 a_limit)
+void CPHActivationShape::CutVelocity(f32 l_limit, f32 a_limit)
 {
 	dVector3 limitedl;
 	dVector3 diffl;
@@ -322,7 +322,7 @@ void CPHActivationShape::CutVelocity		(f32 l_limit, f32 a_limit)
 	}
 }
 
-void CPHActivationShape::set_rotation		(const fMatrix4x4& sof)
+void CPHActivationShape::set_rotation(const fMatrix4x4& sof)
 {
 	dMatrix3 rot;
 	PHDynamicData::FMXtoDMX(sof, rot);

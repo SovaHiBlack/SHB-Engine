@@ -3,7 +3,7 @@
 #include "PHCommander.h"
 #include "script_space_forward.h"
 #include "script_callback_ex.h"
-#include "..\XR_3DA\xr_object.h"
+#include "..\XR_3DA\Object.h"
 #include "PHScriptCall.h"
 
 /*

@@ -26,7 +26,7 @@
 
 #include "..\XR_3DA\device.h"
 
-void  NodynamicsCollide(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
+void NodynamicsCollide(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
 {
 	dBodyID body1 = dGeomGetBody(c.geom.g1);
 	dBodyID body2 = dGeomGetBody(c.geom.g2);
@@ -38,7 +38,7 @@ void  NodynamicsCollide(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*mate
 	do_colide = false;
 }
 
-void  OnCharacterContactInDeath(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
+void OnCharacterContactInDeath(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
 {
 	dSurfaceParameters& surface = c.surface;
 	CCharacterPhysicsSupport* l_character_physic_support = 0;
@@ -156,7 +156,7 @@ void CCharacterPhysicsSupport::in_Load(pcstr section)
 	skel_ddelay = pSettings->r_float(section, "ph_skeleton_ddelay");
 	skel_remain_time = skel_ddelay;
 	skel_fatal_impulse_factor = pSettings->r_float(section, "ph_skel_fatal_impulse_factor");
-	//gray_wolf>„итаем из ltx параметры дл€ поддержки измен€ющегос€ трени€ у персонажей во врем€ смерти
+	//„итаем из ltx параметры дл€ поддержки измен€ющегос€ трени€ у персонажей во врем€ смерти
 	skeleton_skin_ddelay = pSettings->r_float(section, "ph_skeleton_skin_ddelay");
 	skeleton_skin_remain_time = skeleton_skin_ddelay;
 	skeleton_skin_friction_start = pSettings->r_float(section, "ph_skeleton_skin_friction_start");
@@ -165,7 +165,6 @@ void CCharacterPhysicsSupport::in_Load(pcstr section)
 	skeleton_skin_ddelay_after_wound = pSettings->r_float(section, "ph_skeleton_skin_ddelay_after_wound");
 	skeleton_skin_remain_time_after_wound = skeleton_skin_ddelay_after_wound;
 	pelvis_factor_low_pose_detect = pSettings->r_float(section, "ph_pelvis_factor_low_pose_detect");
-	//gray_wolf<
 
 	if (pSettings->line_exist(section, "ph_skel_shot_up_factor"))
 	{
@@ -282,7 +281,7 @@ void CCharacterPhysicsSupport::SpawnInitPhysics(CSE_Abstract* e)
 			CreateCharacter( );
 		}
 
-#ifdef DEBUG  
+#ifdef DEBUG
 		if (ph_dbg_draw_mask1.test(ph_m1_DbgTrackObject) && stricmp(PH_DBG_ObjectTrack( ), *m_EntityAlife.cName( )) == 0)
 		{
 			Msg("CCharacterPhysicsSupport::SpawnInitPhysics obj %s after collision correction %f,%f,%f", PH_DBG_ObjectTrack( ), m_EntityAlife.Position( ).x, m_EntityAlife.Position( ).y, m_EntityAlife.Position( ).z);
@@ -357,7 +356,7 @@ void CCharacterPhysicsSupport::in_shedule_Update(u32 DT)
 #ifdef DEBUG
 string64 sdbg_stalker_death_anim = "none";
 pstr dbg_stalker_death_anim = sdbg_stalker_death_anim;
-BOOL  b_death_anim_velocity = TRUE;
+BOOL b_death_anim_velocity = TRUE;
 #endif
 
 const f32 cmp_angle = M_PI / 10.0f;
@@ -504,8 +503,7 @@ void CCharacterPhysicsSupport::in_Hit(f32 P, fVector3& dir, CObject* who, s16 el
 	}
 }
 
-
-IC		void	CCharacterPhysicsSupport::UpdateDeathAnims( )
+IC void	CCharacterPhysicsSupport::UpdateDeathAnims( )
 {
 	VERIFY(m_pPhysicsShell->isFullActive( ));
 
@@ -592,7 +590,7 @@ void CCharacterPhysicsSupport::CreateSkeleton(CPhysicsShell*& pShell)
 #ifdef DEBUG
 	CTimer t;
 	t.Start( );
-#endif	
+#endif
 
 	pShell = P_create_Shell( );
 	pShell->preBuild_FromKinematics(smart_cast<CKinematics*>(m_EntityAlife.Visual( )));
@@ -605,11 +603,12 @@ void CCharacterPhysicsSupport::CreateSkeleton(CPhysicsShell*& pShell)
 	pShell->set_DisableParams(disable_params);
 	pShell->Build( );
 
-#ifdef DEBUG	
+#ifdef DEBUG
 	Msg("shell for %s[%d] created in %f ms", *m_EntityAlife.cName( ), m_EntityAlife.ID( ), t.GetElapsed_sec( ) * 1000.0f);
 #endif
 
 }
+
 void CCharacterPhysicsSupport::CreateSkeleton( )
 {
 	if (m_pPhysicsShell)
@@ -642,6 +641,7 @@ void CCharacterPhysicsSupport::CreateSkeleton( )
 	m_flags.set(fl_death_anim_on, FALSE);
 	m_eState = esDead;
 }
+
 bool CCharacterPhysicsSupport::DoCharacterShellCollide( )
 {
 	if (m_eType == etStalker)
@@ -653,6 +653,7 @@ bool CCharacterPhysicsSupport::DoCharacterShellCollide( )
 
 	return true;
 }
+
 void CCharacterPhysicsSupport::CollisionCorrectObjPos(const fVector3& start_from, bool character_create/*=false*/)
 {
 	fVector3 shift;
@@ -701,7 +702,7 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 	CKinematics* K = smart_cast<CKinematics*>(m_EntityAlife.Visual( ));
 
 	//animation movement controller issues
-	bool	anim_mov_ctrl = m_EntityAlife.animation_movement_controlled( );
+	bool anim_mov_ctrl = m_EntityAlife.animation_movement_controlled( );
 	CBoneInstance& BR = K->LL_GetBoneInstance(K->LL_GetBoneRoot( ));
 	fMatrix4x4 start_xform;
 	start_xform.identity( );
@@ -727,27 +728,44 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 	//
 
 	if (!m_physics_skeleton)
+	{
 		CreateSkeleton(m_physics_skeleton);
+	}
 
 	if (m_eType == etActor)
 	{
 		CActor* A = smart_cast<CActor*>(&m_EntityAlife);
 		R_ASSERT2(A, "not an actor has actor type");
-		if (A->Holder( )) return;
-		if (m_eState == esRemoved)return;
+		if (A->Holder( ))
+		{
+			return;
+		}
+
+		if (m_eState == esRemoved)
+		{
+			return;
+		}
 	}
 
 	//////////////////////this needs to evaluate object box//////////////////////////////////////////////////////
 	for (u16 I = K->LL_BoneCount( ) - 1; I != u16(-1); --I)
+	{
 		K->LL_GetBoneInstance(I).reset_callback( );
+	}
 
 	if (anim_mov_ctrl)	//we do not whant to move by long animation in root 
+	{
 		BR.Callback_overwrite = TRUE;
+	}
 
 	K->CalculateBones_Invalidate( );
 	K->CalculateBones( );
 	////////////////////////////////////////////////////////////////////////////
-	if (m_pPhysicsShell) return;
+	if (m_pPhysicsShell)
+	{
+		return;
+	}
+
 	fVector3 velocity;
 	m_PhysicMovementControl->GetCharacterVelocity(velocity);
 	velocity.mul(1.3f);
@@ -755,8 +773,14 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 	fVector3 start;
 	start.set(m_EntityAlife.Position( ));
 	if (!m_PhysicMovementControl->CharacterExist( ))
+	{
 		dp.set(m_EntityAlife.Position( ));
-	else m_PhysicMovementControl->GetDeathPosition(dp);
+	}
+	else
+	{
+		m_PhysicMovementControl->GetDeathPosition(dp);
+	}
+
 	m_PhysicMovementControl->DestroyCharacter( );
 
 	CollisionCorrectObjPos(dp);
@@ -772,17 +796,21 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 	//
 
 	if (anim_mov_ctrl) //we do not whant to move by long animation in root 
+	{
 		BR.Callback_overwrite = TRUE;
+	}
 
 	//set shell params
 	if (!smart_cast<CCustomZone*>(who))
 	{
 		velocity.mul(1.25f * m_after_death_velocity_factor);
 	}
+
 	if (!DoCharacterShellCollide( ))
 	{
 		m_pPhysicsShell->DisableCharacterCollision( );
 	}
+
 	m_pPhysicsShell->set_LinearVel(velocity);
 	K->CalculateBones_Invalidate( );
 	K->CalculateBones( );
@@ -818,10 +846,13 @@ void CCharacterPhysicsSupport::ActivateShell(CObject* who)
 		mXFORM.set(sv_xform);
 	}
 }
+
 void CCharacterPhysicsSupport::in_ChangeVisual( )
 {
-
-	if (!m_physics_skeleton && !m_pPhysicsShell) return;
+	if (!m_physics_skeleton && !m_pPhysicsShell)
+	{
+		return;
+	}
 
 	if (m_pPhysicsShell)
 	{
@@ -832,11 +863,17 @@ void CCharacterPhysicsSupport::in_ChangeVisual( )
 			m_physics_skeleton->Deactivate( );
 			xr_delete(m_physics_skeleton);
 		}
+
 		CreateSkeleton(m_physics_skeleton);
-		if (m_pPhysicsShell)m_pPhysicsShell->Deactivate( );
+		if (m_pPhysicsShell)
+		{
+			m_pPhysicsShell->Deactivate( );
+		}
+
 		xr_delete(m_pPhysicsShell);
 		ActivateShell(NULL);
 	}
+
 	if (m_ik_controller)
 	{
 		DestroyIKController( );
@@ -870,11 +907,9 @@ void CCharacterPhysicsSupport::PHGetLinearVell(fVector3& velocity)
 
 void CCharacterPhysicsSupport::CreateIKController( )
 {
-
 	VERIFY(!m_ik_controller);
 	m_ik_controller = xr_new<CIKLimbsController>( );
 	m_ik_controller->Create(&m_EntityAlife);
-
 }
 void CCharacterPhysicsSupport::DestroyIKController( )
 {
@@ -883,7 +918,7 @@ void CCharacterPhysicsSupport::DestroyIKController( )
 	xr_delete(m_ik_controller);
 }
 
-void		 CCharacterPhysicsSupport::in_NetRelcase(CObject* O)
+void CCharacterPhysicsSupport::in_NetRelcase(CObject* O)
 {
 	CPHCapture* c = m_PhysicMovementControl->PHCapture( );
 	if (c)
@@ -899,20 +934,25 @@ bool CCharacterPhysicsSupport::set_collision_hit_callback(SCollisionHitCallback*
 		m_collision_hit_callback = NULL;
 		return true;
 	}
+
 	if (m_pPhysicsShell)
 	{
 		VERIFY2(cc->m_collision_hit_callback != 0, "No callback function");
 		m_collision_hit_callback = cc;
 		return true;
 	}
-	else return false;
+	else
+	{
+		return false;
+	}
 }
+
 SCollisionHitCallback* CCharacterPhysicsSupport::get_collision_hit_callback( )
 {
 	return m_collision_hit_callback;
 }
 
-void	StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
+void StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
 	dJointID contact_joint = dJointCreateContact(0, ContactGroup, &c);
 
@@ -926,26 +966,31 @@ void	StaticEnvironmentCB(bool& do_colide, bool bo1, dContact& c, SGameMtl* mater
 		((CPHIsland*)(retrieveGeomUserData(c.geom.g2)->callback_data))->DActiveIsland( )->ConnectJoint(contact_joint);
 		dJointAttach(contact_joint, 0, dGeomGetBody(c.geom.g2));
 	}
+
 	do_colide = false;
 }
 
-void						CCharacterPhysicsSupport::FlyTo(const	fVector3& disp)
+void CCharacterPhysicsSupport::FlyTo(const fVector3& disp)
 {
 	VERIFY(m_pPhysicsShell);
 	f32 ammount = disp.magnitude( );
-	if (fis_zero(ammount, EPSILON_3))	return;
+	if (fis_zero(ammount, EPSILON_3))
+	{
+		return;
+	}
+
 	ph_world->Freeze( );
 	bool g = m_pPhysicsShell->get_ApplyByGravity( );
 	m_pPhysicsShell->set_ApplyByGravity(false);
 	m_pPhysicsShell->add_ObjectContactCallback(StaticEnvironmentCB);
-	void* cd = m_pPhysicsShell->get_CallbackData( );
+	pvoid cd = m_pPhysicsShell->get_CallbackData( );
 	m_pPhysicsShell->set_CallbackData(m_pPhysicsShell->PIsland( ));
 	m_pPhysicsShell->UnFreeze( );
 	fVector3 vel;
 	vel.set(disp);
-	const	u16	steps_num = 10;
-	const	f32	fsteps_num = steps_num;
-	vel.mul(1.f / fsteps_num / fixed_step);
+	const u16 steps_num = 10;
+	const f32 fsteps_num = steps_num;
+	vel.mul(1.0f / fsteps_num / fixed_step);
 
 	for (u16 i = 0; steps_num > i; ++i)
 	{
@@ -974,7 +1019,7 @@ void CCharacterPhysicsSupport::TestForWounded( )
 	fMatrix4x4 position_matrix;
 	position_matrix.mul(mXFORM, CBI.mTransform);
 
-	xrXRC						xrc;
+	xrXRC xrc;
 	xrc.ray_options(0);
 	xrc.ray_query(Level( ).ObjectSpace.GetStaticModel( ), position_matrix.c, fVector3( ).set(0.0f, -1.0f, 0.0f), pelvis_factor_low_pose_detect);
 

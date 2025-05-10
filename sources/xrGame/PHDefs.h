@@ -35,6 +35,7 @@ public:
 		sub_diapasones(m_start_el_num, m_end_el_num, sub.m_start_el_num, sub.m_end_el_num);
 		sub_diapasones(m_start_jt_num, m_end_jt_num, sub.m_start_jt_num, sub.m_end_jt_num);
 	}
+
 protected:
 	u16				m_start_el_num;
 	u16				m_end_el_num;

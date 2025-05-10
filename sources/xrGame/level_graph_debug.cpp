@@ -23,10 +23,12 @@
 
 #include "DebugRenderer.h"
 
-void CLevelGraph::setup_current_level	(const int &level_id)
+void CLevelGraph::setup_current_level	(const s32& level_id)
 {
 	if (m_current_level_id == level_id)
+	{
 		return;
+	}
 
 	m_current_actual		= false;
 	m_current_level_id		= level_id;
@@ -61,7 +63,7 @@ void CLevelGraph::render	()
 #endif
 }
 
-void modify							(const int &vertex_id, fBox3& bounding_box)
+void modify							(const s32& vertex_id, fBox3& bounding_box)
 {
 	const CGameGraph		&graph = ai().game_graph();
 	bounding_box.modify		(graph.vertex(vertex_id)->game_point());
@@ -82,7 +84,7 @@ void CLevelGraph::update_current_info	()
 	bool					found = false;
 	bool					all = (m_current_level_id == -1);
 	const CGameGraph		&graph = ai().game_graph();
-	for (int i=0, n = (int)graph.header().vertex_count(); i<n; ++i) {
+	for (s32 i=0, n = (s32)graph.header().vertex_count(); i<n; ++i) {
 		if (!all) {
 			if (graph.vertex(i)->level_id() != m_current_level_id) {
 				if (found)
@@ -114,7 +116,7 @@ fVector3 CLevelGraph::convert_position(const fVector3& position)
 	return					(result);
 }
 
-void CLevelGraph::draw_edge			(const int &vertex_id0, const int &vertex_id1)
+void CLevelGraph::draw_edge			(const s32& vertex_id0, const s32& vertex_id1)
 {
 	const f32				radius = .005f;
 	const u32				vertex_color = D3DCOLOR_XRGB(0,255,255);
@@ -133,19 +135,19 @@ void CLevelGraph::draw_edge			(const int &vertex_id0, const int &vertex_id1)
 //	RCache.dbg_DrawLINE		(Fidentity,position0,position1,edge_color);
 }
 
-void CLevelGraph::draw_vertex		(const int &vertex_id)
+void CLevelGraph::draw_vertex		(const s32& vertex_id)
 {
 	CGameGraph::const_iterator	I,E;
 	const CGameGraph			&graph = ai().game_graph();
 	graph.begin					(vertex_id,I,E);
 	for ( ; I != E; ++I) {
-		int						neighbour_id = graph.value(vertex_id,I);
+		s32						neighbour_id = graph.value(vertex_id,I);
 		if (neighbour_id < vertex_id)
 			draw_edge			(vertex_id,neighbour_id);
 	}
 }
 
-void CLevelGraph::draw_stalkers		(const int &vertex_id)
+void CLevelGraph::draw_stalkers		(const s32& vertex_id)
 {
 	if (!ai().get_alife())
 		return;
@@ -289,7 +291,7 @@ void CLevelGraph::draw_stalkers		(const int &vertex_id)
 	}
 }
 
-void CLevelGraph::draw_objects		(const int &vertex_id)
+void CLevelGraph::draw_objects		(const s32& vertex_id)
 {
 	if (!ai().get_alife())
 		return;
@@ -462,7 +464,7 @@ void CLevelGraph::draw_game_graph	()
 
 	bool					found = false;
 	bool					all = (m_current_level_id == -1);
-	for (int i=0, n = (int)graph.header().vertex_count(); i<n; ++i) {
+	for (s32 i=0, n = (s32)graph.header().vertex_count(); i<n; ++i) {
 		if (!all) {
 			if (graph.vertex(i)->level_id() != m_current_level_id) {
 				if (found)
@@ -484,7 +486,7 @@ void CLevelGraph::draw_game_graph	()
 	}
 
 	/**
-	for (int i=0; i<(int)ai().game_graph().header().vertex_count(); ++i) {
+	for (s32 i=0; i<(s32)ai().game_graph().header().vertex_count(); ++i) {
 		fVector3 t1 = ai().game_graph().vertex(i)->game_point();
 		t1.y += .6f;
 		NORMALIZE_VECTOR(t1);
@@ -517,7 +519,7 @@ void CLevelGraph::draw_game_graph	()
 			t1.y += .6f;
 			NORMALIZE_VECTOR(t1);
 			Level().debug_renderer().draw_aabb(t1,.05f,.05f,.05f,D3DCOLOR_XRGB(0,0,255));
-			for (int i=(int)path.size() - 2; i>=0;--i) {
+			for (s32 i=(s32)path.size() - 2; i>=0;--i) {
 				fVector3 t2 = ai().game_graph().vertex(path[i])->game_point();
 				t2.y += .6f;
 				NORMALIZE_VECTOR(t2);
@@ -531,7 +533,7 @@ void CLevelGraph::draw_game_graph	()
 	if (ai().get_alife()) {
 		{
 			GameGraph::_LEVEL_ID	J = ai().game_graph().vertex(ai().alife().graph().actor()->m_tGraphID)->level_id();
-			for (int i=0, n=(int)ai().game_graph().header().vertex_count(); i<n; ++i) {
+			for (s32 i=0, n=(s32)ai().game_graph().header().vertex_count(); i<n; ++i) {
 				if (ai().game_graph().vertex(i)->level_id() != J)
 					continue;
 				fVector3 t1 = ai().game_graph().vertex(i)->level_point(), t2 = ai().game_graph().vertex(i)->game_point();
@@ -567,7 +569,7 @@ void CLevelGraph::draw_game_graph	()
 						t1.y += .6f;
 						NORMALIZE_VECTOR(t1);
 						Level().debug_renderer().draw_aabb(t1,.05f,.05f,.05f,D3DCOLOR_XRGB(0,0,255));
-						for (int i=(int)tpALifeHuman->brain().movement().detail().path().size() - 2; i>=0;--i) {
+						for (s32 i=(s32)tpALifeHuman->brain().movement().detail().path().size() - 2; i>=0;--i) {
 							fVector3 t2 = ai().game_graph().vertex(tpALifeHuman->brain().movement().detail().path()[i])->game_point();
 							t2.y += .6f;
 							NORMALIZE_VECTOR(t2);

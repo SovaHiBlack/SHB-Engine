@@ -72,10 +72,10 @@ bool InventoryUtilities::GreaterRoomInRuck(PIItem item1, PIItem item2)
 			}
 		}
 
-		return				false;
+		return false;
 	}
 
-	return					false;
+	return false;
 }
 
 bool InventoryUtilities::FreeRoom_inBelt(TIItemContainer& item_list, PIItem _item, s32 width, s32 height)
@@ -88,8 +88,8 @@ bool InventoryUtilities::FreeRoom_inBelt(TIItemContainer& item_list, PIItem _ite
 	s32 m;
 	s32 place_row = 0;
 	s32 place_col = 0;
-	bool	found_place;
-	bool	can_place;
+	bool found_place;
+	bool can_place;
 
 	for (i = 0; i < height; ++i)
 	{
@@ -371,13 +371,13 @@ void LoadStrings(CharInfoStrings* container, pcstr section, pcstr field)
 {
 	R_ASSERT(container);
 
-	pcstr				cfgRecord = pSettings->r_string(section, field);
-	u32					count = _GetItemCount(cfgRecord);
+	pcstr cfgRecord = pSettings->r_string(section, field);
+	u32 count = _GetItemCount(cfgRecord);
 	R_ASSERT3(count % 2, "there're must be an odd number of elements", field);
-	string64			singleThreshold;
+	string64 singleThreshold;
 	ZeroMemory(singleThreshold, sizeof(singleThreshold));
-	s32					upBoundThreshold = 0;
-	CharInfoStringID	id;
+	s32 upBoundThreshold = 0;
+	CharInfoStringID id;
 
 	for (u32 k = 0; k < count; k += 2)
 	{

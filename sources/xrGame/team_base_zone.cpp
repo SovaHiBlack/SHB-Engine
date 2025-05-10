@@ -24,150 +24,152 @@
 #	include "DebugRenderer.h"
 #endif
 
-CTeamBaseZone::CTeamBaseZone		()
+CTeamBaseZone::CTeamBaseZone( )
+{ }
+
+CTeamBaseZone::~CTeamBaseZone( )
+{ }
+
+void CTeamBaseZone::reinit( )
 {
+	inherited::reinit( );
 }
 
-CTeamBaseZone::~CTeamBaseZone		()
+void CTeamBaseZone::Center(fVector3& C) const
 {
+	XFORM( ).transform_tiny(C, CFORM( )->getSphere( ).P);
 }
 
-void CTeamBaseZone::reinit			()
+f32 CTeamBaseZone::Radius( ) const
 {
-	inherited::reinit		();
+	return (CFORM( )->getRadius( ));
 }
 
-void CTeamBaseZone::Center			(fVector3& C) const
+BOOL CTeamBaseZone::net_Spawn(CSE_Abstract* DC)
 {
-	XFORM().transform_tiny	(C,CFORM()->getSphere().P);
-}
+	CCF_Shape* l_pShape = xr_new<CCF_Shape>(this);
+	collidable.model = l_pShape;
 
-f32 CTeamBaseZone::Radius			() const
-{
-	return						(CFORM()->getRadius());
-}
+	CSE_Abstract* l_tpAbstract = (CSE_Abstract*)(DC);
+	CSE_ALifeTeamBaseZone* l_tpALifeScriptZone = smart_cast<CSE_ALifeTeamBaseZone*>(l_tpAbstract);
+	R_ASSERT(l_tpALifeScriptZone);
 
-BOOL CTeamBaseZone::net_Spawn	(CSE_Abstract* DC) 
-{
-	CCF_Shape					*l_pShape = xr_new<CCF_Shape>(this);
-	collidable.model			= l_pShape;
+	feel_touch.clear( );
 
-	CSE_Abstract				*l_tpAbstract = (CSE_Abstract*)(DC);
-	CSE_ALifeTeamBaseZone		*l_tpALifeScriptZone = smart_cast<CSE_ALifeTeamBaseZone*>(l_tpAbstract);
-	R_ASSERT					(l_tpALifeScriptZone);
-
-	feel_touch.clear			();
-
-	for (u32 i=0; i < l_tpALifeScriptZone->shapes.size(); ++i) {
-		CSE_Shape::shape_def	&S = l_tpALifeScriptZone->shapes[i];
-		switch (S.type) {
-			case 0 : {
+	for (u32 i = 0; i < l_tpALifeScriptZone->shapes.size( ); ++i)
+	{
+		CSE_Shape::shape_def& S = l_tpALifeScriptZone->shapes[i];
+		switch (S.type)
+		{
+			case 0:
+			{
 				l_pShape->add_sphere(S.data.sphere);
-				break;
 			}
-			case 1 : {
+			break;
+			case 1:
+			{
 				l_pShape->add_box(S.data.box);
-				break;
 			}
+			break;
 		}
 	}
 
 	m_Team = l_tpALifeScriptZone->m_team;
 
 	BOOL						bOk = inherited::net_Spawn(DC);
-	if (bOk) {
-		l_pShape->ComputeBounds	();
+	if (bOk)
+	{
+		l_pShape->ComputeBounds( );
 		fVector3					P;
-		XFORM().transform_tiny	(P,CFORM()->getSphere().P);
-		setEnabled				(TRUE);
+		XFORM( ).transform_tiny(P, CFORM( )->getSphere( ).P);
+		setEnabled(TRUE);
 	}
 
-	return						(bOk);
+	return bOk;
 }
 
-void CTeamBaseZone::net_Destroy			()
+void CTeamBaseZone::net_Destroy( )
 {
-	Level().MapManager().RemoveMapLocationByObjectID(ID());
-
-	inherited::net_Destroy();
-};
+	Level( ).MapManager( ).RemoveMapLocationByObjectID(ID( ));
+	inherited::net_Destroy( );
+}
 
 void CTeamBaseZone::shedule_Update(u32 dt)
 {
-	inherited::shedule_Update	(dt);
-	
-	const fSphere& s = CFORM()->getSphere();
+	inherited::shedule_Update(dt);
+
+	const fSphere& s = CFORM( )->getSphere( );
 	fVector3						P;
-	XFORM().transform_tiny		(P,s.P);
-	feel_touch_update			(P,s.R);
+	XFORM( ).transform_tiny(P, s.P);
+	feel_touch_update(P, s.R);
 }
 
-void CTeamBaseZone::feel_touch_new	(CObject *tpObject)
+void CTeamBaseZone::feel_touch_new(CObject* tpObject)
 {
-	if(OnServer() && tpObject->CLS_ID == CLSID_OBJECT_ACTOR)
+	if (OnServer( ) && tpObject->CLS_ID == CLSID_OBJECT_ACTOR)
 	{
 		CNetPacket			P_;
 
-		u_EventGen			(P_,GE_GAME_EVENT,ID()	);
-		P_.w_u16			(GAME_EVENT_PLAYER_ENTER_TEAM_BASE);
-		P_.w_u16			( tpObject->ID() );
-		P_.w_u8				( GetZoneTeam() );
-		u_EventSend			(P_,net_flags(TRUE,TRUE));
+		u_EventGen(P_, GE_GAME_EVENT, ID( ));
+		P_.w_u16(GAME_EVENT_PLAYER_ENTER_TEAM_BASE);
+		P_.w_u16(tpObject->ID( ));
+		P_.w_u8(GetZoneTeam( ));
+		u_EventSend(P_, net_flags(TRUE, TRUE));
 	}
 }
 
-void CTeamBaseZone::feel_touch_delete	(CObject *tpObject)
+void CTeamBaseZone::feel_touch_delete(CObject* tpObject)
 {
-	if(OnServer() && tpObject->CLS_ID == CLSID_OBJECT_ACTOR)
+	if (OnServer( ) && tpObject->CLS_ID == CLSID_OBJECT_ACTOR)
 	{
 		CNetPacket			P_;
-		u_EventGen			(P_,GE_GAME_EVENT,ID()	);
-		P_.w_u16			(GAME_EVENT_PLAYER_LEAVE_TEAM_BASE );
-		P_.w_u16			( tpObject->ID() );
-		P_.w_u8				( GetZoneTeam() );
-		u_EventSend			(P_,net_flags(TRUE,TRUE));
+		u_EventGen(P_, GE_GAME_EVENT, ID( ));
+		P_.w_u16(GAME_EVENT_PLAYER_LEAVE_TEAM_BASE);
+		P_.w_u16(tpObject->ID( ));
+		P_.w_u8(GetZoneTeam( ));
+		u_EventSend(P_, net_flags(TRUE, TRUE));
 	}
 }
 
-BOOL CTeamBaseZone::feel_touch_contact	(CObject* O)
+BOOL CTeamBaseZone::feel_touch_contact(CObject* O)
 {
-	CActor*	pActor = smart_cast<CActor*>(O);
+	CActor* pActor = smart_cast<CActor*>(O);
 	if (!pActor) return (FALSE);
-	return ((CCF_Shape*)CFORM())->Contact(O);
+	return ((CCF_Shape*)CFORM( ))->Contact(O);
 }
 
 #ifdef DEBUG
 extern	flags32	dbg_net_Draw_Flags;
-void CTeamBaseZone::OnRender() 
+void CTeamBaseZone::OnRender( )
 {
-	if(!bDebug) return;
-	if (!(dbg_net_Draw_Flags.is_any((1<<3)))) return;
+	if (!bDebug) return;
+	if (!(dbg_net_Draw_Flags.is_any((1 << 3)))) return;
 //	RCache.OnFrameEnd();
 	fVector3 l_half;
 	l_half.set(0.5f, 0.5f, 0.5f);
 	fMatrix4x4 l_ball;
 	fMatrix4x4 l_box;
-	xr_vector<CCF_Shape::shape_def> &l_shapes = ((CCF_Shape*)CFORM())->Shapes();
+	xr_vector<CCF_Shape::shape_def>& l_shapes = ((CCF_Shape*)CFORM( ))->Shapes( );
 	xr_vector<CCF_Shape::shape_def>::iterator l_pShape;
-	
-	for(l_pShape = l_shapes.begin(); l_shapes.end() != l_pShape; ++l_pShape) 
+
+	for (l_pShape = l_shapes.begin( ); l_shapes.end( ) != l_pShape; ++l_pShape)
 	{
-		switch(l_pShape->type)
+		switch (l_pShape->type)
 		{
-		case 0:
+			case 0:
 			{
-			fSphere& l_sphere = l_pShape->data.sphere;
+				fSphere& l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
 				fVector3 l_p;
-				XFORM().transform(l_p, l_sphere.P);
+				XFORM( ).transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
-				Level().debug_renderer().draw_ellipse(l_ball, D3DCOLOR_XRGB(0,255,255));
+				Level( ).debug_renderer( ).draw_ellipse(l_ball, D3DCOLOR_XRGB(0, 255, 255));
 			}
 			break;
-		case 1:
+			case 1:
 			{
-				l_box.mul(XFORM(), l_pShape->data.box);
-				Level().debug_renderer().draw_obb(l_box, l_half, D3DCOLOR_XRGB(0,255,255));
+				l_box.mul(XFORM( ), l_pShape->data.box);
+				Level( ).debug_renderer( ).draw_obb(l_box, l_half, D3DCOLOR_XRGB(0, 255, 255));
 			}
 			break;
 		}

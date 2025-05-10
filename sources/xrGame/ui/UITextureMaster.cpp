@@ -64,22 +64,25 @@ void CUITextureMaster::InitTexture(pcstr texture_name, IUISimpleTextureControl* 
 #endif // def DEBUG
 
 	xr_map<shared_str, STextureInfo>::iterator	it;
-
 	it = m_textures.find(texture_name);
-
 	if (it != m_textures.end( ))
 	{
 		tc->CreateShader(*((*it).second.file));
 		tc->SetOriginalRectEx((*it).second.rect);
+
 #ifdef DEBUG
 		m_time += T.GetElapsed_ms( );
 #endif // def DEBUG
+
 		return;
 	}
+
 	tc->CreateShader(texture_name);
+
 #ifdef DEBUG
 	m_time += T.GetElapsed_ms( );
 #endif // def DEBUG
+
 }
 
 void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISimpleTextureControl* tc)
@@ -91,29 +94,31 @@ void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISim
 #endif // def DEBUG
 
 	xr_map<shared_str, STextureInfo>::iterator	it;
-
 	it = m_textures.find(texture_name);
-
 	if (it != m_textures.end( ))
 	{
 		tc->CreateShader(*((*it).second.file), shader_name);
 		tc->SetOriginalRectEx((*it).second.rect);
+
 #ifdef DEBUG
 		m_time += T.GetElapsed_ms( );
 #endif // def DEBUG
+
 		return;
 	}
+
 	tc->CreateShader(texture_name, shader_name);
+
 #ifdef DEBUG
 	m_time += T.GetElapsed_ms( );
 #endif // def DEBUG
+
 }
 
 f32 CUITextureMaster::GetTextureHeight(pcstr texture_name)
 {
 	xr_map<shared_str, STextureInfo>::iterator	it;
 	it = m_textures.find(texture_name);
-
 	if (it != m_textures.end( ))
 	{
 		return (*it).second.rect.height( );

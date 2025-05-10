@@ -76,8 +76,8 @@ struct SHeliMovementState
 	{
 		fVector3		point;
 		f32		dir_h;
-		STmpPt(const fVector3& p, const f32 h) :point(p), dir_h(h)
-		{ };
+		STmpPt(const fVector3& p, const f32 h) : point(p), dir_h(h)
+		{ }
 	};
 	~SHeliMovementState( );
 	CHelicopter* parent;
@@ -86,7 +86,7 @@ struct SHeliMovementState
 	const CPatrolPath* currPatrolPath;
 	const CPatrolPath::CVertex* currPatrolVertex;
 
-	int								patrol_begin_idx;
+	s32								patrol_begin_idx;
 	shared_str						patrol_path_name;
 	bool							need_to_del_path;
 	f32							safe_altitude_add;
@@ -133,7 +133,7 @@ public:
 	f32	GetDistanceToDestPosition( );
 	void	getPathAltitude(fVector3& point, f32 base_altitude);
 	void	SetDestPosition(fVector3* pos);
-	void	goPatrolByPatrolPath(pcstr path_name, int start_idx);
+	void	goPatrolByPatrolPath(pcstr path_name, s32 start_idx);
 	void	CreateRoundPoints(fVector3 center, f32 radius, f32 start_h, f32 end_h, xr_vector<STmpPt>& round_points);
 	void	save(CNetPacket& output_packet);
 	void	load(IReader& input_packet);
@@ -161,7 +161,6 @@ public:
 		eDead,
 		eForce = u32(-1)
 	};
-
 
 	// heli weapons
 	bool							m_use_rocket_on_attack;
@@ -208,12 +207,12 @@ public:
 	virtual const fMatrix4x4& ParticlesXFORM( )const
 	{
 		return m_fire_bone_xform;
-	};
+	}
 
 	virtual const fVector3& CurrentFirePoint( )
 	{
 		return m_fire_pos;
-	};
+	}
 
 	void							MGunFireStart( );
 	void							MGunFireEnd( );
@@ -287,7 +286,7 @@ public:
 	{
 		return m_curState;
 	}
-	int								state_script( )
+	s32								state_script( )
 	{
 		return m_curState;
 	}
@@ -376,7 +375,7 @@ public:
 		return m_enemy.type != eEnemyNone;
 	}
 
-	void					goPatrolByPatrolPath(pcstr path_name, int start_idx);
+	void					goPatrolByPatrolPath(pcstr path_name, s32 start_idx);
 	void					goByRoundPath(fVector3 center, f32 radius, bool clockwise);
 	void					LookAtPoint(fVector3 point, bool do_it);
 	void					SetDestPosition(fVector3* pos);
@@ -408,15 +407,15 @@ public:
 
 	f32					GetRealAltitude( );
 
-	int						GetMovementState( );
-	int						GetHuntState( );
-	int						GetBodyState( );
+	s32						GetMovementState( );
+	s32						GetHuntState( );
+	s32						GetBodyState( );
 
 	virtual DLL_Pure* _construct( );
 	f32					GetSafeAltitude( )
 	{
 		return m_movement.GetSafeAltitude( );
-	};
+	}
 	f32					GetHeliHealth( ) const
 	{
 		return inherited::GetfHealth( );

@@ -16,15 +16,16 @@ class CPHSynchronize;
 
 typedef void CollideCallback(CPHObject* obj1,CPHObject* obj2, dGeomID o1, dGeomID o2);
 
-class CPHObject :
-	public ISpatial 
+class CPHObject : public ISpatial
 {
+
 #ifdef DEBUG
 	friend void DBG_DrawPHObject(CPHObject* obj);
 #endif
+
 	DECLARE_PHLIST_ITEM(CPHObject)
 
-	flags8	m_flags;
+	flags8 m_flags;
 
 			enum{
 					st_activated					=(1<<0),
@@ -48,10 +49,11 @@ public:
 					tpCharacter,
 					tpStaticShell
 			};
+
 protected:
 	fVector3		AABB;
-protected:
 
+protected:
 	virtual		dGeomID			dSpacedGeom						()								=0;
 	virtual		void			get_spatial_params				()								=0;
 	virtual		void			spatial_register				()								;
@@ -60,9 +62,8 @@ protected:
 
 				void			SetPrefereExactIntegration		()								{m_island.SetPrefereExactIntegration();}
 
-			
-
 				CPHObject*		SelfPointer						()								{return this;}
+
 public:
 	IC			BOOL			IsRayMotion						()								{return m_flags.test(fl_ray_motions);}
 				void			IslandReinit					()								{m_island.Unmerge();}
@@ -121,9 +122,7 @@ IC			const _flags<CLClassBits>&	collide_class_bits 	()const 								{return m_co
 			void			CollideDynamics					()										;
 };
 
-
-
-class CPHUpdateObject 
+class CPHUpdateObject
 {
 	DECLARE_PHLIST_ITEM(CPHUpdateObject)
 	bool				b_activated																	;

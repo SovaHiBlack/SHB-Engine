@@ -162,7 +162,7 @@
     <ClInclude Include="ISheduled.h">
       <Filter>Interfaces\Sheduler</Filter>
     </ClInclude>
-    <ClInclude Include="xrSheduler.h">
+    <ClInclude Include="Sheduler.h">
       <Filter>Interfaces\Sheduler</Filter>
     </ClInclude>
     <ClInclude Include="IRenderable.h">
@@ -195,10 +195,10 @@
     <ClInclude Include="pure_relcase.h">
       <Filter>Game API\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="xr_object.h">
+    <ClInclude Include="Object.h">
       <Filter>Game API\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="xr_object_list.h">
+    <ClInclude Include="ObjectList.h">
       <Filter>Game API\Objects</Filter>
     </ClInclude>
     <ClInclude Include="CustomHUD.h">
@@ -279,7 +279,7 @@
     <ClInclude Include="mesh.h">
       <Filter>Render\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleCustom.h">
+    <ClInclude Include="IParticleCustom.h">
       <Filter>Render\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="EnnumerateVertices.h">
@@ -503,7 +503,7 @@
     <ClCompile Include="ISheduled.cpp">
       <Filter>Interfaces\Sheduler</Filter>
     </ClCompile>
-    <ClCompile Include="xrSheduler.cpp">
+    <ClCompile Include="Sheduler.cpp">
       <Filter>Interfaces\Sheduler</Filter>
     </ClCompile>
     <ClCompile Include="IRenderable.cpp">
@@ -545,10 +545,10 @@
     <ClCompile Include="pure_relcase.cpp">
       <Filter>Game API\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="xr_object.cpp">
+    <ClCompile Include="Object.cpp">
       <Filter>Game API\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="xr_object_list.cpp">
+    <ClCompile Include="ObjectList.cpp">
       <Filter>Game API\Objects</Filter>
     </ClCompile>
     <ClCompile Include="CustomHUD.cpp">
@@ -626,7 +626,7 @@
     <ClCompile Include="mesh.cpp">
       <Filter>Render\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleCustom.cpp">
+    <ClCompile Include="IParticleCustom.cpp">
       <Filter>Render\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="SkeletonAnimated.cpp">

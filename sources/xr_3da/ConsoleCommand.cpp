@@ -13,7 +13,7 @@
 #include "SkeletonAnimated.h"
 #include "ResourceManager.h"
 
-//#include "xr_object.h"
+//#include "Object.h"
 
 xr_token snd_freq_token[ ] =
 {

@@ -406,7 +406,7 @@ bool CUIDragDropListEx::CanSetItem(CUICellItem* itm)
 CUICellItem* CUIDragDropListEx::RemoveItem(CUICellItem* itm, bool force_root)
 {
 	CUICellItem* i = m_container->RemoveItem(itm, force_root);
-	i->SetOwnerList((CUIDragDropListEx*) NULL);
+	i->SetOwnerList((CUIDragDropListEx*)NULL);
 	return i;
 }
 
@@ -465,7 +465,7 @@ CUICellItem* CUICellContainer::FindSimilar(CUICellItem* itm)
 #ifdef DEBUG
 		CUICellItem* i = smart_cast<CUICellItem*>(*it);
 #else
-		CUICellItem* i = (CUICellItem*) (*it);
+		CUICellItem* i = (CUICellItem*)(*it);
 #endif
 
 		R_ASSERT(i != itm);
@@ -501,7 +501,7 @@ CUICellItem* CUICellContainer::RemoveItem(CUICellItem* itm, bool force_root)
 {
 	for (WINDOW_LIST_it it = m_ChildWndList.begin( ); m_ChildWndList.end( ) != it; ++it)
 	{
-		CUICellItem* i = (CUICellItem*) (*it);
+		CUICellItem* i = (CUICellItem*)(*it);
 
 		if (i->HasChild(itm))
 		{
@@ -779,10 +779,10 @@ void CUICellContainer::Draw( )
 	drawLT.set(lt_abs_pos.x + tgt_cells.lt.x * cell_sz.x, lt_abs_pos.y + tgt_cells.lt.y * cell_sz.y);
 	UI( )->ClientToScreenScaled(drawLT, drawLT.x, drawLT.y);
 
-	const fVector2 pts[6] = { {0.0f, 0.0f}, {1.0f, 0.0f}, {1.0f, 1.0f}, {0.0f, 0.0f}, {1.0f, 1.0f}, {0.0f, 1.0f} };
+	const fVector2 pts[6] = {{0.0f, 0.0f}, {1.0f, 0.0f}, {1.0f, 1.0f}, {0.0f, 0.0f}, {1.0f, 1.0f}, {0.0f, 1.0f}};
 #define ty 1.0f
 #define tx 0.5f
-	const fVector2 uvs[6] = { {0.0f, 0.0f}, {tx, 0.0f}, {tx, ty}, {0.0f, 0.0f}, {tx, ty}, {0.0f, ty} };
+	const fVector2 uvs[6] = {{0.0f, 0.0f}, {tx, 0.0f}, {tx, ty}, {0.0f, 0.0f}, {tx, ty}, {0.0f, ty}};
 
 	// calculate cell size in screen pixels
 	fVector2 f_len;
@@ -790,7 +790,7 @@ void CUICellContainer::Draw( )
 
 	// fill cell buffer
 	u32 vOffset = 0;
-	FVF::TL* start_pv = (FVF::TL*) RCache.Vertex.Lock((tgt_cells.width( ) + 1) * (tgt_cells.height( ) + 1) * 6, hGeom.stride( ), vOffset);
+	FVF::TL* start_pv = (FVF::TL*)RCache.Vertex.Lock((tgt_cells.width( ) + 1) * (tgt_cells.height( ) + 1) * 6, hGeom.stride( ), vOffset);
 	FVF::TL* pv = start_pv;
 	for (s32 x = 0; x <= tgt_cells.width( ); ++x)
 	{

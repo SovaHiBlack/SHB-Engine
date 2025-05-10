@@ -54,7 +54,7 @@ bool	CLevel::net_start_client3				()
 		level_name	= ai().get_alife() ? *name() : Server->level_name( Server->GetConnectOptions() ).c_str();
 
 		// Determine internal level-ID
-		int						level_id = pApp->Level_ID(level_name);
+		s32						level_id = pApp->Level_ID(level_name);
 		if (level_id<0)	{
 			Disconnect			();
 			pApp->LoadEnd		();

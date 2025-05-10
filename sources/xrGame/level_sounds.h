@@ -45,7 +45,8 @@ class CLevelSoundManager
 	DEFINE_VECTOR(SMusicTrack,MusicTrackVec,MusicTrackVecIt);
 	MusicTrackVec	m_MusicTracks;
 	u32				m_NextTrackTime;
-	int				m_CurrentTrack;
+	s32				m_CurrentTrack;
+
 public:
 					CLevelSoundManager();
 	void			Load			();

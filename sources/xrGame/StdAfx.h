@@ -33,7 +33,7 @@ IC	void		throw_and_log(const xr_string& s)
 #endif
 
 #include "../XR_3DA\gamefont.h"
-#include "../XR_3DA\xr_object.h"
+#include "../XR_3DA\Object.h"
 #include "../XR_3DA\igame_level.h"
 
 #ifdef PUBLIC_BUILD

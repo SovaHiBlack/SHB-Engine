@@ -202,7 +202,7 @@ void CUICarBodyWnd::InitCarBody(CInventoryOwner* pOur, CInventoryOwner* pOthers)
 		known_info_registry->registry( ).init(other_id);
 		KNOWN_INFO_VECTOR& known_info = known_info_registry->registry( ).objects( );
 		KNOWN_INFO_VECTOR_IT it = known_info.begin( );
-		for (int i = 0; it != known_info.end( ); ++it, ++i)
+		for (s32 i = 0; it != known_info.end( ); ++it, ++i)
 		{
 			(*it).info_id;
 			CNetPacket								P;
@@ -409,7 +409,7 @@ void CUICarBodyWnd::TakeAll( )
 	}
 }
 
-bool CUICarBodyWnd::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CUICarBodyWnd::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	if (inherited::OnKeyboard(dik, keyboard_action))
 	{
@@ -438,7 +438,7 @@ void CUICarBodyWnd::ActivatePropertiesBox( )
 	CMedkit* pMedkit = smart_cast<CMedkit*>(CurrentIItem( ));
 	CAntirad* pAntirad = smart_cast<CAntirad*>(CurrentIItem( ));
 	CBottleItem* pBottleItem = smart_cast<CBottleItem*>(CurrentIItem( ));
-	bool					b_show = false;
+	bool b_show = false;
 
 	pcstr _action = NULL;
 	if (pMedkit || pAntirad)
@@ -470,8 +470,8 @@ void CUICarBodyWnd::ActivatePropertiesBox( )
 		m_pUIPropertiesBox->AutoUpdateSize( );
 		m_pUIPropertiesBox->BringAllToTop( );
 
-		fVector2						cursor_pos;
-		fRect							vis_rect;
+		fVector2 cursor_pos;
+		fRect vis_rect;
 
 		GetAbsoluteRect(vis_rect);
 		cursor_pos = GetUICursor( )->GetCursorPosition( );
@@ -495,7 +495,7 @@ void CUICarBodyWnd::EatItem( )
 		move_item(owner_id, Actor( )->ID( ), CurrentIItem( )->object( ).ID( ));
 	}
 
-	CNetPacket					P;
+	CNetPacket P;
 	CGameObject::u_EventGen(P, GEG_PLAYER_ITEM_EAT, Actor( )->ID( ));
 	P.w_u16(CurrentIItem( )->object( ).ID( ));
 	CGameObject::u_EventSend(P);
@@ -538,12 +538,12 @@ bool CUICarBodyWnd::OnItemDrop(CUICellItem* itm)
 
 	SetCurrentItem(NULL);
 
-	return				true;
+	return true;
 }
 
 bool CUICarBodyWnd::OnItemStartDrag(CUICellItem* itm)
 {
-	return				false; // default behaviour
+	return false; // default behaviour
 }
 
 bool CUICarBodyWnd::OnItemDbClick(CUICellItem* itm)
@@ -580,20 +580,20 @@ bool CUICarBodyWnd::OnItemDbClick(CUICellItem* itm)
 
 	SetCurrentItem(NULL);
 
-	return						true;
+	return true;
 }
 
 bool CUICarBodyWnd::OnItemSelected(CUICellItem* itm)
 {
 	SetCurrentItem(itm);
-	return				false;
+	return false;
 }
 
 bool CUICarBodyWnd::OnItemRButtonClick(CUICellItem* itm)
 {
 	SetCurrentItem(itm);
 	ActivatePropertiesBox( );
-	return						false;
+	return false;
 }
 
 void move_item(u16 from_id, u16 to_id, u16 what_id)

@@ -7,16 +7,19 @@
 #include "CharacterPhysicsSupport.h"
 
 extern CPHWorld* ph_world;
+
 void CNoGravityZone::enter_Zone(SZoneObjectInfo& io)
 {
 	inherited::enter_Zone(io);
 	switchGravity(io, false);
 }
+
 void CNoGravityZone::exit_Zone(SZoneObjectInfo& io)
 {
 	switchGravity(io, true);
 	inherited::exit_Zone(io);
 }
+
 void CNoGravityZone::UpdateWorkload(u32 dt)
 {
 	OBJECT_INFO_VEC_IT i = m_ObjectInfoMap.begin( ), e = m_ObjectInfoMap.end( );
@@ -25,6 +28,7 @@ void CNoGravityZone::UpdateWorkload(u32 dt)
 		switchGravity(*i, false);
 	}
 }
+
 void CNoGravityZone::switchGravity(SZoneObjectInfo& io, bool val)
 {
 	if (io.object->getDestroy( ))

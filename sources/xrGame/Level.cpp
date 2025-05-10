@@ -70,7 +70,7 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 
 	game = NULL;
 	//	game						= xr_new<game_cl_GameState>();
-	game_events = xr_new<NET_Queue_Event>( );
+	game_events = xr_new<CNETQueueEvent>( );
 
 	game_configured = FALSE;
 	m_bGameConfigStarted = FALSE;
@@ -290,7 +290,7 @@ void CLevel::PrefetchSound(pcstr name)
 }
 
 // Game interface ////////////////////////////////////////////////////
-int	CLevel::get_RPID(pcstr /**name/**/)
+s32	CLevel::get_RPID(pcstr /**name/**/)
 {
 	/*
 	// Gain access to string
@@ -299,12 +299,12 @@ int	CLevel::get_RPID(pcstr /**name/**/)
 
 	// Read data
 	fVector4	pos;
-	int			team;
+	s32			team;
 	sscanf		(params,"%f,%f,%f,%d,%f",&pos.x,&pos.y,&pos.z,&team,&pos.w); pos.y += 0.1f;
 
 	// Search respawn point
 	svector<fVector4,maxRP>	&rp = Level().get_team(team).RespawnPoints;
-	for (int i=0; i<(int)(rp.size()); ++i)
+	for (s32 i=0; i<(s32)(rp.size()); ++i)
 		if (pos.similar(rp[i],EPSILON_3))	return i;
 	*/
 	return -1;
@@ -465,7 +465,7 @@ void CLevel::OnFrame( )
 	}
 }
 
-int		psLUA_GCSTEP = 10;
+s32		psLUA_GCSTEP = 10;
 void	CLevel::script_gc( )
 {
 	lua_gc(ai( ).script_engine( ).lua( ), LUA_GCSTEP, psLUA_GCSTEP);
@@ -615,12 +615,12 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 	}
 	else if (E == eChangeTrack && P1)
 	{
-		// int id = atoi((pstr)P1);
+		// s32 id = atoi((pstr)P1);
 		// Environment->Music_Play(id);
 	}
 	else if (E == eEnvironment)
 	{
-		// int id=0; f32 s=1;
+		// s32 id=0; f32 s=1;
 		// sscanf((pstr)P1,"%d,%f",&id,&s);
 		// Environment->set_EnvMode(id,s);
 	}

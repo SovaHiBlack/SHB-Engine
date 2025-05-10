@@ -17,9 +17,9 @@ void CUIEncyclopediaArticleWnd::Init(pcstr xml_name, pcstr start_from)
 	bool xml_result = uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);
 	R_ASSERT3(xml_result, "xml file not found", xml_name);
 
-	CUIXmlInit				xml_init;
+	CUIXmlInit xml_init;
 
-	string512				str;
+	string512 str;
 
 	strcpy_s(str, sizeof(str), start_from);
 	xml_init.InitWindow(uiXml, str, 0, this);
@@ -64,7 +64,7 @@ void CUIEncyclopediaArticleWnd::AdjustLauout( )
 
 void CUIEncyclopediaArticleWnd::SetArticle(pcstr article)
 {
-	CEncyclopediaArticle				A;
+	CEncyclopediaArticle A;
 	A.Load(article);
 	SetArticle(&A);
 }

@@ -2,33 +2,49 @@
 #include "PHGeometryOwner.h"
 #include "..\XR_3DA\skeletonanimated.h"
 
-CPHGeometryOwner::CPHGeometryOwner()
+CPHGeometryOwner::CPHGeometryOwner( )
 {
-	b_builded=false;
-	m_mass_center.set(0,0,0);
-	contact_callback=ContactShotMark;
-	object_contact_callback=NULL;
-	ul_material=GMLib.GetMaterialIdx("objects\\small_box");
-	m_group=NULL;
-	m_phys_ref_object=NULL;
+	b_builded = false;
+	m_mass_center.set(0.0f, 0.0f, 0.0f);
+	contact_callback = ContactShotMark;
+	object_contact_callback = NULL;
+	ul_material = GMLib.GetMaterialIdx("objects\\small_box");
+	m_group = NULL;
+	m_phys_ref_object = NULL;
 }
 
-CPHGeometryOwner::~CPHGeometryOwner()
+CPHGeometryOwner::~CPHGeometryOwner( )
 {
-	GEOM_I i_geom=m_geoms.begin(),e=m_geoms.end();
-	for(;i_geom!=e;++i_geom)xr_delete(*i_geom);
-	m_geoms.clear();
-}
-void CPHGeometryOwner::			build_Geom	(CODEGeom& geom)
-{
+	GEOM_I i_geom = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i_geom != e; ++i_geom)
+	{
+		xr_delete(*i_geom);
+	}
 
+	m_geoms.clear( );
+}
+
+void CPHGeometryOwner::build_Geom(CODEGeom& geom)
+{
 	geom.build(m_mass_center);
 	//geom.set_body(m_body);
 	geom.set_material(ul_material);
-	if(contact_callback)geom.set_contact_cb(contact_callback);
-	if(object_contact_callback)geom.set_obj_contact_cb(object_contact_callback);
-	if(m_phys_ref_object) geom.set_ref_object(m_phys_ref_object);
-	if(m_group)
+	if (contact_callback)
+	{
+		geom.set_contact_cb(contact_callback);
+	}
+
+	if (object_contact_callback)
+	{
+		geom.set_obj_contact_cb(object_contact_callback);
+	}
+
+	if (m_phys_ref_object)
+	{
+		geom.set_ref_object(m_phys_ref_object);
+	}
+
+	if (m_group)
 	{
 		geom.add_to_space((dSpaceID)m_group);
 	}
@@ -36,142 +52,201 @@ void CPHGeometryOwner::			build_Geom	(CODEGeom& geom)
 
 void CPHGeometryOwner::build_Geom(u16 i)
 {
-	CODEGeom& geom=*m_geoms[i];
+	CODEGeom& geom = *m_geoms[i];
 	build_Geom(geom);
-	geom.element_position()=i;
+	geom.element_position( ) = i;
 }
 
-void CPHGeometryOwner::build()
+void CPHGeometryOwner::build( )
 {
-	if(b_builded) return;
-	if(m_geoms.size()>1)
+	if (b_builded)
 	{
-		m_group=dSimpleSpaceCreate(0);
-		dSpaceSetCleanup(m_group,0);
+		return;
 	}
-	u16 geoms_size=u16(m_geoms.size());
-	for(u16 i=0;i<geoms_size;++i) build_Geom(i);
-	b_builded=true;
+
+	if (m_geoms.size( ) > 1)
+	{
+		m_group = dSimpleSpaceCreate(0);
+		dSpaceSetCleanup(m_group, 0);
+	}
+
+	u16 geoms_size = u16(m_geoms.size( ));
+	for (u16 i = 0; i < geoms_size; ++i)
+	{
+		build_Geom(i);
+	}
+
+	b_builded = true;
 }
-void CPHGeometryOwner::destroy()
+
+void CPHGeometryOwner::destroy( )
 {
-	if(! b_builded) return;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i)
+	if (!b_builded)
 	{
-		(*i)->destroy();
+		return;
 	}
-	b_builded=false;
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->destroy( );
+	}
+
+	b_builded = false;
 }
+
 void CPHGeometryOwner::set_body(dBodyID body)
 {
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_body(body);
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_body(body);
+	}
 }
 
-fVector3 CPHGeometryOwner::			get_mc_data	(){
+fVector3 CPHGeometryOwner::get_mc_data( )
+{
 	fVector3 s;
 	f32 pv;
-	m_mass_center.set(0.0f,0.0f,0.0f);
-	m_volume=0.0f;
-	GEOM_I i_geom=m_geoms.begin(),e=m_geoms.end();
-	for(;i_geom!=e;++i_geom)
+	m_mass_center.set(0.0f, 0.0f, 0.0f);
+	m_volume = 0.0f;
+	GEOM_I i_geom = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i_geom != e; ++i_geom)
 	{
-		pv=(*i_geom)->volume();
-		s.mul((*i_geom)->local_center(),pv);
-		m_volume+=pv;
+		pv = (*i_geom)->volume( );
+		s.mul((*i_geom)->local_center( ), pv);
+		m_volume += pv;
 		m_mass_center.add(s);
 	}
 
-	m_mass_center.mul(1.f/m_volume);
+	m_mass_center.mul(1.f / m_volume);
 	return m_mass_center;
 }
 
-fVector3 CPHGeometryOwner::			get_mc_geoms	(){
-	////////////////////to be implemented
+fVector3 CPHGeometryOwner::get_mc_geoms( )
+{
+////////////////////to be implemented
 	fVector3 mc;
-	mc.set(0.f,0.f,0.f);
+	mc.set(0.0f, 0.0f, 0.0f);
 	return mc;
 }
+
 void CPHGeometryOwner::get_mc_kinematics(CKinematics* K, fVector3& mc, f32& mass)
 {
-	mc.set(0.0f,0.0f,0.0f);
-	mass=0.0f;
-	m_volume=0.0f;
-	GEOM_I i_geom=m_geoms.begin(),e=m_geoms.end();
-	for(;i_geom!=e;++i_geom)
+	mc.set(0.0f, 0.0f, 0.0f);
+	mass = 0.0f;
+	m_volume = 0.0f;
+	GEOM_I i_geom = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i_geom != e; ++i_geom)
 	{
-		CBoneData& data=K->LL_GetData((*i_geom)->bone_id());
+		CBoneData& data = K->LL_GetData((*i_geom)->bone_id( ));
 		fVector3 add;
-		mass+=data.mass;
-		m_volume+=(*i_geom)->volume();
+		mass += data.mass;
+		m_volume += (*i_geom)->volume( );
 		add.set(data.center_of_mass);
 		add.mul(data.mass);
 		mc.add(add);
 	}
 
-	mc.mul(1.0f/mass);
+	mc.mul(1.0f / mass);
 }
-void CPHGeometryOwner::			calc_volume_data	()
+
+void CPHGeometryOwner::calc_volume_data( )
 {
-	m_volume=0.0f;
-	GEOM_I i_geom=m_geoms.begin(),e=m_geoms.end();
-	for(;i_geom!=e;++i_geom)
+	m_volume = 0.0f;
+	GEOM_I i_geom = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i_geom != e; ++i_geom)
 	{
-		m_volume+=(*i_geom)->volume();
+		m_volume += (*i_geom)->volume( );
 	}
 }
 
 void CPHGeometryOwner::SetMaterial(u16 m)
 {
-	ul_material=m;
-	if(!b_builded) return;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_material(m);
+	ul_material = m;
+	if (!b_builded)
+	{
+		return;
+	}
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_material(m);
+	}
 }
 
 void CPHGeometryOwner::SetPhObjectInGeomData(CPHObject* O)
 {
-	if(!b_builded) return;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_ph_object(O);
+	if (!b_builded)
+	{
+		return;
+	}
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_ph_object(O);
+	}
 }
 
-dGeomID CPHGeometryOwner::dSpacedGeometry()
+dGeomID CPHGeometryOwner::dSpacedGeometry( )
 {
-	if(!b_builded) return 0;
-	if(m_group) return (dGeomID)m_group;
-	else return (*m_geoms.begin())->geometry_transform();
+	if (!b_builded)
+	{
+		return 0;
+	}
+
+	if (m_group)
+	{
+		return (dGeomID)m_group;
+	}
+	else
+	{
+		return (*m_geoms.begin( ))->geometry_transform( );
+	}
 }
 
-void CPHGeometryOwner::			add_Box		(const fObb&		V)
+void CPHGeometryOwner::add_Box(const fObb& V)
 {
 	fObb box;
-	box=V;
-	if(box.m_halfsize.x<0.005f) box.m_halfsize.x=0.005f;
-	if(box.m_halfsize.y<0.005f) box.m_halfsize.y=0.005f;
-	if(box.m_halfsize.z<0.005f) box.m_halfsize.z=0.005f;
+	box = V;
+	if (box.m_halfsize.x < 0.005f)
+	{
+		box.m_halfsize.x = 0.005f;
+	}
+
+	if (box.m_halfsize.y < 0.005f)
+	{
+		box.m_halfsize.y = 0.005f;
+	}
+
+	if (box.m_halfsize.z < 0.005f)
+	{
+		box.m_halfsize.z = 0.005f;
+	}
+
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CBoxGeom>(box)));
 }
 
-void CPHGeometryOwner::			add_Sphere	(const fSphere&	V)
+void CPHGeometryOwner::add_Sphere(const fSphere& V)
 {
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CSphereGeom>(V)));
 }
 
-void CPHGeometryOwner::add_Cylinder	(const fCylinder& V)
+void CPHGeometryOwner::add_Cylinder(const fCylinder& V)
 {
 	m_geoms.push_back(smart_cast<CODEGeom*>(xr_new<CCylinderGeom>(V)));
 }
 
-
-void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const fMatrix4x4& offset)
+void CPHGeometryOwner::add_Shape(const SBoneShape& shape, const fMatrix4x4& offset)
 {
-	switch(shape.type) {
-	case SBoneShape::stBox	:
+	switch (shape.type)
+	{
+		case SBoneShape::stBox:
 		{
-		fObb box=shape.box;
-		fMatrix4x4 m;
+			fObb box = shape.box;
+			fMatrix4x4 m;
 			m.set(offset);
 			//fMatrix4x4 position;
 			//position.set(box.m_rotate);
@@ -179,156 +254,208 @@ void CPHGeometryOwner::add_Shape(const SBoneShape& shape,const fMatrix4x4& offse
 			//position.mulA(offset);
 			//box.m_rotate.set(position);
 			//box.m_translate.set(position.c);
-			box.transform(box,m);
+			box.transform(box, m);
 			add_Box(box);
-			break;
 		}
-	case SBoneShape::stSphere	:
+		break;
+		case SBoneShape::stSphere:
 		{
-		fSphere sphere=shape.sphere;
+			fSphere sphere = shape.sphere;
 			offset.transform_tiny(sphere.P);
 			add_Sphere(sphere);
-			break;
 		}
-
-
-	case SBoneShape::stCylinder :
+		break;
+		case SBoneShape::stCylinder:
 		{
-		fCylinder C=shape.cylinder;
+			fCylinder C = shape.cylinder;
 			offset.transform_tiny(C.m_center);
 			offset.transform_dir(C.m_direction);
 			add_Cylinder(C);
-			break;
 		}
-
-
-	case SBoneShape::stNone :
 		break;
-	default: NODEFAULT;
+		case SBoneShape::stNone:
+		{
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 }
 
 void CPHGeometryOwner::add_Shape(const SBoneShape& shape)
 {
-	switch(shape.type) {
-	case SBoneShape::stBox	:
+	switch (shape.type)
+	{
+		case SBoneShape::stBox:
 		{
 			add_Box(shape.box);
-			break;
 		}
-	case SBoneShape::stSphere	:
+		break;
+		case SBoneShape::stSphere:
 		{
 			add_Sphere(shape.sphere);
-			break;
 		}
-
-
-	case SBoneShape::stCylinder :
+		break;
+		case SBoneShape::stCylinder:
 		{
 			add_Cylinder(shape.cylinder);
-			break;
 		}
-
-	case SBoneShape::stNone :
 		break;
-	default: NODEFAULT;
+		case SBoneShape::stNone:
+		{
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 }
 
-
 void CPHGeometryOwner::set_ContactCallback(ContactCallbackFun* callback)
 {
-	contact_callback=callback;
-	if(!b_builded)return;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_contact_cb(callback);
-}
+	contact_callback = callback;
+	if (!b_builded)
+	{
+		return;
+	}
 
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_contact_cb(callback);
+	}
+}
 
 void CPHGeometryOwner::set_ObjectContactCallback(ObjectContactCallbackFun* callback)
 {
-	object_contact_callback= callback;
-	if(!b_builded)return;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_obj_contact_cb(callback);
+	object_contact_callback = callback;
+	if (!b_builded)
+	{
+		return;
+	}
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_obj_contact_cb(callback);
+	}
 }
 
 void CPHGeometryOwner::add_ObjectContactCallback(ObjectContactCallbackFun* callback)
 {
-	
-	if(!object_contact_callback)
+	if (!object_contact_callback)
 	{
-		object_contact_callback= callback;
+		object_contact_callback = callback;
 	}
-	if(!b_builded)return;
+
+	if (!b_builded)
 	{
-		GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-		for(;i!=e;++i) (*i)->add_obj_contact_cb(callback);
+		return;
+	}
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->add_obj_contact_cb(callback);
 	}
 }
 
 void CPHGeometryOwner::remove_ObjectContactCallback(ObjectContactCallbackFun* callback)
 {
-
-	if(object_contact_callback==callback)
+	if (object_contact_callback == callback)
 	{
-		object_contact_callback= NULL;
+		object_contact_callback = NULL;
 	}
-	if(!b_builded)return;
+
+	if (!b_builded)
 	{
-		GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-		for(;i!=e;++i) (*i)->remove_obj_contact_cb(callback);
+		return;
+	}
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->remove_obj_contact_cb(callback);
 	}
 }
 
-ObjectContactCallbackFun* CPHGeometryOwner::get_ObjectContactCallback()
+ObjectContactCallbackFun* CPHGeometryOwner::get_ObjectContactCallback( )
 {
 	return object_contact_callback;
 }
-void CPHGeometryOwner::set_CallbackData(void * cd)
+
+void CPHGeometryOwner::set_CallbackData(pvoid cd)
 {
 	VERIFY(b_builded);
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_callback_data(cd);
-}
-void*	CPHGeometryOwner::get_CallbackData()
-{
-		VERIFY(b_builded);
-		return (*m_geoms.begin())->get_callback_data	();
-}
-void CPHGeometryOwner::set_PhysicsRefObject(CPhysicsShellHolder* ref_object)
-{
-	m_phys_ref_object=ref_object;
-	if(!b_builded) return;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_ref_object(ref_object);
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_callback_data(cd);
+	}
 }
 
-u16	CPHGeometryOwner::numberOfGeoms()
+pvoid CPHGeometryOwner::get_CallbackData( )
 {
-	return (u16)m_geoms.size();
+	VERIFY(b_builded);
+	return (*m_geoms.begin( ))->get_callback_data( );
+}
+
+void CPHGeometryOwner::set_PhysicsRefObject(CPhysicsShellHolder* ref_object)
+{
+	m_phys_ref_object = ref_object;
+	if (!b_builded)
+	{
+		return;
+	}
+
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_ref_object(ref_object);
+	}
+}
+
+u16 CPHGeometryOwner::numberOfGeoms( )
+{
+	return (u16)m_geoms.size( );
 }
 
 void CPHGeometryOwner::get_Extensions(const fVector3& axis, f32 center_prg, f32& lo_ext, f32& hi_ext)
 {
-	lo_ext=dInfinity;hi_ext=-dInfinity;
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i)
+	lo_ext = dInfinity;
+	hi_ext = -dInfinity;
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
 	{
-		f32 temp_lo_ext,temp_hi_ext;
+		f32 temp_lo_ext, temp_hi_ext;
 		//GetTransformedGeometryExtensions((*i)->geometry_transform(),(f32*)&axis,center_prg,&temp_lo_ext,&temp_hi_ext);
-		(*i)->get_extensions_bt(axis,center_prg,temp_lo_ext,temp_hi_ext);
-		if(lo_ext>temp_lo_ext)lo_ext=temp_lo_ext;
-		if(hi_ext<temp_hi_ext)hi_ext=temp_hi_ext;
+		(*i)->get_extensions_bt(axis, center_prg, temp_lo_ext, temp_hi_ext);
+		if (lo_ext > temp_lo_ext)
+		{
+			lo_ext = temp_lo_ext;
+		}
+
+		if (hi_ext < temp_hi_ext)
+		{
+			hi_ext = temp_hi_ext;
+		}
 	}
 }
 
 void CPHGeometryOwner::get_MaxAreaDir(fVector3& dir)
 {
-	if(m_geoms.empty())return;
-	(*m_geoms.begin())->get_max_area_dir_bt(dir);
+	if (m_geoms.empty( ))
+	{
+		return;
+	}
+
+	(*m_geoms.begin( ))->get_max_area_dir_bt(dir);
 }
-f32 CPHGeometryOwner::getRadius()
+
+f32 CPHGeometryOwner::getRadius( )
 {
 	if (!m_geoms.empty( ))
 	{
@@ -340,56 +467,65 @@ f32 CPHGeometryOwner::getRadius()
 	}
 }
 
-void CPHGeometryOwner::get_mc_vs_transform(fVector3& mc,const fMatrix4x4& m)
+void CPHGeometryOwner::get_mc_vs_transform(fVector3& mc, const fMatrix4x4& m)
 {
 	mc.set(m_mass_center);
 	m.transform_tiny(mc);
-	VERIFY2(_valid(mc),"invalid mc in_set_transform");
+	VERIFY2(_valid(mc), "invalid mc in_set_transform");
 }
 
 void CPHGeometryOwner::setStaticForm(const fMatrix4x4& form)
 {
-	if(!b_builded) return;
+	if (!b_builded)
+	{
+		return;
+	}
+
 	fMatrix4x4 f;
 	f.set(form);
-	get_mc_vs_transform(f.c,form);
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i) (*i)->set_static_ref_form(f);
+	get_mc_vs_transform(f.c, form);
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
+	{
+		(*i)->set_static_ref_form(f);
+	}
 }
 
 void CPHGeometryOwner::setPosition(const fVector3& pos)
 {
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i)
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
 	{
 		(*i)->set_position(pos);
 	}
 }
-void CPHGeometryOwner::CreateSimulBase()
+
+void CPHGeometryOwner::CreateSimulBase( )
 {
-	if(m_geoms.size()>1)
+	if (m_geoms.size( ) > 1)
 	{
-		m_group=dSimpleSpaceCreate(0);
-		dSpaceSetCleanup(m_group,0);
+		m_group = dSimpleSpaceCreate(0);
+		dSpaceSetCleanup(m_group, 0);
 	}
 }
+
 struct SFindPred
 {
 	u16 m_val;
 	SFindPred(u16 val)
 	{
-		m_val=val;
+		m_val = val;
 	}
-bool	operator () (CODEGeom* g)
+	bool operator () (CODEGeom* g)
 	{
-		return g->bone_id()==m_val;
+		return g->bone_id( ) == m_val;
 	}
 };
+
 CODEGeom* CPHGeometryOwner::GeomByBoneID(u16 bone_id)
 {
-	
-	GEOM_I g=std::find_if(m_geoms.begin(),m_geoms.end(),SFindPred(bone_id));
-	if(g!=m_geoms.end())
+	GEOM_I g = std::find_if(m_geoms.begin( ), m_geoms.end( ), SFindPred(bone_id));
+	if (g != m_geoms.end( ))
 	{
 		return *g;
 	}
@@ -399,11 +535,11 @@ CODEGeom* CPHGeometryOwner::GeomByBoneID(u16 bone_id)
 	}
 }
 
-void CPHGeometryOwner::clear_cashed_tries()
+void CPHGeometryOwner::clear_cashed_tries( )
 {
-	GEOM_I i=m_geoms.begin(),e=m_geoms.end();
-	for(;i!=e;++i)
+	GEOM_I i = m_geoms.begin( ), e = m_geoms.end( );
+	for (; i != e; ++i)
 	{
-		(*i)->clear_cashed_tries();
+		(*i)->clear_cashed_tries( );
 	}
 }

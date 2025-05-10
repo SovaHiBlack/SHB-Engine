@@ -25,18 +25,18 @@ void CPatrolPathParams::script_register(lua_State *L)
 		class_<CPatrolPathParams>("patrol")
 			.enum_("start")
 			[
-				value("start",					int(PatrolPathManager::ePatrolStartTypeFirst)),
-				value("stop",					int(PatrolPathManager::ePatrolStartTypeLast)),
-				value("nearest",				int(PatrolPathManager::ePatrolStartTypeNearest)),
-				value("custom",					int(PatrolPathManager::ePatrolStartTypePoint)),
-				value("next",					int(PatrolPathManager::ePatrolStartTypeNext)),
-				value("dummy",					int(PatrolPathManager::ePatrolStartTypeDummy))
+				value("start", s32(PatrolPathManager::ePatrolStartTypeFirst)),
+				value("stop", s32(PatrolPathManager::ePatrolStartTypeLast)),
+				value("nearest", s32(PatrolPathManager::ePatrolStartTypeNearest)),
+				value("custom", s32(PatrolPathManager::ePatrolStartTypePoint)),
+				value("next", s32(PatrolPathManager::ePatrolStartTypeNext)),
+				value("dummy", s32(PatrolPathManager::ePatrolStartTypeDummy))
 			]
 			.enum_("stop")
 			[
-				value("stop",					int(PatrolPathManager::ePatrolRouteTypeStop)),
-				value("continue",				int(PatrolPathManager::ePatrolRouteTypeContinue)),
-				value("dummy",					int(PatrolPathManager::ePatrolRouteTypeDummy))
+				value("stop", s32(PatrolPathManager::ePatrolRouteTypeStop)),
+				value("continue", s32(PatrolPathManager::ePatrolRouteTypeContinue)),
+				value("dummy", s32(PatrolPathManager::ePatrolRouteTypeDummy))
 			]
 			.def(								constructor<pcstr>())
 			.def(								constructor<pcstr,const PatrolPathManager::EPatrolStartType>())

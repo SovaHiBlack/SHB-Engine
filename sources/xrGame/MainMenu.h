@@ -19,84 +19,89 @@ class CMainMenu :
 	public CUIWndCallback,
 	public CDeviceResetNotifier
 {
-	CUIDialogWnd*		m_startDialog;
-	
+	CUIDialogWnd* m_startDialog;
 
-	enum{
-		flRestoreConsole	= (1<<0),
-		flRestorePause		= (1<<1),
-		flRestorePauseStr	= (1<<2),
-		flActive			= (1<<3),
-		flNeedChangeCapture	= (1<<4),
-		flRestoreCursor		= (1<<5),
-		flGameSaveScreenshot= (1<<6),
-		flNeedVidRestart	= (1<<7),
+	enum
+	{
+		flRestoreConsole = (1 << 0),
+		flRestorePause = (1 << 1),
+		flRestorePauseStr = (1 << 2),
+		flActive = (1 << 3),
+		flNeedChangeCapture = (1 << 4),
+		flRestoreCursor = (1 << 5),
+		flGameSaveScreenshot = (1 << 6),
+		flNeedVidRestart = (1 << 7)
 	};
 	flags16			m_Flags;
 	string_path		m_screenshot_name;
 	u32				m_screenshotFrame;
-	void						ReadTextureInfo		();
-
+	void						ReadTextureInfo( );
 
 	xr_vector<CUIWindow*>		m_pp_draw_wnds;
 
 public:
-	enum	EErrorDlg 
+	enum	EErrorDlg
 	{
 		SessionTerminate,
 		ErrMax,
-		ErrNoError = ErrMax,
+		ErrNoError = ErrMax
 	};
 
 protected:
 	EErrorDlg		m_NeedErrDialog;
 	u32				m_start_time;
-	
+
 	xr_vector<CUIMessageBoxEx*>	m_pMB_ErrDlgs;
+
 public:
 	u32				m_deactivated_frame;
-	virtual void	DestroyInternal					(bool bForce);
-					CMainMenu						();
-	virtual			~CMainMenu						();
+	virtual void	DestroyInternal(bool bForce);
+	CMainMenu( );
+	virtual			~CMainMenu( );
 
-	virtual void	Activate						(bool bActive); 
-	virtual	bool	IsActive						(); 
+	virtual void	Activate(bool bActive);
+	virtual	bool	IsActive( );
 
-	virtual void	IR_OnMousePress					(int btn);
-	virtual void	IR_OnMouseRelease				(int btn);
-	virtual void	IR_OnMouseHold					(int btn);
-	virtual void	IR_OnMouseMove					(int x, int y);
-	virtual void	IR_OnMouseStop					(int x, int y);
+	virtual void	IR_OnMousePress(s32 btn);
+	virtual void	IR_OnMouseRelease(s32 btn);
+	virtual void	IR_OnMouseHold(s32 btn);
+	virtual void	IR_OnMouseMove(s32 x, s32 y);
+	virtual void	IR_OnMouseStop(s32 x, s32 y);
 
-	virtual void	IR_OnKeyboardPress				(int dik);
-	virtual void	IR_OnKeyboardRelease			(int dik);
-	virtual void	IR_OnKeyboardHold				(int dik);
+	virtual void	IR_OnKeyboardPress(s32 dik);
+	virtual void	IR_OnKeyboardRelease(s32 dik);
+	virtual void	IR_OnKeyboardHold(s32 dik);
 
-	virtual void	IR_OnMouseWheel					(int direction)	;
+	virtual void	IR_OnMouseWheel(s32 direction);
 
-	bool			OnRenderPPUI_query				();
-	void			OnRenderPPUI_main				();
-	void			OnRenderPPUI_PP					();
+	bool			OnRenderPPUI_query( );
+	void			OnRenderPPUI_main( );
+	void			OnRenderPPUI_PP( );
 
-	virtual void	OnRender						();
-	virtual void	OnFrame							(void);
-	virtual void	StartStopMenu					(CUIDialogWnd* pDialog, bool bDoHideIndicators);
-	virtual bool	UseIndicators					()						{return false;}
+	virtual void	OnRender( );
+	virtual void	OnFrame(void);
+	virtual void	StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators);
+	virtual bool	UseIndicators( )
+	{
+		return false;
+	}
 
+	void			OnDeviceCreate( );
 
-	void			OnDeviceCreate					();
+	void			Screenshot(IRender_interface::ScreenshotMode mode = IRender_interface::SM_NORMAL, pcstr name = 0);
+	void			RegisterPPDraw(CUIWindow* w);
+	void			UnregisterPPDraw(CUIWindow* w);
 
-	void			Screenshot						(IRender_interface::ScreenshotMode mode=IRender_interface::SM_NORMAL, pcstr name = 0);
-	void			RegisterPPDraw					(CUIWindow* w);
-	void			UnregisterPPDraw				(CUIWindow* w);
-
-	void			SetErrorDialog					(EErrorDlg ErrDlg);
-	EErrorDlg		GetErrorDialogType				() const { return m_NeedErrDialog; } ;
-	void			CheckForErrorDlg				();
-	void			OnSessionTerminate				(pcstr reason);
-	void			SetNeedVidRestart				();
-	virtual void	OnDeviceReset					();
-	pcstr			GetGSVer						();
+	void			SetErrorDialog(EErrorDlg ErrDlg);
+	EErrorDlg		GetErrorDialogType( ) const
+	{
+		return m_NeedErrDialog;
+	}
+	void			CheckForErrorDlg( );
+	void			OnSessionTerminate(pcstr reason);
+	void			SetNeedVidRestart( );
+	virtual void	OnDeviceReset( );
+	pcstr			GetGSVer( );
 };
 
-extern CMainMenu*	MainMenu();
+extern CMainMenu* MainMenu( );

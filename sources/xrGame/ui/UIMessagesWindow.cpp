@@ -34,7 +34,7 @@ void CUIMessagesWindow::AddLogMessage(const shared_str& msg)
 
 void CUIMessagesWindow::Init(f32 x, f32 y, f32 width, f32 height)
 {
-	CUIXml		 uiXml;
+	CUIXml uiXml;
 
 	uiXml.Init(CONFIG_PATH, UI_PATH, "messages_window.xml");
 

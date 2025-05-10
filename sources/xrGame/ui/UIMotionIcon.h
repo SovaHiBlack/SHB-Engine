@@ -5,7 +5,7 @@ class CUIMotionIcon : public CUIStatic
 	typedef CUIWindow inherited;
 
 public:
-	enum	EState
+	enum EState
 	{
 		stNormal,
 		stCrouch,
@@ -25,8 +25,8 @@ private:
 
 	struct _npc_visibility
 	{
-		u16				id;
-		f32				value;
+		u16 id;
+		f32 value;
 		bool operator == (const u16& _id)
 		{
 			return id == _id;
@@ -42,9 +42,9 @@ private:
 	f32				m_luminosity;
 
 public:
-	virtual					~CUIMotionIcon( );
-	CUIMotionIcon( );
-	virtual	void			Update( );
+	virtual			~CUIMotionIcon( );
+					CUIMotionIcon( );
+	virtual void	Update( );
 	void			Init( );
 	void			ShowState(EState state);
 	void			SetPower(f32 Pos);

@@ -154,7 +154,7 @@ void CUICharacterInfo::Init(f32 x, f32 y, f32 width, f32 height, CUIXml* xml_doc
 
 void CUICharacterInfo::Init(f32 x, f32 y, f32 width, f32 height, pcstr xml_name)
 {
-	CUIXml							uiXml;
+	CUIXml uiXml;
 	bool xml_result = uiXml.Init(CONFIG_PATH, UI_PATH, xml_name);
 	R_ASSERT3(xml_result, "xml file not found", xml_name);
 	Init(x, y, width, height, &uiXml);
@@ -164,7 +164,7 @@ void CUICharacterInfo::InitCharacter(u16 id)
 {
 	m_ownerID = id;
 
-	CCharacterInfo				chInfo;
+	CCharacterInfo chInfo;
 	CSE_ALifeTraderAbstract* T = ch_info_get_from_id(m_ownerID);
 
 	chInfo.Init(T);
