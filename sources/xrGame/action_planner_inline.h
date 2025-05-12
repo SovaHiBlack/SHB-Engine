@@ -275,30 +275,35 @@ IC	void CPlanner::show				(pcstr offset)
 #endif
 
 TEMPLATE_SPECIALIZATION
-IC	void CPlanner::save	(CNetPacket& packet)
+IC	void CPlanner::save(CNetPacket& packet)
 {
 	{
-		EVALUATORS::iterator		I = m_evaluators.begin();
-		EVALUATORS::iterator		E = m_evaluators.end();
-		for ( ; I != E; ++I)
-			(*I).second->save		(packet);
+		EVALUATORS::iterator		I = m_evaluators.begin( );
+		EVALUATORS::iterator		E = m_evaluators.end( );
+		for (; I != E; ++I)
+		{
+			(*I).second->save(packet);
+		}
 	}
 
 	{
-		OPERATOR_VECTOR::iterator	I = m_operators.begin();
-		OPERATOR_VECTOR::iterator	E = m_operators.end();
-		for ( ; I != E; ++I)
-			(*I).m_operator->save	(packet);
+		OPERATOR_VECTOR::iterator	I = m_operators.begin( );
+		OPERATOR_VECTOR::iterator	E = m_operators.end( );
+		for (; I != E; ++I)
+		{
+			(*I).m_operator->save(packet);
+		}
 	}
 
 	{
-		packet.w_u32				(m_storage.m_storage.size());
+		packet.w_u32(m_storage.m_storage.size( ));
 		typedef CPropertyStorage::CConditionStorage	CConditionStorage;
-		CConditionStorage::const_iterator	I = m_storage.m_storage.begin();
-		CConditionStorage::const_iterator	E = m_storage.m_storage.end();
-		for ( ; I != E; ++I) {
-			packet.w				(&(*I).m_condition,sizeof((*I).m_condition));
-			packet.w				(&(*I).m_value,sizeof((*I).m_value));
+		CConditionStorage::const_iterator	I = m_storage.m_storage.begin( );
+		CConditionStorage::const_iterator	E = m_storage.m_storage.end( );
+		for (; I != E; ++I)
+		{
+			packet.w(&(*I).m_condition, sizeof((*I).m_condition));
+			packet.w(&(*I).m_value, sizeof((*I).m_value));
 		}
 	}
 }

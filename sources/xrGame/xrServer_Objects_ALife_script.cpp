@@ -124,4 +124,3 @@ void CSE_ALifeLevelChanger::script_register(lua_State *L)
 		)
 	];
 }
-

@@ -33,7 +33,7 @@ class	game_cl_GameState : public game_GameState, public ISheduled
 
 protected:
 	CUIGameCustom* m_game_ui_custom;
-	u16									m_u16VotingEnabled;
+	//u16									m_u16VotingEnabled;
 	bool								m_bServerControlHits;
 
 public:
@@ -129,10 +129,10 @@ public:
 	void				u_EventGen(CNetPacket& P, u16 type, u16 dest);
 	void				u_EventSend(CNetPacket& P);
 
-	virtual		void				ChatSayTeam(const shared_str& phrase)
-	{ }
-	virtual		void				ChatSayAll(const shared_str& phrase)
-	{ }
+	//virtual		void				ChatSayTeam(const shared_str& phrase)
+	//{ }
+	//virtual		void				ChatSayAll(const shared_str& phrase)
+	//{ }
 	virtual		void				OnChatMessage(CNetPacket* P)
 	{ }
 	virtual		void				OnWarnMessage(CNetPacket* P)
@@ -140,30 +140,30 @@ public:
 	virtual		void				OnRadminMessage(u16 type, CNetPacket* P)
 	{ }
 
-	virtual		bool				IsVotingEnabled( )
-	{
-		return m_u16VotingEnabled != 0;
-	}
-	virtual		bool				IsVotingEnabled(u16 flag)
-	{
-		return (m_u16VotingEnabled & flag) != 0;
-	}
-	virtual		bool				IsVotingActive( )
-	{
-		return false;
-	}
-	virtual		void				SetVotingActive(bool Active)
-	{ }
-	virtual		void				SendStartVoteMessage(pcstr args)
-	{ }
-	virtual		void				SendVoteYesMessage( )
-	{ }
-	virtual		void				SendVoteNoMessage( )
-	{ }
-	virtual		void				OnVoteStart(CNetPacket& P)
-	{ }
-	virtual		void				OnVoteStop(CNetPacket& P)
-	{ }
+	//virtual		bool				IsVotingEnabled( )
+	//{
+	//	return m_u16VotingEnabled != 0;
+	//}
+	//virtual		bool				IsVotingEnabled(u16 flag)
+	//{
+	//	return (m_u16VotingEnabled & flag) != 0;
+	//}
+	//virtual		bool				IsVotingActive( )
+	//{
+	//	return false;
+	//}
+	//virtual		void				SetVotingActive(bool Active)
+	//{ }
+	//virtual		void				SendStartVoteMessage(pcstr args)
+	//{ }
+	//virtual		void				SendVoteYesMessage( )
+	//{ }
+	//virtual		void				SendVoteNoMessage( )
+	//{ }
+	//virtual		void				OnVoteStart(CNetPacket& P)
+	//{ }
+	//virtual		void				OnVoteStop(CNetPacket& P)
+	//{ }
 
 	virtual		void				OnRender( )
 	{ }
@@ -189,9 +189,9 @@ public:
 	virtual		void				OnDestroy(CObject* pObj)
 	{ }
 
-	virtual		void				OnPlayerFlagsChanged(game_PlayerState* ps)
-	{ }
-	virtual		void				OnPlayerVoted(game_PlayerState* ps)
-	{ }
+	//virtual		void				OnPlayerFlagsChanged(game_PlayerState* ps)
+	//{ }
+	//virtual		void				OnPlayerVoted(game_PlayerState* ps)
+	//{ }
 	virtual		void				SendPickUpEvent(u16 ID_who, u16 ID_what);
 };

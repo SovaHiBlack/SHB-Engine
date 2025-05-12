@@ -80,11 +80,13 @@ void CSE_ALifeHumanAbstract::script_register(lua_State *L)
 			CSE_ALifeMonsterAbstract
 		)
 		.def("brain",				&human_brain)
+
 #ifdef XRGAME_EXPORTS
 		.def("rank",				&CSE_ALifeTraderAbstract::Rank)
 		.def("set_rank",			&CSE_ALifeTraderAbstract::SetRank)
 
 #endif
+
 	];
 }
 
@@ -98,4 +100,3 @@ void CSE_ALifePsyDogPhantom::script_register(lua_State *L)
 			)
 	];
 }
-

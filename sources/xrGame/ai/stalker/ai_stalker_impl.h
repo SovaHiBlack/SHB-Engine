@@ -15,22 +15,22 @@
 #include "../../group_hierarchy_holder.h"
 #include "../../effectorshot.h"
 
-IC	CAgentManager &CAI_Stalker::agent_manager	() const
+IC	CAgentManager& CAI_Stalker::agent_manager( ) const
 {
-	return			(Level().seniority_holder().team(g_Team()).squad(g_Squad()).group(g_Group()).agent_manager());
+	return			(Level( ).seniority_holder( ).team(g_Team( )).squad(g_Squad( )).group(g_Group( )).agent_manager( ));
 }
 
-IC	fVector3 CAI_Stalker::weapon_shot_effector_direction	(const fVector3& current) const
+IC	fVector3 CAI_Stalker::weapon_shot_effector_direction(const fVector3& current) const
 {
-	VERIFY			(weapon_shot_effector().IsActive());
+	VERIFY(weapon_shot_effector( ).IsActive( ));
 	fVector3			result;
-	weapon_shot_effector().GetDeltaAngle(result);
+	weapon_shot_effector( ).GetDeltaAngle(result);
 
 	f32			y;
 	f32 p;
-	current.getHP	(y,p);
+	current.getHP(y, p);
 
-	result.setHP	(-result.y + y, -result.x + p);
+	result.setHP(-result.y + y, -result.x + p);
 
 	return			(result);
 }

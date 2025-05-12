@@ -87,7 +87,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObject,CSE_Abstract,CRandom)
 		flCanSave			= u32(1) << 9,
 		flVisibleForMap		= u32(1) << 10,
 		flUseSmartTerrains	= u32(1) << 11,
-		flCheckForSeparator	= u32(1) << 12,
+		flCheckForSeparator	= u32(1) << 12
 	};
 
 public:
@@ -180,19 +180,19 @@ public:
 	{
 		inherited1::STATE_Write		(tNetPacket);
 		inherited2::STATE_Write		(tNetPacket);
-	};
+	}
 
 	virtual void UPDATE_Read		(CNetPacket& tNetPacket)
 	{
 		inherited1::UPDATE_Read		(tNetPacket);
 		inherited2::UPDATE_Read		(tNetPacket);
-	};
+	}
 
 	virtual void UPDATE_Write		(CNetPacket& tNetPacket)
 	{
 		inherited1::UPDATE_Write	(tNetPacket);
 		inherited2::UPDATE_Write	(tNetPacket);
-	};
+	}
 
 	virtual CSE_Abstract *init		()
 	{
@@ -215,7 +215,7 @@ public:
 	{
 		inherited1::FillProps		(pref, items);
 		inherited2::FillProps		(pref, items);
-	};	
+	}
 
 	virtual CSE_Abstract			*cast_abstract			()
 	{
@@ -302,6 +302,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifePHSkeletonObject,CSE_ALifeDynamicObjectVis
 	virtual bool					used_ai_locations		() const;
 	virtual	void					load					(CNetPacket& tNetPacket);
 	virtual CSE_Abstract			*cast_abstract			() {return this;}
+
 public:
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifePHSkeletonObject)
@@ -383,13 +384,14 @@ add_to_type_list(CSE_ALifeObjectPhysic)
 SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectHangingLamp,CSE_ALifeDynamicObjectVisual,CSE_PHSkeleton)
 
 	void __stdcall 					OnChangeFlag	(PropValue* sender);
-	enum{
+	enum
+	{
 		flPhysic					= (1<<0),
 		flCastShadow				= (1<<1),
 		flR1						= (1<<2),
 		flR2						= (1<<3),
 		flTypeSpot					= (1<<4),
-		flPointAmbient				= (1<<5),
+		flPointAmbient				= (1<<5)
 	};
 
 	flags16							flags;
@@ -424,7 +426,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectHangingLamp,CSE_ALifeDynamicObjectVi
 	virtual bool					used_ai_locations			() const;
 	virtual bool					match_configuration			() const;
 	virtual bool		__stdcall	validate					();
-	virtual void 		__stdcall	on_render					(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F);
+	virtual void 		__stdcall	on_render					(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,s32 priority, bool strictB2F);
 	virtual CSE_Abstract			*cast_abstract			() {return this;}
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeObjectHangingLamp)
@@ -475,6 +477,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeCar,CSE_ALifeDynamicObjectVisual,CSE_PHSke
 	virtual	void					load				(CNetPacket& tNetPacket);
 	virtual bool					can_save			() const;
 	virtual CSE_Abstract			*cast_abstract		() {return this;}
+
 protected:
 	virtual void					data_load				(CNetPacket& tNetPacket);
 	virtual void					data_save				(CNetPacket& tNetPacket);

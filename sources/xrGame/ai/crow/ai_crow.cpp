@@ -429,7 +429,10 @@ void CAI_Crow::HitSignal(f32 /**HitAmount/**/, fVector3& /**local_dir/**/, CObje
 //		if (first_time)	Die			(who);
 		st_target = eDeathFall;
 	}
-	else smart_cast<CKinematicsAnimated*>(Visual( ))->PlayCycle(m_Anims.m_death_dead.GetRandom( ));
+	else
+	{
+		smart_cast<CKinematicsAnimated*>(Visual( ))->PlayCycle(m_Anims.m_death_dead.GetRandom( ));
+	}
 }
 //---------------------------------------------------------------------
 void CAI_Crow::HitImpulse(f32	/**amount/**/, fVector3& /**vWorldDir/**/, fVector3& /**vLocalDir/**/)

@@ -223,10 +223,10 @@ static void w_qt_q8(CNetPacket& P, const fQuaternion& q)
 	//P.w_float_q8(Q.y,-1.f,1.f);
 	//P.w_float_q8(Q.z,-1.f,1.f);
 	///////////////////////////////////////////////////
-	P.w_float_q8(q.x, -1.f, 1.f);
-	P.w_float_q8(q.y, -1.f, 1.f);
-	P.w_float_q8(q.z, -1.f, 1.f);
-	P.w_float_q8(q.w, -1.f, 1.f);
+	P.w_float_q8(q.x, -1.0f, 1.0f);
+	P.w_float_q8(q.y, -1.0f, 1.0f);
+	P.w_float_q8(q.z, -1.0f, 1.0f);
+	P.w_float_q8(q.w, -1.0f, 1.0f);
 
 	///////////////////////////////////////////
 
@@ -862,7 +862,6 @@ void CActor::net_Destroy( )
 
 void CActor::net_Relcase(CObject* O)
 {
-
 	VERIFY(O);
 	CGameObject* GO = smart_cast<CGameObject*>(O);
 	if (GO && m_pObjectWeLookingAt == GO)
@@ -1956,7 +1955,8 @@ void CActor::OnPlayHeadShotParticle(CNetPacket P)
 	fVector3	HitDir;
 	fVector3 HitPos;
 	s16	element = P.r_s16( );
-	P.r_dir(HitDir);	HitDir.invert( );
+	P.r_dir(HitDir);
+	HitDir.invert( );
 	P.r_vec3(HitPos);
 	//-----------------------------------
 	if (!m_sHeadShotParticle.size( ))

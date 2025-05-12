@@ -8,7 +8,8 @@ void xrServer::SLS_Load	(IReader& fs)
 	CNetPacket			P;
 	u16					u_id = 0xffff;
 	u32					C;
-	for (IReader *F = fs.open_chunk_iterator(C); F; F = fs.open_chunk_iterator(C,F)) {
+	for (IReader *F = fs.open_chunk_iterator(C); F; F = fs.open_chunk_iterator(C,F))
+	{
 		// Spawn
 		P.B.count		= F->r_u16();
 		F->r			(P.B.data,P.B.count);

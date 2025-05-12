@@ -93,4 +93,3 @@ void CSE_ALifeTeamBaseZone::script_register(lua_State *L)
 		)
 	];
 }
-

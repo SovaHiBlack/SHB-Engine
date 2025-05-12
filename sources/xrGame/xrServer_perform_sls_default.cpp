@@ -12,7 +12,8 @@
 
 void xrServer::SLS_Default	()
 {
-	if (game->custom_sls_default()) {
+	if (game->custom_sls_default())
+	{
 		game->sls_default	();
 		return;
 	}
@@ -27,7 +28,8 @@ void xrServer::SLS_Default	()
 		IReader*			SP		= FS.r_open(fn_spawn);
 		CNetPacket			P;
 		u32					S_id;
-		for (IReader *S = SP->open_chunk_iterator(S_id); S; S = SP->open_chunk_iterator(S_id,S)) {
+		for (IReader *S = SP->open_chunk_iterator(S_id); S; S = SP->open_chunk_iterator(S_id,S))
+		{
 			P.B.count		= S->length();
 			S->r			(P.B.data,P.B.count);
 			
@@ -40,24 +42,35 @@ void xrServer::SLS_Default	()
 #ifdef USE_DESIGNER_KEY
 			CSE_Abstract			*entity = 
 #endif
+
 				Process_spawn(P,clientID);
+
 #ifdef USE_DESIGNER_KEY
-			if (_designer) {
+			if (_designer)
+			{
 				CSE_ALifeCreatureActor	*actor = smart_cast<CSE_ALifeCreatureActor*>(entity);
 				if (actor)
-					_actor				= actor;
+				{
+					_actor = actor;
+				}
 			}
 #endif
+
 		}
+
 		FS.r_close			(SP);
 	}
 
 #ifdef USE_DESIGNER_KEY
 	if (!_designer)
+	{
 		return;
+	}
 
 	if (_actor)
+	{
 		return;
+	}
 
 	_actor					= smart_cast<CSE_ALifeCreatureActor*>(entity_Create("actor"));
 	_actor->o_Position		= fVector3().set(0.0f,0.0f,0.0f);

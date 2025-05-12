@@ -46,7 +46,7 @@ void CScriptSoundAction::script_register(lua_State *L)
 			.def(								constructor<CScriptSound&,const fVector3&,const fVector3&,bool>())
 			// monster specific
 			.def(								constructor<MonsterSound::EType>())
-			.def(								constructor<MonsterSound::EType,int>())
+			.def(								constructor<MonsterSound::EType, s32>())
 			// trader specific
 			.def(								constructor<pcstr, pcstr,MonsterSpace::EMonsterHeadAnimType>())
 

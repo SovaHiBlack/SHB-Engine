@@ -51,4 +51,3 @@ void CSE_ALifeSmartZone::script_register(lua_State *L)
 		)
 	];
 }
-

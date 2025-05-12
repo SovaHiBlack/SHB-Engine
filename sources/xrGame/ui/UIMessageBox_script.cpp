@@ -25,9 +25,9 @@ void CUIMessageBox::script_register(lua_State *L)
 		.def("GetPassword",	&CUIMessageBoxEx::GetPassword)
 //		.enum_("style")
 //		[
-//			value("STYLE_OK",					int(CUIMessageBox::MESSAGEBOX_OK)),
-///			value("STYLE_YES_NO",				int(CUIMessageBox::MESSAGEBOX_YES_NO)),
-//			value("STYLE_YES_NO_CANCEL",		int(CUIMessageBox::MESSAGEBOX_YES_NO_CANCEL))
+//			value("STYLE_OK",					s32(CUIMessageBox::MESSAGEBOX_OK)),
+///			value("STYLE_YES_NO",				s32(CUIMessageBox::MESSAGEBOX_YES_NO)),
+//			value("STYLE_YES_NO_CANCEL",		s32(CUIMessageBox::MESSAGEBOX_YES_NO_CANCEL))
 //		]
 //		.def("SetText",					(void(CUIMessageBox::*)(pcstr))&CUIMessageBox::SetText)
 //		.def("Show",					(void(CUIMessageBox::*)(void))&CUIMessageBox::Show)

@@ -38,7 +38,7 @@
 #include "../../agent_manager.h"
 #include "../../agent_member_manager.h"
 #include "../../agent_enemy_manager.h"
-#include "../../agent_corpse_manager.h"
+#include "../../AgentCorpseManager.h"
 #include "../../agent_location_manager.h"
 #include "../../cover_point.h"
 #include "..\..\..\XR_3DA\camerabase.h"

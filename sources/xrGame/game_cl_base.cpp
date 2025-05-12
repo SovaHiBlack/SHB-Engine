@@ -25,7 +25,7 @@ game_cl_GameState::game_cl_GameState( )
 	m_game_ui_custom = NULL;
 	shedule_register( );
 
-	m_u16VotingEnabled = 0;
+	//m_u16VotingEnabled = 0;
 	m_bServerControlHits = true;
 }
 
@@ -82,7 +82,7 @@ void game_cl_GameState::net_import_state(CNetPacket& P)
 
 	P.r_s32(m_round);
 	P.r_u32(m_start_time);
-	m_u16VotingEnabled = u16(P.r_u8( ));
+	//m_u16VotingEnabled = u16(P.r_u8( ));
 	m_bServerControlHits = !!P.r_u8( );
 	m_WeaponUsageStatistic->SetCollectData(!!P.r_u8( ));
 
@@ -257,7 +257,11 @@ CClientID game_cl_GameState::GetClientIDByOrderID(u32 idx)
 
 void game_cl_GameState::CommonMessageOut(pcstr msg)
 {
-	if (!HUD( ).GetUI( )) return;
+	if (!HUD( ).GetUI( ))
+	{
+		return;
+	}
+
 	HUD( ).GetUI( )->m_pMessagesWnd->AddLogMessage(msg);
 }
 

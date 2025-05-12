@@ -51,6 +51,7 @@ public:
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 typedef CActionPlannerAction<CScriptGameObject> CScriptActionPlannerAction;
 add_to_type_list(CScriptActionPlannerAction)
 #undef script_type_list

@@ -312,28 +312,34 @@ s32	CLevel::get_RPID(pcstr /**name/**/)
 
 BOOL		g_bDebugEvents = FALSE;
 
-
 void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 {
 	//			Msg				("--- event[%d] for [%d]",type,dest);
 	CObject* O = Objects.net_Find(dest);
 	if (0 == O)
 	{
+
 #ifdef DEBUG
 		Msg("* WARNING: c_EVENT[%d] to [%d]: unknown dest", type, dest);
 #endif // DEBUG
+
 		return;
 	}
+
 	CGameObject* GO = smart_cast<CGameObject*>(O);
 	if (!GO)
 	{
 		Msg("! ERROR: c_EVENT[%d] : non-game-object", dest);
 		return;
 	}
+
 	if (type != GE_DESTROY_REJECT)
 	{
 		if (type == GE_DESTROY)
+		{
 			Game( ).OnDestroy(GO);
+		}
+
 		GO->OnEvent(P, type);
 	}
 	else
@@ -363,44 +369,47 @@ void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 		{
 			Game( ).OnDestroy(GD);
 			GD->OnEvent(P, GE_DESTROY);
-		};
+		}
 	}
-};
+}
 
 void CLevel::ProcessGameEvents( )
-{
-	// Game events
+{	// Game events
+
+	CNetPacket			P;
+	u32 svT = timeServer( ) - NET_Latency;
+
+	/*
+	if (!game_events->queue.empty())
+		Msg("- d[%d],ts[%d] -- E[svT=%d],[evT=%d]",Device.dwTimeGlobal,timeServer(),svT,game_events->queue.begin()->timestamp);
+	*/
+
+	while (game_events->available(svT))
 	{
-		CNetPacket			P;
-		u32 svT = timeServer( ) - NET_Latency;
+		u16 ID;
+		u16 dest;
+		u16 type;
+		game_events->get(ID, dest, type, P);
 
-		/*
-		if (!game_events->queue.empty())
-			Msg("- d[%d],ts[%d] -- E[svT=%d],[evT=%d]",Device.dwTimeGlobal,timeServer(),svT,game_events->queue.begin()->timestamp);
-		*/
-
-		while (game_events->available(svT))
+		switch (ID)
 		{
-			u16 ID, dest, type;
-			game_events->get(ID, dest, type, P);
-
-			switch (ID)
+			case M_SPAWN:
 			{
-				case M_SPAWN:
-				{
-					u16 dummy16;
-					P.r_begin(dummy16);
-					cl_Process_Spawn(P);
-				}break;
-				case M_EVENT:
-				{
-					cl_Process_Event(dest, type, P);
-				}break;
-				default:
-				{
-					VERIFY(0);
-				}break;
+				u16 dummy16;
+				P.r_begin(dummy16);
+				cl_Process_Spawn(P);
 			}
+			break;
+			case M_EVENT:
+			{
+				cl_Process_Event(dest, type, P);
+			}
+			break;
+			default:
+			{
+				VERIFY(0);
+			}
+			break;
 		}
 	}
 }
@@ -514,7 +523,7 @@ void CLevel::OnRender( )
 			if (physic_object)
 				physic_object->OnRender( );
 
-			CSpaceRestrictor* space_restrictor = smart_cast<CSpaceRestrictor*>	(_O);
+			CSpaceRestrictor* space_restrictor = smart_cast<CSpaceRestrictor*>(_O);
 			if (space_restrictor)
 				space_restrictor->OnRender( );
 			CClimableObject* climable = smart_cast<CClimableObject*>	(_O);
@@ -940,7 +949,7 @@ bool GlobalFeelTouch::is_object_denied(CObject const* O)
 	/*fVector3 temp_vector;
 	feel_touch_update(temp_vector, 0.f);*/
 	if (std::find_if(feel_touch_disable.begin( ), feel_touch_disable.end( ),
-					 std::bind2nd(objects_ptrs_equal( ), O)) == feel_touch_disable.end( ))
+		std::bind2nd(objects_ptrs_equal( ), O)) == feel_touch_disable.end( ))
 	{
 		return false;
 	}

@@ -27,7 +27,7 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 		eTraderFlagDummy			= u32(-1),
 	};
 //	f32							m_fCumulativeItemMass;
-//	int								m_iCumulativeItemVolume;
+//	s32								m_iCumulativeItemVolume;
 	u32								m_dwMoney;
 	f32							m_fMaxItemMass;
 	flags32							m_trader_flags;

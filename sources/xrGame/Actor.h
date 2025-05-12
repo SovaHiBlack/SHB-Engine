@@ -116,7 +116,7 @@ public:
 	virtual void						shedule_Update(u32 T);
 	virtual void						UpdateCL( );
 
-	virtual void						OnEvent(CNetPacket& P, u16 type);
+	virtual void						OnEvent(CNetPacket& packet, u16 type);
 
 	// Render
 	virtual void						renderable_Render( );
@@ -208,7 +208,7 @@ public:
 	virtual void						OnItemDrop(CInventoryItem* inventory_item);
 	virtual void						OnItemDropUpdate( );
 
-	virtual void						OnPlayHeadShotParticle(CNetPacket P);
+	virtual void						OnPlayHeadShotParticle(CNetPacket packet);
 
 	virtual void						Die(CObject* who);
 	virtual void						Hit(SHit* pHDS);

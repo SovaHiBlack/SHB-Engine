@@ -11,7 +11,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "agent_location_manager.h"
-#include "agent_corpse_manager.h"
+#include "AgentCorpseManager.h"
 #include "agent_explosive_manager.h"
 #include "agent_enemy_manager.h"
 #include "ai/stalker/ai_stalker.h"

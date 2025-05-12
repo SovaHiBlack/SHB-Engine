@@ -115,7 +115,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("action",						&CScriptGameObject::GetCurrentAction, adopt(result))
 		.def("object_count",				&CScriptGameObject::GetInventoryObjectCount)
 		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(pcstr))(&CScriptGameObject::GetObjectByName))
-		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(int))(&CScriptGameObject::GetObjectByIndex))
+		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(s32))(&CScriptGameObject::GetObjectByIndex))
 		.def("active_item",					&CScriptGameObject::GetActiveItem)
 		
 		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType, const luabind::functor<void> &))(&CScriptGameObject::SetCallback))

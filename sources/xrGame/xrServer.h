@@ -12,7 +12,6 @@
 //. #define SLOW_VERIFY_ENTITIES
 #endif
 
-
 class CSE_Abstract;
 
 const u32	NET_Latency		= 50;		// time in (ms)
@@ -80,6 +79,7 @@ private:
 	u32							OnDelayedMessage		(CNetPacket& P, CClientID sender);			// Non-Zero means broadcasting with "flags" as returned
 
 	void						SendUpdatesToAll		();
+
 private:
 	typedef 
 		CID_Generator<
@@ -100,6 +100,7 @@ private:
 protected:
 	void					Server_Client_Check				(IClient* CL);
 	void					PerformCheckClientsForMaxPing	();
+
 public:
 	game_sv_GameState*		game;
 
@@ -139,6 +140,7 @@ public:
 
 	void					AttachNewClient			(IClient* CL);
 	virtual void			OnBuildVersionRespond				(IClient* CL, CNetPacket& P);
+
 protected:
 	bool					CheckAdminRights		(const shared_str& user, const shared_str& pass, string512 reason);
 	virtual IClient*		new_client				( SClientConnectData* cl_data );
@@ -174,7 +176,7 @@ public:
 	// utilities
 	CSE_Abstract*			entity_Create		(pcstr name);
 	void					entity_Destroy		(CSE_Abstract *&P);
-	u32						GetEntitiesNum		()			{ return entities.size(); };
+	u32						GetEntitiesNum		()			{ return entities.size(); }
 	CSE_Abstract*			GetEntity			(u32 Num);
 
 	IC void					clients_Lock		()			{	csPlayers.Enter();	}
@@ -190,20 +192,22 @@ public:
 	void					SLS_Default			();
 	void					SLS_Clear			();
 	void					SLS_Save			(IWriter&	fs);
-	void					SLS_Load			(IReader&	fs);	
+	void					SLS_Load			(IReader&	fs);
 			shared_str		level_name			(const shared_str &server_options) const;
 
 	void					create_direct_client();
 
 	virtual void			Assign_ServerType	( string512& res ) {};
-//	virtual bool			HasPassword			()	{ return false; }
 	virtual bool			HasProtected		()	{ return false; }
 
 	virtual void			GetServerInfo		( CServerInfo* si );
+
 public:
 	xr_string				ent_name_safe		(u16 eid);
+
 #ifdef DEBUG
 			bool			verify_entities		() const;
 			void			verify_entity		(const CSE_Abstract *entity) const;
 #endif
+
 };

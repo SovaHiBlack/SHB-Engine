@@ -44,7 +44,7 @@
 #include "../../missile.h"
 #include "../../phworld.h"
 #include "../../stalker_animation_names.h"
-#include "../../agent_corpse_manager.h"
+#include "../../AgentCorpseManager.h"
 #include "../../CharacterPhysicsSupport.h"
 #include "../../stalker_planner.h"
 #include "../../stalker_decision_space.h"

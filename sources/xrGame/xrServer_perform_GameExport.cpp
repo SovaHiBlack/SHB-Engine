@@ -4,7 +4,10 @@
 
 void xrServer::Perform_game_export	()
 {
-	if (net_Players.empty())		return;
+	if (net_Players.empty( ))
+	{
+		return;
+	}
 
 	// Broadcase game state to every body
 	// But it is slightly different view for each "player"
@@ -18,11 +21,16 @@ void xrServer::Perform_game_export	()
 	{
 		CClientID ID						= net_Players[client]->ID;
 		xrClientData*	CL				= (xrClientData*)net_Players[client];
-		if (!CL->net_Accepted) continue;
+		if (!CL->net_Accepted)
+		{
+			continue;
+		}
+
 		P.w_begin						(M_SV_CONFIG_GAME);
 		game->net_Export_State			(P,ID);
 		SendTo							(ID,P,mode);
 	}
+
 	csPlayers.Leave		();
 
 	game->sv_force_sync	= FALSE;

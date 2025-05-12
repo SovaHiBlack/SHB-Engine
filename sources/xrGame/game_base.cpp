@@ -57,7 +57,7 @@ game_PlayerState::~game_PlayerState( )
 {
 	pItemList.clear( );
 	pSpawnPointsList.clear( );
-};
+}
 
 bool game_PlayerState::testFlag(u16 f) const
 {
@@ -97,15 +97,16 @@ void	game_PlayerState::net_Export(CNetPacket& P, BOOL Full)
 	P.w_u8(m_bCurrentVoteAgreed);
 
 	P.w_u32(Device.dwTimeGlobal - DeathTime);
-};
+}
 
 void	game_PlayerState::net_Import(CNetPacket& P)
 {
 	BOOL	bFullUpdate = !!P.r_u8( );
 
 	if (bFullUpdate)
+	{
 		P.r_stringZ(name);
-
+	}
 
 	P.r_u8(team);
 
@@ -126,14 +127,15 @@ void	game_PlayerState::net_Import(CNetPacket& P)
 	P.r_u8(m_bCurrentVoteAgreed);
 
 	DeathTime = P.r_u32( );
-};
+}
 
 void	game_PlayerState::SetGameID(u16 NewID)
 {
 	if (mOldIDs.size( ) >= 10)
 	{
 		mOldIDs.pop_front( );
-	};
+	}
+
 	mOldIDs.push_back(GameID);
 	GameID = NewID;
 }
@@ -141,7 +143,10 @@ bool	game_PlayerState::HasOldID(u16 ID)
 {
 	OLD_GAME_ID_it ID_i = std::find(mOldIDs.begin( ), mOldIDs.end( ), ID);
 	if (ID_i != mOldIDs.end( ) && *(ID_i) == ID)
+	{
 		return true;
+	}
+
 	return false;
 }
 
@@ -183,7 +188,9 @@ CLASS_ID game_GameState::getCLASS_ID(pcstr game_type_name, bool isServer)
 
 	xr_delete(l_tpIniFile);
 	if (clsid.size( ) == 0)
+	{
 		Debug.fatal(DEBUG_INFO, "Unknown game type: %s", game_type_name);
+	}
 
 	return				(TEXT2CLSID(*clsid));
 

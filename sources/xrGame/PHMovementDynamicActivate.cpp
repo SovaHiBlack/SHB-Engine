@@ -334,8 +334,8 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	max_depth=0.f;
 
 	//////////////////////////////////pars///////////////////////////////////////////
-//	int		num_it=8;
-//	int		num_steps=5;
+//	s32		num_it=8;
+//	s32		num_steps=5;
 //	f32	resolve_depth=0.01f;
 	
 	if(!character_exist)

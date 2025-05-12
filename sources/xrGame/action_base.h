@@ -76,11 +76,14 @@ public:
 	IC		void 				set_weight			(const _edge_value_type &weight);
 	IC		bool				first_time			() const;
 
-	virtual	void				save				(CNetPacket& packet) {}
-	virtual	void				load				(IReader &packet) {}
+	virtual void				save				(CNetPacket& packet)
+	{ }
+	virtual void				load				(IReader& packet)
+	{ }
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 typedef CActionBase<CScriptGameObject> CScriptActionBase;
 add_to_type_list(CScriptActionBase)
 #undef script_type_list

@@ -16,7 +16,7 @@ public:
 	}
 	void	set				(u32 v)
 	{
-		id					= v;
+		id = v;
 	}
 
 	bool	compare			(u32 v) const

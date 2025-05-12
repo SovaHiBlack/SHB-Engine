@@ -25,7 +25,7 @@ const pcstr main_function = "console_command_run_string_main_thread_function";
 //void print_stack_(lua_State *L)
 //{
 //	Msg(" ");
-//	for (int i=0; lua_type(L, -i-1); i++)
+//	for (s32 i=0; lua_type(L, -i-1); i++)
 //		Msg("%2d : %s",-i-1,lua_typename(L, lua_type(L, -i-1)));
 //}
 
@@ -87,16 +87,24 @@ CScriptThread::CScriptThread(pcstr caNamespaceName, bool do_string, bool reload)
 		}
 		else
 #	endif
+		{
 			lua_sethook(lua( ), CScriptEngine::lua_hook_call, LUA_MASKLINE | LUA_MASKCALL | LUA_MASKRET, 0);
+		}
 #endif
 
 		if (!do_string)
+		{
 			sprintf_s(S, "%s.main()", caNamespaceName);
+		}
 		else
+		{
 			sprintf_s(S, "%s()", main_function);
+		}
 
 		if (!ai( ).script_engine( ).load_buffer(lua( ), S, xr_strlen(S), "@_thread_main"))
+		{
 			return;
+		}
 
 		m_active = true;
 	}
@@ -108,14 +116,18 @@ CScriptThread::CScriptThread(pcstr caNamespaceName, bool do_string, bool reload)
 
 CScriptThread::~CScriptThread( )
 {
+
 #ifdef DEBUG
 	Msg("* Destroying script thread %s", *m_script_name);
 #endif
+
 	try
 	{
+
 #ifndef LUABIND_HAS_BUGS_WITH_LUA_THREADS
 		luaL_unref(ai( ).script_engine( ).lua( ), LUA_REGISTRYINDEX, m_thread_reference);
 #endif
+
 	}
 	catch (...)
 	{
@@ -134,7 +146,6 @@ bool CScriptThread::update( )
 		ai( ).script_engine( ).current_thread(this);
 
 		s32 l_iErrorCode = lua_resume(lua( ), 0);
-
 		if (l_iErrorCode && (l_iErrorCode != LUA_YIELD))
 		{
 			ai( ).script_engine( ).print_output(lua( ), *script_name( ), l_iErrorCode);

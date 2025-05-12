@@ -297,7 +297,7 @@ public:
 	virtual bool						CanPutInSlot(PIItem item, u32 slot)
 	{
 		return(slot != OUTFIT_SLOT);
-	};
+	}
 
 //////////////////////////////////////////////////////////////////////////
 // action/evaluators support functions
@@ -407,6 +407,7 @@ protected:
 	void						remove_personal_only_ammo(const CInventoryItem* item);
 	void						on_after_take(const CGameObject* object);
 	virtual bool						AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const;
+
 public:
 	IC		CStalkerAnimationManager& animation( ) const;
 	IC		CStalkerPlanner& brain( ) const;
@@ -447,6 +448,7 @@ public:
 	bool						zoom_state( ) const;
 	void						react_on_grenades( );
 	void						react_on_member_death( );
+
 private:
 	CWeaponShotEffector* m_weapon_shot_effector;
 	s32									m_weapon_shot_random_seed;
@@ -462,7 +464,8 @@ public:
 	virtual	bool						use_simplified_visual( ) const
 	{
 		return (already_dead( ));
-	};
+	}
+
 #ifdef DEBUG
 	void						debug_planner(const script_planner* planner);
 #endif
@@ -574,6 +577,7 @@ private:
 	virtual void						critical_wounded_state_start( );
 
 	void						fill_bones_body_parts(pcstr bone_id, const ECriticalWoundType& wound_type);
+
 public:
 	typedef xr_vector<f32>			CRITICAL_WOUND_WEIGHTS;
 

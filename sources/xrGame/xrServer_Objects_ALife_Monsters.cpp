@@ -25,9 +25,10 @@
 #	include "ef_primary.h"
 #	include "string_table.h"
 #	include "alife_online_offline_group_brain.h"
-#	include "alife_simulator.h"
 #	include "alife_object_registry.h"
 #	include "date_time.h"
+#include "game_base_space.h"
+#include "Level.h"
 #endif
 
 void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* ini, pcstr section)
@@ -46,19 +47,27 @@ void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIn
 		u32							N = _GetItemCount(S);
 
 		if (N != GameGraph::LOCATION_TYPE_COUNT)
+		{
 			continue;
+		}
 
 		for (u32 j = 0; j < GameGraph::LOCATION_TYPE_COUNT; ++j)
+		{
 			terrain_mask.tMask[j] = GameGraph::_LOCATION_ID(atoi(_GetItem(S, j, I)));
+		}
 
 		m_vertex_types.push_back(terrain_mask);
 	}
 
 	if (!m_vertex_types.empty( ))
+	{
 		return;
+	}
 
 	for (u32 j = 0; j < GameGraph::LOCATION_TYPE_COUNT; ++j)
+	{
 		terrain_mask.tMask[j] = 255;
+	}
 
 	m_vertex_types.push_back(terrain_mask);
 }
@@ -74,7 +83,10 @@ void setup_location_types_line(GameGraph::TERRAIN_VECTOR& m_vertex_types, pcstr 
 	if (!N)
 	{
 		for (u32 j = 0; j < GameGraph::LOCATION_TYPE_COUNT; ++j)
+		{
 			terrain_mask.tMask[j] = 255;
+		}
+
 		m_vertex_types.push_back(terrain_mask);
 		return;
 	}
@@ -84,7 +96,10 @@ void setup_location_types_line(GameGraph::TERRAIN_VECTOR& m_vertex_types, pcstr 
 	for (u32 i = 0; i < N;)
 	{
 		for (u32 j = 0; j < GameGraph::LOCATION_TYPE_COUNT; ++j, ++i)
+		{
 			terrain_mask.tMask[j] = GameGraph::_LOCATION_ID(atoi(_GetItem(string, i, I)));
+		}
+
 		m_vertex_types.push_back(terrain_mask);
 	}
 }
@@ -93,9 +108,13 @@ void setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* i
 {
 	m_vertex_types.clear( );
 	if (ini->section_exist(string) && ini->line_count(string))
+	{
 		setup_location_types_section(m_vertex_types, ini, string);
+	}
 	else
+	{
 		setup_location_types_line(m_vertex_types, string);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -104,7 +123,6 @@ void setup_location_types(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* i
 //заданого в профиле и для конкретного персонажа
 #define REPUTATION_DELTA	10
 #define RANK_DELTA			10
-
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -119,7 +137,10 @@ CSE_ALifeTraderAbstract::CSE_ALifeTraderAbstract(pcstr caSection)
 	//	m_iCumulativeItemVolume		= 0;
 	m_dwMoney = 0;
 	if (pSettings->line_exist(caSection, "money"))
+	{
 		m_dwMoney = pSettings->r_u32(caSection, "money");
+	}
+
 	m_fMaxItemMass = pSettings->r_float(caSection, "max_item_mass");
 
 	m_sCharacterProfile = READ_IF_EXISTS(pSettings, r_string, caSection, "character_profile", "default");
@@ -142,7 +163,7 @@ CSE_Abstract* CSE_ALifeTraderAbstract::init( )
 	sprintf_s(S, "%s\r\n[game_info]\r\n", !*base( )->m_ini_string ? "" : *base( )->m_ini_string);
 	base( )->m_ini_string = S;
 
-	return						(base( ));
+	return						base( );
 }
 
 CSE_ALifeTraderAbstract::~CSE_ALifeTraderAbstract( )
@@ -158,6 +179,7 @@ void CSE_ALifeTraderAbstract::STATE_Write(CNetPacket& tNetPacket)
 	shared_str s;
 	tNetPacket.w_stringZ(s);
 #endif
+
 	tNetPacket.w_u32(m_trader_flags.get( ));
 	//	tNetPacket.w_s32			(m_iCharacterProfile);
 	tNetPacket.w_stringZ(m_sCharacterProfile);
@@ -171,6 +193,7 @@ void CSE_ALifeTraderAbstract::STATE_Write(CNetPacket& tNetPacket)
 	tNetPacket.w_s32(NO_RANK);
 	tNetPacket.w_s32(NO_REPUTATION);
 #endif
+
 	save_data(m_character_name, tNetPacket);
 }
 
@@ -191,17 +214,22 @@ void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, u16 size)
 		}
 
 		if (m_wVersion > 62)
+		{
 			tNetPacket.r_u32(m_dwMoney);
+		}
 
 		if ((m_wVersion > 75) && (m_wVersion < 98))
 		{
-			int tmp;
+			s32 tmp;
 			tNetPacket.r_s32(tmp);
-
 			if (tmp != -1)
+			{
 				m_SpecificCharacter = CSpecificCharacter::IndexToId(tmp);
+			}
 			else
+			{
 				m_SpecificCharacter = NULL;
+			}
 		}
 		else if (m_wVersion >= 98)
 		{
@@ -209,21 +237,27 @@ void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, u16 size)
 		}
 
 		if (m_wVersion > 77)
+		{
 			m_trader_flags.assign(tNetPacket.r_u32( ));
+		}
 
 		if ((m_wVersion > 81) && (m_wVersion < 96))
 		{
-			int tmp;
+			s32 tmp;
 			tNetPacket.r_s32(tmp);
 			m_sCharacterProfile = CCharacterInfo::IndexToId(tmp);
 			VERIFY(xr_strlen(m_sCharacterProfile));
 		}
-		else
-			if (m_wVersion > 95)
-				tNetPacket.r_stringZ(m_sCharacterProfile);
+		else if (m_wVersion > 95)
+		{
+			tNetPacket.r_stringZ(m_sCharacterProfile);
+		}
 
 		if (m_wVersion > 85)
+		{
 			tNetPacket.r_s32(m_community_index);
+		}
+
 		if (m_wVersion > 86)
 		{
 			tNetPacket.r_s32(m_rank);
@@ -251,15 +285,12 @@ void CSE_ALifeTraderAbstract::OnChangeProfile(PropValue* sender)
 	base( )->set_editor_flag(ISE_Abstract::flVisualChange);
 }
 
-#ifdef XRGAME_EXPORTS
-#include "game_base_space.h"
-#include "Level.h"
-#endif
-
 shared_str CSE_ALifeTraderAbstract::specific_character( )
 {
 	if (m_SpecificCharacter.size( ))
+	{
 		return m_SpecificCharacter;
+	}
 
 	CCharacterInfo char_info;
 	char_info.Load(character_profile( ));
@@ -279,13 +310,16 @@ shared_str CSE_ALifeTraderAbstract::specific_character( )
 		m_CheckedCharacters.clear( );
 		m_DefaultCharacters.clear( );
 
-		for (int i = 0; i <= CSpecificCharacter::GetMaxIndex( ); i++)
+		for (s32 i = 0; i <= CSpecificCharacter::GetMaxIndex( ); i++)
 		{
 			CSpecificCharacter spec_char;
 			shared_str id = CSpecificCharacter::IndexToId(i);
 			spec_char.Load(id);
 
-			if (spec_char.data( )->m_bNoRandom) continue;
+			if (spec_char.data( )->m_bNoRandom)
+			{
+				continue;
+			}
 
 			bool class_found = false;
 			for (std::size_t j = 0; j < spec_char.data( )->m_Classes.size( ); j++)
@@ -296,36 +330,48 @@ shared_str CSE_ALifeTraderAbstract::specific_character( )
 					break;
 				}
 			}
+
 			if (!char_info.data( )->m_Class.size( ) || class_found)
 			{
 				//запомнить пподходящий персонаж с флажком m_bDefaultForCommunity
 				if (spec_char.data( )->m_bDefaultForCommunity)
+				{
 					m_DefaultCharacters.push_back(id);
+				}
 
 				if (char_info.data( )->m_Rank == NO_RANK || _abs(spec_char.Rank( ) - char_info.data( )->m_Rank) < RANK_DELTA)
 				{
 					if (char_info.data( )->m_Reputation == NO_REPUTATION || _abs(spec_char.Reputation( ) - char_info.data( )->m_Reputation) < REPUTATION_DELTA)
 					{
+
 #ifdef XRGAME_EXPORTS
-						int* count = NULL;
+						s32* count = NULL;
 						if (ai( ).get_alife( ))
+						{
 							count = ai( ).alife( ).registry(specific_characters).object(id, true);
+						}
+
 						//если индекс еще не был использован
 						if (NULL == count)
 #endif
+
 							m_CheckedCharacters.push_back(id);
 					}
 				}
 			}
 		}
-		R_ASSERT3(!m_DefaultCharacters.empty( ),
-				  "no default specific character set for class", *char_info.data( )->m_Class);
+
+		R_ASSERT3(!m_DefaultCharacters.empty( ), "no default specific character set for class", *char_info.data( )->m_Class);
 
 #ifdef XRGAME_EXPORTS
 		if (m_CheckedCharacters.empty( ))
+		{
 			char_info.m_SpecificCharacterId = m_DefaultCharacters[Random.randI(m_DefaultCharacters.size( ))];
+		}
 		else
+		{
 			char_info.m_SpecificCharacterId = m_CheckedCharacters[Random.randI(m_CheckedCharacters.size( ))];
+		}
 #else
 		char_info.m_SpecificCharacterId = m_DefaultCharacters[Random.randI(m_DefaultCharacters.size( ))];
 #endif
@@ -344,17 +390,19 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	if (m_SpecificCharacter.size( ))
 	{
 		if (ai( ).get_alife( ))
+		{
 			ai( ).alife( ).registry(specific_characters).remove(m_SpecificCharacter, true);
+		}
 	}
 #endif
-	m_SpecificCharacter = new_spec_char;
 
+	m_SpecificCharacter = new_spec_char;
 
 #ifdef XRGAME_EXPORTS
 	if (ai( ).get_alife( ))
 	{
 		//запомнить, то что мы использовали индекс
-		int a = 1;
+		s32 a = 1;
 		ai( ).alife( ).registry(specific_characters).add(m_SpecificCharacter, a, true);
 	}
 #endif
@@ -365,20 +413,21 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	{
 		CSE_Visual* visual = smart_cast<CSE_Visual*>(base( )); VERIFY(visual);
 		if (xr_strlen(selected_char.Visual( )) > 0)
+		{
 			visual->set_visual(selected_char.Visual( ));
+		}
 	}
 
 #ifdef XRGAME_EXPORTS
-
 	if (NO_COMMUNITY_INDEX == m_community_index)
 	{
 		m_community_index = selected_char.Community( ).index( );
 		CSE_ALifeCreatureAbstract* creature = smart_cast<CSE_ALifeCreatureAbstract*>(base( ));
 		if (creature)
+		{
 			creature->s_team = selected_char.Community( ).team( );
+		}
 	}
-
-
 
 	//----
 	CSE_ALifeMonsterAbstract* monster = smart_cast<CSE_ALifeMonsterAbstract*>(base( ));
@@ -386,12 +435,17 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	{
 		setup_location_types_section(monster->m_tpaTerrain, pSettings, *(selected_char.terrain_sect( )));
 	}
+
 	//----
 	if (NO_RANK == m_rank)
+	{
 		m_rank = selected_char.Rank( );
+	}
 
 	if (NO_REPUTATION == m_reputation)
+	{
 		m_reputation = selected_char.Reputation( );
+	}
 
 	m_character_name = *(CStringTable( ).translate(selected_char.Name( )));
 
@@ -419,21 +473,23 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 		n += "_";
 		n += itoa(::Random.randI(last_name_cnt), S, 10);
 		m_character_name += *(CStringTable( ).translate(n.c_str( )));
-
-
-
 	}
+
 	u32 min_m = selected_char.MoneyDef( ).min_money;
 	u32 max_m = selected_char.MoneyDef( ).max_money;
 	if (min_m != 0 && max_m != 0)
 	{
 		m_dwMoney = min_m;
-		if (min_m != max_m)	m_dwMoney += ::Random.randI(max_m - min_m);
+		if (min_m != max_m)
+		{
+			m_dwMoney += ::Random.randI(max_m - min_m);
+		}
 	}
 #else
 	//в редакторе специфический профиль оставляем не заполненым
 	m_SpecificCharacter = NULL;
 #endif
+
 }
 
 void CSE_ALifeTraderAbstract::set_character_profile(shared_str new_profile)
@@ -443,12 +499,10 @@ void CSE_ALifeTraderAbstract::set_character_profile(shared_str new_profile)
 
 shared_str CSE_ALifeTraderAbstract::character_profile( )
 {
-	return	m_sCharacterProfile;
+	return m_sCharacterProfile;
 }
 
-
 #ifdef XRGAME_EXPORTS
-
 //для работы с relation system
 u16								CSE_ALifeTraderAbstract::object_id( ) const
 {
@@ -482,15 +536,13 @@ CHARACTER_REPUTATION_VALUE	CSE_ALifeTraderAbstract::Reputation( )
 	specific_character( );
 	return m_reputation;
 }
-
 #endif
 
 void CSE_ALifeTraderAbstract::UPDATE_Write(CNetPacket& tNetPacket)
-{ };
+{ }
 
 void CSE_ALifeTraderAbstract::UPDATE_Read(CNetPacket& tNetPacket)
-{ };
-
+{ }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeTrader
@@ -499,7 +551,9 @@ void CSE_ALifeTraderAbstract::UPDATE_Read(CNetPacket& tNetPacket)
 CSE_ALifeTrader::CSE_ALifeTrader(pcstr caSection) : CSE_ALifeDynamicObjectVisual(caSection), CSE_ALifeTraderAbstract(caSection)
 {
 	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection, "visual"))
+	{
 		set_visual(pSettings->r_string(caSection, "visual"));
+	}
 }
 
 CSE_ALifeTrader::~CSE_ALifeTrader( )
@@ -508,7 +562,7 @@ CSE_ALifeTrader::~CSE_ALifeTrader( )
 #ifdef DEBUG
 bool CSE_ALifeTrader::match_configuration( ) const
 {
-	return						(!strstr(Core.Params, "-designer"));
+	return !strstr(Core.Params, "-designer");
 }
 #endif
 
@@ -516,17 +570,17 @@ CSE_Abstract* CSE_ALifeTrader::init( )
 {
 	inherited1::init( );
 	inherited2::init( );
-	return						(base( ));
+	return base( );
 }
 
 CSE_Abstract* CSE_ALifeTrader::base( )
 {
-	return						(inherited1::base( ));
+	return inherited1::base( );
 }
 
 const CSE_Abstract* CSE_ALifeTrader::base( ) const
 {
-	return						(inherited1::base( ));
+	return inherited1::base( );
 }
 
 void CSE_ALifeTrader::STATE_Write(CNetPacket& tNetPacket)
@@ -540,17 +594,19 @@ void CSE_ALifeTrader::STATE_Read(CNetPacket& tNetPacket, u16 size)
 	inherited1::STATE_Read(tNetPacket, size);
 	inherited2::STATE_Read(tNetPacket, size);
 	if ((m_wVersion > 35) && (m_wVersion < 118))
+	{
 		tNetPacket.r_u32( );
+	}
 
 	if ((m_wVersion > 29) && (m_wVersion < 118))
 	{
 		u32						l_dwCount = tNetPacket.r_u32( );
-		for (int i = 0; i < (int)l_dwCount; ++i)
+		for (s32 i = 0; i < (s32)l_dwCount; ++i)
 		{
 			shared_str			temp;
 			tNetPacket.r_stringZ(temp);
 			tNetPacket.r_u32( );
-			for (int i = 0, n = tNetPacket.r_u32( ); i < n; ++i)
+			for (s32 i = 0, n = tNetPacket.r_u32( ); i < n; ++i)
 			{
 				tNetPacket.r_stringZ(temp);
 				tNetPacket.r_u32( );
@@ -577,17 +633,17 @@ void CSE_ALifeTrader::UPDATE_Write(CNetPacket& tNetPacket)
 {
 	inherited1::UPDATE_Write(tNetPacket);
 	inherited2::UPDATE_Write(tNetPacket);
-};
+}
 
 void CSE_ALifeTrader::UPDATE_Read(CNetPacket& tNetPacket)
 {
 	inherited1::UPDATE_Read(tNetPacket);
 	inherited2::UPDATE_Read(tNetPacket);
-};
+}
 
 bool CSE_ALifeTrader::interactive( ) const
 {
-	return						(false);
+	return false;
 }
 
 void CSE_ALifeTrader::FillProps(pcstr _pref, PropItemVec& items)
@@ -604,13 +660,17 @@ CSE_ALifeCustomZone::CSE_ALifeCustomZone(pcstr caSection) : CSE_ALifeSpaceRestri
 	m_owner_id = u32(-1);
 	m_maxPower = pSettings->r_float(caSection, "min_start_power");
 	if (pSettings->line_exist(caSection, "hit_type"))
+	{
 		m_tHitType = ALife::g_tfString2HitType(pSettings->r_string(caSection, "hit_type"));
+	}
 	else
+	{
 		m_tHitType = ALife::eHitTypeMax;
+	}
+
 	m_enabled_time = 0;
 	m_disabled_time = 0;
 	m_start_time_shift = 0;
-
 }
 
 CSE_ALifeCustomZone::~CSE_ALifeCustomZone( )
@@ -634,13 +694,16 @@ void CSE_ALifeCustomZone::STATE_Read(CNetPacket& tNetPacket, u16 size)
 	}
 
 	if (m_wVersion > 102)
+	{
 		tNetPacket.r_u32(m_owner_id);
+	}
 
 	if (m_wVersion > 105)
 	{
 		tNetPacket.r_u32(m_enabled_time);
 		tNetPacket.r_u32(m_disabled_time);
 	}
+
 	if (m_wVersion > 106)
 	{
 		tNetPacket.r_u32(m_start_time_shift);
@@ -682,7 +745,7 @@ void CSE_ALifeCustomZone::FillProps(pcstr pref, PropItemVec& items)
 ////////////////////////////////////////////////////////////////////////////
 CSE_ALifeAnomalousZone::CSE_ALifeAnomalousZone(pcstr caSection) : CSE_ALifeCustomZone(caSection)
 {
-	m_offline_interactive_radius = 30.f;
+	m_offline_interactive_radius = 30.0f;
 	m_artefact_spawn_count = 32;
 	m_spawn_flags.set(flSpawnDestroyOnSpawn, TRUE);
 }
@@ -730,7 +793,6 @@ void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, u16 size)
 		tNetPacket.r_float(m_offline_interactive_radius);
 		if (m_wVersion < 113)
 		{
-
 			tNetPacket.r_float( );
 
 			shared_str					temp;
@@ -739,9 +801,13 @@ void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, u16 size)
 				tNetPacket.r_stringZ(temp);
 
 				if (m_wVersion > 26)
+				{
 					tNetPacket.r_float( );
+				}
 				else
+				{
 					tNetPacket.r_u32( );
+				}
 			}
 		}
 	}
@@ -758,7 +824,9 @@ void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, u16 size)
 	}
 
 	if ((m_wVersion > 38) && (m_wVersion < 113))
+	{
 		tNetPacket.r_float( );
+	}
 
 	if ((m_wVersion > 78) && (m_wVersion < 113))
 	{
@@ -766,12 +834,12 @@ void CSE_ALifeAnomalousZone::STATE_Read(CNetPacket& tNetPacket, u16 size)
 		tNetPacket.r_float( );
 		tNetPacket.r_float( );
 	}
+
 	if ((m_wVersion == 102))
 	{ //fuck
 		u32 dummy;
 		tNetPacket.r_u32(dummy);
 	}
-
 }
 
 void CSE_ALifeAnomalousZone::STATE_Write(CNetPacket& tNetPacket)
@@ -826,7 +894,6 @@ void CSE_ALifeTorridZone::STATE_Write(CNetPacket& tNetPacket)
 {
 	inherited1::STATE_Write(tNetPacket);
 	CSE_Motion::motion_write(tNetPacket);
-
 }
 
 void CSE_ALifeTorridZone::UPDATE_Read(CNetPacket& tNetPacket)
@@ -848,11 +915,12 @@ void CSE_ALifeTorridZone::FillProps(pcstr pref, PropItemVec& values)
 //////////////////////////////////////////////////////////////////////////
 //CSE_ALifeZoneVisual
 //////////////////////////////////////////////////////////////////////////
-CSE_ALifeZoneVisual::CSE_ALifeZoneVisual(pcstr caSection)
-	:CSE_ALifeAnomalousZone(caSection), CSE_Visual(caSection)
+CSE_ALifeZoneVisual::CSE_ALifeZoneVisual(pcstr caSection) : CSE_ALifeAnomalousZone(caSection), CSE_Visual(caSection)
 {
 	if (pSettings->line_exist(caSection, "visual"))
+	{
 		set_visual(pSettings->r_string(caSection, "visual"));
+	}
 	//	if(pSettings->line_exist(caSection,"blast_animation"))
 	//		attack_animation=pSettings->r_string(caSection,"blast_animation");
 }

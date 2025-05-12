@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: agent_corpse_manager_inline.h
+//	Module 		: AgentCorpseManager_inline.h
 //	Created 	: 24.05.2004
 //  Modified 	: 14.01.2005
 //	Author		: Dmitriy Iassenev

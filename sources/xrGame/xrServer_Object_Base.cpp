@@ -79,8 +79,8 @@ CSE_Abstract::CSE_Abstract(pcstr caSection)
 	s_flags.assign(0);
 	s_name = caSection;
 	s_name_replace = 0;			//xr_strdup("");
-	o_Angle.set(0.f, 0.f, 0.f);
-	o_Position.set(0.f, 0.f, 0.f);
+	o_Angle.set(0.0f, 0.0f, 0.0f);
+	o_Position.set(0.0f, 0.0f, 0.0f);
 	m_bALifeControl = false;
 	m_wVersion = 0;
 	m_script_version = 0;

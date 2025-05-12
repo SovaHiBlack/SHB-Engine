@@ -3,7 +3,7 @@
 #include "trade.h"
 #include "actor.h"
 #include "ai/stalker/ai_stalker.h"
-#include "ai/trader/ai_trader.h"
+#include "ai/trader/Trader.h"
 #include "artifact.h"
 #include "inventory.h"
 #include "xrmessages.h"
@@ -119,14 +119,14 @@ void CTrade::TransferItem(CInventoryItem* pItem, bool bBuying)
 		pPartner.inv_owner->set_money(pPartner.inv_owner->get_money( ) - dwTransferMoney, false);
 
 
-	CAI_Trader* pTrader = NULL;
+	CTrader* pTrader = NULL;
 
 	if (pThis.type == TT_TRADER && bBuying)
 	{
 		CArtefact* pArtefact = smart_cast<CArtefact*>(pItem);
 		if (pArtefact)
 		{
-			pTrader = smart_cast<CAI_Trader*>(pThis.base);
+			pTrader = smart_cast<CTrader*>(pThis.base);
 			m_bNeedToUpdateArtefactTasks |= pTrader->BuyArtefact(pArtefact);
 		}
 	}
@@ -137,7 +137,6 @@ void CTrade::TransferItem(CInventoryItem* pItem, bool bBuying)
 		Actor( )->callback(GameObject::eTradeSellBuyItem)(pItem->object( ).lua_game_object( ), bDir, dwTransferMoney);
 	}
 }
-
 
 CInventory& CTrade::GetTradeInv(SInventoryOwner owner)
 {
@@ -170,7 +169,7 @@ u32	CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	f32					base_cost;
 	if (pArtefact && (pThis.type == TT_ACTOR) && (pPartner.type == TT_TRADER))
 	{
-		CAI_Trader* pTrader = smart_cast<CAI_Trader*>(pPartner.inv_owner);
+		CTrader* pTrader = smart_cast<CTrader*>(pPartner.inv_owner);
 		VERIFY(pTrader);
 		base_cost = (f32)pTrader->ArtefactPrice(pArtefact);
 	}

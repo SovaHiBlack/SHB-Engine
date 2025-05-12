@@ -18,13 +18,13 @@
 
 using namespace luabind;
 
-
 CUISequencer* g_tutorial = NULL;
 CUISequencer* g_tutorial2 = NULL;
 
 void start_tutorial(pcstr name)
 {
-	if(g_tutorial){
+	if(g_tutorial)
+	{
 		VERIFY				(!g_tutorial2);
 		g_tutorial2			= g_tutorial;
 	}

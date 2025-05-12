@@ -42,7 +42,7 @@
 
 #	include "ai/phantom/phantom.h"
 
-#	include "ai/trader/ai_trader.h"
+#	include "ai/trader/Trader.h"
 
 #	include "ai/crow/ai_crow.h"
 
@@ -175,7 +175,6 @@ void CObjectFactory::register_classes	()
 
 // server entities
 	add<CSE_ALifeGroupTemplate<CSE_ALifeMonsterBase> >			(CLSID_AI_FLESH_GROUP			,"flesh_group");
-//	add<CSE_SpawnGroup>											(CLSID_AI_SPAWN_GROUP			,"spawn_group");
 	add<CSE_ALifeGraphPoint>									(CLSID_AI_GRAPH					,"graph_point");
 	add<CSE_ALifeOnlineOfflineGroup>							(CLSID_ONLINE_OFFLINE_GROUP		,"online_offline_group");
 	
@@ -204,7 +203,7 @@ void CObjectFactory::register_classes	()
 	ADD(CPhantom				,CSE_ALifeCreaturePhantom		,CLSID_AI_PHANTOM				,"phantom");
 
 	// Trader
-	ADD(CAI_Trader				,CSE_ALifeTrader				,CLSID_AI_TRADER				,"trader");
+	ADD(CTrader					,CSE_ALifeTrader				,CLSID_AI_TRADER				,"trader");
 
 	ADD(CAI_Crow				,CSE_ALifeCreatureCrow			,CLSID_AI_CROW					,"crow");
 	ADD(CCar					,CSE_ALifeCar					,CLSID_CAR						,"car");

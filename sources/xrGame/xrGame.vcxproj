@@ -196,8 +196,8 @@
     <ClInclude Include="actor_memory.h" />
     <ClInclude Include="actor_statistic_defs.h" />
     <ClInclude Include="actor_statistic_mgr.h" />
-    <ClInclude Include="agent_corpse_manager.h" />
-    <ClInclude Include="agent_corpse_manager_inline.h" />
+    <ClInclude Include="AgentCorpseManager.h" />
+    <ClInclude Include="AgentCorpseManager_inline.h" />
     <ClInclude Include="agent_enemy_manager.h" />
     <ClInclude Include="agent_enemy_manager_inline.h" />
     <ClInclude Include="agent_explosive_manager.h" />
@@ -499,8 +499,8 @@
     <ClInclude Include="ai\stalker\ai_stalker_impl.h" />
     <ClInclude Include="ai\stalker\ai_stalker_inline.h" />
     <ClInclude Include="Ai\Stalker\ai_stalker_space.h" />
-    <ClInclude Include="Ai\Trader\ai_trader.h" />
-    <ClInclude Include="ai\trader\trader_animation.h" />
+    <ClInclude Include="Ai\Trader\Trader.h" />
+    <ClInclude Include="ai\trader\TraderAnimation.h" />
     <ClInclude Include="ai_debug.h" />
     <ClInclude Include="ai_monster_space.h" />
     <ClInclude Include="ai_object_location.h" />
@@ -726,7 +726,6 @@
     <ClInclude Include="GametaskManager.h" />
     <ClInclude Include="game_base.h" />
     <ClInclude Include="game_base_kill_type.h" />
-    <ClInclude Include="game_base_menu_events.h" />
     <ClInclude Include="game_base_space.h" />
     <ClInclude Include="game_cl_base.h" />
     <ClInclude Include="game_cl_base_weapon_usage_statistic.h" />
@@ -839,8 +838,8 @@
     <ClInclude Include="material_manager_inline.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="medkit.h" />
-    <ClInclude Include="member_corpse.h" />
-    <ClInclude Include="member_corpse_inline.h" />
+    <ClInclude Include="MemberCorpse.h" />
+    <ClInclude Include="MemberCorpse_inline.h" />
     <ClInclude Include="member_enemy.h" />
     <ClInclude Include="member_enemy_inline.h" />
     <ClInclude Include="member_order.h" />
@@ -1494,7 +1493,7 @@
     <ClCompile Include="Actor_Network.cpp" />
     <ClCompile Include="actor_statistic_mgr.cpp" />
     <ClCompile Include="Actor_Weapon.cpp" />
-    <ClCompile Include="agent_corpse_manager.cpp" />
+    <ClCompile Include="AgentCorpseManager.cpp" />
     <ClCompile Include="agent_enemy_manager.cpp" />
     <ClCompile Include="agent_explosive_manager.cpp" />
     <ClCompile Include="agent_location_manager.cpp" />
@@ -1643,8 +1642,8 @@
     <ClCompile Include="Ai\Stalker\ai_stalker_misc.cpp" />
     <ClCompile Include="Ai\Stalker\ai_stalker_script.cpp" />
     <ClCompile Include="ai\stalker\ai_stalker_script_entity.cpp" />
-    <ClCompile Include="Ai\Trader\ai_trader.cpp" />
-    <ClCompile Include="ai\trader\trader_animation.cpp" />
+    <ClCompile Include="Ai\Trader\Trader.cpp" />
+    <ClCompile Include="ai\trader\TraderAnimation.cpp" />
     <ClCompile Include="AI_PhraseDialogManager.cpp" />
     <ClCompile Include="ai_sounds.cpp" />
     <ClCompile Include="AISpace.cpp" />

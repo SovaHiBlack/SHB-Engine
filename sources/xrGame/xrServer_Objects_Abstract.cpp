@@ -17,109 +17,122 @@
 ////////////////////////////////////////////////////////////////////////////
 // CSE_Visual
 ////////////////////////////////////////////////////////////////////////////
-CSE_Visual::CSE_Visual		   	(pcstr name)
+CSE_Visual::CSE_Visual(pcstr name)
 {
-	if(name)
+	if (name)
 	{
 		string_path					tmp;
 		strcpy						(tmp, name);
-		if(strext(tmp)) 
-			*strext(tmp)			=0;
+		if (strext(tmp))
+		{
+			*strext(tmp)			= 0;
+		}
+
 		xr_strlwr					(tmp);
 		visual_name					= tmp;
-	}else
+	}
+	else
+	{
 		visual_name					= NULL;
+	}
 
-    startup_animation			= "$editor";
-	flags.zero					();
+	startup_animation				= "$editor";
+	flags.zero						( );
 }
 
-CSE_Visual::~CSE_Visual			()
+CSE_Visual::~CSE_Visual( )
+{ }
+
+void CSE_Visual::set_visual(pcstr name, bool load)
 {
+	string_path						tmp;
+	strcpy							(tmp, name);
+	if (strext(tmp))
+	{
+		*strext(tmp)				= 0;
+	}
+
+	xr_strlwr						(tmp);
+	visual_name						= tmp;
 }
 
-void CSE_Visual::set_visual	   	(pcstr name, bool load)
+void CSE_Visual::visual_read(CNetPacket& tNetPacket, u16 version)
 {
-	string_path					tmp;
-    strcpy						(tmp,name);
-    if (strext(tmp))		 	*strext(tmp) = 0;
-	xr_strlwr					(tmp);
-	visual_name					= tmp; 
+	tNetPacket.r_stringZ			(visual_name);
+	if (version > 103)
+	{
+		flags.assign(tNetPacket.r_u8( ));
+	}
 }
 
-void CSE_Visual::visual_read   	(CNetPacket& tNetPacket, u16 version)
+void CSE_Visual::visual_write(CNetPacket& tNetPacket)
 {
-	tNetPacket.r_stringZ		(visual_name);
-	if (version>103)
-		flags.assign			(tNetPacket.r_u8());
+	tNetPacket.w_stringZ(visual_name);
+	tNetPacket.w_u8(flags.get( ));
 }
 
-void CSE_Visual::visual_write  	(CNetPacket& tNetPacket)
+void CSE_Visual::OnChangeVisual(PropValue* sender)
 {
-	tNetPacket.w_stringZ		(visual_name);
-	tNetPacket.w_u8				(flags.get());
-}
-
-void CSE_Visual::OnChangeVisual	(PropValue* sender)
-{
-	ISE_Abstract* abstract		= smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
-	abstract->set_editor_flag	(ISE_Abstract::flVisualChange);
+	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this);
+	VERIFY(abstract);
+	abstract->set_editor_flag(ISE_Abstract::flVisualChange);
 }
 
 void CSE_Visual::OnChangeAnim(PropValue* sender)
 {
-	ISE_Abstract* abstract		= smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
-	abstract->set_editor_flag	(ISE_Abstract::flVisualAnimationChange);
+	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this);
+	VERIFY(abstract);
+	abstract->set_editor_flag(ISE_Abstract::flVisualAnimationChange);
 }
 
-void CSE_Visual::FillProps		(pcstr pref, PropItemVec &items)
+void CSE_Visual::FillProps(pcstr pref, PropItemVec& items)
 {
-	ISE_Abstract* abstract		= smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
-	ChooseValue *V 				= PHelper().CreateChoose(items, PrepareKey(pref,abstract->name(),"Model\\Visual"),		&visual_name,		smVisual);
-	V->OnChangeEvent.bind		(this,&CSE_Visual::OnChangeVisual);
-	V							= PHelper().CreateChoose(items,	PrepareKey(pref,abstract->name(),"Model\\Animation"),	&startup_animation, smSkeletonAnims,0,(void*)*visual_name);
-	V->OnChangeEvent.bind		(this,&CSE_Visual::OnChangeAnim);
-	PHelper().CreateFlag8		(items, PrepareKey(pref,abstract->name(),"Model\\Obstacle"),	&flags,	flObstacle);
+	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this);
+	VERIFY(abstract);
+	ChooseValue* V = PHelper( ).CreateChoose(items, PrepareKey(pref, abstract->name( ), "Model\\Visual"), &visual_name, smVisual);
+	V->OnChangeEvent.bind(this, &CSE_Visual::OnChangeVisual);
+	V = PHelper( ).CreateChoose(items, PrepareKey(pref, abstract->name( ), "Model\\Animation"), &startup_animation, smSkeletonAnims, 0, (pvoid)*visual_name);
+	V->OnChangeEvent.bind(this, &CSE_Visual::OnChangeAnim);
+	PHelper( ).CreateFlag8(items, PrepareKey(pref, abstract->name( ), "Model\\Obstacle"), &flags, flObstacle);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_Animated
 ////////////////////////////////////////////////////////////////////////////
-CSE_Motion::CSE_Motion			(pcstr name)
+CSE_Motion::CSE_Motion(pcstr name)
 {
-	motion_name					= name;
+	motion_name = name;
 }
 
-CSE_Motion::~CSE_Motion			()
+CSE_Motion::~CSE_Motion( )
+{ }
+
+void CSE_Motion::set_motion(pcstr name)
 {
+	motion_name = name;
 }
 
-void CSE_Motion::set_motion		(pcstr name)
+void CSE_Motion::motion_read(CNetPacket& tNetPacket)
 {
-	motion_name					= name;
+	tNetPacket.r_stringZ(motion_name);
 }
 
-void CSE_Motion::motion_read	(CNetPacket& tNetPacket)
+void CSE_Motion::motion_write(CNetPacket& tNetPacket)
 {
-	tNetPacket.r_stringZ		(motion_name);
+	tNetPacket.w_stringZ(motion_name);
 }
 
-void CSE_Motion::motion_write	(CNetPacket& tNetPacket)
+void CSE_Motion::OnChangeMotion(PropValue* sender)
 {
-	tNetPacket.w_stringZ			(motion_name);
+	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
+	abstract->set_editor_flag(ISE_Abstract::flMotionChange);
 }
 
-void CSE_Motion::OnChangeMotion	(PropValue* sender)
+void CSE_Motion::FillProps(pcstr pref, PropItemVec& items)
 {
-	ISE_Abstract* abstract		= smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
-	abstract->set_editor_flag	(ISE_Abstract::flMotionChange);
-}
-
-void CSE_Motion::FillProps(pcstr pref, PropItemVec &items)
-{
-	ISE_Abstract* abstract		= smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
-	ChooseValue *V				= PHelper().CreateChoose(items, PrepareKey(pref,abstract->name(),"Motion"),&motion_name, smGameAnim);
-	V->OnChangeEvent.bind		(this,&CSE_Motion::OnChangeMotion);
+	ISE_Abstract* abstract = smart_cast<ISE_Abstract*>(this); VERIFY(abstract);
+	ChooseValue* V = PHelper( ).CreateChoose(items, PrepareKey(pref, abstract->name( ), "Motion"), &motion_name, smGameAnim);
+	V->OnChangeEvent.bind(this, &CSE_Motion::OnChangeMotion);
 }
 
 #pragma pack(pop,4)

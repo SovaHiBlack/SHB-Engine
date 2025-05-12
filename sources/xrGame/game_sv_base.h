@@ -29,12 +29,10 @@ class GameEventQueue;
 class	game_sv_GameState : public game_GameState
 {
 	typedef game_GameState inherited;
-protected:
 
-//	u32								m_RPointFreezeTime;
+protected:
 	xrServer* m_server;
 	GameEventQueue* m_event_queue;
-//	BOOL							m_bVotingEnabled;
 
 	//Events
 	virtual		void				OnEvent(CNetPacket& tNetPacket, u16 type, u32 time, CClientID sender);
@@ -54,12 +52,12 @@ protected:
 public:
 #define		TEAM_COUNT 4
 
-	bool							NewPlayerName_Exists(void* pClient, pcstr NewName);
-	void							NewPlayerName_Generate(void* pClient, pstr NewPlayerName);
-	void							NewPlayerName_Replace(void* pClient, pcstr NewPlayerName);
+	bool							NewPlayerName_Exists(pvoid pClient, pcstr NewName);
+	void							NewPlayerName_Generate(pvoid pClient, pstr NewPlayerName);
+	void							NewPlayerName_Replace(pvoid pClient, pcstr NewPlayerName);
 
 	BOOL							sv_force_sync;
-	f32							rpoints_MinDist[TEAM_COUNT];
+	f32								rpoints_MinDist[TEAM_COUNT];
 	xr_vector<RPoint>				rpoints[TEAM_COUNT];
 	DEF_VECTOR(RPRef, RPoint*);
 	RPRef							rpointsBlocked;
@@ -70,7 +68,7 @@ public:
 	virtual		bool				HasMapRotation( )
 	{
 		return m_bMapRotation;
-	};
+	}
 
 public:
 	virtual		void				OnPlayerConnect(CClientID id_who);
@@ -101,27 +99,27 @@ public:
 	virtual		bool				SwitchToNextMap( )
 	{
 		return m_bMapNeedRotation;
-	};
+	}
 
-	virtual		BOOL				IsVotingEnabled( );
-	virtual		BOOL				IsVotingEnabled(u16 flag);
-	virtual		bool				IsVotingActive( )
-	{
-		return false;
-	};
-	virtual		void				SetVotingActive(bool Active)
-	{ };
-	virtual		void				OnVoteStart(pcstr VoteCommand, CClientID sender)
-	{ };
-	virtual		void				OnVoteStop( )
-	{ };
+	//virtual		BOOL				IsVotingEnabled( );
+	//virtual		BOOL				IsVotingEnabled(u16 flag);
+	//virtual		bool				IsVotingActive( )
+	//{
+	//	return false;
+	//}
+	//virtual		void				SetVotingActive(bool Active)
+	//{ }
+	//virtual		void				OnVoteStart(pcstr VoteCommand, CClientID sender)
+	//{ }
+	//virtual		void				OnVoteStop( )
+	//{ }
 
 public:
 	game_sv_GameState( );
 	virtual							~game_sv_GameState( );
 	// Main accessors
 	virtual		game_PlayerState* get_eid(u16 id);
-	virtual		void* get_client(u16 id); //if exist
+	virtual		pvoid get_client(u16 id); //if exist
 	virtual		game_PlayerState* get_it(u32 it);
 	virtual		game_PlayerState* get_id(CClientID id);
 
@@ -161,19 +159,19 @@ public:
 	virtual		BOOL				OnPreCreate(CSE_Abstract* E)
 	{
 		return TRUE;
-	};
+	}
 	virtual		void				OnCreate(u16 id_who)
-	{ };
+	{ }
 	virtual		void				OnPostCreate(u16 id_who)
-	{ };
+	{ }
 	virtual		BOOL				OnTouch(u16 eid_who, u16 eid_target, BOOL bForced = FALSE) = 0;			// TRUE=allow ownership, FALSE=denied
 	virtual		void				OnDetach(u16 eid_who, u16 eid_target) = 0;
 	virtual		void				OnDestroyObject(u16 eid_who)
-	{ };
+	{ }
 
 	virtual		void				OnHit(u16 id_hitter, u16 id_hitted, CNetPacket& P);	//кто-то получил Hit
 	virtual		void				OnPlayerHitPlayer(u16 id_hitter, u16 id_hitted, CNetPacket& P)
-	{ }; //игрок получил Hit
+	{ } //игрок получил Hit
 
 // Main
 	virtual		void				Create(shared_str& options);
@@ -193,7 +191,7 @@ public:
 	virtual		BOOL				isFriendlyFireEnabled( )
 	{
 		return FALSE;
-	};
+	}
 	virtual		BOOL				CanHaveFriendlyFire( ) = 0;
 	virtual		void				teleport_object(CNetPacket& packet, u16 id);
 	virtual		void				add_restriction(CNetPacket& packet, u16 id);
@@ -202,14 +200,14 @@ public:
 	virtual		bool				custom_sls_default( )
 	{
 		return false;
-	};
+	}
 	virtual		void				sls_default( )
-	{ };
+	{ }
 	virtual		shared_str			level_name(const shared_str& server_options) const;
 	virtual		void				on_death(CSE_Abstract* e_dest, CSE_Abstract* e_src);
 
 	virtual		void				DumpOnlineStatistic( )
-	{ };
+	{ }
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

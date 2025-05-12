@@ -135,7 +135,7 @@ struct PsiEquation
     // For eg, if the routine returns 1 then all angles between psi[0] and psi[1]
     // satisfy the constraints above.
     //
-    //    int clip(f32 low, f32 high, AngleIntList &a) const;
+    //    s32 clip(f32 low, f32 high, AngleIntList &a) const;
 		
     //
     // Calculates the range of psi above and below the specified value y

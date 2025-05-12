@@ -639,9 +639,9 @@ void CScriptGameObject::add_restrictions		(pcstr out, pcstr in)
 //	construct_restriction_vector			(in,temp1);
 
 //	if (!xr_strcmp(monster->cName(),"mil_freedom_stalker0004")) {
-//		int i = 0;
+//		s32 i = 0;
 //		if (!xr_strcmp(in,"mil_freedom_wall_restrictor")) {
-//			int j = 0;
+//			s32 j = 0;
 //		}
 //	}
 	

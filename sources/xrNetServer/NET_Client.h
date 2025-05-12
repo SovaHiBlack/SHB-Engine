@@ -56,7 +56,7 @@ public:
 	// send
 	virtual	void			Send					(CNetPacket& P, u32 dwFlags=DPNSEND_GUARANTEED, u32 dwTimeout=0);
 	virtual void			OnMessage				(pvoid data, u32 size);
-	virtual void			OnConnectRejected		()	{};
+	virtual void			OnConnectRejected		()	{}
 
 	// time management
 	IC u32					timeServer				( )	{ return device_timer->GetElapsed_ms( ); }
@@ -67,5 +67,5 @@ public:
 	{
 		return net_Syncronised;
 	}
-	virtual void			OnSessionTerminate		(pcstr reason){};
+	virtual void			OnSessionTerminate		(pcstr reason){}
 };

@@ -27,7 +27,7 @@ public:\
 	SERVER_ENTITY_EDITOR_METHODS \
 };
 
-struct	SRotation
+struct SRotation
 {
 	f32  yaw;
 	f32 pitch;

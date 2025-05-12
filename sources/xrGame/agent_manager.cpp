@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "agent_manager.h"
-#include "agent_corpse_manager.h"
+#include "AgentCorpseManager.h"
 #include "agent_enemy_manager.h"
 #include "agent_explosive_manager.h"
 #include "agent_location_manager.h"

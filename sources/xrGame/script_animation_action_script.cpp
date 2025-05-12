@@ -42,7 +42,7 @@ void CScriptAnimationAction::script_register(lua_State *L)
 			.def(								constructor<MonsterSpace::EMentalState>())
 			
 			// Monster specific
-			.def(								constructor<MonsterSpace::EScriptMonsterAnimAction, int>())
+			.def(								constructor<MonsterSpace::EScriptMonsterAnimAction, s32>())
 			
 			.def("anim",						&CScriptAnimationAction::SetAnimation)
 			.def("type",						&CScriptAnimationAction::SetMentalState)

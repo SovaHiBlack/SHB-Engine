@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: member_corpse.h
-//	Created 	: 24.05.2004
-//  Modified 	: 14.01.2005
-//	Author		: Dmitriy Iassenev
+//	Module 		: MemberCorpse.h
 //	Description : Member corpse class
 ////////////////////////////////////////////////////////////////////////////
 
@@ -10,7 +7,8 @@
 
 class CAI_Stalker;
 
-class CMemberCorpse {
+class CMemberCorpse
+{
 private:
 	CAI_Stalker			*m_corpse;
 	CAI_Stalker			*m_reactor;
@@ -27,4 +25,4 @@ public:
 	IC	u32				time			() const;
 };
 
-#include "member_corpse_inline.h"
+#include "MemberCorpse_inline.h"
