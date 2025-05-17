@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CHitMemoryManager::CHitMemoryManager							(CCustomMonster *object, CAI_Stalker *stalker)
+IC	CHitMemoryManager::CHitMemoryManager(CCustomMonster* object, CStalker* stalker)
 {
 	VERIFY			(object);
 	m_object		= object;

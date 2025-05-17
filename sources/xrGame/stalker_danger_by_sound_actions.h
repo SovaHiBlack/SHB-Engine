@@ -14,73 +14,78 @@
 // CStalkerActionDangerBySoundListenTo
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerBySoundListenTo : public CStalkerActionCombatBase {
+class CStalkerActionDangerBySoundListenTo : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundListenTo	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize							();
-	virtual void		execute								();
-	virtual void		finalize							();
+	CStalkerActionDangerBySoundListenTo(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerBySoundCheck
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerBySoundCheck : public CStalkerActionCombatBase {
+class CStalkerActionDangerBySoundCheck : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundCheck	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize							();
-	virtual void		execute								();
-	virtual void		finalize							();
+	CStalkerActionDangerBySoundCheck(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerBySoundTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerBySoundTakeCover : public CStalkerActionCombatBase {
+class CStalkerActionDangerBySoundTakeCover : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundTakeCover(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize							();
-	virtual void		execute								();
-	virtual void		finalize							();
+	CStalkerActionDangerBySoundTakeCover(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerBySoundLookOut
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerBySoundLookOut : public CStalkerActionCombatBase {
+class CStalkerActionDangerBySoundLookOut : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundLookOut	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize							();
-	virtual void		execute								();
-	virtual void		finalize							();
+	CStalkerActionDangerBySoundLookOut(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerBySoundLookAround
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerBySoundLookAround : public CStalkerActionCombatBase {
+class CStalkerActionDangerBySoundLookAround : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerBySoundLookAround	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize								();
-	virtual void		execute									();
-	virtual void		finalize								();
+	CStalkerActionDangerBySoundLookAround(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };

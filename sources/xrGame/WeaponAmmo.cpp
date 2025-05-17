@@ -9,7 +9,7 @@
 #include "AISpace.h"
 #include "gamemtllib.h"
 #include "level.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 #define BULLET_MANAGER_SECTION "bullet_manager"
 

@@ -1,26 +1,23 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: stalker_sound_data.h
-//	Created 	: 02.02.2005
-//  Modified 	: 02.02.2005
-//	Author		: Dmitriy Iassenev
+//	Module 		: StalkerSoundData.h
 //	Description : Stalker sound data
 ////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-class CAI_Stalker;
+class CStalker;
 
 class CStalkerSoundData : public CSound_UserData
 {
 private:
-	CAI_Stalker* m_object;
+	CStalker* m_object;
 
 public:
-	IC					CStalkerSoundData(CAI_Stalker* object);
+	IC					CStalkerSoundData(CStalker* object);
 	virtual				~CStalkerSoundData( );
 	virtual void		invalidate( );
 	virtual void		accept(CSound_UserDataVisitor* visitor);
-	IC		CAI_Stalker& object( ) const;
+	IC		CStalker& object( ) const;
 };
 
-#include "stalker_sound_data_inline.h"
+#include "StalkerSoundData_inline.h"

@@ -5,7 +5,7 @@
 #include "../level.h"
 #include "../UICustomItem.h"
 
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "UIFrameWindow.h"
 #include "UIStatic.h"
 #include "UICheckButton.h"

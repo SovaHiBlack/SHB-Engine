@@ -13,7 +13,7 @@
 #include "xr_time.h"
 #include "..\xrNetServer\net_utils.h"
 #include "UI/UIGameTutorial.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "object_broker.h"
 
 using namespace luabind;
@@ -165,9 +165,9 @@ void game_sv_GameState::script_register(lua_State *L)
 			value("GAME_EVENT_ARTEFACT_ONBASE", s32(GAME_EVENT_ARTEFACT_ONBASE)),
 			value("GAME_EVENT_PLAYER_ENTER_TEAM_BASE", s32(GAME_EVENT_PLAYER_ENTER_TEAM_BASE)),
 			value("GAME_EVENT_PLAYER_LEAVE_TEAM_BASE", s32(GAME_EVENT_PLAYER_LEAVE_TEAM_BASE)),
-			value("GAME_EVENT_BUY_MENU_CLOSED", s32(GAME_EVENT_BUY_MENU_CLOSED)),
-			value("GAME_EVENT_TEAM_MENU_CLOSED", s32(GAME_EVENT_TEAM_MENU_CLOSED)),
-			value("GAME_EVENT_SKIN_MENU_CLOSED", s32(GAME_EVENT_SKIN_MENU_CLOSED)),
+//			value("GAME_EVENT_BUY_MENU_CLOSED", s32(GAME_EVENT_BUY_MENU_CLOSED)),
+//			value("GAME_EVENT_TEAM_MENU_CLOSED", s32(GAME_EVENT_TEAM_MENU_CLOSED)),
+//			value("GAME_EVENT_SKIN_MENU_CLOSED", s32(GAME_EVENT_SKIN_MENU_CLOSED)),
 			value("GAME_EVENT_SCRIPT_BEGINS_FROM", s32(GAME_EVENT_SCRIPT_BEGINS_FROM))
 		]
 	];

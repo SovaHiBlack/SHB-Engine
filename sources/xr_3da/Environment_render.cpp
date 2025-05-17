@@ -7,7 +7,7 @@
 #include "rain.h"
 #include "thunderbolt.h"
 
-#include "igame_level.h"
+#include "IGameLevel.h"
 
 //////////////////////////////////////////////////////////////////////////
 // half box def

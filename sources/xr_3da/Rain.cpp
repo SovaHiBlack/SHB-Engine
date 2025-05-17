@@ -1,11 +1,8 @@
 #include "stdafx.h"
-
 #include "Rain.h"
-#include "igame_persistent.h"
-#include "environment.h"
-
+#include "IGameLevel.h"
+#include "IGamePersistent.h"
 #include "Render.h"
-#include "igame_level.h"
 #include "xr_area.h"
 #include "Object.h"
 
@@ -128,7 +125,7 @@ void CEffect_Rain::OnFrame( )
 	CObject* E = g_pGameLevel->CurrentViewEntity( );
 	if (E && E->renderable_ROS( ))
 	{
-		hemi_factor = 1.0f - 2.0f * (0.3f - _min(_min(1.f, E->renderable_ROS( )->get_luminocity_hemi( )), 0.3f));
+		hemi_factor = 1.0f - 2.0f * (0.3f - _min(_min(1.0f, E->renderable_ROS( )->get_luminocity_hemi( )), 0.3f));
 	}
 
 	switch (state)
@@ -139,6 +136,7 @@ void CEffect_Rain::OnFrame( )
 			{
 				return;
 			}
+
 			state = stWorking;
 			snd_Ambient.play(0, sm_Looped);
 			snd_Ambient.set_range(source_offset, source_offset * 2.0f);

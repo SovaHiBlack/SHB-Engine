@@ -231,12 +231,10 @@
     <ClInclude Include="ai\Monsters\anomaly_detector.h" />
     <ClInclude Include="ai\Monsters\BaseMonster\base_monster.h" />
     <ClInclude Include="ai\Monsters\BaseMonster\base_monster_inline.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_alien.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide_inline.h" />
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_inline.h" />
+    <ClInclude Include="ai\Monsters\Bloodsucker\Bloodsucker.h" />
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.h" />
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerStateAttack.h" />
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerStateAttack_inline.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator_inline.h" />
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator_lite.h" />
@@ -495,10 +493,10 @@
     <ClInclude Include="ai\Monsters\Zombie\zombie_state_attack_run_inline.h" />
     <ClInclude Include="ai\Monsters\Zombie\zombie_state_manager.h" />
     <ClInclude Include="ai\phantom\phantom.h" />
-    <ClInclude Include="Ai\Stalker\ai_stalker.h" />
-    <ClInclude Include="ai\stalker\ai_stalker_impl.h" />
-    <ClInclude Include="ai\stalker\ai_stalker_inline.h" />
-    <ClInclude Include="Ai\Stalker\ai_stalker_space.h" />
+    <ClInclude Include="Ai\Stalker\Stalker.h" />
+    <ClInclude Include="ai\stalker\Stalker_impl.h" />
+    <ClInclude Include="ai\stalker\Stalker_inline.h" />
+    <ClInclude Include="Ai\Stalker\Stalker_space.h" />
     <ClInclude Include="Ai\Trader\Trader.h" />
     <ClInclude Include="ai\trader\TraderAnimation.h" />
     <ClInclude Include="ai_debug.h" />
@@ -1022,7 +1020,7 @@
     <ClInclude Include="quadtree.h" />
     <ClInclude Include="quadtree_inline.h" />
     <ClInclude Include="RadioactiveZone.h" />
-    <ClInclude Include="random32.h" />
+    <ClInclude Include="Random32.h" />
     <ClInclude Include="relation_registry.h" />
     <ClInclude Include="relation_registry_defs.h" />
     <ClInclude Include="relation_registry_inline.h" />
@@ -1237,10 +1235,10 @@
     <ClInclude Include="stalker_planner.h" />
     <ClInclude Include="stalker_planner_inline.h" />
     <ClInclude Include="stalker_property_evaluators.h" />
-    <ClInclude Include="stalker_sound_data.h" />
-    <ClInclude Include="stalker_sound_data_inline.h" />
-    <ClInclude Include="stalker_sound_data_visitor.h" />
-    <ClInclude Include="stalker_sound_data_visitor_inline.h" />
+    <ClInclude Include="StalkerSoundData.h" />
+    <ClInclude Include="StalkerSoundData_inline.h" />
+    <ClInclude Include="StalkerSoundDataVisitor.h" />
+    <ClInclude Include="StalkerSoundDataVisitor_inline.h" />
     <ClInclude Include="stalker_velocity_collection.h" />
     <ClInclude Include="stalker_velocity_collection_inline.h" />
     <ClInclude Include="stalker_velocity_holder.h" />
@@ -1248,8 +1246,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="step_manager.h" />
     <ClInclude Include="step_manager_defs.h" />
-    <ClInclude Include="string_table.h" />
-    <ClInclude Include="string_table_defs.h" />
+    <ClInclude Include="StringTable.h" />
+    <ClInclude Include="StringTable_defs.h" />
     <ClInclude Include="team_base_zone.h" />
     <ClInclude Include="team_hierarchy_holder.h" />
     <ClInclude Include="team_hierarchy_holder_inline.h" />
@@ -1528,8 +1526,8 @@
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_script.cpp" />
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_startup.cpp" />
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_think.cpp" />
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker.cpp" />
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_alien.cpp" />
+    <ClCompile Include="ai\Monsters\Bloodsucker\Bloodsucker.cpp" />
+    <ClCompile Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.cpp" />
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_script.cpp" />
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_effector.cpp" />
@@ -1631,7 +1629,7 @@
     <ClCompile Include="ai\Monsters\Zombie\zombie_script.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\zombie_state_manager.cpp" />
     <ClCompile Include="ai\phantom\phantom.cpp" />
-    <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
+    <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ShowIncludes>
     </ClCompile>
     <ClCompile Include="ai\stalker\ai_stalker_cover.cpp" />
@@ -1640,7 +1638,7 @@
     <ClCompile Include="Ai\Stalker\ai_stalker_feel.cpp" />
     <ClCompile Include="Ai\Stalker\ai_stalker_fire.cpp" />
     <ClCompile Include="Ai\Stalker\ai_stalker_misc.cpp" />
-    <ClCompile Include="Ai\Stalker\ai_stalker_script.cpp" />
+    <ClCompile Include="Ai\Stalker\Stalker_script.cpp" />
     <ClCompile Include="ai\stalker\ai_stalker_script_entity.cpp" />
     <ClCompile Include="Ai\Trader\Trader.cpp" />
     <ClCompile Include="ai\trader\TraderAnimation.cpp" />
@@ -2018,7 +2016,7 @@
     <ClCompile Include="purchase_list.cpp" />
     <ClCompile Include="r2_test_hw.cpp" />
     <ClCompile Include="RadioactiveZone.cpp" />
-    <ClCompile Include="random32.cpp" />
+    <ClCompile Include="Random32.cpp" />
     <ClCompile Include="relation_registry.cpp" />
     <ClCompile Include="relation_registry_actions.cpp" />
     <ClCompile Include="relation_registry_fights.cpp" />
@@ -2185,8 +2183,8 @@
     <ClCompile Include="stalker_movement_manager.cpp" />
     <ClCompile Include="stalker_planner.cpp" />
     <ClCompile Include="stalker_property_evaluators.cpp" />
-    <ClCompile Include="stalker_sound_data.cpp" />
-    <ClCompile Include="stalker_sound_data_visitor.cpp" />
+    <ClCompile Include="StalkerSoundData.cpp" />
+    <ClCompile Include="StalkerSoundDataVisitor.cpp" />
     <ClCompile Include="stalker_velocity_collection.cpp" />
     <ClCompile Include="stalker_velocity_holder.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -2194,7 +2192,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="step_manager.cpp" />
-    <ClCompile Include="string_table.cpp" />
+    <ClCompile Include="StringTable.cpp" />
     <ClCompile Include="team_base_zone.cpp" />
     <ClCompile Include="team_hierarchy_holder.cpp" />
     <ClCompile Include="TeleWhirlwind.cpp" />

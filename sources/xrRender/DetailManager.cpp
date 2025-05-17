@@ -7,8 +7,7 @@
 #include "DetailManager.h"
 #include "..\XR_3DA\cl_intersect.h"
 
-#include "..\XR_3DA\igame_persistent.h"
-#include "..\XR_3DA\environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 const f32 dbgOffset			= 0.f;
 const int	dbgItems			= 128;

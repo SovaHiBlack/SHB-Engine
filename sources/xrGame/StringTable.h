@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////
-// string_table.h:		таблица строк используемых в игре
+// StringTable.h:		таблица строк используемых в игре
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include "string_table_defs.h"
+#include "StringTable_defs.h"
 
 DEFINE_MAP(STRING_ID, STRING_VALUE, STRING_TABLE_MAP, STRING_TABLE_MAP_IT);
 

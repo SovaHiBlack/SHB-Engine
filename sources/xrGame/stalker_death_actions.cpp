@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "stalker_death_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_decision_space.h"
 #include "script_game_object.h"
 #include "movement_manager_space.h"
@@ -25,7 +25,7 @@ using namespace StalkerDecisionSpace;
 // CStalkerActionDead
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDead::CStalkerActionDead	(CAI_Stalker *object, pcstr action_name) :
+CStalkerActionDead::CStalkerActionDead	(CStalker*object, pcstr action_name) :
 	inherited							(object,action_name)
 { }
 

@@ -4,8 +4,7 @@
 
 #include "..\XR_3DA\DemoRecord.h"
 #include "..\XR_3DA\DemoPlay.h"
-#include "..\XR_3DA\environment.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "ParticlesObject.h"
 #include "Level.h"
 #include "xrServer.h"
@@ -18,7 +17,6 @@
 #include "PHdynamicdata.h"
 #include "Physics.h"
 #include "ShootingObject.h"
-//.#include "LevelFogOfWar.h"
 #include "BulletManager.h"
 #include "script_process.h"
 #include "script_engine.h"
@@ -48,7 +46,7 @@
 
 #ifdef DEBUG
 #	include "level_debug.h"
-#	include "ai/stalker/ai_stalker.h"
+#	include "ai/stalker/Stalker.h"
 #	include "DebugRenderer.h"
 #	include "physicobject.h"
 #endif
@@ -509,7 +507,7 @@ void CLevel::OnRender( )
 	if (ai( ).get_level_graph( ))
 		ai( ).level_graph( ).render( );
 
-	CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(Level( ).CurrentEntity( ));
+	CStalker* stalker = smart_cast<CStalker*>(Level( ).CurrentEntity( ));
 	if (stalker)
 		stalker->OnRender( );
 
@@ -579,7 +577,7 @@ void CLevel::OnRender( )
 		for (u32 I = 0; I < Level( ).Objects.o_count( ); I++)
 		{
 			CObject* object = Objects.o_get_by_iterator(I);
-			CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
+			CStalker* stalker = smart_cast<CStalker*>(object);
 			if (!stalker)
 				continue;
 			stalker->dbg_draw_vision( );
@@ -592,7 +590,7 @@ void CLevel::OnRender( )
 		for (u32 I = 0; I < Level( ).Objects.o_count( ); I++)
 		{
 			CObject* object = Objects.o_get_by_iterator(I);
-			CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
+			CStalker* stalker = smart_cast<CStalker*>(object);
 			if (!stalker)
 				continue;
 
@@ -606,7 +604,7 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 {
 	if (E == eEntitySpawn)
 	{
-		char	Name[128];
+		string128 Name;
 		Name[0] = 0;
 		sscanf(pcstr(P1), "%s", Name);
 		Level( ).g_cl_Spawn(Name, 0xff, M_SPAWN_OBJECT_LOCAL, fVector3( ).set(0.0f, 0.0f, 0.0f));
@@ -907,8 +905,6 @@ u32	GameID( )
 {
 	return Game( ).Type( );
 }
-
-#include "..\XR_3DA\IGame_Persistent.h"
 
 GlobalFeelTouch::GlobalFeelTouch( )
 { }

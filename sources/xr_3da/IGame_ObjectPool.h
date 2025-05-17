@@ -21,6 +21,7 @@ private:
 	typedef xr_vector<CObject*>	ObjectVec;
 	typedef ObjectVec::iterator	ObjectVecIt;
 	ObjectVec					m_PrefetchObjects;
+
 public:
 	void						prefetch			( );
 	void						clear				( );

@@ -16,8 +16,8 @@
 #include "x_ray.h"
 #include "Render.h"
 #include "resourcemanager.h"
-#include "igame_level.h"
-#include "IGame_Persistent.h"
+#include "IGameLevel.h"
+#include "IGamePersistent.h"
 
 ENGINE_API CRenderDevice Device;
 ENGINE_API BOOL g_bRendering = FALSE;

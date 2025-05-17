@@ -2,8 +2,7 @@
 
 #include "detailmanager.h"
 
-#include "..\XR_3DA\igame_persistent.h"
-#include "..\XR_3DA\environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 const int			quant	= 16384;
 const int			c_hdr	= 10;

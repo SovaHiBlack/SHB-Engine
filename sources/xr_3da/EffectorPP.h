@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CameraDefs.h"
+
 struct SPPInfo;
 
 // постпроцесс

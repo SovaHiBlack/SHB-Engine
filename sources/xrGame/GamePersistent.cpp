@@ -30,7 +30,7 @@
 #include "holder_custom.h"
 #include "game_sv_single.h"
 #include "xrServer.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "..\XR_3DA\x_ray.h"
 
 static pvoid	ode_alloc(size_t size)

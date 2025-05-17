@@ -3,7 +3,7 @@
 #include "..\XR_3DA\Console.h"
 #include "..\XR_3DA\ConsoleCommand.h"
 #include "xr_level_controller.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 _binding	g_key_bindings[bindings_count];
 _key_group	g_current_keygroup = _sp;
@@ -59,38 +59,17 @@ _action  actions[ ] = {
 	{ "drop",				kDROP					,_both},
 	{ "use",				kUSE					,_both},
 	{ "scores",				kSCORES					,_both},
-	{ "chat",				kCHAT					,_mp},
-	{ "chat_team",			kCHAT_TEAM				,_mp},
 	{ "screenshot",			kSCREENSHOT				,_both},
 	{ "quit",				kQUIT					,_both},
 	{ "console",			kCONSOLE				,_both},
 	{ "inventory",			kINVENTORY				,_both},
-	{ "buy_menu",			kBUY					,_mp},
-	{ "skin_menu",			kSKIN					,_mp},
-	{ "team_menu",			kTEAM					,_mp},
 	{ "active_jobs",		kACTIVE_JOBS			,_sp},
 	{ "map",				kMAP					,_both},
 	{ "contacts",			kCONTACTS				,_sp},
 	{ "ext_1",				kEXT_1					,_both},
 
-	{ "vote_begin",			kVOTE_BEGIN				,_mp},
-	{ "vote",				kVOTE					,_mp},
-	{ "vote_yes",			kVOTEYES				,_mp},
-	{ "vote_no",			kVOTENO					,_mp},
-
 	{ "next_slot",			kNEXT_SLOT				,_both},
 	{ "prev_slot",			kPREV_SLOT				,_both},
-
-	{ "speech_menu_0",		kSPEECH_MENU_0			,_mp},
-	{ "speech_menu_1",		kSPEECH_MENU_1			,_mp},
-	{ "speech_menu_2",		kSPEECH_MENU_2			,_mp},
-	{ "speech_menu_3",		kSPEECH_MENU_3			,_mp},
-	{ "speech_menu_4",		kSPEECH_MENU_4			,_mp},
-	{ "speech_menu_5",		kSPEECH_MENU_5			,_mp},
-	{ "speech_menu_6",		kSPEECH_MENU_6			,_mp},
-	{ "speech_menu_7",		kSPEECH_MENU_7			,_mp},
-	{ "speech_menu_8",		kSPEECH_MENU_8			,_mp},
-	{ "speech_menu_9",		kSPEECH_MENU_9			,_mp},
 
 	{ "use_bandage",		kUSE_BANDAGE			,_sp},
 	{ "use_medkit",			kUSE_MEDKIT				,_sp},
@@ -779,14 +758,14 @@ void ConsoleBindCmds::save(IWriter* F)
 void CCC_RegisterInput( )
 {
 	initialize_bindings( );
-	CMD2(CCC_Bind,				"bind",			0);
-	CMD2(CCC_Bind,				"bind_sec",		1);
-	CMD2(CCC_UnBind,			"unbind",		0);
-	CMD2(CCC_UnBind,			"unbind_sec",	1);
-	CMD1(CCC_UnBindAll,			"unbindall");
-	CMD1(CCC_ListActions,		"list_actions");
+	CMD2(CCC_Bind, "bind", 0);
+	CMD2(CCC_Bind, "bind_sec", 1);
+	CMD2(CCC_UnBind, "unbind", 0);
+	CMD2(CCC_UnBind, "unbind_sec", 1);
+	CMD1(CCC_UnBindAll, "unbindall");
+	CMD1(CCC_ListActions, "list_actions");
 
-	CMD1(CCC_BindList,			"bind_list");
-	CMD1(CCC_BindConsoleCmd,	"bind_console");
-	CMD1(CCC_UnBindConsoleCmd,	"unbind_console");
+	CMD1(CCC_BindList, "bind_list");
+	CMD1(CCC_BindConsoleCmd, "bind_console");
+	CMD1(CCC_UnBindConsoleCmd, "unbind_console");
 };

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "sound_player.h"
 #include "script_engine.h"
-#include "ai/stalker/ai_stalker_space.h"
+#include "ai/stalker/Stalker_space.h"
 #include "AISpace.h"
 #include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\skeletoncustom.h"

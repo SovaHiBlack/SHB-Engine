@@ -6,7 +6,7 @@
 #include "../actor.h"
 #include "../level.h"
 #include "../character_info.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "../relation_registry.h"
 
 #include "xrUIXmlParser.h"

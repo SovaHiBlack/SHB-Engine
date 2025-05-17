@@ -23,7 +23,8 @@ struct SThunderboltDesc
 		ref_shader				hShader;
 		SFlare( )
 		{
-			fOpacity = 0; fRadius.set(0.f, 0.f);
+			fOpacity = 0;
+			fRadius.set(0.0f, 0.0f);
 		}
 	};
 	SFlare						m_GradientTop;
@@ -47,7 +48,8 @@ public:
 	~SThunderboltCollection( );
 	SThunderboltDesc* GetRandomDesc( )
 	{
-		VERIFY(palette.size( ) > 0); return palette[Random.randI(palette.size( ))];
+		VERIFY(palette.size( ) > 0);
+		return palette[Random.randI(palette.size( ))];
 	}
 };
 

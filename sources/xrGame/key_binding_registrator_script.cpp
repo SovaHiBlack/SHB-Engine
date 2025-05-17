@@ -58,14 +58,10 @@ void key_binding_registrator::script_register(lua_State* L)
 		value("kUSE", s32(kUSE)),
 		value("kDROP", s32(kDROP)),
 		value("kSCORES", s32(kSCORES)),
-		value("kCHAT", s32(kCHAT)),
 		value("kSCREENSHOT", s32(kSCREENSHOT)),
 		value("kQUIT", s32(kQUIT)),
 		value("kCONSOLE", s32(kCONSOLE)),
-		value("kINVENTORY", s32(kINVENTORY)),
-		value("kBUY", s32(kBUY)),
-		value("kSKIN", s32(kSKIN)),
-		value("kTEAM", s32(kTEAM))
+		value("kINVENTORY", s32(kINVENTORY))
 		],
 		class_<key_binding_registrator >("DIK_keys")
 		.enum_("dik_keys")

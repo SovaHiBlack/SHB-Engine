@@ -14,7 +14,7 @@
 #include "MathUtils.h"
 #include "characterphysicssupport.h"
 #include "inventory.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 #ifdef DEBUG
 #	include "phdebug.h"

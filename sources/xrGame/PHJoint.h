@@ -75,8 +75,8 @@ class CPHJoint : public CPhysicsJoint
 	virtual void 					SetJointSDfactors(f32 spring_factor, f32 damping_factor);
 	virtual void					SetJointSDfactorsActive( );
 	virtual void					SetLimitsSDfactorsActive( );
-	virtual void					SetAxisSDfactorsActive(int axis_num);
-	virtual void 					SetAxis(const SPHAxis& axis, const int axis_num);
+	virtual void					SetAxisSDfactorsActive(s32 axis_num);
+	virtual void 					SetAxis(const SPHAxis& axis, const s32 axis_num);
 	virtual void 					SetAnchor(const fVector3& position)
 	{
 		SetAnchor(position.x, position.y, position.z);

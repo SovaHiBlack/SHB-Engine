@@ -2,8 +2,8 @@
 
 #include "ResourceManager.h"
 #include "Render.h"
-#include "IGame_Persistent.h"
-#include "IGame_Level.h"
+#include "IGamePersistent.h"
+#include "IGameLevel.h"
 #include "CustomHUD.h"
 
 void CRenderDevice::_Destroy(BOOL bKeepTextures)

@@ -1,11 +1,9 @@
 #include "stdafx.h"
-
-#include "Render.h"
 #include "Thunderbolt.h"
-#include "igame_persistent.h"
+#include "IGameLevel.h"
+#include "IGamePersistent.h"
 #include "LightAnimLibrary.h"
-
-#include "igame_level.h"
+#include "Render.h"
 #include "xr_area.h"
 #include "Object.h"
 

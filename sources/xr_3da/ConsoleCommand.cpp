@@ -1,15 +1,9 @@
 #include "stdafx.h"
-//#include "igame_level.h"
-
 #include "GammaControl.h"
-//#include "x_ray.h"
 #include "Console.h"
 #include "ConsoleCommand.h"
-//#include "BasicVisual.h"
 #include "cameramanager.h"
 #include "environment.h"
-//#include "Input.h"
-//#include "CustomHUD.h"
 #include "SkeletonAnimated.h"
 #include "ResourceManager.h"
 

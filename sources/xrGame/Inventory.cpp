@@ -627,8 +627,7 @@ bool CInventory::Action(s32 cmd, u32 flags)
 		{
 			if (flags & CMD_START)
 			{
-				if ((s32)m_iActiveSlot == ARTEFACT_SLOT &&
-					m_slots[m_iActiveSlot].m_pIItem)
+				if ((s32)m_iActiveSlot == ARTEFACT_SLOT && m_slots[m_iActiveSlot].m_pIItem)
 				{
 					b_send_event = Activate(NO_ACTIVE_SLOT);
 				}

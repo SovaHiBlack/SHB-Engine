@@ -19,6 +19,7 @@
 #include "level.h"
 #include "graph_engine.h"
 #include "..\XR_3DA\x_ray.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "restriction_space.h"
 #include "profiler.h"
 #include "mt_config.h"
@@ -231,7 +232,6 @@ bool CALifeUpdateManager::change_level(CNetPacket& net_packet)
 	return							(true);
 }
 
-#include "..\XR_3DA\igame_persistent.h"
 void CALifeUpdateManager::new_game(pcstr save_name)
 {
 	g_pGamePersistent->LoadTitle("st_creating_new_game");

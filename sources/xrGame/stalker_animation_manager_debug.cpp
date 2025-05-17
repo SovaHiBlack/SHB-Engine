@@ -10,7 +10,7 @@
 
 #ifdef DEBUG
 #	include "stalker_animation_manager.h"
-#	include "ai/stalker/ai_stalker.h"
+#	include "ai/stalker/Stalker.h"
 
 #	pragma warning(push)
 #	pragma warning(disable:4995)

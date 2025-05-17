@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_alife_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "inventory_item.h"
 #include "script_game_object.h"
 #include "inventory.h"
@@ -22,7 +22,7 @@
 #include "stalker_movement_manager.h"
 #include "patrol_path_manager.h"
 #include "sound_player.h"
-#include "ai/stalker/ai_stalker_space.h"
+#include "ai/stalker/Stalker_space.h"
 #include "restricted_object.h"
 
 using namespace StalkerSpace;
@@ -39,64 +39,63 @@ using namespace StalkerSpace;
 // CStalkerActionNoALife
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionNoALife::CStalkerActionNoALife	(CAI_Stalker *object, pcstr action_name) :
-	inherited				(object,action_name)
+CStalkerActionNoALife::CStalkerActionNoALife(CStalker* object, pcstr action_name) : inherited(object, action_name)
 { }
 
-void CStalkerActionNoALife::initialize	()
+void CStalkerActionNoALife::initialize( )
 {
-	inherited::initialize						();
+	inherited::initialize( );
 #ifndef STALKER_DEBUG_MODE
-	object().movement().set_desired_position	(0);
-	object().movement().set_desired_direction	(0);
-	object().movement().set_path_type			(MovementManager::ePathTypeGamePath);
-	object().movement().set_detail_path_type	(DetailPathManager::eDetailPathTypeSmooth);
-	object().movement().set_body_state			(eBodyStateStand);
-	object().movement().set_movement_type		(eMovementTypeWalk);
-	object().movement().set_mental_state		(eMentalStateFree);
-	object().sight().setup						(CSightAction(SightManager::eSightTypeCover,false,true));
-	
-	m_stop_weapon_handling_time					= Device.dwTimeGlobal;
-	if (object().inventory().ActiveItem() && object().best_weapon() && (object().inventory().ActiveItem()->object().ID() == object().best_weapon()->object().ID()))
-		m_stop_weapon_handling_time				+= ::Random32.random(30000) + 30000;
+	object( ).movement( ).set_desired_position(0);
+	object( ).movement( ).set_desired_direction(0);
+	object( ).movement( ).set_path_type(MovementManager::ePathTypeGamePath);
+	object( ).movement( ).set_detail_path_type(DetailPathManager::eDetailPathTypeSmooth);
+	object( ).movement( ).set_body_state(eBodyStateStand);
+	object( ).movement( ).set_movement_type(eMovementTypeWalk);
+	object( ).movement( ).set_mental_state(eMentalStateFree);
+	object( ).sight( ).setup(CSightAction(SightManager::eSightTypeCover, false, true));
+
+	m_stop_weapon_handling_time = Device.dwTimeGlobal;
+	if (object( ).inventory( ).ActiveItem( ) && object( ).best_weapon( ) && (object( ).inventory( ).ActiveItem( )->object( ).ID( ) == object( ).best_weapon( )->object( ).ID( )))
+		m_stop_weapon_handling_time += ::Random32.random(30000) + 30000;
 #else
-	object().movement().set_mental_state		(eMentalStateDanger);
-	object().movement().set_movement_type		(eMovementTypeStand);
-	object().movement().set_body_state			(eBodyStateStand);
-	object().movement().set_desired_direction	(0);
-	object().movement().set_path_type			(MovementManager::ePathTypeLevelPath);
-	object().movement().set_detail_path_type	(DetailPathManager::eDetailPathTypeSmooth);
-	object().movement().set_nearest_accessible_position();
-	object().sight().setup						(CSightAction(SightManager::eSightTypeCurrentDirection));
-	object().CObjectHandler::set_goal			(eObjectActionFire1,object().inventory().m_slots[1].m_pIItem,0,1,2500,3000);
+	object( ).movement( ).set_mental_state(eMentalStateDanger);
+	object( ).movement( ).set_movement_type(eMovementTypeStand);
+	object( ).movement( ).set_body_state(eBodyStateStand);
+	object( ).movement( ).set_desired_direction(0);
+	object( ).movement( ).set_path_type(MovementManager::ePathTypeLevelPath);
+	object( ).movement( ).set_detail_path_type(DetailPathManager::eDetailPathTypeSmooth);
+	object( ).movement( ).set_nearest_accessible_position( );
+	object( ).sight( ).setup(CSightAction(SightManager::eSightTypeCurrentDirection));
+	object( ).CObjectHandler::set_goal(eObjectActionFire1, object( ).inventory( ).m_slots[1].m_pIItem, 0, 1, 2500, 3000);
 //	object().movement().patrol().set_path		("way_0000",PatrolPathManager::ePatrolStartTypeNearest);
 #endif
 }
 
-void CStalkerActionNoALife::finalize	()
+void CStalkerActionNoALife::finalize( )
 {
-	inherited::finalize				();
+	inherited::finalize( );
 
-	object().movement().set_desired_position	(0);
+	object( ).movement( ).set_desired_position(0);
 
-	if (!object().g_Alive())
+	if (!object( ).g_Alive( ))
 		return;
 
-	object().sound().remove_active_sounds	(u32(eStalkerSoundMaskNoHumming));
+	object( ).sound( ).remove_active_sounds(u32(eStalkerSoundMaskNoHumming));
 }
 
-void CStalkerActionNoALife::execute		()
+void CStalkerActionNoALife::execute( )
 {
-	inherited::execute				();
+	inherited::execute( );
 #ifndef STALKER_DEBUG_MODE
-	object().sound().play			(eStalkerSoundHumming,60000,10000);
+	object( ).sound( ).play(eStalkerSoundHumming, 60000, 10000);
 	if (Device.dwTimeGlobal >= m_stop_weapon_handling_time)
-		if (!object().best_weapon())
-			object().CObjectHandler::set_goal	(eObjectActionIdle);
+		if (!object( ).best_weapon( ))
+			object( ).CObjectHandler::set_goal(eObjectActionIdle);
 		else
-			object().CObjectHandler::set_goal	(eObjectActionStrapped,object().best_weapon());
+			object( ).CObjectHandler::set_goal(eObjectActionStrapped, object( ).best_weapon( ));
 	else
-		object().CObjectHandler::set_goal		(eObjectActionIdle,object().best_weapon());
+		object( ).CObjectHandler::set_goal(eObjectActionIdle, object( ).best_weapon( ));
 #else
 //	object().movement().set_movement_type		(eMovementTypeRun);
 #endif
@@ -106,49 +105,49 @@ void CStalkerActionNoALife::execute		()
 // CStalkerActionGatherItems
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionGatherItems::CStalkerActionGatherItems	(CAI_Stalker *object, pcstr action_name) :
-	inherited				(object,action_name)
+CStalkerActionGatherItems::CStalkerActionGatherItems(CStalker* object, pcstr action_name) :
+	inherited(object, action_name)
 { }
 
-void CStalkerActionGatherItems::initialize	()
+void CStalkerActionGatherItems::initialize( )
 {
-	inherited::initialize			();
-	object().movement().set_desired_direction	(0);
-	object().movement().set_path_type			(MovementManager::ePathTypeLevelPath);
-	object().movement().set_detail_path_type	(DetailPathManager::eDetailPathTypeSmooth);
-	object().movement().set_body_state		(eBodyStateStand);
-	object().movement().set_movement_type		(eMovementTypeWalk);
-	object().movement().set_mental_state		(eMentalStateDanger);
-	object().sound().remove_active_sounds	(u32(eStalkerSoundMaskNoHumming));
-	if (!object().inventory().ActiveItem())
-		object().CObjectHandler::set_goal	(eObjectActionIdle);
+	inherited::initialize( );
+	object( ).movement( ).set_desired_direction(0);
+	object( ).movement( ).set_path_type(MovementManager::ePathTypeLevelPath);
+	object( ).movement( ).set_detail_path_type(DetailPathManager::eDetailPathTypeSmooth);
+	object( ).movement( ).set_body_state(eBodyStateStand);
+	object( ).movement( ).set_movement_type(eMovementTypeWalk);
+	object( ).movement( ).set_mental_state(eMentalStateDanger);
+	object( ).sound( ).remove_active_sounds(u32(eStalkerSoundMaskNoHumming));
+	if (!object( ).inventory( ).ActiveItem( ))
+		object( ).CObjectHandler::set_goal(eObjectActionIdle);
 	else
-		object().CObjectHandler::set_goal	(eObjectActionIdle,object().inventory().ActiveItem());
+		object( ).CObjectHandler::set_goal(eObjectActionIdle, object( ).inventory( ).ActiveItem( ));
 }
 
-void CStalkerActionGatherItems::finalize	()
+void CStalkerActionGatherItems::finalize( )
 {
-	inherited::finalize		();
+	inherited::finalize( );
 
-	object().movement().set_desired_position	(0);
+	object( ).movement( ).set_desired_position(0);
 
-	if (!object().g_Alive())
+	if (!object( ).g_Alive( ))
 		return;
 
-	object().sound().set_sound_mask(0);
+	object( ).sound( ).set_sound_mask(0);
 }
 
-void CStalkerActionGatherItems::execute		()
+void CStalkerActionGatherItems::execute( )
 {
-	inherited::execute		();
+	inherited::execute( );
 
-	if (!object().memory().item().selected())
+	if (!object( ).memory( ).item( ).selected( ))
 		return;
 
-	u32												level_vertex_id = object().memory().item().selected()->ai_location().level_vertex_id();
+	u32												level_vertex_id = object( ).memory( ).item( ).selected( )->ai_location( ).level_vertex_id( );
 //	if (object().movement().restrictions().accessible(level_vertex_id)) {
-		object().movement().set_level_dest_vertex	(level_vertex_id);
-		object().movement().set_desired_position	(&object().memory().item().selected()->Position());
+	object( ).movement( ).set_level_dest_vertex(level_vertex_id);
+	object( ).movement( ).set_desired_position(&object( ).memory( ).item( ).selected( )->Position( ));
 //	}
 //	else {
 //		object().movement().set_nearest_accessible_position	(
@@ -157,5 +156,5 @@ void CStalkerActionGatherItems::execute		()
 //		);
 //	}
 
-	object().sight().setup						(SightManager::eSightTypePosition,&object().memory().item().selected()->Position());
+	object( ).sight( ).setup(SightManager::eSightTypePosition, &object( ).memory( ).item( ).selected( )->Position( ));
 }

@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../pda.h"
 #include "../../inventory.h"
 #include "../../xrmessages.h"
@@ -21,7 +21,7 @@ using namespace MonsterSpace;
 
 #define SILENCE
 
-void CAI_Stalker::OnEvent		(CNetPacket& P, u16 type)
+void CStalker::OnEvent		(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent			(P,type);
 	CInventoryOwner::OnEvent	(P,type);
@@ -88,28 +88,31 @@ void CAI_Stalker::OnEvent		(CNetPacket& P, u16 type)
 	}
 }
 
-void CAI_Stalker::feel_touch_new				(CObject* O)
+void CStalker::feel_touch_new(CObject* O)
 {
 //	Msg					("FEEL_TOUCH::NEW : %s",*O->cName());
-	if (!g_Alive())		return;
-	if (Remote())		return;
+	if (!g_Alive( ))		return;
+	if (Remote( ))		return;
 	if ((O->spatial.type | STYPE_VISIBLEFORAI) != O->spatial.type) return;
 
 	// Now, test for game specific logical objects to minimize traffic
-	CInventoryItem		*I	= smart_cast<CInventoryItem*>	(O);
+	CInventoryItem* I = smart_cast<CInventoryItem*>	(O);
 
-	if (!wounded() && !critically_wounded() && I && I->useful_for_NPC() && can_take(I)) {
+	if (!wounded( ) && !critically_wounded( ) && I && I->useful_for_NPC( ) && can_take(I))
+	{
+
 #ifndef SILENCE
-		Msg("Taking item %s (%d)!",*I->cName(),I->ID());
+		Msg("Taking item %s (%d)!", *I->cName( ), I->ID( ));
 #endif
+
 		CNetPacket		P;
-		u_EventGen		(P,GE_OWNERSHIP_TAKE,ID());
-		P.w_u16			(u16(I->object().ID()));
-		u_EventSend		(P);
+		u_EventGen(P, GE_OWNERSHIP_TAKE, ID( ));
+		P.w_u16(u16(I->object( ).ID( )));
+		u_EventSend(P);
 	}
 }
 
-void CAI_Stalker::DropItemSendMessage(CObject *O)
+void CStalker::DropItemSendMessage(CObject *O)
 {
 	if (!O || !O->H_Parent() || (this != O->H_Parent()))
 		return;
@@ -124,7 +127,7 @@ void CAI_Stalker::DropItemSendMessage(CObject *O)
 	u_EventSend				(P);
 }
 
-void CAI_Stalker::UpdateAvailableDialogs(CPhraseDialogManager* partner)
+void CStalker::UpdateAvailableDialogs(CPhraseDialogManager* partner)
 {
 /*	m_AvailableDialogs.clear();
 	m_CheckedDialogs.clear();

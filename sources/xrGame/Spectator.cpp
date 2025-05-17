@@ -21,9 +21,9 @@
 #include "Inventory.h"
 #include "huditem.h"
 #include "clsid_game.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "map_manager.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 //--------------------------------------------------------------------
 //////////////////////////////////////////////////////////////////////

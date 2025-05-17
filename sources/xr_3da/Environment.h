@@ -221,11 +221,11 @@ private:
 public:
 	static bool sort_env_pred(const CEnvDescriptor* x, const CEnvDescriptor* y)
 	{
-		return x->exec_time < y->exec_time;
+		return (x->exec_time < y->exec_time);
 	}
 	static bool sort_env_etl_pred(const CEnvDescriptor* x, const CEnvDescriptor* y)
 	{
-		return x->exec_time_loaded < y->exec_time_loaded;
+		return (x->exec_time_loaded < y->exec_time_loaded);
 	}
 
 protected:

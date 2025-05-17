@@ -24,7 +24,7 @@ dGeomID geom;
 dGeomID transform;
 //PHDynamicData* Childs;
 //xr_vector<PHDynamicData>  Childs;
-unsigned int numOfChilds;
+u32 numOfChilds;
 fMatrix4x4 ZeroTransform;
 public:
 	inline void UpdateInterpolation(){
@@ -34,9 +34,9 @@ public:
 	void UpdateInterpolationRecursive()	;
 	void InterpolateTransform(fMatrix4x4& transform);
 	void InterpolateTransformVsParent(fMatrix4x4& transform);
-	PHDynamicData& operator [] (unsigned int i) {return Childs[i];};
+	PHDynamicData& operator [] (u32 i) {return Childs[i];};
 	void Destroy();
-	void Create(unsigned int numOfchilds,dBodyID Body);
+	void Create(u32 numOfchilds,dBodyID Body);
 	void CalculateData(void);
 	PHDynamicData * GetChild(unsigned int ChildNum);
 	bool SetChild(unsigned int ChildNum,unsigned int numOfchilds,dBodyID body);

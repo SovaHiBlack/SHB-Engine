@@ -207,12 +207,12 @@ public:
 
 			void				ChangeTeam			(u8 team, u8 squad, u8 group);
 
-	// CAI_Stalker
+	// CStalker
 			CScriptGameObject	*GetCurrentWeapon	() const;
 			CScriptGameObject	*GetFood			() const;
 			CScriptGameObject	*GetMedikit			() const;
 
-	// CAI_Bloodsucker
+	// CBloodsucker
 			void				set_invisible			(bool val);
 			bool				get_invisible			();
 			void				set_manual_invisibility (bool val);

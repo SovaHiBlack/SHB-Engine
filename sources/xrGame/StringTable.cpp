@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 #include "ui/xrUIXmlParser.h"
 #include "xr_level_controller.h"
@@ -32,8 +32,8 @@ void CStringTable::Init( )
 	pcstr S = pSettings->r_string("string_table", "files");
 	if (S && S[0])
 	{
-		string128	xml_file;
-		s32			count = _GetItemCount(S);
+		string128 xml_file;
+		s32 count = _GetItemCount(S);
 		for (s32 it = 0; it < count; ++it)
 		{
 			_GetItem(S, it, xml_file);
@@ -87,7 +87,6 @@ void CStringTable::ReparseKeyBindings( )
 
 	STRING_TABLE_MAP_IT it = pData->m_string_key_binding.begin( );
 	STRING_TABLE_MAP_IT it_e = pData->m_string_key_binding.end( );
-
 	for (; it != it_e; ++it)
 	{
 		pData->m_StringTable[it->first] = ParseLine(*it->second, *it->first, false);

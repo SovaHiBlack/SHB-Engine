@@ -14,15 +14,16 @@
 // CStalkerActionDead
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDead : public CStalkerActionBase {
+class CStalkerActionDead : public CStalkerActionBase
+{
 protected:
 	typedef CStalkerActionBase inherited;
 
 private:
-			bool		fire						() const;
+	bool		fire( ) const;
 
 public:
-						CStalkerActionDead			(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize					();
-	virtual void		execute						();
+	CStalkerActionDead(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
 };

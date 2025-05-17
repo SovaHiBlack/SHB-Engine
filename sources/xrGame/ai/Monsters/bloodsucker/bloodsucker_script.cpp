@@ -1,15 +1,15 @@
 #include "stdafx.h"
 
-#include "bloodsucker.h"
+#include "Bloodsucker.h"
 
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_Bloodsucker::script_register(lua_State *L)
+void CBloodsucker::script_register(lua_State *L)
 {
 	module(L)
 	[
-		class_<CAI_Bloodsucker,CGameObject>("CAI_Bloodsucker")
+		class_<CBloodsucker,CGameObject>("CBloodsucker")
 			.def(constructor<>())
 	];
 }

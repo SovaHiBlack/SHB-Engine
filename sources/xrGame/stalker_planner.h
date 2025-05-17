@@ -12,15 +12,16 @@
 #include "action_script_base.h"
 #include "action_planner_action_script.h"
 
-class CAI_Stalker;
+class CStalker;
 
-class CStalkerPlanner : public CActionPlannerScript<CAI_Stalker> {
+class CStalkerPlanner : public CActionPlannerScript<CStalker>
+{
 protected:
-	typedef CActionPlannerScript<CAI_Stalker>			inherited;
-	typedef CActionScriptBase<CAI_Stalker>				CAction;
+	typedef CActionPlannerScript<CStalker>			inherited;
+	typedef CActionScriptBase<CStalker>				CAction;
 	typedef GraphEngineSpace::_solver_value_type		_value_type;
 	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
-	typedef CActionPlannerActionScript<CAI_Stalker>		CActionPlannerAction;
+	typedef CActionPlannerActionScript<CStalker>		CActionPlannerAction;
 
 private:
 	bool					m_affect_cover;
@@ -28,24 +29,24 @@ private:
 	CWorldState				m_dead_goal;
 
 protected:
-			void			add_evaluators		();
-			void			add_actions			();
+	void			add_evaluators( );
+	void			add_actions( );
 #ifdef LOG_ACTION
 public:
-	virtual pcstr			action2string		(const _action_id_type &action_id);
-	virtual pcstr			property2string		(const _condition_type &property_id);
+	virtual pcstr			action2string(const _action_id_type& action_id);
+	virtual pcstr			property2string(const _condition_type& property_id);
 #endif
 
 public:
-							CStalkerPlanner		();
-	virtual					~CStalkerPlanner	();
-	virtual	void			setup				(CAI_Stalker *object);
-	virtual	void			update				(u32 time_delta);
-	IC		void			affect_cover		(bool value);
-	IC		bool			affect_cover		() const;
+	CStalkerPlanner( );
+	virtual					~CStalkerPlanner( );
+	virtual	void			setup(CStalker* object);
+	virtual	void			update(u32 time_delta);
+	IC		void			affect_cover(bool value);
+	IC		bool			affect_cover( ) const;
 
 #ifdef LOG_ACTION
-	virtual	pcstr			object_name			() const;
+	virtual	pcstr			object_name( ) const;
 #endif
 };
 

@@ -3,11 +3,11 @@
 #include "hudtarget.h"
 
 #include "actor.h"
-#include "..\XR_3DA\igame_level.h"
+#include "..\XR_3DA\IGameLevel.h"
 #include "clsid_game.h"
 #include "GamePersistent.h"
 #include "ui\UIMainInGameWnd.h"//
-#include "string_table.h"
+#include "StringTable.h"
 
 CFontManager::CFontManager( )
 {

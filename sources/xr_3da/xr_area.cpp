@@ -1,18 +1,16 @@
 #include "stdafx.h"
-#include "igame_level.h"
+#include "IGameLevel.h"
 
 #include "xr_area.h"
 #include "Object.h"
 #include "xrLevel.h"
 #include "feel_sound.h"
-//#include "x_ray.h"
-//#include "GameFont.h"
 
 using namespace collide;
 
 extern BOOL g_bLoaded;
 
-void IGame_Level::SoundEvent_Register(ref_sound_data_ptr S, f32 range)
+void IGameLevel::SoundEvent_Register(ref_sound_data_ptr S, f32 range)
 {
 	if (!g_bLoaded)
 	{
@@ -99,7 +97,7 @@ void IGame_Level::SoundEvent_Register(ref_sound_data_ptr S, f32 range)
 	snd_ER.clear_not_free( );
 }
 
-void IGame_Level::SoundEvent_Dispatch( )
+void IGameLevel::SoundEvent_Dispatch( )
 {
 	while (!snd_Events.empty( ))
 	{

@@ -5,7 +5,7 @@
 #include "UIEditKeyBind.h"//
 #include "UIScrollView.h"
 #include "../xr_level_controller.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 CUIKeyBinding::CUIKeyBinding( )
 {

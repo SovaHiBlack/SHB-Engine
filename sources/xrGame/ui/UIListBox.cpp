@@ -2,7 +2,7 @@
 #include "UIListBox.h"
 #include "UIListBoxItem.h"
 #include "UIScrollBar.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 CUIListBox::CUIListBox( )
 {

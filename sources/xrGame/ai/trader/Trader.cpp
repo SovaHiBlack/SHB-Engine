@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: Trader.cpp
-//	Created 	: 13.05.2002
-//  Modified 	: 13.05.2002
-//	Author		: Jim
 //	Description : AI Behaviour for monster "Trader"
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -37,15 +34,11 @@ CTrader::~CTrader( )
 
 void CTrader::Load(pcstr section)
 {
-	//	setEnabled						(FALSE);
 	inherited::Load(section);
 
-	//fHealth							= pSettings->r_float	(section,"Health");
 	SetfHealth(pSettings->r_float(section, "Health"));
-
 	f32 max_weight = pSettings->r_float(section, "max_item_mass");
 	inventory( ).SetMaxWeight(max_weight * 1000);
-	//	inventory().SetMaxRuck(1000000);
 	inventory( ).CalcTotalWeight( );
 }
 
@@ -71,14 +64,10 @@ bool CTrader::bfAssignSound(CScriptEntityAction* tpEntityAction)
 {
 	if (!CScriptEntity::bfAssignSound(tpEntityAction))
 	{
-//m_cur_head_anim_type	= MonsterSpace::eHeadAnimNone;
-		return					(false);
+		return false;
 	}
 
-	//CScriptSoundAction	&l_tAction	= tpEntityAction->m_tSoundAction;
-	//m_cur_head_anim_type = l_tAction.m_tHeadAnimType;
-
-	return				(true);
+	return true;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -87,7 +76,6 @@ bool CTrader::bfAssignSound(CScriptEntityAction* tpEntityAction)
 void CTrader::BoneCallback(CBoneInstance* B)
 {
 	CTrader* this_class = static_cast<CTrader*>(B->Callback_Param);
-
 	this_class->LookAtActor(B);
 }
 
@@ -107,10 +95,13 @@ void CTrader::LookAtActor(CBoneInstance* B)
 	f32 cur_yaw = h;
 	f32 dy = _abs(angle_normalize_signed(yaw - cur_yaw));
 
-	if (angle_normalize_signed(yaw - cur_yaw) > 0) dy *= -1.f;
+	if (angle_normalize_signed(yaw - cur_yaw) > 0.0f)
+	{
+		dy *= -1.0f;
+	}
 
 	fMatrix4x4 M;
-	M.setHPB(0.f, -dy, 0.f);
+	M.setHPB(0.0f, -dy, 0.0f);
 	B->mTransform.mulB_43(M);
 }
 
@@ -124,10 +115,14 @@ BOOL CTrader::net_Spawn(CSE_Abstract* DC)
 
 	//проспавнить PDA у InventoryOwner
 	if (!CInventoryOwner::net_Spawn(DC))
-		return				(FALSE);
+	{
+		return FALSE;
+	}
 
 	if (!inherited::net_Spawn(DC) || !CScriptEntity::net_Spawn(DC))
-		return				(FALSE);
+	{
+		return FALSE;
+	}
 
 	setVisible(TRUE);
 	setEnabled(TRUE);
@@ -141,22 +136,19 @@ BOOL CTrader::net_Spawn(CSE_Abstract* DC)
 	shedule.t_min = 100;
 	shedule.t_max = 2500; // This equaltiy is broken by Dima :-( // 30 * NET_Latency / 4;
 
-	return					(TRUE);
+	return TRUE;
 }
 
 void CTrader::net_Export(CNetPacket& P)
 {
 	R_ASSERT(Local( ));
-
-	//	P.w_float						(inventory().TotalWeight());
-	//	P.w_u32							(m_dwMoney);
 }
 
 void CTrader::net_Import(CNetPacket& P)
 {
 	R_ASSERT(Remote( ));
 
-	f32							fDummy;
+	f32 fDummy;
 	P.r_float(fDummy);
 	set_money(P.r_u32( ), false);
 
@@ -176,6 +168,7 @@ void CTrader::OnEvent(CNetPacket& P, u16 type)
 	{
 		case GE_TRADE_BUY:
 		case GE_OWNERSHIP_TAKE:
+		{
 			P.r_u16(id);
 			Obj = Level( ).Objects.net_Find(id);
 			if (inventory( ).CanTakeItem(smart_cast<CInventoryItem*>(Obj)))
@@ -185,12 +178,13 @@ void CTrader::OnEvent(CNetPacket& P, u16 type)
 			}
 			else
 			{
-				CNetPacket				P;
+				CNetPacket P;
 				u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
 				P.w_u16(u16(Obj->ID( )));
 				u_EventSend(P);
 			}
-			break;
+		}
+		break;
 		case GE_TRADE_SELL:
 		case GE_OWNERSHIP_REJECT:
 		{
@@ -199,17 +193,29 @@ void CTrader::OnEvent(CNetPacket& P, u16 type)
 			bool just_before_destroy = !P.r_eof( ) && P.r_u8( );
 			Obj->SetTmpPreDestroy(just_before_destroy);
 			if (inventory( ).DropItem(smart_cast<CGameObject*>(Obj)))
+			{
 				Obj->H_SetParent(0, just_before_destroy);
-		}break;
+			}
+		}
+		break;
 		case GE_TRANSFER_AMMO:
-			break;
+		{
+		}
+		break;
 	}
 }
 
 void CTrader::feel_touch_new(CObject* O)
 {
-	if (!g_Alive( ))		return;
-	if (Remote( ))		return;
+	if (!g_Alive( ))
+	{
+		return;
+	}
+
+	if (Remote( ))
+	{
+		return;
+	}
 
 	// Now, test for game specific logical objects to minimize traffic
 	CInventoryItem* I = smart_cast<CInventoryItem*>	(O);
@@ -217,7 +223,7 @@ void CTrader::feel_touch_new(CObject* O)
 	if (I && I->useful_for_NPC( ))
 	{
 		Msg("Taking item %s!", *I->object( ).cName( ));
-		CNetPacket		P;
+		CNetPacket P;
 		u_EventGen(P, GE_OWNERSHIP_TAKE, ID( ));
 		P.w_u16(u16(I->object( ).ID( )));
 		u_EventSend(P);
@@ -227,11 +233,13 @@ void CTrader::feel_touch_new(CObject* O)
 void CTrader::DropItemSendMessage(CObject* O)
 {
 	if (!O || !O->H_Parent( ) || (this != O->H_Parent( )))
+	{
 		return;
+	}
 
 	Msg("Dropping item!");
 	// We doesn't have similar weapon - pick up it
-	CNetPacket				P;
+	CNetPacket P;
 	u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
 	P.w_u16(u16(O->ID( )));
 	u_EventSend(P);
@@ -242,8 +250,14 @@ void CTrader::shedule_Update(u32 dt)
 	inherited::shedule_Update(dt);
 	UpdateInventoryOwner(dt);
 
-	if (GetScriptControl( )) ProcessScripts( );
-	else Think( );
+	if (GetScriptControl( ))
+	{
+		ProcessScripts( );
+	}
+	else
+	{
+		Think( );
+	}
 }
 
 void CTrader::g_WeaponBones(s32& L, s32& R1, s32& R2)
@@ -284,14 +298,15 @@ void CTrader::UpdateCL( )
 	inherited::UpdateCL( );
 	sound( ).update(Device.fTimeDelta);
 
-
 	if (!GetScriptControl( ) && !bfScriptAnimation( ))
+	{
 		animation( ).update_frame( );
+	}
 }
 
 BOOL CTrader::UsedAI_Locations( )
 {
-	return					(TRUE);
+	return TRUE;
 }
 
 void CTrader::OnStartTrade( )
@@ -310,12 +325,12 @@ void CTrader::OnStopTrade( )
 
 bool CTrader::can_attach(const CInventoryItem* inventory_item) const
 {
-	return				(false);
+	return false;
 }
 
 bool CTrader::use_bolts( ) const
 {
-	return				(false);
+	return false;
 }
 
 void CTrader::spawn_supplies( )
@@ -352,16 +367,20 @@ bool CTrader::BuyArtefact(CArtefact* pArtefact)
 ALife::ERelationType  CTrader::tfGetRelationType(const CEntityAlive* tpEntityAlive) const
 {
 	const CInventoryOwner* pOtherIO = smart_cast<const CInventoryOwner*>(tpEntityAlive);
-
 	ALife::ERelationType relation = ALife::eRelationTypeDummy;
-
 	if (pOtherIO && !(const_cast<CEntityAlive*>(tpEntityAlive)->cast_base_monster( )))
+	{
 		relation = RELATION_REGISTRY( ).GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
+	}
 
 	if (ALife::eRelationTypeDummy != relation)
+	{
 		return relation;
+	}
 	else
+	{
 		return inherited::tfGetRelationType(tpEntityAlive);
+	}
 }
 
 DLL_Pure* CTrader::_construct( )
@@ -372,18 +391,22 @@ DLL_Pure* CTrader::_construct( )
 	CInventoryOwner::_construct( );
 	CScriptEntity::_construct( );
 
-	return						(this);
+	return this;
 }
 
-bool CTrader::AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const
+bool CTrader::AllowItemToTrade(const CInventoryItem* item, EItemPlace place) const
 {
 	if (!g_Alive( ))
-		return					(true);
+	{
+		return true;
+	}
 
 	if (item->object( ).CLS_ID == CLSID_DEVICE_PDA)
-		return					(false);
+	{
+		return false;
+	}
 
-	return						(CInventoryOwner::AllowItemToTrade(item, place));
+	return CInventoryOwner::AllowItemToTrade(item, place);
 }
 
 void CTrader::dialog_sound_start(pcstr phrase)

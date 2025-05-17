@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "flod.h"
-
-#include "..\XR_3DA\igame_persistent.h"
-#include "..\XR_3DA\environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 extern f32	r_ssaLOD_A;
 extern f32	r_ssaLOD_B;

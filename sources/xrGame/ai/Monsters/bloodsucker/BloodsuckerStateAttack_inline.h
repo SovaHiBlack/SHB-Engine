@@ -1,6 +1,5 @@
 #pragma once
 
-//#include "bloodsucker_attack_state_hide.h"
 #include "../states/state_move_to_point.h"
 
 #define TEMPLATE_SPECIALIZATION template <\
@@ -12,7 +11,6 @@
 TEMPLATE_SPECIALIZATION
 CBloodsuckerStateAttackAbstract::CBloodsuckerStateAttack(_Object *obj) : inherited_attack(obj)
 {
-	//add_state(eStateAttack_Hide,	xr_new<CBloodsuckerStateAttackHide<_Object> > (obj));
 	add_state	(eStateAttack_Hide,	xr_new<CStateMonsterMoveToPointEx<_Object> >(obj));
 }
 

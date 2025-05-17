@@ -9,7 +9,7 @@
 #include "xrHemisphere.h"
 #include "perlin.h"
 #include "resourcemanager.h"
-#include "IGame_Level.h"
+#include "IGameLevel.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

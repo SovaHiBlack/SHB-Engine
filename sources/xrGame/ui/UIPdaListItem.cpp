@@ -3,7 +3,7 @@
 #include "UIPdaListItem.h"//
 #include "../actor.h"
 #include "UIInventoryUtilities.h"//
-#include "../string_table.h"
+#include "../StringTable.h"
 
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"

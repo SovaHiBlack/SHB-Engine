@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "..\XR_3DA\igame_level.h"
+#include "..\XR_3DA\IGameLevel.h"
 #include "../xrNetServer/net_client.h"
 #include "script_export_space.h"
 #include "..\XR_3DA\StatGraph.h"
@@ -54,7 +54,7 @@ public:
 };
 
 
-class CLevel : public IGame_Level, public IPureClient
+class CLevel : public IGameLevel, public IPureClient
 {
 #include "Level_network_Demo.h"
 	void						ClearAllObjects( );
@@ -63,7 +63,7 @@ private:
 	bool						m_bSynchronization;
 #endif
 protected:
-	typedef IGame_Level			inherited;
+	typedef IGameLevel			inherited;
 
 	CLevelSoundManager* m_level_sound_manager;
 

@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "igame_level.h"
+#include "IGameLevel.h"
 #include "DemoPlay.h"
 #include "Console.h"
 #include "motion.h"

@@ -2,7 +2,7 @@
 
 #include "ModelPool.h"
 
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "..\XR_3DA\mesh.h"
 #include "..\XR_3DA\HierrarhyVisual.h"
 #include "..\XR_3DA\SkeletonAnimated.h"

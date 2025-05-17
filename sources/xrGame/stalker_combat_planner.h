@@ -10,16 +10,18 @@
 
 #include "action_planner_action_script.h"
 
-class CAI_Stalker;
+class CStalker;
 
-class CStalkerCombatPlanner : public CActionPlannerActionScript<CAI_Stalker> {
+class CStalkerCombatPlanner : public CActionPlannerActionScript<CStalker>
+{
 public:
-	enum {
+	enum
+	{
 		POST_COMBAT_WAIT_INTERVAL = 3000,
 	};
 
 private:
-	typedef CActionPlannerActionScript<CAI_Stalker> inherited;
+	typedef CActionPlannerActionScript<CStalker> inherited;
 
 private:
 	u32					m_last_level_time;
@@ -27,20 +29,20 @@ private:
 	bool				m_last_wounded;
 
 protected:
-			void		add_evaluators				();
-			void		add_actions					();
+	void		add_evaluators( );
+	void		add_actions( );
 
 public:
-			void xr_stdcall	on_best_cover_changed	(const CCoverPoint *new_cover, const CCoverPoint *old_cover);
+	void xr_stdcall	on_best_cover_changed(const CCoverPoint* new_cover, const CCoverPoint* old_cover);
 
 public:
-						CStalkerCombatPlanner		(CAI_Stalker *object = 0, pcstr action_name = "");
-	virtual				~CStalkerCombatPlanner		();
-	virtual	void		setup						(CAI_Stalker *object, CPropertyStorage *storage);
-	virtual void		update						();
-	virtual void		initialize					();
-	virtual void		execute						();
-	virtual void		finalize					();
-	virtual	void		save						(CNetPacket& packet);
-	virtual	void		load						(IReader &packet);
+	CStalkerCombatPlanner(CStalker* object = 0, pcstr action_name = "");
+	virtual				~CStalkerCombatPlanner( );
+	virtual	void		setup(CStalker* object, CPropertyStorage* storage);
+	virtual void		update( );
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
+	virtual	void		save(CNetPacket& packet);
+	virtual	void		load(IReader& packet);
 };

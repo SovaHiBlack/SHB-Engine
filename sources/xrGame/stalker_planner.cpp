@@ -10,7 +10,7 @@
 #include "stalker_planner.h"
 #include "stalker_property_evaluators.h"
 #include "stalker_danger_property_evaluators.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_decision_space.h"
 #include "script_game_object.h"
 #include "stalker_alife_planner.h"
@@ -50,7 +50,7 @@ pcstr CStalkerPlanner::object_name		() const
 }
 #endif
 
-void CStalkerPlanner::setup			(CAI_Stalker *object)
+void CStalkerPlanner::setup			(CStalker*object)
 {
 #ifdef LOG_ACTION
 	set_use_log					(!!psAI_Flags.test(aiGOAP));

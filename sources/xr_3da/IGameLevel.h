@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IInputReceiver.h"
-//#include "CameraManager.h"
 #include "ObjectList.h"
 #include "xr_area.h"
 
@@ -10,6 +9,7 @@ class ENGINE_API CCameraManager;
 class ENGINE_API CCursor;
 class ENGINE_API CCustomHUD;
 class ENGINE_API ISpatial;
+
 namespace Feel
 {
 	class ENGINE_API Sound;
@@ -44,21 +44,13 @@ public:
 
 	IC SItem_ServerInfo& operator[] (u32 id)
 	{
-		VERIFY(id < max_item); return data[id];
+		VERIFY(id < max_item);
+		return data[id];
 	}
-
-//CServerInfo() {};
-//~CServerInfo() {};
 };
 
-
 //-----------------------------------------------------------------------------------------------------------
-class ENGINE_API	IGame_Level :
-	public DLL_Pure,
-	public IInputReceiver,
-	public pureRender,
-	public pureFrame,
-	public IEventReceiver
+class ENGINE_API	IGameLevel : public DLL_Pure, public IInputReceiver, public pureRender, public pureFrame, public IEventReceiver
 {
 protected:
 	// Network interface
@@ -80,7 +72,7 @@ public:
 	CCameraManager& Cameras( )
 	{
 		return *m_pCameras;
-	};
+	}
 
 	BOOL						bReady;
 
@@ -98,8 +90,8 @@ public:	// deferred sound events
 
 public:
 	// Main, global functions
-	IGame_Level( );
-	virtual ~IGame_Level( );
+	IGameLevel( );
+	virtual ~IGameLevel( );
 
 	virtual shared_str			name( ) const = 0;
 	virtual void				GetLevelInfo(CServerInfo* si) = 0;
@@ -114,22 +106,22 @@ public:
 	virtual BOOL				Load_GameSpecific_Before( )
 	{
 		return TRUE;
-	};		// before object loading
+	}		// before object loading
 	virtual BOOL				Load_GameSpecific_After( )
 	{
 		return TRUE;
-	};		// after object loading
+	}		// after object loading
 	virtual void				Load_GameSpecific_CFORM(CDB::TRI* T, u32 count) = 0;
 
-	virtual void				OnFrame(void);
-	virtual void				OnRender(void);
+	virtual void				OnFrame( );
+	virtual void				OnRender( );
 
 	// Main interface
-	CObject* CurrentEntity(void) const
+	CObject* CurrentEntity( ) const
 	{
 		return pCurrentEntity;
 	}
-	CObject* CurrentViewEntity(void) const
+	CObject* CurrentViewEntity( ) const
 	{
 		return pCurrentViewEntity;
 	}
@@ -150,24 +142,16 @@ public:
 };
 
 //-----------------------------------------------------------------------------------------------------------
-extern ENGINE_API	IGame_Level* g_pGameLevel;
+extern ENGINE_API IGameLevel* g_pGameLevel;
 
 template <typename _class_type>
 void relcase_register(_class_type* self, void (xr_stdcall _class_type::* function_to_bind)(CObject*))
 {
-	g_pGameLevel->Objects.relcase_register(
-		CObjectList::RELCASE_CALLBACK(
-		self,
-		function_to_bind)
-	);
+	g_pGameLevel->Objects.relcase_register(CObjectList::RELCASE_CALLBACK(self, function_to_bind));
 }
 
 template <typename _class_type>
 void relcase_unregister(_class_type* self, void (xr_stdcall _class_type::* function_to_bind)(CObject*))
 {
-	g_pGameLevel->Objects.relcase_unregister(
-		CObjectList::RELCASE_CALLBACK(
-		self,
-		function_to_bind)
-	);
+	g_pGameLevel->Objects.relcase_unregister(CObjectList::RELCASE_CALLBACK(self, function_to_bind));
 }

@@ -16,7 +16,7 @@
 #include "IKLimbsController.h"
 #include "PHCapture.h"
 #include "PHCollideValidator.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "interactive_motion.h"
 #include "animation_movement_controller.h"
 
@@ -646,7 +646,7 @@ bool CCharacterPhysicsSupport::DoCharacterShellCollide( )
 {
 	if (m_eType == etStalker)
 	{
-		CAI_Stalker* OBJ = smart_cast<CAI_Stalker*>(&m_EntityAlife);
+		CStalker* OBJ = smart_cast<CStalker*>(&m_EntityAlife);
 		VERIFY(OBJ);
 		return !OBJ->wounded( );
 	}

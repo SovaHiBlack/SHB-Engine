@@ -1,19 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_stalker_script.cpp
+//	Module 		: Stalker_script.cpp
 //	Description : Stalker script functions
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../stalker_decision_space.h"
-#include "ai_stalker_space.h"
+#include "Stalker_space.h"
 #include "../../script_game_object.h"
 #include "../../stalker_planner.h"
 
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_Stalker::script_register(lua_State *L)
+void CStalker::script_register(lua_State *L)
 {
 	module(L)
 	[
@@ -159,7 +159,7 @@ void CAI_Stalker::script_register(lua_State *L)
 				luabind::value("sound_script",								StalkerSpace::eStalkerSoundScript)
 			],
 		
-		class_<CAI_Stalker,CGameObject>("CAI_Stalker")
+		class_<CStalker,CGameObject>("CStalker")
 			.def(constructor<>())
 	];
 }

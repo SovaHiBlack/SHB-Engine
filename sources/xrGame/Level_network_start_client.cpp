@@ -5,7 +5,7 @@
 #include "Physics.h"
 #include "level.h"
 #include "..\XR_3DA\x_ray.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "PhysicsGamePars.h"
 #include "AISpace.h"
 
@@ -15,7 +15,7 @@ BOOL CLevel::net_Start_client	(pcstr options )
 {
 	return FALSE;
 }
-#include "string_table.h"
+#include "StringTable.h"
 bool	CLevel::net_start_client1				()
 {
 	pApp->LoadBegin	();

@@ -1,15 +1,8 @@
 #include "stdafx.h"
-#include "igame_level.h"
-
+#include "IGameLevel.h"
 #include "Object.h"
-//#include "xr_area.h"
 #include "Render.h"
-//#include "xrLevel.h"
 #include "BasicVisual.h"
-
-//#include "x_ray.h"
-//#include "GameFont.h"
-
 #include "SkeletonCustom.h"
 
 void CObject::MakeMeCrow_internal( )

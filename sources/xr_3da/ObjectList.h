@@ -30,7 +30,7 @@ public:
 		{ }
 		bool	operator==			(RELCASE_CALLBACK cb)
 		{
-			return m_Callback == cb;
+			return (m_Callback == cb);
 		}
 	};
 	typedef xr_vector<SRelcasePair>					RELCASE_CALLBACK_VEC;

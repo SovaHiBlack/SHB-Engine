@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_animation_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_engine.h"
 #include "game_object_space.h"
 #include "script_callback_ex.h"
@@ -16,7 +16,7 @@
 
 void CStalkerAnimationManager::script_play_callback(CBlend *blend)
 {
-	CAI_Stalker					*object = (CAI_Stalker*)blend->CallbackParam;
+	CStalker*object = (CStalker*)blend->CallbackParam;
 	VERIFY						(object);
 	
 	CStalkerAnimationManager	&animation_manager = object->animation();

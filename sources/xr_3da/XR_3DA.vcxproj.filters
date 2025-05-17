@@ -180,10 +180,10 @@
     <ClInclude Include="ICollidable.h">
       <Filter>Interfaces\Collidable</Filter>
     </ClInclude>
-    <ClInclude Include="IGame_Level.h">
+    <ClInclude Include="IGameLevel.h">
       <Filter>Game API</Filter>
     </ClInclude>
-    <ClInclude Include="IGame_Persistent.h">
+    <ClInclude Include="IGamePersistent.h">
       <Filter>Game API</Filter>
     </ClInclude>
     <ClInclude Include="xrLevel.h">
@@ -530,13 +530,10 @@
     <ClCompile Include="ICollidable.cpp">
       <Filter>Interfaces\Collidable</Filter>
     </ClCompile>
-    <ClCompile Include="IGame_Level.cpp">
+    <ClCompile Include="IGameLevel.cpp">
       <Filter>Game API</Filter>
     </ClCompile>
-    <ClCompile Include="IGame_Level_check_textures.cpp">
-      <Filter>Game API</Filter>
-    </ClCompile>
-    <ClCompile Include="IGame_Persistent.cpp">
+    <ClCompile Include="IGamePersistent.cpp">
       <Filter>Game API</Filter>
     </ClCompile>
     <ClCompile Include="IGame_ObjectPool.cpp">

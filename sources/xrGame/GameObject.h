@@ -26,7 +26,7 @@ class CCustomZone;
 class IInputReceiver;
 class CArtefact;
 class CCustomMonster;
-class CAI_Stalker;
+class CStalker;
 class CScriptEntity;
 class CAI_ObjectLocation;
 class CWeapon;
@@ -121,7 +121,7 @@ public:
 	{
 		return NULL;
 	}
-	virtual CAI_Stalker* cast_stalker( )
+	virtual CStalker* cast_stalker( )
 	{
 		return NULL;
 	}

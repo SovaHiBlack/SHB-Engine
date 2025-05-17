@@ -15,13 +15,14 @@
 
 class CMotionDef;
 class CBlend;
-class CAI_Stalker;
+class CStalker;
 class CWeapon;
 class CMissile;
 class CPropertyStorage;
 class CStalkerAnimationData;
 
-class CStalkerAnimationManager {
+class CStalkerAnimationManager
+{
 public:
 	typedef xr_deque<CStalkerAnimationScript>					SCRIPT_ANIMATIONS;
 	typedef MonsterSpace::EMovementDirection					EMovementDirection;
@@ -32,7 +33,7 @@ public:
 	typedef BLEND_ID											ANIMATION_ID;
 
 private:
-	const CStalkerAnimationData		*m_data_storage;
+	const CStalkerAnimationData* m_data_storage;
 	SCRIPT_ANIMATIONS				m_script_animations;
 
 private:
@@ -58,13 +59,13 @@ private:
 	bool							m_no_move_actual;
 
 private:
-	CAI_Stalker						*m_object;
+	CStalker* m_object;
 	IRenderVisual* m_visual;
-	CKinematicsAnimated				*m_skeleton_animated;
+	CKinematicsAnimated* m_skeleton_animated;
 
 private:
-	CWeapon							*m_weapon;
-	CMissile						*m_missile;
+	CWeapon* m_weapon;
+	CMissile* m_missile;
 
 private:
 	bool							m_call_script_callback;
@@ -79,94 +80,94 @@ private:
 	f32							m_current_speed;
 
 private:
-	IC		bool					strapped				() const;
-	IC		bool					standing				() const;
-	IC		void					fill_object_info		();
-	IC		u32						object_slot				() const;
-	IC		EBodyState				body_state				() const;
+	IC		bool					strapped( ) const;
+	IC		bool					standing( ) const;
+	IC		void					fill_object_info( );
+	IC		u32						object_slot( ) const;
+	IC		EBodyState				body_state( ) const;
 
 private:
-			bool					need_look_back			() const;
+	bool					need_look_back( ) const;
 
 private:
-			MotionID				no_object_animation		(const EBodyState &body_state) const;
-			MotionID				unknown_object_animation(u32 slot, const EBodyState &body_state) const;
-			MotionID				weapon_animation		(u32 slot, const EBodyState &body_state);
-			MotionID				missile_animation		(u32 slot, const EBodyState &body_state);
+	MotionID				no_object_animation(const EBodyState& body_state) const;
+	MotionID				unknown_object_animation(u32 slot, const EBodyState& body_state) const;
+	MotionID				weapon_animation(u32 slot, const EBodyState& body_state);
+	MotionID				missile_animation(u32 slot, const EBodyState& body_state);
 
 private:
-	IC		f32					legs_switch_factor		() const;
-			void					legs_assign_direction	(f32 switch_factor, const EMovementDirection &direction);
-			void					legs_process_direction	(f32 yaw);
-			MotionID				legs_move_animation		();
-			MotionID				legs_no_move_animation	();
+	IC		f32					legs_switch_factor( ) const;
+	void					legs_assign_direction(f32 switch_factor, const EMovementDirection& direction);
+	void					legs_process_direction(f32 yaw);
+	MotionID				legs_move_animation( );
+	MotionID				legs_no_move_animation( );
 
 private:
-			MotionID				global_critical_hit		();
+	MotionID				global_critical_hit( );
 
 private:
-			void					assign_bone_callbacks	();
-			MotionID				assign_global_animation	();
-			MotionID				assign_head_animation	();
-			MotionID				assign_torso_animation	();
-			MotionID				assign_legs_animation	();
-	const CStalkerAnimationScript	&assign_script_animation() const;
+	void					assign_bone_callbacks( );
+	MotionID				assign_global_animation( );
+	MotionID				assign_head_animation( );
+	MotionID				assign_torso_animation( );
+	MotionID				assign_legs_animation( );
+	const CStalkerAnimationScript& assign_script_animation( ) const;
 
 public:
-	IC		bool					non_script_need_update	() const;
+	IC		bool					non_script_need_update( ) const;
 
 private:
-	IC		bool 					script_callback			() const;
-	IC		bool					need_update				() const;
-	IC		void 					update_tracks			();
+	IC		bool 					script_callback( ) const;
+	IC		bool					need_update( ) const;
+	IC		void 					update_tracks( );
 
 private:
-	IC		void					play_script_impl		();
-			bool 					play_script				();
+	IC		void					play_script_impl( );
+	bool 					play_script( );
 
 private:
-	IC		void					play_global_impl		(const MotionID &animation);
-			bool 					play_global				();
+	IC		void					play_global_impl(const MotionID& animation);
+	bool 					play_global( );
 
 private:
-	IC		void 					play_head				();
-	IC		void 					play_torso				();
-			void 					play_legs				();
-			void 					update_impl				();
+	IC		void 					play_head( );
+	IC		void 					play_torso( );
+	void 					play_legs( );
+	void 					update_impl( );
 
 private:
-	static	void					global_play_callback	(CBlend *blend);
-	static	void					head_play_callback		(CBlend *blend);
-	static	void					torso_play_callback		(CBlend *blend);
-	static	void					legs_play_callback		(CBlend *blend);
-	static	void					script_play_callback	(CBlend *blend);
+	static	void					global_play_callback(CBlend* blend);
+	static	void					head_play_callback(CBlend* blend);
+	static	void					torso_play_callback(CBlend* blend);
+	static	void					legs_play_callback(CBlend* blend);
+	static	void					script_play_callback(CBlend* blend);
 
 public:
-	virtual	void					reinit					();
-	virtual	void					reload					(CAI_Stalker *object);
-	virtual void					update					();
-			void					play_fx					(f32 power_factor, int fx_index);
-			void 					play_delayed_callbacks	();
+	virtual	void					reinit( );
+	virtual	void					reload(CStalker* object);
+	virtual void					update( );
+	void					play_fx(f32 power_factor, int fx_index);
+	void 					play_delayed_callbacks( );
 
 public:
-			void					add_script_animation	(pcstr animation, bool hand_usage = false, bool use_movement_controller = false);
-	IC		void					clear_script_animations	();
-	IC		void					pop_script_animation	();
-	IC		const SCRIPT_ANIMATIONS	&script_animations		() const;
+	void					add_script_animation(pcstr animation, bool hand_usage = false, bool use_movement_controller = false);
+	IC		void					clear_script_animations( );
+	IC		void					pop_script_animation( );
+	IC		const SCRIPT_ANIMATIONS& script_animations( ) const;
 
 public:
-	IC		CStalkerAnimationPair	&global					();
-	IC		CStalkerAnimationPair	&head					();
-	IC		CStalkerAnimationPair	&torso					();
-	IC		CStalkerAnimationPair	&legs					();
-	IC		CStalkerAnimationPair	&script					();
-	IC		CAI_Stalker				&object					() const;
+	IC		CStalkerAnimationPair& global( );
+	IC		CStalkerAnimationPair& head( );
+	IC		CStalkerAnimationPair& torso( );
+	IC		CStalkerAnimationPair& legs( );
+	IC		CStalkerAnimationPair& script( );
+	IC		CStalker& object( ) const;
 
 #ifdef DEBUG
 private:
-			void					add_animation_stats		(const ANIMATION_ID &animation_id, const BLEND_ID *blend_id, bool just_started);
+	void					add_animation_stats(const ANIMATION_ID& animation_id, const BLEND_ID* blend_id, bool just_started);
 public:
-			void					add_animation_stats		();
+	void					add_animation_stats( );
 #endif // DEBUG
 };
 

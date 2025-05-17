@@ -13,7 +13,7 @@
 #include "patrol_path_storage.h"
 #include "xrServer.h"
 #include "ClientSpawnManager.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "game_cl_base.h"
 #include "ui/UIDialogWnd.h"
 #include "date_time.h"

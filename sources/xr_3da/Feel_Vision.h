@@ -10,12 +10,12 @@ class ISpatial;
 
 namespace Feel
 {
-	const f32 fuzzy_update_vis		= 1000.0f;		// speed of fuzzy-logic desisions
-	const f32 fuzzy_update_novis	= 1000.0f;		// speed of fuzzy-logic desisions
-	const f32 fuzzy_guaranteed		= 0.001f;		// distance which is supposed 100% visible
-	const f32 lr_granularity		= 0.1f;			// assume similar positions
+	const f32 fuzzy_update_vis = 1000.0f;		// speed of fuzzy-logic desisions
+	const f32 fuzzy_update_novis = 1000.0f;		// speed of fuzzy-logic desisions
+	const f32 fuzzy_guaranteed = 0.001f;		// distance which is supposed 100% visible
+	const f32 lr_granularity = 0.1f;			// assume similar positions
 
-	class ENGINE_API Vision: private pure_relcase
+	class ENGINE_API Vision : private pure_relcase
 	{
 	private:
 		xr_vector<CObject*>			seen;
@@ -24,17 +24,17 @@ namespace Feel
 		collide::rq_results			RQR;
 		xr_vector<ISpatial*>		r_spatial;
 
-		void						o_new		(CObject* E);
-		void						o_delete	(CObject* E);
-		void						o_trace		(fVector3& P, f32 dt, f32 vis_threshold);
+		void						o_new(CObject* E);
+		void						o_delete(CObject* E);
+		void						o_trace(fVector3& P, f32 dt, f32 vis_threshold);
 
 	public:
-									Vision		();
-		virtual					~	Vision		();
-		struct	 feel_visible_Item 
+		Vision( );
+		virtual					~Vision( );
+		struct	 feel_visible_Item
 		{
 			f32					fuzzy;		// note range: (-1[no]..1[yes])
-			CObject*			O;
+			CObject* O;
 			collide::ray_cache	Cache;
 			f32					Cache_vis;
 			fVector3				cp_LP;
@@ -45,25 +45,28 @@ namespace Feel
 		xr_vector<feel_visible_Item>	feel_visible;
 
 	public:
-		void						feel_vision_clear		();
-		void						feel_vision_query		(fMatrix4x4& mFull, fVector3& P);
-		void						feel_vision_update		(CObject* parent, fVector3& P, f32 dt, f32 vis_threshold);
-		void	__stdcall			feel_vision_relcase		(CObject* object);
-		void						feel_vision_get			(xr_vector<CObject*>& R)		{
-			R.clear					();
-			xr_vector<feel_visible_Item>::iterator I=feel_visible.begin(),E=feel_visible.end();
-			for (; I!=E; I++)	if (positive(I->fuzzy)) R.push_back(I->O);
+		void						feel_vision_clear( );
+		void						feel_vision_query(fMatrix4x4& mFull, fVector3& P);
+		void						feel_vision_update(CObject* parent, fVector3& P, f32 dt, f32 vis_threshold);
+		void	__stdcall			feel_vision_relcase(CObject* object);
+		void						feel_vision_get(xr_vector<CObject*>& R)
+		{
+			R.clear( );
+			xr_vector<feel_visible_Item>::iterator I = feel_visible.begin( ), E = feel_visible.end( );
+			for (; I != E; I++)	if (positive(I->fuzzy)) R.push_back(I->O);
 		}
-		fVector3						feel_vision_get_vispoint(CObject* _O)					{
-			xr_vector<feel_visible_Item>::iterator I=feel_visible.begin(),E=feel_visible.end();
-			for (; I!=E; I++)		if (_O == I->O) {
-				VERIFY	(positive(I->fuzzy));
+		fVector3						feel_vision_get_vispoint(CObject* _O)
+		{
+			xr_vector<feel_visible_Item>::iterator I = feel_visible.begin( ), E = feel_visible.end( );
+			for (; I != E; I++)		if (_O == I->O)
+			{
+				VERIFY(positive(I->fuzzy));
 				return	I->cp_LAST;
 			}
-			VERIFY2		(0, "There is no such object in the potentially visible list" );
-			return		fVector3().set(flt_max,flt_max,flt_max);
+			VERIFY2(0, "There is no such object in the potentially visible list");
+			return		fVector3( ).set(flt_max, flt_max, flt_max);
 		}
-		virtual		BOOL			feel_vision_isRelevant	(CObject* O)					= 0;
-		virtual		f32				feel_vision_mtl_transp	(CObject* O, u32 element)		= 0;
+		virtual		BOOL			feel_vision_isRelevant(CObject* O) = 0;
+		virtual		f32				feel_vision_mtl_transp(CObject* O, u32 element) = 0;
 	};
 };

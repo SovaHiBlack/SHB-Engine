@@ -1,13 +1,14 @@
 #pragma once
 
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
+
 class CMainMenu;
 class CUICursor;
 class CParticlesObject;
 class CUISequencer;
 class ui_core;
 
-class CGamePersistent : public IGame_Persistent, public IEventReceiver
+class CGamePersistent : public IGamePersistent, public IEventReceiver
 {
 	// ambient particles
 	CParticlesObject* ambient_particles;

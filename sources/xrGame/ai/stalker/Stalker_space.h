@@ -1,11 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_stalker_space.h
+//	Module 		: Stalker_space.h
 //	Description : Stalker types and structures
 ////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#define	MAX_HEAD_TURN_ANGLE				(1.0f*PI_DIV_4)
+#define MAX_HEAD_TURN_ANGLE				(1.0f*PI_DIV_4)
 
 namespace StalkerSpace
 {

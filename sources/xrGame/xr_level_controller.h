@@ -51,38 +51,17 @@ enum EGameActions
 	kDROP,
 	kUSE,
 	kSCORES,
-	kCHAT,
-	kCHAT_TEAM,
 	kSCREENSHOT,
 	kQUIT,
 	kCONSOLE,
 	kINVENTORY,
-	kBUY,
-	kSKIN,
-	kTEAM,
 	kACTIVE_JOBS,
 	kMAP,
 	kCONTACTS,
 	kEXT_1,
 
-	kVOTE_BEGIN,
-	kVOTE,
-	kVOTEYES,
-	kVOTENO,
-
 	kNEXT_SLOT,
 	kPREV_SLOT,
-
-	kSPEECH_MENU_0,
-	kSPEECH_MENU_1,
-	kSPEECH_MENU_2,
-	kSPEECH_MENU_3,
-	kSPEECH_MENU_4,
-	kSPEECH_MENU_5,
-	kSPEECH_MENU_6,
-	kSPEECH_MENU_7,
-	kSPEECH_MENU_8,
-	kSPEECH_MENU_9,
 
 	kUSE_BANDAGE,
 	kUSE_MEDKIT,
@@ -98,14 +77,14 @@ enum EGameActions
 struct _keyboard
 {
 	pcstr		key_name;
-	int			dik;
+	s32			dik;
 	xr_string	key_local_name;
 };
 enum _key_group
 {
 	_both = (1 << 0),
 	_sp = _both | (1 << 1),
-	_mp = _both | (1 << 2),
+	_mp = _both | (1 << 2)
 };
 
 extern _key_group g_current_keygroup;
@@ -140,7 +119,7 @@ struct _binding
 extern _binding g_key_bindings[ ];
 
 bool				is_binded(EGameActions action_id, s32 dik);
-int					get_action_dik(EGameActions action_id);
+s32					get_action_dik(EGameActions action_id);
 EGameActions		get_binded_action(s32 dik);
 
 extern void		CCC_RegisterInput( );

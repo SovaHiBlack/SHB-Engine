@@ -15,7 +15,7 @@ class CEnemyManager;
 class CItemManager;
 class CDangerManager;
 class CCustomMonster;
-class CAI_Stalker;
+class CStalker;
 class CEntityAlive;
 class CSound_UserDataVisitor;
 
@@ -39,7 +39,7 @@ protected:
 
 protected:
 	CCustomMonster* m_object;
-	CAI_Stalker* m_stalker;
+	CStalker* m_stalker;
 
 private:
 	void				update_enemies(const bool& registered_in_combat);
@@ -79,7 +79,7 @@ public:
 	IC		CItemManager& item( ) const;
 	IC		CDangerManager& danger( ) const;
 	IC		CCustomMonster& object( ) const;
-	IC		CAI_Stalker& stalker( ) const;
+	IC		CStalker& stalker( ) const;
 
 public:
 	void				save(CNetPacket& packet) const;

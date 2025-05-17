@@ -14,11 +14,12 @@
 
 using namespace MonsterSpace;
 
-class CAI_Stalker;
+class CStalker;
 class CStalkerVelocityCollection;
 class CGameObject;
 
-class CStalkerMovementManager : public CMovementManager {
+class CStalkerMovementManager : public CMovementManager
+{
 protected:
 	typedef CMovementManager					inherited;
 
@@ -29,12 +30,12 @@ public:
 	typedef DetailPathManager::EDetailPathType	EDetailPathType;
 
 private:
-	const CStalkerVelocityCollection	*m_velocities;
+	const CStalkerVelocityCollection* m_velocities;
 
 protected:
 	CStalkerMovementParams				m_current;
 	CStalkerMovementParams				m_target;
-	CAI_Stalker							*m_object;
+	CStalker* m_object;
 
 public:
 	MonsterSpace::SBoneRotation			m_head;
@@ -42,65 +43,65 @@ public:
 	f32								m_danger_head_speed;
 
 private:
-	IC		void	setup_head_speed				();
-	IC		void	add_velocity					(int mask, f32 linear, f32 compute_angular, f32 angular);
-	IC		void	add_velocity					(int mask, f32 linear, f32 compute_angular);
-	IC		void	setup_body_orientation			();
-			void	init_velocity_masks				();
-			void	setup_movement_params			();
-			bool	script_control					();
-			void	setup_velocities				();
-			void	parse_velocity_mask				();
-			void	check_for_bad_path				();
+	IC		void	setup_head_speed( );
+	IC		void	add_velocity(int mask, f32 linear, f32 compute_angular, f32 angular);
+	IC		void	add_velocity(int mask, f32 linear, f32 compute_angular);
+	IC		void	setup_body_orientation( );
+	void	init_velocity_masks( );
+	void	setup_movement_params( );
+	bool	script_control( );
+	void	setup_velocities( );
+	void	parse_velocity_mask( );
+	void	check_for_bad_path( );
 
 public:
-					CStalkerMovementManager			(CAI_Stalker *object);
-	virtual			~CStalkerMovementManager		();
-	virtual	void	Load							(pcstr section);
-	virtual	void	reinit							();
-	virtual	void	reload							(pcstr section);
-	virtual	void	update							(u32 time_delta);
-	virtual void	on_travel_point_change			(const u32 &previous_travel_point_index);
-	virtual	void	on_restrictions_change			();
-			void	initialize						();
-	IC		f32	path_direction_angle			();
-	IC		bool	turn_in_place					() const;
+	CStalkerMovementManager(CStalker* object);
+	virtual			~CStalkerMovementManager( );
+	virtual	void	Load(pcstr section);
+	virtual	void	reinit( );
+	virtual	void	reload(pcstr section);
+	virtual	void	update(u32 time_delta);
+	virtual void	on_travel_point_change(const u32& previous_travel_point_index);
+	virtual	void	on_restrictions_change( );
+	void	initialize( );
+	IC		f32	path_direction_angle( );
+	IC		bool	turn_in_place( ) const;
 
-	IC		void	set_head_orientation			(const MonsterSpace::SBoneRotation &orientation);
-			void	set_desired_position			(const fVector3* desired_position);
-	IC		void	set_desired_direction			(const fVector3* desired_direction);
-	IC		void	set_body_state					(EBodyState body_state);
-	IC		void	set_movement_type				(EMovementType movement_type);
-	IC		void	set_mental_state				(EMentalState mental_state);
-	IC		void	set_path_type					(EPathType path_type);
-	IC		void	set_detail_path_type			(EDetailPathType detail_path_type);
-			void	set_nearest_accessible_position	();
-			void	set_nearest_accessible_position	(fVector3 desired_position, u32 level_vertex_id);
-			f32	speed							(const EMovementDirection &movement_direction);
-			void	setup_speed_from_animation		(const f32& speed);
-
-public:
-	IC		const MonsterSpace::SBoneRotation		&head_orientation		() const;
-	IC		const fVector3&							desired_position		() const;
-	IC		const fVector3&							desired_direction		() const;
-	IC		const MonsterSpace::EBodyState			body_state				() const;
-	IC		const MonsterSpace::EBodyState			target_body_state		() const;
-	IC		const MonsterSpace::EMovementType		movement_type			() const;
-	IC		const MonsterSpace::EMentalState		mental_state			() const;
-	IC		const MonsterSpace::EMentalState		target_mental_state		() const;
-	IC		const EPathType							path_type				() const;
-	IC		const EDetailPathType					detail_path_type		() const;
-	IC		bool									use_desired_position	() const;
-	IC		bool									use_desired_direction	() const;
+	IC		void	set_head_orientation(const MonsterSpace::SBoneRotation& orientation);
+	void	set_desired_position(const fVector3* desired_position);
+	IC		void	set_desired_direction(const fVector3* desired_direction);
+	IC		void	set_body_state(EBodyState body_state);
+	IC		void	set_movement_type(EMovementType movement_type);
+	IC		void	set_mental_state(EMentalState mental_state);
+	IC		void	set_path_type(EPathType path_type);
+	IC		void	set_detail_path_type(EDetailPathType detail_path_type);
+	void	set_nearest_accessible_position( );
+	void	set_nearest_accessible_position(fVector3 desired_position, u32 level_vertex_id);
+	f32	speed(const EMovementDirection& movement_direction);
+	void	setup_speed_from_animation(const f32& speed);
 
 public:
-	IC		const MonsterSpace::EMovementType		target_movement_type	() const;
+	IC		const MonsterSpace::SBoneRotation& head_orientation( ) const;
+	IC		const fVector3& desired_position( ) const;
+	IC		const fVector3& desired_direction( ) const;
+	IC		const MonsterSpace::EBodyState			body_state( ) const;
+	IC		const MonsterSpace::EBodyState			target_body_state( ) const;
+	IC		const MonsterSpace::EMovementType		movement_type( ) const;
+	IC		const MonsterSpace::EMentalState		mental_state( ) const;
+	IC		const MonsterSpace::EMentalState		target_mental_state( ) const;
+	IC		const EPathType							path_type( ) const;
+	IC		const EDetailPathType					detail_path_type( ) const;
+	IC		bool									use_desired_position( ) const;
+	IC		bool									use_desired_direction( ) const;
 
 public:
-	IC		CAI_Stalker								&object					() const;
+	IC		const MonsterSpace::EMovementType		target_movement_type( ) const;
+
+public:
+	IC		CStalker& object( ) const;
 
 private:
-	const CGameObject	*m_last_query_object;
+	const CGameObject* m_last_query_object;
 	fVector3				m_last_query_position;
 	fVector3				m_last_query_object_position;
 	f32				m_last_query_distance;
@@ -108,11 +109,11 @@ private:
 	bool				m_force_update;
 
 public:
-	virtual void									on_build_path			();
-			void									update_object_on_the_way(const CGameObject *object, const f32& distance);
-			bool									is_object_on_the_way	(const CGameObject *object, const f32& distance);
-			void									force_update			(const bool &force_update);
-	IC		void									danger_head_speed		(const f32& speed);
+	virtual void									on_build_path( );
+	void									update_object_on_the_way(const CGameObject* object, const f32& distance);
+	bool									is_object_on_the_way(const CGameObject* object, const f32& distance);
+	void									force_update(const bool& force_update);
+	IC		void									danger_head_speed(const f32& speed);
 };
 
 #include "stalker_movement_manager_inline.h"

@@ -21,7 +21,7 @@ namespace MemorySpace
 
 class CEntityAlive;
 class CCustomMonster;
-class CAI_Stalker;
+class CStalker;
 
 class CHitMemoryManager
 {
@@ -41,7 +41,7 @@ private:
 
 private:
 	CCustomMonster* m_object;
-	CAI_Stalker* m_stalker;
+	CStalker* m_stalker;
 	HITS* m_hits;
 	DELAYED_HIT_OBJECTS			m_delayed_objects;
 	u32							m_max_hit_count;
@@ -51,7 +51,7 @@ private:
 	ALife::_OBJECT_ID			m_last_hit_object_id;
 
 public:
-	IC							CHitMemoryManager(CCustomMonster* object, CAI_Stalker* stalker);
+	IC							CHitMemoryManager(CCustomMonster* object, CStalker* stalker);
 	virtual						~CHitMemoryManager( );
 	virtual	void				Load(pcstr section);
 	virtual	void				reinit( );

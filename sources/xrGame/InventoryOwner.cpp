@@ -111,7 +111,6 @@ BOOL CInventoryOwner::net_Spawn(CSE_Abstract* DC)
 	m_trade_parameters = xr_new<CTradeParameters>(trade_section( ));
 
 	//получить указатель на объект, InventoryOwner
-	//m_inventory->setSlotsBlocked(false);
 	CGameObject* pThis = smart_cast<CGameObject*>(this);
 	if (!pThis) return FALSE;
 	CSE_Abstract* E = (CSE_Abstract*)(DC);
@@ -498,7 +497,7 @@ void CInventoryOwner::sell_useless_items( )
 	}
 }
 
-bool CInventoryOwner::AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const
+bool CInventoryOwner::AllowItemToTrade(const CInventoryItem * item, EItemPlace place) const
 {
 	return						(
 		trade_parameters( ).enabled(

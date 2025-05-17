@@ -10,7 +10,7 @@
 #include "game_sv_event_queue.h"
 #include "..\XR_3DA\Console.h"
 #include "..\XR_3DA\ConsoleCommand.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 #ifdef DEBUG
 #	include "DebugRenderer.h"

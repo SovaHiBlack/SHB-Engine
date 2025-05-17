@@ -14,37 +14,40 @@
 // CStalkerActionDangerGrenadeTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerGrenadeTakeCover : public CStalkerActionCombatBase {
+class CStalkerActionDangerGrenadeTakeCover : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerGrenadeTakeCover	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerGrenadeTakeCover(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerGrenadeWaitForExplosion
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerGrenadeWaitForExplosion : public CStalkerActionCombatBase {
+class CStalkerActionDangerGrenadeWaitForExplosion : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerGrenadeWaitForExplosion		(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerGrenadeWaitForExplosion(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerGrenadeTakeCoverAfterExplosion
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerGrenadeTakeCoverAfterExplosion : public CStalkerActionCombatBase {
+class CStalkerActionDangerGrenadeTakeCoverAfterExplosion : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
@@ -52,38 +55,40 @@ private:
 	bool				m_direction_sight;
 
 public:
-						CStalkerActionDangerGrenadeTakeCoverAfterExplosion	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerGrenadeTakeCoverAfterExplosion(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerGrenadeLookAround
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerGrenadeLookAround : public CStalkerActionCombatBase {
+class CStalkerActionDangerGrenadeLookAround : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerGrenadeLookAround	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerGrenadeLookAround(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerGrenadeSearch
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerGrenadeSearch : public CStalkerActionCombatBase {
+class CStalkerActionDangerGrenadeSearch : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerGrenadeSearch	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize								();
-	virtual void		execute									();
-	virtual void		finalize								();
+	CStalkerActionDangerGrenadeSearch(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };

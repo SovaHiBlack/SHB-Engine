@@ -1,7 +1,7 @@
 #pragma once
 
 #include "xr_collide_form.h"
-#include "xr_collide_defs.h"
+//#include "xr_collide_defs.h"
 
 // refs
 class ENGINE_API	ISpatial;

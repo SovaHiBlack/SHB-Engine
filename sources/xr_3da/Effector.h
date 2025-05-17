@@ -33,7 +33,7 @@ public:
 	}
 	virtual BOOL		Valid( )
 	{
-		return fLifeTime > 0.0f;
+		return (fLifeTime > 0.0f);
 	}
 	IC virtual BOOL		Overlapped( )
 	{

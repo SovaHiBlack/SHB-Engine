@@ -4,7 +4,7 @@
 
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 #include "../actor.h"
 #include "../UIGame.h"

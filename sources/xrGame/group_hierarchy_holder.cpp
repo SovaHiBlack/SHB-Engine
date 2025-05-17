@@ -13,7 +13,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "agent_memory_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "memory_manager.h"
 #include "visual_memory_manager.h"
 #include "sound_memory_manager.h"
@@ -74,7 +74,7 @@ void CGroupHierarchyHolder::register_in_squad			(CEntity *member)
 
 void CGroupHierarchyHolder::register_in_agent_manager	(CEntity *member)
 {
-	if (!get_agent_manager() && smart_cast<CAI_Stalker*>(member)) {
+	if (!get_agent_manager() && smart_cast<CStalker*>(member)) {
 		m_agent_manager								= xr_new<CAgentManager>();
 		agent_manager().memory().set_squad_objects	(&visible_objects());
 		agent_manager().memory().set_squad_objects	(&sound_objects());

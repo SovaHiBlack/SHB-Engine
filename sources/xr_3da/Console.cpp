@@ -3,15 +3,12 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "igame_level.h"
-#include "igame_persistent.h"
-
-//#include "x_ray.h"
+#include "IGameLevel.h"
+#include "IGamePersistent.h"
 #include "Input.h"
 #include "Console.h"
 #include "ConsoleCommand.h"
 #include "GameFont.h"
-//#include "CustomHUD.h"
 
 #define LDIST 0.05f
 

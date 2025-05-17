@@ -1,7 +1,8 @@
 #include "stdafx.h"
-#include "igame_level.h"
+#include "IGameLevel.h"
 #include "feel_touch.h"
 #include "Object.h"
+
 using namespace Feel;
 
 Touch::Touch( ) :pure_relcase(&Touch::feel_touch_relcase)

@@ -9,7 +9,7 @@
 #include "PhysicsShell.h"
 #include "clsid_game.h"
 #include "script_callback_ex.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "CustomZone.h"
 #include "MathUtils.h"
 
@@ -235,7 +235,7 @@ void	CHelicopter::Hit(SHit* pHDS)
 	};
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
-		smart_cast<CAI_Stalker*>(pHDS->who) ||
+		smart_cast<CStalker*>(pHDS->who) ||
 		smart_cast<CCustomZone*>(pHDS->who))
 		)
 	{

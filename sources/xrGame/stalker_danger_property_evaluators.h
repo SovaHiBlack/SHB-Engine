@@ -13,82 +13,88 @@
 #include "property_evaluator_member.h"
 #include "danger_object.h"
 
-class CAI_Stalker;
+class CStalker;
 
-typedef CWrapperAbstract2<CAI_Stalker,CPropertyEvaluator>		CStalkerPropertyEvaluator;
-typedef CWrapperAbstract2<CAI_Stalker,CPropertyEvaluatorConst>	CStalkerPropertyEvaluatorConst;
-typedef CWrapperAbstract2<CAI_Stalker,CPropertyEvaluatorMember>	CStalkerPropertyEvaluatorMember;
+typedef CWrapperAbstract2<CStalker, CPropertyEvaluator>		CStalkerPropertyEvaluator;
+typedef CWrapperAbstract2<CStalker, CPropertyEvaluatorConst>	CStalkerPropertyEvaluatorConst;
+typedef CWrapperAbstract2<CStalker, CPropertyEvaluatorMember>	CStalkerPropertyEvaluatorMember;
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangers
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangers : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangers : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorDangers	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate							();
+	CStalkerPropertyEvaluatorDangers(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangerUnknown
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangerUnknown : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangerUnknown : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorDangerUnknown	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate								();
+	CStalkerPropertyEvaluatorDangerUnknown(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangerInDirection
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangerInDirection : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangerInDirection : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorDangerInDirection	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate									();
+	CStalkerPropertyEvaluatorDangerInDirection(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangerWithGrenade
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangerWithGrenade : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangerWithGrenade : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorDangerWithGrenade	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate									();
+	CStalkerPropertyEvaluatorDangerWithGrenade(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangerBySound
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangerBySound : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangerBySound : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorDangerBySound	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate								();
+	CStalkerPropertyEvaluatorDangerBySound(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangerUnknownCoverActual
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangerUnknownCoverActual : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangerUnknownCoverActual : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
@@ -96,45 +102,48 @@ private:
 	fVector3				m_cover_selection_position;
 
 public:
-						CStalkerPropertyEvaluatorDangerUnknownCoverActual	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate											();
+	CStalkerPropertyEvaluatorDangerUnknownCoverActual(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorDangerGrenadeExploded
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorDangerGrenadeExploded : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorDangerGrenadeExploded : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorDangerGrenadeExploded	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate										();
+	CStalkerPropertyEvaluatorDangerGrenadeExploded(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorGrenadeToExplode
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorGrenadeToExplode : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorGrenadeToExplode : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorGrenadeToExplode	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate									();
+	CStalkerPropertyEvaluatorGrenadeToExplode(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerPropertyEvaluatorEnemyWounded
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerPropertyEvaluatorEnemyWounded : public CStalkerPropertyEvaluator {
+class CStalkerPropertyEvaluatorEnemyWounded : public CStalkerPropertyEvaluator
+{
 protected:
 	typedef CStalkerPropertyEvaluator inherited;
 
 public:
-						CStalkerPropertyEvaluatorEnemyWounded	(CAI_Stalker *object = 0, pcstr evaluator_name = "");
-	virtual _value_type	evaluate								();
+	CStalkerPropertyEvaluatorEnemyWounded(CStalker* object = 0, pcstr evaluator_name = "");
+	virtual _value_type	evaluate( );
 };

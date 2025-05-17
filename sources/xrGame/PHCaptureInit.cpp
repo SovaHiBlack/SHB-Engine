@@ -284,7 +284,6 @@ void CPHCapture::Release()
 	if(A)
 	{
 		A->SetWeaponHideState(INV_STATE_BLOCK_ALL,false);
-//.		A->inventory().setSlotsBlocked(false);
 	}
 }
 

@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "igame_level.h"
+#include "IGameLevel.h"
 #include "x_ray.h"
 
 #include "gamefont.h"

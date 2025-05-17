@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "igame_level.h"
+#include "IGameLevel.h"
 #include "xr_collide_form.h"
 #include "Object.h"
 #include "xr_area.h"

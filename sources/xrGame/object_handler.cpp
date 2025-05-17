@@ -16,7 +16,7 @@
 #include "weaponmagazined.h"
 #include "ef_storage.h"
 #include "ef_pattern.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "inventory.h"
 #include "torch.h"
 #include "..\XR_3DA\skeletoncustom.h"
@@ -45,7 +45,7 @@ void CObjectHandler::Load(pcstr section)
 	inherited::Load(section);
 }
 
-void CObjectHandler::reinit(CAI_Stalker* object)
+void CObjectHandler::reinit(CStalker* object)
 {
 	inherited::reinit( );
 	m_hammer_is_clutched = false;

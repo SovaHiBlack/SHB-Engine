@@ -61,7 +61,6 @@ public:
 };
 DEFINE_VECTOR(CLensFlareDescriptor, LensFlareDescVec, LensFlareDescIt);
 
-
 class ENGINE_API CLensFlare
 {
 private:

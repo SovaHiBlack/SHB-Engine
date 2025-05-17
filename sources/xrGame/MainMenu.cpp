@@ -3,7 +3,7 @@
 #include "UI/UIDialogWnd.h"
 #include "ui/UIMessageBoxEx.h"
 #include "..\XR_3DA\Console.h"
-#include "..\XR_3DA\IGame_Level.h"
+#include "..\XR_3DA\IGameLevel.h"
 #include "..\XR_3DA\CameraManager.h"
 #include "xr_Level_controller.h"
 #include "ui\UITextureMaster.h"
@@ -11,7 +11,7 @@
 #include <dinput.h>
 #include "ui\UIBtnHint.h"
 #include "UICursor.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 #include "object_broker.h"
 

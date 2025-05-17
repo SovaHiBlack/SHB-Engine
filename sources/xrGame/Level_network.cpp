@@ -98,7 +98,7 @@ void CLevel::net_Stop( )
 
 	remove_objects( );
 
-	IGame_Level::net_Stop( );
+	IGameLevel::net_Stop( );
 	IPureClient::Disconnect( );
 
 	if (Server)

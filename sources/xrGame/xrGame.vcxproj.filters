@@ -775,9 +775,6 @@
     <Filter Include="AI\AMonsters\humans">
       <UniqueIdentifier>{075dd244-a74c-4fa9-9b27-cfb1340701ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters\humans\trader">
-      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters\humans\stalker">
       <UniqueIdentifier>{00f0639f-5b49-439c-93f1-c5d6d97e4c52}</UniqueIdentifier>
     </Filter>
@@ -903,9 +900,6 @@
     </Filter>
     <Filter Include="AI\AMonsters\humans\stalker\SoundDataVisitor">
       <UniqueIdentifier>{d82a9562-6469-4529-a55b-d932a7833999}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\SoundUserData">
-      <UniqueIdentifier>{9478062f-7d21-4eaf-beb1-392b396f935d}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\ANavigation">
       <UniqueIdentifier>{b76084fe-0b2d-4324-aa1f-077e2a8eebe6}</UniqueIdentifier>
@@ -2112,6 +2106,12 @@
     </Filter>
     <Filter Include="AI\AGroup\AgentManager\agent_planner\properties">
       <UniqueIdentifier>{b1947418-b7fc-4477-9c9b-975aced335b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\humans\Trader">
+      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AMonsters\humans\stalker\SoundData">
+      <UniqueIdentifier>{9478062f-7d21-4eaf-beb1-392b396f935d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3399,7 +3399,7 @@
     <ClInclude Include="ai\Monsters\monster_home.h">
       <Filter>AI\AMonsters\common\components\Home</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker.h">
+    <ClInclude Include="ai\Monsters\Bloodsucker\Bloodsucker.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.h">
@@ -3432,7 +3432,7 @@
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_inline.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_alien.h">
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator.h">
@@ -3447,16 +3447,10 @@
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator_lite_inline.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Predator State</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state.h">
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerStateAttack.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_inline.h">
+    <ClInclude Include="ai\Monsters\Bloodsucker\BloodsuckerStateAttack_inline.h">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Boar\boar.h">
@@ -3742,21 +3736,21 @@
       <Filter>AI\AMonsters\monsters\Dog</Filter>
     </ClInclude>
     <ClInclude Include="Ai\Trader\Trader.h">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClInclude>
     <ClInclude Include="ai\trader\TraderAnimation.h">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClInclude>
-    <ClInclude Include="Ai\Stalker\ai_stalker.h">
+    <ClInclude Include="Ai\Stalker\Stalker.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClInclude>
-    <ClInclude Include="ai\stalker\ai_stalker_impl.h">
+    <ClInclude Include="ai\stalker\Stalker_impl.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClInclude>
-    <ClInclude Include="ai\stalker\ai_stalker_inline.h">
+    <ClInclude Include="ai\stalker\Stalker_inline.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClInclude>
-    <ClInclude Include="Ai\Stalker\ai_stalker_space.h">
+    <ClInclude Include="Ai\Stalker\Stalker_space.h">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_manager.h">
@@ -3915,17 +3909,17 @@
     <ClInclude Include="stalker_velocity_holder_inline.h">
       <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_holder</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_sound_data_visitor.h">
+    <ClInclude Include="StalkerSoundDataVisitor.h">
       <Filter>AI\AMonsters\humans\stalker\SoundDataVisitor</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_sound_data_visitor_inline.h">
+    <ClInclude Include="StalkerSoundDataVisitor_inline.h">
       <Filter>AI\AMonsters\humans\stalker\SoundDataVisitor</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_sound_data.h">
-      <Filter>AI\AMonsters\humans\stalker\SoundUserData</Filter>
+    <ClInclude Include="StalkerSoundData.h">
+      <Filter>AI\AMonsters\humans\stalker\SoundData</Filter>
     </ClInclude>
-    <ClInclude Include="stalker_sound_data_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\SoundUserData</Filter>
+    <ClInclude Include="StalkerSoundData_inline.h">
+      <Filter>AI\AMonsters\humans\stalker\SoundData</Filter>
     </ClInclude>
     <ClInclude Include="game_graph.h">
       <Filter>AI\ANavigation\GameGraph</Filter>
@@ -5217,7 +5211,7 @@
     <ClInclude Include="quadtree_inline.h">
       <Filter>Core\Common\QuadTree</Filter>
     </ClInclude>
-    <ClInclude Include="random32.h">
+    <ClInclude Include="Random32.h">
       <Filter>Core\Common\Random32</Filter>
     </ClInclude>
     <ClInclude Include="shared_data.h">
@@ -5235,10 +5229,10 @@
     <ClInclude Include="smart_cast_impl2.h">
       <Filter>Core\Common\SmartCast</Filter>
     </ClInclude>
-    <ClInclude Include="string_table.h">
+    <ClInclude Include="StringTable.h">
       <Filter>Core\Common\StringTable</Filter>
     </ClInclude>
-    <ClInclude Include="string_table_defs.h">
+    <ClInclude Include="StringTable_defs.h">
       <Filter>Core\Common\StringTable</Filter>
     </ClInclude>
     <ClInclude Include="associative_vector.h">
@@ -6566,7 +6560,7 @@
     <ClCompile Include="ai\Monsters\monster_home.cpp">
       <Filter>AI\AMonsters\common\components\Home</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker.cpp">
+    <ClCompile Include="ai\Monsters\Bloodsucker\Bloodsucker.cpp">
       <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.cpp">
@@ -6578,7 +6572,7 @@
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_script.cpp">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Script</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_alien.cpp">
+    <ClCompile Include="ai\Monsters\Bloodsucker\BloodsuckerAlien.cpp">
       <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Boar\boar.cpp">
@@ -6756,15 +6750,15 @@
       <Filter>AI\AMonsters\monsters\Dog\Script</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Trader\Trader.cpp">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClCompile>
     <ClCompile Include="ai\trader\TraderAnimation.cpp">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\AMonsters\humans\Trader</Filter>
     </ClCompile>
-    <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
+    <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClCompile>
-    <ClCompile Include="Ai\Stalker\ai_stalker_script.cpp">
+    <ClCompile Include="Ai\Stalker\Stalker_script.cpp">
       <Filter>AI\AMonsters\humans\stalker</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_callbacks.cpp">
@@ -6920,11 +6914,11 @@
     <ClCompile Include="ai\stalker\ai_stalker_script_entity.cpp">
       <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
-    <ClCompile Include="stalker_sound_data_visitor.cpp">
+    <ClCompile Include="StalkerSoundDataVisitor.cpp">
       <Filter>AI\AMonsters\humans\stalker\SoundDataVisitor</Filter>
     </ClCompile>
-    <ClCompile Include="stalker_sound_data.cpp">
-      <Filter>AI\AMonsters\humans\stalker\SoundUserData</Filter>
+    <ClCompile Include="StalkerSoundData.cpp">
+      <Filter>AI\AMonsters\humans\stalker\SoundData</Filter>
     </ClCompile>
     <ClCompile Include="game_graph_script.cpp">
       <Filter>AI\ANavigation\GameGraph</Filter>
@@ -7964,7 +7958,7 @@
     <ClCompile Include="profiler.cpp">
       <Filter>Core\Common\Profiler</Filter>
     </ClCompile>
-    <ClCompile Include="random32.cpp">
+    <ClCompile Include="Random32.cpp">
       <Filter>Core\Common\Random32</Filter>
     </ClCompile>
     <ClCompile Include="smart_cast.cpp">
@@ -7973,7 +7967,7 @@
     <ClCompile Include="smart_cast_stats.cpp">
       <Filter>Core\Common\SmartCast</Filter>
     </ClCompile>
-    <ClCompile Include="string_table.cpp">
+    <ClCompile Include="StringTable.cpp">
       <Filter>Core\Common\StringTable</Filter>
     </ClCompile>
     <ClCompile Include="xrServer.cpp">

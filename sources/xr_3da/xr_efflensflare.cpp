@@ -1,14 +1,11 @@
 #include "stdafx.h"
 
 #include "xr_efflensflare.h"
-
-#include "igame_persistent.h"
-#include "Environment.h"
+#include "IGameLevel.h"
+#include "IGamePersistent.h"
 #include "SkeletonCustom.h"
 #include "cl_intersect.h"
-
 #include "Object.h"
-#include "igame_level.h"
 
 #define FAR_DIST g_pGamePersistent->Environment().CurrentEnv.far_plane
 

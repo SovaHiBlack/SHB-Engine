@@ -19,7 +19,7 @@
 #include "ai_object_location_impl.h"
 #include "game_graph.h"
 #include "ai_debug.h"
-#include "..\XR_3DA\igame_level.h"
+#include "..\XR_3DA\IGameLevel.h"
 #include "level.h"
 #include "../xrNetServer/net_utils.h"
 #include "script_callback_ex.h"

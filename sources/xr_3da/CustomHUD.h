@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IInputReceiver.h"
+//#include "IInputReceiver.h"
 
 ENGINE_API extern flags32		psHUD_Flags;
 #define HUD_CROSSHAIR			(1<<0)
@@ -17,9 +17,7 @@ ENGINE_API extern flags32		psHUD_Flags;
 class ENGINE_API IRenderVisual;
 class CUI;
 
-class ENGINE_API CCustomHUD :
-	public DLL_Pure,
-	public IEventReceiver
+class ENGINE_API CCustomHUD : public DLL_Pure, public IEventReceiver
 {
 public:
 	CCustomHUD( );

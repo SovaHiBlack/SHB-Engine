@@ -2,7 +2,6 @@
 
 #include "ispatial.h"
 #include "isheduled.h"
-//#include "IInputReceiver.h"
 #include "irenderable.h"
 #include "ICollidable.h"
 

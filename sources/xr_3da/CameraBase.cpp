@@ -3,8 +3,6 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-//#include "igame_level.h"
-
 #include "CameraBase.h"
 
 CCameraBase::CCameraBase(CObject* p, u32 flags)
