@@ -4,7 +4,6 @@
 #include "../UI.h"
 #include "../level.h"
 #include "../UICustomItem.h"
-
 #include "../string_table.h"
 #include "UIFrameWindow.h"
 #include "UIStatic.h"
@@ -21,12 +20,10 @@
 #include "UITextBanner.h"
 #include "UIMultiTextStatic.h"
 #include "UIAnimatedStatic.h"
-#include "uixmlinit.h"
-#include "UIListBox.h" //#include "UIScrollView.h"
+#include "UIListBox.h"
 #include "UIComboBox.h"
 #include "UITrackBar.h"
 #include "../game_base_space.h"
-
 #include "UITextureMaster.h"
 #include "UIDragDropListEx.h"
 
@@ -47,7 +44,6 @@ extern int keyname_to_dik(pcstr);
 #define LETTERICA16_FONT_NAME	"letterica16"
 #define LETTERICA18_FONT_NAME	"letterica18"
 #define LETTERICA25_FONT_NAME	"letterica25"
-
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -1032,10 +1028,10 @@ bool CUIXmlInit::InitTexture(CUIXml& xml_doc, pcstr path, s32 index, IUISingleTe
 
 	fRect rect;
 
-	rect.x1 = xml_doc.ReadAttribFlt(buf, index, "x", 0);
-	rect.y1 = xml_doc.ReadAttribFlt(buf, index, "y", 0);
-	rect.x2 = rect.x1 + xml_doc.ReadAttribFlt(buf, index, "width", 0);
-	rect.y2 = rect.y1 + xml_doc.ReadAttribFlt(buf, index, "height", 0);
+	rect.x1 = xml_doc.ReadAttribFlt(buf, index, "x", 0.0f);
+	rect.y1 = xml_doc.ReadAttribFlt(buf, index, "y", 0.0f);
+	rect.x2 = rect.x1 + xml_doc.ReadAttribFlt(buf, index, "width", 0.0f);
+	rect.y2 = rect.y1 + xml_doc.ReadAttribFlt(buf, index, "height", 0.0f);
 
 	bool stretch_flag = xml_doc.ReadAttribInt(path, index, "stretch") ? true : false;
 	pWnd->SetStretchTexture(stretch_flag);

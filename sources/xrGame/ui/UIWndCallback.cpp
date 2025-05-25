@@ -14,7 +14,7 @@ struct event_comparer
 	{ }
 	bool operator ()(SCallbackInfo* i)
 	{
-		return((i->m_controlName == name) && (i->m_event == event));
+		return ((i->m_controlName == name) && (i->m_event == event));
 	}
 };
 

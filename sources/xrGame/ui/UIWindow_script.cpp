@@ -141,11 +141,11 @@ void CUIWindow::script_register(lua_State* L)
 				.def("SetPPMode", &CUIWindow::SetPPMode)
 				.def("ResetPPMode", &CUIWindow::ResetPPMode),
 
-				class_<CDialogHolder>("CDialogHolder")
-				.def("MainInputReceiver", &CDialogHolder::MainInputReceiver)
-				.def("start_stop_menu", &CDialogHolder::StartStopMenu)
-				.def("AddDialogToRender", &CDialogHolder::AddDialogToRender)
-				.def("RemoveDialogToRender", &CDialogHolder::RemoveDialogToRender),
+				class_<CUIDialogHolder>("CUIDialogHolder")
+				.def("MainInputReceiver", &CUIDialogHolder::MainInputReceiver)
+				.def("start_stop_menu", &CUIDialogHolder::StartStopMenu)
+				.def("AddDialogToRender", &CUIDialogHolder::AddDialogToRender)
+				.def("RemoveDialogToRender", &CUIDialogHolder::RemoveDialogToRender),
 
 				class_<CUIDialogWnd, CUIWindow>("CUIDialogWnd")
 				.def("GetHolder", &CUIDialogWnd::GetHolder)
@@ -216,11 +216,11 @@ void CUIWindow::script_register(lua_State* L)
 						value("EDIT_TEXT_COMMIT", int(EDIT_TEXT_COMMIT)),
 
 						// CUICheckButton
-						value("CHECK_BUTTON_SET", int(CHECK_BUTTON_SET)),
-						value("CHECK_BUTTON_RESET", int(CHECK_BUTTON_RESET)),
+//						value("CHECK_BUTTON_SET", int(CHECK_BUTTON_SET)),
+//						value("CHECK_BUTTON_RESET", int(CHECK_BUTTON_RESET)),
 
 						// CUIRadioButton
-						value("RADIOBUTTON_SET", int(RADIOBUTTON_SET)),
+//						value("RADIOBUTTON_SET", int(RADIOBUTTON_SET)),
 
 						// CUIdragDropItem
 						value("DRAG_DROP_ITEM_DRAG", int(DRAG_DROP_ITEM_DRAG)),
@@ -240,7 +240,7 @@ void CUIWindow::script_register(lua_State* L)
 						value("LIST_ITEM_SELECT", int(LIST_ITEM_SELECT)),
 
 						// CUIInteractiveItem
-						value("INTERACTIVE_ITEM_CLICK", int(INTERACTIVE_ITEM_CLICK)),
+//						value("INTERACTIVE_ITEM_CLICK", int(INTERACTIVE_ITEM_CLICK)),
 
 						// UIPropertiesBox
 						value("PROPERTY_CLICKED", int(PROPERTY_CLICKED)),
@@ -261,18 +261,18 @@ void CUIWindow::script_register(lua_State* L)
 						value("TALK_DIALOG_QUESTION_CLICKED", int(TALK_DIALOG_QUESTION_CLICKED)),
 
 						// CUIPdaDialogWnd
-						value("PDA_DIALOG_WND_BACK_BUTTON_CLICKED", int(PDA_DIALOG_WND_BACK_BUTTON_CLICKED)),
-						value("PDA_DIALOG_WND_MESSAGE_BUTTON_CLICKED", int(PDA_DIALOG_WND_MESSAGE_BUTTON_CLICKED)),
+//						value("PDA_DIALOG_WND_BACK_BUTTON_CLICKED", int(PDA_DIALOG_WND_BACK_BUTTON_CLICKED)),
+//						value("PDA_DIALOG_WND_MESSAGE_BUTTON_CLICKED", int(PDA_DIALOG_WND_MESSAGE_BUTTON_CLICKED)),
 
 						// CUIPdaContactsWnd
-						value("PDA_CONTACTS_WND_CONTACT_SELECTED", int(PDA_CONTACTS_WND_CONTACT_SELECTED)),
+//						value("PDA_CONTACTS_WND_CONTACT_SELECTED", int(PDA_CONTACTS_WND_CONTACT_SELECTED)),
 
 						// CUITradeWnd
 						value("TRADE_WND_CLOSED", int(TRADE_WND_CLOSED)),
 
 						// CUIOutfitSlot
-						value("UNDRESS_OUTFIT", int(UNDRESS_OUTFIT)),
-						value("OUTFIT_RETURNED_BACK", int(OUTFIT_RETURNED_BACK)),
+//						value("UNDRESS_OUTFIT", int(UNDRESS_OUTFIT)),
+//						value("OUTFIT_RETURNED_BACK", int(OUTFIT_RETURNED_BACK)),
 
 						// CUIInventroyWnd
 						value("INVENTORY_DROP_ACTION", int(INVENTORY_DROP_ACTION)),

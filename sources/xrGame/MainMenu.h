@@ -11,13 +11,7 @@ class CUIMessageBoxEx;
 #include "ui/UIWndCallback.h"
 #include "ui_base.h"
 
-class CMainMenu :
-	public IMainMenu,
-	public IInputReceiver,
-	public pureRender,
-	public CDialogHolder,
-	public CUIWndCallback,
-	public CDeviceResetNotifier
+class CMainMenu : public IMainMenu, public IInputReceiver, public pureRender, public CUIDialogHolder, public CUIWndCallback, public CDeviceResetNotifier
 {
 	CUIDialogWnd* m_startDialog;
 
@@ -60,7 +54,7 @@ public:
 	virtual			~CMainMenu( );
 
 	virtual void	Activate(bool bActive);
-	virtual	bool	IsActive( );
+	virtual bool	IsActive( );
 
 	virtual void	IR_OnMousePress(s32 btn);
 	virtual void	IR_OnMouseRelease(s32 btn);
@@ -79,7 +73,7 @@ public:
 	void			OnRenderPPUI_PP( );
 
 	virtual void	OnRender( );
-	virtual void	OnFrame(void);
+	virtual void	OnFrame( );
 	virtual void	StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators);
 	virtual bool	UseIndicators( )
 	{

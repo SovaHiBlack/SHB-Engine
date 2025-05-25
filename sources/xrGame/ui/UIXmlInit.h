@@ -104,7 +104,8 @@ public:
 
 	static const ColorDefs* GetColorDefs( )
 	{
-		R_ASSERT(m_pColorDefs); return m_pColorDefs;
+		R_ASSERT(m_pColorDefs);
+		return m_pColorDefs;
 	}
 
 	static void					InitColorDefs( );

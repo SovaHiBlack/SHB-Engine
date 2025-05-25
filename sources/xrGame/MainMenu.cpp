@@ -15,8 +15,6 @@
 
 #include "object_broker.h"
 
-//#define DEMO_BUILD
-
 string128	ErrMsgBoxTemplate[ ] =
 {
 		"message_box_session_full",
@@ -105,9 +103,7 @@ void CMainMenu::Activate(bool bActivate)
 		return;
 	}
 
-	if ((m_screenshotFrame == Device.dwFrame) ||
-		(m_screenshotFrame == Device.dwFrame - 1) ||
-		(m_screenshotFrame == Device.dwFrame + 1))
+	if ((m_screenshotFrame == Device.dwFrame) || (m_screenshotFrame == Device.dwFrame - 1) || (m_screenshotFrame == Device.dwFrame + 1))
 	{
 		return;
 	}
@@ -125,6 +121,7 @@ void CMainMenu::Activate(bool bActivate)
 				m_Flags.set(flActive | flNeedChangeCapture, FALSE);
 				return;
 			}
+
 			xr_delete(m_startDialog);
 			m_startDialog = smart_cast<CUIDialogWnd*>(dlg);
 			VERIFY(m_startDialog);
@@ -229,7 +226,7 @@ void CMainMenu::IR_OnMousePress(s32 btn)
 	IR_OnKeyboardPress(mouse_button_2_key[btn]);
 }
 
-void	CMainMenu::IR_OnMouseRelease(s32 btn)
+void CMainMenu::IR_OnMouseRelease(s32 btn)
 {
 	if (!IsActive( ))
 	{
@@ -239,7 +236,7 @@ void	CMainMenu::IR_OnMouseRelease(s32 btn)
 	IR_OnKeyboardRelease(mouse_button_2_key[btn]);
 }
 
-void	CMainMenu::IR_OnMouseHold(s32 btn)
+void CMainMenu::IR_OnMouseHold(s32 btn)
 {
 	if (!IsActive( ))
 	{
@@ -249,7 +246,7 @@ void	CMainMenu::IR_OnMouseHold(s32 btn)
 	IR_OnKeyboardHold(mouse_button_2_key[btn]);
 }
 
-void	CMainMenu::IR_OnMouseMove(s32 x, s32 y)
+void CMainMenu::IR_OnMouseMove(s32 x, s32 y)
 {
 	if (!IsActive( ))
 	{
@@ -262,10 +259,10 @@ void	CMainMenu::IR_OnMouseMove(s32 x, s32 y)
 	}
 }
 
-void	CMainMenu::IR_OnMouseStop(s32 x, s32 y)
+void CMainMenu::IR_OnMouseStop(s32 x, s32 y)
 { }
 
-void	CMainMenu::IR_OnKeyboardPress(s32 dik)
+void CMainMenu::IR_OnKeyboardPress(s32 dik)
 {
 	if (!IsActive( ))
 	{
@@ -290,7 +287,7 @@ void	CMainMenu::IR_OnKeyboardPress(s32 dik)
 	}
 }
 
-void	CMainMenu::IR_OnKeyboardRelease(s32 dik)
+void CMainMenu::IR_OnKeyboardRelease(s32 dik)
 {
 	if (!IsActive( ))
 	{
@@ -303,7 +300,7 @@ void	CMainMenu::IR_OnKeyboardRelease(s32 dik)
 	}
 }
 
-void	CMainMenu::IR_OnKeyboardHold(s32 dik)
+void CMainMenu::IR_OnKeyboardHold(s32 dik)
 {
 	if (!IsActive( ))
 	{
@@ -331,7 +328,7 @@ void CMainMenu::IR_OnMouseWheel(s32 direction)
 
 bool CMainMenu::OnRenderPPUI_query( )
 {
-	return IsActive( ) && !m_Flags.test(flGameSaveScreenshot) && b_shniaganeed_pp;
+	return (IsActive( ) && !m_Flags.test(flGameSaveScreenshot) && b_shniaganeed_pp);
 }
 
 extern void draw_wnds_rects( );
@@ -405,7 +402,7 @@ void CMainMenu::OnRenderPPUI_PP( )
 void CMainMenu::StartStopMenu(CUIDialogWnd* pDialog, bool bDoHideIndicators)
 {
 	pDialog->m_bWorkInPause = true;
-	CDialogHolder::StartStopMenu(pDialog, bDoHideIndicators);
+	CUIDialogHolder::StartStopMenu(pDialog, bDoHideIndicators);
 }
 
 //pureFrame
@@ -424,7 +421,7 @@ void CMainMenu::OnFrame( )
 		}
 	}
 
-	CDialogHolder::OnFrame( );
+	CUIDialogHolder::OnFrame( );
 
 	//screenshot stuff
 	if (m_Flags.test(flGameSaveScreenshot) && Device.dwFrame > m_screenshotFrame)
@@ -483,14 +480,7 @@ void CMainMenu::RegisterPPDraw(CUIWindow* w)
 
 void CMainMenu::UnregisterPPDraw(CUIWindow* w)
 {
-	m_pp_draw_wnds.erase(
-		std::remove(
-		m_pp_draw_wnds.begin( ),
-		m_pp_draw_wnds.end( ),
-		w
-	),
-		m_pp_draw_wnds.end( )
-	);
+	m_pp_draw_wnds.erase(std::remove(m_pp_draw_wnds.begin( ), m_pp_draw_wnds.end( ), w), m_pp_draw_wnds.end( ));
 }
 
 void CMainMenu::SetErrorDialog(EErrorDlg ErrDlg)
@@ -547,7 +537,7 @@ void CMainMenu::OnDeviceReset( )
 
 pcstr CMainMenu::GetGSVer( )
 {
-	static string256	buff;
+	static string256 buff;
 	strcpy(buff, "SHB-Engine 1.0001");
 	return buff;
 }

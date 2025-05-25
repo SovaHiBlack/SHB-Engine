@@ -225,8 +225,10 @@ public:
 		switch (m_alignment)
 		{
 			case waNone:
+			{
 				res.set(m_wndPos.x, m_wndPos.y, m_wndPos.x + m_wndSize.x, m_wndPos.y + m_wndSize.y);
-				break;
+			}
+			break;
 			case waCenter:
 			{
 				f32 half_w = m_wndSize.x / 2.0f;

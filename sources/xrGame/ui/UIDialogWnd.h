@@ -4,13 +4,13 @@
 #pragma once
 
 #include "uiwindow.h"
-class CDialogHolder;
+class CUIDialogHolder;
 
 class CUIDialogWnd : public CUIWindow
 {
 private:
 	typedef CUIWindow inherited;
-	CDialogHolder* m_pHolder;
+	CUIDialogHolder* m_pHolder;
 
 protected:
 	bool			IR_process( );
@@ -32,11 +32,11 @@ public:
 	virtual bool OnKeyboard(s32 dik, EUIMessages keyboard_action);
 	virtual bool OnKeyboardHold(s32 dik);
 
-	CDialogHolder* GetHolder( )
+	CUIDialogHolder* GetHolder( )
 	{
 		return m_pHolder;
 	}
-	void SetHolder(CDialogHolder* h)
+	void SetHolder(CUIDialogHolder* h)
 	{
 		m_pHolder = h;
 	}
