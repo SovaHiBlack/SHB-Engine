@@ -1,6 +1,4 @@
 // Level.h: interface for the CLevel class.
-//
-//////////////////////////////////////////////////////////////////////
 #pragma once
 
 #include "..\XR_3DA\igame_level.h"
@@ -11,6 +9,7 @@
 #include "alife_space.h"
 #include "..\xrCore\xrDebug.h"
 #include "xrServer.h"
+#include "..\XR_3DA\feel_touch.h"
 
 class	CHUDManager;
 class	CParticlesObject;
@@ -36,12 +35,8 @@ extern f32 g_fov;
 const s32 maxRP = 64;
 const s32 maxTeams = 32;
 
-//class CFogOfWar;
-class CFogOfWarMngr;
 class CBulletManager;
 class CMapManager;
-
-#include "..\XR_3DA\feel_touch.h"
 
 class GlobalFeelTouch : public Feel::Touch
 {
@@ -50,18 +45,122 @@ public:
 	virtual					~GlobalFeelTouch( );
 
 	void			update( );
-	bool			is_object_denied(CObject const* O);
+	bool			is_object_denied(const CObject* O);
 };
-
 
 class CLevel : public IGame_Level, public IPureClient
 {
-#include "Level_network_Demo.h"
+private:
+	string_path					m_sDemoName;
+
+	//------------- Demo Play	---------------------------------------
+	BOOL						m_bDemoPlayMode;
+	BOOL						m_bDemoPlayByFrame;
+
+	xr_string					m_sDemoFileName;
+	long						m_lDemoOfs;
+
+	enum	DEMO_CHUNK
+	{
+		DATA_FRAME = u32(0),
+		DATA_CLIENT_PACKET,
+		DATA_SERVER_PACKET,
+
+		DATA_DUMMY = u32(-1)
+	};
+
+	struct DemoFrameTime
+	{
+		f32									fTimeDelta;
+		f32									fTimeGlobal;
+		u32										dwTimeDelta;
+		u32										dwTimeGlobal;
+		u32										dwTimeServer;
+		u32										dwTimeServer_Delta;
+	};
+
+	struct DemoHeaderStruct
+	{
+		u8			bServerClient;
+		char		Head[31];
+		shared_str		ServerOptions;
+	};
+
+	DemoHeaderStruct							m_sDemoHeader;
+
+	struct DemoDataStruct
+	{
+		u32			m_dwDataType;
+		u32			m_dwFrame;
+		u32			m_dwTimeReceive;
+		union
+		{
+			CNetPacket	Packet;
+			DemoFrameTime	FrameTime;
+		};
+	};
+
+	DEF_DEQUE(DemoDeque, DemoDataStruct);
+	DemoDeque					m_aDemoData;
+	void						Demo_Load(pcstr DemoName);
+	void						Demo_Load_toFrame(pcstr FileName, DWORD toFrame, long& ofs);
+	BOOL						m_bDemoStarted;
+	u32							m_dwLastDemoFrame;
+	void						Demo_Update( );
+
+	//------------- Demo Store -----------------------------------------
+	BOOL						m_bDemoSaveMode;
+
+	xrCriticalSection			DemoCS;
+	u32							m_dwStoredDemoDataSize;
+	u8* m_pStoredDemoData;
+
+	void						Demo_PrepareToStore( );
+	void						Demo_StoreData(pvoid data, u32 size, DEMO_CHUNK DataType);
+	void						Demo_DumpData( );
+	void						Demo_Clear( );
+
+	crashhandler* m_pOldCrashHandler;
+	bool						m_we_used_old_crach_handler;
+
+	u32							m_dwCurDemoFrame;
+	void						Demo_StartFrame( );
+	void						Demo_EndFrame( );
+
+public:
+	void						Demo_StoreServerData(pvoid data, u32 size);
+
+	void						CallOldCrashHandler( );
+	void						WriteStoredDemo( );
+
+	BOOL						IsDemoPlay( )
+	{
+		return (!m_bDemoSaveMode && m_bDemoPlayMode);
+	}
+	BOOL						IsDemoSave( )
+	{
+		return (m_bDemoSaveMode && !m_bDemoPlayMode);
+	}
+
+	bool						IsServerDemo( )
+	{
+		return (m_sDemoHeader.bServerClient != 0);
+	}
+	bool						IsClientDemo( )
+	{
+		return (m_sDemoHeader.bServerClient == 0);
+	}
+
+	virtual	CNetPacket* net_msg_Retreive( );
+
+private:
 	void						ClearAllObjects( );
+
 private:
 #ifdef DEBUG
 	bool						m_bSynchronization;
 #endif
+
 protected:
 	typedef IGame_Level			inherited;
 
@@ -75,6 +174,7 @@ protected:
 	CClientSpawnManager* m_client_spawn_manager;
 	// autosave manager
 	CAutosaveManager* m_autosave_manager;
+
 #ifdef DEBUG
 	// debug renderer
 	CDebugRenderer* m_debug_renderer;
@@ -109,25 +209,22 @@ public:
 public:
 	////////////// network ////////////////////////
 	u32							GetInterpolationSteps( );
-//--	void						SetInterpolationSteps	(u32 InterpSteps);
 	bool						InterpolationDisabled( );
 	void						ReculcInterpolationSteps( );
 	u32							GetNumCrSteps( ) const
 	{
 		return m_dwNumSteps;
-	};
+	}
 	void						SetNumCrSteps(u32 NumSteps);
 	static void 				PhisStepsCallback(u32 Time0, u32 Time1);
 	bool						In_NetCorrectionPrediction( )
 	{
 		return m_bIn_CrPr;
-	};
+	}
 
-	virtual void				OnMessage(void* data, u32 size);
-	virtual void				OnInvalidHost( );
-	virtual void				OnInvalidPassword( );
-	virtual void				OnSessionFull( );
+	virtual void				OnMessage(pvoid data, u32 size);
 	virtual void				OnConnectRejected( );
+
 private:
 	BOOL						m_bNeed_CrPr;
 	u32							m_dwNumSteps;
@@ -140,13 +237,14 @@ private:
 
 	CObject* pCurrentControlEntity;
 	xrServer::EConnect			m_connect_server_err;
+
 public:
 	void						AddObject_To_Objects4CrPr(CGameObject* pObj);
 	void						AddActor_To_Actors4CrPr(CGameObject* pActor);
 
 	void						RemoveObject_From_4CrPr(CGameObject* pObj);
 
-	CObject* CurrentControlEntity(void) const
+	CObject* CurrentControlEntity( ) const
 	{
 		return pCurrentControlEntity;
 	}
@@ -154,8 +252,8 @@ public:
 	{
 		pCurrentControlEntity = O;
 	}
-private:
 
+private:
 	void						make_NetCorrectionPrediction( );
 
 	u32							m_dwDeltaUpdate;
@@ -163,10 +261,12 @@ private:
 	void						UpdateDeltaUpd(u32 LastTime);
 
 	BOOL						Connect2Server(pcstr options);
+
 private:
 	bool						m_bConnectResultReceived;
 	bool						m_bConnectResult;
 	xr_string					m_sConnectResult;
+
 public:
 	void						OnGameSpyChallenge(CNetPacket* P) //KRodin: удалить, если не вызывается!
 	{
@@ -174,8 +274,9 @@ public:
 	}
 	void						OnBuildVersionChallenge( );
 	void						OnConnectResult(CNetPacket* P);
+
 public:
-	//////////////////////////////////////////////	
+	//////////////////////////////////////////////
 	// static particles
 	DEFINE_VECTOR(CParticlesObject*, POVec, POIt);
 	POVec						m_StaticParticles;
@@ -273,7 +374,6 @@ public:
 	void						g_sv_Spawn(CSE_Abstract* E);					// server reply/command spawning
 
 	// Save/Load/State
-	void						SLS_Load(pcstr name);		// Game Load
 	void						SLS_Default( );					// Default/Editor Load
 
 	IC CSpaceRestrictionManager& space_restriction_manager( );
@@ -319,26 +419,24 @@ public:
 	f32				GetEnvironmentGameDayTimeSec( );
 
 protected:
-//	CFogOfWarMngr*		m_pFogOfWarMngr;
-protected:
 	CMapManager* m_map_manager;
+
 public:
 	CMapManager& MapManager( )
 	{
 		return *m_map_manager;
 	}
-//	CFogOfWarMngr&			FogOfWarMngr				()	{return *m_pFogOfWarMngr;}
 
 	//работа с пулями
 protected:
 	CBulletManager* m_pBulletManager;
+
 public:
 	IC CBulletManager& BulletManager( )
 	{
 		return	*m_pBulletManager;
 	}
 
-//by Mad Max 
 	bool			IsServer( );
 	bool			IsClient( );
 	CSE_Abstract* spawn_item(pcstr section, const fVector3& position, u32 level_vertex_id, u16 parent_id, bool return_item = false);
@@ -347,11 +445,12 @@ protected:
 	u32		m_dwCL_PingDeltaSend;
 	u32		m_dwCL_PingLastSendTime;
 	u32		m_dwRealPing;
+
 public:
-	virtual	u32				GetRealPing( )
+	virtual u32				GetRealPing( )
 	{
 		return m_dwRealPing;
-	};
+	}
 
 public:
 	void			remove_objects( );
@@ -359,6 +458,7 @@ public:
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 add_to_type_list(CLevel)
 #undef script_type_list
 #define script_type_list save_type_list(CLevel)
@@ -385,7 +485,6 @@ IC CLevelDebug& DBG( )
 	return *((CLevelDebug*)Level( ).m_level_debug);
 }
 #endif
-
 
 IC CSpaceRestrictionManager& CLevel::space_restriction_manager( )
 {

@@ -31,7 +31,7 @@
 #include "stalker_movement_manager.h"
 #include "movement_manager_space.h"
 #include "detail_path_manager_space.h"
-#include "level_debug.h"
+#include "LevelDebug.h"
 #include "ai/monsters/BaseMonster/base_monster.h"
 #include "trade_parameters.h"
 #include "script_ini_file.h"

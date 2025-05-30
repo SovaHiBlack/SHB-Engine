@@ -6,11 +6,11 @@
 #include "../control_direction_base.h"
 #include "../control_movement_base.h"
 #include "../../../level.h"
+#include "../../../LevelDebug.h"
 #include "../../../actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 #include "../../../CharacterPhysicsSupport.h"
-#include "../../../level_debug.h"
 
 void CControllerPsyHit::load(pcstr section)
 {

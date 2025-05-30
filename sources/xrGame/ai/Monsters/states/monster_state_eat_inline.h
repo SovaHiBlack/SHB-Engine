@@ -11,7 +11,7 @@
 #include "../../../CharacterPhysicsSupport.h"
 #ifdef _DEBUG
 #	include "../../../level.h"
-#	include "../../../level_debug.h"
+#	include "../../../LevelDebug.h"
 #endif
 
 #define TEMPLATE_SPECIALIZATION template <\

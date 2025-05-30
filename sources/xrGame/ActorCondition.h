@@ -11,58 +11,72 @@ class CScriptCallbackEx;
 
 class CActor;
 
-class CActorCondition: public CEntityCondition {
+class CActorCondition : public CEntityCondition
+{
 private:
 	typedef CEntityCondition inherited;
-	enum {	eCriticalPowerReached			=(1<<0),
-			eCriticalMaxPowerReached		=(1<<1),
-			eCriticalBleedingSpeed			=(1<<2),
-			eCriticalSatietyReached			=(1<<3),
-			eCriticalRadiationReached		=(1<<4),
-			eWeaponJammedReached			=(1<<5),
-			ePhyHealthMinReached			=(1<<6),
-			eCantWalkWeight					=(1<<7),
-			};
+	enum
+	{
+		eCriticalPowerReached = (1 << 0),
+		eCriticalMaxPowerReached = (1 << 1),
+		eCriticalBleedingSpeed = (1 << 2),
+		eCriticalSatietyReached = (1 << 3),
+		eCriticalRadiationReached = (1 << 4),
+		eWeaponJammedReached = (1 << 5),
+		ePhyHealthMinReached = (1 << 6),
+		eCantWalkWeight = (1 << 7),
+	};
 	flags16											m_condition_flags;
+
 private:
-	CActor*											m_object;
-	void				UpdateTutorialThresholds	();
-	void 				UpdateSatiety				();
+	CActor* m_object;
+	void				UpdateTutorialThresholds( );
+	void 				UpdateSatiety( );
+
 public:
-						CActorCondition				(CActor *object);
-	virtual				~CActorCondition			(void);
+	CActorCondition(CActor* object);
+	virtual				~CActorCondition(void);
 
-	virtual void		LoadCondition				(pcstr section);
-	virtual void		reinit						();
+	virtual void		LoadCondition(pcstr section);
+	virtual void		reinit( );
 
-	virtual CWound*		ConditionHit				(SHit* pHDS);
-	virtual void		UpdateCondition				();
+	virtual CWound* ConditionHit(SHit* pHDS);
+	virtual void		UpdateCondition( );
 
-	virtual void 		ChangeAlcohol				(f32 value);
-	virtual void 		ChangeSatiety				(f32 value);
+	virtual void 		ChangeAlcohol(f32 value);
+	virtual void 		ChangeSatiety(f32 value);
 
 	// хромание при потере сил и здоровья
-	virtual	bool		IsLimping					() const;
-	virtual bool		IsCantWalk					() const;
-	virtual bool		IsCantWalkWeight			();
-	virtual bool		IsCantSprint				() const;
+	virtual	bool		IsLimping( ) const;
+	virtual bool		IsCantWalk( ) const;
+	virtual bool		IsCantWalkWeight( );
+	virtual bool		IsCantSprint( ) const;
 
-			void		ConditionJump				(f32 weight);
-			void		ConditionWalk				(f32 weight, bool accel, bool sprint);
-			void		ConditionStand				(f32 weight);
-			
-			f32	xr_stdcall	GetAlcohol			()	{return m_fAlcohol;}
-			f32	xr_stdcall	GetPsy				()	{return 1.0f-GetPsyHealth();}
-			f32				GetSatiety			()  {return m_fSatiety;}
+	void		ConditionJump(f32 weight);
+	void		ConditionWalk(f32 weight, bool accel, bool sprint);
+	void		ConditionStand(f32 weight);
+
+	f32	xr_stdcall	GetAlcohol( )
+	{
+		return m_fAlcohol;
+	}
+	f32	xr_stdcall	GetPsy( )
+	{
+		return 1.0f - GetPsyHealth( );
+	}
+	f32				GetSatiety( )
+	{
+		return m_fSatiety;
+	}
 
 public:
-	IC		CActor		&object						() const
+	IC		CActor& object( ) const
 	{
-		VERIFY			(m_object);
+		VERIFY(m_object);
 		return			(*m_object);
 	}
-	virtual void			save					(CNetPacket& output_packet);
-	virtual void			load					(IReader &input_packet);
+	virtual void			save(CNetPacket& output_packet);
+	virtual void			load(IReader& input_packet);
 
 protected:
 	f32 m_fAlcohol;
@@ -84,7 +98,7 @@ protected:
 	f32 m_fOverweightJumpK;
 	f32 m_fAccelK;
 	f32 m_fSprintK;
-	
+
 	f32	m_MaxWalkWeight;
 
 	mutable bool m_bLimping;

@@ -62,13 +62,17 @@ void SStaticSound::Update(u32 game_time, u32 global_time)
 		else
 		{
 			if (Device.dwTimeGlobal >= m_StopTime)
+			{
 				m_Source.stop_deffered( );
+			}
 		}
 	}
 	else
 	{
 		if (0 != m_Source._feedback( ))
+		{
 			m_Source.stop_deffered( );
+		}
 	}
 }
 //-----------------------------------------------------------------------------
@@ -76,20 +80,24 @@ void SStaticSound::Update(u32 game_time, u32 global_time)
 //-----------------------------------------------------------------------------
 void SMusicTrack::Load(pcstr fn, pcstr params)
 {
+
 #ifdef DEBUG
 	m_DbgName = fn;
 #endif
+
 	// create source
-	string_path			_l, _r;
+	string_path _l;
+	string_path _r;
 	strconcat(sizeof(_l), _l, fn, "_l");
 	strconcat(sizeof(_r), _r, fn, "_r");
 	m_SourceLeft.create(_l, st_Music, sg_Undefined);
 	m_SourceRight.create(_r, st_Music, sg_Undefined);
 	// parse params
-	s32 cnt = _GetItemCount(params); VERIFY(cnt == 5);
+	s32 cnt = _GetItemCount(params);
+	VERIFY(cnt == 5);
 	m_ActiveTime.set(0, 0);
 	m_PauseTime.set(0, 0);
-	m_Volume = 1.f;
+	m_Volume = 1.0f;
 	sscanf(params, "%d,%d,%f,%d,%d", &m_ActiveTime.x, &m_ActiveTime.y, &m_Volume, &m_PauseTime.x, &m_PauseTime.y);
 	if (m_PauseTime.x == m_PauseTime.y)++m_PauseTime.y;
 	m_ActiveTime.mul(60 * 60 * 1000);	// convert hour to ms
@@ -131,12 +139,13 @@ void CLevelSoundManager::Load( )
 	if (FS.exist(fn, "$level$", "level.snd_static"))
 	{
 		IReader* F = FS.r_open(fn);
-		u32				chunk = 0;
+		u32 chunk = 0;
 		for (IReader* OBJ = F->open_chunk_iterator(chunk); OBJ; OBJ = F->open_chunk_iterator(chunk, OBJ))
 		{
 			m_StaticSounds.push_back(SStaticSound( ));
 			m_StaticSounds.back( ).Load(*OBJ);
 		}
+
 		FS.r_close(F);
 	}
 
@@ -176,8 +185,16 @@ void CLevelSoundManager::Unload( )
 
 void CLevelSoundManager::Update( )
 {
-	if (Device.Paused( ))				return;
-	if (Device.dwPrecacheFrame != 0)	return;
+	if (Device.Paused( ))
+	{
+		return;
+	}
+
+	if (Device.dwPrecacheFrame != 0)
+	{
+		return;
+	}
+
 	// static sounds
 	u32 game_time = Level( ).GetGameDayTimeMS( );
 	u32 engine_time = Device.dwTimeGlobal;
@@ -193,30 +210,39 @@ void CLevelSoundManager::Update( )
 	{
 		if (m_CurrentTrack<0 && engine_time>m_NextTrackTime)
 		{
-			U32Vec				indices;
+			U32Vec indices;
 			for (u32 k = 0; k < m_MusicTracks.size( ); ++k)
 			{
 				SMusicTrack& T = m_MusicTracks[k];
-				if (T.IsPlaying( )) T.Stop( );
-				if ((0 == T.m_ActiveTime.x) && (0 == T.m_ActiveTime.y) ||
-					((s32(game_time) >= T.m_ActiveTime.x) && (s32(game_time) < T.m_ActiveTime.y)))
+				if (T.IsPlaying( ))
+				{
+					T.Stop( );
+				}
+
+				if ((0 == T.m_ActiveTime.x) && (0 == T.m_ActiveTime.y) || ((s32(game_time) >= T.m_ActiveTime.x) && (s32(game_time) < T.m_ActiveTime.y)))
+				{
 					indices.push_back(k);
+				}
 			}
+
 			if (!indices.empty( ))
 			{
 				u32 idx = Random.randI(indices.size( ));
 				m_CurrentTrack = indices[idx];
 				SMusicTrack& T = m_MusicTracks[m_CurrentTrack];
 				T.Play( );
+
 #ifdef DEBUG
 				Log("- Play music track:", T.m_DbgName.c_str( ));
 #endif
+
 			}
 			else
 			{
 				m_NextTrackTime = engine_time + 10000; // next check after 10 sec
 			}
 		}
+
 		if (m_CurrentTrack >= 0)
 		{
 			SMusicTrack& T = m_MusicTracks[m_CurrentTrack];
@@ -225,7 +251,9 @@ void CLevelSoundManager::Update( )
 				m_CurrentTrack = -1;
 				m_NextTrackTime = engine_time;
 				if (!((0 == T.m_PauseTime.x) && (0 == T.m_PauseTime.y)))
+				{
 					m_NextTrackTime += Random.randI(T.m_PauseTime.x, T.m_PauseTime.y);
+				}
 			}
 		}
 	}

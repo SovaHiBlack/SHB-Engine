@@ -8,7 +8,7 @@
 #include "../../game_graph.h"
 #include "../../game_level_cross_table.h"
 #include "../../level.h"
-#include "../../level_debug.h"
+#include "../../LevelDebug.h"
 #include "../../cover_manager.h"
 #include "../../ai_object_location.h"
 #include "ai_monster_squad.h"

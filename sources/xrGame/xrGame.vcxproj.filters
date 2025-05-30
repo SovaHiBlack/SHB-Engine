@@ -1312,12 +1312,6 @@
     <Filter Include="Core\Client\Objects\actor">
       <UniqueIdentifier>{f1e8fd9a-15e8-415d-a351-f5414caccc62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\actor\base">
-      <UniqueIdentifier>{6eb8e386-c00a-42aa-8e1c-9fb5dc3131c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\actor\base\memory">
-      <UniqueIdentifier>{da7aec6c-a818-4091-b772-b274985f65d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\base">
       <UniqueIdentifier>{93d4c026-aebb-4c8a-ad5e-a13f1fb1deac}</UniqueIdentifier>
     </Filter>
@@ -2112,6 +2106,9 @@
     </Filter>
     <Filter Include="Core\Client\Objects\zones\VisualZone">
       <UniqueIdentifier>{36c5cae5-67b9-4a7f-a7d6-fa2e1129eab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\actor\memory">
+      <UniqueIdentifier>{da7aec6c-a818-4091-b772-b274985f65d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4539,29 +4536,11 @@
     <ClInclude Include="xr_level_controller.h">
       <Filter>Core\Client\Level Controller</Filter>
     </ClInclude>
-    <ClInclude Include="level_debug.h">
+    <ClInclude Include="LevelDebug.h">
       <Filter>Core\Client\Level Debug</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClInclude>
-    <ClInclude Include="actor_anim_defs.h">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClInclude>
-    <ClInclude Include="actor_defs.h">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor_Flags.h">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClInclude>
-    <ClInclude Include="actor_input_handler.h">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorCondition.h">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClInclude>
     <ClInclude Include="actor_memory.h">
-      <Filter>Core\Client\Objects\actor\base\memory</Filter>
+      <Filter>Core\Client\Objects\actor\memory</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Core\Client\Objects\base\Entity</Filter>
@@ -4575,10 +4554,10 @@
     <ClInclude Include="EntityCondition.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
-    <ClInclude Include="hit_immunity.h">
+    <ClInclude Include="HitImmunity.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
-    <ClInclude Include="hit_immunity_space.h">
+    <ClInclude Include="HitImmunity_space.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
     <ClInclude Include="Wound.h">
@@ -5988,6 +5967,24 @@
     <ClInclude Include="ChooseTypes.h">
       <Filter>Core\Server\Editor</Filter>
     </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="actor_anim_defs.h">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="actor_defs.h">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor_Flags.h">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="actor_input_handler.h">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorCondition.h">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="damage_manager.cpp">
@@ -7316,53 +7313,11 @@
     <ClCompile Include="xr_level_controller.cpp">
       <Filter>Core\Client\Level Controller</Filter>
     </ClCompile>
-    <ClCompile Include="level_debug.cpp">
+    <ClCompile Include="LevelDebug.cpp">
       <Filter>Core\Client\Level Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="actor_communication.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor_Events.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor_Feel.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="actor_input_handler.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor_Movement.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor_Network.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor_Weapon.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorAnimation.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorCameras.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorCondition.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorInput.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorMountedWeapon.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorVehicle.cpp">
-      <Filter>Core\Client\Objects\actor\base</Filter>
-    </ClCompile>
     <ClCompile Include="actor_memory.cpp">
-      <Filter>Core\Client\Objects\actor\base\memory</Filter>
+      <Filter>Core\Client\Objects\actor\memory</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Client\Objects\base\Entity</Filter>
@@ -7373,7 +7328,7 @@
     <ClCompile Include="EntityCondition.cpp">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClCompile>
-    <ClCompile Include="hit_immunity.cpp">
+    <ClCompile Include="HitImmunity.cpp">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClCompile>
     <ClCompile Include="Wound.cpp">
@@ -8749,6 +8704,48 @@
     </ClCompile>
     <ClCompile Include="ui\UIMapHint.cpp">
       <Filter>UI\Common\MapWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="actor_communication.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor_Events.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor_Feel.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="actor_input_handler.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor_Movement.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor_Network.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor_Weapon.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorAnimation.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorCameras.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorCondition.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorInput.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorMountedWeapon.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorVehicle.cpp">
+      <Filter>Core\Client\Objects\actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

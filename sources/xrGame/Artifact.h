@@ -1,7 +1,7 @@
 #pragma once
 
 #include "hud_item_object.h"
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "PHObject.h"
 #include "script_export_space.h"
 

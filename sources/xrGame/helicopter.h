@@ -5,7 +5,7 @@
 #include "rocketlauncher.h"
 #include "entity.h"
 #include "phskeleton.h"
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "script_export_space.h"
 #include "memory_manager.h"
 #include "HudSound.h"

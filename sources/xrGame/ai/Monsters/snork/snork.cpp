@@ -14,7 +14,7 @@
 #	include <dinput.h>
 #	include "../../../actor.h"
 #	include "../../../ai_object_location.h"
-#	include "../../../level_debug.h"
+#	include "../../../LevelDebug.h"
 #	include "../../../cover_point.h"
 #	include "../monster_cover_manager.h"
 #endif

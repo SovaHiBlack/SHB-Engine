@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "base_monster.h"
 #include "../../../level.h"
-#include "../../../level_debug.h"
+#include "../../../LevelDebug.h"
 #include "../../../entitycondition.h"
 #include "../../../ai_debug.h"
 #include "../state_defs.h"

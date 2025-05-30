@@ -12,7 +12,7 @@
 #include "phcollisiondamagereceiver.h"
 #include "CarDamageParticles.h"
 #include "xrserver_objects_alife.h"
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "Explosive.h"
 #include "PHDestroyable.h"
 #include "DelayedActionFuse.h"

@@ -1,11 +1,11 @@
-// hit_immunity.h: класс для тех объектов, которые поддерживают
+// HitImmunity.h: класс для тех объектов, которые поддерживают
 //				   коэффициенты иммунитета для разных типов хитов
 //////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "alife_space.h"
-#include "hit_immunity_space.h"
+#include "HitImmunity_space.h"
 
 class CHitImmunity
 {

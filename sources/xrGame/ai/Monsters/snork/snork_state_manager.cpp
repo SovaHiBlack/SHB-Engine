@@ -8,7 +8,7 @@
 #include "../control_path_builder_base.h"
 
 #include "../../../level.h"
-#include "../../../level_debug.h"
+#include "../../../LevelDebug.h"
 #include "../states/monster_state_rest.h"
 #include "../states/monster_state_attack.h"
 #include "../states/monster_state_panic.h"

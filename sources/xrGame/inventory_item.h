@@ -9,7 +9,7 @@
 #pragma once
 
 #include "inventory_space.h"
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "attachable_item.h"
 
 enum EHandDependence

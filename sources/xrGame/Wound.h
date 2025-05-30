@@ -1,11 +1,9 @@
 // Wound.h: класс описания раны
-//
-//////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include "alife_space.h"
-#include "hit_immunity_space.h"
+#include "HitImmunity_space.h"
 
 class CNetPacket;
 
@@ -13,7 +11,7 @@ class CWound
 {
 public:
 	CWound				(u16 bone_num);
-	virtual ~CWound		(void);
+	virtual ~CWound		( );
 
 	//serialization
 	virtual void save	(CNetPacket& output_packet);

@@ -2,8 +2,9 @@
 #include "poltergeist.h"
 #include "../../../PhysicsShell.h"
 #include "../../../level.h"
+#include "../../../LevelDebug.h"
 #include "../../../material_manager.h"
-#include "../../../level_debug.h"
+
 
 CPolterSpecialAbility::CPolterSpecialAbility(CPoltergeist *polter)
 {

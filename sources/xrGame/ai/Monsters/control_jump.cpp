@@ -15,8 +15,9 @@
 #include "../../level_graph.h"
 #include "../../ai_object_location.h"
 #include "../../CharacterPhysicsSupport.h"
+
 #ifdef DEBUG
-#include "../../level_debug.h"
+#include "../../LevelDebug.h"
 #endif
 
 void CControlJump::reinit()

@@ -1,7 +1,8 @@
 #include "stdafx.h"
-#include "level_debug.h"
-#include "..\XR_3DA\Object.h"
 #include "level.h"
+#include "LevelDebug.h"
+#include "..\XR_3DA\Object.h"
+
 #include "HUDManager.h"
 
 #ifdef DEBUG
@@ -11,9 +12,7 @@
 #ifdef DEBUG
 
 CLevelDebug::CLevelDebug( )
-{
-
-}
+{ }
 
 CLevelDebug::~CLevelDebug( )
 {
@@ -51,7 +50,7 @@ CLevelDebug::CObjectInfo& CLevelDebug::object_info(CObject* obj, pcstr class_nam
 	}
 }
 
-CLevelDebug::CTextInfo& CLevelDebug::text(void* class_ptr, pcstr class_name)
+CLevelDebug::CTextInfo& CLevelDebug::text(pvoid class_ptr, pcstr class_name)
 {
 	SKey key(class_ptr, class_name);
 
@@ -68,7 +67,7 @@ CLevelDebug::CTextInfo& CLevelDebug::text(void* class_ptr, pcstr class_name)
 	}
 }
 
-CLevelDebug::CLevelInfo& CLevelDebug::level_info(void* class_ptr, pcstr class_name)
+CLevelDebug::CLevelInfo& CLevelDebug::level_info(pvoid class_ptr, pcstr class_name)
 {
 	SKey key(class_ptr, class_name);
 
@@ -84,7 +83,6 @@ CLevelDebug::CLevelInfo& CLevelDebug::level_info(void* class_ptr, pcstr class_na
 		return (*(new_info));
 	}
 }
-
 
 void CLevelDebug::free_mem( )
 {
@@ -112,11 +110,9 @@ void CLevelDebug::free_mem( )
 
 void CLevelDebug::draw_object_info( )
 {
-
 	// handle all of the objects
 	for (OBJECT_INFO_MAP_IT it = m_objects_info.begin( ); it != m_objects_info.end( ); ++it)
 	{
-
 		// если объект невалидный - удалить информацию
 		if (!it->first || it->first->getDestroy( ))
 		{
@@ -133,22 +129,28 @@ void CLevelDebug::draw_object_info( )
 
 		fVector4	v_res;
 
-		f32		delta_height = 0.f;
+		f32		delta_height = 0.0f;
 
 		// handle all of the classes
 		for (CLASS_INFO_MAP_IT class_it = it->second.begin( ); class_it != it->second.end( ); ++class_it)
 		{
-
 			// get up on 2 meters
 			res.transform(v_res, class_it->second->get_shift_pos( ));
 
 			// check if the object in sight
-			if (v_res.z < 0 || v_res.w < 0)										continue;
-			if (v_res.x < -1.f || v_res.x > 1.f || v_res.y < -1.f || v_res.y>1.f) continue;
+			if (v_res.z < 0.0f || v_res.w < 0.0f)
+			{
+				continue;
+			}
+
+			if (v_res.x < -1.0f || v_res.x > 1.0f || v_res.y < -1.0f || v_res.y > 1.0f)
+			{
+				continue;
+			}
 
 			// get real (x,y)
-			f32 x = (1.f + v_res.x) / 2.f * (Device.dwWidth);
-			f32 y = (1.f - v_res.y) / 2.f * (Device.dwHeight) - delta_height;
+			f32 x = (1.0f + v_res.x) / 2.0f * (Device.dwWidth);
+			f32 y = (1.0f - v_res.y) / 2.0f * (Device.dwHeight) - delta_height;
 			f32 start_y = y;
 
 			// handle all of the text inside class
@@ -180,8 +182,6 @@ void CLevelDebug::draw_level_info( )
 //////////////////////////////////////////////////////////////////////////
 // CObjectInfo
 //////////////////////////////////////////////////////////////////////////
-
-
 void CLevelDebug::CObjectInfo::add_item(pcstr text, u32 color, u32 id)
 {
 	inherited::add_item(SInfoItem(text, color, id));
@@ -220,7 +220,6 @@ void CLevelDebug::CObjectInfo::draw_info(f32 x, f32& y)
 //////////////////////////////////////////////////////////////////////////
 // CTextInfo
 //////////////////////////////////////////////////////////////////////////
-
 void CLevelDebug::CTextInfo::add_item(pcstr text, f32 x, f32 y, u32 color, u32 id)
 {
 	inherited::add_item(STextItem(text, x, y, color, id));

@@ -30,6 +30,7 @@
 #include "phworld.h"
 #include "ActorEffector.h"
 #include "UIGameCustom.h"
+#include "postprocessanimator.h"
 
 using namespace luabind;
 
@@ -230,7 +231,6 @@ void prefetch_sound(pcstr name)
 	Level( ).PrefetchSound(name);
 }
 
-
 CClientSpawnManager& get_client_spawn_manager( )
 {
 	return		(Level( ).client_spawn_manager( ));
@@ -342,6 +342,7 @@ CPHWorld* physics_world( )
 {
 	return	ph_world;
 }
+
 CEnvironment* environment( )
 {
 	return		(g_pGamePersistent->pEnvironment);
@@ -351,6 +352,7 @@ CEnvDescriptor* current_environment(CEnvironment* self)
 {
 	return		(&self->CurrentEnv);
 }
+
 extern bool g_bDisableAllInput;
 void disable_input( )
 {
@@ -456,6 +458,7 @@ s32 get_actor_points(pcstr sect)
 {
 	return Actor( )->StatisticMgr( ).GetSectionPoints(sect);
 }
+
 extern s32 get_actor_ranking( );
 extern void add_human_to_top_list(u16 id);
 extern void remove_human_from_top_list(u16 id);
@@ -470,7 +473,6 @@ void remove_complex_effector(s32 id)
 	RemoveEffector(Actor( ), id);
 }
 
-#include "postprocessanimator.h"
 void add_pp_effector(pcstr fn, s32 id, bool cyclic)
 {
 	CPostprocessAnimator* pp = xr_new<CPostprocessAnimator>(id, cyclic);

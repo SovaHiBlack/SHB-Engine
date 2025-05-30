@@ -1,6 +1,4 @@
 // Wound.cpp: класс описания раны
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 #include "wound.h"
@@ -37,6 +35,7 @@ void CWound::save(CNetPacket& output_packet)
 		output_packet.w_float_q8(m_Wounds[i], 0.0f, WOUND_MAX);
 	}
 }
+
 void  CWound::load(IReader& input_packet)
 {
 	m_iBoneNum = (u8) input_packet.r_u8( );

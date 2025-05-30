@@ -4,7 +4,7 @@
 #include "../monster_cover_manager.h"
 #include "../../../cover_point.h"
 #include "../../../level.h"
-#include "../../../level_debug.h"
+#include "../../../LevelDebug.h"
 
 #define TEMPLATE_SPECIALIZATION template <\
 	typename _Object\

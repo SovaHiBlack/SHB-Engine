@@ -162,7 +162,7 @@ public:
 	virtual bool						use(CGameObject* who_use)
 	{
 		return CUsableScriptObject::use(who_use);
-	};
+	}
 
 public:
 	CIniFile* m_ini_file;
@@ -251,6 +251,7 @@ public:
 	{
 		return true;
 	}
+
 #ifdef DEBUG
 	virtual void			OnRender( );
 #endif
@@ -265,34 +266,34 @@ private:
 
 public:
 	virtual void			make_Interpolation( )
-	{ }; // interpolation from last visible to corrected position/rotation
+	{ } // interpolation from last visible to corrected position/rotation
 	virtual void			PH_B_CrPr( )
-	{ }; // actions & operations before physic correction-prediction steps
+	{ } // actions & operations before physic correction-prediction steps
 	virtual void			PH_I_CrPr( )
-	{ }; // actions & operations after correction before prediction steps
+	{ } // actions & operations after correction before prediction steps
 #ifdef DEBUG
 	virtual void			PH_Ch_CrPr( )
-	{ }; // 
+	{ } // 
 	virtual	void			dbg_DrawSkeleton( );
 #endif
 	virtual void			PH_A_CrPr( )
-	{ }; // actions & operations after phisic correction-prediction steps
+	{ } // actions & operations after phisic correction-prediction steps
 	virtual void			CrPr_SetActivationStep(u32 Step)
 	{
 		m_dwCrPr_ActivationStep = Step;
-	};
+	}
 	virtual u32				CrPr_GetActivationStep( )
 	{
 		return m_dwCrPr_ActivationStep;
-	};
+	}
 	virtual void			CrPr_SetActivated(bool Activate)
 	{
 		m_bCrPr_Activated = Activate;
-	};
+	}
 	virtual bool			CrPr_IsActivated( )
 	{
 		return m_bCrPr_Activated;
-	};
+	}
 	///////////////////////////////////////////////////////////////////////
 	virtual const SRotation	Orientation( ) const
 	{
@@ -404,5 +405,5 @@ public:
 	virtual	pcstr			visual_name(CSE_Abstract* server_entity);
 
 	virtual	void			On_B_NotCurrentEntity( )
-	{ };
+	{ }
 };

@@ -12,7 +12,7 @@
 #ifdef _DEBUG
 #	include <dinput.h>
 #	include "../../../ai_object_location.h"
-#	include "../../../level_debug.h"
+#	include "../../../LevelDebug.h"
 #	include "../../../level_graph.h"
 #	include "../../../AISpace.h"
 #	include "../../../alife_simulator.h"

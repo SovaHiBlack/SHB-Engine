@@ -766,8 +766,8 @@
     <ClInclude Include="helicopter.h" />
     <ClInclude Include="Hit.h" />
     <ClInclude Include="HitMarker.h" />
-    <ClInclude Include="hit_immunity.h" />
-    <ClInclude Include="hit_immunity_space.h" />
+    <ClInclude Include="HitImmunity.h" />
+    <ClInclude Include="HitImmunity_space.h" />
     <ClInclude Include="hit_memory_manager.h" />
     <ClInclude Include="hit_memory_manager_inline.h" />
     <ClInclude Include="holder_custom.h" />
@@ -814,7 +814,7 @@
     <ClInclude Include="LevelGameDef.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="LevelChanger.h" />
-    <ClInclude Include="level_debug.h" />
+    <ClInclude Include="LevelDebug.h" />
     <ClInclude Include="level_graph.h" />
     <ClInclude Include="level_graph_inline.h" />
     <ClInclude Include="level_graph_space.h" />
@@ -1846,7 +1846,7 @@
     <ClCompile Include="helicopter_script.cpp" />
     <ClCompile Include="Hit.cpp" />
     <ClCompile Include="HitMarker.cpp" />
-    <ClCompile Include="hit_immunity.cpp" />
+    <ClCompile Include="HitImmunity.cpp" />
     <ClCompile Include="hit_memory_manager.cpp" />
     <ClCompile Include="holder_custom.cpp" />
     <ClCompile Include="holder_custom_script.cpp" />
@@ -1882,7 +1882,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="LevelChanger.cpp" />
-    <ClCompile Include="level_debug.cpp" />
+    <ClCompile Include="LevelDebug.cpp" />
     <ClCompile Include="level_graph.cpp" />
     <ClCompile Include="level_graph_debug.cpp" />
     <ClCompile Include="level_graph_debug2.cpp" />

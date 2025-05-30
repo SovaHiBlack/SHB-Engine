@@ -9,6 +9,7 @@
 #include "../../../ui.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../level.h"
+#include "../../../LevelDebug.h"
 #include "../../../sound_player.h"
 #include "../../../ai_monster_space.h"
 //#include "../../../ui/UIMainIngameWnd.h"//
@@ -16,7 +17,7 @@
 #include "../../../ui/UIStatic.h"
 
 #include "../monster_velocity_space.h"
-#include "../../../level_debug.h"
+
 #include "../../../game_object_space.h"
 #include "../../../detail_path_manager.h"
 #include "../../../AISpace.h"

@@ -5,7 +5,7 @@ class CNetPacket;
 class CEntityAlive;
 class CLevel;
 
-#include "hit_immunity.h"
+#include "HitImmunity.h"
 #include "Hit.h"
 #include "Level.h"
 
@@ -77,26 +77,27 @@ public:
 	virtual bool 			IsLimping( ) const;
 
 	virtual void			ChangeSatiety(f32 value)
-	{ };
+	{ }
 	void 					ChangeHealth(f32 value);
 	void 					ChangePower(f32 value);
 	void 					ChangeRadiation(f32 value);
 	void 					ChangePsyHealth(f32 value);
 	virtual void 			ChangeAlcohol(f32 value)
-	{ };
+	{ }
 
 	IC void					MaxPower( )
 	{
 		m_fPower = m_fPowerMax;
-	};
+	}
 	IC void					SetMaxPower(f32 val)
 	{
-		m_fPowerMax = val; clamp(m_fPowerMax, 0.1f, 1.0f);
-	};
+		m_fPowerMax = val;
+		clamp(m_fPowerMax, 0.1f, 1.0f);
+	}
 	IC f32				GetMaxPower( ) const
 	{
 		return m_fPowerMax;
-	};
+	}
 
 	void 					ChangeBleeding(f32 percent);
 
@@ -111,7 +112,7 @@ public:
 	IC void					SetConditionDeltaTime(f32 DeltaTime)
 	{
 		m_fDeltaTime = DeltaTime;
-	};
+	}
 
 //скорость потери крови из всех открытых ран 
 	f32						BleedingSpeed( );
@@ -133,10 +134,11 @@ public:
 	}
 	IC bool					CanBeHarmed( ) const
 	{
-		return OnServer( ) && m_bCanBeHarmed;
-	};
+		return (OnServer( ) && m_bCanBeHarmed);
+	}
 
 	void					ClearWounds( );
+
 protected:
 	void					UpdateHealth( );
 	void					UpdatePower( );

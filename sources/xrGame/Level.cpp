@@ -18,7 +18,6 @@
 #include "PHdynamicdata.h"
 #include "Physics.h"
 #include "ShootingObject.h"
-//.#include "LevelFogOfWar.h"
 #include "BulletManager.h"
 #include "script_process.h"
 #include "script_engine.h"
@@ -47,22 +46,24 @@
 #include "..\XR_3DA\Console.h"
 
 #ifdef DEBUG
-#	include "level_debug.h"
+#	include "LevelDebug.h"
 #	include "ai/stalker/ai_stalker.h"
 #	include "DebugRenderer.h"
 #	include "physicobject.h"
 #endif
 
+#include "..\XR_3DA\IGame_Persistent.h"
+
 extern BOOL	g_bDebugDumpPhysicsStep;
 
 CPHWorld* ph_world = 0;
-f32		g_cl_lvInterp = 0;
+f32		g_cl_lvInterp = 0.0f;
 u32			lvInterpSteps = 0;
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
+CLevel::CLevel( ) : IPureClient(Device.GetTimerGlobal( ))
 {
 	g_bDebugEvents = strstr(Core.Params, "-debug_ge") ? TRUE : FALSE;
 
@@ -86,7 +87,6 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 
 	m_map_manager = xr_new<CMapManager>( );
 
-	//	m_pFogOfWarMngr				= xr_new<CFogOfWarMngr>();
 	//----------------------------------------------------
 	m_bNeed_CrPr = false;
 	m_bIn_CrPr = false;
@@ -113,6 +113,7 @@ CLevel::CLevel( ) :IPureClient(Device.GetTimerGlobal( ))
 #ifdef DEBUG
 	m_bSynchronization = false;
 #endif	
+
 	//---------------------------------------------------------
 	pStatGraphR = NULL;
 	pStatGraphS = NULL;
@@ -190,7 +191,10 @@ CLevel::~CLevel( )
 
 	// destroy PSs
 	for (POIt p_it = m_StaticParticles.begin( ); m_StaticParticles.end( ) != p_it; ++p_it)
+	{
 		CParticlesObject::Destroy(*p_it);
+	}
+
 	m_StaticParticles.clear( );
 
 	// Unload sounds
@@ -203,16 +207,13 @@ CLevel::~CLevel( )
 		static_Sounds[i]->destroy( );
 		xr_delete(static_Sounds[i]);
 	}
+
 	static_Sounds.clear( );
 
 	xr_delete(m_level_sound_manager);
-
 	xr_delete(m_space_restriction_manager);
-
 	xr_delete(m_seniority_hierarchy_holder);
-
 	xr_delete(m_client_spawn_manager);
-
 	xr_delete(m_autosave_manager);
 
 #ifdef DEBUG
@@ -224,10 +225,6 @@ CLevel::~CLevel( )
 	xr_delete(game);
 	xr_delete(game_events);
 
-
-	//by Dandy
-	//destroy fog of war
-//	xr_delete					(m_pFogOfWar);
 	//destroy bullet manager
 	xr_delete(m_pBulletManager);
 	//-----------------------------------------------------------
@@ -243,13 +240,14 @@ CLevel::~CLevel( )
 
 	ai( ).unload( );
 	//-----------------------------------------------------------	
-#ifdef DEBUG	
+#ifdef DEBUG
 	xr_delete(m_level_debug);
 #endif
+
 	//-----------------------------------------------------------
 	xr_delete(m_map_manager);
-	//	xr_delete					(m_pFogOfWarMngr);
-		//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
 	Demo_Clear( );
 	m_aDemoData.clear( );
 
@@ -259,13 +257,14 @@ CLevel::~CLevel( )
 	CTradeParameters::clean( );
 
 	if (m_we_used_old_crach_handler)
+	{
 		Debug.set_crashhandler(m_pOldCrashHandler);
-
+	}
 }
 
 shared_str	CLevel::name( ) const
 {
-	return						(m_name);
+	return m_name;
 }
 
 void CLevel::GetLevelInfo(CServerInfo* si)
@@ -273,20 +272,25 @@ void CLevel::GetLevelInfo(CServerInfo* si)
 	Server->GetServerInfo(si);
 }
 
-
 void CLevel::PrefetchSound(pcstr name)
 {
 	// preprocess sound name
 	string_path					tmp;
 	strcpy_s(tmp, name);
 	xr_strlwr(tmp);
-	if (strext(tmp))			*strext(tmp) = 0;
+	if (strext(tmp))
+	{
+		*strext(tmp) = 0;
+	}
+
 	shared_str	snd_name = tmp;
 	// find in registry
 	SoundRegistryMapIt it = sound_registry.find(snd_name);
 	// if find failed - preload sound
 	if (it == sound_registry.end( ))
+	{
 		sound_registry[snd_name].create(snd_name.c_str( ), st_Effect, sg_SourceType);
+	}
 }
 
 // Game interface ////////////////////////////////////////////////////
@@ -312,24 +316,27 @@ s32	CLevel::get_RPID(pcstr /**name/**/)
 
 BOOL		g_bDebugEvents = FALSE;
 
-
 void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 {
 	//			Msg				("--- event[%d] for [%d]",type,dest);
 	CObject* O = Objects.net_Find(dest);
 	if (0 == O)
 	{
+
 #ifdef DEBUG
 		Msg("* WARNING: c_EVENT[%d] to [%d]: unknown dest", type, dest);
 #endif // DEBUG
+
 		return;
 	}
+
 	CGameObject* GO = smart_cast<CGameObject*>(O);
 	if (!GO)
 	{
 		Msg("! ERROR: c_EVENT[%d] : non-game-object", dest);
 		return;
 	}
+
 	if (type != GE_DESTROY_REJECT)
 	{
 		if (type == GE_DESTROY)
@@ -363,44 +370,46 @@ void CLevel::cl_Process_Event(u16 dest, u16 type, CNetPacket& P)
 		{
 			Game( ).OnDestroy(GD);
 			GD->OnEvent(P, GE_DESTROY);
-		};
+		}
 	}
-};
+}
 
 void CLevel::ProcessGameEvents( )
 {
 	// Game events
+
+	CNetPacket			P;
+	u32 svT = timeServer( ) - NET_Latency;
+
+	/*
+	if (!game_events->queue.empty())
+		Msg("- d[%d],ts[%d] -- E[svT=%d],[evT=%d]",Device.dwTimeGlobal,timeServer(),svT,game_events->queue.begin()->timestamp);
+	*/
+
+	while (game_events->available(svT))
 	{
-		CNetPacket			P;
-		u32 svT = timeServer( ) - NET_Latency;
+		u16 ID, dest, type;
+		game_events->get(ID, dest, type, P);
 
-		/*
-		if (!game_events->queue.empty())
-			Msg("- d[%d],ts[%d] -- E[svT=%d],[evT=%d]",Device.dwTimeGlobal,timeServer(),svT,game_events->queue.begin()->timestamp);
-		*/
-
-		while (game_events->available(svT))
+		switch (ID)
 		{
-			u16 ID, dest, type;
-			game_events->get(ID, dest, type, P);
-
-			switch (ID)
+			case M_SPAWN:
 			{
-				case M_SPAWN:
-				{
-					u16 dummy16;
-					P.r_begin(dummy16);
-					cl_Process_Spawn(P);
-				}break;
-				case M_EVENT:
-				{
-					cl_Process_Event(dest, type, P);
-				}break;
-				default:
-				{
-					VERIFY(0);
-				}break;
+				u16 dummy16;
+				P.r_begin(dummy16);
+				cl_Process_Spawn(P);
 			}
+			break;
+			case M_EVENT:
+			{
+				cl_Process_Event(dest, type, P);
+			}
+			break;
+			default:
+			{
+				VERIFY(0);
+			}
+			break;
 		}
 	}
 }
@@ -424,8 +433,10 @@ void CLevel::OnFrame( )
 
 	ProcessGameEvents( );
 
-
-	if (m_bNeed_CrPr)					make_NetCorrectionPrediction( );
+	if (m_bNeed_CrPr)
+	{
+		make_NetCorrectionPrediction( );
+	}
 
 	MapManager( ).Update( );
 	// Inherited update
@@ -439,20 +450,30 @@ void CLevel::OnFrame( )
 	m_ph_commander_scripts->update( );
 	//	autosave_manager().update			();
 
-		//просчитать полет пуль
+	//просчитать полет пуль
 	Device.Statistic->TEST0.Begin( );
 	BulletManager( ).CommitRenderSet( );
 	Device.Statistic->TEST0.End( );
 
 	// update static sounds
 	if (g_mt_config.test(mtLevelSounds))
+	{
 		Device.seqParallel.push_back(fastdelegate::FastDelegate0<>(m_level_sound_manager, &CLevelSoundManager::Update));
+	}
 	else
+	{
 		m_level_sound_manager->Update( );
+	}
 
 	// deffer LUA-GC-STEP
-	if (g_mt_config.test(mtLUA_GC))	Device.seqParallel.push_back(fastdelegate::FastDelegate0<>(this, &CLevel::script_gc));
-	else							script_gc( );
+	if (g_mt_config.test(mtLUA_GC))
+	{
+		Device.seqParallel.push_back(fastdelegate::FastDelegate0<>(this, &CLevel::script_gc));
+	}
+	else
+	{
+		script_gc( );
+	}
 
 	//-----------------------------------------------------
 	if (pStatGraphR)
@@ -491,18 +512,21 @@ void CLevel::OnRender( )
 
 	draw_wnds_rects( );
 
-
 #ifdef DEBUG
 	ph_world->OnRender( );
 #endif
 
 #ifdef DEBUG
 	if (ai( ).get_level_graph( ))
+	{
 		ai( ).level_graph( ).render( );
+	}
 
 	CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(Level( ).CurrentEntity( ));
 	if (stalker)
+	{
 		stalker->OnRender( );
+	}
 
 	if (bDebug)
 	{
@@ -512,18 +536,27 @@ void CLevel::OnRender( )
 
 			CPhysicObject* physic_object = smart_cast<CPhysicObject*>(_O);
 			if (physic_object)
+			{
 				physic_object->OnRender( );
+			}
 
-			CSpaceRestrictor* space_restrictor = smart_cast<CSpaceRestrictor*>	(_O);
+			CSpaceRestrictor* space_restrictor = smart_cast<CSpaceRestrictor*>(_O);
 			if (space_restrictor)
+			{
 				space_restrictor->OnRender( );
+			}
+
 			CClimableObject* climable = smart_cast<CClimableObject*>	(_O);
 			if (climable)
+			{
 				climable->OnRender( );
+			}
+
 			CTeamBaseZone* team_base_zone = smart_cast<CTeamBaseZone*>(_O);
 			if (team_base_zone)
+			{
 				team_base_zone->OnRender( );
-
+			}
 
 			if (dbg_net_Draw_Flags.test(1 << 11)) //draw skeleton
 			{
@@ -535,19 +568,26 @@ void CLevel::OnRender( )
 						pGO->dbg_DrawSkeleton( );
 					}
 				}
-			};
+			}
 		}
-		//  [7/5/2005]
-		if (Server && Server->game) Server->game->OnRender( );
-		//  [7/5/2005]
+
+		if (Server && Server->game)
+		{
+			Server->game->OnRender( );
+		}
+
 		ObjectSpace.dbgRender( );
 
 		//---------------------------------------------------------------------
-		HUD( ).Font( ).pFontSmall->OutSet(170, 630);
+		HUD( ).Font( ).pFontSmall->OutSet(170.0f, 630.0f);
 		HUD( ).Font( ).pFontSmall->SetHeight(16.0f);
 		HUD( ).Font( ).pFontSmall->SetColor(0xffff0000);
 
-		if (Server)HUD( ).Font( ).pFontSmall->OutNext("Client Objects:      [%d]", Server->GetEntitiesNum( ));
+		if (Server)
+		{
+			HUD( ).Font( ).pFontSmall->OutNext("Client Objects:      [%d]", Server->GetEntitiesNum( ));
+		}
+
 		HUD( ).Font( ).pFontSmall->OutNext("Server Objects:      [%d]", Objects.o_count( ));
 		HUD( ).Font( ).pFontSmall->OutNext("Interpolation Steps: [%d]", Level( ).GetInterpolationSteps( ));
 		HUD( ).Font( ).pFontSmall->SetHeight(8.0f);
@@ -572,11 +612,13 @@ void CLevel::OnRender( )
 			CObject* object = Objects.o_get_by_iterator(I);
 			CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
 			if (!stalker)
+			{
 				continue;
+			}
+
 			stalker->dbg_draw_vision( );
 		}
 	}
-
 
 	if (psAI_Flags.test(aiDrawVisibilityRays))
 	{
@@ -585,7 +627,9 @@ void CLevel::OnRender( )
 			CObject* object = Objects.o_get_by_iterator(I);
 			CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
 			if (!stalker)
+			{
 				continue;
+			}
 
 			stalker->dbg_draw_visibility_rays( );
 		}
@@ -597,7 +641,7 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 {
 	if (E == eEntitySpawn)
 	{
-		char	Name[128];
+		string128	Name;
 		Name[0] = 0;
 		sscanf(pcstr(P1), "%s", Name);
 		Level( ).g_cl_Spawn(Name, 0xff, M_SPAWN_OBJECT_LOCAL, fVector3( ).set(0.0f, 0.0f, 0.0f));
@@ -630,30 +674,53 @@ void CLevel::OnEvent(EVENT E, u64 P1, u64 /**P2/**/)
 	}
 }
 
-void	CLevel::AddObject_To_Objects4CrPr(CGameObject* pObj)
+void CLevel::AddObject_To_Objects4CrPr(CGameObject* pObj)
 {
-	if (!pObj) return;
+	if (!pObj)
+	{
+		return;
+	}
+
 	for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 	{
-		if (*OIt == pObj) return;
+		if (*OIt == pObj)
+		{
+			return;
+		}
 	}
-	pObjects4CrPr.push_back(pObj);
 
+	pObjects4CrPr.push_back(pObj);
 }
-void	CLevel::AddActor_To_Actors4CrPr(CGameObject* pActor)
+
+void CLevel::AddActor_To_Actors4CrPr(CGameObject* pActor)
 {
-	if (!pActor) return;
-	if (pActor->CLS_ID != CLSID_OBJECT_ACTOR) return;
+	if (!pActor)
+	{
+		return;
+	}
+
+	if (pActor->CLS_ID != CLSID_OBJECT_ACTOR)
+	{
+		return;
+	}
+
 	for (OBJECTS_LIST_it AIt = pActors4CrPr.begin( ); AIt != pActors4CrPr.end( ); AIt++)
 	{
-		if (*AIt == pActor) return;
+		if (*AIt == pActor)
+		{
+			return;
+		}
 	}
+
 	pActors4CrPr.push_back(pActor);
 }
 
-void	CLevel::RemoveObject_From_4CrPr(CGameObject* pObj)
+void CLevel::RemoveObject_From_4CrPr(CGameObject* pObj)
 {
-	if (!pObj) return;
+	if (!pObj)
+	{
+		return;
+	}
 
 	OBJECTS_LIST_it OIt = std::find(pObjects4CrPr.begin( ), pObjects4CrPr.end( ), pObj);
 	if (OIt != pObjects4CrPr.end( ))
@@ -678,7 +745,7 @@ void CLevel::make_NetCorrectionPrediction( )
 	{
 		Msg("!!!TOO MANY PHYSICS STEPS FOR CORRECTION PREDICTION = %d !!!", m_dwNumSteps);
 		m_dwNumSteps = 10;
-	};
+	}
 	//////////////////////////////////////////////////////////////////////////////////
 	ph_world->Freeze( );
 
@@ -686,9 +753,13 @@ void CLevel::make_NetCorrectionPrediction( )
 	for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 	{
 		CGameObject* pObj = *OIt;
-		if (!pObj) continue;
+		if (!pObj)
+		{
+			continue;
+		}
+
 		pObj->PH_B_CrPr( );
-	};
+	}
 	//////////////////////////////////////////////////////////////////////////////////
 		//first prediction from "delivered" to "real current" position
 		//making enought PH steps to calculate current objects position based on their updated state	
@@ -700,23 +771,32 @@ void CLevel::make_NetCorrectionPrediction( )
 		for (OBJECTS_LIST_it AIt = pActors4CrPr.begin( ); AIt != pActors4CrPr.end( ); AIt++)
 		{
 			CGameObject* pActor = *AIt;
-			if (!pActor || pActor->CrPr_IsActivated( )) continue;
+			if (!pActor || pActor->CrPr_IsActivated( ))
+			{
+				continue;
+			}
+
 			pActor->PH_B_CrPr( );
-		};
-	};
+		}
+	}
 	//////////////////////////////////////////////////////////////////////////////////
 	for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 	{
 		CGameObject* pObj = *OIt;
-		if (!pObj) continue;
+		if (!pObj)
+		{
+			continue;
+		}
+
 		pObj->PH_I_CrPr( );
-	};
+	}
 	//////////////////////////////////////////////////////////////////////////////////
 	if (!InterpolationDisabled( ))
 	{
 		for (u32 i = 0; i < lvInterpSteps; i++)	//second prediction "real current" to "future" position
 		{
 			ph_world->Step( );
+
 #ifdef DEBUG
 			/*
 						for	(OBJECTS_LIST_it OIt = pObjects4CrPr.begin(); OIt != pObjects4CrPr.end(); OIt++)
@@ -727,15 +807,21 @@ void CLevel::make_NetCorrectionPrediction( )
 						};
 			*/
 #endif
+
 		}
 		//////////////////////////////////////////////////////////////////////////////////
 		for (OBJECTS_LIST_it OIt = pObjects4CrPr.begin( ); OIt != pObjects4CrPr.end( ); OIt++)
 		{
 			CGameObject* pObj = *OIt;
-			if (!pObj) continue;
+			if (!pObj)
+			{
+				continue;
+			}
+
 			pObj->PH_A_CrPr( );
-		};
-	};
+		}
+	}
+
 	ph_world->UnFreeze( );
 
 	ph_world->m_steps_num = NumPhSteps;
@@ -744,51 +830,66 @@ void CLevel::make_NetCorrectionPrediction( )
 
 	pObjects4CrPr.clear( );
 	pActors4CrPr.clear( );
-};
+}
 
-u32			CLevel::GetInterpolationSteps( )
+u32 CLevel::GetInterpolationSteps( )
 {
 	return lvInterpSteps;
 }
 
-void		CLevel::UpdateDeltaUpd(u32 LastTime)
+void CLevel::UpdateDeltaUpd(u32 LastTime)
 {
 	u32 CurrentDelta = LastTime - m_dwLastNetUpdateTime;
 	if (CurrentDelta < m_dwDeltaUpdate)
+	{
 		CurrentDelta = iFloor(f32(m_dwDeltaUpdate * 10 + CurrentDelta) / 11);
+	}
 
 	m_dwLastNetUpdateTime = LastTime;
 	m_dwDeltaUpdate = CurrentDelta;
 
-	if (0 == g_cl_lvInterp) ReculcInterpolationSteps( );
-	else
-		if (g_cl_lvInterp > 0)
-		{
-			lvInterpSteps = iCeil(g_cl_lvInterp / fixed_step);
-		}
+	if (0 == g_cl_lvInterp)
+	{
+		ReculcInterpolationSteps( );
+	}
+	else if (g_cl_lvInterp > 0)
+	{
+		lvInterpSteps = iCeil(g_cl_lvInterp / fixed_step);
+	}
 }
 
-void		CLevel::ReculcInterpolationSteps( )
+void CLevel::ReculcInterpolationSteps( )
 {
 	lvInterpSteps = iFloor(f32(m_dwDeltaUpdate) / (fixed_step * 1000));
-	if (lvInterpSteps > 60) lvInterpSteps = 60;
-	if (lvInterpSteps < 3)	lvInterpSteps = 3;
+	if (lvInterpSteps > 60)
+	{
+		lvInterpSteps = 60;
+	}
+
+	if (lvInterpSteps < 3)
+	{
+		lvInterpSteps = 3;
+	}
 }
 
-bool		CLevel::InterpolationDisabled( )
+bool CLevel::InterpolationDisabled( )
 {
-	return g_cl_lvInterp < 0;
+	return (g_cl_lvInterp < 0);
 }
 
-void 		CLevel::PhisStepsCallback(u32 Time0, u32 Time1)
+void CLevel::PhisStepsCallback(u32 Time0, u32 Time1)
 {
 	return;
 }
 
-void				CLevel::SetNumCrSteps(u32 NumSteps)
+void CLevel::SetNumCrSteps(u32 NumSteps)
 {
 	m_bNeed_CrPr = true;
-	if (m_dwNumSteps > NumSteps) return;
+	if (m_dwNumSteps > NumSteps)
+	{
+		return;
+	}
+
 	m_dwNumSteps = NumSteps;
 	if (m_dwNumSteps > 1000000)
 	{
@@ -796,17 +897,14 @@ void				CLevel::SetNumCrSteps(u32 NumSteps)
 	}
 }
 
-
 ALife::_TIME_ID CLevel::GetGameTime( )
 {
 	return			(game->GetGameTime( ));
-	//	return			(Server->game->GetGameTime());
 }
 
 ALife::_TIME_ID CLevel::GetEnvironmentGameTime( )
 {
 	return			(game->GetEnvironmentGameTime( ));
-	//	return			(Server->game->GetGameTime());
 }
 
 u8 CLevel::GetDayTime( )
@@ -820,7 +918,7 @@ u8 CLevel::GetDayTime( )
 
 f32 CLevel::GetGameDayTimeSec( )
 {
-	return	(f32(s64(GetGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.f);
+	return	(f32(s64(GetGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.0f);
 }
 
 u32 CLevel::GetGameDayTimeMS( )
@@ -830,7 +928,7 @@ u32 CLevel::GetGameDayTimeMS( )
 
 f32 CLevel::GetEnvironmentGameDayTimeSec( )
 {
-	return	(f32(s64(GetEnvironmentGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.f);
+	return	(f32(s64(GetEnvironmentGameTime( ) % (24 * 60 * 60 * 1000))) / 1000.0f);
 }
 
 void CLevel::GetGameDateTime(u32& year, u32& month, u32& day, u32& hours, u32& mins, u32& secs, u32& milisecs)
@@ -838,54 +936,53 @@ void CLevel::GetGameDateTime(u32& year, u32& month, u32& day, u32& hours, u32& m
 	split_time(GetGameTime( ), year, month, day, hours, mins, secs, milisecs);
 }
 
-
 f32 CLevel::GetGameTimeFactor( )
 {
-	return			(game->GetGameTimeFactor( ));
-	//	return			(Server->game->GetGameTimeFactor());
+	return game->GetGameTimeFactor( );
 }
 
 void CLevel::SetGameTimeFactor(const f32 fTimeFactor)
 {
 	game->SetGameTimeFactor(fTimeFactor);
-	//	Server->game->SetGameTimeFactor(fTimeFactor);
 }
 
 void CLevel::SetGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTimeFactor)
 {
 	game->SetGameTimeFactor(GameTime, fTimeFactor);
-	//	Server->game->SetGameTimeFactor(fTimeFactor);
 }
+
 void CLevel::SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTimeFactor)
 {
 	game->SetEnvironmentGameTimeFactor(GameTime, fTimeFactor);
-	//	Server->game->SetGameTimeFactor(fTimeFactor);
-}/*
-void CLevel::SetGameTime(ALife::_TIME_ID GameTime)
-{
-	game->SetGameTime(GameTime);
-//	Server->game->SetGameTime(GameTime);
 }
-*/
+
 bool CLevel::IsServer( )
 {
-	//	return (!!Server);
 	if (IsDemoPlay( ))
 	{
 		return IsServerDemo( );
 	}
-	if (!Server) return false;
+
+	if (!Server)
+	{
+		return false;
+	}
+
 	return (Server->client_Count( ) != 0);
 }
 
 bool CLevel::IsClient( )
 {
-	//	return (!Server);
 	if (IsDemoPlay( ))
 	{
 		return IsClientDemo( );
-	};
-	if (!Server) return true;
+	}
+
+	if (!Server)
+	{
+		return true;
+	}
+
 	return (Server->client_Count( ) == 0);
 }
 
@@ -899,8 +996,6 @@ u32	GameID( )
 	return Game( ).Type( );
 }
 
-#include "..\XR_3DA\IGame_Persistent.h"
-
 GlobalFeelTouch::GlobalFeelTouch( )
 { }
 
@@ -912,16 +1007,23 @@ struct delete_predicate_by_time : public std::binary_function<Feel::Touch::DenyT
 	bool operator () (Feel::Touch::DenyTouch const& left, DWORD const expire_time) const
 	{
 		if (left.Expire <= expire_time)
+		{
 			return true;
+		}
+
 		return false;
-	};
+	}
 };
+
 struct objects_ptrs_equal : public std::binary_function<Feel::Touch::DenyTouch, CObject const*, bool>
 {
 	bool operator() (Feel::Touch::DenyTouch const& left, CObject const* const right) const
 	{
 		if (left.O == right)
+		{
 			return true;
+		}
+
 		return false;
 	}
 };
@@ -929,20 +1031,16 @@ struct objects_ptrs_equal : public std::binary_function<Feel::Touch::DenyTouch, 
 void GlobalFeelTouch::update( )
 {
 	//we ignore P and R arguments, we need just delete evaled denied objects...
-	xr_vector<Feel::Touch::DenyTouch>::iterator new_end =
-		std::remove_if(feel_touch_disable.begin( ), feel_touch_disable.end( ),
-					   std::bind2nd(delete_predicate_by_time( ), Device.dwTimeGlobal));
+	xr_vector<Feel::Touch::DenyTouch>::iterator new_end = std::remove_if(feel_touch_disable.begin( ), feel_touch_disable.end( ), std::bind2nd(delete_predicate_by_time( ), Device.dwTimeGlobal));
 	feel_touch_disable.erase(new_end, feel_touch_disable.end( ));
 }
 
-bool GlobalFeelTouch::is_object_denied(CObject const* O)
+bool GlobalFeelTouch::is_object_denied(const CObject* O)
 {
-	/*fVector3 temp_vector;
-	feel_touch_update(temp_vector, 0.f);*/
-	if (std::find_if(feel_touch_disable.begin( ), feel_touch_disable.end( ),
-					 std::bind2nd(objects_ptrs_equal( ), O)) == feel_touch_disable.end( ))
+	if (std::find_if(feel_touch_disable.begin( ), feel_touch_disable.end( ), std::bind2nd(objects_ptrs_equal( ), O)) == feel_touch_disable.end( ))
 	{
 		return false;
 	}
+
 	return true;
 }

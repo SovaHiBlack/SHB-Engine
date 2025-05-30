@@ -93,17 +93,15 @@ public:
 
 	class CObjectInfo : public CItemBase<SInfoItem>
 	{
-
 		typedef CItemBase<SInfoItem> inherited;
 
-#define	DELTA_HEIGHT_DEFAULT	16.f
+#define	DELTA_HEIGHT_DEFAULT	16.0f
 #define	SHIFT_POS_DEFAULT		fVector3().set(0.0f,2.0f,0.0f)
 
 		fVector3			m_shift_pos;
 		f32			m_delta_height;
 
 	public:
-
 		CObjectInfo( )
 		{
 			setup( );
@@ -248,10 +246,10 @@ private:
 private:
 	struct SKey
 	{
-		void* class_ptr;
+		pvoid class_ptr;
 		pcstr	class_name;
 
-		SKey(void* ptr, pcstr name)
+		SKey(pvoid ptr, pcstr name)
 		{
 			class_ptr = ptr; class_name = name;
 		}
