@@ -8,9 +8,8 @@
 #include "level.h"
 #include "CustomZone.h"
 #include "clsid_game.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "PHDestroyableNotificate.h"
-#include "clsid_game.h"
 
 CMincer::CMincer( )
 {

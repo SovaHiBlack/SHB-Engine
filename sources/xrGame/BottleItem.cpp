@@ -7,86 +7,84 @@
 #include "BottleItem.h"
 #include "xrmessages.h"
 #include "../../xrNetServer/net_utils.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "EntityCondition.h"
 
 #define BREAK_POWER 5.f
 
-CBottleItem::CBottleItem(void) 
-{
-}
+CBottleItem::CBottleItem( )
+{ }
 
-CBottleItem::~CBottleItem(void) 
+CBottleItem::~CBottleItem( )
 {
-	sndBreaking.destroy();
+	sndBreaking.destroy( );
 }
-
 
 void CBottleItem::Load(pcstr section)
 {
 	inherited::Load(section);
 
-	if(pSettings->line_exist(section, "break_particles"))
+	if (pSettings->line_exist(section, "break_particles"))
 		m_sBreakParticles = pSettings->r_string(section, "break_particles");
 
-	if(pSettings->line_exist(section, "break_sound"))
-		sndBreaking.create(pSettings->r_string(section, "break_sound"),st_Effect,sg_SourceType);
+	if (pSettings->line_exist(section, "break_sound"))
+		sndBreaking.create(pSettings->r_string(section, "break_sound"), st_Effect, sg_SourceType);
 
 	m_alcohol = READ_IF_EXISTS(pSettings, r_float, section, "eat_alcohol", 0.0f);
 }
 
 void CBottleItem::OnEvent(CNetPacket& P, u16 type)
 {
-	inherited::OnEvent(P,type);
+	inherited::OnEvent(P, type);
 
-	switch (type) 
+	switch (type)
 	{
-		case GE_GRENADE_EXPLODE : 
-			BreakToPieces();
+		case GE_GRENADE_EXPLODE:
+			BreakToPieces( );
 			break;
 	}
 }
 
-void CBottleItem::BreakToPieces()
+void CBottleItem::BreakToPieces( )
 {
 	//играем звук
-	sndBreaking.play_at_pos(0, Position(), false);
+	sndBreaking.play_at_pos(0, Position( ), false);
 
 	//отыграть партиклы разбивания
-	if(*m_sBreakParticles)
+	if (*m_sBreakParticles)
 	{
 		//показываем эффекты
-		CParticlesObject* pStaticPG; 
-		pStaticPG = CParticlesObject::Create(*m_sBreakParticles,TRUE); 
-		pStaticPG->play_at_pos(Position());
+		CParticlesObject* pStaticPG;
+		pStaticPG = CParticlesObject::Create(*m_sBreakParticles, TRUE);
+		pStaticPG->play_at_pos(Position( ));
 	}
 
 	//ликвидировать сам объект 
-	if (Local())
+	if (Local( ))
 	{
-		DestroyObject	();
+		DestroyObject( );
 	}
 }
 
-void	CBottleItem::Hit					(SHit* pHDS)
+void	CBottleItem::Hit(SHit* pHDS)
 {
 	inherited::Hit(pHDS);
-	
-	if(pHDS->damage()>BREAK_POWER)
+
+	if (pHDS->damage( ) > BREAK_POWER)
 	{
 		//Generate Expode event
-		if (Local()) 
+		if (Local( ))
 		{
 			CNetPacket		P;
-			u_EventGen		(P,GE_GRENADE_EXPLODE,ID());	
-			u_EventSend		(P);
+			u_EventGen(P, GE_GRENADE_EXPLODE, ID( ));
+			u_EventSend(P);
 		};
 	}
 }
 
-void CBottleItem::UseBy				(CEntityAlive* entity_alive)
+void CBottleItem::UseBy(CEntityAlive* entity_alive)
 {
-	inherited::UseBy					(entity_alive);
+	inherited::UseBy(entity_alive);
 
-	entity_alive->conditions().ChangeAlcohol(m_alcohol);
+	entity_alive->conditions( ).ChangeAlcohol(m_alcohol);
 }

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "Actor_Flags.h"
+//#include "Actor_flags.h"
 #include "hudmanager.h"
 #ifdef DEBUG
 #	include "ode_include.h"

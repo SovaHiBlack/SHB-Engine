@@ -2,7 +2,7 @@
 #include "weaponammo.h"
 #include "PhysicsShell.h"
 #include "xrserver_objects_alife_items.h"
-#include "Actor_Flags.h"
+#include "Actor_flags.h"
 #include "inventory.h"
 #include "Weapon.h"
 #include "BulletManager.h"

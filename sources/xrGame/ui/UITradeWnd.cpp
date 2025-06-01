@@ -11,7 +11,7 @@
 #include "../Trade.h"
 #include "../UIGame.h"
 #include "UIInventoryUtilities.h"//
-#include "../inventoryowner.h"
+#include "../InventoryOwner.h"
 #include "../eatable_item.h"
 #include "../inventory.h"
 #include "../level.h"

@@ -2,7 +2,7 @@
 
 #include "alife_space.h"
 #include "PHSkeleton.h"
-#include "Entity_Alive.h"
+#include "EntityAlive.h"
 #include "PHSoundPlayer.h"
 #include "Phdestroyable.h"
 #include "character_hit_animations.h"

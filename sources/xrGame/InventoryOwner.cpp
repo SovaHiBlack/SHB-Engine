@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "InventoryOwner.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "pda.h"
 #include "Actor.h"
 #include "trade.h"

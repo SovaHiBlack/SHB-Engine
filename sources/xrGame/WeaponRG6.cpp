@@ -6,10 +6,12 @@
 #include "clsid_game.h"
 
 #include "MathUtils.h"
+#include "inventory.h"
+#include "InventoryOwner.h"
+
 #ifdef DEBUG
 #include "phdebug.h"
 #endif
-
 
 CWeaponRG6::~CWeaponRG6()
 {
@@ -37,21 +39,17 @@ BOOL	CWeaponRG6::net_Spawn				(CSE_Abstract* DC)
 //			inheritedRL::SpawnRocket(*fake_grenade_name, this);
 	}
 	
-
-	
 	return l_res;
-};
+}
 
 void CWeaponRG6::Load(pcstr section)
 {
 	inheritedRL::Load(section);
 	inheritedSG::Load(section);
 }
-#include "inventory.h"
-#include "inventoryOwner.h"
+
 void CWeaponRG6::FireStart ()
 {
-
 	if(GetState() == eIdle	&& getRocketCount() ) 
 	{
 		inheritedSG::FireStart ();

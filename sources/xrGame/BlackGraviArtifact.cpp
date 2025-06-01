@@ -7,31 +7,30 @@
 #include "stdafx.h"
 #include "BlackGraviArtifact.h"
 #include "PhysicsShell.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "ParticlesObject.h"
-#include "phmovementcontrol.h"
+#include "PHMovementControl.h"
 #include "xrmessages.h"
 #include "physicsshellholder.h"
 #include "explosive.h"
 #include "../../xrNetServer/net_utils.h"
 #include "PHWorld.h"
 #include "CharacterPhysicsSupport.h"
+
 extern CPHWorld*	ph_world;
-CBlackGraviArtefact::CBlackGraviArtefact(void) 
+CBlackGraviArtefact::CBlackGraviArtefact( ) 
 {
-	m_fImpulseThreshold = 10.f;
-	m_fRadius = 10.f;
-	m_fStrikeImpulse = 50.f;
+	m_fImpulseThreshold = 10.0f;
+	m_fRadius = 10.0f;
+	m_fStrikeImpulse = 50.0f;
 
 	m_bStrike = false;
 }
 
-CBlackGraviArtefact::~CBlackGraviArtefact(void) 
+CBlackGraviArtefact::~CBlackGraviArtefact( ) 
 {
 	m_GameObjectList.clear();
 }
-
-
 
 void CBlackGraviArtefact::Load(pcstr section)
 {

@@ -13,7 +13,7 @@
 #include "Physics.h"
 #include "xrserver_objects_alife.h"
 #include "xrserver_objects_alife_items.h"
-#include "entity_alive.h"
+//#include "EntityAlive.h"
 #include "Level.h"
 #include "game_cl_base.h"
 #include "Actor.h"

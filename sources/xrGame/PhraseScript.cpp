@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "script_game_object.h"
 #include "infoportion.h"
-#include "inventoryowner.h"
+#include "InventoryOwner.h"
 #include "ai_debug.h"
 #include "ui/xrUIXmlParser.h"
 #include "Actor.h"

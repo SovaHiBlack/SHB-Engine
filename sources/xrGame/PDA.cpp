@@ -13,7 +13,7 @@
 #include "alife_registry_wrappers.h"
 
 
-CPda::CPda(void)
+CPda::CPda( )
 {
 	m_slot = PDA_SLOT;
 	m_flags.set(Fruck, TRUE);

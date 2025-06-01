@@ -1,5 +1,5 @@
 #include	"stdafx.h"
-#include	"physicsshell.h"
+#include	"PhysicsShell.h"
 #include	"phsimplecalls.h"
 #include	"phobject.h"
 #include	"PHWorld.h"

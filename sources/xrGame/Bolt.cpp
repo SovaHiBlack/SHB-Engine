@@ -4,7 +4,7 @@
 #include "PhysicsShell.h"
 #include "xr_level_controller.h"
 
-CBolt::CBolt(void) 
+CBolt::CBolt( ) 
 {
 	m_weight					= .1f;
 	m_slot						= BOLT_SLOT;
@@ -12,7 +12,7 @@ CBolt::CBolt(void)
 	m_thrower_id				=u16(-1);
 }
 
-CBolt::~CBolt(void) 
+CBolt::~CBolt( ) 
 {
 }
 
@@ -21,7 +21,6 @@ void CBolt::OnH_A_Chield()
 	inherited::OnH_A_Chield();
 	CObject* o= H_Parent()->H_Parent();
 	if(o)SetInitiator(o->ID());
-	
 }
 
 void CBolt::OnEvent(CNetPacket& P, u16 type)

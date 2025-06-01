@@ -24,7 +24,6 @@ CBurer::CBurer()
 
 	m_fast_gravi		= xr_new<CBurerFastGravi>();
 	control().add		(m_fast_gravi,  ControlCom::eComCustom1);
-
 }
 
 CBurer::~CBurer()
@@ -32,7 +31,6 @@ CBurer::~CBurer()
 	xr_delete(StateMan);
 	xr_delete(m_fast_gravi);
 }
-
 
 void CBurer::reinit()
 {

@@ -14,6 +14,7 @@
 #include "AISpace.h"
 #include "game_graph.h"
 #include "PHDestroyable.h"
+
 #define F_MAX         3.402823466e+38F
 
 u32 CPHSkeleton::existence_time=5000;

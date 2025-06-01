@@ -9,8 +9,8 @@
 #include "stdafx.h"
 #include "material_manager.h"
 #include "alife_space.h"
-#include "phmovementcontrol.h"
-#include "entity_alive.h"
+#include "PHMovementControl.h"
+#include "EntityAlive.h"
 #include "CharacterPhysicsSupport.h"
 #include "..\XR_3DA\skeletoncustom.h"
 

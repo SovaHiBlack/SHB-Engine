@@ -23,7 +23,6 @@ protected:
 	CEF_Storage* m_storage;
 
 public:
-
 	CBaseFunction(CEF_Storage* storage)
 	{
 		m_storage = storage;
@@ -46,27 +45,32 @@ public:
 	{
 		f32 fTemp = ffGetValue( );
 		if (fTemp <= m_fMinResultValue)
-			return(0);
+		{
+			return 0;
+		}
+		else if (fTemp >= m_fMaxResultValue)
+		{
+			return (dwDiscretizationValue - 1);
+		}
 		else
-			if (fTemp >= m_fMaxResultValue)
-				return(dwDiscretizationValue - 1);
-			else
-				return(iFloor((fTemp - m_fMinResultValue) / (m_fMaxResultValue - m_fMinResultValue) * f32(dwDiscretizationValue - 1) + .5f));
+		{
+			return iFloor((fTemp - m_fMinResultValue) / (m_fMaxResultValue - m_fMinResultValue) * f32(dwDiscretizationValue - 1) + 0.5f);
+		}
 	}
 
 	IC		f32	ffGetMaxResultValue( )
 	{
-		return	(m_fMaxResultValue);
+		return m_fMaxResultValue;
 	}
 
 	IC		f32	ffGetMinResultValue( )
 	{
-		return	(m_fMinResultValue);
+		return m_fMinResultValue;
 	}
 
 	IC		pcstr	Name( )
 	{
-		return	(m_caName);
+		return m_caName;
 	}
 
 	IC	CLASS_ID clsid_member( ) const;

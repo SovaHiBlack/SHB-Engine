@@ -8,18 +8,15 @@
 #include "antirad.h"
 #include "PhysicsShell.h"
 
-CAntirad::CAntirad(void) 
-{
-}
+CAntirad::CAntirad( )
+{ }
 
-CAntirad::~CAntirad(void) 
-{
-}
+CAntirad::~CAntirad( )
+{ }
 
-
-BOOL CAntirad::net_Spawn(CSE_Abstract* DC) 
+BOOL CAntirad::net_Spawn(CSE_Abstract* DC)
 {
-	return		(inherited::net_Spawn(DC));
+	return inherited::net_Spawn(DC);
 }
 
 void CAntirad::Load(pcstr section)
@@ -27,32 +24,32 @@ void CAntirad::Load(pcstr section)
 	inherited::Load(section);
 }
 
-void CAntirad::net_Destroy() 
+void CAntirad::net_Destroy( )
 {
-	inherited::net_Destroy();
+	inherited::net_Destroy( );
 }
 
-void CAntirad::shedule_Update(u32 dt) 
+void CAntirad::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
 }
 
-void CAntirad::UpdateCL() 
+void CAntirad::UpdateCL( )
 {
-	inherited::UpdateCL();
+	inherited::UpdateCL( );
 }
 
-void CAntirad::OnH_A_Chield() 
+void CAntirad::OnH_A_Chield( )
 {
-	inherited::OnH_A_Chield		();
+	inherited::OnH_A_Chield( );
 }
 
-void CAntirad::OnH_B_Independent(bool just_before_destroy) 
+void CAntirad::OnH_B_Independent(bool just_before_destroy)
 {
 	inherited::OnH_B_Independent(just_before_destroy);
 }
 
-void CAntirad::renderable_Render() 
+void CAntirad::renderable_Render( )
 {
-	inherited::renderable_Render();
+	inherited::renderable_Render( );
 }

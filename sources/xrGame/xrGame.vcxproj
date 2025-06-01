@@ -190,8 +190,8 @@
     <ClInclude Include="ActorCondition.h" />
     <ClInclude Include="ActorEffector.h" />
     <ClInclude Include="actor_anim_defs.h" />
-    <ClInclude Include="actor_defs.h" />
-    <ClInclude Include="Actor_Flags.h" />
+    <ClInclude Include="Actor_defs.h" />
+    <ClInclude Include="Actor_flags.h" />
     <ClInclude Include="actor_input_handler.h" />
     <ClInclude Include="actor_memory.h" />
     <ClInclude Include="actor_statistic_defs.h" />
@@ -704,8 +704,8 @@
     <ClInclude Include="enemy_manager_inline.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityCondition.h" />
-    <ClInclude Include="entity_alive.h" />
-    <ClInclude Include="entity_alive_inline.h" />
+    <ClInclude Include="EntityAlive.h" />
+    <ClInclude Include="EntityAlive_inline.h" />
     <ClInclude Include="ExoOutfit.h" />
     <CustomBuild Include="Explosive.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1247,8 +1247,8 @@
     <ClInclude Include="stalker_velocity_holder.h" />
     <ClInclude Include="stalker_velocity_holder_inline.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="step_manager.h" />
-    <ClInclude Include="step_manager_defs.h" />
+    <ClInclude Include="StepManager.h" />
+    <ClInclude Include="StepManager_defs.h" />
     <ClInclude Include="string_table.h" />
     <ClInclude Include="string_table_defs.h" />
     <ClInclude Include="team_base_zone.h" />
@@ -1801,7 +1801,7 @@
     <ClCompile Include="enemy_manager.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityCondition.cpp" />
-    <ClCompile Include="entity_alive.cpp" />
+    <ClCompile Include="EntityAlive.cpp" />
     <ClCompile Include="ExoOutfit.cpp" />
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="ExplosiveItem.cpp" />
@@ -2003,7 +2003,6 @@
     <ClCompile Include="PhysicsGamePars.cpp" />
     <ClCompile Include="PhysicsShell.cpp" />
     <ClCompile Include="PhysicsShellHolder.cpp" />
-    <ClCompile Include="PhysicsShellScript.cpp" />
     <ClCompile Include="PhysicsSkeletonObject.cpp" />
     <ClCompile Include="physics_game.cpp" />
     <ClCompile Include="physic_item.cpp" />
@@ -2193,7 +2192,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="step_manager.cpp" />
+    <ClCompile Include="StepManager.cpp" />
     <ClCompile Include="string_table.cpp" />
     <ClCompile Include="team_base_zone.cpp" />
     <ClCompile Include="team_hierarchy_holder.cpp" />

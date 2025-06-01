@@ -11,8 +11,8 @@
 #include "phworld.h"
 #include "restriction_space.h"
 #include "..\XR_3DA\IGame_Persistent.h"
-#include "inventoryOwner.h"
-#include "Entity_alive.h"
+#include "InventoryOwner.h"
+#include "EntityAlive.h"
 #include "xr_level_controller.h"
 
 #define FASTMODE_DISTANCE (50.0f)	//distance to camera from sphere, when zone switches to fast update sequence

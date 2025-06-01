@@ -7,12 +7,11 @@
 #include "DummyArtifact.h"
 #include "PhysicsShell.h"
 
-
-CDummyArtefact::CDummyArtefact(void) 
+CDummyArtefact::CDummyArtefact( ) 
 {
 }
 
-CDummyArtefact::~CDummyArtefact(void) 
+CDummyArtefact::~CDummyArtefact( ) 
 {
 }
 
@@ -20,4 +19,3 @@ void CDummyArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 }
-

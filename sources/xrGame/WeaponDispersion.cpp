@@ -5,7 +5,7 @@
 #include "stdafx.h"
 
 #include "Weapon.h"
-#include "inventoryowner.h"
+//#include "InventoryOwner.h"
 #include "Actor.h"
 #include "inventory_item_impl.h"
 

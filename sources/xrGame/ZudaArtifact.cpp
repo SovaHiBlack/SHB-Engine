@@ -8,13 +8,11 @@
 #include "PhysicsShell.h"
 
 
-CZudaArtefact::CZudaArtefact(void) 
-{
-}
+CZudaArtefact::CZudaArtefact( )
+{ }
 
-CZudaArtefact::~CZudaArtefact(void) 
-{
-}
+CZudaArtefact::~CZudaArtefact( )
+{ }
 
 void CZudaArtefact::Load(pcstr section)
 {

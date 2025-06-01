@@ -11,7 +11,7 @@ class CNetPacket;
 struct HUD_SOUND;
 class CInventoryItem;
 
-#include "actor_defs.h"
+#include "Actor_defs.h"
 #include "weaponHUD.h"
 
 class CHudItem {

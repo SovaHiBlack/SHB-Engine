@@ -1,10 +1,8 @@
 // ActorCondition.h: класс состояния игрока
-//
-
 #pragma once
 
 #include "EntityCondition.h"
-#include "actor_defs.h"
+#include "Actor_defs.h"
 
 template <typename _return_type>
 class CScriptCallbackEx;

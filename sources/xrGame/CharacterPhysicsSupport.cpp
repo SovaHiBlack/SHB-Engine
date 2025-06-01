@@ -3,7 +3,7 @@
 #include "Hit.h"
 #include "PHDestroyable.h"
 #include "CharacterPhysicsSupport.h"
-#include "PHMovementControl.h"
+//#include "PHMovementControl.h"
 #include "CustomMonster.h"
 #include "PhysicsShell.h"
 #include "..\XR_3DA\skeletonanimated.h"

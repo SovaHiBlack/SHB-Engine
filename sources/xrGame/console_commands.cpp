@@ -17,7 +17,7 @@
 #include "Hit.h"
 #include "PHDestroyable.h"
 #include "Actor.h"
-#include "Actor_Flags.h"
+//#include "Actor_flags.h"
 #include "customzone.h"
 #include "script_engine.h"
 #include "script_engine_space.h"

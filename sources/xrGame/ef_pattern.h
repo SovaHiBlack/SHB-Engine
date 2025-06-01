@@ -14,7 +14,6 @@ class CEF_Storage;
 
 class CPatternFunction : public CBaseFunction
 {
-
 private:
 	typedef CBaseFunction inherited;
 	enum
@@ -52,7 +51,6 @@ private:
 	f32			ffEvaluate( );
 
 public:
-
 	u32				m_dwVariableCount;
 	u32				m_dwFunctionType;
 	u32* m_dwaVariableTypes;

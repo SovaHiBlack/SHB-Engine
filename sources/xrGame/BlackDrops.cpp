@@ -8,11 +8,11 @@
 #include "PhysicsShell.h"
 
 
-CBlackDrops::CBlackDrops(void) 
+CBlackDrops::CBlackDrops( ) 
 {
 }
 
-CBlackDrops::~CBlackDrops(void) 
+CBlackDrops::~CBlackDrops( ) 
 {
 }
 

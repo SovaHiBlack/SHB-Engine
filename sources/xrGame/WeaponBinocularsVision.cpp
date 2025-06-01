@@ -2,7 +2,7 @@
 #include "WeaponBinocularsVision.h"
 #include "WeaponBinoculars.h"
 #include "ui\UIFrameWindow.h"
-#include "entity_alive.h"
+//#include "EntityAlive.h"
 #include "visual_memory_manager.h"
 #include "Actor.h"
 #include "actor_memory.h"

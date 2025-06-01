@@ -2,7 +2,7 @@
 
 #include "character_hit_animations.h"
 
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #ifdef DEBUG
 #include "phdebug.h"
 #endif

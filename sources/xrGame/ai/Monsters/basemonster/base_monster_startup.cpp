@@ -4,7 +4,7 @@
 #include "../../../Hit.h"
 #include "../../../PHDestroyable.h"
 #include "../../../CharacterPhysicsSupport.h"
-#include "../../../phmovementcontrol.h"
+#include "../../../PHMovementControl.h"
 #include "../ai_monster_squad_manager.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../detail_path_manager.h"

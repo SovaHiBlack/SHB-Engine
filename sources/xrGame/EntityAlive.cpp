@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
-#include "entity_alive.h"
-#include "inventoryowner.h"
+#include "EntityAlive.h"
+#include "InventoryOwner.h"
 #include "inventory.h"
-#include "physicsshell.h"
+#include "PhysicsShell.h"
 #include "gamemtllib.h"
-#include "phmovementcontrol.h"
+#include "PHMovementControl.h"
 #include "wound.h"
 #include "xrmessages.h"
 #include "level.h"
@@ -40,7 +40,7 @@ f32 CEntityAlive::m_fBloodDropSize = 0.03f;
 
 //минимальный размер ожега, после которого горят партиклы
 //минимальное время горения
-u32	  CEntityAlive::m_dwMinBurnTime = 10000;
+u32 CEntityAlive::m_dwMinBurnTime = 10000;
 //размер раны, чтоб запустить партиклы
 f32 CEntityAlive::m_fStartBurnWoundSize = 0.3f;
 //размер раны, чтоб остановить партиклы
@@ -77,12 +77,14 @@ void CEntityAlive::Load(pcstr section)
 
 	//bloody wallmarks
 	if (0 == m_pBloodMarksVector)
+	{
 		LoadBloodyWallmarks(BLOOD_MARKS_SECT);
+	}
 
 	if (0 == m_pFireParticlesVector)
 		LoadFireParticles("entity_fire_particles");
 
-	//биолог. вид к торому принадлежит монстр или персонаж
+	//биолог. вид которому принадлежит монстр или персонаж
 	monster_community->set(pSettings->r_string(section, "species"));
 }
 
@@ -176,8 +178,8 @@ void CEntityAlive::reinit( )
 {
 	CEntity::reinit( );
 
-	m_fAccuracy = 25.f;
-	m_fIntelligence = 25.f;
+	m_fAccuracy = 25.0f;
+	m_fIntelligence = 25.0f;
 }
 
 void CEntityAlive::reload(pcstr section)
@@ -242,7 +244,7 @@ BOOL CEntityAlive::net_Spawn(CSE_Abstract* DC)
 		StartBloodDrops(pWound);
 	}
 
-	return						(TRUE);
+	return TRUE;
 }
 
 void CEntityAlive::net_Destroy( )
@@ -261,7 +263,9 @@ void CEntityAlive::Hit(SHit* pHDS)
 	SHit HDS = *pHDS;
 	//-------------------------------------------------------------------
 	if (HDS.hit_type == ALife::eHitTypeWound_2)
+	{
 		HDS.hit_type = ALife::eHitTypeWound;
+	}
 	//-------------------------------------------------------------------
 	CDamageManager::HitScale(HDS.boneID, conditions( ).hit_bone_scale( ), conditions( ).wound_bone_scale( ), pHDS->aim_bullet);
 
@@ -271,16 +275,22 @@ void CEntityAlive::Hit(SHit* pHDS)
 	if (pWound)
 	{
 		if (ALife::eHitTypeBurn == HDS.hit_type)
+		{
 			StartFireParticles(pWound);
+		}
 		else if (ALife::eHitTypeWound == HDS.hit_type || ALife::eHitTypeFireWound == HDS.hit_type)
+		{
 			StartBloodDrops(pWound);
+		}
 	}
 
 	if (HDS.hit_type != ALife::eHitTypeTelepatic)
 	{
-//добавить кровь на стены
+		//добавить кровь на стены
 		if (!use_simplified_visual( ))
+		{
 			BloodyWallmarks(HDS.damage( ), HDS.dir, HDS.bone( ), HDS.p_in_bone_space);
+		}
 	}
 
 	//-------------------------------------------
@@ -317,7 +327,10 @@ void CEntityAlive::Die(CObject* who)
 
 	// disable react to sound
 	ISpatial* self = smart_cast<ISpatial*> (this);
-	if (self)		self->spatial.type &= ~STYPE_REACTTOSOUND;
+	if (self)
+	{
+		self->spatial.type &= ~STYPE_REACTTOSOUND;
+	}
 }
 
 //вывзывает при подсчете хита
@@ -353,11 +366,12 @@ void CEntityAlive::PHFreeze( )
 //////////////////////////////////////////////////////////////////////
 
 //добавление кровавых отметок на стенах, после получения хита
-void CEntityAlive::BloodyWallmarks(f32 P, const fVector3& dir, s16 element,
-								   const fVector3& position_in_object_space)
+void CEntityAlive::BloodyWallmarks(f32 P, const fVector3& dir, s16 element, const fVector3& position_in_object_space)
 {
 	if (BI_NONE == (u16)element)
+	{
 		return;
+	}
 
 	//вычислить координаты попадания
 	CKinematics* V = smart_cast<CKinematics*>(Visual( ));
@@ -368,10 +382,14 @@ void CEntityAlive::BloodyWallmarks(f32 P, const fVector3& dir, s16 element,
 		fMatrix4x4& m_bone = (V->LL_GetBoneInstance(u16(element))).mTransform;
 		m_bone.transform_tiny(start_pos);
 	}
+
 	XFORM( ).transform_tiny(start_pos);
 
 	f32 small_entity = 1.0f;
-	if (Radius( ) < SMALL_ENTITY_RADIUS) small_entity = 0.5;
+	if (Radius( ) < SMALL_ENTITY_RADIUS)
+	{
+		small_entity = 0.5f;
+	}
 
 	f32 wallmark_size = m_fBloodMarkSizeMax;
 	wallmark_size *= (P / m_fNominalHit);
@@ -382,22 +400,10 @@ void CEntityAlive::BloodyWallmarks(f32 P, const fVector3& dir, s16 element,
 	PlaceBloodWallmark(dir, start_pos, m_fBloodMarkDistance, wallmark_size, *m_pBloodMarksVector);
 }
 
-void CEntityAlive::PlaceBloodWallmark(const fVector3& dir, const fVector3& start_pos,
-									  f32 trace_dist, f32 wallmark_size,
-									  SHADER_VECTOR& wallmarks_vector)
+void CEntityAlive::PlaceBloodWallmark(const fVector3& dir, const fVector3& start_pos, f32 trace_dist, f32 wallmark_size, SHADER_VECTOR& wallmarks_vector)
 {
 	collide::rq_result	result;
-	BOOL				reach_wall =
-		Level( ).ObjectSpace.RayPick(
-		start_pos,
-		dir,
-		trace_dist,
-		collide::rqtBoth,
-		result,
-		this
-		)
-		&&
-		!result.O;
+	BOOL reach_wall = Level( ).ObjectSpace.RayPick(start_pos, dir, trace_dist, collide::rqtBoth, result, this) && !result.O;
 
 	//если кровь долетела до статического объекта
 	if (reach_wall)

@@ -10,7 +10,6 @@
 #include "control_animation_base.h"
 #include "control_critical_wound.h"
 
-
 CControlManagerCustom::CControlManagerCustom()
 {
 	m_sequencer		= 0;

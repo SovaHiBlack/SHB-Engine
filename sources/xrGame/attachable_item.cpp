@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "physicsshellholder.h"
 #include "attachable_item.h"
-#include "inventoryowner.h"
+#include "InventoryOwner.h"
 #include "inventory.h"
 
 #ifdef DEBUG

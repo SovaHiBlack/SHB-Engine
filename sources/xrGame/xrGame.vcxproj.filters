@@ -217,9 +217,6 @@
     <Filter Include="AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape">
       <UniqueIdentifier>{9a16ef20-b2f3-4381-ba08-bb9c9c0b039f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AComponents\Step Manager">
-      <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\ACover">
       <UniqueIdentifier>{590217d7-4847-4186-8a95-1e9ef7ffd736}</UniqueIdentifier>
     </Filter>
@@ -2110,6 +2107,9 @@
     <Filter Include="Core\Client\Objects\actor\memory">
       <UniqueIdentifier>{da7aec6c-a818-4091-b772-b274985f65d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\AComponents\StepManager">
+      <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -2529,11 +2529,11 @@
     <ClInclude Include="space_restriction_shape_inline.h">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClInclude>
-    <ClInclude Include="step_manager.h">
-      <Filter>AI\AComponents\Step Manager</Filter>
+    <ClInclude Include="StepManager.h">
+      <Filter>AI\AComponents\StepManager</Filter>
     </ClInclude>
-    <ClInclude Include="step_manager_defs.h">
-      <Filter>AI\AComponents\Step Manager</Filter>
+    <ClInclude Include="StepManager_defs.h">
+      <Filter>AI\AComponents\StepManager</Filter>
     </ClInclude>
     <ClInclude Include="cover_manager.h">
       <Filter>AI\ACover</Filter>
@@ -4545,10 +4545,10 @@
     <ClInclude Include="Entity.h">
       <Filter>Core\Client\Objects\base\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="entity_alive.h">
+    <ClInclude Include="EntityAlive.h">
       <Filter>Core\Client\Objects\base\EntityAlive</Filter>
     </ClInclude>
-    <ClInclude Include="entity_alive_inline.h">
+    <ClInclude Include="EntityAlive_inline.h">
       <Filter>Core\Client\Objects\base\EntityAlive</Filter>
     </ClInclude>
     <ClInclude Include="EntityCondition.h">
@@ -5973,10 +5973,10 @@
     <ClInclude Include="actor_anim_defs.h">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClInclude>
-    <ClInclude Include="actor_defs.h">
+    <ClInclude Include="Actor_defs.h">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClInclude>
-    <ClInclude Include="Actor_Flags.h">
+    <ClInclude Include="Actor_flags.h">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClInclude>
     <ClInclude Include="actor_input_handler.h">
@@ -6140,8 +6140,8 @@
     <ClCompile Include="space_restriction_shape.cpp">
       <Filter>AI\AComponents\SpaceRestrictionManager\SpaceRestrictionHolder\SpaceRestrictionShape</Filter>
     </ClCompile>
-    <ClCompile Include="step_manager.cpp">
-      <Filter>AI\AComponents\Step Manager</Filter>
+    <ClCompile Include="StepManager.cpp">
+      <Filter>AI\AComponents\StepManager</Filter>
     </ClCompile>
     <ClCompile Include="cover_manager.cpp">
       <Filter>AI\ACover</Filter>
@@ -7322,7 +7322,7 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Client\Objects\base\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="entity_alive.cpp">
+    <ClCompile Include="EntityAlive.cpp">
       <Filter>Core\Client\Objects\base\EntityAlive</Filter>
     </ClCompile>
     <ClCompile Include="EntityCondition.cpp">
@@ -8157,9 +8157,6 @@
       <Filter>Physics\Base\Objects\PhyMove\BaseCharacter</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsShell.cpp">
-      <Filter>Physics\Base\Objects\BaseShell</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsShellScript.cpp">
       <Filter>Physics\Base\Objects\BaseShell</Filter>
     </ClCompile>
     <ClCompile Include="animation_movement_controller.cpp">

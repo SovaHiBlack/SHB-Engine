@@ -9,6 +9,7 @@
 #include "PHSplitedShell.h"
 #include "Physics.h"
 #include "SpaceUtils.h"
+
 void CPHSplitedShell::Collide()
 {
 	///////////////////////////////

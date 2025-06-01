@@ -7,8 +7,9 @@
 #include "AmebaZone.h"
 #include "hudmanager.h"
 #include "level.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "CharacterPhysicsSupport.h"
+
 CAmebaZone::CAmebaZone( )
 {
 	m_fVelocityLimit = 1.0f;

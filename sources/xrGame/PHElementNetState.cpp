@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "physicsshell.h"
+#include "PhysicsShell.h"
 #include "phinterpolation.h"
 #include "phelement.h"
 #include "phobject.h"

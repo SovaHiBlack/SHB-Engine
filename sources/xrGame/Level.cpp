@@ -5,13 +5,13 @@
 #include "..\XR_3DA\DemoRecord.h"
 #include "..\XR_3DA\DemoPlay.h"
 #include "..\XR_3DA\environment.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGame_Persistent.h"
 #include "ParticlesObject.h"
 #include "Level.h"
 #include "xrServer.h"
 #include "net_queue.h"
 #include "game_cl_base.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "hudmanager.h"
 #include "AISpace.h"
 #include "ai_debug.h"
@@ -51,8 +51,6 @@
 #	include "DebugRenderer.h"
 #	include "physicobject.h"
 #endif
-
-#include "..\XR_3DA\IGame_Persistent.h"
 
 extern BOOL	g_bDebugDumpPhysicsStep;
 

@@ -7,7 +7,7 @@
 #include "artifact.h"
 #include "..\XR_3DA\feel_touch.h"
 
-#include "entity_alive.h"
+#include "EntityAlive.h"
 
 struct SGameMtl;
 struct	dContact;

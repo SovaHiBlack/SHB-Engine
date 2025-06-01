@@ -4,15 +4,15 @@
 #include "..\XR_3DA\feel_sound.h"
 #include "..\XR_3DA\IInputReceiver.h"
 #include "..\XR_3DA\SkeletonAnimated.h"
-#include "actor_flags.h"
-#include "actor_defs.h"
-#include "entity_alive.h"
+#include "Actor_flags.h"
+#include "Actor_defs.h"
+#include "EntityAlive.h"
 #include "PHMovementControl.h"
 #include "PhysicsShell.h"
 #include "InventoryOwner.h"
 #include "..\XR_3DA\StatGraph.h"
 #include "PhraseDialogManager.h"
-#include "step_manager.h"
+#include "StepManager.h"
 
 using namespace ACTOR_DEFS;
 
@@ -171,11 +171,11 @@ protected:
 public:
 	virtual void						StartTalk(CInventoryOwner* talk_partner);
 	virtual void						RunTalkDialog(CInventoryOwner* talk_partner);
-	CGameTaskManager& GameTaskManager( ) const
+	CGameTaskManager&					GameTaskManager( ) const
 	{
 		return *m_game_task_manager;
 	}
-	CActorStatisticMgr& StatisticMgr( )
+	CActorStatisticMgr&					StatisticMgr( )
 	{
 		return *m_statistic_manager;
 	}
@@ -193,8 +193,8 @@ public:
 	virtual void						ReceivePhrase(DIALOG_SHARED_PTR& phrase_dialog);
 	virtual void						UpdateAvailableDialogs(CPhraseDialogManager* partner);
 	virtual void						TryToTalk( );
-	bool						OnDialogSoundHandlerStart(CInventoryOwner* inv_owner, pcstr phrase);
-	bool						OnDialogSoundHandlerStop(CInventoryOwner* inv_owner);
+	bool								OnDialogSoundHandlerStart(CInventoryOwner* inv_owner, pcstr phrase);
+	bool								OnDialogSoundHandlerStop(CInventoryOwner* inv_owner);
 
 	virtual void						reinit( );
 	virtual void						reload(pcstr section);
@@ -214,8 +214,8 @@ public:
 	virtual void						Hit(SHit* pHDS);
 	virtual void						PHHit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type);
 	virtual void						HitSignal(f32 P, fVector3& vLocalDir, CObject* who, s16 element);
-	void						HitSector(CObject* who, CObject* weapon);
-	void						HitMark(f32 P, fVector3 dir, CObject* who, s16 element, fVector3 position_in_bone_space, f32 impulse, ALife::EHitType hit_type);
+	void								HitSector(CObject* who, CObject* weapon);
+	void								HitMark(f32 P, fVector3 dir, CObject* who, s16 element, fVector3 position_in_bone_space, f32 impulse, ALife::EHitType hit_type);
 
 	virtual f32							GetMass( );
 	virtual f32							Radius( ) const;

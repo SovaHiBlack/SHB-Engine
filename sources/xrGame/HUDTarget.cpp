@@ -20,7 +20,7 @@
 #include "character_info.h"
 
 #include "string_table.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 
 #include "inventory_item.h"
 #include "inventory.h"

@@ -4,6 +4,7 @@
 #include "control_manager.h"
 #include "../../PHMovementControl.h"
 #include "../../CharacterPhysicsSupport.h"
+
 void CControlMovement::reinit()
 {
 	inherited::reinit		();

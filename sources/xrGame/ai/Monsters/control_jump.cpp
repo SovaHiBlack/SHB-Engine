@@ -28,7 +28,6 @@ void CControlJump::reinit()
 	m_time_next_allowed		= 0;
 }
 
-
 void CControlJump::load(pcstr section)
 {
 	m_delay_after_jump				= pSettings->r_u32	(section,"jump_delay");

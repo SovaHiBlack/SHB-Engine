@@ -2,7 +2,7 @@
 
 #include "base_monster.h"
 #include "../../../script_entity_action.h"
-#include "../../../phmovementcontrol.h"
+#include "../../../PHMovementControl.h"
 #include "../../../sight_manager.h"
 #include "../../../detail_path_manager.h"
 #include "../../../ai_object_location.h"

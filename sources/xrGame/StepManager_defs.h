@@ -3,12 +3,14 @@
 #include "associative_vector.h"
 
 #define MIN_LEGS_COUNT	1
-#define MAX_LEGS_COUNT	4 
+#define MAX_LEGS_COUNT	4
 
 struct MotionID;
 
-struct SStepParam {
-	struct{
+struct SStepParam
+{
+	struct
+	{
 		f32	time;
 		f32	power;
 	} step[MAX_LEGS_COUNT];
@@ -20,8 +22,10 @@ struct SStepParam {
 typedef associative_vector<MotionID, SStepParam>	STEPS_MAP;
 typedef STEPS_MAP::iterator							STEPS_MAP_IT;
 
-struct SStepInfo {
-	struct {
+struct SStepInfo
+{
+	struct
+	{
 		bool			handled;		// обработан
 		u8				cycle;			// цикл в котором отработан
 	} activity[MAX_LEGS_COUNT];
@@ -31,10 +35,14 @@ struct SStepInfo {
 
 	u8				cur_cycle;
 
-	SStepInfo()		{disable = true;}
+	SStepInfo( )
+	{
+		disable = true;
+	}
 };
 
-enum ELegType {
+enum ELegType
+{
 	eFrontLeft,
 	eFrontRight,
 	eBackRight,

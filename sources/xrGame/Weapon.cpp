@@ -8,7 +8,7 @@
 #include "ParticlesObject.h"
 #include "HUDManager.h"
 #include "WeaponHUD.h"
-#include "entity_alive.h"
+//#include "EntityAlive.h"
 #include "inventory_item_impl.h"
 
 #include "inventory.h"

@@ -3,20 +3,12 @@
 // Needles - артефакт иголки
 ///////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////
-// BlackDrops.cpp
-// BlackDrops - черные капли
-///////////////////////////////////////////////////////////////
-
 #include "stdafx.h"
 #include "Needles.h"
 #include "PhysicsShell.h"
 
+CNeedles::CNeedles( )
+{ }
 
-CNeedles::CNeedles(void) 
-{
-}
-
-CNeedles::~CNeedles(void) 
-{
-}
+CNeedles::~CNeedles( )
+{ }

@@ -14,6 +14,7 @@
 #include "custommonster.h"
 #include "IColisiondamageInfo.h"
 #include "profiler.h"
+
 #ifdef DEBUG
 #		include "PHDebug.h"
 #		define	DBG_PH_MOVE_CONDITIONS(c)				c

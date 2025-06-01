@@ -7,7 +7,7 @@
 #include "GrenadeLauncher.h"
 #include "xrserver_objects_alife_items.h"
 #include "ExplosiveRocket.h"
-#include "Actor_Flags.h"
+#include "Actor_flags.h"
 #include "xr_level_controller.h"
 #include "level.h"
 #include "..\XR_3DA\skeletoncustom.h"
@@ -15,6 +15,9 @@
 #include "game_base_space.h"
 #include "MathUtils.h"
 #include "clsid_game.h"
+#include "inventory.h"
+#include "InventoryOwner.h"
+
 #ifdef DEBUG
 #include "phdebug.h"
 #endif
@@ -22,10 +25,10 @@
 CWeaponMagazinedWGrenade::CWeaponMagazinedWGrenade(pcstr name,ESoundTypes eSoundType) : CWeaponMagazined(name, eSoundType)
 {
 	m_ammoType2 = 0;
-    m_bGrenadeMode = false;
+	m_bGrenadeMode = false;
 }
 
-CWeaponMagazinedWGrenade::~CWeaponMagazinedWGrenade(void)
+CWeaponMagazinedWGrenade::~CWeaponMagazinedWGrenade( )
 {
 	// sounds
 	HUD_SOUND::DestroySound(sndShotG);
@@ -46,17 +49,14 @@ void CWeaponMagazinedWGrenade::Load	(pcstr section)
 {
 	inherited::Load			(section);
 	CRocketLauncher::Load	(section);
-	
-	
+
 	//// Sounds
 	HUD_SOUND::LoadSound(section,"snd_shoot_grenade"	, sndShotG		, m_eSoundShot);
 	HUD_SOUND::LoadSound(section,"snd_reload_grenade"	, sndReloadG	, m_eSoundReload);
 	HUD_SOUND::LoadSound(section,"snd_switch"			, sndSwitch		, m_eSoundReload);
-	
 
 	m_sFlameParticles2 = pSettings->r_string(section, "grenade_flame_particles");
 
-	
 	// HUD :: Anims
 	R_ASSERT			(m_pHUD);
 
@@ -250,8 +250,6 @@ bool CWeaponMagazinedWGrenade::Action(s32 cmd, u32 flags)
 	return false;
 }
 
-#include "inventory.h"
-#include "inventoryOwner.h"
 void CWeaponMagazinedWGrenade::state_Fire(f32 dt)
 {
 	VERIFY(fTimeToFire>0.f);

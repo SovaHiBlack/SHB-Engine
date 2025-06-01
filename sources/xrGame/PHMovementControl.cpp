@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "..\XR_3DA\cl_intersect.h"
 #include "alife_space.h"
-#include "phmovementcontrol.h"
+#include "PHMovementControl.h"
 #include "entity.h"
 #include "PHDynamicData.h"
 #include "Physics.h"

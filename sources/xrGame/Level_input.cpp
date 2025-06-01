@@ -2,7 +2,7 @@
 #include <dinput.h>
 #include "HUDmanager.h"
 #include "..\XR_3DA\Console.h"
-#include "entity_alive.h"
+//#include "EntityAlive.h"
 //#include "game_sv_single.h"
 //#include "alife_simulator.h"
 //#include "alife_simulator_header.h"

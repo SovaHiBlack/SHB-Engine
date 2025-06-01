@@ -4,7 +4,7 @@
 #include "..\XR_3DA\IInputReceiver.h"
 
 #include "entity.h"
-#include "actor_flags.h"
+#include "Actor_flags.h"
 
 // refs
 class CActor;

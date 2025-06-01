@@ -14,6 +14,7 @@
 #include "phworld.h"
 #include "PHActivationShape.h"
 #include "PHValide.h"
+
 CPhysicsShellHolder::CPhysicsShellHolder( )
 {
 	init( );

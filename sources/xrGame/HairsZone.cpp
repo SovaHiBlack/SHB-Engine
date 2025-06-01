@@ -4,7 +4,7 @@
 #include "hudmanager.h"
 #include "level.h"
 #include "PhysicsShellHolder.h"
-#include "entity_alive.h"
+#include "EntityAlive.h"
 #include "PHMovementControl.h"
 #include "CharacterPhysicsSupport.h"
 
