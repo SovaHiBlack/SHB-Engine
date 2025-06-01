@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "trade.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ai/stalker/ai_stalker.h"
 #include "ai/trader/ai_trader.h"
 #include "artifact.h"
@@ -12,7 +12,7 @@
 #include "level.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "trade_parameters.h"
 
 bool CTrade::CanTrade( )

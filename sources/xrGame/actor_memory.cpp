@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "actor_memory.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\camerabase.h"
 #include "gamepersistent.h"
 

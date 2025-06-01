@@ -63,7 +63,7 @@ void CObjectHandlerPlanner::add_evaluators		(CWeapon *weapon)
 void CObjectHandlerPlanner::add_operators		(CWeapon *weapon)
 {
 	u16					id = weapon->ID(), ff = 0xffff;
-	CActionBase<CAI_Stalker>	*action;
+	CActionBase<CStalker>	*action;
 	
 	// show
 	action				= xr_new<CObjectActionShow>(weapon,m_object,&m_storage,"show");

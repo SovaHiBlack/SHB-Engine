@@ -4,7 +4,7 @@
 #include "WeaponHUD.h"
 #include "entity.h"
 #include "ParticlesObject.h"
-#include "actor.h"
+#include "Actor.h"
 #include "inventory.h"
 #include "level.h"
 #include "xrmessages.h"

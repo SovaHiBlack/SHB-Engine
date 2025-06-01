@@ -16,14 +16,13 @@
 
 using namespace StalkerDecisionSpace;
 
-CStalkerAnomalyPlanner::CStalkerAnomalyPlanner	(CAI_Stalker *object, pcstr action_name) :
-	inherited									(object,action_name)
+CStalkerAnomalyPlanner::CStalkerAnomalyPlanner(CStalker* object, pcstr action_name) : inherited(object, action_name)
 { }
 
 CStalkerAnomalyPlanner::~CStalkerAnomalyPlanner	()
 { }
 
-void CStalkerAnomalyPlanner::setup				(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerAnomalyPlanner::setup(CStalker* object, CPropertyStorage* storage)
 {
 	inherited::setup		(object,storage);
 

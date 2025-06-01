@@ -3,7 +3,7 @@
 #include "game_cl_single.h"
 #include "UIGame.h"
 #include "clsid_game.h"
-#include "actor.h"
+#include "Actor.h"
 
 using namespace luabind;
 

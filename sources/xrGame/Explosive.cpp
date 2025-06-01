@@ -14,7 +14,7 @@
 //для вызова статических функций поражения осколками
 #include "Weapon.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "ActorEffector.h"
 #include "level.h"
 #include "BulletManager.h"

@@ -7,7 +7,7 @@
 #include "../control_movement_base.h"
 #include "../../../level.h"
 #include "../../../LevelDebug.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 #include "../../../CharacterPhysicsSupport.h"

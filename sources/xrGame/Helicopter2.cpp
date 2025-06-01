@@ -3,7 +3,7 @@
 #include "helicopter.h"
 #include "level.h"
 #include "script_game_object.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "..\XR_3DA\LightAnimLibrary.h"
 #include "PhysicsShell.h"
@@ -235,7 +235,7 @@ void	CHelicopter::Hit(SHit* pHDS)
 	};
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
-		smart_cast<CAI_Stalker*>(pHDS->who) ||
+		smart_cast<CStalker*>(pHDS->who) ||
 		smart_cast<CCustomZone*>(pHDS->who))
 		)
 	{

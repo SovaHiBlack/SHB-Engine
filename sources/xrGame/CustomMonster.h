@@ -24,7 +24,7 @@ class CEnemyManager;
 class CDangerManager;
 class CMovementManager;
 class CSoundPlayer;
-class CAI_Stalker;
+class CStalker;
 class CDangerObject;
 
 class CCustomMonster : 

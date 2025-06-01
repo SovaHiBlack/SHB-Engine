@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "UIInventoryWnd.h"//
 #include "../level.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "../ActorCondition.h"
 #include "../hudmanager.h"
 #include "../inventory.h"

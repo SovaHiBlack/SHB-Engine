@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "danger_object_location.h"
-#include "gameobject.h"
+#include "GameObject.h"
 
 const fVector3& CDangerObjectLocation::position( ) const
 {

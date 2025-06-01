@@ -10,7 +10,7 @@
 
 #include "../game_news.h"
 #include "../level.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "../alife_registry_wrappers.h"
 
 #define				TALK_XML				"talk.xml"

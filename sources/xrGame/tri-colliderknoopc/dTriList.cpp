@@ -5,11 +5,9 @@
 #include "dcTriListCollider.h"
 #include "../ExtendedGeom.h"
 #include "dcTriListCollider.cpp"	// Allow inlining
-#include "../gameobject.h"
+#include "../GameObject.h"
 
-
-
-int dTriListClass = -1;
+s32 dTriListClass = -1;
 
 dcTriListCollider* GetData(dxGeom* TriList){
 
@@ -19,9 +17,7 @@ dcTriListCollider* GetData(dxGeom* TriList){
 
 }
 
-
-
-inline bool ValidateCollision(dxGeom* o1, dxGeom* o2){
+IC bool ValidateCollision(dxGeom* o1, dxGeom* o2){
 	return dGeomGetUserData(o1)->b_static_colide;
 	/*
 	dxBody* b1 = dGeomGetBody(o1);
@@ -54,7 +50,6 @@ inline bool ValidateCollision(dxGeom* o1, dxGeom* o2){
 	*/
 	//return true;
 }
-
 
 
 int dCollideSTL(dxGeom* TriList, dxGeom* Sphere, int Flags, dContactGeom* Contact, int Stride) throw()

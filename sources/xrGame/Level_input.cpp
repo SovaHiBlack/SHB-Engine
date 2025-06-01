@@ -17,7 +17,7 @@
 #include "xrServer.h"
 //#include "AutosaveManager.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "huditem.h"
 #include "ui/UIDialogWnd.h"
 #include "clsid_game.h"

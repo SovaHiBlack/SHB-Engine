@@ -10,16 +10,16 @@
 
 #include "action_planner_action_script.h"
 
-class CAI_Stalker;
+class CStalker;
 
-class CStalkerALifePlanner : public CActionPlannerActionScript<CAI_Stalker> {
+class CStalkerALifePlanner : public CActionPlannerActionScript<CStalker> {
 private:
-	typedef CActionPlannerActionScript<CAI_Stalker> inherited;
+	typedef CActionPlannerActionScript<CStalker> inherited;
 
 public:
-						CStalkerALifePlanner	(CAI_Stalker *object = 0, pcstr action_name = "");
+	CStalkerALifePlanner(CStalker* object = 0, pcstr action_name = "");
 	virtual				~CStalkerALifePlanner	();
-	virtual	void		setup					(CAI_Stalker *object, CPropertyStorage *storage);
+	virtual	void		setup(CStalker* object, CPropertyStorage* storage);
 			void		add_evaluators			();
 			void		add_actions				();
 };

@@ -10,7 +10,7 @@
 
 #include "danger_location.h"
 
-class CAI_Stalker;
+class CStalker;
 class CCoverPoint;
 class CAgentManager;
 class CDangerLocation;
@@ -37,9 +37,9 @@ public:
 	IC		void				clear					();
 			void				update					();
 			void				add						(CDangerLocationPtr location);
-			f32				danger					(const CCoverPoint *cover, CAI_Stalker *member) const;
-			bool				suitable				(CAI_Stalker *object, const CCoverPoint *location, bool use_enemy_info) const;
-			void				make_suitable			(CAI_Stalker *object, const CCoverPoint *location) const;
+			f32				danger(const CCoverPoint* cover, CStalker* member) const;
+			bool				suitable(CStalker* object, const CCoverPoint* location, bool use_enemy_info) const;
+			void				make_suitable(CStalker* object, const CCoverPoint* location) const;
 			void				remove_links			(CObject *object);
 	IC		const LOCATIONS		&locations				() const;
 };

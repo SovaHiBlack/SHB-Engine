@@ -2,7 +2,7 @@
 #include "controller.h"
 #include "controller_state_manager.h"
 #include "../controlled_entity.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../ai_monster_effector.h"
 #include "../../../hudmanager.h"
@@ -18,7 +18,7 @@
 
 #include "../monster_velocity_space.h"
 
-#include "../../../game_object_space.h"
+#include "../../../GameObject_space.h"
 #include "../../../detail_path_manager.h"
 #include "../../../AISpace.h"
 #include "../../../cover_point.h"

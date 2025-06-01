@@ -20,7 +20,7 @@
 #include "agent_member_manager.h"
 #include "AISpace.h"
 #include "profiler.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\camerabase.h"
 #include "gamepersistent.h"
 #include "actor_memory.h"
@@ -82,7 +82,7 @@ CVisualMemoryManager::CVisualMemoryManager		(CCustomMonster *object)
 	initialize			();
 }
 
-CVisualMemoryManager::CVisualMemoryManager		(CAI_Stalker *stalker)
+CVisualMemoryManager::CVisualMemoryManager		(CStalker*stalker)
 {
 	m_object			= stalker;
 	m_stalker			= stalker;

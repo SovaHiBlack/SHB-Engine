@@ -19,7 +19,7 @@
 #	include "level.h"
 #	include "gamepersistent.h"
 #	include "hudmanager.h"
-#	include "actor.h"
+#	include "Actor.h"
 #	include "spectator.h"
 
 #	include "ai/monsters/flesh/flesh.h"
@@ -185,7 +185,7 @@ void CObjectFactory::register_classes	()
 	ADD(CAI_Flesh				,CSE_ALifeMonsterBase			,CLSID_AI_FLESH					,"flesh");
 	ADD(CChimera				,CSE_ALifeMonsterBase			,CLSID_AI_CHIMERA				,"chimera");
 	ADD(CAI_Dog					,CSE_ALifeMonsterBase			,CLSID_AI_DOG_RED				,"dog_red");
-	ADD(CAI_Stalker				,CSE_ALifeHumanStalker			,CLSID_AI_STALKER				,"stalker");
+	ADD(CStalker, CSE_ALifeHumanStalker, CLSID_AI_STALKER, "stalker");
 	ADD(CAI_Bloodsucker			,CSE_ALifeMonsterBase			,CLSID_AI_BLOODSUCKER			,"bloodsucker");
 	ADD(CAI_Boar				,CSE_ALifeMonsterBase			,CLSID_AI_BOAR					,"boar");
 	ADD(CAI_PseudoDog			,CSE_ALifeMonsterBase			,CLSID_AI_DOG_BLACK				,"dog_black");

@@ -8,18 +8,19 @@
 
 #pragma once
 
-class CAI_Stalker;
+class CStalker;
 
-class CStalkerSoundData : public CSound_UserData {
+class CStalkerSoundData : public CSound_UserData
+{
 private:
-	CAI_Stalker			*m_object;
+	CStalker* m_object;
 
 public:
-	IC					CStalkerSoundData	(CAI_Stalker *object);
-	virtual				~CStalkerSoundData	();
-	virtual void		invalidate			();
-	virtual void		accept				(CSound_UserDataVisitor *visitor);
-	IC		CAI_Stalker &object				() const;
+	IC					CStalkerSoundData(CStalker* object);
+	virtual				~CStalkerSoundData( );
+	virtual void		invalidate( );
+	virtual void		accept(CSound_UserDataVisitor* visitor);
+	IC		CStalker& object( ) const;
 };
 
 #include "stalker_sound_data_inline.h"

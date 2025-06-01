@@ -8,7 +8,7 @@
 #include "map_manager.h"
 #include "map_location.h"
 #include "HUDManager.h"
-#include "actor.h"
+#include "Actor.h"
 #include "UIGame.h"
 #include "ui/UIPdaWnd.h"//
 #include "encyclopedia_article.h"

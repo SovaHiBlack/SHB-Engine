@@ -8,12 +8,13 @@
 
 #pragma once
 
-class CMemberPredicate {
+class CMemberPredicate
+{
 protected:
-	const CAI_Stalker	*m_object;
+	const CStalker* m_object;
 
 public:
-	IC				CMemberPredicate	(const CAI_Stalker *object)
+	IC				CMemberPredicate(const CStalker* object)
 	{
 		m_object		= object;
 	}
@@ -48,14 +49,14 @@ IC	CAgentMemberManager::MEMBER_STORAGE	&CAgentMemberManager::members	()
 	return				(m_members);
 }
 
-IC	CMemberOrder &CAgentMemberManager::member	(const CAI_Stalker *object)
+IC	CMemberOrder& CAgentMemberManager::member(const CStalker* object)
 {
 	iterator			I = std::find_if(members().begin(), members().end(), CMemberPredicate(object));
 	VERIFY				(I != members().end());
 	return				(**I);
 }
 
-IC	MemorySpace::squad_mask_type CAgentMemberManager::mask(const CAI_Stalker *object) const
+IC	MemorySpace::squad_mask_type CAgentMemberManager::mask(const CStalker* object) const
 {
 	const_iterator		I = std::find_if(members().begin(),members().end(), CMemberPredicate(object));
 	VERIFY				(I != members().end());

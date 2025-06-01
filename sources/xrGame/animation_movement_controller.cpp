@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "animation_movement_controller.h"
 #include "..\XR_3DA\SkeletonAnimated.h" 
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 animation_movement_controller::animation_movement_controller(fMatrix4x4* _pObjXForm, CKinematics* _pKinematicsC, CBlend* b) :
 	m_startObjXForm(*_pObjXForm),

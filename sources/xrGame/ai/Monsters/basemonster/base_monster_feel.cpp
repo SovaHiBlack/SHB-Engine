@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "base_monster.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../ai_monster_effector.h"
 #include "../../../hudmanager.h"
@@ -18,7 +18,7 @@
 #include "../../../level.h"
 #include "../../../script_callback_ex.h"
 #include "../../../script_game_object.h"
-#include "../../../game_object_space.h"
+#include "../../../GameObject_space.h"
 #include "../../../ai_monster_space.h"
 #include "../control_animation_base.h"
 #include "../../../UIGameCustom.h"

@@ -50,7 +50,7 @@ pcstr CStalkerPlanner::object_name		() const
 }
 #endif
 
-void CStalkerPlanner::setup			(CAI_Stalker *object)
+void CStalkerPlanner::setup			(CStalker*object)
 {
 #ifdef LOG_ACTION
 	set_use_log					(!!psAI_Flags.test(aiGOAP));

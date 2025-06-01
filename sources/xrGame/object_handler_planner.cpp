@@ -245,10 +245,10 @@ void CObjectHandlerPlanner::init_storage	()
 	m_storage.set_property		(eWorldPropertyStrapped2Idle,false);
 }
 
-void CObjectHandlerPlanner::setup	(CAI_Stalker *object)
+void CObjectHandlerPlanner::setup(CStalker* object)
 {
 	inherited::setup			(object);
-	CActionBase<CAI_Stalker>	*action;
+	CActionBase<CStalker>	*action;
 
 	m_min_queue_size			= 0;
 	m_max_queue_size			= 0;

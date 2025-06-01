@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "LevelChanger.h"
 #include "Hit.h"
-#include "actor.h"
+#include "Actor.h"
 #include "xrserver_objects_alife.h"
 #include "level.h"
 #include "ai_object_location.h"

@@ -1,10 +1,10 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\CameraBase.h"
 
 #include "ActorEffector.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #ifdef DEBUG
 #include "PHDebug.h"
 #endif
@@ -16,7 +16,7 @@
 #include "PHShellSplitter.h"
 
 #include "actor_anim_defs.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "characterphysicssupport.h"
 #include "inventory.h"
 

@@ -10,8 +10,12 @@
 #include "PhraseDialog.h"
 #include "inventoryowner.h"
 #include "character_info.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "relation_registry.h"
+#include "UIGame.h"
+#include "hudmanager.h"
+#include "level.h"
+#include "ui/UItalkWnd.h"
 
 CAI_PhraseDialogManager::CAI_PhraseDialogManager	(void)
 {
@@ -27,10 +31,6 @@ void CAI_PhraseDialogManager::ReceivePhrase (DIALOG_SHARED_PTR& phrase_dialog)
 	AnswerPhrase(phrase_dialog);
 	CPhraseDialogManager::ReceivePhrase(phrase_dialog);
 }
-#include "UIGame.h"
-#include "hudmanager.h"
-#include "level.h"
-#include "ui/UItalkWnd.h"
 
 void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 {
@@ -77,8 +77,6 @@ void CAI_PhraseDialogManager::AnswerPhrase (DIALOG_SHARED_PTR& phrase_dialog)
 	}
 }
 
-
-
 void CAI_PhraseDialogManager::SetStartDialog(shared_str phrase_dialog)
 {
 	m_sStartDialog = phrase_dialog;
@@ -93,7 +91,6 @@ void CAI_PhraseDialogManager::RestoreDefaultStartDialog()
 {
 	m_sStartDialog = m_sDefaultStartDialog;
 }
-
 
 void CAI_PhraseDialogManager::UpdateAvailableDialogs	(CPhraseDialogManager* partner)
 {		

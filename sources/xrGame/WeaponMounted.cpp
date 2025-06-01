@@ -3,7 +3,7 @@
 #include "WeaponMounted.h"
 #include "xrServer_Objects_ALife.h"
 #include "CameraFirstEye.h"
-#include "actor.h"
+#include "Actor.h"
 #include "weaponammo.h"
 
 #include "ActorEffector.h"
@@ -12,7 +12,7 @@
 #include "level.h"
 #include "xr_level_controller.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 //----------------------------------------------------------------------------------------
 

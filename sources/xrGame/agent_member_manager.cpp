@@ -38,7 +38,7 @@ CAgentMemberManager::~CAgentMemberManager		()
 
 void CAgentMemberManager::add					(CEntity *member)
 {
-	CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(member);
+	CStalker* stalker = smart_cast<CStalker*>(member);
 	if (!stalker || !stalker->g_Alive())
 		return;
 
@@ -59,7 +59,7 @@ void CAgentMemberManager::add					(CEntity *member)
 
 void CAgentMemberManager::remove				(CEntity *member)
 {
-	CAI_Stalker					*stalker = smart_cast<CAI_Stalker*>(member);
+	CStalker* stalker = smart_cast<CStalker*>(member);
 	if (!stalker)
 		return;
 
@@ -101,7 +101,7 @@ void CAgentMemberManager::remove_links			(CObject *object)
 
 }
 
-void CAgentMemberManager::register_in_combat	(const CAI_Stalker *object)
+void CAgentMemberManager::register_in_combat(const CStalker* object)
 {
 //	if (!object->group_behaviour())
 //		return;
@@ -121,7 +121,7 @@ void CAgentMemberManager::register_in_combat	(const CAI_Stalker *object)
 	m_combat_mask				|= m;
 }
 
-void CAgentMemberManager::unregister_in_combat	(const CAI_Stalker *object)
+void CAgentMemberManager::unregister_in_combat(const CStalker* object)
 {
 //	if (!object->group_behaviour()) {
 //		VERIFY					(!registered_in_combat(object));
@@ -143,7 +143,7 @@ void CAgentMemberManager::unregister_in_combat	(const CAI_Stalker *object)
 	m_combat_mask				&= squad_mask_type(-1) ^ m;
 }
 
-bool CAgentMemberManager::registered_in_combat	(const CAI_Stalker *object) const
+bool CAgentMemberManager::registered_in_combat(const CStalker* object) const
 {
 	return						(!!(m_combat_mask & mask(object)));
 }

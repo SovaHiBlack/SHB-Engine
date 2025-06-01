@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "actor.h"
+#include "Actor.h"
 #include "customdetector.h"
 #include "UIGame.h"
 #include "hudmanager.h"
@@ -17,7 +17,7 @@
 
 #include "CameraLook.h"
 #include "CameraFirstEye.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #include "ui/UIInventoryWnd.h"//
 #include "game_base_space.h"
 #ifdef DEBUG

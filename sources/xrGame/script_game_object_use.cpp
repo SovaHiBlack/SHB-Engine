@@ -10,7 +10,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "searchlight.h"
 #include "script_callback_ex.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "memory_manager.h"
 #include "enemy_manager.h"
 #include "movement_manager.h"
@@ -135,9 +135,9 @@ ALife::ERelationType CScriptGameObject::GetRelationType	(CScriptGameObject* who)
 template <typename T>
 IC	T	*CScriptGameObject::action_planner()
 {
-	CAI_Stalker				*manager = smart_cast<CAI_Stalker*>(&object());
+	CStalker* manager = smart_cast<CStalker*>(&object( ));
 	if (!manager)
-		ai().script_engine().script_log				(ScriptStorage::eLuaMessageTypeError,"CAI_Stalker : cannot access class member action_planner!");
+		ai().script_engine().script_log				(ScriptStorage::eLuaMessageTypeError,"CStalker : cannot access class member action_planner!");
 	return					(&manager->brain());
 }
 

@@ -6,7 +6,7 @@
 #include "PHContactBodyEffector.h"
 #include "MathUtils.h"
 #include "PhysicsShellHolder.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 //#include "..\XR_3DA\skeletoncustom.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "..\xrODE\util.h"

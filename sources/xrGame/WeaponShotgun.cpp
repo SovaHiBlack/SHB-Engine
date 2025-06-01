@@ -6,23 +6,22 @@
 #include "xr_level_controller.h"
 #include "inventory.h"
 #include "level.h"
-#include "actor.h"
+#include "Actor.h"
 
-CWeaponShotgun::CWeaponShotgun(void) : CWeaponCustomPistol("TOZ34")
+CWeaponShotgun::CWeaponShotgun( ) : CWeaponCustomPistol("TOZ34")
 {
     m_eSoundShotBoth		= ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING);
 	m_eSoundClose			= ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING);
 	m_eSoundAddCartridge	= ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING);
 }
 
-CWeaponShotgun::~CWeaponShotgun(void)
+CWeaponShotgun::~CWeaponShotgun( )
 {
 	// sounds
 	HUD_SOUND::DestroySound(sndShotBoth);
 	HUD_SOUND::DestroySound(m_sndOpen);
 	HUD_SOUND::DestroySound(m_sndAddCartridge);
 	HUD_SOUND::DestroySound(m_sndClose);
-
 }
 
 void CWeaponShotgun::net_Destroy()

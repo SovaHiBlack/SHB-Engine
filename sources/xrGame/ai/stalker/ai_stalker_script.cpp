@@ -16,7 +16,7 @@
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_Stalker::script_register(lua_State *L)
+void CStalker::script_register(lua_State *L)
 {
 	module(L)
 	[
@@ -163,7 +163,7 @@ void CAI_Stalker::script_register(lua_State *L)
 				luabind::value("sound_script",								StalkerSpace::eStalkerSoundScript)
 			],
 		
-		class_<CAI_Stalker,CGameObject>("CAI_Stalker")
+		class_<CStalker,CGameObject>("CStalker")
 			.def(constructor<>())
 	];
 }

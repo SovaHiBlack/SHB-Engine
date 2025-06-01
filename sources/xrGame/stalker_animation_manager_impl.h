@@ -17,7 +17,7 @@ IC	CStalkerAnimationManager::EBodyState CStalkerAnimationManager::body_state	() 
 
 IC	bool CStalkerAnimationManager::standing										() const
 {
-	CAI_Stalker				&obj = object();
+	CStalker& obj = object( );
 	CStalkerMovementManager	&movement = obj.movement();
 	
 	if (movement.speed(obj.character_physics_support()->movement()) < EPSILON_3)

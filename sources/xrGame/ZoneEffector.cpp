@@ -4,7 +4,7 @@
 #include "clsid_game.h"
 #include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\cameramanager.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ActorEffector.h"
 #include "postprocessanimator.h"
 

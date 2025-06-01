@@ -36,7 +36,7 @@ const f32 direction_angles[]			= {
 
 void CStalkerAnimationManager::legs_play_callback			(CBlend *blend)
 {
-	CAI_Stalker					*object = (CAI_Stalker*)blend->CallbackParam;
+	CStalker* object = (CStalker*)blend->CallbackParam;
 	VERIFY						(object);
 
 	CStalkerAnimationPair		&pair = object->animation().legs();

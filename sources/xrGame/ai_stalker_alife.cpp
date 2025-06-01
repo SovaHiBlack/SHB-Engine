@@ -28,21 +28,20 @@ u32 get_rank(const shared_str&)
 	return u32(-1);
 }
 
-
 static const s32 MAX_AMMO_ATTACH_COUNT = 10;
 static const s32 enough_ammo_box_count = 1;
 
-IC	bool CAI_Stalker::CTradeItem::operator<		(const CTradeItem &trade_item) const
+IC	bool CStalker::CTradeItem::operator<		(const CTradeItem &trade_item) const
 {
 	return			(m_item->object().ID() < trade_item.m_item->object().ID());
 }
 
-IC	bool CAI_Stalker::CTradeItem::operator==	(u16 id) const
+IC	bool CStalker::CTradeItem::operator==	(u16 id) const
 {
 	return			(m_item->object().ID() == id);
 }
 
-bool CAI_Stalker::tradable_item					(CInventoryItem *inventory_item, const u16 &current_owner_id)
+bool CStalker::tradable_item					(CInventoryItem *inventory_item, const u16 &current_owner_id)
 {
 	if (!inventory_item->useful_for_NPC())
 		return			(false);
@@ -62,7 +61,7 @@ bool CAI_Stalker::tradable_item					(CInventoryItem *inventory_item, const u16 &
 	);
 }
 
-u32 CAI_Stalker::fill_items						(CInventory &inventory, CGameObject *old_owner, ALife::_OBJECT_ID new_owner_id)
+u32 CStalker::fill_items						(CInventory &inventory, CGameObject *old_owner, ALife::_OBJECT_ID new_owner_id)
 {
 	u32							result = 0;
 	TIItemContainer::iterator	I = inventory.m_all.begin();
@@ -78,7 +77,7 @@ u32 CAI_Stalker::fill_items						(CInventory &inventory, CGameObject *old_owner,
 	return						(result);
 }
 
-void CAI_Stalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, CGameObject *new_owner)
+void CStalker::transfer_item					(CInventoryItem *item, CGameObject *old_owner, CGameObject *new_owner)
 {
 	CNetPacket			P;
 	CGameObject			*O = old_owner;
@@ -92,7 +91,7 @@ void CAI_Stalker::transfer_item					(CInventoryItem *item, CGameObject *old_owne
 	O->u_EventSend		(P);
 }
 
-IC	void CAI_Stalker::buy_item_virtual			(CTradeItem &item)
+IC	void CStalker::buy_item_virtual			(CTradeItem &item)
 {
 	item.m_new_owner_id			= ID();
 	m_total_money				-= item.m_item->Cost();
@@ -100,13 +99,13 @@ IC	void CAI_Stalker::buy_item_virtual			(CTradeItem &item)
 		m_current_trader->set_money(m_current_trader->get_money() + item.m_item->Cost(), true);
 }
 
-void CAI_Stalker::choose_food					()
+void CStalker::choose_food					()
 {
 	// stalker cannot change food due to the game design :-(((
 	return;
 }
 
-void CAI_Stalker::attach_available_ammo			(CWeapon *weapon)
+void CStalker::attach_available_ammo			(CWeapon *weapon)
 {
 	if (!weapon || weapon->m_ammoTypes.empty())
 		return;
@@ -136,7 +135,7 @@ void CAI_Stalker::attach_available_ammo			(CWeapon *weapon)
 	}
 }
 
-void CAI_Stalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_type)
+void CStalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_type)
 {
 	CTradeItem						*best_weapon	= 0;
 	f32							best_value		= -1.0f;
@@ -190,13 +189,13 @@ void CAI_Stalker::choose_weapon					(ALife::EWeaponPriorityType weapon_priority_
 	}
 }
 
-void CAI_Stalker::choose_medikit				()
+void CStalker::choose_medikit				()
 {
 	// stalker cannot change medikit due to the game design :-(((
 	return;
 }
 
-void CAI_Stalker::choose_detector				()
+void CStalker::choose_detector				()
 {
 	CTradeItem					*best_detector	= 0;
 	f32						best_value		= -1.0f;
@@ -224,13 +223,13 @@ void CAI_Stalker::choose_detector				()
 		buy_item_virtual		(*best_detector);
 }
 
-void CAI_Stalker::choose_equipment				()
+void CStalker::choose_equipment				()
 {
 	// stalker cannot change their equipment due to the game design :-(((
 	return;
 }
 
-void CAI_Stalker::select_items						()
+void CStalker::select_items						()
 {
 	if (!m_can_select_items)
 		return;
@@ -245,7 +244,7 @@ void CAI_Stalker::select_items						()
 	choose_equipment	();
 }
 
-void CAI_Stalker::update_sell_info					()
+void CStalker::update_sell_info					()
 {
 	if (m_sell_info_actuality)
 		return;
@@ -268,7 +267,7 @@ void CAI_Stalker::update_sell_info					()
 	}
 }
 
-bool CAI_Stalker::can_sell							(CInventoryItem const * item)
+bool CStalker::can_sell							(CInventoryItem const * item)
 {
 	update_sell_info		();
 	xr_vector<CTradeItem>::const_iterator	I = std::find(m_temp_items.begin(),m_temp_items.end(),item->object().ID());
@@ -276,15 +275,15 @@ bool CAI_Stalker::can_sell							(CInventoryItem const * item)
 	return					((*I).m_new_owner_id != ID());
 }
 
-bool CAI_Stalker::AllowItemToTrade 					(CInventoryItem const * item, EItemPlace place) const
+bool CStalker::AllowItemToTrade 					(CInventoryItem const * item, EItemPlace place) const
 {
 	if (!g_Alive())
 		return				(trade_parameters().enabled(CTradeParameters::action_show(0),item->object().cNameSect()));
 
-	return					(const_cast<CAI_Stalker*>(this)->can_sell(item));
+	return					(const_cast<CStalker*>(this)->can_sell(item));
 }
 
-bool CAI_Stalker::non_conflicted					(const CInventoryItem *item, const CWeapon *new_weapon) const
+bool CStalker::non_conflicted					(const CInventoryItem *item, const CWeapon *new_weapon) const
 {
 	if (item->object().ID() == new_weapon->ID())
 		return				(true);
@@ -336,7 +335,7 @@ bool CAI_Stalker::non_conflicted					(const CInventoryItem *item, const CWeapon 
 	return					(false);
 }
 
-bool CAI_Stalker::enough_ammo						(const CWeapon *new_weapon) const
+bool CStalker::enough_ammo						(const CWeapon *new_weapon) const
 {
 	s32						ammo_box_count = 0;
 
@@ -354,7 +353,7 @@ bool CAI_Stalker::enough_ammo						(const CWeapon *new_weapon) const
 	return					(false);
 }
 
-bool CAI_Stalker::conflicted						(const CInventoryItem *item, const CWeapon *new_weapon, bool new_wepon_enough_ammo, s32 new_weapon_rank) const
+bool CStalker::conflicted						(const CInventoryItem *item, const CWeapon *new_weapon, bool new_wepon_enough_ammo, s32 new_weapon_rank) const
 {
 	if (non_conflicted(item,new_weapon))
 		return				(false);
@@ -383,7 +382,7 @@ bool CAI_Stalker::conflicted						(const CInventoryItem *item, const CWeapon *ne
 	return					(true);
 }
 
-bool CAI_Stalker::can_take							(CInventoryItem const * item)
+bool CStalker::can_take							(CInventoryItem const * item)
 {
 	const CWeapon				*new_weapon = smart_cast<const CWeapon*>(item);
 	if (!new_weapon)
@@ -401,7 +400,7 @@ bool CAI_Stalker::can_take							(CInventoryItem const * item)
 	return						(true);
 }
 
-void CAI_Stalker::remove_personal_only_ammo			(const CInventoryItem *item)
+void CStalker::remove_personal_only_ammo			(const CInventoryItem *item)
 {
 	const CWeapon			*weapon = smart_cast<const CWeapon*>(item);
 	VERIFY					(weapon);
@@ -442,7 +441,7 @@ void CAI_Stalker::remove_personal_only_ammo			(const CInventoryItem *item)
 	}
 }
 
-void CAI_Stalker::update_conflicted					(CInventoryItem *item, const CWeapon *new_weapon)
+void CStalker::update_conflicted					(CInventoryItem *item, const CWeapon *new_weapon)
 {
 	if (non_conflicted(item,new_weapon))
 		return;
@@ -451,7 +450,7 @@ void CAI_Stalker::update_conflicted					(CInventoryItem *item, const CWeapon *ne
 	item->SetDropManual			(TRUE);
 }
 
-void CAI_Stalker::on_after_take						(const CGameObject *object)
+void CStalker::on_after_take						(const CGameObject *object)
 {
 	if (!g_Alive())
 		return;

@@ -16,6 +16,8 @@
 #	include "custommonster.h"
 #endif
 
+#include "GameObject.h"
+
 CDetailPathManager::CDetailPathManager	(CRestrictedObject *object)
 {
 	m_restricted_object		= object;
@@ -149,7 +151,6 @@ void CDetailPathManager::on_travel_point_change	(const u32 &previous_travel_poin
 	m_distance_to_target_actual	= false;
 }
 
-#include "GameObject.h"
 u32 CDetailPathManager::location_on_path		(const CGameObject *object, f32 distance, fVector3& result) const
 {
 	VERIFY						(m_restricted_object);

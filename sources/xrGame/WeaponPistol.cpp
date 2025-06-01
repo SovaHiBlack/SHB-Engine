@@ -2,7 +2,7 @@
 #include "weaponpistol.h"
 #include "WeaponHUD.h"
 #include "ParticlesObject.h"
-#include "actor.h"
+#include "Actor.h"
 
 CWeaponPistol::CWeaponPistol(pcstr name) : CWeaponCustomPistol(name)
 {

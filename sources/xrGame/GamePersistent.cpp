@@ -11,14 +11,12 @@
 #include "game_base_space.h"
 #include "level.h"
 #include "ParticlesObject.h"
-#include "actor.h"
-#include "game_base_space.h"
+#include "Actor.h"
 #include "weaponhud.h"
 #include "stalker_animation_data_storage.h"
 #include "stalker_velocity_holder.h"
 
 #include "..\XR_3DA\CameraManager.h"
-#include "actor.h"
 
 #ifndef MASTER_GOLD
 #	include "custommonster.h"
@@ -27,7 +25,7 @@
 #include "ai_debug.h"
 #include "xr_level_controller.h"
 #include "UI/UIGameTutorial.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #include "game_sv_single.h"
 #include "xrServer.h"
 #include "string_table.h"

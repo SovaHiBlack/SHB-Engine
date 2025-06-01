@@ -14,7 +14,7 @@
 
 using namespace MonsterSpace;
 
-class CAI_Stalker;
+class CStalker;
 class CStalkerVelocityCollection;
 class CGameObject;
 
@@ -34,7 +34,7 @@ private:
 protected:
 	CStalkerMovementParams				m_current;
 	CStalkerMovementParams				m_target;
-	CAI_Stalker							*m_object;
+	CStalker*m_object;
 
 public:
 	MonsterSpace::SBoneRotation			m_head;
@@ -54,7 +54,7 @@ private:
 			void	check_for_bad_path				();
 
 public:
-					CStalkerMovementManager			(CAI_Stalker *object);
+					CStalkerMovementManager			(CStalker*object);
 	virtual			~CStalkerMovementManager		();
 	virtual	void	Load							(pcstr section);
 	virtual	void	reinit							();
@@ -97,7 +97,7 @@ public:
 	IC		const MonsterSpace::EMovementType		target_movement_type	() const;
 
 public:
-	IC		CAI_Stalker								&object					() const;
+	IC		CStalker&object					() const;
 
 private:
 	const CGameObject	*m_last_query_object;

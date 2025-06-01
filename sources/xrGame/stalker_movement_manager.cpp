@@ -127,7 +127,7 @@ IC	void CStalkerMovementManager::setup_body_orientation	()
 
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerMovementManager::CStalkerMovementManager	(CAI_Stalker *object) :
+CStalkerMovementManager::CStalkerMovementManager	(CStalker*object) :
 	inherited					(object)
 {
 	VERIFY						(object);

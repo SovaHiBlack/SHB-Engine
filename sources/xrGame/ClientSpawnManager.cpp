@@ -11,7 +11,7 @@
 #include "AISpace.h"
 #include "script_engine.h"
 #include "level.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "script_game_object.h"
 
 CClientSpawnManager::~CClientSpawnManager( )

@@ -9,7 +9,7 @@
 #include "DestroyablePhysicsObject.h"
 #include "..\XR_3DA\SkeletonCustom.h"
 #include "xrServer_Objects_ALife.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
 #include "PhysicsShell.h"

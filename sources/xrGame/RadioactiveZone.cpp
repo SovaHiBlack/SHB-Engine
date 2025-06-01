@@ -7,7 +7,7 @@
 #include "clsid_game.h"
 #include "game_base_space.h"
 #include "Hit.h"
-#include "actor.h"
+#include "Actor.h"
 
 CRadioactiveZone::CRadioactiveZone( )
 { }

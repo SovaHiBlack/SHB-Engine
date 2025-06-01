@@ -7,7 +7,7 @@
 #include "level.h"
 #include "map_manager.h"
 #include "CameraEffector.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ai_sounds.h"
 
 ZONE_INFO::ZONE_INFO	()

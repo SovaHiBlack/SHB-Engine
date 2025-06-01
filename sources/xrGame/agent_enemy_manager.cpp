@@ -73,7 +73,7 @@ struct CEnemyFiller {
 struct remove_wounded_predicate {
 	IC	bool	operator()						(const CMemberEnemy &enemy) const
 	{
-		const CAI_Stalker			*stalker = smart_cast<const CAI_Stalker*>(enemy.m_object);
+		const CStalker* stalker = smart_cast<const CStalker*>(enemy.m_object);
 		if (!stalker)
 			return					(false);
 
@@ -123,7 +123,7 @@ void CAgentEnemyManager::fill_enemies			()
 		ENEMIES::iterator				E = enemies().end();
 		for ( ; I != E; ++I) {
 			if (m_only_wounded_left) {
-				const CAI_Stalker			*stalker = smart_cast<const CAI_Stalker*>((*I).m_object);
+				const CStalker* stalker = smart_cast<const CStalker*>((*I).m_object);
 				if (!stalker || !stalker->wounded())
 					m_only_wounded_left	= false;
 				else
@@ -131,7 +131,7 @@ void CAgentEnemyManager::fill_enemies			()
 			}
 			else {
 				if (!m_is_any_wounded) {
-					const CAI_Stalker		*stalker = smart_cast<const CAI_Stalker*>((*I).m_object);
+					const CStalker* stalker = smart_cast<const CStalker*>((*I).m_object);
 					if (stalker && stalker->wounded())
 						m_is_any_wounded	= true;
 				}
@@ -461,7 +461,7 @@ void CAgentEnemyManager::assign_wounded			()
 	u32						population_level = 0;
 	while (population(assigned) < combat_member_count) {
 		CMemberEnemy		*enemy = 0;
-		const CAI_Stalker	*processor = 0;
+		const CStalker* processor = 0;
 		f32				best_distance_sqr = flt_max;
 
 		for (s32 i=0; i<2; ++i) {
@@ -686,7 +686,7 @@ bool CAgentEnemyManager::wounded_processed		(const CEntityAlive *object) const
 	return							((*I).second.second);
 }
 
-bool CAgentEnemyManager::assigned_wounded		(const CEntityAlive *wounded, const CAI_Stalker *member)
+bool CAgentEnemyManager::assigned_wounded(const CEntityAlive* wounded, const CStalker* member)
 {
 	ENEMIES::const_iterator			I = m_enemies.begin();
 	ENEMIES::const_iterator			E = m_enemies.end();
@@ -704,7 +704,7 @@ bool CAgentEnemyManager::assigned_wounded		(const CEntityAlive *wounded, const C
 	return							(false);
 }
 
-bool CAgentEnemyManager::useful_enemy			(const CEntityAlive *enemy, const CAI_Stalker *member) const
+bool CAgentEnemyManager::useful_enemy(const CEntityAlive* enemy, const CStalker* member) const
 {
 	if (!object().member().registered_in_combat(member))
 		return						(true);

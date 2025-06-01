@@ -4,7 +4,7 @@
 #include "Entity.h"
 #include "HUDManager.h"
 #include "UIGame.h"
-#include "actor.h"
+#include "Actor.h"
 #include "level.h"
 #include "game_cl_base.h"
 #include "ui/UIMainIngameWnd.h"//

@@ -10,24 +10,24 @@
 
 #include "action_script_base.h"
 
-class CAI_Stalker;
+class CStalker;
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionBase
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionBase : public CActionScriptBase<CAI_Stalker> {
+class CStalkerActionBase : public CActionScriptBase<CStalker> {
 protected:
-	typedef CActionScriptBase<CAI_Stalker>				inherited;
+	typedef CActionScriptBase<CStalker>				inherited;
 	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
 	typedef GraphEngineSpace::_solver_value_type		_value_type;
 
 public:
-						CStalkerActionBase			(CAI_Stalker *object, pcstr action_name = "");
+	CStalkerActionBase(CStalker* object, pcstr action_name = "");
 	virtual void		initialize					();
 	virtual void		execute						();
 	virtual void		finalize					();
-	IC		CAI_Stalker	&object						() const
+	IC		CStalker& object( ) const
 	{
 		VERIFY			(m_object);
 		return			(*m_object);

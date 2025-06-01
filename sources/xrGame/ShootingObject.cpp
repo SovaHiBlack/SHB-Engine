@@ -10,7 +10,7 @@
 #include "ParticlesObject.h"
 #include "WeaponAmmo.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "game_cl_base.h"
 #include "level.h"
 #include "BulletManager.h"

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "torch.h"
 #include "entity.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\LightAnimLibrary.h"
 #include "PhysicsShell.h"
 #include "xrserver_objects_alife_items.h"

@@ -3,7 +3,7 @@
 #include "CameraLook.h"
 #include "..\XR_3DA\Cameramanager.h"
 #include "xr_level_controller.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\Input.h"
 #include "visual_memory_manager.h"
 #include "actor_memory.h"

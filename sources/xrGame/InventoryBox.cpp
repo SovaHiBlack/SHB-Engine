@@ -2,8 +2,8 @@
 
 #include "InventoryBox.h"
 #include "level.h"
-#include "actor.h"
-#include "game_object_space.h"
+#include "Actor.h"
+#include "GameObject_space.h"
 
 #include "script_callback_ex.h"
 #include "script_game_object.h"

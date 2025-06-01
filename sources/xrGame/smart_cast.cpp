@@ -13,7 +13,7 @@
 #		include "../XR_3DA\BasicVisual.h"
 #		include "alife_space.h"
 #		include "Hit.h"
-#		include "actor.h"
+#		include "Actor.h"
 #		include "custommonster.h"
 #		include "ai/stalker/ai_stalker.h"
 #		include "ui/uiwindow.h"

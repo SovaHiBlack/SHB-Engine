@@ -12,7 +12,7 @@
 #include "ai/ai_monsters_anims.h"
 
 class CBlend;
-class CAI_Stalker;
+class CStalker;
 
 #define USE_HEAD_BONE_PART_FAKE
 
@@ -54,9 +54,9 @@ public:
 private:
 			void			select_animation		(const ANIM_VECTOR &array, const ANIMATION_WEIGHTS *weights);
 #ifndef USE_HEAD_BONE_PART_FAKE
-			void			play_global_animation	(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const bool &use_animation_movement_control);
+			void			play_global_animation(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const bool& use_animation_movement_control);
 #else // USE_HEAD_BONE_PART_FAKE
-			void			play_global_animation	(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const u32 &bone_part, const bool &use_animation_movement_control);
+			void			play_global_animation(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const u32& bone_part, const bool& use_animation_movement_control);
 #endif // USE_HEAD_BONE_PART_FAKE
 
 public:
@@ -76,9 +76,9 @@ public:
 
 public:
 #ifndef USE_HEAD_BONE_PART_FAKE
-			void			play					(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const bool &use_animation_movement_control, bool continue_interrupted_animation = true);
+	void			play(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const bool& use_animation_movement_control, bool continue_interrupted_animation = true);
 #else // USE_HEAD_BONE_PART_FAKE
-			void			play					(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const bool &use_animation_movement_control, bool continue_interrupted_animation = true, const u32 &bone_part = all_bone_parts);
+	void			play(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const bool& use_animation_movement_control, bool continue_interrupted_animation = true, const u32& bone_part = all_bone_parts);
 #endif // USE_HEAD_BONE_PART_FAKE
 
 #ifdef DEBUG

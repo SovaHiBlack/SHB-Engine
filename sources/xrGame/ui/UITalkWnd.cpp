@@ -4,7 +4,7 @@
 #include "UITradeWnd.h"
 #include "UITalkDialogWnd.h"
 
-#include "../actor.h"
+#include "../Actor.h"
 #include "../HUDManager.h"
 #include "../UIGame.h"
 #include "../PDA.h"

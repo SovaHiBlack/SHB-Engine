@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "Actor_Flags.h"
 #include "inventory.h"
 #include "xrserver_objects_alife_monsters.h"
@@ -33,10 +33,10 @@
 #include "ui/UIArtefactPanel.h"//
 #include "ui/UIMainIngameWnd.h"//
 #include "gamepersistent.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "GameTaskManager.h"
 #include "game_base_kill_type.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #include "actor_memory.h"
 #include "actor_statistic_mgr.h"
 #include "game_cl_base_weapon_usage_statistic.h"

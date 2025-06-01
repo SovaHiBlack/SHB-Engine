@@ -8,7 +8,7 @@
 #include "ParticlesObject.h"
 #include "HUDManager.h"
 #include "entity.h"
-#include "actor.h"
+#include "Actor.h"
 
 #include "ActorEffector.h"
 #include "effectorshot.h"

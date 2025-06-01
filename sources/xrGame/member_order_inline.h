@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CMemberOrder::CMemberOrder					(CAI_Stalker *object) :
+IC	CMemberOrder::CMemberOrder(CStalker* object) :
 	m_object		(object),
 	m_initialized	(true)
 {
@@ -25,7 +25,7 @@ IC	bool CMemberOrder::initialized				() const
 	return			(m_initialized);
 }
 
-IC	CAI_Stalker &CMemberOrder::object			() const
+IC	CStalker& CMemberOrder::object( ) const
 {
 	VERIFY			(m_object);
 	return			(*m_object);

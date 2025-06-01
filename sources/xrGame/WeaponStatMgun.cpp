@@ -5,11 +5,11 @@
 #include "weaponAmmo.h"
 #include "object_broker.h"
 #include "ai_sounds.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ActorEffector.h"
 #include "CameraFirstEye.h"
 #include "xr_level_controller.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "level.h"
 
 void 	CWeaponStatMgun::BoneCallbackX		(CBoneInstance *B)

@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "script_game_object.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "script_ini_file.h"
 #include "sight_manager_space.h"
 

@@ -22,7 +22,7 @@
 #include "level.h"
 #include "ui/UIMainIngameWnd.h"//
 #include "CarWeapon.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "GameMtlLib.h"
 #include "PHActivationShape.h"
 #include "CharacterPhysicsSupport.h"

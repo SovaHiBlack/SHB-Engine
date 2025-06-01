@@ -14,7 +14,8 @@
 // CStalkerActionDangerInDirectionTakeCover
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerInDirectionTakeCover : public CStalkerActionCombatBase {
+class CStalkerActionDangerInDirectionTakeCover : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
@@ -22,17 +23,18 @@ private:
 	bool				m_direction_sight;
 
 public:
-						CStalkerActionDangerInDirectionTakeCover	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerInDirectionTakeCover(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerInDirectionLookOut
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerInDirectionLookOut : public CStalkerActionCombatBase {
+class CStalkerActionDangerInDirectionLookOut : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
@@ -40,53 +42,56 @@ private:
 	CRandom32			m_crouch_look_out_random;
 
 public:
-						CStalkerActionDangerInDirectionLookOut		(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerInDirectionLookOut(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerInDirectionHoldPosition
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerInDirectionHoldPosition : public CStalkerActionCombatBase {
+class CStalkerActionDangerInDirectionHoldPosition : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerInDirectionHoldPosition	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerInDirectionHoldPosition(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerInDirectionDetour
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerInDirectionDetour : public CStalkerActionCombatBase {
+class CStalkerActionDangerInDirectionDetour : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerInDirectionDetour		(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize									();
-	virtual void		execute										();
-	virtual void		finalize									();
+	CStalkerActionDangerInDirectionDetour(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionDangerInDirectionSearch
 //////////////////////////////////////////////////////////////////////////
 
-class CStalkerActionDangerInDirectionSearch : public CStalkerActionCombatBase {
+class CStalkerActionDangerInDirectionSearch : public CStalkerActionCombatBase
+{
 protected:
 	typedef CStalkerActionCombatBase inherited;
 
 public:
-						CStalkerActionDangerInDirectionSearch	(CAI_Stalker *object, pcstr action_name = "");
-	virtual void		initialize								();
-	virtual void		execute									();
-	virtual void		finalize								();
+	CStalkerActionDangerInDirectionSearch(CStalker* object, pcstr action_name = "");
+	virtual void		initialize( );
+	virtual void		execute( );
+	virtual void		finalize( );
 };

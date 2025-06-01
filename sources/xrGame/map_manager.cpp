@@ -4,13 +4,13 @@
 #include "alife_registry_wrappers.h"
 #include "inventoryowner.h"
 #include "level.h"
-#include "actor.h"
+#include "Actor.h"
 #include "relation_registry.h"
 #include "GameObject.h"
 #include "map_location.h"
 #include "GameTaskManager.h"
 #include "xrServer.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "script_callback_ex.h"
 
 struct FindLocationBySpotID

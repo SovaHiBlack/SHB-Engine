@@ -28,7 +28,7 @@ CMemoryManager::CMemoryManager(CEntityAlive* entity_alive, CSound_UserDataVisito
 {
 	VERIFY(entity_alive);
 	m_object = smart_cast<CCustomMonster*>(entity_alive);
-	m_stalker = smart_cast<CAI_Stalker*>(m_object);
+	m_stalker = smart_cast<CStalker*>(m_object);
 
 	if (m_stalker)
 		m_visual = xr_new<CVisualMemoryManager>(m_stalker);
@@ -97,8 +97,8 @@ void CMemoryManager::update_enemies(const bool& registered_in_combat)
 		(
 		!enemy( ).selected( ) ||
 		(
-		smart_cast<const CAI_Stalker*>(enemy( ).selected( )) &&
-		smart_cast<const CAI_Stalker*>(enemy( ).selected( ))->wounded( )
+		smart_cast<const CStalker*>(enemy( ).selected( )) &&
+		smart_cast<const CStalker*>(enemy( ).selected( ))->wounded( )
 		)
 		) &&
 		registered_in_combat
@@ -178,7 +178,7 @@ void CMemoryManager::update(const xr_vector<T>& objects, bool add_enemies)
 				continue;
 		}
 
-		const CAI_Stalker* stalker = smart_cast<const CAI_Stalker*>((*I).m_object);
+		const CStalker* stalker = smart_cast<const CStalker*>((*I).m_object);
 		if (m_stalker && stalker)
 			continue;
 

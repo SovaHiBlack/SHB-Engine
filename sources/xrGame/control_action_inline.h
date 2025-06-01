@@ -12,7 +12,7 @@ IC	CControlAction::CControlAction		()
 {
 }
 
-IC	void CControlAction::set_object		(CAI_Stalker *object)
+IC	void CControlAction::set_object(CStalker* object)
 {
 	VERIFY				(object);
 	m_object			= object;
@@ -40,7 +40,7 @@ IC	void CControlAction::finalize		()
 {
 }
 
-IC	CAI_Stalker &CControlAction::object	() const
+IC	CStalker&CControlAction::object	() const
 {
 	VERIFY				(m_object);
 	return				(*m_object);

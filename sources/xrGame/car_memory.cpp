@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "car_memory.h"
 #include "car.h"
+#include "Actor.h"
 
 car_memory::car_memory					(CCar *object) :
 	inherited		(
@@ -31,7 +32,7 @@ void car_memory::reload(pcstr section)
 	m_aspect			= pSettings->r_float(section,"view_aspect");
 	m_far_plane			= pSettings->r_float(section,"view_far_plane");
 }
-#include "actor.h"
+
 BOOL car_memory::feel_vision_isRelevant	(CObject *object)
 {
 	return (NULL!=smart_cast<CActor*>(object));

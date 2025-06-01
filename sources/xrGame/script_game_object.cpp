@@ -15,7 +15,7 @@
 #include "script_entity.h"
 #include "physicsshellholder.h"
 #include "helicopter.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #include "inventoryowner.h"
 #include "movement_manager.h"
 #include "entity_alive.h"
@@ -32,7 +32,7 @@
 #include "SpaceRestrictor.h"
 #include "detail_path_manager.h"
 #include "level_graph.h"
-#include "actor.h"
+#include "Actor.h"
 #include "actor_memory.h"
 #include "visual_memory_manager.h"
 

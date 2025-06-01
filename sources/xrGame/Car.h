@@ -6,7 +6,7 @@
 #include "script_entity.h"
 #include "CarLights.h"
 #include "phobject.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #include "PHSkeleton.h"
 #include "DamagableItem.h"
 #include "phcollisiondamagereceiver.h"

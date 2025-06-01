@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "controlled_actor.h"
-#include "../../actor.h"
+#include "../../Actor.h"
 #include "../../..\XR_3DA\CameraBase.h"
 #include "../../xr_level_controller.h"
 #include "../../level.h"

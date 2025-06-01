@@ -12,7 +12,7 @@
 #include "UITreeViewItem.h"
 #include "UIEncyclopediaArticleWnd.h"//
 #include "../level.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "../alife_registry_wrappers.h"
 #include "../encyclopedia_article.h"
 #include "UIPdaAux.h"//

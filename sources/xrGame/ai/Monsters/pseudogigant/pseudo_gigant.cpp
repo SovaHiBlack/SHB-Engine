@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "pseudo_gigant.h"
 #include "pseudo_gigant_step_effector.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../level.h"
 #include "pseudogigant_state_manager.h"

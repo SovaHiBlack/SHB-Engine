@@ -15,11 +15,11 @@ namespace LevelGraph {
 	class CVertex;
 };
 
-class CAI_Stalker;
+class CStalker;
 
-class CSightManager : public CSetupManager<CSightControlAction,CAI_Stalker,u32> {
+class CSightManager : public CSetupManager<CSightControlAction, CStalker,u32> {
 public:
-	typedef CSetupManager<CSightControlAction,CAI_Stalker,u32> inherited;
+	typedef CSetupManager<CSightControlAction, CStalker,u32> inherited;
 
 private:
 	bool			m_enabled;
@@ -28,7 +28,7 @@ private:
 	f32			m_max_right_angle;
 
 public:
-					CSightManager						(CAI_Stalker *object);
+	CSightManager(CStalker* object);
 	virtual			~CSightManager						();
 	virtual	void	Load								(pcstr section);
 	virtual	void	reinit								();

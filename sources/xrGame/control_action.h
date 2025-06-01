@@ -8,21 +8,22 @@
 
 #pragma once
 
-class CAI_Stalker;
+class CStalker;
 
-class CControlAction {
+class CControlAction
+{
 protected:
-	CAI_Stalker			*m_object;
+	CStalker* m_object;
 
 public:
 	IC					CControlAction	();
-	IC		void		set_object		(CAI_Stalker *object);
+	IC		void		set_object(CStalker* object);
 	IC		bool		applicable		() const;
 	IC		bool		completed		() const;
 	IC		void		initialize		();
 	IC		void		execute			();
 	IC		void		finalize		();
-	IC		CAI_Stalker &object			() const;
+	IC		CStalker& object( ) const;
 	IC		void		remove_links	(CObject *object);
 };
 

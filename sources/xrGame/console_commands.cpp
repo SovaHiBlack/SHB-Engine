@@ -16,7 +16,7 @@
 #include "game_sv_single.h"
 #include "Hit.h"
 #include "PHDestroyable.h"
-#include "actor.h"
+#include "Actor.h"
 #include "Actor_Flags.h"
 #include "customzone.h"
 #include "script_engine.h"

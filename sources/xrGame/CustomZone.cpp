@@ -3,7 +3,7 @@
 #include "customzone.h"
 #include "Hit.h"
 //#include "PHDestroyable.h"
-#include "actor.h"
+#include "Actor.h"
 //#include "hudmanager.h"
 #include "ParticlesObject.h"
 #include "xrserver_objects_alife_monsters.h"

@@ -14,7 +14,7 @@
 #include "tri-colliderknoopc/dTriList.h"
 #include "..\XR_3DA\BasicVisual.h"
 #include "CalculateTriangle.h"
-#include "actor.h"
+#include "Actor.h"
 #ifdef DEBUG
 #include "PHDebug.h"
 #include "game_base_space.h"

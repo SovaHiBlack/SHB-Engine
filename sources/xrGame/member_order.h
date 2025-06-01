@@ -13,7 +13,7 @@
 #include "graph_engine_space.h"
 #include "condition_state.h"
 
-class CAI_Stalker;
+class CStalker;
 class CCoverPoint;
 class CExplosive;
 class CGameObject;
@@ -21,7 +21,7 @@ class CGameObject;
 class CMemberOrder {
 public:
 	struct CMemberDeathReaction {
-		CAI_Stalker				*m_member;
+		CStalker* m_member;
 		u32						m_time;
 		bool					m_processing;
 
@@ -59,7 +59,7 @@ public:
 	};
 
 protected:
-	CAI_Stalker					*m_object;
+	CStalker* m_object;
 	mutable const CCoverPoint	*m_cover;
 	bool						m_initialized;
 	f32						m_probability;
@@ -71,9 +71,9 @@ protected:
 	bool						m_detour;
 
 public:
-	IC							CMemberOrder			(CAI_Stalker *object);
+	IC							CMemberOrder(CStalker* object);
 	IC		bool				initialized				() const;
-	IC		CAI_Stalker			&object					() const;
+	IC		CStalker& object( ) const;
 	IC		f32				probability				() const;
 	IC		bool				processed				() const;
 	IC		u32					selected_enemy			() const;

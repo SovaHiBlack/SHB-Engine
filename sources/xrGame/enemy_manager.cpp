@@ -21,7 +21,7 @@
 #include "script_game_object.h"
 #include "AISpace.h"
 #include "profiler.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ai/stalker/ai_stalker.h"
 #include "movement_manager.h"
 #include "agent_manager.h"
@@ -46,7 +46,7 @@ CEnemyManager::CEnemyManager									(CCustomMonster *object)
 	m_ready_to_save				= true;
 	m_last_enemy_time			= 0;
 	m_last_enemy_change			= 0;
-	m_stalker					= smart_cast<CAI_Stalker*>(object);
+	m_stalker					= smart_cast<CStalker*>(object);
 	m_enable_enemy_change		= true;
 }
 
@@ -94,7 +94,7 @@ f32 CEnemyManager::evaluate				(const CEntityAlive *object) const
 	if (actor)
 		m_ready_to_save		= false;
 
-	const CAI_Stalker		*stalker = smart_cast<const CAI_Stalker*>(object);
+	const CStalker*stalker = smart_cast<const CStalker*>(object);
 	bool					wounded = stalker ? stalker->wounded(&m_object->movement().restrictions()) : false;
 	if (wounded) {
 		if (m_stalker && m_stalker->agent_manager().enemy().assigned_wounded(object,m_stalker))
@@ -233,14 +233,14 @@ f32 CEnemyManager::max_ignore_monster_distance		() const
 
 bool CEnemyManager::change_from_wounded					(const CEntityAlive *current, const CEntityAlive *previous) const
 {
-	const CAI_Stalker			*current_stalker = smart_cast<const CAI_Stalker*>(current);
+	const CStalker* current_stalker = smart_cast<const CStalker*>(current);
 	if (!current_stalker)
 		return					(false);
 
 	if (current_stalker->wounded())
 		return					(false);
 
-	const CAI_Stalker			*previous_stalker = smart_cast<const CAI_Stalker*>(previous);
+	const CStalker* previous_stalker = smart_cast<const CStalker*>(previous);
 	if (!previous_stalker)
 		return					(false);
 
@@ -294,7 +294,7 @@ void CEnemyManager::remove_wounded			()
 	struct no_wounded {
 		IC	static bool	predicate	(const CEntityAlive *enemy)
 		{
-			const CAI_Stalker		*stalker = smart_cast<const CAI_Stalker*>(enemy);
+			const CStalker* stalker = smart_cast<const CStalker*>(enemy);
 			if (!stalker)
 				return				(false);
 
@@ -321,7 +321,7 @@ void CEnemyManager::process_wounded			(bool &only_wounded)
 	ENEMIES::const_iterator		I = m_objects.begin();
 	ENEMIES::const_iterator		E = m_objects.end();
 	for ( ; I != E; ++I) {
-		const CAI_Stalker		*stalker = smart_cast<const CAI_Stalker*>(*I);
+		const CStalker* stalker = smart_cast<const CStalker*>(*I);
 		if (stalker && stalker->wounded())
 			continue;
 
@@ -354,7 +354,7 @@ bool CEnemyManager::need_update				(const bool &only_wounded) const
 	if (only_wounded)
 		return					(false);
 
-	const CAI_Stalker			*stalker = smart_cast<const CAI_Stalker*>(selected());
+	const CStalker* stalker = smart_cast<const CStalker*>(selected( ));
 	if (stalker && stalker->wounded())
 		return					(true);
 
@@ -407,7 +407,7 @@ void CEnemyManager::update					()
 	}
 
 #if 0//def _DEBUG
-	if (g_enemy_manager_second_update && selected() && smart_cast<const CAI_Stalker*>(selected()) && smart_cast<const CAI_Stalker*>(selected())->wounded())
+	if (g_enemy_manager_second_update && selected( ) && smart_cast<const CStalker*>(selected( )) && smart_cast<const CStalker*>(selected( ))->wounded( ))
 		Msg						("%6d WOUNDED CHOOSED %s",Device.dwTimeGlobal,*m_object->cName());
 #endif // _DEBUG
 

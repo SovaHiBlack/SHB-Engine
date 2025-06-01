@@ -45,7 +45,7 @@ void CObjectHandler::Load(pcstr section)
 	inherited::Load(section);
 }
 
-void CObjectHandler::reinit(CAI_Stalker* object)
+void CObjectHandler::reinit(CStalker* object)
 {
 	inherited::reinit( );
 	m_hammer_is_clutched = false;

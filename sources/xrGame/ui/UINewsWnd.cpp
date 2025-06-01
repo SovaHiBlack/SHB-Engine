@@ -7,7 +7,7 @@
 #include "../HUDManager.h"
 #include "../level.h"
 #include "../game_news.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "../alife_registry_wrappers.h"
 #include "UIInventoryUtilities.h"//
 #include "UINewsItemWnd.h"//

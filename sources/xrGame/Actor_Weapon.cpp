@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "ActorEffector.h"
 #include "Missile.h"
 #include "inventory.h"

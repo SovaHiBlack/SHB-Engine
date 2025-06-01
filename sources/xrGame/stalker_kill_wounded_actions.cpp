@@ -36,7 +36,7 @@ const u32 MAX_INTERVAL	= 1500;
 using namespace StalkerSpace;
 using namespace StalkerDecisionSpace;
 
-CInventoryItem *weapon_to_kill(const CAI_Stalker *object)
+CInventoryItem* weapon_to_kill(const CStalker* object)
 {
 	if (!object->inventory().m_slots[1].m_pIItem)
 		return			(object->best_weapon());
@@ -51,7 +51,7 @@ CInventoryItem *weapon_to_kill(const CAI_Stalker *object)
 	return				(temp);
 }
 
-bool should_process	(CAI_Stalker &object, const CEntityAlive *enemy)
+bool should_process(CStalker& object, const CEntityAlive* enemy)
 {
 	if (object.agent_manager().enemy().wounded_processed(enemy))
 		return			(false);
@@ -67,8 +67,7 @@ bool should_process	(CAI_Stalker &object, const CEntityAlive *enemy)
 // CStalkerActionReachWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionReachWounded::CStalkerActionReachWounded		(CAI_Stalker *object, pcstr action_name) :
-	inherited				(object, action_name)
+CStalkerActionReachWounded::CStalkerActionReachWounded(CStalker* object, pcstr action_name) : inherited(object, action_name)
 { }
 
 void CStalkerActionReachWounded::initialize					()
@@ -148,8 +147,7 @@ void CStalkerActionReachWounded::execute					()
 // CStalkerActionAimWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionAimWounded::CStalkerActionAimWounded	(CAI_Stalker *object, pcstr action_name) :
-	inherited				(object, action_name)
+CStalkerActionAimWounded::CStalkerActionAimWounded(CStalker* object, pcstr action_name) : inherited(object, action_name)
 { }
 
 void CStalkerActionAimWounded::initialize				()
@@ -212,8 +210,7 @@ void CStalkerActionAimWounded::finalize					()
 // CStalkerActionPrepareWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionPrepareWounded::CStalkerActionPrepareWounded	(CAI_Stalker *object, pcstr action_name) :
-	inherited				(object, action_name)
+CStalkerActionPrepareWounded::CStalkerActionPrepareWounded(CStalker* object, pcstr action_name) : inherited(object, action_name)
 { }
 
 void CStalkerActionPrepareWounded::initialize				()
@@ -267,7 +264,7 @@ void CStalkerActionPrepareWounded::execute					()
 // CStalkerActionKillWounded
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionKillWounded::CStalkerActionKillWounded		(CAI_Stalker *object, pcstr action_name) :
+CStalkerActionKillWounded::CStalkerActionKillWounded		(CStalker*object, pcstr action_name) :
 	inherited				(object, action_name)
 { }
 
@@ -327,7 +324,7 @@ void CStalkerActionKillWounded::execute					()
 // CStalkerActionPauseAfterKill
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionPauseAfterKill::CStalkerActionPauseAfterKill	(CAI_Stalker *object, pcstr action_name) :
+CStalkerActionPauseAfterKill::CStalkerActionPauseAfterKill	(CStalker*object, pcstr action_name) :
 	inherited				(object, action_name)
 { }
 

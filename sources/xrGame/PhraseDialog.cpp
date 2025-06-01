@@ -2,7 +2,7 @@
 
 #include "phrasedialog.h"
 #include "phrasedialogmanager.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "ai_debug.h"
 
 SPhraseDialogData::SPhraseDialogData ()

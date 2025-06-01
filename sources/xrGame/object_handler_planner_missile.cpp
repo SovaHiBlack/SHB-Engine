@@ -37,7 +37,7 @@ void CObjectHandlerPlanner::add_evaluators		(CMissile *missile)
 void CObjectHandlerPlanner::add_operators		(CMissile *missile)
 {
 	u16					id = missile->ID(), ff = u16(-1);
-	CActionBase<CAI_Stalker>	*action;
+	CActionBase<CStalker>	*action;
 
 	// show
 	action				= xr_new<CObjectActionShow>(missile,m_object,&m_storage,"show");

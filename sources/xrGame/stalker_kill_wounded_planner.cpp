@@ -21,14 +21,14 @@
 using namespace StalkerSpace;
 using namespace StalkerDecisionSpace;
 
-CStalkerKillWoundedPlanner::CStalkerKillWoundedPlanner	(CAI_Stalker *object, pcstr action_name) :
+CStalkerKillWoundedPlanner::CStalkerKillWoundedPlanner	(CStalker*object, pcstr action_name) :
 	inherited			(object,action_name)
 { }
 
 CStalkerKillWoundedPlanner::~CStalkerKillWoundedPlanner	()
 { }
 
-void CStalkerKillWoundedPlanner::setup					(CAI_Stalker *object, CPropertyStorage *storage)
+void CStalkerKillWoundedPlanner::setup					(CStalker*object, CPropertyStorage *storage)
 {
 	inherited::setup		(object,storage);
 

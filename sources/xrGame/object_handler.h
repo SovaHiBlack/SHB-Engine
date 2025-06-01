@@ -16,7 +16,7 @@ namespace MonsterSpace
 	enum EObjectAction;
 }
 
-class CAI_Stalker;
+class CStalker;
 class CWeapon;
 class CMissile;
 class CFoodItem;
@@ -58,7 +58,7 @@ public:
 	CObjectHandler( );
 	virtual							~CObjectHandler( );
 	virtual	void					Load(pcstr section);
-	virtual	void					reinit(CAI_Stalker* object);
+	virtual	void					reinit(CStalker* object);
 	virtual	void					reload(pcstr section);
 	virtual BOOL					net_Spawn(CSE_Abstract* DC);
 	virtual	void					update( );

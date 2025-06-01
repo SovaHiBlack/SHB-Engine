@@ -10,7 +10,7 @@
 
 #include "action_planner.h"
 
-class CAI_Stalker;
+class CStalker;
 class CInventoryItem;
 class CWeapon;
 class CMissile;
@@ -24,14 +24,14 @@ namespace MonsterSpace {
 	enum EObjectAction;
 };
 
-class CObjectHandlerPlanner : public CActionPlanner<CAI_Stalker,true> {
+class CObjectHandlerPlanner : public CActionPlanner<CStalker,true> {
 public:
-	typedef CActionPlanner<CAI_Stalker,true>			inherited;
+	typedef CActionPlanner<CStalker,true>			inherited;
 	typedef GraphEngineSpace::_solver_value_type		_value_type;
 	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
 	typedef ObjectHandlerSpace::EWorldProperties		EWorldProperties;
 	typedef MonsterSpace::EObjectAction					EObjectAction;
-	typedef CActionBase<CAI_Stalker>					CSActionBase;
+	typedef CActionBase<CStalker>					CSActionBase;
 
 private:
 	u32		m_min_queue_size;
@@ -66,10 +66,10 @@ public:
 	IC		u32				action_state_id			(_condition_type action_id) const;
 	IC		void			add_condition			(CSActionBase *action, u16 id, EWorldProperties property, _value_type value);
 	IC		void			add_effect				(CSActionBase *action, u16 id, EWorldProperties property, _value_type value);
-	IC		CAI_Stalker		&object					() const;
+	IC		CStalker& object( ) const;
 
 public:
-	virtual	void			setup					(CAI_Stalker *object);
+	virtual	void			setup(CStalker* object);
 	virtual	void			update					();
 			void			add_item				(CInventoryItem *inventory_item);
 			void			remove_item				(CInventoryItem *inventory_item);

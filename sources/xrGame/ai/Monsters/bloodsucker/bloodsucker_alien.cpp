@@ -2,7 +2,7 @@
 #include "bloodsucker_alien.h"
 #include "bloodsucker.h"
 #include "../../../level.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../inventory.h"
 #include "../../../HudItem.h"
 #include "../../../..\XR_3DA\CustomHUD.h"

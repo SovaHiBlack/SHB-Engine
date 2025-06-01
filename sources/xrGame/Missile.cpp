@@ -2,7 +2,7 @@
 #include "missile.h"
 #include "WeaponHUD.h"
 #include "PhysicsShell.h"
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\CameraBase.h"
 #include "xrserver_objects_alife.h"
 #include "ActorEffector.h"

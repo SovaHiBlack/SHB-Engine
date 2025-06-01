@@ -11,7 +11,7 @@
 #include "../InventoryOwner.h"
 #include "../Level.h"
 #include "../pda.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "../xrServer_Objects_ALife_Monsters.h"
 
 #define STALKERS_RANKING_XML							"stalkers_ranking.xml"

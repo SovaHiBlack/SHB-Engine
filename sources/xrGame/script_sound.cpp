@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "script_sound.h"
 #include "script_game_object.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "AISpace.h"
 #include "script_engine.h"
 

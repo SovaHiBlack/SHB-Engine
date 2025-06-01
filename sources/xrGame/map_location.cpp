@@ -13,7 +13,7 @@
 #include "ui/UIMap.h"//
 #include "alife_simulator.h"
 #include "graph_engine.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ai_object_location.h"
 #include "alife_object_registry.h"
 #include "relation_registry.h"

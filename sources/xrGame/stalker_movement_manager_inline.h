@@ -128,7 +128,7 @@ IC	bool CStalkerMovementManager::use_desired_direction					() const
 	return						(m_current.m_use_desired_direction);
 }
 
-IC	CAI_Stalker &CStalkerMovementManager::object						() const
+IC	CStalker&CStalkerMovementManager::object						() const
 {
 	VERIFY						(m_object);
 	return						(*m_object);

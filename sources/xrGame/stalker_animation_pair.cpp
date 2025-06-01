@@ -40,9 +40,9 @@ void CStalkerAnimationPair::synchronize		(CKinematicsAnimated *skeleton_animated
 }
 
 #ifndef USE_HEAD_BONE_PART_FAKE
-void CStalkerAnimationPair::play_global_animation	(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const bool &use_animation_movement_control)
+void CStalkerAnimationPair::play_global_animation(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const bool& use_animation_movement_control)
 #else
-void CStalkerAnimationPair::play_global_animation	(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const u32 &bone_part, const bool &use_animation_movement_control)
+void CStalkerAnimationPair::play_global_animation(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const u32& bone_part, const bool& use_animation_movement_control)
 #endif
 {
 	m_blend				= 0;
@@ -67,9 +67,9 @@ void CStalkerAnimationPair::play_global_animation	(CKinematicsAnimated *skeleton
 }
 
 #ifndef USE_HEAD_BONE_PART_FAKE
-void CStalkerAnimationPair::play			(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const bool &use_animation_movement_control, bool continue_interrupted_animation)
+void CStalkerAnimationPair::play(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const bool& use_animation_movement_control, bool continue_interrupted_animation)
 #else
-void CStalkerAnimationPair::play			(CKinematicsAnimated *skeleton_animated, PlayCallback callback, CAI_Stalker *object, const bool &use_animation_movement_control, bool continue_interrupted_animation, const u32 &bone_part)
+void CStalkerAnimationPair::play(CKinematicsAnimated* skeleton_animated, PlayCallback callback, CStalker* object, const bool& use_animation_movement_control, bool continue_interrupted_animation, const u32& bone_part)
 #endif
 {
 	VERIFY					(animation());

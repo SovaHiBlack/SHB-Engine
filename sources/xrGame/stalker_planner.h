@@ -12,15 +12,15 @@
 #include "action_script_base.h"
 #include "action_planner_action_script.h"
 
-class CAI_Stalker;
+class CStalker;
 
-class CStalkerPlanner : public CActionPlannerScript<CAI_Stalker> {
+class CStalkerPlanner : public CActionPlannerScript<CStalker> {
 protected:
-	typedef CActionPlannerScript<CAI_Stalker>			inherited;
-	typedef CActionScriptBase<CAI_Stalker>				CAction;
+	typedef CActionPlannerScript<CStalker>			inherited;
+	typedef CActionScriptBase<CStalker>				CAction;
 	typedef GraphEngineSpace::_solver_value_type		_value_type;
 	typedef GraphEngineSpace::_solver_condition_type	_condition_type;
-	typedef CActionPlannerActionScript<CAI_Stalker>		CActionPlannerAction;
+	typedef CActionPlannerActionScript<CStalker>		CActionPlannerAction;
 
 private:
 	bool					m_affect_cover;
@@ -39,7 +39,7 @@ public:
 public:
 							CStalkerPlanner		();
 	virtual					~CStalkerPlanner	();
-	virtual	void			setup				(CAI_Stalker *object);
+	virtual	void			setup				(CStalker*object);
 	virtual	void			update				(u32 time_delta);
 	IC		void			affect_cover		(bool value);
 	IC		bool			affect_cover		() const;

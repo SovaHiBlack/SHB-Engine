@@ -4563,13 +4563,13 @@
     <ClInclude Include="Wound.h">
       <Filter>Core\Client\Objects\base\EntityCondition</Filter>
     </ClInclude>
-    <ClInclude Include="game_object_space.h">
+    <ClInclude Include="GameObject_space.h">
       <Filter>Core\Client\Objects\base\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Core\Client\Objects\base\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="holder_custom.h">
+    <ClInclude Include="HolderCustom.h">
       <Filter>Core\Client\Objects\base\GameObject\Holder</Filter>
     </ClInclude>
     <ClInclude Include="ParticlesPlayer.h">
@@ -7337,10 +7337,7 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Core\Client\Objects\base\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="holder_custom.cpp">
-      <Filter>Core\Client\Objects\base\GameObject\Holder</Filter>
-    </ClCompile>
-    <ClCompile Include="holder_custom_script.cpp">
+    <ClCompile Include="HolderCustom.cpp">
       <Filter>Core\Client\Objects\base\GameObject\Holder</Filter>
     </ClCompile>
     <ClCompile Include="ParticlesPlayer.cpp">

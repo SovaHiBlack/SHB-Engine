@@ -38,14 +38,14 @@ using namespace StalkerDecisionSpace;
 //#define GRENADE_TEST
 
 #ifdef GRENADE_TEST
-#	include "actor.h"
+#	include "Actor.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionSolveZonePuzzle
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionSolveZonePuzzle::CStalkerActionSolveZonePuzzle	(CAI_Stalker *object, pcstr action_name) :
+CStalkerActionSolveZonePuzzle::CStalkerActionSolveZonePuzzle(CStalker* object, pcstr action_name) :
 	inherited				(object,action_name)
 { }
 
@@ -164,7 +164,7 @@ void CStalkerActionSolveZonePuzzle::execute		()
 // CStalkerActionSmartTerrain
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionSmartTerrain::CStalkerActionSmartTerrain	(CAI_Stalker *object, pcstr action_name) :
+CStalkerActionSmartTerrain::CStalkerActionSmartTerrain(CStalker* object, pcstr action_name) :
 	inherited				(object,action_name)
 {
 	set_inertia_time		(30000);

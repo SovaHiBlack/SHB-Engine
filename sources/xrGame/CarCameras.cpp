@@ -10,7 +10,7 @@
 #include "Hit.h"
 #include "PHDestroyable.h"
 #include "car.h"
-#include "actor.h"
+#include "Actor.h"
 #include "CameraLook.h"
 #include "CameraFirstEye.h"
 #include "level.h"

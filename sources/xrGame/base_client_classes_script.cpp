@@ -146,7 +146,7 @@ void CObjectScript::script_register		(lua_State *L)
 //		,class_<CCustomMonster,CEntityAlive>("CCustomMonster")
 //			.def(constructor<>())
 
-//		,class_<CAI_Stalker,CCustomMonster>("CAI_Stalker")
+//		,class_<CStalker,CCustomMonster>("CStalker")
 	];
 }
 

@@ -24,7 +24,7 @@ protected:
 	u32					m_stop_weapon_handling_time;
 
 public:
-						CStalkerActionSolveZonePuzzle	(CAI_Stalker *object, pcstr action_name = "");
+	CStalkerActionSolveZonePuzzle(CStalker* object, pcstr action_name = "");
 	virtual void		initialize						();
 	virtual void		execute							();
 	virtual void		finalize						();
@@ -39,7 +39,7 @@ protected:
 	typedef CStalkerActionBase inherited;
 
 public:
-						CStalkerActionSmartTerrain		(CAI_Stalker *object, pcstr action_name = "");
+	CStalkerActionSmartTerrain(CStalker* object, pcstr action_name = "");
 	virtual void		initialize						();
 	virtual void		execute							();
 	virtual void		finalize						();

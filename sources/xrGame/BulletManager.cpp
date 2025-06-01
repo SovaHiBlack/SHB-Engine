@@ -583,7 +583,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 			if ((NULL != cform) && (cftObject == cform->Type( )))
 			{
 				CActor* actor = smart_cast<CActor*>(entity);
-				CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(entity);
+				CStalker* stalker = smart_cast<CStalker*>(entity);
 				// в кого попали?
 				if (actor || stalker)
 				{
@@ -617,7 +617,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 							}
 #	else
 							f32 game_difficulty_hit_probability = actor->HitProbability( );
-							CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(initiator);
+							CStalker* stalker = smart_cast<CStalker*>(initiator);
 							if (stalker)
 							{
 								hpf = stalker->SpecificCharacter( ).hit_probability_factor( );
@@ -639,7 +639,7 @@ BOOL CBulletManager::test_callback(const collide::ray_defs& rd, CObject* object,
 							ahp = dist_factor * game_difficulty_hit_probability + (1.f - dist_factor) * 1.f;
 #	endif
 #else
-							CAI_Stalker* i_stalker = smart_cast<CAI_Stalker*>(initiator);
+							CStalker* i_stalker = smart_cast<CStalker*>(initiator);
 							// если стрелял сталкер, учитываем - hit_probability_factor сталкерa иначе - 1.0
 							if (i_stalker)
 							{

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../../..\XR_3DA\skeletoncustom.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 
 #define TEMPLATE_SPECIALIZATION template <\

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "UIPdaListItem.h"//
-#include "../actor.h"
+#include "../Actor.h"
 #include "UIInventoryUtilities.h"//
 #include "../string_table.h"
 

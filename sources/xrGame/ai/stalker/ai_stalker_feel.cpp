@@ -20,7 +20,7 @@
 	extern flags32 psAI_Flags;
 #endif // DEBUG
 
-BOOL CAI_Stalker::feel_vision_isRelevant(CObject* O)
+BOOL CStalker::feel_vision_isRelevant(CObject* O)
 {
 	if (!g_Alive())
 		return		FALSE;
@@ -31,7 +31,7 @@ BOOL CAI_Stalker::feel_vision_isRelevant(CObject* O)
 	return(TRUE);
 }
 
-void CAI_Stalker::renderable_Render	()
+void CStalker::renderable_Render	()
 {
 	inherited::renderable_Render		();
 
@@ -46,7 +46,7 @@ void CAI_Stalker::renderable_Render	()
 #endif // DEBUG
 }
 
-void CAI_Stalker::Exec_Look			(f32 dt)
+void CStalker::Exec_Look			(f32 dt)
 {
 	if (animation_movement_controlled())
 		return;
@@ -54,12 +54,12 @@ void CAI_Stalker::Exec_Look			(f32 dt)
 	sight().Exec_Look				(dt);
 }
 
-bool CAI_Stalker::bfCheckForNodeVisibility(u32 dwNodeID, bool bIfRayPick)
+bool CStalker::bfCheckForNodeVisibility(u32 dwNodeID, bool bIfRayPick)
 {
 	return							(memory().visual().visible(dwNodeID,movement().m_head.current.yaw,ffGetFov()));
 }
 
-BOOL CAI_Stalker::feel_touch_contact	(CObject *O)
+BOOL CStalker::feel_touch_contact	(CObject *O)
 {
 	if (!inherited::feel_touch_contact(O))
 		return						(FALSE);
@@ -71,7 +71,7 @@ BOOL CAI_Stalker::feel_touch_contact	(CObject *O)
 	return							(game_object->feel_touch_on_contact(this));
 }
 
-BOOL CAI_Stalker::feel_touch_on_contact	(CObject *O)
+BOOL CStalker::feel_touch_on_contact	(CObject *O)
 {
 	if ((O->spatial.type | STYPE_VISIBLEFORAI) != O->spatial.type)
 		return	(FALSE);

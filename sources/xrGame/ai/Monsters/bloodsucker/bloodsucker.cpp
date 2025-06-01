@@ -2,7 +2,7 @@
 #include "bloodsucker.h"
 #include "bloodsucker_state_manager.h"
 #include "../../../..\XR_3DA\skeletoncustom.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../level.h"
@@ -12,7 +12,7 @@
 #include "../../../detail_path_manager.h"
 #include "../monster_velocity_space.h"
 #include "../../../gamepersistent.h"
-#include "../../../game_object_space.h"
+#include "../../../GameObject_space.h"
 
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"

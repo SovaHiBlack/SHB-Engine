@@ -7,7 +7,7 @@
 #include "../UIZoneMap.h"//
 
 #include <dinput.h>
-#include "../actor.h"
+#include "../Actor.h"
 #include "../HUDManager.h"
 #include "../PDA.h"
 #include "../WeaponHUD.h"

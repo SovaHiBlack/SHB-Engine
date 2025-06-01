@@ -20,7 +20,7 @@ IC	CAgentManager &CAgentCorpseManager::object	() const
 	return						(*m_object);
 }
 
-IC	void CAgentCorpseManager::register_corpse	(CAI_Stalker *corpse)
+IC	void CAgentCorpseManager::register_corpse(CStalker* corpse)
 {
 	MEMBER_CORPSES::iterator	I = std::find(m_corpses.begin(),m_corpses.end(),corpse);
 	VERIFY2						(I == m_corpses.end(),"Cannot register corpse more than a time!");

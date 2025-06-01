@@ -207,7 +207,7 @@ public:
 
 			void				ChangeTeam			(u8 team, u8 squad, u8 group);
 
-	// CAI_Stalker
+	// CStalker
 			CScriptGameObject	*GetCurrentWeapon	() const;
 			CScriptGameObject	*GetFood			() const;
 			CScriptGameObject	*GetMedikit			() const;

@@ -1,6 +1,4 @@
 // GameObject.h: interface for the CGameObject class.
-//
-//////////////////////////////////////////////////////////////////////
 #pragma once
 
 #include <depr/dplay8.h>// раньше небыло
@@ -26,7 +24,7 @@ class CCustomZone;
 class IInputReceiver;
 class CArtefact;
 class CCustomMonster;
-class CAI_Stalker;
+class CStalker;
 class CScriptEntity;
 class CAI_ObjectLocation;
 class CWeapon;
@@ -47,10 +45,7 @@ namespace GameObject
 template <typename _return_type>
 class CScriptCallbackEx;
 
-class CGameObject :
-	public CObject,
-	public CUsableScriptObject,
-	public CScriptBinder
+class CGameObject : public CObject, public CUsableScriptObject, public CScriptBinder
 {
 	typedef CObject inherited;
 	bool							m_spawned;
@@ -121,7 +116,7 @@ public:
 	{
 		return NULL;
 	}
-	virtual CAI_Stalker* cast_stalker( )
+	virtual CStalker* cast_stalker( )
 	{
 		return NULL;
 	}
@@ -326,7 +321,7 @@ public:
 
 	IC		CALLBACK_VECTOR& visual_callbacks( )
 	{
-		return				(m_visual_callback);
+		return m_visual_callback;
 	}
 
 private:
@@ -338,13 +333,13 @@ public:
 	s32				clsid( ) const
 	{
 		THROW(m_script_clsid >= 0);
-		return				(m_script_clsid);
+		return m_script_clsid;
 	}
 
 public:
 	IC		CIniFile* spawn_ini( )
 	{
-		return				(m_ini_file);
+		return m_ini_file;
 	}
 
 protected:
@@ -354,7 +349,7 @@ public:
 	IC		CAI_ObjectLocation& ai_location( ) const
 	{
 		VERIFY(m_ai_location);
-		return				(*m_ai_location);
+		return *m_ai_location;
 	}
 
 private:
@@ -364,12 +359,12 @@ public:
 	IC		u32				spawn_time( ) const
 	{
 		VERIFY(m_spawned);
-		return				(m_spawn_time);
+		return m_spawn_time;
 	}
 
 	IC		const ALife::_STORY_ID& story_id( ) const
 	{
-		return				(m_story_id);
+		return m_story_id;
 	}
 
 public:

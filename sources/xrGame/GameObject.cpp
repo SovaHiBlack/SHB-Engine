@@ -27,7 +27,7 @@
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "game_level_cross_table.h"
 #include "animation_movement_controller.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 #ifdef DEBUG
 #	include "DebugRenderer.h"
@@ -273,7 +273,7 @@ BOOL CGameObject::net_Spawn(CSE_Abstract* DC)
 	if (Level( ).IsDemoPlay( ) && OnClient( ))
 	{
 		setLocal(FALSE);
-	};
+	}
 
 	setReady(TRUE);
 	g_pGameLevel->Objects.net_Register(this);

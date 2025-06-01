@@ -24,7 +24,7 @@ const u32	need_look_back_time_interval= 2000;
 
 void CStalkerAnimationManager::torso_play_callback	(CBlend *blend)
 {
-	CAI_Stalker						*object = (CAI_Stalker*)blend->CallbackParam;
+	CStalker* object = (CStalker*)blend->CallbackParam;
 	VERIFY							(object);
 
 	CStalkerAnimationManager		&animation = object->animation();
@@ -39,7 +39,7 @@ void CStalkerAnimationManager::torso_play_callback	(CBlend *blend)
 
 MotionID CStalkerAnimationManager::no_object_animation(const EBodyState &body_state) const
 {
-	const CAI_Stalker				&stalker = object();
+	const CStalker& stalker = object( );
 	const CStalkerMovementManager	&movement = stalker.movement();
 	const xr_vector<CAniVector>		&animation = m_data_storage->m_part_animations.A[body_state].m_torso.A[0].A;
 
@@ -75,7 +75,7 @@ MotionID CStalkerAnimationManager::unknown_object_animation(u32 slot, const EBod
 	const xr_vector<CAniVector>		&animation_stand = part_animations[eBodyStateStand].m_torso.A[slot].A;
 	
 	// stalker shortcuts
-	const CAI_Stalker				&stalker = object();
+	const CStalker& stalker = object( );
 	const CStalkerMovementManager	&movement = stalker.movement();
 	u32								id = stalker.CObjectHandler::planner().current_action_state_id();
 
@@ -170,7 +170,7 @@ MotionID CStalkerAnimationManager::weapon_animation	(u32 slot, const EBodyState 
 			return					(no_object_animation(body_state));
 		case CWeapon::eFire:
 		case CWeapon::eFire2 : {
-			CAI_Stalker				&stalker = object();
+			CStalker& stalker = object( );
 			CStalkerMovementManager	&movement = stalker.movement();
 			if (standing())
 				return				(animation[1].A[0]);

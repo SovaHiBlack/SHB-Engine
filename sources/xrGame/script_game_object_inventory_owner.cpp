@@ -10,7 +10,7 @@
 #include "xrMessages.h"
 #include "character_info.h"
 #include "gametask.h"
-#include "actor.h"
+#include "Actor.h"
 #include "level.h"
 #include "date_time.h"
 #include "UIGame.h"
@@ -264,7 +264,7 @@ void CScriptGameObject::UnloadMagazine		()
 		return;
 	}
 
-	CAI_Stalker				*stalker = smart_cast<CAI_Stalker*>(weapon_magazined->H_Parent());
+	CStalker* stalker = smart_cast<CStalker*>(weapon_magazined->H_Parent( ));
 	if (stalker && stalker->hammer_is_clutched())
 		return;
 

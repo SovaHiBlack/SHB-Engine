@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "level.h"
-#include "actor.h"
+#include "Actor.h"
 #include "script_game_object.h"
 #include "patrol_path_storage.h"
 #include "xrServer.h"

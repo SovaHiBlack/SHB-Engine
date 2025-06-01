@@ -3,7 +3,7 @@
 #include "relation_registry.h"
 #include "alife_registry_wrappers.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "ai/stalker/ai_stalker.h"
 
 #include "seniority_hierarchy_holder.h"
@@ -79,8 +79,8 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 
 	CActor*				actor			= smart_cast<CActor*>				(from);
 	CInventoryOwner*	inv_owner_from	= smart_cast<CInventoryOwner*>		(from);
-	CAI_Stalker*		stalker_from	= smart_cast<CAI_Stalker*>			(from);
-	CAI_Stalker*		stalker			= smart_cast<CAI_Stalker*>			(to);
+	CStalker*		stalker_from	= smart_cast<CStalker*>			(from);
+	CStalker*		stalker			= smart_cast<CStalker*>			(to);
 
 	//вычисление изменения репутации и рейтинга пока ведется 
 	//только для актера
@@ -112,10 +112,10 @@ void RELATION_REGISTRY::Action (CEntityAlive* from, CEntityAlive* to, ERelationA
 				FIGHT_DATA* fight_data = FindFight (to->ID(),true);
 				if(fight_data)
 				{
-					CAI_Stalker* defending_stalker = smart_cast<CAI_Stalker*>(Level().Objects.net_Find(fight_data->defender));
+					CStalker* defending_stalker = smart_cast<CStalker*>(Level().Objects.net_Find(fight_data->defender));
 					if(defending_stalker)	
 					{
-						CAI_Stalker*	attacking_stalker = smart_cast<CAI_Stalker*>(Level().Objects.net_Find(fight_data->attacker));
+						CStalker*	attacking_stalker = smart_cast<CStalker*>(Level().Objects.net_Find(fight_data->attacker));
 						Action(actor, defending_stalker, attacking_stalker?FIGHT_HELP_HUMAN:FIGHT_HELP_MONSTER);
 					}
 				}

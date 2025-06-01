@@ -15,7 +15,7 @@
 
 class CMotionDef;
 class CBlend;
-class CAI_Stalker;
+class CStalker;
 class CWeapon;
 class CMissile;
 class CPropertyStorage;
@@ -50,15 +50,15 @@ private:
 private:
 	EMovementDirection				m_previous_speed_direction;
 	u32								m_change_direction_time;
-	mutable int						m_looking_back;
+	mutable s32						m_looking_back;
 
 private:
-	int								m_crouch_state_config;
-	int								m_crouch_state;
+	s32								m_crouch_state_config;
+	s32								m_crouch_state;
 	bool							m_no_move_actual;
 
 private:
-	CAI_Stalker						*m_object;
+	CStalker* m_object;
 	IRenderVisual* m_visual;
 	CKinematicsAnimated				*m_skeleton_animated;
 
@@ -143,7 +143,7 @@ private:
 
 public:
 	virtual	void					reinit					();
-	virtual	void					reload					(CAI_Stalker *object);
+	virtual	void					reload(CStalker* object);
 	virtual void					update					();
 			void					play_fx					(f32 power_factor, int fx_index);
 			void 					play_delayed_callbacks	();
@@ -160,7 +160,7 @@ public:
 	IC		CStalkerAnimationPair	&torso					();
 	IC		CStalkerAnimationPair	&legs					();
 	IC		CStalkerAnimationPair	&script					();
-	IC		CAI_Stalker				&object					() const;
+	IC		CStalker& object( ) const;
 
 #ifdef DEBUG
 private:

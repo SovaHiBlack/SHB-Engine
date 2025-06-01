@@ -7,7 +7,7 @@
 #include "HudItem.h"
 #include "physic_item.h"
 #include "WeaponHUD.h"
-#include "actor.h"
+#include "Actor.h"
 #include "ActorEffector.h"
 #include "Missile.h"
 #include "xrmessages.h"

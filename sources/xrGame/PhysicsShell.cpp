@@ -5,10 +5,9 @@
 #include "Physics.h"
 #include "PHJoint.h"
 #include "PHShell.h"
-#include "PHJoint.h"
 #include "PHJointDestroyInfo.h"
 #include "PHSplitedShell.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "physicsshellholder.h"
 #include "..\XR_3DA\skeletoncustom.h"
 

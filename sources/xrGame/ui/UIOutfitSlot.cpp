@@ -4,7 +4,7 @@
 #include "UIStatic.h"
 #include "UICellItem.h"
 #include "../CustomOutfit.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "UIInventoryUtilities.h"//
 #include "../level.h"
 #include "../game_base_space.h"

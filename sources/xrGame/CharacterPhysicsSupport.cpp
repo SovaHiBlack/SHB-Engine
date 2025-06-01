@@ -646,7 +646,7 @@ bool CCharacterPhysicsSupport::DoCharacterShellCollide( )
 {
 	if (m_eType == etStalker)
 	{
-		CAI_Stalker* OBJ = smart_cast<CAI_Stalker*>(&m_EntityAlife);
+		CStalker* OBJ = smart_cast<CStalker*>(&m_EntityAlife);
 		VERIFY(OBJ);
 		return !OBJ->wounded( );
 	}

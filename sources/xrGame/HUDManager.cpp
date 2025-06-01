@@ -2,7 +2,7 @@
 #include "HUDManager.h"
 #include "hudtarget.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "..\XR_3DA\igame_level.h"
 #include "clsid_game.h"
 #include "GamePersistent.h"

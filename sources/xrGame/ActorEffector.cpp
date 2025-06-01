@@ -5,7 +5,7 @@
 #include "..\XR_3DA\effectorPP.h"
 #include "..\XR_3DA\ObjectAnimator.h"
 #include "object_broker.h"
-#include "actor.h"
+#include "Actor.h"
 
 void AddEffector(CActor* A, s32 type, const shared_str& sect_name)
 {

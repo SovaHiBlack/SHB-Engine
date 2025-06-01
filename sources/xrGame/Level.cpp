@@ -522,7 +522,7 @@ void CLevel::OnRender( )
 		ai( ).level_graph( ).render( );
 	}
 
-	CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(Level( ).CurrentEntity( ));
+	CStalker* stalker = smart_cast<CStalker*>(Level( ).CurrentEntity( ));
 	if (stalker)
 	{
 		stalker->OnRender( );
@@ -610,7 +610,7 @@ void CLevel::OnRender( )
 		for (u32 I = 0; I < Level( ).Objects.o_count( ); I++)
 		{
 			CObject* object = Objects.o_get_by_iterator(I);
-			CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
+			CStalker* stalker = smart_cast<CStalker*>(object);
 			if (!stalker)
 			{
 				continue;
@@ -625,7 +625,7 @@ void CLevel::OnRender( )
 		for (u32 I = 0; I < Level( ).Objects.o_count( ); I++)
 		{
 			CObject* object = Objects.o_get_by_iterator(I);
-			CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
+			CStalker* stalker = smart_cast<CStalker*>(object);
 			if (!stalker)
 			{
 				continue;

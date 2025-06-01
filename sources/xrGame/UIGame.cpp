@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "UIGame.h"
-#include "actor.h"
+#include "Actor.h"
 #include "level.h"
 
 #include "game_cl_Single.h"

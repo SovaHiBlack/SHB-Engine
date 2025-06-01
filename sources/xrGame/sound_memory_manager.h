@@ -21,7 +21,7 @@ namespace MemorySpace {
 enum ESoundTypes;
 
 class CCustomMonster;
-class CAI_Stalker;
+class CStalker;
 
 class CSoundMemoryManager {
 public:
@@ -40,7 +40,7 @@ private:
 
 private:
 	CCustomMonster				*m_object;
-	CAI_Stalker					*m_stalker;
+	CStalker* m_stalker;
 	CSound_UserDataVisitor		*m_visitor;
 	DELAYED_SOUND_OBJECTS		m_delayed_objects;
 
@@ -79,7 +79,7 @@ protected:
 	IC		void				priority				(const ESoundTypes &sound_type, u32 priority);
 
 public:
-	IC							CSoundMemoryManager		(CCustomMonster *object, CAI_Stalker *stalker, CSound_UserDataVisitor *visitor);
+	IC							CSoundMemoryManager(CCustomMonster* object, CStalker* stalker, CSound_UserDataVisitor* visitor);
 	virtual						~CSoundMemoryManager	();
 	virtual	void				Load					(pcstr section);
 	virtual	void				reinit					();

@@ -11,7 +11,8 @@
 #include "../xrNetServer/net_utils.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "MathUtils.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool CCar::DoorHit(f32 P, s16 element, ALife::EHitType hit_type)
 {

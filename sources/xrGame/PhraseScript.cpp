@@ -3,13 +3,13 @@
 #include "PhraseScript.h"
 #include "script_engine.h"
 #include "AISpace.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "script_game_object.h"
 #include "infoportion.h"
 #include "inventoryowner.h"
 #include "ai_debug.h"
 #include "ui/xrUIXmlParser.h"
-#include "actor.h"
+#include "Actor.h"
 
 CPhraseScript::CPhraseScript	()
 { }

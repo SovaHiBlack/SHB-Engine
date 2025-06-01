@@ -25,7 +25,7 @@ using namespace StalkerDecisionSpace;
 // CStalkerActionDead
 //////////////////////////////////////////////////////////////////////////
 
-CStalkerActionDead::CStalkerActionDead	(CAI_Stalker *object, pcstr action_name) :
+CStalkerActionDead::CStalkerActionDead(CStalker* object, pcstr action_name) :
 	inherited							(object,action_name)
 { }
 

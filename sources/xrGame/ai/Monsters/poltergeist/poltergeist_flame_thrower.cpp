@@ -7,7 +7,7 @@
 #include "../../../../xrNetServer/net_utils.h"
 #include "../../../AISpace.h"
 #include "../../../restricted_object.h"
-#include "../../../actor.h"
+#include "../../../Actor.h"
 #include "../ai_monster_effector.h"
 
 CPolterFlame::CPolterFlame(CPoltergeist *polter) : inherited (polter)

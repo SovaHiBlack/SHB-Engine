@@ -4,7 +4,7 @@
 #include "script_entity_action.h"
 #include "xrServer_Objects_ALife.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

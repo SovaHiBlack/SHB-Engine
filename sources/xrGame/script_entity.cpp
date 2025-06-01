@@ -27,7 +27,7 @@
 #include "ai_object_location.h"
 #include "movement_manager.h"
 #include "script_callback_ex.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 void __stdcall ActionCallback(CKinematics *tpKinematics);
 

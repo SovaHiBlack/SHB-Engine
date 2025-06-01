@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	CDangerExplosive::CDangerExplosive	(const CExplosive *grenade, const CGameObject *game_object, CAI_Stalker *reactor, u32 time)
+IC	CDangerExplosive::CDangerExplosive(const CExplosive* grenade, const CGameObject* game_object, CStalker* reactor, u32 time)
 {
 	m_grenade	= grenade;
 	m_game_object = game_object;

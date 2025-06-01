@@ -12,7 +12,7 @@
 #include "PhysicsShellHolder.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "PHCollideValidator.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 #include "ExtendedGeom.h"
 #include "PHElement.h"

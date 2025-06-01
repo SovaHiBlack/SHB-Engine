@@ -10,18 +10,19 @@
 
 #include "sound_user_data_visitor.h"
 
-class CAI_Stalker;
+class CStalker;
 class CStalkerSoundData;
 
-class CStalkerSoundDataVisitor : public CSound_UserDataVisitor {
+class CStalkerSoundDataVisitor : public CSound_UserDataVisitor
+{
 private:
-	CAI_Stalker			*m_object;
+	CStalker* m_object;
 
 public:
-	IC					CStalkerSoundDataVisitor	(CAI_Stalker *object);
-	virtual				~CStalkerSoundDataVisitor	();
-	virtual void		visit						(CStalkerSoundData *data);
-	IC		CAI_Stalker	&object						() const;
+	IC					CStalkerSoundDataVisitor(CStalker* object);
+	virtual				~CStalkerSoundDataVisitor( );
+	virtual void		visit(CStalkerSoundData* data);
+	IC		CStalker& object( ) const;
 };
 
 #include "stalker_sound_data_visitor_inline.h"

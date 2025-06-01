@@ -74,7 +74,7 @@ IC	CCustomMonster &CMemoryManager::object				() const
 	return					(*m_object);
 }
 
-IC	CAI_Stalker	&CMemoryManager::stalker				() const
+IC	CStalker& CMemoryManager::stalker( ) const
 {
 	VERIFY					(m_stalker);
 	return					(*m_stalker);

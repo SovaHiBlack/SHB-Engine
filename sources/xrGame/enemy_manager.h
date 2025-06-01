@@ -13,7 +13,7 @@
 #include "custommonster.h"
 #include "script_callback_ex.h"
 
-class CAI_Stalker;
+class CStalker;
 
 class CEnemyManager : public CObjectManager<const CEntityAlive> {
 public:
@@ -23,7 +23,7 @@ public:
 
 private:
 	CCustomMonster				*m_object;
-	CAI_Stalker					*m_stalker;
+	CStalker* m_stalker;
 	f32							m_ignore_monster_threshold;
 	f32							m_max_ignore_distance;
 	mutable bool				m_ready_to_save;

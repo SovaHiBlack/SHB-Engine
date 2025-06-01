@@ -15,7 +15,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 template <typename _item_type>
-IC	CObjectActionBase<_item_type>::CObjectActionBase(_item_type *item, CAI_Stalker *owner, CPropertyStorage *storage, pcstr action_name) :
+IC	CObjectActionBase<_item_type>::CObjectActionBase(_item_type* item, CStalker* owner, CPropertyStorage* storage, pcstr action_name) :
 	inherited				(owner,action_name),
 	m_item					(item)
 {
@@ -38,7 +38,7 @@ void CObjectActionBase<_item_type>::initialize	()
 }
 
 template <typename _item_type>
-IC	CAI_Stalker &CObjectActionBase<_item_type>::object	() const
+IC	CStalker& CObjectActionBase<_item_type>::object( ) const
 {
 	VERIFY					(m_object);
 	return					(*m_object);
@@ -49,7 +49,7 @@ IC	CAI_Stalker &CObjectActionBase<_item_type>::object	() const
 //////////////////////////////////////////////////////////////////////////
 
 template <typename _item_type>
-IC	CObjectActionMember<_item_type>::CObjectActionMember	(_item_type *item, CAI_Stalker *owner, CPropertyStorage *storage, _condition_type condition_id, _value_type value, pcstr action_name) :
+IC	CObjectActionMember<_item_type>::CObjectActionMember(_item_type* item, CStalker* owner, CPropertyStorage* storage, _condition_type condition_id, _value_type value, pcstr action_name) :
 	inherited				(item,owner,storage,action_name),
 	m_condition_id			(condition_id),
 	m_value					(value)

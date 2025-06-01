@@ -14,7 +14,7 @@
 #include "inventory.h"
 #include "xrserver_objects_alife_items.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "ActorEffector.h"
 #include "level.h"
 

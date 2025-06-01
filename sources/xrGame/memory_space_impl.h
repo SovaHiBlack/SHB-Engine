@@ -9,7 +9,7 @@
 #pragma once
 
 #include "memory_space.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "level.h"
 #include "AISpace.h"
 #include "ai_object_location.h"

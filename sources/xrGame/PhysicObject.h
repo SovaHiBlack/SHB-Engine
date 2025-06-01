@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gameobject.h"
+#include "GameObject.h"
 #include "physicsshellholder.h"
 #include "physicsskeletonobject.h"
 #include "PHSkeleton.h"

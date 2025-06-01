@@ -3,7 +3,7 @@
 #include "boar_state_manager.h"
 #include "../../../..\XR_3DA\skeletoncustom.h"
 #include "../monster_velocity_space.h"
-#include "../../../game_object_space.h"
+#include "../../../GameObject_space.h"
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"
 

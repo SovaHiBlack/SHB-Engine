@@ -12,17 +12,17 @@
 #include "agent_manager.h"
 #include "agent_location_manager.h"
 
-class CAI_Stalker;
+class CStalker;
 
 class CStalkerMovementRestrictor {
 private:
-	CAI_Stalker			*m_object;
+	CStalker*m_object;
 	const CAgentManager	*m_agent_manager;
 	bool				m_use_enemy_info;
 	bool				m_notify_agent_manager;
 
 public:
-	IC					CStalkerMovementRestrictor	(CAI_Stalker *object, bool use_enemy_info, bool notify_agent_manager = true);
+	IC					CStalkerMovementRestrictor	(CStalker*object, bool use_enemy_info, bool notify_agent_manager = true);
 	IC		bool		operator()					(const CCoverPoint *cover) const;
 	IC		f32		weight						(const CCoverPoint *cover) const;
 	IC		void		finalize					(const CCoverPoint *cover) const;

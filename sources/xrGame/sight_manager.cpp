@@ -21,7 +21,7 @@ using namespace StalkerSpace;
 
 //#define SIGHT_DEBUG
 
-CSightManager::CSightManager		(CAI_Stalker *object) :
+CSightManager::CSightManager(CStalker* object) :
 	inherited					(object)
 {
 	m_enabled					= true;

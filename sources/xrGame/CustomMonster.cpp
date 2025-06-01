@@ -42,7 +42,7 @@
 #include "ai/monsters/snork/snork.h"
 #include "ai/monsters/burer/burer.h"
 #include "GamePersistent.h"
-#include "actor.h"
+#include "Actor.h"
 #include "alife_simulator.h"
 #include "alife_object_registry.h"
 #include "ClientSpawnManager.h"

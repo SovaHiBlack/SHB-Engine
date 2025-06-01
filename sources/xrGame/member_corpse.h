@@ -8,23 +8,24 @@
 
 #pragma once
 
-class CAI_Stalker;
+class CStalker;
 
-class CMemberCorpse {
+class CMemberCorpse
+{
 private:
-	CAI_Stalker			*m_corpse;
-	CAI_Stalker			*m_reactor;
+	CStalker* m_corpse;
+	CStalker* m_reactor;
 	u32					m_time;
 
 public:
-	IC					CMemberCorpse	(CAI_Stalker *corpse, CAI_Stalker *reactor, u32 time);
-	IC	bool			operator==		(CAI_Stalker *corpse) const;
-	IC	void			reactor			(CAI_Stalker *reactor);
+	IC					CMemberCorpse(CStalker* corpse, CStalker* reactor, u32 time);
+	IC	bool			operator==		(CStalker* corpse) const;
+	IC	void			reactor(CStalker* reactor);
 
 public:
-	IC	CAI_Stalker		*corpse			() const;
-	IC	CAI_Stalker		*reactor		() const;
-	IC	u32				time			() const;
+	IC	CStalker* corpse( ) const;
+	IC	CStalker* reactor( ) const;
+	IC	u32				time( ) const;
 };
 
 #include "member_corpse_inline.h"

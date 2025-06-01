@@ -161,9 +161,9 @@
 #		undef cast_type_list
 #		define cast_type_list save_cast_list	(CCustomMonster,	CGameObject)
 
-		DECLARE_SPECIALIZATION	(CAI_Stalker,		CGameObject,	cast_stalker);
+		DECLARE_SPECIALIZATION	(CStalker,		CGameObject,	cast_stalker);
 #		undef cast_type_list
-#		define cast_type_list save_cast_list	(CAI_Stalker,		CGameObject)
+#		define cast_type_list save_cast_list	(CStalker,		CGameObject)
 
 		DECLARE_SPECIALIZATION	(CScriptEntity,	CGameObject,		cast_script_entity);
 #		undef cast_type_list

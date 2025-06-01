@@ -153,7 +153,7 @@ protected:
 		u32															time;
 		bool operator < (const SDefNewsMsg& other) const
 		{
-			return time > other.time;
+			return (time > other.time);
 		}
 	};
 
@@ -285,13 +285,13 @@ public:
 	s32						GetZoomRndSeed( )
 	{
 		return m_ZoomRndSeed;
-	};
+	}
 	////////////////////////////////////////////////////////
 	void					SetShotRndSeed(s32 Seed = 0);
 	s32						GetShotRndSeed( )
 	{
 		return m_ShotRndSeed;
-	};
+	}
 
 public:
 	void					detach_Vehicle( );
@@ -366,11 +366,11 @@ public:
 	BOOL			HUDview( ) const;
 
 	//visiblity 
-	virtual f32				ffGetFov( )	const
+	virtual f32				ffGetFov( ) const
 	{
 		return 90.0f;
 	}
-	virtual f32				ffGetRange( )	const
+	virtual f32				ffGetRange( ) const
 	{
 		return 500.0f;
 	}
@@ -381,7 +381,8 @@ public:
 public:
 	CCameraManager& Cameras( )
 	{
-		VERIFY(m_pActorEffector); return *m_pActorEffector;
+		VERIFY(m_pActorEffector);
+		return *m_pActorEffector;
 	}
 	IC CCameraBase* cam_Active( )
 	{
@@ -490,7 +491,7 @@ public:
 
 	bool					AnyAction( )
 	{
-		return (mstate_real & mcAnyAction) != 0;
+		return ((mstate_real & mcAnyAction) != 0);
 	}
 
 	bool					is_jump( );
@@ -679,17 +680,17 @@ public:
 
 	virtual void			SpawnAmmoForWeapon(CInventoryItem* pIItem);
 	virtual void			RemoveAmmoForWeapon(CInventoryItem* pIItem);
-	virtual	void			spawn_supplies( );
+	virtual void			spawn_supplies( );
 	virtual bool			human_being( ) const
 	{
-		return				(true);
+		return true;
 	}
 
-	virtual	shared_str		GetDefaultVisualOutfit( ) const
+	virtual shared_str		GetDefaultVisualOutfit( ) const
 	{
 		return m_DefaultVisualOutfit;
 	}
-	virtual	void			SetDefaultVisualOutfit(shared_str DefaultOutfit)
+	virtual void			SetDefaultVisualOutfit(shared_str DefaultOutfit)
 	{
 		m_DefaultVisualOutfit = DefaultOutfit;
 	}
@@ -714,7 +715,7 @@ public:
 		return (m_input_external_handler != 0);
 	}
 
-	IC		void			lock_accel_for(u32 time)
+	IC void			lock_accel_for(u32 time)
 	{
 		m_time_lock_accel = Device.dwTimeGlobal + time;
 	}

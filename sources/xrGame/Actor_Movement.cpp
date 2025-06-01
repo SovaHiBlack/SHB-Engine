@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-#include "actor.h"
+#include "Actor.h"
 #include "inventory.h"
 #include "Weapon.h"
 #include "..\XR_3DA\CameraBase.h"

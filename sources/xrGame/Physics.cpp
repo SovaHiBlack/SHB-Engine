@@ -4,7 +4,7 @@
 #include "tri-colliderknoopc/dTriList.h"
 #include "PHContactBodyEffector.h"
 #include "gamemtllib.h"
-#include "gameobject.h"
+#include "GameObject.h"
 #include "PhysicsShellHolder.h"
 #include "PHCollideValidator.h"
 

@@ -6,17 +6,16 @@
 #include "xrserver_objects_alife.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "..\XR_3DA\xr_collide_form.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
-
-CPhysicObject::CPhysicObject(void) 
+CPhysicObject::CPhysicObject( ) 
 {
 	m_type					=	epotBox;
 	m_mass					=	10.f;
 	m_collision_hit_callback=	NULL;
 }
 
-CPhysicObject::~CPhysicObject(void)
+CPhysicObject::~CPhysicObject( )
 {
 }
 

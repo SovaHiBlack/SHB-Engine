@@ -6,13 +6,12 @@
 
 #include "Weapon.h"
 #include "inventoryowner.h"
-#include "actor.h"
+#include "Actor.h"
 #include "inventory_item_impl.h"
 
 #include "ActorEffector.h"
 #include "effectorshot.h"
 #include "EffectorShotX.h"
-
 
 //возвращает 1, если оружие в отличном состоянии и >1 если повреждено
 f32 CWeapon::GetConditionDispersionFactor() const

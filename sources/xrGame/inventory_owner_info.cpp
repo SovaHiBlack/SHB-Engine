@@ -16,7 +16,7 @@
 #include "infoportion.h"
 #include "alife_registry_wrappers.h"
 #include "script_callback_ex.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 
 void  CInventoryOwner::OnEvent(CNetPacket& P, u16 type)
 {

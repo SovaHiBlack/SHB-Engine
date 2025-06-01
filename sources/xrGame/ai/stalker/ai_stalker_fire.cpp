@@ -61,7 +61,7 @@ const f32 FLOOR_DISTANCE = 2.0f;
 const f32 NEAR_DISTANCE = 2.5f;
 const u32	FIRE_MAKE_SENSE_INTERVAL = 10000;
 
-f32 CAI_Stalker::GetWeaponAccuracy( ) const
+f32 CStalker::GetWeaponAccuracy( ) const
 {
 	f32				base = PI / 180.0f;
 
@@ -95,13 +95,13 @@ f32 CAI_Stalker::GetWeaponAccuracy( ) const
 			return			(base * m_disp_stand_crouch_zoom);
 }
 
-void CAI_Stalker::g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D)
+void CStalker::g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D)
 {
 //.	VERIFY				(inventory().ActiveItem());
 	if (!inventory( ).ActiveItem( ))
 	{
 #ifdef DEBUG
-		Msg("! CAI_Stalker::g_fireParams() : VERIFY(inventory().ActiveItem())");
+		Msg("! CStalker::g_fireParams() : VERIFY(inventory().ActiveItem())");
 #endif // DEBUG
 		P = Position( );
 		D = fVector3( ).set(0.0f, 0.0f, 1.0f);
@@ -181,7 +181,7 @@ void CAI_Stalker::g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& 
 #endif
 }
 
-void CAI_Stalker::g_WeaponBones(s32& L, s32& R1, s32& R2)
+void CStalker::g_WeaponBones(s32& L, s32& R1, s32& R2)
 {
 	s32 r_hand;
 	s32 r_finger2;
@@ -199,7 +199,7 @@ void CAI_Stalker::g_WeaponBones(s32& L, s32& R1, s32& R2)
 	}
 }
 
-void			CAI_Stalker::Hit(SHit* pHDS)
+void			CStalker::Hit(SHit* pHDS)
 {
 	if (invulnerable( ))
 		return;
@@ -284,7 +284,7 @@ void			CAI_Stalker::Hit(SHit* pHDS)
 				{
 					if (HDS.who)
 					{
-						CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(HDS.who);
+						CStalker* stalker = smart_cast<CStalker*>(HDS.who);
 						if (stalker)
 							stalker->on_critical_wound_initiator(this);
 					}
@@ -296,7 +296,7 @@ void			CAI_Stalker::Hit(SHit* pHDS)
 	inherited::Hit(&HDS);
 }
 
-void CAI_Stalker::HitSignal(f32 amount, fVector3& vLocalDir, CObject* who, s16 element)
+void CStalker::HitSignal(f32 amount, fVector3& vLocalDir, CObject* who, s16 element)
 {
 	if (getDestroy( ))
 		return;
@@ -305,14 +305,14 @@ void CAI_Stalker::HitSignal(f32 amount, fVector3& vLocalDir, CObject* who, s16 e
 		memory( ).hit( ).add(amount, vLocalDir, who, element);
 }
 
-void CAI_Stalker::OnItemTake(CInventoryItem* inventory_item)
+void CStalker::OnItemTake(CInventoryItem* inventory_item)
 {
 	CObjectHandler::OnItemTake(inventory_item);
 	m_item_actuality = false;
 	m_sell_info_actuality = false;
 }
 
-void CAI_Stalker::OnItemDrop(CInventoryItem* inventory_item)
+void CStalker::OnItemDrop(CInventoryItem* inventory_item)
 {
 	CObjectHandler::OnItemDrop(inventory_item);
 
@@ -333,7 +333,7 @@ void CAI_Stalker::OnItemDrop(CInventoryItem* inventory_item)
 	brain( ).CStalkerPlanner::m_storage.set_property(StalkerDecisionSpace::eWorldPropertyCriticallyWounded, false);
 }
 
-void CAI_Stalker::update_best_item_info( )
+void CStalker::update_best_item_info( )
 {
 	ai( ).ef_storage( ).alife_evaluation(false);
 
@@ -479,31 +479,31 @@ void CAI_Stalker::update_best_item_info( )
 	}
 }
 
-bool CAI_Stalker::item_to_kill( )
+bool CStalker::item_to_kill( )
 {
 	update_best_item_info( );
 	return					(!!m_best_item_to_kill);
 }
 
-bool CAI_Stalker::item_can_kill( )
+bool CStalker::item_can_kill( )
 {
 	update_best_item_info( );
 	return					(!!m_best_ammo);
 }
 
-bool CAI_Stalker::remember_item_to_kill( )
+bool CStalker::remember_item_to_kill( )
 {
 	update_best_item_info( );
 	return					(!!m_best_found_item_to_kill);
 }
 
-bool CAI_Stalker::remember_ammo( )
+bool CStalker::remember_ammo( )
 {
 	update_best_item_info( );
 	return					(!!m_best_found_ammo);
 }
 
-bool CAI_Stalker::ready_to_kill( )
+bool CStalker::ready_to_kill( )
 {
 	return					(
 		m_best_item_to_kill &&
@@ -513,7 +513,7 @@ bool CAI_Stalker::ready_to_kill( )
 		);
 }
 
-bool CAI_Stalker::ready_to_detour( )
+bool CStalker::ready_to_detour( )
 {
 	if (!ready_to_kill( ))
 		return			(false);
@@ -528,7 +528,7 @@ bool CAI_Stalker::ready_to_detour( )
 class ray_query_param
 {
 public:
-	CAI_Stalker* m_holder;
+	CStalker* m_holder;
 	f32					m_power;
 	f32					m_power_threshold;
 	bool					m_can_kill_enemy;
@@ -536,9 +536,9 @@ public:
 	f32					m_pick_distance;
 
 public:
-	IC				ray_query_param(const CAI_Stalker* holder, f32 power_threshold, f32 distance)
+	IC				ray_query_param(const CStalker* holder, f32 power_threshold, f32 distance)
 	{
-		m_holder = const_cast<CAI_Stalker*>(holder);
+		m_holder = const_cast<CStalker*>(holder);
 		m_power_threshold = power_threshold;
 		m_power = 1.0f;
 		m_can_kill_enemy = false;
@@ -547,7 +547,7 @@ public:
 	}
 };
 
-IC BOOL ray_query_callback(collide::rq_result& result, LPVOID params)
+IC BOOL ray_query_callback(collide::rq_result& result, pvoid params)
 {
 	ray_query_param* param = (ray_query_param*)params;
 	f32								power = param->m_holder->feel_vision_mtl_transp(result.O, result.element);
@@ -586,7 +586,7 @@ IC BOOL ray_query_callback(collide::rq_result& result, LPVOID params)
 	return								(false);
 }
 
-void CAI_Stalker::can_kill_entity(const fVector3& position, const fVector3& direction, f32 distance, collide::rq_results& rq_storage)
+void CStalker::can_kill_entity(const fVector3& position, const fVector3& direction, f32 distance, collide::rq_results& rq_storage)
 {
 	VERIFY(!fis_zero(direction.square_magnitude( )));
 
@@ -601,7 +601,7 @@ void CAI_Stalker::can_kill_entity(const fVector3& position, const fVector3& dire
 	m_pick_distance = _max(m_pick_distance, params.m_pick_distance);
 }
 
-void CAI_Stalker::can_kill_entity_from(const fVector3& position, fVector3 direction, f32 distance)
+void CStalker::can_kill_entity_from(const fVector3& position, fVector3 direction, f32 distance)
 {
 	m_pick_distance = 0.f;
 	rq_storage.r_clear( );
@@ -633,7 +633,7 @@ void CAI_Stalker::can_kill_entity_from(const fVector3& position, fVector3 direct
 	can_kill_entity(position, direction, distance, rq_storage);
 }
 
-IC	f32 CAI_Stalker::start_pick_distance( ) const
+IC	f32 CStalker::start_pick_distance( ) const
 {
 	f32					result = 50.f;
 	if (!memory( ).enemy( ).selected( ))
@@ -647,7 +647,7 @@ IC	f32 CAI_Stalker::start_pick_distance( ) const
 		);
 }
 
-f32 CAI_Stalker::pick_distance( )
+f32 CStalker::pick_distance( )
 {
 	if (!inventory( ).ActiveItem( ))
 		return				(start_pick_distance( ));
@@ -656,7 +656,7 @@ f32 CAI_Stalker::pick_distance( )
 	return					(m_pick_distance);
 }
 
-void CAI_Stalker::update_can_kill_info( )
+void CStalker::update_can_kill_info( )
 {
 	if (m_pick_frame_id == Device.dwFrame)
 		return;
@@ -672,12 +672,12 @@ void CAI_Stalker::update_can_kill_info( )
 	can_kill_entity_from(position, direction, start_pick_distance( ));
 }
 
-bool CAI_Stalker::undetected_anomaly( )
+bool CStalker::undetected_anomaly( )
 {
 	return					(inside_anomaly( ) || brain( ).CStalkerPlanner::m_storage.property(StalkerDecisionSpace::eWorldPropertyAnomaly));
 }
 
-bool CAI_Stalker::inside_anomaly( )
+bool CStalker::inside_anomaly( )
 {
 	xr_vector<CObject*>::const_iterator	I = feel_touch.begin( );
 	xr_vector<CObject*>::const_iterator	E = feel_touch.end( );
@@ -695,7 +695,7 @@ bool CAI_Stalker::inside_anomaly( )
 	return					(false);
 }
 
-bool CAI_Stalker::zoom_state( ) const
+bool CStalker::zoom_state( ) const
 {
 	if (!inventory( ).ActiveItem( ))
 		return				(false);
@@ -723,7 +723,7 @@ bool CAI_Stalker::zoom_state( ) const
 	return					(false);
 }
 
-void CAI_Stalker::update_range_fov(f32& new_range, f32& new_fov, f32 start_range, f32 start_fov)
+void CStalker::update_range_fov(f32& new_range, f32& new_fov, f32 start_range, f32 start_fov)
 {
 	f32					range = start_range;
 	f32					fov = start_fov;
@@ -734,7 +734,7 @@ void CAI_Stalker::update_range_fov(f32& new_range, f32& new_fov, f32 start_range
 	return					(inherited::update_range_fov(new_range, new_fov, range, fov));
 }
 
-bool CAI_Stalker::fire_make_sense( )
+bool CStalker::fire_make_sense( )
 {
 	// if we do not have an enemy
 	const CEntityAlive* enemy = memory( ).enemy( ).selected( );
@@ -772,21 +772,21 @@ bool CAI_Stalker::fire_make_sense( )
 }
 
 // shot effector stuff
-void CAI_Stalker::on_weapon_shot_start(CWeapon* weapon)
+void CStalker::on_weapon_shot_start(CWeapon* weapon)
 {
 	weapon_shot_effector( ).SetRndSeed(m_weapon_shot_random_seed);
 	weapon_shot_effector( ).Shot(weapon->camDispersion + weapon->camDispersionInc * f32(weapon->ShotsFired( )));
 }
 
-void CAI_Stalker::on_weapon_shot_stop(CWeapon* weapon)
+void CStalker::on_weapon_shot_stop(CWeapon* weapon)
 { }
 
-void CAI_Stalker::on_weapon_hide(CWeapon* weapon)
+void CStalker::on_weapon_hide(CWeapon* weapon)
 { }
 
-void CAI_Stalker::notify_on_wounded_or_killed(CObject* object)
+void CStalker::notify_on_wounded_or_killed(CObject* object)
 {
-	CAI_Stalker* stalker = smart_cast<CAI_Stalker*>(object);
+	CStalker* stalker = smart_cast<CStalker*>(object);
 	if (!stalker)
 		return;
 
@@ -801,7 +801,7 @@ void CAI_Stalker::notify_on_wounded_or_killed(CObject* object)
 	agent_manager( ).corpse( ).register_corpse(this);
 }
 
-void CAI_Stalker::notify_on_wounded_or_killed( )
+void CStalker::notify_on_wounded_or_killed( )
 {
 	ALife::_OBJECT_ID					last_hit_object_id = memory( ).hit( ).last_hit_object_id( );
 	if (last_hit_object_id == ALife::_OBJECT_ID(-1))
@@ -814,7 +814,7 @@ void CAI_Stalker::notify_on_wounded_or_killed( )
 	notify_on_wounded_or_killed(object);
 }
 
-void CAI_Stalker::wounded(bool value)
+void CStalker::wounded(bool value)
 {
 	if (m_wounded == value)
 		return;
@@ -838,7 +838,7 @@ void CAI_Stalker::wounded(bool value)
 	agent_manager( ).member( ).unregister_in_combat(this);
 }
 
-bool CAI_Stalker::wounded(const CRestrictedObject* object) const
+bool CStalker::wounded(const CRestrictedObject* object) const
 {
 	if (!wounded( ))
 		return				(false);
@@ -853,31 +853,31 @@ bool CAI_Stalker::wounded(const CRestrictedObject* object) const
 	return					(true);
 }
 
-bool CAI_Stalker::use_default_throw_force( )
+bool CStalker::use_default_throw_force( )
 {
 	return					(false);
 }
 
-bool CAI_Stalker::use_throw_randomness( )
+bool CStalker::use_throw_randomness( )
 {
 	return					(false);
 }
 
-f32 CAI_Stalker::missile_throw_force( )
+f32 CStalker::missile_throw_force( )
 {
 	update_throw_params( );
 	VERIFY(_valid(m_throw_force));
 	return					(m_throw_force);
 }
 
-void CAI_Stalker::throw_target(const fVector3& position)
+void CStalker::throw_target(const fVector3& position)
 {
 	f32					distance_to_sqr = position.distance_to_sqr(m_throw_target);
 	m_throw_actual = m_throw_actual && (distance_to_sqr < _sqr(.1f));
 	m_throw_target = position;
 }
 
-void CAI_Stalker::update_throw_params( )
+void CStalker::update_throw_params( )
 {
 	if (m_throw_actual)
 	{
@@ -907,7 +907,7 @@ void CAI_Stalker::update_throw_params( )
 	VERIFY(_valid(m_throw_force));
 }
 
-bool CAI_Stalker::critically_wounded( )
+bool CStalker::critically_wounded( )
 {
 	if (critical_wound_type( ) == critical_wound_type_dummy)
 		return					(false);
@@ -921,7 +921,7 @@ bool CAI_Stalker::critically_wounded( )
 	return						(true);
 }
 
-bool CAI_Stalker::critical_wound_external_conditions_suitable( )
+bool CStalker::critical_wound_external_conditions_suitable( )
 {
 	if (movement( ).body_state( ) != eBodyStateStand)
 		return						(false);
@@ -951,7 +951,7 @@ bool CAI_Stalker::critical_wound_external_conditions_suitable( )
 	return							(true);
 }
 
-void CAI_Stalker::remove_critical_hit( )
+void CStalker::remove_critical_hit( )
 {
 	brain( ).CStalkerPlanner::m_storage.set_property(
 		StalkerDecisionSpace::eWorldPropertyCriticallyWounded,
@@ -961,12 +961,12 @@ void CAI_Stalker::remove_critical_hit( )
 	animation( ).global( ).remove_callback(
 		CStalkerAnimationPair::CALLBACK_ID(
 		this,
-		&CAI_Stalker::remove_critical_hit
+		&CStalker::remove_critical_hit
 	)
 	);
 }
 
-void CAI_Stalker::critical_wounded_state_start( )
+void CStalker::critical_wounded_state_start( )
 {
 	brain( ).CStalkerPlanner::m_storage.set_property(
 		StalkerDecisionSpace::eWorldPropertyCriticallyWounded,
@@ -976,12 +976,12 @@ void CAI_Stalker::critical_wounded_state_start( )
 	animation( ).global( ).add_callback(
 		CStalkerAnimationPair::CALLBACK_ID(
 		this,
-		&CAI_Stalker::remove_critical_hit
+		&CStalker::remove_critical_hit
 	)
 	);
 }
 
-bool CAI_Stalker::can_cry_enemy_is_wounded( ) const
+bool CStalker::can_cry_enemy_is_wounded( ) const
 {
 	if (!brain( ).initialized( ))
 		return						(false);
@@ -989,7 +989,7 @@ bool CAI_Stalker::can_cry_enemy_is_wounded( ) const
 	if (brain( ).current_action_id( ) != StalkerDecisionSpace::eWorldOperatorCombatPlanner)
 		return						(false);
 
-	typedef CActionPlannerActionScript<CAI_Stalker>	planner_type;
+	typedef CActionPlannerActionScript<CStalker>	planner_type;
 	planner_type* planner = smart_cast<planner_type*>(&brain( ).current_action( ));
 	VERIFY(planner);
 
@@ -1022,7 +1022,7 @@ bool CAI_Stalker::can_cry_enemy_is_wounded( ) const
 #endif // DEBUG
 }
 
-void CAI_Stalker::on_critical_wound_initiator(const CAI_Stalker* critically_wounded)
+void CStalker::on_critical_wound_initiator(const CStalker* critically_wounded)
 {
 	if (!can_cry_enemy_is_wounded( ))
 		return;
@@ -1030,7 +1030,7 @@ void CAI_Stalker::on_critical_wound_initiator(const CAI_Stalker* critically_woun
 	sound( ).play(eStalkerSoundEnemyCriticallyWounded);
 }
 
-void CAI_Stalker::on_enemy_wounded_or_killed(const CAI_Stalker* wounded_or_killed)
+void CStalker::on_enemy_wounded_or_killed(const CStalker* wounded_or_killed)
 {
 	if (!can_cry_enemy_is_wounded( ))
 		return;
@@ -1038,7 +1038,7 @@ void CAI_Stalker::on_enemy_wounded_or_killed(const CAI_Stalker* wounded_or_kille
 	sound( ).play(eStalkerSoundEnemyKilledOrWounded);
 }
 
-bool CAI_Stalker::can_kill_member( )
+bool CStalker::can_kill_member( )
 {
 	if (!animation( ).script_animations( ).empty( ))
 		return				(false);
@@ -1047,7 +1047,7 @@ bool CAI_Stalker::can_kill_member( )
 	return					(m_can_kill_member);
 }
 
-bool CAI_Stalker::can_kill_enemy( )
+bool CStalker::can_kill_enemy( )
 {
 	VERIFY(inventory( ).ActiveItem( ));
 	update_can_kill_info( );

@@ -27,7 +27,7 @@ protected:
 
 public:
 	IC						CAgentCorpseManager		(CAgentManager *object);
-	IC		void			register_corpse			(CAI_Stalker *corpse);
+	IC		void			register_corpse(CStalker* corpse);
 	IC		MEMBER_CORPSES	&corpses				();
 	IC		void			clear					();
 			void			react_on_member_death	();

@@ -20,41 +20,41 @@
 #include "../../stalker_movement_manager.h"
 #include "../../AISpace.h"
 
-CWeapon	*CAI_Stalker::GetCurrentWeapon() const
+CWeapon	* CStalker::GetCurrentWeapon() const
 {
 	return			(smart_cast<CWeapon*>(inventory().ActiveItem()));
 }
 
-u32 CAI_Stalker::GetWeaponAmmo() const
+u32 CStalker::GetWeaponAmmo() const
 {
 	if (!GetCurrentWeapon())
 		return		(0);
 	return			(GetCurrentWeapon()->GetAmmoCurrent(true));	
 }
 
-//CInventoryItem *CAI_Stalker::GetCurrentEquipment() const
+//CInventoryItem *CStalker::GetCurrentEquipment() const
 //{
 //    return inventory().m_slots[OUTFIT_SLOT].m_pIItem;
 //}
 
-CInventoryItem *CAI_Stalker::GetMedikit() const
+CInventoryItem * CStalker::GetMedikit() const
 {
 #pragma todo("Dima to Dima : Return correct medikit")
 	return			(0);
 }
 
-CInventoryItem *CAI_Stalker::GetFood() const
+CInventoryItem * CStalker::GetFood() const
 {
 #pragma todo("Dima to Dima : Return correct food")
 	return			(0);
 }
 
-void CAI_Stalker::ResetScriptData(void *P)
+void CStalker::ResetScriptData(void *P)
 {
 	inherited::ResetScriptData	(P);
 }
 
-bool CAI_Stalker::bfAssignMovement(CScriptEntityAction *tpEntityAction)
+bool CStalker::bfAssignMovement(CScriptEntityAction *tpEntityAction)
 {
 	if (!inherited::bfAssignMovement(tpEntityAction))
 		return						(false);
@@ -78,7 +78,7 @@ bool CAI_Stalker::bfAssignMovement(CScriptEntityAction *tpEntityAction)
 	return							(true);
 }
 
-bool CAI_Stalker::bfAssignWatch(CScriptEntityAction *tpEntityAction)
+bool CStalker::bfAssignWatch(CScriptEntityAction *tpEntityAction)
 {
 	if (!inherited::bfAssignWatch(tpEntityAction))
 		return		(false);
@@ -126,7 +126,7 @@ bool CAI_Stalker::bfAssignWatch(CScriptEntityAction *tpEntityAction)
 	return		(!l_tWatchAction.m_bCompleted);
 }
 
-bool CAI_Stalker::bfAssignObject(CScriptEntityAction *tpEntityAction)
+bool CStalker::bfAssignObject(CScriptEntityAction *tpEntityAction)
 {
 	CScriptObjectAction	&l_tObjectAction	= tpEntityAction->m_tObjectAction;
 	CInventoryItem	*l_tpInventoryItem	= smart_cast<CInventoryItem*>(l_tObjectAction.m_tpObject);
@@ -290,7 +290,7 @@ bool CAI_Stalker::bfAssignObject(CScriptEntityAction *tpEntityAction)
 	return	(true);
 }
 
-bool CAI_Stalker::bfAssignAnimation(CScriptEntityAction *tpEntityAction)
+bool CStalker::bfAssignAnimation(CScriptEntityAction *tpEntityAction)
 {
 	if (!inherited::bfAssignAnimation(tpEntityAction))
 		return			(false);

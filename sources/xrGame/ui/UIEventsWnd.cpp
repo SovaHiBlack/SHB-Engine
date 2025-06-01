@@ -11,7 +11,7 @@
 #include "UI3tButton.h"
 #include "../HUDManager.h"
 #include "../level.h"
-#include "../actor.h"
+#include "../Actor.h"
 #include "../gametaskmanager.h"
 #include "../gametask.h"
 #include "../map_manager.h"

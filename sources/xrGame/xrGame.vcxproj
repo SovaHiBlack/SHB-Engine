@@ -739,7 +739,7 @@
     <ClInclude Include="game_location_selector.h" />
     <ClInclude Include="game_location_selector_inline.h" />
     <ClInclude Include="game_news.h" />
-    <ClInclude Include="game_object_space.h" />
+    <ClInclude Include="GameObject_space.h" />
     <ClInclude Include="game_path_manager.h" />
     <ClInclude Include="game_path_manager_inline.h" />
     <ClInclude Include="game_sv_base.h" />
@@ -770,7 +770,7 @@
     <ClInclude Include="HitImmunity_space.h" />
     <ClInclude Include="hit_memory_manager.h" />
     <ClInclude Include="hit_memory_manager_inline.h" />
-    <ClInclude Include="holder_custom.h" />
+    <ClInclude Include="HolderCustom.h" />
     <ClInclude Include="HUDCrosshair.h" />
     <ClInclude Include="HudItem.h" />
     <ClInclude Include="HUDManager.h" />
@@ -1848,8 +1848,7 @@
     <ClCompile Include="HitMarker.cpp" />
     <ClCompile Include="HitImmunity.cpp" />
     <ClCompile Include="hit_memory_manager.cpp" />
-    <ClCompile Include="holder_custom.cpp" />
-    <ClCompile Include="holder_custom_script.cpp" />
+    <ClCompile Include="HolderCustom.cpp" />
     <ClCompile Include="HUDCrosshair.cpp" />
     <ClCompile Include="HudItem.cpp" />
     <ClCompile Include="HUDManager.cpp" />

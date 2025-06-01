@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "gameobject.h"
+#include "GameObject.h"
 #include "patrol_path_manager.h"
 #include "script_game_object.h"
 #include "restricted_object.h"
@@ -16,7 +16,7 @@
 #include "ai_object_location.h"
 #include "script_entity_space.h"
 #include "script_callback_ex.h"
-#include "game_object_space.h"
+#include "GameObject_space.h"
 #include "level_graph.h"
 
 #if 1//def DEBUG

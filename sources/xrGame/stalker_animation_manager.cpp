@@ -54,7 +54,7 @@ void CStalkerAnimationManager::reinit				()
 	m_current_speed				= 0.f;
 }
 
-void CStalkerAnimationManager::reload				(CAI_Stalker *_object)
+void CStalkerAnimationManager::reload(CStalker* _object)
 {
 	m_object					= _object;
 	m_visual					= object().Visual();

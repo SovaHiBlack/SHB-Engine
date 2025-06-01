@@ -24,7 +24,7 @@
 #include "PhysicsShell.h"
 #include "helicopter.h"
 #include "HangingLamp.h"
-#include "holder_custom.h"
+#include "HolderCustom.h"
 #include "ScriptZone.h"
 #include "relation_registry.h"
 #include "GameTask.h"

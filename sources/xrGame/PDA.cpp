@@ -3,7 +3,7 @@
 #include "hudmanager.h"
 #include "PhysicsShell.h"
 #include "Entity.h"
-#include "actor.h"
+#include "Actor.h"
 
 #include "xrserver.h"
 #include "xrServer_Objects_ALife_Items.h"
