@@ -9,7 +9,7 @@
 #include "Pda.h"
 #include "xrMessages.h"
 #include "character_info.h"
-#include "gametask.h"
+#include "GameTask.h"
 #include "Actor.h"
 #include "level.h"
 #include "date_time.h"
@@ -30,10 +30,11 @@
 #include "ui/UItalkWnd.h"
 #include "ui/UITradeWnd.h"
 #include "inventory.h"
-#include "infoportion.h"
+#include "InfoPortion.h"
 #include "AI/Monsters/BaseMonster/base_monster.h"
 #include "weaponmagazined.h"
 #include "ai/stalker/ai_stalker.h"
+#include "GameTaskManager.h"
 
 bool CScriptGameObject::GiveInfoPortion(pcstr info_id)
 {
@@ -542,7 +543,6 @@ pcstr CScriptGameObject::sound_voice_prefix () const
 	return pInventoryOwner->SpecificCharacter().sound_voice_prefix();
 }
 
-#include "GameTaskManager.h"
 ETaskState CScriptGameObject::GetGameTaskState	(pcstr task_id, int objective_num)
 {
 /*	CActor* pActor = smart_cast<CActor*>(&object());

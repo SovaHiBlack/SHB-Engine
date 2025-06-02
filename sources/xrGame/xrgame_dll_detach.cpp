@@ -12,7 +12,7 @@
 #include "InfoPortion.h"
 #include "PhraseDialog.h"
 #include "GameTask.h"
-#include "encyclopedia_article.h"
+#include "EncyclopediaArticle.h"
 
 #include "character_info.h"
 #include "specific_character.h"

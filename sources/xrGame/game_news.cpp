@@ -17,49 +17,53 @@
 
 #include "specific_character.h"
 
-SGameNewsData::SGameNewsData()
+SGameNewsData::SGameNewsData( )
 {
-	m_type			= eNews;
-	tex_rect.set	(0.0f,0.0f,0.0f,0.0f);
-	show_time		= DEFAULT_NEWS_SHOW_TIME;
+	m_type = eNews;
+	tex_rect.set(0.0f, 0.0f, 0.0f, 0.0f);
+	show_time = DEFAULT_NEWS_SHOW_TIME;
 }
 
-void SGameNewsData::save (IWriter& stream)
+void SGameNewsData::save(IWriter& stream)
 {
-	save_data(m_type,		stream);
-	save_data(news_text,	stream);
+	save_data(m_type, stream);
+	save_data(news_text, stream);
 	save_data(receive_time, stream);
-	save_data(texture_name,	stream);
-	save_data(tex_rect,		stream);
+	save_data(texture_name, stream);
+	save_data(tex_rect, stream);
 }
 
-void SGameNewsData::load (IReader& stream)
+void SGameNewsData::load(IReader& stream)
 {
-	load_data(m_type,		stream);
-	load_data(news_text,	stream);
+	load_data(m_type, stream);
+	load_data(news_text, stream);
 	load_data(receive_time, stream);
-	load_data(texture_name,	stream);
-	load_data(tex_rect,		stream);
+	load_data(texture_name, stream);
+	load_data(tex_rect, stream);
 }
 
-pcstr SGameNewsData::SingleLineText()
+pcstr SGameNewsData::SingleLineText( )
 {
-	if( xr_strlen(full_news_text.c_str()) )
-		return full_news_text.c_str();
-	string128	time = "";
+	if (xr_strlen(full_news_text.c_str( )))
+	{
+		return full_news_text.c_str( );
+	}
+
+	string128 time = "";
 
 	// Calc current time
-	u32 years, months, days, hours, minutes, seconds, milliseconds;
-	split_time		(receive_time, years, months, days, hours, minutes, seconds, milliseconds);
-#pragma todo("Satan->Satan : insert carry-over")
-	//sprintf_s(time, "%02i:%02i \\n", hours, minutes);
-	sprintf_s		(time, "%02i:%02i ", hours, minutes);
-//	strconcat	(result, locationName, time, newsPhrase);
+	u32 years;
+	u32 months;
+	u32 days;
+	u32 hours;
+	u32 minutes;
+	u32 seconds;
+	u32 milliseconds;
+	split_time(receive_time, years, months, days, hours, minutes, seconds, milliseconds);
+	sprintf_s(time, "%02i:%02i ", hours, minutes);
 
+	full_news_text = time;
+	full_news_text += news_text.c_str( );
 
-	full_news_text			= time;
-	full_news_text			+= news_text.c_str();
-
-
-	return full_news_text.c_str();
+	return full_news_text.c_str( );
 }

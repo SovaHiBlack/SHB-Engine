@@ -43,7 +43,7 @@ class CGameTaskManager;
 class CCameraShotEffector;
 class CActorInputHandler;
 class CActorMemory;
-class CActorStatisticMgr;
+class CActorStatisticManager;
 class CLocationManager;
 
 class CActor :
@@ -165,7 +165,7 @@ public:
 
 protected:
 	CGameTaskManager*														m_game_task_manager;
-	CActorStatisticMgr*														m_statistic_manager;
+	CActorStatisticManager*														m_statistic_manager;
 
 public:
 	virtual void						StartTalk							(CInventoryOwner* talk_partner);
@@ -174,7 +174,7 @@ public:
 	{
 		return *m_game_task_manager;
 	}
-	CActorStatisticMgr&					StatisticMgr						( )
+	CActorStatisticManager&					StatisticMgr						( )
 	{
 		return *m_statistic_manager;
 	}

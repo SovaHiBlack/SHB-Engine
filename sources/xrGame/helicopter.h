@@ -21,8 +21,11 @@ class CHelicopter;
 
 enum EHeliHuntState
 {
-	eEnemyNone, eEnemyPoint, eEnemyEntity
+	eEnemyNone,
+	eEnemyPoint,
+	eEnemyEntity
 };
+
 struct SHeliEnemy
 {
 	EHeliHuntState					type;
@@ -41,8 +44,10 @@ struct SHeliEnemy
 
 enum EHeliBodyState
 {
-	eBodyByPath, eBodyToPoint
+	eBodyByPath,
+	eBodyToPoint
 };
+
 struct SHeliBodyState
 {
 	CHelicopter* parent;
@@ -68,8 +73,14 @@ struct SHeliBodyState
 
 enum EHeilMovementState
 {
-	eMovNone, eMovToPoint, eMovPatrolPath, eMovRoundPath, eMovLanding, eMovTakeOff
+	eMovNone,
+	eMovToPoint,
+	eMovPatrolPath,
+	eMovRoundPath,
+	eMovLanding,
+	eMovTakeOff
 };
+
 struct SHeliMovementState
 {
 	struct STmpPt
@@ -274,8 +285,6 @@ protected:
 	typedef xr_map<s16, f32>::iterator bonesIt;
 	f32							m_stepRemains;
 
-	void	UpdateState( );
-
 public:
 	void							ExplodeHelicopter( );
 
@@ -294,7 +303,7 @@ public:
 	void							setState(CHelicopter::EHeliState s);
 	void							setState_script(u32 s)
 	{
-		setState((CHelicopter::EHeliState)s);
+		setState((CHelicopter::EHeliState) s);
 	}
 
 	void							init( );
@@ -432,6 +441,7 @@ public:
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 add_to_type_list(CHelicopter)
 #undef script_type_list
 #define script_type_list save_type_list(CHelicopter)

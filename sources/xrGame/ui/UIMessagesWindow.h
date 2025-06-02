@@ -10,7 +10,7 @@
 
 #include "UIWindow.h"
 #include "../pda_space.h"
-#include "../InfoPortionDefs.h"
+#include "../InfoPortion_defs.h"
 
 class CUIGameLog;
 class game_cl_GameState;

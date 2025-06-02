@@ -15,7 +15,7 @@
 #include "level.h"
 #include "xr_level_controller.h"
 #include "game_cl_base.h"
-#include "infoportion.h"
+#include "InfoPortion.h"
 #include "alife_registry_wrappers.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "ClientSpawnManager.h"
@@ -38,7 +38,7 @@
 #include "game_base_kill_type.h"
 #include "HolderCustom.h"
 #include "actor_memory.h"
-#include "actor_statistic_mgr.h"
+#include "ActorStatisticManager.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "clsid_game.h"
 
@@ -790,7 +790,7 @@ BOOL CActor::net_Spawn(CSE_Abstract* DC)
 	m_game_task_manager = xr_new<CGameTaskManager>( );
 	GameTaskManager( ).initialize(ID( ));
 
-	m_statistic_manager = xr_new<CActorStatisticMgr>( );
+	m_statistic_manager = xr_new<CActorStatisticManager>( );
 
 	spatial.type |= STYPE_REACTTOSOUND;
 	psHUD_Flags.set(HUD_WEAPON_RT, TRUE);

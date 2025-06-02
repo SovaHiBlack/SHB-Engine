@@ -14,7 +14,7 @@
 #include "inventory_space.h"
 
 #include "character_info_defs.h"
-#include "infoportiondefs.h"
+#include "InfoPortion_defs.h"
 
 #pragma warning(push)
 #pragma warning(disable:4005)

@@ -194,8 +194,8 @@
     <ClInclude Include="Actor_flags.h" />
     <ClInclude Include="ActorInputHandler.h" />
     <ClInclude Include="actor_memory.h" />
-    <ClInclude Include="actor_statistic_defs.h" />
-    <ClInclude Include="actor_statistic_mgr.h" />
+    <ClInclude Include="ActorStatistic_defs.h" />
+    <ClInclude Include="ActorStatisticManager.h" />
     <ClInclude Include="agent_corpse_manager.h" />
     <ClInclude Include="agent_corpse_manager_inline.h" />
     <ClInclude Include="agent_enemy_manager.h" />
@@ -698,8 +698,8 @@
     <ClInclude Include="ef_storage_inline.h" />
     <ClInclude Include="ElectricBall.h" />
     <ClInclude Include="ElevatorState.h" />
-    <ClInclude Include="encyclopedia_article.h" />
-    <ClInclude Include="encyclopedia_article_defs.h" />
+    <ClInclude Include="EncyclopediaArticle.h" />
+    <ClInclude Include="EncyclopediaArticle_defs.h" />
     <ClInclude Include="enemy_manager.h" />
     <ClInclude Include="enemy_manager_inline.h" />
     <ClInclude Include="Entity.h" />
@@ -722,8 +722,8 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GamePersistent.h" />
     <ClInclude Include="GameTask.h" />
-    <ClInclude Include="GameTaskDefs.h" />
-    <ClInclude Include="GametaskManager.h" />
+    <ClInclude Include="GameTask_defs.h" />
+    <ClInclude Include="GameTaskManager.h" />
     <ClInclude Include="game_base.h" />
     <ClInclude Include="game_base_kill_type.h" />
     <ClInclude Include="game_base_menu_events.h" />
@@ -792,7 +792,7 @@
     <ClInclude Include="ik_anim_state.h" />
     <ClInclude Include="InfoDocument.h" />
     <ClInclude Include="InfoPortion.h" />
-    <ClInclude Include="InfoPortionDefs.h" />
+    <ClInclude Include="InfoPortion_defs.h" />
     <ClInclude Include="ini_id_loader.h" />
     <ClInclude Include="ini_table_loader.h" />
     <ClInclude Include="interactive_motion.h" />
@@ -972,7 +972,7 @@
     <ClInclude Include="PHObject.h" />
     <ClInclude Include="Phrase.h" />
     <ClInclude Include="PhraseDialog.h" />
-    <ClInclude Include="PhraseDialogDefs.h" />
+    <ClInclude Include="PhraseDialog_defs.h" />
     <ClInclude Include="PhraseDialogManager.h" />
     <ClInclude Include="PhraseDialog_script.h" />
     <ClInclude Include="PhraseScript.h" />
@@ -1259,7 +1259,7 @@
     <ClInclude Include="Torch.h" />
     <ClInclude Include="TorridZone.h" />
     <ClInclude Include="Tracer.h" />
-    <ClInclude Include="trade.h" />
+    <ClInclude Include="Trade.h" />
     <ClInclude Include="trade_action_parameters.h" />
     <ClInclude Include="trade_action_parameters_inline.h" />
     <ClInclude Include="trade_bool_parameters.h" />
@@ -1492,7 +1492,7 @@
     <ClCompile Include="actor_memory.cpp" />
     <ClCompile Include="Actor_Movement.cpp" />
     <ClCompile Include="Actor_Network.cpp" />
-    <ClCompile Include="actor_statistic_mgr.cpp" />
+    <ClCompile Include="ActorStatisticManager.cpp" />
     <ClCompile Include="Actor_Weapon.cpp" />
     <ClCompile Include="agent_corpse_manager.cpp" />
     <ClCompile Include="agent_enemy_manager.cpp" />
@@ -1797,7 +1797,7 @@
     <ClCompile Include="ef_storage_script.cpp" />
     <ClCompile Include="ElectricBall.cpp" />
     <ClCompile Include="ElevatorState.cpp" />
-    <ClCompile Include="encyclopedia_article.cpp" />
+    <ClCompile Include="EncyclopediaArticle.cpp" />
     <ClCompile Include="enemy_manager.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityCondition.cpp" />
@@ -1817,7 +1817,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GamePersistent.cpp" />
     <ClCompile Include="GameTask.cpp" />
-    <ClCompile Include="GametaskManager.cpp" />
+    <ClCompile Include="GameTaskManager.cpp" />
     <ClCompile Include="game_base.cpp" />
     <ClCompile Include="game_base_script.cpp" />
     <ClCompile Include="game_cl_base.cpp" />
@@ -2202,8 +2202,7 @@
     <ClCompile Include="torch_script.cpp" />
     <ClCompile Include="TorridZone.cpp" />
     <ClCompile Include="Tracer.cpp" />
-    <ClCompile Include="trade.cpp" />
-    <ClCompile Include="trade2.cpp" />
+    <ClCompile Include="Trade.cpp" />
     <ClCompile Include="trade_parameters.cpp" />
     <ClCompile Include="tri-colliderknoopc\dcTriListCollider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

@@ -4,7 +4,7 @@
 #include "EntityAlive.h"
 #include "pda.h"
 #include "Actor.h"
-#include "trade.h"
+#include "Trade.h"
 #include "inventory.h"
 #include "xrserver_objects_alife_items.h"
 #include "character_info.h"

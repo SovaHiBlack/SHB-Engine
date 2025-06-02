@@ -23,7 +23,7 @@
 #include "script_engine.h"
 #include "script_engine_space.h"
 #include "team_base_zone.h"
-#include "infoportion.h"
+#include "InfoPortion.h"
 #include "patrol_path_storage.h"
 #include "date_time.h"
 #include "space_restriction_manager.h"

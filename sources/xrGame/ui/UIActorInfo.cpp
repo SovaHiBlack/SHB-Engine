@@ -12,7 +12,7 @@
 #include "UIScrollView.h"
 #include "UICharacterInfo.h"//
 #include "UI3tButton.h"
-#include "../actor_statistic_mgr.h"
+#include "../ActorStatisticManager.h"
 #include "../character_community.h"
 #include "../character_reputation.h"
 #include "../relation_registry.h"

@@ -1372,12 +1372,6 @@
     <Filter Include="Core\Client\Objects\tasks_info_dialogs">
       <UniqueIdentifier>{6a9218ca-f710-4b8d-812d-f7eaa0675813}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\tasks_info_dialogs\game tasks">
-      <UniqueIdentifier>{422a0d92-3869-4b59-a89b-54780d92a492}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\tasks_info_dialogs\encyclopedia">
-      <UniqueIdentifier>{c8a349e3-4c19-414f-a63a-f303952f3a4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\tasks_info_dialogs\dialogs">
       <UniqueIdentifier>{7ae3661e-839e-454c-8e91-c75d019d6d64}</UniqueIdentifier>
     </Filter>
@@ -1632,9 +1626,6 @@
     </Filter>
     <Filter Include="Core\Client\Objects\searchlight">
       <UniqueIdentifier>{f90db9d7-7d0e-4817-bf0a-042b32c696a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\searchlight\Trade">
-      <UniqueIdentifier>{b7eec7c6-412c-4465-9f05-3ef0e0ee07d9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Objects\zones">
       <UniqueIdentifier>{6647695a-cabd-4249-b627-2dd265f01679}</UniqueIdentifier>
@@ -2109,6 +2100,18 @@
     </Filter>
     <Filter Include="AI\AComponents\StepManager">
       <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\tasks_info_dialogs\InfoPortion">
+      <UniqueIdentifier>{99586892-4d27-4d86-b0ed-a46ec9dc042b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\tasks_info_dialogs\GameTask">
+      <UniqueIdentifier>{422a0d92-3869-4b59-a89b-54780d92a492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\tasks_info_dialogs\EncyclopediaArticle">
+      <UniqueIdentifier>{c8a349e3-4c19-414f-a63a-f303952f3a4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Trade">
+      <UniqueIdentifier>{b7eec7c6-412c-4465-9f05-3ef0e0ee07d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4614,29 +4617,23 @@
     <ClInclude Include="HangingLamp.h">
       <Filter>Core\Client\Objects\hanging_lamp</Filter>
     </ClInclude>
-    <ClInclude Include="InfoPortion.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoPortionDefs.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs</Filter>
-    </ClInclude>
     <ClInclude Include="xml_str_id_loader.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs</Filter>
     </ClInclude>
     <ClInclude Include="GameTask.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\game tasks</Filter>
+      <Filter>Core\Client\Objects\tasks_info_dialogs\GameTask</Filter>
     </ClInclude>
-    <ClInclude Include="GameTaskDefs.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\game tasks</Filter>
+    <ClInclude Include="GameTask_defs.h">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\GameTask</Filter>
     </ClInclude>
-    <ClInclude Include="GametaskManager.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\game tasks</Filter>
+    <ClInclude Include="GameTaskManager.h">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\GameTask</Filter>
     </ClInclude>
-    <ClInclude Include="encyclopedia_article.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\encyclopedia</Filter>
+    <ClInclude Include="EncyclopediaArticle.h">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\EncyclopediaArticle</Filter>
     </ClInclude>
-    <ClInclude Include="encyclopedia_article_defs.h">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\encyclopedia</Filter>
+    <ClInclude Include="EncyclopediaArticle_defs.h">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\EncyclopediaArticle</Filter>
     </ClInclude>
     <ClInclude Include="AI_PhraseDialogManager.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\dialogs</Filter>
@@ -4650,7 +4647,7 @@
     <ClInclude Include="PhraseDialog_script.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="PhraseDialogDefs.h">
+    <ClInclude Include="PhraseDialog_defs.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\dialogs</Filter>
     </ClInclude>
     <ClInclude Include="PhraseDialogManager.h">
@@ -4662,10 +4659,10 @@
     <ClInclude Include="game_news.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\news</Filter>
     </ClInclude>
-    <ClInclude Include="actor_statistic_defs.h">
+    <ClInclude Include="ActorStatistic_defs.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\statistics</Filter>
     </ClInclude>
-    <ClInclude Include="actor_statistic_mgr.h">
+    <ClInclude Include="ActorStatisticManager.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\statistics</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
@@ -5025,8 +5022,8 @@
     <ClInclude Include="searchlight.h">
       <Filter>Core\Client\Objects\searchlight</Filter>
     </ClInclude>
-    <ClInclude Include="trade.h">
-      <Filter>Core\Client\Objects\searchlight\Trade</Filter>
+    <ClInclude Include="Trade.h">
+      <Filter>Core\Client\Objects\Trade</Filter>
     </ClInclude>
     <ClInclude Include="CustomZone.h">
       <Filter>Core\Client\Objects\zones\CustomZone</Filter>
@@ -5984,6 +5981,12 @@
     </ClInclude>
     <ClInclude Include="ActorCondition.h">
       <Filter>Core\Client\Objects\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPortion.h">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\InfoPortion</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPortion_defs.h">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\InfoPortion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7385,17 +7388,14 @@
     <ClCompile Include="HangingLamp.cpp">
       <Filter>Core\Client\Objects\hanging_lamp</Filter>
     </ClCompile>
-    <ClCompile Include="InfoPortion.cpp">
-      <Filter>Core\Client\Objects\tasks_info_dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="GameTask.cpp">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\game tasks</Filter>
+      <Filter>Core\Client\Objects\tasks_info_dialogs\GameTask</Filter>
     </ClCompile>
-    <ClCompile Include="GametaskManager.cpp">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\game tasks</Filter>
+    <ClCompile Include="GameTaskManager.cpp">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\GameTask</Filter>
     </ClCompile>
-    <ClCompile Include="encyclopedia_article.cpp">
-      <Filter>Core\Client\Objects\tasks_info_dialogs\encyclopedia</Filter>
+    <ClCompile Include="EncyclopediaArticle.cpp">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\EncyclopediaArticle</Filter>
     </ClCompile>
     <ClCompile Include="AI_PhraseDialogManager.cpp">
       <Filter>Core\Client\Objects\tasks_info_dialogs\dialogs</Filter>
@@ -7418,7 +7418,7 @@
     <ClCompile Include="game_news.cpp">
       <Filter>Core\Client\Objects\tasks_info_dialogs\news</Filter>
     </ClCompile>
-    <ClCompile Include="actor_statistic_mgr.cpp">
+    <ClCompile Include="ActorStatisticManager.cpp">
       <Filter>Core\Client\Objects\tasks_info_dialogs\statistics</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
@@ -7760,11 +7760,8 @@
     <ClCompile Include="searchlight.cpp">
       <Filter>Core\Client\Objects\searchlight</Filter>
     </ClCompile>
-    <ClCompile Include="trade.cpp">
-      <Filter>Core\Client\Objects\searchlight\Trade</Filter>
-    </ClCompile>
-    <ClCompile Include="trade2.cpp">
-      <Filter>Core\Client\Objects\searchlight\Trade</Filter>
+    <ClCompile Include="Trade.cpp">
+      <Filter>Core\Client\Objects\Trade</Filter>
     </ClCompile>
     <ClCompile Include="CustomZone.cpp">
       <Filter>Core\Client\Objects\zones\CustomZone</Filter>
@@ -8740,6 +8737,9 @@
     </ClCompile>
     <ClCompile Include="ActorVehicle.cpp">
       <Filter>Core\Client\Objects\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPortion.cpp">
+      <Filter>Core\Client\Objects\tasks_info_dialogs\InfoPortion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

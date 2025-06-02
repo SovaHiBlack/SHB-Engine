@@ -2,7 +2,7 @@
 #include <dinput.h>
 #include "Actor.h"
 #include "Torch.h"
-#include "trade.h"
+#include "Trade.h"
 #include "..\XR_3DA\CameraBase.h"
 #ifdef DEBUG
 #include "PHDebug.h"

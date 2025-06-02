@@ -4,10 +4,10 @@
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "encyclopedia_article.h"
+#include "EncyclopediaArticle.h"
 #include "ui/xrUIXmlParser.h"
 #include "ui/UIXmlInit.h"
-#include "ui/UIInventoryUtilities.h"//
+#include "ui/UIInventoryUtilities.h"
 #include "object_broker.h"
 
 using namespace InventoryUtilities;
@@ -39,13 +39,6 @@ CEncyclopediaArticle::~CEncyclopediaArticle( )
 	}
 }
 
-/*
-void CEncyclopediaArticle::Load	(ARTICLE_STR_ID str_id)
-{
-	Load	(id_to_index::IdToIndex(str_id));
-}
-*/
-
 void CEncyclopediaArticle::Load(shared_str  id)
 {
 	m_ArticleId = id;
@@ -59,7 +52,7 @@ void CEncyclopediaArticle::load_shared(pcstr)
 	CUIXml* pXML = item_data._xml;
 	pXML->SetLocalRoot(pXML->GetRoot( ));
 
-	//loading from XML
+	//загрузка из XML
 	XML_NODE* pNode = pXML->NavigateToNode(id_to_index::tag_name, item_data.pos_in_file);
 	THROW3(pNode, "encyclopedia article id=", *item_data.id);
 
@@ -120,7 +113,7 @@ void CEncyclopediaArticle::load_shared(pcstr)
 		data( )->image.SetWndRect(0, 0, r.width( ), r.height( ));
 	}
 
-	// Тип статьи
+	//тип статьи
 	xr_string atricle_type = pXML->ReadAttrib(pNode, "article_type", "encyclopedia");
 	if (0 == stricmp(atricle_type.c_str( ), "encyclopedia"))
 	{

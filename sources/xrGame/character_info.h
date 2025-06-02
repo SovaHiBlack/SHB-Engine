@@ -14,7 +14,7 @@ class CNetPacket;
 #include "specific_character.h"
 
 #ifdef XRGAME_EXPORTS
-	#include "PhraseDialogDefs.h"
+	#include "PhraseDialog_defs.h"
 	#include "character_community.h"
 	#include "character_rank.h"
 	#include "character_reputation.h"

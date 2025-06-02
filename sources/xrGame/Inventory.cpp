@@ -2,7 +2,7 @@
 
 #include "inventory.h"
 #include "Actor.h"
-#include "trade.h"
+#include "Trade.h"
 #include "Weapon.h"
 
 #include "ui/UIInventoryUtilities.h"//

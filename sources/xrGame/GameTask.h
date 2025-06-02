@@ -1,7 +1,7 @@
 #pragma once
 
-#include "encyclopedia_article_defs.h"
-#include "GameTaskDefs.h"
+#include "EncyclopediaArticle_defs.h"
+#include "GameTask_defs.h"
 #include "script_export_space.h"
 
 class CGameTaskManager;
@@ -117,9 +117,11 @@ class CGameTask
 {
 private:
 	CGameTask(const CGameTask&)
-	{}; //disable copy ctor
+	{} //disable copy ctor
+
 protected:
 	void					Load(const TASK_ID& id);
+
 public:
 	CGameTask(const TASK_ID& id);
 	CGameTask();

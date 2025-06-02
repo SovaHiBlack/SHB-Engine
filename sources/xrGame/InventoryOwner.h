@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////
 
 #pragma once
-#include "InfoPortionDefs.h"
+#include "InfoPortion_defs.h"
 #include "pda_space.h"
 #include "attachment_owner.h"
 #include "script_space_forward.h"

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "UIWindow.h"
-#include "../encyclopedia_article_defs.h"
+#include "../EncyclopediaArticle_defs.h"
 
 class CEncyclopediaArticle;
 class CUIFrameWindow;

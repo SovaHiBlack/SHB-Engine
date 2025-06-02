@@ -12,6 +12,12 @@
 #include "ai/stalker/ai_stalker.h"
 #include "CustomZone.h"
 #include "MathUtils.h"
+#include "group_hierarchy_holder.h"
+#include "seniority_hierarchy_holder.h"
+#include "team_hierarchy_holder.h"
+#include "squad_hierarchy_holder.h"
+
+#include "extendedgeom.h"
 
 bool CHelicopter::isObjectVisible(CObject* O)
 {
@@ -37,7 +43,7 @@ void CHelicopter::TurnLighting(bool bOn)
 	m_light_render->set_active(bOn);
 	m_light_started = bOn;
 }
-void  CHelicopter::TurnEngineSound(bool bOn)
+void CHelicopter::TurnEngineSound(bool bOn)
 {
 	if (bOn)
 	{
@@ -51,11 +57,15 @@ void  CHelicopter::TurnEngineSound(bool bOn)
 
 void CHelicopter::StartFlame( )
 {
-	if (m_pParticle)return;
+	if (m_pParticle)
+	{
+		return;
+	}
+
 	m_pParticle = CParticlesObject::Create(*m_smoke_particle, FALSE);
 
 	fVector3 zero_vector;
-	zero_vector.set(0.f, 0.f, 0.f);
+	zero_vector.set(0.0f, 0.0f, 0.0f);
 	m_pParticle->UpdateParent(m_particleXFORM, zero_vector);
 	m_pParticle->Play( );
 	m_flame_started = true;
@@ -108,8 +118,11 @@ void CHelicopter::ExplodeHelicopter( )
 		m_pParticle->Stop( );
 		CParticlesObject::Destroy(m_pParticle);
 	}
+
 	if (CPHDestroyable::CanDestroy( ))
+	{
 		CPHDestroyable::Destroy(ID( ), "physic_destroyable_object");
+	}
 
 	CExplosive::SetInitiator(ID( ));
 	CExplosive::GenExplodeEvent(Position( ), fVector3( ).set(0.0f, 1.0f, 0.0f));
@@ -120,7 +133,9 @@ void CHelicopter::SetDestPosition(fVector3* pos)
 {
 	m_movement.SetDestPosition(pos);
 	if (bDebug)
+	{
 		Msg("---SetDestPosition %f %f %f", pos->x, pos->y, pos->z);
+	}
 }
 
 f32 CHelicopter::GetDistanceToDestPosition( )
@@ -170,7 +185,9 @@ void CHelicopter::SetSpeedInDestPoint(f32 sp)
 {
 	m_movement.SetSpeedInDestPoint(sp);
 	if (bDebug)
+	{
 		Msg("---SetSpeedInDestPoint %f", sp);
+	}
 }
 
 f32 CHelicopter::GetSpeedInDestPoint(f32 sp)
@@ -182,7 +199,9 @@ void CHelicopter::SetOnPointRangeDist(f32 d)
 {
 	m_movement.onPointRangeDist = d;
 	if (bDebug)
+	{
 		Msg("---SetOnPointRangeDist %f", d);
+	}
 }
 
 f32 CHelicopter::GetOnPointRangeDist( )
@@ -205,12 +224,19 @@ f32 CHelicopter::GetRealAltitude( )
 void	CHelicopter::Hit(SHit* pHDS)
 {
 	if (GetfHealth( ) < 0.005f)
+	{
 		return;
+	}
 
-	if (state( ) == CHelicopter::eDead) return;
+	if (state( ) == CHelicopter::eDead)
+	{
+		return;
+	}
 
 	if (pHDS->who == this)
+	{
 		return;
+	}
 
 	bonesIt It = m_hitBones.find(pHDS->bone( ));
 	if (It != m_hitBones.end( ) && pHDS->hit_type == ALife::eHitTypeFireWound)
@@ -218,9 +244,14 @@ void	CHelicopter::Hit(SHit* pHDS)
 		f32 curHealth = GetfHealth( );
 		curHealth -= pHDS->damage( ) * It->second * 1000.0f;
 		SetfHealth(curHealth);
+
 #ifdef DEBUG
-		if (bDebug)	Log("----Helicopter::PilotHit(). health=", curHealth);
+		if (bDebug)
+		{
+			Log("----Helicopter::PilotHit(). health=", curHealth);
+		}
 #endif
+
 	}
 	else
 	{
@@ -228,11 +259,16 @@ void	CHelicopter::Hit(SHit* pHDS)
 		hit_power *= m_HitTypeK[pHDS->hit_type];
 
 		SetfHealth(GetfHealth( ) - hit_power);
+
 #ifdef DEBUG
 		if (bDebug)
+		{
 			Log("----Helicopter::Hit(). health=", GetfHealth( ));
+		}
 #endif
-	};
+
+	}
+
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
 		smart_cast<CStalker*>(pHDS->who) ||
@@ -247,15 +283,12 @@ void	CHelicopter::Hit(SHit* pHDS)
 
 void CHelicopter::PHHit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type)
 {
-	if (!g_Alive( ))inherited::PHHit(P, dir, who, element, p_in_object_space, impulse, hit_type);
+	if (!g_Alive( ))
+	{
+		inherited::PHHit(P, dir, who, element, p_in_object_space, impulse, hit_type);
+	}
 }
 
-#include "group_hierarchy_holder.h"
-#include "seniority_hierarchy_holder.h"
-#include "team_hierarchy_holder.h"
-#include "squad_hierarchy_holder.h"
-
-#include "extendedgeom.h"
 void CollisionCallbackDead(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
 	do_colide = true;

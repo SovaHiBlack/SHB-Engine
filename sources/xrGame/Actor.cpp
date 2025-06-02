@@ -37,7 +37,7 @@
 #include "HudItem.h"
 #include "ai_sounds.h"
 #include "AISpace.h"
-#include "trade.h"
+#include "Trade.h"
 #include "inventory.h"
 #include "Physics.h"
 #include "level.h"

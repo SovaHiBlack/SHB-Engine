@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "ai_trader.h"
-#include "../../trade.h"
+#include "../../Trade.h"
 #include "../../script_entity_action.h"
 #include "../../script_game_object.h"
 #include "../../inventory.h"

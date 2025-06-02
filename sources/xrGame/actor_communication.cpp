@@ -25,10 +25,10 @@
 #include "ui/UITalkWnd.h"
 #include "GameObject_space.h"
 #include "script_callback_ex.h"
-#include "encyclopedia_article.h"
+#include "EncyclopediaArticle.h"
 #include "GameTaskManager.h"
-#include "GameTaskdefs.h"
-#include "infoportion.h"
+#include "GameTask_defs.h"
+#include "InfoPortion.h"
 #include "ai/monsters/basemonster/base_monster.h"
 #include "ai/trader/ai_trader.h"
 

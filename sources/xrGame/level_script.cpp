@@ -31,6 +31,7 @@
 #include "ActorEffector.h"
 #include "UIGameCustom.h"
 #include "postprocessanimator.h"
+#include "ActorStatisticManager.h"
 
 using namespace luabind;
 
@@ -443,7 +444,7 @@ void set_snd_volume(f32 v)
 	psSoundVFactor = v;
 	clamp(psSoundVFactor, 0.0f, 1.0f);
 }
-#include "actor_statistic_mgr.h"
+
 void add_actor_points(pcstr sect, pcstr detail_key, s32 cnt, s32 pts)
 {
 	return Actor( )->StatisticMgr( ).AddPoints(sect, detail_key, cnt, pts);

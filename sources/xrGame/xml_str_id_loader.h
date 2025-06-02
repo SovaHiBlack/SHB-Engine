@@ -7,20 +7,17 @@
 #	include "object_broker.h"
 #endif // XRGAME_EXPORTS
 
-
 //T_ID    - уникальный текстовый идентификатор (аттрибут id в XML файле)
-//T_INDEX - уникальный числовой индекс 
-//T_INIT -  класс где определена статическая InitXmlIdToIndex
-//          функция инициализации file_str и tag_name
+//T_INDEX - уникальный числовой индекс
+//T_INIT -  класс где определена статическая InitXmlIdToIndex функция инициализации file_str и tag_name
 
-//структура хранит строковый id элемента 
-//файл и позицию, где этот элемент находится
+//структура хранит строковый id элемента, файл и позицию, где этот элемент находится
 struct ITEM_DATA
 {
 	shared_str		id;
-	int				index;
-	int				pos_in_file;
-	CUIXml*			_xml;
+	s32				index;
+	s32				pos_in_file;
+	CUIXml* _xml;
 };
 typedef xr_vector<ITEM_DATA>	T_VECTOR;
 
@@ -32,69 +29,65 @@ void _destroy_item_data_vector_cont(T_VECTOR* vec);
 TEMPLATE_SPECIALIZATION
 class CXML_IdToIndex
 {
-public:
-
 private:
-	static	T_VECTOR*				m_pItemDataVector;
+	static	T_VECTOR* m_pItemDataVector;
 
 protected:
-	//имена xml файлов (разделенных запятой) из которых 
-	//производить загрузку элементов
+	//имена xml файлов (разделенных запятой) из которых производить загрузку элементов
 	static pcstr					file_str;
 	//имена тегов
 	static pcstr					tag_name;
+
 public:
-									CXML_IdToIndex							();
-	virtual							~CXML_IdToIndex					();
+	CXML_IdToIndex( );
+	virtual							~CXML_IdToIndex( );
 
-	static	void					InitInternal ();
+	static void					InitInternal( );
 
-	static const ITEM_DATA*			GetById		(const shared_str& str_id, bool no_assert = false);
-	static const ITEM_DATA*			GetByIndex	(int index, bool no_assert = false);
+	static const ITEM_DATA* GetById(const shared_str& str_id, bool no_assert = false);
+	static const ITEM_DATA* GetByIndex(s32 index, bool no_assert = false);
 
-	static const int			IdToIndex	(const shared_str& str_id, int default_index = T_INDEX(-1), bool no_assert = false)
-{
+	static const s32			IdToIndex(const shared_str& str_id, s32 default_index = T_INDEX(-1), bool no_assert = false)
+	{
 		const ITEM_DATA* item = GetById(str_id, no_assert);
-		return item?item->index:default_index;
+		return (item ? item->index : default_index);
 	}
-	static const shared_str		IndexToId	(int index, shared_str default_id = NULL, bool no_assert = false)
+	static const shared_str		IndexToId(s32 index, shared_str default_id = NULL, bool no_assert = false)
 	{
 		const ITEM_DATA* item = GetByIndex(index, no_assert);
-		return item?item->id:default_id;
+		return (item ? item->id : default_id);
 	}
 
-	static const int		GetMaxIndex	()					 {return m_pItemDataVector->size()-1;}
+	static const s32		GetMaxIndex( )
+	{
+		return (m_pItemDataVector->size( ) - 1);
+	}
 
 	//удаление статичекого массива
-	static void					DeleteIdToIndexData		();
+	static void					DeleteIdToIndexData( );
 };
-
 
 TEMPLATE_SPECIALIZATION
 typename T_VECTOR* CSXML_IdToIndex::m_pItemDataVector = NULL;
 
 TEMPLATE_SPECIALIZATION
 pcstr CSXML_IdToIndex::file_str = NULL;
+
 TEMPLATE_SPECIALIZATION
 pcstr CSXML_IdToIndex::tag_name = NULL;
 
+TEMPLATE_SPECIALIZATION
+CSXML_IdToIndex::CXML_IdToIndex( )
+{ }
 
 TEMPLATE_SPECIALIZATION
-CSXML_IdToIndex::CXML_IdToIndex()
-{
-}
-
-
-TEMPLATE_SPECIALIZATION
-CSXML_IdToIndex::~CXML_IdToIndex()
-{
-}
-
+CSXML_IdToIndex::~CXML_IdToIndex( )
+{ }
 
 TEMPLATE_SPECIALIZATION
 const typename ITEM_DATA* CSXML_IdToIndex::GetById(const shared_str& str_id, bool no_assert)
 {
-	T_INIT::InitXmlIdToIndex();
+	T_INIT::InitXmlIdToIndex( );
 
 	for (T_VECTOR::iterator it = m_pItemDataVector->begin( ); m_pItemDataVector->end( ) != it; it++)
 	{
@@ -106,7 +99,7 @@ const typename ITEM_DATA* CSXML_IdToIndex::GetById(const shared_str& str_id, boo
 
 	if (m_pItemDataVector->end( ) == it)
 	{
-		int i = 0;
+		s32 i = 0;
 		for (T_VECTOR::iterator it = m_pItemDataVector->begin( ); m_pItemDataVector->end( ) != it; it++, i++)
 		{
 			Msg("[%d]=[%s]", i, *(*it).id);
@@ -120,86 +113,89 @@ const typename ITEM_DATA* CSXML_IdToIndex::GetById(const shared_str& str_id, boo
 }
 
 TEMPLATE_SPECIALIZATION
-const typename ITEM_DATA* CSXML_IdToIndex::GetByIndex(int index, bool no_assert)
+const typename ITEM_DATA* CSXML_IdToIndex::GetByIndex(s32 index, bool no_assert)
 {
-	if((size_t)index>=m_pItemDataVector->size())
+	if ((size_t) index >= m_pItemDataVector->size( ))
 	{
 		R_ASSERT3(no_assert, "item by index not found in files", file_str);
 		return NULL;
 	}
+
 	return &(*m_pItemDataVector)[index];
 }
 
 TEMPLATE_SPECIALIZATION
-void CSXML_IdToIndex::DeleteIdToIndexData	()
+void CSXML_IdToIndex::DeleteIdToIndexData( )
 {
-	VERIFY						(m_pItemDataVector);
-	_destroy_item_data_vector_cont	(m_pItemDataVector);
+	VERIFY(m_pItemDataVector);
+	_destroy_item_data_vector_cont(m_pItemDataVector);
 
-	xr_delete	(m_pItemDataVector);
+	xr_delete(m_pItemDataVector);
 }
 
 TEMPLATE_SPECIALIZATION
-typename void	CSXML_IdToIndex::InitInternal ()
+typename void	CSXML_IdToIndex::InitInternal( )
 {
 	VERIFY(!m_pItemDataVector);
-	T_INIT::InitXmlIdToIndex();
+	T_INIT::InitXmlIdToIndex( );
 
-	m_pItemDataVector = xr_new<T_VECTOR>();
+	m_pItemDataVector = xr_new<T_VECTOR>( );
 
 	VERIFY(file_str);
 	VERIFY(tag_name);
 
-	string_path	xml_file;
-	int			count = _GetItemCount	(file_str);
-	int			index = 0;
-	for (int it=0; it<count; ++it)	
+	string_path xml_file;
+	s32 count = _GetItemCount(file_str);
+	s32 index = 0;
+	for (s32 it = 0; it < count; ++it)
 	{
-		_GetItem	(file_str, it, xml_file);
+		_GetItem(file_str, it, xml_file);
 
-		CUIXml* uiXml			= xr_new<CUIXml>();
-		xr_string				xml_file_full;
-		xml_file_full			= xml_file;
-		xml_file_full			+= ".xml";
-		bool xml_result			= uiXml->Init(CONFIG_PATH, GAME_PATH, xml_file_full.c_str());
-		R_ASSERT3				(xml_result, "error while parsing XML file", xml_file_full.c_str());
+		CUIXml* uiXml = xr_new<CUIXml>( );
+		xr_string xml_file_full;
+		xml_file_full = xml_file;
+		xml_file_full += ".xml";
+		bool xml_result = uiXml->Init(CONFIG_PATH, GAME_PATH, xml_file_full.c_str( ));
+		R_ASSERT3(xml_result, "error while parsing XML file", xml_file_full.c_str( ));
 
 		//общий список
-		int items_num			= uiXml->GetNodesNum(uiXml->GetRoot(), tag_name);
+		s32 items_num = uiXml->GetNodesNum(uiXml->GetRoot( ), tag_name);
 
-		for(int i=0; i<items_num; ++i)
+		for (s32 i = 0; i < items_num; ++i)
 		{
-			pcstr item_name	= uiXml->ReadAttrib(uiXml->GetRoot(), tag_name, i, "id", NULL);
+			pcstr item_name = uiXml->ReadAttrib(uiXml->GetRoot( ), tag_name, i, "id", NULL);
 
-			string256			buf;
-			sprintf_s				(buf, "id for item don't set, number %d in %s", i, xml_file);
-			R_ASSERT2			(item_name, buf);
-
+			string256 buf;
+			sprintf_s(buf, "id for item don't set, number %d in %s", i, xml_file);
+			R_ASSERT2(item_name, buf);
 
 			//проверетить ID на уникальность
-			T_VECTOR::iterator t_it = m_pItemDataVector->begin();
-			for(;m_pItemDataVector->end() != t_it; t_it++)
+			T_VECTOR::iterator t_it = m_pItemDataVector->begin( );
+			for (; m_pItemDataVector->end( ) != t_it; t_it++)
 			{
-				if(shared_str((*t_it).id) == shared_str(item_name))
+				if (shared_str((*t_it).id) == shared_str(item_name))
+				{
 					break;
+				}
 			}
 
-			R_ASSERT3(m_pItemDataVector->end() == t_it, "duplicate item id", item_name);
+			R_ASSERT3(m_pItemDataVector->end( ) == t_it, "duplicate item id", item_name);
 
-			ITEM_DATA			data;
-			data.id				= item_name;
-			data.index			= index;
-			data.pos_in_file	= i;
-//.				data.file_name		= xml_file;
-			data._xml			= uiXml;
+			ITEM_DATA data;
+			data.id = item_name;
+			data.index = index;
+			data.pos_in_file = i;
+			data._xml = uiXml;
 			m_pItemDataVector->push_back(data);
 
-			index++; 
+			index++;
 		}
-		if(0==items_num)
+
+		if (0 == items_num)
+		{
 			delete_data(uiXml);
+		}
 	}
 }
 
 #undef TEMPLATE_SPECIALIZATION
-

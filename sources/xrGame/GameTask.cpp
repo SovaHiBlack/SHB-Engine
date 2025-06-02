@@ -2,7 +2,7 @@
 
 #include "GameTask.h"
 #include "ui/xrUIXmlParser.h"
-#include "encyclopedia_article.h"
+#include "EncyclopediaArticle.h"
 #include "map_location.h"
 #include "map_manager.h"
 

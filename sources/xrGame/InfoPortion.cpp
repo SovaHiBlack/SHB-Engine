@@ -2,8 +2,8 @@
 
 #include "InfoPortion.h"
 #include "GameObject.h"
-#include "encyclopedia_article.h"
-#include "gametask.h"
+#include "EncyclopediaArticle.h"
+#include "GameTask.h"
 #include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_story_registry.h"
@@ -49,7 +49,7 @@ void CInfoPortion::load_shared(pcstr)
 	CUIXml* pXML = item_data._xml;
 	pXML->SetLocalRoot(pXML->GetRoot( ));
 
-	// loading from XML
+	//загрузка из XML
 	XML_NODE* pNode = pXML->NavigateToNode(id_to_index::tag_name, item_data.pos_in_file);
 	THROW3(pNode, "info_portion id=", *item_data.id);
 
@@ -62,8 +62,7 @@ void CInfoPortion::load_shared(pcstr)
 		info_data( )->m_DialogNames.push_back(dialog_name);
 	}
 
-	// список названий порций информации, которые деактивируются,
-	// после получения этой порции
+	//список названий порций информации, которые деактивируются, после получения этой порции
 	s32 disable_num = pXML->GetNodesNum(pNode, "disable");
 	info_data( )->m_DisableInfo.clear( );
 	for (i = 0; i < disable_num; ++i)
@@ -72,10 +71,10 @@ void CInfoPortion::load_shared(pcstr)
 		info_data( )->m_DisableInfo.push_back(info_id);
 	}
 
-	// имена скриптовых функций
+	//имена скриптовых функций
 	info_data( )->m_PhraseScript.Load(pXML, pNode);
 
-	// индексы статей
+	//индексы статей
 	info_data( )->m_Articles.clear( );
 	s32 articles_num = pXML->GetNodesNum(pNode, "article");
 	for (i = 0; i < articles_num; ++i)
