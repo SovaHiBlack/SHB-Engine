@@ -23,12 +23,12 @@
 class CInventoryItem;
 class CInventory;
 
-typedef CInventoryItem*				PIItem;
+typedef CInventoryItem* PIItem;
 typedef xr_vector<PIItem>			TIItemContainer;
 
 
 enum EItemPlace
-{			
+{
 	eItemPlaceUndefined,
 	eItemPlaceSlot,
 	eItemPlaceBelt,

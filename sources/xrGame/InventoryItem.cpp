@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: inventory_item.cpp
+//	Module 		: InventoryItem.cpp
 //	Created 	: 24.03.2003
 //  Modified 	: 29.01.2004
 //	Author		: Victor Reutsky, Yuri Dobronravin
@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "inventory_item.h"
+//#include "InventoryItem.h"
 #include "inventory_item_impl.h"
 #include "inventory.h"
 #include "Physics.h"
@@ -126,7 +126,6 @@ void CInventoryItem::Load(pcstr section)
 	m_name = CStringTable( ).translate(pSettings->r_string(section, "inv_name"));
 	m_nameShort = CStringTable( ).translate(pSettings->r_string(section, "inv_name_short"));
 
-//.	NameComplex			();
 	m_weight = pSettings->r_float(section, "inv_weight");
 	R_ASSERT(m_weight >= 0.f);
 

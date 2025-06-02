@@ -799,7 +799,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="InventoryBox.h" />
     <ClInclude Include="InventoryOwner.h" />
-    <ClInclude Include="inventory_item.h" />
+    <ClInclude Include="InventoryItem.h" />
     <ClInclude Include="inventory_item_impl.h" />
     <ClInclude Include="inventory_item_inline.h" />
     <ClInclude Include="inventory_item_object.h" />
@@ -1160,7 +1160,7 @@
     <ClInclude Include="smart_cast_impl0.h" />
     <ClInclude Include="smart_cast_impl1.h" />
     <ClInclude Include="smart_cast_impl2.h" />
-    <ClInclude Include="smart_zone.h" />
+    <ClInclude Include="SmartZone.h" />
     <ClInclude Include="sound_collection_storage.h" />
     <ClInclude Include="sound_collection_storage_inline.h" />
     <ClInclude Include="sound_memory_manager.h" />
@@ -1251,7 +1251,7 @@
     <ClInclude Include="StepManager_defs.h" />
     <ClInclude Include="string_table.h" />
     <ClInclude Include="string_table_defs.h" />
-    <ClInclude Include="team_base_zone.h" />
+    <ClInclude Include="TeamBaseZone.h" />
     <ClInclude Include="team_hierarchy_holder.h" />
     <ClInclude Include="team_hierarchy_holder_inline.h" />
     <ClInclude Include="TeleWhirlwind.h" />
@@ -1837,7 +1837,6 @@
     <ClCompile Include="GrenadeLauncher.cpp" />
     <ClCompile Include="group_hierarchy_holder.cpp" />
     <ClCompile Include="HairsZone.cpp" />
-    <ClCompile Include="HairsZone_script.cpp" />
     <ClCompile Include="HangingLamp.cpp" />
     <ClCompile Include="Helicopter.cpp" />
     <ClCompile Include="Helicopter2.cpp" />
@@ -1872,7 +1871,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="InventoryBox.cpp" />
     <ClCompile Include="InventoryOwner.cpp" />
-    <ClCompile Include="inventory_item.cpp" />
+    <ClCompile Include="InventoryItem.cpp" />
     <ClCompile Include="inventory_item_object.cpp" />
     <ClCompile Include="inventory_owner_info.cpp" />
     <ClCompile Include="ItemHealth.cpp" />
@@ -1915,11 +1914,9 @@
     <ClCompile Include="MercuryBall.cpp" />
     <ClCompile Include="MilitaryOutfit.cpp" />
     <ClCompile Include="Mincer.cpp" />
-    <ClCompile Include="mincer_script.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="monster_community.cpp" />
     <ClCompile Include="MosquitoBald.cpp" />
-    <ClCompile Include="MosquitoBald_script.cpp" />
     <ClCompile Include="movement_manager.cpp" />
     <ClCompile Include="movement_manager_game.cpp" />
     <ClCompile Include="movement_manager_level.cpp" />
@@ -2194,7 +2191,7 @@
     </ClCompile>
     <ClCompile Include="StepManager.cpp" />
     <ClCompile Include="string_table.cpp" />
-    <ClCompile Include="team_base_zone.cpp" />
+    <ClCompile Include="TeamBaseZone.cpp" />
     <ClCompile Include="team_hierarchy_holder.cpp" />
     <ClCompile Include="TeleWhirlwind.cpp" />
     <ClCompile Include="ThornArtifact.cpp" />

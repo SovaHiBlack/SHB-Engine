@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: LevelChanger.h
-//	Created 	: 10.07.2003
-//  Modified 	: 10.07.2003
-//	Author		: Dmitriy Iassenev
 //	Description : Level change object
 ////////////////////////////////////////////////////////////////////////////
 
@@ -23,21 +20,21 @@ private:
 	fVector3									m_position;
 	fVector3									m_angles;
 	f32											m_entrance_time;
-	void				update_actor_invitation	( );
+	void				update_actor_invitation( );
 	bool										m_bSilentMode;
-	bool				get_reject_pos			(fVector3& p, fVector3& r);
+	bool				get_reject_pos(fVector3& p, fVector3& r);
 
 public:
-	virtual				~CLevelChanger			( );
-	virtual BOOL		net_Spawn				(CSE_Abstract* DC);
-	virtual void		net_Destroy				( );
-	virtual void		Center					(fVector3& C) const;
-	virtual f32			Radius					( ) const;
-	virtual void		shedule_Update			(u32 dt);
-	virtual void		feel_touch_new			(CObject* O);
-	virtual BOOL		feel_touch_contact		(CObject* O);
+	virtual				~CLevelChanger( );
+	virtual BOOL		net_Spawn(CSE_Abstract* DC);
+	virtual void		net_Destroy( );
+	virtual void		Center(fVector3& C) const;
+	virtual f32			Radius( ) const;
+	virtual void		shedule_Update(u32 dt);
+	virtual void		feel_touch_new(CObject* O);
+	virtual BOOL		feel_touch_contact(CObject* O);
 
-	virtual bool		IsVisibleForZones		( )
+	virtual bool		IsVisibleForZones( )
 	{
 		return false;
 	}

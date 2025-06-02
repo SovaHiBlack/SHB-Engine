@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: inventory_item.h
+//	Module 		: InventoryItem.h
 //	Created 	: 24.03.2003
 //  Modified 	: 29.01.2004
 //	Author		: Victor Reutsky, Yuri Dobronravin
@@ -74,7 +74,6 @@ public:
 
 	virtual pcstr				Name( );
 	virtual pcstr				NameShort( );
-//.	virtual pcstr				NameComplex			();
 	shared_str					ItemDescription( )
 	{
 		return m_Description;
@@ -212,7 +211,7 @@ public:
 	}
 	void				ChangeCondition(f32 fDeltaCondition);
 
-	virtual u32					GetSlot( )  const
+	virtual u32					GetSlot( ) const
 	{
 		return m_slot;
 	}

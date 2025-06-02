@@ -1,17 +1,16 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 #include "phcharacter.h"
 #include "Physics.h"
 #include "ExtendedGeom.h"
 #include "PHCapture.h"
 #include "Entity.h"
-#include "inventory_item.h"
+//#include "InventoryItem.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "Actor.h"
 #include "Inventory.h"
+
 extern	class CPHWorld	*ph_world;
-///////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////
+
 CPHCapture::CPHCapture	(CPHCharacter   *a_character, CPhysicsShellHolder	*a_taget_object)
 {
 	CPHUpdateObject::Activate();

@@ -7,6 +7,7 @@
 
 #include "script_callback_ex.h"
 #include "script_game_object.h"
+#include "InventoryItem.h"
 
 CInventoryBox::CInventoryBox()
 {
@@ -62,7 +63,7 @@ void CInventoryBox::net_Relcase(CObject* O)
 {
 	inherited::net_Relcase(O);
 }
-#include "inventory_item.h"
+
 void CInventoryBox::AddAvailableItems(TIItemContainer& items_container) const
 {
 	xr_vector<u16>::const_iterator it = m_items.begin();

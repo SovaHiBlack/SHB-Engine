@@ -2,7 +2,7 @@
 #include "alife_space.h"
 #include "Hit.h"
 #include "PHDestroyable.h"
-#include "mincer.h"
+#include "Mincer.h"
 #include "hudmanager.h"
 #include "xrmessages.h"
 #include "level.h"
@@ -160,4 +160,16 @@ void CMincer::AffectPullAlife(CEntityAlive* EA, const fVector3& throw_in_dir, f3
 f32 CMincer::BlowoutRadiusPercent(CPhysicsShellHolder* GO)
 {
 	return	(GO->CLS_ID != CLSID_OBJECT_ACTOR ? m_fBlowoutRadiusPercent : m_fActorBlowoutRadiusPercent);
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CMincer::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CMincer, CGameObject>("CMincer")
+				.def(constructor<>( ))
+		];
 }

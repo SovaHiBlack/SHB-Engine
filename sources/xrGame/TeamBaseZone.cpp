@@ -1,13 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: team_base_zone.h
-//	Created 	: 27.04.2004
-//  Modified 	: 27.04.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: TeamBaseZone.cpp
 //	Description : Team base zone object
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "team_base_zone.h"
+#include "TeamBaseZone.h"
 #include "xrserver_objects_alife_monsters.h"
 #include "Hit.h"
 #include "Actor.h"
@@ -76,11 +73,11 @@ BOOL CTeamBaseZone::net_Spawn(CSE_Abstract* DC)
 
 	m_Team = l_tpALifeScriptZone->m_team;
 
-	BOOL						bOk = inherited::net_Spawn(DC);
+	BOOL bOk = inherited::net_Spawn(DC);
 	if (bOk)
 	{
 		l_pShape->ComputeBounds( );
-		fVector3					P;
+		fVector3 P;
 		XFORM( ).transform_tiny(P, CFORM( )->getSphere( ).P);
 		setEnabled(TRUE);
 	}
@@ -99,7 +96,7 @@ void CTeamBaseZone::shedule_Update(u32 dt)
 	inherited::shedule_Update(dt);
 
 	const fSphere& s = CFORM( )->getSphere( );
-	fVector3						P;
+	fVector3 P;
 	XFORM( ).transform_tiny(P, s.P);
 	feel_touch_update(P, s.R);
 }
@@ -108,7 +105,7 @@ void CTeamBaseZone::feel_touch_new(CObject* tpObject)
 {
 	if (OnServer( ) && tpObject->CLS_ID == CLSID_OBJECT_ACTOR)
 	{
-		CNetPacket			P_;
+		CNetPacket P_;
 
 		u_EventGen(P_, GE_GAME_EVENT, ID( ));
 		P_.w_u16(GAME_EVENT_PLAYER_ENTER_TEAM_BASE);
@@ -122,7 +119,7 @@ void CTeamBaseZone::feel_touch_delete(CObject* tpObject)
 {
 	if (OnServer( ) && tpObject->CLS_ID == CLSID_OBJECT_ACTOR)
 	{
-		CNetPacket			P_;
+		CNetPacket P_;
 		u_EventGen(P_, GE_GAME_EVENT, ID( ));
 		P_.w_u16(GAME_EVENT_PLAYER_LEAVE_TEAM_BASE);
 		P_.w_u16(tpObject->ID( ));
@@ -142,9 +139,16 @@ BOOL CTeamBaseZone::feel_touch_contact(CObject* O)
 extern	flags32	dbg_net_Draw_Flags;
 void CTeamBaseZone::OnRender( )
 {
-	if (!bDebug) return;
-	if (!(dbg_net_Draw_Flags.is_any((1 << 3)))) return;
-//	RCache.OnFrameEnd();
+	if (!bDebug)
+	{
+		return;
+	}
+
+	if (!(dbg_net_Draw_Flags.is_any((1 << 3))))
+	{
+		return;
+	}
+
 	fVector3 l_half;
 	l_half.set(0.5f, 0.5f, 0.5f);
 	fMatrix4x4 l_ball;

@@ -17,7 +17,7 @@
 #		include "custommonster.h"
 #		include "ai/stalker/ai_stalker.h"
 #		include "ui/uiwindow.h"
-#		include "customzone.h"
+#		include "CustomZone.h"
 #		include "Weapon.h"
 #		include "CameraEffector.h"
 #	endif

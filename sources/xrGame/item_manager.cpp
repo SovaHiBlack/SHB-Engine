@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "item_manager.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 #include "custommonster.h"
 #include "ai_object_location.h"
 #include "level_graph.h"

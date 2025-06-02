@@ -10,7 +10,7 @@
 #include "attachment_owner.h"
 #include "attachable_item.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 #include "physicsshellholder.h"
 
 CAttachmentOwner::~CAttachmentOwner()

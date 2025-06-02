@@ -22,7 +22,7 @@
 #include "script_process.h"
 #include "script_engine.h"
 #include "script_engine_space.h"
-#include "team_base_zone.h"
+#include "TeamBaseZone.h"
 #include "InfoPortion.h"
 #include "patrol_path_storage.h"
 #include "date_time.h"

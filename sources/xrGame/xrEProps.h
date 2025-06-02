@@ -1,17 +1,12 @@
-#ifndef xrEPropsH
-#define xrEPropsH
+#pragma once
 
-#ifdef XR_EPROPS_EXPORTS
-#define XR_EPROPS_API __declspec(dllexport)
-#else
-#	ifndef XR_EPROPS_API
-#		define XR_EPROPS_API __declspec(dllimport)
-#	endif
+#ifndef EPROPS_API
+#	define EPROPS_API __declspec(dllimport)
 #endif
 
 #include "PropertiesListTypes.h"
 #include "ItemListTypes.h"
-										
+
 enum EItemType{
 	TYPE_INVALID= -1,
 	TYPE_FOLDER	= 0,
@@ -53,7 +48,7 @@ IC shared_str PrepareKey (pcstr pref0, pcstr pref1, pcstr pref2, pcstr key)
 //------------------------------------------------------------------------------
 // Properties
 //------------------------------------------------------------------------------
-class XR_EPROPS_API IPropHelper{
+class EPROPS_API IPropHelper{
 public:
 	virtual PropItem* 			__stdcall	FindItem			(PropItemVec& items, shared_str key, EPropType type=PROP_UNDEF)=0;
 public:
@@ -126,13 +121,10 @@ extern IPropHelper &PHelper();
 //------------------------------------------------------------------------------
 // List
 //------------------------------------------------------------------------------
-class XR_EPROPS_API IListHelper{
+class EPROPS_API IListHelper{
 public:
 	virtual ListItem* 			__stdcall	FindItem			(ListItemsVec& items, pcstr key)=0;
 	virtual bool 				__stdcall	NameAfterEdit		(ListItem* sender, pcstr value, shared_str& edit_val)=0;
 public:
 	virtual ListItem*			__stdcall	CreateItem			(ListItemsVec& items, pcstr key, int type, u32 item_flags=0, void* object=0)=0;
 };
-
-#endif
- 

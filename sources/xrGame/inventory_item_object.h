@@ -9,7 +9,7 @@
 #pragma once
 
 #include "physic_item.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 
 class CInventoryItemObject :
 	public CInventoryItem,

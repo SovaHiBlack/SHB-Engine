@@ -14,7 +14,7 @@
 #include "../../ef_storage.h"
 #include "../../stalker_decision_space.h"
 #include "../../script_game_object.h"
-#include "../../customzone.h"
+#include "../../CustomZone.h"
 #include "../../..\XR_3DA\skeletonanimated.h"
 #include "../../agent_manager.h"
 #include "../../stalker_animation_manager.h"
@@ -46,10 +46,6 @@
 #include "../../stalker_animation_names.h"
 #include "../../agent_corpse_manager.h"
 #include "../../CharacterPhysicsSupport.h"
-#include "../../stalker_planner.h"
-#include "../../stalker_decision_space.h"
-#include "../../script_game_object.h"
-#include "../../inventory.h"
 
 using namespace StalkerSpace;
 

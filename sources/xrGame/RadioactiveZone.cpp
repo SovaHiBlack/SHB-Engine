@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "radioactivezone.h"
+#include "RadioactiveZone.h"
 #include "hudmanager.h"
 #include "level.h"
 #include "xrmessages.h"

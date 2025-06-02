@@ -7,7 +7,7 @@
 
 #include "CustomRocket.h"
 #include "Explosive.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 
 class CExplosiveRocket : 
 			public CCustomRocket,
@@ -18,8 +18,8 @@ private:
 	typedef CCustomRocket inherited;
 	friend CRocketLauncher;
 public:
-	CExplosiveRocket(void);
-	virtual ~CExplosiveRocket(void);
+	CExplosiveRocket( );
+	virtual ~CExplosiveRocket( );
 	virtual DLL_Pure	*_construct	();
 public:
 	virtual CExplosive					*cast_explosive			()						{return this;}

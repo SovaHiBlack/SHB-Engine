@@ -14,8 +14,9 @@ class CZoneEffector;
 //информация о объекте, находящемся в зоне
 struct SZoneObjectInfo
 {
-	SZoneObjectInfo():object(NULL),zone_ignore(false),time_in_zone(0),hit_num(0),total_damage(0),small_object(false),nonalive_object(false) {}
-	CGameObject*			object; 
+	SZoneObjectInfo( ) :object(NULL), zone_ignore(false), time_in_zone(0), hit_num(0), total_damage(0), small_object(false), nonalive_object(false)
+	{ }
+	CGameObject* object;
 	bool					small_object;
 	bool					nonalive_object;
 	//игнорирование объекта в зоне
@@ -29,7 +30,10 @@ struct SZoneObjectInfo
 	//количество повреждений нанесенных зоной
 	f32					total_damage;
 
-	bool operator == (const CGameObject* O) const {return object==O;}
+	bool operator == (const CGameObject* O) const
+	{
+		return object == O;
+	}
 };
 
 class CCustomZone : public CSpaceRestrictor, public Feel::Touch
@@ -38,47 +42,59 @@ private:
 	typedef	CSpaceRestrictor inherited;
 
 public:
-	CZoneEffector*		m_effector;
+	CZoneEffector* m_effector;
 
 public:
-						CCustomZone						(void);
-	virtual				~CCustomZone					();
+	CCustomZone(void);
+	virtual				~CCustomZone( );
 
-	virtual		BOOL	net_Spawn						(CSE_Abstract* DC);
-	virtual		void	net_Import						(CNetPacket& P);
-	virtual		void	net_Export						(CNetPacket& P);
-	virtual		void	Load							(pcstr section);
-	virtual		void	net_Destroy						();
-	
-	virtual		void	UpdateCL						();
-	virtual		void	UpdateWorkload					(u32	dt	);				// related to fast-mode optimizations
-	virtual		void	shedule_Update					(u32	dt	);
-	virtual		void	enter_Zone						(SZoneObjectInfo& io)		{}
-	virtual		void	exit_Zone						(SZoneObjectInfo& io);
-	virtual		void	feel_touch_new					(CObject* O	);
-	virtual		void	feel_touch_delete				(CObject* O	);
-	virtual		BOOL	feel_touch_contact				(CObject* O	);
-	virtual		BOOL	feel_touch_on_contact			(CObject* O );
-	virtual		f32		effective_radius				();
-	virtual		f32		distance_to_center				(CObject* O	);
-	virtual		void	Postprocess						(f32 val)					{}
-	virtual		void	net_Relcase						(CObject* O	);
-	virtual		void	OnEvent							(CNetPacket& P, u16 type);
-				void	OnOwnershipTake					(u16 id);
+	virtual		BOOL	net_Spawn(CSE_Abstract* DC);
+	virtual		void	net_Import(CNetPacket& P);
+	virtual		void	net_Export(CNetPacket& P);
+	virtual		void	Load(pcstr section);
+	virtual		void	net_Destroy( );
 
-				f32		GetMaxPower						()							{return m_fMaxPower;}
-				void	SetMaxPower						(f32 p)					{m_fMaxPower = p;}
+	virtual		void	UpdateCL( );
+	virtual		void	UpdateWorkload(u32	dt);				// related to fast-mode optimizations
+	virtual		void	shedule_Update(u32	dt);
+	virtual		void	enter_Zone(SZoneObjectInfo& io)
+	{ }
+	virtual		void	exit_Zone(SZoneObjectInfo& io);
+	virtual		void	feel_touch_new(CObject* O);
+	virtual		void	feel_touch_delete(CObject* O);
+	virtual		BOOL	feel_touch_contact(CObject* O);
+	virtual		BOOL	feel_touch_on_contact(CObject* O);
+	virtual		f32		effective_radius( );
+	virtual		f32		distance_to_center(CObject* O);
+	virtual		void	Postprocess(f32 val)
+	{ }
+	virtual		void	net_Relcase(CObject* O);
+	virtual		void	OnEvent(CNetPacket& P, u16 type);
+	void	OnOwnershipTake(u16 id);
+
+	f32		GetMaxPower( )
+	{
+		return m_fMaxPower;
+	}
+	void	SetMaxPower(f32 p)
+	{
+		m_fMaxPower = p;
+	}
 
 	//вычисление силы хита в зависимости от расстояния до центра зоны
 	//относительный размер силы (от 0 до 1)
-	virtual		f32		RelativePower					(f32 dist);
+	virtual		f32		RelativePower(f32 dist);
 	//абсолютный размер
-				f32		Power							(f32 dist);
+	f32		Power(f32 dist);
 
-	virtual CCustomZone	*cast_custom_zone				()							{return this;}
+	virtual CCustomZone* cast_custom_zone( )
+	{
+		return this;
+	}
 
 	//различные состояния в которых может находиться зона
-	typedef enum {
+	typedef enum
+	{
 		eZoneStateIdle = 0,		//состояние зоны, когда внутри нее нет активных объектов
 		eZoneStateAwaking,		//пробуждение зоны (объект попал в зону)
 		eZoneStateBlowout,		//выброс
@@ -90,21 +106,21 @@ public:
 protected:
 	enum EZoneFlags
 	{
-		eIgnoreNonAlive			=(1<<0),
-		eIgnoreSmall			=(1<<1),
-		eIgnoreArtefact			=(1<<2),
-		eVisibleByDetector		=(1<<3),
-		eBlowoutWind			=(1<<4),
-		eBlowoutLight			=(1<<5),
-		eIdleLight				=(1<<6),
-		eSpawnBlowoutArtefacts	=(1<<7),
-		eUseOnOffTime			=(1<<8)
+		eIgnoreNonAlive = (1 << 0),
+		eIgnoreSmall = (1 << 1),
+		eIgnoreArtefact = (1 << 2),
+		eVisibleByDetector = (1 << 3),
+		eBlowoutWind = (1 << 4),
+		eBlowoutLight = (1 << 5),
+		eIdleLight = (1 << 6),
+		eSpawnBlowoutArtefacts = (1 << 7),
+		eUseOnOffTime = (1 << 8)
 	};
 	u32					m_owner_id;		//if created from artefact
 	u32					m_ttl;
 	flags32				m_zone_flags;
 	//список объетков, находящихся в зоне
-	CActor*				m_pLocalActor;
+	CActor* m_pLocalActor;
 
 	//максимальная сила заряда зоны
 	f32					m_fMaxPower;
@@ -123,7 +139,7 @@ protected:
 	//текущее время пребывания зоны в определенном состоянии 
 	s32					m_iStateTime;
 	s32					m_iPreviousStateTime;
-	
+
 	u32					m_TimeToDisable;
 	u32					m_TimeToEnable;
 	u32					m_TimeShift;
@@ -135,35 +151,42 @@ protected:
 	typedef	svector<s32, eZoneStateMax>					StateTimeSVec;
 	StateTimeSVec		m_StateTime;
 
-	virtual		void		SwitchZoneState				(EZoneState new_state);
-	virtual		void		OnStateSwitch				(EZoneState new_state);
-	virtual		void		CheckForAwaking				();
+	virtual		void		SwitchZoneState(EZoneState new_state);
+	virtual		void		OnStateSwitch(EZoneState new_state);
+	virtual		void		CheckForAwaking( );
 	//обработка зоны в различных состояниях
-	virtual		bool		IdleState					();
-	virtual		bool		AwakingState				();
-	virtual		bool		BlowoutState				();
-	virtual		bool		AccumulateState				();
+	virtual		bool		IdleState( );
+	virtual		bool		AwakingState( );
+	virtual		bool		BlowoutState( );
+	virtual		bool		AccumulateState( );
 
-				bool		Enable						();
-				bool		Disable						();
-				void		UpdateOnOffState			();
-	virtual		void		GoEnabledState				();
-	virtual		void		GoDisabledState				();
+	bool		Enable( );
+	bool		Disable( );
+	void		UpdateOnOffState( );
+	virtual		void		GoEnabledState( );
+	virtual		void		GoDisabledState( );
 
 public:
-				bool		IsEnabled					()	{return m_eZoneState != eZoneStateDisabled; }
-				void		ZoneEnable					();	
-				void		ZoneDisable					();
-	EZoneState				ZoneState					() {return m_eZoneState;}
+	bool		IsEnabled( )
+	{
+		return m_eZoneState != eZoneStateDisabled;
+	}
+	void		ZoneEnable( );
+	void		ZoneDisable( );
+	EZoneState				ZoneState( )
+	{
+		return m_eZoneState;
+	}
 
 protected:
 	//воздействие зоной на объект
-	virtual		void		Affect						(SZoneObjectInfo* O)  {}
+	virtual		void		Affect(SZoneObjectInfo* O)
+	{ }
 
-	//воздействовать на все объекты в зоне
-	virtual		void		AffectObjects				();
+//воздействовать на все объекты в зоне
+	virtual		void		AffectObjects( );
 
-	u32						m_dwAffectFrameNum;	
+	u32						m_dwAffectFrameNum;
 
 	u32						m_dwDeltaTime;
 	u32						m_dwPeriod;
@@ -177,8 +200,8 @@ protected:
 	u32						m_dwBlowoutLightTime;
 	u32						m_dwBlowoutSoundTime;
 	u32						m_dwBlowoutExplosionTime;
-	void					UpdateBlowout				();
-	
+	void					UpdateBlowout( );
+
 	//ветер
 	bool					m_bBlowoutWindActive;
 	u32						m_dwBlowoutWindTimeStart;
@@ -187,10 +210,10 @@ protected:
 	//сила ветра (увеличение текущего) (0,1) когда в аномалию попадает актер
 	f32						m_fBlowoutWindPowerMax;
 	f32						m_fStoreWindPower;
-				
-	void					StartWind					();
-	void					StopWind					();
-	void					UpdateWind					();
+
+	void					StartWind( );
+	void					StopWind( );
+	void					UpdateWind( );
 
 	//время, через которое, зона перестает реагировать 
 	//на объект мертвый объект (-1 если не указано)
@@ -228,7 +251,7 @@ protected:
 	ref_sound				m_entrance_sound;
 
 	//объект партиклов обычного состояния зоны
-	CParticlesObject*		m_pIdleParticles;
+	CParticlesObject* m_pIdleParticles;
 
 	//////////////////////////////
 	//подсветка аномалии
@@ -239,11 +262,11 @@ protected:
 	f32						m_fIdleLightRange;
 	f32						m_fIdleLightHeight;
 	f32						m_fIdleLightRangeDelta;
-	CLightAnimItem*			m_pIdleLAnim;
+	CLightAnimItem* m_pIdleLAnim;
 
-	void					StartIdleLight				();
-	void					StopIdleLight				();
-	void					UpdateIdleLight				();
+	void					StartIdleLight( );
+	void					StopIdleLight( );
+	void					UpdateIdleLight( );
 
 	//подсветка выброса
 	ref_light				m_pLight;
@@ -253,66 +276,75 @@ protected:
 	f32						m_fLightTimeLeft;
 	f32						m_fLightHeight;
 
-	void					StartBlowoutLight			();
-	void					StopBlowoutLight			();
-	void					UpdateBlowoutLight			();
+	void					StartBlowoutLight( );
+	void					StopBlowoutLight( );
+	void					UpdateBlowoutLight( );
 
 	//список партиклов для объетов внутри зоны
-	DEFINE_VECTOR(SZoneObjectInfo,OBJECT_INFO_VEC,OBJECT_INFO_VEC_IT);
+	DEFINE_VECTOR(SZoneObjectInfo, OBJECT_INFO_VEC, OBJECT_INFO_VEC_IT);
 	OBJECT_INFO_VEC			m_ObjectInfoMap;
 
-	void					CreateHit					(	u16 id_to, 
-															u16 id_from, 
-															const fVector3& hit_dir,
-														 f32 hit_power,
-															s16 bone_id, 
-															const fVector3& pos_in_bone,
-														 f32 hit_impulse,
-															ALife::EHitType hit_type);
-		
+	void					CreateHit(u16 id_to,
+									  u16 id_from,
+									  const fVector3& hit_dir,
+									  f32 hit_power,
+									  s16 bone_id,
+									  const fVector3& pos_in_bone,
+									  f32 hit_impulse,
+									  ALife::EHitType hit_type);
 
-	virtual	void	Hit					(SHit* pHDS);
+
+	virtual	void	Hit(SHit* pHDS);
 
 
 	//для визуализации зоны
-				void		PlayIdleParticles			();
-				void		StopIdleParticles			();
-				void		PlayAccumParticles			();
-				void		PlayAwakingParticles		();
-				void		PlayBlowoutParticles		();
-				void		PlayEntranceParticles		(CGameObject* pObject);
-				void		PlayBulletParticles			(fVector3& pos );
+	void		PlayIdleParticles( );
+	void		StopIdleParticles( );
+	void		PlayAccumParticles( );
+	void		PlayAwakingParticles( );
+	void		PlayBlowoutParticles( );
+	void		PlayEntranceParticles(CGameObject* pObject);
+	void		PlayBulletParticles(fVector3& pos);
 
-				void		PlayHitParticles			(CGameObject* pObject);
+	void		PlayHitParticles(CGameObject* pObject);
 
-				void		PlayObjectIdleParticles		(CGameObject* pObject);
-				void		StopObjectIdleParticles		(CGameObject* pObject);
+	void		PlayObjectIdleParticles(CGameObject* pObject);
+	void		StopObjectIdleParticles(CGameObject* pObject);
 
-	virtual		bool		EnableEffector				() {return false;}
+	virtual		bool		EnableEffector( )
+	{
+		return false;
+	}
 
-	virtual		bool		IsVisibleForZones			() { return false;}
+	virtual		bool		IsVisibleForZones( )
+	{
+		return false;
+	}
 
-	//обновление, если зона передвигается
-	virtual		void		OnMove						();
+//обновление, если зона передвигается
+	virtual		void		OnMove( );
 	fVector3					m_vPrevPos;
 	u32						m_dwLastTimeMoved;
 
 	//видимость зоны детектором
 public:
-	bool		VisibleByDetector			() {return !!m_zone_flags.test(eVisibleByDetector);}
+	bool		VisibleByDetector( )
+	{
+		return !!m_zone_flags.test(eVisibleByDetector);
+	}
 
-	//////////////////////////////////////////////////////////////////////////
-	// список артефактов
+//////////////////////////////////////////////////////////////////////////
+// список артефактов
 protected:
-	virtual			void	SpawnArtefact				();
+	virtual			void	SpawnArtefact( );
 
 	//рождение артефакта в зоне, во время ее срабатывания и присоединение его к зоне
-					void	BornArtefact				();
-	//выброс артефактов из зоны
-					void	ThrowOutArtefact			(CArtefact* pArtefact);
-	
-					void	PrefetchArtefacts			();
-	virtual BOOL		AlwaysTheCrow		();
+	void	BornArtefact( );
+//выброс артефактов из зоны
+	void	ThrowOutArtefact(CArtefact* pArtefact);
+
+	void	PrefetchArtefacts( );
+	virtual BOOL		AlwaysTheCrow( );
 
 protected:
 	DEFINE_VECTOR(CArtefact*, ARTEFACT_VECTOR, ARTEFACT_VECTOR_IT);
@@ -348,21 +380,26 @@ protected:
 	BOOL					m_b_always_fastmode;
 
 public:
-	virtual u32				ef_anomaly_type				() const;
-	virtual u32				ef_weapon_type				() const;
-	virtual bool			register_schedule			() const {return true;}
-
-	// optimization FAST/SLOW mode
-public:						
-	BOOL					o_fastmode;		
-	IC void					o_switch_2_fast				()	{
-		if (o_fastmode)		return	;
-		o_fastmode			= TRUE	;
-		processing_activate			();
+	virtual u32				ef_anomaly_type( ) const;
+	virtual u32				ef_weapon_type( ) const;
+	virtual bool			register_schedule( ) const
+	{
+		return true;
 	}
-	IC void					o_switch_2_slow				()	{
-		if (!o_fastmode)	return	;
-		o_fastmode			= FALSE	;
-		processing_deactivate		();
+
+// optimization FAST/SLOW mode
+public:
+	BOOL					o_fastmode;
+	IC void					o_switch_2_fast( )
+	{
+		if (o_fastmode)		return;
+		o_fastmode = TRUE;
+		processing_activate( );
+	}
+	IC void					o_switch_2_slow( )
+	{
+		if (!o_fastmode)	return;
+		o_fastmode = FALSE;
+		processing_deactivate( );
 	}
 };

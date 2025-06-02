@@ -1,5 +1,5 @@
 #pragma once
-#include "customzone.h"
+#include "CustomZone.h"
 
 class CRadioactiveZone : public CCustomZone
 {
@@ -17,9 +17,9 @@ public:
 		return true;
 	}
 
-	virtual		void	feel_touch_new(CObject* O);
-	virtual		void	UpdateWorkload(u32	dt);				// related to fast-mode optimizations
-	virtual		BOOL	feel_touch_contact(CObject* O);
+	virtual void	feel_touch_new(CObject* O);
+	virtual void	UpdateWorkload(u32	dt);				// related to fast-mode optimizations
+	virtual BOOL	feel_touch_contact(CObject* O);
 
 protected:
 	virtual bool BlowoutState( );

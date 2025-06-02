@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: object_factory_register.cpp
-//	Created 	: 27.05.2004
-//  Modified 	: 27.05.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Object factory
 ////////////////////////////////////////////////////////////////////////////
 
@@ -117,19 +114,19 @@
 
 #	include "explosiverocket.h"
 
-#	include "customzone.h"
-#	include "mosquitobald.h"
-#	include "mincer.h"
-#	include "gravizone.h"
-#	include "radioactivezone.h"
+#	include "CustomZone.h"
+#	include "MosquitoBald.h"
+#	include "Mincer.h"
+#	include "GraviZone.h"
+#	include "RadioactiveZone.h"
 #	include "LevelChanger.h"
 #	include "ScriptZone.h"
-#	include "team_base_zone.h"
-#	include "torridZone.h"
+#	include "TeamBaseZone.h"
+#	include "TorridZone.h"
 #	include "VisualZone.h"
-#	include "hairszone.h"
+#	include "HairsZone.h"
 #	include "amebazone.h"
-#	include "nogravityzone.h"
+#	include "NoGravityZone.h"
 #	include "simpledetector.h"
 
 #	include "torch.h"
@@ -151,7 +148,7 @@
 #	include "UIGame.h"
 #	include	"climableobject.h"
 #	include "SpaceRestrictor.h"
-#	include "smart_zone.h"
+#	include "SmartZone.h"
 #	include "InventoryBox.h"
 
 #define ADD(a,b,c,d)			add<a,b>(c,d)

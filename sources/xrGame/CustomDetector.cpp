@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "customdetector.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "hudmanager.h"
 #include "artifact.h"
 #include "inventory.h"

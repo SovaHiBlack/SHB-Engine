@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: SpaceRestrictor.h
-//	Created 	: 17.08.2004
-//  Modified 	: 17.08.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Space restrictor
 ////////////////////////////////////////////////////////////////////////////
 
@@ -44,6 +41,7 @@ private:
 
 private:
 	u8					m_space_restrictor_type;
+
 private:
 	IC		void							actual(bool value) const;
 	void									prepare( ) const;
@@ -59,8 +57,8 @@ public:
 	virtual f32								Radius( ) const;
 	virtual BOOL							UsedAI_Locations( );
 	virtual void							spatial_move( );
-	IC		bool							actual( ) const;
-	virtual CSpaceRestrictor* cast_restrictor( )
+	IC bool									actual( ) const;
+	virtual CSpaceRestrictor*				cast_restrictor( )
 	{
 		return this;
 	}
@@ -71,8 +69,8 @@ public:
 
 	IC RestrictionSpace::ERestrictorTypes	restrictor_type( ) const;
 
-public:
 #ifdef DEBUG
+public:
 	virtual void							OnRender( );
 #endif // def DEBUG
 

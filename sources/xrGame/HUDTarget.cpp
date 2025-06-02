@@ -22,7 +22,7 @@
 #include "string_table.h"
 #include "EntityAlive.h"
 
-#include "inventory_item.h"
+//#include "InventoryItem.h"
 #include "inventory.h"
 
 u32 C_ON_ENEMY		D3DCOLOR_XRGB(0xff, 0, 0);

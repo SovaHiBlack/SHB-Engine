@@ -4,26 +4,23 @@
 // электрический разр€д
 // «она восстанавливает зар€д через определенное врем€
 // (через m_dwPeriod зар€жаетс€ с 0 до m_fMaxPower)
-//
 /////////////////////////////////////////////////////
 #pragma once
 
-#include "gravizone.h"
+#include "GraviZone.h"
 #include "telewhirlwind.h"
 #include "PhysicsShellHolder.h"
 #include "script_export_space.h"
 #include "PHDestroyable.h"
 
-class CMincer :
-	public CBaseGraviZone,
-	public CPHDestroyableNotificator
+class CMincer : public CBaseGraviZone, public CPHDestroyableNotificator
 {
 private:
 	typedef CBaseGraviZone inherited;
-	CTeleWhirlwind m_telekinetics;
-	shared_str	   m_torn_particles;
-	ref_sound	   m_tearing_sound;
-	f32		   m_fActorBlowoutRadiusPercent;
+	CTeleWhirlwind			m_telekinetics;
+	shared_str				m_torn_particles;
+	ref_sound				m_tearing_sound;
+	f32						m_fActorBlowoutRadiusPercent;
 
 public:
 	virtual CTelekinesis& Telekinesis( )
@@ -53,6 +50,7 @@ public:
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 add_to_type_list(CMincer)
 #undef script_type_list
 #define script_type_list save_type_list(CMincer)

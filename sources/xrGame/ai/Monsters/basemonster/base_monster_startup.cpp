@@ -24,7 +24,7 @@
 #include "../../../alife_simulator.h"
 #include "../../../alife_object_registry.h"
 #include "../../../xrServer.h"
-#include "../../../inventory_item.h"
+#include "../../../InventoryItem.h"
 #include "../../../xrServer_Objects_ALife.h"
 
 void CBaseMonster::Load(pcstr section)

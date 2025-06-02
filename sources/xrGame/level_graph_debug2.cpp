@@ -20,7 +20,7 @@
 #include "cover_point.h"
 #include "cover_manager.h"
 #include "cover_evaluators.h"
-#include "team_base_zone.h"
+#include "TeamBaseZone.h"
 #include "alife_simulator.h"
 #include "alife_graph_registry.h"
 #include "alife_object_registry.h"

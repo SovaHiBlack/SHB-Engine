@@ -1,5 +1,6 @@
 #pragma once
-#include "inventory_item.h"
+
+#include "InventoryItem.h"
 
 class CInventory;
 class CInventoryItem;
@@ -178,6 +179,7 @@ public:
 	}
 	void				Items_SetCurrentEntityHud(bool current_entity);
 	bool				isBeautifulForActiveSlot(CInventoryItem* pIItem);
+
 protected:
 	void					UpdateDropTasks( );
 	void					UpdateDropItem(PIItem pIItem);

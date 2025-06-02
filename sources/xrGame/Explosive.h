@@ -6,7 +6,7 @@
 
 #include "..\XR_3DA\Render.h"
 #include "..\XR_3DA\feel_touch.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 #include "ai_sounds.h"
 #include "script_export_space.h"
 #include "DamageSource.h"

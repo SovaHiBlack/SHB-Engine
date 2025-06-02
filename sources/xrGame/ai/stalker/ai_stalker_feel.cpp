@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "ai_stalker.h"
-#include "../../inventory_item.h"
+#include "../../InventoryItem.h"
 #include "../../memory_manager.h"
 #include "../../visual_memory_manager.h"
 #include "../../sight_manager.h"

@@ -8,16 +8,16 @@
 
 class CHairsZone : public CVisualZone
 {
-	typedef				CVisualZone		inherited;
+	typedef CVisualZone		inherited;
 
 public:
-	virtual			void		Affect(SZoneObjectInfo* O);
-	virtual			void		Load(pcstr section);
+	virtual void		Affect(SZoneObjectInfo* O);
+	virtual void		Load(pcstr section);
 
 protected:
-	f32		m_min_speed_to_react;
-	virtual			bool		BlowoutState( );
-	virtual			void		CheckForAwaking( );
+	f32 m_min_speed_to_react;
+	virtual bool		BlowoutState( );
+	virtual void		CheckForAwaking( );
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

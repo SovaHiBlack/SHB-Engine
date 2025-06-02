@@ -4689,7 +4689,7 @@
     <ClInclude Include="eatable_item_object.h">
       <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
     </ClInclude>
-    <ClInclude Include="inventory_item.h">
+    <ClInclude Include="InventoryItem.h">
       <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
     </ClInclude>
     <ClInclude Include="inventory_item_impl.h">
@@ -5046,7 +5046,7 @@
     <ClInclude Include="ScriptZone.h">
       <Filter>Core\Client\Objects\zones\ScriptZone</Filter>
     </ClInclude>
-    <ClInclude Include="team_base_zone.h">
+    <ClInclude Include="TeamBaseZone.h">
       <Filter>Core\Client\Objects\zones\TeamBaseZone</Filter>
     </ClInclude>
     <ClInclude Include="TorridZone.h">
@@ -5070,7 +5070,7 @@
     <ClInclude Include="NoGravityZone.h">
       <Filter>Core\Client\Objects\zones\NoGravityZone</Filter>
     </ClInclude>
-    <ClInclude Include="smart_zone.h">
+    <ClInclude Include="SmartZone.h">
       <Filter>Core\Client\Objects\zones\SmartZone</Filter>
     </ClInclude>
     <ClInclude Include="map_location.h">
@@ -7436,7 +7436,7 @@
     <ClCompile Include="eatable_item_object.cpp">
       <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
     </ClCompile>
-    <ClCompile Include="inventory_item.cpp">
+    <ClCompile Include="InventoryItem.cpp">
       <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
     </ClCompile>
     <ClCompile Include="inventory_item_object.cpp">
@@ -7775,13 +7775,7 @@
     <ClCompile Include="Mincer.cpp">
       <Filter>Core\Client\Objects\zones\Mincer</Filter>
     </ClCompile>
-    <ClCompile Include="mincer_script.cpp">
-      <Filter>Core\Client\Objects\zones\Mincer</Filter>
-    </ClCompile>
     <ClCompile Include="MosquitoBald.cpp">
-      <Filter>Core\Client\Objects\zones\MosquitoBald</Filter>
-    </ClCompile>
-    <ClCompile Include="MosquitoBald_script.cpp">
       <Filter>Core\Client\Objects\zones\MosquitoBald</Filter>
     </ClCompile>
     <ClCompile Include="RadioactiveZone.cpp">
@@ -7790,7 +7784,7 @@
     <ClCompile Include="ScriptZone.cpp">
       <Filter>Core\Client\Objects\zones\ScriptZone</Filter>
     </ClCompile>
-    <ClCompile Include="team_base_zone.cpp">
+    <ClCompile Include="TeamBaseZone.cpp">
       <Filter>Core\Client\Objects\zones\TeamBaseZone</Filter>
     </ClCompile>
     <ClCompile Include="TorridZone.cpp">
@@ -7803,9 +7797,6 @@
       <Filter>Core\Client\Objects\zones\SpaceRestrictor</Filter>
     </ClCompile>
     <ClCompile Include="HairsZone.cpp">
-      <Filter>Core\Client\Objects\zones\HairsZone</Filter>
-    </ClCompile>
-    <ClCompile Include="HairsZone_script.cpp">
       <Filter>Core\Client\Objects\zones\HairsZone</Filter>
     </ClCompile>
     <ClCompile Include="AmebaZone.cpp">

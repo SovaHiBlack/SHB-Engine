@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: SpaceRestrictor.cpp
-//	Created 	: 17.08.2004
-//  Modified 	: 17.08.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Space restrictor
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -141,15 +138,15 @@ void CSpaceRestrictor::prepare( ) const
 
 	typedef xr_vector<CCF_Shape::shape_def> SHAPES;
 
-	SHAPES::const_iterator			I = shape->shapes.begin( );
-	SHAPES::const_iterator			E = shape->shapes.end( );
+	SHAPES::const_iterator I = shape->shapes.begin( );
+	SHAPES::const_iterator E = shape->shapes.end( );
 	for (; I != E; ++I)
 	{
 		switch ((*I).type)
 		{
 			case 0:
-			{ // sphere
-				fSphere					temp;
+			{	// sphere
+				fSphere temp;
 				const fSphere& sphere = (*I).data.sphere;
 				XFORM( ).transform_tiny(temp.P, sphere.P);
 				temp.R = sphere.R;
@@ -157,15 +154,15 @@ void CSpaceRestrictor::prepare( ) const
 			}
 			break;
 			case 1:
-			{ // box
+			{	// box
 				fMatrix4x4				sphere;
 				const fMatrix4x4& box = (*I).data.box;
 				sphere.mul_43(XFORM( ), box);
 
 				// Build points
-				fVector3					A;
-				fVector3				B[8];
-				CPlanes					temp;
+				fVector3 A;
+				fVector3 B[8];
+				CPlanes temp;
 				A.set(-0.5f, -0.5f, -0.5f);
 				sphere.transform_tiny(B[0], A);
 				A.set(-0.5f, -0.5f, +0.5f);
@@ -208,8 +205,8 @@ bool CSpaceRestrictor::prepared_inside(const fSphere& sphere) const
 	VERIFY(actual( ));
 
 	{
-		SPHERES::const_iterator		I = m_spheres.begin( );
-		SPHERES::const_iterator		E = m_spheres.end( );
+		SPHERES::const_iterator I = m_spheres.begin( );
+		SPHERES::const_iterator E = m_spheres.end( );
 		for (; I != E; ++I)
 		{
 			if (sphere.intersect(*I))
@@ -283,12 +280,11 @@ void CSpaceRestrictor::OnRender( )
 			{
 				fSphere& l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
-				//l_ball.scale(1.f, 1.f, 1.f);
+
 				fVector3 l_p;
 				XFORM( ).transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
-				//l_ball.mul(XFORM(), l_ball);
-				//l_ball.mul(l_ball, XFORM());
+
 				Level( ).debug_renderer( ).draw_ellipse(l_ball, Color);
 			}
 			break;

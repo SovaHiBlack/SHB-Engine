@@ -19,7 +19,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "agent_enemy_manager.h"
-#include "inventory_item.h"
+#include "InventoryItem.h"
 
 using namespace StalkerSpace;
 
@@ -89,7 +89,7 @@ void CStalkerActionCombatBase::aim_ready_force_full( )
 void CStalkerActionCombatBase::select_queue_params(const f32& distance, u32& min_queue_size, u32& max_queue_size, u32& min_queue_interval, u32& max_queue_interval) const
 {
 	/**/
-	int									weapon_type = 6;
+	s32									weapon_type = 6;
 	if (object( ).best_weapon( ))
 		weapon_type = object( ).best_weapon( )->object( ).ef_weapon_type( );
 

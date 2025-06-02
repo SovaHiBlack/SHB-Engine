@@ -10,7 +10,7 @@
 #include "stalker_alife_task_actions.h"
 #include "ai/stalker/ai_stalker.h"
 #include "ai/trader/ai_trader.h"
-#include "inventory_item.h"
+//#include "InventoryItem.h"
 #include "Weapon.h"
 #include "script_game_object.h"
 #include "inventory.h"

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 //#include "..\XR_3DA\Console.h"
-#include "customzone.h"
+#include "CustomZone.h"
 #include "Hit.h"
 //#include "PHDestroyable.h"
 #include "Actor.h"

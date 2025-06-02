@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: ScriptZone.cpp
-//	Created 	: 10.10.2003
-//  Modified 	: 10.10.2003
-//	Author		: Dmitriy Iassenev
 //	Description : Script zone object
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -19,7 +16,7 @@
 #	include "DebugRenderer.h"
 #endif
 
-#include "smart_zone.h"
+#include "SmartZone.h"
 
 CScriptZone::CScriptZone( )
 { }
@@ -126,6 +123,7 @@ void CScriptZone::OnRender( )
 			{
 				fSphere& l_sphere = l_pShape->data.sphere;
 				l_ball.scale(l_sphere.R, l_sphere.R, l_sphere.R);
+
 				fVector3 l_p;
 				XFORM( ).transform(l_p, l_sphere.P);
 				l_ball.translate_add(l_p);
