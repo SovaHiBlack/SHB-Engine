@@ -1108,7 +1108,7 @@ void CUIMainIngameWnd::RenderQuickInfos( )
 	}
 }
 
-void CUIMainIngameWnd::ReceiveNews(GAME_NEWS_DATA* news)
+void CUIMainIngameWnd::ReceiveNews(SGameNewsData* news)
 {
 	VERIFY(news->texture_name.size( ));
 	HUD( ).GetUI( )->m_pMessagesWnd->AddIconedPdaMessage(*(news->texture_name), news->tex_rect, news->SingleLineText( ), news->show_time);

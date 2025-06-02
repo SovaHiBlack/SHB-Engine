@@ -83,7 +83,7 @@ bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, fRect te
 
 bool _give_news	(pcstr text, pcstr texture_name, const fRect& tex_rect, int delay, int show_time)
 {
-	GAME_NEWS_DATA				news_data;
+	SGameNewsData				news_data;
 	news_data.news_text			= text;
 	if(show_time!=0)
 		news_data.show_time		= show_time;// override default

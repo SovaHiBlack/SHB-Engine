@@ -2,11 +2,13 @@
 
 //#include "Actor_flags.h"
 #include "hudmanager.h"
+
 #ifdef DEBUG
 #	include "ode_include.h"
 #	include "..\XR_3DA\StatGraph.h"
 #	include "PHDebug.h"
 #endif // DEBUG
+
 #include "alife_space.h"
 #include "Hit.h"
 #include "PHDestroyable.h"
@@ -74,12 +76,12 @@ static f32 ICoincidenced = 0.0f;
 static fBox3		bbStandBox;
 static fBox3		bbCrouchBox;
 
-flags32			psActorFlags = { 0 };
+flags32			psActorFlags = {0};
 
 CActor::CActor( ) : CEntityAlive( )
 {
-	encyclopedia_registry = xr_new<CEncyclopediaRegistryWrapper	>( );
-	game_news_registry = xr_new<CGameNewsRegistryWrapper		>( );
+	encyclopedia_registry = xr_new<CEncyclopediaRegistryWrapper>( );
+	game_news_registry = xr_new<CGameNewsRegistryWrapper>( );
 	// Cameras
 	cameras[eacFirstEye] = xr_new<CCameraFirstEye>(this);
 	cameras[eacFirstEye]->Load("actor_firsteye_cam");
@@ -338,7 +340,7 @@ void CActor::Load(pcstr section)
 		pcstr hit_name = ALife::g_cafHitType2String((ALife::EHitType)hit_type);
 		pcstr hit_snds = READ_IF_EXISTS(pSettings, r_string, hit_snd_sect, hit_name, "");
 		s32 cnt = _GetItemCount(hit_snds);
-		string128		tmp;
+		string128 tmp;
 		VERIFY(cnt != 0);
 		for (s32 i = 0; i < cnt; ++i)
 		{
@@ -346,7 +348,7 @@ void CActor::Load(pcstr section)
 			sndHit[hit_type].back( ).create(_GetItem(hit_snds, i, tmp), st_Effect, sg_SourceType);
 		}
 
-		string256		buf;
+		string256 buf;
 		::Sound->create(sndDie[0], strconcat(sizeof(buf), buf, *cName( ), "\\die0"), st_Effect, SOUND_TYPE_MONSTER_DYING);
 		::Sound->create(sndDie[1], strconcat(sizeof(buf), buf, *cName( ), "\\die1"), st_Effect, SOUND_TYPE_MONSTER_DYING);
 		::Sound->create(sndDie[2], strconcat(sizeof(buf), buf, *cName( ), "\\die2"), st_Effect, SOUND_TYPE_MONSTER_DYING);
@@ -407,9 +409,9 @@ void CActor::PHHit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_i
 
 struct playing_pred
 {
-	IC	bool	operator()			(ref_sound& s)
+	IC bool	operator()			(ref_sound& s)
 	{
-		return	(NULL != s._feedback( ));
+		return (NULL != s._feedback( ));
 	}
 };
 
@@ -420,7 +422,7 @@ void	CActor::Hit(SHit* pHDS)
 	SHit HDS = *pHDS;
 	if (HDS.hit_type < ALife::eHitTypeBurn || HDS.hit_type >= ALife::eHitTypeMax)
 	{
-		string256	err;
+		string256 err;
 		sprintf_s(err, "Unknown/unregistered hit type [%d]", HDS.hit_type);
 		R_ASSERT2(0, err);
 	}
@@ -519,61 +521,59 @@ void CActor::HitMark(f32 P, fVector3 dir, CObject* who, s16 element, fVector3 po
 	{
 		HUD( ).Hit(0, P, dir);
 
+		CEffectorCam* ce = Cameras( ).GetCamEffector((ECamEffectorType)effFireHit);
+		if (!ce)
 		{
-			CEffectorCam* ce = Cameras( ).GetCamEffector((ECamEffectorType)effFireHit);
-			if (!ce)
+			s32 id = -1;
+			fVector3 cam_pos;
+			fVector3 cam_dir;
+			fVector3 cam_norm;
+			cam_Active( )->Get(cam_pos, cam_dir, cam_norm);
+			cam_dir.normalize_safe( );
+			dir.normalize_safe( );
+
+			f32 ang_diff = angle_difference(cam_dir.getH( ), dir.getH( ));
+			fVector3 cp;
+			cp.crossproduct(cam_dir, dir);
+			bool bUp = (cp.y > 0.0f);
+
+			fVector3 cross;
+			cross.crossproduct(cam_dir, dir);
+			VERIFY(ang_diff >= 0.0f && ang_diff <= PI);
+
+			f32 _s1 = PI_DIV_8;
+			f32 _s2 = _s1 + PI_DIV_4;
+			f32 _s3 = _s2 + PI_DIV_4;
+			f32 _s4 = _s3 + PI_DIV_4;
+
+			if (ang_diff <= _s1)
 			{
-				s32 id = -1;
-				fVector3 cam_pos;
-				fVector3 cam_dir;
-				fVector3 cam_norm;
-				cam_Active( )->Get(cam_pos, cam_dir, cam_norm);
-				cam_dir.normalize_safe( );
-				dir.normalize_safe( );
-
-				f32 ang_diff = angle_difference(cam_dir.getH( ), dir.getH( ));
-				fVector3 cp;
-				cp.crossproduct(cam_dir, dir);
-				bool bUp = (cp.y > 0.0f);
-
-				fVector3 cross;
-				cross.crossproduct(cam_dir, dir);
-				VERIFY(ang_diff >= 0.0f && ang_diff <= PI);
-
-				f32 _s1 = PI_DIV_8;
-				f32 _s2 = _s1 + PI_DIV_4;
-				f32 _s3 = _s2 + PI_DIV_4;
-				f32 _s4 = _s3 + PI_DIV_4;
-
-				if (ang_diff <= _s1)
-				{
-					id = 2;
-				}
-				else if (ang_diff > _s1 && ang_diff <= _s2)
-				{
-					id = (bUp) ? 5 : 7;
-				}
-				else if (ang_diff > _s2 && ang_diff <= _s3)
-				{
-					id = (bUp) ? 3 : 1;
-				}
-				else if (ang_diff > _s3 && ang_diff <= _s4)
-				{
-					id = (bUp) ? 4 : 6;
-				}
-				else if (ang_diff > _s4)
-				{
-					id = 0;
-				}
-				else
-				{
-					VERIFY(0);
-				}
-
-				string64 sect_name;
-				sprintf_s(sect_name, "effector_fire_hit_%d", id);
-				AddEffector(this, effFireHit, sect_name, P / 100.0f);
+				id = 2;
 			}
+			else if (ang_diff > _s1 && ang_diff <= _s2)
+			{
+				id = (bUp) ? 5 : 7;
+			}
+			else if (ang_diff > _s2 && ang_diff <= _s3)
+			{
+				id = (bUp) ? 3 : 1;
+			}
+			else if (ang_diff > _s3 && ang_diff <= _s4)
+			{
+				id = (bUp) ? 4 : 6;
+			}
+			else if (ang_diff > _s4)
+			{
+				id = 0;
+			}
+			else
+			{
+				VERIFY(0);
+			}
+
+			string64 sect_name;
+			sprintf_s(sect_name, "effector_fire_hit_%d", id);
+			AddEffector(this, effFireHit, sect_name, P / 100.0f);
 		}
 	}
 }
@@ -682,7 +682,7 @@ void CActor::SwitchOutBorder(bool new_border_state)
 void CActor::g_Physics(fVector3& _accel, f32 jump, f32 dt)
 {
 	// Correct accel
-	fVector3						accel;
+	fVector3 accel;
 	accel.set(_accel);
 	hit_slowmo -= dt;
 	if (hit_slowmo < 0)
@@ -864,7 +864,7 @@ void CActor::UpdateCL( )
 	}
 }
 
-f32	NET_Jump = 0.0f;
+f32 NET_Jump = 0.0f;
 void CActor::shedule_Update(u32 DT)
 {
 	setSVU(OnServer( ));
@@ -890,7 +890,7 @@ void CActor::shedule_Update(u32 DT)
 
 	// 
 	clamp(DT, 0u, 100u);
-	f32	dt = f32(DT) / 1000.0f;
+	f32 dt = f32(DT) / 1000.0f;
 
 	// Check controls, create accel, prelimitary setup "mstate_real"
 
@@ -1159,7 +1159,7 @@ void CActor::g_PerformDrop( )
 }
 
 #ifdef DEBUG
-extern	BOOL	g_ShowAnimationInfo;
+extern BOOL	g_ShowAnimationInfo;
 #endif // DEBUG
 
 // HUD
@@ -1210,7 +1210,8 @@ void CActor::RenderIndicator(fVector3 dpos, f32 r1, f32 r2, ref_shader IndShader
 		return;
 	}
 
-	u32			dwOffset = 0, dwCount = 0;
+	u32 dwOffset = 0;
+	u32 dwCount = 0;
 	FVF::LIT* pv_start = (FVF::LIT*)RCache.Vertex.Lock(4, hFriendlyIndicator->vb_stride, dwOffset);
 	FVF::LIT* pv = pv_start;
 	// base rect
@@ -1240,11 +1241,16 @@ void CActor::RenderIndicator(fVector3 dpos, f32 r1, f32 r2, ref_shader IndShader
 	b.add(Vt, Vr);
 	c.invert(a);
 	d.invert(b);
-	pv->set(d.x + pos.x, d.y + pos.y, d.z + pos.z, 0xffffffff, 0.f, 1.f);        pv++;
-	pv->set(a.x + pos.x, a.y + pos.y, a.z + pos.z, 0xffffffff, 0.f, 0.f);        pv++;
-	pv->set(c.x + pos.x, c.y + pos.y, c.z + pos.z, 0xffffffff, 1.f, 1.f);        pv++;
-	pv->set(b.x + pos.x, b.y + pos.y, b.z + pos.z, 0xffffffff, 1.f, 0.f);        pv++;
-	// render	
+	pv->set(d.x + pos.x, d.y + pos.y, d.z + pos.z, 0xffffffff, 0.0f, 1.0f);
+	pv++;
+	pv->set(a.x + pos.x, a.y + pos.y, a.z + pos.z, 0xffffffff, 0.0f, 0.0f);
+	pv++;
+	pv->set(c.x + pos.x, c.y + pos.y, c.z + pos.z, 0xffffffff, 1.0f, 1.0f);
+	pv++;
+	pv->set(b.x + pos.x, b.y + pos.y, b.z + pos.z, 0xffffffff, 1.0f, 0.0f);
+	pv++;
+
+	// render
 	dwCount = u32(pv - pv_start);
 	RCache.Vertex.Unlock(dwCount, hFriendlyIndicator->vb_stride);
 
@@ -1682,7 +1688,7 @@ bool CActor::can_attach(const CInventoryItem* inventory_item) const
 		return false;
 	}
 
-	//если уже есть присоединненый объет такого типа 
+	//если уже есть присоединненый объет такого типа
 	if (attached(inventory_item->object( ).cNameSect( )))
 	{
 		return false;
@@ -1699,6 +1705,7 @@ void CActor::OnDifficultyChanged( )
 	string128 tmp;
 	strconcat(sizeof(tmp), tmp, "actor_immunities_", diff_name);
 	conditions( ).LoadImmunities(tmp, pSettings);
+
 	// hit probability
 	strconcat(sizeof(tmp), tmp, "hit_probability_", diff_name);
 	hit_probability = pSettings->r_float(*cNameSect( ), tmp);
@@ -1711,7 +1718,7 @@ CVisualMemoryManager* CActor::visual_memory( ) const
 
 f32 CActor::GetMass( )
 {
-	return g_Alive( ) ? character_physics_support( )->movement( )->GetMass( ) : m_pPhysicsShell ? m_pPhysicsShell->getMass( ) : 0;
+	return (g_Alive( ) ? character_physics_support( )->movement( )->GetMass( ) : m_pPhysicsShell ? m_pPhysicsShell->getMass( ) : 0);
 }
 
 bool CActor::is_on_ground( )
@@ -1722,5 +1729,5 @@ bool CActor::is_on_ground( )
 CCustomOutfit* CActor::GetOutfit( ) const
 {
 	PIItem _of = inventory( ).m_slots[OUTFIT_SLOT].m_pIItem;
-	return _of ? smart_cast<CCustomOutfit*>(_of) : NULL;
+	return (_of ? smart_cast<CCustomOutfit*>(_of) : NULL);
 }

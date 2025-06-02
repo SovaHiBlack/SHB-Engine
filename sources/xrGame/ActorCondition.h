@@ -22,7 +22,7 @@ private:
 		eCriticalRadiationReached = (1 << 4),
 		eWeaponJammedReached = (1 << 5),
 		ePhyHealthMinReached = (1 << 6),
-		eCantWalkWeight = (1 << 7),
+		eCantWalkWeight = (1 << 7)
 	};
 	flags16											m_condition_flags;
 

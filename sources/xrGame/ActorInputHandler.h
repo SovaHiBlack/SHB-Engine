@@ -21,5 +21,5 @@ public:
 	}
 
 protected:
-	CActor* m_actor;
+	CActor*								m_actor;
 };

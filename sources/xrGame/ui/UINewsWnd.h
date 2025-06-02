@@ -2,7 +2,7 @@
 
 #include "UIWindow.h"
 class CUIScrollView;
-struct GAME_NEWS_DATA;
+struct SGameNewsData;
 
 class CUINewsWnd : public CUIWindow
 {
@@ -27,5 +27,5 @@ public:
 
 private:
 	void			LoadNews( );
-	void			AddNewsItem(GAME_NEWS_DATA& news_data);
+	void			AddNewsItem(SGameNewsData& news_data);
 };

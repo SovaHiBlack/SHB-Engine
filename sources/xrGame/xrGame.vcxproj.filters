@@ -5979,7 +5979,7 @@
     <ClInclude Include="Actor_flags.h">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClInclude>
-    <ClInclude Include="actor_input_handler.h">
+    <ClInclude Include="ActorInputHandler.h">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClInclude>
     <ClInclude Include="ActorCondition.h">
@@ -8702,7 +8702,7 @@
     <ClCompile Include="Actor.cpp">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClCompile>
-    <ClCompile Include="actor_communication.cpp">
+    <ClCompile Include="Actor_Communication.cpp">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Events.cpp">
@@ -8711,7 +8711,7 @@
     <ClCompile Include="Actor_Feel.cpp">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClCompile>
-    <ClCompile Include="actor_input_handler.cpp">
+    <ClCompile Include="ActorInputHandler.cpp">
       <Filter>Core\Client\Objects\actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Movement.cpp">

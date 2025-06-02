@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../actor_input_handler.h"
+#include "../../ActorInputHandler.h"
 
 class CControlledActor : public CActorInputHandler {
 	typedef CActorInputHandler inherited;

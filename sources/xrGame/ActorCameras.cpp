@@ -21,6 +21,9 @@
 #include "EffectorShot.h"
 #include "phcollidevalidator.h"
 #include "PHShell.h"
+#include "physics.h"
+#include "PHActivationShape.h"
+#include "DebugRenderer.h"
 
 void CActor::cam_Set	(EActorCameras style)
 {
@@ -130,9 +133,6 @@ ICF BOOL test_point(xrXRC& xrc, const fMatrix4x4& xform, const fMatrix3x3& mat, 
 	return FALSE;
 }
 
-#include "physics.h"
-#include "PHActivationShape.h"
-#include "DebugRenderer.h"
 void CActor::cam_Update(f32 dt, f32 fFOV)
 {
 	if(m_holder)		return;

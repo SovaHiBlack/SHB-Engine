@@ -22,7 +22,7 @@ class CLightAnimItem;
 class					CUIZoneMap;
 class					CUIArtefactPanel;
 class					CUIScrollView;
-struct					GAME_NEWS_DATA;
+struct SGameNewsData;
 class					CActor;
 class					CWeapon;
 class					CMissile;
@@ -125,7 +125,7 @@ public:
 	void				AnimateContacts(bool b_snd);
 	HUD_SOUND			m_contactSnd;
 
-	void				ReceiveNews(GAME_NEWS_DATA* news);
+	void				ReceiveNews(SGameNewsData* news);
 
 protected:
 	void				SetWarningIconColor(CUIStatic* s, const u32 cl);

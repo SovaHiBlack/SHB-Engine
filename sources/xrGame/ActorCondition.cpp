@@ -111,28 +111,28 @@ void CActorCondition::UpdateCondition( )
 		ConditionStand(object( ).inventory( ).TotalWeight( ) / object( ).inventory( ).GetMaxWeight( ));
 	}
 
+
+	f32 k_max_power = 1.0f;
+
+	if (true)
 	{
-		f32 k_max_power = 1.0f;
+		f32 weight = object( ).inventory( ).TotalWeight( );
 
-		if (true)
-		{
-			f32 weight = object( ).inventory( ).TotalWeight( );
-
-			f32 base_w = object( ).MaxCarryWeight( );
+		f32 base_w = object( ).MaxCarryWeight( );
 /*
 			CCustomOutfit* outfit	= m_object->GetOutfit();
 			if(outfit)
 				base_w += outfit->m_additional_weight2;
 */
-			k_max_power = 1.0f + _min(weight, base_w) / base_w + _max(0.0f, (weight - base_w) / 10.0f);
-		}
-		else
-		{
-			k_max_power = 1.0f;
-		}
-
-		SetMaxPower(GetMaxPower( ) - m_fPowerLeakSpeed * m_fDeltaTime * k_max_power);
+		k_max_power = 1.0f + _min(weight, base_w) / base_w + _max(0.0f, (weight - base_w) / 10.0f);
 	}
+	else
+	{
+		k_max_power = 1.0f;
+	}
+
+	SetMaxPower(GetMaxPower( ) - m_fPowerLeakSpeed * m_fDeltaTime * k_max_power);
+
 
 	m_fAlcohol += m_fV_Alcohol * m_fDeltaTime;
 	clamp(m_fAlcohol, 0.0f, 1.0f);
