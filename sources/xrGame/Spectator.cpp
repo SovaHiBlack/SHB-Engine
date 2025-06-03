@@ -22,7 +22,7 @@
 #include "huditem.h"
 #include "clsid_game.h"
 #include "string_table.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 //--------------------------------------------------------------------

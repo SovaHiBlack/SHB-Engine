@@ -8,7 +8,7 @@
 #include "script_engine.h"
 #include "stalker_planner.h"
 #include "ai/stalker/ai_stalker.h"
-#include "searchlight.h"
+#include "Projector.h"
 #include "script_callback_ex.h"
 #include "GameObject_space.h"
 #include "memory_manager.h"

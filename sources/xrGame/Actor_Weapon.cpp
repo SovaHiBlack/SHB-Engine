@@ -8,7 +8,7 @@
 #include "Missile.h"
 #include "inventory.h"
 #include "Weapon.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "level.h"
 #include "CharacterPhysicsSupport.h"
 #include "EffectorShot.h"

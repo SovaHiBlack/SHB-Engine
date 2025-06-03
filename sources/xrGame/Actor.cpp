@@ -57,7 +57,7 @@
 #include "IColisiondamageInfo.h"
 #include "ui/UIMainIngameWnd.h"//
 #include "ui/UIArtefactPanel.h"//
-#include "map_manager.h"
+#include "MapManager.h"
 #include "GameTaskManager.h"
 #include "actor_memory.h"
 #include "Script_Game_Object.h"

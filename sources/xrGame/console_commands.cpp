@@ -49,7 +49,7 @@
 
 #include "hudmanager.h"
 #include "UIGameCustom.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "alife_graph_registry.h"
 #include "GamePersistent.h"
 #include "attachable_item.h"

@@ -1720,7 +1720,7 @@ void CCar::OnEvent(CNetPacket& P, u16 type)
 
 }
 
-void CCar::ResetScriptData(void* P)
+void CCar::ResetScriptData(pvoid P)
 {
 	CScriptEntity::ResetScriptData(P);
 }

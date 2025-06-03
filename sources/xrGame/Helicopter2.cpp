@@ -102,7 +102,7 @@ void CHelicopter::UpdateHeliParticles( )
 			s32 frame;
 			u32 clr = m_lanim->CalculateBGR(Device.fTimeGlobal, frame); // òþ÷ò¨ð•ðõª ò ¯þ¨üðªõ BGR
 			fColor					fclr;
-			fclr.set((f32)color_get_B(clr), (f32)color_get_G(clr), (f32)color_get_R(clr), 1.f);
+			fclr.set((f32) color_get_B(clr), (f32) color_get_G(clr), (f32) color_get_R(clr), 1.f);
 			fclr.mul_rgb(m_light_brightness / 255.f);
 			m_light_render->set_color(fclr);
 		}
@@ -271,8 +271,8 @@ void	CHelicopter::Hit(SHit* pHDS)
 
 	if (pHDS->who &&
 		(pHDS->who->CLS_ID == CLSID_OBJECT_ACTOR ||
-		smart_cast<CStalker*>(pHDS->who) ||
-		smart_cast<CCustomZone*>(pHDS->who))
+		 smart_cast<CStalker*>(pHDS->who) ||
+		 smart_cast<CCustomZone*>(pHDS->who))
 		)
 	{
 		callback(GameObject::eHelicopterOnHit)(pHDS->damage( ), pHDS->impulse, pHDS->hit_type, pHDS->who->ID( ));
@@ -384,7 +384,7 @@ void SHeliEnemy::Update( )
 
 void SHeliEnemy::save(CNetPacket& output_packet)
 {
-	output_packet.w_s16((s16)type);
+	output_packet.w_s16((s16) type);
 	output_packet.w_vec3(destEnemyPos);
 	output_packet.w_u32(destEnemyID);
 
@@ -394,7 +394,7 @@ void SHeliEnemy::save(CNetPacket& output_packet)
 
 void SHeliEnemy::load(IReader& input_packet)
 {
-	type = (EHeliHuntState)input_packet.r_s16( );
+	type = (EHeliHuntState) input_packet.r_s16( );
 	input_packet.r_fvector3(destEnemyPos);
 	destEnemyID = input_packet.r_u32( );
 
@@ -452,7 +452,7 @@ void SHeliBodyState::LookAtPoint(fVector3 point, bool do_it)
 
 void SHeliBodyState::save(CNetPacket& output_packet)
 {
-	output_packet.w_s16((s16)type);
+	output_packet.w_s16((s16) type);
 	output_packet.w_u8(b_looking_at_point ? 1 : 0);
 	output_packet.w_float(currBodyHPB.x);
 	output_packet.w_float(currBodyHPB.y);
@@ -461,7 +461,7 @@ void SHeliBodyState::save(CNetPacket& output_packet)
 
 void SHeliBodyState::load(IReader& input_packet)
 {
-	type = (EHeliBodyState)input_packet.r_s16( );
+	type = (EHeliBodyState) input_packet.r_s16( );
 	b_looking_at_point = !!input_packet.r_u8( );
 	currBodyHPB.x = input_packet.r_float( );
 	currBodyHPB.y = input_packet.r_float( );

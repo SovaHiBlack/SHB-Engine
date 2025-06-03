@@ -831,9 +831,9 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="manager_builder_allocator_constructor.h" />
     <ClInclude Include="manager_builder_allocator_constructor_inline.h" />
-    <ClInclude Include="map_location.h" />
-    <ClInclude Include="map_location_defs.h" />
-    <ClInclude Include="map_manager.h" />
+    <ClInclude Include="MapLocation.h" />
+    <ClInclude Include="MapLocation_defs.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="UIMapSpot.h" />
     <ClInclude Include="material_manager.h" />
     <ClInclude Include="material_manager_inline.h" />
@@ -1135,7 +1135,7 @@
     <ClInclude Include="script_world_property_inline.h" />
     <ClInclude Include="script_world_state.h" />
     <ClInclude Include="ScriptZone.h" />
-    <ClInclude Include="searchlight.h" />
+    <ClInclude Include="Projector.h" />
     <ClInclude Include="seniority_hierarchy_holder.h" />
     <ClInclude Include="seniority_hierarchy_holder_inline.h" />
     <ClInclude Include="seniority_hierarchy_space.h" />
@@ -1903,8 +1903,8 @@
     <ClCompile Include="Level_start.cpp" />
     <ClCompile Include="location_manager.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="map_location.cpp" />
-    <ClCompile Include="map_manager.cpp" />
+    <ClCompile Include="MapLocation.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="UIMapSpot.cpp" />
     <ClCompile Include="material_manager.cpp" />
     <ClCompile Include="MathUtils.cpp" />
@@ -2111,7 +2111,7 @@
     <ClCompile Include="script_world_property_script.cpp" />
     <ClCompile Include="script_world_state_script.cpp" />
     <ClCompile Include="ScriptZone.cpp" />
-    <ClCompile Include="searchlight.cpp" />
+    <ClCompile Include="Projector.cpp" />
     <ClCompile Include="seniority_hierarchy_holder.cpp" />
     <ClCompile Include="server_entity_wrapper.cpp" />
     <ClCompile Include="ShellHit.cpp" />

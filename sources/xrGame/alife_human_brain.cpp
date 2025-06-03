@@ -27,8 +27,8 @@
 #	include "date_time.h"
 #	ifdef DEBUG
 #		include "level.h"
-#		include "map_location.h"
-#		include "map_manager.h"
+#		include "MapLocation.h"
+#		include "MapManager.h"
 #	endif
 #endif
 

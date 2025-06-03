@@ -219,7 +219,7 @@ bool CTrade::CanTrade( )
 	return true;
 }
 
-void CTrade::TransferItem(PIItem pItem, bool bBuying)
+void CTrade::TransferItem(CInventoryItem* pItem, bool bBuying)
 {
 	//сумма сделки учитывая ценовой коэффициент
 	//актер цену не говорит никогда, все делают за него

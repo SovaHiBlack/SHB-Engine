@@ -3,8 +3,8 @@
 #include "GameTask.h"
 #include "ui/xrUIXmlParser.h"
 #include "EncyclopediaArticle.h"
-#include "map_location.h"
-#include "map_manager.h"
+#include "MapLocation.h"
+#include "MapManager.h"
 
 #include "level.h"
 #include "Actor.h"

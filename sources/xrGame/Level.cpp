@@ -35,7 +35,7 @@
 #include "level_graph.h"
 #include "mt_config.h"
 #include "phcommander.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "..\XR_3DA\CameraManager.h"
 #include "level_sounds.h"
 #include "car.h"

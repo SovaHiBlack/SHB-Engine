@@ -132,7 +132,7 @@
 #	include "torch.h"
 #	include "pda.h"
 
-#	include "searchlight.h"
+#	include "Projector.h"
 
 #	include "HangingLamp.h"
 #	include "physicobject.h"

@@ -1624,9 +1624,6 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Explosives">
       <UniqueIdentifier>{77e93965-1c6f-4396-9464-c90c650f9385}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\searchlight">
-      <UniqueIdentifier>{f90db9d7-7d0e-4817-bf0a-042b32c696a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\zones">
       <UniqueIdentifier>{6647695a-cabd-4249-b627-2dd265f01679}</UniqueIdentifier>
     </Filter>
@@ -2112,6 +2109,9 @@
     </Filter>
     <Filter Include="Core\Client\Objects\Trade">
       <UniqueIdentifier>{b7eec7c6-412c-4465-9f05-3ef0e0ee07d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Projector">
+      <UniqueIdentifier>{f90db9d7-7d0e-4817-bf0a-042b32c696a6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -5019,8 +5019,8 @@
     <ClInclude Include="wallmark_manager.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClInclude>
-    <ClInclude Include="searchlight.h">
-      <Filter>Core\Client\Objects\searchlight</Filter>
+    <ClInclude Include="Projector.h">
+      <Filter>Core\Client\Objects\Projector</Filter>
     </ClInclude>
     <ClInclude Include="Trade.h">
       <Filter>Core\Client\Objects\Trade</Filter>
@@ -5073,13 +5073,13 @@
     <ClInclude Include="SmartZone.h">
       <Filter>Core\Client\Objects\zones\SmartZone</Filter>
     </ClInclude>
-    <ClInclude Include="map_location.h">
+    <ClInclude Include="MapLocation.h">
       <Filter>Core\Client\Objects\map</Filter>
     </ClInclude>
-    <ClInclude Include="map_location_defs.h">
+    <ClInclude Include="MapLocation_defs.h">
       <Filter>Core\Client\Objects\map</Filter>
     </ClInclude>
-    <ClInclude Include="map_manager.h">
+    <ClInclude Include="MapManager.h">
       <Filter>Core\Client\Objects\map</Filter>
     </ClInclude>
     <ClInclude Include="Car.h">
@@ -7757,8 +7757,8 @@
     <ClCompile Include="wallmark_manager.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClCompile>
-    <ClCompile Include="searchlight.cpp">
-      <Filter>Core\Client\Objects\searchlight</Filter>
+    <ClCompile Include="Projector.cpp">
+      <Filter>Core\Client\Objects\Projector</Filter>
     </ClCompile>
     <ClCompile Include="Trade.cpp">
       <Filter>Core\Client\Objects\Trade</Filter>
@@ -7805,10 +7805,10 @@
     <ClCompile Include="NoGravityZone.cpp">
       <Filter>Core\Client\Objects\zones\NoGravityZone</Filter>
     </ClCompile>
-    <ClCompile Include="map_location.cpp">
+    <ClCompile Include="MapLocation.cpp">
       <Filter>Core\Client\Objects\map</Filter>
     </ClCompile>
-    <ClCompile Include="map_manager.cpp">
+    <ClCompile Include="MapManager.cpp">
       <Filter>Core\Client\Objects\map</Filter>
     </ClCompile>
     <ClCompile Include="Car.cpp">

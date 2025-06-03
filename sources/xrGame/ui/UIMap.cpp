@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "../level.h"
-#include "../map_location.h"
-#include "../map_manager.h"
+#include "../MapLocation.h"
+#include "../MapManager.h"
 #include "../UIMapSpot.h"
 #include "UIMap.h"//
 #include "UIMapWnd.h"//

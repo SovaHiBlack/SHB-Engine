@@ -24,9 +24,8 @@
 #include "HUDManager.h"
 #include "script_engine.h"
 #include "game_cl_single.h"
-
-#include "map_manager.h"
-#include "map_location.h"
+#include "MapLocation.h"
+#include "MapManager.h"
 #include "phworld.h"
 #include "ActorEffector.h"
 #include "UIGameCustom.h"

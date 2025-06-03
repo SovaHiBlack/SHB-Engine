@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "UIMapSpot.h"
-#include "map_location.h"
+#include "MapLocation.h"
 
 #include "ui/UIXmlInit.h"
 #include "ui/UIMapWnd.h"//

@@ -234,7 +234,7 @@ public:
 		void	 SteerIdle( );
 		void	 Limit( );
 		void	 Load(pcstr /*section*/)
-		{ };
+		{ }
 	};
 	struct SWheelBreak
 	{
@@ -544,7 +544,7 @@ public:
 	virtual bool			allowWeapon( ) const
 	{
 		return true;
-	};
+	}
 	virtual bool			HUDView( ) const;
 	virtual fVector3			ExitPosition( )
 	{
@@ -587,7 +587,7 @@ public:
 	virtual BOOL			net_Relevant( )
 	{
 		return getLocal( );
-	};		// relevant for export to server
+	}		// relevant for export to server
 	virtual BOOL			UsedAI_Locations( );
 	virtual	void			net_Relcase(CObject* O);
 	// Input
@@ -601,7 +601,7 @@ public:
 	virtual void			OnBeforeExplosion( );
 	virtual void			GetRayExplosionSourcePos(fVector3& pos);
 	virtual void			ActivateExplosionBox(const fVector3& size, fVector3& in_out_pos)
-	{ };
+	{ }
 	virtual void			ResetScriptData(pvoid P = 0);
 
 	virtual void			Action(s32 id, u32 flags);

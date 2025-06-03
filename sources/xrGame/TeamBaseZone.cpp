@@ -13,8 +13,8 @@
 #include "xrserver.h"
 #include "game_cl_base.h"
 #include "clsid_game.h"
-#include "map_manager.h"
-#include "map_location.h"
+#include "MapLocation.h"
+#include "MapManager.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 #ifdef DEBUG

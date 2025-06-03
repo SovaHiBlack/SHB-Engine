@@ -407,6 +407,7 @@ protected:
 	void						remove_personal_only_ammo(const CInventoryItem* item);
 	void						on_after_take(const CGameObject* object);
 	virtual bool						AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const;
+
 public:
 	IC		CStalkerAnimationManager& animation( ) const;
 	IC		CStalkerPlanner& brain( ) const;

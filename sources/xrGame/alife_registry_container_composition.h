@@ -17,7 +17,7 @@
 
 #include "GameTask_defs.h"
 #include "game_news.h"
-#include "map_location_defs.h"
+#include "MapLocation_defs.h"
 
 #include "ActorStatisticManager.h"
 

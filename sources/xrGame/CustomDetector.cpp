@@ -5,7 +5,7 @@
 #include "artifact.h"
 #include "inventory.h"
 #include "level.h"
-#include "map_manager.h"
+#include "MapManager.h"
 #include "CameraEffector.h"
 #include "Actor.h"
 #include "ai_sounds.h"

@@ -14,8 +14,8 @@
 #include "../Actor.h"
 #include "../GameTaskManager.h"
 #include "../GameTask.h"
-#include "../map_manager.h"
-#include "../map_location.h"
+#include "../MapLocation.h"
+#include "../MapManager.h"
 #include "../string_table.h"
 #include "UITaskItem.h"//
 #include "../alife_registry_wrappers.h"

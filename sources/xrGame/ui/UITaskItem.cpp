@@ -9,8 +9,8 @@
 #include "UIEditBoxEx.h"
 #include "UIEditBox.h"
 #include "UIInventoryUtilities.h"//
-#include "../map_location.h"
-#include "../map_manager.h"
+#include "../MapLocation.h"
+#include "../MapManager.h"
 #include "../level.h"
 #include "../Actor.h"
 #include "../GameTaskManager.h"

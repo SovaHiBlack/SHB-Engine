@@ -2,10 +2,9 @@
 #include "UIMapWnd.h"//
 #include "UIMap.h"//
 #include "UIXmlInit.h"
-
-#include "../map_manager.h"
+#include "../MapLocation.h"
+#include "../MapManager.h"
 #include "UIInventoryUtilities.h"//
-#include "../map_location.h"
 
 #include "UIScrollBar.h"
 #include "UIFrameWindow.h"
