@@ -23,7 +23,7 @@
 #include "EntityAlive.h"
 
 //#include "InventoryItem.h"
-#include "inventory.h"
+#include "Inventory.h"
 
 u32 C_ON_ENEMY		D3DCOLOR_XRGB(0xff, 0, 0);
 u32 C_ON_NEUTRAL	D3DCOLOR_XRGB(0xff, 0xff, 0x80);

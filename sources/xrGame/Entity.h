@@ -2,7 +2,7 @@
 
 #include "physicsshellholder.h"
 #include "damage_manager.h"
-#include "entitycondition.h"
+#include "EntityCondition.h"
 
 // refs
 class ENGINE_API CCameraBase;

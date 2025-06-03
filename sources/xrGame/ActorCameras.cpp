@@ -19,7 +19,7 @@
 #include "elevatorstate.h"
 #include "CharacterPhysicsSupport.h"
 #include "EffectorShot.h"
-#include "phcollidevalidator.h"
+#include "PHCollideValidator.h"
 #include "PHShell.h"
 #include "physics.h"
 #include "PHActivationShape.h"

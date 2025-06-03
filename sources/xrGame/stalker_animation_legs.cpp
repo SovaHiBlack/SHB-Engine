@@ -15,7 +15,7 @@
 
 #include "Weapon.h"
 #include "missile.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "stalker_animation_manager_impl.h"
 
 const f32 right_forward_angle			= PI_DIV_4;

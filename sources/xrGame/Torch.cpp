@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "torch.h"
-#include "entity.h"
+#include "Entity.h"
 #include "Actor.h"
 #include "..\XR_3DA\LightAnimLibrary.h"
 #include "PhysicsShell.h"
@@ -11,7 +11,7 @@
 #include "level.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "..\XR_3DA\camerabase.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "game_base_space.h"
 
 #include "UIGameCustom.h"

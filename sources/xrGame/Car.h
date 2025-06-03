@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity.h"
+#include "Entity.h"
 #include "PHDynamicData.h"
 #include "PhysicsShell.h"
 #include "script_entity.h"

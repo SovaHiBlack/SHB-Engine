@@ -52,7 +52,7 @@
 #include "MapManager.h"
 #include "alife_graph_registry.h"
 #include "GamePersistent.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 #include "attachment_owner.h"
 
 string_path g_last_saved_game;

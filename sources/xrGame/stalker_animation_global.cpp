@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "stalker_animation_manager.h"
 #include "ai/stalker/ai_stalker.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "fooditem.h"
 #include "property_storage.h"
 #include "stalker_movement_manager.h"

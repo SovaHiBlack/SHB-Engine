@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "WeaponRG6.h"
-#include "entity.h"
+#include "Entity.h"
 #include "explosiveRocket.h"
 #include "level.h"
 #include "clsid_game.h"
 
 #include "MathUtils.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "InventoryOwner.h"
 
 #ifdef DEBUG

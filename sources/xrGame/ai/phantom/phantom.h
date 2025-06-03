@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../entity.h"
+#include "../../Entity.h"
 #include "../../..\xrCore\FastDelegate.h"
 #include "../../..\XR_3DA\SkeletonAnimated.h"
 

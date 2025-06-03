@@ -3,7 +3,7 @@
 #include "CustomZone.h"
 #include "hudmanager.h"
 #include "artifact.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "level.h"
 #include "MapManager.h"
 #include "CameraEffector.h"

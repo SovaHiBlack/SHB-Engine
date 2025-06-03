@@ -3,7 +3,7 @@
 #include "shootingobject.h"
 #include "weaponammo.h"
 #include "rocketlauncher.h"
-#include "entity.h"
+#include "Entity.h"
 #include "phskeleton.h"
 #include "HitImmunity.h"
 #include "script_export_space.h"

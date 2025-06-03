@@ -580,8 +580,8 @@
     <ClInclude Include="associative_vector_compare_predicate.h" />
     <ClInclude Include="associative_vector_compare_predicate_inline.h" />
     <ClInclude Include="associative_vector_inline.h" />
-    <ClInclude Include="attachable_item.h" />
-    <ClInclude Include="attachable_item_inline.h" />
+    <ClInclude Include="AttachableItem.h" />
+    <ClInclude Include="AttachableItem_inline.h" />
     <ClInclude Include="attachment_owner.h" />
     <ClInclude Include="attachment_owner_inline.h" />
     <ClInclude Include="AutosaveManager.h" />
@@ -804,7 +804,7 @@
     <ClInclude Include="inventory_item_inline.h" />
     <ClInclude Include="inventory_item_object.h" />
     <ClInclude Include="inventory_owner_inline.h" />
-    <ClInclude Include="inventory_space.h" />
+    <ClInclude Include="Inventory_space.h" />
     <ClInclude Include="ItemHealth.h" />
     <ClInclude Include="ItemListTypes.h" />
     <ClInclude Include="item_manager.h" />
@@ -1706,7 +1706,7 @@
     <ClCompile Include="antirad.cpp" />
     <ClCompile Include="artefact_script.cpp" />
     <ClCompile Include="Artifact.cpp" />
-    <ClCompile Include="attachable_item.cpp" />
+    <ClCompile Include="AttachableItem.cpp" />
     <ClCompile Include="attachment_owner.cpp" />
     <ClCompile Include="AutosaveManager.cpp" />
     <ClCompile Include="base_client_classes_script.cpp" />

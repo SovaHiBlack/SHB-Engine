@@ -12,7 +12,7 @@
 #include "../PDA.h"
 #include "../WeaponHUD.h"
 #include "../character_info.h"
-#include "../inventory.h"
+#include "../Inventory.h"
 #include "../UIGame.h"
 #include "../weaponmagazined.h"
 #include "../missile.h"
@@ -40,7 +40,7 @@
 #include "UIArtefactPanel.h"//
 
 #ifdef DEBUG
-#	include "../attachable_item.h"
+#	include "../AttachableItem.h"
 #	include "../..\XR_3DA\Input.h"
 #endif
 

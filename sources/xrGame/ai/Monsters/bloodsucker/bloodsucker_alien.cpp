@@ -3,7 +3,7 @@
 #include "bloodsucker.h"
 #include "../../../level.h"
 #include "../../../Actor.h"
-#include "../../../inventory.h"
+#include "../../../Inventory.h"
 #include "../../../HudItem.h"
 #include "../../../..\XR_3DA\CustomHUD.h"
 #include "../../../..\XR_3DA\effector.h"

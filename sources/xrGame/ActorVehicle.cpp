@@ -18,7 +18,7 @@
 #include "actor_anim_defs.h"
 #include "GameObject_space.h"
 #include "characterphysicssupport.h"
-#include "inventory.h"
+#include "Inventory.h"
 
 void CActor::attach_Vehicle(CHolderCustom* vehicle)
 {

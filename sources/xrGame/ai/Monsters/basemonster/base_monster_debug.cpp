@@ -2,7 +2,7 @@
 #include "base_monster.h"
 #include "../../../level.h"
 #include "../../../LevelDebug.h"
-#include "../../../entitycondition.h"
+#include "../../../EntityCondition.h"
 #include "../../../ai_debug.h"
 #include "../state_defs.h"
 #include "../state_manager.h"

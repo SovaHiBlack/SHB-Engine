@@ -12,7 +12,7 @@
 #include "Car.h"
 #include "HudManager.h"
 #include "UIGame.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "level.h"
 #include "game_cl_base.h"
 #include "xr_level_controller.h"

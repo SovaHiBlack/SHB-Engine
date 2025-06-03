@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "attachment_owner.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "InventoryItem.h"
 #include "physicsshellholder.h"

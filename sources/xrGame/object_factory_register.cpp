@@ -102,7 +102,7 @@
 #	include "explosiveitem.h"
 
 #	include "infodocument.h"
-#	include "attachable_item.h"
+#	include "AttachableItem.h"
 
 #	include "ScientificOutfit.h"
 #	include "StalkerOutfit.h"

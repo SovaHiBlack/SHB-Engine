@@ -4,7 +4,7 @@
 #include "PhysicsShellHolder.h"
 #include "game_cl_base.h"
 #include "..\XR_3DA\skeletonanimated.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "level.h"
 #include "ai_object_location.h"
 #include "xrServer_Objects_ALife_Monsters.h"

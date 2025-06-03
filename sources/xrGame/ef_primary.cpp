@@ -14,7 +14,7 @@
 #include "ef_storage.h"
 #include "AISpace.h"
 #include "game_graph.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "clsid_game.h"
 #include "ef_primary.h"

@@ -16,7 +16,7 @@
 #include "Actor.h"
 #include "ActorEffector.h"
 #include "script_entity_action.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "level.h"

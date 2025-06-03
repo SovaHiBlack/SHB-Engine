@@ -16,7 +16,7 @@
 #include "..\XR_3DA\irenderable.h"
 #include "..\XR_3DA\ICollidable.h"
 #include "..\XR_3DA\Object.h"
-#include "entity.h"
+#include "Entity.h"
 #include "AISpace.h"
 #include "script_engine.h"
 #include <loki\typelist.h>

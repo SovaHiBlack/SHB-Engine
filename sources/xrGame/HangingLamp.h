@@ -1,4 +1,4 @@
-// DummyObject.h: interface for the CHangingLamp class.
+// HangingLamp.h: interface for the CHangingLamp class.
 //
 //////////////////////////////////////////////////////////////////////
 #pragma once
@@ -15,8 +15,9 @@ class CSE_ALifeObjectHangingLamp;
 class CPHElement;
 
 class CHangingLamp : public CPhysicsShellHolder, public CPHSkeleton
-{//need m_pPhysicShell
+{
 	typedef	CPhysicsShellHolder		inherited;
+
 private:
 	u16				light_bone;
 	u16				ambient_bone;
@@ -49,12 +50,11 @@ public:
 	virtual void	shedule_Update(u32 dt);							// Called by sheduler
 	virtual void	UpdateCL( );								// Called each frame, so no need for dt
 
-
 	virtual void	SpawnInitPhysics(CSE_Abstract* D);
 	virtual CPhysicsShellHolder* PPhysicsShellHolder( )
 	{
 		return PhysicsShellHolder( );
-	};
+	}
 	virtual	void	CopySpawnInit( );
 	virtual void	net_Save(CNetPacket& P);
 	virtual	BOOL	net_SaveRelevant( );
@@ -73,8 +73,8 @@ public:
 	virtual void	net_Import(CNetPacket& P);
 	virtual BOOL	UsedAI_Locations( );
 
-	virtual void	Center(fVector3& C)	const;
-	virtual f32	Radius( )				const;
+	virtual void	Center(fVector3& C) const;
+	virtual f32	Radius( ) const;
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 

@@ -3,7 +3,7 @@
 #include "..\XR_3DA\feel_touch.h"
 #include "..\XR_3DA\IInputReceiver.h"
 
-#include "entity.h"
+#include "Entity.h"
 #include "Actor_flags.h"
 
 // refs

@@ -3,7 +3,7 @@
 #include "zombie_state_manager.h"
 #include "../../../profiler.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
-#include "../../../entitycondition.h"
+#include "../../../EntityCondition.h"
 #include "../monster_velocity_space.h"
 
 #include "../control_animation_base.h"

@@ -4,7 +4,7 @@
 #include "../Actor.h"
 #include "../ActorCondition.h"
 #include "../hudmanager.h"
-#include "../inventory.h"
+#include "../Inventory.h"
 #include "UIInventoryUtilities.h"//
 
 #include "UICellItem.h"

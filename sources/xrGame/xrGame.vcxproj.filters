@@ -1366,9 +1366,6 @@
     <Filter Include="Core\Client\Objects\physics\PhysicObject">
       <UniqueIdentifier>{96b4f515-605e-464d-8aba-06ec1a8ae424}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\hanging_lamp">
-      <UniqueIdentifier>{a2da5d37-2afc-412b-b4ad-fdac7425a422}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\tasks_info_dialogs">
       <UniqueIdentifier>{6a9218ca-f710-4b8d-812d-f7eaa0675813}</UniqueIdentifier>
     </Filter>
@@ -1380,60 +1377,6 @@
     </Filter>
     <Filter Include="Core\Client\Objects\tasks_info_dialogs\statistics">
       <UniqueIdentifier>{1a3c429f-5594-42a7-aa0c-dd91aff328b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory">
-      <UniqueIdentifier>{df5cb8d6-c588-49bc-aae8-1bbb8b4ddb8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\AttachableItem">
-      <UniqueIdentifier>{79f5aca3-2d54-4f0d-b351-0fb7a6e54d96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\AttachmentOwner">
-      <UniqueIdentifier>{69099d51-8fdb-4543-b191-d6bd8112b4bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\EatableItem">
-      <UniqueIdentifier>{76595c2c-d55c-41a4-a71e-44291df8d039}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\EatableItemObject">
-      <UniqueIdentifier>{46646d61-53f0-4c59-b229-14b27cd22f4c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryItem">
-      <UniqueIdentifier>{7b2d1051-f3cf-458f-b748-ac0e8460b8be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryItemObject">
-      <UniqueIdentifier>{eafbbece-aa7f-4ba0-87f4-6fe714fcc5d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner">
-      <UniqueIdentifier>{52211de4-3e1b-442f-b440-58fec0116afa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\character_info">
-      <UniqueIdentifier>{b2f51e99-c330-4b5e-8af4-b7b26f468253}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\relation registry">
-      <UniqueIdentifier>{79cb0d35-e5a6-4893-9d8d-71ec496bcdd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters">
-      <UniqueIdentifier>{33229fd1-61b7-4ff7-9e27-0d22f4fe54e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_bool_parameters">
-      <UniqueIdentifier>{8d64ad27-2522-4e53-8be3-9d22deac27ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factors">
-      <UniqueIdentifier>{e8a8fe4e-5b2b-4bba-ac26-dd259e0d8509}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factor_parameters">
-      <UniqueIdentifier>{955fc6f5-ffb8-4894-830f-35b6aac54f24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_action_parameters">
-      <UniqueIdentifier>{8c1276f6-57b2-405f-88df-15f874958ca6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters">
-      <UniqueIdentifier>{94287749-8c37-4d50-b644-754e622eef6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list">
-      <UniqueIdentifier>{2751576e-9cf2-45a8-9d72-5abb5a8ee93a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\inventory\PhysicItem">
-      <UniqueIdentifier>{9d54dba9-9174-4518-a761-bc47b01756f9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons">
       <UniqueIdentifier>{1db27510-e119-4295-bc2a-48596356c53c}</UniqueIdentifier>
@@ -2112,6 +2055,63 @@
     </Filter>
     <Filter Include="Core\Client\Objects\Projector">
       <UniqueIdentifier>{f90db9d7-7d0e-4817-bf0a-042b32c696a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\HangingLamp">
+      <UniqueIdentifier>{a2da5d37-2afc-412b-b4ad-fdac7425a422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory">
+      <UniqueIdentifier>{df5cb8d6-c588-49bc-aae8-1bbb8b4ddb8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\AttachableItem">
+      <UniqueIdentifier>{79f5aca3-2d54-4f0d-b351-0fb7a6e54d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\AttachmentOwner">
+      <UniqueIdentifier>{69099d51-8fdb-4543-b191-d6bd8112b4bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\EatableItem">
+      <UniqueIdentifier>{76595c2c-d55c-41a4-a71e-44291df8d039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\EatableItemObject">
+      <UniqueIdentifier>{46646d61-53f0-4c59-b229-14b27cd22f4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryItem">
+      <UniqueIdentifier>{7b2d1051-f3cf-458f-b748-ac0e8460b8be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryItemObject">
+      <UniqueIdentifier>{eafbbece-aa7f-4ba0-87f4-6fe714fcc5d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner">
+      <UniqueIdentifier>{52211de4-3e1b-442f-b440-58fec0116afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\character_info">
+      <UniqueIdentifier>{b2f51e99-c330-4b5e-8af4-b7b26f468253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\relation registry">
+      <UniqueIdentifier>{79cb0d35-e5a6-4893-9d8d-71ec496bcdd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters">
+      <UniqueIdentifier>{33229fd1-61b7-4ff7-9e27-0d22f4fe54e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_bool_parameters">
+      <UniqueIdentifier>{8d64ad27-2522-4e53-8be3-9d22deac27ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_factors">
+      <UniqueIdentifier>{e8a8fe4e-5b2b-4bba-ac26-dd259e0d8509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_factor_parameters">
+      <UniqueIdentifier>{955fc6f5-ffb8-4894-830f-35b6aac54f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_action_parameters">
+      <UniqueIdentifier>{8c1276f6-57b2-405f-88df-15f874958ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_parameters">
+      <UniqueIdentifier>{94287749-8c37-4d50-b644-754e622eef6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\purchase_list">
+      <UniqueIdentifier>{2751576e-9cf2-45a8-9d72-5abb5a8ee93a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Inventory\PhysicItem">
+      <UniqueIdentifier>{9d54dba9-9174-4518-a761-bc47b01756f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4615,7 +4615,7 @@
       <Filter>Core\Client\Objects\physics\PhysicObject</Filter>
     </ClInclude>
     <ClInclude Include="HangingLamp.h">
-      <Filter>Core\Client\Objects\hanging_lamp</Filter>
+      <Filter>Core\Client\Objects\HangingLamp</Filter>
     </ClInclude>
     <ClInclude Include="xml_str_id_loader.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs</Filter>
@@ -4666,124 +4666,124 @@
       <Filter>Core\Client\Objects\tasks_info_dialogs\statistics</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
-      <Filter>Core\Client\Objects\inventory</Filter>
+      <Filter>Core\Client\Objects\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="inventory_space.h">
-      <Filter>Core\Client\Objects\inventory</Filter>
+    <ClInclude Include="Inventory_space.h">
+      <Filter>Core\Client\Objects\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="attachable_item.h">
-      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
+    <ClInclude Include="AttachableItem.h">
+      <Filter>Core\Client\Objects\Inventory\AttachableItem</Filter>
     </ClInclude>
-    <ClInclude Include="attachable_item_inline.h">
-      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
+    <ClInclude Include="AttachableItem_inline.h">
+      <Filter>Core\Client\Objects\Inventory\AttachableItem</Filter>
     </ClInclude>
     <ClInclude Include="attachment_owner.h">
-      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\AttachmentOwner</Filter>
     </ClInclude>
     <ClInclude Include="attachment_owner_inline.h">
-      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\AttachmentOwner</Filter>
     </ClInclude>
     <ClInclude Include="eatable_item.h">
-      <Filter>Core\Client\Objects\inventory\EatableItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\EatableItem</Filter>
     </ClInclude>
     <ClInclude Include="eatable_item_object.h">
-      <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
+      <Filter>Core\Client\Objects\Inventory\EatableItemObject</Filter>
     </ClInclude>
     <ClInclude Include="InventoryItem.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryItem</Filter>
     </ClInclude>
     <ClInclude Include="inventory_item_impl.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryItem</Filter>
     </ClInclude>
     <ClInclude Include="inventory_item_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryItem</Filter>
     </ClInclude>
     <ClInclude Include="inventory_item_object.h">
-      <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryItemObject</Filter>
     </ClInclude>
     <ClInclude Include="inventory_owner_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner</Filter>
     </ClInclude>
     <ClInclude Include="InventoryOwner.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner</Filter>
     </ClInclude>
     <ClInclude Include="character_community.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="character_info.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="character_info_defs.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="character_rank.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="character_reputation.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="ini_id_loader.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="ini_table_loader.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="monster_community.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="specific_character.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClInclude>
     <ClInclude Include="relation_registry.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
     <ClInclude Include="relation_registry_defs.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
     <ClInclude Include="relation_registry_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\relation registry</Filter>
     </ClInclude>
     <ClInclude Include="trade_bool_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_bool_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_bool_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_bool_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_bool_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_bool_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_factors.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factors</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_factors</Filter>
     </ClInclude>
     <ClInclude Include="trade_factors_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factors</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_factors</Filter>
     </ClInclude>
     <ClInclude Include="trade_factor_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factor_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_factor_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_factor_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_factor_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_factor_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_action_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_action_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_action_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_action_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_action_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_action_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_parameters.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
     </ClInclude>
     <ClInclude Include="trade_parameters_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
     </ClInclude>
     <ClInclude Include="purchase_list.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
     </ClInclude>
     <ClInclude Include="purchase_list_inline.h">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
     </ClInclude>
     <ClInclude Include="physic_item.h">
-      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\PhysicItem</Filter>
     </ClInclude>
     <ClInclude Include="physic_item_inline.h">
-      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\PhysicItem</Filter>
     </ClInclude>
     <ClInclude Include="ShootingObject.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Custom Weapon\Weapon Generic</Filter>
@@ -7386,7 +7386,7 @@
       <Filter>Core\Client\Objects\physics\PhysicObject</Filter>
     </ClCompile>
     <ClCompile Include="HangingLamp.cpp">
-      <Filter>Core\Client\Objects\hanging_lamp</Filter>
+      <Filter>Core\Client\Objects\HangingLamp</Filter>
     </ClCompile>
     <ClCompile Include="GameTask.cpp">
       <Filter>Core\Client\Objects\tasks_info_dialogs\GameTask</Filter>
@@ -7422,67 +7422,67 @@
       <Filter>Core\Client\Objects\tasks_info_dialogs\statistics</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
-      <Filter>Core\Client\Objects\inventory</Filter>
+      <Filter>Core\Client\Objects\Inventory</Filter>
     </ClCompile>
-    <ClCompile Include="attachable_item.cpp">
-      <Filter>Core\Client\Objects\inventory\AttachableItem</Filter>
+    <ClCompile Include="AttachableItem.cpp">
+      <Filter>Core\Client\Objects\Inventory\AttachableItem</Filter>
     </ClCompile>
     <ClCompile Include="attachment_owner.cpp">
-      <Filter>Core\Client\Objects\inventory\AttachmentOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\AttachmentOwner</Filter>
     </ClCompile>
     <ClCompile Include="eatable_item.cpp">
-      <Filter>Core\Client\Objects\inventory\EatableItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\EatableItem</Filter>
     </ClCompile>
     <ClCompile Include="eatable_item_object.cpp">
-      <Filter>Core\Client\Objects\inventory\EatableItemObject</Filter>
+      <Filter>Core\Client\Objects\Inventory\EatableItemObject</Filter>
     </ClCompile>
     <ClCompile Include="InventoryItem.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryItem</Filter>
     </ClCompile>
     <ClCompile Include="inventory_item_object.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryItemObject</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryItemObject</Filter>
     </ClCompile>
     <ClCompile Include="inventory_owner_info.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner</Filter>
     </ClCompile>
     <ClCompile Include="InventoryOwner.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner</Filter>
     </ClCompile>
     <ClCompile Include="character_community.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="character_info.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="character_rank.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="character_reputation.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="monster_community.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="specific_character.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\character_info</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\character_info</Filter>
     </ClCompile>
     <ClCompile Include="relation_registry.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
     <ClCompile Include="relation_registry_actions.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
     <ClCompile Include="relation_registry_fights.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\relation registry</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\relation registry</Filter>
     </ClCompile>
     <ClCompile Include="trade_parameters.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\trade_parameters</Filter>
     </ClCompile>
     <ClCompile Include="purchase_list.cpp">
-      <Filter>Core\Client\Objects\inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
+      <Filter>Core\Client\Objects\Inventory\InventoryOwner\trade_parameters\purchase_list</Filter>
     </ClCompile>
     <ClCompile Include="physic_item.cpp">
-      <Filter>Core\Client\Objects\inventory\PhysicItem</Filter>
+      <Filter>Core\Client\Objects\Inventory\PhysicItem</Filter>
     </ClCompile>
     <ClCompile Include="ShootingObject.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Custom Weapon\Weapon Generic</Filter>

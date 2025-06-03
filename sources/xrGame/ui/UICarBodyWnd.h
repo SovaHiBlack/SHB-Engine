@@ -2,7 +2,7 @@
 
 #include "UIDialogWnd.h"
 #include "UIEditBox.h"
-#include "../inventory_space.h"
+#include "../Inventory_space.h"
 
 class CUIDragDropListEx;
 class CUIItemInfo;

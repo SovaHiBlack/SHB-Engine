@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: attachable_item_inline.h
+//	Module 		: AttachableItem_inline.h
 //	Created 	: 11.02.2004
 //  Modified 	: 11.02.2004
 //	Author		: Dmitriy Iassenev
@@ -14,10 +14,11 @@ IC	CAttachableItem::CAttachableItem				()
 	m_offset.identity	();
 	m_bone_name			= "";
 	m_enabled			= true;
-//	m_auto_attach		= true;
+
 #ifdef DEBUG
 	m_valid				= false;
 #endif
+
 }
 
 IC	shared_str CAttachableItem::bone_name			() const

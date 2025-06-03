@@ -10,7 +10,7 @@
 #include "ui/UIMainIngameWnd.h"//
 #include "ui/UIMessagesWindow.h"//
 #include "ui/UIPdaWnd.h"//
-#include "inventory.h"
+#include "Inventory.h"
 #include "huditem.h"
 
 CUI::CUI(CHUDManager* p)

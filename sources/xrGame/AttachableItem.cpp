@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: attachable_item.cpp
+//	Module 		: AttachableItem.cpp
 //	Created 	: 11.02.2004
 //  Modified 	: 11.02.2004
 //	Author		: Dmitriy Iassenev
@@ -8,9 +8,9 @@
 
 #include "stdafx.h"
 #include "physicsshellholder.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 #include "InventoryOwner.h"
-#include "inventory.h"
+#include "Inventory.h"
 
 #ifdef DEBUG
 	CAttachableItem*	CAttachableItem::m_dbgItem = NULL;
@@ -43,7 +43,7 @@ void CAttachableItem::reload			(pcstr section)
 	m_offset.setHPB					(VPUSH(angle_offset));
 	m_offset.c						= position_offset;
 	m_bone_name						= pSettings->r_string	(section,"attach_bone_name");
-//	enable							(m_auto_attach = !!(READ_IF_EXISTS(pSettings,r_bool,section,"auto_attach",TRUE)));
+
 	enable							(false);
 #ifdef DEBUG
 	m_valid							= true;
@@ -68,7 +68,7 @@ void CAttachableItem::renderable_Render	()
 void CAttachableItem::OnH_A_Independent	()
 {
 //	VERIFY							(m_valid);
-	enable							(false/*m_auto_attach*/);
+	enable							(false);
 }
 
 void CAttachableItem::enable			(bool value)

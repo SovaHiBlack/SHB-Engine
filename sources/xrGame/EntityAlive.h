@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity.h"
+#include "Entity.h"
 
 DEFINE_VECTOR(ref_shader, SHADER_VECTOR, SHADER_VECTOR_IT);
 DEFINE_VECTOR(shared_str, STR_VECTOR, STR_VECTOR_IT);
@@ -120,7 +120,7 @@ protected:
 												   f32 trace_dist, f32 wallmark_size,
 												   SHADER_VECTOR& wallmarks_vector);
 
-//информация о кровавых отметках на стенах, общая для всех CEntityAlive
+	//информация о кровавых отметках на стенах, общая для всех CEntityAlive
 	static SHADER_VECTOR* m_pBloodMarksVector;
 	static f32				m_fBloodMarkSizeMax;
 	static f32				m_fBloodMarkSizeMin;

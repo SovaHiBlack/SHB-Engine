@@ -11,7 +11,7 @@
 //#include "EntityAlive.h"
 #include "inventory_item_impl.h"
 
-#include "inventory.h"
+#include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
 
 #include "Actor.h"

@@ -11,7 +11,7 @@
 #include "object_factory.h"
 
 #ifndef NO_XR_GAME
-#	include "attachable_item.h"
+#	include "AttachableItem.h"
 
 ObjectFactory::CLIENT_BASE_CLASS *CObjectItemScript::client_object	() const
 {

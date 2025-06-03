@@ -13,7 +13,7 @@
 #include "ExtendedGeom.h"
 #include "MathUtils.h"
 #include "characterphysicssupport.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 #ifdef DEBUG

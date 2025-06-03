@@ -12,7 +12,7 @@
 #include "mt_config.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 
-#include "entity.h"
+#include "Entity.h"
 #include "gamemtllib.h"
 #include "xrmessages.h"
 #include "clsid_game.h"

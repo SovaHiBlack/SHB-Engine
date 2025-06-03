@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "ai_stalker.h"
 #include "../../pda.h"
-#include "../../inventory.h"
+#include "../../Inventory.h"
 #include "../../xrmessages.h"
 #include "../../shootingobject.h"
 #include "../../../xrNetServer/net_utils.h"

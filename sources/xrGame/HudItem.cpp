@@ -12,7 +12,7 @@
 #include "Missile.h"
 #include "xrmessages.h"
 #include "level.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "..\XR_3DA\CameraBase.h"
 
 CHudItem::CHudItem(void)

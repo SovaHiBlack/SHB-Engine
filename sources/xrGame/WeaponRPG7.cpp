@@ -3,10 +3,10 @@
 #include "WeaponHUD.h"
 #include "xrserver_objects_alife_items.h"
 #include "explosiverocket.h"
-#include "entity.h"
+#include "Entity.h"
 #include "level.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "InventoryOwner.h"
 
 CWeaponRPG7::CWeaponRPG7( ) : CWeaponCustomPistol("RPG7")

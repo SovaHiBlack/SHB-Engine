@@ -11,7 +11,7 @@
 #include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_space.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "clsid_game.h"
 #include "pda.h"
 #include "eatable_item.h"

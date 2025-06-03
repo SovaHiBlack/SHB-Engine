@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "inventory.h"
+#include "Inventory.h"
 #include "Actor.h"
 #include "Trade.h"
 #include "Weapon.h"
@@ -14,7 +14,7 @@
 #include "xr_level_controller.h"
 #include "level.h"
 #include "AISpace.h"
-#include "entitycondition.h"
+#include "EntityCondition.h"
 #include "game_base_space.h"
 #include "clsid_game.h"
 

@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "inventory_space.h"
+#include "Inventory_space.h"
 #include "HitImmunity.h"
-#include "attachable_item.h"
+#include "AttachableItem.h"
 
 enum EHandDependence
 {

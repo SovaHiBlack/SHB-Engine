@@ -3,7 +3,7 @@
 #include "PhysicsShell.h"
 #include "xrserver_objects_alife_items.h"
 #include "Actor_flags.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Weapon.h"
 #include "BulletManager.h"
 #include "AISpace.h"

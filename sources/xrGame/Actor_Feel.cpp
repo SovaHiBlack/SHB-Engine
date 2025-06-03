@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "Weapon.h"
 #include "mercuryball.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "hudmanager.h"
 #include "character_info.h"
 #include "xr_level_controller.h"

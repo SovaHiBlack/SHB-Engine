@@ -7,7 +7,7 @@
 #include "WeaponHUD.h"
 #include "ParticlesObject.h"
 #include "HUDManager.h"
-#include "entity.h"
+#include "Entity.h"
 #include "Actor.h"
 
 #include "ActorEffector.h"

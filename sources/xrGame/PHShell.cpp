@@ -17,7 +17,6 @@
 #include "ExtendedGeom.h"
 #include "PHElement.h"
 #include "PHShell.h"
-#include "PHCollideValidator.h"
 #include "PHElementInline.h"
 
 IC		bool	PhOutOfBoundaries			(const fVector3& v)

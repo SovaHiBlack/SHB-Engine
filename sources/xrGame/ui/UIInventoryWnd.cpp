@@ -17,7 +17,7 @@
 #include "../script_process.h"
 
 #include "../eatable_item.h"
-#include "../inventory.h"
+#include "../Inventory.h"
 
 #include "UIInventoryUtilities.h"//
 
@@ -26,7 +26,7 @@ using namespace InventoryUtilities;
 #include "../InfoPortion.h"
 #include "../level.h"
 #include "../game_base_space.h"
-#include "../entitycondition.h"
+#include "../EntityCondition.h"
 
 #include "../game_cl_base.h"
 #include "../ActorCondition.h"

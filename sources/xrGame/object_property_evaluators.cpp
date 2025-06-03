@@ -10,7 +10,7 @@
 #include "object_property_evaluators.h"
 #include "Weapon.h"
 #include "ai/stalker/ai_stalker.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "missile.h"
 #include "fooditem.h"
 #include "weaponmagazined.h"

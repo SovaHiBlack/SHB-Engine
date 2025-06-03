@@ -9,7 +9,7 @@
 #include "stdafx.h"
 //#include "InventoryItem.h"
 #include "inventory_item_impl.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Physics.h"
 #include "xrserver_objects_alife.h"
 #include "xrserver_objects_alife_items.h"

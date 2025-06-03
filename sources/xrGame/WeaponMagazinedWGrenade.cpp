@@ -2,7 +2,7 @@
 #include "weaponmagazinedwgrenade.h"
 #include "WeaponHUD.h"
 #include "HUDManager.h"
-#include "entity.h"
+#include "Entity.h"
 #include "ParticlesObject.h"
 #include "GrenadeLauncher.h"
 #include "xrserver_objects_alife_items.h"
@@ -15,7 +15,7 @@
 #include "game_base_space.h"
 #include "MathUtils.h"
 #include "clsid_game.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "InventoryOwner.h"
 
 #ifdef DEBUG

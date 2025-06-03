@@ -1,7 +1,7 @@
 // Wound.cpp: класс описания раны
 
 #include "stdafx.h"
-#include "wound.h"
+#include "Wound.h"
 #include "../xrNetServer/net_utils.h"
 #include "..\XR_3DA\Bone.h"
 

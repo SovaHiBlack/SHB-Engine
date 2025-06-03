@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "weaponshotgun.h"
 #include "WeaponHUD.h"
-#include "entity.h"
+#include "Entity.h"
 #include "ParticlesObject.h"
 #include "xr_level_controller.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "level.h"
 #include "Actor.h"
 

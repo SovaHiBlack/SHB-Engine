@@ -114,7 +114,7 @@ public:
 		m_fDeltaTime = DeltaTime;
 	}
 
-//скорость потери крови из всех открытых ран 
+	//скорость потери крови из всех открытых ран 
 	f32						BleedingSpeed( );
 
 	CObject* GetWhoHitLastTime( )
@@ -142,7 +142,7 @@ public:
 protected:
 	void					UpdateHealth( );
 	void					UpdatePower( );
-	void					UpdateSatiety(f32 k = 1.0f);
+//	void					UpdateSatiety(f32 k = 1.0f);
 	void					UpdateRadiation(f32 k = 1.0f);
 	void					UpdatePsyHealth(f32 k = 1.0f);
 

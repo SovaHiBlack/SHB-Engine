@@ -13,7 +13,7 @@
 #include "UIInventoryUtilities.h"//
 #include "../InventoryOwner.h"
 #include "../eatable_item.h"
-#include "../inventory.h"
+#include "../Inventory.h"
 #include "../level.h"
 #include "../string_table.h"
 #include "../character_info.h"

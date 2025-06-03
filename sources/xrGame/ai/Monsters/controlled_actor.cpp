@@ -5,10 +5,10 @@
 #include "../../xr_level_controller.h"
 #include "../../level.h"
 #include "ai_monster_utils.h"
-#include "../../inventory.h"
+#include "../../Inventory.h"
 
 #define SPEED_MIN		0.5f 
-#define SPEED_MAX		4.f
+#define SPEED_MAX		4.0f
 #define EPS_ANGLE		1 * PI / 180
 #define MAX_DIST		PI
 

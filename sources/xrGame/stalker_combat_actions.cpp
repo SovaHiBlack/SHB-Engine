@@ -11,7 +11,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "script_game_object.h"
 #include "stalker_decision_space.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "cover_evaluators.h"
 #include "cover_point.h"
 #include "cover_manager.h"

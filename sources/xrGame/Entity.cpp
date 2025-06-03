@@ -1,7 +1,5 @@
 // Entity.cpp: implementation of the CEntity class.
 
-//////////////////////////////////////////////////////////////////////
-
 #include "stdafx.h"
 #include "hudmanager.h"
 #include "Entity.h"

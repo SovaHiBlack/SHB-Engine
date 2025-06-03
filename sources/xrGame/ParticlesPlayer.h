@@ -18,15 +18,10 @@ public:
 	//структура с внутренней информацией о партикле
 	struct SParticlesInfo
 	{
-		CParticlesObject* ps;
-		//fVector3				dir;
-		//fMatrix4x4				x_form;
-		fVector3				angles;
+		CParticlesObject*	ps;
+		fVector3			angles;
 		u16					sender_id;	//id - объекта, который запустил партиклы
 		u32					life_time;	//время жизни партикла (-1) - бесконечно
-
-		//s32					cur_time;	//текущее время существования партикла
-		//bool				auto_stop;	//автоматическая остановка партиклов, когда закончится время
 	};
 	DEFINE_VECTOR(SParticlesInfo, ParticlesInfoList, ParticlesInfoListIt);
 
@@ -37,6 +32,7 @@ public:
 		fVector3				offset;
 		ParticlesInfoList	particles;
 		SParticlesInfo* FindParticles(const shared_str& ps_name);
+
 	public:
 		SBoneInfo(u16 idx, const fVector3& offs) :index(idx), offset(offs)
 		{ }

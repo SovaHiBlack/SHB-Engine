@@ -11,7 +11,7 @@
 #include "UIItemInfo.h"//
 #include "UIPropertiesBox.h"
 #include "../ai/monsters/BaseMonster/base_monster.h"
-#include "../inventory.h"
+#include "../Inventory.h"
 #include "UIInventoryUtilities.h"//
 #include "UICellItem.h"
 #include "UICellItemFactory.h"
