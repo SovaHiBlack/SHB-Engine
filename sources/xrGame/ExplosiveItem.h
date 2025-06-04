@@ -7,7 +7,7 @@
 #pragma once
 
 #include "Explosive.h"
-#include "inventory_item_object.h"
+#include "InventoryItemObject.h"
 #include "DelayedActionFuse.h"
 class CExplosiveItem: 
 			public CInventoryItemObject	,

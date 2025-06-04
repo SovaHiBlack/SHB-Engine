@@ -19,55 +19,55 @@ MONSTER_COMMUNITY_DATA::MONSTER_COMMUNITY_DATA(MONSTER_COMMUNITY_INDEX idx, MONS
 }
 
 //////////////////////////////////////////////////////////////////////////
-MONSTER_COMMUNITY::MONSTER_RELATION_TABLE MONSTER_COMMUNITY::m_relation_table;
+CMonsterCommunity::MONSTER_RELATION_TABLE CMonsterCommunity::m_relation_table;
 
 //////////////////////////////////////////////////////////////////////////
-MONSTER_COMMUNITY::MONSTER_COMMUNITY( )
+CMonsterCommunity::CMonsterCommunity( )
 {
 	m_current_index = NO_MONSTER_COMMUNITY_INDEX;
 }
 
-MONSTER_COMMUNITY::~MONSTER_COMMUNITY( )
+CMonsterCommunity::~CMonsterCommunity( )
 { }
 
-void MONSTER_COMMUNITY::set(MONSTER_COMMUNITY_ID id)
+void CMonsterCommunity::set(MONSTER_COMMUNITY_ID id)
 {
 	m_current_index = IdToIndex(id);
 
 }
-void MONSTER_COMMUNITY::set(MONSTER_COMMUNITY_INDEX index)
+void CMonsterCommunity::set(MONSTER_COMMUNITY_INDEX index)
 {
 	m_current_index = index;
 }
 
-MONSTER_COMMUNITY_ID		 MONSTER_COMMUNITY::id( ) const
+MONSTER_COMMUNITY_ID		 CMonsterCommunity::id( ) const
 {
 	return IndexToId(m_current_index);
 }
 
-MONSTER_COMMUNITY_INDEX	 MONSTER_COMMUNITY::index( ) const
+MONSTER_COMMUNITY_INDEX	 CMonsterCommunity::index( ) const
 {
 	return m_current_index;
 }
 
-u8 MONSTER_COMMUNITY::team( ) const
+u8 CMonsterCommunity::team( ) const
 {
 	return (*m_pItemDataVector)[m_current_index].team;
 }
 
-void MONSTER_COMMUNITY::InitIdToIndex( )
+void CMonsterCommunity::InitIdToIndex( )
 {
 	section_name = MONSTER_RELATIONS_SECT;
 	line_name = MONSTER_COMMUNITIES;
 	m_relation_table.set_table_params(MONSTER_RELATIONS_TABLE);
 }
 
-s32 MONSTER_COMMUNITY::relation(MONSTER_COMMUNITY_INDEX to)
+s32 CMonsterCommunity::relation(MONSTER_COMMUNITY_INDEX to)
 {
 	return relation(m_current_index, to);
 }
 
-s32 MONSTER_COMMUNITY::relation(MONSTER_COMMUNITY_INDEX from, MONSTER_COMMUNITY_INDEX to)
+s32 CMonsterCommunity::relation(MONSTER_COMMUNITY_INDEX from, MONSTER_COMMUNITY_INDEX to)
 {
 	VERIFY(from >= 0 && from < (s32)m_relation_table.table( ).size( ));
 	VERIFY(to >= 0 && to < (s32)m_relation_table.table( ).size( ));
@@ -75,7 +75,7 @@ s32 MONSTER_COMMUNITY::relation(MONSTER_COMMUNITY_INDEX from, MONSTER_COMMUNITY_
 	return m_relation_table.table( )[from][to];
 }
 
-void MONSTER_COMMUNITY::DeleteIdToIndexData( )
+void CMonsterCommunity::DeleteIdToIndexData( )
 {
 	m_relation_table.clear( );
 	inherited::DeleteIdToIndexData( );

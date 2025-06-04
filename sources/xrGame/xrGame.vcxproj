@@ -582,8 +582,8 @@
     <ClInclude Include="associative_vector_inline.h" />
     <ClInclude Include="AttachableItem.h" />
     <ClInclude Include="AttachableItem_inline.h" />
-    <ClInclude Include="attachment_owner.h" />
-    <ClInclude Include="attachment_owner_inline.h" />
+    <ClInclude Include="AttachmentOwner.h" />
+    <ClInclude Include="AttachmentOwner_inline.h" />
     <ClInclude Include="AutosaveManager.h" />
     <ClInclude Include="AutosaveManager_inline.h" />
     <ClInclude Include="a_star.h" />
@@ -682,8 +682,8 @@
     <ClInclude Include="doug_lea_memory_allocator.h" />
     <CustomBuild Include="dRayMotions.h" />
     <ClInclude Include="DummyArtifact.h" />
-    <ClInclude Include="eatable_item.h" />
-    <ClInclude Include="eatable_item_object.h" />
+    <ClInclude Include="EatableItem.h" />
+    <ClInclude Include="EatableItemObject.h" />
     <ClInclude Include="edge_path.h" />
     <ClInclude Include="edge_path_inline.h" />
     <ClInclude Include="EffectorBobbing.h" />
@@ -800,10 +800,10 @@
     <ClInclude Include="InventoryBox.h" />
     <ClInclude Include="InventoryOwner.h" />
     <ClInclude Include="InventoryItem.h" />
-    <ClInclude Include="inventory_item_impl.h" />
-    <ClInclude Include="inventory_item_inline.h" />
-    <ClInclude Include="inventory_item_object.h" />
-    <ClInclude Include="inventory_owner_inline.h" />
+    <ClInclude Include="InventoryItem_impl.h" />
+    <ClInclude Include="InventoryItem_inline.h" />
+    <ClInclude Include="InventoryItemObject.h" />
+    <ClInclude Include="InventoryOwner_inline.h" />
     <ClInclude Include="Inventory_space.h" />
     <ClInclude Include="ItemHealth.h" />
     <ClInclude Include="ItemListTypes.h" />
@@ -1018,15 +1018,15 @@
     <ClInclude Include="property_evaluator_member_inline.h" />
     <ClInclude Include="property_storage.h" />
     <ClInclude Include="property_storage_inline.h" />
-    <ClInclude Include="purchase_list.h" />
-    <ClInclude Include="purchase_list_inline.h" />
+    <ClInclude Include="PurchaseList.h" />
+    <ClInclude Include="PurchaseList_inline.h" />
     <ClInclude Include="quadtree.h" />
     <ClInclude Include="quadtree_inline.h" />
     <ClInclude Include="RadioactiveZone.h" />
     <ClInclude Include="random32.h" />
-    <ClInclude Include="relation_registry.h" />
-    <ClInclude Include="relation_registry_defs.h" />
-    <ClInclude Include="relation_registry_inline.h" />
+    <ClInclude Include="RelationRegistry.h" />
+    <ClInclude Include="RelationRegistry_defs.h" />
+    <ClInclude Include="RelationRegistry_inline.h" />
     <ClInclude Include="restricted_object.h" />
     <ClInclude Include="restricted_object_inline.h" />
     <ClInclude Include="restriction_space.h" />
@@ -1260,16 +1260,16 @@
     <ClInclude Include="TorridZone.h" />
     <ClInclude Include="Tracer.h" />
     <ClInclude Include="Trade.h" />
-    <ClInclude Include="trade_action_parameters.h" />
-    <ClInclude Include="trade_action_parameters_inline.h" />
-    <ClInclude Include="trade_bool_parameters.h" />
-    <ClInclude Include="trade_bool_parameters_inline.h" />
-    <ClInclude Include="trade_factors.h" />
-    <ClInclude Include="trade_factors_inline.h" />
-    <ClInclude Include="trade_factor_parameters.h" />
-    <ClInclude Include="trade_factor_parameters_inline.h" />
-    <ClInclude Include="trade_parameters.h" />
-    <ClInclude Include="trade_parameters_inline.h" />
+    <ClInclude Include="TradeActionParameters.h" />
+    <ClInclude Include="TradeActionParameters_inline.h" />
+    <ClInclude Include="TradeBoolParameters.h" />
+    <ClInclude Include="TradeBoolParameters_inline.h" />
+    <ClInclude Include="TradeFactors.h" />
+    <ClInclude Include="TradeFactors_inline.h" />
+    <ClInclude Include="TradeFactorParameters.h" />
+    <ClInclude Include="TradeFactorParameters_inline.h" />
+    <ClInclude Include="TradeParameters.h" />
+    <ClInclude Include="TradeParameters_inline.h" />
     <ClInclude Include="tri-colliderknoopc\dcTriangle.h" />
     <ClInclude Include="tri-colliderKNoOPC\dcTriListCollider.h" />
     <ClInclude Include="tri-colliderknoopc\dSortTriPrimitive.h" />
@@ -1707,7 +1707,7 @@
     <ClCompile Include="artefact_script.cpp" />
     <ClCompile Include="Artifact.cpp" />
     <ClCompile Include="AttachableItem.cpp" />
-    <ClCompile Include="attachment_owner.cpp" />
+    <ClCompile Include="AttachmentOwner.cpp" />
     <ClCompile Include="AutosaveManager.cpp" />
     <ClCompile Include="base_client_classes_script.cpp" />
     <ClCompile Include="BastArtifact.cpp" />
@@ -1784,8 +1784,8 @@
     </ClCompile>
     <ClCompile Include="dRayMotions.cpp" />
     <ClCompile Include="DummyArtifact.cpp" />
-    <ClCompile Include="eatable_item.cpp" />
-    <ClCompile Include="eatable_item_object.cpp" />
+    <ClCompile Include="EatableItem.cpp" />
+    <ClCompile Include="EatableItemObject.cpp" />
     <ClCompile Include="EffectorBobbing.cpp" />
     <ClCompile Include="EffectorFall.cpp" />
     <ClCompile Include="EffectorShot.cpp" />
@@ -1872,8 +1872,8 @@
     <ClCompile Include="InventoryBox.cpp" />
     <ClCompile Include="InventoryOwner.cpp" />
     <ClCompile Include="InventoryItem.cpp" />
-    <ClCompile Include="inventory_item_object.cpp" />
-    <ClCompile Include="inventory_owner_info.cpp" />
+    <ClCompile Include="InventoryItemObject.cpp" />
+    <ClCompile Include="InventoryOwner_info.cpp" />
     <ClCompile Include="ItemHealth.cpp" />
     <ClCompile Include="item_manager.cpp" />
     <ClCompile Include="key_binding_registrator_script.cpp" />
@@ -2011,13 +2011,13 @@
     </ClCompile>
     <ClCompile Include="property_evaluator_script.cpp" />
     <ClCompile Include="property_storage_script.cpp" />
-    <ClCompile Include="purchase_list.cpp" />
+    <ClCompile Include="PurchaseList.cpp" />
     <ClCompile Include="r2_test_hw.cpp" />
     <ClCompile Include="RadioactiveZone.cpp" />
     <ClCompile Include="random32.cpp" />
-    <ClCompile Include="relation_registry.cpp" />
-    <ClCompile Include="relation_registry_actions.cpp" />
-    <ClCompile Include="relation_registry_fights.cpp" />
+    <ClCompile Include="RelationRegistry.cpp" />
+    <ClCompile Include="RelationRegistry_actions.cpp" />
+    <ClCompile Include="RelationRegistry_fights.cpp" />
     <ClCompile Include="restricted_object.cpp" />
     <ClCompile Include="RGD5.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
@@ -2200,7 +2200,7 @@
     <ClCompile Include="TorridZone.cpp" />
     <ClCompile Include="Tracer.cpp" />
     <ClCompile Include="Trade.cpp" />
-    <ClCompile Include="trade_parameters.cpp" />
+    <ClCompile Include="TradeParameters.cpp" />
     <ClCompile Include="tri-colliderknoopc\dcTriListCollider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

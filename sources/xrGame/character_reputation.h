@@ -18,18 +18,18 @@ struct REPUTATION_DATA
 	CHARACTER_REPUTATION_VALUE	threshold;
 };
 
-class CHARACTER_REPUTATION;
+class CCharacterReputation;
 
-class CHARACTER_REPUTATION: 
-	public CIni_IdToIndex<1, REPUTATION_DATA, shared_str, s32, CHARACTER_REPUTATION>
+class CCharacterReputation :
+	public CIni_IdToIndex<1, REPUTATION_DATA, shared_str, s32, CCharacterReputation>
 {
 private:
-	typedef CIni_IdToIndex<1, REPUTATION_DATA, shared_str, s32, CHARACTER_REPUTATION> inherited;
+	typedef CIni_IdToIndex<1, REPUTATION_DATA, shared_str, s32, CCharacterReputation> inherited;
 	friend inherited;
 
 public:
-	CHARACTER_REPUTATION		():m_current_value(NO_REPUTATION){};
-	~CHARACTER_REPUTATION		(){};
+	CCharacterReputation():m_current_value(NO_REPUTATION){};
+	~CCharacterReputation(){};
 
 	void						set				(CHARACTER_REPUTATION_VALUE);
 
@@ -52,7 +52,7 @@ public:
 	static void					DeleteIdToIndexData	();
 
 private:
-	typedef CIni_Table<CHARACTER_GOODWILL, CHARACTER_REPUTATION> GOODWILL_TABLE;
+	typedef CIni_Table<CHARACTER_GOODWILL, CCharacterReputation> GOODWILL_TABLE;
 	friend GOODWILL_TABLE;
 	static GOODWILL_TABLE m_relation_table;
 };

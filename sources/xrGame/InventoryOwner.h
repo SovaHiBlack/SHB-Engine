@@ -6,7 +6,7 @@
 #pragma once
 #include "InfoPortion_defs.h"
 #include "pda_space.h"
-#include "attachment_owner.h"
+#include "AttachmentOwner.h"
 #include "script_space_forward.h"
 #include "character_info.h"
 #include "Inventory_space.h"
@@ -39,8 +39,8 @@ public:
 	{
 		return this;
 	}
-public:
 
+public:
 	virtual DLL_Pure* _construct( );
 	virtual BOOL		net_Spawn(CSE_Abstract* DC);
 	virtual void		net_Destroy( );
@@ -71,7 +71,7 @@ public:
 
 	virtual bool	AllowItemToTrade(CInventoryItem const* item, EItemPlace place) const;
 	virtual void	OnFollowerCmd(s32 cmd)
-	{ };//redefine for CAI_Stalkker
+	{ }//redefine for CAI_Stalkker
 	//инициализация объекта торговли
 	CTrade* GetTrade( );
 
@@ -121,6 +121,7 @@ public:
 		return m_money;
 	}
 	void				set_money(u32 amount, bool bSendEvent);
+
 protected:
 	u32					m_money;
 	// торговля
@@ -132,6 +133,7 @@ protected:
 	bool				m_bAllowTrade;
 
 	u32					m_tmp_active_slot_num;
+
 	//////////////////////////////////////////////////////////////////////////
 	// сюжетная информация
 public:
@@ -171,19 +173,20 @@ public:
 	virtual CCustomOutfit* GetOutfit( )	const
 	{
 		return NULL;
-	};
+	}
 
 	//////////////////////////////////////////////////////////////////////////
 	//игровые характеристики персонажа
 public:
 	CCharacterInfo& CharacterInfo( ) const
 	{
-		VERIFY(m_pCharacterInfo); return *m_pCharacterInfo;
+		VERIFY(m_pCharacterInfo);
+		return *m_pCharacterInfo;
 	}
 	IC const CSpecificCharacter& SpecificCharacter( ) const
 	{
 		return CharacterInfo( ).m_SpecificCharacter;
-	};
+	}
 	bool								InfinitiveMoney( )
 	{
 		return CharacterInfo( ).m_SpecificCharacter.MoneyDef( ).inf_money;
@@ -201,15 +204,15 @@ public:
 	CHARACTER_COMMUNITY_INDEX		Community( ) const
 	{
 		return CharacterInfo( ).Community( ).index( );
-	};
+	}
 	CHARACTER_RANK_VALUE			Rank( ) const
 	{
 		return CharacterInfo( ).Rank( ).value( );
-	};
+	}
 	CHARACTER_REPUTATION_VALUE		Reputation( ) const
 	{
 		return CharacterInfo( ).Reputation( ).value( );
-	};
+	}
 
 protected:
 	CCharacterInfo* m_pCharacterInfo;
@@ -242,25 +245,25 @@ protected:
 	u32							m_ammo_in_box_to_spawn;
 
 public:
-	IC		const shared_str& item_to_spawn( ) const
+	IC const shared_str& item_to_spawn( ) const
 	{
 		return m_item_to_spawn;
 	}
-	IC		const u32& ammo_in_box_to_spawn( ) const
+	IC const u32& ammo_in_box_to_spawn( ) const
 	{
 		return m_ammo_in_box_to_spawn;
 	}
 
 public:
-	virtual	void				on_weapon_shot_start(CWeapon* weapon);
-	virtual	void				on_weapon_shot_stop(CWeapon* weapon);
-	virtual	void				on_weapon_hide(CWeapon* weapon);
+	virtual void				on_weapon_shot_start(CWeapon* weapon);
+	virtual void				on_weapon_shot_stop(CWeapon* weapon);
+	virtual void				on_weapon_hide(CWeapon* weapon);
 
 public:
-	virtual	bool				use_simplified_visual( ) const
+	virtual bool				use_simplified_visual( ) const
 	{
-		return (false);
-	};
+		return false;
+	}
 
 private:
 	CTradeParameters* m_trade_parameters;
@@ -290,4 +293,4 @@ public:
 	}
 };
 
-#include "inventory_owner_inline.h"
+#include "InventoryOwner_inline.h"

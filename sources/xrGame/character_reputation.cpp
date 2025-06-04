@@ -18,11 +18,11 @@ REPUTATION_DATA::REPUTATION_DATA(s32 idx, shared_str idn, pcstr threshold_str)
 	threshold = (CHARACTER_REPUTATION_VALUE)atoi(threshold_str);
 }
 //////////////////////////////////////////////////////////////////////////
-CHARACTER_REPUTATION::GOODWILL_TABLE CHARACTER_REPUTATION::m_relation_table;
+CCharacterReputation::GOODWILL_TABLE CCharacterReputation::m_relation_table;
 
 //////////////////////////////////////////////////////////////////////////
 
-s32 CHARACTER_REPUTATION::ValueToIndex(CHARACTER_REPUTATION_VALUE val)
+s32 CCharacterReputation::ValueToIndex(CHARACTER_REPUTATION_VALUE val)
 {
 	T_VECTOR::iterator it = m_pItemDataVector->begin( );
 	T_VECTOR::iterator it_e = m_pItemDataVector->end( );
@@ -37,18 +37,18 @@ s32 CHARACTER_REPUTATION::ValueToIndex(CHARACTER_REPUTATION_VALUE val)
 	return inherited::GetMaxIndex( );
 }
 
-void CHARACTER_REPUTATION::set(CHARACTER_REPUTATION_VALUE new_val)
+void CCharacterReputation::set(CHARACTER_REPUTATION_VALUE new_val)
 {
 	m_current_value = new_val;
 	m_current_index = ValueToIndex(new_val);
 }
 
-shared_str					CHARACTER_REPUTATION::id( ) const
+shared_str					CCharacterReputation::id( ) const
 {
 	return IndexToId(m_current_index);
 }
 
-void CHARACTER_REPUTATION::InitIdToIndex( )
+void CCharacterReputation::InitIdToIndex( )
 {
 	section_name = GAME_RELATIONS_SECT;
 	line_name = REPUTATION_LINE;
@@ -56,19 +56,19 @@ void CHARACTER_REPUTATION::InitIdToIndex( )
 	m_relation_table.set_table_params(REPUTATION_TABLE);
 }
 
-CHARACTER_GOODWILL CHARACTER_REPUTATION::relation(s32 to)
+CHARACTER_GOODWILL CCharacterReputation::relation(s32 to)
 {
 	return relation(m_current_index, to);
 }
 
-CHARACTER_GOODWILL  CHARACTER_REPUTATION::relation(s32 from, s32 to)
+CHARACTER_GOODWILL  CCharacterReputation::relation(s32 from, s32 to)
 {
 	VERIFY(from >= 0 && from < (s32)m_relation_table.table( ).size( ));
 	VERIFY(to >= 0 && to < (s32)m_relation_table.table( ).size( ));
 	return m_relation_table.table( )[from][to];
 }
 
-void CHARACTER_REPUTATION::DeleteIdToIndexData( )
+void CCharacterReputation::DeleteIdToIndexData( )
 {
 	m_relation_table.clear( );
 	inherited::DeleteIdToIndexData( );

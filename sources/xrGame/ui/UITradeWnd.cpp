@@ -12,7 +12,7 @@
 #include "../UIGame.h"
 #include "UIInventoryUtilities.h"//
 #include "../InventoryOwner.h"
-#include "../eatable_item.h"
+#include "../EatableItem.h"
 #include "../Inventory.h"
 #include "../level.h"
 #include "../string_table.h"
@@ -25,7 +25,7 @@
 #include "UIDragDropListEx.h"
 #include "UICellItem.h"
 #include "UICellItemFactory.h"
-#include "../trade_parameters.h"
+#include "../TradeParameters.h"
 
 #define				TRADE_XML			"trade.xml"
 #define				TRADE_CHARACTER_XML	"trade_character.xml"

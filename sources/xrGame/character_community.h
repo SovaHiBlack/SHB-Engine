@@ -21,18 +21,18 @@ struct COMMUNITY_DATA
 };
 
 
-class CHARACTER_COMMUNITY;
+class CCharacterCommunity;
 
-class CHARACTER_COMMUNITY: 
-	public CIni_IdToIndex<1, COMMUNITY_DATA, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CHARACTER_COMMUNITY>
+class CCharacterCommunity :
+	public CIni_IdToIndex<1, COMMUNITY_DATA, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CCharacterCommunity>
 {
 private:
-	typedef CIni_IdToIndex<1, COMMUNITY_DATA, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CHARACTER_COMMUNITY> inherited;
+	typedef CIni_IdToIndex<1, COMMUNITY_DATA, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CCharacterCommunity> inherited;
 	friend inherited;
 
 public:
-	CHARACTER_COMMUNITY			();
-	~CHARACTER_COMMUNITY		();
+	CCharacterCommunity();
+	~CCharacterCommunity();
 
 	void						set				(CHARACTER_COMMUNITY_ID);		
 	void						set				(CHARACTER_COMMUNITY_INDEX index) {m_current_index = index;};
@@ -55,12 +55,12 @@ public:
 	
 	static void					DeleteIdToIndexData	();
 private:
-	typedef CIni_Table<CHARACTER_GOODWILL, CHARACTER_COMMUNITY> GOODWILL_TABLE;
+	typedef CIni_Table<CHARACTER_GOODWILL, CCharacterCommunity> GOODWILL_TABLE;
 	friend GOODWILL_TABLE;
 	static GOODWILL_TABLE m_relation_table;
 
 	//таблица коэффициентов "сочуствия" между участниками группировки
-	typedef CIni_Table<f32, CHARACTER_COMMUNITY> SYMPATHY_TABLE;
+	typedef CIni_Table<f32, CCharacterCommunity> SYMPATHY_TABLE;
 	friend SYMPATHY_TABLE;
 	static SYMPATHY_TABLE m_sympathy_table;
 };

@@ -12,7 +12,7 @@
 #include "../../bolt.h"
 #include "../../Inventory.h"
 #include "../../character_info.h"
-#include "../../relation_registry.h"
+#include "../../RelationRegistry.h"
 #include "../../memory_manager.h"
 #include "../../item_manager.h"
 #include "../../stalker_movement_manager.h"
@@ -94,7 +94,7 @@ ALife::ERelationType CStalker::tfGetRelationType	(const CEntityAlive *tpEntityAl
 	ALife::ERelationType relation = ALife::eRelationTypeDummy;
 		
 	if(pOtherIO && !(const_cast<CEntityAlive*>(tpEntityAlive)->cast_base_monster()))
-		relation = RELATION_REGISTRY().GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
+		relation = SRelationRegistry().GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
 	
 	if(ALife::eRelationTypeDummy != relation)
 		return relation;

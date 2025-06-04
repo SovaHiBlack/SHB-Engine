@@ -8,12 +8,12 @@
 #include "Inventory.h"
 #include "xrmessages.h"
 #include "character_info.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "level.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
 #include "GameObject_space.h"
-#include "trade_parameters.h"
+#include "TradeParameters.h"
 
 class CInventoryOwner;
 
@@ -336,7 +336,7 @@ u32 CTrade::GetItemPrice(PIItem pItem, bool b_buying)
 	//computing relation factor
 	f32 relation_factor;
 
-	CHARACTER_GOODWILL attitude = RELATION_REGISTRY( ).GetAttitude(pPartner.inv_owner, pThis.inv_owner);
+	CHARACTER_GOODWILL attitude = SRelationRegistry( ).GetAttitude(pPartner.inv_owner, pThis.inv_owner);
 
 	if (NO_GOODWILL == attitude)
 	{

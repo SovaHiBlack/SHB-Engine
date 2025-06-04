@@ -3,7 +3,7 @@
 #include "../WeaponAmmo.h"
 #include "../UIStaticItem.h"
 #include "UIStatic.h"
-#include "../eatable_item.h"
+#include "../EatableItem.h"
 #include "../Level.h"
 #include "../HUDManager.h"
 #include "../date_time.h"

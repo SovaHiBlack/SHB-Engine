@@ -5,7 +5,7 @@
 DEFINE_VECTOR(ref_shader, SHADER_VECTOR, SHADER_VECTOR_IT);
 DEFINE_VECTOR(shared_str, STR_VECTOR, STR_VECTOR_IT);
 
-class MONSTER_COMMUNITY;
+class CMonsterCommunity;
 class CEntityCondition;
 class CWound;
 class CCharacterPhysicsSupport;
@@ -149,7 +149,7 @@ public:
 	virtual	bool				 is_relation_enemy(const CEntityAlive* tpEntityAlive) const;
 
 public:
-	MONSTER_COMMUNITY* monster_community;
+	CMonsterCommunity* monster_community;
 
 private:
 	CEntityCondition* m_entity_condition;

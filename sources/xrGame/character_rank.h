@@ -18,20 +18,20 @@ struct RANK_DATA
 	CHARACTER_RANK_VALUE	threshold;
 };
 
-class CHARACTER_RANK;
+class CCharacterRank;
 
-typedef CIni_IdToIndex<1, RANK_DATA, shared_str, s32, CHARACTER_RANK> CHARACTER_RANK_base;
+typedef CIni_IdToIndex<1, RANK_DATA, shared_str, s32, CCharacterRank> CHARACTER_RANK_base;
 
-class CHARACTER_RANK : public CHARACTER_RANK_base
+class CCharacterRank : public CHARACTER_RANK_base
 {
 private:
 	typedef CHARACTER_RANK_base inherited;
 	friend inherited;
 
 public:
-	CHARACTER_RANK( ) : m_current_value(NO_RANK)
+	CCharacterRank( ) : m_current_value(NO_RANK)
 	{ }
-	~CHARACTER_RANK( )
+	~CCharacterRank( )
 	{ }
 
 	void						set(CHARACTER_RANK_VALUE);
@@ -64,12 +64,12 @@ public:
 	static void					DeleteIdToIndexData( );
 
 private:
-	typedef CIni_Table<CHARACTER_GOODWILL, CHARACTER_RANK> GOODWILL_TABLE;
+	typedef CIni_Table<CHARACTER_GOODWILL, CCharacterRank> GOODWILL_TABLE;
 	friend GOODWILL_TABLE;
 	static GOODWILL_TABLE m_relation_table;
 
 	//очки рейтинга которые прибавляются за убийство персонажа с определенным рангом
-	typedef CIni_Table<CHARACTER_RANK_VALUE, CHARACTER_RANK> RANK_KILL_TABLE;
+	typedef CIni_Table<CHARACTER_RANK_VALUE, CCharacterRank> RANK_KILL_TABLE;
 	friend RANK_KILL_TABLE;
 	static RANK_KILL_TABLE m_rank_kill_table;
 };

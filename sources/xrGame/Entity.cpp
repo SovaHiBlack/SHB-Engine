@@ -219,7 +219,7 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 		CSE_ALifeMonsterBase* monster = smart_cast<CSE_ALifeMonsterBase*>(E);
 		if (monster)
 		{
-			MONSTER_COMMUNITY monster_community;
+			CMonsterCommunity monster_community;
 			monster_community.set(pSettings->r_string(*cNameSect( ), "species"));
 
 			if (monster_community.team( ) != 255)

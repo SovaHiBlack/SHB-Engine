@@ -7,7 +7,7 @@
 
 #include "ui/UIInventoryUtilities.h"//
 
-#include "eatable_item.h"
+#include "EatableItem.h"
 #include "script_engine.h"
 #include "xrmessages.h"
 //#include "game_cl_base.h"

@@ -5,7 +5,7 @@
 #include "../scope.h"
 #include "../grenadelauncher.h"
 #include "../Artifact.h"
-#include "../eatable_item.h"
+#include "../EatableItem.h"
 #include "../BottleItem.h"
 #include "../WeaponMagazined.h"
 #include "../Inventory.h"

@@ -24,7 +24,7 @@
 #include "profiler.h"
 
 #include "sound_collection_storage.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 
 typedef xr_vector<std::pair<shared_str,int> >	STORY_PAIRS;
 extern STORY_PAIRS								story_ids;
@@ -53,10 +53,10 @@ void init_game_globals()
 
 	CCharacterInfo::InitInternal					();
 	CSpecificCharacter::InitInternal				();
-	CHARACTER_COMMUNITY::InitInternal				();
-	CHARACTER_RANK::InitInternal					();
-	CHARACTER_REPUTATION::InitInternal				();
-	MONSTER_COMMUNITY::InitInternal					();
+	CCharacterCommunity::InitInternal				();
+	CCharacterRank::InitInternal					();
+	CCharacterReputation::InitInternal				();
+	CMonsterCommunity::InitInternal					();
 }
 
 extern CUIXml*	g_gameTaskXml;
@@ -94,10 +94,10 @@ void clean_game_globals()
 	CSpecificCharacter::DeleteSharedData			();
 	CSpecificCharacter::DeleteIdToIndexData			();
 
-	CHARACTER_COMMUNITY::DeleteIdToIndexData		();
-	CHARACTER_RANK::DeleteIdToIndexData				();
-	CHARACTER_REPUTATION::DeleteIdToIndexData		();
-	MONSTER_COMMUNITY::DeleteIdToIndexData			();
+	CCharacterCommunity::DeleteIdToIndexData		();
+	CCharacterRank::DeleteIdToIndexData				();
+	CCharacterReputation::DeleteIdToIndexData		();
+	CMonsterCommunity::DeleteIdToIndexData			();
 
 	//static shader for blood
 	CEntityAlive::UnloadBloodyWallmarks				();
@@ -116,7 +116,7 @@ void clean_game_globals()
 	release_smart_cast_stats						();
 #endif
 
-	RELATION_REGISTRY::clear_relation_registry		();
+	SRelationRegistry::clear_relation_registry		();
 
 	dump_list_wnd									();
 	dump_list_lines									();

@@ -21,18 +21,18 @@ struct MONSTER_COMMUNITY_DATA
 	u8						team;
 };
 
-class MONSTER_COMMUNITY;
+class CMonsterCommunity;
 
-class MONSTER_COMMUNITY :
-	public CIni_IdToIndex<1, MONSTER_COMMUNITY_DATA, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, MONSTER_COMMUNITY>
+class CMonsterCommunity :
+	public CIni_IdToIndex<1, MONSTER_COMMUNITY_DATA, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, CMonsterCommunity>
 {
 private:
-	typedef CIni_IdToIndex<1, MONSTER_COMMUNITY_DATA, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, MONSTER_COMMUNITY> inherited;
+	typedef CIni_IdToIndex<1, MONSTER_COMMUNITY_DATA, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, CMonsterCommunity> inherited;
 	friend inherited;
 
 public:
-	MONSTER_COMMUNITY( );
-	~MONSTER_COMMUNITY( );
+	CMonsterCommunity( );
+	~CMonsterCommunity( );
 
 	void						set(MONSTER_COMMUNITY_ID);
 	void						set(MONSTER_COMMUNITY_INDEX);
@@ -54,7 +54,7 @@ public:
 	static void					DeleteIdToIndexData( );
 
 private:
-	typedef CIni_Table<s32, MONSTER_COMMUNITY> MONSTER_RELATION_TABLE;
+	typedef CIni_Table<s32, CMonsterCommunity> MONSTER_RELATION_TABLE;
 	friend MONSTER_RELATION_TABLE;
 	static MONSTER_RELATION_TABLE m_relation_table;
 };

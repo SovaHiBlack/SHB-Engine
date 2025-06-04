@@ -15,37 +15,37 @@ COMMUNITY_DATA::COMMUNITY_DATA (CHARACTER_COMMUNITY_INDEX idx, CHARACTER_COMMUNI
 }
 
 //////////////////////////////////////////////////////////////////////////
-CHARACTER_COMMUNITY::GOODWILL_TABLE CHARACTER_COMMUNITY::m_relation_table;
-CHARACTER_COMMUNITY::SYMPATHY_TABLE CHARACTER_COMMUNITY::m_sympathy_table;
+CCharacterCommunity::GOODWILL_TABLE CCharacterCommunity::m_relation_table;
+CCharacterCommunity::SYMPATHY_TABLE CCharacterCommunity::m_sympathy_table;
 
 //////////////////////////////////////////////////////////////////////////
-CHARACTER_COMMUNITY::CHARACTER_COMMUNITY	()
+CCharacterCommunity::CCharacterCommunity()
 {
 	m_current_index = NO_COMMUNITY_INDEX;
 }
-CHARACTER_COMMUNITY::~CHARACTER_COMMUNITY	()
+CCharacterCommunity::~CCharacterCommunity()
 {
 }
 
 
-void  CHARACTER_COMMUNITY::set	(CHARACTER_COMMUNITY_ID id)
+void  CCharacterCommunity::set	(CHARACTER_COMMUNITY_ID id)
 {
 	m_current_index	 = IdToIndex(id);
 
 }
 
-CHARACTER_COMMUNITY_ID		 CHARACTER_COMMUNITY::id			() const
+CHARACTER_COMMUNITY_ID		 CCharacterCommunity::id			() const
 {
 	return IndexToId(m_current_index);
 }
 
-u8							 CHARACTER_COMMUNITY::team			() const
+u8							 CCharacterCommunity::team			() const
 {
 	return (*m_pItemDataVector)[m_current_index].team;
 }
 
 
-void CHARACTER_COMMUNITY::InitIdToIndex	()
+void CCharacterCommunity::InitIdToIndex	()
 {
 	section_name = "game_relations";
 	line_name = "communities";
@@ -55,12 +55,12 @@ void CHARACTER_COMMUNITY::InitIdToIndex	()
 }
 
 
-CHARACTER_GOODWILL CHARACTER_COMMUNITY::relation		(CHARACTER_COMMUNITY_INDEX to)
+CHARACTER_GOODWILL CCharacterCommunity::relation		(CHARACTER_COMMUNITY_INDEX to)
 {
 	return relation(m_current_index, to);
 }
 
-CHARACTER_GOODWILL  CHARACTER_COMMUNITY::relation		(CHARACTER_COMMUNITY_INDEX from, CHARACTER_COMMUNITY_INDEX to)
+CHARACTER_GOODWILL  CCharacterCommunity::relation		(CHARACTER_COMMUNITY_INDEX from, CHARACTER_COMMUNITY_INDEX to)
 {
 	VERIFY(from >= 0 && from <(s32)m_relation_table.table().size());
 	VERIFY(to >= 0 && to <(s32)m_relation_table.table().size());
@@ -68,13 +68,13 @@ CHARACTER_GOODWILL  CHARACTER_COMMUNITY::relation		(CHARACTER_COMMUNITY_INDEX fr
 	return m_relation_table.table()[from][to];
 }
 
-f32 CHARACTER_COMMUNITY::sympathy			(CHARACTER_COMMUNITY_INDEX comm)
+f32 CCharacterCommunity::sympathy			(CHARACTER_COMMUNITY_INDEX comm)
 {
 	VERIFY(comm >= 0 && comm <(s32)m_sympathy_table.table().size());
 	return m_sympathy_table.table()[comm][0];
 }
 
-void CHARACTER_COMMUNITY::DeleteIdToIndexData	()
+void CCharacterCommunity::DeleteIdToIndexData	()
 {
 	m_relation_table.clear();
 	m_sympathy_table.clear();

@@ -24,7 +24,7 @@
 #include "PhysicsShell.h"
 #include "helicopter.h"
 #include "ScriptZone.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "danger_object.h"
 
 using namespace luabind;

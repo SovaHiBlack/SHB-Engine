@@ -53,7 +53,7 @@
 #include "alife_graph_registry.h"
 #include "GamePersistent.h"
 #include "AttachableItem.h"
-#include "attachment_owner.h"
+#include "AttachmentOwner.h"
 
 string_path g_last_saved_game;
 

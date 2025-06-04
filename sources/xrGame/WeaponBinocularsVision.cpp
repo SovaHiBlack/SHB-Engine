@@ -6,7 +6,7 @@
 #include "visual_memory_manager.h"
 #include "Actor.h"
 #include "actor_memory.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "object_broker.h"
 
 #include "game_base_space.h"
@@ -119,7 +119,7 @@ void SBinocVisibleObj::Update()
 
 				if (our_inv_owner && others_inv_owner && !monster)
 				{
-					switch (RELATION_REGISTRY( ).GetRelationType(others_inv_owner, our_inv_owner))
+					switch (SRelationRegistry( ).GetRelationType(others_inv_owner, our_inv_owner))
 					{
 						case ALife::eRelationTypeEnemy:
 						{

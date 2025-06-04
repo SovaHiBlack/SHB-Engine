@@ -3,10 +3,9 @@
 // Medkit - аптечка, повышающая здоровье
 ///////////////////////////////////////////////////////////////
 
-
 #pragma once
 
-#include "eatable_item_object.h"
+#include "EatableItemObject.h"
 
 class CMedkit: public CEatableItemObject {
 private:

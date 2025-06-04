@@ -100,22 +100,20 @@ protected:
 
 public:
 
-
 #ifdef XRGAME_EXPORTS
 	shared_str					Profile()			const;
 	pcstr						Name()				const;
 	shared_str					Bio()				const;
 
-
-	const CHARACTER_COMMUNITY&	Community()			const	{return m_CurrentCommunity;};
-	const CHARACTER_RANK&		Rank()				const	{ return m_CurrentRank;};
-	const CHARACTER_REPUTATION&	Reputation()		const	{ return m_CurrentReputation;};
+	const CCharacterCommunity&	Community()			const	{return m_CurrentCommunity;};
+	const CCharacterRank&		Rank()				const	{ return m_CurrentRank;};
+	const CCharacterReputation&	Reputation()		const	{ return m_CurrentReputation;};
 
 	//доступут только у InventoryOwner
 protected:
 	void						SetRank				(CHARACTER_RANK_VALUE			rank);
 	void						SetReputation		(CHARACTER_REPUTATION_VALUE		reputation);
-	void						SetCommunity		(const CHARACTER_COMMUNITY&		community)		{m_CurrentCommunity = community;};
+	void						SetCommunity		(const CCharacterCommunity&		community)		{m_CurrentCommunity = community;};
 
 public:
 	const shared_str&			IconName			()	const;
@@ -128,8 +126,8 @@ protected:
 
 
 #ifdef XRGAME_EXPORTS
-	CHARACTER_RANK					m_CurrentRank;
-	CHARACTER_REPUTATION			m_CurrentReputation;
-	CHARACTER_COMMUNITY				m_CurrentCommunity;
+	CCharacterRank					m_CurrentRank;
+	CCharacterReputation			m_CurrentReputation;
+	CCharacterCommunity				m_CurrentCommunity;
 #endif
 };

@@ -17,7 +17,7 @@
 #include "UICellItemFactory.h"
 #include "../WeaponMagazined.h"
 #include "../Actor.h"
-#include "../eatable_item.h"
+#include "../EatableItem.h"
 #include "../alife_registry_wrappers.h"
 #include "UI3tButton.h"
 #include "UIListBoxItem.h"

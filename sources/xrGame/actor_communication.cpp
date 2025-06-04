@@ -9,7 +9,7 @@
 #include "string_table.h"
 #include "PhraseDialog.h"
 #include "character_info.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_registry_container.h"
@@ -254,7 +254,7 @@ void CActor::LostPdaContact(CInventoryOwner* pInvOwner)
 		for (s32 t = ALife::eRelationTypeFriend; t < ALife::eRelationTypeLast; ++t)
 		{
 			ALife::ERelationType tt = (ALife::ERelationType)t;
-			Level( ).MapManager( ).RemoveMapLocation(RELATION_REGISTRY( ).GetSpotName(tt), GO->ID( ));
+			Level( ).MapManager( ).RemoveMapLocation(SRelationRegistry( ).GetSpotName(tt), GO->ID( ));
 		}
 
 		Level( ).MapManager( ).RemoveMapLocation("deadbody_location", GO->ID( ));

@@ -9,7 +9,7 @@
 #include "HUDManager.h"
 #include "WeaponHUD.h"
 //#include "EntityAlive.h"
-#include "inventory_item_impl.h"
+#include "InventoryItem_impl.h"
 
 #include "Inventory.h"
 #include "xrserver_objects_alife_items.h"

@@ -5,7 +5,7 @@
 #include "InventoryOwner.h"
 #include "level.h"
 #include "Actor.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "GameObject.h"
 #include "GameTaskManager.h"
 #include "xrServer.h"
@@ -151,8 +151,8 @@ CMapLocation* CMapManager::AddRelationLocation(CInventoryOwner* pInvOwner)
 
 	ALife::ERelationType relation = ALife::eRelationTypeFriend;
 	CInventoryOwner* pActor = smart_cast<CInventoryOwner*>(Level( ).CurrentViewEntity( ));
-	relation = RELATION_REGISTRY( ).GetRelationType(pInvOwner, pActor);
-	shared_str sname = RELATION_REGISTRY( ).GetSpotName(relation);
+	relation = SRelationRegistry( ).GetRelationType(pInvOwner, pActor);
+	shared_str sname = SRelationRegistry( ).GetSpotName(relation);
 
 	CEntityAlive* pEntAlive = smart_cast<CEntityAlive*>(pInvOwner);
 	if (!pEntAlive->g_Alive( ))

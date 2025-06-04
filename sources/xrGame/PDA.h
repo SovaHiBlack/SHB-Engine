@@ -1,13 +1,12 @@
 #pragma once
 
 #include "..\XR_3DA\feel_touch.h"
-#include "inventory_item_object.h"
+#include "InventoryItemObject.h"
 
 #include "InfoPortion_defs.h"
 #include "character_info_defs.h"
 
 #include "PdaMsg.h"
-
 
 class CInventoryOwner;
 class CPda;

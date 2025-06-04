@@ -10,7 +10,7 @@
 #include "InventoryOwner.h"
 #include "character_info.h"
 #include "GameObject.h"
-#include "relation_registry.h"
+#include "RelationRegistry.h"
 #include "UIGame.h"
 #include "hudmanager.h"
 #include "level.h"
@@ -42,7 +42,7 @@ void CAI_PhraseDialogManager::AnswerPhrase(DIALOG_SHARED_PTR& phrase_dialog)
 
 	if (!phrase_dialog->IsFinished( ))
 	{
-		CHARACTER_GOODWILL attitude = RELATION_REGISTRY( ).GetAttitude(pOthersIO, pInvOwner);
+		CHARACTER_GOODWILL attitude = SRelationRegistry( ).GetAttitude(pOthersIO, pInvOwner);
 
 		xr_vector<s32> phrases;
 		CHARACTER_GOODWILL phrase_goodwill = NO_GOODWILL;

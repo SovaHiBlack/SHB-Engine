@@ -1,13 +1,11 @@
 // WeaponDispersion.cpp: разбос при стрельбе
-// 
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
 #include "Weapon.h"
 //#include "InventoryOwner.h"
 #include "Actor.h"
-#include "inventory_item_impl.h"
+#include "InventoryItem_impl.h"
 
 #include "ActorEffector.h"
 #include "effectorshot.h"

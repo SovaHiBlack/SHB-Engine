@@ -31,6 +31,7 @@
 #include "UIGameCustom.h"
 #include "postprocessanimator.h"
 #include "ActorStatisticManager.h"
+#include "RelationRegistry.h"
 
 using namespace luabind;
 
@@ -501,28 +502,26 @@ void set_pp_effector_factor2(s32 id, f32 f)
 	if (pp) pp->SetCurrentFactor(f);
 }
 
-#include "relation_registry.h"
-
 s32 g_community_goodwill(pcstr _community, s32 _entity_id)
 {
-	CHARACTER_COMMUNITY c;
+	CCharacterCommunity c;
 	c.set(_community);
 
-	return RELATION_REGISTRY( ).GetCommunityGoodwill(c.index( ), u16(_entity_id));
+	return SRelationRegistry( ).GetCommunityGoodwill(c.index( ), u16(_entity_id));
 }
 
 void g_set_community_goodwill(pcstr _community, s32 _entity_id, s32 val)
 {
-	CHARACTER_COMMUNITY	c;
+	CCharacterCommunity	c;
 	c.set(_community);
-	RELATION_REGISTRY( ).SetCommunityGoodwill(c.index( ), u16(_entity_id), val);
+	SRelationRegistry( ).SetCommunityGoodwill(c.index( ), u16(_entity_id), val);
 }
 
 void g_change_community_goodwill(pcstr _community, s32 _entity_id, s32 val)
 {
-	CHARACTER_COMMUNITY	c;
+	CCharacterCommunity	c;
 	c.set(_community);
-	RELATION_REGISTRY( ).ChangeCommunityGoodwill(c.index( ), u16(_entity_id), val);
+	SRelationRegistry( ).ChangeCommunityGoodwill(c.index( ), u16(_entity_id), val);
 }
 
 #pragma optimize("s",on)

@@ -15,7 +15,7 @@
 #include "../../xrserver_objects_alife_monsters.h"
 #include "../../artifact.h"
 #include "../../xrserver.h"
-#include "../../relation_registry.h"
+#include "../../RelationRegistry.h"
 #include "../../object_broker.h"
 #include "../../sound_player.h"
 #include "../../level.h"
@@ -356,7 +356,7 @@ ALife::ERelationType  CAI_Trader::tfGetRelationType(const CEntityAlive* tpEntity
 	ALife::ERelationType relation = ALife::eRelationTypeDummy;
 
 	if (pOtherIO && !(const_cast<CEntityAlive*>(tpEntityAlive)->cast_base_monster( )))
-		relation = RELATION_REGISTRY( ).GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
+		relation = SRelationRegistry( ).GetRelationType(static_cast<const CInventoryOwner*>(this), pOtherIO);
 
 	if (ALife::eRelationTypeDummy != relation)
 		return relation;

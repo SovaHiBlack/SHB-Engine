@@ -1,6 +1,6 @@
 #pragma once
 
-#include "eatable_item_object.h"
+#include "EatableItemObject.h"
 
 class CFoodItem: public CEatableItemObject
 {

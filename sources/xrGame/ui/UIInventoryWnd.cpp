@@ -16,7 +16,7 @@
 
 #include "../script_process.h"
 
-#include "../eatable_item.h"
+#include "../EatableItem.h"
 #include "../Inventory.h"
 
 #include "UIInventoryUtilities.h"//

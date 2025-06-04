@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: InventoryItem.h
-//	Created 	: 24.03.2003
-//  Modified 	: 29.01.2004
-//	Author		: Victor Reutsky, Yuri Dobronravin
 //	Description : Inventory item
 ////////////////////////////////////////////////////////////////////////////
 
@@ -92,7 +89,7 @@ public:
 	{
 		return false;
 	}
-//при детаче спаунится новая вещь при заданно названии секции
+	//при детаче спаунится новая вещь при заданно названии секции
 	virtual bool				Detach(pcstr item_section_name, bool b_spawn_item);
 	virtual bool				CanAttach(PIItem pIItem)
 	{
@@ -195,12 +192,12 @@ public:
 	}
 	s32					GetXPos( ) const;
 	s32					GetYPos( ) const;
-//---------------------------------------------------------------------
+	//---------------------------------------------------------------------
 	f32				GetKillMsgXPos( ) const;
 	f32				GetKillMsgYPos( ) const;
 	f32				GetKillMsgWidth( ) const;
 	f32				GetKillMsgHeight( ) const;
-//---------------------------------------------------------------------
+	//---------------------------------------------------------------------
 	f32				GetCondition( ) const
 	{
 		return m_fCondition;
@@ -384,4 +381,4 @@ public:
 	}
 };
 
-#include "inventory_item_inline.h"
+#include "InventoryItem_inline.h"

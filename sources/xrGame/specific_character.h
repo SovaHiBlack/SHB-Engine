@@ -54,7 +54,7 @@ struct SSpecificCharacterData : CSharedResource
 
 	shared_str								m_icon_name;
 	// команда 
-	CHARACTER_COMMUNITY						m_Community;
+	CCharacterCommunity						m_Community;
 #endif
 
 	// ранг
@@ -119,7 +119,7 @@ public:
 #ifdef XRGAME_EXPORTS
 	pcstr									Name					( ) const;
 	shared_str								Bio						( ) const;
-	const CHARACTER_COMMUNITY&				Community				( ) const;
+	const CCharacterCommunity&				Community				( ) const;
 	SSpecificCharacterData::SMoneyDef&		MoneyDef				( )			{ return data()->money_def; }
 #endif
 

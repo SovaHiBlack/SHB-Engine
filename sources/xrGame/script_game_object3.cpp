@@ -33,7 +33,7 @@
 #include "detail_path_manager_space.h"
 #include "LevelDebug.h"
 #include "ai/monsters/BaseMonster/base_monster.h"
-#include "trade_parameters.h"
+#include "TradeParameters.h"
 #include "script_ini_file.h"
 #include "sound_player.h"
 #include "stalker_decision_space.h"

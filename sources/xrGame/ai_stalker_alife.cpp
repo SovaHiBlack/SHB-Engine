@@ -14,14 +14,14 @@
 #include "Inventory.h"
 #include "clsid_game.h"
 #include "pda.h"
-#include "eatable_item.h"
+#include "EatableItem.h"
 #include "medkit.h"
 #include "Weapon.h"
 #include "customdetector.h"
 #include "ef_storage.h"
 #include "ef_primary.h"
 #include "ef_pattern.h"
-#include "trade_parameters.h"
+#include "TradeParameters.h"
 
 u32 get_rank(const shared_str&)
 {
