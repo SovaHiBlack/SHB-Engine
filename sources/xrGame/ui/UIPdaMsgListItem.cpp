@@ -6,7 +6,7 @@
 #include "stdafx.h"
 #include "UIPdaMsgListItem.h"//
 #include "../Entity.h"
-#include "../character_info.h"
+#include "../CharacterInfo.h"
 #include "UIInventoryUtilities.h"//
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"

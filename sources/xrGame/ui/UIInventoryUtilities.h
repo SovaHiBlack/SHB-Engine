@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../InventoryItem.h"
-#include "../character_info_defs.h"
+#include "../CharacterInfo_defs.h"
 
 class CUIStatic;
 

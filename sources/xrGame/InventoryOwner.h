@@ -8,7 +8,7 @@
 #include "pda_space.h"
 #include "AttachmentOwner.h"
 #include "script_space_forward.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "Inventory_space.h"
 
 class CSE_Abstract;

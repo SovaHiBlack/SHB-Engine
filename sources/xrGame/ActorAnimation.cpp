@@ -20,7 +20,7 @@
 #include "ai_object_location.h"
 #include "game_cl_base.h"
 #include "..\XR_3DA\motion.h"
-#include "artifact.h"
+#include "Artefact.h"
 #include "IKLimbsController.h"
 
 static const f32 y_spin0_factor = 0.0f;

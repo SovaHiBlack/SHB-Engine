@@ -8,7 +8,7 @@
 #include "AI_PhraseDialogManager.h"
 #include "PhraseDialog.h"
 #include "InventoryOwner.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "GameObject.h"
 #include "RelationRegistry.h"
 #include "UIGame.h"

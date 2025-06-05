@@ -14,7 +14,7 @@
 #include "object_broker.h"
 #include "restriction_space.h"
 
-#include "character_info.h"
+#include "CharacterInfo.h"
 
 #ifndef XRGAME_EXPORTS
 #	include "Bone.h"

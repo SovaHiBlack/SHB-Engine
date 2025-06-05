@@ -8,7 +8,7 @@
 #include "InventoryOwner.h"
 #include "Pda.h"
 #include "xrMessages.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "GameTask.h"
 #include "Actor.h"
 #include "level.h"

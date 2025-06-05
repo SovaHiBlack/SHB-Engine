@@ -127,9 +127,9 @@
 #	include "HairsZone.h"
 #	include "amebazone.h"
 #	include "NoGravityZone.h"
-#	include "simpledetector.h"
+#	include "SimpleDetector.h"
 
-#	include "torch.h"
+#	include "Torch.h"
 #	include "pda.h"
 
 #	include "Projector.h"

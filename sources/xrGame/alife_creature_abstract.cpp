@@ -8,11 +8,12 @@
 
 #include "stdafx.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 #include "Level.h"
 #include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_time_manager.h"
+
 void CSE_ALifeCreatureAbstract::on_spawn	()
 {
 	inherited::on_spawn					();

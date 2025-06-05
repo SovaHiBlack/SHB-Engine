@@ -15,7 +15,7 @@
 #include "date_time.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 
-#include "specific_character.h"
+#include "SpecificCharacter.h"
 
 SGameNewsData::SGameNewsData( )
 {

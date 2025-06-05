@@ -18,7 +18,7 @@
 #include "clsid_game.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "AI/Stalker/ai_stalker.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "..\XR_3DA\xr_collide_defs.h"
 #include "Weapon.h"
 

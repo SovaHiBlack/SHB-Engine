@@ -6,7 +6,6 @@
 
 #pragma once
 
-
 //T_ITEM		-	тип элемента таблицы
 //					
 //T_INI_LOADER	-	тип класса CIni_IdToIndex, 
@@ -15,11 +14,9 @@
 //					если мы хотим сгененрировать несколько таблиц с одинаковыми
 //					T_ITEM и T_INI_LOADER
 
-
 #define TEMPLATE_SPECIALIZATION		template<typename T_ITEM, typename T_INI_LOADER, u16 TABLE_INDEX >
 #define TEMPLATE_SPECIALIZATION_D	template<typename T_ITEM, typename T_INI_LOADER, u16 TABLE_INDEX = 0>
 #define CSIni_Table	CIni_Table<T_ITEM, T_INI_LOADER, TABLE_INDEX>
-
 
 TEMPLATE_SPECIALIZATION_D
 class CIni_Table
@@ -95,8 +92,10 @@ typename CSIni_Table::ITEM_TABLE& CSIni_Table::table	()
 {
 //	T_INI_LOADER::InitIdToIndex ();
 
-	if(m_pTable)
+	if (m_pTable)
+	{
 		return *m_pTable;
+	}
 
 	m_pTable = xr_new<ITEM_TABLE>();
 
@@ -115,8 +114,10 @@ typename CSIni_Table::ITEM_TABLE& CSIni_Table::table	()
 	{
 		T_INI_LOADER::index_type cur_index = T_INI_LOADER::IdToIndex((*i).first, type_max(T_INI_LOADER::index_type));
 
-		if(type_max(T_INI_LOADER::index_type) == cur_index)
-			Debug.fatal(DEBUG_INFO,"wrong community %s in section [%s]", (*i).first, table_sect);
+		if (type_max(T_INI_LOADER::index_type) == cur_index)
+		{
+			Debug.fatal(DEBUG_INFO, "wrong community %s in section [%s]", (*i).first, table_sect);
+		}
 
 		(*m_pTable)[cur_index].resize(cur_table_width);
 		for(std::size_t j=0; j<cur_table_width; j++)

@@ -17,7 +17,7 @@
 
 #include "InventoryOwner.h"
 #include "RelationRegistry.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 
 #include "string_table.h"
 #include "EntityAlive.h"

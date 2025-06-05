@@ -14,12 +14,12 @@
 #include "GameTask.h"
 #include "EncyclopediaArticle.h"
 
-#include "character_info.h"
-#include "specific_character.h"
-#include "character_community.h"
-#include "monster_community.h"
-#include "character_rank.h"
-#include "character_reputation.h"
+#include "CharacterInfo.h"
+#include "SpecificCharacter.h"
+#include "CharacterCommunity.h"
+#include "MonsterCommunity.h"
+#include "CharacterRank.h"
+#include "CharacterReputation.h"
 
 #include "profiler.h"
 

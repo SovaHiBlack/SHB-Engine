@@ -8,6 +8,7 @@
 #include "game_cl_base.h"
 #include "Level.h"
 #include "BoneProtections.h"
+#include "Torch.h"
 
 CCustomOutfit::CCustomOutfit()
 {
@@ -102,14 +103,13 @@ f32	CCustomOutfit::HitThruArmour(f32 hit_power, s16 element, f32 AP)
 	f32 NewHitPower = hit_power - BoneArmour;
 	if (NewHitPower < hit_power*m_boneProtection->m_fHitFrac) return hit_power*m_boneProtection->m_fHitFrac;
 	return NewHitPower;
-};
+}
 
 BOOL	CCustomOutfit::BonePassBullet					(s32 boneID)
 {
 	return m_boneProtection->getBonePassBullet(s16(boneID));
-};
+}
 
-#include "torch.h"
 void	CCustomOutfit::OnMoveToSlot		()
 {
 	if (m_pCurrentInventory)

@@ -13,7 +13,7 @@
 #include "PHSynchronize.h"
 #include "Inventory_space.h"
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 #include "InfoPortion_defs.h"
 
 #pragma warning(push)

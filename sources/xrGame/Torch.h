@@ -30,11 +30,11 @@ protected:
 	fVector3			m_focus;
 
 private:
-	inline	bool	can_use_dynamic_lights( );
+	IC bool	can_use_dynamic_lights( );
 
 public:
-	CTorch(void);
-	virtual			~CTorch(void);
+	CTorch( );
+	virtual			~CTorch( );
 
 	virtual void	Load(pcstr section);
 	virtual BOOL	net_Spawn(CSE_Abstract* DC);
@@ -56,7 +56,6 @@ public:
 	void	SwitchNightVision( );
 	void	SwitchNightVision(bool light_on);
 	void	UpdateSwitchNightVision( );
-	f32		NightVisionBattery( );
 
 protected:
 	bool					m_bNightVisionEnabled;
@@ -66,11 +65,6 @@ protected:
 	HUD_SOUND				m_NightVisionOffSnd;
 	HUD_SOUND				m_NightVisionIdleSnd;
 	HUD_SOUND				m_NightVisionBrokenSnd;
-
-	/*f32					m_NightVisionRechargeTime;
-	f32					m_NightVisionRechargeTimeMin;
-	f32					m_NightVisionDischargeTime;
-	f32					m_NightVisionChargeTime;*/
 
 	enum EStats
 	{

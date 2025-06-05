@@ -1,33 +1,29 @@
 //////////////////////////////////////////////////////////////////////////
-// character_community.h:	структура представления группировки
-//							
-//////////////////////////////////////////////////////////////////////////
+// CharacterCommunity.h:	структура представления группировки
 
 #pragma once
 
 #include "ini_id_loader.h"
 #include "ini_table_loader.h"
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 
-
-struct COMMUNITY_DATA
+struct SCharacterCommunityData
 {
-	COMMUNITY_DATA (CHARACTER_COMMUNITY_INDEX, CHARACTER_COMMUNITY_ID, pcstr);
+	SCharacterCommunityData(CHARACTER_COMMUNITY_INDEX, CHARACTER_COMMUNITY_ID, pcstr);
 
 	CHARACTER_COMMUNITY_ID		id;
 	CHARACTER_COMMUNITY_INDEX	index;
 	u8 team;
 };
 
-
 class CCharacterCommunity;
 
 class CCharacterCommunity :
-	public CIni_IdToIndex<1, COMMUNITY_DATA, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CCharacterCommunity>
+	public CIni_IdToIndex<1, SCharacterCommunityData, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CCharacterCommunity>
 {
 private:
-	typedef CIni_IdToIndex<1, COMMUNITY_DATA, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CCharacterCommunity> inherited;
+	typedef CIni_IdToIndex<1, SCharacterCommunityData, CHARACTER_COMMUNITY_ID, CHARACTER_COMMUNITY_INDEX, CCharacterCommunity> inherited;
 	friend inherited;
 
 public:

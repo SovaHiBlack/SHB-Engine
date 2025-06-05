@@ -5,7 +5,7 @@
 #include "UICharacterInfo.h"//
 #include "../Actor.h"
 #include "../level.h"
-#include "../character_info.h"
+#include "../CharacterInfo.h"
 #include "../string_table.h"
 #include "../RelationRegistry.h"
 

@@ -7,8 +7,7 @@
 
 struct SArtefactActivation;
 
-class CArtefact : public CHudItemObject,
-	public CPHUpdateObject
+class CArtefact : public CHudItemObject, public CPHUpdateObject
 {
 private:
 	typedef			CHudItemObject	inherited;
@@ -27,7 +26,7 @@ public:
 
 	virtual void					UpdateCL( );
 	virtual void					shedule_Update(u32 dt);
-	void					UpdateWorkload(u32 dt);
+	void							UpdateWorkload(u32 dt);
 
 	virtual bool					CanTake( ) const;
 
@@ -107,12 +106,12 @@ public:
 		eHidden,
 		eActivating
 	};
-	virtual	void					PlayAnimIdle( );
+	virtual void					PlayAnimIdle( );
 
 public:
 	virtual void					Hide( );
 	virtual void					Show( );
-	virtual	void					UpdateXForm( );
+	virtual void					UpdateXForm( );
 	virtual bool					Action(s32 cmd, u32 flags);
 	virtual void					onMovementChanged(ACTOR_DEFS::EMoveCommand cmd);
 	virtual void					OnStateSwitch(u32 S);

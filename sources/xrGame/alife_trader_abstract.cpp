@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "alife_simulator.h"
-#include "specific_character.h"
+#include "SpecificCharacter.h"
 #include "AISpace.h"
 #include "alife_object_registry.h"
 #include "ai_debug.h"

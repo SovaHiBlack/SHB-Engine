@@ -1,164 +1,195 @@
 #include "stdafx.h"
-#include "customdetector.h"
+#include "CustomDetector.h"
 #include "CustomZone.h"
 #include "hudmanager.h"
-#include "artifact.h"
+#include "Artefact.h"
 #include "Inventory.h"
 #include "level.h"
 #include "MapManager.h"
 #include "CameraEffector.h"
 #include "Actor.h"
 #include "ai_sounds.h"
+#include "clsid_game.h"
+#include "game_base_space.h"
 
-ZONE_INFO::ZONE_INFO	()
+SZoneInfo::SZoneInfo( )
 {
-	pParticle=NULL;
+	pParticle = NULL;
 }
 
-ZONE_INFO::~ZONE_INFO	()
+SZoneInfo::~SZoneInfo( )
 {
-	if(pParticle)
+	if (pParticle)
+	{
 		CParticlesObject::Destroy(pParticle);
+	}
 }
 
-CCustomDetector::CCustomDetector(void) 
+CCustomDetector::CCustomDetector( )
 {
-	m_bWorking					= false;
+	m_bWorking = false;
 }
 
-CCustomDetector::~CCustomDetector(void) 
+CCustomDetector::~CCustomDetector( )
 {
 	ZONE_TYPE_MAP_IT it;
-	for(it = m_ZoneTypeMap.begin(); m_ZoneTypeMap.end() != it; ++it)
+	for (it = m_ZoneTypeMap.begin( ); m_ZoneTypeMap.end( ) != it; ++it)
+	{
 		HUD_SOUND::DestroySound(it->second.detect_snds);
-//		it->second.detect_snd.destroy();
+	}
 
-	m_ZoneInfoMap.clear();
+	m_ZoneInfoMap.clear( );
 }
 
-BOOL CCustomDetector::net_Spawn(CSE_Abstract* DC) 
+BOOL CCustomDetector::net_Spawn(CSE_Abstract* DC)
 {
-	m_pCurrentActor		 = NULL;
-	m_pCurrentInvOwner	 = NULL;
+	m_pCurrentActor = NULL;
+	m_pCurrentInvOwner = NULL;
 
-	return		(inherited::net_Spawn(DC));
+	return inherited::net_Spawn(DC);
 }
 
 void CCustomDetector::Load(pcstr section)
 {
-	inherited::Load			(section);
+	inherited::Load(section);
 
-	m_fRadius				= pSettings->r_float(section,"radius");
-	
-	if( pSettings->line_exist(section,"night_vision_particle") )
-		m_nightvision_particle	= pSettings->r_string(section,"night_vision_particle");
+	m_fRadius = pSettings->r_float(section, "radius");
+
+	if (pSettings->line_exist(section, "night_vision_particle"))
+	{
+		m_nightvision_particle = pSettings->r_string(section, "night_vision_particle");
+	}
 
 	u32 i = 1;
 	string256 temp;
 
 	//загрузить звуки для обозначения различных типов зон
-	do 
+	do
 	{
-		sprintf_s			(temp, "zone_class_%d", i);
-		if(pSettings->line_exist(section,temp))
+		sprintf_s(temp, "zone_class_%d", i);
+		if (pSettings->line_exist(section, temp))
 		{
-			pcstr z_Class			= pSettings->r_string(section,temp);
-			CLASS_ID zone_cls		= TEXT2CLSID(pSettings->r_string(z_Class,"class"));
+			pcstr z_Class = pSettings->r_string(section, temp);
+			CLASS_ID zone_cls = TEXT2CLSID(pSettings->r_string(z_Class, "class"));
 
-			m_ZoneTypeMap.insert	(std::make_pair(zone_cls,ZONE_TYPE()));
-			ZONE_TYPE& zone_type	= m_ZoneTypeMap[zone_cls];
-			sprintf_s					(temp, "zone_min_freq_%d", i);
-			zone_type.min_freq		= pSettings->r_float(section,temp);
-			sprintf_s					(temp, "zone_max_freq_%d", i);
-			zone_type.max_freq		= pSettings->r_float(section,temp);
-			R_ASSERT				(zone_type.min_freq<zone_type.max_freq);
-			sprintf_s					(temp, "zone_sound_%d_", i);
+			m_ZoneTypeMap.insert(std::make_pair(zone_cls, SZoneType( )));
+			SZoneType& zone_type = m_ZoneTypeMap[zone_cls];
+			sprintf_s(temp, "zone_min_freq_%d", i);
+			zone_type.min_freq = pSettings->r_float(section, temp);
+			sprintf_s(temp, "zone_max_freq_%d", i);
+			zone_type.max_freq = pSettings->r_float(section, temp);
+			R_ASSERT(zone_type.min_freq < zone_type.max_freq);
+			sprintf_s(temp, "zone_sound_%d_", i);
 
-			HUD_SOUND::LoadSound(section, temp	,zone_type.detect_snds		, SOUND_TYPE_ITEM);
+			HUD_SOUND::LoadSound(section, temp, zone_type.detect_snds, SOUND_TYPE_ITEM);
 
-			sprintf_s					(temp, "zone_map_location_%d", i);
-			
-			if( pSettings->line_exist(section,temp) )
-				zone_type.zone_map_location = pSettings->r_string(section,temp);
+			sprintf_s(temp, "zone_map_location_%d", i);
+
+			if (pSettings->line_exist(section, temp))
+			{
+				zone_type.zone_map_location = pSettings->r_string(section, temp);
+			}
 
 			++i;
 		}
-		else break;
-	} while(true);
+		else
+		{
+			break;
+		}
+	}
+	while (true);
 
-	m_ef_detector_type	= pSettings->r_u32(section,"ef_detector_type");
+	m_ef_detector_type = pSettings->r_u32(section, "ef_detector_type");
 }
 
 
-void CCustomDetector::shedule_Update(u32 dt) 
+void CCustomDetector::shedule_Update(u32 dt)
 {
-	inherited::shedule_Update	(dt);
-	
-	if( !IsWorking() ) return;
-	if( !H_Parent()  ) return;
+	inherited::shedule_Update(dt);
 
-	Position().set(H_Parent()->Position());
-
-	if (H_Parent() && H_Parent() == Level().CurrentViewEntity())
+	if (!IsWorking( ))
 	{
-		fVector3					P;
-		P.set					(H_Parent()->Position());
-		feel_touch_update		(P,m_fRadius);
-		UpdateNightVisionMode();
+		return;
+	}
+
+	if (!H_Parent( ))
+	{
+		return;
+	}
+
+	Position( ).set(H_Parent( )->Position( ));
+
+	if (H_Parent( ) && H_Parent( ) == Level( ).CurrentViewEntity( ))
+	{
+		fVector3 P;
+		P.set(H_Parent( )->Position( ));
+		feel_touch_update(P, m_fRadius);
+		UpdateNightVisionMode( );
 	}
 }
 
-void CCustomDetector::StopAllSounds()
+void CCustomDetector::StopAllSounds( )
 {
 	ZONE_TYPE_MAP_IT it;
-	for(it = m_ZoneTypeMap.begin(); m_ZoneTypeMap.end() != it; ++it) 
+	for (it = m_ZoneTypeMap.begin( ); m_ZoneTypeMap.end( ) != it; ++it)
 	{
-		ZONE_TYPE& zone_type = (*it).second;
+		SZoneType& zone_type = (*it).second;
 		HUD_SOUND::StopSound(zone_type.detect_snds);
-//		zone_type.detect_snd.stop();
 	}
 }
 
-void CCustomDetector::UpdateCL() 
+void CCustomDetector::UpdateCL( )
 {
-	inherited::UpdateCL();
+	inherited::UpdateCL( );
 
-	if( !IsWorking() ) return;
-	if( !H_Parent()  ) return;
+	if (!IsWorking( ))
+	{
+		return;
+	}
 
-	if(!m_pCurrentActor) return;
+	if (!H_Parent( ))
+	{
+		return;
+	}
+
+	if (!m_pCurrentActor)
+	{
+		return;
+	}
 
 	ZONE_INFO_MAP_IT it;
-	for(it = m_ZoneInfoMap.begin(); m_ZoneInfoMap.end() != it; ++it) 
+	for (it = m_ZoneInfoMap.begin( ); m_ZoneInfoMap.end( ) != it; ++it)
 	{
-		CCustomZone *pZone = it->first;
-		ZONE_INFO& zone_info = it->second;
+		CCustomZone* pZone = it->first;
+		SZoneInfo& zone_info = it->second;
 
-		
 		//такой тип зон не обнаруживается
-		if(m_ZoneTypeMap.find(pZone->CLS_ID) == m_ZoneTypeMap.end() ||
-			!pZone->VisibleByDetector())
+		if (m_ZoneTypeMap.find(pZone->CLS_ID) == m_ZoneTypeMap.end( ) || !pZone->VisibleByDetector( ))
+		{
 			continue;
+		}
 
-		ZONE_TYPE& zone_type = m_ZoneTypeMap[pZone->CLS_ID];
+		SZoneType& zone_type = m_ZoneTypeMap[pZone->CLS_ID];
 
-		f32 dist_to_zone = H_Parent()->Position().distance_to(pZone->Position()) - 0.8f*pZone->Radius();
-		if(dist_to_zone<0) dist_to_zone = 0;
-		
+		f32 dist_to_zone = H_Parent( )->Position( ).distance_to(pZone->Position( )) - 0.8f * pZone->Radius( );
+		if (dist_to_zone < 0.0f)
+		{
+			dist_to_zone = 0.0f;
+		}
+
 		f32 fRelPow = 1.0f - dist_to_zone / m_fRadius;
 		clamp(fRelPow, 0.0f, 1.0f);
 
 		//определить текущую частоту срабатывания сигнала
-		zone_info.cur_freq = zone_type.min_freq + 
-			(zone_type.max_freq - zone_type.min_freq) * fRelPow* fRelPow* fRelPow* fRelPow;
+		zone_info.cur_freq = zone_type.min_freq + (zone_type.max_freq - zone_type.min_freq) * fRelPow * fRelPow * fRelPow * fRelPow;
 
 		f32 current_snd_time = 1000.0f * 1.0f / zone_info.cur_freq;
-			
-		if((f32)zone_info.snd_time > current_snd_time)
+
+		if ((f32) zone_info.snd_time > current_snd_time)
 		{
-			zone_info.snd_time	= 0;
-			HUD_SOUND::PlaySound	(zone_type.detect_snds, fVector3().set(0.0f,0.0f,0.0f), this, true, false);
-		} 
+			zone_info.snd_time = 0;
+			HUD_SOUND::PlaySound(zone_type.detect_snds, fVector3( ).set(0.0f, 0.0f, 0.0f), this, true, false);
+		}
 		else
 		{
 			zone_info.snd_time += Device.dwTimeDelta;
@@ -166,130 +197,139 @@ void CCustomDetector::UpdateCL()
 	}
 }
 
-void CCustomDetector::feel_touch_new(CObject* O) 
+void CCustomDetector::feel_touch_new(CObject* O)
 {
-	CCustomZone *pZone = smart_cast<CCustomZone*>(O);
-	if(pZone && pZone->IsEnabled()) 
+	CCustomZone* pZone = smart_cast<CCustomZone*>(O);
+	if (pZone && pZone->IsEnabled( ))
 	{
 		m_ZoneInfoMap[pZone].snd_time = 0;
-		
-		AddRemoveMapSpot(pZone,true);
+
+		AddRemoveMapSpot(pZone, true);
 	}
 }
 
 void CCustomDetector::feel_touch_delete(CObject* O)
 {
-	CCustomZone *pZone = smart_cast<CCustomZone*>(O);
-	if(pZone)
+	CCustomZone* pZone = smart_cast<CCustomZone*>(O);
+	if (pZone)
 	{
 		m_ZoneInfoMap.erase(pZone);
-		AddRemoveMapSpot(pZone,false);
+		AddRemoveMapSpot(pZone, false);
 	}
 }
 
-BOOL CCustomDetector::feel_touch_contact(CObject* O) 
+BOOL CCustomDetector::feel_touch_contact(CObject* O)
 {
 	return (NULL != smart_cast<CCustomZone*>(O));
 }
 
-void CCustomDetector::OnH_A_Chield() 
+void CCustomDetector::OnH_A_Chield( )
 {
-	m_pCurrentActor				= smart_cast<CActor*>(H_Parent());
-	m_pCurrentInvOwner			= smart_cast<CInventoryOwner*>(H_Parent());
-	inherited::OnH_A_Chield		();
+	m_pCurrentActor = smart_cast<CActor*>(H_Parent( ));
+	m_pCurrentInvOwner = smart_cast<CInventoryOwner*>(H_Parent( ));
+	inherited::OnH_A_Chield( );
 }
 
-void CCustomDetector::OnH_B_Independent(bool just_before_destroy) 
+void CCustomDetector::OnH_B_Independent(bool just_before_destroy)
 {
 	inherited::OnH_B_Independent(just_before_destroy);
-	
-	m_pCurrentActor				= NULL;
-	m_pCurrentInvOwner			= NULL;
 
-	StopAllSounds				();
+	m_pCurrentActor = NULL;
+	m_pCurrentInvOwner = NULL;
 
-	m_ZoneInfoMap.clear			();
-	Feel::Touch::feel_touch.clear();
+	StopAllSounds( );
+
+	m_ZoneInfoMap.clear( );
+	Feel::Touch::feel_touch.clear( );
 }
 
-
-u32	CCustomDetector::ef_detector_type	() const
+u32 CCustomDetector::ef_detector_type( ) const
 {
-	return	(m_ef_detector_type);
+	return m_ef_detector_type;
 }
 
-void CCustomDetector::OnMoveToRuck()
+void CCustomDetector::OnMoveToRuck( )
 {
-	inherited::OnMoveToRuck();
-	TurnOff();
+	inherited::OnMoveToRuck( );
+	TurnOff( );
 }
 
-void CCustomDetector::OnMoveToSlot()
+void CCustomDetector::OnMoveToSlot( )
 {
-	inherited::OnMoveToSlot	();
-	TurnOn					();
+	inherited::OnMoveToSlot( );
+	TurnOn( );
 }
 
-void CCustomDetector::OnMoveToBelt		()
+void CCustomDetector::OnMoveToBelt( )
 {
-	inherited::OnMoveToBelt	();
-	TurnOn					();
+	inherited::OnMoveToBelt( );
+	TurnOn( );
 }
 
-void CCustomDetector::TurnOn()
+void CCustomDetector::TurnOn( )
 {
-	m_bWorking				= true;
-	UpdateMapLocations		();
-	UpdateNightVisionMode	();
+	m_bWorking = true;
+	UpdateMapLocations( );
+	UpdateNightVisionMode( );
 }
 
-void CCustomDetector::TurnOff() 
+void CCustomDetector::TurnOff( )
 {
-	m_bWorking				= false;
-	UpdateMapLocations		();
-	UpdateNightVisionMode	();
+	m_bWorking = false;
+	UpdateMapLocations( );
+	UpdateNightVisionMode( );
 }
 
 void CCustomDetector::AddRemoveMapSpot(CCustomZone* pZone, bool bAdd)
 {
-	if(m_ZoneTypeMap.find(pZone->CLS_ID) == m_ZoneTypeMap.end() )return;
-	
-	if ( bAdd && !pZone->VisibleByDetector() ) return;
-		
+	if (m_ZoneTypeMap.find(pZone->CLS_ID) == m_ZoneTypeMap.end( ))
+	{
+		return;
+	}
 
-	ZONE_TYPE& zone_type = m_ZoneTypeMap[pZone->CLS_ID];
-	if( xr_strlen(zone_type.zone_map_location) ){
-		if( bAdd )
-			Level().MapManager().AddMapLocation(*zone_type.zone_map_location,pZone->ID());
+	if (bAdd && !pZone->VisibleByDetector( ))
+	{
+		return;
+	}
+
+	SZoneType& zone_type = m_ZoneTypeMap[pZone->CLS_ID];
+	if (xr_strlen(zone_type.zone_map_location))
+	{
+		if (bAdd)
+		{
+			Level( ).MapManager( ).AddMapLocation(*zone_type.zone_map_location, pZone->ID( ));
+		}
 		else
-			Level().MapManager().RemoveMapLocation(*zone_type.zone_map_location,pZone->ID());
+		{
+			Level( ).MapManager( ).RemoveMapLocation(*zone_type.zone_map_location, pZone->ID( ));
+		}
 	}
 }
 
-void CCustomDetector::UpdateMapLocations() // called on turn on/off only
+void CCustomDetector::UpdateMapLocations( ) // called on turn on/off only
 {
 	ZONE_INFO_MAP_IT it;
-	for(it = m_ZoneInfoMap.begin(); it != m_ZoneInfoMap.end(); ++it)
-		AddRemoveMapSpot(it->first,IsWorking());
+	for (it = m_ZoneInfoMap.begin( ); it != m_ZoneInfoMap.end( ); ++it)
+	{
+		AddRemoveMapSpot(it->first, IsWorking( ));
+	}
 }
 
-#include "clsid_game.h"
-#include "game_base_space.h"
-void CCustomDetector::UpdateNightVisionMode()
+void CCustomDetector::UpdateNightVisionMode( )
 {
-	bool bNightVision = Actor()->Cameras().GetPPEffector(EEffectorPPType(effNightvision))!=NULL;
+	bool bNightVision = Actor( )->Cameras( ).GetPPEffector(EEffectorPPType(effNightvision)) != NULL;
 
-	bool bOn =	bNightVision && 
-				m_pCurrentActor &&
-				m_pCurrentActor==Level().CurrentViewEntity()&& 
-				IsWorking() && 
-				m_nightvision_particle.size();
+	bool bOn = bNightVision &&
+		m_pCurrentActor &&
+		m_pCurrentActor == Level( ).CurrentViewEntity( ) &&
+		IsWorking( ) &&
+		m_nightvision_particle.size( );
 
 	ZONE_INFO_MAP_IT it;
-	for(it = m_ZoneInfoMap.begin(); m_ZoneInfoMap.end() != it; ++it) 
+	for (it = m_ZoneInfoMap.begin( ); m_ZoneInfoMap.end( ) != it; ++it)
 	{
-		CCustomZone *pZone = it->first;
-		ZONE_INFO& zone_info = it->second;
+		CCustomZone* pZone = it->first;
+		SZoneInfo& zone_info = it->second;
 
 		if (bOn)
 		{

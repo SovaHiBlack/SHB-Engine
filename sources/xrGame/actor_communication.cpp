@@ -8,7 +8,7 @@
 #include "level.h"
 #include "string_table.h"
 #include "PhraseDialog.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "RelationRegistry.h"
 #include "AISpace.h"
 #include "alife_simulator.h"

@@ -1,17 +1,15 @@
 //////////////////////////////////////////////////////////////////////////
-// character_rank.h:	структура представления рангов и отношений между 
-//						ними		
-//////////////////////////////////////////////////////////////////////////
+// CharacterRank.h:	структура представления рангов и отношений между ними
 
 #pragma once
 
 #include "ini_id_loader.h"
 #include "ini_table_loader.h"
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 
-struct RANK_DATA
+struct SCharacterRankData
 {
-	RANK_DATA(s32, shared_str, pcstr);
+	SCharacterRankData(s32, shared_str, pcstr);
 
 	shared_str				id;
 	s32						index;
@@ -20,7 +18,7 @@ struct RANK_DATA
 
 class CCharacterRank;
 
-typedef CIni_IdToIndex<1, RANK_DATA, shared_str, s32, CCharacterRank> CHARACTER_RANK_base;
+typedef CIni_IdToIndex<1, SCharacterRankData, shared_str, s32, CCharacterRank> CHARACTER_RANK_base;
 
 class CCharacterRank : public CHARACTER_RANK_base
 {

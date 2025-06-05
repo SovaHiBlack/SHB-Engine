@@ -11,7 +11,7 @@
 #include "ai_stalker_space.h"
 #include "../../bolt.h"
 #include "../../Inventory.h"
-#include "../../character_info.h"
+#include "../../CharacterInfo.h"
 #include "../../RelationRegistry.h"
 #include "../../memory_manager.h"
 #include "../../item_manager.h"

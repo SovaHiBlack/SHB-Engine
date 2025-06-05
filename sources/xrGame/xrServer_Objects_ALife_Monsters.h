@@ -11,7 +11,7 @@
 
 #include "xrServer_Objects_ALife.h"
 #include "xrServer_Objects_ALife_Items.h"
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 #include "associative_vector.h"
 
 class CALifeMonsterBrain;

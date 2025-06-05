@@ -15,7 +15,7 @@
 #include "WeaponMagazined.h"
 #include "Grenade.h"
 #include "game_base_space.h"
-#include "Artifact.h"
+#include "Artefact.h"
 
 static const f32 VEL_MAX = 10.0f;
 static const f32 VEL_A_MAX = 10.0f;

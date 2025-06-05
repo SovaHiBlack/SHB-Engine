@@ -12,7 +12,7 @@
 #include "group_hierarchy_holder.h"
 #include "clsid_game.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 #include "AISpace.h"
 
 #define BODY_REMOVE_TIME		600000

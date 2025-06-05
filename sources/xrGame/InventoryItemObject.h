@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "physic_item.h"
+#include "PhysicItem.h"
 #include "InventoryItem.h"
 
 class CInventoryItemObject : public CInventoryItem, public CPhysicItem

@@ -1,21 +1,21 @@
 //////////////////////////////////////////////////////////////////////////
-// character_reputation.cpp:	структура представления репутаций и 
+// CharacterReputation.cpp:	структура представления репутаций и 
 //								отношений между ними		
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "character_reputation.h"
+#include "CharacterReputation.h"
 
 #define GAME_RELATIONS_SECT		"game_relations"
 #define REPUTATION_LINE			"reputation"
 #define REPUTATION_TABLE		"reputation_relations"
 
 //////////////////////////////////////////////////////////////////////////
-REPUTATION_DATA::REPUTATION_DATA(s32 idx, shared_str idn, pcstr threshold_str)
+SCharacterReputationData::SCharacterReputationData(s32 idx, shared_str idn, pcstr threshold_str)
 {
 	index = idx;
 	id = idn;
-	threshold = (CHARACTER_REPUTATION_VALUE)atoi(threshold_str);
+	threshold = (CHARACTER_REPUTATION_VALUE) atoi(threshold_str);
 }
 //////////////////////////////////////////////////////////////////////////
 CCharacterReputation::GOODWILL_TABLE CCharacterReputation::m_relation_table;
@@ -30,7 +30,7 @@ s32 CCharacterReputation::ValueToIndex(CHARACTER_REPUTATION_VALUE val)
 	{
 		if (val < (*it).threshold)
 		{
-			return (s32)std::distance(m_pItemDataVector->begin( ), it);
+			return (s32) std::distance(m_pItemDataVector->begin( ), it);
 		}
 	}
 
@@ -61,10 +61,10 @@ CHARACTER_GOODWILL CCharacterReputation::relation(s32 to)
 	return relation(m_current_index, to);
 }
 
-CHARACTER_GOODWILL  CCharacterReputation::relation(s32 from, s32 to)
+CHARACTER_GOODWILL CCharacterReputation::relation(s32 from, s32 to)
 {
-	VERIFY(from >= 0 && from < (s32)m_relation_table.table( ).size( ));
-	VERIFY(to >= 0 && to < (s32)m_relation_table.table( ).size( ));
+	VERIFY(from >= 0 && from < (s32) m_relation_table.table( ).size( ));
+	VERIFY(to >= 0 && to < (s32) m_relation_table.table( ).size( ));
 	return m_relation_table.table( )[from][to];
 }
 

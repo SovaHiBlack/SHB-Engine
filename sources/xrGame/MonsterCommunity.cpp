@@ -1,21 +1,19 @@
 //////////////////////////////////////////////////////////////////////////
 // monster_community.cpp: структура представления группировки для монстров
-//							
-//////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 
 #define MONSTER_RELATIONS_SECT			"monster_communities"
 #define MONSTER_COMMUNITIES				"communities"
 #define MONSTER_RELATIONS_TABLE			"monster_relations"
 
 //////////////////////////////////////////////////////////////////////////
-MONSTER_COMMUNITY_DATA::MONSTER_COMMUNITY_DATA(MONSTER_COMMUNITY_INDEX idx, MONSTER_COMMUNITY_ID idn, pcstr team_str)
+SMonsterCommunityData::SMonsterCommunityData(MONSTER_COMMUNITY_INDEX idx, MONSTER_COMMUNITY_ID idn, pcstr team_str)
 {
 	index = idx;
 	id = idn;
-	team = (u8)atoi(team_str);
+	team = (u8) atoi(team_str);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -33,19 +31,19 @@ CMonsterCommunity::~CMonsterCommunity( )
 void CMonsterCommunity::set(MONSTER_COMMUNITY_ID id)
 {
 	m_current_index = IdToIndex(id);
-
 }
+
 void CMonsterCommunity::set(MONSTER_COMMUNITY_INDEX index)
 {
 	m_current_index = index;
 }
 
-MONSTER_COMMUNITY_ID		 CMonsterCommunity::id( ) const
+MONSTER_COMMUNITY_ID CMonsterCommunity::id( ) const
 {
 	return IndexToId(m_current_index);
 }
 
-MONSTER_COMMUNITY_INDEX	 CMonsterCommunity::index( ) const
+MONSTER_COMMUNITY_INDEX CMonsterCommunity::index( ) const
 {
 	return m_current_index;
 }
@@ -69,8 +67,8 @@ s32 CMonsterCommunity::relation(MONSTER_COMMUNITY_INDEX to)
 
 s32 CMonsterCommunity::relation(MONSTER_COMMUNITY_INDEX from, MONSTER_COMMUNITY_INDEX to)
 {
-	VERIFY(from >= 0 && from < (s32)m_relation_table.table( ).size( ));
-	VERIFY(to >= 0 && to < (s32)m_relation_table.table( ).size( ));
+	VERIFY(from >= 0 && from < (s32) m_relation_table.table( ).size( ));
+	VERIFY(to >= 0 && to < (s32) m_relation_table.table( ).size( ));
 
 	return m_relation_table.table( )[from][to];
 }

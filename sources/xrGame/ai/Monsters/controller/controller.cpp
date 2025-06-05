@@ -34,10 +34,10 @@
 #include "../../../level_graph.h"
 #include "../../../ai_object_location.h"
 
-#include "../../../monster_community.h"
-#include "../../../character_community.h"
+#include "../../../MonsterCommunity.h"
+#include "../../../CharacterCommunity.h"
 #include "../../../InventoryOwner.h"
-#include "../../../character_info.h"
+#include "../../../CharacterInfo.h"
 
 #include "controller_psy_hit.h"
 #include "../monster_cover_manager.h"

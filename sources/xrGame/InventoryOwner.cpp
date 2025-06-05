@@ -7,7 +7,7 @@
 #include "Trade.h"
 #include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
-#include "character_info.h"
+#include "CharacterInfo.h"
 #include "script_game_object.h"
 #include "script_engine.h"
 #include "AI_PhraseDialogManager.h"

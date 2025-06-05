@@ -1,12 +1,11 @@
 #include "stdafx.h"
-#include "simpledetector.h"
+#include "SimpleDetector.h"
 
-CSimpleDetector::CSimpleDetector(void)
+CSimpleDetector::CSimpleDetector( )
 {
-	m_weight = .5f;
+	m_weight = 0.5f;
 	//m_belt = true;
 }
 
-CSimpleDetector::~CSimpleDetector(void)
-{
-}
+CSimpleDetector::~CSimpleDetector( )
+{ }

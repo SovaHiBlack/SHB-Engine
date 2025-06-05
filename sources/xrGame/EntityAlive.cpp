@@ -11,7 +11,7 @@
 #include "level.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "RelationRegistry.h"
-#include "monster_community.h"
+#include "MonsterCommunity.h"
 #include "EntityCondition.h"
 #include "script_game_object.h"
 #include "Hit.h"

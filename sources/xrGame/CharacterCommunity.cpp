@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////////////
-// character_community.cpp:		структура представления группировки
+// CharacterCommunity.cpp:		структура представления группировки
 //							
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "character_community.h"
+#include "CharacterCommunity.h"
 
 //////////////////////////////////////////////////////////////////////////
-COMMUNITY_DATA::COMMUNITY_DATA (CHARACTER_COMMUNITY_INDEX idx, CHARACTER_COMMUNITY_ID idn, pcstr team_str)
+SCharacterCommunityData::SCharacterCommunityData(CHARACTER_COMMUNITY_INDEX idx, CHARACTER_COMMUNITY_ID idn, pcstr team_str)
 {
 	index = idx;
 	id = idn;

@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 
 class CRelationRegistryWrapper;
 

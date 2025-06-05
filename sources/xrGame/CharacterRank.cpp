@@ -1,10 +1,8 @@
 //////////////////////////////////////////////////////////////////////////
-// character_rank.cpp:	структура представления рангов и отношений между 
-//						ними		
-//////////////////////////////////////////////////////////////////////////
+// CharacterRank.cpp:	структура представления рангов и отношений между ними
 
 #include "stdafx.h"
-#include "character_rank.h"
+#include "CharacterRank.h"
 
 #define GAME_RELATIONS_SECT		"game_relations"
 #define RANK_LINE				"rating"
@@ -12,11 +10,11 @@
 #define RANK_KILL_TABLE_SECT	"rank_kill_points"
 
 //////////////////////////////////////////////////////////////////////////
-RANK_DATA::RANK_DATA(s32 idx, shared_str idn, pcstr threshold_str)
+SCharacterRankData::SCharacterRankData(s32 idx, shared_str idn, pcstr threshold_str)
 {
 	index = idx;
 	id = idn;
-	threshold = (CHARACTER_RANK_VALUE)atoi(threshold_str);
+	threshold = (CHARACTER_RANK_VALUE) atoi(threshold_str);
 }
 //////////////////////////////////////////////////////////////////////////
 CCharacterRank::GOODWILL_TABLE		CCharacterRank::m_relation_table;
@@ -24,7 +22,7 @@ CCharacterRank::RANK_KILL_TABLE		CCharacterRank::m_rank_kill_table;
 
 s32 CCharacterRank::ValueToIndex(CHARACTER_RANK_VALUE val)
 {
-	for (s32 i = 0; i < (s32)m_pItemDataVector->size( ); i++)
+	for (s32 i = 0; i < (s32) m_pItemDataVector->size( ); i++)
 	{
 		if (val < (*m_pItemDataVector)[i].threshold)
 		{
@@ -59,10 +57,10 @@ CHARACTER_GOODWILL CCharacterRank::relation(s32 to)
 	return relation(m_current_index, to);
 }
 
-CHARACTER_GOODWILL  CCharacterRank::relation(s32 from, s32 to)
+CHARACTER_GOODWILL CCharacterRank::relation(s32 from, s32 to)
 {
-	VERIFY(from >= 0 && from < (s32)m_relation_table.table( ).size( ));
-	VERIFY(to >= 0 && to < (s32)m_relation_table.table( ).size( ));
+	VERIFY(from >= 0 && from < (s32) m_relation_table.table( ).size( ));
+	VERIFY(to >= 0 && to < (s32) m_relation_table.table( ).size( ));
 
 	return m_relation_table.table( )[from][to];
 }

@@ -11,7 +11,7 @@
 #include "../HUDManager.h"
 #include "../PDA.h"
 #include "../WeaponHUD.h"
-#include "../character_info.h"
+#include "../CharacterInfo.h"
 #include "../Inventory.h"
 #include "../UIGame.h"
 #include "../weaponmagazined.h"

@@ -1,10 +1,9 @@
 #pragma once
-#include "customdetector.h"
+#include "CustomDetector.h"
 
-class CSimpleDetector :
-	public CCustomDetector
+class CSimpleDetector : public CCustomDetector
 {
 public:
-	CSimpleDetector(void);
-	virtual ~CSimpleDetector(void);
+	CSimpleDetector( );
+	virtual ~CSimpleDetector( );
 };

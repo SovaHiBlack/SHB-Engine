@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "artifact.h"
+#include "Artefact.h"
 #include "PhysicsShell.h"
 #include "PhysicsShellHolder.h"
 #include "game_cl_base.h"
@@ -54,9 +54,9 @@ struct SArtefactActivation
 	SArtefactActivation(CArtefact* af, u32 owner_id);
 	~SArtefactActivation( );
 	CArtefact* m_af;
-	svector<SStateDef, eMax>		m_activation_states;
+	svector<SStateDef, eMax>	m_activation_states;
 	EActivationStates			m_cur_activation_state;
-	f32						m_cur_state_time;
+	f32							m_cur_state_time;
 
 	ref_light					m_light;
 	ref_sound					m_snd;
@@ -81,7 +81,6 @@ CArtefact::CArtefact( )
 	m_activationObj = NULL;
 }
 
-
 CArtefact::~CArtefact( )
 { }
 
@@ -101,16 +100,14 @@ void CArtefact::Load(pcstr section)
 		m_fTrailLightRange = pSettings->r_float(section, "trail_light_range");
 	}
 
+	m_fHealthRestoreSpeed = pSettings->r_float(section, "health_restore_speed");
+	m_fRadiationRestoreSpeed = pSettings->r_float(section, "radiation_restore_speed");
+	m_fSatietyRestoreSpeed = pSettings->r_float(section, "satiety_restore_speed");
+	m_fPowerRestoreSpeed = pSettings->r_float(section, "power_restore_speed");
+	m_fBleedingRestoreSpeed = pSettings->r_float(section, "bleeding_restore_speed");
+	if (pSettings->section_exist(/**cNameSect(), */pSettings->r_string(section, "hit_absorbation_sect")))
 	{
-		m_fHealthRestoreSpeed = pSettings->r_float(section, "health_restore_speed");
-		m_fRadiationRestoreSpeed = pSettings->r_float(section, "radiation_restore_speed");
-		m_fSatietyRestoreSpeed = pSettings->r_float(section, "satiety_restore_speed");
-		m_fPowerRestoreSpeed = pSettings->r_float(section, "power_restore_speed");
-		m_fBleedingRestoreSpeed = pSettings->r_float(section, "bleeding_restore_speed");
-		if (pSettings->section_exist(/**cNameSect(), */pSettings->r_string(section, "hit_absorbation_sect")))
-		{
-			m_ArtefactHitImmunities.LoadImmunities(pSettings->r_string(section, "hit_absorbation_sect"), pSettings);
-		}
+		m_ArtefactHitImmunities.LoadImmunities(pSettings->r_string(section, "hit_absorbation_sect"), pSettings);
 	}
 
 	m_bCanSpawnZone = !!pSettings->line_exist("artefact_spawn_zones", section);
@@ -155,10 +152,10 @@ BOOL CArtefact::net_Spawn(CSE_Abstract* DC)
 
 void CArtefact::net_Destroy( )
 {
-/*
-	if (*m_sParticlesName)
-		CParticlesPlayer::StopParticles(m_sParticlesName, BI_NONE, true);
-*/
+	/*
+		if (*m_sParticlesName)
+			CParticlesPlayer::StopParticles(m_sParticlesName, BI_NONE, true);
+	*/
 	inherited::net_Destroy( );
 
 	StopLights( );
@@ -207,7 +204,7 @@ void CArtefact::UpdateWorkload(u32 dt)
 {
 	VERIFY(!ph_world->Processing( ));
 	// particles - velocity
-	fVector3 vel = {0.0f, 0.0f, 0.0f};
+	fVector3 vel = { 0.0f, 0.0f, 0.0f };
 	if (H_Parent( ))
 	{
 		CPhysicsShellHolder* pPhysicsShellHolder = smart_cast<CPhysicsShellHolder*>(H_Parent( ));
@@ -311,7 +308,6 @@ void CArtefact::ActivateArtefact( )
 	VERIFY(H_Parent( ));
 	m_activationObj = xr_new<SArtefactActivation>(this, H_Parent( )->ID( ));
 	m_activationObj->Start( );
-
 }
 
 void CArtefact::PhDataUpdate(dReal step)
@@ -396,7 +392,7 @@ void CArtefact::UpdateXForm( )
 		N.normalize_safe( );
 		mRes.set(R, N, D, mR.c);
 		mRes.mulA_43(E->XFORM( ));
-//		UpdatePosition		(mRes);
+		//		UpdatePosition		(mRes);
 		XFORM( ).mul(mRes, offset( ));
 	}
 }
@@ -422,8 +418,8 @@ bool CArtefact::Action(s32 cmd, u32 flags)
 		break;
 		default:
 		{
-			break;
 		}
+		break;
 	}
 
 	return inherited::Action(cmd, flags);
@@ -477,8 +473,8 @@ void CArtefact::OnAnimationEnd(u32 state)
 		case eHiding:
 		{
 			SwitchState(eHidden);
-//.			if(m_pCurrentInventory->GetNextActiveSlot()!=NO_ACTIVE_SLOT)
-//.				m_pCurrentInventory->Activate(m_pCurrentInventory->GetPrevActiveSlot());
+			//.			if(m_pCurrentInventory->GetNextActiveSlot()!=NO_ACTIVE_SLOT)
+			//.				m_pCurrentInventory->Activate(m_pCurrentInventory->GetPrevActiveSlot());
 		}
 		break;
 		case eShowing:
@@ -522,17 +518,17 @@ SArtefactActivation::~SArtefactActivation( )
 
 void SArtefactActivation::Load( )
 {
-	for (s32 i = 0; i < (s32)eMax; ++i)
+	for (s32 i = 0; i < (s32) eMax; ++i)
 	{
 		m_activation_states.push_back(SStateDef( ));
 	}
 
 	pcstr activation_seq = pSettings->r_string(*m_af->cNameSect( ), "artefact_activation_seq");
 
-	m_activation_states[(s32)eStarting].Load(activation_seq, "starting");
-	m_activation_states[(s32)eFlying].Load(activation_seq, "flying");
-	m_activation_states[(s32)eBeforeSpawn].Load(activation_seq, "idle_before_spawning");
-	m_activation_states[(s32)eSpawnZone].Load(activation_seq, "spawning");
+	m_activation_states[(s32) eStarting].Load(activation_seq, "starting");
+	m_activation_states[(s32) eFlying].Load(activation_seq, "flying");
+	m_activation_states[(s32) eBeforeSpawn].Load(activation_seq, "idle_before_spawning");
+	m_activation_states[(s32) eSpawnZone].Load(activation_seq, "spawning");
 }
 
 void SArtefactActivation::Start( )
@@ -562,7 +558,7 @@ void SArtefactActivation::UpdateActivation( )
 	m_cur_state_time += Device.fTimeDelta;
 	if (m_cur_state_time >= m_activation_states[s32(m_cur_activation_state)].m_time)
 	{
-		m_cur_activation_state = (EActivationStates)(s32)(m_cur_activation_state + 1);
+		m_cur_activation_state = (EActivationStates) (s32) (m_cur_activation_state + 1);
 
 		if (m_cur_activation_state == eMax)
 		{
@@ -575,7 +571,6 @@ void SArtefactActivation::UpdateActivation( )
 
 		m_cur_state_time = 0.0f;
 		ChangeEffects( );
-
 
 		if (m_cur_activation_state == eSpawnZone && OnServer( ))
 		{
@@ -590,7 +585,7 @@ void SArtefactActivation::PhDataUpdate(dReal step)
 {
 	if (m_cur_activation_state == eFlying)
 	{
-		fVector3 dir = {0.0f, -1.0f, 0.0f};
+		fVector3 dir = { 0.0f, -1.0f, 0.0f };
 		if (Level( ).ObjectSpace.RayTest(m_af->Position( ), dir, 1.0f, collide::rqtBoth, NULL, m_af))
 		{
 			dir.y = ph_world->Gravity( ) * 1.1f;
@@ -598,10 +593,11 @@ void SArtefactActivation::PhDataUpdate(dReal step)
 		}
 	}
 }
+
 void SArtefactActivation::ChangeEffects( )
 {
 	VERIFY(!ph_world->Processing( ));
-	SStateDef& state_def = m_activation_states[(s32)m_cur_activation_state];
+	SStateDef& state_def = m_activation_states[(s32) m_cur_activation_state];
 
 	if (m_snd._feedback( ))
 	{
@@ -655,8 +651,8 @@ void SArtefactActivation::SpawnAnomaly( )
 	string128 tmp;
 	pcstr str = pSettings->r_string("artefact_spawn_zones", *m_af->cNameSect( ));
 	VERIFY3(3 == _GetItemCount(str), "Bad record format in artefact_spawn_zones", str);
-	f32 zone_radius = (f32)atof(_GetItem(str, 1, tmp));
-	f32 zone_power = (f32)atof(_GetItem(str, 2, tmp));
+	f32 zone_radius = (f32) atof(_GetItem(str, 1, tmp));
+	f32 zone_power = (f32) atof(_GetItem(str, 2, tmp));
 	pcstr zone_sect = _GetItem(str, 0, tmp); //must be last call of _GetItem... (LPCSTR !!!)
 
 	fVector3 pos;
@@ -682,24 +678,42 @@ void SArtefactActivation::SpawnAnomaly( )
 	object->Spawn_Write(P, TRUE);
 	Level( ).Send(P, net_flags(TRUE));
 	F_entity_Destroy(object);
-//. #ifdef DEBUG
+	//. #ifdef DEBUG
 	Msg("artefact [%s] spawned a zone [%s] at [%f]", *m_af->cName( ), zone_sect, Device.fTimeGlobal);
-//. #endif
+	//. #endif
 }
 
 shared_str clear_brackets(pcstr src)
 {
-	if (0 == src)					return	shared_str(0);
+	if (0 == src)
+	{
+		return	shared_str(0);
+	}
 
-	if (NULL == strchr(src, '"'))	return	shared_str(src);
+	if (NULL == strchr(src, '"'))
+	{
+		return	shared_str(src);
+	}
 
 	string512						_original;
 	strcpy_s(_original, src);
 	u32			_len = xr_strlen(_original);
-	if (0 == _len)					return	shared_str("");
-	if ('"' == _original[_len - 1])	_original[_len - 1] = 0;					// skip end
-	if ('"' == _original[0])			return	shared_str(&_original[0] + 1);	// skip begin
-	return									shared_str(_original);
+	if (0 == _len)
+	{
+		return	shared_str("");
+	}
+
+	if ('"' == _original[_len - 1])
+	{
+		_original[_len - 1] = 0;
+	}					// skip end
+
+	if ('"' == _original[0])
+	{
+		return	shared_str(&_original[0] + 1);
+	}					// skip begin
+
+	return shared_str(_original);
 }
 
 void SArtefactActivation::SStateDef::Load(pcstr section, pcstr name)
@@ -709,15 +723,15 @@ void SArtefactActivation::SStateDef::Load(pcstr section, pcstr name)
 
 	string128 tmp;
 
-	m_time = (f32)atof(_GetItem(str, 0, tmp));
+	m_time = (f32) atof(_GetItem(str, 0, tmp));
 
 	m_snd = clear_brackets(_GetItem(str, 1, tmp));
 
-	m_light_color.r = (f32)atof(_GetItem(str, 2, tmp));
-	m_light_color.g = (f32)atof(_GetItem(str, 3, tmp));
-	m_light_color.b = (f32)atof(_GetItem(str, 4, tmp));
+	m_light_color.r = (f32) atof(_GetItem(str, 2, tmp));
+	m_light_color.g = (f32) atof(_GetItem(str, 3, tmp));
+	m_light_color.b = (f32) atof(_GetItem(str, 4, tmp));
 
-	m_light_range = (f32)atof(_GetItem(str, 5, tmp));
+	m_light_range = (f32) atof(_GetItem(str, 5, tmp));
 
 	m_particle = clear_brackets(_GetItem(str, 6, tmp));
 	m_animation = clear_brackets(_GetItem(str, 7, tmp));

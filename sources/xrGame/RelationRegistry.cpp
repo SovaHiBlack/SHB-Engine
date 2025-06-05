@@ -7,9 +7,9 @@
 #include "RelationRegistry.h"
 #include "alife_registry_wrappers.h"
 
-#include "character_community.h"
-#include "character_reputation.h"
-#include "character_rank.h"
+#include "CharacterCommunity.h"
+#include "CharacterReputation.h"
+#include "CharacterRank.h"
 
 //////////////////////////////////////////////////////////////////////////
 

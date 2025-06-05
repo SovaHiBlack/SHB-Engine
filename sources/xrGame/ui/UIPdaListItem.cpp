@@ -8,7 +8,7 @@
 #include "xrUIXmlParser.h"
 #include "UIXmlInit.h"
 
-#include "../character_info.h"
+#include "../CharacterInfo.h"
 
 #include "UIFrameWindow.h"
 #include "..\InventoryOwner.h"

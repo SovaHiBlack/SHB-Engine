@@ -1,16 +1,16 @@
 ///////////////////////////////////////////////////////////////////////////////
-// specific_character.h:	игровая информация о конкретном персонаже в игре
+// SpecificCharacter.h:	игровая информация о конкретном персонаже в игре
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 #include "shared_data.h"
 #include "xml_str_id_loader.h"
 
 #ifdef XRGAME_EXPORTS
 #	include "PhraseDialog_defs.h"
-#	include "character_community.h"
+#	include "CharacterCommunity.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////
@@ -20,8 +20,8 @@ struct SSpecificCharacterData : CSharedResource
 {
 
 #ifdef XRGAME_EXPORTS
-											SSpecificCharacterData	( );
-	virtual									~SSpecificCharacterData	( );
+	SSpecificCharacterData( );
+	virtual									~SSpecificCharacterData( );
 
 	// игровое имя персонажа
 	xr_string								m_sGameName;
@@ -34,9 +34,9 @@ struct SSpecificCharacterData : CSharedResource
 	// имя секции конфигурации звука для NPC персонажа
 	xr_string								m_sound_voice_prefix;
 
-	f32									m_fPanic_threshold;
-	f32									m_fHitProbabilityFactor;
-	int										m_crouch_type;
+	f32										m_fPanic_threshold;
+	f32										m_fHitProbabilityFactor;
+	s32										m_crouch_type;
 
 	xr_string								m_critical_wound_weights;
 #endif
@@ -53,7 +53,7 @@ struct SSpecificCharacterData : CSharedResource
 	DIALOG_ID_VECTOR						m_ActorDialogs;
 
 	shared_str								m_icon_name;
-	// команда 
+	// команда
 	CCharacterCommunity						m_Community;
 #endif
 
@@ -81,6 +81,7 @@ struct SSpecificCharacterData : CSharedResource
 	};
 	SMoneyDef								money_def;
 #endif
+
 };
 
 class CInventoryOwner;
@@ -90,8 +91,8 @@ class CSE_ALifeTraderAbstract;
 class CSpecificCharacter : public CSharedClass<SSpecificCharacterData, shared_str, false>, public CXML_IdToIndex<CSpecificCharacter>
 {
 private:
-	using inherited_shared					= CSharedClass<SSpecificCharacterData, shared_str, false>;
-	using id_to_index						= CXML_IdToIndex<CSpecificCharacter>;
+	using inherited_shared = CSharedClass<SSpecificCharacterData, shared_str, false>;
+	using id_to_index = CXML_IdToIndex<CSpecificCharacter>;
 
 	friend id_to_index;
 	friend CInventoryOwner;
@@ -99,45 +100,59 @@ private:
 	friend CSE_ALifeTraderAbstract;
 
 public:
-											CSpecificCharacter		( );
-											~CSpecificCharacter		( );
+	CSpecificCharacter( );
+	~CSpecificCharacter( );
 
-	virtual void							Load					(shared_str id);
+	virtual void							Load(shared_str id);
 
 protected:
-	const SSpecificCharacterData*			data					( ) const	{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd(); }
-	SSpecificCharacterData*					data					( )			{ VERIFY(inherited_shared::get_sd()); return inherited_shared::get_sd(); }
+	const SSpecificCharacterData* data( ) const
+	{
+		VERIFY(inherited_shared::get_sd( ));
+		return inherited_shared::get_sd( );
+	}
+	SSpecificCharacterData* data( )
+	{
+		VERIFY(inherited_shared::get_sd( ));
+		return inherited_shared::get_sd( );
+	}
 
 	//загрузка из XML файла
-	virtual void							load_shared				(pcstr);
-	static void								InitXmlIdToIndex		( );
+	virtual void							load_shared(pcstr);
+	static void								InitXmlIdToIndex( );
 
 	shared_str								m_OwnId;
 
 public:
 
 #ifdef XRGAME_EXPORTS
-	pcstr									Name					( ) const;
-	shared_str								Bio						( ) const;
-	const CCharacterCommunity&				Community				( ) const;
-	SSpecificCharacterData::SMoneyDef&		MoneyDef				( )			{ return data()->money_def; }
+	pcstr									Name( ) const;
+	shared_str								Bio( ) const;
+	const CCharacterCommunity& Community( ) const;
+	SSpecificCharacterData::SMoneyDef& MoneyDef( )
+	{
+		return data( )->money_def;
+	}
 #endif
 
-	CHARACTER_RANK_VALUE					Rank					( ) const;
-	CHARACTER_REPUTATION_VALUE				Reputation				( ) const;
-	pcstr									Visual					( ) const;
+	CHARACTER_RANK_VALUE					Rank( ) const;
+	CHARACTER_REPUTATION_VALUE				Reputation( ) const;
+	pcstr									Visual( ) const;
 
 #ifdef XRGAME_EXPORTS
-	pcstr									SupplySpawn				( ) const;
-	pcstr									NpcConfigSect			( ) const;
-	pcstr									sound_voice_prefix		( ) const;
-	f32									panic_threshold			( ) const;
-	f32									hit_probability_factor	( ) const;
-	int										crouch_type				( ) const;
-	pcstr									critical_wound_weights	( ) const;
+	pcstr									SupplySpawn( ) const;
+	pcstr									NpcConfigSect( ) const;
+	pcstr									sound_voice_prefix( ) const;
+	f32										panic_threshold( ) const;
+	f32										hit_probability_factor( ) const;
+	s32										crouch_type( ) const;
+	pcstr									critical_wound_weights( ) const;
 
-	const shared_str&						IconName				( ) const	{ return data()->m_icon_name; };
+	const shared_str& IconName( ) const
+	{
+		return data( )->m_icon_name;
+	}
 #endif
 
-	shared_str								terrain_sect			( ) const;
+	shared_str								terrain_sect( ) const;
 };

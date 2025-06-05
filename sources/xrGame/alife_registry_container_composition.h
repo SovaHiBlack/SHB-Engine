@@ -12,7 +12,7 @@
 #include "PdaMsg.h"
 #include "EncyclopediaArticle_defs.h"
 
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 #include "RelationRegistry_defs.h"
 
 #include "GameTask_defs.h"

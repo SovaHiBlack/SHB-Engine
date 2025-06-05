@@ -10,7 +10,7 @@
 #include "EatableItem.h"
 #include "xrmessages.h"
 #include "..\xrNetServer\net_utils.h"
-#include "physic_item.h"
+#include "PhysicItem.h"
 #include "Level.h"
 #include "EntityAlive.h"
 #include "EntityCondition.h"

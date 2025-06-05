@@ -14,8 +14,8 @@
 #include "alife_human_brain.h"
 
 #include "AISpace.h"
-#include "character_info.h"
-#include "specific_character.h"
+#include "CharacterInfo.h"
+#include "SpecificCharacter.h"
 
 #ifdef XRGAME_EXPORTS
 #	include "ef_storage.h"

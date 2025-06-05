@@ -1,7 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// monster_community.h:	структура представления группировки для монстров
-//							
-//////////////////////////////////////////////////////////////////////////
+// MonsterCommunity.h:	структура представления группировки для монстров
 
 #pragma once
 
@@ -12,9 +10,9 @@ typedef s32			MONSTER_COMMUNITY_INDEX;
 typedef shared_str	MONSTER_COMMUNITY_ID;
 #define NO_MONSTER_COMMUNITY_INDEX MONSTER_COMMUNITY_INDEX(-1)
 
-struct MONSTER_COMMUNITY_DATA
+struct SMonsterCommunityData
 {
-	MONSTER_COMMUNITY_DATA(MONSTER_COMMUNITY_INDEX, MONSTER_COMMUNITY_ID, pcstr);
+	SMonsterCommunityData(MONSTER_COMMUNITY_INDEX, MONSTER_COMMUNITY_ID, pcstr);
 
 	MONSTER_COMMUNITY_ID	id;
 	MONSTER_COMMUNITY_INDEX	index;
@@ -23,11 +21,10 @@ struct MONSTER_COMMUNITY_DATA
 
 class CMonsterCommunity;
 
-class CMonsterCommunity :
-	public CIni_IdToIndex<1, MONSTER_COMMUNITY_DATA, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, CMonsterCommunity>
+class CMonsterCommunity : public CIni_IdToIndex<1, SMonsterCommunityData, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, CMonsterCommunity>
 {
 private:
-	typedef CIni_IdToIndex<1, MONSTER_COMMUNITY_DATA, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, CMonsterCommunity> inherited;
+	typedef CIni_IdToIndex<1, SMonsterCommunityData, MONSTER_COMMUNITY_ID, MONSTER_COMMUNITY_INDEX, CMonsterCommunity> inherited;
 	friend inherited;
 
 public:

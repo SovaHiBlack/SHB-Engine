@@ -12,7 +12,7 @@
 #include "script_bind_macroses.h"
 #include "script_export_space.h"
 #include "xr_time.h"
-#include "character_info_defs.h"
+#include "CharacterInfo_defs.h"
 
 enum EPdaMsg;
 enum ESoundTypes;

@@ -2,7 +2,7 @@
 #include "UIArtefactPanel.h"//
 #include "UIInventoryUtilities.h"//
 #include "UIXmlInit.h"
-#include "../artifact.h"
+#include "../Artefact.h"
 
 using namespace InventoryUtilities;
 

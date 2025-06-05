@@ -575,7 +575,7 @@
     <ClInclude Include="AmebaZone.h" />
     <ClInclude Include="animation_movement_controller.h" />
     <ClInclude Include="antirad.h" />
-    <ClInclude Include="Artifact.h" />
+    <ClInclude Include="Artefact.h" />
     <ClInclude Include="associative_vector.h" />
     <ClInclude Include="associative_vector_compare_predicate.h" />
     <ClInclude Include="associative_vector_compare_predicate_inline.h" />
@@ -611,12 +611,12 @@
     <ClInclude Include="CarWeapon.h" />
     <ClInclude Include="car_memory.h" />
     <ClInclude Include="CharacterPhysicsSupport.h" />
-    <ClInclude Include="character_community.h" />
+    <ClInclude Include="CharacterCommunity.h" />
     <ClInclude Include="character_hit_animations.h" />
-    <ClInclude Include="character_info.h" />
-    <ClInclude Include="character_info_defs.h" />
-    <ClInclude Include="character_rank.h" />
-    <ClInclude Include="character_reputation.h" />
+    <ClInclude Include="CharacterInfo.h" />
+    <ClInclude Include="CharacterInfo_defs.h" />
+    <ClInclude Include="CharacterRank.h" />
+    <ClInclude Include="CharacterReputation.h" />
     <ClInclude Include="ChooseTypes.h" />
     <ClInclude Include="ClientSpawnManager.h" />
     <ClInclude Include="ClientSpawnManager_inline.h" />
@@ -853,7 +853,7 @@
     <ClInclude Include="MilitaryOutfit.h" />
     <ClInclude Include="Mincer.h" />
     <ClInclude Include="Missile.h" />
-    <ClInclude Include="monster_community.h" />
+    <ClInclude Include="MonsterCommunity.h" />
     <ClInclude Include="MosquitoBald.h" />
     <ClInclude Include="movement_manager.h" />
     <ClInclude Include="movement_manager_inline.h" />
@@ -999,8 +999,7 @@
     <ClInclude Include="PhysicsShell.h" />
     <ClInclude Include="PhysicsShellHolder.h" />
     <ClInclude Include="PhysicsSkeletonObject.h" />
-    <ClInclude Include="physic_item.h" />
-    <ClInclude Include="physic_item_inline.h" />
+    <ClInclude Include="PhysicItem.h" />
     <ClInclude Include="ph_shell_interface.h" />
     <ClInclude Include="PostprocessAnimator.h" />
     <ClInclude Include="pp_effector_custom.h" />
@@ -1187,7 +1186,7 @@
     <ClInclude Include="space_restriction_shape_inline.h" />
     <ClInclude Include="SpaceRestrictor.h" />
     <ClInclude Include="SpaceRestrictor_inline.h" />
-    <ClInclude Include="specific_character.h" />
+    <ClInclude Include="SpecificCharacter.h" />
     <ClInclude Include="Spectator.h" />
     <ClInclude Include="squad_hierarchy_holder.h" />
     <ClInclude Include="squad_hierarchy_holder_inline.h" />
@@ -1704,8 +1703,8 @@
     <ClCompile Include="AmebaZone.cpp" />
     <ClCompile Include="animation_movement_controller.cpp" />
     <ClCompile Include="antirad.cpp" />
-    <ClCompile Include="artefact_script.cpp" />
-    <ClCompile Include="Artifact.cpp" />
+    <ClCompile Include="Artefact_script.cpp" />
+    <ClCompile Include="Artefact.cpp" />
     <ClCompile Include="AttachableItem.cpp" />
     <ClCompile Include="AttachmentOwner.cpp" />
     <ClCompile Include="AutosaveManager.cpp" />
@@ -1732,11 +1731,11 @@
     <ClCompile Include="CarWheels.cpp" />
     <ClCompile Include="car_memory.cpp" />
     <ClCompile Include="CharacterPhysicsSupport.cpp" />
-    <ClCompile Include="character_community.cpp" />
+    <ClCompile Include="CharacterCommunity.cpp" />
     <ClCompile Include="character_hit_animations.cpp" />
-    <ClCompile Include="character_info.cpp" />
-    <ClCompile Include="character_rank.cpp" />
-    <ClCompile Include="character_reputation.cpp" />
+    <ClCompile Include="CharacterInfo.cpp" />
+    <ClCompile Include="CharacterRank.cpp" />
+    <ClCompile Include="CharacterReputation.cpp" />
     <ClCompile Include="ClientSpawnManager.cpp" />
     <ClCompile Include="ClimableObject.cpp" />
     <ClCompile Include="console_commands.cpp" />
@@ -1915,7 +1914,7 @@
     <ClCompile Include="MilitaryOutfit.cpp" />
     <ClCompile Include="Mincer.cpp" />
     <ClCompile Include="Missile.cpp" />
-    <ClCompile Include="monster_community.cpp" />
+    <ClCompile Include="MonsterCommunity.cpp" />
     <ClCompile Include="MosquitoBald.cpp" />
     <ClCompile Include="movement_manager.cpp" />
     <ClCompile Include="movement_manager_game.cpp" />
@@ -2002,7 +2001,7 @@
     <ClCompile Include="PhysicsShellHolder.cpp" />
     <ClCompile Include="PhysicsSkeletonObject.cpp" />
     <ClCompile Include="physics_game.cpp" />
-    <ClCompile Include="physic_item.cpp" />
+    <ClCompile Include="PhysicItem.cpp" />
     <ClCompile Include="PostprocessAnimator.cpp" />
     <ClCompile Include="pp_effector_custom.cpp" />
     <ClCompile Include="pp_effector_distance.cpp" />
@@ -2137,7 +2136,7 @@
     <ClCompile Include="space_restriction_manager.cpp" />
     <ClCompile Include="space_restriction_shape.cpp" />
     <ClCompile Include="SpaceRestrictor.cpp" />
-    <ClCompile Include="specific_character.cpp" />
+    <ClCompile Include="SpecificCharacter.cpp" />
     <ClCompile Include="Spectator.cpp" />
     <ClCompile Include="squad_hierarchy_holder.cpp" />
     <ClCompile Include="StalkerOutfit.cpp" />
@@ -2196,7 +2195,6 @@
     <ClCompile Include="TeleWhirlwind.cpp" />
     <ClCompile Include="ThornArtifact.cpp" />
     <ClCompile Include="Torch.cpp" />
-    <ClCompile Include="torch_script.cpp" />
     <ClCompile Include="TorridZone.cpp" />
     <ClCompile Include="Tracer.cpp" />
     <ClCompile Include="Trade.cpp" />

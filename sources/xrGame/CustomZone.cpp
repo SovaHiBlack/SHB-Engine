@@ -11,7 +11,7 @@
 #include "level.h"
 //#include "game_cl_base.h"
 #include "..\XR_3DA\igame_persistent.h"
-#include "artifact.h"
+#include "Artefact.h"
 #include "ai_object_location.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "ZoneEffector.h"

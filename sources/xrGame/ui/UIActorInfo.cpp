@@ -13,8 +13,8 @@
 #include "UICharacterInfo.h"//
 #include "UI3tButton.h"
 #include "../ActorStatisticManager.h"
-#include "../character_community.h"
-#include "../character_reputation.h"
+#include "../CharacterCommunity.h"
+#include "../CharacterReputation.h"
 #include "../RelationRegistry.h"
 #include "../string_table.h"
 
