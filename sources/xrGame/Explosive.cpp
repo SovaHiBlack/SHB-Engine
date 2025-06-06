@@ -1,10 +1,8 @@
 // Explosive.cpp: интерфейс для взврывающихся объектов
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 
-#include "explosive.h"
+#include "Explosive.h"
 
 #include "PhysicsShell.h"
 #include "Entity.h"
@@ -32,38 +30,32 @@
 #include "game_base_space.h"
 #include "profiler.h"
 
-#define EFFECTOR_RADIUS 30.f
+#define EFFECTOR_RADIUS 30.0f
 const u16	TEST_RAYS_PER_OBJECT = 5;
 const u16	BLASTED_OBJ_PROCESSED_PER_FRAME = 3;
-const f32	exp_dist_extinction_factor = 3.f;//(>1.f, 1.f -means no dist change of exp effect)	on the dist of m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less than maximum
+const f32	exp_dist_extinction_factor = 3.0f;//(>1.0f, 1.0f -means no dist change of exp effect)	on the dist of m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less than maximum
 
-CExplosive::CExplosive(void)
+CExplosive::CExplosive( )
 {
-	m_fBlastHit = 50.f;
-	m_fBlastRadius = 10.f;
+	m_fBlastHit = 50.0f;
+	m_fBlastRadius = 10.0f;
 	m_iFragsNum = 20;
-	m_fFragsRadius = 30.f;
-	m_fFragHit = 50;
-	m_fUpThrowFactor = 0.f;
-
+	m_fFragsRadius = 30.0f;
+	m_fFragHit = 50.0f;
+	m_fUpThrowFactor = 0.0f;
 
 	m_eSoundExplode = ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING);
-
 
 	m_eHitTypeBlast = ALife::eHitTypeExplosion;
 	m_eHitTypeFrag = ALife::eHitTypeFireWound;
 
-
 	m_iCurrentParentID = 0xffff;
 
-	//	m_bReadyToExplode		= false;
-	//	m_bExploding			= false;
-	//	m_bExplodeEventSent		= false;
 	m_explosion_flags.assign(0);
 	m_vExplodeSize.set(0.001f, 0.001f, 0.001f);
 
 	m_bHideInExplosion = TRUE;
-	m_fExplodeHideDurationMax = 0;
+	m_fExplodeHideDurationMax = 0.0f;
 	m_bDynamicParticles = FALSE;
 	m_pExpParticle = NULL;
 }
@@ -79,7 +71,7 @@ void CExplosive::LightDestroy( )
 	m_pLight.destroy( );
 }
 
-CExplosive::~CExplosive(void)
+CExplosive::~CExplosive( )
 {
 	sndExplode.destroy( );
 }
@@ -105,7 +97,6 @@ void CExplosive::Load(CIniFile* ini, pcstr section)
 
 	m_fUpThrowFactor = ini->r_float(section, "up_throw_factor");
 
-
 	fWallmarkSize = ini->r_float(section, "wm_size");
 	R_ASSERT(fWallmarkSize > 0);
 
@@ -124,11 +115,7 @@ void CExplosive::Load(CIniFile* ini, pcstr section)
 	m_fExplodeDurationMax = ini->r_float(section, "explode_duration");
 
 	effector.effect_sect_name = ini->r_string("explode_effector", "effect_sect_name");
-	//	if( ini->line_exist(section,"wallmark_section") )
-	//	{
 	m_wallmark_manager.m_owner = cast_game_object( );
-	//		m_wallmark_manager.Load(pSettings,ini->r_string(section,"wallmark_section"));
-	//	}
 
 	m_bHideInExplosion = TRUE;
 	if (ini->line_exist(section, "hide_in_explosion"))
@@ -143,7 +130,9 @@ void CExplosive::Load(CIniFile* ini, pcstr section)
 
 	m_bDynamicParticles = FALSE;
 	if (ini->line_exist(section, "dynamic_explosion_particles"))
+	{
 		m_bDynamicParticles = ini->r_bool(section, "dynamic_explosion_particles");
+	}
 }
 
 void CExplosive::net_Destroy( )
@@ -152,7 +141,6 @@ void CExplosive::net_Destroy( )
 	StopLight( );
 	m_explosion_flags.assign(0);
 }
-
 
 struct SExpQParams
 {
@@ -175,17 +163,18 @@ struct SExpQParams
 
 	f32		shoot_factor;
 };
+
 //проверка на попадание "осколком" по объекту
 ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 {
-	SExpQParams& ep = *(SExpQParams*) params;
+	SExpQParams& ep = *(SExpQParams*)params;
 	u16 mtl_idx = GAMEMTL_NONE_IDX;
 	if (result.O)
 	{
 		CKinematics* V = 0;
 		if (0 != (V = smart_cast<CKinematics*>(result.O->Visual( ))))
 		{
-			CBoneData& B = V->LL_GetData((u16) result.element);
+			CBoneData& B = V->LL_GetData((u16)result.element);
 			mtl_idx = B.game_mtl_idx;
 		}
 	}
@@ -195,6 +184,7 @@ ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 		CDB::TRI* T = Level( ).ObjectSpace.GetStaticTris( ) + result.element;
 		mtl_idx = T->material;
 	}
+
 	SGameMtl* mtl = GMLib.GetMaterialByIdx(mtl_idx);
 	ep.shoot_factor *= mtl->fShootFactor;
 
@@ -210,7 +200,7 @@ ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 	}
 #endif
 
-	return				(ep.shoot_factor > 0.01f);
+	returnb(ep.shoot_factor > 0.01f);
 }
 
 f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPhysicsShellHolder* blasted_obj, const fVector3& expl_centre, const f32 expl_radius)
@@ -300,13 +290,15 @@ f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_ob
 #endif
 
 	}
+
 #ifdef DEBUG
 	if (ph_dbg_draw_mask.test(phDbgDrawExplosions))
 	{
 		Msg("damage effect %f", effect / TEST_RAYS_PER_OBJECT);
 	}
 #endif
-	return effect / TEST_RAYS_PER_OBJECT;
+
+	return (effect / TEST_RAYS_PER_OBJECT);
 
 }
 f32 CExplosive::TestPassEffect(const	fVector3& source_p, const	fVector3& dir, f32 range, f32 ef_radius, collide::rq_results& storage, CObject* blasted_obj)
@@ -327,15 +319,20 @@ f32 CExplosive::TestPassEffect(const	fVector3& source_p, const	fVector3& dir, f3
 		g_pGameLevel->ObjectSpace.RayQuery(storage, RD, grenade_hit_callback, &ep, NULL, blasted_obj);
 		shoot_factor = ep.shoot_factor;
 	}
-	else return dist_factor;
-	return shoot_factor * dist_factor;
+	else
+	{
+		return dist_factor;
+	}
+
+	return (shoot_factor * dist_factor);
 }
+
 void CExplosive::Explode( )
 {
 	VERIFY(0xffff != Initiator( ));
-	VERIFY(m_explosion_flags.test(flReadyToExplode));//m_bReadyToExplode
+	VERIFY(m_explosion_flags.test(flReadyToExplode));
 	VERIFY(!ph_world->Processing( ));
-	//m_bExploding = true;
+
 	m_explosion_flags.set(flExploding, TRUE);
 	cast_game_object( )->processing_activate( );
 
@@ -499,12 +496,12 @@ void CExplosive::UpdateCL( )
 {
 	//VERIFY(!this->getDestroy());
 	VERIFY(!ph_world->Processing( ));
-	if (!m_explosion_flags.test(flExploding)) return;// !m_bExploding
+	if (!m_explosion_flags.test(flExploding)) return;
 	if (m_explosion_flags.test(flExploded))
 	{
 		CGameObject* go = cast_game_object( );
 		go->processing_deactivate( );
-		m_explosion_flags.set(flExploding, FALSE);//m_bExploding = false;
+		m_explosion_flags.set(flExploding, FALSE);
 		OnAfterExplosion( );
 		return;
 	}
@@ -612,7 +609,6 @@ void CExplosive::OnEvent(CNetPacket& P, u16 type)
 
 void CExplosive::ExplodeParams(const fVector3& pos, const fVector3& dir)
 {
-	//m_bReadyToExplode = true;
 	m_explosion_flags.set(flReadyToExplode, TRUE);
 	m_vExplodePos = pos;
 	m_vExplodePos.y += 0.1f;// fake
@@ -623,9 +619,7 @@ void CExplosive::GenExplodeEvent(const fVector3& pos, const fVector3& normal)
 {
 	if (OnClient( ) || cast_game_object( )->Remote( )) return;
 
-	//	if( m_bExplodeEventSent ) 
-	//		return;
-	VERIFY(!m_explosion_flags.test(flExplodEventSent));//!m_bExplodeEventSent
+	VERIFY(!m_explosion_flags.test(flExplodEventSent));
 	VERIFY(0xffff != Initiator( ));
 
 	CNetPacket		P;
@@ -635,7 +629,6 @@ void CExplosive::GenExplodeEvent(const fVector3& pos, const fVector3& normal)
 	P.w_vec3(normal);
 	cast_game_object( )->u_EventSend(P);
 
-	//m_bExplodeEventSent = true;
 	m_explosion_flags.set(flExplodEventSent, TRUE);
 }
 

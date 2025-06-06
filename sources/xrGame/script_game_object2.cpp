@@ -11,7 +11,7 @@
 #include "script_game_object_impl.h"
 #include "AISpace.h"
 #include "script_engine.h"
-#include "explosive.h"
+#include "Explosive.h"
 #include "ScriptZone.h"
 #include "object_handler.h"
 #include "script_hit.h"

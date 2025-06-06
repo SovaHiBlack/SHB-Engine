@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "danger_explosive.h"
 #include "GameObject.h"
-#include "explosive.h"
+#include "Explosive.h"
 
 bool CDangerExplosive::operator==	(const u16 &object_id) const
 {

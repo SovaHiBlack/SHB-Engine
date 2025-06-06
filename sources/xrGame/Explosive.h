@@ -1,6 +1,4 @@
 // Explosive.h: интерфейс для взврывающихся объектов
-//
-//////////////////////////////////////////////////////////////////////
 
 #pragma once
 
@@ -16,15 +14,14 @@
 class IRender_Light;
 DEFINE_VECTOR(CPhysicsShellHolder*, BLASTED_OBJECTS_V, BLASTED_OBJECTS_I);
 
-class CExplosive :
-	public IDamageSource
+class CExplosive : public IDamageSource
 {
 private:
 	collide::rq_results			rq_storage;
 
 public:
-	CExplosive(void);
-	virtual						~CExplosive(void);
+	CExplosive( );
+	virtual						~CExplosive( );
 
 	virtual void 				Load(pcstr section);
 	virtual void				Load(CIniFile* ini, pcstr section);
@@ -35,11 +32,11 @@ public:
 
 private:
 	virtual void 				Explode( );
+
 public:
 	virtual void 				ExplodeParams(const fVector3& pos, const fVector3& dir);
 
 	static f32 				ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPhysicsShellHolder* blasted_obj, const fVector3& expl_centre, const f32 expl_radius);
-
 
 	virtual void 				OnEvent(CNetPacket& P, u16 type);//{inherited::OnEvent( P, type);}
 	virtual void				OnAfterExplosion( );
@@ -106,7 +103,6 @@ protected:
 	//ID персонажа который иницировал действие
 	u16						m_iCurrentParentID;
 
-	//bool					m_bReadyToExplode;
 	fVector3				m_vExplodePos;
 	fVector3				m_vExplodeSize;
 	fVector3				m_vExplodeDir;
@@ -152,9 +148,6 @@ protected:
 	BOOL					m_bHideInExplosion;
 	bool					m_bAlreadyHidden;
 	virtual void			HideExplosive( );
-	//bool					m_bExploding;
-	//bool					m_bExplodeEventSent;
-
 	//////////////////////////////////////////////
 	//для разлета осколков
 	f32						m_fFragmentSpeed;
@@ -179,16 +172,12 @@ protected:
 	virtual	void				StopLight( );
 
 	BOOL					m_bDynamicParticles;
-	CParticlesObject*		m_pExpParticle;
+	CParticlesObject* m_pExpParticle;
 	virtual void				UpdateExplosionParticles( );
 
 	// эффектор
 	struct
 	{
-		/*		f32 					time;
-				f32 					amplitude;
-				f32 					period_number;
-				shared_str				file_name;*/
 		shared_str				effect_sect_name;
 	} effector;
 	DECLARE_SCRIPT_REGISTER_FUNCTION

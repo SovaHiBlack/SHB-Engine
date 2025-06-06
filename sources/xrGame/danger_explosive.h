@@ -9,7 +9,7 @@
 #pragma once
 
 #include "GameObject.h"
-#include "explosive.h"
+#include "Explosive.h"
 
 class CExplosive;
 class CGameObject;

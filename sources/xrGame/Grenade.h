@@ -1,6 +1,6 @@
 #pragma once
 #include "missile.h"
-#include "explosive.h"
+#include "Explosive.h"
 #include "..\XR_3DA\feel_touch.h"
 
 class CGrenade :

@@ -7,9 +7,6 @@ class					= C_HLCP_S
 script_binding          = bind_heli.bind
 visual                  = physics\vehicles\mi24\veh_mi24_u_01.ogf
 
-; -- wallmarks
-wallmark_section		= explosion_marks
-
 ; -- параметры построения пути
 path_linear_acc_fw				=  6;8; 3;5; 3.0 ;m/s  ; линейное ускорение при разгоне
 path_linear_acc_bk				=  4;2;4; 0.5; 3;  3.5;3 ;8.0 ;m/s	; линейное ускорение торможения
@@ -106,7 +103,7 @@ broken_snd				= alexmx\helicopter_down
 ; -- все для ракетницы
 rocket_class			= helicopter_missile ;wpn_rpg7_missile 
 launch_speed			= 60 ;45 ;50 ;60 ;76 ;500
-wallmark_section		= explosion_marks
+
 ; -- коэффициенты иммунитета 
 immunities_sect			= sect_heli_immunities
 
@@ -166,8 +163,7 @@ explode_particles	= explosions\explosion_heli_rocket_01;
 fragment_speed				= 100
 fragment_tracer_max_length	= 4
 explode_duration	 = 2		;подолжительность взрыва (с)
-; -- wallmarks
-wallmark_section		= explosion_marks
+
 ; -- звуки
 snd_explode			= weapons\rpg7_explode
 snd_fly_sound		= weapons\rocket_fly

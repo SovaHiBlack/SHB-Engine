@@ -378,15 +378,15 @@ void CCar::shedule_Update(u32 dt)
 	if (CPHDestroyable::Destroyed( ))CPHDestroyable::SheduleUpdate(dt);
 	else	CPHSkeleton::Update(dt);
 
-	if (CDelayedActionFuse::isActive( ) && CDelayedActionFuse::Update(GetfHealth( )))
+	if (b_exploded && !m_explosion_flags.test(flExploding) && !getEnabled( ))
 	{
-		//CarExplode();
-	}
-	if (b_exploded && !m_explosion_flags.test(flExploding) && !getEnabled( ))//!m_bExploding
 		setEnabled(TRUE);
+	}
+
 #ifdef DEBUG
 	DbgSheduleUpdate( );
 #endif
+
 }
 
 void CCar::UpdateEx(f32 fov)

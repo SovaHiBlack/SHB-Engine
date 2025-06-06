@@ -99,9 +99,9 @@
 #	include "antirad.h"
 #	include "fooditem.h"
 #	include "bottleitem.h"
-#	include "explosiveitem.h"
+#	include "ExplosiveItem.h"
 
-#	include "infodocument.h"
+#	include "InfoDocument.h"
 #	include "AttachableItem.h"
 
 #	include "ScientificOutfit.h"

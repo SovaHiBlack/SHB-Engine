@@ -20,7 +20,7 @@ CInfoDocument::~CInfoDocument( )
 
 BOOL CInfoDocument::net_Spawn(CSE_Abstract* DC)
 {
-	BOOL					res = inherited::net_Spawn(DC);
+	BOOL res = inherited::net_Spawn(DC);
 
 	CSE_Abstract* l_tpAbstract = static_cast<CSE_Abstract*>(DC);
 	CSE_ALifeItemDocument* l_tpALifeItemDocument = smart_cast<CSE_ALifeItemDocument*>(l_tpAbstract);
@@ -28,7 +28,7 @@ BOOL CInfoDocument::net_Spawn(CSE_Abstract* DC)
 
 	m_Info = l_tpALifeItemDocument->m_wDoc;
 
-	return					(res);
+	return res;
 }
 
 void CInfoDocument::Load(pcstr section)
@@ -51,7 +51,6 @@ void CInfoDocument::UpdateCL( )
 	inherited::UpdateCL( );
 }
 
-
 void CInfoDocument::OnH_A_Chield( )
 {
 	inherited::OnH_A_Chield( );
@@ -59,16 +58,19 @@ void CInfoDocument::OnH_A_Chield( )
 	//передать информацию содержащуюся в документе
 	//объекту, который поднял документ
 	CInventoryOwner* pInvOwner = smart_cast<CInventoryOwner*>(H_Parent( ));
-	if (!pInvOwner) return;
+	if (!pInvOwner)
+	{
+		return;
+	}
 
 	//создать и отправить пакет о получении новой информации
 	if (m_Info.size( ))
 	{
-		CNetPacket		P;
+		CNetPacket P;
 		u_EventGen(P, GE_INFO_TRANSFER, H_Parent( )->ID( ));
 		P.w_u16(ID( ));						//отправитель
 		P.w_stringZ(m_Info);				//сообщение
-		P.w_u8(1);						//добавление сообщения
+		P.w_u8(1);							//добавление сообщения
 		u_EventSend(P);
 	}
 }

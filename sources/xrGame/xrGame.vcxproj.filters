@@ -1558,9 +1558,6 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Outfit">
       <UniqueIdentifier>{76cd0c76-b545-40ff-ae89-4b8912706720}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Documents">
-      <UniqueIdentifier>{b3b2c39e-2dad-4fac-8ac6-604a5c191dba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\HudItem">
       <UniqueIdentifier>{12dec675-584a-4f18-98b5-d57d54cf9c41}</UniqueIdentifier>
     </Filter>
@@ -2112,6 +2109,9 @@
     </Filter>
     <Filter Include="Core\Client\Objects\InventoryBox">
       <UniqueIdentifier>{83466c17-f91d-4f67-b1a4-03c959eaa599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\InfoDocument">
+      <UniqueIdentifier>{b3b2c39e-2dad-4fac-8ac6-604a5c191dba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4999,7 +4999,7 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClInclude>
     <ClInclude Include="InfoDocument.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Documents</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\InfoDocument</Filter>
     </ClInclude>
     <ClInclude Include="hud_item_object.h">
       <Filter>Core\Client\Objects\items &amp; weapons\HudItem</Filter>
@@ -7728,7 +7728,7 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClCompile>
     <ClCompile Include="InfoDocument.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Documents</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\InfoDocument</Filter>
     </ClCompile>
     <ClCompile Include="hud_item_object.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\HudItem</Filter>

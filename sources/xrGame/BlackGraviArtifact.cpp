@@ -12,7 +12,7 @@
 #include "PHMovementControl.h"
 #include "xrmessages.h"
 #include "physicsshellholder.h"
-#include "explosive.h"
+#include "Explosive.h"
 #include "../../xrNetServer/net_utils.h"
 #include "PHWorld.h"
 #include "CharacterPhysicsSupport.h"
