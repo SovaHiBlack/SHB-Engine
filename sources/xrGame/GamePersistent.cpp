@@ -12,7 +12,7 @@
 #include "level.h"
 #include "ParticlesObject.h"
 #include "Actor.h"
-#include "weaponhud.h"
+#include "WeaponHUD.h"
 #include "stalker_animation_data_storage.h"
 #include "stalker_velocity_holder.h"
 

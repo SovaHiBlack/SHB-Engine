@@ -21,6 +21,7 @@
 #include "GameObject_space.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
+#include "WeaponHUD.h"
 
 using namespace InventoryUtilities;
 
@@ -1079,7 +1080,6 @@ bool CInventory::isBeautifulForActiveSlot(CInventoryItem* pIItem)
 	return				(false);
 }
 
-#include "WeaponHUD.h"
 void CInventory::Items_SetCurrentEntityHud(bool current_entity)
 {
 	TIItemContainer::iterator it;

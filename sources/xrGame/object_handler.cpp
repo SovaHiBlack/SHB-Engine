@@ -13,7 +13,7 @@
 #include "object_handler_planner.h"
 #include "ai_monster_space.h"
 #include "xrServer_Objects_ALife_Monsters.h"
-#include "weaponmagazined.h"
+#include "WeaponMagazined.h"
 #include "ef_storage.h"
 #include "ef_pattern.h"
 #include "ai/stalker/ai_stalker.h"

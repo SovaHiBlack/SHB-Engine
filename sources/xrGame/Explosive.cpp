@@ -200,7 +200,7 @@ ICF static BOOL grenade_hit_callback(collide::rq_result& result, LPVOID params)
 	}
 #endif
 
-	returnb(ep.shoot_factor > 0.01f);
+	return (ep.shoot_factor > 0.01f);
 }
 
 f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_obj, CPhysicsShellHolder* blasted_obj, const fVector3& expl_centre, const f32 expl_radius)
@@ -837,4 +837,16 @@ void CExplosive::UpdateExplosionParticles( )
 bool CExplosive::Useful( ) const
 {
 	return (m_explosion_flags.flags == 0);
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CExplosive::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CExplosive>("explosive")
+				.def("explode", (&CExplosive::Explode))
+		];
 }

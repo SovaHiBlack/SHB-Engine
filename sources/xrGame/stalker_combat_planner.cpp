@@ -24,7 +24,7 @@
 #include "enemy_manager.h"
 #include "danger_manager.h"
 #include "sound_player.h"
-#include "missile.h"
+#include "Missile.h"
 #include "Explosive.h"
 #include "agent_manager.h"
 #include "agent_member_manager.h"

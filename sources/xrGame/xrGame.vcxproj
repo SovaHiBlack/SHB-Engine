@@ -574,7 +574,7 @@
     <ClInclude Include="alife_update_manager_inline.h" />
     <ClInclude Include="AmebaZone.h" />
     <ClInclude Include="animation_movement_controller.h" />
-    <ClInclude Include="antirad.h" />
+    <ClInclude Include="Antirad.h" />
     <ClInclude Include="Artefact.h" />
     <ClInclude Include="associative_vector.h" />
     <ClInclude Include="associative_vector_compare_predicate.h" />
@@ -776,7 +776,7 @@
     <ClInclude Include="HUDManager.h" />
     <ClInclude Include="HudSound.h" />
     <ClInclude Include="HUDTarget.h" />
-    <ClInclude Include="hud_item_object.h" />
+    <ClInclude Include="HudItemObject.h" />
     <ClInclude Include="IColisiondamageInfo.h" />
     <ClInclude Include="id_generator.h" />
     <ClInclude Include="IKLimbsController.h" />
@@ -838,7 +838,7 @@
     <ClInclude Include="material_manager.h" />
     <ClInclude Include="material_manager_inline.h" />
     <ClInclude Include="MathUtils.h" />
-    <ClInclude Include="medkit.h" />
+    <ClInclude Include="Medkit.h" />
     <ClInclude Include="member_corpse.h" />
     <ClInclude Include="member_corpse_inline.h" />
     <ClInclude Include="member_enemy.h" />
@@ -938,8 +938,8 @@
     <ClInclude Include="patrol_point.h" />
     <ClInclude Include="patrol_point_inline.h" />
     <ClInclude Include="PDA.h" />
-    <ClInclude Include="PdaMsg.h" />
-    <ClInclude Include="pda_space.h" />
+    <ClInclude Include="PDA_msg.h" />
+    <ClInclude Include="PDA_space.h" />
     <ClInclude Include="PHActivationShape.h" />
     <ClInclude Include="PHActorCharacter.h" />
     <ClInclude Include="PHAICharacter.h" />
@@ -1419,7 +1419,7 @@
     <ClInclude Include="visual_memory_manager.h" />
     <ClInclude Include="visual_memory_manager_inline.h" />
     <ClInclude Include="visual_memory_params.h" />
-    <ClInclude Include="wallmark_manager.h" />
+    <ClInclude Include="WalmarkManager.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponAK74.h" />
     <ClInclude Include="WeaponAmmo.h" />
@@ -1805,7 +1805,6 @@
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="ExplosiveItem.cpp" />
     <ClCompile Include="ExplosiveRocket.cpp" />
-    <ClCompile Include="ExplosiveScript.cpp" />
     <ClCompile Include="F1.cpp" />
     <ClCompile Include="FadedBall.cpp" />
     <ClCompile Include="FoodItem.cpp" />
@@ -1852,7 +1851,7 @@
     <ClCompile Include="HUDManager.cpp" />
     <ClCompile Include="HudSound.cpp" />
     <ClCompile Include="HUDTarget.cpp" />
-    <ClCompile Include="hud_item_object.cpp" />
+    <ClCompile Include="HudItemObject.cpp" />
     <ClCompile Include="IKLimbsController.cpp" />
     <ClCompile Include="Ik\aint.cxx" />
     <ClCompile Include="Ik\Dof7control.cpp" />
@@ -1907,7 +1906,7 @@
     <ClCompile Include="UIMapSpot.cpp" />
     <ClCompile Include="material_manager.cpp" />
     <ClCompile Include="MathUtils.cpp" />
-    <ClCompile Include="medkit.cpp" />
+    <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="memory_manager.cpp" />
     <ClCompile Include="memory_space_script.cpp" />
     <ClCompile Include="MercuryBall.cpp" />
@@ -2360,13 +2359,12 @@
     <ClCompile Include="vision_client.cpp" />
     <ClCompile Include="visual_memory_manager.cpp" />
     <ClCompile Include="visual_memory_params.cpp" />
-    <ClCompile Include="wallmark_manager.cpp" />
+    <ClCompile Include="WalmarkManager.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WeaponAK74.cpp" />
     <ClCompile Include="WeaponAmmo.cpp" />
     <ClCompile Include="WeaponBinoculars.cpp" />
     <ClCompile Include="WeaponBinocularsVision.cpp" />
-    <ClCompile Include="WeaponBinoculars_script.cpp" />
     <ClCompile Include="weaponBM16.cpp" />
     <ClCompile Include="weaponBM16_script.cpp" />
     <ClCompile Include="WeaponCustomPistol.cpp" />

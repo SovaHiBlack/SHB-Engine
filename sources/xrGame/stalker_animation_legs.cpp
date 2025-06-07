@@ -14,7 +14,7 @@
 #include "stalker_animation_data.h"
 
 #include "Weapon.h"
-#include "missile.h"
+#include "Missile.h"
 #include "Inventory.h"
 #include "stalker_animation_manager_impl.h"
 

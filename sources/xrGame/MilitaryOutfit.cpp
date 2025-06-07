@@ -9,9 +9,7 @@
 #include "MilitaryOutfit.h"
 
 CMilitaryOutfit::CMilitaryOutfit()
-{
-}
+{ }
 
 CMilitaryOutfit::~CMilitaryOutfit() 
-{
-}
+{ }

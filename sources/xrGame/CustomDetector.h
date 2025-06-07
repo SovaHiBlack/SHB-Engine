@@ -2,7 +2,7 @@
 
 #include "InventoryItemObject.h"
 #include "..\XR_3DA\feel_touch.h"
-#include "hudsound.h"
+#include "HudSound.h"
 
 class CCustomZone;
 //описание типа зоны
@@ -12,7 +12,7 @@ struct SZoneType
 	f32								min_freq;
 	f32								max_freq;
 	//звук реакции детектора на конкретную зону
-	HUD_SOUND						detect_snds;
+	SHudSound						detect_snds;
 
 	shared_str						zone_map_location;
 };

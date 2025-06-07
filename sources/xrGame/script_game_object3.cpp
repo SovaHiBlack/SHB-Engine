@@ -37,6 +37,7 @@
 #include "script_ini_file.h"
 #include "sound_player.h"
 #include "stalker_decision_space.h"
+#include "CustomOutfit.h"
 
 namespace MemorySpace
 {
@@ -176,8 +177,6 @@ CScriptGameObject* CScriptGameObject::GetCurrentOutfit( ) const
 	CGameObject* current_equipment = inventoryOwner->GetCurrentOutfit( ) ? &inventoryOwner->GetCurrentOutfit( )->object( ) : 0;
 	return			(current_equipment ? current_equipment->lua_game_object( ) : 0);
 }
-
-#include "CustomOutfit.h"
 
 f32 CScriptGameObject::GetCurrentOutfitProtection(int hit_type)
 {

@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "weaponammo.h"
+#include "WeaponAmmo.h"
 #include "tracer.h"
 
 //структура, описывающая пулю и ее свойства в полете

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hud_item_object.h"
+#include "HudItemObject.h"
 #include "HitImmunity.h"
 #include "PHObject.h"
 #include "script_export_space.h"

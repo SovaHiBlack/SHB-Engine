@@ -9,7 +9,7 @@
 #pragma once
 
 #include "InfoPortion_defs.h"
-#include "PdaMsg.h"
+#include "PDA_msg.h"
 #include "EncyclopediaArticle_defs.h"
 
 #include "CharacterInfo_defs.h"

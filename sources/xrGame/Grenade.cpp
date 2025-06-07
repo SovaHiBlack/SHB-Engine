@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "grenade.h"
+#include "Grenade.h"
 #include "PhysicsShell.h"
 #include "WeaponHUD.h"
 #include "Entity.h"
@@ -14,6 +14,7 @@
 
 #define GRENADE_REMOVE_TIME		30000
 const f32 default_grenade_detonation_threshold_hit = 100;
+
 CGrenade::CGrenade( )
 {
 	m_eSoundCheckout = ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING);
@@ -21,7 +22,7 @@ CGrenade::CGrenade( )
 
 CGrenade::~CGrenade( )
 {
-	HUD_SOUND::DestroySound(sndCheckout);
+	SHudSound::DestroySound(sndCheckout);
 }
 
 void CGrenade::Load(pcstr section)
@@ -29,14 +30,19 @@ void CGrenade::Load(pcstr section)
 	inherited::Load(section);
 	CExplosive::Load(section);
 
-	HUD_SOUND::LoadSound(section, "snd_checkout", sndCheckout, m_eSoundCheckout);
+	SHudSound::LoadSound(section, "snd_checkout", sndCheckout, m_eSoundCheckout);
 
 	//////////////////////////////////////
 	//время убирания оружия с уровня
 	if (pSettings->line_exist(section, "grenade_remove_time"))
+	{
 		m_dwGrenadeRemoveTime = pSettings->r_u32(section, "grenade_remove_time");
+	}
 	else
+	{
 		m_dwGrenadeRemoveTime = GRENADE_REMOVE_TIME;
+	}
+
 	m_grenade_detonation_threshold_hit = READ_IF_EXISTS(pSettings, r_float, section, "detonation_threshold_hit", default_grenade_detonation_threshold_hit);
 }
 
@@ -47,6 +53,7 @@ void CGrenade::Hit(SHit* pHDS)
 		CExplosive::SetCurrentParentID(pHDS->who->ID( ));
 		Destroy( );
 	}
+
 	inherited::Hit(pHDS);
 }
 
@@ -58,10 +65,10 @@ BOOL CGrenade::net_Spawn(CSE_Abstract* DC)
 	BoundingBox( ).getsize(box);
 	f32 max_size = _max(_max(box.x, box.y), box.z);
 	box.set(max_size, max_size, max_size);
-	box.mul(3.f);
+	box.mul(3.0f);
 	CExplosive::SetExplosionSize(box);
 	m_thrown = false;
-	return								ret;
+	return ret;
 }
 
 void CGrenade::net_Destroy( )
@@ -97,36 +104,48 @@ void CGrenade::State(u32 state)
 			fVector3						C;
 			Center(C);
 			PlaySound(sndCheckout, C);
-		}break;
+		}
+		break;
 		case MS_HIDDEN:
 		{
 			if (m_thrown)
 			{
-				if (m_pPhysicsShell)	m_pPhysicsShell->Deactivate( );
+				if (m_pPhysicsShell)
+				{
+					m_pPhysicsShell->Deactivate( );
+				}
+
 				xr_delete(m_pPhysicsShell);
 				m_dwDestroyTime = 0xffffffff;
 
 				if (H_Parent( ))
+				{
 					PutNextToSlot( );
+				}
 
 				if (Local( ))
 				{
+
 #ifdef DEBUG
 					Msg("Destroying local grenade[%d][%d]", ID( ), Device.dwFrame);
 #endif
+
 					DestroyObject( );
 				}
+			}
+		}
+		break;
+	}
 
-			};
-		}break;
-	};
 	inherited::State(state);
 }
 
 void CGrenade::Throw( )
 {
 	if (!m_fake_missile || m_thrown)
+	{
 		return;
+	}
 
 	CGrenade* pGrenade = smart_cast<CGrenade*>(m_fake_missile);
 	VERIFY(pGrenade);
@@ -137,6 +156,7 @@ void CGrenade::Throw( )
 		//установить ID того кто кинул гранату
 		pGrenade->SetInitiator(H_Parent( )->ID( ));
 	}
+
 	inherited::Throw( );
 	m_fake_missile->processing_activate( );//@sliph
 	m_thrown = true;
@@ -152,7 +172,6 @@ void CGrenade::Destroy( )
 
 bool CGrenade::Useful( ) const
 {
-
 	bool res = (/* !m_throw && */ m_dwDestroyTime == 0xffffffff && CExplosive::Useful( ) && TestServerFlag(CSE_ALifeObject::flCanSave));
 
 	return res;
@@ -166,7 +185,11 @@ void CGrenade::OnEvent(CNetPacket& P, u16 type)
 
 void CGrenade::PutNextToSlot( )
 {
-	if (OnClient( )) return;
+	if (OnClient( ))
+	{
+		return;
+	}
+
 	VERIFY(!getDestroy( ));
 
 	//выкинуть гранату из инвентаря
@@ -181,7 +204,9 @@ void CGrenade::PutNextToSlot( )
 
 		CGrenade* pNext = smart_cast<CGrenade*>(m_pCurrentInventory->Same(this, true));
 		if (!pNext)
+		{
 			pNext = smart_cast<CGrenade*>(m_pCurrentInventory->SameSlot(GRENADE_SLOT, this, true));
+		}
 
 		VERIFY(pNext != this);
 
@@ -200,12 +225,17 @@ void CGrenade::OnAnimationEnd(u32 state)
 {
 	switch (state)
 	{
-		case MS_END: SwitchState(MS_HIDDEN);	break;
-	//.	case MS_END: SwitchState(MS_RESTORE);	break;
-		default: inherited::OnAnimationEnd(state);
+		case MS_END:
+		{
+			SwitchState(MS_HIDDEN);
+		}
+		break;
+		default:
+		{
+			inherited::OnAnimationEnd(state);
+		}
 	}
 }
-
 
 void CGrenade::UpdateCL( )
 {
@@ -213,14 +243,16 @@ void CGrenade::UpdateCL( )
 	CExplosive::UpdateCL( );
 }
 
-
 bool CGrenade::Action(s32 cmd, u32 flags)
 {
-	if (inherited::Action(cmd, flags)) return true;
+	if (inherited::Action(cmd, flags))
+	{
+		return true;
+	}
 
 	switch (cmd)
 	{
-	//переключение типа гранаты
+		//переключение типа гранаты
 		case kWPN_NEXT:
 		{
 			if (flags & CMD_START)
@@ -240,27 +272,33 @@ bool CGrenade::Action(s32 cmd, u32 flags)
 							return true;
 						}
 					}
+
 					return true;
 				}
 			}
+
 			return true;
-		};
+		}
 	}
+
 	return false;
 }
-
 
 bool CGrenade::NeedToDestroyObject( )	const
 {
 	return (TimePassedAfterIndependant( ) > m_dwGrenadeRemoveTime);
 }
 
-ALife::_TIME_ID	 CGrenade::TimePassedAfterIndependant( )	const
+ALife::_TIME_ID	 CGrenade::TimePassedAfterIndependant( ) const
 {
 	if (!H_Parent( ) && m_dwGrenadeIndependencyTime != 0)
+	{
 		return Level( ).timeServer( ) - m_dwGrenadeIndependencyTime;
+	}
 	else
+	{
 		return 0;
+	}
 }
 
 BOOL CGrenade::UsedAI_Locations( )
@@ -298,10 +336,11 @@ void CGrenade::Deactivate( )
 						}
 					}
 				}
+
 				Throw( );
-			};
-		};
-	};
+			}
+		}
+	}
 
 	inherited::Deactivate( );
 }
@@ -310,7 +349,7 @@ void CGrenade::GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_s
 {
 	str_name = NameShort( );
 	u32 ThisGrenadeCount = m_pCurrentInventory->dwfGetSameItemCount(*cNameSect( ), true);
-	string16				stmp;
+	string16 stmp;
 	sprintf_s(stmp, "%d", ThisGrenadeCount);
 	str_count = stmp;
 	icon_sect_name = *cNameSect( );

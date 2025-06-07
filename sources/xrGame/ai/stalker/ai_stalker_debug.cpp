@@ -44,7 +44,7 @@
 #include "..\..\..\XR_3DA\camerabase.h"
 #include "../../clsid_game.h"
 #include "../../mt_config.h"
-#include "../../weaponmagazined.h"
+#include "../../WeaponMagazined.h"
 #include "../../object_handler_space.h"
 #include "..\..\DebugRenderer.h"
 #include "../../CharacterPhysicsSupport.h"

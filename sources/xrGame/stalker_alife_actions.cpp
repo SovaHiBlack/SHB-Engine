@@ -12,7 +12,7 @@
 //#include "InventoryItem.h"
 #include "script_game_object.h"
 #include "Inventory.h"
-#include "weaponmagazined.h"
+#include "WeaponMagazined.h"
 #include "movement_manager_space.h"
 #include "detail_path_manager_space.h"
 #include "memory_manager.h"

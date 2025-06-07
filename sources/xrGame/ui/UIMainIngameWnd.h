@@ -11,7 +11,7 @@
 
 #include "UICarPanel.h"//
 #include "UIMotionIcon.h"//
-#include "../hudsound.h"
+#include "../HudSound.h"
 
 // для режима настройки HUD
 extern s32				g_bHudAdjustMode;
@@ -123,7 +123,7 @@ public:
 	void				SetFlashIconState_(EFlashingIcons type, bool enable);
 
 	void				AnimateContacts(bool b_snd);
-	HUD_SOUND			m_contactSnd;
+	SHudSound			m_contactSnd;
 
 	void				ReceiveNews(SGameNewsData* news);
 

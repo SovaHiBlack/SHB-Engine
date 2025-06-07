@@ -25,10 +25,14 @@ void CBottleItem::Load(pcstr section)
 	inherited::Load(section);
 
 	if (pSettings->line_exist(section, "break_particles"))
+	{
 		m_sBreakParticles = pSettings->r_string(section, "break_particles");
+	}
 
 	if (pSettings->line_exist(section, "break_sound"))
+	{
 		sndBreaking.create(pSettings->r_string(section, "break_sound"), st_Effect, sg_SourceType);
+	}
 
 	m_alcohol = READ_IF_EXISTS(pSettings, r_float, section, "eat_alcohol", 0.0f);
 }
@@ -40,8 +44,10 @@ void CBottleItem::OnEvent(CNetPacket& P, u16 type)
 	switch (type)
 	{
 		case GE_GRENADE_EXPLODE:
+		{
 			BreakToPieces( );
-			break;
+		}
+		break;
 	}
 }
 
@@ -78,7 +84,7 @@ void	CBottleItem::Hit(SHit* pHDS)
 			CNetPacket		P;
 			u_EventGen(P, GE_GRENADE_EXPLODE, ID( ));
 			u_EventSend(P);
-		};
+		}
 	}
 }
 

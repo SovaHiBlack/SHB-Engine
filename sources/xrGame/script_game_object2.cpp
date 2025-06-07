@@ -16,7 +16,7 @@
 #include "object_handler.h"
 #include "script_hit.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "pda.h"
+#include "PDA.h"
 #include "InfoPortion.h"
 #include "memory_manager.h"
 #include "ai_phrasedialogmanager.h"

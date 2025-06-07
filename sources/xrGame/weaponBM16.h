@@ -15,7 +15,7 @@ protected:
 	MotionSVec		mhud_zoomed_idle1;
 	MotionSVec		mhud_zoomed_idle2;
 
-	HUD_SOUND		m_sndReload1;
+	SHudSound		m_sndReload1;
 
 public:
 	virtual			~CWeaponBM16					();

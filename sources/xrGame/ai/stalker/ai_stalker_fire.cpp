@@ -41,7 +41,7 @@
 #include "../../RadioactiveZone.h"
 #include "../../restricted_object.h"
 #include "../../ai_object_location.h"
-#include "../../missile.h"
+#include "../../Missile.h"
 #include "../../phworld.h"
 #include "../../stalker_animation_names.h"
 #include "../../agent_corpse_manager.h"

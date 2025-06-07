@@ -7,7 +7,7 @@ class CWeaponPM: public CWeaponPistol
 {
 private:
 	typedef CWeaponPistol inherited;
-protected:
+
 public:
 					CWeaponPM			();
 	virtual			~CWeaponPM		();

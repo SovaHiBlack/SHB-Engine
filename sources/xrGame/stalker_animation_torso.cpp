@@ -11,7 +11,7 @@
 #include "ai/stalker/ai_stalker.h"
 #include "Inventory.h"
 #include "Weapon.h"
-#include "missile.h"
+#include "Missile.h"
 #include "clsid_game.h"
 #include "object_handler_space.h"
 #include "object_handler_planner.h"

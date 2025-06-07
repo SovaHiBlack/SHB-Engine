@@ -10,7 +10,7 @@
 #include "InventoryItemObject.h"
 #include "DelayedActionFuse.h"
 
-class CExplosiveItem : 	public CInventoryItemObject,	public CDelayedActionFuse,	public CExplosive
+class CExplosiveItem : public CInventoryItemObject, public CDelayedActionFuse, public CExplosive
 {
 private:
 	typedef CInventoryItemObject inherited;

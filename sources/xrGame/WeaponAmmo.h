@@ -42,27 +42,27 @@ class CWeaponAmmo : public CInventoryItemObject
 	typedef CInventoryItemObject inherited;
 
 public:
-	CWeaponAmmo( );
-	virtual							~CWeaponAmmo( );
+								CWeaponAmmo( );
+	virtual						~CWeaponAmmo( );
 
-	virtual CWeaponAmmo* cast_weapon_ammo( )
+	virtual CWeaponAmmo*		cast_weapon_ammo( )
 	{
 		return this;
 	}
-	virtual void					Load(pcstr section);
-	virtual BOOL					net_Spawn(CSE_Abstract* DC);
-	virtual void					net_Destroy( );
-	virtual void					net_Export(CNetPacket& P);
-	virtual void					net_Import(CNetPacket& P);
-	virtual void					OnH_B_Chield( );
-	virtual void					OnH_B_Independent(bool just_before_destroy);
-	virtual void					UpdateCL( );
-	virtual void					renderable_Render( );
+	virtual void				Load(pcstr section);
+	virtual BOOL				net_Spawn(CSE_Abstract* DC);
+	virtual void				net_Destroy( );
+	virtual void				net_Export(CNetPacket& P);
+	virtual void				net_Import(CNetPacket& P);
+	virtual void				OnH_B_Chield( );
+	virtual void				OnH_B_Independent(bool just_before_destroy);
+	virtual void				UpdateCL( );
+	virtual void				renderable_Render( );
 
-	virtual bool					Useful( ) const;
+	virtual bool				Useful( ) const;
 	virtual f32					Weight( );
 
-	bool							Get(CCartridge& cartridge);
+	bool						Get(CCartridge& cartridge);
 
 	f32 m_kDist;
 	f32 m_kDisp;
@@ -81,5 +81,5 @@ public:
 	bool m_tracer;
 
 public:
-	virtual CInventoryItem* can_make_killing(const CInventory* inventory) const;
+	virtual CInventoryItem*		can_make_killing(const CInventory* inventory) const;
 };

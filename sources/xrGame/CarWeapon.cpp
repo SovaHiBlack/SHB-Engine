@@ -5,7 +5,7 @@
 #include "..\XR_3DA\skeletoncustom.h"
 #include "object_broker.h"
 #include "ai_sounds.h"
-#include "weaponAmmo.h"
+#include "WeaponAmmo.h"
 #include "xr_level_controller.h"
 #include "GameObject_space.h"
 
@@ -81,7 +81,7 @@ CCarWeapon::~CCarWeapon( )
 void CCarWeapon::Load(pcstr section)
 {
 	inheritedShooting::Load(section);
-	HUD_SOUND::LoadSound(section, "snd_shoot", m_sndShot, SOUND_TYPE_WEAPON_SHOOTING);
+	SHudSound::LoadSound(section, "snd_shoot", m_sndShot, SOUND_TYPE_WEAPON_SHOOTING);
 	m_Ammo->Load(pSettings->r_string(section, "ammo_class"), 0);
 }
 
@@ -255,7 +255,7 @@ void CCarWeapon::OnShot( )
 	StartSmokeParticles(m_fire_pos, zero_vel);
 //	OnShellDrop				(m_fire_pos, zero_vel);
 
-	HUD_SOUND::PlaySound(m_sndShot, m_fire_pos, m_object, false);
+	SHudSound::PlaySound(m_sndShot, m_fire_pos, m_object, false);
 }
 
 void CCarWeapon::Action(s32 id, u32 flags)

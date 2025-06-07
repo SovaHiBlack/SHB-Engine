@@ -10,13 +10,13 @@
 #include "stalker_animation_manager.h"
 #include "ai/stalker/ai_stalker.h"
 #include "Inventory.h"
-#include "fooditem.h"
+#include "FoodItem.h"
 #include "property_storage.h"
 #include "stalker_movement_manager.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "stalker_animation_data.h"
 #include "Weapon.h"
-#include "missile.h"
+#include "Missile.h"
 #include "stalker_animation_manager_impl.h"
 
 using namespace StalkerSpace;

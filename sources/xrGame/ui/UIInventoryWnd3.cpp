@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "UIInventoryWnd.h"//
 #include "../Actor.h"
-#include "../silencer.h"
-#include "../scope.h"
-#include "../grenadelauncher.h"
+#include "../Silencer.h"
+#include "../Scope.h"
+#include "../GrenadeLauncher.h"
 #include "../Artefact.h"
 #include "../EatableItem.h"
 #include "../BottleItem.h"

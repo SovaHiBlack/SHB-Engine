@@ -4,7 +4,7 @@
 
 CWeaponBM16::~CWeaponBM16()
 {
-	HUD_SOUND::DestroySound(m_sndReload1);
+	SHudSound::DestroySound(m_sndReload1);
 }
 
 void CWeaponBM16::Load	(pcstr section)
@@ -18,9 +18,7 @@ void CWeaponBM16::Load	(pcstr section)
 	animGet	(mhud_zoomed_idle1,		pSettings->r_string(*hud_sect,"anim_zoomed_idle_1"));
 	animGet	(mhud_zoomed_idle2,		pSettings->r_string(*hud_sect,"anim_zoomedidle_2"));
 
-
-	HUD_SOUND::LoadSound(section, "snd_reload_1", m_sndReload1, m_eSoundShot);
-
+	SHudSound::LoadSound(section, "snd_reload_1", m_sndReload1, m_eSoundShot);
 }
 
 void CWeaponBM16::PlayReloadSound()

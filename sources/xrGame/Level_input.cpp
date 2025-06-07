@@ -18,7 +18,7 @@
 //#include "AutosaveManager.h"
 
 #include "Actor.h"
-#include "huditem.h"
+#include "HudItem.h"
 #include "ui/UIDialogWnd.h"
 #include "clsid_game.h"
 #include "..\XR_3DA\Input.h"

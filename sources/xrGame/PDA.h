@@ -6,18 +6,17 @@
 #include "InfoPortion_defs.h"
 #include "CharacterInfo_defs.h"
 
-#include "PdaMsg.h"
+#include "PDA_msg.h"
 
 class CInventoryOwner;
 class CPda;
 
 DEF_VECTOR(PDA_LIST, CPda*);
 
-class CPda :
-	public CInventoryItemObject,
-	public Feel::Touch
+class CPda : public CInventoryItemObject, public Feel::Touch
 {
 	typedef	CInventoryItemObject inherited;
+
 public:
 	CPda( );
 	virtual									~CPda( );
@@ -35,14 +34,12 @@ public:
 	virtual void 							feel_touch_delete(CObject* O);
 	virtual BOOL 							feel_touch_contact(CObject* O);
 
-
 	virtual u16								GetOriginalOwnerID( )
 	{
 		return m_idOriginalOwner;
 	}
 	virtual CInventoryOwner* GetOriginalOwner( );
 	virtual CObject* GetOwnerObject( );
-
 
 	void							TurnOn( )
 	{
@@ -66,14 +63,12 @@ public:
 		return m_bTurnedOff;
 	}
 
-
 	void							ActivePDAContacts(xr_vector<CPda*>& res);
 	CPda* GetPdaFromOwner(CObject* owner);
 	u32								ActiveContactsNum( )
 	{
 		return m_active_contacts.size( );
 	}
-
 
 	virtual void							save(CNetPacket& output_packet);
 	virtual void							load(IReader& input_packet);
@@ -84,10 +79,10 @@ protected:
 	void									UpdateActiveContacts( );
 
 	xr_vector<CObject*>						m_active_contacts;
-	f32									m_fRadius;
+	f32										m_fRadius;
 
 	u16										m_idOriginalOwner;
-	shared_str					m_SpecificChracterOwner;
+	shared_str								m_SpecificChracterOwner;
 	xr_string								m_sFullName;
 
 	bool									m_bTurnedOff;

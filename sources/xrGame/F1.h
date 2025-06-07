@@ -1,6 +1,6 @@
 #pragma once
 
-#include "grenade.h"
+#include "Grenade.h"
 #include "script_export_space.h"
 
 class CF1 :
@@ -8,8 +8,8 @@ class CF1 :
 {
 	typedef CGrenade inherited;
 public:
-	CF1(void);
-	virtual ~CF1(void);
+	CF1( );
+	virtual ~CF1( );
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

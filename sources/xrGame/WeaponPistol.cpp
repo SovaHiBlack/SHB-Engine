@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "weaponpistol.h"
+#include "WeaponPistol.h"
 #include "WeaponHUD.h"
 #include "ParticlesObject.h"
 #include "Actor.h"
@@ -11,7 +11,7 @@ CWeaponPistol::CWeaponPistol(pcstr name) : CWeaponCustomPistol(name)
 	m_bPending = false;
 }
 
-CWeaponPistol::~CWeaponPistol(void)
+CWeaponPistol::~CWeaponPistol( )
 { }
 
 void CWeaponPistol::net_Destroy( )
@@ -19,15 +19,14 @@ void CWeaponPistol::net_Destroy( )
 	inherited::net_Destroy( );
 
 	// sounds
-	HUD_SOUND::DestroySound(sndClose);
+	SHudSound::DestroySound(sndClose);
 }
-
 
 void CWeaponPistol::Load(pcstr section)
 {
 	inherited::Load(section);
 
-	HUD_SOUND::LoadSound(section, "snd_close", sndClose, m_eSoundClose);
+	SHudSound::LoadSound(section, "snd_close", sndClose, m_eSoundClose);
 
 	animGet(mhud_pistol.mhud_empty, pSettings->r_string(*hud_sect, "anim_empty"));
 	animGet(mhud_pistol.mhud_shot_l, pSettings->r_string(*hud_sect, "anim_shot_last"));
@@ -143,7 +142,6 @@ void CWeaponPistol::PlayAnimReload( )
 	m_opened = false;
 }
 
-
 void CWeaponPistol::PlayAnimHide( )
 {
 	VERIFY(GetState( ) == eHiding);
@@ -154,7 +152,9 @@ void CWeaponPistol::PlayAnimHide( )
 		m_pHUD->animPlay(random_anim(m.mhud_close), TRUE, this, GetState( ));
 	}
 	else
+	{
 		inherited::PlayAnimHide( );
+	}
 }
 
 void CWeaponPistol::PlayAnimShoot( )
@@ -174,10 +174,8 @@ void CWeaponPistol::PlayAnimShoot( )
 	}
 }
 
-
 void CWeaponPistol::switch2_Reload( )
 {
-	//.	if(GetState()==eReload) return;
 	inherited::switch2_Reload( );
 }
 
@@ -186,8 +184,8 @@ void CWeaponPistol::OnAnimationEnd(u32 state)
 	if (state == eHiding && m_opened)
 	{
 		m_opened = false;
-		//		switch2_Hiding();
 	}
+
 	inherited::OnAnimationEnd(state);
 }
 
@@ -206,10 +204,8 @@ void CWeaponPistol::OnShot( )
 	OnShellDrop(get_LastSP( ), vel);
 
 	// ќгонь из ствола
-
 	StartFlameParticles( );
-	R_ASSERT2(!m_pFlameParticles || !m_pFlameParticles->IsLooped( ),
-			  "can't set looped particles system for shoting with pistol");
+	R_ASSERT2(!m_pFlameParticles || !m_pFlameParticles->IsLooped( ), "can't set looped particles system for shoting with pistol");
 
 	//дым из ствола
 	StartSmokeParticles(get_LastFP( ), vel);
@@ -219,7 +215,10 @@ void CWeaponPistol::UpdateSounds( )
 {
 	inherited::UpdateSounds( );
 
-	if (sndClose.playing( )) sndClose.set_position(get_LastFP( ));
+	if (sndClose.playing( ))
+	{
+		sndClose.set_position(get_LastFP( ));
+	}
 }
 
 CWeaponPistol::WWPMotions& CWeaponPistol::wwpm_current( )
@@ -228,10 +227,11 @@ CWeaponPistol::WWPMotions& CWeaponPistol::wwpm_current( )
 	if (A && A->Holder( ))
 	{
 		//		Msg("right-hand animation playing");
-		return				mhud_pistol_r;
+		return mhud_pistol_r;
 	}
+
 	//	Msg("double-hands animation playing");
-	return					mhud_pistol;
+	return mhud_pistol;
 }
 
 CWeaponMagazined::SWMmotions& CWeaponPistol::swm_current( )
@@ -240,8 +240,9 @@ CWeaponMagazined::SWMmotions& CWeaponPistol::swm_current( )
 	if (A && A->Holder( ))
 	{
 		//.		Msg("right-hand animation playing");
-		return				wm_mhud_r;
+		return wm_mhud_r;
 	}
+
 	//.	Msg("double-hands animation playing");
-	return					mhud;
+	return mhud;
 }

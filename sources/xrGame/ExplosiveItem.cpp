@@ -30,7 +30,11 @@ void CExplosiveItem::net_Destroy( )
 
 void	CExplosiveItem::Hit(SHit* pHDS)
 {
-	if (CDelayedActionFuse::isActive( ))pHDS->power = 0.f;
+	if (CDelayedActionFuse::isActive( ))
+	{
+		pHDS->power = 0.0f;
+	}
+
 	inherited::Hit(pHDS);
 	if (!CDelayedActionFuse::isActive( ) && CDelayedActionFuse::CheckCondition(GetCondition( )) && CExplosive::Initiator( ) == u16(-1))
 	{
@@ -38,22 +42,25 @@ void	CExplosiveItem::Hit(SHit* pHDS)
 		SetInitiator(pHDS->who->ID( ));
 	}
 }
+
 void CExplosiveItem::StartTimerEffects( )
 {
 	CParticlesPlayer::StartParticles(pSettings->r_string(*cNameSect( ), "set_timer_particles"), fVector3( ).set(0.0f, 1.0f, 0.0f), ID( ));
 
 }
+
 void CExplosiveItem::OnEvent(CNetPacket& P, u16 type)
 {
 	CExplosive::OnEvent(P, type);
 	inherited::OnEvent(P, type);
-
 }
+
 void CExplosiveItem::UpdateCL( )
 {
 	CExplosive::UpdateCL( );
 	inherited::UpdateCL( );
 }
+
 void CExplosiveItem::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
@@ -68,8 +75,6 @@ void CExplosiveItem::shedule_Update(u32 dt)
 
 bool CExplosiveItem::shedule_Needed( )
 {
-//.	return true;
-
 	return (inherited::shedule_Needed( ) || CDelayedActionFuse::isActive( ));
 }
 
@@ -77,15 +82,18 @@ void CExplosiveItem::renderable_Render( )
 {
 	inherited::renderable_Render( );
 }
+
 void CExplosiveItem::net_Relcase(CObject* O)
 {
 	CExplosive::net_Relcase(O);
 	inherited::net_Relcase(O);
 }
-void	CExplosiveItem::ActivateExplosionBox(const fVector3& size, fVector3& in_out_pos)
+
+void CExplosiveItem::ActivateExplosionBox(const fVector3& size, fVector3& in_out_pos)
 {
 	//PKinematics(Visual())->CalculateBones();
 }
+
 void CExplosiveItem::GetRayExplosionSourcePos(fVector3& pos)
 {
 	random_point_in_object_box(pos, this);

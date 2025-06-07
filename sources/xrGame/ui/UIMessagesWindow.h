@@ -1,15 +1,10 @@
 // File:		UIMessagesWindow.h
 // Description:	Window with MP chat and Game Log ( with PDA messages in single and Kill Messages in MP)
-// Created:		22.04.2005
-// Author:		Serge Vynnychenko
-// Mail:		narrator@gsc-game.kiev.ua
-//
-// Copyright 2005 GSC Game World
 
 #pragma once
 
 #include "UIWindow.h"
-#include "../pda_space.h"
+#include "../PDA_space.h"
 #include "../InfoPortion_defs.h"
 
 class CUIGameLog;

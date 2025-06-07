@@ -11,6 +11,7 @@ CWeaponCustomPistol::CWeaponCustomPistol(pcstr name) : CWeaponMagazined(name, SO
 
 CWeaponCustomPistol::~CWeaponCustomPistol( )
 { }
+
 void CWeaponCustomPistol::switch2_Fire( )
 {
 	m_bFireSingleShot = true;

@@ -19,7 +19,7 @@
 #include "group_hierarchy_holder.h"
 #include "..\XR_3DA\CameraManager.h"
 #include "Inventory.h"
-#include "huditem.h"
+#include "HudItem.h"
 #include "clsid_game.h"
 #include "string_table.h"
 #include "MapManager.h"

@@ -2,11 +2,11 @@
 #pragma once
 
 #include "PhysicsShell.h"
-#include "weaponammo.h"
+#include "WeaponAmmo.h"
 #include "PHShellCreator.h"
 
 #include "ShootingObject.h"
-#include "hud_item_object.h"
+#include "HudItemObject.h"
 #include "Actor_flags.h"
 #include "..\XR_3DA\SkeletonAnimated.h"
 #include "game_cl_single.h"
@@ -105,12 +105,11 @@ protected:
 	//  Animation
 	//////////////////////////////////////////////////////////////////////////
 public:
-
 	void					signal_HideComplete( );
 
-	//////////////////////////////////////////////////////////////////////////
-	//  InventoryItem methods
-	//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//  InventoryItem methods
+//////////////////////////////////////////////////////////////////////////
 public:
 	virtual bool			Action(s32 cmd, u32 flags);
 
@@ -140,15 +139,15 @@ public:
 
 	virtual bool			IsHidden( ) const
 	{	// Does weapon is in hidden state
-		return GetState( ) == eHidden;
+		return (GetState( ) == eHidden);
 	}
 	virtual bool			IsHiding( ) const
 	{
-		return GetState( ) == eHiding;
+		return (GetState( ) == eHiding);
 	}
 	virtual bool			IsShowing( ) const
 	{
-		return GetState( ) == eShowing;
+		return (GetState( ) == eShowing);
 	}
 
 	IC BOOL					IsValid( ) const
@@ -322,7 +321,7 @@ public:
 	CUIStaticItem* ZoomTexture( );
 	bool			ZoomHideCrosshair( )
 	{
-		return m_bHideCrosshairInZoom || ZoomTexture( );
+		return (m_bHideCrosshairInZoom || ZoomTexture( ));
 	}
 
 	IC f32				GetZoomFactor( ) const
@@ -333,7 +332,7 @@ public:
 	//показывает, что оружие находится в соостоянии поворота для приближенного прицеливания
 	bool			IsRotatingToZoom( ) const
 	{
-		return (m_fZoomRotationFactor < 1.f);
+		return (m_fZoomRotationFactor < 1.0f);
 	}
 
 	void			LoadZoomOffset(pcstr section, pcstr prefix);
@@ -351,19 +350,19 @@ public:
 	}
 
 public:
-	IC		pcstr			strap_bone0( ) const
+	IC pcstr			strap_bone0( ) const
 	{
 		return m_strap_bone0;
 	}
-	IC		pcstr			strap_bone1( ) const
+	IC pcstr			strap_bone1( ) const
 	{
 		return m_strap_bone1;
 	}
-	IC		void			strapped_mode(bool value)
+	IC void			strapped_mode(bool value)
 	{
 		m_strapped_mode = value;
 	}
-	IC		bool			strapped_mode( ) const
+	IC bool			strapped_mode( ) const
 	{
 		return m_strapped_mode;
 	}
@@ -410,7 +409,7 @@ protected:
 	virtual void			UpdatePosition(const fMatrix4x4& transform);	//.
 	virtual void			UpdateXForm( );
 	virtual void			UpdateHudAdditonal(fMatrix4x4&);
-	IC		void			UpdateFireDependencies( )
+	IC void			UpdateFireDependencies( )
 	{
 		if (dwFP_Frame == Device.dwFrame)
 		{
@@ -423,21 +422,25 @@ protected:
 	virtual void			LoadFireParams(pcstr section, pcstr prefix);
 
 public:
-	IC		const fVector3& get_LastFP( )
+	IC const fVector3& get_LastFP( )
 	{
-		UpdateFireDependencies( ); return m_firedeps.vLastFP;
+		UpdateFireDependencies( );
+		return m_firedeps.vLastFP;
 	}
-	IC		const fVector3& get_LastFP2( )
+	IC const fVector3& get_LastFP2( )
 	{
-		UpdateFireDependencies( ); return m_firedeps.vLastFP2;
+		UpdateFireDependencies( );
+		return m_firedeps.vLastFP2;
 	}
-	IC		const fVector3& get_LastFD( )
+	IC const fVector3& get_LastFD( )
 	{
-		UpdateFireDependencies( ); return m_firedeps.vLastFD;
+		UpdateFireDependencies( );
+		return m_firedeps.vLastFD;
 	}
-	IC		const fVector3& get_LastSP( )
+	IC const fVector3& get_LastSP( )
 	{
-		UpdateFireDependencies( ); return m_firedeps.vLastSP;
+		UpdateFireDependencies( );
+		return m_firedeps.vLastSP;
 	}
 
 	virtual const fVector3& get_CurrentFirePoint( )
@@ -450,7 +453,8 @@ public:
 	}
 	virtual const fMatrix4x4& get_ParticlesXFORM( )
 	{
-		UpdateFireDependencies( ); return m_firedeps.m_FireParticlesXForm;
+		UpdateFireDependencies( );
+		return m_firedeps.m_FireParticlesXForm;
 	}
 	virtual void			ForceUpdateFireParticles( );
 
@@ -486,7 +490,7 @@ public:
 	//текущая дисперсия (в радианах) оружия с учетом используемого патрона
 	f32					GetFireDispersion(bool with_cartridge);
 	f32					GetFireDispersion(f32 cartridge_k);
-	virtual	int				ShotsFired( )
+	virtual s32				ShotsFired( )
 	{
 		return 0;
 	}
@@ -517,13 +521,11 @@ protected:
 	//увеличение изношености при выстреле
 	f32					conditionDecreasePerShot;
 
-	//  [8/2/2005]
 	f32					m_fPDM_disp_base;
 	f32					m_fPDM_disp_vel_factor;
 	f32					m_fPDM_disp_accel_factor;
 	f32					m_fPDM_disp_crouch;
 	f32					m_fPDM_disp_crouch_no_acc;
-	//  [8/2/2005]
 
 protected:
 	//для отдачи оружия
@@ -596,9 +598,8 @@ protected:
 	//для подсчета в GetAmmoCurrent
 	mutable s32				iAmmoCurrent;
 	mutable u32				m_dwAmmoCurrentCalcFrame;	//кадр на котором просчитали кол-во патронов
-	//  [10/5/2005]
+
 	bool					m_bAmmoWasSpawned;
-	//  [10/5/2005]
 
 	virtual bool			IsNecessaryItem(const shared_str& item_sect);
 

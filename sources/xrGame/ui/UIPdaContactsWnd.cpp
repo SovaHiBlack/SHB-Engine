@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "UIPdaContactsWnd.h"//
 #include "UIPdaAux.h"//
-#include "../Pda.h"
+#include "../PDA.h"
 #include "UIXmlInit.h"
 #include "../Actor.h"
 #include "UIFrameWindow.h"

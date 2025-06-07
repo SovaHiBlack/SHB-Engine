@@ -5,7 +5,7 @@
 #include "hudmanager.h"
 
 #include "InfoPortion.h"
-#include "Pda.h"
+#include "PDA.h"
 
 #include "Grenade.h"
 #include "level.h"

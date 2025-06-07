@@ -8,10 +8,10 @@
 
 #include "stdafx.h"
 #include "ai_stalker.h"
-#include "../../pda.h"
+#include "../../PDA.h"
 #include "../../Inventory.h"
 #include "../../xrmessages.h"
-#include "../../shootingobject.h"
+#include "../../ShootingObject.h"
 #include "../../../xrNetServer/net_utils.h"
 #include "../../level.h"
 #include "../../ai_monster_space.h"

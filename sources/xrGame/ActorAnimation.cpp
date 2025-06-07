@@ -7,7 +7,7 @@
 #include "UI.h"
 #include "Weapon.h"
 #include "Inventory.h"
-#include "missile.h"
+#include "Missile.h"
 #include "level.h"
 #ifdef DEBUG
 #include "PHDebug.h"

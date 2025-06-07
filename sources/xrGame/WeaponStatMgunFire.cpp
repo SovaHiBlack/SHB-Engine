@@ -2,95 +2,107 @@
 #include "WeaponStatMgun.h"
 #include "level.h"
 //#include "EntityAlive.h"
-#include "hudsound.h"
+#include "HudSound.h"
 #include "Actor.h"
 #include "ActorEffector.h"
 #include "EffectorShot.h"
 
-const fVector3&	CWeaponStatMgun::get_CurrentFirePoint()
+const fVector3& CWeaponStatMgun::get_CurrentFirePoint( )
 {
 	return m_fire_pos;
 }
 
-const fMatrix4x4&	CWeaponStatMgun::get_ParticlesXFORM	()
+const fMatrix4x4& CWeaponStatMgun::get_ParticlesXFORM( )
 {
 	return m_fire_bone_xform;
 }
 
-void CWeaponStatMgun::FireStart()
+void CWeaponStatMgun::FireStart( )
 {
-	m_dAngle.set(0.0f,0.0f);
-	inheritedShooting::FireStart();
+	m_dAngle.set(0.0f, 0.0f);
+	inheritedShooting::FireStart( );
 }
 
-void CWeaponStatMgun::FireEnd()	
+void CWeaponStatMgun::FireEnd( )
 {
-	m_dAngle.set(0.0f,0.0f);
-	inheritedShooting::FireEnd();
-	StopFlameParticles	();
-	RemoveShotEffector ();
+	m_dAngle.set(0.0f, 0.0f);
+	inheritedShooting::FireEnd( );
+	StopFlameParticles( );
+	RemoveShotEffector( );
 }
 
-void CWeaponStatMgun::UpdateFire()
+void CWeaponStatMgun::UpdateFire( )
 {
 	fTime -= Device.fTimeDelta;
-	
 
-	inheritedShooting::UpdateFlameParticles();
-	inheritedShooting::UpdateLight();
+	inheritedShooting::UpdateFlameParticles( );
+	inheritedShooting::UpdateLight( );
 
-	if(!IsWorking()){
-		if(fTime<0) fTime = 0.f;
+	if (!IsWorking( ))
+	{
+		if (fTime < 0.0f)
+		{
+			fTime = 0.0f;
+		}
+
 		return;
 	}
 
-	if(fTime<=0){
-		OnShot();
-		fTime += fTimeToFire;
-	}else{
-		angle_lerp		(m_dAngle.x,0.f,5.f,Device.fTimeDelta);
-		angle_lerp		(m_dAngle.y,0.f,5.f,Device.fTimeDelta);
-	}
-}
-
-
-void CWeaponStatMgun::OnShot()
-{
-	VERIFY(Owner());
-
-	FireBullet				(	m_fire_pos, m_fire_dir, fireDispersionBase, *m_Ammo, 
-								Owner()->ID(),ID(), SendHitAllowed(Owner()));
-
-	StartShotParticles		();
-	
-	if(m_bLightShotEnabled) 
-		Light_Start			();
-
-	StartFlameParticles		();
-	StartSmokeParticles		(m_fire_pos, zero_vel);
-	OnShellDrop				(m_fire_pos, zero_vel);
-
-	bool b_hud_mode =			(Level().CurrentEntity() == smart_cast<CObject*>(Owner()));
-	HUD_SOUND::PlaySound	(sndShot, m_fire_pos, Owner(), b_hud_mode);
-
-	AddShotEffector			();
-	m_dAngle.set			(	::Random.randF(-fireDispersionBase,fireDispersionBase),
-								::Random.randF(-fireDispersionBase,fireDispersionBase));
-}
-
-void CWeaponStatMgun::AddShotEffector				()
-{
-	if(OwnerActor())
+	if (fTime <= 0.0f)
 	{
-		CCameraShotEffector* S	= smart_cast<CCameraShotEffector*>(OwnerActor()->Cameras().GetCamEffector(eCEShot)); 
-		if (!S)	S				= (CCameraShotEffector*)OwnerActor()->Cameras().AddCamEffector(xr_new<CCameraShotEffector> (camMaxAngle,camRelaxSpeed, 0.25f, 0.01f, 0.7f));
-		R_ASSERT				(S);
-		S->Shot					(0.01f);
+		OnShot( );
+		fTime += fTimeToFire;
+	}
+	else
+	{
+		angle_lerp(m_dAngle.x, 0.0f, 5.0f, Device.fTimeDelta);
+		angle_lerp(m_dAngle.y, 0.0f, 5.0f, Device.fTimeDelta);
 	}
 }
 
-void  CWeaponStatMgun::RemoveShotEffector	()
+void CWeaponStatMgun::OnShot( )
 {
-	if(OwnerActor())
-		OwnerActor()->Cameras().RemoveCamEffector	(eCEShot);
+	VERIFY(Owner( ));
+
+	FireBullet(m_fire_pos, m_fire_dir, fireDispersionBase, *m_Ammo, Owner( )->ID( ), ID( ), SendHitAllowed(Owner( )));
+
+	StartShotParticles( );
+
+	if (m_bLightShotEnabled)
+	{
+		Light_Start( );
+	}
+
+	StartFlameParticles( );
+	StartSmokeParticles(m_fire_pos, zero_vel);
+	OnShellDrop(m_fire_pos, zero_vel);
+
+	bool b_hud_mode = (Level( ).CurrentEntity( ) == smart_cast<CObject*>(Owner( )));
+	SHudSound::PlaySound(sndShot, m_fire_pos, Owner( ), b_hud_mode);
+
+	AddShotEffector( );
+	m_dAngle.set(::Random.randF(-fireDispersionBase, fireDispersionBase), ::Random.randF(-fireDispersionBase, fireDispersionBase));
+}
+
+void CWeaponStatMgun::AddShotEffector( )
+{
+	if (OwnerActor( ))
+	{
+		CCameraShotEffector* S = smart_cast<CCameraShotEffector*>(OwnerActor( )->Cameras( ).GetCamEffector(eCEShot));
+		if (!S)
+		{
+			S = (CCameraShotEffector*)OwnerActor( )->Cameras( ).AddCamEffector(xr_new<CCameraShotEffector>(camMaxAngle, camRelaxSpeed, 0.25f, 0.01f, 0.7f));
+		}
+
+		R_ASSERT(S);
+		S->Shot(0.01f);
+	}
+}
+
+void  CWeaponStatMgun::RemoveShotEffector( )
+{
+	if (OwnerActor( ))
+	{
+		OwnerActor( )->Cameras( ).RemoveCamEffector(eCEShot);
+	}
 }

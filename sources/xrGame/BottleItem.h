@@ -3,32 +3,32 @@
 // BottleItem - бутылка с напитком, которую можно разбить
 ///////////////////////////////////////////////////////////////
 
-
 #pragma once
 
-#include "fooditem.h"
+#include "FoodItem.h"
 
-
-class CBottleItem: public CFoodItem
+class CBottleItem : public CFoodItem
 {
 private:
-    typedef	CFoodItem inherited;
+	typedef	CFoodItem inherited;
+
 public:
-	CBottleItem(void);
-	virtual ~CBottleItem(void);
+	CBottleItem( );
+	virtual ~CBottleItem( );
 
 
-	virtual void Load				(pcstr section);
-	
-
-	void	OnEvent					(CNetPacket& P, u16 type);
+	virtual void Load(pcstr section);
 
 
-	virtual	void	Hit				(SHit* pHDS);
-	
+	void	OnEvent(CNetPacket& P, u16 type);
 
-			void					BreakToPieces		();
-	virtual void					UseBy				(CEntityAlive* entity_alive);
+
+	virtual	void	Hit(SHit* pHDS);
+
+
+	void					BreakToPieces( );
+	virtual void					UseBy(CEntityAlive* entity_alive);
+
 protected:
 	f32		m_alcohol;
 	//партиклы разбивания бутылки

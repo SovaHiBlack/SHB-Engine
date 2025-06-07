@@ -10,6 +10,7 @@ class CSilencer : public CInventoryItemObject
 {
 private:
 	typedef CInventoryItemObject inherited;
+
 public:
 	CSilencer( );
 	virtual ~CSilencer( );

@@ -35,7 +35,7 @@ CCustomDetector::~CCustomDetector( )
 	ZONE_TYPE_MAP_IT it;
 	for (it = m_ZoneTypeMap.begin( ); m_ZoneTypeMap.end( ) != it; ++it)
 	{
-		HUD_SOUND::DestroySound(it->second.detect_snds);
+		SHudSound::DestroySound(it->second.detect_snds);
 	}
 
 	m_ZoneInfoMap.clear( );
@@ -81,7 +81,7 @@ void CCustomDetector::Load(pcstr section)
 			R_ASSERT(zone_type.min_freq < zone_type.max_freq);
 			sprintf_s(temp, "zone_sound_%d_", i);
 
-			HUD_SOUND::LoadSound(section, temp, zone_type.detect_snds, SOUND_TYPE_ITEM);
+			SHudSound::LoadSound(section, temp, zone_type.detect_snds, SOUND_TYPE_ITEM);
 
 			sprintf_s(temp, "zone_map_location_%d", i);
 
@@ -134,7 +134,7 @@ void CCustomDetector::StopAllSounds( )
 	for (it = m_ZoneTypeMap.begin( ); m_ZoneTypeMap.end( ) != it; ++it)
 	{
 		SZoneType& zone_type = (*it).second;
-		HUD_SOUND::StopSound(zone_type.detect_snds);
+		SHudSound::StopSound(zone_type.detect_snds);
 	}
 }
 
@@ -188,7 +188,7 @@ void CCustomDetector::UpdateCL( )
 		if ((f32) zone_info.snd_time > current_snd_time)
 		{
 			zone_info.snd_time = 0;
-			HUD_SOUND::PlaySound(zone_type.detect_snds, fVector3( ).set(0.0f, 0.0f, 0.0f), this, true, false);
+			SHudSound::PlaySound(zone_type.detect_snds, fVector3( ).set(0.0f, 0.0f, 0.0f), this, true, false);
 		}
 		else
 		{

@@ -2,7 +2,7 @@
 
 #include "InventoryItemObject.h"
 //#include "night_vision_effector.h"
-#include "hudsound.h"
+#include "HudSound.h"
 #include "script_export_space.h"
 
 class CLightAnimItem;
@@ -61,10 +61,10 @@ protected:
 	bool					m_bNightVisionEnabled;
 	bool					m_bNightVisionOn;
 
-	HUD_SOUND				m_NightVisionOnSnd;
-	HUD_SOUND				m_NightVisionOffSnd;
-	HUD_SOUND				m_NightVisionIdleSnd;
-	HUD_SOUND				m_NightVisionBrokenSnd;
+	SHudSound				m_NightVisionOnSnd;
+	SHudSound				m_NightVisionOffSnd;
+	SHudSound				m_NightVisionIdleSnd;
+	SHudSound				m_NightVisionBrokenSnd;
 
 	enum EStats
 	{

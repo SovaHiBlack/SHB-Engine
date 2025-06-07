@@ -52,10 +52,10 @@ CTorch::~CTorch( )
 	light_render.destroy( );
 	light_omni.destroy( );
 	glow_render.destroy( );
-	HUD_SOUND::DestroySound(m_NightVisionOnSnd);
-	HUD_SOUND::DestroySound(m_NightVisionOffSnd);
-	HUD_SOUND::DestroySound(m_NightVisionIdleSnd);
-	HUD_SOUND::DestroySound(m_NightVisionBrokenSnd);
+	SHudSound::DestroySound(m_NightVisionOnSnd);
+	SHudSound::DestroySound(m_NightVisionOffSnd);
+	SHudSound::DestroySound(m_NightVisionIdleSnd);
+	SHudSound::DestroySound(m_NightVisionBrokenSnd);
 }
 
 IC bool CTorch::can_use_dynamic_lights( )
@@ -82,10 +82,10 @@ void CTorch::Load(pcstr section)
 	m_bNightVisionEnabled = !!pSettings->r_bool(section, "night_vision");
 	if (m_bNightVisionEnabled)
 	{
-		HUD_SOUND::LoadSound(section, "snd_night_vision_on", m_NightVisionOnSnd, SOUND_TYPE_ITEM_USING);
-		HUD_SOUND::LoadSound(section, "snd_night_vision_off", m_NightVisionOffSnd, SOUND_TYPE_ITEM_USING);
-		HUD_SOUND::LoadSound(section, "snd_night_vision_idle", m_NightVisionIdleSnd, SOUND_TYPE_ITEM_USING);
-		HUD_SOUND::LoadSound(section, "snd_night_vision_broken", m_NightVisionBrokenSnd, SOUND_TYPE_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_on", m_NightVisionOnSnd, SOUND_TYPE_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_off", m_NightVisionOffSnd, SOUND_TYPE_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_idle", m_NightVisionIdleSnd, SOUND_TYPE_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_broken", m_NightVisionBrokenSnd, SOUND_TYPE_ITEM_USING);
 	}
 }
 
@@ -142,7 +142,7 @@ void CTorch::SwitchNightVision(bool vision_on)
 	CCustomOutfit* pCO = pA->GetOutfit( );
 	if (pCO && pCO->m_NightVisionSect.size( ) && !b_allow)
 	{
-		HUD_SOUND::PlaySound(m_NightVisionBrokenSnd, pA->Position( ), pA, bPlaySoundFirstPerson);
+		SHudSound::PlaySound(m_NightVisionBrokenSnd, pA->Position( ), pA, bPlaySoundFirstPerson);
 		return;
 	}
 
@@ -154,8 +154,8 @@ void CTorch::SwitchNightVision(bool vision_on)
 			if (pCO && pCO->m_NightVisionSect.size( ))
 			{
 				AddEffector(pA, effNightvision, pCO->m_NightVisionSect);
-				HUD_SOUND::PlaySound(m_NightVisionOnSnd, pA->Position( ), pA, bPlaySoundFirstPerson);
-				HUD_SOUND::PlaySound(m_NightVisionIdleSnd, pA->Position( ), pA, bPlaySoundFirstPerson, true);
+				SHudSound::PlaySound(m_NightVisionOnSnd, pA->Position( ), pA, bPlaySoundFirstPerson);
+				SHudSound::PlaySound(m_NightVisionIdleSnd, pA->Position( ), pA, bPlaySoundFirstPerson, true);
 			}
 		}
 	}
@@ -165,8 +165,8 @@ void CTorch::SwitchNightVision(bool vision_on)
 		if (pp)
 		{
 			pp->Stop(1.0f);
-			HUD_SOUND::PlaySound(m_NightVisionOffSnd, pA->Position( ), pA, bPlaySoundFirstPerson);
-			HUD_SOUND::StopSound(m_NightVisionIdleSnd);
+			SHudSound::PlaySound(m_NightVisionOffSnd, pA->Position( ), pA, bPlaySoundFirstPerson);
+			SHudSound::StopSound(m_NightVisionIdleSnd);
 		}
 	}
 }
@@ -298,9 +298,9 @@ void CTorch::OnH_B_Independent(bool just_before_destroy)
 	Switch(false);
 	SwitchNightVision(false);
 
-	HUD_SOUND::StopSound(m_NightVisionOnSnd);
-	HUD_SOUND::StopSound(m_NightVisionOffSnd);
-	HUD_SOUND::StopSound(m_NightVisionIdleSnd);
+	SHudSound::StopSound(m_NightVisionOnSnd);
+	SHudSound::StopSound(m_NightVisionOffSnd);
+	SHudSound::StopSound(m_NightVisionIdleSnd);
 }
 
 void CTorch::UpdateCL( )

@@ -2,7 +2,7 @@
 
 #include "InventoryOwner.h"
 #include "EntityAlive.h"
-#include "pda.h"
+#include "PDA.h"
 #include "Actor.h"
 #include "Trade.h"
 #include "Inventory.h"

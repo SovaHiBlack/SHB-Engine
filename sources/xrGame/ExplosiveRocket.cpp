@@ -7,7 +7,6 @@
 
 #include "ExplosiveRocket.h"
 
-
 CExplosiveRocket::CExplosiveRocket( )
 { }
 
@@ -18,7 +17,7 @@ DLL_Pure* CExplosiveRocket::_construct( )
 {
 	CCustomRocket::_construct( );
 	CInventoryItem::_construct( );
-	return						(this);
+	return this;
 }
 
 void CExplosiveRocket::Load(pcstr section)
@@ -159,8 +158,9 @@ void CExplosiveRocket::create_physic_shell( )
 
 bool CExplosiveRocket::Useful( ) const
 {
-	return			(inherited::Useful( ));
+	return inherited::Useful( );
 }
+
 void CExplosiveRocket::net_Relcase(CObject* O)
 {
 	CExplosive::net_Relcase(O);

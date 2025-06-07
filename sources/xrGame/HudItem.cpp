@@ -15,7 +15,7 @@
 #include "Inventory.h"
 #include "..\XR_3DA\CameraBase.h"
 
-CHudItem::CHudItem(void)
+CHudItem::CHudItem( )
 {
 	m_pHUD = NULL;
 	SetHUDmode(FALSE);
@@ -26,7 +26,7 @@ CHudItem::CHudItem(void)
 	m_bInertionAllow = true;
 }
 
-CHudItem::~CHudItem(void)
+CHudItem::~CHudItem( )
 {
 	xr_delete(m_pHUD);
 }
@@ -39,7 +39,7 @@ DLL_Pure* CHudItem::_construct( )
 	m_item = smart_cast<CInventoryItem*>(this);
 	VERIFY(m_item);
 
-	return				(m_object);
+	return m_object;
 }
 
 void CHudItem::Load(pcstr section)
@@ -80,12 +80,12 @@ void CHudItem::net_Destroy( )
 	m_dwStateTime = 0;
 }
 
-void CHudItem::PlaySound(HUD_SOUND& hud_snd, const fVector3& position)
+void CHudItem::PlaySound(SHudSound& hud_snd, const fVector3& position)
 {
-	HUD_SOUND::PlaySound(hud_snd, position, object( ).H_Root( ), !!GetHUDmode( ));
+	SHudSound::PlaySound(hud_snd, position, object( ).H_Root( ), !!GetHUDmode( ));
 }
 
-BOOL  CHudItem::net_Spawn(CSE_Abstract* DC)
+BOOL CHudItem::net_Spawn(CSE_Abstract* DC)
 {
 	return TRUE;
 }
@@ -96,7 +96,7 @@ void CHudItem::renderable_Render( )
 	BOOL _hud_render = ::Render->get_HUD( ) && GetHUDmode( );
 	if (_hud_render && !m_pHUD->IsHidden( ) && !item( ).IsHidden( ))
 	{
-// HUD render
+		// HUD render
 		if (m_bRenderHud)
 		{
 			::Render->set_Transform(&m_pHUD->Transform( ));
@@ -133,12 +133,13 @@ void CHudItem::SwitchState(u32 S)
 	{
 		return;
 	}
+
 	SetNextState(S);	// Very-very important line of code!!! :)
 
 	if (object( ).Local( ) && !object( ).getDestroy( ))
 	{
 		// !!! Just single entry for given state !!!
-		CNetPacket		P;
+		CNetPacket P;
 		object( ).u_EventGen(P, GE_WPN_STATE_CHANGE, object( ).ID( ));
 		P.w_u8(u8(S));
 		object( ).u_EventSend(P);
@@ -151,7 +152,7 @@ void CHudItem::OnEvent(CNetPacket& P, u16 type)
 	{
 		case GE_WPN_STATE_CHANGE:
 		{
-			u8				S;
+			u8 S;
 			P.r_u8(S);
 			OnStateSwitch(u32(S));
 		}
@@ -196,7 +197,7 @@ void CHudItem::UpdateHudPosition( )
 			SetHUDmode(FALSE);
 		}
 
-		fMatrix4x4							trans;
+		fMatrix4x4 trans;
 
 		CActor* pActor = smart_cast<CActor*>(object( ).H_Parent( ));
 		if (pActor)
@@ -225,7 +226,7 @@ static const f32 PITCH_OFFSET_R = 0.017f;
 static const f32 PITCH_OFFSET_N = 0.012f;
 static const f32 PITCH_OFFSET_D = 0.02f;
 static const f32 ORIGIN_OFFSET = -0.05f;
-static const f32 TENDTO_SPEED = 5.f;
+static const f32 TENDTO_SPEED = 5.0f;
 
 void CHudItem::UpdateHudInertion(fMatrix4x4& hud_trans)
 {
@@ -325,7 +326,7 @@ void CHudItem::animGet(MotionSVec& lst, pcstr prefix)
 
 	for (s32 i = 0; i < MAX_ANIM_COUNT; ++i)
 	{
-		string128		sh_anim;
+		string128 sh_anim;
 		sprintf_s(sh_anim, "%s%d", prefix, i);
 		const MotionID& M = m_pHUD->animGet(sh_anim);
 		if (M)

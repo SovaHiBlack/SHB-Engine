@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "missile.h"
+#include "Missile.h"
 #include "WeaponHUD.h"
 #include "PhysicsShell.h"
 #include "Actor.h"
@@ -44,7 +44,7 @@ CMissile::CMissile( )
 
 CMissile::~CMissile( )
 {
-	HUD_SOUND::DestroySound(sndPlaying);
+	SHudSound::DestroySound(sndPlaying);
 }
 
 void CMissile::reinit( )
@@ -52,7 +52,7 @@ void CMissile::reinit( )
 	inherited::reinit( );
 	m_throw = false;
 	m_constpower = false;
-	m_fThrowForce = 0;
+	m_fThrowForce = 0.0f;
 	m_dwDestroyTime = 0xffffffff;
 	m_bPending = false;
 	m_fake_missile = NULL;
@@ -88,7 +88,7 @@ void CMissile::Load(pcstr section)
 
 	if (pSettings->line_exist(section, "snd_playing"))
 	{
-		HUD_SOUND::LoadSound(section, "snd_playing", sndPlaying);
+		SHudSound::LoadSound(section, "snd_playing", sndPlaying);
 	}
 
 	m_ef_weapon_type = READ_IF_EXISTS(pSettings, r_u32, section, "ef_weapon_type", u32(-1));
@@ -166,9 +166,6 @@ void CMissile::spawn_fake_missile( )
 void CMissile::OnH_A_Chield( )
 {
 	inherited::OnH_A_Chield( );
-
-//	if(!m_fake_missile && !smart_cast<CMissile*>(H_Parent())) 
-//		spawn_fake_missile	();
 }
 
 void CMissile::OnH_B_Independent(bool just_before_destroy)
@@ -344,12 +341,10 @@ void CMissile::OnAnimationEnd(u32 state)
 			if (m_throw)
 			{
 				SwitchState(MS_THROW);
-//				OnStateSwitch(MS_THROW); 
 			}
 			else
 			{
 				SwitchState(MS_READY);
-//				OnStateSwitch(MS_READY);
 			}
 		}
 		break;
@@ -412,7 +407,9 @@ void CMissile::UpdateXForm( )
 		VERIFY(V);
 
 		// Get matrices
-		s32					boneL, boneR, boneR2;
+		s32 boneL;
+		s32 boneR;
+		s32 boneR2;
 		E->g_WeaponBones(boneL, boneR, boneR2);
 
 		boneL = boneR2;
@@ -426,15 +423,20 @@ void CMissile::UpdateXForm( )
 		fVector3				R;
 		fVector3 D;
 		fVector3 N;
-		D.sub(mL.c, mR.c);	D.normalize_safe( );
-		R.crossproduct(mR.j, D);		R.normalize_safe( );
-		N.crossproduct(D, R);			N.normalize_safe( );
+		D.sub(mL.c, mR.c);
+		D.normalize_safe( );
+
+		R.crossproduct(mR.j, D);
+		R.normalize_safe( );
+
+		N.crossproduct(D, R);
+		N.normalize_safe( );
+
 		mRes.set(R, N, D, mR.c);
 		mRes.mulA_43(E->XFORM( ));
 		UpdatePosition(mRes);
 	}
 }
-
 
 void CMissile::Show( )
 {
@@ -475,6 +477,7 @@ void CMissile::setup_throw_params( )
 		FirePos = XFORM( ).c;
 		FireDir = XFORM( ).k;
 	}
+
 	trans.k.set(FireDir);
 	fVector3::generate_orthonormal_basis(trans.k, trans.j, trans.i);
 	trans.c.set(FirePos);
@@ -493,15 +496,19 @@ void CMissile::Throw( )
 	CInventoryOwner* inventory_owner = smart_cast<CInventoryOwner*>(H_Parent( ));
 	VERIFY(inventory_owner);
 	if (inventory_owner->use_default_throw_force( ))
+	{
 		m_fake_missile->m_fThrowForce = m_constpower ? m_fConstForce : m_fThrowForce;
+	}
 	else
+	{
 		m_fake_missile->m_fThrowForce = inventory_owner->missile_throw_force( );
+	}
 
 	m_fThrowForce = m_fMinForce;
 
 	if (Local( ) && H_Parent( ))
 	{
-		CNetPacket						P;
+		CNetPacket P;
 		u_EventGen(P, GE_OWNERSHIP_REJECT, ID( ));
 		P.w_u16(u16(m_fake_missile->ID( )));
 		u_EventSend(P);
@@ -521,8 +528,8 @@ void CMissile::OnEvent(CNetPacket& P, u16 type)
 			m_fake_missile = missile;
 			missile->H_SetParent(this);
 			missile->Position( ).set(Position( ));
-			break;
 		}
+		break;
 		case GE_OWNERSHIP_REJECT:
 		{
 			P.r_u16(id);
@@ -538,22 +545,31 @@ void CMissile::OnEvent(CNetPacket& P, u16 type)
 			{
 				break;
 			}
+
 			missile->H_SetParent(0, !P.r_eof( ) && P.r_u8( ));
 			if (IsFakeMissile && OnClient( ))
+			{
 				missile->set_destroy_time(m_dwDestroyTimeMax);
-			break;
+			}
 		}
+		break;
 	}
 }
 
 void CMissile::Destroy( )
 {
-	if (Local( ))		DestroyObject( );
+	if (Local( ))
+	{
+		DestroyObject( );
+	}
 }
 
 bool CMissile::Action(s32 cmd, u32 flags)
 {
-	if (inherited::Action(cmd, flags)) return true;
+	if (inherited::Action(cmd, flags))
+	{
+		return true;
+	}
 
 	switch (cmd)
 	{
@@ -564,11 +580,14 @@ bool CMissile::Action(s32 cmd, u32 flags)
 			{
 				m_throw = true;
 				if (GetState( ) == MS_IDLE)
+				{
 					SwitchState(MS_THREATEN);
+				}
 			}
-			return true;
-		}break;
 
+			return true;
+		}
+		break;
 		case kWPN_ZOOM:
 		{
 			m_constpower = false;
@@ -576,27 +595,37 @@ bool CMissile::Action(s32 cmd, u32 flags)
 			{
 				m_throw = false;
 				if (GetState( ) == MS_IDLE)
+				{
 					SwitchState(MS_THREATEN);
+				}
 				else if (GetState( ) == MS_READY)
 				{
 					m_throw = true;
 				}
-
 			}
 			else if (GetState( ) == MS_READY || GetState( ) == MS_THREATEN || GetState( ) == MS_IDLE)
 			{
 				m_throw = true;
-				if (GetState( ) == MS_READY) SwitchState(MS_THROW);
+				if (GetState( ) == MS_READY)
+				{
+					SwitchState(MS_THROW);
+				}
 			}
+
 			return true;
-		}break;
+		}
+		break;
 	}
+
 	return false;
 }
 
 void  CMissile::UpdateFireDependencies_internal( )
 {
-	if (0 == H_Parent( ))		return;
+	if (0 == H_Parent( ))
+	{
+		return;
+	}
 
 	if (Device.dwFrame != dwFP_Frame)
 	{
@@ -606,7 +635,7 @@ void  CMissile::UpdateFireDependencies_internal( )
 
 		if (GetHUDmode( ) && !IsHidden( ))
 		{
-// 1st person view - skeletoned
+			// 1st person view - skeletoned
 			CKinematics* V = smart_cast<CKinematics*>(m_pHUD->Visual( ));
 			VERIFY(V);
 			V->CalculateBones( );
@@ -617,7 +646,7 @@ void  CMissile::UpdateFireDependencies_internal( )
 		}
 		else
 		{
-				// 3rd person
+			// 3rd person
 			fMatrix4x4& parent = H_Parent( )->XFORM( );
 
 			m_throw_direction.set(m_vThrowDir);
@@ -634,31 +663,36 @@ void CMissile::activate_physic_shell( )
 		return;
 	}
 
-	fVector3				l_vel;
+	fVector3 l_vel;
 	l_vel.set(m_throw_direction);
 	l_vel.normalize_safe( );
 	l_vel.mul(m_fThrowForce);
 
-	fVector3				a_vel;
+	fVector3 a_vel;
 	CInventoryOwner* inventory_owner = smart_cast<CInventoryOwner*>(H_Root( ));
 	if (inventory_owner && inventory_owner->use_throw_randomness( ))
 	{
-		f32			fi, teta, r;
-		fi = ::Random.randF(0.f, 2.f * M_PI);
-		teta = ::Random.randF(0.f, M_PI);
-		r = ::Random.randF(2.f * M_PI, 3.f * M_PI);
-		f32			rxy = r * _sin(teta);
+		f32 fi;
+		f32 teta;
+		f32 r;
+		fi = ::Random.randF(0.0f, 2.0f * M_PI);
+		teta = ::Random.randF(0.0f, M_PI);
+		r = ::Random.randF(2.0f * M_PI, 3.0f * M_PI);
+
+		f32 rxy = r * _sin(teta);
 		a_vel.set(rxy * _cos(fi), rxy * _sin(fi), r * _cos(teta));
 	}
 	else
-		a_vel.set(0.f, 0.f, 0.f);
+	{
+		a_vel.set(0.0f, 0.0f, 0.0f);
+	}
 
 	XFORM( ).set(m_throw_matrix);
 
 	CEntityAlive* entity_alive = smart_cast<CEntityAlive*>(H_Root( ));
 	if (entity_alive && entity_alive->character_physics_support( ))
 	{
-		fVector3			parent_vel;
+		fVector3 parent_vel;
 		entity_alive->character_physics_support( )->movement( )->GetCharacterVelocity(parent_vel);
 		l_vel.add(parent_vel);
 	}
@@ -666,20 +700,19 @@ void CMissile::activate_physic_shell( )
 	VERIFY(!m_pPhysicsShell);
 	create_physic_shell( );
 	m_pPhysicsShell->Activate(m_throw_matrix, l_vel, a_vel);
-//	m_pPhysicsShell->AddTracedGeom		();
 	m_pPhysicsShell->SetAllGeomTraced( );
 	m_pPhysicsShell->add_ObjectContactCallback(ExitContactCallback);
 	m_pPhysicsShell->set_CallbackData(smart_cast<CPhysicsShellHolder*>(entity_alive));
-//	m_pPhysicsShell->remove_ObjectContactCallback	(ExitContactCallback);
-	m_pPhysicsShell->SetAirResistance(0.f, 0.f);
-	m_pPhysicsShell->set_DynamicScales(1.f, 1.f);
+	m_pPhysicsShell->SetAirResistance(0.0f, 0.0f);
+	m_pPhysicsShell->set_DynamicScales(1.0f, 1.0f);
 
 	CKinematics* kinematics = smart_cast<CKinematics*>(Visual( ));
 	VERIFY(kinematics);
 	kinematics->CalculateBones_Invalidate( );
 	kinematics->CalculateBones( );
 }
-void	CMissile::net_Relcase(CObject* O)
+
+void CMissile::net_Relcase(CObject* O)
 {
 	inherited::net_Relcase(O);
 	if (PPhysicsShell( ) && PPhysicsShell( )->isActive( ))
@@ -730,7 +763,7 @@ void CMissile::OnDrawUI( )
 	}
 }
 
-void	 CMissile::ExitContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
+void CMissile::ExitContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
 {
 	dxGeomUserData* gd1 = NULL, * gd2 = NULL;
 	if (bo1)
@@ -743,8 +776,11 @@ void	 CMissile::ExitContactCallback(bool& do_colide, bool bo1, dContact& c, SGam
 		gd2 = retrieveGeomUserData(c.geom.g1);
 		gd1 = retrieveGeomUserData(c.geom.g2);
 	}
+
 	if (gd1 && gd2 && (CPhysicsShellHolder*)gd1->callback_data == gd2->ph_ref_object)
+	{
 		do_colide = false;
+	}
 }
 
 void CMissile::GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count)

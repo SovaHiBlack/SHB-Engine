@@ -2,7 +2,7 @@
 #include "weaponrpg7.h"
 #include "WeaponHUD.h"
 #include "xrserver_objects_alife_items.h"
-#include "explosiverocket.h"
+#include "ExplosiveRocket.h"
 #include "Entity.h"
 #include "level.h"
 #include "..\XR_3DA\skeletoncustom.h"

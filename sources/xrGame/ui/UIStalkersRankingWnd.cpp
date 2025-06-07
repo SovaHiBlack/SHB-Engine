@@ -10,7 +10,7 @@
 #include "UICharacterInfo.h"//
 #include "../InventoryOwner.h"
 #include "../Level.h"
-#include "../pda.h"
+#include "../PDA.h"
 #include "../Actor.h"
 #include "../xrServer_Objects_ALife_Monsters.h"
 

@@ -31,6 +31,6 @@ public:
 	virtual void	activate_physic_shell( );
 	virtual void	setup_physic_shell( );
 	virtual void	create_box_physic_shell( );
-	virtual void	create_box2sphere_physic_shell( );
+	//virtual void	create_box2sphere_physic_shell( );
 	virtual void	create_physic_shell( );
 };

@@ -5,7 +5,7 @@
 
 #include "stdafx.h"
 
-#include "medkit.h"
+#include "Medkit.h"
 #include "PhysicsShell.h"
 
 CMedkit::CMedkit( )
@@ -16,7 +16,7 @@ CMedkit::~CMedkit( )
 
 BOOL CMedkit::net_Spawn(CSE_Abstract* DC)
 {
-	return		(inherited::net_Spawn(DC));
+	return inherited::net_Spawn(DC);
 }
 
 void CMedkit::Load(pcstr section)
@@ -32,14 +32,12 @@ void CMedkit::net_Destroy( )
 void CMedkit::shedule_Update(u32 dt)
 {
 	inherited::shedule_Update(dt);
-
 }
 
 void CMedkit::UpdateCL( )
 {
 	inherited::UpdateCL( );
 }
-
 
 void CMedkit::OnH_A_Chield( )
 {

@@ -72,9 +72,9 @@
 #	include "weaponLR300.h"
 #	include "weaponHPSA.h"
 #	include "weaponPM.h"
-#	include "weaponAMMO.h"
+#	include "WeaponAmmo.h"
 #	include "weaponFORT.h"
-#	include "weaponBINOCULARS.h"
+#	include "WeaponBinoculars.h"
 #	include "weaponShotgun.h"
 #	include "weaponsvd.h"
 #	include "weaponsvu.h"
@@ -90,15 +90,15 @@
 #	include "WeaponMounted.h"
 #	include "WeaponStatMgun.h"
 
-#	include "scope.h"
-#	include "silencer.h"
-#	include "grenadelauncher.h"
+#	include "Scope.h"
+#	include "Silencer.h"
+#	include "GrenadeLauncher.h"
 
 #	include "bolt.h"
-#	include "medkit.h"
-#	include "antirad.h"
-#	include "fooditem.h"
-#	include "bottleitem.h"
+#	include "Medkit.h"
+#	include "Antirad.h"
+#	include "FoodItem.h"
+#	include "BottleItem.h"
 #	include "ExplosiveItem.h"
 
 #	include "InfoDocument.h"
@@ -112,7 +112,7 @@
 #	include "f1.h"
 #	include "rgd5.h"
 
-#	include "explosiverocket.h"
+#	include "ExplosiveRocket.h"
 
 #	include "CustomZone.h"
 #	include "MosquitoBald.h"
@@ -130,7 +130,7 @@
 #	include "SimpleDetector.h"
 
 #	include "Torch.h"
-#	include "pda.h"
+#	include "PDA.h"
 
 #	include "Projector.h"
 

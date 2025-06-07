@@ -159,44 +159,44 @@ void CPhysicItem::create_box_physic_shell( )
 	m_pPhysicsShell->setDensity(2000.f);
 }
 
-void CPhysicItem::create_box2sphere_physic_shell( )
-{
-	// Physics (Box)
-	fObb								obb;
-	Visual( )->vis.box.get_CD(obb.m_translate, obb.m_halfsize);
-	obb.m_rotate.identity( );
-
-	// Physics (Elements)
-	CPhysicsElement* E = P_create_Element( );
-	R_ASSERT(E);
-
-	fVector3								ax;
-	f32								radius;
-	CHOOSE_MAX(
-		obb.m_halfsize.x, ax.set(obb.m_rotate.i); ax.mul(obb.m_halfsize.x); radius = _min(obb.m_halfsize.y, obb.m_halfsize.z); obb.m_halfsize.y /= 2.0f; obb.m_halfsize.z /= 2.0f,
-		obb.m_halfsize.y, ax.set(obb.m_rotate.j); ax.mul(obb.m_halfsize.y); radius = _min(obb.m_halfsize.x, obb.m_halfsize.z); obb.m_halfsize.x /= 2.0f; obb.m_halfsize.z /= 2.0f,
-		obb.m_halfsize.z, ax.set(obb.m_rotate.k); ax.mul(obb.m_halfsize.z); radius = _min(obb.m_halfsize.y, obb.m_halfsize.x); obb.m_halfsize.y /= 2.0f; obb.m_halfsize.x /= 2.0f
-	)
-
-	fSphere								sphere1;
-	fSphere								sphere2;
-	sphere1.P.add(obb.m_translate, ax);
-	sphere1.R = radius * 1.4142f;
-
-	sphere2.P.sub(obb.m_translate, ax);
-	sphere2.R = radius / 2.0f;
-
-	E->add_Box(obb);
-	E->add_Sphere(sphere1);
-	E->add_Sphere(sphere2);
-
-	// Physics (Shell)
-	m_pPhysicsShell = P_create_Shell( );
-	R_ASSERT(m_pPhysicsShell);
-	m_pPhysicsShell->add_Element(E);
-	m_pPhysicsShell->setDensity(2000.f);
-	m_pPhysicsShell->SetAirResistance( );
-}
+//void CPhysicItem::create_box2sphere_physic_shell( )
+//{
+//	// Physics (Box)
+//	fObb								obb;
+//	Visual( )->vis.box.get_CD(obb.m_translate, obb.m_halfsize);
+//	obb.m_rotate.identity( );
+//
+//	// Physics (Elements)
+//	CPhysicsElement* E = P_create_Element( );
+//	R_ASSERT(E);
+//
+//	fVector3								ax;
+//	f32								radius;
+//	CHOOSE_MAX(
+//		obb.m_halfsize.x, ax.set(obb.m_rotate.i); ax.mul(obb.m_halfsize.x); radius = _min(obb.m_halfsize.y, obb.m_halfsize.z); obb.m_halfsize.y /= 2.0f; obb.m_halfsize.z /= 2.0f,
+//		obb.m_halfsize.y, ax.set(obb.m_rotate.j); ax.mul(obb.m_halfsize.y); radius = _min(obb.m_halfsize.x, obb.m_halfsize.z); obb.m_halfsize.x /= 2.0f; obb.m_halfsize.z /= 2.0f,
+//		obb.m_halfsize.z, ax.set(obb.m_rotate.k); ax.mul(obb.m_halfsize.z); radius = _min(obb.m_halfsize.y, obb.m_halfsize.x); obb.m_halfsize.y /= 2.0f; obb.m_halfsize.x /= 2.0f
+//	)
+//
+//	fSphere								sphere1;
+//	fSphere								sphere2;
+//	sphere1.P.add(obb.m_translate, ax);
+//	sphere1.R = radius * 1.4142f;
+//
+//	sphere2.P.sub(obb.m_translate, ax);
+//	sphere2.R = radius / 2.0f;
+//
+//	E->add_Box(obb);
+//	E->add_Sphere(sphere1);
+//	E->add_Sphere(sphere2);
+//
+//	// Physics (Shell)
+//	m_pPhysicsShell = P_create_Shell( );
+//	R_ASSERT(m_pPhysicsShell);
+//	m_pPhysicsShell->add_Element(E);
+//	m_pPhysicsShell->setDensity(2000.f);
+//	m_pPhysicsShell->SetAirResistance( );
+//}
 
 void CPhysicItem::create_physic_shell( )
 {

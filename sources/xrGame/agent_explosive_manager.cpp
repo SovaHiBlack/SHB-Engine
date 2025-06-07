@@ -11,7 +11,7 @@
 #include "agent_manager.h"
 #include "agent_location_manager.h"
 #include "agent_member_manager.h"
-#include "missile.h"
+#include "Missile.h"
 #include "Explosive.h"
 #include "member_order.h"
 #include "ai/stalker/ai_stalker.h"

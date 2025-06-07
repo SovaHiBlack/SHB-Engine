@@ -14,8 +14,8 @@
 #include "../CharacterInfo.h"
 #include "../Inventory.h"
 #include "../UIGame.h"
-#include "../weaponmagazined.h"
-#include "../missile.h"
+#include "../WeaponMagazined.h"
+#include "../Missile.h"
 #include "../Grenade.h"
 #include "../xrServer_objects_ALife.h"
 #include "../alife_simulator.h"
@@ -99,7 +99,7 @@ CUIMainIngameWnd::~CUIMainIngameWnd( )
 	DestroyFlashingIcons( );
 	xr_delete(UIZoneMap);
 	xr_delete(m_artefactPanel);
-	HUD_SOUND::DestroySound(m_contactSnd);
+	SHudSound::DestroySound(m_contactSnd);
 	xr_delete(g_MissileForceShape);
 }
 
@@ -242,7 +242,7 @@ void CUIMainIngameWnd::Init( )
 	UIStaticDiskIO.SetOriginalRect(0.0f, 0.0f, 32.0f, 32.0f);
 	UIStaticDiskIO.SetStretchTexture(TRUE);
 
-	HUD_SOUND::LoadSound("maingame_ui", "snd_new_contact", m_contactSnd, SOUND_TYPE_IDLE);
+	SHudSound::LoadSound("maingame_ui", "snd_new_contact", m_contactSnd, SOUND_TYPE_IDLE);
 }
 
 f32 UIStaticDiskIO_start_time = 0.0f;
@@ -1287,7 +1287,7 @@ void CUIMainIngameWnd::AnimateContacts(bool b_snd)
 
 	if (b_snd)
 	{
-		HUD_SOUND::PlaySound(m_contactSnd, fVector3( ).set(0.0f, 0.0f, 0.0f), 0, true);
+		SHudSound::PlaySound(m_contactSnd, fVector3( ).set(0.0f, 0.0f, 0.0f), 0, true);
 	}
 }
 

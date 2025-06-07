@@ -1,15 +1,13 @@
 #pragma once
-#include "weaponmagazined.h"
-#include "rocketlauncher.h"
-
+#include "WeaponMagazined.h"
+#include "RocketLauncher.h"
 
 class CWeaponFakeGrenade;
 
-
-class CWeaponMagazinedWGrenade : public CWeaponMagazined,
-								 public CRocketLauncher
+class CWeaponMagazinedWGrenade : public CWeaponMagazined,								 public CRocketLauncher
 {
 	typedef CWeaponMagazined inherited;
+
 public:
 					CWeaponMagazinedWGrenade	(pcstr name="AK74",ESoundTypes eSoundType=SOUND_TYPE_WEAPON_SUBMACHINEGUN);
 	virtual			~CWeaponMagazinedWGrenade	();
@@ -26,7 +24,6 @@ public:
 	virtual void	save				(CNetPacket& output_packet);
 	virtual void	load				(IReader &input_packet);
 
-
 	virtual bool	Attach(PIItem pIItem, bool b_send_event);
 	virtual bool	Detach(pcstr item_section_name, bool b_spawn_item);
 	virtual bool	CanAttach(PIItem pIItem);
@@ -34,7 +31,6 @@ public:
 	virtual void	InitAddons();
 	virtual bool	UseScopeTexture();
 	virtual	f32	CurrentZoomFactor	();
-
 	
 	virtual void	OnStateSwitch	(u32 S);
 	
@@ -66,10 +62,9 @@ public:
 	virtual void	PlayAnimShoot();
 	virtual void	PlayAnimModeSwitch();
 	
-	HUD_SOUND			sndShotG;
-	HUD_SOUND			sndReloadG;
-	HUD_SOUND			sndSwitch;
-
+	SHudSound			sndShotG;
+	SHudSound			sndReloadG;
+	SHudSound			sndSwitch;
 
 	//анимации с подключенным подствольником
 	//(режим обычной стрельбы)
@@ -88,7 +83,6 @@ public:
 	MotionSVec			mhud_show_w_gl;
 	MotionSVec			mhud_hide_w_gl;
 
-
 	//дополнительные параметры патронов 
 	//для подствольника
 	CWeaponAmmo*			m_pAmmo2;
@@ -96,7 +90,7 @@ public:
 	xr_vector<shared_str>	m_ammoTypes2;
 	u32						m_ammoType2;
 	shared_str				m_ammoName2;
-	int						iMagazineSize2;
+	s32						iMagazineSize2;
 	xr_vector<CCartridge>	m_magazine2;
 	bool					m_bGrenadeMode;
 

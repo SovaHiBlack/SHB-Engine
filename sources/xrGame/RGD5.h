@@ -1,6 +1,6 @@
 #pragma once
 
-#include "grenade.h"
+#include "Grenade.h"
 #include "script_export_space.h"
 
 class CRGD5 :
@@ -8,8 +8,8 @@ class CRGD5 :
 {
 	typedef CGrenade inherited;
 public:
-	CRGD5(void);
-	virtual ~CRGD5(void);
+	CRGD5( );
+	virtual ~CRGD5( );
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

@@ -1,17 +1,17 @@
 #pragma once
 
-#include "weaponpistol.h"
-#include "rocketlauncher.h"
+#include "WeaponPistol.h"
+#include "RocketLauncher.h"
 #include "script_export_space.h"
 
-class CWeaponRPG7 :	public CWeaponCustomPistol,
-					public CRocketLauncher
+class CWeaponRPG7 :	public CWeaponCustomPistol, 					public CRocketLauncher
 {
 private:
 	typedef CWeaponCustomPistol inherited;
+
 public:
-	CWeaponRPG7(void);
-	virtual ~CWeaponRPG7(void);
+	CWeaponRPG7( );
+	virtual ~CWeaponRPG7( );
 
 	virtual BOOL net_Spawn		(CSE_Abstract* DC);
 	virtual void OnStateSwitch	(u32 S);
@@ -27,6 +27,7 @@ public:
 	virtual void UnloadMagazine				(bool spawn_ammo = true);
 
 	virtual void net_Import			(CNetPacket& P);				// import from server
+
 protected:
 	shared_str	m_sGrenadeBoneName;
 	shared_str	m_sHudGrenadeBoneName;
@@ -35,6 +36,7 @@ protected:
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 add_to_type_list(CWeaponRPG7)
 #undef script_type_list
 #define script_type_list save_type_list(CWeaponRPG7)

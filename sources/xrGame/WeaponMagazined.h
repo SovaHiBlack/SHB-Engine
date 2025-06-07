@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Weapon.h"
-#include "hudsound.h"
+#include "HudSound.h"
 #include "ai_sounds.h"
 
 class ENGINE_API CMotionDef;
@@ -10,34 +10,35 @@ class ENGINE_API CMotionDef;
 //заканчиваем стрельбу, только, если кончились патроны
 #define WEAPON_ININITE_QUEUE -1
 
-
-class CWeaponMagazined: public CWeapon
+class CWeaponMagazined : public CWeapon
 {
 private:
 	typedef CWeapon inherited;
+
 protected:
 	// Media :: sounds
-	HUD_SOUND		sndShow;
-	HUD_SOUND		sndHide;
-	HUD_SOUND		sndShot;
-	HUD_SOUND		sndEmptyClick;
-	HUD_SOUND		sndReload;
+	SHudSound		sndShow;
+	SHudSound		sndHide;
+	SHudSound		sndShot;
+	SHudSound		sndEmptyClick;
+	SHudSound		sndReload;
 	//звук текущего выстрела
-	HUD_SOUND*		m_pSndShotCurrent;
+	SHudSound* m_pSndShotCurrent;
 
-	virtual void	StopHUDSounds		();
+	virtual void	StopHUDSounds( );
 
 	//дополнительная информация о глушителе
 	pcstr			m_sSilencerFlameParticles;
 	pcstr			m_sSilencerSmokeParticles;
-	HUD_SOUND		sndSilencerShot;
+	SHudSound		sndSilencerShot;
 
 	ESoundTypes		m_eSoundShow;
 	ESoundTypes		m_eSoundHide;
 	ESoundTypes		m_eSoundShot;
 	ESoundTypes		m_eSoundEmptyClick;
 	ESoundTypes		m_eSoundReload;
-	struct SWMmotions{
+	struct SWMmotions
+	{
 		MotionSVec		mhud_idle;
 		MotionSVec		mhud_idle_aim;
 		MotionSVec		mhud_reload;	//
@@ -46,99 +47,116 @@ protected:
 		MotionSVec		mhud_shots;		//
 		MotionSVec		mhud_idle_sprint;
 	};
-	SWMmotions			mhud;	
-	
+	SWMmotions			mhud;
+
 	// General
 	//кадр момента пересчета UpdateSounds
 	u32				dwUpdateSounds_Frame;
-protected:
-	virtual void	OnMagazineEmpty	();
-
-	virtual void	switch2_Idle	();
-	virtual void	switch2_Fire	();
-	virtual void	switch2_Fire2	(){}
-	virtual void	switch2_Empty	();
-	virtual void	switch2_Reload	();
-	virtual void	switch2_Hiding	();
-	virtual void	switch2_Hidden	();
-	virtual void	switch2_Showing	();
-	
-	virtual void	OnShot			();	
-	
-	virtual void	OnEmptyClick	();
-
-	virtual void	OnAnimationEnd	(u32 state);
-	virtual void	OnStateSwitch	(u32 S);
-
-	virtual void	UpdateSounds	();
-
-	bool			TryReload		();
-	bool			TryPlayAnimIdle	();
 
 protected:
-	virtual void	ReloadMagazine	();
-			void	ApplySilencerKoeffs	();
+	virtual void	OnMagazineEmpty( );
 
-	virtual void	state_Fire		(f32 dt);
-	virtual void	state_MagEmpty	(f32 dt);
-	virtual void	state_Misfire	(f32 dt);
+	virtual void	switch2_Idle( );
+	virtual void	switch2_Fire( );
+	virtual void	switch2_Fire2( )
+	{ }
+	virtual void	switch2_Empty( );
+	virtual void	switch2_Reload( );
+	virtual void	switch2_Hiding( );
+	virtual void	switch2_Hidden( );
+	virtual void	switch2_Showing( );
+
+	virtual void	OnShot( );
+
+	virtual void	OnEmptyClick( );
+
+	virtual void	OnAnimationEnd(u32 state);
+	virtual void	OnStateSwitch(u32 S);
+
+	virtual void	UpdateSounds( );
+
+	bool			TryReload( );
+	bool			TryPlayAnimIdle( );
+
+protected:
+	virtual void	ReloadMagazine( );
+	void	ApplySilencerKoeffs( );
+
+	virtual void	state_Fire(f32 dt);
+	virtual void	state_MagEmpty(f32 dt);
+	virtual void	state_Misfire(f32 dt);
+
 public:
-					CWeaponMagazined	(pcstr name="AK74",ESoundTypes eSoundType=SOUND_TYPE_WEAPON_SUBMACHINEGUN);
-	virtual			~CWeaponMagazined	();
+	CWeaponMagazined(pcstr name = "AK74", ESoundTypes eSoundType = SOUND_TYPE_WEAPON_SUBMACHINEGUN);
+	virtual			~CWeaponMagazined( );
 
-	virtual void	Load			(pcstr section);
-	virtual CWeaponMagazined*cast_weapon_magazined	()		 {return this;}
+	virtual void	Load(pcstr section);
+	virtual CWeaponMagazined* cast_weapon_magazined( )
+	{
+		return this;
+	}
 
-	virtual void	SetDefaults		();
-	virtual void	FireStart		();
-	virtual void	FireEnd			();
-	virtual void	Reload			();
-	
+	virtual void	SetDefaults( );
+	virtual void	FireStart( );
+	virtual void	FireEnd( );
+	virtual void	Reload( );
 
-	virtual	void	UpdateCL		();
-	virtual void	net_Destroy		();
-	virtual void			net_Export			(CNetPacket& P);
-	virtual void			net_Import			(CNetPacket& P);
 
-	virtual void	OnH_A_Chield		();
+	virtual	void	UpdateCL( );
+	virtual void	net_Destroy( );
+	virtual void			net_Export(CNetPacket& P);
+	virtual void			net_Import(CNetPacket& P);
+
+	virtual void	OnH_A_Chield( );
 
 	virtual bool	Attach(PIItem pIItem, bool b_send_event);
 	virtual bool	Detach(pcstr item_section_name, bool b_spawn_item);
 	virtual bool	CanAttach(PIItem pIItem);
 	virtual bool	CanDetach(pcstr item_section_name);
 
-	virtual void	InitAddons();
+	virtual void	InitAddons( );
 
-	virtual bool	Action			(s32 cmd, u32 flags);
-	virtual void	onMovementChanged	(ACTOR_DEFS::EMoveCommand cmd);
-	bool			IsAmmoAvailable	();
-	virtual void	UnloadMagazine	(bool spawn_ammo = true);
+	virtual bool	Action(s32 cmd, u32 flags);
+	virtual void	onMovementChanged(ACTOR_DEFS::EMoveCommand cmd);
+	bool			IsAmmoAvailable( );
+	virtual void	UnloadMagazine(bool spawn_ammo = true);
 
-	virtual void	GetBriefInfo				(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
-
+	virtual void	GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
 
 	//////////////////////////////////////////////
 	// для стрельбы очередями или одиночными
 	//////////////////////////////////////////////
 public:
-	virtual bool	SwitchMode				();
-	virtual bool	SingleShotMode			()			{return 1 == m_iQueueSize;}
-	virtual void	SetQueueSize			(int size);
-	IC		int		GetQueueSize			() const	{return m_iQueueSize;};
-	virtual bool	StopedAfterQueueFired	()			{return m_bStopedAfterQueueFired; }
-	virtual void	StopedAfterQueueFired	(bool value){m_bStopedAfterQueueFired = value; }
+	virtual bool	SwitchMode( );
+	virtual bool	SingleShotMode( )
+	{
+		return (1 == m_iQueueSize);
+	}
+	virtual void	SetQueueSize(s32 size);
+	IC		s32		GetQueueSize( ) const
+	{
+		return m_iQueueSize;
+	}
+	virtual bool	StopedAfterQueueFired( )
+	{
+		return m_bStopedAfterQueueFired;
+	}
+	virtual void	StopedAfterQueueFired(bool value)
+	{
+		m_bStopedAfterQueueFired = value;
+	}
 
 protected:
 	//максимальный размер очереди, которой можно стрельнуть
-	int				m_iQueueSize;
+	s32				m_iQueueSize;
 	//количество реально выстреляных патронов
-	int				m_iShotNum;
-	//  [7/20/2005]
+	s32				m_iShotNum;
+
 	//после какого патрона, при непрерывной стрельбе, начинается отдача (сделано из-зи Абакана)
-	int				m_iShootEffectorStart;
+	s32				m_iShootEffectorStart;
 	fVector3			m_vStartPos;
 	fVector3		m_vStartDir;
-	//  [7/20/2005]
+
 	//флаг того, что мы остановились после того как выстреляли
 	//ровно столько патронов, сколько было задано в m_iQueueSize
 	bool			m_bStopedAfterQueueFired;
@@ -147,10 +165,10 @@ protected:
 	bool			m_bFireSingleShot;
 	//режимы стрельбы
 	bool			m_bHasDifferentFireModes;
-	xr_vector<int>	m_aFireModes;
-	int				m_iCurFireMode;
+	xr_vector<s32>	m_aFireModes;
+	s32				m_iCurFireMode;
 	string16		m_sCurFireMode;
-	int				m_iPrefferedFireMode;
+	s32				m_iPrefferedFireMode;
 
 	//переменная блокирует использование
 	//только разных типов патронов
@@ -160,29 +178,44 @@ protected:
 	// режим приближения
 	//////////////////////////////////////////////
 public:
-	virtual void	OnZoomIn			();
-	virtual void	OnZoomOut			();
-	virtual	void	OnNextFireMode		();
-	virtual	void	OnPrevFireMode		();
-	virtual bool	HasFireModes		() { return m_bHasDifferentFireModes; };
-	virtual	int		GetCurrentFireMode	() { return m_aFireModes[m_iCurFireMode]; };	
-	virtual pcstr	GetCurrentFireModeStr	() {return m_sCurFireMode;};
+	virtual void	OnZoomIn( );
+	virtual void	OnZoomOut( );
+	virtual void	OnNextFireMode( );
+	virtual void	OnPrevFireMode( );
+	virtual bool	HasFireModes( )
+	{
+		return m_bHasDifferentFireModes;
+	}
+	virtual s32		GetCurrentFireMode( )
+	{
+		return m_aFireModes[m_iCurFireMode];
+	}
+	virtual pcstr	GetCurrentFireModeStr( )
+	{
+		return m_sCurFireMode;
+	}
 
-	virtual void	save				(CNetPacket& output_packet);
-	virtual void	load				(IReader &input_packet);
+	virtual void	save(CNetPacket& output_packet);
+	virtual void	load(IReader& input_packet);
 
 protected:
-	virtual bool	AllowFireWhileWorking() {return false;}
+	virtual bool	AllowFireWhileWorking( )
+	{
+		return false;
+	}
 
 	//виртуальные функции для проигрывания анимации HUD
-	virtual void	PlayAnimShow();
-	virtual void	PlayAnimHide();
-	virtual void	PlayAnimReload();
-	virtual void	PlayAnimIdle();
-	virtual void	PlayAnimShoot();
-	virtual void	PlayReloadSound		();
+	virtual void	PlayAnimShow( );
+	virtual void	PlayAnimHide( );
+	virtual void	PlayAnimReload( );
+	virtual void	PlayAnimIdle( );
+	virtual void	PlayAnimShoot( );
+	virtual void	PlayReloadSound( );
 
-	virtual void	StartIdleAnim		();
-	virtual	int		ShotsFired			() { return m_iShotNum; }
-	virtual f32	GetWeaponDeterioration	();
+	virtual void	StartIdleAnim( );
+	virtual s32		ShotsFired( )
+	{
+		return m_iShotNum;
+	}
+	virtual f32	GetWeaponDeterioration( );
 };

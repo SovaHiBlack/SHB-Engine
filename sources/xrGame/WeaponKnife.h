@@ -6,6 +6,7 @@
 class CWeaponKnife: public CWeapon {
 private:
 	typedef CWeapon inherited;
+
 protected:
 	MotionSVec			mhud_idle;
 	MotionSVec			mhud_hide;
@@ -15,12 +16,11 @@ protected:
 	MotionSVec			mhud_attack_e;
 	MotionSVec			mhud_attack2_e;
 
-	HUD_SOUND			m_sndShot;
+	SHudSound			m_sndShot;
 
 	bool				m_attackStart;
 
 protected:
-
 	virtual void		switch2_Idle				();
 	virtual void		switch2_Hiding				();
 	virtual void		switch2_Hidden				();

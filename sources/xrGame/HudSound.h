@@ -5,13 +5,13 @@
 
 #pragma once
 
-struct HUD_SOUND
+struct SHudSound
 {
-	HUD_SOUND( )
+	SHudSound( )
 	{
 		m_activeSnd = NULL;
 	}
-	~HUD_SOUND( )
+	~SHudSound( )
 	{
 		m_activeSnd = NULL;
 	}
@@ -19,38 +19,29 @@ struct HUD_SOUND
 ////////////////////////////////////
 // работа со звуками
 /////////////////////////////////////
-	static void		LoadSound(pcstr section, pcstr line,
-							  ref_sound& hud_snd,
-							  s32 type = sg_SourceType,
-							  f32* volume = NULL,
-							  f32* delay = NULL);
+	static void LoadSound(pcstr section, pcstr line, ref_sound& hud_snd, s32 type = sg_SourceType, f32* volume = NULL, f32* delay = NULL);
 
-	static void		LoadSound(pcstr section, pcstr line,
-							  HUD_SOUND& hud_snd, s32 type = sg_SourceType);
+	static void LoadSound(pcstr section, pcstr line, SHudSound& hud_snd, s32 type = sg_SourceType);
 
-	static void		DestroySound(HUD_SOUND& hud_snd);
+	static void DestroySound(SHudSound& hud_snd);
 
-	static void		PlaySound(HUD_SOUND& snd,
-							  const fVector3& position,
-							  const CObject* parent,
-							  bool hud_mode,
-							  bool looped = false);
+	static void PlaySound(SHudSound& snd, const fVector3& position, const CObject* parent, bool hud_mode, bool looped = false);
 
-	static void		StopSound(HUD_SOUND& snd);
+	static void StopSound(SHudSound& snd);
 
-	ICF BOOL		playing( )
+	ICF BOOL playing( )
 	{
 		if (m_activeSnd)
 		{
-			return	m_activeSnd->snd._feedback( ) ? TRUE : FALSE;
+			return m_activeSnd->snd._feedback( ) ? TRUE : FALSE;
 		}
 		else
 		{
-			return	FALSE;
+			return FALSE;
 		}
 	}
 
-	ICF void		set_position(const fVector3& pos)
+	ICF void set_position(const fVector3& pos)
 	{
 		if (m_activeSnd)
 		{

@@ -22,10 +22,10 @@ CWeaponKnife::CWeaponKnife() : CWeapon("KNIFE")
 	SetNextState			( eHidden );
 	knife_material_idx		= (u16)-1;
 }
+
 CWeaponKnife::~CWeaponKnife()
 {
-	HUD_SOUND::DestroySound(m_sndShot);
-
+	SHudSound::DestroySound(m_sndShot);
 }
 
 void CWeaponKnife::Load	(pcstr section)
@@ -45,7 +45,7 @@ void CWeaponKnife::Load	(pcstr section)
 	animGet				(mhud_attack_e,	pSettings->r_string(*hud_sect,"anim_shoot1_end"));
 	animGet				(mhud_attack2_e,pSettings->r_string(*hud_sect,"anim_shoot2_end"));
 
-	HUD_SOUND::LoadSound(section,"snd_shoot"		, m_sndShot		, ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING)		);
+	SHudSound::LoadSound(section,"snd_shoot"		, m_sndShot		, ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING)		);
 	
 	knife_material_idx =  GMLib.GetMaterialIdx(KNIFE_MATERIAL_NAME);
 }

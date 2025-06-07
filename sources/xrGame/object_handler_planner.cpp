@@ -15,8 +15,8 @@
 #include "ai/stalker/ai_stalker.h"
 #include "Inventory.h"
 #include "object_handler_planner_impl.h"
-#include "weaponmagazined.h"
-#include "missile.h"
+#include "WeaponMagazined.h"
+#include "Missile.h"
 
 using namespace ObjectHandlerSpace;
 

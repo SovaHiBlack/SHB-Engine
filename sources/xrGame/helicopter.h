@@ -1,8 +1,8 @@
 #pragma once
 
-#include "shootingobject.h"
-#include "weaponammo.h"
-#include "rocketlauncher.h"
+#include "ShootingObject.h"
+#include "WeaponAmmo.h"
+#include "RocketLauncher.h"
 #include "Entity.h"
 #include "phskeleton.h"
 #include "HitImmunity.h"
@@ -181,8 +181,8 @@ public:
 	u32								m_time_between_rocket_attack;
 	bool							m_syncronize_rocket;
 	f32							m_barrel_dir_tolerance;
-	HUD_SOUND						m_sndShot;
-	HUD_SOUND						m_sndShotRocket;
+	SHudSound						m_sndShot;
+	SHudSound						m_sndShotRocket;
 
 	fVector3							m_fire_dir;
 	fVector3						m_fire_pos;

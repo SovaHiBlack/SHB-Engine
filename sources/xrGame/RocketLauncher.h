@@ -6,27 +6,25 @@ class CGameObject;
 class CRocketLauncher
 {
 public:
-	CRocketLauncher		();
-	~CRocketLauncher	();
+	CRocketLauncher( );
+	~CRocketLauncher( );
 
-	virtual void Load	(pcstr section);
+	virtual void Load(pcstr section);
 
-			void AttachRocket	(u16 rocket_id, CGameObject* parent_rocket_launcher);
-			void DetachRocket	(u16 rocket_id, bool bLaunch);
+	void AttachRocket(u16 rocket_id, CGameObject* parent_rocket_launcher);
+	void DetachRocket(u16 rocket_id, bool bLaunch);
 
-			void SpawnRocket	(pcstr rocket_section, CGameObject* parent_rocket_launcher);
-			void LaunchRocket	(const fMatrix4x4& xform,  const fVector3& vel, const fVector3& angular_vel);
+	void SpawnRocket(pcstr rocket_section, CGameObject* parent_rocket_launcher);
+	void LaunchRocket(const fMatrix4x4& xform, const fVector3& vel, const fVector3& angular_vel);
 
-protected:			   
+protected:
 	DEFINE_VECTOR(CCustomRocket*, ROCKET_VECTOR, ROCKETIT);
 	ROCKET_VECTOR		m_rockets;
 	ROCKET_VECTOR		m_launched_rockets;
-	
-	CCustomRocket*	getCurrentRocket();
-	void			dropCurrentRocket();
-	u32				getRocketCount();
-	//начальная скорость, придаваемая ракете во время
-	//старта
-	f32			m_fLaunchSpeed;
 
+	CCustomRocket* getCurrentRocket( );
+	void			dropCurrentRocket( );
+	u32				getRocketCount( );
+	//начальная скорость, придаваемая ракете во время старта
+	f32			m_fLaunchSpeed;
 };

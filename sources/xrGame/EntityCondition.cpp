@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "EntityCondition.h"
 #include "InventoryOwner.h"
-#include "customoutfit.h"
+#include "CustomOutfit.h"
 #include "Inventory.h"
 #include "Wound.h"
 #include "level.h"

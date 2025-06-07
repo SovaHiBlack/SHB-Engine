@@ -11,9 +11,9 @@
 #include "Weapon.h"
 #include "ai/stalker/ai_stalker.h"
 #include "Inventory.h"
-#include "missile.h"
-#include "fooditem.h"
-#include "weaponmagazined.h"
+#include "Missile.h"
+#include "FoodItem.h"
+#include "WeaponMagazined.h"
 
 //////////////////////////////////////////////////////////////////////////
 // CObjectPropertyEvaluatorState

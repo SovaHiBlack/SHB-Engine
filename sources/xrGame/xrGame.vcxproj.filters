@@ -4959,13 +4959,13 @@
     <ClInclude Include="PDA.h">
       <Filter>Core\Client\Objects\items &amp; weapons\PDA &amp; information</Filter>
     </ClInclude>
-    <ClInclude Include="pda_space.h">
+    <ClInclude Include="PDA_space.h">
       <Filter>Core\Client\Objects\items &amp; weapons\PDA &amp; information</Filter>
     </ClInclude>
-    <ClInclude Include="PdaMsg.h">
+    <ClInclude Include="PDA_msg.h">
       <Filter>Core\Client\Objects\items &amp; weapons\PDA &amp; information</Filter>
     </ClInclude>
-    <ClInclude Include="antirad.h">
+    <ClInclude Include="Antirad.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Food &amp; Drugs</Filter>
     </ClInclude>
     <ClInclude Include="BottleItem.h">
@@ -4977,7 +4977,7 @@
     <ClInclude Include="ItemHealth.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Food &amp; Drugs</Filter>
     </ClInclude>
-    <ClInclude Include="medkit.h">
+    <ClInclude Include="Medkit.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Food &amp; Drugs</Filter>
     </ClInclude>
     <ClInclude Include="BoneProtections.h">
@@ -5001,7 +5001,7 @@
     <ClInclude Include="InfoDocument.h">
       <Filter>Core\Client\Objects\items &amp; weapons\InfoDocument</Filter>
     </ClInclude>
-    <ClInclude Include="hud_item_object.h">
+    <ClInclude Include="HudItemObject.h">
       <Filter>Core\Client\Objects\items &amp; weapons\HudItem</Filter>
     </ClInclude>
     <ClInclude Include="HudItem.h">
@@ -5013,7 +5013,7 @@
     <ClInclude Include="ExplosiveItem.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClInclude>
-    <ClInclude Include="wallmark_manager.h">
+    <ClInclude Include="WalmarkManager.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClInclude>
     <ClInclude Include="Projector.h">
@@ -7595,9 +7595,6 @@
     <ClCompile Include="WeaponBinoculars.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponBinoculars_script.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
-    </ClCompile>
     <ClCompile Include="WeaponBinocularsVision.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
     </ClCompile>
@@ -7706,7 +7703,7 @@
     <ClCompile Include="ItemHealth.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Food &amp; Drugs</Filter>
     </ClCompile>
-    <ClCompile Include="medkit.cpp">
+    <ClCompile Include="Medkit.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Food &amp; Drugs</Filter>
     </ClCompile>
     <ClCompile Include="BoneProtections.cpp">
@@ -7730,7 +7727,7 @@
     <ClCompile Include="InfoDocument.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\InfoDocument</Filter>
     </ClCompile>
-    <ClCompile Include="hud_item_object.cpp">
+    <ClCompile Include="HudItemObject.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\HudItem</Filter>
     </ClCompile>
     <ClCompile Include="HudItem.cpp">
@@ -7745,10 +7742,7 @@
     <ClCompile Include="ExplosiveItem.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClCompile>
-    <ClCompile Include="ExplosiveScript.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
-    </ClCompile>
-    <ClCompile Include="wallmark_manager.cpp">
+    <ClCompile Include="WalmarkManager.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Explosives</Filter>
     </ClCompile>
     <ClCompile Include="Projector.cpp">

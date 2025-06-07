@@ -1,10 +1,8 @@
 #include "stdafx.h"
-#include "itemhealth.h"
+#include "ItemHealth.h"
 
-CItemHealth::CItemHealth(void)
-{
-}
+CItemHealth::CItemHealth( )
+{ }
 
-CItemHealth::~CItemHealth(void)
-{
-}
+CItemHealth::~CItemHealth( )
+{ }

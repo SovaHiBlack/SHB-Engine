@@ -10,7 +10,7 @@
 #include "stalker_kill_wounded_actions.h"
 #include "ai/stalker/ai_stalker.h"
 #include "Inventory.h"
-#include "weaponmagazined.h"
+#include "WeaponMagazined.h"
 #include "stalker_movement_manager.h"
 #include "movement_manager_space.h"
 #include "detail_path_manager_space.h"

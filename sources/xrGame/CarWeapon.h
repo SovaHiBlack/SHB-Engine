@@ -81,5 +81,5 @@ private:
 	f32						m_barrel_speed;
 	fVector3					m_destEnemyDir;
 	bool					m_allow_fire;
-	HUD_SOUND				m_sndShot;
+	SHudSound				m_sndShot;
 };
