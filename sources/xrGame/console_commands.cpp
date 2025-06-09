@@ -89,10 +89,10 @@ extern f32		g_fTimeFactor;
 
 BOOL	g_bCheckTime = FALSE;
 s32		net_cl_inputupdaterate = 50;
-flags32	g_mt_config = { mtLevelPath | mtDetailPath | mtObjectHandler | mtSoundPlayer | mtAiVision | mtBullets | mtLUA_GC | mtLevelSounds | mtALife };
+flags32	g_mt_config = {mtLevelPath | mtDetailPath | mtObjectHandler | mtSoundPlayer | mtAiVision | mtBullets | mtLUA_GC | mtLevelSounds | mtALife};
 
 #ifdef DEBUG
-flags32	dbg_net_Draw_Flags = { 0 };
+flags32	dbg_net_Draw_Flags = {0};
 #endif
 
 #ifdef DEBUG

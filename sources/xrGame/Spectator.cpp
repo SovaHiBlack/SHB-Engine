@@ -44,7 +44,6 @@ CSpectator::CSpectator( ) : CGameObject( )
 	cameras[eacFreeFly] = xr_new<CCameraFirstEye>(this);
 	cameras[eacFreeFly]->Load("actor_firsteye_cam");
 
-//	cam_active				= eacFreeFly;
 	cam_active = eacFreeLook;
 	look_idx = 0;
 	m_pActorToLookAt = NULL;

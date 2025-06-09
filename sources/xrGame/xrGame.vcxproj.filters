@@ -1420,9 +1420,6 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons">
       <UniqueIdentifier>{37c94e4b-2d13-404c-b45e-c57968d0d56b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Walther 99">
-      <UniqueIdentifier>{edfe2dab-4bb9-455d-9c2a-dc8f298b2418}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Knife">
       <UniqueIdentifier>{c1cce012-9b49-45ff-a1d4-863f7af8075d}</UniqueIdentifier>
     </Filter>
@@ -2112,6 +2109,9 @@
     </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Vintorez">
       <UniqueIdentifier>{2069cba3-e623-4add-b053-dc2a80e74d63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Walther">
+      <UniqueIdentifier>{edfe2dab-4bb9-455d-9c2a-dc8f298b2418}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4828,7 +4828,7 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Custom Weapon\RocketLauncher</Filter>
     </ClInclude>
     <ClInclude Include="WeaponWalther.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Walther 99</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Walther</Filter>
     </ClInclude>
     <ClInclude Include="WeaponVintorez.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Vintorez</Filter>
@@ -7533,7 +7533,7 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Custom Weapon\RocketLauncher</Filter>
     </ClCompile>
     <ClCompile Include="WeaponWalther.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Walther 99</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Walther</Filter>
     </ClCompile>
     <ClCompile Include="WeaponVintorez.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Vintorez</Filter>
