@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "WeaponBinocularsVision.h"
+#include "BinocularsVision.h"
 #include "WeaponBinoculars.h"
 #include "ui\UIFrameWindow.h"
 //#include "EntityAlive.h"
@@ -89,6 +89,7 @@ void SBinocVisibleObj::Update( )
 		mx.x = _max(mx.x, p.x);
 		mx.y = _max(mx.y, p.y);
 	}
+
 	static fRect screen_rect = {-1.0f, -1.0f, 1.0f, 1.0f};
 
 	fRect new_rect;
@@ -275,7 +276,7 @@ void CBinocularsVision::Load(const shared_str& section)
 
 void CBinocularsVision::remove_links(CObject* object)
 {
-	VIS_OBJECTS::iterator	I = std::find_if(m_active_objects.begin( ), m_active_objects.end( ), FindVisObjByObject(object));
+	VIS_OBJECTS::iterator I = std::find_if(m_active_objects.begin( ), m_active_objects.end( ), FindVisObjByObject(object));
 	if (I == m_active_objects.end( ))
 	{
 		return;

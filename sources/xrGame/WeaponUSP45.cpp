@@ -1,14 +1,14 @@
 #include "stdafx.h"
 
-#include "weaponusp45.h"
+#include "WeaponUSP45.h"
 
-CWeaponUSP45::CWeaponUSP45(void) : CWeaponPistol("USP")
+CWeaponUSP45::CWeaponUSP45( ) : CWeaponPistol("USP")
 {
-	m_weight = .5f;
+	m_weight = 0.5f;
 	m_slot = 1;
 }
 
-CWeaponUSP45::~CWeaponUSP45(void)
+CWeaponUSP45::~CWeaponUSP45( )
 { }
 
 using namespace luabind;

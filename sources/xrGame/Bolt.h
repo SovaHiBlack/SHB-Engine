@@ -2,31 +2,36 @@
 #include "Missile.h"
 #include "DamageSource.h"
 
-class CBolt :
-	public CMissile,
-	public IDamageSource
+class CBolt : public CMissile, public IDamageSource
 {
 	typedef CMissile inherited;
 	u16	m_thrower_id;
+
 public:
-	CBolt(void);
-	virtual ~CBolt(void);
+	CBolt( );
+	virtual ~CBolt( );
 
-	virtual void OnH_A_Chield();
+	virtual void OnH_A_Chield( );
 	virtual void OnEvent(CNetPacket& P, u16 type);
-	
-	virtual bool Activate();
-	virtual void Deactivate();
-	
+
+	virtual bool Activate( );
+	virtual void Deactivate( );
+
 	virtual	void SetInitiator(u16 id);
-	virtual	u16	 Initiator();
+	virtual	u16	 Initiator( );
 
-	virtual void Throw();
+	virtual void Throw( );
 	virtual bool Action(s32 cmd, u32 flags);
-	virtual bool Useful() const;
-    virtual void Destroy();
-    virtual void activate_physic_shell	();
+	virtual bool Useful( ) const;
+	virtual void Destroy( );
+	virtual void activate_physic_shell( );
 
-	virtual BOOL UsedAI_Locations() {return FALSE;}
-	virtual IDamageSource*	cast_IDamageSource			()	{return this;}
+	virtual BOOL UsedAI_Locations( )
+	{
+		return FALSE;
+	}
+	virtual IDamageSource* cast_IDamageSource( )
+	{
+		return this;
+	}
 };

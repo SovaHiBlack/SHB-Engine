@@ -1,11 +1,12 @@
 #pragma once
 
-#include "weaponShotgun.h"
+#include "WeaponShotgun.h"
 #include "script_export_space.h"
 
 class CWeaponBM16 :public CWeaponShotgun
 {
 	typedef CWeaponShotgun inherited;
+
 protected:
 	MotionSVec		mhud_reload1;
 	MotionSVec		mhud_shot1;
@@ -18,14 +19,14 @@ protected:
 	SHudSound		m_sndReload1;
 
 public:
-	virtual			~CWeaponBM16					();
-	virtual void	Load							(pcstr section);
+	virtual			~CWeaponBM16( );
+	virtual void	Load(pcstr section);
 
 protected:
-	virtual void	PlayAnimShoot					();
-	virtual void	PlayAnimReload					();
-	virtual void	PlayReloadSound					();
-	virtual void	PlayAnimIdle					();
+	virtual void	PlayAnimShoot( );
+	virtual void	PlayAnimReload( );
+	virtual void	PlayReloadSound( );
+	virtual void	PlayAnimIdle( );
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

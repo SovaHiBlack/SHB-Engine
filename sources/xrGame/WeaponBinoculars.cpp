@@ -5,7 +5,7 @@
 
 #include "level.h"
 #include "ui\UIFrameWindow.h"
-#include "WeaponBinocularsVision.h"
+#include "BinocularsVision.h"
 #include "object_broker.h"
 #include "hudmanager.h"
 
@@ -61,7 +61,6 @@ void CWeaponBinoculars::OnZoomIn( )
 
 	inherited::OnZoomIn( );
 	m_fZoomFactor = m_fRTZoomFactor;
-
 }
 
 void CWeaponBinoculars::OnZoomOut( )

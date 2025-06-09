@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "weaponrpg7.h"
+#include "WeaponRPG7.h"
 #include "WeaponHUD.h"
 #include "xrserver_objects_alife_items.h"
 #include "ExplosiveRocket.h"
@@ -21,26 +21,33 @@ void CWeaponRPG7::Load(pcstr section)
 	CRocketLauncher::Load(section);
 
 	m_fScopeZoomFactor = pSettings->r_float(section, "max_zoom_factor");
-
 	m_sGrenadeBoneName = pSettings->r_string(section, "grenade_bone");
 	m_sHudGrenadeBoneName = pSettings->r_string(hud_sect, "grenade_bone");
-
 	m_sRocketSection = pSettings->r_string(section, "rocket_class");
 }
 
 void CWeaponRPG7::UpdateMissileVisibility( )
 {
-	bool vis_hud, vis_weap;
+	bool vis_hud;
+	bool vis_weap;
 	vis_hud = (!!iAmmoElapsed || GetState( ) == eReload);
 	vis_weap = !!iAmmoElapsed;
 
 	CKinematics* pHudVisual = smart_cast<CKinematics*>(m_pHUD->Visual( ));
 	VERIFY(pHudVisual);
-	if (H_Parent( ) != Level( ).CurrentEntity( )) pHudVisual = NULL;
+	if (H_Parent( ) != Level( ).CurrentEntity( ))
+	{
+		pHudVisual = NULL;
+	}
+
 	CKinematics* pWeaponVisual = smart_cast<CKinematics*>(Visual( ));
 	VERIFY(pWeaponVisual);
 
-	if (pHudVisual) pHudVisual->LL_SetBoneVisible(pHudVisual->LL_BoneID(*m_sHudGrenadeBoneName), vis_hud, TRUE);
+	if (pHudVisual)
+	{
+		pHudVisual->LL_SetBoneVisible(pHudVisual->LL_BoneID(*m_sHudGrenadeBoneName), vis_hud, TRUE);
+	}
+
 	pWeaponVisual->LL_SetBoneVisible(pWeaponVisual->LL_BoneID(*m_sGrenadeBoneName), vis_weap, TRUE);
 	pWeaponVisual->CalculateBones_Invalidate( );
 	pWeaponVisual->CalculateBones( );
@@ -80,6 +87,7 @@ void CWeaponRPG7::ReloadMagazine( )
 		CRocketLauncher::SpawnRocket(*m_sRocketSection, this);
 	}
 }
+
 void CWeaponRPG7::SwitchState(u32 S)
 {
 	inherited::SwitchState(S);
@@ -115,6 +123,7 @@ void CWeaponRPG7::switch2_Fire( )
 				Log("item_sect", cNameSect( ).c_str( ));
 				Log("H_Parent", H_Parent( )->cNameSect( ).c_str( ));
 			}
+
 			E->g_fireParams(this, p1, d);
 		}
 
@@ -153,14 +162,16 @@ void CWeaponRPG7::OnEvent(CNetPacket& P, u16 type)
 		{
 			P.r_u16(id);
 			CRocketLauncher::AttachRocket(id, this);
-		} break;
+		}
+		break;
 		case GE_OWNERSHIP_REJECT:
 		case GE_LAUNCH_ROCKET:
 		{
 			bool bLaunch = (type == GE_LAUNCH_ROCKET);
 			P.r_u16(id);
 			CRocketLauncher::DetachRocket(id, bLaunch);
-		} break;
+		}
+		break;
 	}
 }
 
@@ -168,4 +179,16 @@ void CWeaponRPG7::net_Import(CNetPacket& P)
 {
 	inherited::net_Import(P);
 	UpdateMissileVisibility( );
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CWeaponRPG7::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CWeaponRPG7, CGameObject>("CWeaponRPG7")
+				.def(constructor<>( ))
+		];
 }

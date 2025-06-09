@@ -34,7 +34,7 @@
 #	include "PHDebug.h"
 #endif
 
-#include "bolt.h"
+#include "Bolt.h"
 
 CGameObject::CGameObject( )
 {

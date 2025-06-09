@@ -9,7 +9,7 @@
 
 #include "ai_stalker.h"
 #include "ai_stalker_space.h"
-#include "../../bolt.h"
+#include "../../Bolt.h"
 #include "../../Inventory.h"
 #include "../../CharacterInfo.h"
 #include "../../RelationRegistry.h"

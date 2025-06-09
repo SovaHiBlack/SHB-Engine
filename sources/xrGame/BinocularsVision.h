@@ -7,7 +7,7 @@ class CWeaponBinoculars;
 enum
 {
 	flVisObjNotValid = (1 << 0),
-	flTargetLocked = (1 << 1),
+	flTargetLocked = (1 << 1)
 };
 
 struct SBinocVisibleObj
@@ -21,7 +21,7 @@ struct SBinocVisibleObj
 	CUIStatic				m_rb;
 	fRect					cur_rect;
 
-	f32					m_upd_speed;
+	f32						m_upd_speed;
 	flags8					m_flags;
 	void					create_default(u32 color);
 	void					Draw( );

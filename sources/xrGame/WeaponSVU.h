@@ -3,7 +3,7 @@
 #include "WeaponCustomPistol.h"
 #include "script_export_space.h"
 
-class CWeaponSVU : 	public CWeaponCustomPistol
+class CWeaponSVU : public CWeaponCustomPistol
 {
 	typedef CWeaponCustomPistol inherited;
 

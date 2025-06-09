@@ -1423,23 +1423,8 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Walther 99">
       <UniqueIdentifier>{edfe2dab-4bb9-455d-9c2a-dc8f298b2418}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Vintorez">
-      <UniqueIdentifier>{2069cba3-e623-4add-b053-dc2a80e74d63}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Knife">
       <UniqueIdentifier>{c1cce012-9b49-45ff-a1d4-863f7af8075d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Groza">
-      <UniqueIdentifier>{0c970aa0-9f4b-4a65-9d05-70f89ef68fe2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RGD5">
-      <UniqueIdentifier>{2b1e43f7-c5c7-4129-a63e-e05fb2bfd93d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Val">
-      <UniqueIdentifier>{63c358ac-0825-457a-83e9-a5dd6e8845ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon USP45">
-      <UniqueIdentifier>{3e69c01f-183e-4690-aac1-31b43c0636f8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Bolt">
       <UniqueIdentifier>{6d129b9c-c52d-48c2-ac2d-bd1b6e27c9cc}</UniqueIdentifier>
@@ -1456,9 +1441,6 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\SVD">
       <UniqueIdentifier>{1cea1d24-8cc6-4ba0-82c4-81a5f93eebcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon AK74">
-      <UniqueIdentifier>{2616bbe0-7873-4221-9405-3a3748e3297e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\LR300">
       <UniqueIdentifier>{e212dd60-0a6e-41d5-87f4-89f9fce07838}</UniqueIdentifier>
     </Filter>
@@ -1474,14 +1456,8 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular">
       <UniqueIdentifier>{a5b1b117-5ad6-4ed0-aa54-ef22f225d847}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Shotgun">
-      <UniqueIdentifier>{524306e9-a6d6-4d52-a818-3347b0fe3b8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\FORT">
       <UniqueIdentifier>{0614d4d4-f78a-4ece-b4ea-f9b0e2a88e4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon RG6">
-      <UniqueIdentifier>{9c7bd18d-5c59-4dc8-8836-04b7fbdc4511}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\BM-16">
       <UniqueIdentifier>{524f4f0b-7105-42d2-9a20-ff9e038a6569}</UniqueIdentifier>
@@ -2112,6 +2088,30 @@
     </Filter>
     <Filter Include="Core\Client\Objects\items &amp; weapons\InfoDocument">
       <UniqueIdentifier>{b3b2c39e-2dad-4fac-8ac6-604a5c191dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Grenade RGD5">
+      <UniqueIdentifier>{2b1e43f7-c5c7-4129-a63e-e05fb2bfd93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\AK74">
+      <UniqueIdentifier>{2616bbe0-7873-4221-9405-3a3748e3297e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Groza">
+      <UniqueIdentifier>{0c970aa0-9f4b-4a65-9d05-70f89ef68fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RG6">
+      <UniqueIdentifier>{9c7bd18d-5c59-4dc8-8836-04b7fbdc4511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Shotgun">
+      <UniqueIdentifier>{524306e9-a6d6-4d52-a818-3347b0fe3b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\USP45">
+      <UniqueIdentifier>{3e69c01f-183e-4690-aac1-31b43c0636f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Val">
+      <UniqueIdentifier>{63c358ac-0825-457a-83e9-a5dd6e8845ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Vintorez">
+      <UniqueIdentifier>{2069cba3-e623-4add-b053-dc2a80e74d63}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4831,22 +4831,22 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Walther 99</Filter>
     </ClInclude>
     <ClInclude Include="WeaponVintorez.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Vintorez</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Vintorez</Filter>
     </ClInclude>
     <ClInclude Include="WeaponKnife.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Knife</Filter>
     </ClInclude>
     <ClInclude Include="WeaponGroza.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Groza</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Groza</Filter>
     </ClInclude>
     <ClInclude Include="RGD5.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RGD5</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Grenade RGD5</Filter>
     </ClInclude>
     <ClInclude Include="WeaponVal.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Val</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Val</Filter>
     </ClInclude>
     <ClInclude Include="WeaponUSP45.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon USP45</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\USP45</Filter>
     </ClInclude>
     <ClInclude Include="Bolt.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Bolt</Filter>
@@ -4864,7 +4864,7 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\SVD</Filter>
     </ClInclude>
     <ClInclude Include="WeaponAK74.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon AK74</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\AK74</Filter>
     </ClInclude>
     <ClInclude Include="WeaponLR300.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\LR300</Filter>
@@ -4881,19 +4881,19 @@
     <ClInclude Include="WeaponBinoculars.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponBinocularsVision.h">
+    <ClInclude Include="BinocularsVision.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
     </ClInclude>
     <ClInclude Include="WeaponShotgun.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Shotgun</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Shotgun</Filter>
     </ClInclude>
     <ClInclude Include="WeaponFORT.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\FORT</Filter>
     </ClInclude>
     <ClInclude Include="WeaponRG6.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon RG6</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RG6</Filter>
     </ClInclude>
-    <ClInclude Include="weaponBM16.h">
+    <ClInclude Include="WeaponBM16.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\BM-16</Filter>
     </ClInclude>
     <ClInclude Include="WeaponHUD.h">
@@ -7536,25 +7536,22 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Walther 99</Filter>
     </ClCompile>
     <ClCompile Include="WeaponVintorez.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Vintorez</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Vintorez</Filter>
     </ClCompile>
     <ClCompile Include="WeaponKnife.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Knife</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponKnife_script.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Knife</Filter>
-    </ClCompile>
     <ClCompile Include="WeaponGroza.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Groza</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Groza</Filter>
     </ClCompile>
     <ClCompile Include="RGD5.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RGD5</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Grenade RGD5</Filter>
     </ClCompile>
     <ClCompile Include="WeaponVal.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Val</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Val</Filter>
     </ClCompile>
     <ClCompile Include="WeaponUSP45.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon USP45</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\USP45</Filter>
     </ClCompile>
     <ClCompile Include="Bolt.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Bolt</Filter>
@@ -7565,9 +7562,6 @@
     <ClCompile Include="WeaponRPG7.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG7</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponRPG7_script.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG7</Filter>
-    </ClCompile>
     <ClCompile Include="F1.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Grenade F1</Filter>
     </ClCompile>
@@ -7575,7 +7569,7 @@
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\SVD</Filter>
     </ClCompile>
     <ClCompile Include="WeaponAK74.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon AK74</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\AK74</Filter>
     </ClCompile>
     <ClCompile Include="WeaponLR300.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\LR300</Filter>
@@ -7586,37 +7580,25 @@
     <ClCompile Include="WeaponHPSA.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\HPSA</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponHPSA_script.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\HPSA</Filter>
-    </ClCompile>
     <ClCompile Include="WeaponPM.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\PM</Filter>
     </ClCompile>
     <ClCompile Include="WeaponBinoculars.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponBinocularsVision.cpp">
+    <ClCompile Include="BinocularsVision.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Binocular</Filter>
     </ClCompile>
     <ClCompile Include="WeaponShotgun.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Shotgun</Filter>
-    </ClCompile>
-    <ClCompile Include="weaponshotgun_script.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon Shotgun</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Shotgun</Filter>
     </ClCompile>
     <ClCompile Include="WeaponFORT.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\FORT</Filter>
     </ClCompile>
     <ClCompile Include="WeaponRG6.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon RG6</Filter>
+      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RG6</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponRG6_script.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Weapon RG6</Filter>
-    </ClCompile>
-    <ClCompile Include="weaponBM16.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\BM-16</Filter>
-    </ClCompile>
-    <ClCompile Include="weaponBM16_script.cpp">
+    <ClCompile Include="WeaponBM16.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\BM-16</Filter>
     </ClCompile>
     <ClCompile Include="WeaponHUD.cpp">

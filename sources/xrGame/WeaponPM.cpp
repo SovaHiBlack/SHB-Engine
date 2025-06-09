@@ -5,23 +5,23 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-CWeaponPM::CWeaponPM() : CWeaponPistol("PM")
+CWeaponPM::CWeaponPM( ) : CWeaponPistol("PM")
 {
-	m_weight = .5f;
+	m_weight = 0.5f;
 	m_slot = 1;
 }
 
-CWeaponPM::~CWeaponPM()
+CWeaponPM::~CWeaponPM( )
 { }
 
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CWeaponPM::script_register	(lua_State *L)
+void CWeaponPM::script_register(lua_State* L)
 {
 	module(L)
-	[
-		class_<CWeaponPM,CGameObject>("CWeaponPM")
-			.def(constructor<>())
-	];
+		[
+			class_<CWeaponPM, CGameObject>("CWeaponPM")
+				.def(constructor<>( ))
+		];
 }
