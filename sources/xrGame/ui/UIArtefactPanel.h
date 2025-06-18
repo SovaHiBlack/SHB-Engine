@@ -1,6 +1,6 @@
 #pragma once
 #include "UIWindow.h"
-#include "../UIStaticItem.h"
+#include "UIStaticItem.h"
 
 class CUIXml;
 class CArtefact;

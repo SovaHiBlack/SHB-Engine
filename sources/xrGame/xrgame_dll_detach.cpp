@@ -3,11 +3,11 @@
 #include "AISpace.h"
 #include "object_factory.h"
 #include "ai/monsters/ai_monster_squad_manager.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 #include "EntityAlive.h"
 #include "ui/UIInventoryUtilities.h"//
-#include "UI/UIXmlInit.h"
+#include "ui/UIXmlInit.h"
 
 #include "InfoPortion.h"
 #include "PhraseDialog.h"
@@ -21,7 +21,7 @@
 #include "CharacterRank.h"
 #include "CharacterReputation.h"
 
-#include "profiler.h"
+#include "Profiler.h"
 
 #include "sound_collection_storage.h"
 #include "RelationRegistry.h"

@@ -10,7 +10,7 @@
 #include "danger_manager.h"
 #include "custommonster.h"
 #include "memory_space.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "memory_manager.h"
 #include "enemy_manager.h"
 #include "Actor.h"

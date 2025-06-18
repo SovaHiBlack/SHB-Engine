@@ -1,15 +1,11 @@
 // File:		UISubLine.cpp
 // Description:	Text line. Owns color attribute
-// Created:		04.04.2005
-// Author:		Serge Vynnycheko
-// Mail:		narrator@gsc-game.kiev.ua
-//
-// Copyright 2005 GSC Game World
+
 
 #include "stdafx.h"
 #include "UISubLine.h"
 //#include "uilinestd.h"
-#include "../ui_base.h"
+#include "ui_base.h"
 
 //#define LOG_ALL_LINES
 #ifdef LOG_ALL_LINES

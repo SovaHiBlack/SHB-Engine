@@ -20,7 +20,7 @@
 #include "level.h"
 #include "script_game_object.h"
 #include "AISpace.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "Actor.h"
 #include "ai/stalker/ai_stalker.h"
 #include "movement_manager.h"

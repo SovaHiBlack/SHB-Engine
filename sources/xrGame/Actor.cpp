@@ -25,7 +25,7 @@
 #include "CharacterInfo.h"
 #include "CustomOutfit.h"
 #include "actorcondition.h"
-#include "UIGameCustom.h"
+#include "ui/UIGameCustom.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 
 // breakpoints
@@ -45,7 +45,7 @@
 #include "game_cl_base.h"
 #include "game_cl_single.h"
 #include "xrmessages.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "UsableScriptObject.h"
 #include "..\XR_3DA\cl_intersect.h"
 #include "ExtendedGeom.h"

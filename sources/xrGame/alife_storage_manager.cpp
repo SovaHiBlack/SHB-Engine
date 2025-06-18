@@ -19,7 +19,7 @@
 #include "level.h"
 #include "..\XR_3DA\x_ray.h"
 #include "saved_game_wrapper.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "..\XR_3DA\igame_persistent.h"
 
 using namespace ALife;

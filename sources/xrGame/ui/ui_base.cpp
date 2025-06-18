@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "ui_base.h"
-#include "GamePersistent.h"
+#include "..\GamePersistent.h"
 #include "UICursor.h"
-#include "HUDManager.h"
+#include "..\HUDManager.h"
 
 CUICursor* GetUICursor( )
 {

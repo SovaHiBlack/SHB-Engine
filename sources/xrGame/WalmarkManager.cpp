@@ -3,7 +3,7 @@
 #include "Level.h"
 #include "GameMtlLib.h"
 #include "CalculateTriangle.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 #ifdef DEBUG
 #include "phdebug.h"

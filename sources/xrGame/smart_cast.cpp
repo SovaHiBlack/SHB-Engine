@@ -16,7 +16,7 @@
 #		include "Actor.h"
 #		include "custommonster.h"
 #		include "ai/stalker/ai_stalker.h"
-#		include "ui/uiwindow.h"
+#		include "ui/UIWindow.h"
 #		include "CustomZone.h"
 #		include "Weapon.h"
 #		include "CameraEffector.h"

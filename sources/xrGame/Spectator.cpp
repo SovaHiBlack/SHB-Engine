@@ -21,7 +21,7 @@
 #include "Inventory.h"
 #include "HudItem.h"
 #include "clsid_game.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "MapManager.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
@@ -199,7 +199,7 @@ void CSpectator::IR_OnKeyboardHold(s32 cmd)
 		return;
 	}
 
-	game_PlayerState* PS = Game( ).local_player;
+//	game_PlayerState* PS = Game( ).local_player;
 
 	if ((cam_active == eacFreeFly) || (cam_active == eacFreeLook))
 	{

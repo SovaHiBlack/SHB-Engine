@@ -3,7 +3,8 @@
 //////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "uiwindow.h"
+#include "UIWindow.h"
+
 class CUIDialogHolder;
 
 class CUIDialogWnd : public CUIWindow

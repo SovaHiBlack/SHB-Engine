@@ -1,17 +1,17 @@
 #include "stdafx.h"
 #include "UI.h"
-#include "..\XR_3DA\Console.h"
-#include "Entity.h"
-#include "HUDManager.h"
+#include "..\..\XR_3DA\Console.h"
+#include "..\Entity.h"
+#include "..\HUDManager.h"
 #include "UIGame.h"
-#include "Actor.h"
-#include "level.h"
-#include "game_cl_base.h"
-#include "ui/UIMainIngameWnd.h"//
-#include "ui/UIMessagesWindow.h"//
-#include "ui/UIPdaWnd.h"//
-#include "Inventory.h"
-#include "HudItem.h"
+#include "..\Actor.h"
+#include "..\level.h"
+#include "..\game_cl_base.h"
+#include "UIMainIngameWnd.h"//
+#include "UIMessagesWindow.h"//
+#include "UIPdaWnd.h"//
+#include "..\Inventory.h"
+#include "..\HudItem.h"
 
 CUI::CUI(CHUDManager* p)
 {

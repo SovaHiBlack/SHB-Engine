@@ -53,7 +53,7 @@ struct S2DVert
 typedef svector<S2DVert, UI_FRUSTUM_SAFE>		sPoly2D;
 
 class C2DFrustum
-{//only rect form
+{	//only rect form
 	svector<fPlane2, FRUSTUM_MAXPLANES> planes;
 	fRect						m_rect;
 

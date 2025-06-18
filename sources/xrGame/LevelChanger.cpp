@@ -15,7 +15,7 @@
 #include "game_level_cross_table.h"
 
 #include "HudManager.h"
-#include "UIGame.h"
+#include "ui/UIGame.h"
 
 #include "patrol_path.h"
 #include "patrol_path_storage.h"

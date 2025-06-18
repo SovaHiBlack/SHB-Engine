@@ -1,33 +1,42 @@
+// ========================================== SHB_Engine ==========================================
+// Projekt		: Game
+// Module		: UIXmlInit.cpp
+// Author		: Anahoret
+// Description	: 
+// ========================================= SovaHiBlack© =========================================
+
 #include "stdafx.h"
-#include "UIXmlInit.h"
+#pragma hdrstop
+
+#include "../game_base_space.h"
 #include "../hudmanager.h"
-#include "../UI.h"
 #include "../level.h"
-#include "../UICustomItem.h"
-#include "../string_table.h"
-#include "UIFrameWindow.h"
-#include "UIStatic.h"
+#include "../StringTable.h"
+#include "UI.h"
+#include "UICustomItem.h"
+#include "UIAnimatedStatic.h"
 #include "UICheckButton.h"
+#include "UIComboBox.h"
 #include "UICustomSpin.h"
-#include "UIRadioButton.h"
-#include "UIProgressBar.h"
-#include "UIProgressShape.h"
-#include "UIListWnd.h"
-#include "UITabControl.h"
-#include "UILabel.h"
+#include "UIDragDropListEx.h"
 #include "UIEditBox.h"
 #include "UIEditBoxEx.h"
-#include "UITextBanner.h"
-#include "UIMultiTextStatic.h"
-#include "UIAnimatedStatic.h"
+#include "UIFrameWindow.h"
+#include "UILabel.h"
 #include "UIListBox.h"
-#include "UIComboBox.h"
-#include "UITrackBar.h"
-#include "../game_base_space.h"
+#include "UIListWnd.h"
+#include "UIMultiTextStatic.h"
+#include "UIProgressBar.h"
+#include "UIProgressShape.h"
+#include "UIRadioButton.h"
+#include "UIStatic.h"
+#include "UITabControl.h"
+#include "UITextBanner.h"
 #include "UITextureMaster.h"
-#include "UIDragDropListEx.h"
+#include "UITrackBar.h"
+#include "UIXmlInit.h"
 
-extern int keyname_to_dik(pcstr);
+extern s32 keyname_to_dik(pcstr);
 
 #define SMALL_FONT_NAME			"small"
 #define MEDIUM_FONT_NAME		"medium"

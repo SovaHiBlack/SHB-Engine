@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ui/uiabstract.h"
+#include "uiabstract.h"
 #include "uicustomitem.h"
 
 void		CreateUIGeom( );

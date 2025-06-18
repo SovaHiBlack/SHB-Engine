@@ -6,14 +6,14 @@
 #include "../../../ActorEffector.h"
 #include "../ai_monster_effector.h"
 #include "../../../hudmanager.h"
-#include "../../../ui.h"
+#include "..\../../ui/ui.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../level.h"
 #include "../../../LevelDebug.h"
 #include "../../../sound_player.h"
 #include "../../../ai_monster_space.h"
 //#include "../../../ui/UIMainIngameWnd.h"//
-#include "../../../UIGameCustom.h"
+#include "../../../ui/UIGameCustom.h"
 #include "../../../ui/UIStatic.h"
 
 #include "../monster_velocity_space.h"

@@ -12,7 +12,7 @@
 #include "AISpace.h"
 #include "level_graph.h"
 #include "space_restriction_base.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 const f32 dependent_distance = 100.0f;
 

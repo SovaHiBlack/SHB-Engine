@@ -29,7 +29,7 @@
 #include "alife_object_registry.h"
 
 #include "CustomOutfit.h"
-#include "UIGame.h"
+#include "ui/UIGame.h"
 #include "HUDmanager.h"
 #include "ui\UITalkWnd.h"
 

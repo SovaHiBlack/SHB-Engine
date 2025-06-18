@@ -2,7 +2,7 @@
 #include "UIPdaWnd.h"//
 #include "../PDA.h"
 
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
 #include "UIInventoryUtilities.h"//
 

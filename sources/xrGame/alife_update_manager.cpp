@@ -20,7 +20,7 @@
 #include "graph_engine.h"
 #include "..\XR_3DA\x_ray.h"
 #include "restriction_space.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "mt_config.h"
 
 using namespace ALife;

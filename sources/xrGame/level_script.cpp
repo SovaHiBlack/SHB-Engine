@@ -28,7 +28,7 @@
 #include "MapManager.h"
 #include "phworld.h"
 #include "ActorEffector.h"
-#include "UIGameCustom.h"
+#include "ui/UIGameCustom.h"
 #include "postprocessanimator.h"
 #include "ActorStatisticManager.h"
 #include "RelationRegistry.h"

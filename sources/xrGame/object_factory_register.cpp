@@ -79,6 +79,7 @@
 #	include "WeaponSVD.h"
 #	include "WeaponSVU.h"
 #	include "WeaponRPG7.h"
+#	include "WeaponVAL.h"
 #	include "WeaponVintorez.h"
 #	include "WeaponWalther.h"
 #	include "WeaponUSP45.h"
@@ -144,7 +145,7 @@
 
 #	include "game_cl_single.h"
 
-#	include "UIGame.h"
+#	include "ui/UIGame.h"
 #	include	"climableobject.h"
 #	include "SpaceRestrictor.h"
 #	include "SmartZone.h"

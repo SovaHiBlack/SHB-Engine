@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "UICarBodyWnd.h"//
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
 #include "../HUDManager.h"
 #include "../level.h"

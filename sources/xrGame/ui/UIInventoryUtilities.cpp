@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "UIInventoryUtilities.h"//
 #include "../WeaponAmmo.h"
-#include "../UIStaticItem.h"
+#include "UIStaticItem.h"
 #include "UIStatic.h"
 #include "../EatableItem.h"
 #include "../Level.h"
 #include "../HUDManager.h"
 #include "../date_time.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "../Inventory.h"
 #include "../InventoryOwner.h"
 

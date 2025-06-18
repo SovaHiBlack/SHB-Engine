@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "UITradeWnd.h"
 
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
 
 #include "../Entity.h"
@@ -9,13 +9,13 @@
 #include "../WeaponAmmo.h"
 #include "../Actor.h"
 #include "../Trade.h"
-#include "../UIGame.h"
+#include "UIGame.h"
 #include "UIInventoryUtilities.h"//
 #include "../InventoryOwner.h"
 #include "../EatableItem.h"
 #include "../Inventory.h"
 #include "../level.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "../CharacterInfo.h"
 #include "UIMultiTextStatic.h"
 #include "UI3tButton.h"

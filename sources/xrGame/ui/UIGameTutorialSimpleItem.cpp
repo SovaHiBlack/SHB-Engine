@@ -7,7 +7,7 @@
 #include "../object_broker.h"
 #include "../..\XR_3DA\Input.h"
 #include "../xr_level_controller.h"
-#include "../UIGame.h"
+#include "UIGame.h"
 #include "../HUDManager.h"
 #include "../level.h"
 #include "UIPdaWnd.h"//

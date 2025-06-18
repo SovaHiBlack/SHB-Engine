@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 #include "UIWindow.h"
-#include "../UICursor.h"
+#include "UICursor.h"
 #include "../MainMenu.h"
 
 poolSS< _12b, 128>	ui_allocator;
@@ -64,15 +64,15 @@ void draw_rect(fRect& r, u32 color)
 	u32 vOffset;
 	FVF::TL* pv = (FVF::TL*) RCache.Vertex.Lock(5, dbg_draw_gm.stride( ), vOffset);
 
-	pv->set(r.lt.x, r.lt.y, color, 0, 0);
+	pv->set(r.lt.x, r.lt.y, color, 0.0f, 0.0f);
 	++pv;
-	pv->set(r.rb.x, r.lt.y, color, 0, 0);
+	pv->set(r.rb.x, r.lt.y, color, 0.0f, 0.0f);
 	++pv;
-	pv->set(r.rb.x, r.rb.y, color, 0, 0);
+	pv->set(r.rb.x, r.rb.y, color, 0.0f, 0.0f);
 	++pv;
-	pv->set(r.lt.x, r.rb.y, color, 0, 0);
+	pv->set(r.lt.x, r.rb.y, color, 0.0f, 0.0f);
 	++pv;
-	pv->set(r.lt.x, r.lt.y, color, 0, 0);
+	pv->set(r.lt.x, r.lt.y, color, 0.0f, 0.0f);
 	++pv;
 
 	RCache.Vertex.Unlock(5, dbg_draw_gm.stride( ));

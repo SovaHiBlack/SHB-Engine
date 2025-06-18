@@ -1,15 +1,12 @@
 //=============================================================================
 //  Filename:   UITreeViewItem.cpp
-//	Created by Roman E. Marchenko, vortex@gsc-game.kiev.ua
-//	Copyright 2004. GSC Game World
-//	---------------------------------------------------------------------------
 //  TreeView Item class
 //=============================================================================
 
 #include "stdafx.h"
 #include "UITreeViewItem.h"
 #include "UIListWnd.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 #define UNREAD_COLOR	0xff00ff00
 #define READ_COLOR		0xffffffff

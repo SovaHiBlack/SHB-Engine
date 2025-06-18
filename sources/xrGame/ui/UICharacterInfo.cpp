@@ -6,10 +6,10 @@
 #include "../Actor.h"
 #include "../level.h"
 #include "../CharacterInfo.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "../RelationRegistry.h"
 
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
 
 #include "uistatic.h"

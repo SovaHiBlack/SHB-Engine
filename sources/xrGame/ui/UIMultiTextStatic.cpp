@@ -1,7 +1,5 @@
 //=============================================================================
 //  Filename:   UIMultiTextStatic.cpp
-//	Created by Roman E. Marchenko, vortex@gsc-game.kiev.ua
-//	Copyright 2004. GSC Game World
 //	---------------------------------------------------------------------------
 //  Статик контрол на котором можно выводить множество надписей различными
 //	шрифтами, цветами и даже с анимацией
@@ -10,7 +8,7 @@
 #include "stdafx.h"
 #include "UIMultiTextStatic.h"
 #include "../..\XR_3DA\CustomHUD.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 //////////////////////////////////////////////////////////////////////////
 CUIMultiTextStatic::CUIMultiTextStatic( )

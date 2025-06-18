@@ -2,14 +2,14 @@
 
 #include "GameTaskManager.h"
 #include "alife_registry_wrappers.h"
-#include "ui/xrUIXmlParser.h"
+#include "ui/UIXml.h"
 #include "GameTask.h"
 #include "Level.h"
 #include "MapLocation.h"
 #include "MapManager.h"
 #include "HUDManager.h"
 #include "Actor.h"
-#include "UIGame.h"
+#include "ui/UIGame.h"
 #include "ui/UIPdaWnd.h"//
 #include "EncyclopediaArticle.h"
 #include "ui/UIEventsWnd.h"//

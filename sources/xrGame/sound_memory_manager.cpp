@@ -20,9 +20,8 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "ai/stalker/ai_stalker.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "ClientSpawnManager.h"
-#include "memory_manager.h"
 #include "..\XR_3DA\IGame_Persistent.h"
 
 #ifndef MASTER_GOLD

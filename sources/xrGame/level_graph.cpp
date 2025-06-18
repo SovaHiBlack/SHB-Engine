@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "level_graph.h"
-#include "profiler.h"
+#include "Profiler.h"
 
 pcstr LEVEL_GRAPH_NAME = "level.ai";
 

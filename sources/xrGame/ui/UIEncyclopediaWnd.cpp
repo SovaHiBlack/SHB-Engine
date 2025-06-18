@@ -21,7 +21,7 @@
 #include "../alife_registry_wrappers.h"
 #include "../Actor.h"
 #include "../object_broker.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 #define				ENCYCLOPEDIA_DIALOG_XML		"encyclopedia.xml"
 

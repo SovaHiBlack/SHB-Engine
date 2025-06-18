@@ -4,14 +4,14 @@
 // Author		: Anahoret
 // Description	: содержит общую информацию о текстурах. Возможность инициализации внешних текстур
 //				  через интерфейс IUISimpleTextureControl
-// ===================================== SovaHiBlack© - 2024 ======================================
+// ========================================= SovaHiBlack© =========================================
 
 #include "stdafx.h"
 #pragma hdrstop
 
 #include "UITextureMaster.h"
 #include "uiabstract.h"
-#include "xrUIXmlParser.h"
+#include "UIXml.h"
 
 xr_map<shared_str, STextureInfo>	CUITextureMaster::m_textures;
 
@@ -19,14 +19,6 @@ xr_map<shared_str, STextureInfo>	CUITextureMaster::m_textures;
 u32									CUITextureMaster::m_time = 0;
 #endif // def DEBUG
 
-void CUITextureMaster::WriteLog( )
-{
-
-#ifdef DEBUG
-	Msg("UI texture manager work time is %d ms", m_time);
-#endif // def DEBUG
-
-}
 void CUITextureMaster::ParseShTexInfo(pcstr xml_file)
 {
 	CUIXml uiXml;
@@ -48,11 +40,6 @@ void CUITextureMaster::ParseShTexInfo(pcstr xml_file)
 
 		m_textures.insert(mk_pair(id, info));
 	}
-}
-
-bool CUITextureMaster::IsSh(pcstr texture_name)
-{
-	return strstr(texture_name, "\\") ? false : true;
 }
 
 void CUITextureMaster::InitTexture(pcstr texture_name, IUISimpleTextureControl* tc)
@@ -117,7 +104,7 @@ void CUITextureMaster::InitTexture(pcstr texture_name, pcstr shader_name, IUISim
 
 f32 CUITextureMaster::GetTextureHeight(pcstr texture_name)
 {
-	xr_map<shared_str, STextureInfo>::iterator	it;
+	xr_map<shared_str, STextureInfo>::iterator it;
 	it = m_textures.find(texture_name);
 	if (it != m_textures.end( ))
 	{
@@ -125,20 +112,7 @@ f32 CUITextureMaster::GetTextureHeight(pcstr texture_name)
 	}
 
 	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
-	return 0;
-}
-
-fRect CUITextureMaster::GetTextureRect(pcstr texture_name)
-{
-	xr_map<shared_str, STextureInfo>::iterator it;
-	it = m_textures.find(texture_name);
-	if (it != m_textures.end( ))
-	{
-		return (*it).second.rect;
-	}
-
-	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
-	return fRect( );
+	return 0.0f;
 }
 
 f32 CUITextureMaster::GetTextureWidth(pcstr texture_name)
@@ -150,8 +124,21 @@ f32 CUITextureMaster::GetTextureWidth(pcstr texture_name)
 		return (*it).second.rect.width( );
 	}
 
-	R_ASSERT3(false, "CUITextureMaster::GetTextureHeight Can't find texture", texture_name);
-	return 0;
+	R_ASSERT3(false, "CUITextureMaster::GetTextureWidth Can't find texture", texture_name);
+	return 0.0f;
+}
+
+fRect CUITextureMaster::GetTextureRect(pcstr texture_name)
+{
+	xr_map<shared_str, STextureInfo>::iterator it;
+	it = m_textures.find(texture_name);
+	if (it != m_textures.end( ))
+	{
+		return (*it).second.rect;
+	}
+
+	R_ASSERT3(false, "CUITextureMaster::GetTextureRect Can't find texture", texture_name);
+	return fRect( );
 }
 
 pcstr CUITextureMaster::GetTextureFileName(pcstr texture_name)
@@ -165,6 +152,15 @@ pcstr CUITextureMaster::GetTextureFileName(pcstr texture_name)
 
 	R_ASSERT3(false, "CUITextureMaster::GetTextureFileName Can't find texture", texture_name);
 	return 0;
+}
+
+void CUITextureMaster::GetTextureShader(pcstr texture_name, ref_shader& sh)
+{
+	xr_map<shared_str, STextureInfo>::iterator it;
+	it = m_textures.find(texture_name);
+	R_ASSERT3(it != m_textures.end( ), "can't find texture", texture_name);
+
+	sh.create("hud\\default", *((*it).second.file));
 }
 
 STextureInfo CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_name)
@@ -182,11 +178,16 @@ STextureInfo CUITextureMaster::FindItem(pcstr texture_name, pcstr def_texture_na
 	}
 }
 
-void CUITextureMaster::GetTextureShader(pcstr texture_name, ref_shader& sh)
+void CUITextureMaster::WriteLog( )
 {
-	xr_map<shared_str, STextureInfo>::iterator it;
-	it = m_textures.find(texture_name);
-	R_ASSERT3(it != m_textures.end( ), "can't find texture", texture_name);
 
-	sh.create("hud\\default", *((*it).second.file));
+#ifdef DEBUG
+	Msg("UI texture manager work time is %d ms", m_time);
+#endif // def DEBUG
+
+}
+
+bool CUITextureMaster::IsSh(pcstr texture_name)
+{
+	return strstr(texture_name, "\\") ? false : true;
 }

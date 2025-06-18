@@ -1,10 +1,5 @@
 // file:		CCustomSpin.h
 // description:	base class for CSpinNum & CSpinText
-// created:		15.06.2005
-// author:		Serge Vynnychenko
-// mail:		narrator@gsc-game.kiev.ua
-//
-// copyright 2005 GSC Game World
 
 #pragma once
 #include "UIWindow.h"

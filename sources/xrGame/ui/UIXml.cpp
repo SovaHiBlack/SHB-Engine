@@ -1,9 +1,17 @@
-#include "stdafx.h"
+// ========================================== SHB_Engine ==========================================
+// Projekt		: Game
+// Module		: UIXml.cpp
+// Author		: Anahoret
+// Description	: 
+// ========================================= SovaHiBlack© =========================================
 
-#include "xrUIXmlParser.h"
+#include "stdafx.h"
+#pragma hdrstop
+
+#include "UIXml.h"
 
 #ifdef XRGAME_EXPORTS
-#include "../ui_base.h"
+#include "ui_base.h"
 #endif
 
 shared_str CUIXml::correct_file_name(pcstr path, pcstr fn)
@@ -27,17 +35,17 @@ shared_str CUIXml::correct_file_name(pcstr path, pcstr fn)
 //#define LOG_ALL_XMLS
 #ifdef LOG_ALL_XMLS
 s32 ListXmlCount = 0;
-struct DBGList_
+struct SDBGList
 {
-	s32				num;
-	bool			closed;
+	s32 num;
+	bool closed;
 };
 
-xr_vector<DBGList_>	dbg_list_xmls;
+xr_vector<SDBGList>	dbg_list_xmls;
 void dump_list_xmls( )
 {
 	Msg("------Total  xmls %d", dbg_list_xmls.size( ));
-	xr_vector<DBGList_>::iterator _it = dbg_list_xmls.begin( );
+	xr_vector<SDBGList>::iterator _it = dbg_list_xmls.begin( );
 	for (; _it != dbg_list_xmls.end( ); ++_it)
 	{
 		if (!(*_it).closed)
@@ -57,7 +65,7 @@ CUIXml::CUIXml( )
 #ifdef LOG_ALL_XMLS
 	ListXmlCount++;
 	m_dbg_id = ListXmlCount;
-	dbg_list_xmls.push_back(DBGList_( ));
+	dbg_list_xmls.push_back(SDBGList( ));
 	dbg_list_xmls.back( ).num = m_dbg_id;
 	dbg_list_xmls.back( ).closed = false;
 #endif
@@ -68,7 +76,7 @@ CUIXml::~CUIXml( )
 {
 
 #ifdef LOG_ALL_XMLS
-	xr_vector<DBGList_>::iterator _it = dbg_list_xmls.begin( );
+	xr_vector<SDBGList>::iterator _it = dbg_list_xmls.begin( );
 	bool bOK = false;
 	for (; _it != dbg_list_xmls.end( ); ++_it)
 	{

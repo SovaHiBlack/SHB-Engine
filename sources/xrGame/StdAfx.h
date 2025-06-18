@@ -70,5 +70,4 @@ extern "C" {
 #include <luabind/out_value_policy.hpp>
 #include <luabind/iterator_policy.hpp>
 
-
 #include <depr/dplay8.h>// раньше небыло

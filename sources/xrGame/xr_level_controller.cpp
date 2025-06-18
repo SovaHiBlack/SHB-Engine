@@ -3,7 +3,7 @@
 #include "..\XR_3DA\Console.h"
 #include "..\XR_3DA\ConsoleCommand.h"
 #include "xr_level_controller.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 _binding	g_key_bindings[bindings_count];
 _key_group	g_current_keygroup = _sp;

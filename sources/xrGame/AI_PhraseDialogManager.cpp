@@ -11,7 +11,7 @@
 #include "CharacterInfo.h"
 #include "GameObject.h"
 #include "RelationRegistry.h"
-#include "UIGame.h"
+#include "ui/UIGame.h"
 #include "hudmanager.h"
 #include "level.h"
 #include "ui/UItalkWnd.h"

@@ -10,8 +10,8 @@
 #include "ui\UIXmlInit.h"
 #include <dinput.h>
 #include "ui\UIBtnHint.h"
-#include "UICursor.h"
-#include "string_table.h"
+#include "ui/UICursor.h"
+#include "StringTable.h"
 
 #include "object_broker.h"
 

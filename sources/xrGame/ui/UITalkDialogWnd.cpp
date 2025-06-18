@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "UITalkDialogWnd.h"
 
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
 #include "UIScrollView.h"
 #include "UI3tButton.h"
-#include "../UI.h"
+#include "UI.h"
 #include "UIInventoryUtilities.h"
 
 #include "../game_news.h"

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "MMSound.h"//
-#include "xrUIXmlParser.h"
+#include "UIXml.h"
 
 CMMSound::CMMSound( )
 { }

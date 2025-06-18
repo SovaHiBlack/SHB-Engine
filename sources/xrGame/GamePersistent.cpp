@@ -5,9 +5,9 @@
 #include "..\XR_3DA\Console.h"
 #include "gamemtllib.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "MainMenu.h"
-#include "UICursor.h"
+#include "ui/UICursor.h"
 #include "game_base_space.h"
 #include "level.h"
 #include "ParticlesObject.h"
@@ -28,7 +28,7 @@
 #include "HolderCustom.h"
 #include "game_sv_single.h"
 #include "xrServer.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "..\XR_3DA\x_ray.h"
 
 static pvoid	ode_alloc(size_t size)

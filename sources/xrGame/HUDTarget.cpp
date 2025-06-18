@@ -19,7 +19,7 @@
 #include "RelationRegistry.h"
 #include "CharacterInfo.h"
 
-#include "string_table.h"
+#include "StringTable.h"
 #include "EntityAlive.h"
 
 //#include "InventoryItem.h"

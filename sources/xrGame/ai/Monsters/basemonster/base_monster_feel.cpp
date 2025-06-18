@@ -21,11 +21,10 @@
 #include "../../../GameObject_space.h"
 #include "../../../ai_monster_space.h"
 #include "../control_animation_base.h"
-#include "../../../UIGameCustom.h"
+#include "../../../ui/UIGameCustom.h"
 #include "../../../UI/UIStatic.h"
 #include "../../../ai_object_location.h"
-#include "../../../profiler.h"
-#include "../../../ActorEffector.h"
+#include "../../../Profiler.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 
 void CBaseMonster::feel_sound_new(CObject* who, s32 eType, CSound_UserDataPtr user_data, const fVector3& Position, f32 power)

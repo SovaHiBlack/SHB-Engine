@@ -1,18 +1,12 @@
 // File:        UIComboBox.cpp
 // Description: guess :)
-// Created:     10.12.2004
-// Author:      Serhiy O. Vynnychenko
-// Mail:        narrator@gsc-game.kiev.ua
-// 
-// Copyright 2004 GSC Game World
-//
 
 #include "stdafx.h"
 #include "UIComboBox.h"
 #include "UITextureMaster.h"
 #include "UIScrollBar.h"
 #include "uilistboxitem.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 #define CB_HEIGHT 23.0f
 #define BTN_SIZE  23.0f

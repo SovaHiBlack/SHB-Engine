@@ -2,41 +2,41 @@
 
 #include <functional>// раньше не было
 
+#include "UIZoneMap.h"//
 #include "UIMainIngameWnd.h"//
 #include "UIMessagesWindow.h"//
-#include "../UIZoneMap.h"//
 
-#include <dinput.h>
 #include "../Actor.h"
-#include "../HUDManager.h"
-#include "../PDA.h"
-#include "../WeaponHUD.h"
-#include "../CharacterInfo.h"
-#include "../Inventory.h"
-#include "../UIGame.h"
-#include "../WeaponMagazined.h"
-#include "../Missile.h"
-#include "../Grenade.h"
-#include "../xrServer_objects_ALife.h"
-#include "../alife_simulator.h"
 #include "../alife_object_registry.h"
+#include "../alife_simulator.h"
+#include "../CharacterInfo.h"
 #include "../game_cl_base.h"
+#include "../Grenade.h"
+#include "../HUDManager.h"
+#include "../Inventory.h"
 #include "../level.h"
+#include "../Missile.h"
+#include "../PDA.h"
 #include "../seniority_hierarchy_holder.h"
+#include "UIGame.h"
+#include "../WeaponHUD.h"
+#include "../WeaponMagazined.h"
+#include "../xrServer_objects_ALife.h"
+#include <dinput.h>
 
+#include "../..\XR_3DA\LightAnimLibrary.h"
 #include "../date_time.h"
 #include "../xrServer_Objects_ALife_Monsters.h"
-#include "../..\XR_3DA\LightAnimLibrary.h"
 
 #include "UIInventoryUtilities.h"//
 
-#include "UIXmlInit.h"
-#include "UIPdaMsgListItem.h"//
-#include "../alife_registry_wrappers.h"
 #include "../actorcondition.h"
+#include "../alife_registry_wrappers.h"
+#include "UIPdaMsgListItem.h"//
+#include "UIXmlInit.h"
 
-#include "../string_table.h"
 #include "../clsid_game.h"
+#include "../StringTable.h"
 #include "UIArtefactPanel.h"//
 
 #ifdef DEBUG

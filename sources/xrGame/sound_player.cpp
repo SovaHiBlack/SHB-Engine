@@ -13,7 +13,7 @@
 #include "AISpace.h"
 #include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "sound_collection_storage.h"
 #include "object_broker.h"
 

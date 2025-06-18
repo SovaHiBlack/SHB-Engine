@@ -4,7 +4,7 @@
 #include "UIScrollBox.h"
 #include "UIXmlInit.h"
 #include "UITextureMaster.h"
-#include "..\UICursor.h"
+#include "UICursor.h"
 
 CUIScrollBar::CUIScrollBar( )
 {

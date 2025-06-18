@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "UIDialogHolder.h"
-#include "ui\UIDialogWnd.h"
+#include "UIDialogWnd.h"
 #include "UICursor.h"
-#include "level.h"
-#include "Actor.h"
-#include "xr_level_controller.h"
-#include "HUDManager.h"
+#include "..\level.h"
+#include "..\Actor.h"
+#include "..\xr_level_controller.h"
+#include "..\HUDManager.h"
 
 dlgItem::dlgItem(CUIWindow* pWnd)
 {

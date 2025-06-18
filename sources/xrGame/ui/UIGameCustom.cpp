@@ -7,7 +7,7 @@
 #include "ui/UIMultiTextStatic.h"
 #include "ui/UIXmlInit.h"
 #include "object_broker.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "ui/UIGameTutorial.h"
 #include "ui/uistatic.h"
 

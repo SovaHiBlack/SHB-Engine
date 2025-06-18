@@ -8,7 +8,7 @@
 #include "..\XR_3DA\igame_persistent.h"
 #include "PhysicsGamePars.h"
 #include "AISpace.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "xrServer.h"
 
 extern	pureFrame* g_pNetProcessor;

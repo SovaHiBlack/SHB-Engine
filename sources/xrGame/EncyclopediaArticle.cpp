@@ -5,7 +5,7 @@
 
 #include "stdafx.h"
 #include "EncyclopediaArticle.h"
-#include "ui/xrUIXmlParser.h"
+//#include "ui/UIXml.h"
 #include "ui/UIXmlInit.h"
 #include "ui/UIInventoryUtilities.h"
 #include "object_broker.h"

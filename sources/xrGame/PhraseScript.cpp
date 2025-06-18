@@ -8,7 +8,7 @@
 #include "InfoPortion.h"
 #include "InventoryOwner.h"
 #include "ai_debug.h"
-#include "ui/xrUIXmlParser.h"
+#include "ui/UIXml.h"
 #include "Actor.h"
 
 CPhraseScript::CPhraseScript( )

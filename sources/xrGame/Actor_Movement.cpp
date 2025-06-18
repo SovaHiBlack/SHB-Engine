@@ -11,8 +11,8 @@
 
 #include "level.h"
 #include "HUDManager.h"
-#include "UI.h"
-#include "string_table.h"
+#include "ui/UI.h"
+#include "StringTable.h"
 #include "actorcondition.h"
 #include "game_cl_base.h"
 #include "WeaponMagazined.h"

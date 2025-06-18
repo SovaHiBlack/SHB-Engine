@@ -4,7 +4,7 @@
 
 #ifdef XRGAME_EXPORTS
 #include "PhraseDialog.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 SSpecificCharacterData::SSpecificCharacterData( )
 {

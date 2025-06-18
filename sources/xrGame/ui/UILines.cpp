@@ -1,10 +1,5 @@
 // File:		UILines.cpp
 // Description:	Multi-line Text Control
-// Created:		12.03.2005
-// Author:		Serge Vynnycheko
-// Mail:		narrator@gsc-game.kiev.ua
-//
-// Copyright 2005 GSC Game World
 
 #include "stdafx.h"
 

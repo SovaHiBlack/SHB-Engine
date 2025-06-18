@@ -3,7 +3,7 @@
 // Module		: _limits.h
 // Author		: Anahoret
 // Description	: type limits definition
-// ===================================== SovaHiBlack© - 2022 ======================================
+// ========================================= SovaHiBlack© =========================================
 
 #pragma once
 #ifndef CORE__LIMITS_H_INCLUDED

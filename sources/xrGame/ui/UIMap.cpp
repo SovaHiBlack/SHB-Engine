@@ -2,7 +2,7 @@
 #include "../level.h"
 #include "../MapLocation.h"
 #include "../MapManager.h"
-#include "../UIMapSpot.h"
+#include "UIMapSpot.h"
 #include "UIMap.h"//
 #include "UIMapWnd.h"//
 #include "../..\XR_3DA\Input.h"		//remove me !!!

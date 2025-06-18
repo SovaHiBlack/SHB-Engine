@@ -26,7 +26,7 @@
 #include "ui/UIMainIngameWnd.h"//
 #include "PhysicsGamePars.h"
 #include "phworld.h"
-#include "string_table.h"
+#include "StringTable.h"
 #include "AutosaveManager.h"
 #include "AISpace.h"
 #include "ai/monsters/BaseMonster/base_monster.h"
@@ -48,7 +48,7 @@
 #endif // DEBUG
 
 #include "hudmanager.h"
-#include "UIGameCustom.h"
+#include "ui/UIGameCustom.h"
 #include "MapManager.h"
 #include "alife_graph_registry.h"
 #include "GamePersistent.h"

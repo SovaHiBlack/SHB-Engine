@@ -1,15 +1,9 @@
 // File:        UI3tButton.cpp
 // Description: Button with 3 texutres (for <enabled>, <disabled> and <touched> states)
-// Created:     07.12.2004
-// Author:      Serhiy 0. Vynnychenk0
-// Mail:        narrator@gsc-game.kiev.ua
-//
-// copyright 2004 GSC Game World
-//
+
 
 #include "stdafx.h"
 #include "UI3tButton.h"
-//#include "UIXmlInit.h"
 
 CUI3tButton::CUI3tButton( )
 {

@@ -6,7 +6,7 @@
 
 #include "../Actor.h"
 #include "../HUDManager.h"
-#include "../UIGame.h"
+#include "UIGame.h"
 #include "../PDA.h"
 #include "../CharacterInfo.h"
 #include "../level.h"
@@ -15,7 +15,7 @@
 #include "../PhraseDialogManager.h"
 
 #include "../game_cl_base.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "../xr_level_controller.h"
 #include "../..\XR_3DA\cameraBase.h"
 #include "UIXmlInit.h"

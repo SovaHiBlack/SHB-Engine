@@ -2,12 +2,12 @@
 
 #include "UIInventoryWnd.h"//
 
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 #include "../Actor.h"
-#include "../UIGame.h"
+#include "UIGame.h"
 #include "../hudmanager.h"
 
 #include "../CustomOutfit.h"

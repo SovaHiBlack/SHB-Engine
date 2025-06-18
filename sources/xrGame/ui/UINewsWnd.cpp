@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
 #include "UINewsWnd.h"//
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
-#include "../UI.h"
+#include "UI.h"
 #include "../HUDManager.h"
 #include "../level.h"
 #include "../game_news.h"

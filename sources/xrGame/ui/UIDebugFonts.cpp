@@ -11,7 +11,7 @@
 #include "UIDebugFonts.h"//
 #include <dinput.h>
 #include "../hudmanager.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 CUIDebugFonts::CUIDebugFonts( )
 {

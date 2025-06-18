@@ -7,7 +7,7 @@
 #include "clsid_game.h"
 #include "GamePersistent.h"
 #include "ui\UIMainInGameWnd.h"//
-#include "string_table.h"
+#include "StringTable.h"
 
 CFontManager::CFontManager( )
 {

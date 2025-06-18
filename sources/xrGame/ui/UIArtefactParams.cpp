@@ -3,7 +3,7 @@
 #include "UIStatic.h"
 #include "../object_broker.h"
 #include "UIXmlInit.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 
 CUIArtefactParams::CUIArtefactParams( )
 {

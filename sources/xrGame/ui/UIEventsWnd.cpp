@@ -16,7 +16,7 @@
 #include "../GameTask.h"
 #include "../MapLocation.h"
 #include "../MapManager.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "UITaskItem.h"//
 #include "../alife_registry_wrappers.h"
 #include "../EncyclopediaArticle.h"

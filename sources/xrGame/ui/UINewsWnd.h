@@ -1,6 +1,7 @@
 #pragma once
 
 #include "UIWindow.h"
+
 class CUIScrollView;
 struct SGameNewsData;
 

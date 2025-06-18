@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "GameTask.h"
-#include "ui/xrUIXmlParser.h"
+#include "ui/UIXml.h"
 #include "EncyclopediaArticle.h"
 #include "MapLocation.h"
 #include "MapManager.h"
@@ -17,7 +17,7 @@
 #include "alife_story_registry.h"
 #include "GameObject_space.h"
 #include "object_broker.h"
-#include "ui/uitexturemaster.h"
+#include "ui/UITextureMaster.h"
 
 ALife::_STORY_ID	story_id		(pcstr story_id);
 u16					storyId2GameId	(ALife::_STORY_ID);

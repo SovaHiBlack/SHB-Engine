@@ -19,7 +19,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "AISpace.h"
-#include "profiler.h"
+#include "Profiler.h"
 #include "Actor.h"
 #include "..\XR_3DA\camerabase.h"
 #include "gamepersistent.h"

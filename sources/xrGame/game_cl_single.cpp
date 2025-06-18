@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "game_cl_single.h"
-#include "UIGame.h"
+#include "ui/UIGame.h"
 #include "clsid_game.h"
 #include "Actor.h"
 

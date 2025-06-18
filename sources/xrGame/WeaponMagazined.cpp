@@ -15,7 +15,7 @@
 #include "xr_level_controller.h"
 #include "level.h"
 #include "object_broker.h"
-#include "string_table.h"
+#include "StringTable.h"
 
 #ifdef DEBUG
 #include "ai\stalker\ai_stalker.h"

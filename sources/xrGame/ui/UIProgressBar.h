@@ -1,6 +1,6 @@
 #pragma once
 
-#include "uiwindow.h"
+#include "UIWindow.h"
 #include "uibutton.h"
 #include "../script_export_space.h"
 

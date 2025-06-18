@@ -52,7 +52,7 @@ public:
 	{
 		return (*this);
 	}
-	pointer					allocate(size_type n, const void* p = 0) const
+	pointer					allocate(size_type n, pcvoid p = 0) const
 	{
 		VERIFY(1 == n);
 		return (pointer) ui_allocator.create( );
@@ -68,7 +68,7 @@ public:
 		_12b* p_ = (_12b*) p;
 		ui_allocator.destroy(p_);
 	}
-	void					deallocate(void* p, size_type n) const
+	void					deallocate(pvoid p, size_type n) const
 	{
 		VERIFY(1 == n);
 		_12b* p_ = (_12b*) p;
@@ -84,7 +84,8 @@ public:
 	}
 	size_type				max_size( ) const
 	{
-		size_type _Count = (size_type) (-1) / sizeof(T);	return (0 < _Count ? _Count : 1);
+		size_type _Count = (size_type) (-1) / sizeof(T);
+		return (0 < _Count ? _Count : 1);
 	}
 };
 
@@ -248,7 +249,6 @@ public:
 	//обновление окна передпрорисовкой
 	virtual void			Update( );
 
-
 	void			SetPPMode( );
 	void			ResetPPMode( );
 	IC bool			GetPPMode( )
@@ -260,7 +260,6 @@ public:
 	virtual void			Reset( );
 	void			ResetAll( );
 
-	//временно!!!! (а может уже и нет)
 	virtual void			SetFont(CGameFont* pFont)
 	{
 		m_pFont = pFont;

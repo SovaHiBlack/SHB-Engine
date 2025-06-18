@@ -4,7 +4,7 @@
 #include "actor_anim_defs.h"
 
 #include "hudmanager.h"
-#include "UI.h"
+#include "ui/UI.h"
 #include "Weapon.h"
 #include "Inventory.h"
 #include "Missile.h"

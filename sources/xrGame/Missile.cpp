@@ -15,15 +15,14 @@
 #include "characterphysicssupport.h"
 #include "Inventory.h"
 #include "..\XR_3DA\IGame_Persistent.h"
+#include "ui/UIProgressShape.h"
+#include "ui/UIXmlInit.h"
 
 #ifdef DEBUG
 #	include "phdebug.h"
 #endif
 
 #define PLAYING_ANIM_TIME 10000
-
-#include "ui/UIProgressShape.h"
-#include "ui/UIXmlInit.h"
 
 CUIProgressShape* g_MissileForceShape = NULL;
 

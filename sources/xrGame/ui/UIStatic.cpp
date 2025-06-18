@@ -6,8 +6,8 @@
 #include "../HUDManager.h"
 #include "../..\XR_3DA\LightAnimLibrary.h"
 #include "uilines.h"
-#include "../string_table.h"
-#include "../ui_base.h"
+#include "../StringTable.h"
+#include "ui_base.h"
 
 pcstr clDefault = "default";
 

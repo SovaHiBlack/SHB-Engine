@@ -834,7 +834,6 @@
     <ClInclude Include="MapLocation.h" />
     <ClInclude Include="MapLocation_defs.h" />
     <ClInclude Include="MapManager.h" />
-    <ClInclude Include="UIMapSpot.h" />
     <ClInclude Include="material_manager.h" />
     <ClInclude Include="material_manager_inline.h" />
     <ClInclude Include="MathUtils.h" />
@@ -1006,8 +1005,8 @@
     <ClInclude Include="pp_effector_distance.h" />
     <ClInclude Include="problem_solver.h" />
     <ClInclude Include="problem_solver_inline.h" />
-    <ClInclude Include="profiler.h" />
-    <ClInclude Include="profiler_inline.h" />
+    <ClInclude Include="Profiler.h" />
+    <ClInclude Include="Profiler_inline.h" />
     <ClInclude Include="PropertiesListTypes.h" />
     <ClInclude Include="property_evaluator.h" />
     <ClInclude Include="property_evaluator_const.h" />
@@ -1019,10 +1018,10 @@
     <ClInclude Include="property_storage_inline.h" />
     <ClInclude Include="PurchaseList.h" />
     <ClInclude Include="PurchaseList_inline.h" />
-    <ClInclude Include="quadtree.h" />
-    <ClInclude Include="quadtree_inline.h" />
+    <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="QuadTree_inline.h" />
     <ClInclude Include="RadioactiveZone.h" />
-    <ClInclude Include="random32.h" />
+    <ClInclude Include="Random32.h" />
     <ClInclude Include="RelationRegistry.h" />
     <ClInclude Include="RelationRegistry_defs.h" />
     <ClInclude Include="RelationRegistry_inline.h" />
@@ -1248,8 +1247,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StepManager.h" />
     <ClInclude Include="StepManager_defs.h" />
-    <ClInclude Include="string_table.h" />
-    <ClInclude Include="string_table_defs.h" />
+    <ClInclude Include="StringTable.h" />
+    <ClInclude Include="StringTable_defs.h" />
     <ClInclude Include="TeamBaseZone.h" />
     <ClInclude Include="team_hierarchy_holder.h" />
     <ClInclude Include="team_hierarchy_holder_inline.h" />
@@ -1282,16 +1281,14 @@
     <ClInclude Include="tri-colliderKNoOPC\dxTriList.h" />
     <ClInclude Include="tri-colliderknoopc\TriPrimitiveCollideClassDef.h" />
     <ClInclude Include="tri-colliderKNoOPC\__aabb_tri.h" />
-    <ClInclude Include="UI.h" />
-    <ClInclude Include="UICursor.h" />
-    <ClInclude Include="UICustomItem.h" />
-    <ClInclude Include="UIDialogHolder.h" />
-    <ClInclude Include="UIFrameRect.h" />
-    <ClInclude Include="UIGameCustom.h" />
-    <ClInclude Include="UIGame.h" />
-    <ClInclude Include="UIGame_custom_script.h" />
-    <ClInclude Include="UIStaticItem.h" />
-    <ClInclude Include="UIZoneMap.h" />
+    <ClInclude Include="ui\UI.h" />
+    <ClInclude Include="ui\UICursor.h" />
+    <ClInclude Include="ui\UICustomItem.h" />
+    <ClInclude Include="ui\UIDialogHolder.h" />
+    <ClInclude Include="ui\UIFrameRect.h" />
+    <ClInclude Include="ui\UIGame.h" />
+    <ClInclude Include="ui\UIGameCustom.h" />
+    <ClInclude Include="ui\UIGame_custom_script.h" />
     <ClInclude Include="ui\UIMapHint.h" />
     <ClInclude Include="ui\MMSound.h" />
     <ClInclude Include="ui\UI3tButton.h" />
@@ -1344,6 +1341,7 @@
     <ClInclude Include="ui\UIListWnd_inline.h" />
     <ClInclude Include="ui\UIMainIngameWnd.h" />
     <ClInclude Include="ui\UIMap.h" />
+    <ClInclude Include="ui\UIMapSpot.h" />
     <ClInclude Include="ui\UIMapWnd.h" />
     <ClInclude Include="ui\UIMapWndActions.h" />
     <ClInclude Include="ui\UIMapWndActionsSpace.h" />
@@ -1384,6 +1382,7 @@
     <ClInclude Include="ui\UISpinText.h" />
     <ClInclude Include="ui\UIStalkersRankingWnd.h" />
     <ClInclude Include="ui\UIStatic.h" />
+    <ClInclude Include="ui\UIStaticItem.h" />
     <ClInclude Include="ui\UISubLine.h" />
     <ClInclude Include="ui\UITabButton.h" />
     <ClInclude Include="ui\UITabControl.h" />
@@ -1402,9 +1401,10 @@
     <ClInclude Include="ui\UIWpnParams.h" />
     <ClInclude Include="ui\UIXmlInit.h" />
     <ClInclude Include="ui\UIArtefactParams.h" />
+    <ClInclude Include="ui\UIZoneMap.h" />
+    <ClInclude Include="ui\ui_base.h" />
     <ClInclude Include="ui\UI_IB_Static.h" />
-    <ClInclude Include="ui\xrUIXmlParser.h" />
-    <ClInclude Include="ui_base.h" />
+    <ClInclude Include="ui\UIXml.h" />
     <ClInclude Include="UsableScriptObject.h" />
     <ClInclude Include="vertex_allocator_fixed.h" />
     <ClInclude Include="vertex_allocator_fixed_inline.h" />
@@ -1903,7 +1903,6 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MapLocation.cpp" />
     <ClCompile Include="MapManager.cpp" />
-    <ClCompile Include="UIMapSpot.cpp" />
     <ClCompile Include="material_manager.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Medkit.cpp" />
@@ -2004,7 +2003,7 @@
     <ClCompile Include="PostprocessAnimator.cpp" />
     <ClCompile Include="pp_effector_custom.cpp" />
     <ClCompile Include="pp_effector_distance.cpp" />
-    <ClCompile Include="profiler.cpp">
+    <ClCompile Include="Profiler.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="property_evaluator_script.cpp" />
@@ -2012,7 +2011,7 @@
     <ClCompile Include="PurchaseList.cpp" />
     <ClCompile Include="r2_test_hw.cpp" />
     <ClCompile Include="RadioactiveZone.cpp" />
-    <ClCompile Include="random32.cpp" />
+    <ClCompile Include="Random32.cpp" />
     <ClCompile Include="RelationRegistry.cpp" />
     <ClCompile Include="RelationRegistry_actions.cpp" />
     <ClCompile Include="RelationRegistry_fights.cpp" />
@@ -2188,7 +2187,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="StepManager.cpp" />
-    <ClCompile Include="string_table.cpp" />
+    <ClCompile Include="StringTable.cpp" />
     <ClCompile Include="TeamBaseZone.cpp" />
     <ClCompile Include="team_hierarchy_holder.cpp" />
     <ClCompile Include="TeleWhirlwind.cpp" />
@@ -2223,18 +2222,16 @@
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4002;4390;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4002;4390;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
-    <ClCompile Include="UI.cpp" />
-    <ClCompile Include="UICursor.cpp" />
-    <ClCompile Include="UICustomItem.cpp">
-      <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ShowIncludes>
-    </ClCompile>
-    <ClCompile Include="UIDialogHolder.cpp" />
-    <ClCompile Include="UIFrameRect.cpp" />
-    <ClCompile Include="UIGameCustom.cpp" />
-    <ClCompile Include="UIGame.cpp" />
-    <ClCompile Include="UIGame_custom_script.cpp" />
-    <ClCompile Include="UIStaticItem.cpp" />
-    <ClCompile Include="UIZoneMap.cpp" />
+    <ClCompile Include="ui\UI.cpp" />
+    <ClCompile Include="ui\UICursor.cpp" />
+    <ClCompile Include="ui\UICustomItem.cpp" />
+    <ClCompile Include="ui\UIDialogHolder.cpp" />
+    <ClCompile Include="ui\UIFrameRect.cpp" />
+    <ClCompile Include="ui\UIGame.cpp" />
+    <ClCompile Include="ui\UIGameCustom.cpp" />
+    <ClCompile Include="ui\UIGame_custom_script.cpp" />
+    <ClCompile Include="ui\UIMapSpot.cpp" />
+    <ClCompile Include="ui\UIStaticItem.cpp" />
     <ClCompile Include="ui\UIWpnParams.cpp" />
     <ClCompile Include="ui\UIMapHint.cpp" />
     <ClCompile Include="ui\MMSound.cpp" />
@@ -2351,10 +2348,11 @@
     <ClCompile Include="ui\UIWndCallback.cpp" />
     <ClCompile Include="ui\UIXmlInit.cpp" />
     <ClCompile Include="ui\UIArtefactParams.cpp" />
+    <ClCompile Include="ui\UIZoneMap.cpp" />
+    <ClCompile Include="ui\ui_base.cpp" />
+    <ClCompile Include="ui\ui_export_script.cpp" />
     <ClCompile Include="ui\UI_IB_Static.cpp" />
-    <ClCompile Include="ui\xrUIXmlParser.cpp" />
-    <ClCompile Include="ui_base.cpp" />
-    <ClCompile Include="ui_export_script.cpp" />
+    <ClCompile Include="ui\UIXml.cpp" />
     <ClCompile Include="UsableScriptObject.cpp" />
     <ClCompile Include="vision_client.cpp" />
     <ClCompile Include="visual_memory_manager.cpp" />

@@ -13,7 +13,7 @@
 #include "level.h"
 #include "xrMessages.h"
 #include "hudmanager.h"
-#include "UIGameCustom.h"
+#include "ui/UIGameCustom.h"
 #include "Actor.h"
 #include "MainMenu.h"
 

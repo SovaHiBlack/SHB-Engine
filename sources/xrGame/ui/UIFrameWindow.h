@@ -1,11 +1,9 @@
 #pragma once
 
-#include "uiwindow.h"
-
-#include "../uiframerect.h"
+#include "UIWindow.h"
+#include "UIFrameRect.h"
 
 class CUIStatic;
-
 
 class CUIFrameWindow : public CUIWindow, public CUIMultiTextureOwner
 {

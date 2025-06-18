@@ -3,9 +3,9 @@
 #include "UIPdaListItem.h"//
 #include "../Actor.h"
 #include "UIInventoryUtilities.h"//
-#include "../string_table.h"
+#include "../StringTable.h"
 
-#include "xrUIXmlParser.h"
+//#include "UIXml.h"
 #include "UIXmlInit.h"
 
 #include "../CharacterInfo.h"

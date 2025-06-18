@@ -4,7 +4,7 @@
 #include "UIXmlInit.h"
 #include "UI3tButton.h"
 #include "../GameTask.h"
-#include "../string_table.h"
+#include "../StringTable.h"
 #include "UIEventsWnd.h"//
 #include "UIEditBoxEx.h"
 #include "UIEditBox.h"

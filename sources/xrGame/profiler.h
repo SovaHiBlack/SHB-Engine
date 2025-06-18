@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: profiler.h
-//	Created 	: 23.07.2004
-//  Modified 	: 23.07.2004
-//	Author		: Dmitriy Iassenev
+//	Module 		: Profiler.h
 //	Description : Profiler
 ////////////////////////////////////////////////////////////////////////////
 
@@ -18,18 +15,21 @@
 #	include "ai_debug.h"
 
 #pragma pack(push,4)
-struct CProfileResultPortion {
+struct SProfileResultPortion
+{
 	u64				m_time;
 	pcstr			m_timer_id;
 };
 #pragma pack(pop)
 
-struct CProfilePortion : public CProfileResultPortion {
-	IC				CProfilePortion		(pcstr timer_id);
-	IC				~CProfilePortion	();
+struct SProfilePortion : public SProfileResultPortion
+{
+	IC				SProfilePortion(pcstr timer_id);
+	IC				~SProfilePortion( );
 };
 
-struct CProfileStats {
+struct SProfileStats
+{
 	u32				m_update_time;
 	shared_str		m_name;
 	f32			m_time;
@@ -39,20 +39,23 @@ struct CProfileStats {
 	u32				m_count;
 	u32				m_call_count;
 
-	IC				CProfileStats		();
+	IC				SProfileStats( );
 };
 
-class CProfiler {
+class CProfiler
+{
 private:
-	struct pred_rstr {
-		IC	bool operator()	(const shared_str &_1, const shared_str &_2) const
+	struct pred_rstr
+	{
+		IC	bool operator()	(const shared_str& _1, const shared_str& _2) const
 		{
-			return	(xr_strcmp(*_1,*_2) < 0);
+			return	(xr_strcmp(*_1, *_2) < 0);
 		}
 	};
+
 protected:
-	typedef xr_vector<CProfileResultPortion>		PORTIONS;
-	typedef xr_map<shared_str,CProfileStats,pred_rstr>	TIMERS;
+	typedef xr_vector<SProfileResultPortion>		PORTIONS;
+	typedef xr_map<shared_str, SProfileStats, pred_rstr>	TIMERS;
 
 protected:
 	PORTIONS			m_portions;
@@ -62,28 +65,28 @@ protected:
 	u32					m_call_count;
 
 protected:
-			void		setup_timer			(pcstr timer_id, const u64 &timer_time, const u32 &call_count);
-	IC		void		convert_string		(pcstr str, shared_str &out, u32 max_string_size);
+	void		setup_timer(pcstr timer_id, const u64& timer_time, const u32& call_count);
+	IC		void		convert_string(pcstr str, shared_str& out, u32 max_string_size);
 
 public:
-						CProfiler			();
-						~CProfiler			();
-			void		show_stats			(CGameFont *game_font, bool show);
-			void		clear				();
-			void		add_profile_portion	(const CProfileResultPortion &profile_portion);
+	CProfiler( );
+	~CProfiler( );
+	void		show_stats(CGameFont* game_font, bool show);
+	void		clear( );
+	void		add_profile_portion(const SProfileResultPortion& profile_portion);
 };
 
-extern 	CProfiler *g_profiler;
+extern 	CProfiler* g_profiler;
 extern flags32 psAI_Flags;
 
-IC	CProfiler&	profiler();
-		
-#	define START_PROFILE(a) { CProfilePortion	__profile_portion__(a);
+IC	CProfiler& profiler( );
+
+#	define START_PROFILE(a) { SProfilePortion	__profile_portion__(a);
 #	define STOP_PROFILE     }
 
-#	include "profiler_inline.h"
+#	include "Profiler_inline.h"
 
-#else // DEBUG
+#else // USE_PROFILER
 #	define START_PROFILE(a) {
 #	define STOP_PROFILE		}
-#endif // DEBUG
+#endif // USE_PROFILER

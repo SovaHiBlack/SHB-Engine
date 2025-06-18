@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "uiwindow.h"
+#include "UIWindow.h"
 #include "../alife_space.h"
 #include "../CharacterInfo_defs.h"
 
