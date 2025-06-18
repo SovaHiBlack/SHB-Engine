@@ -726,7 +726,6 @@
     <ClInclude Include="GameTaskManager.h" />
     <ClInclude Include="game_base.h" />
     <ClInclude Include="game_base_kill_type.h" />
-    <ClInclude Include="game_base_menu_events.h" />
     <ClInclude Include="game_base_space.h" />
     <ClInclude Include="game_cl_base.h" />
     <ClInclude Include="game_cl_base_weapon_usage_statistic.h" />

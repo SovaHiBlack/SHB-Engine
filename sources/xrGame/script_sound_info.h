@@ -10,8 +10,8 @@ public:
 	CScriptGameObject			*who;
 	fVector3					position;
 	f32					power;
-	int						time;		
-	int						dangerous;
+	s32						time;		
+	s32						dangerous;
 
 	CScriptSoundInfo				()
 	{
@@ -22,12 +22,12 @@ public:
 		position		= fVector3().set(0.0f,0.0f,0.0f);
 	}
 
-	void set(CScriptGameObject *p_who, bool p_danger, fVector3 p_position, f32 p_power, int p_time) {
+	void set(CScriptGameObject *p_who, bool p_danger, fVector3 p_position, f32 p_power, s32 p_time) {
 		who			= p_who;
 		position	= p_position;
 		power		= p_power;
 		time		= p_time;
-		dangerous	= int(p_danger);
+		dangerous	= s32(p_danger);
 	}
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

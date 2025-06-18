@@ -42,14 +42,14 @@ fVector3 CScriptSound::GetPosition() const
 	}
 }
 
-void CScriptSound::Play			(CScriptGameObject *object, f32 delay, int flags)
+void CScriptSound::Play			(CScriptGameObject *object, f32 delay, s32 flags)
 {
 	THROW3						(m_sound._handle(),"There is no sound",*m_caSoundToPlay);
 //	Msg							("%6d : CScriptSound::Play (%s), delay %f, flags %d",Device.dwTimeGlobal,m_sound._handle()->file_name(),delay,flags);
 	m_sound.play				(&object->object(),flags,delay);
 }
 
-void CScriptSound::PlayAtPos		(CScriptGameObject *object, const fVector3& position, f32 delay, int flags)
+void CScriptSound::PlayAtPos		(CScriptGameObject *object, const fVector3& position, f32 delay, s32 flags)
 {
 	THROW3						(m_sound._handle(),"There is no sound",*m_caSoundToPlay);
 //	Msg							("%6d : CScriptSound::Play (%s), delay %f, flags %d",m_sound._handle()->file_name(),delay,flags);
@@ -92,10 +92,10 @@ void CScriptSound::script_register(lua_State* L)
 		.def("set_position", &CScriptSound::SetPosition)
 		.def("play", (void (CScriptSound::*)(CScriptGameObject*))(&CScriptSound::Play))
 		.def("play", (void (CScriptSound::*)(CScriptGameObject*, f32))(&CScriptSound::Play))
-		.def("play", (void (CScriptSound::*)(CScriptGameObject*, f32, int))(&CScriptSound::Play))
+		.def("play", (void (CScriptSound::*)(CScriptGameObject*, f32, s32))(&CScriptSound::Play))
 		.def("play_at_pos", (void (CScriptSound::*)(CScriptGameObject*, const fVector3&))(&CScriptSound::PlayAtPos))
 		.def("play_at_pos", (void (CScriptSound::*)(CScriptGameObject*, const fVector3&, f32))(&CScriptSound::PlayAtPos))
-		.def("play_at_pos", (void (CScriptSound::*)(CScriptGameObject*, const fVector3&, f32, int))(&CScriptSound::PlayAtPos))
+		.def("play_at_pos", (void (CScriptSound::*)(CScriptGameObject*, const fVector3&, f32, s32))(&CScriptSound::PlayAtPos))
 		.def("play_no_feedback", &CScriptSound::PlayNoFeedback)
 		.def("stop", &CScriptSound::Stop)
 		.def("stop_deffered", &CScriptSound::StopDeffered)

@@ -55,7 +55,7 @@ void				CScriptXmlInit::ParseFile			(pcstr xml_file)
 	m_xml.Init							(CONFIG_PATH, UI_PATH, xml_file);
 }
 
-void				CScriptXmlInit::InitWindow			(pcstr path, int index, CUIWindow* pWnd)
+void				CScriptXmlInit::InitWindow			(pcstr path, s32 index, CUIWindow* pWnd)
 {
 	CUIXmlInit::InitWindow				(m_xml, path, index, pWnd);
 }

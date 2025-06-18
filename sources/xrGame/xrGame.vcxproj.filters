@@ -5244,9 +5244,6 @@
     <ClInclude Include="game_base_kill_type.h">
       <Filter>Core\Server\Games</Filter>
     </ClInclude>
-    <ClInclude Include="game_base_menu_events.h">
-      <Filter>Core\Server\Games</Filter>
-    </ClInclude>
     <ClInclude Include="game_base_space.h">
       <Filter>Core\Server\Games</Filter>
     </ClInclude>

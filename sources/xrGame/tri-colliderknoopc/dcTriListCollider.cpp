@@ -14,32 +14,27 @@
 dcTriListCollider::dcTriListCollider(dxGeom* Geometry)
 {
 	this->Geometry = Geometry;
-	GeomData = (dxTriList*) dGeomGetClassData(Geometry);
-
-
+	GeomData = (dxTriList*)dGeomGetClassData(Geometry);
 }
 
 dcTriListCollider::~dcTriListCollider( )
-{
+{ }
 
-}
-
-int dCollideBP(const dxGeom* o1, const dxGeom* o2, int flags, dContactGeom* contact, int skip);	// ODE internal function
-
+s32 dCollideBP(const dxGeom* o1, const dxGeom* o2, s32 flags, dContactGeom* contact, s32 skip);	// ODE internal function
 
 
 #define CONTACT(Ptr, Stride) ((dContactGeom*) (((byte*)Ptr) + (Stride)))
 #define SURFACE(Ptr, Stride) ((dSurfaceParameters*) (((byte*)Ptr) + (Stride-sizeof(dSurfaceParameters))))
 
-int dcTriListCollider::CollideBox(dxGeom* Box, int Flags, dContactGeom* Contacts, int Stride)
+int dcTriListCollider::CollideBox(dxGeom* Box, s32 Flags, dContactGeom* Contacts, s32 Stride)
 {
 	fVector3 AABB;
 	dVector3 BoxSides;
 	dGeomBoxGetLengths(Box, BoxSides);
 	dReal* R = const_cast<dReal*>(dGeomGetRotation(Box));
-	AABB.x = (dFabs(BoxSides[0] * R[0]) + dFabs(BoxSides[1] * R[1]) + dFabs(BoxSides[2] * R[2])) / 2.f + 10.f * EPSILON_3;
-	AABB.y = (dFabs(BoxSides[0] * R[4]) + dFabs(BoxSides[1] * R[5]) + dFabs(BoxSides[2] * R[6])) / 2.f + 10.f * EPSILON_3;
-	AABB.z = (dFabs(BoxSides[0] * R[8]) + dFabs(BoxSides[1] * R[9]) + dFabs(BoxSides[2] * R[10])) / 2.f + 10.f * EPSILON_3;
+	AABB.x = (dFabs(BoxSides[0] * R[0]) + dFabs(BoxSides[1] * R[1]) + dFabs(BoxSides[2] * R[2])) / 2.0f + 10.0f * EPSILON_3;
+	AABB.y = (dFabs(BoxSides[0] * R[4]) + dFabs(BoxSides[1] * R[5]) + dFabs(BoxSides[2] * R[6])) / 2.0f + 10.0f * EPSILON_3;
+	AABB.z = (dFabs(BoxSides[0] * R[8]) + dFabs(BoxSides[1] * R[9]) + dFabs(BoxSides[2] * R[10])) / 2.0f + 10.0f * EPSILON_3;
 	dBodyID box_body = dGeomGetBody(Box);
 	if (box_body)
 	{
@@ -47,9 +42,7 @@ int dcTriListCollider::CollideBox(dxGeom* Box, int Flags, dContactGeom* Contacts
 		AABB.x += dFabs(velocity[0]) * 0.04f;
 		AABB.y += dFabs(velocity[1]) * 0.04f;
 		AABB.z += dFabs(velocity[2]) * 0.04f;
-
 	}
-
 
 	BoxTri	bt(*this);
 	return dSortTriPrimitiveCollide
@@ -63,13 +56,8 @@ int dcTriListCollider::CollideBox(dxGeom* Box, int Flags, dContactGeom* Contacts
 	);
 }
 
-
-
-int dcTriListCollider::CollideCylinder(dxGeom* Cylinder, int Flags, dContactGeom* Contacts, int Stride)
+s32 dcTriListCollider::CollideCylinder(dxGeom* Cylinder, s32 Flags, dContactGeom* Contacts, s32 Stride)
 {
-
-
-
 	fVector3 AABB;
 	dReal CylinderRadius, CylinderLength;
 
@@ -100,16 +88,14 @@ int dcTriListCollider::CollideCylinder(dxGeom* Cylinder, int Flags, dContactGeom
 		Stride,
 		AABB
 	);
-
 }
 
 
 ////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-int dcTriListCollider::CollideSphere(dxGeom* Sphere, int Flags, dContactGeom* Contacts, int Stride)
+s32 dcTriListCollider::CollideSphere(dxGeom* Sphere, s32 Flags, dContactGeom* Contacts, s32 Stride)
 {
-
 	const f32 SphereRadius = dGeomSphereGetRadius(Sphere);
 	fVector3 AABB;
 
@@ -124,12 +110,5 @@ int dcTriListCollider::CollideSphere(dxGeom* Sphere, int Flags, dContactGeom* Co
 	AABB.y += dFabs(velocity[1]) * 0.04f;
 	AABB.z += dFabs(velocity[2]) * 0.04f;
 	SphereTri	st(*this);
-	return dSortTriPrimitiveCollide(st, Sphere, Geometry, Flags, Contacts, Stride,
-									AABB);
-
+	return dSortTriPrimitiveCollide(st, Sphere, Geometry, Flags, Contacts, Stride, AABB);
 }
-
-
-
-
-

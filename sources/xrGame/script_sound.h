@@ -28,7 +28,7 @@ public:
 			void				Play				(CScriptGameObject *object, f32 delay, int flags);
 	IC		void				PlayAtPos			(CScriptGameObject *object, const fVector3& position);
 	IC		void				PlayAtPos			(CScriptGameObject *object, const fVector3& position, f32 delay);
-			void				PlayAtPos			(CScriptGameObject *object, const fVector3& position, f32 delay, int flags);
+			void				PlayAtPos			(CScriptGameObject *object, const fVector3& position, f32 delay, s32 flags);
 			void				PlayNoFeedback		(CScriptGameObject *object,	u32 flags/*!< Looping */, f32 delay/*!< Delay */, fVector3 pos, f32 vol);
 	IC		void				Stop				();
 	IC		void				StopDeffered		();

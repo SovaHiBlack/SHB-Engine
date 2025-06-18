@@ -39,7 +39,7 @@ public:
 
 	void				ParseFile			(pcstr xml_file);
 	void				ParseShTexInfo		(pcstr xml_file);
-	void				InitWindow			(pcstr path, int index, CUIWindow* pWnd);
+	void				InitWindow			(pcstr path, s32 index, CUIWindow* pWnd);
 
 	CUIListWnd*			InitList			(pcstr path, CUIWindow* parent);
 	CUIFrameWindow*		InitFrame			(pcstr path, CUIWindow* parent);
