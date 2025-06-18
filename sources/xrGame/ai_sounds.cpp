@@ -4,11 +4,11 @@
 
 xr_token anomaly_type_token[]={
 	{ "undefined",				sg_Undefined						},
-	{ "Item picking up",		SOUND_TYPE_ITEM_PICKING_UP			},
-	{ "Item dropping",			SOUND_TYPE_ITEM_DROPPING			},
-	{ "Item taking",			SOUND_TYPE_ITEM_TAKING				},
-	{ "Item hiding",			SOUND_TYPE_ITEM_HIDING				},
-	{ "Item using",				SOUND_TYPE_ITEM_USING				},
+	{ "Item picking up",		eST_ITEM_PICKING_UP			},
+	{ "Item dropping",			eST_ITEM_DROPPING			},
+	{ "Item hiding",			eST_ITEM_HIDING				},
+	{ "Item taking",			eST_ITEM_TAKING				},
+	{ "Item using",				eST_ITEM_USING				},
 	{ "Weapon shooting",		SOUND_TYPE_WEAPON_SHOOTING			},
 	{ "Weapon empty clicking",	SOUND_TYPE_WEAPON_EMPTY_CLICKING	},
 	{ "Weapon bullet hit",		SOUND_TYPE_WEAPON_BULLET_HIT		},

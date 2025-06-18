@@ -38,10 +38,10 @@ public:
 
 public:
 	IC				CScriptSoundAction	();
-	IC				CScriptSoundAction	(pcstr caSoundToPlay, pcstr caBoneName, const fVector3& tPositionOffset = fVector3().set(0.0f, 0.0f, 0.0f), const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	IC				CScriptSoundAction	(pcstr caSoundToPlay, const fVector3& tPosition, const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	IC				CScriptSoundAction	(CScriptSound &sound, pcstr caBoneName, const fVector3& tPositionOffset = fVector3().set(0.0f, 0.0f, 0.0f), const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
-	IC				CScriptSoundAction	(CScriptSound &sound, const fVector3& tPosition, const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = SOUND_TYPE_NO_SOUND);
+	IC				CScriptSoundAction	(pcstr caSoundToPlay, pcstr caBoneName, const fVector3& tPositionOffset = fVector3().set(0.0f, 0.0f, 0.0f), const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = eST_NO_SOUND);
+	IC				CScriptSoundAction	(pcstr caSoundToPlay, const fVector3& tPosition, const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = eST_NO_SOUND);
+	IC				CScriptSoundAction	(CScriptSound &sound, pcstr caBoneName, const fVector3& tPositionOffset = fVector3().set(0.0f, 0.0f, 0.0f), const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = eST_NO_SOUND);
+	IC				CScriptSoundAction	(CScriptSound &sound, const fVector3& tPosition, const fVector3& tAngleOffset = fVector3().set(0.0f, 0.0f, 0.0f), bool bLooped = false, ESoundTypes sound_type = eST_NO_SOUND);
 	////////////////////////////////////////////////////////////////////////////////////
 	// Monster Specific
 	///////////////////////////////////////////////////////////////////////////////////

@@ -51,7 +51,7 @@ void CBaseMonster::feel_sound_new(CObject* who, s32 eType, CSound_UserDataPtr us
 	CEntityAlive* entity = smart_cast<CEntityAlive*> (who);
 
 	// ignore sound if enemy drop a weapon on death
-	if (!entity && ((eType & SOUND_TYPE_ITEM_HIDING) == SOUND_TYPE_ITEM_HIDING)) return;
+	if (!entity && ((eType & eST_ITEM_HIDING) == eST_ITEM_HIDING)) return;
 
 	if (entity && (!EnemyMan.is_enemy(entity))) {
 		SoundMemory.check_help_sound(eType, entity->ai_location().level_vertex_id());

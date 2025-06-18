@@ -27,8 +27,8 @@ void CWeaponBinoculars::Load(pcstr section)
 	inherited::Load(section);
 
 	// Sounds
-	SHudSound::LoadSound(section, "snd_zoomin", sndZoomIn, SOUND_TYPE_ITEM_USING);
-	SHudSound::LoadSound(section, "snd_zoomout", sndZoomOut, SOUND_TYPE_ITEM_USING);
+	SHudSound::LoadSound(section, "snd_zoomin", sndZoomIn, eST_ITEM_USING);
+	SHudSound::LoadSound(section, "snd_zoomout", sndZoomOut, eST_ITEM_USING);
 	m_bVision = !!pSettings->r_bool(section, "vision_present");
 }
 

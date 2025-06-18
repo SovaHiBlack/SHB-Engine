@@ -82,10 +82,10 @@ void CTorch::Load(pcstr section)
 	m_bNightVisionEnabled = !!pSettings->r_bool(section, "night_vision");
 	if (m_bNightVisionEnabled)
 	{
-		SHudSound::LoadSound(section, "snd_night_vision_on", m_NightVisionOnSnd, SOUND_TYPE_ITEM_USING);
-		SHudSound::LoadSound(section, "snd_night_vision_off", m_NightVisionOffSnd, SOUND_TYPE_ITEM_USING);
-		SHudSound::LoadSound(section, "snd_night_vision_idle", m_NightVisionIdleSnd, SOUND_TYPE_ITEM_USING);
-		SHudSound::LoadSound(section, "snd_night_vision_broken", m_NightVisionBrokenSnd, SOUND_TYPE_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_on", m_NightVisionOnSnd, eST_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_off", m_NightVisionOffSnd, eST_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_idle", m_NightVisionIdleSnd, eST_ITEM_USING);
+		SHudSound::LoadSound(section, "snd_night_vision_broken", m_NightVisionBrokenSnd, eST_ITEM_USING);
 	}
 }
 

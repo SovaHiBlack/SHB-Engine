@@ -24,8 +24,8 @@
 
 CWeaponMagazined::CWeaponMagazined(pcstr name, ESoundTypes eSoundType) : CWeapon(name)
 {
-	m_eSoundShow = ESoundTypes(SOUND_TYPE_ITEM_TAKING | eSoundType);
-	m_eSoundHide = ESoundTypes(SOUND_TYPE_ITEM_HIDING | eSoundType);
+	m_eSoundShow = ESoundTypes(eST_ITEM_TAKING | eSoundType);
+	m_eSoundHide = ESoundTypes(eST_ITEM_HIDING | eSoundType);
 	m_eSoundShot = ESoundTypes(SOUND_TYPE_WEAPON_SHOOTING | eSoundType);
 	m_eSoundEmptyClick = ESoundTypes(SOUND_TYPE_WEAPON_EMPTY_CLICKING | eSoundType);
 	m_eSoundReload = ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING | eSoundType);

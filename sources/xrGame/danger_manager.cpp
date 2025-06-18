@@ -268,7 +268,7 @@ void CDangerManager::add(const CSoundObject& object)
 
 	const CEntityAlive* obj = smart_cast<const CEntityAlive*>(object.m_object);
 
-	if ((object.m_sound_type & SOUND_TYPE_BULLET_HIT) == SOUND_TYPE_BULLET_HIT)
+	if ((object.m_sound_type & eST_BULLET_HIT) == eST_BULLET_HIT)
 	{
 		add(CDangerObject(obj, object.m_object_params.m_position, object.m_level_time, CDangerObject::eDangerTypeBulletRicochet, CDangerObject::eDangerPerceiveTypeSound));
 		return;
@@ -280,7 +280,7 @@ void CDangerManager::add(const CSoundObject& object)
 		return;
 	}
 
-	if ((object.m_sound_type & SOUND_TYPE_INJURING) == SOUND_TYPE_INJURING)
+	if ((object.m_sound_type & eST_INJURING) == eST_INJURING)
 	{
 		bool				do_add = true;
 		if (object.m_object)
@@ -294,7 +294,7 @@ void CDangerManager::add(const CSoundObject& object)
 		return;
 	}
 
-	if ((object.m_sound_type & SOUND_TYPE_DYING) == SOUND_TYPE_DYING)
+	if ((object.m_sound_type & eST_DYING) == eST_DYING)
 	{
 		add(CDangerObject(obj, object.m_object_params.m_position, object.m_level_time, CDangerObject::eDangerTypeEntityDeath, CDangerObject::eDangerPerceiveTypeSound));
 		return;

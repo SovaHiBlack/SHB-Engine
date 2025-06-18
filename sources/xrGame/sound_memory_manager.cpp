@@ -156,19 +156,19 @@ void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound
 		return;
 	
 	VERIFY					(_valid(sound_power));
-	if (is_sound_type(sound_type,SOUND_TYPE_WEAPON))
+	if (is_sound_type(sound_type, eST_WEAPON))
 		sound_power			*= m_weapon_factor;
 	
 	VERIFY					(_valid(sound_power));
-	if (is_sound_type(sound_type,SOUND_TYPE_ITEM))
+	if (is_sound_type(sound_type, eST_ITEM))
 		sound_power			*= m_item_factor;
 
 	VERIFY					(_valid(sound_power));
-	if (is_sound_type(sound_type,SOUND_TYPE_MONSTER))
+	if (is_sound_type(sound_type, eST_MONSTER))
 		sound_power			*= m_npc_factor;
 
 	VERIFY					(_valid(sound_power));
-	if (is_sound_type(sound_type,SOUND_TYPE_ANOMALY))
+	if (is_sound_type(sound_type, eST_ANOMALY))
 		sound_power			*= m_anomaly_factor;
 	
 	VERIFY					(_valid(sound_power));

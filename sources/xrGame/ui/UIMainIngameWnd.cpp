@@ -242,7 +242,7 @@ void CUIMainIngameWnd::Init( )
 	UIStaticDiskIO.SetOriginalRect(0.0f, 0.0f, 32.0f, 32.0f);
 	UIStaticDiskIO.SetStretchTexture(TRUE);
 
-	SHudSound::LoadSound("maingame_ui", "snd_new_contact", m_contactSnd, SOUND_TYPE_IDLE);
+	SHudSound::LoadSound("maingame_ui", "snd_new_contact", m_contactSnd, eST_IDLE);
 }
 
 f32 UIStaticDiskIO_start_time = 0.0f;

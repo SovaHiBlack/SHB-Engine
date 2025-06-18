@@ -81,7 +81,7 @@ void CCustomDetector::Load(pcstr section)
 			R_ASSERT(zone_type.min_freq < zone_type.max_freq);
 			sprintf_s(temp, "zone_sound_%d_", i);
 
-			SHudSound::LoadSound(section, temp, zone_type.detect_snds, SOUND_TYPE_ITEM);
+			SHudSound::LoadSound(section, temp, zone_type.detect_snds, eST_ITEM);
 
 			sprintf_s(temp, "zone_map_location_%d", i);
 
