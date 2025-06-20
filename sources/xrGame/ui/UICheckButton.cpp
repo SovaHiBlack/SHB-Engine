@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "UICheckButton.h"
-//#include "../HUDManager.h"
 #include "UILines.h"
 
 CUICheckButton::CUICheckButton( )

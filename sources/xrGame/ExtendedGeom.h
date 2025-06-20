@@ -114,24 +114,13 @@ struct dxGeomUserData
 	u16							material;
 	u16							tri_material;
 	ContactCallbackFun* callback;
-	void* callback_data;
-//	ObjectContactCallbackFun	*object_callback								;
+	pvoid callback_data;
 	CObjectContactCallback* object_callbacks;
 	u16							element_position;
 	u16							bone_id;
 	xr_vector<s32>				cashed_tries;
 	fVector3						last_aabb_size;
 	fVector3						last_aabb_pos;
-
-//	struct ContactsParameters
-//	{
-//	dReal damping;
-//	dReal spring;
-//	dReal bonce;
-//	dReal bonce_vel;
-//	dReal mu;
-//	unsigned int maxc;
-//	};
 };
 
 IC dxGeomUserData* dGeomGetUserData(dxGeom* geom)
@@ -154,10 +143,6 @@ IC dGeomID retrieveGeom(dGeomID geom)
 IC dxGeomUserData* retrieveGeomUserData(dGeomID geom)
 {
 	return dGeomGetUserData(retrieveGeom(geom));
-	//if(dGeomGetClass(geom)==dGeomTransformClass)
-	//	return dGeomGetUserData(dGeomTransformGetGeom(geom));
-	//else
-	//	return dGeomGetUserData(geom);
 }
 
 IC CPhysicsShellHolder* retrieveRefObject(dGeomID geom)
@@ -174,7 +159,11 @@ IC CPhysicsShellHolder* retrieveRefObject(dGeomID geom)
 }
 IC void dGeomCreateUserData(dxGeom* geom)
 {
-	if (!geom) return;
+	if (!geom)
+	{
+		return;
+	}
+
 	dGeomSetData(geom, xr_new<dxGeomUserData>( ));
 	(dGeomGetUserData(geom))->pushing_neg = false;
 	(dGeomGetUserData(geom))->pushing_b_neg = false;
@@ -191,11 +180,6 @@ IC void dGeomCreateUserData(dxGeom* geom)
 	(dGeomGetUserData(geom))->element_position = u16(-1);
 	(dGeomGetUserData(geom))->bone_id = u16(-1);
 	(dGeomGetUserData(geom))->callback_data = NULL;
-	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::mu=1.f;
-	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::damping=1.f;
-	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::spring=1.f;
-	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::bonce=0.f;
-	//((dxGeomUserData*)dGeomGetData(geom))->ContactsParameters::bonce_vel=0.f;
 }
 
 IC void dGeomDestroyUserData(dxGeom* geom)
@@ -301,5 +285,5 @@ IC void dGeomUserDataClearCashedTries(dxGeom* geom)
 #endif
 
 	P->cashed_tries.clear( );
-	P->last_aabb_size.set(0.f, 0.f, 0.f);
+	P->last_aabb_size.set(0.0f, 0.0f, 0.0f);
 }

@@ -23,22 +23,27 @@ CSE_Shape::~CSE_Shape( )
 void CSE_Shape::cform_read(CNetPacket& tNetPacket)
 {
 	shapes.clear( );
-	u8							count;
+	u8 count;
 	tNetPacket.r_u8(count);
 
 	while (count)
 	{
-		shape_def				S;
+		shape_def S;
 		tNetPacket.r_u8(S.type);
 		switch (S.type)
 		{
 			case 0:
-			tNetPacket.r(&S.data.sphere, sizeof(S.data.sphere));
+			{
+				tNetPacket.r(&S.data.sphere, sizeof(S.data.sphere));
+			}
 			break;
 			case 1:
-			tNetPacket.r_matrix(S.data.box);
+			{
+				tNetPacket.r_matrix(S.data.box);
+			}
 			break;
 		}
+
 		shapes.push_back(S);
 		--count;
 	}
@@ -54,10 +59,14 @@ void CSE_Shape::cform_write(CNetPacket& tNetPacket)
 		switch (S.type)
 		{
 			case 0:
-			tNetPacket.w(&S.data.sphere, sizeof(S.data.sphere));
+			{
+				tNetPacket.w(&S.data.sphere, sizeof(S.data.sphere));
+			}
 			break;
 			case 1:
-			tNetPacket.w_matrix(S.data.box);
+			{
+				tNetPacket.w_matrix(S.data.box);
+			}
 			break;
 		}
 	}
@@ -143,9 +152,7 @@ CSE_PHSkeleton::CSE_PHSkeleton(pcstr caSection)
 }
 
 CSE_PHSkeleton::~CSE_PHSkeleton( )
-{
-
-}
+{ }
 
 void CSE_PHSkeleton::STATE_Read(CNetPacket& tNetPacket, u16 size)
 {

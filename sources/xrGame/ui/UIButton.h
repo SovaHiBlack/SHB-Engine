@@ -71,15 +71,17 @@ public:
 	// Например: кнопка A - код 0x1E(DIK_A)
 	void				SetAccelerator(s32 iAccel, s32 idx)
 	{
-		VERIFY(idx == 0 || idx == 1); m_uAccelerator[idx] = iAccel;
+		VERIFY(idx == 0 || idx == 1);
+		m_uAccelerator[idx] = iAccel;
 	}
 	const s32			GetAccelerator(s32 idx) const
 	{
-		VERIFY(idx == 0 || idx == 1); return m_uAccelerator[idx];
+		VERIFY(idx == 0 || idx == 1);
+		return m_uAccelerator[idx];
 	}
 	IC bool				IsAccelerator(s32 iAccel) const
 	{
-		return (m_uAccelerator[0] == iAccel) || (m_uAccelerator[1] == iAccel);
+		return ((m_uAccelerator[0] == iAccel) || (m_uAccelerator[1] == iAccel));
 	}
 
 	void				SetPressMode(E_PRESS_MODE ePressMode)

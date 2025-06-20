@@ -930,14 +930,11 @@ void CActor::ResetCallbacks( )
 
 void CActor::OnChangeVisual( )
 {
-	///	inherited::OnChangeVisual();
-	{
-		CPhysicsShell* tmp_shell = PPhysicsShell( );
-		PPhysicsShell( ) = NULL;
-		inherited::OnChangeVisual( );
-		PPhysicsShell( ) = tmp_shell;
-		tmp_shell = NULL;
-	}
+	CPhysicsShell* tmp_shell = PPhysicsShell( );
+	PPhysicsShell( ) = NULL;
+	inherited::OnChangeVisual( );
+	PPhysicsShell( ) = tmp_shell;
+	tmp_shell = NULL;
 
 	CKinematicsAnimated* V = smart_cast<CKinematicsAnimated*>(Visual( ));
 	if (V)
@@ -995,23 +992,6 @@ void CActor::ChangeVisual(shared_str NewVisual)
 	Visual( )->dcast_PKinematics( )->CalculateBones_Invalidate( );
 	Visual( )->dcast_PKinematics( )->CalculateBones( );
 }
-
-//void ACTOR_DEFS::net_update::lerp(ACTOR_DEFS::net_update& A, ACTOR_DEFS::net_update& B, f32 f)
-//{
-//	//	f32 invf		= 1.f-f;
-//	//	// 
-//	//	o_model			= angle_lerp	(A.o_model,B.o_model,		f);
-//	//	o_torso.yaw		= angle_lerp	(A.o_torso.yaw,B.o_torso.yaw,f);
-//	//	o_torso.pitch	= angle_lerp	(A.o_torso.pitch,B.o_torso.pitch,f);
-//	//	o_torso.roll	= angle_lerp	(A.o_torso.roll,B.o_torso.roll,f);
-//	//	p_pos.lerp		(A.p_pos,B.p_pos,f);
-//	//	p_accel			= (f<0.5f)?A.p_accel:B.p_accel;
-//	//	p_velocity.lerp	(A.p_velocity,B.p_velocity,f);
-//	//	mstate			= (f<0.5f)?A.mstate:B.mstate;
-//	//	weapon			= (f<0.5f)?A.weapon:B.weapon;
-//	//	fHealth			= invf*A.fHealth+f*B.fHealth;
-//	//	weapon			= (f<0.5f)?A.weapon:B.weapon;
-//}
 
 InterpData				IStartT;
 InterpData				IRecT;
@@ -1139,7 +1119,7 @@ void CActor::PH_I_CrPr( )		// actions & operations between two phisic prediction
 
 		////////////////////////////////////
 		pSyncObj->get_State(RecalculatedState);
-		////////////////////////////////////		
+		////////////////////////////////////
 	}
 }
 
@@ -1175,7 +1155,7 @@ void CActor::PH_A_CrPr( )
 	mstate_wishful = mstate_real = NET_Last.mstate;
 	CalculateInterpolationParams( );
 }
-extern	f32		g_cl_lvInterp;
+extern f32 g_cl_lvInterp;
 
 void CActor::CalculateInterpolationParams( )
 {
@@ -1495,7 +1475,7 @@ void dbg_draw_piramid(fVector3 pos, fVector3 dir, f32 size, f32 xdir, u32 color)
 	p1.set(-size, size, 0.0f);
 	p2.set(-size, -size, 0.0f);
 	p3.set(size, -size, 0.0f);
-	p4.set(0, 0, size * 4);
+	p4.set(0.0f, 0.0f, size * 4.0f);
 
 	bool Double = false;
 	fMatrix4x4 t;
@@ -1598,7 +1578,7 @@ void CActor::OnRender_Network( )
 								fMatrix4x4 M;
 								M.c.set(I->c_cylinder.m_center);
 								M.k.set(I->c_cylinder.m_direction);
-								fVector3				h_size;
+								fVector3 h_size;
 								h_size.set(I->c_cylinder.m_radius, I->c_cylinder.m_radius, I->c_cylinder.m_height * 0.5f);
 								fVector3::generate_orthonormal_basis(M.k, M.j, M.i);
 								Level( ).debug_renderer( ).draw_obb(M, h_size, color_rgba(0, 127, 255, 255));
@@ -1606,7 +1586,7 @@ void CActor::OnRender_Network( )
 							break;
 							case SBoneShape::stSphere:
 							{
-								fMatrix4x4				l_ball;
+								fMatrix4x4 l_ball;
 								l_ball.scale(I->s_sphere.R, I->s_sphere.R, I->s_sphere.R);
 								l_ball.translate_add(I->s_sphere.P);
 								Level( ).debug_renderer( ).draw_ellipse(l_ball, color_rgba(0, 255, 0, 255));
@@ -1625,21 +1605,17 @@ void CActor::OnRender_Network( )
 
 		dbg_draw_piramid(Position( ), character_physics_support( )->movement( )->GetVelocity( ), size, -r_model_yaw, color_rgba(128, 255, 128, 255));
 		dbg_draw_piramid(IStart.Pos, IStart.Vel, size, -IStart.o_model, color_rgba(255, 0, 0, 255));
-		//		fVector3 tmp, tmp1; tmp1.set(0, .1f, 0);
-		//		dbg_draw_piramid(tmp.add(IStartT.Pos, tmp1), IStartT.Vel, size, -IStartT.o_model, color_rgba(155, 0, 0, 155));
 		dbg_draw_piramid(IRec.Pos, IRec.Vel, size, -IRec.o_model, color_rgba(0, 0, 255, 255));
-		//		dbg_draw_piramid(tmp.add(IRecT.Pos, tmp1), IRecT.Vel, size, -IRecT.o_model, color_rgba(0, 0, 155, 155));
 		dbg_draw_piramid(IEnd.Pos, IEnd.Vel, size, -IEnd.o_model, color_rgba(0, 255, 0, 255));
-		//		dbg_draw_piramid(tmp.add(IEndT.Pos, tmp1), IEndT.Vel, size, -IEndT.o_model, color_rgba(0, 155, 0, 155));
 		dbg_draw_piramid(NET_Last.p_pos, NET_Last.p_velocity, size * 3 / 4, -NET_Last.o_model, color_rgba(255, 255, 255, 255));
 
 		fMatrix4x4 MS;
 		fMatrix4x4 MH;
 		fMatrix4x4 ML;
 		fMatrix4x4* pM = NULL;
-		ML.translate(0, 0.2f, 0);
-		MS.translate(0, 0.2f, 0);
-		MH.translate(0, 0.2f, 0);
+		ML.translate(0.0f, 0.2f, 0.0f);
+		MS.translate(0.0f, 0.2f, 0.0f);
+		MH.translate(0.0f, 0.2f, 0.0f);
 
 		fVector3 point0S;
 		fVector3 point1S;
@@ -1651,7 +1627,8 @@ void CActor::OnRender_Network( )
 		fVector3* ppoint1 = NULL;
 		fVector3 tS;
 		fVector3 tH;
-		u32	cColor = 0, sColor = 0;
+		u32	cColor = 0;
+		u32 sColor = 0;
 		VIS_POSITION* pLastPos = NULL;
 
 		switch (g_cl_InterpolationType)
@@ -1906,7 +1883,7 @@ void CActor::net_Save(CNetPacket& P)
 {
 
 #ifdef DEBUG
-	u32					pos;
+	u32 pos;
 	Msg("Actor net_Save");
 
 	pos = P.w_tell( );

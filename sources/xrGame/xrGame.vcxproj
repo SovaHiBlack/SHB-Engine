@@ -2250,7 +2250,6 @@
     <ClCompile Include="ui\UICheckButton.cpp" />
     <ClCompile Include="ui\UIColorAnimatorWrapper.cpp" />
     <ClCompile Include="ui\UIComboBox.cpp" />
-    <ClCompile Include="ui\UIComboBox_script.cpp" />
     <ClCompile Include="ui\UICustomEdit.cpp" />
     <ClCompile Include="ui\UICustomSpin.cpp" />
     <ClCompile Include="ui\UIDebugFonts.cpp">

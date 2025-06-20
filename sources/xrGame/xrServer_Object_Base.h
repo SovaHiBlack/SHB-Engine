@@ -87,7 +87,7 @@ public:
 	fVector3							o_Position;
 	fVector3							o_Angle;
 	CLASS_ID						m_tClassID;
-	int								m_script_clsid;
+	s32								m_script_clsid;
 	shared_str						m_ini_string;
 	CIniFile* m_ini_file;
 
@@ -113,7 +113,7 @@ public:
 	virtual BOOL					Net_Relevant( )
 	{
 		return TRUE;
-	};
+	}
 	//
 	virtual void		__stdcall	Spawn_Write(CNetPacket& tNetPacket, BOOL bLocal);
 	virtual BOOL		__stdcall	Spawn_Read(CNetPacket& tNetPacket);
@@ -123,11 +123,11 @@ public:
 	virtual void		__stdcall	set_name(pcstr s)
 	{
 		s_name = s;
-	};
+	}
 	virtual void		__stdcall	set_name_replace(pcstr s)
 	{
 		xr_free(s_name_replace); s_name_replace = xr_strdup(s);
-	};
+	}
 	virtual fVector3& __stdcall	position( );
 	virtual fVector3& __stdcall	angle( );
 	virtual flags16& __stdcall	flags( );
@@ -139,10 +139,10 @@ public:
 	{ }
 	//
 
-	IC		const fVector3& Position( ) const
+	IC const fVector3& Position( ) const
 	{
 		return o_Position;
-	};
+	}
 	// we need this to prevent virtual inheritance :-(
 	virtual CSE_Abstract* base( );
 	virtual const CSE_Abstract* base( ) const;
@@ -162,19 +162,19 @@ public:
 	virtual CSE_ALifeGroupAbstract* cast_group_abstract( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeSchedulable* cast_schedulable( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeInventoryItem* cast_inventory_item( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeTraderAbstract* cast_trader_abstract( )
 	{
 		return 0;
-	};
+	}
 
 	virtual CSE_ALifeObject* cast_alife_object( )
 	{
@@ -199,37 +199,38 @@ public:
 	virtual CSE_ALifeMonsterAbstract* cast_monster_abstract( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeHumanAbstract* cast_human_abstract( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeAnomalousZone* cast_anomalous_zone( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeTrader* cast_trader( )
 	{
 		return 0;
-	};
+	}
 
 	virtual CSE_ALifeCreatureAbstract* cast_creature_abstract( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeSmartZone* cast_smart_zone( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeOnlineOfflineGroup* cast_online_offline_group( )
 	{
 		return 0;
-	};
+	}
 	virtual CSE_ALifeItemPDA* cast_item_pda( )
 	{
 		return 0;
-	};
+	}
 };
+
 add_to_type_list(CSE_Abstract)
 #define script_type_list save_type_list(CSE_Abstract)
 

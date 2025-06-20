@@ -27,20 +27,29 @@ public:\
 	SERVER_ENTITY_EDITOR_METHODS \
 };
 
-struct	SRotation
+struct SRotation
 {
-	f32  yaw;
+	f32 yaw;
 	f32 pitch;
 	f32 roll;
-	SRotation() { yaw=pitch=roll=0; }
-	SRotation(f32 y, f32 p, f32 r) { yaw=y;pitch=p;roll=r; }
+	SRotation( )
+	{
+		yaw = pitch = roll = 0;
+	}
+	SRotation(f32 y, f32 p, f32 r)
+	{
+		yaw = y;
+		pitch = p;
+		roll = r;
+	}
 };
 
-enum EPOType {
+enum EPOType
+{
 	epotBox,
 	epotFixedChain,
-    epotFreeChain,
-    epotSkeleton
+	epotFreeChain,
+	epotSkeleton
 };
 
 DEFINE_VECTOR	(u32,						DWORD_VECTOR,					DWORD_IT);

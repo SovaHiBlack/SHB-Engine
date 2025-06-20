@@ -1,10 +1,7 @@
 // UIButton.cpp: класс нажимаемой кнопки
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 #include "UIButton.h"
-//#include "../HUDManager.h"
 #include "UILines.h"
 #include "UIBtnHint.h"
 

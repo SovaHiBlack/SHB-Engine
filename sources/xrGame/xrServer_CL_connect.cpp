@@ -92,30 +92,37 @@ void xrServer::OnCL_Connected(IClient* _CL)
 	game->ProcessDelayedEvent( );
 }
 
-void	xrServer::SendConnectResult(IClient* CL, u8 res, u8 res1, pstr ResultStr)
+void xrServer::SendConnectResult(IClient* CL, u8 res, u8 res1, pstr ResultStr)
 {
-	CNetPacket	P;
+	CNetPacket P;
 	P.w_begin(M_CLIENT_CONNECT_RESULT);
 	P.w_u8(res);
 	P.w_u8(res1);
 	P.w_stringZ(ResultStr);
 
 	if (SV_Client && SV_Client == CL)
+	{
 		P.w_u8(1);
+	}
 	else
+	{
 		P.w_u8(0);
+	}
+
 	P.w_stringZ(Level( ).m_caServerOptions);
 
 	SendTo(CL->ID, P);
-
-};
+}
 
 void xrServer::Check_GameSpy_CDKey_Success(IClient* CL)
 {
-	if (NeedToCheckClient_BuildVersion(CL))				return;
-	//-------------------------------------------------------------
+	if (NeedToCheckClient_BuildVersion(CL))
+	{
+		return;
+	}
+
 	Check_BuildVersion_Success(CL);
-};
+}
 
 BOOL	g_SV_Disable_Auth_Check = FALSE;
 

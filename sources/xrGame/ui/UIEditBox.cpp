@@ -1,13 +1,7 @@
 // CUIEditBox.cpp: ввод строки с клавиатуры
-// 
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-//#include <dinput.h>
-#include "uieditbox.h"
-//#include "../HUDManager.h"
-//#include "UIColorAnimatorWrapper.h"//
-
+#include "UIEditBox.h"
 
 CUIEditBox::CUIEditBox( )
 {

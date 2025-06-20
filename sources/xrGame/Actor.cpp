@@ -40,7 +40,7 @@
 #include "Trade.h"
 #include "Inventory.h"
 #include "Physics.h"
-#include "level.h"
+#include "Level.h"
 #include "GamePersistent.h"
 #include "game_cl_base.h"
 #include "game_cl_single.h"

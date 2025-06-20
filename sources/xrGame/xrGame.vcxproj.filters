@@ -8435,9 +8435,6 @@
     <ClCompile Include="ui\UICustomEdit.cpp">
       <Filter>UI\UIWindows\EditBox\customEB</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIEditBox_script.cpp">
-      <Filter>UI\UIWindows\EditBox\customEB</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIDialogWnd.cpp">
       <Filter>UI\UIWindows\Windows</Filter>
     </ClCompile>
@@ -8493,9 +8490,6 @@
       <Filter>UI\UIWindows\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIComboBox.cpp">
-      <Filter>UI\UIWindows\ComboBox</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\UIComboBox_script.cpp">
       <Filter>UI\UIWindows\ComboBox</Filter>
     </ClCompile>
     <ClCompile Include="ui\UI_IB_Static.cpp">
@@ -8698,6 +8692,9 @@
     </ClCompile>
     <ClCompile Include="ui\UIGame.cpp">
       <Filter>UI\GameTypes\Single</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\UIEditBox_script.cpp">
+      <Filter>UI\UIWindows\EditBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

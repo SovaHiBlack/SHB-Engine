@@ -8,7 +8,7 @@
 #include "Weapon.h"
 #include "Inventory.h"
 #include "Missile.h"
-#include "level.h"
+#include "Level.h"
 #ifdef DEBUG
 #include "PHDebug.h"
 #endif

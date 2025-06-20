@@ -17,7 +17,7 @@ void CScanningAbilityAbstract::on_destroy()
 TEMPLATE_SPECIALIZATION
 void CScanningAbilityAbstract::load(pcstr section)
 {
-	::Sound->create(sound_scan,	pSettings->r_string(section,"scan_sound"), st_Effect,SOUND_TYPE_WORLD);
+	::Sound->create(sound_scan,	pSettings->r_string(section,"scan_sound"), st_Effect, eST_WORLD);
 
 	critical_value			= pSettings->r_float(section,"scan_critical_value");
 	scan_radius				= pSettings->r_float(section,"scan_radius");

@@ -48,7 +48,6 @@ xrServer::EConnect xrServer::Connect(shared_str& session_name)
 	return IPureServer::Connect(*session_name);
 }
 
-
 IClient* xrServer::new_client(SClientConnectData* cl_data)
 {
 	IClient* CL = client_Find_Get(cl_data->clientID);
@@ -97,7 +96,6 @@ void xrServer::AttachNewClient(IClient* CL)
 	// gen message
 	if (!NeedToCheckClient_GameSpy_CDKey(CL))
 	{
-	//-------------------------------------------------------------
 		Check_GameSpy_CDKey_Success(CL);
 	}
 

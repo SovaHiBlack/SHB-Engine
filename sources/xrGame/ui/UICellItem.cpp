@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "UICellItem.h"
-//#include "../xr_level_controller.h"
 #include "../..\XR_3DA\Input.h"
 #include "../HUDManager.h"
-//#include "../level.h"
 #include "../object_broker.h"
 
 CUICellItem::CUICellItem( )

@@ -9,12 +9,11 @@
 
 #include "stdafx.h"
 #include "UIFrameLine.h"
-//#include "../hudmanager.h"
 #include "UITextureMaster.h"
 
 CUIFrameLine::CUIFrameLine( ) : uFlags(0), iSize(0), bHorizontalOrientation(true)
 {
-	iPos.set(0, 0);
+	iPos.set(0.0f, 0.0f);
 }
 
 void CUIFrameLine::Init(pcstr base_name, f32 x, f32 y, f32 size, bool horizontal, DWORD align)

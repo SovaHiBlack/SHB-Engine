@@ -1,11 +1,5 @@
 // File:        UI3tButton.cpp
 // Description: Button with 3 texutres (for <enabled>, <disabled> and <touched> states)
-// Created:     07.12.2004
-// Author:      Serhiy 0. Vynnychenk0
-// Mail:        narrator@gsc-game.kiev.ua
-//
-// copyright 2004 GSC Game World
-//
 
 #pragma once
 #include "UIButton.h"
@@ -15,6 +9,7 @@ class CUI3tButton : public CUIButton
 {
 	friend class CUIXmlInit;
 	using CUIButton::SetTextColor;
+
 public:
 	CUI3tButton( );
 	virtual			~CUI3tButton( );
@@ -49,7 +44,7 @@ public:
 		m_eButtonState = ch ? BUTTON_PUSHED : BUTTON_NORMAL;
 	}
 
-// behavior
+	// behavior
 	virtual void	DrawTexture( );
 	virtual void	Update( );
 

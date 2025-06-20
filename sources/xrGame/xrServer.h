@@ -85,6 +85,7 @@ private:
 	u32							OnDelayedMessage(CNetPacket& P, CClientID sender);			// Non-Zero means broadcasting with "flags" as returned
 
 	void						SendUpdatesToAll( );
+
 private:
 	typedef
 		CID_Generator<
@@ -105,6 +106,7 @@ private:
 protected:
 	void					Server_Client_Check(IClient* CL);
 	void					PerformCheckClientsForMaxPing( );
+
 public:
 	game_sv_GameState* game;
 
@@ -144,6 +146,7 @@ public:
 
 	void					AttachNewClient(IClient* CL);
 	virtual void			OnBuildVersionRespond(IClient* CL, CNetPacket& P);
+
 protected:
 	bool					CheckAdminRights(const shared_str& user, const shared_str& pass, string512 reason);
 	virtual IClient* new_client(SClientConnectData* cl_data);
@@ -188,7 +191,7 @@ public:
 	u32						GetEntitiesNum( )
 	{
 		return entities.size( );
-	};
+	}
 	CSE_Abstract* GetEntity(u32 Num);
 
 	IC void					clients_Lock( )
@@ -219,18 +222,21 @@ public:
 	void					create_direct_client( );
 
 	virtual void			Assign_ServerType(string512& res)
-	{ };
-//	virtual bool			HasPassword			()	{ return false; }
+	{ }
+
 	virtual bool			HasProtected( )
 	{
 		return false;
 	}
 
 	virtual void			GetServerInfo(CServerInfo* si);
+
 public:
 	xr_string				ent_name_safe(u16 eid);
+
 #ifdef DEBUG
 	bool			verify_entities( ) const;
 	void			verify_entity(const CSE_Abstract* entity) const;
 #endif
+
 };
