@@ -751,12 +751,6 @@
     <Filter Include="AI\AMonsters\monsters\Zombie">
       <UniqueIdentifier>{e0381460-c7e0-4ab2-9505-63c17a728a3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters\monsters\Zombie\States">
-      <UniqueIdentifier>{239cce20-546c-4feb-babd-8a284e074730}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Zombie\Script">
-      <UniqueIdentifier>{586be9ba-4ac9-42a3-b022-7cdfe0bb0124}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AMonsters\monsters\Fracture">
       <UniqueIdentifier>{cf68a6b3-ad6f-46d1-9966-026556bf75a0}</UniqueIdentifier>
     </Filter>
@@ -3615,17 +3609,11 @@
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_attack_hidden_inline.h">
       <Filter>AI\AMonsters\monsters\Poltergeist\Hidden Attack</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Zombie\zombie.h">
+    <ClInclude Include="ai\Monsters\Zombie\Zombie.h">
       <Filter>AI\AMonsters\monsters\Zombie</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Zombie\zombie_state_manager.h">
+    <ClInclude Include="ai\Monsters\Zombie\StateManagerZombie.h">
       <Filter>AI\AMonsters\monsters\Zombie</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\Zombie\zombie_state_attack_run.h">
-      <Filter>AI\AMonsters\monsters\Zombie\States</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\Zombie\zombie_state_attack_run_inline.h">
-      <Filter>AI\AMonsters\monsters\Zombie\States</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Fracture\fracture.h">
       <Filter>AI\AMonsters\monsters\Fracture</Filter>
@@ -5982,6 +5970,12 @@
     <ClInclude Include="ui\UIGame.h">
       <Filter>UI\GameTypes\Single</Filter>
     </ClInclude>
+    <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun.h">
+      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h">
+      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="damage_manager.cpp">
@@ -6671,14 +6665,11 @@
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_telekinesis.cpp">
       <Filter>AI\AMonsters\monsters\Poltergeist\Abilities</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Zombie\zombie.cpp">
+    <ClCompile Include="ai\Monsters\Zombie\Zombie.cpp">
       <Filter>AI\AMonsters\monsters\Zombie</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Zombie\zombie_state_manager.cpp">
+    <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp">
       <Filter>AI\AMonsters\monsters\Zombie</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Zombie\zombie_script.cpp">
-      <Filter>AI\AMonsters\monsters\Zombie\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Fracture\fracture.cpp">
       <Filter>AI\AMonsters\monsters\Fracture</Filter>

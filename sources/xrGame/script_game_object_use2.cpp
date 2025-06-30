@@ -3,7 +3,7 @@
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
 #include "ai/monsters/bloodsucker/bloodsucker.h"
-#include "ai/monsters/zombie/zombie.h"
+#include "ai/monsters/Zombie/Zombie.h"
 #include "script_sound_info.h"
 #include "script_monster_hit_info.h"
 #include "ai/monsters/monster_home.h"

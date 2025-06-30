@@ -31,7 +31,7 @@
 #	include "ai/monsters/PseudoGigant/pseudo_gigant.h"
 #	include "ai/monsters/controller/controller.h"
 #	include "ai/monsters/poltergeist/poltergeist.h"
-#	include "ai/monsters/zombie/zombie.h"
+#	include "ai/monsters/Zombie/Zombie.h"
 #	include "ai/monsters/fracture/fracture.h"
 #	include "ai/monsters/snork/snork.h"
 #	include "ai/monsters/cat/cat.h"

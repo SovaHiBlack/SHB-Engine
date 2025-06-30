@@ -490,10 +490,10 @@
     <ClInclude Include="ai\Monsters\telekinetic_object.h" />
     <ClInclude Include="ai\Monsters\Tushkano\tushkano.h" />
     <ClInclude Include="ai\Monsters\Tushkano\tushkano_state_manager.h" />
-    <ClInclude Include="ai\Monsters\Zombie\zombie.h" />
-    <ClInclude Include="ai\Monsters\Zombie\zombie_state_attack_run.h" />
-    <ClInclude Include="ai\Monsters\Zombie\zombie_state_attack_run_inline.h" />
-    <ClInclude Include="ai\Monsters\Zombie\zombie_state_manager.h" />
+    <ClInclude Include="ai\Monsters\Zombie\Zombie.h" />
+    <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun.h" />
+    <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h" />
+    <ClInclude Include="ai\Monsters\Zombie\StateManagerZombie.h" />
     <ClInclude Include="ai\phantom\phantom.h" />
     <ClInclude Include="Ai\Stalker\ai_stalker.h" />
     <ClInclude Include="ai\stalker\ai_stalker_impl.h" />
@@ -1626,9 +1626,8 @@
     <ClCompile Include="ai\Monsters\Tushkano\tushkano.cpp" />
     <ClCompile Include="ai\Monsters\Tushkano\tushkano_script.cpp" />
     <ClCompile Include="ai\Monsters\Tushkano\tushkano_state_manager.cpp" />
-    <ClCompile Include="ai\Monsters\Zombie\zombie.cpp" />
-    <ClCompile Include="ai\Monsters\Zombie\zombie_script.cpp" />
-    <ClCompile Include="ai\Monsters\Zombie\zombie_state_manager.cpp" />
+    <ClCompile Include="ai\Monsters\Zombie\Zombie.cpp" />
+    <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp" />
     <ClCompile Include="ai\phantom\phantom.cpp" />
     <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
       <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ShowIncludes>
