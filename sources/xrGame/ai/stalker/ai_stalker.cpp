@@ -788,12 +788,6 @@ void CStalker::shedule_Update		( u32 DT )
 	UpdateInventoryOwner(DT);
 	STOP_PROFILE
 
-//#ifdef DEBUG
-//	if (psAI_Flags.test(aiALife)) {
-//		smart_cast<CSE_ALifeHumanStalker*>(ai().alife().objects().object(ID()))->check_inventory_consistency();
-//	}
-//#endif
-	
 	START_PROFILE("stalker/schedule_update/physics")
 	VERIFY				(_valid(Position()));
 	m_pPhysics_support->in_shedule_Update(DT);

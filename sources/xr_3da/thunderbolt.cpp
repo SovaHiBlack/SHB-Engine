@@ -102,7 +102,7 @@ CEffect_Thunderbolt::CEffect_Thunderbolt( )
 	p_min_dist = _min(MAX_DIST_FACTOR, pSettings->r_float("thunderbolt_common", "min_dist_factor"));
 	p_tilt = deg2rad(pSettings->r_float("thunderbolt_common", "tilt"));
 	p_second_prop = pSettings->r_float("thunderbolt_common", "second_propability");
-	clamp(p_second_prop, 0.f, 1.f);
+	clamp(p_second_prop, 0.0f, 1.0f);
 	p_sky_color = pSettings->r_float("thunderbolt_common", "sky_color");
 	p_sun_color = pSettings->r_float("thunderbolt_common", "sun_color");
 	p_fog_color = pSettings->r_float("thunderbolt_common", "fog_color");

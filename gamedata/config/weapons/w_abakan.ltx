@@ -19,11 +19,10 @@ holder_range_modifier	= 1.0		       ; во сколько раз увеличивается eye_range
 holder_fov_modifier		= 0.7              ; во сколько раз увеличивается eye_fov
 ;-----------------------------------------------------------------------------------
 
-
 cost					= 2500				; the price of the item
-weapon_class			= assault_rifle		; the type of the box that will be used in buy-menu in multiplayer mode	
+;weapon_class			= assault_rifle		; the type of the box that will be used in buy-menu in multiplayer mode	
 	
-ammo_limit				= 210				; obsolete
+;ammo_limit				= 210				; obsolete
 ammo_elapsed			= 30				; obsolete
 	
 ammo_mag_size			= 30				; clip (magazine) size
@@ -43,11 +42,12 @@ inv_name	        	= wpn-abakan					; name in inventory
 inv_name_short			= wpn-abakan
 inv_weight			= 3.9								; weight in inventory
 
-inv_grid_width			= 5	 ; position and size of the icon that will be used to display weapon in the inventory menu
-inv_grid_height			= 2	 ; all icons are on the texture ui_icon_equipment.dds,   
-inv_grid_x				= 6  ; position and size are in terms of 64x64 squares
+inv_grid_width			= 5	 ; положение и размер значка, который будет использоваться для отображения оружия в меню инвентаря
+inv_grid_height			= 2	 ; все значки находятся на текстуре ui_icon_equipment.dds,
+inv_grid_x				= 6  ; положение и размер указаны в виде квадратов 64х64
 inv_grid_y				= 2
 
+  
 kill_msg_x			= 119
 kill_msg_y			= 199
 kill_msg_width		= 93
@@ -79,7 +79,6 @@ cam_dispertion_frac			= 0.9		;ствол будет подыматься на cam_dispersion*cam_dispe
 cam_max_angle				= 8.0	    	;максимальный угол отдачи
 cam_max_angle_horz			= 15.0		;(degree) maximum shot horizontal degree 
 cam_step_angle_horz			= 0.9		;(degree) size of step camera moved in horizontal position while shooting
-
 
 fire_dispersion_condition_factor 	= 5	    	;увеличение дисперсии в процентах при максимальном износе 
 misfire_probability 			= 0.0050	;вероятность осечки при максимальном износе 

@@ -4925,9 +4925,6 @@
     <Xml Include="config\text\eng\tasks_yantar.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
-    <Xml Include="config\text\eng\test_string.xml">
-      <Filter>config\text\eng</Filter>
-    </Xml>
     <Xml Include="config\text\eng\ui_mm_team_desc.xml">
       <Filter>config\text\eng</Filter>
     </Xml>
@@ -5289,12 +5286,6 @@
       <Filter>config\text</Filter>
     </Xml>
     <Xml Include="config\text\string_table_ui.xml">
-      <Filter>config\text</Filter>
-    </Xml>
-    <Xml Include="config\text\test_radar.xml">
-      <Filter>config\text</Filter>
-    </Xml>
-    <Xml Include="config\text\test_string.xml">
       <Filter>config\text</Filter>
     </Xml>
     <Xml Include="config\ui\actor_statistic.xml">

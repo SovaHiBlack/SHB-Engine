@@ -74,8 +74,7 @@ void CEffectorZoomInertion::SetParams(f32 disp)
 		m_fFloatSpeed = m_fSpeedMin;
 	}
 
-	//для того, чтоб сразу прошел пересчет направления
-	//движения прицела
+	//для того, чтоб сразу прошел пересчет направления движения прицела
 	if (!fis_zero(old_disp - m_fDispRadius, EPSILON_5))
 	{
 		m_fEpsilon = 2 * m_fDispRadius;

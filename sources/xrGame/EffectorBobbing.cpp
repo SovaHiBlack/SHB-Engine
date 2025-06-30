@@ -2,7 +2,6 @@
 #include "EffectorBobbing.h"
 
 #include "Actor.h"
-//#include "Actor_defs.h"
 
 #define BOBBING_SECT "bobbing_effector"
 

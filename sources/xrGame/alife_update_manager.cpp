@@ -138,7 +138,7 @@ void CALifeUpdateManager::shedule_Update(u32 dt)
 
 void CALifeUpdateManager::set_process_time(s32 microseconds)
 {
-	graph( ).set_process_time(f32(microseconds) - f32(microseconds) * update_monster_factor( ) / 1000000.f);
+	graph( ).set_process_time(f32(microseconds) - f32(microseconds) * update_monster_factor( ) / 1000000.0f);
 }
 
 void CALifeUpdateManager::objects_per_update(const u32& objects_per_update)

@@ -169,7 +169,7 @@ protected:
 public:
 	bool		IsEnabled( )
 	{
-		return m_eZoneState != eZoneStateDisabled;
+		return (m_eZoneState != eZoneStateDisabled);
 	}
 	void		ZoneEnable( );
 	void		ZoneDisable( );
@@ -183,7 +183,7 @@ protected:
 	virtual		void		Affect(SZoneObjectInfo* O)
 	{ }
 
-//воздействовать на все объекты в зоне
+	//воздействовать на все объекты в зоне
 	virtual		void		AffectObjects( );
 
 	u32						m_dwAffectFrameNum;
@@ -296,7 +296,6 @@ protected:
 
 	virtual	void	Hit(SHit* pHDS);
 
-
 	//для визуализации зоны
 	void		PlayIdleParticles( );
 	void		StopIdleParticles( );
@@ -321,7 +320,7 @@ protected:
 		return false;
 	}
 
-//обновление, если зона передвигается
+	//обновление, если зона передвигается
 	virtual		void		OnMove( );
 	fVector3					m_vPrevPos;
 	u32						m_dwLastTimeMoved;
@@ -340,7 +339,7 @@ protected:
 
 	//рождение артефакта в зоне, во время ее срабатывания и присоединение его к зоне
 	void	BornArtefact( );
-//выброс артефактов из зоны
+	//выброс артефактов из зоны
 	void	ThrowOutArtefact(CArtefact* pArtefact);
 
 	void	PrefetchArtefacts( );
@@ -387,19 +386,27 @@ public:
 		return true;
 	}
 
-// optimization FAST/SLOW mode
+	// optimization FAST/SLOW mode
 public:
-	BOOL					o_fastmode;
+	bool					o_fastmode;
 	IC void					o_switch_2_fast( )
 	{
-		if (o_fastmode)		return;
-		o_fastmode = TRUE;
+		if (o_fastmode)
+		{
+			return;
+		}
+
+		o_fastmode = true;
 		processing_activate( );
 	}
 	IC void					o_switch_2_slow( )
 	{
-		if (!o_fastmode)	return;
-		o_fastmode = FALSE;
+		if (!o_fastmode)
+		{
+			return;
+		}
+
+		o_fastmode = false;
 		processing_deactivate( );
 	}
 };

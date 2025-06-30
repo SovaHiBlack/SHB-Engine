@@ -27,6 +27,8 @@
 #	include "alife_online_offline_group_brain.h"
 #	include "alife_object_registry.h"
 #	include "date_time.h"
+#include "game_base_space.h"
+#include "Level.h"
 #endif
 
 void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIniFile* ini, pcstr section)
@@ -45,7 +47,9 @@ void setup_location_types_section(GameGraph::TERRAIN_VECTOR& m_vertex_types, CIn
 		u32							N = _GetItemCount(S);
 
 		if (N != GameGraph::LOCATION_TYPE_COUNT)
+		{
 			continue;
+		}
 
 		for (u32 j = 0; j < GameGraph::LOCATION_TYPE_COUNT; ++j)
 			terrain_mask.tMask[j] = GameGraph::_LOCATION_ID(atoi(_GetItem(S, j, I)));
@@ -114,8 +118,6 @@ using namespace ALife;
 ////////////////////////////////////////////////////////////////////////////
 CSE_ALifeTraderAbstract::CSE_ALifeTraderAbstract(pcstr caSection)
 {
-	//	m_fCumulativeItemMass		= 0.f;
-	//	m_iCumulativeItemVolume		= 0;
 	m_dwMoney = 0;
 	if (pSettings->line_exist(caSection, "money"))
 		m_dwMoney = pSettings->r_u32(caSection, "money");
@@ -250,11 +252,6 @@ void CSE_ALifeTraderAbstract::OnChangeProfile(PropValue* sender)
 	base( )->set_editor_flag(ISE_Abstract::flVisualChange);
 }
 
-#ifdef XRGAME_EXPORTS
-#include "game_base_space.h"
-#include "Level.h"
-#endif
-
 shared_str CSE_ALifeTraderAbstract::specific_character( )
 {
 	if (m_SpecificCharacter.size( ))
@@ -278,13 +275,16 @@ shared_str CSE_ALifeTraderAbstract::specific_character( )
 		m_CheckedCharacters.clear( );
 		m_DefaultCharacters.clear( );
 
-		for (int i = 0; i <= CSpecificCharacter::GetMaxIndex( ); i++)
+		for (s32 i = 0; i <= CSpecificCharacter::GetMaxIndex( ); i++)
 		{
 			CSpecificCharacter spec_char;
 			shared_str id = CSpecificCharacter::IndexToId(i);
 			spec_char.Load(id);
 
-			if (spec_char.data( )->m_bNoRandom) continue;
+			if (spec_char.data( )->m_bNoRandom)
+			{
+				continue;
+			}
 
 			bool class_found = false;
 			for (std::size_t j = 0; j < spec_char.data( )->m_Classes.size( ); j++)
@@ -295,30 +295,38 @@ shared_str CSE_ALifeTraderAbstract::specific_character( )
 					break;
 				}
 			}
+
 			if (!char_info.data( )->m_Class.size( ) || class_found)
 			{
 				//запомнить пподходящий персонаж с флажком m_bDefaultForCommunity
 				if (spec_char.data( )->m_bDefaultForCommunity)
+				{
 					m_DefaultCharacters.push_back(id);
+				}
 
 				if (char_info.data( )->m_Rank == NO_RANK || _abs(spec_char.Rank( ) - char_info.data( )->m_Rank) < RANK_DELTA)
 				{
 					if (char_info.data( )->m_Reputation == NO_REPUTATION || _abs(spec_char.Reputation( ) - char_info.data( )->m_Reputation) < REPUTATION_DELTA)
 					{
+
 #ifdef XRGAME_EXPORTS
-						int* count = NULL;
+						s32* count = NULL;
 						if (ai( ).get_alife( ))
+						{
 							count = ai( ).alife( ).registry(specific_characters).object(id, true);
+						}
+
 						//если индекс еще не был использован
 						if (NULL == count)
 #endif
+
 							m_CheckedCharacters.push_back(id);
 					}
 				}
 			}
 		}
-		R_ASSERT3(!m_DefaultCharacters.empty( ),
-				  "no default specific character set for class", *char_info.data( )->m_Class);
+
+		R_ASSERT3(!m_DefaultCharacters.empty( ), "no default specific character set for class", *char_info.data( )->m_Class);
 
 #ifdef XRGAME_EXPORTS
 		if (m_CheckedCharacters.empty( ))
@@ -343,9 +351,12 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	if (m_SpecificCharacter.size( ))
 	{
 		if (ai( ).get_alife( ))
+		{
 			ai( ).alife( ).registry(specific_characters).remove(m_SpecificCharacter, true);
+		}
 	}
 #endif
+
 	m_SpecificCharacter = new_spec_char;
 
 
@@ -353,7 +364,7 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	if (ai( ).get_alife( ))
 	{
 		//запомнить, то что мы использовали индекс
-		int a = 1;
+		s32 a = 1;
 		ai( ).alife( ).registry(specific_characters).add(m_SpecificCharacter, a, true);
 	}
 #endif
@@ -364,20 +375,21 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	{
 		CSE_Visual* visual = smart_cast<CSE_Visual*>(base( )); VERIFY(visual);
 		if (xr_strlen(selected_char.Visual( )) > 0)
+		{
 			visual->set_visual(selected_char.Visual( ));
+		}
 	}
 
 #ifdef XRGAME_EXPORTS
-
 	if (NO_COMMUNITY_INDEX == m_community_index)
 	{
 		m_community_index = selected_char.Community( ).index( );
 		CSE_ALifeCreatureAbstract* creature = smart_cast<CSE_ALifeCreatureAbstract*>(base( ));
 		if (creature)
+		{
 			creature->s_team = selected_char.Community( ).team( );
+		}
 	}
-
-
 
 	//----
 	CSE_ALifeMonsterAbstract* monster = smart_cast<CSE_ALifeMonsterAbstract*>(base( ));
@@ -387,10 +399,14 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 	}
 	//----
 	if (NO_RANK == m_rank)
+	{
 		m_rank = selected_char.Rank( );
+	}
 
 	if (NO_REPUTATION == m_reputation)
+	{
 		m_reputation = selected_char.Reputation( );
+	}
 
 	m_character_name = *(CStringTable( ).translate(selected_char.Name( )));
 
@@ -400,12 +416,12 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 		//select name and lastname
 		xr_string subset = m_character_name.c_str( ) + xr_strlen(gen_name);
 
-		string_path					t1;
+		string_path t1;
 		strconcat(sizeof(t1), t1, "stalker_names_", subset.c_str( ));
 		u32 name_cnt = pSettings->r_u32(t1, "name_cnt");
 		u32 last_name_cnt = pSettings->r_u32(t1, "last_name_cnt");
 
-		string512			S;
+		string512 S;
 		xr_string n = "name_";
 		n += subset;
 		n += "_";
@@ -418,16 +434,17 @@ void CSE_ALifeTraderAbstract::set_specific_character(shared_str new_spec_char)
 		n += "_";
 		n += itoa(::Random.randI(last_name_cnt), S, 10);
 		m_character_name += *(CStringTable( ).translate(n.c_str( )));
-
-
-
 	}
+
 	u32 min_m = selected_char.MoneyDef( ).min_money;
 	u32 max_m = selected_char.MoneyDef( ).max_money;
 	if (min_m != 0 && max_m != 0)
 	{
 		m_dwMoney = min_m;
-		if (min_m != max_m)	m_dwMoney += ::Random.randI(max_m - min_m);
+		if (min_m != max_m)
+		{
+			m_dwMoney += ::Random.randI(max_m - min_m);
+		}
 	}
 #else
 	//в редакторе специфический профиль оставляем не заполненым
@@ -442,12 +459,11 @@ void CSE_ALifeTraderAbstract::set_character_profile(shared_str new_profile)
 
 shared_str CSE_ALifeTraderAbstract::character_profile( )
 {
-	return	m_sCharacterProfile;
+	return m_sCharacterProfile;
 }
 
 
 #ifdef XRGAME_EXPORTS
-
 //для работы с relation system
 u16								CSE_ALifeTraderAbstract::object_id( ) const
 {
@@ -459,7 +475,7 @@ CHARACTER_COMMUNITY_INDEX		CSE_ALifeTraderAbstract::Community( ) const
 	return m_community_index;
 }
 
-pcstr			CSE_ALifeTraderAbstract::CommunityName( ) const
+pcstr CSE_ALifeTraderAbstract::CommunityName( ) const
 {
 	return *CCharacterCommunity::IndexToId(m_community_index);
 }
@@ -485,11 +501,10 @@ CHARACTER_REPUTATION_VALUE	CSE_ALifeTraderAbstract::Reputation( )
 #endif
 
 void CSE_ALifeTraderAbstract::UPDATE_Write(CNetPacket& tNetPacket)
-{ };
+{ }
 
 void CSE_ALifeTraderAbstract::UPDATE_Read(CNetPacket& tNetPacket)
-{ };
-
+{ }
 
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeTrader
@@ -576,13 +591,13 @@ void CSE_ALifeTrader::UPDATE_Write(CNetPacket& tNetPacket)
 {
 	inherited1::UPDATE_Write(tNetPacket);
 	inherited2::UPDATE_Write(tNetPacket);
-};
+}
 
 void CSE_ALifeTrader::UPDATE_Read(CNetPacket& tNetPacket)
 {
 	inherited1::UPDATE_Read(tNetPacket);
 	inherited2::UPDATE_Read(tNetPacket);
-};
+}
 
 bool CSE_ALifeTrader::interactive( ) const
 {
@@ -609,7 +624,6 @@ CSE_ALifeCustomZone::CSE_ALifeCustomZone(pcstr caSection) : CSE_ALifeSpaceRestri
 	m_enabled_time = 0;
 	m_disabled_time = 0;
 	m_start_time_shift = 0;
-
 }
 
 CSE_ALifeCustomZone::~CSE_ALifeCustomZone( )
@@ -633,13 +647,16 @@ void CSE_ALifeCustomZone::STATE_Read(CNetPacket& tNetPacket, u16 size)
 	}
 
 	if (m_wVersion > 102)
+	{
 		tNetPacket.r_u32(m_owner_id);
+	}
 
 	if (m_wVersion > 105)
 	{
 		tNetPacket.r_u32(m_enabled_time);
 		tNetPacket.r_u32(m_disabled_time);
 	}
+
 	if (m_wVersion > 106)
 	{
 		tNetPacket.r_u32(m_start_time_shift);

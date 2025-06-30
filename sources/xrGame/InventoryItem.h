@@ -11,9 +11,9 @@
 
 enum EHandDependence
 {
-	hdNone = 0,
-	hd1Hand = 1,
-	hd2Hand = 2
+	eHD_NONE = 0,
+	eHD_1_HAND = 1,
+	eHD_2_HAND = 2
 };
 
 class CSE_Abstract;
@@ -44,10 +44,10 @@ private:
 	typedef CAttachableItem inherited;
 
 protected:
-	enum EIIFlags
+	enum EInventoryItemFlags
 	{
-		FdropManual = (1 << 0),
-		FCanTake = (1 << 1),
+		eIIF_DROP_MANUAL = (1 << 0),
+		eIIF_CAN_TAKE = (1 << 1),
 		FCanTrade = (1 << 2),
 		Fbelt = (1 << 3),
 		Fruck = (1 << 4),
@@ -102,7 +102,7 @@ public:
 
 	virtual EHandDependence		HandDependence( ) const
 	{
-		return hd1Hand;
+		return eHD_1_HAND;
 	}
 	virtual bool				IsSingleHanded( ) const
 	{
@@ -146,11 +146,11 @@ public:
 
 	BOOL				GetDropManual( ) const
 	{
-		return m_flags.test(FdropManual);
+		return m_flags.test(eIIF_DROP_MANUAL);
 	}
 	void				SetDropManual(BOOL val)
 	{
-		m_flags.set(FdropManual, val);
+		m_flags.set(eIIF_DROP_MANUAL, val);
 	}
 
 	BOOL				IsInvalid( ) const;
@@ -236,7 +236,7 @@ public:
 
 	virtual bool				CanTake( ) const
 	{
-		return !!m_flags.test(FCanTake);
+		return !!m_flags.test(eIIF_CAN_TAKE);
 	}
 	bool				CanTrade( ) const;
 	virtual bool 				IsNecessaryItem(CInventoryItem* item);

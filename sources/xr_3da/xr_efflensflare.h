@@ -50,17 +50,19 @@ public:
 	ref_shader			CreateShader(pcstr tex_name, pcstr sh_name);
 
 	shared_str			section;
+
 public:
 	CLensFlareDescriptor( )
 	{
-		m_Flags.zero( ); section = 0; m_StateBlendUpSpeed = m_StateBlendDnSpeed = 0.1f;
+		m_Flags.zero( );
+		section = 0;
+		m_StateBlendUpSpeed = m_StateBlendDnSpeed = 0.1f;
 	}
 	void				load(CIniFile* pIni, pcstr section);
 	void 				OnDeviceCreate( );
 	void 				OnDeviceDestroy( );
 };
 DEFINE_VECTOR(CLensFlareDescriptor, LensFlareDescVec, LensFlareDescIt);
-
 
 class ENGINE_API CLensFlare
 {
@@ -94,7 +96,7 @@ protected:
 		lfsNone,
 		lfsIdle,
 		lfsHide,
-		lfsShow,
+		lfsShow
 	};
 	LFState				m_State;
 	f32				m_StateBlend;

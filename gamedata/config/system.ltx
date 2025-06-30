@@ -3,29 +3,25 @@
 #include "weathers\environment.ltx"
 #include "creatures\monsters.ltx"
 #include "creatures\stalkers.ltx"
+#include "creatures\actor.ltx"
+#include "creatures\helicopter.ltx"
+#include "creatures\game_relations.ltx"
 #include "weapons\weapons.ltx"
 #include "misc\items.ltx"
 #include "misc\monster_items.ltx"
-
-#include "creatures\actor.ltx"
-
+#include "misc\quest_items.ltx"
+#include "misc\unique_items.ltx"
 #include "misc\zones.ltx"
 #include "misc\postprocess.ltx"
-
 #include "misc\artefacts.ltx"
 #include "misc\devices.ltx"
-#include "misc\quest_items.ltx"
 #include "misc\outfit.ltx"
 #include "misc\effectors.ltx"
-#include "creatures\helicopter.ltx"
 #include "external.ltx"
-#include "misc\unique_items.ltx"
-
-#include "creatures\game_relations.ltx"
 
 #include "evaluation.ltx"
 #include "fonts.ltx"
-
+#include "localization.ltx"
 #include "alife.ltx"
 
 ; Smart Terrain
@@ -37,8 +33,6 @@
 
 ; Extra Content
 #include "extracontent.ltx"
-
-#include "localization.ltx"
 
 [sound]
 occlusion_scale	= 0.4
@@ -222,7 +216,7 @@ cost				= 0
  $player 				= on
 class                   = SPECT
 
-      
+	  
 [??tg_event]
 class 			 = EVENT
 
@@ -238,7 +232,6 @@ inv_grid_width			= 1
 inv_grid_height			= 1
 
 script_binding  		= bind_physic_object.init
-
 
 [actor_firsteye_cam]
 lim_pitch                = -1.5, 1.5
@@ -315,7 +308,6 @@ rot_speed                = 3.14, 1.0, 10
 [interface]
 font_game                = font_game
 font_small               = font_small
- 
 
 [graph_point]
 class                = AI_GRAPH
@@ -478,42 +470,25 @@ $spawn 			= "network\team base"
 class			= Z_TEAMBS
 GroupControlSection	= spawn_group_zone
 
-[multiplayer_skins]
-stalker_killer_head_1	= 0,380
-stalker_killer_antigas	= 128,380
-stalker_killer_head_3	= 256,380
-stalker_killer_mask		= 384,380
-stalker_killer_exoskeleton	= 512,380
-stalker_sci_killer		= 640,380
-stalker_killer_military = 768,380
-
-stalker_sv_balon_10		= 0,705
-stalker_sv_hood_9		= 128,705
-stalker_sv_rukzak_3		= 256,705
-stalker_sv_rukzak_2		= 384,705
-stalker_sv_exoskeleton	= 512,705
-stalker_sci_svoboda		= 640,705
-stalker_sv_military		= 768,705
-
 [main_ingame_indicators_thresholds]
-radiation				= 0.1,0.25,0.4,0.55,0.7
-wounds					= 0.01,0.2,0.4,0.6,0.8
-jammed					= 0.5,0.6,0.7,0.8,0.9
-starvation				= 0.5,0.6,0.7,0.8,0.9
-fatigue					= 0.3,0.6,0.7,0.8,0.9
+radiation				= 0.1, 0.25, 0.4, 0.55, 0.7
+wounds					= 0.01, 0.2, 0.4, 0.6, 0.8
+jammed					= 0.5, 0.6, 0.7, 0.8, 0.9
+starvation				= 0.5, 0.6, 0.7, 0.8, 0.9
+fatigue					= 0.3, 0.6, 0.7, 0.8, 0.9
 
 [tutorial_conditions_thresholds]
-max_power				= 0.75
-power					= 0.1
-bleeding				= 0.4
-satiety					= 0.5
-radiation				= 0.1
-weapon_jammed			= 0.9
-psy_health				= 0.5
+	max_power				= 0.75
+	power					= 0.1
+	bleeding				= 0.4
+	satiety					= 0.5
+	radiation				= 0.1
+	weapon_jammed			= 0.9
+	psy_health				= 0.5
 
-[squad_manager]
-schedule_min			=   1
-schedule_max			= 999
+;[squad_manager]
+;schedule_min			=   1
+;schedule_max			= 999
 
 [agent_manager]
 schedule_min			= 100

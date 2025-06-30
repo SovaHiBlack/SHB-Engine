@@ -264,7 +264,7 @@ void CCustomZone::Load(pcstr section)
 		R_ASSERT(m_dwBlowoutWindTimeStart < m_dwBlowoutWindTimePeak);
 		R_ASSERT(m_dwBlowoutWindTimePeak < m_dwBlowoutWindTimeEnd);
 
-		if ((s32) m_dwBlowoutWindTimeEnd < m_StateTime[eZoneStateBlowout])
+		if ((s32)m_dwBlowoutWindTimeEnd < m_StateTime[eZoneStateBlowout])
 		{
 			m_dwBlowoutWindTimeEnd = u32(m_StateTime[eZoneStateBlowout] - 1);
 			Msg("! ERROR: invalid 'blowout_wind_time_end' in '%s'", section);
@@ -281,7 +281,7 @@ void CCustomZone::Load(pcstr section)
 		sscanf(pSettings->r_string(section, "light_color"), "%f,%f,%f", &m_LightColor.r, &m_LightColor.g, &m_LightColor.b);
 		m_fLightRange = pSettings->r_float(section, "light_range");
 		m_fLightTime = pSettings->r_float(section, "light_time");
-		m_fLightTimeLeft = 0;
+		m_fLightTimeLeft = 0.0f;
 
 		m_fLightHeight = pSettings->r_float(section, "light_height");
 	}
@@ -290,11 +290,11 @@ void CCustomZone::Load(pcstr section)
 	m_zone_flags.set(eIdleLight, pSettings->r_bool(section, "idle_light"));
 	if (m_zone_flags.test(eIdleLight))
 	{
-		m_fIdleLightRange = pSettings->r_float(section, "idle_light_range");
-		m_fIdleLightRangeDelta = pSettings->r_float(section, "idle_light_range_delta");
-		pcstr light_anim = pSettings->r_string(section, "idle_light_anim");
-		m_pIdleLAnim = LALib.FindItem(light_anim);
-		m_fIdleLightHeight = pSettings->r_float(section, "idle_light_height");
+		m_fIdleLightRange		= pSettings->r_float(section, "idle_light_range");
+		m_fIdleLightRangeDelta	= pSettings->r_float(section, "idle_light_range_delta");
+		pcstr light_anim		= pSettings->r_string(section, "idle_light_anim");
+		m_pIdleLAnim			= LALib.FindItem(light_anim);
+		m_fIdleLightHeight		= pSettings->r_float(section, "idle_light_height");
 	}
 
 	//загрузить параметры для разбрасывания артефактов
@@ -321,7 +321,7 @@ void CCustomZone::Load(pcstr section)
 		m_fArtefactSpawnHeight = pSettings->r_float(section, "artefact_spawn_height");
 
 		pcstr l_caParameters = pSettings->r_string(section, "artefacts");
-		u16 m_wItemCount = (u16) _GetItemCount(l_caParameters);
+		u16 m_wItemCount = (u16)_GetItemCount(l_caParameters);
 		R_ASSERT2(!(m_wItemCount & 1), "Invalid number of parameters in string 'artefacts' in the 'system.ltx'!");
 		m_wItemCount >>= 1;
 
@@ -335,7 +335,7 @@ void CCustomZone::Load(pcstr section)
 		{
 			ARTEFACT_SPAWN& artefact_spawn = m_ArtefactSpawn[i];
 			artefact_spawn.section = _GetItem(l_caParameters, i << 1, l_caBuffer);
-			artefact_spawn.probability = (f32) atof(_GetItem(l_caParameters, (i << 1) | 1, l_caBuffer));
+			artefact_spawn.probability = (f32)atof(_GetItem(l_caParameters, (i << 1) | 1, l_caBuffer));
 			total_probability += artefact_spawn.probability;
 		}
 
@@ -358,7 +358,7 @@ BOOL CCustomZone::net_Spawn(CSE_Abstract* DC)
 		return FALSE;
 	}
 
-	CSE_Abstract* e = (CSE_Abstract*) (DC);
+	CSE_Abstract* e = (CSE_Abstract*)(DC);
 	CSE_ALifeCustomZone* Z = smart_cast<CSE_ALifeCustomZone*>(e);
 	VERIFY(Z);
 
@@ -420,7 +420,7 @@ BOOL CCustomZone::net_Spawn(CSE_Abstract* DC)
 	m_fDistanceToCurEntity = flt_max;
 	m_bBlowoutWindActive = false;
 
-	o_fastmode = TRUE;		// start initially with fast-mode enabled
+	o_fastmode = true;		// start initially with fast-mode enabled
 	if (spawn_ini( ) && spawn_ini( )->line_exist("fast_mode", "always_fast"))
 	{
 		m_b_always_fastmode = spawn_ini( )->r_bool("fast_mode", "always_fast");
@@ -514,7 +514,7 @@ bool CCustomZone::AccumulateState( )
 void CCustomZone::UpdateWorkload(u32 dt)
 {
 	m_iPreviousStateTime = m_iStateTime;
-	m_iStateTime += (s32) dt;
+	m_iStateTime += (s32)dt;
 
 	if (!IsEnabled( ))
 	{
@@ -591,7 +591,7 @@ void CCustomZone::UpdateWorkload(u32 dt)
 	}
 }
 
-// called only in "fast-mode"
+//called only in "fast-mode"
 void CCustomZone::UpdateCL( )
 {
 	inherited::UpdateCL( );
@@ -629,8 +629,8 @@ void CCustomZone::shedule_Update(u32 dt)
 
 			info.time_in_zone += dt;
 
-			if ((!info.small_object && m_iDisableHitTime != -1 && (s32) info.time_in_zone > m_iDisableHitTime) ||
-				(info.small_object && m_iDisableHitTimeSmall != -1 && (s32) info.time_in_zone > m_iDisableHitTimeSmall))
+			if ((!info.small_object && m_iDisableHitTime != -1 && (s32)info.time_in_zone > m_iDisableHitTime) ||
+				(info.small_object && m_iDisableHitTimeSmall != -1 && (s32)info.time_in_zone > m_iDisableHitTimeSmall))
 			{
 				if (!pEntityAlive || !pEntityAlive->g_Alive( ))
 				{
@@ -638,7 +638,7 @@ void CCustomZone::shedule_Update(u32 dt)
 				}
 			}
 
-			if (m_iDisableIdleTime != -1 && (s32) info.time_in_zone > m_iDisableIdleTime)
+			if (m_iDisableIdleTime != -1 && (s32)info.time_in_zone > m_iDisableIdleTime)
 			{
 				if (!pEntityAlive || !pEntityAlive->g_Alive( ))
 				{
@@ -646,8 +646,7 @@ void CCustomZone::shedule_Update(u32 dt)
 				}
 			}
 
-			//если есть хотя бы один не дисабленый объект, то
-			//зона считается активной
+			//если есть хотя бы один не дисабленый объект, то зона считается активной
 			if (info.zone_ignore == false)
 			{
 				m_bZoneActive = true;
@@ -661,7 +660,7 @@ void CCustomZone::shedule_Update(u32 dt)
 
 		inherited::shedule_Update(dt);
 
-		// check "fast-mode" border
+		//check "fast-mode" border
 		f32	cam_distance = Device.vCameraPosition.distance_to(P) - s.R;
 		if (cam_distance > FASTMODE_DISTANCE && !m_b_always_fastmode)
 		{
@@ -799,7 +798,7 @@ BOOL CCustomZone::feel_touch_contact(CObject* O)
 		return FALSE;
 	}
 
-	if (!((CCF_Shape*) CFORM( ))->Contact(O))
+	if (!((CCF_Shape*)CFORM( ))->Contact(O))
 	{
 		return FALSE;
 	}
@@ -810,8 +809,8 @@ BOOL CCustomZone::feel_touch_contact(CObject* O)
 f32 CCustomZone::RelativePower(f32 dist)
 {
 	f32 radius = effective_radius( );
-	f32 power = radius < dist ? 0 : (1.0f - m_fAttenuation * (dist / radius) * (dist / radius));
-	return (power < 0 ? 0 : power);
+	f32 power = radius < dist ? 0.0f : (1.0f - m_fAttenuation * (dist / radius) * (dist / radius));
+	return (power < 0.0f ? 0.0f : power);
 }
 
 f32 CCustomZone::effective_radius( )
@@ -894,7 +893,7 @@ void CCustomZone::UpdateIdleLight( )
 	s32 frame = 0;
 	u32 clr = m_pIdleLAnim->CalculateBGR(Device.fTimeGlobal, frame); // возвращает в формате BGR
 	fColor fclr;
-	fclr.set((f32) color_get_B(clr) / 255.0f, (f32) color_get_G(clr) / 255.0f, (f32) color_get_R(clr) / 255.0f, 1.0f);
+	fclr.set((f32)color_get_B(clr) / 255.0f, (f32)color_get_G(clr) / 255.0f, (f32)color_get_R(clr) / 255.0f, 1.0f);
 
 	f32 range = m_fIdleLightRange + m_fIdleLightRangeDelta * ::Random.randF(-1.0f, 1.0f);
 	m_pIdleLight->set_range(range);
@@ -1216,29 +1215,29 @@ void CCustomZone::AffectObjects( )
 
 void CCustomZone::UpdateBlowout( )
 {
-	if (m_dwBlowoutParticlesTime >= (u32) m_iPreviousStateTime && m_dwBlowoutParticlesTime < (u32) m_iStateTime)
+	if (m_dwBlowoutParticlesTime >= (u32)m_iPreviousStateTime && m_dwBlowoutParticlesTime < (u32)m_iStateTime)
 	{
 		PlayBlowoutParticles( );
 	}
 
-	if (m_dwBlowoutLightTime >= (u32) m_iPreviousStateTime && m_dwBlowoutLightTime < (u32) m_iStateTime)
+	if (m_dwBlowoutLightTime >= (u32)m_iPreviousStateTime && m_dwBlowoutLightTime < (u32)m_iStateTime)
 	{
 		StartBlowoutLight( );
 	}
 
-	if (m_dwBlowoutSoundTime >= (u32) m_iPreviousStateTime && m_dwBlowoutSoundTime < (u32) m_iStateTime)
+	if (m_dwBlowoutSoundTime >= (u32)m_iPreviousStateTime && m_dwBlowoutSoundTime < (u32)m_iStateTime)
 	{
 		m_blowout_sound.play_at_pos(0, Position( ));
 	}
 
-	if (m_zone_flags.test(eBlowoutWind) && m_dwBlowoutWindTimeStart >= (u32) m_iPreviousStateTime && m_dwBlowoutWindTimeStart < (u32) m_iStateTime)
+	if (m_zone_flags.test(eBlowoutWind) && m_dwBlowoutWindTimeStart >= (u32)m_iPreviousStateTime && m_dwBlowoutWindTimeStart < (u32)m_iStateTime)
 	{
 		StartWind( );
 	}
 
 	UpdateWind( );
 
-	if (m_dwBlowoutExplosionTime >= (u32) m_iPreviousStateTime && m_dwBlowoutExplosionTime < (u32) m_iStateTime)
+	if (m_dwBlowoutExplosionTime >= (u32)m_iPreviousStateTime && m_dwBlowoutExplosionTime < (u32)m_iStateTime)
 	{
 		AffectObjects( );
 		BornArtefact( );
@@ -1561,7 +1560,7 @@ void CCustomZone::UpdateWind( )
 		return;
 	}
 
-	if (m_fDistanceToCurEntity > WIND_RADIUS || m_dwBlowoutWindTimeEnd < (u32) m_iStateTime)
+	if (m_fDistanceToCurEntity > WIND_RADIUS || m_dwBlowoutWindTimeEnd < (u32)m_iStateTime)
 	{
 		StopWind( );
 		return;
@@ -1570,14 +1569,14 @@ void CCustomZone::UpdateWind( )
 	if (m_dwBlowoutWindTimePeak > (u32)m_iStateTime)
 	{
 		g_pGamePersistent->Environment( ).wind_strength_factor = m_fBlowoutWindPowerMax + (m_fStoreWindPower - m_fBlowoutWindPowerMax) *
-			f32(m_dwBlowoutWindTimePeak - (u32) m_iStateTime) /
+			f32(m_dwBlowoutWindTimePeak - (u32)m_iStateTime) /
 			f32(m_dwBlowoutWindTimePeak - m_dwBlowoutWindTimeStart);
 		clamp(g_pGamePersistent->Environment( ).wind_strength_factor, 0.0f, 1.0f);
 	}
 	else
 	{
 		g_pGamePersistent->Environment( ).wind_strength_factor = m_fBlowoutWindPowerMax + (m_fStoreWindPower - m_fBlowoutWindPowerMax) *
-			f32((u32) m_iStateTime - m_dwBlowoutWindTimePeak) /
+			f32((u32)m_iStateTime - m_dwBlowoutWindTimePeak) /
 			f32(m_dwBlowoutWindTimeEnd - m_dwBlowoutWindTimePeak);
 		clamp(g_pGamePersistent->Environment( ).wind_strength_factor, 0.0f, 1.0f);
 	}
@@ -1607,7 +1606,7 @@ void CCustomZone::CreateHit(u16 id_to,
 	{
 		if (m_owner_id != u32(-1))
 		{
-			id_from = (u16) m_owner_id;
+			id_from = (u16)m_owner_id;
 		}
 
 		CNetPacket l_P;

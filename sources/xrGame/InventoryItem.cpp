@@ -85,7 +85,7 @@ CInventoryItem::CInventoryItem( )
 
 	SetDropManual(FALSE);
 
-	m_flags.set(FCanTake, TRUE);
+	m_flags.set(eIIF_CAN_TAKE, TRUE);
 	m_flags.set(FCanTrade, TRUE);
 	m_flags.set(FUsingCondition, FALSE);
 	m_fCondition = 1.0f;
@@ -147,7 +147,7 @@ void CInventoryItem::Load(pcstr section)
 	m_flags.set(Fbelt, READ_IF_EXISTS(pSettings, r_bool, section, "belt", FALSE));
 	m_flags.set(FRuckDefault, READ_IF_EXISTS(pSettings, r_bool, section, "default_to_ruck", TRUE));
 
-	m_flags.set(FCanTake, READ_IF_EXISTS(pSettings, r_bool, section, "can_take", TRUE));
+	m_flags.set(eIIF_CAN_TAKE, READ_IF_EXISTS(pSettings, r_bool, section, "can_take", TRUE));
 	m_flags.set(FCanTrade, READ_IF_EXISTS(pSettings, r_bool, section, "can_trade", TRUE));
 	m_flags.set(FIsQuestItem, READ_IF_EXISTS(pSettings, r_bool, section, "quest_item", FALSE));
 
@@ -935,8 +935,7 @@ void CInventoryItem::UpdateXForm( )
 	s32 boneR;
 	s32 boneR2;
 	E->g_WeaponBones(boneL, boneR, boneR2);
-	//	if ((HandDependence() == hd1Hand) || (STATE == eReload) || (!E->g_Alive()))
-	//		boneL = boneR2;
+
 #pragma todo("TO ALL: serious performance problem")
 	V->CalculateBones( );
 	fMatrix4x4& mL = V->LL_GetTransform(u16(boneL));
@@ -1114,6 +1113,16 @@ f32 CInventoryItem::GetKillMsgHeight( ) const
 	return READ_IF_EXISTS(pSettings, r_float, m_object->cNameSect( ), "kill_msg_height", 0.0f);
 }
 
+s32 CInventoryItem::GetXPos( ) const
+{
+	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_x");
+}
+
+s32 CInventoryItem::GetYPos( ) const
+{
+	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_y");
+}
+
 s32 CInventoryItem::GetGridWidth( ) const
 {
 	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_width");
@@ -1123,14 +1132,6 @@ s32 CInventoryItem::GetGridHeight( ) const
 {
 	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_height");
 }
-s32 CInventoryItem::GetXPos( ) const
-{
-	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_x");
-}
-s32 CInventoryItem::GetYPos( ) const
-{
-	return pSettings->r_u32(m_object->cNameSect( ), "inv_grid_y");
-}
 
 bool CInventoryItem::IsNecessaryItem(CInventoryItem* item)
 {
@@ -1139,7 +1140,7 @@ bool CInventoryItem::IsNecessaryItem(CInventoryItem* item)
 
 BOOL CInventoryItem::IsInvalid( ) const
 {
-	return object( ).getDestroy( ) || GetDropManual( );
+	return (object( ).getDestroy( ) || GetDropManual( ));
 }
 
 u16 CInventoryItem::bone_count_to_synchronize( ) const

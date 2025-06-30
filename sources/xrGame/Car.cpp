@@ -404,8 +404,6 @@ void CCar::UpdateEx(f32 fov)
 		OwnerActor( )->Cameras( ).Update(Camera( ));
 		OwnerActor( )->Cameras( ).ApplyDevice(VIEWPORT_NEAR);
 	}
-
-
 }
 
 BOOL CCar::AlwaysTheCrow( )

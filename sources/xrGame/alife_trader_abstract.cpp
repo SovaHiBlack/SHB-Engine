@@ -71,47 +71,7 @@ void CSE_ALifeTraderAbstract::spawn_supplies	()
 
 void CSE_ALifeTraderAbstract::vfInitInventory()
 {
-//	m_fCumulativeItemMass		= 0.f;
-//	m_iCumulativeItemVolume		= 0;
 }
-
-#if 0//def DEBUG
-bool CSE_ALifeTraderAbstract::check_inventory_consistency	()
-{
-	s32							volume = 0;
-	f32						mass = 0.0f;
-	xr_vector<ALife::_OBJECT_ID>::const_iterator	I = base()->children.begin();
-	xr_vector<ALife::_OBJECT_ID>::const_iterator	E = base()->children.end();
-	for ( ; I != E; ++I) {
-		CSE_ALifeDynamicObject	*object = ai().alife().objects().object(*I,true);
-		if (!object)
-			continue;
-
-		CSE_ALifeInventoryItem	*item = smart_cast<CSE_ALifeInventoryItem*>(object);
-		if (!item)
-			continue;
-
-		volume					+= item->m_iVolume;
-		mass					+= item->m_fMass;
-	}
-
-	R_ASSERT2					(fis_zero(m_fCumulativeItemMass - mass, EPSILON_3),base()->name_replace());
-	if (!fis_zero(m_fCumulativeItemMass - mass, EPSILON_3))
-		return					(false);
-
-	R_ASSERT2					(m_iCumulativeItemVolume == volume,base()->name_replace());
-	if (m_iCumulativeItemVolume != volume)
-		return					(false);
-
-#ifdef DEBUG
-//	if (psAI_Flags.test(aiALife)) {
-//		Msg						("[LSS] [%s] inventory is consistent [%f][%d]",base()->name_replace(),mass,volume);
-//	}
-#endif
-
-	return						(true);
-}
-#endif
 
 void CSE_ALifeDynamicObject::attach	(CSE_ALifeInventoryItem *tpALifeInventoryItem, bool bALifeRequest, bool bAddChildren)
 {

@@ -85,7 +85,7 @@ public:
 	CWeaponHUD(CHudItem* pHudItem);
 	~CWeaponHUD( );
 
-// misc
+	// misc
 	void				Load(pcstr section);
 	void				net_DestroyHud( );
 	void				Init( );
@@ -141,7 +141,7 @@ public:
 		m_fZoomRotateY = zoom_rotate_y;
 	}
 
-// Animations
+	// Animations
 	void				animPlay(MotionID M, BOOL bMixIn/*=TRUE*/, CHudItem* W /*=0*/, u32 state);
 	void				animDisplay(MotionID M, BOOL bMixIn);
 	MotionID			animGet(pcstr name);

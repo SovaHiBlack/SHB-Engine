@@ -51,7 +51,7 @@ CWeapon::CWeapon(pcstr name)
 	m_ammoType = 0;
 	m_ammoName = NULL;
 
-	eHandDependence = hdNone;
+	eHandDependence = eHD_NONE;
 
 	m_fZoomFactor = g_fov;
 	m_fZoomRotationFactor = 0.0f;
@@ -97,7 +97,6 @@ void CWeapon::UpdateXForm( )
 
 		// Get access to entity and its visual
 		CEntityAlive* E = smart_cast<CEntityAlive*>(H_Parent( ));
-
 		if (!E)
 		{
 			return;
@@ -123,7 +122,7 @@ void CWeapon::UpdateXForm( )
 		s32 boneR;
 		s32 boneR2;
 		E->g_WeaponBones(boneL, boneR, boneR2);
-		if ((HandDependence( ) == hd1Hand) || (GetState( ) == eReload) || (!E->g_Alive( )))
+		if ((HandDependence( ) == eHD_1_HAND) || (GetState( ) == eReload) || (!E->g_Alive( )))
 		{
 			boneL = boneR2;
 		}
@@ -221,8 +220,7 @@ void CWeapon::UpdateFireDependencies_internal( )
 void CWeapon::ForceUpdateFireParticles( )
 {
 	if (!GetHUDmode( ))
-	{//update particlesXFORM real bullet direction
-
+	{	//update particlesXFORM real bullet direction
 		if (!H_Parent( ))
 		{
 			return;
@@ -263,16 +261,14 @@ void CWeapon::Load(pcstr section)
 	}
 
 #ifdef DEBUG
-	{
-		fVector3 pos;
-		fVector3 ypr;
-		pos = pSettings->r_fvector3(section, "position");
-		ypr = pSettings->r_fvector3(section, "orientation");
-		ypr.mul(PI / 180.0f);
+	fVector3 pos;
+	fVector3 ypr;
+	pos = pSettings->r_fvector3(section, "position");
+	ypr = pSettings->r_fvector3(section, "orientation");
+	ypr.mul(PI / 180.0f);
 
-		m_Offset.setHPB(ypr.x, ypr.y, ypr.z);
-		m_Offset.translate_over(pos);
-	}
+	m_Offset.setHPB(ypr.x, ypr.y, ypr.z);
+	m_Offset.translate_over(pos);
 
 	m_StrapOffset = m_Offset;
 	if (pSettings->line_exist(section, "strap_position") && pSettings->line_exist(section, "strap_orientation"))
@@ -319,6 +315,7 @@ void CWeapon::Load(pcstr section)
 	camMaxAngle = deg2rad(camMaxAngle);
 	camRelaxSpeed = pSettings->r_float(section, "cam_relax_speed");
 	camRelaxSpeed = deg2rad(camRelaxSpeed);
+
 	if (pSettings->line_exist(section, "cam_relax_speed_ai"))
 	{
 		camRelaxSpeed_AI = pSettings->r_float(section, "cam_relax_speed_ai");
@@ -364,6 +361,7 @@ void CWeapon::Load(pcstr section)
 	{
 		m_bIsSingleHanded = !!pSettings->r_bool(section, "single_handed");
 	}
+
 	// 
 	m_fMinRadius = pSettings->r_float(section, "min_radius");
 	m_fMaxRadius = pSettings->r_float(section, "max_radius");

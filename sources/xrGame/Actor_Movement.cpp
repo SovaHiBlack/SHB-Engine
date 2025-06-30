@@ -322,7 +322,7 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, fVector3& vControlAccel, f32& Jum
 
 	/*
 	if(mstate_real&mcClimb&&mstate_real&mcAnyMove&&
-	inventory().ActiveItem()&&inventory().ActiveItem()->HandDependence()==hd2Hand)
+	inventory().ActiveItem()&&inventory().ActiveItem()->HandDependence()==eHD_2_HAND)
 	{
 		//inventory().ActiveItem()->Deactivate();
 		inventory().Activate(NO_ACTIVE_SLOT);
@@ -381,13 +381,15 @@ void CActor::g_Orientate(u32 mstate_rl, f32 dt)
 
 	//-------------------------------------------------
 
-	f32 tgt_roll = 0.f;
+	f32 tgt_roll = 0.0f;
 	if (mstate_rl & mcLookout)
 	{
 		tgt_roll = (mstate_rl & mcLLookout) ? -ACTOR_LOOKOUT_ANGLE : ACTOR_LOOKOUT_ANGLE;
 
 		if ((mstate_rl & mcLLookout) && (mstate_rl & mcRLookout))
+		{
 			tgt_roll = 0.0f;
+		}
 	}
 
 	if (!fsimilar(tgt_roll, r_torso_tgt_roll, EPSILON_5))
@@ -401,7 +403,11 @@ bool CActor::g_LadderOrient( )
 {
 	fVector3 leader_norm;
 	character_physics_support( )->movement( )->GroundNormal(leader_norm);
-	if (_abs(leader_norm.y) > M_SQRT1_2) return false;
+	if (_abs(leader_norm.y) > M_SQRT1_2)
+	{
+		return false;
+	}
+
 	//leader_norm.y=0.f;
 	f32 mag = leader_norm.magnitude( );
 	if (mag < EPSILON_3) return false;
@@ -460,8 +466,7 @@ void CActor::g_cl_Orientate(u32 mstate_rl, f32 dt)
 	unaffected_r_torso.pitch = r_torso.pitch;
 	unaffected_r_torso.roll = r_torso.roll;
 
-	CWeaponMagazined* pWM = smart_cast<CWeaponMagazined*>(inventory( ).GetActiveSlot( ) != NO_ACTIVE_SLOT ?
-														  inventory( ).ItemFromSlot(inventory( ).GetActiveSlot( ))/*inventory().m_slots[inventory().GetActiveSlot()].m_pIItem*/ : NULL);
+	CWeaponMagazined* pWM = smart_cast<CWeaponMagazined*>(inventory( ).GetActiveSlot( ) != NO_ACTIVE_SLOT ? inventory( ).ItemFromSlot(inventory( ).GetActiveSlot( )) : NULL);
 	if (pWM && pWM->GetCurrentFireMode( ) == 1 && eacFirstEye != cam_active)
 	{
 		fVector3 dangle = weapon_recoil_last_delta( );
@@ -507,8 +512,7 @@ void CActor::g_sv_Orientate(u32 /**mstate_rl/**/, f32 /**dt/**/)
 	r_torso.pitch = unaffected_r_torso.pitch;
 	r_torso.roll = unaffected_r_torso.roll;
 
-	CWeaponMagazined* pWM = smart_cast<CWeaponMagazined*>(inventory( ).GetActiveSlot( ) != NO_ACTIVE_SLOT ?
-														  inventory( ).ItemFromSlot(inventory( ).GetActiveSlot( ))/*inventory().m_slots[inventory().GetActiveSlot()].m_pIItem*/ : NULL);
+	CWeaponMagazined* pWM = smart_cast<CWeaponMagazined*>(inventory( ).GetActiveSlot( ) != NO_ACTIVE_SLOT ? inventory( ).ItemFromSlot(inventory( ).GetActiveSlot( )) : NULL);
 	if (pWM && pWM->GetCurrentFireMode( ) == 1/* && eacFirstEye != cam_active*/)
 	{
 		fVector3 dangle = weapon_recoil_last_delta( );
@@ -522,13 +526,24 @@ bool isActorAccelerated(u32 mstate, bool ZoomMode)
 {
 	bool res = false;
 	if (mstate & mcAccel)
+	{
 		res = psActorFlags.test(AF_ALWAYSRUN) ? false : true;
+	}
 	else
+	{
 		res = psActorFlags.test(AF_ALWAYSRUN) ? true : false;
+	}
+
 	if (mstate & (mcCrouch | mcClimb | mcJump | mcLanding | mcLanding2))
+	{
 		return res;
+	}
+
 	if (mstate & mcLookout || ZoomMode)
+	{
 		return false;
+	}
+
 	return res;
 }
 

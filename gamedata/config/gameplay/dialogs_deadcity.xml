@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="windows-1251"?>
-
 <game_dialogs>
-
 	<dialog id="quest_cit_reward">
 		<precondition>deadcity_dialog.have_deadcity_map</precondition>
 		<phrase_list>
@@ -232,5 +230,4 @@
 			</phrase>
 		</phrase_list>
 	</dialog>
-
 </game_dialogs>

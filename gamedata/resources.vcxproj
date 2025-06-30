@@ -1653,7 +1653,6 @@
     <Xml Include="config\text\eng\string_table_tutorial.xml" />
     <Xml Include="config\text\eng\string_table_ui.xml" />
     <Xml Include="config\text\eng\tasks_yantar.xml" />
-    <Xml Include="config\text\eng\test_string.xml" />
     <Xml Include="config\text\eng\ui_mm_team_desc.xml" />
     <Xml Include="config\text\eng\ui_mp_teamdesc.xml" />
     <Xml Include="config\text\eng\ui_st_inventory.xml" />
@@ -1774,8 +1773,6 @@
     <Xml Include="config\text\string_table_tasks_escape.xml" />
     <Xml Include="config\text\string_table_tips.xml" />
     <Xml Include="config\text\string_table_ui.xml" />
-    <Xml Include="config\text\test_radar.xml" />
-    <Xml Include="config\text\test_string.xml" />
     <Xml Include="config\ui\actor_diary.xml" />
     <Xml Include="config\ui\actor_statistic.xml" />
     <Xml Include="config\ui\af_params.xml" />

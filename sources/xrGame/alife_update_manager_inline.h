@@ -8,7 +8,7 @@
 
 #pragma once
 
-IC	f32 CALifeUpdateManager::update_monster_factor	() const
+IC f32 CALifeUpdateManager::update_monster_factor( ) const
 {
-	return						(m_update_monster_factor);
+	return m_update_monster_factor;
 }

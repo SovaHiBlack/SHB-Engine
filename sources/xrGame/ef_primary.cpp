@@ -259,17 +259,13 @@ f32 CEnemyRukzakWeightFunction::ffGetValue( )
 		if (tpInventoryOwner)
 			m_fLastValue = tpInventoryOwner->inventory( ).TotalWeight( );
 		else
-			m_fLastValue = 0;
+			m_fLastValue = 0.0f;
 	}
 	else
 	{
-//		CSE_ALifeHumanAbstract *l_tpALifeHumanAbstract = smart_cast<CSE_ALifeHumanAbstract*>(ef_storage().alife().member());
-//		if (l_tpALifeHumanAbstract)
-//			m_fLastValue	= l_tpALifeHumanAbstract->m_fCumulativeItemMass;
-//		else
-		m_fLastValue = 0;
+		m_fLastValue = 0.0f;
 	}
-	return					(m_fLastValue);
+	return m_fLastValue;
 }
 
 f32 CEnemyAnomalityFunction::ffGetValue( )

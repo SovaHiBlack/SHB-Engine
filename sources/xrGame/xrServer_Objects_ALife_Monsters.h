@@ -26,8 +26,7 @@ SERVER_ENTITY_DECLARE_BEGIN0(CSE_ALifeTraderAbstract)
 		eTraderFlagInfiniteAmmo		= u32(1) << 0,
 		eTraderFlagDummy			= u32(-1),
 	};
-//	f32							m_fCumulativeItemMass;
-//	int								m_iCumulativeItemVolume;
+
 	u32								m_dwMoney;
 	f32							m_fMaxItemMass;
 	flags32							m_trader_flags;
@@ -78,9 +77,6 @@ public:
 #ifdef XRGAME_EXPORTS
 	virtual	void					add_online					(const bool &update_registries);
 	virtual	void					add_offline					(const xr_vector<ALife::_OBJECT_ID> &saved_children, const bool &update_registries);
-#if 0//def DEBUG
-			bool					check_inventory_consistency	();
-#endif
 			void					vfInitInventory				();
 	virtual void					spawn_supplies				();
 #endif

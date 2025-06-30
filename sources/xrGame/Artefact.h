@@ -125,7 +125,7 @@ public:
 	// optimization FAST/SLOW mode
 public:
 	u32						o_render_frame;
-	BOOL					o_fastmode;
+	bool					o_fastmode;
 	IC void					o_switch_2_fast( )
 	{
 		if (o_fastmode)
@@ -133,7 +133,7 @@ public:
 			return;
 		}
 
-		o_fastmode = TRUE;
+		o_fastmode = true;
 		//processing_activate		();
 	}
 	IC void					o_switch_2_slow( )
@@ -143,7 +143,7 @@ public:
 			return;
 		}
 
-		o_fastmode = FALSE;
+		o_fastmode = false;
 		//processing_deactivate		();
 	}
 
