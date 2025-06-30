@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "pseudo_gigant.h"
+#include "PseudoGigant.h"
 #include "pseudogigant_state_manager.h" 
 
 #include "../control_animation_base.h"

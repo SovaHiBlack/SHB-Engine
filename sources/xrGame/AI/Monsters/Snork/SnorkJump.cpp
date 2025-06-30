@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "snork.h"
-#include "snork_jump.h"
+#include "Snork.h"
+#include "SnorkJump.h"
 //#include "../jump_ability.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../level.h"

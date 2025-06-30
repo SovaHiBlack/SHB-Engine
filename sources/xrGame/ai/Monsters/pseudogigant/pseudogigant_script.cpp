@@ -1,6 +1,5 @@
 #include "stdafx.h"
-
-#include "pseudo_gigant.h"
+#include "PseudoGigant.h"
 
 using namespace luabind;
 

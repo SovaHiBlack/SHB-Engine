@@ -1918,12 +1918,6 @@
     <Filter Include="AI\Monsters\monsters\Snork">
       <UniqueIdentifier>{99ba172a-00fa-4be4-b0a0-57bfd7955af5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\Snork\Special Jump">
-      <UniqueIdentifier>{424ab6f7-cbaa-4660-aa7c-5f2f19f9954d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\Snork\Script">
-      <UniqueIdentifier>{5ea9230d-b326-45b4-a5f1-f90fceaa81ec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\Controller">
       <UniqueIdentifier>{0065a224-4f6d-4d34-8308-b47e53afe72d}</UniqueIdentifier>
     </Filter>
@@ -3579,7 +3573,7 @@
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting_move_to_cover_inline.h">
       <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\PseudoGigant\pseudo_gigant.h">
+    <ClInclude Include="ai\Monsters\PseudoGigant\PseudoGigant.h">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\PseudoGigant\pseudo_gigant_step_effector.h">
@@ -3618,14 +3612,11 @@
     <ClInclude Include="ai\Monsters\Fracture\fracture_state_manager.h">
       <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Snork\snork.h">
+    <ClInclude Include="ai\Monsters\Snork\Snork.h">
       <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Snork\snork_state_manager.h">
+    <ClInclude Include="ai\Monsters\Snork\StateManagerSnork.h">
       <Filter>AI\Monsters\monsters\Snork</Filter>
-    </ClInclude>
-    <ClInclude Include="ai\Monsters\Snork\snork_jump.h">
-      <Filter>AI\Monsters\monsters\Snork\Special Jump</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller.h">
       <Filter>AI\Monsters\monsters\Controller</Filter>
@@ -5973,6 +5964,9 @@
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h">
       <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClInclude>
+    <ClInclude Include="ai\Monsters\Snork\SnorkJump.h">
+      <Filter>AI\Monsters\monsters\Snork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="damage_manager.cpp">
@@ -6629,7 +6623,7 @@
     <ClCompile Include="ai\Monsters\Chimera\chimera_script.cpp">
       <Filter>AI\Monsters\monsters\Chimera\Script</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\PseudoGigant\pseudo_gigant.cpp">
+    <ClCompile Include="ai\Monsters\PseudoGigant\PseudoGigant.cpp">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\PseudoGigant\pseudo_gigant_step_effector.cpp">
@@ -6677,17 +6671,11 @@
     <ClCompile Include="ai\Monsters\Fracture\fracture_script.cpp">
       <Filter>AI\Monsters\monsters\Fracture\Script</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Snork\snork.cpp">
+    <ClCompile Include="ai\Monsters\Snork\Snork.cpp">
       <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Snork\snork_state_manager.cpp">
+    <ClCompile Include="ai\Monsters\Snork\StateManagerSnork.cpp">
       <Filter>AI\Monsters\monsters\Snork</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Snork\snork_jump.cpp">
-      <Filter>AI\Monsters\monsters\Snork\Special Jump</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Snork\snork_script.cpp">
-      <Filter>AI\Monsters\monsters\Snork\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller.cpp">
       <Filter>AI\Monsters\monsters\Controller</Filter>
@@ -8680,6 +8668,9 @@
     </ClCompile>
     <ClCompile Include="ui\UIEditBox_script.cpp">
       <Filter>UI\UIWindows\EditBox</Filter>
+    </ClCompile>
+    <ClCompile Include="ai\Monsters\Snork\SnorkJump.cpp">
+      <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
