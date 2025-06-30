@@ -39,8 +39,8 @@ void CAI_Dog::Load(pcstr section)
 	anim().accel_chain_add		(eAnimWalkFwd,		eAnimRunTurnRight);
 	anim().accel_chain_add		(eAnimWalkDamaged,	eAnimRunDamaged);
 
-	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eVelocityParameterIdle);	
-	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eVelocityParameterStand);
+	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eMP_IDLE);
+	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eMP_STAND);
 	SVelocityParam &velocity_walk		= move().get_velocity(MonsterMovement::eVelocityParameterWalkNormal);
 	SVelocityParam &velocity_run		= move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
 	SVelocityParam &velocity_walk_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterWalkDamaged);

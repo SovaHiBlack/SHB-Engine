@@ -130,7 +130,7 @@ void CControlJump::start_jump(const fVector3& point)
 
 			// node is checked, so try to build path
 			if (prepared) {
-				if (m_man->build_path_line(this, target_point, u32(-1), m_data.state_prepare_in_move.velocity_mask | MonsterMovement::eVelocityParameterStand)) {
+				if (m_man->build_path_line(this, target_point, u32(-1), m_data.state_prepare_in_move.velocity_mask | MonsterMovement::eMP_STAND)) {
 					//---------------------------------------------------------------------------------------------------
 					// set path params
 					SControlPathBuilderData		*ctrl_path = (SControlPathBuilderData*)m_man->data(this, ControlCom::eControlPath); 
@@ -276,7 +276,7 @@ void CControlJump::grounding()
 	fVector3 target_position;
 	target_position.mad(m_object->Position(), m_object->Direction(), m_build_line_distance);
 
-	if (!m_man->build_path_line(this, target_position, u32(-1), m_data.state_ground.velocity_mask | MonsterMovement::eVelocityParameterStand)) stop();
+	if (!m_man->build_path_line(this, target_position, u32(-1), m_data.state_ground.velocity_mask | MonsterMovement::eMP_STAND)) stop();
 	else { 
 		SControlPathBuilderData		*ctrl_path = (SControlPathBuilderData*)m_man->data(this, ControlCom::eControlPath); 
 		VERIFY						(ctrl_path);

@@ -9,7 +9,7 @@ class CWeaponMagazinedWGrenade : public CWeaponMagazined,								 public CRocket
 	typedef CWeaponMagazined inherited;
 
 public:
-					CWeaponMagazinedWGrenade	(pcstr name="AK74",ESoundTypes eSoundType=SOUND_TYPE_WEAPON_SUBMACHINEGUN);
+					CWeaponMagazinedWGrenade	(pcstr name="AK74",ESoundTypes eSoundType= eST_WEAPON_SUBMACHINEGUN);
 	virtual			~CWeaponMagazinedWGrenade	();
 
 	virtual void	Load				(pcstr section);

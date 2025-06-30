@@ -171,12 +171,16 @@ void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound
 		sound_power			*= m_anomaly_factor;
 	
 	VERIFY					(_valid(sound_power));
+<<<<<<< Updated upstream
 	if (is_sound_type(sound_type, eST_WORLD))
+=======
+	if (is_sound_type(sound_type,eST_WORLD))
+>>>>>>> Stashed changes
 		sound_power			*= m_world_factor;
 	
 	VERIFY					(_valid(sound_power));
 	if (sound_power >= m_sound_threshold) {
-		if (is_sound_type(sound_type,SOUND_TYPE_WEAPON_SHOOTING)) {
+		if (is_sound_type(sound_type, eST_WEAPON_SHOOTING)) {
 			// this is fake!
 			CEntityAlive	*_entity_alive = smart_cast<CEntityAlive*>(object);
 			if (_entity_alive && (self->ID() != _entity_alive->ID()) && (_entity_alive->g_Team() != entity_alive->g_Team()))
@@ -186,8 +190,8 @@ void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound
 			add				(object,sound_type,position,sound_power);
 		else {
 			if (object) {
-//				bool		is_shooting = is_sound_type(sound_type,SOUND_TYPE_WEAPON_SHOOTING);
-//				bool		is_colliding = is_sound_type(sound_type,SOUND_TYPE_WORLD_OBJECT_COLLIDING);
+//				bool		is_shooting = is_sound_type(sound_type,eST_WEAPON_SHOOTING);
+//				bool		is_colliding = is_sound_type(sound_type,eST_WORLD_OBJECT_COLLIDING);
 //				bool		very_close = m_stalker->Position().distance_to_sqr(object->Position()) <= COMBAT_SOUND_PERCEIVE_RADIUS_SQR;
 //				if (is_shooting || is_colliding || very_close)
 					add		(object,sound_type,position,sound_power);

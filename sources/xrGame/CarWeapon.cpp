@@ -81,7 +81,7 @@ CCarWeapon::~CCarWeapon( )
 void CCarWeapon::Load(pcstr section)
 {
 	inheritedShooting::Load(section);
-	SHudSound::LoadSound(section, "snd_shoot", m_sndShot, SOUND_TYPE_WEAPON_SHOOTING);
+	SHudSound::LoadSound(section, "snd_shoot", m_sndShot, eST_WEAPON_SHOOTING);
 	m_Ammo->Load(pSettings->r_string(section, "ammo_class"), 0);
 }
 

@@ -43,7 +43,7 @@ void CBaseMonster::Load(pcstr section)
 
 	m_pPhysics_support->in_Load(section);
 
-	SetfHealth((f32)pSettings->r_u32(section, "Health"));
+	SetfHealth((f32) pSettings->r_u32(section, "Health"));
 
 	m_controlled = smart_cast<CControlledEntityBase*>(this);
 
@@ -70,24 +70,26 @@ void CBaseMonster::reload(pcstr section)
 	CCustomMonster::reload(section);
 
 	if (!CCustomMonster::use_simplified_visual( ))
+	{
 		CStepManager::reload(section);
+	}
 
 	CInventoryOwner::reload(section);
 	movement( ).reload(section);
 
 	// load base sounds
-	LOAD_SOUND("sound_idle", SOUND_TYPE_MONSTER_TALKING, MonsterSound::eLowPriority, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundIdle);
-	LOAD_SOUND("sound_distant_idle", SOUND_TYPE_MONSTER_TALKING, MonsterSound::eLowPriority + 1, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundIdleDistant);
-	LOAD_SOUND("sound_eat", SOUND_TYPE_MONSTER_TALKING, MonsterSound::eNormalPriority + 4, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundEat);
-	LOAD_SOUND("sound_aggressive", SOUND_TYPE_MONSTER_ATTACKING, MonsterSound::eNormalPriority + 3, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundAggressive);
-	LOAD_SOUND("sound_attack_hit", SOUND_TYPE_MONSTER_ATTACKING, MonsterSound::eHighPriority + 1, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundAttackHit);
-	LOAD_SOUND("sound_take_damage", SOUND_TYPE_MONSTER_INJURING, MonsterSound::eHighPriority, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundTakeDamage);
-	LOAD_SOUND("sound_strike", SOUND_TYPE_MONSTER_ATTACKING, MonsterSound::eNormalPriority, MonsterSound::eChannelIndependent, MonsterSound::eMonsterSoundStrike);
-	LOAD_SOUND("sound_die", SOUND_TYPE_MONSTER_DYING, MonsterSound::eCriticalPriority, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundDie);
-	LOAD_SOUND("sound_die_in_anomaly", SOUND_TYPE_MONSTER_DYING, MonsterSound::eCriticalPriority, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundDieInAnomaly);
-	LOAD_SOUND("sound_threaten", SOUND_TYPE_MONSTER_ATTACKING, MonsterSound::eNormalPriority, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundThreaten);
-	LOAD_SOUND("sound_steal", SOUND_TYPE_MONSTER_STEP, MonsterSound::eNormalPriority + 1, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundSteal);
-	LOAD_SOUND("sound_panic", SOUND_TYPE_MONSTER_STEP, MonsterSound::eNormalPriority + 2, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundPanic);
+	LOAD_SOUND("sound_idle", eST_MONSTER_TALKING, MonsterSound::eLowPriority, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundIdle);
+	LOAD_SOUND("sound_distant_idle", eST_MONSTER_TALKING, MonsterSound::eLowPriority + 1, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundIdleDistant);
+	LOAD_SOUND("sound_eat", eST_MONSTER_TALKING, MonsterSound::eNormalPriority + 4, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundEat);
+	LOAD_SOUND("sound_aggressive", eST_MONSTER_ATTACKING, MonsterSound::eNormalPriority + 3, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundAggressive);
+	LOAD_SOUND("sound_attack_hit", eST_MONSTER_ATTACKING, MonsterSound::eHighPriority + 1, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundAttackHit);
+	LOAD_SOUND("sound_take_damage", eST_MONSTER_INJURING, MonsterSound::eHighPriority, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundTakeDamage);
+	LOAD_SOUND("sound_strike", eST_MONSTER_ATTACKING, MonsterSound::eNormalPriority, MonsterSound::eChannelIndependent, MonsterSound::eMonsterSoundStrike);
+	LOAD_SOUND("sound_die", eST_MONSTER_DYING, MonsterSound::eCriticalPriority, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundDie);
+	LOAD_SOUND("sound_die_in_anomaly", eST_MONSTER_DYING, MonsterSound::eCriticalPriority, MonsterSound::eCaptureAllChannels, MonsterSound::eMonsterSoundDieInAnomaly);
+	LOAD_SOUND("sound_threaten", eST_MONSTER_ATTACKING, MonsterSound::eNormalPriority, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundThreaten);
+	LOAD_SOUND("sound_steal", eST_MONSTER_STEP, MonsterSound::eNormalPriority + 1, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundSteal);
+	LOAD_SOUND("sound_panic", eST_MONSTER_STEP, MonsterSound::eNormalPriority + 2, MonsterSound::eBaseChannel, MonsterSound::eMonsterSoundPanic);
 
 	control( ).reload(section);
 
@@ -96,9 +98,13 @@ void CBaseMonster::reload(pcstr section)
 	if (pSettings->line_exist(section, "monster_type"))
 	{
 		if (xr_strcmp(pSettings->r_string(section, "monster_type"), "indoor") == 0)
+		{
 			m_monster_type = eMonsterTypeIndoor;
+		}
 		else if (xr_strcmp(pSettings->r_string(section, "monster_type"), "outdoor") == 0)
+		{
 			m_monster_type = eMonsterTypeOutdoor;
+		}
 	}
 
 	Home->load("home");
@@ -106,7 +112,6 @@ void CBaseMonster::reload(pcstr section)
 	// save panic_threshold
 	m_default_panic_threshold = m_panic_threshold;
 }
-
 
 void CBaseMonster::reinit( )
 {
@@ -137,7 +142,10 @@ void CBaseMonster::reinit( )
 	m_force_real_speed = false;
 	m_script_processing_active = false;
 
-	if (m_controlled)				m_controlled->on_reinit( );
+	if (m_controlled)
+	{
+		m_controlled->on_reinit( );
+	}
 
 	ignore_collision_hit = false;
 
@@ -155,17 +163,18 @@ void CBaseMonster::reinit( )
 
 #ifdef DEBUG
 	m_show_debug_info = 0;
-#endif 
+#endif
 
 }
-
 
 BOOL CBaseMonster::net_Spawn(CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
-		return(FALSE);
+	{
+		return FALSE;
+	}
 
-	CSE_Abstract* e = (CSE_Abstract*)(DC);
+	CSE_Abstract* e = (CSE_Abstract*) (DC);
 	m_pPhysics_support->in_NetSpawn(e);//этот выззов с послудующими не связан, 
 	//но там есть хак - запуск анимации на всякий случай если никто больше ее не запустил 
 	//поэтому в основной версии на всякий случай пусть будет здесь, 
@@ -173,18 +182,25 @@ BOOL CBaseMonster::net_Spawn(CSE_Abstract* DC)
 
 	R_ASSERT2(ai( ).get_level_graph( ) && ai( ).get_cross_table( ) && (ai( ).level_graph( ).level_id( ) != u32(-1)), "There is no AI-Map, level graph, cross table, or graph is not compiled into the game graph!");
 
-	monster_squad( ).register_member((u8)g_Team( ), (u8)g_Squad( ), (u8)g_Group( ), this);
+	monster_squad( ).register_member((u8) g_Team( ), (u8) g_Squad( ), (u8) g_Group( ), this);
 
 	settings_overrides( );
 
-	return(TRUE);
+	return TRUE;
 }
 
 void CBaseMonster::net_Destroy( )
 {
 	// функция должена быть вызвана перед inherited
-	if (m_controlled) m_controlled->on_destroy( );
-	if (StateMan) StateMan->critical_finalize( );
+	if (m_controlled)
+	{
+		m_controlled->on_destroy( );
+	}
+
+	if (StateMan)
+	{
+		StateMan->critical_finalize( );
+	}
 
 	inherited::net_Destroy( );
 
@@ -192,11 +208,11 @@ void CBaseMonster::net_Destroy( )
 
 	m_pPhysics_support->in_NetDestroy( );
 
-	monster_squad( ).remove_member((u8)g_Team( ), (u8)g_Squad( ), (u8)g_Group( ), this);
+	monster_squad( ).remove_member((u8) g_Team( ), (u8) g_Squad( ), (u8) g_Group( ), this);
 
 #ifdef DEBUG
 	m_show_debug_info = 0;
-#endif 
+#endif
 
 }
 
@@ -237,10 +253,9 @@ void CBaseMonster::settings_read(CIniFile* ini, pcstr section, SMonsterSettings&
 	READ_SETTINGS(data.m_legs_number, "LegsCount", r_u8, ini, section);
 	READ_SETTINGS(data.m_max_hear_dist, "max_hear_dist", r_float, ini, section);
 
-	// Load attack postprocess 
+	// Load attack postprocess
 	if (ini->line_exist(section, "attack_effector"))
 	{
-
 		pcstr ppi_section = ini->r_string(section, "attack_effector");
 
 		READ_SETTINGS(data.m_attack_effector.ppi.duality.h, "duality_h", r_float, ini, ppi_section);
@@ -254,11 +269,19 @@ void CBaseMonster::settings_read(CIniFile* ini, pcstr section, SMonsterSettings&
 		VERIFY(!fis_zero(data.m_attack_effector.ppi.noise.fps));
 
 		if (ini->line_exist(ppi_section, "color_base"))
+		{
 			sscanf(ini->r_string(ppi_section, "color_base"), "%f,%f,%f", &data.m_attack_effector.ppi.color_base.r, &data.m_attack_effector.ppi.color_base.g, &data.m_attack_effector.ppi.color_base.b);
+		}
+
 		if (ini->line_exist(ppi_section, "color_base"))
+		{
 			sscanf(ini->r_string(ppi_section, "color_gray"), "%f,%f,%f", &data.m_attack_effector.ppi.color_gray.r, &data.m_attack_effector.ppi.color_gray.g, &data.m_attack_effector.ppi.color_gray.b);
+		}
+
 		if (ini->line_exist(ppi_section, "color_base"))
+		{
 			sscanf(ini->r_string(ppi_section, "color_add"), "%f,%f,%f", &data.m_attack_effector.ppi.color_add.r, &data.m_attack_effector.ppi.color_add.g, &data.m_attack_effector.ppi.color_add.b);
+		}
 
 		READ_SETTINGS(data.m_attack_effector.time, "time", r_float, ini, ppi_section);
 		READ_SETTINGS(data.m_attack_effector.time_attack, "time_attack", r_float, ini, ppi_section);
@@ -273,14 +296,13 @@ void CBaseMonster::settings_read(CIniFile* ini, pcstr section, SMonsterSettings&
 
 void CBaseMonster::settings_load(pcstr section)
 {
-	SMonsterSettings		data;
+	SMonsterSettings data;
 
 	settings_read(pSettings, section, data);
 
 	u32 crc = crc32(&data, sizeof(SMonsterSettings));
 	m_base_settings.create(crc, 1, &data);
 }
-
 
 void CBaseMonster::settings_overrides( )
 {
@@ -303,7 +325,9 @@ void CBaseMonster::on_before_sell(CInventoryItem* item)
 	VERIFY(object);
 	CSE_ALifeObject* alife_object = smart_cast<CSE_ALifeObject*>(object);
 	if (alife_object)
+	{
 		alife_object->m_flags.set(CSE_ALifeObject::flCanSave, TRUE);
+	}
 }
 
 void CBaseMonster::load_critical_wound_bones( )
@@ -319,7 +343,6 @@ void CBaseMonster::load_critical_wound_bones( )
 	{
 		fill_bones_body_parts("critical_wound_bones_torso", critical_wound_type_torso);
 		m_critical_wound_anim_torso = pSettings->r_string(cNameSect( ), "critical_wound_anim_torso");
-
 	}
 
 	if (pSettings->line_exist(cNameSect( ), "critical_wound_anim_legs"))
@@ -331,20 +354,16 @@ void CBaseMonster::load_critical_wound_bones( )
 
 void CBaseMonster::fill_bones_body_parts(pcstr body_part, CriticalWoundType wound_type)
 {
-	pcstr					body_parts_section = pSettings->r_string(cNameSect( ), body_part);
+	pcstr body_parts_section = pSettings->r_string(cNameSect( ), body_part);
 
 	CKinematics* kinematics = smart_cast<CKinematics*>(Visual( ));
 	VERIFY(kinematics);
 
 	CIniFile::Sect& body_part_section = pSettings->r_section(body_parts_section);
-	CIniFile::SectCIt		I = body_part_section.Data.begin( );
-	CIniFile::SectCIt		E = body_part_section.Data.end( );
+	CIniFile::SectCIt I = body_part_section.Data.begin( );
+	CIniFile::SectCIt E = body_part_section.Data.end( );
 	for (; I != E; ++I)
-		m_bones_body_parts.insert(
-			std::make_pair(
-				kinematics->LL_BoneID((*I).first),
-				u32(wound_type)
-			)
-		);
+	{
+		m_bones_body_parts.insert(std::make_pair(kinematics->LL_BoneID((*I).first), u32(wound_type)));
+	}
 }
-

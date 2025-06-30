@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-CWeaponCustomPistol::CWeaponCustomPistol(pcstr name) : CWeaponMagazined(name, SOUND_TYPE_WEAPON_PISTOL)
+CWeaponCustomPistol::CWeaponCustomPistol(pcstr name) : CWeaponMagazined(name, eST_WEAPON_PISTOL)
 { }
 
 CWeaponCustomPistol::~CWeaponCustomPistol( )

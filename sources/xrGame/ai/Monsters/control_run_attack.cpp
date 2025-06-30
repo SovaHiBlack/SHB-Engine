@@ -108,7 +108,7 @@ void CControlRunAttack::on_event(ControlCom::EEventType type, ControlCom::IEvent
 			fVector3					target_position;
 			target_position.mad		(m_object->Position(), dir, path_dist);
 
-			if (!m_man->build_path_line	(this, target_position, u32(-1), velocity_mask | MonsterMovement::eVelocityParameterStand)) {
+			if (!m_man->build_path_line	(this, target_position, u32(-1), velocity_mask | MonsterMovement::eMP_STAND)) {
 				m_man->notify				(ControlCom::eventRunAttackEnd, 0);
 			} else { 
 				// enable path

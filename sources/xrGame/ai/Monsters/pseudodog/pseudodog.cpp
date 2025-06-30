@@ -65,8 +65,8 @@ void CAI_PseudoDog::Load(pcstr section)
 	m_anger_hunger_threshold	= pSettings->r_float(section, "anger_hunger_threshold");
 	m_anger_loud_threshold		= pSettings->r_float(section, "anger_loud_threshold");
 
-	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eVelocityParameterIdle);	
-	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eVelocityParameterStand);
+	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eMP_IDLE);
+	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eMP_STAND);
 	SVelocityParam &velocity_walk		= move().get_velocity(MonsterMovement::eVelocityParameterWalkNormal);
 	SVelocityParam &velocity_run		= move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
 	SVelocityParam &velocity_walk_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterWalkDamaged);
@@ -141,7 +141,7 @@ void CAI_PseudoDog::reload(pcstr section)
 	if(CCustomMonster::use_simplified_visual())	return;
 	
 	// load additional sounds
-	sound().add					(pSettings->r_string(section,"sound_psy_attack"), DEFAULT_SAMPLE_COUNT,	SOUND_TYPE_MONSTER_ATTACKING,	MonsterSound::eHighPriority+3,	MonsterSound::eBaseChannel,	ePsyAttack, "bip01_head");
+	sound().add					(pSettings->r_string(section,"sound_psy_attack"), DEFAULT_SAMPLE_COUNT, eST_MONSTER_ATTACKING,	MonsterSound::eHighPriority+3,	MonsterSound::eBaseChannel,	ePsyAttack, "bip01_head");
 	
 	// load jump params
 	com_man().load_jump_data			(0,"run_jamp_0", "run_jamp_1", "run_jamp_2", MonsterMovement::eVelocityParameterRunNormal,MonsterMovement::eVelocityParameterRunNormal,0);

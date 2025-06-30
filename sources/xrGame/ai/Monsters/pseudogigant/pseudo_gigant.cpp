@@ -52,8 +52,8 @@ void CPseudoGigant::Load(pcstr section)
 	step_effector.amplitude		= pSettings->r_float(section,	"step_effector_amplitude");
 	step_effector.period_number	= pSettings->r_float(section,	"step_effector_period_number");
 
-	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eVelocityParameterIdle);	
-	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eVelocityParameterStand);
+	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eMP_IDLE);
+	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eMP_STAND);
 	SVelocityParam &velocity_walk		= move().get_velocity(MonsterMovement::eVelocityParameterWalkNormal);
 	SVelocityParam &velocity_run		= move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
 	SVelocityParam &velocity_walk_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterWalkDamaged);
@@ -150,7 +150,11 @@ void CPseudoGigant::Load(pcstr section)
 	// --------------------------------------------------------------------------------	
 
 	::Sound->create(m_sound_threaten_hit,pSettings->r_string(section,"sound_threaten_hit"),		st_Effect, eST_WORLD);
+<<<<<<< Updated upstream
 	::Sound->create(m_sound_start_threaten,pSettings->r_string(section,"sound_threaten_start"), st_Effect,SOUND_TYPE_MONSTER_ATTACKING);
+=======
+	::Sound->create(m_sound_start_threaten,pSettings->r_string(section,"sound_threaten_start"), st_Effect, eST_MONSTER_ATTACKING);
+>>>>>>> Stashed changes
 
 	m_kick_damage			= pSettings->r_float(section,"HugeKick_Damage");
 	m_kick_particles		= pSettings->r_string(section,"HugeKick_Particles");

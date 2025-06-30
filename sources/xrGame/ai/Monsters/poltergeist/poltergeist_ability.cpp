@@ -27,7 +27,7 @@ void CPolterSpecialAbility::load(pcstr section)
 	m_particles_death					= pSettings->r_string(section,"Particles_Death");
 	m_particles_idle					= pSettings->r_string(section,"Particles_Idle");
 
-	m_sound_base.create					(pSettings->r_string(section,"Sound_Idle"), st_Effect, SOUND_TYPE_MONSTER_TALKING);
+	m_sound_base.create					(pSettings->r_string(section,"Sound_Idle"), st_Effect, eST_MONSTER_TALKING);
 
 	m_last_hit_frame					= 0;
 }

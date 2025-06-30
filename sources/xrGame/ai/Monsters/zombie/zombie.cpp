@@ -35,8 +35,8 @@ void CZombie::Load(pcstr section)
 	fake_death_count		= 1 + u8(Random.randI(pSettings->r_u8(section,"FakeDeathCount")));
 	health_death_threshold	= pSettings->r_float(section,"StartFakeDeathHealthThreshold");
 
-	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eVelocityParameterIdle);	
-	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eVelocityParameterStand);
+	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eMP_IDLE);
+	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eMP_STAND);
 	SVelocityParam &velocity_walk		= move().get_velocity(MonsterMovement::eVelocityParameterWalkNormal);
 	SVelocityParam &velocity_run		= move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
 	//SVelocityParam &velocity_walk_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterWalkDamaged);
@@ -66,7 +66,7 @@ void CZombie::Load(pcstr section)
 	anim().LinkAction(ACT_STEAL,		eAnimWalkFwd);
 	anim().LinkAction(ACT_LOOK_AROUND,	eAnimStandIdle);
 
-#ifdef DEBUG	
+#ifdef DEBUG
 	anim().accel_chain_test		();
 #endif
 

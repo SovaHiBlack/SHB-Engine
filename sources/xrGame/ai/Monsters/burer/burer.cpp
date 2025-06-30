@@ -53,8 +53,8 @@ void CBurer::reload(pcstr section)
 	inherited::reload	(section);
 
 	// add specific sounds
-	sound().add			(pSettings->r_string(section,"sound_gravi_attack"),	DEFAULT_SAMPLE_COUNT,	SOUND_TYPE_MONSTER_ATTACKING,	MonsterSound::eHighPriority + 2,	u32(MonsterSound::eBaseChannel),	eMonsterSoundGraviAttack, "bip01_head");
-	sound().add			(pSettings->r_string(section,"sound_tele_attack"),	DEFAULT_SAMPLE_COUNT,	SOUND_TYPE_MONSTER_ATTACKING,	MonsterSound::eHighPriority + 3,	u32(MonsterSound::eBaseChannel),	eMonsterSoundTeleAttack, "bip01_head");
+	sound().add			(pSettings->r_string(section,"sound_gravi_attack"),	DEFAULT_SAMPLE_COUNT, eST_MONSTER_ATTACKING,	MonsterSound::eHighPriority + 2,	u32(MonsterSound::eBaseChannel),	eMonsterSoundGraviAttack, "bip01_head");
+	sound().add			(pSettings->r_string(section,"sound_tele_attack"),	DEFAULT_SAMPLE_COUNT, eST_MONSTER_ATTACKING,	MonsterSound::eHighPriority + 3,	u32(MonsterSound::eBaseChannel),	eMonsterSoundTeleAttack, "bip01_head");
 
 	// add triple animations
 	com_man().ta_fill_data(anim_triple_gravi,	"stand_gravi_0",	"stand_gravi_1",	"stand_gravi_2",	TA_EXECUTE_ONCE, TA_DONT_SKIP_PREPARE, ControlCom::eCapturePath | ControlCom::eCaptureMovement);
@@ -77,7 +77,11 @@ void CBurer::Load(pcstr section)
 	particle_gravi_prepare	= pSettings->r_string(section,"Particle_Gravi_Prepare");
 	particle_tele_object	= pSettings->r_string(section,"Particle_Tele_Object");
 	
+<<<<<<< Updated upstream
 	::Sound->create(sound_gravi_wave,	pSettings->r_string(section,"sound_gravi_wave"),st_Effect,eST_WORLD);
+=======
+	::Sound->create(sound_gravi_wave,	pSettings->r_string(section,"sound_gravi_wave"),st_Effect, eST_WORLD);
+>>>>>>> Stashed changes
 	::Sound->create(sound_tele_hold,	pSettings->r_string(section,"sound_tele_hold"),	st_Effect, eST_WORLD);
 	::Sound->create(sound_tele_throw,	pSettings->r_string(section,"sound_tele_throw"),st_Effect, eST_WORLD);
 
@@ -97,8 +101,8 @@ void CBurer::Load(pcstr section)
 
 	particle_fire_shield			= pSettings->r_string(section,"Particle_Shield");
 	
-	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eVelocityParameterIdle);	
-	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eVelocityParameterStand);
+	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eMP_IDLE);
+	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eMP_STAND);
 	SVelocityParam &velocity_walk		= move().get_velocity(MonsterMovement::eVelocityParameterWalkNormal);
 	SVelocityParam &velocity_run		= move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
 	SVelocityParam &velocity_walk_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterWalkDamaged);

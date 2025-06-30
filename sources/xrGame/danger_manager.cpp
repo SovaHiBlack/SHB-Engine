@@ -274,7 +274,7 @@ void CDangerManager::add(const CSoundObject& object)
 		return;
 	}
 
-	if ((object.m_sound_type & SOUND_TYPE_WEAPON_SHOOTING) == SOUND_TYPE_WEAPON_SHOOTING)
+	if ((object.m_sound_type & eST_WEAPON_SHOOTING) == eST_WEAPON_SHOOTING)
 	{
 		add(CDangerObject(obj, object.m_object_params.m_position, object.m_level_time, CDangerObject::eDangerTypeAttackSound, CDangerObject::eDangerPerceiveTypeSound));
 		return;

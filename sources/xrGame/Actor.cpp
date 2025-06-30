@@ -349,13 +349,13 @@ void CActor::Load(pcstr section)
 		}
 
 		string256 buf;
-		::Sound->create(sndDie[0], strconcat(sizeof(buf), buf, *cName( ), "\\die0"), st_Effect, SOUND_TYPE_MONSTER_DYING);
-		::Sound->create(sndDie[1], strconcat(sizeof(buf), buf, *cName( ), "\\die1"), st_Effect, SOUND_TYPE_MONSTER_DYING);
-		::Sound->create(sndDie[2], strconcat(sizeof(buf), buf, *cName( ), "\\die2"), st_Effect, SOUND_TYPE_MONSTER_DYING);
-		::Sound->create(sndDie[3], strconcat(sizeof(buf), buf, *cName( ), "\\die3"), st_Effect, SOUND_TYPE_MONSTER_DYING);
+		::Sound->create(sndDie[0], strconcat(sizeof(buf), buf, *cName( ), "\\die0"), st_Effect, eST_MONSTER_DYING);
+		::Sound->create(sndDie[1], strconcat(sizeof(buf), buf, *cName( ), "\\die1"), st_Effect, eST_MONSTER_DYING);
+		::Sound->create(sndDie[2], strconcat(sizeof(buf), buf, *cName( ), "\\die2"), st_Effect, eST_MONSTER_DYING);
+		::Sound->create(sndDie[3], strconcat(sizeof(buf), buf, *cName( ), "\\die3"), st_Effect, eST_MONSTER_DYING);
 
-		m_HeavyBreathSnd.create(pSettings->r_string(section, "heavy_breath_snd"), st_Effect, SOUND_TYPE_MONSTER_INJURING);
-		m_BloodSnd.create(pSettings->r_string(section, "heavy_blood_snd"), st_Effect, SOUND_TYPE_MONSTER_INJURING);
+		m_HeavyBreathSnd.create(pSettings->r_string(section, "heavy_breath_snd"), st_Effect, eST_MONSTER_INJURING);
+		m_BloodSnd.create(pSettings->r_string(section, "heavy_blood_snd"), st_Effect, eST_MONSTER_INJURING);
 	}
 
 	if (psActorFlags.test(AF_PSP))

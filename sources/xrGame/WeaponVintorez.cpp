@@ -2,7 +2,7 @@
 
 #include "WeaponVintorez.h"
 
-CWeaponVintorez::CWeaponVintorez( ) : CWeaponMagazined("VINTOREZ", SOUND_TYPE_WEAPON_SNIPERRIFLE)
+CWeaponVintorez::CWeaponVintorez( ) : CWeaponMagazined("VINTOREZ", eST_WEAPON_SNIPERRIFLE)
 {
 	m_weight = 1.5f;
 	m_slot = 2;

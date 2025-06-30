@@ -2,7 +2,7 @@
 
 #include "WeaponVal.h"
 
-CWeaponVal::CWeaponVal( ) : CWeaponMagazined("VAL", SOUND_TYPE_WEAPON_SUBMACHINEGUN)
+CWeaponVal::CWeaponVal( ) : CWeaponMagazined("VAL", eST_WEAPON_SUBMACHINEGUN)
 {
 	m_weight = 1.5f;
 	m_slot = 2;

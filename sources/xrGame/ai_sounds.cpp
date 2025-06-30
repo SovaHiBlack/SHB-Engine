@@ -2,27 +2,28 @@
 
 #include "ai_sounds.h"
 
-xr_token anomaly_type_token[]={
-	{ "undefined",				sg_Undefined						},
+xr_token anomaly_type_token[ ] =
+{
+	{ "undefined",				sg_Undefined				},
 	{ "Item picking up",		eST_ITEM_PICKING_UP			},
 	{ "Item dropping",			eST_ITEM_DROPPING			},
 	{ "Item hiding",			eST_ITEM_HIDING				},
 	{ "Item taking",			eST_ITEM_TAKING				},
 	{ "Item using",				eST_ITEM_USING				},
-	{ "Weapon shooting",		SOUND_TYPE_WEAPON_SHOOTING			},
-	{ "Weapon empty clicking",	SOUND_TYPE_WEAPON_EMPTY_CLICKING	},
-	{ "Weapon bullet hit",		SOUND_TYPE_WEAPON_BULLET_HIT		},
-	{ "Weapon recharging",		SOUND_TYPE_WEAPON_RECHARGING		},
-	{ "NPC dying",				SOUND_TYPE_MONSTER_DYING			},
-	{ "NPC injuring",			SOUND_TYPE_MONSTER_INJURING			},
-	{ "NPC step",				SOUND_TYPE_MONSTER_STEP				},
-	{ "NPC talking",			SOUND_TYPE_MONSTER_TALKING			},
-	{ "NPC attacking",			SOUND_TYPE_MONSTER_ATTACKING		},
-	{ "NPC eating",				SOUND_TYPE_MONSTER_EATING			},
-	{ "Anomaly idle",			SOUND_TYPE_ANOMALY_IDLE				},
-	{ "Object breaking",		SOUND_TYPE_WORLD_OBJECT_BREAKING	},
-	{ "Object colliding",		SOUND_TYPE_WORLD_OBJECT_COLLIDING	},
-	{ "Object exploding",		SOUND_TYPE_WORLD_OBJECT_EXPLODING	},
-	{ "World ambient",			SOUND_TYPE_WORLD_AMBIENT			},
-	{ 0,						0}
+	{ "Weapon shooting",		eST_WEAPON_SHOOTING			},
+	{ "Weapon empty clicking",	eST_WEAPON_EMPTY_CLICKING	},
+	{ "Weapon bullet hit",		eST_WEAPON_BULLET_HIT		},
+	{ "Weapon recharging",		eST_WEAPON_RECHARGING		},
+	{ "NPC dying",				eST_MONSTER_DYING			},
+	{ "NPC injuring",			eST_MONSTER_INJURING		},
+	{ "NPC step",				eST_MONSTER_STEP			},
+	{ "NPC talking",			eST_MONSTER_TALKING			},
+	{ "NPC attacking",			eST_MONSTER_ATTACKING		},
+	{ "NPC eating",				eST_MONSTER_EATING			},
+	{ "Anomaly idle",			eST_ANOMALY_IDLE			},
+	{ "Object breaking",		eST_WORLD_OBJECT_BREAKING	},
+	{ "Object colliding",		eST_WORLD_OBJECT_COLLIDING	},
+	{ "Object exploding",		eST_WORLD_OBJECT_EXPLODING	},
+	{ "World ambient",			eST_WORLD_AMBIENT			},
+	{ 0,						0							}
 };

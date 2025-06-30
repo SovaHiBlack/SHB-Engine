@@ -17,7 +17,7 @@ const f32 default_grenade_detonation_threshold_hit = 100;
 
 CGrenade::CGrenade( )
 {
-	m_eSoundCheckout = ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING);
+	m_eSoundCheckout = ESoundTypes(eST_WEAPON_RECHARGING);
 }
 
 CGrenade::~CGrenade( )

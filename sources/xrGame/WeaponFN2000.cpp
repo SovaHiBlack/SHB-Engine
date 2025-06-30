@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-CWeaponFN2000::CWeaponFN2000( ) : CWeaponMagazined("FN2000", SOUND_TYPE_WEAPON_SNIPERRIFLE)
+CWeaponFN2000::CWeaponFN2000( ) : CWeaponMagazined("FN2000", eST_WEAPON_SNIPERRIFLE)
 {
 	m_weight = 1.5f;
 	m_slot = 2;

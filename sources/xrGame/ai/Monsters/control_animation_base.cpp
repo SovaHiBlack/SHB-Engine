@@ -312,7 +312,7 @@ bool CControlAnimationBase::IsStandCurAnim()
 EAction CControlAnimationBase::VelocityIndex2Action(u32 velocity_index)
 {
 	switch (velocity_index) {
-		case MonsterMovement::eVelocityParameterStand:			return ACT_STAND_IDLE;
+		case MonsterMovement::eMP_STAND:			return ACT_STAND_IDLE;
 		case MonsterMovement::eVelocityParameterWalkNormal:		return ACT_WALK_FWD;
 		case MonsterMovement::eVelocityParameterRunNormal:		return ACT_RUN;
 		case MonsterMovement::eVelocityParameterWalkDamaged:	return ACT_WALK_FWD;
@@ -336,7 +336,7 @@ EAction CControlAnimationBase::GetActionFromPath()
 	if (m_object->movement().detail().path().size() > m_object->movement().detail().curr_travel_point_index() + 1) 
 		next_point_velocity_index = m_object->movement().detail().path()[m_object->movement().detail().curr_travel_point_index() + 1].velocity;
 
-	if ((cur_point_velocity_index == MonsterMovement::eVelocityParameterStand) && (next_point_velocity_index != u32(-1))) {
+	if ((cur_point_velocity_index == MonsterMovement::eMP_STAND) && (next_point_velocity_index != u32(-1))) {
 		if (!m_object->control().direction().is_turning(deg(1))) 
 			action = VelocityIndex2Action(next_point_velocity_index);
 	}

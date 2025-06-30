@@ -149,7 +149,7 @@ void CControlRotationJump::build_line_first()
 
 	VERIFY									(!fis_zero(ctrl_data_dir->heading.target_speed));
 	
-	u32 velocity_mask	= MonsterMovement::eVelocityParameterStand | MonsterMovement::eVelocityParameterRunNormal;
+	u32 velocity_mask	= MonsterMovement::eMP_STAND | MonsterMovement::eVelocityParameterRunNormal;
 	m_stage				= eStop;
 	
 	fVector3 target_position;
@@ -219,7 +219,7 @@ void CControlRotationJump::build_line_second()
 	VERIFY									(!fis_zero(ctrl_data_dir->heading.target_speed));
 
 	// Velocity mask
-	u32 velocity_mask = MonsterMovement::eVelocityParameterStand | MonsterMovement::eVelocityParameterRunNormal;
+	u32 velocity_mask = MonsterMovement::eMP_STAND | MonsterMovement::eVelocityParameterRunNormal;
 
 	m_stage = eRun;
 

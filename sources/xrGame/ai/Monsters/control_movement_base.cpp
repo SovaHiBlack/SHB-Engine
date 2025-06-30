@@ -19,7 +19,7 @@ void CControlMovementBase::reinit()
 
 void CControlMovementBase::load(pcstr section)
 {
-	load_velocity	(section, "Velocity_Stand",			eVelocityParameterStand);
+	load_velocity	(section, "Velocity_Stand", eMP_STAND);
 	load_velocity	(section, "Velocity_WalkFwdNormal",	eVelocityParameterWalkNormal);
 	load_velocity	(section, "Velocity_RunFwdNormal",	eVelocityParameterRunNormal);
 	load_velocity	(section, "Velocity_WalkFwdDamaged",eVelocityParameterWalkDamaged);
@@ -30,8 +30,8 @@ void CControlMovementBase::load(pcstr section)
 
 	// add idle velocity
 	SVelocityParam velocity_param;
-	m_velocities.insert(mk_pair(eVelocityParameterIdle, velocity_param));
-	m_man->path_builder().detail().add_velocity(eVelocityParameterIdle, CDetailPathManager::STravelParams(velocity_param.velocity.linear,velocity_param.velocity.angular_path,velocity_param.velocity.angular_real));	
+	m_velocities.insert(mk_pair(eMP_IDLE, velocity_param));
+	m_man->path_builder().detail().add_velocity(eMP_IDLE, CDetailPathManager::STravelParams(velocity_param.velocity.linear,velocity_param.velocity.angular_path,velocity_param.velocity.angular_real));
 }
 
 void CControlMovementBase::load_velocity(pcstr section, pcstr line, u32 velocity_id)

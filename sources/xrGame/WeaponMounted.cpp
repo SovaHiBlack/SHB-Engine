@@ -52,7 +52,7 @@ void CWeaponMounted::Load(pcstr section)
 	inherited::Load(section);
 	CShootingObject::Load(section);
 
-	SHudSound::LoadSound(section, "snd_shoot", sndShot, SOUND_TYPE_WEAPON_SHOOTING);
+	SHudSound::LoadSound(section, "snd_shoot", sndShot, eST_WEAPON_SHOOTING);
 
 	//тип используемых патронов
 	m_sAmmoType = pSettings->r_string(section, "ammo_class");

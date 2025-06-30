@@ -141,7 +141,7 @@ bool CControlAnimationBase::accel_check_braking(f32 before_interval, f32 nominal
 	for (u32 i=m_man->path_builder().detail().curr_travel_point_index()+1; i < m_man->path_builder().detail().path().size(); i++) {
 		dist += m_man->path_builder().detail().path()[i].position.distance_to(m_man->path_builder().detail().path()[i-1].position);
 
-		if (m_man->path_builder().detail().path()[i].velocity == MonsterMovement::eVelocityParameterStand) {
+		if (m_man->path_builder().detail().path()[i].velocity == MonsterMovement::eMP_STAND) {
 			if (dist < braking_dist) return (braking_mode = true);
 			else break;
 		}

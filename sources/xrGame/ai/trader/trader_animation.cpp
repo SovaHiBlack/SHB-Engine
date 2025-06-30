@@ -108,7 +108,10 @@ void CTraderAnimation::update_frame()
 //////////////////////////////////////////////////////////////////////////
 void CTraderAnimation::external_sound_start(pcstr phrase)
 {
-	if (m_sound)			remove_sound();	
+	if (m_sound)
+	{
+		remove_sound( );
+	}
 	
 	m_sound					= xr_new<ref_sound>();
 	m_sound->create			(phrase,st_Effect, eST_WORLD);
@@ -119,6 +122,9 @@ void CTraderAnimation::external_sound_start(pcstr phrase)
 
 void CTraderAnimation::external_sound_stop()
 {
-	if (m_sound)			remove_sound();
+	if (m_sound)
+	{
+		remove_sound( );
+	}
 }
 //////////////////////////////////////////////////////////////////////////

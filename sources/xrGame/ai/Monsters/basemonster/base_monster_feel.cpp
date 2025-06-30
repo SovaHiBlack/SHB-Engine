@@ -57,9 +57,9 @@ void CBaseMonster::feel_sound_new(CObject* who, s32 eType, CSound_UserDataPtr us
 		return;
 	}
 	
-	if ((eType & SOUND_TYPE_WEAPON_SHOOTING) == SOUND_TYPE_WEAPON_SHOOTING) power = 1.f;
+	if ((eType & eST_WEAPON_SHOOTING) == eST_WEAPON_SHOOTING) power = 1.f;
 
-	if (((eType & SOUND_TYPE_WEAPON_BULLET_HIT) == SOUND_TYPE_WEAPON_BULLET_HIT) && (dist < 2.f)) 
+	if (((eType & eST_WEAPON_BULLET_HIT) == eST_WEAPON_BULLET_HIT) && (dist < 2.f))
 		HitMemory.add_hit(who,eSideFront);
 
 	// execute callback
@@ -224,7 +224,7 @@ void CBaseMonster::HitSignal(f32 amount, fVector3& vLocalDir, CObject* who, s16 
 {
 	if (!g_Alive()) return;
 	
-	feel_sound_new(who,SOUND_TYPE_WEAPON_SHOOTING,0,who->Position(),1.f);
+	feel_sound_new(who, eST_WEAPON_SHOOTING,0,who->Position(),1.0f);
 	if (g_Alive()) sound().play(MonsterSound::eMonsterSoundTakeDamage);
 
 	if (element < 0) return;

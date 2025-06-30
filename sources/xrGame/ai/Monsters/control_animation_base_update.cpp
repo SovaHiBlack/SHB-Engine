@@ -195,7 +195,7 @@ void CControlAnimationBase::SelectVelocities()
 
 		// если сейчас стоит на месте и есть след точка (т.е. должен быть в движении),
 		// то реализовать поворот на месте, а дальше форсировать скорость со следующей точки
-		if ((cur_point_velocity_index == MonsterMovement::eVelocityParameterStand) && (next_point_velocity_index != u32(-1))) {
+		if ((cur_point_velocity_index == MonsterMovement::eMP_STAND) && (next_point_velocity_index != u32(-1))) {
 			if (!m_object->control().direction().is_turning()) 
 				cur_point_velocity_index = next_point_velocity_index;
 		} 

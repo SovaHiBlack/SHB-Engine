@@ -87,7 +87,7 @@ protected:
 	virtual void	state_Misfire(f32 dt);
 
 public:
-	CWeaponMagazined(pcstr name = "AK74", ESoundTypes eSoundType = SOUND_TYPE_WEAPON_SUBMACHINEGUN);
+	CWeaponMagazined(pcstr name = "AK74", ESoundTypes eSoundType = eST_WEAPON_SUBMACHINEGUN);
 	virtual			~CWeaponMagazined( );
 
 	virtual void	Load(pcstr section);

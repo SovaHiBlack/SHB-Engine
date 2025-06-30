@@ -3,7 +3,7 @@
 #include "WeaponGroza.h"
 #include "WeaponHUD.h"
 
-CWeaponGroza::CWeaponGroza( ) : CWeaponMagazinedWGrenade("GROZA", SOUND_TYPE_WEAPON_SUBMACHINEGUN)
+CWeaponGroza::CWeaponGroza( ) : CWeaponMagazinedWGrenade("GROZA", eST_WEAPON_SUBMACHINEGUN)
 {
 	m_weight = 1.5f;
 	m_slot = 2;
