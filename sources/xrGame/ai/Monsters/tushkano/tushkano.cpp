@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "tushkano.h"
-#include "tushkano_state_manager.h"
+#include "Tushkano.h"
+#include "StateManagerTushkano.h"
 #include "../monster_velocity_space.h"
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"
@@ -21,42 +21,20 @@ void CTushkano::Load(pcstr section)
 {
 	inherited::Load	(section);
 
-//	anim().AddReplacedAnim(&m_bDamaged, eAnimRun,		eAnimRunDamaged);
-//	anim().AddReplacedAnim(&m_bDamaged, eAnimWalkFwd,	eAnimWalkDamaged);
-
 	anim().accel_load			(section);
 	anim().accel_chain_add		(eAnimWalkFwd,		eAnimRun);
-	//anim().accel_chain_add		(eAnimWalkDamaged,	eAnimRunDamaged);
 
 	SVelocityParam &velocity_none		= move().get_velocity(MonsterMovement::eMP_IDLE);
 	SVelocityParam &velocity_turn		= move().get_velocity(MonsterMovement::eMP_STAND);
 	SVelocityParam &velocity_walk		= move().get_velocity(MonsterMovement::eVelocityParameterWalkNormal);
 	SVelocityParam &velocity_run		= move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
-	//SVelocityParam &velocity_walk_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterWalkDamaged);
-	//SVelocityParam &velocity_run_dmg	= move().get_velocity(MonsterMovement::eVelocityParameterRunDamaged);
-	//SVelocityParam &velocity_steal	= move().get_velocity(MonsterMovement::eVelocityParameterSteal);
-	//SVelocityParam &velocity_drag		= move().get_velocity(MonsterMovement::eVelocityParameterDrag);
 
 	anim().AddAnim(eAnimStandIdle,		"stand_idle_",			-1, &velocity_none,				PS_STAND);
-	//anim().AddAnim(eAnimStandDamaged,	"stand_idle_dmg_",		-1, &velocity_none,				PS_STAND);
 	anim().AddAnim(eAnimStandTurnLeft,	"stand_turn_left_",		-1, &velocity_turn,				PS_STAND);
 	anim().AddAnim(eAnimStandTurnRight,	"stand_turn_right_",	-1, &velocity_turn,				PS_STAND);
 	anim().AddAnim(eAnimWalkFwd,		"stand_walk_fwd_",		-1, &velocity_walk,				PS_STAND);
-	//anim().AddAnim(eAnimWalkDamaged,	"stand_walk_fwd_dmg_",	-1, &velocity_walk_dmg,			PS_STAND);
 	anim().AddAnim(eAnimRun,			"stand_run_",			-1,	&velocity_run,				PS_STAND);
-	//anim().AddAnim(eAnimRunDamaged,	"stand_run_dmg_",		-1,	&velocity_run_dmg,			PS_STAND);
 	anim().AddAnim(eAnimAttack,			"stand_attack_",		-1, &velocity_turn,				PS_STAND);
-	//anim().AddAnim(eAnimDie,			"stand_die_",			0,  &velocity_none,				PS_STAND);
-	//anim().AddAnim(eAnimCheckCorpse,	"stand_check_corpse_",	-1,	&velocity_none,				PS_STAND);
-	//anim().AddAnim(eAnimSteal,		"stand_crawl_",			-1, &velocity_steal,			PS_STAND);
-	//anim().AddAnim(eAnimSitIdle,		"sit_idle_",			-1, &velocity_none,				PS_SIT);
-	//anim().AddAnim(eAnimSitStandUp,	"sit_stand_up_",		-1, &velocity_none,				PS_SIT);
-	//anim().AddAnim(eAnimStandSitDown,	"stand_sit_down_",		-1, &velocity_none,				PS_STAND);
-	//anim().AddAnim(eAnimLookAround,	"stand_look_around_",	-1, &velocity_none,				PS_STAND);
-	//anim().AddAnim(eAnimEat,			"sit_eat_",				-1, &velocity_none,				PS_SIT);
-
-	//anim().AddTransition(PS_STAND,	PS_SIT,		eAnimStandSitDown,	false);
-	//anim().AddTransition(PS_SIT,		PS_STAND,	eAnimSitStandUp,	false);
 
 	anim().LinkAction(ACT_STAND_IDLE,	eAnimStandIdle);
 	anim().LinkAction(ACT_SIT_IDLE,		eAnimStandIdle);
@@ -72,7 +50,7 @@ void CTushkano::Load(pcstr section)
 	anim().LinkAction(ACT_STEAL,		eAnimStandIdle);
 	anim().LinkAction(ACT_LOOK_AROUND,	eAnimStandIdle);
 
-#ifdef DEBUG	
+#ifdef DEBUG
 	anim().accel_chain_test		();
 #endif
 
@@ -89,4 +67,16 @@ void CTushkano::CheckSpecParams(u32 spec_params)
 	//	anim().SetCurAnim(eAnimLookAround);
 	//	return;
 	//}
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CTushkano::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CTushkano, CGameObject>("CTushkano")
+				.def(constructor<>( ))
+		];
 }

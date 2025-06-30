@@ -436,519 +436,6 @@
     <Filter Include="AI\ALife\saved_game_wrapper">
       <UniqueIdentifier>{ddffb8f6-2272-4c64-a177-4f251b641f7f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AMonsters">
-      <UniqueIdentifier>{2213fb6b-c497-4319-b288-9eab5eb39a01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common">
-      <UniqueIdentifier>{1cde5c1f-ed56-43f1-ab57-fdfdba474eee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\custom">
-      <UniqueIdentifier>{164691fe-d557-4ff5-bf34-d73ee410246e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\miscellaneous">
-      <UniqueIdentifier>{7827fbfa-54d5-49a2-843f-820bc41297c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script">
-      <UniqueIdentifier>{86559435-2e42-4e13-9274-02c8225658fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script\script_binder">
-      <UniqueIdentifier>{01f23689-75a6-40fb-94e2-778d881b425f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script\script_entity">
-      <UniqueIdentifier>{5a007d57-a958-492f-bd30-a7e4cf377b16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\script\script_object">
-      <UniqueIdentifier>{f89110a6-0225-49c8-a98b-cb9dc2d736ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\base monster">
-      <UniqueIdentifier>{def054d2-448a-4f80-8b83-471e5a3d060f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states">
-      <UniqueIdentifier>{b2e31a19-9871-4a2e-ab50-c15a10b37cff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Rest">
-      <UniqueIdentifier>{09016483-ca2a-49c8-91cd-0fa12833e128}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Panic">
-      <UniqueIdentifier>{add35536-c9d3-4fe9-bda6-3239fd1d0f5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Find Enemy">
-      <UniqueIdentifier>{ebcc934e-be77-4c16-8658-fcbb49bd6c11}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Dangerous Sound">
-      <UniqueIdentifier>{85bc6f23-6b51-41a4-bef9-dca8e86c6634}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Interesting Sound">
-      <UniqueIdentifier>{34208d74-6e2d-42bc-a2c7-f14e1ff49a9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Squad">
-      <UniqueIdentifier>{8e0a8ddc-e91c-4d8f-b545-32d97252ebdb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Squad\Rest">
-      <UniqueIdentifier>{73591be8-5e48-473d-8fae-c4303889146e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Eat">
-      <UniqueIdentifier>{406c24e9-1541-4ba8-9b0c-a6b98ddd451b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Eat\Eating">
-      <UniqueIdentifier>{c50b8899-2187-412f-b5d8-49312a921545}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Eat\Drag">
-      <UniqueIdentifier>{bf2a639c-c8ae-4ccc-adfa-cf8219d8ef10}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\General">
-      <UniqueIdentifier>{00b2bd5c-4283-4b21-bb4b-39d85f008724}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\General\Movement">
-      <UniqueIdentifier>{e9091fcf-b934-4e32-af32-83fbba5567fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\General\Look">
-      <UniqueIdentifier>{2f1b5c4d-25f9-415f-bda8-527ceb9029b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\General\Custom Action">
-      <UniqueIdentifier>{69b6f299-51e7-4142-af40-e840254a0415}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\General\Test">
-      <UniqueIdentifier>{819aa08a-87d1-43a8-8c84-c16ab8afb8ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Attack">
-      <UniqueIdentifier>{601e29d2-e8b7-48d3-ab8b-6140acdb4113}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Attack\Camp">
-      <UniqueIdentifier>{c18ed185-4891-4932-831a-8a7a5cc681d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Hitted">
-      <UniqueIdentifier>{8c5747b3-971d-4ffe-87be-29e2ee9f8521}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Steal">
-      <UniqueIdentifier>{4dca020a-2d0e-4015-a1aa-f69b7e1fac72}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Controlled">
-      <UniqueIdentifier>{9990566a-a1d7-4ed5-8b05-58c4de1a8f18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Home Point">
-      <UniqueIdentifier>{71dfed2c-9772-4b69-a9e6-56ab79380df9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\Help Sound">
-      <UniqueIdentifier>{fe806d45-7742-432b-955e-0ccaad6ca6b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\monster states\ALife">
-      <UniqueIdentifier>{2b19f425-b1fd-461f-b39a-d6f33c480471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components">
-      <UniqueIdentifier>{1c0391b3-58e7-4f3b-94bd-8578e96759a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Bones">
-      <UniqueIdentifier>{e60d4ce7-cc73-4b3e-a11c-e9f90a714434}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Memory">
-      <UniqueIdentifier>{5e0107eb-f8aa-4f11-9ef3-81088dea0d15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\State">
-      <UniqueIdentifier>{8422da38-0d00-422a-a88d-e07a35a61c87}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Squad">
-      <UniqueIdentifier>{5a7450c8-f0b0-4de1-a562-9309e72bd7ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Squad\Squad Manager">
-      <UniqueIdentifier>{c6b94289-8f6f-44dd-be7c-7bf5354bd12a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Motion Stats">
-      <UniqueIdentifier>{8300acd4-9d56-45df-b9cd-b960e6432a7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Cover">
-      <UniqueIdentifier>{a2f37445-ffd5-457e-9301-42be1cc0f40e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities">
-      <UniqueIdentifier>{566e1d47-17ad-4df5-849e-2fbbc3d6034e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities\Telekinesis">
-      <UniqueIdentifier>{d33829fb-30f7-4ab2-9dd0-6f17f3182cb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities\Invisibility">
-      <UniqueIdentifier>{52ad61f0-9ee8-4c7c-ab0c-ebb7450640a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities\Scan">
-      <UniqueIdentifier>{ca60a46d-1da5-4350-88ee-cf1af627574f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities\Controlled">
-      <UniqueIdentifier>{f00c6aaf-3fdc-4d90-b057-02a7861e4d3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities\Psy Aura">
-      <UniqueIdentifier>{0fbc8364-eae9-42cf-9259-efb535ce685d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Abilities\Energy Holder">
-      <UniqueIdentifier>{53de60eb-b365-4896-829a-f0ce476f7633}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Event Handler">
-      <UniqueIdentifier>{4a707b1c-79fb-481c-a402-437058829531}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Melee Checker">
-      <UniqueIdentifier>{5d8bde6e-fa41-47ec-910d-6a62d756edad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Morale">
-      <UniqueIdentifier>{9564ab70-23d5-4530-a564-ad692fa591e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Actor Controller">
-      <UniqueIdentifier>{954c1e9c-7345-4c06-90e6-90d3cfb82e8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager">
-      <UniqueIdentifier>{e6441fe6-4f0c-47c9-8309-c0bc518ae100}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Pure Coms">
-      <UniqueIdentifier>{796eacbc-3e06-40ff-b7ed-a13d30e63720}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Pure Coms\Animation">
-      <UniqueIdentifier>{ad123c2e-827c-412f-9357-5ed0433658c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Pure Coms\Direction">
-      <UniqueIdentifier>{0f493210-017b-492d-b79d-0b36468f0aef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Pure Coms\Path Builder">
-      <UniqueIdentifier>{0e17289c-c4b9-485d-971d-ef4013d45b22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Pure Coms\Movement">
-      <UniqueIdentifier>{89b05f99-c806-42e6-8db3-f80c199553a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Base Controllers">
-      <UniqueIdentifier>{d5dc7d25-7fee-423f-8980-af3dc648473e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Base Controllers\Animation">
-      <UniqueIdentifier>{bf596740-3ceb-4d30-85fc-6f319f35bb74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Base Controllers\Direction">
-      <UniqueIdentifier>{8bcf35bc-0f32-4e9d-924f-aa94a3d30e26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder">
-      <UniqueIdentifier>{dd317ad8-db84-4fc2-af19-46ea20abe001}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Base Controllers\Movement">
-      <UniqueIdentifier>{8ca32bc7-83c4-44d9-b558-d39134cc46bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom">
-      <UniqueIdentifier>{e4041629-dded-4ff6-bdad-37d55dcb3914}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\Sequencer">
-      <UniqueIdentifier>{8a2f9944-1dbc-4f5a-985c-bd20d52deccb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\Rotation Jump">
-      <UniqueIdentifier>{c54c98ed-2274-4fe7-bcb9-89f60cbede0a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\Triple Animation">
-      <UniqueIdentifier>{9125a4d6-922b-49ad-af94-27c302bd4e77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\Jump">
-      <UniqueIdentifier>{802570eb-ac20-446c-a9c3-4dbb081cbbdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\Run Attack">
-      <UniqueIdentifier>{ab186d80-7c3c-45ba-8b39-933aae5f7b1a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\Threaten">
-      <UniqueIdentifier>{5a898680-ed2f-4104-b3b6-2302ed70e148}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Control Manager\Custom\CriticalWound">
-      <UniqueIdentifier>{6d3c8afb-cce4-496a-bb3f-842d3c0d71a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Anomaly Detector">
-      <UniqueIdentifier>{9654b732-6992-4b57-bd78-8224696c657f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Cover Manager">
-      <UniqueIdentifier>{97760e4a-e88d-41f0-84f4-94a7b0445065}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\common\components\Home">
-      <UniqueIdentifier>{c2acc37f-d056-47d1-85e9-7ac3a40cbbda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters">
-      <UniqueIdentifier>{b929c8a1-b8df-4612-b4bc-d3b21994ae74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Bloodsucker">
-      <UniqueIdentifier>{173d7c60-56b2-4fe4-82be-96728611fe34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Bloodsucker\Vampire State">
-      <UniqueIdentifier>{8d89aca0-78d8-4c94-8738-d241e5322c38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Bloodsucker\Script">
-      <UniqueIdentifier>{59238c82-6d97-4bb7-a7e5-0bdfa296472c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Bloodsucker\Alien Feature">
-      <UniqueIdentifier>{1485d6e6-2d7c-4112-baa7-e94ccf490444}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Bloodsucker\Predator State">
-      <UniqueIdentifier>{a265f381-ecdc-4f82-8d05-18a1fc65c540}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Bloodsucker\Attack">
-      <UniqueIdentifier>{380f00a5-72be-47ea-8e61-e06975db2007}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Boar">
-      <UniqueIdentifier>{5325b014-47d6-47c1-a289-f1482bf2534e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Boar\Script">
-      <UniqueIdentifier>{2d0895f6-5d58-458e-9614-5fd0340aa532}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Crow">
-      <UniqueIdentifier>{bae2f86d-ce97-48df-ba57-28a30524b478}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Flesh">
-      <UniqueIdentifier>{99eca90b-9fc8-403f-b358-2d8aff738815}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Flesh\Script">
-      <UniqueIdentifier>{0b039a8d-ed60-4c64-b46a-eb588fce154b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\PseudoDog">
-      <UniqueIdentifier>{981e144e-cc38-422f-bdfa-48697677a82f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\PseudoDog\DogPsy">
-      <UniqueIdentifier>{bacff266-99fa-4d59-9707-8444023dc0b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\PseudoDog\DogPsy\Psy Attack Hide">
-      <UniqueIdentifier>{47c5db31-ff75-42ee-a1a2-8a35dd48dd76}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\PseudoDog\Script">
-      <UniqueIdentifier>{b2cd7057-45df-4cc6-9bec-150452a961ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Burer">
-      <UniqueIdentifier>{4b928338-38d5-456c-8e48-080098c2ba58}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Burer\Script">
-      <UniqueIdentifier>{67a5915a-cda3-4fd1-98cd-630ba20bbe7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Burer\Attack">
-      <UniqueIdentifier>{57e35696-9bc6-4ee6-b9f3-57e0fcc5fc46}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Burer\Fast Gravi">
-      <UniqueIdentifier>{92e74fcf-3384-42e9-b625-45a1c181063b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Chimera">
-      <UniqueIdentifier>{b90b9d5a-9a50-4ae8-9d1b-bededd2a37fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Chimera\state threaten">
-      <UniqueIdentifier>{489ca4f7-d025-4770-8199-d474c35809c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Chimera\state hunting">
-      <UniqueIdentifier>{0b7df78c-e9c9-4c8f-872d-6eb3078b7e58}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Chimera\Script">
-      <UniqueIdentifier>{4bc8a32c-48dc-4ea3-8df9-d2dd6e91b90b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\PseudoGigant">
-      <UniqueIdentifier>{c348c930-d6f5-42e6-8472-1e00203f0d18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\PseudoGigant\Script">
-      <UniqueIdentifier>{b8e44b49-8281-4b5d-a564-79835d254476}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Poltergeist">
-      <UniqueIdentifier>{df771f1c-29f2-4062-9acf-462938ba82ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Poltergeist\Script">
-      <UniqueIdentifier>{32f63c7c-dcaf-4e43-bd9f-a110061f2352}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Poltergeist\Hidden Attack">
-      <UniqueIdentifier>{55f125de-770b-45c2-a669-919b1751cc3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Poltergeist\Abilities">
-      <UniqueIdentifier>{54375749-7ab0-41fb-abbe-5b90e5e6e5cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Zombie">
-      <UniqueIdentifier>{e0381460-c7e0-4ab2-9505-63c17a728a3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Fracture">
-      <UniqueIdentifier>{cf68a6b3-ad6f-46d1-9966-026556bf75a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Fracture\Script">
-      <UniqueIdentifier>{c56ce544-fcac-4d29-ba08-216d046219ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Snork">
-      <UniqueIdentifier>{99ba172a-00fa-4be4-b0a0-57bfd7955af5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Snork\Special Jump">
-      <UniqueIdentifier>{424ab6f7-cbaa-4660-aa7c-5f2f19f9954d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Snork\Script">
-      <UniqueIdentifier>{5ea9230d-b326-45b4-a5f1-f90fceaa81ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller">
-      <UniqueIdentifier>{0065a224-4f6d-4d34-8308-b47e53afe72d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\State Attack">
-      <UniqueIdentifier>{542656e8-db1a-4709-8bdf-92405b1d0084}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\State Attack\Cover">
-      <UniqueIdentifier>{8f497baf-4800-4b76-8f87-05a882d18ae7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\State Panic">
-      <UniqueIdentifier>{bfd7cedd-a9ea-40b5-a27b-4125defa8038}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\Script">
-      <UniqueIdentifier>{eec35838-7055-4fb5-b483-0ef698ab5480}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\Base Controllers">
-      <UniqueIdentifier>{35e3f7b1-858a-4ff6-98cd-47222f256391}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\Base Controllers\Animation">
-      <UniqueIdentifier>{36c53931-b72a-4548-9341-b4aee8828d7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\Base Controllers\Direction">
-      <UniqueIdentifier>{592de169-44b7-46bf-bf27-ea27bf0aee53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Controller\Psy hit">
-      <UniqueIdentifier>{e266aeaa-7ed6-4804-bea7-f273e49a0373}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Cat">
-      <UniqueIdentifier>{1a937b14-e951-49ec-ba01-f2b685c3357e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Cat\Script">
-      <UniqueIdentifier>{34ac480d-5e46-45f5-9c23-92a659a19060}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Tushkano">
-      <UniqueIdentifier>{c3c61fc8-7618-4010-8ea0-63679effbb08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Tushkano\Script">
-      <UniqueIdentifier>{69a2ef77-c3ad-4054-b90f-a1440b82cccc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Phantom">
-      <UniqueIdentifier>{144b31cb-9cac-4597-acbf-7e2ff6eb17de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Dog">
-      <UniqueIdentifier>{ee758c91-b081-460c-a5e3-64327d77d2f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\monsters\Dog\Script">
-      <UniqueIdentifier>{b414470d-525d-400a-a5e6-28e0b119dde1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans">
-      <UniqueIdentifier>{075dd244-a74c-4fa9-9b27-cfb1340701ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\trader">
-      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker">
-      <UniqueIdentifier>{00f0639f-5b49-439c-93f1-c5d6d97e4c52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager">
-      <UniqueIdentifier>{fb44f6ba-4e90-4a31-86d6-318ec06cbb2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager\data_storage">
-      <UniqueIdentifier>{a05ad86a-c919-4d3a-a6e7-1981c97838d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager\data_storage\data">
-      <UniqueIdentifier>{de56e083-926c-45ec-a254-2a965fac2419}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager\names">
-      <UniqueIdentifier>{1d1c79a7-3a8f-4d84-9166-3ce01dc70e4c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager\pair">
-      <UniqueIdentifier>{9c17c38b-064f-45b7-8dfb-5807daea786b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager\script">
-      <UniqueIdentifier>{ce3e958e-60ee-48c4-8b4b-9cd5cfc3a831}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\AnimationManager\state">
-      <UniqueIdentifier>{b16c0f38-6ba5-43ae-8c83-880cd0936580}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\CoverEvaluators">
-      <UniqueIdentifier>{2bcf38cd-62bc-4474-8bc4-aeaaf9b820c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker">
-      <UniqueIdentifier>{307d5b2a-a701-4759-872b-ac09db7aeb41}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions">
-      <UniqueIdentifier>{8f616b0f-5bb9-4514-8fbd-389d63ef23ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\alife">
-      <UniqueIdentifier>{06394739-682f-4093-b028-4d1e2cfae1db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\alife\actions">
-      <UniqueIdentifier>{02bda881-29d8-4fd3-a2f5-3d5387130321}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\alife\task_actions">
-      <UniqueIdentifier>{6d8fb6cb-9d76-421a-a2ff-0efa1ba62db6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\anomaly">
-      <UniqueIdentifier>{db6aa5a6-fde7-482e-a3df-066703ad36cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\anomaly\actions">
-      <UniqueIdentifier>{e5386875-8c7a-44ae-baf2-36abf4b2f392}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\combat">
-      <UniqueIdentifier>{95b8bddb-a51e-4041-8bab-5a01c2f75711}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\actions">
-      <UniqueIdentifier>{c8d93213-57c5-4567-8234-0d441c61e80f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\actions\base">
-      <UniqueIdentifier>{506e559d-1ba5-42eb-b391-e9c4a48a35a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded">
-      <UniqueIdentifier>{bd5a50de-a6bc-4cb0-93e1-d34e115d93b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded\actions">
-      <UniqueIdentifier>{9499d10e-1a1b-4981-9e41-d6294b3a427b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger">
-      <UniqueIdentifier>{97daa679-f326-4284-a63b-1b3da618aa07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions">
-      <UniqueIdentifier>{65e57ce7-db05-40eb-afff-905a5255dd19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown">
-      <UniqueIdentifier>{0f53888f-10e4-4c81-9257-f64bfd004dbd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown\actions">
-      <UniqueIdentifier>{ddb1e8bf-a727-473f-b452-6b9e3084438e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction">
-      <UniqueIdentifier>{f010f755-3779-4097-aef8-2492b9e5e87d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction\actions">
-      <UniqueIdentifier>{f0d0401c-7123-47c1-b11b-0064e24b4b51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade">
-      <UniqueIdentifier>{b657887f-423c-46d9-9f2b-05abd672303b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade\actions">
-      <UniqueIdentifier>{d21b5aff-5cce-434c-8818-a1a8017b17a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound">
-      <UniqueIdentifier>{bdd82d47-7c01-40c5-a2c6-80998db7305f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound\actions">
-      <UniqueIdentifier>{e3d3d1c8-82ee-4f5e-8a73-61f0a1aa648e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\properties">
-      <UniqueIdentifier>{f026ed22-e28c-4ad7-9fe6-9c6eb4fb7193}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\death">
-      <UniqueIdentifier>{034771ff-44b3-442f-b383-71664e20d7ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\actions\death\actions">
-      <UniqueIdentifier>{5890e11c-108e-4311-948a-71b0a9b0e357}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\DecisionMaker\properties">
-      <UniqueIdentifier>{b59b7968-5530-4f2d-8ce4-9aea515cebaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\MovementManager">
-      <UniqueIdentifier>{763e81ca-f1d3-484d-8278-a426c365788e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\MovementManager\params">
-      <UniqueIdentifier>{0b4addd9-6d8a-45a0-b3cf-52e2f8c75705}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\MovementManager\restriction">
-      <UniqueIdentifier>{25e40fe8-0c09-486b-a4ab-2589e64a11b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\MovementManager\velocity_collection">
-      <UniqueIdentifier>{cc20c785-aedc-446a-abc1-b77eb64e7448}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\MovementManager\velocity_holder">
-      <UniqueIdentifier>{9cfaed21-cdd6-4fa9-ab9d-a917fa61a203}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\Miscellaneous">
-      <UniqueIdentifier>{c6a51ca0-b45f-4380-847b-576ce23f390f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\SoundDataVisitor">
-      <UniqueIdentifier>{d82a9562-6469-4529-a55b-d932a7833999}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AMonsters\humans\stalker\SoundUserData">
-      <UniqueIdentifier>{9478062f-7d21-4eaf-beb1-392b396f935d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\ANavigation">
       <UniqueIdentifier>{b76084fe-0b2d-4324-aa1f-077e2a8eebe6}</UniqueIdentifier>
     </Filter>
@@ -2107,6 +1594,516 @@
     <Filter Include="Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Walther">
       <UniqueIdentifier>{edfe2dab-4bb9-455d-9c2a-dc8f298b2418}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\Monsters">
+      <UniqueIdentifier>{2213fb6b-c497-4319-b288-9eab5eb39a01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common">
+      <UniqueIdentifier>{1cde5c1f-ed56-43f1-ab57-fdfdba474eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\custom">
+      <UniqueIdentifier>{164691fe-d557-4ff5-bf34-d73ee410246e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\miscellaneous">
+      <UniqueIdentifier>{7827fbfa-54d5-49a2-843f-820bc41297c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\script">
+      <UniqueIdentifier>{86559435-2e42-4e13-9274-02c8225658fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\script\script_binder">
+      <UniqueIdentifier>{01f23689-75a6-40fb-94e2-778d881b425f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\script\script_entity">
+      <UniqueIdentifier>{5a007d57-a958-492f-bd30-a7e4cf377b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\script\script_object">
+      <UniqueIdentifier>{f89110a6-0225-49c8-a98b-cb9dc2d736ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\base monster">
+      <UniqueIdentifier>{def054d2-448a-4f80-8b83-471e5a3d060f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states">
+      <UniqueIdentifier>{b2e31a19-9871-4a2e-ab50-c15a10b37cff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Rest">
+      <UniqueIdentifier>{09016483-ca2a-49c8-91cd-0fa12833e128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Panic">
+      <UniqueIdentifier>{add35536-c9d3-4fe9-bda6-3239fd1d0f5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Find Enemy">
+      <UniqueIdentifier>{ebcc934e-be77-4c16-8658-fcbb49bd6c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Dangerous Sound">
+      <UniqueIdentifier>{85bc6f23-6b51-41a4-bef9-dca8e86c6634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Interesting Sound">
+      <UniqueIdentifier>{34208d74-6e2d-42bc-a2c7-f14e1ff49a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Squad">
+      <UniqueIdentifier>{8e0a8ddc-e91c-4d8f-b545-32d97252ebdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Squad\Rest">
+      <UniqueIdentifier>{73591be8-5e48-473d-8fae-c4303889146e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Eat">
+      <UniqueIdentifier>{406c24e9-1541-4ba8-9b0c-a6b98ddd451b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Eat\Eating">
+      <UniqueIdentifier>{c50b8899-2187-412f-b5d8-49312a921545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Eat\Drag">
+      <UniqueIdentifier>{bf2a639c-c8ae-4ccc-adfa-cf8219d8ef10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\General">
+      <UniqueIdentifier>{00b2bd5c-4283-4b21-bb4b-39d85f008724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\General\Movement">
+      <UniqueIdentifier>{e9091fcf-b934-4e32-af32-83fbba5567fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\General\Look">
+      <UniqueIdentifier>{2f1b5c4d-25f9-415f-bda8-527ceb9029b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\General\Custom Action">
+      <UniqueIdentifier>{69b6f299-51e7-4142-af40-e840254a0415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\General\Test">
+      <UniqueIdentifier>{819aa08a-87d1-43a8-8c84-c16ab8afb8ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Attack">
+      <UniqueIdentifier>{601e29d2-e8b7-48d3-ab8b-6140acdb4113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Attack\Camp">
+      <UniqueIdentifier>{c18ed185-4891-4932-831a-8a7a5cc681d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Hitted">
+      <UniqueIdentifier>{8c5747b3-971d-4ffe-87be-29e2ee9f8521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Steal">
+      <UniqueIdentifier>{4dca020a-2d0e-4015-a1aa-f69b7e1fac72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Controlled">
+      <UniqueIdentifier>{9990566a-a1d7-4ed5-8b05-58c4de1a8f18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Home Point">
+      <UniqueIdentifier>{71dfed2c-9772-4b69-a9e6-56ab79380df9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\Help Sound">
+      <UniqueIdentifier>{fe806d45-7742-432b-955e-0ccaad6ca6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\monster states\ALife">
+      <UniqueIdentifier>{2b19f425-b1fd-461f-b39a-d6f33c480471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components">
+      <UniqueIdentifier>{1c0391b3-58e7-4f3b-94bd-8578e96759a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Bones">
+      <UniqueIdentifier>{e60d4ce7-cc73-4b3e-a11c-e9f90a714434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Memory">
+      <UniqueIdentifier>{5e0107eb-f8aa-4f11-9ef3-81088dea0d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\State">
+      <UniqueIdentifier>{8422da38-0d00-422a-a88d-e07a35a61c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Squad">
+      <UniqueIdentifier>{5a7450c8-f0b0-4de1-a562-9309e72bd7ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Squad\Squad Manager">
+      <UniqueIdentifier>{c6b94289-8f6f-44dd-be7c-7bf5354bd12a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Motion Stats">
+      <UniqueIdentifier>{8300acd4-9d56-45df-b9cd-b960e6432a7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Cover">
+      <UniqueIdentifier>{a2f37445-ffd5-457e-9301-42be1cc0f40e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities">
+      <UniqueIdentifier>{566e1d47-17ad-4df5-849e-2fbbc3d6034e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities\Telekinesis">
+      <UniqueIdentifier>{d33829fb-30f7-4ab2-9dd0-6f17f3182cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities\Invisibility">
+      <UniqueIdentifier>{52ad61f0-9ee8-4c7c-ab0c-ebb7450640a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities\Scan">
+      <UniqueIdentifier>{ca60a46d-1da5-4350-88ee-cf1af627574f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities\Controlled">
+      <UniqueIdentifier>{f00c6aaf-3fdc-4d90-b057-02a7861e4d3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities\Psy Aura">
+      <UniqueIdentifier>{0fbc8364-eae9-42cf-9259-efb535ce685d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Abilities\Energy Holder">
+      <UniqueIdentifier>{53de60eb-b365-4896-829a-f0ce476f7633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Event Handler">
+      <UniqueIdentifier>{4a707b1c-79fb-481c-a402-437058829531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Melee Checker">
+      <UniqueIdentifier>{5d8bde6e-fa41-47ec-910d-6a62d756edad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Morale">
+      <UniqueIdentifier>{9564ab70-23d5-4530-a564-ad692fa591e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Actor Controller">
+      <UniqueIdentifier>{954c1e9c-7345-4c06-90e6-90d3cfb82e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager">
+      <UniqueIdentifier>{e6441fe6-4f0c-47c9-8309-c0bc518ae100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Pure Coms">
+      <UniqueIdentifier>{796eacbc-3e06-40ff-b7ed-a13d30e63720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Pure Coms\Animation">
+      <UniqueIdentifier>{ad123c2e-827c-412f-9357-5ed0433658c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Pure Coms\Direction">
+      <UniqueIdentifier>{0f493210-017b-492d-b79d-0b36468f0aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Pure Coms\Path Builder">
+      <UniqueIdentifier>{0e17289c-c4b9-485d-971d-ef4013d45b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Pure Coms\Movement">
+      <UniqueIdentifier>{89b05f99-c806-42e6-8db3-f80c199553a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Base Controllers">
+      <UniqueIdentifier>{d5dc7d25-7fee-423f-8980-af3dc648473e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Base Controllers\Animation">
+      <UniqueIdentifier>{bf596740-3ceb-4d30-85fc-6f319f35bb74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Base Controllers\Direction">
+      <UniqueIdentifier>{8bcf35bc-0f32-4e9d-924f-aa94a3d30e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder">
+      <UniqueIdentifier>{dd317ad8-db84-4fc2-af19-46ea20abe001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Base Controllers\Movement">
+      <UniqueIdentifier>{8ca32bc7-83c4-44d9-b558-d39134cc46bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom">
+      <UniqueIdentifier>{e4041629-dded-4ff6-bdad-37d55dcb3914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\Sequencer">
+      <UniqueIdentifier>{8a2f9944-1dbc-4f5a-985c-bd20d52deccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\Rotation Jump">
+      <UniqueIdentifier>{c54c98ed-2274-4fe7-bcb9-89f60cbede0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\Triple Animation">
+      <UniqueIdentifier>{9125a4d6-922b-49ad-af94-27c302bd4e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\Jump">
+      <UniqueIdentifier>{802570eb-ac20-446c-a9c3-4dbb081cbbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\Run Attack">
+      <UniqueIdentifier>{ab186d80-7c3c-45ba-8b39-933aae5f7b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\Threaten">
+      <UniqueIdentifier>{5a898680-ed2f-4104-b3b6-2302ed70e148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Control Manager\Custom\CriticalWound">
+      <UniqueIdentifier>{6d3c8afb-cce4-496a-bb3f-842d3c0d71a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Anomaly Detector">
+      <UniqueIdentifier>{9654b732-6992-4b57-bd78-8224696c657f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Cover Manager">
+      <UniqueIdentifier>{97760e4a-e88d-41f0-84f4-94a7b0445065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\common\components\Home">
+      <UniqueIdentifier>{c2acc37f-d056-47d1-85e9-7ac3a40cbbda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters">
+      <UniqueIdentifier>{b929c8a1-b8df-4612-b4bc-d3b21994ae74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Bloodsucker">
+      <UniqueIdentifier>{173d7c60-56b2-4fe4-82be-96728611fe34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Bloodsucker\Vampire State">
+      <UniqueIdentifier>{8d89aca0-78d8-4c94-8738-d241e5322c38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Bloodsucker\Script">
+      <UniqueIdentifier>{59238c82-6d97-4bb7-a7e5-0bdfa296472c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Bloodsucker\Alien Feature">
+      <UniqueIdentifier>{1485d6e6-2d7c-4112-baa7-e94ccf490444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Bloodsucker\Predator State">
+      <UniqueIdentifier>{a265f381-ecdc-4f82-8d05-18a1fc65c540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Bloodsucker\Attack">
+      <UniqueIdentifier>{380f00a5-72be-47ea-8e61-e06975db2007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Boar">
+      <UniqueIdentifier>{5325b014-47d6-47c1-a289-f1482bf2534e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Boar\Script">
+      <UniqueIdentifier>{2d0895f6-5d58-458e-9614-5fd0340aa532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Crow">
+      <UniqueIdentifier>{bae2f86d-ce97-48df-ba57-28a30524b478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Flesh">
+      <UniqueIdentifier>{99eca90b-9fc8-403f-b358-2d8aff738815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Flesh\Script">
+      <UniqueIdentifier>{0b039a8d-ed60-4c64-b46a-eb588fce154b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\PseudoDog">
+      <UniqueIdentifier>{981e144e-cc38-422f-bdfa-48697677a82f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\PseudoDog\DogPsy">
+      <UniqueIdentifier>{bacff266-99fa-4d59-9707-8444023dc0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide">
+      <UniqueIdentifier>{47c5db31-ff75-42ee-a1a2-8a35dd48dd76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\PseudoDog\Script">
+      <UniqueIdentifier>{b2cd7057-45df-4cc6-9bec-150452a961ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Burer">
+      <UniqueIdentifier>{4b928338-38d5-456c-8e48-080098c2ba58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Burer\Script">
+      <UniqueIdentifier>{67a5915a-cda3-4fd1-98cd-630ba20bbe7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Burer\Attack">
+      <UniqueIdentifier>{57e35696-9bc6-4ee6-b9f3-57e0fcc5fc46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Burer\Fast Gravi">
+      <UniqueIdentifier>{92e74fcf-3384-42e9-b625-45a1c181063b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Chimera">
+      <UniqueIdentifier>{b90b9d5a-9a50-4ae8-9d1b-bededd2a37fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Chimera\state threaten">
+      <UniqueIdentifier>{489ca4f7-d025-4770-8199-d474c35809c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Chimera\state hunting">
+      <UniqueIdentifier>{0b7df78c-e9c9-4c8f-872d-6eb3078b7e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Chimera\Script">
+      <UniqueIdentifier>{4bc8a32c-48dc-4ea3-8df9-d2dd6e91b90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\PseudoGigant">
+      <UniqueIdentifier>{c348c930-d6f5-42e6-8472-1e00203f0d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\PseudoGigant\Script">
+      <UniqueIdentifier>{b8e44b49-8281-4b5d-a564-79835d254476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Poltergeist">
+      <UniqueIdentifier>{df771f1c-29f2-4062-9acf-462938ba82ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Poltergeist\Script">
+      <UniqueIdentifier>{32f63c7c-dcaf-4e43-bd9f-a110061f2352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Poltergeist\Hidden Attack">
+      <UniqueIdentifier>{55f125de-770b-45c2-a669-919b1751cc3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Poltergeist\Abilities">
+      <UniqueIdentifier>{54375749-7ab0-41fb-abbe-5b90e5e6e5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Zombie">
+      <UniqueIdentifier>{e0381460-c7e0-4ab2-9505-63c17a728a3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Fracture">
+      <UniqueIdentifier>{cf68a6b3-ad6f-46d1-9966-026556bf75a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Fracture\Script">
+      <UniqueIdentifier>{c56ce544-fcac-4d29-ba08-216d046219ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Snork">
+      <UniqueIdentifier>{99ba172a-00fa-4be4-b0a0-57bfd7955af5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Snork\Special Jump">
+      <UniqueIdentifier>{424ab6f7-cbaa-4660-aa7c-5f2f19f9954d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Snork\Script">
+      <UniqueIdentifier>{5ea9230d-b326-45b4-a5f1-f90fceaa81ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller">
+      <UniqueIdentifier>{0065a224-4f6d-4d34-8308-b47e53afe72d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\State Attack">
+      <UniqueIdentifier>{542656e8-db1a-4709-8bdf-92405b1d0084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\State Attack\Cover">
+      <UniqueIdentifier>{8f497baf-4800-4b76-8f87-05a882d18ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\State Panic">
+      <UniqueIdentifier>{bfd7cedd-a9ea-40b5-a27b-4125defa8038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\Script">
+      <UniqueIdentifier>{eec35838-7055-4fb5-b483-0ef698ab5480}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\Base Controllers">
+      <UniqueIdentifier>{35e3f7b1-858a-4ff6-98cd-47222f256391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\Base Controllers\Animation">
+      <UniqueIdentifier>{36c53931-b72a-4548-9341-b4aee8828d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\Base Controllers\Direction">
+      <UniqueIdentifier>{592de169-44b7-46bf-bf27-ea27bf0aee53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Controller\Psy hit">
+      <UniqueIdentifier>{e266aeaa-7ed6-4804-bea7-f273e49a0373}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Cat">
+      <UniqueIdentifier>{1a937b14-e951-49ec-ba01-f2b685c3357e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Cat\Script">
+      <UniqueIdentifier>{34ac480d-5e46-45f5-9c23-92a659a19060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Tushkano">
+      <UniqueIdentifier>{c3c61fc8-7618-4010-8ea0-63679effbb08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Phantom">
+      <UniqueIdentifier>{144b31cb-9cac-4597-acbf-7e2ff6eb17de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Dog">
+      <UniqueIdentifier>{ee758c91-b081-460c-a5e3-64327d77d2f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\monsters\Dog\Script">
+      <UniqueIdentifier>{b414470d-525d-400a-a5e6-28e0b119dde1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans">
+      <UniqueIdentifier>{075dd244-a74c-4fa9-9b27-cfb1340701ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\trader">
+      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker">
+      <UniqueIdentifier>{00f0639f-5b49-439c-93f1-c5d6d97e4c52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager">
+      <UniqueIdentifier>{fb44f6ba-4e90-4a31-86d6-318ec06cbb2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager\data_storage">
+      <UniqueIdentifier>{a05ad86a-c919-4d3a-a6e7-1981c97838d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager\data_storage\data">
+      <UniqueIdentifier>{de56e083-926c-45ec-a254-2a965fac2419}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager\names">
+      <UniqueIdentifier>{1d1c79a7-3a8f-4d84-9166-3ce01dc70e4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager\pair">
+      <UniqueIdentifier>{9c17c38b-064f-45b7-8dfb-5807daea786b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager\script">
+      <UniqueIdentifier>{ce3e958e-60ee-48c4-8b4b-9cd5cfc3a831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\AnimationManager\state">
+      <UniqueIdentifier>{b16c0f38-6ba5-43ae-8c83-880cd0936580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\CoverEvaluators">
+      <UniqueIdentifier>{2bcf38cd-62bc-4474-8bc4-aeaaf9b820c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker">
+      <UniqueIdentifier>{307d5b2a-a701-4759-872b-ac09db7aeb41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions">
+      <UniqueIdentifier>{8f616b0f-5bb9-4514-8fbd-389d63ef23ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\alife">
+      <UniqueIdentifier>{06394739-682f-4093-b028-4d1e2cfae1db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\alife\actions">
+      <UniqueIdentifier>{02bda881-29d8-4fd3-a2f5-3d5387130321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\alife\task_actions">
+      <UniqueIdentifier>{6d8fb6cb-9d76-421a-a2ff-0efa1ba62db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\anomaly">
+      <UniqueIdentifier>{db6aa5a6-fde7-482e-a3df-066703ad36cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\anomaly\actions">
+      <UniqueIdentifier>{e5386875-8c7a-44ae-baf2-36abf4b2f392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\combat">
+      <UniqueIdentifier>{95b8bddb-a51e-4041-8bab-5a01c2f75711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\combat\actions">
+      <UniqueIdentifier>{c8d93213-57c5-4567-8234-0d441c61e80f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\combat\actions\base">
+      <UniqueIdentifier>{506e559d-1ba5-42eb-b391-e9c4a48a35a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded">
+      <UniqueIdentifier>{bd5a50de-a6bc-4cb0-93e1-d34e115d93b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded\actions">
+      <UniqueIdentifier>{9499d10e-1a1b-4981-9e41-d6294b3a427b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger">
+      <UniqueIdentifier>{97daa679-f326-4284-a63b-1b3da618aa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions">
+      <UniqueIdentifier>{65e57ce7-db05-40eb-afff-905a5255dd19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown">
+      <UniqueIdentifier>{0f53888f-10e4-4c81-9257-f64bfd004dbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown\actions">
+      <UniqueIdentifier>{ddb1e8bf-a727-473f-b452-6b9e3084438e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction">
+      <UniqueIdentifier>{f010f755-3779-4097-aef8-2492b9e5e87d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction\actions">
+      <UniqueIdentifier>{f0d0401c-7123-47c1-b11b-0064e24b4b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade">
+      <UniqueIdentifier>{b657887f-423c-46d9-9f2b-05abd672303b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade\actions">
+      <UniqueIdentifier>{d21b5aff-5cce-434c-8818-a1a8017b17a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound">
+      <UniqueIdentifier>{bdd82d47-7c01-40c5-a2c6-80998db7305f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound\actions">
+      <UniqueIdentifier>{e3d3d1c8-82ee-4f5e-8a73-61f0a1aa648e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\danger\properties">
+      <UniqueIdentifier>{f026ed22-e28c-4ad7-9fe6-9c6eb4fb7193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\death">
+      <UniqueIdentifier>{034771ff-44b3-442f-b383-71664e20d7ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\actions\death\actions">
+      <UniqueIdentifier>{5890e11c-108e-4311-948a-71b0a9b0e357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\DecisionMaker\properties">
+      <UniqueIdentifier>{b59b7968-5530-4f2d-8ce4-9aea515cebaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\MovementManager">
+      <UniqueIdentifier>{763e81ca-f1d3-484d-8278-a426c365788e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\MovementManager\params">
+      <UniqueIdentifier>{0b4addd9-6d8a-45a0-b3cf-52e2f8c75705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\MovementManager\restriction">
+      <UniqueIdentifier>{25e40fe8-0c09-486b-a4ab-2589e64a11b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\MovementManager\velocity_collection">
+      <UniqueIdentifier>{cc20c785-aedc-446a-abc1-b77eb64e7448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\MovementManager\velocity_holder">
+      <UniqueIdentifier>{9cfaed21-cdd6-4fa9-ab9d-a917fa61a203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\Miscellaneous">
+      <UniqueIdentifier>{c6a51ca0-b45f-4380-847b-576ce23f390f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\SoundDataVisitor">
+      <UniqueIdentifier>{d82a9562-6469-4529-a55b-d932a7833999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\stalker\SoundUserData">
+      <UniqueIdentifier>{9478062f-7d21-4eaf-beb1-392b396f935d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -2866,1054 +2863,1054 @@
       <Filter>AI\ALife\saved_game_wrapper</Filter>
     </ClInclude>
     <ClInclude Include="CustomMonster.h">
-      <Filter>AI\AMonsters\common\custom</Filter>
+      <Filter>AI\Monsters\common\custom</Filter>
     </ClInclude>
     <ClInclude Include="CustomMonster_inline.h">
-      <Filter>AI\AMonsters\common\custom</Filter>
+      <Filter>AI\Monsters\common\custom</Filter>
     </ClInclude>
     <ClInclude Include="ai_monster_space.h">
-      <Filter>AI\AMonsters\common\miscellaneous</Filter>
+      <Filter>AI\Monsters\common\miscellaneous</Filter>
     </ClInclude>
     <ClInclude Include="AI\ai_monsters_anims.h">
-      <Filter>AI\AMonsters\common\miscellaneous</Filter>
+      <Filter>AI\Monsters\common\miscellaneous</Filter>
     </ClInclude>
     <ClInclude Include="AI\ai_monsters_misc.h">
-      <Filter>AI\AMonsters\common\miscellaneous</Filter>
+      <Filter>AI\Monsters\common\miscellaneous</Filter>
     </ClInclude>
     <ClInclude Include="script_binder.h">
-      <Filter>AI\AMonsters\common\script\script_binder</Filter>
+      <Filter>AI\Monsters\common\script\script_binder</Filter>
     </ClInclude>
     <ClInclude Include="script_binder_inline.h">
-      <Filter>AI\AMonsters\common\script\script_binder</Filter>
+      <Filter>AI\Monsters\common\script\script_binder</Filter>
     </ClInclude>
     <ClInclude Include="script_entity.h">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+      <Filter>AI\Monsters\common\script\script_entity</Filter>
     </ClInclude>
     <ClInclude Include="script_entity_inline.h">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+      <Filter>AI\Monsters\common\script\script_entity</Filter>
     </ClInclude>
     <ClInclude Include="script_entity_space.h">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+      <Filter>AI\Monsters\common\script\script_entity</Filter>
     </ClInclude>
     <ClInclude Include="script_object.h">
-      <Filter>AI\AMonsters\common\script\script_object</Filter>
+      <Filter>AI\Monsters\common\script\script_object</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\BaseMonster\base_monster.h">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\BaseMonster\base_monster_inline.h">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_fun.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_fun_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_idle.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_idle_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_sleep.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_sleep_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_walk_graph.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_rest_walk_graph_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_panic.h">
-      <Filter>AI\AMonsters\common\monster states\Panic</Filter>
+      <Filter>AI\Monsters\common\monster states\Panic</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_panic_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Panic</Filter>
+      <Filter>AI\Monsters\common\monster states\Panic</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_panic_run.h">
-      <Filter>AI\AMonsters\common\monster states\Panic</Filter>
+      <Filter>AI\Monsters\common\monster states\Panic</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_panic_run_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Panic</Filter>
+      <Filter>AI\Monsters\common\monster states\Panic</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_angry.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_angry_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_look.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_look_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_run.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_run_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_walk.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_find_enemy_walk_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Find Enemy</Filter>
+      <Filter>AI\Monsters\common\monster states\Find Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hear_danger_sound.h">
-      <Filter>AI\AMonsters\common\monster states\Dangerous Sound</Filter>
+      <Filter>AI\Monsters\common\monster states\Dangerous Sound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hear_danger_sound_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Dangerous Sound</Filter>
+      <Filter>AI\Monsters\common\monster states\Dangerous Sound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hear_int_sound.h">
-      <Filter>AI\AMonsters\common\monster states\Interesting Sound</Filter>
+      <Filter>AI\Monsters\common\monster states\Interesting Sound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hear_int_sound_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Interesting Sound</Filter>
+      <Filter>AI\Monsters\common\monster states\Interesting Sound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_squad_rest.h">
-      <Filter>AI\AMonsters\common\monster states\Squad\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Squad\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_squad_rest_follow.h">
-      <Filter>AI\AMonsters\common\monster states\Squad\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Squad\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_squad_rest_follow_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Squad\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Squad\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_squad_rest_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Squad\Rest</Filter>
+      <Filter>AI\Monsters\common\monster states\Squad\Rest</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_eat.h">
-      <Filter>AI\AMonsters\common\monster states\Eat</Filter>
+      <Filter>AI\Monsters\common\monster states\Eat</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_eat_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Eat</Filter>
+      <Filter>AI\Monsters\common\monster states\Eat</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_eat_eat.h">
-      <Filter>AI\AMonsters\common\monster states\Eat\Eating</Filter>
+      <Filter>AI\Monsters\common\monster states\Eat\Eating</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_eat_eat_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Eat\Eating</Filter>
+      <Filter>AI\Monsters\common\monster states\Eat\Eating</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_eat_drag.h">
-      <Filter>AI\AMonsters\common\monster states\Eat\Drag</Filter>
+      <Filter>AI\Monsters\common\monster states\Eat\Drag</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_eat_drag_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Eat\Drag</Filter>
+      <Filter>AI\Monsters\common\monster states\Eat\Drag</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_data.h">
-      <Filter>AI\AMonsters\common\monster states\General</Filter>
+      <Filter>AI\Monsters\common\monster states\General</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_hide_from_point.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_hide_from_point_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_move_around_point.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_move_around_point_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_move_to_point.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_move_to_point_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_move_to_restrictor.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_move_to_restrictor_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Movement</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_look_point.h">
-      <Filter>AI\AMonsters\common\monster states\General\Look</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Look</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_look_point_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Look</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Look</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_look_unprotected_area.h">
-      <Filter>AI\AMonsters\common\monster states\General\Look</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Look</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_look_unprotected_area_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Look</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Look</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_custom_action.h">
-      <Filter>AI\AMonsters\common\monster states\General\Custom Action</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Custom Action</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_custom_action_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Custom Action</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Custom Action</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_custom_action_look.h">
-      <Filter>AI\AMonsters\common\monster states\General\Custom Action</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Custom Action</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_custom_action_look_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Custom Action</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Custom Action</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_hit_object.h">
-      <Filter>AI\AMonsters\common\monster states\General\Test</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Test</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_hit_object_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Test</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Test</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_test_look_actor.h">
-      <Filter>AI\AMonsters\common\monster states\General\Test</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Test</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_test_look_actor_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Test</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Test</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_test_state.h">
-      <Filter>AI\AMonsters\common\monster states\General\Test</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Test</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\state_test_state_inline.h">
-      <Filter>AI\AMonsters\common\monster states\General\Test</Filter>
+      <Filter>AI\Monsters\common\monster states\General\Test</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_melee.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_melee_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_run.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_run_attack.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_run_attack_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_run_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Attack</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_camp.h">
-      <Filter>AI\AMonsters\common\monster states\Attack\Camp</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack\Camp</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_camp_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Attack\Camp</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack\Camp</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_camp_stealout.h">
-      <Filter>AI\AMonsters\common\monster states\Attack\Camp</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack\Camp</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_attack_camp_stealout_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Attack\Camp</Filter>
+      <Filter>AI\Monsters\common\monster states\Attack\Camp</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hitted.h">
-      <Filter>AI\AMonsters\common\monster states\Hitted</Filter>
+      <Filter>AI\Monsters\common\monster states\Hitted</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hitted_hide.h">
-      <Filter>AI\AMonsters\common\monster states\Hitted</Filter>
+      <Filter>AI\Monsters\common\monster states\Hitted</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hitted_hide_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Hitted</Filter>
+      <Filter>AI\Monsters\common\monster states\Hitted</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hitted_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Hitted</Filter>
+      <Filter>AI\Monsters\common\monster states\Hitted</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hitted_moveout.h">
-      <Filter>AI\AMonsters\common\monster states\Hitted</Filter>
+      <Filter>AI\Monsters\common\monster states\Hitted</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_hitted_moveout_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Hitted</Filter>
+      <Filter>AI\Monsters\common\monster states\Hitted</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_steal.h">
-      <Filter>AI\AMonsters\common\monster states\Steal</Filter>
+      <Filter>AI\Monsters\common\monster states\Steal</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_steal_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Steal</Filter>
+      <Filter>AI\Monsters\common\monster states\Steal</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_controlled.h">
-      <Filter>AI\AMonsters\common\monster states\Controlled</Filter>
+      <Filter>AI\Monsters\common\monster states\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_controlled_attack.h">
-      <Filter>AI\AMonsters\common\monster states\Controlled</Filter>
+      <Filter>AI\Monsters\common\monster states\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_controlled_attack_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Controlled</Filter>
+      <Filter>AI\Monsters\common\monster states\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_controlled_follow.h">
-      <Filter>AI\AMonsters\common\monster states\Controlled</Filter>
+      <Filter>AI\Monsters\common\monster states\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_controlled_follow_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Controlled</Filter>
+      <Filter>AI\Monsters\common\monster states\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_controlled_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Controlled</Filter>
+      <Filter>AI\Monsters\common\monster states\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_home_point_attack.h">
-      <Filter>AI\AMonsters\common\monster states\Home Point</Filter>
+      <Filter>AI\Monsters\common\monster states\Home Point</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_home_point_attack_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Home Point</Filter>
+      <Filter>AI\Monsters\common\monster states\Home Point</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_home_point_danger.h">
-      <Filter>AI\AMonsters\common\monster states\Home Point</Filter>
+      <Filter>AI\Monsters\common\monster states\Home Point</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_home_point_danger_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Home Point</Filter>
+      <Filter>AI\Monsters\common\monster states\Home Point</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_home_point_rest.h">
-      <Filter>AI\AMonsters\common\monster states\Home Point</Filter>
+      <Filter>AI\Monsters\common\monster states\Home Point</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_home_point_rest_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Home Point</Filter>
+      <Filter>AI\Monsters\common\monster states\Home Point</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_help_sound.h">
-      <Filter>AI\AMonsters\common\monster states\Help Sound</Filter>
+      <Filter>AI\Monsters\common\monster states\Help Sound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_help_sound_inline.h">
-      <Filter>AI\AMonsters\common\monster states\Help Sound</Filter>
+      <Filter>AI\Monsters\common\monster states\Help Sound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_smart_terrain_task.h">
-      <Filter>AI\AMonsters\common\monster states\ALife</Filter>
+      <Filter>AI\Monsters\common\monster states\ALife</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_smart_terrain_task_graph_walk.h">
-      <Filter>AI\AMonsters\common\monster states\ALife</Filter>
+      <Filter>AI\Monsters\common\monster states\ALife</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_smart_terrain_task_graph_walk_inline.h">
-      <Filter>AI\AMonsters\common\monster states\ALife</Filter>
+      <Filter>AI\Monsters\common\monster states\ALife</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\States\monster_state_smart_terrain_task_inline.h">
-      <Filter>AI\AMonsters\common\monster states\ALife</Filter>
+      <Filter>AI\Monsters\common\monster states\ALife</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_defs.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_shared_data.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_utils.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_corpse_manager.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_enemy_manager.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_sound_defs.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_velocity_space.h">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_bones.h">
-      <Filter>AI\AMonsters\common\components\Bones</Filter>
+      <Filter>AI\Monsters\common\components\Bones</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_corpse_memory.h">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_enemy_memory.h">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_hit_memory.h">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_sound_memory.h">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_state_manager.h">
-      <Filter>AI\AMonsters\common\components\State</Filter>
+      <Filter>AI\Monsters\common\components\State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_state_manager_inline.h">
-      <Filter>AI\AMonsters\common\components\State</Filter>
+      <Filter>AI\Monsters\common\components\State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\state.h">
-      <Filter>AI\AMonsters\common\components\State</Filter>
+      <Filter>AI\Monsters\common\components\State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\state_defs.h">
-      <Filter>AI\AMonsters\common\components\State</Filter>
+      <Filter>AI\Monsters\common\components\State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\state_inline.h">
-      <Filter>AI\AMonsters\common\components\State</Filter>
+      <Filter>AI\Monsters\common\components\State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\state_manager.h">
-      <Filter>AI\AMonsters\common\components\State</Filter>
+      <Filter>AI\Monsters\common\components\State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_squad.h">
-      <Filter>AI\AMonsters\common\components\Squad</Filter>
+      <Filter>AI\Monsters\common\components\Squad</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_squad_manager.h">
-      <Filter>AI\AMonsters\common\components\Squad\Squad Manager</Filter>
+      <Filter>AI\Monsters\common\components\Squad\Squad Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_squad_manager_inline.h">
-      <Filter>AI\AMonsters\common\components\Squad\Squad Manager</Filter>
+      <Filter>AI\Monsters\common\components\Squad\Squad Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\ai_monster_motion_stats.h">
-      <Filter>AI\AMonsters\common\components\Motion Stats</Filter>
+      <Filter>AI\Monsters\common\components\Motion Stats</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\corpse_cover.h">
-      <Filter>AI\AMonsters\common\components\Cover</Filter>
+      <Filter>AI\Monsters\common\components\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\telekinesis.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\telekinetic_object.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
     <ClInclude Include="TeleWhirlwind.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Telekinesis</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\invisibility.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Invisibility</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Invisibility</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\scanning_ability.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Scan</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Scan</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\scanning_ability_inline.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Scan</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Scan</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\controlled_entity.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Controlled</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\controlled_entity_inline.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Controlled</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Controlled</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\psy_aura.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Psy Aura</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Psy Aura</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\energy_holder.h">
-      <Filter>AI\AMonsters\common\components\Abilities\Energy Holder</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Energy Holder</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_event_manager.h">
-      <Filter>AI\AMonsters\common\components\Event Handler</Filter>
+      <Filter>AI\Monsters\common\components\Event Handler</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_event_manager_defs.h">
-      <Filter>AI\AMonsters\common\components\Event Handler</Filter>
+      <Filter>AI\Monsters\common\components\Event Handler</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\melee_checker.h">
-      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
+      <Filter>AI\Monsters\common\components\Melee Checker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\melee_checker_inline.h">
-      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
+      <Filter>AI\Monsters\common\components\Melee Checker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_morale.h">
-      <Filter>AI\AMonsters\common\components\Morale</Filter>
+      <Filter>AI\Monsters\common\components\Morale</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_morale_inline.h">
-      <Filter>AI\AMonsters\common\components\Morale</Filter>
+      <Filter>AI\Monsters\common\components\Morale</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\controlled_actor.h">
-      <Filter>AI\AMonsters\common\components\Actor Controller</Filter>
+      <Filter>AI\Monsters\common\components\Actor Controller</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_com_defs.h">
-      <Filter>AI\AMonsters\common\components\Control Manager</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_combase.h">
-      <Filter>AI\AMonsters\common\components\Control Manager</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_manager.h">
-      <Filter>AI\AMonsters\common\components\Control Manager</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_manager_custom.h">
-      <Filter>AI\AMonsters\common\components\Control Manager</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_animation.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Animation</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_direction.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Direction</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Direction</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_path_builder.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Path Builder</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_movement.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Movement</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_animation_base.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Animation</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_direction_base.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Direction</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Direction</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_path_builder_base.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_path_builder_base_inline.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_movement_base.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Movement</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Movement</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_sequencer.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Sequencer</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Sequencer</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_melee_jump.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_rotation_jump.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\anim_triple.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Triple Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Triple Animation</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_jump.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Jump</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Jump</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_run_attack.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Run Attack</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Run Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_threaten.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Threaten</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\control_critical_wound.h">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\CriticalWound</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\CriticalWound</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\anomaly_detector.h">
-      <Filter>AI\AMonsters\common\components\Anomaly Detector</Filter>
+      <Filter>AI\Monsters\common\components\Anomaly Detector</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_cover_manager.h">
-      <Filter>AI\AMonsters\common\components\Cover Manager</Filter>
+      <Filter>AI\Monsters\common\components\Cover Manager</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\monster_home.h">
-      <Filter>AI\AMonsters\common\components\Home</Filter>
+      <Filter>AI\Monsters\common\components\Home</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_effector.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_approach.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_approach_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_execute.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_execute_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_hide.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_hide_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Vampire State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Vampire State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_alien.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Predator State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Predator State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Predator State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Predator State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator_lite.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Predator State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Predator State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_predator_lite_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Predator State</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Predator State</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_hide_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_inline.h">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Boar\boar.h">
-      <Filter>AI\AMonsters\monsters\Boar</Filter>
+      <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Boar\boar_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Boar</Filter>
+      <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClInclude>
     <ClInclude Include="AI\Crow\ai_crow.h">
-      <Filter>AI\AMonsters\monsters\Crow</Filter>
+      <Filter>AI\Monsters\monsters\Crow</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Flesh\flesh.h">
-      <Filter>AI\AMonsters\monsters\Flesh</Filter>
+      <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Flesh\flesh_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Flesh</Filter>
+      <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\pseudodog.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\pseudodog_state_manager.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_aura.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_manager.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_psy_attack.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_psy_attack_hide.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_psy_attack_hide_inline.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_psy_attack_inline.h">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer.h">
-      <Filter>AI\AMonsters\monsters\Burer</Filter>
+      <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Burer</Filter>
+      <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_gravi.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_gravi_inline.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_inline.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_melee.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_melee_inline.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_run_around.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_run_around_inline.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_tele.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_attack_tele_inline.h">
-      <Filter>AI\AMonsters\monsters\Burer\Attack</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_fast_gravi.h">
-      <Filter>AI\AMonsters\monsters\Burer\Fast Gravi</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Fast Gravi</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera.h">
-      <Filter>AI\AMonsters\monsters\Chimera</Filter>
+      <Filter>AI\Monsters\monsters\Chimera</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Chimera</Filter>
+      <Filter>AI\Monsters\monsters\Chimera</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_roar.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_roar_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_steal.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_steal_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_walk.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_threaten_walk_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state threaten</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state threaten</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state hunting</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting_come_out.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state hunting</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting_come_out_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state hunting</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state hunting</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting_move_to_cover.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state hunting</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_hunting_move_to_cover_inline.h">
-      <Filter>AI\AMonsters\monsters\Chimera\state hunting</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\state hunting</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\PseudoGigant\pseudo_gigant.h">
-      <Filter>AI\AMonsters\monsters\PseudoGigant</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\PseudoGigant\pseudo_gigant_step_effector.h">
-      <Filter>AI\AMonsters\monsters\PseudoGigant</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\PseudoGigant\pseudogigant_state_manager.h">
-      <Filter>AI\AMonsters\monsters\PseudoGigant</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist.h">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_movement.h">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_rest.h">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_attack_hidden.h">
-      <Filter>AI\AMonsters\monsters\Poltergeist\Hidden Attack</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist\Hidden Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_attack_hidden_inline.h">
-      <Filter>AI\AMonsters\monsters\Poltergeist\Hidden Attack</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist\Hidden Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Zombie\Zombie.h">
-      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+      <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Zombie\StateManagerZombie.h">
-      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+      <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Fracture\fracture.h">
-      <Filter>AI\AMonsters\monsters\Fracture</Filter>
+      <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Fracture\fracture_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Fracture</Filter>
+      <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Snork\snork.h">
-      <Filter>AI\AMonsters\monsters\Snork</Filter>
+      <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Snork\snork_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Snork</Filter>
+      <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Snork\snork_jump.h">
-      <Filter>AI\AMonsters\monsters\Snork\Special Jump</Filter>
+      <Filter>AI\Monsters\monsters\Snork\Special Jump</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller.h">
-      <Filter>AI\AMonsters\monsters\Controller</Filter>
+      <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_psy_aura.h">
-      <Filter>AI\AMonsters\monsters\Controller</Filter>
+      <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Controller</Filter>
+      <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_fast_move.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_fast_move_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_control_hit.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_control_hit_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_tube.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_tube_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_camp.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_camp_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_fire.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_fire_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_hide.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_hide_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_hide_lite.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_hide_lite_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_moveout.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_attack_moveout_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Attack\Cover</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Attack\Cover</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_state_panic.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Panic</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Panic</Filter>
     </ClInclude>
     <ClInclude Include="controller_state_panic_inline.h">
-      <Filter>AI\AMonsters\monsters\Controller\State Panic</Filter>
+      <Filter>AI\Monsters\monsters\Controller\State Panic</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_animation.h">
-      <Filter>AI\AMonsters\monsters\Controller\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Base Controllers\Animation</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_direction.h">
-      <Filter>AI\AMonsters\monsters\Controller\Base Controllers\Direction</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Base Controllers\Direction</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_psy_hit.h">
-      <Filter>AI\AMonsters\monsters\Controller\Psy hit</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Psy hit</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Cat\cat.h">
-      <Filter>AI\AMonsters\monsters\Cat</Filter>
+      <Filter>AI\Monsters\monsters\Cat</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Cat\cat_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Cat</Filter>
+      <Filter>AI\Monsters\monsters\Cat</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Tushkano\tushkano.h">
-      <Filter>AI\AMonsters\monsters\Tushkano</Filter>
+    <ClInclude Include="ai\Monsters\Tushkano\Tushkano.h">
+      <Filter>AI\Monsters\monsters\Tushkano</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Tushkano\tushkano_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Tushkano</Filter>
+    <ClInclude Include="ai\Monsters\Tushkano\StateManagerTushkano.h">
+      <Filter>AI\Monsters\monsters\Tushkano</Filter>
     </ClInclude>
     <ClInclude Include="ai\phantom\phantom.h">
-      <Filter>AI\AMonsters\monsters\Phantom</Filter>
+      <Filter>AI\Monsters\monsters\Phantom</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Dog\dog.h">
-      <Filter>AI\AMonsters\monsters\Dog</Filter>
+      <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Dog\dog_state_manager.h">
-      <Filter>AI\AMonsters\monsters\Dog</Filter>
+      <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClInclude>
     <ClInclude Include="Ai\Trader\ai_trader.h">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\Monsters\humans\trader</Filter>
     </ClInclude>
     <ClInclude Include="ai\trader\trader_animation.h">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\Monsters\humans\trader</Filter>
     </ClInclude>
     <ClInclude Include="Ai\Stalker\ai_stalker.h">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
+      <Filter>AI\Monsters\humans\stalker</Filter>
     </ClInclude>
     <ClInclude Include="ai\stalker\ai_stalker_impl.h">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
+      <Filter>AI\Monsters\humans\stalker</Filter>
     </ClInclude>
     <ClInclude Include="ai\stalker\ai_stalker_inline.h">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
+      <Filter>AI\Monsters\humans\stalker</Filter>
     </ClInclude>
     <ClInclude Include="Ai\Stalker\ai_stalker_space.h">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
+      <Filter>AI\Monsters\humans\stalker</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_manager.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_manager_impl.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_manager_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_data_storage.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\data_storage</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_data_storage_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\data_storage</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_data.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage\data</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\data_storage\data</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_names.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\names</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\names</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_pair.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\pair</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\pair</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_pair_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\pair</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\pair</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_script.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\script</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\script</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_script_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\script</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\script</Filter>
     </ClInclude>
     <ClInclude Include="stalker_animation_state.h">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\state</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\state</Filter>
     </ClInclude>
     <ClInclude Include="cover_evaluators.h">
-      <Filter>AI\AMonsters\humans\stalker\CoverEvaluators</Filter>
+      <Filter>AI\Monsters\humans\stalker\CoverEvaluators</Filter>
     </ClInclude>
     <ClInclude Include="cover_evaluators_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\CoverEvaluators</Filter>
+      <Filter>AI\Monsters\humans\stalker\CoverEvaluators</Filter>
     </ClInclude>
     <ClInclude Include="stalker_decision_space.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker</Filter>
     </ClInclude>
     <ClInclude Include="stalker_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker</Filter>
     </ClInclude>
     <ClInclude Include="stalker_planner_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker</Filter>
     </ClInclude>
     <ClInclude Include="stalker_base_action.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_alife_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\alife</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\alife</Filter>
     </ClInclude>
     <ClInclude Include="stalker_alife_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\alife\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\alife\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_alife_task_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\alife\task_actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\alife\task_actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_anomaly_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\anomaly</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\anomaly</Filter>
     </ClInclude>
     <ClInclude Include="stalker_anomaly_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\anomaly\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\anomaly\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_combat_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat</Filter>
     </ClInclude>
     <ClInclude Include="stalker_combat_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_combat_action_base.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\actions\base</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\actions\base</Filter>
     </ClInclude>
     <ClInclude Include="stalker_kill_wounded_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded</Filter>
     </ClInclude>
     <ClInclude Include="stalker_kill_wounded_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_unknown_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_unknown_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_in_direction_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_in_direction_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_grenade_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_grenade_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_by_sound_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_by_sound_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_danger_property_evaluators.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\properties</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\properties</Filter>
     </ClInclude>
     <ClInclude Include="stalker_death_planner.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\death</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\death</Filter>
     </ClInclude>
     <ClInclude Include="stalker_death_actions.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\death\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\death\actions</Filter>
     </ClInclude>
     <ClInclude Include="stalker_property_evaluators.h">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\properties</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\properties</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_manager.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_manager_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_manager_space.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_params.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\params</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\params</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_params_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\params</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\params</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_restriction.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\restriction</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\restriction</Filter>
     </ClInclude>
     <ClInclude Include="stalker_movement_restriction_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\restriction</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\restriction</Filter>
     </ClInclude>
     <ClInclude Include="stalker_velocity_collection.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_collection</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\velocity_collection</Filter>
     </ClInclude>
     <ClInclude Include="stalker_velocity_collection_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_collection</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\velocity_collection</Filter>
     </ClInclude>
     <ClInclude Include="stalker_velocity_holder.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_holder</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\velocity_holder</Filter>
     </ClInclude>
     <ClInclude Include="stalker_velocity_holder_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_holder</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\velocity_holder</Filter>
     </ClInclude>
     <ClInclude Include="stalker_sound_data_visitor.h">
-      <Filter>AI\AMonsters\humans\stalker\SoundDataVisitor</Filter>
+      <Filter>AI\Monsters\humans\stalker\SoundDataVisitor</Filter>
     </ClInclude>
     <ClInclude Include="stalker_sound_data_visitor_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\SoundDataVisitor</Filter>
+      <Filter>AI\Monsters\humans\stalker\SoundDataVisitor</Filter>
     </ClInclude>
     <ClInclude Include="stalker_sound_data.h">
-      <Filter>AI\AMonsters\humans\stalker\SoundUserData</Filter>
+      <Filter>AI\Monsters\humans\stalker\SoundUserData</Filter>
     </ClInclude>
     <ClInclude Include="stalker_sound_data_inline.h">
-      <Filter>AI\AMonsters\humans\stalker\SoundUserData</Filter>
+      <Filter>AI\Monsters\humans\stalker\SoundUserData</Filter>
     </ClInclude>
     <ClInclude Include="game_graph.h">
       <Filter>AI\ANavigation\GameGraph</Filter>
@@ -5971,10 +5968,10 @@
       <Filter>UI\GameTypes\Single</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun.h">
-      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+      <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h">
-      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+      <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6357,562 +6354,559 @@
       <Filter>AI\ALife\saved_game_wrapper</Filter>
     </ClCompile>
     <ClCompile Include="CustomMonster.cpp">
-      <Filter>AI\AMonsters\common\custom</Filter>
+      <Filter>AI\Monsters\common\custom</Filter>
     </ClCompile>
     <ClCompile Include="CustomMonster_VCPU.cpp">
-      <Filter>AI\AMonsters\common\custom</Filter>
+      <Filter>AI\Monsters\common\custom</Filter>
     </ClCompile>
     <ClCompile Include="AI\ai_monsters_misc.cpp">
-      <Filter>AI\AMonsters\common\miscellaneous</Filter>
+      <Filter>AI\Monsters\common\miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="script_binder.cpp">
-      <Filter>AI\AMonsters\common\script\script_binder</Filter>
+      <Filter>AI\Monsters\common\script\script_binder</Filter>
     </ClCompile>
     <ClCompile Include="script_entity.cpp">
-      <Filter>AI\AMonsters\common\script\script_entity</Filter>
+      <Filter>AI\Monsters\common\script\script_entity</Filter>
     </ClCompile>
     <ClCompile Include="script_object.cpp">
-      <Filter>AI\AMonsters\common\script\script_object</Filter>
+      <Filter>AI\Monsters\common\script\script_object</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_anim.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_debug.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_feel.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_misc.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_net.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_path.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_script.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_startup.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\BaseMonster\base_monster_think.cpp">
-      <Filter>AI\AMonsters\common\base monster</Filter>
+      <Filter>AI\Monsters\common\base monster</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_utils.cpp">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_corpse_manager.cpp">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_enemy_manager.cpp">
-      <Filter>AI\AMonsters\common\components</Filter>
+      <Filter>AI\Monsters\common\components</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_bones.cpp">
-      <Filter>AI\AMonsters\common\components\Bones</Filter>
+      <Filter>AI\Monsters\common\components\Bones</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_corpse_memory.cpp">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_enemy_memory.cpp">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_hit_memory.cpp">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_sound_memory.cpp">
-      <Filter>AI\AMonsters\common\components\Memory</Filter>
+      <Filter>AI\Monsters\common\components\Memory</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_squad.cpp">
-      <Filter>AI\AMonsters\common\components\Squad</Filter>
+      <Filter>AI\Monsters\common\components\Squad</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_squad_attack.cpp">
-      <Filter>AI\AMonsters\common\components\Squad</Filter>
+      <Filter>AI\Monsters\common\components\Squad</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_squad_rest.cpp">
-      <Filter>AI\AMonsters\common\components\Squad</Filter>
+      <Filter>AI\Monsters\common\components\Squad</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_squad_manager.cpp">
-      <Filter>AI\AMonsters\common\components\Squad\Squad Manager</Filter>
+      <Filter>AI\Monsters\common\components\Squad\Squad Manager</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\ai_monster_motion_stats.cpp">
-      <Filter>AI\AMonsters\common\components\Motion Stats</Filter>
+      <Filter>AI\Monsters\common\components\Motion Stats</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\corpse_cover.cpp">
-      <Filter>AI\AMonsters\common\components\Cover</Filter>
+      <Filter>AI\Monsters\common\components\Cover</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\telekinesis.cpp">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Telekinesis</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\telekinetic_object.cpp">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Telekinesis</Filter>
     </ClCompile>
     <ClCompile Include="TeleWhirlwind.cpp">
-      <Filter>AI\AMonsters\common\components\Abilities\Telekinesis</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Telekinesis</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\invisibility.cpp">
-      <Filter>AI\AMonsters\common\components\Abilities\Invisibility</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Invisibility</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\psy_aura.cpp">
-      <Filter>AI\AMonsters\common\components\Abilities\Psy Aura</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Psy Aura</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\energy_holder.cpp">
-      <Filter>AI\AMonsters\common\components\Abilities\Energy Holder</Filter>
+      <Filter>AI\Monsters\common\components\Abilities\Energy Holder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_event_manager.cpp">
-      <Filter>AI\AMonsters\common\components\Event Handler</Filter>
+      <Filter>AI\Monsters\common\components\Event Handler</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\melee_checker.cpp">
-      <Filter>AI\AMonsters\common\components\Melee Checker</Filter>
+      <Filter>AI\Monsters\common\components\Melee Checker</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_morale.cpp">
-      <Filter>AI\AMonsters\common\components\Morale</Filter>
+      <Filter>AI\Monsters\common\components\Morale</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\controlled_actor.cpp">
-      <Filter>AI\AMonsters\common\components\Actor Controller</Filter>
+      <Filter>AI\Monsters\common\components\Actor Controller</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_manager.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_manager_custom.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_animation.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_direction.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Direction</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Direction</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_path_builder.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Path Builder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_movement.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Pure Coms\Movement</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Pure Coms\Movement</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_animation_base.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_animation_base_accel.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_animation_base_load.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_animation_base_update.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_direction_base.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Direction</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Direction</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_path_builder_base.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_path_builder_base_path.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_path_builder_base_set.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_path_builder_base_update.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Path Builder</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_movement_base.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Base Controllers\Movement</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Base Controllers\Movement</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_sequencer.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Sequencer</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Sequencer</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_melee_jump.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_rotation_jump.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Rotation Jump</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\anim_triple.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Triple Animation</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Triple Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_jump.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Jump</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Jump</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_run_attack.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Run Attack</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Run Attack</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_threaten.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\Threaten</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\Threaten</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\control_critical_wound.cpp">
-      <Filter>AI\AMonsters\common\components\Control Manager\Custom\CriticalWound</Filter>
+      <Filter>AI\Monsters\common\components\Control Manager\Custom\CriticalWound</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\anomaly_detector.cpp">
-      <Filter>AI\AMonsters\common\components\Anomaly Detector</Filter>
+      <Filter>AI\Monsters\common\components\Anomaly Detector</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_cover_manager.cpp">
-      <Filter>AI\AMonsters\common\components\Cover Manager</Filter>
+      <Filter>AI\Monsters\common\components\Cover Manager</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\monster_home.cpp">
-      <Filter>AI\AMonsters\common\components\Home</Filter>
+      <Filter>AI\Monsters\common\components\Home</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker.cpp">
-      <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_effector.cpp">
-      <Filter>AI\AMonsters\monsters\Bloodsucker</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_script.cpp">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Script</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_alien.cpp">
-      <Filter>AI\AMonsters\monsters\Bloodsucker\Alien Feature</Filter>
+      <Filter>AI\Monsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Boar\boar.cpp">
-      <Filter>AI\AMonsters\monsters\Boar</Filter>
+      <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Boar\boar_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Boar</Filter>
+      <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Boar\boar_script.cpp">
-      <Filter>AI\AMonsters\monsters\Boar\Script</Filter>
+      <Filter>AI\Monsters\monsters\Boar\Script</Filter>
     </ClCompile>
     <ClCompile Include="AI\Crow\ai_crow.cpp">
-      <Filter>AI\AMonsters\monsters\Crow</Filter>
+      <Filter>AI\Monsters\monsters\Crow</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Flesh\flesh.cpp">
-      <Filter>AI\AMonsters\monsters\Flesh</Filter>
+      <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Flesh\flesh_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Flesh</Filter>
+      <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Flesh\flesh_script.cpp">
-      <Filter>AI\AMonsters\monsters\Flesh\Script</Filter>
+      <Filter>AI\Monsters\monsters\Flesh\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoDog</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoDog</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\psy_dog.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\psy_dog_aura.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\psy_dog_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoDog\DogPsy</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_script.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoDog\Script</Filter>
+      <Filter>AI\Monsters\monsters\PseudoDog\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\burer.cpp">
-      <Filter>AI\AMonsters\monsters\Burer</Filter>
+      <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\burer_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Burer</Filter>
+      <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\burer_script.cpp">
-      <Filter>AI\AMonsters\monsters\Burer\Script</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\burer_fast_gravi.cpp">
-      <Filter>AI\AMonsters\monsters\Burer\Fast Gravi</Filter>
+      <Filter>AI\Monsters\monsters\Burer\Fast Gravi</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Chimera\chimera.cpp">
-      <Filter>AI\AMonsters\monsters\Chimera</Filter>
+      <Filter>AI\Monsters\monsters\Chimera</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Chimera\chimera_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Chimera</Filter>
+      <Filter>AI\Monsters\monsters\Chimera</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Chimera\chimera_script.cpp">
-      <Filter>AI\AMonsters\monsters\Chimera\Script</Filter>
+      <Filter>AI\Monsters\monsters\Chimera\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\PseudoGigant\pseudo_gigant.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoGigant</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\PseudoGigant\pseudo_gigant_step_effector.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoGigant</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\PseudoGigant\pseudogigant_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoGigant</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\PseudoGigant\pseudogigant_script.cpp">
-      <Filter>AI\AMonsters\monsters\PseudoGigant\Script</Filter>
+      <Filter>AI\Monsters\monsters\PseudoGigant\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_movement.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_script.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist\Script</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_ability.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist\Abilities</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist\Abilities</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_flame_thrower.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist\Abilities</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist\Abilities</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_telekinesis.cpp">
-      <Filter>AI\AMonsters\monsters\Poltergeist\Abilities</Filter>
+      <Filter>AI\Monsters\monsters\Poltergeist\Abilities</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Zombie\Zombie.cpp">
-      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+      <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp">
-      <Filter>AI\AMonsters\monsters\Zombie</Filter>
+      <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Fracture\fracture.cpp">
-      <Filter>AI\AMonsters\monsters\Fracture</Filter>
+      <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Fracture\fracture_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Fracture</Filter>
+      <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Fracture\fracture_script.cpp">
-      <Filter>AI\AMonsters\monsters\Fracture\Script</Filter>
+      <Filter>AI\Monsters\monsters\Fracture\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Snork\snork.cpp">
-      <Filter>AI\AMonsters\monsters\Snork</Filter>
+      <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Snork\snork_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Snork</Filter>
+      <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Snork\snork_jump.cpp">
-      <Filter>AI\AMonsters\monsters\Snork\Special Jump</Filter>
+      <Filter>AI\Monsters\monsters\Snork\Special Jump</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Snork\snork_script.cpp">
-      <Filter>AI\AMonsters\monsters\Snork\Script</Filter>
+      <Filter>AI\Monsters\monsters\Snork\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller.cpp">
-      <Filter>AI\AMonsters\monsters\Controller</Filter>
+      <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_psy_aura.cpp">
-      <Filter>AI\AMonsters\monsters\Controller</Filter>
+      <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Controller</Filter>
+      <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_script.cpp">
-      <Filter>AI\AMonsters\monsters\Controller\Script</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_animation.cpp">
-      <Filter>AI\AMonsters\monsters\Controller\Base Controllers\Animation</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Base Controllers\Animation</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_direction.cpp">
-      <Filter>AI\AMonsters\monsters\Controller\Base Controllers\Direction</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Base Controllers\Direction</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_psy_hit.cpp">
-      <Filter>AI\AMonsters\monsters\Controller\Psy hit</Filter>
+      <Filter>AI\Monsters\monsters\Controller\Psy hit</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Cat\cat.cpp">
-      <Filter>AI\AMonsters\monsters\Cat</Filter>
+      <Filter>AI\Monsters\monsters\Cat</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Cat\cat_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Cat</Filter>
+      <Filter>AI\Monsters\monsters\Cat</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Cat\cat_script.cpp">
-      <Filter>AI\AMonsters\monsters\Cat\Script</Filter>
+      <Filter>AI\Monsters\monsters\Cat\Script</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Tushkano\tushkano.cpp">
-      <Filter>AI\AMonsters\monsters\Tushkano</Filter>
+    <ClCompile Include="ai\Monsters\Tushkano\Tushkano.cpp">
+      <Filter>AI\Monsters\monsters\Tushkano</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Tushkano\tushkano_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Tushkano</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Tushkano\tushkano_script.cpp">
-      <Filter>AI\AMonsters\monsters\Tushkano\Script</Filter>
+    <ClCompile Include="ai\Monsters\Tushkano\StateManagerTushkano.cpp">
+      <Filter>AI\Monsters\monsters\Tushkano</Filter>
     </ClCompile>
     <ClCompile Include="ai\phantom\phantom.cpp">
-      <Filter>AI\AMonsters\monsters\Phantom</Filter>
+      <Filter>AI\Monsters\monsters\Phantom</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Dog\dog.cpp">
-      <Filter>AI\AMonsters\monsters\Dog</Filter>
+      <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Dog\dog_state_manager.cpp">
-      <Filter>AI\AMonsters\monsters\Dog</Filter>
+      <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Dog\dog_script.cpp">
-      <Filter>AI\AMonsters\monsters\Dog\Script</Filter>
+      <Filter>AI\Monsters\monsters\Dog\Script</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Trader\ai_trader.cpp">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\Monsters\humans\trader</Filter>
     </ClCompile>
     <ClCompile Include="ai\trader\trader_animation.cpp">
-      <Filter>AI\AMonsters\humans\trader</Filter>
+      <Filter>AI\Monsters\humans\trader</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
+      <Filter>AI\Monsters\humans\stalker</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker_script.cpp">
-      <Filter>AI\AMonsters\humans\stalker</Filter>
+      <Filter>AI\Monsters\humans\stalker</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_callbacks.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_global.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_head.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_legs.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_manager.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_manager_debug.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_manager_update.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_script.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_torso.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_data_storage.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\data_storage</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_data.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\data_storage\data</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\data_storage\data</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_names.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\names</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\names</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_pair.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\pair</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\pair</Filter>
     </ClCompile>
     <ClCompile Include="stalker_animation_state.cpp">
-      <Filter>AI\AMonsters\humans\stalker\AnimationManager\state</Filter>
+      <Filter>AI\Monsters\humans\stalker\AnimationManager\state</Filter>
     </ClCompile>
     <ClCompile Include="cover_evaluators.cpp">
-      <Filter>AI\AMonsters\humans\stalker\CoverEvaluators</Filter>
+      <Filter>AI\Monsters\humans\stalker\CoverEvaluators</Filter>
     </ClCompile>
     <ClCompile Include="stalker_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker</Filter>
     </ClCompile>
     <ClCompile Include="stalker_base_action.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_alife_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\alife</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\alife</Filter>
     </ClCompile>
     <ClCompile Include="stalker_alife_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\alife\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\alife\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_alife_task_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\alife\task_actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\alife\task_actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_anomaly_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\anomaly</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\anomaly</Filter>
     </ClCompile>
     <ClCompile Include="stalker_anomaly_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\anomaly\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\anomaly\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_combat_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat</Filter>
     </ClCompile>
     <ClCompile Include="stalker_combat_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_combat_action_base.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\actions\base</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\actions\base</Filter>
     </ClCompile>
     <ClCompile Include="stalker_kill_wounded_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded</Filter>
     </ClCompile>
     <ClCompile Include="stalker_kill_wounded_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\combat\kill_wounded\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_unknown_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_unknown_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\unknown\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_in_direction_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_in_direction_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\in_direction\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_grenade_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_grenade_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\grenade\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_by_sound_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_by_sound_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\actions\by_sound\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_danger_property_evaluators.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\danger\properties</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\danger\properties</Filter>
     </ClCompile>
     <ClCompile Include="stalker_death_planner.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\death</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\death</Filter>
     </ClCompile>
     <ClCompile Include="stalker_death_actions.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\actions\death\actions</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\actions\death\actions</Filter>
     </ClCompile>
     <ClCompile Include="stalker_property_evaluators.cpp">
-      <Filter>AI\AMonsters\humans\stalker\DecisionMaker\properties</Filter>
+      <Filter>AI\Monsters\humans\stalker\DecisionMaker\properties</Filter>
     </ClCompile>
     <ClCompile Include="stalker_movement_manager.cpp">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager</Filter>
     </ClCompile>
     <ClCompile Include="stalker_velocity_collection.cpp">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_collection</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\velocity_collection</Filter>
     </ClCompile>
     <ClCompile Include="stalker_velocity_holder.cpp">
-      <Filter>AI\AMonsters\humans\stalker\MovementManager\velocity_holder</Filter>
+      <Filter>AI\Monsters\humans\stalker\MovementManager\velocity_holder</Filter>
     </ClCompile>
     <ClCompile Include="ai_stalker_alife.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="ai\stalker\ai_stalker_cover.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="ai\stalker\ai_stalker_debug.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker_events.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker_feel.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker_fire.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker_misc.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="ai\stalker\ai_stalker_script_entity.cpp">
-      <Filter>AI\AMonsters\humans\stalker\Miscellaneous</Filter>
+      <Filter>AI\Monsters\humans\stalker\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="stalker_sound_data_visitor.cpp">
-      <Filter>AI\AMonsters\humans\stalker\SoundDataVisitor</Filter>
+      <Filter>AI\Monsters\humans\stalker\SoundDataVisitor</Filter>
     </ClCompile>
     <ClCompile Include="stalker_sound_data.cpp">
-      <Filter>AI\AMonsters\humans\stalker\SoundUserData</Filter>
+      <Filter>AI\Monsters\humans\stalker\SoundUserData</Filter>
     </ClCompile>
     <ClCompile Include="game_graph_script.cpp">
       <Filter>AI\ANavigation\GameGraph</Filter>

@@ -35,7 +35,7 @@
 #	include "ai/monsters/fracture/fracture.h"
 #	include "ai/monsters/snork/snork.h"
 #	include "ai/monsters/cat/cat.h"
-#	include "ai/monsters/tushkano/tushkano.h"
+#	include "ai/monsters/Tushkano/Tushkano.h"
 
 #	include "ai/phantom/phantom.h"
 

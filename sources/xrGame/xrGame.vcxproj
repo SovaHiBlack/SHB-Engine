@@ -488,8 +488,8 @@
     <ClInclude Include="ai\Monsters\state_manager.h" />
     <ClInclude Include="ai\Monsters\telekinesis.h" />
     <ClInclude Include="ai\Monsters\telekinetic_object.h" />
-    <ClInclude Include="ai\Monsters\Tushkano\tushkano.h" />
-    <ClInclude Include="ai\Monsters\Tushkano\tushkano_state_manager.h" />
+    <ClInclude Include="ai\Monsters\Tushkano\Tushkano.h" />
+    <ClInclude Include="ai\Monsters\Tushkano\StateManagerTushkano.h" />
     <ClInclude Include="ai\Monsters\Zombie\Zombie.h" />
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun.h" />
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h" />
@@ -1623,9 +1623,8 @@
     <ClCompile Include="ai\Monsters\Snork\snork_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\telekinesis.cpp" />
     <ClCompile Include="ai\Monsters\telekinetic_object.cpp" />
-    <ClCompile Include="ai\Monsters\Tushkano\tushkano.cpp" />
-    <ClCompile Include="ai\Monsters\Tushkano\tushkano_script.cpp" />
-    <ClCompile Include="ai\Monsters\Tushkano\tushkano_state_manager.cpp" />
+    <ClCompile Include="ai\Monsters\Tushkano\Tushkano.cpp" />
+    <ClCompile Include="ai\Monsters\Tushkano\StateManagerTushkano.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\Zombie.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp" />
     <ClCompile Include="ai\phantom\phantom.cpp" />
