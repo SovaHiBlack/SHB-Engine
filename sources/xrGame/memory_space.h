@@ -191,13 +191,13 @@ namespace MemorySpace
 		}
 	};
 
-	struct CMemoryInfo : public CVisibleObject
+	struct SMemoryInfo : public CVisibleObject
 	{
 		bool						m_visual_info;
 		bool						m_sound_info;
 		bool						m_hit_info;
 
-		CMemoryInfo( )
+		SMemoryInfo( )
 		{
 			m_visual_info = false;
 			m_sound_info = false;
@@ -205,9 +205,9 @@ namespace MemorySpace
 		}
 		DECLARE_SCRIPT_REGISTER_FUNCTION
 	};
-	add_to_type_list(CMemoryInfo)
+	add_to_type_list(SMemoryInfo)
 #undef script_type_list
-#define script_type_list save_type_list(CMemoryInfo)
+#define script_type_list save_type_list(SMemoryInfo)
 
 		template <typename T>
 	struct SLevelTimePredicate

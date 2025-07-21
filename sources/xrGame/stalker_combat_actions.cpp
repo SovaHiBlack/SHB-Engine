@@ -201,7 +201,7 @@ void CStalkerActionRetreatFromEnemy::execute( )
 	if (!object( ).memory( ).enemy( ).selected( ))
 		return;
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	object( ).movement( ).set_movement_type(eMovementTypeRun);
 	object( ).movement( ).set_path_type(MovementManager::ePathTypeLevelPath);
@@ -330,7 +330,7 @@ void CStalkerActionGetReadyToKill::execute( )
 //		object().movement().set_movement_type	(m_movement_type);
 //	}
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 	fVector3								position = mem_object.m_object_params.m_position;
 
 	const CCoverPoint* point = object( ).best_cover(position);
@@ -425,7 +425,7 @@ void CStalkerActionKillEnemy::execute( )
 
 	if (object( ).memory( ).enemy( ).selected( ))
 	{
-		CMemoryInfo					mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+		SMemoryInfo					mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 		if (mem_object.m_object)
 		{
@@ -484,7 +484,7 @@ void CStalkerActionTakeCover::execute( )
 
 	inherited::execute( );
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -611,7 +611,7 @@ void CStalkerActionLookOut::execute( )
 
 	inherited::execute( );
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -649,7 +649,7 @@ void CStalkerActionLookOut::execute( )
 
 	if (object( ).memory( ).enemy( ).selected( ))
 	{
-		CMemoryInfo					mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+		SMemoryInfo					mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 		if (mem_object.m_object)
 		{
@@ -696,7 +696,7 @@ void CStalkerActionHoldPosition::execute( )
 
 	inherited::execute( );
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -732,7 +732,7 @@ void CStalkerActionHoldPosition::execute( )
 
 	if (object( ).memory( ).enemy( ).selected( ))
 	{
-		CMemoryInfo					mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+		SMemoryInfo					mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 		if (mem_object.m_object)
 		{
@@ -800,7 +800,7 @@ void CStalkerActionDetourEnemy::execute( )
 
 	inherited::execute( );
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -868,7 +868,7 @@ void CStalkerActionSearchEnemy::execute( )
 
 	inherited::execute( );
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -1014,7 +1014,7 @@ void CStalkerActionGetDistance::execute( )
 	if (!object( ).memory( ).enemy( ).selected( ))
 		return;
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -1108,7 +1108,7 @@ void CStalkerActionHideFromGrenade::execute( )
 		object( ).sight( ).setup(CSightAction(SightManager::eSightTypePathDirection, true, true));
 	else
 	{
-		CMemoryInfo						mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+		SMemoryInfo						mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 		if (!mem_object.m_object)
 		{// || (!m_object->memory().visual().visible_now(object().memory().enemy().selected()) && !object().movement().path_completed())) {
@@ -1182,7 +1182,7 @@ void CStalkerActionSuddenAttack::execute( )
 	if (!object( ).memory( ).enemy( ).selected( ))
 		return;
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -1289,7 +1289,7 @@ void CStalkerActionKillEnemyIfPlayerOnThePath::execute( )
 
 	fire( );
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).enemy( ).selected( ));
 	fVector3								position = mem_object.m_object_params.m_position;
 	const CCoverPoint* point = object( ).best_cover(position);
 	if (point)

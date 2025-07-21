@@ -1547,7 +1547,6 @@
     <Xml Include="config\gameplay\tasks_yantar.xml" />
     <Xml Include="config\text\dialogs_escape_1_string.xml" />
     <Xml Include="config\text\eng\dialogs_escape_1_string.xml" />
-    <Xml Include="config\text\eng\mp_st_speechmenu.xml" />
     <Xml Include="config\text\eng\stable_bio_name.xml" />
     <Xml Include="config\text\eng\stable_dialogs.xml" />
     <Xml Include="config\text\eng\stable_dialogs_aes.xml" />
@@ -1647,7 +1646,6 @@
     <Xml Include="config\text\eng\ui_st_mp.xml" />
     <Xml Include="config\text\eng\ui_st_other.xml" />
     <Xml Include="config\text\eng\ui_st_pda.xml" />
-    <Xml Include="config\text\rus\mp_st_speechmenu.xml" />
     <Xml Include="config\text\rus\stable_bio_name.xml" />
     <Xml Include="config\text\rus\stable_dialogs.xml" />
     <Xml Include="config\text\rus\stable_dialogs_aes.xml" />

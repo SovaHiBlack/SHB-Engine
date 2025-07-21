@@ -89,11 +89,11 @@ void CWeaponMagazinedWGrenade::Load(pcstr section)
 
 	// load ammo classes SECOND (grenade_class)
 	m_ammoTypes2.clear( );
-	pcstr				S = pSettings->r_string(section, "grenade_class");
+	pcstr S = pSettings->r_string(section, "grenade_class");
 	if (S && S[0])
 	{
-		string128		_ammoItem;
-		s32				count = _GetItemCount(S);
+		string128 _ammoItem;
+		s32 count = _GetItemCount(S);
 		for (s32 it = 0; it < count; ++it)
 		{
 			_GetItem(S, it, _ammoItem);

@@ -87,7 +87,6 @@ void CActorCondition::LoadCondition(pcstr entity_section)
 
 	m_fV_Alcohol = pSettings->r_float(section, "alcohol_v");
 
-//. ???	m_fSatietyCritical			= pSettings->r_float(section,"satiety_critical");
 	m_fV_Satiety = pSettings->r_float(section, "satiety_v");
 	m_fV_SatietyPower = pSettings->r_float(section, "satiety_power_v");
 	m_fV_SatietyHealth = pSettings->r_float(section, "satiety_health_v");
@@ -98,9 +97,20 @@ void CActorCondition::LoadCondition(pcstr entity_section)
 //вычисление параметров с ходом времени
 void CActorCondition::UpdateCondition( )
 {
-	if (GodMode( ))				return;
-	if (!object( ).g_Alive( ))	return;
-	if (!object( ).Local( ) && m_object != Level( ).CurrentViewEntity( ))		return;
+	if (GodMode( ))
+	{
+		return;
+	}
+
+	if (!object( ).g_Alive( ))
+	{
+		return;
+	}
+
+	if (!object( ).Local( ) && m_object != Level( ).CurrentViewEntity( ))
+	{
+		return;
+	}
 
 	if ((object( ).mstate_real & mcAnyMove))
 	{
@@ -111,9 +121,7 @@ void CActorCondition::UpdateCondition( )
 		ConditionStand(object( ).inventory( ).TotalWeight( ) / object( ).inventory( ).GetMaxWeight( ));
 	}
 
-
 	f32 k_max_power = 1.0f;
-
 	if (true)
 	{
 		f32 weight = object( ).inventory( ).TotalWeight( );
@@ -132,7 +140,6 @@ void CActorCondition::UpdateCondition( )
 	}
 
 	SetMaxPower(GetMaxPower( ) - m_fPowerLeakSpeed * m_fDeltaTime * k_max_power);
-
 
 	m_fAlcohol += m_fV_Alcohol * m_fDeltaTime;
 	clamp(m_fAlcohol, 0.0f, 1.0f);
@@ -155,7 +162,7 @@ void CActorCondition::UpdateCondition( )
 
 	CEffectorPP* ppe = object( ).Cameras( ).GetPPEffector((EEffectorPPType)effPsyHealth);
 
-	string64			pp_sect_name;
+	string64 pp_sect_name;
 	shared_str ln = Level( ).name( );
 	strconcat(sizeof(pp_sect_name), pp_sect_name, "effector_psy_health", "_", *ln);
 	if (!pSettings->section_exist(pp_sect_name))
@@ -202,7 +209,7 @@ void CActorCondition::UpdateSatiety( )
 	//сытость увеличивает здоровье только если нет открытых ран
 	if (!m_bIsBleeding)
 	{
-		m_fDeltaHealth += CanBeHarmed( ) ? (m_fV_SatietyHealth * (m_fSatiety > 0.0f ? 1.f : -1.f) * m_fDeltaTime) : 0;
+		m_fDeltaHealth += CanBeHarmed( ) ? (m_fV_SatietyHealth * (m_fSatiety > 0.0f ? 1.0f : -1.0f) * m_fDeltaTime) : 0.0f;
 	}
 
 	//коэффициенты уменьшения восстановления силы от сытоти и радиации
@@ -214,7 +221,11 @@ void CActorCondition::UpdateSatiety( )
 
 CWound* CActorCondition::ConditionHit(SHit* pHDS)
 {
-	if (GodMode( )) return NULL;
+	if (GodMode( ))
+	{
+		return NULL;
+	}
+
 	return inherited::ConditionHit(pHDS);
 }
 
@@ -263,7 +274,9 @@ bool CActorCondition::IsCantWalkWeight( )
 
 		CCustomOutfit* outfit = m_object->GetOutfit( );
 		if (outfit)
+		{
 			max_w += outfit->m_additional_weight;
+		}
 
 		if (object( ).inventory( ).TotalWeight( ) > max_w)
 		{
@@ -271,6 +284,7 @@ bool CActorCondition::IsCantWalkWeight( )
 			return true;
 		}
 	}
+
 	m_condition_flags.set(eCantWalkWeight, FALSE);
 	return false;
 }
@@ -278,18 +292,28 @@ bool CActorCondition::IsCantWalkWeight( )
 bool CActorCondition::IsCantSprint( ) const
 {
 	if (m_fPower < m_fCantSprintPowerBegin)
+	{
 		m_bCantSprint = true;
+	}
 	else if (m_fPower > m_fCantSprintPowerEnd)
+	{
 		m_bCantSprint = false;
-	return				m_bCantSprint;
+	}
+
+	return m_bCantSprint;
 }
 
 bool CActorCondition::IsLimping( ) const
 {
 	if (m_fPower < m_fLimpingPowerBegin || GetHealth( ) < m_fLimpingHealthBegin)
+	{
 		m_bLimping = true;
+	}
 	else if (m_fPower > m_fLimpingPowerEnd && GetHealth( ) > m_fLimpingHealthEnd)
+	{
 		m_bLimping = false;
+	}
+
 	return m_bLimping;
 }
 extern bool g_bShowHudInfo;

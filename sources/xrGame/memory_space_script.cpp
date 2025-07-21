@@ -54,7 +54,7 @@ fVector3 CDangerObject__position	(const CDangerObject *self)
 }
 
 #pragma optimize("s",on)
-void CMemoryInfo::script_register(lua_State *L)
+void SMemoryInfo::script_register(lua_State *L)
 {
 	module(L)
 	[
@@ -114,10 +114,10 @@ void CMemoryInfo::script_register(lua_State *L)
 //			.def("visible",					&MemorySpace_CVisibleObject_visible)
 			,
 
-		class_<MemorySpace::CMemoryInfo,MemorySpace::CVisibleObject>("memory_info")
-			.def_readonly("visual_info",	&MemorySpace::CMemoryInfo::m_visual_info)
-			.def_readonly("sound_info",		&MemorySpace::CMemoryInfo::m_sound_info)
-			.def_readonly("hit_info",		&MemorySpace::CMemoryInfo::m_hit_info),
+		class_<MemorySpace::SMemoryInfo,MemorySpace::CVisibleObject>("memory_info")
+			.def_readonly("visual_info",	&MemorySpace::SMemoryInfo::m_visual_info)
+			.def_readonly("sound_info",		&MemorySpace::SMemoryInfo::m_sound_info)
+			.def_readonly("hit_info",		&MemorySpace::SMemoryInfo::m_hit_info),
 
 		class_<MemorySpace::CSoundObject,MemorySpace::CMemoryObject<CGameObject> >("sound_memory_object")
 			.def("type",					&MemorySpace::CSoundObject::sound_type)

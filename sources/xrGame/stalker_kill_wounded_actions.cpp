@@ -106,7 +106,7 @@ void CStalkerActionReachWounded::execute					()
 		return;
 	}
 
-	CMemoryInfo								mem_object = object().memory().memory(enemy);
+	SMemoryInfo								mem_object = object().memory().memory(enemy);
 
 	if (!mem_object.m_object) {
 		object().movement().set_movement_type	(eMovementTypeStand);

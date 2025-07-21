@@ -187,9 +187,9 @@ void CMemoryManager::update(const xr_vector<T>& objects, bool add_enemies)
 	}
 }
 
-CMemoryInfo CMemoryManager::memory(const CObject* object) const
+SMemoryInfo CMemoryManager::memory(const CObject* object) const
 {
-	CMemoryInfo						result;
+	SMemoryInfo						result;
 	if (!this->object( ).g_Alive( ))
 		return						(result);
 

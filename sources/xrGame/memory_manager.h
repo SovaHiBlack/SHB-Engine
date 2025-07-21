@@ -21,13 +21,13 @@ class CSound_UserDataVisitor;
 
 namespace MemorySpace
 {
-	struct CMemoryInfo;
+	struct SMemoryInfo;
 };
 
 class CMemoryManager
 {
 public:
-	typedef MemorySpace::CMemoryInfo						CMemoryInfo;
+	typedef MemorySpace::SMemoryInfo						MemoryInfo;
 
 protected:
 	CVisualMemoryManager* m_visual;
@@ -60,7 +60,7 @@ public:
 
 public:
 	void				enable(const CObject* object, bool enable);
-	CMemoryInfo			memory(const CObject* object) const;
+	MemoryInfo			memory(const CObject* object) const;
 	u32					memory_time(const CObject* object) const;
 	fVector3				memory_position(const CObject* object) const;
 	void				make_object_visible_somewhen(const CEntityAlive* enemy);

@@ -136,7 +136,7 @@ void CStalkerActionDangerInDirectionLookOut::execute( )
 {
 	inherited::execute( );
 
-//	CMemoryInfo							mem_object = object().memory().memory(object().memory().danger().selected()->object());
+//	SMemoryInfo							mem_object = object().memory().memory(object().memory().danger().selected()->object());
 //
 //	if (!mem_object.m_object)
 //		return;
@@ -213,7 +213,7 @@ void CStalkerActionDangerInDirectionHoldPosition::execute( )
 {
 	inherited::execute( );
 
-//	CMemoryInfo							mem_object = object().memory().memory(object().memory().danger().selected()->object());
+//	SMemoryInfo							mem_object = object().memory().memory(object().memory().danger().selected()->object());
 //
 //	if (!mem_object.m_object)
 //		return;
@@ -275,7 +275,7 @@ void CStalkerActionDangerInDirectionDetour::execute( )
 	if (!object( ).memory( ).danger( ).selected( )->object( ))
 		return;
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).danger( ).selected( )->object( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).danger( ).selected( )->object( ));
 
 	if (!mem_object.m_object)
 		return;
@@ -346,7 +346,7 @@ void CStalkerActionDangerInDirectionSearch::execute( )
 	if (!object( ).memory( ).danger( ).selected( )->object( ))
 		return;
 
-	CMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).danger( ).selected( )->object( ));
+	SMemoryInfo							mem_object = object( ).memory( ).memory(object( ).memory( ).danger( ).selected( )->object( ));
 
 	if (!mem_object.m_object)
 		return;

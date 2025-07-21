@@ -46,7 +46,7 @@ IC	CSightAction::CSightAction		(const CGameObject *object_to_look, bool torso_lo
 {
 }
 
-IC	CSightAction::CSightAction		(const CMemoryInfo *memory_object, bool torso_look) :
+IC	CSightAction::CSightAction		(const MemoryInfo*memory_object, bool torso_look) :
 	m_sight_type		(SightManager::eSightTypeObject),
 	m_torso_look		(torso_look),
 	m_path				(false),
@@ -112,7 +112,7 @@ IC	void CSightAction::set_object_to_look	(const CGameObject *object_to_look)
 	m_object_to_look	= object_to_look;
 }
 
-IC	void CSightAction::set_memory_object	(const CMemoryInfo *memory_object)
+IC	void CSightAction::set_memory_object	(const MemoryInfo* memory_object)
 {
 	m_memory_object		= memory_object;
 }

@@ -48,7 +48,6 @@ CGameFont::CGameFont(pcstr shader, pcstr texture, u32 flags)
 void CGameFont::Initialize(pcstr cShader, pcstr cTextureName)
 {
 	string_path cTexture;
-
 	pcstr _lang = pSettings->r_string("string_table", "font_prefix");
 	bool is_di = strstr(cTextureName, "ui_font_hud_01") || strstr(cTextureName, "ui_font_hud_02") || strstr(cTextureName, "ui_font_console_02");
 	if (_lang && !is_di)

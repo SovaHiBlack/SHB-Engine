@@ -1,11 +1,5 @@
-
-
 local trade_manager = {
 }
-
-
-
-
 
 function trade_init(npc, cfg)
 	printf("TRADE INIT[%s]", npc:name())
@@ -15,21 +9,23 @@ function trade_init(npc, cfg)
 
 	trade_manager[npc:id()].cfg_ltx = cfg
 	trade_manager[npc:id()].config = ini_file(cfg)
-	
+
 	-- коэфициенты покупки
 	local str = utils.cfg_get_string(trade_manager[npc:id()].config, "trader", "buy_condition", npc, true, "")
 	if str == nil then
 		abort("Incorrect trader settings. Cannot find buy_condition. [%s]->[%s]", npc:name(), cfg)
 	end
+
 	trade_manager[npc:id()].buy_condition = xr_logic.parse_condlist(npc, "trade_manager", "buy_condition", str)
-	
+
 	-- коэфициенты продажи
 	str = utils.cfg_get_string(trade_manager[npc:id()].config, "trader", "sell_condition", npc, true, "")
 	if str == nil then
 		abort("Incorrect trader settings. Cannot find sell_condition. [%s]->[%s]", npc:name(), cfg)
-	end	
+	end
+
 	trade_manager[npc:id()].sell_condition = xr_logic.parse_condlist(npc, "trade_manager", "sell_condition", str)
-	
+
 	-- список закупки
 	str = utils.cfg_get_string(trade_manager[npc:id()].config, "trader", "buy_supplies", npc, false, "")
 	if str ~= nil then
@@ -37,10 +33,9 @@ function trade_init(npc, cfg)
 	end
 end
 
-
 function update(npc)
 	local tt = trade_manager[npc:id()]
-	
+
 	if tt == nil then
 		return
 	end
@@ -49,7 +44,7 @@ function update(npc)
 		return
 	end
 	tt.update_time = time_global() + 3600000
-	
+
 	local str = xr_logic.pick_section_from_condlist(db.actor, npc, tt.buy_condition)
 	if tt.current_buy_condition ~= str then
 		printf("TRADE [%s]: buy condition = %s", npc:name(), str)
@@ -73,13 +68,13 @@ function update(npc)
 		if tt.resuply_time ~= nil and tt.resuply_time < time_global() then
 			return
 		end
+
 		printf("TRADE [%s]: buy_supplies = %s", npc:name(), str)
 		npc:buy_supplies(tt.config, str)
 		tt.current_buy_supplies = str
 		tt.resuply_time = time_global() + 24*3600000
-	end	
+	end
 end
-
 
 function save(obj, packet)
 	local tt = trade_manager[obj:id()]
@@ -121,13 +116,13 @@ function save(obj, packet)
 	if tt.update_time == nil then
 		packet:w_s32(-1)
 	else
-	 	packet:w_s32(tt.update_time - cur_tm)
+		packet:w_s32(tt.update_time - cur_tm)
 	end
 
 	if tt.resuply_time == nil then
 		packet:w_s32(-1)
 	else
-	 	packet:w_s32(tt.resuply_time - cur_tm)
+		packet:w_s32(tt.resuply_time - cur_tm)
 	end
 end
 

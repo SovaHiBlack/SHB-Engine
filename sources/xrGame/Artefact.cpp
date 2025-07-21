@@ -105,7 +105,7 @@ void CArtefact::Load(pcstr section)
 	m_fSatietyRestoreSpeed = pSettings->r_float(section, "satiety_restore_speed");
 	m_fPowerRestoreSpeed = pSettings->r_float(section, "power_restore_speed");
 	m_fBleedingRestoreSpeed = pSettings->r_float(section, "bleeding_restore_speed");
-	if (pSettings->section_exist(/**cNameSect(), */pSettings->r_string(section, "hit_absorbation_sect")))
+	if (pSettings->section_exist(pSettings->r_string(section, "hit_absorbation_sect")))
 	{
 		m_ArtefactHitImmunities.LoadImmunities(pSettings->r_string(section, "hit_absorbation_sect"), pSettings);
 	}

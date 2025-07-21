@@ -12,7 +12,7 @@
 #include "control_action.h"
 
 namespace MemorySpace {
-	struct CMemoryInfo;
+	struct SMemoryInfo;
 };
 
 class CStalker;
@@ -21,7 +21,7 @@ class CGameObject;
 class CSightAction : public CControlAction {
 public:
 	typedef SightManager::ESightType	ESightType;
-	typedef MemorySpace::CMemoryInfo	CMemoryInfo;
+	typedef MemorySpace::SMemoryInfo	MemoryInfo;
 
 protected:
 	ESightType			m_sight_type;
@@ -30,7 +30,7 @@ protected:
 	bool				m_no_pitch;
 	fVector3				m_vector3d;
 	const CGameObject	*m_object_to_look;
-	const CMemoryInfo	*m_memory_object;
+	const MemoryInfo*	m_memory_object;
 	u32					m_start_time;
 
 protected:
@@ -67,12 +67,12 @@ public:
 	IC					CSightAction				(const ESightType &sight_type, const fVector3& vector3d, bool torso_look = false);
 	IC					CSightAction				(const ESightType &sight_type, const fVector3* vector3d);
 	IC					CSightAction				(const CGameObject *object_to_look, bool torso_look = false, bool fire_object = false, bool no_pitch = false);
-	IC					CSightAction				(const CMemoryInfo *memory_object, bool	torso_look = false);
+	IC					CSightAction				(const MemoryInfo* memory_object, bool	torso_look = false);
 			void		initialize					();
 			void		execute						();
 	IC		void		set_vector3d				(const fVector3& position);
 	IC		void		set_object_to_look			(const CGameObject *object_to_look);
-	IC		void		set_memory_object			(const CMemoryInfo *object_to_look);
+	IC		void		set_memory_object			(const MemoryInfo* object_to_look);
 	IC		bool		operator==					(const CSightAction &sight_action) const;
 			void		remove_links				(CObject *object);
 			bool		change_body_speed			() const;
