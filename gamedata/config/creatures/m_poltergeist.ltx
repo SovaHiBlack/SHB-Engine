@@ -1,4 +1,3 @@
-
 [m_poltergeist_e]:monster_base
 GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor,zone_mosquito_bald,zone_radioactive
@@ -110,7 +109,6 @@ terrain				 = poltergeist_terrain
 hit_type = strike
 
 ;entity condition
-
 satiety_v 			= 0.0001				;скорость уменьшения сытости со временем
 radiation_v 		= 0.00001				;скорость уменьшения радиации
 satiety_power_v 	= 0.005					;увеличение силы при уменьшении сытости
@@ -159,7 +157,6 @@ sound_die_in_anomaly	= monsters\biting\def_
 
 killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
 
-
 idle_sound_delay		= 0
 eat_sound_delay			= 0
 attack_sound_delay		= 0
@@ -174,7 +171,6 @@ max_hear_dist		 = 60
 ;-------------------------------------------------------------------------
 ; Vision
 ;-------------------------------------------------------------------------
-
 eye_fov				 = 100	;120
 eye_range			 = 40 ;60
 
@@ -206,7 +202,6 @@ Morale_Despondent_Threashold	= 0.5
 DamagedThreshold		= 0.4
 
 material				= creatures\large	;objects\bullet
-
 
 squad_attack_algorithm	= 1
 attack_effector			= m_poltergeist_attack_effector
@@ -257,7 +252,6 @@ community				= poltergeist
 
 critical_wound_threshold		= -1
 critical_wound_decrease_quant	= 0.
-
 
 [m_Poltergeist_damage]
 ;bone_name		 = <hit_scale>,-1,<wound_scale>
@@ -331,7 +325,6 @@ chemical_burn_immunity 	= 1.0
 explosion_immunity 	= 1.0
 fire_wound_immunity = 1.0
 
-
 [m_poltergeist_normal]:m_poltergeist_e
 $spawn               = "monsters\old\poltergeist_normal"
 spec_rank			= normal
@@ -341,7 +334,6 @@ community			= poltergeist
 ;===========================================================================
 ; TELE
 ;===========================================================================
-
 [m_poltergeist_normal_tele]:m_poltergeist_normal
 $spawn               = "monsters\poltergeists\poltergeist_normal_tele"
 
@@ -368,7 +360,6 @@ Particles_Death					= monsters\polter_death
 Particles_Idle					= monsters\polter_idle
 Particles_Hidden				= monsters\polter_linza
 
-
 Hidden_Particles				= monsters\polter_linza
 ;Hide_Particles					= monsters\polter_yadro;monsters\polter_hide
 
@@ -384,12 +375,9 @@ $spawn               = "monsters\poltergeists\poltergeist_tele_outdoor"
 
 Tele_Find_Radius				= 12 ;20
 
-
-
 ;===========================================================================
 ; FLAMER
 ;===========================================================================
-
 [m_poltergeist_normal_flame]:m_poltergeist_normal
 $spawn               = "monsters\poltergeists\poltergeist_normal_flame"
 
@@ -413,21 +401,15 @@ flame_scan_sound			= monsters\burer\burer_scan_affect_0
 flame_scan_effector_section	= m_poltergeist_scan_effector
 flame_scan_delay_min_max	= 5000,10000
 
-
-
-
 flame_min_dist			= 2
 flame_max_dist			= 15
 flame_min_height		= 0.5
 flame_max_height		= 1.0
 
-
-
 Particles_Damage				= monsters\polter_damage
 Particles_Death					= monsters\polter_death_00
 Particles_Idle					= monsters\polter_idle_00
 Particles_Hidden				= monsters\polter_linza_00
-
 
 Hidden_Particles				= monsters\polter_linza_00	;monsters\polter_hidden
 Sound_Idle						= monsters\poltergeist\fire_idle_0
@@ -446,7 +428,6 @@ color_add			= 0.05,0.0,0.0
 time				= 10.00
 time_attack			= 0.3		; fade in
 time_release		= 0.85		; fade out
-
 
 [m_poltergeist_strong_flame]:m_poltergeist_normal_flame
 $spawn               = "monsters\poltergeists\poltergeist_strong_flame"

@@ -36,11 +36,9 @@
     <None Include="ai\common\victoryprobability.efd" />
     <None Include="ai\common\weaponeffectiveness.efd" />
     <None Include="anims\agroprom_demo.anm" />
-    <None Include="anims\agr_u_fade.bak" />
     <None Include="anims\agr_u_fade.ppe" />
     <None Include="anims\alcohol.ppe" />
     <None Include="anims\arena.anm" />
-    <None Include="anims\arg_u_fade.bak" />
     <None Include="anims\blink.ppe" />
     <None Include="anims\camera_effects\agroprom_demo.anm" />
     <None Include="anims\camera_effects\agroprom_demo_nah.anm" />
@@ -74,11 +72,8 @@
     <None Include="anims\camera_effects\shell_shock.anm" />
     <None Include="anims\controller_hit.ppe" />
     <None Include="anims\deadcity_wake.ppe" />
-    <None Include="anims\deadcity_wake1.bak" />
     <None Include="anims\deadcity_wake_old.ppe" />
-    <None Include="anims\dead_zone.bak" />
     <None Include="anims\dead_zone.ppe" />
-    <None Include="anims\duality_circle.bak" />
     <None Include="anims\duality_circle.ppe" />
     <None Include="anims\dx9_w.anm" />
     <None Include="anims\dx9_wn.anm" />
@@ -87,7 +82,6 @@
     <None Include="anims\editor\eight.anm" />
     <None Include="anims\effector_test.anm" />
     <None Include="anims\escape.ppe" />
-    <None Include="anims\fire_hit.bak" />
     <None Include="anims\fire_hit.ppe" />
     <None Include="anims\garbage1.anm" />
     <None Include="anims\helicopter\aaa.anm" />
@@ -108,7 +102,6 @@
     <None Include="anims\labx18_poltr_3.anm" />
     <None Include="anims\mil_zharka.anm" />
     <None Include="anims\monolith_off.ppe" />
-    <None Include="anims\nightvision.bak" />
     <None Include="anims\nightvision.ppe" />
     <None Include="anims\nightvision2.ppe" />
     <None Include="anims\nightvision_bad.ppe" />
@@ -147,25 +140,19 @@
     <None Include="anims\path\yantar_torrid_path.anm" />
     <None Include="anims\path\zone_path.anm" />
     <None Include="anims\pl_test_doc.anm" />
-    <None Include="anims\proba.bak" />
     <None Include="anims\proba.ppe" />
     <None Include="anims\proba2.ppe" />
     <None Include="anims\proba_gray.ppe" />
     <None Include="anims\proba_test.ppe" />
-    <None Include="anims\psy_antenna.bak" />
     <None Include="anims\psy_antenna.ppe" />
     <None Include="anims\psy_antenna_indoor.ppe" />
     <None Include="anims\punch_effector.anm" />
     <None Include="anims\p_proba.ppe" />
-    <None Include="anims\radar_psi.bak" />
     <None Include="anims\radar_psi.ppe" />
-    <None Include="anims\radar_stop.bak" />
     <None Include="anims\radar_stop.ppe" />
     <None Include="anims\radar_wake.ppe" />
     <None Include="anims\radiation.ppe" />
-    <None Include="anims\snd_shock.bak" />
     <None Include="anims\snd_shock.ppe" />
-    <None Include="anims\teleport.bak" />
     <None Include="anims\teleport.ppe" />
     <None Include="anims\test.anm" />
     <None Include="anims\total_recall.ppe" />
@@ -1462,9 +1449,6 @@
     <None Include="spawns\unpack\way_l12_stancia.ltx" />
     <None Include="spawns\unpack\way_l12_stancia_2.ltx" />
     <None Include="spawns\unpack\way__level_unknown.ltx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="anims\postprocess editor_stohe.log" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\gameplay\character_criticals_1.xml" />

@@ -1,33 +1,3 @@
-[m_fracture_attack_params]
-;---------------------------------------------------------------------------------------------------------------------------------------------
-;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
-;---------------------------------------------------------------------------------------------------------------------------------------------
-stand_attack_0 =	  	0.45,		20,		    100,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,							  3.5
-stand_attack_1 =	  	0.45,		20,		    140,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,							  3.5
-stand_attack_2 =	  	0.45,		30,		    120,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,							  3.5
-
-[m_fracture_step_params]
-;---------------------------------------------------------------------------
-;	anim			| Cycles | time1 | power1 | time2 | power2 |
-;---------------------------------------------------------------------------
-stand_walk_fwd_0 	=	1,	   0.01,     1,     0.25,    0.7,   
-stand_run_fwd_0	 	=	1,	   0.01,     1,	    0.25,    0.6,    
-
-;===========================================================================
-; IMMUNITIES
-;===========================================================================
-[fracture_immunities]
-burn_immunity = 0.8				;коэффициенты иммунитета 
-strike_immunity = 0.8
-shock_immunity = 0.8
-wound_immunity = 0.50	;0.75	;1.0		
-radiation_immunity = 0.5
-telepatic_immunity = 1.0
-chemical_burn_immunity = 0.8
-explosion_immunity = 0.8
-fire_wound_immunity  = 0.105
-
-
 [m_fracture_e]:monster_base
 GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor,zone_mosquito_bald,zone_witches_galantine,zone_burning_fuzz1,zone_mincer,zone_gravi_zone
@@ -117,14 +87,12 @@ MaxAttackDist		= 2.4	;3.8
 as_min_dist				= 0.5
 as_step					= 0.5
 
-
 DayTime_Begin		= 0			; эрўрыр фэ  фы  ьюэёЄЁр
 DayTime_End			= 21		; ъюэхЎ фэ  фы  ьюэёЄЁр
 Min_Satiety			= 0.4		; ьшэ. эюЁьр ёvЄюёЄш (ьхэ№°х - єцх уюыюфэvщ)
 Max_Satiety			= 1.0		; ьръё. эюЁьр ёvЄюёЄш (сюы№°х - юўхэ№ ёvЄvщ)
 
 distance_to_corpse	= 1.2		; фшёЄ. фю ЄЁєяр, яЁш ъюЄюЁющ юэ яхЁхїюфшЄ т ёюёЄю эшх хфv
-
 
 min_view_distance   		= 0.8				; коэффициент, который множится на eye_range, в зависимости от угла
 max_view_distance	 		= 1.0				; коэффициент, который множится на eye_range, в зависимости от угла
@@ -136,14 +104,11 @@ velocity_factor		     	= 0.5
 luminocity_factor			= 1.5 				; фактор освещения (только для Актёра)
 transparency_threshold		= 0.25
 
-
 terrain				 = 255,255,255,255,30,40
 
 hit_type = wound
 
 ;entity condition
-
-; entity condition
 satiety_v 		= 0.00001				;0.01			;скорость уменьшения сытости со временем
 radiation_v 		= 0.00001		;0.004			;скорость уменьшения радиации
 satiety_power_v 	= 0.005		;0.01			;увеличение силы при уменьшении сытости 
@@ -172,7 +137,6 @@ eat_freq			=	5.0		; ўрёЄюЄр єъєёют т ёхъ
 eat_slice			=	0.01	; єтхышўхэшх ёvЄюёЄш яЁш 1 єъєёх
 eat_slice_weight	=	10.0	; єьхэ№°хэшх хфv є ЄЁєяр
 
-
 ; Morale
 Morale_Hit_Quant				= 0.1
 Morale_Attack_Success_Quant		= 0.1
@@ -195,7 +159,6 @@ sound_growling			= monsters\biting\def_
 sound_die_in_anomaly	= monsters\zombie\zombie_die_
 
 killer_clsids			= Z_MINCER,Z_GALANT,ZS_BFUZZ,ZS_MBALD,ZS_GALAN,ZS_MINCE
-
 
 idle_sound_delay		= 125000
 eat_sound_delay			= 3000
@@ -222,6 +185,34 @@ damage					= m_Fracture_damage
 ;species of monster
 species					= fracture
 
+[m_fracture_attack_params]
+;---------------------------------------------------------------------------------------------------------------------------------------------
+;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
+;---------------------------------------------------------------------------------------------------------------------------------------------
+stand_attack_0 =	  	0.45,		20,		    100,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,							  3.5
+stand_attack_1 =	  	0.45,		20,		    140,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,							  3.5
+stand_attack_2 =	  	0.45,		30,		    120,        0.0, 1.0, 0.0,		 -1.6, 1.6, -1.6, 1.6,							  3.5
+
+[m_fracture_step_params]
+;---------------------------------------------------------------------------
+;	anim			| Cycles | time1 | power1 | time2 | power2 |
+;---------------------------------------------------------------------------
+stand_walk_fwd_0 	=	1,	   0.01,     1,     0.25,    0.7,   
+stand_run_fwd_0	 	=	1,	   0.01,     1,	    0.25,    0.6,    
+
+;===========================================================================
+; IMMUNITIES
+;===========================================================================
+[fracture_immunities]
+burn_immunity = 0.8				;коэффициенты иммунитета 
+strike_immunity = 0.8
+shock_immunity = 0.8
+wound_immunity = 0.50	;0.75	;1.0		
+radiation_immunity = 0.5
+telepatic_immunity = 1.0
+chemical_burn_immunity = 0.8
+explosion_immunity = 0.8
+fire_wound_immunity  = 0.105
 
 [m_Fracture_damage]
 ;bone_name		 = <hit_scale>,-1,<wound_scale>

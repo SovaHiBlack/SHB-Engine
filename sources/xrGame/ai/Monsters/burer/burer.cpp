@@ -77,11 +77,7 @@ void CBurer::Load(pcstr section)
 	particle_gravi_prepare	= pSettings->r_string(section,"Particle_Gravi_Prepare");
 	particle_tele_object	= pSettings->r_string(section,"Particle_Tele_Object");
 	
-<<<<<<< Updated upstream
-	::Sound->create(sound_gravi_wave,	pSettings->r_string(section,"sound_gravi_wave"),st_Effect,eST_WORLD);
-=======
 	::Sound->create(sound_gravi_wave,	pSettings->r_string(section,"sound_gravi_wave"),st_Effect, eST_WORLD);
->>>>>>> Stashed changes
 	::Sound->create(sound_tele_hold,	pSettings->r_string(section,"sound_tele_hold"),	st_Effect, eST_WORLD);
 	::Sound->create(sound_tele_throw,	pSettings->r_string(section,"sound_tele_throw"),st_Effect, eST_WORLD);
 

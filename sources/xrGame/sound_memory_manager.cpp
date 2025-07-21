@@ -171,11 +171,7 @@ void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound
 		sound_power			*= m_anomaly_factor;
 	
 	VERIFY					(_valid(sound_power));
-<<<<<<< Updated upstream
-	if (is_sound_type(sound_type, eST_WORLD))
-=======
 	if (is_sound_type(sound_type,eST_WORLD))
->>>>>>> Stashed changes
 		sound_power			*= m_world_factor;
 	
 	VERIFY					(_valid(sound_power));

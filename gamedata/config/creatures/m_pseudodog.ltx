@@ -410,7 +410,6 @@ attack_params		= pseudodog_attack_params_strong
 spec_rank			= strong
 community			= pseudodog
 
-
 [pseudodog_immunities_strong]
 burn_immunity			= 1.0
 strike_immunity			= 1.0
@@ -431,10 +430,6 @@ stand_attack_0	=	  	0.45,		0.50,		    100,        0.0, 1.0, 1.0,		 -1.0, 1.0, -1
 ;Jump attack
 run_jamp_1		=		0.55,		0.35,		    420,        0.0, 1.0, 4.0,		 -1.8, 1.8, -1.8, 1.8,								  1.0
 
-
-
-
-
 ;*********************************************************************************
 ; CUSTOM PROFILES
 ;*********************************************************************************
@@ -445,7 +440,6 @@ visual				= monsters\pseudodog\pseudodog_grey
 icon				= ui_npc_monster_pseudodog_grey
 panic_threshold		= 0.05
 species				= arena_monstr
-
 
 ;---------------------------------------------------------------------------------
 ;-- PSY DOG
@@ -461,7 +455,6 @@ noise_fps		= 25
 color_base		= 0.9,0.9,1.0
 color_gray		= 0.33,0.330,0.33
 color_add		= 0.00,0.00,0.015
-
 
 [psy_dog]:pseudodog_strong
 $spawn				= "monsters\psy_dog\psy_dog"
@@ -502,7 +495,6 @@ ce_amplitude		= 1.0
 ce_period_number	= 2.0
 ce_power			= 0.3 ;0.7
 
-
 ;=========================================================================================
 ; Base Definition
 ;=========================================================================================
@@ -518,17 +510,14 @@ class               = SM_DOG_F
 ;jump_max_distance			= 10.0
 ;jump_max_angle				= 0.2
 
-
 appear_effector		= psy_dog_phantom_appear_effector
 particles_appear	= monsters\pseudo_phantom_birth_00
 particles_disappear	= monsters\pseudo_phantom_death_00
-;=========================================================================================
+;========================================================================================
 
-
-[psy_dog_radar]:psy_dog 
+[psy_dog_radar]:psy_dog
 $spawn				= "monsters\psy_dog\rad_psy_dog"
 
 Max_Phantoms_Count	= 4
 Min_Phantoms_Count	= 2
 Time_Phantom_Appear = 5000
-

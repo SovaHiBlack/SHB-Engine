@@ -9,12 +9,12 @@
 #include "UIPdaMsgListItem.h"//
 #include "UILines.h"
 
-pcstr const	CHAT_LOG_ITEMS_ANIMATION = "ui_main_msgs_short";
+pcstr CHAT_LOG_ITEMS_ANIMATION = "ui_main_msgs_short";
 
 CUIGameLog::CUIGameLog( )
 {
 	toDelList.reserve(30);
-	kill_msg_height = 20.f;
+	kill_msg_height = 20.0f;
 	txt_color = 0xff000000;
 }
 

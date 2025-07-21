@@ -4,27 +4,6 @@
     <Filter Include="ai">
       <UniqueIdentifier>{24541807-41c2-4a24-bfac-ac3cab9fdf02}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ai\alife">
-      <UniqueIdentifier>{190c4404-e22e-4650-ac36-88296ba909e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ai\common">
-      <UniqueIdentifier>{4cd38ba7-8912-47ab-85c5-4b6c2fd26a13}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="anims">
-      <UniqueIdentifier>{0938cd08-18fe-401f-b6b3-fdb79f0f20d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="anims\camera_effects">
-      <UniqueIdentifier>{a2d7089a-4251-42a3-a1fc-950bd5344710}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="anims\editor">
-      <UniqueIdentifier>{e88a50b7-79b5-4434-a507-39e375e032ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="anims\helicopter">
-      <UniqueIdentifier>{39ddfb25-3c55-49d2-a952-e3dbc5f9c065}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="anims\path">
-      <UniqueIdentifier>{4b827b62-b52d-4917-b4ca-e857f2f45ec6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="config">
       <UniqueIdentifier>{e1017dfd-a6d3-4e68-89b3-0e1e34fdc159}</UniqueIdentifier>
     </Filter>
@@ -274,491 +253,29 @@
     <Filter Include="config\gameplay\encyclopedia\stories">
       <UniqueIdentifier>{c38ab3fb-9e0c-4178-ab0f-d81c31847002}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ai\alife">
+      <UniqueIdentifier>{dcd24b19-7905-4c1c-81d1-50f37ff69bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ai\common">
+      <UniqueIdentifier>{78d469dd-109a-4fe7-a0a2-e45be4f0a6d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims">
+      <UniqueIdentifier>{21fc7d1f-4591-4db5-9b69-14af1ade913a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\camera_effects">
+      <UniqueIdentifier>{19ccdc9c-7ea0-468d-9911-f40c8c5eae13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\editor">
+      <UniqueIdentifier>{2459d5af-6590-47cd-88c4-f96c46b502e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\helicopter">
+      <UniqueIdentifier>{8a671200-ef38-4b39-84e3-dfedfe7b0e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="anims\path">
+      <UniqueIdentifier>{503885e5-27c7-41c3-ab31-32bb767e498a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ai\alife\anomalydetectprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\anomalyinteractprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\anomalyretreatprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\birthpercentage.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\birthprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\birthspeed.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\enemydetectability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\enemydetectprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\enemyretreatprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\terraintype.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\weaponattacktimes.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\alife\weaponsuccessprobability.efd">
-      <Filter>ai\alife</Filter>
-    </None>
-    <None Include="ai\common\accweaponeffectiveness.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\creatureeffectiveness.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\entitycost.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\equipmentvalue.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\expediency.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\fincreatureeffectiveness.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\intcreatureeffectiveness.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\mainweaponvalue.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\smallweaponvalue.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\surgedeathprobability.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\victoryprobability.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="ai\common\weaponeffectiveness.efd">
-      <Filter>ai\common</Filter>
-    </None>
-    <None Include="anims\camera_effects\agroprom_demo.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\agroprom_demo_nah.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\agroprom_demo_nah1.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\agroprom_doctor_cam.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\arena.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\bar_fly.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\cut_scene1.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\dis_consciousness.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\dream.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\drunk.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\earthquake.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\fatigue.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\fusker.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\head_shot.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_back.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_back_left.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_back_right.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_front.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_front_left.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_front_right.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_left.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\hit_right.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\oso_cam.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\pl_test.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\pri_fly_to_aes.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\prison_0.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\prison_1.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\radar_stop.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\rostok_camera.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\camera_effects\shell_shock.anm">
-      <Filter>anims\camera_effects</Filter>
-    </None>
-    <None Include="anims\editor\8_negative.anm">
-      <Filter>anims\editor</Filter>
-    </None>
-    <None Include="anims\editor\8_positive.anm">
-      <Filter>anims\editor</Filter>
-    </None>
-    <None Include="anims\editor\eight.anm">
-      <Filter>anims\editor</Filter>
-    </None>
-    <None Include="anims\helicopter\aaa.anm">
-      <Filter>anims\helicopter</Filter>
-    </None>
-    <None Include="anims\helicopter\bbb.anm">
-      <Filter>anims\helicopter</Filter>
-    </None>
-    <None Include="anims\helicopter\vert_path.anm">
-      <Filter>anims\helicopter</Filter>
-    </None>
-    <None Include="anims\path\agroprom_zharka.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\atp_zharka.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\bar_rostok_jarka.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\boloto_zharka_1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\dandy_phys.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\darkvalley_torrid_path.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\deadcity_zharka.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\garbage_zharka.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\generators_torrid_path.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\generators_torrid_path_2.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\generators_torrid_path_3.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\generators_torrid_path_4.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\lestat_military1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\lestat_test.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\military_fireball1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\military_torrid1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\mp_workshop_fireball.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\mp_workshop_fireball1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\path.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\path_111.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\path_jip_test.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\pripyat_zharka1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\rostok_jarka_krondor.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\rostok_jarka_krondor_2.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\rostok_jarka_krondor_3.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\ssss.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\ssss1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\test.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\torid_stancia_vxod1.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\torrid_anims.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\yantar_torrid_path.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\path\zone_path.anm">
-      <Filter>anims\path</Filter>
-    </None>
-    <None Include="anims\agr_u_fade.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\agr_u_fade.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\agroprom_demo.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\alcohol.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\arena.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\arg_u_fade.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\blink.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\controller_hit.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\dead_zone.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\dead_zone.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\deadcity_wake.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\deadcity_wake_old.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\deadcity_wake1.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\duality_circle.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\duality_circle.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\dx9_w.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\dx9_wn.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\effector_test.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\escape.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\fire_hit.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\fire_hit.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\garbage1.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\l2.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_1.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_2.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_3.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_4.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_5.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_6.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_6_2.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_6_3.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_1floor_6_4.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_poltr_1.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_poltr_2.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\labx18_poltr_3.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\mil_zharka.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\monolith_off.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\nightvision.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\nightvision.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\nightvision_bad.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\nightvision_good.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\nightvision2.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\p_proba.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\particle_test.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\pl_test_doc.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\proba.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\proba.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\proba_gray.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\proba_test.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\proba2.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\psy_antenna.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\psy_antenna.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\psy_antenna_indoor.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\punch_effector.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radar_psi.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radar_psi.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radar_stop.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radar_stop.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radar_wake.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\radiation.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\snd_shock.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\snd_shock.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\teleport.bak">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\teleport.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\test.anm">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\total_recall.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\vibros.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\vibros_p.ppe">
-      <Filter>anims</Filter>
-    </None>
-    <None Include="anims\yantar_underground_psi.ppe">
-      <Filter>anims</Filter>
-    </None>
     <None Include="config\alife.ltx">
       <Filter>config</Filter>
     </None>
@@ -4615,11 +4132,450 @@
     <None Include="scripts\garbage_dialogs.script">
       <Filter>scripts\GP\Storyline\DialogSupport</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="anims\postprocess editor_stohe.log">
+    <None Include="ai\alife\anomalydetectprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\anomalyinteractprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\anomalyretreatprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\birthpercentage.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\birthprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\birthspeed.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\enemydetectability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\enemydetectprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\enemyretreatprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\terraintype.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\weaponattacktimes.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\alife\weaponsuccessprobability.efd">
+      <Filter>ai\alife</Filter>
+    </None>
+    <None Include="ai\common\accweaponeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\creatureeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\entitycost.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\equipmentvalue.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\expediency.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\fincreatureeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\intcreatureeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\mainweaponvalue.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\smallweaponvalue.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\surgedeathprobability.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\victoryprobability.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="ai\common\weaponeffectiveness.efd">
+      <Filter>ai\common</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_demo.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_demo_nah.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_demo_nah1.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\agroprom_doctor_cam.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\arena.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\bar_fly.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\cut_scene1.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\dis_consciousness.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\dream.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\drunk.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\earthquake.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\fatigue.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\fusker.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\head_shot.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_back.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_back_left.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_back_right.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_front.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_front_left.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_front_right.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_left.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\hit_right.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\oso_cam.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\pl_test.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\pri_fly_to_aes.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\prison_0.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\prison_1.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\radar_stop.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\rostok_camera.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\camera_effects\shell_shock.anm">
+      <Filter>anims\camera_effects</Filter>
+    </None>
+    <None Include="anims\editor\8_negative.anm">
+      <Filter>anims\editor</Filter>
+    </None>
+    <None Include="anims\editor\8_positive.anm">
+      <Filter>anims\editor</Filter>
+    </None>
+    <None Include="anims\editor\eight.anm">
+      <Filter>anims\editor</Filter>
+    </None>
+    <None Include="anims\helicopter\aaa.anm">
+      <Filter>anims\helicopter</Filter>
+    </None>
+    <None Include="anims\helicopter\bbb.anm">
+      <Filter>anims\helicopter</Filter>
+    </None>
+    <None Include="anims\helicopter\vert_path.anm">
+      <Filter>anims\helicopter</Filter>
+    </None>
+    <None Include="anims\path\agroprom_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\atp_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\bar_rostok_jarka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\boloto_zharka_1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\dandy_phys.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\darkvalley_torrid_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\deadcity_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\garbage_zharka.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path_2.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path_3.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\generators_torrid_path_4.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\lestat_military1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\lestat_test.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\military_fireball1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\military_torrid1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\mp_workshop_fireball.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\mp_workshop_fireball1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\path_111.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\path_jip_test.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\pripyat_zharka1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\rostok_jarka_krondor.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\rostok_jarka_krondor_2.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\rostok_jarka_krondor_3.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\ssss.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\ssss1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\test.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\torid_stancia_vxod1.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\torrid_anims.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\yantar_torrid_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\path\zone_path.anm">
+      <Filter>anims\path</Filter>
+    </None>
+    <None Include="anims\agr_u_fade.ppe">
       <Filter>anims</Filter>
-    </Text>
+    </None>
+    <None Include="anims\agroprom_demo.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\alcohol.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\arena.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\blink.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\controller_hit.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dead_zone.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\deadcity_wake.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\deadcity_wake_old.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\duality_circle.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dx9_w.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\dx9_wn.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\effector_test.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\escape.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\fire_hit.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\garbage1.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\l2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_1.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_3.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_4.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_5.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6_2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6_3.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_1floor_6_4.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_poltr_1.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_poltr_2.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\labx18_poltr_3.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\mil_zharka.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\monolith_off.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision_bad.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision_good.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\nightvision2.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\p_proba.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\particle_test.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\pl_test_doc.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba_gray.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba_test.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\proba2.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\psy_antenna.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\psy_antenna_indoor.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\punch_effector.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_psi.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_stop.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radar_wake.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\radiation.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\snd_shock.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\teleport.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\test.anm">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\total_recall.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\vibros.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\vibros_p.ppe">
+      <Filter>anims</Filter>
+    </None>
+    <None Include="anims\yantar_underground_psi.ppe">
+      <Filter>anims</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config\gameplay\character_criticals_1.xml">

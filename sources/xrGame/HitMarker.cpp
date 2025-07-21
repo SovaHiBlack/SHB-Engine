@@ -31,7 +31,8 @@ CHitMarker::~CHitMarker( )
 const static f32 fShowTime = 0.5f;
 void CHitMarker::Render( )
 {
-	f32 h1, p1;
+	f32 h1;
+	f32 p1;
 	Device.vCameraDirection.getHP(h1, p1);
 
 	while (m_HitMarks.size( ) && !m_HitMarks.front( )->IsActive( ))

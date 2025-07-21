@@ -150,13 +150,9 @@ void CPseudoGigant::Load(pcstr section)
 	// --------------------------------------------------------------------------------	
 
 	::Sound->create(m_sound_threaten_hit, pSettings->r_string(section, "sound_threaten_hit"), st_Effect, eST_WORLD);
-	<<<<<< < Updated upstream
-		::Sound->create(m_sound_start_threaten, pSettings->r_string(section, "sound_threaten_start"), st_Effect, SOUND_TYPE_MONSTER_ATTACKING);
-	====== =
-		::Sound->create(m_sound_start_threaten, pSettings->r_string(section, "sound_threaten_start"), st_Effect, eST_MONSTER_ATTACKING);
-	>>>>>> > Stashed changes
+	::Sound->create(m_sound_start_threaten, pSettings->r_string(section, "sound_threaten_start"), st_Effect, eST_MONSTER_ATTACKING);
 
-		m_kick_damage = pSettings->r_float(section, "HugeKick_Damage");
+	m_kick_damage = pSettings->r_float(section, "HugeKick_Damage");
 	m_kick_particles = pSettings->r_string(section, "HugeKick_Particles");
 	read_distance(section, "HugeKick_MinMaxDist", m_threaten_dist_min, m_threaten_dist_max);
 	read_delay(section, "HugeKick_MinMaxDelay", m_threaten_delay_min, m_threaten_delay_max);

@@ -63,7 +63,6 @@ eye_fov				 = 80
 eye_range			 = 50
 max_hear_dist		 = 30
 
-
 ; speed factors			linear | angular_real | angular_path | min |  max
 Velocity_Stand			= 0,		1.4,			1.4,		1,		1
 Velocity_WalkFwdNormal	= 0.9,		0.6,			0.6,		0.02,	2.0	
@@ -104,14 +103,11 @@ velocity_factor		     	= 0.5
 luminocity_factor			= 0.5 				; фактор освещени€ (только дл€ јктЄра)
 transparency_threshold		= 0.25
 
-
 terrain				 = zombie_terrain
 
 hit_type = wound
 
 ;entity condition
-
-; entity condition
 satiety_v 				= 0.00001	;0.01			;скорость уменьшени€ сытости со временем
 radiation_v 			= 0.00001	;0.004			;скорость уменьшени€ радиации
 satiety_power_v 		= 0.01		;0.01			;увеличение силы при уменьшении сытости 
@@ -124,7 +120,6 @@ power_hit_part 			= 1.0		;0.9			;процент хита, уход€щий на отнимание силы
 psy_health_v			= 0.1						;скорость восстановлени€ psy-здоровь€
 
 immunities_sect			= zombie_immunities
-
 
 ;открытые раны
 bleeding_v				= 0						;потер€ крови при номинальной ране в секунду
@@ -143,7 +138,6 @@ eat_slice_weight	=	10.0	; Їьхэє∞хэшх хфv Ї ™®Ї€р
 
 satiety_threshold	= 0.5							; below this value monster fill hunger
 
-
 ; Morale
 Morale_Hit_Quant				= 0.001
 Morale_Attack_Success_Quant		= 0.1
@@ -151,7 +145,6 @@ Morale_Take_Heart_Speed			= 0.1
 Morale_Despondent_Speed			= 0.1
 Morale_Stable_Speed				= 0.01
 Morale_Despondent_Threashold	= 0.1
-
 
 sound_idle				= monsters\zombie\zombie_idle_ 
 sound_eat				= monsters\zombie\zombie_eat_ 
@@ -183,8 +176,6 @@ critical_wound_decrease_quant	= 0.
 FakeDeathCount					= 4		; max count of fake death
 StartFakeDeathHealthThreshold	= 0.6
 
-
-
 material				= creatures\medium
 DynamicObjectsCount		= 32
 
@@ -215,7 +206,6 @@ bip01_head 			= 2.0, -1, 0.01
 [zombie_terrain]
 	255,000,255,255
 
-
 [m_zombie_attack_params]
 ;---------------------------------------------------------------------------------------------------------------------------------------------
 ;	anim			| time[0..1] | hit_power | impulse | impulse_dir (x,y,z)  |	Field of hit_test  (left,right, bottom, top ) |	Test Dist
@@ -230,7 +220,6 @@ stand_attack_2 =	  	0.30,		0.15,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -0
 stand_attack_3 =	  	0.30,		0.20,		    180,        0.0, 1.0, 0.0,		 -0.6, 0.6, -0.6, 0.6,							  2.0
 
 [m_zombie_attack_effector]
-
 duality_h		= 0.01
 duality_v		= 0.01
 blur			= 0.01
@@ -312,8 +301,6 @@ stand_attack_2 =	  	0.30,		0.15,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -1
 ;left hand strike3
 stand_attack_3 =	  	0.30,		0.15,		    180,        0.0, 1.0, 0.0,		 -1.0, 0.3, -0.6, 0.6,							  2.0
 
-
-
 [zombie_normal]:m_zombie_e
 $spawn				= "monsters\zombies\zombie_02_normal"
 visual				= monsters\zombi\zombi_1
@@ -351,8 +338,6 @@ stand_attack_1 =	  	0.35,		0.35,		    100,        0.0, 1.0, 0.0,		 -1.8, 0.6, -0
 stand_attack_2 =	  	0.30,		0.35,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -1.0, 1.0,							  2.0
 ;left hand strike3
 stand_attack_3 =	  	0.30,		0.35,		    180,        0.0, 1.0, 0.0,		 -1.0, 0.3, -0.6, 0.6,							  2.0
-
-
 
 [zombie_strong]:m_zombie_e
 $spawn				= "monsters\zombies\zombie_03_strong"
@@ -392,11 +377,7 @@ stand_attack_2 =	  	0.30,		0.50,		    120,        0.0, 1.0, 0.0,		 -0.6, 0.6, -1
 ;left hand strike3
 stand_attack_3 =	  	0.30,		0.50,		    180,        0.0, 1.0, 0.0,		 -1.0, 0.3, -0.6, 0.6,							  2.0
 
-
 [zombie_immortal]:zombie_strong
 $spawn				= "monsters\zombies\zombie_immortal"
 visual				= monsters\zombi\zombi_trup
-panic_threshold		= 0.05	
-
-
-
+panic_threshold		= 0.05
