@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_alife_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 //#include "InventoryItem.h"
 #include "script_game_object.h"
 #include "Inventory.h"

@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "stalker_danger_unknown_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "script_game_object.h"
 #include "stalker_movement_manager.h"
 #include "sight_manager.h"

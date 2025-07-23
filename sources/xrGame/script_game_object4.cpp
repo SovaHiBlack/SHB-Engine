@@ -12,7 +12,7 @@
 #include "AISpace.h"
 #include "alife_simulator.h"
 
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_movement_manager.h"
 
 #include "sight_manager_space.h"

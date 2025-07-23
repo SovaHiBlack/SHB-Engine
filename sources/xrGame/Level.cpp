@@ -47,7 +47,7 @@
 
 #ifdef DEBUG
 #	include "LevelDebug.h"
-#	include "ai/stalker/ai_stalker.h"
+#	include "ai/stalker/Stalker.h"
 #	include "DebugRenderer.h"
 #	include "physicobject.h"
 #endif

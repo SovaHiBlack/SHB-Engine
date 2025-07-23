@@ -9,7 +9,7 @@
 #include "PhysicsShell.h"
 #include "clsid_game.h"
 #include "script_callback_ex.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "CustomZone.h"
 #include "MathUtils.h"
 #include "group_hierarchy_holder.h"

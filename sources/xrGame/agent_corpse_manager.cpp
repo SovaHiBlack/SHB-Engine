@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "agent_corpse_manager.h"
 #include "member_order.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "memory_manager.h"
 #include "visual_memory_manager.h"
 #include "agent_manager.h"

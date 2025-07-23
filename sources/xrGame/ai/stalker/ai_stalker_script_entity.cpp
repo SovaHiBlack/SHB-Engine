@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../stalker_animation_manager.h"
 #include "../../script_entity_action.h"
 #include "../../Torch.h"
@@ -31,11 +31,6 @@ u32 CStalker::GetWeaponAmmo() const
 		return		(0);
 	return			(GetCurrentWeapon()->GetAmmoCurrent(true));	
 }
-
-//CInventoryItem *CStalker::GetCurrentEquipment() const
-//{
-//    return inventory().m_slots[OUTFIT_SLOT].m_pIItem;
-//}
 
 CInventoryItem * CStalker::GetMedikit() const
 {

@@ -495,7 +495,7 @@
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h" />
     <ClInclude Include="ai\Monsters\Zombie\StateManagerZombie.h" />
     <ClInclude Include="ai\phantom\phantom.h" />
-    <ClInclude Include="Ai\Stalker\ai_stalker.h" />
+    <ClInclude Include="Ai\Stalker\Stalker.h" />
     <ClInclude Include="ai\stalker\ai_stalker_impl.h" />
     <ClInclude Include="ai\stalker\ai_stalker_inline.h" />
     <ClInclude Include="Ai\Stalker\ai_stalker_space.h" />
@@ -1627,7 +1627,7 @@
     <ClCompile Include="ai\Monsters\Zombie\Zombie.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp" />
     <ClCompile Include="ai\phantom\phantom.cpp" />
-    <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
+    <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ShowIncludes>
     </ClCompile>
     <ClCompile Include="ai\stalker\ai_stalker_cover.cpp" />

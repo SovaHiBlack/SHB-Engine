@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "AISpace.h"
 #include "alife_simulator.h"
 #include "alife_space.h"

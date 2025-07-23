@@ -4,7 +4,7 @@
 #include "alife_registry_wrappers.h"
 
 #include "Actor.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 
 #include "seniority_hierarchy_holder.h"
 #include "team_hierarchy_holder.h"

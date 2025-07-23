@@ -8,7 +8,7 @@
 #include "../control_path_builder_base.h"
 
 #include "../../../Actor.h"
-#include "../../stalker/ai_stalker.h"
+#include "../../stalker/Stalker.h"
 #include "../states/monster_state_rest.h"
 #include "../states/monster_state_attack.h"
 #include "../states/monster_state_panic.h"

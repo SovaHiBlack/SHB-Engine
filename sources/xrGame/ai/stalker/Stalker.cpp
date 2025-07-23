@@ -1,13 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_stalker.cpp
-//	Created 	: 25.02.2003
-//  Modified 	: 25.02.2003
-//	Author		: Dmitriy Iassenev
+//	Module 		: Stalker.cpp
 //	Description : AI Behaviour for monster "Stalker"
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../ai_monsters_misc.h"
 #include "../../Weapon.h"
 #include "../../Hit.h"

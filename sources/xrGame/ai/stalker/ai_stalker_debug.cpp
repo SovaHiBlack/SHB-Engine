@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #ifdef DEBUG
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../hudmanager.h"
 #include "../../memory_manager.h"
 #include "../../visual_memory_manager.h"

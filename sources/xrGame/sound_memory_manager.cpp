@@ -19,7 +19,7 @@
 #include "sound_user_data_visitor.h"
 #include "agent_manager.h"
 #include "agent_member_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "Profiler.h"
 #include "ClientSpawnManager.h"
 #include "..\XR_3DA\IGame_Persistent.h"

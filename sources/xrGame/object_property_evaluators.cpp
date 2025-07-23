@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "object_property_evaluators.h"
 #include "Weapon.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "Inventory.h"
 #include "Missile.h"
 #include "FoodItem.h"

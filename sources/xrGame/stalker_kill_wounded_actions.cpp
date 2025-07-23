@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_kill_wounded_actions.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "Inventory.h"
 #include "WeaponMagazined.h"
 #include "stalker_movement_manager.h"

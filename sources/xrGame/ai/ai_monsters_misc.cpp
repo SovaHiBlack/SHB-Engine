@@ -23,7 +23,7 @@
 #include "../level.h"
 #include "../agent_manager.h"
 #include "../agent_member_manager.h"
-#include "stalker/ai_stalker.h"
+#include "stalker/Stalker.h"
 
 bool bfGetActionSuccessProbability(GroupHierarchyHolder::MEMBER_REGISTRY& Members, const xr_vector<const CEntityAlive*>& VisibleEnemies, f32 fMinProbability, CBaseFunction& fSuccessProbabilityFunction)
 {

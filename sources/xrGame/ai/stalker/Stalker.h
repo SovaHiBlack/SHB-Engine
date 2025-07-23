@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_stalker.h
-//	Created 	: 25.02.2003
-//  Modified 	: 25.02.2003
-//	Author		: Dmitriy Iassenev
+//	Module 		: Stalker.h
 //	Description : AI Behaviour for monster "Stalker"
 ////////////////////////////////////////////////////////////////////////////
 
@@ -77,238 +74,234 @@ struct SBoneProtections;
 class CDangerLocation;
 class CRestrictedObject;
 
-class CStalker :
-	public CCustomMonster,
-	public CObjectHandler,
-	public CAI_PhraseDialogManager,
-	public CStepManager
+class CStalker : public CCustomMonster, public CObjectHandler, public CAI_PhraseDialogManager, public CStepManager
 {
 private:
-	typedef CCustomMonster								inherited;
+	typedef CCustomMonster			inherited;
 
 public:
 	using inherited::useful;
 	using inherited::evaluate;
 
 private:
-	CStalkerAnimationManager* m_animation_manager;
-	CStalkerPlanner* m_brain;
-	CSightManager* m_sight_manager;
-	CStalkerMovementManager* m_movement_manager;
+	CStalkerAnimationManager*		m_animation_manager;
+	CStalkerPlanner*				m_brain;
+	CSightManager*					m_sight_manager;
+	CStalkerMovementManager*		m_movement_manager;
 
 #ifdef DEBUG
-	const script_planner* m_debug_planner;
-#endif
+	const script_planner*			m_debug_planner;
+#endif // def DEBUG
 
-	// ALife
+	//ALife
 private:
-	SBoneProtections* m_boneHitProtection;
+	SBoneProtections*				m_boneHitProtection;
 
-	// weapon dispersion
+	//weapon dispersion
 private:
-	f32							m_disp_walk_stand;
-	f32							m_disp_walk_crouch;
-	f32							m_disp_run_stand;
-	f32							m_disp_run_crouch;
-	f32							m_disp_stand_stand;
-	f32							m_disp_stand_crouch;
-	f32							m_disp_stand_stand_zoom;
-	f32							m_disp_stand_crouch_zoom;
-
-private:
-	f32							m_power_fx_factor;
+	f32								m_disp_walk_stand;
+	f32								m_disp_walk_crouch;
+	f32								m_disp_run_stand;
+	f32								m_disp_run_crouch;
+	f32								m_disp_stand_stand;
+	f32								m_disp_stand_crouch;
+	f32								m_disp_stand_stand_zoom;
+	f32								m_disp_stand_crouch_zoom;
 
 private:
-	f32							m_fRankDisperison;
-	f32							m_fRankVisibility;
-	f32							m_fRankImmunity;
+	f32								m_power_fx_factor;
 
-	// best item/ammo selection members
+private:
+	f32								m_fRankDisperison;
+	f32								m_fRankVisibility;
+	f32								m_fRankImmunity;
+
+	//best item/ammo selection members
 public:
 	bool							m_item_actuality;
-	CInventoryItem* m_best_item_to_kill;
-	f32							m_best_item_value;
-	CInventoryItem* m_best_ammo;
-	const CInventoryItem* m_best_found_item_to_kill;
-	const CInventoryItem* m_best_found_ammo;
+	CInventoryItem*					m_best_item_to_kill;
+	f32								m_best_item_value;
+	CInventoryItem*					m_best_ammo;
+	const CInventoryItem*			m_best_found_item_to_kill;
+	const CInventoryItem*			m_best_found_ammo;
 
-	// covers being used
+	//covers being used
 public:
-	CCoverEvaluatorCloseToEnemy* m_ce_close;
-	CCoverEvaluatorFarFromEnemy* m_ce_far;
-	CCoverEvaluatorBest* m_ce_best;
-	CCoverEvaluatorAngle* m_ce_angle;
-	CCoverEvaluatorSafe* m_ce_safe;
-	CCoverEvaluatorRandomGame* m_ce_random_game;
-	CCoverEvaluatorAmbush* m_ce_ambush;
-	CCoverEvaluatorBestByTime* m_ce_best_by_time;
+	CCoverEvaluatorCloseToEnemy*	m_ce_close;
+	CCoverEvaluatorFarFromEnemy*	m_ce_far;
+	CCoverEvaluatorBest*			m_ce_best;
+	CCoverEvaluatorAngle*			m_ce_angle;
+	CCoverEvaluatorSafe*			m_ce_safe;
+	CCoverEvaluatorRandomGame*		m_ce_random_game;
+	CCoverEvaluatorAmbush*			m_ce_ambush;
+	CCoverEvaluatorBestByTime*		m_ce_best_by_time;
 
-	// physics support
+	//physics support
 public:
-	CCharacterPhysicsSupport* m_pPhysics_support;
+	CCharacterPhysicsSupport*		m_pPhysics_support;
 
 public:
 	bool							m_wounded;
 
 public:
-	CStalker( );
-	virtual								~CStalker( );
+												CStalker( );
+	virtual										~CStalker( );
 
 public:
-	virtual	CCharacterPhysicsSupport* character_physics_support( )
+	virtual CCharacterPhysicsSupport*			character_physics_support( )
 	{
 		return m_pPhysics_support;
 	}
-	virtual CPHDestroyable* ph_destroyable( );
-	virtual CAttachmentOwner* cast_attachment_owner( )
+	virtual CPHDestroyable*						ph_destroyable( );
+	virtual CAttachmentOwner*					cast_attachment_owner( )
 	{
 		return this;
 	}
-	virtual CInventoryOwner* cast_inventory_owner( )
+	virtual CInventoryOwner*					cast_inventory_owner( )
 	{
 		return this;
 	}
-	virtual CEntityAlive* cast_entity_alive( )
+	virtual CEntityAlive*						cast_entity_alive( )
 	{
 		return this;
 	}
-	virtual CEntity* cast_entity( )
+	virtual CEntity*							cast_entity( )
 	{
 		return this;
 	}
-	virtual CGameObject* cast_game_object( )
+	virtual CGameObject*						cast_game_object( )
 	{
 		return this;
 	}
-	virtual CPhysicsShellHolder* cast_physics_shell_holder( )
+	virtual CPhysicsShellHolder*				cast_physics_shell_holder( )
 	{
 		return this;
 	}
-	virtual CParticlesPlayer* cast_particles_player( )
+	virtual CParticlesPlayer*					cast_particles_player( )
 	{
 		return this;
 	}
-	virtual	Feel::Sound* dcast_FeelSound( )
+	virtual Feel::Sound*						dcast_FeelSound( )
 	{
 		return this;
 	}
-	virtual CStalker* cast_stalker( )
+	virtual CStalker*							cast_stalker( )
 	{
 		return this;
 	}
-	virtual CCustomMonster* cast_custom_monster( )
+	virtual CCustomMonster*						cast_custom_monster( )
 	{
 		return this;
 	}
-	virtual CScriptEntity* cast_script_entity( )
+	virtual CScriptEntity*						cast_script_entity( )
 	{
 		return this;
 	}
 
 public:
-	void						init( );
-	virtual void						Load(pcstr	section);
-	virtual	void						reinit( );
-	virtual void						reload(pcstr	section);
-	virtual void						LoadSounds(pcstr section);
+	void										init( );
+	virtual void								Load(pcstr section);
+	virtual void								reinit( );
+	virtual void								reload(pcstr section);
+	virtual void								LoadSounds(pcstr section);
 
-	virtual BOOL						net_Spawn(CSE_Abstract* DC);
-	virtual void						net_Export(CNetPacket& P);
-	virtual void						net_Import(CNetPacket& P);
-	virtual void						net_Destroy( );
-	virtual void						net_Save(CNetPacket& P);
-	virtual	BOOL						net_SaveRelevant( );
-	virtual void						net_Relcase(CObject* O);
+	virtual BOOL								net_Spawn(CSE_Abstract* DC);
+	virtual void								net_Export(CNetPacket& P);
+	virtual void								net_Import(CNetPacket& P);
+	virtual void								net_Destroy( );
+	virtual void								net_Save(CNetPacket& P);
+	virtual BOOL								net_SaveRelevant( );
+	virtual void								net_Relcase(CObject* O);
 
 	//save/load server serialization
-	virtual void						save(CNetPacket& output_packet);
-	virtual void						load(IReader& input_packet);
+	virtual void								save(CNetPacket& output_packet);
+	virtual void								load(IReader& input_packet);
 
-	virtual void						UpdateCL( );
-	virtual void						shedule_Update(u32 dt);
-	virtual void						Think( );
-	virtual void						SelectAnimation(const fVector3& _view, const fVector3& _move, f32 speed);
-	virtual BOOL						UsedAI_Locations( );
+	virtual void								UpdateCL( );
+	virtual void								shedule_Update(u32 dt);
+	virtual void								Think( );
+	virtual void								SelectAnimation(const fVector3& _view, const fVector3& _move, f32 speed);
+	virtual BOOL								UsedAI_Locations( );
 
-	virtual void						g_WeaponBones(s32& L, s32& R1, s32& R2);
-	virtual void						g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
-	virtual void						HitSignal(f32 P, fVector3& vLocalDir, CObject* who, s16 element);
-	virtual void						Die(CObject* who);
+	virtual void								g_WeaponBones(s32& L, s32& R1, s32& R2);
+	virtual void								g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
+	virtual void								HitSignal(f32 P, fVector3& vLocalDir, CObject* who, s16 element);
+	virtual void								Die(CObject* who);
 
-	virtual void						OnEvent(CNetPacket& P, u16 type);
-	virtual void						feel_touch_new(CObject* O);
+	virtual void								OnEvent(CNetPacket& P, u16 type);
+	virtual void								feel_touch_new(CObject* O);
 
-	virtual void						renderable_Render( );
-	virtual void						Exec_Look(f32 dt);
-	virtual	void						Hit(SHit* pHDS);
-	virtual	void						PHHit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
-	virtual BOOL						feel_vision_isRelevant(CObject* who);
-	virtual f32						Radius( ) const;
+	virtual void								renderable_Render( );
+	virtual void								Exec_Look(f32 dt);
+	virtual void								Hit(SHit* pHDS);
+	virtual void								PHHit(f32 P, fVector3& dir, CObject* who, s16 element, fVector3 p_in_object_space, f32 impulse, ALife::EHitType hit_type = ALife::eHitTypeWound);
+	virtual BOOL								feel_vision_isRelevant(CObject* who);
+	virtual f32									Radius( ) const;
+
 #ifdef DEBUG
-	virtual void						OnHUDDraw(CCustomHUD* hud);
-	virtual void						OnRender( );
-#endif
+	virtual void								OnHUDDraw(CCustomHUD* hud);
+	virtual void								OnRender( );
+#endif // def DEBUG
 
-	virtual bool						useful(const CItemManager* manager, const CGameObject* object) const;
-	virtual	f32						evaluate(const CItemManager* manager, const CGameObject* object) const;
-	virtual bool						useful(const CEnemyManager* manager, const CEntityAlive* object) const;
+	virtual bool								useful(const CItemManager* manager, const CGameObject* object) const;
+	virtual f32									evaluate(const CItemManager* manager, const CGameObject* object) const;
+	virtual bool								useful(const CEnemyManager* manager, const CEntityAlive* object) const;
 
-	// Dialogs
-	virtual void						UpdateAvailableDialogs(CPhraseDialogManager* partner);
+	//Dialogs
+	virtual void								UpdateAvailableDialogs(CPhraseDialogManager* partner);
 
-	// scripts
-	virtual CWeapon* GetCurrentWeapon( ) const;
-	virtual u32							GetWeaponAmmo( ) const;
-//	virtual CInventoryItem				*GetCurrentEquipment	() const; <- moved to InventoryOwner::GetCurrentOutfit
-	virtual CInventoryItem* GetMedikit( ) const;
-	virtual CInventoryItem* GetFood( ) const;
-	virtual	bool						bfAssignMovement(CScriptEntityAction* tpEntityAction);
-	virtual	bool						bfAssignWatch(CScriptEntityAction* tpEntityAction);
-	virtual	void						ResetScriptData(void* P = 0);
-	virtual	bool						bfAssignObject(CScriptEntityAction* tpEntityAction);
-	virtual	bool						bfAssignAnimation(CScriptEntityAction* tpEntityAction);
+	//scripts
+	virtual CWeapon*							GetCurrentWeapon( ) const;
+	virtual u32									GetWeaponAmmo( ) const;
+	virtual CInventoryItem*						GetMedikit( ) const;
+	virtual CInventoryItem*						GetFood( ) const;
+	virtual bool								bfAssignMovement(CScriptEntityAction* tpEntityAction);
+	virtual bool								bfAssignWatch(CScriptEntityAction* tpEntityAction);
+	virtual void								ResetScriptData(pvoid P = 0);
+	virtual bool								bfAssignObject(CScriptEntityAction* tpEntityAction);
+	virtual bool								bfAssignAnimation(CScriptEntityAction* tpEntityAction);
 
-	// physics
-	virtual u16							PHGetSyncItemsNumber( )
+	//physics
+	virtual u16									PHGetSyncItemsNumber( )
 	{
 		return inherited::PHGetSyncItemsNumber( );
 	}
-	virtual CPHSynchronize* PHGetSyncItem(u16 item)
+	virtual CPHSynchronize*						PHGetSyncItem(u16 item)
 	{
 		return inherited::PHGetSyncItem(item);
 	}
-	virtual void						PHUnFreeze( )
+	virtual void								PHUnFreeze( )
 	{
 		return inherited::PHUnFreeze( );
 	}
-	virtual void						PHFreeze( )
+	virtual void								PHFreeze( )
 	{
 		return inherited::PHFreeze( );
 	}
 
-// miscellanious functions
-	void						DropItemSendMessage(CObject* O);
-	bool						bfCheckForNodeVisibility(u32 dwNodeID, bool bIfRyPick = false);
-	virtual	ALife::ERelationType 		tfGetRelationType(const CEntityAlive* tpEntityAlive) const;
-	virtual const SRotation				Orientation( ) const;
-	virtual	const MonsterSpace::SBoneRotation& head_orientation( ) const;
+	//miscellanious functions
+	void										DropItemSendMessage(CObject* O);
+	bool										bfCheckForNodeVisibility(u32 dwNodeID, bool bIfRyPick = false);
+	virtual ALife::ERelationType				tfGetRelationType(const CEntityAlive* tpEntityAlive) const;
+	virtual const SRotation						Orientation( ) const;
+	virtual const MonsterSpace::SBoneRotation&	head_orientation( ) const;
 
 	//InventoryOwner stuff
-	virtual bool						CanPutInSlot(PIItem item, u32 slot)
+	virtual bool								CanPutInSlot(PIItem item, u32 slot)
 	{
 		return(slot != OUTFIT_SLOT);
-	};
+	}
 
 //////////////////////////////////////////////////////////////////////////
 // action/evaluators support functions
 //////////////////////////////////////////////////////////////////////////
 public:
-	virtual void						OnItemTake(CInventoryItem* inventory_item);
-	virtual void						OnItemDrop(CInventoryItem* inventory_item);
-	bool						item_to_kill( );
-	bool						item_can_kill( );
-	bool						remember_item_to_kill( );
-	bool						remember_ammo( );
+	virtual void								OnItemTake(CInventoryItem* inventory_item);
+	virtual void								OnItemDrop(CInventoryItem* inventory_item);
+	bool										item_to_kill( );
+	bool										item_can_kill( );
+	bool										remember_item_to_kill( );
+	bool							remember_ammo( );
 	bool						ready_to_kill( );
 	bool						ready_to_detour( );
 	void						update_best_item_info( );

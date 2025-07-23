@@ -14,7 +14,7 @@
 #include "cover_evaluators.h"
 #include "cover_point.h"
 #include "cover_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_animation_manager.h"
 #include "stalker_planner.h"
 #include "Weapon.h"

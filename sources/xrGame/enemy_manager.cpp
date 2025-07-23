@@ -22,7 +22,7 @@
 #include "AISpace.h"
 #include "Profiler.h"
 #include "Actor.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "movement_manager.h"
 #include "agent_manager.h"
 #include "agent_enemy_manager.h"

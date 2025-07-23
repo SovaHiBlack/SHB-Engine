@@ -3723,7 +3723,7 @@
     <ClInclude Include="ai\trader\trader_animation.h">
       <Filter>AI\Monsters\humans\trader</Filter>
     </ClInclude>
-    <ClInclude Include="Ai\Stalker\ai_stalker.h">
+    <ClInclude Include="Ai\Stalker\Stalker.h">
       <Filter>AI\Monsters\humans\stalker</Filter>
     </ClInclude>
     <ClInclude Include="ai\stalker\ai_stalker_impl.h">
@@ -6731,7 +6731,7 @@
     <ClCompile Include="ai\trader\trader_animation.cpp">
       <Filter>AI\Monsters\humans\trader</Filter>
     </ClCompile>
-    <ClCompile Include="Ai\Stalker\ai_stalker.cpp">
+    <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <Filter>AI\Monsters\humans\stalker</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\ai_stalker_script.cpp">

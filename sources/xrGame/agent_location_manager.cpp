@@ -11,7 +11,7 @@
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "agent_enemy_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "cover_point.h"
 
 const f32 MIN_SUITABLE_ENEMY_DISTANCE = 3.f;//10.f;

@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "stalker_sound_data_visitor.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "stalker_sound_data.h"
 #include "agent_manager.h"
 #include "agent_member_manager.h"

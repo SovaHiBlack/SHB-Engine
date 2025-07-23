@@ -18,7 +18,7 @@
 #include "StringTable.h"
 
 #ifdef DEBUG
-#include "ai\stalker\ai_stalker.h"
+#include "ai\stalker\Stalker.h"
 #include "object_handler_planner.h"
 #endif
 

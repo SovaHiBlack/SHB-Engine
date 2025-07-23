@@ -15,7 +15,7 @@
 #include "game_graph.h"
 #include "game_sv_single.h"
 #include "custommonster.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "xrserver_objects_alife_monsters.h"
 #include "cover_point.h"
 #include "cover_manager.h"

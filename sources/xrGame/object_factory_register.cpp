@@ -22,7 +22,7 @@
 #	include "ai/monsters/flesh/flesh.h"
 #	include "ai/monsters/chimera/chimera.h"
 #	include "ai/monsters/dog/dog.h"
-#	include "ai/stalker/ai_stalker.h"
+#	include "ai/stalker/Stalker.h"
 #	include "ai/monsters/bloodsucker/bloodsucker.h"
 #	include "ai/monsters/boar/boar.h"
 #	include "ai/monsters/pseudodog/pseudodog.h"

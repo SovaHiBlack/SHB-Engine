@@ -8,7 +8,7 @@
 #include "stdafx.h"
 
 #include "visual_memory_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "memory_space_impl.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "clsid_game.h"

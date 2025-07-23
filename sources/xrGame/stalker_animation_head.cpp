@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "stalker_animation_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "ai/stalker/ai_stalker_space.h"
 #include "sound_player.h"
 #include "stalker_animation_data.h"

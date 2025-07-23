@@ -33,7 +33,7 @@
 #include "InfoPortion.h"
 #include "AI/Monsters/BaseMonster/base_monster.h"
 #include "WeaponMagazined.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "GameTaskManager.h"
 
 bool CScriptGameObject::GiveInfoPortion(pcstr info_id)

@@ -16,7 +16,7 @@
 #include "script_game_object.h"
 #include "agent_manager.h"
 #include "agent_member_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "GameObject_space.h"
 #include "Profiler.h"
 #include "ClientSpawnManager.h"

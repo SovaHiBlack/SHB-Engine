@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../PDA.h"
 #include "../../Inventory.h"
 #include "../../xrmessages.h"

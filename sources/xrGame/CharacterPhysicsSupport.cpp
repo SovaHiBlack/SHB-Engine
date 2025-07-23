@@ -16,7 +16,7 @@
 #include "IKLimbsController.h"
 #include "PHCapture.h"
 #include "PHCollideValidator.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "interactive_motion.h"
 #include "animation_movement_controller.h"
 

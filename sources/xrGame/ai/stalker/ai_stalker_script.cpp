@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../stalker_decision_space.h"
 #include "ai_stalker_space.h"
 #include "../../script_game_object.h"

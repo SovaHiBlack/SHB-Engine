@@ -10,7 +10,7 @@
 #include "stalker_movement_manager.h"
 #include "stalker_movement_manager_space.h"
 #include "script_entity_action.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "sight_manager.h"
 #include "detail_path_manager.h"
 #include "level_location_selector.h"

@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "../../cover_point.h"
 #include "../../cover_evaluators.h"
 #include "../../AISpace.h"

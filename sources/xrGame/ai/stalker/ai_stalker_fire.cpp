@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "ai_stalker.h"
+#include "Stalker.h"
 #include "ai_stalker_impl.h"
 #include "../../script_entity_action.h"
 #include "../../Inventory.h"

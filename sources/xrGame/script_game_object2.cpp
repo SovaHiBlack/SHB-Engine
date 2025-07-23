@@ -33,7 +33,7 @@
 #include "Actor.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "..\XR_3DA\CameraBase.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "car.h"
 #include "movement_manager.h"
 #include "detail_path_manager.h"

@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "agent_member_manager.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "object_broker.h"
 #include "agent_manager.h"
 #include "agent_memory_manager.h"

@@ -16,7 +16,7 @@
 #include "WeaponMagazined.h"
 #include "ef_storage.h"
 #include "ef_pattern.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 #include "Inventory.h"
 #include "Torch.h"
 #include "..\XR_3DA\skeletoncustom.h"

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "stalker_sound_data.h"
 #include "sound_user_data_visitor.h"
-#include "ai/stalker/ai_stalker.h"
+#include "ai/stalker/Stalker.h"
 
 CStalkerSoundData::~CStalkerSoundData	()
 { }
