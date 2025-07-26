@@ -5,12 +5,12 @@
 #include "EntityAlive.h"
 #include "PHSoundPlayer.h"
 #include "Phdestroyable.h"
-#include "character_hit_animations.h"
+#include "CharacterHitAnimationController.h"
 
 class CPhysicsShell;
 class CPHMovementControl;
 class CIKLimbsController;
-class interactive_motion;
+class CInteractiveMotion;
 
 class CCharacterPhysicsSupport : public CPHSkeleton, public CPHDestroyable
 {
@@ -64,9 +64,9 @@ private:
 	CPHSoundPlayer						m_ph_sound_player;
 	CIKLimbsController* m_ik_controller;
 	SCollisionHitCallback* m_collision_hit_callback;
-	character_hit_animation_controller	m_hit_animations;
+	CCharacterHitAnimationController	m_hit_animations;
 
-	interactive_motion* m_interactive_motion;
+	CInteractiveMotion* m_interactive_motion;
 	//skeleton modell(!share?)
 	f32									skel_airr_lin_factor;
 	f32									skel_airr_ang_factor;
@@ -181,7 +181,6 @@ private:
 	void 							CreateSkeleton( );
 	void 							ActivateShell(CObject* who);
 	void							KillHit(CObject* who, ALife::EHitType hit_type, f32& impulse);
-	static	void							DeathAnimCallback(CBlend* B);
 	void							CreateIKController( );
 	void							DestroyIKController( );
 	void							CollisionCorrectObjPos(const fVector3& start_from, bool character_create = false);

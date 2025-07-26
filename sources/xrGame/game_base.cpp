@@ -50,7 +50,7 @@ void game_PlayerState::clear( )
 	DeathTime = 0;
 	mOldIDs.clear( );
 	money_added = 0;
-	m_aBonusMoney.clear( );
+	//m_aBonusMoney.clear( );
 }
 
 game_PlayerState::~game_PlayerState( )

@@ -5,177 +5,174 @@
 [artefact_spawn_zones]
 ;Артефакты, которые при активизации создают аномальные зоны
 ;формат:
-;	{секция_артефакта}		= {секция_зоны},			Radius,	Power
-	af_medusa				= zone_mosquito_bald_weak,	2.0,	30.0
-	af_cristall_flower		= zone_mosquito_bald_weak,	3.0,	50.0
-	af_night_star			= zone_mosquito_bald_weak,	5.0,	100.0
-	af_vyvert				= zone_gravi_zone_weak,		2.0,	30.0
-	af_gravi				= zone_gravi_zone_weak,		3.0,	50.0
-	af_gold_fish			= zone_gravi_zone_weak,		5.0,	100.0
-	af_cristall				= torrid_zone,				3.0,	50.0
-	af_blood				= zone_mincer_weak,			2.0,	30.0
-	af_mincer_meat			= zone_mincer_weak,			3.0,	50.0
-	af_soul					= zone_mincer_weak,			5.0,	100.0
-	af_electra_sparkler		= zone_witches_galantine,	2.0,	30.0
-	af_electra_flash		= zone_witches_galantine,	3.0,	50.0
-	af_electra_moonlight	= zone_witches_galantine,	5.0,	100.0
+;	{секция_артефакта}			= {секция_зоны},			Radius,	Power
+	af_medusa					= zone_mosquito_bald_weak,	2.0,	30.0
+	af_cristall_flower			= zone_mosquito_bald_weak,	3.0,	50.0
+	af_night_star				= zone_mosquito_bald_weak,	5.0,	100.0
+	af_vyvert					= zone_gravi_zone_weak,		2.0,	30.0
+	af_gravi					= zone_gravi_zone_weak,		3.0,	50.0
+	af_gold_fish				= zone_gravi_zone_weak,		5.0,	100.0
+	af_cristall					= torrid_zone,				3.0,	50.0
+	af_blood					= zone_mincer_weak,			2.0,	30.0
+	af_mincer_meat				= zone_mincer_weak,			3.0,	50.0
+	af_soul						= zone_mincer_weak,			5.0,	100.0
+	af_electra_sparkler			= zone_witches_galantine,	2.0,	30.0
+	af_electra_flash			= zone_witches_galantine,	3.0,	50.0
+	af_electra_moonlight		= zone_witches_galantine,	5.0,	100.0
 
 [af_activation_gravi]
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-starting					=	5.0,		anomaly\gravi_idle00,		0.5, 1.0, 1.5,		5.0,			"anomaly2\artefact_gravi_blast_start",		"idle"
-flying						=	2.0,		anomaly\gravi_idle01,		0.8, 1.0, 1.2,		3.0,			"anomaly2\artefact\artefact_gravi",			"idle"
-idle_before_spawning		=	5.0,		anomaly\gravi_blowout5,		1.0, 1.0, 1,		0.0,			"anomaly2\artefact_gravi_blast_finished",	"idle"
-spawning					=	1.0,		anomaly\gravity_entrance,	0.9, 1.1, 1.01,		0.0,			"",											"idle"
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	starting					=	5.0,		anomaly\gravi_idle00,		0.5, 1.0, 1.5,		5.0,			"anomaly2\artefact_gravi_blast_start",		"idle"
+	flying						=	2.0,		anomaly\gravi_idle01,		0.8, 1.0, 1.2,		3.0,			"anomaly2\artefact\artefact_gravi",			"idle"
+	idle_before_spawning		=	5.0,		anomaly\gravi_blowout5,		1.0, 1.0, 1,		0.0,			"anomaly2\artefact_gravi_blast_finished",	"idle"
+	spawning					=	1.0,		anomaly\gravity_entrance,	0.9, 1.1, 1.01,		0.0,			"",											"idle"
 
 [af_activation_bold]
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-starting					=	5.0,		anomaly\gravi_idle00,		0.8, 1.5, 0.9,		5.0,			"anomaly2\artefact_bold_blast_start",		"idle"
-flying						=	2.0,		anomaly\gravi_idle01,		0.8, 0.9, 0.8,		2.0,			"anomaly2\artefact\artefact_zharka",		"idle"
-idle_before_spawning		=	2.0,		anomaly\gravity_entrance,	1.0, 1.1, 1.0,		0.0,			"anomaly2\artefact_bold_blast_finished",	"idle"
-spawning					=	0.5,		anomaly\pux_blast,			1.0, 1.0, 0.5,		5.0,			"anomaly2\gravi_anomaly_00",				"idle"
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	starting					=	5.0,		anomaly\gravi_idle00,		0.8, 1.5, 0.9,		5.0,			"anomaly2\artefact_bold_blast_start",		"idle"
+	flying						=	2.0,		anomaly\gravi_idle01,		0.8, 0.9, 0.8,		2.0,			"anomaly2\artefact\artefact_zharka",		"idle"
+	idle_before_spawning		=	2.0,		anomaly\gravity_entrance,	1.0, 1.1, 1.0,		0.0,			"anomaly2\artefact_bold_blast_finished",	"idle"
+	spawning					=	0.5,		anomaly\pux_blast,			1.0, 1.0, 0.5,		5.0,			"anomaly2\gravi_anomaly_00",				"idle"
 
 [af_activation_mincer]
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-starting					=	5.0,		anomaly\gravi_idle00,		0.5, 1.0, 1.5,		5.0,			"anomaly2\artefact_gravi_blast_start",		"idle"
-flying						=	2.0,		anomaly\gravi_idle01,		0.8, 1.0, 1.2,		3.0,			"anomaly2\artefact\artefact_mincer",		"idle"
-idle_before_spawning		=	5.0,		anomaly\gravi_blowout2,		1.0, 1.0, 1.0,		0.0,			"anomaly2\artefact_gravi_blast_finished",	"idle"
-spawning					=	0.0,		"",							1.0, 1.0, 0.5,		0.0,			"",											"idle"
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	starting					=	5.0,		anomaly\gravi_idle00,		0.5, 1.0, 1.5,		5.0,			"anomaly2\artefact_gravi_blast_start",		"idle"
+	flying						=	2.0,		anomaly\gravi_idle01,		0.8, 1.0, 1.2,		3.0,			"anomaly2\artefact\artefact_mincer",		"idle"
+	idle_before_spawning		=	5.0,		anomaly\gravi_blowout2,		1.0, 1.0, 1.0,		0.0,			"anomaly2\artefact_gravi_blast_finished",	"idle"
+	spawning					=	0.0,		"",							1.0, 1.0, 0.5,		0.0,			"",											"idle"
 
 [af_activation_electra]
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
-;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-starting					=	5.0,		anomaly\bfuzz_blowout,		0.8, 1.0, 1.5,		5.0,			"anomaly2\artefact_electra_blast_start",	"idle"
-flying						=	2.0,		anomaly\electra_idle1,		1.0, 1.0, 1.0,		5.0,			"anomaly2\artefact\artefact_electra",		"idle"
-idle_before_spawning		=	0.0,		"",							1.0, 1.0, 2.5,		0.0,			"",											"idle"
-spawning					=	2.0,		"anomaly\pux_blast",		1.0, 1.0, 1.5,		5.0,			"anomaly2\artefact_electra_blast_finished",	"idle"
-
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	;format:						time(sec),	sound_name,					light_R,G,B,		light_range,	particle_name,								af_animation_name
+	;------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	starting					=	5.0,		anomaly\bfuzz_blowout,		0.8, 1.0, 1.5,		5.0,			"anomaly2\artefact_electra_blast_start",	"idle"
+	flying						=	2.0,		anomaly\electra_idle1,		1.0, 1.0, 1.0,		5.0,			"anomaly2\artefact\artefact_electra",		"idle"
+	idle_before_spawning		=	0.0,		"",							1.0, 1.0, 2.5,		0.0,			"",											"idle"
+	spawning					=	2.0,		"anomaly\pux_blast",		1.0, 1.0, 1.5,		5.0,			"anomaly2\artefact_electra_blast_finished",	"idle"
 
 [af_base]:identity_immunities
-hud							= artefact_hud
-animation_slot				= 11
-allow_inertion				= true
-;slot						= 10
-attach_angle_offset			= 0,0,0
-attach_position_offset		= -0.1,-0.1,0
-attach_bone_name			= bip01_root
-inv_grid_width				= 1
-inv_grid_height				= 1
-belt						= true
-af_actor_properties			= on
+	hud							= artefact_hud
+	animation_slot				= 11
+	allow_inertion				= true
+	;slot						= 10
+	attach_angle_offset			= 0.0, 0.0, 0.0
+	attach_position_offset		= -0.1, -0.1, 0.0
+	attach_bone_name			= bip01_root
+	inv_grid_width				= 1
+	inv_grid_height				= 1
+	belt						= true
+	af_actor_properties			= on
 
 [artefact_hud]
-orientation             	= 0, 0, 0		
-position                	= 0, 0, 0
-visual                  	= weapons\artefact\wpn_artefact_hud.ogf
-anim_idle					= idle
-anim_idle_sprint			= idle_sprint
-anim_hide					= holster
-anim_show					= draw
-anim_activate				= activate
+	orientation					= 0.0, 0.0, 0.0
+	position					= 0.0, 0.0, 0.0
+	visual						= weapons\artefact\wpn_artefact_hud.ogf
+	anim_idle					= idle
+	anim_idle_sprint			= idle_sprint
+	anim_hide					= holster
+	anim_show					= draw
+	anim_activate				= activate
 
 ; Артефакты для аномалии "Комариная плешь"
 [af_medusa]:af_base
-GroupControlSection	= spawn_group
-$spawn				= "artifacts\moscito medusa"
+	GroupControlSection			= spawn_group
+	$spawn						= "artifacts\moscito medusa"
 
-$prefetch 			= 64
-cform				= skeleton
-class				= ARTEFACT
+	$prefetch					= 64
+	cform						= skeleton
+	class						= ARTEFACT
 
-visual				= physics\anomaly\artefact_blackdrip.ogf  
-description			= enc_zone_artifact_af-medusa
-inv_name			= af-medusa
-inv_name_short		= 
-inv_weight			= 0.5
+	visual						= physics\anomaly\artefact_blackdrip.ogf
+	description					= enc_zone_artifact_af-medusa
+	inv_name					= af-medusa
+	inv_name_short				= 
+	inv_weight					= 0.5
 
-inv_grid_x			= 9
-inv_grid_y			= 4
+	inv_grid_x					= 9
+	inv_grid_y					= 4
 
-cost				= 1000
+	cost						= 1000
 
-jump_height			= .5
+	jump_height					= 0.5
 
-particles			= anomaly2\artefact\artefact_gravi
+	particles					= anomaly2\artefact\artefact_gravi
 
-lights_enabled = false
+	lights_enabled				= false
 
-artefact_activation_seq		= af_activation_bold
+	artefact_activation_seq		= af_activation_bold
 
-;скорости увеличения (уменьшения) 
-health_restore_speed		= 0.0			
-radiation_restore_speed		= 0.0005
-satiety_restore_speed		= 0.0
-power_restore_speed			= 0.0
-bleeding_restore_speed		= 0.0
-hit_absorbation_sect		= af_medusa_absorbation
+	;скорости увеличения (уменьшения)
+	health_restore_speed		= 0.0
+	radiation_restore_speed		= 0.0005
+	satiety_restore_speed		= 0.0
+	power_restore_speed			= 0.0
+	bleeding_restore_speed		= 0.0
+	hit_absorbation_sect		= af_medusa_absorbation
 
 [af_medusa_absorbation]
-burn_immunity = 1.0				;коэффициенты иммунитета 
-strike_immunity = 1.0
-shock_immunity = 1.0
-wound_immunity = 1.0		
-radiation_immunity = 1.0
-telepatic_immunity = 1.0
-chemical_burn_immunity = 1.0
-explosion_immunity = 1.0
-fire_wound_immunity  = 0.98
-
+	burn_immunity				= 1.0				;коэффициенты иммунитета
+	strike_immunity				= 1.0
+	shock_immunity				= 1.0
+	wound_immunity				= 1.0
+	radiation_immunity			= 1.0
+	telepatic_immunity			= 1.0
+	chemical_burn_immunity		= 1.0
+	explosion_immunity			= 1.0
+	fire_wound_immunity			= 0.98
 
 [af_cristall_flower]:af_base
-GroupControlSection	= spawn_group
-$spawn				= "artifacts\moscito flower"
+	GroupControlSection			= spawn_group
+	$spawn						= "artifacts\moscito flower"
 
-$prefetch 			= 64
-cform				= skeleton
-class				= ARTEFACT
+	$prefetch					= 64
+	cform						= skeleton
+	class						= ARTEFACT
 
-visual				= physics\anomaly\artefact_blackdrip_2.ogf  
-description			= enc_zone_artifact_af-cristall-flower
-inv_name			= af-cristall-flower
-inv_name_short		= 
-inv_weight			= 0.5
+	visual						= physics\anomaly\artefact_blackdrip_2.ogf
+	description					= enc_zone_artifact_af-cristall-flower
+	inv_name					= af-cristall-flower
+	inv_name_short				= 
+	inv_weight					= 0.5
 
-inv_grid_x			= 11
-inv_grid_y			= 4
+	inv_grid_x					= 11
+	inv_grid_y					= 4
 
-cost				= 2500
+	cost						= 2500
 
-jump_height			= .4
+	jump_height					= 0.4
 
-particles			= anomaly2\artefact\artefact_gravi
+	particles					= anomaly2\artefact\artefact_gravi
 
-lights_enabled = true
-trail_light_color = 0.6,0.7,0.5
-trail_light_range = 0.5
+	lights_enabled				= true
+	trail_light_color			= 0.6, 0.7, 0.5
+	trail_light_range			= 0.5
 
-artefact_activation_seq		= af_activation_bold
+	artefact_activation_seq		= af_activation_bold
 
-;скорости увеличения (уменьшения) 
-health_restore_speed = 0.0			
-radiation_restore_speed = 0.0005
-satiety_restore_speed = 0.0
-power_restore_speed = 0.0
-bleeding_restore_speed = 0.0
-hit_absorbation_sect = af_cristall_flower_absorbation
+	;скорости увеличения (уменьшения)
+	health_restore_speed		= 0.0
+	radiation_restore_speed		= 0.0005
+	satiety_restore_speed		= 0.0
+	power_restore_speed			= 0.0
+	bleeding_restore_speed		= 0.0
+	hit_absorbation_sect		= af_cristall_flower_absorbation
 
 [af_cristall_flower_absorbation]
-burn_immunity = 1.0				;коэффициенты иммунитета 
-strike_immunity = 1.0
-shock_immunity = 1.0
-wound_immunity = 1.0		
-radiation_immunity = 1.0
-telepatic_immunity = 1.0
-chemical_burn_immunity = 1.0
-explosion_immunity = 1.0
-fire_wound_immunity  = 0.97
-
+	burn_immunity				= 1.0				;коэффициенты иммунитета
+	strike_immunity				= 1.0
+	shock_immunity				= 1.0
+	wound_immunity				= 1.0
+	radiation_immunity			= 1.0
+	telepatic_immunity			= 1.0
+	chemical_burn_immunity		= 1.0
+	explosion_immunity			= 1.0
+	fire_wound_immunity			= 0.97
 
 [af_night_star]:af_base
 GroupControlSection	= spawn_group

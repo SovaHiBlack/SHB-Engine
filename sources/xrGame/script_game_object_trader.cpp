@@ -5,12 +5,12 @@
 
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
-#include "ai/trader/ai_trader.h"
-#include "ai/trader/trader_animation.h"
+#include "ai/trader/Trader.h"
+#include "ai/trader/TraderAnimation.h"
 
 void CScriptGameObject::set_trader_global_anim(pcstr anim)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -20,7 +20,7 @@ void CScriptGameObject::set_trader_global_anim(pcstr anim)
 
 void CScriptGameObject::set_trader_head_anim(pcstr anim)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -30,7 +30,7 @@ void CScriptGameObject::set_trader_head_anim(pcstr anim)
 
 void CScriptGameObject::set_trader_sound(pcstr sound, pcstr anim)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -40,7 +40,7 @@ void CScriptGameObject::set_trader_sound(pcstr sound, pcstr anim)
 
 void CScriptGameObject::external_sound_start(pcstr sound)
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;
@@ -50,7 +50,7 @@ void CScriptGameObject::external_sound_start(pcstr sound)
 
 void CScriptGameObject::external_sound_stop()
 {
-	CAI_Trader *trader = smart_cast<CAI_Trader *>(&object());
+	CTrader* trader = smart_cast<CTrader*>(&object( ));
 	if (!trader) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"Cannot cast sctipt game object to trader!");
 		return;

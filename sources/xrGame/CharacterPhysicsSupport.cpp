@@ -17,7 +17,7 @@
 #include "PHCapture.h"
 #include "PHCollideValidator.h"
 #include "ai/stalker/Stalker.h"
-#include "interactive_motion.h"
+#include "InteractiveMotion.h"
 #include "animation_movement_controller.h"
 
 #ifdef DEBUG
@@ -54,7 +54,7 @@ void OnCharacterContactInDeath(bool& do_colide, bool bo1, dContact& c, SGameMtl*
 	surface.mu = l_character_physic_support->m_curr_skin_friction_in_death;
 }
 
-IC bool is_imotion(interactive_motion* im)
+IC bool is_imotion(CInteractiveMotion* im)
 {
 	return im && im->is_enabled( );
 }
@@ -425,11 +425,11 @@ void CCharacterPhysicsSupport::KillHit(CObject* who, ALife::EHitType hit_type, f
 			xr_delete(m_interactive_motion);
 			if (b_death_anim_velocity)
 			{
-				m_interactive_motion = xr_new<imotion_velocity>( );
+				m_interactive_motion = xr_new<CInteractiveMotionVelocity>( );
 			}
 			else
 			{
-				m_interactive_motion = xr_new<imotion_position>( );
+				m_interactive_motion = xr_new<CInteractiveMotionPosition>( );
 			}
 
 			m_interactive_motion->setup(dbg_stalker_death_anim, m_pPhysicsShell);

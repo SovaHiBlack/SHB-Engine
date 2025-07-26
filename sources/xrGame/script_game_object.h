@@ -253,7 +253,7 @@ public:
 	void				set_custom_panic_threshold(f32 value);
 	void				set_default_panic_threshold( );
 
-// CAI_Trader
+	// CTrader
 	void				set_trader_global_anim(pcstr anim);
 	void				set_trader_head_anim(pcstr anim);
 	void				set_trader_sound(pcstr sound, pcstr anim);

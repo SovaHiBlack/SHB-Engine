@@ -1,22 +1,22 @@
 #include "stdafx.h"
 
-#include "interactive_motion.h"
+#include "InteractiveMotion.h"
 
 #include "PhysicsShell.h"
 #include "PhysicsShellHolder.h"
 #include "MathUtils.h"
 
-interactive_motion::interactive_motion( )
+CInteractiveMotion::CInteractiveMotion( )
 {
 	init( );
 }
 
-void interactive_motion::init( )
+void CInteractiveMotion::init( )
 {
 	flags.assign(0);
 }
 
-void interactive_motion::setup(pcstr m, CPhysicsShell* s)
+void CInteractiveMotion::setup(pcstr m, CPhysicsShell* s)
 {
 	VERIFY(s);
 	motion = smart_cast<CKinematicsAnimated*>(s->PKinematics( ))->LL_MotionID(m);
@@ -26,13 +26,13 @@ void interactive_motion::setup(pcstr m, CPhysicsShell* s)
 	}
 }
 
-void interactive_motion::anim_callback(CBlend* B)
+void CInteractiveMotion::anim_callback(CBlend* B)
 {
 	VERIFY(B->CallbackParam);
-	((interactive_motion*)(B->CallbackParam))->flags.set(fl_switch_dm_toragdoll, TRUE);
+	((CInteractiveMotion*)(B->CallbackParam))->flags.set(fl_switch_dm_toragdoll, TRUE);
 }
 
-void interactive_motion::play(CPhysicsShell* s)
+void CInteractiveMotion::play(CPhysicsShell* s)
 {
 	VERIFY(s);
 	smart_cast<CKinematicsAnimated*>(s->PKinematics( ))->PlayCycle(motion, TRUE, anim_callback, this);
@@ -44,7 +44,7 @@ void get_depth(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/,
 {
 	save_max(depth, c.geom.depth);
 }
-void interactive_motion::state_start(CPhysicsShell* s)
+void CInteractiveMotion::state_start(CPhysicsShell* s)
 {
 	s->add_ObjectContactCallback(get_depth);
 	collide(s);
@@ -57,7 +57,7 @@ void interactive_motion::state_start(CPhysicsShell* s)
 	}
 }
 
-void	interactive_motion::state_end(CPhysicsShell* s)
+void	CInteractiveMotion::state_end(CPhysicsShell* s)
 {
 	flags.set(fl_switch_dm_toragdoll, FALSE);
 	flags.set(fl_use_death_motion, FALSE);
@@ -67,7 +67,7 @@ void	interactive_motion::state_end(CPhysicsShell* s)
 	s->AnimToVelocityState(Device.fTimeDelta, default_l_limit * 10, default_w_limit * 10);
 }
 
-void interactive_motion::update(CPhysicsShell* s)
+void CInteractiveMotion::update(CPhysicsShell* s)
 {
 	CKinematics* K = s->PKinematics( );
 	VERIFY(K);
@@ -83,7 +83,7 @@ void interactive_motion::update(CPhysicsShell* s)
 	}
 }
 
-void	interactive_motion::switch_to_free(CPhysicsShell* s)
+void	CInteractiveMotion::switch_to_free(CPhysicsShell* s)
 {
 	//set to normal state
 	state_end(s);
@@ -98,7 +98,7 @@ void	interactive_motion::switch_to_free(CPhysicsShell* s)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-void imotion_position::state_start(CPhysicsShell* s)
+void CInteractiveMotionPosition::state_start(CPhysicsShell* s)
 {
 	inherited::state_start(s);
 	if (!is_enabled( ))
@@ -110,20 +110,20 @@ void imotion_position::state_start(CPhysicsShell* s)
 	s->EnabledCallbacks(FALSE);
 }
 
-void	imotion_position::state_end(CPhysicsShell* s)
+void CInteractiveMotionPosition::state_end(CPhysicsShell* s)
 {
 	inherited::state_end(s);
 	s->ToAnimBonesPositions( );
 	s->EnabledCallbacks(TRUE);
 }
 
-void imotion_position::move_update(CPhysicsShell* s)
+void CInteractiveMotionPosition::move_update(CPhysicsShell* s)
 {
 	s->Disable( );
 	s->ToAnimBonesPositions( );
 }
 
-void imotion_position::collide(CPhysicsShell* s)
+void CInteractiveMotionPosition::collide(CPhysicsShell* s)
 {
 	depth = 0;
 	s->CollideAll( );
@@ -134,7 +134,7 @@ void imotion_position::collide(CPhysicsShell* s)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
-void imotion_velocity::state_start(CPhysicsShell* s)
+void CInteractiveMotionVelocity::state_start(CPhysicsShell* s)
 {
 	inherited::state_start(s);
 	if (!is_enabled( ))
@@ -148,16 +148,16 @@ void imotion_velocity::state_start(CPhysicsShell* s)
 	//s->SetAirResistance(0,0);
 }
 
-void	imotion_velocity::state_end(CPhysicsShell* s)
+void	CInteractiveMotionVelocity::state_end(CPhysicsShell* s)
 {
 	inherited::state_end(s);
 	s->set_ApplyByGravity(true);
 }
 
-void imotion_velocity::collide(CPhysicsShell* s)
+void CInteractiveMotionVelocity::collide(CPhysicsShell* s)
 { }
 
-void imotion_velocity::move_update(CPhysicsShell* s)
+void CInteractiveMotionVelocity::move_update(CPhysicsShell* s)
 {
 	if (!s->AnimToVelocityState(Device.fTimeDelta, 2 * default_l_limit, 10.f * default_w_limit))
 	{

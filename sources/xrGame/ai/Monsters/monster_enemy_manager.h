@@ -69,4 +69,3 @@ public:
 
 	u32					see_enemy_duration			();
 };
-

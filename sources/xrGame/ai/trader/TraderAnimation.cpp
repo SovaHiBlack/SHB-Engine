@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
-#include "trader_animation.h"
-#include "ai_trader.h"
+#include "Trader.h"
+#include "TraderAnimation.h"
 #include "../../script_callback_ex.h"
 #include "../../GameObject_space.h"
 

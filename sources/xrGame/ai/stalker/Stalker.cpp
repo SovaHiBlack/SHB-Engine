@@ -77,9 +77,11 @@ CStalker::CStalker()
 	m_boneHitProtection				= NULL;
 	m_power_fx_factor				= flt_max;
 	m_wounded						= false;
+
 #ifdef DEBUG
 	m_debug_planner					= 0;
 #endif // DEBUG
+
 	m_registered_in_combat_on_migration	= false;
 }
 
@@ -109,7 +111,7 @@ void CStalker::reinit			()
 	m_pPhysics_support->in_Init		();
 	
 	m_best_item_to_kill				= 0;
-	m_best_item_value				= 0.f;
+	m_best_item_value				= 0.0f;
 	m_best_ammo						= 0;
 	m_best_found_item_to_kill		= 0;
 	m_best_found_ammo				= 0;
@@ -136,7 +138,7 @@ void CStalker::reinit			()
 
 	m_can_kill_enemy				= false;
 	m_can_kill_member				= false;
-	m_pick_distance					= 0.f;
+	m_pick_distance					= 0.0f;
 	m_pick_frame_id					= 0;
 
 	m_weapon_shot_random_seed		= s32(Level().timeServer_Async());
@@ -159,11 +161,12 @@ void CStalker::reinit			()
 
 	{
 		m_critical_wound_weights.clear	();
-//		pcstr							weights = pSettings->r_string(cNameSect(),"critical_wound_weights");
 		pcstr							weights = SpecificCharacter().critical_wound_weights();
 		string16						temp;
-		for (s32 i=0, n=_GetItemCount(weights); i<n; ++i)
-			m_critical_wound_weights.push_back((f32)atof(_GetItem(weights,i,temp)));
+		for (s32 i = 0, n = _GetItemCount(weights); i < n; ++i)
+		{
+			m_critical_wound_weights.push_back((f32)atof(_GetItem(weights, i, temp)));
+		}
 	}
 
 	m_sight_enabled_before_animation_controller		= true;
@@ -204,19 +207,25 @@ void CStalker::reload			(pcstr section)
 	brain().setup					(this);
 
 	CCustomMonster::reload			(section);
-	if (!already_dead())
-		CStepManager::reload		(section);
+	if (!already_dead( ))
+	{
+		CStepManager::reload(section);
+	}
 
 //	if (!already_dead())
-		CObjectHandler::reload		(section);
+	CObjectHandler::reload		(section);
 
 //	inventory().m_slots[OUTFIT_SLOT].m_bUsable = false;
 
-	if (!already_dead())
-		sight().reload				(section);
+		if (!already_dead( ))
+		{
+			sight( ).reload(section);
+		}
 
-	if (!already_dead())
-		movement().reload			(section);
+		if (!already_dead( ))
+		{
+			movement( ).reload(section);
+		}
 
 	m_disp_walk_stand				= pSettings->r_float(section,"disp_walk_stand");
 	m_disp_walk_crouch				= pSettings->r_float(section,"disp_walk_crouch");
@@ -273,7 +282,9 @@ void CStalker::Die				(CObject* who)
 
 	CWeapon							*weapon = smart_cast<CWeapon*>(active_item);
 	if (!weapon)
+	{
 		return;
+	}
 
 	{
 		TIItemContainer::iterator	I = inventory().m_all.begin();

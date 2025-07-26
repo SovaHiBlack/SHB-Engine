@@ -83,8 +83,7 @@ public:
 	f32					m_fTimeUpdateDelta;
 	u32					m_dwLastUpdateTime;
 	u32					m_current_update;
-//	fMatrix4x4				m_tServerTransform;
-	
+
 	u32					m_dwCurrentTime;		// time updated in UpdateCL 
 
 	struct net_update	{
@@ -159,8 +158,7 @@ public:
 	virtual void		OnHUDDraw				(CCustomHUD* hud);
 #endif
 
-	virtual bool		bfExecMovement			(){return(false);};
-
+	virtual bool		bfExecMovement			(){return(false);}
 
 	IC	bool					angle_lerp_bounds		(f32& a, f32 b, f32 c, f32 d);
 	IC	void					vfNormalizeSafe			(fVector3& Vector);
@@ -259,8 +257,8 @@ private:
 	bool							m_already_dead;
 
 public:
-	IC		const bool				&already_dead			() const {return (m_already_dead);};
-	virtual	bool					use_simplified_visual	() const {return (already_dead());};
+	IC		const bool				&already_dead			() const {return (m_already_dead);}
+	virtual	bool					use_simplified_visual	() const {return (already_dead());}
 	virtual void					on_enemy_change			(const CEntityAlive *enemy);
 	virtual	CVisualMemoryManager	*visual_memory			() const;
 
@@ -295,6 +293,7 @@ protected:
 
 public:
 	IC		void					critical_wounded_state_stop					();
+
 public:
 	IC		bool					critically_wounded							();
 	IC	const u32					&critical_wound_type						() const;

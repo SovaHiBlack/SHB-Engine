@@ -20,7 +20,7 @@ IC fVector3 random_position(const fVector3& center, f32 R)
 
 IC bool	from_right(f32 ty, f32 cy)
 {
-	return ((angle_normalize_signed(ty - cy) > 0));
+	return (angle_normalize_signed(ty - cy) > 0);
 }
 
 IC bool	is_angle_between(f32 yaw, f32 yaw_from, f32 yaw_to)

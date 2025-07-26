@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_trader.h
-//	Created 	: 16.04.2003
-//  Modified 	: 16.04.2003
-//	Author		: Jim
+//	Module 		: Trader.h
 //	Description : Trader class
 ////////////////////////////////////////////////////////////////////////////
 
@@ -22,20 +19,16 @@ class CBlend;
 class CSoundPlayer;
 class CTraderAnimation;
 
-class CAI_Trader : public CEntityAlive,
-	public CInventoryOwner,
-	public CScriptEntity,
-	public CAI_PhraseDialogManager
+class CTrader : public CEntityAlive, public CInventoryOwner, public CScriptEntity, public CAI_PhraseDialogManager
 {
-
 	typedef CEntityAlive inherited;
 
 private:
 	bool				m_busy_now;
 
 public:
-	CAI_Trader( );
-	virtual				~CAI_Trader( );
+	CTrader( );
+	virtual				~CTrader( );
 
 	virtual CAttachmentOwner* cast_attachment_owner( )
 	{
@@ -75,7 +68,7 @@ public:
 	virtual BOOL		net_Spawn(CSE_Abstract* DC);
 	virtual void		net_Export(CNetPacket& P);
 	virtual void		net_Import(CNetPacket& P);
-	virtual	void		net_Destroy( );
+	virtual void		net_Destroy( );
 
 	virtual void		save(CNetPacket& output_packet);
 	virtual void		load(IReader& input_packet);
@@ -90,25 +83,25 @@ public:
 	{ }
 	virtual void		HitImpulse(f32 /**P/**/, fVector3&/**vWorldDir/**/, fVector3& /**vLocalDir/**/)
 	{ }
-	virtual	void		Hit(SHit* pHDS)
+	virtual void		Hit(SHit* pHDS)
 	{
 		inherited::Hit(pHDS);
 	}
-	virtual	void		UpdateCL( );
+	virtual void		UpdateCL( );
 
 	virtual void		g_fireParams(const CHudItem* pHudItem, fVector3& P, fVector3& D);
 	virtual void		g_WeaponBones(s32& L, s32& R1, s32& R2);
-	virtual	f32			ffGetFov( )	const
+	virtual f32			ffGetFov( ) const
 	{
-		return 150.f;
+		return 150.0f;
 	}
-	virtual	f32			ffGetRange( )	const
+	virtual f32			ffGetRange( ) const
 	{
-		return 30.f;
+		return 30.0f;
 	}
-	virtual	void		OnEvent(CNetPacket& P, u16 type);
-	virtual	void		feel_touch_new(CObject* O);
-	virtual	void		DropItemSendMessage(CObject* O);
+	virtual void		OnEvent(CNetPacket& P, u16 type);
+	virtual void		feel_touch_new(CObject* O);
+	virtual void		DropItemSendMessage(CObject* O);
 	virtual void		shedule_Update(u32 dt);
 
 	virtual BOOL		UsedAI_Locations( );
@@ -135,25 +128,25 @@ public:
 	virtual void			reinit( );
 	virtual void			reload(pcstr section);
 
-	static	void			BoneCallback(CBoneInstance* B);
+	static void			BoneCallback(CBoneInstance* B);
 	void			LookAtActor(CBoneInstance* B);
 
 	void			OnStartTrade( );
 	void			OnStopTrade( );
 
-//игровое имя
+	//игровое имя
 	virtual pcstr			Name( ) const
 	{
 		return CInventoryOwner::Name( );
 	}
 
-	virtual	bool			can_attach(const CInventoryItem* inventory_item) const;
+	virtual bool			can_attach(const CInventoryItem* inventory_item) const;
 	virtual bool			use_bolts( ) const;
-	virtual	void			spawn_supplies( );
+	virtual void			spawn_supplies( );
 
-	virtual	bool			bfAssignSound(CScriptEntityAction* tpEntityAction);
+	virtual bool			bfAssignSound(CScriptEntityAction* tpEntityAction);
 
-	virtual	ALife::ERelationType tfGetRelationType(const CEntityAlive* tpEntityAlive) const;
+	virtual ALife::ERelationType tfGetRelationType(const CEntityAlive* tpEntityAlive) const;
 
 	//////////////////////////////////////////////////////////////////////////
 	//генерируемые задания
@@ -164,7 +157,7 @@ public:
 	virtual	bool			BuyArtefact(CArtefact* pArtefact);
 
 public:
-	IC		bool			busy_now( ) const
+	IC bool			busy_now( ) const
 	{
 		return				(m_busy_now);
 	}
@@ -173,7 +166,7 @@ private:
 	CSoundPlayer* m_sound_player;
 
 public:
-	IC		CSoundPlayer& sound( ) const
+	IC CSoundPlayer& sound( ) const
 	{
 		VERIFY(m_sound_player);
 		return				(*m_sound_player);
@@ -193,6 +186,7 @@ public:
 
 private:
 	CTraderAnimation* AnimMan;
+
 public:
 	CTraderAnimation& animation( )
 	{
@@ -201,6 +195,6 @@ public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_Trader)
+add_to_type_list(CTrader)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Trader)
+#define script_type_list save_type_list(CTrader)

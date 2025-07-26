@@ -3,7 +3,7 @@
 
 class CPhysicsShell;
 
-class interactive_motion
+class CInteractiveMotion
 {
 	MotionID motion;
 
@@ -16,11 +16,11 @@ protected:
 	};
 
 public:
-	interactive_motion( );
+	CInteractiveMotion( );
 	void	init( );
 	void	setup(pcstr m, CPhysicsShell* s);
 	void	update(CPhysicsShell* s);
-	IC	bool	is_enabled( )
+	IC bool	is_enabled( )
 	{
 		return !!flags.test(fl_use_death_motion);
 	}
@@ -40,18 +40,18 @@ private:
 	static void	anim_callback(CBlend* B);
 };
 
-class imotion_velocity : public interactive_motion
+class CInteractiveMotionVelocity : public CInteractiveMotion
 {
-	typedef			interactive_motion inherited;
+	typedef			CInteractiveMotion inherited;
 	virtual void	move_update(CPhysicsShell* s);
 	virtual void	collide(CPhysicsShell* s);
 	virtual void	state_end(CPhysicsShell* s);
 	virtual void	state_start(CPhysicsShell* s);
 };
 
-class imotion_position : public interactive_motion
+class CInteractiveMotionPosition : public CInteractiveMotion
 {
-	typedef			interactive_motion inherited;
+	typedef			CInteractiveMotion inherited;
 	virtual void	move_update(CPhysicsShell* s);
 	virtual void	collide(CPhysicsShell* s);
 	virtual void	state_end(CPhysicsShell* s);

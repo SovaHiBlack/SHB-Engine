@@ -1,13 +1,13 @@
 #include "stdafx.h"
 
-#include "character_hit_animations.h"
+#include "CharacterHitAnimationController.h"
 
 #include "EntityAlive.h"
 #ifdef DEBUG
 #include "phdebug.h"
 #endif
 
-void character_hit_animation_controller::SetupHitMotions(CKinematicsAnimated& ca)
+void CCharacterHitAnimationController::SetupHitMotions(CKinematicsAnimated& ca)
 {
 	//CKinematicsAnimated* ca = smart_cast<CKinematicsAnimated*>(m_EntityAlife.Visual());
 	/*
@@ -72,7 +72,7 @@ IC void	play_cycle(CKinematicsAnimated* CA, const MotionID& m, u8 channel, u32& 
 	}
 }
 
-void character_hit_animation_controller::PlayHitMotion(const fVector3& dir, const fVector3& bone_pos, u16 bi, CEntityAlive& ea) const
+void CCharacterHitAnimationController::PlayHitMotion(const fVector3& dir, const fVector3& bone_pos, u16 bi, CEntityAlive& ea) const
 {
 	CKinematicsAnimated* CA = smart_cast<CKinematicsAnimated*>(ea.Visual( ));
 
@@ -170,7 +170,7 @@ void character_hit_animation_controller::PlayHitMotion(const fVector3& dir, cons
 	//smart_cast<CKinematicsAnimated*>(m_EntityAlife.Visual())->LL_MotionID("actor_hit_ani_180_2");
 }
 
-bool character_hit_animation_controller::IsEffected(u16	bi, CKinematics& ca) const
+bool CCharacterHitAnimationController::IsEffected(u16	bi, CKinematics& ca) const
 {
 	u16 root = ca.LL_GetBoneRoot( );
 	for (; bi != root;)
@@ -187,7 +187,7 @@ bool character_hit_animation_controller::IsEffected(u16	bi, CKinematics& ca) con
 	return false;
 }
 
-void character_hit_animation_controller::GetBaseMatrix(fMatrix4x4& m, CEntityAlive& ea) const
+void CCharacterHitAnimationController::GetBaseMatrix(fMatrix4x4& m, CEntityAlive& ea) const
 {
 	CKinematics* CA = smart_cast<CKinematics*>(ea.Visual( ));
 	m.mul_43(ea.XFORM( ), CA->LL_GetTransform(base_bone));

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "stalker_alife_task_actions.h"
 #include "ai/stalker/Stalker.h"
-#include "ai/trader/ai_trader.h"
+#include "ai/trader/Trader.h"
 //#include "InventoryItem.h"
 #include "Weapon.h"
 #include "script_game_object.h"

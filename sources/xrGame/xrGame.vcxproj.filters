@@ -250,54 +250,6 @@
     <Filter Include="AI\AGroup\agent_manager">
       <UniqueIdentifier>{7b5a7f3c-a529-402a-a811-8e3bd6c93cce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_corpse_manager">
-      <UniqueIdentifier>{5f27ab7c-4ef9-4833-9f79-6c6d223cb8e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_corpse_manager\member_corpse">
-      <UniqueIdentifier>{c50157f3-d220-4705-baf5-dbc6132157dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_enemy_manager">
-      <UniqueIdentifier>{e7ae8a84-89a2-496f-a82a-2498fc534087}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_enemy_manager\member_enemy">
-      <UniqueIdentifier>{def0a6f7-f8aa-4bb1-bd9e-b46caa012334}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_explosive_manager">
-      <UniqueIdentifier>{0849630d-5727-4814-a833-0109009bbf03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_explosive_manager\danger_explosive">
-      <UniqueIdentifier>{5c9fd1dc-e43c-4f95-9c02-971d485e9cd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_location_manager">
-      <UniqueIdentifier>{9916d155-b0f1-426e-9bf3-f7cf4a51c8db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_location_manager\danger_location">
-      <UniqueIdentifier>{cb7a855f-b0c0-4e52-9ac1-c045f6f7623c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_location_manager\danger_cover_location">
-      <UniqueIdentifier>{6073a8cc-4851-4eb7-887d-dd383f6b7074}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_location_manager\danger_object_location">
-      <UniqueIdentifier>{7900dc5a-ae4f-45b0-b247-9d0953444ccc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_member_manager">
-      <UniqueIdentifier>{032ada75-a7cd-43b0-a1b4-bbab0b66e01d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_member_manager\member_order">
-      <UniqueIdentifier>{7575e2ee-a5eb-4602-acb0-6596f7419af2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_memory_manager">
-      <UniqueIdentifier>{c2551dd1-515c-4705-9a93-6dc4b7b36a26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_planner">
-      <UniqueIdentifier>{f524f0e2-71f8-4f3a-a6ee-ea12ba9f9bc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_planner\actions">
-      <UniqueIdentifier>{22dc2d21-a34d-4a4a-81f8-25ef4abaeab3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\AGroup\agent_manager\agent_planner\properties">
-      <UniqueIdentifier>{b1947418-b7fc-4477-9c9b-975aced335b3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\ALife">
       <UniqueIdentifier>{9a7df263-1813-4cc7-9853-073e2cf53d8c}</UniqueIdentifier>
     </Filter>
@@ -1966,9 +1918,6 @@
     <Filter Include="AI\Monsters\humans">
       <UniqueIdentifier>{075dd244-a74c-4fa9-9b27-cfb1340701ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\humans\trader">
-      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\humans\stalker">
       <UniqueIdentifier>{00f0639f-5b49-439c-93f1-c5d6d97e4c52}</UniqueIdentifier>
     </Filter>
@@ -2097,6 +2046,57 @@
     </Filter>
     <Filter Include="AI\Monsters\humans\stalker\SoundUserData">
       <UniqueIdentifier>{9478062f-7d21-4eaf-beb1-392b396f935d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Monsters\humans\Trader">
+      <UniqueIdentifier>{2f662c26-f5ee-4a6a-8032-976368937848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_corpse_manager">
+      <UniqueIdentifier>{5f27ab7c-4ef9-4833-9f79-6c6d223cb8e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_corpse_manager\member_corpse">
+      <UniqueIdentifier>{c50157f3-d220-4705-baf5-dbc6132157dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_enemy_manager">
+      <UniqueIdentifier>{e7ae8a84-89a2-496f-a82a-2498fc534087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_enemy_manager\member_enemy">
+      <UniqueIdentifier>{def0a6f7-f8aa-4bb1-bd9e-b46caa012334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_explosive_manager">
+      <UniqueIdentifier>{0849630d-5727-4814-a833-0109009bbf03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_explosive_manager\danger_explosive">
+      <UniqueIdentifier>{5c9fd1dc-e43c-4f95-9c02-971d485e9cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_location_manager">
+      <UniqueIdentifier>{9916d155-b0f1-426e-9bf3-f7cf4a51c8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_location_manager\danger_location">
+      <UniqueIdentifier>{cb7a855f-b0c0-4e52-9ac1-c045f6f7623c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_location_manager\danger_cover_location">
+      <UniqueIdentifier>{6073a8cc-4851-4eb7-887d-dd383f6b7074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_location_manager\danger_object_location">
+      <UniqueIdentifier>{7900dc5a-ae4f-45b0-b247-9d0953444ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_member_manager">
+      <UniqueIdentifier>{032ada75-a7cd-43b0-a1b4-bbab0b66e01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_member_manager\member_order">
+      <UniqueIdentifier>{7575e2ee-a5eb-4602-acb0-6596f7419af2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_memory_manager">
+      <UniqueIdentifier>{c2551dd1-515c-4705-9a93-6dc4b7b36a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_planner">
+      <UniqueIdentifier>{f524f0e2-71f8-4f3a-a6ee-ea12ba9f9bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_planner\actions">
+      <UniqueIdentifier>{22dc2d21-a34d-4a4a-81f8-25ef4abaeab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\AGroup\agent_planner\properties">
+      <UniqueIdentifier>{b1947418-b7fc-4477-9c9b-975aced335b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2563,94 +2563,94 @@
       <Filter>AI\AGroup\agent_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_corpse_manager.h">
-      <Filter>AI\AGroup\agent_manager\agent_corpse_manager</Filter>
+      <Filter>AI\AGroup\agent_corpse_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_corpse_manager_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_corpse_manager</Filter>
+      <Filter>AI\AGroup\agent_corpse_manager</Filter>
     </ClInclude>
     <ClInclude Include="member_corpse.h">
-      <Filter>AI\AGroup\agent_manager\agent_corpse_manager\member_corpse</Filter>
+      <Filter>AI\AGroup\agent_corpse_manager\member_corpse</Filter>
     </ClInclude>
     <ClInclude Include="member_corpse_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_corpse_manager\member_corpse</Filter>
+      <Filter>AI\AGroup\agent_corpse_manager\member_corpse</Filter>
     </ClInclude>
     <ClInclude Include="agent_enemy_manager.h">
-      <Filter>AI\AGroup\agent_manager\agent_enemy_manager</Filter>
+      <Filter>AI\AGroup\agent_enemy_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_enemy_manager_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_enemy_manager</Filter>
+      <Filter>AI\AGroup\agent_enemy_manager</Filter>
     </ClInclude>
     <ClInclude Include="member_enemy.h">
-      <Filter>AI\AGroup\agent_manager\agent_enemy_manager\member_enemy</Filter>
+      <Filter>AI\AGroup\agent_enemy_manager\member_enemy</Filter>
     </ClInclude>
     <ClInclude Include="member_enemy_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_enemy_manager\member_enemy</Filter>
+      <Filter>AI\AGroup\agent_enemy_manager\member_enemy</Filter>
     </ClInclude>
     <ClInclude Include="agent_explosive_manager.h">
-      <Filter>AI\AGroup\agent_manager\agent_explosive_manager</Filter>
+      <Filter>AI\AGroup\agent_explosive_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_explosive_manager_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_explosive_manager</Filter>
+      <Filter>AI\AGroup\agent_explosive_manager</Filter>
     </ClInclude>
     <ClInclude Include="danger_explosive.h">
-      <Filter>AI\AGroup\agent_manager\agent_explosive_manager\danger_explosive</Filter>
+      <Filter>AI\AGroup\agent_explosive_manager\danger_explosive</Filter>
     </ClInclude>
     <ClInclude Include="danger_explosive_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_explosive_manager\danger_explosive</Filter>
+      <Filter>AI\AGroup\agent_explosive_manager\danger_explosive</Filter>
     </ClInclude>
     <ClInclude Include="agent_location_manager.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager</Filter>
+      <Filter>AI\AGroup\agent_location_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_location_manager_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager</Filter>
+      <Filter>AI\AGroup\agent_location_manager</Filter>
     </ClInclude>
     <ClInclude Include="danger_location.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_location</Filter>
     </ClInclude>
     <ClInclude Include="danger_location_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_location</Filter>
     </ClInclude>
     <ClInclude Include="danger_cover_location.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_cover_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_cover_location</Filter>
     </ClInclude>
     <ClInclude Include="danger_cover_location_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_cover_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_cover_location</Filter>
     </ClInclude>
     <ClInclude Include="danger_object_location.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_object_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_object_location</Filter>
     </ClInclude>
     <ClInclude Include="danger_object_location_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_object_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_object_location</Filter>
     </ClInclude>
     <ClInclude Include="agent_member_manager.h">
-      <Filter>AI\AGroup\agent_manager\agent_member_manager</Filter>
+      <Filter>AI\AGroup\agent_member_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_member_manager_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_member_manager</Filter>
+      <Filter>AI\AGroup\agent_member_manager</Filter>
     </ClInclude>
     <ClInclude Include="member_order.h">
-      <Filter>AI\AGroup\agent_manager\agent_member_manager\member_order</Filter>
+      <Filter>AI\AGroup\agent_member_manager\member_order</Filter>
     </ClInclude>
     <ClInclude Include="member_order_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_member_manager\member_order</Filter>
+      <Filter>AI\AGroup\agent_member_manager\member_order</Filter>
     </ClInclude>
     <ClInclude Include="agent_memory_manager.h">
-      <Filter>AI\AGroup\agent_manager\agent_memory_manager</Filter>
+      <Filter>AI\AGroup\agent_memory_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_memory_manager_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_memory_manager</Filter>
+      <Filter>AI\AGroup\agent_memory_manager</Filter>
     </ClInclude>
     <ClInclude Include="agent_manager_planner.h">
-      <Filter>AI\AGroup\agent_manager\agent_planner</Filter>
+      <Filter>AI\AGroup\agent_planner</Filter>
     </ClInclude>
     <ClInclude Include="agent_manager_actions.h">
-      <Filter>AI\AGroup\agent_manager\agent_planner\actions</Filter>
+      <Filter>AI\AGroup\agent_planner\actions</Filter>
     </ClInclude>
     <ClInclude Include="agent_manager_properties.h">
-      <Filter>AI\AGroup\agent_manager\agent_planner\properties</Filter>
+      <Filter>AI\AGroup\agent_planner\properties</Filter>
     </ClInclude>
     <ClInclude Include="agent_manager_properties_inline.h">
-      <Filter>AI\AGroup\agent_manager\agent_planner\properties</Filter>
+      <Filter>AI\AGroup\agent_planner\properties</Filter>
     </ClInclude>
     <ClInclude Include="alife_simulator.h">
       <Filter>AI\ALife</Filter>
@@ -3717,11 +3717,11 @@
     <ClInclude Include="ai\Monsters\Dog\dog_state_manager.h">
       <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClInclude>
-    <ClInclude Include="Ai\Trader\ai_trader.h">
-      <Filter>AI\Monsters\humans\trader</Filter>
+    <ClInclude Include="Ai\Trader\Trader.h">
+      <Filter>AI\Monsters\humans\Trader</Filter>
     </ClInclude>
-    <ClInclude Include="ai\trader\trader_animation.h">
-      <Filter>AI\Monsters\humans\trader</Filter>
+    <ClInclude Include="ai\trader\TraderAnimation.h">
+      <Filter>AI\Monsters\humans\Trader</Filter>
     </ClInclude>
     <ClInclude Include="Ai\Stalker\Stalker.h">
       <Filter>AI\Monsters\humans\stalker</Filter>
@@ -5448,13 +5448,13 @@
     <ClInclude Include="PHImpact.h">
       <Filter>Physics\Base\Impact</Filter>
     </ClInclude>
-    <ClInclude Include="character_hit_animations.h">
+    <ClInclude Include="CharacterHitAnimationController.h">
       <Filter>Physics\CharacterSupport</Filter>
     </ClInclude>
     <ClInclude Include="CharacterPhysicsSupport.h">
       <Filter>Physics\CharacterSupport</Filter>
     </ClInclude>
-    <ClInclude Include="interactive_motion.h">
+    <ClInclude Include="InteractiveMotion.h">
       <Filter>Physics\CharacterSupport</Filter>
     </ClInclude>
     <ClInclude Include="tri-colliderKNoOPC\__aabb_tri.h">
@@ -6150,43 +6150,43 @@
       <Filter>AI\AGroup\agent_manager</Filter>
     </ClCompile>
     <ClCompile Include="agent_corpse_manager.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_corpse_manager</Filter>
+      <Filter>AI\AGroup\agent_corpse_manager</Filter>
     </ClCompile>
     <ClCompile Include="agent_enemy_manager.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_enemy_manager</Filter>
+      <Filter>AI\AGroup\agent_enemy_manager</Filter>
     </ClCompile>
     <ClCompile Include="agent_explosive_manager.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_explosive_manager</Filter>
+      <Filter>AI\AGroup\agent_explosive_manager</Filter>
     </ClCompile>
     <ClCompile Include="danger_explosive.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_explosive_manager\danger_explosive</Filter>
+      <Filter>AI\AGroup\agent_explosive_manager\danger_explosive</Filter>
     </ClCompile>
     <ClCompile Include="agent_location_manager.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager</Filter>
+      <Filter>AI\AGroup\agent_location_manager</Filter>
     </ClCompile>
     <ClCompile Include="danger_location.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_location</Filter>
     </ClCompile>
     <ClCompile Include="danger_cover_location.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_cover_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_cover_location</Filter>
     </ClCompile>
     <ClCompile Include="danger_object_location.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_location_manager\danger_object_location</Filter>
+      <Filter>AI\AGroup\agent_location_manager\danger_object_location</Filter>
     </ClCompile>
     <ClCompile Include="agent_member_manager.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_member_manager</Filter>
+      <Filter>AI\AGroup\agent_member_manager</Filter>
     </ClCompile>
     <ClCompile Include="agent_memory_manager.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_memory_manager</Filter>
+      <Filter>AI\AGroup\agent_memory_manager</Filter>
     </ClCompile>
     <ClCompile Include="agent_manager_planner.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_planner</Filter>
+      <Filter>AI\AGroup\agent_planner</Filter>
     </ClCompile>
     <ClCompile Include="agent_manager_actions.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_planner\actions</Filter>
+      <Filter>AI\AGroup\agent_planner\actions</Filter>
     </ClCompile>
     <ClCompile Include="agent_manager_properties.cpp">
-      <Filter>AI\AGroup\agent_manager\agent_planner\properties</Filter>
+      <Filter>AI\AGroup\agent_planner\properties</Filter>
     </ClCompile>
     <ClCompile Include="alife_simulator.cpp">
       <Filter>AI\ALife</Filter>
@@ -6725,11 +6725,11 @@
     <ClCompile Include="ai\Monsters\Dog\dog_script.cpp">
       <Filter>AI\Monsters\monsters\Dog\Script</Filter>
     </ClCompile>
-    <ClCompile Include="Ai\Trader\ai_trader.cpp">
-      <Filter>AI\Monsters\humans\trader</Filter>
+    <ClCompile Include="Ai\Trader\Trader.cpp">
+      <Filter>AI\Monsters\humans\Trader</Filter>
     </ClCompile>
-    <ClCompile Include="ai\trader\trader_animation.cpp">
-      <Filter>AI\Monsters\humans\trader</Filter>
+    <ClCompile Include="ai\trader\TraderAnimation.cpp">
+      <Filter>AI\Monsters\humans\Trader</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <Filter>AI\Monsters\humans\stalker</Filter>
@@ -8144,13 +8144,13 @@
     <ClCompile Include="PHSimpleCallsScript.cpp">
       <Filter>Physics\Base\Objects\PHCommander</Filter>
     </ClCompile>
-    <ClCompile Include="character_hit_animations.cpp">
+    <ClCompile Include="CharacterHitAnimationController.cpp">
       <Filter>Physics\CharacterSupport</Filter>
     </ClCompile>
     <ClCompile Include="CharacterPhysicsSupport.cpp">
       <Filter>Physics\CharacterSupport</Filter>
     </ClCompile>
-    <ClCompile Include="interactive_motion.cpp">
+    <ClCompile Include="InteractiveMotion.cpp">
       <Filter>Physics\CharacterSupport</Filter>
     </ClCompile>
     <ClCompile Include="tri-colliderknoopc\dcTriListCollider.cpp">

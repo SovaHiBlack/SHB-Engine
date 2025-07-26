@@ -499,8 +499,8 @@
     <ClInclude Include="ai\stalker\ai_stalker_impl.h" />
     <ClInclude Include="ai\stalker\ai_stalker_inline.h" />
     <ClInclude Include="Ai\Stalker\ai_stalker_space.h" />
-    <ClInclude Include="Ai\Trader\ai_trader.h" />
-    <ClInclude Include="ai\trader\trader_animation.h" />
+    <ClInclude Include="Ai\Trader\Trader.h" />
+    <ClInclude Include="ai\trader\TraderAnimation.h" />
     <ClInclude Include="ai_debug.h" />
     <ClInclude Include="ai_monster_space.h" />
     <ClInclude Include="ai_object_location.h" />
@@ -612,7 +612,7 @@
     <ClInclude Include="car_memory.h" />
     <ClInclude Include="CharacterPhysicsSupport.h" />
     <ClInclude Include="CharacterCommunity.h" />
-    <ClInclude Include="character_hit_animations.h" />
+    <ClInclude Include="CharacterHitAnimationController.h" />
     <ClInclude Include="CharacterInfo.h" />
     <ClInclude Include="CharacterInfo_defs.h" />
     <ClInclude Include="CharacterRank.h" />
@@ -794,7 +794,7 @@
     <ClInclude Include="InfoPortion_defs.h" />
     <ClInclude Include="ini_id_loader.h" />
     <ClInclude Include="ini_table_loader.h" />
-    <ClInclude Include="interactive_motion.h" />
+    <ClInclude Include="InteractiveMotion.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="InventoryBox.h" />
     <ClInclude Include="InventoryOwner.h" />
@@ -1638,8 +1638,8 @@
     <ClCompile Include="Ai\Stalker\ai_stalker_misc.cpp" />
     <ClCompile Include="Ai\Stalker\ai_stalker_script.cpp" />
     <ClCompile Include="ai\stalker\ai_stalker_script_entity.cpp" />
-    <ClCompile Include="Ai\Trader\ai_trader.cpp" />
-    <ClCompile Include="ai\trader\trader_animation.cpp" />
+    <ClCompile Include="Ai\Trader\Trader.cpp" />
+    <ClCompile Include="ai\trader\TraderAnimation.cpp" />
     <ClCompile Include="AI_PhraseDialogManager.cpp" />
     <ClCompile Include="ai_sounds.cpp" />
     <ClCompile Include="AISpace.cpp" />
@@ -1728,7 +1728,7 @@
     <ClCompile Include="car_memory.cpp" />
     <ClCompile Include="CharacterPhysicsSupport.cpp" />
     <ClCompile Include="CharacterCommunity.cpp" />
-    <ClCompile Include="character_hit_animations.cpp" />
+    <ClCompile Include="CharacterHitAnimationController.cpp" />
     <ClCompile Include="CharacterInfo.cpp" />
     <ClCompile Include="CharacterRank.cpp" />
     <ClCompile Include="CharacterReputation.cpp" />
@@ -1861,7 +1861,7 @@
     <ClCompile Include="ik_anim_state.cpp" />
     <ClCompile Include="InfoDocument.cpp" />
     <ClCompile Include="InfoPortion.cpp" />
-    <ClCompile Include="interactive_motion.cpp" />
+    <ClCompile Include="InteractiveMotion.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="InventoryBox.cpp" />
     <ClCompile Include="InventoryOwner.cpp" />

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "light.h"
 
-light::light		(void)	: ISpatial(g_SpatialSpace)
+light::light		( )	: ISpatial(g_SpatialSpace)
 {
 	spatial.type	= STYPE_LIGHTSOURCE;
 	flags.type		= POINT;
@@ -108,7 +108,7 @@ void	light::set_range		(f32 R)			{
 	if (fsimilar(range,R,eps))	return	;
 	range						= R		;
 	spatial_move				();
-};
+}
 
 void	light::set_cone			(f32 angle)		{
 	if (fsimilar(cone,angle))	return	;
@@ -172,7 +172,7 @@ vis_data&	light::get_homdata		()
 	hom.box.set		(spatial.sphere.P,spatial.sphere.P);
 	hom.box.grow	(spatial.sphere.R);
 	return			hom;
-};
+}
 
 fVector3	light::spatial_sector_point	()
 { 

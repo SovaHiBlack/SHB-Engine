@@ -217,7 +217,7 @@ void CALifeSwitchManager::try_switch_offline(CSE_ALifeDynamicObject* I)
 		if (0xffff != I->ID_Parent)
 		{
 #ifdef DEBUG
-		// checking if parent is online too
+			// checking if parent is online too
 			CSE_ALifeCreatureAbstract* l_tpALifeCreatureAbstract = smart_cast<CSE_ALifeCreatureAbstract*>(objects( ).object(I->ID_Parent));
 			if (l_tpALifeCreatureAbstract && (l_tpALifeCreatureAbstract->fHealth < EPSILON_3))
 				Msg("! uncontrolled situation [%d][%d][%s][%f]", I->ID, I->ID_Parent, l_tpALifeCreatureAbstract->name_replace( ), l_tpALifeCreatureAbstract->fHealth);

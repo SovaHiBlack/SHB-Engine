@@ -18,10 +18,10 @@ protected:
 	CScriptBinderObject* m_object;
 
 public:
-	CScriptBinder( );
+								CScriptBinder( );
 	virtual						~CScriptBinder( );
-	void				init( );
-	void				clear( );
+	void						init( );
+	void						clear( );
 	virtual void				reinit( );
 	virtual void				Load(pcstr section);
 	virtual void				reload(pcstr section);
@@ -32,8 +32,8 @@ public:
 	virtual void				load(IReader& input_packet);
 	virtual BOOL				net_SaveRelevant( );
 	virtual void				net_Relcase(CObject* object);
-	void				set_object(CScriptBinderObject* object);
-	IC		CScriptBinderObject* object( );
+	void						set_object(CScriptBinderObject* object);
+	IC CScriptBinderObject*		object( );
 };
 
 #include "script_binder_inline.h"

@@ -9,16 +9,25 @@
 struct	game_PlayerState;//fw
 class	CNetPacket;
 
-struct		RPoint
+struct RPoint
 {
 	fVector3	P;
-	fVector3 A;
-	u32		TimeToUnfreeze;
-	bool	Blocked;
-	u32		BlockedByID;
-	u32		BlockTime;
-	RPoint(){P.set(.0f,0.f,.0f);A.set(.0f,0.f,.0f); TimeToUnfreeze = 0; Blocked = false;}
-	bool	operator ==		(const u32& ID)	const			{ return (Blocked && BlockedByID == ID);		}
+	fVector3	A;
+	u32			TimeToUnfreeze;
+	bool		Blocked;
+	u32			BlockedByID;
+	u32			BlockTime;
+	RPoint( )
+	{
+		P.set(0.0f, 0.0f, 0.0f);
+		A.set(0.0f, 0.0f, 0.0f);
+		TimeToUnfreeze = 0;
+		Blocked = false;
+	}
+	bool	operator ==		(const u32& ID) const
+	{
+		return (Blocked && BlockedByID == ID);
+	}
 	DECLARE_SCRIPT_REGISTER_FUNCTION_STRUCT
 };
 
@@ -26,13 +35,13 @@ add_to_type_list(RPoint)
 #undef script_type_list
 #define script_type_list save_type_list(RPoint)
 
-struct Bonus_Money_Struct {
-	s32		Money;
-	u8		Reason;
-	u8		Kills;
-	Bonus_Money_Struct(s32 M, u8 R, u8 K) {Money = M; Reason = R; Kills = K;}
-	Bonus_Money_Struct() {Money = 0; Reason = 0; Kills=0;}
-};
+//struct Bonus_Money_Struct {
+//	s32		Money;
+//	u8		Reason;
+//	u8		Kills;
+//	Bonus_Money_Struct(s32 M, u8 R, u8 K) {Money = M; Reason = R; Kills = K;}
+//	Bonus_Money_Struct() {Money = 0; Reason = 0; Kills=0;}
+//};
 
 struct	game_PlayerState 
 {
@@ -68,8 +77,8 @@ struct	game_PlayerState
 	DEF_DEQUE	(OLD_GAME_ID, u16);
 	OLD_GAME_ID	mOldIDs;
 	s32			money_added;
-	DEF_VECTOR	(MONEY_BONUS, Bonus_Money_Struct);
-	MONEY_BONUS	m_aBonusMoney;
+//	DEF_VECTOR	(MONEY_BONUS, Bonus_Money_Struct);
+//	MONEY_BONUS	m_aBonusMoney;
 	bool		m_bPayForSpawn;
 	u32			m_online_time;
 public:

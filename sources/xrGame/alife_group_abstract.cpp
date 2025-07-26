@@ -160,7 +160,7 @@ void CSE_ALifeGroupAbstract::try_switch_offline		()
 		}
 
 		// detach object from the group
-		tpGroupMember->fHealth				= 0.f;
+		tpGroupMember->fHealth				= 0.0f;
 		tpGroupMember->m_bDirectControl		= true;
 		m_tpMembers.erase					(m_tpMembers.begin() + i);
 		tpGroupMember->m_bOnline			= false;

@@ -10,7 +10,7 @@
 
 #include "stalker_base_action.h"
 
-class CAI_Trader;
+class CTrader;
 
 //////////////////////////////////////////////////////////////////////////
 // CStalkerActionSolveZonePuzzle

@@ -92,7 +92,7 @@ struct SPHDBGDrawAbsract
 {
 	virtual void				render( ) = 0;
 	virtual						~SPHDBGDrawAbsract( )
-	{ };
+	{ }
 };
 DEFINE_VECTOR(SPHDBGDrawAbsract*, PHABS_DBG_V, PHABS_DBG_I);
 extern PHABS_DBG_V	dbg_draw_abstruct0;

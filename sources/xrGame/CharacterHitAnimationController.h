@@ -3,7 +3,7 @@ class CEntityAlive;
 
 #include "..\XR_3DA\SkeletonAnimated.h"
 
-class character_hit_animation_controller
+class CCharacterHitAnimationController
 {
 public:
 	void								SetupHitMotions(CKinematicsAnimated& ca);

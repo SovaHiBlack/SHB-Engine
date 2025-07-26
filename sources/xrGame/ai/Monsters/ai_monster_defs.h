@@ -34,8 +34,6 @@ class CBlend;
 #define CRITICAL_STAND_TIME		1400
 #define TIME_STAND_RECHECK		2000
 
-
-
 #define HIT_SIDE_COUNT			2
 #define HIT_BACK				0
 #define HIT_FRONT				1
@@ -43,7 +41,6 @@ class CBlend;
 #define HIT_HEIGHT_COUNT		2
 #define HIT_LOW					0
 #define HIT_HIGH				1
-
 
 // Enemy flags
 #define FLAG_ENEMY_DIE					( 1 << 0 )

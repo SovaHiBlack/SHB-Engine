@@ -13,10 +13,11 @@ class CUIDialogWnd;
 struct SZoneMapEntityData
 {
 	fVector3	pos;
-	u32		color;
+	u32			color;
 	SZoneMapEntityData( )
 	{
-		pos.set(.0f, .0f, .0f); color = 0xff00ff00;
+		pos.set(0.0f, 0.0f, 0.0f);
+		color = 0xff00ff00;
 	}
 	DECLARE_SCRIPT_REGISTER_FUNCTION_STRUCT
 };
@@ -129,40 +130,11 @@ public:
 	void				u_EventGen(CNetPacket& P, u16 type, u16 dest);
 	void				u_EventSend(CNetPacket& P);
 
-	virtual		void				ChatSayTeam(const shared_str& phrase)
-	{ }
-	virtual		void				ChatSayAll(const shared_str& phrase)
-	{ }
 	virtual		void				OnChatMessage(CNetPacket* P)
 	{ }
 	virtual		void				OnWarnMessage(CNetPacket* P)
 	{ }
 	virtual		void				OnRadminMessage(u16 type, CNetPacket* P)
-	{ }
-
-	virtual		bool				IsVotingEnabled( )
-	{
-		return m_u16VotingEnabled != 0;
-	}
-	virtual		bool				IsVotingEnabled(u16 flag)
-	{
-		return (m_u16VotingEnabled & flag) != 0;
-	}
-	virtual		bool				IsVotingActive( )
-	{
-		return false;
-	}
-	virtual		void				SetVotingActive(bool Active)
-	{ }
-	virtual		void				SendStartVoteMessage(pcstr args)
-	{ }
-	virtual		void				SendVoteYesMessage( )
-	{ }
-	virtual		void				SendVoteNoMessage( )
-	{ }
-	virtual		void				OnVoteStart(CNetPacket& P)
-	{ }
-	virtual		void				OnVoteStop(CNetPacket& P)
 	{ }
 
 	virtual		void				OnRender( )
@@ -189,9 +161,5 @@ public:
 	virtual		void				OnDestroy(CObject* pObj)
 	{ }
 
-	virtual		void				OnPlayerFlagsChanged(game_PlayerState* ps)
-	{ }
-	virtual		void				OnPlayerVoted(game_PlayerState* ps)
-	{ }
 	virtual		void				SendPickUpEvent(u16 ID_who, u16 ID_what);
 };

@@ -151,7 +151,7 @@
 #	include "Mincer.h"
 #	include "MosquitoBald.h"
 #	include "HairsZone.h"
-#	include "ai/trader/ai_trader.h"
+#	include "ai/trader/Trader.h"
 #	include "SpaceRestrictor.h"
 #	include "physicobject.h"
 #endif
