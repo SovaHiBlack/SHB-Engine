@@ -1,6 +1,4 @@
-
 [zone_radioactive]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\radioactive"
 ;$prefetch 		= 16
 class			= Z_RADIO
@@ -15,9 +13,9 @@ ef_weapon_type			= 15
 artefacts		= 
 BirthProbability = 0.0;0.1
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.99
-max_start_power		= 1.00
+max_start_power		= 1.0
 attenuation			= 0.1
 period				= 1
 min_artefact_count	= 0
@@ -55,11 +53,9 @@ awaking_time		= 100
 blowout_time		= 100	
 accamulate_time		= 100
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.01
 max_start_power		= 0.011
-
-
 
 [zone_radioactive_average]:zone_radioactive
 $spawn 			= "zones\radioactive_average"
@@ -67,11 +63,9 @@ awaking_time		= 100
 blowout_time		= 100	
 accamulate_time		= 100
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.03
 max_start_power		= 0.031
-
-
 
 [zone_radioactive_strong]:zone_radioactive
 $spawn 			= "zones\radioactive_strong"
@@ -80,11 +74,9 @@ awaking_time		= 100
 blowout_time		= 100	
 accamulate_time		= 100
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.06
 max_start_power		= 0.061
-
-
 
 [zone_radioactive_killing]:zone_radioactive_strong
 $spawn 			= "zones\radioactive_killing"

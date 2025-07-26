@@ -1,5 +1,4 @@
 [zone_mincer]
-GroupControlSection			= spawn_group_zone
 $spawn 						= "zones\mincer zone"
 $prefetch 					= 16
 class						= ZS_MINCE	
@@ -14,9 +13,9 @@ hit_effect					= explosions\expl_02_sparks
 artefacts					= af_blood,0.7, af_mincer_meat, 0.25,af_soul, 0.05
 BirthProbability			= 0.1
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.99
-max_start_power		= 1.00
+max_start_power		= 1.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -109,7 +108,7 @@ artefact_spawn_height		= 10								;(м) высота на центром зоны где будет рожден 
 [zone_mincer_weak]:zone_mincer
 $spawn 						= "zones\mincer_zone_weak"
 
-hit_impulse_scale			= 0.1	
+hit_impulse_scale			= 0.1;соотношение физического импульса и силы хита
 effective_radius			= 0.75
 
 throw_in_impulse				= 1000	;сила втягивания для единичной массы на расстоянии один метр
@@ -122,9 +121,9 @@ actor_blowout_radius_percent	= 0.6;
 ;; ветер
 blowout_wind_power			= 0.2	
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.49
-max_start_power		= 0.50
+max_start_power		= 0.5
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -151,7 +150,7 @@ artefact_spawn_idle	= 24  ;насколько часто спонить артефакты в офлайне, в часах
 
 [zone_mincer_average]:zone_mincer
 $spawn 						= "zones\mincer zone_average"
-hit_impulse_scale			= 0.1	
+hit_impulse_scale			= 0.1;соотношение физического импульса и силы хита
 effective_radius			= 0.8
 
 throw_in_impulse				= 1000	;сила втягивания для единичной массы на расстоянии один метр
@@ -170,9 +169,9 @@ awaking_time				= 50
 blowout_time				= 10000	
 accamulate_time				= 4000
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 1.19
-max_start_power		= 1.20
+max_start_power		= 1.2
 attenuation			= 1
 period				= 1
 min_artefact_count	= 1
@@ -182,7 +181,7 @@ artefact_spawn_rnd	= 70  ;вероятность заспавнить артефакт в процентах.
 
 [zone_mincer_strong]:zone_mincer
 $spawn 						= "zones\mincer zone_strong"
-hit_impulse_scale			= 1	
+hit_impulse_scale			= 1.0;соотношение физического импульса и силы хита
 effective_radius			= 1
 
 throw_in_impulse			= 4000	;сила втягивания для единичной массы на расстоянии один метр
@@ -201,9 +200,9 @@ awaking_time				= 25
 blowout_time				= 10000	
 accamulate_time				= 1000
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 2.49
-max_start_power		= 2.50
+max_start_power		= 2.5
 attenuation			= 1
 period				= 1
 min_artefact_count	= 1

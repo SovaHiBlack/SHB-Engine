@@ -1,11 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: vision_client.h
-//	Created 	: 11.06.2007
-//  Modified 	: 11.06.2007
-//	Author		: Dmitriy Iassenev
+//	Module 		: VisionClient.h
 //	Description : vision client
 ////////////////////////////////////////////////////////////////////////////
 
+#pragma once
 #ifndef VISION_CLIENT_H
 #define VISION_CLIENT_H
 
@@ -15,7 +13,7 @@ class CObject;
 class CEntity;
 class CVisualMemoryManager;
 
-class vision_client :
+class CVisionClient :
 	public ISheduled,
 	public Feel::Vision
 {
@@ -39,8 +37,8 @@ private:
 			void					eye_pp_s2				();
 
 public:
-									vision_client			(CEntity *object,const u32 &update_interval);
-	virtual							~vision_client			();
+	CVisionClient(CEntity *object,const u32 &update_interval);
+	virtual							~CVisionClient();
 
 public:
 	virtual f32					shedule_Scale			();
@@ -73,6 +71,6 @@ public:
 	IC		CVisualMemoryManager	&visual					() const;
 };
 
-#include "vision_client_inline.h"
+#include "VisionClient_inline.h"
 
 #endif // VISION_CLIENT_H

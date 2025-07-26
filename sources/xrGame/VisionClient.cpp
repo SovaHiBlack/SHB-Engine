@@ -1,23 +1,20 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: vision_client.cpp
-//	Created 	: 11.06.2007
-//  Modified 	: 11.06.2007
-//	Author		: Dmitriy Iassenev
+//	Module 		: VisionClient.cpp
 //	Description : vision client
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "vision_client.h"
+#include "VisionClient.h"
 #include "Entity.h"
 #include "visual_memory_manager.h"
 
-IC	const CEntity &vision_client::object		() const
+IC	const CEntity & CVisionClient::object		() const
 {
 	VERIFY						(m_object);
 	return						(*m_object);
 }
 
-vision_client::vision_client					(CEntity *object, const u32 &update_interval) :
+CVisionClient::CVisionClient(CEntity* object, const u32& update_interval) :
 	m_object					(object)
 {
 	VERIFY						(m_object);
@@ -31,36 +28,39 @@ vision_client::vision_client					(CEntity *object, const u32 &update_interval) :
 	shedule_register			();
 }
 
-vision_client::~vision_client					()
+CVisionClient::~CVisionClient()
 {
 	shedule_unregister			();
 	xr_delete					(m_visual);
 }
 
-void vision_client::eye_pp_s01					()
+void CVisionClient::eye_pp_s01					()
 {
 	Device.Statistic->AI_Vis_Query.Begin		();
 	
-	fVector3						c;
+	fVector3					c;
 	fVector3					k;
 	fVector3					j;
-	f32						field_of_view, aspect_ratio, near_plane, far_plane;
+	f32							field_of_view;
+	f32							aspect_ratio;
+	f32							near_plane;
+	f32							far_plane;
 	camera						(c, k, j, field_of_view, aspect_ratio, near_plane, far_plane);
 
 	fMatrix4x4					mProject;
 	fMatrix4x4					mFull;
 	fMatrix4x4					mView;
-	mView.build_camera_dir		(c,k,j);
+	mView.build_camera_dir		(c, k, j);
 	m_position					= c;
-	mProject.build_projection	(field_of_view,aspect_ratio,near_plane,far_plane);
-	mFull.mul					(mProject,mView);
+	mProject.build_projection	(field_of_view, aspect_ratio, near_plane, far_plane);
+	mFull.mul					(mProject, mView);
 	
-	feel_vision_query			(mFull,c);
+	feel_vision_query			(mFull, c);
 
 	Device.Statistic->AI_Vis_Query.End		();
 }
 
-void vision_client::eye_pp_s2					()
+void CVisionClient::eye_pp_s2					()
 {
 	Device.Statistic->AI_Vis_RayTests.Begin	();
 
@@ -72,12 +72,12 @@ void vision_client::eye_pp_s2					()
 	Device.Statistic->AI_Vis_RayTests.End	();
 }
 
-f32 vision_client::shedule_Scale				()
+f32 CVisionClient::shedule_Scale				()
 {
 	return						(0.f);
 }
 
-void vision_client::shedule_Update				(u32 dt)
+void CVisionClient::shedule_Update				(u32 dt)
 {
 	inherited::shedule_Update	(dt);
 
@@ -101,34 +101,34 @@ void vision_client::shedule_Update				(u32 dt)
 	visual().update				(f32(dt)/1000.f);
 }
 
-shared_str vision_client::shedule_Name			() const
+shared_str CVisionClient::shedule_Name			() const
 {
 	string256					temp;
-	sprintf_s						(temp,"vision_client[%s]",*object().cName());
+	sprintf_s						(temp,"CVisionClient[%s]",*object().cName());
 	return						(temp);
 }
 
-bool vision_client::shedule_Needed				()
+bool CVisionClient::shedule_Needed				()
 {
 	return						(true);
 }
 
-f32 vision_client::feel_vision_mtl_transp		(CObject* O, u32 element)
+f32 CVisionClient::feel_vision_mtl_transp		(CObject* O, u32 element)
 {
 	return						(visual().feel_vision_mtl_transp(O,element));
 }
 
-void vision_client::reinit						()
+void CVisionClient::reinit						()
 {
 	visual().reinit				();
 }
 
-void vision_client::reload						(pcstr section)
+void CVisionClient::reload						(pcstr section)
 {
 	visual().reload				(section);
 }
 
-void vision_client::remove_links				(CObject *object)
+void CVisionClient::remove_links				(CObject *object)
 {
 	visual().remove_links		(object);
 }

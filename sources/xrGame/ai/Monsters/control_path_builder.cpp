@@ -10,7 +10,7 @@
 #include "../../movement_manager_space.h"
 #include "../../level_path_manager.h"
 #include "../../Actor.h"
-#include "../../Actor_Memory.h"
+#include "../../ActorMemory.h"
 #include "../../visual_memory_manager.h"
 
 #ifdef DEBUG

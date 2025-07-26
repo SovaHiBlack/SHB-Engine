@@ -1,11 +1,10 @@
 [zone_ameba]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\ameba"
 ;$prefetch 		= 16
 class			= Z_AMEBA
 visual			= physics\anomaly\anomaly_studen
 
-hit_impulse_scale	= 0.0
+hit_impulse_scale	= 0.0;соотношение физического импульса и силы хита
 effective_radius	= 0.75 ;размер радиуса в процентах от оригинального, где действует зона
 max_velocity_in_zone= 0.5
 sound			= zone_mosquito_bald
@@ -17,18 +16,18 @@ ef_weapon_type			= 13
 artefacts		= af_rusty_thorn,0.7,af_rusty_kristall,0.25,af_rusty_sea-urchin,0.05
 BirthProbability = 0.1
 
-;----------- Anomaly settings -----------------------
-min_start_power		= 90
-max_start_power		= 100
-attenuation			= 1
-period				= 1
+;-------------------- Anomaly settings --------------------
+min_start_power		= 90.0
+max_start_power		= 100.0
 min_artefact_count	= 1
 max_artefact_count	= 2
+attenuation			= 1.0
+period				= 1
 
 hit_type		= chemical_burn
 
 disable_time		= -1	;время игнорирования неживого объекта в зоне (-1 если не нужно)
-disable_time_small	= 500		;время игнорирования маленького неживого объекта в зоне (-1 если не нужно)
+disable_time_small	= 500	;время игнорирования маленького неживого объекта в зоне (-1 если не нужно)
 disable_idle_time	= -1	;время отключения idle партиклов
 
 ignore_nonalive		= false;
@@ -54,13 +53,12 @@ blowout_wind		= off
 spawn_blowout_artefacts = off
 
 [zone_ameba1]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\ameba1"
 ;$prefetch 		= 16
 class			= Z_AMEBA
 visual			= physics\anomaly\anomaly_hvatalka
 
-hit_impulse_scale	= 0.
+hit_impulse_scale	= 0.0;соотношение физического импульса и силы хита
 effective_radius	= 0.75 ;размер радиуса в процентах от оригинального, где действует зона
 max_velocity_in_zone= 0.5
 sound			= zone_mosquito_bald
@@ -72,13 +70,13 @@ ef_weapon_type			= 13
 artefacts		= af_rusty_thorn,0.7,af_rusty_kristall,0.25,af_rusty_sea-urchin,0.05
 BirthProbability = 0.1
 
-;----------- Anomaly settings -----------------------
-min_start_power		= 90
-max_start_power		= 100
-attenuation			= 1
-period				= 1
+;-------------------- Anomaly settings --------------------
+min_start_power		= 90.0
+max_start_power		= 100.0
 min_artefact_count	= 1
 max_artefact_count	= 2
+attenuation			= 1.0
+period				= 1
 
 hit_type		= chemical_burn
 

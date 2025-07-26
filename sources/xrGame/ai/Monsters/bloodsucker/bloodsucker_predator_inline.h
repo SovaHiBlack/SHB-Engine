@@ -8,7 +8,7 @@
 #include "../monster_home.h"
 
 #include "../../../Actor.h"
-#include "../../../actor_memory.h"
+#include "../../../ActorMemory.h"
 #include "../../../visual_memory_manager.h"
 
 

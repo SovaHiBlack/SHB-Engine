@@ -6,7 +6,7 @@
 #include "../../memory_manager.h"
 #include "../../visual_memory_manager.h"
 #include "../../Actor.h"
-#include "../../actor_memory.h"
+#include "../../ActorMemory.h"
 
 CMonsterEnemyManager::CMonsterEnemyManager()
 {

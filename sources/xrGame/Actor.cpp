@@ -33,6 +33,7 @@
 
 //
 #include "Actor.h"
+#include "ActorMemory.h"
 #include "actor_anim_defs.h"
 #include "HudItem.h"
 #include "ai_sounds.h"
@@ -59,7 +60,6 @@
 #include "ui/UIArtefactPanel.h"//
 #include "MapManager.h"
 #include "GameTaskManager.h"
-#include "actor_memory.h"
 #include "Script_Game_Object.h"
 #include "GameObject_space.h"
 #include "script_callback_ex.h"

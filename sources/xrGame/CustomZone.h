@@ -45,7 +45,7 @@ public:
 	CZoneEffector* m_effector;
 
 public:
-	CCustomZone(void);
+	CCustomZone( );
 	virtual				~CCustomZone( );
 
 	virtual		BOOL	net_Spawn(CSE_Abstract* DC);
@@ -194,8 +194,7 @@ protected:
 	//если в зоне есть не disabled объекты
 	bool					m_bZoneActive;
 
-	//параметры для выброса, с какой задержкой 
-	//включать эффекты и логику
+	//параметры для выброса, с какой задержкой включать эффекты и логику
 	u32						m_dwBlowoutParticlesTime;
 	u32						m_dwBlowoutLightTime;
 	u32						m_dwBlowoutSoundTime;
@@ -215,11 +214,11 @@ protected:
 	void					StopWind( );
 	void					UpdateWind( );
 
-	//время, через которое, зона перестает реагировать 
-	//на объект мертвый объект (-1 если не указано)
+	//время, через которое, зона перестаёт реагировать на неживой объект в зоне (-1 если не нужно)
 	s32						m_iDisableHitTime;
-	//тоже самое но для маленьких объектов
+	//время, через которое, зона перестаёт реагировать на маленький неживой объект в зоне (-1 если не нужно)
 	s32						m_iDisableHitTimeSmall;
+	//время отключения idle партиклов
 	s32						m_iDisableIdleTime;
 
 	////////////////////////////////

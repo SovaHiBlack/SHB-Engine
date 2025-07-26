@@ -2,7 +2,6 @@
 ; Trader
 ;-----------------------------------------------------------------------------------
 [m_trader]
-GroupControlSection	= spawn_group
 $spawn						= "monsters\trader"		; option for Level Editor
 $prefetch 					= 5
 cform						= skeleton
@@ -96,7 +95,6 @@ front_right	= bip01_r_foot
 	panic_stand_run_forward		= 6.5
 
 [m_osoznanie]:stalker
-GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor
 $spawn               = "stalkers\osoznanie"	; option for Level Editor
 $npc			     = on			; option for Level Editor
@@ -116,7 +114,6 @@ explosion_immunity 			= 0.0
 fire_wound_immunity  		= 0.0
 
 [m_barman]:stalker
-GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor
 $spawn               = "stalkers\barman"	; option for Level Editor
 $npc			     = on			; option for Level Editor
@@ -149,7 +146,6 @@ front_right	= bip01_r_foot
 ;--------------------------------------------------------------------------
 
 [m_izgoy]:common_ph_friction_params_on_npc_death
-GroupControlSection	= spawn_group
 SpaceRestrictionSection = space_restrictor
 $spawn               = "stalkers\izgoy"	; option for Level Editor
 $npc			     = on			; option for Level Editor

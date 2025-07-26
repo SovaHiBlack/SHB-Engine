@@ -1435,9 +1435,6 @@
     <Filter Include="Core\Client\Objects\zones\VisualZone">
       <UniqueIdentifier>{36c5cae5-67b9-4a7f-a7d6-fa2e1129eab8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\actor\memory">
-      <UniqueIdentifier>{da7aec6c-a818-4091-b772-b274985f65d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\AComponents\StepManager">
       <UniqueIdentifier>{eb212181-a4f8-4f6a-9717-0c779516cc4d}</UniqueIdentifier>
     </Filter>
@@ -2098,6 +2095,9 @@
     <Filter Include="AI\AGroup\agent_planner\properties">
       <UniqueIdentifier>{b1947418-b7fc-4477-9c9b-975aced335b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Client\Objects\actor\ActorMemory">
+      <UniqueIdentifier>{da7aec6c-a818-4091-b772-b274985f65d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mt_config.h">
@@ -2271,10 +2271,10 @@
     <ClInclude Include="visual_memory_params.h">
       <Filter>AI\AComponents\MemoryManager\raw_data_managers\VisualMemoryManager\visual_memory_params</Filter>
     </ClInclude>
-    <ClInclude Include="vision_client.h">
+    <ClInclude Include="VisionClient.h">
       <Filter>AI\AComponents\MemoryManager\raw_data_managers\VisualMemoryManager\vision_client</Filter>
     </ClInclude>
-    <ClInclude Include="vision_client_inline.h">
+    <ClInclude Include="VisionClient_inline.h">
       <Filter>AI\AComponents\MemoryManager\raw_data_managers\VisualMemoryManager\vision_client</Filter>
     </ClInclude>
     <ClInclude Include="movement_manager.h">
@@ -4518,8 +4518,8 @@
     <ClInclude Include="LevelDebug.h">
       <Filter>Core\Client\Level Debug</Filter>
     </ClInclude>
-    <ClInclude Include="actor_memory.h">
-      <Filter>Core\Client\Objects\actor\memory</Filter>
+    <ClInclude Include="ActorMemory.h">
+      <Filter>Core\Client\Objects\actor\ActorMemory</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Core\Client\Objects\base\Entity</Filter>
@@ -6032,7 +6032,7 @@
     <ClCompile Include="visual_memory_params.cpp">
       <Filter>AI\AComponents\MemoryManager\raw_data_managers\VisualMemoryManager\visual_memory_params</Filter>
     </ClCompile>
-    <ClCompile Include="vision_client.cpp">
+    <ClCompile Include="VisionClient.cpp">
       <Filter>AI\AComponents\MemoryManager\raw_data_managers\VisualMemoryManager\vision_client</Filter>
     </ClCompile>
     <ClCompile Include="movement_manager.cpp">
@@ -7283,8 +7283,8 @@
     <ClCompile Include="LevelDebug.cpp">
       <Filter>Core\Client\Level Debug</Filter>
     </ClCompile>
-    <ClCompile Include="actor_memory.cpp">
-      <Filter>Core\Client\Objects\actor\memory</Filter>
+    <ClCompile Include="ActorMemory.cpp">
+      <Filter>Core\Client\Objects\actor\ActorMemory</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Client\Objects\base\Entity</Filter>

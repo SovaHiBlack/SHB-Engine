@@ -193,7 +193,7 @@
     <ClInclude Include="Actor_defs.h" />
     <ClInclude Include="Actor_flags.h" />
     <ClInclude Include="ActorInputHandler.h" />
-    <ClInclude Include="actor_memory.h" />
+    <ClInclude Include="ActorMemory.h" />
     <ClInclude Include="ActorStatistic_defs.h" />
     <ClInclude Include="ActorStatisticManager.h" />
     <ClInclude Include="agent_corpse_manager.h" />
@@ -1413,8 +1413,8 @@
     <ClInclude Include="vertex_manager_hash_fixed_inline.h" />
     <ClInclude Include="vertex_path.h" />
     <ClInclude Include="vertex_path_inline.h" />
-    <ClInclude Include="vision_client.h" />
-    <ClInclude Include="vision_client_inline.h" />
+    <ClInclude Include="VisionClient.h" />
+    <ClInclude Include="VisionClient_inline.h" />
     <ClInclude Include="visual_memory_manager.h" />
     <ClInclude Include="visual_memory_manager_inline.h" />
     <ClInclude Include="visual_memory_params.h" />
@@ -1487,7 +1487,7 @@
     <ClCompile Include="Actor_Events.cpp" />
     <ClCompile Include="Actor_Feel.cpp" />
     <ClCompile Include="ActorInputHandler.cpp" />
-    <ClCompile Include="actor_memory.cpp" />
+    <ClCompile Include="ActorMemory.cpp" />
     <ClCompile Include="Actor_Movement.cpp" />
     <ClCompile Include="Actor_Network.cpp" />
     <ClCompile Include="ActorStatisticManager.cpp" />
@@ -2349,7 +2349,7 @@
     <ClCompile Include="ui\UI_IB_Static.cpp" />
     <ClCompile Include="ui\UIXml.cpp" />
     <ClCompile Include="UsableScriptObject.cpp" />
-    <ClCompile Include="vision_client.cpp" />
+    <ClCompile Include="VisionClient.cpp" />
     <ClCompile Include="visual_memory_manager.cpp" />
     <ClCompile Include="visual_memory_params.cpp" />
     <ClCompile Include="WalmarkManager.cpp" />

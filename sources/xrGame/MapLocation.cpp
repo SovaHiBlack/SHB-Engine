@@ -13,6 +13,7 @@
 #include "alife_simulator.h"
 #include "graph_engine.h"
 #include "Actor.h"
+#include "ActorMemory.h"
 #include "ai_object_location.h"
 #include "alife_object_registry.h"
 #include "RelationRegistry.h"
@@ -20,7 +21,6 @@
 #include "object_broker.h"
 #include "StringTable.h"
 #include "LevelChanger.h"
-#include "actor_memory.h"
 #include "visual_memory_manager.h"
 #include "location_manager.h"
 

@@ -1,9 +1,8 @@
 [zone_mine_field]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\mine_field"
 $prefetch 		= 16
 class			= Z_MBALD
-hit_impulse_scale	= 0.15;0.5 ;0.1
+hit_impulse_scale	= 0.15;0.5 ;0.1;соотношение физического импульса и силы хита
 effective_radius	= 1 ;размер радиуса в процентах от оригинального, где действует зона
 sound			= 
 
@@ -12,13 +11,12 @@ ef_weapon_type			= 13
 
 ;postprocess		= mosquito_bald
 
-
 BirthProbability	= 0.0
 hit_type			= explosion
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.99
-max_start_power		= 1.00
+max_start_power		= 1.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -85,14 +83,11 @@ blowout_wind_time_peak      = 200
 blowout_wind_time_end		= 1001;999
 blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowout_wind_time_peak 
 
-
-
 [zone_death]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\death"
 $prefetch 		= 16
 class			= Z_MBALD
-hit_impulse_scale	= 0.05;0.5 ;0.1
+hit_impulse_scale	= 0.05;0.5 ;0.1;соотношение физического импульса и силы хита
 effective_radius	= 1; 0.75 ;размер радиуса в процентах от оригинального, где действует зона
 sound			= zone_mosquito_bald
 
@@ -105,9 +100,9 @@ artefacts		=
 BirthProbability	= 0.0
 hit_type			= strike
 
-;----------- Anomaly settings -----------------------
+;-------------------- Anomaly settings --------------------
 min_start_power		= 0.99
-max_start_power		= 1.00
+max_start_power		= 1.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0

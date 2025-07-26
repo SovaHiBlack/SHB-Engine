@@ -161,7 +161,6 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeItemWeapon,CSE_ALifeItem)
 	virtual u32						ef_main_weapon_type	() const;
 	virtual u32						ef_weapon_type		() const;
 	u8								get_slot			();
-	//u16								get_ammo_limit		();
 	u16								get_ammo_total		();
 	u16								get_ammo_elapsed	();
 	u16								get_ammo_magsize	();

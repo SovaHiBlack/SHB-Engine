@@ -7,13 +7,14 @@
 ////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "vision_client.h"
+#include "VisionClient.h"
 
 class CCar;
 
-class car_memory : public vision_client {
+class car_memory : public CVisionClient
+{
 private:
-	typedef vision_client					inherited;
+	typedef CVisionClient					inherited;
 
 private:
 	CCar			*m_object;

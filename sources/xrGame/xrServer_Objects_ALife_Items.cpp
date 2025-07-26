@@ -474,11 +474,6 @@ u8 CSE_ALifeItemWeapon::get_slot( )
 	return ((u8)pSettings->r_u8(s_name, "slot"));
 }
 
-//u16 CSE_ALifeItemWeapon::get_ammo_limit( )
-//{
-//	return (u16)pSettings->r_u16(s_name, "ammo_limit");
-//}
-
 u16 CSE_ALifeItemWeapon::get_ammo_total( )
 {
 	return (u16)a_current;

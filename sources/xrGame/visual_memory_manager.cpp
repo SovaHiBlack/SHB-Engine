@@ -21,9 +21,9 @@
 #include "AISpace.h"
 #include "Profiler.h"
 #include "Actor.h"
+#include "ActorMemory.h"
 #include "..\XR_3DA\camerabase.h"
 #include "gamepersistent.h"
-#include "actor_memory.h"
 #include "ClientSpawnManager.h"
 #include "memory_manager.h"
 
@@ -90,7 +90,7 @@ CVisualMemoryManager::CVisualMemoryManager		(CStalker*stalker)
 	initialize			();
 }
 
-CVisualMemoryManager::CVisualMemoryManager		(vision_client *client)
+CVisualMemoryManager::CVisualMemoryManager(CVisionClient* client)
 {
 	m_object			= 0;
 	m_stalker			= 0;

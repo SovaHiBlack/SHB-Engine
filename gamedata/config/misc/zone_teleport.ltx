@@ -1,5 +1,4 @@
 [zone_teleport]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\teleport_horiz"
 $prefetch 		= 16
 class			= Z_MBALD
@@ -13,9 +12,9 @@ postprocess		= postprocess_electra
 artefacts			=
 BirthProbability	= 0.0
 
-;----------- Anomaly settings -----------------------
-min_start_power		= 0.00
-max_start_power		= 0.00
+;-------------------- Anomaly settings --------------------
+min_start_power		= 0.0
+max_start_power		= 0.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -36,7 +35,6 @@ entrance_big_particles		= anomaly2\teleport_damage
 
 tele_particles_small		= anomaly2\gravity_damage_01_smoke	;anomaly2\gravity_damage_01_smoke
 tele_particles_big			= anomaly2\gravity_damage_02_smoke	
-
 
 idle_sound			= anomaly\teleport_idle;  gravi_idle01							;постоянный звук
 blowout_sound		= anomaly\teleport_work_2; anomaly_gravy_blast01	;во время выброса(удара) в центре аномалии	
@@ -91,7 +89,6 @@ tele_pause				= 5000		;пауза перед тем как снова поднять упавший объект
 
 visible_by_detector = on
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ветер
 blowout_wind		= on
@@ -100,17 +97,11 @@ blowout_wind_time_start     = 0
 blowout_wind_time_peak      = 800
 blowout_wind_time_end		= 1001; 2499
 blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowout_wind_time_peak 
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;рождение артефактов во время срабатывания
 spawn_blowout_artefacts = off   ;on
 
-
-
 [zone_teleport_out]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\teleport_out"
 $prefetch 		= 16
 class			= Z_MBALD
@@ -125,13 +116,12 @@ sound			= monsters\biting\def_0
 
 postprocess		= postprocess_electra
 
-
 BirthProbability	= 0.0
 hit_type			= strike
 
-;----------- Anomaly settings -----------------------
-min_start_power		= 0.00
-max_start_power		= 0.00
+;-------------------- Anomaly settings --------------------
+min_start_power		= 0.0
+max_start_power		= 0.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0
@@ -205,10 +195,7 @@ blowout_wind_time_peak      = 300
 blowout_wind_time_end		= 501; 899
 blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowout_wind_time_peak 
 
-
-
 [zone_teleport_monolith]
-GroupControlSection	= spawn_group_zone
 $spawn 			= "zones\teleport_monolith"
 $prefetch 		= 16
 class			= Z_ZONE
@@ -223,13 +210,12 @@ sound			= monsters\biting\def_0
 
 postprocess		= postprocess_electra
 
-
 BirthProbability	= 0.0
 hit_type			= strike
 
-;----------- Anomaly settings -----------------------
-min_start_power		= 0.00
-max_start_power		= 0.00
+;-------------------- Anomaly settings --------------------
+min_start_power		= 0.0
+max_start_power		= 0.0
 attenuation			= 1
 period				= 1
 min_artefact_count	= 0

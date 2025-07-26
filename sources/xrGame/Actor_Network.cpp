@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "Actor.h"
+#include "ActorMemory.h"
 //#include "Actor_flags.h"
 #include "Inventory.h"
 #include "xrserver_objects_alife_monsters.h"
@@ -37,7 +38,6 @@
 #include "GameTaskManager.h"
 #include "game_base_kill_type.h"
 #include "HolderCustom.h"
-#include "actor_memory.h"
 #include "ActorStatisticManager.h"
 #include "game_cl_base_weapon_usage_statistic.h"
 #include "clsid_game.h"

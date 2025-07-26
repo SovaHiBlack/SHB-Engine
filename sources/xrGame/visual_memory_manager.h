@@ -13,7 +13,7 @@
 
 class CCustomMonster;
 class CStalker;
-class vision_client;
+class CVisionClient;
 
 class CVisualMemoryManager
 {
@@ -40,7 +40,7 @@ private:
 private:
 	CCustomMonster* m_object;
 	CStalker* m_stalker;
-	vision_client* m_client;
+	CVisionClient* m_client;
 
 private:
 	RAW_VISIBLES		m_visible_objects;
@@ -84,7 +84,7 @@ private:
 public:
 	CVisualMemoryManager(CCustomMonster* object);
 	CVisualMemoryManager(CStalker* stalker);
-	CVisualMemoryManager(vision_client* client);
+	CVisualMemoryManager(CVisionClient* client);
 	virtual			~CVisualMemoryManager( );
 	virtual	void	reinit( );
 	virtual	void	reload(pcstr section);

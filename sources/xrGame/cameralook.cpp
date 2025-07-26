@@ -4,9 +4,9 @@
 #include "..\XR_3DA\Cameramanager.h"
 #include "xr_level_controller.h"
 #include "Actor.h"
+#include "ActorMemory.h"
 #include "..\XR_3DA\Input.h"
 #include "visual_memory_manager.h"
-#include "actor_memory.h"
 
 CCameraLook::CCameraLook(CObject* p, u32 flags) : CCameraBase(p, flags)
 { }

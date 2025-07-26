@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: actor_memory.cpp
+//	Module 		: ActorMemory.cpp
 //	Created 	: 15.09.2005
 //  Modified 	: 15.09.2005
 //	Author		: Dmitriy Iassenev
@@ -7,8 +7,8 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "actor_memory.h"
 #include "Actor.h"
+#include "ActorMemory.h"
 #include "..\XR_3DA\camerabase.h"
 #include "gamepersistent.h"
 

@@ -5,7 +5,7 @@
 //#include "EntityAlive.h"
 #include "visual_memory_manager.h"
 #include "Actor.h"
-#include "actor_memory.h"
+#include "ActorMemory.h"
 #include "RelationRegistry.h"
 #include "object_broker.h"
 

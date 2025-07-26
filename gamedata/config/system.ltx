@@ -96,13 +96,11 @@ slot_persistent_10  = true		;torch
 
 
 [lights_hanging_lamp]
-GroupControlSection	= spawn_group
 $spawn 				= "physics\hanging lamp"
 class				= O_HLAMP
 script_binding      = bind_physic_object.init
 
 [physic_object]
-GroupControlSection	= spawn_group
 $spawn 				= "physics\object"
 $prefetch 			= 8
 class				= O_PHYS_S
@@ -110,7 +108,6 @@ remove_time			= 60; after this time  unbreaked removable bone will be removed
 script_binding      = bind_physic_object.init
 
 [physic_destroyable_object]
-GroupControlSection	= spawn_group
 $spawn 				= "physics\destroyable_object"
 ;$prefetch 			= 8
 class				= P_DSTRBL
@@ -118,7 +115,6 @@ remove_time			= 60; after this time  unbreaked removable bone will be removed
 script_binding      = bind_physic_object.init
 
 [search_light]
-GroupControlSection	= spawn_group
 $spawn 				= "physics\search light"
 class				= O_SEARCH
 cform				= skeleton
@@ -192,7 +188,6 @@ hit_mark_texture = ui\ui_hud_hit_mark
 
 
 [document]
-GroupControlSection	= spawn_group
 $spawn 				= "documents\document 01"
 ;$prefetch 			= 32
 class				= II_DOC
@@ -221,7 +216,6 @@ class                   = SPECT
 class 			 = EVENT
 
 [m_car]
-GroupControlSection	= spawn_group
 $spawn 			= "vehicles\car"
 cform                   = skeleton
 class                   = SCRPTCAR
@@ -329,23 +323,19 @@ sell_price_factor_friendly	= 1		;коэффициент покупки при goodwill = 100
 ;-----------------------------------------------------------------
 
 [spawn_group_zone]
-GroupControlSection			= spawn_group_zone
 $spawn						= "ai\group zone"									; option for Level Editor
 class						= AI_SPGRP
 
 [spawn_group]
-GroupControlSection			= spawn_group
 $spawn						= "ai\spawn group"								; option for Level Editor
 class						= AI_SPGRP
 
 [level_changer]
-GroupControlSection	= 
 $spawn 			= "ai\level changer"
 ;$prefetch 		= 4
 class			= LVL_CHNG
 
 [script_zone]
-GroupControlSection	= 
 $spawn 			= "ai\script zone"
 ;$prefetch 		= 4
 class			= SCRIPTZN
@@ -387,7 +377,6 @@ last_name_cnt	= 200
 
 
 [script_object]
-GroupControlSection			= spawn_group
 $spawn						= "script\script object"						; option for Level Editor
 $npc						= on											; option for Level Editor
 ; $prefetch 					= 32										;
@@ -404,7 +393,6 @@ snd_new_contact					= detectors\contact_1
 snd_new_contact1				= detectors\contact_8
 
 [attachable_item]
-GroupControlSection		= spawn_group
 $spawn					= "equipment\attachable_item"
 cform                   = skeleton
 class					= II_ATTCH
@@ -421,7 +409,6 @@ attach_position_offset	= 0.105, 0.00, 0.085
 attach_bone_name		= bip01_head
 
 [new_attachable_item]
-GroupControlSection		= spawn_group
 $spawn					= "equipment\new_attachable_item"
 cform                   = skeleton
 class					= II_BTTCH
@@ -438,7 +425,6 @@ attach_position_offset	= 0.105, 0.00, 0.085
 attach_bone_name		= bip01_head
 
 [hand_radio]:identity_immunities
-GroupControlSection		= spawn_group
 $spawn					= "equipment\hand_radio"
 cform                   = skeleton
 class					= II_ATTCH
@@ -465,11 +451,6 @@ immunity_factor				= 1.3	    ;hit power multiplier
 [climable_object]
 class						= O_CLMBL
 
-[zone_team_base]
-$spawn 			= "network\team base"
-class			= Z_TEAMBS
-GroupControlSection	= spawn_group_zone
-
 [main_ingame_indicators_thresholds]
 radiation				= 0.1, 0.25, 0.4, 0.55, 0.7
 wounds					= 0.01, 0.2, 0.4, 0.6, 0.8
@@ -495,7 +476,6 @@ schedule_min			= 100
 schedule_max			= 1000
 
 [custom_script_object]
-GroupControlSection		= spawn_group
 $spawn					= "scripts\custom_object"
 cform                   = skeleton
 class					= NW_ATTCH
@@ -520,7 +500,6 @@ remove_time				= 120
 current_server_entity_version = 7
 
 [space_restrictor]
-GroupControlSection		= spawn_group_restrictor
 $spawn					= "ai\space_restrictor"
 ;$prefetch 				= 64
 class					= SPC_RS_S
