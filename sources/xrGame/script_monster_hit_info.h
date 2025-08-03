@@ -8,7 +8,7 @@ class CScriptMonsterHitInfo {
 public:
 	CScriptGameObject			*who;
 	fVector3					direction;
-	int						time;
+	s32						time;
 
 	CScriptMonsterHitInfo		()
 	{
@@ -17,7 +17,7 @@ public:
 		direction		= fVector3().set(0.0f,0.0f,1.0f);
 	}
 
-	void set(CScriptGameObject *p_who, fVector3 p_direction, int p_time) {
+	void set(CScriptGameObject *p_who, fVector3 p_direction, s32 p_time) {
 		who			= p_who;
 		direction	= p_direction;
 		time		= p_time;

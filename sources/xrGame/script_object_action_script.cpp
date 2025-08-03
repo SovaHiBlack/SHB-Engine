@@ -20,27 +20,27 @@ void CScriptObjectAction::script_register(lua_State *L)
 		class_<CScriptObjectAction>("object")
 			.enum_("state")
 			[
-				value("idle",					int(MonsterSpace::eObjectActionIdle)),
-				value("show",					int(MonsterSpace::eObjectActionShow)),		
-				value("hide",					int(MonsterSpace::eObjectActionHide)),		
-				value("take",					int(MonsterSpace::eObjectActionTake)),		
-				value("drop",					int(MonsterSpace::eObjectActionDrop)),		
-				value("strap",					int(MonsterSpace::eObjectActionStrapped)),		
-				value("aim1",					int(MonsterSpace::eObjectActionAim1)),		
-				value("aim2",					int(MonsterSpace::eObjectActionAim2)),		
-				value("reload",					int(MonsterSpace::eObjectActionReload1)),	
-				value("reload1",				int(MonsterSpace::eObjectActionReload1)),	
-				value("reload2",				int(MonsterSpace::eObjectActionReload2)),	
-				value("fire1",					int(MonsterSpace::eObjectActionFire1)),		
-				value("fire2",					int(MonsterSpace::eObjectActionFire2)),		
-				value("switch1",				int(MonsterSpace::eObjectActionSwitch1)),	
-				value("switch2",				int(MonsterSpace::eObjectActionSwitch2)),	
-				value("activate",				int(MonsterSpace::eObjectActionActivate)),
-				value("deactivate",				int(MonsterSpace::eObjectActionDeactivate)),
-				value("use",					int(MonsterSpace::eObjectActionUse)),
-				value("turn_on",				int(MonsterSpace::eObjectActionTurnOn)),
-				value("turn_off",				int(MonsterSpace::eObjectActionTurnOff)),
-				value("dummy",					int(MonsterSpace::eObjectActionDummy))
+				value("idle", s32(MonsterSpace::eObjectActionIdle)),
+				value("show", s32(MonsterSpace::eObjectActionShow)),
+				value("hide", s32(MonsterSpace::eObjectActionHide)),
+				value("take", s32(MonsterSpace::eObjectActionTake)),
+				value("drop", s32(MonsterSpace::eObjectActionDrop)),
+				value("strap", s32(MonsterSpace::eObjectActionStrapped)),
+				value("aim1", s32(MonsterSpace::eObjectActionAim1)),
+				value("aim2", s32(MonsterSpace::eObjectActionAim2)),
+				value("reload", s32(MonsterSpace::eObjectActionReload1)),
+				value("reload1", s32(MonsterSpace::eObjectActionReload1)),
+				value("reload2", s32(MonsterSpace::eObjectActionReload2)),
+				value("fire1", s32(MonsterSpace::eObjectActionFire1)),
+				value("fire2", s32(MonsterSpace::eObjectActionFire2)),
+				value("switch1", s32(MonsterSpace::eObjectActionSwitch1)),
+				value("switch2", s32(MonsterSpace::eObjectActionSwitch2)),
+				value("activate", s32(MonsterSpace::eObjectActionActivate)),
+				value("deactivate", s32(MonsterSpace::eObjectActionDeactivate)),
+				value("use", s32(MonsterSpace::eObjectActionUse)),
+				value("turn_on", s32(MonsterSpace::eObjectActionTurnOn)),
+				value("turn_off", s32(MonsterSpace::eObjectActionTurnOff)),
+				value("dummy", s32(MonsterSpace::eObjectActionDummy))
 			]
 			.def(								constructor<>())
 			.def(								constructor<CScriptGameObject*,MonsterSpace::EObjectAction>())

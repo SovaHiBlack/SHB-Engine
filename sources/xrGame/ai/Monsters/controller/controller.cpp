@@ -715,9 +715,9 @@ void CController::debug_on_key(s32 key)
 		//DBG().level_info(this).add_item(P1,0.5f,COLOR_BLUE,0);
 	
 
-		//if (!fsimilar(P1.square_magnitude(),0.f) && 
-		//	!fsimilar(P2.square_magnitude(),0.f)) {
-		//	const CCoverPoint *cover = CoverMan->find_cover(P1,P2,10.f,40.f);
+		//if (!fsimilar(P1.square_magnitude(),0.0f) && 
+		//	!fsimilar(P2.square_magnitude(),0.0f)) {
+		//	const CCoverPoint *cover = CoverMan->find_cover(P1,P2,10.0f,40.0f);
 		//	if (cover) {
 		//		DBG().level_info(this).remove_item	(3);
 		//		DBG().level_info(this).add_item		(cover->position(),0.8f,COLOR_RED,3);
@@ -730,9 +730,9 @@ void CController::debug_on_key(s32 key)
 		DBG().level_info(this).remove_item	(1);
 		DBG().level_info(this).add_item(P2,0.5f,COLOR_GREEN,1);
 
-		if (!fsimilar(P1.square_magnitude(),0.f) && 
-			!fsimilar(P2.square_magnitude(),0.f)) {
-			const CCoverPoint *cover = CoverMan->find_cover(P1,P2,10.f,40.f);
+		if (!fsimilar(P1.square_magnitude(),0.0f) && 
+			!fsimilar(P2.square_magnitude(),0.0f)) {
+			const CCoverPoint *cover = CoverMan->find_cover(P1,P2,10.0f,40.0f);
 			if (cover) {
 				DBG().level_info(this).remove_item	(3);
 				DBG().level_info(this).add_item		(cover->position(),0.8f,COLOR_RED,3);

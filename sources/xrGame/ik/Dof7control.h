@@ -61,147 +61,147 @@
 class SRS
 {
 private:
-    short project_to_workspace;
-    //
-    // Stores equation of circle for a given problem
-    //
+	short project_to_workspace;
+	//
+	// Stores equation of circle for a given problem
+	//
 	f32 u[3];
 	f32 v[3];
 	f32 n[3];
 	f32 c[3];
 	f32 radius;
 
-    //
-    // Stores projection axis for determining u and the positive 
-    // direction axis for determining positive direction of angle
+	//
+	// Stores projection axis for determining u and the positive 
+	// direction axis for determining positive direction of angle
 	f32 proj_axis[3];
 	f32 pos_axis[3];
-    
-    //
-    // Stores end effector position in world frame and R1 frame
-    //
+	
+	//
+	// Stores end effector position in world frame and R1 frame
+	//
 	f32 ee[3];
 	f32 ee_r1[3];
-    //
-    // Stores position of middle revolute joint in R1 frame
-    // 
+	//
+	// Stores position of middle revolute joint in R1 frame
+	// 
 	f32 p_r1[3];
 
-    //
-    // Stores angle of R joint
-    //
+	//
+	// Stores angle of R joint
+	//
 	f32 upper_len;   // Len of T pos vector
 	f32 lower_len;   // Len of S pos vector
 	f32 reciprocal_upper_len;
 
 	f32 r_angle;
 
-    // 
-    // Stores goal transformation
-    //
-    Matrix G;
+	// 
+	// Stores goal transformation
+	//
+	Matrix G;
 
-    //
-    // Stores constant matrices and rotation of revolute joint
-    // and their product S*Ry*T. 
+	//
+	// Stores constant matrices and rotation of revolute joint
+	// and their product S*Ry*T. 
 
-    Matrix T, S, SRT;
+	Matrix T, S, SRT;
 
-    //
-    // Ry = Rotation matrix by flexion joint (only used by aiming routines)
-    // axis = axis of aiming vector in hand coordinates
-    Matrix Ry;
+	//
+	// Ry = Rotation matrix by flexion joint (only used by aiming routines)
+	// axis = axis of aiming vector in hand coordinates
+	Matrix Ry;
 	f32 axis[3];
 
-    void evaluate_circle(f32 angle, f32 p[3]);
+	void evaluate_circle(f32 angle, f32 p[3]);
 
 public:
-    void ProjectOn() 
+	void ProjectOn() 
 	{ project_to_workspace = 1; }
 
-    void ProjectOff() 
+	void ProjectOff() 
 	{ project_to_workspace = 0; }
 
-    //
-    // Given the position of the R joint find the corresponding 
-    // swivel angle. Must call SetGoal or SetGoalPos first.
-    // 
+	//
+	// Given the position of the R joint find the corresponding 
+	// swivel angle. Must call SetGoal or SetGoalPos first.
+	// 
 
 	f32 PosToAngle(const f32 p[3]);
 
-    //
-    // Given the swivel angle calculate the pos of the R joint. 
-    // Must call SetGoal or SetGoalPos first.
-    // 
-    void AngleToPos(f32 psi, f32 p[3]);
+	//
+	// Given the swivel angle calculate the pos of the R joint. 
+	// Must call SetGoal or SetGoalPos first.
+	// 
+	void AngleToPos(f32 psi, f32 p[3]);
 
-    // Sets the goal matrix, the projection axis, and the 
-    // positive direction axis
-    // Returns 1 if the goal is feasible
-    int  SetGoal(const Matrix  G, f32& rangle);
+	// Sets the goal matrix, the projection axis, and the 
+	// positive direction axis
+	// Returns 1 if the goal is feasible
+	s32  SetGoal(const Matrix  G, f32& rangle);
 	void EvaluateCircle(const f32 p[3]);
-    // Solve for both R1 and R2 given the pos or angle of the R joint
-    // returns the angle of the R joint 
+	// Solve for both R1 and R2 given the pos or angle of the R joint
+	// returns the angle of the R joint 
 
-    void SolveR1R2(const f32 pos[3], Matrix  R1, Matrix  R2);
-    void SolveR1R2(f32 angle, Matrix  R1, Matrix  R2);
+	void SolveR1R2(const f32 pos[3], Matrix  R1, Matrix  R2);
+	void SolveR1R2(f32 angle, Matrix  R1, Matrix  R2);
 
 
-    // Must call SetGoal first 
-    // Returns the psi equations of the rotation matrix R1
-    // ie: alpha[i][j]*cos(phi) + 
-    //     beta[i][j]*sin(phi) + 
-    //     xi[i][j] = R1[i][j] 
+	// Must call SetGoal first 
+	// Returns the psi equations of the rotation matrix R1
+	// ie: alpha[i][j]*cos(phi) + 
+	//     beta[i][j]*sin(phi) + 
+	//     xi[i][j] = R1[i][j] 
  
-    int R1Psi(Matrix alpha, Matrix beta, Matrix xi);
+	s32 R1Psi(Matrix alpha, Matrix beta, Matrix xi);
 
-    // Must call SetGoal first 
-    // Returns the psi equations of the rotation matrix R1 and R2 analogous
-    // to R1Psi
-    //
+	// Must call SetGoal first 
+	// Returns the psi equations of the rotation matrix R1 and R2 analogous
+	// to R1Psi
+	//
 
-    int R1R2Psi(Matrix alpha,  Matrix beta, Matrix xi,
+	s32 R1R2Psi(Matrix alpha,  Matrix beta, Matrix xi,
 		Matrix alpha2, Matrix beta2, Matrix xi2); 
 
-    
-    // Sets the goal pos. EE is a constant matrix that specifies
-    // the value of R2*E where E is a matrix that puts the base
-    // of the last S joint to a desired EE site
-    //
-    // Returns 1 if the goal is feasible
-    //
-    // Thus the problem to solve is to find R1 and Ry st 
-    //
-    // g = [0,0,0,1]*EE*S*Ry*T*R1 
+	
+	// Sets the goal pos. EE is a constant matrix that specifies
+	// the value of R2*E where E is a matrix that puts the base
+	// of the last S joint to a desired EE site
+	//
+	// Returns 1 if the goal is feasible
+	//
+	// Thus the problem to solve is to find R1 and Ry st 
+	//
+	// g = [0,0,0,1]*EE*S*Ry*T*R1 
 
-    int  SetGoalPos(const f32 g[3], const Matrix  EE, f32& rangle);
+	s32  SetGoalPos(const f32 g[3], const Matrix  EE, f32& rangle);
 
-    // Solves only for R1 after a call to SetGoalPos
-    void SolveR1(const f32 pos[3],  Matrix  R1);
-    void SolveR1(f32 angle,  Matrix  R);
-
-
-    // Constructor takes the T and S matrices
-    void init(const Matrix  T, const Matrix  S, const f32 a[3], const f32 p[3]);
-
-    SRS(const Matrix  T1, const Matrix  S1, const f32 a[3], const f32 p[3])
-    { 
-        init(T1,S1,a,p); 
-    }
-
-    SRS()  {}
-
-    ~SRS() {}
+	// Solves only for R1 after a call to SetGoalPos
+	void SolveR1(const f32 pos[3],  Matrix  R1);
+	void SolveR1(f32 angle,  Matrix  R);
 
 
-    void Tmatrix(Matrix  TT)
-    {
+	// Constructor takes the T and S matrices
+	void init(const Matrix  T, const Matrix  S, const f32 a[3], const f32 p[3]);
+
+	SRS(const Matrix  T1, const Matrix  S1, const f32 a[3], const f32 p[3])
+	{ 
+		init(T1,S1,a,p); 
+	}
+
+	SRS()  {}
+
+	~SRS() {}
+
+
+	void Tmatrix(Matrix  TT)
+	{
 	cpmatrix(TT, T);
-    }
-    void Smatrix(Matrix  SS)
-    {
+	}
+	void Smatrix(Matrix  SS)
+	{
 	cpmatrix(SS, S);
-    }
+	}
 	void SetTMatrix(const Matrix  TT)
 	{
 	cpmatrix(T,TT);
@@ -212,26 +212,26 @@ public:
 		cpmatrix(S,SS);
 	}
 
-    // Sets the goal for an aiming problem
-    // goal is the point we want to point to 
-    // axis is the pointing axis in the hand frame
-    // flex_angle is the amount of flexion in the elbow 
+	// Sets the goal for an aiming problem
+	// goal is the point we want to point to 
+	// axis is the pointing axis in the hand frame
+	// flex_angle is the amount of flexion in the elbow 
 /*
-    void SRS::SetAimGoal(const f32 goal[3],
+	void SRS::SetAimGoal(const f32 goal[3],
 */
-    void SetAimGoal(const f32 goal[3],
-		     const f32 axis[3],
+	void SetAimGoal(const f32 goal[3],
+			 const f32 axis[3],
 					f32 flex_angle);
 
 
-    //
-    // Solves the aiming problem for a given angle of the hand circle
-    // (Must call SetAimGoal first)
-    //
+	//
+	// Solves the aiming problem for a given angle of the hand circle
+	// (Must call SetAimGoal first)
+	//
 /*
-    void SRS::SolveAim(f32 psi_angle, Matrix  R1);
+	void SRS::SolveAim(f32 psi_angle, Matrix  R1);
 */
-    void SolveAim(f32 psi_angle, Matrix  R1);
+	void SolveAim(f32 psi_angle, Matrix  R1);
 }; 
 
 #endif

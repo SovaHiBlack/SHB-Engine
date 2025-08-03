@@ -3,7 +3,7 @@
 struct StackTrace{
 	char szDesc[255];
 	char szFile[255];
-	int nLine;
+	s32 nLine;
 	StackTrace(){szDesc[0]=0;szFile[0]=0;nLine=0;};
 } ;
 
@@ -20,7 +20,7 @@ struct lua_State;
 struct SScriptThread{
 //	void*			pScript;
 	lua_State		*lua;
-	int				scriptID;
+	s32				scriptID;
 	bool			active;
 	char			name[255];
 	char			process[255];
@@ -28,7 +28,7 @@ struct SScriptThread{
 	SScriptThread(const SScriptThread& other)
 	{
 		operator = (other);
-	};
+	}
 	SScriptThread& operator = (const SScriptThread& other){
 //		pScript			= other.pScript;
 		lua				= other.lua;

@@ -11,12 +11,12 @@ CScriptCallStack::~CScriptCallStack()
 {}
 
 /*
-int CCallStack::OnSci(CScintillaView* pView, SCNotification* pNotify)
+s32 CCallStack::OnSci(CScintillaView* pView, SCNotification* pNotify)
 {
 	CLuaEditor* pEditor = ((CScintillaView*)GetView(0))->GetEditor();
 
 	CPoint pt;
-	int nLine;
+	s32 nLine;
 	CString strLine;
 	switch (pNotify->nmhdr.code)
 	{
@@ -39,7 +39,7 @@ void CScriptCallStack::Clear()
 	m_files.clear();
 }
 
-void CScriptCallStack::Add(pcstr szDesc, pcstr szFile, int nLine)
+void CScriptCallStack::Add(pcstr szDesc, pcstr szFile, s32 nLine)
 {
 	m_lines.push_back(nLine);
 
@@ -49,13 +49,13 @@ void CScriptCallStack::Add(pcstr szDesc, pcstr szFile, int nLine)
 	strcat(m_files.back().path, szFile );
 }
 
-void CScriptCallStack::SetStackTraceLevel(int nLevel)
+void CScriptCallStack::SetStackTraceLevel(s32 nLevel)
 {
 	m_nCurrentLevel = nLevel;
 	VERIFY( nLevel>=0 || (u32)nLevel < m_files.size() );
 }
 
-void CScriptCallStack::GotoStackTraceLevel(int nLevel)
+void CScriptCallStack::GotoStackTraceLevel(s32 nLevel)
 {
 	if ( nLevel<0 || (u32)nLevel >= m_files.size() )
 		return;

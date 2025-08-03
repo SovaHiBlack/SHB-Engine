@@ -21,13 +21,13 @@ void CScriptWatchAction::script_register(lua_State *L)
 		class_<CScriptWatchAction>("look")
 			.enum_("look")
 			[
-				value("path_dir",				int(SightManager::eSightTypePathDirection)),
-				value("search",					int(SightManager::eSightTypeSearch)),
-				value("danger",					int(SightManager::eSightTypeCover)),
-				value("point",					int(SightManager::eSightTypePosition)),
-				value("fire_point",				int(SightManager::eSightTypeFirePosition)),
-				value("cur_dir",				int(SightManager::eSightTypeCurrentDirection)),
-				value("direction",				int(SightManager::eSightTypeDirection))
+				value("path_dir", s32(SightManager::eSightTypePathDirection)),
+				value("search", s32(SightManager::eSightTypeSearch)),
+				value("danger", s32(SightManager::eSightTypeCover)),
+				value("point", s32(SightManager::eSightTypePosition)),
+				value("fire_point", s32(SightManager::eSightTypeFirePosition)),
+				value("cur_dir", s32(SightManager::eSightTypeCurrentDirection)),
+				value("direction", s32(SightManager::eSightTypeDirection))
 			]
 			.def(								constructor<>())
 			.def(								constructor<SightManager::ESightType>())

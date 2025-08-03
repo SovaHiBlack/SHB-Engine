@@ -234,7 +234,7 @@ namespace SmartDynamicCast {
 		typedef typename CMatchHelper<cast_type_list>::result result;
 	};
 
-	template <typename Target, typename Source, int max_length, bool can_use_heritage>
+	template <typename Target, typename Source, s32 max_length, bool can_use_heritage>
 	struct conversion_sequence {
 		
 		template <typename T>
@@ -243,7 +243,7 @@ namespace SmartDynamicCast {
 			typedef typename T::Tail		Tail;
 			typedef typename Head::Tail		HeadTail;
 
-			template <typename T, int length, bool use_heritage>
+			template <typename T, s32 length, bool use_heritage>
 			struct helper {
 				typedef typename conversion_sequence<Target,T,length,use_heritage/**,new_visited/**/>::result search_result;
 
@@ -323,7 +323,7 @@ namespace SmartDynamicCast {
 		};
 
 
-		template <int length>
+		template <s32 length>
 		struct selector {
 			STATIC_CHECK(length > 1,Internal_error_please_report);
 

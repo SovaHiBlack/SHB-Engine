@@ -303,7 +303,7 @@ void NearCallback(CPHObject* obj1, CPHObject* obj2, dGeomID o1, dGeomID o2)
 	CPHIsland* island1 = obj1->DActiveIsland( );
 	CPHIsland* island2 = obj2->DActiveIsland( );
 	obj2->near_callback(obj1);
-	int MAX_CONTACTS = -1;
+	s32 MAX_CONTACTS = -1;
 	if (!island1->CanMerge(island2, MAX_CONTACTS))
 	{
 		return;
@@ -400,7 +400,7 @@ void BodyCutForce(dBodyID body, f32 l_limit, f32 w_limit)
 	if (wa_mag > wa_limit)
 	{
 		//scale w 
-		for (int i = 0; i < 3; ++i)wa[i] *= wa_limit / wa_mag;
+		for (s32 i = 0; i < 3; ++i)wa[i] *= wa_limit / wa_mag;
 		dVector3 new_torqu;
 
 		dMULTIPLY0_331(new_torqu, I, wa);

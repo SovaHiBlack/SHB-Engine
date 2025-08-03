@@ -99,7 +99,7 @@ public:
 	// input: end_point and time; return velocity and type of jump
 	void					GetJumpParam(fVector3& velocity, JumpType& type, const fVector3& end_point, f32 time);
 	bool					b_exect_position;
-	int						in_dead_area_count;
+	s32						in_dead_area_count;
 
 public:
 	enum EEnvironment
@@ -400,35 +400,35 @@ public:
 	f32				VelocityLimit( );
 	void				PathNearestPoint(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
 										 const fVector3& new_position,  //in position
-										 int& index,			//out nearest
+										 s32& index,			//out nearest
 										 bool& type          //out type
 	);	//return nearest point
 	void				PathNearestPointFindUp(const xr_vector<DetailPathManager::STravelPathPoint>& path,			//in path
 											   const fVector3& new_position,  //in position
-											   int& index,			//out nearest
+											   s32& index,			//out nearest
 											   f32							radius,			//in exit radius
 											   bool& near_line      //out type
 	);
 	void				PathNearestPointFindDown(const xr_vector<DetailPathManager::STravelPathPoint>& path,			//in path
 												 const fVector3& new_position,  //in position
-												 int& index,			//out nearest
+												 s32& index,			//out nearest
 												 f32							radius,			//in exit radius
 												 bool& near_line      //out type
 	);
 
 	void				PathDIrPoint(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
-									 int							index,			//in index
+									 s32							index,			//in index
 									 f32							distance,	//in distance
 									 f32							precesition,//in precesition
 									 fVector3& dir        //out dir
 	);
 	void				PathDIrLine(const xr_vector<DetailPathManager::STravelPathPoint>& path,		//in path
-									int								index,		//in point
+									s32								index,		//in point
 									f32							distance,	//in distance
 									f32							precesition,//in precesition
 									fVector3& dir        //out dir
 	);
-	void				CorrectPathDir(const fVector3& real_path_dir, const xr_vector<DetailPathManager::STravelPathPoint>& path, int index, fVector3& corrected_path_dir);
+	void				CorrectPathDir(const fVector3& real_path_dir, const xr_vector<DetailPathManager::STravelPathPoint>& path, s32 index, fVector3& corrected_path_dir);
 
 	//	void				Move					(fVector3& Dest, fVector3& Motion, BOOL bDynamic=FALSE){};
 	void				SetApplyGravity(BOOL flag)

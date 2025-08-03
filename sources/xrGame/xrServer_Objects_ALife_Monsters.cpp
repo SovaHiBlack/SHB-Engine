@@ -196,7 +196,7 @@ void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, u16 size)
 
 		if ((m_wVersion > 75) && (m_wVersion < 98))
 		{
-			int tmp;
+			s32 tmp;
 			tNetPacket.r_s32(tmp);
 
 			if (tmp != -1)
@@ -214,7 +214,7 @@ void CSE_ALifeTraderAbstract::STATE_Read(CNetPacket& tNetPacket, u16 size)
 
 		if ((m_wVersion > 81) && (m_wVersion < 96))
 		{
-			int tmp;
+			s32 tmp;
 			tNetPacket.r_s32(tmp);
 			m_sCharacterProfile = CCharacterInfo::IndexToId(tmp);
 			VERIFY(xr_strlen(m_sCharacterProfile));
@@ -559,12 +559,12 @@ void CSE_ALifeTrader::STATE_Read(CNetPacket& tNetPacket, u16 size)
 	if ((m_wVersion > 29) && (m_wVersion < 118))
 	{
 		u32						l_dwCount = tNetPacket.r_u32( );
-		for (int i = 0; i < (int)l_dwCount; ++i)
+		for (s32 i = 0; i < (s32)l_dwCount; ++i)
 		{
 			shared_str			temp;
 			tNetPacket.r_stringZ(temp);
 			tNetPacket.r_u32( );
-			for (int i = 0, n = tNetPacket.r_u32( ); i < n; ++i)
+			for (s32 i = 0, n = tNetPacket.r_u32( ); i < n; ++i)
 			{
 				tNetPacket.r_stringZ(temp);
 				tNetPacket.r_u32( );

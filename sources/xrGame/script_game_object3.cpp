@@ -178,7 +178,7 @@ CScriptGameObject* CScriptGameObject::GetCurrentOutfit( ) const
 	return			(current_equipment ? current_equipment->lua_game_object( ) : 0);
 }
 
-f32 CScriptGameObject::GetCurrentOutfitProtection(int hit_type)
+f32 CScriptGameObject::GetCurrentOutfitProtection(s32 hit_type)
 {
 	CInventoryOwner* inventoryOwner = smart_cast<CInventoryOwner*>(&object( ));
 	if (!inventoryOwner)
@@ -258,7 +258,7 @@ void CScriptGameObject::clear_animations( )
 	stalker->animation( ).clear_script_animations( );
 }
 
-int	CScriptGameObject::animation_count( ) const
+s32	CScriptGameObject::animation_count( ) const
 {
 	CStalker* stalker = smart_cast<CStalker*>(&object( ));
 	if (!stalker)
@@ -266,7 +266,7 @@ int	CScriptGameObject::animation_count( ) const
 		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CGameObject : cannot access class member clear_animations!");
 		return			(-1);
 	}
-	return				((int)stalker->animation( ).script_animations( ).size( ));
+	return				((s32)stalker->animation( ).script_animations( ).size( ));
 }
 
 flags32 CScriptGameObject::get_actor_relation_flags( ) const
@@ -642,7 +642,7 @@ CScriptGameObject* CScriptGameObject::GetObjectByName(pcstr caObjectName) const
 	}
 }
 
-CScriptGameObject* CScriptGameObject::GetObjectByIndex(int iIndex) const
+CScriptGameObject* CScriptGameObject::GetObjectByIndex(s32 iIndex) const
 {
 	CInventoryOwner* l_tpInventoryOwner = smart_cast<CInventoryOwner*>(&object( ));
 	if (l_tpInventoryOwner)

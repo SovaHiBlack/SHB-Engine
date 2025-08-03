@@ -62,22 +62,22 @@ CRenderDevice *get_device()
 }
 #endif
 
-int bit_and(int i, int j)
+s32 bit_and(s32 i, s32 j)
 {
 	return			(i & j);
 }
 
-int bit_or(int i, int j)
+s32 bit_or(s32 i, s32 j)
 {
 	return			(i | j);
 }
 
-int bit_xor(int i, int j)
+s32 bit_xor(s32 i, s32 j)
 {
 	return			(i ^ j);
 }
 
-int bit_not(int i)
+s32 bit_not(s32 i)
 {
 	return			(~i);
 }
@@ -96,7 +96,7 @@ struct profile_timer_script {
 	u64							m_start_cpu_tick_count;
 	u64							m_accumulator;
 	u64							m_count;
-	int							m_recurse_mark;
+	s32							m_recurse_mark;
 	
 	IC								profile_timer_script	()
 	{
@@ -153,7 +153,7 @@ struct profile_timer_script {
 	IC		f32					time					() const
 	{
 		FPU::m64r				();
-		f32					result = (f32(double(m_accumulator)/double(CPU::clk_per_second))*1000000.f);
+		f32					result = (f32(f64(m_accumulator)/f64(CPU::clk_per_second))*1000000.0f);
 		FPU::m24r				();
 		return					(result);
 	}

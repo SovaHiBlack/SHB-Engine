@@ -105,7 +105,7 @@ void CMonsterSquad::Attack_AssignTargetDir(ENTITY_VEC &members, CEntity *enemy)
 
 		bool b_add_left = false;
 
-		if (angle_normalize_signed(h2 - h1) > 0)  {		// right
+		if (angle_normalize_signed(h2 - h1) > 0.0f)  {		// right
 			if ((next_right_yaw < PI) && !fsimilar(next_right_yaw, PI, PI/60.f)) b_add_left = false;
 			else b_add_left = true;
 		} else {										// left

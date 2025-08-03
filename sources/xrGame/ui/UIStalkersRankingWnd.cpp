@@ -99,7 +99,7 @@ bool GreaterRankPred(const SStatData& h1, const SStatData& h2)
 
 extern CSE_ALifeTraderAbstract* ch_info_get_from_id(u16 id);
 
-int get_actor_ranking( )
+s32 get_actor_ranking( )
 {
 	std::sort(g_all_statistic_humans.begin( ), g_all_statistic_humans.end( ), GreaterRankPred);
 	CSE_ALifeTraderAbstract* pActorAbstract = ch_info_get_from_id(Actor( )->ID( ));

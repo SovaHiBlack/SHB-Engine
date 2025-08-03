@@ -145,8 +145,8 @@ struct CSightParams
 class CScriptGameObject
 {
 	mutable CGameObject* m_game_object;
-public:
 
+public:
 	CScriptGameObject(CGameObject* tpGameObject);
 	virtual					~CScriptGameObject( );
 	operator CObject* ();
@@ -154,7 +154,7 @@ public:
 	IC		CGameObject& object( ) const;
 	CScriptGameObject* Parent( ) const;
 	void				Hit(CScriptHit* tLuaHit);
-	int					clsid( ) const;
+	s32					clsid( ) const;
 	void				play_cycle(pcstr anim, bool mix_in);
 	void				play_cycle(pcstr anim);
 	fVector3				Center( );
@@ -178,9 +178,9 @@ public:
 	_DECLARE_FUNCTION10(DeathTime, u32);
 	_DECLARE_FUNCTION10(MaxHealth, f32);
 	_DECLARE_FUNCTION10(Accuracy, f32);
-	_DECLARE_FUNCTION10(Team, int);
-	_DECLARE_FUNCTION10(Squad, int);
-	_DECLARE_FUNCTION10(Group, int);
+	_DECLARE_FUNCTION10(Team, s32);
+	_DECLARE_FUNCTION10(Squad, s32);
+	_DECLARE_FUNCTION10(Group, s32);
 
 	void				Kill(CScriptGameObject* who);
 
@@ -212,7 +212,7 @@ public:
 	_DECLARE_FUNCTION12(SetScriptControl, void, bool, pcstr);
 	_DECLARE_FUNCTION10(GetScriptControl, bool);
 	_DECLARE_FUNCTION10(GetScriptControlName, pcstr);
-	_DECLARE_FUNCTION10(GetEnemyStrength, int);
+	_DECLARE_FUNCTION10(GetEnemyStrength, s32);
 	_DECLARE_FUNCTION10(can_script_capture, bool);
 
 
@@ -269,7 +269,7 @@ public:
 //передача порции информации InventoryOwner
 	bool				GiveInfoPortion(pcstr info_id);
 	bool				DisableInfoPortion(pcstr info_id);
-	bool				GiveGameNews(pcstr news, pcstr texture_name, fRect tex_rect, int delay, int show_time);
+	bool				GiveGameNews(pcstr news, pcstr texture_name, fRect tex_rect, s32 delay, s32 show_time);
 
 	void				AddIconedTalkMessage(pcstr text, pcstr texture_name, fRect tex_rect, pcstr templ_name);
 //предикаты наличия/отсутствия порции информации у персонажа
@@ -277,8 +277,8 @@ public:
 	bool				DontHasInfo(pcstr info_id);
 	xrTime				GetInfoTime(pcstr info_id);
 //работа с заданиями
-	ETaskState			GetGameTaskState(pcstr task_id, int objective_num);
-	void				SetGameTaskState(ETaskState state, pcstr task_id, int objective_num);
+	ETaskState			GetGameTaskState(pcstr task_id, s32 objective_num);
+	void				SetGameTaskState(ETaskState state, pcstr task_id, s32 objective_num);
 	void				GiveTaskToActor(CGameTask* t, u32 dt, bool bCheckExisting);
 
 	bool				IsTalking( );
@@ -300,17 +300,17 @@ public:
 	void				DropItemAndTeleport(CScriptGameObject* pItem, fVector3 position);
 	void				ForEachInventoryItems(const luabind::functor<void>& functor);
 	void				TransferItem(CScriptGameObject* pItem, CScriptGameObject* pForWho);
-	void				TransferMoney(int money, CScriptGameObject* pForWho);
-	void				GiveMoney(int money);
+	void				TransferMoney(s32 money, CScriptGameObject* pForWho);
+	void				GiveMoney(s32 money);
 	u32					Money( );
 
 	void				SetRelation(ALife::ERelationType relation, CScriptGameObject* pWhoToSet);
 
-	int					GetAttitude(CScriptGameObject* pToWho);
+	s32					GetAttitude(CScriptGameObject* pToWho);
 
-	int					GetGoodwill(CScriptGameObject* pToWho);
-	void				SetGoodwill(int goodwill, CScriptGameObject* pWhoToSet);
-	void				ChangeGoodwill(int delta_goodwill, CScriptGameObject* pWhoToSet);
+	s32					GetGoodwill(CScriptGameObject* pToWho);
+	void				SetGoodwill(s32 goodwill, CScriptGameObject* pWhoToSet);
+	void				ChangeGoodwill(s32 delta_goodwill, CScriptGameObject* pWhoToSet);
 
 	void				SetStartDialog(pcstr dialog_id);
 	void				GetStartDialog( );
@@ -327,20 +327,20 @@ public:
 	pcstr				ProfileName( );
 	pcstr				CharacterName( );
 	pcstr				CharacterCommunity( );
-	int					CharacterRank( );
-	int					CharacterReputation( );
+	s32					CharacterRank( );
+	s32					CharacterReputation( );
 
-	void SetCharacterRank(int);
-	void ChangeCharacterRank(int);
-	void ChangeCharacterReputation(int);
-	void SetCharacterCommunity(pcstr, int, int);
+	void SetCharacterRank(s32);
+	void ChangeCharacterRank(s32);
+	void ChangeCharacterReputation(s32);
+	void SetCharacterCommunity(pcstr, s32, s32);
 
 	u32					GetInventoryObjectCount( ) const;
 
 	CScriptGameObject* GetActiveItem( );
 
 	CScriptGameObject* GetObjectByName(pcstr caObjectName) const;
-	CScriptGameObject* GetObjectByIndex(int iIndex) const;
+	CScriptGameObject* GetObjectByIndex(s32 iIndex) const;
 
 // Callbacks			
 	void				SetCallback(GameObject::ECallbackType type, const luabind::functor<void>& functor);
@@ -398,7 +398,7 @@ public:
 	CScriptMonsterHitInfo	GetMonsterHitInfo( );
 	void					bind_object(CScriptBinderObject* object);
 	CScriptGameObject* GetCurrentOutfit( ) const;
-	f32					GetCurrentOutfitProtection(int hit_type);
+	f32					GetCurrentOutfitProtection(s32 hit_type);
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -454,19 +454,19 @@ public:
 	u32					game_vertex_id( ) const;
 	void				add_animation(pcstr animation, bool hand_usage, bool use_movement_controller);
 	void				clear_animations( );
-	int					animation_count( ) const;
-	int					animation_slot( ) const;
+	s32					animation_count( ) const;
+	s32					animation_slot( ) const;
 	CScriptBinderObject* binded_object( );
-	void				set_previous_point(int point_index);
-	void				set_start_point(int point_index);
+	void				set_previous_point(s32 point_index);
+	void				set_start_point(s32 point_index);
 	u32					get_current_patrol_point_index( );
 	bool				path_completed( ) const;
 	void				patrol_path_make_inactual( );
 	void				extrapolate_length(f32 extrapolate_length);
 	f32				extrapolate_length( ) const;
 	void				enable_memory_object(CScriptGameObject* object, bool enable);
-	int					active_sound_count( );
-	int					active_sound_count(bool only_playing);
+	s32					active_sound_count( );
+	s32					active_sound_count(bool only_playing);
 	const CCoverPoint* best_cover(const fVector3& position, const fVector3& enemy_position, f32 radius, f32 min_enemy_distance, f32 max_enemy_distance);
 	const CCoverPoint* safe_cover(const fVector3& position, f32 radius, f32 min_distance);
 	CScriptIniFile* spawn_ini( ) const;

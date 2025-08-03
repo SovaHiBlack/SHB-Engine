@@ -234,17 +234,17 @@ f32 CVisualMemoryManager::object_visible_distance(const CGameObject *game_object
 	if (m_object)
 		m_object->update_range_fov		(object_range,object_fov,m_object->eye_range,deg2rad(m_object->eye_fov));
 
-	f32								fov = object_fov*.5f;
+	f32								fov = object_fov*0.5f;
 	f32								cos_alpha = eye_direction.dotproduct(object_direction);
-	clamp								(cos_alpha,-.99999f,.99999f);
+	clamp								(cos_alpha,-0.99999f,0.99999f);
 	f32								alpha = acosf(cos_alpha);
-	clamp								(alpha,0.f,fov);
+	clamp								(alpha,0.0f,fov);
 
 	f32								max_view_distance = object_range, min_view_distance = object_range;
 	max_view_distance					*= current_state().m_max_view_distance;
 	min_view_distance					*= current_state().m_min_view_distance;
 
-	f32								distance = (1.f - alpha/fov)*(max_view_distance - min_view_distance) + min_view_distance;
+	f32								distance = (1.0f - alpha/fov)*(max_view_distance - min_view_distance) + min_view_distance;
 
 	return								(distance);
 }
@@ -718,8 +718,8 @@ void CVisualMemoryManager::load	(IReader &packet)
 	CALLBACK_TYPE					callback;
 	callback.bind					(&m_object->memory(),&CMemoryManager::on_requested_spawn);
 
-	int								count = packet.r_u8();
-	for (int i=0; i<count; ++i) {
+	s32								count = packet.r_u8();
+	for (s32 i=0; i<count; ++i) {
 		CDelayedVisibleObject		delayed_object;
 		delayed_object.m_object_id	= packet.r_u16();
 

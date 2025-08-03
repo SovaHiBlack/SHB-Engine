@@ -719,9 +719,9 @@ IC	CDetailPathManager::STravelPoint CDetailPathManager::compute_better_key_point
 		}
 		else
 			b = c;
-		c = (a + b) * .5f;
+		c = (a + b) * 0.5f;
 	}
-	while (!fsimilar(a, b, .01f));
+	while (!fsimilar(a, b, 0.01f));
 
 	return						(result);
 }

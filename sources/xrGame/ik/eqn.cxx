@@ -44,34 +44,34 @@ const double TwoPi = 2*M_PI;
 
 static double angle_normalize(double theta)
 {
-    while (theta < LowBound)
+	while (theta < LowBound)
 	theta += TwoPi;
-    while (theta > HighBound)
+	while (theta > HighBound)
 	theta -= TwoPi;
 
-    return theta;
+	return theta;
 }
 */
 
-static int solve_trig1_aux(f32 c,
+static s32 solve_trig1_aux(f32 c,
 						   f32 a2b2,
 						   f32 atan2ba,
 						   f32 theta[2])
 {
 	f32 temp  = a2b2-c*c;
-    int num;
+	s32 num;
 
-    if (temp < 0.0f)
+	if (temp < 0.0f)
 	return 0;
 
-    temp  = atan2(_sqrt(temp), c);
-    num =  (_abs(temp) > 1e-6f) ? 2 : 1;
+	temp  = atan2(_sqrt(temp), c);
+	num =  (_abs(temp) > 1e-6f) ? 2 : 1;
 
-    theta[0] = atan2ba;
-    if (num == 2)
-    {
-        theta[1] = theta[0] - temp;
-        theta[0] += temp;
+	theta[0] = atan2ba;
+	if (num == 2)
+	{
+		theta[1] = theta[0] - temp;
+		theta[0] += temp;
 
 	//theta[0] = angle_normalize(theta[0]);
 	//theta[1] = angle_normalize(theta[1]);
@@ -83,8 +83,8 @@ static int solve_trig1_aux(f32 c,
 	//    theta[0] = theta[1];
 	 //   theta[1] = temp;
 	}
-    }
-    return num;
+	}
+	return num;
 }
 
 
@@ -95,32 +95,10 @@ static int solve_trig1_aux(f32 c,
  *  Also sort the answers in increasing order.
  */
 
-static int solve_trig1(f32 a, f32 b, f32 c, f32 theta[2])
+static s32 solve_trig1(f32 a, f32 b, f32 c, f32 theta[2])
 {
-    return solve_trig1_aux(c, a*a+b*b, atan2(b,a), theta);
+	return solve_trig1_aux(c, a*a+b*b, atan2(b,a), theta);
 }
-
-#if 0
-int consistency_check(double a, double b, double c, 
-		      double a2b2, double atan2ba)
-{
-	f32 t[2], t2[2];
-
-    int n  = solve_trig1(a, b, c, t);
-    int n2 = solve_trig1_aux(a2b2, atan2ba, c, t2);
-
-    if (n != n2)
-    {
-	printf("error\n");
-	n  = solve_trig1(a, b, c, t);
-	n2 = solve_trig1_aux(a2b2, atan2ba, c, t2);
-    }
-
-    for (int i = 0; i < n; i++)
-	if (fabs(t[i] - t2[i]) < 1e-5)
-	    printf("error2\n");
-}
-#endif
 
 #define GOT_ROOTS (1)
 #define GOT_CRITS (2)
@@ -128,231 +106,60 @@ int consistency_check(double a, double b, double c,
 //
 // The critical points are where the derivative is 0
 //
-int PsiEquation::crit_points(f32* t) const
+s32 PsiEquation::crit_points(f32* t) const
 {
-    if (!(*status_ptr & GOT_CRITS))
-    {
+	if (!(*status_ptr & GOT_CRITS))
+	{
 	// CANNOT use solve_trig1_aux here 
 	*num_crits_ptr = (u8)solve_trig1(beta, -alpha, 0, (f32*) crit_pts);
 	*status_ptr |= GOT_CRITS;
-    }
+	}
 
-    switch(num_crits)
-    {
-    case 1:
+	switch(num_crits)
+	{
+	case 1:
 	t[0] = crit_pts[0];
 	break;
-    case 2:
+	case 2:
 	t[0] = crit_pts[0];
 	t[1] = crit_pts[1];
 	break;
-    default:
+	default:
 	break;
-    }
-    return num_crits;
+	}
+	return num_crits;
 }
 
 
 //
 // Return the roots of the equation
 // 
-int PsiEquation::roots(f32* t) const
+s32 PsiEquation::roots(f32* t) const
 {
-    if (!(*status_ptr & GOT_ROOTS))
-    {
+	if (!(*status_ptr & GOT_ROOTS))
+	{
 	*num_roots_ptr =(u8) solve_trig1_aux(-xi, a2b2, atan2ba, (f32*) root_pts);
 	*status_ptr  |= GOT_ROOTS;
-    }
+	}
 
-    switch(num_roots)
-    {
-    case 1:
+	switch(num_roots)
+	{
+	case 1:
 	t[0] = root_pts[0];
 	break;
-    case 2:
+	case 2:
 	t[0] = root_pts[0];
 	t[1] = root_pts[1];
 	break;
-    default:
+	default:
 	break;
-    }
-    return num_roots;
+	}
+	return num_roots;
 }
 
-int PsiEquation::solve(f32 v, f32* t) const
+s32 PsiEquation::solve(f32 v, f32* t) const
 {
-    // consistency_check(alpha,beta,-xi+v,a2b2,atan2ba);
-    // return solve_trig1(alpha, beta, -xi+v, t);
-    return solve_trig1_aux(-xi+v, a2b2, atan2ba, t);
+	// consistency_check(alpha,beta,-xi+v,a2b2,atan2ba);
+	// return solve_trig1(alpha, beta, -xi+v, t);
+	return solve_trig1_aux(-xi+v, a2b2, atan2ba, t);
 }
-
-/*
- * Returns the regions of intersections of 
- *
- *	a * cos(psi) + b*sin(psi) + c = low 
- * and
- *	a * cos(psi) + b*sin(psi) + c = high
- * 
- * from 0 to 3 possible regions
- *
- */
-
-#if 0
-int PsiEquation::clip(f32 low,
-					  f32 high,
-		      AngleIntList &a) const
-{
-	f32 s[2];
-	f32 t[2];
-	f32 psi[6];
-
-    int  m, n;
-
-    m = solve_trig1_aux(low-xi,  a2b2, atan2ba,s);
-    n = solve_trig1_aux(high-xi, a2b2, atan2ba,t);
-    // m = solve_trig1(alpha,beta,low-xi,s);
-    // n = solve_trig1(alpha,beta,high-xi,t);
-
-
-    /* If no intersections curve is either entirely in or out */
-    if (n == 0 && m == 0)
-    {
-	/* Evaluate one point and see if it within range */
-		f32 t = eval(0.0);
-
-	if (t > low && t < high)
-	{
-	    psi[0] = LowBound;
-	    psi[1] = HighBound;
-	    n = 1;
-	}
-	else
-	    n = 0;
-    }
-
-    else 
-    {
-	int j, k, l;
-
-	k = l = 0;
-	j = 1;
-
-	/* If curve intersects the low boundary first */ 
-	if (m && (s[0] < t[0] || n == 0))
-	{
-	    /* Check deriv to see if curve going out of or into boundary */
-	    if (deriv(s[0]) < 0)
-		psi[0] = LowBound;
-	    else
-	    {
-		psi[0] = s[0];
-		k = 1;
-	    }
-	}
-
-	/* Curve intersets high boundary first */
-	else
-	{
-	    /* Check deriv to see if curve going out of or into boundary */
-	    if (deriv(t[0]) > 0)
-		psi[0] = LowBound;
-	    else
-	    {
-		psi[0] = t[0];
-		l = 1; 
-	    }
-	}
-
-	/* Sort the intersections */
-
-	while (k < m && l < n)
-	    if (s[k] < t[l]) 
-		psi[j++] = s[k++];
-	    else
-		psi[j++] = t[l++];
-
-	while (k < m)
-	    psi[j++] = s[k++]; 
-
-	while (l < n)
-	    psi[j++] = t[l++];
-	
-	/* If odd number of boundary pts need to add right bounds */
-
-	if (j & 0x1)
-	    psi[j++] = HighBound;
-
-	n = j/2;
-    }
-
-    // Only add intervals larger than epsilon
-    for (m = 0; m < n; m++)
-	if (fabs(psi[2*m] - psi[2*m+1]) > 1e-5)
-	    a.Add(psi[2*m],psi[2*m+1]);
-
-    return n;
-}
-#endif
-
-#if 0
-//
-// Calculates the range of psi above and below the specified value y
-//
-// ie: above contains all ranges of psi such that
-//   1 <= y <=  alpha*cos(psi) + beta*sin(psi) + xi 
-// and below contains all the range of psi such that   
-//   0 >= y >=  alpha*cos(psi) + beta*sin(psi) + xi 
-//
-
-int PsiEquation::partition(f32 y,
-			   AngleIntList &above,
-			   AngleIntList &below) const
-{
-	f32 s[2];
-    int n = solve_trig1(alpha, beta, y - xi, s); 
-
-    // Curve is entirely above or below y
-    switch(n)
-    {
-    case 0:
-	/* Evaluate one point and see if it within range */
-		f32 t = eval(0.0);
-	if (t > y)
-	    above.Add(LowBound, HighBound);
-	else
-	    below.Add(LowBound, HighBound);
-	break;
-    case 1:
-	/* Check if curve is going out of or into line */
-	if (deriv(s[0]) < 0)
-	{
-	    above.Add(LowBound, s[0]);
-	    below.Add(s[0], HighBound);
-	}
-	else
-	{
-	    below.Add(LowBound, s[0]);
-	    above.Add(s[0], HighBound);
-	}
-	break;
-
-    case 2:
-	if (deriv(s[0]) < 0)
-	{
-	    above.Add(LowBound, s[0]);
-	    below.Add(s[0], s[1]);
-	    above.Add(s[1], HighBound);
-	}
-	else
-	{
-	    below.Add(LowBound, s[0]);
-	    above.Add(s[0], s[1]);
-	    below.Add(s[1], HighBound);
-	}
-	break;
-    }
-
-    return n;
-}
-
-#endif

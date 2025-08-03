@@ -30,15 +30,9 @@ CSE_Abstract* xrServer::Process_spawn(CNetPacket& P, CClientID sender, BOOL bSpa
 
 //		E->m_bALifeControl = false;
 	}
-	else {
+	else
+	{
 		VERIFY				(E->m_bALifeControl);
-//		E->owner			= CL;
-//		if (CL != NULL)
-//		{
-//			int x=0;
-//			x=x;
-//		};
-//		E->m_bALifeControl = true;
 	}
 
 	CSE_Abstract			*e_parent = 0;

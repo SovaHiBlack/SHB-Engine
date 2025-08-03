@@ -8,9 +8,11 @@ struct dcVector3
 	f32 y;
 	f32 z;
 
-	dcVector3(){}
+	dcVector3( )
+	{ }
 
-	dcVector3(dReal x, dReal y, dReal z){
+	dcVector3(dReal x, dReal y, dReal z)
+	{
 
 		this->x = (f32)x;
 
@@ -19,7 +21,8 @@ struct dcVector3
 		this->z = (f32)z;
 	}
 
-	dcVector3(const dReal* v){
+	dcVector3(const dReal* v)
+	{
 
 		x = (f32)v[0];
 
@@ -28,15 +31,18 @@ struct dcVector3
 		z = (f32)v[2];
 	}
 
-	~dcVector3(){}
+	~dcVector3( )
+	{ }
 
-	operator f32* (){  //&slipch
+	operator f32* ()
+	{  //&slipch
 
-	return reinterpret_cast<f32*>(this);
+		return reinterpret_cast<f32*>(this);
 	}
 	/* Add */
 
-	dcVector3 operator+(const dcVector3& v) const{
+	dcVector3 operator+(const dcVector3& v) const
+	{
 
 		dcVector3 Out;
 
@@ -52,7 +58,8 @@ struct dcVector3
 
 
 
-	dcVector3& operator+=(const dcVector3& v){
+	dcVector3& operator+=(const dcVector3& v)
+	{
 
 		x += v.x;
 
@@ -68,7 +75,8 @@ struct dcVector3
 
 	/* Sub */
 
-	dcVector3 operator-(const dcVector3& v) const{
+	dcVector3 operator-(const dcVector3& v) const
+	{
 
 		dcVector3 Out;
 
@@ -84,7 +92,8 @@ struct dcVector3
 
 
 
-	dcVector3& operator-=(const dcVector3& v){
+	dcVector3& operator-=(const dcVector3& v)
+	{
 
 		x -= v.x;
 
@@ -100,7 +109,8 @@ struct dcVector3
 
 	/* Mul */
 
-	dcVector3 operator*(const dcVector3& v) const{
+	dcVector3 operator*(const dcVector3& v) const
+	{
 
 		dcVector3 Out;
 
@@ -116,7 +126,8 @@ struct dcVector3
 
 
 
-	dcVector3 operator*(f32 Scalar) const{
+	dcVector3 operator*(f32 Scalar) const
+	{
 
 		dcVector3 Out;
 
@@ -132,7 +143,8 @@ struct dcVector3
 
 
 
-	dcVector3& operator*=(const dcVector3& v){
+	dcVector3& operator*=(const dcVector3& v)
+	{
 
 		x *= v.x;
 
@@ -146,7 +158,8 @@ struct dcVector3
 
 
 
-	dcVector3& operator*=(f32 Scalar){
+	dcVector3& operator*=(f32 Scalar)
+	{
 
 		x *= Scalar;
 
@@ -162,7 +175,8 @@ struct dcVector3
 
 	/* Div */
 
-	dcVector3 operator/(const dcVector3& v) const{
+	dcVector3 operator/(const dcVector3& v) const
+	{
 
 		dcVector3 Out;
 
@@ -178,7 +192,8 @@ struct dcVector3
 
 
 
-	dcVector3 operator/(f32 Scalar) const{
+	dcVector3 operator/(f32 Scalar) const
+	{
 
 		dcVector3 Out;
 
@@ -194,7 +209,8 @@ struct dcVector3
 
 
 
-	dcVector3& operator/=(const dcVector3& v){
+	dcVector3& operator/=(const dcVector3& v)
+	{
 
 		x /= v.x;
 
@@ -208,7 +224,8 @@ struct dcVector3
 
 
 
-	dcVector3& operator/=(f32 Scalar){
+	dcVector3& operator/=(f32 Scalar)
+	{
 
 		x /= Scalar;
 
@@ -224,7 +241,8 @@ struct dcVector3
 
 	/* Negative */
 
-	dcVector3& operator-(){
+	dcVector3& operator-( )
+	{
 
 		x = -x;
 
@@ -240,7 +258,8 @@ struct dcVector3
 
 	/* Comparison */
 
-	bool operator==(const dcVector3& v) const{
+	bool operator==(const dcVector3& v) const
+	{
 
 		return x == v.x && y == v.y && z == v.z;
 
@@ -248,7 +267,8 @@ struct dcVector3
 
 
 
-	bool operator!=(const dcVector3& v) const{
+	bool operator!=(const dcVector3& v) const
+	{
 
 		return v.x != x || v.y != y || v.z != z;
 
@@ -256,7 +276,8 @@ struct dcVector3
 
 
 
-	f32 DotProduct(const dcVector3& v) const{
+	f32 DotProduct(const dcVector3& v) const
+	{
 
 		return x * v.x + y * v.y + z * v.z;
 
@@ -264,7 +285,8 @@ struct dcVector3
 
 
 
-	dcVector3 CrossProduct(const dcVector3& v) const{
+	dcVector3 CrossProduct(const dcVector3& v) const
+	{
 
 		dcVector3 Out;
 
@@ -280,7 +302,8 @@ struct dcVector3
 
 
 
-	f32 MagnitudeSq() const{
+	f32 MagnitudeSq( ) const
+	{
 
 		return DotProduct(*this);
 
@@ -288,17 +311,19 @@ struct dcVector3
 
 
 
-	f32 Magnitude() const{
+	f32 Magnitude( ) const
+	{
 
-		return _sqrt(MagnitudeSq());
+		return _sqrt(MagnitudeSq( ));
 
 	}
 
 
 
-	void Normalize(){
+	void Normalize( )
+	{
 
-		operator/=(Magnitude());
+		operator/=(Magnitude( ));
 
 	}
 
@@ -306,7 +331,8 @@ struct dcVector3
 
 	/* Member access */
 
-	f32& operator[](int Index){
+	f32& operator[](s32 Index)
+	{
 
 		return *(&x + Index);
 
@@ -314,7 +340,8 @@ struct dcVector3
 
 
 
-	f32 operator[](int Index) const{
+	f32 operator[](s32 Index) const
+	{
 
 		return *(&x + Index);
 
@@ -328,13 +355,13 @@ struct dcVector3
 
 /* Class ID */
 
-extern int dTriListClass;
+extern s32 dTriListClass;
 
 
 
 /* Per triangle callback */
 
-typedef int dTriCallback(dGeomID TriList, dGeomID RefObject, int TriangleIndex);
+typedef s32 dTriCallback(dGeomID TriList, dGeomID RefObject, s32 TriangleIndex);
 
 void dGeomTriListSetCallback(dGeomID g, dTriCallback* Callback);
 
@@ -344,7 +371,7 @@ dTriCallback* dGeomTriListGetCallback(dGeomID g);
 
 /* Per object callback */
 
-typedef void dTriArrayCallback(dGeomID TriList, dGeomID RefObject, const int* TriIndices, int TriCount);
+typedef void dTriArrayCallback(dGeomID TriList, dGeomID RefObject, const s32* TriIndices, s32 TriCount);
 
 void dGeomTriListSetArrayCallback(dGeomID g, dTriArrayCallback* ArrayCallback);
 
@@ -360,13 +387,13 @@ dxGeom* dCreateTriList(dSpaceID space, dTriCallback* Callback, dTriArrayCallback
 
 /* Setting data */
 
-void dGeomTriListBuild(dGeomID g, const dcVector3* Vertices, int VertexCount, const int* Indices, int IndexCount);
+void dGeomTriListBuild(dGeomID g, const dcVector3* Vertices, s32 VertexCount, const s32* Indices, s32 IndexCount);
 
 
 
 /* Getting data */
 
-void dGeomTriListGetTriangle(dGeomID g, int Index, dVector3* v0, dVector3* v1, dVector3* v2);
+void dGeomTriListGetTriangle(dGeomID g, s32 Index, dVector3* v0, dVector3* v1, dVector3* v2);
 
 
 
@@ -376,7 +403,8 @@ class dcTriListCollider;
 
 
 
-struct dxTriList{
+struct dxTriList
+{
 
 	dReal p[4];						// dxPlane
 
@@ -390,7 +418,8 @@ struct dxTriList{
 
 
 
-struct dcPlane{
+struct dcPlane
+{
 
 	dcVector3 Normal;
 
@@ -398,9 +427,11 @@ struct dcPlane{
 
 
 
-	dcPlane(){}
+	dcPlane( )
+	{ }
 
-	dcPlane(const dcVector3& v0, const dcVector3& v1, const dcVector3& v2){
+	dcPlane(const dcVector3& v0, const dcVector3& v1, const dcVector3& v2)
+	{
 
 		dcVector3 u = v1 - v0;
 
@@ -412,15 +443,16 @@ struct dcPlane{
 
 		Distance = v0.DotProduct(Normal);
 
-		Normalize();
+		Normalize( );
 
 	}
 
 
 
-	void Normalize(){
+	void Normalize( )
+	{
 
-		f32 Factor = 1.0f / Normal.Magnitude();
+		f32 Factor = 1.0f / Normal.Magnitude( );
 
 		Normal *= Factor;
 
@@ -430,9 +462,10 @@ struct dcPlane{
 
 
 
-	bool Contains(const dcVector3& RefObject, f32 Epsilon = 0.0f) const{
+	bool Contains(const dcVector3& RefObject, f32 Epsilon = 0.0f) const
+	{
 
-		return Normal.DotProduct(RefObject) - Distance >= - Epsilon; //@slipch ">=" instead ">"
+		return Normal.DotProduct(RefObject) - Distance >= -Epsilon; //@slipch ">=" instead ">"
 
 	}
 
@@ -440,7 +473,8 @@ struct dcPlane{
 
 
 
-template<class T> const T& dcMAX(const T& x, const T& y){
+template<class T> const T& dcMAX(const T& x, const T& y)
+{
 
 	return x > y ? x : y;
 
@@ -448,7 +482,8 @@ template<class T> const T& dcMAX(const T& x, const T& y){
 
 
 
-template<class T> const T& dcMIN(const T& x, const T& y){
+template<class T> const T& dcMIN(const T& x, const T& y)
+{
 
 	return x < y ? x : y;
 

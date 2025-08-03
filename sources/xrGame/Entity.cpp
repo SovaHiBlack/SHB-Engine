@@ -247,7 +247,6 @@ BOOL CEntity::net_Spawn(CSE_Abstract* DC)
 		return FALSE;
 	}
 
-//	SetfHealth			(E->fHealth);
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	CIniFile* ini = NULL;
 
@@ -300,7 +299,7 @@ void CEntity::KillEntity(u16 whoID)
 
 			VERIFY(m_killer_id == ALife::_OBJECT_ID(-1));
 		}
-#endif
+#endif // def DEBUG
 
 	}
 	else
@@ -327,12 +326,6 @@ void CEntity::KillEntity(u16 whoID)
 		}
 	}
 }
-
-//void CEntity::KillEntity(CObject* who)
-//{
-//	VERIFY			(who);
-//	if (who) KillEntity(who->ID());	
-//}
 
 void CEntity::reinit( )
 {

@@ -19,21 +19,21 @@ void CScriptAnimationAction::script_register(lua_State *L)
 		class_<CScriptAnimationAction>("anim")
 			.enum_("type")
 			[
-				value("free",					int(MonsterSpace::eMentalStateFree)),
-				value("danger",					int(MonsterSpace::eMentalStateDanger)),
-				value("panic",					int(MonsterSpace::eMentalStatePanic))
+				value("free", s32(MonsterSpace::eMentalStateFree)),
+				value("danger", s32(MonsterSpace::eMentalStateDanger)),
+				value("panic", s32(MonsterSpace::eMentalStatePanic))
 			]
 			.enum_("monster")
 			[
-				value("stand_idle",				int(MonsterSpace::eAA_StandIdle)),
-				value("sit_idle",				int(MonsterSpace::eAA_SitIdle)),
-				value("lie_idle",				int(MonsterSpace::eAA_LieIdle)),
-				value("eat",					int(MonsterSpace::eAA_Eat)),
-				value("sleep",					int(MonsterSpace::eAA_Sleep)),
-				value("rest",					int(MonsterSpace::eAA_Rest)),
-				value("attack",					int(MonsterSpace::eAA_Attack)),
-				value("look_around",			int(MonsterSpace::eAA_LookAround)),
-				value("turn",					int(MonsterSpace::eAA_Turn))
+				value("stand_idle", s32(MonsterSpace::eAA_StandIdle)),
+				value("sit_idle", s32(MonsterSpace::eAA_SitIdle)),
+				value("lie_idle", s32(MonsterSpace::eAA_LieIdle)),
+				value("eat", s32(MonsterSpace::eAA_Eat)),
+				value("sleep", s32(MonsterSpace::eAA_Sleep)),
+				value("rest", s32(MonsterSpace::eAA_Rest)),
+				value("attack", s32(MonsterSpace::eAA_Attack)),
+				value("look_around", s32(MonsterSpace::eAA_LookAround)),
+				value("turn", s32(MonsterSpace::eAA_Turn))
 			]
 
 			.def(								constructor<>())
@@ -42,7 +42,7 @@ void CScriptAnimationAction::script_register(lua_State *L)
 			.def(								constructor<MonsterSpace::EMentalState>())
 			
 			// Monster specific
-			.def(								constructor<MonsterSpace::EScriptMonsterAnimAction, int>())
+			.def(								constructor<MonsterSpace::EScriptMonsterAnimAction, s32>())
 			
 			.def("anim",						&CScriptAnimationAction::SetAnimation)
 			.def("type",						&CScriptAnimationAction::SetMentalState)

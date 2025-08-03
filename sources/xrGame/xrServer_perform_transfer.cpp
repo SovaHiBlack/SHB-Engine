@@ -36,7 +36,7 @@ void xrServer::Perform_transfer(CNetPacket& PR, CNetPacket& PT,	CSE_Abstract* wh
 	PT.w_u16				(what->ID);
 }
 
-void xrServer::Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta)
+void xrServer::Perform_reject(CSE_Abstract* what, CSE_Abstract* from, s32 delta)
 {
 	R_ASSERT				(what && from);
 	R_ASSERT				(what->ID_Parent == from->ID);

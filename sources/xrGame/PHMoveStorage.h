@@ -21,7 +21,7 @@ public:
 	{
 		return (*geom)->geometry_transform( );
 	}
-	IC CPHPositionsPairs& operator ++	(int)
+	IC CPHPositionsPairs& operator ++	(s32)
 	{
 		geom++;
 		return *this;

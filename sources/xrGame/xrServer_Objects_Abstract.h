@@ -113,7 +113,7 @@ public:
 	virtual CSE_Visual* __stdcall	visual			() = 0;
 	virtual CSE_Motion* __stdcall	motion			() = 0;
 	virtual bool		__stdcall	validate		() = 0;
-	virtual void 		__stdcall	on_render		(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F) = 0;
+	virtual void 		__stdcall	on_render		(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent, s32 priority, bool strictB2F) = 0;
 };
 
 #pragma warning(pop)

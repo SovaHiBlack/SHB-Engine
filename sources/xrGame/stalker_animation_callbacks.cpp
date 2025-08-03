@@ -16,10 +16,10 @@
 
 #define TEMPLATE_SPECIALIZATION\
 	template <\
-		int yaw_factor_non_fire,\
-		int pitch_factor_non_fire,\
-		int yaw_factor_fire,\
-		int pitch_factor_fire\
+		s32 yaw_factor_non_fire,\
+		s32 pitch_factor_non_fire,\
+		s32 yaw_factor_fire,\
+		s32 pitch_factor_fire\
 	>
 
 #define _detail \
@@ -96,12 +96,12 @@ void CStalkerAnimationManager::assign_bone_callbacks	()
 
 	pcstr							section = *object().cNameSect();
 	
-	int								head_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_head"));
+	s32								head_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_head"));
 	kinematics->LL_GetBoneInstance	(u16(head_bone)).set_callback(bctCustom,&head::callback,&object());
 
-	int								shoulder_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_shoulder"));
+	s32								shoulder_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_shoulder"));
 	kinematics->LL_GetBoneInstance	(u16(shoulder_bone)).set_callback(bctCustom,&shoulder::callback,&object());
 
-	int								spin_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_spin"));
+	s32								spin_bone = kinematics->LL_BoneID(pSettings->r_string(section,"bone_spin"));
 	kinematics->LL_GetBoneInstance	(u16(spin_bone)).set_callback(bctCustom,&spine::callback,&object());
 }

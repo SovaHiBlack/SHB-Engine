@@ -1146,8 +1146,10 @@ void CWeaponMagazined::InitAddons( )
 
 void CWeaponMagazined::ApplySilencerKoeffs( )
 {
-	f32 BHPk = 1.0f, BSk = 1.0f;
-	f32 FDB_k = 1.0f, CD_k = 1.0f;
+	f32 BHPk = 1.0f;
+	f32 BSk = 1.0f;
+	f32 FDB_k = 1.0f;
+	f32 CD_k = 1.0f;
 
 	if (pSettings->line_exist(m_sSilencerName, "bullet_hit_power_k"))
 	{
@@ -1173,7 +1175,6 @@ void CWeaponMagazined::ApplySilencerKoeffs( )
 		clamp(CD_k, 0.0f, 1.0f);
 	}
 
-	//fHitPower			= fHitPower*BHPk;
 	fvHitPower.mul(BHPk);
 	fHitImpulse *= BSk;
 	m_fStartBulletSpeed *= BSk;

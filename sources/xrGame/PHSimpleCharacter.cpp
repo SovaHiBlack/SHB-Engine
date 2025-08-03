@@ -38,7 +38,7 @@ f32 IC sgn(f32 v)
 {
 	return v < 0.f ? -1.f : 1.f;
 }
-bool test_sides(const fVector3& center, const fVector3& side_dir, const fVector3& fv_dir, const fVector3& box, int tri_id)
+bool test_sides(const fVector3& center, const fVector3& side_dir, const fVector3& fv_dir, const fVector3& box, s32 tri_id)
 {
 	Triangle tri;
 	InitTriangle(Level( ).ObjectSpace.GetStaticTris( ) + tri_id, tri);
@@ -939,7 +939,7 @@ void CPHSimpleCharacter::SetAcceleration(fVector3 accel)
 	if (!b_exist) return;
 
 	if (!dBodyIsEnabled(m_body))
-		if (!fsimilar(0.f, accel.magnitude( )))
+		if (!fsimilar(0.0f, accel.magnitude( )))
 			Enable( );
 	m_acceleration = accel;
 }
@@ -1381,8 +1381,8 @@ u16 CPHSimpleCharacter::RetriveContactBone( )
 	{
 		collide::rq_result* R = RQR.r_begin( );
 		contact_bone = (u16)R->element;
-		//int y=result.r_count();
-		//for (int k=0; k<y; ++k)
+		//s32 y=result.r_count();
+		//for (s32 k=0; k<y; ++k)
 		//{
 		//	ICollisionForm::RayQuery::Result* R = result.r_begin()+k;
 		//	if(is_Door(R->element,i)) 

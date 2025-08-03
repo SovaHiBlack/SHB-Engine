@@ -242,7 +242,7 @@ CSoundPlayer::CSoundCollection::CSoundCollection	(const CSoundCollectionParams &
 
 	seed								(u32(CPU::QPC() & 0xffffffff));
 	m_sounds.clear						();
-	for (int j=0, N = _GetItemCount(*params.m_sound_prefix); j<N; ++j) {
+	for (s32 j=0, N = _GetItemCount(*params.m_sound_prefix); j<N; ++j) {
 		string_path						fn, s, temp;
 		pstr							S = (pstr)&s;
 		_GetItem						(*params.m_sound_prefix,j,temp);

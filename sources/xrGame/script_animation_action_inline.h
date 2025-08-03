@@ -31,7 +31,7 @@ IC	CScriptAnimationAction::CScriptAnimationAction	(MonsterSpace::EMentalState tM
 // -------------------------------------------------------------------------------------------------
 // Monster
 // -------------------------------------------------------------------------------------------------
-IC	CScriptAnimationAction::CScriptAnimationAction	(MonsterSpace::EScriptMonsterAnimAction tAnimAction, int index)
+IC	CScriptAnimationAction::CScriptAnimationAction	(MonsterSpace::EScriptMonsterAnimAction tAnimAction, s32 index)
 {
 	m_tAnimAction		= tAnimAction;
 	m_bCompleted		= false;

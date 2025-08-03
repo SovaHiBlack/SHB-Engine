@@ -407,7 +407,7 @@ BOOL CObjectSpace::_RayQuery(collide::rq_results& r_dest, const collide::ray_def
 						s_rd.start.mad(s_rd.dir, s_res.range + EPSILON_3);
 						s_res.range = R.range - s_rd.range - EPSILON_3;
 #ifdef DEBUG
-						if (!(fis_zero(s_res.range, EPSILON_5) || s_res.range >= 0.f))
+						if (!(fis_zero(s_res.range, EPSILON_5) || s_res.range >= 0.0f))
 							Debug.fatal(DEBUG_INFO, "Invalid RayQuery static range: %f (%f). /#1/", s_res.range, s_rd.range);
 #endif
 					}
@@ -437,7 +437,7 @@ BOOL CObjectSpace::_RayQuery(collide::rq_results& r_dest, const collide::ray_def
 						cform->_RayQuery(d_rd, r_temp);
 					}
 #ifdef DEBUG
-					if (!((0 == r_temp.r_count( )) || (r_temp.r_count( ) && (fis_zero(r_temp.r_begin( )->range, EPSILON_5) || (r_temp.r_begin( )->range >= 0.f)))))
+					if (!((0 == r_temp.r_count( )) || (r_temp.r_count( ) && (fis_zero(r_temp.r_begin( )->range, EPSILON_5) || (r_temp.r_begin( )->range >= 0.0f)))))
 						Debug.fatal(DEBUG_INFO, "Invalid RayQuery dynamic range: %f (%f). /#2/", r_temp.r_begin( )->range, d_rd.range);
 #endif
 				}
@@ -450,7 +450,7 @@ BOOL CObjectSpace::_RayQuery(collide::rq_results& r_dest, const collide::ray_def
 				d_rd.start.mad(d_rd.dir, d_res.range + EPSILON_3);
 				d_res.range = R.range - d_rd.range - EPSILON_3;
 #ifdef DEBUG
-				if (!(fis_zero(d_res.range, EPSILON_5) || d_res.range >= 0.f))
+				if (!(fis_zero(d_res.range, EPSILON_5) || d_res.range >= 0.0f))
 					Debug.fatal(DEBUG_INFO, "Invalid RayQuery dynamic range: %f (%f). /#3/", d_res.range, d_rd.range);
 #endif
 			}

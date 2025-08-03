@@ -53,7 +53,7 @@ void CUINewsWnd::LoadNews( )
 		GAME_NEWS_VECTOR& news_vector = Actor( )->game_news_registry->registry( ).objects( );
 
 		// Показать только NEWS_TO_SHOW последних ньюсов
-		int currentNews = 0;
+		s32 currentNews = 0;
 
 		for (GAME_NEWS_VECTOR::reverse_iterator it = news_vector.rbegin( ); it != news_vector.rend( ) && currentNews < NEWS_TO_SHOW; ++it)
 		{

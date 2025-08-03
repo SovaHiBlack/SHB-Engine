@@ -208,11 +208,11 @@ void CAgentEnemyManager::assign_enemies			()
 		for ( ; I != E; ++I) {
 			J							= (*I).m_mask.get();
 			N							= 0;
-			best						= -1.f;
+			best						= -1.0f;
 			for ( ; J; J &= J - 1) {
 				K						= (J & (J - 1)) ^ J;
 				CAgentMemberManager::iterator	i = object().member().member(K);
-				if (!fsimilar((*i)->probability(),1.f))
+				if (!fsimilar((*i)->probability(),1.0f))
 					continue;
 
 				f32					value = evaluate(&(*i)->object(),(*I).m_object);

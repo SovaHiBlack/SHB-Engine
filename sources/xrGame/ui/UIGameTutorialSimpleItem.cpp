@@ -110,7 +110,7 @@ void CUISequenceSimpleItem::Load(CUIXml* xml, s32 idx)
 	s32 cnt = xml->GetNodesNum("main_wnd", 0, "auto_static");
 	m_subitems.resize(cnt);
 	string64 sname;
-	for (int i = 0; i < cnt; ++i)
+	for (s32 i = 0; i < cnt; ++i)
 	{
 		XML_NODE* _sr = xml->GetLocalRoot( );
 		xml->SetLocalRoot(xml->NavigateToNode("main_wnd", 0));

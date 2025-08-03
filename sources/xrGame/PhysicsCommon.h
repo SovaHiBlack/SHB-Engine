@@ -24,11 +24,11 @@ extern const dReal	mass_limit;
 extern const u16	max_joint_allowed_for_exeact_integration;
 extern const dReal	default_world_gravity;
 extern		 f32	phTimefactor;
-extern	int			phIterations;
+extern	s32			phIterations;
 extern	f32		phBreakCommonFactor;
 extern	f32		phRigidBreakWeaponFactor;
 extern	f32		ph_tri_query_ex_aabb_rate;
-extern	int			ph_tri_clear_disable_count;
+extern	s32			ph_tri_clear_disable_count;
 
 struct SGameMtl;
 #define ERP_S(k_p,k_d,s)		((s*(k_p)) / (((s)*(k_p)) + (k_d)))

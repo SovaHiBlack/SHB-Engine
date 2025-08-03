@@ -1009,11 +1009,11 @@ std::pair<f32, f32>  CBulletManager::ObjectHit(SBullet* bullet, const fVector3& 
 	fVector3 new_dir;
 	new_dir.reflect(bullet->dir, hit_normal);
 	fVector3 tgt_dir;
-	random_dir(tgt_dir, new_dir, deg2rad(10.f));
+	random_dir(tgt_dir, new_dir, deg2rad(10.0f));
 
 	f32 ricoshet_factor = bullet->dir.dotproduct(tgt_dir);
 
-	f32 f = Random.randF(0.5f, 1.f);
+	f32 f = Random.randF(0.5f, 1.0f);
 
 	if (((f + shoot_factor) < ricoshet_factor) && bullet->flags.allow_ricochet)
 	{
@@ -1030,9 +1030,9 @@ std::pair<f32, f32>  CBulletManager::ObjectHit(SBullet* bullet, const fVector3& 
 		bullet->flags.ricochet_was = 1;
 
 		//уменьшить скорость в зависимости от простреливаемости
-		bullet->speed *= (1 - mtl->fShootFactor) * scale;
+		bullet->speed *= (1.0f - mtl->fShootFactor) * scale;
 		//сколько энергии в процентах потеряла пуля при столкновении
-		f32 energy_lost = 1.f - bullet->speed / old_speed;
+		f32 energy_lost = 1.0f - bullet->speed / old_speed;
 		//импульс переданный объекту равен прямопропорционален потерянной энергии
 		impulse = bullet->hit_impulse * speed_factor * energy_lost;
 
@@ -1064,7 +1064,7 @@ std::pair<f32, f32>  CBulletManager::ObjectHit(SBullet* bullet, const fVector3& 
 		bullet->pos.mad(bullet->pos, bullet->dir, EPSILON_5);//fake
 		//ввести коэффициент случайности при простреливании
 		fVector3 rand_normal;
-		rand_normal.random_dir(bullet->dir, deg2rad(5.f) * energy_lost, Random);
+		rand_normal.random_dir(bullet->dir, deg2rad(5.0f) * energy_lost, Random);
 		bullet->dir.set(rand_normal);
 
 #ifdef DEBUG

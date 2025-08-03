@@ -46,7 +46,7 @@ u32 CDbgScriptThreads::FillFrom(CScriptProcess* sp)
 	return m_threads.size();
 }
 
-lua_State* CDbgScriptThreads::FindScript(int nThreadID)
+lua_State* CDbgScriptThreads::FindScript(s32 nThreadID)
 {
 	xr_vector<SScriptThread>::iterator It = m_threads.begin();
 	for(;It!=m_threads.end();++It){

@@ -25,50 +25,50 @@ void CScriptMovementAction::script_register(lua_State *L)
 		class_<CScriptMovementAction>("move")
 			.enum_("body")
 			[
-				value("crouch",					int(MonsterSpace::eBodyStateCrouch)),
-				value("standing",				int(MonsterSpace::eBodyStateStand))
+				value("crouch", s32(MonsterSpace::eBodyStateCrouch)),
+				value("standing", s32(MonsterSpace::eBodyStateStand))
 			]
 			.enum_("move")
 			[
-				value("walk",					int(MonsterSpace::eMovementTypeWalk)),
-				value("run",					int(MonsterSpace::eMovementTypeRun)),
-				value("stand",					int(MonsterSpace::eMovementTypeStand))
+				value("walk", s32(MonsterSpace::eMovementTypeWalk)),
+				value("run", s32(MonsterSpace::eMovementTypeRun)),
+				value("stand", s32(MonsterSpace::eMovementTypeStand))
 			]
 			.enum_("path")
 			[
-				value("line",					int(DetailPathManager::eDetailPathTypeSmooth)),
-				value("dodge",					int(DetailPathManager::eDetailPathTypeSmoothDodge)),
-				value("criteria",				int(DetailPathManager::eDetailPathTypeSmoothCriteria)),
-				value("curve",					int(DetailPathManager::eDetailPathTypeSmooth)),
-				value("curve_criteria",			int(DetailPathManager::eDetailPathTypeSmoothCriteria))
+				value("line", s32(DetailPathManager::eDetailPathTypeSmooth)),
+				value("dodge", s32(DetailPathManager::eDetailPathTypeSmoothDodge)),
+				value("criteria", s32(DetailPathManager::eDetailPathTypeSmoothCriteria)),
+				value("curve", s32(DetailPathManager::eDetailPathTypeSmooth)),
+				value("curve_criteria", s32(DetailPathManager::eDetailPathTypeSmoothCriteria))
 			]
 			.enum_("input")
 			[
-				value("none",					int(CScriptMovementAction::eInputKeyNone)),
-				value("fwd",					int(CScriptMovementAction::eInputKeyForward)),
-				value("back",					int(CScriptMovementAction::eInputKeyBack)),
-				value("left",					int(CScriptMovementAction::eInputKeyLeft)),
-				value("right",					int(CScriptMovementAction::eInputKeyRight)),
-				value("up",						int(CScriptMovementAction::eInputKeyShiftUp)),
-				value("down",					int(CScriptMovementAction::eInputKeyShiftDown)),
-				value("handbrake",				int(CScriptMovementAction::eInputKeyBreaks)),
-				value("on",						int(CScriptMovementAction::eInputKeyEngineOn)),
-				value("off",					int(CScriptMovementAction::eInputKeyEngineOff))
+				value("none", s32(CScriptMovementAction::eInputKeyNone)),
+				value("fwd", s32(CScriptMovementAction::eInputKeyForward)),
+				value("back", s32(CScriptMovementAction::eInputKeyBack)),
+				value("left", s32(CScriptMovementAction::eInputKeyLeft)),
+				value("right", s32(CScriptMovementAction::eInputKeyRight)),
+				value("up", s32(CScriptMovementAction::eInputKeyShiftUp)),
+				value("down", s32(CScriptMovementAction::eInputKeyShiftDown)),
+				value("handbrake", s32(CScriptMovementAction::eInputKeyBreaks)),
+				value("on", s32(CScriptMovementAction::eInputKeyEngineOn)),
+				value("off", s32(CScriptMovementAction::eInputKeyEngineOff))
 			]
 			.enum_("monster")
 			[
 
-				value("walk_fwd",					int(MonsterSpace::eMA_WalkFwd)),
-				value("walk_bkwd",					int(MonsterSpace::eMA_WalkBkwd)),
-				value("run_fwd",					int(MonsterSpace::eMA_Run)),
-				value("drag",						int(MonsterSpace::eMA_Drag)),
-				value("jump",						int(MonsterSpace::eMA_Jump)),
-				value("steal",						int(MonsterSpace::eMA_Steal))
+				value("walk_fwd", s32(MonsterSpace::eMA_WalkFwd)),
+				value("walk_bkwd", s32(MonsterSpace::eMA_WalkBkwd)),
+				value("run_fwd", s32(MonsterSpace::eMA_Run)),
+				value("drag", s32(MonsterSpace::eMA_Drag)),
+				value("jump", s32(MonsterSpace::eMA_Jump)),
+				value("steal", s32(MonsterSpace::eMA_Steal))
 			]
 			.enum_("monster_speed_param")
 			[
-				value("default",					int(MonsterSpace::eSP_Default)),
-				value("force",						int(MonsterSpace::eSP_ForceSpeed))
+				value("default", s32(MonsterSpace::eSP_Default)),
+				value("force", s32(MonsterSpace::eSP_ForceSpeed))
 			]
 
 			.def(								constructor<>())

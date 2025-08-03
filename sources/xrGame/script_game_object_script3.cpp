@@ -52,8 +52,8 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 		.def("path_completed",				&CScriptGameObject::path_completed)
 		.def("patrol_path_make_inactual",	&CScriptGameObject::patrol_path_make_inactual)
 		.def("enable_memory_object",		&CScriptGameObject::enable_memory_object)
-		.def("active_sound_count",			(int (CScriptGameObject::*)())(&CScriptGameObject::active_sound_count))
-		.def("active_sound_count",			(int (CScriptGameObject::*)(bool))(&CScriptGameObject::active_sound_count))
+		.def("active_sound_count",			(s32(CScriptGameObject::*)())(&CScriptGameObject::active_sound_count))
+		.def("active_sound_count",			(s32(CScriptGameObject::*)(bool))(&CScriptGameObject::active_sound_count))
 		.def("best_cover",					&CScriptGameObject::best_cover)
 		.def("safe_cover",					&CScriptGameObject::safe_cover)
 		.def("spawn_ini",					&CScriptGameObject::spawn_ini)
@@ -114,14 +114,14 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 
 		.enum_("EPdaMsg")
 		[
-			value("dialog_pda_msg",			int(ePdaMsgDialog)),
-			value("info_pda_msg",			int(ePdaMsgInfo)),
-			value("no_pda_msg",				int(ePdaMsgMax))
+			value("dialog_pda_msg", s32(ePdaMsgDialog)),
+			value("info_pda_msg", s32(ePdaMsgInfo)),
+			value("no_pda_msg", s32(ePdaMsgMax))
 		]
 
 		.def("give_info_portion",			&CScriptGameObject::GiveInfoPortion)
 		.def("disable_info_portion",		&CScriptGameObject::DisableInfoPortion)
-		.def("give_game_news",				(bool (CScriptGameObject::*)(pcstr, pcstr, fRect,int,int))(&CScriptGameObject::GiveGameNews))
+		.def("give_game_news",				(bool (CScriptGameObject::*)(pcstr, pcstr, fRect, s32, s32))(&CScriptGameObject::GiveGameNews))
 
 		.def("give_talk_message",			(void (CScriptGameObject::*)(pcstr, pcstr, fRect, pcstr))(&CScriptGameObject::AddIconedTalkMessage))
 		
@@ -187,15 +187,15 @@ class_<CScriptGameObject> &script_register_game_object2(class_<CScriptGameObject
 
 		.enum_("ACTOR_RELATIONS")
 		[
-			value("relation_attack",						int(SRelationRegistry::ATTACK)),
-			value("relation_fight_help_monster",			int(SRelationRegistry::FIGHT_HELP_MONSTER)),
-			value("relation_fight_help_human",				int(SRelationRegistry::FIGHT_HELP_HUMAN)),
-			value("relation_kill",							int(SRelationRegistry::KILL))
+			value("relation_attack", s32(SRelationRegistry::ATTACK)),
+			value("relation_fight_help_monster", s32(SRelationRegistry::FIGHT_HELP_MONSTER)),
+			value("relation_fight_help_human", s32(SRelationRegistry::FIGHT_HELP_HUMAN)),
+			value("relation_kill", s32(SRelationRegistry::KILL))
 		]
 
 		.enum_("CLSIDS")
 		[
-			value("no_pda_msg",				int(ePdaMsgMax))
+			value("no_pda_msg", s32(ePdaMsgMax))
 		]
 
 		//CustomZone

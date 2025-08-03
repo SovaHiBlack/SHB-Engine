@@ -25,7 +25,7 @@ public:
 	IC		u32					Length				();
 	IC		void				Play				(CScriptGameObject *object);
 	IC		void				Play				(CScriptGameObject *object, f32 delay);
-			void				Play				(CScriptGameObject *object, f32 delay, int flags);
+			void				Play				(CScriptGameObject *object, f32 delay, s32 flags);
 	IC		void				PlayAtPos			(CScriptGameObject *object, const fVector3& position);
 	IC		void				PlayAtPos			(CScriptGameObject *object, const fVector3& position, f32 delay);
 			void				PlayAtPos			(CScriptGameObject *object, const fVector3& position, f32 delay, s32 flags);

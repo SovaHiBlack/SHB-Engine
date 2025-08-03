@@ -43,7 +43,7 @@ bool CScriptIniFile::section_exist	(pcstr S)
 	return		(!!inherited::section_exist(S));
 }
 
-int	 CScriptIniFile::r_clsid		(pcstr S, pcstr L)
+s32	 CScriptIniFile::r_clsid		(pcstr S, pcstr L)
 {
 	return		(object_factory().script_clsid(inherited::r_clsid(S,L)));
 }
@@ -53,7 +53,7 @@ bool CScriptIniFile::r_bool			(pcstr S, pcstr L)
 	return		(!!inherited::r_bool(S,L));
 }
 
-int	 CScriptIniFile::r_token		(pcstr S, pcstr L, const CScriptTokenList &token_list)
+s32	 CScriptIniFile::r_token		(pcstr S, pcstr L, const CScriptTokenList &token_list)
 {
 	return		(inherited::r_token(S,L,&*token_list.tokens().begin()));
 }
@@ -83,7 +83,7 @@ u32	 CScriptIniFile::r_u32				(pcstr S, pcstr L)
 	return		(inherited::r_u32(S,L));
 }
 
-int	 CScriptIniFile::r_s32				(pcstr S, pcstr L)
+s32	 CScriptIniFile::r_s32				(pcstr S, pcstr L)
 {
 	THROW3		(inherited::section_exist(S),"Cannot find section",S);
 	THROW3		(inherited::line_exist(S,L),"Cannot find line",L);
@@ -117,10 +117,10 @@ CScriptIniFile* get_game_ini( )
 }
 #endif // XRGAME_EXPORTS
 
-bool r_line(CScriptIniFile* self, pcstr S, int L, xr_string& N, xr_string& V)
+bool r_line(CScriptIniFile* self, pcstr S, s32 L, xr_string& N, xr_string& V)
 {
 	THROW3(self->section_exist(S), "Cannot find section", S);
-	THROW2((int) self->line_count(S) > L, "Invalid line number");
+	THROW2((s32) self->line_count(S) > L, "Invalid line number");
 
 	N = "";
 	V = "";

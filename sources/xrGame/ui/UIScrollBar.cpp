@@ -192,7 +192,7 @@ void CUIScrollBar::UpdateScrollBar( )
 
 u32 last_hold_time = 0;
 
-bool CUIScrollBar::OnKeyboardHold(int dik)
+bool CUIScrollBar::OnKeyboardHold(s32 dik)
 {
 	if (dik == MOUSE_1 && (last_hold_time + 100) < Device.dwTimeContinual)
 	{

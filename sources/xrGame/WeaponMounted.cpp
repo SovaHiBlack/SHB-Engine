@@ -362,7 +362,7 @@ void CWeaponMounted::UpdateFire( )
 	{
 		if (fTime < 0.0f)
 		{
-			fTime = 0.f;
+			fTime = 0.0f;
 		}
 
 		return;

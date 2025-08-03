@@ -24,13 +24,13 @@ class CScriptEntity {
 public:
 	struct CSavedSound {
 		CScriptGameObject	*m_lua_game_object;
-		int					m_sound_type;
+		s32					m_sound_type;
 		fVector3				m_position;
 		f32				m_sound_power;
 
 		IC				CSavedSound(
 							CScriptGameObject	*lua_game_object,
-							int				sound_type,
+			s32				sound_type,
 							const fVector3& position,
 			f32			sound_power
 						) :
@@ -103,7 +103,7 @@ public:
 	virtual	bool				bfAssignObject			(CScriptEntityAction		*tpEntityAction);
 	virtual bool				bfAssignMonsterAction	(CScriptEntityAction		*tpEntityAction);
 
-	virtual void				sound_callback			(const CObject *object, int sound_type, const fVector3& position, f32 sound_power);
+	virtual void				sound_callback			(const CObject *object, s32 sound_type, const fVector3& position, f32 sound_power);
 
 	virtual pcstr				GetPatrolPathName		();
 			bool				bfScriptAnimation		();
@@ -112,7 +112,7 @@ public:
 
 	virtual CEntity				*GetCurrentEnemy		();
 	virtual CEntity				*GetCurrentCorpse		();
-	virtual int					get_enemy_strength		();
+	virtual s32					get_enemy_strength		();
 			void				process_sound_callbacks	();
 
 			void				set_script_capture		(bool val = true) {m_can_capture = val;}

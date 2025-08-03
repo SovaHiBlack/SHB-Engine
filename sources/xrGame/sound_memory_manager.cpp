@@ -119,12 +119,12 @@ void CSoundMemoryManager::enable		(const CObject *object, bool enable)
 	(*J).m_enabled		= enable;
 }
 
-IC	bool is_sound_type(int s, const ESoundTypes &t)
+IC	bool is_sound_type(s32 s, const ESoundTypes &t)
 {
 	return	((s & t) == t);
 }
 
-void CSoundMemoryManager::feel_sound_new(CObject *object, int sound_type, CSound_UserDataPtr user_data, const fVector3& position, f32 sound_power)
+void CSoundMemoryManager::feel_sound_new(CObject *object, s32 sound_type, CSound_UserDataPtr user_data, const fVector3& position, f32 sound_power)
 {
 #ifndef MASTER_GOLD
 	if (object && (object->CLS_ID == CLSID_OBJECT_ACTOR) && psAI_Flags.test(aiIgnoreActor))
@@ -218,7 +218,7 @@ void CSoundMemoryManager::add			(const CSoundObject &sound_object, bool check_fo
 		m_sounds->push_back	(sound_object);
 }
 
-void CSoundMemoryManager::add			(const CObject *object, int sound_type, const fVector3& position, f32 sound_power)
+void CSoundMemoryManager::add			(const CObject *object, s32 sound_type, const fVector3& position, f32 sound_power)
 {
 #ifndef SAVE_OWN_SOUNDS
 	// we do not want to save our own sounds
@@ -424,8 +424,8 @@ void CSoundMemoryManager::load	(IReader &packet)
 	CALLBACK_TYPE					callback;
 	callback.bind					(&m_object->memory(),&CMemoryManager::on_requested_spawn);
 
-	int								count = packet.r_u8();
-	for (int i=0; i<count; ++i) {
+	s32								count = packet.r_u8();
+	for (s32 i=0; i<count; ++i) {
 		CDelayedSoundObject			delayed_object;
 		delayed_object.m_object_id	= packet.r_u16();
 

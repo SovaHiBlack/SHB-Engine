@@ -341,7 +341,7 @@ void CUIDragDropListEx::SetCellSize(const iVector2 new_sz)
 	m_container->SetCellSize(new_sz);
 }
 
-int CUIDragDropListEx::ScrollPos( )
+s32 CUIDragDropListEx::ScrollPos( )
 {
 	return m_vScrollBar->GetScrollPos( );
 }

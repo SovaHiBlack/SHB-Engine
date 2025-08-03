@@ -636,7 +636,7 @@ void CUIListWnd::SetFocusedItem(s32 iNewFocusedItem)
 	}
 }
 
-int CUIListWnd::GetItemPos(CUIListItem* pItem)
+s32 CUIListWnd::GetItemPos(CUIListItem* pItem)
 {
 	LIST_ITEM_LIST_it it = m_ItemList.begin( );
 	for (u32 i = 0; i < m_ItemList.size( ); ++i)

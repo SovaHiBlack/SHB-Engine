@@ -38,21 +38,21 @@ class CScriptDebugger
 {
 public:
 	void			Connect				(pcstr mslot_name);
-	void			Eval				(pcstr strCode, pstr res, int res_sz);
+	void			Eval				(pcstr strCode, pstr res, s32 res_sz);
 	void			AddLocalVariable	(const Variable& var);
 	void			ClearLocalVariables	();
 	void			AddGlobalVariable	(pcstr name, pcstr type, pcstr value);
 	void			ClearGlobalVariables();
 	void			StackLevelChanged	();
 	void			initiateDebugBreak	();
-	void			DebugBreak			(pcstr szFile, int nLine);
-	void			ErrorBreak			(pcstr szFile = 0, int nLine = 0);
-	void			LineHook			(pcstr szFile, int nLine);
-	void			FunctionHook		(pcstr szFile, int nLine, BOOL bCall);
+	void			DebugBreak			(pcstr szFile, s32 nLine);
+	void			ErrorBreak			(pcstr szFile = 0, s32 nLine = 0);
+	void			LineHook			(pcstr szFile, s32 nLine);
+	void			FunctionHook		(pcstr szFile, s32 nLine, BOOL bCall);
 	void			Write				(pcstr szMsg);
 
-	int				PrepareLua			(lua_State* );
-	void			UnPrepareLua		(lua_State* l, int idx);
+	s32				PrepareLua			(lua_State* );
+	void			UnPrepareLua		(lua_State* l, s32 idx);
 	BOOL			PrepareLuaBind		();
 
 					CScriptDebugger		();
@@ -68,8 +68,8 @@ public:
 	void			AddThread			(SScriptThread&);
 
 	void			ClearStackTrace		();
-	void			AddStackTrace		(pcstr strDesc, pcstr strFile, int nLine);
-	int				GetStackTraceLevel	();
+	void			AddStackTrace		(pcstr strDesc, pcstr strFile, s32 nLine);
+	s32				GetStackTraceLevel	();
 	
 	BOOL			Active				();
 //	static CScriptDebugger* GetDebugger	() { return m_pDebugger; };
@@ -78,7 +78,7 @@ public:
 protected:
 	void			DrawVariableInfo	(pstr varName);
 	void			DrawCurrentState	();
-	void			DrawThreadInfo		(int nThreadID);
+	void			DrawThreadInfo		(s32 nThreadID);
 	void			GetBreakPointsFromIde();
 	void			FillBreakPointsIn	(CMailSlotMsg* msg);
 	bool			HasBreakPoint		(pcstr fileName, s32 lineNum);
@@ -93,10 +93,10 @@ protected:
 	CDbgLuaHelper						*m_lua;
 	CScriptCallStack					*m_callStack;
 //	static CScriptDebugger*				m_pDebugger;
-	int									m_nMode;
-	int									m_nLevel;  //for step into/over/out
+	s32									m_nMode;
+	s32									m_nLevel;  //for step into/over/out
 	string_path							m_strPathName;	//for run_to_line_number
-	int									m_nLine;		//for run_to_line_number
+	s32									m_nLine;		//for run_to_line_number
 
 	HANDLE								m_mailSlot;
 	BOOL								m_bIdePresent;

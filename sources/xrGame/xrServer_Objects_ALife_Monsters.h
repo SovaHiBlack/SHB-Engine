@@ -144,7 +144,7 @@ f32							m_offline_interactive_radius;
 			void					spawn_artefacts			();
 	virtual void					on_spawn				();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType, f32& fHitPower);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int iGroupIndex, bool bMutualDetection);
+	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable, s32 iGroupIndex, bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
 #endif
@@ -249,7 +249,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeMonsterAbstract,CSE_ALifeCreatureAbstract,
 	bool								m_task_reached;		
 	//---------------------------------------------------------
 
-	int									m_rank;
+	s32									m_rank;
 
 	ALife::_TIME_ID						m_stay_after_death_time_interval;
 
@@ -270,14 +270,14 @@ public:
 	virtual u32						ef_weapon_type			() const;
 	virtual u32						ef_detector_type		() const;
 	
-	IC		int						Rank					(){return m_rank;}
+	IC		s32						Rank					(){return m_rank;}
 
 #ifndef XRGAME_EXPORTS
 	virtual	void					update					()	{};
 #else
 	virtual	void					update					();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType		&tHitType, f32& fHitPower);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,	int		iGroupIndex,	bool bMutualDetection);
+	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable, s32		iGroupIndex,	bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
 	virtual	void					vfDetachAll				(bool					bFictitious = false) {};
@@ -430,7 +430,7 @@ public:
 	virtual	void					vfUpdateWeaponAmmo		();
 	virtual	void					vfProcessItems			();
 	virtual	void					vfAttachItems			(ALife::ETakeType tTakeType = ALife::eTakeTypeAll);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
+	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, s32 iGroupIndex, bool bMutualDetection);
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
 	virtual	void					vfDetachAll				(bool bFictitious = false);
 	virtual void					spawn_supplies			();
@@ -486,7 +486,7 @@ public:
 
 public:
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon		(ALife::EHitType &tHitType, f32& fHitPower);
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, int iGroupIndex, bool bMutualDetection);
+	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable *tpALifeSchedulable, s32 iGroupIndex, bool bMutualDetection);
 	virtual bool					bfActive				();
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		();
 	virtual void					update					();

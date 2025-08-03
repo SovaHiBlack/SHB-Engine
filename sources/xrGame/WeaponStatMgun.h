@@ -83,14 +83,15 @@ protected:
 	virtual const fVector3& get_CurrentFirePoint( );
 	virtual const fMatrix4x4& get_ParticlesXFORM( );
 
-	virtual	void			FireStart( );
-	virtual	void			FireEnd( );
-	virtual	void			UpdateFire( );
-	virtual	void			OnShot( );
+	virtual void			FireStart( );
+	virtual void			FireEnd( );
+	virtual void			UpdateFire( );
+	virtual void			OnShot( );
 	void			AddShotEffector( );
 	void			RemoveShotEffector( );
 	void			SetDesiredDir(f32 h, f32 p);
-//HolderCustom
+
+	//HolderCustom
 public:
 	virtual bool			Use(const fVector3& pos, const fVector3& dir, const fVector3& foot_pos)
 	{
@@ -128,6 +129,6 @@ public:
 		return camera;
 	}
 
-	virtual void			Action(int id, u32 flags);
-	virtual void			SetParam(int id, fVector2 val);
+	virtual void			Action(s32 id, u32 flags);
+	virtual void			SetParam(s32 id, fVector2 val);
 };

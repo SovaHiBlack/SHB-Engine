@@ -30,7 +30,7 @@ public:
 	}
 	fColor	calculate		(f32 T)
 	{
-		int frame;
+		s32 frame;
 		VERIFY				(item);
 		return fColor().set(item->CalculateRGB(T,frame));
 	}

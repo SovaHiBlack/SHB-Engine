@@ -55,8 +55,8 @@
 //
 f32 angle_distance(f32 x, f32 y)
 {
-	unsigned int signx = x > 0.0;
-	unsigned int signy = y > 0.0;
+	u32 signx = x > 0.0;
+	u32 signy = y > 0.0;
 	f32 dist;
 
 	dist = _abs(x-y);
@@ -78,7 +78,7 @@ f32 angle_distance(f32 x, f32 y)
 // Either one or two solutions. Return the answer in radians
 //
 
-int solve_trig1(f32 a, f32 b, f32 c, f32 theta[2])
+s32 solve_trig1(f32 a, f32 b, f32 c, f32 theta[2])
 {
 	f32 temp  = (a*a+b*b-c*c);
 
@@ -97,7 +97,7 @@ int solve_trig1(f32 a, f32 b, f32 c, f32 theta[2])
 	}
 
 	temp  = (f32) atan2((f32)_sqrt(temp),(f32) c);//.(float) c
-	int num =  (!iszero(temp)) ? 2 : 1;
+	s32 num =  (!iszero(temp)) ? 2 : 1;
 
 	// Calculate answer in radians
 	theta[0] = (f32) atan2(b,a);
@@ -131,7 +131,7 @@ f32 solve_trig2(f32 a, f32 b, f32 c, f32 d)
 // 
 // arccos routine that returns up to two solutions. 
 //
-int myacos(f32 x, f32 solns[2])
+s32 myacos(f32 x, f32 solns[2])
 {
 	if (_abs(x) > 1)
 	return 0;
@@ -149,7 +149,7 @@ int myacos(f32 x, f32 solns[2])
 // 
 // arcsin routine that returns up to two solutions. 
 //
-int myasin(f32 x, f32 solns[2])
+s32 myasin(f32 x, f32 solns[2])
 {
 	if (_abs(x) > 1)
 	return 0;

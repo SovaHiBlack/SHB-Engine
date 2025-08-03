@@ -77,21 +77,23 @@ public:
 	//	Rocket Properties
 	//////////////////////////////////////////////////////////////////////////
 public:
+
 #ifdef DEBUG
 	CGameObject* owner( )
 	{
 		return m_pOwner;
 	}
 #endif
-	virtual	void			StartEngine( );
-	virtual	void			StopEngine( );
-	virtual	void			UpdateEngine( );
-	virtual	void			UpdateEnginePh( );
 
-	virtual	void			StartFlying( );
-	virtual	void			StopFlying( );
+	virtual void			StartEngine( );
+	virtual void			StopEngine( );
+	virtual void			UpdateEngine( );
+	virtual void			UpdateEnginePh( );
 
-	virtual	void			SetLaunchParams(const fMatrix4x4& xform, const fVector3& vel, const fVector3& angular_vel);
+	virtual void			StartFlying( );
+	virtual void			StopFlying( );
+
+	virtual void			SetLaunchParams(const fMatrix4x4& xform, const fVector3& vel, const fVector3& angular_vel);
 
 	virtual void			OnEvent(CNetPacket& P, u16 type);
 	bool					m_bLaunched;
@@ -130,7 +132,7 @@ protected:
 	//обработка столкновения
 	virtual void			Contact(const fVector3& pos, const fVector3& normal);
 	void			PlayContact( );
-	static	void			ObjectContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
+	static void			ObjectContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/);
 
 	//////////////////////////////////////////////////////////////////////////
 	//	Lights

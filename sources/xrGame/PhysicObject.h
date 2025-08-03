@@ -21,7 +21,7 @@ private:
 	//Creating
 			void	CreateBody			(CSE_ALifeObjectPhysic	*po)													;
 			void	CreateSkeleton		(CSE_ALifeObjectPhysic	*po)													;
-			void	AddElement			(CPhysicsElement* root_e, int id)												;
+			void	AddElement			(CPhysicsElement* root_e, s32 id)												;
 
 	
 public:

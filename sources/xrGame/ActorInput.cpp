@@ -165,21 +165,35 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 		}break;
 	}
 }
+
 void CActor::IR_OnMouseWheel(s32 direction)
 {
-	if (inventory( ).Action((direction > 0) ? kWPN_ZOOM_DEC : kWPN_ZOOM_INC, CMD_START)) return;
-
+	if (inventory( ).Action((direction > 0) ? kWPN_ZOOM_DEC : kWPN_ZOOM_INC, CMD_START))
+	{
+		return;
+	}
 
 	if (direction > 0)
+	{
 		OnNextWeaponSlot( );
+	}
 	else
+	{
 		OnPrevWeaponSlot( );
+	}
 }
+
 void CActor::IR_OnKeyboardRelease(s32 cmd)
 {
-	if (Remote( ))		return;
+	if (Remote( ))
+	{
+		return;
+	}
 
-	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))	return;
+	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))
+	{
+		return;
+	}
 
 	if (g_Alive( ))
 	{

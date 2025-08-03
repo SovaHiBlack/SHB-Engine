@@ -191,39 +191,39 @@ public:
 	virtual		void 					Deactivate( ) = 0;
 	virtual		void 					SetBackRef(CPhysicsJoint** j) = 0;
 	virtual		void 					SetAnchor(const fVector3& position) = 0;
-	virtual		void 					SetAxisSDfactors(f32 spring_factor, f32 damping_factor, int axis_num) = 0;
+	virtual		void 					SetAxisSDfactors(f32 spring_factor, f32 damping_factor, s32 axis_num) = 0;
 	virtual		void 					SetJointSDfactors(f32 spring_factor, f32 damping_factor) = 0;
 	virtual		void 					SetAnchorVsFirstElement(const fVector3& position) = 0;
 	virtual		void 					SetAnchorVsSecondElement(const fVector3& position) = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void					SetAxisDir(const fVector3& orientation, const int axis_num) = 0;
-	virtual		void 					SetAxisDirVsFirstElement(const fVector3& orientation, const int axis_num) = 0;
-	virtual		void 					SetAxisDirVsSecondElement(const fVector3& orientation, const int axis_num) = 0;
+	virtual		void					SetAxisDir(const fVector3& orientation, const s32 axis_num) = 0;
+	virtual		void 					SetAxisDirVsFirstElement(const fVector3& orientation, const s32 axis_num) = 0;
+	virtual		void 					SetAxisDirVsSecondElement(const fVector3& orientation, const s32 axis_num) = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual		void 					SetAnchor(const f32 x, const f32 y, const f32 z) = 0;
 	virtual		void 					SetAnchorVsFirstElement(const f32 x, const f32 y, const f32 z) = 0;
 	virtual		void 					SetAnchorVsSecondElement(const f32 x, const f32 y, const f32 z) = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void 					SetAxisDir(const f32 x, const f32 y, const f32 z, const int axis_num) = 0;
-	virtual		void 					SetAxisDirVsFirstElement(const f32 x, const f32 y, const f32 z, const int axis_num) = 0;
-	virtual		void 					SetAxisDirVsSecondElement(const f32 x, const f32 y, const f32 z, const int axis_num) = 0;
+	virtual		void 					SetAxisDir(const f32 x, const f32 y, const f32 z, const s32 axis_num) = 0;
+	virtual		void 					SetAxisDirVsFirstElement(const f32 x, const f32 y, const f32 z, const s32 axis_num) = 0;
+	virtual		void 					SetAxisDirVsSecondElement(const f32 x, const f32 y, const f32 z, const s32 axis_num) = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	virtual		void 					SetLimits(const f32 low, const f32 high, const int axis_num) = 0;
-	virtual		void 					SetLimitsVsFirstElement(const f32 low, const f32 high, const int axis_num) = 0;
-	virtual		void 					SetLimitsVsSecondElement(const f32 low, const f32 high, const int axis_num) = 0;
+	virtual		void 					SetLimits(const f32 low, const f32 high, const s32 axis_num) = 0;
+	virtual		void 					SetLimitsVsFirstElement(const f32 low, const f32 high, const s32 axis_num) = 0;
+	virtual		void 					SetLimitsVsSecondElement(const f32 low, const f32 high, const s32 axis_num) = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	virtual		void 					SetBreakable(f32 force, f32 torque) = 0;
 	virtual		CPHJointDestroyInfo* JointDestroyInfo( ) = 0;
 	virtual		bool					isBreakable( ) = 0;
-	virtual		void					SetForceAndVelocity(const f32 force, const f32 velocity = 0.f, const int axis_num = -1) = 0;
-	virtual		void					GetMaxForceAndVelocity(f32& force, f32& velocity, int axis_num) = 0;
-	virtual		f32					GetAxisAngle(int axis_num) = 0;
+	virtual		void					SetForceAndVelocity(const f32 force, const f32 velocity = 0.f, const s32 axis_num = -1) = 0;
+	virtual		void					GetMaxForceAndVelocity(f32& force, f32& velocity, s32 axis_num) = 0;
+	virtual		f32					GetAxisAngle(s32 axis_num) = 0;
 	virtual		dJointID				GetDJoint( ) = 0;
-	virtual		void 					GetAxisSDfactors(f32& spring_factor, f32& damping_factor, int axis_num) = 0;
+	virtual		void 					GetAxisSDfactors(f32& spring_factor, f32& damping_factor, s32 axis_num) = 0;
 	virtual		void 					GetJointSDfactors(f32& spring_factor, f32& damping_factor) = 0;
-	virtual		void 					GetLimits(f32& lo_limit, f32& hi_limit, int axis_num) = 0;
-	virtual		void 					GetAxisDir(int num, fVector3& axis, eVs& vs) = 0;
-	virtual		void 					GetAxisDirDynamic(int num, fVector3& axis) = 0;
+	virtual		void 					GetLimits(f32& lo_limit, f32& hi_limit, s32 axis_num) = 0;
+	virtual		void 					GetAxisDir(s32 num, fVector3& axis, eVs& vs) = 0;
+	virtual		void 					GetAxisDirDynamic(s32 num, fVector3& axis) = 0;
 	virtual		void 					GetAnchorDynamic(fVector3& anchor) = 0;
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };

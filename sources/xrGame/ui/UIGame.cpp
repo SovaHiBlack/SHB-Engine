@@ -280,7 +280,7 @@ void CChangeLevelWnd::OnCancel( )
 	}
 }
 
-bool CChangeLevelWnd::OnKeyboard(int dik, EUIMessages keyboard_action)
+bool CChangeLevelWnd::OnKeyboard(s32 dik, EUIMessages keyboard_action)
 {
 	if (keyboard_action == WINDOW_KEY_PRESSED)
 	{

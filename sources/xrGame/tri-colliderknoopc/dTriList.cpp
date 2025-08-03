@@ -52,7 +52,7 @@ IC bool ValidateCollision(dxGeom* o1, dxGeom* o2){
 }
 
 
-int dCollideSTL(dxGeom* TriList, dxGeom* Sphere, int Flags, dContactGeom* Contact, int Stride) throw()
+s32 dCollideSTL(dxGeom* TriList, dxGeom* Sphere, s32 Flags, dContactGeom* Contact, s32 Stride) throw()
 {
 
 	if (ValidateCollision(Sphere, TriList)){
@@ -67,7 +67,7 @@ int dCollideSTL(dxGeom* TriList, dxGeom* Sphere, int Flags, dContactGeom* Contac
 
 
 
-int dCollideBTL(dxGeom* TriList, dxGeom* Box, int Flags, dContactGeom* Contact, int Stride)throw()
+s32 dCollideBTL(dxGeom* TriList, dxGeom* Box, s32 Flags, dContactGeom* Contact, s32 Stride)throw()
 {
 
 	if (ValidateCollision(Box, TriList)){
@@ -80,7 +80,7 @@ int dCollideBTL(dxGeom* TriList, dxGeom* Box, int Flags, dContactGeom* Contact, 
 
 }
 
-int dCollideCTL(dxGeom* TriList, dxGeom* Cyl, int Flags, dContactGeom* Contact, int Stride)throw()
+s32 dCollideCTL(dxGeom* TriList, dxGeom* Cyl, s32 Flags, dContactGeom* Contact, s32 Stride)throw()
 {
 
 	if (ValidateCollision(Cyl, TriList)){
@@ -95,7 +95,7 @@ int dCollideCTL(dxGeom* TriList, dxGeom* Cyl, int Flags, dContactGeom* Contact, 
 
 
 
-dColliderFn* dTriListColliderFn(int num)
+dColliderFn* dTriListColliderFn(s32 num)
 {
 	//	Log("in dTriListColliderFn ");
 	//	Msg("num=%d",num);
@@ -112,7 +112,7 @@ dColliderFn* dTriListColliderFn(int num)
 
 }
 
-int dAABBTestTL(dxGeom* TriList, dxGeom* Object, dReal AABB[6]) throw()
+s32 dAABBTestTL(dxGeom* TriList, dxGeom* Object, dReal AABB[6]) throw()
 {
 
 	return 1;

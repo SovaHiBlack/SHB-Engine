@@ -2,7 +2,7 @@
 #include "xrServer.h"
 #include "xrServer_Objects.h"
 
-int	g_Dump_Update_Read = 0;
+s32	g_Dump_Update_Read = 0;
 
 void xrServer::Process_update(CNetPacket& P, CClientID sender)
 {

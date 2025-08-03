@@ -10,7 +10,6 @@
 #include "space_restriction_bridge.h"
 #include "space_restriction_composition.h"
 #include "space_restriction_holder.h"
-#include "space_restriction_bridge.h"
 #include "restriction_space.h"
 #include "AISpace.h"
 #include "level_graph.h"
@@ -26,7 +25,7 @@
 #	include "SpaceRestrictor.h"
 #endif // DEBUG
 
-int g_restriction_checker = 0;
+s32 g_restriction_checker = 0;
 
 CSpaceRestrictionComposition::~CSpaceRestrictionComposition	()
 {

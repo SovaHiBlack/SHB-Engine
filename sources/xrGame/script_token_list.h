@@ -32,9 +32,9 @@ protected:
 	};
 	
 	struct CTokenPredicateID {
-		int				m_id;
+		s32				m_id;
 
-		IC				CTokenPredicateID	(int id)
+		IC				CTokenPredicateID	(s32 id)
 		{
 			m_id		= id;
 		}
@@ -50,16 +50,16 @@ protected:
 
 protected:
 	IC		iterator			token				(pcstr name);
-	IC		iterator			token				(int id);
+	IC		iterator			token				(s32 id);
 
 public:
 	IC							CScriptTokenList	();
 								~CScriptTokenList	();
-	IC		void				add					(pcstr name, int id);
+	IC		void				add					(pcstr name, s32 id);
 	IC		void				remove				(pcstr name);
 	IC		void				clear				();
-	IC		int					id					(pcstr name);
-	IC		pcstr				name				(int id);
+	IC		s32					id					(pcstr name);
+	IC		pcstr				name				(s32 id);
 	IC		const TOKEN_LIST	&tokens				() const;
 	IC		TOKEN_LIST			&tokens				();
 	DECLARE_SCRIPT_REGISTER_FUNCTION

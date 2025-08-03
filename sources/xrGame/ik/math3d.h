@@ -174,14 +174,14 @@ inline void set_translation(Matrix M, f32 x, f32 y, f32 z)
 	M[3][2] = z;
 }
 
-inline void set_row(Matrix M, int row, const f32 v[3])
+inline void set_row(Matrix M, s32 row, const f32 v[3])
 {
 	M[row][0] = v[0];
 	M[row][1] = v[1];
 	M[row][2] = v[2];
 }
 
-inline void get_row(Matrix M, int row,  f32 v[3])
+inline void get_row(Matrix M, s32 row,  f32 v[3])
 {
 	v[0] = M[row][0];
 	v[1] = M[row][1];

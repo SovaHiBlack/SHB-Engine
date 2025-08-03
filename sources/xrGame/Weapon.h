@@ -557,7 +557,7 @@ protected:
 public:
 	IC s32					GetAmmoElapsed( ) const
 	{
-		return /*int(m_magazine.size())*/iAmmoElapsed;
+		return iAmmoElapsed;
 	}
 	IC s32					GetAmmoMagSize( ) const
 	{
@@ -641,7 +641,7 @@ protected:
 
 public:
 	virtual void			modify_holder_params(f32& range, f32& fov) const;
-	virtual bool			use_crosshair( )	const
+	virtual bool			use_crosshair( ) const
 	{
 		return true;
 	}

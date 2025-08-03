@@ -335,7 +335,7 @@ void CPHJoint::CreateSlider( )
 
 	CalcAxis(1, axis, lo, hi, first_matrix, second_matrix, rotate);
 	if (!body1)axis.invert( );//SwapLimits(lo,hi);
-	int rel = body1 ? 1 : 2;
+	s32 rel = body1 ? 1 : 2;
 	dJointSetAMotorAxis(m_joint1, 0, rel, axis.x, axis.y, axis.z);
 	dJointSetAMotorParam(m_joint1, dParamLoStop, lo);
 	dJointSetAMotorParam(m_joint1, dParamHiStop, hi);
@@ -1519,7 +1519,7 @@ u16 CPHJoint::GetAxesNumber( )
 	return u16(axes.size( ));
 }
 
-void CPHJoint::CalcAxis(int ax_num, fVector3& axis, f32& lo, f32& hi, const fMatrix4x4& first_matrix, const fMatrix4x4& second_matrix, const fMatrix4x4& rotate)
+void CPHJoint::CalcAxis(s32 ax_num, fVector3& axis, f32& lo, f32& hi, const fMatrix4x4& first_matrix, const fMatrix4x4& second_matrix, const fMatrix4x4& rotate)
 {
 	switch (axes[ax_num].vs)
 	{

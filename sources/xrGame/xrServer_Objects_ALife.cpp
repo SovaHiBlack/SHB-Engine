@@ -677,7 +677,7 @@ CSE_ALifeObjectPhysic::CSE_ALifeObjectPhysic(pcstr caSection) : CSE_ALifeDynamic
 	mass 						= 10.f;
 
 	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection,"visual"))
-    	set_visual				(pSettings->r_string(caSection,"visual"));
+		set_visual				(pSettings->r_string(caSection,"visual"));
 
 	m_flags.set					(flUseSwitches,FALSE);
 	m_flags.set					(flSwitchOffline,FALSE);
@@ -705,7 +705,7 @@ void CSE_ALifeObjectPhysic::STATE_Read		(CNetPacket& tNetPacket, u16 size)
 		
 	tNetPacket.r_u32			(type);
 	tNetPacket.r_float			(mass);
-    
+	
 	if (m_wVersion > 9)
 		tNetPacket.r_stringZ	(fixed_bones);
 
@@ -769,9 +769,9 @@ void CSE_ALifeObjectPhysic::FillProps		(pcstr pref, PropItemVec& values)
 
 	PHelper().CreateToken32		(values, PrepareKey(pref,*s_name,"Type"), &type,	po_types);
 	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Mass"), &mass, 0.1f, 10000.f);
-    PHelper().CreateFlag8		(values, PrepareKey(pref,*s_name,"Active"), &_flags, flActive);
+	PHelper().CreateFlag8		(values, PrepareKey(pref,*s_name,"Active"), &_flags, flActive);
 
-    // motions & bones
+	// motions & bones
 	PHelper().CreateChoose		(values, 	PrepareKey(pref,*s_name,"Model\\Fixed bones"),	&fixed_bones,		smSkeletonBones,0,(void*)visual()->get_visual(),8);
 }
 
@@ -792,18 +792,18 @@ CSE_ALifeObjectHangingLamp::CSE_ALifeObjectHangingLamp(pcstr caSection) : CSE_AL
 {
 	flags.assign				(flTypeSpot|flR1|flR2);
 
-	range						= 10.f;
+	range						= 10.0f;
 	color						= 0xffffffff;
-    brightness					= 1.f;
-	m_health					= 100.f;
+	brightness					= 1.0f;
+	m_health					= 100.0f;
 	m_flags.set					(flUseSwitches,FALSE);
 	m_flags.set					(flSwitchOffline,FALSE);
 
 	m_virtual_size				= 0.1f;
-	m_ambient_radius			= 10.f;
-    m_ambient_power				= 0.1f;
-    spot_cone_angle				= deg2rad(120.f);
-    glow_radius					= 0.7f;
+	m_ambient_radius			= 10.0f;
+	m_ambient_power				= 0.1f;
+	spot_cone_angle				= deg2rad(120.0f);
+	glow_radius					= 0.7f;
 }
 
 CSE_ALifeObjectHangingLamp::~CSE_ALifeObjectHangingLamp()
@@ -858,7 +858,7 @@ void CSE_ALifeObjectHangingLamp::STATE_Read	(CNetPacket& tNetPacket, u16 size)
 		tNetPacket.r_float			(brightness);
 		tNetPacket.r_stringZ		(color_animator);
 		tNetPacket.r_float			(range);
-    	tNetPacket.r_u16			(flags.flags);
+		tNetPacket.r_u16			(flags.flags);
 		tNetPacket.r_stringZ		(startup_animation);
 		set_editor_flag				(flVisualAnimationChange);
 		tNetPacket.r_stringZ		(fixed_bones);
@@ -866,14 +866,14 @@ void CSE_ALifeObjectHangingLamp::STATE_Read	(CNetPacket& tNetPacket, u16 size)
 	}
 	if (m_wVersion > 55){
 		tNetPacket.r_float			(m_virtual_size);
-	    tNetPacket.r_float			(m_ambient_radius);
-    	tNetPacket.r_float			(m_ambient_power);
-	    tNetPacket.r_stringZ		(m_ambient_texture);
-        tNetPacket.r_stringZ		(light_texture);
-        tNetPacket.r_stringZ		(light_main_bone);
-        tNetPacket.r_float			(spot_cone_angle);
-        tNetPacket.r_stringZ		(glow_texture);
-        tNetPacket.r_float			(glow_radius);
+		tNetPacket.r_float			(m_ambient_radius);
+		tNetPacket.r_float			(m_ambient_power);
+		tNetPacket.r_stringZ		(m_ambient_texture);
+		tNetPacket.r_stringZ		(light_texture);
+		tNetPacket.r_stringZ		(light_main_bone);
+		tNetPacket.r_float			(spot_cone_angle);
+		tNetPacket.r_stringZ		(glow_texture);
+		tNetPacket.r_float			(glow_radius);
 	}
 	if (m_wVersion > 96){
 		tNetPacket.r_stringZ		(light_ambient_bone);
@@ -938,44 +938,44 @@ void CSE_ALifeObjectHangingLamp::FillProps	(pcstr pref, PropItemVec& values)
 	inherited1::FillProps		(pref,values);
 	inherited2::FillProps		(pref,values);
 
-    PropValue* P				= 0;
+	PropValue* P				= 0;
 	PHelper().CreateFlag16		(values, PrepareKey(pref,*s_name,"Flags\\Physic"),		&flags,			flPhysic);
 	PHelper().CreateFlag16		(values, PrepareKey(pref,*s_name,"Flags\\Cast Shadow"),	&flags,			flCastShadow);
 	PHelper().CreateFlag16		(values, PrepareKey(pref,*s_name,"Flags\\Allow R1"),	&flags,			flR1);
 	PHelper().CreateFlag16		(values, PrepareKey(pref,*s_name,"Flags\\Allow R2"),	&flags,			flR2);
 	P=PHelper().CreateFlag16	(values, PrepareKey(pref,*s_name,"Flags\\Allow Ambient"),&flags,			flPointAmbient);
-    P->OnChangeEvent.bind		(this,&CSE_ALifeObjectHangingLamp::OnChangeFlag);
+	P->OnChangeEvent.bind		(this,&CSE_ALifeObjectHangingLamp::OnChangeFlag);
 	// 
 	P=PHelper().CreateFlag16	(values, PrepareKey(pref,*s_name,"Light\\Type"), 		&flags,				flTypeSpot, "Point", "Spot");
-    P->OnChangeEvent.bind		(this,&CSE_ALifeObjectHangingLamp::OnChangeFlag);
+	P->OnChangeEvent.bind		(this,&CSE_ALifeObjectHangingLamp::OnChangeFlag);
 	PHelper().CreateColor		(values, PrepareKey(pref,*s_name,"Light\\Main\\Color"),			&color);
-    PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Light\\Main\\Brightness"),	&brightness,		0.1f, 5.f);
+	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Light\\Main\\Brightness"),	&brightness,		0.1f, 5.0f);
 	PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Light\\Main\\Color Animator"),&color_animator, 	smLAnim);
-	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Light\\Main\\Range"),			&range,				0.1f, 1000.f);
-	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Light\\Main\\Virtual Size"),	&m_virtual_size,	0.f, 100.f);
+	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Light\\Main\\Range"),			&range,				0.1f, 1000.0f);
+	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Light\\Main\\Virtual Size"),	&m_virtual_size,	0.0f, 100.0f);
 	PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Light\\Main\\Texture"),	    &light_texture, 	smTexture, "lights");
-	PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Light\\Main\\Bone"),			&light_main_bone,	smSkeletonBones,0,(void*)visual()->get_visual());
+	PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Light\\Main\\Bone"),			&light_main_bone,	smSkeletonBones,0,(pvoid)visual()->get_visual());
 	if (flags.is(flTypeSpot))
-		PHelper().CreateAngle	(values, PrepareKey(pref,*s_name,"Light\\Main\\Cone Angle"),	&spot_cone_angle,	deg2rad(1.f), deg2rad(120.f));
+		PHelper().CreateAngle	(values, PrepareKey(pref,*s_name,"Light\\Main\\Cone Angle"),	&spot_cone_angle,	deg2rad(1.0f), deg2rad(120.0f));
 
 	if (flags.is(flPointAmbient)){
-		PHelper().CreateFloat	(values, PrepareKey(pref,*s_name,"Light\\Ambient\\Radius"),		&m_ambient_radius,	0.f, 1000.f);
+		PHelper().CreateFloat	(values, PrepareKey(pref,*s_name,"Light\\Ambient\\Radius"),		&m_ambient_radius,	0.0f, 1000.0f);
 		PHelper().CreateFloat	(values, PrepareKey(pref,*s_name,"Light\\Ambient\\Power"),		&m_ambient_power);
 		PHelper().CreateChoose	(values, PrepareKey(pref,*s_name,"Light\\Ambient\\Texture"),	&m_ambient_texture,	smTexture, 	"lights");
-		PHelper().CreateChoose	(values, PrepareKey(pref,*s_name,"Light\\Ambient\\Bone"),		&light_ambient_bone,smSkeletonBones,0,(void*)visual()->get_visual());
+		PHelper().CreateChoose	(values, PrepareKey(pref,*s_name,"Light\\Ambient\\Bone"),		&light_ambient_bone,smSkeletonBones,0,(pvoid)visual()->get_visual());
 	}
 
 	// fixed bones
-    PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Model\\Fixed bones"),	&fixed_bones,		smSkeletonBones,0,(void*)visual()->get_visual(),8);
-    // glow
-	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Glow\\Radius"),	    &glow_radius,		0.01f, 100.f);
+	PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Model\\Fixed bones"),	&fixed_bones,		smSkeletonBones,0,(pvoid)visual()->get_visual(),8);
+	// glow
+	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Glow\\Radius"),	    &glow_radius,		0.01f, 100.0f);
 	PHelper().CreateChoose		(values, PrepareKey(pref,*s_name,"Glow\\Texture"),	    &glow_texture, 		smTexture,	"glow");
 	// game
-	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Game\\Health"),		&m_health,			0.f, 100.f);
+	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Game\\Health"),		&m_health,			0.0f, 100.0f);
 }
 
 #define VIS_RADIUS 		0.25f
-void CSE_ALifeObjectHangingLamp::on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F)
+void CSE_ALifeObjectHangingLamp::on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent, s32 priority, bool strictB2F)
 {
 	inherited1::on_render		(du,owner,bSelected,parent,priority,strictB2F);
 	if ((1==priority)&&(false==strictB2F)){
@@ -1150,10 +1150,10 @@ CSE_Motion* CSE_ALifeHelicopter::motion		()
 void CSE_ALifeHelicopter::STATE_Read		(CNetPacket& tNetPacket, u16 size)
 {
 	inherited1::STATE_Read		(tNetPacket,size);
-    CSE_Motion::motion_read		(tNetPacket);
+	CSE_Motion::motion_read		(tNetPacket);
 	if(m_wVersion>=69)
 		inherited3::STATE_Read		(tNetPacket,size);
-    tNetPacket.r_stringZ		(startup_animation);
+	tNetPacket.r_stringZ		(startup_animation);
 	tNetPacket.r_stringZ		(engine_sound);
 
 	set_editor_flag				(flVisualAnimationChange | flMotionChange);
@@ -1162,10 +1162,10 @@ void CSE_ALifeHelicopter::STATE_Read		(CNetPacket& tNetPacket, u16 size)
 void CSE_ALifeHelicopter::STATE_Write		(CNetPacket& tNetPacket)
 {
 	inherited1::STATE_Write		(tNetPacket);
-    CSE_Motion::motion_write	(tNetPacket);
+	CSE_Motion::motion_write	(tNetPacket);
 	inherited3::STATE_Write		(tNetPacket);
-    tNetPacket.w_stringZ			(startup_animation);
-    tNetPacket.w_stringZ			(engine_sound);
+	tNetPacket.w_stringZ			(startup_animation);
+	tNetPacket.w_stringZ			(engine_sound);
 }
 
 void CSE_ALifeHelicopter::UPDATE_Read		(CNetPacket& tNetPacket)
@@ -1196,7 +1196,7 @@ void CSE_ALifeHelicopter::FillProps(pcstr pref, PropItemVec& values)
 	inherited2::FillProps		(pref,	values);
 	inherited3::FillProps		(pref,	values);
 
-    PHelper().CreateChoose		(values,	PrepareKey(pref,*s_name,"Engine Sound"), &engine_sound, smSoundSource);
+	PHelper().CreateChoose		(values,	PrepareKey(pref,*s_name,"Engine Sound"), &engine_sound, smSoundSource);
 }
 
 bool CSE_ALifeHelicopter::used_ai_locations	() const
@@ -1210,7 +1210,7 @@ bool CSE_ALifeHelicopter::used_ai_locations	() const
 CSE_ALifeCar::CSE_ALifeCar				(pcstr caSection) : CSE_ALifeDynamicObjectVisual(caSection),CSE_PHSkeleton(caSection)
 {
 	if (pSettings->section_exist(caSection) && pSettings->line_exist(caSection,"visual"))
-    	set_visual				(pSettings->r_string(caSection,"visual"));
+		set_visual				(pSettings->r_string(caSection,"visual"));
 	m_flags.set					(flUseSwitches,FALSE);
 	m_flags.set					(flSwitchOffline,FALSE);
 	health						=1.0f;
@@ -1340,7 +1340,7 @@ void CSE_ALifeCar::SWheelState::write(CNetPacket& P)
 
 void CSE_ALifeCar::FillProps				(pcstr pref, PropItemVec& values)
 {
-  	inherited1::FillProps			(pref,values);
+	inherited1::FillProps			(pref,values);
 	inherited2::FillProps			(pref,values);
 	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Health"),			&health,			0.f, 1.0f);
 }
@@ -1383,7 +1383,7 @@ void CSE_ALifeObjectBreakable::UPDATE_Write	(CNetPacket& tNetPacket)
 
 void CSE_ALifeObjectBreakable::FillProps		(pcstr pref, PropItemVec& values)
 {
-  	inherited::FillProps			(pref,values);
+	inherited::FillProps			(pref,values);
 	PHelper().CreateFloat		(values, PrepareKey(pref,*s_name,"Health"),			&m_health,			0.f, 100.f);
 }
 

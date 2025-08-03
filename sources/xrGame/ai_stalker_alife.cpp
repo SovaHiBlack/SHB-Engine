@@ -389,7 +389,7 @@ bool CStalker::conflicted(const CInventoryItem* item, const CWeapon* new_weapon,
 	if (!current_wepon_enough_ammo && new_wepon_enough_ammo)
 		return				(false);
 
-	if (!fsimilar(weapon->GetCondition( ), new_weapon->GetCondition( ), .05f))
+	if (!fsimilar(weapon->GetCondition( ), new_weapon->GetCondition( ), 0.05f))
 		return				(weapon->GetCondition( ) >= new_weapon->GetCondition( ));
 
 	if (weapon->ef_weapon_type( ) != new_weapon->ef_weapon_type( ))

@@ -253,7 +253,7 @@ void CCoverEvaluatorAmbush::setup(const fVector3& my_position, const fVector3& e
 //	m_actuality				= m_actuality && m_my_position.similar(my_position);
 	m_my_position			= my_position;
 
-	m_actuality				= m_actuality && m_enemy_position.similar(enemy_position,5.f);
+	m_actuality				= m_actuality && m_enemy_position.similar(enemy_position,5.0f);
 	m_enemy_position		= enemy_position;
 
 	m_actuality				= m_actuality && fsimilar(m_min_enemy_distance,min_enemy_distance);

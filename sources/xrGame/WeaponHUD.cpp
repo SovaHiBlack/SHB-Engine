@@ -9,6 +9,7 @@
 #include "..\XR_3DA\skeletonanimated.h"
 #include "level.h"
 #include "MathUtils.h"
+
 weapon_hud_container* g_pWeaponHUDContainer = 0;
 
 BOOL weapon_hud_value::load(const shared_str& section, CHudItem* owner)
@@ -82,7 +83,7 @@ u32 shared_weapon_hud::motion_length(MotionID M)
 	if (motion_def->flags & esmStopAtEnd)
 	{
 		CMotion* motion = skeleton_animated->LL_GetRootMotion(M);
-		return				iFloor(0.5f + 1000.0f * motion->GetLength( ) / motion_def->Dequantize(motion_def->speed));
+		return iFloor(0.5f + 1000.0f * motion->GetLength( ) / motion_def->Dequantize(motion_def->speed));
 	}
 
 	return 0;

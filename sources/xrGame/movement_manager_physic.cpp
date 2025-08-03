@@ -40,7 +40,7 @@ f32 CMovementManager::speed			(CPHMovementControl *movement_control) const
 void CMovementManager::apply_collision_hit(CPHMovementControl *movement_control)
 {
 		VERIFY(movement_control);
-	if (object().g_Alive()&&!fsimilar(0.f,movement_control->gcontact_HealthLost))
+	if (object().g_Alive()&&!fsimilar(0.0f,movement_control->gcontact_HealthLost))
 	{
 		const ICollisionDamageInfo * di=movement_control->CollisionDamageInfo();
 		VERIFY(di);

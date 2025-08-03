@@ -36,27 +36,27 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 	instance
 		.enum_("relation")
 		[
-			value("friend",					int(ALife::eRelationTypeFriend)),
-			value("neutral",				int(ALife::eRelationTypeNeutral)),
-			value("enemy",					int(ALife::eRelationTypeEnemy)),
-			value("dummy",					int(ALife::eRelationTypeDummy))
+			value("friend", s32(ALife::eRelationTypeFriend)),
+			value("neutral", s32(ALife::eRelationTypeNeutral)),
+			value("enemy", s32(ALife::eRelationTypeEnemy)),
+			value("dummy", s32(ALife::eRelationTypeDummy))
 		]
 		.enum_("action_types")
 		[
-			value("movement",				int(ScriptEntity::eActionTypeMovement)),
-			value("watch",					int(ScriptEntity::eActionTypeWatch)),
-			value("animation",				int(ScriptEntity::eActionTypeAnimation)),
-			value("sound",					int(ScriptEntity::eActionTypeSound)),
-			value("particle",				int(ScriptEntity::eActionTypeParticle)),
-			value("object",					int(ScriptEntity::eActionTypeObject)),
-			value("action_type_count",		int(ScriptEntity::eActionTypeCount))
+			value("movement", s32(ScriptEntity::eActionTypeMovement)),
+			value("watch", s32(ScriptEntity::eActionTypeWatch)),
+			value("animation", s32(ScriptEntity::eActionTypeAnimation)),
+			value("sound", s32(ScriptEntity::eActionTypeSound)),
+			value("particle", s32(ScriptEntity::eActionTypeParticle)),
+			value("object", s32(ScriptEntity::eActionTypeObject)),
+			value("action_type_count", s32(ScriptEntity::eActionTypeCount))
 		]
 		.enum_("EPathType")
 		[
-			value("game_path",				int(MovementManager::ePathTypeGamePath)),
-			value("level_path",				int(MovementManager::ePathTypeLevelPath)),
-			value("patrol_path",			int(MovementManager::ePathTypePatrolPath)),
-			value("no_path",				int(MovementManager::ePathTypeNoPath))
+			value("game_path", s32(MovementManager::ePathTypeGamePath)),
+			value("level_path", s32(MovementManager::ePathTypeLevelPath)),
+			value("patrol_path", s32(MovementManager::ePathTypePatrolPath)),
+			value("no_path", s32(MovementManager::ePathTypeNoPath))
 		]
 		
 //		.property("visible",				&CScriptGameObject::getVisible,			&CScriptGameObject::setVisible)
@@ -115,7 +115,7 @@ class_<CScriptGameObject> &script_register_game_object1(class_<CScriptGameObject
 		.def("action",						&CScriptGameObject::GetCurrentAction, adopt(result))
 		.def("object_count",				&CScriptGameObject::GetInventoryObjectCount)
 		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(pcstr))(&CScriptGameObject::GetObjectByName))
-		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(int))(&CScriptGameObject::GetObjectByIndex))
+		.def("object",						(CScriptGameObject *(CScriptGameObject::*)(s32))(&CScriptGameObject::GetObjectByIndex))
 		.def("active_item",					&CScriptGameObject::GetActiveItem)
 		
 		.def("set_callback",				(void (CScriptGameObject::*)(GameObject::ECallbackType, const luabind::functor<void> &))(&CScriptGameObject::SetCallback))

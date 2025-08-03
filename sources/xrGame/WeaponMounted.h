@@ -43,10 +43,10 @@ public:
 	// непосредственно обработка стрельбы
 	//////////////////////////////////////////////////
 protected:
-	virtual	void			FireStart( );
-	virtual	void			FireEnd( );
-	virtual	void			UpdateFire( );
-	virtual	void			OnShot( );
+	virtual void			FireStart( );
+	virtual void			FireEnd( );
+	virtual void			UpdateFire( );
+	virtual void			OnShot( );
 	void			AddShotEffector( );
 	void			RemoveShotEffector( );
 

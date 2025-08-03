@@ -799,9 +799,10 @@ void CSE_ALifeItemPDA::STATE_Read(CNetPacket& tNetPacket, u16 size)
 
 	if ((m_wVersion > 89) && (m_wVersion < 98))
 	{
-		int tmp, tmp2;
-		tNetPacket.r(&tmp, sizeof(int));
-		tNetPacket.r(&tmp2, sizeof(int));
+		s32 tmp;
+		s32 tmp2;
+		tNetPacket.r(&tmp, sizeof(s32));
+		tNetPacket.r(&tmp2, sizeof(s32));
 		m_info_portion = NULL;
 		m_specific_character = NULL;
 	}

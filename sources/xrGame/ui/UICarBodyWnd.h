@@ -41,7 +41,7 @@ public:
 
 	void					DisableAll( );
 	void					EnableAll( );
-	virtual bool			OnKeyboard(int dik, EUIMessages keyboard_action);
+	virtual bool			OnKeyboard(s32 dik, EUIMessages keyboard_action);
 
 	void					UpdateLists_delayed( );
 

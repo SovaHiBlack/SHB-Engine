@@ -136,7 +136,7 @@ protected:
 
 	EZoneState			m_eZoneState;
 
-	//текущее время пребывания зоны в определенном состоянии 
+	//текущее время пребывания зоны в определенном состоянии
 	s32					m_iStateTime;
 	s32					m_iPreviousStateTime;
 
@@ -230,7 +230,6 @@ protected:
 	shared_str				m_sBlowoutParticles;
 	shared_str				m_sAccumParticles;
 	shared_str				m_sAwakingParticles;
-
 	//появление большого и мальнекого объекта в зоне
 	shared_str				m_sEntranceParticlesSmall;
 	shared_str				m_sEntranceParticlesBig;

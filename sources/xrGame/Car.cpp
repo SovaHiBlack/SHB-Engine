@@ -120,7 +120,7 @@ void CCar::reload(pcstr section)
 
 void CCar::cb_Steer(CBoneInstance* B)
 {
-	VERIFY2(fsimilar(DET(B->mTransform), 1.f, DET_CHECK_EPS), "Bones receive returns 0 matrix");
+	VERIFY2(fsimilar(DET(B->mTransform), 1.0f, DET_CHECK_EPS), "Bones receive returns 0 matrix");
 	CCar* C = static_cast<CCar*>(B->Callback_Param);
 	fMatrix4x4 m;
 
@@ -129,7 +129,7 @@ void CCar::cb_Steer(CBoneInstance* B)
 
 	B->mTransform.mulB_43(m);
 #ifdef DEBUG
-	if (!fsimilar(DET(B->mTransform), 1.f, DET_CHECK_EPS))
+	if (!fsimilar(DET(B->mTransform), 1.0f, DET_CHECK_EPS))
 	{
 
 		Log("RotatingZ angle=", C->m_steer_angle);
@@ -856,15 +856,15 @@ void CCar::Init( )
 	{
 		PPhysicsShell( )->SetAirResistance(default_k_l * ini->r_float("air_resistance", "linear_factor"), default_k_w * ini->r_float("air_resistance", "angular_factor"));
 	}
+
 	if (ini->line_exist("car_definition", "steer"))
 	{
-
-
 		m_bone_steer = pKinematics->LL_BoneID(ini->r_string("car_definition", "steer"));
-		VERIFY2(fsimilar(DET(pKinematics->LL_GetTransform(m_bone_steer)), 1.f, EPSILON_3), "BBADD MTX");
+		VERIFY2(fsimilar(DET(pKinematics->LL_GetTransform(m_bone_steer)), 1.0f, EPSILON_3), "BBADD MTX");
 		pKinematics->LL_GetBoneInstance(m_bone_steer).set_callback(bctPhysics, cb_Steer, this);
 	}
-	m_steer_angle = 0.f;
+
+	m_steer_angle = 0.0f;
 	//ref_wheel.Init();
 	m_ref_radius = ini->r_float("car_definition", "reference_radius");//ref_wheel.radius;
 	b_exploded = false;
@@ -875,9 +875,9 @@ void CCar::Init( )
 	b_transmission_switching = false;
 	m_root_transform.set(bone_map.find(pKinematics->LL_GetBoneRoot( ))->second.element->mXFORM);
 	m_current_transmission_num = 0;
-	m_pPhysicsShell->set_DynamicScales(1.f, 1.f);
+	m_pPhysicsShell->set_DynamicScales(1.0f, 1.0f);
 	CDamagableItem::Init(GetfHealth( ), 3);
-	f32 l_time_to_explosion = READ_IF_EXISTS(ini, r_float, "car_definition", "time_to_explosion", 120.f);
+	f32 l_time_to_explosion = READ_IF_EXISTS(ini, r_float, "car_definition", "time_to_explosion", 120.0f);
 	CDelayedActionFuse::Initialize(l_time_to_explosion, CDamagableItem::DamageLevelToHealth(2));
 	{
 		xr_map<u16, SWheel>::iterator i, e;
@@ -886,7 +886,7 @@ void CCar::Init( )
 		for (; i != e; ++i)
 		{
 			i->second.Init( );
-			i->second.CDamagableHealthItem::Init(100.f, 2);
+			i->second.CDamagableHealthItem::Init(100.0f, 2);
 		}
 	}
 
@@ -929,7 +929,7 @@ void CCar::Init( )
 		for (; i != e; ++i)
 		{
 			i->second.Init( );
-			i->second.CDamagableHealthItem::Init(100, 1);
+			i->second.CDamagableHealthItem::Init(100.0f, 1);
 		}
 	}
 

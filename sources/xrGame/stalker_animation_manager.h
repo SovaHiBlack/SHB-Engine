@@ -145,7 +145,7 @@ public:
 	virtual	void					reinit					();
 	virtual	void					reload(CStalker* object);
 	virtual void					update					();
-			void					play_fx					(f32 power_factor, int fx_index);
+			void					play_fx					(f32 power_factor, s32 fx_index);
 			void 					play_delayed_callbacks	();
 
 public:

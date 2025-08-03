@@ -93,10 +93,10 @@ void CStalkerAnimationManager::reload(CStalker* _object)
 #endif
 };
 
-void CStalkerAnimationManager::play_fx(f32 power_factor, int fx_index)
+void CStalkerAnimationManager::play_fx(f32 power_factor, s32 fx_index)
 {
 	VERIFY						(fx_index >= 0);
-	VERIFY						(fx_index < (int)m_data_storage->m_part_animations.A[object().movement().body_state()].m_global.A[0].A.size());
+	VERIFY						(fx_index < (s32)m_data_storage->m_part_animations.A[object().movement().body_state()].m_global.A[0].A.size());
 #ifdef DEBUG
 	if (psAI_Flags.is(aiAnimation)) {
 		pcstr					name = m_skeleton_animated->LL_MotionDefName_dbg(m_data_storage->m_part_animations.A[object().movement().body_state()].m_global.A[0].A[fx_index]).first;

@@ -19,13 +19,13 @@ void CScriptActionCondition::script_register(lua_State *L)
 		class_<CScriptActionCondition>("cond")
 			.enum_("cond")
 			[
-				value("move_end",	int(CScriptActionCondition::MOVEMENT_FLAG)),
-				value("look_end",	int(CScriptActionCondition::WATCH_FLAG)),
-				value("anim_end",	int(CScriptActionCondition::ANIMATION_FLAG)),
-				value("sound_end",	int(CScriptActionCondition::SOUND_FLAG)),
-				value("object_end",	int(CScriptActionCondition::OBJECT_FLAG)),
-				value("time_end",	int(CScriptActionCondition::TIME_FLAG)),
-				value("act_end",	int(CScriptActionCondition::ACT_FLAG))
+				value("move_end", s32(CScriptActionCondition::MOVEMENT_FLAG)),
+				value("look_end", s32(CScriptActionCondition::WATCH_FLAG)),
+				value("anim_end", s32(CScriptActionCondition::ANIMATION_FLAG)),
+				value("sound_end", s32(CScriptActionCondition::SOUND_FLAG)),
+				value("object_end", s32(CScriptActionCondition::OBJECT_FLAG)),
+				value("time_end", s32(CScriptActionCondition::TIME_FLAG)),
+				value("act_end", s32(CScriptActionCondition::ACT_FLAG))
 			]
 			.def(					constructor<>())
 			.def(					constructor<u32>())

@@ -68,7 +68,7 @@ bool CControlRunAttack::check_start_conditions()
 	
 	// check if run state, speed
 	SVelocityParam &velocity_run			= m_object->move().get_velocity(MonsterMovement::eVelocityParameterRunNormal);
-	if (!fsimilar(m_man->movement().velocity_current(), velocity_run.velocity.linear, 2.f)) return false;
+	if (!fsimilar(m_man->movement().velocity_current(), velocity_run.velocity.linear, 2.0f)) return false;
 
 	if (m_time_next_attack > time())		return false;
 

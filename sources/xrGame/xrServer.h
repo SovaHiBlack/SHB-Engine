@@ -130,7 +130,7 @@ public:
 
 	void					Perform_connect_spawn(CSE_Abstract* E, xrClientData* to, CNetPacket& P);
 	void					Perform_transfer(CNetPacket& PR, CNetPacket& PT, CSE_Abstract* what, CSE_Abstract* from, CSE_Abstract* to);
-	void					Perform_reject(CSE_Abstract* what, CSE_Abstract* from, int delta);
+	void					Perform_reject(CSE_Abstract* what, CSE_Abstract* from, s32 delta);
 	void					Perform_destroy(CSE_Abstract* tpSE_Abstract, u32 mode);
 
 	CSE_Abstract* Process_spawn(CNetPacket& P, CClientID sender, BOOL bSpawnWithClientsMainEntityAsParent = FALSE, CSE_Abstract* tpExistedEntity = 0);

@@ -47,7 +47,7 @@ void random_dir(fVector3& tgt_dir, const fVector3& src_dir, f32 dispersion)
 {
 	f32 sigma = dispersion / 3.0f;
 	f32 alpha = clampr(_nrand(sigma), -dispersion, dispersion);
-	f32 theta = Random.randF(0, PI);
+	f32 theta = Random.randF(0.0f, PI);
 	f32 r = tan(alpha);
 	fVector3 U;
 	fVector3 V;

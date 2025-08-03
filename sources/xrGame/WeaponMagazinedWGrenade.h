@@ -4,64 +4,64 @@
 
 class CWeaponFakeGrenade;
 
-class CWeaponMagazinedWGrenade : public CWeaponMagazined,								 public CRocketLauncher
+class CWeaponMagazinedWGrenade : public CWeaponMagazined, public CRocketLauncher
 {
 	typedef CWeaponMagazined inherited;
 
 public:
-					CWeaponMagazinedWGrenade	(pcstr name="AK74",ESoundTypes eSoundType= eST_WEAPON_SUBMACHINEGUN);
-	virtual			~CWeaponMagazinedWGrenade	();
+	CWeaponMagazinedWGrenade(pcstr name = "AK74", ESoundTypes eSoundType = eST_WEAPON_SUBMACHINEGUN);
+	virtual			~CWeaponMagazinedWGrenade( );
 
-	virtual void	Load				(pcstr section);
-	
-	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
-	virtual void	net_Destroy			();
-	virtual void	net_Export			(CNetPacket& P);
-	virtual void	net_Import			(CNetPacket& P);
-	
-	virtual void	OnH_B_Independent	(bool just_before_destroy);
+	virtual void	Load(pcstr section);
 
-	virtual void	save				(CNetPacket& output_packet);
-	virtual void	load				(IReader &input_packet);
+	virtual BOOL	net_Spawn(CSE_Abstract* DC);
+	virtual void	net_Destroy( );
+	virtual void	net_Export(CNetPacket& P);
+	virtual void	net_Import(CNetPacket& P);
+
+	virtual void	OnH_B_Independent(bool just_before_destroy);
+
+	virtual void	save(CNetPacket& output_packet);
+	virtual void	load(IReader& input_packet);
 
 	virtual bool	Attach(PIItem pIItem, bool b_send_event);
 	virtual bool	Detach(pcstr item_section_name, bool b_spawn_item);
 	virtual bool	CanAttach(PIItem pIItem);
 	virtual bool	CanDetach(pcstr item_section_name);
-	virtual void	InitAddons();
-	virtual bool	UseScopeTexture();
-	virtual	f32	CurrentZoomFactor	();
-	
-	virtual void	OnStateSwitch	(u32 S);
-	
-	virtual void	switch2_Idle	();
-	virtual void	switch2_Reload	();
-	virtual void	state_Fire		(f32 dt);
-	virtual void	OnShot			();
-	virtual void	SwitchState		(u32 S);
-	virtual void	OnEvent			(CNetPacket& P, u16 type);
-	virtual void	ReloadMagazine	();
+	virtual void	InitAddons( );
+	virtual bool	UseScopeTexture( );
+	virtual f32	CurrentZoomFactor( );
 
-	virtual bool	Action			(s32 cmd, u32 flags);
+	virtual void	OnStateSwitch(u32 S);
 
-	virtual void	UpdateSounds	();
-	virtual void	StopHUDSounds	();
+	virtual void	switch2_Idle( );
+	virtual void	switch2_Reload( );
+	virtual void	state_Fire(f32 dt);
+	virtual void	OnShot( );
+	virtual void	SwitchState(u32 S);
+	virtual void	OnEvent(CNetPacket& P, u16 type);
+	virtual void	ReloadMagazine( );
+
+	virtual bool	Action(s32 cmd, u32 flags);
+
+	virtual void	UpdateSounds( );
+	virtual void	StopHUDSounds( );
 
 	//переключение в режим подствольника
-	virtual bool	SwitchMode		();
-	void			PerformSwitchGL	();
-	void			OnAnimationEnd	(u32 state);
+	virtual bool	SwitchMode( );
+	void			PerformSwitchGL( );
+	void			OnAnimationEnd(u32 state);
 
-	virtual bool	IsNecessaryItem	    (const shared_str& item_sect);
+	virtual bool	IsNecessaryItem(const shared_str& item_sect);
 
 	//виртуальные функции для проигрывания анимации HUD
-	virtual void	PlayAnimShow();
-	virtual void	PlayAnimHide();
-	virtual void	PlayAnimReload();
-	virtual void	PlayAnimIdle();
-	virtual void	PlayAnimShoot();
-	virtual void	PlayAnimModeSwitch();
-	
+	virtual void	PlayAnimShow( );
+	virtual void	PlayAnimHide( );
+	virtual void	PlayAnimReload( );
+	virtual void	PlayAnimIdle( );
+	virtual void	PlayAnimShoot( );
+	virtual void	PlayAnimModeSwitch( );
+
 	SHudSound			sndShotG;
 	SHudSound			sndReloadG;
 	SHudSound			sndSwitch;
@@ -85,7 +85,7 @@ public:
 
 	//дополнительные параметры патронов 
 	//для подствольника
-	CWeaponAmmo*			m_pAmmo2;
+	CWeaponAmmo* m_pAmmo2;
 	shared_str				m_ammoSect2;
 	xr_vector<shared_str>	m_ammoTypes2;
 	u32						m_ammoType2;

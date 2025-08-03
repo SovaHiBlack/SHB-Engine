@@ -59,7 +59,7 @@ bool CUITabControl::AddItem(CUITabButton* pButton)
 	pButton->SetButtonAsSwitch(true);
 
 	// Нажимаем кнопку по умолчанию
-	if (m_iPushedIndex == static_cast<int>(m_TabsArr.size( ) - 1))
+	if (m_iPushedIndex == static_cast<s32>(m_TabsArr.size( ) - 1))
 	{
 		m_TabsArr[m_iPushedIndex]->SendMessage(m_TabsArr[m_iPushedIndex], TAB_CHANGED, NULL);
 	}

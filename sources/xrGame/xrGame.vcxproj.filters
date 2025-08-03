@@ -739,9 +739,6 @@
     <Filter Include="Core\Client\Objects">
       <UniqueIdentifier>{59b947f0-e6f2-4c78-9e2e-363f7210265d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\actor">
-      <UniqueIdentifier>{f1e8fd9a-15e8-415d-a351-f5414caccc62}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\base">
       <UniqueIdentifier>{93d4c026-aebb-4c8a-ad5e-a13f1fb1deac}</UniqueIdentifier>
     </Filter>
@@ -2095,7 +2092,10 @@
     <Filter Include="AI\AGroup\agent_planner\properties">
       <UniqueIdentifier>{b1947418-b7fc-4477-9c9b-975aced335b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\actor\ActorMemory">
+    <Filter Include="Core\Client\Objects\Actor">
+      <UniqueIdentifier>{f1e8fd9a-15e8-415d-a351-f5414caccc62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Actor\ActorMemory">
       <UniqueIdentifier>{da7aec6c-a818-4091-b772-b274985f65d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -4519,7 +4519,7 @@
       <Filter>Core\Client\Level Debug</Filter>
     </ClInclude>
     <ClInclude Include="ActorMemory.h">
-      <Filter>Core\Client\Objects\actor\ActorMemory</Filter>
+      <Filter>Core\Client\Objects\Actor\ActorMemory</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Core\Client\Objects\base\Entity</Filter>
@@ -5899,22 +5899,22 @@
       <Filter>Core\Server\Editor</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClInclude>
     <ClInclude Include="actor_anim_defs.h">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Actor_defs.h">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Actor_flags.h">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClInclude>
     <ClInclude Include="ActorInputHandler.h">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClInclude>
     <ClInclude Include="ActorCondition.h">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClInclude>
     <ClInclude Include="InfoPortion.h">
       <Filter>Core\Client\Objects\tasks_info_dialogs\InfoPortion</Filter>
@@ -7284,7 +7284,7 @@
       <Filter>Core\Client\Level Debug</Filter>
     </ClCompile>
     <ClCompile Include="ActorMemory.cpp">
-      <Filter>Core\Client\Objects\actor\ActorMemory</Filter>
+      <Filter>Core\Client\Objects\Actor\ActorMemory</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Client\Objects\base\Entity</Filter>
@@ -8583,46 +8583,46 @@
       <Filter>UI\Common\MapWnd</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Communication.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Events.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Feel.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorInputHandler.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Movement.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Network.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Weapon.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorAnimation.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorCameras.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorCondition.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorInput.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorMountedWeapon.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="ActorVehicle.cpp">
-      <Filter>Core\Client\Objects\actor</Filter>
+      <Filter>Core\Client\Objects\Actor</Filter>
     </ClCompile>
     <ClCompile Include="InfoPortion.cpp">
       <Filter>Core\Client\Objects\tasks_info_dialogs\InfoPortion</Filter>

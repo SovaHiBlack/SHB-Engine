@@ -52,7 +52,7 @@ BOOL CAlienEffectorPP::Process(SPPInfo& pp)
 	inherited::Process(pp);
 
 	if (fsimilar(factor, target_factor)) {
-		target_factor = (target_factor > 0.5f) ? .3f : .6f;
+		target_factor = (target_factor > 0.5f) ? 0.3f : 0.6f;
 	}
 	
 	def_lerp			(factor,target_factor, PERIOD_SPEED, Device.fTimeDelta);
@@ -63,7 +63,7 @@ BOOL CAlienEffectorPP::Process(SPPInfo& pp)
 
 void CAlienEffectorPP::Destroy()
 {
-	fLifeTime			= 0.f;
+	fLifeTime			= 0.0f;
 	CAlienEffectorPP	*self = this;
 	xr_delete			(self);
 }
@@ -97,23 +97,23 @@ public:
 #define DELTA_ANGLE_Z		10 * PI / 180
 #define ANGLE_SPEED			0.2f	
 
-#define MIN_FOV				70.f
-#define	MAX_FOV				175.f
-#define FOV_SPEED			80.f
+#define MIN_FOV				70.0f
+#define	MAX_FOV				175.0f
+#define FOV_SPEED			80.0f
 #define	MAX_CAMERA_DIST		3.5f
 
 CAlienEffector::CAlienEffector(ECamEffectorType type, CAI_Bloodsucker *obj) :
 	inherited(type, flt_max)
 {
 	dangle_target.set		(angle_normalize(Random.randFs(DELTA_ANGLE_X)),angle_normalize(Random.randFs(DELTA_ANGLE_Y)),angle_normalize(Random.randFs(DELTA_ANGLE_Z)));
-	dangle_current.set		(0.f, 0.f, 0.f);
+	dangle_current.set		(0.0f, 0.0f, 0.0f);
 
 	monster					= obj;
 	
 	m_prev_eye_matrix.c		= get_head_position(monster);
 	m_prev_eye_matrix.k		= monster->Direction();
 	fVector3::generate_orthonormal_basis(m_prev_eye_matrix.k, m_prev_eye_matrix.j, m_prev_eye_matrix.i);
-	m_inertion				= 1.f;
+	m_inertion				= 1.0f;
 	m_current_fov			= MIN_FOV;
 }
 
@@ -146,7 +146,7 @@ BOOL CAlienEffector::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f
 	cur_matrix.c = get_head_position(monster);
 
 	f32	rel_dist = m_prev_eye_matrix.c.distance_to(cur_matrix.c) / MAX_CAMERA_DIST;
-	clamp	(rel_dist, 0.f, 1.f);
+	clamp	(rel_dist, 0.0f, 1.0f);
 
 	def_lerp(m_inertion, 1 - rel_dist, rel_dist, Device.fTimeDelta);
 
@@ -159,8 +159,8 @@ BOOL CAlienEffector::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f
 	Mdef = m_prev_eye_matrix;
 
 	//set fov
-	f32	rel_speed = monster->m_fCurSpeed / 15.f;
-	clamp	(rel_speed,0.f,1.f);
+	f32	rel_speed = monster->m_fCurSpeed / 15.0f;
+	clamp	(rel_speed,0.0f,1.0f);
 
 	f32	m_target_fov = MIN_FOV + (MAX_FOV-MIN_FOV) * rel_speed;
 	def_lerp(m_current_fov, m_target_fov, FOV_SPEED, Device.fTimeDelta);

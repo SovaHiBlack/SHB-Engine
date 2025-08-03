@@ -213,7 +213,7 @@ void CUICharacterInfo::InitCharacter(u16 id)
 	}
 
 	m_bForceUpdate = true;
-	for (int i = eUIName; i < eMaxCaption; ++i)
+	for (s32 i = eUIName; i < eMaxCaption; ++i)
 	{
 		if (m_icons[i])
 		{
@@ -340,7 +340,7 @@ void CUICharacterInfo::ClearInfo( )
 		m_icons[eUIIcon]->GetUIStaticItem( ).SetOriginalRect(8 * ICON_GRID_WIDTH, 0, f32(CHAR_ICON_WIDTH * ICON_GRID_WIDTH), f32(CHAR_ICON_HEIGHT * ICON_GRID_HEIGHT));
 	}
 
-	for (int i = eUIName; i < eMaxCaption; ++i)
+	for (s32 i = eUIName; i < eMaxCaption; ++i)
 	{
 		if (m_icons[i])
 		{

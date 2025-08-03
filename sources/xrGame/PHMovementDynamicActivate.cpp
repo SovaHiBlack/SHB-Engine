@@ -224,8 +224,8 @@ protected:
 	virtual void PhTune(dReal step)
 	{
 		InitValues();
-		int num=dBodyGetNumJoints(m_body);
-		for(int i=0;i<num;++i)
+		s32 num=dBodyGetNumJoints(m_body);
+		for(s32 i=0;i<num;++i)
 		{
 			dJointID joint=dBodyGetJoint(m_body,i);
 
@@ -238,8 +238,8 @@ protected:
 
 	virtual void PhDataUpdate(dReal step)
 	{
-		int num=dBodyGetNumJoints(m_body);
-		for(int i=0;i<num;i++)
+		s32 num=dBodyGetNumJoints(m_body);
+		for(s32 i=0;i<num;i++)
 		{
 			dJointID joint=dBodyGetJoint(m_body,i);
 			if(dJointGetType(joint)==dJointTypeContact)
@@ -292,7 +292,7 @@ private:
 };
 /////////////////////////////////////////////////////////////////////////////////////
 
-bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_steps/*5*/, f32 resolve_depth/*=0.01f*/)
+bool CPHMovementControl:: ActivateBoxDynamic(DWORD id, s32 num_it/*=8*/, s32 num_steps/*5*/, f32 resolve_depth/*=0.01f*/)
 {
 	bool character_exist=CharacterExist();
 	if(character_exist&&trying_times[id]!=u32(-1))
@@ -334,8 +334,8 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	max_depth=0.f;
 
 	//////////////////////////////////pars///////////////////////////////////////////
-//	int		num_it=8;
-//	int		num_steps=5;
+//	s32		num_it=8;
+//	s32		num_steps=5;
 //	f32	resolve_depth=0.01f;
 	
 	if(!character_exist)
@@ -355,8 +355,8 @@ bool CPHMovementControl:: ActivateBoxDynamic(DWORD id,int num_it/*=8*/,int num_s
 	GetCharacterPosition(pos);
 	//const fBox3& box =Box();
 	f32 pass=	character_exist ? _abs(Box().getradius()-boxes[id].getradius()) : boxes[id].getradius();
-	f32 max_vel=pass/2.f/fnum_it/fnum_steps/fixed_step;
-	f32 max_a_vel=M_PI/8.f/fnum_it/fnum_steps/fixed_step;
+	f32 max_vel=pass/2.0f/fnum_it/fnum_steps/fixed_step;
+	f32 max_a_vel=M_PI/8.0f/fnum_it/fnum_steps/fixed_step;
 	dBodySetForce(GetBody(),0.0f,0.0f,0.0f);
 	dBodySetLinearVel(GetBody(),0.0f,0.0f,0.0f);
 	Calculate(fVector3().set(0.0f,0.0f,0.0f), fVector3().set(1.0f,0.0f,0.0f),0.0f,0.0f,0.0f,false);

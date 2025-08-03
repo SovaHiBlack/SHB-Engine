@@ -118,6 +118,7 @@ void CCustomRocket::activate_physic_shell( )
 //	{
 //		Msg("start v:	%f,%f,%f	\n",m_vLaunchVelocity.x,m_vLaunchVelocity.y,m_vLaunchVelocity.z);
 //	}
+
 	m_pPhysicsShell->Activate(m_LaunchXForm, m_vLaunchVelocity, m_vLaunchAngularVelocity);
 	m_pPhysicsShell->Update( );
 
@@ -498,12 +499,12 @@ void CCustomRocket::UpdateEnginePh( )
 	l_dir.set(XFORM( ).k);
 
 	l_dir.normalize( );
-	m_pPhysicsShell->applyImpulse(l_dir, (1.f + k_back) * force);
+	m_pPhysicsShell->applyImpulse(l_dir, (1.0f + k_back) * force);
 	m_pPhysicsShell->get_LinearVel(l_dir);
 	l_dir.normalize_safe( );
 	l_dir.invert( );
 	m_pPhysicsShell->applyImpulseTrace(l_pos, l_dir, force);
-	l_dir.set(0, 1.f, 0);
+	l_dir.set(0.0f, 1.0f, 0.0f);
 	force = m_fEngineImpulseUp * fixed_step;// * Device.fTimeDelta;
 	m_pPhysicsShell->applyImpulse(l_dir, force);
 
@@ -604,7 +605,7 @@ void CCustomRocket::UpdateParticles( )
 	fMatrix4x4 particles_xform;
 	particles_xform.identity( );
 	particles_xform.k.set(XFORM( ).k);
-	particles_xform.k.mul(-1.f);
+	particles_xform.k.mul(-1.0f);
 	fVector3::generate_orthonormal_basis(particles_xform.k, particles_xform.j, particles_xform.i);
 	particles_xform.c.set(XFORM( ).c);
 

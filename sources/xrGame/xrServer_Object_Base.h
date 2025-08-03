@@ -135,7 +135,7 @@ public:
 	virtual ISE_Shape* __stdcall	shape( );
 	virtual CSE_Motion* __stdcall	motion( );
 	virtual bool		__stdcall	validate( );
-	virtual void 		__stdcall	on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent, int priority, bool strictB2F)
+	virtual void 		__stdcall	on_render(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent, s32 priority, bool strictB2F)
 	{ }
 	//
 
@@ -152,7 +152,7 @@ public:
 		return true;
 	}
 	// end of the virtual inheritance dependant code
-	IC		int						script_clsid( ) const
+	IC		s32						script_clsid( ) const
 	{
 		VERIFY(m_script_clsid >= 0); return (m_script_clsid);
 	}

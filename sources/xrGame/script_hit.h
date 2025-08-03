@@ -20,7 +20,7 @@ public:
 	shared_str				m_caBoneName;
 	CScriptGameObject		*m_tpDraftsman;
 	f32				m_fImpulse;
-	int					m_tHitType;
+	s32					m_tHitType;
 
 public:
 	IC					CScriptHit		();

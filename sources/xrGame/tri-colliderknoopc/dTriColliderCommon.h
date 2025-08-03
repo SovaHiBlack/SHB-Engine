@@ -6,7 +6,7 @@
 
 
 extern xr_vector< flags8 >			gl_cl_tries_state	;
-extern xr_vector<int>::iterator		I,E,B				;
+extern xr_vector<s32>::iterator		I,E,B				;
 
 
 #define CONTACT(Ptr, Stride) ((dContactGeom*) (((byte*)Ptr) + (Stride)))

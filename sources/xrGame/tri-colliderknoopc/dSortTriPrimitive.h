@@ -11,10 +11,10 @@
 
 
 template<class T>
-IC int dcTriListCollider::dSortTriPrimitiveCollide (
+IC s32 dcTriListCollider::dSortTriPrimitiveCollide (
 							  T primitive,
 							  dxGeom		*o1,		dxGeom			*o2,
-							  int			flags,		dContactGeom	*contact,	int skip,
+	s32			flags,		dContactGeom	*contact, s32 skip,
 							  const fVector3&	AABB
 							  )
 {
@@ -64,11 +64,11 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 		dbg_reused_queries_per_step++;
 #endif
 ///////////////////////////////////////////////////////////////////////////////////////////////	
-	int			ret	=	0;
+	s32			ret	=	0;
 
 	pos_tries.clear	();
 	dReal neg_depth=dInfinity,b_neg_depth=dInfinity;
-	UINT	b_count		=0			;
+	u32	b_count		=0			;
 	bool	intersect	=	false	;
 
 #ifdef DEBUG
@@ -277,7 +277,7 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 
 		if(include){
 			VERIFY(neg_tri.T&&neg_tri.dist!=-dInfinity);
-			int bret=primitive.CollidePlain(
+			s32 bret=primitive.CollidePlain(
 				neg_tri.side0,neg_tri.side1,neg_tri.norm,
 				neg_tri.T,
 				neg_tri.dist,
@@ -327,7 +327,7 @@ IC int dcTriListCollider::dSortTriPrimitiveCollide (
 		if(include)	
 		{	
 			VERIFY(b_neg_tri.T);
-			int bret = 0;
+			s32 bret = 0;
 			if(ret<flags-10)
 				bret=primitive.CollidePlain(
 					b_neg_tri.side0,

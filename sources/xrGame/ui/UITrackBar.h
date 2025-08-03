@@ -61,11 +61,11 @@ protected:
 		};
 		struct
 		{
-			int					m_i_val;
-			int					m_i_max;
-			int					m_i_min;
-			int					m_i_step;
-			int					m_i_back_up;
+			s32					m_i_val;
+			s32					m_i_max;
+			s32					m_i_min;
+			s32					m_i_step;
+			s32					m_i_back_up;
 		};
 	};
 };

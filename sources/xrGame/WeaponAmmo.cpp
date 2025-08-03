@@ -65,14 +65,14 @@ void CCartridge::Load(pcstr section, u8 LocalAmmoType)
 
 	bullet_material_idx = GMLib.GetMaterialIdx(WEAPON_MATERIAL_NAME);
 	VERIFY(u16(-1) != bullet_material_idx);
-	VERIFY(fWallmarkSize > 0);
+	VERIFY(fWallmarkSize > 0.0f);
 
 	m_InvShortName = CStringTable( ).translate(pSettings->r_string(section, "inv_name_short"));
 }
 
 CWeaponAmmo::CWeaponAmmo( )
 {
-	m_weight = .2f;
+	m_weight = 0.2f;
 	m_flags.set(Fbelt, TRUE);
 }
 
@@ -159,7 +159,11 @@ bool CWeaponAmmo::Useful( ) const
 
 bool CWeaponAmmo::Get(CCartridge& cartridge)
 {
-	if (!m_boxCurr) return false;
+	if (!m_boxCurr)
+	{
+		return false;
+	}
+
 	cartridge.m_ammoSect = cNameSect( );
 	cartridge.m_kDist = m_kDist;
 	cartridge.m_kDisp = m_kDisp;

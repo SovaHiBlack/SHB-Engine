@@ -1,61 +1,57 @@
 #pragma once
 
 // Define namespaces (CPU & FPU)
-#include	"_math.h"
-#include	"_bitwise.h"
-#include	"_std_extensions.h"
+#include "_math.h"
+#include "_bitwise.h"
+#include "_std_extensions.h"
 
 // comparisions
-IC BOOL  fsimilar(f32		a, f32	b, f32	cmp = EPSILON_5)
+IC BOOL fsimilar(f32 a, f32 b, f32 cmp = EPSILON_5)
 {
-	return _abs(a - b) < cmp;
-}
-IC BOOL  dsimilar(double	a, double	b, double	cmp = EPSILON_5)
-{
-	return _abs(a - b) < cmp;
+	return (_abs(a - b) < cmp);
 }
 
-IC BOOL  fis_zero(f32		val, f32	cmp = EPSILON_7)
+IC BOOL fis_zero(f32 val, f32 cmp = EPSILON_7)
 {
-	return _abs(val) < cmp;
-}
-IC BOOL  dis_zero(double	val, double	cmp = EPSILON_7)
-{
-	return _abs(val) < cmp;
+	return (_abs(val) < cmp);
 }
 
 // degree 2 radians and vice-versa
-namespace implement
+
+//namespace implement
+//{
+//	template <class T>
+//	ICF T deg2rad(T val)
+//	{
+//		return (val * T(M_PI) / T(180));
+//	}
+//
+//	template <class T>
+//	ICF T rad2deg(T val)
+//	{
+//		return (val * T(180) / T(M_PI));
+//	}
+//};
+
+ICF f32 deg2rad(f32 val)
 {
-	template <class T>
-	ICF T	deg2rad(T val)
-	{
-		return (val * T(M_PI) / T(180));
-	};
-	template <class T>
-	ICF T	rad2deg(T val)
-	{
-		return (val * T(180) / T(M_PI));
-	};
-};
-ICF f32	deg2rad(f32 val)
-{
-	return implement::deg2rad(val);
+	return (val * M_PI / 180.0f); /*implement::deg2rad(val);*/
 }
-ICF double	deg2rad(double val)
-{
-	return implement::deg2rad(val);
-}
+//ICF double deg2rad(double val)
+//{
+//	return implement::deg2rad(val);
+//}
+
 ICF f32	rad2deg(f32 val)
 {
-	return implement::rad2deg(val);
+	return (val * 180.0f / M_PI); /*implement::rad2deg(val);*/
 }
-ICF double	rad2deg(double val)
-{
-	return implement::rad2deg(val);
-}
+//ICF double	rad2deg(double val)
+//{
+//	return implement::rad2deg(val);
+//}
 
-// clamping/snapping
+// clamping
 template <class T>
 IC void clamp(T& val, const T& _low, const T& _high)
 {
@@ -67,19 +63,34 @@ IC void clamp(T& val, const T& _low, const T& _high)
 	{
 		val = _high;
 	}
-};
-template <class T>
-IC T	clampr(const T& val, const T& _low, const T& _high)
-{
-	if (val < _low)	return _low;
-	else if (val > _high)	return _high;
-	else					return val;
-};
-IC f32 snapto(f32 value, f32 snap)
-{
-	if (snap <= 0.f) return value;
-	return f32(iFloor((value + (snap * 0.5f)) / snap)) * snap;
 }
+
+template <class T>
+IC T clampr(const T& val, const T& _low, const T& _high)
+{
+	if (val < _low)
+	{
+		return _low;
+	}
+	else if (val > _high)
+	{
+		return _high;
+	}
+	else
+	{
+		return val;
+	}
+}
+
+//IC f32 snapto(f32 value, f32 snap)
+//{
+//	if (snap <= 0.0f)
+//	{
+//		return value;
+//	}
+//
+//	return (f32(iFloor((value + (snap * 0.5f)) / snap)) * snap);
+//}
 
 // pre-definitions
 template <class T>
@@ -87,7 +98,6 @@ class _quaternion;
 
 #pragma pack(push)
 #pragma pack(1)
-
 #include "_random.h"
 
 #include "_color.h"
@@ -107,32 +117,49 @@ class _quaternion;
 #include "_plane3.h"
 #include "_plane2.h"
 #include "_flags.h"
-
 #pragma pack(pop)
 
 // normalize angle (0..2PI)
-ICF f32		angle_normalize_always(f32 a)
+ICF f32 angle_normalize_always(f32 a)
 {
-	f32		div = a / PI_MUL_2;
-	int			rnd = (div > 0) ? iFloor(div) : iCeil(div);
-	f32		frac = div - rnd;
-	if (frac < 0)	frac += 1.f;
-	return		frac * PI_MUL_2;
+	f32 div = a / PI_MUL_2;
+	s32 rnd = (div > 0) ? iFloor(div) : iCeil(div);
+	f32 frac = div - rnd;
+	if (frac < 0.0f)
+	{
+		frac += 1.0f;
+	}
+
+	return (frac * PI_MUL_2);
 }
 
 // normalize angle (0..2PI)
-ICF f32		angle_normalize(f32 a)
+ICF f32 angle_normalize(f32 a)
 {
-	if (a >= 0 && a <= PI_MUL_2)	return	a;
-	else						return	angle_normalize_always(a);
+	if (a >= 0.0f && a <= PI_MUL_2)
+	{
+		return a;
+	}
+	else
+	{
+		return angle_normalize_always(a);
+	}
 }
 
 // -PI .. +PI
-ICF f32		angle_normalize_signed(f32 a)
+ICF f32 angle_normalize_signed(f32 a)
 {
-	if (a >= (-PI) && a <= PI)		return		a;
+	if (a >= (-PI) && a <= PI)
+	{
+		return a;
+	}
+
 	f32 angle = angle_normalize_always(a);
-	if (angle > PI) angle -= PI_MUL_2;
+	if (angle > PI)
+	{
+		angle -= PI_MUL_2;
+	}
+
 	return angle;
 }
 
@@ -143,13 +170,18 @@ ICF f32		angle_difference_signed(f32 a, f32 b)
 	if (diff > 0)
 	{
 		if (diff > PI)
+		{
 			diff -= PI_MUL_2;
+		}
 	}
 	else
 	{
 		if (diff < -PI)
+		{
 			diff += PI_MUL_2;
+		}
 	}
+
 	return diff;
 }
 
@@ -166,26 +198,41 @@ IC bool			angle_lerp(f32& c, f32 t, f32 s, f32 dt)
 	if (diff > 0)
 	{
 		if (diff > PI)
+		{
 			diff -= PI_MUL_2;
+		}
 	}
 	else
 	{
 		if (diff < -PI)
+		{
 			diff += PI_MUL_2;
+		}
 	}
+
 	f32 diff_a = _abs(diff);
 
 	if (diff_a < EPSILON_7)
+	{
 		return true;
+	}
 
 	f32 mot = s * dt;
-	if (mot > diff_a) mot = diff_a;
+	if (mot > diff_a)
+	{
+		mot = diff_a;
+	}
+
 	c += (diff / diff_a) * mot;
 
-	if (c < 0)
+	if (c < 0.0f)
+	{
 		c += PI_MUL_2;
+	}
 	else if (c > PI_MUL_2)
+	{
 		c -= PI_MUL_2;
+	}
 
 	return false;
 }
@@ -194,24 +241,30 @@ IC bool			angle_lerp(f32& c, f32 t, f32 s, f32 dt)
 ICF f32		angle_lerp(f32 A, f32 B, f32 f)
 {
 	f32 diff = B - A;
-	if (diff > PI)		diff -= PI_MUL_2;
-	else if (diff < -PI)	diff += PI_MUL_2;
+	if (diff > PI)
+	{
+		diff -= PI_MUL_2;
+	}
+	else if (diff < -PI)
+	{
+		diff += PI_MUL_2;
+	}
 
-	return			A + diff * f;
+	return (A + diff * f);
 }
 
-IC f32		angle_inertion(f32 src, f32 tgt, f32 speed, f32 clmp, f32 dt)
-{
-	f32 a = angle_normalize_signed(tgt);
-	angle_lerp(src, a, speed, dt);
-	src = angle_normalize_signed(src);
-	f32 dH = angle_difference_signed(src, a);
-	f32 dCH = clampr(dH, -clmp, clmp);
-	src -= dH - dCH;
-	return			src;
-}
+//IC f32 angle_inertion(f32 src, f32 tgt, f32 speed, f32 clmp, f32 dt)
+//{
+//	f32 a = angle_normalize_signed(tgt);
+//	angle_lerp(src, a, speed, dt);
+//	src = angle_normalize_signed(src);
+//	f32 dH = angle_difference_signed(src, a);
+//	f32 dCH = clampr(dH, -clmp, clmp);
+//	src -= dH - dCH;
+//	return src;
+//}
 
-IC f32		angle_inertion_var(f32 src, f32 tgt, f32 min_speed, f32 max_speed, f32 clmp, f32 dt)
+IC f32 angle_inertion_var(f32 src, f32 tgt, f32 min_speed, f32 max_speed, f32 clmp, f32 dt)
 {
 	tgt = angle_normalize_signed(tgt);
 	src = angle_normalize_signed(src);
@@ -221,7 +274,7 @@ IC f32		angle_inertion_var(f32 src, f32 tgt, f32 min_speed, f32 max_speed, f32 c
 	f32 dH = angle_difference_signed(src, tgt);
 	f32 dCH = clampr(dH, -clmp, clmp);
 	src -= dH - dCH;
-	return			src;
+	return src;
 }
 
 template <class T>
@@ -272,30 +325,42 @@ IC _quaternion<T>& _quaternion<T>::set(const _matrix4x4<T>& M)
 	}
 	else
 	{
-		int biggest;
+		s32 biggest;
 		enum
 		{
-			A, E, I
+			A,
+			E,
+			I
 		};
+
 		if (M._11 > M._22)
 		{
 			if (M._33 > M._11)
+			{
 				biggest = I;
+			}
 			else
+			{
 				biggest = A;
+			}
 		}
 		else
 		{
 			if (M._33 > M._11)
+			{
 				biggest = I;
+			}
 			else
+			{
 				biggest = E;
+			}
 		}
 
 		// in the unusual case the original trace fails to produce a good sqrt, try others...
 		switch (biggest)
 		{
 			case A:
+			{
 				s = _sqrt(M._11 - (M._22 + M._33) + 1.0f);
 				if (s > TRACE_QZERO_TOLERANCE)
 				{
@@ -328,8 +393,10 @@ IC _quaternion<T>& _quaternion<T>::set(const _matrix4x4<T>& M)
 					x = (M._21 + M._12) * s;
 					break;
 				}
-				break;
+			}
+			break;
 			case E:
+			{
 				s = _sqrt(M._22 - (M._33 + M._11) + 1.0f);
 				if (s > TRACE_QZERO_TOLERANCE)
 				{
@@ -362,8 +429,10 @@ IC _quaternion<T>& _quaternion<T>::set(const _matrix4x4<T>& M)
 					z = (M._13 + M._31) * s;
 					break;
 				}
-				break;
+			}
+			break;
 			case I:
+			{
 				s = _sqrt(M._33 - (M._11 + M._22) + 1.0f);
 				if (s > TRACE_QZERO_TOLERANCE)
 				{
@@ -396,15 +465,16 @@ IC _quaternion<T>& _quaternion<T>::set(const _matrix4x4<T>& M)
 					x = (M._21 + M._12) * s;
 					break;
 				}
-				break;
+			}
+			break;
 		}
 	}
+
 	return *this;
 }
 
 //----------------------------------------------------------------------------------------------
 // Deprecate some features
 #ifndef CORE_EXPORTS
-//. #pragma deprecated("MIN","MAX","ABS",fabs,fabsf,sqrt,sqrtf,malloc,free,calloc,realloc,memcpy,memmove,memset,strdup,strlen,strcmp,sin,cos,sinf,cosf)
 #pragma deprecated("MIN","MAX","ABS",fabs,fabsf,sqrt,sqrtf,malloc,free,calloc,realloc,memmove,memset,strdup,strlen,strcmp,sin,cos,sinf,cosf)
 #endif

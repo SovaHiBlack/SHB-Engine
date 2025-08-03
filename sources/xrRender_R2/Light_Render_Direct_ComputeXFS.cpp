@@ -62,14 +62,14 @@ void CLight_Compute_XFORM_and_VIS::compute_xf_spot(light* L)
 	f32	sizefactor = L->range / 8.f;				// 4m = .5, 8m=1.f, 16m=2.f, 32m=4.f
 
 	// compute how wide the light frustum is - assume 90deg as being optimal
-	f32	widefactor = L->cone / deg2rad(90.f);	// 
+	f32	widefactor = L->cone / deg2rad(90.0f);	// 
 
 	// factors
-	f32	factor0 = powf(ssa, 1.f / 2.f);		// ssa is quadratic
-	f32	factor1 = powf(intensity, 1.f / 16.f);		// less perceptually important?
-	f32	factor2 = powf(duel_dot, 1.f / 4.f);		// difficult to fast-change this -> visible
-	f32	factor3 = powf(sizefactor, 1.f / 4.f);		// this shouldn't make much difference
-	f32	factor4 = powf(widefactor, 1.f / 2.f);		// make it linear ???
+	f32	factor0 = powf(ssa, 1.0f / 2.0f);		// ssa is quadratic
+	f32	factor1 = powf(intensity, 1.0f / 16.0f);		// less perceptually important?
+	f32	factor2 = powf(duel_dot, 1.0f / 4.0f);		// difficult to fast-change this -> visible
+	f32	factor3 = powf(sizefactor, 1.0f / 4.0f);		// this shouldn't make much difference
+	f32	factor4 = powf(widefactor, 1.0f / 2.0f);		// make it linear ???
 	f32	factor = ps_r2_ls_squality * factor0 * factor1 * factor2 * factor3 * factor4;
 
 	// final size calc
@@ -89,6 +89,6 @@ void CLight_Compute_XFORM_and_VIS::compute_xf_spot(light* L)
 	//f32	g_alpha		= 2*rad2deg		(alpha);
 	//f32	g_beta		= 2*rad2deg		(atanf(tan_beta));
 	//Msg				("x(%f) : a(%f), b(%f)",x,g_alpha,g_beta);
-	L->X.S.project.build_projection(L->cone + deg2rad(3.5f), 1.f, SMAP_near_plane, L->range + EPSILON_7);
+	L->X.S.project.build_projection(L->cone + deg2rad(3.5f), 1.0f, SMAP_near_plane, L->range + EPSILON_7);
 	L->X.S.combine.mul(L->X.S.project, L->X.S.view);
 }

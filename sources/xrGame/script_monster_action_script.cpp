@@ -20,10 +20,10 @@ void CScriptMonsterAction::script_register(lua_State *L)
 		class_<CScriptMonsterAction>("act")
 			.enum_("type")
 			[
-				value("rest",	int(MonsterSpace::eGA_Rest)),
-				value("eat",	int(MonsterSpace::eGA_Eat)),
-				value("attack",	int(MonsterSpace::eGA_Attack)),
-				value("panic",	int(MonsterSpace::eGA_Panic))
+				value("rest", s32(MonsterSpace::eGA_Rest)),
+				value("eat", s32(MonsterSpace::eGA_Eat)),
+				value("attack", s32(MonsterSpace::eGA_Attack)),
+				value("panic", s32(MonsterSpace::eGA_Panic))
 			]
 
 			.def(				constructor<>())

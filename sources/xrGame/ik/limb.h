@@ -74,27 +74,27 @@ public:
 private:
 	f32 min[7], max[7];
 
-	int check_r_joint(f32& val);
+	s32 check_r_joint(f32& val);
 	
 	void	extract_s1(const Matrix R1, f32 s1[3]);
 	void	extract_s1s2(const Matrix R1, const Matrix R2, f32 s1[3], f32 s2[3]);
 
-	void	extract_s1_family(const Matrix R1, int family, f32 s1[3]);
+	void	extract_s1_family(const Matrix R1, s32 family, f32 s1[3]);
 	void	extract_s1s2_family(const Matrix R1, const Matrix R2, 
-					 int family1, int family2,
+								s32 family1, s32 family2,
 								f32 s1[3], f32 s2[3]);
-	int		set_goal(const Matrix G);
-	int		set_goal_pos(const f32 g[3], const Matrix E);
+	s32		set_goal(const Matrix G);
+	s32		set_goal_pos(const f32 g[3], const Matrix E);
 
 	void	solve_aux(f32 swivel_angle, f32 x[]);
-	void	solve_aux_family(int family_set, f32 swivel_angle, f32 x[]);
+	void	solve_aux_family(s32 family_set, f32 swivel_angle, f32 x[]);
 
 	void	solve_pos_aux(f32 swivel_angle, f32 x[]);
-	void	solve_pos_aux_family(int family, f32 swivel_angle, f32 x[]);
+	void	solve_pos_aux_family(s32 family, f32 swivel_angle, f32 x[]);
 
-	int		try_swivel_angle(int solve, f32 swivel_angle, f32 x[]);
-	int		try_singularities(int solve, f32& swivel_angle, f32 x[]);
-	int		try_closeby_singularity(int solve, f32& swivel_angle, f32 x[]);
+	s32		try_swivel_angle(s32 solve, f32 swivel_angle, f32 x[]);
+	s32		try_singularities(s32 solve, f32& swivel_angle, f32 x[]);
+	s32		try_closeby_singularity(s32 solve, f32& swivel_angle, f32 x[]);
 
 public:
 	void	get_R1R2psi(AngleIntList psi[]);
@@ -104,8 +104,8 @@ public:
 
 	void init(const Matrix T, 
 		  const Matrix S,
-		  int s1_euler,
-		  int s2_euler,
+			  s32 s1_euler,
+			  s32 s2_euler,
 		  const f32 proj_axis[3],
 		  const f32 pos_axis[3],
 		  const f32 min[7],
@@ -113,8 +113,8 @@ public:
 
 	Limb(const Matrix T, 
 	 const Matrix S,
-	 int s1_euler,
-	 int s2_euler,
+		 s32 s1_euler,
+		 s32 s2_euler,
 	 const f32 proj_axis[3],
 	 const f32 pos_axis[3],
 	 const f32 Min[7],
@@ -133,33 +133,33 @@ public:
 	{
 		solver.SetSMatrix(SS);
 	}
-	int SetGoalPos(const f32 g[3], const Matrix E, int limits_on);
-	int SetGoal(const Matrix G, int limits_on);
+	s32 SetGoalPos(const f32 g[3], const Matrix E, s32 limits_on);
+	s32 SetGoal(const Matrix G, s32 limits_on);
 
-	int SetAimGoal(const f32 goal[3], const f32 axis[3], f32 flex_angle)
+	s32 SetAimGoal(const f32 goal[3], const f32 axis[3], f32 flex_angle)
 	{
 		solver.SetAimGoal(goal, axis, flex_angle);
 	}
 
-	int SolveAim(f32 x[3], f32 psi_angle);
+	s32 SolveAim(f32 x[3], f32 psi_angle);
 
 	f32 PosToAngle(const f32 p[3]);
 	f32 KneeAngle( const f32 goal_pos[3], const f32 knee_pos[3] );
 
-	int Solve(f32 x[7], f32* new_psi = 0, f32* new_pos = 0);
+	s32 Solve(f32 x[7], f32* new_psi = 0, f32* new_pos = 0);
 
-	int SolveByAngle(f32 psi,
+	s32 SolveByAngle(f32 psi,
 					 f32 x[7],
 					 f32* new_psi = 0,
 					 f32* new_pos= 0);
 
-	int SolveByPos(const f32 pos[3],
+	s32 SolveByPos(const f32 pos[3],
 				   f32 x[7],
 				   f32* new_psi = 0,
 				   f32* new_pos = 0);
 
-	int InLimits(const f32 x[7]) const;
-	void Debug(char *file1, char *file2);
+	s32 InLimits(const f32 x[7]) const;
+	void Debug(pstr file1, pstr file2);
 
 	// Must call SetGoal first with joint limits turned on
 	void GetPsiIntervals(AngleIntList &f11,
@@ -183,7 +183,7 @@ public:
 
 	void ForwardKinematics(f32 x[7], Matrix R);
 
-	int GetJointIntervals(Matrix G, AngleIntList f1[6], AngleIntList f2[6]);
+	s32 GetJointIntervals(Matrix G, AngleIntList f1[6], AngleIntList f2[6]);
 };
 
 #endif

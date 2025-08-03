@@ -884,7 +884,6 @@ void CActor::shedule_Update(u32 DT)
 	{
 		m_sDefaultObjAction = NULL;
 		inherited::shedule_Update(DT);
-
 		return;
 	}
 
@@ -1079,7 +1078,6 @@ void CActor::shedule_Update(u32 DT)
 			else if (pEntityAlive && !pEntityAlive->g_Alive( ))
 			{
 				bool b_allow_drag = !!pSettings->line_exist("ph_capture_visuals", pEntityAlive->cNameVisual( ));
-
 				if (b_allow_drag)
 				{
 					m_sDefaultObjAction = m_sDeadCharacterUseOrDragAction;
@@ -1210,8 +1208,8 @@ void CActor::RenderIndicator(fVector3 dpos, f32 r1, f32 r2, ref_shader IndShader
 		return;
 	}
 
-	u32 dwOffset = 0;
-	u32 dwCount = 0;
+	u32 dwOffset = 0u;
+	u32 dwCount = 0u;
 	FVF::LIT* pv_start = (FVF::LIT*)RCache.Vertex.Lock(4, hFriendlyIndicator->vb_stride, dwOffset);
 	FVF::LIT* pv = pv_start;
 	// base rect
@@ -1257,7 +1255,7 @@ void CActor::RenderIndicator(fVector3 dpos, f32 r1, f32 r2, ref_shader IndShader
 	RCache.set_xform_world(Fidentity);
 	RCache.set_Shader(IndShader);
 	RCache.set_Geometry(hFriendlyIndicator);
-	RCache.Render(D3DPT_TRIANGLESTRIP, dwOffset, 0, dwCount, 0, 2);
+	RCache.Render(D3DPT_TRIANGLESTRIP, dwOffset, 0u, dwCount, 0u, 2u);
 }
 
 static f32 mid_size = 0.097f;

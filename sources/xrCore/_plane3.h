@@ -46,7 +46,7 @@ public:
 	}
 	ICF SelfRef		build_unit_normal	(const _vector3<TYPE>& _p, const _vector3<TYPE>& _n)
 	{
-		VERIFY							(fsimilar(_n.magnitude( ), 1, EPSILON_5));
+		VERIFY							(fsimilar(_n.magnitude( ), 1.0f, EPSILON_5));
 		d								= -n.set(_n).dotproduct(_p);
 		return *this;
 	}

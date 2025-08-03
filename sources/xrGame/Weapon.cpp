@@ -6,7 +6,6 @@
 #include "ParticlesObject.h"
 #include "HUDManager.h"
 #include "WeaponHUD.h"
-//#include "EntityAlive.h"
 #include "InventoryItem_impl.h"
 
 #include "Inventory.h"

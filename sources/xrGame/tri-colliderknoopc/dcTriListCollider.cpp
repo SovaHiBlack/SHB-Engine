@@ -26,7 +26,7 @@ s32 dCollideBP(const dxGeom* o1, const dxGeom* o2, s32 flags, dContactGeom* cont
 #define CONTACT(Ptr, Stride) ((dContactGeom*) (((byte*)Ptr) + (Stride)))
 #define SURFACE(Ptr, Stride) ((dSurfaceParameters*) (((byte*)Ptr) + (Stride-sizeof(dSurfaceParameters))))
 
-int dcTriListCollider::CollideBox(dxGeom* Box, s32 Flags, dContactGeom* Contacts, s32 Stride)
+s32 dcTriListCollider::CollideBox(dxGeom* Box, s32 Flags, dContactGeom* Contacts, s32 Stride)
 {
 	fVector3 AABB;
 	dVector3 BoxSides;

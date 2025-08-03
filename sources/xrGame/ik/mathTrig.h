@@ -61,7 +61,7 @@ double angle_distance(f32 x, f32 y);
 #endif
 
 // Solve a*cos(theta) + b*sin(theta) = c
-int   solve_trig1(f32 a, f32 b, f32 c, f32 theta[2]);
+s32   solve_trig1(f32 a, f32 b, f32 c, f32 theta[2]);
 
 // Solves
 //      a*cos(theta) - b*sin(theta) = c
@@ -71,14 +71,14 @@ f32 solve_trig2(f32 a, f32 b, f32 c, f32 d);
 //
 // Returns both solutions for arcos and arcsin
 //
-int myacos(f32 x, f32 solns[2]);
-int myasin(f32 x, f32 solns[2]);
+s32 myacos(f32 x, f32 solns[2]);
+s32 myasin(f32 x, f32 solns[2]);
 
 
 //
 // Use formula a^2 + b^2 - 2abcos(theta) = c^2 to get theta
 //
-IC int law_of_cosines(f32 a, f32 b, f32 c, f32& angle)
+IC s32 law_of_cosines(f32 a, f32 b, f32 c, f32& angle)
 {
 	f32 temp = (a*a+b*b-c*c)/(2*a*b);
 

@@ -142,7 +142,7 @@ void CScriptGameObject::play_sound(u32 internal_type, u32 max_start_time, u32 mi
 		monster->sound( ).play(internal_type, max_start_time, min_start_time, max_stop_time, min_stop_time, id);
 }
 
-int  CScriptGameObject::active_sound_count(bool only_playing)
+s32 CScriptGameObject::active_sound_count(bool only_playing)
 {
 	CCustomMonster* monster = smart_cast<CCustomMonster*>(&object( ));
 	if (!monster)
@@ -154,7 +154,7 @@ int  CScriptGameObject::active_sound_count(bool only_playing)
 		return								(monster->sound( ).active_sound_count(only_playing));
 }
 
-int CScriptGameObject::active_sound_count( )
+s32 CScriptGameObject::active_sound_count( )
 {
 	return									(active_sound_count(false));
 }

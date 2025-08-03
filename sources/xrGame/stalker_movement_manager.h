@@ -43,8 +43,8 @@ public:
 
 private:
 	IC		void	setup_head_speed				();
-	IC		void	add_velocity					(int mask, f32 linear, f32 compute_angular, f32 angular);
-	IC		void	add_velocity					(int mask, f32 linear, f32 compute_angular);
+	IC		void	add_velocity					(s32 mask, f32 linear, f32 compute_angular, f32 angular);
+	IC		void	add_velocity					(s32 mask, f32 linear, f32 compute_angular);
 	IC		void	setup_body_orientation			();
 			void	init_velocity_masks				();
 			void	setup_movement_params			();

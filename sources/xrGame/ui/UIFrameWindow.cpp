@@ -207,7 +207,7 @@ void CUIFrameWindow::FrameClip(const fRect parentAbsR)
 	// fmL
 	RCache.set_Shader(m_UIWndFrame.frame[CUIFrameRect::fmL].GetShader( ));
 	T = RCache.get_ActiveTexture(0);
-	ts.set((int) T->get_Width( ), (int) T->get_Height( ));
+	ts.set((s32) T->get_Width( ), (s32) T->get_Height( ));
 	size_y = min(m_UIWndFrame.frame[CUIFrameRect::fmLB].GetPosY( ), parentAbsR.bottom) - max(m_UIWndFrame.frame[CUIFrameRect::fmL].GetPosY( ), parentAbsR.top);
 	size_x = min(m_UIWndFrame.frame[CUIFrameRect::fmB].GetPosX( ), parentAbsR.right) - max(m_UIWndFrame.frame[CUIFrameRect::fmL].GetPosX( ), parentAbsR.left);
 	rem_x = fmod(size_x, ts.x);

@@ -54,7 +54,7 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 	case DMSG_GOTO_FILELINE:{
 			msg.w_int(DMSG_GOTO_FILELINE);
 			msg.w_string((pstr)wParam);
-			msg.w_int((int)lParam);
+			msg.w_int((s32)lParam);
 			SendMessageToIde(msg);
 		}break;
 
@@ -81,7 +81,7 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 		}break;
 
 	case DMSG_GOTO_STACKTRACE_LEVEL:{
-			m_callStack->GotoStackTraceLevel((int)wParam);
+			m_callStack->GotoStackTraceLevel((s32)wParam);
 			StackLevelChanged();
 		}break;
 	
@@ -92,7 +92,7 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 
 	case DMSG_ADD_LOCALVARIABLE:{
 			msg.w_int(DMSG_ADD_LOCALVARIABLE);
-			msg.w_buff((void*)wParam,sizeof(Variable));
+			msg.w_buff((pvoid)wParam,sizeof(Variable));
 			SendMessageToIde(msg);
 		}break;
 
@@ -103,12 +103,12 @@ LRESULT CScriptDebugger::DebugMessage(UINT nMsg, WPARAM wParam, LPARAM lParam)
 
 	case DMSG_ADD_THREAD:{
 			msg.w_int(DMSG_ADD_THREAD);
-			msg.w_buff((void*)wParam,sizeof(SScriptThread));
+			msg.w_buff((pvoid)wParam,sizeof(SScriptThread));
 			SendMessageToIde(msg);
 		}break;
 
 	case DMSG_THREAD_CHANGED:{
-			int nThreadID = (int)wParam;
+		s32 nThreadID = (s32)wParam;
 			DrawThreadInfo(nThreadID);
 		}break;
 
@@ -183,13 +183,13 @@ CScriptDebugger::~CScriptDebugger()
 	xr_delete			(m_lua);
 }
 
-void CScriptDebugger::UnPrepareLua(lua_State* l, int idx)
+void CScriptDebugger::UnPrepareLua(lua_State* l, s32 idx)
 {
 	if(idx == -1) return; // !Active()
 	m_lua->UnPrepareLua (l, idx);
 }
 
-int CScriptDebugger::PrepareLua(lua_State* l)
+s32 CScriptDebugger::PrepareLua(lua_State* l)
 {
 	// call this function immediatly before calling lua_pcall. 
 	//returns index in stack for errorFunc
@@ -219,7 +219,7 @@ void CScriptDebugger::Write(pcstr szMsg)
 	_SendMessage(DMSG_WRITE_DEBUG, (WPARAM)szMsg, 0);
 }
 
-void CScriptDebugger::LineHook(pcstr szFile, int nLine)
+void CScriptDebugger::LineHook(pcstr szFile, s32 nLine)
 {
 	CheckNewMessages();
 	if ( m_nMode == DMOD_STOP ){
@@ -242,7 +242,7 @@ void CScriptDebugger::LineHook(pcstr szFile, int nLine)
 	}
 }
 
-void CScriptDebugger::FunctionHook(pcstr szFile, int nLine, BOOL bCall)
+void CScriptDebugger::FunctionHook(pcstr szFile, s32 nLine, BOOL bCall)
 {
 	if ( m_nMode == DMOD_STOP )
 		return;
@@ -250,7 +250,7 @@ void CScriptDebugger::FunctionHook(pcstr szFile, int nLine, BOOL bCall)
 	m_nLevel += (bCall?1:-1);
 }
 
-void CScriptDebugger::DrawThreadInfo(int nThreadID)
+void CScriptDebugger::DrawThreadInfo(s32 nThreadID)
 {
 	//find corresponding lua_state
 	lua_State* ls = m_threads->FindScript(nThreadID);
@@ -268,7 +268,7 @@ void CScriptDebugger::DrawCurrentState()
 	_SendMessage(DMSG_GOTO_STACKTRACE_LEVEL, GetStackTraceLevel(), 0);
 }
 
-void CScriptDebugger::DebugBreak(pcstr szFile, int nLine)
+void CScriptDebugger::DebugBreak(pcstr szFile, s32 nLine)
 {
 	m_nMode = DMOD_NONE;
 
@@ -288,7 +288,7 @@ void CScriptDebugger::GetBreakPointsFromIde()
 	WaitForReply(false);
 }
 
-void CScriptDebugger::ErrorBreak(pcstr szFile, int nLine)
+void CScriptDebugger::ErrorBreak(pcstr szFile, s32 nLine)
 {
 	if(Active())
 		DebugBreak(szFile, nLine);
@@ -299,7 +299,7 @@ void CScriptDebugger::ClearStackTrace()
 	_SendMessage(DMSG_CLEAR_STACKTRACE, 0, 0);
 }
 
-void CScriptDebugger::AddStackTrace(pcstr szDesc, pcstr szFile, int nLine)
+void CScriptDebugger::AddStackTrace(pcstr szDesc, pcstr szFile, s32 nLine)
 {
 	StackTrace st;
 	strcat(st.szDesc, szDesc);
@@ -308,7 +308,7 @@ void CScriptDebugger::AddStackTrace(pcstr szDesc, pcstr szFile, int nLine)
 	_SendMessage(DMSG_ADD_STACKTRACE, (WPARAM)&st, 0);
 }
 
-int CScriptDebugger::GetStackTraceLevel()
+s32 CScriptDebugger::GetStackTraceLevel()
 {
 	return m_callStack->GetLevel();
 }
@@ -348,7 +348,7 @@ void CScriptDebugger::AddGlobalVariable(pcstr name, pcstr type, pcstr value)
 }
 
 
-void CScriptDebugger::Eval(pcstr strCode, pstr res, int res_sz)
+void CScriptDebugger::Eval(pcstr strCode, pstr res, s32 res_sz)
 {
 	string1024 strCodeFull;
 	strCodeFull[0] = 0;
@@ -383,7 +383,7 @@ void CScriptDebugger::WaitForReply(bool bWaitForModalResult)//UINT nMsg)
 
 bool CScriptDebugger::TranslateIdeMessage (CMailSlotMsg* msg)
 {
-	int nType;
+	s32 nType;
 	msg->r_int(nType);
 	switch(nType) {
 	case DMSG_DEBUG_GO:{
@@ -425,7 +425,7 @@ bool CScriptDebugger::TranslateIdeMessage (CMailSlotMsg* msg)
 		}break;
 	
 	case DMSG_GOTO_STACKTRACE_LEVEL:{
-			int nLevel;
+		s32 nLevel;
 			msg->r_int(nLevel);
 			_SendMessage(DMSG_GOTO_STACKTRACE_LEVEL, nLevel, 0);
 			return false;
@@ -437,7 +437,7 @@ bool CScriptDebugger::TranslateIdeMessage (CMailSlotMsg* msg)
 		}break;
 
 	case DMSG_THREAD_CHANGED:{
-			int nThreadID;
+		s32 nThreadID;
 			msg->r_int(nThreadID);
 			_SendMessage(DMSG_THREAD_CHANGED, nThreadID, 0);
 			return false;
@@ -453,7 +453,7 @@ bool CScriptDebugger::TranslateIdeMessage (CMailSlotMsg* msg)
 		
 	case DMSG_EVAL_WATCH:{
 			string2048 watch; watch[0]=0;
-			int iItem;
+			s32 iItem;
 			msg->r_string(watch);
 			msg->r_int(iItem);
 			_SendMessage(DMSG_EVAL_WATCH, (WPARAM)watch, (LPARAM)iItem);

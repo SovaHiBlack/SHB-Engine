@@ -5,7 +5,7 @@ template <class T> class CSingleton
 {
 private:
 	static T* _self;
-	static int	_refcount;
+	static s32	_refcount;
 
 public:
 	//whether singleton will delete itself on FreeInst
@@ -59,7 +59,7 @@ public:
 };
 
 template <class T> T* CSingleton<T>::_self = NULL;
-template <class T> int	CSingleton<T>::_refcount = 0;
+template <class T> s32	CSingleton<T>::_refcount = 0;
 template <class T> bool CSingleton<T>::_on_self_delete = true;
 
 template<class SHARED_TYPE, class KEY_TYPE> class CSharedObj : public CSingleton<CSharedObj<SHARED_TYPE, KEY_TYPE> >

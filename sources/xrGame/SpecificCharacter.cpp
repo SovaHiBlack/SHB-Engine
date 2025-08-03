@@ -249,7 +249,7 @@ f32 CSpecificCharacter::hit_probability_factor( ) const
 	return data( )->m_fHitProbabilityFactor;
 }
 
-int CSpecificCharacter::crouch_type( ) const
+s32 CSpecificCharacter::crouch_type( ) const
 {
 	return data( )->m_crouch_type;
 }

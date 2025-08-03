@@ -149,7 +149,7 @@ void CScriptStorage::reinit	()
 		file_header			= file_header_old;
 }
 
-int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType, pcstr caFormat, va_list marker)
+s32 CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType, pcstr caFormat, va_list marker)
 {
 #ifndef NO_XRGAME_SCRIPT_ENGINE
 #	ifdef DEBUG
@@ -212,7 +212,7 @@ int CScriptStorage::vscript_log		(ScriptStorage::ELuaMessageType tLuaMessageType
 	
 	strcpy	(S2,S);
 	S1		= S2 + xr_strlen(S);
-	int		l_iResult = vsprintf(S1,caFormat,marker);
+	s32		l_iResult = vsprintf(S1,caFormat,marker);
 	Msg		("%s",S2);
 	
 	strcpy	(S2,SS);
@@ -240,7 +240,7 @@ void CScriptStorage::print_stack		()
 
 	lua_State				*L = lua();
 	lua_Debug				l_tDebugInfo;
-	for (int i=0; lua_getstack(L,i,&l_tDebugInfo);++i ) {
+	for (s32 i=0; lua_getstack(L,i,&l_tDebugInfo);++i ) {
 		lua_getinfo			(L,"nSlu",&l_tDebugInfo);
 		if (!l_tDebugInfo.name)
 			script_log		(ScriptStorage::eLuaMessageTypeError,"%2d : [%s] %s(%d) : %s",i,l_tDebugInfo.what,l_tDebugInfo.short_src,l_tDebugInfo.currentline,"");
@@ -253,12 +253,12 @@ void CScriptStorage::print_stack		()
 }
 #endif
 
-int __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessageType, pcstr caFormat, ...)
+s32 __cdecl CScriptStorage::script_log	(ScriptStorage::ELuaMessageType tLuaMessageType, pcstr caFormat, ...)
 {
 
 	va_list		marker;
 	va_start	(marker,caFormat);
-	int			result = vscript_log(tLuaMessageType,caFormat,marker);
+	s32			result = vscript_log(tLuaMessageType,caFormat,marker);
 	va_end		(marker);
 
 #ifdef DEBUG
@@ -286,7 +286,7 @@ bool CScriptStorage::parse_namespace(pcstr caNamespaceName, pstr b, pstr c)
 	strcpy			(c,"");
 	pstr			S2	= xr_strdup(caNamespaceName);
 	pstr			S	= S2;
-	for (int i=0;;++i) {
+	for (s32 i=0;;++i) {
 		if (!xr_strlen(S)) {
 			script_log	(ScriptStorage::eLuaMessageTypeError,"the namespace name %s is incorrect!",caNamespaceName);
 			xr_free		(S2);
@@ -313,7 +313,7 @@ bool CScriptStorage::parse_namespace(pcstr caNamespaceName, pstr b, pstr c)
 
 bool CScriptStorage::load_buffer	(lua_State *L, pcstr caBuffer, size_t tSize, pcstr caScriptName, pcstr caNameSpaceName)
 {
-	int					l_iErrorCode;
+	s32					l_iErrorCode;
 	if (caNameSpaceName && xr_strcmp("_G",caNameSpaceName)) {
 		string512		insert, a, b;
 
@@ -356,7 +356,7 @@ bool CScriptStorage::load_buffer	(lua_State *L, pcstr caBuffer, size_t tSize, pc
 
 bool CScriptStorage::do_file	(pcstr caScriptName, pcstr caNameSpaceName)
 {
-	int				start = lua_gettop(lua());
+	s32				start = lua_gettop(lua());
 	string_path		l_caLuaFileName;
 	IReader			*l_tpFileReader = FS.r_open(caScriptName);
 	if (!l_tpFileReader) {
@@ -375,20 +375,24 @@ bool CScriptStorage::do_file	(pcstr caScriptName, pcstr caNameSpaceName)
 	}
 	FS.r_close		(l_tpFileReader);
 
-	int errFuncId = -1;
+	s32 errFuncId = -1;
+
 #ifdef USE_DEBUGGER
-	if( ai().script_engine().debugger() )
-	errFuncId = ai().script_engine().debugger()->PrepareLua(lua());
+	if (ai( ).script_engine( ).debugger( ))
+	{
+		errFuncId = ai( ).script_engine( ).debugger( )->PrepareLua(lua( ));
+	}
 #endif
+
 	if (0)	//.
 	{
-	    for (int i=0; lua_type(lua(), -i-1); i++)
+	    for (s32 i=0; lua_type(lua(), -i-1); i++)
             Msg	("%2d : %s",-i-1,lua_typename(lua(), lua_type(lua(), -i-1)));
 	}
 
 	// because that's the first and the only call of the main chunk - there is no point to compile it
 //	luaJIT_setmode	(lua(),0,LUAJIT_MODE_ENGINE|LUAJIT_MODE_OFF);						// Oles
-	int	l_iErrorCode = lua_pcall(lua(),0,0,(-1==errFuncId)?0:errFuncId);				// new_Andy
+	s32	l_iErrorCode = lua_pcall(lua(),0,0,(-1==errFuncId)?0:errFuncId);				// new_Andy
 //	luaJIT_setmode	(lua(),0,LUAJIT_MODE_ENGINE|LUAJIT_MODE_ON);						// Oles
 
 #ifdef USE_DEBUGGER
@@ -409,7 +413,7 @@ bool CScriptStorage::do_file	(pcstr caScriptName, pcstr caNameSpaceName)
 
 bool CScriptStorage::load_file_into_namespace(pcstr caScriptName, pcstr caNamespaceName)
 {
-	int				start = lua_gettop(lua());
+	s32				start = lua_gettop(lua());
 	if (!do_file(caScriptName,caNamespaceName)) {
 		lua_settop	(lua(),start);
 		return		(false);
@@ -420,7 +424,7 @@ bool CScriptStorage::load_file_into_namespace(pcstr caScriptName, pcstr caNamesp
 
 bool CScriptStorage::namespace_loaded(pcstr N, bool remove_from_stack)
 {
-	int						start = lua_gettop(lua());
+	s32						start = lua_gettop(lua());
 	lua_pushstring 			(lua(),"_G"); 
 	lua_rawget 				(lua(),LUA_GLOBALSINDEX); 
 	string256				S2;
@@ -467,9 +471,9 @@ bool CScriptStorage::namespace_loaded(pcstr N, bool remove_from_stack)
 	return					(true); 
 }
 
-bool CScriptStorage::object	(pcstr identifier, int type)
+bool CScriptStorage::object	(pcstr identifier, s32 type)
 {
-	int						start = lua_gettop(lua());
+	s32						start = lua_gettop(lua());
 	lua_pushnil				(lua()); 
 	while (lua_next(lua(), -2)) { 
 		if ((lua_type(lua(), -1) == type) && !xr_strcmp(identifier,lua_tostring(lua(), -2))) { 
@@ -486,9 +490,9 @@ bool CScriptStorage::object	(pcstr identifier, int type)
 	return					(false); 
 }
 
-bool CScriptStorage::object	(pcstr namespace_name, pcstr identifier, int type)
+bool CScriptStorage::object	(pcstr namespace_name, pcstr identifier, s32 type)
 {
-	int						start = lua_gettop(lua());
+	s32						start = lua_gettop(lua());
 	if (xr_strlen(namespace_name) && !namespace_loaded(namespace_name,false)) {
 		VERIFY				(lua_gettop(lua()) == start);
 		return				(false); 
@@ -516,7 +520,7 @@ luabind::object CScriptStorage::name_space(pcstr namespace_name)
 	}
 }
 
-bool CScriptStorage::print_output(lua_State *L, pcstr caScriptFileName, int iErorCode)
+bool CScriptStorage::print_output(lua_State *L, pcstr caScriptFileName, s32 iErorCode)
 {
 	if (iErorCode)
 		print_error		(L,iErorCode);
@@ -548,7 +552,7 @@ bool CScriptStorage::print_output(lua_State *L, pcstr caScriptFileName, int iEro
 	return				(true);
 }
 
-void CScriptStorage::print_error(lua_State *L, int iErrorCode)
+void CScriptStorage::print_error(lua_State *L, s32 iErrorCode)
 {
 	switch (iErrorCode) {
 		case LUA_ERRRUN : {

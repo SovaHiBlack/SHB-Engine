@@ -270,7 +270,7 @@
     <None Include="config\misc\zone_burningfuzz.ltx" />
     <None Include="config\misc\zone_buzz.ltx" />
     <None Include="config\misc\zone_gravi.ltx" />
-    <None Include="config\misc\zone_kampfire.ltx" />
+    <None Include="config\misc\zone_campfire.ltx" />
     <None Include="config\misc\zone_mincer.ltx" />
     <None Include="config\misc\zone_minefield.ltx" />
     <None Include="config\misc\zone_monolith.ltx" />

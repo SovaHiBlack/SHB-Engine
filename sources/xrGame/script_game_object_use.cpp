@@ -72,7 +72,7 @@ CScriptGameObject *CScriptGameObject::Parent				() const
 		return		(0);
 }
 
-int	CScriptGameObject::clsid				() const
+s32	CScriptGameObject::clsid				() const
 {
 	return			(object().clsid());
 }

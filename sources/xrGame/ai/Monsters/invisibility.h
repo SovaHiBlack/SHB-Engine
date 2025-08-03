@@ -31,7 +31,7 @@ public:
 			void	deactivate				();
 	IC		f32	energy					() {return m_energy;}
 	IC		bool	active					() {return m_active;}
-	IC		bool	full_energy				() {return !!fsimilar(m_energy,1.f);}
+	IC		bool	full_energy				() {return !!fsimilar(m_energy,1.0f);}
 
 	// manual switching
 			void	set_manual_control		(bool b_man = true);

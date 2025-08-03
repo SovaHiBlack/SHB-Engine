@@ -17,12 +17,12 @@ CDbgLuaHelper::~CDbgLuaHelper()
 	m_pThis = NULL;
 }
 
-void CDbgLuaHelper::UnPrepareLua(lua_State* l, int idx)
+void CDbgLuaHelper::UnPrepareLua(lua_State* l, s32 idx)
 {
 	lua_remove(l, idx);
 }
 
-int CDbgLuaHelper::PrepareLua(lua_State* l)
+s32 CDbgLuaHelper::PrepareLua(lua_State* l)
 {
 	// call this function immediatly before calling lua_pcall. 
 	//returns index in stack for errorFunc
@@ -30,7 +30,7 @@ int CDbgLuaHelper::PrepareLua(lua_State* l)
 	lua_register(l, "DEBUGGER_ERRORMESSAGE", errormessageLua );
 	lua_sethook(l, hookLua, LUA_MASKLINE|LUA_MASKCALL|LUA_MASKRET, 0);
 
-	int top = lua_gettop(l);
+	s32 top = lua_gettop(l);
 	lua_getglobal(l, "DEBUGGER_ERRORMESSAGE");
 	lua_insert(l, top);
 	return top;
@@ -44,7 +44,7 @@ void CDbgLuaHelper::PrepareLuaBind()
 #endif
 }
 
-int CDbgLuaHelper::OutputTop(lua_State* L)
+s32 CDbgLuaHelper::OutputTop(lua_State* L)
 {
 	if(!m_pThis)return 0;
 	m_pThis->debugger()->Write(luaL_checkstring(L, -1));
@@ -68,13 +68,13 @@ void CDbgLuaHelper::errormessageLuaBind(lua_State* l)
 	FATAL	("LUABIND error");
 }
 
-int CDbgLuaHelper::errormessageLua(lua_State* l)
+s32 CDbgLuaHelper::errormessageLua(lua_State* l)
 {
 	if(!m_pThis)return 0;
 	L = l;
-	int level = 1;  /* skip level 0 (it's this function) */
+	s32 level = 1;  /* skip level 0 (it's this function) */
 
-	int firstpart = 1;  /* still before eventual `...' */
+	s32 firstpart = 1;  /* still before eventual `...' */
 	lua_Debug ar;
 	if (!lua_isstring(L, 1))
 		return lua_gettop(L);
@@ -174,18 +174,20 @@ void CDbgLuaHelper::func_hook (lua_State *l, lua_Debug *ar)
 	m_pThis->debugger()->FunctionHook(szSource, ar->currentline, ar->event==LUA_HOOKCALL);
 }
 
-void print_stack(lua_State *L)
+void print_stack(lua_State* L)
 {
 	Msg(" ");
-	for (int i=0; lua_type(L, -i-1); i++)
-		Msg("%2d : %s",-i-1,lua_typename(L, lua_type(L, -i-1)));
+	for (s32 i = 0; lua_type(L, -i - 1); i++)
+	{
+		Msg("%2d : %s", -i - 1, lua_typename(L, lua_type(L, -i - 1)));
+	}
 }
 
-int CDbgLuaHelper::hookLuaBind (lua_State *l)
+s32 CDbgLuaHelper::hookLuaBind (lua_State *l)
 {
 	if(!m_pThis) return 0;
 	L =l;
-	int top1 = lua_gettop(L);
+	s32 top1 = lua_gettop(L);
 	
 	Msg	("hookLuaBind start");
 	print_stack(L);
@@ -205,7 +207,7 @@ int CDbgLuaHelper::hookLuaBind (lua_State *l)
 	if (lua_isstring(L,-1))
 		Msg("Tope string %s",lua_tostring(L,-1));
 
-	int top2 = lua_gettop(L);
+	s32 top2 = lua_gettop(L);
 	VERIFY(top2==top1);
 	return 0;
 }
@@ -214,7 +216,7 @@ void CDbgLuaHelper::hookLua (lua_State *l, lua_Debug *ar)
 {
 	if(!m_pThis) return;
 	L = l;
-	int top1 = lua_gettop(L);
+	s32 top1 = lua_gettop(L);
 	
 //	Msg	("hookLua start");
 //	print_stack(L);
@@ -234,7 +236,7 @@ void CDbgLuaHelper::hookLua (lua_State *l, lua_Debug *ar)
 //	Msg	("hookLua end");
 //	print_stack(L);
 	
-	int top2 = lua_gettop(L);
+	s32 top2 = lua_gettop(L);
 	VERIFY(top2==top1);
 }
 
@@ -247,9 +249,9 @@ void CDbgLuaHelper::DrawStackTrace()
 {
 	debugger()->ClearStackTrace();
 
-	int nLevel = 0;
+	s32 nLevel = 0;
 	lua_Debug ar;
-	char szDesc[256];
+	string256 szDesc;
 	while ( lua_getstack (L, nLevel, &ar) )
 	{
 		lua_getinfo(L, "lnuS", &ar);
@@ -290,11 +292,11 @@ void CDbgLuaHelper::DrawLocalVariables()
 {
 	debugger()->ClearLocalVariables();
 
-	int nLevel = debugger()->GetStackTraceLevel();
+	s32 nLevel = debugger()->GetStackTraceLevel();
 	lua_Debug ar;
 	if ( lua_getstack (L, nLevel, &ar) )
 	{
-		int i = 1;
+		s32 i = 1;
 		pcstr name;
 		while ((name = lua_getlocal(L, &ar, i++)) != NULL) {
 				DrawVariable(L,name,true);
@@ -322,18 +324,18 @@ void CDbgLuaHelper::DrawGlobalVariables()
 	lua_pop(L, 1); // pop table of globals;
 };
 
-bool CDbgLuaHelper::GetCalltip(pcstr szWord, pstr szCalltip, int sz_calltip)
+bool CDbgLuaHelper::GetCalltip(pcstr szWord, pstr szCalltip, s32 sz_calltip)
 {
-	int nLevel = debugger()->GetStackTraceLevel();
+	s32 nLevel = debugger()->GetStackTraceLevel();
 	lua_Debug ar;
 	if ( lua_getstack (L, nLevel, &ar) )
 	{
-		int i = 1;
+		s32 i = 1;
 		pcstr name;
 		while ((name = lua_getlocal(L, &ar, i++)) != NULL) {
 			if ( xr_strcmp(name, szWord)==0 )
 			{
-				char szRet[64];
+				string64 szRet;
 				Describe(szRet, -1, sizeof(szRet));
 				sprintf_s(szCalltip, sz_calltip, "local %s : %s ", name, szRet);
 				lua_pop(L, 1);  /* remove variable value */
@@ -368,12 +370,12 @@ bool CDbgLuaHelper::GetCalltip(pcstr szWord, pstr szCalltip, int sz_calltip)
 	return false;
 }
 
-bool CDbgLuaHelper::Eval(pcstr szCode, pstr szRet,int szret_size)
+bool CDbgLuaHelper::Eval(pcstr szCode, pstr szRet, s32 szret_size)
 {
 	CoverGlobals();
 
-	int top = lua_gettop(L);	
-	int status = luaL_loadbuffer(L, szCode, xr_strlen(szCode), szCode);
+	s32 top = lua_gettop(L);
+	s32 status = luaL_loadbuffer(L, szCode, xr_strlen(szCode), szCode);
 	if ( status )
 		sprintf_s(szRet, szret_size, "%s", luaL_checkstring(L, -1));
 	else
@@ -396,11 +398,11 @@ bool CDbgLuaHelper::Eval(pcstr szCode, pstr szRet,int szret_size)
 	return !status;
 }
 
-void CDbgLuaHelper::Describe(pstr szRet, int nIndex, int szRet_size)
+void CDbgLuaHelper::Describe(pstr szRet, s32 nIndex, s32 szRet_size)
 {
-	int ntype = lua_type(L, nIndex);
+	s32 ntype = lua_type(L, nIndex);
 	pcstr type = lua_typename(L, ntype);
-	char value[64];
+	string64 value;
 
 	switch(ntype)
 	{
@@ -424,11 +426,11 @@ void CDbgLuaHelper::CoverGlobals()
 {
 	lua_newtable(L);  // save there globals covered by locals
 
-	int nLevel = debugger()->GetStackTraceLevel();
+	s32 nLevel = debugger()->GetStackTraceLevel();
 	lua_Debug ar;
 	if ( lua_getstack (L, nLevel, &ar) )
 	{
-		int i = 1;
+		s32 i = 1;
 		pcstr name;
 		while ((name = lua_getlocal(L, &ar, i++)) != NULL) { /* SAVE lvalue */
 			lua_pushstring(L, name);	/* SAVE lvalue name */						
@@ -469,11 +471,11 @@ void CDbgLuaHelper::DrawVariable(lua_State * l, pcstr name, bool bOpenTable)
 	strcpy(var.szName, name );
 
 	pcstr type;
-	int ntype = lua_type(l, -1);
+	s32 ntype = lua_type(l, -1);
 	type = lua_typename(l, ntype);
 	strcpy(var.szType, type);
 
-	char value[64];
+	string64 value;
 
 	switch(ntype)
 	{

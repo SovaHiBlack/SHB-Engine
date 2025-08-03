@@ -51,7 +51,7 @@ protected:
 	virtual void			FireEnd( );
 
 public:
-	IC BOOL					IsWorking( )	const
+	IC BOOL					IsWorking( ) const
 	{
 		return bWorking;
 	}
@@ -70,7 +70,6 @@ protected:
 
 	f32					fTimeToFire;
 	fVector4				fvHitPower;
-	//f32					fHitPower;
 	f32					fHitImpulse;
 
 	//скорость вылета пули из ствола
@@ -114,7 +113,7 @@ protected:
 	void					Light_Start( );
 	void					Light_Render(const fVector3& P);
 
-	virtual	void			LoadLights(pcstr section, pcstr prefix);
+	virtual void			LoadLights(pcstr section, pcstr prefix);
 	virtual void			RenderLight( );
 	virtual void			UpdateLight( );
 	virtual void			StopLight( );
@@ -135,8 +134,8 @@ protected:
 	virtual void			StopParticles(CParticlesObject*& pParticles);
 	virtual void			UpdateParticles(CParticlesObject*& pParticles, const fVector3& pos, const fVector3& vel = zero_vel);
 
-	virtual	void			LoadShellParticles(pcstr section, pcstr prefix);
-	virtual	void			LoadFlameParticles(pcstr section, pcstr prefix);
+	virtual void			LoadShellParticles(pcstr section, pcstr prefix);
+	virtual void			LoadFlameParticles(pcstr section, pcstr prefix);
 
 	////////////////////////////////////////////////
 	//спецефические функции для партиклов

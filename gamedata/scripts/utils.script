@@ -467,14 +467,14 @@ function no_need_to_rotate_xz(npc, target_pos)
 	return y < 0.3
 end
 
--- Перевод угла из радианов в градусы
+--' Перевод угла из радианов в градусы
 function rad2deg(r)
-	return r * 180.0 / math.pi
+	return (r * 180.0 / math.pi)
 end
 
--- Перевод угла из градусов в радианы
+--' Перевод угла из градусов в радианы
 function deg2rad(d)
-	return d * math.pi / 180.0
+	return (d * math.pi / 180.0)
 end
 
 -- угол между двумя векторами в градусах.

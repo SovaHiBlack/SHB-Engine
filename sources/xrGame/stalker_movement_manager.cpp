@@ -46,7 +46,7 @@ IC	void CStalkerMovementManager::setup_head_speed		()
 		m_head.speed			= m_danger_head_speed;
 }
 
-IC	void CStalkerMovementManager::add_velocity			(int mask, f32 linear, f32 compute_angular, f32 angular)
+IC	void CStalkerMovementManager::add_velocity			(s32 mask, f32 linear, f32 compute_angular, f32 angular)
 {
 	detail().add_velocity		(
 		mask,
@@ -282,7 +282,7 @@ void CStalkerMovementManager::setup_velocities		()
 	// setup desirable velocities mask
 	// if we want to stand, do not setup velocity to prevent path rebuilding
 
-	int						velocity_mask = eVelocityPositiveVelocity;
+	s32						velocity_mask = eVelocityPositiveVelocity;
 
 	// setup body state
 	switch (body_state()) {

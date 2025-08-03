@@ -37,7 +37,7 @@ struct calculate_state
 	bool	foot_step;
 	bool	blending;
 #ifdef DEBUG
-	int		count;
+	s32		count;
 #endif
 	calculate_state( ) : frame(0), foot_step(false), blending(false),
 		anim_pos(Fidentity), speed_blend_l(0), speed_blend_a(0),

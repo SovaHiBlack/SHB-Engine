@@ -76,8 +76,8 @@ public:
 
 			
 			void			ActivateVampireEffector	();
-	IC		bool			WantVampire				() {return (fsimilar(m_vampire_want_value,1.f) == TRUE);}
-	IC		void			SatisfyVampire			() {m_vampire_want_value = 0.f;}
+	IC		bool			WantVampire				() {return (fsimilar(m_vampire_want_value,1.0f) == TRUE);}
+	IC		void			SatisfyVampire			() {m_vampire_want_value = 0.0f;}
 
 private:
 	f32					m_vampire_want_value;

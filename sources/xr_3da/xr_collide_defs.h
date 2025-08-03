@@ -50,7 +50,7 @@ namespace collide
 		BOOL				similar(const fVector3& _start, const fVector3& _dir, const f32 _range)
 		{
 			if (!_start.similar(start))					return FALSE;
-			if (!fsimilar(1.f, dir.dotproduct(_dir)))	return FALSE;
+			if (!fsimilar(1.0f, dir.dotproduct(_dir)))	return FALSE;
 			if (!fsimilar(_range, range))				return FALSE;
 			return			TRUE;
 		}

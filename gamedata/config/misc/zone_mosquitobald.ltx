@@ -1,6 +1,6 @@
 [zone_mosquito_bald]
-$spawn 			= "zones\mosquito bald"
-$prefetch 		= 16
+	$spawn						= "zones\mosquito bald"
+	$prefetch					= 16
 class			= ZS_MBALD
 hit_impulse_scale	= 0.3;0.5 ;0.1
 effective_radius	= 0.85 ;размер радиуса в процентах от оригинального, где действует зона
@@ -95,7 +95,7 @@ blowout_wind_power			= 0.5			;сила поднимаего ветра (от 0 до 1), в момент blowou
 
 
 [zone_mosquito_bald_weak]:zone_mosquito_bald
-$spawn 			= "zones\mosquito bald_weak"
+	$spawn						= "zones\mosquito bald_weak"
 awaking_time		= 80;100
 blowout_time		= 500	
 
@@ -127,14 +127,14 @@ blowout_wind_power			= 0.2
 
 ; Не производящая артефактов слабая аномалия
 [zone_mosquito_bald_weak_noart]:zone_mosquito_bald_weak
-$spawn 			= "zones\mosquito bald_weak_noart"
+	$spawn						= "zones\mosquito bald_weak_noart"
 spawn_blowout_artefacts = off
 min_artefact_count	= 0
 max_artefact_count	= 0
 artefact_spawn_idle	= 24  ;насколько часто спонить артефакты в офлайне, в часах
 
 [zone_mosquito_bald_average]:zone_mosquito_bald
-$spawn 			= "zones\mosquito bald_average"
+	$spawn						= "zones\mosquito bald_average"
 awaking_time		= 50
 blowout_time		= 500	
 
@@ -165,7 +165,7 @@ blowout_wind_power			= 0.5
 
 
 [zone_mosquito_bald_strong]:zone_mosquito_bald
-$spawn 			= "zones\mosquito bald_strong"
+	$spawn						= "zones\mosquito bald_strong"
 awaking_time		= 30
 blowout_time		= 500	
 accamulate_time		= 49
@@ -193,15 +193,15 @@ blowout_wind_power			= 1
 
 ; Не производящая артефактов слабая аномалия
 [zone_mosquito_bald_strong_noart]:zone_mosquito_bald_strong
-$spawn 			= "zones\mosquito_bald_strong_noart"
+	$spawn						= "zones\mosquito_bald_strong_noart"
 spawn_blowout_artefacts = off
 min_artefact_count	= 0
 max_artefact_count	= 0
 artefact_spawn_idle	= 24  ;насколько часто спонить артефакты в офлайне, в часах
 
 [zone_sarcofag]
-$spawn 			= "zones\sarcofag zone"
-$prefetch 		= 16
+	$spawn						= "zones\sarcofag zone"
+	$prefetch					= 16
 class			= Z_MBALD
 hit_impulse_scale	= 0.3;0.5 ;0.1
 effective_radius	= 0.85 ;размер радиуса в процентах от оригинального, где действует зона

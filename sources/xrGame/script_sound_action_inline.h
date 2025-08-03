@@ -75,11 +75,11 @@ IC	CScriptSoundAction::CScriptSoundAction		(CScriptSound &sound, const fVector3&
 IC	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type)
 {
 	m_monster_sound			= sound_type;
-	m_monster_sound_delay	= int (-1);
+	m_monster_sound_delay	= s32(-1);
 	m_bCompleted			= false;
 }
 
-IC	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type, int delay)
+IC	CScriptSoundAction::CScriptSoundAction		(MonsterSound::EType sound_type, s32 delay)
 {
 	m_monster_sound			= sound_type;
 	m_monster_sound_delay	= delay;

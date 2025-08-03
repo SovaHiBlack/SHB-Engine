@@ -10,7 +10,7 @@ const	u32	cullfragments			= 4;
 
 void	light::vis_prepare			()
 {
-	if (int(indirect_photons)!=ps_r2_GI_photons)	gi_generate	();
+	if (s32(indirect_photons)!=ps_r2_GI_photons)	gi_generate	();
 
 	//	. test is sheduled for future	= keep old result
 	//	. test time comes :)
@@ -22,8 +22,8 @@ void	light::vis_prepare			()
 
 	f32	safe_area					= VIEWPORT_NEAR;
 	{
-		f32	a0	= deg2rad(Device.fFOV*Device.fASPECT/2.f);
-		f32	a1	= deg2rad(Device.fFOV/2.f);
+		f32	a0	= deg2rad(Device.fFOV*Device.fASPECT/2.0f);
+		f32	a1	= deg2rad(Device.fFOV/2.0f);
 		f32	x0	= VIEWPORT_NEAR/_cos	(a0);
 		f32	x1	= VIEWPORT_NEAR/_cos	(a1);
 		f32	c	= _sqrt					(x0*x0 + x1*x1);

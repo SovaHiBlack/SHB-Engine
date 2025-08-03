@@ -751,7 +751,7 @@ void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 	fMatrix4x4 parent;
 	VERIFY2(isActive( ), "the element is not active");
 	VERIFY(_valid(m_shell->mXFORM));
-	//VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones callback resive 0 matrix");
+	//VERIFY2(fsimilar(DET(B->mTransform),1.0f,DET_CHECK_EPS),"Bones callback resive 0 matrix");
 	VERIFY_RMATRIX(B->mTransform);
 	VERIFY(valid_pos(B->mTransform.c, phBoundaries));
 	if (m_flags.test(flActivating))
@@ -778,7 +778,7 @@ void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 			m_shell->SetNotActivating( );
 		}
 		B->Callback_overwrite = TRUE;
-		//VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones callback returns 0 matrix");
+		//VERIFY2(fsimilar(DET(B->mTransform),1.0f,DET_CHECK_EPS),"Bones callback returns 0 matrix");
 		VERIFY_RMATRIX(B->mTransform);
 		VERIFY(valid_pos(B->mTransform.c, phBoundaries));
 		//return;
@@ -786,7 +786,7 @@ void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 
 
 
-	//VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones callback returns 0 matrix");
+	//VERIFY2(fsimilar(DET(B->mTransform),1.0f,DET_CHECK_EPS),"Bones callback returns 0 matrix");
 	VERIFY_RMATRIX(B->mTransform);
 	VERIFY(valid_pos(B->mTransform.c, phBoundaries));
 	//if( !m_shell->is_active() && !m_flags.test(flUpdate)/*!bUpdate*/ ) return;
@@ -796,7 +796,7 @@ void CPHElement::StataticRootBonesCallBack(CBoneInstance* B)
 		parent.invert(m_shell->mXFORM);
 		B->mTransform.mul_43(parent, mXFORM);
 	}
-	//VERIFY2(fsimilar(DET(B->mTransform),1.f,DET_CHECK_EPS),"Bones callback returns 0 matrix");
+	//VERIFY2(fsimilar(DET(B->mTransform),1.0f,DET_CHECK_EPS),"Bones callback returns 0 matrix");
 	VERIFY_RMATRIX(B->mTransform);
 	VERIFY(valid_pos(B->mTransform.c, phBoundaries));
 	VERIFY2(_valid(B->mTransform), "Bones callback returns bad matrix");

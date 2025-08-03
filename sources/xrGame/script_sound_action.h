@@ -33,7 +33,7 @@ public:
 	fVector3								m_tSoundAngles;
 	ESoundTypes							m_sound_type;
 	MonsterSound::EType					m_monster_sound;
-	int									m_monster_sound_delay;
+	s32									m_monster_sound_delay;
 	MonsterSpace::EMonsterHeadAnimType	m_tHeadAnimType;
 
 public:
@@ -46,7 +46,7 @@ public:
 	// Monster Specific
 	///////////////////////////////////////////////////////////////////////////////////
 	IC				CScriptSoundAction	(MonsterSound::EType sound_type);
-	IC				CScriptSoundAction	(MonsterSound::EType sound_type, int delay);
+	IC				CScriptSoundAction	(MonsterSound::EType sound_type, s32 delay);
 	////////////////////////////////////////////////////////////////////////////////////
 	// Trader Specific
 	///////////////////////////////////////////////////////////////////////////////////

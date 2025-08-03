@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: detailed_path_manager_inline.h
-//	Created 	: 02.10.2001
-//  Modified 	: 12.11.2003
-//	Author		: Dmitriy Iassenev
 //	Description : Detail path manager inline functions
 ////////////////////////////////////////////////////////////////////////////
 
@@ -56,7 +53,7 @@ IC	void CDetailPathManager::set_dest_position(const fVector3& dest_position)
 
 	THROW2(!m_restricted_object || m_restricted_object->accessible(dest_position), "Old movement destination is not accessible after changing restrictions!");
 
-	bool					value = !!m_dest_position.similar(dest_position, .1f);
+	bool					value = !!m_dest_position.similar(dest_position, 0.1f);
 	if (!value)
 		m_corrected_dest_position = dest_position;
 
@@ -129,7 +126,7 @@ IC	void CDetailPathManager::assign_angle(
 			angle = dest_yaw - start_yaw - PI_MUL_2;
 
 	if (!start && ((direction_type == eDirectionTypePP) || (direction_type == eDirectionTypeNN)))
-		if (angle <= 0.f)
+		if (angle <= 0.0f)
 			angle = angle + PI_MUL_2;
 		else
 			angle = angle - PI_MUL_2;
@@ -145,7 +142,7 @@ IC	void CDetailPathManager::compute_circles(
 	VERIFY(!fis_zero(point.angular_velocity));
 	point.radius = _abs(point.linear_velocity) / point.angular_velocity;
 	circles[0].radius = circles[1].radius = point.radius;
-	VERIFY(fsimilar(point.direction.square_magnitude( ), 1.f));
+	VERIFY(fsimilar(point.direction.square_magnitude( ), 1.0f));
 	circles[0].center.x = point.direction.y * point.radius + point.position.x;
 	circles[0].center.y = -point.direction.x * point.radius + point.position.y;
 	circles[1].center.x = -point.direction.y * point.radius + point.position.x;

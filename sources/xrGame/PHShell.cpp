@@ -529,9 +529,9 @@ void CPHShell::SmoothElementsInertia(f32 k)
 		dMassAdd(&m_avrg,(*i)->getMassTensor());
 
 	}
-	int n = (int)elements.size();
+	s32 n = (s32)elements.size();
 	m_avrg.mass*=k/ f32(n);
-	for(int j=0;j<4*3;++j) m_avrg.I[j]*=k/ f32(n);
+	for(s32 j=0;j<4*3;++j) m_avrg.I[j]*=k/ f32(n);
 
 	for(i=elements.begin();elements.end() != i;++i)
 	{
@@ -540,7 +540,7 @@ void CPHShell::SmoothElementsInertia(f32 k)
 		dVectorSet(tmp,m->c);
 
 		m->mass*=krc;
-		for(int j=0;j<4*3;++j) m->I[j]*=krc;
+		for(s32 j=0;j<4*3;++j) m->I[j]*=krc;
 		dMassAdd(m,&m_avrg);
 
 		dVectorSet(m->c,tmp);

@@ -153,7 +153,7 @@ bool try_remove_string				(shared_str &search_string, const shared_str &string_t
 	string256				temp;
 	string4096				temp1;
 	*temp1					= 0;
-	for (int i=0, j=0, n=_GetItemCount(*search_string); i<n; ++i, ++j) {
+	for (s32 i=0, j=0, n=_GetItemCount(*search_string); i<n; ++i, ++j) {
 		if (xr_strcmp(string_to_search,_GetItem(*search_string,i,temp))) {
 			if (j)
 				strcat		(temp1,",");

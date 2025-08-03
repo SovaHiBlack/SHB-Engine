@@ -42,7 +42,7 @@ private:
 
 protected:
 	CScriptProcessStorage		m_script_processes;
-	int							m_stack_level;
+	s32							m_stack_level;
 	shared_str					m_class_registrators;
 
 protected:
@@ -62,9 +62,9 @@ public:
 	virtual						~CScriptEngine				();
 			void				init						();
 	virtual	void				unload						();
-	static	int					lua_panic					(lua_State *L);
+	static	s32					lua_panic					(lua_State *L);
 	static	void				lua_error					(lua_State *L);
-	static	int					lua_pcall_failed			(lua_State *L);
+	static	s32					lua_pcall_failed			(lua_State *L);
 	static	void				lua_hook_call				(lua_State *L, lua_Debug *dbg);
 			void				setup_callbacks				();
 			void				load_common_scripts			();
@@ -76,7 +76,7 @@ public:
 			void				process_file_if_exists		(pcstr file_name, bool warn_if_not_exist);
 			void				process_file				(pcstr file_name);
 			void				process_file				(pcstr file_name, bool reload_modules);
-			bool				function_object				(pcstr function_to_call, luabind::object &object, int type = LUA_TFUNCTION);
+			bool				function_object				(pcstr function_to_call, luabind::object &object, s32 type = LUA_TFUNCTION);
 			void				register_script_classes		();
 	IC		void				parse_script_namespace		(pcstr function_to_call, pstr name_space, pstr functor);
 

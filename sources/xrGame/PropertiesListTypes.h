@@ -261,11 +261,11 @@ public:
 	typedef fastdelegate::FastDelegate3<CanvasValue*,CanvasValue*,bool&>					TOnTestEqual;
 	typedef fastdelegate::FastDelegate3<CanvasValue*,void* /* TCanvas* */, const iRect&>	TOnDrawCanvasEvent;
 public:
-	int					height;
+	s32					height;
 	TOnTestEqual		OnTestEqual;
 	TOnDrawCanvasEvent	OnDrawCanvasEvent;
 public:
-						CanvasValue		(const shared_str& val, int h):OnDrawCanvasEvent(0),OnTestEqual(0),height(h){value=val;}
+						CanvasValue		(const shared_str& val, s32 h):OnDrawCanvasEvent(0),OnTestEqual(0),height(h){value=val;}
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent){return value.c_str()?value.c_str():"";}
 	virtual	void		ResetValue		(){;}
 	virtual	bool		Equal			(PropValue* val)
@@ -278,7 +278,7 @@ public:
 class ButtonValue: public PropValue{
 public:
 	RStringVec			value;
-	int					btn_num;
+	s32					btn_num;
 	typedef fastdelegate::FastDelegate3<ButtonValue*, bool&, bool&> 	TOnBtnClick;
 	TOnBtnClick			OnBtnClickEvent;
 	enum{
@@ -292,8 +292,8 @@ public:
 		OnBtnClickEvent	= 0;
 		btn_num			= -1;
 		xr_string 	v;
-		int cnt			=_GetItemCount(val.c_str()); 
-		for (int k=0; k<cnt; ++k)
+		s32 cnt			=_GetItemCount(val.c_str());
+		for (s32 k=0; k<cnt; ++k)
 			value.push_back(_GetItem(val.c_str(),k,v));
 	}
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent)
@@ -360,13 +360,13 @@ public:
 	TOnBeforeEditEvent	OnBeforeEditEvent;
 	TOnAfterEditEvent	OnAfterEditEvent;
 public:
-	int					lim;
+	s32					lim;
 public:
-						CTextValue		(pstr val, int _lim):value(val),init_value(val),lim(_lim)
+						CTextValue		(pstr val, s32 _lim):value(val),init_value(val),lim(_lim)
 	{
 		OnBeforeEditEvent 	= 0;
 		OnAfterEditEvent	= 0;
-	};
+	}
 	virtual xr_string	GetDrawText		(TOnDrawTextEvent OnDrawText)
 	{
 		xr_string txt		= GetValue();
@@ -392,7 +392,7 @@ public:
 
 class ChooseValue: public RTextValue{
 public:
-	int					subitem;		
+	s32					subitem;
 	u32					m_ChooseID;
 	u32 				m_ChooseFlags;
 	shared_str	 		m_StartPath;
@@ -430,7 +430,7 @@ public:
 	T					lim_mn;
 	T					lim_mx;
 	T					inc;
-	int 				dec;
+	s32 				dec;
 public:
 						NumericValue	(T* val):CustomValue<T>(val)
 	{
@@ -438,7 +438,7 @@ public:
 		init_value		= *value;
 		dec				= 0;
 	};
-						NumericValue	(T* val, T mn, T mx, T increm, int decim):CustomValue<T>(val),lim_mn(mn),lim_mx(mx),inc(increm),dec(decim)
+						NumericValue	(T* val, T mn, T mx, T increm, s32 decim):CustomValue<T>(val),lim_mn(mn),lim_mx(mx),inc(increm),dec(decim)
 	{
 		clamp			(*val,lim_mn,lim_mx);
 		value			= val;
@@ -461,10 +461,10 @@ public:
 
 //------------------------------------------------------------------------------
 template <class T>
-IC xr_string draw_sprintf(xr_string& s, const T& V, int tag)
+IC xr_string draw_sprintf(xr_string& s, const T& V, s32 tag)
 {  string256 tmp; sprintf_s(tmp,"%d",V); s=tmp; return s;}
 //------------------------------------------------------------------------------
-IC xr_string draw_sprintf(xr_string& s, const f32& V, int dec)
+IC xr_string draw_sprintf(xr_string& s, const f32& V, s32 dec)
 {
 	string32 	fmt; sprintf_s(fmt,"%%.%df",dec);
 	string256 	tmp; sprintf_s(tmp,fmt,V); 
@@ -480,7 +480,7 @@ IC void clamp(fVector3& V, const fVector3& mn, const fVector3& mx)
 	clamp(V.y,mn.y,mx.y);
 	clamp(V.z,mn.z,mx.z);
 }
-IC xr_string draw_sprintf(xr_string& s, const fVector3& V, int dec)
+IC xr_string draw_sprintf(xr_string& s, const fVector3& V, s32 dec)
 {
 	string128 fmt;	sprintf_s(fmt,"{%%.%df, %%.%df, %%.%df}",dec,dec,dec);
 	string256 tmp;	sprintf_s(tmp,fmt,V.x,V.y,V.z);
@@ -497,13 +497,13 @@ typedef NumericValue<s32>	S32Value;
 typedef NumericValue<f32>	FloatValue;
 class VectorValue: public NumericValue<fVector3>{
 public:
-						VectorValue		(fVector3* val, f32 mn, f32 mx, f32 increment, int decimal):NumericValue<fVector3>(val)
+						VectorValue		(fVector3* val, f32 mn, f32 mx, f32 increment, s32 decimal):NumericValue<fVector3>(val)
 	{
 		lim_mn.set		(mn,mn,mn);
 		lim_mx.set		(mx,mx,mx);
 		inc.set			(increment,increment,increment);
 		dec				= decimal;
-	};
+	}
 };
 //------------------------------------------------------------------------------
 
@@ -512,7 +512,7 @@ class FlagValueCustom
 public:
 	shared_str				caption[2];
 	enum{
-		flInvertedDraw	= (1<<0),
+		flInvertedDraw	= (1<<0)
 	};
 	flags32				m_Flags;
 public:
@@ -579,7 +579,7 @@ public:
 	{
 		xr_string		draw_val;
 		if (!OnDrawText.empty())	OnDrawText(this, draw_val);
-		else			for(int i=0; token[i].name; i++) if (token[i].id==(int)GetValue()) return token[i].name;
+		else			for(s32 i=0; token[i].name; i++) if (token[i].id==(s32)GetValue()) return token[i].name;
 		return draw_val;
 	}
 };

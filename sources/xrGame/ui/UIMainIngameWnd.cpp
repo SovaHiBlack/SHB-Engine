@@ -204,7 +204,7 @@ void CUIMainIngameWnd::Init( )
 	while (j < ewiInvincible)
 	{
 		// „итаем данные порогов дл€ каждого индикатора
-		shared_str cfgRecord = pSettings->r_string("main_ingame_indicators_thresholds", *warningStrings[static_cast<int>(j) - 1]);
+		shared_str cfgRecord = pSettings->r_string("main_ingame_indicators_thresholds", *warningStrings[static_cast<s32>(j) - 1]);
 		u32 count = _GetItemCount(*cfgRecord);
 
 		string8 singleThreshold;

@@ -32,7 +32,7 @@ IC	void CStalkerMovementManager::set_desired_direction(const fVector3* desired_d
 	}
 }
 
-IC	void CStalkerMovementManager::add_velocity		(int mask, f32 linear, f32 compute_angular)
+IC	void CStalkerMovementManager::add_velocity		(s32 mask, f32 linear, f32 compute_angular)
 {
 	add_velocity				(mask,linear,compute_angular,compute_angular);
 }

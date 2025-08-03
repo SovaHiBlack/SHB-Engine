@@ -24,16 +24,16 @@ void CScriptHit::script_register(lua_State* L)
 			class_<CScriptHit>("hit")
 			.enum_("hit_type")
 		[
-			value("burn", int(ALife::eHitTypeBurn)),
-			value("shock", int(ALife::eHitTypeShock)),
-			value("strike", int(ALife::eHitTypeStrike)),
-			value("wound", int(ALife::eHitTypeWound)),
-			value("radiation", int(ALife::eHitTypeRadiation)),
-			value("telepatic", int(ALife::eHitTypeTelepatic)),
-			value("chemical_burn", int(ALife::eHitTypeChemicalBurn)),
-			value("explosion", int(ALife::eHitTypeExplosion)),
-			value("fire_wound", int(ALife::eHitTypeFireWound)),
-			value("dummy", int(ALife::eHitTypeMax))
+			value("burn", s32(ALife::eHitTypeBurn)),
+			value("shock", s32(ALife::eHitTypeShock)),
+			value("strike", s32(ALife::eHitTypeStrike)),
+			value("wound", s32(ALife::eHitTypeWound)),
+			value("radiation", s32(ALife::eHitTypeRadiation)),
+			value("telepatic", s32(ALife::eHitTypeTelepatic)),
+			value("chemical_burn", s32(ALife::eHitTypeChemicalBurn)),
+			value("explosion", s32(ALife::eHitTypeExplosion)),
+			value("fire_wound", s32(ALife::eHitTypeFireWound)),
+			value("dummy", s32(ALife::eHitTypeMax))
 		]
 	.def_readwrite("power", &CScriptHit::m_fPower)
 		.def_readwrite("direction", &CScriptHit::m_tDirection)

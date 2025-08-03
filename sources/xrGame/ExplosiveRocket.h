@@ -51,7 +51,7 @@ public:
 	virtual void Load(pcstr section);
 	virtual BOOL net_Spawn(CSE_Abstract* DC);
 	virtual void net_Destroy( );
-	virtual	void net_Relcase(CObject* O);
+	virtual void net_Relcase(CObject* O);
 	virtual void OnH_A_Independent( );
 	virtual void OnH_B_Independent(bool just_before_destroy);
 	virtual void UpdateCL( );
@@ -60,10 +60,10 @@ public:
 
 	virtual void OnEvent(CNetPacket& P, u16 type);
 
-	virtual	void Hit(SHit* pHDS)
+	virtual void Hit(SHit* pHDS)
 	{
 		inherited::Hit(pHDS);
-	};
+	}
 
 public:
 	virtual BOOL			UsedAI_Locations( )
@@ -107,10 +107,12 @@ public:
 	virtual void			make_Interpolation( );
 	virtual void			PH_B_CrPr( ); // actions & operations before physic correction-prediction steps
 	virtual void			PH_I_CrPr( ); // actions & operations after correction before prediction steps
+
 #ifdef DEBUG
 	virtual void			PH_Ch_CrPr( ); // 
 	virtual void			OnRender( );
 #endif
+
 	virtual void			PH_A_CrPr( ); // actions & operations after phisic correction-prediction steps
 	virtual void			reinit( );
 	virtual void			reload(pcstr section);

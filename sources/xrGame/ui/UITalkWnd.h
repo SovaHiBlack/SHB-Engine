@@ -46,8 +46,8 @@ public:
 	void				NeedUpdateQuestions( );
 	//инициализации начального диалога собеседника
 	void				InitOthersStartDialog( );
-	virtual bool		IR_OnKeyboardPress(int dik);
-	virtual bool		OnKeyboard(int dik, EUIMessages keyboard_action);
+	virtual bool		IR_OnKeyboardPress(s32 dik);
+	virtual bool		OnKeyboard(s32 dik, EUIMessages keyboard_action);
 	void				SwitchToTrade( );
 	void				AddIconedMessage(pcstr text, pcstr texture_name, fRect texture_rect, pcstr templ_name);
 

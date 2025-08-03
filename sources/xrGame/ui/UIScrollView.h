@@ -70,9 +70,9 @@ public:
 	virtual	void	SetSelected(CUIWindow*);
 	CUIWindow* GetSelected( );
 	void	ForceUpdate( );
-	int		GetMinScrollPos( );
-	int		GetMaxScrollPos( );
-	int		GetCurrentScrollPos( );
+	s32		GetMinScrollPos( );
+	s32		GetMaxScrollPos( );
+	s32		GetCurrentScrollPos( );
 	void	SetScrollPos(s32 value);
 	void	SetScrollBarProfile(pcstr profile);
 	IC			bool	NeedShowScrollBar( );		// no comment

@@ -261,7 +261,7 @@ void CWeaponStatMgun::SetDesiredDir(f32 h, f32 p)
 	m_destEnemyDir.setHP(h, p);
 }
 
-void CWeaponStatMgun::Action(int id, u32 flags)
+void CWeaponStatMgun::Action(s32 id, u32 flags)
 {
 	inheritedHolder::Action(id, flags);
 	switch (id)

@@ -99,7 +99,7 @@ STRING_VALUE CStringTable::ParseLine(pcstr str, pcstr skey, bool bFirst)
 	pcstr b;
 
 #define ACTION_STR "$$ACTION_"
-#define LEN			9			// (int)xr_strlen(ACTION_STR);
+#define LEN			9			// (s32)xr_strlen(ACTION_STR);
 
 	string256 buff;
 	string256 srcbuff;

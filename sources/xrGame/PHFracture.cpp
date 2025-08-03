@@ -191,8 +191,8 @@ void CPHFracturesHolder::PhTune(dBodyID body)
 	//feedbacks for rest noncontact joints stored in m_feedbacks in runtime in this function and
 	//and killed by destructor
 
-	//int dBodyGetNumJoints (dBodyID b);
-	//dJointID dBodyGetJoint (dBodyID, int index);
+	//s32 dBodyGetNumJoints (dBodyID b);
+	//dJointID dBodyGetJoint (dBodyID, s32 index);
 	//dJointGetType
 	//dJointTypeContact
 

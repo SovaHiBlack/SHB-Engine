@@ -566,7 +566,7 @@ void	CIKLimb::SetNewGoal(const SIKCollideData& cld, SCalculateData& cd)
 		{
 			if (cd.foot_step != sv_state.foot_step)
 				sv_state.count = 50;
-			int c = 55 + 200 / 50 * sv_state.count;
+			s32 c = 55 + 200 / 50 * sv_state.count;
 			if (sv_state.count > 0)
 				DBG_OpenCashedDraw( );
 			fVector3 a0;

@@ -60,9 +60,9 @@ BIND_FUNCTION10	(&object(),	CScriptGameObject::story_id,			CGameObject,	story_id
 BIND_FUNCTION10	(&object(),	CScriptGameObject::DeathTime,			CEntity,		GetLevelDeathTime,	u32,							0);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::MaxHealth,			CEntity,		GetMaxHealth, f32,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::Accuracy,			CInventoryOwner,GetWeaponAccuracy, f32,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Team,				CEntity,		g_Team,				int,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Squad,				CEntity,		g_Squad,			int,							-1);
-BIND_FUNCTION10	(&object(),	CScriptGameObject::Group,				CEntity,		g_Group,			int,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Team,				CEntity,		g_Team, s32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Squad,				CEntity,		g_Squad, s32,							-1);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::Group,				CEntity,		g_Group, s32,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetFOV,				CEntityAlive,	ffGetFov, f32,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetRange,			CEntityAlive,	ffGetRange, f32,							-1);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetHealth,			CEntityAlive,	conditions().GetHealth, f32,							-1);
@@ -82,7 +82,7 @@ BIND_FUNCTION01	(&object(),	CScriptGameObject::SetMorale,			CEntityAlive,	condit
 BIND_FUNCTION02	(&object(),	CScriptGameObject::SetScriptControl,	CScriptEntity,	SetScriptControl,	bool, pcstr,					bool,					shared_str);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControl,	CScriptEntity,	GetScriptControl,	bool,								false);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetScriptControlName,CScriptEntity,GetScriptControlName, pcstr,					"");
-BIND_FUNCTION10	(&object(),	CScriptGameObject::GetEnemyStrength,	CScriptEntity,	get_enemy_strength,	int,					0);
+BIND_FUNCTION10	(&object(),	CScriptGameObject::GetEnemyStrength,	CScriptEntity,	get_enemy_strength, s32,					0);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::GetActionCount,		CScriptEntity,	GetActionCount,		u32,					0);
 BIND_FUNCTION10	(&object(),	CScriptGameObject::can_script_capture,	CScriptEntity,	can_script_capture,	bool,					0);
 
@@ -269,7 +269,7 @@ void CScriptGameObject::bind_object			(CScriptBinderObject *game_object)
 	object().set_object	(game_object);
 }
 
-void CScriptGameObject::set_previous_point	(int point_index)
+void CScriptGameObject::set_previous_point	(s32 point_index)
 {
 	CCustomMonster		*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster)
@@ -278,7 +278,7 @@ void CScriptGameObject::set_previous_point	(int point_index)
 		monster->movement().patrol().set_previous_point(point_index);
 }
 
-void CScriptGameObject::set_start_point	(int point_index)
+void CScriptGameObject::set_start_point	(s32 point_index)
 {
 	CCustomMonster		*monster = smart_cast<CCustomMonster*>(&object());
 	if (!monster)

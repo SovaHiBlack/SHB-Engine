@@ -190,7 +190,7 @@ void CPHMovementControl::Calculate(const xr_vector<DetailPathManager::STravelPat
 	fVector3 new_position;
 	m_character->IPosition(new_position);
 
-	int index = 0;//nearest point
+	s32 index = 0;//nearest point
 
 	bool  near_line;
 	m_path_size = path.size( );
@@ -207,7 +207,7 @@ void CPHMovementControl::Calculate(const xr_vector<DetailPathManager::STravelPat
 
 		//////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////
-		if ((m_path_size - 1) > (int)travel_point)
+		if ((m_path_size - 1) > (s32)travel_point)
 			dir.sub(path[travel_point + 1].position, path[travel_point].position);
 		else
 			dir.sub(path[travel_point].position, new_position);
@@ -329,11 +329,10 @@ void CPHMovementControl::Calculate(const xr_vector<DetailPathManager::STravelPat
 
 void CPHMovementControl::PathNearestPoint(const xr_vector<DetailPathManager::STravelPathPoint>& path,			//in path
 										  const fVector3& new_position,  //in position
-										  int& index,			//in start from; out nearest
+										  s32& index,			//in start from; out nearest
 										  bool& near_line       //out type
 )
 {
-
 	fVector3 from_first;
 	fVector3 from_second;
 	fVector3 dir;
@@ -343,7 +342,7 @@ void CPHMovementControl::PathNearestPoint(const xr_vector<DetailPathManager::STr
 	fVector3 vtemp;
 	f32 temp;
 
-	for (int i = 0; i < m_path_size - 1; ++i)
+	for (s32 i = 0; i < m_path_size - 1; ++i)
 	{
 		const fVector3& first = path[i].position;
 		const fVector3& second = path[i + 1].position;
@@ -420,7 +419,7 @@ void CPHMovementControl::PathNearestPoint(const xr_vector<DetailPathManager::STr
 
 void CPHMovementControl::PathNearestPointFindUp(const xr_vector<DetailPathManager::STravelPathPoint>& path,			//in path
 												const fVector3& new_position,  //in position
-												int& index,			//in start from; out nearest
+												s32& index,			//in start from; out nearest
 												f32							radius,	//out m_path_distance in exit radius
 												bool& near_line      //out type
 )
@@ -436,7 +435,7 @@ void CPHMovementControl::PathNearestPointFindUp(const xr_vector<DetailPathManage
 	f32 temp;
 	dir.set(0.0f, 0.0f, 1.0f);
 
-	for (int i = m_start_index; i < m_path_size - 1; ++i)
+	for (s32 i = m_start_index; i < m_path_size - 1; ++i)
 	{
 		const fVector3& first = path[i].position;
 		const fVector3& second = path[i + 1].position;
@@ -509,7 +508,7 @@ void CPHMovementControl::PathNearestPointFindUp(const xr_vector<DetailPathManage
 
 void CPHMovementControl::PathNearestPointFindDown(const xr_vector<DetailPathManager::STravelPathPoint>& path,			//in path
 												  const fVector3& new_position,  //in position
-												  int& index,			//in start from; out nearest
+												  s32& index,			//in start from; out nearest
 												  f32							radius,	//out m_path_distance in exit radius
 												  bool& near_line      //out type
 )
@@ -524,8 +523,8 @@ void CPHMovementControl::PathNearestPointFindDown(const xr_vector<DetailPathMana
 	fVector3 vtemp;
 	f32 temp;
 	//(going down)
-	dir.set(0, 0, 1);
-	for (int i = m_start_index; i > 1; --i)
+	dir.set(0.0f, 0.0f, 1.0f);
+	for (s32 i = m_start_index; i > 1; --i)
 	{
 		const fVector3& first = path[i - 1].position;
 		const fVector3& second = path[i].position;
@@ -596,7 +595,7 @@ void CPHMovementControl::PathNearestPointFindDown(const xr_vector<DetailPathMana
 	return;
 }
 
-void		CPHMovementControl::CorrectPathDir(const fVector3& real_path_dir, const xr_vector<DetailPathManager::STravelPathPoint>& path, int index, fVector3& corrected_path_dir)
+void		CPHMovementControl::CorrectPathDir(const fVector3& real_path_dir, const xr_vector<DetailPathManager::STravelPathPoint>& path, s32 index, fVector3& corrected_path_dir)
 {
 	const f32 epsilon = 0.1f;
 	f32 plane_motion = dXZMag(real_path_dir);
@@ -625,7 +624,7 @@ void		CPHMovementControl::CorrectPathDir(const fVector3& real_path_dir, const xr
 	}
 }
 
-void CPHMovementControl::PathDIrLine(const xr_vector<DetailPathManager::STravelPathPoint>& path, int index, f32 distance, f32 precesition, fVector3& dir)
+void CPHMovementControl::PathDIrLine(const xr_vector<DetailPathManager::STravelPathPoint>& path, s32 index, f32 distance, f32 precesition, fVector3& dir)
 {
 	fVector3 to_path_point;
 	fVector3 corrected_path_dir;
@@ -644,7 +643,7 @@ void CPHMovementControl::PathDIrLine(const xr_vector<DetailPathManager::STravelP
 	dir.normalize_safe( );
 }
 
-void CPHMovementControl::PathDIrPoint(const xr_vector<DetailPathManager::STravelPathPoint>& path, int index, f32 distance, f32 precesition, fVector3& dir)
+void CPHMovementControl::PathDIrPoint(const xr_vector<DetailPathManager::STravelPathPoint>& path, s32 index, f32 distance, f32 precesition, fVector3& dir)
 {
 	fVector3 to_path_point;
 	fVector3 corrected_path_dir;

@@ -44,8 +44,7 @@ Matrix idmat =
 };
 
 
-void
-matmult(Matrix A,Matrix B,Matrix C)
+void matmult(Matrix A,Matrix B,Matrix C)
 /*
  * Multiply 4x4 matrices:
  *
@@ -56,7 +55,9 @@ matmult(Matrix A,Matrix B,Matrix C)
  * A *CAN* point to the same matrix as B or C.
  */
 {
-	int         i,j,k;
+	s32         i;
+	s32 j;
+	s32 k;
 	Matrix      a;
 
 
@@ -190,7 +191,7 @@ void vecmult0(f32 y[], f32 x[],Matrix M)
  * y = x * M, with y[3] = 0
  */
 {
-	register int	i,j;
+	register s32	i,j;
 	f32   	Y[3];
 	
 	for (i=0; i<3; i++) {
@@ -210,7 +211,7 @@ void vecmult(f32 y[], f32 x[],Matrix M)
  * y = x * M, with y[3] = 1
  */
 {
-	register	int i,j;
+	register	s32 i,j;
 	f32   	Y[3];
 	
 	for (i=0; i<3; i++) {
@@ -450,7 +451,7 @@ f32 angle_between_vectors(f32 u[3], f32 v[3], f32 n[3])
 		return 0;
 	}
 
-	int sign = (mag > 0) ? 1 : -1;
+	s32 sign = (mag > 0) ? 1 : -1;
 	f32 t = DOT(up,vp);
 	if (t > 1.0)
 	t = 1.0;
@@ -477,9 +478,9 @@ f32 angle_between_vectors(f32 u[3], f32 v[3], f32 n[3])
 //
 void print_matrix(Matrix M)
 {
-	for (int i = 0; i < 4; i++)
+	for (s32 i = 0; i < 4; i++)
 	{
-	for (int j = 0; j < 4; j++)
+	for (s32 j = 0; j < 4; j++)
 		printf(" %lf ", M[i][j]);
 	printf("\n");
 	}
@@ -501,9 +502,9 @@ void print_vector(f32 v[3])
 
 void find_normal_vector(f32 v[3], f32 n[3])
 {
-	int   num_zero;
+	s32   num_zero;
 	f32 min, temp;
-	int   min_i;
+	s32   min_i;
 
 	min_i    = 0;
 	min      = _abs(v[0]);
@@ -950,14 +951,14 @@ void set_translation(Matrix  M, f32 x, f32 y, f32 z)
 	M[3][2] = z;
 }
 
-void set_row(Matrix  M, int row, const f32 v[3])
+void set_row(Matrix  M, s32 row, const f32 v[3])
 {
 	M[row][0] = v[0];
 	M[row][1] = v[1];
 	M[row][2] = v[2];
 }
 
-void get_row(Matrix  M, int row, f32 v[3])
+void get_row(Matrix  M, s32 row, f32 v[3])
 {
 	v[0] = M[row][0];
 	v[1] = M[row][1];

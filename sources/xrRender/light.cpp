@@ -120,7 +120,7 @@ void	light::set_rotation		(const fVector3& D, const fVector3& R)	{
 	fVector3	old_D		= direction;
 	direction.normalize	(D);
 	right.normalize(R);
-	if (!fsimilar(1.f, old_D.dotproduct(D)))	spatial_move	();
+	if (!fsimilar(1.0f, old_D.dotproduct(D)))	spatial_move	();
 }
 
 void	light::spatial_move			()

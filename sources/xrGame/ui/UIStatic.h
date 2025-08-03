@@ -290,7 +290,7 @@ protected:
 	// Обрезка надписи
 	EElipsisPosition	m_ElipsisPos;
 	void Elipsis(const fRect& rect, EElipsisPosition elipsisPos);
-	int	m_iElipsisIndent;
+	s32	m_iElipsisIndent;
 	fRect	m_ClipRect;
 
 private:

@@ -22,15 +22,15 @@ public:
 	virtual 			~CScriptIniFile		();
 			bool		line_exist			(pcstr S, pcstr L);
 			bool		section_exist		(pcstr S);
-			int			r_clsid				(pcstr S, pcstr L);
+			s32			r_clsid				(pcstr S, pcstr L);
 			bool		r_bool				(pcstr S, pcstr L);
-			int			r_token				(pcstr S, pcstr L, const CScriptTokenList &token_list);
+			s32			r_token				(pcstr S, pcstr L, const CScriptTokenList &token_list);
 			pcstr		r_string_wb			(pcstr S, pcstr L);
 			pcstr		update				(pcstr file_name);
 			u32			line_count			(pcstr S);
 			pcstr		r_string			(pcstr S, pcstr L);
 			u32			r_u32				(pcstr S, pcstr L);
-			int			r_s32				(pcstr S, pcstr L);
+			s32			r_s32				(pcstr S, pcstr L);
 			f32		r_float				(pcstr S, pcstr L);
 			fVector3		r_fvector3			(pcstr S, pcstr L);
 			DECLARE_SCRIPT_REGISTER_FUNCTION

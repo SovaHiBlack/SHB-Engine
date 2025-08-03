@@ -102,7 +102,7 @@ public:
 	virtual void	Reload( );
 
 
-	virtual	void	UpdateCL( );
+	virtual void	UpdateCL( );
 	virtual void	net_Destroy( );
 	virtual void			net_Export(CNetPacket& P);
 	virtual void			net_Import(CNetPacket& P);
@@ -133,7 +133,7 @@ public:
 		return (1 == m_iQueueSize);
 	}
 	virtual void	SetQueueSize(s32 size);
-	IC		s32		GetQueueSize( ) const
+	IC s32		GetQueueSize( ) const
 	{
 		return m_iQueueSize;
 	}

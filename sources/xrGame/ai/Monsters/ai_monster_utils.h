@@ -41,7 +41,7 @@ IC void velocity_lerp(f32& _cur, f32 _target, f32 _accel, f32 _dt)
 		if (_cur > _target) _cur = _target;
 	} else {
 		_cur -= _accel * _dt;
-		if (_cur < 0) _cur = 0.f;
+		if (_cur < 0.0f) _cur = 0.0f;
 	}
 }
 

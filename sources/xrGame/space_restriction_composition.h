@@ -14,7 +14,7 @@
 class CSpaceRestrictionBridge;
 class CSpaceRestrictionHolder;
 
-extern int g_restriction_checker;
+extern s32 g_restriction_checker;
 
 class CSpaceRestrictionComposition : public CSpaceRestrictionBase {
 public:

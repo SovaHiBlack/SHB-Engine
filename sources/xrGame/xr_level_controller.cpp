@@ -649,7 +649,7 @@ public:
 
 	virtual void Execute(pcstr args)
 	{
-		for (int idx = 0; idx < bindings_count; ++idx)
+		for (s32 idx = 0; idx < bindings_count; ++idx)
 		{
 			_binding* pbinding = &g_key_bindings[idx];
 			pbinding->m_keyboard[0] = NULL;

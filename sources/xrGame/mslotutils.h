@@ -12,99 +12,104 @@
 
 class CMailSlotMsg
 {
-	char	m_buff[2048];
+	string2048	m_buff;
 	DWORD	m_len;
-	int     m_pos;
-	inline void Read(void* dst, int sz)
+	s32     m_pos;
+	IC void Read(pvoid dst, s32 sz)
 	{
-		_memcpy(dst, (void*)(&m_buff[0] + m_pos), sz);
+		_memcpy(dst, (pvoid)(&m_buff[0] + m_pos), sz);
 		m_pos += sz;
-	};
-	inline void Write(const void* src, int sz)
+	}
+	IC void Write(pcvoid src, s32 sz)
 	{
-		_memcpy((void*)(&m_buff[0] + m_pos), src, sz);
+		_memcpy((pvoid)(&m_buff[0] + m_pos), src, sz);
 		m_pos += sz; m_len = m_pos;
-	};
+	}
 
 public:
 	CMailSlotMsg( )
 	{
 		Reset( );
-	};
-	inline void  Reset( )
+	}
+	IC void  Reset( )
 	{
-		m_len = 0; m_pos = 0; _memset(m_buff, 0, 2048);
-	};
-	inline void  SetBuffer(pcstr b, int sz)
+		m_len = 0;
+		m_pos = 0;
+		_memset(m_buff, 0, 2048);
+	}
+	IC void  SetBuffer(pcstr b, s32 sz)
 	{
-		Reset( ); _memcpy(m_buff, b, sz); m_len = sz; m_pos = 0;
-	};
-	inline void* GetBuffer( )
+		Reset( );
+		_memcpy(m_buff, b, sz);
+		m_len = sz;
+		m_pos = 0;
+	}
+	IC pvoid GetBuffer( )
 	{
 		return m_buff;
-	};
-	inline void	 SetLen(DWORD l)
+	}
+	IC void	 SetLen(DWORD l)
 	{
 		m_len = l;
-	};
-	inline DWORD GetLen( )const
+	}
+	IC DWORD GetLen( ) const
 	{
 		return m_len;
-	};
+	}
 
-	inline BOOL	r_string(pstr dst)
+	IC BOOL	r_string(pstr dst)
 	{
-		int sz;
+		s32 sz;
 		r_int(sz);
 		Read(dst, sz + 1);
 		return TRUE;
-	};
+	}
 
-	inline BOOL	w_string(pcstr dst)
+	IC BOOL	w_string(pcstr dst)
 	{
 		size_t sz = _strlen(dst);
-		w_int((int)sz);
-		Write(dst, (int)(sz + 1)); return TRUE;
-	};
+		w_int((s32)sz);
+		Write(dst, (s32)(sz + 1)); return TRUE;
+	}
 
-	inline BOOL	r_float(f32& dst)
+	IC BOOL	r_float(f32& dst)
 	{
 		Read(&dst, sizeof(f32));
 		return TRUE;
-	};
+	}
 
-	inline BOOL	w_float(const f32 src)
+	IC BOOL	w_float(const f32 src)
 	{
 		Write(&src, sizeof(f32));
 		return TRUE;
-	};
+	}
 
-	inline BOOL	r_int(int& dst)
+	IC BOOL	r_int(s32& dst)
 	{
-		Read(&dst, sizeof(int));
+		Read(&dst, sizeof(s32));
 		return TRUE;
-	};
+	}
 
-	inline BOOL	w_int(const int src)
+	IC BOOL	w_int(const s32 src)
 	{
-		Write(&src, sizeof(int));
+		Write(&src, sizeof(s32));
 		return TRUE;
-	};
+	}
 
-	inline BOOL	r_buff(void* dst, int sz)
+	IC BOOL	r_buff(pvoid dst, s32 sz)
 	{
 		Read(dst, sz);
 		return TRUE;
-	};
+	}
 
-	inline BOOL	w_buff(void* src, int sz)
+	IC BOOL	w_buff(pvoid src, s32 sz)
 	{
 		Write(src, sz);
 		return TRUE;
-	};
+	}
 };
 
-inline HANDLE CreateMailSlotByName(pstr slotName)
+IC HANDLE CreateMailSlotByName(pstr slotName)
 {
 	HANDLE  hSlot = CreateMailslot(slotName,
 								   0,                             // no maximum message size 
@@ -113,7 +118,7 @@ inline HANDLE CreateMailSlotByName(pstr slotName)
 
 	return hSlot;
 }
-inline BOOL CheckExisting(pstr slotName)
+IC BOOL CheckExisting(pstr slotName)
 {
 	HANDLE hFile;
 	BOOL res;
@@ -132,7 +137,7 @@ inline BOOL CheckExisting(pstr slotName)
 
 	return res;
 }
-inline BOOL SendMailslotMessage(pstr slotName, CMailSlotMsg& msg)
+IC BOOL SendMailslotMessage(pstr slotName, CMailSlotMsg& msg)
 {
 	BOOL fResult;
 	HANDLE hFile;
@@ -164,7 +169,7 @@ inline BOOL SendMailslotMessage(pstr slotName, CMailSlotMsg& msg)
 	return fResult;
 }
 
-inline BOOL CheckMailslotMessage(HANDLE hSlot, CMailSlotMsg& msg)
+IC BOOL CheckMailslotMessage(HANDLE hSlot, CMailSlotMsg& msg)
 {
 	DWORD cbMessage, cMessage, cbRead;
 	BOOL fResult;

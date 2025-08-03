@@ -134,7 +134,7 @@ void CPhysicObject::PHObjectPositionUpdate( )
 	}
 }
 
-void CPhysicObject::AddElement(CPhysicsElement* root_e, int id)
+void CPhysicObject::AddElement(CPhysicsElement* root_e, s32 id)
 {
 	CKinematics* K = smart_cast<CKinematics*>(Visual( ));
 

@@ -410,7 +410,11 @@ bool CActor::g_LadderOrient( )
 
 	//leader_norm.y=0.f;
 	f32 mag = leader_norm.magnitude( );
-	if (mag < EPSILON_3) return false;
+	if (mag < EPSILON_3)
+	{
+		return false;
+	}
+
 	leader_norm.div(mag);
 	leader_norm.invert( );
 	fMatrix4x4 M;

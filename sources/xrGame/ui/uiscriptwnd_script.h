@@ -5,9 +5,9 @@ struct CWrapperBase : public T, public luabind::wrap_base {
 	typedef T inherited;
 	typedef CWrapperBase<T>	self_type;
 
-	virtual bool OnKeyboard(int dik, EUIMessages keyboard_action)
+	virtual bool OnKeyboard(s32 dik, EUIMessages keyboard_action)
 	{ return call_member<bool>(this,"OnKeyboard", dik, keyboard_action);}
-	static bool OnKeyboard_static(inherited* ptr, int dik, EUIMessages keyboard_action)
+	static bool OnKeyboard_static(inherited* ptr, s32 dik, EUIMessages keyboard_action)
 	{ return ptr->self_type::inherited::OnKeyboard(dik,keyboard_action );}
 
 	virtual void Update()
@@ -15,9 +15,9 @@ struct CWrapperBase : public T, public luabind::wrap_base {
 	static void Update_static(inherited* ptr)
 	{ ptr->self_type::inherited::Update();}
 
-	virtual bool Dispatch(int cmd, int param)
+	virtual bool Dispatch(s32 cmd, s32 param)
 	{ return call_member<bool>(this,"Dispatch", cmd, param);}
-	static bool Dispatch_static(inherited* ptr, int cmd, int param)
+	static bool Dispatch_static(inherited* ptr, s32 cmd, s32 param)
 	{ return ptr->self_type::inherited::Dispatch(cmd,param);}
 
 };

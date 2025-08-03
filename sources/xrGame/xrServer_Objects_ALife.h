@@ -53,7 +53,7 @@ SERVER_ENTITY_DECLARE_BEGIN(CSE_ALifeSchedulable,IPureSchedulableObject)
 	virtual	void					vfUpdateWeaponAmmo		()											{};
 	virtual	void					vfProcessItems			()											{};
 	virtual	void					vfAttachItems			(ALife::ETakeType		tTakeType = ALife::eTakeTypeAll)		{};
-	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable,int			iGroupIndex, bool bMutualDetection) = 0;
+	virtual	ALife::EMeetActionType	tfGetActionType			(CSE_ALifeSchedulable	*tpALifeSchedulable, s32			iGroupIndex, bool bMutualDetection) = 0;
 	virtual bool					bfActive				()															= 0;
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector		()															= 0;
 #endif
@@ -351,7 +351,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeSmartZone,CSE_ALifeSpaceRestrictor,CSE_ALi
 	virtual bool					bfActive					();
 	virtual	CSE_ALifeItemWeapon		*tpfGetBestWeapon			(ALife::EHitType		&tHitType, f32& fHitPower);
 	virtual CSE_ALifeDynamicObject	*tpfGetBestDetector			();
-	virtual	ALife::EMeetActionType	tfGetActionType				(CSE_ALifeSchedulable	*tpALifeSchedulable,int			iGroupIndex, bool bMutualDetection);
+	virtual	ALife::EMeetActionType	tfGetActionType				(CSE_ALifeSchedulable	*tpALifeSchedulable, s32			iGroupIndex, bool bMutualDetection);
 	// additional functionality
 	virtual bool					enabled						(CSE_ALifeMonsterAbstract *object) const {return false;};
 	virtual f32					suitable					(CSE_ALifeMonsterAbstract *object) const {return 0.f;};
@@ -424,7 +424,7 @@ SERVER_ENTITY_DECLARE_BEGIN2(CSE_ALifeObjectHangingLamp,CSE_ALifeDynamicObjectVi
 	virtual bool					used_ai_locations			() const;
 	virtual bool					match_configuration			() const;
 	virtual bool		__stdcall	validate					();
-	virtual void 		__stdcall	on_render					(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent,int priority, bool strictB2F);
+	virtual void 		__stdcall	on_render					(CDUInterface* du, ISE_AbstractLEOwner* owner, bool bSelected, const fMatrix4x4& parent, s32 priority, bool strictB2F);
 	virtual CSE_Abstract			*cast_abstract			() {return this;}
 SERVER_ENTITY_DECLARE_END
 add_to_type_list(CSE_ALifeObjectHangingLamp)

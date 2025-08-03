@@ -71,9 +71,9 @@ void _AddIconedTalkMessage(pcstr text, pcstr texture_name, const fRect& tex_rect
 		pGame->TalkMenu->AddIconedMessage(text, texture_name, tex_rect, templ_name?templ_name:"iconed_answer_item" );
 }
 
-bool _give_news	(pcstr news, pcstr texture_name, const fRect& tex_rect, int delay, int show_time);
+bool _give_news	(pcstr news, pcstr texture_name, const fRect& tex_rect, s32 delay, s32 show_time);
 
-bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, fRect tex_rect, int delay, int show_time)
+bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, fRect tex_rect, s32 delay, s32 show_time)
 {
 	return _give_news				(news,
 									texture_name, 
@@ -82,7 +82,7 @@ bool  CScriptGameObject::GiveGameNews		(pcstr news, pcstr texture_name, fRect te
 									show_time);
 }
 
-bool _give_news	(pcstr text, pcstr texture_name, const fRect& tex_rect, int delay, int show_time)
+bool _give_news	(pcstr text, pcstr texture_name, const fRect& tex_rect, s32 delay, s32 show_time)
 {
 	SGameNewsData				news_data;
 	news_data.news_text			= text;
@@ -330,7 +330,7 @@ u32 CScriptGameObject::Money	()
 	return pOurOwner->get_money();
 }
 
-void CScriptGameObject::TransferMoney(int money, CScriptGameObject* pForWho)
+void CScriptGameObject::TransferMoney(s32 money, CScriptGameObject* pForWho)
 {
 	if (!pForWho) {
 		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"cannot transfer money for NULL object");
@@ -348,7 +348,7 @@ void CScriptGameObject::TransferMoney(int money, CScriptGameObject* pForWho)
 	pOtherOwner->set_money		(pOtherOwner->get_money() + money, true );
 }
 
-void CScriptGameObject::GiveMoney(int money)
+void CScriptGameObject::GiveMoney(s32 money)
 {
 	CInventoryOwner* pOurOwner		= smart_cast<CInventoryOwner*>(&object()); VERIFY(pOurOwner);
 
@@ -357,7 +357,7 @@ void CScriptGameObject::GiveMoney(int money)
 }
 //////////////////////////////////////////////////////////////////////////
 
-int	CScriptGameObject::GetGoodwill(CScriptGameObject* pToWho)
+s32	CScriptGameObject::GetGoodwill(CScriptGameObject* pToWho)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -368,7 +368,7 @@ int	CScriptGameObject::GetGoodwill(CScriptGameObject* pToWho)
 	return SRelationRegistry().GetGoodwill(pInventoryOwner->object_id(), pToWho->object().ID());
 }
 
-void CScriptGameObject::SetGoodwill(int goodwill, CScriptGameObject* pWhoToSet)
+void CScriptGameObject::SetGoodwill(s32 goodwill, CScriptGameObject* pWhoToSet)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -379,7 +379,7 @@ void CScriptGameObject::SetGoodwill(int goodwill, CScriptGameObject* pWhoToSet)
 	return SRelationRegistry().SetGoodwill(pInventoryOwner->object_id(), pWhoToSet->object().ID(), goodwill);
 }
 
-void CScriptGameObject::ChangeGoodwill(int delta_goodwill, CScriptGameObject* pWhoToSet)
+void CScriptGameObject::ChangeGoodwill(s32 delta_goodwill, CScriptGameObject* pWhoToSet)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -412,7 +412,7 @@ void CScriptGameObject::SetRelation(ALife::ERelationType relation, CScriptGameOb
 
 //////////////////////////////////////////////////////////////////////////
 
-int	CScriptGameObject::GetAttitude			(CScriptGameObject* pToWho)
+s32	CScriptGameObject::GetAttitude			(CScriptGameObject* pToWho)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());VERIFY(pInventoryOwner);
 	CInventoryOwner* pOthersInventoryOwner = smart_cast<CInventoryOwner*>(&pToWho->object());VERIFY(pOthersInventoryOwner);
@@ -447,7 +447,7 @@ pcstr CScriptGameObject::CharacterName			()
 	return pInventoryOwner->Name();
 }
 
-int CScriptGameObject::CharacterRank			()
+s32 CScriptGameObject::CharacterRank			()
 {
 	// rank support for monster
 	CBaseMonster *monster = smart_cast<CBaseMonster*>(&object());
@@ -462,7 +462,7 @@ int CScriptGameObject::CharacterRank			()
 	return monster->Rank();
 }
 
-void CScriptGameObject::SetCharacterRank			(int char_rank)
+void CScriptGameObject::SetCharacterRank			(s32 char_rank)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -473,7 +473,7 @@ void CScriptGameObject::SetCharacterRank			(int char_rank)
 	return pInventoryOwner->SetRank(char_rank);
 }
 
-void CScriptGameObject::ChangeCharacterRank			(int char_rank)
+void CScriptGameObject::ChangeCharacterRank			(s32 char_rank)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -484,7 +484,7 @@ void CScriptGameObject::ChangeCharacterRank			(int char_rank)
 	return pInventoryOwner->ChangeRank(char_rank);
 }
 
-int CScriptGameObject::CharacterReputation			()
+s32 CScriptGameObject::CharacterReputation			()
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -495,7 +495,7 @@ int CScriptGameObject::CharacterReputation			()
 	return pInventoryOwner->Reputation();
 }
 
-void CScriptGameObject::ChangeCharacterReputation		(int char_rep)
+void CScriptGameObject::ChangeCharacterReputation		(s32 char_rep)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 
@@ -517,7 +517,7 @@ pcstr CScriptGameObject::CharacterCommunity	()
 	return *pInventoryOwner->CharacterInfo().Community().id();
 }
 
-void CScriptGameObject::SetCharacterCommunity	(pcstr comm, int squad, int group)
+void CScriptGameObject::SetCharacterCommunity	(pcstr comm, s32 squad, s32 group)
 {
 	CInventoryOwner*	pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
 	CEntity*			entity			= smart_cast<CEntity*>(&object());
@@ -543,7 +543,7 @@ pcstr CScriptGameObject::sound_voice_prefix () const
 	return pInventoryOwner->SpecificCharacter().sound_voice_prefix();
 }
 
-ETaskState CScriptGameObject::GetGameTaskState	(pcstr task_id, int objective_num)
+ETaskState CScriptGameObject::GetGameTaskState	(pcstr task_id, s32 objective_num)
 {
 /*	CActor* pActor = smart_cast<CActor*>(&object());
 	if (!pActor) {
@@ -562,7 +562,7 @@ ETaskState CScriptGameObject::GetGameTaskState	(pcstr task_id, int objective_num
 	return t->m_Objectives[objective_num].TaskState();
 }
 
-void CScriptGameObject::SetGameTaskState	(ETaskState state, pcstr task_id, int objective_num)
+void CScriptGameObject::SetGameTaskState	(ETaskState state, pcstr task_id, s32 objective_num)
 {
 	shared_str shared_name = task_id;
 	Actor()->GameTaskManager().SetTaskState(shared_name, (u16)objective_num, state);
@@ -624,28 +624,16 @@ void construct_restriction_vector(shared_str restrictions, xr_vector<ALife::_OBJ
 	}
 }
 
-void CScriptGameObject::add_restrictions		(pcstr out, pcstr in)
+void CScriptGameObject::add_restrictions(pcstr out, pcstr in)
 {
-	CCustomMonster	*monster = smart_cast<CCustomMonster*>(&object());
-	if (!monster) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CRestrictedObject : cannot access class member add_restrictions!");
+	CCustomMonster* monster = smart_cast<CCustomMonster*>(&object( ));
+	if (!monster)
+	{
+		ai( ).script_engine( ).script_log(ScriptStorage::eLuaMessageTypeError, "CRestrictedObject : cannot access class member add_restrictions!");
 		return;
 	}
-	
-//	xr_vector<ALife::_OBJECT_ID>			temp0;
-//	xr_vector<ALife::_OBJECT_ID>			temp1;
 
-//	construct_restriction_vector			(out,temp0);
-//	construct_restriction_vector			(in,temp1);
-
-//	if (!xr_strcmp(monster->cName(),"mil_freedom_stalker0004")) {
-//		int i = 0;
-//		if (!xr_strcmp(in,"mil_freedom_wall_restrictor")) {
-//			int j = 0;
-//		}
-//	}
-	
-	monster->movement().restrictions().add_restrictions(out,in);
+	monster->movement( ).restrictions( ).add_restrictions(out, in);
 }
 
 void CScriptGameObject::remove_restrictions		(pcstr out, pcstr in)
@@ -776,7 +764,7 @@ void  CScriptGameObject::HideWeapon			()
 	Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL,true);
 }
 
-int	CScriptGameObject::animation_slot			() const
+s32	CScriptGameObject::animation_slot			() const
 {
 	CHudItem		*hud_item = smart_cast<CHudItem*>(&object());
 	if (!hud_item) {

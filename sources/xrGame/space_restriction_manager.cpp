@@ -35,7 +35,7 @@ CSpaceRestrictionManager::~CSpaceRestrictionManager			()
 void show_restriction				(const shared_str &restrictions)
 {
 	string256						temp;
-	for (int i=0, n=_GetItemCount(*restrictions); i<n; ++i)
+	for (s32 i=0, n=_GetItemCount(*restrictions); i<n; ++i)
 		Msg							("     %s",_GetItem(*restrictions,i,temp));
 }
 

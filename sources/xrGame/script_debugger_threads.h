@@ -14,6 +14,6 @@ public:
 				~CDbgScriptThreads			(){};
 	u32			FillFrom					(CScriptProcess*);
 	u32			Fill						();
-	lua_State*	FindScript					(int nthreadID);
+	lua_State*	FindScript					(s32 nthreadID);
 	void		DrawThreads					();
 };

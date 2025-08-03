@@ -9,16 +9,17 @@ class CScriptCallStack
 {
 public:
 	CScriptDebugger*			m_debugger;
-	void GotoStackTraceLevel	(int nLevel);
-	void Add					(pcstr szDesc, pcstr szFile, int nLine);
+	void GotoStackTraceLevel	(s32 nLevel);
+	void Add					(pcstr szDesc, pcstr szFile, s32 nLine);
 	void Clear					();
 	CScriptCallStack			(CScriptDebugger* d);
 	~CScriptCallStack			();
 
-	int		GetLevel			()			{ return m_nCurrentLevel; };
-	void	SetStackTraceLevel	(int);
+	s32		GetLevel			()			{ return m_nCurrentLevel; };
+	void	SetStackTraceLevel	(s32);
+
 protected:
-	int							m_nCurrentLevel;
+	s32							m_nCurrentLevel;
 	xr_vector<u32>				m_levels;
 	xr_vector<u32>				m_lines;
 	xr_vector<SPath>			m_files;

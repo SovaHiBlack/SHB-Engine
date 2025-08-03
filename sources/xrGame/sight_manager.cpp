@@ -359,7 +359,7 @@ bool CSightManager::GetDirectionAngles				(f32& yaw, f32& pitch)
 bool CSightManager::GetDirectionAnglesByPrevPositions(f32& yaw, f32& pitch)
 {
 	fVector3					tDirection;
-	int						i = m_object->ps_Size	();
+	s32						i = m_object->ps_Size	();
 
 	if (i < 2) 
 		return				(false);

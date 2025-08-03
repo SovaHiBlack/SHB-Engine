@@ -64,7 +64,7 @@ void CStalkerActionDead::initialize		()
 	SLOTS::iterator						I = object().inventory().m_slots.begin(), B = I;
 	SLOTS::iterator						E = object().inventory().m_slots.end();
 	for ( ; I != E; ++I) {
-		if ((I - B) == (int)object().inventory().GetActiveSlot())
+		if ((I - B) == (s32)object().inventory().GetActiveSlot())
 			continue;
 
 		if (!(*I).m_pIItem)
@@ -97,7 +97,7 @@ void CStalkerActionDead::execute		()
 		if ((*I).m_pIItem->object().CLS_ID == CLSID_IITEM_BOLT)
 			continue;
 
-		if ((I - B) == (int)object().inventory().GetActiveSlot()) {
+		if ((I - B) == (s32)object().inventory().GetActiveSlot()) {
 			(*I).m_pIItem->SetDropManual	(TRUE);
 			continue;
 		}

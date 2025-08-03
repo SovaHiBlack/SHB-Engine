@@ -57,7 +57,7 @@ void CScriptEngine::unload( )
 	*m_last_no_file = 0;
 }
 
-int CScriptEngine::lua_panic(lua_State* L)
+s32 CScriptEngine::lua_panic(lua_State* L)
 {
 	print_output(L, "PANIC", LUA_ERRRUN);
 	return			(0);
@@ -74,7 +74,7 @@ void CScriptEngine::lua_error(lua_State* L)
 #endif
 }
 
-int  CScriptEngine::lua_pcall_failed(lua_State* L)
+s32 CScriptEngine::lua_pcall_failed(lua_State* L)
 {
 	print_output(L, "", LUA_ERRRUN);
 #if !XRAY_EXCEPTIONS
@@ -128,7 +128,7 @@ void CScriptEngine::lua_hook_call(lua_State* L, lua_Debug* dbg)
 }
 #endif
 
-int auto_load(lua_State* L)
+s32 auto_load(lua_State* L)
 {
 	if ((lua_gettop(L) < 2) || !lua_istable(L, 1) || !lua_isstring(L, 2))
 	{
@@ -314,7 +314,7 @@ void CScriptEngine::register_script_classes( )
 	}
 }
 
-bool CScriptEngine::function_object(pcstr function_to_call, luabind::object& object, int type)
+bool CScriptEngine::function_object(pcstr function_to_call, luabind::object& object, s32 type)
 {
 	if (!xr_strlen(function_to_call))
 		return				(false);

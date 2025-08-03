@@ -98,7 +98,7 @@ enum EGameActions
 struct _keyboard
 {
 	pcstr		key_name;
-	int			dik;
+	s32			dik;
 	xr_string	key_local_name;
 };
 enum _key_group
@@ -140,7 +140,7 @@ struct _binding
 extern _binding g_key_bindings[ ];
 
 bool				is_binded(EGameActions action_id, s32 dik);
-int					get_action_dik(EGameActions action_id);
+s32					get_action_dik(EGameActions action_id);
 EGameActions		get_binded_action(s32 dik);
 
 extern void		CCC_RegisterInput( );

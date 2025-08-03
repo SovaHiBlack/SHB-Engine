@@ -4540,7 +4540,7 @@
     <None Include="config\misc\zone_gravi.ltx">
       <Filter>config\misc\zones</Filter>
     </None>
-    <None Include="config\misc\zone_kampfire.ltx">
+    <None Include="config\misc\zone_campfire.ltx">
       <Filter>config\misc\zones</Filter>
     </None>
     <None Include="config\misc\zone_mincer.ltx">

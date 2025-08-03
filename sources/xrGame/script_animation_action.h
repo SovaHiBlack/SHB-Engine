@@ -17,7 +17,7 @@ public:
 	enum EGoalType {
 		eGoalTypeAnimation = u32(0),
 		eGoalTypeMental,
-		eGoalTypeDummy = u32(-1),
+		eGoalTypeDummy = u32(-1)
 	};
 
 public:
@@ -26,7 +26,7 @@ public:
 	EGoalType								m_tGoalType;
 	bool									m_use_animation_movement_controller;
 	MonsterSpace::EScriptMonsterAnimAction	m_tAnimAction;
-	int										anim_index;
+	s32										anim_index;
 
 public:
 	IC				CScriptAnimationAction	();
@@ -35,7 +35,7 @@ public:
 	// -------------------------------------------------------------------------------------------------
 	// Monster
 	// -------------------------------------------------------------------------------------------------
-	IC				CScriptAnimationAction	(MonsterSpace::EScriptMonsterAnimAction tAnimAction, int index);
+	IC				CScriptAnimationAction	(MonsterSpace::EScriptMonsterAnimAction tAnimAction, s32 index);
 	virtual			~CScriptAnimationAction	();
 	IC		void	SetAnimation			(pcstr caAnimationToPlay);
 	IC		void	SetMentalState			(MonsterSpace::EMentalState tMentalState);
