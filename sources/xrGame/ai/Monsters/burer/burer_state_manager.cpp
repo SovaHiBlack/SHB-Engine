@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "burer.h"
+#include "Burer.h"
 #include "burer_state_manager.h"
 
 #include "../control_animation_base.h"

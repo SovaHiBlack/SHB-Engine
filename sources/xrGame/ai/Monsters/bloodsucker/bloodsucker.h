@@ -7,51 +7,57 @@
 #include "../../../script_export_space.h"
 #include "bloodsucker_alien.h"
 
-class CAI_Bloodsucker : public CBaseMonster, 
-						public CControlledActor {
-
+class CBloodsucker : public CBaseMonster, public CControlledActor
+{
 	typedef		CBaseMonster	inherited;
-	
+
 public:
-							CAI_Bloodsucker	();
-	virtual					~CAI_Bloodsucker();	
+	CBloodsucker( );
+	virtual					~CBloodsucker( );
 
-	virtual void			reinit					();
-	virtual	void			reload					(pcstr section);
+	virtual void			reinit( );
+	virtual void			reload(pcstr section);
 
-	virtual void			UpdateCL				();
-	virtual void			shedule_Update			(u32 dt);
-	virtual void			Die						(CObject* who);
-	virtual BOOL			net_Spawn				(CSE_Abstract* DC);
-	virtual	void			Load					(pcstr section);
+	virtual void			UpdateCL( );
+	virtual void			shedule_Update(u32 dt);
+	virtual void			Die(CObject* who);
+	virtual BOOL			net_Spawn(CSE_Abstract* DC);
+	virtual void			Load(pcstr section);
 
-	virtual	void			CheckSpecParams			(u32 spec_params);
-	virtual bool			ability_invisibility	() {return true;}
-	virtual bool			ability_pitch_correction() {return false;}
-	virtual	void			post_fsm_update			();
-	
-	virtual bool			use_center_to_aim		() const {return true;}
-	virtual bool			check_start_conditions	(ControlCom::EControlType);
-	virtual void			HitEntity				(const CEntity *pEntity, f32 fDamage, f32 impulse, fVector3& dir);
-	
+	virtual void			CheckSpecParams(u32 spec_params);
+	virtual bool			ability_invisibility( )
+	{
+		return true;
+	}
+	virtual bool			ability_pitch_correction( )
+	{
+		return false;
+	}
+	virtual void			post_fsm_update( );
+
+	virtual bool			use_center_to_aim( ) const
+	{
+		return true;
+	}
+	virtual bool			check_start_conditions(ControlCom::EControlType);
+	virtual void			HitEntity(const CEntity* pEntity, f32 fDamage, f32 impulse, fVector3& dir);
+
 	//--------------------------------------------------------------------
 	// Utils
 	//--------------------------------------------------------------------
-			void			move_actor_cam			();
+	void			move_actor_cam( );
 
 	//--------------------------------------------------------------------
 	// Bones
 	//--------------------------------------------------------------------
 private:
-	static	void			BoneCallback			(CBoneInstance *B);
-			void			vfAssignBones			();
-			void			LookDirection			(fVector3 to_dir, f32 bone_turn_speed);
-
+	static	void			BoneCallback(CBoneInstance* B);
+	void			vfAssignBones( );
 
 	bonesManipulation		Bones;
 
-	CBoneInstance			*bone_spine;
-	CBoneInstance			*bone_head;
+	CBoneInstance* bone_spine;
+	CBoneInstance* bone_head;
 
 	//--------------------------------------------------------------------
 	// Invisibility
@@ -61,30 +67,34 @@ private:
 	pcstr					invisible_particle_name;
 
 public:
-			void			start_invisible_predator	();
-			void			stop_invisible_predator		();
+	void			start_invisible_predator( );
+	void			stop_invisible_predator( );
 
 	//--------------------------------------------------------------------
 	// Vampire
 	//--------------------------------------------------------------------
 public:
-
 	u32						m_vampire_min_delay;
 	SAnimationTripleData	anim_triple_vampire;
 
 	SPPInfo					pp_vampire_effector;
 
-			
-			void			ActivateVampireEffector	();
-	IC		bool			WantVampire				() {return (fsimilar(m_vampire_want_value,1.0f) == TRUE);}
-	IC		void			SatisfyVampire			() {m_vampire_want_value = 0.0f;}
+	void			ActivateVampireEffector( );
+	IC		bool			WantVampire( )
+	{
+		return (fsimilar(m_vampire_want_value, 1.0f) == TRUE);
+	}
+	IC		void			SatisfyVampire( )
+	{
+		m_vampire_want_value = 0.0f;
+	}
 
 private:
 	f32					m_vampire_want_value;
 	f32					m_vampire_want_speed;		// load from ltx
 	f32					m_vampire_wound;
-	
-			void			LoadVampirePPEffector	(pcstr section);
+
+	void			LoadVampirePPEffector(pcstr section);
 
 	//--------------------------------------------------------------------
 	// Alien
@@ -93,7 +103,7 @@ public:
 	CBloodsuckerAlien		m_alien_control;
 	u32						m_time_lunge;
 
-			void			set_alien_control		(bool val);
+	void			set_alien_control(bool val);
 
 
 	//--------------------------------------------------------------------
@@ -103,44 +113,46 @@ public:
 	shared_str				m_visual_default;
 	pcstr					m_visual_predator;
 	bool					m_predator;
-			
-			void			predator_start			();
-			void			predator_stop			();
-			void			predator_freeze			();
-			void			predator_unfreeze		();
-	
+
+	void			predator_start( );
+	void			predator_stop( );
+	void			predator_freeze( );
+	void			predator_unfreeze( );
+
 	//--------------------------------------------------------------------
 	// Sounds
 	//--------------------------------------------------------------------
 public:
 
-	enum EBloodsuckerSounds {
-		eAdditionalSounds		= MonsterSound::eMonsterSoundCustom,
+	enum EBloodsuckerSounds
+	{
+		eAdditionalSounds = MonsterSound::eMonsterSoundCustom,
 
-		eVampireGrasp			= eAdditionalSounds | 0,
-		eVampireSucking			= eAdditionalSounds | 1,
-		eVampireHit				= eAdditionalSounds | 2,
-		eVampireStartHunt		= eAdditionalSounds | 3,
+		eVampireGrasp = eAdditionalSounds | 0,
+		eVampireSucking = eAdditionalSounds | 1,
+		eVampireHit = eAdditionalSounds | 2,
+		eVampireStartHunt = eAdditionalSounds | 3,
 
-		eGrowl					= eAdditionalSounds | 5,
+		eGrowl = eAdditionalSounds | 5,
 
-		eChangeVisibility		= eAdditionalSounds | 6,
-		
-		eAlien					= eAdditionalSounds | 7,
+		eChangeVisibility = eAdditionalSounds | 6,
+
+		eAlien = eAdditionalSounds | 7
 	};
 
 	//--------------------------------------------------------------------
 
 public:
-			void	set_manual_control	(bool value) {}
-			void	manual_activate		();
-			void	manual_deactivate	();
+	void	set_manual_control(bool value)
+	{ }
+	void	manual_activate( );
+	void	manual_deactivate( );
 
 #ifdef DEBUG
-	virtual CBaseMonster::SDebugInfo show_debug_info();
+	virtual CBaseMonster::SDebugInfo show_debug_info( );
 
 #ifdef _DEBUG
-			void debug_on_key						(s32 key);
+	void debug_on_key(s32 key);
 #endif
 
 #endif
@@ -148,6 +160,6 @@ public:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_Bloodsucker)
+add_to_type_list(CBloodsucker)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Bloodsucker)
+#define script_type_list save_type_list(CBloodsucker)

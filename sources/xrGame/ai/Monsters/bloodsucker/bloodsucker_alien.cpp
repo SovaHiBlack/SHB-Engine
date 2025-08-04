@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "bloodsucker_alien.h"
-#include "bloodsucker.h"
+#include "Bloodsucker.h"
 #include "../../../level.h"
 #include "../../../Actor.h"
 #include "../../../Inventory.h"
@@ -81,14 +81,14 @@ class CAlienEffector : public CEffectorCam {
 	fVector3	dangle_target;
 	fVector3 dangle_current;
 
-	CAI_Bloodsucker *monster;
+	CBloodsucker*monster;
 
 	f32		m_current_fov;
 	fMatrix4x4		m_prev_eye_matrix;
 	f32		m_inertion;
 
 public:
-					CAlienEffector	(ECamEffectorType type, CAI_Bloodsucker *obj);
+					CAlienEffector	(ECamEffectorType type, CBloodsucker* obj);
 	virtual	BOOL	Process			(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect);
 };
 
@@ -102,7 +102,7 @@ public:
 #define FOV_SPEED			80.0f
 #define	MAX_CAMERA_DIST		3.5f
 
-CAlienEffector::CAlienEffector(ECamEffectorType type, CAI_Bloodsucker *obj) :
+CAlienEffector::CAlienEffector(ECamEffectorType type, CBloodsucker* obj) :
 	inherited(type, flt_max)
 {
 	dangle_target.set		(angle_normalize(Random.randFs(DELTA_ANGLE_X)),angle_normalize(Random.randFs(DELTA_ANGLE_Y)),angle_normalize(Random.randFs(DELTA_ANGLE_Z)));
@@ -196,7 +196,7 @@ CBloodsuckerAlien::~CBloodsuckerAlien()
 {
 }
 
-void CBloodsuckerAlien::init_external(CAI_Bloodsucker *obj)
+void CBloodsuckerAlien::init_external(CBloodsucker* obj)
 {
 	m_object	= obj;
 }

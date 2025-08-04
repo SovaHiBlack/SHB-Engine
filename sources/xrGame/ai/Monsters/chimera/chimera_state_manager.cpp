@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "chimera.h"
+#include "Chimera.h"
 #include "chimera_state_manager.h"
 
 #include "../control_animation_base.h"

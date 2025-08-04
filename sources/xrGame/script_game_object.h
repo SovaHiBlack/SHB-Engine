@@ -235,7 +235,7 @@ public:
 	CScriptGameObject* GetFood( ) const;
 	CScriptGameObject* GetMedikit( ) const;
 
-// CAI_Bloodsucker
+// CBloodsucker
 	void				set_invisible(bool val);
 	bool				get_invisible( );
 	void				set_manual_invisibility(bool val);

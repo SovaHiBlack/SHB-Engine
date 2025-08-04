@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "cat.h"
+#include "Cat.h"
 #include "cat_state_manager.h"
 
 #include "../control_animation_base.h"

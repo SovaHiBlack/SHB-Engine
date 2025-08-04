@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "cat.h"
+#include "Cat.h"
 #include "cat_state_manager.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../monster_velocity_space.h"
@@ -38,7 +38,6 @@ void CCat::Load(pcstr section)
 	SVelocityParam &velocity_steal		= move().get_velocity(MonsterMovement::eVelocityParameterSteal);
 	SVelocityParam &velocity_drag		= move().get_velocity(MonsterMovement::eVelocityParameterDrag);
 
-
 	anim().AddAnim(eAnimStandIdle,		"stand_idle_",			-1, &velocity_none,				PS_STAND);
 	anim().AddAnim(eAnimStandDamaged,	"stand_idle_dmg_",		-1, &velocity_none,				PS_STAND);
 	anim().AddAnim(eAnimStandTurnLeft,	"stand_turn_ls_",		-1, &velocity_turn,		PS_STAND);
@@ -63,7 +62,6 @@ void CCat::Load(pcstr section)
 	anim().AddTransition(PS_LIE,		PS_STAND,	eAnimLieStandUp,		false);
 	anim().AddTransition(PS_STAND,	PS_LIE,		eAnimStandLieDown,		false);
 
-
 	// link action
 	anim().LinkAction(ACT_STAND_IDLE,	eAnimStandIdle);
 	anim().LinkAction(ACT_SIT_IDLE,		eAnimStandIdle);
@@ -82,8 +80,7 @@ void CCat::Load(pcstr section)
 #ifdef DEBUG	
 	anim().accel_chain_test		();
 #endif
-
-	//*****************************************************************************
+	
 }
 
 void CCat::reinit()
@@ -153,4 +150,14 @@ void CCat::HitEntityInJump(const CEntity *pEntity)
 	HitEntity			(pEntity, params.hit_power, params.impulse, params.impulse_dir);
 }
 
+using namespace luabind;
 
+#pragma optimize("s",on)
+void CCat::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CCat, CGameObject>("CCat")
+				.def(constructor<>( ))
+		];
+}

@@ -4,15 +4,14 @@
 #include "../controlled_entity.h"
 #include "../../../script_export_space.h"
 
-class CAI_Boar : public CBaseMonster,
-				 public CControlledEntity<CAI_Boar> {
+class CBoar : public CBaseMonster, 				 public CControlledEntity<CBoar> {
 
 	typedef		CBaseMonster	inherited;
-	typedef		CControlledEntity<CAI_Boar>	CControlled;
+	typedef		CControlledEntity<CBoar>	CControlled;
 
 public:
-					CAI_Boar			();
-	virtual			~CAI_Boar			();	
+	CBoar();
+	virtual			~CBoar();
 
 	virtual void	Load				(pcstr section);
 	virtual BOOL	net_Spawn			(CSE_Abstract* DC);
@@ -37,6 +36,6 @@ public:
 
 };
 
-add_to_type_list(CAI_Boar)
+add_to_type_list(CBoar)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Boar)
+#define script_type_list save_type_list(CBoar)

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "burer.h"
+#include "Burer.h"
 #include "../../../PhysicsShell.h"
 #include "../../../characterphysicssupport.h"
 #include "../../../Actor.h"
@@ -367,7 +367,6 @@ void CBurer::net_Relcase(CObject *O)
 	TTelekinesis::remove_links	(O);
 }
 
-
 #ifdef DEBUG
 CBaseMonster::SDebugInfo CBurer::show_debug_info()
 {
@@ -383,4 +382,14 @@ CBaseMonster::SDebugInfo CBurer::show_debug_info()
 }
 #endif
 
+using namespace luabind;
 
+#pragma optimize("s",on)
+void CBurer::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CBurer, CGameObject>("CBurer")
+				.def(constructor<>( ))
+		];
+}

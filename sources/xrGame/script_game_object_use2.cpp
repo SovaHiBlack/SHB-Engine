@@ -2,19 +2,19 @@
 
 #include "script_game_object.h"
 #include "script_game_object_impl.h"
-#include "ai/monsters/bloodsucker/bloodsucker.h"
+#include "ai/monsters/Bloodsucker/Bloodsucker.h"
 #include "ai/monsters/Zombie/Zombie.h"
 #include "script_sound_info.h"
 #include "script_monster_hit_info.h"
 #include "ai/monsters/monster_home.h"
 
 //////////////////////////////////////////////////////////////////////////
-//CAI_Bloodsucker
+//CBloodsucker
 void CScriptGameObject::set_invisible(bool val)
 {
-	CAI_Bloodsucker		*monster = smart_cast<CAI_Bloodsucker*>(&object());
+	CBloodsucker* monster = smart_cast<CBloodsucker*>(&object());
 	if (!monster) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Bloodsucker : cannot access class member set_invisible!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CBloodsucker : cannot access class member set_invisible!");
 		return;
 	}
 
@@ -23,9 +23,9 @@ void CScriptGameObject::set_invisible(bool val)
 
 void CScriptGameObject::set_manual_invisibility(bool val)
 {
-	CAI_Bloodsucker		*monster = smart_cast<CAI_Bloodsucker*>(&object());
+	CBloodsucker* monster = smart_cast<CBloodsucker*>(&object());
 	if (!monster) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Bloodsucker : cannot access class member set_manual_invisible!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CBloodsucker : cannot access class member set_manual_invisible!");
 		return;
 	}
 
@@ -34,9 +34,9 @@ void CScriptGameObject::set_manual_invisibility(bool val)
 
 void CScriptGameObject::set_alien_control(bool val)
 {
-	CAI_Bloodsucker		*monster = smart_cast<CAI_Bloodsucker*>(&object());
+	CBloodsucker* monster = smart_cast<CBloodsucker*>(&object());
 	if (!monster) {
-		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CAI_Bloodsucker : cannot access class member alien_control_activate!");
+		ai().script_engine().script_log		(ScriptStorage::eLuaMessageTypeError,"CBloodsucker : cannot access class member alien_control_activate!");
 		return;
 	}
 

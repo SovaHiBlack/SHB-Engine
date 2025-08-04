@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "boar.h"
+#include "Boar.h"
 #include "boar_state_manager.h"
 #include "../../../..\XR_3DA\skeletoncustom.h"
 #include "../monster_velocity_space.h"
@@ -7,8 +7,7 @@
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"
 
-
-CAI_Boar::CAI_Boar()
+CBoar::CBoar()
 {
 	StateMan = xr_new<CStateManagerBoar>	(this);
 
@@ -17,14 +16,12 @@ CAI_Boar::CAI_Boar()
 	com_man().add_ability(ControlCom::eControlRunAttack);
 }
 
-CAI_Boar::~CAI_Boar()
+CBoar::~CBoar()
 {
 	xr_delete(StateMan);
 }
 
-
-
-void CAI_Boar::Load(pcstr section)
+void CBoar::Load(pcstr section)
 {
 	inherited::Load	(section);
 
@@ -32,7 +29,6 @@ void CAI_Boar::Load(pcstr section)
 	anim().AddReplacedAnim(&m_bDamaged,			eAnimWalkFwd,	eAnimWalkDamaged);
 	anim().AddReplacedAnim(&m_bRunTurnLeft,		eAnimRun,		eAnimRunTurnLeft);
 	anim().AddReplacedAnim(&m_bRunTurnRight,	eAnimRun,		eAnimRunTurnRight);
-
 
 	anim().accel_load			(section);
 	anim().accel_chain_add		(eAnimWalkFwd,		eAnimRun);
@@ -77,13 +73,11 @@ void CAI_Boar::Load(pcstr section)
 	anim().AddAnim(eAnimRunTurnLeft,	"stand_run_look_left_",	 -1, &velocity_run,	PS_STAND);
 	anim().AddAnim(eAnimRunTurnRight,	"stand_run_look_right_", -1, &velocity_run,	PS_STAND);
 
-
 	// define transitions																											
 	anim().AddTransition(eAnimStandLieDown,	eAnimSleep,		eAnimLieToSleep,		false);										
 	anim().AddTransition(PS_STAND,			eAnimSleep,		eAnimStandLieDown,		true);
 	anim().AddTransition(PS_STAND,			PS_LIE,			eAnimStandLieDown,		false);
 	anim().AddTransition(PS_LIE,				PS_STAND,		eAnimLieStandUp,		false, SKIP_IF_AGGRESSIVE);
-
 
 	// define links from Action to animations
 	anim().LinkAction(ACT_STAND_IDLE,	eAnimStandIdle);
@@ -100,23 +94,22 @@ void CAI_Boar::Load(pcstr section)
 	anim().LinkAction(ACT_STEAL,			eAnimSteal);
 	anim().LinkAction(ACT_LOOK_AROUND,	eAnimLookAround);
 
-#ifdef DEBUG	
+#ifdef DEBUG
 	anim().accel_chain_test		();
 #endif
 
 }
 
-void CAI_Boar::reinit()
+void CBoar::reinit()
 {
 	inherited::reinit();
 	if(CCustomMonster::use_simplified_visual())	return;
 	com_man().add_rotation_jump_data("stand_jump_left_0",0,"stand_jump_right_0",0, PI - PI_DIV_6, SControlRotationJumpData::eStopAtOnce | SControlRotationJumpData::eRotateOnce);
 }
 
-
-void  CAI_Boar::BoneCallback(CBoneInstance *B)
+void CBoar::BoneCallback(CBoneInstance *B)
 {
-	CAI_Boar	*P = static_cast<CAI_Boar*>(B->Callback_Param);
+	CBoar* P = static_cast<CBoar*>(B->Callback_Param);
 
 	if (!P->look_at_enemy) return;
 	
@@ -125,10 +118,12 @@ void  CAI_Boar::BoneCallback(CBoneInstance *B)
 	B->mTransform.mulB_43(M);
 }
 
-BOOL CAI_Boar::net_Spawn (CSE_Abstract* DC) 
+BOOL CBoar::net_Spawn (CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
-		return(FALSE);
+	{
+		return FALSE;
+	}
 	
 	if(!PPhysicsShell())//нельзя ставить колбеки, если создан физ шел - у него стоят свои колбеки!!!
 	{
@@ -136,13 +131,13 @@ BOOL CAI_Boar::net_Spawn (CSE_Abstract* DC)
 		BI.set_callback(bctCustom,BoneCallback,this);
 	}
 	
-	_cur_delta		= _target_delta = 0.f;
+	_cur_delta		= _target_delta = 0.0f;
 	_velocity		= PI;
 	look_at_enemy	= false;
 	return TRUE;
 }
 
-void CAI_Boar::CheckSpecParams(u32 spec_params)
+void CBoar::CheckSpecParams(u32 spec_params)
 {
 	//if ((spec_params & ASP_ROTATION_JUMP) == ASP_ROTATION_JUMP) {
 	//	f32 yaw, pitch;
@@ -177,8 +172,20 @@ void CAI_Boar::CheckSpecParams(u32 spec_params)
 	//}
 }
 
-void CAI_Boar::UpdateCL()
+void CBoar::UpdateCL()
 {
 	inherited::UpdateCL();
 	angle_lerp(_cur_delta, _target_delta, _velocity, client_update_fdelta());
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CBoar::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CBoar, CGameObject>("CBoar")
+				.def(constructor<>( ))
+		];
 }

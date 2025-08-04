@@ -1,5 +1,5 @@
 #pragma once
-#include "controller/controller.h"
+#include "Controller/Controller.h"
 
 class CEntity;
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "controller_direction.h"
-#include "controller.h"
+#include "Controller.h"
 #include "../../../GameObject_space.h"
 
 const f32	_pmt_head_bone_limit	= PI_DIV_6;

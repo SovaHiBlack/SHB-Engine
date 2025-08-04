@@ -40,7 +40,7 @@
 #include "date_time.h"
 #include "characterphysicssupport.h"
 #include "ai/monsters/Snork/Snork.h"
-#include "ai/monsters/burer/burer.h"
+#include "ai/monsters/Burer/Burer.h"
 #include "GamePersistent.h"
 #include "Actor.h"
 #include "alife_simulator.h"

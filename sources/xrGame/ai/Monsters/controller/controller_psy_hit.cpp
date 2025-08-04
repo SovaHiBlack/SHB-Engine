@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "controller_psy_hit.h"
 #include "../BaseMonster/base_monster.h"
-#include "controller.h"
+#include "Controller.h"
 #include "../control_animation_base.h"
 #include "../control_direction_base.h"
 #include "../control_movement_base.h"

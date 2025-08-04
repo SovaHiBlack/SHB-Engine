@@ -1771,9 +1771,6 @@
     <Filter Include="AI\Monsters\monsters\Bloodsucker\Vampire State">
       <UniqueIdentifier>{8d89aca0-78d8-4c94-8738-d241e5322c38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\Bloodsucker\Script">
-      <UniqueIdentifier>{59238c82-6d97-4bb7-a7e5-0bdfa296472c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\Bloodsucker\Alien Feature">
       <UniqueIdentifier>{1485d6e6-2d7c-4112-baa7-e94ccf490444}</UniqueIdentifier>
     </Filter>
@@ -1785,9 +1782,6 @@
     </Filter>
     <Filter Include="AI\Monsters\monsters\Boar">
       <UniqueIdentifier>{5325b014-47d6-47c1-a289-f1482bf2534e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\Boar\Script">
-      <UniqueIdentifier>{2d0895f6-5d58-458e-9614-5fd0340aa532}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\Monsters\monsters\Crow">
       <UniqueIdentifier>{bae2f86d-ce97-48df-ba57-28a30524b478}</UniqueIdentifier>
@@ -1813,9 +1807,6 @@
     <Filter Include="AI\Monsters\monsters\Burer">
       <UniqueIdentifier>{4b928338-38d5-456c-8e48-080098c2ba58}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\Burer\Script">
-      <UniqueIdentifier>{67a5915a-cda3-4fd1-98cd-630ba20bbe7f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\Burer\Attack">
       <UniqueIdentifier>{57e35696-9bc6-4ee6-b9f3-57e0fcc5fc46}</UniqueIdentifier>
     </Filter>
@@ -1830,9 +1821,6 @@
     </Filter>
     <Filter Include="AI\Monsters\monsters\Chimera\state hunting">
       <UniqueIdentifier>{0b7df78c-e9c9-4c8f-872d-6eb3078b7e58}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\Chimera\Script">
-      <UniqueIdentifier>{4bc8a32c-48dc-4ea3-8df9-d2dd6e91b90b}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\Monsters\monsters\PseudoGigant">
       <UniqueIdentifier>{c348c930-d6f5-42e6-8472-1e00203f0d18}</UniqueIdentifier>
@@ -1876,9 +1864,6 @@
     <Filter Include="AI\Monsters\monsters\Controller\State Panic">
       <UniqueIdentifier>{bfd7cedd-a9ea-40b5-a27b-4125defa8038}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\Controller\Script">
-      <UniqueIdentifier>{eec35838-7055-4fb5-b483-0ef698ab5480}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\Controller\Base Controllers">
       <UniqueIdentifier>{35e3f7b1-858a-4ff6-98cd-47222f256391}</UniqueIdentifier>
     </Filter>
@@ -1893,9 +1878,6 @@
     </Filter>
     <Filter Include="AI\Monsters\monsters\Cat">
       <UniqueIdentifier>{1a937b14-e951-49ec-ba01-f2b685c3357e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\Cat\Script">
-      <UniqueIdentifier>{34ac480d-5e46-45f5-9c23-92a659a19060}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\Monsters\monsters\Tushkano">
       <UniqueIdentifier>{c3c61fc8-7618-4010-8ea0-63679effbb08}</UniqueIdentifier>
@@ -3384,7 +3366,7 @@
     <ClInclude Include="ai\Monsters\monster_home.h">
       <Filter>AI\Monsters\common\components\Home</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker.h">
+    <ClInclude Include="ai\Monsters\Bloodsucker\Bloodsucker.h">
       <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.h">
@@ -3444,7 +3426,7 @@
     <ClInclude Include="ai\Monsters\Bloodsucker\bloodsucker_attack_state_inline.h">
       <Filter>AI\Monsters\monsters\Bloodsucker\Attack</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Boar\boar.h">
+    <ClInclude Include="ai\Monsters\Boar\Boar.h">
       <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Boar\boar_state_manager.h">
@@ -3486,7 +3468,7 @@
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_psy_attack_inline.h">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Burer\burer.h">
+    <ClInclude Include="ai\Monsters\Burer\Burer.h">
       <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Burer\burer_state_manager.h">
@@ -3525,7 +3507,7 @@
     <ClInclude Include="ai\Monsters\Burer\burer_fast_gravi.h">
       <Filter>AI\Monsters\monsters\Burer\Fast Gravi</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Chimera\chimera.h">
+    <ClInclude Include="ai\Monsters\Chimera\Chimera.h">
       <Filter>AI\Monsters\monsters\Chimera</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Chimera\chimera_state_manager.h">
@@ -3618,7 +3600,7 @@
     <ClInclude Include="ai\Monsters\Snork\StateManagerSnork.h">
       <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Controller\controller.h">
+    <ClInclude Include="ai\Monsters\Controller\Controller.h">
       <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Controller\controller_psy_aura.h">
@@ -3696,7 +3678,7 @@
     <ClInclude Include="ai\Monsters\Controller\controller_psy_hit.h">
       <Filter>AI\Monsters\monsters\Controller\Psy hit</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Cat\cat.h">
+    <ClInclude Include="ai\Monsters\Cat\Cat.h">
       <Filter>AI\Monsters\monsters\Cat</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Cat\cat_state_manager.h">
@@ -6548,7 +6530,7 @@
     <ClCompile Include="ai\Monsters\monster_home.cpp">
       <Filter>AI\Monsters\common\components\Home</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker.cpp">
+    <ClCompile Include="ai\Monsters\Bloodsucker\Bloodsucker.cpp">
       <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_state_manager.cpp">
@@ -6557,20 +6539,14 @@
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_vampire_effector.cpp">
       <Filter>AI\Monsters\monsters\Bloodsucker</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_script.cpp">
-      <Filter>AI\Monsters\monsters\Bloodsucker\Script</Filter>
-    </ClCompile>
     <ClCompile Include="ai\Monsters\Bloodsucker\bloodsucker_alien.cpp">
       <Filter>AI\Monsters\monsters\Bloodsucker\Alien Feature</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Boar\boar.cpp">
+    <ClCompile Include="ai\Monsters\Boar\Boar.cpp">
       <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Boar\boar_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Boar</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Boar\boar_script.cpp">
-      <Filter>AI\Monsters\monsters\Boar\Script</Filter>
     </ClCompile>
     <ClCompile Include="AI\Crow\ai_crow.cpp">
       <Filter>AI\Monsters\monsters\Crow</Filter>
@@ -6602,26 +6578,20 @@
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_script.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog\Script</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Burer\burer.cpp">
+    <ClCompile Include="ai\Monsters\Burer\Burer.cpp">
       <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\burer_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Burer</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Burer\burer_script.cpp">
-      <Filter>AI\Monsters\monsters\Burer\Script</Filter>
-    </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\burer_fast_gravi.cpp">
       <Filter>AI\Monsters\monsters\Burer\Fast Gravi</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Chimera\chimera.cpp">
+    <ClCompile Include="ai\Monsters\Chimera\Chimera.cpp">
       <Filter>AI\Monsters\monsters\Chimera</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Chimera\chimera_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Chimera</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Chimera\chimera_script.cpp">
-      <Filter>AI\Monsters\monsters\Chimera\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\PseudoGigant\PseudoGigant.cpp">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
@@ -6677,7 +6647,7 @@
     <ClCompile Include="ai\Monsters\Snork\StateManagerSnork.cpp">
       <Filter>AI\Monsters\monsters\Snork</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Controller\controller.cpp">
+    <ClCompile Include="ai\Monsters\Controller\Controller.cpp">
       <Filter>AI\Monsters\monsters\Controller</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_psy_aura.cpp">
@@ -6685,9 +6655,6 @@
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Controller\controller_script.cpp">
-      <Filter>AI\Monsters\monsters\Controller\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Controller\controller_animation.cpp">
       <Filter>AI\Monsters\monsters\Controller\Base Controllers\Animation</Filter>
@@ -6698,14 +6665,11 @@
     <ClCompile Include="ai\Monsters\Controller\controller_psy_hit.cpp">
       <Filter>AI\Monsters\monsters\Controller\Psy hit</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Cat\cat.cpp">
+    <ClCompile Include="ai\Monsters\Cat\Cat.cpp">
       <Filter>AI\Monsters\monsters\Cat</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Cat\cat_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Cat</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Cat\cat_script.cpp">
-      <Filter>AI\Monsters\monsters\Cat\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Tushkano\Tushkano.cpp">
       <Filter>AI\Monsters\monsters\Tushkano</Filter>

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "controller.h"
+#include "Controller.h"
 #include "controller_state_manager.h"
 
 #include "controller_animation.h"

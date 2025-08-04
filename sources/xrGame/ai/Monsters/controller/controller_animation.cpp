@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "controller_animation.h"
-#include "controller.h"
+#include "Controller.h"
 #include "../../../detail_path_manager.h"
 #include "../../../level.h"
 #include "../control_direction_base.h"

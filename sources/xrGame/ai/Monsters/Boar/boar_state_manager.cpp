@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "boar.h"
+#include "Boar.h"
 #include "boar_state_manager.h"
 
 #include "../control_animation_base.h"
@@ -17,17 +17,17 @@
 #include "../states/monster_state_controlled.h"
 #include "../states/monster_state_help_sound.h"
 
-CStateManagerBoar::CStateManagerBoar(CAI_Boar *monster) : inherited(monster)
+CStateManagerBoar::CStateManagerBoar(CBoar* monster) : inherited(monster)
 {
-	add_state(eStateRest,					xr_new<CStateMonsterRest<CAI_Boar> >				(monster));
-	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CAI_Boar> >				(monster));
-	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CAI_Boar> >				(monster));
-	add_state(eStateEat,					xr_new<CStateMonsterEat<CAI_Boar> >					(monster));
-	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CAI_Boar> >(monster));
-	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CAI_Boar> >	(monster));
-	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CAI_Boar> >				(monster));
-	add_state(eStateControlled,				xr_new<CStateMonsterControlled<CAI_Boar> >			(monster));
-	add_state(eStateHearHelpSound,			xr_new<CStateMonsterHearHelpSound<CAI_Boar> >		(monster));
+	add_state(eStateRest,					xr_new<CStateMonsterRest<CBoar> >				(monster));
+	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CBoar> >				(monster));
+	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CBoar> >				(monster));
+	add_state(eStateEat,					xr_new<CStateMonsterEat<CBoar> >					(monster));
+	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CBoar> >(monster));
+	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CBoar> >	(monster));
+	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CBoar> >				(monster));
+	add_state(eStateControlled,				xr_new<CStateMonsterControlled<CBoar> >			(monster));
+	add_state(eStateHearHelpSound,			xr_new<CStateMonsterHearHelpSound<CBoar> >		(monster));
 }
 
 void CStateManagerBoar::execute()

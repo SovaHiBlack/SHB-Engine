@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "bloodsucker_state_manager.h"
-#include "bloodsucker.h"
+#include "Bloodsucker.h"
 
 #include "../control_animation_base.h"
 #include "../control_direction_base.h"
@@ -19,15 +19,15 @@
 
 #include "bloodsucker_attack_state.h"
 
-CStateManagerBloodsucker::CStateManagerBloodsucker(CAI_Bloodsucker *monster) : inherited(monster)
+CStateManagerBloodsucker::CStateManagerBloodsucker(CBloodsucker* monster) : inherited(monster)
 {
-	add_state(eStateRest,				xr_new<CStateMonsterRest<CAI_Bloodsucker> >					(monster));
-	add_state(eStatePanic,				xr_new<CStateMonsterPanic<CAI_Bloodsucker> >				(monster));
-	add_state(eStateAttack,				xr_new<CBloodsuckerStateAttack<CAI_Bloodsucker> >			(monster));
-	add_state(eStateEat,				xr_new<CStateMonsterEat<CAI_Bloodsucker> >					(monster));
-	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CAI_Bloodsucker> >	(monster));
-	add_state(eStateHitted,				xr_new<CStateMonsterHitted<CAI_Bloodsucker> >				(monster));
-	add_state(eStateCustom_Vampire,		xr_new<CStateBloodsuckerVampire<CAI_Bloodsucker> >			(monster));	
+	add_state(eStateRest,				xr_new<CStateMonsterRest<CBloodsucker> >					(monster));
+	add_state(eStatePanic,				xr_new<CStateMonsterPanic<CBloodsucker> >				(monster));
+	add_state(eStateAttack,				xr_new<CBloodsuckerStateAttack<CBloodsucker> >			(monster));
+	add_state(eStateEat,				xr_new<CStateMonsterEat<CBloodsucker> >					(monster));
+	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CBloodsucker> >	(monster));
+	add_state(eStateHitted,				xr_new<CStateMonsterHitted<CBloodsucker> >				(monster));
+	add_state(eStateCustom_Vampire,		xr_new<CStateBloodsuckerVampire<CBloodsucker> >			(monster));
 }
 
 void CStateManagerBloodsucker::execute()

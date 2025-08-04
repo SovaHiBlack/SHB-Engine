@@ -1,12 +1,12 @@
 #pragma once
 
-class CAI_Bloodsucker;
+class CBloodsucker;
 class CAlienEffector;
 class CAlienEffectorPP;
 
 class CBloodsuckerAlien {
 	
-	CAI_Bloodsucker				*m_object;
+	CBloodsucker*				m_object;
 	
 	bool						m_active;
 
@@ -19,7 +19,7 @@ public:
 			CBloodsuckerAlien	();
 			~CBloodsuckerAlien	();
 	
-	void	init_external		(CAI_Bloodsucker *obj);	
+	void	init_external		(CBloodsucker* obj);
 	void	reinit				();
 
 	void	activate			();

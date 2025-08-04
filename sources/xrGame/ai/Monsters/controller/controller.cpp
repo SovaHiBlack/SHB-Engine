@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "controller.h"
+#include "Controller.h"
 #include "controller_state_manager.h"
 #include "../controlled_entity.h"
 #include "../../../Actor.h"
@@ -745,3 +745,15 @@ void CController::debug_on_key(s32 key)
 	}
 }
 #endif
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CController::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CController, CGameObject>("CController")
+				.def(constructor<>( ))
+		];
+}

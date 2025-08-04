@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "burer_fast_gravi.h"
-#include "burer.h"
+#include "Burer.h"
 #include "../control_animation_base.h"
 #include "../control_direction_base.h"
 #include "../control_movement_base.h"

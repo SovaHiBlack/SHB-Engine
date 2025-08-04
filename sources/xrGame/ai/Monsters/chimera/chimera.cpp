@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "chimera.h"
+#include "Chimera.h"
 #include "chimera_state_manager.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../detail_path_manager.h"
@@ -243,4 +243,16 @@ void CChimera::HitEntityInJump(const CEntity *pEntity)
 void CChimera::UpdateCL()
 {
 	inherited::UpdateCL				();
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CChimera::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CChimera, CGameObject>("CChimera")
+				.def(constructor<>( ))
+		];
 }
