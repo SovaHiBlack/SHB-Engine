@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "pseudodog.h"
+#include "PseudoDog.h"
 #include "pseudodog_state_manager.h"
 
 #include "../control_animation_base.h"
@@ -17,15 +17,15 @@
 #include "../states/monster_state_hear_danger_sound.h"
 #include "../states/monster_state_hitted.h"
 
-CStateManagerPseudodog::CStateManagerPseudodog(CAI_PseudoDog *monster) : inherited(monster)
+CStateManagerPseudodog::CStateManagerPseudodog(CPseudoDog* monster) : inherited(monster)
 {
-	add_state(eStateRest,					xr_new<CStateMonsterRest<CAI_PseudoDog> >				(monster));
-	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CAI_PseudoDog> >				(monster));
-	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CAI_PseudoDog> >				(monster));
-	add_state(eStateEat,					xr_new<CStateMonsterEat<CAI_PseudoDog> >				(monster));
-	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CAI_PseudoDog> >(monster));
-	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CAI_PseudoDog> >	(monster));
-	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CAI_PseudoDog> >				(monster));
+	add_state(eStateRest,					xr_new<CStateMonsterRest<CPseudoDog> >				(monster));
+	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CPseudoDog> >				(monster));
+	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CPseudoDog> >				(monster));
+	add_state(eStateEat,					xr_new<CStateMonsterEat<CPseudoDog> >				(monster));
+	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CPseudoDog> >(monster));
+	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CPseudoDog> >	(monster));
+	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CPseudoDog> >				(monster));
 }
 
 #define MIN_ANGRY_TIME		10000

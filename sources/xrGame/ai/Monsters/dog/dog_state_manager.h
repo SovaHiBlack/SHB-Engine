@@ -1,12 +1,12 @@
 #pragma once
 #include "../monster_state_manager.h"
 
-class CAI_Dog;
+class CDog;
 
-class CStateManagerDog : public CMonsterStateManager<CAI_Dog> {
-	typedef CMonsterStateManager<CAI_Dog> inherited;
+class CStateManagerDog : public CMonsterStateManager<CDog> {
+	typedef CMonsterStateManager<CDog> inherited;
 
 public:
-					CStateManagerDog	(CAI_Dog *monster); 
+					CStateManagerDog	(CDog*b monster);
 	virtual void	execute				();
 };

@@ -4,15 +4,14 @@
 #include "../controlled_entity.h"
 #include "../../../script_export_space.h"
 
-class CAI_Dog : public CBaseMonster, 
-				public CControlledEntity<CAI_Dog> {
-	
+class CDog : public CBaseMonster, public CControlledEntity<CDog>
+{
 	typedef		CBaseMonster				inherited;
-	typedef		CControlledEntity<CAI_Dog>	CControlled;
+	typedef		CControlledEntity<CDog>	CControlled;
 
 public:
-					CAI_Dog				();
-	virtual			~CAI_Dog			();	
+	CDog();
+	virtual			~CDog();
 
 	virtual void	Load				(pcstr section);
 	virtual void	reinit				();
@@ -29,6 +28,6 @@ private:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_Dog)
+add_to_type_list(CDog)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_Dog)
+#define script_type_list save_type_list(CDog)

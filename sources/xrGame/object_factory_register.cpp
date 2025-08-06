@@ -19,29 +19,29 @@
 #	include "Actor.h"
 #	include "spectator.h"
 
-#	include "ai/monsters/flesh/flesh.h"
+#	include "ai/monsters/Flesh/Flesh.h"
 #	include "ai/monsters/Chimera/Chimera.h"
-#	include "ai/monsters/dog/dog.h"
+#	include "ai/monsters/Dog/Dog.h"
 #	include "ai/stalker/Stalker.h"
 #	include "ai/monsters/Bloodsucker/Bloodsucker.h"
 #	include "ai/monsters/Boar/Boar.h"
-#	include "ai/monsters/pseudodog/pseudodog.h"
+#	include "ai/monsters/PseudoDog/PseudoDog.h"
 #	include "ai/monsters/pseudodog/psy_dog.h"
 #	include "ai/monsters/Burer/Burer.h"
 #	include "AI/Monsters/PseudoGigant/PseudoGigant.h"
 #	include "ai/monsters/Controller/Controller.h"
-#	include "ai/monsters/poltergeist/poltergeist.h"
+#	include "ai/monsters/Poltergeist/Poltergeist.h"
 #	include "ai/monsters/Zombie/Zombie.h"
-#	include "ai/monsters/fracture/fracture.h"
+#	include "ai/monsters/Fracture/Fracture.h"
 #	include "ai/monsters/Snork/Snork.h"
 #	include "ai/monsters/Cat/Cat.h"
 #	include "ai/monsters/Tushkano/Tushkano.h"
 
-#	include "ai/phantom/phantom.h"
+#	include "ai/Phantom/Phantom.h"
 
 #	include "ai/trader/Trader.h"
 
-#	include "ai/crow/ai_crow.h"
+#	include "ai/Crow/Crow.h"
 
 #	ifdef DEBUG
 #		include "..\XR_3DA\StatGraph.h"
@@ -178,13 +178,13 @@ void CObjectFactory::register_classes	()
 	// client and server entities
 	ADD(CSpectator				,CSE_Spectator					,CLSID_SPECTATOR				,"spectator");
 
-	ADD(CAI_Flesh				,CSE_ALifeMonsterBase			,CLSID_AI_FLESH					,"flesh");
+	ADD(CFlesh,CSE_ALifeMonsterBase			,CLSID_AI_FLESH					,"flesh");
 	ADD(CChimera				,CSE_ALifeMonsterBase			,CLSID_AI_CHIMERA				,"chimera");
-	ADD(CAI_Dog					,CSE_ALifeMonsterBase			,CLSID_AI_DOG_RED				,"dog_red");
+	ADD(CDog,CSE_ALifeMonsterBase			,CLSID_AI_DOG_RED				,"dog_red");
 	ADD(CStalker, CSE_ALifeHumanStalker, CLSID_AI_STALKER, "stalker");
 	ADD(CBloodsucker,CSE_ALifeMonsterBase			,CLSID_AI_BLOODSUCKER			,"bloodsucker");
 	ADD(CBoar,CSE_ALifeMonsterBase			,CLSID_AI_BOAR					,"boar");
-	ADD(CAI_PseudoDog			,CSE_ALifeMonsterBase			,CLSID_AI_DOG_BLACK				,"dog_black");
+	ADD(CPseudoDog,CSE_ALifeMonsterBase			,CLSID_AI_DOG_BLACK				,"dog_black");
 	ADD(CPsyDog					,CSE_ALifeMonsterBase			,CLSID_AI_DOG_PSY				,"psy_dog");
 	ADD(CPsyDogPhantom			,CSE_ALifePsyDogPhantom			,CLSID_AI_DOG_PSY_PHANTOM		,"psy_dog_phantom");
 	ADD(CBurer					,CSE_ALifeMonsterBase			,CLSID_AI_BURER					,"burer");
@@ -202,7 +202,7 @@ void CObjectFactory::register_classes	()
 	// Trader
 	ADD(CTrader					,CSE_ALifeTrader				,CLSID_AI_TRADER				,"trader");
 
-	ADD(CAI_Crow				,CSE_ALifeCreatureCrow			,CLSID_AI_CROW					,"crow");
+	ADD(CCrow,CSE_ALifeCreatureCrow			,CLSID_AI_CROW					,"crow");
 	ADD(CCar					,CSE_ALifeCar					,CLSID_CAR						,"car");
 
 	ADD(CHelicopter				,CSE_ALifeHelicopter			,CLSID_VEHICLE_HELICOPTER		,"helicopter");

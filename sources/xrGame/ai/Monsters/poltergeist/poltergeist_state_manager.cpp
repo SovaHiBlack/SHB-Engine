@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "poltergeist.h"
+#include "Poltergeist.h"
 #include "poltergeist_state_manager.h"
 
 #include "../control_animation_base.h"

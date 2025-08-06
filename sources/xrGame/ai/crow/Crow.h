@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: ai_crow.h
+//	Module 		: Crow.h
 //	Description : AI Behaviour for monster "Crow"
 ////////////////////////////////////////////////////////////////////////////
 
@@ -13,7 +13,7 @@ class CMotionDef;
 class CBlend;
 class CKinematicsAnimated;
 
-class CAI_Crow : public CEntity
+class CCrow : public CEntity
 {
 	typedef	CEntity inherited;
 	enum ECrowStates
@@ -59,10 +59,11 @@ class CAI_Crow : public CEntity
 		void			SetPosition(const fVector3& pos);
 		void			Unload( );
 	};
+
 public:
 	void				OnHitEndPlaying(CBlend* B);
-protected:
 
+protected:
 	struct SCrowAnimations
 	{
 		SAnim		m_idle;
@@ -79,7 +80,8 @@ protected:
 	SCrowSounds		m_Sounds;
 
 	fVector3			vOldPosition;
-	ECrowStates		st_current, st_target;
+	ECrowStates		st_current;
+	ECrowStates			st_target;
 	// parameters block
 	fVector3			vGoalDir;
 	fVector3			vCurrentDir;
@@ -118,8 +120,8 @@ public:
 	u32				o_workload_rframe;
 
 public:
-	CAI_Crow( );
-	virtual			~CAI_Crow( );
+	CCrow( );
+	virtual			~CCrow( );
 	virtual void	Load(pcstr section);
 	void	init( );
 	virtual BOOL	net_Spawn(CSE_Abstract* DC);

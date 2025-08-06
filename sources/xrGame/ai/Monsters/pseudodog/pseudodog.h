@@ -3,7 +3,7 @@
 #include "../BaseMonster/base_monster.h"
 #include "../../../script_export_space.h"
 
-class CAI_PseudoDog : public CBaseMonster {
+class CPseudoDog : public CBaseMonster {
 	typedef		CBaseMonster	inherited;
 
 public:
@@ -20,8 +20,8 @@ public:
 		ePsyAttack				= eAdditionalSounds | 0,
 	};
 public:
-					CAI_PseudoDog		();
-	virtual			~CAI_PseudoDog		();	
+	CPseudoDog();
+	virtual			~CPseudoDog();
 
 	virtual DLL_Pure	*_construct		();
 
@@ -47,6 +47,6 @@ private:
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
 
-add_to_type_list(CAI_PseudoDog)
+add_to_type_list(CPseudoDog)
 #undef script_type_list
-#define script_type_list save_type_list(CAI_PseudoDog)
+#define script_type_list save_type_list(CPseudoDog)

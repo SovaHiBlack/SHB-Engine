@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "poltergeist.h"
+#include "Poltergeist.h"
 #include "poltergeist_state_manager.h"
 #include "../../../characterphysicssupport.h"
 #include "../../../PHMovementControl.h"
@@ -302,3 +302,15 @@ CBaseMonster::SDebugInfo CPoltergeist::show_debug_info()
 	return CBaseMonster::SDebugInfo();
 }
 #endif
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CPoltergeist::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CPoltergeist, CGameObject>("CPoltergeist")
+				.def(constructor<>( ))
+		];
+}

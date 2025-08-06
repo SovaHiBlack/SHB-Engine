@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "phantom.h"
+#include "Phantom.h"
 #include "../../../xrNetServer/net_utils.h"
 #include "../../level.h"
 #include "../../xrServer_Objects_ALife_Monsters.h"

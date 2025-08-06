@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "poltergeist.h"
+#include "Poltergeist.h"
 #include "../../../xrmessages.h"
 #include "../../../ai_object_location.h"
 #include "../../../level_graph.h"

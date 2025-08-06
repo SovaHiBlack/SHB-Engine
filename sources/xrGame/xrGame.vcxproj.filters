@@ -1789,9 +1789,6 @@
     <Filter Include="AI\Monsters\monsters\Flesh">
       <UniqueIdentifier>{99eca90b-9fc8-403f-b358-2d8aff738815}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\Flesh\Script">
-      <UniqueIdentifier>{0b039a8d-ed60-4c64-b46a-eb588fce154b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\PseudoDog">
       <UniqueIdentifier>{981e144e-cc38-422f-bdfa-48697677a82f}</UniqueIdentifier>
     </Filter>
@@ -1831,9 +1828,6 @@
     <Filter Include="AI\Monsters\monsters\Poltergeist">
       <UniqueIdentifier>{df771f1c-29f2-4062-9acf-462938ba82ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\Poltergeist\Script">
-      <UniqueIdentifier>{32f63c7c-dcaf-4e43-bd9f-a110061f2352}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\Poltergeist\Hidden Attack">
       <UniqueIdentifier>{55f125de-770b-45c2-a669-919b1751cc3e}</UniqueIdentifier>
     </Filter>
@@ -1845,9 +1839,6 @@
     </Filter>
     <Filter Include="AI\Monsters\monsters\Fracture">
       <UniqueIdentifier>{cf68a6b3-ad6f-46d1-9966-026556bf75a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\Fracture\Script">
-      <UniqueIdentifier>{c56ce544-fcac-4d29-ba08-216d046219ec}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\Monsters\monsters\Snork">
       <UniqueIdentifier>{99ba172a-00fa-4be4-b0a0-57bfd7955af5}</UniqueIdentifier>
@@ -1887,9 +1878,6 @@
     </Filter>
     <Filter Include="AI\Monsters\monsters\Dog">
       <UniqueIdentifier>{ee758c91-b081-460c-a5e3-64327d77d2f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\Dog\Script">
-      <UniqueIdentifier>{b414470d-525d-400a-a5e6-28e0b119dde1}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\Monsters\humans">
       <UniqueIdentifier>{075dd244-a74c-4fa9-9b27-cfb1340701ea}</UniqueIdentifier>
@@ -3432,16 +3420,16 @@
     <ClInclude Include="ai\Monsters\Boar\boar_state_manager.h">
       <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClInclude>
-    <ClInclude Include="AI\Crow\ai_crow.h">
+    <ClInclude Include="AI\Crow\Crow.h">
       <Filter>AI\Monsters\monsters\Crow</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Flesh\flesh.h">
+    <ClInclude Include="ai\Monsters\Flesh\Flesh.h">
       <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Flesh\flesh_state_manager.h">
       <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Pseudodog\pseudodog.h">
+    <ClInclude Include="ai\Monsters\Pseudodog\PseudoDog.h">
       <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\pseudodog_state_manager.h">
@@ -3564,7 +3552,7 @@
     <ClInclude Include="ai\Monsters\PseudoGigant\pseudogigant_state_manager.h">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Poltergeist\poltergeist.h">
+    <ClInclude Include="ai\Monsters\Poltergeist\Poltergeist.h">
       <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_movement.h">
@@ -3588,7 +3576,7 @@
     <ClInclude Include="ai\Monsters\Zombie\StateManagerZombie.h">
       <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Fracture\fracture.h">
+    <ClInclude Include="ai\Monsters\Fracture\Fracture.h">
       <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Fracture\fracture_state_manager.h">
@@ -3690,10 +3678,10 @@
     <ClInclude Include="ai\Monsters\Tushkano\StateManagerTushkano.h">
       <Filter>AI\Monsters\monsters\Tushkano</Filter>
     </ClInclude>
-    <ClInclude Include="ai\phantom\phantom.h">
+    <ClInclude Include="ai\phantom\Phantom.h">
       <Filter>AI\Monsters\monsters\Phantom</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Dog\dog.h">
+    <ClInclude Include="ai\Monsters\Dog\Dog.h">
       <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Dog\dog_state_manager.h">
@@ -6548,19 +6536,16 @@
     <ClCompile Include="ai\Monsters\Boar\boar_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Boar</Filter>
     </ClCompile>
-    <ClCompile Include="AI\Crow\ai_crow.cpp">
+    <ClCompile Include="AI\Crow\Crow.cpp">
       <Filter>AI\Monsters\monsters\Crow</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Flesh\flesh.cpp">
+    <ClCompile Include="ai\Monsters\Flesh\Flesh.cpp">
       <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Flesh\flesh_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Flesh</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Flesh\flesh_script.cpp">
-      <Filter>AI\Monsters\monsters\Flesh\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Pseudodog\pseudodog.cpp">
+    <ClCompile Include="ai\Monsters\Pseudodog\PseudoDog.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_state_manager.cpp">
@@ -6605,7 +6590,7 @@
     <ClCompile Include="ai\Monsters\PseudoGigant\pseudogigant_script.cpp">
       <Filter>AI\Monsters\monsters\PseudoGigant\Script</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Poltergeist\poltergeist.cpp">
+    <ClCompile Include="ai\Monsters\Poltergeist\Poltergeist.cpp">
       <Filter>AI\Monsters\monsters\Poltergeist</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_movement.cpp">
@@ -6613,9 +6598,6 @@
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Poltergeist</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_script.cpp">
-      <Filter>AI\Monsters\monsters\Poltergeist\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_ability.cpp">
       <Filter>AI\Monsters\monsters\Poltergeist\Abilities</Filter>
@@ -6632,14 +6614,11 @@
     <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp">
       <Filter>AI\Monsters\monsters\Zombie</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Fracture\fracture.cpp">
+    <ClCompile Include="ai\Monsters\Fracture\Fracture.cpp">
       <Filter>AI\Monsters\monsters\Fracture</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Fracture\fracture_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Fracture</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Fracture\fracture_script.cpp">
-      <Filter>AI\Monsters\monsters\Fracture\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Snork\Snork.cpp">
       <Filter>AI\Monsters\monsters\Snork</Filter>
@@ -6677,17 +6656,14 @@
     <ClCompile Include="ai\Monsters\Tushkano\StateManagerTushkano.cpp">
       <Filter>AI\Monsters\monsters\Tushkano</Filter>
     </ClCompile>
-    <ClCompile Include="ai\phantom\phantom.cpp">
+    <ClCompile Include="ai\phantom\Phantom.cpp">
       <Filter>AI\Monsters\monsters\Phantom</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Dog\dog.cpp">
+    <ClCompile Include="ai\Monsters\Dog\Dog.cpp">
       <Filter>AI\Monsters\monsters\Dog</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Dog\dog_state_manager.cpp">
       <Filter>AI\Monsters\monsters\Dog</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Dog\dog_script.cpp">
-      <Filter>AI\Monsters\monsters\Dog\Script</Filter>
     </ClCompile>
     <ClCompile Include="Ai\Trader\Trader.cpp">
       <Filter>AI\Monsters\humans\Trader</Filter>

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "fracture.h"
+#include "Fracture.h"
 #include "fracture_state_manager.h"
 #include "../monster_velocity_space.h"
 #include "../control_animation_base.h"
@@ -87,4 +87,16 @@ void CFracture::CheckSpecParams(u32 spec_params)
 		anim().SetCurAnim(eAnimLookAround);
 		return;
 	}
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CFracture::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CFracture, CGameObject>("CFracture")
+				.def(constructor<>( ))
+		];
 }

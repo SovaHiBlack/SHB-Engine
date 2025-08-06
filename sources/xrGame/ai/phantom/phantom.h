@@ -6,9 +6,10 @@
 
 class CParticlesObject;
 
-class CPhantom : public CEntity {
-	
+class CPhantom : public CEntity
+{
 	typedef	CEntity inherited;
+
 private:
 	enum EState{
 		stInvalid		= -2,
@@ -31,6 +32,7 @@ private:
 	void				UpdateFlyMedia				();
 
 	fastdelegate::FastDelegate0<>					UpdateEvent;
+
 private:
 	struct SStateData{
 		shared_str		particles;
@@ -38,9 +40,11 @@ private:
 		MotionID		motion;
 	};
 	SStateData			m_state_data[stCount];
+
 private:
 	CParticlesObject*	m_fly_particles;
 	static void			animation_end_callback	(CBlend* B);
+
 private:
 	CObject*			m_enemy;
 

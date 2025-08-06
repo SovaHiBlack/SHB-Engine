@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "flesh.h"
+#include "Flesh.h"
 #include "flesh_state_manager.h"
 
 #include "../control_animation_base.h"
@@ -17,17 +17,17 @@
 #include "../states/monster_state_controlled.h"
 #include "../states/monster_state_help_sound.h"
 
-CStateManagerFlesh::CStateManagerFlesh(CAI_Flesh *monster) : inherited(monster)
+CStateManagerFlesh::CStateManagerFlesh(CFlesh* monster) : inherited(monster)
 {
-	add_state(eStateRest,					xr_new<CStateMonsterRest<CAI_Flesh> >				(monster));
-	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CAI_Flesh> >				(monster));
-	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CAI_Flesh> >				(monster));
-	add_state(eStateEat,					xr_new<CStateMonsterEat<CAI_Flesh> >				(monster));
-	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CAI_Flesh> >(monster));
-	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CAI_Flesh> >	(monster));
-	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CAI_Flesh> >				(monster));
-	add_state(eStateControlled,				xr_new<CStateMonsterControlled<CAI_Flesh> >			(monster));
-	add_state(eStateHearHelpSound,			xr_new<CStateMonsterHearHelpSound<CAI_Flesh> >		(monster));
+	add_state(eStateRest,					xr_new<CStateMonsterRest<CFlesh> >				(monster));
+	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CFlesh> >				(monster));
+	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CFlesh> >				(monster));
+	add_state(eStateEat,					xr_new<CStateMonsterEat<CFlesh> >				(monster));
+	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CFlesh> >(monster));
+	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CFlesh> >	(monster));
+	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CFlesh> >				(monster));
+	add_state(eStateControlled,				xr_new<CStateMonsterControlled<CFlesh> >			(monster));
+	add_state(eStateHearHelpSound,			xr_new<CStateMonsterHearHelpSound<CFlesh> >		(monster));
 }
 
 void CStateManagerFlesh::execute()

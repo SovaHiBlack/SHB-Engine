@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "fracture.h"
+#include "Fracture.h"
 #include "fracture_state_manager.h"
 
 #include "../control_animation_base.h"

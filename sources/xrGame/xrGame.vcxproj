@@ -217,7 +217,7 @@
     <ClInclude Include="agent_memory_manager_inline.h" />
     <ClInclude Include="AI\ai_monsters_anims.h" />
     <ClInclude Include="AI\ai_monsters_misc.h" />
-    <ClInclude Include="AI\Crow\ai_crow.h" />
+    <ClInclude Include="AI\Crow\Crow.h" />
     <ClInclude Include="ai\Monsters\ai_monster_bones.h" />
     <ClInclude Include="ai\Monsters\ai_monster_defs.h" />
     <ClInclude Include="ai\Monsters\ai_monster_effector.h" />
@@ -333,12 +333,12 @@
     <ClInclude Include="ai\Monsters\control_sequencer.h" />
     <ClInclude Include="ai\Monsters\control_threaten.h" />
     <ClInclude Include="ai\Monsters\corpse_cover.h" />
-    <ClInclude Include="ai\Monsters\Dog\dog.h" />
+    <ClInclude Include="ai\Monsters\Dog\Dog.h" />
     <ClInclude Include="ai\Monsters\Dog\dog_state_manager.h" />
     <ClInclude Include="ai\Monsters\energy_holder.h" />
-    <ClInclude Include="ai\Monsters\Flesh\flesh.h" />
+    <ClInclude Include="ai\Monsters\Flesh\Flesh.h" />
     <ClInclude Include="ai\Monsters\Flesh\flesh_state_manager.h" />
-    <ClInclude Include="ai\Monsters\Fracture\fracture.h" />
+    <ClInclude Include="ai\Monsters\Fracture\Fracture.h" />
     <ClInclude Include="ai\Monsters\Fracture\fracture_state_manager.h" />
     <ClInclude Include="ai\Monsters\invisibility.h" />
     <ClInclude Include="ai\Monsters\melee_checker.h" />
@@ -359,13 +359,13 @@
     <ClInclude Include="ai\Monsters\monster_state_manager.h" />
     <ClInclude Include="ai\Monsters\monster_state_manager_inline.h" />
     <ClInclude Include="ai\Monsters\monster_velocity_space.h" />
-    <ClInclude Include="ai\Monsters\Poltergeist\poltergeist.h" />
+    <ClInclude Include="ai\Monsters\Poltergeist\Poltergeist.h" />
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_movement.h" />
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_attack_hidden.h" />
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_attack_hidden_inline.h" />
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_manager.h" />
     <ClInclude Include="ai\Monsters\Poltergeist\poltergeist_state_rest.h" />
-    <ClInclude Include="ai\Monsters\Pseudodog\pseudodog.h" />
+    <ClInclude Include="ai\Monsters\Pseudodog\PseudoDog.h" />
     <ClInclude Include="ai\Monsters\Pseudodog\pseudodog_state_manager.h" />
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog.h" />
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_aura.h" />
@@ -494,7 +494,7 @@
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun.h" />
     <ClInclude Include="ai\Monsters\Zombie\StateZombieAttackRun_inline.h" />
     <ClInclude Include="ai\Monsters\Zombie\StateManagerZombie.h" />
-    <ClInclude Include="ai\phantom\phantom.h" />
+    <ClInclude Include="ai\phantom\Phantom.h" />
     <ClInclude Include="Ai\Stalker\Stalker.h" />
     <ClInclude Include="ai\stalker\ai_stalker_impl.h" />
     <ClInclude Include="ai\stalker\ai_stalker_inline.h" />
@@ -1503,7 +1503,7 @@
     <ClCompile Include="agent_member_manager.cpp" />
     <ClCompile Include="agent_memory_manager.cpp" />
     <ClCompile Include="AI\ai_monsters_misc.cpp" />
-    <ClCompile Include="AI\Crow\ai_crow.cpp" />
+    <ClCompile Include="AI\Crow\Crow.cpp" />
     <ClCompile Include="ai\Monsters\ai_monster_bones.cpp" />
     <ClCompile Include="ai\Monsters\ai_monster_effector.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
@@ -1571,15 +1571,12 @@
     <ClCompile Include="ai\Monsters\control_sequencer.cpp" />
     <ClCompile Include="ai\Monsters\control_threaten.cpp" />
     <ClCompile Include="ai\Monsters\corpse_cover.cpp" />
-    <ClCompile Include="ai\Monsters\Dog\dog.cpp" />
-    <ClCompile Include="ai\Monsters\Dog\dog_script.cpp" />
+    <ClCompile Include="ai\Monsters\Dog\Dog.cpp" />
     <ClCompile Include="ai\Monsters\Dog\dog_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\energy_holder.cpp" />
-    <ClCompile Include="ai\Monsters\Flesh\flesh.cpp" />
-    <ClCompile Include="ai\Monsters\Flesh\flesh_script.cpp" />
+    <ClCompile Include="ai\Monsters\Flesh\Flesh.cpp" />
     <ClCompile Include="ai\Monsters\Flesh\flesh_state_manager.cpp" />
-    <ClCompile Include="ai\Monsters\Fracture\fracture.cpp" />
-    <ClCompile Include="ai\Monsters\Fracture\fracture_script.cpp" />
+    <ClCompile Include="ai\Monsters\Fracture\Fracture.cpp" />
     <ClCompile Include="ai\Monsters\Fracture\fracture_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\invisibility.cpp" />
     <ClCompile Include="ai\Monsters\melee_checker.cpp" />
@@ -1593,14 +1590,13 @@
     <ClCompile Include="ai\Monsters\monster_home.cpp" />
     <ClCompile Include="ai\Monsters\monster_morale.cpp" />
     <ClCompile Include="ai\Monsters\monster_sound_memory.cpp" />
-    <ClCompile Include="ai\Monsters\Poltergeist\poltergeist.cpp" />
+    <ClCompile Include="ai\Monsters\Poltergeist\Poltergeist.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_ability.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_flame_thrower.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_movement.cpp" />
-    <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_script.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\Poltergeist\poltergeist_telekinesis.cpp" />
-    <ClCompile Include="ai\Monsters\Pseudodog\pseudodog.cpp" />
+    <ClCompile Include="ai\Monsters\Pseudodog\PseudoDog.cpp" />
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_script.cpp" />
     <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_state_manager.cpp" />
     <ClCompile Include="ai\Monsters\Pseudodog\psy_dog.cpp" />
@@ -1620,7 +1616,7 @@
     <ClCompile Include="ai\Monsters\Tushkano\StateManagerTushkano.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\Zombie.cpp" />
     <ClCompile Include="ai\Monsters\Zombie\StateManagerZombie.cpp" />
-    <ClCompile Include="ai\phantom\phantom.cpp" />
+    <ClCompile Include="ai\phantom\Phantom.cpp" />
     <ClCompile Include="Ai\Stalker\Stalker.cpp">
       <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ShowIncludes>
     </ClCompile>

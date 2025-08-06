@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "dog.h"
+#include "Dog.h"
 #include "dog_state_manager.h"
 #include "../monster_velocity_space.h"
 #include "../control_animation_base.h"
@@ -9,7 +9,7 @@
 #	include <dinput.h>
 #endif
 
-CAI_Dog::CAI_Dog()
+CDog::CDog()
 {
 	StateMan = xr_new<CStateManagerDog>(this);
 	
@@ -19,12 +19,12 @@ CAI_Dog::CAI_Dog()
 	com_man().add_ability(ControlCom::eControlMeleeJump);
 }
 
-CAI_Dog::~CAI_Dog()
+CDog::~CDog()
 {
 	xr_delete(StateMan);
 }
 
-void CAI_Dog::Load(pcstr section)
+void CDog::Load(pcstr section)
 {
 	inherited::Load	(section);
 	
@@ -112,7 +112,7 @@ void CAI_Dog::Load(pcstr section)
 
 }
 
-void CAI_Dog::reinit()
+void CDog::reinit()
 {
 	inherited::reinit();
 
@@ -123,7 +123,7 @@ void CAI_Dog::reinit()
 	com_man().add_melee_jump_data("5","jump_right_0");
 }
 
-void CAI_Dog::CheckSpecParams(u32 spec_params)
+void CDog::CheckSpecParams(u32 spec_params)
 {
 	if ((spec_params & ASP_CHECK_CORPSE) == ASP_CHECK_CORPSE) {
 		com_man().seq_run(anim().get_motion_id(eAnimCheckCorpse));
@@ -135,7 +135,7 @@ void CAI_Dog::CheckSpecParams(u32 spec_params)
 }
 
 #ifdef _DEBUG
-void CAI_Dog::debug_on_key(s32 key)
+void CDog::debug_on_key(s32 key)
 {
 	CKinematicsAnimated *skel = smart_cast<CKinematicsAnimated *>(Visual());
 
@@ -159,3 +159,15 @@ void CAI_Dog::debug_on_key(s32 key)
 	}
 }
 #endif
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CDog::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CDog, CGameObject>("CDog")
+				.def(constructor<>( ))
+		];
+}

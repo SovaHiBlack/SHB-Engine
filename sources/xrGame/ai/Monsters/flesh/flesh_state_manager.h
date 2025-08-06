@@ -1,13 +1,13 @@
 #pragma once
 #include "../monster_state_manager.h"
 
-class CAI_Flesh;
+class CFlesh;
 
-class CStateManagerFlesh : public CMonsterStateManager<CAI_Flesh> {
-	typedef CMonsterStateManager<CAI_Flesh> inherited;
+class CStateManagerFlesh : public CMonsterStateManager<CFlesh> {
+	typedef CMonsterStateManager<CFlesh> inherited;
 
 public:
 
-					CStateManagerFlesh	(CAI_Flesh *monster); 
+					CStateManagerFlesh	(CFlesh* monster);
 	virtual void	execute				();
 };

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "dog.h"
+#include "Dog.h"
 #include "dog_state_manager.h"
 #include "../control_animation_base.h"
 #include "../control_direction_base.h"
@@ -15,17 +15,17 @@
 #include "../states/monster_state_controlled.h"
 #include "../states/monster_state_help_sound.h"
 
-CStateManagerDog::CStateManagerDog(CAI_Dog *monster) : inherited(monster)
+CStateManagerDog::CStateManagerDog(CDog* monster) : inherited(monster)
 {
-	add_state(eStateRest,					xr_new<CStateMonsterRest<CAI_Dog> >					(monster));
-	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CAI_Dog> >				(monster));
-	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CAI_Dog> >				(monster));
-	add_state(eStateEat,					xr_new<CStateMonsterEat<CAI_Dog> >					(monster));
-	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CAI_Dog> >	(monster));
-	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CAI_Dog> >	(monster));
-	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CAI_Dog> >				(monster));
-	add_state(eStateControlled,				xr_new<CStateMonsterControlled<CAI_Dog> >			(monster));
-	add_state(eStateHearHelpSound,			xr_new<CStateMonsterHearHelpSound<CAI_Dog> >		(monster));
+	add_state(eStateRest,					xr_new<CStateMonsterRest<CDog> >					(monster));
+	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CDog> >				(monster));
+	add_state(eStateAttack,					xr_new<CStateMonsterAttack<CDog> >				(monster));
+	add_state(eStateEat,					xr_new<CStateMonsterEat<CDog> >					(monster));
+	add_state(eStateHearInterestingSound,	xr_new<CStateMonsterHearInterestingSound<CDog> >	(monster));
+	add_state(eStateHearDangerousSound,		xr_new<CStateMonsterHearDangerousSound<CDog> >	(monster));
+	add_state(eStateHitted,					xr_new<CStateMonsterHitted<CDog> >				(monster));
+	add_state(eStateControlled,				xr_new<CStateMonsterControlled<CDog> >			(monster));
+	add_state(eStateHearHelpSound,			xr_new<CStateMonsterHearHelpSound<CDog> >		(monster));
 }
 
 void CStateManagerDog::execute()

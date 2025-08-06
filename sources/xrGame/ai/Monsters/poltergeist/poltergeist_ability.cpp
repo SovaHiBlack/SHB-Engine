@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "poltergeist.h"
+#include "Poltergeist.h"
 #include "../../../PhysicsShell.h"
 #include "../../../level.h"
 #include "../../../LevelDebug.h"

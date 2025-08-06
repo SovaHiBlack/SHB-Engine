@@ -12,9 +12,9 @@
 
 #include "psy_dog_state_psy_attack.h"
 
-CStateManagerPsyDog::CStateManagerPsyDog(CAI_PseudoDog *monster) : inherited(monster)
+CStateManagerPsyDog::CStateManagerPsyDog(CPseudoDog* monster) : inherited(monster)
 {
-	add_state(eStateAttack_Psy,	 xr_new<CStatePsyDogPsyAttack<CAI_PseudoDog> >	 (monster));
+	add_state(eStateAttack_Psy,	 xr_new<CStatePsyDogPsyAttack<CPseudoDog> >	 (monster));
 }
 
 void CStateManagerPsyDog::execute()

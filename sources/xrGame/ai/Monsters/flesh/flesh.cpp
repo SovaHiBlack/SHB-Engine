@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "flesh.h"
+#include "Flesh.h"
 #include "../../../AISpace.h"
 #include "flesh_state_manager.h"
 #include "../monster_velocity_space.h"
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"
 
-CAI_Flesh::CAI_Flesh()
+CFlesh::CFlesh()
 {
 	StateMan = xr_new<CStateManagerFlesh>(this);
 	
@@ -15,12 +15,12 @@ CAI_Flesh::CAI_Flesh()
 	CControlled::init_external(this);
 }
 
-CAI_Flesh::~CAI_Flesh()
+CFlesh::~CFlesh()
 {
 	xr_delete(StateMan);
 }
 
-BOOL CAI_Flesh::net_Spawn (CSE_Abstract* DC) 
+BOOL CFlesh::net_Spawn (CSE_Abstract* DC)
 {
 	if (!inherited::net_Spawn(DC))
 		return(FALSE);
@@ -28,7 +28,7 @@ BOOL CAI_Flesh::net_Spawn (CSE_Abstract* DC)
 	return TRUE;
 }
 
-void CAI_Flesh::Load(pcstr section)
+void CFlesh::Load(pcstr section)
 {
 	inherited::Load(section);
 
@@ -105,18 +105,27 @@ void CAI_Flesh::Load(pcstr section)
 
 // возвращает true, если после выполнения этой функции необходимо прервать обработку
 // т.е. если активирована последовательность
-void CAI_Flesh::CheckSpecParams(u32 spec_params)
+void CFlesh::CheckSpecParams(u32 spec_params)
 {
-	if ((spec_params & ASP_DRAG_CORPSE) == 	ASP_DRAG_CORPSE) anim().SetCurAnim(eAnimDragCorpse);
-
-	if ((spec_params & ASP_CHECK_CORPSE) == ASP_CHECK_CORPSE) {
-		com_man().seq_run(anim().get_motion_id(eAnimCheckCorpse));	}
-
-	if ((spec_params & ASP_BACK_ATTACK) == ASP_BACK_ATTACK) {
-		com_man().seq_run(anim().get_motion_id(eAnimAttackFromBack));
+	if ((spec_params & ASP_DRAG_CORPSE) == ASP_DRAG_CORPSE)
+	{
+		anim( ).SetCurAnim(eAnimDragCorpse);
 	}
 
-	if ((spec_params & ASP_THREATEN) == ASP_THREATEN) anim().SetCurAnim(eAnimThreaten);
+	if ((spec_params & ASP_CHECK_CORPSE) == ASP_CHECK_CORPSE)
+	{
+		com_man( ).seq_run(anim( ).get_motion_id(eAnimCheckCorpse));
+	}
+
+	if ((spec_params & ASP_BACK_ATTACK) == ASP_BACK_ATTACK)
+	{
+		com_man( ).seq_run(anim( ).get_motion_id(eAnimAttackFromBack));
+	}
+
+	if ((spec_params & ASP_THREATEN) == ASP_THREATEN)
+	{
+		anim( ).SetCurAnim(eAnimThreaten);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +134,7 @@ void CAI_Flesh::CheckSpecParams(u32 spec_params)
 // Необходима для определения пересечения копыта плоти с баунд-сферой крысы
 // Параметры: ConeVertex - вершина конуса, ConeAngle - угол конуса (между поверхностью и высотой)
 // ConeDir - направление конуса, SphereCenter - центр сферы, SphereRadius - радиус сферы
-bool CAI_Flesh::ConeSphereIntersection(fVector3 ConeVertex, f32 ConeAngle, fVector3 ConeDir, fVector3 SphereCenter, f32 SphereRadius)
+bool CFlesh::ConeSphereIntersection(fVector3 ConeVertex, f32 ConeAngle, fVector3 ConeDir, fVector3 SphereCenter, f32 SphereRadius)
 {
 	f32 fInvSin = 1.0f/_sin(ConeAngle);
 	f32 fCosSqr = _cos(ConeAngle)*_cos(ConeAngle);
@@ -152,4 +161,16 @@ bool CAI_Flesh::ConeSphereIntersection(fVector3 ConeVertex, f32 ConeAngle, fVect
 	}
 
 	return false;
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CFlesh::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CFlesh, CGameObject>("CFlesh")
+				.def(constructor<>( ))
+		];
 }

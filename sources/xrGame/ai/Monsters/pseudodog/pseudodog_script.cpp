@@ -1,16 +1,16 @@
 #include "stdafx.h"
 
-#include "pseudodog.h"
+#include "PseudoDog.h"
 #include "psy_dog.h"
 
 using namespace luabind;
 
 #pragma optimize("s",on)
-void CAI_PseudoDog::script_register(lua_State *L)
+void CPseudoDog::script_register(lua_State *L)
 {
 	module(L)
 	[
-		class_<CAI_PseudoDog,CGameObject>("CAI_PseudoDog")
+		class_<CPseudoDog,CGameObject>("CPseudoDog")
 			.def(constructor<>())
 	];
 }
