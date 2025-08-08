@@ -1,20 +1,20 @@
 ///////////////////////////////////////////////////////////////
-// MercuryBall.h
-// MercuryBall - переливающийся и колыхающийся шар
+// MercuryBallArtefact.h
+// MercuryBallArtefact - переливающийся и колыхающийся шар
 // перекатывается с места на место
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 #include "Artefact.h"
 
-class CMercuryBall : public CArtefact
+class CMercuryBallArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
 
 public:
-	CMercuryBall( );
-	virtual ~CMercuryBall( );
+	CMercuryBallArtefact( );
+	virtual ~CMercuryBallArtefact( );
 
 	virtual void Load(pcstr section);
 

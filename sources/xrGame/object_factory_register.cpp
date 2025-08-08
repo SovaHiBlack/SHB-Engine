@@ -54,18 +54,18 @@
 
 #	include "helicopter.h"
 
-#	include "MercuryBall.h"
-#	include "BlackDrops.h"
-#	include "BlackGraviArtifact.h"
-#	include "BastArtifact.h"
-#	include "DummyArtifact.h"
-#	include "ZudaArtifact.h"
-#	include "ThornArtifact.h"
-#	include "FadedBall.h"
-#	include "ElectricBall.h"
-#	include "RustyHairArtifact.h"
-#	include "GalantineArtifact.h"
-#	include "GraviArtifact.h"
+#	include "MercuryBallArtefact.h"
+#	include "BlackDropsArtefact.h"
+#	include "BlackGraviArtefact.h"
+#	include "BastArtefact.h"
+#	include "DummyArtefact.h"
+#	include "ZudaArtefact.h"
+#	include "ThornArtefact.h"
+#	include "FadedBallArtefact.h"
+#	include "ElectricBallArtefact.h"
+#	include "RustyHairArtefact.h"
+#	include "GalantineArtefact.h"
+#	include "GraviArtefact.h"
 
 #	include "WeaponFN2000.h"
 #	include "WeaponAK74.h"
@@ -208,16 +208,16 @@ void CObjectFactory::register_classes	()
 	ADD(CHelicopter				,CSE_ALifeHelicopter			,CLSID_VEHICLE_HELICOPTER		,"helicopter");
 
 	// Artefacts
-	ADD(CMercuryBall			,CSE_ALifeItemArtefact			,CLSID_AF_MERCURY_BALL			,"art_mercury_ball");
-	ADD(CBlackDrops				,CSE_ALifeItemArtefact			,CLSID_AF_BLACKDROPS			,"art_black_drops");
+	ADD(CMercuryBallArtefact,CSE_ALifeItemArtefact			,CLSID_AF_MERCURY_BALL			,"art_mercury_ball");
+	ADD(CBlackDropsArtefact,CSE_ALifeItemArtefact			,CLSID_AF_BLACKDROPS			,"art_black_drops");
 	ADD(CBlackGraviArtefact		,CSE_ALifeItemArtefact			,CLSID_AF_NEEDLES				,"art_needles");
 	ADD(CBastArtefact			,CSE_ALifeItemArtefact			,CLSID_AF_BAST					,"art_bast_artefact");
 	ADD(CBlackGraviArtefact		,CSE_ALifeItemArtefact			,CLSID_AF_BLACK_GRAVI			,"art_gravi_black");
 	ADD(CDummyArtefact			,CSE_ALifeItemArtefact			,CLSID_AF_DUMMY					,"art_dummy");
 	ADD(CZudaArtefact			,CSE_ALifeItemArtefact			,CLSID_AF_ZUDA					,"art_zuda");
 	ADD(CThornArtefact			,CSE_ALifeItemArtefact			,CLSID_AF_THORN					,"art_thorn");
-	ADD(CFadedBall				,CSE_ALifeItemArtefact			,CLSID_AF_FADED_BALL			,"art_faded_ball");
-	ADD(CElectricBall			,CSE_ALifeItemArtefact			,CLSID_AF_ELECTRIC_BALL			,"art_electric_ball");
+	ADD(CFadedBallArtefact,CSE_ALifeItemArtefact			,CLSID_AF_FADED_BALL			,"art_faded_ball");
+	ADD(CElectricBallArtefact,CSE_ALifeItemArtefact			,CLSID_AF_ELECTRIC_BALL			,"art_electric_ball");
 	ADD(CRustyHairArtefact		,CSE_ALifeItemArtefact			,CLSID_AF_RUSTY_HAIR			,"art_rusty_hair");
 	ADD(CGalantineArtefact		,CSE_ALifeItemArtefact			,CLSID_AF_GALANTINE				,"art_galantine");
 	ADD(CGraviArtefact			,CSE_ALifeItemArtefact			,CLSID_AF_GRAVI					,"art_gravi");

@@ -1,19 +1,19 @@
 ///////////////////////////////////////////////////////////////
-// FadedBall.cpp
-// FadedBall - артефакт блеклый шар
+// DummyArtefact.cpp
+// DummyArtefact - артефакт пустышка
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "FadedBall.h"
+#include "DummyArtefact.h"
 #include "PhysicsShell.h"
 
-CFadedBall::CFadedBall( )
+CDummyArtefact::CDummyArtefact( )
 { }
 
-CFadedBall::~CFadedBall( )
+CDummyArtefact::~CDummyArtefact( )
 { }
 
-void CFadedBall::Load(pcstr section)
+void CDummyArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 }

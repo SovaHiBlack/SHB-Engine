@@ -1,22 +1,19 @@
 ///////////////////////////////////////////////////////////////
-// GalantineArtifact.cpp
+// GalantineArtefact.cpp
 // GalantineArtefact - артефакт ведбмин студень
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "GalantineArtifact.h"
+#include "GalantineArtefact.h"
 
 
-CGalantineArtefact::CGalantineArtefact(void) 
-{
-}
+CGalantineArtefact::CGalantineArtefact( )
+{ }
 
-CGalantineArtefact::~CGalantineArtefact(void) 
-{
-}
+CGalantineArtefact::~CGalantineArtefact( )
+{ }
 
 void CGalantineArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 }
-

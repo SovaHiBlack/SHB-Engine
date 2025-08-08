@@ -590,9 +590,9 @@
     <ClInclude Include="a_star_inline.h" />
     <ClInclude Include="base_client_classes.h" />
     <ClInclude Include="base_client_classes_wrappers.h" />
-    <ClInclude Include="BastArtifact.h" />
-    <ClInclude Include="BlackDrops.h" />
-    <ClInclude Include="BlackGraviArtifact.h" />
+    <ClInclude Include="BastArtefact.h" />
+    <ClInclude Include="BlackDropsArtefact.h" />
+    <ClInclude Include="BlackGraviArtefact.h" />
     <ClInclude Include="BlockAllocator.h" />
     <ClInclude Include="Bolt.h" />
     <ClInclude Include="BoneProtections.h" />
@@ -681,7 +681,7 @@
     <ClInclude Include="DisablingParams.h" />
     <ClInclude Include="doug_lea_memory_allocator.h" />
     <CustomBuild Include="dRayMotions.h" />
-    <ClInclude Include="DummyArtifact.h" />
+    <ClInclude Include="DummyArtefact.h" />
     <ClInclude Include="EatableItem.h" />
     <ClInclude Include="EatableItemObject.h" />
     <ClInclude Include="edge_path.h" />
@@ -696,7 +696,7 @@
     <ClInclude Include="ef_primary.h" />
     <ClInclude Include="ef_storage.h" />
     <ClInclude Include="ef_storage_inline.h" />
-    <ClInclude Include="ElectricBall.h" />
+    <ClInclude Include="ElectricBallArtefact.h" />
     <ClInclude Include="ElevatorState.h" />
     <ClInclude Include="EncyclopediaArticle.h" />
     <ClInclude Include="EncyclopediaArticle_defs.h" />
@@ -714,10 +714,10 @@
     <ClInclude Include="ExplosiveRocket.h" />
     <ClInclude Include="ExtendedGeom.h" />
     <ClInclude Include="F1.h" />
-    <ClInclude Include="FadedBall.h" />
+    <ClInclude Include="FadedBallArtefact.h" />
     <ClInclude Include="FoodItem.h" />
     <ClInclude Include="fs_registrator.h" />
-    <ClInclude Include="GalantineArtifact.h" />
+    <ClInclude Include="GalantineArtefact.h" />
     <ClInclude Include="GameMtlLib.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GamePersistent.h" />
@@ -754,7 +754,7 @@
     <ClInclude Include="graph_engine_space.h" />
     <ClInclude Include="graph_vertex.h" />
     <ClInclude Include="graph_vertex_inline.h" />
-    <ClInclude Include="GraviArtifact.h" />
+    <ClInclude Include="GraviArtefact.h" />
     <ClInclude Include="GraviZone.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="GrenadeLauncher.h" />
@@ -847,7 +847,7 @@
     <ClInclude Include="memory_manager_inline.h" />
     <ClInclude Include="memory_space.h" />
     <ClInclude Include="memory_space_impl.h" />
-    <ClInclude Include="MercuryBall.h" />
+    <ClInclude Include="MercuryBallArtefact.h" />
     <ClInclude Include="MilitaryOutfit.h" />
     <ClInclude Include="Mincer.h" />
     <ClInclude Include="Missile.h" />
@@ -858,7 +858,7 @@
     <ClInclude Include="movement_manager_space.h" />
     <ClInclude Include="mslotutils.h" />
     <ClInclude Include="mt_config.h" />
-    <ClInclude Include="Needles.h" />
+    <ClInclude Include="NeedlesArtefact.h" />
     <ClInclude Include="NET_Queue.h" />
     <ClInclude Include="NoGravityZone.h" />
     <ClInclude Include="object_actions.h" />
@@ -1029,7 +1029,7 @@
     <ClInclude Include="restriction_space.h" />
     <ClInclude Include="RGD5.h" />
     <ClInclude Include="RocketLauncher.h" />
-    <ClInclude Include="RustyHairArtifact.h" />
+    <ClInclude Include="RustyHairArtefact.h" />
     <ClInclude Include="safe_map_iterator.h" />
     <ClInclude Include="safe_map_iterator_inline.h" />
     <ClInclude Include="saved_game_wrapper.h" />
@@ -1252,7 +1252,7 @@
     <ClInclude Include="team_hierarchy_holder.h" />
     <ClInclude Include="team_hierarchy_holder_inline.h" />
     <ClInclude Include="TeleWhirlwind.h" />
-    <ClInclude Include="ThornArtifact.h" />
+    <ClInclude Include="ThornArtefact.h" />
     <ClInclude Include="Torch.h" />
     <ClInclude Include="TorridZone.h" />
     <ClInclude Include="Tracer.h" />
@@ -1468,7 +1468,7 @@
     <ClInclude Include="xr_time.h" />
     <ClInclude Include="VisualZone.h" />
     <ClInclude Include="ZoneEffector.h" />
-    <ClInclude Include="ZudaArtifact.h" />
+    <ClInclude Include="ZudaArtefact.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action_base_script.cpp" />
@@ -1695,9 +1695,9 @@
     <ClCompile Include="AttachmentOwner.cpp" />
     <ClCompile Include="AutosaveManager.cpp" />
     <ClCompile Include="base_client_classes_script.cpp" />
-    <ClCompile Include="BastArtifact.cpp" />
-    <ClCompile Include="BlackDrops.cpp" />
-    <ClCompile Include="BlackGraviArtifact.cpp" />
+    <ClCompile Include="BastArtefact.cpp" />
+    <ClCompile Include="BlackDropsArtefact.cpp" />
+    <ClCompile Include="BlackGraviArtefact.cpp" />
     <ClCompile Include="Bolt.cpp" />
     <ClCompile Include="BoneProtections.cpp" />
     <ClCompile Include="BottleItem.cpp" />
@@ -1768,7 +1768,7 @@
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="dRayMotions.cpp" />
-    <ClCompile Include="DummyArtifact.cpp" />
+    <ClCompile Include="DummyArtefact.cpp" />
     <ClCompile Include="EatableItem.cpp" />
     <ClCompile Include="EatableItemObject.cpp" />
     <ClCompile Include="EffectorBobbing.cpp" />
@@ -1780,7 +1780,7 @@
     <ClCompile Include="ef_primary.cpp" />
     <ClCompile Include="ef_storage.cpp" />
     <ClCompile Include="ef_storage_script.cpp" />
-    <ClCompile Include="ElectricBall.cpp" />
+    <ClCompile Include="ElectricBallArtefact.cpp" />
     <ClCompile Include="ElevatorState.cpp" />
     <ClCompile Include="EncyclopediaArticle.cpp" />
     <ClCompile Include="enemy_manager.cpp" />
@@ -1792,7 +1792,7 @@
     <ClCompile Include="ExplosiveItem.cpp" />
     <ClCompile Include="ExplosiveRocket.cpp" />
     <ClCompile Include="F1.cpp" />
-    <ClCompile Include="FadedBall.cpp" />
+    <ClCompile Include="FadedBallArtefact.cpp" />
     <ClCompile Include="FoodItem.cpp" />
     <ClCompile Include="fs_registrator_script.cpp" />
     <ClCompile Include="GalantineArtifact.cpp" />
@@ -1815,7 +1815,7 @@
     <ClCompile Include="game_sv_event_queue.cpp" />
     <ClCompile Include="game_sv_single.cpp" />
     <ClCompile Include="Geometry.cpp" />
-    <ClCompile Include="GraviArtifact.cpp" />
+    <ClCompile Include="GraviArtefact.cpp" />
     <ClCompile Include="GraviZone.cpp" />
     <ClCompile Include="Grenade.cpp" />
     <ClCompile Include="GrenadeLauncher.cpp" />
@@ -1894,7 +1894,7 @@
     <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="memory_manager.cpp" />
     <ClCompile Include="memory_space_script.cpp" />
-    <ClCompile Include="MercuryBall.cpp" />
+    <ClCompile Include="MercuryBallArtefact.cpp" />
     <ClCompile Include="MilitaryOutfit.cpp" />
     <ClCompile Include="Mincer.cpp" />
     <ClCompile Include="Missile.cpp" />
@@ -1905,7 +1905,7 @@
     <ClCompile Include="movement_manager_level.cpp" />
     <ClCompile Include="movement_manager_patrol.cpp" />
     <ClCompile Include="movement_manager_physic.cpp" />
-    <ClCompile Include="Needles.cpp" />
+    <ClCompile Include="NeedlesArtefact.cpp" />
     <ClCompile Include="NoGravityZone.cpp" />
     <ClCompile Include="object_actions.cpp" />
     <ClCompile Include="object_factory.cpp" />
@@ -2004,7 +2004,7 @@
     <ClCompile Include="restricted_object.cpp" />
     <ClCompile Include="RGD5.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
-    <ClCompile Include="RustyHairArtifact.cpp" />
+    <ClCompile Include="RustyHairArtefact.cpp" />
     <ClCompile Include="saved_game_wrapper.cpp" />
     <ClCompile Include="saved_game_wrapper_script.cpp" />
     <ClCompile Include="ScientificOutfit.cpp" />
@@ -2177,7 +2177,7 @@
     <ClCompile Include="TeamBaseZone.cpp" />
     <ClCompile Include="team_hierarchy_holder.cpp" />
     <ClCompile Include="TeleWhirlwind.cpp" />
-    <ClCompile Include="ThornArtifact.cpp" />
+    <ClCompile Include="ThornArtefact.cpp" />
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="TorridZone.cpp" />
     <ClCompile Include="Tracer.cpp" />
@@ -2422,7 +2422,7 @@
     <ClCompile Include="xr_time.cpp" />
     <ClCompile Include="VisualZone.cpp" />
     <ClCompile Include="ZoneEffector.cpp" />
-    <ClCompile Include="ZudaArtifact.cpp" />
+    <ClCompile Include="ZudaArtefact.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xrCDB\xrCDB.vcxproj">

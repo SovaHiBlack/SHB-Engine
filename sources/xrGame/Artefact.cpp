@@ -15,7 +15,7 @@
 #include "EntityAlive.h"
 #include "xr_level_controller.h"
 
-#define FASTMODE_DISTANCE (50.0f)	//distance to camera from sphere, when zone switches to fast update sequence
+#define FASTMODE_DISTANCE 50.0f	//distance to camera from sphere, when zone switches to fast update sequence
 
 #define CHOOSE_MAX(x,inst_x,y,inst_y,z,inst_z)\
 	if(x>y)\

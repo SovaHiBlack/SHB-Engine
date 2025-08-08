@@ -1,14 +1,14 @@
 ///////////////////////////////////////////////////////////////
-// Needles.cpp
-// Needles - артефакт иголки
+// NeedlesArtefact.cpp
+// NeedlesArtefact - артефакт иголки
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "Needles.h"
+#include "NeedlesArtefact.h"
 #include "PhysicsShell.h"
 
-CNeedles::CNeedles( )
+CNeedlesArtefact::CNeedlesArtefact( )
 { }
 
-CNeedles::~CNeedles( )
+CNeedlesArtefact::~CNeedlesArtefact( )
 { }

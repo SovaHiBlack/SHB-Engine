@@ -30,7 +30,6 @@ public:
 
 	virtual bool					CanTake( ) const;
 
-	//virtual void					renderable_Render				();
 	virtual BOOL					renderable_ShadowGenerate( )
 	{
 		return FALSE;
@@ -116,7 +115,7 @@ public:
 	virtual void					onMovementChanged(ACTOR_DEFS::EMoveCommand cmd);
 	virtual void					OnStateSwitch(u32 S);
 	virtual void					OnAnimationEnd(u32 state);
-	virtual bool					IsHidden( )	const
+	virtual bool					IsHidden( ) const
 	{
 		return GetState( ) == eHidden;
 	}

@@ -1,26 +1,26 @@
 ///////////////////////////////////////////////////////////////
-// BastArtifact.cpp
+// BastArtefact.cpp
 // BastArtefact - артефакт мочалка
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "BastArtifact.h"
+#include "BastArtefact.h"
 #include "PhysicsShell.h"
 #include "extendedgeom.h"
 #include "ParticlesObject.h"
 
 CBastArtefact::CBastArtefact( )
 {
-	m_fImpulseThreshold = 10.f;
+	m_fImpulseThreshold = 10.0f;
 
-	m_fRadius = 10.f;
-	m_fStrikeImpulse = 15.f;
+	m_fRadius = 10.0f;
+	m_fStrikeImpulse = 15.0f;
 
 	m_bStrike = false;
 	m_AttakingEntity = NULL;
 
-	m_fEnergy = 0.f;
-	m_fEnergyMax = m_fStrikeImpulse * 100.f;
+	m_fEnergy = 0.0f;
+	m_fEnergyMax = m_fStrikeImpulse * 100.0f;
 	m_fEnergyDecreasePerTime = 1.1f;
 }
 
@@ -35,17 +35,34 @@ void CBastArtefact::ObjectContactCallback(bool& /**do_colide/**/, bool bo1, dCon
 	l_pUD1 = retrieveGeomUserData(c.geom.g1);
 	l_pUD2 = retrieveGeomUserData(c.geom.g2);
 
-	if (!l_pUD1 || !l_pUD2) return;
+	if (!l_pUD1 || !l_pUD2)
+	{
+		return;
+	}
 
 	//определить кто есть кто, из двух столкнувшихся предметов
 	CBastArtefact* pBastArtefact = l_pUD1 ? smart_cast<CBastArtefact*>(l_pUD1->ph_ref_object) : NULL;
-	if (!pBastArtefact) pBastArtefact = l_pUD2 ? smart_cast<CBastArtefact*>(l_pUD2->ph_ref_object) : NULL;
-	if (!pBastArtefact) return;
-	if (!pBastArtefact->IsAttacking( )) return;
+	if (!pBastArtefact)
+	{
+		pBastArtefact = l_pUD2 ? smart_cast<CBastArtefact*>(l_pUD2->ph_ref_object) : NULL;
+	}
+
+	if (!pBastArtefact)
+	{
+		return;
+	}
+
+	if (!pBastArtefact->IsAttacking( ))
+	{
+		return;
+	}
 
 	CEntityAlive* pEntityAlive = NULL;
 	pEntityAlive = l_pUD1 ? smart_cast<CEntityAlive*>(l_pUD1->ph_ref_object) : NULL;
-	if (!pEntityAlive) pEntityAlive = l_pUD2 ? smart_cast<CEntityAlive*>(l_pUD2->ph_ref_object) : NULL;
+	if (!pEntityAlive)
+	{
+		pEntityAlive = l_pUD2 ? smart_cast<CEntityAlive*>(l_pUD2->ph_ref_object) : NULL;
+	}
 
 	pBastArtefact->BastCollision(pEntityAlive);
 }
@@ -57,8 +74,6 @@ void CBastArtefact::BastCollision(CEntityAlive* pEntityAlive)
 	{
 		m_AttakingEntity = NULL;
 		m_pHitedEntity = pEntityAlive;
-
-
 		if (m_AliveList.size( ) > 1)
 		{
 			m_bStrike = true;
@@ -71,16 +86,16 @@ void CBastArtefact::BastCollision(CEntityAlive* pEntityAlive)
 		m_bStrike = true;
 		fVector3 vel;
 		vel.set(0.0f, 0.0f, 0.0f);
-	//	this->m_pPhysicsShell->set_LinearVel(vel);
-	//	this->m_pPhysicsShell->set_AngularVel(vel);
-
 	}
 }
 
 BOOL CBastArtefact::net_Spawn(CSE_Abstract* DC)
 {
 	BOOL result = inherited::net_Spawn(DC);
-	if (!result) return FALSE;
+	if (!result)
+	{
+		return FALSE;
+	}
 
 	m_bStrike = false;
 	m_AttakingEntity = NULL;
@@ -135,7 +150,7 @@ void CBastArtefact::UpdateCLChild( )
 	{
 		if (m_bStrike)
 		{
-//выбрать жертву, если она еще не выбрана
+			//выбрать жертву, если она еще не выбрана
 			if (!m_AliveList.empty( ) && m_AttakingEntity == NULL)
 			{
 				CEntityAlive* pEntityToHit = NULL;
@@ -169,9 +184,7 @@ void CBastArtefact::UpdateCLChild( )
 				dir.sub(this->Position( ));
 				dir.y += ::Random.randF(-0.05f, 0.5f);
 
-				m_pPhysicsShell->applyImpulse(dir,
-											  m_fStrikeImpulse * Device.fTimeDelta *
-											  m_pPhysicsShell->getMass( ));
+				m_pPhysicsShell->applyImpulse(dir, m_fStrikeImpulse * Device.fTimeDelta * m_pPhysicsShell->getMass( ));
 			}
 			else
 			{
@@ -180,16 +193,14 @@ void CBastArtefact::UpdateCLChild( )
 			}
 		}
 
-		if (m_fEnergy > 0 && ::Random.randF(0.f, 1.0f) < (m_fEnergy / (m_fStrikeImpulse * 100.f)))
+		if (m_fEnergy > 0.0f && ::Random.randF(0.0f, 1.0f) < (m_fEnergy / (m_fStrikeImpulse * 100.0f)))
 		{
 			CParticlesObject* pStaticPG;
 			pStaticPG = CParticlesObject::Create(*m_sParticleName, TRUE);
 			fMatrix4x4 pos;
 			pos.set(XFORM( ));
 			fVector3 vel;
-			//vel.sub(Position(),ps_Element(0).vPosition); 
-			//vel.div((Level().timeServer()-ps_Element(0).dwTime)/1000.f);
-			vel.set(0, 0, 0);
+			vel.set(0.0f, 0.0f, 0.0f);
 			pStaticPG->UpdateParent(pos, vel);
 			pStaticPG->Play( );
 		}
@@ -210,7 +221,10 @@ void	CBastArtefact::Hit(SHit* pHDS)
 
 		m_fEnergy += m_fStrikeImpulse * HDS.impulse;
 
-		if (m_fEnergy > m_fEnergyMax) m_fEnergy = m_fEnergyMax;
+		if (m_fEnergy > m_fEnergyMax)
+		{
+			m_fEnergy = m_fEnergyMax;
+		}
 
 		//чтоб выстрел не повлиял на траекторию полета артефакта
 		HDS.impulse = 0;
@@ -219,21 +233,22 @@ void	CBastArtefact::Hit(SHit* pHDS)
 	inherited::Hit(&HDS);
 }
 
-
 //объект можно поднять только в спокойном состоянии
 bool CBastArtefact::Useful( ) const
 {
 	if (m_fEnergy > 0)
+	{
 		return false;
+	}
 	else
+	{
 		return true;
-
+	}
 }
 
 void CBastArtefact::feel_touch_new(CObject* O)
 {
 	CEntityAlive* pEntityAlive = smart_cast<CEntityAlive*>(O);
-
 	if (pEntityAlive && pEntityAlive->g_Alive( ))
 	{
 		m_AliveList.push_back(pEntityAlive);
@@ -243,23 +258,23 @@ void CBastArtefact::feel_touch_new(CObject* O)
 void CBastArtefact::feel_touch_delete(CObject* O)
 {
 	CEntityAlive* pEntityAlive = smart_cast<CEntityAlive*>(O);
-
 	if (pEntityAlive)
 	{
-		m_AliveList.erase(std::find(m_AliveList.begin( ),
-						  m_AliveList.end( ),
-						  pEntityAlive));
+		m_AliveList.erase(std::find(m_AliveList.begin( ), m_AliveList.end( ), pEntityAlive));
 	}
 }
 
 BOOL CBastArtefact::feel_touch_contact(CObject* O)
 {
 	CEntityAlive* pEntityAlive = smart_cast<CEntityAlive*>(O);
-
 	if (pEntityAlive && pEntityAlive->g_Alive( ))
+	{
 		return TRUE;
+	}
 	else
+	{
 		return FALSE;
+	}
 }
 
 void CBastArtefact::setup_physic_shell( )

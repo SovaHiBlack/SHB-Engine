@@ -1,11 +1,11 @@
 ///////////////////////////////////////////////////////////////
-// GraviArtifact.cpp
+// GraviArtefact.cpp
 // GraviArtefact - гравитационный артефакт, прыгает на месте
 // и неустойчиво парит над землей
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "GraviArtifact.h"
+#include "GraviArtefact.h"
 #include "PhysicsShell.h"
 #include "level.h"
 #include "xrmessages.h"
@@ -27,8 +27,8 @@ CGraviArtefact::CGraviArtefact( )
 	shedule.t_min = 20;
 	shedule.t_max = 50;
 
-	m_fJumpHeight = 0;
-	m_fEnergy = 1.f;
+	m_fJumpHeight = 0.0;
+	m_fEnergy = 1.0f;
 }
 
 CGraviArtefact::~CGraviArtefact( )
@@ -38,8 +38,10 @@ void CGraviArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 
-	if (pSettings->line_exist(section, "jump_height")) m_fJumpHeight = pSettings->r_float(section, "jump_height");
-//	m_fEnergy = pSettings->r_float(section,"energy");
+	if (pSettings->line_exist(section, "jump_height"))
+	{
+		m_fJumpHeight = pSettings->r_float(section, "jump_height");
+	}
 }
 
 void CGraviArtefact::UpdateCLChild( )

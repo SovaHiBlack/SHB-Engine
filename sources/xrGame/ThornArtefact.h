@@ -1,20 +1,19 @@
 ///////////////////////////////////////////////////////////////
-// FadedBall.h
-// FadedBall - артефакт блеклый шар
+// ThornArtefact.h
+// ThornArtefact - артефакт колючка
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 #include "Artefact.h"
 
-class CFadedBall : public CArtefact 
+class CThornArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
+
 public:
-	CFadedBall(void);
-	virtual ~CFadedBall(void);
+	CThornArtefact( );
+	virtual ~CThornArtefact( );
 
-	virtual void Load				(pcstr section);
-
-protected:
+	virtual void Load(pcstr section);
 };

@@ -1,20 +1,17 @@
 ///////////////////////////////////////////////////////////////
-// ZudaArtifact.h
-// ZudaArtefact - артефакт зуда
+// NeedlesArtefact.h
+// NeedlesArtefact - артефакт иголки
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 #include "Artefact.h"
 
-class CZudaArtefact : public CArtefact 
+class CNeedlesArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
+
 public:
-	CZudaArtefact(void);
-	virtual ~CZudaArtefact(void);
-
-	virtual void Load				(pcstr section);
-
-protected:
+	CNeedlesArtefact( );
+	virtual ~CNeedlesArtefact( );
 };

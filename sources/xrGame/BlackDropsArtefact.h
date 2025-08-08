@@ -1,16 +1,19 @@
 ///////////////////////////////////////////////////////////////
-// Needles.h
-// Needles - артефакт иголки
+// BlackDropsArtefact.h
+// BlackDropsArtefact - черные капли
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 #include "Artefact.h"
 
-class CNeedles: public CArtefact 
+class CBlackDropsArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
+
 public:
-	CNeedles(void);
-	virtual ~CNeedles(void);
+	CBlackDropsArtefact( );
+	virtual ~CBlackDropsArtefact( );
+
+	virtual void Load(pcstr section);
 };

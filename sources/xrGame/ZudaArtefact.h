@@ -1,20 +1,19 @@
 ///////////////////////////////////////////////////////////////
-// BlackDrops.h
-// BlackDrops - черные капли
+// ZudaArtefact.h
+// ZudaArtefact - артефакт "зуда"
 ///////////////////////////////////////////////////////////////
 
 #pragma once
 #include "Artefact.h"
 
-class CBlackDrops : public CArtefact 
+class CZudaArtefact : public CArtefact
 {
 private:
 	typedef CArtefact inherited;
+
 public:
-	CBlackDrops(void);
-	virtual ~CBlackDrops(void);
+	CZudaArtefact( );
+	virtual ~CZudaArtefact( );
 
-	virtual void Load				(pcstr section);
-
-protected:
+	virtual void Load(pcstr section);
 };

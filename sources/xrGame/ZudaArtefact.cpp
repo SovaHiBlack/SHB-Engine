@@ -1,22 +1,19 @@
 ///////////////////////////////////////////////////////////////
-// BlackDrops.cpp
-// BlackDrops - черные капли
+// ZudaArtefact.cpp
+// ZudaArtefact - артефакт "зуда"
 ///////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "BlackDrops.h"
+#include "ZudaArtefact.h"
 #include "PhysicsShell.h"
 
+CZudaArtefact::CZudaArtefact( )
+{ }
 
-CBlackDrops::CBlackDrops( ) 
-{
-}
+CZudaArtefact::~CZudaArtefact( )
+{ }
 
-CBlackDrops::~CBlackDrops( ) 
-{
-}
-
-void CBlackDrops::Load(pcstr section)
+void CZudaArtefact::Load(pcstr section)
 {
 	inherited::Load(section);
 }
