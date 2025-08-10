@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "RadioactiveZone.h"
 #include "hudmanager.h"
-#include "level.h"
+#include "Level.h"
 #include "xrmessages.h"
 #include "..\XR_3DA\Bone.h"
 #include "clsid_game.h"

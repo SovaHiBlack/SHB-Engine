@@ -33,7 +33,7 @@
 #include "memory_manager.h"
 #include "enemy_manager.h"
 #include "memory_space.h"
-#include "level.h"
+#include "Level.h"
 #include "ai_object_location.h"
 #include "movement_manager.h"
 #include "graph_engine.h"

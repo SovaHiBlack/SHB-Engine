@@ -3,7 +3,7 @@
 #include "game_base.h"
 #include "AISpace.h"
 #include "script_engine.h"
-#include "level.h"
+#include "Level.h"
 #include "xrMessages.h"
 
 u64		g_qwStartGameTime = 12 * 60 * 60 * 1000;
@@ -50,14 +50,13 @@ void game_PlayerState::clear( )
 	DeathTime = 0;
 	mOldIDs.clear( );
 	money_added = 0;
-	//m_aBonusMoney.clear( );
 }
 
 game_PlayerState::~game_PlayerState( )
 {
 	pItemList.clear( );
 	pSpawnPointsList.clear( );
-};
+}
 
 bool game_PlayerState::testFlag(u16 f) const
 {

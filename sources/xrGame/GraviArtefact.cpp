@@ -7,7 +7,7 @@
 #include "stdafx.h"
 #include "GraviArtefact.h"
 #include "PhysicsShell.h"
-#include "level.h"
+#include "Level.h"
 #include "xrmessages.h"
 #include "game_cl_base.h"
 #include "..\XR_3DA\skeletoncustom.h"

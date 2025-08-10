@@ -10,7 +10,7 @@
 
 #ifdef DEBUG
 #include "level_graph.h"
-#include "level.h"
+#include "Level.h"
 #include "game_base_space.h"
 #include "hudmanager.h"
 #include "xrserver_objects_alife_monsters.h"

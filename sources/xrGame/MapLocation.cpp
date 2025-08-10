@@ -2,7 +2,7 @@
 #include "MapLocation.h"
 #include "MapManager.h"
 #include "ui/UIMapSpot.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\Object.h"
 #include "AISpace.h"
 #include "game_graph.h"

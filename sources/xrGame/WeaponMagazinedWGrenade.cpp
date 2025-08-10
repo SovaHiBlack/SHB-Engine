@@ -9,7 +9,7 @@
 #include "ExplosiveRocket.h"
 #include "Actor_flags.h"
 #include "xr_level_controller.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "object_broker.h"
 #include "game_base_space.h"

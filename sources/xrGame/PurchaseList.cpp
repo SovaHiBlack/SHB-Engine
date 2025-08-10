@@ -8,7 +8,7 @@
 #include "InventoryOwner.h"
 #include "GameObject.h"
 #include "ai_object_location.h"
-#include "level.h"
+#include "Level.h"
 
 static f32 min_deficit_factor = .3f;
 

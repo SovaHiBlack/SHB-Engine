@@ -9,7 +9,7 @@
 #include "../xr_level_controller.h"
 #include "UIGame.h"
 #include "../HUDManager.h"
-#include "../level.h"
+#include "../Level.h"
 #include "UIPdaWnd.h"//
 #include "UIInventoryWnd.h"//
 #include "UITalkWnd.h"

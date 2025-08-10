@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: seniority_hierarchy_space.h
+//	Module 		: SeniorityHierarchy_space.h
 //	Created 	: 12.11.2001
 //  Modified 	: 03.09.2004
 //	Author		: Dmitriy Iassenev

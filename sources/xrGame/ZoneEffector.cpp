@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ZoneEffector.h"
-#include "level.h"
+#include "Level.h"
 #include "clsid_game.h"
 #include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\cameramanager.h"

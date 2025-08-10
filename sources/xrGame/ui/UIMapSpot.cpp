@@ -4,7 +4,7 @@
 
 #include "ui/UIXmlInit.h"
 #include "ui/UIMapWnd.h"//
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\Object.h"
 #include "object_broker.h"
 #include "ui/UITextureMaster.h"

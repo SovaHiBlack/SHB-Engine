@@ -6,7 +6,7 @@
 #include "../../../xrServer_Object_Base.h"
 #include "../../../xrserver.h"
 #include "../../../ai_object_location.h"
-#include "../../../level.h"
+#include "../../../Level.h"
 #include "../control_movement_base.h"
 #include "../monster_velocity_space.h"
 #include "../../../restricted_object.h"

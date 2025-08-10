@@ -2,7 +2,7 @@
 
 #include "UIGameCustom.h"
 #include "ui.h"
-#include "level.h"
+#include "Level.h"
 #include "hudmanager.h"
 #include "ui/UIMultiTextStatic.h"
 #include "ui/UIXmlInit.h"

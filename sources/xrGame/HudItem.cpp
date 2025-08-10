@@ -11,7 +11,7 @@
 #include "ActorEffector.h"
 #include "Missile.h"
 #include "xrmessages.h"
-#include "level.h"
+#include "Level.h"
 #include "Inventory.h"
 #include "..\XR_3DA\CameraBase.h"
 

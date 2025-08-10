@@ -5,7 +5,7 @@
 #include "Mincer.h"
 #include "hudmanager.h"
 #include "xrmessages.h"
-#include "level.h"
+#include "Level.h"
 #include "CustomZone.h"
 #include "clsid_game.h"
 #include "EntityAlive.h"

@@ -7,7 +7,7 @@
 #include "Weapon.h"
 #include "..\XR_3DA\Motion.h"
 #include "..\XR_3DA\skeletonanimated.h"
-#include "level.h"
+#include "Level.h"
 #include "MathUtils.h"
 
 weapon_hud_container* g_pWeaponHUDContainer = 0;

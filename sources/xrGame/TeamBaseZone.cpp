@@ -9,7 +9,7 @@
 #include "Hit.h"
 #include "Actor.h"
 #include "HUDManager.h"
-#include "level.h"
+#include "Level.h"
 #include "xrserver.h"
 #include "game_cl_base.h"
 #include "clsid_game.h"

@@ -8,7 +8,7 @@
 #include "PHMovementControl.h"
 #include "Wound.h"
 #include "xrmessages.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "RelationRegistry.h"
 #include "MonsterCommunity.h"

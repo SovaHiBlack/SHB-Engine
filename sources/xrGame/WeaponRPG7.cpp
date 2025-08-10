@@ -4,7 +4,7 @@
 #include "xrserver_objects_alife_items.h"
 #include "ExplosiveRocket.h"
 #include "Entity.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "Inventory.h"
 #include "InventoryOwner.h"

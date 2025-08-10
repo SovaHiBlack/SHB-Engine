@@ -1,10 +1,9 @@
 #include "stdafx.h"
 
 #include "UICarBodyWnd.h"//
-//#include "UIXml.h"
 #include "UIXmlInit.h"
 #include "../HUDManager.h"
-#include "../level.h"
+#include "../Level.h"
 #include "UICharacterInfo.h"//
 #include "UIDragDropListEx.h"
 #include "UIFrameWindow.h"

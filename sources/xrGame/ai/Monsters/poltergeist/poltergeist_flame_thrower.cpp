@@ -3,7 +3,7 @@
 #include "../../../xrmessages.h"
 #include "../../../ai_object_location.h"
 #include "../../../level_graph.h"
-#include "../../../level.h"
+#include "../../../Level.h"
 #include "../../../../xrNetServer/net_utils.h"
 #include "../../../AISpace.h"
 #include "../../../restricted_object.h"

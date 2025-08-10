@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
 
-#include "level.h"
+#include "Level.h"
 #include "Actor.h"
 #include "script_game_object.h"
 #include "patrol_path_storage.h"

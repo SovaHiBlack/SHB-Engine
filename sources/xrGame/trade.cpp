@@ -9,7 +9,7 @@
 #include "xrmessages.h"
 #include "CharacterInfo.h"
 #include "RelationRegistry.h"
-#include "level.h"
+#include "Level.h"
 #include "script_callback_ex.h"
 #include "script_game_object.h"
 #include "GameObject_space.h"

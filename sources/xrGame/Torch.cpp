@@ -8,7 +8,7 @@
 #include "ai_sounds.h"
 
 #include "HUDManager.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "..\XR_3DA\camerabase.h"
 #include "Inventory.h"

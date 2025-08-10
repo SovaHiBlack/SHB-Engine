@@ -9,7 +9,7 @@
 #include "UIGame.h"
 #include "../PDA.h"
 #include "../CharacterInfo.h"
-#include "../level.h"
+#include "../Level.h"
 
 #include "../PhraseDialog.h"
 #include "../PhraseDialogManager.h"

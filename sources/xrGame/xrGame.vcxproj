@@ -758,8 +758,8 @@
     <ClInclude Include="GraviZone.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="GrenadeLauncher.h" />
-    <ClInclude Include="group_hierarchy_holder.h" />
-    <ClInclude Include="group_hierarchy_holder_inline.h" />
+    <ClInclude Include="GroupHierarchyHolder.h" />
+    <ClInclude Include="GroupHierarchyHolder_inline.h" />
     <ClInclude Include="HairsZone.h" />
     <ClInclude Include="HangingLamp.h" />
     <ClInclude Include="helicopter.h" />
@@ -810,7 +810,7 @@
     <ClInclude Include="item_manager_inline.h" />
     <ClInclude Include="key_binding_registrator.h" />
     <ClInclude Include="Level.h" />
-    <ClInclude Include="LevelGameDef.h" />
+    <ClInclude Include="LevelGame_defs.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="LevelChanger.h" />
     <ClInclude Include="LevelDebug.h" />
@@ -1132,9 +1132,9 @@
     <ClInclude Include="script_world_state.h" />
     <ClInclude Include="ScriptZone.h" />
     <ClInclude Include="Projector.h" />
-    <ClInclude Include="seniority_hierarchy_holder.h" />
-    <ClInclude Include="seniority_hierarchy_holder_inline.h" />
-    <ClInclude Include="seniority_hierarchy_space.h" />
+    <ClInclude Include="SeniorityHierarchyHolder.h" />
+    <ClInclude Include="SeniorityHierarchyHolder_inline.h" />
+    <ClInclude Include="SeniorityHierarchy_space.h" />
     <ClInclude Include="server_entity_wrapper.h" />
     <ClInclude Include="server_entity_wrapper_inline.h" />
     <ClInclude Include="setup_manager.h" />
@@ -1185,8 +1185,8 @@
     <ClInclude Include="SpaceRestrictor_inline.h" />
     <ClInclude Include="SpecificCharacter.h" />
     <ClInclude Include="Spectator.h" />
-    <ClInclude Include="squad_hierarchy_holder.h" />
-    <ClInclude Include="squad_hierarchy_holder_inline.h" />
+    <ClInclude Include="SquadHierarchyHolder.h" />
+    <ClInclude Include="SquadHierarchyHolder_inline.h" />
     <ClInclude Include="StalkerOutfit.h" />
     <ClInclude Include="stalker_alife_actions.h" />
     <ClInclude Include="stalker_alife_planner.h" />
@@ -1248,8 +1248,8 @@
     <ClInclude Include="StringTable.h" />
     <ClInclude Include="StringTable_defs.h" />
     <ClInclude Include="TeamBaseZone.h" />
-    <ClInclude Include="team_hierarchy_holder.h" />
-    <ClInclude Include="team_hierarchy_holder_inline.h" />
+    <ClInclude Include="TeamHierarchyHolder.h" />
+    <ClInclude Include="TeamHierarchyHolder_inline.h" />
     <ClInclude Include="TeleWhirlwind.h" />
     <ClInclude Include="ThornArtefact.h" />
     <ClInclude Include="Torch.h" />
@@ -1818,7 +1818,7 @@
     <ClCompile Include="GraviZone.cpp" />
     <ClCompile Include="Grenade.cpp" />
     <ClCompile Include="GrenadeLauncher.cpp" />
-    <ClCompile Include="group_hierarchy_holder.cpp" />
+    <ClCompile Include="GroupHierarchyHolder.cpp" />
     <ClCompile Include="HairsZone.cpp" />
     <ClCompile Include="HangingLamp.cpp" />
     <ClCompile Include="Helicopter.cpp" />
@@ -2093,7 +2093,7 @@
     <ClCompile Include="script_world_state_script.cpp" />
     <ClCompile Include="ScriptZone.cpp" />
     <ClCompile Include="Projector.cpp" />
-    <ClCompile Include="seniority_hierarchy_holder.cpp" />
+    <ClCompile Include="SeniorityHierarchyHolder.cpp" />
     <ClCompile Include="server_entity_wrapper.cpp" />
     <ClCompile Include="ShellHit.cpp" />
     <ClCompile Include="ShootingObject.cpp" />
@@ -2120,7 +2120,7 @@
     <ClCompile Include="SpaceRestrictor.cpp" />
     <ClCompile Include="SpecificCharacter.cpp" />
     <ClCompile Include="Spectator.cpp" />
-    <ClCompile Include="squad_hierarchy_holder.cpp" />
+    <ClCompile Include="SquadHierarchyHolder.cpp" />
     <ClCompile Include="StalkerOutfit.cpp" />
     <ClCompile Include="stalker_alife_actions.cpp" />
     <ClCompile Include="stalker_alife_planner.cpp" />
@@ -2173,7 +2173,7 @@
     <ClCompile Include="StepManager.cpp" />
     <ClCompile Include="StringTable.cpp" />
     <ClCompile Include="TeamBaseZone.cpp" />
-    <ClCompile Include="team_hierarchy_holder.cpp" />
+    <ClCompile Include="TeamHierarchyHolder.cpp" />
     <ClCompile Include="TeleWhirlwind.cpp" />
     <ClCompile Include="ThornArtefact.cpp" />
     <ClCompile Include="Torch.cpp" />

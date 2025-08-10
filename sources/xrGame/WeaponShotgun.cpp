@@ -5,7 +5,7 @@
 #include "ParticlesObject.h"
 #include "xr_level_controller.h"
 #include "Inventory.h"
-#include "level.h"
+#include "Level.h"
 #include "Actor.h"
 
 CWeaponShotgun::CWeaponShotgun( ) : CWeaponCustomPistol("TOZ34")

@@ -5,7 +5,7 @@
 #include "..\HUDManager.h"
 #include "UIGame.h"
 #include "..\Actor.h"
-#include "..\level.h"
+#include "..\Level.h"
 #include "..\game_cl_base.h"
 #include "UIMainIngameWnd.h"//
 #include "UIMessagesWindow.h"//

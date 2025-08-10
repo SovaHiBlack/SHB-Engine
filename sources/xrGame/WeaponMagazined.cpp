@@ -13,7 +13,7 @@
 #include "ActorEffector.h"
 #include "EffectorZoomInertion.h"
 #include "xr_level_controller.h"
-#include "level.h"
+#include "Level.h"
 #include "object_broker.h"
 #include "StringTable.h"
 

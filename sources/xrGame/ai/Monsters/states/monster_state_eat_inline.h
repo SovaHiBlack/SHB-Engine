@@ -11,7 +11,7 @@
 #include "../../../CharacterPhysicsSupport.h"
 
 #ifdef _DEBUG
-#	include "../../../level.h"
+#	include "../../../Level.h"
 #	include "../../../LevelDebug.h"
 #endif
 

@@ -3,7 +3,7 @@
 #include "UITabControl.h"
 #include "UIStatic.h"
 #include "UIXmlInit.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../hudmanager.h"
 #include <dinput.h>
 

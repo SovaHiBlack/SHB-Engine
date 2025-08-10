@@ -11,7 +11,7 @@
 #ifdef DEBUG
 #	include "..\XR_3DA\StatGraph.h"
 #	include "PHDebug.h"
-#	include "level.h"
+#	include "Level.h"
 #	include "DebugRenderer.h"
 #endif
 

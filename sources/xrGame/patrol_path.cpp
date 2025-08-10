@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "patrol_path.h"
-#include "levelgamedef.h"
+#include "LevelGame_defs.h"
 
 CPatrolPath::CPatrolPath(shared_str name)
 {

@@ -6,7 +6,7 @@
 #include "..\XR_3DA\CameraBase.h"
 #include "xrserver_objects_alife.h"
 #include "ActorEffector.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "ai_object_location.h"

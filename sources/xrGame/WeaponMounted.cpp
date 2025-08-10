@@ -9,7 +9,7 @@
 #include "ActorEffector.h"
 #include "EffectorShot.h"
 #include "ai_sounds.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "GameObject_space.h"

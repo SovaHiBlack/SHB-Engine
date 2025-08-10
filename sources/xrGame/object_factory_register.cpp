@@ -13,7 +13,7 @@
 
 // client entities includes
 #	include "..\XR_3DA\std_classes.h"
-#	include "level.h"
+#	include "Level.h"
 #	include "GamePersistent.h"
 #	include "hudmanager.h"
 #	include "Actor.h"

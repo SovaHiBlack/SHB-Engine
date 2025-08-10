@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "UIInventoryWnd.h"//
-#include "../level.h"
+#include "../Level.h"
 #include "../Actor.h"
 #include "../ActorCondition.h"
 #include "../hudmanager.h"

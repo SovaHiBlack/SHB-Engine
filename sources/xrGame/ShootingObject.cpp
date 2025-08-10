@@ -12,7 +12,7 @@
 
 #include "Actor.h"
 #include "game_cl_base.h"
-#include "level.h"
+#include "Level.h"
 #include "BulletManager.h"
 #include "clsid_game.h"
 #include "game_cl_single.h"

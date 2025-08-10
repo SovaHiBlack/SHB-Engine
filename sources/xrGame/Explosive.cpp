@@ -11,7 +11,7 @@
 #include "Weapon.h"
 #include "Actor.h"
 #include "ActorEffector.h"
-#include "level.h"
+#include "Level.h"
 #include "BulletManager.h"
 #include "xrmessages.h"
 #include "GameMtlLib.h"

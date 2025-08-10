@@ -6,7 +6,7 @@
 #include "ParticlesObject.h"
 #include "Actor.h"
 #include "Inventory.h"
-#include "level.h"
+#include "Level.h"
 #include "xrmessages.h"
 #include "xr_level_controller.h"
 #include "game_cl_base.h"

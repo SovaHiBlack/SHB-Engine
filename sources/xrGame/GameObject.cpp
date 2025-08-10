@@ -20,7 +20,7 @@
 #include "game_graph.h"
 #include "ai_debug.h"
 #include "..\XR_3DA\igame_level.h"
-#include "level.h"
+#include "Level.h"
 #include "../xrNetServer/net_utils.h"
 #include "script_callback_ex.h"
 #include "MathUtils.h"

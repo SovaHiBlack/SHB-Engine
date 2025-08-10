@@ -5,7 +5,7 @@
 #include "ParticlesObject.h"
 #include "xrserver_objects_alife_monsters.h"
 #include "..\XR_3DA\LightAnimLibrary.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "Artefact.h"
 #include "ai_object_location.h"

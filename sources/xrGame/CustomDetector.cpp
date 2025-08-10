@@ -4,7 +4,7 @@
 #include "hudmanager.h"
 #include "Artefact.h"
 #include "Inventory.h"
-#include "level.h"
+#include "Level.h"
 #include "MapManager.h"
 #include "CameraEffector.h"
 #include "Actor.h"

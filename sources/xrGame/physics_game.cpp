@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ParticlesObject.h"
 #include "GameMtlLib.h"
-#include "level.h"
+#include "Level.h"
 #include "GamePersistent.h"
 #include "Extendedgeom.h"
 #include "PhysicsGamePars.h"

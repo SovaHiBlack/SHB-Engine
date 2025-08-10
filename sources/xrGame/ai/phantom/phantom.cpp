@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Phantom.h"
 #include "../../../xrNetServer/net_utils.h"
-#include "../../level.h"
+#include "../../Level.h"
 #include "../../xrServer_Objects_ALife_Monsters.h"
 #include "../../..\XR_3DA\motion.h"
 

@@ -39,9 +39,8 @@ enum ERPpointType
 #define WAYOBJECT_CHUNK_LINKS		0x0003
 #define WAYOBJECT_CHUNK_TYPE		0x0004
 #define WAYOBJECT_CHUNK_NAME		0x0005
-
-#define NPC_POINT_VERSION			0x0001
 //----------------------------------------------------
+#define NPC_POINT_VERSION			0x0001
 #define NPC_POINT_CHUNK_VERSION		0x0001
 #define NPC_POINT_CHUNK_DATA		0x0002
 //----------------------------------------------------

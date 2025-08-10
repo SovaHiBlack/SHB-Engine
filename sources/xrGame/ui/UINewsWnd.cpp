@@ -5,7 +5,7 @@
 #include "UIXmlInit.h"
 #include "UI.h"
 #include "../HUDManager.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../game_news.h"
 #include "../Actor.h"
 #include "../alife_registry_wrappers.h"

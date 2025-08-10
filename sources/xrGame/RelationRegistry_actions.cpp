@@ -6,10 +6,10 @@
 #include "Actor.h"
 #include "ai/stalker/Stalker.h"
 
-#include "seniority_hierarchy_holder.h"
-#include "team_hierarchy_holder.h"
-#include "squad_hierarchy_holder.h"
-#include "group_hierarchy_holder.h"
+#include "SeniorityHierarchyHolder.h"
+#include "TeamHierarchyHolder.h"
+#include "SquadHierarchyHolder.h"
+#include "GroupHierarchyHolder.h"
 
 #include "memory_manager.h"
 #include "enemy_manager.h"

@@ -6,7 +6,7 @@
 #include "control_threaten.h"
 #include "../../PhysicsShell.h"
 #include "../../detail_path_manager.h"
-#include "../../level.h"
+#include "../../Level.h"
 #include "control_animation_base.h"
 #include "control_critical_wound.h"
 

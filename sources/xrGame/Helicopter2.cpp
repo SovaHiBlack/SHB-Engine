@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "helicopter.h"
-#include "level.h"
+#include "Level.h"
 #include "script_game_object.h"
 #include "GameObject_space.h"
 #include "..\XR_3DA\skeletonanimated.h"
@@ -12,10 +12,10 @@
 #include "ai/stalker/Stalker.h"
 #include "CustomZone.h"
 #include "MathUtils.h"
-#include "group_hierarchy_holder.h"
-#include "seniority_hierarchy_holder.h"
-#include "team_hierarchy_holder.h"
-#include "squad_hierarchy_holder.h"
+#include "GroupHierarchyHolder.h"
+#include "SeniorityHierarchyHolder.h"
+#include "TeamHierarchyHolder.h"
+#include "SquadHierarchyHolder.h"
 
 #include "extendedgeom.h"
 

@@ -4422,7 +4422,7 @@
     <ClInclude Include="Level.h">
       <Filter>Core\Client\Level</Filter>
     </ClInclude>
-    <ClInclude Include="LevelGameDef.h">
+    <ClInclude Include="LevelGame_defs.h">
       <Filter>Core\Client\Level</Filter>
     </ClInclude>
     <ClInclude Include="BulletManager.h">
@@ -4431,31 +4431,31 @@
     <ClInclude Include="Tracer.h">
       <Filter>Core\Client\Level\BulletManager</Filter>
     </ClInclude>
-    <ClInclude Include="seniority_hierarchy_holder.h">
+    <ClInclude Include="SeniorityHierarchyHolder.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="seniority_hierarchy_holder_inline.h">
+    <ClInclude Include="SeniorityHierarchyHolder_inline.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="seniority_hierarchy_space.h">
+    <ClInclude Include="SeniorityHierarchy_space.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="team_hierarchy_holder.h">
+    <ClInclude Include="TeamHierarchyHolder.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\TeamHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="team_hierarchy_holder_inline.h">
+    <ClInclude Include="TeamHierarchyHolder_inline.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\TeamHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="squad_hierarchy_holder.h">
+    <ClInclude Include="SquadHierarchyHolder.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\SquadHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="squad_hierarchy_holder_inline.h">
+    <ClInclude Include="SquadHierarchyHolder_inline.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\SquadHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="group_hierarchy_holder.h">
+    <ClInclude Include="GroupHierarchyHolder.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\GroupHierarchyHolder</Filter>
     </ClInclude>
-    <ClInclude Include="group_hierarchy_holder_inline.h">
+    <ClInclude Include="GroupHierarchyHolder_inline.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\GroupHierarchyHolder</Filter>
     </ClInclude>
     <ClInclude Include="ClientSpawnManager.h">
@@ -7190,16 +7190,16 @@
     <ClCompile Include="Tracer.cpp">
       <Filter>Core\Client\Level\BulletManager</Filter>
     </ClCompile>
-    <ClCompile Include="seniority_hierarchy_holder.cpp">
+    <ClCompile Include="SeniorityHierarchyHolder.cpp">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder</Filter>
     </ClCompile>
-    <ClCompile Include="team_hierarchy_holder.cpp">
+    <ClCompile Include="TeamHierarchyHolder.cpp">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\TeamHierarchyHolder</Filter>
     </ClCompile>
-    <ClCompile Include="squad_hierarchy_holder.cpp">
+    <ClCompile Include="SquadHierarchyHolder.cpp">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\SquadHierarchyHolder</Filter>
     </ClCompile>
-    <ClCompile Include="group_hierarchy_holder.cpp">
+    <ClCompile Include="GroupHierarchyHolder.cpp">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder\GroupHierarchyHolder</Filter>
     </ClCompile>
     <ClCompile Include="ClientSpawnManager.cpp">

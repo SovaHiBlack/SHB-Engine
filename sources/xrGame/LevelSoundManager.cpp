@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "level.h"
+#include "Level.h"
 #include "LevelSoundManager.h"
 
 //-----------------------------------------------------------------------------

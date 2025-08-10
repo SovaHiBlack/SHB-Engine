@@ -3,7 +3,7 @@
 #include "HUDmanager.h"
 #include "PHdynamicdata.h"
 #include "Physics.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\x_ray.h"
 #include "..\XR_3DA\igame_persistent.h"
 #include "PhysicsGamePars.h"

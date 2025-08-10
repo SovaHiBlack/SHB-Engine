@@ -1,14 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: group_hierarchy_holder.h
-//	Created 	: 12.11.2001
-//  Modified 	: 03.09.2004
-//	Author		: Dmitriy Iassenev, Oles Shishkovtsov, Aleksandr Maksimchuk
+//	Module 		: GroupHierarchyHolder.h
 //	Description : Group hierarchy holder
 ////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include "seniority_hierarchy_space.h"
+#include "SeniorityHierarchy_space.h"
 
 class CEntity;
 class CAgentManager;
@@ -64,14 +61,17 @@ public:
 private:
 	IC		CAgentManager* get_agent_manager( ) const;
 private:
+
 	IC		VISIBLE_OBJECTS& visible_objects( ) const;
 	IC		SOUND_OBJECTS& sound_objects( ) const;
 	IC		HIT_OBJECTS& hit_objects( ) const;
+
 private:
 	void					register_in_group(CEntity* member);
 	void					register_in_squad(CEntity* member);
 	void					register_in_agent_manager(CEntity* member);
 	void					register_in_group_senses(CEntity* member);
+
 private:
 	void					unregister_in_group(CEntity* member);
 	void					unregister_in_squad(CEntity* member);
@@ -92,6 +92,7 @@ public:
 	void					update_leader( );
 	IC		CEntity* leader( ) const;
 #endif // SQUAD_HIERARCHY_HOLDER_USE_LEADER
+
 };
 
-#include "group_hierarchy_holder_inline.h"
+#include "GroupHierarchyHolder_inline.h"

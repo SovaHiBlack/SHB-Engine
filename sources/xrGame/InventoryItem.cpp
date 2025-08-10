@@ -4,13 +4,11 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-//#include "InventoryItem.h"
 #include "InventoryItem_impl.h"
 #include "Inventory.h"
 #include "Physics.h"
 #include "xrserver_objects_alife.h"
 #include "xrserver_objects_alife_items.h"
-//#include "EntityAlive.h"
 #include "Level.h"
 #include "game_cl_base.h"
 #include "Actor.h"

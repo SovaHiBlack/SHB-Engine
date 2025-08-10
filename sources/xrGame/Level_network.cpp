@@ -13,7 +13,7 @@
 #include "script_engine.h"
 #include "stalker_animation_data_storage.h"
 #include "ClientSpawnManager.h"
-#include "seniority_hierarchy_holder.h"
+#include "SeniorityHierarchyHolder.h"
 
 const s32 max_objects_size = 2 * 1024;
 const s32 max_objects_size_in_save = 6 * 1024;

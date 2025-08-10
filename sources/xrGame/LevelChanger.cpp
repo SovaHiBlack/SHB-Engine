@@ -8,7 +8,7 @@
 #include "Hit.h"
 #include "Actor.h"
 #include "xrserver_objects_alife.h"
-#include "level.h"
+#include "Level.h"
 #include "ai_object_location.h"
 #include "AISpace.h"
 #include "level_graph.h"

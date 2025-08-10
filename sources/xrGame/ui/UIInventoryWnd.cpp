@@ -24,7 +24,7 @@
 using namespace InventoryUtilities;
 
 #include "../InfoPortion.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../game_base_space.h"
 #include "../EntityCondition.h"
 

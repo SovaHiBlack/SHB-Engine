@@ -27,7 +27,7 @@
 #include "patrol_path_storage.h"
 #include "date_time.h"
 #include "space_restriction_manager.h"
-#include "seniority_hierarchy_holder.h"
+#include "SeniorityHierarchyHolder.h"
 #include "SpaceRestrictor.h"
 #include "ClientSpawnManager.h"
 #include "AutosaveManager.h"

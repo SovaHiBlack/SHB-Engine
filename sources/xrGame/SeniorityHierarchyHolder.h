@@ -1,14 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////
-//	Module 		: seniority_hierarchy_holder.h
-//	Created 	: 12.11.2001
-//  Modified 	: 03.09.2004
-//	Author		: Dmitriy Iassenev, Oles Shishkovtsov, Aleksandr Maksimchuk
+//	Module 		: SeniorityHierarchyHolder.h
 //	Description : Seniority hierarchy holder
 ////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include "seniority_hierarchy_space.h"
+#include "SeniorityHierarchy_space.h"
 
 class CTeamHierarchyHolder;
 
@@ -33,4 +30,4 @@ public:
 	IC		const TEAM_REGISTRY& teams( ) const;
 };
 
-#include "seniority_hierarchy_holder_inline.h"
+#include "SeniorityHierarchyHolder_inline.h"

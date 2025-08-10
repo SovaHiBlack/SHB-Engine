@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "level.h"
+#include "Level.h"
 #include "LevelDebug.h"
 #include "..\XR_3DA\Object.h"
 

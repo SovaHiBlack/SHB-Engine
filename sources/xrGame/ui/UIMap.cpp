@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../MapLocation.h"
 #include "../MapManager.h"
 #include "UIMapSpot.h"

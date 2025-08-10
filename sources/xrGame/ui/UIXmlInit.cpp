@@ -10,7 +10,7 @@
 
 #include "../game_base_space.h"
 #include "../hudmanager.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../StringTable.h"
 #include "UI.h"
 #include "UICustomItem.h"

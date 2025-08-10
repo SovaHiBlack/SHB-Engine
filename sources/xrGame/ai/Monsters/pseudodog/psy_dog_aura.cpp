@@ -4,7 +4,7 @@
 #include "../../../Actor.h"
 #include "../../../ActorMemory.h"
 #include "../../../visual_memory_manager.h"
-#include "../../../level.h"
+#include "../../../Level.h"
 
 CPPEffectorPsyDogAura::CPPEffectorPsyDogAura(const SPPInfo &ppi, u32 time_to_fade)
 : inherited(ppi)

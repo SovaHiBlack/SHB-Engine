@@ -16,7 +16,7 @@
 #include "../../RelationRegistry.h"
 #include "../../object_broker.h"
 #include "../../sound_player.h"
-#include "../../level.h"
+#include "../../Level.h"
 #include "../../script_callback_ex.h"
 #include "../../GameObject_space.h"
 #include "../../clsid_game.h"

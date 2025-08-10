@@ -2,7 +2,7 @@
 #include "WeaponRG6.h"
 #include "Entity.h"
 #include "ExplosiveRocket.h"
-#include "level.h"
+#include "Level.h"
 #include "clsid_game.h"
 
 #include "MathUtils.h"

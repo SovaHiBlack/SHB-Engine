@@ -10,7 +10,7 @@
 #include "SpaceUtils.h"
 #include "PhysicsGamePars.h"
 #include "MathUtils.h"
-#include "level.h"
+#include "Level.h"
 #include "GameMtlLib.h"
 #include "GameObject.h"
 #include "physicsshellholder.h"

@@ -4,9 +4,8 @@
 #include "stdafx.h"
 
 #include "UIMessagesWindow.h"//
-#include "../level.h"
+#include "../Level.h"
 #include "UIGameLog.h"
-//#include "UIXml.h"
 #include "UIXmlInit.h"
 #include "UIPdaMsgListItem.h"//
 #include "UIColorAnimatorWrapper.h"//

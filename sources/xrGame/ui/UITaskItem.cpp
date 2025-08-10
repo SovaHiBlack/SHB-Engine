@@ -11,7 +11,7 @@
 #include "UIInventoryUtilities.h"//
 #include "../MapLocation.h"
 #include "../MapManager.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../Actor.h"
 #include "../GameTaskManager.h"
 

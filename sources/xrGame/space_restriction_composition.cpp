@@ -21,7 +21,7 @@
 #pragma warning(pop)
 
 #ifdef DEBUG
-#	include "level.h"
+#	include "Level.h"
 #	include "SpaceRestrictor.h"
 #endif // DEBUG
 

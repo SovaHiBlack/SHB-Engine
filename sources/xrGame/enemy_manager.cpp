@@ -17,7 +17,7 @@
 #include "AutosaveManager.h"
 #include "ai_object_location.h"
 #include "level_graph.h"
-#include "level.h"
+#include "Level.h"
 #include "script_game_object.h"
 #include "AISpace.h"
 #include "Profiler.h"

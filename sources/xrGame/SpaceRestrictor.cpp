@@ -6,7 +6,7 @@
 
 #include "SpaceRestrictor.h"
 #include "xrServer_Objects_ALife.h"
-#include "level.h"
+#include "Level.h"
 #include "space_restriction_manager.h"
 #include "restriction_space.h"
 #include "AISpace.h"

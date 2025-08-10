@@ -6,7 +6,7 @@
 #include "../CustomOutfit.h"
 #include "../Actor.h"
 #include "UIInventoryUtilities.h"//
-#include "../level.h"
+#include "../Level.h"
 #include "../game_base_space.h"
 
 CUIOutfitDragDropList::CUIOutfitDragDropList( )

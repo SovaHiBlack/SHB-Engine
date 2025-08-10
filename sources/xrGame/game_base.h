@@ -35,26 +35,18 @@ add_to_type_list(RPoint)
 #undef script_type_list
 #define script_type_list save_type_list(RPoint)
 
-//struct Bonus_Money_Struct {
-//	s32		Money;
-//	u8		Reason;
-//	u8		Kills;
-//	Bonus_Money_Struct(s32 M, u8 R, u8 K) {Money = M; Reason = R; Kills = K;}
-//	Bonus_Money_Struct() {Money = 0; Reason = 0; Kills=0;}
-//};
-
-struct	game_PlayerState 
+struct	game_PlayerState
 {
 	string64	name;
 	u8			team;
-	
+
 	s16			m_iRivalKills;
 	s16			m_iSelfKills;
 	s16			m_iTeamKills;
 	s16			m_iKillsInRowCurr;
 	s16			m_iKillsInRowMax;
 	s16			m_iDeaths;
-	s32			money_for_round;	
+	s32			money_for_round;
 
 	f32			experience_Real;
 	f32			experience_New;
@@ -74,32 +66,44 @@ struct	game_PlayerState
 	u32			DeathTime;
 	s16			money_delta;
 	u8			m_bCurrentVoteAgreed;
-	DEF_DEQUE	(OLD_GAME_ID, u16);
+	DEF_DEQUE(OLD_GAME_ID, u16);
 	OLD_GAME_ID	mOldIDs;
 	s32			money_added;
-//	DEF_VECTOR	(MONEY_BONUS, Bonus_Money_Struct);
-//	MONEY_BONUS	m_aBonusMoney;
+
 	bool		m_bPayForSpawn;
 	u32			m_online_time;
-public:
-					game_PlayerState		();
-					~game_PlayerState		();
-	virtual void	clear					();
-			bool	testFlag				(u16 f) const;
-			void	setFlag					(u16 f);
-			void	resetFlag				(u16 f);
-			pcstr	getName					(){return name;}
-			void	setName					(pcstr s){strcpy(name,s);}
-			void	SetGameID				(u16 NewID);
-			bool	HasOldID				(u16 ID);
-			bool	IsSkip					() const {return testFlag(GAME_PLAYER_FLAG_SKIP);}
-			
-			s16		frags					() const {return m_iRivalKills - m_iSelfKills - m_iTeamKills;} 
 
-	virtual void	net_Export				(CNetPacket& P, BOOL Full = FALSE);
-	virtual void	net_Import				(CNetPacket& P);
+public:
+	game_PlayerState( );
+	~game_PlayerState( );
+	virtual void	clear( );
+	bool	testFlag(u16 f) const;
+	void	setFlag(u16 f);
+	void	resetFlag(u16 f);
+	pcstr	getName( )
+	{
+		return name;
+	}
+	void	setName(pcstr s)
+	{
+		strcpy(name, s);
+	}
+	void	SetGameID(u16 NewID);
+	bool	HasOldID(u16 ID);
+	bool	IsSkip( ) const
+	{
+		return testFlag(GAME_PLAYER_FLAG_SKIP);
+	}
+
+	s16		frags( ) const
+	{
+		return (m_iRivalKills - m_iSelfKills - m_iTeamKills);
+	}
+
+	virtual void	net_Export(CNetPacket& P, BOOL Full = FALSE);
+	virtual void	net_Import(CNetPacket& P);
 	//---------------------------------------
-	
+
 	DEF_VECTOR(PLAYER_ITEMS_LIST, u16);
 
 	PLAYER_ITEMS_LIST	pItemList;
@@ -123,7 +127,7 @@ struct	game_TeamState
 	s32			score;
 	u16			num_targets;
 
-	game_TeamState();
+	game_TeamState( );
 };
 
 #pragma pack(pop)
@@ -138,33 +142,46 @@ protected:
 
 	u32								m_round_start_time;
 	string64						m_round_start_time_str;
-//	u32								buy_time;
-//	s32								fraglimit; //dm,tdm,ah
-//	s32								timelimit; //dm
-//	u32								damageblocklimit;//dm,tdm
-//	xr_vector<game_TeamState>		teams;//dm,tdm,ah
-	// for Artefact Hunt
-//	u8								artefactsNum;//ah
-//	u16								artefactBearerID;//ah,ZoneMap
-//	u8								teamInPossession;//ah,ZoneMap
+
 protected:
-	virtual		void				switch_Phase			(u32 new_phase);
-	virtual		void				OnSwitchPhase			(u32 old_phase, u32 new_phase)	{};	
+	virtual		void				switch_Phase(u32 new_phase);
+	virtual		void				OnSwitchPhase(u32 old_phase, u32 new_phase)
+	{ }
 
 public:
-									game_GameState			();
-	virtual							~game_GameState			()								{}
-				u32					Type					() const						{return m_type;};
-				u16					Phase					() const						{return m_phase;};
-				s32					Round					() const						{return m_round;};
-				u32					StartTime				() const						{return m_start_time;};
-	virtual		void				Create					(shared_str& options)				{};
-	virtual		pcstr				type_name				() const						{return "base game";};
-//for scripting enhancement
-	static		CLASS_ID			getCLASS_ID				(pcstr game_type_name, bool bServer);
-	virtual		game_PlayerState*	createPlayerState()		{return xr_new<game_PlayerState>(); };
+	game_GameState( );
+	virtual							~game_GameState( )
+	{ }
+	u32					Type( ) const
+	{
+		return m_type;
+	}
+	u16					Phase( ) const
+	{
+		return m_phase;
+	}
+	s32					Round( ) const
+	{
+		return m_round;
+	}
+	u32					StartTime( ) const
+	{
+		return m_start_time;
+	}
+	virtual		void				Create(shared_str& options)
+	{ }
+	virtual		pcstr				type_name( ) const
+	{
+		return "base game";
+	}
+	//for scripting enhancement
+	static		CLASS_ID			getCLASS_ID(pcstr game_type_name, bool bServer);
+	virtual		game_PlayerState* createPlayerState( )
+	{
+		return xr_new<game_PlayerState>( );
+	}
 
-//moved from game_sv_base (time routines)
+	//moved from game_sv_base (time routines)
 private:
 	// scripts
 	u64								m_qwStartProcessorTime;
@@ -176,19 +193,19 @@ private:
 	f32							m_fETimeFactor;
 	//-------------------------------------------------------
 public:
+	virtual		ALife::_TIME_ID		GetGameTime( );
+	virtual		f32				GetGameTimeFactor( );
+	void				SetGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
+	virtual		void				SetGameTimeFactor(const f32 fTimeFactor);
 
-	virtual		ALife::_TIME_ID		GetGameTime				();	
-	virtual		f32				GetGameTimeFactor		();
-				void				SetGameTimeFactor		(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
-	virtual		void				SetGameTimeFactor		(const f32 fTimeFactor);	
-
-	virtual		ALife::_TIME_ID		GetEnvironmentGameTime	();
-	virtual		f32				GetEnvironmentGameTimeFactor		();
-				void				SetEnvironmentGameTimeFactor		(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
-	virtual		void				SetEnvironmentGameTimeFactor		(const f32 fTimeFactor);
+	virtual		ALife::_TIME_ID		GetEnvironmentGameTime( );
+	virtual		f32				GetEnvironmentGameTimeFactor( );
+	void				SetEnvironmentGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTimeFactor);
+	virtual		void				SetEnvironmentGameTimeFactor(const f32 fTimeFactor);
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION
 };
+
 add_to_type_list(game_GameState)
 #undef script_type_list
 #define script_type_list save_type_list(game_GameState)

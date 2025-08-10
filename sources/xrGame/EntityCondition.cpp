@@ -4,7 +4,7 @@
 #include "CustomOutfit.h"
 #include "Inventory.h"
 #include "Wound.h"
-#include "level.h"
+#include "Level.h"
 #include "game_cl_base.h"
 #include "EntityAlive.h"
 #include "..\XR_3DA\SkeletonCustom.h"

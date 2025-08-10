@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "level.h"
+#include "Level.h"
 
 void	CLevel::net_Load				(pcstr name)		// Game Load
 {

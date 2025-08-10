@@ -7,7 +7,7 @@
 #include "MMsound.h"//
 #include "../hudmanager.h"
 #include "../game_base_space.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../object_broker.h"
 #include "../Actor.h"
 #include "../saved_game_wrapper.h"

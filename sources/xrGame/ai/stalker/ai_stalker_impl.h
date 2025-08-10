@@ -9,10 +9,10 @@
 #pragma once
 
 #include "../../Level.h"
-#include "../../seniority_hierarchy_holder.h"
-#include "../../team_hierarchy_holder.h"
-#include "../../squad_hierarchy_holder.h"
-#include "../../group_hierarchy_holder.h"
+#include "../../SeniorityHierarchyHolder.h"
+#include "../../TeamHierarchyHolder.h"
+#include "../../SquadHierarchyHolder.h"
+#include "../../GroupHierarchyHolder.h"
 #include "../../EffectorShot.h"
 
 IC	CAgentManager & CStalker::agent_manager	() const

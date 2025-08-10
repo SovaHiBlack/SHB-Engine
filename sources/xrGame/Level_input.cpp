@@ -2,20 +2,11 @@
 #include <dinput.h>
 #include "HUDmanager.h"
 #include "..\XR_3DA\Console.h"
-//#include "EntityAlive.h"
-//#include "game_sv_single.h"
-//#include "alife_simulator.h"
-//#include "alife_simulator_header.h"
-//#include "level_graph.h"
-//#include "..\XR_3DA\DemoRecord.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "game_cl_base.h"
-//#include "stalker_movement_manager.h"
 #include "Inventory.h"
-//#include "WeaponHUD.h"
 #include "xrServer.h"
-//#include "AutosaveManager.h"
 
 #include "Actor.h"
 #include "HudItem.h"
@@ -75,7 +66,7 @@ void CLevel::IR_OnMouseWheel(s32 direction)
 	}
 }
 
-static s32 mouse_button_2_key[ ] = { MOUSE_1,MOUSE_2,MOUSE_3 };
+static s32 mouse_button_2_key[ ] = {MOUSE_1,MOUSE_2,MOUSE_3};
 
 void CLevel::IR_OnMousePress(s32 btn)
 {
@@ -446,7 +437,7 @@ void CLevel::IR_OnKeyboardPress(s32 key)
 		{
 			monster->debug_on_key(key);
 		}
-}
+	}
 #endif
 
 }

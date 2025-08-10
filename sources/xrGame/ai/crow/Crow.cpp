@@ -7,7 +7,7 @@
 #include "../../PhysicsShell.h"
 #include "Crow.h"
 #include "../../hudmanager.h"
-#include "../../level.h"
+#include "../../Level.h"
 #include "../../..\XR_3DA\skeletonanimated.h"
 
 void CCrow::SAnim::Load(CKinematicsAnimated* visual, pcstr prefix)

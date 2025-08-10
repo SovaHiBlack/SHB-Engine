@@ -11,7 +11,7 @@
 #include "..\XR_3DA\Environment.h"
 #include "..\XR_3DA\CustomHUD.h"
 #include "Entity.h"
-#include "level.h"
+#include "Level.h"
 #include "game_cl_base.h"
 #include "..\XR_3DA\igame_persistent.h"
 

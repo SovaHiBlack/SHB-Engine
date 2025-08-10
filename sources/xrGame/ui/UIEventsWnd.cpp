@@ -10,7 +10,7 @@
 #include "UITaskDescrWnd.h"//
 #include "UI3tButton.h"
 #include "../HUDManager.h"
-#include "../level.h"
+#include "../Level.h"
 #include "../Actor.h"
 #include "../GameTaskManager.h"
 #include "../GameTask.h"

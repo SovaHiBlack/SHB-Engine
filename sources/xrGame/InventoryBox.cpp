@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "InventoryBox.h"
-#include "level.h"
+#include "Level.h"
 #include "Actor.h"
 #include "GameObject_space.h"
 
