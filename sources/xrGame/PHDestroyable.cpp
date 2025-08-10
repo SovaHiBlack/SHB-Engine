@@ -290,6 +290,7 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate* dn)
 			e->applyImpulseVsGF(pos, m_fatal_hit.direction( ), m_fatal_hit.phys_impulse( ) * imp_transition_factor);
 			random_hit += random_hit_imp * m_fatal_hit.phys_impulse( );
 		}
+
 		fVector3 rnd_dir;
 		rnd_dir.random_dir( );
 		e->applyImpulse(rnd_dir, random_hit);
@@ -312,7 +313,10 @@ void CPHDestroyable::NotificatePart(CPHDestroyableNotificate* dn)
 	dn->PPhysicsShellHolder( )->setEnabled(TRUE);
 
 	if (own_shell->IsGroupObject( ))
-		new_shell->RegisterToCLGroup(own_shell->GetCLGroup( ));//CollideBits
+	{
+		new_shell->RegisterToCLGroup(own_shell->GetCLGroup( ));
+	}//CollideBits
+
 	CPHSkeleton* ps = dn->PPhysicsShellHolder( )->PHSkeleton( );
 	if (ps)
 	{
@@ -338,12 +342,15 @@ void CPHDestroyable::NotificateDestroy(CPHDestroyableNotificate* dn)
 	if (!m_depended_objects)
 	{
 		xr_vector<CPHDestroyableNotificate*>::iterator i = m_notificate_objects.begin( ), e = m_notificate_objects.end( );
-		for (; i < e; i++)NotificatePart(*i);
+		for (; i < e; i++)
+		{
+			NotificatePart(*i);
+		}
+
 		PhysicallyRemoveSelf( );
 		m_notificate_objects.clear( );
 		m_flags.set(fl_released, TRUE);
 	}
-
 }
 
 void CPHDestroyable::SetFatalHit(const SHit& hit)

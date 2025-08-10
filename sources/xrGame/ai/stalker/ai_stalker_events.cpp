@@ -13,7 +13,7 @@
 #include "../../xrmessages.h"
 #include "../../ShootingObject.h"
 #include "../../../xrNetServer/net_utils.h"
-#include "../../level.h"
+#include "../../Level.h"
 #include "../../ai_monster_space.h"
 
 using namespace StalkerSpace;

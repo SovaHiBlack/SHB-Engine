@@ -41,7 +41,7 @@ void CWeaponStatMgun::OnKeyboardPress(s32 dik)
 		{
 			FireStart( );
 		}
-			break;
+		break;
 	}
 }
 
@@ -58,7 +58,7 @@ void CWeaponStatMgun::OnKeyboardRelease(s32 dik)
 		{
 			FireEnd( );
 		}
-			break;
+		break;
 	}
 }
 

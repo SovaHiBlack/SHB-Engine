@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Geometry.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 
 DEFINE_VECTOR(CODEGeom*,GEOM_STORAGE,GEOM_I)
 

@@ -6,7 +6,7 @@ struct SLocationKey : public IPureSerializeObject<IReader, IWriter>, public IPur
 {
 	shared_str		spot_type;
 	u16				object_id;
-	CMapLocation* location;
+	CMapLocation*	location;
 	bool			actual;
 	SLocationKey(shared_str s, u16 id) : spot_type(s), object_id(id), location(NULL), actual(true)
 	{ }
@@ -15,7 +15,7 @@ struct SLocationKey : public IPureSerializeObject<IReader, IWriter>, public IPur
 
 	bool operator < (const SLocationKey& key)const
 	{
-		return actual > key.actual;
+		return (actual > key.actual);
 	} //move non-actual to tail
 
 	virtual void save(IWriter& stream);

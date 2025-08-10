@@ -7,7 +7,7 @@
 #include "..\XR_3DA\DemoPlay.h"
 #include "xrMessages.h"
 #include "xrserver.h"
-#include "level.h"
+#include "Level.h"
 #include "script_debugger.h"
 #include "ai_debug.h"
 #include "alife_simulator.h"

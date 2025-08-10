@@ -2,7 +2,6 @@
 #include "BinocularsVision.h"
 #include "WeaponBinoculars.h"
 #include "ui\UIFrameWindow.h"
-//#include "EntityAlive.h"
 #include "visual_memory_manager.h"
 #include "Actor.h"
 #include "ActorMemory.h"
@@ -15,7 +14,7 @@
 #include "AI/Monsters/BaseMonster/base_monster.h"
 #include "..\XR_3DA\igame_persistent.h"
 
-#define RECT_SIZE	16
+#define RECT_SIZE	16.0f
 
 extern u32 C_ON_ENEMY;
 extern u32 C_ON_NEUTRAL;
@@ -76,8 +75,8 @@ void SBinocVisibleObj::Update( )
 
 	fMatrix4x4 xform;
 	xform.mul(Device.mFullTransform, m_object->XFORM( ));
-	fVector2 mn = {flt_max,flt_max};
-	fVector2 mx = {flt_min,flt_min};
+	fVector2 mn = {flt_max, flt_max};
+	fVector2 mx = {flt_min, flt_min};
 
 	for (u32 k = 0; k < 8; ++k)
 	{
@@ -142,17 +141,17 @@ void SBinocVisibleObj::Update( )
 					{
 						case ALife::eRelationTypeEnemy:
 						{
-							clr = C_ON_ENEMY;							
+							clr = C_ON_ENEMY;
 						}
 						break;
 						case ALife::eRelationTypeNeutral:
 						{
-							clr = C_ON_NEUTRAL;							
+							clr = C_ON_NEUTRAL;
 						}
 						break;
 						case ALife::eRelationTypeFriend:
 						{
-							clr = C_ON_FRIEND;							
+							clr = C_ON_FRIEND;
 						}
 						break;
 					}
@@ -189,7 +188,6 @@ CBinocularsVision::~CBinocularsVision( )
 void CBinocularsVision::Update( )
 {
 	const CActor* pActor = Actor( );
-
 	if (!pActor)
 	{
 		return;
@@ -223,7 +221,6 @@ void CBinocularsVision::Update( )
 		FindVisObjByObject	f(object_);
 		VIS_OBJECTS_IT found;
 		found = std::find_if(m_active_objects.begin( ), m_active_objects.end( ), f);
-
 		if (found != m_active_objects.end( ))
 		{
 			(*found)->m_flags.set(flVisObjNotValid, FALSE);
@@ -260,7 +257,7 @@ void CBinocularsVision::Update( )
 
 void CBinocularsVision::Draw( )
 {
-	VIS_OBJECTS_IT	it = m_active_objects.begin( );
+	VIS_OBJECTS_IT it = m_active_objects.begin( );
 	for (; it != m_active_objects.end( ); ++it)
 	{
 		(*it)->Draw( );

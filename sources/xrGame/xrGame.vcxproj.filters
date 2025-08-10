@@ -685,9 +685,6 @@
     <Filter Include="Core\Client\Effectors\Actor">
       <UniqueIdentifier>{fcb26c07-f429-4e87-9d05-ca98557366da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Effectors\monsters_%3f%3f%3f">
-      <UniqueIdentifier>{35c13714-8f7c-4874-95a1-e99a6e6b97e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Effectors\Postprocess">
       <UniqueIdentifier>{6e6fe47f-b7c8-438e-b331-477b15d9d5b6}</UniqueIdentifier>
     </Filter>
@@ -702,9 +699,6 @@
     </Filter>
     <Filter Include="Core\Client\Level">
       <UniqueIdentifier>{3c7a58dd-2cff-42ef-a89e-43991f4e15dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Level\Bullet Manager">
-      <UniqueIdentifier>{12094e24-301b-4d52-ba37-827dd08b113b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Level\SeniorityHierarchyHolder">
       <UniqueIdentifier>{e5ecbb49-42f3-4632-aa3b-c140c35acbb3}</UniqueIdentifier>
@@ -723,9 +717,6 @@
     </Filter>
     <Filter Include="Core\Client\Level\AutosaveManager">
       <UniqueIdentifier>{64579cfe-087c-4516-aca7-647ab11ff989}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Level\Level Sounds">
-      <UniqueIdentifier>{a0ef4c3d-8f34-4ce5-af4f-8c4f8e822981}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Level\Debug Renderer">
       <UniqueIdentifier>{3085ff3e-131b-4f8e-8ccb-c73eed401123}</UniqueIdentifier>
@@ -765,36 +756,6 @@
     </Filter>
     <Filter Include="Core\Client\Objects\base\CollideValidator">
       <UniqueIdentifier>{80d8e8db-ae29-4319-9062-0d02c0e88beb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics">
-      <UniqueIdentifier>{33d2cc9c-7b90-41f4-883b-f9726269388b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\PHSkeleton">
-      <UniqueIdentifier>{b402d608-a824-4c86-88a0-48184cf5b571}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\PHDestroyable">
-      <UniqueIdentifier>{033461ad-bf83-4840-8065-4d3ad0b209a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\PhysicsSkeletonObject">
-      <UniqueIdentifier>{7dd53ce8-b196-442d-abf3-0480a669d35f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\PhysicsShellHolder">
-      <UniqueIdentifier>{ca0af18a-579c-4c5c-9217-1fdc2f50f81f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\Climable">
-      <UniqueIdentifier>{cc46eded-548d-4b21-9b5d-6bd5d962db83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\Breakable">
-      <UniqueIdentifier>{95eefa12-771d-43ab-803e-b1f98053997d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\CollisionDamageReceiver">
-      <UniqueIdentifier>{f952f164-5e2b-441a-a51a-8b58255f12cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\DestroyablePhysicsObject">
-      <UniqueIdentifier>{eec2430c-c822-4eb8-b4eb-6aa75d2e554f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Client\Objects\physics\PhysicObject">
-      <UniqueIdentifier>{96b4f515-605e-464d-8aba-06ec1a8ae424}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Client\Objects\tasks_info_dialogs">
       <UniqueIdentifier>{6a9218ca-f710-4b8d-812d-f7eaa0675813}</UniqueIdentifier>
@@ -1990,9 +1951,6 @@
     <Filter Include="Core\Client\Objects\Items&amp;Weapons\Weapons\HUD">
       <UniqueIdentifier>{2d417eef-6451-4ce9-829a-39de6d3c865c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\Items&amp;Weapons\Weapons\Mounted Weapon">
-      <UniqueIdentifier>{a9b207df-526a-4875-9c8b-4cf816adde52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\Items&amp;Weapons\Weapons\StationaryMgun">
       <UniqueIdentifier>{1070c67f-b740-4a70-b7d4-881bd8d0404b}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2025,48 @@
     </Filter>
     <Filter Include="Core\Client\Objects\Items&amp;Weapons\Artefacts\BastArtefact">
       <UniqueIdentifier>{961ac65b-b051-4140-a4d9-b89a053dcda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Items&amp;Weapons\Weapons\WeaponMounted">
+      <UniqueIdentifier>{a9b207df-526a-4875-9c8b-4cf816adde52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics">
+      <UniqueIdentifier>{33d2cc9c-7b90-41f4-883b-f9726269388b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\PHSkeleton">
+      <UniqueIdentifier>{b402d608-a824-4c86-88a0-48184cf5b571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\PHDestroyable">
+      <UniqueIdentifier>{033461ad-bf83-4840-8065-4d3ad0b209a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\PhysicsSkeletonObject">
+      <UniqueIdentifier>{7dd53ce8-b196-442d-abf3-0480a669d35f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\PhysicsShellHolder">
+      <UniqueIdentifier>{ca0af18a-579c-4c5c-9217-1fdc2f50f81f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\Climable">
+      <UniqueIdentifier>{cc46eded-548d-4b21-9b5d-6bd5d962db83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\Breakable">
+      <UniqueIdentifier>{95eefa12-771d-43ab-803e-b1f98053997d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\CollisionDamageReceiver">
+      <UniqueIdentifier>{f952f164-5e2b-441a-a51a-8b58255f12cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\DestroyablePhysicsObject">
+      <UniqueIdentifier>{eec2430c-c822-4eb8-b4eb-6aa75d2e554f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Physics\PhysicObject">
+      <UniqueIdentifier>{96b4f515-605e-464d-8aba-06ec1a8ae424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Effectors\Monsters">
+      <UniqueIdentifier>{35c13714-8f7c-4874-95a1-e99a6e6b97e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Level\BulletManager">
+      <UniqueIdentifier>{12094e24-301b-4d52-ba37-827dd08b113b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Level\LevelSoundManager">
+      <UniqueIdentifier>{a0ef4c3d-8f34-4ce5-af4f-8c4f8e822981}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4389,14 +4389,14 @@
     <ClInclude Include="SleepEffector.h">
       <Filter>Core\Client\Effectors\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\ai_monster_effector.h">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClInclude Include="ai\Monsters\MonsterEffector.h">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClInclude>
-    <ClInclude Include="pp_effector_custom.h">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClInclude Include="PPEffectorCustom.h">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClInclude>
-    <ClInclude Include="pp_effector_distance.h">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClInclude Include="PPEffectorDistance.h">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="PostprocessAnimator.h">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
@@ -4422,17 +4422,14 @@
     <ClInclude Include="Level.h">
       <Filter>Core\Client\Level</Filter>
     </ClInclude>
-    <ClInclude Include="Level_network_Demo.h">
-      <Filter>Core\Client\Level</Filter>
-    </ClInclude>
     <ClInclude Include="LevelGameDef.h">
       <Filter>Core\Client\Level</Filter>
     </ClInclude>
     <ClInclude Include="BulletManager.h">
-      <Filter>Core\Client\Level\Bullet Manager</Filter>
+      <Filter>Core\Client\Level\BulletManager</Filter>
     </ClInclude>
     <ClInclude Include="Tracer.h">
-      <Filter>Core\Client\Level\Bullet Manager</Filter>
+      <Filter>Core\Client\Level\BulletManager</Filter>
     </ClInclude>
     <ClInclude Include="seniority_hierarchy_holder.h">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder</Filter>
@@ -4473,8 +4470,8 @@
     <ClInclude Include="AutosaveManager_inline.h">
       <Filter>Core\Client\Level\AutosaveManager</Filter>
     </ClInclude>
-    <ClInclude Include="level_sounds.h">
-      <Filter>Core\Client\Level\Level Sounds</Filter>
+    <ClInclude Include="LevelSoundManager.h">
+      <Filter>Core\Client\Level\LevelSoundManager</Filter>
     </ClInclude>
     <ClInclude Include="DebugRenderer.h">
       <Filter>Core\Client\Level\Debug Renderer</Filter>
@@ -4531,34 +4528,34 @@
       <Filter>Core\Client\Objects\base\CollideValidator</Filter>
     </ClInclude>
     <ClInclude Include="PHSkeleton.h">
-      <Filter>Core\Client\Objects\physics\PHSkeleton</Filter>
+      <Filter>Core\Client\Objects\Physics\PHSkeleton</Filter>
     </ClInclude>
     <ClInclude Include="PHDestroyable.h">
-      <Filter>Core\Client\Objects\physics\PHDestroyable</Filter>
+      <Filter>Core\Client\Objects\Physics\PHDestroyable</Filter>
     </ClInclude>
     <ClInclude Include="PHDestroyableNotificate.h">
-      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicsSkeletonObject</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsSkeletonObject.h">
-      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicsSkeletonObject</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsShellHolder.h">
-      <Filter>Core\Client\Objects\physics\PhysicsShellHolder</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicsShellHolder</Filter>
     </ClInclude>
     <ClInclude Include="ClimableObject.h">
-      <Filter>Core\Client\Objects\physics\Climable</Filter>
+      <Filter>Core\Client\Objects\Physics\Climable</Filter>
     </ClInclude>
     <ClInclude Include="BreakableObject.h">
-      <Filter>Core\Client\Objects\physics\Breakable</Filter>
+      <Filter>Core\Client\Objects\Physics\Breakable</Filter>
     </ClInclude>
     <ClInclude Include="PHCollisionDamageReceiver.h">
-      <Filter>Core\Client\Objects\physics\CollisionDamageReceiver</Filter>
+      <Filter>Core\Client\Objects\Physics\CollisionDamageReceiver</Filter>
     </ClInclude>
     <ClInclude Include="DestroyablePhysicsObject.h">
-      <Filter>Core\Client\Objects\physics\DestroyablePhysicsObject</Filter>
+      <Filter>Core\Client\Objects\Physics\DestroyablePhysicsObject</Filter>
     </ClInclude>
     <ClInclude Include="PhysicObject.h">
-      <Filter>Core\Client\Objects\physics\PhysicObject</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicObject</Filter>
     </ClInclude>
     <ClInclude Include="HangingLamp.h">
       <Filter>Core\Client\Objects\HangingLamp</Filter>
@@ -4846,7 +4843,7 @@
       <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\HUD</Filter>
     </ClInclude>
     <ClInclude Include="WeaponMounted.h">
-      <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\Mounted Weapon</Filter>
+      <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\WeaponMounted</Filter>
     </ClInclude>
     <ClInclude Include="WeaponStatMgun.h">
       <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\StationaryMgun</Filter>
@@ -7115,14 +7112,14 @@
     <ClCompile Include="SleepEffector.cpp">
       <Filter>Core\Client\Effectors\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\ai_monster_effector.cpp">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClCompile Include="ai\Monsters\MonsterEffector.cpp">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClCompile>
-    <ClCompile Include="pp_effector_custom.cpp">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClCompile Include="PPEffectorCustom.cpp">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClCompile>
-    <ClCompile Include="pp_effector_distance.cpp">
-      <Filter>Core\Client\Effectors\monsters_%3f%3f%3f</Filter>
+    <ClCompile Include="PPEffectorDistance.cpp">
+      <Filter>Core\Client\Effectors\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="PostprocessAnimator.cpp">
       <Filter>Core\Client\Effectors\Postprocess</Filter>
@@ -7188,10 +7185,10 @@
       <Filter>Core\Client\Level</Filter>
     </ClCompile>
     <ClCompile Include="BulletManager.cpp">
-      <Filter>Core\Client\Level\Bullet Manager</Filter>
+      <Filter>Core\Client\Level\BulletManager</Filter>
     </ClCompile>
     <ClCompile Include="Tracer.cpp">
-      <Filter>Core\Client\Level\Bullet Manager</Filter>
+      <Filter>Core\Client\Level\BulletManager</Filter>
     </ClCompile>
     <ClCompile Include="seniority_hierarchy_holder.cpp">
       <Filter>Core\Client\Level\SeniorityHierarchyHolder</Filter>
@@ -7211,8 +7208,8 @@
     <ClCompile Include="AutosaveManager.cpp">
       <Filter>Core\Client\Level\AutosaveManager</Filter>
     </ClCompile>
-    <ClCompile Include="level_sounds.cpp">
-      <Filter>Core\Client\Level\Level Sounds</Filter>
+    <ClCompile Include="LevelSoundManager.cpp">
+      <Filter>Core\Client\Level\LevelSoundManager</Filter>
     </ClCompile>
     <ClCompile Include="DebugRenderer.cpp">
       <Filter>Core\Client\Level\Debug Renderer</Filter>
@@ -7257,37 +7254,34 @@
       <Filter>Core\Client\Objects\base\CollideValidator</Filter>
     </ClCompile>
     <ClCompile Include="PHSkeleton.cpp">
-      <Filter>Core\Client\Objects\physics\PHSkeleton</Filter>
+      <Filter>Core\Client\Objects\Physics\PHSkeleton</Filter>
     </ClCompile>
     <ClCompile Include="PHDestroyable.cpp">
-      <Filter>Core\Client\Objects\physics\PHDestroyable</Filter>
+      <Filter>Core\Client\Objects\Physics\PHDestroyable</Filter>
     </ClCompile>
     <ClCompile Include="PHDestroyableNotificate.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicsSkeletonObject</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsSkeletonObject.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicsSkeletonObject</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicsSkeletonObject</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsShellHolder.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicsShellHolder</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicsShellHolder</Filter>
     </ClCompile>
     <ClCompile Include="ClimableObject.cpp">
-      <Filter>Core\Client\Objects\physics\Climable</Filter>
+      <Filter>Core\Client\Objects\Physics\Climable</Filter>
     </ClCompile>
     <ClCompile Include="BreakableObject.cpp">
-      <Filter>Core\Client\Objects\physics\Breakable</Filter>
+      <Filter>Core\Client\Objects\Physics\Breakable</Filter>
     </ClCompile>
     <ClCompile Include="PHCollisionDamageReceiver.cpp">
-      <Filter>Core\Client\Objects\physics\CollisionDamageReceiver</Filter>
+      <Filter>Core\Client\Objects\Physics\CollisionDamageReceiver</Filter>
     </ClCompile>
     <ClCompile Include="DestroyablePhysicsObject.cpp">
-      <Filter>Core\Client\Objects\physics\DestroyablePhysicsObject</Filter>
+      <Filter>Core\Client\Objects\Physics\DestroyablePhysicsObject</Filter>
     </ClCompile>
     <ClCompile Include="PhysicObject.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicObject</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicObject_script.cpp">
-      <Filter>Core\Client\Objects\physics\PhysicObject</Filter>
+      <Filter>Core\Client\Objects\Physics\PhysicObject</Filter>
     </ClCompile>
     <ClCompile Include="HangingLamp.cpp">
       <Filter>Core\Client\Objects\HangingLamp</Filter>
@@ -7512,7 +7506,7 @@
       <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\HUD</Filter>
     </ClCompile>
     <ClCompile Include="WeaponMounted.cpp">
-      <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\Mounted Weapon</Filter>
+      <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\WeaponMounted</Filter>
     </ClCompile>
     <ClCompile Include="WeaponStatMgun.cpp">
       <Filter>Core\Client\Objects\Items&amp;Weapons\Weapons\StationaryMgun</Filter>
@@ -7580,7 +7574,7 @@
     <ClCompile Include="PDA.cpp">
       <Filter>Core\Client\Objects\Items&amp;Weapons\PDA &amp; information</Filter>
     </ClCompile>
-    <ClCompile Include="antirad.cpp">
+    <ClCompile Include="Antirad.cpp">
       <Filter>Core\Client\Objects\Items&amp;Weapons\Food &amp; Drugs</Filter>
     </ClCompile>
     <ClCompile Include="BottleItem.cpp">

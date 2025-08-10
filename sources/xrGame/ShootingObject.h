@@ -66,10 +66,10 @@ public:
 
 protected:
 	// Weapon fires now
-	bool					bWorking;
+	bool				bWorking;
 
 	f32					fTimeToFire;
-	fVector4				fvHitPower;
+	fVector4			fvHitPower;
 	f32					fHitImpulse;
 
 	//скорость вылета пули из ствола
@@ -93,15 +93,15 @@ protected:
 // Lights
 //////////////////////////////////////////////////////////////////////////
 protected:
-	fColor					light_base_color;
+	fColor				light_base_color;
 	f32					light_base_range;
-	fColor					light_build_color;
+	fColor				light_build_color;
 	f32					light_build_range;
-	ref_light				light_render;
+	ref_light			light_render;
 	f32					light_var_color;
 	f32					light_var_range;
 	f32					light_lifetime;
-	u32						light_frame;
+	u32					light_frame;
 	f32					light_time;
 	//включение подсветки во время выстрела
 	bool					m_bLightShotEnabled;

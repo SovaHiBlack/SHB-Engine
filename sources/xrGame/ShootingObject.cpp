@@ -20,7 +20,7 @@
 #define HIT_POWER_EPSILON 0.05f
 #define WALLMARK_SIZE 0.04f
 
-CShootingObject::CShootingObject(void)
+CShootingObject::CShootingObject( )
 {
 	fTime = 0.0f;
 	fTimeToFire = 0.0f;

@@ -5,7 +5,7 @@
 #include "../control_animation_base.h"
 #include "../control_direction_base.h"
 #include "../control_movement_base.h"
-#include "../../../level.h"
+#include "../../../Level.h"
 #include "../../../LevelDebug.h"
 #include "../../../Actor.h"
 #include "../../../ActorEffector.h"

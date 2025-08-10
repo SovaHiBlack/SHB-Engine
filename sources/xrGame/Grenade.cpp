@@ -13,7 +13,7 @@
 #include "xrserver_objects_alife.h"
 
 #define GRENADE_REMOVE_TIME		30000
-const f32 default_grenade_detonation_threshold_hit = 100;
+const f32 default_grenade_detonation_threshold_hit = 100.0f;
 
 CGrenade::CGrenade( )
 {
@@ -101,7 +101,7 @@ void CGrenade::State(u32 state)
 	{
 		case MS_THREATEN:
 		{
-			fVector3						C;
+			fVector3 C;
 			Center(C);
 			PlaySound(sndCheckout, C);
 		}
@@ -165,7 +165,7 @@ void CGrenade::Throw( )
 void CGrenade::Destroy( )
 {
 	//Generate Expode event
-	fVector3						normal;
+	fVector3 normal;
 	FindNormal(normal);
 	CExplosive::GenExplodeEvent(Position( ), normal);
 }
@@ -173,7 +173,6 @@ void CGrenade::Destroy( )
 bool CGrenade::Useful( ) const
 {
 	bool res = (/* !m_throw && */ m_dwDestroyTime == 0xffffffff && CExplosive::Useful( ) && TestServerFlag(CSE_ALifeObject::flCanSave));
-
 	return res;
 }
 
@@ -195,7 +194,7 @@ void CGrenade::PutNextToSlot( )
 	//выкинуть гранату из инвентаря
 	if (m_pCurrentInventory)
 	{
-		CNetPacket						P;
+		CNetPacket P;
 		m_pCurrentInventory->Ruck(this);
 
 		this->u_EventGen(P, GEG_PLAYER_ITEM2RUCK, this->H_Parent( )->ID( ));
@@ -217,7 +216,6 @@ void CGrenade::PutNextToSlot( )
 			pNext->u_EventSend(P);
 			m_pCurrentInventory->SetActiveSlot(pNext->GetSlot( ));
 		}
-/////	m_thrown				= false;
 	}
 }
 
@@ -332,7 +330,7 @@ void CGrenade::Deactivate( )
 						if (!pActor->g_Alive( ))
 						{
 							m_constpower = false;
-							m_fThrowForce = 0;
+							m_fThrowForce = 0.0f;
 						}
 					}
 				}

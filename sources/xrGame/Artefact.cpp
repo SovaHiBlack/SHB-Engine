@@ -5,7 +5,7 @@
 #include "game_cl_base.h"
 #include "..\XR_3DA\skeletonanimated.h"
 #include "Inventory.h"
-#include "level.h"
+#include "Level.h"
 #include "ai_object_location.h"
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "phworld.h"
@@ -17,7 +17,7 @@
 
 #define FASTMODE_DISTANCE 50.0f	//distance to camera from sphere, when zone switches to fast update sequence
 
-#define CHOOSE_MAX(x,inst_x,y,inst_y,z,inst_z)\
+#define CHOOSE_MAX(x, inst_x, y, inst_y, z, inst_z)\
 	if(x>y)\
 		if(x>z){inst_x;}\
 		else{inst_z;}\
@@ -351,7 +351,6 @@ void CArtefact::UpdateXForm( )
 
 		// Get access to entity and its visual
 		CEntityAlive* E = smart_cast<CEntityAlive*>(H_Parent( ));
-
 		if (!E)
 		{
 			return;
@@ -700,7 +699,7 @@ shared_str clear_brackets(pcstr src)
 	u32			_len = xr_strlen(_original);
 	if (0 == _len)
 	{
-		return	shared_str("");
+		return shared_str("");
 	}
 
 	if ('"' == _original[_len - 1])

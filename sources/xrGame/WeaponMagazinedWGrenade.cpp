@@ -215,7 +215,7 @@ bool CWeaponMagazinedWGrenade::SwitchMode( )
 	return true;
 }
 
-void  CWeaponMagazinedWGrenade::PerformSwitchGL( )
+void CWeaponMagazinedWGrenade::PerformSwitchGL( )
 {
 	m_bGrenadeMode = !m_bGrenadeMode;
 
@@ -414,16 +414,18 @@ void CWeaponMagazinedWGrenade::SwitchState(u32 S)
 				Transference.mul(d, RQ.range);
 				fVector3 res[2];
 
-#ifdef		DEBUG
+//#ifdef		DEBUG
 //.				DBG_OpenCashedDraw();
 //.				DBG_DrawLine(p1,fVector3().add(p1,d),D3DCOLOR_XRGB(255,0,0));
-#endif
+//#endif
+
 				u8 canfire0 = TransferenceAndThrowVelToThrowDir(Transference, CRocketLauncher::m_fLaunchSpeed, EffectiveGravity( ), res);
-#ifdef DEBUG
+
+				//#ifdef DEBUG
 //.				if(canfire0>0)DBG_DrawLine(p1,fVector3().add(p1,res[0]),D3DCOLOR_XRGB(0,255,0));
 //.				if(canfire0>1)DBG_DrawLine(p1,fVector3().add(p1,res[1]),D3DCOLOR_XRGB(0,0,255));
 //.				DBG_ClosedCashedDraw(30000);
-#endif
+//#endif
 
 				if (canfire0 != 0)
 				{
@@ -482,7 +484,6 @@ void CWeaponMagazinedWGrenade::ReloadMagazine( )
 	if (iAmmoElapsed && !getRocketCount( ) && m_bGrenadeMode)
 	{
 		shared_str fake_grenade_name = pSettings->r_string(*m_ammoTypes[m_ammoType], "fake_grenade_name");
-
 		CRocketLauncher::SpawnRocket(*fake_grenade_name, this);
 	}
 }
@@ -856,7 +857,6 @@ void CWeaponMagazinedWGrenade::load(IReader& input_packet)
 void CWeaponMagazinedWGrenade::net_Export(CNetPacket& P)
 {
 	P.w_u8(m_bGrenadeMode ? 1 : 0);
-
 	inherited::net_Export(P);
 }
 

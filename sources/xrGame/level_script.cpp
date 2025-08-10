@@ -29,7 +29,7 @@
 #include "phworld.h"
 #include "ActorEffector.h"
 #include "ui/UIGameCustom.h"
-#include "postprocessanimator.h"
+#include "PostprocessAnimator.h"
 #include "ActorStatisticManager.h"
 #include "RelationRegistry.h"
 

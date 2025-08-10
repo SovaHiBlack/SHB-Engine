@@ -10,7 +10,7 @@
 #include "EntityAlive.h"
 #include "EntityCondition.h"
 
-#define BREAK_POWER 5.f
+#define BREAK_POWER 5.0f
 
 CBottleItem::CBottleItem( )
 { }
@@ -58,21 +58,20 @@ void CBottleItem::BreakToPieces( )
 
 	//отыграть партиклы разбивания
 	if (*m_sBreakParticles)
-	{
-		//показываем эффекты
+	{	//показываем эффекты
 		CParticlesObject* pStaticPG;
 		pStaticPG = CParticlesObject::Create(*m_sBreakParticles, TRUE);
 		pStaticPG->play_at_pos(Position( ));
 	}
 
-	//ликвидировать сам объект 
+	//ликвидировать сам объект
 	if (Local( ))
 	{
 		DestroyObject( );
 	}
 }
 
-void	CBottleItem::Hit(SHit* pHDS)
+void CBottleItem::Hit(SHit* pHDS)
 {
 	inherited::Hit(pHDS);
 
@@ -91,6 +90,5 @@ void	CBottleItem::Hit(SHit* pHDS)
 void CBottleItem::UseBy(CEntityAlive* entity_alive)
 {
 	inherited::UseBy(entity_alive);
-
 	entity_alive->conditions( ).ChangeAlcohol(m_alcohol);
 }

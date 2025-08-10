@@ -8,7 +8,7 @@
 #include "../../../AISpace.h"
 #include "../../../restricted_object.h"
 #include "../../../Actor.h"
-#include "../ai_monster_effector.h"
+#include "../MonsterEffector.h"
 
 CPolterFlame::CPolterFlame(CPoltergeist *polter) : inherited (polter)
 { }

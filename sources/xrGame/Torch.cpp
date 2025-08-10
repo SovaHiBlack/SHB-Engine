@@ -320,7 +320,10 @@ void CTorch::UpdateCL( )
 	if (H_Parent( ))
 	{
 		CActor* actor = smart_cast<CActor*>(H_Parent( ));
-		if (actor)		smart_cast<CKinematics*>(H_Parent( )->Visual( ))->CalculateBones_Invalidate( );
+		if (actor)
+		{
+			smart_cast<CKinematics*>(H_Parent( )->Visual( ))->CalculateBones_Invalidate( );
+		}
 
 		if (H_Parent( )->XFORM( ).c.distance_to_sqr(Device.vCameraPosition) < _sqr(OPTIMIZATION_DISTANCE))
 		{
@@ -333,7 +336,7 @@ void CTorch::UpdateCL( )
 			// approximately the same
 			M = H_Parent( )->XFORM( );
 			H_Parent( )->Center(M.c);
-			M.c.y += H_Parent( )->Radius( ) * 2.f / 3.f;
+			M.c.y += H_Parent( )->Radius( ) * 2.0f / 3.0f;
 		}
 
 		if (actor)
@@ -364,6 +367,7 @@ void CTorch::UpdateCL( )
 					light_omni->set_position(offset);
 				}
 			}//if (true)
+
 			glow_render->set_position(M.c);
 
 			if (true)
@@ -375,8 +379,8 @@ void CTorch::UpdateCL( )
 					light_omni->set_rotation(dir, right);
 				}
 			}//if (true)
-			glow_render->set_direction(dir);
 
+			glow_render->set_direction(dir);
 		}// if(actor)
 		else
 		{
@@ -391,7 +395,7 @@ void CTorch::UpdateCL( )
 				offset.mad(M.k, OMNI_OFFSET.z);
 				light_omni->set_position(M.c);
 				light_omni->set_rotation(M.k, M.i);
-			}//if (can_use_dynamic_lights()) 
+			}//if (can_use_dynamic_lights())
 
 			glow_render->set_position(M.c);
 			glow_render->set_direction(M.k);
@@ -426,8 +430,8 @@ void CTorch::UpdateCL( )
 	u32 clr = lanim->CalculateBGR(Device.fTimeGlobal, frame);
 
 	fColor					fclr;
-	fclr.set((f32) color_get_B(clr), (f32) color_get_G(clr), (f32) color_get_R(clr), 1.f);
-	fclr.mul_rgb(fBrightness / 255.f);
+	fclr.set((f32) color_get_B(clr), (f32) color_get_G(clr), (f32) color_get_R(clr), 1.0f);
+	fclr.mul_rgb(fBrightness / 255.0f);
 	if (can_use_dynamic_lights( ))
 	{
 		light_render->set_color(fclr);

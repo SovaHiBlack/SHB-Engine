@@ -16,15 +16,9 @@ public:
 	CBottleItem( );
 	virtual ~CBottleItem( );
 
-
 	virtual void Load(pcstr section);
-
-
 	void	OnEvent(CNetPacket& P, u16 type);
-
-
-	virtual	void	Hit(SHit* pHDS);
-
+	virtual void	Hit(SHit* pHDS);
 
 	void					BreakToPieces( );
 	virtual void					UseBy(CEntityAlive* entity_alive);

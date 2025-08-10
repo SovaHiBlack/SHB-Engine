@@ -11,7 +11,7 @@
 #include "../monster_velocity_space.h"
 #include "../../../restricted_object.h"
 #include "../../../Actor.h"
-#include "../ai_monster_effector.h"
+#include "../MonsterEffector.h"
 #include "../../../ActorEffector.h"
 #include "psy_dog_aura.h"
 #include "psy_dog_state_manager.h"

@@ -200,7 +200,7 @@ void CMissile::UpdateCL( )
 			CActor* actor = smart_cast<CActor*>(H_Parent( ));
 			if (actor)
 			{
-				m_fThrowForce += (m_fForceGrowSpeed * Device.dwTimeDelta) * .001f;
+				m_fThrowForce += (m_fForceGrowSpeed * Device.dwTimeDelta) * 0.001f;
 				clamp(m_fThrowForce, m_fMinForce, m_fMaxForce);
 			}
 		}
@@ -384,7 +384,6 @@ void CMissile::UpdateXForm( )
 
 		// Get access to entity and its visual
 		CEntityAlive* E = smart_cast<CEntityAlive*>(H_Parent( ));
-
 		if (!E)
 		{
 			return;
@@ -418,8 +417,8 @@ void CMissile::UpdateXForm( )
 		fMatrix4x4& mR = V->LL_GetTransform(u16(boneR));
 
 		// Calculate
-		fMatrix4x4				mRes;
-		fVector3				R;
+		fMatrix4x4 mRes;
+		fVector3 R;
 		fVector3 D;
 		fVector3 N;
 		D.sub(mL.c, mR.c);
@@ -453,9 +452,9 @@ void CMissile::setup_throw_params( )
 	VERIFY(entity);
 	CInventoryOwner* inventory_owner = smart_cast<CInventoryOwner*>(H_Parent( ));
 	VERIFY(inventory_owner);
-	fMatrix4x4					trans;
+	fMatrix4x4 trans;
 	trans.identity( );
-	fVector3					FirePos;
+	fVector3 FirePos;
 	fVector3 FireDir;
 	if (this == inventory_owner->inventory( ).ActiveItem( ))
 	{
@@ -517,7 +516,7 @@ void CMissile::Throw( )
 void CMissile::OnEvent(CNetPacket& P, u16 type)
 {
 	inherited::OnEvent(P, type);
-	u16						id;
+	u16 id;
 	switch (type)
 	{
 		case GE_OWNERSHIP_TAKE:
@@ -744,7 +743,7 @@ void CMissile::setup_physic_shell( )
 u32	CMissile::ef_weapon_type( ) const
 {
 	VERIFY(m_ef_weapon_type != u32(-1));
-	return	(m_ef_weapon_type);
+	return m_ef_weapon_type;
 }
 
 void CMissile::OnDrawUI( )
@@ -764,7 +763,8 @@ void CMissile::OnDrawUI( )
 
 void CMissile::ExitContactCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* /*material_1*/, SGameMtl* /*material_2*/)
 {
-	dxGeomUserData* gd1 = NULL, * gd2 = NULL;
+	dxGeomUserData* gd1 = NULL;
+	dxGeomUserData* gd2 = NULL;
 	if (bo1)
 	{
 		gd1 = retrieveGeomUserData(c.geom.g1);

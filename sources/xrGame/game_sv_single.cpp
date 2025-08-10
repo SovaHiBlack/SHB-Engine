@@ -7,7 +7,7 @@
 #include "alife_time_manager.h"
 #include "../xrNetServer/net_utils.h"
 #include "object_broker.h"
-#include "gamepersistent.h"
+#include "GamePersistent.h"
 #include "xrServer.h"
 #include "..\XR_3DA\x_ray.h"
 

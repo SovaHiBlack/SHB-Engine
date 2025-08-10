@@ -25,7 +25,7 @@
 #	include "alife_time_manager.h"
 #	include "date_time.h"
 #	ifdef DEBUG
-#		include "level.h"
+#		include "Level.h"
 #		include "MapLocation.h"
 #		include "MapManager.h"
 #	endif

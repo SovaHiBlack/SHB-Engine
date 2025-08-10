@@ -19,7 +19,7 @@
 #include "Inventory.h"
 #include "xrserver_objects_alife_items.h"
 #include "..\XR_3DA\skeletonanimated.h"
-#include "level.h"
+#include "Level.h"
 #include "ui/UIMainIngameWnd.h"//
 #include "CarWeapon.h"
 #include "GameObject_space.h"

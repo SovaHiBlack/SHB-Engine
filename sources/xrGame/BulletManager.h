@@ -6,7 +6,7 @@
 #pragma once
 
 #include "WeaponAmmo.h"
-#include "tracer.h"
+#include "Tracer.h"
 
 //структура, описывающая пулю и ее свойства в полете
 struct SBullet

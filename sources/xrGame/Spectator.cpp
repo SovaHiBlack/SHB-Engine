@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "spectator.h"
-#include "effectorfall.h"
+#include "EffectorFall.h"
 #include "CameraLook.h"
 #include "CameraFirstEye.h"
 #include "Actor.h"

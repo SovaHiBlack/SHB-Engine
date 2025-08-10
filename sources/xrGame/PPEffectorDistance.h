@@ -1,5 +1,5 @@
 #pragma once
-#include "pp_effector_custom.h"
+#include "PPEffectorCustom.h"
 
 //////////////////////////////////////////////////////////////////////////
 // CPPEffectorDistance
@@ -12,6 +12,7 @@ class CPPEffectorDistance : public CPPEffectorController
 	f32			m_r_max_perc;		// max_radius (percents [0..1])
 	f32			m_radius;
 	f32			m_dist;
+
 public:
 	virtual void	load(pcstr section);
 	IC void	set_radius(f32 r)

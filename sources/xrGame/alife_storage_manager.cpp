@@ -16,7 +16,7 @@
 #include "alife_group_registry.h"
 #include "alife_registry_container.h"
 #include "xrserver.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\x_ray.h"
 #include "saved_game_wrapper.h"
 #include "StringTable.h"

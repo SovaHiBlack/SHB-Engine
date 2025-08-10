@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: AutosaveManager.cpp
-//	Created 	: 04.11.2004
-//  Modified 	: 04.11.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Autosave manager
 ////////////////////////////////////////////////////////////////////////////
 
@@ -10,7 +7,7 @@
 #include "AutosaveManager.h"
 #include "date_time.h"
 #include "AISpace.h"
-#include "level.h"
+#include "Level.h"
 #include "xrMessages.h"
 #include "hudmanager.h"
 #include "ui/UIGameCustom.h"

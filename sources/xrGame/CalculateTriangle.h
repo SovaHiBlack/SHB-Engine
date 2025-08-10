@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ExtendedGeom.h"
-//#include "MathUtils.h"
 #include "Level.h"
 #include "Geometry.h"
 #include "tri-colliderknoopc/dtricollidermath.h"

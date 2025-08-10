@@ -95,8 +95,7 @@ void CHudItem::renderable_Render( )
 	UpdateXForm( );
 	BOOL _hud_render = ::Render->get_HUD( ) && GetHUDmode( );
 	if (_hud_render && !m_pHUD->IsHidden( ) && !item( ).IsHidden( ))
-	{
-		// HUD render
+	{	// HUD render
 		if (m_bRenderHud)
 		{
 			::Render->set_Transform(&m_pHUD->Transform( ));
@@ -262,8 +261,6 @@ void CHudItem::UpdateHudInertion(fMatrix4x4& hud_trans)
 		origin.mad(xform.k, -pitch * PITCH_OFFSET_D);
 		origin.mad(xform.i, -pitch * PITCH_OFFSET_R);
 		origin.mad(xform.j, -pitch * PITCH_OFFSET_N);
-
-		// calc moving inertion
 	}
 }
 
@@ -316,6 +313,7 @@ void CHudItem::OnH_B_Independent(bool just_before_destroy)
 
 void CHudItem::OnH_A_Independent( )
 { }
+
 void CHudItem::animGet(MotionSVec& lst, pcstr prefix)
 {
 	const MotionID& M = m_pHUD->animGet(prefix);

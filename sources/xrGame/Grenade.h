@@ -63,7 +63,7 @@ private:
 	bool					m_thrown;
 
 protected:
-	virtual	void			UpdateXForm( )
+	virtual void			UpdateXForm( )
 	{
 		CMissile::UpdateXForm( );
 	}

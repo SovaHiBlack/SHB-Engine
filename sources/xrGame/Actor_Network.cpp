@@ -13,7 +13,7 @@
 #include "ActorEffector.h"
 
 #include "PHWorld.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "game_cl_base.h"
 #include "InfoPortion.h"
@@ -33,7 +33,7 @@
 #include "HUDManager.h"
 #include "ui/UIArtefactPanel.h"//
 #include "ui/UIMainIngameWnd.h"//
-#include "gamepersistent.h"
+#include "GamePersistent.h"
 #include "GameObject_space.h"
 #include "GameTaskManager.h"
 #include "game_base_kill_type.h"

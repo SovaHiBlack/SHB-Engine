@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "bloodsucker_alien.h"
 #include "Bloodsucker.h"
-#include "../../../level.h"
+#include "../../../Level.h"
 #include "../../../Actor.h"
 #include "../../../Inventory.h"
 #include "../../../HudItem.h"
@@ -10,7 +10,6 @@
 #include "../../../..\XR_3DA\effectorPP.h"
 
 #define EFFECTOR_ID_GEN(type) (type( u32(u64(this) & u32(-1)) ))
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CAlienEffectorPP

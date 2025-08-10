@@ -8,7 +8,7 @@
 #include "xr_level_controller.h"
 #include "game_cl_base.h"
 #include "..\XR_3DA\skeletonanimated.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "BulletManager.h"
 #include "ai_sounds.h"
 #include "game_cl_single.h"

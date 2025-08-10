@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-class CItemHealth :	public CGameObject
+class CItemHealth : public CGameObject
 {
 public:
 	CItemHealth( );

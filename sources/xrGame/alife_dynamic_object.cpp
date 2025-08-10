@@ -16,7 +16,7 @@
 #include "game_level_cross_table.h"
 #include "game_graph.h"
 #include "xrServer.h"
-#include "level.h"
+#include "Level.h"
 #include "MapManager.h"
 
 void CSE_ALifeDynamicObject::on_spawn				()

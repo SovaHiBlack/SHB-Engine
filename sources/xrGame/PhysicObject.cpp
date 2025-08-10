@@ -11,7 +11,7 @@
 CPhysicObject::CPhysicObject( )
 {
 	m_type = epotBox;
-	m_mass = 10.f;
+	m_mass = 10.0f;
 	m_collision_hit_callback = NULL;
 }
 
@@ -33,9 +33,15 @@ BOOL CPhysicObject::net_Spawn(CSE_Abstract* DC)
 		case epotBox:
 		case epotFixedChain:
 		case epotFreeChain:
-		case epotSkeleton:	collidable.model = xr_new<CCF_Skeleton>(this);	break;
-
-		default: NODEFAULT;
+		case epotSkeleton:
+		{
+			collidable.model = xr_new<CCF_Skeleton>(this);
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 
 	CPHSkeleton::Spawn(e);
@@ -43,17 +49,19 @@ BOOL CPhysicObject::net_Spawn(CSE_Abstract* DC)
 	setEnabled(TRUE);
 
 	if (!PPhysicsShell( )->isBreakable( ) && !CScriptBinder::object( ) && !CPHSkeleton::IsRemoving( ))
+	{
 		SheduleUnregister( );
+	}
 
 	return TRUE;
 }
 
-void	CPhysicObject::SpawnInitPhysics(CSE_Abstract* D)
+void CPhysicObject::SpawnInitPhysics(CSE_Abstract* D)
 {
 	CreatePhysicsShell(D);
 	RunStartupAnim(D);
-
 }
+
 void CPhysicObject::RunStartupAnim(CSE_Abstract* D)
 {
 	if (Visual( ) && smart_cast<CKinematics*>(Visual( )))
@@ -69,11 +77,12 @@ void CPhysicObject::RunStartupAnim(CSE_Abstract* D)
 			R_ASSERT2(*visual->startup_animation, "no startup animation");
 			PKinematicsAnimated->PlayCycle(*visual->startup_animation);
 		}
+
 		smart_cast<CKinematics*>(Visual( ))->CalculateBones_Invalidate( );
 		smart_cast<CKinematics*>(Visual( ))->CalculateBones( );
-
 	}
 }
+
 void CPhysicObject::net_Destroy( )
 {
 	inherited::net_Destroy( );
@@ -85,6 +94,7 @@ void CPhysicObject::net_Save(CNetPacket& P)
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);
 }
+
 void CPhysicObject::CreatePhysicsShell(CSE_Abstract* e)
 {
 	CSE_ALifeObjectPhysic* po = smart_cast<CSE_ALifeObjectPhysic*>(e);
@@ -93,9 +103,17 @@ void CPhysicObject::CreatePhysicsShell(CSE_Abstract* e)
 
 void CPhysicObject::CreateSkeleton(CSE_ALifeObjectPhysic* po)
 {
-	if (m_pPhysicsShell) return;
-	if (!Visual( )) return;
-	pcstr	fixed_bones = *po->fixed_bones;
+	if (m_pPhysicsShell)
+	{
+		return;
+	}
+
+	if (!Visual( ))
+	{
+		return;
+	}
+
+	pcstr fixed_bones = *po->fixed_bones;
 	m_pPhysicsShell = P_build_Shell(this, !po->_flags.test(CSE_PHSkeleton::flActive), fixed_bones);
 	ApplySpawnIniToPhysicShell(&po->spawn_ini( ), m_pPhysicsShell, fixed_bones[0] != '\0');
 	ApplySpawnIniToPhysicShell(smart_cast<CKinematics*>(Visual( ))->LL_UserData( ), m_pPhysicsShell, fixed_bones[0] != '\0');
@@ -112,12 +130,13 @@ void CPhysicObject::shedule_Update(u32 dt)
 	inherited::shedule_Update(dt);
 	CPHSkeleton::Update(dt);
 }
+
 void CPhysicObject::UpdateCL( )
 {
 	inherited::UpdateCL( );
-
 	PHObjectPositionUpdate( );
 }
+
 void CPhysicObject::PHObjectPositionUpdate( )
 {
 	if (m_pPhysicsShell)
@@ -155,12 +174,12 @@ void CPhysicObject::AddElement(CPhysicsElement* root_e, s32 id)
 	if (!(m_type == epotFreeChain && root_e == 0))
 	{
 		CPhysicsJoint* J = P_create_Joint(CPhysicsJoint::full_control, root_e, E);
-		J->SetAnchorVsSecondElement(0, 0, 0);
-		J->SetAxisDirVsSecondElement(1, 0, 0, 0);
-		J->SetAxisDirVsSecondElement(0, 1, 0, 2);
-		J->SetLimits(-M_PI / 2, M_PI / 2, 0);
-		J->SetLimits(-M_PI / 2, M_PI / 2, 1);
-		J->SetLimits(-M_PI / 2, M_PI / 2, 2);
+		J->SetAnchorVsSecondElement(0.0f, 0.0f, 0.0f);
+		J->SetAxisDirVsSecondElement(1.0f, 0.0f, 0.0f, 0.0f);
+		J->SetAxisDirVsSecondElement(0.0f, 1.0f, 0.0f, 2.0f);
+		J->SetLimits(-M_PI / 2, M_PI / 2, 0.0f);
+		J->SetLimits(-M_PI / 2, M_PI / 2, 1.0f);
+		J->SetLimits(-M_PI / 2, M_PI / 2, 2.0f);
 		m_pPhysicsShell->add_Joint(J);
 	}
 
@@ -171,18 +190,21 @@ void CPhysicObject::AddElement(CPhysicsElement* root_e, s32 id)
 	}
 }
 
-
 void CPhysicObject::CreateBody(CSE_ALifeObjectPhysic* po)
 {
+	if (m_pPhysicsShell)
+	{
+		return;
+	}
 
-	if (m_pPhysicsShell) return;
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	switch (m_type)
 	{
 		case epotBox:
 		{
 			m_pPhysicsShell = P_build_SimpleShell(this, m_mass, !po->_flags.test(CSE_ALifeObjectPhysic::flActive));
-		} break;
+		}
+		break;
 		case epotFixedChain:
 		case epotFreeChain:
 		{
@@ -190,63 +212,59 @@ void CPhysicObject::CreateBody(CSE_ALifeObjectPhysic* po)
 			m_pPhysicsShell->set_Kinematics(pKinematics);
 			AddElement(0, pKinematics->LL_GetBoneRoot( ));
 			m_pPhysicsShell->setMass1(m_mass);
-		} break;
-
-		case   epotSkeleton:
+		}
+		break;
+		case epotSkeleton:
 		{
 			//pKinematics->LL_SetBoneRoot(0);
 			CreateSkeleton(po);
-		}break;
-
+		}
+		break;
 		default:
 		{
-		} break;
-
+		}
+		break;
 	}
 
 	m_pPhysicsShell->mXFORM.set(XFORM( ));
 	m_pPhysicsShell->SetAirResistance(0.001f, 0.02f);
 	if (pKinematics)
 	{
-
 		SAllDDOParams disable_params;
 		disable_params.Load(pKinematics->LL_UserData( ));
 		m_pPhysicsShell->set_DisableParams(disable_params);
 	}
+
 	//m_pPhysicsShell->SetAirResistance(0.002f, 0.3f);
-
-
 }
-
-
-
-
-
 
 BOOL CPhysicObject::net_SaveRelevant( )
 {
 	return TRUE;//!m_flags.test(CSE_ALifeObjectPhysic::flSpawnCopy);
 }
 
-
 BOOL CPhysicObject::UsedAI_Locations( )
 {
-	return					(FALSE);
+	return FALSE;
 }
-
-
 
 void CPhysicObject::InitServerObject(CSE_Abstract* D)
 {
 	CPHSkeleton::InitServerObject(D);
 	CSE_ALifeObjectPhysic* l_tpALifePhysicObject = smart_cast<CSE_ALifeObjectPhysic*>(D);
-	if (!l_tpALifePhysicObject)return;
+	if (!l_tpALifePhysicObject)
+	{
+		return;
+	}
+
 	l_tpALifePhysicObject->type = u32(m_type);
 }
+
 SCollisionHitCallback* CPhysicObject::get_collision_hit_callback( )
 {
 	return m_collision_hit_callback;
 }
+
 bool					CPhysicObject::set_collision_hit_callback(SCollisionHitCallback* cc)
 {
 	if (!cc)
@@ -254,35 +272,27 @@ bool					CPhysicObject::set_collision_hit_callback(SCollisionHitCallback* cc)
 		m_collision_hit_callback = NULL;
 		return true;
 	}
+
 	if (PPhysicsShell( ))
 	{
 		VERIFY2(cc->m_collision_hit_callback != 0, "No callback function");
 		m_collision_hit_callback = cc;
 		return true;
 	}
-	else return false;
+	else
+	{
+		return false;
+	}
 }
 
-//////////////////////////////////////////////////////////////////////////
-/*
-DEFINE_MAP_PRED	(pcstr,	CPhysicsJoint*,	JOINT_P_MAP,	JOINT_P_PAIR_IT,	pred_str);
+using namespace luabind;
 
-JOINT_P_MAP			*l_tpJointMap = xr_new<JOINT_P_MAP>();
-
-l_tpJointMap->insert(mk_pair(bone_name,joint*));
-JOINT_P_PAIR_IT		I = l_tpJointMap->find(bone_name);
-if (l_tpJointMap->end()!=I){
-//bone_name is found and is an pair_iterator
-(*I).second
+#pragma optimize("s",on)
+void CPhysicObject::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CPhysicObject, CGameObject>("CPhysicObject")
+				.def(constructor<>( ))
+		];
 }
-
-JOINT_P_PAIR_IT		I = l_tpJointMap->begin();
-JOINT_P_PAIR_IT		E = l_tpJointMap->end();
-for ( ; I != E; ++I) {
-(*I).second->joint_method();
-Msg("%s",(*I).first);
-}
-
-*/
-
-//////////////////////////////////////////////////////////////////////////

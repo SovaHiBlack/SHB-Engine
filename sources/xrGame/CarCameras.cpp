@@ -13,7 +13,7 @@
 #include "Actor.h"
 #include "CameraLook.h"
 #include "CameraFirstEye.h"
-#include "level.h"
+#include "Level.h"
 #include "..\XR_3DA\cameramanager.h"
 
 bool CCar::HUDView() const		

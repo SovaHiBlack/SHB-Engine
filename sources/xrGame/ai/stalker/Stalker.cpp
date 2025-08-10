@@ -46,7 +46,7 @@
 #include "../../stalker_sound_data_visitor.h"
 #include "ai_stalker_space.h"
 #include "../../mt_config.h"
-#include "../../effectorshot.h"
+#include "../../EffectorShot.h"
 #include "../../visual_memory_manager.h"
 #include "../../enemy_manager.h"
 #include "../../alife_human_brain.h"

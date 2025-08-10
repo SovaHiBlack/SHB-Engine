@@ -28,7 +28,7 @@ BOOL weapon_hud_value::load(const shared_str& section, CHudItem* owner)
 	pcstr visual_name = pSettings->r_string(section, "visual");
 	m_animations = smart_cast<CKinematicsAnimated*>(::Render->model_Create(visual_name));
 
-	// fire bone	
+	// fire bone
 	if (smart_cast<CWeapon*>(owner))
 	{
 		pcstr fire_bone = pSettings->r_string(section, "fire_bone");

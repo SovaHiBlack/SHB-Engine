@@ -90,7 +90,7 @@ public:
 	virtual void	OnH_B_Independent(bool just_before_destroy);
 	virtual void	OnH_A_Independent( );
 
-	virtual	BOOL	net_Spawn(CSE_Abstract* DC);
+	virtual BOOL	net_Spawn(CSE_Abstract* DC);
 	virtual void	net_Destroy( );
 
 	virtual void	StartIdleAnim( )
@@ -120,7 +120,7 @@ public:
 	//просчет дополнительных вычислений (переопределяется в потомках)
 	virtual void	UpdateHudAdditonal(fMatrix4x4&);
 
-	virtual	void	UpdateXForm( ) = 0;
+	virtual void	UpdateXForm( ) = 0;
 	void					animGet(MotionSVec& lst, pcstr prefix);
 
 	CWeaponHUD* GetHUD( )

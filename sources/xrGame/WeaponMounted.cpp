@@ -7,7 +7,7 @@
 #include "WeaponAmmo.h"
 
 #include "ActorEffector.h"
-#include "effectorshot.h"
+#include "EffectorShot.h"
 #include "ai_sounds.h"
 #include "level.h"
 #include "xr_level_controller.h"
@@ -136,9 +136,9 @@ void CWeaponMounted::UpdateCL( )
 		// update fire pos & fire_dir
 		fire_bone_xform = K->LL_GetTransform(fire_bone);
 		fire_bone_xform.mulA_43(XFORM( ));
-		fire_pos.set(0, 0, 0);
+		fire_pos.set(0.0f, 0.0f, 0.0f);
 		fire_bone_xform.transform_tiny(fire_pos);
-		fire_dir.set(0, 0, 1);
+		fire_dir.set(0.0f, 0.0f, 1.0f);
 		fire_bone_xform.transform_dir(fire_dir);
 
 		UpdateFire( );

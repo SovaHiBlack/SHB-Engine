@@ -9,7 +9,7 @@
 #include "..\XR_3DA\CameraBase.h"
 #include "xrMessages.h"
 
-#include "level.h"
+#include "Level.h"
 #include "HUDManager.h"
 #include "ui/UI.h"
 #include "StringTable.h"

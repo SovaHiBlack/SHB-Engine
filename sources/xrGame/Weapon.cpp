@@ -621,7 +621,6 @@ void CWeapon::load(IReader& input_packet)
 	UpdateAddonsVisibility( );
 	load_data(m_ammoType, input_packet);
 	load_data(m_bZoomMode, input_packet);
-
 	if (m_bZoomMode)
 	{
 		OnZoomIn( );
@@ -1674,13 +1673,13 @@ void CWeapon::SetAmmoElapsed(s32 ammo_count)
 	}
 }
 
-u32	CWeapon::ef_main_weapon_type( ) const
+u32 CWeapon::ef_main_weapon_type( ) const
 {
 	VERIFY(m_ef_main_weapon_type != u32(-1));
 	return m_ef_main_weapon_type;
 }
 
-u32	CWeapon::ef_weapon_type( ) const
+u32 CWeapon::ef_weapon_type( ) const
 {
 	VERIFY(m_ef_weapon_type != u32(-1));
 	return m_ef_weapon_type;
@@ -1709,8 +1708,8 @@ void CWeapon::OnDrawUI( )
 	{
 		if (ZoomTexture( ) && !IsRotatingToZoom( ))
 		{
-			ZoomTexture( )->SetPos(0, 0);
-			ZoomTexture( )->SetRect(0, 0, UI_BASE_WIDTH, UI_BASE_HEIGHT);
+			ZoomTexture( )->SetPos(0.0f, 0.0f);
+			ZoomTexture( )->SetRect(0.0f, 0.0f, UI_BASE_WIDTH, UI_BASE_HEIGHT);
 			ZoomTexture( )->Render( );
 		}
 	}

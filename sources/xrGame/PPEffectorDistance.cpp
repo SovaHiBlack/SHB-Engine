@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "pp_effector_distance.h"
+#include "PPEffectorDistance.h"
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CPPEffectorDistance

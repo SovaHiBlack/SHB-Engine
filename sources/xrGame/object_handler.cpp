@@ -26,7 +26,7 @@
 #include "Profiler.h"
 #include "stalker_animation_manager.h"
 #include "object_handler_planner_impl.h"
-#include "effectorshot.h"
+#include "EffectorShot.h"
 
 CObjectHandler::CObjectHandler( )
 {

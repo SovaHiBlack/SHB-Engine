@@ -220,7 +220,7 @@
     <ClInclude Include="AI\Crow\Crow.h" />
     <ClInclude Include="ai\Monsters\ai_monster_bones.h" />
     <ClInclude Include="ai\Monsters\ai_monster_defs.h" />
-    <ClInclude Include="ai\Monsters\ai_monster_effector.h" />
+    <ClInclude Include="ai\Monsters\MonsterEffector.h" />
     <ClInclude Include="ai\Monsters\ai_monster_motion_stats.h" />
     <ClInclude Include="ai\Monsters\ai_monster_shared_data.h" />
     <ClInclude Include="ai\Monsters\ai_monster_squad.h" />
@@ -820,11 +820,10 @@
     <ClInclude Include="level_graph_vertex_inline.h" />
     <ClInclude Include="level_location_selector.h" />
     <ClInclude Include="level_location_selector_inline.h" />
-    <ClInclude Include="Level_network_Demo.h" />
     <ClInclude Include="level_path_builder.h" />
     <ClInclude Include="level_path_manager.h" />
     <ClInclude Include="level_path_manager_inline.h" />
-    <ClInclude Include="level_sounds.h" />
+    <ClInclude Include="LevelSoundManager.h" />
     <ClInclude Include="location_manager.h" />
     <ClInclude Include="location_manager_inline.h" />
     <ClInclude Include="MainMenu.h" />
@@ -1000,8 +999,8 @@
     <ClInclude Include="PhysicItem.h" />
     <ClInclude Include="ph_shell_interface.h" />
     <ClInclude Include="PostprocessAnimator.h" />
-    <ClInclude Include="pp_effector_custom.h" />
-    <ClInclude Include="pp_effector_distance.h" />
+    <ClInclude Include="PPEffectorCustom.h" />
+    <ClInclude Include="PPEffectorDistance.h" />
     <ClInclude Include="problem_solver.h" />
     <ClInclude Include="problem_solver_inline.h" />
     <ClInclude Include="Profiler.h" />
@@ -1505,7 +1504,7 @@
     <ClCompile Include="AI\ai_monsters_misc.cpp" />
     <ClCompile Include="AI\Crow\Crow.cpp" />
     <ClCompile Include="ai\Monsters\ai_monster_bones.cpp" />
-    <ClCompile Include="ai\Monsters\ai_monster_effector.cpp">
+    <ClCompile Include="ai\Monsters\MonsterEffector.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
     </ClCompile>
@@ -1688,7 +1687,7 @@
     </ClCompile>
     <ClCompile Include="AmebaZone.cpp" />
     <ClCompile Include="animation_movement_controller.cpp" />
-    <ClCompile Include="antirad.cpp" />
+    <ClCompile Include="Antirad.cpp" />
     <ClCompile Include="Artefact_script.cpp" />
     <ClCompile Include="Artefact.cpp" />
     <ClCompile Include="AttachableItem.cpp" />
@@ -1883,7 +1882,7 @@
     <ClCompile Include="Level_SLS_Default.cpp" />
     <ClCompile Include="Level_SLS_Load.cpp" />
     <ClCompile Include="Level_SLS_Save.cpp" />
-    <ClCompile Include="level_sounds.cpp" />
+    <ClCompile Include="LevelSoundManager.cpp" />
     <ClCompile Include="Level_start.cpp" />
     <ClCompile Include="location_manager.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -1978,7 +1977,6 @@
     <ClCompile Include="PHWorld.cpp" />
     <ClCompile Include="PHWorldScript.cpp" />
     <ClCompile Include="PhysicObject.cpp" />
-    <ClCompile Include="PhysicObject_script.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PhysicsGamePars.cpp" />
     <ClCompile Include="PhysicsShell.cpp" />
@@ -1987,8 +1985,8 @@
     <ClCompile Include="physics_game.cpp" />
     <ClCompile Include="PhysicItem.cpp" />
     <ClCompile Include="PostprocessAnimator.cpp" />
-    <ClCompile Include="pp_effector_custom.cpp" />
-    <ClCompile Include="pp_effector_distance.cpp" />
+    <ClCompile Include="PPEffectorCustom.cpp" />
+    <ClCompile Include="PPEffectorDistance.cpp" />
     <ClCompile Include="Profiler.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>

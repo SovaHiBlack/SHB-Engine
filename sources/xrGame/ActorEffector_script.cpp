@@ -21,10 +21,11 @@ BOOL CAnimatorCamEffectorScriptCB::Valid( )
 	BOOL res = inherited::Valid( );
 	if (!res && cb_name.size( ))
 	{
-		luabind::functor<pcstr>			fl;
+		luabind::functor<pcstr> fl;
 		R_ASSERT(ai( ).script_engine( ).functor<pcstr>(*cb_name, fl));
 		fl( );
 		cb_name = "";
 	}
+
 	return res;
 }

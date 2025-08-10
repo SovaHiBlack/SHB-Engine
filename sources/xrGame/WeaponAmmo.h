@@ -42,10 +42,10 @@ class CWeaponAmmo : public CInventoryItemObject
 	typedef CInventoryItemObject inherited;
 
 public:
-								CWeaponAmmo( );
+	CWeaponAmmo( );
 	virtual						~CWeaponAmmo( );
 
-	virtual CWeaponAmmo*		cast_weapon_ammo( )
+	virtual CWeaponAmmo* cast_weapon_ammo( )
 	{
 		return this;
 	}
@@ -81,5 +81,5 @@ public:
 	bool m_tracer;
 
 public:
-	virtual CInventoryItem*		can_make_killing(const CInventory* inventory) const;
+	virtual CInventoryItem* can_make_killing(const CInventory* inventory) const;
 };

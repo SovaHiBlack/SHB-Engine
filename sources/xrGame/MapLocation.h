@@ -26,19 +26,19 @@ public:
 protected:
 	flags32					m_flags;
 	shared_str				m_hint;
-	CUIMapSpot* m_level_spot;
-	CUIMapSpotPointer* m_level_spot_pointer;
-	CUIMiniMapSpot* m_minimap_spot;
-	CUIMapSpotPointer* m_minimap_spot_pointer;
+	CUIMapSpot*				m_level_spot;
+	CUIMapSpotPointer*		m_level_spot_pointer;
+	CUIMiniMapSpot*			m_minimap_spot;
+	CUIMapSpotPointer*		m_minimap_spot_pointer;
 
-	CUIMapSpot* m_level_map_spot_border;
-	CUIMapSpot* m_mini_map_spot_border;
+	CUIMapSpot*				m_level_map_spot_border;
+	CUIMapSpot*				m_mini_map_spot_border;
 
 	u16						m_objectID;
 	u16						m_refCount;
 	s32						m_ttl;
 	u32						m_actual_time;
-	fVector3					m_position_global; //last global position, actual time only current frame 
+	fVector3				m_position_global; //last global position, actual time only current frame 
 	fVector2 				m_position_on_map; //last position on parent map, actual time only current frame
 
 	struct SCachedValues

@@ -11,7 +11,7 @@
 #include "Actor.h"
 
 #include "ActorEffector.h"
-#include "effectorshot.h"
+#include "EffectorShot.h"
 
 #include "BulletManager.h"
 

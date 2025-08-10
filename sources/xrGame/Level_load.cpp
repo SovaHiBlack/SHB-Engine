@@ -9,9 +9,9 @@
 #include "level.h"
 #include "game_cl_base.h"
 #include "..\XR_3DA\x_ray.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "PhysicsCommon.h"
-#include "level_sounds.h"
+#include "LevelSoundManager.h"
 #include "GamePersistent.h"
 
 BOOL CLevel::Load_GameSpecific_Before( )

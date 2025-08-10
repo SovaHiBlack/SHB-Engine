@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-#include "gamepersistent.h"
+#include "GamePersistent.h"
 #include "..\XR_3DA\mesh.h"
 #include "..\XR_3DA\Console.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "Profiler.h"
 #include "MainMenu.h"

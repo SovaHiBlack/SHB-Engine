@@ -7,6 +7,6 @@ class CStateManagerDog : public CMonsterStateManager<CDog> {
 	typedef CMonsterStateManager<CDog> inherited;
 
 public:
-					CStateManagerDog	(CDog*b monster);
+					CStateManagerDog	(CDog* monster);
 	virtual void	execute				();
 };

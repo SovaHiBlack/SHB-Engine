@@ -10,7 +10,7 @@
 #include "extendedgeom.h"
 #include "level.h"
 #include "xrMessages.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "tri-colliderknoopc/dTriList.h"
 #include "..\XR_3DA\BasicVisual.h"
 #include "CalculateTriangle.h"
@@ -96,8 +96,8 @@ void CCustomRocket::SetLaunchParams(const fMatrix4x4& xform, const fVector3& vel
 	m_time_to_explode = Device.fTimeGlobal + pSettings->r_float(cNameSect( ), "force_explode_time") / 1000.0f;
 
 #ifdef DEBUG
-	gbg_rocket_speed1 = 0;
-	gbg_rocket_speed2 = 0;
+	gbg_rocket_speed1 = 0.0f;
+	gbg_rocket_speed2 = 0.0f;
 #endif
 
 }
@@ -150,14 +150,14 @@ void CCustomRocket::create_physic_shell( )
 		obb.m_halfsize.y, ax.set(obb.m_rotate.j); ax.mul(obb.m_halfsize.y); radius = _min(obb.m_halfsize.x, obb.m_halfsize.z); obb.m_halfsize.x /= 2.f; obb.m_halfsize.z /= 2.f,
 		obb.m_halfsize.z, ax.set(obb.m_rotate.k); ax.mul(obb.m_halfsize.z); radius = _min(obb.m_halfsize.y, obb.m_halfsize.x); obb.m_halfsize.y /= 2.f; obb.m_halfsize.x /= 2.f
 	)
-		//radius*=1.4142f;
-		fSphere								sphere1;
+
+	fSphere								sphere1;
 	fSphere								sphere2;
 	sphere1.P.add(obb.m_translate, ax);
 	sphere1.R = radius * 1.4142f;
 
 	sphere2.P.sub(obb.m_translate, ax);
-	sphere2.R = radius / 2.f;
+	sphere2.R = radius / 2.0f;
 
 	E->add_Box(obb);
 	E->add_Sphere(sphere1);
@@ -167,7 +167,7 @@ void CCustomRocket::create_physic_shell( )
 	m_pPhysicsShell = P_create_Shell( );
 	R_ASSERT(m_pPhysicsShell);
 	m_pPhysicsShell->add_Element(E);
-	m_pPhysicsShell->setMass(7.f);
+	m_pPhysicsShell->setMass(7.0f);
 	m_pPhysicsShell->SetAirResistance( );
 }
 

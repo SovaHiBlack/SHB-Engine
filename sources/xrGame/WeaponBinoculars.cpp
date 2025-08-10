@@ -118,7 +118,7 @@ void GetZoomData(const f32 scope_factor, f32& delta, f32& min_zoom_factor)
 	f32 min_zoom_k = 0.3f;
 	f32 zoom_step_count = 3.0f;
 	f32 delta_factor_total = def_fov - scope_factor;
-	VERIFY(delta_factor_total > 0);
+	VERIFY(delta_factor_total > 0.0f);
 	min_zoom_factor = def_fov - delta_factor_total * min_zoom_k;
 	delta = (delta_factor_total * (1 - min_zoom_k)) / zoom_step_count;
 }

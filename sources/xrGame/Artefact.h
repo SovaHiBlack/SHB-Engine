@@ -82,11 +82,11 @@ public:
 	{ }
 
 	bool							m_bCanSpawnZone;
-	f32							m_fHealthRestoreSpeed;
+	f32								m_fHealthRestoreSpeed;
 	f32 							m_fRadiationRestoreSpeed;
 	f32 							m_fSatietyRestoreSpeed;
-	f32							m_fPowerRestoreSpeed;
-	f32							m_fBleedingRestoreSpeed;
+	f32								m_fPowerRestoreSpeed;
+	f32								m_fBleedingRestoreSpeed;
 	CHitImmunity 					m_ArtefactHitImmunities;
 
 protected:
@@ -117,7 +117,7 @@ public:
 	virtual void					OnAnimationEnd(u32 state);
 	virtual bool					IsHidden( ) const
 	{
-		return GetState( ) == eHidden;
+		return (GetState( ) == eHidden);
 	}
 	virtual u16						bone_count_to_synchronize( ) const;
 

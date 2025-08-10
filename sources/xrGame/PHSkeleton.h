@@ -9,8 +9,7 @@ class CSE_Abstract;
 class CSE_PHSkeleton;
 class CNetPacket;
 
-class CPHSkeleton :
- public CPHDestroyableNotificate
+class CPHSkeleton : public CPHDestroyableNotificate
 {
 	bool				b_removing;
 	static u32			existence_time;
@@ -22,41 +21,46 @@ class CPHSkeleton :
 
 private:
 	//Creating
-
-	void	Init				()																				;
-
-	void	ClearUnsplited		()																				;
+	void	Init( );
+	void	ClearUnsplited( );
 	//Splitting
-
-	void	PHSplit				()																				;
-
-	void	SpawnCopy			()																				;
+	void	PHSplit( );
+	void	SpawnCopy( );
 	//Autoremove
-	bool	ReadyForRemove		()																				;
-	void	RecursiveBonesCheck	(u16 id)																		;
+	bool	ReadyForRemove( );
+	void	RecursiveBonesCheck(u16 id);
 
 protected:
-	void			LoadNetState		(CNetPacket& P)															;
-	void			UnsplitSingle		(CPHSkeleton* SO)														;
+	void			LoadNetState(CNetPacket& P);
+	void			UnsplitSingle(CPHSkeleton* SO);
 
 protected:
-	virtual CPhysicsShellHolder*		PPhysicsShellHolder	()													=0;
-	virtual CPHSkeleton	*PHSkeleton		()																		{return this;}
-	virtual void	SpawnInitPhysics	(CSE_Abstract	*D)														=0;
-	virtual void	SaveNetState		(CNetPacket& P)															;
-	virtual	void	RestoreNetState		(CSE_PHSkeleton* po)											;
-	
-	virtual	void	InitServerObject	(CSE_Abstract	*D)														;//
-	virtual	void	CopySpawnInit		()																		;
-			void	RespawnInit			()																		;//net_Destroy
-			bool	Spawn				(CSE_Abstract	*D)														;//net_spawn
-			void	Update				(u32 dt)																;//shedule update
-			void	Load				(pcstr section)														;//client load
+	virtual CPhysicsShellHolder* PPhysicsShellHolder( ) = 0;
+	virtual CPHSkeleton* PHSkeleton( )
+	{
+		return this;
+	}
+	virtual void	SpawnInitPhysics(CSE_Abstract* D) = 0;
+	virtual void	SaveNetState(CNetPacket& P);
+	virtual void	RestoreNetState(CSE_PHSkeleton* po);
+
+	virtual void	InitServerObject(CSE_Abstract* D);//
+	virtual void	CopySpawnInit( );
+	void	RespawnInit( );//net_Destroy
+	bool	Spawn(CSE_Abstract* D);//net_spawn
+	void	Update(u32 dt);//shedule update
+	void	Load(pcstr section);//client load
 public:
-			void	SetAutoRemove		(u32 time=existence_time)												;
-			void	SetNotNeedSave		()																		;
-IC			bool	IsRemoving			(){return b_removing;}
-			u32		DefaultExitenceTime ()																		{return existence_time;}
-					CPHSkeleton			()																		;
-	virtual			~CPHSkeleton		()																		;
+	void	SetAutoRemove(u32 time = existence_time);
+	void	SetNotNeedSave( );
+	IC bool	IsRemoving( )
+	{
+		return b_removing;
+	}
+	u32 DefaultExitenceTime( )
+	{
+		return existence_time;
+	}
+	CPHSkeleton( );
+	virtual			~CPHSkeleton( );
 };

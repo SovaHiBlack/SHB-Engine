@@ -28,7 +28,7 @@ struct SBinocVisibleObj
 	void					Update( );
 	bool					operator <				(const SBinocVisibleObj& other) const
 	{
-		return  m_flags.test(flVisObjNotValid) < other.m_flags.test(flVisObjNotValid);
+		return (m_flags.test(flVisObjNotValid) < other.m_flags.test(flVisObjNotValid));
 	} //move non-actual to tail
 };
 

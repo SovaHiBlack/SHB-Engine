@@ -253,7 +253,7 @@ public:
 	{
 		return m_flagsAddOnState;
 	}
-	void	SetAddonsState(u8 st)
+	void SetAddonsState(u8 st)
 	{	// dont use!!! for buy menu only!!!
 		m_flagsAddOnState = st;
 	}
@@ -484,7 +484,7 @@ protected:
 	{ }
 	virtual void			AddShotEffector( );
 	virtual void			RemoveShotEffector( );
-	virtual	void			ClearShotEffector( );
+	virtual void			ClearShotEffector( );
 
 public:
 	//текущая дисперсия (в радианах) оружия с учетом используемого патрона
@@ -498,7 +498,7 @@ public:
 	//параметы оружия в зависимоти от его состояния исправности
 	f32					GetConditionDispersionFactor( ) const;
 	f32					GetConditionMisfireProbability( ) const;
-	virtual	f32			GetConditionToShow( ) const;
+	virtual f32			GetConditionToShow( ) const;
 
 public:
 	//отдача при стрельбе 

@@ -9,7 +9,7 @@
 #include "Silencer.h"
 #include "GrenadeLauncher.h"
 #include "Inventory.h"
-#include "level.h"
+#include "Level.h"
 #include "xr_level_controller.h"
 #include "FoodItem.h"
 #include "ActorCondition.h"

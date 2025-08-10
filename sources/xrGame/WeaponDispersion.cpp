@@ -3,12 +3,11 @@
 #include "stdafx.h"
 
 #include "Weapon.h"
-//#include "InventoryOwner.h"
 #include "Actor.h"
 #include "InventoryItem_impl.h"
 
 #include "ActorEffector.h"
-#include "effectorshot.h"
+#include "EffectorShot.h"
 #include "EffectorShotX.h"
 
 //возвращает 1, если оружие в отличном состоянии и >1 если повреждено

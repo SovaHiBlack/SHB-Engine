@@ -85,7 +85,7 @@ void CBolt::SetInitiator(u16 id)
 	m_thrower_id = id;
 }
 
-u16	CBolt::Initiator( )
+u16 CBolt::Initiator( )
 {
 	return m_thrower_id;
 }

@@ -28,7 +28,7 @@ void CExplosiveItem::net_Destroy( )
 	CExplosive::net_Destroy( );
 }
 
-void	CExplosiveItem::Hit(SHit* pHDS)
+void CExplosiveItem::Hit(SHit* pHDS)
 {
 	if (CDelayedActionFuse::isActive( ))
 	{

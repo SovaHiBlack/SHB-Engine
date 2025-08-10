@@ -8,7 +8,7 @@
 #include "../monster_velocity_space.h"
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"
-#include "../ai_monster_effector.h"
+#include "../MonsterEffector.h"
 #include "../../../..\XR_3DA\CameraBase.h"
 #include "../../../xr_level_controller.h"
 #include "../../../detail_path_manager_space.h"

@@ -6,7 +6,7 @@
 #include "..\XR_3DA\cameramanager.h"
 #include "Actor.h"
 #include "ActorEffector.h"
-#include "postprocessanimator.h"
+#include "PostprocessAnimator.h"
 
 CZoneEffector::CZoneEffector( )
 {

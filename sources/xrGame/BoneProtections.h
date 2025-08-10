@@ -14,7 +14,7 @@ struct SBoneProtections
 	SBoneProtections( )
 	{
 		m_default.koeff = 1.0f;
-		m_default.armour = 0;
+		m_default.armour = 0.0f;
 	}
 	BoneProtection		m_default;
 	storage_type		m_bones_koeff;

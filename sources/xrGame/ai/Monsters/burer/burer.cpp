@@ -6,7 +6,7 @@
 #include "burer_state_manager.h"
 #include "../../../..\XR_3DA\skeletonanimated.h"
 #include "../../../sound_player.h"
-#include "../../../level.h"
+#include "../../../Level.h"
 #include "../../../LevelDebug.h"
 #include "../../../ai_monster_space.h"
 #include "../monster_velocity_space.h"

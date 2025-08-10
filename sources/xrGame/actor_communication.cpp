@@ -5,7 +5,7 @@
 #include "ui/UI.h"
 #include "PDA.h"
 #include "HUDManager.h"
-#include "level.h"
+#include "Level.h"
 #include "StringTable.h"
 #include "PhraseDialog.h"
 #include "CharacterInfo.h"

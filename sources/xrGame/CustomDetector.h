@@ -37,8 +37,8 @@ class CCustomDetector : public CInventoryItemObject, public Feel::Touch
 	typedef CInventoryItemObject	inherited;
 
 public:
-	CCustomDetector(void);
-	virtual ~CCustomDetector(void);
+	CCustomDetector( );
+	virtual ~CCustomDetector( );
 
 	virtual BOOL net_Spawn(CSE_Abstract* DC);
 	virtual void Load(pcstr section);

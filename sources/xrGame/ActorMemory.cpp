@@ -10,7 +10,7 @@
 #include "Actor.h"
 #include "ActorMemory.h"
 #include "..\XR_3DA\camerabase.h"
-#include "gamepersistent.h"
+#include "GamePersistent.h"
 
 CActorMemory::CActorMemory(CActor* actor) :
 	inherited(

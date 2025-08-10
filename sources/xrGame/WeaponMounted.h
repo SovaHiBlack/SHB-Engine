@@ -23,7 +23,7 @@ private:
 
 	fVector3				fire_pos;
 	fVector3				fire_dir;
-	fMatrix4x4					fire_bone_xform;
+	fMatrix4x4				fire_bone_xform;
 	fVector2				m_dAngle;
 	static void 			BoneCallbackX(CBoneInstance* B);
 	static void				BoneCallbackY(CBoneInstance* B);

@@ -50,11 +50,11 @@ public:
 		return m_iCurrentParentID;
 	}
 
-	virtual	void				SetInitiator(u16 id)
+	virtual void				SetInitiator(u16 id)
 	{
 		SetCurrentParentID(id);
 	}
-	virtual	u16					Initiator( );
+	virtual u16					Initiator( );
 
 	virtual void				UpdateExplosionPos( )
 	{ }
@@ -73,7 +73,7 @@ public:
 		return this;
 	}
 	virtual void				GetRayExplosionSourcePos(fVector3& pos);
-	virtual	void				GetExplosionBox(fVector3& size);
+	virtual void				GetExplosionBox(fVector3& size);
 	virtual void				ActivateExplosionBox(const fVector3& size, fVector3& in_out_pos);
 	void				SetExplosionSize(const fVector3& new_size);
 	virtual bool				Useful( ) const;
@@ -168,8 +168,8 @@ protected:
 	f32						m_fLightRange;
 	f32						m_fLightTime;
 
-	virtual	void				StartLight( );
-	virtual	void				StopLight( );
+	virtual void				StartLight( );
+	virtual void				StopLight( );
 
 	BOOL					m_bDynamicParticles;
 	CParticlesObject* m_pExpParticle;

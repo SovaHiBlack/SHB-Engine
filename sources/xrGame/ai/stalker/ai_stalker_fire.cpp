@@ -36,7 +36,7 @@
 #include "../../visual_memory_manager.h"
 #include "../../Weapon.h"
 #include "ai_stalker_space.h"
-#include "../../effectorshot.h"
+#include "../../EffectorShot.h"
 #include "../../BoneProtections.h"
 #include "../../RadioactiveZone.h"
 #include "../../restricted_object.h"

@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: ClientSpawnManager.cpp
-//	Created 	: 08.10.2004
-//  Modified 	: 08.10.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Seniority hierarchy holder
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -10,7 +7,7 @@
 #include "ClientSpawnManager.h"
 #include "AISpace.h"
 #include "script_engine.h"
-#include "level.h"
+#include "Level.h"
 #include "GameObject.h"
 #include "script_game_object.h"
 

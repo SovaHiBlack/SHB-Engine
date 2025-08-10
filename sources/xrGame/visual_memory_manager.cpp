@@ -15,7 +15,7 @@
 #include "ai_object_location.h"
 #include "level_graph.h"
 #include "stalker_movement_manager.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "agent_manager.h"
 #include "agent_member_manager.h"
 #include "AISpace.h"
@@ -23,7 +23,7 @@
 #include "Actor.h"
 #include "ActorMemory.h"
 #include "..\XR_3DA\camerabase.h"
-#include "gamepersistent.h"
+#include "GamePersistent.h"
 #include "ClientSpawnManager.h"
 #include "memory_manager.h"
 

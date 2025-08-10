@@ -4,7 +4,7 @@
 #include "InventoryOwner.h"
 #include "Inventory.h"
 #include "PhysicsShell.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "PHMovementControl.h"
 #include "Wound.h"
 #include "xrmessages.h"

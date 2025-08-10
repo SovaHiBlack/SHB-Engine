@@ -23,6 +23,7 @@ struct FindLocationBySpotID
 		return (spot_id == key.spot_type) && (object_id == key.object_id);
 	}
 };
+
 struct FindLocationByID
 {
 	u16			object_id;

@@ -17,7 +17,7 @@ CRocketLauncher::CRocketLauncher( )
 }
 CRocketLauncher::~CRocketLauncher( )
 { }
-void  CRocketLauncher::Load(pcstr section)
+void CRocketLauncher::Load(pcstr section)
 {
 	m_fLaunchSpeed = pSettings->r_float(section, "launch_speed");
 }
@@ -122,12 +122,12 @@ CCustomRocket* CRocketLauncher::getCurrentRocket( )
 	}
 }
 
-void			CRocketLauncher::dropCurrentRocket( )
+void CRocketLauncher::dropCurrentRocket( )
 {
 	m_rockets.pop_back( );
 }
 
-u32				CRocketLauncher::getRocketCount( )
+u32 CRocketLauncher::getRocketCount( )
 {
 	return m_rockets.size( );
 }

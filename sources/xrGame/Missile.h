@@ -70,7 +70,6 @@ public:
 
 	virtual bool 			Action(s32 cmd, u32 flags);
 
-//.	IC u32		 			State						()				{return m_state;}
 	virtual void 			State(u32 state);
 	virtual void 			OnStateSwitch(u32 S);
 	virtual void			GetBriefInfo(xr_string& str_name, xr_string& icon_sect_name, xr_string& str_count);
@@ -96,28 +95,28 @@ protected:
 	u32						m_dwDestroyTime;
 	u32						m_dwDestroyTimeMax;
 
-	fVector3					m_throw_direction;
-	fMatrix4x4					m_throw_matrix;
+	fVector3				m_throw_direction;
+	fMatrix4x4				m_throw_matrix;
 
-	CMissile* m_fake_missile;
+	CMissile*				m_fake_missile;
 
 	//параметры броска
 
-	f32 m_fMinForce;
-	f32 m_fConstForce;
-	f32 m_fMaxForce;
-	f32 m_fForceGrowSpeed;
+	f32						m_fMinForce;
+	f32						m_fConstForce;
+	f32						m_fMaxForce;
+	f32						m_fForceGrowSpeed;
 
 	bool					m_constpower;
-	f32					m_fThrowForce;
+	f32						m_fThrowForce;
 
 protected:
 	//относительная точка и направление вылета гранаты
-	fVector3					m_vThrowPoint;
-	fVector3					m_vThrowDir;
+	fVector3				m_vThrowPoint;
+	fVector3				m_vThrowDir;
 	//для HUD
-	fVector3					m_vHudThrowPoint;
-	fVector3					m_vHudThrowDir;
+	fVector3				m_vHudThrowPoint;
+	fVector3				m_vHudThrowDir;
 
 	//имена анимаций
 	shared_str				m_sAnimShow;

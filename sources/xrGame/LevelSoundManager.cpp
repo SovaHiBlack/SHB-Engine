@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "level.h"
-#include "level_sounds.h"
+#include "LevelSoundManager.h"
 
 //-----------------------------------------------------------------------------
 // static level sounds

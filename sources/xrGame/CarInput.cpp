@@ -16,7 +16,7 @@
 #include "script_entity_action.h"
 #include "xr_level_controller.h"
 #include "..\XR_3DA\skeletoncustom.h"
-#include "level.h"
+#include "Level.h"
 #include "CarWeapon.h"
 #include "script_game_object.h"
 #include "car_memory.h"

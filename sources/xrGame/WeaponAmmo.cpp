@@ -7,7 +7,7 @@
 #include "Weapon.h"
 #include "BulletManager.h"
 #include "AISpace.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "level.h"
 #include "StringTable.h"
 

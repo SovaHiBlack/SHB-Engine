@@ -37,7 +37,7 @@
 #include "phcommander.h"
 #include "MapManager.h"
 #include "..\XR_3DA\CameraManager.h"
-#include "level_sounds.h"
+#include "LevelSoundManager.h"
 #include "car.h"
 #include "TradeParameters.h"
 #include "game_cl_base_weapon_usage_statistic.h"

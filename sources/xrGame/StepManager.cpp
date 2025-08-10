@@ -4,7 +4,7 @@
 #include "StepManager.h"
 #include "EntityAlive.h"
 #include "level.h"
-#include "gamepersistent.h"
+#include "GamePersistent.h"
 #include "material_manager.h"
 #include "Profiler.h"
 #include "IKLimbsController.h"

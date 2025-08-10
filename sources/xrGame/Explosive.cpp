@@ -3,29 +3,26 @@
 #include "stdafx.h"
 
 #include "Explosive.h"
-
 #include "PhysicsShell.h"
 #include "Entity.h"
-//#include "PSObject.h"
 #include "ParticlesObject.h"
 
 //для вызова статических функций поражения осколками
 #include "Weapon.h"
-
 #include "Actor.h"
 #include "ActorEffector.h"
 #include "level.h"
 #include "BulletManager.h"
 #include "xrmessages.h"
-#include "gamemtllib.h"
+#include "GameMtlLib.h"
 #include "clsid_game.h"
+
 #ifdef DEBUG
 #include "..\XR_3DA\StatGraph.h"
 #include "PHDebug.h"
 #endif
+
 #include "Physics.h"
-//#include "MathUtils.h"
-//#include "PHValideValues.h"
 #include "PHActivationShape.h"
 #include "game_base_space.h"
 #include "Profiler.h"
@@ -213,7 +210,10 @@ f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_ob
 
 	const fBox3& l_b1 = blasted_obj->BoundingBox( );
 	if (l_b1.contains(local_exp_center))
+	{
 		return 1.0f;
+	}
+
 	fVector3 l_c;
 	fVector3 l_d;
 	l_b1.get_CD(l_c, l_d);
@@ -222,7 +222,10 @@ f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_ob
 	if (blasted_obj->PPhysicsShell( ) && blasted_obj->PPhysicsShell( )->isActive( ))
 	{
 		f32 ph_volume = blasted_obj->PPhysicsShell( )->getVolume( );
-		if (ph_volume < effective_volume)effective_volume = ph_volume;
+		if (ph_volume < effective_volume)
+		{
+			effective_volume = ph_volume;
+		}
 	}
 
 	f32 effect = 0.0f;
@@ -304,18 +307,20 @@ f32 CExplosive::ExplosionEffect(collide::rq_results& storage, CExplosive* exp_ob
 f32 CExplosive::TestPassEffect(const	fVector3& source_p, const	fVector3& dir, f32 range, f32 ef_radius, collide::rq_results& storage, CObject* blasted_obj)
 {
 	f32 sq_ef_radius = ef_radius * ef_radius;
-	f32 dist_factor = sq_ef_radius / (range * range * (exp_dist_extinction_factor - 1.f) + sq_ef_radius);
-	f32 shoot_factor = 1.f;
+	f32 dist_factor = sq_ef_radius / (range * range * (exp_dist_extinction_factor - 1.0f) + sq_ef_radius);
+	f32 shoot_factor = 1.0f;
 	if (range > EPSILON_3)
 	{
 		VERIFY(!fis_zero(dir.square_magnitude( )));
 		collide::ray_defs	RD(source_p, dir, range, CDB::OPT_CULL, collide::rqtBoth);
 		VERIFY(!fis_zero(RD.dir.square_magnitude( )));
+
 #ifdef DEBUG
 		SExpQParams			ep(source_p, dir);
 #else
 		SExpQParams			ep;
 #endif
+
 		g_pGameLevel->ObjectSpace.RayQuery(storage, RD, grenade_hit_callback, &ep, NULL, blasted_obj);
 		shoot_factor = ep.shoot_factor;
 	}
@@ -353,7 +358,6 @@ void CExplosive::Explode( )
 	Sound->play_at_pos(sndExplode, 0, pos, false);
 
 	//показываем эффекты
-
 	m_wallmark_manager.PlaceWallmarks(pos);
 
 	fVector3									vel;
@@ -367,7 +371,11 @@ void CExplosive::Explode( )
 
 	CParticlesObject* pStaticPG;
 	pStaticPG = CParticlesObject::Create(*m_sExplodeParticles, !m_bDynamicParticles);
-	if (m_bDynamicParticles) m_pExpParticle = pStaticPG;
+	if (m_bDynamicParticles)
+	{
+		m_pExpParticle = pStaticPG;
+	}
+
 	pStaticPG->UpdateParent(explode_matrix, vel);
 	pStaticPG->Play( );
 
@@ -441,6 +449,7 @@ void CExplosive::Explode( )
 		ActivateExplosionBox(m_vExplodeSize, m_vExplodePos);
 	STOP_PROFILE
 		//---------------------------------------------------------------------
+
 #ifdef DEBUG
 		if (ph_dbg_draw_mask.test(phDbgDrawExplosions))
 		{
@@ -448,6 +457,7 @@ void CExplosive::Explode( )
 
 		}
 #endif
+
 	//////////////////////////////////////////////////////////////////////////
 	// Explode Effector	//////////////
 	CGameObject* GO = smart_cast<CGameObject*>(Level( ).CurrentEntity( ));
@@ -617,7 +627,10 @@ void CExplosive::ExplodeParams(const fVector3& pos, const fVector3& dir)
 
 void CExplosive::GenExplodeEvent(const fVector3& pos, const fVector3& normal)
 {
-	if (OnClient( ) || cast_game_object( )->Remote( )) return;
+	if (OnClient( ) || cast_game_object( )->Remote( ))
+	{
+		return;
+	}
 
 	VERIFY(!m_explosion_flags.test(flExplodEventSent));
 	VERIFY(0xffff != Initiator( ));
@@ -638,7 +651,7 @@ void CExplosive::FindNormal(fVector3& normal)
 
 	fVector3 pos;
 	fVector3 dir;
-	dir.set(0, -1.f, 0);
+	dir.set(0.0f, -1.0f, 0.0f);
 	cast_game_object( )->Center(pos);
 
 	BOOL result = Level( ).ObjectSpace.RayPick(pos, dir, cast_game_object( )->Radius( ), collide::rqtBoth, RQ, NULL);
@@ -699,8 +712,14 @@ void CExplosive::GetRayExplosionSourcePos(fVector3& pos)
 void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPhysicsShellHolder* l_pGO)
 {
 	fVector3	l_goPos;
-	if (l_pGO->Visual( ))		l_pGO->Center(l_goPos);
-	else					return; //мне непонятно зачем наносить хит от взрыва по объектам не имеющим вижуал - поэтому игнорируем
+	if (l_pGO->Visual( ))
+	{
+		l_pGO->Center(l_goPos);
+	}
+	else
+	{	//мне непонятно зачем наносить хит от взрыва по объектам не имеющим вижуал - поэтому игнорируем
+		return;
+	}
 
 #ifdef DEBUG
 	if (ph_dbg_draw_mask.test(phDbgDrawExplosions))
@@ -724,15 +743,15 @@ void CExplosive::ExplodeWaveProcessObject(collide::rq_results& storage, CPhysics
 		l_dir.mul(1.f / rmag);//перенормировка
 		CNetPacket		P;
 		SHit	HS;
-		HS.GenHeader(GE_HIT, l_pGO->ID( ));			//		cast_game_object()->u_EventGen		(P,GE_HIT,l_pGO->ID());
-		HS.whoID = Initiator( );						//		P.w_u16			(Initiator());
-		HS.weaponID = cast_game_object( )->ID( );		//		P.w_u16			(cast_game_object()->ID());
-		HS.dir = l_dir;								//		P.w_dir			(l_dir);
-		HS.power = l_hit;							//		P.w_float		(l_hit);
-		HS.p_in_bone_space = l_goPos;				//		P.w_vec3		(l_goPos);
-		HS.impulse = l_impuls;						//		P.w_float		(l_impuls);
-		HS.hit_type = (m_eHitTypeBlast);			//		P.w_u16			(u16(m_eHitTypeBlast));
-		HS.boneID = 0;								//		P.w_s16			(0);
+		HS.GenHeader(GE_HIT, l_pGO->ID( ));
+		HS.whoID = Initiator( );
+		HS.weaponID = cast_game_object( )->ID( );
+		HS.dir = l_dir;
+		HS.power = l_hit;
+		HS.p_in_bone_space = l_goPos;
+		HS.impulse = l_impuls;
+		HS.hit_type = (m_eHitTypeBlast);
+		HS.boneID = 0;
 		HS.Write_Packet(P);
 		cast_game_object( )->u_EventSend(P);
 	}
@@ -782,15 +801,22 @@ void CExplosive::ActivateExplosionBox(const fVector3& size, fVector3& in_out_pos
 {
 	CPhysicsShellHolder* self_obj = smart_cast<CPhysicsShellHolder*>(cast_game_object( ));
 	CPhysicsShell* self_shell = self_obj->PPhysicsShell( );
-	if (self_shell && self_shell->isActive( ))self_shell->DisableCollision( );
-	CPHActivationShape activation_shape;//fVector3 start_box;m_PhysicMovementControl.Box().getsize(start_box);
+	if (self_shell && self_shell->isActive( ))
+	{
+		self_shell->DisableCollision( );
+	}
+
+	CPHActivationShape activation_shape;
 	activation_shape.Create(in_out_pos, size, self_obj);
 	dBodySetGravityMode(activation_shape.ODEBody( ), 0);
-	activation_shape.Activate(size, 1, 1.f, M_PI / 8.f);
+	activation_shape.Activate(size, 1, 1.0f, M_PI / 8.0f);
 	in_out_pos.set(activation_shape.Position( ));
 	activation_shape.Size(m_vExplodeSize);
 	activation_shape.Destroy( );
-	if (self_shell && self_shell->isActive( ))self_shell->EnableCollision( );
+	if (self_shell && self_shell->isActive( ))
+	{
+		self_shell->EnableCollision( );
+	}
 }
 
 void CExplosive::net_Relcase(CObject* O)
@@ -810,7 +836,11 @@ void CExplosive::net_Relcase(CObject* O)
 u16	CExplosive::Initiator( )
 {
 	u16 initiator = CurrentParentID( );
-	if (initiator == u16(-1))initiator = cast_game_object( )->ID( );
+	if (initiator == u16(-1))
+	{
+		initiator = cast_game_object( )->ID( );
+	}
+
 	return initiator;
 }
 

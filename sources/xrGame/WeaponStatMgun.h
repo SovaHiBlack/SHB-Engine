@@ -50,15 +50,15 @@ public:
 //shooting
 private:
 	u16						m_rotate_x_bone;
-	u16 m_rotate_y_bone;
-	u16 m_fire_bone;
-	u16 m_camera_bone;
+	u16						m_rotate_y_bone;
+	u16						m_fire_bone;
+	u16						m_camera_bone;
 	f32						m_tgt_x_rot;
-	f32 m_tgt_y_rot;
-	f32 m_cur_x_rot;
-	f32 m_cur_y_rot;
-	f32 m_bind_x_rot;
-	f32 m_bind_y_rot;
+	f32						m_tgt_y_rot;
+	f32						m_cur_x_rot;
+	f32						m_cur_y_rot;
+	f32						m_bind_x_rot;
+	f32						m_bind_y_rot;
 	fVector3				m_bind_x;
 	fVector3				m_bind_y;
 	fVector3				m_fire_dir;
@@ -69,14 +69,14 @@ private:
 	fMatrix4x4				m_fire_bone_xform;
 	fVector2				m_lim_x_rot; //in bone space
 	fVector2				m_lim_y_rot; //in bone space
-	CCartridge* m_Ammo;
-	f32					m_barrel_speed;
+	CCartridge*				m_Ammo;
+	f32						m_barrel_speed;
 	fVector2				m_dAngle;
-	fVector3					m_destEnemyDir;
+	fVector3				m_destEnemyDir;
 	bool					m_allow_fire;
 	SHudSound				sndShot;
-	f32					camRelaxSpeed;
-	f32					camMaxAngle;
+	f32						camRelaxSpeed;
+	f32						camMaxAngle;
 
 protected:
 	void					UpdateBarrelDir( );

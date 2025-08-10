@@ -17,8 +17,8 @@ public:
 	virtual bool Activate( );
 	virtual void Deactivate( );
 
-	virtual	void SetInitiator(u16 id);
-	virtual	u16	 Initiator( );
+	virtual void SetInitiator(u16 id);
+	virtual u16	 Initiator( );
 
 	virtual void Throw( );
 	virtual bool Action(s32 cmd, u32 flags);
