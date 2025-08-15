@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Entity.h"
-#include "../../..\xrCore\FastDelegate.h"
+#include "../../..\Core\FastDelegate.h"
 #include "../../..\XR_3DA\SkeletonAnimated.h"
 
 class CParticlesObject;

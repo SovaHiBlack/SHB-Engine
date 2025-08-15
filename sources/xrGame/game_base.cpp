@@ -73,11 +73,13 @@ void game_PlayerState::resetFlag(u16 f)
 	flags__ &= ~(f);
 }
 
-void	game_PlayerState::net_Export(CNetPacket& P, BOOL Full)
+void game_PlayerState::net_Export(CNetPacket& P, BOOL Full)
 {
 	P.w_u8(Full ? 1 : 0);
 	if (Full)
+	{
 		P.w_stringZ(name);
+	}
 
 	P.w_u8(team);
 	P.w_s16(m_iRivalKills);
@@ -96,15 +98,16 @@ void	game_PlayerState::net_Export(CNetPacket& P, BOOL Full)
 	P.w_u8(m_bCurrentVoteAgreed);
 
 	P.w_u32(Device.dwTimeGlobal - DeathTime);
-};
+}
 
-void	game_PlayerState::net_Import(CNetPacket& P)
+void game_PlayerState::net_Import(CNetPacket& P)
 {
-	BOOL	bFullUpdate = !!P.r_u8( );
+	BOOL bFullUpdate = !!P.r_u8( );
 
 	if (bFullUpdate)
+	{
 		P.r_stringZ(name);
-
+	}
 
 	P.r_u8(team);
 
@@ -125,30 +128,35 @@ void	game_PlayerState::net_Import(CNetPacket& P)
 	P.r_u8(m_bCurrentVoteAgreed);
 
 	DeathTime = P.r_u32( );
-};
+}
 
-void	game_PlayerState::SetGameID(u16 NewID)
+void game_PlayerState::SetGameID(u16 NewID)
 {
 	if (mOldIDs.size( ) >= 10)
 	{
 		mOldIDs.pop_front( );
-	};
+	}
+
 	mOldIDs.push_back(GameID);
 	GameID = NewID;
 }
+
 bool	game_PlayerState::HasOldID(u16 ID)
 {
 	OLD_GAME_ID_it ID_i = std::find(mOldIDs.begin( ), mOldIDs.end( ), ID);
 	if (ID_i != mOldIDs.end( ) && *(ID_i) == ID)
+	{
 		return true;
+	}
+
 	return false;
 }
 
-game_TeamState::game_TeamState( )
-{
-	score = 0;
-	num_targets = 0;
-}
+//game_TeamState::game_TeamState( )
+//{
+//	score = 0;
+//	num_targets = 0;
+//}
 
 game_GameState::game_GameState( )
 {
@@ -168,12 +176,12 @@ game_GameState::game_GameState( )
 
 CLASS_ID game_GameState::getCLASS_ID(pcstr game_type_name, bool isServer)
 {
-	string_path		S;
+	string_path S;
 	FS.update_path(S, "$game_config$", "script.ltx");
 	CIniFile* l_tpIniFile = xr_new<CIniFile>(S);
 	R_ASSERT(l_tpIniFile);
 
-	string256				I;
+	string256 I;
 	strcpy(I, l_tpIniFile->r_string("common", "game_type_clsid_factory"));
 
 	luabind::functor<pcstr>	result;
@@ -182,16 +190,24 @@ CLASS_ID game_GameState::getCLASS_ID(pcstr game_type_name, bool isServer)
 
 	xr_delete(l_tpIniFile);
 	if (clsid.size( ) == 0)
+	{
 		Debug.fatal(DEBUG_INFO, "Unknown game type: %s", game_type_name);
+	}
 
-	return				(TEXT2CLSID(*clsid));
+	return TEXT2CLSID(*clsid);
 
 	if (isServer)
+	{
 		if (!xr_strcmp(game_type_name, "single"))
+		{
 			return TEXT2CLSID("SV_SINGL");
+		}
+	}
 
 	if (!xr_strcmp(game_type_name, "single"))
+	{
 		return TEXT2CLSID("CL_SINGL");
+	}
 
 	FATAL("Unsupportet game type!");
 }
@@ -206,12 +222,12 @@ void game_GameState::switch_Phase(u32 new_phase)
 
 ALife::_TIME_ID game_GameState::GetGameTime( )
 {
-	return			(m_qwStartGameTime + iFloor(m_fTimeFactor * f32(Level( ).timeServer_Async( ) - m_qwStartProcessorTime)));
+	return (m_qwStartGameTime + iFloor(m_fTimeFactor * f32(Level( ).timeServer_Async( ) - m_qwStartProcessorTime)));
 }
 
 f32 game_GameState::GetGameTimeFactor( )
 {
-	return			(m_fTimeFactor);
+	return m_fTimeFactor;
 }
 
 void game_GameState::SetGameTimeFactor(const f32 fTimeFactor)
@@ -230,12 +246,12 @@ void game_GameState::SetGameTimeFactor(ALife::_TIME_ID GameTime, const f32 fTime
 
 ALife::_TIME_ID game_GameState::GetEnvironmentGameTime( )
 {
-	return			(m_qwEStartGameTime + iFloor(m_fETimeFactor * f32(Level( ).timeServer_Async( ) - m_qwEStartProcessorTime)));
+	return (m_qwEStartGameTime + iFloor(m_fETimeFactor * f32(Level( ).timeServer_Async( ) - m_qwEStartProcessorTime)));
 }
 
 f32 game_GameState::GetEnvironmentGameTimeFactor( )
 {
-	return			(m_fETimeFactor);
+	return m_fETimeFactor;
 }
 
 void game_GameState::SetEnvironmentGameTimeFactor(const f32 fTimeFactor)

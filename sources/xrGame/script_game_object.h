@@ -263,20 +263,20 @@ public:
 	template <typename T>
 	IC		T* action_planner( );
 
-// CProjector
+	// CProjector
 	fVector3				GetCurrentDirection( );
 	bool				IsInvBoxEmpty( );
-//передача порции информации InventoryOwner
+	//передача порции информации InventoryOwner
 	bool				GiveInfoPortion(pcstr info_id);
 	bool				DisableInfoPortion(pcstr info_id);
 	bool				GiveGameNews(pcstr news, pcstr texture_name, fRect tex_rect, s32 delay, s32 show_time);
 
 	void				AddIconedTalkMessage(pcstr text, pcstr texture_name, fRect tex_rect, pcstr templ_name);
-//предикаты наличия/отсутствия порции информации у персонажа
+	//предикаты наличия/отсутствия порции информации у персонажа
 	bool				HasInfo(pcstr info_id);
 	bool				DontHasInfo(pcstr info_id);
-	xrTime				GetInfoTime(pcstr info_id);
-//работа с заданиями
+	СTime				GetInfoTime(pcstr info_id);
+	//работа с заданиями
 	ETaskState			GetGameTaskState(pcstr task_id, s32 objective_num);
 	void				SetGameTaskState(ETaskState state, pcstr task_id, s32 objective_num);
 	void				GiveTaskToActor(CGameTask* t, u32 dt, bool bCheckExisting);

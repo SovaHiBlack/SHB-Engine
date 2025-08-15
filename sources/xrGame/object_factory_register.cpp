@@ -52,7 +52,7 @@
 #	include "PHDestroyable.h"
 #	include "car.h"
 
-#	include "helicopter.h"
+#	include "Helicopter.h"
 
 #	include "MercuryBallArtefact.h"
 #	include "BlackDropsArtefact.h"

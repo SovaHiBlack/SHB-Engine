@@ -2,60 +2,60 @@
 
 #include "alife_space.h"
 
-class xrTime
+class ÑTime
 {
 	ALife::_TIME_ID		m_time;
 
 public:
-	xrTime( ) : m_time(0)
+	ÑTime( ) : m_time(0)
 	{ }
-	xrTime(const xrTime& other) : m_time(other.m_time)
+	ÑTime(const ÑTime& other) : m_time(other.m_time)
 	{ }
-	xrTime(ALife::_TIME_ID t) : m_time(t)
+	ÑTime(ALife::_TIME_ID t) : m_time(t)
 	{ }
 
-	bool	operator <		(const xrTime& other) const
+	bool	operator <		(const ÑTime& other) const
 	{
 		return m_time < other.m_time;
 	}
-	bool	operator >		(const xrTime& other) const
+	bool	operator >		(const ÑTime& other) const
 	{
 		return m_time > other.m_time;
 	}
-	bool	operator >=		(const xrTime& other) const
+	bool	operator >=		(const ÑTime& other) const
 	{
 		return m_time >= other.m_time;
 	}
-	bool	operator <=		(const xrTime& other) const
+	bool	operator <=		(const ÑTime& other) const
 	{
 		return m_time <= other.m_time;
 	}
-	bool	operator ==		(const xrTime& other) const
+	bool	operator ==		(const ÑTime& other) const
 	{
 		return m_time == other.m_time;
 	}
-	xrTime	operator +		(const xrTime& other)
+	ÑTime	operator +		(const ÑTime& other)
 	{
-		return xrTime(m_time + other.m_time);
+		return ÑTime(m_time + other.m_time);
 	}
-	xrTime	operator -		(const xrTime& other)
+	ÑTime	operator -		(const ÑTime& other)
 	{
-		return xrTime(m_time - other.m_time);
+		return ÑTime(m_time - other.m_time);
 	}
 
-	f32	diffSec(const xrTime& other);
-	void	add(const xrTime& other);
-	void	sub(const xrTime& other);
+	f32	diffSec(const ÑTime& other);
+	void	add(const ÑTime& other);
+	void	sub(const ÑTime& other);
 
-	void	add_script(xrTime* other)
+	void	add_script(ÑTime* other)
 	{
 		add(*other);
 	}
-	void	sub_script(xrTime* other)
+	void	sub_script(ÑTime* other)
 	{
 		sub(*other);
 	}
-	f32	diffSec_script(xrTime* other)
+	f32	diffSec_script(ÑTime* other)
 	{
 		return diffSec(*other);
 	}
@@ -70,4 +70,4 @@ public:
 };
 
 extern u32 get_time( );
-extern xrTime get_time_struct( );
+extern ÑTime get_time_struct( );

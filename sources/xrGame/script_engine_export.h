@@ -58,7 +58,7 @@
 #	include "script_action_condition.h"
 #	include "script_monster_action.h"
 #	include "script_entity_action.h"
-#	include "helicopter.h"
+#	include "Helicopter.h"
 #	include "game_base.h"
 #	include "game_sv_base.h"
 #	include "ui\UIGameCustom.h"

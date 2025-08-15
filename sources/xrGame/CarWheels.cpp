@@ -28,9 +28,8 @@ IC void CCar::SWheel::applywheelCollisionParams(const dxGeomUserData* ud, bool& 
 	}
 }
 
-void  CCar::SWheel::WheellCollisionCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
+void CCar::SWheel::WheellCollisionCallback(bool& do_colide, bool bo1, dContact& c, SGameMtl* material_1, SGameMtl* material_2)
 {
-
 	dxGeomUserData* ud1 = retrieveGeomUserData(c.geom.g1);
 	dxGeomUserData* ud2 = retrieveGeomUserData(c.geom.g2);
 	applywheelCollisionParams(ud1, do_colide, c, material_1, material_2);
@@ -84,7 +83,6 @@ void CCar::SWheel::Load(pcstr section)
 		collision_params.spring_factor = ini->r_float("wheels_params", "spring_factor");
 		collision_params.mu_factor = ini->r_float("wheels_params", "friction_factor");
 	}
-
 }
 void CCar::SWheel::ApplyDriveAxisTorque(f32 torque)
 {
@@ -97,12 +95,10 @@ void CCar::SWheel::ApplyDriveAxisVel(f32 vel)
 	dJointSetHinge2Param(joint->GetDJoint( ), dParamVel2, vel);
 }
 
-
 void CCar::SWheel::ApplyDriveAxisVelTorque(f32 vel, f32 torque)
 {
 	ApplyDriveAxisVel(vel);
 	ApplyDriveAxisTorque(torque);
-
 }
 void CCar::SWheel::ApplySteerAxisVel(f32 vel)
 {
@@ -148,7 +144,6 @@ void CCar::SWheel::ApplyDamage(u16 level)
 	dJointID dj = joint->GetDJoint( );
 	switch (level)
 	{
-
 		case 1:
 		joint->GetJointSDfactors(sf, df);
 		sf /= 20.f; df *= 4.f;
@@ -199,18 +194,20 @@ void CCar::SWheelDrive::Init( )
 		default: NODEFAULT;
 	}
 
-	pos_fvd = pos_fvd > 0.f ? -1.f : 1.f;
-
+	pos_fvd = pos_fvd > 0.0f ? -1.0f : 1.0f;
 }
+
 void CCar::SWheelDrive::Drive( )
 {
 	f32 cur_speed = pwheel->car->RefWheelMaxSpeed( ) / gear_factor;
 	pwheel->ApplyDriveAxisVel(pos_fvd * cur_speed);
 }
+
 void CCar::SWheelDrive::UpdatePower( )
 {
 	pwheel->ApplyDriveAxisTorque(pwheel->car->RefWheelCurTorque( ) / gear_factor);
 }
+
 void CCar::SWheelDrive::Neutral( )
 {
 	pwheel->ApplyDriveAxisVelTorque(0.f, pwheel->car->m_axle_friction);
@@ -219,7 +216,7 @@ void CCar::SWheelDrive::Neutral( )
 f32 CCar::SWheelDrive::ASpeed( )
 {
 	CPhysicsJoint* J = pwheel->joint;
-	if (!J) return 0.f;
+	if (!J) return 0.0f;
 	return (dJointGetHinge2Angle2Rate(J->GetDJoint( ))) * pos_fvd;//dFabs
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,7 +235,7 @@ void CCar::SWheelSteer::Init( )
 		default: NODEFAULT;
 	}
 
-	pos_right = pos_right > 0.f ? -1.f : 1.f;
+	pos_right = pos_right > 0.0f ? -1.0f : 1.0f;
 	f32 steering_torque = pKinematics->LL_UserData( )->r_float("car_definition", "steering_torque");
 	pwheel->ApplySteerAxisTorque(steering_torque);
 	dJointSetHinge2Param(pwheel->joint->GetDJoint( ), dParamFudgeFactor, 0.005f / steering_torque);
@@ -260,9 +257,9 @@ void CCar::SWheelSteer::SteerRight( )
 		pwheel->ApplySteerAxisVel(-pwheel->car->m_steering_speed);
 	}
 }
+
 void CCar::SWheelSteer::SteerLeft( )
 {
-
 	limited = true;						//no need to limit wheels when steering
 	if (pos_right < 0)
 	{
@@ -275,27 +272,28 @@ void CCar::SWheelSteer::SteerLeft( )
 		pwheel->ApplySteerAxisVel(-pwheel->car->m_steering_speed);
 	}
 }
+
 void CCar::SWheelSteer::SteerIdle( )
 {
 	limited = false;
 	if (pwheel->car->e_state_steer == right)
 	{
-		if (pos_right < 0)
+		if (pos_right < 0.0f)
 		{
-			pwheel->SetSteerHiLimit(0.f);
+			pwheel->SetSteerHiLimit(0.0f);
 			pwheel->ApplySteerAxisVel(pwheel->car->m_steering_speed);
 		}
 		else
 		{
-			pwheel->SetSteerLoLimit(0.f);
+			pwheel->SetSteerLoLimit(0.0f);
 			pwheel->ApplySteerAxisVel(-pwheel->car->m_steering_speed);
 		}
 	}
 	else
 	{
-		if (pos_right > 0)
+		if (pos_right > 0.0f)
 		{
-			pwheel->SetSteerHiLimit(0.f);
+			pwheel->SetSteerHiLimit(0.0f);
 			pwheel->ApplySteerAxisVel(pwheel->car->m_steering_speed);
 		}
 		else
@@ -322,8 +320,10 @@ void CCar::SWheelSteer::Limit( )
 			limited = true;
 		}
 	}
+
 	pwheel->car->b_wheels_limited = pwheel->car->b_wheels_limited && limited;
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CCar::SWheelBreak::Init( )
 {
@@ -360,4 +360,3 @@ void CCar::SWheelBreak::Neutral( )
 {
 	pwheel->ApplyDriveAxisVelTorque(0.f, pwheel->car->m_axle_friction);
 }
-

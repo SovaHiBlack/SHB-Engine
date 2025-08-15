@@ -53,17 +53,17 @@ CCar::CCar( )
 
 	m_repairing = false;
 
-	///////////////////////////////
-	//////////////////////////////
 	/////////////////////////////
 	b_wheels_limited = false;
 	b_engine_on = false;
 	e_state_steer = idle;
 	e_state_drive = neutral;
 	m_current_gear_ratio = dInfinity;
-	rsp = false; lsp = false; fwp = false; bkp = false; brp = false;
-	///////////////////////////////
-	//////////////////////////////
+	rsp = false;
+	lsp = false;
+	fwp = false;
+	bkp = false;
+	brp = false;
 	/////////////////////////////
 	m_exhaust_particles = "vehiclefx\\exhaust_1";
 	m_car_sound = xr_new<SCarSound>(this);
@@ -71,26 +71,27 @@ CCar::CCar( )
 	//у машины слотов в инвентаре нет
 	inventory = xr_new<CInventory>( );
 	inventory->SetSlotsUseful(false);
-	m_doors_torque_factor = 2.f;
+	m_doors_torque_factor = 2.0f;
 	m_power_increment_factor = 0.5f;
 	m_rpm_increment_factor = 0.5f;
 	m_power_decrement_factor = 0.5f;
 	m_rpm_decrement_factor = 0.5f;
 	b_breaks = false;
-	m_break_start = 0.f;
-	m_break_time = 1.;
-	m_breaks_to_back_rate = 1.f;
+	m_break_start = 0.0f;
+	m_break_time = 1.0f;
+	m_breaks_to_back_rate = 1.0f;
 
 	b_exploded = false;
 	m_car_weapon = NULL;
 	m_power_neutral_factor = 0.25f;
-	m_steer_angle = 0.f;
+	m_steer_angle = 0.0f;
+
 #ifdef DEBUG
 	InitDebug( );
 #endif
 }
 
-CCar::~CCar(void)
+CCar::~CCar( )
 {
 	xr_delete(camera[0]);
 	xr_delete(camera[1]);
@@ -108,14 +109,18 @@ void CCar::reinit( )
 	CEntity::reinit( );
 	CScriptEntity::reinit( );
 	if (m_memory)
+	{
 		m_memory->reinit( );
+	}
 }
 
 void CCar::reload(pcstr section)
 {
 	CEntity::reload(section);
 	if (m_memory)
+	{
 		m_memory->reload(section);
+	}
 }
 
 void CCar::cb_Steer(CBoneInstance* B)
@@ -124,37 +129,42 @@ void CCar::cb_Steer(CBoneInstance* B)
 	CCar* C = static_cast<CCar*>(B->Callback_Param);
 	fMatrix4x4 m;
 
-
 	m.rotateZ(C->m_steer_angle);
 
 	B->mTransform.mulB_43(m);
+
 #ifdef DEBUG
 	if (!fsimilar(DET(B->mTransform), 1.0f, DET_CHECK_EPS))
 	{
-
 		Log("RotatingZ angle=", C->m_steer_angle);
 		VERIFY2(0, "Bones callback returns BAD!!! matrix");
 	}
 #endif
+
 }
 
 // Core events
-void	CCar::Load(pcstr section)
+void CCar::Load(pcstr section)
 {
 	inherited::Load(section);
 	//CPHSkeleton::Load(section);
 	ISpatial* self = smart_cast<ISpatial*> (this);
-	if (self)		self->spatial.type |= STYPE_VISIBLEFORAI;
+	if (self)
+	{
+		self->spatial.type |= STYPE_VISIBLEFORAI;
+	}
 }
 
-BOOL	CCar::net_Spawn(CSE_Abstract* DC)
+BOOL CCar::net_Spawn(CSE_Abstract* DC)
 {
+
 #ifdef DEBUG
 	InitDebug( );
 #endif
+
 	CSE_Abstract* e = (CSE_Abstract*)(DC);
 	CSE_ALifeCar* co = smart_cast<CSE_ALifeCar*>(e);
-	BOOL							R = inherited::net_Spawn(DC);
+	BOOL R = inherited::net_Spawn(DC);
 
 	PKinematics(Visual( ))->CalculateBones_Invalidate( );
 	PKinematics(Visual( ))->CalculateBones( );
@@ -167,16 +177,27 @@ BOOL	CCar::net_Spawn(CSE_Abstract* DC)
 	m_fSaveMaxRPM = m_max_rpm;
 	SetfHealth(co->health);
 
-	if (!g_Alive( ))					b_exploded = true;
-	else							b_exploded = false;
+	if (!g_Alive( ))
+	{
+		b_exploded = true;
+	}
+	else
+	{
+		b_exploded = false;
+	}
 
 	CDamagableItem::RestoreEffect( );
 
 	CIniFile* pUserData = PKinematics(Visual( ))->LL_UserData( );
 	if (pUserData->section_exist("destroyed"))
+	{
 		CPHDestroyable::Load(pUserData, "destroyed");
+	}
+
 	if (pUserData->section_exist("mounted_weapon_definition"))
+	{
 		m_car_weapon = xr_new<CCarWeapon>(this);
+	}
 
 	if (pUserData->section_exist("visual_memory_definition"))
 	{
@@ -184,7 +205,7 @@ BOOL	CCar::net_Spawn(CSE_Abstract* DC)
 		m_memory->reload(pUserData->r_string("visual_memory_definition", "section"));
 	}
 
-	return							(CScriptEntity::net_Spawn(DC) && R);
+	return (CScriptEntity::net_Spawn(DC) && R);
 
 }
 
@@ -192,8 +213,15 @@ void CCar::ActorObstacleCallback(bool& do_colide, bool bo1, dContact& c, SGameMt
 {
 	if (!do_colide)
 	{
-		if (material_1 && material_1->Flags.test(SGameMtl::flActorObstacle))do_colide = true;
-		if (material_2 && material_2->Flags.test(SGameMtl::flActorObstacle))do_colide = true;
+		if (material_1 && material_1->Flags.test(SGameMtl::flActorObstacle))
+		{
+			do_colide = true;
+		}
+
+		if (material_2 && material_2->Flags.test(SGameMtl::flActorObstacle))
+		{
+			do_colide = true;
+		}
 	}
 }
 
@@ -212,18 +240,19 @@ void CCar::SpawnInitPhysics(CSE_Abstract* D)
 	CPHUpdateObject::Activate( );
 }
 
-void	CCar::net_Destroy( )
+void CCar::net_Destroy( )
 {
+
 #ifdef DEBUG
 	DBgClearPlots( );
 #endif
+
 	CKinematics* pKinematics = smart_cast<CKinematics*>(Visual( ));
 	if (m_bone_steer != BI_NONE)
 	{
-
 		pKinematics->LL_GetBoneInstance(m_bone_steer).reset_callback( );
-
 	}
+
 	CScriptEntity::net_Destroy( );
 	inherited::net_Destroy( );
 	CExplosive::net_Destroy( );
@@ -233,6 +262,7 @@ void	CCar::net_Destroy( )
 		m_pPhysicsShell->ZeroCallbacks( );
 		xr_delete(m_pPhysicsShell);
 	}
+
 	CHolderCustom::detach_Actor( );
 	ClearExhausts( );
 	m_wheels_map.clear( );
@@ -276,7 +306,9 @@ void CCar::SaveNetState(CNetPacket& P)
 		e = m_doors.end( );
 		P.w_u16(u16(m_doors.size( )));
 		for (; i != e; ++i)
+		{
 			i->second.SaveNetState(P);
+		}
 	}
 
 	{
@@ -285,7 +317,9 @@ void CCar::SaveNetState(CNetPacket& P)
 		e = m_wheels_map.end( );
 		P.w_u16(u16(m_wheels_map.size( )));
 		for (; i != e; ++i)
+		{
 			i->second.SaveNetState(P);
+		}
 	}
 
 	P.w_float(GetfHealth( ));
@@ -293,14 +327,18 @@ void CCar::SaveNetState(CNetPacket& P)
 
 void CCar::RestoreNetState(CSE_PHSkeleton* po)
 {
-	if (!po->_flags.test(CSE_PHSkeleton::flSavedData))return;
+	if (!po->_flags.test(CSE_PHSkeleton::flSavedData))
+	{
+		return;
+	}
+
 	CPHSkeleton::RestoreNetState(po);
 
 	CSE_ALifeCar* co = smart_cast<CSE_ALifeCar*>(po);
 
 	{
 		xr_map<u16, SDoor>::iterator i, e;
-		xr_vector<CSE_ALifeCar::SDoorState>::iterator		ii = co->door_states.begin( );
+		xr_vector<CSE_ALifeCar::SDoorState>::iterator ii = co->door_states.begin( );
 		i = m_doors.begin( );
 		e = m_doors.end( );
 		for (; i != e; ++i, ++ii)
@@ -310,7 +348,7 @@ void CCar::RestoreNetState(CSE_PHSkeleton* po)
 	}
 	{
 		xr_map<u16, SWheel>::iterator i, e;
-		xr_vector<CSE_ALifeCar::SWheelState>::iterator		ii = co->wheel_states.begin( );
+		xr_vector<CSE_ALifeCar::SWheelState>::iterator ii = co->wheel_states.begin( );
 		i = m_wheels_map.begin( );
 		e = m_wheels_map.end( );
 		for (; i != e; ++i, ++ii)
@@ -727,8 +765,6 @@ void CCar::ParseDefinitions( )
 	fill_doors_map(ini->r_string("car_definition", "doors"), m_doors);
 
 	///////////////////////////car properties///////////////////////////////
-
-
 	m_max_power = ini->r_float("car_definition", "engine_power");
 	m_max_power *= (0.8f * 1000.f);
 
@@ -802,13 +838,10 @@ void CCar::ParseDefinitions( )
 	m_lights.Init(this);
 	m_lights.ParseDefinitions( );
 
-
-
 	if (ini->section_exist("animations"))
 	{
 		m_driver_anim_type = ini->r_u16("animations", "driver_animation_type");
 	}
-
 
 	if (ini->section_exist("doors"))
 	{
@@ -951,10 +984,8 @@ void CCar::Init( )
 				R_ASSERT3(i != m_doors.end( ), "only wheel and doors bones allowed for damage defs", *item.first);
 				i->second.CDamagableHealthItem::Init(f32(atof(*item.second)), 1);
 			}
-
 		}
 	}
-
 
 	if (ini->section_exist("immunities"))
 	{
@@ -965,7 +996,6 @@ void CCar::Init( )
 
 	HandBreak( );
 	Transmission(1);
-
 }
 
 void CCar::Revert( )
@@ -1040,7 +1070,6 @@ void CCar::Stall( )
 	b_engine_on = false;
 	UpdatePower( );//set engine friction;
 	m_current_rpm = 0.f;
-
 }
 void CCar::ReleasePedals( )
 {
@@ -1284,7 +1313,6 @@ void CCar::ReleaseBack( )
 	bkp = false;
 }
 
-
 void CCar::ReleaseBreaks( )
 {
 	ReleaseHandBreak( );
@@ -1293,7 +1321,6 @@ void CCar::ReleaseBreaks( )
 
 void CCar::Transmission(size_t num)
 {
-
 	if (num < m_gear_ratious.size( ))
 	{
 		if (CurrentTransmission( ) != num)
@@ -1306,10 +1333,13 @@ void CCar::Transmission(size_t num)
 			Drive( );
 		}
 	}
+
 #ifdef DEBUG
 	//Log("Transmission switch %d",(u32)num);
 #endif
+
 }
+
 void CCar::CircleSwitchTransmission( )
 {
 	if (0 == CurrentTransmission( ))return;
@@ -1317,7 +1347,6 @@ void CCar::CircleSwitchTransmission( )
 	transmission = transmission % m_gear_ratious.size( );
 	0 == transmission ? transmission++ : transmission;
 	Transmission(transmission);
-
 }
 
 void CCar::TransmissionUp( )
@@ -1327,7 +1356,6 @@ void CCar::TransmissionUp( )
 	size_t max_transmition_num = m_gear_ratious.size( ) - 1;
 	transmission > max_transmition_num ? transmission = max_transmition_num : transmission;
 	Transmission(transmission);
-
 }
 
 void CCar::TransmissionDown( )
@@ -1336,36 +1364,38 @@ void CCar::TransmissionDown( )
 	size_t transmission = CurrentTransmission( ) - 1;
 	transmission < 1 ? transmission = 1 : transmission;
 	Transmission(transmission);
-
 }
-
-
 
 void CCar::PhTune(dReal step)
 {
-
-
-
 	for (u16 i = PPhysicsShell( )->get_ElementsNumber( ); i != 0; i--)
 	{
 		CPhysicsElement* e = PPhysicsShell( )->get_ElementByStoreOrder(i - 1);
 		if (e->isActive( ) && e->isEnabled( ))dBodyAddForce(e->get_body( ), 0, e->getMass( ) * AntiGravityAccel( ), 0);
 	}
 }
+
 f32 CCar::EffectiveGravity( )
 {
 	f32 g = ph_world->Gravity( );
-	if (CPHUpdateObject::IsActive( ))g *= 0.5f;
+	if (CPHUpdateObject::IsActive( ))
+	{
+		g *= 0.5f;
+	}
+
 	return g;
 }
+
 f32 CCar::AntiGravityAccel( )
 {
-	return ph_world->Gravity( ) - EffectiveGravity( );
+	return (ph_world->Gravity( ) - EffectiveGravity( ));
 }
+
 f32 CCar::GravityFactorImpulse( )
 {
 	return _sqrt(EffectiveGravity( ) / ph_world->Gravity( ));
 }
+
 void CCar::UpdateBack( )
 {
 	if (b_breaks)
@@ -1376,6 +1406,7 @@ void CCar::UpdateBack( )
 		{
 			k *= (time / m_break_time);
 		}
+
 		xr_vector<SWheelBreak>::iterator i, e;
 		i = m_breaking_wheels.begin( );
 		e = m_breaking_wheels.end( );
@@ -1399,18 +1430,15 @@ void CCar::UpdateBack( )
 
 void CCar::PlayExhausts( )
 {
-
 	xr_vector<SExhaust>::iterator i, e;
 	i = m_exhausts.begin( );
 	e = m_exhausts.end( );
 	for (; i != e; ++i)
 		i->Play( );
-
 }
 
 void CCar::StopExhausts( )
 {
-
 	xr_vector<SExhaust>::iterator i, e;
 	i = m_exhausts.begin( );
 	e = m_exhausts.end( );
@@ -1485,11 +1513,10 @@ bool CCar::Use(const fVector3& pos, const fVector3& dir, const fVector3& foot_po
 	}
 
 	return false;
-
 }
+
 bool CCar::DoorUse(u16 id)
 {
-
 	xr_map<u16, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
@@ -1500,7 +1527,6 @@ bool CCar::DoorUse(u16 id)
 	{
 		return false;
 	}
-
 }
 
 bool CCar::DoorSwitch(u16 id)
@@ -1516,9 +1542,9 @@ bool CCar::DoorSwitch(u16 id)
 		return false;
 	}
 }
+
 bool CCar::DoorClose(u16 id)
 {
-
 	xr_map<u16, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
@@ -1533,7 +1559,6 @@ bool CCar::DoorClose(u16 id)
 
 bool CCar::DoorOpen(u16 id)
 {
-
 	xr_map<u16, SDoor>::iterator i;
 	if (is_Door(id, i))
 	{
@@ -1545,6 +1570,7 @@ bool CCar::DoorOpen(u16 id)
 		return false;
 	}
 }
+
 void CCar::InitParabola( )
 {
 	//f32 t1=(m_power_rpm-m_torque_rpm);
@@ -1554,28 +1580,31 @@ void CCar::InitParabola( )
 	//m_a = -t2/t1/2.f;
 	//m_b = t2*m_torque_rpm/t1;
 
-
 	//m_c = m_max_power* (3.f*m_power_rpm - 4.f*m_torque_rpm)/(m_power_rpm-m_torque_rpm)/2.f/m_power_rpm;
 	//m_a = -m_max_power/(m_power_rpm-m_torque_rpm)/m_power_rpm/m_power_rpm/2.f;
 	//m_b = m_max_power*m_torque_rpm/(m_power_rpm-m_torque_rpm)/m_power_rpm/m_power_rpm;
 
-
-
-
 	m_a = expf((m_power_rpm - m_torque_rpm) / (2.f * m_power_rpm)) * m_max_power / m_power_rpm;
 	m_b = m_torque_rpm;
 	m_c = _sqrt(2.f * m_power_rpm * (m_power_rpm - m_torque_rpm));
-
-
 }
+
 f32 CCar::Parabola(f32 rpm)
 {
 	//f32 rpm_2=rpm*rpm;
 	//f32 value=(m_a*rpm_2*rpm_2*rpm_2+m_b*rpm_2+m_c)*rpm_2;
 	f32 ex = (rpm - m_b) / m_c;
 	f32 value = m_a * expf(-ex * ex) * rpm;
-	if (value < 0.f) return 0.f;
-	if (e_state_drive == neutral) value *= m_power_neutral_factor;
+	if (value < 0.0f)
+	{
+		return 0.0f;
+	}
+
+	if (e_state_drive == neutral)
+	{
+		value *= m_power_neutral_factor;
+	}
+
 	return value;
 }
 
@@ -1588,13 +1617,22 @@ f32 CCar::EnginePower( )
 		{
 			value = Parabola(m_min_rpm);
 		}
-		else if (Device.dwTimeGlobal - m_dwStartTime > 1000) b_starting = false;
+		else if (Device.dwTimeGlobal - m_dwStartTime > 1000)
+		{
+			b_starting = false;
+		}
 	}
+
 	if (value > m_current_engine_power)
-		return value * m_power_increment_factor + m_current_engine_power * (1.f - m_power_increment_factor);
+	{
+		return value * m_power_increment_factor + m_current_engine_power * (1.0f - m_power_increment_factor);
+	}
 	else
-		return value * m_power_decrement_factor + m_current_engine_power * (1.f - m_power_decrement_factor);
+	{
+		return value * m_power_decrement_factor + m_current_engine_power * (1.0f - m_power_decrement_factor);
+	}
 }
+
 f32 CCar::DriveWheelsMeanAngleRate( )
 {
 	xr_vector<SWheelDrive>::iterator i, e;
@@ -1606,8 +1644,10 @@ f32 CCar::DriveWheelsMeanAngleRate( )
 		drive_speed += i->ASpeed( );
 		//if(wheel_speed<drive_speed)drive_speed=wheel_speed;
 	}
+
 	return drive_speed / m_driving_wheels.size( );
 }
+
 f32 CCar::EngineDriveSpeed( )
 {
 	//f32 wheel_speed,drive_speed=dInfinity;
@@ -1628,12 +1668,18 @@ f32 CCar::EngineDriveSpeed( )
 		{
 			calc_rpm = m_min_rpm;
 		}
+
 		limit_above(calc_rpm, m_max_rpm);
 	}
+
 	if (calc_rpm > m_current_rpm)
-		return		(1.f - m_rpm_increment_factor) * m_current_rpm + m_rpm_increment_factor * calc_rpm;
+	{
+		return		((1.0f - m_rpm_increment_factor) * m_current_rpm + m_rpm_increment_factor * calc_rpm);
+	}
 	else
-		return		(1.f - m_rpm_decrement_factor) * m_current_rpm + m_rpm_decrement_factor * calc_rpm;
+	{
+		return		((1.0f - m_rpm_decrement_factor) * m_current_rpm + m_rpm_decrement_factor * calc_rpm);
+	}
 
 	//if(drive_speed<dInfinity) return dFabs(drive_speed*m_current_gear_ratio);
 	//else					  return 0.f;
@@ -1641,12 +1687,24 @@ f32 CCar::EngineDriveSpeed( )
 
 void CCar::UpdateFuel(f32 time_delta)
 {
-	if (!b_engine_on) return;
+	if (!b_engine_on)
+	{
+		return;
+	}
+
 	if (m_current_rpm > m_min_rpm)
+	{
 		m_fuel -= time_delta * (m_current_rpm - m_min_rpm) * m_fuel_consumption;
+	}
 	else
+	{
 		m_fuel -= time_delta * m_min_rpm * m_fuel_consumption;
-	if (m_fuel < EPSILON_5) StopEngine( );
+	}
+
+	if (m_fuel < EPSILON_5)
+	{
+		StopEngine( );
+	}
 }
 
 f32 CCar::AddFuel(f32 ammount)
@@ -1672,8 +1730,7 @@ void CCar::ResetKeys( )
 	rsp = false;
 }
 
-
-#undef   _USE_MATH_DEFINES
+#undef _USE_MATH_DEFINES
 
 void CCar::OnEvent(CNetPacket& P, u16 type)
 {
@@ -1701,7 +1758,8 @@ void CCar::OnEvent(CNetPacket& P, u16 type)
 				P.w_u16(u16(O->ID( )));
 				u_EventSend(P);
 			}
-		}break;
+		}
+		break;
 		case GE_OWNERSHIP_REJECT:
 		{
 			P.r_u16(id);
@@ -1713,9 +1771,9 @@ void CCar::OnEvent(CNetPacket& P, u16 type)
 			{
 				O->H_SetParent(0, just_before_destroy);
 			}
-		}break;
+		}
+		break;
 	}
-
 }
 
 void CCar::ResetScriptData(pvoid P)
@@ -1736,7 +1794,10 @@ void CCar::PhDataUpdate(dReal step)
 	//if(fwp)
 	{
 		UpdatePower( );
-		if (b_engine_on && !b_starting && m_current_rpm < m_min_rpm)Stall( );
+		if (b_engine_on && !b_starting && m_current_rpm < m_min_rpm)
+		{
+			Stall( );
+		}
 	}
 
 	if (bkp)
@@ -1769,7 +1830,7 @@ void CCar::PhDataUpdate(dReal step)
 
 BOOL CCar::UsedAI_Locations( )
 {
-	return					(FALSE);
+	return FALSE;
 }
 
 u16 CCar::DriverAnimationType( )
@@ -1778,8 +1839,7 @@ u16 CCar::DriverAnimationType( )
 }
 
 void CCar::OnAfterExplosion( )
-{
-}
+{ }
 
 void CCar::OnBeforeExplosion( )
 {
@@ -1841,7 +1901,6 @@ template <class T> IC void CCar::fill_wheel_vector(pcstr S, xr_vector<T>& type_w
 
 		type_wheels.push_back(T( ));
 		T& twheel = type_wheels.back( );
-
 
 		BONE_P_PAIR_IT J = bone_map.find(bone_id);
 		if (J == bone_map.end( ))
@@ -1926,16 +1985,17 @@ u16 CCar::Initiator( )
 	}
 }
 
-f32	CCar::RefWheelMaxSpeed( )
+f32 CCar::RefWheelMaxSpeed( )
 {
 	return m_max_rpm / m_current_gear_ratio;
 }
 
-f32	CCar::EngineCurTorque( )
+f32 CCar::EngineCurTorque( )
 {
 	return m_current_engine_power / m_current_rpm;
 }
-f32	CCar::RefWheelCurTorque( )
+
+f32 CCar::RefWheelCurTorque( )
 {
 	if (b_transmission_switching)
 	{
@@ -1944,17 +2004,21 @@ f32	CCar::RefWheelCurTorque( )
 
 	return EngineCurTorque( ) * ((m_current_gear_ratio < 0.0f) ? -m_current_gear_ratio : m_current_gear_ratio);
 }
+
 void CCar::GetRayExplosionSourcePos(fVector3&
 									pos)
 {
 	random_point_in_object_box(pos, this);
 }
+
 void CCar::net_Relcase(CObject* O)
 {
 	CExplosive::net_Relcase(O);
 	inherited::net_Relcase(O);
 	if (m_memory)
+	{
 		m_memory->remove_links(O);
+	}
 }
 
 void CCar::ASCUpdate( )
@@ -1962,9 +2026,11 @@ void CCar::ASCUpdate( )
 	for (u16 i = 0; i < cAsCallsnum; ++i)
 	{
 		EAsyncCalls c = EAsyncCalls(1 << i);
-		if (async_calls.test(u16(c)))ASCUpdate(c);
+		if (async_calls.test(u16(c)))
+		{
+			ASCUpdate(c);
+		}
 	}
-
 }
 
 void CCar::ASCUpdate(EAsyncCalls c)
@@ -1972,10 +2038,25 @@ void CCar::ASCUpdate(EAsyncCalls c)
 	async_calls.set(u16(c), FALSE);
 	switch (c)
 	{
-		case ascSndTransmission:m_car_sound->TransmissionSwitch( ); break;
-		case ascSndStall:m_car_sound->Stop( ); break;
-		case ascExhoustStop:StopExhausts( ); break;
-		default: NODEFAULT;
+		case ascSndTransmission:
+		{
+			m_car_sound->TransmissionSwitch( );
+		}
+		break;
+		case ascSndStall:
+		{
+			m_car_sound->Stop( );
+		}
+		break;
+		case ascExhoustStop:
+		{
+			StopExhausts( );
+		}
+		break;
+		default:
+		{
+			NODEFAULT;
+		}
 	}
 }
 
@@ -1986,27 +2067,33 @@ void CCar::AscCall(EAsyncCalls c)
 
 bool CCar::CanRemoveObject( )
 {
-	return CExplosive::IsExploded( ) && !CExplosive::IsSoundPlaying( );
+	return (CExplosive::IsExploded( ) && !CExplosive::IsSoundPlaying( ));
 }
 
-void		CCar::SetExplodeTime(u32 et)
+void CCar::SetExplodeTime(u32 et)
 {
-	CDelayedActionFuse::Initialize(f32(et) / 1000.f, CDamagableItem::DamageLevelToHealth(2));
+	CDelayedActionFuse::Initialize(f32(et) / 1000.0f, CDamagableItem::DamageLevelToHealth(2));
 }
-u32			CCar::ExplodeTime( )
+
+u32 CCar::ExplodeTime( )
 {
 	if (CDelayedActionFuse::isInitialized( ))
-		return u32(CDelayedActionFuse::Time( )) * 1000;
-	else return 0;
+	{
+		return (u32(CDelayedActionFuse::Time( )) * 1000);
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-void	CCar::Die(CObject* who)
+void CCar::Die(CObject* who)
 {
 	inherited::Die(who);
 	CarExplode( );
 }
 
-fVector3	CCar::ExitVelocity( )
+fVector3 CCar::ExitVelocity( )
 {
 	CPhysicsShell* P = PPhysicsShell( );
 	if (!P || !P->isActive( ))

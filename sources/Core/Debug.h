@@ -1,9 +1,18 @@
+// ========================================== SHB_Engine ==========================================
+// Projekt		: Core
+// Module		: Debug.h
+// Author		: Anahoret
+// Description	: interface for the CDebug class.
+// ========================================= SovaHiBlack© =========================================
+
 #pragma once
+#ifndef CORE_DEBUG_H_INCLUDED
+#define CORE_DEBUG_H_INCLUDED
 
-typedef void		crashhandler( );
-typedef void		on_dialog(bool before);
+typedef void			crashhandler		( );
+typedef void			on_dialog			(bool before);
 
-class CORE_API xrDebug
+class CORE_API ÑDebug
 {
 private:
 	crashhandler*							handler;
@@ -57,8 +66,10 @@ IC std::string __cdecl	make_string			(pcstr format, ...)
 	return temp;
 }
 
-extern CORE_API xrDebug						Debug;
+extern CORE_API ÑDebug						Debug;
 
 CORE_API void			LogStackTrace		(pcstr header);
 
-#include "xrDebug_macros.h"
+#include "Debug_macros.h"
+
+#endif // ndef CORE_DEBUG_H_INCLUDED

@@ -24,7 +24,7 @@
 #ifndef LUABIND_CONFIG_HPP_INCLUDED
 #define LUABIND_CONFIG_HPP_INCLUDED
 
-#include "..\..\..\sources\xrCore\xrCore.h"
+#include "..\..\..\sources\Core\xrCore.h"
 #include <boost/config.hpp>
 
 //namespace std {

@@ -339,8 +339,6 @@ void CCar::SDoor::NeutralTorque(f32 atorque)
 	dJointSetHingeParam(joint->GetDJoint(), dParamVel, 0);
 }
 
-
-
 void CCar::SDoor::ClosedToOpening()
 {
 	if (!joint)return;
@@ -417,6 +415,7 @@ bool CCar::SDoor::IsFront(const fVector3& pos, const fVector3& dir)
 	//dif.normalize_safe();
 	return (dif1.dotproduct(tdir) > dif.dotproduct(tdir) && abs(c_to_d.dotproduct(tdir)) < dif1.dotproduct(tdir));
 }
+
 bool CCar::SDoor::IsInArea(const fVector3& pos, const fVector3& dir)
 {
 	if (!joint)
@@ -430,7 +429,7 @@ bool CCar::SDoor::IsInArea(const fVector3& pos, const fVector3& dir)
 		//		fObb bb=bd.obb;
 		fVector3 tdir;
 		tdir.set(pcar->XFORM().i);
-		if (tdir.dotproduct(dir) < 0.f)
+		if (tdir.dotproduct(dir) < 0.0f)
 		{
 			tdir.invert( );
 		}
@@ -444,7 +443,7 @@ bool CCar::SDoor::IsInArea(const fVector3& pos, const fVector3& dir)
 		fVector3 c_to_d;
 		c_to_d.sub(pf.c, dif1);
 		dif1.sub(pos);
-		return 2.f * abs(c_to_d.dotproduct(pcar->XFORM().i)) > abs(dif1.dotproduct(pcar->XFORM().i));
+		return 2.0f * abs(c_to_d.dotproduct(pcar->XFORM().i)) > abs(dif1.dotproduct(pcar->XFORM().i));
 	}
 
 	fMatrix4x4 closed_door_form;
@@ -524,8 +523,8 @@ void CCar::SDoor::GetExitPosition(fVector3& pos)
 			fVector3 dir_from_car;
 		dir_from_car.sub(pf.c, pcar->Position());
 		dir_from_car.y = 0.f;
-		if (add1.dotproduct(dir_from_car) < 0.f)add1.invert();
-		add1.mul(3.f);
+		if (add1.dotproduct(dir_from_car) < 0.0f)add1.invert();
+		add1.mul(3.0f);
 		pos.add(add1);
 		return;
 	}
@@ -553,7 +552,7 @@ void CCar::SDoor::GetExitPosition(fVector3& pos)
 	f32 center_prg = door_axis.dotproduct(door_pos);
 	joint->PSecond_element()->get_Extensions(door_axis, center_prg, lo_ext, hi_ext);
 	add.set(door_axis);
-	if (door_axis.dotproduct(root_form.j) > 0.f) add.mul(lo_ext);
+	if (door_axis.dotproduct(root_form.j) > 0.0f) add.mul(lo_ext);
 	else									  add.mul(hi_ext);
 	pos.add(add);
 

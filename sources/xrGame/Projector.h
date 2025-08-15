@@ -57,5 +57,4 @@ private:
 	static void		BoneCallbackY(CBoneInstance* B);
 
 	void			SetTarget(const fVector3& target_pos);
-
 };

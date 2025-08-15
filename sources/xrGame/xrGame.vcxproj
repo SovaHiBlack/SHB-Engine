@@ -762,7 +762,7 @@
     <ClInclude Include="GroupHierarchyHolder_inline.h" />
     <ClInclude Include="HairsZone.h" />
     <ClInclude Include="HangingLamp.h" />
-    <ClInclude Include="helicopter.h" />
+    <ClInclude Include="Helicopter.h" />
     <ClInclude Include="Hit.h" />
     <ClInclude Include="HitMarker.h" />
     <ClInclude Include="HitImmunity.h" />
@@ -1825,7 +1825,6 @@
     <ClCompile Include="Helicopter2.cpp" />
     <ClCompile Include="HelicopterMovementManager.cpp" />
     <ClCompile Include="HelicopterWeapon.cpp" />
-    <ClCompile Include="helicopter_script.cpp" />
     <ClCompile Include="Hit.cpp" />
     <ClCompile Include="HitMarker.cpp" />
     <ClCompile Include="HitImmunity.cpp" />
@@ -2426,7 +2425,7 @@
     <ProjectReference Include="..\xrCDB\xrCDB.vcxproj">
       <Project>{a19b1df2-82ec-4364-8bdf-85d13a1c89b5}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\xrCore\xrCore.vcxproj">
+    <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{a0f7d1fb-59a7-4717-a7e4-96f37e91998e}</Project>
     </ProjectReference>
     <ProjectReference Include="..\xrLua\xrLua.vcxproj">

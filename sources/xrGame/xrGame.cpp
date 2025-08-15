@@ -9,7 +9,7 @@
 #include "xr_level_controller.h"
 #include "Profiler.h"
 
-#pragma comment(lib, "xrCore.lib")
+#pragma comment(lib, "Core.lib")
 #pragma comment(lib, "ode.lib")
 #pragma comment(lib, "xr_3da.lib")
 

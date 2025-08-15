@@ -52,7 +52,7 @@ public:
 	f32			_height( ) const
 	{
 		return m_weapon_h;
-	};
+	}
 	const fVector3& ViewCameraPos( );
 	const fVector3& ViewCameraDir( );
 	const fVector3& ViewCameraNorm( );

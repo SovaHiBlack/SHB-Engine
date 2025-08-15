@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "helicopter.h"
+#include "Helicopter.h"
 #include "ExplosiveRocket.h"
 #include "xrMessages.h"
 #include "../xrNetServer/net_utils.h"
@@ -49,10 +49,10 @@ void CHelicopter::OnEvent(CNetPacket& P, u16 type)
 void CHelicopter::MGunUpdateFire( )
 {
 	fTime -= Device.fTimeDelta;
-	if (delta_t < 0)
+	if (delta_t < 0.0f)
 	{
 		delta_t = Device.fTimeGlobal;
-		flag_by_fire = 0;
+		flag_by_fire = 0.0f;
 	}
 
 	f32 time_f = Device.fTimeGlobal - delta_t;
@@ -131,9 +131,9 @@ void CHelicopter::OnShot( )
 	{
 		fVector3 enemy_pos = m_enemy.destEnemyPos;
 
-		f32	dt = Device.fTimeGlobal - m_enemy.fStartFireTime;
+		f32 dt = Device.fTimeGlobal - m_enemy.fStartFireTime;
 		VERIFY(dt >= 0.0f);
-		f32	dist = m_enemy.fire_trail_length_curr - dt * fire_trail_speed;
+		f32 dist = m_enemy.fire_trail_length_curr - dt * fire_trail_speed;
 		if (dist < 0.0f)
 		{
 			MGunFireEnd( );
@@ -187,7 +187,7 @@ void CHelicopter::MGunFireStart( )
 
 	if (FALSE == IsWorking( ) && m_enemy.bUseFireTrail)
 	{
-//start calc fire trail
+		//start calc fire trail
 		m_enemy.fStartFireTime = Device.fTimeGlobal;
 		fVector3 fp = get_CurrentFirePoint( );
 		fVector3 ep = m_enemy.destEnemyPos;
@@ -251,7 +251,6 @@ void CHelicopter::UpdateWeapons( )
 		if (m_allow_fire)
 		{
 			f32 d = XFORM( ).c.distance_to_xz(m_enemy.destEnemyPos);
-
 			if (between(d, m_min_mgun_dist, m_max_mgun_dist))
 			{
 				MGunFireStart( );
@@ -319,7 +318,7 @@ void CHelicopter::UpdateMGunDir( )
 	XFi.invert(XFORM( ));
 	fVector3 dep;
 	XFi.transform_tiny(dep, m_enemy.destEnemyPos);
-	{// x angle
+	{	// x angle
 		fVector3 A_;
 		A_.sub(dep, m_bind_x);
 		m_i_bind_x_xform.transform_dir(A_);
@@ -332,7 +331,7 @@ void CHelicopter::UpdateMGunDir( )
 			m_allow_fire = FALSE;
 		}
 	}
-	{// y angle
+	{	// y angle
 		fVector3 A_;
 		A_.sub(dep, m_bind_y);
 		m_i_bind_y_xform.transform_dir(A_);

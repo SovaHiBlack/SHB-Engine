@@ -5,7 +5,7 @@
 #include "..\XR_3DA\feel_touch.h"
 #include "..\XR_3DA\igame_level.h"
 #include "..\XR_3DA\StatGraph.h"
-#include "..\xrCore\xrDebug.h"
+#include "..\Core\Debug.h"
 #include "alife_space.h"
 #include "script_export_space.h"
 #include "xrMessages.h"

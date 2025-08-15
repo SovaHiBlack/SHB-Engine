@@ -1,3 +1,10 @@
+// ========================================== SHB_Engine ==========================================
+// Projekt		: Core
+// Module		: Debug.cpp
+// Author		: Anahoret
+// Description	: implementation of the CDebug class.
+// ========================================= SovaHiBlack© =========================================
+
 #include "stdafx.h"
 
 #include <dxerr.h>
@@ -24,7 +31,7 @@ extern bool shared_str_initialized;
 #	define USE_OWN_MINI_DUMP
 #endif // DEBUG
 
-CORE_API xrDebug		Debug;
+CORE_API ÑDebug		Debug;
 
 static bool error_after_dialog = false;
 
@@ -95,7 +102,7 @@ void update_clipboard(pcstr string)
 
 extern void BuildStackTrace( );
 extern char g_stackTrace[100][4096];
-extern int	g_stackTraceCount;
+extern s32	g_stackTraceCount;
 
 void LogStackTrace(pcstr header)
 {
@@ -220,14 +227,14 @@ void gather_info(pcstr expression, pcstr description, pcstr argument0, pcstr arg
 	}
 }
 
-void xrDebug::do_exit(const std::string& message)
+void ÑDebug::do_exit(const std::string& message)
 {
 	FlushLog( );
 	MessageBox(NULL, message.c_str( ), "Error", MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
 	TerminateProcess(GetCurrentProcess( ), 1);
 }
 
-void xrDebug::backend(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::backend(pcstr expression, pcstr description, pcstr argument0, pcstr argument1, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	static xrCriticalSection CS;
 
@@ -293,7 +300,7 @@ void xrDebug::backend(pcstr expression, pcstr description, pcstr argument0, pcst
 	CS.Leave( );
 }
 
-pcstr xrDebug::error2string(long code)
+pcstr ÑDebug::error2string(long code)
 {
 	pcstr				result = 0;
 	static	string1024	desc_storage;
@@ -309,42 +316,42 @@ pcstr xrDebug::error2string(long code)
 	return		result;
 }
 
-void xrDebug::error(long hr, pcstr expr, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::error(long hr, pcstr expr, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::error(long hr, pcstr expr, pcstr e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::error(long hr, pcstr expr, pcstr e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(error2string(hr), expr, e2, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::fail(pcstr e1, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend("assertion failed", e1, 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, const std::string& e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::fail(pcstr e1, const std::string& e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2.c_str( ), 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::fail(pcstr e1, pcstr e2, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, 0, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, e3, 0, file, line, function, ignore_always);
 }
 
-void xrDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr e4, pcstr file, s32 line, pcstr function, bool& ignore_always)
+void ÑDebug::fail(pcstr e1, pcstr e2, pcstr e3, pcstr e4, pcstr file, s32 line, pcstr function, bool& ignore_always)
 {
 	backend(e1, e2, e3, e4, file, line, function, ignore_always);
 }
 
-void __cdecl xrDebug::fatal(pcstr file, s32 line, pcstr function, pcstr F, ...)
+void __cdecl ÑDebug::fatal(pcstr file, s32 line, pcstr function, pcstr F, ...)
 {
 	string1024	buffer;
 
@@ -666,23 +673,10 @@ void debug_on_thread_spawn( )
 static void handler_base(pcstr reason_string)
 {
 	bool							ignore_always = false;
-	Debug.backend(
-		"error handler is invoked!",
-		reason_string,
-		0,
-		0,
-		DEBUG_INFO,
-		ignore_always
-	);
+	Debug.backend("error handler is invoked!", reason_string, 0, 0, DEBUG_INFO, ignore_always);
 }
 
-static void invalid_parameter_handler(
-	const wchar_t* expression,
-	const wchar_t* function,
-	const wchar_t* file,
-	unsigned int line,
-	uintptr_t reserved
-)
+static void invalid_parameter_handler(const wchar_t* expression, const wchar_t* function, const wchar_t* file, unsigned int line, uintptr_t reserved)
 {
 	bool							ignore_always = false;
 
@@ -690,14 +684,9 @@ static void invalid_parameter_handler(
 	string4096						function_;
 	string4096						file_;
 	size_t							converted_chars = 0;
-	//		errno_t							err = 
 	if (expression)
 	{
-		wcstombs_s(&converted_chars,
-				   expression_,
-				   sizeof(expression_),
-				   expression,
-				   (wcslen(expression) + 1) * 2 * sizeof(char));
+		wcstombs_s(&converted_chars, expression_, sizeof(expression_), expression, (wcslen(expression) + 1) * 2 * sizeof(char));
 	}
 	else
 	{
@@ -706,11 +695,7 @@ static void invalid_parameter_handler(
 
 	if (function)
 	{
-		wcstombs_s(&converted_chars,
-				   function_,
-				   sizeof(function_),
-				   function,
-				   (wcslen(function) + 1) * 2 * sizeof(char));
+		wcstombs_s(&converted_chars, function_, sizeof(function_), function, (wcslen(function) + 1) * 2 * sizeof(char));
 	}
 	else
 	{
@@ -719,11 +704,7 @@ static void invalid_parameter_handler(
 
 	if (file)
 	{
-		wcstombs_s(&converted_chars,
-				   file_,
-				   sizeof(file_),
-				   file,
-				   (wcslen(file) + 1) * 2 * sizeof(char));
+		wcstombs_s(&converted_chars, file_, sizeof(file_), file, (wcslen(file) + 1) * 2 * sizeof(char));
 	}
 	else
 	{
@@ -731,16 +712,7 @@ static void invalid_parameter_handler(
 		strcpy_s(file_, __FILE__);
 	}
 
-	Debug.backend(
-		"error handler is invoked!",
-		expression_,
-		0,
-		0,
-		file_,
-		line,
-		function_,
-		ignore_always
-	);
+	Debug.backend("error handler is invoked!", expression_, 0, 0, file_, line, function_, ignore_always);
 }
 
 static void std_out_of_memory_handler( )
@@ -773,7 +745,7 @@ static void termination_handler(s32 signal)
 	handler_base("termination with exit code 3");
 }
 
-void xrDebug::_initialize( )
+void ÑDebug::_initialize( )
 {
 	debug_on_thread_spawn( );
 

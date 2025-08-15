@@ -22,7 +22,7 @@
 #include "script_entity_action.h"
 #include "action_planner.h"
 #include "PhysicsShell.h"
-#include "helicopter.h"
+#include "Helicopter.h"
 #include "ScriptZone.h"
 #include "RelationRegistry.h"
 #include "danger_object.h"

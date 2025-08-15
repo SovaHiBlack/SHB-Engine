@@ -10,12 +10,12 @@
 #include "car.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "PHWorld.h"
+
 extern CPHWorld*	ph_world;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 CCar::SExhaust::~SExhaust()
 {
-	
 	CParticlesObject::Destroy(p_pgobject);
 }
 

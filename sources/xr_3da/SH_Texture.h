@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\xrCore\xr_resource.h"
+#include "..\Core\xr_resource.h"
 
 class ENGINE_API CAviPlayerCustom;
 class ENGINE_API CTheoraSurface;

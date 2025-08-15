@@ -141,7 +141,7 @@
     <ClCompile Include="xrMemory_subst_msvc.cpp">
       <Filter>Memory manager</Filter>
     </ClCompile>
-    <ClCompile Include="xrDebug.cpp">
+    <ClCompile Include="Debug.cpp">
       <Filter>Debug core</Filter>
     </ClCompile>
     <ClCompile Include="blackbox\BlackBoxUI.cpp">
@@ -357,10 +357,10 @@
     <ClInclude Include="xrMemory_subst_msvc.h">
       <Filter>Memory manager</Filter>
     </ClInclude>
-    <ClInclude Include="xrDebug.h">
+    <ClInclude Include="Debug.h">
       <Filter>Debug core</Filter>
     </ClInclude>
-    <ClInclude Include="xrDebug_macros.h">
+    <ClInclude Include="Debug_macros.h">
       <Filter>Debug core</Filter>
     </ClInclude>
     <ClInclude Include="blackbox\BugslayerUtil.h">

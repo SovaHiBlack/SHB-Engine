@@ -10,6 +10,7 @@
 #include "car.h"
 #include "..\XR_3DA\skeletoncustom.h"
 #include "PHWorld.h"
+
 extern CPHWorld* ph_world;
 CCar::SCarSound::SCarSound(CCar* car)
 {
@@ -41,13 +42,12 @@ void CCar::SCarSound::Init( )
 		{
 			snd_transmission.create(ini->r_string("car_sound", "transmission_switch"), st_Effect, sg_SourceType);
 		}
-
-
 	}
 	else
 	{
 		Msg("! Car doesn't contain sound params");
 	}
+
 	eCarSound = sndOff;
 }
 void CCar::SCarSound::SetSoundPosition(ref_sound& snd)
@@ -60,6 +60,7 @@ void CCar::SCarSound::SetSoundPosition(ref_sound& snd)
 		snd.set_position(pos);
 	}
 }
+
 void CCar::SCarSound::UpdateStarting( )
 {
 	VERIFY(!ph_world->Processing( ));
@@ -71,7 +72,6 @@ void CCar::SCarSound::UpdateStarting( )
 	}
 	else
 	{
-
 		if (time_state_start + engine_start_delay < Device.dwTimeGlobal)
 		{
 			snd_engine.play(pcar, sm_Looped);
@@ -116,8 +116,6 @@ void CCar::SCarSound::Update( )
 		case sndStalling:UpdateStalling( );	break;
 		case sndStoping:UpdateStalling( );	break;
 	}
-
-
 }
 
 void CCar::SCarSound::SwitchOn( )

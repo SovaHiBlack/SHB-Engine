@@ -122,13 +122,13 @@ add_to_type_list(game_PlayerState)
 #undef script_type_list
 #define script_type_list save_type_list(game_PlayerState)
 
-struct	game_TeamState
-{
-	s32			score;
-	u16			num_targets;
-
-	game_TeamState( );
-};
+//struct	game_TeamState
+//{
+//	s32			score;
+//	u16			num_targets;
+//
+//	game_TeamState( );
+//};
 
 #pragma pack(pop)
 
@@ -192,6 +192,7 @@ private:
 	u64								m_qwEStartGameTime;
 	f32							m_fETimeFactor;
 	//-------------------------------------------------------
+
 public:
 	virtual		ALife::_TIME_ID		GetGameTime( );
 	virtual		f32				GetGameTimeFactor( );

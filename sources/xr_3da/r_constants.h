@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\xrCore\xr_resource.h"
+#include "..\Core\xr_resource.h"
 
 class ENGINE_API	R_constant_setup;
 

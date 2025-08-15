@@ -4,9 +4,11 @@
 #include "Torch.h"
 #include "Trade.h"
 #include "..\XR_3DA\CameraBase.h"
+
 #ifdef DEBUG
 #include "PHDebug.h"
 #endif
+
 #include "Hit.h"
 #include "PHDestroyable.h"
 #include "Car.h"
@@ -30,10 +32,20 @@ bool g_bAutoClearCrouch = true;
 
 void CActor::IR_OnKeyboardPress(s32 cmd)
 {
-	if (Remote( ))		return;
+	if (Remote( ))
+	{
+		return;
+	}
 
-	if (IsTalking( ))	return;
-	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))	return;
+	if (IsTalking( ))
+	{
+		return;
+	}
+
+	if (m_input_external_handler && !m_input_external_handler->authorized(cmd))
+	{
+		return;
+	}
 
 	switch (cmd)
 	{
@@ -48,22 +60,36 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 				P.w_u16(ID( ));
 				u_EventSend(P);
 			}
-		}break;
+		}
+		break;
 		default:
 		{
-		}break;
+		}
+		break;
 	}
 
-	if (!g_Alive( )) return;
+	if (!g_Alive( ))
+	{
+		return;
+	}
 
 	if (m_holder && kUSE != cmd)
 	{
 		m_holder->OnKeyboardPress(cmd);
-		if (m_holder->allowWeapon( ) && inventory( ).Action(cmd, CMD_START))		return;
+		if (m_holder->allowWeapon( ) && inventory( ).Action(cmd, CMD_START))
+		{
+			return;
+		}
+
 		return;
 	}
 	else
-		if (inventory( ).Action(cmd, CMD_START))					return;
+	{
+		if (inventory( ).Action(cmd, CMD_START))
+		{
+			return;
+		}
+	}
 
 	switch (cmd)
 	{
@@ -75,24 +101,44 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 //				u_EventGen(P, GE_ACTOR_JUMPING, ID());
 //				u_EventSend(P);
 			}
-		}break;
+		}
+		break;
 		case kCROUCH_TOGGLE:
 		{
 			g_bAutoClearCrouch = !g_bAutoClearCrouch;
 			if (!g_bAutoClearCrouch)
+			{
 				mstate_wishful |= mcCrouch;
-
-		}break;
+			}
+		}
+		break;
 		case kSPRINT_TOGGLE:
 		{
 			if (mstate_wishful & mcSprint)
+			{
 				mstate_wishful &= ~mcSprint;
+			}
 			else
+			{
 				mstate_wishful |= mcSprint;
-		}break;
-		case kCAM_1:	cam_Set(eacFirstEye);				break;
-		case kCAM_2:	cam_Set(eacLookAt);				break;
-		case kCAM_3:	cam_Set(eacFreeLook);				break;
+			}
+		}
+		break;
+		case kCAM_1:
+		{
+			cam_Set(eacFirstEye);
+		}
+		break;
+		case kCAM_2:
+		{
+			cam_Set(eacLookAt);
+		}
+		break;
+		case kCAM_3:
+		{
+			cam_Set(eacFreeLook);
+		}
+		break;
 		case kNIGHT_VISION:
 		{
 			const xr_vector<CAttachableItem*>& all = CAttachmentOwner::attached_objects( );
@@ -107,7 +153,8 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 					break;
 				}
 			}
-		}break;
+		}
+		break;
 		case kTORCH:
 		{
 			const xr_vector<CAttachableItem*>& all = CAttachmentOwner::attached_objects( );
@@ -122,7 +169,8 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 					break;
 				}
 			}
-		}break;
+		}
+		break;
 		case kWPN_1:
 		case kWPN_2:
 		case kWPN_3:
@@ -133,21 +181,26 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 			//Weapons->ActivateWeaponID	(cmd-kWPN_1);			
 			break;
 		case kUSE:
+		{
 			ActorUse( );
-			break;
+		}
+		break;
 		case kDROP:
+		{
 			b_DropActivated = TRUE;
-			f_DropPower = 0;
-			break;
+			f_DropPower = 0.0f;
+		}
+		break;
 		case kNEXT_SLOT:
 		{
 			OnNextWeaponSlot( );
-		}break;
+		}
+		break;
 		case kPREV_SLOT:
 		{
 			OnPrevWeaponSlot( );
-		}break;
-
+		}
+		break;
 		case kUSE_BANDAGE:
 		case kUSE_MEDKIT:
 		{
@@ -161,8 +214,8 @@ void CActor::IR_OnKeyboardPress(s32 cmd)
 				strconcat(sizeof(str), str, *CStringTable( ).translate("st_item_used"), ": ", itm->Name( ));
 				_s->wnd( )->SetText(str);
 			}
-
-		}break;
+		}
+		break;
 	}
 }
 
@@ -198,19 +251,27 @@ void CActor::IR_OnKeyboardRelease(s32 cmd)
 	if (g_Alive( ))
 	{
 		if (cmd == kUSE)
+		{
 			PickupModeOff( );
+		}
 
 		if (m_holder)
 		{
 			m_holder->OnKeyboardRelease(cmd);
+			if (m_holder->allowWeapon( ) && inventory( ).Action(cmd, CMD_STOP))
+			{
+				return;
+			}
 
-			if (m_holder->allowWeapon( ) && inventory( ).Action(cmd, CMD_STOP))		return;
 			return;
 		}
 		else
-			if (inventory( ).Action(cmd, CMD_STOP))		return;
-
-
+		{
+			if (inventory( ).Action(cmd, CMD_STOP))
+			{
+				return;
+			}
+		}
 
 		switch (cmd)
 		{
@@ -356,14 +417,23 @@ void CActor::ActorUse( )
 	}
 
 	if (character_physics_support( )->movement( )->PHCapture( ))
+	{
 		character_physics_support( )->movement( )->PHReleaseObject( );
+	}
 
-	if (m_pUsableObject)m_pUsableObject->use(this);
+	if (m_pUsableObject)
+	{
+		m_pUsableObject->use(this);
+	}
 
 	if (m_pInvBoxWeLookingAt && m_pInvBoxWeLookingAt->nonscript_usable( ))
 	{
 		CUIGame* pGame = smart_cast<CUIGame*>(HUD( ).GetUI( )->UIGame( ));
-		if (pGame) pGame->StartCarBody(this, m_pInvBoxWeLookingAt);
+		if (pGame)
+		{
+			pGame->StartCarBody(this, m_pInvBoxWeLookingAt);
+		}
+
 		return;
 	}
 
@@ -371,21 +441,21 @@ void CActor::ActorUse( )
 	{
 		if (m_pPersonWeLookingAt)
 		{
-			CEntityAlive* pEntityAliveWeLookingAt =
-				smart_cast<CEntityAlive*>(m_pPersonWeLookingAt);
-
+			CEntityAlive* pEntityAliveWeLookingAt = smart_cast<CEntityAlive*>(m_pPersonWeLookingAt);
 			VERIFY(pEntityAliveWeLookingAt);
-
 			if (pEntityAliveWeLookingAt->g_Alive( ))
 			{
 				TryToTalk( );
 			}
 			//обыск трупа
-			else  if (!Level( ).IR_GetKeyState(DIK_LSHIFT))
+			else if (!Level( ).IR_GetKeyState(DIK_LSHIFT))
 			{
 				//только если находимся в режиме single
 				CUIGame* pGame = smart_cast<CUIGame*>(HUD( ).GetUI( )->UIGame( ));
-				if (pGame)pGame->StartCarBody(this, m_pPersonWeLookingAt);
+				if (pGame)
+				{
+					pGame->StartCarBody(this, m_pPersonWeLookingAt);
+				}
 			}
 		}
 
@@ -393,7 +463,9 @@ void CActor::ActorUse( )
 		CPhysicsShellHolder* object = smart_cast<CPhysicsShellHolder*>(RQ.O);
 		u16 element = BI_NONE;
 		if (object)
+		{
 			element = (u16)RQ.element;
+		}
 
 		if (object && Level( ).IR_GetKeyState(DIK_LSHIFT))
 		{
@@ -419,8 +491,7 @@ void CActor::ActorUse( )
 
 BOOL CActor::HUDview( )const
 {
-	return IsFocused( ) && (cam_active == eacFirstEye) &&
-		((!m_holder) || (m_holder && m_holder->allowWeapon( ) && m_holder->HUDView( )));
+	return (IsFocused( ) && (cam_active == eacFirstEye) && ((!m_holder) || (m_holder && m_holder->allowWeapon( ) && m_holder->HUDView( ))));
 }
 
 static u32 SlotsToCheck[ ] = {
@@ -436,18 +507,28 @@ void CActor::OnNextWeaponSlot( )
 {
 	u32 ActiveSlot = inventory( ).GetActiveSlot( );
 	if (ActiveSlot == NO_ACTIVE_SLOT)
+	{
 		ActiveSlot = inventory( ).GetPrevActiveSlot( );
+	}
 
 	if (ActiveSlot == NO_ACTIVE_SLOT)
+	{
 		ActiveSlot = KNIFE_SLOT;
+	}
 
 	u32 NumSlotsToCheck = sizeof(SlotsToCheck) / sizeof(u32);
 	for (u32 CurSlot = 0; CurSlot < NumSlotsToCheck; CurSlot++)
 	{
-		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
+		if (SlotsToCheck[CurSlot] == ActiveSlot)
+		{
+			break;
+		}
 	}
 
-	if (CurSlot >= NumSlotsToCheck) return;
+	if (CurSlot >= NumSlotsToCheck)
+	{
+		return;
+	}
 
 	for (u32 i = CurSlot + 1; i < NumSlotsToCheck; i++)
 	{
@@ -458,7 +539,10 @@ void CActor::OnNextWeaponSlot( )
 				IR_OnKeyboardPress(kARTEFACT);
 			}
 			else
+			{
 				IR_OnKeyboardPress(kWPN_1 + (i - KNIFE_SLOT));
+			}
+
 			return;
 		}
 	}
@@ -468,18 +552,28 @@ void CActor::OnPrevWeaponSlot( )
 {
 	u32 ActiveSlot = inventory( ).GetActiveSlot( );
 	if (ActiveSlot == NO_ACTIVE_SLOT)
+	{
 		ActiveSlot = inventory( ).GetPrevActiveSlot( );
+	}
 
 	if (ActiveSlot == NO_ACTIVE_SLOT)
+	{
 		ActiveSlot = KNIFE_SLOT;
+	}
 
 	u32 NumSlotsToCheck = sizeof(SlotsToCheck) / sizeof(u32);
 	for (u32 CurSlot = 0; CurSlot < NumSlotsToCheck; CurSlot++)
 	{
-		if (SlotsToCheck[CurSlot] == ActiveSlot) break;
+		if (SlotsToCheck[CurSlot] == ActiveSlot)
+		{
+			break;
+		}
 	}
 
-	if (CurSlot >= NumSlotsToCheck) return;
+	if (CurSlot >= NumSlotsToCheck)
+	{
+		return;
+	}
 
 	for (s32 i = s32(CurSlot - 1); i >= 0; i--)
 	{
@@ -490,7 +584,10 @@ void CActor::OnPrevWeaponSlot( )
 				IR_OnKeyboardPress(kARTEFACT);
 			}
 			else
+			{
 				IR_OnKeyboardPress(kWPN_1 + (i - KNIFE_SLOT));
+			}
+
 			return;
 		}
 	}
@@ -499,14 +596,16 @@ void CActor::OnPrevWeaponSlot( )
 f32 CActor::GetLookFactor( )
 {
 	if (m_input_external_handler)
+	{
 		return m_input_external_handler->mouse_scale_factor( );
+	}
 
-	f32 factor = 1.f;
-
+	f32 factor = 1.0f;
 	PIItem pItem = inventory( ).ActiveItem( );
-
 	if (pItem)
+	{
 		factor *= pItem->GetControlInertionFactor( );
+	}
 
 	VERIFY(!fis_zero(factor));
 
@@ -517,11 +616,15 @@ void CActor::set_input_external_handler(CActorInputHandler* handler)
 {
 	// clear state
 	if (handler)
+	{
 		mstate_wishful = 0;
+	}
 
 	// release fire button
 	if (handler)
+	{
 		IR_OnKeyboardRelease(kWPN_FIRE);
+	}
 
 	// set handler
 	m_input_external_handler = handler;

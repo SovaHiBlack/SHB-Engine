@@ -8,6 +8,6 @@
 // and not in this file
 
 #	pragma comment(lib,	"eax.lib"			)
-#	pragma comment(lib,	"xrCore.lib"		)
+#	pragma comment(lib,	"Core.lib"		)
 #	pragma comment(lib,	"xrCDB.lib"			)
 #	pragma comment(lib,	"dsound.lib" 		)

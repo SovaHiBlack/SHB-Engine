@@ -9,11 +9,11 @@
 
 #pragma once
 
-#include "../xrCore/xrCore.h"
+#include "../Core/xrCore.h"
 
 #include <locale.h>
 
-#pragma comment( lib, "xrCore.lib"	)
+#pragma comment( lib, "Core.lib"	)
 
 #if !defined(DEBUG) || defined(FORCE_NO_EXCEPTIONS)
 	// release: no error checking, no exceptions

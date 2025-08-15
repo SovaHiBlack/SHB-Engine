@@ -2,7 +2,7 @@
 #include "Inventory_space.h"
 #include "GameObject.h"
 
-class CInventoryBox :public CGameObject
+class CInventoryBox : public CGameObject
 {
 	typedef CGameObject									inherited;
 	xr_vector<u16>										m_items;

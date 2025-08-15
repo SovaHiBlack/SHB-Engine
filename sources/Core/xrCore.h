@@ -72,7 +72,7 @@
 
 #define ALIGN(a)		__declspec(align(a))
 #include <sys\utime.h>
-#define MODULE_NAME 	"xrCore.dll"
+#define MODULE_NAME 	"Core.dll"
 
 // Warnings
 #pragma warning (disable : 4251 )		// object needs DLL interface
@@ -112,7 +112,7 @@
 #include "_constants.h"
 #include "_limits.h"
 
-#include "xrDebug.h"
+#include "Debug.h"
 #include "vector.h"
 
 #include "clsid.h"

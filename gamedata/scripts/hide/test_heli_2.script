@@ -33,7 +33,7 @@ function HeliManager:HeliOnHit(power, impulse, hit_type, hitter_id)
 	
    local enemy = level.object_by_id( hitter_id )
    if enemy == nil then 
-      return
+	  return
    end
 --	self.m_heliObject:SetEnemy(enemy)
 --	self.m_heliObject:LookAtPoint(enemy:position(),true)
@@ -67,9 +67,9 @@ function HeliManager:HeliOnPoint(distance, position, path_idx)
 end
 
 function HeliManager:Start()
-      self.m_b_exploded             = false
-      self.m_b_prepered_to_die   	= false
-      self.m_start_lighting 		= 0
+	  self.m_b_exploded             = false
+	  self.m_b_prepered_to_die   	= false
+	  self.m_start_lighting 		= 0
 
 	while true do
    local state = self.m_heliObject:GetState()
@@ -82,30 +82,30 @@ function HeliManager:Start()
 
    local health = self.m_heliObject:GetfHealth()
    if self.m_b_prepered_to_die==false and state ~= CHelicopter.eDead and  health < 0.30 then
-         self.m_b_prepered_to_die = true
-         self.m_heliObject:PrepareDie()
+		 self.m_b_prepered_to_die = true
+		 self.m_heliObject:PrepareDie()
    end
 
    if state ~= CHelicopter.eDead and health <= 0.0 then
-         printf("------------DIE----------------------")
+		 printf("------------DIE----------------------")
 		self.m_heliObject:Die()
    end
 
    if (self.m_b_exploded==false) and (state == CHelicopter.eDead)  then
-      local altitude = self.m_heliObject:GetRealAltitude()
-      printf("---altitude = %f", altitude)
-      if altitude < 3.0 then
-      self.m_b_exploded = true
-         printf("------------EXPLODE----------------------")
-         self.m_heliObject:Explode()
-         self.m_heliObject:TurnLighting(true)
-         self.m_start_lighting = time_global()
-      end
+	  local altitude = self.m_heliObject:GetRealAltitude()
+	  printf("---altitude = %f", altitude)
+	  if altitude < 3.0 then
+	  self.m_b_exploded = true
+		 printf("------------EXPLODE----------------------")
+		 self.m_heliObject:Explode()
+		 self.m_heliObject:TurnLighting(true)
+		 self.m_start_lighting = time_global()
+	  end
    end
 
    if (self.m_b_exploded==true) and (self.m_start_lighting~=0) and (time_global()-self.m_start_lighting>15000)  then		
-         self.m_heliObject:TurnLighting(false)
-         self.m_start_lighting = 0
+		 self.m_heliObject:TurnLighting(false)
+		 self.m_start_lighting = 0
    end
 
    wait()
@@ -122,8 +122,8 @@ heli_mngr:Init()
 --heli_mngr:Start()
 
 --    heli_mngr.m_heliObject:StartFlame()
-    heli_mngr.m_heliObject:Die()
-    heli_mngr.m_heliObject:Explode()
+	heli_mngr.m_heliObject:Die()
+	heli_mngr.m_heliObject:Explode()
 --    heli_mngr.m_heliObject:TurnLighting(true)
 
 --		heli:heli_go_by_patrol_path( "heli_way_1" )

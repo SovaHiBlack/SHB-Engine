@@ -53,10 +53,7 @@ void SHeliMovementState::Load(pcstr section)
 
 f32 SHeliMovementState::GetAngSpeedPitch(f32 speed)
 {
-	return PitchSpK * speed + PitchSpB;
-		//PitchSpK*speed+PitchSpB;
-		//(AngSP - PitchSpB)*speed*AngSP + PitchSpB;
-		//PitchSpB/(1 + speed * AngSP); //+-0.10
+	return (PitchSpK * speed + PitchSpB);
 }
 
 f32 SHeliMovementState::GetAngSpeedHeading(f32 speed)
@@ -76,19 +73,29 @@ void SHeliMovementState::Update( )
 	switch (type)
 	{
 		case eMovNone:
-			break;
+		{
+		}
+		break;
 		case eMovToPoint:
+		{
 			UpdateMovToPoint( );
-			break;
+		}
+		break;
 		case eMovPatrolPath:
 		case eMovRoundPath:
+		{
 			UpdatePatrolPath( );
-			break;
+		}
+		break;
 		case eMovLanding:
 		case eMovTakeOff:
-			break;
+		{
+		}
+		break;
 		default:
+		{
 			NODEFAULT;
+		}
 	}
 }
 
@@ -182,11 +189,11 @@ bool SHeliMovementState::AlreadyOnPoint( )
 
 void SHeliMovementState::getPathAltitude(fVector3& point, f32 base_altitude)
 {
-	fBox3	boundingVolume = Level( ).ObjectSpace.GetBoundingVolume( );
+	fBox3 boundingVolume = Level( ).ObjectSpace.GetBoundingVolume( );
 	fVector3 boundSize;
 	boundingVolume.getsize(boundSize);
 
-	collide::rq_result		cR;
+	collide::rq_result cR;
 	fVector3 down_dir;
 	down_dir.set(0.0f, -1.0f, 0.0f);
 
@@ -198,9 +205,13 @@ void SHeliMovementState::getPathAltitude(fVector3& point, f32 base_altitude)
 	point.y = point.y - cR.range;
 
 	if (point.y + base_altitude < boundingVolume.max.y)
+	{
 		point.y += base_altitude;
+	}
 	else
+	{
 		point.y = boundingVolume.max.y - EPSILON_3;
+	}
 
 	VERIFY(_valid(point));
 
@@ -324,18 +335,18 @@ void SHeliMovementState::load(IReader& input_packet)
 
 f32 SHeliMovementState::GetSafeAltitude( )
 {
-	fBox3	boundingVolume = Level( ).ObjectSpace.GetBoundingVolume( );
-	return	boundingVolume.max.y + safe_altitude_add;
+	fBox3 boundingVolume = Level( ).ObjectSpace.GetBoundingVolume( );
+	return (boundingVolume.max.y + safe_altitude_add);
 }
 
 void SHeliMovementState::CreateRoundPoints(fVector3 center, f32 radius, f32 start_h, f32 end_h, xr_vector<STmpPt>& round_points)
 {
 	f32	height = center.y;
 
-	f32				round_len = 2 * PI * radius;
-	static f32		dist = 30.0f;//dist between points
-	f32				td = 2 * PI * dist / round_len;
-	f32				dir_h = 0.0f;
+	f32 round_len = 2 * PI * radius;
+	static f32 dist = 30.0f;//dist between points
+	f32 td = 2 * PI * dist / round_len;
+	f32 dir_h = 0.0f;
 
 	dir_h = start_h;
 	while (dir_h + td < end_h)
@@ -353,7 +364,9 @@ void SHeliMovementState::CreateRoundPoints(fVector3 center, f32 radius, f32 star
 void SHeliMovementState::goByRoundPath(fVector3 center_, f32 radius_, bool clockwise_)
 {
 	if (type == eMovRoundPath)
+	{
 		clockwise_ = !clockwise_;
+	}
 
 	f32 r_verify = maxLinearSpeed * GetAngSpeedHeading(maxLinearSpeed);
 	if (r_verify > radius_)
@@ -371,6 +384,7 @@ void SHeliMovementState::goByRoundPath(fVector3 center_, f32 radius_, bool clock
 		CPatrolPath* tmp = const_cast<CPatrolPath*>(currPatrolPath);
 		xr_delete(tmp);
 	}
+
 	need_to_del_path = true;
 	u32 pt_idx = 0;
 	CPatrolPath* pp = xr_new<CPatrolPath>("heli_round_path");
@@ -382,8 +396,9 @@ void SHeliMovementState::goByRoundPath(fVector3 center_, f32 radius_, bool clock
 	xr_vector<STmpPt>::iterator it, it_e;
 	CreateRoundPoints(center_, radius_, start_h, end_h, round_points);
 	if (clockwise_)
+	{
 		std::reverse(round_points.begin( ) + 1, round_points.end( ));
-
+	}
 
 	it = round_points.begin( );
 	it_e = round_points.end( );
@@ -394,13 +409,16 @@ void SHeliMovementState::goByRoundPath(fVector3 center_, f32 radius_, bool clock
 		CPatrolPoint pt = CPatrolPoint((CLevelGraph*)0, (CGameLevelCrossTable*)0, (CGameGraph*)0, pp, (*it).point, u32(-1), 0, pt_name);
 		pp->add_vertex(pt, pt_idx);
 		if (pt_idx)
-			pp->add_edge(pt_idx - 1, pt_idx, 1.f);
+		{
+			pp->add_edge(pt_idx - 1, pt_idx, 1.0f);
+		}
 	}
-	pp->add_edge(pt_idx - 1, 0, 1.f);
+
+	pp->add_edge(pt_idx - 1, 0, 1.0f);
 
 	currPatrolPath = pp;
 
-//find nearest point to start from...
+	//find nearest point to start from...
 	u32 start_vertex_id = 0;
 	f32 min_dist = flt_max;
 	f32 stop_t = curLinearSpeed / LinearAcc_bk;
@@ -442,15 +460,20 @@ void SHeliMovementState::SetPointFlags(u32 idx, u32 new_flags)
 
 	p->vertex(idx)->data(*pt_new);
 //	xr_delete(pt_curr);
-
 }
 
 f32 SHeliMovementState::GetSpeedInDestPoint( )
 {
-	if (need_to_del_path && currPatrolVertex && currPatrolVertex->data( ).flags( )) return 0.0f;
+	if (need_to_del_path && currPatrolVertex && currPatrolVertex->data( ).flags( ))
+	{
+		return 0.0f;
+	}
 	else
+	{
 		return speedInDestPoint;
+	}
 }
+
 void SHeliMovementState::SetSpeedInDestPoint(f32 val)
 {
 	speedInDestPoint = val;
@@ -462,7 +485,7 @@ fVector3 CHelicopter::GetCurrVelocityVec( )
 	dir.setHP(m_movement.currPathH, m_movement.currPathP);
 //	dir.sub				(m_movement.desiredPoint,m_movement.currP);
 	dir.normalize_safe( );
-	return				dir;
+	return dir;
 }
 
 #ifdef DEBUG
@@ -510,8 +533,5 @@ void CHelicopter::OnRender( )
 	Level().debug_renderer().draw_line(Fidentity,m_heli->XFORM().c,m_heli->m_data.m_destEnemyPos,D3DCOLOR_XRGB(255,0,0));
 	return;
 */
-
-
 }
 #endif
-

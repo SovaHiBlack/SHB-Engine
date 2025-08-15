@@ -6,7 +6,7 @@
 #define DetailManagerH
 #pragma once
 
-#include "..\xrCore\xrpool.h"
+#include "..\Core\xrpool.h"
 #include "detailformat.h"
 #include "detailmodel.h"
 

@@ -6,7 +6,7 @@
 #define stdafxH
 #pragma once
 
-#include "../xrCore/xrCore.h"
+#include "../Core/xrCore.h"
 
 // mmsystem.h
 #define MMNOSOUND

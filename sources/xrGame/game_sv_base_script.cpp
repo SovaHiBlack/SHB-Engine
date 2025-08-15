@@ -52,7 +52,7 @@ void game_sv_GameState::script_register(lua_State *L)
 
 	module(L,"game")
 	[
-	class_< xrTime >("CTime")
+	class_< ÑTime >("CTime")
 		.enum_("date_format")
 		[
 			value("DateToDay", s32(InventoryUtilities::edpDateToDay)),
@@ -67,25 +67,25 @@ void game_sv_GameState::script_register(lua_State *L)
 			value("TimeToMilisecs", s32(InventoryUtilities::etpTimeToMilisecs))
 		]
 		.def(						constructor<>()				)
-		.def(						constructor<const xrTime&>())
-		.def(const_self <			xrTime()					)
-		.def(const_self <=			xrTime()					)
-		.def(const_self >			xrTime()					)
-		.def(const_self >=			xrTime()					)
-		.def(const_self ==			xrTime()					)
-		.def(self +					xrTime()					)
-		.def(self -					xrTime()					)
+		.def(						constructor<const ÑTime&>())
+		.def(const_self < ÑTime()					)
+		.def(const_self <= ÑTime()					)
+		.def(const_self > ÑTime()					)
+		.def(const_self >= ÑTime()					)
+		.def(const_self == ÑTime()					)
+		.def(self + ÑTime()					)
+		.def(self - ÑTime()					)
 
-		.def("diffSec"				,&xrTime::diffSec_script)
-		.def("add"					,&xrTime::add_script)
-		.def("sub"					,&xrTime::sub_script)
+		.def("diffSec"				,&ÑTime::diffSec_script)
+		.def("add"					,&ÑTime::add_script)
+		.def("sub"					,&ÑTime::sub_script)
 
-		.def("setHMS"				,&xrTime::setHMS)
-		.def("setHMSms"				,&xrTime::setHMSms)
-		.def("set"					,&xrTime::set)
-		.def("get"					,&xrTime::get, out_value(_2) + out_value(_3) + out_value(_4) + out_value(_5) + out_value(_6) + out_value(_7) + out_value(_8))
-		.def("dateToString"			,&xrTime::dateToString)
-		.def("timeToString"			,&xrTime::timeToString),
+		.def("setHMS"				,&ÑTime::setHMS)
+		.def("setHMSms"				,&ÑTime::setHMSms)
+		.def("set"					,&ÑTime::set)
+		.def("get"					,&ÑTime::get, out_value(_2) + out_value(_3) + out_value(_4) + out_value(_5) + out_value(_6) + out_value(_7) + out_value(_8))
+		.def("dateToString"			,&ÑTime::dateToString)
+		.def("timeToString"			,&ÑTime::timeToString),
 		// declarations
 		def("time",					get_time),
 		def("get_game_time",		get_time_struct),

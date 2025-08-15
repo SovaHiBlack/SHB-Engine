@@ -1,18 +1,19 @@
 #include "stdafx.h"
 
-#include "helicopter.h"
-#include "xrserver_objects_alife.h"
-#include "PhysicsShell.h"
-#include "Level.h"
+#include "..\XR_3DA\LightAnimLibrary.h"
+#include "..\XR_3DA\skeletonanimated.h"
 #include "ai_sounds.h"
 #include "clsid_game.h"
-#include "..\XR_3DA\skeletonanimated.h"
-#include "script_callback_ex.h"
 #include "GameObject_space.h"
-#include "script_game_object.h"
-#include "..\XR_3DA\LightAnimLibrary.h"
+#include "Helicopter.h"
 #include "HudManager.h"
+#include "Level.h"
 #include "physicscommon.h"
+#include "PhysicsShell.h"
+#include "script_callback_ex.h"
+#include "script_game_object.h"
+#include "xrserver_objects_alife.h"
+
 //50fps fixed
 f32 STEP = 0.02f;
 
@@ -23,7 +24,10 @@ CHelicopter::CHelicopter( )
 	m_lanim = NULL;
 
 	ISpatial* self = smart_cast<ISpatial*> (this);
-	if (self)		self->spatial.type |= STYPE_VISIBLEFORAI;
+	if (self)
+	{
+		self->spatial.type |= STYPE_VISIBLEFORAI;
+	}
 
 	m_movement.parent = this;
 	m_body.parent = this;
@@ -39,8 +43,6 @@ void CHelicopter::setState(CHelicopter::EHeliState s)
 {
 	m_curState = s;
 }
-
-
 
 void CHelicopter::init( )
 {
@@ -64,7 +66,7 @@ DLL_Pure* CHelicopter::_construct( )
 {
 	CEntity::_construct( );
 	init( );
-	return				this;
+	return this;
 }
 
 void CHelicopter::reinit( )
@@ -73,8 +75,7 @@ void CHelicopter::reinit( )
 	m_movement.reinit( );
 	m_body.reinit( );
 	m_enemy.reinit( );
-};
-
+}
 
 void CHelicopter::Load(pcstr section)
 {
@@ -82,7 +83,6 @@ void CHelicopter::Load(pcstr section)
 	m_movement.Load(section);
 	m_body.Load(section);
 	m_enemy.Load(section);
-
 
 	m_death_ang_vel = pSettings->r_fvector3(section, "death_angular_vel");
 	m_death_lin_vel_k = pSettings->r_float(section, "death_lin_vel_koeff");
@@ -102,7 +102,6 @@ void CHelicopter::Load(pcstr section)
 
 	m_sRocketSection = pSettings->r_string(section, "rocket_class");
 
-
 	m_use_rocket_on_attack = !!pSettings->r_bool(section, "use_rocket");
 	m_use_mgun_on_attack = !!pSettings->r_bool(section, "use_mgun");
 	m_min_rocket_dist = pSettings->r_float(section, "min_rocket_attack_dist");
@@ -113,7 +112,7 @@ void CHelicopter::Load(pcstr section)
 	m_syncronize_rocket = !!pSettings->r_bool(section, "syncronize_rocket");
 	m_barrel_dir_tolerance = pSettings->r_float(section, "barrel_dir_tolerance");
 
-//lighting & sounds
+	//lighting & sounds
 	m_smoke_particle = pSettings->r_string(section, "smoke_particle");
 
 	m_light_range = pSettings->r_float(section, "light_range");
@@ -138,9 +137,9 @@ void CollisionCallbackAlife(bool& do_colide, bool bo1, dContact& c, SGameMtl* ma
 
 void ContactCallbackAlife(CDB::TRI* T, dContactGeom* c)
 { }
+
 BOOL CHelicopter::net_Spawn(CSE_Abstract* DC)
 {
-
 	SetfHealth(100.0f);
 	setState(CHelicopter::eAlive);
 	m_flame_started = false;
@@ -150,11 +149,15 @@ BOOL CHelicopter::net_Spawn(CSE_Abstract* DC)
 	m_dead = false;
 
 	if (!inherited::net_Spawn(DC))
-		return			(FALSE);
+	{
+		return FALSE;
+	}
 
 	CPHSkeleton::Spawn((CSE_Abstract*)(DC));
 	for (u32 i = 0; i < 4; ++i)
+	{
 		CRocketLauncher::SpawnRocket(*m_sRocketSection, smart_cast<CGameObject*>(this));
+	}
 
 	// assigning m_animator here
 	CSE_Abstract* abstract = (CSE_Abstract*)(DC);
@@ -224,28 +227,32 @@ BOOL CHelicopter::net_Spawn(CSE_Abstract* DC)
 
 	CShootingObject::Light_Create( );
 
-
 	setVisible(TRUE);
 	setEnabled(TRUE);
 
-
-
 	m_stepRemains = 0.0f;
 
-//lighting
+	//lighting
 	m_light_render = ::Render->light_create( );
 	m_light_render->set_shadow(false);
 	m_light_render->set_type(IRender_Light::POINT);
 	m_light_render->set_range(m_light_range);
 	m_light_render->set_color(m_light_color);
 
-	if (g_Alive( ))processing_activate( );
+	if (g_Alive( ))
+	{
+		processing_activate( );
+	}
+
 	TurnEngineSound(false);
 	if (pUserData->section_exist("destroyed"))
+	{
 		CPHDestroyable::Load(pUserData, "destroyed");
+	}
+
 #ifdef DEBUG
 	Device.seqRender.Add(this, REG_PRIORITY_LOW - 1);
-#endif
+#endif // def DEBUG
 
 	return TRUE;
 }
@@ -263,15 +270,15 @@ void CHelicopter::net_Destroy( )
 	CParticlesObject::Destroy(m_pParticle);
 	m_light_render.destroy( );
 	m_movement.net_Destroy( );
+
 #ifdef DEBUG
 	Device.seqRender.Remove(this);
-#endif
+#endif // def DEBUG
 
 }
 
-void	CHelicopter::SpawnInitPhysics(CSE_Abstract* D)
+void CHelicopter::SpawnInitPhysics(CSE_Abstract* D)
 {
-
 	PPhysicsShell( ) = P_build_Shell(this, false);
 	if (g_Alive( ))
 	{
@@ -282,7 +289,7 @@ void	CHelicopter::SpawnInitPhysics(CSE_Abstract* D)
 	}
 }
 
-void	CHelicopter::net_Save(CNetPacket& P)
+void CHelicopter::net_Save(CNetPacket& P)
 {
 	inherited::net_Save(P);
 	CPHSkeleton::SaveNetState(P);
@@ -298,7 +305,6 @@ void CHelicopter::MoveStep( )
 	f32 desired_P;
 	if (m_movement.type != eMovNone)
 	{
-
 		f32 dist = m_movement.currP.distance_to(m_movement.desiredPoint);
 
 		dir.sub(m_movement.desiredPoint, m_movement.currP);
@@ -309,14 +315,13 @@ void CHelicopter::MoveStep( )
 
 		static f32 ang = pSettings->r_float(cNameSect( ), "magic_angle");
 		if (m_movement.curLinearSpeed > GetMaxVelocity( ) || angle_difference(m_movement.currPathH, desired_H) > ang)
+		{
 			m_movement.curLinearAcc = -m_movement.LinearAcc_bk;
+		}
 		else
-			m_movement.curLinearAcc = GetCurrAcc(m_movement.curLinearSpeed,
-												 speed_,
-												 dist * 0.95f,
-												 m_movement.LinearAcc_fw,
-												 -m_movement.LinearAcc_bk);
-
+		{
+			m_movement.curLinearAcc = GetCurrAcc(m_movement.curLinearSpeed, speed_, dist * 0.95f, m_movement.LinearAcc_fw, -m_movement.LinearAcc_bk);
+		}
 
 		angle_lerp(m_movement.currPathH, desired_H, m_movement.GetAngSpeedHeading(m_movement.curLinearSpeed), STEP);
 		angle_lerp(m_movement.currPathP, desired_P, m_movement.GetAngSpeedPitch(m_movement.curLinearSpeed), STEP);
@@ -328,13 +333,18 @@ void CHelicopter::MoveStep( )
 		m_movement.curLinearSpeed += m_movement.curLinearAcc * STEP;
 		static bool aaa = false;
 		if (aaa)
+		{
 			Log("1-m_movement.curLinearSpeed=", m_movement.curLinearSpeed);
+		}
+
 		clamp(m_movement.curLinearSpeed, 0.0f, 1000.0f);
 		if (aaa)
+		{
 			Log("2-m_movement.curLinearSpeed=", m_movement.curLinearSpeed);
+		}
 	}
 	else
-	{ //go stopping
+	{	//go stopping
 		if (!fis_zero(m_movement.curLinearSpeed))
 		{
 			m_movement.curLinearAcc = -m_movement.LinearAcc_bk;
@@ -369,13 +379,17 @@ void CHelicopter::MoveStep( )
 	}
 
 	f32 needBodyP = -m_body.model_pitch_k * m_movement.curLinearSpeed;
-	if (m_movement.curLinearAcc < 0) needBodyP *= -1;
+	if (m_movement.curLinearAcc < 0.0f)
+	{
+		needBodyP *= -1.0f;
+	}
+
 	angle_lerp(m_body.currBodyHPB.y, needBodyP, m_body.model_angSpeedPitch, STEP);
 
 	f32 sign;
 	fVector3 cp;
 	cp.crossproduct(pathDir, dir);
-	(cp.y > 0.0) ? sign = 1.0f : sign = -1.0f;
+	(cp.y > 0.0f) ? sign = 1.0f : sign = -1.0f;
 	f32 ang_diff = angle_difference(m_movement.currPathH, desired_H);
 
 	f32 needBodyB = -ang_diff * sign * m_body.model_bank_k * m_movement.curLinearSpeed;
@@ -392,7 +406,6 @@ void CHelicopter::UpdateCL( )
 	CExplosive::UpdateCL( );
 	if (PPhysicsShell( ) && (state( ) == CHelicopter::eDead))
 	{
-
 		PPhysicsShell( )->InterpolateGlobalTransform(&XFORM( ));
 
 		CKinematics* K = smart_cast<CKinematics*>(Visual( ));
@@ -401,13 +414,16 @@ void CHelicopter::UpdateCL( )
 		UpdateHeliParticles( );
 
 		if (m_brokenSound._feedback( ))
+		{
 			m_brokenSound.set_position(XFORM( ).c);
-
+		}
 
 		return;
 	}
 	else
+	{
 		PPhysicsShell( )->SetTransform(XFORM( ));
+	}
 
 	m_movement.Update( );
 
@@ -424,14 +440,16 @@ void CHelicopter::UpdateCL( )
 		CGameFont* F = UI( )->Font( )->pFontDI;
 		F->SetAligment(CGameFont::alCenter);
 //		F->SetSizeI			(0.02f);
-		F->OutSetI(0.f, -0.8f);
+		F->OutSetI(0.0f, -0.8f);
 		F->SetColor(0xffffffff);
 		F->OutNext("Heli: speed=%4.4f acc=%4.4f dist=%4.4f", m_movement.curLinearSpeed, m_movement.curLinearAcc, m_movement.GetDistanceToDestPosition( ));
 	}
-#endif
+#endif // def DEBUG
 
 	if (m_engineSound._feedback( ))
+	{
 		m_engineSound.set_position(XFORM( ).c);
+	}
 
 	m_enemy.Update( );
 	//weapon
@@ -444,18 +462,33 @@ void CHelicopter::UpdateCL( )
 
 void CHelicopter::shedule_Update(u32 time_delta)
 {
-	if (!getEnabled( ))	return;
+	if (!getEnabled( ))
+	{
+		return;
+	}
 
 	inherited::shedule_Update(time_delta);
-	if (CPHDestroyable::Destroyed( ))CPHDestroyable::SheduleUpdate(time_delta);
-	else	CPHSkeleton::Update(time_delta);
+	if (CPHDestroyable::Destroyed( ))
+	{
+		CPHDestroyable::SheduleUpdate(time_delta);
+	}
+	else
+	{
+		CPHSkeleton::Update(time_delta);
+	}
 
 	if (state( ) != CHelicopter::eDead)
 	{
 		for (u32 i = getRocketCount( ); i < 4; ++i)
+		{
 			CRocketLauncher::SpawnRocket(*m_sRocketSection, this);
+		}
 	}
-	if (m_ready_explode)ExplodeHelicopter( );
+
+	if (m_ready_explode)
+	{
+		ExplodeHelicopter( );
+	}
 }
 
 void CHelicopter::goPatrolByPatrolPath(pcstr path_name, s32 start_idx)
@@ -513,4 +546,117 @@ void CHelicopter::net_Relcase(CObject* O)
 {
 	CExplosive::net_Relcase(O);
 	inherited::net_Relcase(O);
+}
+
+s32 CHelicopter::GetMovementState( )
+{
+	return m_movement.type;
+}
+
+s32 CHelicopter::GetHuntState( )
+{
+	return m_enemy.type;
+}
+
+s32 CHelicopter::GetBodyState( )
+{
+	return m_body.type;
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CHelicopter::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CHelicopter, CGameObject>("CHelicopter")
+				.def(constructor<>( ))
+				.enum_("state")
+				[
+					value("eAlive", s32(CHelicopter::eAlive)),
+					value("eDead", s32(CHelicopter::eDead))
+				]
+				.enum_("movement_state")
+				[
+					value("eMovNone", s32(eMovNone)),
+					value("eMovToPoint", s32(eMovToPoint)),
+					value("eMovPatrolPath", s32(eMovPatrolPath)),
+					value("eMovRoundPath", s32(eMovRoundPath)),
+					value("eMovLanding", s32(eMovLanding)),
+					value("eMovTakeOff", s32(eMovTakeOff))
+				]
+			.enum_("hunt_state")
+				[
+					value("eEnemyNone", s32(eEnemyNone)),
+					value("eEnemyPoint", s32(eEnemyPoint)),
+					value("eEnemyEntity", s32(eEnemyEntity))
+				]
+				.enum_("body_state")
+				[
+					value("eBodyByPath", s32(eBodyByPath)),
+					value("eBodyToPoint", s32(eBodyToPoint))
+				]
+
+				.def("GetState", &CHelicopter::state_script)
+				.def("GetMovementState", &CHelicopter::GetMovementState)
+				.def("GetHuntState", &CHelicopter::GetHuntState)
+				.def("GetBodyState", &CHelicopter::GetBodyState)
+
+				.def("GetCurrVelocity", &CHelicopter::GetCurrVelocity)
+				.def("GetMaxVelocity", &CHelicopter::GetMaxVelocity)
+				.def("SetMaxVelocity", &CHelicopter::SetMaxVelocity)
+				.def("GetCurrVelocityVec", &CHelicopter::GetCurrVelocityVec)
+				.def("GetfHealth", &CHelicopter::GetHeliHealth)
+				.def("SetfHealth", &CHelicopter::SetHeliHealth)
+
+				.def("SetSpeedInDestPoint", &CHelicopter::SetSpeedInDestPoint)
+				.def("GetSpeedInDestPoint", &CHelicopter::GetSpeedInDestPoint)
+
+				.def("SetLinearAcc", &CHelicopter::SetLinearAcc)
+
+				.def("SetOnPointRangeDist", &CHelicopter::SetOnPointRangeDist)
+				.def("GetOnPointRangeDist", &CHelicopter::GetOnPointRangeDist)
+
+				.def("GetDistanceToDestPosition", &CHelicopter::GetDistanceToDestPosition)
+
+				.def("ClearEnemy", &CHelicopter::UnSetEnemy)
+				.def("SetEnemy", (void (CHelicopter::*)(CScriptGameObject*)) & CHelicopter::SetEnemy)
+				.def("SetEnemy", (void (CHelicopter::*)(fVector3*)) & CHelicopter::SetEnemy)
+				.def("GoPatrolByPatrolPath", &CHelicopter::goPatrolByPatrolPath)
+				.def("GoPatrolByRoundPath", &CHelicopter::goByRoundPath)
+				.def("SetDestPosition", &CHelicopter::SetDestPosition)
+				.def("LookAtPoint", &CHelicopter::LookAtPoint)
+				.def("SetFireTrailLength", &CHelicopter::SetFireTrailLength)
+				.def("SetBarrelDirTolerance", &CHelicopter::SetBarrelDirTolerance)
+
+				.def("UseFireTrail", (bool (CHelicopter::*)(void)) & CHelicopter::UseFireTrail)
+				.def("UseFireTrail", (void (CHelicopter::*)(bool)) & CHelicopter::UseFireTrail)
+
+				.def("Die", &CHelicopter::DieHelicopter)
+				.def("StartFlame", &CHelicopter::StartFlame)
+				.def("Explode", &CHelicopter::ExplodeHelicopter)
+
+				.def("isVisible", &CHelicopter::isVisible)
+
+				.def("GetRealAltitude", &CHelicopter::GetRealAltitude)
+				.def("GetSafeAltitude", &CHelicopter::GetSafeAltitude)
+				.def("TurnLighting", &CHelicopter::TurnLighting)
+				.def("TurnEngineSound", &CHelicopter::TurnEngineSound)
+				.def_readwrite("m_use_rocket_on_attack", &CHelicopter::m_use_rocket_on_attack)
+				.def_readwrite("m_use_mgun_on_attack", &CHelicopter::m_use_mgun_on_attack)
+				.def_readwrite("m_min_rocket_dist", &CHelicopter::m_min_rocket_dist)
+				.def_readwrite("m_max_rocket_dist", &CHelicopter::m_max_rocket_dist)
+				.def_readwrite("m_min_mgun_dist", &CHelicopter::m_min_mgun_dist)
+				.def_readwrite("m_max_mgun_dist", &CHelicopter::m_max_mgun_dist)
+				.def_readwrite("m_time_between_rocket_attack", &CHelicopter::m_time_between_rocket_attack)
+				.def_readwrite("m_syncronize_rocket", &CHelicopter::m_syncronize_rocket)
+				.def_readonly("m_flame_started", &CHelicopter::m_flame_started)
+				.def_readonly("m_light_started", &CHelicopter::m_light_started)
+				.def_readonly("m_exploded", &CHelicopter::m_exploded)
+				.def_readonly("m_dead", &CHelicopter::m_dead)
+
+//				.def_readwrite("", &CHelicopter::)
+
+		];
 }

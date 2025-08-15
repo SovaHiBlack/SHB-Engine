@@ -344,7 +344,6 @@ bool CCar::isObjectVisible(CScriptGameObject* O_)
 	}
 	else
 	{
-
 		if (!O_)
 		{
 			Msg("Attempt to call CCar::isObjectVisible method wihth passed NULL parameter");

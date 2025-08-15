@@ -14,7 +14,7 @@
 #include "script_engine.h"
 #include "script_entity.h"
 #include "physicsshellholder.h"
-#include "helicopter.h"
+#include "Helicopter.h"
 #include "HolderCustom.h"
 #include "InventoryOwner.h"
 #include "movement_manager.h"

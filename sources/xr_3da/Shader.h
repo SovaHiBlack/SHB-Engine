@@ -4,7 +4,7 @@
 #pragma once
 
 #include "r_constants.h"
-#include "..\xrCore\xr_resource.h"
+#include "..\Core\xr_resource.h"
 
 #include "sh_atomic.h"
 #include "sh_texture.h"

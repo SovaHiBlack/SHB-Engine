@@ -6,7 +6,7 @@
 #include "..\XR_3DA\xrLevel.h"
 #include "..\XR_3DA\x_ray.h"
 #include "..\XR_3DA\IGame_Persistent.h"
-#include "..\xrCore\StreamReader.h"
+#include "..\Core\StreamReader.h"
 
 #pragma warning(push)
 #pragma warning(disable:4995)

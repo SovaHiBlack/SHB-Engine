@@ -9,10 +9,10 @@
 
 #pragma once
 
-#include "../xrCore/xrCore.h"
+#include "../Core/xrCore.h"
 
 #include "xrXMLParser.h"
 
-#pragma comment( lib, "xrCore.lib"	)
+#pragma comment( lib, "Core.lib"	)
 
 #endif //stdafxH

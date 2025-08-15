@@ -14,9 +14,9 @@
 
 using namespace luabind;
 
-xrTime CSavedGameWrapper__game_time(const CSavedGameWrapper* self)
+ÑTime CSavedGameWrapper__game_time(const CSavedGameWrapper* self)
 {
-	return xrTime(self->game_time( ));
+	return ÑTime(self->game_time( ));
 }
 
 pcstr CSavedGameWrapper__level_name(const CSavedGameWrapper* self)

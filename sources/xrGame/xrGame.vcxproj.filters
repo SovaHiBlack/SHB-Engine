@@ -829,9 +829,6 @@
     <Filter Include="Core\Client\Objects\vehicles\Car\car_memory">
       <UniqueIdentifier>{2c4ff7b7-d6be-42e5-b957-9064dea9b39d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\vehicles\heli">
-      <UniqueIdentifier>{d4a39165-cc6c-433f-b7bf-de1c3918991c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\DelayedActionFuse">
       <UniqueIdentifier>{716aea6a-601b-4c18-989d-dff0db27a59a}</UniqueIdentifier>
     </Filter>
@@ -2067,6 +2064,9 @@
     </Filter>
     <Filter Include="Core\Client\Level\LevelSoundManager">
       <UniqueIdentifier>{a0ef4c3d-8f34-4ce5-af4f-8c4f8e822981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\vehicles\Helicopter">
+      <UniqueIdentifier>{d4a39165-cc6c-433f-b7bf-de1c3918991c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -5037,8 +5037,8 @@
     <ClInclude Include="car_memory.h">
       <Filter>Core\Client\Objects\vehicles\Car\car_memory</Filter>
     </ClInclude>
-    <ClInclude Include="helicopter.h">
-      <Filter>Core\Client\Objects\vehicles\heli</Filter>
+    <ClInclude Include="Helicopter.h">
+      <Filter>Core\Client\Objects\vehicles\Helicopter</Filter>
     </ClInclude>
     <ClInclude Include="DelayedActionFuse.h">
       <Filter>Core\Client\Objects\DelayedActionFuse</Filter>
@@ -7722,19 +7722,16 @@
       <Filter>Core\Client\Objects\vehicles\Car\car_memory</Filter>
     </ClCompile>
     <ClCompile Include="Helicopter.cpp">
-      <Filter>Core\Client\Objects\vehicles\heli</Filter>
+      <Filter>Core\Client\Objects\vehicles\Helicopter</Filter>
     </ClCompile>
     <ClCompile Include="Helicopter2.cpp">
-      <Filter>Core\Client\Objects\vehicles\heli</Filter>
-    </ClCompile>
-    <ClCompile Include="helicopter_script.cpp">
-      <Filter>Core\Client\Objects\vehicles\heli</Filter>
+      <Filter>Core\Client\Objects\vehicles\Helicopter</Filter>
     </ClCompile>
     <ClCompile Include="HelicopterMovementManager.cpp">
-      <Filter>Core\Client\Objects\vehicles\heli</Filter>
+      <Filter>Core\Client\Objects\vehicles\Helicopter</Filter>
     </ClCompile>
     <ClCompile Include="HelicopterWeapon.cpp">
-      <Filter>Core\Client\Objects\vehicles\heli</Filter>
+      <Filter>Core\Client\Objects\vehicles\Helicopter</Filter>
     </ClCompile>
     <ClCompile Include="DelayedActionFuse.cpp">
       <Filter>Core\Client\Objects\DelayedActionFuse</Filter>

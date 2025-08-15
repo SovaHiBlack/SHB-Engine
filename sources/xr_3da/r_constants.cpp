@@ -6,11 +6,7 @@
 
 #include "ResourceManager.h"
 
-//#include "..\xrCore\xrPool.h"
 #include "r_constants.h"
-
-// pool
-//.static	poolSS<R_constant,512>			g_constant_allocator;
 
 R_constant_table::~R_constant_table	()	{	Device.Resources->_DeleteConstantTable(this);	}
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "..\xrCore\xr_resource.h"
+#include "..\Core\xr_resource.h"
 #include "tss_def.h"
 
 #pragma pack(push,4)

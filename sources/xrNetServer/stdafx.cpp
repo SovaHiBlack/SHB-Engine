@@ -3,6 +3,6 @@
 
 #include "stdafx.h"
 
-#pragma comment(lib, "xrCore.lib")
+#pragma comment(lib, "Core.lib")
 #pragma comment(lib, "depr/dxguid.lib")
 #pragma comment(lib, "Ws2_32.lib")// раньше небыло

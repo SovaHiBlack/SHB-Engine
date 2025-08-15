@@ -118,16 +118,16 @@ bool  CScriptGameObject::DontHasInfo			(pcstr info_id)
 	return !pInventoryOwner->HasInfo(info_id);
 }
 
-xrTime CScriptGameObject::GetInfoTime			(pcstr info_id)
+ÑTime CScriptGameObject::GetInfoTime			(pcstr info_id)
 {
 	CInventoryOwner* pInventoryOwner = smart_cast<CInventoryOwner*>(&object());
-	if(!pInventoryOwner) return xrTime(0);
+	if(!pInventoryOwner) return ÑTime(0);
 
 	INFO_DATA info_data;
 	if(pInventoryOwner->GetInfo(info_id, info_data))
-		return xrTime(info_data.receive_time);
+		return ÑTime(info_data.receive_time);
 	else
-		return xrTime(0);
+		return ÑTime(0);
 }
 
 bool CScriptGameObject::IsTalking()

@@ -161,7 +161,7 @@ void CProjector::UpdateCL( )
 
 			fColor fclr;
 			fclr.set((f32) color_get_B(clr), (f32) color_get_G(clr), (f32) color_get_R(clr), 1.0f);
-			fclr.mul_rgb(fBrightness / 255.f);
+			fclr.mul_rgb(fBrightness / 255.0f);
 			light_render->set_color(fclr);
 			glow_render->set_color(fclr);
 		}
@@ -182,7 +182,6 @@ void CProjector::UpdateCL( )
 	angle_lerp(_current.pitch, _target.pitch, bone_y.velocity, Device.fTimeDelta);
 }
 
-
 void CProjector::renderable_Render( )
 {
 	inherited::renderable_Render( );
@@ -201,9 +200,7 @@ bool CProjector::bfAssignWatch(CScriptEntityAction* tpEntityAction)
 	}
 
 	CScriptWatchAction& l_tWatchAction = tpEntityAction->m_tWatchAction;
-
-	(!l_tWatchAction.m_tpObjectToWatch) ? SetTarget(l_tWatchAction.m_tTargetPoint) :
-		SetTarget(l_tWatchAction.m_tpObjectToWatch->Position( ));
+	(!l_tWatchAction.m_tpObjectToWatch) ? SetTarget(l_tWatchAction.m_tTargetPoint) : SetTarget(l_tWatchAction.m_tpObjectToWatch->Position( ));
 
 	f32 delta_yaw = angle_difference(_current.yaw, _target.yaw);
 	f32 delta_pitch = angle_difference(_current.pitch, _target.pitch);
@@ -249,6 +246,7 @@ void CProjector::SetTarget(const fVector3& target_pos)
 	{
 		delta_h = -delta_h;
 	}
+
 	clamp(delta_h, -PI_DIV_2, PI_DIV_2);
 
 	_target.yaw = angle_normalize(_start.yaw + delta_h);

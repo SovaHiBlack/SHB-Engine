@@ -14,6 +14,7 @@
     <ProjectGuid>{A0F7D1FB-59A7-4717-A7E4-96F37E91998E}</ProjectGuid>
     <RootNamespace>xrCore</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>Core</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -244,7 +245,7 @@
     </ClCompile>
     <ClCompile Include="StreamReader.cpp" />
     <ClCompile Include="xrCore.cpp" />
-    <ClCompile Include="xrDebug.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="xrMemory.cpp" />
     <ClCompile Include="xrMemory_align.cpp" />
     <ClCompile Include="xrMemory_debug.cpp" />
@@ -311,8 +312,8 @@
     <ClInclude Include="vector.h" />
     <ClInclude Include="xrCore.h" />
     <ClInclude Include="xrCore_platform.h" />
-    <ClInclude Include="xrDebug.h" />
-    <ClInclude Include="xrDebug_macros.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="Debug_macros.h" />
     <ClInclude Include="xrMemory.h" />
     <ClInclude Include="xrMemory_align.h" />
     <ClInclude Include="xrMemory_POOL.h" />

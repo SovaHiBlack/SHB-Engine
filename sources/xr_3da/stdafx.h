@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../xrCore/xrCore.h"
+#include "../Core/xrCore.h"
 
 #ifdef _DEBUG
 #define D3D_DEBUG_INFO
@@ -31,7 +31,7 @@
 
 extern ENGINE_API CIniFile* pGameIni;
 
-#pragma comment( lib, "xrCore.lib"	)
+#pragma comment( lib, "Core.lib"	)
 #pragma comment( lib, "xrCDB.lib"	)
 #pragma comment( lib, "xrSound.lib"	)
 #pragma comment( lib, "xrLUA.lib"	)
