@@ -10,7 +10,7 @@
 #include "xrServer_Objects_ALife_Monsters.h"
 #include "phworld.h"
 #include "restriction_space.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "InventoryOwner.h"
 #include "EntityAlive.h"
 #include "xr_level_controller.h"

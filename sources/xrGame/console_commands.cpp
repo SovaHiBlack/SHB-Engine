@@ -2,7 +2,7 @@
 
 #include "..\XR_3DA\Console.h"
 #include "..\XR_3DA\ConsoleCommand.h"
-#include "..\XR_3DA\customhud.h"
+#include "..\XR_3DA\CustomHUD.h"
 #include "..\XR_3DA\DemoRecord.h"
 #include "..\XR_3DA\DemoPlay.h"
 #include "xrMessages.h"
@@ -17,7 +17,6 @@
 #include "Hit.h"
 #include "PHDestroyable.h"
 #include "Actor.h"
-//#include "Actor_flags.h"
 #include "CustomZone.h"
 #include "script_engine.h"
 #include "script_engine_space.h"

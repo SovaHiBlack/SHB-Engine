@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "..\XR_3DA\igame_persistent.h"
-#include "..\XR_3DA\environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
+#include "..\XR_3DA\Environment.h"
 
 #define STENCIL_CULL 0
 

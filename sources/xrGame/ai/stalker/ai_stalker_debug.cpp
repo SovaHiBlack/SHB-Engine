@@ -41,7 +41,7 @@
 #include "../../agent_corpse_manager.h"
 #include "../../agent_location_manager.h"
 #include "../../cover_point.h"
-#include "..\..\..\XR_3DA\camerabase.h"
+#include "..\..\..\XR_3DA\CameraBase.h"
 #include "../../clsid_game.h"
 #include "../../mt_config.h"
 #include "../../WeaponMagazined.h"

@@ -9,7 +9,7 @@
 #include "Level.h"
 #include "game_cl_base.h"
 #include "AISpace.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 #include "..\XR_3DA\Console.h"
 #include "ui/UIInventoryUtilities.h"//

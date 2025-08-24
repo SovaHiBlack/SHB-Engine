@@ -1,6 +1,4 @@
 // CDemoPlay.cpp: implementation of the CDemoPlay class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 #include "igame_level.h"
@@ -126,7 +124,7 @@ void CDemoPlay::stat_Stop( )
 	// min/max/average
 	rfps_min = flt_max;
 	rfps_max = flt_min;
-	rfps_middlepoint = 0;
+	rfps_middlepoint = 0.0f;
 	for (u32 it = 1; it < stat_table.size( ); it++)
 	{
 		f32	fps = 1.0f / stat_table[it];
@@ -256,7 +254,7 @@ BOOL CDemoPlay::Process(fVector3& P, fVector3& D, fVector3& N, f32& fFov, f32& f
 		f32 p = fStartTime / fSpeed;
 		f32 t = modff(p, &ip);
 		s32 frame = iFloor(ip);
-		VERIFY(t >= 0);
+		VERIFY(t >= 0.0f);
 
 		if (frame >= m_count)
 		{

@@ -10,7 +10,7 @@
 
 #include "..\XR_3DA\effectorpp.h"
 #include "script_export_space.h"
-#include "..\XR_3DA\cameramanager.h"
+#include "..\XR_3DA\CameraManager.h"
 
 class CScriptEffector : public CEffectorPP {
 public:

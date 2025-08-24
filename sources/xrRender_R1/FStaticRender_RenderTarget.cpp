@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "fstaticrender_rendertarget.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 
 static pcstr		RTname			= "$user$rendertarget";

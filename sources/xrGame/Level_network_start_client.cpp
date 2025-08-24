@@ -5,7 +5,7 @@
 #include "Physics.h"
 #include "Level.h"
 #include "..\XR_3DA\x_ray.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "PhysicsGamePars.h"
 #include "AISpace.h"
 #include "StringTable.h"

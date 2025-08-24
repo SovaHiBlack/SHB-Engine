@@ -14,7 +14,7 @@
 #include "MathUtils.h"
 #include "characterphysicssupport.h"
 #include "Inventory.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "ui/UIProgressShape.h"
 #include "ui/UIXmlInit.h"
 

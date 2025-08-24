@@ -17,6 +17,7 @@ void CKinematics::CalculateBones(BOOL bForceExact)
 	{
 		return;
 	}
+
 	UCalc_mtlock	lock;
 	OnCalculateBones( );
 	if (!bForceExact && (Device.dwTimeGlobal < (UCalc_Time + UCalc_Interval)))	// early out for "slow" update
@@ -67,14 +68,14 @@ void CKinematics::CalculateBones(BOOL bForceExact)
 
 			fObb& obb = (*bones)[b]->obb;
 			fMatrix4x4& Mbone = bone_instances[b].mTransform;
-			fMatrix4x4		Mbox;
+			fMatrix4x4 Mbox;
 			obb.xform_get(Mbox);
-			fMatrix4x4		X;
+			fMatrix4x4 X;
 			X.mul_43(Mbone, Mbox);
 			fVector3& S = obb.m_halfsize;
 
-			fVector3			P;
-			fVector3			A;
+			fVector3 P;
+			fVector3 A;
 			A.set(-S.x, -S.y, -S.z);
 			X.transform_tiny(P, A);
 			Box.modify(P);

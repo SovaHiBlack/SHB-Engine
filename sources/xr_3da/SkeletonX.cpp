@@ -298,7 +298,7 @@ BOOL CSkeletonX::_PickBoneSoft1W(fVector3& normal, f32& dist, const fVector3& S,
 	bool intersect = FALSE;
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		fVector3			p[3];
+		fVector3 p[3];
 		u32 idx = (*it) * 3;
 		for (u32 k = 0; k < 3; k++)
 		{
@@ -326,12 +326,12 @@ BOOL CSkeletonX::_PickBoneSoft2W(fVector3& normal, f32& dist, const fVector3& S,
 	bool intersect = FALSE;
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		fVector3			p[3];
+		fVector3 p[3];
 		u32 idx = (*it) * 3;
 		for (u32 k = 0; k < 3; k++)
 		{
-			fVector3		P0;
-			fVector3		P1;
+			fVector3 P0;
+			fVector3 P1;
 			vertBoned2W& vert = Vertices2W[indices[idx + k]];
 			fMatrix4x4& xform0 = Parent->LL_GetBoneInstance(vert.matrix0).mRenderTransform;
 			fMatrix4x4& xform1 = Parent->LL_GetBoneInstance(vert.matrix1).mRenderTransform;
@@ -359,7 +359,7 @@ void CSkeletonX::_FillVerticesSoft1W(const fMatrix4x4& view, CSkeletonWallmark& 
 	VERIFY(*Vertices1W);
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		fVector3			p[3];
+		fVector3 p[3];
 		u32 idx = (*it) * 3;
 		CSkeletonWallmark::WMFace F;
 		for (u32 k = 0; k < 3; k++)
@@ -383,7 +383,7 @@ void CSkeletonX::_FillVerticesSoft1W(const fMatrix4x4& view, CSkeletonWallmark& 
 
 		if (CDB::TestSphereTri(wm.ContactPoint( ), size, p))
 		{
-			fVector3				UV;
+			fVector3 UV;
 			for (u32 k = 0; k < 3; k++)
 			{
 				fVector2& uv = F.uv[k];
@@ -401,13 +401,13 @@ void CSkeletonX::_FillVerticesSoft2W(const fMatrix4x4& view, CSkeletonWallmark& 
 	VERIFY(*Vertices2W);
 	for (CBoneData::FacesVecIt it = faces.begin( ); it != faces.end( ); it++)
 	{
-		fVector3			p[3];
+		fVector3 p[3];
 		u32 idx = (*it) * 3;
 		CSkeletonWallmark::WMFace F;
 		for (u32 k = 0; k < 3; k++)
 		{
-			fVector3		P0;
-			fVector3		P1;
+			fVector3 P0;
+			fVector3 P1;
 			vertBoned2W& vert = Vertices2W[indices[idx + k]];
 			F.bone_id[k][0] = vert.matrix0;
 			F.bone_id[k][1] = vert.matrix1;
@@ -430,7 +430,7 @@ void CSkeletonX::_FillVerticesSoft2W(const fMatrix4x4& view, CSkeletonWallmark& 
 
 		if (CDB::TestSphereTri(wm.ContactPoint( ), size, p))
 		{
-			fVector3				UV;
+			fVector3 UV;
 			for (u32 k = 0; k < 3; k++)
 			{
 				fVector2& uv = F.uv[k];

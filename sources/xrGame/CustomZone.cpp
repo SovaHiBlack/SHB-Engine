@@ -6,7 +6,7 @@
 #include "xrserver_objects_alife_monsters.h"
 #include "..\XR_3DA\LightAnimLibrary.h"
 #include "Level.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "Artefact.h"
 #include "ai_object_location.h"
 #include "..\XR_3DA\skeletoncustom.h"

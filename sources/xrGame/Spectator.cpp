@@ -23,7 +23,7 @@
 #include "clsid_game.h"
 #include "StringTable.h"
 #include "MapManager.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 //--------------------------------------------------------------------
 //////////////////////////////////////////////////////////////////////

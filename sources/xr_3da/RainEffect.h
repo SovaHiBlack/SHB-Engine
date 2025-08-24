@@ -1,4 +1,4 @@
-// Rain.h: interface for the CRain class.
+// RainEffect.h: interface for the CRainEffect class.
 //
 //////////////////////////////////////////////////////////////////////
 #pragma once
@@ -8,7 +8,7 @@
 //refs
 class ENGINE_API IRender_DetailModel;
 //
-class ENGINE_API CEffect_Rain
+class ENGINE_API CRainEffect
 {
 private:
 	struct	Item
@@ -77,8 +77,8 @@ private:
 	void							RenewItem(Item& dest, f32 height, BOOL bHit);
 
 public:
-	CEffect_Rain( );
-	~CEffect_Rain( );
+	CRainEffect( );
+	~CRainEffect( );
 
 	void							Render( );
 	void							OnFrame( );

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CameraDefs.h"
+#include "Camera_defs.h"
 
 class ENGINE_API		CEffectorCam
 {

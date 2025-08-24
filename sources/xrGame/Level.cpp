@@ -4,8 +4,8 @@
 
 #include "..\XR_3DA\DemoRecord.h"
 #include "..\XR_3DA\DemoPlay.h"
-#include "..\XR_3DA\environment.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\Environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "ParticlesObject.h"
 #include "Level.h"
 #include "xrServer.h"

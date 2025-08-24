@@ -64,7 +64,7 @@ public:
 };
 DEFINE_VECTOR(CLensFlareDescriptor, LensFlareDescVec, LensFlareDescIt);
 
-class ENGINE_API CLensFlare
+class ENGINE_API CLensFlareEffect
 {
 private:
 	collide::rq_results	r_dest;
@@ -105,8 +105,8 @@ public:
 	collide::ray_cache	m_ray_cache;
 
 public:
-	CLensFlare( );
-	virtual				~CLensFlare( );
+	CLensFlareEffect( );
+	virtual				~CLensFlareEffect( );
 
 	void				OnFrame(s32 id);
 	void __fastcall		Render(BOOL bSun, BOOL bFlares, BOOL bGradient);

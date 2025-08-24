@@ -13,7 +13,7 @@
 #include "Entity.h"
 #include "Level.h"
 #include "game_cl_base.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 #include "InventoryOwner.h"
 #include "RelationRegistry.h"

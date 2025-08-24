@@ -613,7 +613,7 @@ s32 xrHemisphereIndices(s32 quality, const u16*& indices)
 			indices = hemi_2v;
 		}
 		break;
-		default:// NO 	
+		default:// NO
 		{
 			NODEFAULT;
 		}

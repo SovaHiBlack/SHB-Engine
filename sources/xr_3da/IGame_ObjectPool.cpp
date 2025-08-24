@@ -1,6 +1,6 @@
 #include "stdafx.h"
-//#include "igame_level.h"
-#include "IGame_Persistent.h"
+
+#include "IGamePersistent.h"
 #include "igame_objectpool.h"
 #include "Object.h"
 

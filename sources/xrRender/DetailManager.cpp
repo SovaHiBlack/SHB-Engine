@@ -7,14 +7,14 @@
 #include "DetailManager.h"
 #include "..\XR_3DA\cl_intersect.h"
 
-#include "..\XR_3DA\igame_persistent.h"
-#include "..\XR_3DA\environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
+#include "..\XR_3DA\Environment.h"
 
-const f32 dbgOffset			= 0.f;
-const int	dbgItems			= 128;
+const f32 dbgOffset			= 0.0f;
+const s32	dbgItems			= 128;
 
 //--------------------------------------------------- Decompression
-static int magic4x4[4][4] =
+static s32 magic4x4[4][4] =
 {
  	{ 0, 14,  3, 13},
 	{11,  5,  8,  6},

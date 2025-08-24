@@ -183,7 +183,7 @@
     <ClInclude Include="IGame_Level.h">
       <Filter>Game API</Filter>
     </ClInclude>
-    <ClInclude Include="IGame_Persistent.h">
+    <ClInclude Include="IGamePersistent.h">
       <Filter>Game API</Filter>
     </ClInclude>
     <ClInclude Include="xrLevel.h">
@@ -210,19 +210,19 @@
     <ClInclude Include="xrHemisphere.h">
       <Filter>Game API\Environment</Filter>
     </ClInclude>
-    <ClInclude Include="Rain.h">
+    <ClInclude Include="RainEffect.h">
       <Filter>Game API\Environment\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="thunderbolt.h">
+    <ClInclude Include="ThunderboltEffect.h">
       <Filter>Game API\Environment\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="xr_efflensflare.h">
+    <ClInclude Include="LensFlareEffect.h">
       <Filter>Game API\Environment\Effects</Filter>
     </ClInclude>
     <ClInclude Include="CameraBase.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="CameraDefs.h">
+    <ClInclude Include="Camera_defs.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="CameraManager.h">
@@ -536,7 +536,7 @@
     <ClCompile Include="IGame_Level_check_textures.cpp">
       <Filter>Game API</Filter>
     </ClCompile>
-    <ClCompile Include="IGame_Persistent.cpp">
+    <ClCompile Include="IGamePersistent.cpp">
       <Filter>Game API</Filter>
     </ClCompile>
     <ClCompile Include="IGame_ObjectPool.cpp">
@@ -566,13 +566,13 @@
     <ClCompile Include="xrHemisphere.cpp">
       <Filter>Game API\Environment</Filter>
     </ClCompile>
-    <ClCompile Include="Rain.cpp">
+    <ClCompile Include="RainEffect.cpp">
       <Filter>Game API\Environment\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="thunderbolt.cpp">
+    <ClCompile Include="ThunderboltEffect.cpp">
       <Filter>Game API\Environment\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="xr_efflensflare.cpp">
+    <ClCompile Include="LensFlareEffect.cpp">
       <Filter>Game API\Environment\Effects</Filter>
     </ClCompile>
     <ClCompile Include="CameraBase.cpp">

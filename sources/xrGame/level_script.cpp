@@ -1,8 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
 //	Module 		: level_script.cpp
-//	Created 	: 28.06.2004
-//  Modified 	: 28.06.2004
-//	Author		: Dmitriy Iassenev
 //	Description : Level script export
 ////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -13,7 +10,7 @@
 #include "patrol_path_storage.h"
 #include "xrServer.h"
 #include "ClientSpawnManager.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "game_cl_base.h"
 #include "ui/UIDialogWnd.h"
 #include "date_time.h"

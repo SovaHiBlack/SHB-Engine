@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "..\XR_3DA\BasicVisual.h"
-#include "..\XR_3DA\customhud.h"
+#include "..\XR_3DA\CustomHUD.h"
 #include "..\XR_3DA\Object.h"
 
 IC	bool	pred_sp_sort	(ISpatial*	_1, ISpatial* _2)

@@ -1,19 +1,12 @@
 #include "stdafx.h"
-//#include "igame_level.h"
 
 #include "GammaControl.h"
-//#include "x_ray.h"
 #include "Console.h"
 #include "ConsoleCommand.h"
-//#include "BasicVisual.h"
-#include "cameramanager.h"
-#include "environment.h"
-//#include "Input.h"
-//#include "CustomHUD.h"
+#include "CameraManager.h"
+#include "Environment.h"
 #include "SkeletonAnimated.h"
 #include "ResourceManager.h"
-
-//#include "Object.h"
 
 xr_token snd_freq_token[ ] =
 {

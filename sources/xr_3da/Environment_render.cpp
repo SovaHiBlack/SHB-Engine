@@ -3,9 +3,9 @@
 #include "Environment.h"
 #include "Render.h"
 
-#include "xr_efflensflare.h"
-#include "rain.h"
-#include "thunderbolt.h"
+#include "LensFlareEffect.h"
+#include "RainEffect.h"
+#include "ThunderboltEffect.h"
 
 #include "igame_level.h"
 
@@ -247,6 +247,7 @@ void CEnvironment::OnDeviceCreate( )
 			}
 		}
 	}
+
 	// effects
 	{
 		EnvsMapIt _I;
@@ -275,6 +276,7 @@ void CEnvironment::OnDeviceDestroy( )
 	sh_2geom.destroy( );
 	clouds_sh.destroy( );
 	clouds_geom.destroy( );
+
 	// weathers
 	{
 		EnvsMapIt _I;
@@ -289,6 +291,7 @@ void CEnvironment::OnDeviceDestroy( )
 			}
 		}
 	}
+
 	// effects
 	{
 		EnvsMapIt _I;

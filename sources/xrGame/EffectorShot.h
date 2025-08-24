@@ -5,7 +5,7 @@
 #pragma once
 
 #include "CameraEffector.h"
-#include "..\XR_3DA\cameramanager.h"
+#include "..\XR_3DA\CameraManager.h"
 #include "Actor.h"
 
 class CWeaponShotEffector

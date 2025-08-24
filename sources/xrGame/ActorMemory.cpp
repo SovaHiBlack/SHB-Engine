@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "Actor.h"
 #include "ActorMemory.h"
-#include "..\XR_3DA\camerabase.h"
+#include "..\XR_3DA\CameraBase.h"
 #include "GamePersistent.h"
 
 CActorMemory::CActorMemory(CActor* actor) :

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 #include "..\XR_3DA\irenderable.h"
 
 const	f32	tweak_COP_initial_offs = 1200.f;

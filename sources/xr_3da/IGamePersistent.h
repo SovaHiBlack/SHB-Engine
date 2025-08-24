@@ -6,7 +6,7 @@
 class IMainMenu;
 class ENGINE_API CPS_Instance;
 //-----------------------------------------------------------------------------------------------------------
-class ENGINE_API IGame_Persistent : public DLL_Pure, public pureAppStart, public pureAppEnd, public pureAppActivate, public pureAppDeactivate, public pureFrame
+class ENGINE_API IGamePersistent : public DLL_Pure, public pureAppStart, public pureAppEnd, public pureAppActivate, public pureAppDeactivate, public pureFrame
 {
 public:
 	union params
@@ -76,14 +76,14 @@ public:
 	virtual void					OnRenderPPUI_PP( )
 	{ }
 
-	virtual	void					OnAppStart( );
+	virtual void					OnAppStart( );
 	virtual void					OnAppEnd( );
-	virtual	void					OnAppActivate( );
+	virtual void					OnAppActivate( );
 	virtual void					OnAppDeactivate( );
 	virtual void					OnFrame( );
 
 	// вызывается только когда изменяется тип игры
-	virtual	void					OnGameStart( );
+	virtual void					OnGameStart( );
 	virtual void					OnGameEnd( );
 
 	virtual void					UpdateGameType( )
@@ -93,8 +93,8 @@ public:
 
 	virtual f32					MtlTransparent(u32 mtl_idx) = 0;
 
-	IGame_Persistent( );
-	virtual ~IGame_Persistent( );
+	IGamePersistent( );
+	virtual ~IGamePersistent( );
 
 	u32						GameType( )
 	{
@@ -102,7 +102,7 @@ public:
 	}
 	virtual void					Statistics(CGameFont* F) = 0;
 
-	virtual	void					LoadTitle(pcstr str)
+	virtual void					LoadTitle(pcstr str)
 	{ }
 };
 
@@ -112,8 +112,8 @@ public:
 	virtual			~IMainMenu( )
 	{ }
 	virtual void	Activate(bool bActive) = 0;
-	virtual	bool	IsActive( ) = 0;
+	virtual bool	IsActive( ) = 0;
 	virtual void	DestroyInternal(bool bForce) = 0;
 };
 
-extern ENGINE_API	IGame_Persistent* g_pGamePersistent;
+extern ENGINE_API	IGamePersistent* g_pGamePersistent;

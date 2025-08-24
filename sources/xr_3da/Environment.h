@@ -7,9 +7,9 @@ class ENGINE_API 	CEnvironment;
 
 // refs - effects
 class ENGINE_API	CEnvironment;
-class ENGINE_API	CLensFlare;
-class ENGINE_API	CEffect_Rain;
-class ENGINE_API	CEffect_Thunderbolt;
+class ENGINE_API	CLensFlareEffect;
+class ENGINE_API	CRainEffect;
+class ENGINE_API	CThunderboltEffect;
 
 class ENGINE_API	CPerlinNoise1D;
 
@@ -173,7 +173,7 @@ public:
 	void				on_device_destroy( );
 };
 
-class ENGINE_API		CEnvDescriptorMixer : public CEnvDescriptor
+class ENGINE_API	CEnvDescriptorMixer : public CEnvDescriptor
 {
 public:
 	STextureList		sky_r_textures;
@@ -260,9 +260,9 @@ public:
 	ref_shader				clouds_sh;
 	ref_geom				clouds_geom;
 
-	CEffect_Rain* eff_Rain;
-	CLensFlare* eff_LensFlare;
-	CEffect_Thunderbolt* eff_Thunderbolt;
+	CRainEffect* eff_Rain;
+	CLensFlareEffect* eff_LensFlare;
+	CThunderboltEffect* eff_Thunderbolt;
 
 	f32					fTimeFactor;
 	ref_texture				tonemap;

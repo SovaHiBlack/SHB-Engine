@@ -34,7 +34,7 @@ protected:
 	f32						fCurrentY;
 	fVector2				vInterval;
 
-	fVector3* TCMap;
+	fVector3*				TCMap;
 	f32						fHeight;
 	f32						fXStep;
 	f32						fYStep;
@@ -59,15 +59,15 @@ public:
 	};
 
 protected:
-	IC const fVector3& GetCharTC(u16 c)
+	IC const fVector3&		GetCharTC(u16 c)
 	{
 		return TCMap[c];
 	}
 
 public:
-	CGameFont(pcstr section, u32 flags = 0);
-	CGameFont(pcstr shader, pcstr texture, u32 flags = 0);
-	~CGameFont( );
+							CGameFont(pcstr section, u32 flags = 0);
+							CGameFont(pcstr shader, pcstr texture, u32 flags = 0);
+							~CGameFont( );
 
 	void					Initialize(pcstr shader, pcstr texture);
 
@@ -96,12 +96,12 @@ public:
 		eCurrentAlignment = aligment;
 	}
 
-	f32					SizeOf_(pcstr s);
-	f32					SizeOf_(const wide_char* wsStr);
+	f32						SizeOf_(pcstr s);
+	f32						SizeOf_(const wide_char* wsStr);
 
-	f32					SizeOf_(const char cChar);
+	f32						SizeOf_(const char cChar);
 
-	f32					CurrentHeight_( );
+	f32						CurrentHeight_( );
 
 	void					OutSetI(f32 x, f32 y);
 	void					OutSet(f32 x, f32 y);
@@ -116,16 +116,16 @@ public:
 	u16						SplitByWidth(u16* puBuffer, u16 uBufferSize, f32 fTargetWidth, pcstr pszText);
 	u16						GetCutLengthPos(f32 fTargetWidth, pcstr pszText);
 
-	void  					OutI(f32 _x, f32 _y, pcstr fmt, ...);
-	void  					Out(f32 _x, f32 _y, pcstr fmt, ...);
-	void             		OutNext(pcstr fmt, ...);
-	void             		OutPrev(pcstr fmt, ...);
+	void					OutI(f32 _x, f32 _y, pcstr fmt, ...);
+	void					Out(f32 _x, f32 _y, pcstr fmt, ...);
+	void					OutNext(pcstr fmt, ...);
+	void					OutPrev(pcstr fmt, ...);
 
 	void					OutSkip(f32 val = 1.0f);
 
 	virtual void			OnRender( );
 
-	IC void				Clear( )
+	IC void					Clear( )
 	{
 		strings.clear( );
 	}

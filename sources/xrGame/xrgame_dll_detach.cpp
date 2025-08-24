@@ -41,7 +41,7 @@ extern void dump_list_xmls							();
 extern void CreateUIGeom							();
 extern void DestroyUIGeom							();
 
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 void init_game_globals()
 {
 	CreateUIGeom									();

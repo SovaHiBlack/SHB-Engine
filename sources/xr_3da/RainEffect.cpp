@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include "Rain.h"
-#include "igame_persistent.h"
-#include "environment.h"
+#include "RainEffect.h"
+#include "IGamePersistent.h"
+#include "Environment.h"
 
 #include "Render.h"
 #include "igame_level.h"
@@ -30,7 +30,7 @@ const f32 particles_time = 0.3f;
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CEffect_Rain::CEffect_Rain( )
+CRainEffect::CRainEffect( )
 {
 	state = stIdle;
 
@@ -48,7 +48,7 @@ CEffect_Rain::CEffect_Rain( )
 	FS.r_close(F);
 }
 
-CEffect_Rain::~CEffect_Rain( )
+CRainEffect::~CRainEffect( )
 {
 	snd_Ambient.destroy( );
 
@@ -58,7 +58,7 @@ CEffect_Rain::~CEffect_Rain( )
 }
 
 // Born
-void	CEffect_Rain::Born(Item& dest, f32 radius)
+void	CRainEffect::Born(Item& dest, f32 radius)
 {
 	fVector3 axis;
 	axis.set(0.0f, -1.0f, 0.0f);
@@ -82,7 +82,7 @@ void	CEffect_Rain::Born(Item& dest, f32 radius)
 	RenewItem(dest, height, RayPick(dest.P, dest.D, height, collide::rqtBoth));
 }
 
-BOOL CEffect_Rain::RayPick(const fVector3& s, const fVector3& d, f32& range, collide::rq_target tgt)
+BOOL CRainEffect::RayPick(const fVector3& s, const fVector3& d, f32& range, collide::rq_target tgt)
 {
 	BOOL bRes = TRUE;
 
@@ -97,7 +97,7 @@ BOOL CEffect_Rain::RayPick(const fVector3& s, const fVector3& d, f32& range, col
 	return bRes;
 }
 
-void CEffect_Rain::RenewItem(Item& dest, f32 height, BOOL bHit)
+void CRainEffect::RenewItem(Item& dest, f32 height, BOOL bHit)
 {
 	dest.uv_set = Random.randI(2);
 	if (bHit)
@@ -114,7 +114,7 @@ void CEffect_Rain::RenewItem(Item& dest, f32 height, BOOL bHit)
 	}
 }
 
-void CEffect_Rain::OnFrame( )
+void CRainEffect::OnFrame( )
 {
 	if (!g_pGameLevel)
 	{
@@ -166,7 +166,7 @@ void CEffect_Rain::OnFrame( )
 	}
 }
 
-void CEffect_Rain::Render( )
+void CRainEffect::Render( )
 {
 	if (!g_pGameLevel)
 	{
@@ -421,7 +421,7 @@ void CEffect_Rain::Render( )
 }
 
 // startup _new_ particle system
-void	CEffect_Rain::Hit(fVector3& pos)
+void	CRainEffect::Hit(fVector3& pos)
 {
 	if (0 != ::Random.randI(2))
 	{
@@ -442,7 +442,7 @@ void	CEffect_Rain::Hit(fVector3& pos)
 }
 
 // initialize particles pool
-void CEffect_Rain::p_create( )
+void CRainEffect::p_create( )
 {
 	// pool
 	particle_pool.resize(max_particles);
@@ -459,7 +459,7 @@ void CEffect_Rain::p_create( )
 }
 
 // destroy particles pool
-void CEffect_Rain::p_destroy( )
+void CRainEffect::p_destroy( )
 {
 	// active and idle lists
 	particle_active = 0;
@@ -470,7 +470,7 @@ void CEffect_Rain::p_destroy( )
 }
 
 // _delete_ node from _list_
-void CEffect_Rain::p_remove(Particle* P, Particle*& LST)
+void CRainEffect::p_remove(Particle* P, Particle*& LST)
 {
 	VERIFY(P);
 	Particle* prev = P->prev;
@@ -494,7 +494,7 @@ void CEffect_Rain::p_remove(Particle* P, Particle*& LST)
 }
 
 // insert node at the top of the head
-void CEffect_Rain::p_insert(Particle* P, Particle*& LST)
+void CRainEffect::p_insert(Particle* P, Particle*& LST)
 {
 	VERIFY(P);
 	P->prev = 0;
@@ -508,7 +508,7 @@ void CEffect_Rain::p_insert(Particle* P, Particle*& LST)
 }
 
 // determine size of _list_
-s32 CEffect_Rain::p_size(Particle* P)
+s32 CRainEffect::p_size(Particle* P)
 {
 	if (0 == P)
 	{
@@ -526,7 +526,7 @@ s32 CEffect_Rain::p_size(Particle* P)
 }
 
 // alloc node
-CEffect_Rain::Particle* CEffect_Rain::p_allocate( )
+CRainEffect::Particle* CRainEffect::p_allocate( )
 {
 	Particle* P = particle_idle;
 	if (0 == P)
@@ -540,7 +540,7 @@ CEffect_Rain::Particle* CEffect_Rain::p_allocate( )
 }
 
 // xr_free node
-void CEffect_Rain::p_free(Particle* P)
+void CRainEffect::p_free(Particle* P)
 {
 	p_remove(P, particle_active);
 	p_insert(P, particle_idle);

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
 #include "Render.h"
-#include "Thunderbolt.h"
-#include "igame_persistent.h"
+#include "ThunderboltEffect.h"
+#include "IGamePersistent.h"
 #include "LightAnimLibrary.h"
 
 #include "igame_level.h"
@@ -83,7 +83,7 @@ SThunderboltCollection::~SThunderboltCollection( )
 //----------------------------------------------------------------------------------------------
 // thunderbolt effect
 //----------------------------------------------------------------------------------------------
-CEffect_Thunderbolt::CEffect_Thunderbolt( )
+CThunderboltEffect::CThunderboltEffect( )
 {
 	current = 0;
 	life_time = 0.0f;
@@ -108,7 +108,7 @@ CEffect_Thunderbolt::CEffect_Thunderbolt( )
 	p_fog_color = pSettings->r_float("thunderbolt_common", "fog_color");
 }
 
-CEffect_Thunderbolt::~CEffect_Thunderbolt( )
+CThunderboltEffect::~CThunderboltEffect( )
 {
 	for (CollectionVecIt d_it = collection.begin( ); d_it != collection.end( ); d_it++)
 	{
@@ -120,7 +120,7 @@ CEffect_Thunderbolt::~CEffect_Thunderbolt( )
 	hGeom_gradient.destroy( );
 }
 
-s32 CEffect_Thunderbolt::AppendDef(CIniFile* pIni, pcstr sect)
+s32 CThunderboltEffect::AppendDef(CIniFile* pIni, pcstr sect)
 {
 	if (!sect || (0 == sect[0]))
 	{
@@ -139,7 +139,7 @@ s32 CEffect_Thunderbolt::AppendDef(CIniFile* pIni, pcstr sect)
 	return collection.size( ) - 1;
 }
 
-BOOL CEffect_Thunderbolt::RayPick(const fVector3& s, const fVector3& d, f32& dist)
+BOOL CThunderboltEffect::RayPick(const fVector3& s, const fVector3& d, f32& dist)
 {
 	BOOL bRes = TRUE;
 
@@ -173,7 +173,7 @@ BOOL CEffect_Thunderbolt::RayPick(const fVector3& s, const fVector3& d, f32& dis
 
 #define FAR_DIST g_pGamePersistent->Environment().CurrentEnv.far_plane
 
-void CEffect_Thunderbolt::Bolt(s32 id, f32 period, f32 lt)
+void CThunderboltEffect::Bolt(s32 id, f32 period, f32 lt)
 {
 	VERIFY(id >= 0 && id < (s32)collection.size( ));
 	state = stWorking;
@@ -225,7 +225,7 @@ void CEffect_Thunderbolt::Bolt(s32 id, f32 period, f32 lt)
 	current_direction.invert( );	// for env-sun
 }
 
-void CEffect_Thunderbolt::OnFrame(s32 id, f32 period, f32 duration)
+void CThunderboltEffect::OnFrame(s32 id, f32 period, f32 duration)
 {
 	BOOL enabled = (id >= 0);
 	if (bEnabled != enabled)
@@ -256,12 +256,12 @@ void CEffect_Thunderbolt::OnFrame(s32 id, f32 period, f32 duration)
 		if (::Render->get_generation( ) == IRender_interface::GENERATION_R2)
 		{
 			g_pGamePersistent->Environment( ).CurrentEnv.sun_dir = current_direction;
-			VERIFY2(g_pGamePersistent->Environment( ).CurrentEnv.sun_dir.y < 0, "Invalid sun direction settings while CEffect_Thunderbolt");
+			VERIFY2(g_pGamePersistent->Environment( ).CurrentEnv.sun_dir.y < 0, "Invalid sun direction settings while CThunderboltEffect");
 		}
 	}
 }
 
-void CEffect_Thunderbolt::Render( )
+void CThunderboltEffect::Render( )
 {
 	if (state == stWorking)
 	{

@@ -22,7 +22,7 @@
 #include "ai/stalker/Stalker.h"
 #include "Profiler.h"
 #include "ClientSpawnManager.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 #ifndef MASTER_GOLD
 #	include "clsid_game.h"

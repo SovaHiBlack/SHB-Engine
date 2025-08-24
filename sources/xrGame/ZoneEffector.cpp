@@ -3,7 +3,7 @@
 #include "Level.h"
 #include "clsid_game.h"
 #include "..\XR_3DA\Object.h"
-#include "..\XR_3DA\cameramanager.h"
+#include "..\XR_3DA\CameraManager.h"
 #include "Actor.h"
 #include "ActorEffector.h"
 #include "PostprocessAnimator.h"

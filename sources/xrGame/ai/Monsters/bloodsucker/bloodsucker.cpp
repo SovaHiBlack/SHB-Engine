@@ -19,7 +19,7 @@
 #include "../control_rotation_jump.h"
 
 #include "../../../sound_player.h"
-#include "../../../..\XR_3DA\camerabase.h"
+#include "../../../..\XR_3DA\CameraBase.h"
 #include "../../../xr_level_controller.h"
 #include "../../../ActorCondition.h"
 

@@ -22,7 +22,7 @@
 #include "clsid_game.h"
 #include "mathutils.h"
 #include "object_broker.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 #define WEAPON_REMOVE_TIME		60000
 #define ROTATION_TIME			0.25f

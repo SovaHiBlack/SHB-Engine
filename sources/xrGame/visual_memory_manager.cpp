@@ -22,7 +22,7 @@
 #include "Profiler.h"
 #include "Actor.h"
 #include "ActorMemory.h"
-#include "..\XR_3DA\camerabase.h"
+#include "..\XR_3DA\CameraBase.h"
 #include "GamePersistent.h"
 #include "ClientSpawnManager.h"
 #include "memory_manager.h"

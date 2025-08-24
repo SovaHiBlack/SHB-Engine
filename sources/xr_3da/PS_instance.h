@@ -6,7 +6,7 @@
 
 class ENGINE_API CPS_Instance : public ISpatial, public ISheduled, public IRenderable
 {
-	friend class			IGame_Persistent;
+	friend class			IGamePersistent;
 
 private:
 	bool					m_destroy_on_game_load;

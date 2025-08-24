@@ -1,6 +1,6 @@
 #pragma once
 #include "..\XR_3DA\effectorPP.h"
-#include "..\XR_3DA\cameramanager.h"
+#include "..\XR_3DA\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 

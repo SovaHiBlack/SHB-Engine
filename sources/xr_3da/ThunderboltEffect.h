@@ -1,6 +1,5 @@
-// Rain.h: interface for the CRain class.
-//
-//////////////////////////////////////////////////////////////////////
+// ThunderboltEffect.h: interface for the CThunderboltEffect class.
+
 #pragma once
 
 //refs
@@ -53,7 +52,7 @@ public:
 
 #define THUNDERBOLT_CACHE_SIZE	8
 //
-class ENGINE_API CEffect_Thunderbolt
+class ENGINE_API CThunderboltEffect
 {
 protected:
 	DEFINE_VECTOR(SThunderboltCollection*, CollectionVec, CollectionVecIt);
@@ -99,8 +98,8 @@ private:
 	void						Bolt(s32 id, f32 period, f32 life_time);
 
 public:
-	CEffect_Thunderbolt( );
-	~CEffect_Thunderbolt( );
+	CThunderboltEffect( );
+	~CThunderboltEffect( );
 
 	void						OnFrame(s32 id, f32 period, f32 duration);
 	void						Render( );

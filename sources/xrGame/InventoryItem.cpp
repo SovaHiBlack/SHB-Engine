@@ -16,7 +16,7 @@
 #include "..\XR_3DA\skeletoncustom.h"
 #include "ai_object_location.h"
 #include "object_broker.h"
-#include "..\XR_3DA\igame_persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 #ifdef DEBUG
 #	include "DebugRenderer.h"

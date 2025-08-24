@@ -9,7 +9,7 @@
 #include "level_graph.h"
 #include "ClientSpawnManager.h"
 #include "..\XR_3DA\Object.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 void CLevel::cl_Process_Spawn(CNetPacket& P)
 {

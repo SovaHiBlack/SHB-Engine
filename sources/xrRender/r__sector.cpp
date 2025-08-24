@@ -7,7 +7,7 @@
 #include "..\XR_3DA\xrLevel.h"
 #include "..\XR_3DA\Object.h"
 #include "..\XR_3DA\BasicVisual.h"
-#include "..\XR_3DA\IGame_Persistent.h"
+#include "..\XR_3DA\IGamePersistent.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction

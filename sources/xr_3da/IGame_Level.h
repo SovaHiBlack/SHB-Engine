@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IInputReceiver.h"
-//#include "CameraManager.h"
 #include "ObjectList.h"
 #include "xr_area.h"
 
@@ -80,7 +79,7 @@ public:
 	CCameraManager& Cameras( )
 	{
 		return *m_pCameras;
-	};
+	}
 
 	BOOL						bReady;
 

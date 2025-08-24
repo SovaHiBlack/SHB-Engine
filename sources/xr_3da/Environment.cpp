@@ -3,9 +3,9 @@
 #include "Render.h"
 
 #include "Environment.h"
-#include "xr_efflensflare.h"
-#include "rain.h"
-#include "thunderbolt.h"
+#include "LensFlareEffect.h"
+#include "RainEffect.h"
+#include "ThunderboltEffect.h"
 #include "xrHemisphere.h"
 #include "perlin.h"
 #include "resourcemanager.h"

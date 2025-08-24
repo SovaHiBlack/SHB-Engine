@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
-#include "..\XR_3DA\igame_persistent.h"
-#include "..\XR_3DA\environment.h"
+#include "..\XR_3DA\IGamePersistent.h"
+#include "..\XR_3DA\Environment.h"
 
 #pragma pack(push,4)
 struct v_build	{

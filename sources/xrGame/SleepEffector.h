@@ -6,7 +6,7 @@
 
 #include "..\XR_3DA\effectorPP.h"
 #include "..\XR_3DA\effector.h"
-#include "..\XR_3DA\cameramanager.h"
+#include "..\XR_3DA\CameraManager.h"
 
 #define SLEEP_EFFECTOR_TYPE_ID 8
 

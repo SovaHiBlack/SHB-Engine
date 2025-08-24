@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include "xr_efflensflare.h"
+#include "LensFlareEffect.h"
 
-#include "igame_persistent.h"
+#include "IGamePersistent.h"
 #include "Environment.h"
 #include "SkeletonCustom.h"
 #include "cl_intersect.h"
@@ -133,7 +133,7 @@ void CLensFlareDescriptor::OnDeviceDestroy( )
 }
 
 //------------------------------------------------------------------------------
-CLensFlare::CLensFlare( )
+CLensFlareEffect::CLensFlareEffect( )
 {
 	// Device
 	dwFrame = 0xfffffffe;
@@ -156,7 +156,7 @@ CLensFlare::CLensFlare( )
 	OnDeviceCreate( );
 }
 
-CLensFlare::~CLensFlare( )
+CLensFlareEffect::~CLensFlareEffect( )
 {
 	OnDeviceDestroy( );
 }
@@ -166,10 +166,10 @@ struct STranspParam
 	fVector3 P;
 	fVector3 D;
 	f32 f;
-	CLensFlare* parent;
+	CLensFlareEffect* parent;
 	f32 vis;
 	f32 vis_threshold;
-	STranspParam(CLensFlare* p, const fVector3& _P, const fVector3& _D, f32 _f, f32 _vis_threshold) : P(_P), D(_D), f(_f), parent(p), vis(1.0f), vis_threshold(_vis_threshold)
+	STranspParam(CLensFlareEffect* p, const fVector3& _P, const fVector3& _D, f32 _f, f32 _vis_threshold) : P(_P), D(_D), f(_f), parent(p), vis(1.0f), vis_threshold(_vis_threshold)
 	{ }
 };
 
@@ -222,7 +222,7 @@ IC void	blend_lerp(f32& cur, f32 tgt, f32 speed, f32 dt)
 	cur += (diff / diff_a) * mot;
 }
 
-void CLensFlare::OnFrame(s32 id)
+void CLensFlareEffect::OnFrame(s32 id)
 {
 	if (dwFrame == Device.dwFrame)
 	{
@@ -408,7 +408,7 @@ void CLensFlare::OnFrame(s32 id)
 	}
 }
 
-void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
+void CLensFlareEffect::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 {
 	if (!bRender)
 	{
@@ -539,7 +539,7 @@ void CLensFlare::Render(BOOL bSun, BOOL bFlares, BOOL bGradient)
 	}
 }
 
-s32	CLensFlare::AppendDef(CIniFile* pIni, pcstr sect)
+s32	CLensFlareEffect::AppendDef(CIniFile* pIni, pcstr sect)
 {
 	if (!sect || (0 == sect[0]))
 	{
@@ -560,7 +560,7 @@ s32	CLensFlare::AppendDef(CIniFile* pIni, pcstr sect)
 	return (m_Palette.size( ) - 1);
 }
 
-void CLensFlare::OnDeviceCreate( )
+void CLensFlareEffect::OnDeviceCreate( )
 {
 	// VS
 	hGeom.create(FVF::F_LIT, RCache.Vertex.Buffer( ), RCache.QuadIB);
@@ -572,7 +572,7 @@ void CLensFlare::OnDeviceCreate( )
 	}
 }
 
-void CLensFlare::OnDeviceDestroy( )
+void CLensFlareEffect::OnDeviceDestroy( )
 {
 	// palette
 	for (LensFlareDescIt it = m_Palette.begin( ); it != m_Palette.end( ); it++)

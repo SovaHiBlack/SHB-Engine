@@ -1,6 +1,5 @@
 // DemoRecord.h: interface for the CDemoRecord class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "IInputReceiver.h"

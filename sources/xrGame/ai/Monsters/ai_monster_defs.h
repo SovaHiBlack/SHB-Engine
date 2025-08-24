@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\..\..\XR_3DA\skeletonanimated.h"
-#include "..\..\..\XR_3DA\cameramanager.h"
+#include "..\..\..\XR_3DA\CameraManager.h"
 
 typedef u32 TTime;
 

@@ -16,7 +16,7 @@
 
 CDemoRecord* xrDemoRecord = 0;
 
-CDemoRecord::CDemoRecord(pcstr name, f32 life_time) : CEffectorCam(cefDemo, life_time/*,FALSE*/)
+CDemoRecord::CDemoRecord(pcstr name, f32 life_time) : CEffectorCam(cefDemo, life_time)
 {
 	_unlink(name);
 	file = FS.w_open(name);
@@ -310,7 +310,6 @@ BOOL CDemoRecord::Process(fVector3& P, fVector3& D, fVector3& N, f32& fFov, f32&
 		{
 			if ((Device.dwTimeGlobal / 750) % 3 != 0)
 			{
-				//				pApp->pFontSystem->SetSizeI	(0.02f);
 				pApp->pFontSystem->SetColor(color_rgba(255, 0, 0, 255));
 				pApp->pFontSystem->SetAligment(CGameFont::alCenter);
 				pApp->pFontSystem->OutSetI(0, -.05f);
@@ -540,7 +539,7 @@ void CDemoRecord::IR_OnMouseHold(s32 btn)
 
 void CDemoRecord::RecordKey( )
 {
-	fMatrix4x4			g_matView;
+	fMatrix4x4 g_matView;
 
 	g_matView.invert(m_Camera);
 	file->w(&g_matView, sizeof(fMatrix4x4));
