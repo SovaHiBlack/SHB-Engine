@@ -3,7 +3,7 @@
 #include "Controller.h"
 #include "../../../Actor.h"
 #include "../../../Level.h"
-#include "../../../CameraEffector.h"
+#include "../../../CameraEffects.h"
 #include "../../../ActorEffector.h"
 
 CPPEffectorControllerAura::CPPEffectorControllerAura(const SPPInfo &ppi, u32 time_to_fade, const ref_sound &snd_left, const ref_sound &snd_right)
@@ -130,10 +130,10 @@ void CControllerAura::update_schedule()
 	}
 
 	if (active()) {
-		CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effControllerAura2);
+		CCameraEffector* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effControllerAura2);
 		if(!ce) AddEffector(Actor(), effControllerAura2, "effector_controller_aura2", 0.15f);
 	}else{
-		CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effControllerAura2);
+		CCameraEffector* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effControllerAura2);
 		if(ce)
 			RemoveEffector(Actor(), effControllerAura2);
 	}

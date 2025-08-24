@@ -1,14 +1,15 @@
 #pragma once
 
-#include "../../../..\XR_3DA\effectorPP.h"
-#include "../../../CameraEffector.h"
+#include "../../../..\XR_3DA\PostProcessEffector.h"
+#include "../../../CameraEffects.h"
 #include "../../../..\XR_3DA\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 // Vampire Postprocess Effector
 //////////////////////////////////////////////////////////////////////////
-class CVampirePPEffector : public CEffectorPP {
-	typedef CEffectorPP inherited;	
+class CVampirePPEffector : public CPostProcessEffector
+{
+	typedef CPostProcessEffector inherited;
 
 	SPPInfo state;			//current state
 	f32	m_total;		// total PP time
@@ -21,8 +22,9 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // Vampire Camera Effector
 //////////////////////////////////////////////////////////////////////////
-class CVampireCameraEffector : public CEffectorCam {
-	typedef CEffectorCam inherited;	
+class CVampireCameraEffector : public CCameraEffector
+{
+	typedef CCameraEffector inherited;
 
 	f32	m_time_total;
 	fVector3	dangle_target;

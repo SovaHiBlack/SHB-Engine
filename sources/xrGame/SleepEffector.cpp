@@ -6,10 +6,7 @@
 #include "stdafx.h"
 #include "SleepEffector.h"
 
-//////////////////////////////////////////////////////////////////////////
-// CMonsterEffector
-//////////////////////////////////////////////////////////////////////////
-CSleepEffectorPP::CSleepEffectorPP(const SPPInfo& ppi, f32 life_time, f32 attack_time, f32 release_time) : CEffectorPP(EEffectorPPType(SLEEP_EFFECTOR_TYPE_ID), life_time)
+CSleepEffectorPP::CSleepEffectorPP(const SPPInfo& ppi, f32 life_time, f32 attack_time, f32 release_time) : CPostProcessEffector(EEffectorPPType(SLEEP_EFFECTOR_TYPE_ID), life_time)
 {
 	state = ppi;
 	m_total = life_time;

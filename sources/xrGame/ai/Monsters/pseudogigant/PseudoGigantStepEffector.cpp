@@ -1,8 +1,7 @@
 #include "stdafx.h"
-#include "pseudo_gigant_step_effector.h" 
+#include "PseudoGigantStepEffector.h" 
 
-CPseudogigantStepEffector::CPseudogigantStepEffector(f32 time, f32 amp, f32 periods, f32 power)
-					: CEffectorCam(eCEPseudoGigantStep, time)
+CPseudoGigantStepEffector::CPseudoGigantStepEffector(f32 time, f32 amp, f32 periods, f32 power) : CCameraEffector(eCEPseudoGigantStep, time)
 {
 	total			= time;
 
@@ -11,7 +10,7 @@ CPseudogigantStepEffector::CPseudogigantStepEffector(f32 time, f32 amp, f32 peri
 	this->power		= power;
 }
 
-BOOL CPseudogigantStepEffector::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect)
+BOOL CPseudoGigantStepEffector::Process(fVector3& p, fVector3& d, fVector3& n, f32& fFov, f32& fFar, f32& fAspect)
 {
 	fLifeTime -= Device.fTimeDelta; if(fLifeTime<0) return FALSE;
 

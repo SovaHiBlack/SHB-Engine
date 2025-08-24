@@ -71,7 +71,7 @@ void SLocationKey::destroy( )
 	delete_data(location);
 }
 
-void CMapLocationRegistry::save(IWriter& stream)
+void SMapLocationRegistry::save(IWriter& stream)
 {
 	stream.w_u32((u32)objects( ).size( ));
 	iterator				I = m_objects.begin( );

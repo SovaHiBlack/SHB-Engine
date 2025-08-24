@@ -8,13 +8,14 @@
 
 #pragma once
 
-#include "..\XR_3DA\effectorpp.h"
+#include "..\XR_3DA\PostProcessEffector.h"
 #include "script_export_space.h"
 #include "..\XR_3DA\CameraManager.h"
 
-class CScriptEffector : public CEffectorPP {
+class CScriptEffector : public CPostProcessEffector
+{
 public:
-	typedef CEffectorPP inherited;
+	typedef CPostProcessEffector inherited;
 	EEffectorPPType		m_tEffectorType;
 
 	IC					CScriptEffector		(s32 iType, f32 time);

@@ -37,17 +37,15 @@ public:
 		virtual void	Die					(CObject* who);
 
 		virtual void	Think				();
-//				void	on_phantom_appear	();
 		virtual IStateManagerBase *create_state_manager	();
 
 				u8		get_phantoms_count	();
 				bool	must_hide			() {return (get_phantoms_count() < m_phantoms_min);}
+
 private:
 				bool	spawn_phantom		();
-				void	delete_phantom		(CPsyDogPhantom*);
 				void	register_phantom	(CPsyDogPhantom*);
 				void	unregister_phantom	(CPsyDogPhantom*);
-
 				void	delete_all_phantoms	();
 
 private:

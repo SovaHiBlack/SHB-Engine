@@ -1,9 +1,9 @@
 #pragma once
 
-#include "CameraEffector.h"
+#include "CameraEffects.h"
 #include "..\XR_3DA\CameraManager.h"
 
-class CEffectorBobbing : public CEffectorCam
+class CEffectorBobbing : public CCameraEffector
 {
 	f32	fTime;
 	fVector3	vAngleAmplitude;

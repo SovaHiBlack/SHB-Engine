@@ -19,7 +19,7 @@
 #		include "ui/UIWindow.h"
 #		include "CustomZone.h"
 #		include "Weapon.h"
-#		include "CameraEffector.h"
+#		include "CameraEffects.h"
 #	endif
 #	include "xrServer_Objects_ALife_Monsters.h"
 #endif

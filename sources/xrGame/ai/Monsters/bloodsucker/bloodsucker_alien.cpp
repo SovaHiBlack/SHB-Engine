@@ -6,16 +6,17 @@
 #include "../../../Inventory.h"
 #include "../../../HudItem.h"
 #include "../../../..\XR_3DA\CustomHUD.h"
-#include "../../../..\XR_3DA\effector.h"
-#include "../../../..\XR_3DA\effectorPP.h"
+#include "../../../..\XR_3DA\CameraEffector.h"
+#include "../../../..\XR_3DA\PostProcessEffector.h"
 
 #define EFFECTOR_ID_GEN(type) (type( u32(u64(this) & u32(-1)) ))
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CAlienEffectorPP
 ////////////////////////////////////////////////////////////////////////////////////
-class CAlienEffectorPP : public CEffectorPP {
-	typedef CEffectorPP inherited;
+class CAlienEffectorPP : public CPostProcessEffector
+{
+	typedef CPostProcessEffector inherited;
 
 	SPPInfo		state;
 	f32		factor;
@@ -32,8 +33,7 @@ private:
 	virtual	BOOL	Process			(SPPInfo& pp);
 };
 
-CAlienEffectorPP::CAlienEffectorPP(const SPPInfo &ppi, EEffectorPPType type) :
-CEffectorPP(type, flt_max, false)
+CAlienEffectorPP::CAlienEffectorPP(const SPPInfo &ppi, EEffectorPPType type) : CPostProcessEffector(type, flt_max, false)
 {
 	state			= ppi;
 	factor			= 0.f;
@@ -73,8 +73,9 @@ void CAlienEffectorPP::Destroy()
 // Alien Camera Effector
 //////////////////////////////////////////////////////////////////////////
 
-class CAlienEffector : public CEffectorCam {
-	typedef CEffectorCam inherited;	
+class CAlienEffector : public CCameraEffector
+{
+	typedef CCameraEffector inherited;
 
 	f32	m_time_total;
 	fVector3	dangle_target;

@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "PseudoGigant.h"
-#include "pseudo_gigant_step_effector.h"
+#include "PseudoGigantStepEffector.h"
 #include "../../../Actor.h"
 #include "../../../ActorEffector.h"
 #include "../../../Level.h"
-#include "pseudogigant_state_manager.h"
+#include "StateManagerPseudoGigant.h"
 #include "../monster_velocity_space.h"
 #include "../control_animation_base.h"
 #include "../control_movement_base.h"
@@ -20,7 +20,7 @@ CPseudoGigant::CPseudoGigant( )
 {
 	CControlled::init_external(this);
 
-	StateMan = xr_new<CStateManagerGigant>(this);
+	StateMan = xr_new<CStateManagerPseudoGigant>(this);
 
 	com_man( ).add_ability(ControlCom::eControlRunAttack);
 	com_man( ).add_ability(ControlCom::eControlThreaten);
@@ -192,7 +192,7 @@ void CPseudoGigant::event_on_step( )
 		f32 dist_to_actor = pActor->Position( ).distance_to(Position( ));
 		f32 max_dist = MAX_STEP_RADIUS;
 		if (dist_to_actor < max_dist)
-			Actor( )->Cameras( ).AddCamEffector(xr_new<CPseudogigantStepEffector>(
+			Actor( )->Cameras( ).AddCamEffector(xr_new<CPseudoGigantStepEffector>(
 				step_effector.time,
 				step_effector.amplitude,
 				step_effector.period_number,
@@ -340,4 +340,16 @@ void CPseudoGigant::TranslateActionToPathParams( )
 	path( ).set_velocity_mask(vel_mask);
 	path( ).set_desirable_mask(des_mask);
 	path( ).enable_path( );
+}
+
+using namespace luabind;
+
+#pragma optimize("s",on)
+void CPseudoGigant::script_register(lua_State* L)
+{
+	module(L)
+		[
+			class_<CPseudoGigant, CGameObject>("CPseudoGigant")
+				.def(constructor<>( ))
+		];
 }

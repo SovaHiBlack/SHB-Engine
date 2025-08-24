@@ -53,7 +53,7 @@ class CEncyclopediaRegistryWrapper :	public CALifeRegistryWrapperObject<CALifeRe
 class CGameNewsRegistryWrapper :		public CALifeRegistryWrapperObject<CALifeRegistryWrapper<CGameNewsRegistry> > {};
 class CInfoPortionWrapper :				public CALifeRegistryWrapperObject<CALifeRegistryWrapper<CInfoPortionRegistry> > {};
 class CRelationRegistryWrapper :		public CALifeRegistryWrapperObject<CALifeRegistryWrapper<CRelationRegistry> > {};
-class CMapLocationWrapper :				public CALifeRegistryWrapperObject<CALifeRegistryWrapper<CMapLocationRegistry> > {};
+class CMapLocationWrapper :				public CALifeRegistryWrapperObject<CALifeRegistryWrapper<SMapLocationRegistry> > {};
 class CGameTaskWrapper :				public CALifeRegistryWrapperObject<CALifeRegistryWrapper<CGameTaskRegistry> > {};
 
 //. class CFogOfWarWrapper :				public CALifeRegistryWrapperObject<CALifeRegistryWrapper<CFogOfWarRegistry> > {};

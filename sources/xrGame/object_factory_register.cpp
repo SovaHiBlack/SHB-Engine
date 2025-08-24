@@ -26,7 +26,7 @@
 #	include "ai/monsters/Bloodsucker/Bloodsucker.h"
 #	include "ai/monsters/Boar/Boar.h"
 #	include "ai/monsters/PseudoDog/PseudoDog.h"
-#	include "ai/monsters/pseudodog/psy_dog.h"
+#	include "ai/monsters/pseudodog/PsyDog.h"
 #	include "ai/monsters/Burer/Burer.h"
 #	include "AI/Monsters/PseudoGigant/PseudoGigant.h"
 #	include "ai/monsters/Controller/Controller.h"

@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "CameraEffector.h"
+#include "CameraEffects.h"
 #include "..\XR_3DA\CameraManager.h"
 #include "Actor.h"
 
@@ -66,7 +66,7 @@ public:
 	virtual void	ApplyDeltaAngles(f32* pitch, f32* yaw);
 };
 
-class CCameraShotEffector : public CWeaponShotEffector, public CEffectorCam
+class CCameraShotEffector : public CWeaponShotEffector, public CCameraEffector
 {
 protected:
 	CActor* m_pActor;

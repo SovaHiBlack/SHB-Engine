@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-CEffectorBobbing::CEffectorBobbing( ) : CEffectorCam(eCEBobbing, 10000.0f)
+CEffectorBobbing::CEffectorBobbing( ) : CCameraEffector(eCEBobbing, 10000.0f)
 {
 	fTime = 0.0f;
 	fReminderFactor = 0.0f;

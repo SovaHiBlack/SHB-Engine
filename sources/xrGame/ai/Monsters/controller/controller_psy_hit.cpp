@@ -204,7 +204,7 @@ void CControllerPsyHit::death_glide_start()
 	}
 
 	// Start effector
-	CEffectorCam* ce = Actor()->Cameras().GetCamEffector(eCEControllerPsyHit);
+	CCameraEffector* ce = Actor()->Cameras().GetCamEffector(eCEControllerPsyHit);
 	VERIFY(!ce);
 	
 	fVector3 src_pos		= Actor()->cam_Active()->vPosition;
@@ -254,7 +254,7 @@ void CControllerPsyHit::death_glide_end()
 {
 	// Stop camera effector
 
-	CEffectorCam* ce = Actor()->Cameras().GetCamEffector(eCEControllerPsyHit);
+	CCameraEffector* ce = Actor()->Cameras().GetCamEffector(eCEControllerPsyHit);
 	VERIFY(ce);
 	Actor()->Cameras().RemoveCamEffector(eCEControllerPsyHit);
 	CController *monster = smart_cast<CController *>(m_object);
@@ -319,7 +319,7 @@ void CControllerPsyHit::on_death()
 	if (!is_active()) return;
 	
 	// Stop camera effector
-	CEffectorCam* ce = Actor()->Cameras().GetCamEffector(eCEControllerPsyHit);
+	CCameraEffector* ce = Actor()->Cameras().GetCamEffector(eCEControllerPsyHit);
 	if (ce) {
 		Actor()->Cameras().RemoveCamEffector(eCEControllerPsyHit);
 	}

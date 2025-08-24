@@ -228,10 +228,10 @@
     <ClInclude Include="CameraManager.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="Effector.h">
+    <ClInclude Include="CameraEffector.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="EffectorPP.h">
+    <ClInclude Include="PostProcessEffector.h">
       <Filter>Game API\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="xr_area.h">
@@ -581,7 +581,7 @@
     <ClCompile Include="CameraManager.cpp">
       <Filter>Game API\Cameras</Filter>
     </ClCompile>
-    <ClCompile Include="EffectorPP.cpp">
+    <ClCompile Include="PostProcessEffector.cpp">
       <Filter>Game API\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="xr_area.cpp">

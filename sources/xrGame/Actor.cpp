@@ -521,7 +521,7 @@ void CActor::HitMark(f32 P, fVector3 dir, CObject* who, s16 element, fVector3 po
 	{
 		HUD( ).Hit(0, P, dir);
 
-		CEffectorCam* ce = Cameras( ).GetCamEffector((ECamEffectorType)effFireHit);
+		CCameraEffector* ce = Cameras( ).GetCamEffector((ECamEffectorType)effFireHit);
 		if (!ce)
 		{
 			s32 id = -1;

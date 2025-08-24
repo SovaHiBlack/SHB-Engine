@@ -36,7 +36,7 @@ CPostprocessAnimator::CPostprocessAnimator( )
 	Create( );
 }
 
-CPostprocessAnimator::CPostprocessAnimator(s32 id, bool cyclic) : CEffectorPP((EEffectorPPType) id, 100000.0f, true), m_bCyclic(cyclic)
+CPostprocessAnimator::CPostprocessAnimator(s32 id, bool cyclic) : CPostProcessEffector((EEffectorPPType) id, 100000.0f, true), m_bCyclic(cyclic)
 {
 	Create( );
 }
@@ -53,7 +53,7 @@ BOOL CPostprocessAnimator::Valid( )
 		return TRUE;
 	}
 
-	return CEffectorPP::Valid( );
+	return CPostProcessEffector::Valid( );
 }
 
 void CPostprocessAnimator::Clear( )
@@ -185,7 +185,7 @@ BOOL CPostprocessAnimator::Process(SPPInfo& PPInfo)
 		fLifeTime = 100000.0f;
 	}
 
-	CEffectorPP::Process(PPInfo);
+	CPostProcessEffector::Process(PPInfo);
 
 
 	if (m_start_time < 0.0f)

@@ -9,11 +9,9 @@
 #include "Environment.h"
 #include "CameraBase.h"
 #include "CameraManager.h"
-#include "Effector.h"
-#include "EffectorPP.h"
+#include "CameraEffector.h"
+#include "PostProcessEffector.h"
 
-//#include "x_ray.h"
-//#include "gamefont.h"
 #include "Render.h"
 
 f32	psCamInert = 0.7f;
@@ -142,7 +140,7 @@ CCameraManager::~CCameraManager( )
 	}
 }
 
-CEffectorCam* CCameraManager::GetCamEffector(ECamEffectorType type)
+CCameraEffector* CCameraManager::GetCamEffector(ECamEffectorType type)
 {
 	for (EffectorCamIt it = m_EffectorsCam.begin( ); it != m_EffectorsCam.end( ); it++)
 	{
@@ -155,7 +153,7 @@ CEffectorCam* CCameraManager::GetCamEffector(ECamEffectorType type)
 	return 0;
 }
 
-CEffectorCam* CCameraManager::AddCamEffector(CEffectorCam* ef)
+CCameraEffector* CCameraManager::AddCamEffector(CCameraEffector* ef)
 {
 	m_EffectorsCam_added_deffered.push_back(ef);
 	return m_EffectorsCam_added_deffered.back( );
@@ -187,7 +185,7 @@ void CCameraManager::RemoveCamEffector(ECamEffectorType type)
 	}
 }
 
-CEffectorPP* CCameraManager::GetPPEffector(EEffectorPPType type)
+CPostProcessEffector* CCameraManager::GetPPEffector(EEffectorPPType type)
 {
 	for (EffectorPPIt it = m_EffectorsPP.begin( ); it != m_EffectorsPP.end( ); it++)
 	{
@@ -200,7 +198,7 @@ CEffectorPP* CCameraManager::GetPPEffector(EEffectorPPType type)
 	return 0;
 }
 
-CEffectorPP* CCameraManager::AddPPEffector(CEffectorPP* ef)
+CPostProcessEffector* CCameraManager::AddPPEffector(CPostProcessEffector* ef)
 {
 	RemovePPEffector(ef->Type( ));
 	m_EffectorsPP.push_back(ef);
@@ -277,7 +275,7 @@ void CCameraManager::Update(const fVector3& P, const fVector3& D, const fVector3
 	{
 		for (s32 i = m_EffectorsCam.size( ) - 1; i >= 0; i--)
 		{
-			CEffectorCam* eff = m_EffectorsCam[i];
+			CCameraEffector* eff = m_EffectorsCam[i];
 			if (eff->Valid( ) && eff->Process(vPosition, vDirection, vNormal, fFov, fFar, fAspect))
 			{
 				bOverlapped |= eff->Overlapped( );
@@ -310,7 +308,7 @@ void CCameraManager::Update(const fVector3& P, const fVector3& D, const fVector3
 		pp_affected = pp_identity;
 		for (s32 i = m_EffectorsPP.size( ) - 1; i >= 0; i--)
 		{
-			CEffectorPP* eff = m_EffectorsPP[i];
+			CPostProcessEffector* eff = m_EffectorsPP[i];
 			SPPInfo l_PPInf = pp_zero;
 			if ((eff->Valid( )) && eff->Process(l_PPInf))
 			{

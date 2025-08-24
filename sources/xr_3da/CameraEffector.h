@@ -2,7 +2,7 @@
 
 #include "Camera_defs.h"
 
-class ENGINE_API		CEffectorCam
+class ENGINE_API		CCameraEffector
 {
 protected:
 	ECamEffectorType	eType;
@@ -11,17 +11,17 @@ protected:
 	f32				fLifeTime;
 
 public:
-	CEffectorCam(ECamEffectorType type, f32 tm)
+	CCameraEffector(ECamEffectorType type, f32 tm)
 	{
 		eType = type;
 		fLifeTime = tm;
 	}
-	CEffectorCam( )
+	CCameraEffector( )
 	{
 		eType = (ECamEffectorType)0;
 		fLifeTime = 0.0f;
 	}
-	virtual				~CEffectorCam( )
+	virtual				~CCameraEffector( )
 	{ }
 	void		SetType(ECamEffectorType type)
 	{

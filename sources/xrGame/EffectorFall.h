@@ -1,9 +1,9 @@
 #pragma once
 
-#include "..\XR_3DA\Effector.h"
+#include "..\XR_3DA\CameraEffector.h"
 
 // приседание после падения
-class CEffectorFall : public CEffectorCam
+class CEffectorFall : public CCameraEffector
 {
 	f32	fPower;
 	f32	fPhase;

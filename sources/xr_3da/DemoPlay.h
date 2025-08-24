@@ -2,14 +2,14 @@
 
 #pragma once
 
-#include "effector.h"
+#include "CameraEffector.h"
 
 // refs
 class COMotion;
 struct SAnimParams;
 
 // class
-class ENGINE_API CDemoPlay : public CEffectorCam
+class ENGINE_API CDemoPlay : public CCameraEffector
 {
 	COMotion*							m_pMotion;
 	SAnimParams*						m_MParam;

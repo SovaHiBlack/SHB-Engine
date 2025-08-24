@@ -3,3 +3,4 @@
 // Дополнительные сведения: https://go.microsoft.com/fwlink/?linkid=865984
 #define IC
 #define xr_stdcall
+#define DEF_DEQUE(N, T)

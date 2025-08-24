@@ -5,7 +5,7 @@
 
 #pragma once
 
-IC	CScriptEffector::CScriptEffector(s32 iType, f32 time) : CEffectorPP(EEffectorPPType(iType), time, false)
+IC	CScriptEffector::CScriptEffector(s32 iType, f32 time) : CPostProcessEffector(EEffectorPPType(iType), time, false)
 {
 	m_tEffectorType = EEffectorPPType(iType);
 }

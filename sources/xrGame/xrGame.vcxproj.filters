@@ -814,9 +814,6 @@
     <Filter Include="Core\Client\Objects\zones\SmartZone">
       <UniqueIdentifier>{5da7572f-3036-4e04-9c63-591570b9d1e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Client\Objects\map">
-      <UniqueIdentifier>{ba189e3c-408b-4f29-8bc5-72bab3ebbae8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Client\Objects\vehicles">
       <UniqueIdentifier>{3f46f819-b113-456a-9e0a-f837fdf24208}</UniqueIdentifier>
     </Filter>
@@ -1567,9 +1564,6 @@
     <Filter Include="AI\Monsters\monsters\PseudoDog\DogPsy\Psy Attack Hide">
       <UniqueIdentifier>{47c5db31-ff75-42ee-a1a2-8a35dd48dd76}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI\Monsters\monsters\PseudoDog\Script">
-      <UniqueIdentifier>{b2cd7057-45df-4cc6-9bec-150452a961ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="AI\Monsters\monsters\Burer">
       <UniqueIdentifier>{4b928338-38d5-456c-8e48-080098c2ba58}</UniqueIdentifier>
     </Filter>
@@ -1590,9 +1584,6 @@
     </Filter>
     <Filter Include="AI\Monsters\monsters\PseudoGigant">
       <UniqueIdentifier>{c348c930-d6f5-42e6-8472-1e00203f0d18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="AI\Monsters\monsters\PseudoGigant\Script">
-      <UniqueIdentifier>{b8e44b49-8281-4b5d-a564-79835d254476}</UniqueIdentifier>
     </Filter>
     <Filter Include="AI\Monsters\monsters\Poltergeist">
       <UniqueIdentifier>{df771f1c-29f2-4062-9acf-462938ba82ad}</UniqueIdentifier>
@@ -2067,6 +2058,9 @@
     </Filter>
     <Filter Include="Core\Client\Objects\vehicles\Helicopter">
       <UniqueIdentifier>{d4a39165-cc6c-433f-b7bf-de1c3918991c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Client\Objects\Map">
+      <UniqueIdentifier>{ba189e3c-408b-4f29-8bc5-72bab3ebbae8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3432,16 +3426,16 @@
     <ClInclude Include="ai\Monsters\Pseudodog\PseudoDog.h">
       <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Pseudodog\pseudodog_state_manager.h">
+    <ClInclude Include="ai\Monsters\Pseudodog\StateManagerPseudoDog.h">
       <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Pseudodog\psy_dog.h">
+    <ClInclude Include="ai\Monsters\Pseudodog\PsyDog.h">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_aura.h">
+    <ClInclude Include="ai\Monsters\Pseudodog\PsyDogAura.h">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_manager.h">
+    <ClInclude Include="ai\Monsters\Pseudodog\StateManagerPsyDog.h">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Pseudodog\psy_dog_state_psy_attack.h">
@@ -3546,10 +3540,10 @@
     <ClInclude Include="ai\Monsters\PseudoGigant\PseudoGigant.h">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\PseudoGigant\pseudo_gigant_step_effector.h">
+    <ClInclude Include="ai\Monsters\PseudoGigant\PseudoGigantStepEffector.h">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
-    <ClInclude Include="ai\Monsters\PseudoGigant\pseudogigant_state_manager.h">
+    <ClInclude Include="ai\Monsters\PseudoGigant\StateManagerPseudoGigant.h">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClInclude>
     <ClInclude Include="ai\Monsters\Poltergeist\Poltergeist.h">
@@ -4377,7 +4371,7 @@
     <ClInclude Include="ActorEffector.h">
       <Filter>Core\Client\Effectors\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="CameraEffector.h">
+    <ClInclude Include="CameraEffects.h">
       <Filter>Core\Client\Effectors\Actor</Filter>
     </ClInclude>
     <ClInclude Include="EffectorBobbing.h">
@@ -5014,13 +5008,13 @@
       <Filter>Core\Client\Objects\zones\SmartZone</Filter>
     </ClInclude>
     <ClInclude Include="MapLocation.h">
-      <Filter>Core\Client\Objects\map</Filter>
+      <Filter>Core\Client\Objects\Map</Filter>
     </ClInclude>
     <ClInclude Include="MapLocation_defs.h">
-      <Filter>Core\Client\Objects\map</Filter>
+      <Filter>Core\Client\Objects\Map</Filter>
     </ClInclude>
     <ClInclude Include="MapManager.h">
-      <Filter>Core\Client\Objects\map</Filter>
+      <Filter>Core\Client\Objects\Map</Filter>
     </ClInclude>
     <ClInclude Include="Car.h">
       <Filter>Core\Client\Objects\vehicles\Car</Filter>
@@ -6545,20 +6539,17 @@
     <ClCompile Include="ai\Monsters\Pseudodog\PseudoDog.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_state_manager.cpp">
+    <ClCompile Include="ai\Monsters\Pseudodog\StateManagerPseudoDog.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Pseudodog\psy_dog.cpp">
+    <ClCompile Include="ai\Monsters\Pseudodog\PsyDog.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Pseudodog\psy_dog_aura.cpp">
+    <ClCompile Include="ai\Monsters\Pseudodog\PsyDogAura.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\Pseudodog\psy_dog_state_manager.cpp">
+    <ClCompile Include="ai\Monsters\Pseudodog\StateManagerPsyDog.cpp">
       <Filter>AI\Monsters\monsters\PseudoDog\DogPsy</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\Pseudodog\pseudodog_script.cpp">
-      <Filter>AI\Monsters\monsters\PseudoDog\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Burer\Burer.cpp">
       <Filter>AI\Monsters\monsters\Burer</Filter>
@@ -6578,14 +6569,11 @@
     <ClCompile Include="ai\Monsters\PseudoGigant\PseudoGigant.cpp">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\PseudoGigant\pseudo_gigant_step_effector.cpp">
+    <ClCompile Include="ai\Monsters\PseudoGigant\PseudoGigantStepEffector.cpp">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
     </ClCompile>
-    <ClCompile Include="ai\Monsters\PseudoGigant\pseudogigant_state_manager.cpp">
+    <ClCompile Include="ai\Monsters\PseudoGigant\StateManagerPseudoGigant.cpp">
       <Filter>AI\Monsters\monsters\PseudoGigant</Filter>
-    </ClCompile>
-    <ClCompile Include="ai\Monsters\PseudoGigant\pseudogigant_script.cpp">
-      <Filter>AI\Monsters\monsters\PseudoGigant\Script</Filter>
     </ClCompile>
     <ClCompile Include="ai\Monsters\Poltergeist\Poltergeist.cpp">
       <Filter>AI\Monsters\monsters\Poltergeist</Filter>
@@ -7677,10 +7665,10 @@
       <Filter>Core\Client\Objects\zones\NoGravityZone</Filter>
     </ClCompile>
     <ClCompile Include="MapLocation.cpp">
-      <Filter>Core\Client\Objects\map</Filter>
+      <Filter>Core\Client\Objects\Map</Filter>
     </ClCompile>
     <ClCompile Include="MapManager.cpp">
-      <Filter>Core\Client\Objects\map</Filter>
+      <Filter>Core\Client\Objects\Map</Filter>
     </ClCompile>
     <ClCompile Include="Car.cpp">
       <Filter>Core\Client\Objects\vehicles\Car</Filter>

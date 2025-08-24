@@ -4,7 +4,7 @@
 struct SPPInfo;
 
 // постпроцесс
-class ENGINE_API CEffectorPP
+class ENGINE_API CPostProcessEffector
 {
 	EEffectorPPType		eType;
 	bool				bFreeOnRemove;
@@ -13,10 +13,10 @@ protected:
 	f32				fLifeTime;
 
 public:
-	CEffectorPP(EEffectorPPType type, f32 lifeTime, bool free_on_remove = true);
-	CEffectorPP( ) : bFreeOnRemove(true), fLifeTime(0.0f)
+	CPostProcessEffector(EEffectorPPType type, f32 lifeTime, bool free_on_remove = true);
+	CPostProcessEffector( ) : bFreeOnRemove(true), fLifeTime(0.0f)
 	{ }
-	virtual				~CEffectorPP( );
+	virtual				~CPostProcessEffector( );
 	virtual BOOL		Process(SPPInfo& PPInfo);
 	virtual BOOL		Valid( )
 	{

@@ -64,9 +64,9 @@ add_to_registry_type_list(CSpecificCharacterRegistry)
 #define registry_type_list save_registry_type_list(CSpecificCharacterRegistry)
 
 //map locations for actor
-add_to_registry_type_list(CMapLocationRegistry)
-#define map_locations define_constant(CMapLocationRegistry)
-#define registry_type_list save_registry_type_list(CMapLocationRegistry)
+add_to_registry_type_list(SMapLocationRegistry)
+#define map_locations define_constant(SMapLocationRegistry)
+#define registry_type_list save_registry_type_list(SMapLocationRegistry)
 
 //game tasks for actor
 add_to_registry_type_list(CGameTaskRegistry)

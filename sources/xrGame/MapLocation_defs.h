@@ -1,7 +1,9 @@
 #pragma once
+
 #include "alife_abstract_registry.h"
 
 class CMapLocation;
+
 struct SLocationKey : public IPureSerializeObject<IReader, IWriter>, public IPureDestroyableObject
 {
 	shared_str		spot_type;
@@ -25,7 +27,7 @@ struct SLocationKey : public IPureSerializeObject<IReader, IWriter>, public IPur
 
 DEFINE_VECTOR(SLocationKey, Locations, Locations_it);
 
-struct CMapLocationRegistry : public CALifeAbstractRegistry<u16, Locations>
+struct SMapLocationRegistry : public CALifeAbstractRegistry<u16, Locations>
 {
 	virtual void save(IWriter& stream);
 };

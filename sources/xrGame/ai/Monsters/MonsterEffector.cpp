@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffector
 //////////////////////////////////////////////////////////////////////////
-CMonsterEffector::CMonsterEffector(const SPPInfo& ppi, f32 life_time, f32 attack_time, f32 release_time, f32 spec_factor) : CEffectorPP(EEffectorPPType(eCEHit), life_time)
+CMonsterEffector::CMonsterEffector(const SPPInfo& ppi, f32 life_time, f32 attack_time, f32 release_time, f32 spec_factor) : CPostProcessEffector(EEffectorPPType(eCEHit), life_time)
 {
 	state = ppi;
 	m_total = life_time;
@@ -48,7 +48,7 @@ BOOL CMonsterEffector::Process(SPPInfo& pp)
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffectorHit
 //////////////////////////////////////////////////////////////////////////
-CMonsterEffectorHit::CMonsterEffectorHit(f32 time, f32 amp, f32 periods, f32 power) : CEffectorCam(eCEMonsterHit, time)
+CMonsterEffectorHit::CMonsterEffectorHit(f32 time, f32 amp, f32 periods, f32 power) : CCameraEffector(eCEMonsterHit, time)
 {
 	total = time;
 

@@ -200,7 +200,7 @@ void CWeaponShotEffector::ApplyDeltaAngles(f32* pitch, f32* yaw)
 //-----------------------------------------------------------------------------
 // Camera shot effector
 //-----------------------------------------------------------------------------
-CCameraShotEffector::CCameraShotEffector(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac) : CEffectorCam(eCEShot, 100000.0f)
+CCameraShotEffector::CCameraShotEffector(f32 max_angle, f32 relax_speed, f32 max_angle_horz, f32 step_angle_horz, f32 angle_frac) : CCameraEffector(eCEShot, 100000.0f)
 {
 	CWeaponShotEffector::Initialize(max_angle, relax_speed, max_angle_horz, step_angle_horz, angle_frac);
 	m_pActor = NULL;

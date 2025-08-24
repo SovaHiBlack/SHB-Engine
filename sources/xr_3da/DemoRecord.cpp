@@ -16,7 +16,7 @@
 
 CDemoRecord* xrDemoRecord = 0;
 
-CDemoRecord::CDemoRecord(pcstr name, f32 life_time) : CEffectorCam(cefDemo, life_time)
+CDemoRecord::CDemoRecord(pcstr name, f32 life_time) : CCameraEffector(cefDemo, life_time)
 {
 	_unlink(name);
 	file = FS.w_open(name);

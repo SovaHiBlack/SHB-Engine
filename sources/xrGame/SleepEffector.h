@@ -4,15 +4,15 @@
 ////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "..\XR_3DA\effectorPP.h"
-#include "..\XR_3DA\effector.h"
+#include "..\XR_3DA\PostProcessEffector.h"
+#include "..\XR_3DA\CameraEffector.h"
 #include "..\XR_3DA\CameraManager.h"
 
 #define SLEEP_EFFECTOR_TYPE_ID 8
 
-class CSleepEffectorPP : public CEffectorPP
+class CSleepEffectorPP : public CPostProcessEffector
 {
-	typedef CEffectorPP inherited;
+	typedef CPostProcessEffector inherited;
 
 	SPPInfo state;			// current state
 	f32	m_total;		// total PP time

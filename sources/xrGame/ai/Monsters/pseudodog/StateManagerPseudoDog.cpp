@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PseudoDog.h"
-#include "pseudodog_state_manager.h"
+#include "StateManagerPseudoDog.h"
 
 #include "../control_animation_base.h"
 #include "../control_direction_base.h"
@@ -17,7 +17,7 @@
 #include "../states/monster_state_hear_danger_sound.h"
 #include "../states/monster_state_hitted.h"
 
-CStateManagerPseudodog::CStateManagerPseudodog(CPseudoDog* monster) : inherited(monster)
+CStateManagerPseudoDog::CStateManagerPseudoDog(CPseudoDog* monster) : inherited(monster)
 {
 	add_state(eStateRest,					xr_new<CStateMonsterRest<CPseudoDog> >				(monster));
 	add_state(eStatePanic,					xr_new<CStateMonsterPanic<CPseudoDog> >				(monster));
@@ -31,7 +31,7 @@ CStateManagerPseudodog::CStateManagerPseudodog(CPseudoDog* monster) : inherited(
 #define MIN_ANGRY_TIME		10000
 #define MAX_GROWLING_TIME	20000
 
-void CStateManagerPseudodog::execute()
+void CStateManagerPseudoDog::execute()
 {
 	u32 state_id = u32(-1);
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CameraEffector.h"
+#include "CameraEffects.h"
 
 class CObjectAnimator;
 class CEffectorController;
@@ -17,19 +17,19 @@ void RemoveEffector(CActor* A, s32 type);
 class CEffectorController
 {
 protected:
-	CEffectorCam* m_ce;
-	CEffectorPP* m_pe;
+	CCameraEffector* m_ce;
+	CPostProcessEffector* m_pe;
 
 public:
 	CEffectorController( ) : m_ce(NULL), m_pe(NULL)
 	{ }
 	virtual						~CEffectorController( );
 
-	void			SetPP(CEffectorPP* p)
+	void			SetPP(CPostProcessEffector* p)
 	{
 		m_pe = p;
 	}
-	void			SetCam(CEffectorCam* p)
+	void			SetCam(CCameraEffector* p)
 	{
 		m_ce = p;
 	}
@@ -40,9 +40,9 @@ public:
 	virtual f32 xr_stdcall	GetFactor( ) = 0;
 };
 
-class CAnimatorCamEffector :public CEffectorCam
+class CAnimatorCamEffector :public CCameraEffector
 {
-	typedef				CEffectorCam			inherited;
+	typedef				CCameraEffector			inherited;
 	bool				m_bCyclic;
 
 protected:
@@ -155,9 +155,9 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////////
-class CControllerPsyHitCamEffector :public CEffectorCam
+class CControllerPsyHitCamEffector :public CCameraEffector
 {
-	typedef CEffectorCam inherited;
+	typedef CCameraEffector inherited;
 
 	f32				m_time_total;
 	f32				m_time_current;

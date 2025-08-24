@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "EffectorFall.h"
-#include "CameraEffector.h"
+#include "CameraEffects.h"
 
 #define FALL_SPEED 3.5f
 #define FALL_MAXDIST 0.15f
 
-CEffectorFall::CEffectorFall(f32 power, f32 life_time) : CEffectorCam(eCEFall, life_time)
+CEffectorFall::CEffectorFall(f32 power, f32 life_time) : CCameraEffector(eCEFall, life_time)
 {
 	fPower = (power > 1.0f) ? 1.0f : ((power < 0.0f) ? 0.0f : power * power);
 	fPhase = 0.0f;

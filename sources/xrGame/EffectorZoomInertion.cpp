@@ -10,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-CEffectorZoomInertion::CEffectorZoomInertion( ) : CEffectorCam(eCEZoom, 100000.0f)
+CEffectorZoomInertion::CEffectorZoomInertion( ) : CCameraEffector(eCEZoom, 100000.0f)
 {
 	Load( );
 	SetRndSeed(Device.dwTimeContinual);

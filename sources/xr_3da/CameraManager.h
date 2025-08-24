@@ -121,8 +121,8 @@ struct ENGINE_API SPPInfo
 	void		validate(pcstr str);
 };
 
-DEFINE_VECTOR(CEffectorCam*, EffectorCamVec, EffectorCamIt);
-DEFINE_VECTOR(CEffectorPP*, EffectorPPVec, EffectorPPIt);
+DEFINE_VECTOR(CCameraEffector*, EffectorCamVec, EffectorCamIt);
+DEFINE_VECTOR(CPostProcessEffector*, EffectorPPVec, EffectorPPIt);
 
 class ENGINE_API CCameraManager
 {
@@ -150,12 +150,12 @@ public:
 #endif // DEBUG
 
 	void					Dump( );
-	CEffectorCam* AddCamEffector(CEffectorCam* ef);
-	CEffectorCam* GetCamEffector(ECamEffectorType type);
+	CCameraEffector* AddCamEffector(CCameraEffector* ef);
+	CCameraEffector* GetCamEffector(ECamEffectorType type);
 	void					RemoveCamEffector(ECamEffectorType type);
 
-	CEffectorPP* GetPPEffector(EEffectorPPType type);
-	CEffectorPP* AddPPEffector(CEffectorPP* ef);
+	CPostProcessEffector* GetPPEffector(EEffectorPPType type);
+	CPostProcessEffector* AddPPEffector(CPostProcessEffector* ef);
 	void					RemovePPEffector(EEffectorPPType type);
 
 	IC fVector3				Pos( ) const

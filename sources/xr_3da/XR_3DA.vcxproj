@@ -202,8 +202,8 @@
     <ClInclude Include="du_cylinder.h" />
     <ClInclude Include="du_sphere.h" />
     <ClInclude Include="du_sphere_part.h" />
-    <ClInclude Include="Effector.h" />
-    <ClInclude Include="EffectorPP.h" />
+    <ClInclude Include="CameraEffector.h" />
+    <ClInclude Include="PostProcessEffector.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineAPI.h" />
     <ClInclude Include="EnnumerateVertices.h" />
@@ -330,7 +330,7 @@
     <ClCompile Include="du_cylinder.cpp" />
     <ClCompile Include="du_sphere.cpp" />
     <ClCompile Include="du_sphere_part.cpp" />
-    <ClCompile Include="EffectorPP.cpp" />
+    <ClCompile Include="PostProcessEffector.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineAPI.cpp" />
     <ClCompile Include="Envelope.cpp" />

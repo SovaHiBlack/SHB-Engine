@@ -3,9 +3,9 @@
 #pragma once
 
 #include "IInputReceiver.h"
-#include "effector.h"
+#include "CameraEffector.h"
 
-class ENGINE_API CDemoRecord : public CEffectorCam, public IInputReceiver
+class ENGINE_API CDemoRecord : public CCameraEffector, public IInputReceiver
 {
 private:
 	s32												iCount;

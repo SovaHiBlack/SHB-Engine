@@ -148,7 +148,7 @@ void CTorch::SwitchNightVision(bool vision_on)
 
 	if (m_bNightVisionOn)
 	{
-		CEffectorPP* pp = pA->Cameras( ).GetPPEffector((EEffectorPPType) effNightvision);
+		CPostProcessEffector* pp = pA->Cameras( ).GetPPEffector((EEffectorPPType) effNightvision);
 		if (!pp)
 		{
 			if (pCO && pCO->m_NightVisionSect.size( ))
@@ -161,7 +161,7 @@ void CTorch::SwitchNightVision(bool vision_on)
 	}
 	else
 	{
-		CEffectorPP* pp = pA->Cameras( ).GetPPEffector((EEffectorPPType) effNightvision);
+		CPostProcessEffector* pp = pA->Cameras( ).GetPPEffector((EEffectorPPType) effNightvision);
 		if (pp)
 		{
 			pp->Stop(1.0f);

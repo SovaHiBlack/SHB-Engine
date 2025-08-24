@@ -12,7 +12,7 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CDemoPlay::CDemoPlay(pcstr name, f32 ms, u32 cycles, f32 life_time) : CEffectorCam(cefDemo, life_time)
+CDemoPlay::CDemoPlay(pcstr name, f32 ms, u32 cycles, f32 life_time) : CCameraEffector(cefDemo, life_time)
 {
 	Msg("*** Playing demo: %s", name);
 	Console->Execute("hud_weapon 0");

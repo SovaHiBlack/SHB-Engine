@@ -1,15 +1,15 @@
 #pragma once
 
-#include "..\..\..\XR_3DA\effectorPP.h"
+#include "..\..\..\XR_3DA\PostProcessEffector.h"
 #include "../../CameraEffector.h"
 #include "..\..\..\XR_3DA\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffector
 //////////////////////////////////////////////////////////////////////////
-class CMonsterEffector : public CEffectorPP
+class CMonsterEffector : public CPostProcessEffector
 {
-	typedef CEffectorPP inherited;
+	typedef CPostProcessEffector inherited;
 
 	SPPInfo state;			// current state
 	f32 m_total;		// total PP time
@@ -26,7 +26,7 @@ public:
 //////////////////////////////////////////////////////////////////////////
 // CMonsterEffectorHit
 //////////////////////////////////////////////////////////////////////////
-class CMonsterEffectorHit : public CEffectorCam
+class CMonsterEffectorHit : public CCameraEffector
 {
 	f32 total;
 	f32 max_amp;

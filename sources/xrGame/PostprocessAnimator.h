@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\XR_3DA\Envelope.h"
-#include "..\XR_3DA\EffectorPP.h"
+#include "..\XR_3DA\PostProcessEffector.h"
 #include "..\XR_3DA\CameraManager.h"
 
 class CEffectorController;
@@ -104,7 +104,7 @@ public:
 	}
 };
 
-class CPostprocessAnimator :public CEffectorPP
+class CPostprocessAnimator :public CPostProcessEffector
 {
 protected:
 	CPostProcessParam* m_Params[POSTPROCESS_PARAMS_COUNT];

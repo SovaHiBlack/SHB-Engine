@@ -98,13 +98,16 @@ void CPoltergeist::Load(pcstr section)
 
 	pcstr polter_type = pSettings->r_string(section,"type");
 	
-	if (xr_strcmp(polter_type,"flamer") == 0) {
-		m_flame			= xr_new<CPolterFlame>(this);
-		m_flame->load	(section);
-	} else {
-		m_tele			= xr_new<CPolterTele>(this);
-		m_tele->load	(section);
-	}	
+	if (xr_strcmp(polter_type, "flamer") == 0)
+	{
+		m_flame = xr_new<CPolterFlame>(this);
+		m_flame->load(section);
+	}
+	else
+	{
+		m_tele = xr_new<CPolterTele>(this);
+		m_tele->load(section);
+	}
 }
 
 void CPoltergeist::reload(pcstr section)

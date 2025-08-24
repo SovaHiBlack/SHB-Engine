@@ -3,11 +3,11 @@
 
 class CPseudoDog;
 
-class CStateManagerPseudodog : public CMonsterStateManager<CPseudoDog> {
+class CStateManagerPseudoDog : public CMonsterStateManager<CPseudoDog> {
 	typedef CMonsterStateManager<CPseudoDog> inherited;
 	
 public:
 
-					CStateManagerPseudodog	(CPseudoDog* monster);
+	CStateManagerPseudoDog(CPseudoDog* monster);
 	virtual void	execute					();
 };

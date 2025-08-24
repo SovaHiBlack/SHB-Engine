@@ -4,11 +4,11 @@
 
 #pragma once
 
-#include "CameraEffector.h"
+#include "CameraEffects.h"
 #include "..\XR_3DA\CameraManager.h"
 #include "WeaponMagazined.h"
 
-class CEffectorZoomInertion : public CEffectorCam
+class CEffectorZoomInertion : public CCameraEffector
 {
 	//коэффициент скорости "покачивания" прицела
 	f32	m_fFloatSpeed;

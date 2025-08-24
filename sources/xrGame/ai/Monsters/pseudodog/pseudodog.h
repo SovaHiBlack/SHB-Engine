@@ -3,11 +3,11 @@
 #include "../BaseMonster/base_monster.h"
 #include "../../../script_export_space.h"
 
-class CPseudoDog : public CBaseMonster {
+class CPseudoDog : public CBaseMonster
+{
 	typedef		CBaseMonster	inherited;
 
 public:
-
 	f32			m_anger_hunger_threshold;
 	f32			m_anger_loud_threshold;
 
@@ -15,33 +15,42 @@ public:
 
 	TTime			time_growling;			// время нахождения в состоянии пугания
 
-	enum {
-		eAdditionalSounds		= MonsterSound::eMonsterSoundCustom,
-		ePsyAttack				= eAdditionalSounds | 0,
+	enum
+	{
+		eAdditionalSounds = MonsterSound::eMonsterSoundCustom,
+		ePsyAttack = eAdditionalSounds | 0
 	};
+
 public:
-	CPseudoDog();
-	virtual			~CPseudoDog();
+	CPseudoDog( );
+	virtual			~CPseudoDog( );
 
-	virtual DLL_Pure	*_construct		();
+	virtual DLL_Pure* _construct( );
 
-	virtual void	Load				(pcstr section);
+	virtual void	Load(pcstr section);
 
-	virtual void	reinit				();
-	virtual void	reload				(pcstr section);
+	virtual void	reinit( );
+	virtual void	reload(pcstr section);
 
-	virtual bool	ability_can_drag	() {return true;}
-	virtual bool	ability_psi_attack	() {return true;}
+	virtual bool	ability_can_drag( )
+	{
+		return true;
+	}
+	virtual bool	ability_psi_attack( )
+	{
+		return true;
+	}
 
-	virtual void	CheckSpecParams		(u32 spec_params);
-	//virtual void	play_effect_sound	();
+	virtual void	CheckSpecParams(u32 spec_params);
 
-	virtual void	HitEntityInJump		(const CEntity *pEntity);
+	virtual void	HitEntityInJump(const CEntity* pEntity);
 
-	virtual IStateManagerBase *create_state_manager	();
+	virtual IStateManagerBase* create_state_manager( );
+
 private:
-#ifdef _DEBUG	
-	virtual void	debug_on_key		(s32 key);
+
+#ifdef _DEBUG
+	virtual void	debug_on_key(s32 key);
 #endif
 
 	DECLARE_SCRIPT_REGISTER_FUNCTION

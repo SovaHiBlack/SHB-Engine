@@ -11,9 +11,11 @@
 #include "graph_abstract.h"
 #include "patrol_point.h"
 
-class CPatrolPath : public CGraphAbstractSerialize<CPatrolPoint, f32,u32> {
+class CPatrolPath : public CGraphAbstractSerialize<CPatrolPoint, f32, u32>
+{
 private:
-	struct CAlwaysTrueEvaluator {
+	struct CAlwaysTrueEvaluator
+	{
 		IC	bool	operator()	(const fVector3& position) const
 		{
 			return	(true);
@@ -21,7 +23,7 @@ private:
 	};
 
 protected:
-	typedef CGraphAbstractSerialize<CPatrolPoint, f32,u32> inherited;
+	typedef CGraphAbstractSerialize<CPatrolPoint, f32, u32> inherited;
 
 public:
 #ifdef DEBUG
@@ -29,18 +31,18 @@ public:
 #endif
 
 public:
-							CPatrolPath		(shared_str name = "");
-	virtual					~CPatrolPath	();
-			CPatrolPath		&load_raw		(const CLevelGraph *level_graph, const CGameLevelCrossTable *cross, const CGameGraph *game_graph, IReader &stream);
-	IC		const CVertex	*point			(shared_str name) const;
+	CPatrolPath(shared_str name = "");
+	virtual					~CPatrolPath( );
+	CPatrolPath& load_raw(const CLevelGraph* level_graph, const CGameLevelCrossTable* cross, const CGameGraph* game_graph, IReader& stream);
+	IC		const CVertex* point(shared_str name) const;
 	template <typename T>
 	IC		const CVertex* point(const fVector3& position, const T& evaluator) const;
 	IC		const CVertex* point(const fVector3& position) const;
 
 #ifdef DEBUG
 public:
-	virtual void			load			(IReader &stream);
-	IC		void			name			(const shared_str &name);
+	virtual void			load(IReader& stream);
+	IC		void			name(const shared_str& name);
 #endif
 };
 

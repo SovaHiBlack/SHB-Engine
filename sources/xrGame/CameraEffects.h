@@ -1,8 +1,8 @@
 #pragma once
 
 #include "..\XR_3DA\CameraManager.h"
-#include "..\XR_3DA\effector.h"
-#include "..\XR_3DA\effectorPP.h"
+#include "..\XR_3DA\CameraEffector.h"
+#include "..\XR_3DA\PostProcessEffector.h"
 
 #define eStartEffectorID		50
 

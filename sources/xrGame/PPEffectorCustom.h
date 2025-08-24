@@ -1,12 +1,12 @@
 #pragma once
-#include "..\XR_3DA\effectorPP.h"
+#include "..\XR_3DA\PostProcessEffector.h"
 #include "..\XR_3DA\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 
-class CPPEffectorCustom : public CEffectorPP
+class CPPEffectorCustom : public CPostProcessEffector
 {
-	typedef CEffectorPP inherited;
+	typedef CPostProcessEffector inherited;
 
 public:
 	CPPEffectorCustom(const SPPInfo& ppi, bool one_instance = false, bool destroy_from_engine = true);
