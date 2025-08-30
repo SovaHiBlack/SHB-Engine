@@ -4,8 +4,8 @@
 #include "Object.h"
 #include "PS_Instance.h"
 
-ENGINE_API ISpatial_DB* g_SpatialSpace = NULL;
-ENGINE_API ISpatial_DB* g_SpatialSpacePhysic = NULL;
+ENGINE_API ISpatial_DB* g_SpatialSpace = nullptr;
+ENGINE_API ISpatial_DB* g_SpatialSpacePhysic = nullptr;
 
 fVector3	c_spatial_offset[8] =
 {
@@ -26,13 +26,16 @@ ISpatial::ISpatial(ISpatial_DB* space)
 	spatial.sphere.R = 0.0f;
 	spatial.node_center.set(0.0f, 0.0f, 0.0f);
 	spatial.node_radius = 0.0f;
-	spatial.node_ptr = NULL;
+	spatial.node_ptr = nullptr;
 	spatial.sector = NULL;
 	spatial.space = space;
 }
 ISpatial::~ISpatial( )
 {
-	spatial_unregister( );
+	if (spatial.space)
+	{
+		spatial_unregister( );
+	}
 }
 BOOL	ISpatial::spatial_inside( )
 {
@@ -109,11 +112,7 @@ BOOL	verify_sp(ISpatial* sp, fVector3& node_center, f32 node_radius)
 void	ISpatial::spatial_register( )
 {
 	spatial.type |= STYPEFLAG_INVALIDSECTOR;
-	if (spatial.node_ptr)
-	{
-		// already registered - nothing to do
-	}
-	else
+	if (!spatial.node_ptr)
 	{
 		// register
 		R_ASSERT(spatial.space);
@@ -131,10 +130,6 @@ void	ISpatial::spatial_unregister( )
 		spatial.node_ptr = NULL;
 		spatial.sector = NULL;
 	}
-	else
-	{
-		// already unregistered
-	}
 }
 
 void	ISpatial::spatial_move( )
@@ -148,11 +143,6 @@ void	ISpatial::spatial_move( )
 		if (spatial_inside( ))	return;		// ???
 		spatial.space->remove(this);
 		spatial.space->insert(this);
-	}
-	else
-	{
-		//*** we are not registered yet, or already unregistered
-		//*** ignore request
 	}
 }
 
@@ -170,7 +160,7 @@ void	ISpatial::spatial_updatesector_internal( )
 void			ISpatial_NODE::_init(ISpatial_NODE* _parent)
 {
 	parent = _parent;
-	children[0] = children[1] = children[2] = children[3] = children[4] = children[5] = children[6] = children[7] = NULL;
+	children[0] = children[1] = children[2] = children[3] = children[4] = children[5] = children[6] = children[7] = nullptr;
 	items.clear( );
 }
 

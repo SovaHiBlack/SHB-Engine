@@ -619,7 +619,7 @@ public:
 	IC SelfRef inertion(SelfCRef mat, T v)
 	{
 		T iv = 1.f - v;
-		for (int i = 0; i < 4; i++)
+		for (s32 i = 0; i < 4; i++)
 		{
 			m[i][0] = m[i][0] * v + mat.m[i][0] * iv;
 			m[i][1] = m[i][1] * v + mat.m[i][1] * iv;

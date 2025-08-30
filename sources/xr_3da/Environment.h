@@ -43,7 +43,7 @@ public:
 };
 
 // t-defs
-class ENGINE_API	CEnvModifier
+class ENGINE_API	CEnvironmentModifier
 {
 public:
 	fVector3			position;
@@ -58,10 +58,10 @@ public:
 	fVector3			hemi_color;
 
 	void				load(IReader* fs);
-	f32				sum(CEnvModifier& _another, fVector3& view);
+	f32				sum(CEnvironmentModifier& _another, fVector3& view);
 };
 
-class ENGINE_API	CEnvAmbient
+class ENGINE_API	CEnvironmentAmbient
 {
 public:
 	struct SEffect
@@ -110,7 +110,7 @@ public:
 	}
 };
 
-class ENGINE_API	CEnvDescriptor
+class ENGINE_API	CEnvironmentDescriptor
 {
 public:
 	f32				exec_time;
@@ -151,16 +151,16 @@ public:
 	s32					lens_flare_id;
 	s32					tb_id;
 
-	CEnvAmbient* env_ambient;
+	CEnvironmentAmbient* env_ambient;
 
 #ifdef DEBUG
 	shared_str			sect_name;
 #endif // DEBUG
 
-	CEnvDescriptor( );
+	CEnvironmentDescriptor( );
 
 	void				load(pcstr exec_tm, pcstr sect, CEnvironment* parent);
-	void				copy(const CEnvDescriptor& src)
+	void				copy(const CEnvironmentDescriptor& src)
 	{
 		f32 tm0 = exec_time;
 		f32 tm1 = exec_time_loaded;
@@ -173,7 +173,7 @@ public:
 	void				on_device_destroy( );
 };
 
-class ENGINE_API	CEnvDescriptorMixer : public CEnvDescriptor
+class ENGINE_API	CEnvironmentDescriptorMixer : public CEnvironmentDescriptor
 {
 public:
 	STextureList		sky_r_textures;
@@ -185,12 +185,12 @@ public:
 	f32				fog_far;
 
 public:
-	void				lerp(CEnvironment* parent, CEnvDescriptor& A, CEnvDescriptor& B, f32 f, CEnvModifier& M, f32 m_power);
+	void				lerp(CEnvironment* parent, CEnvironmentDescriptor& A, CEnvironmentDescriptor& B, f32 f, CEnvironmentModifier& M, f32 m_power);
 	void				clear( );
 	void				destroy( );
 };
 
-class ENGINE_API	CEnvironment
+class ENGINE_API CEnvironment
 {
 	struct str_pred : public std::binary_function<shared_str, shared_str, bool>
 	{
@@ -201,8 +201,8 @@ class ENGINE_API	CEnvironment
 	};
 
 public:
-	DEFINE_VECTOR(CEnvAmbient*, EnvAmbVec, EnvAmbVecIt);
-	DEFINE_VECTOR(CEnvDescriptor*, EnvVec, EnvIt);
+	DEFINE_VECTOR(CEnvironmentAmbient*, EnvAmbVec, EnvAmbVecIt);
+	DEFINE_VECTOR(CEnvironmentDescriptor*, EnvVec, EnvIt);
 	DEFINE_MAP_PRED(shared_str, EnvVec, EnvsMap, EnvsMapIt, str_pred);
 
 private:
@@ -214,16 +214,16 @@ private:
 	f32					NormalizeTime(f32 tm);
 	f32					TimeDiff(f32 prev, f32 cur);
 	f32					TimeWeight(f32 val, f32 min_t, f32 max_t);
-	void					SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, f32 tm);
-	void					SelectEnv(EnvVec* envs, CEnvDescriptor*& e, f32 tm);
+	void					SelectEnvs(EnvVec* envs, CEnvironmentDescriptor*& e0, CEnvironmentDescriptor*& e1, f32 tm);
+	void					SelectEnv(EnvVec* envs, CEnvironmentDescriptor*& e, f32 tm);
 	void					StopWFX( );
 
 public:
-	static bool sort_env_pred(const CEnvDescriptor* x, const CEnvDescriptor* y)
+	static bool sort_env_pred(const CEnvironmentDescriptor* x, const CEnvironmentDescriptor* y)
 	{
 		return x->exec_time < y->exec_time;
 	}
-	static bool sort_env_etl_pred(const CEnvDescriptor* x, const CEnvDescriptor* y)
+	static bool sort_env_etl_pred(const CEnvironmentDescriptor* x, const CEnvironmentDescriptor* y)
 	{
 		return x->exec_time_loaded < y->exec_time_loaded;
 	}
@@ -238,12 +238,12 @@ public:
 	f32					wind_strength_factor;
 	f32					wind_gust_factor;
 	// Environments
-	CEnvDescriptorMixer		CurrentEnv;
-	CEnvDescriptor* Current[2];
+	CEnvironmentDescriptorMixer		CurrentEnv;
+	CEnvironmentDescriptor* Current[2];
 
 	bool					bWFX;
 	f32					wfx_time;
-	CEnvDescriptor* WFX_end_desc[2];
+	CEnvironmentDescriptor* WFX_end_desc[2];
 
 	EnvVec* CurrentWeather;
 	shared_str				CurrentWeatherName;
@@ -251,7 +251,7 @@ public:
 
 	EnvsMap					WeatherCycles;
 	EnvsMap					WeatherFXs;
-	xr_vector<CEnvModifier>	Modifiers;
+	xr_vector<CEnvironmentModifier>	Modifiers;
 	EnvAmbVec				Ambients;
 
 	ref_shader				sh_2sky;
@@ -270,7 +270,7 @@ public:
 
 	void					SelectEnvs(f32 gt);
 
-	CEnvAmbient* AppendEnvAmb(const shared_str& sect);
+	CEnvironmentAmbient* AppendEnvAmb(const shared_str& sect);
 
 	void					Invalidate( );
 

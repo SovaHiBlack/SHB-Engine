@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\..\..\XR_3DA\PostProcessEffector.h"
-#include "../../CameraEffector.h"
+#include "../../CameraEffects.h"
 #include "..\..\..\XR_3DA\CameraManager.h"
 
 //////////////////////////////////////////////////////////////////////////

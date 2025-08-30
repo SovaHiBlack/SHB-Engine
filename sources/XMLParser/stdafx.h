@@ -11,8 +11,8 @@
 
 #include "../Core/xrCore.h"
 
-#include "xrXMLParser.h"
+#include "XMLParser.h"
 
-#pragma comment( lib, "Core.lib"	)
+#pragma comment( lib, "Core.lib" )
 
 #endif //stdafxH

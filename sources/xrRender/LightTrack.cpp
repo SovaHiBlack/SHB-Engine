@@ -248,7 +248,7 @@ void	CROS_impl::update(IRenderable* O)
 
 	// Process ambient lighting and approximate average lighting
 	// Process our lights to find average luminiscense
-	CEnvDescriptor& desc = g_pGamePersistent->Environment( ).CurrentEnv;
+	CEnvironmentDescriptor& desc = g_pGamePersistent->Environment( ).CurrentEnv;
 	fVector3			accum = { desc.ambient.x,		desc.ambient.y,		desc.ambient.z };
 	fVector3			hemi = { desc.hemi_color.x,	desc.hemi_color.y,	desc.hemi_color.z };
 	fVector3			sun_ = { desc.sun_color.x,		desc.sun_color.y,	desc.sun_color.z };

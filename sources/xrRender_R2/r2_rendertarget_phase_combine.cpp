@@ -69,7 +69,7 @@ void	CRenderTarget::phase_combine	()
 		// Compute params
 		fMatrix4x4		m_v2w;
 		m_v2w.invert				(Device.mView		);
-		CEnvDescriptorMixer& envdesc= g_pGamePersistent->Environment().CurrentEnv		;
+		CEnvironmentDescriptorMixer& envdesc= g_pGamePersistent->Environment().CurrentEnv		;
 		const f32 minamb			= 0.001f;
 		fVector4	ambclr			= { _max(envdesc.ambient.x*2,minamb),	_max(envdesc.ambient.y*2,minamb),			_max(envdesc.ambient.z*2,minamb),	0	};
 					ambclr.mul		(ps_r2_sun_lumscale_amb);

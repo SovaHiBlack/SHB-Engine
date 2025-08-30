@@ -320,8 +320,6 @@ void CStatGraph::OnRender( )
 	{
 		pv_Tri_start = (FVF::TL0uv*)RCache.Vertex.Lock(TriElem, hGeomTri->vb_stride, dwOffsetTri);
 		pv_Tri = pv_Tri_start;
-
-		pv_Tri = pv_Tri_start;
 		for (SubGraphVecIt it = subgraphs.begin( ); it != subgraphs.end( ); it++)
 		{
 			switch (it->style)

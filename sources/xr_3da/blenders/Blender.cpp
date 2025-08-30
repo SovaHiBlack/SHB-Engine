@@ -32,11 +32,9 @@ IBlender::IBlender()
 }
 
 IBlender::~IBlender()
-{
+{}
 
-}
-
-void	IBlender::Save(IWriter& fs )
+void IBlender::Save(IWriter& fs )
 {
 	fs.w			(&description,sizeof(description));
 	xrPWRITE_MARKER (fs,"General");
@@ -65,6 +63,5 @@ void	IBlender::Load(	IReader& fs, u16  )
 
 void	IBlender::Compile(CBlender_Compile& C)
 {
-	if (C.bEditor)	C.SetParams	(oPriority.value,oStrictSorting.value?true:false);
-	else			C.SetParams	(oPriority.value,oStrictSorting.value?true:false);
+C.SetParams	(oPriority.value,oStrictSorting.value?true:false);
 }

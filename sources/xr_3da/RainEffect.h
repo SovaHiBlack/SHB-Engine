@@ -1,6 +1,5 @@
 // RainEffect.h: interface for the CRainEffect class.
-//
-//////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #include "xr_collide_defs.h"

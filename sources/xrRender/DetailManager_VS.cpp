@@ -173,7 +173,7 @@ void	CDetailManager::hw_Render_dump(ref_constant x_array, u32 var_id, u32 lod_id
 
 	vis_list& list = m_visibles[var_id];
 
-	CEnvDescriptor& desc = g_pGamePersistent->Environment( ).CurrentEnv;
+	CEnvironmentDescriptor& desc = g_pGamePersistent->Environment( ).CurrentEnv;
 	fVector3					c_sun;
 	fVector3 c_ambient;
 	fVector3 c_hemi;

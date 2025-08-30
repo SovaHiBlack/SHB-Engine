@@ -222,8 +222,8 @@ void CGamePersistent::WeathersUpdate( )
 		}
 
 		s32 data_set = (Random.randF( ) < (1.0f - Environment( ).CurrentEnv.weight)) ? 0 : 1;
-		CEnvDescriptor* _env = Environment( ).Current[data_set]; VERIFY(_env);
-		CEnvAmbient* env_amb = _env->env_ambient;
+		CEnvironmentDescriptor* _env = Environment( ).Current[data_set]; VERIFY(_env);
+		CEnvironmentAmbient* env_amb = _env->env_ambient;
 		if (env_amb)
 		{
 			// start sound
@@ -247,7 +247,7 @@ void CGamePersistent::WeathersUpdate( )
 			// start effect
 			if ((FALSE == bIndoor) && (0 == ambient_particles) && Device.dwTimeGlobal > ambient_effect_next_time)
 			{
-				CEnvAmbient::SEffect* eff = env_amb->get_rnd_effect( );
+				CEnvironmentAmbient::SEffect* eff = env_amb->get_rnd_effect( );
 				if (eff)
 				{
 					Environment( ).wind_gust_factor = eff->wind_gust_factor;

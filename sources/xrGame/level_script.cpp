@@ -346,7 +346,7 @@ CEnvironment* environment( )
 	return		(g_pGamePersistent->pEnvironment);
 }
 
-CEnvDescriptor* current_environment(CEnvironment* self)
+CEnvironmentDescriptor* current_environment(CEnvironment* self)
 {
 	return		(&self->CurrentEnv);
 }
@@ -524,9 +524,9 @@ void g_change_community_goodwill(pcstr _community, s32 _entity_id, s32 val)
 #pragma optimize("s",on)
 void CLevel::script_register(lua_State* L)
 {
-	class_<CEnvDescriptor>("CEnvDescriptor")
-		.def_readonly("fog_density", &CEnvDescriptor::fog_density)
-		.def_readonly("far_plane", &CEnvDescriptor::far_plane),
+	class_<CEnvironmentDescriptor>("CEnvironmentDescriptor")
+		.def_readonly("fog_density", &CEnvironmentDescriptor::fog_density)
+		.def_readonly("far_plane", &CEnvironmentDescriptor::far_plane),
 
 		class_<CEnvironment>("CEnvironment")
 		.def("current", current_environment);

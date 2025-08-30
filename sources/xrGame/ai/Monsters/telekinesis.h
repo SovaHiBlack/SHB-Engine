@@ -3,9 +3,6 @@
 #include "telekinetic_object.h"
 #include "../../PHObject.h"
 
-
-
-
 class CTelekinesis : public CPHUpdateObject {
 
 protected:
@@ -45,7 +42,6 @@ virtual		void	clear_notrelevant   ();
 			// бросить объект 'obj' в позицию 'target' с учетом коэф силы 
 			void	fire_t				(CPhysicsShellHolder *obj, const fVector3& target, f32 time);
 
-
 			// вернуть активность телекинеза
 			bool	is_active			() {return active;}
 
@@ -57,7 +53,6 @@ virtual		void	clear_notrelevant   ();
 
 			// вернуть количество контролируемых объектов (всех)
 			u32		get_objects_total_count() {return objects.size();}
-
 
 			// вернуть объект по индексу в массиве
 			// a	copy of the object!
@@ -71,12 +66,9 @@ CTelekineticObject	get_object_by_index (u32 index) {VERIFY(objects.size() > inde
 
 protected:
 	virtual CTelekineticObject*	alloc_tele_object(){return xr_new<CTelekineticObject>();}
-private:
 
+private:
 	// обновление на шагах физики
 	virtual void 	PhDataUpdate		(dReal step);
 	virtual void 	PhTune				(dReal step);
-	
-
 };
-

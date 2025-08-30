@@ -36,11 +36,11 @@ TiXmlBase::Entity TiXmlBase::entity[NUM_ENTITY] =
 //				ef bf be
 //				ef bf bf 
 
-const unsigned char TIXML_UTF_LEAD_0 = 0xefU;
-const unsigned char TIXML_UTF_LEAD_1 = 0xbbU;
-const unsigned char TIXML_UTF_LEAD_2 = 0xbfU;
+const u8 TIXML_UTF_LEAD_0 = 0xefU;
+const u8 TIXML_UTF_LEAD_1 = 0xbbU;
+const u8 TIXML_UTF_LEAD_2 = 0xbfU;
 
-const int TiXmlBase::utf8ByteTable[256] =
+const s32 TiXmlBase::utf8ByteTable[256] =
 {
 	//	0	1	2	3	4	5	6	7	8	9	a	b	c	d	e	f
 		1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	// 0x00
@@ -62,7 +62,7 @@ const int TiXmlBase::utf8ByteTable[256] =
 };
 
 
-void TiXmlBase::ConvertUTF32ToUTF8(unsigned long input, char* output, int* length)
+void TiXmlBase::ConvertUTF32ToUTF8(unsigned long input, pstr output, s32* length)
 {
 	const unsigned long BYTE_MASK = 0xBF;
 	const unsigned long BYTE_MARK = 0x80;

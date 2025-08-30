@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------------
 // Environment modifier
 //-----------------------------------------------------------------------------
-void	CEnvModifier::load(IReader* fs)
+void CEnvironmentModifier::load(IReader* fs)
 {
 	fs->r_fvector3(position);
 	radius = fs->r_float( );
@@ -22,16 +22,16 @@ void	CEnvModifier::load(IReader* fs)
 	fs->r_fvector3(hemi_color);
 }
 
-f32	CEnvModifier::sum(CEnvModifier& M, fVector3& view)
+f32 CEnvironmentModifier::sum(CEnvironmentModifier& M, fVector3& view)
 {
-	f32	_dist_sq = view.distance_to_sqr(M.position);
+	f32 _dist_sq = view.distance_to_sqr(M.position);
 	if (_dist_sq >= (M.radius * M.radius))
 	{
 		return 0.0f;
 	}
 
-	f32	_att = 1 - _sqrt(_dist_sq) / M.radius;	//[0..1];
-	f32	_power = M.power * _att;
+	f32 _att = 1 - _sqrt(_dist_sq) / M.radius;	//[0..1];
+	f32 _power = M.power * _att;
 	far_plane += M.far_plane * _power;
 	fog_color.mad(M.fog_color, _power);
 	fog_density += M.fog_density * _power;
@@ -44,7 +44,7 @@ f32	CEnvModifier::sum(CEnvModifier& M, fVector3& view)
 //-----------------------------------------------------------------------------
 // Environment ambient
 //-----------------------------------------------------------------------------
-void CEnvAmbient::load(const shared_str& sect)
+void CEnvironmentAmbient::load(const shared_str& sect)
 {
 	section = sect;
 	string_path tmp;
@@ -104,7 +104,7 @@ void CEnvAmbient::load(const shared_str& sect)
 //-----------------------------------------------------------------------------
 // Environment descriptor
 //-----------------------------------------------------------------------------
-CEnvDescriptor::CEnvDescriptor( )
+CEnvironmentDescriptor::CEnvironmentDescriptor( )
 {
 	exec_time = 0.0f;
 	exec_time_loaded = 0.0f;
@@ -140,7 +140,7 @@ CEnvDescriptor::CEnvDescriptor( )
 }
 
 #define	C_CHECK(C)	if (C.x<0 || C.x>2 || C.y<0 || C.y>2 || C.z<0 || C.z>2)	{ Msg("! Invalid '%s' in env-section '%s'",#C,S);}
-void CEnvDescriptor::load(pcstr exec_tm, pcstr S, CEnvironment* parent)
+void CEnvironmentDescriptor::load(pcstr exec_tm, pcstr S, CEnvironment* parent)
 {
 	iVector3 tm					= { 0, 0, 0 };
 	sscanf						(exec_tm, "%d:%d:%d", &tm.x, &tm.y, &tm.z);
@@ -208,7 +208,7 @@ void CEnvDescriptor::load(pcstr exec_tm, pcstr S, CEnvironment* parent)
 	on_device_create( );
 }
 
-void CEnvDescriptor::on_device_create( )
+void CEnvironmentDescriptor::on_device_create( )
 {
 	if (sky_texture_name.size( ))
 	{
@@ -226,7 +226,7 @@ void CEnvDescriptor::on_device_create( )
 	}
 }
 
-void CEnvDescriptor::on_device_destroy( )
+void CEnvironmentDescriptor::on_device_destroy( )
 {
 	sky_texture.destroy( );
 	sky_texture_env.destroy( );
@@ -236,7 +236,7 @@ void CEnvDescriptor::on_device_destroy( )
 //-----------------------------------------------------------------------------
 // Environment Mixer
 //-----------------------------------------------------------------------------
-void CEnvDescriptorMixer::destroy( )
+void CEnvironmentDescriptorMixer::destroy( )
 {
 	sky_r_textures.clear( );
 	sky_r_textures_env.clear( );
@@ -247,7 +247,7 @@ void CEnvDescriptorMixer::destroy( )
 	clouds_texture.destroy( );
 }
 
-void CEnvDescriptorMixer::clear( )
+void CEnvironmentDescriptorMixer::clear( )
 {
 	std::pair<u32, ref_texture>	zero = mk_pair(u32(0), ref_texture(0));
 	sky_r_textures.clear( );
@@ -267,7 +267,7 @@ void CEnvDescriptorMixer::clear( )
 }
 
 s32 get_ref_count(IUnknown* ii);
-void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor& B, f32 f, CEnvModifier& M, f32 m_power)
+void CEnvironmentDescriptorMixer::lerp(CEnvironment*, CEnvironmentDescriptor& A, CEnvironmentDescriptor& B, f32 f, CEnvironmentModifier& M, f32 m_power)
 {
 	f32 _power						= 1.0f / (m_power + 1);	// the environment itself
 	f32 fi							= 1.0f - f;
@@ -321,7 +321,7 @@ void CEnvDescriptorMixer::lerp(CEnvironment*, CEnvDescriptor& A, CEnvDescriptor&
 //-----------------------------------------------------------------------------
 // Environment IO
 //-----------------------------------------------------------------------------
-CEnvAmbient* CEnvironment::AppendEnvAmb(const shared_str& sect)
+CEnvironmentAmbient* CEnvironment::AppendEnvAmb(const shared_str& sect)
 {
 	for (EnvAmbVecIt it = Ambients.begin( ); it != Ambients.end( ); it++)
 	{
@@ -331,7 +331,7 @@ CEnvAmbient* CEnvironment::AppendEnvAmb(const shared_str& sect)
 		}
 	}
 
-	Ambients.push_back(xr_new<CEnvAmbient>( ));
+	Ambients.push_back(xr_new<CEnvironmentAmbient>( ));
 	Ambients.back( )->load(sect);
 	return Ambients.back( );
 }
@@ -346,7 +346,7 @@ void CEnvironment::mods_load( )
 		u32 id = 0;
 		while (fs->find_chunk(id))
 		{
-			CEnvModifier E;
+			CEnvironmentModifier E;
 			E.load(fs);
 			Modifiers.push_back(E);
 			id++;
@@ -402,7 +402,7 @@ void CEnvironment::load( )
 				{
 					if (pSettings->r_line(sect_w, env_idx, &exec_tm, &sect_e))
 					{
-						CEnvDescriptor* D = xr_new<CEnvDescriptor>( );
+						CEnvironmentDescriptor* D = xr_new<CEnvironmentDescriptor>( );
 						D->load(exec_tm, sect_e, this);
 						WeatherCycles[weather].push_back(D);
 
@@ -439,10 +439,10 @@ void CEnvironment::load( )
 			if (pSettings->r_line("weather_effects", w_idx, &weather, &sect_w))
 			{
 				EnvVec& env = WeatherFXs[weather];
-				env.push_back(xr_new<CEnvDescriptor>( ));
-				env.back( )->exec_time_loaded = 0;
-				env.push_back(xr_new<CEnvDescriptor>( ));
-				env.back( )->exec_time_loaded = 0;
+				env.push_back(xr_new<CEnvironmentDescriptor>( ));
+				env.back( )->exec_time_loaded = 0.0f;
+				env.push_back(xr_new<CEnvironmentDescriptor>( ));
+				env.back( )->exec_time_loaded = 0.0f;
 				s32 env_count = pSettings->line_count(sect_w);
 				pcstr exec_tm;
 				pcstr sect_e;
@@ -450,7 +450,7 @@ void CEnvironment::load( )
 				{
 					if (pSettings->r_line(sect_w, env_idx, &exec_tm, &sect_e))
 					{
-						CEnvDescriptor* D = xr_new<CEnvDescriptor>( );
+						CEnvironmentDescriptor* D = xr_new<CEnvironmentDescriptor>( );
 						D->load(exec_tm, sect_e, this);
 						env.push_back(D);
 
@@ -461,7 +461,7 @@ void CEnvironment::load( )
 					}
 				}
 
-				env.push_back(xr_new<CEnvDescriptor>( ));
+				env.push_back(xr_new<CEnvironmentDescriptor>( ));
 				env.back( )->exec_time_loaded = DAY_LENGTH;
 			}
 		}

@@ -217,10 +217,10 @@ bool CEnvironment::SetWeatherFX(shared_str name)
 		clamp(current_weight, 0.0f, 1.0f);
 
 		std::sort(CurrentWeather->begin( ), CurrentWeather->end( ), sort_env_etl_pred);
-		CEnvDescriptor* C0 = CurrentWeather->at(0);
-		CEnvDescriptor* C1 = CurrentWeather->at(1);
-		CEnvDescriptor* CE = CurrentWeather->at(CurrentWeather->size( ) - 2);
-		CEnvDescriptor* CT = CurrentWeather->at(CurrentWeather->size( ) - 1);
+		CEnvironmentDescriptor* C0 = CurrentWeather->at(0);
+		CEnvironmentDescriptor* C1 = CurrentWeather->at(1);
+		CEnvironmentDescriptor* CE = CurrentWeather->at(CurrentWeather->size( ) - 2);
+		CEnvironmentDescriptor* CT = CurrentWeather->at(CurrentWeather->size( ) - 1);
 		C0->copy(*Current[0]);
 		C0->exec_time = NormalizeTime(fGameTime - ((rewind_tm / (Current[1]->exec_time - fGameTime)) * current_length - rewind_tm));
 		C1->copy(*Current[1]);
@@ -274,12 +274,12 @@ void CEnvironment::StopWFX( )
 
 }
 
-IC bool lb_env_pred(const CEnvDescriptor* x, f32 val)
+IC bool lb_env_pred(const CEnvironmentDescriptor* x, f32 val)
 {
 	return x->exec_time < val;
 }
 
-void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, f32 gt)
+void CEnvironment::SelectEnv(EnvVec* envs, CEnvironmentDescriptor*& e, f32 gt)
 {
 	EnvIt env = std::lower_bound(envs->begin( ), envs->end( ), gt, lb_env_pred);
 	if (env == envs->end( ))
@@ -292,7 +292,7 @@ void CEnvironment::SelectEnv(EnvVec* envs, CEnvDescriptor*& e, f32 gt)
 	}
 }
 
-void CEnvironment::SelectEnvs(EnvVec* envs, CEnvDescriptor*& e0, CEnvDescriptor*& e1, f32 gt)
+void CEnvironment::SelectEnvs(EnvVec* envs, CEnvironmentDescriptor*& e0, CEnvironmentDescriptor*& e1, f32 gt)
 {
 	EnvIt env = std::lower_bound(envs->begin( ), envs->end( ), gt, lb_env_pred);
 	if (env == envs->end( ))
@@ -380,7 +380,7 @@ void CEnvironment::OnFrame( )
 	f32 current_weight = TimeWeight(fGameTime, Current[0]->exec_time, Current[1]->exec_time);
 
 	// modifiers
-	CEnvModifier EM;
+	CEnvironmentModifier EM;
 	EM.far_plane = 0.0f;
 	EM.fog_color.set(0.0f, 0.0f, 0.0f);
 	EM.fog_density = 0.0f;
@@ -389,7 +389,7 @@ void CEnvironment::OnFrame( )
 	EM.hemi_color.set(0.0f, 0.0f, 0.0f);
 	fVector3 view = Device.vCameraPosition;
 	f32 mpower = 0.0f;
-	for (xr_vector<CEnvModifier>::iterator mit = Modifiers.begin( ); mit != Modifiers.end( ); mit++)
+	for (xr_vector<CEnvironmentModifier>::iterator mit = Modifiers.begin( ); mit != Modifiers.end( ); mit++)
 	{
 		mpower += EM.sum(*mit, view);
 	}

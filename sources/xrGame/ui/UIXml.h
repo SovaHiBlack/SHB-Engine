@@ -9,7 +9,7 @@
 #ifndef GAME_UIXML_H_INCLUDED
 #define GAME_UIXML_H_INCLUDED
 
-#include "../../../xrXMLParser/xrXMLParser.h"
+#include "../../../XMLParser/XMLParser.h"
 
 class CUIXml : public CXml
 {
